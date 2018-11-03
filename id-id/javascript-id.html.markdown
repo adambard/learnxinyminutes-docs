@@ -382,9 +382,9 @@ function sayHelloInFiveSeconds(name){
 sayHelloInFiveSeconds("Adam"); // will open a popup with "Hello, Adam!" in 5s
 
 ///////////////////////////////////
-// 5. More about Objects; Constructors and Prototypes
+// 5. Lebih lanjut tentang object; Constructor dan Prototype
 
-// Objects can contain functions.
+// Object dapat menyimpan sebuah fungsi.
 var myObj = {
     myFunc: function(){
         return "Hello dunia!";
@@ -392,8 +392,8 @@ var myObj = {
 };
 myObj.myFunc(); // = "Hello dunia!"
 
-// When functions attached to an object are called, they can access the object
-// they're attached to using the `this` keyword.
+// Ketika sebuah fungsi dalam objek dipanggil, fungsi tersebut dapat mengakses objeknya
+// dengan menggunakan `this` keyword.
 myObj = {
     myString: "Hello dunia!",
     myFunc: function(){
@@ -402,55 +402,54 @@ myObj = {
 };
 myObj.myFunc(); // = "Hello dunia!"
 
-// What this is set to has to do with how the function is called, not where
-// it's defined. So, our function doesn't work if it isn't called in the
-// context of the object.
+// Apa yang terjadi disini adalah bagaimana sebuah fungsi dipanggil, tidak pada 
+// dimana fungsi tersebut di definisikan. Jadi, fungsi kita tidak dapat bekerja jika
+// dipanggil diluar konteks dari object-nya.
 var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
-// Inversely, a function can be assigned to the object and gain access to it
-// through `this`, even if it wasn't attached when it was defined.
+// Kebalikannya, sebuah sebuah fungsi dapat diisikan pada sebuah object dan mendapatkan akses ke objeknya
+// melalui `this`, bahkan jika fungsi tersebut tidak berada didalamnya ketika didefinisikan.
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
 };
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
-// We can also specify a context for a function to execute in when we invoke it
-// using `call` or `apply`.
+// Kita juga dapat menspesifikasikan conteks dari sebuah fungsi dengan mengeksekusi nya dengan
+// menggunakan `call` atau `apply`.
 
 var anotherFunc = function(s){
     return this.myString + s;
 };
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
-// The `apply` function is nearly identical, but takes an array for an argument
-// list.
+// fungsi `apply` hampir sama, tapi menerima sebuah array sebagai argument.
 
 anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
 
-// This is useful when working with a function that accepts a sequence of
-// arguments and you want to pass an array.
+// Hal ini sangat berguna ketika bekerja dengan sebuah fungsi yang menerima serangkaian 
+// argument dan kamu ingin memasukan sebuah array.
 
 Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (uh-oh!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
-// But, `call` and `apply` are only temporary. When we want it to stick, we can
-// use `bind`.
+// tapi, `call` dan `apply` bersifat sementara. Ketika kita ingin terus menggunakannya, kita dapat
+// menggunakan `bind`.
 
 var boundFunc = anotherFunc.bind(myObj);
 boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
 
-// `bind` can also be used to partially apply (curry) a function.
+// `bind` juga dapat digunakan sebagian pada sebuah fungsi (curry).
 
 var product = function(a, b){ return a * b; };
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
-// When you call a function with the `new` keyword, a new object is created, and
-// made available to the function via the `this` keyword. Functions designed to be
-// called like that are called constructors.
+// Ketika sebuah fungsi dipanggil dengan keyword `new`, sebuah object baru dibuat, dan
+// tersedia dengan menggunakan keyword `this`. Fungsi ini di desain untuk
+// dipanggil layaknya sebuah constructor.
 
 var MyConstructor = function(){
     this.myNumber = 5;
@@ -458,17 +457,17 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
-// Unlike most other popular object-oriented languages, JavaScript has no
-// concept of 'instances' created from 'class' blueprints; instead, JavaScript
-// combines instantiation and inheritance into a single concept: a 'prototype'.
+// Tidak seperti kebanyakan bahasa berorientasi objek yang lain, JavaScript tika punya 
+// konsep 'instances' yang dibuat dari rancangan 'class'; sebagai gantinya, JavaScript
+// menggabungkan instantiation dan inheritance dalam satu konsep: 'prototype'.
 
-// Every JavaScript object has a 'prototype'. When you go to access a property
-// on an object that doesn't exist on the actual object, the interpreter will
-// look at its prototype.
+// Setiap JavaScript object memiliki sebuah 'prototype'. Ketika mengakses sebuah properti 
+// pada sebuah object yang tidak ada object yang sesungguhnya, interpreter akan
+// menganggapnya sebagai prototype-nya.
 
-// Some JS implementations let you access an object's prototype on the magic
-// property `__proto__`. While this is useful for explaining prototypes it's not
-// part of the standard; we'll get to standard ways of using prototypes later.
+// Beberapa implementasi JS mengizinkanmu untuk mengakses prototype sebuah object dengan menggunakan magic
+// property yaitu `__proto__`. Meskipun ini berguna untuk  menjelas kan prototype 
+// tapi bukan bagian dari standar; kita akan mengakses prototype dengan standar yang benar nanti.
 var myObj = {
     myString: "Hello dunia!"
 };
@@ -482,24 +481,24 @@ var myPrototype = {
 myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
-// This works for functions, too.
+// Berfungsi untuk fungsi juga.
 myObj.myFunc(); // = "hello dunia!"
 
-// Of course, if your property isn't on your prototype, the prototype's
-// prototype is searched, and so on.
+// Tentu saja, jika sebuah property tidak berada dalam prototype mu, prototype
+// dalam prototype akan dicari, dan seterusnya.
 myPrototype.__proto__ = {
     myBoolean: true
 };
 myObj.myBoolean; // = true
 
-// There's no copying involved here; each object stores a reference to its
-// prototype. This means we can alter the prototype and our changes will be
-// reflected everywhere.
+// Tidak ada penyalinan disini; setiap object menyimpan sebuah refrensi ke
+// prototype-nya. Hal ini berarti kita dapat mengubah sebuah prototype dan pengubahan ini akan
+// berlaku dimanapun.
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
-// The for/in statement allows iteration over properties of an object,
-// walking up the prototype chain until it sees a null prototype.
+// for/in statement membuat pengulangan pada property dari sebuah object,
+// menelusuri setiap prototype hingga sebuah prototype.
 for (var x in myObj){
     console.log(myObj[x]);
 }
@@ -508,8 +507,8 @@ for (var x in myObj){
 // 43
 // [Function: myFunc]
 
-// To only consider properties attached to the object itself
-// and not its prototypes, use the `hasOwnProperty()` check.
+// Jika mempertimbangkan untuk menyimpan sebuah property pada object secara langsung
+// dan tidak pada prototype, gunakan `hasOwnProperty()`.
 for (var x in myObj){
     if (myObj.hasOwnProperty(x)){
         console.log(myObj[x]);
@@ -518,19 +517,19 @@ for (var x in myObj){
 ///prints:
 // Hello world!
 
-// We mentioned that `__proto__` was non-standard, and there's no standard way to
-// change the prototype of an existing object. However, there are two ways to
-// create a new object with a given prototype.
+// Kita menyebutkan bahwa `__proto__` dalah cara non-standard, dan tidak ada cara standar 
+// mengubah prototype dari object yang sudah ada. Namun, ada dua cara
+// menciptakan object baru dengan prototype tertentu.
 
-// The first is Object.create, which is a recent addition to JS, and therefore
-// not available in all implementations yet.
+// Cara pertama adalah Object.create, yang merupakan tambahan baru di JS, maka dari itu
+// Belum tersedia pada semua implementasi.
 var myObj = Object.create(myPrototype);
 myObj.meaningOfLife; // = 43
 
-// The second way, which works anywhere, has to do with constructors.
-// Constructors have a property called prototype. This is *not* the prototype of
-// the constructor function itself; instead, it's the prototype that new objects
-// are given when they're created with that constructor and the new keyword.
+// Cara kedua, yang berkerja dimanapun, tida ada hubungannya dengan prototype.
+// Constructor memiliki sebuah properti dengan nama prototype. Ini *bukan* prototype dari
+// constructor function itu sendiri; melainkan, Sebuah prototype yang yang diberikan
+// pada object baru ketika mereka diciptakan dengan constructor nya dan keyword new.
 MyConstructor.prototype = {
     myNumber: 5,
     getMyNumber: function(){
@@ -542,43 +541,43 @@ myNewObj2.getMyNumber(); // = 5
 myNewObj2.myNumber = 6;
 myNewObj2.getMyNumber(); // = 6
 
-// Built-in types like strings and numbers also have constructors that create
-// equivalent wrapper objects.
+// Tipe data bawaan seperti string dan number juga memiliki constructor yang membuat
+// object pembungkus yang sama.
 var myNumber = 12;
 var myNumberObj = new Number(12);
 myNumber == myNumberObj; // = true
 
-// Except, they aren't exactly equivalent.
+// Bedanya, mereka tidak sebenarnya sama.
 typeof myNumber; // = 'number'
 typeof myNumberObj; // = 'object'
 myNumber === myNumberObj; // = false
 if (0){
-    // This code won't execute, because 0 is falsy.
+    // Bagian ini tidak akan dieksekusi karena 0 itu bersifat false.
 }
 if (new Number(0)){
-   // This code will execute, because wrapped numbers are objects, and objects
-   // are always truthy.
+   // Bagian ini akan dieksekusi, karena sebuah angka dalam object pembungkus adalah object, dan object
+   // bersifat true.
 }
 
-// However, the wrapper objects and the regular builtins share a prototype, so
-// you can actually add functionality to a string, for instance.
+// Meski begitu, object pembungkus dan objek biasa berbagi prototype yang sama, jadi
+// kamu dapat menambahkan fungsionalitas tambahan untuk string, misalnya.
 String.prototype.firstCharacter = function(){
     return this.charAt(0);
 };
 "abc".firstCharacter(); // = "a"
 
-// This fact is often used in "polyfilling", which is implementing newer
-// features of JavaScript in an older subset of JavaScript, so that they can be
-// used in older environments such as outdated browsers.
+// Hal ini biasa digunakan pada "polyfilling", yang mengimplementasikan 
+// fitu baru dari JavaScript pada javascript lama JavaScript, sehingga mereka dapat
+// digunakan pada environment ataupun browser lama.
 
-// For instance, we mentioned that Object.create isn't yet available in all
-// implementations, but we can still use it with this polyfill:
-if (Object.create === undefined){ // don't overwrite it if it exists
+// Sebagai contoh, kita telah menyebutkan Object.create tidak tersedia di semua 
+// implementasi, tapi kita dapat tetap menggunakannya dengan polyfill:
+if (Object.create === undefined){ // tidak menimpa jika sudah ada
     Object.create = function(proto){
-        // make a temporary constructor with the right prototype
+        // membuat constructor sementara dengan prototype yang tepat
         var Constructor = function(){};
         Constructor.prototype = proto;
-        // then use it to create a new, appropriately-prototyped object
+        // kemudia digunakan untuk membuat object dengan prototype yang benar
         return new Constructor();
     };
 }
@@ -586,39 +585,40 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 
 ## Further Reading
 
-The [Mozilla Developer Network][1] provides excellent documentation for
-JavaScript as it's used in browsers. Plus, it's a wiki, so as you learn more you
-can help others out by sharing your own knowledge.
+[Mozilla Developer Network][1] menyediakan dokumentasi yang sangat baik sebagaimana
+JavaScript digunakan pada browsernya. Plus, sebagai wiki, jadi kamu dapat membantu
+banyak orang dengan membagi pengetahuanmu.
 
-MDN's [A re-introduction to JavaScript][2] covers much of the concepts covered
-here in more detail. This guide has quite deliberately only covered the
-JavaScript language itself; if you want to learn more about how to use
-JavaScript in web pages, start by learning about the [Document Object Model][3].
+[A re-introduction to JavaScript][2] milik MDN menjelaskan banyak konsep
+yang dijelaskan disini dengan lebih detail. Panduan ini hanya menjelaskan tentang
+Javascript itu sendiri; Jika anda ingin belajar lebih lanjut tentang penggunaan
+JavaScript dalam web pages, Mulai lah belajar tentang [Document Object Model][3].
 
-[Learn Javascript by Example and with Challenges][4] is a variant of this
-reference with built-in challenges.
+[Learn Javascript by Example and with Challenges][4] adalah variasi dari
+refrensi ini dengan tambahan tantangan di dalamnya.
 
-[JavaScript Garden][5] is an in-depth guide of all the counter-intuitive parts
-of the language.
+[JavaScript Garden][5] adalah penjelasan lebih dalam mengenai konsep bahasa ini
+yang tidak intuitif.
 
-[JavaScript: The Definitive Guide][6] is a classic guide and reference book.
+[JavaScript: The Definitive Guide][6] Refrensi klasik untuk javascript.
 
-[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with
-attached terminal
+[Eloquent Javascript][8] oleh Marijn Haverbeke adalah sebuah buku (elektronik) JS yang sangat bagu dengan
+sebuah terminal
 
-[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great
-derivative of Eloquent Javascript with extra explanations and clarifications for
-some of the more complicated examples.
+[Eloquent Javascript - The Annotated Version][9] oleh Gordon Zhu juga merupakan
+variasi yang bagus dari Eloquent Javascript dengan tambahan penjelasan dan klarifikasi untuk
+beberapa contoh yang lebih rumit.
 
-[Javascript: The Right Way][10] is a guide intended to introduce new developers
-to JavaScript and help experienced developers learn more about its best practices.
-
-[Javascript:Info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
-as well as advanced topics with concise explanations.
+[Javascript: The Right Way][10] sebuah panduan yang ditujukan untuk developer baru
+JavaScript dan membantu developer yang berpengalaman untuk mempelajari lebih lanjut tentang best practic yang ada.
 
 
-In addition to direct contributors to this article, some content is adapted from
-Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the
+[Javascript:Info][11] adalah sebuah tutorial modern dari dasar-dasar javascript (bahasa inti dan bekerja dengan browser)
+juga dengan konsep lebih lanjut dengan penjelasan yang lengkap.
+
+
+Sebagai tambahan kepada kontributor langsung pada artikel ini, beberapa konten diadaptasi dari
+Tutorial Python oleh Louie Dinh pada situs ini, dan [JS Tutorial][7] pada
 Mozilla Developer Network.
 
 
