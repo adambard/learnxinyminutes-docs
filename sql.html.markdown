@@ -83,7 +83,7 @@ WHERE TABLE_TYPE='BASE TABLE';
 -- Create a table called tablename1, with the two columns shown, for
 -- the database currently in use. Lots of other options are available
 -- for how you specify the columns, such as their datatypes.
-CREATE TABLE tablename1 (`fname` VARCHAR(20),`lname` VARCHAR(20));
+CREATE TABLE tablename1 (fname VARCHAR(20), lname VARCHAR(20));
 
 -- Insert a row of data into the table tablename1. This assumes that the 
 -- table has been defined to accept these values as appropriate for it. 
