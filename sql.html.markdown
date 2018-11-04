@@ -27,7 +27,7 @@ DROP DATABASE someDatabase;
 SHOW DATABASES;
 
 -- Use a particular existing database. 
-USE employees;    
+USE employees;
 
 -- Select all rows and columns from the current database's departments table.
 -- Default activity is for the interpreter to scroll the results on your screen. 
@@ -43,12 +43,12 @@ SELECT dept_no,
 SELECT * FROM departments LIMIT 5;
 
 -- Retrieve dept_name column values from the departments
--- table where the dept_name value has the substring "en". 
-SELECT dept_name FROM departments WHERE dept_name LIKE "%en%";
+-- table where the dept_name value has the substring 'en'. 
+SELECT dept_name FROM departments WHERE dept_name LIKE '%en%';
 
 -- Retrieve all columns from the departments table where the dept_name
--- column starts with an "S" and has exactly 4 characters after it. 
-SELECT * FROM departments WHERE dept_name LIKE "S____";
+-- column starts with an 'S' and has exactly 4 characters after it. 
+SELECT * FROM departments WHERE dept_name LIKE 'S____';
 
 -- Select title values from the titles table but don't show duplicates.
 SELECT DISTINCT title FROM titles;
@@ -60,8 +60,8 @@ SELECT DISTINCT title FROM titles ORDER BY title;
 SELECT COUNT(*) FROM departments;
 
 -- Show the number of rows in the departments table that
--- have "en" as a substring of the dept_name value. 
-SELECT COUNT(*) FROM departments WHERE dept_name LIKE "%en%";
+-- have 'en' as a substring of the dept_name value. 
+SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 
 -- A JOIN of information from multiple tables: the titles table shows 
 -- who had what job titles, by their employee numbers, from what 
@@ -89,13 +89,13 @@ CREATE TABLE tablename1 (`fname` VARCHAR(20),`lname` VARCHAR(20));
 -- table has been defined to accept these values as appropriate for it. 
 INSERT INTO tablename1 VALUES('Richard','Mutt');
 
--- In tablename1, change the fname value to "John"
--- for all rows that have an lname value of "Mutt". 
-UPDATE tablename1 SET fname="John" WHERE lname="Mutt";
+-- In tablename1, change the fname value to 'John'
+-- for all rows that have an lname value of 'Mutt'. 
+UPDATE tablename1 SET fname='John' WHERE lname='Mutt';
 
 -- Delete rows from the tablename1 table
--- where the lname value begins with "M".
-DELETE FROM tablename1 WHERE lname like "M%";
+-- where the lname value begins with 'M'.
+DELETE FROM tablename1 WHERE lname like 'M%';
 
 -- Delete all rows from the tablename1 table, leaving the empty table.
 DELETE FROM tablename1;
