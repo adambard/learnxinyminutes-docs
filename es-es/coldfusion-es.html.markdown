@@ -21,7 +21,7 @@ ColdFusion comenzó como un lenguaje basado en etiquetas. Casi toda la funcional
 <!--- Los comentarios comienzan con "<!---" y terminan con "--->" --->
 <!---
     Los comentarios
-    tambien
+    también
     pueden ocupar
     multiples líneas
 --->
@@ -153,7 +153,7 @@ ColdFusion comenzó como un lenguaje basado en etiquetas. Casi toda la funcional
 
 <hr />
 
-<h1>Tipos de conversión</h1>
+<h1>Conversión de tipos</h1>
 
 <style>
 	table.table th, table.table td {
@@ -171,7 +171,7 @@ ColdFusion comenzó como un lenguaje basado en etiquetas. Casi toda la funcional
 		<tr>
 			<th>Valor</th>
 			<th>Como booleano</th>
-			<th>Como numero</th>
+			<th>Como número</th>
 			<th>Como fecha</th>
 			<th>Como cadena</th>
 		</tr>
@@ -222,7 +222,7 @@ ColdFusion comenzó como un lenguaje basado en etiquetas. Casi toda la funcional
 			<td>Error</td>
 			<td>El valor numérico del objeto fecha-hora.</td>
 			<td>Fecha</td>
-			<td>un timestamp de ODBC .</td>
+			<td>una marca de tiempo de ODBC.</td>
 		</tr>
 	</tbody>
 </table>
