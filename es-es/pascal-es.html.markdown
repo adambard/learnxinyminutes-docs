@@ -10,7 +10,7 @@ lang: es-es
 ---
 
 
->Pascal es un lenguaje de programación imperativo y de procedimiento, que Niklaus Wirth diseñó en 1968–69 y publicó en 1970, como un lenguaje pequeño y eficiente destinado a fomentar las buenas prácticas de programación utilizando programación estructurada y estructuración de datos. Se nombra en honor al matemático, filósofo y físico francés Blaise Pascal. fuente: [wikipedia](https://en.wikipedia.org/wiki/Pascal_(programming_language))
+>Pascal es un lenguaje de programación imperativo y de procedimiento, que Niklaus Wirth diseñó en 1968–69 y publicó en 1970, como un lenguaje pequeño y eficiente destinado a fomentar las buenas prácticas de programación utilizando programación estructurada y estructuración de datos. Se nombra en honor al matemático, filósofo y físico francés Blaise Pascal. fuente: [wikipedia](https://es.wikipedia.org/wiki/Pascal_(lenguaje_de_programación)))
 
 Para compilar y ejecutar un programa pascal puede usar un compilador pascal gratuito. [Descargar aquí](https://www.freepascal.org/)
 
@@ -65,7 +65,7 @@ program Learn_More;
 
 const
     PI = 3.141592654;
-    GNU = 'GNU's Not Unix';
+    GNU = 'GNU No Es Unix';
         // las constantes se nombran convencionalmente usando CAPS (mayúscula)
         // sus valores son fijos y no se pueden cambiar durante el tiempo de ejecución
         // tiene cualquier tipo de datos estándar (enteros, reales, booleanos, characteres, cadenas)
@@ -108,7 +108,7 @@ var
     // tipos de datos enteros adicionales
     b    : byte;     // rango [0..255]
     shi  : shortint; // rango [-128..127]
-    smi  : smallint; // rango [-32,768..32,767] (entero estandar)
+    smi  : smallint; // rango [-32,768..32,767] (entero estándar)
     w    : word;     // rango [0..65,535]
     li   : longint;  // rango [-2,147,483,648..2,147,483,647]
     lw   : longword; // rango [0..4,294,967,295]
@@ -164,7 +164,7 @@ program Functional_Programming;
 Var
     i, dummy : integer;
 
-function factorial_recursion(const a: integer) : integer;
+function recursion_factorial(const a: integer) : integer;
 { calcula recursivamente el factorial del parámetro entero a }
 
 // Declare variables locales dentro de la función.
@@ -175,12 +175,12 @@ function factorial_recursion(const a: integer) : integer;
 Begin
     If a >= 1 Then
     // devuelva valores de las funciones asignando un valor al nombre de la función
-        factorial_recursion := a * factorial_recursion(a-1)
+        recursion_factorial := a * recursion_factorial(a-1)
     Else
-        factorial_recursion := 1;
+        recursion_factorial := 1;
 End; // termine una función usando un punto y coma después de la instrucción End.
 
-procedure get_integer(var i : integer; dummy : integer);
+procedure obtener_entero(var i : integer; dummy : integer);
 { obten la entrada del usuario y almacenarla en el parámetro entero i. 
   los parámetros que preceden a 'var' son variables, lo que significa que su valor 
   puede cambiar fuera del parámetro. Los parámetros de valor (sin 'var') como 'dummy' 
@@ -195,9 +195,9 @@ End;
 
 Begin // bloque de programa principal
     dummy := 3;
-    get_integer(i, dummy);
-    writeln(i, '! = ', factorial_recursion(i));
-    // outputs i!
+    obtener_entero(i, dummy);
+    writeln(i, '! = ', recursion_factorial(i));
+    // muestra i!
     writeln('dummy = ', dummy); // siempre muestra '3' ya que dummy no ha cambiado.
 End.
 
