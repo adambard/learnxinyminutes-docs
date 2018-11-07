@@ -176,23 +176,47 @@ example13() {
   match(s2);
 }
 
-// Boolean expressions need to resolve to either true or false, as no
-// implicit conversions are supported.
+// Boolean expressions support implicit conversions and dynamic type
 example14() {
-  var v = true;
-  if (v) {
-    print("Example14 value is true");
+  var a = true;
+  if (a) {
+    print("true, a is $a");
   }
-  v = null;
+  a = null;
+  if (a) {
+    print("true, a is $a");
+  } else {
+    print("false, a is $a"); // runs here
+  }
+
+  // dynamic typed null can be convert to bool
+  var b;// b is dynamic type
+  b = "abc";
   try {
-    if (v) {
-      // Never runs
+    if (b) {
+      print("true, b is $b");
     } else {
-      // Never runs
+      print("false, b is $b");
     }
   } catch (e) {
-    print("Example14 null value causes an exception: '${e}'");
+    print("error, b is $b"); // this could be run but got error
   }
+  b = null;
+  if (b) {
+    print("true, b is $b");
+  } else {
+    print("false, b is $b"); // runs here
+  }
+
+  // statically typed null can not be convert to bool
+  var c = "abc";
+  c = null;
+  // complie failed
+  // if (c) {
+  //   print("true, c is $c");
+  // } else {
+  //   print("false, c is $c");
+  // }
 }
 
 // try/catch/finally and throw are used for exception handling.
