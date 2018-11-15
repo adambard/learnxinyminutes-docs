@@ -246,7 +246,7 @@ sub mutate($n is rw) {
 }
 
 my $m = 42;
-mutate $m; # $n is now 43 !
+mutate $m; # $m is now 43 !
 
 ## This works because we are passing the container $m to mutate.  If we try
 ## to just pass a number instead of passing a variable it won't work because
