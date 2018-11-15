@@ -3,6 +3,7 @@ category: tool
 tool: ansible
 contributors:
     - ["Jakub Muszynski" , "http://github.com/sirkubax"]
+    - ["Pat Myron" , "https://github.com/patmyron"]
 filename: LearnAnsible.txt
 ---
 
@@ -108,9 +109,9 @@ There are few commands you should know about
 * and other!
 
 ### Module
-_program (usually python) that execute, do some work and return proper JSON output_
+A program (usually python) that executes, does some work and returns proper JSON output
 
-This *program* perform specialized task/action (like manage instances in the cloud, execute shell command).
+This program performs specialized task/action (like manage instances in the cloud, execute shell command).
 
 The simplest module is called `ping` - it just returns a JSON with `pong` message.
 
@@ -183,7 +184,7 @@ _Note: Example playbook is explained in the next chapter: 'Roles'
 
 ### Inventory
 Inventory is a set of objects or hosts, against which we are executing our playbooks or single tasks via shell commands
-For this few minutes, lets asume that we are using default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts)
+For these few minutes, let's assume that we are using the default ansible inventory (which in Debian based system is placed in /etc/ansible/hosts)
 
 `/etc/ansible/hosts`
 ```
@@ -207,7 +208,7 @@ some_other_group
 A concept called `role` was introduced for parts of the code (playbooks) that should be reusable.
 
 **Role** is a structured way to manage your set of tasks, variables, handlers, default settings, and way more (meta, files, templates).
-Role allows to reuse the same parts of code in multiple playbooks (you can parametrize the role 'further' during it's execution).
+Roles allow reusing the same parts of code in multiple playbooks (you can parametrize the role 'further' during its execution).
 It is a great way to introduce `object oriented` management for your applications.
 
 Role can be included in your playbook (executed via your playbook).
@@ -234,7 +235,7 @@ Role can be included in your playbook (executed via your playbook).
 #### For remaining examples we would use additional repository
 This example install ansible in `virtualenv` so it is independend from a system. You need to initialize it into your shell-context with `source environment.sh` command. 
 
-We are going to use repository with examples: https://github.com/sirkubax/ansible-for-learnXinYminutes
+We are going to use this repository with examples: https://github.com/sirkubax/ansible-for-learnXinYminutes
 
 ```bash
 $ # The following example contains a shell-prompt to indicate the venv and relative path 
@@ -268,10 +269,10 @@ roles/
 ```
 
 #### Role Handlers
-Handlers are tasks that can be triggered (notified) during execution of a playbook, but they itself execute at the very end of a playbook.
-It is a best way to restart a service, check if application port is active (successful deployment criteria), etc.
+Handlers are tasks that can be triggered (notified) during execution of a playbook, but they execute at the very end of a playbook.
+It is the best way to restart a service, check if the application port is active (successful deployment criteria), etc.
 
-Please get familiar how you can use role in simple_apache_role example
+Get familiar with how you can use roles in the simple_apache_role example
 ```
 playbooks/roles/simple_apache_role/
 ├── tasks
@@ -321,9 +322,9 @@ ansible -m shell -a 'echo "{{ my_variable }}"' -e 'my_variable="{{ lookup("pipe"
 ### Register and Conditional 
 
 #### Register
-Another way to dynamically generate the variable content is a `register` command.
-`Register` is also useful to store an output of a task, and use it's value as a logic 
-for execution further tasks.
+Another way to dynamically generate the variable content is the `register` command.
+`Register` is also useful to store an output of a task and use its value 
+for executing further tasks.
 ```
 (venv) user@host:~/ansible-for-learnXinYminutes$ ansible-playbook playbooks/register_and_when.yml
 ```
@@ -398,7 +399,7 @@ You can limit an execution of your tasks to defined hosts
 
 ### Templates
 
-Template is a powerful way to deliver some (partially) dynamic content. Ansible uses **Jinja2** langueage to describe the template.
+Templates are a powerful way to deliver some (partially) dynamic content. Ansible uses **Jinja2** language to describe the template.
 
 ```jinja2
 Some static content
@@ -411,7 +412,7 @@ Some static content
 ```
 Jinja may have some limitations, but it is a powerful tool that you might like.
 
-Please examine this simple example that install apache2 and generate index.html from the template
+Please examine this simple example that installs apache2 and generates index.html from the template
 "playbooks/roles/simple_apache_role/templates/index.html"
 
 ```bash
@@ -442,7 +443,7 @@ In fact - jinja is used to template parts of the playbooks too
 ```
 
 #### Jinja2 filters
-Jinja is powerful. It has built-in many useful functions.
+Jinja is powerful. It has many built-in useful functions.
 ```jinja
 # get first item of the list
 {{ some_list | first() }}
@@ -453,9 +454,9 @@ Jinja is powerful. It has built-in many useful functions.
 
 ### ansible-vault
 To maintain **infrastructure as code** you need to store secrets. 
-  Ansible provides a way to encrypt the confidential files so you can store it in the repository, yet the files are decrypted in-fly during ansible execution.
+  Ansible provides a way to encrypt confidential files so you can store them in the repository, yet the files are decrypted on-the-fly during ansible execution.
 
-The best way to use the **ansible-vault** is to store the secret in some secure location, and configure ansible to use during runtime.
+The best way to use it is to store the secret in some secure location, and configure ansible to use during runtime.
 
 ```bash
 # Try (this would fail)
@@ -488,9 +489,9 @@ $ ansible-vault decrypt path/somefile
 ### dynamic inventory
 You might like to know, that you can build your inventory dynamically.
 
-(For Ansible) inventory is just a JSON with proper structure - if you can deliver that to ansible - anything is possible.
+(For Ansible) inventory is just JSON with proper structure - if you can deliver that to ansible - anything is possible.
 
-You do not need to invent the wheel - there are plenty ready to use inventory script for most popular Cloud provicers and a lot of in-house popular usecases.
+You do not need to reinvent the wheel - there are plenty of ready to use inventory scripts for most popular Cloud providers and a lot of in-house popular usecases.
 
 [AWS example](http://docs.ansible.com/ansible/latest/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script)
 
@@ -514,7 +515,7 @@ callback_whitelist = profile_tasks
 ```
 
 ### facts-cache and ansible-cmdb
-You can pool some information of you environment from another hosts.
+You can pull some information about your environment from another hosts.
 If the information does not change - you may consider using a facts_cache to speed things up.
 
 ```
@@ -536,7 +537,7 @@ I like to use `jsonfile` as my backend. It allows to use another project
 ### debugging ansible [chapter in progress]
 When your job fails - it is good to be effective with debugging.
 
-1. Increase verbosiy by using multiple -v  **[ -vvvvv]**
+1. Increase verbosity by using multiple -v  **[ -vvvvv]**
 2. If variable is undefined 
     - grep -R path_of_your_inventory -e missing_variable
 3. If variable (dictionary or a list) is undefined
@@ -544,9 +545,9 @@ When your job fails - it is good to be effective with debugging.
 4. Jinja template debug 
 5. Strange behaviour - try to run the code 'at the destination'
 
-### Infrastructure as a code
-You already know, that ansible-vault allow you to store your confidential data along with your code (in repository). You can go further - and define your ansible installation and configuration as-a-code. 
-See `environment.sh` to learn how to install the ansible itself inside a `virtualenv` that is not attached to your operating system (can be changed by non-privilages user), and as additional benefit - upgrading version of ansible is as easy as installing new version in new virtualenv. What is more, you can have multiple versions of Ansible present in the same time. This is very helpful!
+### Infrastructure as code
+You already know, that ansible-vault allows you to store your confidential data along with your code (in repository). You can go further - and define your ansible installation and configuration as-a-code. 
+See `environment.sh` to learn how to install the ansible itself inside a `virtualenv` that is not attached to your operating system (can be changed by non-privileged user), and as additional benefit - upgrading version of ansible is as easy as installing new version in new virtualenv. What is more, you can have multiple versions of Ansible present at the same time.
 
 ```bash
   # recreate ansible 2.x venv
@@ -580,7 +581,7 @@ Note: You may like to execute Ansible with `--ask-sudo-pass` or add the user to 
 ## Tips and tricks
 
 #### --check -C
-Always make sure that your playbook can executes in 'dry run' mode (--check), and it's execution is not declaring 'Changed' objects.
+Always make sure that your playbook can execute in 'dry run' mode (--check), and its execution is not declaring 'Changed' objects.
 
 #### --diff -D
 Diff is useful to see nice detail of the files changed
@@ -622,11 +623,11 @@ You can register the output (stdout), rc (return code), stderr of a task with th
 
 
 ## Introduction
-Ansible is (one of the many) orchestration tools. It allows you to control your environment (infrastructure and a code) and automate the manual tasks.
+Ansible is (one of the many) orchestration tools. It allows you to control your environment (infrastructure and code) and automate the manual tasks.
 'You can think as simple as writing in bash with python API 
 Of course the rabbit hole is way deeper.'
 
-Ansible have great integration with multiple operating systems (even Windows) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the could providers. Almost every worth-notice cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
+Ansible has great integration with multiple operating systems (even Windows) and some hardware (switches, Firewalls, etc). It has multiple tools that integrate with the cloud providers. Almost every noteworthy cloud provider is present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...)
 
 
 But ansible is way more! It provides an execution plans, an API, library, callbacks, not forget to mention - COMMUNITY! and great support by developers!
@@ -644,12 +645,11 @@ Official GUI Tool (web inferface) - Ansible Tower - is great, but it is expensiv
 
 It is an agent-less tools In most scenarios, it use ssh as a transport layer.
 In some way you can use it as 'bash on steroids'.  
-It is very-very-very easy to start. If you are familiar with ssh concept - you already know Ansible (ALMOST). My personal record is: 'I did show "how to install and use ansible" (for simple raspberry pi cluster management) - it took me 30 seconds to deliver a complete working example !!!)'  
-I do provide a training services - I'm able to teach a production-ready person - in 8 hours (1 training day)! It covers all needed to work aspects! No other tool can match this ease of use!  
+It is very easy to start. If you are familiar with ssh concept - you already know Ansible (ALMOST).
 It executes 'as is' - other tools (salt, puppet, chef - might execute in different scenario than you would expect)  
 Documentation is at the world-class standard!  
 The community (github, stackOverflow) would help you very fast.  
-Writing own modules and extension is fairly easy.
+Writing your own modules and extensions is fairly easy.
 Ansible AWX is the open source version of Ansible Tower we have been waiting for, which provides an excellent UI.
 
 #### Neutral
