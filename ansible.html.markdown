@@ -401,7 +401,7 @@ You can limit an execution of your tasks to defined hosts
 
 Templates are a powerful way to deliver some (partially) dynamic content. Ansible uses **Jinja2** language to describe the template.
 
-```jinja2
+```
 Some static content
 
 {{ a_variable }}
@@ -444,7 +444,7 @@ In fact - jinja is used to template parts of the playbooks too
 
 #### Jinja2 filters
 Jinja is powerful. It has many built-in useful functions.
-```jinja
+```
 # get first item of the list
 {{ some_list | first() }}
 # if variable is undefined - use default value
