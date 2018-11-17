@@ -2,7 +2,7 @@
 language: factor
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
-filename: learnfactor.factor
+filename: learnfactor-br.factor
 
 lang: pt-br
 ---
