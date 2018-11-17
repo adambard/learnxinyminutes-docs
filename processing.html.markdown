@@ -12,7 +12,7 @@ While the language is based on Java language,
 its syntax has been largely influenced by both Java and Javascript syntaxes. [See more here](https://processing.org/reference/)  
 The language is statically typed, and also comes with its official IDE to compile and run the scripts.
 
-```processing
+```
 /* ---------
    Comments
    ---------
@@ -208,7 +208,7 @@ exit(); // This stops the program. It is useful for programs with draw() running
 ## Drawing with Processing
 Since you will have understood the basics of the language by now, we will now look into the best part of Processing; DRAWING.
 
-```processing
+```
 
 /* ------
    Shapes
@@ -330,7 +330,7 @@ texture(image); // PImage can be passed into arguments for texture-mapping the s
 ```
 If you want to take things further, there are more things Processing is powered for. Rendering models, shaders and whatnot.  
 There's too much to cover in a short documentation, so I will leave them out here. Shoud you be interested, please check out the references.
-```processing
+```
 // Before we move on, I will touch a little bit more on how to import libraries
 // so you can extend Processing's functionality to another horizon.
 
@@ -351,7 +351,7 @@ Down To Code? Let's get our hands dirty!
 Let us see an example from openprocessing to visualize how much Processing is capable of within few lines of code.  
 Copy the code below into your Processing IDE and see the magic.
 
-```processing
+```
 
 // Disclaimer: I did not write this program since I currently am occupied with internship and
 //             this sketch is adapted from openprocessing since it shows something cool with simple codes.
