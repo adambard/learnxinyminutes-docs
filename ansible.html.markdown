@@ -18,16 +18,13 @@ filename: LearnAnsible.txt
 
 Ansible is (one of many) orchestration tools. It allows you to control your
 environment (infrastructure and code) and automate the manual tasks.
-'You can think as simple as writing in bash with python API,
-Of course the rabbit hole is way deeper.'
 
 Ansible has great integration with multiple operating systems (even Windows)
 and some hardware (switches, Firewalls, etc). It has multiple tools that
 integrate with the cloud providers. Almost every noteworthy cloud provider is
 present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...).
 
-But ansible is way more! It provides an execution plans, an API, library,
-callbacks, not forget to mention - COMMUNITY! and great support by developers!
+But ansible is way more! It provides execution plans, an API, library, and callbacks.
 
 ### Main pros and cons
 
@@ -40,7 +37,6 @@ know Ansible (ALMOST).
 * It executes 'as is' - other tools (salt, puppet, chef - might execute in
 different scenario than you would expect)
 * Documentation is at the world-class standard!
-* The community (github, stackOverflow) would help you very fast.
 * Writing your own modules and extensions is fairly easy.
 * Ansible AWX is the open source version of Ansible Tower we have been waiting
 for, which provides an excellent UI.
@@ -52,8 +48,7 @@ environments, it may be noticable amount.
 * It is agent-less - you have to verify your environment consistency
 'on-demand' - there is no built-in mechanism that would warn you about some
 change automatically (this can be achieved with reasonable effort)
-* Official GUI Tool (web inferface) - Ansible Tower - is great, but it is
-expensive.
+* Official GUI - Ansible Tower - is great but expensive.
 * There is no 'small enterprice' payment plan, however Ansible AWX is the free
 open source version we were all waiting for.
 
@@ -69,7 +64,7 @@ Ansible uses ssh or paramiko as a transport layer. In a way you can imagine
 that you are using a ssh with API to perform your action. The simplest way is
 to execute remote command in more controlled way (still using ssh).
 On the other hand - in advanced scope - you can wrap Ansible (use python Ansible
-code as a library) with your own Python scrips! This is awesome! It would act a
+code as a library) with your own Python scripts! It would act a
 bit like Fabric then.
 
 ## Example
@@ -170,7 +165,6 @@ There are few commands you should know about
 * `ansible-playbook` (to run playbooks)
 * `ansible-vault` (to manage secrets)
 * `ansible-galaxy` (to install roles from github/galaxy)
-* and other!
 
 ### Module
 
@@ -180,10 +174,10 @@ instances in the cloud, execute shell command). The simplest module is called
 `ping` - it just returns a JSON with `pong` message.
 
 Example of modules:
+
 * Module: `ping` - the simplest module that is useful to verify host connectivity
 * Module: `shell` - a module that executes shell command on a specified host(s).
 
-Example of execution - `ping`, `shell`
 
 ```bash
 $ ansible -m ping all
@@ -656,8 +650,8 @@ When your job fails - it is good to be effective with debugging.
 ### Infrastructure as code
 
 You already know, that ansible-vault allows you to store your confidential data
-along with your code (in repository). You can go further - and define your
-ansible installation and configuration as-a-code.
+along with your code. You can go further - and define your
+ansible installation and configuration as code.
 See `environment.sh` to learn how to install the ansible itself inside a
 `virtualenv` that is not attached to your operating system (can be changed by
 non-privileged user), and as additional benefit - upgrading version of ansible
