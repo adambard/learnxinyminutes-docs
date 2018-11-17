@@ -1,6 +1,6 @@
 ---
 language: restructured text (RST)
-filename: restructuredtext.rst
+filename: restructuredtext-de.rst
 contributors:
     - ["DamienVGN", "https://github.com/martin-damien"]
     - ["Andre Polykanine", "https://github.com/Oire"]
