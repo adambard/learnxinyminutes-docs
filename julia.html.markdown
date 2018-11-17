@@ -163,6 +163,8 @@ matrix = [1 2; 3 4] # => 2×2 Array{Int64,2}: [1 2; 3 4]
 b = Int8[4, 5, 6] # => 3-element Array{Int8,1}: [4, 5, 6]
 
 # Add stuff to the end of a list with push! and append!
+# By convention, the exclamation mark '!'' is appended to names of functions
+# that modify their arguments
 push!(a, 1)    # => [1]
 push!(a, 2)    # => [1,2]
 push!(a, 4)    # => [1,2,4]
