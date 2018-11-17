@@ -8,9 +8,16 @@ filename: LearnAnsible.txt
 ---
 
 ## Introduction
-Ansible is (one of the many) orchestration tools. It allows you to control your
+
+```yaml
+---
+"{{ Ansible }}" is an orchestration tool written in Python.
+...
+```
+
+Ansible is (one of many) orchestration tools. It allows you to control your
 environment (infrastructure and code) and automate the manual tasks.
-'You can think as simple as writing in bash with python API
+'You can think as simple as writing in bash with python API,
 Of course the rabbit hole is way deeper.'
 
 Ansible has great integration with multiple operating systems (even Windows)
@@ -63,13 +70,6 @@ to execute remote command in more controlled way (still using ssh).
 On the other hand - in advanced scope - you can wrap Ansible (use python Ansible
 code as a library) with your own Python scrips! This is awesome! It would act a
 bit like Fabric then.
-
-```yaml
----
-"{{ Ansible }}" is an orchestration tool written in Python.
-...
-
-```
 
 ## Example
 
