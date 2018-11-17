@@ -4,6 +4,7 @@ filename: learnprocessing.pde
 contributors:
     - ["Phone Thant Ko", "http://github.com/phonethantko"]
 ---
+
 ## Introduction
 
 Processing is a programming language for creation of digital arts and multimedia content, allowing non-programmers to
@@ -29,7 +30,7 @@ The language is statically typed, and also comes with its official IDE to compil
 /* ---------------------------------------
    Writing and Running Processing Programs
    ---------------------------------------
- */
+*/
 
 // In Processing, your program's entry point is a function named setup() with a void return type.
 // Note! The syntax looks strikingly similar to that of C++.
@@ -205,11 +206,12 @@ noLoop(); // only allows it to run once.
 redraw(); // runs the draw() method once more.
 exit(); // This stops the program. It is useful for programs with draw() running continuously.
 ```
+
 ## Drawing with Processing
+
 Since you will have understood the basics of the language by now, we will now look into the best part of Processing; DRAWING.
 
 ```
-
 /* ------
    Shapes
    ------
@@ -326,10 +328,11 @@ stroke(255, 255, 255, 200); // stroke colour set to yellow with transparency set
 // Processing can render images and use them in several ways. Mostly stored as PImage datatype.
 filter(shader); // Processing supports several filter functions for image manipulation.
 texture(image); // PImage can be passed into arguments for texture-mapping the shapes.
-
 ```
+
 If you want to take things further, there are more things Processing is powered for. Rendering models, shaders and whatnot.  
 There's too much to cover in a short documentation, so I will leave them out here. Shoud you be interested, please check out the references.
+
 ```
 // Before we move on, I will touch a little bit more on how to import libraries
 // so you can extend Processing's functionality to another horizon.
@@ -342,8 +345,8 @@ There's too much to cover in a short documentation, so I will leave them out her
 // The power of Processing can be further visualized when we import libraries and packages into our sketches.
 // Import statement can be written as below at the top of the source code.
 import processing.something.*;
-
 ```
+
 ## DTC?
 
 Down To Code? Let's get our hands dirty!  
@@ -352,7 +355,6 @@ Let us see an example from openprocessing to visualize how much Processing is ca
 Copy the code below into your Processing IDE and see the magic.
 
 ```
-
 // Disclaimer: I did not write this program since I currently am occupied with internship and
 //             this sketch is adapted from openprocessing since it shows something cool with simple codes.
 // Retrieved from: (https://www.openprocessing.org/sketch/559769)
@@ -380,8 +382,6 @@ void draw() {
 
 }
 
-
-
 void branch(float len) {
   col=map(len, 0, 90, 150, 255);
   fill(col, 0, 74);
@@ -389,7 +389,6 @@ void branch(float len) {
   line(0, 0, 0, -len);
   ellipse(0, -len, 3, 3);
   len *= 0.7;
-
 
   if (len>30) {
     pushMatrix();
@@ -406,7 +405,6 @@ void branch(float len) {
 
   }
 }
-
 ```
 
 Processing is easy to learn and is particularly useful to create multimedia contents (even in 3D) without
@@ -415,7 +413,7 @@ the program flow.
 However, that does not apply when you introduce external libraries, packages and even your own classes.
 (Trust me! Processing projects can get real humongous...)  
 
-## Some useful resources:
+## Some useful resources
 
  - [Processing Website](http://processing.org)
  - [Processing Sketches](http://openprocessing.org)
