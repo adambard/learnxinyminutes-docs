@@ -91,7 +91,7 @@ You can buid the site locally to test your changes. Follow the steps below.
 	* `bundle install`
 * Get the source in place
 	* Copy the contents of your clone of the fork of learnxinyminutes-docs repo
-	into the `source/docs` folder. There shouldn't be a learnxinyminutes-docs
+	into the `source/docs` folder. There shouldn't be a `learnxinyminutes-docs`
 	folder inside the `docs` folder, it should just contain all the repo
 	contents.
 	* Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
