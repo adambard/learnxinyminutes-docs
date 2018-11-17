@@ -2,7 +2,7 @@
 language: cmake
 contributors:
     - ["Bruno Alano", "https://github.com/brunoalano"]
-filename: CMake
+filename: CMake-br
 translators:
     - ["Lucas Pugliesi", "https://github.com/fplucas"]
 lang: pt-br
