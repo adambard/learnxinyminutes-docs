@@ -7,6 +7,63 @@ contributors:
 filename: LearnAnsible.txt
 ---
 
+## Introduction
+Ansible is (one of the many) orchestration tools. It allows you to control your
+environment (infrastructure and code) and automate the manual tasks.
+'You can think as simple as writing in bash with python API
+Of course the rabbit hole is way deeper.'
+
+Ansible has great integration with multiple operating systems (even Windows)
+and some hardware (switches, Firewalls, etc). It has multiple tools that
+integrate with the cloud providers. Almost every noteworthy cloud provider is
+present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...).
+
+But ansible is way more! It provides an execution plans, an API, library,
+callbacks, not forget to mention - COMMUNITY! and great support by developers!
+
+### Main pros and cons
+
+#### Pros
+
+* It is an agent-less tools In most scenarios, it use ssh as a transport layer.
+In some way you can use it as 'bash on steroids'.
+* It is very easy to start. If you are familiar with ssh concept - you already
+know Ansible (ALMOST).
+* It executes 'as is' - other tools (salt, puppet, chef - might execute in
+different scenario than you would expect)
+* Documentation is at the world-class standard!
+* The community (github, stackOverflow) would help you very fast.
+* Writing your own modules and extensions is fairly easy.
+* Ansible AWX is the open source version of Ansible Tower we have been waiting
+for, which provides an excellent UI.
+
+#### Cons
+
+* It is an agent-less tool - every agent consumes up to 16MB ram - in some
+environments, it may be noticable amount.
+* It is agent-less - you have to verify your environment consistency
+'on-demand' - there is no built-in mechanism that would warn you about some
+change automatically (this can be achieved with reasonable effort)
+* Official GUI Tool (web inferface) - Ansible Tower - is great, but it is
+expensive.
+* There is no 'small enterprice' payment plan, however Ansible AWX is the free
+open source version we were all waiting for.
+
+#### Neutral
+
+Migration - Ansible <-> Salt is fairly easy - so if you would need an
+event-driven agent environment - it would be a good choice to start quick with
+Ansible, and convert to Salt when needed.
+
+#### Some concepts
+
+Ansible uses ssh or paramiko as a transport layer. In a way you can imagine
+that you are using a ssh with API to perform your action. The simplest way is
+to execute remote command in more controlled way (still using ssh).
+On the other hand - in advanced scope - you can wrap Ansible (use python Ansible
+code as a library) with your own Python scrips! This is awesome! It would act a
+bit like Fabric then.
+
 ```yaml
 ---
 "{{ Ansible }}" is an orchestration tool written in Python.
@@ -342,6 +399,7 @@ ansible -m shell -a 'echo "{{ my_variable }}"' -e 'my_variable="{{ lookup("pipe"
 ### Register and Conditional
 
 #### Register
+
 Another way to dynamically generate the variable content is the `register` command.
 `Register` is also useful to store an output of a task and use its value
 for executing further tasks.
@@ -374,6 +432,7 @@ for executing further tasks.
      when: root_size.rc == 0
 ...
 ```
+
 #### Conditionals - when:
 
 You can define complex logic with Ansible and Jinja functions. Most common is
@@ -391,7 +450,6 @@ playbook steps with `register` or `lookup`)
    - { role: mid_nagios_probe, when: allow_nagios_probes }
 ...
 ```
-
 
 ### ansible - tags, limit
 
@@ -582,14 +640,15 @@ I like to use `jsonfile` as my backend. It allows to use another project
 `ansible-cmdb` [(project on github)](https://github.com/fboender/ansible-cmdb) that generates a HTML page of your inventory
 resources. A nice 'free' addition!
 
-### debugging ansible [chapter in progress]
+### Debugging ansible [chapter in progress]
 
 When your job fails - it is good to be effective with debugging.
-1. Increase verbosity by using multiple -v  **[ -vvvvv]**
-2. If variable is undefined
-    - grep -R path_of_your_inventory -e missing_variable
-3. If variable (dictionary or a list) is undefined
-    - grep -R path_of_your_inventory -e missing_variable
+
+1. Increase verbosity by using multiple -v **[ -vvvvv]**
+2. If variable is undefined -
+`grep -R path_of_your_inventory -e missing_variable`
+3. If variable (dictionary or a list) is undefined -
+`grep -R path_of_your_inventory -e missing_variable`
 4. Jinja template debug
 5. Strange behaviour - try to run the code 'at the destination'
 
@@ -689,69 +748,9 @@ the `register` command.
 
 #### Conditionals: when:
 
-#### Loop: with, with_items, with_dict, with_together
+#### Loop: with, with\_items, with\_dict, with\_together
 
 [Read more](http://docs.ansible.com/ansible/latest/playbooks_conditionals.html)
-
-
-## Introduction
-Ansible is (one of the many) orchestration tools. It allows you to control your
-environment (infrastructure and code) and automate the manual tasks.
-'You can think as simple as writing in bash with python API
-Of course the rabbit hole is way deeper.'
-
-Ansible has great integration with multiple operating systems (even Windows)
-and some hardware (switches, Firewalls, etc). It has multiple tools that
-integrate with the cloud providers. Almost every noteworthy cloud provider is
-present in the ecosystem (AWS, Azure, Google, DigitalOcean, OVH, etc...).
-
-
-But ansible is way more! It provides an execution plans, an API, library,
-callbacks, not forget to mention - COMMUNITY! and great support by developers!
-
-
-### Main cons and pros
-
-#### Cons
-
-It is an agent-less tool - every agent consumes up to 16MB ram - in some
-environments, it may be noticable amount. It is agent-less - you have to verify
-your environment consistency 'on-demand' - there is no built-in mechanism that
-would warn you about some change automatically (this can be achieved with
-reasonable effort)
-Official GUI Tool (web inferface) - Ansible Tower - is great, but it is expensive.
-There is no 'small enterprice' payment plan, however Ansible AWX is the free
-open source version we were all waiting for.
-
-#### Pros
-
-It is an agent-less tools In most scenarios, it use ssh as a transport layer.
-In some way you can use it as 'bash on steroids'.
-It is very easy to start. If you are familiar with ssh concept - you already
-know Ansible (ALMOST).
-It executes 'as is' - other tools (salt, puppet, chef - might execute in
-different scenario than you would expect)
-Documentation is at the world-class standard!
-The community (github, stackOverflow) would help you very fast.
-Writing your own modules and extensions is fairly easy.
-Ansible AWX is the open source version of Ansible Tower we have been waiting
-for, which provides an excellent UI.
-
-#### Neutral
-
-Migration Ansible<->Salt is fairly easy - so if you would need an event-driven
-agent environment - it would be a good choice to start quick with Ansible, and
-convert to salt when needed.
-
-#### Some concepts
-
-Ansible uses ssh or paramiko as a transport layer. In a way you can imagine
-that you are using a ssh with API to perform your action.
-The simplest way is to execute remote command in more controlled way (still
-using ssh).
-On the other hand - in advanced scope - you can wrap Ansible (use python Ansible
-code as a library) with your own Python scrips! This is awesome! It would act a
-bit like Fabric then.
 
 ## Additional Resources
 
