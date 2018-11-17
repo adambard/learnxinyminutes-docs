@@ -1,7 +1,7 @@
 ---
 
 language: Paren
-filename: learnparen.paren
+filename: learnparen-de.paren
 contributors:
   - ["KIM Taegyoon", "https://github.com/kimtg"]
   - ["Claudson Martins", "https://github.com/claudsonm"]

@@ -1,6 +1,6 @@
 ---
 language: cypher
-filename: LearnCypher.cql
+filename: LearnCypher-br.cql
 contributors:
     - ["Théo Gauchoux", "https://github.com/TheoGauchoux"]
 

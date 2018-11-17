@@ -1,7 +1,7 @@
 ---
 category: tool
 tool: OpenCV
-filename: learnopencv.py
+filename: learnopencv-de.py
 contributors:
     - ["Yogesh Ojha", "http://github.com/yogeshojha"]
 translators:

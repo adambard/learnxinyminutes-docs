@@ -1,6 +1,6 @@
 ---
 category: tool
-filename: learnshutit.html
+filename: learnshutit-de.html
 tool: ShutIt
 contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]
