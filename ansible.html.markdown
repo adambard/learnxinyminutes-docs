@@ -4,6 +4,7 @@ tool: ansible
 contributors:
     - ["Jakub Muszynski" , "http://github.com/sirkubax"]
     - ["Pat Myron" , "https://github.com/patmyron"]
+    - ["Divay Prakash", "https://github.com/divayprakash"]
 filename: LearnAnsible.txt
 ---
 
