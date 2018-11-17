@@ -1,7 +1,7 @@
 ---
 category: tool
 tool: PyQT
-filename: learnpyqt.py
+filename: learnpyqt-it.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:
