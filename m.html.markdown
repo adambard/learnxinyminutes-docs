@@ -280,7 +280,7 @@ f  s var=var_"%" w !,var i var="%%%%%%%%%%" q
 
 ```
 
-####I(f), E(lse), Postconditionals
+#### I(f), E(lse), Postconditionals
 
 M has an if/else construct for conditional evaluation, but any command can be conditionally executed without an extra if statement using a _postconditional_. This is a condition that occurs immediately after the command, separated with a colon (:).
 
