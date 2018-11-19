@@ -3,7 +3,7 @@ category: tool
 tool: composer
 contributors:
     - ["Alesey Lysenko", "https://github.com/nasgul"]
-filename: LearnComposer.sh
+filename: LearnComposer-ru.sh
 lang: ru-ru
 ---
 
