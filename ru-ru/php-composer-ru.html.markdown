@@ -37,7 +37,7 @@ composer
 composer help require
 
 # Проверьте, способен ли Composer делать то, что ему нужно, и если он обновлен
-  композитор диагностирует
+композитор диагностирует
 composer diagnose
 composer diag # shorthand
 
@@ -50,6 +50,7 @@ composer self # shorthand
 
 Композитор сохраняет ваши зависимости проекта в `composer.json`.
 Вы можете отредактировать этот файл, но лучше всего позволить Composer управлять им для вас.
+
 ```sh
 #  Создать новый проект в текущей папке
 composer init
@@ -94,6 +95,7 @@ composer search mailgun
 
 [Packagist.org](https://packagist.org/) является основным хранилищем для пакетов Composer.
 Поиск там для существующих сторонних пакетов.
+
 ## `composer.json` vs `composer.lock`
 
 Файл `composer.json` хранит ваши параметры плавающей версии вашего проекта для каждой зависимости,
@@ -120,7 +122,6 @@ composer update phpunit/phpunit
 # вам может потребоваться сначала удалить старый пакет и его зависимости.
 composer remove --dev phpunit/phpunit
 composer require --dev phpunit/phpunit:^5.0
-
 ```
 
 ## Автозагрузчик
@@ -154,7 +155,7 @@ $mailgun = new Mailgun\Mailgun("key");
 Это скажет автозагрузчику искать что-либо в пространстве имен `\ Acme \` в папке `src`.
 
 Вы также можете использовать
-[PSR-0, Classmap или просто список файлов для включения] (https://getcomposer.org/doc/04-schema.md#autoload).
+[PSR-0, Classmap или просто список файлов для включения](https://getcomposer.org/doc/04-schema.md#autoload).
 Также существует поле `autoload-dev` для пространств имен, предназначенных только для разработки.
 
 При добавлении или изменении ключа автозагрузки вам необходимо перестроить автозагрузчик:
