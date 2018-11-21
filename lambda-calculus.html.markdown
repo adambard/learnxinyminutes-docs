@@ -111,7 +111,7 @@ we use the successor function `S(n) = n + 1` which is:
 
 Using successor, we can define add:
 
-`ADD = λab.(a S)n`
+`ADD = λab.(a S)b`
 
 **Challenge:** try defining your own multiplication function!
 
