@@ -129,8 +129,8 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 ; Control Structures
 ;
 ; if
-; Evaluate a block of code if a given condition is true. IF does not return
-; any value, so cannot be used in an expression.
+; Evaluate a block of code if a given condition is true. IF returns
+; the resulting value of the block or 'none' if the condition was false.
 if a < 0 [print "a is negative"]
 
 ; either
