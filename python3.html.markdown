@@ -72,6 +72,11 @@ not False  # => True
 True and False  # => False
 False or True   # => True
 
+# True and False are actually the values 1 and 0 but with a different keyword
+True + True # => 2
+True * 8    # => 8
+False - 5   # => -5
+
 # Note using Bool operators with ints
 # False is 0 and True is 1
 # Don't mix up with bool(ints) and bitwise and/or (&,|)
