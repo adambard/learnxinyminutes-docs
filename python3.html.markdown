@@ -72,15 +72,24 @@ not False  # => True
 True and False  # => False
 False or True   # => True
 
-# Note using Bool operators with ints
-# False is 0 and True is 1
+# True and False are actually 1 and 0 but with different keywords
+True + True # => 2
+True * 8    # => 8
+False - 5   # => -5
+
+# Comparison operators look at the numerical value of True and False
+0 == False  # => True
+1 == True   # => True
+2 == True   # => False
+-5 != False # => True
+
+# Using boolean logical operators on ints casts them to booleans for evaluation, but their non-cast value is returned
 # Don't mix up with bool(ints) and bitwise and/or (&,|)
+bool(0)     # => False
+bool(4)     # => True
+bool(-6)    # => True
 0 and 2     # => 0
 -5 or 0     # => -5
-0 == False  # => True
-2 == True   # => False
-1 == True   # => True
--5 != False != True #=> True
 
 # Equality is ==
 1 == 1  # => True
