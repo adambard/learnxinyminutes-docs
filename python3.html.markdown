@@ -105,7 +105,10 @@ bool(-6)    # => True
 2 <= 2  # => True
 2 >= 2  # => True
 
-# Comparisons can be chained!
+# Seeing whether a value is in a range
+1 < 2 and 2 < 3  # => True
+2 < 3 and 3 < 2  # => False
+# Chaining makes this look nicer
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
