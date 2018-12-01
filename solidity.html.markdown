@@ -831,6 +831,7 @@ someContractAddress.callcode('function_name');
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
 - [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
+- [Superblocks Lab - Browser based IDE for Solidity](https://lab.superblocks.com/)
 - [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
