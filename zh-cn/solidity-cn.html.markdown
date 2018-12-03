@@ -1,6 +1,6 @@
 ---
 language: Solidity
-filename: learnSolidity.sol
+filename: learnSolidity-cn.sol
 lang: zh-cn
 contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
@@ -60,7 +60,7 @@ contract SimpleBank { // 单词首字母大写
     // Events（事件） - 向外部监听器发布动作
     event LogDepositMade(address accountAddress, uint amount);
 
-    // Constructor（构造函数）（译者注：新版solidity使用 constructor()作为构造函数）
+    // Constructor（构造函数）（译者注：solidity 从0.4.22开始使用 constructor() 作为构造函数）
     function SimpleBank() public {
         // msg 提供了发送给合约的消息详情
         // msg.sender 是合约的调用者（这里是合约创建者的地址）
@@ -84,7 +84,7 @@ contract SimpleBank { // 单词首字母大写
     }
 
     /// @notice 从银行取款以太币 （ether）
-    /// @dev This does not return any excess ether sent to it 不会返回任何多余的以太币（ether）
+    /// @dev 不会返回任何多余的以太币（ether）
     /// @param withdrawAmount 取款的数量
     /// @return 用户还剩下的余额
     function withdraw(uint withdrawAmount) public returns (uint remainingBal) {
@@ -329,7 +329,7 @@ function increment(uint x) view returns (uint x) {
 }
 
 // 'pure' 比 'view' 或 'constant' 更加严格，甚至不允许读取状态变量
-// 具体的规则很负责，请参考
+// 具体的规则很复杂，请参考
 // view/pure:
 // http://solidity.readthedocs.io/en/develop/contracts.html#view-functions
 
