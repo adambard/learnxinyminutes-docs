@@ -237,7 +237,7 @@ uint x[][5]; // arr with 5 dynamic array elements (opp order of most languages)
 // Dictionaries (any type to any other type)
 mapping (string => uint) public balances;
 balances["charles"] = 1;
-console.log(balances["ada"]); // is 0, all non-set key values return zeroes
+// balances["ada"] is 0, all non-set key values return zeroes
 // 'public' allows following from another contract
 contractName.balances("charles"); // returns 1
 // 'public' created a getter (but not setter) like the following:
