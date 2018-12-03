@@ -47,10 +47,7 @@ Title are underlined with equals signs too
 Subtitles with dashes
 ---------------------
 
-And sub-subtitles with tildes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can  put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``: ``print()``.
+You can  put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``print()``.
 
 Lists are as simple as in Markdown:
 
@@ -73,7 +70,7 @@ France      Paris
 Japan       Tokyo
 =========== ========
 
-More complex tabless can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this :)
+More complex tables can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this :)
 
 There are multiple ways to make links:
 

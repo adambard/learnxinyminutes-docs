@@ -88,7 +88,7 @@ Função Exponencial - a^n, onde *a* é uma constante
 
 Big-O, também escrita como O, é uma Notação Assintótica para o pior caso. Digamos
 *f(n)* seja o tempo de exeução de um algoritmo e *g(n)) um tempo de complexidade
-arbritário que você quer relacionar com seu algoritmo. *f(n)* é O(g(n)), se, para
+arbitrário que você quer relacionar com seu algoritmo. *f(n)* é O(g(n)), se, para
 quando constante real c (c > 0), *f(n)* <= *c g(n)* para todo tamanho de entrada
 n (n > 0).
 

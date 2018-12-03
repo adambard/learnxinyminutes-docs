@@ -41,6 +41,7 @@ Rust not only fast, but also easy and efficient to code in.
 // 1. Basics //
 ///////////////
 
+#[allow(dead_code)]
 // Functions
 // `i32` is the type for 32-bit signed integers
 fn add2(x: i32, y: i32) -> i32 {
@@ -48,6 +49,9 @@ fn add2(x: i32, y: i32) -> i32 {
     x + y
 }
 
+#[allow(unused_variables)]
+#[allow(unused_assignments)]
+#[allow(dead_code)]
 // Main function
 fn main() {
     // Numbers //
@@ -256,11 +260,16 @@ fn main() {
     // `while` loop
     while 1 == 1 {
         println!("The universe is operating normally.");
+        // break statement gets out of the while loop.
+        //  It avoids useless iterations.
+        break
     }
 
     // Infinite loop
     loop {
         println!("Hello!");
+        // break statement gets out of the loop
+        break
     }
 
     /////////////////////////////////

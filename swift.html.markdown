@@ -13,9 +13,9 @@ filename: learnswift.swift
 
 Swift is a programming language for iOS and OS X development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6+.
 
-The official [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) book from Apple is now available via iBooks.
+The official _[Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329)_ book from Apple is now available via iBooks.
 
-See also Apple's [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/), which has a complete tutorial on Swift.
+Another great reference is _About Swift_ on Swift's [website](https://docs.swift.org/swift-book/).
 
 ```swift
 // import a module

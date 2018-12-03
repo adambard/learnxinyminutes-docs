@@ -34,7 +34,7 @@ let myFloat = 3.14
 let myString = "hello"           // note that no types needed
 
 // ------ Lists ------
-let twoToFive = [2; 3; 4; 5]        // Square brackets create a list with
+let twoToFive = [2; 3; 4; 5]     // Square brackets create a list with
                                  // semicolon delimiters.
 let oneToFive = 1 :: twoToFive   // :: creates list with new 1st element
 // The result is [1; 2; 3; 4; 5]
@@ -53,7 +53,8 @@ add 2 3                       // Now run the function.
 
 // to define a multiline function, just use indents. No semicolons needed.
 let evens list =
-   let isEven x = x % 2 = 0     // Define "isEven" as a sub function
+   let isEven x = x % 2 = 0   // Define "isEven" as a sub function. Note
+                              // that equality operator is single char "=".
    List.filter isEven list    // List.filter is a library function
                               // with two parameters: a boolean function
                               // and a list to work on

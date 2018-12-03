@@ -16,6 +16,7 @@ contributors:
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
+    - ["Martin Nicholson", "https://github.com/mn113"]
 filename: LearnBash.sh
 ---
 
@@ -74,8 +75,13 @@ echo ${Variable/Some/A} # => A string
 
 # Substring from a variable
 Length=7
-echo ${Variable:0:$Length} # => Some st
+echo ${Variable:0:Length} # => Some st
 # This will return only the first 7 characters of the value
+echo ${Variable: -5} # => tring
+# This will return the last 5 characters (note the space before -5)
+
+# String length
+echo ${#Variable} # => 11
 
 # Default value for variable
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"} 
@@ -174,6 +180,16 @@ then
     echo "This will run if $Name is Daniya OR Zach."
 fi
 
+# There is also the =~ operator, which tests a string against a Regex pattern:
+Email=me@example.com
+if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+then
+    echo "Valid email!"
+fi
+# Note that =~ only works within double [[ ]] square brackets,
+# which are subtly different from single [ ].
+# See http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
+
 # Redefine command 'ping' as alias to send only 5 packets
 alias ping='ping -c 5'
 # Escape alias and use command with this name instead
@@ -228,10 +244,13 @@ mv s0urc3.txt dst.txt # sorry, l33t hackers...
 # Since bash works in the context of a current directory, you might want to 
 # run your command in some other directory. We have cd for changing location:
 cd ~    # change to home directory
+cd      # also goes to home directory
 cd ..   # go up one directory
         # (^^say, from /home/username/Downloads to /home/username)
 cd /home/username/Documents   # change to specified directory
 cd ~/Documents/..    # still in home directory..isn't it??
+cd -    # change to last directory
+# => /home/username/Documents
 
 # Use subshells to work across directories
 (echo "First, I'm here: $PWD") && (cd someDir; echo "Then, I'm here: $PWD")
@@ -256,6 +275,7 @@ print("#stderr", file=sys.stderr)
 for line in sys.stdin:
     print(line, file=sys.stdout)
 EOF
+# Variables will be expanded if the first "EOF" is not quoted
 
 # Run the hello.py Python script with various stdin, stdout, and 
 # stderr redirections:

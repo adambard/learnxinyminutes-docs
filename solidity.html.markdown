@@ -4,6 +4,7 @@ filename: learnSolidity.sol
 contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]
+  - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
 ---
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
@@ -109,9 +110,9 @@ contract SimpleBank { // CapWords
 
     /// @notice Get balance
     /// @return The balance of the user
-    // 'constant' prevents function from editing state variables;
+    // 'view' (ex: constant) prevents function from editing state variables;
     // allows function to run locally/off blockchain
-    function balance() constant public returns (uint) {
+    function balance() view public returns (uint) {
         return balances[msg.sender];
     }
 }
@@ -341,25 +342,26 @@ function increment(uint x, uint y) returns (uint x, uint y) {
 // Call previous functon
 uint (a,b) = increment(1,1);
 
-// 'constant' (alias for 'view')
+// 'view' (alias for 'constant')
 // indicates that function does not/cannot change persistent vars
-// Constant function execute locally, not on blockchain
+// View function execute locally, not on blockchain
+// Noted: constant keyword will soon be deprecated.
 uint y = 1;
 
-function increment(uint x) constant returns (uint x) {
+function increment(uint x) view returns (uint x) {
     x += 1;
     y += 1; // this line would fail
-    // y is a state variable, and can't be changed in a constant function
+    // y is a state variable, and can't be changed in a view function
 }
 
-// 'pure' is more strict than 'constant', and does not
+// 'pure' is more strict than 'view' or 'constant', and does not
 // even allow reading of state vars
 // The exact rules are more complicated, so see more about
-// constant/pure:
+// view/pure:
 // http://solidity.readthedocs.io/en/develop/contracts.html#view-functions
 
 // 'Function Visibility specifiers'
-// These can be placed where 'constant' is, including:
+// These can be placed where 'view' is, including:
 // public - visible externally and internally (default for function)
 // external - only visible externally (including a call made with this.)
 // private - only visible in the current contract
@@ -829,7 +831,7 @@ someContractAddress.callcode('function_name');
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
 - [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
-- [Solidity Style Guide](https://ethereum.github.io/solidity//docs/style-guide/): Ethereum's style guide is heavily derived from Python's [pep8](https://www.python.org/dev/peps/pep-0008/) style guide.
+- [Superblocks Lab - Browser based IDE for Solidity](https://lab.superblocks.com/)
 - [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
@@ -850,9 +852,10 @@ someContractAddress.callcode('function_name');
 - [Hacking Distributed Blog](http://hackingdistributed.com/)
 
 ## Style
-- Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy
+- [Solidity Style Guide](http://solidity.readthedocs.io/en/latest/style-guide.html): Ethereum's style guide is heavily derived from Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
 
 ## Editors
+- [Emacs Solidity Mode](https://github.com/ethereum/emacs-solidity)
 - [Vim Solidity](https://github.com/tomlion/vim-solidity)
 - Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
 

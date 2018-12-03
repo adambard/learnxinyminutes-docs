@@ -20,7 +20,9 @@ package com.learnxinyminutes.kotlin
 
 /*
 The entry point to a Kotlin program is a function named "main".
-The function is passed an array containing any command line arguments.
+The function is passed an array containing any command-line arguments.
+Since Kotlin 1.3 the "main" function can also be defined without
+any parameters.
 */
 fun main(args: Array<String>) {
     /*
@@ -65,7 +67,7 @@ fun helloWorld(val name : String) {
     A template expression starts with a dollar sign ($).
     */
     val fooTemplateString = "$fooString has ${fooString.length} characters"
-    println(fooTemplateString) // => My String Is Here! has 18 characters 
+    println(fooTemplateString) // => My String Is Here! has 18 characters
 
     /*
     For a variable to hold null it must be explicitly specified as nullable.
@@ -175,12 +177,12 @@ fun helloWorld(val name : String) {
     // Objects can be destructured into multiple variables.
     val (a, b, c) = fooCopy
     println("$a $b $c") // => 1 100 4
-    
+
     // destructuring in "for" loop
     for ((a, b, c) in listOf(fooData)) {
         println("$a $b $c") // => 1 100 4
     }
-    
+
     val mapData = mapOf("a" to 1, "b" to 2)
     // Map.Entry is destructurable as well
     for ((key, value) in mapData) {
@@ -347,6 +349,8 @@ fun helloWorld(val name : String) {
 
     println(EnumExample.A) // => A
     println(ObjectExample.hello()) // => hello
+
+    testOperator()
 }
 
 // Enum classes are similar to Java enum types.
@@ -370,10 +374,81 @@ fun useObject() {
     val someRef: Any = ObjectExample // we use objects name just as is
 }
 
+
+/* The not-null assertion operator (!!) converts any value to a non-null type and
+throws an exception if the value is null.
+*/
+var b: String? = "abc"
+val l = b!!.length
+
+/* You can add many custom operations using symbol like +, to particular instance
+by overloading the built-in kotlin operator, using "operator" keyword
+
+below is the sample class to add some operator, and the most basic example
+*/
+data class SomeClass(var savedValue: Int = 0)
+
+// instance += valueToAdd
+operator fun SomeClass.plusAssign(valueToAdd: Int) {
+  this.savedValue += valueToAdd  
+}
+
+// -instance
+operator fun SomeClass.unaryMinus() = SomeClass(-this.savedValue)
+
+// ++instance or instance++
+operator fun SomeClass.inc() = SomeClass(this.savedValue + 1)
+
+// instance * other
+operator fun SomeClass.times(other: SomeClass) =
+  SomeClass(this.savedValue * other.savedValue)
+
+// an overload for multiply
+operator fun SomeClass.times(value: Int) = SomeClass(this.savedValue * value)
+
+// other in instance
+operator fun SomeClass.contains(other: SomeClass) =
+  other.savedValue == this.savedValue
+
+// instance[dummyIndex] = valueToSet
+operator fun SomeClass.set(dummyIndex: Int, valueToSet: Int) {
+  this.savedValue = valueToSet + dummyIndex
+}
+
+// instance()
+operator fun SomeClass.invoke() {
+  println("instance invoked by invoker")
+}
+
+/* return type must be Integer,
+so that, it can be translated to "returned value" compareTo 0
+
+for equality (==,!=) using operator will violates overloading equals function,
+since it is already defined in Any class
+*/
+operator fun SomeClass.compareTo(other: SomeClass) =
+  this.savedValue - other.savedValue
+
+fun testOperator() {
+  var x = SomeClass(4)
+
+  println(x) // => "SomeClass(savedValue=4)"
+  x += 10
+  println(x) // => "SomeClass(savedValue=14)"
+  println(-x) // => "SomeClass(savedValue=-14)"
+  println(++x) // => "SomeClass(savedValue=15)"
+  println(x * SomeClass(3)) // => "SomeClass(savedValue=45)"
+  println(x * 2) // => "SomeClass(savedValue=30)"
+  println(SomeClass(15) in x) // => true
+  x[2] = 10
+  println(x) // => "SomeClass(savedValue=12)"
+  x() // => "instance invoked by invoker"
+  println(x >= 15) // => false
+}
 ```
 
 ### Further Reading
 
 * [Kotlin tutorials](https://kotlinlang.org/docs/tutorials/)
-* [Try Kotlin in your browser](http://try.kotlinlang.org/)
+* [Try Kotlin in your browser](https://play.kotlinlang.org/)
 * [A list of Kotlin resources](http://kotlin.link/)

@@ -55,7 +55,7 @@ Although lambda calculus traditionally supports only single parameter
 functions, we can create multi-parameter functions using a technique called 
 [currying](https://en.wikipedia.org/wiki/Currying).
 
-- `(λx.λy.λz.xyz)` is equivalent to `f(x, y, z) = x(y(z))`
+- `(λx.λy.λz.xyz)` is equivalent to `f(x, y, z) = ((x y) z)`
 
 Sometimes `λxy.<body>` is used interchangeably with: `λx.λy.<body>`
 
@@ -87,7 +87,7 @@ Using `IF`, we can define the basic boolean logic operators:
 
 `a NOT b` is equivalent to: `λa.IF a F T`
 
-*Note: `IF a b c` is essentially saying: `IF(a(b(c)))`*
+*Note: `IF a b c` is essentially saying: `IF((a b) c)`*
 
 ## Numbers:
 

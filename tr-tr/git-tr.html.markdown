@@ -12,7 +12,7 @@ contributors:
     - ["Milo Gilad", "http://github.com/Myl0g"]
     - ["Adem Budak", "https://github.com/p1v0t"]
     
-filename: LearnGit.txt
+filename: LearnGit-tr.txt
 ---
 
 Git dağınık versiyon kontrol ve kaynak kod yönetim sistemidir.

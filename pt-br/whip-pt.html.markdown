@@ -15,13 +15,13 @@ Whip é um dialeto de Lisp feito para construir scripts e trabalhar com
 conceitos mais simples.
 Ele também copia muitas funções e sintaxe de Haskell (uma linguagem não correlata)
 
-Esse documento foi escrito pelo próprio  autor da linguagem. Então é isso.
+Esse documento foi escrito pelo próprio autor da linguagem. Então é isso.
 
 ```scheme
 ; Comentário são como em Lisp. Pontos-e-vírgulas...
 
 ; A maioria das declarações de primeiro nível estão dentro de "listas"
-; que nada mais são que coisas entre parêntesis separadas por espaços em branco
+; que nada mais são que coisas entre parênteses separadas por espaços em branco
 nao_é_uma_lista
 (uma lista)
 
@@ -64,7 +64,7 @@ false
 (not false) ; => true
 
 ; Mas a maioria das funções não-haskell tem atalhos
-; o não atalho é um '!'.
+; o atalho para "não" é um '!'.
 (! (! true)) ; => true
 
 ; Igualdade é `equal` ou `=`.
@@ -114,7 +114,7 @@ undefined ; usada para indicar que um valor não foi informado
 (1 2 3) ; => [1, 2, 3] (sintaxe JavaScript)
 
 ; Dicionários em Whip são o equivalente a 'object' em JavaScript ou
-; 'dict' em python ou 'hash' em Ruby: eles s]ão uma coleção desordenada
+; 'dict' em python ou 'hash' em Ruby: eles são uma coleção desordenada
 de pares chave-valor.
 {"key1" "value1" "key2" 2 3 3}
 
@@ -222,7 +222,7 @@ linguagens imperativas.
 (take 1 (1 2 3 4)) ; (1 2)
 ; Contrário de `take`
 (drop 1 (1 2 3 4)) ; (3 4)
-; Menos valor em uma lista
+; Menor valor em uma lista
 (min (1 2 3 4)) ; 1
 ; Maior valor em uma lista
 (max (1 2 3 4)) ; 4

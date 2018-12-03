@@ -71,9 +71,15 @@ void func(); // function which may accept any number of arguments
 // Use nullptr instead of NULL in C++
 int* ip = nullptr;
 
-// C standard headers are available in C++,
-// but are prefixed with "c" and have no .h suffix.
+// C standard headers are available in C++.
+// C headers end in .h, while 
+// C++ headers are prefixed with "c" and have no ".h" suffix.
+
+// The C++ standard version:
 #include <cstdio>
+
+//The C standard version:
+#include <stdio.h>
 
 int main()
 {
@@ -1051,6 +1057,8 @@ cout << ST.size();  // will print the size of set ST
 // Output: 0
 
 // NOTE: for duplicate elements we can use multiset
+// NOTE: For hash sets, use unordered_set. They are more efficient but 
+// do not preserve order. unordered_set is available since C++11
 
 // Map
 // Maps store elements formed by a combination of a key value
@@ -1078,6 +1086,8 @@ cout << it->second;
 
 // Output: 26
 
+// NOTE: For hash maps, use unordered_map. They are more efficient but do 
+// not preserve order. unordered_map is available since C++11.
 
 ///////////////////////////////////
 // Logical and Bitwise operators
@@ -1127,7 +1137,6 @@ compl 4    // Performs a bitwise not
 ```
 Further Reading:
 
-An up-to-date language reference can be found at
-<http://cppreference.com/w/cpp>
-
-Additional resources may be found at <http://cplusplus.com>
+* An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).
+* Additional resources may be found at [CPlusPlus](http://cplusplus.com).
+* A tutorial covering basics of language and setting up coding environment is available at [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).

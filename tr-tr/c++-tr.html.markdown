@@ -1,7 +1,7 @@
 ---
 language: c++
 lang: tr-tr
-filename: learncpp.cpp
+filename: learncpp-tr.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]
@@ -1071,7 +1071,6 @@ compl 4    // Bit seviyesinde değil işlemini gerçekleştirir
 ```
 İleri okuma:
 
-Güncel bir referans 
-<http://cppreference.com/w/cpp> adresinde bulunabilir
-
-Ek kaynaklar <http://cplusplus.com> adresinde bulunabilir
+* Güncel bir referans [CPP Reference](http://cppreference.com/w/cpp) adresinde bulunabilir.
+* Ek kaynaklar [CPlusPlus](http://cplusplus.com) adresinde bulunabilir.
+* Dilin temellerini ve kodlama ortamını belirleyen bir öğretici [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb) adresinde bulunabilir.

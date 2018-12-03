@@ -5,13 +5,19 @@ contributors:
 filename: learntypescript.ts
 ---
 
-TypeScript is a language that aims at easing development of large scale applications written in JavaScript.
-TypeScript adds common concepts such as classes, modules, interfaces, generics and (optional) static typing to JavaScript.
-It is a superset of JavaScript: all JavaScript code is valid TypeScript code so it can be added seamlessly to any project. The TypeScript compiler emits JavaScript.
+TypeScript is a language that aims at easing development of large scale
+applications written in JavaScript.  TypeScript adds common concepts such as
+classes, modules, interfaces, generics and (optional) static typing to
+JavaScript.  It is a superset of JavaScript: all JavaScript code is valid
+TypeScript code so it can be added seamlessly to any project. The TypeScript
+compiler emits JavaScript.
 
-This article will focus only on TypeScript extra syntax, as opposed to [JavaScript](/docs/javascript).
+This article will focus only on TypeScript extra syntax, as opposed to
+[JavaScript](/docs/javascript).
 
-To test TypeScript's compiler, head to the [Playground] (http://www.typescriptlang.org/Playground) where you will be able to type code, have auto completion and directly see the emitted JavaScript.
+To test TypeScript's compiler, head to the
+[Playground] (http://www.typescriptlang.org/Playground) where you will be able
+to type code, have auto completion and directly see the emitted JavaScript.
 
 ```ts
 // There are 3 basic types in TypeScript
@@ -19,7 +25,8 @@ let isDone: boolean = false;
 let lines: number = 42;
 let name: string = "Anders";
 
-// But you can omit the type annotation if the variables are derived from explicit literals
+// But you can omit the type annotation if the variables are derived
+// from explicit literals
 let isDone = false;
 let lines = 42;
 let name = "Anders";
@@ -113,6 +120,13 @@ class Point {
   static origin = new Point(0, 0);
 }
 
+// Classes can be explicitly marked as implementing an interface.
+// Any missing properties will then cause an error at compile-time.
+class PointPerson implements Person {
+    name: string
+    move() {}
+}
+
 let p1 = new Point(10, 20);
 let p2 = new Point(25); //y will be 0
 
@@ -178,6 +192,37 @@ let greeting = `Hi ${name}, how are you?`
 let multiline = `This is an example
 of a multiline string`;
 
+// READONLY: New Feature in TypeScript 3.1
+interface Person {
+  readonly name: string;
+  readonly age: number;
+}
+
+var p1: Person = { name: "Tyrone", age: 42 };
+p1.age = 25; // Error, p1.x is read-only
+
+var p2 = { name: "John", age: 60 };
+var p3: Person = p2; // Ok, read-only alias for p2
+p3.x = 35; // Error, p3.x is read-only
+p2.x = 45; // Ok, but also changes p3.x because of aliasing
+
+class Car {
+  readonly make: string;
+  readonly model: string;
+  readonly year = 2018;
+
+  constructor() {
+    this.make = "Unknown Make"; // Assignment permitted in constructor
+    this.model = "Unknown Model"; // Assignment permitted in constructor
+  }
+}
+
+let numbers: Array<number> = [0, 1, 2, 3, 4];
+let moreNumbers: ReadonlyArray<number> = numbers;
+moreNumbers[5] = 5; // Error, elements are read-only
+moreNumbers.push(5); // Error, no push method (because it mutates array)
+moreNumbers.length = 3; // Error, length is read-only
+numbers = moreNumbers; // Error, mutating methods are missing
 ```
 
 ## Further Reading

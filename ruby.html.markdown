@@ -17,6 +17,7 @@ contributors:
   - ["Jake Faris", "https://github.com/farisj"]
   - ["Corey Ward", "https://github.com/coreyward"]
   - ["Jannik Siebert", "https://github.com/janniks"]
+  - ["Keith Miyake", "https://github.com/kaymmm"]
 ---
 
 ```ruby
@@ -83,9 +84,9 @@ false.class #=> FalseClass
 
 # Combined comparison operator (returns `1` when the first argument is greater, 
 # `-1` when the second argument is greater, and `0` otherwise)
-1 <=> 10 #=> -1
-10 <=> 1 #=> 1
-1 <=> 1 #=> 0
+1 <=> 10 #=> -1 (1 < 10)
+10 <=> 1 #=> 1 (10 > 1)
+1 <=> 1 #=> 0 (1 == 1)
 
 # Logical operators
 true && false #=> false
@@ -188,8 +189,11 @@ array[2, 3] #=> [3, 4, 5]
 array[1..3] #=> [2, 3, 4]
 
 # You can reverse an Array.
+# Return a new array with reversed values
+[1,2,3].reverse #=> [3,2,1]
+# Reverse an array in place to update variable with reversed values
 a = [1,2,3]
-a.reverse! #=> [3,2,1]
+a.reverse! #=> a==[3,2,1] because of the bang ('!') call to reverse
 
 # Like arithmetic, [var] access is just syntactic sugar
 # for calling a method '[]' on an object.
@@ -373,7 +377,7 @@ sum sum(3, 4), 5 #=> 12
 
 # yield
 # All methods have an implicit, optional block parameter.
-# Tt can be called with the 'yield' keyword.
+# It can be called with the 'yield' keyword.
 def surround
   puts '{'
   yield

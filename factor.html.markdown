@@ -9,7 +9,7 @@ Factor is a modern stack-based language, based on Forth, created by Slava Pestov
 
 Code in this file can be typed into Factor, but not directly imported because the vocabulary and import header would make the beginning thoroughly confusing.
 
-```
+```factor
 ! This is a comment
 
 ! Like Forth, all programming is done by manipulating the stack.

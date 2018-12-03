@@ -538,7 +538,7 @@ int area(retan r)
     return r.largura * r.altura;
 }
 
-// Se você tiver structus grande, você pode passá-las "por ponteiro"
+// Se você tiver structs grandes, você pode passá-las "por ponteiro"
 // para evitar cópia de toda a struct:
 int area(const retan *r)
 {

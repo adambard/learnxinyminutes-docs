@@ -103,7 +103,8 @@ type? my-integer
 integer!
 
 ; A variable can be initialized using another variable that gets initialized
-; at the same time.
+; at the same time. Initialize here refers to both declaring a variable and
+; assigning a value to it.
 i2: 1 + i1: 1
 
 ; Arithmetic is straightforward
@@ -113,12 +114,12 @@ i2 * i1 ; result 2
 i1 / i2 ; result 0 (0.5, but truncated towards 0)
 
 ; Comparison operators are probably familiar, and unlike in other languages
-; you only need a single '=' sign for comparison.
+; you only need a single '=' sign for comparison. Inequality is '<>' like in Pascal.
 ; There is a boolean like type in Red. It has values true and false, but also
 ; the values on/off or yes/no can be used
 
 3 = 2 ; result false
-3 != 2 ; result true
+3 <> 2 ; result true
 3 > 2 ; result true
 3 < 2 ; result false
 2 <= 2 ; result true
@@ -128,8 +129,8 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 ; Control Structures
 ;
 ; if
-; Evaluate a block of code if a given condition is true. IF does not return
-; any value, so cannot be used in an expression.
+; Evaluate a block of code if a given condition is true. IF returns
+; the resulting value of the block or 'none' if the condition was false.
 if a < 0 [print "a is negative"]
 
 ; either
@@ -164,7 +165,7 @@ print ["a is " msg lf]
 
 ; until
 ; Loop over a block of code until the condition at end of block, is met.
-; UNTIL does not return any value, so it cannot be used in an expression.
+; UNTIL always returns the 'true' value from the final evaluation of the last expression.
 c: 5
 until [
    prin "o"

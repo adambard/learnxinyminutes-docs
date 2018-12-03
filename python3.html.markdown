@@ -72,15 +72,24 @@ not False  # => True
 True and False  # => False
 False or True   # => True
 
-# Note using Bool operators with ints
-# False is 0 and True is 1
+# True and False are actually 1 and 0 but with different keywords
+True + True # => 2
+True * 8    # => 8
+False - 5   # => -5
+
+# Comparison operators look at the numerical value of True and False
+0 == False  # => True
+1 == True   # => True
+2 == True   # => False
+-5 != False # => True
+
+# Using boolean logical operators on ints casts them to booleans for evaluation, but their non-cast value is returned
 # Don't mix up with bool(ints) and bitwise and/or (&,|)
+bool(0)     # => False
+bool(4)     # => True
+bool(-6)    # => True
 0 and 2     # => 0
 -5 or 0     # => -5
-0 == False  # => True
-2 == True   # => False
-1 == True   # => True
--5 != False != True #=> True
 
 # Equality is ==
 1 == 1  # => True
@@ -96,7 +105,10 @@ False or True   # => True
 2 <= 2  # => True
 2 >= 2  # => True
 
-# Comparisons can be chained!
+# Seeing whether a value is in a range
+1 < 2 and 2 < 3  # => True
+2 < 3 and 3 < 2  # => False
+# Chaining makes this look nicer
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
@@ -139,9 +151,11 @@ len("This is a string")  # => 16
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
-# You can also format using f-strings or formatted string literals
+# You can also format using f-strings or formatted string literals (in Python 3.6+)
 name = "Reiko"
 f"She said her name is {name}." # => "She said her name is Reiko"
+# You can basically put any Python statement inside the braces and it will be output in the string.
+f"{name} is {len(name)} characters long."
 
 
 # None is an object
@@ -279,7 +293,8 @@ a, b, c = (1, 2, 3)  # a is now 1, b is now 2 and c is now 3
 # You can also do extended unpacking
 a, *b, c = (1, 2, 3, 4)  # a is now 1, b is now [2, 3] and c is now 4
 # Tuples are created by default if you leave out the parentheses
-d, e, f = 4, 5, 6
+d, e, f = 4, 5, 6  # tuple 4, 5, 6 is unpacked into variables d, e and f
+# respectively such that d = 4, e = 5 and f = 6
 # Now look how easy it is to swap two values
 e, d = d, e  # d is now 5 and e is now 4
 

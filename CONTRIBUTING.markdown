@@ -78,3 +78,26 @@ If you want to add yourself to contributors, keep in mind that contributors get
 equal billing, and the first contributor usually wrote the whole article. Please
 use your judgement when deciding if your contribution constitutes a substantial
 addition or not.
+
+## Building the site locally
+
+You can buid the site locally to test your changes. Follow the steps below.
+
+* Install Ruby language runtime and RubyGems. See [here](https://middlemanapp.com/basics/install/) for more details.
+* Clone or zip download the [learnxinyminutes-site](https://github.com/adambard/learnxinyminutes-site) repo.
+	* `git clone https://github.com/adambard/learnxinyminutes-site`
+* Install Middleman and other required dependencies using Bundler.
+	* `cd learnxinyminutes-site/`
+	* `bundle install`
+* Get the source in place
+	* Copy the contents of your clone of the fork of learnxinyminutes-docs repo
+	into the `source/docs` folder. There shouldn't be a `learnxinyminutes-docs`
+	folder inside the `docs` folder, it should just contain all the repo
+	contents.
+	* Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
+		* `cd source/docs/`
+		* `git clone https://github.com/YOUR-USERNAME/learnxinyminutes-docs ./source/docs/`
+* Build the site or run a development server to test your changes (NOTE: run
+these commands at `learnxinyminutes-site/`).
+	* Build - `bundle exec middleman build`
+	* Dev server - `bundle exec middleman --force-polling --verbose`

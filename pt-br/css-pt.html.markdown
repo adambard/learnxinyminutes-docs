@@ -9,6 +9,8 @@ contributors:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
 translators:
     - ["Gabriel Gomes", "https://github.com/gabrielgomesferraz"]
+    - ["Gabriele Luz", "https://github.com/gabrieleluz"]
+
 lang: pt-br
 ---
 
@@ -235,6 +237,45 @@ A precedência de estilo é a seguinte. Lembre-se, a precedência é para cada  
 * `C` está próximo, mesmo que ele tenha a mesma especificidade que `B`. Isso é porque ele aparece depois de `B`.
 * `B` é o próximo.
 * `D` é a última.
+
+## Media Queries
+Media queries são recursos do CSS3 que permitem especificar quando determinadas regras de CSS devem ser aplicadas; é possível aplicar regras diferentes quando a página é impressa, quando a tela possui determinadas dimensões ou densidade de pixels e quando é lida por um leitor de tela. Media queries não adicionam especificidade ao seletor.
+
+```css
+/* Uma regra que será aplicada a todos os dispositivos */
+h1 {
+  font-size: 2em;
+  color: white;
+  background-color: black;
+}
+
+/* Altera a cor do h1 para utilizar menos tinta durante a impressão */
+@media print {
+  h1 {
+    color: black;
+    background-color: white;
+  }
+}
+
+/* Altera o tamanho da fonte quando exibida numa tela com pelo menos 480px de largura */
+@media screen and (min-width: 480px) {
+  h1 {
+    font-size: 3em;
+    font-weight: normal;
+  }
+}
+```
+Media queries podem incluir os seguintes atributos: `width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. A maioria desses atributos pode ser prefixada com `min-` ou `max-`.
+
+O atributo `resolution` não é suportado em dispositivos mais antigos. Em vez disso, use `device-pixel-ratio`.
+
+Muitos smartphones e tablets tentarão renderizar a página como se estivesse num desktop a menos que você utilize a meta-tag `viewport`.
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+</head>
+```
 
 ## Compatibilidade
 
