@@ -88,16 +88,16 @@ void draw() {
  * datatypes as follows.
  */
 
-boolean booleanValue = true;	// Boolean
-byte byteValueOfA = 23;		 	// Byte
-char charValueOfA = 'A';		// Char
+boolean booleanValue = true;    // Boolean
+byte byteValueOfA = 23;         // Byte
+char charValueOfA = 'A';        // Char
 color colourValueOfWhiteM = color(255, 255, 255); // Colour (Specified using
-												  // color() method)
-color colourValueOfWhiteH = #FFFFFF; 	// Colour (Specified using hash value)
-int intValue = 5; 						// Integer (Number without decimals)
-long longValue = 2147483648L; 			// "L" is added to number to mark it as a long
-float floatValue = 1.12345; 			// Float (32-bit floating-point numbers)
-double doubleValue = 1.12345D; 			// Double (64-bit floating-point numbers)
+                                                  // color() method)
+color colourValueOfWhiteH = #FFFFFF;    // Colour (Specified using hash value)
+int intValue = 5;                       // Integer (Number without decimals)
+long longValue = 2147483648L;           // "L" is added to number to mark it as a long
+float floatValue = 1.12345;             // Float (32-bit floating-point numbers)
+double doubleValue = 1.12345D;          // Double (64-bit floating-point numbers)
 
 /**
  * NOTE!
@@ -121,9 +121,9 @@ String sampleString = "Hello, Processing!";
  * discuss array very soon.
  */
 char source = {'H', 'E', 'L', 'L', 'O'};
-String stringFromSource = new String(source); 	// HELLO
+String stringFromSource = new String(source);   // HELLO
 // As in Java, strings can be concatenated using the "+" operator.
-print("Hello " + "World!"); 					// Hello World!
+print("Hello " + "World!");                     // Hello World!
 
 /**
  * Array
