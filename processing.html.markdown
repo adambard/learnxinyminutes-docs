@@ -20,51 +20,50 @@ compile and run the scripts.
 
 ```processing
 /* ---------
- * Comments
+ *  Comments
  * ---------
  */
 
 // Single-line comment starts with //
 
-/*
+/**
  * Since Processing is based on Java,
  * the syntax for its comments are the same as Java (as you may have noticed above)!
  * Multi-line comments are wrapped as seen here.
  */
 
 /* ---------------------------------------
- * Writing and Running Processing Programs
+ *  Writing and Running Processing Programs
  * ---------------------------------------
  */
 
-    /*
-     * In Processing, the program entry point is a function named setup() with a
-     * void return type.
-     * Note! The syntax looks strikingly similar to that of C++.
-     */
+ /**
+  * In Processing, the program entry point is a function named setup() with a
+  * void return type.
+  * Note! The syntax looks strikingly similar to that of C++.
+  */
 void setup() {
   // This prints out the classic output "Hello World!" to the console when run.
   println("Hello World!");      // Another language with a semi-column trap, aint it?
 }
 
-    /*
-     * Normally, we put all the static codes inside the setup() method as the name
-     * suggest since it only runs once.
-     * It can range from setting the background colours, setting the canvas size.
-     */
+ /**
+  * Normally, we put all the static codes inside the setup() method as the name
+  * suggest since it only runs once.
+  * It can range from setting the background colours, setting the canvas size.
+  */
 background(color);              // setting the background colour
-size(width,height,[renderer]);  // setting the canvas size with optional
-    /*
-     * parameter defining renderer
-     * You will see more of them throughout this document.
-     */
+size(width,height,[renderer]);  /* setting the canvas size with optional
+                                 * parameter defining renderer
+                                 * You will see more of them throughout this document.
+                                 */
 
-     /*
-      * If you want to run the codes indefinitely, it has to be placed in draw()
-      * method.
-      * draw() must exist if you want the code to run continuously and obviously,
-      * there can only be one draw() method.
-      */
+ /**
+  * If you want to run the codes indefinitely, it has to be placed in draw()
+  * method.
+  * draw() must exist if you want the code to run continuously and obviously,
+  * there can only be one draw() method.
+  */
 int i = 0;
 void draw() {
   // This block of code loops forever until stopped
@@ -72,13 +71,15 @@ void draw() {
   i++;      // Increment Operator!
 }
 
-// Now that we know how to write the working script and how to run it,
-// we will proceed to explore what data types and collections are supported in
-// Processing.
+/**
+ * Now that we know how to write the working script and how to run it,
+ * we will proceed to explore what data types and collections are supported in
+ * Processing.
+ */
 
 /* ------------------------
-   Datatypes & collections
-   ------------------------
+ *  Datatypes & collections
+ * ------------------------
 */
 
 // According to Processing References, Processing supports 8 primitive
