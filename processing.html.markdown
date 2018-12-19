@@ -281,21 +281,24 @@ Since you will have understood the basics of the language by now, we will now
 look into the best part of Processing - DRAWING.
 
 ```processing
-/* ------
-   Shapes
-   ------
-*/
-
-// 2D Shapes
-
+/* --------
+ *  Shapes
+ * --------
+ */
+ 
+ 
+/**
+ * 2D Shapes
+ */
+ 
 // Point
-point(x, y); // In 2D space
-point(x, y, z); // In 3D space
+point(x, y);     // In 2D space
+point(x, y, z);  // In 3D space
 // Draws a point in the coordinate space.
 
 // Line
-line(x1, y1, x2, y2); // In 2D space
-line(x1, y1, z1, x2, y2, z2); // In 3D space
+line(x1, y1, x2, y2);          // In 2D space
+line(x1, y1, z1, x2, y2, z2);  // In 3D space
 // Draws a line connecting two points defined by (x1, y1) and (x2, y2).
 
 // Triangle
@@ -303,11 +306,12 @@ triangle(x1, y1, x2, y2, x3, y3);
 // Draws a triangle connecting three points defined by coordinate paramters.
 
 // Rectangle
-rect(a, b, c, d, [r]); // With optional parameter defining the radius of all corners
-rect(a, b, c, d, [tl, tr, br, bl]); // With optional set of parameters defining
-// radius of each corner
-// Draws a rectangle with {a, b} as a top left coordinate and c and d as width
-// and height respectively.
+rect(a, b, c, d, [r]);              // With optional parameter defining the radius of all corners
+rect(a, b, c, d, [tl, tr, br, bl]); /* With optional set of parameters defining
+                                     * radius of each corner
+                                     * Draws a rectangle with {a, b} as a top left coordinate 
+                                     * and c and d as width and height respectively.
+                                     */
 
 // Quad
 quad(x, y, x2, y2, x3, y3, x4, y4);
@@ -320,99 +324,130 @@ ellipse(x, y, width, height);
 
 // Arc
 arc(x, y, width, height, start, stop, [mode]);
-// While the first four parameters are self-explanatory,
-// start and end defined the angles the arc starts and ends (in radians).
-// Optional parameter [mode] defines the filling;
-// PIE gives pie-like outline, CHORD gives the chord-like outline and OPEN is
-// CHORD without strokes
+/**
+ * While the first four parameters are self-explanatory,
+ * start and end defined the angles the arc starts and ends (in radians).
+ * Optional parameter [mode] defines the filling;
+ * PIE gives pie-like outline, CHORD gives the chord-like outline and OPEN is
+ * CHORD without strokes
+ */
 
-// Curves
-// Processing provides two implementation of curves; using curve() and bezier().
-// Since I plan to keep this simple I wont be discussing any further details.
-// However, if you want to implement it in your sketch, here are the references:
-// (https://processing.org/reference/curve_.html)
-// (https://processing.org/reference/bezier_.html)
+/**
+ * Curves
+ * Processing provides two implementation of curves; using curve() and bezier().
+ * Since I plan to keep this simple I wont be discussing any further details.
+ * However, if you want to implement it in your sketch, here are the references:
+ * (https://processing.org/reference/curve_.html)
+ * (https://processing.org/reference/bezier_.html)
+ */
 
-// 3D Shapes
 
-// 3D space can be configured by setting "P3D" to the renderer parameter in
-// size() method.
+/**
+ * 3D Shapes
+ */
+
+/**
+ * 3D space can be configured by setting "P3D" to the renderer parameter in
+ * size() method.
+ */
 size(width, height, P3D);
-// In 3D space, you will have to translate to the particular coordinate to
-// render the 3D shapes.
-
+/**
+ * In 3D space, you will have to translate to the particular coordinate to
+ * render the 3D shapes.
+ */
+ 
 // Box
-box(size);  // Cube with same length defined by size
+box(size);    // Cube with same length defined by size
 box(w, h, d); // Box with width, height and depth separately defined
 
 // Sphere
 sphere(radius); // Its size is defined using the radius parameter
-// Mechanism behind rendering spheres is implemented by tessellating triangles.
-// That said, how much detail being rendered is controlled by function
-// sphereDetail(res)
-// More information here: (https://processing.org/reference/sphereDetail_.html)
+/**
+ * Mechanism behind rendering spheres is implemented by tessellating triangles.
+ * That said, how much detail being rendered is controlled by function
+ * sphereDetail(res)
+ * More information here: (https://processing.org/reference/sphereDetail_.html)
+ */
 
 // Irregular Shapes
-// What if you wanted to draw something thats not made available by Processing
-// functions?
-// You can use beginShape(), endShape(), vertex(x,y) to define shapes by
-// specifying each point. More information here:
-// (https://processing.org/reference/beginShape_.html)
-// You can also use custom made shapes using PShape class:
-// (https://processing.org/reference/PShape.html)
+/**
+ * What if you wanted to draw something thats not made available by Processing
+ * functions?
+ * You can use beginShape(), endShape(), vertex(x,y) to define shapes by
+ * specifying each point. More information here:
+ * (https://processing.org/reference/beginShape_.html)
+ * You can also use custom made shapes using PShape class:
+ * (https://processing.org/reference/PShape.html)
+ */
+ 
+ 
+/* -----------------
+ *  Transformations
+ * -----------------
+ */
 
-/* ---------------
-   Transformations
-   ---------------
-*/
-
-// Transformations are particularly useful to keep track of the coordinate
-// space and the vertices of the shapes you have drawn. Particularly;
-// matrix stack methods; pushMatrix(), popMatrix() and translate(x,y)
+/**
+ * Transformations are particularly useful to keep track of the coordinate
+ * space and the vertices of the shapes you have drawn. Particularly;
+ * matrix stack methods; pushMatrix(), popMatrix() and translate(x,y)
+ */
 pushMatrix(); // Saves the current coordinate system to the stack
 // ... apply all the transformations here ...
-popMatrix(); // Restores the saved coordinate system
-// Using them, the coordinate system can be preserved and visualized without
-// causing any conflicts.
+popMatrix(); /** Restores the saved coordinate system
+              * Using them, the coordinate system can be preserved and visualized without
+              * causing any conflicts.
+              */
 
 // Translate
 translate(x, y); // Translates to point{x, y} i.e. - setting origin to that point
 translate(x, y, z); // 3D counterpart of the function
 
 // Rotate
-rotate(angle); // Rotate the amount specified by the angle parameter
-// It has 3 3D counterparts to perform rotation, each for every dimension,
-// namely: rotateX(angle), rotateY(angle), rotateZ(angle)
+rotate(angle); /** Rotate the amount specified by the angle parameter
+                * It has 3 3D counterparts to perform rotation, each for every dimension,
+                * namely: rotateX(angle), rotateY(angle), rotateZ(angle)
+                */
 
 // Scale
 scale(s); // Scale the coordinate system by either expanding or contracting it.
 
-/* --------------------
-   Styling and Textures
-   --------------------
-*/
+/* ----------------------
+ *  Styling and Textures
+ * ----------------------
+ */
 
-// Colours
-// As I have discussed earlier, the background colour can be configured using
-// background() function. You can define a color object beforehand and then
-// pass it to the function as an argument.
+/**
+ * Colours
+ * As I have discussed earlier, the background colour can be configured using
+ * background() function. You can define a color object beforehand and then
+ * pass it to the function as an argument.
+ */
 color c = color(255, 255, 255); // WHITE!
-// By default, Processing uses RGB colour scheme but it can be configured to
-// HSB using colorMode(). Read more here:
-// (https://processing.org/reference/colorMode_.html)
+/**
+ * By default, Processing uses RGB colour scheme but it can be configured to
+ * HSB using colorMode(). Read more here:
+ * (https://processing.org/reference/colorMode_.html)
+ */
 background(color); // By now, the background colour should be white.
-// You can use fill() function to select the colour for filling the shapes.
-// It has to be configured before you start drawing shapes so the colours gets
-// applied.
+/**
+ * You can use fill() function to select the colour for filling the shapes.
+ * It has to be configured before you start drawing shapes so the colours gets
+ * applied.
+ */
 fill(color(0, 0, 0));
-// If you just want to colour the outlines of the shapes then you can use
-// stroke() function.
-stroke(255, 255, 255, 200); // stroke colour set to yellow with transparency
-// set to a lower value.
+/**
+ * If you just want to colour the outlines of the shapes then you can use
+ * stroke() function.
+ */
+stroke(255, 255, 255, 200); /** stroke colour set to yellow with transparency
+                             * set to a lower value.
+                             */
 
-// Images
-// Processing can render images and use them in several ways. Mostly stored as
-// PImage datatype.
+/**
+ * Images
+ * Processing can render images and use them in several ways. Mostly stored as
+ * PImage datatype.
+ */
 filter(shader); // Processing supports several filter functions for image manipulation.
 texture(image); // PImage can be passed into arguments for texture-mapping the shapes.
 ```
