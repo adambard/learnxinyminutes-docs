@@ -316,8 +316,8 @@ filled_dict["one"]  # => 1
 # Get all keys as an iterable with "keys()". We need to wrap the call in list()
 # to turn it into a list. We'll talk about those later.  Note - for Python
 # versions <3.7, dictionary key ordering is not guaranteed. Your results might
-# not match the example below exactly. However, as of Python 3.7, dictionary items
-# maintain the order at which they are inserted into the dictionary.
+# not match the example below exactly. However, as of Python 3.7, dictionary
+# items maintain the order at which they are inserted into the dictionary.
 list(filled_dict.keys())  # => ["three", "two", "one"] in Python <3.7
 list(filled_dict.keys())  # => ["one", "two", "three"] in Python 3.7+
 
