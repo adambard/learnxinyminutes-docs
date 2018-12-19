@@ -326,7 +326,7 @@ list(filled_dict.keys())  # => ["one", "two", "three"] in Python 3.7+
 # in list() to get it out of the iterable. Note - Same as above regarding key
 # ordering.
 list(filled_dict.values())  # => [3, 2, 1]  in Python <3.7
-list(filled_dict.keys())    # => [1, 2, 3] in Python 3.7+
+list(filled_dict.values())  # => [1, 2, 3] in Python 3.7+
 
 # Check for existence of keys in a dictionary with "in"
 "one" in filled_dict  # => True
