@@ -160,68 +160,82 @@ SomeRandomClass myObjectInstantiated = new SomeRandomClass();
  
  
 /* ------------
-   Maths
-   ------------
-*/
+ *  Maths
+ * ------------
+ */
 
 // Arithmetic
-1 + 1 // 2
-2 - 1 // 0
-2 * 3 // 6
-3 / 2 // 1
-3.0 / 2 // 1.5
-3.0 % 2 // 1.0
+1 + 1    // 2
+2 - 1    // 0
+2 * 3    // 6
+3 / 2    // 1
+3.0 / 2  // 1.5
+3.0 % 2  // 1.0
 
-// Processing also comes with a set of functions that simplify mathematical
-// operations.
-float f = sq(3); // f = 9.0
-float p = pow(3, 3); // p = 27.0
-int a = abs(-13) // a = 13
-int r1 = round(3.1); // r1 = 3
-int r2 = round(3.7); // r2 = 4
-float sr = sqrt(25); // sr = 5.0
+/**
+ * Processing also comes with a set of functions that simplify mathematical
+ * operations.
+ */
+float f = sq(3);      // f = 9.0
+float p = pow(3, 3);  // p = 27.0
+int a = abs(-13)      // a = 13
+int r1 = round(3.1);  // r1 = 3
+int r2 = round(3.7);  // r2 = 4
+float sr = sqrt(25);  // sr = 5.0
 
-// Vectors
-// Processing provides an easy way to implement vectors in its environment
-// using PVector class. It can describe a two or three dimensional vector and
-// comes with a set of methods which are useful for matrices operations.
-// You can find more information on PVector class and its functions here.
-// (https://processing.org/reference/PVector.html)
+/**
+ * Vectors
+ * Processing provides an easy way to implement vectors in its environment
+ * using PVector class. It can describe a two or three dimensional vector and
+ * comes with a set of methods which are useful for matrices operations.
+ * You can find more information on PVector class and its functions here.
+ * (https://processing.org/reference/PVector.html)
+ */
 
-// Trigonometry
-// Processing also supports trigonometric operations by supplying a set of
-// functions. sin(), cos(), tan(), asin(), acos(), atan() and also degrees()
-// and radians() for convenient conversion.
-// However, those functions take angle in radians as the parameter so it has
-// to be converted beforehand.
+/**
+ * Trigonometry
+ * Processing also supports trigonometric operations by supplying a set of
+ * functions. sin(), cos(), tan(), asin(), acos(), atan() and also degrees()
+ * and radians() for convenient conversion.
+ * However, those functions take angle in radians as the parameter so it has
+ * to be converted beforehand.
+ */
 float one = sin(PI/2); // one = 1.0
-// As you may have noticed, there exists a set of constants for trigonometric
-// uses;
-// PI, HALF_PI, QUARTER_PI and so on...
-
+/**
+ * As you may have noticed, there exists a set of constants for trigonometric
+ * uses;
+ * PI, HALF_PI, QUARTER_PI and so on...
+ */
+ 
+ 
 /* -------------
-   Control Flow
-   -------------
-*/
+ *  Control Flow
+ * -------------
+ */
 
-// Conditional Statements
-// If Statements - The same syntax as if statements in Java.
+/**
+ * Conditional Statements
+ * If Statements - The same syntax as if statements in Java.
+ */
 if (author.getAppearance().equals("hot")) {
   print("Narcissism at its best!");
-} else {
+} 
+else {
   // You can check for other conditions here.
   print("Something is really wrong here!");
 }
 // A shortcut for if-else statements can also be used.
 int i = 3;
-String value = (i > 5) ? "Big" : "Small"; // "Small"
+String value = (i > 5) ? "Big" : "Small";   // "Small"
 
-// Switch-case structure can be used to check multiple conditions concisely.
+/**
+ * Switch-case structure can be used to check multiple conditions concisely.
+ */
 int value = 2;
 switch(value) {
   case 0:
     print("Nought!"); // This does not get executed.
-    break; // Jumps to the next statement
+    break;            // Jumps to the next statement
   case 1:
     print("Getting there..."); // This again does not get executed.
     break;
@@ -233,26 +247,32 @@ switch(value) {
     break;
 }
 
-// Iterative statements
-// For Statements - Again, the same syntax as in Java
+/**
+ * Iterative statements
+ * For Statements - Again, the same syntax as in Java
+ */
 for(int i = 0; i < 5; i ++){
   print(i); // prints from 0 to 4
 }
 
-// While Statements - Again, nothing new if you are familiar with Java syntax.
+/**
+ * While Statements - Again, nothing new if you are familiar with Java syntax.
+ */
 int j = 3;
 while(j > 0) {
   print(j);
-  j--; // This is important to prevent from the code running indefinitely.
+  j--;   // This is important to prevent from the code running indefinitely.
 }
 
-// loop()| noLoop() | redraw() | exit()
-// These are more of Processing-specific functions to configure program flow.
-loop(); // allows the draw() method to run forever while
+/**
+ * loop()| noLoop() | redraw() | exit()
+ * These are more of Processing-specific functions to configure program flow.
+ */
+loop();   // allows the draw() method to run forever while
 noLoop(); // only allows it to run once.
 redraw(); // runs the draw() method once more.
-exit(); // This stops the program. It is useful for programs with draw()
-// running continuously.
+exit();   // This stops the program. It is useful for programs with draw()
+          // running continuously.
 ```
 
 ## Drawing with Processing
@@ -260,7 +280,7 @@ exit(); // This stops the program. It is useful for programs with draw()
 Since you will have understood the basics of the language by now, we will now
 look into the best part of Processing - DRAWING.
 
-```
+```processing
 /* ------
    Shapes
    ------
@@ -402,14 +422,14 @@ for. Rendering models, shaders and whatnot. There's too much to cover in a
 short documentation, so I will leave them out here. Shoud you be interested,
 please check out the references.
 
-```
+```processing
 // Before we move on, I will touch a little bit more on how to import libraries
 // so you can extend Processing functionality to another horizon.
 
-/* -------
-   Imports
-   -------
-*/
+/* ---------
+ *  Imports
+ * ---------
+ */
 
 // The power of Processing can be further visualized when we import libraries
 // and packages into our sketches.
@@ -426,11 +446,13 @@ capable of within few lines of code.
 
 Copy the code below into your Processing IDE and see the magic.
 
-```
-// Disclaimer: I did not write this program since I currently am occupied with
-// internship and this sketch is adapted from openprocessing since it shows
-// something cool with simple codes.
-// Retrieved from: (https://www.openprocessing.org/sketch/559769)
+```processing
+/**
+ * Disclaimer: I did not write this program since I currently am occupied with
+ * internship and this sketch is adapted from openprocessing since it shows
+ * something cool with simple codes.
+ * Retrieved from: (https://www.openprocessing.org/sketch/559769)
+ */
 
 float theta;
 float a;
