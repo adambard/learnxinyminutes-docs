@@ -18,7 +18,7 @@ influenced by both Java and Javascript syntaxes. [See more here](https://process
 The language is statically typed, and also comes with its official IDE to
 compile and run the scripts.
 
-```
+```processing
 /* ---------
  * Comments
  * ---------
