@@ -80,68 +80,85 @@ void draw() {
 /* ------------------------
  *  Datatypes & collections
  * ------------------------
-*/
+ */
 
-// According to Processing References, Processing supports 8 primitive
-// datatypes as follows.
+/**
+ * According to Processing References, Processing supports 8 primitive
+ * datatypes as follows.
+ */
 
-boolean booleanValue = true; // Boolean
-byte byteValueOfA = 23; // Byte
-char charValueOfA = 'A'; // Char
+boolean booleanValue = true;	// Boolean
+byte byteValueOfA = 23;		 	// Byte
+char charValueOfA = 'A';		// Char
 color colourValueOfWhiteM = color(255, 255, 255); // Colour (Specified using
-// color() method)
-color colourValueOfWhiteH = #FFFFFF; // Colour (Specified using hash value)
-int intValue = 5; // Integer (Number without decimals)
-long longValue = 2147483648L; // "L" is added to number to mark it as a long
-float floatValue = 1.12345; // Float (32-bit floating-point numbers)
-double doubleValue = 1.12345D; // Double (64-bit floating-point numbers)
+												  // color() method)
+color colourValueOfWhiteH = #FFFFFF; 	// Colour (Specified using hash value)
+int intValue = 5; 						// Integer (Number without decimals)
+long longValue = 2147483648L; 			// "L" is added to number to mark it as a long
+float floatValue = 1.12345; 			// Float (32-bit floating-point numbers)
+double doubleValue = 1.12345D; 			// Double (64-bit floating-point numbers)
 
-// NOTE!
-// Although datatypes "long" and "double" work in the language,
-// processing functions do not use these datatypes, therefore
-// they need to be converted into "int" and "float" datatypes respectively,
-// using (int) and (float) syntax before passing into a function.
-
-// There is a whole bunch of default composite datatypes available for use in
-// Processing.
-// Primarily, I will brief through the most commonly used ones to save time.
-
-// String
-// While char datatype uses '', String datatype uses "" - double quotes.
+/**
+ * NOTE!
+ *  Although datatypes "long" and "double" work in the language,
+ *  processing functions do not use these datatypes, therefore
+ *  they need to be converted into "int" and "float" datatypes respectively,
+ *  using (int) and (float) syntax before passing into a function.
+ *
+ *  There is a whole bunch of default composite datatypes available for use in
+ *  Processing.
+ *  Primarily, I will brief through the most commonly used ones to save time.
+ */
+ 
+/**
+ * String
+ * While char datatype uses '', String datatype uses "" - double quotes.
+ */
 String sampleString = "Hello, Processing!";
-// String can be constructed from an array of char datatypes as well. We will
-// discuss array very soon.
+/**
+ * String can be constructed from an array of char datatypes as well. We will
+ * discuss array very soon.
+ */
 char source = {'H', 'E', 'L', 'L', 'O'};
-String stringFromSource = new String(source); // HELLO
+String stringFromSource = new String(source); 	// HELLO
 // As in Java, strings can be concatenated using the "+" operator.
-print("Hello " + "World!"); // Hello World!
+print("Hello " + "World!"); 					// Hello World!
 
-// Array
-// Arrays in Processing can hold any datatypes including Objects themselves.
-// Since arrays are similar to objects, they must be created with the keyword
-// "new".
+/**
+ * Array
+ * Arrays in Processing can hold any datatypes including Objects themselves.
+ * Since arrays are similar to objects, they must be created with the keyword
+ * "new".
+ */
 int[] intArray = new int[5];
 int[] intArrayWithValues = {1, 2, 3}; // You can also populate with data.
 
-// ArrayList
-// Functions are similar to those of array; arraylists can hold any datatypes.
-// The only difference is arraylists resize dynamically, as it is a form of
-// resizable-array implementation of the Java "List" interface.
+/**
+ * ArrayList
+ * Functions are similar to those of array; arraylists can hold any datatypes.
+ * The only difference is arraylists resize dynamically, as it is a form of
+ * resizable-array implementation of the Java "List" interface.
+ */
 ArrayList<Integer> intArrayList = new ArrayList<Integer>();
 
-// Object
-// Since it is based on Java, Processing supports object-oriented programming.
-// That means you can basically define any datatypes of your own and manipulate
-// them to your needs.
-// Of course, a class has to be defined before for the object you want.
-// Format --> ClassName InstanceName
-SomeRandomClass myObject // then instantiate later
-//or
+/**
+ * Object
+ * Since it is based on Java, Processing supports object-oriented programming.
+ * That means you can basically define any datatypes of your own and manipulate
+ * them to your needs.
+ * Of course, a class has to be defined before for the object you want.
+ * Format --> ClassName InstanceName
+ */
+SomeRandomClass myObject; // then instantiate later
+ // or
 SomeRandomClass myObjectInstantiated = new SomeRandomClass();
 
-// Processing comes up with more collections (eg. - Dictionaries and Lists) by
-// default, for the simplicity sake, I will leave them out of discussion here.
-
+/**
+ * Processing comes up with more collections (eg. - Dictionaries and Lists) by
+ * default, for the simplicity sake, I will leave them out of discussion here.
+ */
+ 
+ 
 /* ------------
    Maths
    ------------
