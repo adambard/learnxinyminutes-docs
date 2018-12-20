@@ -314,16 +314,19 @@ valid_dict = {(1,2,3):[1,2,3]}   # Values can be of any type, however.
 filled_dict["one"]  # => 1
 
 # Get all keys as an iterable with "keys()". We need to wrap the call in list()
-# to turn it into a list. We'll talk about those later.  Note - Dictionary key
-# ordering is not guaranteed. Your results might not match this exactly.
-list(filled_dict.keys())  # => ["three", "two", "one"]
+# to turn it into a list. We'll talk about those later.  Note - for Python
+# versions <3.7, dictionary key ordering is not guaranteed. Your results might
+# not match the example below exactly. However, as of Python 3.7, dictionary
+# items maintain the order at which they are inserted into the dictionary.
+list(filled_dict.keys())  # => ["three", "two", "one"] in Python <3.7
+list(filled_dict.keys())  # => ["one", "two", "three"] in Python 3.7+
 
 
 # Get all values as an iterable with "values()". Once again we need to wrap it
 # in list() to get it out of the iterable. Note - Same as above regarding key
 # ordering.
-list(filled_dict.values())  # => [3, 2, 1]
-
+list(filled_dict.values())  # => [3, 2, 1]  in Python <3.7
+list(filled_dict.values())  # => [1, 2, 3] in Python 3.7+
 
 # Check for existence of keys in a dictionary with "in"
 "one" in filled_dict  # => True
