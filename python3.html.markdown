@@ -808,6 +808,7 @@ class Superhero(Human):
         # add additional class attributes:
         self.fictional = True
         self.movie = movie
+        # be aware of mutable default values, since defaults are shared
         self.superpowers = superpowers
 
         # The "super" function lets you access the parent class's methods
