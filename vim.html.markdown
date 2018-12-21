@@ -94,10 +94,10 @@ that aims to make getting started with vim more approachable!
 
 Vim is based on the concept on **modes**.
 
-Command Mode - vim starts up in this mode, used to navigate and write commands
-Insert Mode  - used to make changes in your file
-Visual Mode  - used to highlight text and do operations to them
-Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
+- Command Mode - vim starts up in this mode, used to navigate and write commands
+- Insert Mode  - used to make changes in your file
+- Visual Mode  - used to highlight text and do operations to them
+- Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
 
 ```
     i                # Puts vim into insert mode, before the cursor position
@@ -122,9 +122,9 @@ Ex Mode      - used to drop down to the bottom with the ':' prompt to enter comm
 Vim can be thought of as a set of commands in a
 'Verb-Modifier-Noun' format, where:
 
-Verb     - your action
-Modifier - how you're doing your action
-Noun     - the object on which your action acts on
+- Verb     - your action
+- Modifier - how you're doing your action
+- Noun     - the object on which your action acts on
 
 A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
 
