@@ -6,8 +6,9 @@ contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]
   - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
+  - ["Shooter", "https://github.com/liushooter"]
 translators:
-  - ["Bob Jiang", "https://github.com/bobjiang"]  
+  - ["Bob Jiang", "https://github.com/bobjiang"]
 ---
 
 Solidity 使你在[以太坊](https://www.ethereum.org/)上编程，一个基于区块链的虚拟机，
@@ -20,7 +21,7 @@ Solidity 是一种与 Javascript 和 C 的相似的、静态类型的合约编�
 以太坊合约的例子包括众筹、投票以及盲拍（私密拍卖）。
 
 Solidity 代码中存在高风险和高成本的错误，因此你必须非常小心地进行测试并慢慢地发布。**随着
-以太坊的快速变化，本文档不可能是最新的，所以你应该关注最新的的 solidity 聊天室和以太网博客。 
+以太坊的快速变化，本文档不可能是最新的，所以你应该关注最新的的 solidity 聊天室和以太网博客。
 照搬这里的代码，会存在重大错误或弃用代码模式的风险。（说人话--别照抄例子中的代码）**
 
 与其他代码不同，可能还需要添加如暂停、弃用和限制使用的设计模式，来降低风险。本文档主要讨论语法，
@@ -50,7 +51,7 @@ contract SimpleBank { // 单词首字母大写
     // 声明函数外的状态变量，合约生命周期内可用
 
     // 地址映射到余额的字典，总是要小心数字的溢出攻击
-    mapping (address => uint) private balances;    
+    mapping (address => uint) private balances;
 
     // "private" 的意思是其他合约不能直接查询余额，但对于区块链上的其他方来说，数据仍然是可见的。
 
@@ -67,7 +68,7 @@ contract SimpleBank { // 单词首字母大写
         owner = msg.sender;
     }
 
-    /// @notice 存款 ether (以太币) 
+    /// @notice 存款 ether (以太币)
     /// @return 存款后用户的余额
     function deposit() public payable returns (uint) {
         // 使用 'require' 来检测用户的输入，'assert' 是内部常量
@@ -159,7 +160,7 @@ address public owner;
 owner.transfer(SOME_BALANCE); // 失败后还原
 
 // 还可以调用较低级别的 .send ， 转账失败会返回 false
-if (owner.send) {} 
+if (owner.send) {}
 // 记住：用 'if' 包着 send 函数，因为合约地址执行这些函数转账时，可能会失败
 // 另外，确保转账前先减掉余额，因为存在递归调用的风险。
 
@@ -174,7 +175,7 @@ bytes32 c;
 
 // 动态大小的字符
 bytes m; // 特殊的数组，等同于 byte[]，比 byte1 到 byte32 更贵
-// 尽可能不用 bytes 
+// 尽可能不用 bytes
 
 // 等同于 bytes，但不允许长度或索引的访问
 string n = "hello"; // UTF8存储，注意双引号而不是单引号
@@ -212,12 +213,12 @@ names.length; // 获得数组长度
 names.length = 1; // 可以设定长度（仅针对 storage 中的动态数组）
 
 // 多维数组
-uint x[][5]; // 5个动态数组元素的数组(和多数语言的顺序相反) 
+uint x[][5]; // 5个动态数组元素的数组(和多数语言的顺序相反)
 
 // 字典类型 (任一类型到其他类型的映射)
 mapping (string => uint) public balances;
 balances["charles"] = 1;
-console.log(balances["ada"]); // 所有没有设定key值的，返回0
+// balances["ada"]得到 0, 所有没有设定key值的，返回0
 // 'public' 允许跟着（调用）另一份合约
 contractName.balances("charles"); // returns 1
 // 'public' 创建 getter （而不是 setter ）如下：
@@ -248,13 +249,13 @@ Bank c = Bank(msg.sender, 5);
 
 c.balance = 5; // 设为新值
 delete b;
-// 设为初始值，结构内所有变量设为0，除了 mapping 
+// 设为初始值，结构内所有变量设为0，除了 mapping
 
 // 枚举
 enum State { Created, Locked, Inactive }; // 常常作为状态机
 State public state; // 声明枚举变量
 state = State.Created;
-// 枚举类型可以显性化的转换为 ints 
+// 枚举类型可以显性化的转换为 ints
 uint createdState = uint(State.Created); //  0
 
 // 数据位置：内存（Memory） vs. 存储（storage） vs. 调用数据（calldata）
@@ -286,7 +287,7 @@ msg.gas; // 剩余 gas
 
 // ** tx - 交易信息 **
 tx.origin; // 本次交易的发送者地址
-tx.gasprice; // 本次交易的 gas price 
+tx.gasprice; // 本次交易的 gas price
 
 // ** block - 当前区块信息 **
 now; // 当前时间（大概）block.timestamp的别名 (采用的 Unix 时间)
@@ -373,17 +374,22 @@ event LogSent(address indexed from, address indexed to, uint amount); // 注意 
 // 调用
 LogSent(from, to, amount);
 
-// 对于外部方（合约或外部实体），使用 Web3 Javascript 库来监听
-Coin.LogSent().watch({}, '', function(error, result) {
-    if (!error) {
-        console.log("Coin transfer: " + result.args.amount +
-            " coins were sent from " + result.args.from +
-            " to " + result.args.to + ".");
-        console.log("Balances now:\n" +
-            "Sender: " + Coin.balances.call(result.args.from) +
-            "Receiver: " + Coin.balances.call(result.args.to));
+/*
+    // 对于外部方（合约或外部实体），使用 Web3 Javascript 库来监听
+    // 以下是javascript代码,不是solidity代码
+    Coin.LogSent().watch({}, '', function(error, result) {
+        if (!error) {
+            console.log("Coin transfer: " + result.args.amount +
+                " coins were sent from " + result.args.from +
+                " to " + result.args.to + ".");
+            console.log("Balances now:\n" +
+                "Sender: " + Coin.balances.call(result.args.from) +
+                "Receiver: " + Coin.balances.call(result.args.to));
+        }
     }
-}
+
+*/
+
 // 一个合约依赖另一个合约的共同范例（例如，合约取决于另一个合约提供的当前汇率）
 
 // C. 修饰器
@@ -416,13 +422,13 @@ modifier checkValue(uint amount) {
 
 // 6. 判断和循环
 
-// 所有基本的逻辑判断都有效 - 包括 if else, for, while, break, continue 
+// 所有基本的逻辑判断都有效 - 包括 if else, for, while, break, continue
 // return - 但不跳转
 
 // 语法同 javascript, 但没有从非布尔值到布尔值的类型转换
 // (必须使用比较操作符获得布尔变量值)
 
-// 请注意由用户行为决定的循环 - 因为合约对于代码块具有最大量的 gas 限制 - 
+// 请注意由用户行为决定的循环 - 因为合约对于代码块具有最大量的 gas 限制 -
 // 如果超过限制该代码则将失败
 // 例如：
 for(uint x = 0; x < refundAddressList.length; x++) {
@@ -514,7 +520,7 @@ function remove() {
 // 步骤: 1. 承诺某事, 2. 揭示承诺
 keccak256("some_bid_amount", "some secret"); // commit
 
-// 以后调用合约的 reveal 函数，展示出用 SHA3 哈希的 bid 加 secret 
+// 以后调用合约的 reveal 函数，展示出用 SHA3 哈希的 bid 加 secret
 reveal(100, "mySecret");
 
 // B. 存储优化
@@ -571,7 +577,7 @@ contract SomeOracle {
 // addSubscriber 添加订阅者
 
 // F. 状态机
-// 参见如下的例子，枚举类型的 State 和 修饰器 inState 
+// 参见如下的例子，枚举类型的 State 和 修饰器 inState
 
 
 // *** 例子: 众筹的例子（与 Kickstarter 大致相似）***
@@ -714,7 +720,7 @@ contract CrowdFunder {
 // 10. 其他原生的函数
 
 // 货币单位
-// 货币使用 wei 来定义，以太币的最小单位 = 1 wei; 
+// 货币使用 wei 来定义，以太币的最小单位 = 1 wei;
 uint minAmount = 1 wei;
 uint a = 1 finney; // 1 ether == 1000 finney
 // 其他单位，请参阅: http://ether.fund/tool/converter
@@ -814,6 +820,6 @@ someContractAddress.callcode('function_name');
 - 常见设计模式列表 (throttling, RNG, version upgrade)
 - 常见的安全反模式
 
-请随意发送 pull request 或者发邮件给作者  nemild -/at-/ gmail 
+请随意发送 pull request 或者发邮件给作者  nemild -/at-/ gmail
 
 或者发邮件给译者 jiangxb -/at-/ gmail.com
