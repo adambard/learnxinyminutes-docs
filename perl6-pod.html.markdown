@@ -1,6 +1,5 @@
 ---
 language: Pod
-name: Perl 6 Pod
 contributors:
     - ["Luis F. Uceta", "https://uzluisf.gitlab.io/"]
 filename: learnpod.pod6
@@ -50,7 +49,7 @@ Every Pod document has to begin with `=begin pod` and end with `=end pod`.
 Everything between these two delimiters will be processed and used to
 generate documentation.
 
-```md
+```
 =begin pod
 
 A very simple Perl 6 Pod document. All the other directives go here!
@@ -69,7 +68,7 @@ constructs are between the `=begin pod ... =end pod` directives.
 Text can be easily styled as bold, italic, underlined or verbatim (for code
 formatting) using the formatting code: `B<>`, `I<>`, `U<>` and `C<>`. 
 
-```md
+```
 B<This text is in Bold.>
 
 I<This text is in Italics.>
@@ -89,7 +88,7 @@ angle brackets. The Unicode variant («») can also be used.
 Headings are created by using the `=headN` directive where `N` is the
 heading level.
 
-```md
+```
 =head1 This is level 1
 =head2 This is level 2
 =head3 This is level 3
@@ -104,7 +103,7 @@ Ordinary paragraphs consist of one or more adjacent lines of text, each of
 which starts with a non-whitespace character. Any paragraph is terminated
 by the first blank line or block directive.
 
-```md
+```
 =head1 First level heading block
 
 =head2 Paragraph 1
@@ -120,7 +119,7 @@ This is another ordinary paragraph albeit shorter.
 Alternatively, the `=para` directive can be used to explicitly mark adjacent
 lines of text as a paragraph.
 
-```md
+```
 =head1 First level heading block
 
 =head2 Paragraph 1
@@ -139,7 +138,7 @@ This is another ordinary paragraph albeit shorter.
 
 Unordered lists can be made using the `=item` directive.
 
-```md
+```
 =item Item
 =item Item
 =item Another item
@@ -148,7 +147,7 @@ Unordered lists can be made using the `=item` directive.
 Sublists are achieved with items at each level specified using the `=item1`,
 `=item2`, `=item3`, etc. directives.
 
-```md
+```
 =item1 Item one
 =item1 Item two
 =item1 Item three
@@ -160,7 +159,7 @@ Sublists are achieved with items at each level specified using the `=item1`,
 Definition lists that define terms or commands use the `=defn`. This is
 equivalent to the `<dl>` element in HTML.
 
-```md
+```
 =defn Beast of Bodmin
 A large feline inhabiting Bodmin Moor.
 
@@ -176,7 +175,7 @@ A giant owl-like creature.
 A code block is created (which uses the `<code>` element) by starting each
 line with one or more whitespace characters.
 
-```md
+```
     #`( this is comment )
     my $sum = -> $x, $y { $x + $y }
     say $sum(12, 5);
@@ -185,7 +184,7 @@ line with one or more whitespace characters.
 As shown in the [Basic Text Formatting](#basic-text-formatting) section,
 inline code can be created using the `C<>` code.
 
-```md
+```
 In Perl 6, there are several functions/methods to output text. Some of them
 are C<print>, C<put> and C<say>.
 ```
@@ -197,7 +196,7 @@ as a Pod block will be read and interpreted by Pod renderers. In order to
 prevent Pod blocks from being rendered by any renderer, use the `=comment`
 directive.
 
-```md
+```
 =comment Add more here about the algorithm.
 
 =comment Pod comments are great for documenting the documentation.
@@ -205,7 +204,7 @@ directive.
 
 To create inline comments, use the `Z<>` code.
 
-```md
+```
 Pod is awesome Z<Of course it is!>. And Perl 6 too!
 ```
 
@@ -219,20 +218,20 @@ Creating links in Pod is quite easy and is done by enclosing them in
 a `L<>` code. The general format is `L<Label|Url>` with `Label`
 being optional. 
 
-```md
+```
 Perl 6 homepage is L<https://perl6.org>.
 L<Click me!|http://link.org/>.
 ```
 
 Relative paths work too.
 
-```md
+```
 L<Go to music|/music/>.
 ```
 
 Linking to a section in the same document works as well.
 
-```md
+```
 L<Link to Headings|#Headings>
 ```
 
@@ -244,7 +243,7 @@ constructing tables is shown. To learn about good practices and see examples
 of both good and bad tables, please visit
 https://docs.perl6.org/language/tables.
 
-```md
+```
 =begin table
 Option      | Description     
 ============|================  
@@ -276,12 +275,12 @@ The rest of the line is treated as block data, rather than as configuration.
 The content terminates at the next Pod directive or the first blank line
 (which is not part of the block data). The general syntax is
 
-```md
+```
 =BLOCK_TYPE  BLOCK_DATA
 ```
 For example:
 
-```md
+```
 =head1 Top level heading
 ```
 
@@ -291,7 +290,7 @@ Delimited blocks are bounded by `=begin` and `=end` markers, both of which are
 followed by a valid Perl 6 identifier, which is the `typename` of the block.
 The general syntax is 
 
-```md
+```
 =begin BLOCK_TYPE
 BLOCK_DATA
 =end BLOCK_TYPE
@@ -299,7 +298,7 @@ BLOCK_DATA
 
 For example:
 
-```md
+```
 =begin head1
 Top level heading
 =end head1
@@ -310,7 +309,7 @@ etc. with multiple paragraphs. For example,
 
 * a multiline item of a list
 
-```md
+```
 =begin item
 This is a paragraph in list item.
 
@@ -320,7 +319,7 @@ This is another paragraph in the same list item.
 
 * a code block
 
-```md
+```
 =begin code
 #`(A recursive implementation of
 a power function using multi subs.
@@ -349,14 +348,14 @@ the next Pod directive or the first blank line (which is not considered to
 be part of the block's contents). The `=for` marker is followed by the
 `typename` of the block. The general syntax is 
 
-```md
+```
 =for BLOCK_TYPE
 BLOCK DATA
 ```
 
 For example:
 
-```md
+```
 =for head1
 Top level heading
 ```
@@ -370,7 +369,7 @@ are more general syntaxes for these blocks:
 
 * Delimited blocks
 
-```md
+```
 =begin BLOCK_TYPE OPTIONAL_CONFIG_INFO
 =                 ADDITIONAL_CONFIG_INFO
 BLOCK_DATA
@@ -379,7 +378,7 @@ BLOCK_DATA
 
 * Paragraph blocks
 
-```md
+```
 =for BLOCK_TYPE OPTIONAL_CONFIG_INFO
 =               ADDITIONAL_CONFIG_INFO
 BLOCK DATA
@@ -415,7 +414,7 @@ can be applied to any block.
 
 For example:
 
-```md
+```
 =for head1 :numbered
 The Problem
 =for head1 :numbered
@@ -436,7 +435,7 @@ block that contains verbatim text.
 
 Given the following snippet:
 
-```md
+```
 =begin code :allow('B', 'I')
 B<sub> greet( $name ) {
     B<say> "Hello, $nameI<!>";
@@ -460,7 +459,7 @@ The `=config` directive allows you to prespecify standard configuration
 information that is applied to every block of a particular type.
 The general syntax for configuration directives is:
 
-```md
+```
 =config BLOCK_TYPE  CONFIG OPTIONS
 =                  ADDITIONAL_CONFIG_INFO
 ```
@@ -468,7 +467,7 @@ The general syntax for configuration directives is:
 For example, to specify that every heading level 1 be numbered, bold
 and underlined, you preconfigure the `=head1` as follows:
 
-```md
+```
 =config head1 :formatted('B', 'U') :numbered
 ```
 
@@ -478,7 +477,7 @@ All uppercase block typenames are reserved for specifying standard
 documentation, publishing, source components, or meta-information.
 Some of them are:
 
-```md
+```
 =NAME
 =AUTHOR
 =VERSION
@@ -491,7 +490,7 @@ Some of them are:
 Most of these blocks would typically be used in their full
 delimited forms. For example,
 
-```md
+```
 =NAME B<Doc::Magic>
 
 =begin DESCRIPTION
@@ -518,7 +517,7 @@ Not source code needed! Most of it is outsourced from a black hole.
 Notes are rendered as footnotes and created by enclosing a note in a
 `N<>` code.
 
-```md
+```
 In addition, the language is also multi-paradigmatic N<According to Wikipedia,
 this means that it supports procedural, object-oriented, and functional
 programming.>
@@ -528,7 +527,7 @@ programming.>
 
 To flag text as keyboard input enclose it in a `K<>` code.
 
-```md
+```
 Enter your name K<John Doe>
 ```
 
@@ -536,7 +535,7 @@ Enter your name K<John Doe>
 
 To flag text as terminal output enclose it in `T<>` code.
 
-```md
+```
 Hello, T<John Doe>
 ```
 
@@ -545,7 +544,7 @@ Hello, T<John Doe>
 To include Unicode code points or HTML5 character references in
 a Pod document, enclose them in a `E<>` code.
 
-```md
+```
 Perl 6 makes considerable use of the E<171> and E<187> characters.
 Perl 6 makes considerable use of the E<laquo> and E<raquo> characters.
 ```
@@ -567,14 +566,14 @@ For instructions about installing Perl 6,
 
 Run the following command to generate a certain output 
 
-```md
+```
 perl6 --doc=TARGET input.pod6 > output.html
 ```
 
 with `TARGET` being `Markdown`, `HTML`, `Text`, etc. Thus to generate
 Markdown from Pod, run this:
 
-```md
+```
 perl6 --doc=Markdown input.pod6 > output.html
 ```
 
@@ -590,7 +589,7 @@ the whole structure of the Pod document.
 If we place the following piece of Perl 6 code and the Pod documentation
 in the section [Semantic blocks](#semantic-blocks) in the same file:
 
-```md
+```
 my %used-directives;
 for $=pod -> $pod-item {
     for $pod-item.contents -> $pod-block {
@@ -604,7 +603,7 @@ say %used-directives.keys.join("\n");
 
 we get the following output:
 
-```md
+```
 SYNOPSIS
 NAME
 VERSION
