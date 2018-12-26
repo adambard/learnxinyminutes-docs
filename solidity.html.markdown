@@ -5,6 +5,7 @@ contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]
   - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
+  - ["Shooter", "https://github.com/liushooter"]
 ---
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
@@ -237,7 +238,7 @@ uint x[][5]; // arr with 5 dynamic array elements (opp order of most languages)
 // Dictionaries (any type to any other type)
 mapping (string => uint) public balances;
 balances["charles"] = 1;
-console.log(balances["ada"]); // is 0, all non-set key values return zeroes
+// balances["ada"] result is 0, all non-set key values return zeroes
 // 'public' allows following from another contract
 contractName.balances("charles"); // returns 1
 // 'public' created a getter (but not setter) like the following:
@@ -403,8 +404,12 @@ event LogSent(address indexed from, address indexed to, uint amount); // note ca
 // Call
 LogSent(from, to, amount);
 
-// For an external party (a contract or external entity), to watch using
-// the Web3 Javascript library:
+/**
+
+For an external party (a contract or external entity), to watch using
+the Web3 Javascript library:
+
+// The following is Javascript code, not Solidity code
 Coin.LogSent().watch({}, '', function(error, result) {
     if (!error) {
         console.log("Coin transfer: " + result.args.amount +
@@ -415,6 +420,8 @@ Coin.LogSent().watch({}, '', function(error, result) {
             "Receiver: " + Coin.balances.call(result.args.to));
     }
 }
+**/
+
 // Common paradigm for one contract to depend on another (e.g., a
 // contract that depends on current exchange rate provided by another)
 
