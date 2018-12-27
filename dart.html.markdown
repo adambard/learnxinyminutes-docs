@@ -25,42 +25,42 @@ import "dart:math" as DM;
 // The fat arrow function declaration has an implicit return for the result of
 // the expression.
 example1() {
-  example1nested1() {
-    example1nested2() => print("Example1 nested 1 nested 2");
-    example1nested2();
+  nested1() {
+    nested2() => print("Example1 nested 1 nested 2");
+    nested2();
   }
-  example1nested1();
+  nested1();
 }
 
 // Anonymous functions don't include a name.
 example2() {
-  example2nested1(fn) {
+  nested1(fn) {
     fn();
   }
-  example2nested1(() => print("Example2 nested 1"));
+  nested1(() => print("Example2 nested 1"));
 }
 
 // When a function parameter is declared, the declaration can include the
 // number of parameters the function takes by specifying the names of the
 // parameters it takes.
 example3() {
-  example3nested1(fn(informSomething)) {
-    fn("Example3 nested 1");
+  planA(fn(informSomething)) {
+    fn("Example3 plan A");
   }
-  example3planB(fn) { // Or don't declare number of parameters.
+  planB(fn) { // Or don't declare number of parameters.
     fn("Example3 plan B");
   }
-  example3nested1((s) => print(s));
-  example3planB((s) => print(s));
+  planA((s) => print(s));
+  planB((s) => print(s));
 }
 
 // Functions have closure access to outer variables.
 var example4Something = "Example4 nested 1";
 example4() {
-  example4nested1(fn(informSomething)) {
+  nested1(fn(informSomething)) {
     fn(example4Something);
   }
-  example4nested1((s) => print(s));
+  nested1((s) => print(s));
 }
 
 // Class declaration with a sayIt method, which also has closure access
@@ -81,9 +81,9 @@ example5() {
 // Where classBody can include instance methods and variables, but also
 // class methods and variables.
 class Example6Class {
-  var example6InstanceVariable = "Example6 instance variable";
+  var instanceVariable = "Example6 instance variable";
   sayIt() {
-    print(example6InstanceVariable);
+    print(instanceVariable);
   }
 }
 example6() {
@@ -92,12 +92,12 @@ example6() {
 
 // Class methods and variables are declared with "static" terms.
 class Example7Class {
-  static var example7ClassVariable = "Example7 class variable";
+  static var classVariable = "Example7 class variable";
   static sayItFromClass() {
-    print(example7ClassVariable);
+    print(classVariable);
   }
   sayItFromInstance() {
-    print(example7ClassVariable);
+    print(classVariable);
   }
 }
 example7() {
@@ -110,40 +110,40 @@ example7() {
 // or outside of class have to be constant. Strings and numbers are constant
 // by default. But arrays and maps are not. They can be made constant by
 // declaring them "const".
-var example8A = const ["Example8 const array"],
-  example8M = const {"someKey": "Example8 const map"};
+var example8Array = const ["Example8 const array"],
+  example8Map = const {"someKey": "Example8 const map"};
 example8() {
-  print(example8A[0]);
-  print(example8M["someKey"]);
+  print(example8Array[0]);
+  print(example8Map["someKey"]);
 }
 
 // Loops in Dart take the form of standard for () {} or while () {} loops,
 // slightly more modern for (.. in ..) {}, or functional callbacks with many
 // supported features, starting with forEach.
-var example9A = const ["a", "b"];
+var example9Array = const ["a", "b"];
 example9() {
-  for (var i = 0; i < example9A.length; i++) {
-    print("Example9 for loop '${example9A[i]}'");
+  for (var i = 0; i < example9Array.length; i++) {
+    print("Example9 for loop '${example9Array[i]}'");
   }
   var i = 0;
-  while (i < example9A.length) {
-    print("Example9 while loop '${example9A[i]}'");
+  while (i < example9Array.length) {
+    print("Example9 while loop '${example9Array[i]}'");
     i++;
   }
-  for (var e in example9A) {
+  for (var e in example9Array) {
     print("Example9 for-in loop '${e}'");
   }
-  example9A.forEach((e) => print("Example9 forEach loop '${e}'"));
+  example9Array.forEach((e) => print("Example9 forEach loop '${e}'"));
 }
 
 // To loop over the characters of a string or to extract a substring.
-var example10S = "ab";
+var example10String = "ab";
 example10() {
-  for (var i = 0; i < example10S.length; i++) {
-    print("Example10 String character loop '${example10S[i]}'");
+  for (var i = 0; i < example10String.length; i++) {
+    print("Example10 String character loop '${example10String[i]}'");
   }
-  for (var i = 0; i < example10S.length; i++) {
-    print("Example10 substring loop '${example10S.substring(i, i + 1)}'");
+  for (var i = 0; i < example10String.length; i++) {
+    print("Example10 substring loop '${example10String.substring(i, i + 1)}'");
   }
 }
 
