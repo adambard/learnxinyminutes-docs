@@ -78,7 +78,7 @@ int* ip = nullptr;
 // The C++ standard version:
 #include <cstdio>
 
-//The C standard version:
+// The C standard version:
 #include <stdio.h>
 
 int main()
@@ -257,7 +257,7 @@ fooRef = bar;
 cout << &fooRef << endl; //Still prints the address of foo
 cout << fooRef;  // Prints "I am bar"
 
-//The address of fooRef remains the same, i.e. it is still referring to foo.
+// The address of fooRef remains the same, i.e. it is still referring to foo.
 
 
 const string& barRef = bar; // Create a const reference to bar.
@@ -822,8 +822,8 @@ struct compareFunction {
         return a.j < b.j;
     }
 };
-//this isn't allowed (although it can vary depending on compiler)
-//std::map<Foo, int> fooMap;
+// this isn't allowed (although it can vary depending on compiler)
+// std::map<Foo, int> fooMap;
 std::map<Foo, int, compareFunction> fooMap;
 fooMap[Foo(1)]  = 1;
 fooMap.find(Foo(1)); //true
