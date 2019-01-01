@@ -5,17 +5,14 @@ contributors:
 filename: learnpod.pod6
 ---
 
-Perl 6 Pod is an easy-to-use and purely descriptive mark-up language, 
+Pod is an easy-to-use and purely descriptive mark-up language, 
 with no presentational components. Besides its use for documenting
-Perl 6 programs and modules, Pod can be utilized to write language
+Raku Perl 6 programs and modules, Pod can be utilized to write language
 documentation, blogs, and other types of document composition as well.
 
 Pod documents can be easily converted to HTML and many other formats
 (e.g., Markdown, Latex, plain text, etc.) by using the corresponding
-variant of the `Pod::To` modules (e.g. `<Pod::To::HTML>` for HTML conversion).
-
-Note: This document can be also be found as a Pod document
-[here](https://git.io/fpxKI).
+variant of the `Pod::To` modules (e.g. `Pod::To::HTML` for HTML conversion).
 
 - [General Info](#general-info)
 - [Pod Basics](#pod-basics)
@@ -52,21 +49,23 @@ generate documentation.
 ```
 =begin pod
 
-A very simple Perl 6 Pod document. All the other directives go here!
+A very simple Raku Perl 6 Pod document. All the other directives go here!
 
 =end pod
 ```
 
-Pod documents usually coexist with Perl 6 code. If by themselves, Pod files
-often have the `.pod6` suffix. Moving forward, it's assumed that the
-constructs are between the `=begin pod ... =end pod` directives.
+Pod documents usually coexist with Raku Perl 6 code. If by themselves, 
+Pod files often have the `.pod6` suffix. Moving forward, it's assumed that
+the constructs being discussed are surrounded by the `=begin pod ... =end pod`
+directives.
 
 ## Pod Basics
 
 ### Basic Text Formatting
 
 Text can be easily styled as bold, italic, underlined or verbatim (for code
-formatting) using the formatting code: `B<>`, `I<>`, `U<>` and `C<>`. 
+formatting) using the following formatting codes: `B<>`, `I<>`, `U<>`
+and `C<>`. 
 
 ```
 B<This text is in Bold.>
@@ -81,7 +80,8 @@ The function C<sub sum { $^x + $^y}> is treated as verbatim.
 There are more formatting codes (e.g., `L<>`, `T<>`, etc.) but they'll be
 discussed later throughout the document. You'll recognize them because they're
 just a single capital letter followed immediately by a set of single or double
-angle brackets. The Unicode variant («») can also be used.
+angle brackets. The Unicode variant («») of the angle brackets can also be
+used.
 
 ### Headings 
 
@@ -136,7 +136,7 @@ This is another ordinary paragraph albeit shorter.
 
 ### Lists
 
-Unordered lists can be made using the `=item` directive.
+Unordered lists can be created using the `=item` directive.
 
 ```
 =item Item
@@ -145,7 +145,8 @@ Unordered lists can be made using the `=item` directive.
 ```
 
 Sublists are achieved with items at each level specified using the `=item1`,
-`=item2`, `=item3`, etc. directives.
+`=item2`, `=item3`, `...`, `=itemN` etc. directives. The `=item` directive 
+defaults to `=item1`.
 
 ```
 =item1 Item one
@@ -156,8 +157,8 @@ Sublists are achieved with items at each level specified using the `=item1`,
 =item1 Item four
 ```
 
-Definition lists that define terms or commands use the `=defn`. This is
-equivalent to the `<dl>` element in HTML.
+Definition lists that define terms or commands use the `=defn` directive. 
+This is equivalent to the `<dl>` element in HTML.
 
 ```
 =defn Beast of Bodmin
@@ -172,7 +173,7 @@ A giant owl-like creature.
 
 ### Code Blocks
 
-A code block is created (which uses the `<code>` element) by starting each
+A code block is created (which uses the HTML `<code>` element) by starting each
 line with one or more whitespace characters.
 
 ```
@@ -185,16 +186,16 @@ As shown in the [Basic Text Formatting](#basic-text-formatting) section,
 inline code can be created using the `C<>` code.
 
 ```
-In Perl 6, there are several functions/methods to output text. Some of them
+In Raku Perl 6, there are several functions/methods to output text. Some of them
 are C<print>, C<put> and C<say>.
 ```
 
 ### Comments
 
-Although Pod blocks are ignored by the Perl 6 compiler, everything indentified
-as a Pod block will be read and interpreted by Pod renderers. In order to
-prevent Pod blocks from being rendered by any renderer, use the `=comment`
-directive.
+Although Pod blocks are ignored by the Raku Perl 6 compiler, everything
+indentified as a Pod block will be read and interpreted by Pod renderers. In
+order to prevent Pod blocks from being rendered by any renderer, use the
+`=comment` directive.
 
 ```
 =comment Add more here about the algorithm.
@@ -205,12 +206,12 @@ directive.
 To create inline comments, use the `Z<>` code.
 
 ```
-Pod is awesome Z<Of course it is!>. And Perl 6 too!
+Pod is awesome Z<Of course it is!>. And Raku Perl 6 too!
 ```
 
 Given that the Perl interpreter never executes embedded Pod blocks,
 comment blocks can also be used as an alternative form of nestable block
-comments in Perl 6.
+comments in Raku Perl 6.
 
 ### Links
 
@@ -219,7 +220,7 @@ a `L<>` code. The general format is `L<Label|Url>` with `Label`
 being optional. 
 
 ```
-Perl 6 homepage is L<https://perl6.org>.
+Raku Perl 6 homepage is L<https://perl6.org>.
 L<Click me!|http://link.org/>.
 ```
 
@@ -237,11 +238,11 @@ L<Link to Headings|#Headings>
 
 ### Tables
 
-The Pod 6 specifications are not completely handled properly yet and this
+The Pod specifications are not completely handled properly yet and this
 includes the handling of table. For simplicity's sake, only one way of
-constructing tables is shown. To learn about good practices and see examples
-of both good and bad tables, please visit
-https://docs.perl6.org/language/tables.
+constructing tables is shown here. To learn about good practices and see
+examples of both good and bad tables, please visit
+<https://docs.perl6.org/language/tables>.
 
 ```
 =begin table
@@ -256,15 +257,13 @@ ext         | extension to be used for dest files.
 ## Block Structures
 
 As mentioned earlier, Pod documents are specified using directives, which are
-used to delimit blocks of textual content and declare optional [configuration
-information](#configuration-data). Every directive starts with an equals
-sign (`=`) in the first column.
+used to delimit blocks of textual content and declare optional
+[configuration information](#configuration-data). Every directive starts with
+an equals sign (`=`) in the first column. The content of a document is
+specified within one or more blocks. Every Pod block may be declared in any of
+three equivalent forms: delimited style, paragraph style, or abbreviated style.
 
-The content of a document is specified within one or more blocks. Every Pod
-block may be declared in any of three equivalent forms: delimited style,
-paragraph style, or abbreviated style.
-
-Up to this point, we only used the abbreviated style for the block
+Up to this point, we have only used the abbreviated style for the block
 types (e.g., `=head1`, `=para`, `=comment`, `=item`, etc).
 
 ### Abbreviated Blocks
@@ -287,7 +286,7 @@ For example:
 ### Delimited Blocks
 
 Delimited blocks are bounded by `=begin` and `=end` markers, both of which are
-followed by a valid Perl 6 identifier, which is the `typename` of the block.
+followed by a valid Pod identifier, which is the `typename` of the block.
 The general syntax is 
 
 ```
@@ -321,13 +320,13 @@ This is another paragraph in the same list item.
 
 ```
 =begin code
-#`(A recursive implementation of
-a power function using multi subs.
+#`(
+A non-efficient recursive implementation of a power function using multi subs.
 )
 
 multi pow( Real $base, 0 ) { 1 }
 
-multi pow( Real $base, Int $exp where * >= 0) {
+multi pow( Real $base, Int $exp where * ≥ 0) {
 	$base * pow($base, $exp - 1)
 }
 
@@ -386,9 +385,9 @@ BLOCK DATA
 
 The configuration information is provided in a format akin to the
 ["colon pair"](https://docs.perl6.org/language/glossary#index-entry-Colon_Pair)
-syntax in Perl 6. The following table is a simplified version of the 
-different ways in which configuration info can supplied. Please go to 
-https://docs.perl6.org/language/pod#Configuration_information for a more
+syntax in Raku Perl 6. The following table is a simplified version of the 
+different ways in which configuration info can be supplied. Please go to 
+<https://docs.perl6.org/language/pod#Configuration_information> for a more
 thorough treatment of the subject.
 
 | Value     | Specify with...             | Example                        |
@@ -451,7 +450,8 @@ we get the following output:
 </pre>
 
 This is highly dependent on the format output. For example, while this works
-when Pod is converted to HTML, it might not work with Markdown.
+when Pod is converted to HTML, it might not be preserved when converted 
+to Markdown.
 
 ### Block Pre-configuration
 
@@ -499,11 +499,13 @@ Not source code needed! Most of it is outsourced from a black hole.
 =end DESCRIPTION
 
 =begin SYNOPSIS
+=begin code
 	use Doc::Magic;
 
  	my Doc::Magic $doc .= new();
 
     my $result = $doc.create-documentation($fh);
+=end code
 =end SYNOPSIS
 
 =AUTHOR Authorius Docus
@@ -544,27 +546,29 @@ Hello, T<John Doe>
 To include Unicode code points or HTML5 character references in
 a Pod document, enclose them in a `E<>` code.
 
+For example:
+
 ```
-Perl 6 makes considerable use of the E<171> and E<187> characters.
-Perl 6 makes considerable use of the E<laquo> and E<raquo> characters.
+Raku Perl 6 makes considerable use of the E<171> and E<187> characters.
+Raku Perl 6 makes considerable use of the E<laquo> and E<raquo> characters.
 ```
 
-this is rendered as:
+is rendered as:
 
-Perl 6 makes considerable use of the « and » characters.
-Perl 6 makes considerable use of the « and » characters.
+Raku Perl 6 makes considerable use of the « and » characters.
+Raku Perl 6 makes considerable use of the « and » characters.
 
 ## Rendering Pod
 
 To generate any output (i.e., Markdown, HTML, Text, etc.), you need to 
-have the Perl 6 compiler installed. In addition, you must install 
+have the Raku Perl 6 compiler installed. In addition, you must install 
 a module (e.g., `Pod::To::Markdown`, `Pod::To::HTML`, `Pod::To::Text`, etc.)
 that generates your desired output from Pod.
 
-For instructions about installing Perl 6, 
+For instructions about installing Raku Perl 6,
 [look here](https://perl6.org/downloads/).
 
-Run the following command to generate a certain output 
+Run the following command to generate a certain output:
 
 ```
 perl6 --doc=TARGET input.pod6 > output.html
@@ -579,14 +583,14 @@ perl6 --doc=Markdown input.pod6 > output.html
 
 ## Accessing Pod
 
-In order to access Pod documentation from within a Perl 6 program, 
+In order to access Pod documentation from within a Raku Perl 6 program, 
 it is required to use the special `=` twigil (e.g., `$=pod`, `$=SYNOPSIS`,etc).
 
-The `=` twigil provides the introspection over the Pod structure, 
-providing a `Pod::Block` tree root from which it is possible to access
+The `$=` construct provides the introspection over the Pod structure, 
+producing a `Pod::Block` tree root from which it is possible to access
 the whole structure of the Pod document.
 
-If we place the following piece of Perl 6 code and the Pod documentation
+If we place the following piece of Raku Perl 6 code and the Pod documentation
 in the section [Semantic blocks](#semantic-blocks) in the same file:
 
 ```
@@ -613,7 +617,6 @@ DESCRIPTION
 
 ## Additional Information 
 
-* https://docs.perl6.org/language/pod
-* https://docs.perl6.org/language/tables
-* https://design.perl6.org/S26.html
-
+* <https://docs.perl6.org/language/pod> for the Pod documentation.
+* <https://docs.perl6.org/language/tables> for advices about Pod tables.
+* <https://design.perl6.org/S26.html> for the Pod specification.
