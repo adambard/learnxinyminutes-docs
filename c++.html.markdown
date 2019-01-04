@@ -809,7 +809,103 @@ void doSomethingWithAFile(const std::string& filename)
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
 
-// containers with object keys of non-primitive values (custom classes) require
+
+/////////////////////
+// Containers
+/////////////////////
+
+// Containers or the Standard Template Library are some predefined templates.
+// They manage the storage space for its elements and provide
+// member functions to access and manipulate them.
+
+// Few containers are as follows:
+
+// Vector (Dynamic array)
+// Allow us to Define the Array or list of objects at run time
+#include <vector>
+string val;
+vector<string> my_vector; // initialize the vector
+cin >> val;
+my_vector.push_back(val); // will push the value of 'val' into vector ("array") my_vector
+my_vector.push_back(val); // will push the value into the vector again (now having two elements)
+
+// To iterate through a vector we have 2 choices:
+// Either classic looping (iterating through the vector from index 0 to its last index):
+for (int i = 0; i < my_vector.size(); i++) {
+	cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
+}
+
+// or using an iterator:
+vector<string>::iterator it; // initialize the iterator for vector
+for (it = my_vector.begin(); it != my_vector.end(); ++it) {
+	cout << *it  << endl;
+}
+
+// Set
+// Sets are containers that store unique elements following a specific order.
+// Set is a very useful container to store unique values in sorted order
+// without any other functions or code.
+
+#include<set>
+set<int> ST;    // Will initialize the set of int data type
+ST.insert(30);  // Will insert the value 30 in set ST
+ST.insert(10);  // Will insert the value 10 in set ST
+ST.insert(20);  // Will insert the value 20 in set ST
+ST.insert(30);  // Will insert the value 30 in set ST
+// Now elements of sets are as follows
+//  10 20 30
+
+// To erase an element
+ST.erase(20);  // Will erase element with value 20
+// Set ST: 10 30
+// To iterate through Set we use iterators
+set<int>::iterator it;
+for(it=ST.begin();it<ST.end();it++) {
+	cout << *it << endl;
+}
+// Output:
+// 10
+// 30
+
+// To clear the complete container we use Container_name.clear()
+ST.clear();
+cout << ST.size();  // will print the size of set ST
+// Output: 0
+
+// NOTE: for duplicate elements we can use multiset
+// NOTE: For hash sets, use unordered_set. They are more efficient but 
+// do not preserve order. unordered_set is available since C++11
+
+// Map
+// Maps store elements formed by a combination of a key value
+// and a mapped value, following a specific order.
+
+#include<map>
+map<char, int> mymap;  // Will initialize the map with key as char and value as int
+
+mymap.insert(pair<char,int>('A',1));
+// Will insert value 1 for key A
+mymap.insert(pair<char,int>('Z',26));
+// Will insert value 26 for key Z
+
+// To iterate
+map<char,int>::iterator it;
+for (it=mymap.begin(); it!=mymap.end(); ++it)
+    std::cout << it->first << "->" << it->second << '\n';
+// Output:
+// A->1
+// Z->26
+
+// To find the value corresponding to a key
+it = mymap.find('Z');
+cout << it->second;
+
+// Output: 26
+
+// NOTE: For hash maps, use unordered_map. They are more efficient but do 
+// not preserve order. unordered_map is available since C++11.
+
+// Containers with object keys of non-primitive values (custom classes) require
 // compare function in the object itself or as a function pointer. Primitives
 // have default comparators, but you can override it.
 class Foo {
@@ -827,6 +923,7 @@ struct compareFunction {
 std::map<Foo, int, compareFunction> fooMap;
 fooMap[Foo(1)]  = 1;
 fooMap.find(Foo(1)); //true
+
 
 ///////////////////////////////////////
 // Lambda Expressions (C++11 and above)
@@ -993,101 +1090,6 @@ cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
 cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
 cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
 
-
-/////////////////////
-// Containers
-/////////////////////
-
-// Containers or the Standard Template Library are some predefined templates.
-// They manage the storage space for its elements and provide
-// member functions to access and manipulate them.
-
-// Few containers are as follows:
-
-// Vector (Dynamic array)
-// Allow us to Define the Array or list of objects at run time
-#include <vector>
-string val;
-vector<string> my_vector; // initialize the vector
-cin >> val;
-my_vector.push_back(val); // will push the value of 'val' into vector ("array") my_vector
-my_vector.push_back(val); // will push the value into the vector again (now having two elements)
-
-// To iterate through a vector we have 2 choices:
-// Either classic looping (iterating through the vector from index 0 to its last index):
-for (int i = 0; i < my_vector.size(); i++) {
-	cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
-}
-
-// or using an iterator:
-vector<string>::iterator it; // initialize the iterator for vector
-for (it = my_vector.begin(); it != my_vector.end(); ++it) {
-	cout << *it  << endl;
-}
-
-// Set
-// Sets are containers that store unique elements following a specific order.
-// Set is a very useful container to store unique values in sorted order
-// without any other functions or code.
-
-#include<set>
-set<int> ST;    // Will initialize the set of int data type
-ST.insert(30);  // Will insert the value 30 in set ST
-ST.insert(10);  // Will insert the value 10 in set ST
-ST.insert(20);  // Will insert the value 20 in set ST
-ST.insert(30);  // Will insert the value 30 in set ST
-// Now elements of sets are as follows
-//  10 20 30
-
-// To erase an element
-ST.erase(20);  // Will erase element with value 20
-// Set ST: 10 30
-// To iterate through Set we use iterators
-set<int>::iterator it;
-for(it=ST.begin();it<ST.end();it++) {
-	cout << *it << endl;
-}
-// Output:
-// 10
-// 30
-
-// To clear the complete container we use Container_name.clear()
-ST.clear();
-cout << ST.size();  // will print the size of set ST
-// Output: 0
-
-// NOTE: for duplicate elements we can use multiset
-// NOTE: For hash sets, use unordered_set. They are more efficient but 
-// do not preserve order. unordered_set is available since C++11
-
-// Map
-// Maps store elements formed by a combination of a key value
-// and a mapped value, following a specific order.
-
-#include<map>
-map<char, int> mymap;  // Will initialize the map with key as char and value as int
-
-mymap.insert(pair<char,int>('A',1));
-// Will insert value 1 for key A
-mymap.insert(pair<char,int>('Z',26));
-// Will insert value 26 for key Z
-
-// To iterate
-map<char,int>::iterator it;
-for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second << '\n';
-// Output:
-// A->1
-// Z->26
-
-// To find the value corresponding to a key
-it = mymap.find('Z');
-cout << it->second;
-
-// Output: 26
-
-// NOTE: For hash maps, use unordered_map. They are more efficient but do 
-// not preserve order. unordered_map is available since C++11.
 
 ///////////////////////////////////
 // Logical and Bitwise operators
