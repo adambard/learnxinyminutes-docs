@@ -10,7 +10,7 @@ AWK is a standard tool on every POSIX-compliant UNIX system. It's like
 flex/lex, from the command-line, perfect for text-processing tasks and
 other scripting needs. It has a C-like syntax, but without mandatory
 semicolons (although, you should use them anyway, because they are required
-when you're writing one-liners, something AWK excells at), manual memory
+when you're writing one-liners, something AWK excels at), manual memory
 management, or static typing. It excels at text processing. You can call to
 it from a shell script, or you can use it as a stand-alone scripting language.
 
@@ -32,7 +32,7 @@ pattern2 { action; }
 # There is an implied loop and AWK automatically reads and parses each
 # record of each file supplied. Each record is split by the FS delimiter,
 # which defaults to white-space (multiple spaces,tabs count as one)
-# You cann assign FS either on the command line (-F C) or in your BEGIN
+# You can assign FS either on the command line (-F C) or in your BEGIN
 # pattern
 
 # One of the special patterns is BEGIN. The BEGIN pattern is true
@@ -238,7 +238,7 @@ function io_functions(    localvar) {
     # handle for you when you use something that needs one. The string you used
     # for this can be treated as a file handle, for purposes of I/O. This makes
     # it feel sort of like shell scripting, but to get the same output, the string
-    # must match exactly, so use a vaiable:
+    # must match exactly, so use a variable:
     
     outfile = "/tmp/foobar.txt";
 
