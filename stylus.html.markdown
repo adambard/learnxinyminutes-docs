@@ -67,7 +67,7 @@ body
     color #FF0000
 
 
-/* Obtendo a referência do elemento pai
+/* Getting parent element reference
 ==============================*/
 a {
   color: #0088dd;
@@ -77,47 +77,47 @@ a {
 }
 
 
-/*Variáveis
+/* Variables
 ==============================*/
 
 
-/* 
-  É possível armazenar um valor CSS (tais como a cor) de uma variável.
-  Embora seja opcional, é recomendado adicionar $ antes de um nome de variável 
-  para que você possa distinguir uma variável de outro valor CSS.
+/*
+  You can store a CSS value (such as the color) of a variable.
+  Although it is optional, it is recommended to add $ before a variable name
+  so you can distinguish a variable from another CSS value.
 */
 
 $primary-color = #A3A4FF
 $secondary-color = #51527F
 $body-font = 'Roboto', sans-serif
 
-/* Você pode usar as variáveis em toda a sua folha de estilo.
-Agora, se você quer mudar a cor, você só tem que fazer a mudança uma vez. */
+/* You can use variables throughout your style sheet.
+Now, if you want to change the color, you only have to make the change once. */
 
 body
 	background-color $primary-color
 	color $secondary-color
 	font-family $body-font
 
-/* Quando compilar ficaria assim: */
+/* After compilation: */
 body {
 	background-color: #A3A4FF;
 	color: #51527F;
 	font-family: 'Roboto', sans-serif;
 }
 
-/ * 
-Este é muito mais fácil de manter do que ter de mudar a cor
-cada vez que aparece em toda a sua folha de estilo. 
+/ *
+This is much easier to maintain than having to change color
+each time it appears throughout your style sheet.
 * /
 
 
 
-/*Mixins
+/* Mixins
 ==============================*/
 
-/* Se você achar que você está escrevendo o mesmo código para mais de um
-elemento, você pode querer armazenar esse código em um mixin.
+/* If you find that you are writing the same code for more than one
+element, you may want to store that code in a mixin.
 
 center()
   display block
@@ -126,13 +126,13 @@ center()
 	left 0
 	right 0
 
-/* Utilizando um mixin */
+/* Using the mixin */
 body {
   center()
   background-color: $primary-color
 }
 
-/* Apoś compilar ficaria assim: */
+/* After compilation: */
 div {
 	display: block;
 	margin-left: auto;
@@ -142,7 +142,7 @@ div {
 	background-color: #A3A4FF;
 }
 
-/* Você pode usar mixins para criar uma propriedade estenográfica. */
+/* You can use mixins to create a shorthand property. */
 
 size($width, $height)
   width $width
@@ -154,7 +154,7 @@ size($width, $height)
 .square
 	size(40px, 40px)
 
-/* Você pode usar um mixin como uma propriedade CSS. */
+/* You can use a mixin as a CSS property. */
 circle($ratio)
   width $ratio * 2
   height $ratio * 2
@@ -164,7 +164,7 @@ circle($ratio)
   circle 25px
 
 
-/* Interpolação
+/* Interpolation
 ==============================*/
 
 vendor(prop, args)
@@ -181,48 +181,48 @@ box-shadow()
 button
   border-radius 1px 2px / 3px 4px
 
-/* Funções
+/* Functions
 ==============================*/
 
-/* Funções no Stylus permitem fazer uma variedade de tarefas, como por exemplo, menipular algum dado. */
+/* Functions in Stylus allow you to perform a variety of tasks, such as recalling some data. */
 
 body {
-  background darken(#0088DD, 50%) // Escurece a cor #0088DD em 50%
+  background darken(#0088DD, 50%) // Dim color #0088DD by 50%
 }
 
-/** Criando sua própria função */
-somar(a, b)
+/* Creating your own function */
+add(a, b)
   a + b
 
 body
-  padding somar(10px, 5)
+  padding add(10px, 5)
 
-/* Condições
+/* Conditions
 ==============================*/
-comparar(a, b)
+compare(a, b)
   if a > b
-    maior
+    bigger
   else if a < b
-    menor
+    smaller
   else
-    igual
+    equal
 
-comparar(5, 2)   // => maior
-comparar(1, 5)   // => menor
-comparar(10, 10) // => igual
+compare(5, 2)   // => bigger
+compare(1, 5)   // => smaller
+compare(10, 10) // => equal
 
-/* Iterações
+/* Iterations
 ==============================*/
 
-/**
-Sintaxe de laço de repetição for:
+/*
+Repeat loop syntax for:
 for <val-name> [, <key-name>] in <expression>
-**/
+*/
 
-for $item in (1..2) /* Repete o bloco 12 vezes */
+for $item in (1..2) /* Repeat block 12 times */
   .col-{$item}
-    width ($item / 12) * 100% /* Calcula a largula pelo número da coluna*
+    width ($item / 12) * 100% /* Calculate row by column number */
 
 ```
 
-Agora que você conhece um pouco sobre esse poderoso pré-processador de CSS, você está pronto para criar folhas de estilos mais dinâmicas. Para aprofundar seus conhecimentos visite a documentação oficial do stylus em http://stylus-lang.com.
+Now that you know a little about this powerful CSS preprocessor, you're ready to create more dynamic style sheets. To learn more, visit the official stylus documentation at http://stylus-lang.com.
