@@ -43,7 +43,6 @@ body
 body
   background: #000
 
-
 // Single-line comments are removed when Stylus is compiled into CSS.
 
 /* Multi-line comments are preserved. */
@@ -110,7 +109,6 @@ body {
 This is much easier to maintain than having to change color
 each time it appears throughout your style sheet.
 * /
-
 
 
 /* Mixins
@@ -181,6 +179,7 @@ box-shadow()
 button
   border-radius 1px 2px / 3px 4px
 
+
 /* Functions
 ==============================*/
 
@@ -197,6 +196,7 @@ add(a, b)
 body
   padding add(10px, 5)
 
+
 /* Conditions
 ==============================*/
 compare(a, b)
@@ -211,6 +211,7 @@ compare(5, 2)   // => bigger
 compare(1, 5)   // => smaller
 compare(10, 10) // => equal
 
+
 /* Iterations
 ==============================*/
 
@@ -222,7 +223,6 @@ for <val-name> [, <key-name>] in <expression>
 for $item in (1..2) /* Repeat block 12 times */
   .col-{$item}
     width ($item / 12) * 100% /* Calculate row by column number */
-
 ```
 
 Now that you know a little about this powerful CSS preprocessor, you're ready to create more dynamic style sheets. To learn more, visit the official stylus documentation at http://stylus-lang.com.
