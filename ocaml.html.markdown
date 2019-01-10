@@ -161,7 +161,7 @@ let my_lambda = fun x -> x * x ;;
 
 (*** Operators ***)
 
-(* There is little distintion between operators and functions.
+(* There is little distinction between operators and functions.
    Every operator can be called as a function. *)
 
 (+) 3 4  (* Same as 3 + 4 *)
