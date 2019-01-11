@@ -350,7 +350,7 @@ ne sont pas tres agréable d'utilisation. Mais si vous en avez besoin :
 ```md
 | Col1 | Col2 | Col3 |
 | :----------- | :------: | ------------: |
-| Alignement Gauche | Centé | Alignement Droite |
+| Alignement Gauche | Centré | Alignement Droite |
 | bla | bla | bla |
 ```
 
