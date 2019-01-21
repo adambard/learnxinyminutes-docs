@@ -1,12 +1,12 @@
 ---
-language: python
+language: Python (legacy, 2.x)
 lang: ru-ru
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Yury Timofeev", "http://twitter.com/gagar1n"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-filename: learnpython-ru.py
+filename: learnpythonlegacy-ru.py
 ---
 
 Язык Python был создан Гвидо ван Россумом в начале 90-х. Сейчас это один из

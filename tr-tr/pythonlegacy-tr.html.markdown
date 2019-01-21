@@ -1,5 +1,5 @@
 ---
-language: python
+language: Python (legacy, 2.x)
 filename: learnpython-tr.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]

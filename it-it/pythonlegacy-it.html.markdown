@@ -1,6 +1,6 @@
 ---
-language: python
-filename: learnpython-it.py
+language: Python (legacy, 2.x)
+filename: learnpythonlegacy-it.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]

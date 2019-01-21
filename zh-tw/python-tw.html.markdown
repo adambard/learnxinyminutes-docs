@@ -1,5 +1,5 @@
 ---
-language: python
+language: Python (legacy, 2.x)
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]
@@ -7,7 +7,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
 translators:
     - ["Michael Yeh", "https://hinet60613.github.io/"]
-filename: learnpython-tw.py
+filename: learnpythonlegacy-tw.py
 lang: zh-tw
 ---
 

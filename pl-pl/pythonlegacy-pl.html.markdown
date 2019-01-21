@@ -1,8 +1,8 @@
 ---
-name: python
+name: Python (legacy, 2.x)
 category: language
-language: python
-filename: learnpython-pl.py
+language: Python (legacy, 2.x)
+filename: learnpythonlegacy-pl.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]

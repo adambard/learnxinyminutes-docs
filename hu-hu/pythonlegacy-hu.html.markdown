@@ -1,5 +1,5 @@
 ---
-language: python
+language: Python (legacy, 2.x)
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "https://aminb.org"]
@@ -9,7 +9,7 @@ contributors:
     - ["habi", "http://github.com/habi"]
 translators:
     - ["Tamás Diószegi", "https://github.com/ditam"]
-filename: learnpython-hu.py
+filename: learnpythonlegacy-hu.py
 lang: hu-hu
 ---
 

@@ -1,5 +1,5 @@
 ---
-language: python3
+language: Python
 filename: learnpython3-vi.py
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]

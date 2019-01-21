@@ -1,10 +1,10 @@
 ---
-language: python
+language: Python (legacy, 2.x)
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
-filename: learnpython-zh.py
+filename: learnpythonlegacy-zh.py
 lang: zh-cn
 ---
 

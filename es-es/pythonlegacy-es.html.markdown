@@ -1,12 +1,12 @@
 ---
-language: python
+language: Python (legacy, 2.x)
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Camilo Garrido", "http://www.twitter.com/hirohope"]
     - ["Fabio Souto", "http://fabiosouto.me"]
 lang: es-es
-filename: learnpython-es.py
+filename: learnpythonlegacy-es.py
 ---
 
 Python fue creado por Guido Van Rossum en el principio de los 90. Ahora es uno
