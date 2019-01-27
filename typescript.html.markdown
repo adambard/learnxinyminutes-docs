@@ -203,8 +203,8 @@ p1.age = 25; // Error, p1.x is read-only
 
 var p2 = { name: "John", age: 60 };
 var p3: Person = p2; // Ok, read-only alias for p2
-p3.x = 35; // Error, p3.x is read-only
-p2.x = 45; // Ok, but also changes p3.x because of aliasing
+p3.age = 35; // Error, p3.age is read-only
+p2.age = 45; // Ok, but also changes p3.age because of aliasing
 
 class Car {
   readonly make: string;
