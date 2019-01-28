@@ -95,7 +95,7 @@ to the source code.
 
 Separate paragraphs by empty lines.
 
-You need to add a dot after abbreviations (if not followed by a comma), because otherwise the spacing after the dot is too large:
+You need to add a backslash after abbreviations (if not followed by a comma), because otherwise the spacing after the dot is too large:
 E.g., i.e., etc.\ are are such abbreviations.
 
 \section{Lists}
