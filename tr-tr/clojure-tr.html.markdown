@@ -1,11 +1,13 @@
 ---
 language: clojure
-filename: clojureogren.clj
+filename: learnclojure-tr.clj
 contributors:
+    - ["Adam Bard", "http://adambard.com/"
+translators:
     - ["Seçkin KÜKRER", "https://leavenha.github.io"]
 ---
 
-[JVM]: https://en.wikipedia.org/wiki/Java_virtual_machine
+[JVM]: https://tr.wikipedia.org/wiki/Java_sanal_makinesi
 [STM]: https://en.wikipedia.org/wiki/Software_transactional_memory
 
 Clojure, Lisp dialekti, barınan bir dildir. [JVM][JVM] üzerinde barınıyor. Clojure, Lisp'in tüm gücü ve kendi mantalitesi ile mükemmel bir genel-amaçlı programlama dilidir. Clojure, Eş-zamanlı programlama, Makrolar, Fonksiyonel Programlama, Tembel yapılar ve daha fazlasını vaadediyor.
@@ -88,7 +90,6 @@ Clojure, Lisp dialekti, barınan bir dildir. [JVM][JVM] üzerinde barınıyor. C
 (class '(1 2 3)); => clojure.lang.PersistentList
 (class [1 2 3]); => clojure.lang.PersistentVector
 
-; A list would be written as just (1 2 3), but we have to quote
 ; Bir liste `(1 2 3)` şeklinde gösterilebilir, yazılabilir.
 ; Fakat bu listeyi, Alıntılamalıyız --Quote--.
 ; Bu, onu bir fonksiyon çağırımı olarak değil,
@@ -436,7 +437,6 @@ anahtar-eşlemesi ; => {:a 1, :b 2, :c 3}
 (def benim-atomum (atom {}))
 
 ; Bir atomu güncellemek için `swap!` kullanılır.
-; swap! takes a function and calls it with the current value of the atom
 ; `swap!` fonksiyonu, ilk argüman olarak aldığı atomu, ikinci argüman
 ; olarak aldığı fonksiyona uygular. Bu fonksiyona ek argümanlar ise
 ; fonksiyondan sonra gelirler.
@@ -449,7 +449,7 @@ anahtar-eşlemesi ; => {:a 1, :b 2, :c 3}
 benim-atomum  ;=> Atom<#...> (Atom ifadesi döndürür)
 @benim-atomum ; => {:a 1 :b 2}
 
-; Here's a simple counter using an atom
+; İşte, `atom` kullanan basit bir sayaç.
 (def sayaç (atom 0)) ;=> Şu anki isim uzayına, `sayaç` ile, 0 başlangıç
 ; değeri ile bir atom tanımladık.
 (defn sayaç-arttır [benim-atomum]
