@@ -661,7 +661,7 @@ i.age  # => raises an AttributeError
 # You can import modules
 import math
 
-print math.sqrt(16)  # => 4
+print math.sqrt(16)  # => 4.0
 
 # You can get specific functions from a module
 from math import ceil, floor
