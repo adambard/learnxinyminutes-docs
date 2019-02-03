@@ -43,7 +43,7 @@ Un oggetto incapsula le dichiarazioni e le definizioni dei predicati. Gli oggett
 :- end_object.
 ```
 
-# Compilazione dei file sorgenti
+# Compilazione e il caricamento dei file sorgenti
 
 Supponendo che il codice di cui sopra per l'oggetto `list` venga salvato in un file` list.lgt`, esso può essere compilato e caricato utilizzando il predicato predefiniti `logtalk_load/1` o la sua abbreviazione `{}/1`, con il percorso del file come argomento (l'estensione può essere omessa):
 
@@ -51,6 +51,9 @@ Supponendo che il codice di cui sopra per l'oggetto `list` venga salvato in un f
 ?- {list}.
 yes
 ```
+
+In generale, le entità potrebbero avere dipendenze sulle entità definite in altri file di origine (ad esempio le entità di biblioteca). Per caricare un file e tutte le sue dipendenze, la soluzione consigliata consiste nel definire un file _loader_ che carica tutti i file necessari per un'applicazione. Un file loader è semplicemente un file di origine, in genere denominato `loader.lgt`, che effettua chiamate ai predicati built-in `logtalk_load/1-2`, di solito
+da una direttiva `initialization/1` per la portabilità e conformità agli standard. Caricatore file vengono forniti per tutte le librerie, strumenti ed esempi. 
 
 # Inviare un messaggio ad un oggetto
 
