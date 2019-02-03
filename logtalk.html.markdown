@@ -40,7 +40,7 @@ An object encapsulates predicate declarations and definitions. Objects can be cr
 :- end_object.
 ```
 
-# Compiling source files
+# Compiling and loading source files
 
 Assuming that the code above for the `list` object is saved in a `list.lgt` file, it can be compiled and loaded using the `logtalk_load/1` built-in predicate or its abbreviation, `{}/1`, with the file path as argument (the extension can be omitted):
 
@@ -48,6 +48,11 @@ Assuming that the code above for the `list` object is saved in a `list.lgt` file
 ?- {list}.
 yes
 ```
+
+In general, entities may have dependencies on entities defined in other source files (e.g. library entities). To load a file and all its dependencies, the advised solution is to define a 
+_loader_ file that loads all the necessary files for an application. A loader file is simply a source file, typically named `loader.lgt`, that makes calls to the `logtalk_load/1-2`
+built-in predicates, usually from an `initialization/1` directive for portability and
+standards compliance. Loader files are provided for all libraries, tools, and examples.
 
 # Sending a message to an object
 
