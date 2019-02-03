@@ -245,7 +245,7 @@ function New-Website() {
 'string' | gm
 
 # Syntax for calling static .NET methods
-\[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
+[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
 
 # Note that .NET functions MUST be called with parentheses
 # while PS functions CANNOT be called with parentheses.
