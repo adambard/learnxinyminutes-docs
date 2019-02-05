@@ -6,7 +6,7 @@ contributors:
 translators:
     - ["Kemal MUTLU", "https://github.com/kemtake"]
     - ["Nuri Akman", "https://github.com/vedia"]
-language: tr-tr
+lang: tr-tr
 ---
 
 HTML, HyperText Markup Language (Hiper Metin İşaretleme Dili) anlamına gelir.
