@@ -1,11 +1,12 @@
 ---
 language: html
-filename: learnhtml.txt
+filename: learnhtml-tr.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Kemal MUTLU", "https://github.com/kemtake"]
     - ["Nuri Akman", "https://github.com/vedia"]
+language: tr-tr
 ---
 
 HTML, HyperText Markup Language (Hiper Metin İşaretleme Dili) anlamına gelir.
