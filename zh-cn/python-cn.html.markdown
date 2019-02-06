@@ -439,7 +439,7 @@ Human.grunt()  # => "*grunt*"
 
 # 我们可以导入其他模块
 import math
-print math.sqrt(16)  # => 4
+print math.sqrt(16)  # => 4.0
 
 # 我们也可以从一个模块中导入特定的函数
 from math import ceil, floor
