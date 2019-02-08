@@ -656,7 +656,7 @@ i.age  # => AttributeError hibát dob
 # Modulokat így lehet importálni
 import math
 
-print math.sqrt(16)  # => 4
+print math.sqrt(16)  # => 4.0
 
 # Lehetséges csak bizonyos függvényeket importálni egy modulból
 from math import ceil, floor

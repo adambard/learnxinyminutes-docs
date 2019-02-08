@@ -654,7 +654,7 @@ i.age  # => виникає помилка атрибуту
 # Ви можете імпортувати модулі
 import math
 
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16))  # => 4.0
 
 # Ви можете імпортувати окремі функції з модуля
 from math import ceil, floor
