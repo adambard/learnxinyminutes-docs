@@ -8,22 +8,22 @@ filename: embeddedc.c
 This is **NOT** a C programming tutorial, you can learn c from [here](https://learnxinyminutes.com/docs/c/). Actually, you should learn c first before getting into the embedded part. 
 
 Here, I will talk about the microcontrollers related stuff, so hold you datasheet and let's start.
-I will be using TM4C123XXX Arm Cortex-M4 Tiva C series' (datasheet)[www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf] but the ideas are similar in all microcontrollers. 
+I will be using TM4C123XXX Arm Cortex-M4 Tiva C series' [datasheet](www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf) but the ideas are similar in all microcontrollers. 
 
-Your feedback is appreciated, you can contact me (Here)[https://github.com/ahegazy]
+Your feedback is appreciated, you can contact me [Here](https://github.com/ahegazy)
 
 # TableOfContent @TODO 
 - [x] BitMasking
-- [] GPIO
-- [] Interrupts
-- [] UART
-- [] I2C
-- [] SPI 
-- [] DMA
-- [] ADC 
-- [] PWM
-- [] CAN 
-- [] Watchdog
+- [ ] GPIO
+- [ ] Interrupts
+- [ ] UART
+- [ ] I2C
+- [ ] SPI 
+- [ ] DMA
+- [ ] ADC 
+- [ ] PWM
+- [ ] CAN 
+- [ ] Watchdog
 
 ```c
 /*
@@ -109,3 +109,7 @@ if( GET_BITS( foo, BIT(4) ) ){
 
 ```
 ## Further Reading
+- Datasheet is your only friend, Every MicroController has a datasheet contains all the needed information.
+- An Embedded Software Primer (book)
+- Design Patterns for Embedded Systems in C: An Embedded Software Engineering Toolkit (book)
+- MisraC coding standards
