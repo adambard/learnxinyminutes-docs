@@ -66,7 +66,7 @@ program Learn_More;
 
 const
     PI = 3.141592654;
-    GNU = 'GNU's Not Unix';
+    GNU = 'GNU''s Not Unix';
         // constants are conventionally named using CAPS
         // their values are fixed and cannot be changed during runtime
         // holds any standard data type (integer, real, boolean, char, string)
