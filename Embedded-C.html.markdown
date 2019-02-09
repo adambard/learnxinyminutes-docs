@@ -8,11 +8,11 @@ filename: embeddedc.c
 This is **NOT** a C programming tutorial, you can learn c from [here](https://learnxinyminutes.com/docs/c/). Actually, you should learn c first before getting into the embedded part. 
 
 Here, I will talk about the microcontrollers related stuff, so hold you datasheet and let's start.
-I will be using TM4C123XXX Arm Cortex-M4 Tiva C series' [datasheet](www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf) but the ideas are similar in all microcontrollers. 
+I will be using TM4C123XXX Arm Cortex-M4 Tiva C series' [datasheet](https://www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf) but the ideas are similar in all microcontrollers. 
 
 Your feedback is appreciated, you can contact me [Here](https://github.com/ahegazy)
 
-# TableOfContent @TODO 
+### TableOfContent @TODO 
 - [x] BitMasking
 - [ ] GPIO
 - [ ] Interrupts
@@ -20,10 +20,11 @@ Your feedback is appreciated, you can contact me [Here](https://github.com/ahega
 - [ ] I2C
 - [ ] SPI 
 - [ ] DMA
+- [ ] Timer
 - [ ] ADC 
 - [ ] PWM
 - [ ] CAN 
-- [ ] Watchdog
+- [ ] Watchdog timer
 
 ```c
 /*
@@ -75,7 +76,8 @@ foo &= ~0x01; /* => binary: 00000000 */
 
 /* To check if a certain bit is set or clear without chaning it */
 if (foo & 0x80) {
-  /* True if bit 7 (8th bit) is set (binary: 1xxxxxxx), x: don't care*/
+  /* True if bit 7 (8th bit) is set (binary: 1xxxxxxx), x: don't care */
+  /* NOTE: (foo & 0x80) won't necessarily return 1, but it'll return a value depending on `foo`'s value. */
 }
 
 /* To toggle a bit use XOR */
@@ -106,6 +108,47 @@ if( GET_BITS( foo, BIT(4) ) ){
 /********************************
 * 2. GPIO (General Purpose Input/Output)
 *********************************/
+
+/********************************
+* 3. Interrupt
+*********************************/
+
+/********************************
+* 4. UART (Universal Asynchronous Receiver Transmitter)
+*********************************/
+
+/********************************
+* 5. I2C (Inter-Integrated Circuit)
+*********************************/
+
+/********************************
+* 6. SPI (Serial Peripheral Interface)
+*********************************/
+
+/********************************
+* 7. DMA (Direct Memory Access)
+*********************************/
+
+/********************************
+* 8. Timer
+*********************************/
+
+/********************************
+* 9. ADC (Analog to Digital Converter)
+*********************************/
+
+/********************************
+* 10. PWM (Pulse Width Modulation)
+*********************************/
+
+/********************************
+* 11. CAN (Controlled Area Network)
+*********************************/
+
+/********************************
+* 12. Watchdog timer
+*********************************/
+
 
 ```
 ## Further Reading
