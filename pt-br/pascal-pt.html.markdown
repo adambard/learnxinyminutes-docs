@@ -2,7 +2,9 @@
 language: Pascal
 filename: learnpascal.pas
 contributors:
-    - ["Raul Almeida", "http://github.com/almeidaraul"]
+	- ["Ganesha Danu", "https://github.com/blinfoldking"]
+	- ["Keith Miyake", "https//github.com/kaymmm"]
+    - ["Raul Almeida", "https://github.com/almeidaraul"]
 ---
 
 
@@ -11,7 +13,8 @@ fonte : [wikipédia](https://pt.wikipedia.org/wiki/Pascal_(linguagem_de_programa
 
 
 
-Para compilar e executar um programa em Pascal, você pode usar o freepascal, um compilador gratuito. [Faça o download aqui](https://www.freepascal.org/)
+Para compilar e executar um programa em Pascal, você pode usar o freepascal, 
+um compilador gratuito. [Faça o download aqui](https://www.freepascal.org/)
 
 ```pascal
 //Corpo de um programa em Pascal
@@ -22,7 +25,8 @@ Para compilar e executar um programa em Pascal, você pode usar o freepascal, um
 }
 
 //cabeçalho do programa
-PROGRAM aprendendo_pascal; //<-- não esqueça o ponto e vírgula. O nome do programa deve começar com uma letra.
+PROGRAM aprendendo_pascal; //<-- não esqueça o ponto e vírgula. O nome do 
+programa deve começar com uma letra.
 
 CONST
     {
@@ -40,8 +44,11 @@ VAR
 //programa de fato
 BEGIN
     {
-        aqui ficam todas as instruções que não pertencem nem a funções nem a procedimentos
-		blocos de código começam com BEGIN e terminam com END (como as chaves em C)
+        aqui ficam todas as instruções que não pertencem nem a funções 
+		nem a procedimentos 
+		
+		blocos de código começam com BEGIN e terminam com END 
+		(como as chaves em C)
     }
 END. //o "end" no final do programa requer um ponto final.
 ```
@@ -65,16 +72,20 @@ PROGRAM Learn_More;
 CONST
     PI = 3.141592654;
     GNU = 'GNU''s Not Unix';
-        // a convenção é usar caixa alta para constantes
-        // constantes têm valores fixos que só podem ser alterados antes da compilação
-        // constantes podem ser de qualquer tipo nativo (integer, real, boolean, char, string)
+        { a convenção é usar caixa alta para constantes
+          
+		  constantes têm valores fixos que só podem ser alterados 
+		  antes da compilação
+          
+		  constantes podem ser de qualquer tipo nativo (integer, real, boolean, 
+		  char, string)
 
 TYPE
     vet_char : array [0..255] of CHAR;
-        // isso declara um novo tipo de variável, vet_char, que tem 256 caracteres
+        // isso declara um novo tipo de variável, vet_char, com 256 caracteres
     vet_multd : array of array of INTEGER;
         // vetores de vetores são vetores multidimensionais
-        // pode-se definir vetores de tamanho 0 (daí, usa-se alocação dinâmica)
+        // use vetores de tamanho 0 (daí, usa-se alocação dinâmica)
         // vetores do tipo vet_multd são de duas dimensões
 
 //declarando variáveis
@@ -91,14 +102,14 @@ VAR
            // uma variável que guarda um caractere
            // caracteres têm 8 bits 
     str  : STRING;
-           // esse tipo de variável não é padrão, mas é incluído na maioria dos compiladores
+           // STRING não é um tipo padrão, mas vem na maioria dos compiladores
            // string é um vetor de caracteres com tamanho padrão de 255 elementos
     s    : STRING[50];
-           // você pode especificar o tamanho de uma string desta maneira para otimizar o uso de memória
+           // especificar o tamanho de uma string assim otimiza o uso de memória
     my_str: vet_char;
            // aqui, uma variável de um tipo personalizado declarado acima
     my_2d : vet_multd;
-           // vetores de alocação dinâmica de memória precisam receber um tamanho antes de serem usados
+           // defina o tamanho de vetores dinâmicos antes de usá-los
 
 // outros tipos de dados (pascal é uma linguagem fortemente tipada)
 
@@ -127,11 +138,12 @@ BEGIN
     str := 'apple';
     bool := true;
     //pascal não é case-sensitive (não diferencia maiúsculas de minúsculas)
-	//uma opção de organização é usar maiúsculas para termos da linguagem (BEGIN, END, INTEGER, etc) e constantes
-    //aritmética
+	// uma opção de organização é usar maiúsculas para termos da linguagem 
+	// (BEGIN, END, INTEGER, etc) e constantes
+    // aritmética
     int := 1 + 1; // int deixa de ser 1 e passa a ser 2
     int := int + 1; // int = 2 + 1 = 3;
-    int := 4 DIV 2; //int = 2 (DIV é uma divisão inteira, ou seja, o resto é "jogado fora")
+    int := 4 DIV 2; //int = 2 (DIV é uma divisão inteira - ignora o resto) 
     int := 3 DIV 2; //int = 1
     int := 1 DIV 2; //int = 0
 
@@ -145,7 +157,8 @@ BEGIN
     c := str[1]; //acessando elementos de um vetor: vetor[índice do elemento]
     str := 'hello' + 'world'; //concatenção de strings
 
-    my_str[0] := 'a'; // só se pode atribuir valores a vetores elemento por elemento (não o vetor inteiro de uma vez)
+    my_str[0] := 'a'; { só se pode atribuir valores a vetores elemento 
+						por elemento (não o vetor inteiro de uma vez) }
 
     // LAÇOS
 	WHILE (ch != 'a') DO
@@ -155,10 +168,15 @@ BEGIN
 				writeln('ch é igual a c');
 		END;
 	
-	SETLENGTH(my_2d,10,10); // inicialização de um vetor com alocação dinâmica de memória; my_2d vira um 10x10 
-    FOR c := 0 to 9 DO // vetores começam em 0 e terminam em tamanho-1 (exceto se, na declaração do tipo, forem especificados valores diferentes)
-        FOR d := 0 to 9 DO // a variável usada em um laço FOR deve ter sido declarada no cabeçalho do programa
-        my_2d[c,d] := c * d; // acessam-se elementos de vetores multidimensionais com [dimensão1, dimensão2, dimensão3...]
+	SETLENGTH(my_2d,10,10); 
+	// inicialização de um vetor com alocação dinâmica; my_2d vira um 10x10 
+    FOR c := 0 to 9 DO 
+		{ vetores começam em 0 e terminam em tamanho-1
+		  (exceto se, declarando o tipo, forem especificados valores diferentes) }
+        FOR d := 0 to 9 DO 
+			// a variável usada em um laço FOR deve ter sido declarada no cabeçalho
+        my_2d[c,d] := c * d; 
+			// acessam-se elementos de vetores multidimensionais com [d1, d2, d3...]
 	
 
 END.
@@ -184,7 +202,14 @@ FUNCTION fatorial_recursiva(CONST a: INTEGER) : INTEGER;
 //    local_a : INTEGER;
 
 BEGIN
-	// obs: o ELSE só funciona se não houver ponto e vírgula no bloco do IF (exemplo: IF a THEN writeln('a'); ELSE writeln('b') é um programa que não compila)
+	{ O bloco ELSE só funciona se não houver ponto e vírgula no bloco do IF 
+	  exemplo: 
+	  	IF a THEN
+			writeln('a'); 
+		ELSE 
+			writeln('b'); 
+		Isso não permitiria que o programa compilasse }
+
     IF a >= 1 THEN
     // o valor de retorno é atribuído como se a função fosse uma variável
         fatorial_recursiva := a * fatorial_recursiva(a-1)
@@ -196,8 +221,12 @@ END; // o END de funções e procedimentos recebe ponto e vírgula
 PROCEDURE salvainteiro(VAR i : INTEGER; inutil : INTEGER);
 { recebe entrada do usuário e salva na variável i
   passagem de valor:
-	por referência - "VAR i: integer"; implica que alterações na variável i dentro da função são guardadas para o escopo de todo o programa
-	por valor - "inutil: integer"; implica que o valor do argumento é copiado e alterações na variável inutil não são guardadas
+
+	POR REFERÊNCIA - "VAR i: integer"; implica que alterações na variável i
+	dentro da função são guardadas para o escopo de todo o programa
+
+	POR VALOR - "inutil: integer"; implica que o valor do argumento é copiado 
+	e alterações na variável inutil não são guardadas
 }
 
 BEGIN
@@ -211,10 +240,11 @@ BEGIN // programa principal
     salvainteiro(i, inutil);
 
 	// escrevendo i! 
-    WRITELN(i, '! = ', factorial_recursion(i)); // escreve e quebra linha; valores numéricos são automaticamente convertidos para texto na escrita
+    WRITELN(i, '! = ', factorial_recursion(i)); // escreve e quebra linha
+	// valores numéricos são automaticamente convertidos para texto na escrita
 
-    // escrevendo o valor de inutil
-    WRITELN('inutil = ', inutil); // sempre vai escrever 3, já que o valor de inutil não é alterado por salvainteiro
+    // escrever valor de inutil (sempre 3, já que salvainteiro não a altera)
+    WRITELN('inutil = ', inutil); 
 END.
 
 ```
