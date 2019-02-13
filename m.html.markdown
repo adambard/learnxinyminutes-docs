@@ -125,7 +125,7 @@ w !,^cars
 w !,^cars("Tesla")
 ; null value - there's no value assigned to this node but it has children
 w !,^cars("Tesla",1,"Name")
-; Model X
+; Model 3
 ```
 
 Arrays are automatically sorted in order. Take advantage of the built-in sorting by setting your value of interest as the last child subscript of an array rather than its value.
