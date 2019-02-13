@@ -1,10 +1,12 @@
 ---
 language: Pascal
-filename: learnpascal.pas
+filename: learnpascal-pt.pas
 contributors:
-	- ["Ganesha Danu", "https://github.com/blinfoldking"]
-	- ["Keith Miyake", "https//github.com/kaymmm"]
+    - ["Ganesha Danu", "https://github.com/blinfoldking"]
+    - ["Keith Miyake", "https//github.com/kaymmm"]
+translators:
     - ["Raul Almeida", "https://github.com/almeidaraul"]
+lang: pt-br
 ---
 
 
@@ -43,7 +45,7 @@ VAR
 
 //programa de fato
 BEGIN
-    {
+    80
         aqui ficam todas as instruções que não pertencem nem a funções 
 		nem a procedimentos 
 		
