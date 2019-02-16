@@ -328,7 +328,7 @@ filled_dict["four"] = 4  # now, filled_dict["four"] => 4
 filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
 
-# You can declare sets (which are like unordered lists that cannot contain duplicated values) using the set object.
+# You can declare sets (which are like unordered lists that cannot contain duplicate values) using the set object.
 empty_set = set()
 # Initialize a "set()" with a bunch of values
 some_set = set([1, 2, 2, 3, 4])  # some_set is now set([1, 2, 3, 4])
