@@ -1,6 +1,7 @@
 ---
 category: tool
 tool: p5
+name: p5
 contributors:
     - ["Amey Bhavsar", "https://github.com/ameybhavsar24"]
 filename: p5.js
