@@ -46,6 +46,13 @@ div(5, 2)  # => 2    # for a truncated result, use div
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
+# Julia (unlike Python for instance) has integer under/overflow
+10^19      # => -8446744073709551616
+# use bigint or floating point to avoid this
+big(10)^19 # => 10000000000000000000
+1e19       # => 1.0e19
+10.0^19    # => 1.0e19
+
 # Bitwise Operators
 ~2         # => -3 # bitwise not
 3 & 5      # => 1  # bitwise and
