@@ -7,8 +7,8 @@ contributors:
 ---
 
 Haxe is a web-oriented language that provides platform support for C++, C#,
-Swf/ActionScript, Javascript, Java, PHP, Python, Lua, Hashlink and Neko byte code
-(the latter two also written by the Haxe author). Note that this guide is for
+Swf/ActionScript, Javascript, Java, PHP, Python, Lua, HashLink, and Neko byte code
+(the latter two being also written by the Haxe author). Note that this guide is for
 Haxe version 3.  Some of the guide may be applicable to older versions, but it is
 recommended to use other references.
 
