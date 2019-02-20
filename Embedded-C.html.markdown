@@ -10,7 +10,7 @@ This is **NOT** a C programming tutorial, you can learn c from [here](https://le
 Here, I will talk about the microcontrollers related stuff, so hold you datasheet and let's start.
 I will be using TM4C123XXX Arm Cortex-M4 Tiva C series' [datasheet](https://www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf) but the ideas are similar in all microcontrollers. 
 
-Your feedback is appreciated, you can contact me [Here](https://github.com/ahegazy)
+Your feedback is appreciated, you can contact me [Here](https://ahegazy.github.io)
 
 ### TableOfContent @TODO 
 - [x] BitMasking
@@ -105,9 +105,74 @@ if( GET_BITS( foo, BIT(4) ) ){
   /* True if bit 4 (5th bit) is 1 (binary: xxx1xxxx)*/
 }
 
+/*
+* NOTES regarding the Micro controllers in general.
+*/
+/*
+* Every controller consists of some registers you'll need to configure to make it work, 
+* Every thing needed is mostley mentioned in the datasheet,
+* Registers are memory mapped, so you'll control them by writing in their respective address
+* or reading from it.
+* Every vendor provides a hardware memory mapping macros file contains the register and its address.
+* you can find our kits TivaC-tm4c123 here < https://github.com/ahegazy/C/blob/master/TivaC-lcdDriver/tm4c123gh6pm.h > or search for yours online. 
+* I will be including and using it directly without mentioning.
+*/
+
+
 /********************************
 * 2. GPIO (General Purpose Input/Output)
 *********************************/
+/* The GPIO has about 35 register, you need to configure a handful of them depending on your application, I'll show you the way around the datasheet and you can apply the same technique for every thing else. 
+*/
+
+/* we will be deriving a LED to toggle depending on PushButton push.
+* Our LED is connected to PORT F, Pin 2
+* Our PushButton is connected to PORT F, Pin 4
+* NOTE: Those are the built-in button and LED in the kit.
+*/
+/* We will be following the Initialization and Configuration section in the datasheet.*/
+/* first we include our HW address macros.*/
+#inlude "tm4c123gh6pm.h"
+
+int main(void){
+  /* Initialization. */
+  
+    /* Enanbe the clock in the port F, the 6th port*/
+    SYSCTL_RCGCGPIO_R |= 1 << 5; 
+
+    /* LED PF2 */
+    GPIO_PORTF_DIR_R |= 1 << 2;  /* set the direction in bit 4 as output.*/
+    GPIO_PORTF_AFSEL_R &= ~(1 << 2); /* set the alternate function as GPIO .. 0*/
+    GPIO_PORTF_DR2R_R |= 1 << 2; /* set the output current 2mA for the LED.*/
+    GPIO_PORTF_DEN_R |= 1 << 2; /* Enable Digital control in this pin NOT analog.*/
+
+    /* we can use our macros too, it'll be using them from now on.*/
+    /* ACTIVE-LOW push button PF4 */
+    CLR_BITS(GPIO_PORTF_DIR_R, (1 << 4)); /* set the direction in bit 4 as input.*/
+    CLR_BITS(GPIO_PORTF_AFSEL_R, (1 << 4)); /* set the alternate function as GPIO .. 0*/
+    SET_BITS(GPIO_PORTF_DEN_R, (1 << 4)); /* Enable Digital control in this pin NOT analog.*/
+    SET_BITS(GPIO_PORTF_PUR_R, (1 << 4)); /* Enable a pullup resistor connected to the button to prevent floating input.*/
+
+    /* Now let's light the LED, by writing 1 on its respective pin.*/
+    GPIO_PORTF_BIT_DATA(2) = 0xff;
+    
+    /* NOTE: The previous macro shifts the pin number to the right by two location, 
+    * as per the data sheet PAGE 654, section 10.2.1.2 DATA Register operation,
+    * which says the for the efficiency every pin/bit is controlled directly by using
+    * bits [9:2] as a mask and the 1st two bits are zeros, so software can modify individual
+    * GPIO pins in a single instruction instead of read-modify-write operations. */
+
+    /* now let's get to the control.*/
+    while(1){
+      /* if the button is push, toggle the led.*/
+      if( GPIO_PORTF_BIT_DATA(4) == 0){
+        TOGGLE_BITS(GPIO_PORTF_BIT_DATA(2), 0xff);
+      }
+    }
+}
+
+/* That's it, we controlled a led by simply reading the datasheet initialization seciton
+* We can control all peripherals using the same approach, that's the beauty in this datasheet.*/
 
 /********************************
 * 3. Interrupt
