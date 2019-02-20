@@ -17,7 +17,8 @@ recommended to use other references.
    Welcome to Learn Haxe 3 in 15 minutes.  http://www.haxe.org
    This is an executable tutorial.  You can compile and run it using the haxe
    compiler, while in the same directory as LearnHaxe.hx:
-   $> haxe -main LearnHaxe3 -x out
+   
+       $ haxe -main LearnHaxe3 --interp
 
    Look for the slash-star marks surrounding these paragraphs.  We are inside
    a "Multiline comment".  We can leave some notes here that will get ignored
@@ -98,7 +99,7 @@ class LearnHaxe3 {
         // Trace can handle any type of value or object.  It will try to print
         // a representation of the expression as best it can.  You can also
         // concatenate strings with the "+" operator:
-        trace( " Integer: " + 10 + " Float: " + 3.14 + " Boolean: " + true);
+        trace("Integer: " + 10 + " Float: " + 3.14 + " Boolean: " + true);
 
         // In Haxe, it's required to separate expressions in the same block with
         // semicolons.  But, you can put two expressions on one line:
@@ -215,7 +216,7 @@ class LearnHaxe3 {
         trace((8 / 3) + " is the value for (8 / 3) (a Float)");
         trace((12 % 4) + " is the value for (12 % 4)");
 
-        //basic comparison
+        // basic comparison
         trace((3 == 2) + " is the value for 3 == 2");
         trace((3 != 2) + " is the value for 3 != 2");
         trace((3 >  2) + " is the value for 3 > 2");
@@ -225,15 +226,13 @@ class LearnHaxe3 {
 
         // standard bitwise operators
         /*
-        
-        ~       Unary bitwise complement
-        <<      Signed left shift
-        >>      Signed right shift
-        >>>     Unsigned right shift
-        &       Bitwise AND
-        ^       Bitwise exclusive OR
-        |       Bitwise inclusive OR
-        
+            ~       Unary bitwise complement
+            <<      Signed left shift
+            >>      Signed right shift
+            >>>     Unsigned right shift
+            &       Bitwise AND
+            ^       Bitwise exclusive OR
+            |       Bitwise inclusive OR
         */
 
         // increments
@@ -252,16 +251,16 @@ class LearnHaxe3 {
 
         // if statements
         var j = 10;
-        if (j == 10){
+        if (j == 10) {
             trace("this is printed");
-        } else if (j > 10){
+        } else if (j > 10) {
             trace("not greater than 10, so not printed");
         } else {
             trace("also not printed.");
         }
 
         // there is also a "ternary" if:
-        (j == 10) ?  trace("equals 10") : trace("not equals 10");
+        (j == 10) ? trace("equals 10") : trace("not equals 10");
 
         // Finally, there is another form of control structure that operates
         // at compile time:  conditional compilation.
@@ -282,7 +281,7 @@ class LearnHaxe3 {
 
         // while loop
         var k = 0;
-        while (k < 100){
+        while (k < 100) {
             // trace(counter); // will print out numbers 0-99
             k++;
         }
@@ -297,7 +296,7 @@ class LearnHaxe3 {
         // There is no c-style for loop in Haxe, because they are prone
         // to error, and not necessary.  Instead, Haxe has a much simpler
         // and safer version that uses Iterators (more on those later).
-        var m = [1,2,3];
+        var m = [1, 2, 3];
         for (val in m) {
             trace(val + " is the value for val in the m array");
         }
@@ -339,7 +338,7 @@ class LearnHaxe3 {
          */
         var my_dog_name = "fido";
         var favorite_thing  = "";
-        switch(my_dog_name){
+        switch(my_dog_name) {
             case "fido" : favorite_thing = "bone";
             case "rex"  : favorite_thing = "shoe";
             case "spot" : favorite_thing = "tennis ball";
@@ -387,14 +386,14 @@ class LearnHaxe3 {
         // You can convert strings to ints fairly easily.
 
         // string to integer
-        Std.parseInt("0"); // returns 0
-        Std.parseFloat("0.4"); // returns 0.4;
+        Std.parseInt("0");     // returns 0
+        Std.parseFloat("0.4"); // returns 0.4
 
         // integer to string
-        Std.string(0); // returns "0";
+        Std.string(0); // returns "0"
         // concatenation with strings will auto-convert to string.
-        0 + "";  // returns "0";
-        true + ""; // returns "true";
+        0 + "";    // returns "0"
+        true + ""; // returns "true"
         // See documentation for parsing in Std for more details.
 
 
@@ -425,8 +424,8 @@ class LearnHaxe3 {
            The other more extreme option is the "untyped" keyword:
          */
         untyped {
-            var x:Int = 'foo'; // this can't be right!
-            var y:String = 4;  // madness!
+            var x:Int = 'foo'; // This can't be right!
+            var y:String = 4;  // Madness!
         }
 
         /*
@@ -537,7 +536,7 @@ class BarClass {
 }
 
 // A simple interface to implement
-interface BarInterface{
+interface BarInterface {
     public function baseFunction(x:Int):String;
 }
 
@@ -581,7 +580,7 @@ class SimpleEnumTest {
 }
 
 // Enums go much further than simple states, we can also enumerate
-// *constructors*, but we'll need a more complex enum example
+// *constructors*, but we'll need a more complex enum example.
 enum ComplexEnum {
     IntEnum(i:Int);
     MultiEnum(i:Int, j:String, k:Float);
@@ -596,7 +595,7 @@ class ComplexEnumTest {
         var e1:ComplexEnum = IntEnum(4); // specifying the enum parameter
         // Now we can switch on the enum, as well as extract any parameters
         // it might of had.
-        switch(e1){
+        switch(e1) {
             case IntEnum(x) : trace('$x was the parameter passed to e1');
             default: trace("Shouldn't be printed");
         }
@@ -610,7 +609,7 @@ class ComplexEnumTest {
 
         // enums all the way down
         var e3 = ComplexEnumEnum(ComplexEnumEnum(MultiEnum(4, 'hi', 4.3)));
-        switch(e3){
+        switch(e3) {
             // You can look for certain nested enums by specifying them
             //  explicitly:
             case ComplexEnumEnum(ComplexEnumEnum(MultiEnum(i,j,k))) : {
@@ -624,7 +623,7 @@ class ComplexEnumTest {
 }
 
 class TypedefsAndStructuralTypes {
-    public static function example(){
+    public static function example() {
         // Here we're going to use typedef types, instead of base types.
         // At the top we've declared the type "FooString" to mean a "String" type.
         var t1:FooString = "some string";
@@ -653,9 +652,7 @@ class TypedefsAndStructuralTypes {
                 ?optionalString: String,
                 requiredInt: Int
            }
-         */
 
-        /*
            Typedefs work well with conditional compilation.  For instance,
            we could have included this at the top of the file:
 
