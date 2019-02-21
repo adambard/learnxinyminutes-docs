@@ -2,7 +2,7 @@
 language: clojure
 filename: learnclojure-tr.clj
 contributors:
-    - ["Adam Bard", "http://adambard.com/"
+    - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Seçkin KÜKRER", "https://leavenha.github.io"]
 ---
