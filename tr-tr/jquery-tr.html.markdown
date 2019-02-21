@@ -2,7 +2,7 @@
 category: tool
 tool: jquery
 contributors:
-    - ["Sawyer Charles", "https://github.com/xssc"]
+    - ["Seçkin KÜKRER", "https://github.com/leavenha"]
 filename: jquery.js
 ---
 
