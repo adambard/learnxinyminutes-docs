@@ -358,13 +358,6 @@ $1 == name {
     nlines++;
 }
 
-# Another special pattern is called END. It will run after processing all the
-# text files. Unlike BEGIN, it will only run if you've given it input to
-# process. It will run after all the files have been read and processed
-# according to the rules and actions you've provided. The purpose of it is
-# usually to output some kind of final report, or do something with the
-# aggregate of the data you've accumulated over the course of the script.
-
 # Un autre motif spécial est END. Il fonctionnera après le traitement de tous
 # les fichiers texte. Contrairement à BEGIN, il ne fonctionne que si vous lui
 # donnez une entrée à traiter. Il sera exécuté une fois que tous les fichiers
