@@ -46,7 +46,7 @@ import (
 	"io/ioutil" // Implementa algunas útiles funciones de E/S.
 	m "math"   // Biblioteca de matemáticas con alias local m.
 	"net/http" // Sí, ¡un servidor web!
-	"strconv"  // Conversiones de cadenas.
+	"strconv"  // Conversiones de strings.
 )
 
 // Definición de una función. `main` es especial. Es el punto de entrada
@@ -83,9 +83,9 @@ func aprendeMultiple(x, y int) (suma, producto int) {
 // Algunos tipos incorporados y literales.
 func aprendeTipos() {
 	// La declaración corta suele darte lo que quieres.
-	s := "¡Aprende Go!" // tipo cadena.
-	s2 := `Un tipo cadena "puro" puede incluir
-saltos de línea.` // mismo tipo cadena
+	s := "¡Aprende Go!" // tipo string.
+	s2 := `Un tipo string "puro" puede incluir
+saltos de línea.` // mismo tipo string
 
 	// Literal no ASCII. Los ficheros fuente de Go son UTF-8.
 	g := 'Σ' // Tipo rune, un alias de int32, alberga un carácter unicode.
@@ -99,39 +99,39 @@ saltos de línea.` // mismo tipo cadena
 	// Sintaxis de conversión con una declaración corta.
 	n := byte('\n') // byte es un alias para uint8.
 
-	// Los Arreglos tienen un tamaño fijo a la hora de compilar.
-	var a4 [4]int           // Un arreglo de 4 ints, iniciados a 0.
-	a3 := [...]int{3, 1, 5} // Un arreglo iniciado con un tamaño fijo de tres
+	// Los arrays tienen un tamaño fijo a la hora de compilar.
+	var a4 [4]int           // Un array de 4 ints, iniciados a 0.
+	a3 := [...]int{3, 1, 5} // Un array iniciado con un tamaño fijo de tres
 							// elementos, con valores 3, 1 y 5.
-	// Los Sectores tienen tamaño dinámico. Los arreglos y sectores tienen
-	// sus ventajas y desventajas pero los casos de uso para los sectores
+	// Los Slice tienen tamaño dinámico. Los arrays y slices tienen
+	// sus ventajas y desventajas pero los casos de uso para los slices
 	// son más comunes.
 	s3 := []int{4, 5, 9}     // Comparar con a3. No hay puntos suspensivos.
-	s4 := make([]int, 4)     // Asigna sectores de 4 ints, iniciados a 0.
+	s4 := make([]int, 4)     // Asigna slices de 4 ints, iniciados a 0.
 	var d2 [][]float64       // Solo declaración, sin asignación.
-	bs := []byte("a sector") // Sintaxis de conversión de tipo.
-	// Debido a que son dinámicos, los sectores pueden crecer bajo demanda.
-	// Para añadir elementos a un sector, se utiliza la función incorporada
+	bs := []byte("un slice") // Sintaxis de conversión de tipo.
+	// Debido a que son dinámicos, los slices pueden crecer bajo demanda.
+	// Para añadir elementos a un slice, se utiliza la función incorporada
 	// append().
-	// El primer argumento es el sector al que se está anexando. Comúnmente,
-	// la variable del arreglo se actualiza en su lugar, como en el 
+	// El primer argumento es el slice al que se está anexando. Comúnmente,
+	// la variable del array se actualiza en su lugar, como en el 
 	// siguiente ejemplo.
-	sec := []int{1, 2 , 3}      // El resultado es un sector de longitud 3.
-	sec = append(sec, 4, 5, 6)  // Añade 3 elementos. El sector ahora tiene una
+	sec := []int{1, 2 , 3}      // El resultado es un slice de longitud 3.
+	sec = append(sec, 4, 5, 6)  // Añade 3 elementos. El slice ahora tiene una
 								// longitud de 6.
-	fmt.Println(sec) // El sector actualizado ahora es [1 2 3 4 5 6]
-	// Para anexar otro sector, en lugar de la lista de elementos atómicos
-	// podemos pasar una referencia a un sector o un sector literal como
-	// este, con elipsis al final, lo que significa tomar un sector y
-	// desempacar sus elementos, añadiéndolos al sector sec.
+	fmt.Println(sec) // El slice actualizado ahora es [1 2 3 4 5 6]
+	// Para anexar otro slice, en lugar de la lista de elementos atómicos
+	// podemos pasar una referencia a un slice o un slice literal como
+	// este, con elipsis al final, lo que significa tomar un slice y
+	// extraer sus elementos, añadiéndolos al slice sec.
 	sec = append(sec, []int{7, 8, 9} ...) // El segundo argumento es un
-										  // sector literal.
-	fmt.Println(sec)  // El sector actualizado ahora es [1 2 3 4 5 6 7 8 9]
+										  // slice literal.
+	fmt.Println(sec)  // El slice actualizado ahora es [1 2 3 4 5 6 7 8 9]
 	p, q := aprendeMemoria() // Declara p, q para ser un tipo puntero a
 							 // int.
 	fmt.Println(*p, *q)      // * sigue un puntero. Esto imprime dos ints.
 
-	// Los Mapas son arreglos asociativos dinámicos, como los hash o
+	// Los Mapas son arrays asociativos dinámicos, como los hash o
 	// diccionarios de otros lenguajes.
 	m := map[string]int{"tres": 3, "cuatro": 4}
 	m["uno"] = 1
@@ -210,10 +210,10 @@ func aprendeControlDeFlujo() {
 		continue // No llega.
 	}
 
-	// Puedes usar `range` para iterar en un arreglo, un sector, una
-	// cadena, un mapa o un canal.
-	// `range` devuelve o bien, un canal o de uno a dos valores (arreglo,
-	// sector, cadena y mapa).
+	// Puedes usar `range` para iterar en un array, un slice, un
+	// string, un mapa o un canal.
+	// `range` devuelve o bien, un canal o de uno a dos valores (array,
+	// slice, string y mapa).
 	for clave, valor := range map[string]int{"uno": 1, "dos": 2, "tres": 3} {
 		// por cada par en el mapa, imprime la clave y el valor
 		fmt.Printf("clave=%s, valor=%d\n", clave, valor)
@@ -266,7 +266,7 @@ func aprendeFuncionFabrica() {
 // en Go con funciónes literales que aceptan argumentos.
 func instruccionFabrica(micadena string) func(antes, despues string) string {
 	return func(antes, despues string) string {
-		return fmt.Sprintf("¡%s %s %s!", antes, micadena, despues) // nueva cadena
+		return fmt.Sprintf("¡%s %s %s!", antes, micadena, despues) // nuevo string
 	}
 }
 
@@ -322,7 +322,7 @@ func aprendeInterfaces() {
 // Las funciones pueden tener número variable de argumentos.
 func aprendeNumeroVariableDeParametros(misCadenas ...interface{}) {
 	// Itera en cada valor de los argumentos variables.
-	// El espacio en blanco aquí omite el índice del argumento arreglo.
+	// El espacio en blanco aquí omite el índice del argumento array.
 	for _, parametro := range misCadenas {
 		fmt.Println("parametro:", parametro)
 	}
@@ -359,23 +359,23 @@ func inc(i int, c chan int) {
 
 // Utilizaremos inc para incrementar algunos números concurrentemente.
 func aprendeConcurrencia() {
-	// Misma función make utilizada antes para crear un sector. Make asigna
-	// e inicia sectores, mapas y canales.
+	// Misma función make utilizada antes para crear un slice. Make asigna
+	// e inicia slices, mapas y canales.
 	c := make(chan int)
-	// Inicia tres rutinasgo concurrentes. Los números serán incrementados
+	// Inicia tres goroutines concurrentes. Los números serán incrementados
 	// concurrentemente, quizás en paralelo si la máquina es capaz y está
 	// correctamente configurada. Las tres envían al mismo canal.
-	go inc(0, c) // go es una instrucción que inicia una nueva rutinago.
+	go inc(0, c) // go es una instrucción que inicia una nueva goroutine.
 	go inc(10, c)
 	go inc(-805, c)
 	// Lee los tres resultados del canal y los imprime.
 	// ¡No se puede saber en que orden llegarán los resultados!
-	fmt.Println(<-c, <-c, <-c) // Canal a la derecha, <- es el operador
+	fmt.Println(<-c, <-c, <-c) // Cuando el canal está a la derecha, <- es el operador
 										// "recibe".
 
-	cs := make(chan string)       // Otro canal, este gestiona cadenas.
-	ccs := make(chan chan string) // Un canal de canales cadena.
-	go func() { c <- 84 }()       // Inicia una nueva rutinago solo para
+	cs := make(chan string)       // Otro canal, este gestiona strings.
+	ccs := make(chan chan string) // Un canal de canales de strings.
+	go func() { c <- 84 }()       // Inicia una nueva goroutine solo para
 											// enviar un valor.
 	go func() { cs <- "verboso" }() // Otra vez, para cs en esta ocasión.
 	// Select tiene una sintaxis parecida a la instrucción switch pero cada
@@ -385,13 +385,13 @@ func aprendeConcurrencia() {
 	case i := <-c: // El valor recibido se puede asignar a una variable,
 		fmt.Printf("es un %T", i)
 	case <-cs:     // o el valor se puede descartar.
-		fmt.Println("es una cadena")
+		fmt.Println("es un string")
 	case <-ccs:    // Canal vacío, no está listo para la comunicación.
 		fmt.Println("no sucedió.")
 	}
 
 	// En este punto un valor fue devuelto de c o cs. Una de las dos
-	// rutinasgo que se iniciaron se ha completado, la otrá permancerá
+	// goroutines que se iniciaron se ha completado, la otrá permancerá
 	// bloqueada.
 
 	aprendeProgramacionWeb() // Go lo hace. Tú también quieres hacerlo.
@@ -399,7 +399,7 @@ func aprendeConcurrencia() {
 
 // Una simple función del paquete http inicia un servidor web.
 func aprendeProgramacionWeb() {
-// El primer parámetro es la direccinón TCP a la que escuchar.
+// El primer parámetro es la dirección TCP a la que escuchar.
 	// El segundo parámetro es una interfaz, concretamente http.Handler.
 	go func() {
 		err := http.ListenAndServe(":8080", par{})
@@ -408,7 +408,7 @@ func aprendeProgramacionWeb() {
 	consultaAlServidor()
 }
 
-// Hace un http.Handler de par implementando su único método, ServeHTTP.
+// Hace que par sea de tipo http.Handler implementando su único método, ServeHTTP.
 func (p par) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// Sirve datos con un método de http.ResponseWriter.
 	w.Write([]byte("¡Aprendiste Go en Y minutos!"))
@@ -425,7 +425,7 @@ func consultaAlServidor() {
 
 ## Más información
 
-La raíz de todas las cosas sobre Go es el
+El origen de todas las cosas sobre Go es el
 [sitio web oficial de Go](http://golang.org/).
 Allí puedes seguir el tutorial, jugar interactivamente y leer mucho más.
 
@@ -434,7 +434,7 @@ sorprendentemente corta (como la definición del lenguaje Go en estos
 días).
 
 Puedes jugar con el código en el
-[parque de diversiones Go](https://play.golang.org/p/ncRC2Zevag).  ¡Trata
+[Go playground](https://play.golang.org/p/ncRC2Zevag).  ¡Trata
 de cambiarlo y ejecutarlo desde tu navegador!  Ten en cuenta que puedes
 utilizar [https://play.golang.org]( https://play.golang.org) como un
 [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) para probar
