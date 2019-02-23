@@ -15,6 +15,7 @@ translators:
     - ["Adrian Espinosa", "http://www.adrianespinosa.com"]
     - ["Jesse Johnson", "https://github.com/holocronweaver"]
     - ["Nacho Pacheco -- Feb/2015", "https://github.com/gitnacho"]
+    - ["Pablo Arranz", "https://github.com/arranzropablo"]
 ---
 
 Go fue creado por la necesidad de hacer el trabajo rápidamente. No es la
@@ -56,18 +57,18 @@ func main() {
 	fmt.Println("¡Hola mundo!")
 
 	// Llama a otra función de este paquete.
-	másAlláDelHola()
+	masAllaDelHola()
 }
 
 // Las funciones llevan parámetros entre paréntesis.
 // Si no hay parámetros, los paréntesis siguen siendo obligatorios.
-func másAlláDelHola() {
+func masAllaDelHola() {
 	var x int // Declaración de una variable.
  	          // Las variables se deben declarar antes de utilizarlas.
 	x = 3     // Asignación de variable.
 	// Declaración "corta" con := para inferir el tipo, declarar y asignar.
 	y := 4
-	suma, producto := aprendeMúltiple(x, y) // La función devuelve dos
+	suma, producto := aprendeMultiple(x, y) // La función devuelve dos
 											// valores.
 	fmt.Println("suma:", suma, "producto:", producto) // Simple salida.
 	aprendeTipos()                        // < y minutos, ¡aprende más!
@@ -75,7 +76,7 @@ func másAlláDelHola() {
 
 // Las funciones pueden tener parámetros y (¡múltiples!) valores de
 // retorno.
-func aprendeMúltiple(x, y int) (suma, producto int) {
+func aprendeMultiple(x, y int) (suma, producto int) {
     return x + y, x * y // Devuelve dos valores.
 }
 
@@ -170,7 +171,7 @@ func aprendeMemoria() (p, q *int) {
 	return &s[3], &r     // & toma la dirección de un objeto.
 }
 
-func cálculoCaro() float64 {
+func calculoCaro() float64 {
 	return m.Exp(10)
 }
 
@@ -220,7 +221,7 @@ func aprendeControlDeFlujo() {
 
 	// Como en for, := en una instrucción if significa declarar y asignar
 	// primero, luego comprobar y > x.
-	if y := cálculoCaro(); y > x {
+	if y := calculoCaro(); y > x {
 		x = y
     }
 	// Las funciones literales son "cierres".
@@ -247,25 +248,25 @@ func aprendeControlDeFlujo() {
 	goto encanto
 encanto:
 
-	aprendeFunciónFábrica() // func devolviendo func es divertido(3)(3)
+	aprendeFuncionFabrica() // func devolviendo func es divertido(3)(3)
 	aprendeADiferir()       // Un rápido desvío a una importante palabra clave.
 	aprendeInterfaces()     // ¡Buen material dentro de poco!
 }
 
-func aprendeFunciónFábrica() {
+func aprendeFuncionFabrica() {
 	// Las dos siguientes son equivalentes, la segunda es más práctica
-	fmt.Println(instrucciónFábrica("día")("Un bello", "de verano"))
+	fmt.Println(instruccionFabrica("día")("Un bello", "de verano"))
 
-	d := instrucciónFábrica("atardecer")
+	d := instruccionFabrica("atardecer")
 	fmt.Println(d("Un hermoso", "de verano"))
 	fmt.Println(d("Un maravilloso", "de verano"))
 }
 
 // Los decoradores son comunes en otros lenguajes. Lo mismo se puede hacer
 // en Go con funciónes literales que aceptan argumentos.
-func instrucciónFábrica(micadena string) func(antes, después string) string {
-	return func(antes, después string) string {
-		return fmt.Sprintf("¡%s %s %s!", antes, micadena, después) // nueva cadena
+func instruccionFabrica(micadena string) func(antes, despues string) string {
+	return func(antes, despues string) string {
+		return fmt.Sprintf("¡%s %s %s!", antes, micadena, despues) // nueva cadena
 	}
 }
 
@@ -315,19 +316,19 @@ func aprendeInterfaces() {
 	fmt.Println(p) // Salida igual que arriba. Println llama al método
 				   // String.
 	fmt.Println(i) // Salida igual que arriba.
-	aprendeNúmeroVariableDeParámetros("¡gran", "aprendizaje", "aquí!")
+	aprendeNumeroVariableDeParametros("¡gran", "aprendizaje", "aquí!")
 }
 
 // Las funciones pueden tener número variable de argumentos.
-func aprendeNúmeroVariableDeParámetros(misCadenas ...interface{}) {
+func aprendeNumeroVariableDeParametros(misCadenas ...interface{}) {
 	// Itera en cada valor de los argumentos variables.
 	// El espacio en blanco aquí omite el índice del argumento arreglo.
-	for _, parámetro := range misCadenas {
-		fmt.Println("parámetro:", parámetro)
+	for _, parametro := range misCadenas {
+		fmt.Println("parametro:", parametro)
 	}
 
 	// Pasa el valor de múltiples variables como parámetro variadic.
-	fmt.Println("parámetros:", fmt.Sprintln(misCadenas...))
+	fmt.Println("parametros:", fmt.Sprintln(misCadenas...))
 	aprendeManejoDeError()
 }
 
@@ -393,11 +394,11 @@ func aprendeConcurrencia() {
 	// rutinasgo que se iniciaron se ha completado, la otrá permancerá
 	// bloqueada.
 
-	aprendeProgramaciónWeb() // Go lo hace. Tú también quieres hacerlo.
+	aprendeProgramacionWeb() // Go lo hace. Tú también quieres hacerlo.
 }
 
 // Una simple función del paquete http inicia un servidor web.
-func aprendeProgramaciónWeb() {
+func aprendeProgramacionWeb() {
 // El primer parámetro es la direccinón TCP a la que escuchar.
 	// El segundo parámetro es una interfaz, concretamente http.Handler.
 	go func() {
