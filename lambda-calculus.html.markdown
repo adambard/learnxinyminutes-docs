@@ -139,6 +139,7 @@ Take the church number 2 for example:
 `2 = λf.λx.f(f x)`
 
 For the inner part `λx.f(f x)`:
+
 ```
   λx.f(f x)
 = S (λx.f) (λx.(f x))          (case 3)
@@ -147,6 +148,7 @@ For the inner part `λx.f(f x)`:
 ```
 
 So:
+
 ```
   2
 = λf.λx.f(f x)
@@ -156,6 +158,7 @@ So:
 ```
 
 For the first argument `λf.(S (K f))`:
+
 ```
   λf.(S (K f))
 = S (λf.S) (λf.(K f))       (case 3)
@@ -164,6 +167,7 @@ For the first argument `λf.(S (K f))`:
 ```
 
 For the second argument `λf.(S (K f) I)`:
+
 ```
   λf.(S (K f) I)
 = λf.((S (K f)) I)
@@ -174,6 +178,7 @@ For the second argument `λf.(S (K f) I)`:
 ```
 
 Merging them up:
+
 ```
   2
 = S (λf.(S (K f))) (λf.(S (K f) I))
