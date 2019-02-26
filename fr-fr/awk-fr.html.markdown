@@ -10,13 +10,12 @@ lang: fr-fr
 ---
 
 AWK est un outil standard présent dans chaque système UNIX conforme aux normes POSIX.
-C’est un outil en ligne de commande qui ressemble au Perl et qui est excelant dans les tâches de traitement de fichiers texte.
-Sa syntaxe est proche de langage C, mais sans point virgule obligatoire lorsque la commande est écrite sur plusieurs lignes, sans gestion manuelle de la mémoire, ou de typage statique.
+C’est un outil en ligne de commande qui ressemble au Perl et qui est excellent dans les tâches de traitement de fichiers texte.
 Vous pouvez l’appeler à partir d’un script shell, ou l’utiliser comme un langage de script autonome.
 
-Pourquoi utiliser AWK au lieu du langage Perl?
+Pourquoi utiliser AWK au lieu du langage Perl ?
 Principalement, car awk fait partie d'UNIX et est donc présent par défaut sur une très grande partie des systèmes d'exploitation Unix et Linux. 
-AWK est aussi plus facile à lire que le langage Perl; et est l'outil idéal pour ce qui concerne le traitement de texte simple. Notament le traitement de ceux qui necéssitent de lire des fichiers ligne par ligne; chaque ligne comportant des champs séparés par des délimiteurs.
+AWK est aussi plus facile à lire que le langage Perl ; et est l'outil idéal pour ce qui concerne le traitement de texte simple. Notamment le traitement de ceux qui necéssitent de lire des fichiers ligne par ligne ; chaque ligne comportant des champs séparés par des délimiteur.
 
 
 ```awk
@@ -25,14 +24,14 @@ AWK est aussi plus facile à lire que le langage Perl; et est l'outil idéal pou
 # Les commentaires commencent par un #
 
 
-# les programmes AWK consistent en une collection de modèles et d'actions
-pattern1 { action; }
-pattern2 { action; }
+# les programmes AWK consistent en une collection de règles et d'actions
+règle1 { action; }
+règle2 { action; }
 
-# Il y a une boucle implicite et AWK lit et analyse automatiquement chaque ligne de chaque fichier fourni.
+# AWK lit et analyse automatiquement chaque ligne de chaque fichier fourni.
 # Chaque ligne est divisée par un délimiteur FS qui est par défaut l'espace (plusieurs espaces ou une tabulation comptent pour un espace). Ce délimiteur peut être changer grâce à l'option -F ou être renseigné au début d'un bloc (exemple: FS = " ").
 
-# BEGIN est un modèle spécifique présent au début du programme où il faut mettre tout le code préliminaire avant de traiter les fichiers texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le point d’entrée principale du script.
+# BEGIN est une règle spécifique éxécutée au début du programme. C'est à cet endroit où vous metterez tout le code à executer avant de traiter les fichiers texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le point d’entrée principale du script.
 # A l'opposé de BEGIN, il existe le modèle END. Ce modèle est présent après chaque fin de fichier (EOF : End Of File).
 
 BEGIN {
@@ -40,7 +39,7 @@ BEGIN {
     # Les variables sont globales. Pas besoin de les déclarer.
     count = 0;
 
-    # les opérateurs sont identique au langage C et sa famille.
+    # les opérateurs sont identique au langage C et aux langages similaires (exemple: C#, C++)
     a = count + 1; # addition
     b = count - 1; # soustraction
     c = count * 1; # multiplication
@@ -62,8 +61,6 @@ BEGIN {
     # En tant qu'opérateur préfixé, c'est la valeur incrémentée qui est retournée
     ++a;
     --b;
-
-    # Notez qu'il n'y a pas de ponctuation telle que les points virgules pour terminer les instructions.
 
     # Instruction de contrôle
     if (conteur == 0)
@@ -125,7 +122,7 @@ BEGIN {
     if ("foo" in assoc)
         print "Fooey!";
 
-    # Vous pouvez aussi utilisez l'opérateur 'in' pour parcourir les clés d'un teableau
+    # Vous pouvez aussi utilisez l'opérateur 'in' pour parcourir les clés d'un tableau
     for (key in assoc)
         print assoc[key];
 
@@ -134,10 +131,10 @@ BEGIN {
         print ARGV[argnum];
 
     # Vous pouvez supprimer des éléments d'un tableau
-    # C'est utile pour empêcher AWK de supposer que certains arguments sont des fichiers à traiter.
+    # C'est utile pour empêcher AWK de supposer que certains arguments soient des fichiers à traiter.
     delete ARGV[1];
 
-    # Le nombre d'argument de la ligne de commande est dans une variable appellée ARGC
+    # Le nombre d'arguments de la ligne de commande est dans une variable appellée ARGC
     print ARGC;
 
     # AWK inclue trois catégories de fonction.
@@ -178,12 +175,12 @@ function arithmetic_functions(a, b, c,     d) {
     # Les racines carrées
     localvar = sqrt(a);
 
-    # Tronquer un nombre décimau en nombre entier
+    # Tronquer un nombre décimal en nombre entier
     localvar = int(5.34); # localvar => 5
 
-    # Les nombres aléatoire
-    srand(); # La graine est l'argument. Par défaut, il utilise l'heure du système du jour
-    localvar = rand(); # Nombres aléatoire entre 0 et 1.
+    # Les nombres aléatoires
+    srand(); # L'argument est la graine. Par défaut, il utilise l'heure du système du jour
+    localvar = rand(); # Nombre aléatoire entre 0 et 1.
 
     # Maintenant on retourne la valeur
     return localvar;
@@ -191,7 +188,7 @@ function arithmetic_functions(a, b, c,     d) {
 
 function string_functions(    localvar, arr) {
 
-    # AWK a certaines fonctions pour le traitement des chaînes de caractères,
+    # AWK a plusieurs fonctions pour le traitement des chaînes de caractères,
     # dont beaucoup reposent sur des expressions régulières.
 
     # Chercher et remplacer, la première occurence (sub) ou toutes les occurences (gsub)
@@ -202,7 +199,7 @@ function string_functions(    localvar, arr) {
 
     # Rechercher une chaîne de caractères qui correspond à une expression régulière
     # index() fait la même chose, mais n'autorise pas les expressions régulières
-    match(localvar, "t"); # => 4, puisque 't' est le quatrième caractères
+    match(localvar, "t"); # => 4, puisque 't' est le quatrième caractère
 
     # Séparer par un délimiteur
     n = split("foo-bar-baz", arr, "-"); # a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
@@ -237,7 +234,7 @@ function io_functions(    localvar) {
     # Vous pouvez le fermer
     close(outfile);
 
-    # Voici comment executer quelque chose dans le shell
+    # Voici comment exécuter quelque chose dans le shell
     system("echo foobar"); # => affiche foobar
 
     # Lire quelque chose depuis l'entrée standard et la stocker dans une variable locale
@@ -255,10 +252,9 @@ function io_functions(    localvar) {
 }
 
 # Comme dit au début, AWK consiste en une collection de modèles et d'actions.
-# Vous connaissiez déjà le modèle BEGIN. Les autres modèles ne sont utilisés
-# que si vous traitez des lignes à partir de fichiers ou de l'entrée standard (stdin).
-# Quand vous passez des arguments à AWK, ils sont considérés comme des noms de fichiers
-# à traiter.
+# Vous connaissez déjà les modèles BEGIN et END.Les autres modèles ne sont utilisés que si vous traitez 
+# des lignes à partir de fichiers ou de l'entrée standard (stdin).
+# Quand vous passez des arguments à AWK, ils sont considérés comme des noms de fichiers à traiter.
 # AWK les traitera tous dans l'ordre. Voyez les comme dans à une boucle implicite,
 # parcourant les lignes de ces fichiers.
 # Ces modèles et ces actions ressemblent à des instructions switch dans la boucle.
@@ -271,17 +267,17 @@ function io_functions(    localvar) {
 
     print;
 
-    # Pas d'argument! C'est parce que print a un défaut: $0.
+    # Pas d'argument ! C'est parce que print a un défaut : $0.
     # $0 est le nom de la ligne en cours de traitement. Il est créé automatiquement.
 
     # Vous devinez probablement qu'il existe d'autres variables $.
-    # Chaque ligne est divisée implicitement avant que chaque action soit executée, comme
+    # Chaque ligne est divisée implicitement avant que chaque action soit exécutée, comme
     # le fait le shell. Et, comme le shell, chaque champ est accessible avec un signe dollar
 
      # Ceci affichera les deuxième et quatrième champs de la ligne.
     print $2, $4;
 
-    # AWK définie automatiquement beaucoup d'autres variables qui peuvent vous aider
+    # AWK défini automatiquement beaucoup d'autres variables qui peuvent vous aider
     # à inspecter et traiter chaque ligne. La plus importante est NF
 
     # Affiche le nombre de champs de la ligne
@@ -340,12 +336,12 @@ $1 == name {
     # Ici, nous avons accès à certain nombre de variables utiles déjà préchargées:
     # $0 est la ligne entière
     # $3 est le troisième champ. Ici il correspond à l'age qui nous intéresse
-    # NF est le nombre de champs qui devrait être trois
+    # NF est le nombre de champs et vaut 3
     # NR est le nombre d'enregistrements (lignes) vus jusqu'à présent
     # FILENAME est le nom du fichier en cours de traitement
-    # FS est le champ séparateur, ici c'est " " (un espace)
+    # FS est séparateur de champs, ici c'est " " (un espace)
     # ...etc. Et beaucoup d'autre que vous pouvez connaître dans le manuel de man.
-    # Pour cela executer "man awk" dans votre terminal
+    # Pour cela exécutez "man awk" dans votre terminal
 
     # Garder une trace du total accumulé et du nombre de lignes correspondant.
     sum += $3;
