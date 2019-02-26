@@ -32,7 +32,7 @@ règle2 { action; }
 # Chaque ligne est divisée par un délimiteur FS qui est par défaut l'espace (plusieurs espaces ou une tabulation comptent pour un espace). Ce délimiteur peut être changer grâce à l'option -F ou être renseigné au début d'un bloc (exemple: FS = " ").
 
 # BEGIN est une règle spécifique éxécutée au début du programme. C'est à cet endroit où vous metterez tout le code à executer avant de traiter les fichiers texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le point d’entrée principale du script.
-# A l'opposé de BEGIN, il existe le modèle END. Ce modèle est présent après chaque fin de fichier (EOF : End Of File).
+# A l'opposé de BEGIN, il existe la règle END. Cette règle est présente après chaque fin de fichier (EOF : End Of File).
 
 BEGIN {
 
@@ -179,7 +179,10 @@ function arithmetic_functions(a, b, c,     d) {
     localvar = int(5.34); # localvar => 5
 
     # Les nombres aléatoires
-    srand(); # L'argument est la graine. Par défaut, il utilise l'heure du système du jour
+    srand(); 
+    # L'argument de la fonction srand() est la valeur de départ pour générer
+    # les nombres aléatoires . Par défaut, il utilise l'heure du système du jour
+    
     localvar = rand(); # Nombre aléatoire entre 0 et 1.
 
     # Maintenant on retourne la valeur
@@ -251,13 +254,13 @@ function io_functions(    localvar) {
     close(infile);
 }
 
-# Comme dit au début, AWK consiste en une collection de modèles et d'actions.
-# Vous connaissez déjà les modèles BEGIN et END.Les autres modèles ne sont utilisés que si vous traitez 
+# Comme dit au début, AWK consiste en une collection de règles et d'actions.
+# Vous connaissez déjà les règles BEGIN et END. Les autres règles ne sont utilisées que si vous traitez 
 # des lignes à partir de fichiers ou de l'entrée standard (stdin).
 # Quand vous passez des arguments à AWK, ils sont considérés comme des noms de fichiers à traiter.
 # AWK les traitera tous dans l'ordre. Voyez les comme dans à une boucle implicite,
 # parcourant les lignes de ces fichiers.
-# Ces modèles et ces actions ressemblent à des instructions switch dans la boucle.
+# Ces règles et ces actions ressemblent à des instructions switch dans la boucle.
 
 /^fo+bar$/ {
 
@@ -287,26 +290,30 @@ function io_functions(    localvar) {
     print $NF;
 }
 
-# Chaque modèle est en réalité un test vrai / faux.
-# L'expression régulière dans le dernier champ est également un test vrai / faux,
-# mais une partie de celle-ci est cachée. Si vous ne donnez pas de chaîne de caractères
-# à tester, cela signifie $0, la ligne en cours de traitement.
-# La version complète de ceci est:
-
-$0 ~ /^fo+bar$/ {
-    print "Equivalent du dernier champ";
-}
+# Chaque règle est en réalité un test conditionel. 
 
 a > 0 {
     # Ceci s’exécutera une fois pour chaque ligne, tant que le test est positif
 }
 
+# Les expressions régulières sont également des tests conditionels.
+#Si le test de l'expression régulières n'est pas vrais alors le bloc n'est pas executé
+$0 /^fobar/ { 
+   print "la ligne commance par fobar"  
+}
+
+# Dans le cas où vous voulez tester votre chaine de caractères sur la ligne en cours de traitement
+# $0 est optionnelle.
+
+/^[a-zA-Z0-9]$/ {
+    print "La ligne courante ne contient que des caractères alphanumériques.";
+}
+
+
+
 # Vous avez déjà une idée de ce que peut faire AWK.
-# Lire ligne par ligne des fichiers texte et executer un traitement à chacune de ces lignes.
-# Cela est si courant sous UNIX qu'AWK est un langage de script
-# qui fait tout cela pour vous sans que vous ayez à le demander.
-# Écrivez simplement les modèles et les actions en fonction de ce que vous avez en entrée
-# et ce que vous voulez en faire.
+# Parcourir un fichier texte ligne par ligne et exécuter des actions en fonction de règles établies
+# Cela est si courant sous UNIX qu'AWK est un langage de script.
 
 # Ce qui suit est un exemple rapide d'un petit script, pour lequel AWK est parfait.
 # Le script lit un nom à partir de l'entrée standard, puis affiche l'âge moyen de toutes les
