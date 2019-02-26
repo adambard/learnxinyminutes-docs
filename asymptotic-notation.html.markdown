@@ -110,7 +110,7 @@ Let's look to the definition of Big-O.
 3log n + 100 <= c * log n
 ```
 
-Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > <sub>0</sub>?
+Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > n<sub>0</sub>?
 
 ```
 3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)
