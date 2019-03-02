@@ -14,7 +14,7 @@ C’est un outil en ligne de commande qui ressemble au Perl et qui est excellent
 Vous pouvez l’appeler à partir d’un script shell, ou l’utiliser comme un langage de script autonome.
 
 Pourquoi utiliser AWK au lieu du langage Perl ?
-Principalement, car awk fait partie d'UNIX et est donc présent par défaut sur une très grande partie des systèmes d'exploitation Unix et Linux. 
+Principalement, car AWK fait partie d'UNIX et est donc présent par défaut sur une très grande partie des systèmes d'exploitation UNIX et Linux. 
 AWK est aussi plus facile à lire que le langage Perl ; et est l'outil idéal pour ce qui concerne le traitement de texte simple. Notamment le traitement de ceux qui necéssitent de lire des fichiers ligne par ligne ; chaque ligne comportant des champs séparés par des délimiteur.
 
 
@@ -31,7 +31,7 @@ règle2 { action; }
 # AWK lit et analyse automatiquement chaque ligne de chaque fichier fourni.
 # Chaque ligne est divisée par un délimiteur FS qui est par défaut l'espace (plusieurs espaces ou une tabulation comptent pour un espace). Ce délimiteur peut être changer grâce à l'option -F ou être renseigné au début d'un bloc (exemple: FS = " ").
 
-# BEGIN est une règle spécifique éxécutée au début du programme. C'est à cet endroit où vous metterez tout le code à executer avant de traiter les fichiers texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le point d’entrée principale du script.
+# BEGIN est une règle spécifique exécutée au début du programme. C'est à cet endroit que vous mettrez tout le code à exécuter avant de traiter les fichiers texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le point d’entrée principal du script.
 # A l'opposé de BEGIN, il existe la règle END. Cette règle est présente après chaque fin de fichier (EOF : End Of File).
 
 BEGIN {
@@ -39,7 +39,7 @@ BEGIN {
     # Les variables sont globales. Pas besoin de les déclarer.
     count = 0;
 
-    # les opérateurs sont identique au langage C et aux langages similaires (exemple: C#, C++)
+    # les opérateurs sont identiques au langage C et aux langages similaires (exemple: C#, C++)
     a = count + 1; # addition
     b = count - 1; # soustraction
     c = count * 1; # multiplication
@@ -118,7 +118,7 @@ BEGIN {
     multidim[1,0] = "baz";
     multidim[1,1] = "boo";
 
-    # Vous pourvez tester l'appartenance à un tableau
+    # Vous pouvez tester l'appartenance à un tableau
     if ("foo" in assoc)
         print "Fooey!";
 
@@ -156,7 +156,7 @@ function arithmetic_functions(a, b, c,     d) {
     # Les arguments d'une fonction sont locaux à cette fonction.
     # Et AWK vous permet de définir plus d'arguments à la fonction que nécessaire.
     # Il suffit donc de mettre une variable locale dans la déclaration de fonction,
-    # comme ci-dessus. En tant que convention, mettez quelques espaces supplémentaires
+    # comme ci-dessus. La convention veut que vous mettiez quelques espaces supplémentaires
     # pour faire la distinction entre les paramètres réels et les variables locales.
     # Dans cet exemple, a, b et c sont des paramètres réels,
     # alors que d est simplement une variable locale.
@@ -181,7 +181,7 @@ function arithmetic_functions(a, b, c,     d) {
     # Les nombres aléatoires
     srand(); 
     # L'argument de la fonction srand() est la valeur de départ pour générer
-    # les nombres aléatoires . Par défaut, il utilise l'heure du système du jour
+    # les nombres aléatoires . Par défaut, il utilise l'heure du système
     
     localvar = rand(); # Nombre aléatoire entre 0 et 1.
 
@@ -256,7 +256,7 @@ function io_functions(    localvar) {
 
 # Comme dit au début, AWK consiste en une collection de règles et d'actions.
 # Vous connaissez déjà les règles BEGIN et END. Les autres règles ne sont utilisées que si vous traitez 
-# des lignes à partir de fichiers ou de l'entrée standard (stdin).
+# des lignes à partir de fichiers ou l'entrée standard (stdin).
 # Quand vous passez des arguments à AWK, ils sont considérés comme des noms de fichiers à traiter.
 # AWK les traitera tous dans l'ordre. Voyez les comme dans à une boucle implicite,
 # parcourant les lignes de ces fichiers.
@@ -310,9 +310,7 @@ $0 /^fobar/ {
 }
 
 
-
-# Vous avez déjà une idée de ce que peut faire AWK.
-# Parcourir un fichier texte ligne par ligne et exécuter des actions en fonction de règles établies
+# AWK peut parcourir un fichier texte ligne par ligne et exécuter des actions en fonction de règles établies
 # Cela est si courant sous UNIX qu'AWK est un langage de script.
 
 # Ce qui suit est un exemple rapide d'un petit script, pour lequel AWK est parfait.
@@ -330,7 +328,7 @@ $0 /^fobar/ {
 
 BEGIN {
 
-    # Premièrement, on demande à l'utilisateur le prénom voulue
+    # Premièrement, on demande à l'utilisateur le prénom voulu
     print "Pour quel prénom vouldriez vous savoir l'age moyen ?";
 
     # On récupère la ligne à partir de l'entrée standard, pas de la ligne de commande
@@ -340,7 +338,7 @@ BEGIN {
 # Maintenant, pour chaque ligne dont le premier champ est le prénom donné
 $1 == name {
 
-    # Ici, nous avons accès à certain nombre de variables utiles déjà préchargées:
+    # Ici, nous avons accès à un certain nombre de variables utiles déjà préchargées :
     # $0 est la ligne entière
     # $3 est le troisième champ. Ici il correspond à l'age qui nous intéresse
     # NF est le nombre de champs et vaut 3
