@@ -1,5 +1,6 @@
 ---
-language: make
+category: tool
+tool: make
 contributors:
 - ["Robert Steed", "https://github.com/robochat"]
 - ["Jichao Ouyang", "https://github.com/jcouyang"]
