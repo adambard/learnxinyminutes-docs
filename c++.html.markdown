@@ -657,7 +657,7 @@ printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
 
 // The standard library provides a few exception types
 // (see http://en.cppreference.com/w/cpp/error/exception)
-// but any type can be thrown an as exception
+// but any type can be thrown as an exception
 #include <exception>
 #include <stdexcept>
 
