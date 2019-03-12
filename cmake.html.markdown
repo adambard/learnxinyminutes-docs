@@ -1,5 +1,6 @@
 ---
-language: cmake
+category: tool
+tool: cmake
 contributors:
     - ["Bruno Alano", "https://github.com/brunoalano"]
 filename: CMake
