@@ -4,8 +4,6 @@ contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
     - ["satory-ra", "https://github.com/satory-ra"]
-author: Brian Martin
-author_url: https://github.com/fitojb
 filename: learnvisualbasic-ru.vb
 lang: ru-ru
 ---
