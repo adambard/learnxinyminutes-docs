@@ -521,8 +521,8 @@ public class LearnJava {
         Rower trek = new Rower();
 
         // Wywoływanie metod klasy
-        trek.predkoscUp(3); // Zawsze używaj settera i gettera jako metod
-        trek.setCadence(100);
+        trek.predkoscZwieksz(3); // Zawsze używaj settera i gettera jako metod
+        trek.setPedalowanie(100);
 
         // toString zwraca reprezentację typu String tego obiektu.
         System.out.println("trek info: " + trek.toString());
@@ -532,9 +532,9 @@ public class LearnJava {
         // Dlatego zwykle odbywa się to w ten sposób:
         private static final Set<String> KRAJE = new HashSet<String>();
         static {
-           COUNTRIES.add("DANIA");
-           COUNTRIES.add("SZWECJA");
-           COUNTRIES.add("FINLANDIA");
+           KRAJE.add("DANIA");
+           KRAJE.add("SZWECJA");
+           KRAJE.add("FINLANDIA");
         }
 
         // Jest jednak sprytny sposób aby łatwiej osiągnąc ten sam efekt
@@ -655,7 +655,7 @@ class PennyFarthing extends Rower {
     // (w języku angielskim):
     // http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
-    public void setGear(int przerzutka) {
+    public void setPrzerzutka(int przerzutka) {
         this.przerzutka = 0;
     }
 }
@@ -777,10 +777,10 @@ class Pies extends Zwierze
     // Więcej w poście na SO: http://stackoverflow.com/questions/16313649/
     public static void main(String[] args)
     {
-        Dog pluto = new Dog();
-        pluto.makeSound();
-        pluto.eat();
-        pluto.printAge();
+        Pies pluto = new Pies();
+        pluto.dajGLos();
+        pluto.jedz();
+        pluto.wyswietlWiek();
     }
 }
 
@@ -806,7 +806,7 @@ public final class TygrysSzablozebny extends Zwierze
 }
 
 // Metody finalne
-public abstract class Ssak()
+public abstract class Ssak
 {
     // Składnia metody finalnej:
     // <dostępność> final <zwracany rodzaj> <nazwa funkcji>(<argumenty>)
@@ -826,7 +826,7 @@ public abstract class Ssak()
 // wartości wcześniej zdefiniowanych. Jako, że są to stałe, nazwy pól typu enum
 // są pisane wielkimi literami. W języku Java typ enum definiujemy przez użycie
 // słowa enum. Na przykład aby zdefiniować dni tygodnia:
-public enum dzielenie {
+public enum Dzien {
     PONIEDZIALEK, WTOREK, SRODA, CZWARTEK,
     PIATEK, SOBOTA, NIEDZIELA
 }
@@ -859,9 +859,9 @@ public class EnumTest {
     }
 
     public static void main(String[] args) {
-        EnumTest pierwszyDzien = new EnumTest(Day.PONIEDZIALEK);
+        EnumTest pierwszyDzien = new EnumTest(Dzien.PONIEDZIALEK);
         pierwszyDzien.opiszDzien(); // => Nie lubię poniedziałku!
-        EnumTest trzeciDzien = new EnumTest(Day.SRODA);
+        EnumTest trzeciDzien = new EnumTest(Dzien.SRODA);
         trzeciDzien.opiszDzien(); // => Środek tygodnia jest taki sobie.
     }
 }
@@ -957,12 +957,12 @@ public class Lambdas {
 
         // Powyższe bez użycia lambdy wyglądałoby tradycyjnie tak:
         for (String planet : planety.keySet()) {
-            System.out.format(orbits, planet, planety.get(planet));
+            System.out.format(orbity, planet, planety.get(planet));
         }
 
         // Lub jeżeli postępujemy zgodnie ze specyfikacją domyślnej implementacji:
         for (Map.Entry<String, String> planeta : planety.entrySet()) {
-            System.out.format(orbits, planeta.getKey(), planeta.getValue());
+            System.out.format(orbity, planeta.getKey(), planeta.getValue());
         }
 
         // Podane przykłady pokrywają jedynie podstawowe zastosowanie wyrażeń
