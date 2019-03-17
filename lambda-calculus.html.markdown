@@ -85,7 +85,7 @@ Using `IF`, we can define the basic boolean logic operators:
 
 `a OR b` is equivalent to: `λab.IF a T b`
 
-`a NOT b` is equivalent to: `λa.IF a F T`
+`NOT a` is equivalent to: `λa.IF a F T`
 
 *Note: `IF a b c` is essentially saying: `IF((a b) c)`*
 
