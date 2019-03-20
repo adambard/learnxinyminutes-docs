@@ -281,7 +281,7 @@ filename: learn-emacs-lisp.el
 ;; should stop searching at some point in the buffer, and whether it
 ;; should silently fail when nothing is found:
 
-;; (search-forward "Hello" nil 't) does the trick:
+;; (search-forward "Hello" nil t) does the trick:
 
 ;; The `nil' argument says: the search is not bound to a position.
 ;; The `'t' argument says: silently fail when nothing is found.
@@ -295,7 +295,7 @@ filename: learn-emacs-lisp.el
     (mapcar 'hello list-of-names)
     (goto-char (point-min))
     ;; Replace "Hello" by "Bonjour"
-    (while (search-forward "Hello" nil 't)
+    (while (search-forward "Hello" nil t)
       (replace-match "Bonjour"))
     (other-window 1))
 
@@ -306,7 +306,7 @@ filename: learn-emacs-lisp.el
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
     (goto-char (point-min))
-    (while (re-search-forward "Bonjour \\(.+\\)!" nil 't)
+    (while (re-search-forward "Bonjour \\(.+\\)!" nil t)
       (add-text-properties (match-beginning 1)
                            (match-end 1)
                            (list 'face 'bold)))
