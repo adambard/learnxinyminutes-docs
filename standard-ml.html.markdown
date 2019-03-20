@@ -272,6 +272,9 @@ fun evenly_positioned_elems (odd::even::xs) = even::evenly_positioned_elems xs
 datatype temp =
       C of real
     | F of real
+    
+(*  Declaring a new C temp value...
+    val t: temp = C 45.0  *)
 
 fun temp_to_f t =
     case t of
