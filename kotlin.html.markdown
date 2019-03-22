@@ -109,7 +109,7 @@ fun helloWorld(val name : String) {
 
     /*
     When a function consists of a single expression then the curly brackets can
-    be omitted. The body is specified after a = symbol.
+    be omitted. The body is specified after the = symbol.
     */
     fun odd(x: Int): Boolean = x % 2 == 1
     println(odd(6)) // => false
@@ -306,7 +306,7 @@ fun helloWorld(val name : String) {
     println(result)
 
     /*
-    We can check if an object is a particular type by using the "is" operator.
+    We can check if an object is of a particular type by using the "is" operator.
     If an object passes a type check then it can be used as that type without
     explicitly casting it.
     */
