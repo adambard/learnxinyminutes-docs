@@ -432,7 +432,7 @@ writeln(arrayFromLoop);
 // An expression can result in nothing, such as when filtering with an if-expression.
 var evensOrFives = for i in 1..10 do if (i % 2 == 0 || i % 5 == 0) then i;
 
-writeln(arrayFromLoop);
+writeln(evensOrFives);
 
 // Array expressions can also be written with a bracket notation.
 // Note: this syntax uses the forall parallel concept discussed later.
@@ -708,7 +708,7 @@ class MyClass {
 // We also get the compiler-generated initializer, with one argument per field.
 // Note that soon there will be no compiler-generated initializer when we
 // define any initializer(s) explicitly.
-  proc MyClass(val : real) {
+  proc init(val : real) {
     this.memberInt = ceil(val): int;
   }
 
@@ -781,7 +781,8 @@ class GenericClass {
   var classArray: [classDomain] classType;
 
 // Explicit constructor.
-  proc GenericClass(type classType, elements : int) {
+  proc init(type classType, elements : int) {
+    this.classType = classType;
     this.classDomain = {1..#elements};
   }
 
@@ -790,8 +791,9 @@ class GenericClass {
 // default to the type of the other object using the query (?) operator.
 // Further, we can take advantage of this to allow our copy constructor
 // to copy classes of different types and cast on the fly.
-  proc GenericClass(other : GenericClass(?otherType),
+  proc init(other : GenericClass(?otherType),
                      type classType = otherType) {
+    this.classType = classType;
     this.classDomain = other.classDomain;
     // Copy and cast
     for idx in this.classDomain do this[idx] = other[idx] : classType;
@@ -928,6 +930,9 @@ proc main() {
       writeln("a whole");
     }
   }
+
+// For the cobegin block, the execution of the parent task will not
+// continue until all the children sync up.
 
 // A coforall loop will create a new task for EACH iteration.
 // Again we see that prints happen in any order.
@@ -1109,6 +1114,9 @@ proc main() {
 // Scans apply the operation incrementally and return an array with the
 // values of the operation at that index as it progressed through the
 // array from array.domain.low to array.domain.high.
+// NOTE: As of Chapel v1.19.0, scan has been serialized (see issue #5760)
+// While running this, compile with -senableParScan to enable a
+// prototype parallel scan.
   var runningSumOfValues = + scan listOfValues;
   var maxScan = max scan listOfValues;
   writeln(runningSumOfValues);
