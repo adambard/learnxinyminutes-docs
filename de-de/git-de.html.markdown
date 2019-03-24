@@ -49,7 +49,7 @@ Ein Repository besteht in Git aus dem .git-Verzeichnis und dem Arbeitsverzeichni
 
 ### .git-Verzeichnis (Teil des Repositorys)
 
-Das .git-Verzeichnis enthält alle Einstellung, Logs, Branches, den HEAD und mehr.
+Das .git-Verzeichnis enthält alle Einstellungen, Logs, Branches, den HEAD und mehr.
 [Ausführliche Übersicht](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Arbeitsverzeichnis (Teil des Repositorys)
