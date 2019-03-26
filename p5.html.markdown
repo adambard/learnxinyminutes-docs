@@ -3,6 +3,7 @@ category: tool
 tool: p5
 contributors:
     - ['Amey Bhavsar', 'https://github.com/ameybhavsar24']
+    - ['Claudio Busatto', 'https://github.com/cjcbusatto']
 filename: p5.js
 ---
 
