@@ -91,9 +91,9 @@ cubes = (math.cube num for num in list)
 #   return _results;
 #  })();
 
-comidas = ['brocolis', 'espinafre', 'chocolate']
+comidas = ['brócolis', 'espinafre', 'chocolate']
 eat alimento for alimento in comidas when alimento isnt 'chocolate'
-#=>comidas = ['brocolis', 'espinafre', 'chocolate'];
+#=>comidas = ['brócolis', 'espinafre', 'chocolate'];
 #
 #for (_k = 0, _len2 = comidas.length; _k < _len2; _k++) {
 #  alimento = comidas[_k];
