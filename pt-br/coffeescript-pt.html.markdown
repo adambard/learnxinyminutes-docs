@@ -31,24 +31,24 @@ Você deveria entender mais de semântica de JavaScript antes de continuar...
 ###
 
 # Tarefa: 
-numero = 42 #=> número var = 42; 
+numero = 42 #=> var numero = 42; 
 oposto = true #=> var oposto = true;
 
 # Condições: 
-numero = -42 if oposto #=> if (oposto) {número = -42;}
+numero = -42 if oposto #=> if (oposto) {numero = -42;}
 
 # Funções: 
 quadrado = (x) -> x * x #=> var quadrado = function (x) {return x * x;}
 
-preencher = (recipiente, líquido = "coffee") ->
-  "Preenchendo o #{recipiente} with #{líquido}..."
+preencher = (recipiente, liquido = "coffee") ->
+  "Preenchendo o #{recipiente} with #{liquido}..."
 #=>var preencher;
 #
-#preencher = function(recipiente, líquido) {
-#  if (líquido == null) {
-#    líquido = "coffee";
+#preencher = function(recipiente, liquido) {
+#  if (liquido == null) {
+#    liquido = "coffee";
 #  }
-#  return "Preenchendo o " + recipiente + " with " + líquido + "...";
+#  return "Preenchendo o " + recipiente + " with " + liquido + "...";
 #};
 
 # Alcances: 
@@ -90,15 +90,16 @@ cubes = (math.cube num for num in list)
 #   return _results;
 #  })();
 
-comidas = ['brócolis', 'espinafre', 'chocolate']
+comidas = ['brocolis', 'espinafre', 'chocolate']
 eat alimento for alimento in comidas when alimento isnt 'chocolate'
-#=>comidas = ['brócolis', 'espinafre', 'chocolate'];
+#=>comidas = ['brocolis', 'espinafre', 'chocolate'];
 #
 #for (_k = 0, _len2 = comidas.length; _k < _len2; _k++) {
 #  alimento = comidas[_k];
 #  if (alimento !== 'chocolate') {
 #    eat(alimento);
 #  }
+```
 
 ## Recursos adicionais
 
