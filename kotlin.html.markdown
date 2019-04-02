@@ -109,7 +109,7 @@ fun helloWorld(val name : String) {
 
     /*
     When a function consists of a single expression then the curly brackets can
-    be omitted. The body is specified after a = symbol.
+    be omitted. The body is specified after the = symbol.
     */
     fun odd(x: Int): Boolean = x % 2 == 1
     println(odd(6)) // => false
@@ -306,7 +306,7 @@ fun helloWorld(val name : String) {
     println(result)
 
     /*
-    We can check if an object is a particular type by using the "is" operator.
+    We can check if an object is of a particular type by using the "is" operator.
     If an object passes a type check then it can be used as that type without
     explicitly casting it.
     */
@@ -346,17 +346,14 @@ fun helloWorld(val name : String) {
         return this.filter {it != c}
     }
     println("Hello, world!".remove('l')) // => Heo, word!
-
-    println(EnumExample.A) // => A
-    println(ObjectExample.hello()) // => hello
-
-    testOperator()
 }
 
 // Enum classes are similar to Java enum types.
 enum class EnumExample {
     A, B, C
 }
+
+fun printEnum() = println(EnumExample.A) // => A
 
 /*
 The "object" keyword can be used to create singleton objects.
@@ -367,11 +364,18 @@ object ObjectExample {
     fun hello(): String {
         return "hello"
     }
+
+    override fun toString(): String {
+        return "Hello, it's me, ${ObjectExample::class.simpleName}"
+    }
 }
 
-fun useObject() {
-    ObjectExample.hello()
-    val someRef: Any = ObjectExample // we use objects name just as is
+
+fun useSingletonObject() {
+    println(ObjectExample.hello()) // => hello
+    // In Kotlin, "Any" is the root of the class hierarchy, just like "Object" is in Java
+    val someRef: Any = ObjectExample
+    println(someRef) // => Hello, it's me, ObjectExample
 }
 
 
@@ -381,69 +385,54 @@ throws an exception if the value is null.
 var b: String? = "abc"
 val l = b!!.length
 
-/* You can add many custom operations using symbol like +, to particular instance
-by overloading the built-in kotlin operator, using "operator" keyword
+data class Counter(var value: Int) {
+    // overload Counter += Int
+    operator fun plusAssign(increment: Int) {
+        this.value += increment
+    }
 
-below is the sample class to add some operator, and the most basic example
-*/
-data class SomeClass(var savedValue: Int = 0)
+    // overload Counter++ and ++Counter
+    operator fun inc() = Counter(value + 1)
 
-// instance += valueToAdd
-operator fun SomeClass.plusAssign(valueToAdd: Int) {
-  this.savedValue += valueToAdd  
+    // overload Counter + Counter
+    operator fun plus(other: Counter) = Counter(this.value + other.value)
+
+    // overload Counter * Counter
+    operator fun times(other: Counter) = Counter(this.value * other.value)
+
+    // overload Counter * Int
+    operator fun times(value: Int) = Counter(this.value * value)
+
+    // overload Counter in Counter
+    operator fun contains(other: Counter) = other.value == this.value
+
+    // overload Counter[Int] = Int
+    operator fun set(index: Int, value: Int) {
+        this.value = index + value
+    }
+
+    // overload Counter instance invocation
+    operator fun invoke() = println("The value of the counter is $value")
+
 }
+/* You can also overload operators through an extension methods */
+// overload -Counter
+operator fun Counter.unaryMinus() = Counter(-this.value)
 
-// -instance
-operator fun SomeClass.unaryMinus() = SomeClass(-this.savedValue)
-
-// ++instance or instance++
-operator fun SomeClass.inc() = SomeClass(this.savedValue + 1)
-
-// instance * other
-operator fun SomeClass.times(other: SomeClass) =
-  SomeClass(this.savedValue * other.savedValue)
-
-// an overload for multiply
-operator fun SomeClass.times(value: Int) = SomeClass(this.savedValue * value)
-
-// other in instance
-operator fun SomeClass.contains(other: SomeClass) =
-  other.savedValue == this.savedValue
-
-// instance[dummyIndex] = valueToSet
-operator fun SomeClass.set(dummyIndex: Int, valueToSet: Int) {
-  this.savedValue = valueToSet + dummyIndex
-}
-
-// instance()
-operator fun SomeClass.invoke() {
-  println("instance invoked by invoker")
-}
-
-/* return type must be Integer,
-so that, it can be translated to "returned value" compareTo 0
-
-for equality (==,!=) using operator will violates overloading equals function,
-since it is already defined in Any class
-*/
-operator fun SomeClass.compareTo(other: SomeClass) =
-  this.savedValue - other.savedValue
-
-fun testOperator() {
-  var x = SomeClass(4)
-
-  println(x) // => "SomeClass(savedValue=4)"
-  x += 10
-  println(x) // => "SomeClass(savedValue=14)"
-  println(-x) // => "SomeClass(savedValue=-14)"
-  println(++x) // => "SomeClass(savedValue=15)"
-  println(x * SomeClass(3)) // => "SomeClass(savedValue=45)"
-  println(x * 2) // => "SomeClass(savedValue=30)"
-  println(SomeClass(15) in x) // => true
-  x[2] = 10
-  println(x) // => "SomeClass(savedValue=12)"
-  x() // => "instance invoked by invoker"
-  println(x >= 15) // => false
+fun operatorOverloadingDemo() {
+    var counter1 = Counter(0)
+    var counter2 = Counter(5)
+    counter1 += 7
+    println(counter1) // => Counter(value=7)
+    println(counter1 + counter2) // => Counter(value=12)
+    println(counter1 * counter2) // => Counter(value=35)
+    println(counter2 * 2) // => Counter(value=10)
+    println(counter1 in Counter(5)) // => false
+    println(counter1 in Counter(7)) // => true
+    counter1[26] = 10
+    println(counter1) // => Counter(value=36)
+    counter1() // => The value of the counter is 36
+    println(-counter2) // => Counter(value=-5)
 }
 ```
 
