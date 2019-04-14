@@ -194,7 +194,7 @@ module ListExamples =
         | [] -> printfn "the list is empty"
         | [first] -> printfn "the list has one element %A " first
         | [first; second] -> printfn "list is %A and %A" first second
-        | _ -> printfn "the list has more than two elements"
+        | first :: _ -> printfn "the list has more than two elements, first element %A" first
 
     listMatcher [1; 2; 3; 4]
     listMatcher [1; 2]
