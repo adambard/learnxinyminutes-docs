@@ -41,4 +41,11 @@ for(i = 1; i<=100; i++) {/*Similar to the C for loop.*/
 }
 /*for (begin; condition; end) first executes begin, then executes a block of code inside a while
 loop with condition, and always executes end at the end of the while loop.*/
+/*2.Functions*/
+define fac(n) { /*define a function using define*/
+    if(n == 1 || n == 0) {
+        return 1 /*return a value*/
+    }
+    return n * fac(n - 1) /*recursion is posssible*/
+}
 ```
