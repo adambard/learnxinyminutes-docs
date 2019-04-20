@@ -76,6 +76,14 @@ define fac(n) { /*define a function using define*/
 
 num=fac(4) /*24*/
 
+/*This is an example of local variables:*/
+define x(n) { /*A simple incrementing function*/
+    auto x
+    x=1
+    return n+x
+}
+x(3) /*4*/
+print x /*It turns out that x is not accessible out of the function.*/
 /*Arrays are equivalent to the C array.*/
 /*This is an example to set all the values of an array a to 1:*/
 
