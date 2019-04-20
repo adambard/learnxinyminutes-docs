@@ -15,13 +15,9 @@ num = 45 /*All variables save only doubles, and you cannot save
 num = 45; /*You can choose to add a semicolon after
     every statement. This is optional.*/
 /*Blocks are denoted using the {} operators(similar to C):*/
-while(num < 50) { /*While loop. Execute a block of
-    code until the condition is falsy.*/
+while(num < 50) {
     num += 1 /*equivalent to num=num+1.
-    a = a op b is equivalent to a op= b.
-    Of particular note, the ^ operator implements exponentation.
-    It does not follow the C operator precedence. For example:
-    -2^2 gives 4, not -4.*/
+    a = a op b is equivalent to a op= b.*/
 }
 /*And there are ++(increment) and --(decrement) operators.*/
 /*There are 3 special variables:
@@ -31,7 +27,7 @@ obase: defines the base of output.*/
 /*If clauses:*/
 hour = read() /*Input a number*/
 
-if(hour < 12) { /*Operators are exactly like C. <, >, <=, >=, ==, !=*/
+if(hour < 12) { /*Operators are exactly like C.*/
     print "Good morning\n" /*"print" outputs strings or variables
 	separated by commas.*/
 } else if(hour == 12) {
@@ -67,10 +63,6 @@ num = 0
 for(i = 1; i <= 100; i++) {/*Similar to the C for loop.*/
     num += i
 }
-
-/*for (begin; condition; end) first executes begin, then executes
-a block of code inside a while loop with condition, and always executes
-end at the end of the while loop.*/
 
     /*2.Functions and Arrays*/
 define fac(n) { /*define a function using define. This function
