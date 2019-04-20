@@ -78,6 +78,8 @@ for(i = 0; i<=3; i++) {
 }
 /*Access it like this:*/
 print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
+quit /*If you are using POSIX bc, deleting this is fine. However, if you are
+using syntax from GNU bc, you have to add this line of code to end this program.*/
 ```
 Enjoy this simple calculator! (Or this programming language, to be exact.)
 
