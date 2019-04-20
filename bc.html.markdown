@@ -80,3 +80,5 @@ for(i = 0; i<=3; i++) {
 print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
 ```
 Enjoy this simple calculator! (Or this programming language, to be exact.)
+
+This whole program is written in GNU bc. To run it, use ```bc learnbc.bc```.
