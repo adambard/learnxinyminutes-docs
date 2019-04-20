@@ -35,11 +35,11 @@ if(hour < 12) { /*Operators are exactly like C. <, >, <=, >=, ==, !=*/
 } else {
     /*Variables are global by default.*/
     thisIsGlobal = 5
-    /*Sorry, you cannot make a variable local.*/
+    /*You cannot make a variable local.*/
 }
 
 /*Every variable is pre-set to 0.*/
-num=blankVariable /*foo is set to 0.*/
+num=blankVariable /*num is set to 0.*/
 
 /*Like C, only 0 is falsy.*/
 if(!num){print "false\n"}
