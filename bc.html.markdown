@@ -11,7 +11,7 @@ line comment.*/
 
     /*1. Variables and control structures*/
 num = 45 /*All variables save only doubles, and you cannot save characters directly.*/
-
+num = 45 /*You can choose to add a semicolon after every statement. This is optional.*/
 /*Blocks are denoted using the {} operators(similar to C):*/
 while(num < 50) { /*While loop. Execute a block of code until the condition is falsy.*/
     num += 1 /*equivalent to num=num+1. a = a op b is equivalent to a op= b.
