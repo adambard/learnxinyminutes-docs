@@ -41,8 +41,7 @@ if(hour < 12) { /*Operators are exactly like C. <, >, <=, >=, ==, !=*/
 } else {
     /*Variables are global by default.*/
     thisIsGlobal = 5
-    /*You can make a variable local. Use the "auto" keyword:*/
-    auto thisIsLocal=7
+    /*You can make a variable local. Use the "auto" keyword in a function.*/
 }
 
 /*Every variable is pre-set to 0.*/
