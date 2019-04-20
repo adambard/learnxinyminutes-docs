@@ -14,10 +14,16 @@ num = 45 /*All variables save only doubles, and you cannot save characters direc
 
 /*Blocks are denoted using the {} operators(similar to C):*/
 while(num<50) { /*While loop. Execute a block of code until the condition is falsy.*/
-    num += 1 /*equivalent to num=num+1. a = a op b is equivalent to a op= b.*/
+    num += 1 /*equivalent to num=num+1. a = a op b is equivalent to a op= b.
+    Of particular note, the ^ operator implements exponentation.
+    It does not follow the C operator precedence. For example:
+    -2^2 gives 4, not -4.*/
 }
 /*And there are ++(increment) and --(decrement) operators.*/
-
+/*There are 3 special variables:
+scale: defines the scale of the double numbers.
+ibase: defines the base of input.
+obase: defines the base of output.*/
 /*If clauses:*/
 hour=read() /*Input a number*/
 
@@ -35,7 +41,8 @@ if(hour < 12) { /*Operators are exactly like C. <, >, <=, >=, ==, !=*/
 } else {
     /*Variables are global by default.*/
     thisIsGlobal = 5
-    /*You cannot make a variable local.*/
+    /*You can make a variable local. Use the "auto" keyword:*/
+    auto thisIsLocal=7
 }
 
 /*Every variable is pre-set to 0.*/
