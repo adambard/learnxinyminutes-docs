@@ -23,7 +23,6 @@ if(hour < 12) { /*Operators are exactly like C. <, >, <=, >=, ==, !=*/
     print "Hello\n"
     /*Escaping sequences start with a \ in a string.
     In order to make the escaping sequences clearer, here is a(simplified) list of them:
-    \a: alert, beep, bell
     \b: backspace
     \n: newline
     \t: tab
