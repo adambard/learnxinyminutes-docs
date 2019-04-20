@@ -36,7 +36,7 @@ However, you can simulate one:*/
 a=(foo)&&(1)||(0) /*&& is and, || is or*/
 /*For loops*/
 num = 0
-for(num = 1; num<=100; num++) {/*Similar to the C for loop.*/
+for(i = 1; i<=100; i++) {/*Similar to the C for loop.*/
     num += i
 }
 /*for (begin; condition; end) first executes begin, then executes a block of code inside a while
