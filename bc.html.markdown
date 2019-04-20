@@ -10,7 +10,7 @@ line comment.*/
 # This is also a (one-line) comment! (in GNU bc).
 
     /*1. Variables and control structures*/
-num = 45 /*All variables save only doubles, and you cannot save characters directly.*/
+num = 45 /*All variables save only doubles, and you cannot save string constants directly.*/
 num = 45; /*You can choose to add a semicolon after every statement. This is optional.*/
 /*Blocks are denoted using the {} operators(similar to C):*/
 while(num < 50) { /*While loop. Execute a block of code until the condition is falsy.*/
@@ -69,7 +69,7 @@ define fac(n) { /*define a function using define. This function is the factorial
     if(n == 1 || n == 0) {
         return 1 /*return a value*/
     }
-    return n * fac(n - 1) /*recursion is posssible*/
+    return n * fac(n - 1) /*recursion is possible*/
 }
 
 /*Closures and anonymous functions are impossible.*/
