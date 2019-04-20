@@ -8,6 +8,11 @@ filename: learnlua.lua
 /*This is a multi-
 line comment.*/
 # This is also a (one-line) comment! (in GNU bc)
-/*1. Variables*/
+/*1. Variables and control structures*/
+num = 45 /*All variables save only doubles, and you cannot save characters directly.*/
+/*Blocks are denoted using the {} operators(similar to C):*/
+while(num<50) {
+    num += 1 /*equivalent to num=num+1. a = a op b is equivalent to a op= b.*/
+}
+/*And there are ++ and -- operators.*/
 ```
-Enjoy this simple calculator! For further reading, you can refer to [https://en.wikipedia.org/wiki/Bc_(programming_language)](the wikipedia page for bc)
