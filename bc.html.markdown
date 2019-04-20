@@ -27,13 +27,13 @@ if(hour < 12) { /*Operators are exactly like C. <, >, <=, >=, ==, !=*/
     /*Sorry, you cannot make a variable local.*/
 }
 /*Every variable is pre-set to 0.*/
-foo=blankVariable /*foo is set to 0.*/
+num=blankVariable /*foo is set to 0.*/
 /*Like C, only 0 is falsy.*/
-if(!foo){print "false\n"}
+if(!num){print "false\n"}
 /*Unlike C, bc does not have the ?: operators. For example, this block of code will cause an error:
-a=(foo)?1:0
+a=(num)?1:0
 However, you can simulate one:*/
-a=(foo)&&(1)||(0) /*&& is and, || is or*/
+a=(num)&&(1)||(0) /*&& is and, || is or*/
 /*For loops*/
 num = 0
 for(i = 1; i<=100; i++) {/*Similar to the C for loop.*/
@@ -48,4 +48,13 @@ define fac(n) { /*define a function using define*/
     }
     return n * fac(n - 1) /*recursion is posssible*/
 }
+/*Closures and anonymous functions are impossible.*/
+num=fac(4) /*24*/
+/*3. Arrays*/
+/*It is equivalent to the C array.*/
+/*This is an example to set all the values of an array a to 1:*/
+for(i = 0; i<=10; i++) {
+    a[i]=1
+}
 ```
+Enjoy this simple calculator! (Or this programming language, to be exact.)
