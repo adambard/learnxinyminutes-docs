@@ -65,8 +65,7 @@ for(i = 1; i <= 100; i++) {/*Similar to the C for loop.*/
 }
 
     /*2.Functions and Arrays*/
-define fac(n) { /*define a function using define. This function
-    is the factorial function.*/
+define fac(n) { /*define a function using define.*/
     if(n == 1 || n == 0) {
         return 1 /*return a value*/
     }
@@ -78,7 +77,7 @@ define fac(n) { /*define a function using define. This function
 num = fac(4) /*24*/
 
 /*This is an example of local variables:*/
-define x(n) { /*A simple incrementing function*/
+define x(n) {
     auto x
     x = 1
     return n + x
@@ -86,8 +85,6 @@ define x(n) { /*A simple incrementing function*/
 x(3) /*4*/
 print x /*It turns out that x is not accessible out of the function.*/
 /*Arrays are equivalent to the C array.*/
-/*This is an example to set all the values of an array a to 1:*/
-
 for(i = 0; i <= 3; i++) {
     a[i] = 1
 }
