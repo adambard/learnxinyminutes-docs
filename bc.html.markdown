@@ -22,14 +22,12 @@ if(hour < 12) { /*Operators are exactly like C. <, >, <=, >=, ==, !=*/
 } else if(hour == 12) {
     print "Hello\n"
     /*Escaping sequences start with a \ in a string.
-    In order to make the escaping sequences clearer, here is a(simplified) list of them:
+    In order to make the escaping sequences clearer, here is a simplified list of them that will work in bc:
     \b: backspace
+    \c: carriage return
     \n: newline
     \t: tab
-    \\: backslash
-    \': single quotation mark
-    \": double quotation mark
-    \xhh: hex byte hh*/
+    \\: backslash*/
 } else {
     /*Variables are global by default.*/
     thisIsGlobal = 5
