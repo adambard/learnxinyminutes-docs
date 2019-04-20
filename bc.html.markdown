@@ -21,6 +21,16 @@ if(hour < 12) { /*Operators are exactly like C. <, >, <=, >=, ==, !=*/
     print "Good morning\n" /*"print" outputs strings or variables separated by commas.*/
 } else if(hour == 12) {
     print "Hello\n"
+    /*Escaping sequences start with a \ in a string.
+    In order to make the escaping sequences clearer, here is a(simplified) list of them:
+    \a: alert, beep, bell
+    \b: backspace
+    \n: newline
+    \t: tab
+    \\: backslash
+    \': single quotation mark
+    \": double quotation mark
+    \xhh: hex byte hh*/
 } else {
     /*Variables are global by default.*/
     thisIsGlobal = 5
