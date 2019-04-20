@@ -2,7 +2,7 @@
 language: bc
 contributors:
     - ["Btup"]
-filename: learnlua.lua
+filename: learnbc.bc
 ---
 ```c
 /*This is a multi-
