@@ -383,3 +383,4 @@ Further Reading:
 * [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html) GNU Awk is found on most Linux systems.
 * [AWK one-liner collection](http://tuxgraphics.org/~guido/scripts/awk-one-liner.html)
 * [Awk alpinelinux wiki](https://wiki.alpinelinux.org/wiki/Awk) a technical summary and list of "gotchas" (places where different implementations may behave in different or unexpected ways). 
+* [basic libraries for awk](https://github.com/dubiousjim/awkenough)
