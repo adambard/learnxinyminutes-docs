@@ -386,11 +386,16 @@ uint newLength = names.push("John"); # adding returns new length of the array
 names.length; # get length
 names.length = 1; # lengths can be set (for dynamic arrays in storage only)
 
-# multidimensional fixed array
-ls: (uint256[10])[3] # note the parentheses
+# Multidimensional Arrays
+# At initialization, array dimensions must be hard-coded or constants
+# Initialize a 10-column by 3-row, multidimensional fixed array
+ls: (uint256[10])[3] # parentheses are optional
 @public
 def setToThree():
-    self.ls[5][3] = 3 # multidimensional array access
+    # Multidimensional Array Access and Write
+    # access indices are reversed
+    # set element in row 2 (3rd row) column 5 (6th column) to 3
+    self.ls[2][5] = 3
 
 # Dictionaries (any simple type to any other type including structs)
 theMap: map(uint256, bytes32)
