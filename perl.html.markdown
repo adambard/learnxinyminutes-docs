@@ -152,7 +152,7 @@ while (condition) {
   ...
 }
 
-
+my $max = 5;
 # for loops and iteration
 for my $i (0 .. $max) {
   print "index is $i";
