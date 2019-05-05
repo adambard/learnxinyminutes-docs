@@ -47,7 +47,7 @@ file0.txt:
 	# 注意: 即使是这些注释, 如果前面有 TAB, 也会发送给 shell, 注意看 `make file0.txt` 输出
 
 # 如果提供 prerequisites, 则只有 prerequisites 比 target 新时会执行
-# 比如下面这个任务只有当 file1.txt 比 file0.txt 新时才会执行.
+# 比如下面这个任务只有当 file0.txt 比 file1.txt 新时才会执行.
 file1.txt: file0.txt
 	cat file0.txt > file1.txt
 	# 这里跟shell里的命令式一毛一样的.
