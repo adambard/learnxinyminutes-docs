@@ -50,7 +50,7 @@ Relationships (or Edges)
 **Connects two nodes**
 
 `[:KNOWS]`
-It's a *relationship* with the *label* **KNOWS**. It's a *label* as the node's label. It begins with uppercase and use UPPER_SNAKE_CASE.
+It's a *relationship* with the *label* **KNOWS**. It's a *label* as the node's label. It begins with uppercase and use UPPER\_SNAKE\_CASE.
 
 `[k:KNOWS]`
 The same *relationship*, referred by the variable **k**, reusable in the query, but it's not necessary.
