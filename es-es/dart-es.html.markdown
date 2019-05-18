@@ -25,11 +25,11 @@ import "dart:math" as DM;
 // La declaración de función y de método tienen el mismo aspecto. 
 // Las funciones pueden estar anidadas. 
 // La declaración toma la forma name() {} o name() => expresionEnUnaLinea;
-// La declaración de la función de flecha gorda tiene un retorno implícito para el resultado de
-// la expresión.
+// La declaración de la función de flecha gorda, tiene un retorno implícito 
+// para el resultado de la expresión.
 example1() {
   nested1() {
-    nested2() => print("Example1 anidado 1 anidado 2");
+    nested2() => print("example1 anidado 1 anidado 2");
     nested2();
   }
   nested1();
@@ -40,7 +40,7 @@ example2() {
   nested1(fn) {
     fn();
   }
-  nested1(() => print("Example2 anidado 1"));
+  nested1(() => print("example2 anidado 1"));
 }
 
 // Cuando se declara un parámetro de función, la declaración puede incluir el
@@ -48,10 +48,10 @@ example2() {
 // parámetros que lleva.
 example3() {
   planA(fn(informSomething)) {
-    fn("Example3 plan A");
+    fn("example3 plan A");
   }
   planB(fn) { // O no declarar el número de parámetros.
-    fn("Example3 plan B");
+    fn("example3 plan B");
   }
   planA((s) => print(s));
   planB((s) => print(s));
@@ -68,7 +68,7 @@ example4() {
 
 // La declaración de la clase con un método sayIt, el cual también tiene acceso de cierre
 // a la variable exterior como si fuera una función como se ha visto antes.
-var example5method = "Example5 sayIt";
+var example5method = "example5 sayIt";
 class Example5Class {
   sayIt() {
     print(example5method);
@@ -125,43 +125,43 @@ example8() {
 var example9Array = const ["a", "b"];
 example9() {
   for (var i = 0; i < example9Array.length; i++) {
-    print("Example9 ciclo for '${example9Array[i]}'");
+    print("example9 ciclo for '${example9Array[i]}'");
   }
   var i = 0;
   while (i < example9Array.length) {
-    print("Example9 ciclo while '${example9Array[i]}'");
+    print("example9 ciclo while '${example9Array[i]}'");
     i++;
   }
   for (var e in example9Array) {
-    print("Example9 ciclo for-in '${e}'");
+    print("example9 ciclo for-in '${e}'");
   }
-  example9Array.forEach((e) => print("Example9 ciclo forEach '${e}'"));
+  example9Array.forEach((e) => print("example9 ciclo forEach '${e}'"));
 }
 
 // Para recorrer los caracteres de una cadena o para extraer una subcadena.
 var example10String = "ab";
 example10() {
   for (var i = 0; i < example10String.length; i++) {
-    print("Example10 Recorrido de caracteres en la cadena '${example10String[i]}'");
+    print("example10 Recorrido de caracteres en la cadena '${example10String[i]}'");
   }
   for (var i = 0; i < example10String.length; i++) {
-    print("Example10 ciclo de subcadena '${example10String.substring(i, i + 1)}'");
+    print("example10 ciclo de subcadena '${example10String.substring(i, i + 1)}'");
   }
 }
 
-// Para formato de números Int y double son soportados.
+// Formato de números Int y double son soportados.
 example11() {
   var i = 1 + 320, d = 3.2 + 0.01;
-  print("Example11 int ${i}");
-  print("Example11 double ${d}");
+  print("example11 int ${i}");
+  print("example11 double ${d}");
 }
 
 // DateTime ofrece aritmética de fecha/hora.
 example12() {
   var now = new DateTime.now();
-  print("Example12 ahora '${now}'");
+  print("example12 ahora '${now}'");
   now = now.add(new Duration(days: 1));
-  print("Example12 manana '${now}'");
+  print("example12 manana '${now}'");
 }
 
 // Expresiones regulares son soportadas.
@@ -169,9 +169,9 @@ example13() {
   var s1 = "alguna cadena", s2 = "alguna", re = new RegExp("^s.+?g\$");
   match(s) {
     if (re.hasMatch(s)) {
-      print("Example13 regexp embona '${s}'");
+      print("example13 regexp embona '${s}'");
     } else {
-      print("Example13 regexp no embona '${s}'");
+      print("example13 regexp no embona '${s}'");
     }
   }
   match(s1);
@@ -228,13 +228,13 @@ example15() {
     try {
       throw "Algun error inesperado.";
     } catch (e) {
-      print("Example15 una excepcion: '${e}'");
+      print("example15 una excepcion: '${e}'");
       throw e; // Re-throw
     }
   } catch (e) {
-    print("Example15 atrapa la excepcion que ha sido relanzada: '${e}'");
+    print("example15 atrapa la excepcion que ha sido relanzada: '${e}'");
   } finally {
-    print("Example15 Aun ejecuta finally");
+    print("example15 aún ejecuta finally");
   }
 }
 
@@ -243,15 +243,15 @@ example15() {
 example16() {
   var sb = new StringBuffer(), a = ["a", "b", "c", "d"], e;
   for (e in a) { sb.write(e); }
-  print("Example16 cadena de caracteres dinamica creada con "
+  print("example16 cadena de caracteres dinamica creada con "
     "StringBuffer '${sb.toString()}'");
-  print("Example16 union de arreglo de cadena de caracteres '${a.join()}'");
+  print("example16 union de arreglo de cadena de caracteres '${a.join()}'");
 }
 
 // Las cadenas de caracteres pueden ser concatenadas contando solo 
 // con literales una después de la otra sin algún otro operador necesario.
 example17() {
-  print("Example17 "
+  print("example17 "
       "concatenar "
       "cadenas "
       "asi");
@@ -285,7 +285,7 @@ example20() {
   print("Example20 \$ interpolation ${s1} or $s2 works.");
 }
 
-// Hasta ahora no hemos declarado ningún tipo y los programas
+// Hasta ahora no hemos declarado ningún tipo de dato y los programas
 // han funcionado bien. De hecho, los tipos no se toman en cuenta durante 
 // el tiempo de ejecución.
 // Los tipos incluso pueden estar equivocados y al programa todavía se le dará 
@@ -311,9 +311,9 @@ class Example21 {
 void example21() {
   Example21 o = new Example21();
   o.add("c");
-  print("Example21 nombres '${o.names}' y longitud '${o.length}'");
+  print("example21 nombres '${o.names}' y longitud '${o.length}'");
   o.names = ["d", "e"];
-  print("Example21 nombres '${o.names}' y longitud '${o.length}'");
+  print("example21 nombres '${o.names}' y longitud '${o.length}'");
 }
 
 // La herencia de clases toma la forma NombreDeClase extends OtraClase {}.
@@ -324,16 +324,16 @@ class Example22A {
 class Example22B extends Example22A {}
 example22() {
   var o = new Example22B();
-  print("Example22 herencia de clase '${o.name}'");
+  print("example22 herencia de clase '${o.name}'");
 }
 
-// Class mixin is also available, and takes the form of
-// class name extends SomeClass with AnotherClassName {}.
-// It's necessary to extend some class to be able to mixin another one.
-// The template class of mixin cannot at the moment have a constructor.
-// Mixin is mostly used to share methods with distant classes, so the
-// single inheritance doesn't get in the way of reusable code.
-// Mixins follow the "with" statement during the class declaration.
+// La mezcla de clases también esta disponible y toman la forma de
+// NombreDeClase extends AlgunaClase with OtraClase {}.
+// Es necesario extender de alguna clase para poder mezclar con otra.
+// La clase de plantilla de mixin no puede en este momento tener un constructor.
+// Mixin se utiliza principalmente para compartir métodos con clases distantes,
+// por lo que la herencia única no interfiere con el código reutilizable.
+// Mixins se colocan despues de la palabra "with" durante la declaración de la clase.
 class Example23A {}
 class Example23Utils {
   addTwo(n1, n2) {
@@ -352,43 +352,43 @@ example23() {
   print("Example23 addTwo(1, 2) results in '${r2}'");
 }
 
-// The Class constructor method uses the same name of the class and
-// takes the form of SomeClass() : super() {}, where the ": super()"
-// part is optional and it's used to delegate constant parameters to the
-// super-parent's constructor.
+// El método constructor de la clase utiliza el mismo nombre de la clase
+// y toma la forma de AlgunaClase() : super() {}, donde la parte ": super()"
+// es opcional y es utilizado para delegar parametros constantes
+// al método constructor de la clase padre o super clase.
 class Example24A {
   var _value;
-  Example24A({value: "someValue"}) {
+  Example24A({value: "algunValor"}) {
     _value = value;
   }
   get value => _value;
 }
 class Example24B extends Example24A {
-  Example24B({value: "someOtherValue"}) : super(value: value);
+  Example24B({value: "algunOtroValor"}) : super(value: value);
 }
 example24() {
   var o1 = new Example24B(),
-    o2 = new Example24B(value: "evenMore");
-  print("Example24 calling super during constructor '${o1.value}'");
-  print("Example24 calling super during constructor '${o2.value}'");
+    o2 = new Example24B(value: "aunMas");
+  print("example24 llama al método super desde el constructor '${o1.value}'");
+  print("example24 llama al método super desde el constructor '${o2.value}'");
 }
 
-// There's a shortcut to set constructor parameters in case of simpler classes.
-// Just use the this.parameterName prefix and it will set the parameter on
-// an instance variable of same name.
+// Hay un atajo para configurar los parámetros del constructor en el caso de clases más simples.
+// Simplemente use el prefijo this.nombreParametro y establecerá el parámetro 
+// en una variable de instancia del mismo nombre.
 class Example25 {
   var value, anotherValue;
   Example25({this.value, this.anotherValue});
 }
 example25() {
   var o = new Example25(value: "a", anotherValue: "b");
-  print("Example25 shortcut for constructor '${o.value}' and "
+  print("example25 atajo para el constructor '${o.value}' y "
     "'${o.anotherValue}'");
 }
 
-// Named parameters are available when declared between {}.
-// Parameter order can be optional when declared between {}.
-// Parameters can be made optional when declared between [].
+// Los parámetros con nombre están disponibles cuando se declaran entre {}.
+// El orden de los parámetros puede ser opcional cuando se declara entre {}.
+// Los parámetros pueden hacerse opcionales cuando se declaran entre [].
 example26() {
   var _name, _surname, _email;
   setConfig1({name, surname}) {
@@ -401,33 +401,33 @@ example26() {
     _email = email;
   }
   setConfig1(surname: "Doe", name: "John");
-  print("Example26 name '${_name}', surname '${_surname}', "
+  print("example26 name '${_name}', surname '${_surname}', "
     "email '${_email}'");
   setConfig2("Mary", "Jane");
-  print("Example26 name '${_name}', surname '${_surname}', "
+  print("example26 name '${_name}', surname '${_surname}', "
   "email '${_email}'");
 }
 
-// Variables declared with final can only be set once.
-// In case of classes, final instance variables can be set via constant
-// constructor parameter.
+// Las variables declaradas con final solo se pueden establecer una vez.
+// En el caso de las clases, las variables de instancia final se pueden establecer 
+// a través de la constante del parámetro constructor.
 class Example27 {
   final color1, color2;
-  // A little flexibility to set final instance variables with syntax
-  // that follows the :
+  // Un poco de flexibilidad para establecer variables de instancia finales con la sintaxis
+  // que sigue a :
   Example27({this.color1, color2}) : color2 = color2;
 }
 example27() {
   final color = "orange", o = new Example27(color1: "lilac", color2: "white");
-  print("Example27 color is '${color}'");
-  print("Example27 color is '${o.color1}' and '${o.color2}'");
+  print("example27 color es '${color}'");
+  print("example27 color es '${o.color1}' y '${o.color2}'");
 }
 
-// To import a library, use import "libraryPath" or if it's a core library,
-// import "dart:libraryName". There's also the "pub" package management with
-// its own convention of import "package:packageName".
-// See import "dart:collection"; at the top. Imports must come before
-// other code declarations. IterableBase comes from dart:collection.
+// Para importar una librería utiliza la palabra reservada import "rutaLibrería" o si es una biblioteca central,
+// import "dart:NombreLibrería". También está el "pub" administrador de paquetes con
+// su propia convensión import "package:NombrePaquete".
+// Ve import "dart:collection"; al inicio. Las importaciones deben venir antes
+// de la delcaración de algún otro código. IterableBase proviene de dart:collection.
 class Example28 extends IterableBase {
   var names;
   Example28() {
@@ -437,25 +437,25 @@ class Example28 extends IterableBase {
 }
 example28() {
   var o = new Example28();
-  o.forEach((name) => print("Example28 '${name}'"));
+  o.forEach((name) => print("example28 '${name}'"));
 }
 
-// For control flow we have:
-// * standard switch with must break statements
-// * if-else if-else and ternary ..?..:.. operator
-// * closures and anonymous functions
-// * break, continue and return statements
+// Para el control de flujo tenemos:
+// * estandard switch
+// * if-else if-else y el operador ternario ..?..:..
+// * closures y funciones anonimas
+// * sentencias break, continue y return
 example29() {
   var v = true ? 30 : 60;
   switch (v) {
     case 30:
-      print("Example29 switch statement");
+      print("example29 sentencia switch");
       break;
   }
   if (v < 30) {
   } else if (v > 30) {
   } else {
-    print("Example29 if-else statement");
+    print("example29 sentencia if-else");
   }
   callItForMe(fn()) {
     return fn();
@@ -465,31 +465,31 @@ example29() {
     return v;
   }
   while (true) {
-    print("Example29 callItForMe(rand) '${callItForMe(rand)}'");
+    print("example29 callItForMe(rand) '${callItForMe(rand)}'");
     if (v != 30) {
       break;
     } else {
       continue;
     }
-    // Never gets here.
+    // Nunca llega aquí.
   }
 }
 
-// Parse int, convert double to int, or just keep int when dividing numbers
-// by using the ~/ operation. Let's play a guess game too.
+// La sentencia int.parse, convierte de tipo double a int, o simplemente mantener int cuando se dividen los números
+// utilizando ~/ como operación. Vamos a jugar un juego de adivinanzas también.
 example30() {
   var gn, tooHigh = false,
     n, n2 = (2.0).toInt(), top = int.parse("123") ~/ n2, bottom = 0;
   top = top ~/ 6;
-  gn = new DM.Random().nextInt(top + 1); // +1 because nextInt top is exclusive
-  print("Example30 Guess a number between 0 and ${top}");
+  gn = new DM.Random().nextInt(top + 1); // +1 porque nextInt top es exclusivo
+  print("example30 Adivina un número entre 0 y ${top}");
   guessNumber(i) {
     if (n == gn) {
-      print("Example30 Guessed right! The number is ${gn}");
+      print("example30 ¡Adivinaste correctamente! El número es ${gn}");
     } else {
       tooHigh = n > gn;
-      print("Example30 Number ${n} is too "
-        "${tooHigh ? 'high' : 'low'}. Try again");
+      print("example30 Número ${n} es demasiado "
+        "${tooHigh ? 'high' : 'low'}. Intenta nuevamente");
     }
     return n == gn;
   }
@@ -524,9 +524,6 @@ main() {
 ## Lecturas adicionales
 
 Dart tiene un sitio web muy completo. Cubre referencias de API, tutoriales, artículos y más, incluyendo una
-útil Try Dart online.
+útil sección en línea Try Dart.
 [https://www.dartlang.org](https://www.dartlang.org)
 [https://try.dartlang.org](https://try.dartlang.org)
-
-
-
