@@ -41,13 +41,15 @@ With over 100 billion ARM processors produced as of 2017, ARM is the most widely
 ; N (negative), Z (zero), C (carry) and V (overflow). 
 ; It's use will become obvious while going through the code below.
 
+
+
 ;; Data Processing Instructions
 ;;   Moving values into registers
 MOV R0, #5        ; moves immediate decimal 5 into R0
 MOV R0, #0x05     ; moves immediate hexadecimal 5 into R0
 MOV R0, R1        ; moves value of R1 to R0
 
-;;   Arithmetic and Logical Instructions:
+;;    Arithmetic and Logical Instructions:
 
 ADD R0, R1, R2    ; R0 = R1 + R2
 SUB R0, R1, R2    ; R0 = R1 - R2
@@ -71,6 +73,79 @@ CMP R0, R1      ; Compares the values of the two operands and stores the
 MOV R0, R1, LSL #5        ; logical shift left by 5 places
 AND R0, R1, R2, LSR R3    ; logical shift right by value stored in R3
 CMP R0, R1, ASR #21       ; arithmetic shift right by 31
+
+
+
+;; Data Transfer Instructions
+; These instructions are used to tranfer data to-from memory and registers
+
+;;    Single Word/Byte/Half word transfers
+; Loading a word from memory
+LDR R0, [R1]        ; Loads a word from address stored in R1
+
+; How do we get R1 to store an address to some word in memory?
+; This is where the concept of data segment and text segment comes into picture
+; The data segment in memory is supposed to store all the global variables 
+; that you'd like to declare in your program, while the text segment
+; holds the instructions in your program.
+
+; So, normally a program would look something like the following:
+
+.DATA
+varidentifier: .WORD 0x12345678   ; This is a 32 bit word with varidentifier
+; as the label
+
+.TEXT
+LDR R1, =varidentifier  ; Using =label, the corresponding register stores
+; the address of the word above
+LDR R0, [R1]  ; Coming back to loading a word from memory
+
+; Now after making some changes we can store back the word:
+STR R0, [R1]  ; Stores the word in R0, to the memory location pointed by R1
+
+; Addressing modes:
+; These addressing modes are very useful for accessing consecutive blocks
+; of memory
+; Pre-index (without writeback)
+LDR R0, [R1, #4]  ; R0 = memory[R1 + #4]
+LDR R0, [R1, R2, LSL #2]  ; R0 = memory[R1 + R2 * 2^2]
+
+; Auto-indexing (Pre-index with writeback)
+LDR R0, [R1, #4]!  ; R0 = memory[R1 + #4] and R1 = R1 + #4
+
+; Post-indexing
+LDR R0, [R1], #4  ; R0 = memory[R1] and R1 = R1 + #4
+
+; We also have load-byte, store-byte, load-half word, store-half word
+LDRH R0, [R1]
+STRH R0, [R1]
+LDRB R0, [R1] ; mostly used for accessing characters
+STRB R0, [R1]
+
+;; Multiple word transfers
+; There are 4 main suffixes here that you can use
+; IA: increment after accessing
+; IB: increment before accessing
+; DA: decrement after accessing
+; DB: decrement before accessing
+LDMIA R0, {R1-R5, R7, R8}   ; The order in which registers are specified
+; does not matter, lower one gets the data in lower memory address
+; R0 is the source register which holds the base memory address
+; So, R1 gets mem[R0], R2 = mem[R0 + 4] and so on
+
+; So if you wanted to copy an entire array you could just write 2 lines
+; (if array isn't large enough)
+
+.DATA
+srcarr: .WORD #10, #30, #50, #23
+dstarr: .WORD #0
+
+.TEXT
+LDR R0, =srcarr
+LDR R1, =dstarr
+LDMIA R0, {R2-R5}
+STMIA R1, {R2-R5}
+
 
 
 ; The best part about ARM is, every instruction is conditionally executable!
