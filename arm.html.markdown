@@ -75,6 +75,9 @@ AND R0, R1, R2, LSR R3    ; logical shift right by value stored in R3
 CMP R0, R1, ASR #21       ; arithmetic shift right by 31
 
 
+;; TODO: Add MUL instructions here
+
+
 
 ;; Data Transfer Instructions
 ; These instructions are used to tranfer data to-from memory and registers
@@ -99,6 +102,8 @@ varidentifier: .WORD 0x12345678   ; This is a 32 bit word with varidentifier
 LDR R1, =varidentifier  ; Using =label, the corresponding register stores
 ; the address of the word above
 LDR R0, [R1]  ; Coming back to loading a word from memory
+SWI 0x011     ; software interrupt; used to stop the program
+; we'll do software interrupts later
 
 ; Now after making some changes we can store back the word:
 STR R0, [R1]  ; Stores the word in R0, to the memory location pointed by R1
@@ -145,13 +150,73 @@ LDR R0, =srcarr
 LDR R1, =dstarr
 LDMIA R0, {R2-R5}
 STMIA R1, {R2-R5}
+SWI 0x011
+
+;; TODO: show how one could operate with stack
 
 
+
+;; Control Flow Instructions
+; The two main control flow instructions are
+; B (branch) and BL (branch with link)
+
+; Take the following high level code which adds 1st 10 numbers
+; c = 0;
+; sum = 0;
+; while(c != 10)
+; {
+;   sum = sum + (c+1);
+;   c = c + 1;
+; }
+
+; Equivalent arm code using branch
+
+MOV R0, #0  ; c
+MOV R1, #0  ; sum
+
+LOOP:
+CMP R0, #10
+BEQ END   ; Branch if equal, to END label
+
+ADD R2, R0, #1  ; c+1
+ADD R1, R1, R2
+
+B LOOP    ; Branch to LOOP label
+
+END:
+SWI 0x011
 
 ; The best part about ARM is, every instruction is conditionally executable!
 ; So, instead of complex branching logic, you can keep your code pretty simple.
 
+; All conditional codes refer to the content in CPSR before executing
+; The 'EQ' used above (BEQ) was a conditional code.
+; More conditional codes available at ARM Infocenter
+; Link below
 
+; For example, take the following code:
+; if(R0 != 8) 
+; {
+;   R1 = R1 + R0 - R2
+; }
+
+; We could write the above in 2 ways
+
+CMP R0, #8
+BEQ endif
+ADD R1, R1, R0
+SUB R1, R1, R2
+
+endif:
+...
+
+; or a simpler one
+
+CMP R0, #8
+ADDNE R1, R1, R0
+SUBNE R1, R1, R2
 
 
 ```
+
+ARM Infocenter Conditional Codes: [Link](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0204j/Chdhcfbc.html)
