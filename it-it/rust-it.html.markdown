@@ -137,7 +137,7 @@ fn main() {
 
     let origine: Punto = Punto { x: 0, y: 0 };
 
-    // Ana struct con campi senza nome, chiamata ‘tuple struct’
+    // Una struct con campi senza nome, chiamata ‘tuple struct’
     struct Punto2(i32, i32);
 
     let origine2 = Punto2(0, 0);
