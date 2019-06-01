@@ -100,29 +100,27 @@ var y = 10
 y = 20     // y es 20
 
 /*
-  Scala is a statically typed language, yet note that in the above declarations,
-  we did not specify a type. This is due to a language feature called type
-  inference. In most cases, Scala compiler can guess what the type of a variable
-  is, so you don't have to type it every time. We can explicitly declare the
-  type of a variable like so:
+  Scala es un lenguaje tipado estáticamente, aunque se puede ver en las expresiones anteriores que no hemos especificado un tipo. 
+  Esto es debido a una funcionalidad del lenguaje llamada inferencia. En la mayoría de los casos, el compilador de Scala puede adivinar cual es el tipo de una variable, así que no hace falta escribirlo siempre.
+  Podemos declarar explicitamente el tipo de una variable de la siguiente manera:
 */
 val z: Int = 10
 val a: Double = 1.0
 
-// Notice automatic conversion from Int to Double, result is 10.0, not 10
+// Observa la conversión automática de Int a Double, el resultado será 10.0, no 10
 val b: Double = 10
 
-// Boolean values
+// Valores Booleanos
 true
 false
 
-// Boolean operations
+// Operaciones Booleanas
 !true         // false
 !false        // true
 true == false // false
 10 > 5        // true
 
-// Math is as per usual
+// Las operaciones matemáticas se realizan como siempre
 1 + 1   // 2
 2 - 1   // 1
 5 * 3   // 15
@@ -132,56 +130,54 @@ true == false // false
 6 / 4.0 // 1.5
 
 
-// Evaluating an expression in the REPL gives you the type and value of the result
+// Evaluar una expresión en REPL te da el tipo y valor del resultado
 
 1 + 7
 
-/* The above line results in:
+/* La linea superior tienen como resultado:
 
   scala> 1 + 7
   res29: Int = 8
 
-  This means the result of evaluating 1 + 7 is an object of type Int with a
-  value of 8
+  Esto quiere decir que el resultado de evaluar 1 + 7 es un objeto de tipo Int con valor 8
 
-  Note that "res29" is a sequentially generated variable name to store the
-  results of the expressions you typed, your output may differ.
+  Observa que "res29" es un nombre de variable secuencialmente generado para almacenar los resultados de las expresiones escritas, la salida que observes puede diferir en este sentido.
 */
 
-"Scala strings are surrounded by double quotes"
-'a' // A Scala Char
-// 'Single quote strings don't exist' <= This causes an error
+"Las cadenas en Scala están rodeadas por comillas dobles"
+'a' // Un caracter en Scala
+// 'Las cadenas con comillas simples no existen' <= Esto causa un error
 
-// Strings have the usual Java methods defined on them
+// Las cadenas tienen los los típicos metodos de Java definidos
 "hello world".length
 "hello world".substring(2, 6)
 "hello world".replace("C", "3")
 
-// They also have some extra Scala methods. See also: scala.collection.immutable.StringOps
+// También tienen algunos métodos extra de Scala. Ver: scala.collection.immutable.StringOps
 "hello world".take(5)
 "hello world".drop(5)
 
-// String interpolation: notice the prefix "s"
+// Interpolación de cadenas: Observa el prefijo "s"
 val n = 45
-s"We have $n apples" // => "We have 45 apples"
+s"Tengo $n manzanas" // => "Tengo 45 manzanas"
 
-// Expressions inside interpolated strings are also possible
+// Es posible colocar expresiones dentro de cadenas interpoladas
 val a = Array(11, 9, 6)
-s"My second daughter is ${a(0) - a(2)} years old."    // => "My second daughter is 5 years old."
-s"We have double the amount of ${n / 2.0} in apples." // => "We have double the amount of 22.5 in apples."
-s"Power of 2: ${math.pow(2, 2)}"                      // => "Power of 2: 4"
+s"Mi segunda hija tiene ${a(0) - a(2)} años."         // => "Mi segunda hija tiene 5 años."
+s"Hemos doblado la cantidad de ${n / 2.0} manzanas."  // => "Hemos doblado la cantidad de 22.5 manzanas."
+s"Potencia de 2: ${math.pow(2, 2)}"                   // => "Potencia de 2: 4"
 
-// Formatting with interpolated strings with the prefix "f"
-f"Power of 5: ${math.pow(5, 2)}%1.0f"         // "Power of 5: 25"
-f"Square root of 122: ${math.sqrt(122)}%1.4f" // "Square root of 122: 11.0454"
+// Podemos formatear cadenas interpoladas con el prefijo "f"
+f"Potencia de 5: ${math.pow(5, 2)}%1.0f"         // "Potencia de 5: 25"
+f"Raiz cuadrada de 122: ${math.sqrt(122)}%1.4f" // "Raiz cuadrada de 122: 11.0454"
 
-// Raw strings, ignoring special characters.
-raw"New line feed: \n. Carriage return: \r." // => "New line feed: \n. Carriage return: \r."
+// Las cadenas puras ignoran caracteres especiales.
+raw"Nueva linea: \n. Retorno: \r." // => "Nueva linea: \n. Retorno: \r."
 
-// Some characters need to be "escaped", e.g. a double quote inside a string:
-"They stood outside the \"Rose and Crown\"" // => "They stood outside the "Rose and Crown""
+// Algunos caracteres necesitn ser escapados, por ejemplo unas comillas dobles dentro de una cadena:
+"Se quedaron fuera de \"Rose and Crown\"" // => "Se quedaron fuera de "Rose and Crown""
 
-// Triple double-quotes let strings span multiple rows and contain quotes
+// Las triples comillas dobles dejan que las cadenas se expandan por multiples filas y contengan comillas dobles o simples
 val html = """<form id="daform">
                 <p>Press belo', Joe</p>
                 <input type="submit">
@@ -189,7 +185,7 @@ val html = """<form id="daform">
 
 
 /////////////////////////////////////////////////
-// 2. Functions
+// 2. Funciones
 /////////////////////////////////////////////////
 
 // Functions are defined like so:
