@@ -188,62 +188,61 @@ val html = """<form id="daform">
 // 2. Funciones
 /////////////////////////////////////////////////
 
-// Functions are defined like so:
+// Las funciones se definen de la siguiente manera:
 //
-//   def functionName(args...): ReturnType = { body... }
+//   def nombreFuncion(argumentos...): TipoRetorno = { cuerpo... }
 //
-// If you come from more traditional languages, notice the omission of the
-// return keyword. In Scala, the last expression in the function block is the
-// return value.
-def sumOfSquares(x: Int, y: Int): Int = {
+// Si estás acostumbrado a lenguajes más tradicionales, observa la omisión de la palabra return.
+// En Scala, la última expresión en el bloque de función es el valor de retorno.
+def sumaDeCuadrados(x: Int, y: Int): Int = {
   val x2 = x * x
   val y2 = y * y
   x2 + y2
 }
 
-// The { } can be omitted if the function body is a single expression:
-def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
+// Los { } pueden omitirse si el cuerpo de la función es una única expresión:
+def sumaDeCuadradosCorta(x: Int, y: Int): Int = x * x + y * y
 
-// Syntax for calling functions is familiar:
-sumOfSquares(3, 4)  // => 25
+// La sintaxis para llamar funciones es familiar:
+sumaDeCuadrados(3, 4)  // => 25
 
-// You can use parameters names to specify them in different order
-def subtract(x: Int, y: Int): Int = x - y
+// Puedes usar los nombres de los parámetros para llamarlos en orden diferente
+def restar(x: Int, y: Int): Int = x - y
 
-subtract(10, 3)     // => 7
-subtract(y=10, x=3) // => -7
+restar(10, 3)     // => 7
+restar(y=10, x=3) // => -7
 
-// In most cases (with recursive functions the most notable exception), function
-// return type can be omitted, and the same type inference we saw with variables
-// will work with function return values:
-def sq(x: Int) = x * x  // Compiler can guess return type is Int
+// En la mayoría de los casos (siendo las funciones recursivas la excepción más notable),
+// el tipo de retorno de la función puede ser omitido, y la misma inferencia de tipos que vimos con las variables
+// funcionará con los valores de retorno de las funciones:
+def sq(x: Int) = x * x  // El compilador puede adivinar que el tipo de retorno es Int
 
-// Functions can have default parameters:
-def addWithDefault(x: Int, y: Int = 5) = x + y
-addWithDefault(1, 2) // => 3
-addWithDefault(1)    // => 6
+// Las funciones pueden tener parametros por defecto:
+def sumarConDefecto(x: Int, y: Int = 5) = x + y
+sumarConDefecto(1, 2) // => 3
+sumarConDefecto(1)    // => 6
 
 
-// Anonymous functions look like this:
+// Las funciones anónimas se escriben así:
 (x: Int) => x * x
 
-// Unlike defs, even the input type of anonymous functions can be omitted if the
-// context makes it clear. Notice the type "Int => Int" which means a function
-// that takes Int and returns Int.
+// Al contrario que los defs, incluso el tipo de entrada de las funciones anónimas puede ser omitido si
+// el contexto lo deja claro. Observa el tipo "Int => Int" que significa que es una función
+// que recibe Int y retorna Int.
 val sq: Int => Int = x => x * x
 
-// Anonymous functions can be called as usual:
+// Las funciones anónimas pueden ser llamadas como las demás:
 sq(10)   // => 100
 
-// If each argument in your anonymous function is
-// used only once, Scala gives you an even shorter way to define them. These
-// anonymous functions turn out to be extremely common, as will be obvious in
-// the data structure section.
-val addOne: Int => Int = _ + 1
-val weirdSum: (Int, Int) => Int = (_ * 2 + _ * 3)
+// Si cada argumento en tu función anónima es usado solo una vez,
+// Scala te da una manera incluso más corta de definirlos.
+// Estas funciones anónimas son extremadamente comunes, 
+// como será obvio en la sección de estructuras de datos.
+val sumarUno: Int => Int = _ + 1
+val sumaRara: (Int, Int) => Int = (_ * 2 + _ * 3)
 
-addOne(5)      // => 6
-weirdSum(2, 4) // => 16
+sumarUno(5)       // => 6
+sumaRara(2, 4)    // => 16
 
 
 // The return keyword exists in Scala, but it only returns from the inner-most
