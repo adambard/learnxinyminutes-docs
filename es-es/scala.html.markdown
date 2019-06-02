@@ -245,23 +245,22 @@ sumarUno(5)       // => 6
 sumaRara(2, 4)    // => 16
 
 
-// The return keyword exists in Scala, but it only returns from the inner-most
-// def that surrounds it.
-// WARNING: Using return in Scala is error-prone and should be avoided.
-// It has no effect on anonymous functions. For example:
+// La palabra return existe en Scala, pero solo retorna desde la función más interna que la rodea.
+// ADVERTENCIA: Usar return en Scala puede inducir a errores y debe ser evitado
+// No tiene efecto en funciones anónimas. Por ejemplo:
 def foo(x: Int): Int = {
-  val anonFunc: Int => Int = { z =>
+  val funcAnon: Int => Int = { z =>
     if (z > 5)
-      return z // This line makes z the return value of foo!
+      return z // Esta línea hace que z sea el valor de retorno de foo!
     else
-      z + 2    // This line is the return value of anonFunc
+      z + 2    // Esta línea es el valor de retorno de funcAnon
   }
-  anonFunc(x)  // This line is the return value of foo
+  anonFunc(x)  // Esta línea es el valor de retorno de foo
 }
 
 
 /////////////////////////////////////////////////
-// 3. Flow Control
+// 3. Control del flujo
 /////////////////////////////////////////////////
 
 1 to 5
