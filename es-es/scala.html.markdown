@@ -268,44 +268,44 @@ val r = 1 to 5
 r.foreach(println)
 
 r foreach println
-// NB: Scala is quite lenient when it comes to dots and brackets - study the
-// rules separately. This helps write DSLs and APIs that read like English
+// Nota: Scala es un lenguaje muy permisivo cuando se trata de puntos y parentesis - estudia las
+// reglas separadamente. Esto ayuda a escribir DSLs y APIs que se lean en lenguaje natural.
 
-// Why doesn't `println` need any parameters here?
-// Stay tuned for first-class functions in the Functional Programming section below!
+// Por qué `println` no necesita parámetros aquí?
+// Presta atención a las funciones de primera clase en la sección de Programación Funcional más abajo!
 (5 to 1 by -1) foreach (println)
 
-// A while loop
+// Un bucle while
 var i = 0
 while (i < 10) { println("i " + i); i += 1 }
 
-while (i < 10) { println("i " + i); i += 1 }   // Yes, again. What happened? Why?
+while (i < 10) { println("i " + i); i += 1 }   // Si, de nuevo. Qué ocurrió? Por qué?
 
-i    // Show the value of i. Note that while is a loop in the classical sense -
-     // it executes sequentially while changing the loop variable. while is very
-     // fast, but using the combinators and comprehensions above is easier
-     // to understand and parallelize
+i    // Muestra el valor de i. Observa que while es un loop en el sentido clásico -
+     // se ejecuta secuencialmente mientras cambia la variable del bucle. while es muy
+     // rápido, pero los combinadores y comprensiones anteriores son más sencillos
+     // de entender y paralelizar
 
-// A do-while loop
+// Un bucle do-while
 i = 0
 do {
-  println("i is still less than 10")
+  println("i es aún menor que 10")
   i += 1
 } while (i < 10)
 
-// Recursion is the idiomatic way of repeating an action in Scala (as in most
-// other functional languages).
-// Recursive functions need an explicit return type, the compiler can't infer it.
-// Here it's Unit, which is analagous to a `void` return type in Java
-def showNumbersInRange(a: Int, b: Int): Unit = {
+// La recursion es la manera idiomática de repetir una acción en Scala (como en la mayoría de
+// lenguajes funcionales).
+// Las funciones recursivas necesitan un tipo de retorno explicito, el compilador no puede inferirlo.
+// En Scala tenemos Unit, que es análogo al tipo de retorno `void` en Java
+def enseñaNumerosEnUnRango(a: Int, b: Int): Unit = {
   print(a)
   if (a < b)
-    showNumbersInRange(a + 1, b)
+    enseñaNumerosEnUnRango(a + 1, b)
 }
-showNumbersInRange(1, 14)
+enseñaNumerosEnUnRango(1, 14)
 
 
-// Conditionals
+// Condicionales
 
 val x = 10
 
@@ -319,33 +319,33 @@ val text = if (x == 10) "yeah" else "nope"
 
 
 /////////////////////////////////////////////////
-// 4. Data Structures
+// 4. Estructuras de datos
 /////////////////////////////////////////////////
 
 val a = Array(1, 2, 3, 5, 8, 13)
 a(0)     // Int = 1
 a(3)     // Int = 5
-a(21)    // Throws an exception
+a(21)    // Lanza una excepción
 
 val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
 m("fork")         // java.lang.String = tenedor
 m("spoon")        // java.lang.String = cuchara
-m("bottle")       // Throws an exception
+m("bottle")       // Lanza una excepción
 
-val safeM = m.withDefaultValue("no lo se")
-safeM("bottle")   // java.lang.String = no lo se
+val mapaSeguro = m.withDefaultValue("no lo se")
+mapaSeguro("bottle")   // java.lang.String = no lo se
 
 val s = Set(1, 3, 7)
 s(0)      // Boolean = false
 s(1)      // Boolean = true
 
-/* Look up the documentation of map here -
+/* Hecha un vistazo a la documentación de Map aquí -
  * http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map
- * and make sure you can read it
+ * y asegúrate de que puedes leerla
  */
 
 
-// Tuples
+// Tuplas
 
 (1, 2)
 
