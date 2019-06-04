@@ -130,7 +130,7 @@ fn main() {
     /////////////
 
     // Strutture
-    struct Point {
+    struct Punto {
         x: i32,
         y: i32,
     }
