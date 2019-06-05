@@ -9,6 +9,7 @@ contributors:
     - ["Ankush Goyal", "http://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
     - ["Maximilian Sonnenburg", "https://github.com/LamdaLamdaLamda"]
+lang: de-de
 ---
 
 C++ ist eine Systemprogrammiersprache die, 
