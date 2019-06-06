@@ -442,101 +442,102 @@ object Perro {
 // A menudo tienen pocos métodos, y los métodos raramente tienen efectos secundarios.
 case class Persona(nombre: String, telefono: String)
 
-// Create a new instance. Note cases classes don't need "new"
+// Para crear instancia nuevas, observa que las case clases no necesitan "new"
 val george = Persona("George", "1234")
 val kate = Persona("Kate", "4567")
 
-// With case classes, you get a few perks for free, like getters:
-george.phoneNumber  // => "1234"
+// Con las case clases tienes unas pocas ventajas, como el acceso a los campos:
+george.telefono  // => "1234"
 
-// Per field equality (no need to override .equals)
-Person("George", "1234") == Person("Kate", "1236")  // => false
+// Para la igualdad de campos no necesitas sobreescribir el método equals
+Persona("George", "1234") == Persona("Kate", "1236")  // => false
 
-// Easy way to copy
-// otherGeorge == Person("George", "9876")
-val otherGeorge = george.copy(phoneNumber = "9876")
+// Manera fácil de copiar
+// otroGeorge == Persona("George", "9876")
+val otroGeorge = george.copy(telefono = "9876")
 
-// And many others. Case classes also get pattern matching for free, see below.
+// Y muchas otras. Las case clases también tienen comparación de patrones, que veremos más abajo.
 
 // Traits
-// Similar to Java interfaces, traits define an object type and method
-// signatures. Scala allows partial implementation of those methods.
-// Constructor parameters are not allowed. Traits can inherit from other
-// traits or classes without parameters.
+// De manera similar a las interfaces Java, los traits definen un tipo de objeto y métodos.
+// Scala permite la implementación parcial de dichos métodos.
+// No se permiten parámetros de constructor. Los traits pueden heredar de otros traits o
+// clases sin parámetros.
 
-trait Dog {
-	def breed: String
+trait Perro {
+	def raza: String
 	def color: String
-	def bark: Boolean = true
-	def bite: Boolean
+	def ladra: Boolean = true
+	def muerde: Boolean
 }
-class SaintBernard extends Dog {
-	val breed = "Saint Bernard"
-	val color = "brown"
-	def bite = false
+class SanBernardo extends Perro {
+	val raza = "San Bernardo"
+	val color = "marrón"
+	def muerde = false
 }  
 
 scala> b  
-res0: SaintBernard = SaintBernard@3e57cd70  
-scala> b.breed  
-res1: String = Saint Bernard  
-scala> b.bark  
+res0: SanBernardo = SanBernardo@3e57cd70  
+scala> b.raza  
+res1: String = San Bernardo  
+scala> b.ladra
 res2: Boolean = true  
-scala> b.bite  
+scala> b.muerde
 res3: Boolean = false  
 
-// A trait can also be used as Mixin. The class "extends" the first trait,
-// but the keyword "with" can add additional traits.
+// Un trait tambien puede ser usado mezclado con otros traits. 
+// La clase extiende el primer trait, pero la palabra "with" 
+// puede añadir traits adicionales.
 
-trait Bark {
-	def bark: String = "Woof"
+trait Ladra {
+	def ladra: String = "Guau"
 }
-trait Dog {
-	def breed: String
+trait Perro {
+	def raza: String
 	def color: String
 }
-class SaintBernard extends Dog with Bark {
-	val breed = "Saint Bernard"
-	val color = "brown"
+class SanBernardo extends Perro with Ladra {
+	val raza = "San Bernardo"
+	val color = "marrón"
 }
 
-scala> val b = new SaintBernard
-b: SaintBernard = SaintBernard@7b69c6ba
-scala> b.bark
-res0: String = Woof
+scala> val b = new SanBernardo
+b: SanBernardo = SanBernardo@7b69c6ba
+scala> b.ladra
+res0: String = Guau
 
 
 /////////////////////////////////////////////////
-// 6. Pattern Matching
+// 6. Comparación de patrones
 /////////////////////////////////////////////////
 
-// Pattern matching is a powerful and commonly used feature in Scala. Here's how
-// you pattern match a case class. NB: Unlike other languages, Scala cases do
-// not need breaks, fall-through does not happen.
+// La comparación de patrones es una poderosa función de Scala.
+// Ahora veremos como comparar patrones en una case clase. 
+// Nota: A diferencia de otros lenguajes, Scala "cases" no necesitan
+// "break", porque no ejecuta los "case" posteriores.
 
-def matchPerson(person: Person): String = person match {
-  // Then you specify the patterns:
-  case Person("George", number) => "We found George! His number is " + number
-  case Person("Kate", number)   => "We found Kate! Her number is " + number
-  case Person(name, number)     => "We matched someone : " + name + ", phone : " + number
+def comparaPersona(persona: Persona): String = persona match {
+  // Aqui especificas los patrones:
+  case Persona("George", telefono) => "Hemos encontrado a George! Su número es " + telefono
+  case Persona("Kate", telefono)   => "Hemos encontrado a Kate! Su número es " + telefono
+  case Persona(nombre, telefono)     => "Hemos encontrado alguien : " + nombre + ", teléfono : " + telefono
 }
 
-// Regular expressions are also built in.
-// Create a regex with the `r` method on a string:
+// Las expresiones regulares también están incorporadas.
+// Creas una expresión regular con el método `r` en una cadena:
 val email = "(.*)@(.*)".r
 
-// Pattern matching might look familiar to the switch statements in the C family
-// of languages, but this is much more powerful. In Scala, you can match much
-// more:
-def matchEverything(obj: Any): String = obj match {
-  // You can match values:
-  case "Hello world" => "Got the string Hello world"
+// La comparación de patrones puede parecerse al bloque switch en la familia de lenguajes de C,
+// pero aquí es mucho más poderosa. En Scala, puedes hacer más comparaciones:
+def comparaTodo(obj: Any): String = obj match {
+  // Puedes comparar valores:
+  case "Hola mundo" => "Tengo la cadena Hola mundo"
 
-  // You can match by type:
-  case x: Double => "Got a Double: " + x
+  // Puedes comparar tipos:
+  case x: Double => "Tengo un double: " + x
 
-  // You can specify conditions:
-  case x: Int if x > 10000 => "Got a pretty big number!"
+  // Puedes especificar condiciones:
+  case x: Int if x > 10000 => "Tengo un número muy grande!"
 
   // You can match case classes as before:
   case Person(name, number) => s"Got contact info for $name!"
