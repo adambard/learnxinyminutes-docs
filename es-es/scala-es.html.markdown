@@ -539,138 +539,133 @@ def comparaTodo(obj: Any): String = obj match {
   // Puedes especificar condiciones:
   case x: Int if x > 10000 => "Tengo un número muy grande!"
 
-  // You can match case classes as before:
-  case Person(name, number) => s"Got contact info for $name!"
+  // Puedes comparar case clases como antes:
+  case Persona(nombre, telefono) => s"Tengo la información de contacto de $nombre!"
 
-  // You can match regular expressions:
-  case email(name, domain) => s"Got email address $name@$domain"
+  // Puedes comparar expresiones regulares:
+  case email(nombre, dominio) => s"Tengo la dirección de correo $nombre@$dominio"
 
-  // You can match tuples:
-  case (a: Int, b: Double, c: String) => s"Got a tuple: $a, $b, $c"
+  // Puedes comparar tuplas:
+  case (a: Int, b: Double, c: String) => s"Tengo la tupla: $a, $b, $c"
 
-  // You can match data structures:
-  case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
+  // Puedes comparar estructuras:
+  case List(1, b, c) => s"Tengo un alista con tres elementos que empieza con 1: 1, $b, $c"
 
-  // You can nest patterns:
-  case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
+  // Puedes anidar patrones:
+  case List(List((1, 2, "YAY"))) => "Tengo una lista de listas de tuplas"
 
-  // Match any case (default) if all previous haven't matched
-  case _ => "Got unknown object"
+  // Comparar cualquier case (default) si todos los anteriores no han coincido
+  case _ => "Tengo un objeto desconocido"
 }
 
-// In fact, you can pattern match any object with an "unapply" method. This
-// feature is so powerful that Scala lets you define whole functions as
-// patterns:
-val patternFunc: Person => String = {
-  case Person("George", number) => s"George's number: $number"
-  case Person(name, number) => s"Random person's number: $number"
+// De hecho puedes comparar un patrón con cualquier objeto con el método "unapply". 
+// Esta función es tan poderosa que Scala te deja definir funciones enteras como patrones:
+val funcPatron: Person => String = {
+  case Persona("George", telefono) => s"Teléfono de George: $telefono"
+  case Persona(nombre, telefono) => s"Teléfono de una persona aleatoria: $telefono"
 }
 
 
 /////////////////////////////////////////////////
-// 7. Functional Programming
+// 7. Programación funcional
 /////////////////////////////////////////////////
 
-// Scala allows methods and functions to return, or take as parameters, other
-// functions or methods.
+// Scala permite a los métodos y funciones devolver o 
+// recibir como parámetros otras funciones o métodos
 
-val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
-List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
+val suma10: Int => Int = _ + 10 // Una función que recibe y devuelve un Int
+List(1, 2, 3) map suma10 // List(11, 12, 13) - suma10 es aplicado a cada elemento
 
-// Anonymous functions can be used instead of named functions:
+// Las funciones anónimas pueden ser usadas en vez de funciones con nombre:
 List(1, 2, 3) map (x => x + 10)
 
-// And the underscore symbol, can be used if there is just one argument to the
-// anonymous function. It gets bound as the variable
+// Y la barra baja puede ser usada si solo hay un argumento en la función anónima.
+// Se usa como la variable. 
 List(1, 2, 3) map (_ + 10)
 
-// If the anonymous block AND the function you are applying both take one
-// argument, you can even omit the underscore
+// Si el bloque anónimo Y la función que estás usando usan los dos un argumento, 
+// puedes incluso omitir la barra baja.
 List("Dom", "Bob", "Natalia") foreach println
 
 
-// Combinators
-// Using `s` from above:
+// Combinadores
+// Usando s de arriba:
 // val s = Set(1, 3, 7)
 
 s.map(sq)
 
-val sSquared = s. map(sq)
+val sCuadrado = s. map(sq)
 
 sSquared.filter(_ < 10)
 
 sSquared.reduce (_+_)
 
-// The filter function takes a predicate (a function from A -> Boolean) and
-// selects all elements which satisfy the predicate
+// La función filter toma un predicado (una función A -> Boolean) y
+// selecciona todos los elementos que satisfacen el predicado.
 List(1, 2, 3) filter (_ > 2) // List(3)
-case class Person(name: String, age: Int)
+case class Persona(nombre: String, edad: Int)
 List(
-  Person(name = "Dom", age = 23),
-  Person(name = "Bob", age = 30)
-).filter(_.age > 25) // List(Person("Bob", 30))
+  Persona(nombre = "Dom", edad = 23),
+  Persona(nombre = "Bob", edad = 30)
+).filter(_.edad > 25) // List(Persona("Bob", 30))
 
 
-// Certain collections (such as List) in Scala have a `foreach` method,
-// which takes as an argument a type returning Unit - that is, a void method
-val aListOfNumbers = List(1, 2, 3, 4, 10, 20, 100)
-aListOfNumbers foreach (x => println(x))
-aListOfNumbers foreach println
+// Ciertas colecciones (como List) en Scala tienen un método `foreach`,
+// que toma como argumento un tipo que devuelva Unit (un método void)
+val unaListaDeNumeros = List(1, 2, 3, 4, 10, 20, 100)
+unaListaDeNumeros foreach (x => println(x))
+unaListaDeNumeros foreach println
 
-// For comprehensions
+// Para comprensiones
 
 for { n <- s } yield sq(n)
 
-val nSquared2 = for { n <- s } yield sq(n)
+val nCuadrado2 = for { n <- s } yield sq(n)
 
 for { n <- nSquared2 if n < 10 } yield n
 
 for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 
-/* NB Those were not for loops. The semantics of a for loop is 'repeat', whereas
-   a for-comprehension defines a relationship between two sets of data. */
+/* Nota: Esos no son bucles. La semántica de un bucle es repetir, mientras que un for de comprension define una relación entre dos conjuntos de datos.*/
 
 
 /////////////////////////////////////////////////
-// 8. Implicits
+// 8. Implicitos
 /////////////////////////////////////////////////
 
-/* WARNING WARNING: Implicits are a set of powerful features of Scala, and
- * therefore it is easy to abuse them. Beginners to Scala should resist the
- * temptation to use them until they understand not only how they work, but also
- * best practices around them. We only include this section in the tutorial
- * because they are so commonplace in Scala libraries that it is impossible to
- * do anything meaningful without using a library that has implicits. This is
- * meant for you to understand and work with implicits, not declare your own.
+/* ATENCIÓN ATENCIÓN: Los implicitos son un conjunto de poderosas características de Scala
+ * y es fácil abusar de ellos. Si eres principiante en Scala deberías resistir la tentación
+ * de usarlos hasta que entiendas no solo como funcionan, sino también las mejores prácticas
+ * con ellos. Nosotros solo incluiremos esta sección en el tutorial porque son tan comunes
+ * en las librerias de Scala que es imposible hacer algo significativo sin usar una librería
+ * que tenga implicitos. Esto es para que entiendas como funcionan los implicitos, no para 
+ * que definas los tuyos propios.
  */
 
-// Any value (vals, functions, objects, etc) can be declared to be implicit by
-// using the, you guessed it, "implicit" keyword. Note we are using the Dog
-// class from section 5 in these examples.
-implicit val myImplicitInt = 100
-implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
+// Cualquier valor (val, funciones, objetos, etc) puede ser declarado como implicito usando
+// la palabra "implicit". Observa que usamos la clase Perro de la sección 5.
+implicit val miEnteroImplicito = 100
+implicit def miFunciónImplicita(raza: String) = new Perro("Golden " + raza)
 
-// By itself, implicit keyword doesn't change the behavior of the value, so
-// above values can be used as usual.
-myImplicitInt + 2                   // => 102
-myImplicitFunction("Pitbull").breed // => "Golden Pitbull"
+// Por si misma, la palabra implicit no cambia el comportamiento de un valor,
+// así que estos valores pueden ser usados como siempre.
+miEnteroImplicito + 2              // => 102
+miFunciónImplicita("Pitbull").raza // => "Golden Pitbull"
 
-// The difference is that these values are now eligible to be used when another
-// piece of code "needs" an implicit value. One such situation is implicit
-// function arguments:
-def sendGreetings(toWhom: String)(implicit howMany: Int) =
-  s"Hello $toWhom, $howMany blessings to you and yours!"
+// La diferencia es que estos valores ahora pueden ser usados cuando otra pieza de código
+// necesite un valor implicito. Una situación así puede darse con argumentos implicitos de función:
+def enviaSaludos(aQuien: String)(implicit cuantos: Int) =
+  s"Hola $aQuien, $cuantos saludos a ti y a los tuyos!"
 
-// If we supply a value for "howMany", the function behaves as usual
-sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!"
+// Si proporcionamos un valor para "cuantos", la función se comporta como siempre
+enviaSaludos("John")(1000)  // => "Hola John, 1000 saludos a ti y a los tuyos!"
 
-// But if we omit the implicit parameter, an implicit value of the same type is
-// used, in this case, "myImplicitInt":
-sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
+// Pero si omitimos el parámetro implicito, un valor implicito del mismo tipo es usado,
+// en este caso, "miEnteroImplicito":
+enviaSaludos("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 
-// Implicit function parameters enable us to simulate type classes in other
-// functional languages. It is so often used that it gets its own shorthand. The
-// following two lines mean the same thing:
+// Los parámetros de función implicit nos permiten simular clases tipo en otros lenguajes funcionales. 
+// Es usado tan a menudo que tiene su propio atajo. Las dos siguientes lineas significan lo mismo:
 // def foo[T](implicit c: C[T]) = ...
 // def foo[T : C] = ...
 
