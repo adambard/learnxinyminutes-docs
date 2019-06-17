@@ -223,6 +223,25 @@ moreNumbers[5] = 5; // Error, elements are read-only
 moreNumbers.push(5); // Error, no push method (because it mutates array)
 moreNumbers.length = 3; // Error, length is read-only
 numbers = moreNumbers; // Error, mutating methods are missing
+
+// Iterators and Generators
+
+// for..of statement
+// iterate over the list of values on the object being iterated
+let list = [4, 5, 6];
+for (let i of list) {
+   console.log(i); // "4", "5", "6"
+}
+
+// for..in statement
+// iterate over the list of keys on the object being iterated
+for (let i in list) {
+   console.log(i); // "0", "1", "2",
+}
+
+
+
+
 ```
 
 ## Further Reading
