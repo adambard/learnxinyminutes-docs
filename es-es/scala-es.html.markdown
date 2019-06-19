@@ -670,76 +670,72 @@ enviaSaludos("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 // def foo[T : C] = ...
 
 
-// Another situation in which the compiler looks for an implicit is if you have
-//   obj.method(...)
-// but "obj" doesn't have "method" as a method. In this case, if there is an
-// implicit conversion of type A => B, where A is the type of obj, and B has a
-// method called "method", that conversion is applied. So having
-// myImplicitFunction above in scope, we can say:
-"Retriever".breed // => "Golden Retriever"
-"Sheperd".bark    // => "Woof, woof!"
+// Otra situación en la que el compilador busca un implicit es si tienes
+//   obj.método(...)
+// pero "obj" no tiene "método" como un método. En este caso, si hay una conversión 
+// implicita de tipo A => B, donde A es el tipo de obj y B tiene un método llamado
+// "método", esa conversión es aplicada. Así que teniendo miFunciónImplicita, podemos decir:
+"Retriever".raza // => "Golden Retriever"
+"Sheperd".ladra    // => "Woof, woof!"
 
-// Here the String is first converted to Dog using our function above, and then
-// the appropriate method is called. This is an extremely powerful feature, but
-// again, it is not to be used lightly. In fact, when you defined the implicit
-// function above, your compiler should have given you a warning, that you
-// shouldn't do this unless you really know what you're doing.
-
+// Aquí la cadena es convertida primero a Perro usando nuestra función miFunciónImplicita, 
+// y entonces el método apropiado es llamado. Esta es una herramienta extremadamente poderosa
+// pero de nuevo, no puede usarse con ligereza. De hecho, cuando definiste la función implicita, 
+// tu compilador debería haber mostrado una advertencia, diciendo que no deberías hacer esto 
+// a no ser que realmente sepas lo que estás haciendo.
 
 /////////////////////////////////////////////////
 // 9. Misc
 /////////////////////////////////////////////////
 
-// Importing things
+// Importando cosas
 import scala.collection.immutable.List
 
-// Import all "sub packages"
+// Importando todos los "sub paquetes"
 import scala.collection.immutable._
 
-// Import multiple classes in one statement
+// Importando multiples clases en una línea
 import scala.collection.immutable.{List, Map}
 
-// Rename an import using '=>'
+// Renombrar un import usando '=>'
 import scala.collection.immutable.{List => ImmutableList}
 
-// Import all classes, except some. The following excludes Map and Set:
+// Importar todas las clases, excepto algunas. La siguiente linea excluye Map y Set:
 import scala.collection.immutable.{Map => _, Set => _, _}
 
-// Java classes can also be imported. Scala syntax can be used
+// Las clases de Java pueden ser importadas también con sintaxis de Scala:
 import java.swing.{JFrame, JWindow}
 
-// Your programs entry point is defined in a scala file using an object, with a
-// single method, main:
+// El punto de entrada de tus programas está definido en un fichero scala usando un object, 
+// con un solo método, main:
 object Application {
   def main(args: Array[String]): Unit = {
-    // stuff goes here.
+    // Aquí va tu código.
   }
 }
 
-// Files can contain multiple classes and objects. Compile with scalac
+// Los ficheros pueden contener multiples clases y objetos. Compila con scalac
 
 
+// Salida y entrada
 
-
-// Input and output
-
-// To read a file line by line
+// Leer un fichero línea por línea
 import scala.io.Source
-for(line <- Source.fromFile("myfile.txt").getLines())
+for(line <- Source.fromFile("miarchivo.txt").getLines())
   println(line)
 
-// To write a file use Java's PrintWriter
-val writer = new PrintWriter("myfile.txt")
-writer.write("Writing line for line" + util.Properties.lineSeparator)
-writer.write("Another line here" + util.Properties.lineSeparator)
+// Para escribir un archivo usa el PrintWriter de Java
+val writer = new PrintWriter("miarchivo.txt")
+writer.write("Escribiendo linea por linea" + util.Properties.lineSeparator)
+writer.write("Otra linea" + util.Properties.lineSeparator)
 writer.close()
 
 ```
 
-## Further resources
+## Más recursos
 
-* [Scala for the impatient](http://horstmann.com/scala/)
-* [Twitter Scala school](http://twitter.github.io/scala_school/)
-* [The scala documentation](http://docs.scala-lang.org/)
-* [Try Scala in your browser](http://scalatutorials.com/tour/)
-* Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
+* [Scala para los impacientes](http://horstmann.com/scala/)
+* [Escuela de Scala en Twitter](http://twitter.github.io/scala_school/)
+* [La documentación de Scala](http://docs.scala-lang.org/)
+* [Prueba Scala en tu navegador](http://scalatutorials.com/tour/)
+* Unete al [grupo de usuarios de Scala](https://groups.google.com/forum/#!forum/scala-user)
