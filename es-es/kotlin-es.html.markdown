@@ -2,6 +2,7 @@
 language: kotlin
 contributors:
 - ["S Webber", "https://github.com/s-webber"]
+- ["Aitor Escolar", "https://github.com/aiescola"]
 translators:
 - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 lang: es-es
