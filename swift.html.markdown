@@ -14,7 +14,7 @@ filename: learnswift.swift
 
 Swift is a programming language for iOS and OS X development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6+.
 
-The official _[Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329)_ book from Apple is now available via iBooks. It goes into much more detail than this guide, and if you have the time and patience to read it, it's recommended.
+The official _[Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329)_ book from Apple is now available via iBooks. It goes into much more detail than this guide, and if you have the time and patience to read it, it's recommended. Some of these examples are from that book.
 
 Another great reference is _About Swift_ on Swift's [website](https://docs.swift.org/swift-book/).
 
@@ -36,7 +36,8 @@ import Foundation
 // FIXME: Fix this code
 
 //MARK: Hello, World
-// From Swift 3 on, to print, just use the `print` method. It automatically appends a new line.
+// From Swift 3 on, to print, just use the `print` method.
+// It automatically appends a new line.
 print("Hello, world")
 
 //
@@ -52,7 +53,8 @@ theQuestion = "What is six by nine?"
 // Atttempting to reassign a constant throws a compile-time error
 //theAnswer = 54
 
-// Both variables and constants can be declared before they are given a value, but must be given a value before they are used
+// Both variables and constants can be declared before they are given a value,
+//   but must be given a value before they are used
 let someConstant: Int
 var someVariable: String
 // These lines will throw errors:
@@ -61,26 +63,32 @@ var someVariable: String
 someConstant = 0
 someVariable = "0"
 
-// As you can see above, variable types are automatically inferred. To explicitly declare the type, write it after the variable name, separated by a colon
+// As you can see above, variable types are automatically inferred.
+//   To explicitly declare the type, write it after the variable name,
+//   separated by a colon.
 let aString: String = "A string"
 let aDouble: Double = 0
 
-// Values are never implicitly converted to another type. Explicitly make instances of the desired type.
+// Values are never implicitly converted to another type.
+// Explicitly make instances of the desired type.
 let stringWithDouble = aString + String(aDouble)
 let intFromDouble = Int(aDouble)
 
 // For strings, use string interpolation
 let descriptionString = "The value of aDouble is \(aDouble)"
-let equation = "Six by nine is \(6 * 9), not 42!" // You can put any expression inside string interpolation.
+// You can put any expression inside string interpolation.
+let equation = "Six by nine is \(6 * 9), not 42!"
 // To avoid escaping double quotes and backslashes, change the string delimiter
 let explanationString = #"The string I used was "The value of aDouble is \(aDouble)" and the result was \#(descriptionString)"#
-//You can put as many number signs as you want before the opening quote, just match them at the ending quote. They also change the escape character to a backslash followed by the same number of number signs.
+// You can put as many number signs as you want before the opening quote,
+//   just match them at the ending quote. They also change the escape character
+//   to a backslash followed by the same number of number signs.
 
 let multiLineString = """
     This is a multi-line string.
     It's called that because it takes up multiple lines (wow!)
         Any indentation beyond the closing quotation marks is kept, the rest is discarded.
-    You can include one or two double quotation marks (") or ("") in multi-line strings because the delimeter is three.
+    You can include " or "" in multi-line strings because the delimeter is three.
     """
 
 // Arrays
@@ -138,7 +146,8 @@ let convenience = "keyword"
 let weak = "another keyword"
 let override = "another keyword"
 
-let `class` = "keyword" // Using backticks allows keywords to be used as variable names even if they wouldn't be allowed normally
+// Using backticks allows keywords to be used as variable names even if they wouldn't be allowed normally
+let `class` = "keyword"
 
 // MARK: - Optionals
 
@@ -182,7 +191,9 @@ if someOptionalString != nil {
 }
 
 // if-let structure -
-// if-let is a special structure in Swift that allows you to check if an Optional rhs holds a value, and if it does unwrap and assign it to the lhs.
+// if-let is a special structure in Swift that allows you to check
+//   if an Optional rhs holds a value, and if it does unwrap
+//   and assign it to the lhs.
 if let someNonOptionalStringConstant = someOptionalString {
     // has `Some` value, non-nil
     // someOptionalStringConstant is of type String, not type String?
@@ -197,12 +208,15 @@ if var someNonOptionalString = someOptionalString {
     print(someNonOptionalString)
 }
 
-//You can bind multiple optional values in one if-let statement. If any of the bound values are nil, the if statement does not execute.
-if let first = someOptionalString, let second = someOptionalString2, let third = someOptionalString3, let fourth = someOptionalString4 {
+// You can bind multiple optional values in one if-let statement.
+//   If any of the bound values are nil, the if statement does not execute.
+if let first = someOptionalString, let second = someOptionalString2,
+    let third = someOptionalString3, let fourth = someOptionalString4 {
     print("\(first), \(second), \(third), and \(fourth) are all not nil")
 }
 
-//if-let supports "," (comma) clauses, which can be used to enforce conditions on newly-bound optional values
+//if-let supports "," (comma) clauses, which can be used to
+//   enforce conditions on newly-bound optional values.
 // Both the assignment and the "," clause must pass.
 let someNumber: Int? = 7
 if let num = someNumber, num > 3 {
@@ -217,7 +231,10 @@ let forcedString = someOptionalString! // requires an exclamation mark
 let implicitString = unwrappedString // doesn't require an exclamation mark
 
 /*
- You can think of an implicitly unwrapped optional as giving permission for the optional to be unwrapped automatically whenever it's used. Rather than placing an exclamation mark after the optional's name each time you use it, you place an exclamation mark after the optional's type when you declare it.
+ You can think of an implicitly unwrapped optional as giving permission
+ for the optional to be unwrapped automatically whenever it's used.
+ Rather than placing an exclamation mark after the optional's name each time you use it,
+ you place an exclamation mark after the optional's type when you declare it.
  */
 
 // Otherwise, you can treat an implicitly unwrapped optional the same way the you treat a normal optional
@@ -482,7 +499,8 @@ enum Suit {
 // when the variable is explicitly declared
 var suitValue: Suit = .hearts
 
-// Conforming to the CaseIterable protocol automatically synthesizes the allCases property, which contains all the values. It works on enums without associated values or @available attributes.
+// Conforming to the CaseIterable protocol automatically synthesizes the allCases property,
+//   which contains all the values. It works on enums without associated values or @available attributes.
 enum Rank: CaseIterable {
     case ace
     case two, three, four, five, six, seven, eight, nine, ten
@@ -724,7 +742,8 @@ let myInteger: Integer = 0
 
 // MARK: = Operator
 
-// Assignment does not return a value. This means it can't be used in conditional statements, and the following statement is also illegal
+// Assignment does not return a value. This means it can't be used in conditional statements,
+//   and the following statement is also illegal
 //    let multipleAssignment = theQuestion = "No questions asked"
 //But you can do this:
 let multipleAssignment = "No questions asked", secondConstant = "No answers given"
