@@ -172,7 +172,7 @@ let someOptionalString3 = String?.some("optional") // same as the first one
 let someOptionalString4 = String?.none //nil
 
 /*
- To access the valuke of an optional that has a value, use the postfix
+ To access the value of an optional that has a value, use the postfix
  operator !, which force-unwraps it. Force-unwrapping is like saying, "I
  know that this optional definitely has a value, please give it to me.
  
@@ -186,9 +186,13 @@ if someOptionalString != nil {
     if someOptionalString!.hasPrefix("opt") {
         print("has the prefix")
     }
-    
-    let empty = someOptionalString?.isEmpty //TODO: Optional chaining
 }
+
+// Swift supports "optional chaining," which means that you can call functions
+//   or get properties of optional values and they are optionals of the appropriate type.
+// You can even do this multiple times, hence the name "chaining."
+    
+let empty = someOptionalString?.isEmpty // Bool?
 
 // if-let structure -
 // if-let is a special structure in Swift that allows you to check
@@ -238,6 +242,7 @@ let implicitString = unwrappedString // doesn't require an exclamation mark
  */
 
 // Otherwise, you can treat an implicitly unwrapped optional the same way the you treat a normal optional
+//   (i.e., if-let, != nil, etc.)
 
 // Pre-Swift 5, T! was shorthand for ImplicitlyUnwrappedOptional<T>
 // Swift 5 and later, using ImplicitlyUnwrappedOptional throws a compile-time error.
@@ -327,8 +332,6 @@ repeat {
 
 // The continue statement continues executing a loop at the next iteration
 // The break statement ends a swift or loop immediately
-
-// TODO: guard stetments
 
 // MARK: - Functions
 
@@ -435,6 +438,7 @@ func testGuard() {
     // They make it easier to avoid the "pyramid of doom"
     guard let aNumber = Optional<Int>(7) else {
         return // guard statements MUST exit the scope that they are in.
+        // They generally use `return` or `throw`.
     }
     
     print("number is \(aNumber)")
