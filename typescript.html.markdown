@@ -224,6 +224,19 @@ moreNumbers.push(5); // Error, no push method (because it mutates array)
 moreNumbers.length = 3; // Error, length is read-only
 numbers = moreNumbers; // Error, mutating methods are missing
 
+// Tagged Union Types for modelling state that can be in one of many shapes
+type State = 
+  | { type: "loading" }
+  | { type: "success", value: number }
+  | { type: "error", message: string };
+
+declare const state: State;
+if (state.type === "success") {
+  console.log(state.value);
+} else if (state.type === "error") {
+  console.error(state.message);
+}
+
 // Iterators and Generators
 
 // for..of statement
