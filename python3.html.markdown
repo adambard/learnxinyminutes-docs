@@ -155,7 +155,7 @@ len("This is a string")  # => 16
 name = "Reiko"
 f"She said her name is {name}." # => "She said her name is Reiko"
 # You can basically put any Python statement inside the braces and it will be output in the string.
-f"{name} is {len(name)} characters long."
+f"{name} is {len(name)} characters long." # => "Reiko is 5 characters long"
 
 
 # None is an object
