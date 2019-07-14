@@ -140,6 +140,12 @@ len("This is a string")         # => 16
 # 旧式のフォーマット方法を使うこともできます。
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
+# Python3.6以上では、f-stringsやフォーマット文字列を使ってフォーマットすることもできます。
+name = "Reiko"
+f"She said her name is {name}."  # => "She said her name is Reiko"
+
+# 基本的に、任意のPythonの文を中括弧に書くことができ、それは評価されて出力されます。
+f"{name} is {len(name)} characters long."
 
 # None はオブジェクトです(大文字からです!)
 None                            # => None
