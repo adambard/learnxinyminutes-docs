@@ -766,7 +766,94 @@ if __name__ == '__main__':
 
 
 ####################################################
-# 6.1 多重継承
+# 6.1 継承
+####################################################
+# 継承を行うことで、親クラスからメソッドと変数を継承する新しい子クラスを定義できます。
+
+# 上記で定義されたHumanクラスを親クラス(基底クラス)として使い、Superheroという子クラスを定義します。
+# これは"species"、"name"や"age"といった変数や、"sing"や"grunt"のようなメソッドをHumanから継承しますが、
+# Superhero独自のプロパティを持つこともできます。
+
+# ファイルを分割してモジュール化の利点を活用するために、上記のHumanクラスを独自のファイル、ここでは human.py に記述ましょう。
+
+# 別のファイルから関数をインポートするには次の形式を利用してください:
+# from "拡張子なしのファイル名" import "関数やクラス"
+
+from human import Human
+
+
+# 親クラスを子クラスのパラメータとして指定します
+class Superhero(Human):
+
+    # もし子クラスが親クラスの全ての定義を変更なしで継承する場合、"pass"キーワードのみを書くだけで良いです。
+    # しかし、今回は親クラスとは異なる子クラスを作成するので、今回は以下の通りコメントアウトしています。
+    # pass
+
+    # 子クラスは親クラスの属性を上書きできます。
+    species = 'Superhuman'
+
+    # 子クラスは親クラスのコンストラクタを引数含めて自動的に継承しますが、
+    # 追加の引数や定義を行ってコンストラクタのようなメソッドを上書きすることもできます。
+    # このコンストラクタは"name"引数を"Human"クラスから継承し、"superpower"と"movie"という引数を追加します。
+    def __init__(self, name, movie=False,
+                 superpowers=["super strength", "bulletproofing"]):
+
+        # 追加のクラス属性を作成する
+        self.fictional = True
+        self.movie = movie
+        # デフォルト値は共有されるので、可変のデフォルト値には注意してください。
+        self.superpowers = superpowers
+
+        # "super"関数を使うと子クラスに上書きされた親クラスのメソッド(今回は "__init__")にアクセスできます。
+        # これで、親クラスのコンストラクタを呼んでいます。
+        super().__init__(name)
+
+    # singメソッドを上書きし、
+    def sing(self):
+        return 'Dun, dun, DUN!'
+
+    # 追加のインスタンスメソッドを作成します。
+    def boast(self):
+        for power in self.superpowers:
+            print("I wield the power of {pow}!".format(pow=power))
+
+
+if __name__ == '__main__':
+    sup = Superhero(name="Tick")
+
+    # インスタンスの型を調べる
+    if isinstance(sup, Human):
+        print('I am human')
+    if type(sup) is Superhero:
+        print('I am a superhero')
+
+    # getattr()とsuper()で使われるメソッドの解決順序を調べてみます。
+    # この属性は動的であり、変更可能です。
+    print(Superhero.__mro__)    # => (<class '__main__.Superhero'>,
+                                # => <class 'human.Human'>, <class 'object'>)
+
+    # 親のメソッドを呼びだすものの、独自のクラス属性を参照します。
+    print(sup.get_species())    # => Superhuman
+
+    # 上書きされたメソッドを呼ぶ
+    print(sup.sing())           # => Dun, dun, DUN!
+
+    # Humanのメソッドを呼ぶ
+    sup.say('Spoon')            # => Tick: Spoon
+
+    # Superhero限定のメソッドを呼ぶ
+    sup.boast()                 # => I wield the power of super strength!
+                                # => I wield the power of bulletproofing!
+
+    # 継承されたクラス属性
+    sup.age = 31
+    print(sup.age)              # => 31
+
+    # Superhero限定の属性
+    print('Am I Oscar eligible? ' + str(sup.movie))
+
+
+
 ####################################################
 # 6.2 多重継承
 ####################################################
