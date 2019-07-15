@@ -768,8 +768,11 @@ if __name__ == '__main__':
 ####################################################
 # 6.1 多重継承
 ####################################################
+# 6.2 多重継承
+####################################################
 
 # 別のクラスを定義します。
+# bat.py
 class Bat:
 
     species = 'Baty'
@@ -791,31 +794,22 @@ if __name__ == '__main__':
     print(b.say('hello'))
     print(b.fly)
 
-# ファイル単位のモジュール化を利用するために、上記のクラスを別々のファイルに配置することができます。
-# ここでは、human.pyとbat.pyを作成してみましょう。
-
-# 他のファイルから関数をインポートするために、次のような形式を利用してください。
-# from "拡張子無しのファイル名" import "関数またはクラス"
-
 # superhero.py
-from human import Human
+from superhero import Superhero
 from bat import Bat
 
-
-# BatmanはHumanとBatの両方を継承します。
-class Batman(Human, Bat):
-
-    # Batmanは species のクラス属性に独自の値を持ちます。
-    species = 'Superhero'
+# BatmanをSuperheroとBatの両方を継承した子クラスとして定義します。
+class Batman(Superhero, Bat):
 
     def __init__(self, *args, **kwargs):
         # 通常、属性を継承するにはsuper()を呼び出します。
-        #     super(Batman, self).__init__(*args, **kwargs)
+        # super(Batman, self).__init__(*args, **kwargs)
         # しかし、ここでは多重継承を行っているので、 super() はMRO(メソッド解決順序)の次の基本クラスにのみ動作します。
         # なので、全ての祖先に対して明示的に __init__ を呼ぶことにします。
         # *args と **kwargs を使うことで、それぞれの継承元が
         # たまねぎの皮を剥がすごとく、引数を用いることができます。
-        Human.__init__(self, 'anonymous', *args, **kwargs)
+        Superhero.__init__(self, 'anonymous', movie=True,
+                           superpowers=['Wealthy'], *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
         # 名前の属性の値を上書きします。
         self.name = 'Sad Affleck'
@@ -827,22 +821,18 @@ class Batman(Human, Bat):
 if __name__ == '__main__':
     sup = Batman()
 
-    # インスタンスの型を調べてみましょう。
-    if isinstance(sup, Human):
-        print('I am human')
-    if isinstance(sup, Bat):
-        print('I am bat')
-    if type(sup) is Batman:
-        print('I am Batman')
-
     # getattr() や super() の両方で使われるMROを取得します。
     # この属性は動的であり、更新が可能です。
-    print(Batman.__mro__)  # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
+    print(Batman.__mro__)       # => (<class '__main__.Batman'>,
+                                # => <class 'superhero.Superhero'>,
+                                # => <class 'human.Human'>,
+                                # => <class 'bat.Bat'>, <class 'object'>)
+
 
     # 親メソッドを呼び出しますが、独自のクラス属性を参照します。
-    print(sup.get_species())    # => Superhero
+    print(sup.get_species())    # => Superhuman
 
-    # オーバーロードされたメソッドを呼び出します。
+    # 上書きされたメソッドを呼び出します。
     print(sup.sing())           # => nan nan nan nan nan batman!
 
     # 継承順により、Humanから継承されたメソッドを呼び出します。
@@ -853,10 +843,10 @@ if __name__ == '__main__':
 
     # 継承されたクラス属性
     sup.age = 100
-    print(sup.age)
+    print(sup.age)              # => 100
 
     # デフォルト値が上書きされて、2番目の先祖から継承された属性
-    print('Can I fly? ' + str(sup.fly))
+    print('Can I fly? ' + str(sup.fly))  # => Can I fly? False
 
 
 ####################################################
