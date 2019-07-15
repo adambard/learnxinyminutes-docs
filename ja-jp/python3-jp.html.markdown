@@ -569,9 +569,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # * を使ってタプルを展開したり、 ** を使って辞書を展開できます。
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)             # foo(1, 2, 3, 4) に対応します。
-all_the_args(**kwargs)          # foo(a=3, b=4) に対応します。
-all_the_args(*args, **kwargs)   # foo(1, 2, 3, 4, a=3, b=4) に対応します。
+all_the_args(*args)             # all_the_args(1, 2, 3, 4) と等しいです。
+all_the_args(**kwargs)          # all_the_args(a=3, b=4) と等しいです。
+all_the_args(*args, **kwargs)   # all_the_args(1, 2, 3, 4, a=3, b=4) と等しいです。
 
 
 # タプルで複数の値を返す
