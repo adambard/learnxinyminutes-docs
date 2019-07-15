@@ -193,7 +193,7 @@ print("Hello, World", end="!")  # => Hello, World!
 input_string_var = input("Enter some data: ")  # 入力を文字列として返します
 # Note: Python の初期のバージョンでは、 input() は raw_input() という名前で存在します。
 
-# 変数に代入する前に宣言する必要はありません。
+# Pythonでは変数の宣言は存在せず、代入のみです。
 # 慣例的に、小文字でアンダースコア区切り ( lower_case_with_underscores ) の変数が使われます。
 some_var = 5
 some_var                        # => 5
@@ -230,10 +230,11 @@ li[-1]                          # => 3
 li[4]                           # IndexError が発生します
 
 # スライス構文により範囲を参照できます。
+# 開始部分のインデックスに対応する部分は含まれますが、終了部分のインデックスに対応する部分は含まれません。
 li[1:3]                         # => [2, 4]
-# 先端を取り除く
+# 先端を取り除いたリスト
 li[2:]                          # => [4, 3]
-# 末尾を取り除く
+# 末尾を取り除いたリスト
 li[:3]                          # => [1, 2, 4]
 # 1つ飛ばしで選択する
 li[::2]                         # =>[1, 4]
@@ -295,7 +296,7 @@ a, b, c = (1, 2, 3)             # a, b, c にはそれぞれ 1, 2, 3 が代入�
 # 拡張記法もあります。
 a, *b, c = (1, 2, 3, 4)         # a は 1 、 b は [2, 3] 、c は4 になります。
 # 括弧を作成しなくてもデフォルトでタプルが作成されます。
-d, e, f = 4, 5, 6
+d, e, f = 4, 5, 6               # 4、5、6がそれぞれd、 e、 fに代入されます。
 # 2つの変数を交換するのがどれほど簡単か見てみましょう。
 e, d = d, e                     # d は 5 、 e は e になります。
 
@@ -316,14 +317,17 @@ filled_dict["one"]              # => 1
 
 # "keys()"により、全てのキーを反復可能な形式で取り出せます。
 # これをリストにするために、"list()"で囲んでいます。これについては後程解説します。
-# Note: 辞書のキーの順番は考慮されていません。実行した結果がこれと異なる場合があります。
-list(filled_dict.keys())        # => ["three", "two", "one"]
+# Note: Python3.7未満では、辞書のキーの順番は考慮されていません。実行した結果がこれと異なる場合があります。
+#       しかし、Python3.7以降ではキーの挿入順を保つようになりました。
+list(filled_dict.keys())        # => ["three", "two", "one"] in Python <3.7
+list(filled_dict.keys())        # => ["one", "two", "three"] in Python 3.7+
+
 
 # "values()"により、全ての値を反復可能な形式で取り出せます。
 # 前と同じように、これをリストにするために、"list()"で囲んでいます。
 # Note: 辞書の値の順番は考慮されていません。実行した結果がこれと異なる場合があります。
-list(filled_dict.values())      # => [3, 2, 1]
-
+list(filled_dict.values())      # => [3, 2, 1]  in Python <3.7
+list(filled_dict.values())      # => [1, 2, 3] in Python 3.7+
 
 # "in" により、辞書のキーが存在するか確認できます。
 "one" in filled_dict            # => True
@@ -345,7 +349,7 @@ filled_dict.setdefault("five", 6)  # filled_dict["five"] は 5 のままです�
 
 # 辞書にマップを追加する
 filled_dict.update({"four": 4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
-# filled_dict["four"] = 4        # 辞書に追加する別の方法
+filled_dict["four"] = 4        # 辞書に追加する別の方法
 
 # del により辞書からキーを削除できます。
 del filled_dict["one"]          # "one" キーを辞書から削除します。
@@ -364,11 +368,11 @@ some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
 invalid_set = {[1], 1}         # => list はハッシュ化できないので、 TypeError が送出されます。
 valid_set = {(1,), 1}
 
-# 新しい値を集合にセットできます。
-filled_set = some_set
-
 # 集合に新しい要素を追加できます。
+filled_set = some_set
 filled_set.add(5)               # filled_set は {1, 2, 3, 4, 5} になりました。
+# 集合は重複した要素を持ちません。
+filled_set.add(5)               # 以前の{1, 2, 3, 4, 5}のままです。
 
 # & により、集合同士の共通部分が得られます。
 other_set = {3, 4, 5, 6}
