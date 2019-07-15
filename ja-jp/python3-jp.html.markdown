@@ -674,7 +674,7 @@ dir(math)
 # 6. クラス
 ####################################################
 
-# クラスを作成するために、"class"という演算子を使います。
+# クラスを作成するために、class文を使います。
 class Human:
 
     # クラスの属性です。このクラスの全てのインスタンスで共有されます。
@@ -684,14 +684,14 @@ class Human:
     # 2つのアンダースコアがオブジェクトや属性の前後についているとき、これらはPythonによって利用され、
     # ユーザーの名前空間には存在しないということに注意してください。
     # __init__ や __str__ 、 __repr__ のようなメソッド(やオブジェクト、属性)は、
-    # magic methods (または dunder methods)と呼ばれます。
-    # このような名前を自分で発明しないほうがよいでしょう。
+    # special methods (または dunder methods)と呼ばれます。
+    # 同じような名前を自分で発明しないほうがよいでしょう。
     def __init__(self, name):
         # 引数をインスタンスのname属性に設定します。
         self.name = name
 
         # プロパティの初期化
-        self.age = 0
+        self._age = 0
 
     # インスタンスメソッド。全てのメソッドは"self"を最初の引数に取ります。
     def say(self, msg):
@@ -714,6 +714,7 @@ class Human:
 
     # プロパティはgetterのようなものです。
     # age() メソッドを同名の読取専用属性に変換します。
+    # Pythonではわざわざgetterやsetterを書く必要はありません。
     @property
     def age(self):
         return self._age
@@ -748,14 +749,17 @@ if __name__ == '__main__':
     j.say(j.get_species())      # => "Joel: H. neanderthalensis"
 
     # スタティックメソッドを呼んでみましょう。
-    print(Human.grunt())            # => "*grunt*"
-    print(i.grunt())                # => "*grunt*"
+    print(Human.grunt())        # => "*grunt*"
+
+    # スタティックメソッドはインスタンスから呼ぶことはできません。
+    # なぜならば、 i.grunt() は自動的に"self" ( i オブジェクト ) を引数として渡してしまうからです。
+    print(i.grunt())  # => TypeError: grunt() takes 0 positional arguments but 1 was given
 
     # インスタンスのプロパティを更新してみましょう。
     i.age = 42
     # プロパティを取得してみましょう。
-    i.say(i.age)                    # => 42
-    j.say(j.age)                    # => 0
+    i.say(i.age)                # => "Ian: 42"
+    j.say(j.age)                # => "Joel: 0"
     # プロパティを削除してみましょう。
     del i.age
     # i.age                         # => AttributeError が発生します。
