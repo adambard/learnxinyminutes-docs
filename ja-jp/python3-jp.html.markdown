@@ -405,7 +405,8 @@ filled_set | other_set          # => {1, 2, 3, 4, 5, 6}
 # まずは変数を作りましょう。
 some_var = 5
 
-# これはif文です。インデントがPythonでは特徴的ですね!
+# これはif文です。Pythonではインデントが特徴的ですね!
+# 規約ではタブではなく4つのスペースでインデントすることが推奨されています。
 # 以下の例では"some_var is smaller than 10"と出力されます。
 if some_var > 10:
     print("some_var is totally bigger than 10.")
