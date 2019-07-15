@@ -10,6 +10,7 @@ contributors:
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
 translators:
     - ["kakakaya", "https://github.com/kakakaya"]
+    - ["Ryota Kayanuma", "https://github.com/PicoSushi"]
 filename: learnpython3-jp.py
 lang: ja-jp
 ---
