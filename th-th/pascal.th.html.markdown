@@ -1,11 +1,6 @@
 ﻿---
 language: Pascal
 filename: learnpascal.pas
-contributors:
-    - ["Ganesha Danu", "http://github.com/blinfoldking"]
-    - ["Keith Miyake", "https://github.com/kaymmm"]
-translators:
-    - ["Worajedt Sitthidumrong", "https://github.com/Jedt3D"]
 language: th-th
 ---
 
