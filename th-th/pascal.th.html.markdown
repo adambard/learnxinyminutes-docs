@@ -2,9 +2,9 @@
 language: Pascal
 filename: learnpascal.pas
 contributors:
-	- ["Ganesha Danu", "http://github.com/blinfoldking"]
-	- ["Keith Miyake", "https://github.com/kaymmm"]
-	- ["Worajedt Sitthidumrong", "https://bitbucket.org/wrj"]
+    - ["Ganesha Danu", "http://github.com/blinfoldking"]
+    - ["Keith Miyake", "https://github.com/kaymmm"]
+    - ["Worajedt Sitthidumrong", "https://bitbucket.org/wrj"]
 lang: th-th
 ---
 
@@ -223,5 +223,5 @@ End.
 
 ```
 
-[1]:	https://en.wikipedia.org/wiki/Pascal_(programming_language)
-[2]:	https://www.freepascal.org/
+[1]: https://en.wikipedia.org/wiki/Pascal_(programming_language)
+[2]: https://www.freepascal.org/
