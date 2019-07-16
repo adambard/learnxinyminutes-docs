@@ -1,14 +1,13 @@
-﻿---
+---
 language: Pascal
 filename: learnpascal.pas
 contributors:
-    - ["Ganesha Danu", "http://github.com/blinfoldking"]
-    - ["Keith Miyake", "https://github.com/kaymmm"]
+	- ["Ganesha Danu", "http://github.com/blinfoldking"]
+	- ["Keith Miyake", "https://github.com/kaymmm"]
 translators:
-    - ["Worajedt Sitthidumrong", "https://github.com/Jedt3D"]
-language: th-th
+	- ["Worajedt Sitthidumrong", "https://bitbucket.org/wrj"]
+lang: th-th
 ---
-
 > Pascal (ปาสกาล) เป็นภาษาโปรแกรมมิ่งทั้งแบบ imperative และ procedural ที่ออกแบบโดย Niklaus Wirth (นิเคล้า เวิร์ท) เมื่อปี 1968-69 และเผยแพร่ตอน 1970 โดยเน้นให้เป็นภาษาที่เล็ก มีประสิทธิภาพ เพื่อเสริมการเขียนโปรแกรมที่มีแนวปฏิบัติที่ดีด้วยการใช้โครงสร้างของตัวภาษา และโครงสร้างข้อมูลมากำกับ ชื่อของภาษานี้ตั้งเป็นเกียรติให้กับนักคณิตศาสตร์ชาวฝรั่งเศส, นักปรัชญา และนักฟิสิกส์ ชื่อ Blaise Pascal (เบลส ปาสกาล) ข้อมูลจาก : [วิกิพีเดีย][1]
 
 การคอมไพล์และรันโค้ดภาษาปาสกาลนี้ สามารถใช้ปาสกาลคอมไพลเลอร์ฟรีชื่อ Free Pascal ได้ โดย [ดาวน์โหลดที่นี่][2]
