@@ -214,7 +214,7 @@ S = ι(K) = ι(ι(ι(ιι)))
 ## 更多阅读:
 
 1. [A Tutorial Introduction to the Lambda Calculus](http://www.inf.fu-berlin.de/lehre/WS03/alpi/lambda.pdf)(英文)
-2. [Cornell CS 312 Recitation 26: The Lambda Calculus](http://www.cs.cornell.edu/courses/cs3110/2008fa/recitations/rec26.html)(英文)
+2. [Cornell CS 312 Recitation 26: The Lambda Calculus](https://courses.cs.cornell.edu/cs312/2008sp/recitations/rec26.html)(英文)
 3. [Wikipedia - Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus)(英文)
 4. [Wikipedia - SKI combinator calculus](https://en.wikipedia.org/wiki/SKI_combinator_calculus)(英文)
 5. [Wikipedia - Iota and Jot](https://en.wikipedia.org/wiki/Iota_and_Jot)(英文)
