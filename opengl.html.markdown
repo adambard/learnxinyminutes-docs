@@ -25,7 +25,7 @@ int main() {
 	// 4 sample MSAA and we want to check for OpenGL 3.3
 	// compatibility.
 	sf::ContextSettings context{ 24, 8, 4, 3, 3 };
-	// Now we create the window, enable VSync (optional)
+	// Now we create the window, enable VSync
 	// and set the window active for OpenGL.
 	sf::Window window{ sf::VideoMode{ 1024, 768 }, "opengl window",
 							 sf::Style::Default, context };
@@ -37,7 +37,7 @@ int main() {
 	if ((err = glewInit()) != GLEW_OK)
 		std::cout << glewGetErrorString(err) << std::endl;
 	// Here we set the color glClear will clear the buffers with.
-	// Range goes from 0.0f (0%) to 1.0f (100%)
+	// Range goes from 0.0f to 1.0f.
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	// Now we can start the event loop, poll for events and draw objects.
 	sf::Event event{ };
@@ -188,18 +188,18 @@ GLuint vao = 0;
 glGenVertexArrays(1, &vao);
 glBindVertexArray(vao);
 // With the VAO active we can now create a Vertex Buffer Object (VBO).
-// The VBO stores out vertex data.
+// The VBO stores our vertex data.
 GLuint vbo = 0;
 glGenBuffers(1, &vbo);
 glBindBuffer(GL_ARRAY_BUFFER, vbo);
-// If your data changes more often you use GL_DYNAMIC_DRAW or GL_STREAM_DRAW.
+// If your data changes more often use GL_DYNAMIC_DRAW or GL_STREAM_DRAW.
 glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData[0]) * vertexData.size(),
 			 vertexData.data(), GL_STATIC_DRAW);
 // After filling the VBO link it to the location 0 in our vertex shader, which
 // holds the vertex position.
 glEnableVertexAttribArray(0);
 glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-// Everything should now be saved in out VAO and we can unbind it and the VBO.
+// Everything should now be saved in our VAO and we can unbind it and the VBO.
 glBindVertexArray(0);
 glBindBuffer(GL_ARRAY_BUFFER, 0);
 // Now we can draw the vertex data in our render loop.
@@ -207,7 +207,7 @@ glBindBuffer(GL_ARRAY_BUFFER, 0);
 glClear(GL_COLOR_BUFFER_BIT);
 // Tell OpenGL we want to use our shader program.
 glUseProgram(program);
-// Binding the VAO load all the data we need to draw our quad.
+// Binding the VAO loads the data we need.
 glBindVertexArray(vao);
 // We want to draw a quad starting at index 0 of the VBO using 4 indices.
 glDrawArrays(GL_QUADS, 0, 4);
@@ -225,8 +225,7 @@ return 0;
 ```
 You can find the current code here: [OpenGL - 1](https://pastebin.com/W8jdmVHD).
 ## More VBO's and Color
-Ofcourse being only able to draw everything in one color in a bit boring so let's
-define some colors.
+Let's create another VBO for some colors.
 ```cpp
 std::vector<float> colorData {
 	1.0f, 0.0f, 0.0f,
@@ -257,7 +256,7 @@ glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 glBindVertexArray(0);  
 // ...
 ```
-Next we have to change out vertex shader to pass the color data to the fragment shader.
+Next we have to change our vertex shader to pass the color data to the fragment shader.
 
 **Vertex Shader**
 ```glsl
@@ -292,12 +291,12 @@ We define a new input variable ```color``` which represents our color data, this
 is passed on to ```fColor```, which is an output variable of our vertex shader and
 becomes an input variable for our fragment shader.
 It is imporatant that variables passed between shaders have the exact same name
-and the same type.
+and type.
 ## Uniforms
 **Fragment Shader**
 ```glsl
-// Uniform are variables like in and out, however,
-// we can change them easily by passing new values.
+// Uniforms are variables like in and out, however,
+// we can change them easily by passing new values with glUniform().
 // Lets define a time variable in our fragment shader.
 #version 330 core
 // Unlike a in/out variable we can use a uniform in every shader,
@@ -328,15 +327,16 @@ sf::Clock clock{ };
 // ...
 ```
 With the time getting updated every frame the quad should now be changing from
-fully colored to pitch black. There are many more types and functions you can use
-and pass data to, for a quick reference see (page 6-8): [Quick Reference](https://www.khronos.org/files/opengl-quick-reference-card.pdf) 
+fully colored to pitch black.
+There are different types of glUniform() you can find simple documentation here:
+[glUniform - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glUniform.xhtml)
 ## Indexing and IBO's
 Element Array Buffers or more commonly Index Buffer Objects (IBO) allow us to use the
 same vertex data again which makes drawing a lot easier and faster. here's an example:
 ```cpp
 // Lets create a quad from two rectangles.
 // We can simply use the old vertex data from before.
-// Lets create the IBO.
+// First, we have to create the IBO.
 // The index is referring to the first declaration in the VBO.
 std::vector<unsigned int> iboData {
 	0, 1, 2,
@@ -352,7 +352,7 @@ glGenBufferrs(1, &ibo);
 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(iboData[0]) * iboData.size(),
 			 iboData.data(), GL_STATIC_DRAW);
-// Next in our render loop, we replace glDrawArrays() by this:
+// Next in our render loop, we replace glDrawArrays() with:
 glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
 // Remember to delete the allocated memory for the IBO.
 ```
@@ -377,12 +377,13 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 // Specify the filtering if the object is very large.
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-// Load the image data to the texture using only red, green, and blue
+// Load the image data to the texture.
 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y,
 			 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
 // Unbind the texture to prevent modifications.
 glBindTexture(GL_TEXTURE_2D, 0);
 // Delete the texture at the end of the application.
+// ...
 glDeleteTextures(1, &texture);
 ```
 Ofcourse there are more texture formats than only 2D textures,
@@ -459,7 +460,7 @@ void main() {
 ```
 You can find the current code here: [OpenGL - 3](https://pastebin.com/u3bcwM6q)
 
-## Citations
+## Quotes
 <sup>[1]</sup>[OpenGL - Wikipedia](https://en.wikipedia.org/wiki/OpenGL)
 
 ## Books
