@@ -387,9 +387,9 @@ glDeleteTextures(1, &texture);
 ```
 Ofcourse there are more texture formats than only 2D textures,
 You can find further information on parameters here:
-[glBindTexture - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindTexture.xhtml)
-[glTexImage2D - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexImage2D.xhtml)
-[glTexParameter - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml)
+[glBindTexture - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindTexture.xhtml)<br>
+[glTexImage2D - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexImage2D.xhtml)<br>
+[glTexParameter - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml)<br>
 ```cpp
 // With the texture created, we now have to specify the UV,
 // or in OpenGL terms ST coordinates.
