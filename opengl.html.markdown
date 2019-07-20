@@ -1,5 +1,6 @@
 ---
-language: opengl
+category: Graphics
+name: OpenGL
 filename: learnopengl.cpp
 contributors:
     - ["Simon Deitermann", "s.f.deitermann@t-online.de"]
@@ -222,7 +223,7 @@ glDeleteProgram(program);
 return 0;
 // ...
 ```
-You can find the current code here: [OpenGL - 1]([[https://pastebin.com/W8jdmVHD]).
+You can find the current code here: [OpenGL - 1](https://pastebin.com/W8jdmVHD).
 ## More VBO's and Color
 Ofcourse being only able to draw everything in one color in a bit boring so let's
 define some colors.
@@ -355,7 +356,7 @@ glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(iboData[0]) * iboData.size(),
 glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
 // Remember to delete the allocated memory for the IBO.
 ```
-You can find the current code here: [OpenGL - 2]([https://pastebin.com/R3Z9ACDE]).
+You can find the current code here: [OpenGL - 2](https://pastebin.com/R3Z9ACDE).
 ## Textures
 To load out texture we first need a library that load the data, for simplicityI will be
 using SFML, however there are a lot of librarys for loading textures data.
@@ -459,7 +460,7 @@ void main() {
 You can find the current code here: [OpenGL - 3](https://pastebin.com/u3bcwM6q)
 
 ## Citations
-<sup>[1]</sup>[OpenGL - Wikipedia]([https://en.wikipedia.org/wiki/OpenGL])
+<sup>[1]</sup>[OpenGL - Wikipedia](https://en.wikipedia.org/wiki/OpenGL)
 
 ## Books
 
