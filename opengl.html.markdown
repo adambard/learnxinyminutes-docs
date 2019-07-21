@@ -357,8 +357,8 @@ glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
 ```
 You can find the current code here: [OpenGL - 2](https://pastebin.com/R3Z9ACDE).
 ## Textures
-To load out texture we first need a library that load the data, for simplicityI will be
-using SFML, however there are a lot of librarys for loading textures data.
+To load out texture we first need a library that loads the data, for simplicity I will be
+using SFML, however there are a lot of librarys for loading image data.
 ```cpp
 // Lets save we have a texture called "my_tex.tga", we can load it with:
 sf::Image image;
