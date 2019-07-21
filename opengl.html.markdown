@@ -20,40 +20,39 @@ for modern OpenGL extensions, though there are many other librarys available.
 #include <iostream>
 
 int main() {
-	// First we tell SFML how to setup our OpenGL context.
-	// We use 24 bits for the depth buffer, 8 bits for the stencil buffer,
-	// 4 sample MSAA and we want to check for OpenGL 3.3
-	// compatibility.
-	sf::ContextSettings context{ 24, 8, 4, 3, 3 };
-	// Now we create the window, enable VSync
-	// and set the window active for OpenGL.
-	sf::Window window{ sf::VideoMode{ 1024, 768 }, "opengl window",
-							 sf::Style::Default, context };
-	window.setVerticalSyncEnabled(true);
-	window.setActive(true);
-	// After that we initialise GLEW and check if an error occured.
-	GLenum error;
-	glewExperimental = GL_TRUE;
-	if ((err = glewInit()) != GLEW_OK)
-		std::cout << glewGetErrorString(err) << std::endl;
-	// Here we set the color glClear will clear the buffers with.
-	// Range goes from 0.0f to 1.0f.
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	// Now we can start the event loop, poll for events and draw objects.
-	sf::Event event{ };
-	while (window.isOpen()) {
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				window.close;
-		}
-		// Tell OpenGL to clear the color buffer
-		// and the depth buffer, this will clear our window.
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		// Flip front- and backbuffer.
-		window.display();
-	}
-	
-	return 0;
+    // First we tell SFML how to setup our OpenGL context.
+    // We use 24 bits for the depth buffer, 8 bits for the stencil buffer,
+    // 4 sample MSAA and we want to check for OpenGL 3.3
+    // compatibility.
+    sf::ContextSettings context{ 24, 8, 4, 3, 3 };
+    // Now we create the window, enable VSync
+    // and set the window active for OpenGL.
+    sf::Window window{ sf::VideoMode{ 1024, 768 }, "opengl window",
+                       sf::Style::Default, context };
+    window.setVerticalSyncEnabled(true);
+    window.setActive(true);
+    // After that we initialise GLEW and check if an error occured.
+    GLenum error;
+    glewExperimental = GL_TRUE;
+    if ((err = glewInit()) != GLEW_OK)
+        std::cout << glewGetErrorString(err) << std::endl;
+    // Here we set the color glClear will clear the buffers with.
+    // Range goes from 0.0f to 1.0f.
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    // Now we can start the event loop, poll for events and draw objects.
+    sf::Event event{ };
+    while (window.isOpen()) {
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close;
+        }
+        // Tell OpenGL to clear the color buffer
+        // and the depth buffer, this will clear our window.
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        // Flip front- and backbuffer.
+        window.display();
+    }
+    return 0;
 }
 ```
 ## Loading Shaders
@@ -61,53 +60,53 @@ After creating a window and our event loop we should create a function,
 that sets up our shader program.
 ```cpp
 GLuint createShaderProgram(const std::string& vertexShaderPath,
-						   const std::string& fragmentShaderPath) {
-	// Load the vertex shader source.
-	std::stringstream ss{ };
-	std::string vertexShaderSource{ };
-	std::string fragmentShaderSource{ };
-	std::ifstream file{ vertexShaderPath };
-	if (file.is_open()) {
-		ss << file.rdbuf();
-		vertexShaderSource = ss.str();
-		file.close();
-	}
-	// Clear the stringstream and load the fragment shader source.
-	ss.str(std::string{ });
-	file.open(fragmentShaderPath);
-	if (file.is_open()) {
-		ss << file.rdbuf();
-		fragmentShaderSource = ss.str();
-		file.close();
-	}
-	// Create the program.
-	GLuint program = glCreateProgram();
-	// Create the shaders.
-	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	// Now we can load the shader source into the shader objects and compile them.
-	// Because glShaderSource() wants a const char* const*,
-	// we must first create a const char* and then pass the reference.
-	const char* cVertexSource = vertexShaderSource.c_str();
-	glShaderSource(vertexShader, 1, &cVertexSource, nullptr);
-	glCompileShader(vertexShader);
-	// Now we have to do the same for the fragment shader.
-	const char* cFragmentSource = fragmentShaderSource.c_str();
-	glShaderSource(fragmentShader, 1, &cFragmentSource, nullptr);
-	glCompileShader(fragmentShader);
-	// After attaching the source and compiling the shaders,
-	// we attach them to the program;
-	glAttachShader(program, vertexShader);
-	glAttachShader(program, fragmentShader);
-	glLinkProgram(program);
-	// After linking the shaders we should detach and delete
-	// them to prevent memory leak.
-	glDetachShader(program, vertexShader);
-	glDetachShader(program, fragmentShader);
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
-	// With everything done we can return the completed program.
-	return program;
+                           const std::string& fragmentShaderPath) {
+    // Load the vertex shader source.
+    std::stringstream ss{ };
+    std::string vertexShaderSource{ };
+    std::string fragmentShaderSource{ };
+    std::ifstream file{ vertexShaderPath };
+    if (file.is_open()) {
+        ss << file.rdbuf();
+        vertexShaderSource = ss.str();
+        file.close();
+    }
+    // Clear the stringstream and load the fragment shader source.
+    ss.str(std::string{ });
+    file.open(fragmentShaderPath);
+    if (file.is_open()) {
+        ss << file.rdbuf();
+        fragmentShaderSource = ss.str();
+        file.close();
+    }
+    // Create the program.
+    GLuint program = glCreateProgram();
+    // Create the shaders.
+    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    // Now we can load the shader source into the shader objects and compile them.
+    // Because glShaderSource() wants a const char* const*,
+    // we must first create a const char* and then pass the reference.
+    const char* cVertexSource = vertexShaderSource.c_str();
+    glShaderSource(vertexShader, 1, &cVertexSource, nullptr);
+    glCompileShader(vertexShader);
+    // Now we have to do the same for the fragment shader.
+    const char* cFragmentSource = fragmentShaderSource.c_str();
+    glShaderSource(fragmentShader, 1, &cFragmentSource, nullptr);
+    glCompileShader(fragmentShader);
+    // After attaching the source and compiling the shaders,
+    // we attach them to the program;
+    glAttachShader(program, vertexShader);
+    glAttachShader(program, fragmentShader);
+    glLinkProgram(program);
+    // After linking the shaders we should detach and delete
+    // them to prevent memory leak.
+    glDetachShader(program, vertexShader);
+    glDetachShader(program, fragmentShader);
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
+    // With everything done we can return the completed program.
+    return program;
 }
 ```
 If you want to check the compilation log you can add the following between <code>glCompileShader()</code> and <code>glAttachShader()</code>.
@@ -116,9 +115,9 @@ GLint logSize = 0;
 std::vector<GLchar> logText{ };
 glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &logSize);
 if (logSize > 0) {
-	logText.resize(logSize);
-	glGetShaderInfoLog(vertexShader, logSize, &logSize, &logText[0]);
-	std::cout << logText.data() << std::endl;
+    logText.resize(logSize);
+    glGetShaderInfoLog(vertexShader, logSize, &logSize, &logText[0]);
+    std::cout << logText.data() << std::endl;
 }
 ```
 The same is possibile after <code>glLinkProgram()</code>, just replace <code>glGetShaderiv()</code> with <code>glGetProgramiv()</code>
@@ -134,9 +133,9 @@ sf::Event event{ };
 // ...
 // We also have to delete the program at the end of the application.
 // ...
-	}
-	glDeleteProgram(program);	
-	return 0;
+    }
+    glDeleteProgram(program);	
+    return 0;
 }
 // ...
 ```
@@ -153,9 +152,9 @@ so lets create two basic shaders.
 layout(location = 0) in vec3 position;
 // Every shader starts in it's main function.
 void main() {
-	// gl_Position is a predefined variable that holds the final vertex position.
-	// It consists of a x, y, z and w coordinate.
-	gl_Position = vec4(position, 1.0);
+    // gl_Position is a predefined variable that holds the final vertex position.
+    // It consists of a x, y, z and w coordinate.
+    gl_Position = vec4(position, 1.0);
 }
 ```
 **Fragment Shader**
@@ -166,9 +165,9 @@ void main() {
 out vec4 outColor;
 
 void main() {
-	// We simply set the ouput color to red.
-	// The parameters are red, green, blue and alpha.
-	outColor = vec4(1.0, 0.0, 0.0, 1.0);
+    // We simply set the ouput color to red.
+    // The parameters are red, green, blue and alpha.
+    outColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
 ```
 ## VBO and his friend
@@ -177,10 +176,10 @@ Now we need to define some vertex position we can pass to our shaders. Lets defi
 // The vertex data is defined in a counter clockwise way,
 // as this is the default front face.
 std::vector<float> vertexData {
-	-0.5f,  0.5f, 0.0f,
-	-0.5f, -0.5f, 0.0f,
-	 0.5f, -0.5f, 0.0f,
-	 0.5f,  0.5f, 0.0f
+    -0.5f,  0.5f, 0.0f,
+    -0.5f, -0.5f, 0.0f,
+     0.5f, -0.5f, 0.0f,
+     0.5f,  0.5f, 0.0f
 };
 // Next we need to define a Vertex Array Object (VAO).
 // The VAO stores the current state while its active.
@@ -194,7 +193,7 @@ glGenBuffers(1, &vbo);
 glBindBuffer(GL_ARRAY_BUFFER, vbo);
 // If your data changes more often use GL_DYNAMIC_DRAW or GL_STREAM_DRAW.
 glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData[0]) * vertexData.size(),
-			 vertexData.data(), GL_STATIC_DRAW);
+             vertexData.data(), GL_STATIC_DRAW);
 // After filling the VBO link it to the location 0 in our vertex shader, which
 // holds the vertex position.
 glEnableVertexAttribArray(0);
@@ -228,10 +227,10 @@ You can find the current code here: [OpenGL - 1](https://pastebin.com/W8jdmVHD).
 Let's create another VBO for some colors.
 ```cpp
 std::vector<float> colorData {
-	1.0f, 0.0f, 0.0f,
-	0.0f, 1.0f, 0.0f,
-	0.0f, 0.0f, 1.0f,
-	1.0f, 1.0f, 0.0f
+    1.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 1.0f,
+    1.0f, 1.0f, 0.0f
 };
 ```
 Next we can simply change some previous parameters to create a second VBO for our colors.
@@ -249,7 +248,7 @@ glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
 glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
 glBufferData(GL_ARRAY_BUFFER, sizeof(colorData[0]) * colorData.size(),
-			 colorData.data(), GL_STATIC_DRAW);
+             colorData.data(), GL_STATIC_DRAW);
 glEnableVertexAttribArray(1);
 glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
@@ -271,8 +270,8 @@ layout(location = 1) in vec3 color;
 out vec3 fColor;
 
 void main() {
-	fColor = color;
-	gl_Position = vec4(position, 1.0);
+    fColor = color;
+    gl_Position = vec4(position, 1.0);
 }
 ```
 **Fragment Shader**
@@ -284,7 +283,7 @@ in vec3 fColor;
 out vec4 outColor;
 
 void main() {
-	outColor = vec4(fColor, 1.0);
+    outColor = vec4(fColor, 1.0);
 }
 ```
 We define a new input variable ```color``` which represents our color data, this data
@@ -308,9 +307,9 @@ in vec3 fColor;
 out vec4 outColor;
 
 void main() {
-	// Create a sine wave from 0 to 1 based on the time passed to the shader.
-	float factor = (sin(time * 2) + 1) / 2;
-	outColor = vec4(fColor.r * factor, fColor.g * factor, fColor.b * factor, 1.0);
+    // Create a sine wave from 0 to 1 based on the time passed to the shader.
+    float factor = (sin(time * 2) + 1) / 2;
+    outColor = vec4(fColor.r * factor, fColor.g * factor, fColor.b * factor, 1.0);
 }
 ```
 Back to our source code.
@@ -320,9 +319,9 @@ GLuint timePosition = glGetUniformLocation(program, "time");
 // Also we should define a Timer counting the current time.
 sf::Clock clock{ };
 // In out render loop we can now update the uniform every frame.
-	// ...
-	window.display();
-	glUniform1f(timePosition, clock.getElapsedTime().asSeconds());
+    // ...
+    window.display();
+    glUniform1f(timePosition, clock.getElapsedTime().asSeconds());
 }
 // ...
 ```
@@ -339,8 +338,8 @@ same vertex data again which makes drawing a lot easier and faster. here's an ex
 // First, we have to create the IBO.
 // The index is referring to the first declaration in the VBO.
 std::vector<unsigned int> iboData {
-	0, 1, 2,
-	0, 2, 3
+    0, 1, 2,
+    0, 2, 3
 };
 // That's it, as you can see we could reuse 0 - the top left
 // and 2 - the bottom right.
@@ -351,7 +350,7 @@ GLuint ibo = 0;
 glGenBufferrs(1, &ibo);
 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(iboData[0]) * iboData.size(),
-			 iboData.data(), GL_STATIC_DRAW);
+             iboData.data(), GL_STATIC_DRAW);
 // Next in our render loop, we replace glDrawArrays() with:
 glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
 // Remember to delete the allocated memory for the IBO.
@@ -379,7 +378,7 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 // Load the image data to the texture.
 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y,
-			 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+             0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
 // Unbind the texture to prevent modifications.
 glBindTexture(GL_TEXTURE_2D, 0);
 // Delete the texture at the end of the application.
@@ -395,12 +394,12 @@ You can find further information on parameters here:
 // With the texture created, we now have to specify the UV,
 // or in OpenGL terms ST coordinates.
 std::vector<float> texCoords {
-	// The texture coordinates have to match the triangles/quad
-	// definition.
-	0.0f, 1.0f,	   // start at top-left
-	0.0f, 0.0f,	   // go round counter-clockwise
-	1.0f, 0.0f,
-	1.0f, 1.0f     // end at top-right
+    // The texture coordinates have to match the triangles/quad
+    // definition.
+    0.0f, 1.0f,	   // start at top-left
+    0.0f, 0.0f,	   // go round counter-clockwise
+    1.0f, 0.0f,
+    1.0f, 1.0f     // end at top-right
 };
 // Now we increase the VBO's size again just like we did for the colors.
 // ...
@@ -412,7 +411,7 @@ glDeleteBuffers(3, vbo);
 // Load the texture coordinates into the new buffer.
 glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
 glBufferData(GL_ARRAY_BUFFER, sizeof(texCoords[0]) * texCoords.size(),
-			 texCoords.data(), GL_STATIC_DRAW);
+             texCoords.data(), GL_STATIC_DRAW);
 glEnableVertexAttribArray(2);
 glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 // Because the VAO does not store the texture we have to bind it before drawing.
@@ -435,9 +434,9 @@ out vec3 fColor;
 out vec2 fTexCoords;
 
 void main() {
-	fColor = color;
-	fTexCoords = texCoords;
-	gl_Position = vec4(position, 1.0);
+    fColor = color;
+    fTexCoords = texCoords;
+    gl_Position = vec4(position, 1.0);
 }
 ```
 **Fragment Shader**
@@ -453,9 +452,9 @@ in vec2 fTexCoords;
 out vec4 outColor;
 
 void main() {
-	// texture() loads the current texure data at the specified texture coords,
-	// then we can simply multiply them by our color.
-	outColor = texture(tex, fTexCoords) * vec4(fColor, 1.0);
+    // texture() loads the current texure data at the specified texture coords,
+    // then we can simply multiply them by our color.
+    outColor = texture(tex, fTexCoords) * vec4(fColor, 1.0);
 }
 ```
 You can find the current code here: [OpenGL - 3](https://pastebin.com/u3bcwM6q)
