@@ -1,3 +1,4 @@
+
 ---
 category: Graphics
 name: OpenGL
@@ -37,8 +38,10 @@ int main() {
     if ((err = glewInit()) != GLEW_OK)
         std::cout << glewGetErrorString(err) << std::endl;
     // Here we set the color glClear will clear the buffers with.
-    // Range goes from 0.0f to 1.0f.
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.0f,    // red
+                 0.0f,    // green
+                 0.0f,    // blue
+                 1.0f);   // alpha
     // Now we can start the event loop, poll for events and draw objects.
     sf::Event event{ };
     while (window.isOpen()) {
@@ -88,7 +91,10 @@ GLuint createShaderProgram(const std::string& vertexShaderPath,
     // Because glShaderSource() wants a const char* const*,
     // we must first create a const char* and then pass the reference.
     const char* cVertexSource = vertexShaderSource.c_str();
-    glShaderSource(vertexShader, 1, &cVertexSource, nullptr);
+    glShaderSource(vertexShader,     // shader
+	               1,                // number of strings
+	               &cVertexSource,   // strings
+	               nullptr);         // length of strings (nullptr for 1)
     glCompileShader(vertexShader);
     // Now we have to do the same for the fragment shader.
     const char* cFragmentSource = fragmentShaderSource.c_str();
@@ -116,7 +122,7 @@ std::vector<GLchar> logText{ };
 glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &logSize);
 if (logSize > 0) {
     logText.resize(logSize);
-    glGetShaderInfoLog(vertexShader, logSize, &logSize, &logText[0]);
+    glGetShaderInfoLog(vertexShader, logSize, &logSize, logText.data());
     std::cout << logText.data() << std::endl;
 }
 ```
@@ -145,14 +151,17 @@ so lets create two basic shaders.
 **Vertex Shader**
 ```glsl
 // Declare which version of GLSL we use.
-// Here we declare, that we want to use the OpenGL 3.3 core version of GLSL.
+// Here we declare, that we want to use the OpenGL 3.3 version of GLSL.
 #version 330 core
-// At attribute location 0 we want an input variable of type vec3 that contains
-// the position of the vertex.
+// At attribute location 0 we want an input variable of type vec3,
+// that contains the position of the vertex.
+// Setting the location is optional, if you dont' set it you can ask for the
+// location with glGetAttribLocation().
 layout(location = 0) in vec3 position;
 // Every shader starts in it's main function.
 void main() {
-    // gl_Position is a predefined variable that holds the final vertex position.
+    // gl_Position is a predefined variable that holds
+    // the final vertex position.
     // It consists of a x, y, z and w coordinate.
     gl_Position = vec4(position, 1.0);
 }
@@ -160,8 +169,9 @@ void main() {
 **Fragment Shader**
 ```glsl
 #version 330 core
-// The fragment shader does not have a predefined variable for the vertex color,
-// so we have to define a output vec4 that holds the final vertex color.
+// The fragment shader does not have a predefined variable for
+// the vertex color, so we have to define a output vec4,
+// that holds the final vertex color.
 out vec4 outColor;
 
 void main() {
@@ -170,7 +180,7 @@ void main() {
     outColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
 ```
-## VBO and his friend
+## VAO and VBO
 Now we need to define some vertex position we can pass to our shaders. Lets define a simple 2D quad.
 ```cpp
 // The vertex data is defined in a counter clockwise way,
@@ -191,13 +201,24 @@ glBindVertexArray(vao);
 GLuint vbo = 0;
 glGenBuffers(1, &vbo);
 glBindBuffer(GL_ARRAY_BUFFER, vbo);
-// If your data changes more often use GL_DYNAMIC_DRAW or GL_STREAM_DRAW.
-glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData[0]) * vertexData.size(),
-             vertexData.data(), GL_STATIC_DRAW);
-// After filling the VBO link it to the location 0 in our vertex shader, which
-// holds the vertex position.
+// For reading and copying there are also GL_*_READ and GL_*_COPY,
+// if your data changes more often use GL_DYNAMIC_* or GL_STREAM_*.
+glBufferData(GL_ARRAY_BUFFER,     // target buffer
+             sizeof(vertexData[0]) * vertexData.size(),   // size
+             vertexData.data(),   // data
+             GL_STATIC_DRAW);     // usage
+// After filling the VBO link it to the location 0 in our vertex shader,
+// which holds the vertex position.
+// ...
+// To ask for the attibute location, if you haven't set it:
+GLint posLocation = glGetAttribLocation(program, "position");
+// ..
 glEnableVertexAttribArray(0);
-glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+glVertexAttribPointer(0, 3,       // location and size
+                      GL_FLOAT,   // type of data
+                      GL_FALSE,   // normalized (always false for floats)
+                      0,          // stride (interleaved arrays)
+                      nullptr);   // offset (interleaved arrays)
 // Everything should now be saved in our VAO and we can unbind it and the VBO.
 glBindVertexArray(0);
 glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -291,6 +312,50 @@ is passed on to ```fColor```, which is an output variable of our vertex shader a
 becomes an input variable for our fragment shader.
 It is imporatant that variables passed between shaders have the exact same name
 and type.
+## Handling VBO's
+```cpp
+// If you want to completely clear and refill a VBO use glBufferData(),
+// just like we did before.
+// ...
+// There are two mains ways to update a subset of a VBO's data.
+// To update a VBO with existing data
+std::vector<float> newSubData {
+	-0.25f, 0.5f, 0.0f
+};
+glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+glBufferSubData(GL_ARRAY_BUFFER,      // target buffer
+                0,                    // offset
+                sizeof(newSubData[0]) * newSubData.size(),   // size
+                newSubData.data());   // data
+// This would update the first three values in our vbo[0] buffer.
+// If you want to update starting at a specific location just set the second
+// parameter to that value and multiply by the types size.
+// ...
+// If you are streaming data, for example from a file,
+// it is faster to directly pass the data to the buffer.
+// Other access values are GL_READ_ONLY and GL_READ_WRITE.
+glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+// You can static_cast<float*>() the void* to be more safe.
+void* Ptr = glMapBuffer(GL_ARRAY_BUFFER,   // buffer to map
+                        GL_WRITE_ONLY);    // access to buffer
+memcpy(Ptr, newSubData.data(), sizeof(newSubData[0]) * newSubData.size());
+// To copy to a specific location add a destination offset to memcpy().
+glUnmapBuffer(GL_ARRAY_BUFFER);
+// ...
+// There is also a way to copy data from one buffer to another,
+// If we have two VBO's vbo[0] and vbo[1], we can copy like so
+// You can also read from GL_ARRAY_BUFFER.
+glBindBuffer(GL_COPY_READ_BUFFER, vbo[0]);
+// GL_COPY_READ_BUFFER and GL_COPY_WRITE_BUFFER are specifically for
+// copying buffer data.
+glBindBuffer(GL_COPY_WRITE_BUFFER, vbo[1]);
+glCopyBufferSubData(GL_COPY_READ_BUFFER,    // read buffer
+                    GL_COPY_WRITE_BUFFER,   // write buffer
+                    0, 0,                   // read and write offset
+                    sizeof(vbo[0]) * 3);    // copy size
+// This will copy the first three elements from vbo[0] to vbo[1].
+```
+
 ## Uniforms
 **Fragment Shader**
 ```glsl
@@ -300,7 +365,8 @@ and type.
 #version 330 core
 // Unlike a in/out variable we can use a uniform in every shader,
 // without the need to pass it to the next one, they are global.
-uniform float time;
+// Don't use locations already used for attributes!
+layout(location = 10) uniform float time;
 
 in vec3 fColor;
 
@@ -314,14 +380,15 @@ void main() {
 ```
 Back to our source code.
 ```cpp
-// First we want to find the internal location of the time uniform.
-GLuint timePosition = glGetUniformLocation(program, "time");
+// If we haven't set the layout location, we can ask for it.
+GLint timeLocation = glGetUniformLocation(program, "time");
+// ...
 // Also we should define a Timer counting the current time.
 sf::Clock clock{ };
 // In out render loop we can now update the uniform every frame.
     // ...
     window.display();
-    glUniform1f(timePosition, clock.getElapsedTime().asSeconds());
+    glUniform1f(10, clock.getElapsedTime().asSeconds());
 }
 // ...
 ```
@@ -458,6 +525,9 @@ void main() {
 }
 ```
 You can find the current code here: [OpenGL - 3](https://pastebin.com/u3bcwM6q)
+
+
+
 
 ## Quotes
 <sup>[1]</sup>[OpenGL - Wikipedia](https://en.wikipedia.org/wiki/OpenGL)
