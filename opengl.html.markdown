@@ -22,10 +22,10 @@ for modern OpenGL extensions, though there are many other librarys available.
 int main() {
     // First we tell SFML how to setup our OpenGL context.
     sf::ContextSettings context{ 24,   // depth buffer bits
-                                 8,    // stencil buffer bits
-				 4,    // MSAA samples
-				 3,    // major opengl version
-				 3 };  // minor opengl version
+                                  8,   // stencil buffer bits
+                                  4,   // MSAA samples
+                                  3,   // major opengl version
+                                  3 }; // minor opengl version
     // Now we create the window, enable VSync
     // and set the window active for OpenGL.
     sf::Window window{ sf::VideoMode{ 1024, 768 },
@@ -94,9 +94,9 @@ GLuint createShaderProgram(const std::string& vertexShaderPath,
     // we must first create a const char* and then pass the reference.
     const char* cVertexSource = vertexShaderSource.c_str();
     glShaderSource(vertexShader,     // shader
-                   1,                // number of strings
-                   &cVertexSource,   // strings
-                   nullptr);         // length of strings (nullptr for 1)
+	               1,                // number of strings
+	               &cVertexSource,   // strings
+	               nullptr);         // length of strings (nullptr for 1)
     glCompileShader(vertexShader);
     // Now we have to do the same for the fragment shader.
     const char* cFragmentSource = fragmentShaderSource.c_str();
@@ -157,7 +157,7 @@ so lets create two basic shaders.
 #version 330 core
 // At attribute location 0 we want an input variable of type vec3,
 // that contains the position of the vertex.
-// Setting the location is optional, if you dont' set it you can ask for the
+// Setting the location is optional, if you don't set it you can ask for the
 // location with glGetAttribLocation().
 layout(location = 0) in vec3 position;
 // Every shader starts in it's main function.
@@ -185,7 +185,7 @@ void main() {
 ## VAO and VBO
 Now we need to define some vertex position we can pass to our shaders. Lets define a simple 2D quad.
 ```cpp
-// The vertex data is defined in a counter clockwise way,
+// The vertex data is defined in a counter-clockwise way,
 // as this is the default front face.
 std::vector<float> vertexData {
     -0.5f,  0.5f, 0.0f,
@@ -193,6 +193,8 @@ std::vector<float> vertexData {
      0.5f, -0.5f, 0.0f,
      0.5f,  0.5f, 0.0f
 };
+// If you want to use a clockwise definition, you can simply call
+glFrontFace(GL_CW);
 // Next we need to define a Vertex Array Object (VAO).
 // The VAO stores the current state while its active.
 GLuint vao = 0;
@@ -390,7 +392,8 @@ sf::Clock clock{ };
 // In out render loop we can now update the uniform every frame.
     // ...
     window.display();
-    glUniform1f(10, clock.getElapsedTime().asSeconds());
+    glUniform1f(10,   // location
+                clock.getElapsedTime().asSeconds());   // data
 }
 // ...
 ```
@@ -527,6 +530,88 @@ void main() {
 }
 ```
 You can find the current code here: [OpenGL - 3](https://pastebin.com/u3bcwM6q)
+## Matrix Transformation
+**Vertex Shader**
+```glsl
+#version 330 core
+
+layout(location = 0) in vec3 position;
+layout(location = 1) in vec3 color;
+layout(location = 2) in vec2 texCoords;
+// Create 2 4x4 matricies, 1 for the projection matrix
+// and 1 for the model matrix.
+// Because we draw in a static scene, we don't need a view matrix.
+uniform mat4 projection;
+uniform mat4 model;
+
+out vec3 fColor;
+out vec2 fTexCoords;
+
+void main() {
+    fColor = color;
+    fTexCoords = texCoords;
+    // Multiplay the position by the model matrix and then by the
+    // projection matrix.
+    // Beware order of multiplication for matricies!
+    gl_Position = projection * model * vec4(position, 1.0);
+}
+```
+In our source we now need to change the vertex data, create a model- and a projection matrix.
+```cpp
+// The new vertex data, counter-clockwise declaration.
+std::vector<float> vertexData {  
+    0.0f, 1.0f, 0.0f,   // top left
+    0.0f, 0.0f, 0.0f,   // bottom left
+    1.0f, 0.0f, 0.0f,   // bottom right
+    1.0f, 1.0f, 0.0f    // top right
+};
+// Request the location of our matricies.
+GLint projectionLocation = glGetUniformLocation(program, "projection");
+GLint modelLocation = glGetUniformLocation(program, "model");
+// Declaring the matricies.
+// Orthogonal matrix for a 1024x768 window.
+std::vector<float> projection {  
+    0.001953f,       0.0f,  0.0f, 0.0f,
+         0.0f, -0.002604f,  0.0f, 0.0f,
+         0.0f,       0.0f, -1.0f, 0.0f,
+        -1.0f,       1.0f,  0.0f, 1.0f
+};
+// Model matrix setting the translating to x 50, y 50
+// and scaling to x 200, y 200.
+std::vector<float> model {  
+    200.0f,   0.0f, 0.0f, 0.0f,
+      0.0f, 200.0f, 0.0f, 0.0f,
+      0.0f,   0.0f, 1.0f, 0.0f,
+     50.0f,  50.0f, 0.0f, 1.0f
+};
+// Now we can send our calculated matricies to the program.
+glUseProgram(program);
+glUniformMatrix4fv(projectionLocation,   // location
+                   1,                    // count
+                   GL_FALSE,             // transpose the matrix
+                   projection.data());   // data
+glUniformMatrix4fv(modelLocation, 1, GL_FALSE, model.data());
+glUseProgram(0);
+// The glUniform*() calls have to be dont, while the program is bound.
+```
+The application should now display the texture at the defined position and size.
+You can find the current code here: [OpenGL - 4](https://pastebin.com/9ahpFLkY)
+```cpp
+// There are many math librarys for OpenGL, which create
+// matricies and vectors, the most used in C++ is glm (OpenGL Mathematics).
+// Its a header only library.
+// The same code with glm would look like:
+glm::mat4 projection{ glm::ortho(0.0f, 1024.0f, 768.0f, 0.0f) };
+glUniformMatrix4fv(projectionLocation, 1,GL_FALSE,
+                   glm::value_ptr(projection));
+// Initialise the model matrix to the identity matrix, otherwise every
+// multiplication would be 0.
+glm::mat4 model{ 1.0f };
+model = glm::translate(model, glm::vec3{ 50.0f, 50.0f, 0.0f });
+model = glm::scale(model, glm::vector3{ 200.0f, 200.0f, 0.0f });
+glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
+                   glm::value_ptr(model));
+```
 
 
 ## Quotes
