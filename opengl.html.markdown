@@ -281,7 +281,6 @@ glBindVertexArray(0);
 // ...
 ```
 Next we have to change our vertex shader to pass the color data to the fragment shader.
-
 **Vertex Shader**
 ```glsl
 #version 330 core
