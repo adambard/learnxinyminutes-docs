@@ -94,9 +94,9 @@ GLuint createShaderProgram(const std::string& vertexShaderPath,
     // we must first create a const char* and then pass the reference.
     const char* cVertexSource = vertexShaderSource.c_str();
     glShaderSource(vertexShader,     // shader
-	               1,                // number of strings
-	               &cVertexSource,   // strings
-	               nullptr);         // length of strings (nullptr for 1)
+                   1,                // number of strings
+                   &cVertexSource,   // strings
+                   nullptr);         // length of strings (nullptr for 1)
     glCompileShader(vertexShader);
     // Now we have to do the same for the fragment shader.
     const char* cFragmentSource = fragmentShaderSource.c_str();
@@ -121,10 +121,15 @@ If you want to check the compilation log you can add the following between <code
 ```cpp
 GLint logSize = 0;
 std::vector<GLchar> logText{ };
-glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &logSize);
+glGetShaderiv(vertexShader,         // shader
+              GL_INFO_LOG_LENGTH,   // requested parameter
+              &logSize);            // return object
 if (logSize > 0) {
     logText.resize(logSize);
-    glGetShaderInfoLog(vertexShader, logSize, &logSize, logText.data());
+    glGetShaderInfoLog(vertexShader,      // shader
+                       logSize,           // buffer length
+                       &logSize,          // returned length
+                       logText.data());   // buffer
     std::cout << logText.data() << std::endl;
 }
 ```
@@ -280,7 +285,7 @@ glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 glBindVertexArray(0);  
 // ...
 ```
-Next we have to change our vertex shader to pass the color data to the fragment shader.
+Next we have to change our vertex shader to pass the color data to the fragment shader.<br>
 **Vertex Shader**
 ```glsl
 #version 330 core
@@ -368,6 +373,7 @@ glCopyBufferSubData(GL_COPY_READ_BUFFER,    // read buffer
 // Unlike a in/out variable we can use a uniform in every shader,
 // without the need to pass it to the next one, they are global.
 // Don't use locations already used for attributes!
+// Uniform layout locations require OpenGL 4.3!
 layout(location = 10) uniform float time;
 
 in vec3 fColor;
@@ -574,7 +580,7 @@ std::vector<float> projection {
          0.0f,       0.0f, -1.0f, 0.0f,
         -1.0f,       1.0f,  0.0f, 1.0f
 };
-// Model matrix setting the translating to x 50, y 50
+// Model matrix translating to x 50, y 50
 // and scaling to x 200, y 200.
 std::vector<float> model {  
     200.0f,   0.0f, 0.0f, 0.0f,
@@ -590,7 +596,7 @@ glUniformMatrix4fv(projectionLocation,   // location
                    projection.data());   // data
 glUniformMatrix4fv(modelLocation, 1, GL_FALSE, model.data());
 glUseProgram(0);
-// The glUniform*() calls have to be dont, while the program is bound.
+// The glUniform*() calls have to be done, while the program is bound.
 ```
 The application should now display the texture at the defined position and size.<br>
 You can find the current code here: [OpenGL - 4](https://pastebin.com/9ahpFLkY)
@@ -598,18 +604,93 @@ You can find the current code here: [OpenGL - 4](https://pastebin.com/9ahpFLkY)
 // There are many math librarys for OpenGL, which create
 // matricies and vectors, the most used in C++ is glm (OpenGL Mathematics).
 // Its a header only library.
-// The same code with glm would look like:
+// The same code using glm would look like:
 glm::mat4 projection{ glm::ortho(0.0f, 1024.0f, 768.0f, 0.0f) };
-glUniformMatrix4fv(projectionLocation, 1,GL_FALSE,
+glUniformMatrix4fv(projectionLocation, 1, GL_FALSE,
                    glm::value_ptr(projection));
 // Initialise the model matrix to the identity matrix, otherwise every
 // multiplication would be 0.
 glm::mat4 model{ 1.0f };
 model = glm::translate(model, glm::vec3{ 50.0f, 50.0f, 0.0f });
-model = glm::scale(model, glm::vector3{ 200.0f, 200.0f, 0.0f });
+model = glm::scale(model, glm::vec3{ 200.0f, 200.0f, 0.0f });
 glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
                    glm::value_ptr(model));
 ```
+## Geometry Shader
+Gemoetry shaders were introduced in OpenGL 3.2, they can produce vertices
+that are send to the rasterizer. They can also change the primitive type e.g.
+they can take a point as an input and output other primitives.
+Geometry shaders are inbetween the vertex and the fragment shader.
+**Vertex Shader**
+```glsl
+#version 330 core
+
+layout(location = 0) in vec3 position;
+layout(location = 1) in vec3 color;
+// Create an output interface block passed to the next shadaer stage.
+// Interface blocks can be used to structure data passed between shaders.
+out VS_OUT {
+    vec3 color;
+} vs_out;
+
+void main() {
+    vs_out.color = color
+    gl_Position = vec4(position, 1.0);
+}
+```
+**Geometry Shader**
+```glsl
+#version 330 core
+// The geometry shader takes in points.
+layout(points) in;
+// It outputs a triangle every 3 vertices emitted.
+layout(triangle_strip, max_vertices = 3) out;
+// VS_OUT becomes an input variable in the geometry shader.
+// Every input to the geometry shader in treated as an array.
+in VS_OUT {
+    vec3 color;
+} gs_in[];
+// Output color for the fragment shader.
+// You can also simply define color as 'out vec3 color',
+// If you don't want to use interface blocks.
+out GS_OUT {
+    vec3 color;
+} gs_out;
+
+void main() {
+    // Each emit calls the fragment shader, so we set a color for each vertex.
+    gs_out.color = mix(gs_in[0].color, vec3(1.0, 0.0, 0.0), 0.5);
+    // Move 0.5 units to the left and emit the new vertex.
+    // gl_in[] is the current vertex from the vertex shader, here we only
+    // use 0, because we are receiving points.
+    gl_Position = gl_in[0].gl_Position + vec4(-0.5, 0.0, 0.0, 0.0);
+    EmitVertex();
+    gs_out.color = mix(gs_in[0].color, vec3(0.0, 1.0, 0.0), 0.5);
+    // Move 0.5 units to the right and emit the new vertex.
+    gl_Position = gl_in[0].gl_Position + vec4(0.5, 0.0, 0.0, 0.0);
+    EmitVertex();
+    gs_out.color = mix(gs_in[0].color, vec3(0.0, 0.0, 1.0), 0.5);
+    // Move 0.5 units up and emit the new vertex.
+    gl_Position = gl_in[0].gl_Position + vec4(0.0, 0.75, 0.0, 0.0);
+    EmitVertex();
+    EndPrimitive();
+}
+```
+**Fragment Shader**
+```glsl
+in GS_OUT {
+    vec3 color;
+} fs_in;
+
+out vec4 outColor;
+
+void main() {
+    outColor = vec4(fs_in.color, 1.0);
+}
+```
+If you now store a single point with a single color in a VBO and draw them,
+you should see a triangle, with your color mixed half way between
+red, green and blue on each vertex.
 
 
 ## Quotes
