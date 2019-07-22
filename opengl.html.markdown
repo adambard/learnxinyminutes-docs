@@ -1,4 +1,3 @@
-
 ---
 category: Graphics
 name: OpenGL
@@ -22,14 +21,17 @@ for modern OpenGL extensions, though there are many other librarys available.
 
 int main() {
     // First we tell SFML how to setup our OpenGL context.
-    // We use 24 bits for the depth buffer, 8 bits for the stencil buffer,
-    // 4 sample MSAA and we want to check for OpenGL 3.3
-    // compatibility.
-    sf::ContextSettings context{ 24, 8, 4, 3, 3 };
+    sf::ContextSettings context{ 24,   // depth buffer bits
+                                 8,    // stencil buffer bits
+				 4,    // MSAA samples
+				 3,    // major opengl version
+				 3 };  // minor opengl version
     // Now we create the window, enable VSync
     // and set the window active for OpenGL.
-    sf::Window window{ sf::VideoMode{ 1024, 768 }, "opengl window",
-                       sf::Style::Default, context };
+    sf::Window window{ sf::VideoMode{ 1024, 768 },
+                       "opengl window",
+                       sf::Style::Default,
+		       context };
     window.setVerticalSyncEnabled(true);
     window.setActive(true);
     // After that we initialise GLEW and check if an error occured.
@@ -92,9 +94,9 @@ GLuint createShaderProgram(const std::string& vertexShaderPath,
     // we must first create a const char* and then pass the reference.
     const char* cVertexSource = vertexShaderSource.c_str();
     glShaderSource(vertexShader,     // shader
-	               1,                // number of strings
-	               &cVertexSource,   // strings
-	               nullptr);         // length of strings (nullptr for 1)
+                   1,                // number of strings
+                   &cVertexSource,   // strings
+                   nullptr);         // length of strings (nullptr for 1)
     glCompileShader(vertexShader);
     // Now we have to do the same for the fragment shader.
     const char* cFragmentSource = fragmentShaderSource.c_str();
@@ -525,8 +527,6 @@ void main() {
 }
 ```
 You can find the current code here: [OpenGL - 3](https://pastebin.com/u3bcwM6q)
-
-
 
 
 ## Quotes
