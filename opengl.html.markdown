@@ -358,7 +358,6 @@ glCopyBufferSubData(GL_COPY_READ_BUFFER,    // read buffer
                     sizeof(vbo[0]) * 3);    // copy size
 // This will copy the first three elements from vbo[0] to vbo[1].
 ```
-
 ## Uniforms
 **Fragment Shader**
 ```glsl
@@ -492,7 +491,7 @@ glBindTexture(GL_TEXTURE_2D, texture);
 glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
 // ...
 ```
-Change the shaders to pass the data to the fragment shader.
+Change the shaders to pass the data to the fragment shader.<br>
 **Vertex Shader**
 ```glsl
 #version 330 core
@@ -593,7 +592,7 @@ glUniformMatrix4fv(modelLocation, 1, GL_FALSE, model.data());
 glUseProgram(0);
 // The glUniform*() calls have to be dont, while the program is bound.
 ```
-The application should now display the texture at the defined position and size.
+The application should now display the texture at the defined position and size.<br>
 You can find the current code here: [OpenGL - 4](https://pastebin.com/9ahpFLkY)
 ```cpp
 // There are many math librarys for OpenGL, which create
