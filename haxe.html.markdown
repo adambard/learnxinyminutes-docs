@@ -334,7 +334,7 @@ class LearnHaxe3 {
            Switch statements in Haxe are very powerful.  In addition to working
            on basic values like strings and ints, they can also work on the
            generalized algebraic data types in enums (more on enums later).
-           Here's some basic value examples for now:
+           Here are some basic value examples for now:
          */
         var my_dog_name = "fido";
         var favorite_thing  = "";
@@ -594,7 +594,7 @@ class ComplexEnumTest {
     public static function example() {
         var e1:ComplexEnum = IntEnum(4); // specifying the enum parameter
         // Now we can switch on the enum, as well as extract any parameters
-        // it might of had.
+        // it might have had.
         switch(e1) {
             case IntEnum(x) : trace('$x was the parameter passed to e1');
             default: trace("Shouldn't be printed");

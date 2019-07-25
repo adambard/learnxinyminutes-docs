@@ -9,9 +9,10 @@ contributors:
     - ["Ankush Goyal", "http://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
     - ["Maximilian Sonnenburg", "https://github.com/LamdaLamdaLamda"]
+lang: de-de
 ---
 
-C++ ist eine Systemprogrammiersprache die,
+C++ ist eine Systemprogrammiersprache die, 
 
 [laut dem Begründer Bjarne Stroustrup](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote)
 entworfen wurde um,
@@ -22,9 +23,11 @@ entworfen wurde um,
 - generische Programmierung zu unterstützen
 
 Durch seinen Syntax kann sie durchaus schwieriger und komplexer als neuere Sprachen sein.
+
 Sie ist weit verbreitet, weil sie in Maschinen-Code kompiliert, welches direkt vom Prozessor ausgeführt
 werden kann und somit eine strikte Kontrolle über die Hardware bietet und gleichzeitig
 High-Level-Features wie generics, exceptions und Klassen enthält.
+
 Diese Kombination aus Geschwindigkeit und Funktionalität bildet C++ und ist eine der
 weitverbreitesten Programmiersprachen.
 
@@ -38,6 +41,7 @@ weitverbreitesten Programmiersprachen.
 
 // Wie in C ist der Programmeinsprungpunkt eine Funktion, welche "main" genannt wird und
 // einen Integer als Rückgabetyp besitzt.
+
 // Dieser Wert fungiert als Beendigungsstatus des Programms.
 // Siehe: https://de.wikipedia.org/wiki/Return_Code für weitere Informationen
 int main(int argc, char** argv)
@@ -53,7 +57,7 @@ int main(int argc, char** argv)
     return 0;
 }
 
-// C++ unterscheidet sich in einigen Punkten:
+// C++ unterscheidet sich in einigen Punkten von C:
 
 // In C++ sind Zeichen-Literale char´s
 sizeof('c') == sizeof(char) == 1
@@ -70,7 +74,7 @@ void func(); // Funktion mit beliebiger Anzahl von Argumenten
 // Verwende nullptr, anstatt von NULL!!!
 int* ip = nullptr;
 
-// C standard headers sind in C++ verfügbar.
+// C standard header sind in C++ verfügbar.
 // C header enden mit .h, während
 // C++ header das Präfix "c" besitzen und kein ".h" Suffix verwenden.
 
@@ -191,7 +195,7 @@ int main()
 {
    int myInt;
 
-   // Ausgabe auf stdout (oder Terminal bzw. Bildschirm)
+   // Ausgabe auf stdout (oder Terminal/Bildschirm)
    cout << "Enter your favorite number:\n";
 
    // Empfängt Eingabe
@@ -211,7 +215,7 @@ int main()
 // Strings in C++ sind Objekte und haben diverse member-functions
 #include <string>
 
-using namespace std; // Strings sind ebenfalls im Namespace std (Standard Bibliothek)
+using namespace std; // Strings sind ebenfalls im namespace std (Standard Bibliothek)
 
 string myString = "Hello";
 string myOtherString = " World";
@@ -249,16 +253,15 @@ fooRef += ". Hi!"; // Verändert foo durch die Referenz
 cout << fooRef; // Gibt "I am foo. Hi!" aus.
 
 
-// Weist "fooRef" nicht erneut zu. Dies ist dasselbe, wie "foo = bar" und
+// Weist "fooRef" nicht erneut zu. Dies ist dasselbe, wie "foo = bar" und 
 // foo == "I am bar"
-// nach dieser Zeile
-cout << &fooRef << endl; // Gibt die Adresse von foo aus.
+// nach dieser Zeile 
+cout << &fooRef << endl; // Gibt die Adresse von foo aus
 fooRef = bar;
-cout << &fooRef << endl; // Gibt ebenfalls die Adresse von foo aus.
-cout << fooRef;  // Gibt "I am bar" aus.
+cout << &fooRef << endl; // Gibt ebenfalls die Adresse von foo aus
+cout << fooRef;  // Gibt "I am bar" aus
 
-// Die Adresse von fooRef verbleibt dieselbe, sie verweist immer noch auf foo
-
+// Die Adresse von fooRef verbleibt die selbe, sie verweist immer noch auf foo
 
 const string& barRef = bar; // Erzeugt konstante Referenz auf bar.
 // Wie in C, können konstante Werte ( und Pointer bzw. Referenzen) nicht verändert werden.
@@ -283,7 +286,7 @@ foo(bar(tempObjectFun()))
 // Nehmen wir an foo und bar existieren. Das Objekt wird von "tempObjectFun" zurückgegeben,
 // wird an bar übergeben und ist zerstört bevor foo aufgerufen wird.
 
-// Zurück zu Referenzen. Die Annahme, dass die "am Ende des Ausdrucks" Regel ist gültig,
+// Zurück zu Referenzen. Die Annahme, dass die "am Ende des Ausdrucks" Regel gültig ist,
 // wenn das temporäre Objekt an eine konstante Referenz gebunden ist, ist der Fall, wenn die Lebensdauer
 // auf den aktuellen Gültigkeitsbereich erweitert wird.
 
@@ -296,6 +299,7 @@ void constReferenceTempObjectFun() {
 // Eine andere Art von Referenzen wurde in C++11 eingeführt und ist speziell für
 // temporäre Objekte. Es ist nicht möglich Variablen des Typs zu besitzen, aber
 // Vorrechte bei der Auflösung zu besitzen.
+
 void someFun(string& s) { ... }  // Reguläre Referenz
 void someFun(string&& s) { ... }  // Referenz auf ein temporäres Objekt
 
@@ -372,8 +376,8 @@ void WriteByteToFile(uint8_t InputValue)
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
-    // Wird nicht kompilieren, da ECarTypes ein "uint8_t" ist, da das enum
-    // als "enum class" deklariert wurde!
+  // Wird nicht kompilieren, da "ECarTypes" ein "uint8_t" ist, da das enum
+  // als "enum class" deklariert wurde!
 	WriteByteToFile(InputCarType);
 }
 
@@ -399,7 +403,7 @@ public:
     // Standard Konstruktor
     Dog();
 
-    // Member-Funktionsdeklaration (Implementierung folgt)
+    // Member-Funktionsdeklaration (Implementierung folgt).
     // Bemerkung: std::string statt der Verwendung von namespace std;
     // "using namespace" sollte niemals in einem header verwendet werden.
     void setName(const std::string& dogsName);
@@ -457,7 +461,7 @@ Dog::~Dog()
     std::cout << "Goodbye " << name << "\n";
 }
 
-int main()
+int main() 
 {
     Dog myDog; // Ausgabe: "A dog has been constructed"
     myDog.setName("Barkley");
@@ -466,8 +470,7 @@ int main()
     return 0;
 } // Ausgabe: "Goodbye Barkley"
 
-// Vererbung:
-// Diese Klasse erbt alles was public bzw. protected ist, von der Dog-Klasse
+// Diese Klasse erbt alles was public bzw. protected ist von der Dog-Klasse
 // und darüber hinaus auch private Methoden/Attribute, jedoch kann auf diese
 // nicht direkt zugegriffen werden. Lediglich über public/procted getter/setter.
 class OwnedDog : public Dog {
@@ -620,7 +623,7 @@ void barkThreeTimes(const T& input)
 
 // Hierbei ist zu beachten, dass an dieser Stelle nichts über den Typen des Parameters
 // definiert wurde. Der Kompiler wird bei jedem Aufruf bzw. jeder Erzeugung den Typen
-// prüfen. Somit funktioniert die zuvor definiert Funktion für jeden Typ 'T', die die
+// prüfen. Somit funktioniert die zuvor definierte Funktion für jeden Typ 'T', die die
 // const Methode 'bark' implementiert hat.
 
 Dog fluffy;
@@ -965,7 +968,7 @@ sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int,
 
 // Beachte den Syntax von Lambda-Ausdrücken.
 // Die [] im Lambda Ausdruck werden für die Variablen verwendet.
-// Diese so genannte "Capture List" definiert, was außerhalb des Lambdas,
+// Diese so genannte "capture list" definiert, was außerhalb des Lambdas,
 // innerhalb der Funktion verfügbar sein soll und in welcher Form.
 // Dies kann folgendes sein:
 //     1. ein Wert [x]
@@ -1010,7 +1013,6 @@ for(int elem: arr)
 }
 
 // Insofern "auto" verwendet wird, muss der Typ nicht weiter beachtet werden.
-
 for(auto elem: arr)
 {
 	// Anweisungen ...
@@ -1036,7 +1038,6 @@ class FooSub : public Foo
   virtual void bar();  // Überschreibt Foo::bar!
 };
 
-
 // 0 == false == NULL
 bool* pt = new bool;
 *pt = 0; // Setzt den Wert des Pointers 'pt' auf false.
@@ -1051,7 +1052,6 @@ pt2 = nullptr;  // Setzt pt2 auf null.
 // Dies erlaubt es "null-pointer" zu testen: if(!ptr)
 // Die Konsequenz ist jedoch, dass dem nullptr ein bool zugewiesen werden kann.
 *pt = nullptr;  // Kompiliert auch, wenn '*pt' ein bool ist!
-
 
 // '=' != '=' != '='!
 // Ruft Foo::Foo(const Foo&) auf, oder den Kopierkonstruktor
@@ -1074,7 +1074,7 @@ f1 = f2;
 
 #include<tuple>
 
-// Konzeptionell sind Tuples alten Datenstrukturen sehr ähnlich, allerdings haben diese keine
+// Konzeptionell sind Tuple´s alten Datenstrukturen sehr ähnlich, allerdings haben diese keine
 // bezeichneten Daten-Member, sondern werden durch die Reihenfolge angesprochen.
 
 // Erstellen des Tuples und das Einfügen eines Werts.
@@ -1119,7 +1119,6 @@ cout << get<5>(concatenated_tuple) << "\n"; // Ausgabe: 'A'
 // Die meisten Operatoren in C++ entsprechen denen aus anderen Sprachen
 
 // Logische Operatoren.
-
 // C++ verwendet so genannte "Short-circuit" Evaluierung für Boolean-Ausdrücke.
 // Das zweite Argument wird ausgeführt bzw. evaluiert, wenn das erste Argument genügt,
 // um den Ausdruck zu bestimmen.
