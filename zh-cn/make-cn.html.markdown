@@ -39,7 +39,7 @@ Makefile 用于定义如何创建目标文件, 比如如何从源码到可执行
 # 	 …
 # prerequisites(依赖) 是可选的, recipe(做法) 也可以多个或者不给.
 
-# 下面这个任务没有给 prerequisites, 只会在目标文件 file0.txt 文件不存在是跑
+# 下面这个任务没有给 prerequisites, 只会在目标文件 file0.txt 文件不存在时执行
 file0.txt:
 	echo "foo" > file0.txt
 	# 试试 `make file0.txt`
@@ -47,12 +47,12 @@ file0.txt:
 	# 注意: 即使是这些注释, 如果前面有 TAB, 也会发送给 shell, 注意看 `make file0.txt` 输出
 
 # 如果提供 prerequisites, 则只有 prerequisites 比 target 新时会执行
-# 比如下面这个任务只有当 file1.txt 比 file0.txt 新时才会执行.
+# 比如下面这个任务只有当 file0.txt 比 file1.txt 新时才会执行.
 file1.txt: file0.txt
 	cat file0.txt > file1.txt
-	# 这里跟shell里的命令式一毛一样的.
+	# 这里跟shell里的命令式一模一样.
 	@cat file0.txt >> file1.txt
-	# @ 不会把命令往 stdout 打印.
+	# @ 不会把命令打印到 stdout.
 	-@echo 'hello'
 	# - 意思是发生错误了也没关系.
 	# 试试 `make file1.txt` 吧.
@@ -235,7 +235,7 @@ ls:	*
 # include foo.mk
 
 sport = tennis
-# 一些逻辑语句 if else 什么的, 顶个写
+# 流程控制语句 (如if else 等等) 顶格写
 report:
 ifeq ($(sport),tennis)
 	@echo 'game, set, match'

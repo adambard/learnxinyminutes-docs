@@ -28,7 +28,7 @@ lang: fr-fr
 %% 1. Variables et filtrage par motif
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-(L'équivalent anglais de *filtrage par motif* est *pattern patching*.)
+(L'équivalent anglais de *filtrage par motif* est *pattern matching*.)
 
 Nb = 42.  % Chaque nom de variable doit commencer par une lettre majuscule.
 
@@ -64,7 +64,7 @@ Point = {point, 10, 45}.
 {point, X, Y} = Point.  % X = 10, Y = 45
 
 % On peut utiliser `_` comme caractère joker pour les variables qui ne nous
-% intéressent pas. Le symbol `_` est appelé variable muette. Contrairement
+% intéressent pas. Le symbole `_` est appelé variable muette. Contrairement
 % aux variables normales, de multiples apparitions de `_` dans un même motif
 % ne lient pas nécessairement à la même valeur.
 Personne = {personne, {nom, {prenom, joe}, {famille, armstrong}},

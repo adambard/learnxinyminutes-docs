@@ -344,7 +344,7 @@ on a new line! ""Wow!"", the masses cried";
             tryInt.ToString();
 
             // Casting
-            // Cast decimal 15 to a int
+            // Cast decimal 15 to an int
             // and then implicitly cast to long
             long x = (int) 15M;
         }

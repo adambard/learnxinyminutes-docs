@@ -47,19 +47,27 @@ Title are underlined with equals signs too
 Subtitles with dashes
 ---------------------
 
-You can  put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``print()``.
+You can put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``print()``.
 
-Lists are as simple as in Markdown:
+Lists are similar to Markdown, but a little more involved.
+
+Remember to line up list symbols (like - or *) with the left edge of the previous text block, and remember to use blank lines to separate new lists from parent lists:    
 
 - First item
 - Second item
-    - Sub item
+
+  - Sub item
+    
+- Third item
 
 or
 
 * First item
 * Second item
-    * Sub item
+    
+  * Sub item
+
+* Third item
 
 Tables are really easy to write:
 

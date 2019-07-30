@@ -708,7 +708,7 @@ class MyClass {
 // We also get the compiler-generated initializer, with one argument per field.
 // Note that soon there will be no compiler-generated initializer when we
 // define any initializer(s) explicitly.
-  proc MyClass(val : real) {
+  proc init(val : real) {
     this.memberInt = ceil(val): int;
   }
 
