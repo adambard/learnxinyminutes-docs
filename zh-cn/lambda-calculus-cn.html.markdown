@@ -1,6 +1,7 @@
 ---
 category: Algorithms & Data Structures
 name: Lambda Calculus
+lang: zh-cn
 contributors:
     - ["Max Sun", "http://github.com/maxsun"]
     - ["Yan Hui Hang", "http://github.com/yanhh0"]
