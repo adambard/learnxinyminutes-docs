@@ -4,8 +4,7 @@ tool: linker
 contributors:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
 translators:
-    
-filename: 
+    - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
 lang: ru-ru
 ---
 
