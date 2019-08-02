@@ -5,6 +5,7 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Robert Steed", "https://github.com/robochat"]
+    - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 ---
 
 HTML stands for HyperText Markup Language.
