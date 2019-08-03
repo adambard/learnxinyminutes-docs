@@ -1,6 +1,6 @@
 ---
-category: Graphics
-name: OpenGL
+category: tools
+tool: OpenGL
 filename: learnopengl.cpp
 contributors:
     - ["Simon Deitermann", "s.f.deitermann@t-online.de"]
@@ -12,6 +12,7 @@ focusing on modern OpenGL from 3.3 and above, ignoring "immediate-mode", Display
 VBO's without use of Shaders.
 I will be using C++ with SFML for window, image and context creation aswell as GLEW
 for modern OpenGL extensions, though there are many other librarys available.
+
 ```cpp
 // Creating an SFML window and OpenGL basic setup.
 #include <GL/glew.h>
@@ -60,9 +61,12 @@ int main() {
     return 0;
 }
 ```
+
 ## Loading Shaders
+
 After creating a window and our event loop we should create a function,
 that sets up our shader program.
+
 ```cpp
 GLuint createShaderProgram(const std::string& vertexShaderPath,
                            const std::string& fragmentShaderPath) {
@@ -117,7 +121,9 @@ GLuint createShaderProgram(const std::string& vertexShaderPath,
     return program;
 }
 ```
+
 If you want to check the compilation log you can add the following between <code>glCompileShader()</code> and <code>glAttachShader()</code>.
+
 ```cpp
 GLint logSize = 0;
 std::vector<GLchar> logText{ };
@@ -133,8 +139,10 @@ if (logSize > 0) {
     std::cout << logText.data() << std::endl;
 }
 ```
+
 The same is possibile after <code>glLinkProgram()</code>, just replace <code>glGetShaderiv()</code> with <code>glGetProgramiv()</code>
 and <code>glGetShaderInfoLog()</code> with <code>glGetProgramInfoLog()</code>.
+
 ```cpp
 // Now we can create a shader program with a vertex and a fragment shader.
 // ...
@@ -152,10 +160,12 @@ sf::Event event{ };
 }
 // ...
 ```
+
 Ofcourse we have to create the vertex and fragment shader before we can load them,
 so lets create two basic shaders.
 
 **Vertex Shader**
+
 ```glsl
 // Declare which version of GLSL we use.
 // Here we declare, that we want to use the OpenGL 3.3 version of GLSL.
@@ -173,7 +183,9 @@ void main() {
     gl_Position = vec4(position, 1.0);
 }
 ```
+
 **Fragment Shader**
+
 ```glsl
 #version 330 core
 // The fragment shader does not have a predefined variable for
@@ -187,8 +199,10 @@ void main() {
     outColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
 ```
+
 ## VAO and VBO
 Now we need to define some vertex position we can pass to our shaders. Lets define a simple 2D quad.
+
 ```cpp
 // The vertex data is defined in a counter-clockwise way,
 // as this is the default front face.
@@ -252,9 +266,12 @@ glDeleteProgram(program);
 return 0;
 // ...
 ```
+
 You can find the current code here: [OpenGL - 1](https://pastebin.com/W8jdmVHD).
+
 ## More VBO's and Color
 Let's create another VBO for some colors.
+
 ```cpp
 std::vector<float> colorData {
     1.0f, 0.0f, 0.0f,
@@ -263,7 +280,9 @@ std::vector<float> colorData {
     1.0f, 1.0f, 0.0f
 };
 ```
+
 Next we can simply change some previous parameters to create a second VBO for our colors.
+
 ```cpp
 // ...
 GLuint vbo[2];
@@ -285,8 +304,10 @@ glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 glBindVertexArray(0);  
 // ...
 ```
+
 Next we have to change our vertex shader to pass the color data to the fragment shader.<br>
 **Vertex Shader**
+
 ```glsl
 #version 330 core
 
@@ -303,7 +324,9 @@ void main() {
     gl_Position = vec4(position, 1.0);
 }
 ```
+
 **Fragment Shader**
+
 ```glsl
 #version 330 core
 
@@ -315,12 +338,15 @@ void main() {
     outColor = vec4(fColor, 1.0);
 }
 ```
+
 We define a new input variable ```color``` which represents our color data, this data
 is passed on to ```fColor```, which is an output variable of our vertex shader and
 becomes an input variable for our fragment shader.
 It is imporatant that variables passed between shaders have the exact same name
 and type.
+
 ## Handling VBO's
+
 ```cpp
 // If you want to completely clear and refill a VBO use glBufferData(),
 // just like we did before.
@@ -363,8 +389,11 @@ glCopyBufferSubData(GL_COPY_READ_BUFFER,    // read buffer
                     sizeof(vbo[0]) * 3);    // copy size
 // This will copy the first three elements from vbo[0] to vbo[1].
 ```
+
 ## Uniforms
+
 **Fragment Shader**
+
 ```glsl
 // Uniforms are variables like in and out, however,
 // we can change them easily by passing new values with glUniform().
@@ -386,7 +415,9 @@ void main() {
     outColor = vec4(fColor.r * factor, fColor.g * factor, fColor.b * factor, 1.0);
 }
 ```
+
 Back to our source code.
+
 ```cpp
 // If we haven't set the layout location, we can ask for it.
 GLint timeLocation = glGetUniformLocation(program, "time");
@@ -401,13 +432,17 @@ sf::Clock clock{ };
 }
 // ...
 ```
+
 With the time getting updated every frame the quad should now be changing from
 fully colored to pitch black.
 There are different types of glUniform() you can find simple documentation here:
 [glUniform - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glUniform.xhtml)
+
 ## Indexing and IBO's
+
 Element Array Buffers or more commonly Index Buffer Objects (IBO) allow us to use the
 same vertex data again which makes drawing a lot easier and faster. here's an example:
+
 ```cpp
 // Lets create a quad from two rectangles.
 // We can simply use the old vertex data from before.
@@ -431,10 +466,14 @@ glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(iboData[0]) * iboData.size(),
 glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
 // Remember to delete the allocated memory for the IBO.
 ```
+
 You can find the current code here: [OpenGL - 2](https://pastebin.com/R3Z9ACDE).
+
 ## Textures
+
 To load out texture we first need a library that loads the data, for simplicity I will be
 using SFML, however there are a lot of librarys for loading image data.
+
 ```cpp
 // Lets save we have a texture called "my_tex.tga", we can load it with:
 sf::Image image;
@@ -461,11 +500,13 @@ glBindTexture(GL_TEXTURE_2D, 0);
 // ...
 glDeleteTextures(1, &texture);
 ```
+
 Ofcourse there are more texture formats than only 2D textures,
 You can find further information on parameters here:
 [glBindTexture - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindTexture.xhtml)<br>
 [glTexImage2D - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexImage2D.xhtml)<br>
 [glTexParameter - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml)<br>
+
 ```cpp
 // With the texture created, we now have to specify the UV,
 // or in OpenGL terms ST coordinates.
@@ -497,8 +538,11 @@ glBindTexture(GL_TEXTURE_2D, texture);
 glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
 // ...
 ```
+
 Change the shaders to pass the data to the fragment shader.<br>
+
 **Vertex Shader**
+
 ```glsl
 #version 330 core
 
@@ -515,7 +559,9 @@ void main() {
     gl_Position = vec4(position, 1.0);
 }
 ```
+
 **Fragment Shader**
+
 ```glsl
 #version 330 core
 // sampler2D represents our 2D texture.
@@ -533,9 +579,13 @@ void main() {
     outColor = texture(tex, fTexCoords) * vec4(fColor, 1.0);
 }
 ```
+
 You can find the current code here: [OpenGL - 3](https://pastebin.com/u3bcwM6q)
+
 ## Matrix Transformation
+
 **Vertex Shader**
+
 ```glsl
 #version 330 core
 
@@ -560,7 +610,9 @@ void main() {
     gl_Position = projection * model * vec4(position, 1.0);
 }
 ```
+
 In our source we now need to change the vertex data, create a model- and a projection matrix.
+
 ```cpp
 // The new vertex data, counter-clockwise declaration.
 std::vector<float> vertexData {  
@@ -598,8 +650,10 @@ glUniformMatrix4fv(modelLocation, 1, GL_FALSE, model.data());
 glUseProgram(0);
 // The glUniform*() calls have to be done, while the program is bound.
 ```
+
 The application should now display the texture at the defined position and size.<br>
 You can find the current code here: [OpenGL - 4](https://pastebin.com/9ahpFLkY)
+
 ```cpp
 // There are many math librarys for OpenGL, which create
 // matricies and vectors, the most used in C++ is glm (OpenGL Mathematics).
@@ -616,12 +670,16 @@ model = glm::scale(model, glm::vec3{ 200.0f, 200.0f, 0.0f });
 glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
                    glm::value_ptr(model));
 ```
+
 ## Geometry Shader
+
 Gemoetry shaders were introduced in OpenGL 3.2, they can produce vertices
 that are send to the rasterizer. They can also change the primitive type e.g.
 they can take a point as an input and output other primitives.
 Geometry shaders are inbetween the vertex and the fragment shader.
+
 **Vertex Shader**
+
 ```glsl
 #version 330 core
 
@@ -638,7 +696,9 @@ void main() {
     gl_Position = vec4(position, 1.0);
 }
 ```
+
 **Geometry Shader**
+
 ```glsl
 #version 330 core
 // The geometry shader takes in points.
@@ -676,7 +736,9 @@ void main() {
     EndPrimitive();
 }
 ```
+
 **Fragment Shader**
+
 ```glsl
 in GS_OUT {
     vec3 color;
@@ -688,6 +750,7 @@ void main() {
     outColor = vec4(fs_in.color, 1.0);
 }
 ```
+
 If you now store a single point with a single color in a VBO and draw them,
 you should see a triangle, with your color mixed half way between
 red, green and blue on each vertex.
