@@ -62,6 +62,9 @@ var someVariable: String
 //print(someVariable)
 someConstant = 0
 someVariable = "0"
+// These lines are now valid:
+print(someConstant)
+print(someVariable)
 
 // As you can see above, variable types are automatically inferred.
 //   To explicitly declare the type, write it after the variable name,
@@ -88,7 +91,7 @@ let multiLineString = """
     This is a multi-line string.
     It's called that because it takes up multiple lines (wow!)
         Any indentation beyond the closing quotation marks is kept, the rest is discarded.
-    You can include " or "" in multi-line strings because the delimeter is three.
+    You can include " or "" in multi-line strings because the delimeter is three "s.
     """
 
 // Arrays
@@ -108,7 +111,7 @@ shoppingList == mutableShoppingList // false
 // Dictionaries declared with let are also immutable
 var occupations = [
     "Malcolm": "Captain",
-    "kaylee": "Mechanic"
+    "Kaylee": "Mechanic"
 ]
 occupations["Jayne"] = "Public Relations"
 // Dictionaries are also structs, so this also creates a copy
@@ -174,7 +177,7 @@ let someOptionalString4 = String?.none //nil
 /*
  To access the value of an optional that has a value, use the postfix
  operator !, which force-unwraps it. Force-unwrapping is like saying, "I
- know that this optional definitely has a value, please give it to me.
+ know that this optional definitely has a value, please give it to me."
  
  Trying to use ! to access a non-existent optional value triggers a
  runtime error. Always make sure that an optional contains a non-nil
@@ -758,7 +761,7 @@ let multipleAssignment = "No questions asked", secondConstant = "No answers give
 
 // ... is inclusive on both ends (a "closed range") — mathematically, [0, 10]
 let _0to10 = 0...10
-// ..< in inclusive on the left, exclusive on the right (a "range") — mathematically, [0, 10)
+// ..< is inclusive on the left, exclusive on the right (a "range") — mathematically, [0, 10)
 let singleDigitNumbers = 0..<10
 // You can omit one end (a "PartialRangeFrom") — mathematically, [0, ∞)
 let toInfinityAndBeyond = 0...
@@ -809,7 +812,7 @@ for _ in 0..<10 {
  - Public: Accessible in any module that imports it, subclassible in the module it is declared in.
  - Internal: Accessible and subclassible in the module it is declared in.
  - Fileprivate: Accessible and subclassible in the file it is declared in.
- - Private: Accessible and subclassible in the enclosing declaration (think inner classes)
+ - Private: Accessible and subclassible in the enclosing declaration (think inner classes/structs/enums)
  
  See more here: https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html
  */
