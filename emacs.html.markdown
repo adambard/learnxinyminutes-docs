@@ -62,7 +62,7 @@ confusing to newcomers (especially to people used to Vim terminology)
     Thus, when the Emacs manual talks about opening a new frame, this
     essentially means opening a new OS *window* containing an(other)
     instance of Emacs.
-  - The concepts conventionally known as copying and pasting are
+  - The concepts conventionally known as cutting and pasting are
     referred to as **killing** and **yanking**, respectively in Emacs
     parlance.
   - The current position of the cursor is called the **point** in Emacs.
