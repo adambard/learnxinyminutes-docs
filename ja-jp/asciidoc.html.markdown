@@ -5,7 +5,8 @@ contributors:
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
 translators:
     - ["Ryota Kayanuma", "https://github.com/PicoSushi"]
-filename: asciidoc.md
+filename: asciidoc-ja.md
+lang: ja-jp
 ---
 
 AsciiDocはMarkdownに似たマークアップ言語で、書籍の執筆からブログを書くことまでなんでも使うことができます。2002年、Stuart RackhamによりAsciiDocは作成され、シンプルでありつつも沢山のカスタマイズを可能にしています。
