@@ -1,5 +1,5 @@
 ---
-category: tools
+category: tool
 tool: OpenGL
 filename: learnopengl.cpp
 contributors:
