@@ -4,7 +4,6 @@ tool: emacs
 filename: emacs.txt
 contributors:
     - ["Joseph Riad", "https://github.com/Joseph-Riad"]
-lang: en-en
 ---
 
 Emacs started its life as ["the extensible, customizable display
