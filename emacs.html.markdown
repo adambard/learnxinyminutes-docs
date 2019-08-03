@@ -1,4 +1,5 @@
 ---
+category: tool
 tool: emacs
 filename: emacs.txt
 contributors:
