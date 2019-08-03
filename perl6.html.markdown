@@ -247,11 +247,12 @@ concat3(|@array); #=> a, b, c
 ## arguments. If you really need to, you can ask for a mutable container by
 ## using the `is rw` trait:
 sub mutate( $n is rw ) {
-    $n++;
+    $n++; # postfix ++ operator increments its argument but returns its old value
 }
 
 my $m = 42;
-mutate $m; #=> 43
+mutate $m; # the value is incremented but the old value is returned
+           #=> 42
 say $m;    #=> 43
 
 ## This works because we are passing the container $m to the `mutate` sub.
