@@ -1,6 +1,4 @@
 ---
-name: Reason
-category: language
 language: reason
 filename: reason.re
 contributors:
