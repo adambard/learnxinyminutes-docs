@@ -5,7 +5,7 @@ contributors:
     - ["Dean Shaff", "http://dean-shaff.github.io"]
 ---
 
-```webassembly
+```
 ;; learn-wasm.wast
 
 (module
