@@ -4,7 +4,7 @@ filename: learnpascal.pas
 contributors:
     - ["Ganesha Danu", "http://github.com/blinfoldking"]
     - ["Keith Miyake", "https://github.com/kaymmm"]
-translator:
+translators:
     - ["Worajedt Sitthidumrong", "https://bitbucket.org/wrj"]
 lang: th-th
 ---
