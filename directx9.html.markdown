@@ -317,12 +317,35 @@ result = _device->SetStreamSource(0,                   // use the first stream
 if (FAILED(result))
     return -1;
 
+// Create a world transformation matrix and set it to an identiry matrix.
 D3DXMATRIX world{ };
-D3DXMatrixScaling(&world, // matrix to scale
-                  10,     // x scaling
-                  10,     // y scaling
-                  1);     // z scaling
+D3DXMatrixIdentity(&world);
+// Create a scalation matrix scaling our primitve by 10 in the x,
+// 10 in the y and keeping the z direction.
+D3DXMATRIX scaling{ };
+D3DXMatrixScaling(&scaling, // matrix to scale
+                  10,       // x scaling
+                  10,       // y scaling
+                  1);       // z scaling
+// Create a rotation matrix storing the current rotation of our primitive.
+// We set the current rotation matrix to an identity matrix for now.
+D3DXMATRIX rotation{ };
+D3DXMatrixIdentity(&rotation);
+// Now we multiplay the scalation and rotation matrix and store the result
+// in the world matrix.
+D3DXMatrixMultiply(&world,     // destination matrix
+                   &scaling,   // matrix 1
+                   &rotation); // matrix 2
+// Apply the current world matrix.
 _device->SetTransform(D3DTS_WORLD, &world);
+// Disable culling so we can see the back of our primitive when it rotates.
+_device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+// The default cullmode is D3DCULL_CW.
+// After we used our the rotation matrix for multiplication we can set it
+// to rotate a small amount.
+// D3DXToRadian() function converts degree to radians.
+D3DXMatrixRotationY(&rotation,           // matrix to rotate
+                    D3DXToRadian(0.5f)); // rotation angle in radians
 
 MSG msg{ };
     while (_running) {
@@ -337,9 +360,14 @@ MSG msg{ };
         _device->EndScene();
     
         _device->Present(nullptr, nullptr, nullptr, nullptr);
+        // We can keep multiplying the world matrix with our rotation matrix
+        // to add it's rotation to the world matrix.
+        D3DXMatrixMultiply(&world, &world, &rotation);
+        // Update the modified world matrix.
+        _device->SetTransform(D3DTS_WORLD, &world);
     // ...
 ```
-You should now be viewing a 10x10 units colored triangle from 20 units away.<br>
+You should now be viewing a 10x10 units colored triangle from 20 units away, rotating around its origin.<br>
 You can find the complete working code here: [DirectX - 1](https://pastebin.com/YkSF2rkk)
 ## Indexing
 To make it easier to draw primitives sharing a lot of vertices we can use indexing, so we only have to declare the unique vertices and put the order they are called in another array.
