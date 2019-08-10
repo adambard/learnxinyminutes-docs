@@ -405,7 +405,7 @@ result = _device->SetIndices(_indexBuffer.Get())
 if (FAILED(result))
     return -1;
 // ...
-// Now we replace the "DrawPrimitive" with a indexed variant.
+// Now we replace the "DrawPrimitive" with an indexed version.
 _device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, // primitive type
                               0,                  // base vertex index
                               0,                  // minimum index
