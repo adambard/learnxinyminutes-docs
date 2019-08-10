@@ -339,7 +339,7 @@ MSG msg{ };
         _device->Present(nullptr, nullptr, nullptr, nullptr);
     // ...
 ```
-You should now be viewing a 10x10 units colored triangle from 20 units away.
+You should now be viewing a 10x10 units colored triangle from 20 units away.<br>
 You can find the complete working code here: [DirectX - 1](https://pastebin.com/YkSF2rkk)
 ## Indexing
 To make it easier to draw primitives sharing a lot of vertices we can use indexing, so we only have to declare the unique vertices and put the order they are called in another array.
@@ -414,7 +414,7 @@ _device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, // primitive type
                               2);                 // primitive count
 // ...
 ```
-Now you should see a colored rectangle made up of 2 triangles. If you set the primitive count in the "DrawIndexedPrimitive" method to 1 only the first triangle should be rendered and if you set the start of the index buffer to 3 and the primitive count to 1 only the second triangle should be rendered.
+Now you should see a colored rectangle made up of 2 triangles. If you set the primitive count in the "DrawIndexedPrimitive" method to 1 only the first triangle should be rendered and if you set the start of the index buffer to 3 and the primitive count to 1 only the second triangle should be rendered.<br>
 You can find the complete working code here: [DirectX - 2](https://pastebin.com/yWBPWPRG)
 
 
