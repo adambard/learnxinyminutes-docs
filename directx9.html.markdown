@@ -148,37 +148,36 @@ bool InitD3D(HWND hWnd) {
     // Everything was successful, return true.
     return true;
 }
-```
-Back in our **WinMain** function:
-```cpp
-    // ...
-    // Check if Direct3D initialization succeded, else exit the application.
-    if (!InitD3D(hWnd))
-        return -1;
+// ...
+// Back in our WinMain function we call our initialization function.
+// ...
+// Check if Direct3D initialization succeded, else exit the application.
+if (!InitD3D(hWnd))
+    return -1;
         
-    MSG msg{ };
-    while (_running) {
-        while (PeekMessage(&msg, hWnd, 0, 0, PM_REMOVE)) {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-        // Clear to render target to a specified color.
-        _device->Clear(0,               // number of rect to specified
-                       nullptr,         // indicates to clear the entire window
-                       D3DCLEAR_TARGET, // clear all render targets
-                       D3DXCOLOR{ 1.0f, 0.0f, 0.0f, 1.0f }, // color (red)
-                       0.0f,            // depth buffer clear value
-                       0);              // stencil buffer clear value
-        // ...
-        // Drawing operations go here.
-        // ...
-        // Flip the front- and backbuffer.
-        _device->Present(nullptr,  // no source rectangle
-                         nullptr,  // no destination rectangle
-                         nullptr,  // don't change the current window handle
-                         nullptr); // pretty much always nullptr
+MSG msg{ };
+while (_running) {
+    while (PeekMessage(&msg, hWnd, 0, 0, PM_REMOVE)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
     }
+    // Clear to render target to a specified color.
+    _device->Clear(0,               // number of rect to specified
+                   nullptr,         // indicates to clear the entire window
+                   D3DCLEAR_TARGET, // clear all render targets
+                   D3DXCOLOR{ 1.0f, 0.0f, 0.0f, 1.0f }, // color (red)
+                   0.0f,            // depth buffer clear value
+                   0);              // stencil buffer clear value
     // ...
+    // Drawing operations go here.
+    // ...
+    // Flip the front- and backbuffer.
+    _device->Present(nullptr,  // no source rectangle
+                     nullptr,  // no destination rectangle
+                     nullptr,  // don't change the current window handle
+                     nullptr); // pretty much always nullptr
+}
+// ...
 ```
 Now the window should be displayed in a bright red color.
 ## Vertex Buffer
@@ -211,8 +210,8 @@ IDirect3DVertexBuffer9* CreateBuffer(const std::vector<VStruct>& vertices) {
                  0,                     // data usage
                  VertexStructFVF,       // FVF of the struct
                  D3DPOOL_DEFAULT,       // use default pool for the buffer
-                 &buffer,               // target buffer
-                 nullptr);              // always nullptr (reserved)
+                 &buffer,               // receiving buffer
+                 nullptr);              // special shared handle
     // Check if buffer was created successful.
     if (FAILED(result))
         return nullptr;
@@ -293,9 +292,8 @@ bool SetupTransform() {
     // View and projection matrix are successfully applied, return true.
     return true;
 }
-```
-Back in the **WinMain** function.
-```cpp
+// ...
+// Back in the WinMain function we can now call the transformation function.
 // ...
 if (!(_vertexBuffer = CreateVertexBuffer(vertices)))
     return -1;
@@ -343,6 +341,81 @@ MSG msg{ };
 ```
 You should now be viewing a 10x10 units colored triangle from 20 units away.
 You can find the complete working code here: [DirectX - 1](https://pastebin.com/YkSF2rkk)
+## Indexing
+To make it easier to draw primitives sharing a lot of vertices we can use indexing, so we only have to declare the unique vertices and put the order they are called in another array.
+```cpp
+// First we declare a new ComPtr for our index buffer.
+ComPtr<IDirect3DIndexBuffer9> _indexBuffer{ };
+// ...
+// Declare a function creating a index buffer from a std::vector
+IDirect3DIndexBuffer9* CreateIBuffer(std::vector<unsigned int>& indices) {
+    IDirect3DIndexBuffer9* buffer{ };
+    HRESULT result{ };
+    result = _device->CreateIndexBuffer(
+                 GetByteSize(indices), // vector size in bytes
+                 0,                    // data usage 
+                 D3DFMT_INDEX32,       // format is 32 bit
+                 D3DPOOL_DEFAULT,      // default pool
+                 &buffer,              // receiving buffer
+                 nullptr);             // special shared handle
+    if (FAILED(result))
+        return nullptr;
+    // Create a data pointer pointing to the buffer data.
+    void* data{ };
+    result = buffer->Lock(0,                    // byte offset
+                          GetByteSize(indices), // byte size
+                          &data,                // receiving data pointer
+                          0);                   // special lock flag
+    if (FAILED(result))
+        return nullptr;
+    // Copy the index data and unlock after copying.
+    memcpy(data, indices.data(), GetByteSize(indices));
+    buffer->Unlock();
+    // Return the filled index buffer.
+    return buffer;
+}
+// ...
+// In our WinMain we can now change the vertex data and create new index data.
+// ...
+std::vector<VStruct> vertices {
+    VStruct{ -1.0f, -1.0f, 1.0f, D3DXCOLOR{ 1.0f, 0.0f, 0.0f, 1.0f } },
+    VStruct{ -1.0f,  1.0f, 1.0f, D3DXCOLOR{ 0.0f, 1.0f, 0.0f, 1.0f } },
+    VStruct{  1.0f,  1.0f, 1.0f, D3DXCOLOR{ 0.0f, 0.0f, 1.0f, 1.0f } },
+    // Add a vertex for the bottom right.
+    VStruct{  1.0f, -1.0f, 1.0f, D3DXCOLOR{ 1.0f, 1.0f, 0.0f, 1.0f } }
+};
+// Declare the index data, here we build a rectangle from two triangles.
+std::vector<unsigned int> indices {
+    0, 1, 2, // the first triangle (b,left -> t,left -> t,right)
+    0, 2, 3  // the second triangle (b,left -> t,right -> b,right)
+};
+// ...
+// Now we call the "CreateIBuffer" function to create a index buffer.
+// ...
+if (!(_indexBuffer = CreateIBuffer(indices)))
+    return -1;
+// ...
+// After binding the vertex buffer we have to bind the index buffer to
+// use indexed rendering.
+result = _device->SetStreamSource(0, _vertexBuffer.Get(), 0, sizeof(VStruct));
+if (FAILED(result))
+    return -1;
+// Bind the index data to the default data stream.
+result = _device->SetIndices(_indexBuffer.Get())
+if (FAILED(result))
+    return -1;
+// ...
+// Now we replace the "DrawPrimitive" with a indexed variant.
+_device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, // primitive type
+                              0,                  // base vertex index
+                              0,                  // minimum index
+                              indices.size(),     // amount of vertices
+                              0,                  // start in index buffer
+                              2);                 // primitive count
+// ...
+```
+Now you should see a colored rectangle made up of 2 triangles. If you set the primitive count in the "DrawIndexedPrimitive" method to 1 only the first triangle should be rendered and if you set the start of the index buffer to 3 and the primitive count to 1 only the second triangle should be rendered.
+You can find the complete working code here: [DirectX - 2](https://pastebin.com/yWBPWPRG)
 
 
 
