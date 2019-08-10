@@ -11,7 +11,7 @@ alternative to YAML.
 You can think of Dhall as: JSON + functions + types + imports
 
 Note that while Dhall is programmable, Dhall is not Turing-complete.  Many
-of Dhall's features take advantage of this restriction to provider stronger
+of Dhall's features take advantage of this restriction to provide stronger
 safety guarantees and more powerful tooling.
 
 ```haskell
@@ -216,7 +216,7 @@ let functionAppliedToARecord : List Natural =
 let typeConversion : Natural -> Text =
         \(age : Natural) -> "I am ${Natural/show age} years old!"
 
--- A template is the same thing as a function whose output type is `Text`
+-- A "template" is the same thing as a function whose output type is `Text`
 let mitLicense : { year : Natural, copyrightHolder : Text } -> Text =
         \(args : { year : Natural, copyrightHolder : Text }) ->
 ''
@@ -263,7 +263,7 @@ let Natural/sum : List Natural -> Natural =
 
 let twentyEight : Natural = Natural/sum somePrimes
 
--- A package is the same thing as a (possibly nested) record that you can import
+-- A "package" is the same thing as a (possibly nested) record that you can import
 let Prelude = https://prelude.dhall-lang.org/package.dhall
 
 let false : Bool = Prelude.Bool.not True
