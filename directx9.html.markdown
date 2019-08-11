@@ -444,7 +444,247 @@ _device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, // primitive type
 ```
 Now you should see a colored rectangle made up of 2 triangles. If you set the primitive count in the "DrawIndexedPrimitive" method to 1 only the first triangle should be rendered and if you set the start of the index buffer to 3 and the primitive count to 1 only the second triangle should be rendered.<br>
 You can find the complete working code here: [DirectX - 2](https://pastebin.com/yWBPWPRG)
+## Vertex declaration
+Instead of using the old "flexible vertex format" we should use vertex declarations instead, as the FVF declarations get converted to vertex declarations internally anyway.
+```cpp
+// First we have to REMOVE the following lines:
+const unsigned long VertexStructFVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
+// and
+_device->SetFVF(VertexStructFVF);
+// ...
+// We also have to change the vertex buffer creation FVF-flag.
+result = _device->CreateVertexBuffer(
+                      GetByteSize(vertices),
+                      0,
+                      0,        // <- 0 indicates we use vertex declarations
+                      D3DPOOL_DEFAULT,
+                      &buffer,
+                      nullptr); 
+// Next we have to declare a new ComPtr.
+ComPtr<IDirect3DVertexDeclaration9> _vertexDecl{ };
+// ...
+result = _device->SetIndices(_indexBuffer.Get());
+if (FAILED(result))
+    return -1;
+// Now we have to declare and apply the vertex declaration.
+// Create a vector of vertex elements making up the vertex declaration.
+std::vector<D3DVERTEXELEMENT9> vertexDeclDesc {
+    { 0,                     // stream index
+      0,                     // byte offset from the struct beginning
+      D3DDECLTYPE_FLOAT3,    // data type (3d float vector)
+      D3DDECLMETHOD_DEFAULT, // tessellator operation
+      D3DDECLUSAGE_POSTION,  // usage of the data
+      0 },                   // index (multiples usage of the same type)
+    { 0,
+      12,                    // byte offset (3 * sizeof(float) bytes)
+      D3DDECLTYPE_D3DCOLOR,
+      D3DDECLMETHOD_DEFAULT,
+      D3DDECLUSAGE_COLOR,
+      0 },
+    D3DDECL_END()            // marks the end of the vertex declaration
+};
+// After having defined the vector we can create a vertex declaration from it.
+result = _device->CreateVertexDeclaration(
+                      vertexDeclDesc.data(), // the vertex element array
+                      &_vertexDecl);         // receiving pointer
+if (FAILED(result)) 
+    return -1;
+// Apply the created vertex declaration.
+_device->SetVertexDeclaration(_vertexDecl.Get());
+// ...
+```
+## Shader
+The maximum shader model for Direct3D 9 is shader model 3.0. Even though every modern graphics card should support it, it is best to check for capabilities.
+```cpp
+// ...
+_device->SetVertexDeclaration(_vertexDecl.Get());
+// First we have to request the device capabilities.
+D3DCAPS9 deviceCaps{ };
+_device->GetDeviceCaps(&deviceCaps);
+// Now we check if shader model 3.0 is supported for the vertex shader.
+if (deviceCaps.VertexShaderVersion < D3DVS_VERSION(3, 0))
+    return -1;
+// And the same for the pixel shader.
+if (deviceCaps.PixelShaderVersion < D3DPS_VERSION(3, 0))
+    return -1;
+```
+Now that we are sure shader model 3.0 is supported let's create the vertex and pixel shader files.
+DirectX 9 introduced the HLSL (**High Level Shading Language**), a C-like shader language, which
+simplified the shader programming a lot, as you could only write shaders in shader assembly in DirectX 8.
+Let's create a simple vertex- and pixel shader. 
 
+**Vertex Shader**
+```cpp
+// 3 4x4 float matrices representing the matrices we set in the fixed-function
+// pipeline by using the SetTransform() method.
+float4x4 projectionMatrix;
+float4x4 viewMatrix;
+float4x4 worldMatrix;
+// The input struct to the vertex shader.
+// It holds a 3 float vector for the position and a 4 float vector
+// for the color.
+struct VS_INPUT {
+    float3 position : POSITION;
+    float4 color : COLOR;
+};
+// The output struct of the vertex shader, that is passed to the pixel shader.
+struct VS_OUTPUT {
+    float4 position : POSITION;
+    float4 color : COLOR;
+};
+// The main function of the vertex shader returns the output it sends to the
+// pixel shader and receives it's input as a parameter.
+VS_OUTPUT main(VS_INPUT input) {
+    // Declare a empty struct, that the vertex shader returns.
+    VS_OUTPUT output;
+    // Set the output position to the input position and set
+    // the w-component to 1, as the input position is a 3d vector and
+    // the output position a 4d vector.
+    output.position = float4(input.position, 1.0f);
+    // Multiply the output position step by step with the world, view and
+    // projection matrices.
+    output.position = mul(output.position, worldMatrix);	
+    output.position = mul(output.position, viewMatrix);
+    output.position = mul(output.position, projectionMatrix);
+	// Pass the input color unchanged to the pixel shader.
+    output.color = input.color;
+    // Return the output struct to the pixel shader.
+    // The position value is automatically used as the vertex position.
+    return output;
+}
+```
+**Pixel Shader**
+```cpp
+// The pixel shader input struct must be the same as the vertex shader output!
+struct PS_INPUT {
+    float4 position : POSITION;
+    float4 color : COLOR;
+};
+// The pixel shader simply returns a 4d vector representing the vertex color.
+// It receives it's input as a parameter just like the vertex shader.
+// We have to declare the output semantic as color to it gets interpreted
+// correctly.
+float4 main(PS_INPUT input) : COLOR {
+    return input.color;
+}
+```
+For more on semantics: [DirectX - Semantics](https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-semantics#vertex-shader-semantics)
+
+Now we have to do quite some changes to the code.
+```cpp
+ComPtr<IDirect3DDevice9> _device{ };
+ComPtr<IDirect3DVertexBuffer9> _vertexBuffer{ };
+ComPtr<IDirect3DIndexBuffer9> _indexBuffer{ };
+ComPtr<IDirect3DVertexDeclaration9> _vertexDecl{ };
+// We have to add a ComPtr for the vertex- and pixel shader, aswell as one
+// for the constants (matrices) in our vertex shader.
+ComPtr<IDirect3DVertexShader9> _vertexShader{ };
+ComPtr<IDirect3DPixelShader9> _pixelShader{ };
+ComPtr<ID3DXConstantTable> _vertexTable{ };
+// Declare the world and rotation matrix as global, because we use them in
+// WinMain and SetupTransform now.
+D3DXMATRIX _worldMatrix{ };
+D3DXMATRIX _rotationMatrix{ };
+// ...
+bool SetupTransform() {
+    // Set the world and rotation matrix to an identity matrix.
+    D3DXMatrixIdentity(&_worldMatrix);
+    D3DXMatrixIdentity(&_rotationMatrix);
+	
+    D3DXMATRIX scaling{ };
+    D3DXMatrixScaling(&scaling, 10, 10, 1);
+    D3DXMatrixMultiply(&_worldMatrix, &scaling, &_rotationMatrix);
+    // After multiplying the scalation and rotation matrix the have to pass
+    // them to the shader, by using a method from the constant table
+    // of the vertex shader.
+    HRESULT result = _vertexTable->SetMatrix(
+                         _device.Get(),   // direct3d device
+                         "worldMatrix",   // matrix name in the shader
+                          &_worldMatrix); // pointer to the matrix
+    if (FAILED(result))
+        return false;
+
+    D3DXMATRIX view{ };
+    D3DXMatrixLookAtLH(&view, &D3DXVECTOR3{ 0.0f, 0.0f, -20.0f },
+           &D3DXVECTOR3{ 0.0f, 0.0f, 0.0f }, &D3DXVECTOR3{ 0.0f, 1.0f, 0.0f });
+    // Do the same for the view matrix.
+    result = _vertexTable->SetMatrix(
+	                           _device.Get(), // direct 3d device
+	                           "viewMatrix",  // matrix name
+	                           &view);        // matrix
+    if (FAILED(result))
+        return false;
+
+    D3DXMATRIX projection{ };
+    D3DXMatrixPerspectiveFovLH(&projection, D3DXToRadian(60.0f),
+        1024.0f / 768.0f, 0.0f, 100.0f);
+    // And also for the projection matrix.
+    result = _vertexTable->SetMatrix(
+	                           _device.Get(),
+	                           "projectionMatrix",
+	                           &projection);
+    if (FAILED(result))
+        return false;
+
+    D3DXMatrixRotationY(&_rotationMatrix, D3DXToRadian(0.5f));
+    return true;
+}
+// ...
+// Vertex and index buffer creation aswell as initialization stay unchanged.
+// ...
+// After checking that shader model 3.0 is available we have to compile and
+// create the shaders.
+// Declare two temporary buffers storing the compiled shader code.
+ID3DXBuffer* vertexShaderBuffer{ };
+ID3DXBuffer* pixelShaderBuffer{ };
+result = D3DXCompileShaderFromFile("vertex.hlsl",  // shader name
+                                   nullptr,        // macro definitions
+                                   nullptr,        // special includes
+                                   "main",         // entry point name
+                                   "vs_3_0",       // shader model version
+                                   0,              // special flags
+                                   &vertexShaderBuffer, // code buffer
+                                   nullptr,        // error message
+                                   &_vertexTable); // constant table
+if (FAILED(result))
+    return -1;
+// After the vertex shader compile the pixel shader.
+result = D3DXCompileShaderFromFile("pixel.hlsl",
+                                   nullptr,
+                                   nullptr,
+                                   "main",
+                                   "ps_3_0", // pixel shader model 3.0
+                                   0,
+                                   &pixelShaderBuffer,
+                                   nullptr,
+                                   nullptr); // no need for a constant table
+if (FAILED(result))
+    return -1;
+// Create the vertex shader from the code buffer.
+result = _device->CreateVertexShader(
+             (DWORD*)vertexShaderBuffer->GetBufferPointer(), // code buffer
+             &_vertexShader); // vertex shader pointer
+if (FAILED(result))
+    return -1;
+	
+result = _device->CreatePixelShader(
+             (DWORD*)pixelShaderBuffer->GetBufferPointer(),
+             &_pixelShader);
+if (FAILED(result))
+    return -1;
+// Release the temporary code buffers after the shaders are created.
+vertexShaderBuffer->Release();
+pixelShaderBuffer->Release();
+// Apply the vertex- and pixel shader.
+_device->SetVertexShader(_vertexShader.Get());
+_device->SetPixelShader(_pixelShader.Get());
+// Apply the transform after the shader had been created.
+if (!SetupTransform())
+    return -1;
+// You can also REMOVE the call so set the lighting render state.
+_device->SetRenderState(D3DRS_LIGHTING, false);
+```
+You can find the complete code here: [DirectX - 3](https://pastebin.com/y4NrvawY)
 
 
 ## Quotes
