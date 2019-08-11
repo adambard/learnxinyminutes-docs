@@ -464,7 +464,6 @@ for i in range(4, 8, 2):
     print(i)
 
 """
-
 To loop over a list, and retrieve both the index and the value of each item in the list
 prints:
     0 dog
