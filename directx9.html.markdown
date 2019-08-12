@@ -597,7 +597,8 @@ bool SetupTransform() {
     // After multiplying the scalation and rotation matrix the have to pass
     // them to the shader, by using a method from the constant table
     // of the vertex shader.
-    HRESULT result = _vertexTable->SetMatrix(
+    HRESULT result{ };
+    result = _vertexTable->SetMatrix(
                          _device.Get(),   // direct3d device
                          "worldMatrix",   // matrix name in the shader
                           &_worldMatrix); // pointer to the matrix
@@ -609,9 +610,9 @@ bool SetupTransform() {
            &D3DXVECTOR3{ 0.0f, 0.0f, 0.0f }, &D3DXVECTOR3{ 0.0f, 1.0f, 0.0f });
     // Do the same for the view matrix.
     result = _vertexTable->SetMatrix(
-	                           _device.Get(), // direct 3d device
-	                           "viewMatrix",  // matrix name
-	                           &view);        // matrix
+	                       _device.Get(), // direct 3d device
+	                       "viewMatrix",  // matrix name
+	                       &view);        // matrix
     if (FAILED(result))
         return false;
 
@@ -620,9 +621,9 @@ bool SetupTransform() {
         1024.0f / 768.0f, 0.0f, 100.0f);
     // And also for the projection matrix.
     result = _vertexTable->SetMatrix(
-	                           _device.Get(),
-	                           "projectionMatrix",
-	                           &projection);
+	                       _device.Get(),
+	                       "projectionMatrix",
+	                       &projection);
     if (FAILED(result))
         return false;
 
@@ -685,7 +686,100 @@ if (!SetupTransform())
 _device->SetRenderState(D3DRS_LIGHTING, false);
 ```
 You can find the complete code here: [DirectX - 3](https://pastebin.com/y4NrvawY)
+## Texturing
+```cpp
+// First we need to declare a ComPtr for the texture.
+ComPtr<IDirect3DTexture9> _texture{ };
+// Then we have to change the vertex struct.
+struct VStruct {
+    float x, y, z;
+    float u, v;      // Add texture u and v coordinates
+    D3DCOLOR color;
+};
+// In the vertex declaration we have to add the texture coordinates.
+// the top left of the texture is u: 0, v: 0.
+std::vector<VStruct> vertices {
+    VStruct{ -1.0f, -1.0f, 1.0f, 0.0f, 1.0f, ... }, // bottom left
+    VStruct{ -1.0f,  1.0f, 1.0f, 0.0f, 0.0f, ... }, // top left
+    VStruct{  1.0f,  1.0f, 1.0f, 1.0f, 0.0f, ... }, // top right
+    VStruct{  1.0f, -1.0f, 1.0f, 1.0f, 1.0f, ... }  // bottom right
+};
+// Next is the vertex declaration.
+std::vector<D3DVERTEXELEMENT9> vertexDecl{
+    {0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0},
+    // Add a 2d float vector used for texture coordinates.
+    {0, 12, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0},
+    // The color offset is not (3 + 2) * sizeof(float) = 20 bytes
+    {0, 20, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_COLOR, 0},
+    D3DDECL_END()
+};
+// Now we have to load the texture and pass its to the shader.
+// ...
+_device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+// Create a Direct3D texture from a png file.
+result = D3DXCreateTextureFromFile(_device.Get(), // direct3d device
+                                   "texture.png", // texture path
+                                   &_texture);    // receiving texture pointer
+if (FAILED(result))
+    return -1;
+// Attach the texture to shader stage 0, which is equal to texture register 0
+// in the pixel shader.
+_device->SetTexture(0, _texture.Get());
+```
+With the main code ready we now have to adjust the shaders to these changes.
 
+**Vertex Shader**
+```cpp
+float4x4 projectionMatrix;
+float4x4 viewMatrix;
+float4x4 worldMatrix;
+// Add the texture coordinates to the vertex shader in- and output.
+struct VS_INPUT {
+    float3 position : POSITION;
+    float2 texcoord : TEXCOORD;
+    float4 color : COLOR;
+};
+
+struct VS_OUTPUT {
+    float4 position : POSITION;
+    float2 texcoord : TEXCOORD;
+    float4 color : COLOR;
+};
+
+VS_OUTPUT main(VS_INPUT input) {
+    VS_OUTPUT output;
+    
+    output.position = float4(input.position, 1.0f);
+    output.position = mul(output.position, worldMatrix);	
+    output.position = mul(output.position, viewMatrix);
+    output.position = mul(output.position, projectionMatrix);
+
+    output.color = input.color;
+    // Set the texcoord output to the input.
+    output.texcoord = input.texcoord;
+    
+    return output;
+}
+```
+**Pixel Shader**
+```cpp
+// Create  a sampler called "sam0" using sampler register 0, which is equal
+// to the texture stage 0, to which we passed the texture.
+sampler sam0 : register(s0);
+
+struct PS_INPUT {
+    float4 position : POSITION;
+    float2 texcoord : TEXCOORD;
+    float4 color : COLOR;
+};
+
+float4 main(PS_INPUT input) : COLOR{
+    // Do a linear interpolation between the texture color and the input color
+    // using 75% of the input color.
+    // tex2D returns the texture data at the specified texture coordinate.
+    return lerp(tex2D(sam0, input.texcoord), input.color, 0.75f);
+}
+```
 
 ## Quotes
 <sup>[1]</sup>[DirectX - Wikipedia](https://en.wikipedia.org/wiki/DirectX)
