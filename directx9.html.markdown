@@ -63,7 +63,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                         nullptr,             // menu
                         hInstance,           // module instance
                         nullptr);            // struct for infos
-    // Check if a window handle had been created.
+    // Check if a window handle has been created.
     if (!hWnd)
         return -1;   
     // Show and update the new window.
@@ -100,7 +100,7 @@ ComPtr<IDirect3DDevice9> _device{ };
 With all interfaces declared we can now initialize Direct3D.
 ```cpp
 bool InitD3D(HWND hWnd) {
-    // Store the rectangle size of the window.
+    // Store the size of the window rectangle.
     RECT clientRect{ };
     GetClientRect(hWnd, &clientRect);
     // Initialize Direct3D
@@ -108,7 +108,7 @@ bool InitD3D(HWND hWnd) {
     // Get the display mode which format will be the window format.
     D3DDISPLAYMODE displayMode{ };
     _d3d->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, // use default graphics card
-                                &displayMode);      // display mode struct
+                                &displayMode);      // display mode pointer
     // Next we have to set some presentation parameters.
     D3DPRESENT_PARAMETERS pp{ };
     pp.BackBufferWidth = clientRect.right;    // width is window width
@@ -119,7 +119,7 @@ bool InitD3D(HWND hWnd) {
     pp.hDeviceWindow = hWnd;                  // associated window handle
     pp.Windowed = true;                       // display in window mode
     pp.Flags = 0;                             // no special flags
-    // Variable to store results of methods to check if everything succeds.
+    // Variable to store results of methods to check if everything succeded.
     HRESULT result{ };
     result = _d3d->CreateDevice(D3DADAPTER_DEFAULT, // use default graphics card
                                 D3DDEVTYPE_HAL,     // use hardware acceleration
@@ -128,7 +128,7 @@ bool InitD3D(HWND hWnd) {
                                     // vertices are processed by the hardware
                                 &pp,       // the present parameters
                                 &_device); // struct to store the device
-    // Return if the device creation failed.
+    // Return false if the device creation failed.
     // It is helpful to set breakpoints at the return line.
     if (FAILED(result))
         return false;
@@ -142,7 +142,7 @@ bool InitD3D(HWND hWnd) {
     viewport.MaxZ = 100.0f; // maximum view distance
     // Apply the created viewport.
     result = _device->SetViewport(&viewport);
-    // Always check if something failed everywhere.
+    // Always check if something failed.
     if (FAILED(result))
         return false;
     // Everything was successful, return true.
@@ -162,7 +162,7 @@ while (_running) {
         DispatchMessage(&msg);
     }
     // Clear to render target to a specified color.
-    _device->Clear(0,               // number of rect to specified
+    _device->Clear(0,               // number of rects to clear
                    nullptr,         // indicates to clear the entire window
                    D3DCLEAR_TARGET, // clear all render targets
                    D3DXCOLOR{ 1.0f, 0.0f, 0.0f, 1.0f }, // color (red)
@@ -183,7 +183,7 @@ Now the window should be displayed in a bright red color.
 ## Vertex Buffer
 Let's create a vertex buffer to store the vertices for our triangle
 ```cpp
-// At the top of the file we need to add some includes.
+// At the top of the file we need to add a include.
 #include <vector>
 // First we declare a new ComPtr holding a vertex buffer.
 ComPtr<IDirect3DVertexBuffer9> _vertexBuffer{ };
@@ -212,7 +212,7 @@ IDirect3DVertexBuffer9* CreateBuffer(const std::vector<VStruct>& vertices) {
                  D3DPOOL_DEFAULT,       // use default pool for the buffer
                  &buffer,               // receiving buffer
                  nullptr);              // special shared handle
-    // Check if buffer was created successful.
+    // Check if buffer was created successfully.
     if (FAILED(result))
         return nullptr;
     // Create a data pointer for copying the vertex data
@@ -242,7 +242,7 @@ if (!InitD3D(hWnd))
 // Define the vertices we need to draw a triangle.
 // Values are declared in a clockwise direction else Direct3D would cull them.
 // If you want to diable culling just call:
-_device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+// _device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 std::vector<VStruct> vertices {
     // Bottom left
     VStruct{ -1.0f, -1.0f, 1.0f, D3DXCOLOR{ 1.0f, 0.0f, 0.0f, 1.0f } },
@@ -257,7 +257,7 @@ if (!(_vertexBuffer = CreateBuffer(vertices)))
 // ...
 ```
 ## Transformations
-Before we can use the vertex buffer to draw our primitives, we first need to set up the matricies.
+Before we can use the vertex buffer to draw our primitives, we first need to set up the matrices.
 ```cpp
 // Lets create a new funtions for the matrix transformations.
 bool SetupTransform() {
@@ -281,7 +281,7 @@ bool SetupTransform() {
     D3DXMatrixPerspectiveFovLH(
         &projection,         // receiving matrix
         D3DXToRadian(60.0f), // field of view in radians
-        1024.0f / 768.0f,    // aspect ratio (use client rect instead)
+        1024.0f / 768.0f,    // aspect ratio (width / height)
         0.0f,                // minimum view distance
         100.0f);             // maximum view distance
     result = _device->SetTransform(D3DTS_PROJECTION, &projection);
@@ -303,21 +303,21 @@ if (!SetupTransform())
 // ...
 ```
 ## Rendering
-Now that everything is setup we can start drawing our first 2D triangle sitting in 3D space.
+Now that everything is setup we can start drawing our first 2D triangle in 3D space.
 ```cpp
 // ...
 if (!SetupTransform())
     return -1;
 // First we have to bind our vertex buffer to the data stream.
 HRESULT result{ };
-result = _device->SetStreamSource(0,                   // use the first stream
-                                  _vertexBuffer.Get(), // pass our vertex data
+result = _device->SetStreamSource(0,                   // use the default stream
+                                  _vertexBuffer.Get(), // pass the vertex buffer
                                   0,                   // no offset
-                                  sizeof(VStruct));    // size of vertex info
+                                  sizeof(VStruct));    // size of vertex struct
 if (FAILED(result))
     return -1;
 
-// Create a world transformation matrix and set it to an identiry matrix.
+// Create a world transformation matrix and set it to an identity matrix.
 D3DXMATRIX world{ };
 D3DXMatrixIdentity(&world);
 // Create a scalation matrix scaling our primitve by 10 in the x,
@@ -331,7 +331,7 @@ D3DXMatrixScaling(&scaling, // matrix to scale
 // We set the current rotation matrix to an identity matrix for now.
 D3DXMATRIX rotation{ };
 D3DXMatrixIdentity(&rotation);
-// Now we multiplay the scalation and rotation matrix and store the result
+// Now we multiply the scalation and rotation matrix and store the result
 // in the world matrix.
 D3DXMatrixMultiply(&world,     // destination matrix
                    &scaling,   // matrix 1
@@ -352,7 +352,7 @@ MSG msg{ };
     // ...
         _device->Clear(0, nullptr, D3DCLEAR_TARGET,
                        D3DXCOLOR{ 0.0f, 0.0f, 0.0f, 1.0f }, 0.0f, 0);
-        // With the data stream set we can call the draw functions.
+        // With everything setup we can call the draw function.
         _device->BeginScene();
         _device->DrawPrimitive(D3DPT_TRIANGLELIST, // primitive type
                                0,                  // start vertex
@@ -382,7 +382,7 @@ IDirect3DIndexBuffer9* CreateIBuffer(std::vector<unsigned int>& indices) {
     result = _device->CreateIndexBuffer(
                  GetByteSize(indices), // vector size in bytes
                  0,                    // data usage 
-                 D3DFMT_INDEX32,       // format is 32 bit
+                 D3DFMT_INDEX32,       // format is 32 bit int
                  D3DPOOL_DEFAULT,      // default pool
                  &buffer,              // receiving buffer
                  nullptr);             // special shared handle
@@ -433,7 +433,7 @@ result = _device->SetIndices(_indexBuffer.Get())
 if (FAILED(result))
     return -1;
 // ...
-// Now we replace the "DrawPrimitive" with an indexed version.
+// Now we replace the "DrawPrimitive" function with an indexed version.
 _device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, // primitive type
                               0,                  // base vertex index
                               0,                  // minimum index
@@ -521,7 +521,7 @@ float4x4 projectionMatrix;
 float4x4 viewMatrix;
 float4x4 worldMatrix;
 // The input struct to the vertex shader.
-// It holds a 3 float vector for the position and a 4 float vector
+// It holds a 3d float vector for the position and a 4d float vector
 // for the color.
 struct VS_INPUT {
     float3 position : POSITION;
@@ -678,7 +678,7 @@ pixelShaderBuffer->Release();
 // Apply the vertex- and pixel shader.
 _device->SetVertexShader(_vertexShader.Get());
 _device->SetPixelShader(_pixelShader.Get());
-// Apply the transform after the shader had been created.
+// Apply the transform after the shaders have been set.
 if (!SetupTransform())
     return -1;
 // You can also REMOVE the call so set the lighting render state.
