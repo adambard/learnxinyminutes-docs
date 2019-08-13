@@ -214,6 +214,41 @@ moreNumbers[5] = 5;     // Error, สมาชิกอะเรย์เป็�
 moreNumbers.push(5);    // Error, push method ใช้ไม่ได้ เพราะมันจะไปแก้ไข read-only array
 moreNumbers.length = 3; // Error, เพราะ length ก็ต้อง read-only
 numbers = moreNumbers;  // Error, method ที่ทำให้อะเรย์เปลี่ยนได้จะไม่อนุญาต
+
+// Tagged Union Types สำหรับโมเดลสเตท ที่อาจจะมีได้หลายๆ สเตท
+type State = 
+  | { type: "loading" }
+  | { type: "success", value: number }
+  | { type: "error", message: string };
+
+ประกาศ const state: State;
+if (state.type === "success") {
+  console.log(state.value);
+} else if (state.type === "error") {
+  console.error(state.message);
+}
+
+// Iterators และ Generators
+
+// ประโยคแบบ for..of
+// การทำซ้ำกับ ลิสต์ของค่าในออปเจ็คต์
+let arrayOfAnyType = [1, "string", false];
+for (const val of arrayOfAnyType) {
+    console.log(val); // 1, "string", false
+}
+
+let list = [4, 5, 6];
+for (const i of list) {
+   console.log(i); // 4, 5, 6
+}
+
+// ประโยคแบบ for..in
+// การทำซ้ำกับ ลิสต์ของคีย์ในออปเจ็คต์
+for (const i in list) {
+   console.log(i); // 0, 1, 2
+}
+
+
 ```
 
 ## อ่านเพิ่มเติมที่
