@@ -3,7 +3,7 @@ language: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Worajedt Sitthidumrong", "https://bitbucket.org/wrj"]
-filename: learntypescript.ts
+filename: learntypescript-th.ts
 lang: th-th
 ---
 
