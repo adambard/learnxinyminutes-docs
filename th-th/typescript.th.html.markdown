@@ -15,63 +15,59 @@ TypeScript เป็นภาษาที่มีเป้าหมายเพ
 [Playground] (http://www.typescriptlang.org/Playground) ซึ่งคุณจะเขียนโค้ดพร้อม autocomplete และเห็นเลยว่ามันจะแปลงมาเป็นผลลัพธ์แบบ JavaScript อย่างไร
 
 ```ts
-// There are 3 basic types in TypeScript
+// TypeScript มี data type พื้นฐาน 3 แบบ
 let isDone: boolean = false;
 let lines: number = 42;
 let name: string = "Anders";
 
-// But you can omit the type annotation if the variables are derived
-// from explicit literals
+// แต่เราก็สามารถละการบอกชนิดได้ โดยชนิดตัวแปรก็จะปรับชนิดของเขาจากข้อมูลที่กำหนดให้โดยตรง
 let isDone = false;
 let lines = 42;
 let name = "Anders";
 
-// When it's impossible to know, there is the "Any" type
+// ถ้าไม่รู้ ก็กำหนดเป็นชนิด "Any" ได้
 let notSure: any = 4;
 notSure = "maybe a string instead";
-notSure = false; // okay, definitely a boolean
+notSure = false; // โอเค ตอนนี้เป็น Boolean แน่ ๆ
 
-// Use const keyword for constants
+// ใช้ const สำหรับสร้าง ค่าคงที่
 const numLivesForCat = 9;
 numLivesForCat = 1; // Error
 
-// For collections, there are typed arrays and generic arrays
+// สำหรับ collections มี typed arrays และ generic arrays
+// ก็คือ อะเรย์บอกชนิด และ อะเรย์เจเนอริก ตามลำดับ
 let list: number[] = [1, 2, 3];
-// Alternatively, using the generic array type
+// ในอีกทางหนึ่ง สร้างเป็นอะเรย์ชนิด generic array
 let list: Array<number> = [1, 2, 3];
 
-// For enumerations:
+// และสำหรับ enumerations:
 enum Color { Red, Green, Blue };
 let c: Color = Color.Green;
 
-// Lastly, "void" is used in the special case of a function returning nothing
+// สุดท้าย, "void" ใช้เมื่อเป็นกรณีพิเศษที่ฟังก์ชันไม่ส่งค่ากลับ
 function bigHorribleAlert(): void {
   alert("I'm a little annoying box!");
 }
 
-// Functions are first class citizens, support the lambda "fat arrow" syntax and
-// use type inference
+// ฟังก์ชั่น (Functions) เป็นสิ่งที่มีความสำคัญมาเป็นอันดับหนึ่ง รองรับการใช้ "fat arrow" ในการสร้าง lambda function และ type inference
 
-// The following are equivalent, the same signature will be inferred by the
-// compiler, and same JavaScript will be emitted
+// สไตล์ต่อไปนี้มีค่าเท่ากันกับบรรทัดที่ยกตัวอย่างด้านล่าง เพราะคอมไพเลอร์จะมองเหมือนกัน และได้ JavaScript แบบเดียวกัน
 let f1 = function (i: number): number { return i * i; }
-// Return type inferred
+// อนุมานชนิดที่ส่งกลับ หรือ type inferred
 let f2 = function (i: number) { return i * i; }
-// "Fat arrow" syntax
+// เขียนแบบ "Fat arrow" แต่บอกชนิดส่งกลับ
 let f3 = (i: number): number => { return i * i; }
-// "Fat arrow" syntax with return type inferred
+// เขียนแบบ "Fat arrow" แต่อนุมานชนิดส่งกลับ
 let f4 = (i: number) => { return i * i; }
-// "Fat arrow" syntax with return type inferred, braceless means no return
-// keyword needed
+// เขียนแบบ "Fat arrow" อนุมานชนิดส่งกลับ พร้อมกับไม่มีวงเล็บ แปลว่าไม่ต้องมี return keyword ด้วย
 let f5 = (i: number) => i * i;
 
-// Interfaces are structural, anything that has the properties is compliant with
-// the interface
+// Interfaces นั้นเป็นเหมือนเราออกแบบโครงสร้าง คุณสมบัติต่าง ๆ ตอนเอาไปใช้ จะต้องเป็นไปตาม interface นั้น ๆ
 interface Person {
   name: string;
-  // Optional properties, marked with a "?"
+  // Optional properties กำหนดด้วย "?"
   age?: number;
-  // And of course functions
+  // และมี function พร้อมชนิดได้ใน interface
   move(): void;
 }
 
