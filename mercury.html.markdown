@@ -7,7 +7,7 @@ contributors:
 Mercury is a strict, pure functional/logic programming language, with
 influences from Prolog, ML, and Haskell.
 
-```mercury
+```prolog
 % Percent sign starts a one-line comment.
 
     % foo(Bar, Baz)
@@ -97,7 +97,7 @@ voter(P) :-
 
 Complete runnable example. File in 'types.m'; compile with 'mmc --make types'.
 
-```mercury
+```prolog
 :- module types.
 :- interface.
 :- import_module io.  % required for io.io types in...
