@@ -340,7 +340,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 (def my-atom (atom {}))
 
 ; Atualize o atom com um swap!.
-; swap! pega uma funçnao and chama ela com o valor atual do atom
+; swap! pega uma função e chama ela com o valor atual do atom
 ; como primeiro argumento, e qualquer argumento restante como o segundo
 (swap! my-atom assoc :a 1) ; Coloca o valor do átomo my-atom como o resultado de  (assoc {} :a 1)
 (swap! my-atom assoc :b 2) ; Coloca o valor do átomo my-atom como o resultado de (assoc {:a 1} :b 2)

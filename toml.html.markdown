@@ -32,7 +32,7 @@ boolean = true
 dateTime = 1979-05-27T07:32:00-08:00
 scientificNotation = 1e+12
 "key can be quoted" = true # Both " and ' are fine
-"key may contains" = "letters, numbers, underscores, and dashes"
+"key may contain" = "letters, numbers, underscores, and dashes"
 
 # A bare key must be non-empty, but an empty quoted key is allowed
 "" = "blank"     # VALID but discouraged
@@ -225,26 +225,26 @@ color = "gray"
 # sub-table will belong to the nearest table element above it.
 
 [[fruit]]
-  name = "apple"
+  name = "apple" # I am a property in fruit table/map
 
-  [fruit.Geometry]
+  [fruit.geometry]
     shape = "round"
-    note = "I am an fruit's property"
+    note = "I am a property in geometry table/map"
 
   [[fruit.color]]
     name = "red"
-    note = "I am an array's item in apple"
+    note = "I am an array item in apple fruit's table/map"
 
   [[fruit.color]]
     name = "green"
-    note = "I am in the same array than red"
+    note = "I am in the same array as red"
 
 [[fruit]]
   name = "banana"
 
   [[fruit.color]]
     name = "yellow"
-    note = "I am an array's item too but banana's one"
+    note = "I am an array item in banana fruit's table/map"
 ```
 
 In JSON land, this code will be:

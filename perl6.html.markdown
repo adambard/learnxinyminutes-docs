@@ -247,11 +247,12 @@ concat3(|@array); #=> a, b, c
 ## arguments. If you really need to, you can ask for a mutable container by
 ## using the `is rw` trait:
 sub mutate( $n is rw ) {
-    $n++;
+    $n++; # postfix ++ operator increments its argument but returns its old value
 }
 
 my $m = 42;
-mutate $m; #=> 43
+mutate $m; # the value is incremented but the old value is returned
+           #=> 42
 say $m;    #=> 43
 
 ## This works because we are passing the container $m to the `mutate` sub.
@@ -884,7 +885,7 @@ say_dyn();      #=> 1 100 We changed the value of $*dyn_scoped_2 in
 
 class Human {
     has Str $.name;           # `$.name` is immutable but with an accessor method.
-    has Str $.bcountry;       # Use `$!bplace` to modify it inside the class.
+    has Str $.bcountry;       # Use `$!bcountry` to modify it inside the class.
 	has Str $.ccountry is rw; # This attribute can be modified from outside.
 	has Int $!age = 0;        # A private attribute with default value.
 
@@ -910,12 +911,12 @@ class Human {
   	}
 };
 
-## Create a new instance of Human class with $.attrib set to 5.
+## Create a new instance of Human class.
 ## Note: you can't set private-attribute from here (more later on).
 my $person1 = Human.new(
 	name => "Jord",
-	bcountry = "Iceland",
-	ccountry => "Iceland"
+	bcountry = "Togo",
+	ccountry => "Togo"
 );
 
 say $person1.name;     #=> Jord

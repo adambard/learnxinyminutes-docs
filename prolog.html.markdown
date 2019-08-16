@@ -75,7 +75,7 @@ magicNumber(42).
 ?- 2 = 3.                            % False - equality test
 ?- X = 3.                            % X = 3 - assignment
 ?- X = 2, X = Y.                     % X = Y = 2 - two assignments
-                                     % Note Y is assigned to, even though it is
+                                     % Note Y is assigned too, even though it is
                                      % on the right hand side, because it is free
 ?- X = 3, X = 2.                     % False
                                      % First acts as assignment and binds X=3

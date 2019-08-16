@@ -203,8 +203,8 @@ p1.age = 25; // Error, p1.x is read-only
 
 var p2 = { name: "John", age: 60 };
 var p3: Person = p2; // Ok, read-only alias for p2
-p3.x = 35; // Error, p3.x is read-only
-p2.x = 45; // Ok, but also changes p3.x because of aliasing
+p3.age = 35; // Error, p3.age is read-only
+p2.age = 45; // Ok, but also changes p3.age because of aliasing
 
 class Car {
   readonly make: string;
@@ -223,6 +223,43 @@ moreNumbers[5] = 5; // Error, elements are read-only
 moreNumbers.push(5); // Error, no push method (because it mutates array)
 moreNumbers.length = 3; // Error, length is read-only
 numbers = moreNumbers; // Error, mutating methods are missing
+
+// Tagged Union Types for modelling state that can be in one of many shapes
+type State = 
+  | { type: "loading" }
+  | { type: "success", value: number }
+  | { type: "error", message: string };
+
+declare const state: State;
+if (state.type === "success") {
+  console.log(state.value);
+} else if (state.type === "error") {
+  console.error(state.message);
+}
+
+// Iterators and Generators
+
+// for..of statement
+// iterate over the list of values on the object being iterated
+let arrayOfAnyType = [1, "string", false];
+for (const val of arrayOfAnyType) {
+    console.log(val); // 1, "string", false
+}
+
+let list = [4, 5, 6];
+for (const i of list) {
+   console.log(i); // 4, 5, 6
+}
+
+// for..in statement
+// iterate over the list of keys on the object being iterated
+for (const i in list) {
+   console.log(i); // 0, 1, 2
+}
+
+
+
+
 ```
 
 ## Further Reading

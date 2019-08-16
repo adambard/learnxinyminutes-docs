@@ -85,7 +85,7 @@ Using `IF`, we can define the basic boolean logic operators:
 
 `a OR b` is equivalent to: `λab.IF a T b`
 
-`a NOT b` is equivalent to: `λa.IF a F T`
+`NOT a` is equivalent to: `λa.IF a F T`
 
 *Note: `IF a b c` is essentially saying: `IF((a b) c)`*
 
@@ -111,7 +111,7 @@ we use the successor function `S(n) = n + 1` which is:
 
 Using successor, we can define add:
 
-`ADD = λab.(a S)n`
+`ADD = λab.(a S)b`
 
 **Challenge:** try defining your own multiplication function!
 
@@ -139,6 +139,7 @@ Take the church number 2 for example:
 `2 = λf.λx.f(f x)`
 
 For the inner part `λx.f(f x)`:
+
 ```
   λx.f(f x)
 = S (λx.f) (λx.(f x))          (case 3)
@@ -147,6 +148,7 @@ For the inner part `λx.f(f x)`:
 ```
 
 So:
+
 ```
   2
 = λf.λx.f(f x)
@@ -156,6 +158,7 @@ So:
 ```
 
 For the first argument `λf.(S (K f))`:
+
 ```
   λf.(S (K f))
 = S (λf.S) (λf.(K f))       (case 3)
@@ -164,6 +167,7 @@ For the first argument `λf.(S (K f))`:
 ```
 
 For the second argument `λf.(S (K f) I)`:
+
 ```
   λf.(S (K f) I)
 = λf.((S (K f)) I)
@@ -174,6 +178,7 @@ For the second argument `λf.(S (K f) I)`:
 ```
 
 Merging them up:
+
 ```
   2
 = S (λf.(S (K f))) (λf.(S (K f) I))

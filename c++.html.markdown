@@ -72,7 +72,7 @@ void func(); // function which may accept any number of arguments
 int* ip = nullptr;
 
 // C standard headers are available in C++.
-// C headers end in .h, while 
+// C headers end in .h, while
 // C++ headers are prefixed with "c" and have no ".h" suffix.
 
 // The C++ standard version:
@@ -553,10 +553,14 @@ Point Point::operator+(const Point& rhs) const
     return Point(x + rhs.x, y + rhs.y);
 }
 
+// It's good practice to return a reference to the leftmost variable of
+// an assignment. `(a += b) == c` will work this way.
 Point& Point::operator+=(const Point& rhs)
 {
     x += rhs.x;
     y += rhs.y;
+    
+    // `this` is a pointer to the object, on which a method is called.
     return *this;
 }
 
@@ -657,7 +661,7 @@ printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
 
 // The standard library provides a few exception types
 // (see http://en.cppreference.com/w/cpp/error/exception)
-// but any type can be thrown an as exception
+// but any type can be thrown as an exception
 #include <exception>
 #include <stdexcept>
 
@@ -757,7 +761,7 @@ failure:
 // things are a little cleaner, but still sub-optimal.
 void doSomethingWithAFile(const char* filename)
 {
-    FILE* fh = fopen(filename, "r"); // Open the file in read mode
+    FILE* fh = fopen(filename, "r"); // Open the file in shared_ptrread mode
     if (fh == nullptr)
         throw std::runtime_error("Could not open the file.");
 
@@ -808,6 +812,57 @@ void doSomethingWithAFile(const std::string& filename)
 //   vector (i.e. self-resizing array), hash maps, and so on
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
+
+
+/////////////////////
+// Smart Pointer
+/////////////////////
+
+// Generally a smart pointer is a class, which wraps a "raw pointer" (usage of "new"
+// respectively malloc/calloc in C). The goal is to be able to
+// manage the lifetime of the object being point to without explicitly deleting
+// the object. The term itself simply describes a set of pointers with the
+// mentioned abstraction.
+// Basically smart pointers should preferred over raw pointers, to prevent
+// risky memory leaks, which happens if you forget to delete the object.
+
+// Usage of a raw pointer:
+Dog* ptr = new Dog();
+ptr->bark();
+delete ptr;
+
+// With the usage of smart pointers you dont have to worry about the deletion
+// of a object anymore.
+// A smart pointer describes a policy, to count the references on the
+// pointer. As matter of fact the objects gets destroyed when the last
+// reference on the object gets destroyed.
+
+// Usage of "std::shared_ptr":
+void foo()
+{
+// Its not longer necessary to delete the Dog.
+std::shared_ptr<Dog> doggo(new Dog());
+doggo->bark();
+}
+
+// Beware of possible circular references!!!
+// There will be always a reference, so it will be never destroyed!
+std::shared_ptr<Dog> doggo_one (new Dog());
+std::shared_ptr<Dog> doggo_two (new Dog());
+doggo_one = doggo_two; // p1 references p2
+doggo_two = doggo_one; // p2 references p1
+
+// As mentioned before there is a set of smart pointers. The way you have to
+// use it, is always the same.
+// This leads us to question, when to use which one?
+// std::unique_ptr - use it when you just want to hold one reference on
+// the same object.
+// std::shared_ptr - use it when you want to hold multiple references on the
+// same object and want to make sure that it´s de-allocated
+// when all refences are gone.
+// std::weak_ptr - use it when you want to hold multiple references from
+// different places for references for which it´s no problem
+// tp de-allocate.
 
 
 /////////////////////
@@ -873,7 +928,7 @@ cout << ST.size();  // will print the size of set ST
 // Output: 0
 
 // NOTE: for duplicate elements we can use multiset
-// NOTE: For hash sets, use unordered_set. They are more efficient but 
+// NOTE: For hash sets, use unordered_set. They are more efficient but
 // do not preserve order. unordered_set is available since C++11
 
 // Map
@@ -902,7 +957,7 @@ cout << it->second;
 
 // Output: 26
 
-// NOTE: For hash maps, use unordered_map. They are more efficient but do 
+// NOTE: For hash maps, use unordered_map. They are more efficient but do
 // not preserve order. unordered_map is available since C++11.
 
 // Containers with object keys of non-primitive values (custom classes) require

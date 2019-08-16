@@ -627,7 +627,7 @@ i.age  # => raises an AttributeError
 
 # 你可以引入模組來做使用
 import math
-print math.sqrt(16)  # => 4
+print math.sqrt(16)  # => 4.0
                      # math.sqrt()為取根號
 
 # 你可以只從模組取出特定幾個函式

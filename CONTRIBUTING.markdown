@@ -52,6 +52,8 @@ languages:
 
 Other fields:
 
+- **category**: The category of the article. So far, can be one of *language*,
+  *tool* or *Algorithms & Data Structures*. Defaults to *language* if omitted.
 - **filename**: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
     + For non-English articles, *filename* should   have a language-specific 

@@ -46,6 +46,13 @@ div(5, 2)  # => 2    # for a truncated result, use div
 # Enforce precedence with parentheses
 (1 + 3) * 2  # => 8
 
+# Julia (unlike Python for instance) has integer under/overflow
+10^19      # => -8446744073709551616
+# use bigint or floating point to avoid this
+big(10)^19 # => 10000000000000000000
+1e19       # => 1.0e19
+10.0^19    # => 1.0e19
+
 # Bitwise Operators
 ~2         # => -3 # bitwise not
 3 & 5      # => 1  # bitwise and
@@ -93,21 +100,22 @@ ascii("This is a string")[1]
 # Julia indexes from 1
 # Otherwise, iterating over strings is recommended (map, for loops, etc).
 
+# String can be compared lexicographically
+"good" > "bye" # => true
+"good" == "good" # => true
+"1 + 2 = 3" == "1 + 2 = $(1 + 2)" # => true
+
 # $ can be used for string interpolation:
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
 # You can put any Julia expression inside the parentheses.
+
+# Printing is easy
+println("I'm Julia. Nice to meet you!") # => I'm Julia. Nice to meet you!
 
 # Another way to format strings is the printf macro from the stdlib Printf.
 using Printf
 @printf "%d is less than %f\n" 4.5 5.3  # => 5 is less than 5.300000
 
-# Printing is easy
-println("I'm Julia. Nice to meet you!") # => I'm Julia. Nice to meet you!
-
-# String can be compared lexicographically
-"good" > "bye" # => true
-"good" == "good" # => true
-"1 + 2 = 3" == "1 + 2 = $(1 + 2)" # => true
 
 ####################################################
 ## 2. Variables and Collections

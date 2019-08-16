@@ -41,10 +41,10 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 10 * 2  # => 20
 35 / 5  # => 7.0
 
-# Result of integer division truncated down both for positive and negative.
+# Integer division rounds down for both positive and negative numbers.
 5 // 3       # => 1
-5.0 // 3.0   # => 1.0 # works on floats too
 -5 // 3      # => -2
+5.0 // 3.0   # => 1.0 # works on floats too
 -5.0 // 3.0  # => -2.0
 
 # The result of division is always a float
@@ -155,7 +155,7 @@ len("This is a string")  # => 16
 name = "Reiko"
 f"She said her name is {name}." # => "She said her name is Reiko"
 # You can basically put any Python statement inside the braces and it will be output in the string.
-f"{name} is {len(name)} characters long."
+f"{name} is {len(name)} characters long." # => "Reiko is 5 characters long."
 
 
 # None is an object
@@ -462,8 +462,19 @@ prints:
 """
 for i in range(4, 8, 2):
     print(i)
-"""
 
+"""
+To loop over a list, and retrieve both the index and the value of each item in the list
+prints:
+    0 dog
+    1 cat
+    2 mouse
+"""
+list = ["dog", "cat", "mouse"]
+for i, value in enumerate(list):
+    print(i, value)
+
+"""
 While loops go until a condition is no longer met.
 prints:
     0

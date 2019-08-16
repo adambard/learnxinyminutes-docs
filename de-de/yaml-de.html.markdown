@@ -111,7 +111,7 @@ python_komplexe_Zahlen: !!python/komplex 1+2j
 # EXTRA YAML TYPEN #
 ####################
 
-# Strings and Zahlen sind nicht die einzigen Skalare, welche YAML versteht.
+# Strings und Zahlen sind nicht die einzigen Skalare, welche YAML versteht.
 # ISO-formatierte Datumsangaben and Zeiangaben können ebenso geparsed werden.
 DatumZeit: 2001-12-15T02:59:43.1Z
 DatumZeit_mit_Leerzeichen: 2001-12-14 21:59:43.10 -5

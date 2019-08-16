@@ -449,7 +449,7 @@ Om.exclama() #=> "*Aaaaaah*"
 
 # Pentru a folosi un modul, trebuie importat 
 import math
-print math.sqrt(16) #=> 4
+print math.sqrt(16) #=> 4.0
 
 # Putem importa doar anumite funcţii dintr-un modul 
 from math import ceil, floor

@@ -510,6 +510,7 @@ for (var x in myObj){
 // Hello world!
 // 43
 // [Function: myFunc]
+// true
 
 // To only consider properties attached to the object itself
 // and not its prototypes, use the `hasOwnProperty()` check.

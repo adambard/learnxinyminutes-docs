@@ -572,7 +572,7 @@ Clovek.odkaslej_si()  # => "*ehm*"
 
 # Lze importovat moduly
 import math
-print(math.sqrt(16.0))  # => 4
+print(math.sqrt(16.0))  # => 4.0
 
 # Lze také importovat pouze vybrané funkce z modulu
 from math import ceil, floor

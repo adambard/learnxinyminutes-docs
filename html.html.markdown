@@ -5,6 +5,7 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Robert Steed", "https://github.com/robochat"]
+    - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 ---
 
 HTML stands for HyperText Markup Language.
@@ -167,7 +168,7 @@ useful tips.
 
 HTML is written in files ending with `.html` or `.htm`. The mime type is
 `text/html`.
-
+**HTML is NOT a programming language**
 ## To Learn More
 
 * [wikipedia](https://en.wikipedia.org/wiki/HTML)

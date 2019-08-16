@@ -139,7 +139,7 @@ Module Module1
 
     'Five
     Private Sub WorkingCalculator()
-        Console.Title = "The Working Calculator| Learn X in Y Minutes"
+        Console.Title = "The Working Calculator | Learn X in Y Minutes"
         'However if you'd like the calculator to subtract, divide, multiple and
         'add up.
         'Copy and paste the above again.

@@ -441,7 +441,7 @@ Human.grunt() #=> "*grunt*"
 
 # 다음과 같이 모듈을 임포트할 수 있습니다.
 import math
-print math.sqrt(16) #=> 4
+print math.sqrt(16) #=> 4.0
 
 # 모듈의 특정 함수를 호출할 수 있습니다.
 from math import ceil, floor

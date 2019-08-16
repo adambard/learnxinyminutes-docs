@@ -6,11 +6,25 @@ contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]
   - ["Luke Holder", "http://twitter.com/lukeholder"]
+  - ["Tristan Hume", "http://thume.ca/"]
+  - ["Nick LaMuro", "https://github.com/NickLaMuro"]
+  - ["Marcos Brizeno", "http://www.about.me/marcosbrizeno"]
+  - ["Ariel Krakowski", "http://www.learneroo.com"]
+  - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+  - ["Levi Bostian", "https://github.com/levibostian"]
+  - ["Rahil Momin", "https://github.com/iamrahil"]
+  - ["Gabriel Halley", "https://github.com/ghalley"]
+  - ["Persa Zula", "http://persazula.com"]
+  - ["Jake Faris", "https://github.com/farisj"]
+  - ["Corey Ward", "https://github.com/coreyward"]
+  - ["Jannik Siebert", "https://github.com/janniks"]
+  - ["Keith Miyake", "https://github.com/kaymmm"]
   - ["lidashuang", "https://github.com/lidashuang"]
   - ["ftwbzhao", "https://github.com/ftwbzhao"]
 translators:
   - ["Lin Xiangyu", "https://github.com/oa414"]
   - ["Jiang Haiyun", "https://github.com/haiiiiiyun"]
+  - ["woclass", "https://github.com/inkydragon"]
 ---
 
 ```ruby
@@ -18,26 +32,27 @@ translators:
 
 =begin
 这是多行注释
-没人用这个
-你也不该用
 =end
 
-# 首先，也是最重要的，所有东西都是对象
+# 在 Ruby 中，（几乎）所有东西都是对象
 
 # 数字是对象
-
-3.class #=> Fixnum
-
+3.class #=> Integer
 3.to_s #=> "3"
 
+# 字符串是对象
+"Hello".class #=> String
 
-# 一些基本的算术符号
-1 + 1 #=> 2
-8 - 1 #=> 7
-10 * 2 #=> 20
-35 / 5 #=> 7
-2**5 #=> 32
-5 % 3 #=> 2
+# 甚至方法也是对象
+"Hello".method(:class).class #=> Method
+
+# 一些基本的算术操作
+1 + 1   #=> 2
+8 - 1   #=> 7
+10 * 2  #=> 20
+35 / 5  #=> 7
+2 ** 5  #=> 32
+5 % 3   #=> 2
 
 # 位运算符
 3 & 5 #=> 1
@@ -48,6 +63,7 @@ translators:
 # 实际上是调用对象的方法
 1.+(3) #=> 4
 10.* 5 #=> 50 
+100.methods.include?(:/) #=> true
 
 # 特殊的值也是对象
 nil # 相当于其它语言中的 null
@@ -66,11 +82,11 @@ false.class #=> FalseClass
 1 != 1 #=> false
 2 != 1 #=> true
 
-# 除了false自己，nil是唯一的另一个值为false的对象
-
-!nil   #=> true
-!false #=> true
-!0     #=> false
+# 除了 false 自己，nil 是唯一的另一个值为 false 的对象
+!!nil   #=> false
+!!false #=> false
+!!0     #=> true
+!!""    #=> true
 
 # 更多比较
 1 < 10 #=> true
@@ -90,11 +106,11 @@ true || false #=> true
 !true #=> false
 
 # 也有优先级更低的逻辑运算符
-# 它们用于控制流结构中，用来串接语句，直到返回true或false。
+# 它们用于控制流结构中，用来串接语句，直到返回 true 或 false。
 
-# `do_something_else` 只当 `do_something` 返回true时才会被调用
+# `do_something_else` 只当 `do_something` 返回 true 时才会被调用
 do_something() and do_something_else()
-# `log_error` 只当 `do_something` 返回false时才会被调用
+# `log_error` 只当 `do_something` 返回 false 时才会被调用
 do_something() or log_error()
 
 
@@ -114,6 +130,7 @@ placeholder = "use string interpolation"
 'hello ' + 'world'  #=> "hello world"
 'hello ' + 3 #=> TypeError: can't convert Fixnum into String
 'hello ' + 3.to_s #=> "hello 3"
+"hello #{3}" #=> "hello 3"
 
 # 合并字符串及其运算符
 'hello ' * 3 #=> "hello hello hello "
@@ -141,7 +158,7 @@ x = y = 10 #=> 10
 x #=> 10
 y #=> 10
 
-# 按照惯例，使用类似snake_case风格的变量名
+# 按照惯例，使用类似 snake_case 风格的变量名
 snake_case = true
 
 # 使用有意义的变量名
@@ -174,6 +191,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # 数组可以被索引
 # 从前面开始
 array[0] #=> 1
+array.first #=> 1
 array[12] #=> nil
 
 # 像运算符一样，[var] 形式的访问
@@ -189,12 +207,12 @@ array.last #=> 5
 # 同时指定开始的位置和长度
 array[2, 3] #=> [3, 4, 5]
 
+# 或者指定一个区间
+array[1..3] #=> [2, 3, 4]
+
 # 将数组逆序
 a=[1,2,3]
 a.reverse! #=> [3,2,1]
-
-# 或者指定一个区间
-array[1..3] #=> [2, 3, 4]
 
 # 像这样往数组增加一个元素
 array << 6 #=> [1, 2, 3, 4, 5, 6]
@@ -217,14 +235,18 @@ hash['number'] #=> 5
 # 查询一个不存在的键将会返回nil
 hash['nothing here'] #=> nil
 
-# 从Ruby 1.9开始，用符号作为键的时候有特别的记号表示:
+# 从 Ruby 1.9 开始，用符号作为键的时候有特别的记号表示:
 
 new_hash = { defcon: 3, action: true }
 
 new_hash.keys #=> [:defcon, :action]
 
+# 检查键值是否存在
+hash.key?(:defcon) #=> true
+hash.value?(3) #=> true
+
 # 小贴士：数组和哈希表都是可枚举的
-# 它们共享一些有用的方法，比如each,map,count等等
+# 它们共享一些有用的方法，比如 each, map, count 等等
 
 # 控制流
 
@@ -236,6 +258,8 @@ else
  "else, also optional"
 end
 
+# 循环
+
 for counter in 1..5
   puts "iteration #{counter}"
 end
@@ -246,14 +270,14 @@ end
 #=> iteration 5
 
 
-# 但是，没有人用for循环。
-# 你应该使用"each"方法，然后再传给它一个块。
-# 所谓块就是可以传给像"each"这样的方法的代码段。
-# 它类似于其它语言中的lambdas, 匿名函数或闭包。
+# 但是，没有人用 for 循环。
+# 你应该使用 "each" 方法，然后再传给它一个块。
+# 所谓块就是可以传给像 "each" 这样的方法的代码段。
+# 它类似于其它语言中的 lambdas, 匿名函数或闭包。
 #
-# 区间上的"each"方法会对区间中的每个元素运行一次块代码。
-# 我们将counter作为一个参数传给了块。
-# 调用带有块的"each"方法看起来如下：
+# 区间上的 "each" 方法会对区间中的每个元素运行一次块代码。
+# 我们将 counter 作为一个参数传给了块。
+# 调用带有块的 "each" 方法看起来如下：
 
 (1..5).each do |counter|
   puts "iteration #{counter}"
@@ -275,7 +299,7 @@ hash.each do |key, value|
   puts "#{key} is #{value}"
 end
 
-# 如果你还需要索引值，可以使用"each_with_index"，并且定义
+# 如果你还需要索引值，可以使用 "each_with_index"，并且定义
 # 一个索引变量
 array.each_with_index do |element, index|
   puts "#{element} is number #{index} in the array"
@@ -293,7 +317,7 @@ end
 #=> iteration 5
 
 # Ruby 中还有很多有用的循环遍历函数，
-# 如"map","reduce","inject"等等。
+# 如 "map", "reduce", "inject" 等等。
 # 以map为例，它会遍历数组，并根据你在
 # 块中定义的逻辑对它进行处理，然后返回
 # 一个全新的数组。
@@ -388,18 +412,25 @@ surround { puts 'hello world' }
 # {
 # hello world
 # }
+# => nil
 
 # 可以向函数传递一个块
 # "&"标记传递的块是一个引用
 def guests(&block)
-  block.call 'some_argument'
+  block.class #=> Proc
+  block.call(4)
 end
+
+guests { |n| "You have #{n} guests." }
+# => "You have 4 guests."
 
 # 可以传递多个参数，这些参数会转成一个数组，
 # 这也是使用星号符 ("*") 的原因：
 def guests(*array)
   array.each { |guest| puts guest }
 end
+
+# 结构
 
 # 如果函数返回一个数组，在赋值时可以进行拆分：
 def foods
@@ -409,21 +440,42 @@ breakfast, lunch, dinner = foods
 breakfast #=> 'pancake'
 dinner #=> 'quesadilla'
 
-# 按照惯例，所有返回布尔值的方法都以?结尾
+# 有些情况下，你会想使用解构操作符 `*` 来解构数组
+ranked_competitors = ["John", "Sally", "Dingus", "Moe", "Marcy"]
+
+def best(first, second, third)
+  puts "Winners are #{first}, #{second}, and #{third}."
+end
+
+best *ranked_competitors.first(3) #=> Winners are John, Sally, and Dingus.
+
+# 结构操作符也可放在参数里面
+def best(first, second, third, *others)
+  puts "Winners are #{first}, #{second}, and #{third}."
+  puts "There were #{others.count} other participants."
+end
+
+best *ranked_competitors 
+#=> Winners are John, Sally, and Dingus.
+#=> There were 2 other participants.
+
+# 按照惯例，所有返回布尔值的方法都以 ? 结尾
 5.even? # false
 5.odd? # true
 
-# 如果方法名末尾有!，表示会做一些破坏性的操作，比如修改调用者自身。
-# 很多方法都会有一个!的版本来进行修改，和一个非!的版本
-# 只用来返回更新了的结果
+# 如果方法名末尾有感叹号 !，表示会做一些破坏性的操作，比如修改调用者自身。
+# 很多方法都会有一个 ! 的版本来进行修改，
+# 和一个只返回更新结果的非 ! 版本
 company_name = "Dunder Mifflin"
 company_name.upcase #=> "DUNDER MIFFLIN"
 company_name #=> "Dunder Mifflin"
-company_name.upcase! # we're mutating company_name this time!
+# 这次我们修改了 company_name
+company_name.upcase! #=> "DUNDER MIFFLIN"
 company_name #=> "DUNDER MIFFLIN"
 
+# 类
 
-# 用class关键字定义一个类
+# 用 class 关键字定义一个类
 class Human
 
   # 一个类变量，它被这个类的所有实例变量共享
@@ -431,30 +483,30 @@ class Human
   
   # 基本构造函数
   def initialize(name, age = 0)
-    # 将参数值赋给实例变量"name"
+    # 将参数值赋给实例变量 "name"
     @name = name
-    # 如果没有给出age,那么会采用参数列表中的默认值
+    # 如果没有给出 age,那么会采用参数列表中的默认值
     @age = age
   end
   
-  # 基本的setter方法
+  # 基本的 setter 方法
   def name=(name)
     @name = name
   end
   
-  # 基本地getter方法
+  # 基本地 getter 方法
   def name
     @name
   end
   
-  # 以上的功能也可以用下面的attr_accessor来封装
+  # 以上的功能也可以用下面的 attr_accessor 来封装
   attr_accessor :name
   
-  # Getter/setter方法也可以像这样单独创建
+  # Getter/setter 方法也可以像这样单独创建
   attr_reader :name
   attr_writer :name
   
-  # 类方法通过使用self与实例方法区别开来。
+  # 类方法通过使用 self 与实例方法区别开来。
   # 它只能通过类来调用，不能通过实例调用。
   def self.say(msg)
     puts "#{msg}"
@@ -468,7 +520,6 @@ end
 
 # 初始化一个类
 jim = Human.new("Jim Halpert")
-
 dwight = Human.new("Dwight K. Schrute")
 
 # 让我们来调用一些方法
@@ -483,15 +534,15 @@ dwight.name #=> "Dwight K. Schrute"
 Human.say('Hi') #=> "Hi"
 
 # 变量的作用域由它们的名字格式定义
-# 以$开头的变量具有全局域
+# 以 $ 开头的变量具有全局域
 $var = "I'm a global var"
 defined? $var #=> "global-variable"
 
-# 以@开头的变量具有实例作用域
+# 以 @ 开头的变量具有实例作用域
 @var = "I'm an instance var"
 defined? @var #=> "instance-variable"
 
-# 以@@开头的变量具有类作用域
+# 以 @@ 开头的变量具有类作用域
 @@var = "I'm a class var"
 defined? @@var #=> "class variable"
 
@@ -568,7 +619,6 @@ Book.foo       # => 'foo'
 Book.new.foo   # => NoMethodError: undefined method `foo'
 
 # 当包含或扩展一个模块时，相应的回调代码会被执行。
-
 module ConcernExample
   def self.included(base)
     base.extend(ClassMethods)

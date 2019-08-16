@@ -49,7 +49,7 @@ environments, it may be noticable amount.
 'on-demand' - there is no built-in mechanism that would warn you about some
 change automatically (this can be achieved with reasonable effort)
 * Official GUI - Ansible Tower - is great but expensive.
-* There is no 'small enterprice' payment plan, however Ansible AWX is the free
+* There is no 'small enterprise' payment plan, however Ansible AWX is the free
 open source version we were all waiting for.
 
 #### Neutral
