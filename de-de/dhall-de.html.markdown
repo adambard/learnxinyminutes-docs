@@ -1,74 +1,81 @@
 ---
 language: Dhall
-filename: learndhall.dhall
 contributors:
     - ["Gabriel Gonzalez", "http://www.haskellforall.com/"]
+translators:
+    - ["Profpatsch", "http://profpatsch.de"]
+filename: learndhall-de.py
+lang: de-de
 ---
 
-Dhall is a programmable configuration language that provides a non-repetitive
-alternative to YAML.
+Dhall ist eine programmierbare Konfigurationssprache und bietet eine
+nicht-repetetive Alternative zu YAML.
 
-You can think of Dhall as: JSON + functions + types + imports
+Man kann Dhall sehen als: JSON + Funktionen + Typen + Importsystem
 
-Note that while Dhall is programmable, Dhall is not Turing-complete.  Many
-of Dhall's features take advantage of this restriction to provide stronger
-safety guarantees and more powerful tooling.
+Obwohl Dhall programmierbar ist, ist die Sprache nicht
+turingvollständig. Viele von Dhalls Features benutzen diese
+Einschränkung, um stärkere Sicherheitsgarantien zu bieten und besseres
+Tooling zu ermöglichen.
 
 ```haskell
--- Single-line comment
+-- einzeiliger Kommentar
 
-{- Multi-line comment
+{- mehrzeiliger Kommentar
 
-   Unicode is fine 🙂
+   Unicode funktioniert 🙂
 
-   This file is a valid Dhall expression that evaluates to a large record
-   collecting the results of each step.
+   Diese Datei ist eine valide Dhall-Expression und evaluiert zu einem
+   großen Record, welcher die Ergebnisse jedes Schritts beinhaltet.
 
-   You can view the results by interpreting the file:
+   Das Ergebnis kann angezeigt werden, indem man die Datei evaluiert:
 
        $ dhall --file learndhall.dhall
 
-   {- Comments can be nested -}
+   {- Kommentare können verschachtelt sein -}
 -}
 
-let greeting = "Hello, world!"
+let greeting = "Hallo, Welt!"
 
 let fruits = "🍋🍓🍍🍉🍌"
 
-let interpolation = "Enjoy some delicious fruit: ${fruits}"
+let interpolation = "Ein paar leckere Früchte: ${fruits}"
 
-let multilineText {- Inline comments work, too -} =
+let multilineText {- Inline-Kommentare funktionieren ebenfalls -} =
         ''
-        Leading whitespace is stripped from multi-line text literals.
+        In Multiline-Text-Literals wird Whitespace am Anfang der Zeile
+        entfernt.
 
-        That means you can freely indent or dedent a text literal without
-        changing the result.
+        Das bedeutet Text kann frei eingerückt oder ausgerückt werden,
+        ohne dass sich der Inhalt des Strings ändert.
 
-            Relative indentation within the literal is still preserved.
-
-        Other than that, the text literal is preserved verbatim, similar to a
-        "literal" YAML multiline string.
+            Relative Einrückungen bleiben erhalten.
+ 
+        Ansonsten wird das Text-Literal verbatim erhalten, ähnlich
+        zu “literal”-Multiline-Strings in YAML.
         ''
 
 let bool = True
 
--- Type annotations on bindings are optional, but helpful, so we'll use them
+-- Typannotationen für Bindings sind optional, aber hilfreich, also
+-- benutzen wir sie hier.
 let annotation : Bool = True
 
 let renderedBool : Text = if bool then "True" else "False"
 
--- Natural numbers are non-negative and are unsigned
+-- Natürliche Zahlen sind nicht-negativ und vorzeichenlos.
 let naturalNumber : Natural = 42
 
--- Integers may be negative, but require an explicit sign, even if positive
+-- Integer können negativ sein, brauchen aber ein explizites Vorzeichen.
 let positiveInteger : Integer = +1
 
 let negativeInteger : Integer = -12
 
 let pi : Double = 3.14159265359
 
-{- You can use a wider character range for identifiers (such as quotation
-   marks and whitespace) if you quote them using backticks
+{- Identifier dürfen eine große Anzahl an verschiedenen Zeichen
+   beinhalten (wie z.B. Anführungszeichen oder Whitespace), wenn man
+   sie mit Backticks umschließt.
 -}
 let `Avogadro's Number` : Double = 6.0221409e+23
 
@@ -76,10 +83,10 @@ let origin : { x : Double, y : Double } = { x = 0.0, y = 0.0 }
 
 let somePrimes : List Natural = [ 2, 3, 5, 7, 11 ]
 
-{- A schema is the same thing as a type
+{- Ein Schema ist das gleiche wie ein Typ.
 
-   Types begin with an uppercase letter by convention, but this convention is
-   not enforced
+   Typnamen beginnen konventionell mit einem Großbuchstaben, was
+   jedoch nicht erzwungen wird.
 -}
 let Profile : Type
         = { person :
@@ -93,22 +100,22 @@ let Profile : Type
               }
           }
 
-let john : Profile =
+let bernd : Profile =
         { person =
-            { name = "John Doe"
+            { name = "Bernd Lauert"
             , age  = 67
             }
         , address =
-            { country = "United States"
-            , state   = "Pennsylvania"
-            , city    = "Philadelphia"
+            { country = "Deutschland"
+            , state   = "Bayern"
+            , city    = "Augsburg"
             }
         }
 
-let philadelphia : Text = john.address.city
+let augsburg : Text = bernd.address.city
 
-{- Enum alternatives also begin with an uppercase letter by convention.  This
-   convention is not enforced
+{- Enum-Alternativen beginnen konventionell auch mit einem
+   Großbuchstaben. Das wird ebenfalls nicht erzwungen.
 -}
 let DNA : Type = < Adenine | Cytosine | Guanine | Thymine >
 
@@ -121,7 +128,8 @@ let compactDNASequence : List DNA =
         let t = DNA.Thymine
         in  [ c, t, t, a, t, c, g, g, c ]
 
--- You can transform enums by providing a record with one field per alternative
+-- Enums werden transformiert, indem man einen Record mit einem Feld
+-- pro Alternative angibt.
 let theLetterG : Text =
             merge
             { Adenine  = "A"
@@ -141,28 +149,30 @@ let points : List { x : Double, y : Double } =
         , { x = 8.2, y = -5.5 }
         ]
 
-{- `Natural -> List Natural` is the type of a function whose input type is a
-   `Natural` and whose output type is a `List Natural`
+{- `Natural -> List Natural` ist der Funktionstyp mit Eingabetyp
+   `Natural` und Ausgabetyp `List Natural`.
 
-   All functions in Dhall are anonymous functions (a.k.a. "lambdas"),
-   which you can optionally give a name
+   Alle Funktionen in Dhall sind Anonyme Funktionen (aka. „Lambdas“),
+   denen man optional einen Namen geben kann.
 
-   For example, the following function is equivalent to this Python code:
+   Die folgende Funktion beispielsweise ist äquivalent zu diesem
+   Python Code:
 
        lambda n : [ n, n + 1 ]
 
-   ... and this JavaScript code:
+   ... und diesem Javascript Code:
 
        function (n) { return [ n, n + 1 ]; }
 -}
 let exampleFunction : Natural -> List Natural =
         \(n : Natural) -> [ n, n + 1 ]
 
--- Dhall also supports Unicode syntax, but this tutorial will stick to ASCII
+-- Dhall unterstützt auch Unicode-Syntax, aber dieses Tutorial nutzt
+-- die ASCII-Syntax.
 let unicodeFunction : Natural → List Natural =
         λ(n : Natural) → [ n, n + 1 ]
 
--- You don't need to parenthesize function arguments
+-- Funktionsargumente brauchen keine Klammern.
 let exampleFunctionApplication : List Natural =
         exampleFunction 2
 
@@ -172,17 +182,17 @@ let functionOfMultipleArguments : Natural -> Natural -> List Natural =
 let functionAppliedToMultipleArguments : List Natural =
         functionOfMultipleArguments 2 3
 
-{- Same as `exampleFunction` except we gave the function's input type a
-   name: "n"
+{- Wie `exampleFunction`, aber wir geben dem Eingabetypen
+   einen Namen, `n`.
 -}
 let namedArgumentType : forall (n : Natural) -> List Natural =
         \(n : Natural) -> [ n, n + 1 ]
 
-{- If you name a function's input type, you can use that name later within the
-   same type
+{- Bekommt der Eingabetyp einen Namen, kann man ihn weiter hinten in
+   der gleichen Typdefinition wiederverwenden.
 
-   This lets you write a function that works for more than one type of input
-   (a.k.a. a "polymorphic" function)
+   Das ermöglicht Funktionen, die mit mehr als einem Eingabetypen
+   arbeiten können (aka. „polymorphe“ Funktionen).
 -}
 let duplicate : forall (a : Type) -> a -> List a =
         \(a : Type) -> \(x : a) -> [ x, x ] 
@@ -193,7 +203,8 @@ let duplicatedNumber : List Natural =
 let duplicatedBool : List Bool =
         duplicate Bool False
 
-{- The language also has some built-in polymorphic functions, such as:
+{- Die Sprache hat auch eine handvoll eingebauter polymorpher
+   Funktionen, wie zum Beispiel:
 
        List/head : forall (a : Type) -> List a -> Optional a
 -}
@@ -205,18 +216,18 @@ let functionOfARecord : { x : Natural, y : Natural } -> List Natural =
 let functionAppliedToARecord : List Natural =
         functionOfARecord { x = 2, y = 5 }
 
-{- All type conversions are explicit
+{- Alle Typkonversionen sind explizit.
 
-   `Natural/show` is a built-in function of the following type:
+   `Natural/show` ist eine eingebaute Funktion mit dem Typ:
 
        Natural/show : Natural -> Text
 
-   ... that converts `Natural` numbers to their `Text` representation
+   ... welche `Natural`s in ihre `Text`-Repräsentation konvertiert.
 -}
 let typeConversion : Natural -> Text =
-        \(age : Natural) -> "I am ${Natural/show age} years old!"
+        \(age : Natural) -> "Ich bin ${Natural/show age} Jahre alt!"
 
--- A "template" is the same thing as a function whose output type is `Text`
+-- Ein „Template“ ist einfach eine Funktion mit Ausgabetyp `Text`.
 let mitLicense : { year : Natural, copyrightHolder : Text } -> Text =
         \(args : { year : Natural, copyrightHolder : Text }) ->
 ''
@@ -241,21 +252,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ''
 
--- Template instantiation is the same thing as function application
+-- Template-Instanziierung ist das gleiche wie Funktionsanwendung.
 let templatedLicense : Text =
         mitLicense { year = 2019, copyrightHolder = "Jane Smith" }
 
-{- You can import expressions by URL
+{- Expressions können via URL importiert werden.
 
-   Also, like Bash, you can import code from your local filesystem (not shown)
+   Ähnlich wie in Bash kann man Code aus dem lokalen Dateisystem
+   importieren (wird nicht gezeigt).
 
-   Security-conscious users can pin remotely-imported expressions by adding a
-   semantic integrity check.  The interpreter rejects any attempt to tamper with
-   an expression pinned in this way.  However, behavior-preserving refactors
-   of imported content will not perturb the hash.
-
-   Imported expressions pinned in this way are also locally cached in a
-   content-addressable store (typically underneath `~/.cache/dhall`)
+   Sicherheitsbewusste Nutzer können via URLs importierte Expressions
+   mit einem semantischen Integritätscheck versehen („pinnen“).
+   Für gepinnte Imports wird der Dhall-Interpreter jeden Versuch
+   vereiteln, auf der Remote-Seite die Expression zu manipulieren.
+   Jedoch werden Änderungen, die den Inhalt der importierten
+   Expression nicht verändern trotzdem akzeptiert.
+   
+   Auf diese Weise gepinnte Expressions werden auch in einem
+   Content-Adressable Store lokal gecached (standardmäßig in
+   `~/.cache/dhall`).
 -}
 let Natural/sum : List Natural -> Natural =
       https://prelude.dhall-lang.org/Natural/sum
@@ -263,28 +278,31 @@ let Natural/sum : List Natural -> Natural =
 
 let twentyEight : Natural = Natural/sum somePrimes
 
--- A "package" is the same thing as a (possibly nested) record that you can import
+-- Ein „Paket“ ist einfach ein (möglicherweise verschachtelter)
+-- Record, den man importiert.
 let Prelude = https://prelude.dhall-lang.org/package.dhall
 
 let false : Bool = Prelude.Bool.not True
 
--- You can import the raw contents of a file by adding `as Text` to an import
+-- Durch das Anhängen von `as Text` wird eine Datei verbatim
+-- importiert und nicht als Dhall-Code interpretiert.
 let sourceCode : Text = https://prelude.dhall-lang.org/Bool/not as Text
 
--- You can import environment variables, too:
+-- Environment-Variablen können auch imortiert werden.
 let presentWorkingDirectory = env:PWD as Text
 
--- You can provide a fallback expression if an import fails
+-- Mit `?` kann man eine “Fallback-Expression” angeben, für den Fall
+-- dass ein Import fehlschlägt.
 let home : Optional Text = Some env:HOME ? None Text
 
--- Fallback expressions can contain alternative imports of their own
+-- Fallback-Expressions können auch alternative Imports enthalten.
 let possiblyCustomPrelude =
         env:DHALL_PRELUDE
       ? https://prelude.dhall-lang.org/package.dhall
 
-{- Tie everything together by auto-generating configurations for 10 build users
-   using the `generate` function:
-
+{- Ein ausführliches Beispiel, welches mithilfe der
+   `generate`-Funktion eine Konfiguration für 10 Build-User generiert:
+ 
        Prelude.List.generate
            : Natural -> forall (a : Type) -> (Natural -> a) -> List a
 -}
@@ -309,7 +327,7 @@ let buildUsers =
 
         in  Prelude.List.generate 10 Config buildUser
 
--- Present all of the results in a final record
+-- Alle Ergebnisse in einem großen Record
 in  { greeting = greeting
     , fruits = fruits
     , interpolation = interpolation
@@ -324,8 +342,8 @@ in  { greeting = greeting
     , `Avogadro's Number` = `Avogadro's Number`
     , origin = origin
     , somePrimes = somePrimes
-    , john = john
-    , philadelphia = philadelphia
+    , bernd = bernd
+    , augsburg = augsburg
     , dnaSequence = dnaSequence
     , compactDNASequence = compactDNASequence
     , theLetterG = theLetterG
@@ -356,7 +374,7 @@ in  { greeting = greeting
     }
 ```
 
-To learn more, visit the official website, which also lets you try the
-language live in your browser:
+Mehr Infos und Lernmaterialien gibt es auf der offiziellen Website
+(Englisch), auf der man Dhall auf im Browser ausprobieren kann:
 
 * [https://dhall-lang.org](http://dhall-lang.org/)
