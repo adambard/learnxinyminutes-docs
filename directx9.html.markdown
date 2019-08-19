@@ -1,6 +1,6 @@
 ---
+category: tool
 tool: DirectX 9
-name: DirectX 9
 filename: learndirectx9.cpp
 contributors:
     - ["Simon Deitermann", "s.f.deitermann@t-online.de"]
@@ -15,6 +15,7 @@ Windows and the Xbox line of consoles.<sup>[1]</sup>
 In this tutorial we will be focusing on DirectX 9, which is not as low-level as it's sucessors, which are aimed at programmers very familiar with how graphics hardware works. It makes a great starting point for learning Direct3D. In this tutorial I will be using the Win32-API for window handling and the DirectX 2010 SDK.
 
 ## Window creation
+
 ```cpp
 #include <Windows.h>
 
@@ -81,8 +82,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     return 0;
 }
 ```
+
 This should create a window, that can the moved, resized and closed.
+
 ## Direct3D initialization
+
 ```cpp
 // Includes DirectX 9 structures and functions.
 // Remember to link "d3d9.lib" and "d3dx9.lib".
@@ -97,7 +101,9 @@ using namespace Microsoft::WRL;
 ComPtr<IDirect3D9> _d3d{ };
 ComPtr<IDirect3DDevice9> _device{ };
 ```
+
 With all interfaces declared we can now initialize Direct3D.
+
 ```cpp
 bool InitD3D(HWND hWnd) {
     // Store the size of the window rectangle.
@@ -179,9 +185,13 @@ while (_running) {
 }
 // ...
 ```
+
 Now the window should be displayed in a bright red color.
+
 ## Vertex Buffer
+
 Let's create a vertex buffer to store the vertices for our triangle
+
 ```cpp
 // At the top of the file we need to add a include.
 #include <vector>
@@ -234,7 +244,9 @@ IDirect3DVertexBuffer9* CreateBuffer(const std::vector<VStruct>& vertices) {
     return buffer;
 }
 ```
+
 In our **WinMain** we can now call the new function after the Direct3D initialization.
+
 ```cpp
 // ...
 if (!InitD3D(hWnd))
@@ -256,8 +268,11 @@ if (!(_vertexBuffer = CreateBuffer(vertices)))
     return -1;
 // ...
 ```
+
 ## Transformations
+
 Before we can use the vertex buffer to draw our primitives, we first need to set up the matrices.
+
 ```cpp
 // Lets create a new funtions for the matrix transformations.
 bool SetupTransform() {
@@ -302,8 +317,11 @@ if (!SetupTransform())
     return -1;
 // ...
 ```
+
 ## Rendering
+
 Now that everything is setup we can start drawing our first 2D triangle in 3D space.
+
 ```cpp
 // ...
 if (!SetupTransform())
@@ -367,10 +385,14 @@ MSG msg{ };
         _device->SetTransform(D3DTS_WORLD, &world);
     // ...
 ```
+
 You should now be viewing a 10x10 units colored triangle from 20 units away, rotating around its origin.<br>
 You can find the complete working code here: [DirectX - 1](https://pastebin.com/YkSF2rkk)
+
 ## Indexing
+
 To make it easier to draw primitives sharing a lot of vertices we can use indexing, so we only have to declare the unique vertices and put the order they are called in another array.
+
 ```cpp
 // First we declare a new ComPtr for our index buffer.
 ComPtr<IDirect3DIndexBuffer9> _indexBuffer{ };
@@ -442,10 +464,14 @@ _device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, // primitive type
                               2);                 // primitive count
 // ...
 ```
+
 Now you should see a colored rectangle made up of 2 triangles. If you set the primitive count in the "DrawIndexedPrimitive" method to 1 only the first triangle should be rendered and if you set the start of the index buffer to 3 and the primitive count to 1 only the second triangle should be rendered.<br>
 You can find the complete working code here: [DirectX - 2](https://pastebin.com/yWBPWPRG)
+
 ## Vertex declaration
+
 Instead of using the old "flexible vertex format" we should use vertex declarations instead, as the FVF declarations get converted to vertex declarations internally anyway.
+
 ```cpp
 // First we have to REMOVE the following lines:
 const unsigned long VertexStructFVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
@@ -493,8 +519,11 @@ if (FAILED(result))
 _device->SetVertexDeclaration(_vertexDecl.Get());
 // ...
 ```
+
 ## Shader
+
 The maximum shader model for Direct3D 9 is shader model 3.0. Even though every modern graphics card should support it, it is best to check for capabilities.
+
 ```cpp
 // ...
 _device->SetVertexDeclaration(_vertexDecl.Get());
@@ -508,12 +537,14 @@ if (deviceCaps.VertexShaderVersion < D3DVS_VERSION(3, 0))
 if (deviceCaps.PixelShaderVersion < D3DPS_VERSION(3, 0))
     return -1;
 ```
+
 Now that we are sure shader model 3.0 is supported let's create the vertex and pixel shader files.
 DirectX 9 introduced the HLSL (**High Level Shading Language**), a C-like shader language, which
 simplified the shader programming a lot, as you could only write shaders in shader assembly in DirectX 8.
 Let's create a simple vertex- and pixel shader. 
 
 **Vertex Shader**
+
 ```cpp
 // 3 4x4 float matrices representing the matrices we set in the fixed-function
 // pipeline by using the SetTransform() method.
@@ -553,7 +584,9 @@ VS_OUTPUT main(VS_INPUT input) {
     return output;
 }
 ```
+
 **Pixel Shader**
+
 ```cpp
 // The pixel shader input struct must be the same as the vertex shader output!
 struct PS_INPUT {
@@ -568,9 +601,11 @@ float4 main(PS_INPUT input) : COLOR {
     return input.color;
 }
 ```
+
 For more on semantics: [DirectX - Semantics](https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-semantics#vertex-shader-semantics)
 
 Now we have to do quite some changes to the code.
+
 ```cpp
 ComPtr<IDirect3DDevice9> _device{ };
 ComPtr<IDirect3DVertexBuffer9> _vertexBuffer{ };
@@ -685,8 +720,11 @@ if (!SetupTransform())
 // You can also REMOVE the call so set the lighting render state.
 _device->SetRenderState(D3DRS_LIGHTING, false);
 ```
+
 You can find the complete code here: [DirectX - 3](https://pastebin.com/y4NrvawY)
+
 ## Texturing
+
 ```cpp
 // First we need to declare a ComPtr for the texture.
 ComPtr<IDirect3DTexture9> _texture{ };
@@ -726,9 +764,11 @@ if (FAILED(result))
 // in the pixel shader.
 _device->SetTexture(0, _texture.Get());
 ```
+
 With the main code ready we now have to adjust the shaders to these changes.
 
 **Vertex Shader**
+
 ```cpp
 float4x4 projectionMatrix;
 float4x4 viewMatrix;
@@ -761,7 +801,9 @@ VS_OUTPUT main(VS_INPUT input) {
     return output;
 }
 ```
+
 **Pixel Shader**
+
 ```cpp
 // Create  a sampler called "sam0" using sampler register 0, which is equal
 // to the texture stage 0, to which we passed the texture.
