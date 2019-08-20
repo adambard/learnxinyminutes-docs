@@ -1,7 +1,11 @@
 ---
 language: edn
-filename: learnedn.edn
+filename: learnedn-tr.edn
 contributors:
+  - ["Jason Yeo", "https://github.com/jsyeo"]
+  - ["Jonathan D Johnston", "https://github.com/jdjohnston"]
+  - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]
+translators:
   - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]
 ---
 
