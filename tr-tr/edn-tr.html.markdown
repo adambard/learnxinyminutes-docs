@@ -1,15 +1,12 @@
 ---
 language: edn
 filename: learnedn-tr.edn
+lang: tr-tr
 contributors:
-  - ["Jason Yeo", "https://github.com/jsyeo"]
-  - ["Jonathan D Johnston", "https://github.com/jdjohnston"]
-  - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]
-translators:
   - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]
 ---
 
-# Y = 15 Dakika.
+# Y = 20 Dakika.
 
 ### Genişletilebilir Veri Notasyonu (EDN, Extensible Data Notation).
 
