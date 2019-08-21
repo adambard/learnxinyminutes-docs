@@ -1,6 +1,6 @@
 ---
 language: SQL
-filename: learnsql.sql
+filename: learnsql-ru.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
