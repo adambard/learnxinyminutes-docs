@@ -501,9 +501,12 @@ say False ~~ True;  #=> True
 ##------------------
 3 .. 7;          # 3 to 7, both included
 3 ..^ 7;         # 3 to 7, exclude right endpoint.
-3 ^.. 7;         # 3 to 7, exclude left endpoint. Same as `4..7`.
-3 ^..^ 7;        # 3 to 7, exclude both endpoints. Same as `4..6`.
-
+3 ^.. 7;         # 3 to 7, exclude left endpoint.
+3 ^..^ 7;        # 3 to 7, exclude both endpoints.
+		 # 3 ^.. 7 almost like `4..7`. But when we consider decimals:
+3.5 ~~ 3 ^.. 7	 # True, This Range also contains decimals greater than 3.
+3.5 ~~ 4 .. 7	 # False
+		 
 ## This also works as a shortcut for `0..^N`:
 ^10;             # means 0..^10
 
