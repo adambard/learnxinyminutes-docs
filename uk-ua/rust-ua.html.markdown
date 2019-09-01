@@ -4,7 +4,7 @@ contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
   - ["Volodymyr Korniichuk", "https://github.com/ezhikus"]
-filename: learnrust.rs
+filename: learnrust-uk.rs
 lang: uk-ua
 ---
 
