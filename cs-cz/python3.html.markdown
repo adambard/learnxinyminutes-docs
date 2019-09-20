@@ -137,12 +137,14 @@ None  # => None
 "něco" is None  # => False
 None is None    # => True
 
-# None, 0, a prázdný řetězec/seznam/slovník se vyhodnotí jako False
+# None, 0, a prázdný řetězec/seznam/N-tice/slovník/množina se vyhodnotí jako False
 # Vše ostatní se vyhodnotí jako True
-bool(0)   # => False
-bool("")  # => False
-bool([])  # => False
-bool({})  # => False
+bool(0)        # => False
+bool("")       # => False
+bool([])       # => False
+bool(tuple())  # => False
+bool({})       # => False
+bool(set())    # => False
 
 
 ####################################################
@@ -602,18 +604,21 @@ dir(math)
 # Generátory jsou funkce, které místo return obsahují yield
 def nasobicka_2(sekvence):
     for i in sekvence:
+        print("Zpracovávám číslo {}".format(i))
         yield 2 * i
 
 # Generátor generuje hodnoty postupně, jak jsou potřeba. Místo toho, aby vrátil
 # celou sekvenci s prvky vynásobenými dvěma, provádí jeden výpočet v každé iteraci.
-# To znamená, že čísla větší než 15 se v metodě nasobicka_2 vůbec nezpracují.
+for nasobek in nasobicka_2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]):
+    # Vypíše postupně: "Zpracovávám číslo 1",  ...,  "Zpracovávám číslo 5"
+    if nasobek >= 10:
+        break
 
 # Funkce range() je také generátor - vytváření seznamu 900000000 prvků by zabralo
 # hodně času i paměti, proto se místo toho čísla generují postupně.
-
-for i in nasobicka_2(range(900000000)):
-    print(i)  # Vypíše čísla 0, 2, 4, 6, 8, ... 30
-    if i >= 30:
+for nasobek in nasobicka_2(range(900000000)):
+    # Vypíše postupně: "Zpracovávám číslo 1",  ...,  "Zpracovávám číslo 5"
+    if nasobek >= 10:
         break
 
 
@@ -633,7 +638,7 @@ def nekolikrat(puvodni_funkce):
 def pozdrav(jmeno):
     print("Měj se {}!".format(jmeno))
 
-pozdrav("Pepo")  # Vypíše 3x: Měj se Pepo!
+pozdrav("Pepo")  # Vypíše 3x: "Měj se Pepo!"
 ```
 
 ## Co dál?
