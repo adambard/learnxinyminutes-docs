@@ -234,10 +234,9 @@ class LearnHaxe3 {
             ^       Bitwise exclusive OR
             |       Bitwise inclusive OR
         */
-
-        // increments
+        
         var i = 0;
-        trace("Increments and decrements");
+        trace("Pre-/Post- Increments and Decrements");
         trace(i++); // i = 1. Post-Increment
         trace(++i); // i = 2. Pre-Increment
         trace(i--); // i = 1. Post-Decrement
