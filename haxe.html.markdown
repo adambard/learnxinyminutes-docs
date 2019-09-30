@@ -6,8 +6,8 @@ contributors:
     - ["Dan Korostelev", "https://github.com/nadako/"]
 ---
 
-Haxe is a web-oriented language that provides platform support for C++, C#,
-Swf/ActionScript, Javascript, Java, PHP, Python, Lua, HashLink, and Neko byte code
+[Haxe](https://haxe.org/) is a general-purpose language that provides platform support for C++, C#,
+Swf/ActionScript, JavaScript, Java, PHP, Python, Lua, HashLink, and Neko bytecode
 (the latter two being also written by the Haxe author). Note that this guide is for
 Haxe version 3.  Some of the guide may be applicable to older versions, but it is
 recommended to use other references.
@@ -668,7 +668,7 @@ class TypedefsAndStructuralTypes {
 
            That would give us a single "Surface" type to work with across
            all of those platforms.
-        */
+         */
     }
 }
 
@@ -700,8 +700,7 @@ class UsingExample {
            instance, and the compiler still generates code equivalent to a
            static method.
          */
-      }
-
+    }
 }
 
 ```
