@@ -189,7 +189,7 @@ class LearnHaxe3 {
         trace(m.get('bar') + " is the value for m.get('bar')");
         trace(m['bar'] + " is the value for m['bar']");
 
-        var m2 =  ['foo' => 4, 'baz' => 6]; // Alternative map syntax
+        var m2 = ['foo' => 4, 'baz' => 6]; // Alternative map syntax
         trace(m2 + " is the value for m2");
 
         // Remember, you can use type inference.  The Haxe compiler will
@@ -286,7 +286,7 @@ class LearnHaxe3 {
         }
 
         // do-while loop
-        var  l = 0;
+        var l = 0;
         do {
             trace("do statement always runs at least once");
         } while (l > 0);
