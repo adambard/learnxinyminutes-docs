@@ -338,7 +338,7 @@ class LearnHaxe3 {
          */
         var my_dog_name = "fido";
         var favorite_thing  = "";
-        switch(my_dog_name) {
+        switch (my_dog_name) {
             case "fido" : favorite_thing = "bone";
             case "rex"  : favorite_thing = "shoe";
             case "spot" : favorite_thing = "tennis ball";
@@ -366,7 +366,7 @@ class LearnHaxe3 {
 
         trace("k equals ", k); // outputs 10
 
-        var other_favorite_thing = switch(my_dog_name) {
+        var other_favorite_thing = switch (my_dog_name) {
             case "fido" : "teddy";
             case "rex"  : "stick";
             case "spot" : "football";
@@ -559,7 +559,7 @@ class SimpleEnumTest {
         // You can specify the "full" name,
         var e_explicit:SimpleEnum = SimpleEnum.Foo;
         var e = Foo; // but inference will work as well.
-        switch(e) {
+        switch (e) {
             case Foo: trace("e was Foo");
             case Bar: trace("e was Bar");
             case Baz: trace("e was Baz"); // comment this line to throw an error.
@@ -572,7 +572,7 @@ class SimpleEnumTest {
 
            You can also specify a default for enum switches as well:
          */
-        switch(e) {
+        switch (e) {
             case Foo: trace("e was Foo again");
             default : trace("default works here too");
         }
@@ -595,21 +595,21 @@ class ComplexEnumTest {
         var e1:ComplexEnum = IntEnum(4); // specifying the enum parameter
         // Now we can switch on the enum, as well as extract any parameters
         // it might have had.
-        switch(e1) {
+        switch (e1) {
             case IntEnum(x) : trace('$x was the parameter passed to e1');
             default: trace("Shouldn't be printed");
         }
 
         // another parameter here that is itself an enum... an enum enum?
         var e2 = SimpleEnumEnum(Foo);
-        switch(e2){
+        switch (e2){
             case SimpleEnumEnum(s): trace('$s was the parameter passed to e2');
             default: trace("Shouldn't be printed");
         }
 
         // enums all the way down
         var e3 = ComplexEnumEnum(ComplexEnumEnum(MultiEnum(4, 'hi', 4.3)));
-        switch(e3) {
+        switch (e3) {
             // You can look for certain nested enums by specifying them
             //  explicitly:
             case ComplexEnumEnum(ComplexEnumEnum(MultiEnum(i,j,k))) : {
