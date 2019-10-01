@@ -81,11 +81,11 @@ namespace Learning.CSharp
             // Integer - 32-bit integer
             int fooInt = 1; // (-2,147,483,648 <= int <= 2,147,483,647)
             uint fooUint = 1; // (0 <= uint <= 4,294,967,295)
-
+            //Números por padrão são int ou uint, dependendo do tamanho.
+            
             // Long - 64-bit integer
             long fooLong = 100000L; // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
             ulong fooUlong = 100000L; // (0 <= ulong <= 18,446,744,073,709,551,615)
-            // Numbers default to being int or uint depending on size.
             // L is used to denote that this variable value is of type long or ulong
 
             // Double - Double-precision 64-bit IEEE 754 Floating Point
