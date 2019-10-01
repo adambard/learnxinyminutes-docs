@@ -720,9 +720,9 @@ on a new line! ""Wow!"", the masses cried";
             _speed -= decrement;
         }
 
-        // properties get/set values
-        // when only data needs to be accessed, consider using properties.
-        // properties may have either get or set, or both
+        // propriedade recupera e/ou atribui valores (get/set). 
+        // quando os dados precisam apenas ser acessados, considere o uso de propriedades.
+        // uma propriedade pode ter "get" ou "set", ou ambos.
         private bool _hasTassles; // private variable
         public bool HasTassles // public accessor
         {
