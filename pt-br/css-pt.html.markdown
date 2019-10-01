@@ -14,7 +14,7 @@ translators:
 lang: pt-br
 ---
 
-Nos primeiros dias da web não havia elementos visuais, apenas texto puro. Mas com maior desenvolvimento de navegadores da web, páginas web totalmente visuais também se tornou comum.
+Nos primeiros dias da web não havia elementos visuais, apenas texto puro. Mas com maior desenvolvimento de navegadores da web, páginas web totalmente visuais também se tornaram comuns.
 
 CSS ajuda a manter a separação entre o conteúdo (HTML) e o look-and-feel de uma página web.
 
@@ -97,7 +97,7 @@ div.some-parent.class-name {}
 /* Ou qualquer irmão que o precede */
 .i am-qualquer-elemento antes ~ .Este elemento {}
 
-/* Existem alguns selectores chamado pseudo classes que podem ser usados para selecionar um
+/* Existem alguns seletores chamados pseudo classes que podem ser usados para selecionar um
    elemento quando ele está em um determinado estado */
 
 /* Por exemplo, quando o cursor passa sobre um elemento */
@@ -118,7 +118,7 @@ seletor:first-child {}
 /* Qualquer elemento que é o último filho de seu pai */
 seletor:last-child {}
 
-/* Assim como pseudo classes, pseudo elementos permitem que você estilo certas partes de um documento */
+/* Assim como pseudo classes, pseudo elementos permitem que você estilize certas partes de um documento */
 
 /* Corresponde a um primeiro filho virtual do elemento selecionado */
 seletor::before {}
