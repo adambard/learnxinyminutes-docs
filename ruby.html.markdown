@@ -23,6 +23,15 @@ contributors:
 ```ruby
 # This is a comment
 
+=begin
+This is a multi-line comment.
+The beginning line must start with "=begin"
+and the ending line must start with "=end".
+
+You can do this, or start each line in
+a multi-line comment with the # character.
+=end
+
 # In Ruby, (almost) everything is an object.
 # This includes numbers...
 3.class #=> Integer
