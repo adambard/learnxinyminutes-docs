@@ -311,10 +311,10 @@ on a new line! ""Wow!"", the masses cried";
             // Converting Data Types And Typecasting
             ///////////////////////////////////////
 
-            // Converting data
+            // Convertendo dados
 
-            // Convert String To Integer
-            // this will throw a FormatException on failure
+            // Converter String para Integer
+            // isso lançará uma exceção "FormatException"
             int.Parse("123");//returns an integer version of "123"
 
             // try parse will default to type default on failure
