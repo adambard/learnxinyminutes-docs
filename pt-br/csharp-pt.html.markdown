@@ -85,8 +85,8 @@ namespace Learning.CSharp
             // Long - 64-bit integer
             long fooLong = 100000L; // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
             ulong fooUlong = 100000L; // (0 <= ulong <= 18,446,744,073,709,551,615)
-            // Numbers default to being int or uint depending on size.
-            // L is used to denote that this variable value is of type long or ulong
+            // Números por padrão são int ou uint dependendo do tamanho.
+            // L é usado para denotar que o valor da variável é do tipo long ou ulong.
 
             // Double - Double-precision 64-bit IEEE 754 Floating Point
             double fooDouble = 123.4; // Precision: 15-16 digits
