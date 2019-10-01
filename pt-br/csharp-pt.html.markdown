@@ -308,25 +308,25 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             ///////////////////////////////////////
-            // Converting Data Types And Typecasting
+            // Convertendo Data Types e Typecasting
             ///////////////////////////////////////
 
             // Converting data
 
-            // Convert String To Integer
-            // this will throw a FormatException on failure
-            int.Parse("123");//returns an integer version of "123"
+            // Converter String para Integer
+            // isso vai jogar um erro FormatException quando houver falha
+            int.Parse("123");//retorna uma verão em Integer da String "123"
 
-            // try parse will default to type default on failure
-            // in this case: 0
+            // try parse vai ir por padrão para o typo default quando houver uma falha
+            // nesse caso: 0
             int tryInt;
-            if (int.TryParse("123", out tryInt)) // Function is boolean
+            if (int.TryParse("123", out tryInt)) // Função booleana
                 Console.WriteLine(tryInt);       // 123
 
-            // Convert Integer To String
-            // Convert class has a number of methods to facilitate conversions
+            // Converter Integer para String
+            // A classe Convert possuí métodos para facilitar as conversões
             Convert.ToString(123);
-            // or
+            // ou
             tryInt.ToString();
 
             // Casting
