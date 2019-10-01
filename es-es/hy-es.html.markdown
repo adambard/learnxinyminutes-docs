@@ -1,11 +1,11 @@
 ---
-language: hy
-filename: learnhy-es.hy
+language: hy
+filename: learnhy-es.hy
 contributors:
-    - ["Abhishek L", "http://twitter.com/abhishekl"]
+    - ["Abhishek L", "http://twitter.com/abhishekl"]
 translators:
-    - ["Roberto R", "https://github.com/rrodriguze"]
-lang: es-es
+    - ["Roberto R", "https://github.com/rrodriguze"]
+lang: es-es
 ---
 
 Hy es un lenguaje de Lisp escrito sobre Python. Esto es posible convirtiendo
