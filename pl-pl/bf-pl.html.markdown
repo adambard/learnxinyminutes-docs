@@ -32,9 +32,9 @@ Oto osiem poleceń brainfucka:
 . : wyświetla wartość bieżącej komórki (w formie znaku ASCII, np. 65 = 'A')
 , : wczytuje (jeden) znak z wejścia do bieżącej komórki
     (konkretnie jego numer z tabeli ASCII)
-[ : jeśli wartość w bieżącej komórce jest rózna zero, przechodzi do
+[ : jeśli wartość w bieżącej komórce jest różna zero, przechodzi do
     odpowiadającego ]; w przeciwnym wypdaku przechodzi do następnej instrukcji
-] : Jeśli wartość w bieżącej komórce jest rózna od zera, przechodzi do
+] : Jeśli wartość w bieżącej komórce jest różna od zera, przechodzi do
     następnej instrukcji; w przeciwnym wypdaku przechodzi do odpowiadającego [
 
 [ i ] oznaczają pętlę while. Oczywiście każda pętla rozpoczęta [
