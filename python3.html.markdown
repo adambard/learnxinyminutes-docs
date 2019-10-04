@@ -466,8 +466,8 @@ prints:
     1 cat
     2 mouse
 """
-list = ["dog", "cat", "mouse"]
-for i, value in enumerate(list):
+animals = ["dog", "cat", "mouse"]
+for i, value in enumerate(animals):
     print(i, value)
 
 """
