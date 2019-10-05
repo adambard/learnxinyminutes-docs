@@ -24,7 +24,7 @@ e molte altre funzionalità.
 # Per usare la shell di elixir usa il comando `iex`.
 # Compila i tuoi moduli con il comando `elixirc`.
 
-# Entrambi i comandi dovrebbero già essere nel tuo PATH se hai installato 
+# Entrambi i comandi dovrebbero già essere nel tuo PATH se hai installato
 # elixir correttamente.
 
 ## ---------------------------
@@ -65,7 +65,7 @@ coda #=> [2,3]
 # le tuple hanno dimensione differente.
 # {a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
 
-# Ci sono anche i binari 
+# Ci sono anche i binari
 <<1,2,3>> # binari (Binary)
 
 # Stringhe e liste di caratteri
@@ -80,7 +80,7 @@ multi-linea.
 #=> "Sono una stringa\nmulti-linea.\n"
 
 # Le stringhe sono tutte codificate in UTF-8:
-"cìaò" 
+"cìaò"
 #=> "cìaò"
 
 # le stringhe in realtà sono dei binari, e le liste di caratteri sono liste.
@@ -124,10 +124,11 @@ rem(10, 3) #=> 1
 # Questi operatori si aspettano un booleano come primo argomento.
 true and true #=> true
 false or true #=> true
-# 1 and true    #=> ** (ArgumentError) argument error
+# 1 and true
+#=> ** (BadBooleanError) expected a boolean on left-side of "and", got: 1
 
 # Elixir fornisce anche `||`, `&&` e `!` che accettano argomenti
-# di qualsiasi tipo. 
+# di qualsiasi tipo.
 # Tutti i valori tranne `false` e `nil` saranno valutati come true.
 1 || true  #=> 1
 false && 1 #=> false
@@ -147,7 +148,7 @@ nil && 20  #=> nil
 1 < :ciao #=> true
 
 # L'ordine generale è definito sotto:
-# numeri < atomi < riferimenti < funzioni < porte < pid < tuple < liste 
+# numeri < atomi < riferimenti < funzioni < porte < pid < tuple < liste
 #   < stringhe di bit
 
 # Per citare Joe Armstrong su questo: "L'ordine non è importante,
@@ -171,7 +172,7 @@ else
   "Questo sì"
 end
 
-# Ti ricordi il pattern matching? 
+# Ti ricordi il pattern matching?
 # Moltre strutture di controllo di flusso in elixir si basano su di esso.
 
 # `case` ci permette di confrontare un valore a diversi pattern:
@@ -214,7 +215,7 @@ cond do
     "Questa sì! (essenzialmente funziona come un else)"
 end
 
-# `try/catch` si usa per gestire i valori lanciati (throw), 
+# `try/catch` si usa per gestire i valori lanciati (throw),
 # Supporta anche una clausola `after` che è invocata in ogni caso.
 try do
   throw(:ciao)
@@ -235,7 +236,7 @@ quadrato = fn(x) -> x * x end
 quadrato.(5) #=> 25
 
 # Accettano anche guardie e condizioni multiple.
-# le guardie ti permettono di perfezionare il tuo pattern matching, 
+# le guardie ti permettono di perfezionare il tuo pattern matching,
 # sono indicate dalla parola chiave `when`:
 f = fn
   x, y when x > 0 -> x + y
@@ -265,13 +266,13 @@ end
 Matematica.somma(1, 2)  #=> 3
 Matematica.quadrato(3) #=> 9
 
-# Per compilare il modulo 'Matematica' salvalo come `matematica.ex` e usa 
+# Per compilare il modulo 'Matematica' salvalo come `matematica.ex` e usa
 # `elixirc`.
 # nel tuo terminale: elixirc matematica.ex
 
 # All'interno di un modulo possiamo definire le funzioni con `def` e funzioni
 # private con `defp`.
-# Una funzione definita con `def` è disponibile per essere invocata anche da 
+# Una funzione definita con `def` è disponibile per essere invocata anche da
 # altri moduli, una funziona privata può essere invocata solo localmente.
 defmodule MatematicaPrivata do
   def somma(a, b) do
@@ -286,7 +287,11 @@ end
 MatematicaPrivata.somma(1, 2)    #=> 3
 # MatematicaPrivata.esegui_somma(1, 2) #=> ** (UndefinedFunctionError)
 
-# Anche le dichiarazioni di funzione supportano guardie e condizioni multiple:
+# Anche le dichiarazioni di funzione supportano guardie e condizioni multiple.
+# Quando viene chiamata una funzione dichiarata con più match, solo la prima
+# che matcha viene effettivamente invocata.
+# Ad esempio: chiamando area({:cerchio, 3}) vedrà invocata la seconda definizione
+# di area mostrata sotto, non la prima:
 defmodule Geometria do
   def area({:rettangolo, w, h}) do
     w * h
@@ -322,16 +327,25 @@ defmodule Modulo do
   Questo è un attributo incorporato in un modulo di esempio.
   """
 
-  @miei_dati 100 # Questo è un attributo personalizzato .
+  @miei_dati 100 # Questo è un attributo personalizzato.
   IO.inspect(@miei_dati) #=> 100
 end
+
+# L'operatore pipe |> permette di passare l'output di una espressione
+# come primo parametro di una funzione.
+# Questo facilita operazioni quali pipeline di operazioni, composizione di
+# funzioni, ecc.
+Range.new(1,10)
+|> Enum.map(fn x -> x * x end)
+|> Enum.filter(fn x -> rem(x, 2) == 0 end)
+#=> [4, 16, 36, 64, 100]
 
 ## ---------------------------
 ## -- Strutture ed Eccezioni
 ## ---------------------------
 
 
-# Le Strutture (Structs) sono estensioni alle mappe che portano 
+# Le Strutture (Structs) sono estensioni alle mappe che portano
 # valori di default, garanzia alla compilazione e polimorfismo in Elixir.
 defmodule Persona do
   defstruct nome: nil, eta: 0, altezza: 0
@@ -367,7 +381,7 @@ end
 ## -- Concorrenza
 ## ---------------------------
 
-# Elixir si basa sul modello degli attori per la concorrenza. 
+# Elixir si basa sul modello degli attori per la concorrenza.
 # Tutto ciò di cui abbiamo bisogno per scrivere programmi concorrenti in elixir
 # sono tre primitive: creare processi, inviare messaggi e ricevere messaggi.
 
@@ -379,12 +393,12 @@ spawn(f) #=> #PID<0.40.0>
 # `spawn` restituisce un pid (identificatore di processo). Puoi usare questo
 # pid per inviare messaggi al processo.
 # Per passare messaggi si usa l'operatore `send`.
-# Perché tutto questo sia utile dobbiamo essere capaci di ricevere messaggi, 
+# Perché tutto questo sia utile dobbiamo essere capaci di ricevere messaggi,
 # oltre ad inviarli. Questo è realizzabile con `receive`:
 
 # Il blocco `receive do` viene usato per mettersi in ascolto di messaggi
 # ed elaborarli quando vengono ricevuti. Un blocco `receive do` elabora
-# un solo messaggio ricevuto: per fare elaborazione multipla di messaggi, 
+# un solo messaggio ricevuto: per fare elaborazione multipla di messaggi,
 # una funzione con un blocco `receive do` al suo intero dovrà chiamare
 # ricorsivamente sé stessa per entrare di nuovo nel blocco `receive do`.
 defmodule Geometria do
@@ -405,7 +419,7 @@ pid = spawn(fn -> Geometria.calcolo_area() end) #=> #PID<0.40.0>
 # Alternativamente
 pid = spawn(Geometria, :calcolo_area, [])
 
-# Invia un messaggio a `pid` che farà match su un pattern nel blocco in receive 
+# Invia un messaggio a `pid` che farà match su un pattern nel blocco in receive
 send pid, {:rettangolo, 2, 3}
 #=> Area = 6
 #   {:rettangolo,2,3}
@@ -421,7 +435,7 @@ self() #=> #PID<0.27.0>
 ## Referenze
 
 * [Getting started guide](http://elixir-lang.org/getting_started/1.html) dalla [pagina web ufficiale di elixir](http://elixir-lang.org)
-* [Documentazione Elixir](http://elixir-lang.org/docs/master/)
+* [Documentazione Elixir](https://elixir-lang.org/docs.html)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) di Dave Thomas
 * [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
 * ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) di Fred Hebert
