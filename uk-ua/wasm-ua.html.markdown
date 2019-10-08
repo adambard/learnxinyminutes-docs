@@ -1,5 +1,6 @@
 ---
 language: WebAssembly
+lang: uk-ua
 filename: learnwasm-ua.wast
 contributors:
     - ["Dean Shaff", "http://dean-shaff.github.io"]
