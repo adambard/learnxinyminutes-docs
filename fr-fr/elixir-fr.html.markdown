@@ -10,8 +10,8 @@ translator:
 filename: learnelixir-fr.ex
 lang: fr-fr
 ---
-Elixir est un langage de programmation fonctionnel moderne reposant sur la machine virtuelle Erlang.
-Il est totalement compatible avec Erlang mais dispose d'une syntax plus agréable et apporte de nouvelles fonctionnalités. 
+Elixir est un langage de programmation fonctionnel moderne reposant sur la machine virtuelle BEAM, qui héberge aussi Erlang.
+Il est totalement compatible avec Erlang mais dispose d'une syntaxe plus agréable et apporte de nouvelles fonctionnalités. 
 
 
 ```elixir
@@ -30,28 +30,29 @@ Il est totalement compatible avec Erlang mais dispose d'une syntax plus agréabl
 ## -- Types basiques
 ## ---------------------------
 
-# Il a les nombres
+# Il y a les nombres
 3    # Integer 
 0x1F # Integer
 3.0  # Float
 
-# Atomes, des littéraux, qui sont des constantes avec la valeur de leur nom. 
+# Les atomes, des littéraux, qui sont des constantes avec comme valeur leur nom. 
 # Ils commencent par `:`.
 
 :hello # atom
 
-# Il existe également des n-uplets dont les valeurs sont stockées dans
-# la mémoire principale.
+# Il existe également des n-uplets dont les valeurs sont stockés de manière contiguë 
+# en mémoire.
+
 {1,2,3} # tuple
 
 # Il est possible d'accéder à un element d'un tuple avec la fonction 
 # `elem`:
 elem({1, 2, 3}, 0) #=> 1
 
-# Les listes, sont implémentées comme des listes chainées.
+# Les listes sont implémentées sous forme de listes chainées.
 [1,2,3] # list
 
-# La tête et le reste d'une liste peuvent être récupérer comme cela:
+# La tête et le reste d'une liste peuvent être récupérés comme cela :
 [head | tail] = [1,2,3]
 head #=> 1
 tail #=> [2,3]
@@ -62,11 +63,11 @@ tail #=> [2,3]
 # la partie de droite. 
 
 
-# Une erreur sera occurée si aucun model (match) est trouvé.
+# Une erreur sera lancée si aucun model (match) est trouvé.
 # Dans cet exemple les tuples ont des tailles différentes
 # {a, b, c} = {1, 2} #=> ** (MatchError) no match of right hand side value: {1,2}
 
-# Il a aussi les binaires
+# Il y a aussi les binaires
 <<1,2,3>> # binary
 
 # Chaine de caractères et liste de caractères
@@ -80,10 +81,10 @@ sur plusieurs lignes.
 """
 #=> "Je suis une chaine de caractères\nsur plusieurs lignes.\n"
 
-# Les chaines de caractères sont encodées en UTF-8:
+# Les chaines de caractères sont encodées en UTF-8 :
 "héllò" #=> "héllò"
 
-# Les chaines de caractères sont simplement des binaires tandis que
+# Les chaines de caractères sont des binaires tandis que
 # les listes de caractères sont des listes.
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
@@ -99,13 +100,13 @@ sur plusieurs lignes.
 <<1,2,3>> <> <<4,5>> #=> <<1,2,3,4,5>>
 "hello " <> "world"  #=> "hello world"
 
-# Les intervalles sont représentées de cette sorte `début..fin`
+# Les intervalles sont représentés de cette sorte `début..fin`
 # (tout deux inclusifs)
 1..10 #=> 1..10
 bas..haut = 1..10 # Possibilité d'utiliser le pattern matching sur les intervalles aussi.
 [bas, haut] #=> [1, 10]
 
-# Les Maps(Tableau associatif) sont des paires clée - valeurs
+# Les Maps (Tableau associatif) sont des paires clée - valeur
 genders = %{"david" => "male", "gillian" => "female"}
 genders["david"] #=> "male"
 
@@ -131,16 +132,16 @@ div(10, 2) #=> 5
 # Pour obtenir le reste de la division il faut utiliser `rem`
 rem(10, 3) #=> 1
 
-# Il y'a aussi les opérateurs boolean: `or`, `and` et `not`.
-# Ces opérateurs attendent un boolean en premier argument.
+# Il y a aussi les opérateurs booléen: `or`, `and` et `not`.
+# Ces opérateurs attendent un booléen en premier argument.
 true and true #=> true
 false or true #=> true
 # 1 and true
-#=> ** (BadBooleanError) expected a boolean on left-side of "and", got: 1
+#=> ** (BadBooleanError) expected a booléens on left-side of "and", got: 1
 
 # Elixir fournit aussi `||`, `&&` et `!` qui acceptent des arguments de
 # tout type.
-# Chaque valeurs sauf `false` et `nil` seront évalués à vrai (true).
+# Chaque valeur sauf `false` et `nil` seront évalués à vrai (true).
 1 || true  #=> 1
 false && 1 #=> false
 nil && 20  #=> nil
@@ -151,32 +152,33 @@ nil && 20  #=> nil
 1 != 1 #=> false
 1 < 2  #=> true
 
-# `===` et `!==` sont plus stricts en comparant les integers (entiers) 
-# et les floats (nombres à virgules):
+# `===` et `!==` sont plus stricts en comparant les Integers (entiers) 
+# et les Floats (nombres à virgules) :
 1 == 1.0  #=> true
 1 === 1.0 #=> false
 
-# On peut aussi comparer deux types de données différents:
+# On peut aussi comparer deux types de données différents :
 1 < :hello #=> true
 
-# L'ordre est définit de la sorte :
+# L'ordre est défini de la sorte :
 # number < atom < reference < functions < port < pid < tuple < list < bit string
 
 # Pour citer Joe Armstrong : "The actual order is not important,
 # but that a total ordering is well defined is important."
 
 ## ---------------------------
-## -- Control Flow
+## -- Structure de contrôle
 ## ---------------------------
 
-# `if` expression
+# Condition avec `if` (si)
 if false do
   "Cela ne sera pas vu"
 else
   "Cela le sera"
 end
 
-# There's also `unless`
+# Condition avec `unless` (sauf).
+# Il correspond à la négation d'un `if` (si) 
 unless true do
   "Cela ne sera pas vu"
 else
@@ -184,8 +186,7 @@ else
 end
 
 # Beaucoup de structures en Elixir se basent sur le pattern matching.
-
-# `case` permet de comparer une valeur à plusieurs patterns:
+# `case` permet de comparer une valeur à plusieurs modèles:
 case {:one, :two} do
   {:four, :five} ->
     "Ne match pas"
@@ -205,7 +206,7 @@ head #=> 1
 head #=> :a
 
 # `cond` permet de vérifier plusieurs conditions à la fois.
-# Utiliser plutôt `cond` que des `if` imbriqués.
+# Il est conseillé d'utiliser `cond` plutôt que des `if` imbriqués.
 cond do
   1 + 1 == 3 ->
     "Je ne serai pas vu"
@@ -226,30 +227,30 @@ cond do
     "Mais moi oui (représente un else)" 
 end
 
-# `try/catch` est utilisé pour attraper les valeurs jetées. 
+# `try/catch` est utilisé pour attraper les valeurs rejetées. 
 # Il supporte aussi un 
 # `after` qui est appelé autant si une valeur est jetée ou non.
 try do
   throw(:hello)
 catch
-  message -> "Got #{message}."
+  message -> "Message : #{message}."
 after
   IO.puts("Je suis la clause after (après).")
 end
 #=> Je suis la clause after (après).
-# "Got :hello"
+# "Message : :hello"
 
 ## ---------------------------
 ## -- Modules et Fonctions
 ## ---------------------------
 
-# Fonctions anonymes (notifiez le point)
+# Fonctions anonymes (notez le point).
 square = fn(x) -> x * x end
 square.(5) #=> 25
 
-# Ils acceptent aussi de nombreuses clauses et gardes.
-# Guards (gardes) permet d'affiner le pattern matching,
-# ils sont indiqués par le mot-clef `when`:
+# Les fonctions anonymes acceptent aussi de nombreuses clauses et guards (gardes).
+# Les guards permettent d'affiner le pattern matching,
+# ils sont indiqués par le mot-clef `when` :
 f = fn
   x, y when x > 0 -> x + y
   x, y -> x * y
@@ -259,7 +260,6 @@ f.(1, 3)  #=> 4
 f.(-1, 3) #=> -3
 
 # Elixir propose aussi de nombreuses fonctions internes.
-# Elles sont disponibles dans la portée courantes.
 is_number(10)    #=> true
 is_list("hello") #=> false
 elem({1,2,3}, 0) #=> 1
@@ -280,8 +280,8 @@ Math.sum(1, 2)  #=> 3
 Math.square(3) #=> 9
 
 # Pour compiler notre module `Math`,
-# il faut la sauvegarder en tant que `math.ex` et utiliser `elixirc`
-# Dans le terminal: elixirc math.ex
+# il faut le sauvegarder en tant que `math.ex` et utiliser `elixirc`.
+# Executez ainsi `elixirc math.ex` dans le terminal.
 
 # Au sein d'un module, nous pouvons définir les fonctions avec `def`
 # et `defp` pour les fonctions privées.
@@ -301,10 +301,11 @@ PrivateMath.sum(1, 2)    #=> 3
 # PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
 
 # La déclaration de fonction supporte également les guards (gardes) 
-# et les multiples clauses. 
+# et les clauses. 
 # Quand une fonction avec plusieurs clauses est appelée,
-# la première fonction qui satisfait la clause sera appelée.
-# Exemple: appelé area({:circle, 3}) va alors appelé la deuxième fonction definie plus bas, et non la première:
+# la première fonction dont la clause est satisfaite par les arguments sera appelée.
+# Exemple: le code `area({:circle, 3})` appelle la deuxième fonction definie plus bas,
+# et non la première car ses arguments correspondent à la signature de cette dernière:
 defmodule Geometry do
   def area({:rectangle, w, h}) do
     w * h
@@ -320,7 +321,7 @@ Geometry.area({:circle, 3})       #=> 28.25999999999999801048
 # Geometry.area({:circle, "not_a_number"})
 #=> ** (FunctionClauseError) no function clause matching in Geometry.area/1
 
-# A cause de l'immutabilité, la récursivité est une grande partie
+# En raison de l'immutabilité, la récursivité est une grande partie
 # d'Elixir
 defmodule Recursion do
   def sum_list([head | tail], acc) do
@@ -334,8 +335,8 @@ end
 
 Recursion.sum_list([1,2,3], 0) #=> 6
 
-# Les modules Elixir supportent des attributs internes et
-# peuvent aussi être personnel.
+# Les modules Elixir supportent des attributs internes,
+# ceux-ci peuvent aussi être personnalisés.
 defmodule MyMod do
   @moduledoc """
   This is a built-in attribute on a example module.
@@ -357,8 +358,9 @@ Range.new(1,10)
 ## -- Structs et Exceptions
 ## ---------------------------
 
-# Les Structs sont des extensiosn des maps qui apportent des valeurs par defaut,
-# garantie compilé juste à temps et le polymorphisme dans Elixir.
+# Les Structs sont des extensions des Maps.
+# Apportant en plus les valeurs par defaut, le polymorphisme et 
+# la vérification à la compilation dans Elixir.
 defmodule Person do
   defstruct name: nil, age: 0, height: 0
 end
@@ -382,7 +384,7 @@ rescue
 end
 #=> "rescued a runtime error"
 
-# Chaque exception ont un message
+# Chaque exception possède un message
 try do
   raise "some error"
 rescue
@@ -395,13 +397,13 @@ end
 ## -- Concurrence
 ## ---------------------------
 
-# Elixir se repose sur le model d'acteur pour gérer la concurrence.
+# Elixir se repose sur le modèle d'acteur pour gérer la concurrence.
 # Pour écrire un programme concurrent en Elixir il faut trois 
-# primitives: spawning processes (création), sending messages (envoie) 
+# primitives: spawning processes (création), sending messages (envoi) 
 # et receiving messages (réception).
 
 # Pour débuter un nouveau processus, il faut utiliser 
-# la fonction `spawn` qui prends en argument une fonction.
+# la fonction `spawn` qui prend en argument une fonction.
 f = fn -> 2 * 2 end #=> #Function<erl_eval.20.80484245>
 spawn(f) #=> #PID<0.40.0>
 
@@ -413,11 +415,10 @@ spawn(f) #=> #PID<0.40.0>
 # Cela est possible grâce au mechanisme de `receive`:
 
 # Le bloc `receive do` est utilisé pour écouter les messages et les traiter
-# au moment de la réception. Un bloc `receive do` pourra traiter un 
-# message reçu
+# au moment de la réception. Un bloc `receive do` pourra traiter un seul
+# message reçu.
 # Pour traiter plusieurs messages, une fonction avec un bloc `receive do` 
-# block doit s'appeler elle-même récursivement pour atteindre 
-# de nouveau le bloc `receive do`.
+# doit s'appeler elle-même récursivement.
 
 defmodule Geometry do
   def area_loop do
@@ -432,12 +433,12 @@ defmodule Geometry do
   end
 end
 
-# Compile le module et crée un processus qui évalue dans le terminal `area_loop`
+# Ceci compile le module et créer un processus qui évalue dans le terminal `area_loop`
 pid = spawn(fn -> Geometry.area_loop() end) #=> #PID<0.40.0>
 # Alternativement
 pid = spawn(Geometry, :area_loop, [])
 
-# Envoi d'un message au `pid` qui corresponds à la régle de réception
+# On envoi un message au `pid` qui correspond à la régle de réception.
 send pid, {:rectangle, 2, 3}
 #=> Area = 6
 #   {:rectangle,2,3}
@@ -447,21 +448,21 @@ send pid, {:circle, 2}
 #   {:circle,2}
 
 # Le shell est aussi un processus, il est possible d'utiliser `self`
-# pour obtenir le pid du processus courant
+# pour obtenir le pid du processus courant.
 self() #=> #PID<0.27.0>
 
 ## ---------------------------
 ## -- Agents
 ## ---------------------------
 
-# Un agent est un processus qui garde les traces des valeurs modifiées
+# Un agent est un processus qui garde les traces des valeurs modifiées.
 
-# Crée un agent avec `Agent.start_link` avec une fonction.
+# Pour créer un agent on utilise `Agent.start_link` avec une fonction.
 # L'état initial de l'agent sera ce que la fonction retourne
 {ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
 
-# `Agent.get` prends un nom d'agent et une `fn`.
-# Qu'importe ce que cet `fn` retourne, l'état sera ce retour.
+# `Agent.get` prend un nom d'agent et une fonction (`fn`).
+# Qu'importe ce que cette `fn` retourne, l'état sera ce qui est retourné.
 Agent.get(my_agent, fn colors -> colors end) #=> ["red", "green"]
 
 # Modification de l'état de l'agent
