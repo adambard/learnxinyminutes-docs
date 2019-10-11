@@ -257,8 +257,24 @@ for (const i in list) {
    console.log(i); // 0, 1, 2
 }
 
+// Type Assertion
 
+let foo = {} // Creating foo as an empty object
+foo.bar = 123 // Error: property 'bar' does not exist on `{}`
+foo.baz = 'hello world' // Error: property 'baz' does not exist on `{}`
 
+// Because the inferred type of foo is `{}` (an object with 0 properties), you 
+// are not allowed to add bar and baz to it. However with type assertion,
+// the following will pass:
+
+interface Foo { 
+  bar: number;
+  baz: string;
+}
+
+let foo = {} as Foo; // Type assertion here
+foo.bar = 123;
+foo.baz = 'hello world'
 
 ```
 
