@@ -69,7 +69,7 @@ um_mapa_aninhado:
 # Mapas não tem que ter chaves com string.
 0.25: uma chave com valor flutuante
 
-# As chaves podem ser também objetos multi linhas, utilizando ? para indicar o começo de uma chave.
+# As chaves podem ser também objetos multilinhas, utilizando ? para indicar o começo de uma chave.
 ? |
     Esta é uma chave
     que tem várias linhas
@@ -78,7 +78,7 @@ um_mapa_aninhado:
 # também permite tipos de coleção de chaves, mas muitas linguagens de programação
 # vão reclamar.
 
-# Sequências (equivalente a listas ou arrays) semelhante à isso:
+# Sequências (equivalente a listas ou arrays) semelhante a isso:
 uma_sequencia:
     - Item 1
     - Item 2
@@ -91,7 +91,7 @@ uma_sequencia:
         - dentro de outra sequencia
 
 # Como YAML é um super conjunto de JSON, você também pode escrever mapas JSON de estilo e
-# sequencias:
+# sequências:
 mapa_json: {"chave": "valor"}
 json_seq: [3, 2, 1, "decolar"]
 
@@ -134,7 +134,7 @@ set:
     ? item2
     ? item3
 
-# Como Python, são apenas conjuntos de mapas com valors nulos; o acima é equivalente a:
+# Como Python, são apenas conjuntos de mapas com valores nulos; o acima é equivalente a:
 set2:
     item1: nulo
     item2: nulo
