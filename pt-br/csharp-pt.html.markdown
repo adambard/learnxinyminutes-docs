@@ -250,7 +250,7 @@ on a new line! ""Wow!"", the masses cried";
             {
                 // Inicia a interação 100 vezes, fooDoWhile 0->99
                 if (false)
-                    continue; // pule a intereção atual para apróxima
+                    continue; // pule a intereção atual para a próxima
 
                 fooDoWhile++;
 
@@ -267,7 +267,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // For Each Loop
             // Estrutura do foreach  => foreach(<Tipo Iterador> <Nome do Iterador> in <enumerable>)
-            // O laço foreach  percorre sobre qualquer objeto que implementa IEnumerable ou IEnumerable<T>
+            // O laço foreach percorre sobre qualquer objeto que implementa IEnumerable ou IEnumerable<T>
             // Toda a coleção de tipos  (Array, List, Dictionary...) no .Net framework
             // implementa uma ou mais destas interfaces.
             // (O ToCharArray() pode ser removido, por que uma string também implementa IEnumerable)
@@ -311,19 +311,19 @@ on a new line! ""Wow!"", the masses cried";
             // Converting Data Types And Typecasting
             ///////////////////////////////////////
 
-            // Converting data
+            // Conversão de dados
 
-            // Convert String To Integer
-            // this will throw a FormatException on failure
-            int.Parse("123");//returns an integer version of "123"
+            // Converte String para Integer
+            // será lançada uma exceção FormatException em caso de erro
+            int.Parse("123");// retorna um valor inteiro de "123"
 
             // try parse will default to type default on failure
             // in this case: 0
             int tryInt;
-            if (int.TryParse("123", out tryInt)) // Function is boolean
+            if (int.TryParse("123", out tryInt)) // Função é boolean
                 Console.WriteLine(tryInt);       // 123
 
-            // Convert Integer To String
+            // Converte Integer para String
             // Convert class has a number of methods to facilitate conversions
             Convert.ToString(123);
             // or
