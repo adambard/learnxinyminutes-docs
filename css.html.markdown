@@ -164,14 +164,14 @@ selector {
     max-width: 5in;   /* inches */
 
     /* Colors */
-    color: #F6E;                 /* short hex format */
-    color: #FF66EE;              /* long hex format */
-    color: tomato;               /* a named color */
-    color: rgb(255, 255, 255);   /* as rgb values */
-    color: rgb(10%, 20%, 50%);   /* as rgb percentages */
-    color: rgba(255, 0, 0, 0.3); /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
-    color: transparent;          /* equivalent to setting the alpha to 0 */
-    color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
+    color: #F6E;                    /* short hex format */
+    color: #FF66EE;                 /* long hex format */
+    color: tomato;                  /* a named color */
+    color: rgb(255, 255, 255);      /* as rgb values */
+    color: rgb(10%, 20%, 50%);      /* as rgb percentages */
+    color: rgba(255, 0, 0, 0.3);    /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
+    color: transparent;             /* equivalent to setting the alpha to 0 */
+    color: hsl(0, 100%, 50%);       /* as hsl percentages (CSS 3) */
     color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
 
     /* Borders */
