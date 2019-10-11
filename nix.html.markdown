@@ -3,6 +3,8 @@ language: nix
 filename: learn.nix
 contributors:
     - ["Chris Martin", "http://chris-martin.org/"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
+    - ["Javier Candeira", "https://candeira.com/"]
 ---
 
 Nix is a simple functional language developed for the
@@ -11,7 +13,7 @@ Nix is a simple functional language developed for the
 
 You can evaluate Nix expressions using
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
-or [`nix-repl`](https://github.com/edolstra/nix-repl).
+or [`nix repl`](https://nixos.org/nix/manual/#ssec-relnotes-2.0).
 
 ```
 with builtins; [
@@ -38,18 +40,26 @@ with builtins; [
   #=> "a"
 
 
-  #  Integers
+  #  Integers and Floats
   #=========================================
 
-  # Integers are the only numeric type.
+  # There are two numeric types: integers and floats
 
   1 0 42 (-3)       # Some integers
 
+  123.43 .27e13     # A couple of floats
+
+  # Operations will preserve numeric type
+
   (4 + 6 + 12 - 2)  # Addition
   #=> 20
+  (4 - 2.5)
+  #=> 1.5
 
   (7 / 2)           # Division
   #=> 3
+  (7 / 2.0)
+  #=> 3.5
 
 
   #  Strings
@@ -237,13 +247,20 @@ with builtins; [
   }.a.c
   #=> { d = 2; e = 3; }
 
-  # An attribute's descendants cannot be assigned in this
-  # way if the attribute itself has been directly assigned.
+  # Sets are immutable, so you can't redefine an attribute:
+  {
+    a = { b = 1; };
+    a.b = 2;
+  }
+  #=> attribute 'a.b' at (string):3:5 already defined at (string):2:11
+
+  # However, an attribute's set members can also be defined piecewise
+  # way even if the attribute itself has been directly assigned.
   {
     a = { b = 1; };
     a.c = 2;
   }
-  #=> error: attribute ‘a’ already defined
+  #=> { a = { b = 1; c = 2; }; }
 
 
   #  With
@@ -320,8 +337,8 @@ with builtins; [
   #=========================================
 
   # Because repeatability of builds is critical to the Nix package
-  # manager, in which, functional purity is emphasized in the Nix
-  # language. But there are a few impurities.
+  # manager, functional purity is emphasized in the Nix language
+  # used to describe Nix packages. But there are a few impurities.
 
   # You can refer to environment variables.
   (getEnv "HOME")
@@ -356,5 +373,5 @@ with builtins; [
 * [James Fisher - Nix by example - Part 1: The Nix expression language]
   (https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
 
-* [Susan Potter - Nix Cookbook - Nix By Example]
-  (http://funops.co/nix-cookbook/nix-by-example/)
+* [Rommel Martinez - A Gentle Introduction to the Nix Family]
+  (https://ebzzry.io/en/nix/#nix)

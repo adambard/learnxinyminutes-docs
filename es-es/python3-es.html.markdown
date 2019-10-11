@@ -14,8 +14,6 @@ Es básicamente pseudocódigo ejecutable.
 
 ¡Comentarios serán muy apreciados! Pueden contactarme en [@louiedinh](http://twitter.com/louiedinh) o louiedinh [at] [servicio de email de google]
 
-Nota: Este artículo aplica a Python 2.7 específicamente, pero debería ser aplicable a Python 2.x. ¡Pronto un recorrido por Python 3!
-
 ```python
 
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
@@ -39,6 +37,8 @@ Nota: Este artículo aplica a Python 2.7 específicamente, pero debería ser apl
 
 # Excepto la división la cual por defecto retorna un número 'float' (número de coma flotante)
 35 / 5  # => 7.0
+# Sin embargo también tienes disponible división entera
+34 // 5 # => 6
 
 # Cuando usas un float, los resultados son floats
 3 * 2.0 # => 6.0
@@ -87,11 +87,14 @@ not False  # => True
 # .format puede ser usaro para darle formato a los strings, así:
 "{} pueden ser {}".format("strings", "interpolados")
 
-# Puedes repetir los argumentos de formateo para ahorrar tipeos.
+# Puedes reutilizar los argumentos de formato si estos se repiten.
 "{0} sé ligero, {0} sé rápido, {0} brinca sobre la {1}".format("Jack", "vela") #=> "Jack sé ligero, Jack sé rápido, Jack brinca sobre la vela"
 # Puedes usar palabras claves si no quieres contar.
-"{nombre} quiere comer {comida}".format(nombre="Bob", food="lasaña") #=> "Bob quiere comer lasaña"
-
+"{nombre} quiere comer {comida}".format(nombre="Bob", comida="lasaña") #=> "Bob quiere comer lasaña"
+# También puedes interpolar cadenas usando variables en el contexto
+nombre = 'Bob'
+comida = 'Lasaña'
+f'{nombre} quiere comer {comida}'  #=> "Bob quiere comer lasaña"
 
 # None es un objeto
 None  # => None
@@ -101,12 +104,13 @@ None  # => None
 "etc" is None #=> False
 None is None  #=> True
 
-# None, 0, y strings/listas/diccionarios vacíos(as) todos se evalúan como False.
+# None, 0, y strings/listas/diccionarios/conjuntos vacíos(as) todos se evalúan como False.
 # Todos los otros valores son True
 bool(0)  # => False
 bool("")  # => False
 bool([]) #=> False
 bool({}) #=> False
+bool(set()) #=> False
 
 
 ####################################################
@@ -170,7 +174,7 @@ lista + otra_lista #=> [1, 2, 3, 4, 5, 6] - Nota: lista y otra_lista no se tocan
 # Concatenar listas con 'extend'
 lista.extend(otra_lista) # lista ahora es [1, 2, 3, 4, 5, 6]
 
-# Chequea la existencia en una lista con 'in'
+# Verifica la existencia en una lista con 'in'
 1 in lista #=> True
 
 # Examina el largo de una lista con 'len'
@@ -196,7 +200,7 @@ d, e, f = 4, 5, 6
 e, d = d, e     # d ahora es 5 y e ahora es 4
 
 
-# Diccionarios almacenan mapeos
+# Diccionarios relacionan llaves y valores
 dicc_vacio = {}
 # Aquí está un diccionario prellenado
 dicc_lleno = {"uno": 1, "dos": 2, "tres": 3}
@@ -213,7 +217,7 @@ list(dicc_lleno.keys()) #=> ["tres", "dos", "uno"]
 list(dicc_lleno.values()) #=> [3, 2, 1]
 # Nota - Lo mismo que con las llaves, no se garantiza el orden.
 
-# Chequea la existencia de una llave en el diccionario con 'in'
+# Verifica la existencia de una llave en el diccionario con 'in'
 "uno" in dicc_lleno #=> True
 1 in dicc_lleno #=> False
 
@@ -253,7 +257,7 @@ conjunto_lleno | otro_conjunto #=> {1, 2, 3, 4, 5, 6}
 # Haz diferencia de conjuntos con -
 {1,2,3,4} - {2,3,5} #=> {1, 4}
 
-# Chequea la existencia en un conjunto con 'in'
+# Verifica la existencia en un conjunto con 'in'
 2 in conjunto_lleno #=> True
 10 in conjunto_lleno #=> False
 
@@ -262,7 +266,7 @@ conjunto_lleno | otro_conjunto #=> {1, 2, 3, 4, 5, 6}
 ## 3. Control de Flujo
 ####################################################
 
-# Let's just make a variable
+# Creemos una variable para experimentar
 some_var = 5
 
 # Aquí está una declaración de un 'if'. ¡La indentación es significativa en Python!
@@ -275,18 +279,17 @@ else:           # Esto también es opcional.
     print("una_variable es de hecho 10.")
 
 """
-For itera sobre listas
+For itera sobre iterables (listas, cadenas, diccionarios, tuplas, generadores...)
 imprime:
     perro es un mamifero
     gato es un mamifero
     raton es un mamifero
 """
 for animal in ["perro", "gato", "raton"]:
-    # Puedes usar % para interpolar strings formateados
     print("{} es un mamifero".format(animal))
 
 """
-`range(número)` retorna una lista de números
+`range(número)` retorna un generador de números
 desde cero hasta el número dado
 imprime:
     0
@@ -323,7 +326,7 @@ except IndexError as e:
 
 dicc_lleno = {"uno": 1, "dos": 2, "tres": 3}
 nuestro_iterable = dicc_lleno.keys()
-print(nuestro_iterable) #=> range(1,10). Este es un objeto que implementa nuestra interfaz Iterable
+print(nuestro_iterable) #=> dict_keys(['uno', 'dos', 'tres']). Este es un objeto que implementa nuestra interfaz Iterable
 
 Podemos recorrerla.
 for i in nuestro_iterable:
@@ -420,6 +423,10 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 # Podemos usar listas por comprensión para mapeos y filtros agradables
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
+# también hay diccionarios
+{k:k**2 for k in range(3)} #=> {0: 0, 1: 1, 2: 4}
+# y conjuntos por comprensión
+{c for c in "la cadena"} #=> {'d', 'l', 'a', 'n', ' ', 'c', 'e'}
 
 ####################################################
 ## 5. Classes

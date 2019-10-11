@@ -886,7 +886,6 @@ v.swap(vector<Foo>());
 ```
 ## Дальнейшее чтение:
 
-Наиболее полное и обновленное руководство по С++ можно найти на
-<http://cppreference.com/w/cpp>
-
-Дополнительные ресурсы могут быть найдены на <http://cplusplus.com>
+* Наиболее полное и обновленное руководство по С++ можно найти на [CPP Reference](http://cppreference.com/w/cpp).
+* Дополнительные ресурсы могут быть найдены на [CPlusPlus](http://cplusplus.com).
+* Учебник, посвященный основам языка и настройке среды кодирования, доступен в [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).

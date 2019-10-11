@@ -467,7 +467,7 @@ Humano.roncar() #=> "*roncar*"
 
 # Puedes importar módulos
 import math
-print math.sqrt(16) #=> 4
+print math.sqrt(16) #=> 4.0
 
 # Puedes obtener funciones específicas desde un módulo
 from math import ceil, floor

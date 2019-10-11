@@ -344,7 +344,7 @@ on a new line! ""Wow!"", the masses cried";
             tryInt.ToString();
 
             // Casting
-            // Cast decimal 15 to a int
+            // Cast decimal 15 to an int
             // and then implicitly cast to long
             long x = (int) 15M;
         }
@@ -639,6 +639,54 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine(obj.ToString());
         }
     }
+
+
+    // DELEGATES AND EVENTS
+    public class DelegateTest
+    {
+        public static int count = 0;
+        public static int Increment()
+        {
+            // increment count then return it
+            return ++count;
+        }
+
+        // A delegate is a reference to a method
+        // To reference the Increment method,
+        // first declare a delegate with the same signature
+        // ie. takes no arguments and returns an int
+        public delegate int IncrementDelegate();
+
+        // An event can also be used to trigger delegates
+        // Create an event with the delegate type
+        public static event IncrementDelegate MyEvent;
+
+        static void Main(string[] args)
+        {
+            // Refer to the Increment method by instantiating the delegate
+            // and passing the method itself in as an argument
+            IncrementDelegate inc = new IncrementDelegate(Increment);
+            Console.WriteLine(inc());  // => 1
+
+            // Delegates can be composed with the + operator
+            IncrementDelegate composedInc = inc;
+            composedInc += inc;
+            composedInc += inc;
+
+            // composedInc will run Increment 3 times
+            Console.WriteLine(composedInc());  // => 4
+
+
+            // Subscribe to the event with the delegate
+            MyEvent += new IncrementDelegate(Increment);
+            MyEvent += new IncrementDelegate(Increment);
+
+            // Trigger the event
+            // ie. run all delegates subscribed to this event
+            Console.WriteLine(MyEvent());  // => 6
+        }
+    }
+
 
     // Class Declaration Syntax:
     // <public/private/protected/internal> class <class name>{
@@ -1106,25 +1154,144 @@ namespace Learning.More.CSharp
     }
 }
 
+//New C# 7 Feature
+//Install Microsoft.Net.Compilers Latest from Nuget
+//Install System.ValueTuple Latest from Nuget
 using System;
 namespace Csharp7
 {
-	//New C# 7 Feature
-	//Install Microsoft.Net.Compilers Latest from Nuget
-	//Install System.ValueTuple Latest from Nuget
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			//Type 1 Declaration
-			(string FirstName, string LastName) names1 = ("Peter", "Parker");
-			Console.WriteLine(names1.FirstName);
+    // TUPLES, DECONSTRUCTION AND DISCARDS
+    class TuplesTest
+    {
+        public (string, string) GetName()
+        {
+            // Fields in tuples are by default named Item1, Item2...
+            var names1 = ("Peter", "Parker");
+            Console.WriteLine(names1.Item2);  // => Parker
 
-			//Type 2 Declaration
-			var names2 = (First:"Peter", Last:"Parker");
-			Console.WriteLine(names2.Last);
-		}
-	}
+            // Fields can instead be explicitly named
+            // Type 1 Declaration
+            (string FirstName, string LastName) names2 = ("Peter", "Parker");
+
+            // Type 2 Declaration
+            var names3 = (First:"Peter", Last:"Parker");
+
+            Console.WriteLine(names2.FirstName);  // => Peter
+            Console.WriteLine(names3.Last);  // => Parker
+
+            return names3;
+        }
+
+        public string GetLastName() {
+            var fullName = GetName();
+
+            // Tuples can be deconstructed
+            (string firstName, string lastName) = fullName;
+
+            // Fields in a deconstructed tuple can be discarded by using _
+            var (_, last) = fullName;
+            return last;
+        }
+
+        // Any type can be deconstructed in the same way by
+        // specifying a Deconstruct method
+        public int randomNumber = 4;
+        public int anotherRandomNumber = 10;
+
+        public void Deconstruct(out int randomNumber, out int anotherRandomNumber)
+        {
+            randomNumber = this.randomNumber;
+            anotherRandomNumber = this.anotherRandomNumber;
+        }
+
+        static void Main(string[] args)
+        {
+            var tt = new TuplesTest();
+            (int num1, int num2) = tt;
+            Console.WriteLine($"num1: {num1}, num2: {num2}");  // => num1: 4, num2: 10
+
+            Console.WriteLine(tt.GetLastName());
+        }
+    }
+    
+    // PATTERN MATCHING
+    class PatternMatchingTest
+    {
+        public static (string, int)? CreateLogMessage(object data)
+        {
+            switch(data)
+            {
+                // Additional filtering using when
+                case System.Net.Http.HttpRequestException h when h.Message.Contains("404"):
+                    return (h.Message, 404);
+                case System.Net.Http.HttpRequestException h when h.Message.Contains("400"):
+                    return (h.Message, 400);
+                case Exception e:
+                    return (e.Message, 500);
+                case string s:
+                    return (s, s.Contains("Error") ? 500 : 200);
+                case null:
+                    return null;
+                default:
+                    return (data.ToString(), 500);
+            }
+        }
+    }
+
+    // REFERENCE LOCALS
+    // Allow you to return a reference to an object instead of just its value
+    class RefLocalsTest
+    {
+        // note ref in return
+        public static ref string FindItem(string[] arr, string el)
+        {
+            for(int i=0; i<arr.Length; i++)
+            {
+                if(arr[i] == el) {
+                    // return the reference
+                    return ref arr[i];
+                }
+            }
+            throw new Exception("Item not found");
+        }
+
+        public static void SomeMethod()
+        {
+            string[] arr = {"this", "is", "an", "array"};
+
+            // note refs everywhere
+            ref string item = ref FindItem(arr, "array");
+            item = "apple";
+            Console.WriteLine(arr[3]);  // => apple
+        }
+    }
+
+    // LOCAL FUNCTIONS
+    class LocalFunctionTest
+    {
+        private static int _id = 0;
+        public int id;
+        public LocalFunctionTest()
+        {
+            id = generateId();
+
+            // This local function can only be accessed in this scope
+            int generateId()
+            {
+                return _id++;
+            }
+        }
+
+        public static void AnotherMethod()
+        {
+            var lf1 = new LocalFunctionTest();
+            var lf2 = new LocalFunctionTest();
+            Console.WriteLine($"{lf1.id}, {lf2.id}");  // => 0, 1
+
+            int id = generateId();
+            // error CS0103: The name 'generateId' does not exist in the current context
+        }
+    }
 }
 
 ```

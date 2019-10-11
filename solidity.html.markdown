@@ -4,6 +4,8 @@ filename: learnSolidity.sol
 contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]
+  - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
+  - ["Shooter", "https://github.com/liushooter"]
 ---
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
@@ -37,8 +39,8 @@ features are typically marked, and subject to change. Pull requests welcome.
 // simple_bank.sol (note .sol extension)
 /* **** START EXAMPLE **** */
 
-// Declare the source file compiler version.
-pragma solidity ^0.4.2;
+// Declare the source file compiler version
+pragma solidity ^0.4.19;
 
 // Start with Natspec comment (the three slashes)
 // used for documentation - and as descriptive data for UI elements/actions
@@ -65,7 +67,7 @@ contract SimpleBank { // CapWords
     event LogDepositMade(address accountAddress, uint amount);
 
     // Constructor, can receive one or many variables here; only one allowed
-    function SimpleBank() {
+    function SimpleBank() public {
         // msg provides details about the message that's sent to the contract
         // msg.sender is contract caller (address of contract creator)
         owner = msg.sender;
@@ -73,7 +75,11 @@ contract SimpleBank { // CapWords
 
     /// @notice Deposit ether into bank
     /// @return The balance of the user after the deposit is made
-    function deposit() public returns (uint) {
+    function deposit() public payable returns (uint) {
+        // Use 'require' to test user inputs, 'assert' for internal invariants
+        // Here we are making sure that there isn't an overflow issue
+        require((balances[msg.sender] + msg.value) >= balances[msg.sender]);
+
         balances[msg.sender] += msg.value;
         // no "this." or "self." required with state variable
         // all values set to data type's initial value by default
@@ -88,37 +94,27 @@ contract SimpleBank { // CapWords
     /// @param withdrawAmount amount you want to withdraw
     /// @return The balance remaining for the user
     function withdraw(uint withdrawAmount) public returns (uint remainingBal) {
-        if(balances[msg.sender] >= withdrawAmount) {
-            // Note the way we deduct the balance right away, before sending - due to
-            // the risk of a recursive call that allows the caller to request an amount greater
-            // than their balance
-            balances[msg.sender] -= withdrawAmount;
+        require(withdrawAmount <= balances[msg.sender]);
 
-            if (!msg.sender.send(withdrawAmount)) {
-                // increment back only on fail, as may be sending to contract that
-                // has overridden 'send' on the receipt end
-                balances[msg.sender] += withdrawAmount;
-            }
-        }
+        // Note the way we deduct the balance right away, before sending
+        // Every .transfer/.send from this contract can call an external function
+        // This may allow the caller to request an amount greater
+        // than their balance using a recursive call
+        // Aim to commit state before calling external functions, including .transfer/.send
+        balances[msg.sender] -= withdrawAmount;
+
+        // this automatically throws on a failure, which means the updated balance is reverted
+        msg.sender.transfer(withdrawAmount);
 
         return balances[msg.sender];
     }
 
     /// @notice Get balance
     /// @return The balance of the user
-    // 'constant' prevents function from editing state variables;
+    // 'view' (ex: constant) prevents function from editing state variables;
     // allows function to run locally/off blockchain
-    function balance() constant returns (uint) {
+    function balance() view public returns (uint) {
         return balances[msg.sender];
-    }
-
-    // Fallback function - Called if other functions don't match call or
-    // sent ether without data
-    // Typically, called when invalid data is sent
-    // Added so ether sent to this contract is reverted if the contract fails
-    // otherwise, the sender's money is transferred to contract
-    function () {
-        throw; // throw reverts state to before call
     }
 }
 // ** END EXAMPLE **
@@ -137,6 +133,11 @@ int256 constant a = 8; // same effect as line above, here the 256 is explicit
 uint constant VERSION_ID = 0x123A1; // A hex constant
 // with 'constant', compiler replaces each occurrence with actual value
 
+// All state variables (those outside a function)
+// are by default 'internal' and accessible inside contract
+// and in all contracts that inherit ONLY
+// Need to explicitly set to 'public' to allow external contracts to access
+int256 public a = 8;
 
 // For int and uint, can explicitly set space in steps of 8 up to 256
 // e.g., int8, int16, int24
@@ -145,6 +146,12 @@ int64 c;
 uint248 e;
 
 // Be careful that you don't overflow, and protect against attacks that do
+// For example, for an addition, you'd do:
+uint256 c = a + b;
+assert(c >= a); // assert tests for internal invariants; require is used for user inputs
+// For more examples of common arithmetic issues, see Zeppelin's SafeMath library
+// https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
+
 
 // No random functions built in, use other contracts for randomness
 
@@ -165,13 +172,13 @@ address public owner;
 // a getter is automatically created, but NOT a setter
 
 // All addresses can be sent ether
-owner.send(SOME_BALANCE); // returns false on failure
-if (owner.send) {} // REMEMBER: wrap in 'if', as contract addresses have
+owner.transfer(SOME_BALANCE); // fails and reverts on failure
+
+// Can also do a lower level .send call, which returns a false if it failed
+if (owner.send) {} // REMEMBER: wrap send in 'if', as contract addresses have
 // functions executed on send and these can fail
 // Also, make sure to deduct balances BEFORE attempting a send, as there is a risk of a recursive
 // call that can drain the contract
-
-// can override send by defining your own
 
 // Can check balance
 owner.balance; // the balance of the owner (user or contract)
@@ -213,7 +220,7 @@ uint x = 5;
 
 
 // Destructuring/Tuples
-(x, y) = (2, 7); // assign/swap multiple value
+(x, y) = (2, 7); // assign/swap multiple values
 
 
 // 2. DATA STRUCTURES
@@ -231,7 +238,7 @@ uint x[][5]; // arr with 5 dynamic array elements (opp order of most languages)
 // Dictionaries (any type to any other type)
 mapping (string => uint) public balances;
 balances["charles"] = 1;
-console.log(balances["ada"]); // is 0, all non-set key values return zeroes
+// balances["ada"] result is 0, all non-set key values return zeroes
 // 'public' allows following from another contract
 contractName.balances("charles"); // returns 1
 // 'public' created a getter (but not setter) like the following:
@@ -250,7 +257,7 @@ delete balances; // sets all elements to 0
 // mapping, without knowing source keys - can build data structure
 // on top to do this
 
-// Structs and enums
+// Structs
 struct Bank {
     address owner;
     uint balance;
@@ -273,7 +280,7 @@ state = State.Created;
 // enums can be explicitly converted to ints
 uint createdState = uint(State.Created); //  0
 
-// Data locations: Memory vs. storage vs. stack - all complex types (arrays,
+// Data locations: Memory vs. storage vs. calldata - all complex types (arrays,
 // structs) have a data location
 // 'memory' does not persist, 'storage' does
 // Default is 'storage' for local and state variables; 'memory' for func params
@@ -292,13 +299,13 @@ uint createdState = uint(State.Created); //  0
 // 4. Global Variables of note
 // ** this **
 this; // address of contract
-// often used at end of contract life to send remaining balance to party
+// often used at end of contract life to transfer remaining balance to party
 this.balance;
 this.someFunction(); // calls func externally via call, not via internal jump
 
 // ** msg - Current message received by the contract ** **
 msg.sender; // address of sender
-msg.value; // amount of ether provided to this contract in wei
+msg.value; // amount of ether provided to this contract in wei, the function should be marked "payable"
 msg.data; // bytes, complete call data
 msg.gas; // remaining gas
 
@@ -308,6 +315,8 @@ tx.gasprice; // gas price of the transaction
 
 // ** block - Information about current block **
 now; // current time (approximately), alias for block.timestamp (uses Unix time)
+// Note that this can be manipulated by miners, so use carefully
+
 block.number; // current block number
 block.difficulty; // current block difficulty
 block.blockhash(1); // returns bytes32, only works for most recent 256 blocks
@@ -334,22 +343,32 @@ function increment(uint x, uint y) returns (uint x, uint y) {
 // Call previous functon
 uint (a,b) = increment(1,1);
 
-// 'constant' indicates that function does not/cannot change persistent vars
-// Constant function execute locally, not on blockchain
-uint y;
+// 'view' (alias for 'constant')
+// indicates that function does not/cannot change persistent vars
+// View function execute locally, not on blockchain
+// Noted: constant keyword will soon be deprecated.
+uint y = 1;
 
-function increment(uint x) constant returns (uint x) {
+function increment(uint x) view returns (uint x) {
     x += 1;
     y += 1; // this line would fail
-    // y is a state variable, and can't be changed in a constant function
+    // y is a state variable, and can't be changed in a view function
 }
 
+// 'pure' is more strict than 'view' or 'constant', and does not
+// even allow reading of state vars
+// The exact rules are more complicated, so see more about
+// view/pure:
+// http://solidity.readthedocs.io/en/develop/contracts.html#view-functions
+
 // 'Function Visibility specifiers'
-// These can be placed where 'constant' is, including:
-// public - visible externally and internally (default)
-// external
+// These can be placed where 'view' is, including:
+// public - visible externally and internally (default for function)
+// external - only visible externally (including a call made with this.)
 // private - only visible in the current contract
 // internal - only visible in current contract, and those deriving from it
+
+// Generally, a good idea to mark each function explicitly
 
 // Functions hoisted - and can assign a function to a variable
 function a() {
@@ -361,8 +380,15 @@ function b() {
 
 }
 
+// All functions that receive ether must be marked 'payable'
+function depositEther() public payable {
+    balances[msg.sender] += msg.value;
+}
+
 
 // Prefer loops to recursion (max call stack depth is 1024)
+// Also, don't setup loops that you haven't bounded,
+// as this can hit the gas limit
 
 // B. Events
 // Events are notify external parties; easy to search and
@@ -376,10 +402,15 @@ function b() {
 event LogSent(address indexed from, address indexed to, uint amount); // note capital first letter
 
 // Call
-Sent(from, to, amount);
+LogSent(from, to, amount);
 
-// For an external party (a contract or external entity), to watch:
-Coin.Sent().watch({}, '', function(error, result) {
+/**
+
+For an external party (a contract or external entity), to watch using
+the Web3 Javascript library:
+
+// The following is Javascript code, not Solidity code
+Coin.LogSent().watch({}, '', function(error, result) {
     if (!error) {
         console.log("Coin transfer: " + result.args.amount +
             " coins were sent from " + result.args.from +
@@ -389,6 +420,8 @@ Coin.Sent().watch({}, '', function(error, result) {
             "Receiver: " + Coin.balances.call(result.args.to));
     }
 }
+**/
+
 // Common paradigm for one contract to depend on another (e.g., a
 // contract that depends on current exchange rate provided by another)
 
@@ -398,10 +431,10 @@ Coin.Sent().watch({}, '', function(error, result) {
 
 // '_' (underscore) often included as last line in body, and indicates
 // function being called should be placed there
-modifier onlyAfter(uint _time) { if (now <= _time) throw; _ }
-modifier onlyOwner { if (msg.sender == owner) _ }
+modifier onlyAfter(uint _time) { require (now >= _time); _; }
+modifier onlyOwner { require(msg.sender == owner) _; }
 // commonly used with state machines
-modifier onlyIfState (State currState) { if (currState != State.A) _ }
+modifier onlyIfStateA (State currState) { require(currState == State.A) _; }
 
 // Append right after function declaration
 function changeOwner(newOwner)
@@ -415,12 +448,10 @@ onlyIfState(State.A)
 // underscore can be included before end of body,
 // but explicitly returning will skip, so use carefully
 modifier checkValue(uint amount) {
-    _
+    _;
     if (msg.value > amount) {
         uint amountToRefund = amount - msg.value;
-        if (!msg.sender.send(amountToRefund)) {
-            throw;
-        }
+        msg.sender.transfer(amountToRefund);
     }
 }
 
@@ -437,23 +468,22 @@ modifier checkValue(uint amount) {
 // amount of gas for a block of code - and will fail if that is exceeded
 // For example:
 for(uint x = 0; x < refundAddressList.length; x++) {
-    if (!refundAddressList[x].send(SOME_AMOUNT)) {
-       throw;
-    }
+    refundAddressList[x].transfer(SOME_AMOUNT);
 }
 
 // Two errors above:
-// 1. A failure on send stops the loop from completing, tying up money
+// 1. A failure on transfer stops the loop from completing, tying up money
 // 2. This loop could be arbitrarily long (based on the amount of users who need refunds), and
 // therefore may always fail as it exceeds the max gas for a block
 // Instead, you should let people withdraw individually from their subaccount, and mark withdrawn
+// e.g., favor pull payments over push payments
 
 
 // 7. OBJECTS/CONTRACTS
 
 // A. Calling external contract
-contract infoFeed {
-    function info() returns (uint ret) { return 42; }
+contract InfoFeed {
+    function info() payable returns (uint ret)  { return 42; }
 }
 
 contract Consumer {
@@ -502,23 +532,10 @@ function someAbstractFunction(uint x);
 import "filename";
 import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
 
-// Importing under active development
-// Cannot currently be done at command line
-
 
 // 8. OTHER KEYWORDS
 
-// A. Throwing
-// Throwing
-throw; // reverts unused money to sender, state is reverted
-// Can't currently catch
-
-// Common design pattern is:
-if (!addr.send(123)) {
-    throw;
-}
-
-// B. Selfdestruct
+// A. Selfdestruct
 // selfdestruct current contract, sending funds to address (often creator)
 selfdestruct(SOME_ADDRESS);
 
@@ -543,7 +560,7 @@ function remove() {
 // that is private needs to be obfuscated (e.g., hashed w/secret)
 
 // Steps: 1. Commit to something, 2. Reveal commitment
-sha3("some_bid_amount", "some secret"); // commit
+keccak256("some_bid_amount", "some secret"); // commit
 
 // call contract's reveal function in the future
 // showing bid plus secret that hashes to SHA3
@@ -617,6 +634,7 @@ contract SomeOracle {
 // ** START EXAMPLE **
 
 // CrowdFunder.sol
+pragma solidity ^0.4.19;
 
 /// @title CrowdFunder
 /// @author nemild
@@ -650,22 +668,20 @@ contract CrowdFunder {
     event LogWinnerPaid(address winnerAddress);
 
     modifier inState(State _state) {
-        if (state != _state) throw;
-        _
+        require(state == _state);
+        _;
     }
 
     modifier isCreator() {
-        if (msg.sender != creator) throw;
-        _
+        require(msg.sender == creator);
+        _;
     }
 
-    // Wait 6 months after final contract state before allowing contract destruction
+    // Wait 24 weeks after final contract state before allowing contract destruction
     modifier atEndOfLifecycle() {
-    if(!((state == State.ExpiredRefund || state == State.Successful) &&
-        completeAt + 6 months < now)) {
-            throw;
-        }
-        _
+    require(((state == State.ExpiredRefund || state == State.Successful) &&
+        completeAt + 24 weeks < now));
+        _;
     }
 
     function CrowdFunder(
@@ -673,6 +689,7 @@ contract CrowdFunder {
         string _campaignUrl,
         address _fundRecipient,
         uint _minimumToRaise)
+        public
     {
         creator = msg.sender;
         fundRecipient = _fundRecipient;
@@ -683,7 +700,9 @@ contract CrowdFunder {
 
     function contribute()
     public
+    payable
     inState(State.Fundraising)
+    returns(uint256 id)
     {
         contributions.push(
             Contribution({
@@ -699,7 +718,9 @@ contract CrowdFunder {
         return contributions.length - 1; // return id
     }
 
-    function checkIfFundingCompleteOrExpired() {
+    function checkIfFundingCompleteOrExpired()
+    public
+    {
         if (totalRaised > minimumToRaise) {
             state = State.Successful;
             payOut();
@@ -715,31 +736,23 @@ contract CrowdFunder {
     public
     inState(State.Successful)
     {
-        if(!fundRecipient.send(this.balance)) {
-            throw;
-        }
-
-
+        fundRecipient.transfer(this.balance);
         LogWinnerPaid(fundRecipient);
     }
 
-    function getRefund(id)
-    public
+    function getRefund(uint256 id)
     inState(State.ExpiredRefund)
+    public
+    returns(bool)
     {
-        if (contributions.length <= id || id < 0 || contributions[id].amount == 0 ) {
-            throw;
-        }
+        require(contributions.length > id && id >= 0 && contributions[id].amount != 0 );
 
-        uint amountToRefund = contributions[id].amount;
+        uint256 amountToRefund = contributions[id].amount;
         contributions[id].amount = 0;
 
-        if(!contributions[id].contributor.send(amountToSend)) {
-            contributions[id].amount = amountToSend;
-            return false;
-        }
+        contributions[id].contributor.transfer(amountToRefund);
 
-      return true;
+        return true;
     }
 
     function removeContract()
@@ -750,8 +763,6 @@ contract CrowdFunder {
         selfdestruct(msg.sender);
         // creator gets all money that hasn't be claimed
     }
-
-    function () { throw; }
 }
 // ** END EXAMPLE **
 
@@ -798,6 +809,7 @@ someContractAddress.callcode('function_name');
 
 // 13. STYLE NOTES
 // Based on Python's PEP8 style guide
+// Full Style guide: http://solidity.readthedocs.io/en/develop/style-guide.html
 
 // Quick summary:
 // 4 spaces for indentation
@@ -825,10 +837,15 @@ someContractAddress.callcode('function_name');
 
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
-- [Solidity Style Guide](https://ethereum.github.io/solidity//docs/style-guide/): Ethereum's style guide is heavily derived from Python's [pep8](https://www.python.org/dev/peps/pep-0008/) style guide.
-- [Browser-based Solidity Editor](http://chriseth.github.io/browser-solidity/)
+- [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
+- [Superblocks Lab - Browser based IDE for Solidity](https://lab.superblocks.com/)
+- [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
+- [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
+
+## Important libraries
+- [Zeppelin](https://github.com/OpenZeppelin/zeppelin-solidity/): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
 
 ## Sample contracts
 - [Dapp Bin](https://github.com/ethereum/dapp-bin)
@@ -841,13 +858,11 @@ someContractAddress.callcode('function_name');
 - [Smart Contract Security](https://blog.ethereum.org/2016/06/10/smart-contract-security/)
 - [Hacking Distributed Blog](http://hackingdistributed.com/)
 
-## Information purposefully excluded
-- Libraries
-
 ## Style
-- Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy
+- [Solidity Style Guide](http://solidity.readthedocs.io/en/latest/style-guide.html): Ethereum's style guide is heavily derived from Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
 
 ## Editors
+- [Emacs Solidity Mode](https://github.com/ethereum/emacs-solidity)
 - [Vim Solidity](https://github.com/tomlion/vim-solidity)
 - Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
 

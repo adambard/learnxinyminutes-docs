@@ -1,5 +1,6 @@
 ---
-language: Statistical computing with Python
+category: tool
+tool: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 filename: pythonstatcomp-es.py

@@ -12,12 +12,9 @@ translators:
 lang: zh-cn
 ---
 
-Javascript于1995年由网景公司的Brendan Eich发明。
-最初发明的目的是作为一个简单的网站脚本语言，来作为
-复杂网站应用java的补充。但由于它与网页结合度很高并且由浏览器内置支持，
-所以javascript变得比java在前端更为流行了。
+Javascript 于 1995 年由网景公司的 Brendan Eich 发明。最初它作为一种简单的，用于开发网站的脚本语言而被发明出来，是用于开发复杂网站的 Java 的补充。但由于它与网页结合度很高并且在浏览器中得到内置的支持，所以在网页前端领域 Javascript 变得比 Java 更流行了。
 
-不过 JavaScript 可不仅仅只用于浏览器： Node.js，一个基于Google Chrome V8引擎的独立运行时环境，也越来越流行。
+不过，Javascript 不仅用于网页浏览器，一个名为 Node.js 的项目提供了面向 Google Chrome V8 引擎的独立运行时环境，它正在变得越来越流行。
 
 很欢迎来自您的反馈，您可以通过下列方式联系到我：
 [@adambrenecki](https://twitter.com/adambrenecki), 或者

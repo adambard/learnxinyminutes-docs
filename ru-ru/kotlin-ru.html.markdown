@@ -8,7 +8,7 @@ translators:
     - ["Vadim Toptunov", "https://github.com/VadimToptunov"]
 ---
 
-Kotlin - статистически типизированный язык для JVM, Android и браузера. Язык полностью cjdvtcnbv c Java. 
+Kotlin - статистически типизированный язык для JVM, Android и браузера. Язык полностью совместим c Java. 
 [Более детальная информация здесь.](https://kotlinlang.org/)
 
 ```kotlin

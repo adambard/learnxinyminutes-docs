@@ -10,9 +10,12 @@ lang: zh-cn
 
 ---
 
-MATLAB 是 MATrix LABoratory （矩阵实验室）的缩写，它是一种功能强大的数值计算语言，在工程和数学领域中应用广泛。
+MATLAB 是 MATrix LABoratory（矩阵实验室）的缩写。
+它是一种功能强大的数值计算语言，在工程和数学领域中应用广泛。
 
-如果您有任何需要反馈或交流的内容，请联系本教程作者[@the_ozzinator](https://twitter.com/the_ozzinator)、[osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com)。
+如果您有任何需要反馈或交流的内容，请联系本教程作者：
+[@the_ozzinator](https://twitter.com/the_ozzinator) 
+或 [osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com)。
 
 ```matlab
 % 以百分号作为注释符
@@ -45,7 +48,7 @@ edit('myfunction.m')  % 在编辑器中打开指定函数或脚本
 type('myfunction.m')  % 在命令窗口中打印指定函数或脚本的源码
 
 profile on  % 打开 profile 代码分析工具
-profile of  % 关闭 profile 代码分析工具
+profile off % 关闭 profile 代码分析工具
 profile viewer  % 查看 profile 代码分析工具的分析结果
 
 help command    % 在命令窗口中显示指定命令的帮助文档
@@ -113,7 +116,7 @@ b(2)  % ans = 符
 % 元组（cell 数组）
 a = {'one', 'two', 'three'} 
 a(1)  % ans = 'one' - 返回一个元组
-char(a(1))  % ans = one - 返回一个字符串
+a{1}  % ans = one - 返回一个字符串
 
 
 % 结构体
@@ -210,8 +213,8 @@ size(A)  % 返回矩阵的行数和列数，ans = 3 3
 A(1, :) =[]  % 删除矩阵的第 1 行
 A(:, 1) =[]  % 删除矩阵的第 1 列
 
-transpose(A)  % 矩阵转置，等价于 A'
-ctranspose(A)  % 矩阵的共轭转置（对矩阵中的每个元素取共轭复数）
+transpose(A)  % 矩阵（非共轭）转置，等价于 A.' （注意！有个点）
+ctranspose(A)  % 矩阵的共轭转置（对矩阵中的每个元素取共轭复数），等价于 A'
 
 
 % 元素运算 vs. 矩阵运算
@@ -219,18 +222,20 @@ ctranspose(A)  % 矩阵的共轭转置（对矩阵中的每个元素取共轭复
 % 在运算符加上英文句点就是对矩阵中的元素进行元素计算
 % 示例如下：
 A * B  % 矩阵乘法，要求 A 的列数等于 B 的行数
-A .* B  % 元素乘法，要求 A 和 B 形状一致（A 的行数等于 B 的行数， A 的列数等于 B 的列数）
-% 元素乘法的结果是与 A 和 B 形状一致的矩阵，其每个元素等于 A 对应位置的元素乘 B 对应位置的元素
+A .* B  % 元素乘法，要求 A 和 B 形状一致，即两矩阵行列数完全一致
+        % 元素乘法的结果是与 A 和 B 形状一致的矩阵
+        % 其每个元素等于 A 对应位置的元素乘 B 对应位置的元素
 
 % 以下函数中，函数名以 m 结尾的执行矩阵运算，其余执行元素运算： 
 exp(A)  % 对矩阵中每个元素做指数运算
 expm(A)  % 对矩阵整体做指数运算
 sqrt(A)  % 对矩阵中每个元素做开方运算
-sqrtm(A)  % 对矩阵整体做开放运算（即试图求出一个矩阵，该矩阵与自身的乘积等于 A 矩阵）
+sqrtm(A)  % 对矩阵整体做开方运算（即试图求出一个矩阵，该矩阵与自身的乘积等于 A 矩阵）
 
 
 % 绘图
-x = 0:.10:2*pi;  % 生成一向量，其元素从 0 开始，以 0.1 的间隔一直递增到 2*pi（pi 就是圆周率）
+x = 0:0.1:2*pi; % 生成一向量，其元素从 0 开始，以 0.1 的间隔一直递增到 2*pi
+                % 其中 pi 为圆周率
 y = sin(x);
 plot(x,y)
 xlabel('x axis')
@@ -288,7 +293,10 @@ clf clear  % 清除图形窗口中的图像，并重置图像属性
 % 也可以用 gcf 函数返回当前图像的句柄 
 h = plot(x, y);  % 在创建图像时显式地保存图像句柄
 set(h, 'Color', 'r')
-% 颜色代码：'y' 黄色，'m' 洋红色，'c' 青色，'r' 红色，'g' 绿色，'b' 蓝色，'w' 白色，'k' 黑色
+% 颜色代码：
+%   'y' 黄色，'m' 洋红，'c' 青色
+%   'r' 红色，'g' 绿色，'b' 蓝色
+%   'w' 白色，'k' 黑色
 set(h, 'Color', [0.5, 0.5, 0.4])
 % 也可以使用 RGB 值指定颜色
 set(h, 'LineStyle', '--')
@@ -328,7 +336,8 @@ load('myFileName.mat')  % 将指定文件中的变量载入到当前工作空间
 % 与脚本文件类似，同样以 .m 作为后缀名
 % 但函数文件可以接受用户输入的参数并返回运算结果
 % 并且函数拥有自己的工作空间（变量域），不必担心变量名称冲突
-% 函数文件的名称应当与其所定义的函数的名称一致（比如下面例子中函数文件就应命名为 double_input.m）
+% 函数文件的名称应当与其所定义的函数的名称一致
+% 比如下面例子中函数文件就应命名为 double_input.m
 % 使用 'help double_input.m' 可返回函数定义中第一行注释信息
 function output = double_input(x) 
     % double_input(x) 返回 x 的 2 倍
@@ -463,14 +472,16 @@ triu(x)  % 返回 x 的上三角这部分
 tril(x)  % 返回 x 的下三角这部分
 cross(A, B)  % 返回 A 和 B 的叉积（矢量积、外积）
 dot(A, B)  % 返回 A 和 B 的点积（数量积、内积），要求 A 和 B 必须等长
-transpose(A)  % A 的转置，等价于 A'
+transpose(A)  % 矩阵（非共轭）转置，等价于 A.' （注意！有个点）
 fliplr(A)  % 将一个矩阵左右翻转
 flipud(A)  % 将一个矩阵上下翻转
 
 % 矩阵分解
-[L, U, P] = lu(A)  % LU 分解：PA = LU，L 是下三角阵，U 是上三角阵，P 是置换阵
-[P, D] = eig(A)  % 特征值分解：AP = PD，D 是由特征值构成的对角阵，P 的各列就是对应的特征向量
-[U, S, V] = svd(X)  % 奇异值分解：XV = US，U 和 V 是酉矩阵，S 是由奇异值构成的半正定实数对角阵
+[L, U, P] = lu(A)   % LU 分解：PA = LU，L 是下三角阵，U 是上三角阵，P 是置换阵
+[P, D]    = eig(A)  % 特征值分解：AP = PD
+                    %   D 是由特征值构成的对角阵，P 的各列就是对应的特征向量
+[U, S, V] = svd(X)  % 奇异值分解：XV = US
+                    %   U 和 V 是酉矩阵，S 是由奇异值构成的半正定实数对角阵
 
 % 常用向量函数
 max     % 最大值
@@ -489,5 +500,5 @@ perms(x) % x 元素的全排列
 
 ## 相关资料
 
-* 官方网页：[http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
-* 官方论坛：[http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
+* 官方网页：[MATLAB - 技术计算语言 - MATLAB & Simulink](https://ww2.mathworks.cn/products/matlab.html)
+* 官方论坛：[MATLAB Answers - MATLAB Central](https://ww2.mathworks.cn/matlabcentral/answers/)

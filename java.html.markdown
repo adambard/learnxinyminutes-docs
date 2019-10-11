@@ -11,6 +11,7 @@ contributors:
     - ["Michael Dähnert", "https://github.com/JaXt0r"]
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
     - ["Sean Nam", "https://github.com/seannam"]
+    - ["Shawn M. Hanes", "https://github.com/smhanes15"]
 filename: LearnJava.java
 ---
 
@@ -44,8 +45,6 @@ import java.util.ArrayList;
 // Import all classes inside of java.security package
 import java.security.*;
 
-// Each .java file contains one outer-level public class, with the same name
-// as the file.
 public class LearnJava {
 
     // In order to run a java program, it must have a main method as an entry
@@ -173,7 +172,7 @@ public class LearnJava {
         // Char - A single 16-bit Unicode character
         char fooChar = 'A';
 
-        // final variables can't be reassigned to another object,
+        // final variables can't be reassigned,
         final int HOURS_I_WORK_PER_WEEK = 9001;
         // but they can be initialized later.
         final double E;
@@ -280,7 +279,7 @@ public class LearnJava {
         // LinkedLists - Implementation of doubly-linked list. All of the
         //               operations perform as could be expected for a
         //               doubly-linked list.
-        // Maps - A set of objects that map keys to values. Map is
+        // Maps - A mapping of key Objects to value Objects. Map is
         //        an interface and therefore cannot be instantiated.
         //        The type of keys and values contained in a Map must
         //        be specified upon instantiation of the implementing
@@ -289,10 +288,16 @@ public class LearnJava {
         // HashMaps - This class uses a hashtable to implement the Map
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
-        //            constant even for large sets.
-        // TreeMap - This class is a sorted tree structure. It implements a red
-        //           black tree and sorts the entries based on the key value or
-        //           the comparator provided while creating the object
+        //            constant-amortized even for large sets.
+        // TreeMap - A Map that is sorted by its keys. Each modification 
+        //           maintains the sorting defined by either a Comparator
+        //           supplied at instantiation, or comparisons of each Object
+        //           if they implement the Comparable interface.
+        //           Failure of keys to implement Comparable combined with failure to
+        //           supply a Comparator will throw ClassCastExceptions.
+        //           Insertion and removal operations take O(log(n)) time
+        //           so avoid using this data structure unless you are taking
+        //           advantage of the sorting.
 
         ///////////////////////////////////////
         // Operators
@@ -306,7 +311,7 @@ public class LearnJava {
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
         System.out.println("1/2 = " + (i1 / i2)); // => 0 (int/int returns int)
-        System.out.println("1/2 = " + (i1 / (double)i2)); // => 0.5
+        System.out.println("1/2.0 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
         System.out.println("11%3 = "+(11 % 3)); // => 2
@@ -703,15 +708,21 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 //     // Method declarations
 // }
 
-// Marking a class as abstract means that it contains at least one abstract
-// method that must be defined in a child class. Similar to interfaces, abstract
-// classes cannot be instantiated, but instead must be extended and the abstract
-// methods defined. Different from interfaces, abstract classes can contain a
-// mixture of concrete and abstract methods. Methods in an interface cannot
-// have a body, unless the method is static, and variables are final by default,
-// unlike an abstract class. Also abstract classes CAN have the "main" method.
+// Abstract Classes cannot be instantiated.
+// Abstract classes may define abstract methods.
+// Abstract methods have no body and are marked abstract
+// Non-abstract child classes must @Override all abstract methods
+// from their super-classes.
+// Abstract classes can be useful when combining repetitive logic
+// with customised behavior, but as Abstract classes require
+// inheritance, they violate "Composition over inheritance"
+// so consider other approaches using composition.
+// https://en.wikipedia.org/wiki/Composition_over_inheritance
+
 public abstract class Animal
 {
+    private int age;
+
     public abstract void makeSound();
 
     // Method can have a body
@@ -722,17 +733,12 @@ public abstract class Animal
         age = 30;
     }
 
-    // No need to initialize, however in an interface
-    // a variable is implicitly final and hence has
-    // to be initialized.
-    private int age;
-
     public void printAge()
     {
         System.out.println(age);
     }
 
-    // Abstract classes can have main function.
+    // Abstract classes can have main method.
     public static void main(String[] args)
     {
         System.out.println("I am abstract");
@@ -853,6 +859,108 @@ public class EnumTest {
 // The enum body can include methods and other fields.
 // You can see more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
 
+// Getting Started with Lambda Expressions
+//
+// New to Java version 8 are lambda expressions. Lambdas are more commonly found
+// in functional programming languages, which means they are methods which can
+// be created without belonging to a class, passed around as if it were itself
+// an object, and executed on demand.
+//
+// Final note, lambdas must implement a functional interface. A functional
+// interface is one which has only a single abstract method declared. It can
+// have any number of default methods. Lambda expressions can be used as an
+// instance of that functional interface. Any interface meeting the requirements
+// is treated as a functional interface. You can read more about interfaces
+// above.
+//
+import java.util.Map;
+import java.util.HashMap;
+import java.util.function.*;
+import java.security.SecureRandom;
+
+public class Lambdas {
+    public static void main(String[] args) {
+        // Lambda declaration syntax:
+	// <zero or more parameters> -> <expression body or statement block>
+
+        // We will use this hashmap in our examples below.
+        Map<String, String> planets = new HashMap<>();
+            planets.put("Mercury", "87.969");
+            planets.put("Venus", "224.7");
+            planets.put("Earth", "365.2564");
+            planets.put("Mars", "687");
+            planets.put("Jupiter", "4,332.59");
+            planets.put("Saturn", "10,759");
+            planets.put("Uranus", "30,688.5");
+            planets.put("Neptune", "60,182");
+
+        // Lambda with zero parameters using the Supplier functional interface
+        // from java.util.function.Supplier. The actual lambda expression is
+        // what comes after numPlanets =.
+        Supplier<String> numPlanets = () -> Integer.toString(planets.size());
+        System.out.format("Number of Planets: %s\n\n", numPlanets.get());
+
+        // Lambda with one parameter and using the Consumer functional interface
+        // from java.util.function.Consumer. This is because planets is a Map,
+        // which implements both Collection and Iterable. The forEach used here,
+        // found in Iterable, applies the lambda expression to each member of
+        // the Collection. The default implementation of forEach behaves as if:
+        /*
+            for (T t : this)
+                action.accept(t);
+        */
+
+        // The actual lambda expression is the parameter passed to forEach.
+        planets.keySet().forEach((p) -> System.out.format("%s\n", p));
+
+        // If you are only passing a single argument, then the above can also be
+        // written as (note absent parentheses around p):
+        planets.keySet().forEach(p -> System.out.format("%s\n", p));
+
+        // Tracing the above, we see that planets is a HashMap, keySet() returns
+        // a Set of its keys, forEach applies each element as the lambda 
+        // expression of: (parameter p) -> System.out.format("%s\n", p). Each
+        // time, the element is said to be "consumed" and the statement(s)
+        // referred to in the lambda body is applied. Remember the lambda body
+        // is what comes after the ->.
+
+        // The above without use of lambdas would look more traditionally like:
+        for (String planet : planets.keySet()) {
+            System.out.format("%s\n", planet);
+        }
+
+        // This example differs from the above in that a different forEach
+        // implementation is used: the forEach found in the HashMap class
+        // implementing the Map interface. This forEach accepts a BiConsumer,
+        // which generically speaking is a fancy way of saying it handles
+        // the Set of each Key -> Value pairs. This default implementation
+        // behaves as if:
+        /*
+            for (Map.Entry<K, V> entry : map.entrySet())
+                action.accept(entry.getKey(), entry.getValue());
+        */
+
+        // The actual lambda expression is the parameter passed to forEach.
+        String orbits = "%s orbits the Sun in %s Earth days.\n";
+        planets.forEach((K, V) -> System.out.format(orbits, K, V));
+
+        // The above without use of lambdas would look more traditionally like:
+        for (String planet : planets.keySet()) {
+            System.out.format(orbits, planet, planets.get(planet));
+        }
+
+        // Or, if following more closely the specification provided by the
+        // default implementation:
+        for (Map.Entry<String, String> planet : planets.entrySet()) {
+            System.out.format(orbits, planet.getKey(), planet.getValue());
+        }
+
+        // These examples cover only the very basic use of lambdas. It might not
+        // seem like much or even very useful, but remember that a lambda can be
+        // created as an object that can later be passed as parameters to other
+        // methods.
+    }
+}
 ```
 
 ## Further Reading

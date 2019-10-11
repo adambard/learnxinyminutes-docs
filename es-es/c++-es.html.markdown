@@ -823,7 +823,6 @@ v.swap(vector<Foo>());
 ```
 Otras lecturas:
 
-Una referencia del lenguaje hasta a la fecha se puede encontrar en
-<http://cppreference.com/w/cpp>
-
-Recursos adicionales se pueden encontrar en <http://cplusplus.com>
+* Una referencia del lenguaje hasta a la fecha se puede encontrar en [CPP Reference](http://cppreference.com/w/cpp).
+* Recursos adicionales se pueden encontrar en [[CPlusPlus]](http://cplusplus.com).
+* Un tutorial que cubre los conceptos básicos del lenguaje y la configuración del entorno de codificación está disponible en [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FF).

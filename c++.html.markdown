@@ -71,9 +71,15 @@ void func(); // function which may accept any number of arguments
 // Use nullptr instead of NULL in C++
 int* ip = nullptr;
 
-// C standard headers are available in C++,
-// but are prefixed with "c" and have no .h suffix.
+// C standard headers are available in C++.
+// C headers end in .h, while
+// C++ headers are prefixed with "c" and have no ".h" suffix.
+
+// The C++ standard version:
 #include <cstdio>
+
+// The C standard version:
+#include <stdio.h>
 
 int main()
 {
@@ -251,7 +257,7 @@ fooRef = bar;
 cout << &fooRef << endl; //Still prints the address of foo
 cout << fooRef;  // Prints "I am bar"
 
-//The address of fooRef remains the same, i.e. it is still referring to foo.
+// The address of fooRef remains the same, i.e. it is still referring to foo.
 
 
 const string& barRef = bar; // Create a const reference to bar.
@@ -547,10 +553,14 @@ Point Point::operator+(const Point& rhs) const
     return Point(x + rhs.x, y + rhs.y);
 }
 
+// It's good practice to return a reference to the leftmost variable of
+// an assignment. `(a += b) == c` will work this way.
 Point& Point::operator+=(const Point& rhs)
 {
     x += rhs.x;
     y += rhs.y;
+    
+    // `this` is a pointer to the object, on which a method is called.
     return *this;
 }
 
@@ -651,7 +661,7 @@ printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
 
 // The standard library provides a few exception types
 // (see http://en.cppreference.com/w/cpp/error/exception)
-// but any type can be thrown an as exception
+// but any type can be thrown as an exception
 #include <exception>
 #include <stdexcept>
 
@@ -751,7 +761,7 @@ failure:
 // things are a little cleaner, but still sub-optimal.
 void doSomethingWithAFile(const char* filename)
 {
-    FILE* fh = fopen(filename, "r"); // Open the file in read mode
+    FILE* fh = fopen(filename, "r"); // Open the file in shared_ptrread mode
     if (fh == nullptr)
         throw std::runtime_error("Could not open the file.");
 
@@ -803,7 +813,154 @@ void doSomethingWithAFile(const std::string& filename)
 //   all automatically destroy their contents when they fall out of scope.
 // - Mutexes using lock_guard and unique_lock
 
-// containers with object keys of non-primitive values (custom classes) require
+
+/////////////////////
+// Smart Pointer
+/////////////////////
+
+// Generally a smart pointer is a class which wraps a "raw pointer" (usage of "new"
+// respectively malloc/calloc in C). The goal is to be able to
+// manage the lifetime of the object being pointed to without ever needing to explicitly delete 
+// the object. The term itself simply describes a set of pointers with the
+// mentioned abstraction.
+// Smart pointers should preferred over raw pointers, to prevent
+// risky memory leaks, which happen if you forget to delete an object.
+
+// Usage of a raw pointer:
+Dog* ptr = new Dog();
+ptr->bark();
+delete ptr;
+
+// By using a smart pointer, you don't have to worry about the deletion
+// of the object anymore.
+// A smart pointer describes a policy, to count the references to the
+// pointer. The object gets destroyed when the last
+// reference to the object gets destroyed.
+
+// Usage of "std::shared_ptr":
+void foo()
+{
+// It's no longer necessary to delete the Dog.
+std::shared_ptr<Dog> doggo(new Dog());
+doggo->bark();
+}
+
+// Beware of possible circular references!!!
+// There will be always a reference, so it will be never destroyed!
+std::shared_ptr<Dog> doggo_one(new Dog());
+std::shared_ptr<Dog> doggo_two(new Dog());
+doggo_one = doggo_two; // p1 references p2
+doggo_two = doggo_one; // p2 references p1
+
+// There are several kinds of smart pointers. 
+// The way you have to use them is always the same.
+// This leads us to the question: when should we use each kind of smart pointer?
+// std::unique_ptr - use it when you just want to hold one reference to
+// the object.
+// std::shared_ptr - use it when you want to hold multiple references to the
+// same object and want to make sure that it's deallocated
+// when all references are gone.
+// std::weak_ptr - use it when you want to access
+// the underlying object of a std::shared_ptr without causing that object to stay allocated.
+// Weak pointers are used to prevent circular referencing.
+
+
+/////////////////////
+// Containers
+/////////////////////
+
+// Containers or the Standard Template Library are some predefined templates.
+// They manage the storage space for its elements and provide
+// member functions to access and manipulate them.
+
+// Few containers are as follows:
+
+// Vector (Dynamic array)
+// Allow us to Define the Array or list of objects at run time
+#include <vector>
+string val;
+vector<string> my_vector; // initialize the vector
+cin >> val;
+my_vector.push_back(val); // will push the value of 'val' into vector ("array") my_vector
+my_vector.push_back(val); // will push the value into the vector again (now having two elements)
+
+// To iterate through a vector we have 2 choices:
+// Either classic looping (iterating through the vector from index 0 to its last index):
+for (int i = 0; i < my_vector.size(); i++) {
+	cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
+}
+
+// or using an iterator:
+vector<string>::iterator it; // initialize the iterator for vector
+for (it = my_vector.begin(); it != my_vector.end(); ++it) {
+	cout << *it  << endl;
+}
+
+// Set
+// Sets are containers that store unique elements following a specific order.
+// Set is a very useful container to store unique values in sorted order
+// without any other functions or code.
+
+#include<set>
+set<int> ST;    // Will initialize the set of int data type
+ST.insert(30);  // Will insert the value 30 in set ST
+ST.insert(10);  // Will insert the value 10 in set ST
+ST.insert(20);  // Will insert the value 20 in set ST
+ST.insert(30);  // Will insert the value 30 in set ST
+// Now elements of sets are as follows
+//  10 20 30
+
+// To erase an element
+ST.erase(20);  // Will erase element with value 20
+// Set ST: 10 30
+// To iterate through Set we use iterators
+set<int>::iterator it;
+for(it=ST.begin();it<ST.end();it++) {
+	cout << *it << endl;
+}
+// Output:
+// 10
+// 30
+
+// To clear the complete container we use Container_name.clear()
+ST.clear();
+cout << ST.size();  // will print the size of set ST
+// Output: 0
+
+// NOTE: for duplicate elements we can use multiset
+// NOTE: For hash sets, use unordered_set. They are more efficient but
+// do not preserve order. unordered_set is available since C++11
+
+// Map
+// Maps store elements formed by a combination of a key value
+// and a mapped value, following a specific order.
+
+#include<map>
+map<char, int> mymap;  // Will initialize the map with key as char and value as int
+
+mymap.insert(pair<char,int>('A',1));
+// Will insert value 1 for key A
+mymap.insert(pair<char,int>('Z',26));
+// Will insert value 26 for key Z
+
+// To iterate
+map<char,int>::iterator it;
+for (it=mymap.begin(); it!=mymap.end(); ++it)
+    std::cout << it->first << "->" << it->second << '\n';
+// Output:
+// A->1
+// Z->26
+
+// To find the value corresponding to a key
+it = mymap.find('Z');
+cout << it->second;
+
+// Output: 26
+
+// NOTE: For hash maps, use unordered_map. They are more efficient but do
+// not preserve order. unordered_map is available since C++11.
+
+// Containers with object keys of non-primitive values (custom classes) require
 // compare function in the object itself or as a function pointer. Primitives
 // have default comparators, but you can override it.
 class Foo {
@@ -816,11 +973,12 @@ struct compareFunction {
         return a.j < b.j;
     }
 };
-//this isn't allowed (although it can vary depending on compiler)
-//std::map<Foo, int> fooMap;
+// this isn't allowed (although it can vary depending on compiler)
+// std::map<Foo, int> fooMap;
 std::map<Foo, int, compareFunction> fooMap;
 fooMap[Foo(1)]  = 1;
 fooMap.find(Foo(1)); //true
+
 
 ///////////////////////////////////////
 // Lambda Expressions (C++11 and above)
@@ -988,97 +1146,6 @@ cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
 cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
 
 
-/////////////////////
-// Containers
-/////////////////////
-
-// Containers or the Standard Template Library are some predefined templates.
-// They manage the storage space for its elements and provide
-// member functions to access and manipulate them.
-
-// Few containers are as follows:
-
-// Vector (Dynamic array)
-// Allow us to Define the Array or list of objects at run time
-#include <vector>
-string val;
-vector<string> my_vector; // initialize the vector
-cin >> val;
-my_vector.push_back(val); // will push the value of 'val' into vector ("array") my_vector
-my_vector.push_back(val); // will push the value into the vector again (now having two elements)
-
-// To iterate through a vector we have 2 choices:
-// Either classic looping (iterating through the vector from index 0 to its last index):
-for (int i = 0; i < my_vector.size(); i++) {
-	cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
-}
-
-// or using an iterator:
-vector<string>::iterator it; // initialize the iterator for vector
-for (it = my_vector.begin(); it != my_vector.end(); ++it) {
-	cout << *it  << endl;
-}
-
-// Set
-// Sets are containers that store unique elements following a specific order.
-// Set is a very useful container to store unique values in sorted order
-// without any other functions or code.
-
-#include<set>
-set<int> ST;    // Will initialize the set of int data type
-ST.insert(30);  // Will insert the value 30 in set ST
-ST.insert(10);  // Will insert the value 10 in set ST
-ST.insert(20);  // Will insert the value 20 in set ST
-ST.insert(30);  // Will insert the value 30 in set ST
-// Now elements of sets are as follows
-//  10 20 30
-
-// To erase an element
-ST.erase(20);  // Will erase element with value 20
-// Set ST: 10 30
-// To iterate through Set we use iterators
-set<int>::iterator it;
-for(it=ST.begin();it<ST.end();it++) {
-	cout << *it << endl;
-}
-// Output:
-// 10
-// 30
-
-// To clear the complete container we use Container_name.clear()
-ST.clear();
-cout << ST.size();  // will print the size of set ST
-// Output: 0
-
-// NOTE: for duplicate elements we can use multiset
-
-// Map
-// Maps store elements formed by a combination of a key value
-// and a mapped value, following a specific order.
-
-#include<map>
-map<char, int> mymap;  // Will initialize the map with key as char and value as int
-
-mymap.insert(pair<char,int>('A',1));
-// Will insert value 1 for key A
-mymap.insert(pair<char,int>('Z',26));
-// Will insert value 26 for key Z
-
-// To iterate
-map<char,int>::iterator it;
-for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second << '\n';
-// Output:
-// A->1
-// Z->26
-
-// To find the value corresponding to a key
-it = mymap.find('Z');
-cout << it->second;
-
-// Output: 26
-
-
 ///////////////////////////////////
 // Logical and Bitwise operators
 //////////////////////////////////
@@ -1127,7 +1194,6 @@ compl 4    // Performs a bitwise not
 ```
 Further Reading:
 
-An up-to-date language reference can be found at
-<http://cppreference.com/w/cpp>
-
-Additional resources may be found at <http://cplusplus.com>
+* An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).
+* Additional resources may be found at [CPlusPlus](http://cplusplus.com).
+* A tutorial covering basics of language and setting up coding environment is available at [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).

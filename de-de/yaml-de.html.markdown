@@ -10,7 +10,7 @@ lang: de-de
 
 YAML ist eine Sprache zur Datenserialisierung, die sofort von Menschenhand geschrieben und gelesen werden kann.
 
-YAML ist ein Erweiterung von von JSON mit der Erweiterung um syntaktisch wichtige Zeilenumbrüche und Einrückungen, ähnlich wie auch in Python. Anders als in Python allerdings erlaubt YAML keine Tabulator-Zeichen.
+YAML ist ein Erweiterung von JSON mit der Erweiterung um syntaktisch wichtige Zeilenumbrüche und Einrückungen, ähnlich wie auch in Python geschrieben werden können. Anders als in Python allerdings erlaubt YAML keine Tabulator-Zeichen.
 
 ```yaml
 # Kommentare in YAML schauen so aus.
@@ -111,7 +111,7 @@ python_komplexe_Zahlen: !!python/komplex 1+2j
 # EXTRA YAML TYPEN #
 ####################
 
-# Strings and Zahlen sind nicht die einzigen Skalare, welche YAML versteht.
+# Strings und Zahlen sind nicht die einzigen Skalare, welche YAML versteht.
 # ISO-formatierte Datumsangaben and Zeiangaben können ebenso geparsed werden.
 DatumZeit: 2001-12-15T02:59:43.1Z
 DatumZeit_mit_Leerzeichen: 2001-12-14 21:59:43.10 -5

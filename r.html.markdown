@@ -664,7 +664,7 @@ require(plyr)
 # "pets.csv" is a file on the internet
 # (but it could just as easily be a file on your own computer)
 require(RCurl)
-pets <- read.csv(textConnection(getURL("http://learnxinyminutes.com/docs/pets.csv")))
+pets <- read.csv(textConnection(getURL("https://learnxinyminutes.com/docs/pets.csv")))
 pets
 head(pets, 2) # first two rows
 tail(pets, 1) # last row
@@ -789,7 +789,7 @@ install.packages("ggplot2")
 require(ggplot2)
 ?ggplot2
 pp <- ggplot(students, aes(x=house))
-pp + geom_histogram()
+pp + geom_bar()
 ll <- as.data.table(list1)
 pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()

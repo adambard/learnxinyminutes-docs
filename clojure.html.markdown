@@ -150,7 +150,7 @@ x ; => 1
 
 ; You can also use this shorthand to create functions:
 (def hello2 #(str "Hello " %1))
-(hello2 "Fanny") ; => "Hello Fanny"
+(hello2 "Julie") ; => "Hello Julie"
 
 ; You can have multi-variadic functions, too
 (defn hello3

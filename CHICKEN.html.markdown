@@ -81,7 +81,7 @@ supports R5RS and R7RS (work in progress) standards and many extensions.
 (string-append "pine" "apple") ;; => "pineapple"
 (string-ref "tapioca" 3)       ;; => #\i;; character 'i' is at index 3
 (string->list "CHICKEN")       ;; => (#\C #\H #\I #\C #\K #\E #\N)
-(string->intersperse '("1" "2") ":") ;; => "1:2"
+(string-intersperse '("1" "2") ":") ;; => "1:2"
 (string-split "1:2:3" ":")     ;; => ("1" "2" "3")
 
 

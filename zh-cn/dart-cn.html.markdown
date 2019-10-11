@@ -176,23 +176,47 @@ example13() {
   match(s2);
 }
 
-// 布尔表达式必需被解析为 true 或 false，
-// 因为不支持隐式转换。
+// 布尔表达式支持隐式转换以及动态类型
 example14() {
-  var v = true;
-  if (v) {
-    print("Example14 value is true");
+  var a = true;
+  if (a) {
+    print("Example14 true, a is $a");
   }
-  v = null;
+  a = null;
+  if (a) {
+    print("Example14 true, a is $a");
+  } else {
+    print("Example14 false, a is $a"); // 执行到这里
+  }
+
+  // 动态类型的null可以转换成bool型
+  var b;// b是动态类型
+  b = "abc";
   try {
-    if (v) {
-      // 不会执行
+    if (b) {
+      print("Example14 true, b is $b");
     } else {
-      // 不会执行
+      print("Example14 false, b is $b");
     }
   } catch (e) {
-    print("Example14 null value causes an exception: '${e}'");
+    print("Example14 error, b is $b"); // 这段代码可以执行但是会报错
   }
+  b = null;
+  if (b) {
+    print("Example14 true, b is $b");
+  } else {
+    print("Example14 false, b is $b"); // 这行到这里
+  }
+
+  // 静态类型的null不能转换成bool型
+  var c = "abc";
+  c = null;
+  // 编译出错
+  // if (c) {
+  //   print("Example14 true, c is $c");
+  // } else {
+  //   print("Example14 false, c is $c");
+  // }
 }
 
 // try/catch/finally 和 throw 语句用于异常处理。
@@ -492,8 +516,8 @@ main() {
 
 Dart 有一个综合性网站。它涵盖了 API 参考、入门向导、文章以及更多，
 还包括一个有用的在线试用 Dart 页面。
-http://www.dartlang.org/
-http://try.dartlang.org/
+* [https://www.dartlang.org](https://www.dartlang.org)
+* [https://try.dartlang.org](https://try.dartlang.org)
 
 
 

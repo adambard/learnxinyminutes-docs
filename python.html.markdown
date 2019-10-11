@@ -7,6 +7,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["asyne", "https://github.com/justblah"]
     - ["habi", "http://github.com/habi"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
 filename: learnpython.py
 ---
 
@@ -327,7 +328,8 @@ filled_dict["four"] = 4  # now, filled_dict["four"] => 4
 filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5
 filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5
 
-# Sets store ... well sets (which are like lists but can contain no duplicates)
+# You can declare sets (which are like unordered lists that cannot contain
+# duplicate values) using the set object.
 empty_set = set()
 # Initialize a "set()" with a bunch of values
 some_set = set([1, 2, 2, 3, 4])  # some_set is now set([1, 2, 3, 4])
@@ -363,6 +365,12 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 # Check for existence in a set with in
 2 in filled_set  # => True
 10 in filled_set  # => False
+10 not in filled_set # => True
+
+# Check data type of variable
+type(li)   # => list
+type(filled_dict)   # => dict
+type(5)   # => int
 
 
 ####################################################
@@ -502,9 +510,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand positional args and use ** to expand keyword args.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)  # equivalent to foo(1, 2, 3, 4)
-all_the_args(**kwargs)  # equivalent to foo(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to foo(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)  # equivalent to all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)  # equivalent to all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
 
 
 # you can pass args and kwargs along to other functions that take args/kwargs
@@ -654,7 +662,7 @@ i.age  # => raises an AttributeError
 # You can import modules
 import math
 
-print math.sqrt(16)  # => 4
+print math.sqrt(16)  # => 4.0
 
 # You can get specific functions from a module
 from math import ceil, floor

@@ -23,12 +23,12 @@ YAML 根本不容许文字制表符。
 ################
 
 # 我们的根对象 (它们在整个文件里延续) 将会是一个映射，
-# 它等价于在别的语言里的一个字典，哈西表或对象。
+# 它等价于在别的语言里的一个字典，哈希表或对象。
 key: value
 another_key: Another value goes here.
 a_number_value: 100
-# 如果你想将数字 1 作为值，你必须要将它括在引号中。
-# 不然 YAML 解析器会假定它是一个布尔值 true。
+# 数字 1 会被解释为数值，而不是一个布尔值。
+# 如果你想要的是一个布尔值，使用 true。
 scientific_notation: 1e+12
 boolean: true
 null_value: null
@@ -60,17 +60,17 @@ folded_style: >
 # 集合类型         #
 ####################
 
-# 嵌套是通过缩进完成的。
+# 嵌套是通过缩进完成的。推荐使用 2 个空格的缩进（但非必须）
 a_nested_map:
-    key: value
-    another_key: Another Value
-    another_nested_map:
-        hello: hello
+  key: value
+  another_key: Another Value
+  another_nested_map:
+    hello: hello
 
-# 映射的键值不必是字符串。
+# 映射的键不必是字符串。
 0.25: a float key
 
-# 键值也可以是复合型的，比如多行对象
+# 键也可以是复合型的，比如多行对象
 # 我们用 ? 后跟一个空格来表示一个复合键的开始。
 ? |
     This is a key
@@ -86,19 +86,20 @@ a_nested_map:
 
 # 序列 (等价于列表或数组) 看起来像这样：
 a_sequence:
-    - Item 1
-    - Item 2
-    - 0.5 # 序列可以包含不同类型。
-    - Item 4
-    - key: value
-      another_key: another_value
-    -
-        - This is a sequence
-        - inside another sequence
+  - Item 1
+  - Item 2
+  - 0.5 # 序列可以包含不同类型。
+  - Item 4
+  - key: value
+    another_key: another_value
+  -
+    - This is a sequence
+    - inside another sequence
 
 # 因为 YAML 是 JSON 的超集，你也可以写 JSON 风格的映射和序列：
 json_map: {"key": "value"}
 json_seq: [3, 2, 1, "takeoff"]
+and quotes are optional: {key: [3, 2, 1, takeoff]}
 
 #######################
 # 其余的 YAML 特性    #
@@ -111,15 +112,18 @@ other_anchor: *anchor_name
 
 # 锚也可被用来复制/继承属性
 base: &base
-    name: Everyone has same name
+  name: Everyone has same name
+
+# The regexp << is called Merge Key Language-Independent Type.
+# 它表明指定映射的所有键值会插入到当前的映射中。
 
 foo: &foo
-    <<: *base
-    age: 10
+  <<: *base
+  age: 10
 
 bar: &bar
-    <<: *base
-    age: 20
+  <<: *base
+  age: 20
 
 # foo 和 bar 将都含有 name: Everyone has same name
 
@@ -146,10 +150,10 @@ date: 2002-12-14
 # 这个 !!binary 标签表明这个字符串实际上
 # 是一个用 base64 编码表示的二进制 blob。
 gif_file: !!binary |
-    R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
-    OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
-    +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
-    AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
+  R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
+  OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
+  +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
+  AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
 
 # YAML 还有一个集合类型，它看起来像这样：
 set:
@@ -157,7 +161,7 @@ set:
     ? item2
     ? item3
 
-# 像 Python 一样，集合仅是值为 null 的映射；上面的集合等价于：
+# 集合只是值为 null 的映射；上面的集合等价于：
 set2:
     item1: null
     item2: null

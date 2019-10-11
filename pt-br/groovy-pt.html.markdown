@@ -17,7 +17,7 @@ Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http:
   Prepara-se:
 
   1) Instale a máquina virtual de Groovy - http://gvmtool.net/
-  2) Intalse o Groovy: gvm install groovy
+  2) Instale o Groovy: gvm install groovy
   3) Inicie o console groovy digitando: groovyConsole
 
 */
