@@ -725,10 +725,10 @@ on a new line! ""Wow!"", the masses cried";
         int _speed; // Everything is private by default: Only accessible from within this class.
                     // can also use keyword private
         public string Name { get; set; }
-        
+
         // Properties also have a special syntax for when you want a readonly property
         // that simply returns the result of an expression
-        public string LongName => Name + " " + _speed + " speed"; 
+        public string LongName => Name + " " + _speed + " speed";
 
         // Enum is a value type that consists of a set of named constants
         // It is really just mapping a name to a value (an int, unless specified otherwise).
@@ -1089,7 +1089,7 @@ on a new line! ""Wow!"", the masses cried";
                 // Spell failed
                 return false;
             }
-            // Other exceptions, or MagicServiceException where Code is not 42 
+            // Other exceptions, or MagicServiceException where Code is not 42
             catch(Exception ex) when (LogException(ex))
             {
                 // Execution never reaches this block
@@ -1213,7 +1213,7 @@ namespace Csharp7
             Console.WriteLine(tt.GetLastName());
         }
     }
-    
+
     // PATTERN MATCHING
     class PatternMatchingTest
     {
@@ -1320,3 +1320,4 @@ namespace Csharp7
  * [ASP.NET Web Forms Tutorials](http://www.asp.net/web-forms/tutorials)
  * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
  * [C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
+ * [freeCodeCamp - C# Tutorial for Beginners](https://www.youtube.com/watch?v=GhQdlIFylQ8)
