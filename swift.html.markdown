@@ -692,6 +692,13 @@ print(mySquare.sideLength) // 4
 // cast instance
 let aShape = mySquare as Shape
 
+// downcast: 
+// Because downcasting can fail, the result will be an optional (as?) 
+// or an implicitly unwrpped optional (as!).  
+let anOptionalSquare = aShape as? Square // This will return nil if aShape is not a Square
+let aSquare = aShape as! Square // This will throw a runtime error if aShape is not a Square
+
+
 // compare instances, not the same as == which compares objects (equal to)
 if mySquare === mySquare {
     print("Yep, it's mySquare")
@@ -973,7 +980,7 @@ func testTryStuff() {
     // assumes there will be no error thrown, otherwise a runtime exception is raised
     let _ = try! fakeFetch(value: 7)
     
-    // if an error is thrown, then it proceeds, but if the value is nil
+    // if an error is thrown, then it proceeds, but the value is nil
     // it also wraps every return value in an optional, even if its already optional
     let _ = try? fakeFetch(value: 7)
     
