@@ -146,9 +146,10 @@ into the hardware simulator and run against the simulated hardware.
 load <chip name>.hdl
 
 // We set the output file for the simulated chip output as well as the comparison
-// file that it will be tested against. We also specify what the output is expected
-// to look like. In this case there will be two output columns, each will be buffered
-// by a single space on either side and 4 binary values in the center of each column.
+// file that it will be tested against. We also specify what the output is
+// expected to look like. In this case there will be two output columns, each
+// will be buffered by a single space on either side and 4 binary values in
+// the center of each column.
 output-file <chip name>.out,
 compare-to <chip name>.cmp,
 output-list in%B1.4.1 out%B1.4.1;
@@ -157,19 +158,19 @@ output-list in%B1.4.1 out%B1.4.1;
 set enable1 1, // set input enable1 to 1
 set enable2 0, // set input enable2 to 0
 
-// The clock is also controlled in the test file using tick and tock. Tick is a positive
-// pulse and tock takes the clock back to 0. Clock cycles can be run multiple times in
-// a row with no other changes to inputs or outputs.
+// The clock is also controlled in the test file using tick and tock. Tick is a
+// positive pulse and tock takes the clock back to 0. Clock cycles can be run
+// multiple times in a row with no other changes to inputs or outputs.
 tick,
 tock,
 
-// Finally we output the first expected value (from the test file) which is then compared
-// with the first line of real output from our HDL circuit. This output
+// Finally we output the first expected value (from the test file) which is then
+// compared with the first line of real output from our HDL circuit. This output
 // can be viewed in the <chip name>.out file.
 output;
 
-// An example of <chip name>, a chip that takes in a 4 bit value as input and adds 1 to
-// that value could have the following as test code:
+// An example of <chip name>, a chip that takes in a 4 bit value as input and
+// adds 1 to that value could have the following as test code:
 
 // Set the input value to 0000, clock pulse, compare output from cmp file to actual out.
 set in %B0000,
@@ -183,17 +184,17 @@ tick,
 tock,
 output;
 
-// The expected output for case 1 should be 0001 and case 2 expects 0111, lets learn
-// a little more about comparison files before finalizing our lesson.
+// The expected output for case 1 should be 0001 and case 2 expects 0111, lets
+// learn a little more about comparison files before finalizing our lesson.
 ```
 
 ## Comparison Files
-Now lets take a look at comparison files, the files that hold what the test file compares
-with the actual output of an HDL chip in the hardware simulator!
+Now lets take a look at comparison files, the files that hold what the test file
+compares with the actual output of an HDL chip in the hardware simulator!
 
 ```verilog
-// Like the <chip name> example above, the structure of the comparison file would look
-// something like this
+// Like the <chip name> example above, the structure of the comparison file
+// would look something like this
 |  in  | out  |
 | 0000 | 0001 |
 | 0110 | 0111 |
