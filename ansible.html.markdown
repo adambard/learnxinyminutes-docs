@@ -513,7 +513,7 @@ $ # Now we would run the above playbook with roles
 You can use the jinja in the CLI too
 
 ```bash
-ansible -m shell -a 'echo {{ my_variable }}` -e 'my_variable=something, playbook_parameter=twentytwo" localhost
+ansible -m shell -a 'echo {{ my_variable }}' -e 'my_variable=something, playbook_parameter=twentytwo' localhost
 ```
 
 In fact - jinja is used to template parts of the playbooks too
