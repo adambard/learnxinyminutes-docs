@@ -307,7 +307,7 @@ This example installs ansible in `virtualenv` so it is independent from the syst
 You need to initialize it into your shell-context with the `source environment.sh`
 command.
 
-We are going to use this repository with examples: [https://github.com/sirkubax/ansible-for-learnXinYminutes]()
+We are going to use this repository with examples: [https://github.com/sirkubax/ansible-for-learnXinYminutes](https://github.com/sirkubax/ansible-for-learnXinYminutes)
 
 ```bash
 $ # The following example contains a shell-prompt to indicate the venv and relative path
