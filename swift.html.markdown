@@ -159,12 +159,12 @@ let `class` = "keyword"
  or contains nil (no value) to indicate that a value is missing.
  Nil is roughly equivalent to `null` in other languages.
  A question mark (?) after the type marks the value as optional of that type.
- 
+
  If a type is not optional, it is guaranteed to have a value.
- 
+
  Because Swift requires every property to have a type, even nil must be
  explicitly stored as an Optional value.
- 
+
  Optional<T> is an enum, with the cases .none (nil) and .some(T) (the value)
  */
 
@@ -178,7 +178,7 @@ let someOptionalString4 = String?.none //nil
  To access the value of an optional that has a value, use the postfix
  operator !, which force-unwraps it. Force-unwrapping is like saying, "I
  know that this optional definitely has a value, please give it to me."
- 
+
  Trying to use ! to access a non-existent optional value triggers a
  runtime error. Always make sure that an optional contains a non-nil
  value before using ! to force-unwrap its value.
@@ -194,7 +194,7 @@ if someOptionalString != nil {
 // Swift supports "optional chaining," which means that you can call functions
 //   or get properties of optional values and they are optionals of the appropriate type.
 // You can even do this multiple times, hence the name "chaining."
-    
+
 let empty = someOptionalString?.isEmpty // Bool?
 
 // if-let structure -
@@ -443,7 +443,7 @@ func testGuard() {
         return // guard statements MUST exit the scope that they are in.
         // They generally use `return` or `throw`.
     }
-    
+
     print("number is \(aNumber)")
 }
 testGuard()
@@ -564,7 +564,7 @@ enum Furniture {
     case desk(height: Int)
     // Associate with String and Int
     case chair(String, Int)
-    
+
     func description() -> String {
         //either placement of let is acceptable
         switch self {
@@ -591,15 +591,15 @@ print(chair.description())    // "Chair of Foo with 40 cm"
  - Define initializers to set up their initial state
  - Be extended to expand their functionality beyond a default implementation
  - Conform to protocols to provide standard functionality of a certain kind
- 
+
  Classes have additional capabilities that structures don't have:
  - Inheritance enables one class to inherit the characteristics of another.
  - Type casting enables you to check and interpret the type of a class instance at runtime.
  - Deinitializers enable an instance of a class to free up any resources it has assigned.
  - Reference counting allows more than one reference to a class instance.
- 
+
  Unless you need to use a class for one of these reasons, use a struct.
- 
+
  Structures are value types, while classes are reference types.
  */
 
@@ -607,7 +607,7 @@ print(chair.description())    // "Chair of Foo with 40 cm"
 
 struct NamesTable {
     let names: [String]
-    
+
     // Custom subscript
     subscript(index: Int) -> String {
         return names[index]
@@ -629,7 +629,7 @@ class Shape {
 
 class Rect: Shape {
     var sideLength: Int = 1
-    
+
     // Custom getter and setter property
     var perimeter: Int {
         get {
@@ -640,16 +640,16 @@ class Rect: Shape {
             sideLength = newValue / 4
         }
     }
-    
+
     // Computed properties must be declared as `var`, you know, cause' they can change
     var smallestSideLength: Int {
         return self.sideLength - 1
     }
-    
+
     // Lazily load a property
     // subShape remains nil (uninitialized) until getter called
     lazy var subShape = Rect(sideLength: 4)
-    
+
     // If you don't need a custom getter and setter,
     // but still want to run code before and after getting or setting
     // a property, you can use `willSet` and `didSet`
@@ -659,19 +659,19 @@ class Rect: Shape {
             print(someIdentifier)
         }
     }
-    
+
     init(sideLength: Int) {
         self.sideLength = sideLength
         // always super.init last when init custom properties
         super.init()
     }
-    
+
     func shrink() {
         if sideLength > 0 {
             sideLength -= 1
         }
     }
-    
+
     override func getArea() -> Int {
         return sideLength * sideLength
     }
@@ -703,13 +703,13 @@ class Circle: Shape {
     override func getArea() -> Int {
         return 3 * radius * radius
     }
-    
+
     // Place a question mark postfix after `init` is an optional init
     // which can return nil
     init?(radius: Int) {
         self.radius = radius
         super.init()
-        
+
         if radius <= 0 {
             return nil
         }
@@ -813,7 +813,7 @@ for _ in 0..<10 {
  - Internal: Accessible and subclassible in the module it is declared in.
  - Fileprivate: Accessible and subclassible in the file it is declared in.
  - Private: Accessible and subclassible in the enclosing declaration (think inner classes/structs/enums)
- 
+
  See more here: https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html
  */
 
@@ -878,11 +878,11 @@ extension Int {
     var doubled: Int {
         return self * 2
     }
-    
+
     func multipliedBy(num: Int) -> Int {
         return num * self
     }
-    
+
     mutating func multiplyBy(num: Int) {
         self *= num
     }
@@ -965,18 +965,18 @@ func fakeFetch(value: Int) throws -> String {
     guard 7 == value else {
         throw MyError.reallyBadValue(msg: "Some really bad value")
     }
-    
+
     return "test"
 }
 
 func testTryStuff() {
     // assumes there will be no error thrown, otherwise a runtime exception is raised
     let _ = try! fakeFetch(value: 7)
-    
+
     // if an error is thrown, then it proceeds, but if the value is nil
     // it also wraps every return value in an optional, even if its already optional
     let _ = try? fakeFetch(value: 7)
-    
+
     do {
         // normal try operation that provides error handling via `catch` block
         try fakeFetch(value: 1)

@@ -310,7 +310,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 <p>Total = {{ (quantity * price) | currency }}</p>
 
-</div> 
+</div>
 
 //A filter can be added to a directive with a pipe character (|) and a filter.
 //The orderBy filter orders an array by an expression:
@@ -324,7 +324,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 <div>
 
-//An input filter can be added to a directive with a pipe character (|) 
+//An input filter can be added to a directive with a pipe character (|)
 //and filter followed by a colon and a model name.
 //The filter selects a subset of an array:
 
@@ -351,7 +351,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 // AngularJS $http is a core service for reading data from web servers.
 // $http.get(url) is the function to use for reading server data.
-<div ng-app="myApp" ng-controller="customersCtrl"> 
+<div ng-app="myApp" ng-controller="customersCtrl">
 
 <ul>
   <li ng-repeat="x in names">
@@ -392,7 +392,7 @@ header("Access-Control-Allow-Origin: *");
 // AngularJS Tables
 
 // Displaying tables with angular is very simple:
-<div ng-app="myApp" ng-controller="customersCtrl"> 
+<div ng-app="myApp" ng-controller="customersCtrl">
 
 <table>
   <tr ng-repeat="x in names">
@@ -411,7 +411,7 @@ app.controller('customersCtrl', function($scope, $http) {
 });
 </script>
 
-// To sort the table, add an orderBy filter: 
+// To sort the table, add an orderBy filter:
 <table>
   <tr ng-repeat="x in names | orderBy : 'Country'">
     <td>{{ x.Name }}</td>
@@ -419,7 +419,7 @@ app.controller('customersCtrl', function($scope, $http) {
   </tr>
 </table>
 
-// To display the table index, add a <td> with $index: 
+// To display the table index, add a <td> with $index:
 <table>
   <tr ng-repeat="x in names">
     <td>{{ $index + 1 }}</td>
@@ -461,12 +461,12 @@ app.controller('customersCtrl', function($scope, $http) {
 
 // The ng-disabled directive binds the application data mySwitch to the HTML button's disabled attribute.
 // The ng-model directive binds the value of the HTML checkbox element to the value of mySwitch.
-// If the value of mySwitch evaluates to true, the button will be disabled: 
+// If the value of mySwitch evaluates to true, the button will be disabled:
 <p>
 <button disabled>Click Me!</button>
 </p>
 
-// If the value of mySwitch evaluates to false, the button will not be disabled: 
+// If the value of mySwitch evaluates to false, the button will not be disabled:
 <p>
   <button>Click Me!</button>
 </p>
@@ -539,7 +539,7 @@ app.controller('personCtrl', function($scope) {
 
 // The first part of the personController is the same as in the chapter about controllers.
 // The application has a default property (a variable): $scope.myVar = false;
-// The ng-hide directive sets the visibility, of a <p> element with two input fields, 
+// The ng-hide directive sets the visibility, of a <p> element with two input fields,
 // according to the value (true or false) of myVar.
 // The function toggle() toggles myVar between true and false.
 // The value ng-hide="true" makes the element invisible.
@@ -623,7 +623,7 @@ app.controller("myCtrl", function($scope) {
 </html>
 
 //myApp.js
-var app = angular.module("myApp", []); 
+var app = angular.module("myApp", []);
 
 // The [] parameter in the module definition can be used to define dependent modules.
 
@@ -633,12 +633,12 @@ app.controller("myCtrl", function($scope) {
     $scope.lastName= "Doe";
 });
 
-// Global functions should be avoided in JavaScript. They can easily be overwritten 
+// Global functions should be avoided in JavaScript. They can easily be overwritten
 // or destroyed by other scripts.
 
 // AngularJS modules reduces this problem, by keeping all functions local to the module.
 
-// While it is common in HTML applications to place scripts at the end of the 
+// While it is common in HTML applications to place scripts at the end of the
 // <body> element, it is recommended that you load the AngularJS library either
 // in the <head> or at the start of the <body>.
 

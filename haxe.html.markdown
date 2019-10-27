@@ -17,7 +17,7 @@ recommended to use other references.
    Welcome to Learn Haxe 3 in 15 minutes.  http://www.haxe.org
    This is an executable tutorial.  You can compile and run it using the haxe
    compiler, while in the same directory as LearnHaxe.hx:
-   
+
        $ haxe -main LearnHaxe3 --interp
 
    Look for the slash-star marks surrounding these paragraphs.  We are inside
@@ -137,7 +137,7 @@ class LearnHaxe3 {
            uses the platform behavior for overflow.
            (Other numeric types and behavior are possible using special
            libraries.)
-           
+
            In addition to simple values like Integers, Floats, and Booleans,
            Haxe provides standard library implementations for common data
            structures like strings, arrays, lists, and maps:

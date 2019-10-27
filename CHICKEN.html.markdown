@@ -30,25 +30,25 @@ supports R5RS and R7RS (work in progress) standards and many extensions.
 |#
 
 ;; S-expression comments are used to comment out expressions
-#; (display "nothing")    ; discard this expression 
+#; (display "nothing")    ; discard this expression
 
 ;; CHICKEN has two fundamental pieces of syntax: Atoms and S-expressions
 ;; an atom is something that evaluates to itself
 ;; all builtin data types viz. numbers, chars, booleans, strings etc. are atoms
 ;; Furthermore an atom can be a symbol, an identifier, a keyword, a procedure
 ;; or the empty list (also called null)
-'athing              ;; => athing 
-'+                   ;; => + 
+'athing              ;; => athing
+'+                   ;; => +
 +                    ;; => <procedure C_plus>
 
 ;; S-expressions (short for symbolic expressions) consists of one or more atoms
 (quote +)            ;; => + ; another way of writing '+
 (+ 1 2 3)            ;; => 6 ; this S-expression evaluates to a function call
-'(+ 1 2 3)           ;; => (+ 1 2 3) ; evaluates to a list 
+'(+ 1 2 3)           ;; => (+ 1 2 3) ; evaluates to a list
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; 1. Primitive Datatypes and Operators 
+; 1. Primitive Datatypes and Operators
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Numbers
@@ -75,7 +75,7 @@ supports R5RS and R7RS (work in progress) standards and many extensions.
 (printf "Hello, ~a.\n" "World")  ;; => Hello, World.
 
 ;; print commandline arguments
-(map print (command-line-arguments)) 
+(map print (command-line-arguments))
 
 (list 'foo 'bar 'baz)          ;; => (foo bar baz)
 (string-append "pine" "apple") ;; => "pineapple"
@@ -136,7 +136,7 @@ s            ;; => Error: unbound variable: s
 (print me)        ;; => Error: unbound variable: me
 
 ;; Assign a new value to previously defined variable
-(set! myvar 10) 
+(set! myvar 10)
 myvar             ;; => 10
 
 
@@ -145,7 +145,7 @@ myvar             ;; => 10
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Pairs
-;; 'cons' constructs pairs, 
+;; 'cons' constructs pairs,
 ;; 'car' extracts the first element, 'cdr' extracts the rest of the elements
 (cons 'subject 'verb)       ;; => '(subject . verb)
 (car (cons 'subject 'verb)) ;; => subject
@@ -177,7 +177,7 @@ days                   ;; => (SUN TUE FRI)
 ;; A Vector typically occupies less space than a list of the same length
 ;; Random access of an element in a vector is faster than in a list
 #(1 2 3)                     ;; => #(1 2 3) ;; literal syntax
-(vector 'a 'b 'c)            ;; => #(a b c) 
+(vector 'a 'b 'c)            ;; => #(a b c)
 (vector? #(1 2 3))           ;; => #t
 (vector-length #(1 (2) "a")) ;; => 3
 (vector-ref #(1 (2) (3 3)) 2);; => (3 3)
@@ -197,9 +197,9 @@ vec                         ;; => #(1 2 4)
 
 ;; Use 'lambda' to create functions.
 ;; A function always returns the value of its last expression
-(lambda () "Hello World")   ;; => #<procedure (?)> 
+(lambda () "Hello World")   ;; => #<procedure (?)>
 
-;; Use extra parens around function definition to execute 
+;; Use extra parens around function definition to execute
 ((lambda () "Hello World")) ;; => Hello World ;; argument list is empty
 
 ;; A function with an argument
@@ -249,7 +249,7 @@ sqr                        ;; => #<procedure (sqr x)>
 (eqv? 'yes 'yes)           ;; => #t
 
 ;; 'equal?' recursively compares the contents of pairs, vectors, and strings,
-;; applying eqv? on other objects such as numbers and symbols. 
+;; applying eqv? on other objects such as numbers and symbols.
 ;; A rule of thumb is that objects are generally equal? if they print the same.
 
 (equal? '(1 2 3) '(1 2 3)) ;; => #t
@@ -313,7 +313,7 @@ sqr                        ;; => #<procedure (sqr x)>
 (and #t #f (= 2 2.0))                ;; => #f
 (and (< 2 5) (> 2 0) "0 < 2 < 5")    ;; => "0 < 2 < 5"
 
-;; 'or' returns the first expression that evaluates to #t 
+;; 'or' returns the first expression that evaluates to #t
 ;; otherwise the result of the last expression is returned
 (or #f #t #f)                        ;; => #t
 (or #f #f #f)                        ;; => #f
@@ -329,7 +329,7 @@ sqr                        ;; => #<procedure (sqr x)>
 ;; loops can be created with the help of tail-recursions
 (define (loop count)
   (unless (= count 0)
-    (print "hello") 
+    (print "hello")
     (loop (sub1 count))))
 (loop 4)                             ;; => hello, hello ...
 
@@ -347,7 +347,7 @@ sqr                        ;; => #<procedure (sqr x)>
   (print x))                     ;; command to execute in each step
                                  ;; => 0,1,2,3....9,done
 
-;; Iteration over lists 
+;; Iteration over lists
 (for-each (lambda (a) (print (* a a)))
           '(3 5 7))                  ;; => 9, 25, 49
 
@@ -369,7 +369,7 @@ sqr                        ;; => #<procedure (sqr x)>
 ;; Supports fractions without falling back to inexact flonums
 1/3                                ;; => 1/3
 ;; provides support for large integers through bignums
-(expt 9 20)                        ;; => 12157665459056928801 
+(expt 9 20)                        ;; => 12157665459056928801
 ;; And other 'extended' functions
 (log 10 (exp 1))                   ;; => 2.30258509299405
 (numerator 2/3)                    ;; => 2
@@ -385,7 +385,7 @@ sqr                        ;; => #<procedure (sqr x)>
 ;; Open a file to append, open "write only" and create file if it does not exist
 (define outfn (file-open "chicken-hen.txt" (+ open/append open/wronly open/creat)))
 ;; write some text to the file
-(file-write outfn "Did chicken came before hen?") 
+(file-write outfn "Did chicken came before hen?")
 ;; close the file
 (file-close outfn)
 ;; Open the file "read only"
@@ -437,8 +437,8 @@ sqr                        ;; => #<procedure (sqr x)>
 
 (let ((str "PENCHANT") (i 0))
   (while (< i (string-length str))     ;; while (condition)
-         (print (string-ref str i))    ;; body 
-         (set! i (add1 i))))           
+         (print (string-ref str i))    ;; body
+         (set! i (add1 i))))
                                        ;; => P, E, N, C, H, A, N, T
 
 ;; Advanced Syntax-Rules Primer -> http://petrofsky.org/src/primer.txt
@@ -456,7 +456,7 @@ sqr                        ;; => #<procedure (sqr x)>
 
   (define-syntax greet
     (syntax-rules ()
-      ((_ whom) 
+      ((_ whom)
        (begin
          (display "Hello, ")
          (display whom)
@@ -482,15 +482,15 @@ sqr                        ;; => #<procedure (sqr x)>
 ;; Following functor requires another module named 'M' that provides a function called 'multiply'
 ;; The functor itself exports a generic function 'square'
 (functor (squaring-functor (M (multiply))) (square)
-         (import scheme M) 
+         (import scheme M)
          (define (square x) (multiply x x)))
 
 ;; Module 'nums' can be passed as a parameter to 'squaring-functor'
-(module nums (multiply) 
+(module nums (multiply)
         (import scheme)     ;; predefined modules
-        (define (multiply x y) (* x y))) 
+        (define (multiply x y) (* x y)))
 ;; the final module can be imported and used in our program
-(module number-squarer = (squaring-functor nums)) 
+(module number-squarer = (squaring-functor nums))
 
 (import number-squarer)
 (square 3)              ;; => 9

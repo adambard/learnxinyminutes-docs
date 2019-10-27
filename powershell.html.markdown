@@ -8,7 +8,7 @@ filename: LearnPowershell.ps1
 
 PowerShell is the Windows scripting language and configuration management
 framework from Microsoft built on the .NET Framework. Windows 7 and up ship
-with PowerShell.  
+with PowerShell.
 Nearly all examples below can be a part of a shell script or executed directly
 in the shell.
 
@@ -24,7 +24,7 @@ Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Execution policies include:
 # - Restricted: Scripts won't run.
-# - RemoteSigned: Downloaded scripts run only if signed by a trusted publisher. 
+# - RemoteSigned: Downloaded scripts run only if signed by a trusted publisher.
 # - AllSigned: Scripts need to be signed by a trusted publisher.
 # - Unrestricted: Run all scripts.
 help about_Execution_Policies # for more info
@@ -269,7 +269,7 @@ Get-Command ConvertTo-*,ConvertFrom-*
 
 ### Useful stuff
 # Refresh your PATH
-$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + 
+$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") +
 	";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 # Find Python in path
@@ -312,7 +312,7 @@ if (-not (Test-Path $Profile)) {
 # For a more useful shell, be sure to check the project PSReadLine below
 ```
 
-Interesting Projects  
+Interesting Projects
 
 * [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell tutorials
 * [PSGet](https://github.com/psget/psget) NuGet for PowerShell
@@ -323,9 +323,9 @@ Interesting Projects
 * [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
 * [PowerShell Community Extensions](http://pscx.codeplex.com/) (Dead)
 
-Not covered  
+Not covered
 
-* WMI: Windows Management Intrumentation (Get-CimInstance)  
-* Multitasking: Start-Job -scriptBlock {...}, 
+* WMI: Windows Management Intrumentation (Get-CimInstance)
+* Multitasking: Start-Job -scriptBlock {...},
 * Code Signing
 * Remoting (Enter-PSSession/Exit-PSSession; Invoke-Command)

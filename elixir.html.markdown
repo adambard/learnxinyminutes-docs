@@ -332,7 +332,7 @@ defmodule MyMod do
 end
 
 # The pipe operator |> allows you to pass the output of an expression
-# as the first parameter into a function. 
+# as the first parameter into a function.
 
 Range.new(1,10)
 |> Enum.map(fn x -> x * x end)

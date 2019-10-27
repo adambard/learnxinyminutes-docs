@@ -7,7 +7,7 @@ contributors:
 ---
 
 
->Pascal is an imperative and procedural programming language, which Niklaus Wirth designed in 1968–69 and published in 1970, as a small, efficient language intended to encourage good programming practices using structured programming and data structuring. It is named in honor of the French mathematician, philosopher and physicist Blaise Pascal. 
+>Pascal is an imperative and procedural programming language, which Niklaus Wirth designed in 1968–69 and published in 1970, as a small, efficient language intended to encourage good programming practices using structured programming and data structuring. It is named in honor of the French mathematician, philosopher and physicist Blaise Pascal.
 source : [wikipedia](https://en.wikipedia.org/wiki/Pascal_(programming_language))
 
 
@@ -18,7 +18,7 @@ to compile and run a pascal program you could use a free pascal compiler. [Downl
 //Anathomy of a Pascal Program
 //this is a comment
 {
-    this is a 
+    this is a
     multiline comment
 }
 
@@ -53,7 +53,7 @@ end. // End of a main program area should required a "." symbol
 var a:integer;
 var b:integer;
 //or this
-var 
+var
     a : integer;
     b : integer;
 //or this

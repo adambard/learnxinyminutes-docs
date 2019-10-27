@@ -95,7 +95,7 @@ false
 
 # Strings are UTF8 encoded. Only if they contain only ASCII characters can
 # they be safely indexed.
-ascii("This is a string")[1]  
+ascii("This is a string")[1]
 # => 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)
 # Julia indexes from 1
 # Otherwise, iterating over strings is recommended (map, for loops, etc).
@@ -194,7 +194,7 @@ a[1]  # => 1  # remember that Julia indexes from 1, not 0!
 a[end]  # => 6
 
 # we also have popfirst! and pushfirst!
-popfirst!(a)  # => 1 
+popfirst!(a)  # => 1
 a # => [2,4,3,4,5,6]
 pushfirst!(a, 7)  # => [7,2,4,3,4,5,6]
 a # => [7,2,4,3,4,5,6]
@@ -209,16 +209,16 @@ arr         # => [4,5,6]
 
 # Looking out of bounds is a BoundsError
 try
-    a[0] 
-    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
+    a[0]
+    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at
     # index [0]
     # => Stacktrace:
     # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
     # =>  [2] top-level scope at none:0
     # =>  [3] ...
     # => in expression starting at ...\LearnJulia.jl:180
-    a[end + 1] 
-    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
+    a[end + 1]
+    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at
     # index [8]
     # => Stacktrace:
     # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
@@ -243,7 +243,7 @@ a[2:end]  # => [2, 3, 4, 5]
 
 # Remove elements from an array by index with splice!
 arr = [3,4,5]
-splice!(arr, 2) # => 4 
+splice!(arr, 2) # => 4
 arr # => [3,5]
 
 # Concatenate lists with append!
@@ -262,8 +262,8 @@ tup = (1, 2, 3)  # => (1,2,3)
 typeof(tup) # => Tuple{Int64,Int64,Int64}
 tup[1] # => 1
 try
-    tup[1] = 3  
-    # => ERROR: MethodError: no method matching 
+    tup[1] = 3
+    # => ERROR: MethodError: no method matching
     # setindex!(::Tuple{Int64,Int64,Int64}, ::Int64, ::Int64)
 catch e
     println(e)
@@ -275,7 +275,7 @@ tup[1:2]    # => (1,2)
 in(2, tup)  # => true
 
 # You can unpack tuples into variables
-a, b, c = (1, 2, 3)  # => (1,2,3)  
+a, b, c = (1, 2, 3)  # => (1,2,3)
 a # => 1
 b # => 2
 c # => 3
@@ -291,7 +291,7 @@ f # => 6
 (1) == 1  # => true
 
 # Look how easy it is to swap two values
-e, d = d, e  # => (5,4) 
+e, d = d, e  # => (5,4)
 d # => 5
 e # => 4
 
@@ -314,7 +314,7 @@ keys(filledDict)
 
 # Get all values
 values(filledDict)
-# => Base.ValueIterator for a Dict{String,Int64} with 3 entries. Values: 
+# => Base.ValueIterator for a Dict{String,Int64} with 3 entries. Values:
 # =>  2, 1, 3
 # Note - Same as above regarding key ordering.
 
@@ -537,7 +537,7 @@ function create_adder(x)
 end
 # => create_adder (generic function with 1 method)
 
-add_10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
+add_10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64})
                           # (generic function with 1 method)
 add_10(3) # => 13
 
@@ -717,7 +717,7 @@ fight(l::Lion, c::Cat) = println("The victorious cat says $(meow(c))")
 
 fight(Lion("balooga!"), Panther())  # => The victorious cat says grrr
 try
-    fight(Panther(), Lion("RAWR"))  
+    fight(Panther(), Lion("RAWR"))
     # => ERROR: MethodError: no method matching fight(::Panther, ::Lion)
     # => Closest candidates are:
     # =>   fight(::Tiger, ::Lion) at ...
@@ -746,7 +746,7 @@ catch e
 end
 # The result may be different in other versions of Julia
 
-fight(l::Lion, l2::Lion) = println("The lions come to a tie") 
+fight(l::Lion, l2::Lion) = println("The lions come to a tie")
 # => fight (generic function with 5 methods)
 fight(Lion("RAR"), Lion("brown", "rarrr"))  # => The lions come to a tie
 

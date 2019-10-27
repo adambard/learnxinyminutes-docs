@@ -140,7 +140,7 @@ about!
 Operators are essential parts of a mathematical document:
 trigonometric functions ($\sin$, $\cos$, $\tan$),
 logarithms and exponentials ($\log$, $\exp$),
-limits ($\lim$), etc.\ 
+limits ($\lim$), etc.\
 have per-defined LaTeX commands.
 Let's write an equation to see how it's done:
 $\cos(2\theta) = \cos^{2}(\theta) - \sin^{2}(\theta)$

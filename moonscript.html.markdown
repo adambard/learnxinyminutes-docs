@@ -161,7 +161,7 @@ profile =
 	height: "4 feet",
 	shoe_size: 13,
 	favorite_foods: -- nested table
-		foo: "ice cream", 
+		foo: "ice cream",
 		bar: "donuts"
 
 my_function dance: "Tango", partner: "none" -- :( forever alone
@@ -231,7 +231,7 @@ for item in *points[1, 10, 2]
 -- the step is not included.
 
 words = {"these", "are", "some", "words"}
-for word in *words[,3] 
+for word in *words[,3]
 	print word
 
 --------------------------------------------------
@@ -302,7 +302,7 @@ squared = (t) -> return for x in *t do x*x -- returns new table of squares
 -- The following does the same as `(t) -> [i for i in *t when i % 2 == 0]`
 -- But list comprehension generates better code and is more readable!
 
-filter_odds = (t) -> 
+filter_odds = (t) ->
 	return for x in *t
 		if x % 2 == 0 then x else continue
 evens = filter_odds(my_numbers) -- {2, 4, 6}
@@ -416,7 +416,7 @@ class Backpack extends Inventory
 -- constructor from `Inventory`, we could use the magical `super` function
 -- during `new()`.
 
--- When a class extends another, it calls the method `__inherited` on the 
+-- When a class extends another, it calls the method `__inherited` on the
 -- parent class (if it exists). It is always called with the parent and the
 -- child object.
 
@@ -429,7 +429,7 @@ class ParentClass
 
 class MyClass extends ParentClass
 	a_method: =>
-		super "hello world", "from MyClass!" 
+		super "hello world", "from MyClass!"
 		assert super == ParentClass
 
 --------------------------------------------------
@@ -456,7 +456,7 @@ print x -- nil
 
 -- Here we use `do` as an expression to create a closure.
 
-counter = do 
+counter = do
 	i = 0
 	->
 		i += 1
@@ -481,7 +481,7 @@ if false
 	x = 12
 print x -- 10
 
--- Use `local *` to forward-declare all variables. 
+-- Use `local *` to forward-declare all variables.
 -- Alternatively, use `local ^` to forward-declare all CamelCase values.
 
 local *

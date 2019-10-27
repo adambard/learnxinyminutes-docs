@@ -225,7 +225,7 @@ moreNumbers.length = 3; // Error, length is read-only
 numbers = moreNumbers; // Error, mutating methods are missing
 
 // Tagged Union Types for modelling state that can be in one of many shapes
-type State = 
+type State =
   | { type: "loading" }
   | { type: "success", value: number }
   | { type: "error", message: string };

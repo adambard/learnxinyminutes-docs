@@ -324,7 +324,7 @@ notelist^.   Notes with one backlink to the first citation made to each note.
 notelist^+.  Notes with one backlink to the first citation made to each note,
                followed by unreferenced notes.
 notelist!.   Notes with no backlinks to the citations.
-notelist!+.  Notes with no backlinks to the citations, followed by 
+notelist!+.  Notes with no backlinks to the citations, followed by
                unreferenced notes.
 ```
 

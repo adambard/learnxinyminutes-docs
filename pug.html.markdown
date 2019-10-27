@@ -7,8 +7,8 @@ filename: index.pug
 
 ## Getting Started with Pug
 
-Pug is a little language that compiles into the HTML. It has cleaner syntax 
-with additional features like if statements and loops. It can also be used 
+Pug is a little language that compiles into the HTML. It has cleaner syntax
+with additional features like if statements and loops. It can also be used
 as a server side templating language for server languages like NodeJS.
 
 ### The Language
@@ -125,7 +125,7 @@ each value, index in [1,2,3]
 
 each value in []
   p=value
-//- 
+//-
 
 each value in []
   p=value

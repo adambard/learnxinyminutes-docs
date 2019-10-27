@@ -155,7 +155,7 @@ sf::Event event{ };
 // We also have to delete the program at the end of the application.
 // ...
     }
-    glDeleteProgram(program);	
+    glDeleteProgram(program);
     return 0;
 }
 // ...
@@ -301,7 +301,7 @@ glBufferData(GL_ARRAY_BUFFER, sizeof(colorData[0]) * colorData.size(),
 glEnableVertexAttribArray(1);
 glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
-glBindVertexArray(0);  
+glBindVertexArray(0);
 // ...
 ```
 
@@ -615,7 +615,7 @@ In our source we now need to change the vertex data, create a model- and a proje
 
 ```cpp
 // The new vertex data, counter-clockwise declaration.
-std::vector<float> vertexData {  
+std::vector<float> vertexData {
     0.0f, 1.0f, 0.0f,   // top left
     0.0f, 0.0f, 0.0f,   // bottom left
     1.0f, 0.0f, 0.0f,   // bottom right
@@ -626,7 +626,7 @@ GLint projectionLocation = glGetUniformLocation(program, "projection");
 GLint modelLocation = glGetUniformLocation(program, "model");
 // Declaring the matricies.
 // Orthogonal matrix for a 1024x768 window.
-std::vector<float> projection {  
+std::vector<float> projection {
     0.001953f,       0.0f,  0.0f, 0.0f,
          0.0f, -0.002604f,  0.0f, 0.0f,
          0.0f,       0.0f, -1.0f, 0.0f,
@@ -634,7 +634,7 @@ std::vector<float> projection {
 };
 // Model matrix translating to x 50, y 50
 // and scaling to x 200, y 200.
-std::vector<float> model {  
+std::vector<float> model {
     200.0f,   0.0f, 0.0f, 0.0f,
       0.0f, 200.0f, 0.0f, 0.0f,
       0.0f,   0.0f, 1.0f, 0.0f,

@@ -44,7 +44,7 @@ false
 :cheese
 :olives
 
-; Symbols are used to represent identifiers. 
+; Symbols are used to represent identifiers.
 ; You can namespace symbols by using /. Whatever precedes / is
 ; the namespace of the symbol.
 spoon

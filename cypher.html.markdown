@@ -82,7 +82,7 @@ A chain can also be directed. This path describes that **a** is the boss of **b*
 Patterns often used (from Neo4j doc) :
 
 ```
-// Friend-of-a-friend 
+// Friend-of-a-friend
 (user)-[:KNOWS]-(friend)-[:KNOWS]-(foaf)
 
 // Shortest path
@@ -91,7 +91,7 @@ path = shortestPath( (user)-[:KNOWS*..5]-(other) )
 // Collaborative filtering
 (user)-[:PURCHASED]->(product)<-[:PURCHASED]-()-[:PURCHASED]->(otherProduct)
 
-// Tree navigation 
+// Tree navigation
 (root)<-[:PARENT*]-(leaf:Category)-[:ITEM]->(data:Product)
 
 ```

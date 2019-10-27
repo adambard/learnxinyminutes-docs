@@ -439,7 +439,7 @@ abs(x) 	 % Magnitude of complex variable x
 phase(x) % Phase (or angle) of complex variable x
 real(x)  % Returns the real part of x (i.e returns a if x = a +jb)
 imag(x)  % Returns the imaginary part of x (i.e returns b if x = a+jb)
-conj(x)  % Returns the complex conjugate 
+conj(x)  % Returns the complex conjugate
 
 
 % Common constants
@@ -496,23 +496,23 @@ median  % median value
 mean    % mean value
 std     % standard deviation
 perms(x) % list all permutations of elements of x
-find(x) % Finds all non-zero elements of x and returns their indexes, can use comparison operators, 
+find(x) % Finds all non-zero elements of x and returns their indexes, can use comparison operators,
         % i.e. find( x == 3 ) returns indexes of elements that are equal to 3
         % i.e. find( x >= 3 ) returns indexes of elements greater than or equal to 3
 
 
 % Classes
-% Matlab can support object-oriented programming. 
-% Classes must be put in a file of the class name with a .m extension. 
+% Matlab can support object-oriented programming.
+% Classes must be put in a file of the class name with a .m extension.
 % To begin, we create a simple class to store GPS waypoints.
 % Begin WaypointClass.m
 classdef WaypointClass % The class name.
   properties % The properties of the class behave like Structures
-    latitude 
-    longitude 
+    latitude
+    longitude
   end
-  methods 
-    % This method that has the same name of the class is the constructor. 
+  methods
+    % This method that has the same name of the class is the constructor.
     function obj = WaypointClass(lat, lon)
       obj.latitude = lat;
       obj.longitude = lon;
@@ -543,12 +543,12 @@ a.longitude = 25.0
 % Methods can be called in the same way as functions
 ans = multiplyLatBy(a,3)
 
-% The method can also be called using dot notation. In this case, the object 
+% The method can also be called using dot notation. In this case, the object
 % does not need to be passed to the method.
 ans = a.multiplyLatBy(1/3)
 
-% Matlab functions can be overloaded to handle objects. 
-% In the method above, we have overloaded how Matlab handles 
+% Matlab functions can be overloaded to handle objects.
+% In the method above, we have overloaded how Matlab handles
 % the addition of two Waypoint objects.
 b = WaypointClass(15.0, 32.0)
 c = a + b

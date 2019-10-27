@@ -66,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                         nullptr);            // struct for infos
     // Check if a window handle has been created.
     if (!hWnd)
-        return -1;   
+        return -1;
     // Show and update the new window.
     ShowWindow(hWnd, nCmdShow);
     UpdateWindow(hWnd);
@@ -78,7 +78,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
-    }  
+    }
     return 0;
 }
 ```
@@ -160,7 +160,7 @@ bool InitD3D(HWND hWnd) {
 // Check if Direct3D initialization succeded, else exit the application.
 if (!InitD3D(hWnd))
     return -1;
-        
+
 MSG msg{ };
 while (_running) {
     while (PeekMessage(&msg, hWnd, 0, 0, PM_REMOVE)) {
@@ -376,7 +376,7 @@ MSG msg{ };
                                0,                  // start vertex
                                1);                 // primitive count
         _device->EndScene();
-    
+
         _device->Present(nullptr, nullptr, nullptr, nullptr);
         // We can keep multiplying the world matrix with our rotation matrix
         // to add it's rotation to the world matrix.
@@ -403,7 +403,7 @@ IDirect3DIndexBuffer9* CreateIBuffer(std::vector<unsigned int>& indices) {
     HRESULT result{ };
     result = _device->CreateIndexBuffer(
                  GetByteSize(indices), // vector size in bytes
-                 0,                    // data usage 
+                 0,                    // data usage
                  D3DFMT_INDEX32,       // format is 32 bit int
                  D3DPOOL_DEFAULT,      // default pool
                  &buffer,              // receiving buffer
@@ -485,7 +485,7 @@ result = _device->CreateVertexBuffer(
                       0,        // <- 0 indicates we use vertex declarations
                       D3DPOOL_DEFAULT,
                       &buffer,
-                      nullptr); 
+                      nullptr);
 // Next we have to declare a new ComPtr.
 ComPtr<IDirect3DVertexDeclaration9> _vertexDecl{ };
 // ...
@@ -513,7 +513,7 @@ std::vector<D3DVERTEXELEMENT9> vertexDeclDesc {
 result = _device->CreateVertexDeclaration(
                       vertexDeclDesc.data(), // the vertex element array
                       &_vertexDecl);         // receiving pointer
-if (FAILED(result)) 
+if (FAILED(result))
     return -1;
 // Apply the created vertex declaration.
 _device->SetVertexDeclaration(_vertexDecl.Get());
@@ -541,7 +541,7 @@ if (deviceCaps.PixelShaderVersion < D3DPS_VERSION(3, 0))
 Now that we are sure shader model 3.0 is supported let's create the vertex and pixel shader files.
 DirectX 9 introduced the HLSL (**High Level Shading Language**), a C-like shader language, which
 simplified the shader programming a lot, as you could only write shaders in shader assembly in DirectX 8.
-Let's create a simple vertex- and pixel shader. 
+Let's create a simple vertex- and pixel shader.
 
 **Vertex Shader**
 
@@ -574,7 +574,7 @@ VS_OUTPUT main(VS_INPUT input) {
     output.position = float4(input.position, 1.0f);
     // Multiply the output position step by step with the world, view and
     // projection matrices.
-    output.position = mul(output.position, worldMatrix);	
+    output.position = mul(output.position, worldMatrix);
     output.position = mul(output.position, viewMatrix);
     output.position = mul(output.position, projectionMatrix);
 	// Pass the input color unchanged to the pixel shader.
@@ -625,7 +625,7 @@ bool SetupTransform() {
     // Set the world and rotation matrix to an identity matrix.
     D3DXMatrixIdentity(&_worldMatrix);
     D3DXMatrixIdentity(&_rotationMatrix);
-	
+
     D3DXMATRIX scaling{ };
     D3DXMatrixScaling(&scaling, 10, 10, 1);
     D3DXMatrixMultiply(&_worldMatrix, &scaling, &_rotationMatrix);
@@ -702,7 +702,7 @@ result = _device->CreateVertexShader(
              &_vertexShader); // vertex shader pointer
 if (FAILED(result))
     return -1;
-	
+
 result = _device->CreatePixelShader(
              (DWORD*)pixelShaderBuffer->GetBufferPointer(),
              &_pixelShader);
@@ -788,16 +788,16 @@ struct VS_OUTPUT {
 
 VS_OUTPUT main(VS_INPUT input) {
     VS_OUTPUT output;
-    
+
     output.position = float4(input.position, 1.0f);
-    output.position = mul(output.position, worldMatrix);	
+    output.position = mul(output.position, worldMatrix);
     output.position = mul(output.position, viewMatrix);
     output.position = mul(output.position, projectionMatrix);
 
     output.color = input.color;
     // Set the texcoord output to the input.
     output.texcoord = input.texcoord;
-    
+
     return output;
 }
 ```

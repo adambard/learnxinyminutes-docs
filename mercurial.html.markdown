@@ -79,7 +79,7 @@ $ hg init
 
 Will give you access to a very detailed description of each command.
 
-```bash 
+```bash
 # Quickly check what commands are available
 $ hg help
 
@@ -178,7 +178,7 @@ $ hg clone . /tmp/some_backup_dir
 
 ### commit / ci
 
-Commit changes to the given files into the repository. 
+Commit changes to the given files into the repository.
 
 ```bash
 # Commit with a message
