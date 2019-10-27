@@ -11,11 +11,11 @@ lang: pt-br
 filename: learnpython3-pt.py
 ---
 
-Python foi criado por Guido Van Rossum nos anos 1990. Ele é atualmente uma
-das mais populares linguagens em existência. Eu fiquei morrendo de amor
-pelo Python por sua clareza sintática. É praticamente pseudocódigo executável.
+Python foi criada por Guido Van Rossum nos anos 1990. Ela é atualmente uma
+das linguagens mais populares existentes. Eu me apaixonei por
+Python por sua clareza sintática. É praticamente pseudocódigo executável.
 
-Suas opiniões são grandemente apreciadas. Você pode encontrar-me em
+Opniões são muito bem vindas. Você pode encontrar-me em
 [@louiedinh](http://twitter.com/louiedinh) ou louiedinh [em]
 [serviço de e-mail do google].
 
