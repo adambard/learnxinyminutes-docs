@@ -4,6 +4,7 @@ filename: learnpascal-pt.pas
 contributors:
     - ["Ganesha Danu", "https://github.com/blinfoldking"]
     - ["Keith Miyake", "https//github.com/kaymmm"]
+    - ["Raul Almeida", "https://github.com/almeidaraul"]
 translators:
     - ["Raul Almeida", "https://github.com/almeidaraul"]
 lang: pt-br
