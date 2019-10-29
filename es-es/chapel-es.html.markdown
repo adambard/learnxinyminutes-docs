@@ -70,11 +70,11 @@ var singleQuoteStr = 'Otra cadena...'; // Cadena literal con comillas simples
 var my8Int: int(8) = 10; // Entero de 8 bit (one byte);
 var my64Real: real(64) = 1.516; // Real de 64 bit (8 bytes)
 
-// Typecasting.
+// Conversion de tipos.
 var intFromReal = myReal : int;
 var intFromReal2: int = myReal : int;
 
-// Type aliasing.
+// Alias de tipo.
 type chroma = int;        // Tipo de un solo tono
 type RGBColor = 3*chroma; // Tipo que representa un color completo
 var black: RGBColor = (0,0,0);
@@ -167,7 +167,7 @@ writeln((old_this == thatInt) && (old_that == thisInt));
 
 // Tuplas
 
-//Las tuplas pueden ser del mismo tipo o de diferentes tipos.
+// Las tuplas pueden ser del mismo tipo o de diferentes tipos.
 var sameTup: 2*int = (10, -1);
 var sameTup2 = (11, -6);
 var diffTup: (int,real,complex) = (5, 1.928, myCplx);
@@ -200,7 +200,7 @@ if -1 < 1 then
 else
   writeln("¡Envia un matemático!, algo está mal");
 
-//Puedes usar paréntesis si lo prefieres.
+// Puedes usar paréntesis si lo prefieres.
 if (10 > 100) {
   writeln("El Universo está roto, Por favor reinicie el universo.");
 }
@@ -234,11 +234,11 @@ select inputOption {
   }
   otherwise {
     writeln("Cualquier otra entrada");
-    writeln("el caso otherwise no necesita hacerse si el cuerpo es de una línea");
+    writeln("El caso otherwise no necesita hacerse si el cuerpo es de una línea");
   }
 }
 
-//Los bucles while y do-while también se comportan como sus contrapartes en C.
+// Los bucles while y do-while también se comportan como sus contrapartes en C.
 var j: int = 1;
 var jSum: int = 0;
 while (j <= 1000) {
@@ -252,10 +252,6 @@ do {
   j += 1;
 } while (j <= 10000);
 writeln(jSum);
-
-// for loops are much like those in Python in that they iterate over a
-// range. Ranges (like the 1..10 expression below) are a first-class object
-// in Chapel, and as such can be stored in variables.
 
 // Los bucles for son muy parecidos a los de Python porque iteran en un rango. 
 // Los rangos (como la expresión 1..10 a continuación) son un objeto de primera clase
@@ -333,7 +329,7 @@ writeln("antes, resizedDom = ", resizedDom);
 resizedDom = {-10..#10};
 writeln("despues, resizedDom = ", resizedDom);
 
-//Los índices pueden iterarse como tuplas.
+// Los índices pueden iterarse como tuplas.
 for idx in twoDimensions do
   write(idx, ", ");
 writeln();
@@ -368,42 +364,42 @@ var domainB = {-5..5, 1..10};
 var domainC = domainA[domainB];
 writeln((domainA, domainB, domainC));
 
-// Arrays
+// Arreglos
 
-// Arrays are similar to those of other languages.
-// Their sizes are defined using domains that represent their indices.
+// Los arreglos son similares a otros lenguajes.
+// Sus tamaños son definidos usndo dominions que repretsenten sus indices.
 var intArray: [1..10] int;
 var intArray2: [{1..10}] int; // equivalent
 
-// They can be accessed using either brackets or parentheses
+// Pueden ser accedidos usando brackets o paréntesis
 for i in 1..10 do
   intArray[i] = -i;
 writeln(intArray);
 
-// We cannot access intArray[0] because it exists outside
-// of the index set, {1..10}, we defined it to have.
-// intArray[11] is illegal for the same reason.
+// No podemos acceder a intArray[0] porque existe fuera del conjunto de índices,
+// {1..10}, que definimos al principio. 
+// intArray [11] es ilegal por la misma razón.
 var realDomain: domain(2) = {1..5,1..7};
 var realArray: [realDomain] real;
 var realArray2: [1..5,1..7] real;   // equivalent
 var realArray3: [{1..5,1..7}] real; // equivalent
 
 for i in 1..5 {
-  for j in realDomain.dim(2) {   // Only use the 2nd dimension of the domain
-    realArray[i,j] = -1.61803 * i + 0.5 * j;  // Access using index list
-    var idx: 2*int = (i,j);                   // Note: 'index' is a keyword
-    realArray[idx] = - realArray[(i,j)];      // Index using tuples
+  for j in realDomain.dim(2) {   // Solo use la segunda dimensión del dominio
+    realArray[i,j] = -1.61803 * i + 0.5 * j;  // Acceso usando la lista de índice
+    var idx: 2*int = (i,j);                   // Nota: 'índice' es una palabra reservada
+    realArray[idx] = - realArray[(i,j)];      // Indice usando tuplas
   }
 }
 
-// Arrays have domains as members, and can be iterated over as normal.
-for idx in realArray.domain {  // Again, idx is a 2*int tuple
-  realArray[idx] = 1 / realArray[idx[1], idx[2]]; // Access by tuple and list
+// Los arreglos tienen dominios como miembros y pueden ser iterados de manera normal.
+for idx in realArray.domain {  // De nuevo, idx es una tupla 2*int
+  realArray[idx] = 1 / realArray[idx[1], idx[2]]; // Acceso por tupla y lista
 }
 
 writeln(realArray);
 
-// The values of an array can also be iterated directly.
+// Los valores de una matriz también se pueden iterar directamente.
 var rSum: real = 0;
 for value in realArray {
   rSum += value; // Read a value
@@ -411,21 +407,28 @@ for value in realArray {
 }
 writeln(rSum, "\n", realArray);
 
-// Associative arrays (dictionaries) can be created using associative domains.
+// Los arreglos asociativos (diccionarios) se pueden crear utilizando dominios asociativos.
 var dictDomain: domain(string) = { "one", "two" };
 var dict: [dictDomain] int = ["one" => 1, "two" => 2];
-dict["three"] = 3; // Adds 'three' to 'dictDomain' implicitly
+dict["three"] = 3; // Adiciona 'three' a 'dictDomain' implícitamente
 for key in dictDomain.sorted() do
   writeln(dict[key]);
 
-// Arrays can be assigned to each other in a few different ways.
-// These arrays will be used in the example.
+// Los arreglos se pueden asignar entre sí de diferentes maneras.
+// Estos arreglos se usarán en el ejemplo.
+
 var thisArray : [0..5] int = [0,1,2,3,4,5];
 var thatArray : [0..5] int;
 
 // First, simply assign one to the other. This copies thisArray into
 // thatArray, instead of just creating a reference. Therefore, modifying
 // thisArray does not also modify thatArray.
+
+// Primero, simplemente asigna uno al otro. Esto copia esta matriz en
+// thatArray, en lugar de simplemente crear una referencia. Por lo tanto, modificando
+// thisArray tampoco modifica thatArray.
+
+
 
 thatArray = thisArray;
 thatArray[1] = -1;
