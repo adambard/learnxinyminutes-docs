@@ -3,7 +3,7 @@ language: kotlin
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators:
-	= ["AstiaSun", "https://github.com/AstiaSun"]
+    - ["AstiaSun", "https://github.com/AstiaSun"]
 filename: LearnKotlin.kt
 lang: uk-ua
 ---
