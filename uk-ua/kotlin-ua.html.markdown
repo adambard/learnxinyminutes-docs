@@ -1,14 +1,15 @@
 ---
 language: kotlin
+filename: LearnKotlin-uk.kt
+lang: uk-ua
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators:
-	- ["AstiaSun", "https://github.com/AstiaSun"]
-filename: LearnKotlin-uk.kt
-lang: uk-ua
+    - ["AstiaSun", "https://github.com/AstiaSun"]
 ---
 
-Kotlin - це мова програмування зі статичною типізацією для JVM, Android та браузера. Вона має 100% сумісність із Java.
+Kotlin - це мова програмування зі статичною типізацією для JVM, Android та браузера. 
+Вона має 100% сумісність із Java.
 
 [Детальніше](https://kotlinlang.org/)
 
@@ -120,7 +121,7 @@ fun helloWorld(val name : String) {
     println(odd(6)) // => false
     println(odd(7)) // => true
 
-    // Якщо значення, що повертається функцією, може бути однозначно визначено, 
+    // Якщо тип значення, що повертається функцією, може бути однозначно визначено, 
     // його непотрібно вказувати.
     fun even(x: Int) = x % 2 == 0
     println(even(6)) // => true
@@ -156,7 +157,7 @@ fun helloWorld(val name : String) {
         }
     }
     /*
-    Щоб створити новий об'єкт, потрібно викликали конструктор класу.
+    Щоб створити новий об'єкт, потрібно викликати конструктор класу.
     Зазначте, що в Kotlin немає ключового слова new.
     */
     val fooExampleClass = ExampleClass(7)
@@ -180,17 +181,17 @@ fun helloWorld(val name : String) {
     val fooCopy = fooData.copy(y = 100)
     println(fooCopy) // => DataClassExample(x=1, y=100, z=4)
 
-    // Об'єкти можуть бути знищенні кількома способами. 
+    // Об'єкти можуть бути деструктурувані кількома способами. 
     val (a, b, c) = fooCopy
     println("$a $b $c") // => 1 100 4
 
-    // знищення у циклі for
+    // деструктурування у циклі for
     for ((a, b, c) in listOf(fooData)) {
         println("$a $b $c") // => 1 100 4
     }
 
     val mapData = mapOf("a" to 1, "b" to 2)
-    // Map.Entry також знищується
+    // Map.Entry також деструктурувуються
     for ((key, value) in mapData) {
         println("$key -> $value")
     }
@@ -206,14 +207,14 @@ fun helloWorld(val name : String) {
     println(fooMutableData) // => MutableDataClassExample(x=5, y=6, z=8)
 
     /*
-    Стисок можна створити використовуючи функцію listOf.
+    Список можна створити використовуючи функцію listOf.
     Список буде незмінним, тобто елементи не можна буде додавати або видаляти.
     */
     val fooList = listOf("a", "b", "c")
     println(fooList.size) // => 3
     println(fooList.first()) // => a
     println(fooList.last()) // => c
-    // доступ до елементів злійснюється через їх порядковий номер.
+    // доступ до елементів здійснюється через їхні порядковий номер.
     println(fooList[1]) // => b
 
     // Змінні списки можна створити використовуючи функцію mutableListOf.
@@ -229,18 +230,18 @@ fun helloWorld(val name : String) {
 
     // mapOf створює асоціативний масив.
     val fooMap = mapOf("a" to 8, "b" to 7, "c" to 9)
-    // Доступ до значень в асоціативних масивах здійснюється через їх ключі.
+    // Доступ до значень в асоціативних масивах здійснюється через їхні ключі.
     println(fooMap["a"]) // => 8
 
     /*
-    Послідовності представленні як колекції лінивих обчислень. Функція generateSequence
+    Послідовності представлені як колекції лінивих обчислень. Функція generateSequence
     створює послідовність.
     */
     val fooSequence = generateSequence(1, { it + 1 })
     val x = fooSequence.take(10).toList()
     println(x) // => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    // Приклад використання послідовностей, генерація чисел Фібоначі:
+    // Приклад використання послідовностей, генерація чисел Фібоначчі:
     fun fibonacciSequence(): Sequence<Long> {
         var a = 0L
         var b = 1L
@@ -288,7 +289,7 @@ fun helloWorld(val name : String) {
     val message = if (num % 2 == 0) "even" else "odd"
     println("$num is $message") // => 5 is odd
 
-    // "when" використовується як альтернатива в ланцюзі "if-else if".
+    // "when" використовується як альтернатива ланцюгам "if-else if".
     val i = 10
     when {
         i < 7 -> println("first block")
