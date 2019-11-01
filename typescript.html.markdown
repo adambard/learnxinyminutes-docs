@@ -199,7 +199,7 @@ interface Person {
 }
 
 var p1: Person = { name: "Tyrone", age: 42 };
-p1.age = 25; // Error, p1.x is read-only
+p1.age = 25; // Error, p1.age is read-only
 
 var p2 = { name: "John", age: 60 };
 var p3: Person = p2; // Ok, read-only alias for p2
