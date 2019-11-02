@@ -175,7 +175,7 @@ fn main() {
     // Методы //
 
     impl<T> Foo<T> {
-            fn get_bar(self) -> T {
+        fn get_bar(self) -> T {
             self.bar
         }
     }
