@@ -130,7 +130,7 @@ fn main() {
     // 2. Типы //
     //////////////
 
-    // Struct
+    // Структура
     struct Point {
         x: i32,
         y: i32,
@@ -175,7 +175,7 @@ fn main() {
     // Методы //
 
     impl<T> Foo<T> {
-            fn get_bar(self) -> T {
+        fn get_bar(self) -> T {
             self.bar
         }
     }
@@ -233,7 +233,7 @@ fn main() {
         println!("{}", i);
     }
 
-    // Отрезки
+    // Диапазоны
     for i in 0u32..10 {
         print!("{} ", i);
     }
