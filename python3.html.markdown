@@ -550,8 +550,14 @@ next(our_iterator)  # => "three"
 # After the iterator has returned all of its data, it raises a StopIteration exception
 next(our_iterator)  # Raises StopIteration
 
-# You can grab all the elements of an iterator by calling list() on it.
-list(filled_dict.keys())  # => Returns ["one", "two", "three"]
+# We can also loop over it, in fact, "for" does this implicitly!
+our_iterator = iter(our_iterable)
+for i in our_iterator:
+    print(i)  # Prints one, two, three
+
+# You can grab all the elements of an iterable or iterator by calling list() on it.
+list(our_iterable)  # => Returns ["one", "two", "three"]
+list(our_iterator)  # => Returns [] because state is saved
 
 
 ####################################################
