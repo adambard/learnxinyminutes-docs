@@ -10,7 +10,8 @@ lang: lsf
 
 # Calculo λ
 
-Calculo lambda, creato principto per Alonzo Church, es lingua de programmatura computatro maximo parvo. Quamquam non habe numero, serie de charactere vel ullo
+Calculo lambda, creato principto per Alonzo Church, es lingua de programmatura
+computatro maximo parvo. Quamquam non habe numero, serie de charactere vel ullo
 typo de data non functionale, id pote repraesenta omne machina de Turing.
 
 Tres elemento compone calculo lambda: **quantitate variabile** (q.v.),
