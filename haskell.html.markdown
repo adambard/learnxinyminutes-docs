@@ -330,15 +330,19 @@ distance (Point x y) (Point x' y') = sqrt $ dx + dy
           
 -- Types can have multiple data constructors with arguments, too
 
-data Name = Mononym String | FirstLastName String String | FullName String String String
+data Name = Mononym String
+          | FirstLastName String String
+          | FullName String String String
 
 -- To make things clearer we can use record syntax
 
-data Point2D = CartesianPoint2D { x :: Float, y :: Float } | PolarPoint2D { r :: Float, theta :: Float }
+data Point2D = CartesianPoint2D { x :: Float, y :: Float } 
+             | PolarPoint2D { r :: Float, theta :: Float }
 
 myPoint = CartesianPoint2D { x = 7.0, y = 10.0 }
 
--- Using record syntax automatically creates accessor functions (the name of the field)
+-- Using record syntax automatically creates accessor functions
+-- (the name of the field)
 
 xOfMyPoint = x myPoint
 
@@ -357,8 +361,9 @@ myPoint'2 = CartesianPoint2D 3.3 4.0
 
 -- It's also useful to pattern match data constructors in `case` expressions
 
-distanceFromOrigin x = case x of (CartesianPoint2D x y) -> sqrt $ x ** 2 + y ** 2
-                                 (PolarPoint2D r _) -> r
+distanceFromOrigin x = 
+    case x of (CartesianPoint2D x y) -> sqrt $ x ** 2 + y ** 2
+              (PolarPoint2D r _) -> r
 
 -- Your data types can have type parameters too:
 
@@ -386,8 +391,9 @@ somePerson :: Person
 someCircle :: Circle
 distance :: Point -> Point -> Float
 
--- The following would compile and run without issue, even though it does not make
--- sense semantically, because the type synonyms reduce to the same base types
+-- The following would compile and run without issue, 
+-- even though it does not make sense semantically,
+-- because the type synonyms reduce to the same base types
 
 distance (getMyHeightAndWeight somePerson) (findCenter someCircle)
 
@@ -397,10 +403,11 @@ distance (getMyHeightAndWeight somePerson) (findCenter someCircle)
 
 -- Typeclasses are one way Haskell does polymorphism
 -- They are similar to interfaces in other languages
--- A typeclass defines a set of functions that must work on any type that is in
--- that typeclass.
+-- A typeclass defines a set of functions that must 
+-- work on any type that is in that typeclass.
 
--- The Eq typeclass is for types whose instances can be tested for equality with one another
+-- The Eq typeclass is for types whose instances can 
+-- be tested for equality with one another.
 
 class Eq a where  
     (==) :: a -> a -> Bool  
@@ -428,27 +435,30 @@ canProceedThrough t = t /= Red
 
 -- You can NOT create an instance definition for a type synonym
 
--- Functions can be written to take typeclasses with type parameters, rather than types,
--- assuming that the function only relies on features of the typeclass
+-- Functions can be written to take typeclasses with type parameters, 
+-- rather than types, assuming that the function only relies on 
+-- features of the typeclass
 
 isEqual (Eq a) => a -> a -> Bool
 isEqual x y = x == y
 
--- Note that x and y MUST be the same type, as they are both defined as being of type parameter 'a'
--- A typeclass does state that different types in the typeclass can be mixed together
--- So `isEqual Red 2` is invalid, even though 2 is an Int which is an instance of Eq, and Red is
--- a TrafficLight which is also an instance of Eq
+-- Note that x and y MUST be the same type, as they are both defined
+-- as being of type parameter 'a'.
+-- A typeclass does not state that different types in the typeclass can 
+-- be mixed together.
+-- So `isEqual Red 2` is invalid, even though 2 is an Int which is an 
+-- instance of Eq, and Red is a TrafficLight which is also an instance of Eq
 
 -- Other common typeclasses are:
 -- Ord for types that can be ordered, allowing you to use >, <=, etc.
 -- Read for types that can be created from a string representation
 -- Show for types that can be converted to a string for display
--- Num, Real, Integral, Fractional for types that can do mathematical calculation
+-- Num, Real, Integral, Fractional for types that can do math
 -- Enum for types that can be stepped through
 -- Bounded for types with a maximum and minimum
 
--- Haskell can automatically make types part of Eq, Ord, Read, Show, Enum, and Bounded
--- with the `deriving` keyword at the end of the type declaration
+-- Haskell can automatically make types part of Eq, Ord, Read, Show, Enum, 
+-- and Bounded with the `deriving` keyword at the end of the type declaration
 
 data Point = Point Float Float deriving (Eq, Read, Show)
     
