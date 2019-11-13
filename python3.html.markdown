@@ -8,6 +8,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
+    - ["caminsha", "https://github.com/caminsha"]
 filename: learnpython3.py
 ---
 
@@ -230,7 +231,7 @@ li[4]  # Raises an IndexError
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # Return list from index 1 to 3 => [2, 4]
 li[2:]    # Return list starting from index 2 => [4, 3]
-li[:3]    # Return list from beginning uptil index 3  => [1, 2, 4]
+li[:3]    # Return list from beginning until index 3  => [1, 2, 4]
 li[::2]   # Return list selecting every second entry => [1, 4]
 li[::-1]  # Return list in reverse order => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
