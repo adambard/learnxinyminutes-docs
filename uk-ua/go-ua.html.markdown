@@ -2,7 +2,7 @@
 name: Go
 category: language
 language: Go
-filename: learngo.go
+filename: learngo-ua.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]
