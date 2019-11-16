@@ -224,9 +224,9 @@ contributors:
   (export "apply_cos64" (func $apply_cos64))
 
   ;; Wasm is a stack-based language, but for returning values more complicated
-  ;; than an int/float, a memory stack has to be manually managed. One
+  ;; than an int/float, a separate memory stack has to be manually managed. One
   ;; approach is to use a mutable global to store the stack_ptr. We give
-  ;; ourselves 1MiB of mem-stack and grow it downwards.
+  ;; ourselves 1MiB of memstack and grow it downwards.
   ;;
   ;; Below is a demonstration of how this C code **might** be written by hand
   ;;
@@ -244,7 +244,7 @@ contributors:
   ;;     return s.a + s.b;
   ;;   }
 
-  ;; Unlike C, we must manage our own memory stack
+  ;; Unlike C, we must manage our own memory stack. We reserve 1MiB
   (global $memstack_ptr (mut i32) (i32.const 65536))
 
   ;; Structs can only be returned by reference
@@ -270,7 +270,7 @@ contributors:
     (local $var$sum_struct$b i32)
     (local $local_memstack_ptr i32)
 
-    ;; reserve stack space
+    ;; reserve memstack space
     (i32.sub
       (get_global $memstack_ptr)
       (i32.const 8)
@@ -278,7 +278,7 @@ contributors:
     tee_local $local_memstack_ptr ;; tee both stores and returns given value
     set_global $memstack_ptr
 
-    ;; call the function, storing the result in the stack
+    ;; call the function, storing the result in the memstack
     (call $sum_struct_create
       ((;$sum_struct_ptr=;) get_local $local_memstack_ptr)
       ((;$var$a=;) i32.const 40)
@@ -293,7 +293,7 @@ contributors:
       (i32.load offset=4 (get_local $local_memstack_ptr))
     )
 
-    ;; unreserve stack space
+    ;; unreserve memstack space
     (set_global $memstack_ptr
         (i32.add
           (get_local $local_memstack_ptr)
