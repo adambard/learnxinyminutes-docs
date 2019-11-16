@@ -819,9 +819,9 @@ void doSomethingWithAFile(const std::string& filename)
 // Container
 /////////////////////
 
-// Die Container der Standard template Bibliothek beinhaltet einige vordefinierter Templates.
+// Die Container der Standard template Bibliothek beinhaltet einige vordefinierte Templates.
 // Diese verwalten die Speicherbereiche für die eigenen Elemente und stellen Member-Funktionen
-// für den Zugriff und die Maniplulation bereit.
+// für den Zugriff und die Manipulation bereit.
 
 // Beispielhafte Container:
 
