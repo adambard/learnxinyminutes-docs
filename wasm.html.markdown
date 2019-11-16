@@ -223,7 +223,12 @@ contributors:
   )
   (export "apply_cos64" (func $apply_cos64))
 
-  ;; Demonstration of how this C code might be written by hand
+  ;; Wasm is a stack-based language, but for returning values more complicated
+  ;; than an int/float, a memory stack has to be manually managed. One
+  ;; approach is to use a mutable global to store the stack_ptr. We give
+  ;; ourselves 1MiB of mem-stack and grow it downwards.
+  ;;
+  ;; Below is a demonstration of how this C code **might** be written by hand
   ;;
   ;;   typedef struct {
   ;;       int a;
@@ -238,17 +243,11 @@ contributors:
   ;;     sum_struct_t s = sum_struct_create(40, 2);
   ;;     return s.a + s.b;
   ;;   }
-  ;;
-  ;; Wasm is a stack-based language, but for returning values more complicated
-  ;; than an int/float, a memory stack has to be manually managed. One ;;
-  ;; approach is to use a mutable global to store the stack_ptr. We give
-  ;; ourselves 1MiB of mem-stack and grow it downwards.
-  ;;
-  ;; Note: we are differentiating from the memstack (stack stored in memory)
-  ;; and the "stack", which wasm implicitly uses to to pass and return values.
+
+  ;; Unlike C, we must manage our own memory stack
   (global $memstack_ptr (mut i32) (i32.const 65536))
 
-  ;; structs can only be returned by reference
+  ;; Structs can only be returned by reference
   (func $sum_struct_create 
         (param $sum_struct_ptr i32) 
         (param $var$a i32) 
