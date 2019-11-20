@@ -95,7 +95,6 @@ module Module1
         ' Variáveis
         'Os dados inseridos por um usuário precisam ser armazenados.
         ' As variáveis ​​também começar com um Dim e terminar com um Como VariableType .
-
         ' Neste tutorial, nós queremos saber qual é o seu nome, e faça o programa
         ' Responder ao que é dito.
         Nome de usuário Dim As String
@@ -141,7 +140,7 @@ module Module1
     ' Cinco
     Private Sub WorkingCalculator ()
         Console.Title = " A Calculadora de Trabalho | Saiba X em Y Minutes"
-        " No entanto, se você gostaria que a calculadora para subtrair, dividir , múltiplos e
+        " No entanto, se você gostaria que a calculadora para subtrair, dividir, múltiplos e
         ' somar.
         ' Copie e cole o código acima novamente .
         Console.Write ("Primeiro número:")
@@ -153,7 +152,7 @@ module Module1
         Dim e As Integer = a - b
         Dim f As Integer = a / b
 
-        " Ao adicionar as linhas abaixo , somos capazes de calcular a subtração ,
+        " Ao adicionar as linhas abaixo, somos capazes de calcular a subtração,
         ' multply bem como dividir os valores de a e b
         Console.Gravar ( a.ToString ( ) + " + " + b.ToString ( ) )
         'Queremos pad as respostas para a esquerda por três espaços.
@@ -172,7 +171,7 @@ module Module1
     Sub UsingDoWhileLoops particulares ()
         ' Assim como o sub privado anterior
         ' Desta vez, perguntar se o usuário deseja continuar ( Sim ou Não ? )
-        ' Estamos usando Do While Loop , como não temos certeza se o usuário quer usar o
+        ' Estamos usando Do While Loop, como não temos certeza se o usuário quer usar o
         'programa mais de uma vez .
         Console.Title = " UsingDoWhileLoops | Saiba X em Y Minutes"
         Dim resposta As String ' Nós usamos a variável " String" como a resposta é um texto
@@ -195,12 +194,12 @@ module Module1
             Console.Write ( a.ToString () + "/" + b.ToString ())
             Console.WriteLine (" =" + e.ToString.PadLeft (3) )
             Console.ReadLine ()
-            ' Faça a pergunta , se o usuário deseja continuar? Infelizmente,
+            ' Faça a pergunta, se o usuário deseja continuar? Infelizmente,
             "é sensível a maiúsculas.
             Console.Write ( "Deseja continuar? (Sim / não )")
             " O programa pega a variável e imprime e começa de novo.
             answer = Console.ReadLine
-        " O comando para a variável para trabalhar seria , neste caso, " sim "
+        " O comando para a variável para trabalhar seria, neste caso, " sim "
         Loop While resposta = "yes"
 
     End Sub
@@ -242,8 +241,8 @@ module Module1
     Console.Title = "Se Declaração / Else | Saiba X em Y Minutes"
         'Às vezes é importante ter em conta mais de duas alternativas.
         'Às vezes, há um bom número de outros.
-        'Quando este for o caso , mais do que uma if seria necessária .
-        'Uma instrução if é ótimo para máquinas de venda automática . Quando o usuário digita um código.
+        'Quando este for o caso, mais do que uma if seria necessária.
+        'Uma instrução if é ótimo para máquinas de venda automática. Quando o usuário digita um código.
         ' A1 , A2, A3 , ect para selecionar um item.
         'Todas as opções podem ser combinadas em uma única if.
 
