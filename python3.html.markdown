@@ -58,11 +58,12 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 2**3  # => 8
 
 # Enforce precedence with parentheses
+1 + 3 * 2  # => 7
 (1 + 3) * 2  # => 8
 
 # Boolean values are primitives (Note: the capitalization)
-True
-False
+True  # => True
+False  # => False
 
 # negate with not
 not True   # => False
