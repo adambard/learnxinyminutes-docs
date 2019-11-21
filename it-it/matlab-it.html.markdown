@@ -199,8 +199,7 @@ size(A) % ans = 3 3
 A(1, :) =[] % Rimuove la prima riga della matrice
 A(:, 1) =[] % Rimuove la prima colonna della matrice
 
-transpose(A) % Traspone la matrice, equivale a:
-A one
+transpose(A) % Traspone la matrice, equivale a: A.'
 ctranspose(A) % Trasposizione hermitiana della matrice
 % (ovvero il complesso coniugato di ogni elemento della matrice trasposta)
 

@@ -28,7 +28,7 @@ Markdown có sự khác biệt trong cách cài đặt giữa các trình phân 
 ## Phần tử HTML
 Markdown là tập cha của HTML, vì vậy bất cứ file HTML nào đều là Markdown đúng.
 
-```markdown
+```md
 <!-- Điều này đồng nghĩa ta có thể sử dụng các phần tử HTML
 trong Markdown, ví dụ như phần tử chú thích/comment.
 Tuy nhiên, nếu sử dụng một phần tử HTML trong file Markdown,
@@ -40,7 +40,7 @@ ta không thể sử dụng cú pháp Markdown cho nội dung bên trong phần 
 Ta có thể tạo các phần tử đầu mục HTML từ `<h1>` cho đến `<h6>` dễ dàng
 bằng cách thêm số lượng dấu thăng (#) đằng trước chuỗi cần tạo đầu mục.
 
-```markdown
+```md
 # Đây là đầu mục <h1>
 ## Đây là đầu mục <h2>
 ### Đây là đầu mục <h3>
@@ -50,7 +50,7 @@ bằng cách thêm số lượng dấu thăng (#) đằng trước chuỗi cần
 ```
 Markdown còn cung cấp cách khác để tạo đầu mục hạng nhất h1 và hạng nhì h2.
 
-```markdown
+```md
 Đây là đầu mục h1
 =============
 
@@ -62,7 +62,7 @@ Markdown còn cung cấp cách khác để tạo đầu mục hạng nhất h1 v
 
 Văn bản có thể được định dạng dễ dàng như in nghiêng hay làm đậm sử dụng Markdown.
 
-```markdown
+```md
 *Đoạn văn bản này được in nghiêng.*
 _Và đoạn này cũng như vậy._
 
@@ -76,7 +76,7 @@ __Và đoạn này cũng vậy.__
 
 Trong cài đặt Markdown để hiển thị file của GitHub,ta còn có gạch ngang:
 
-```markdown
+```md
 ~~Đoạn văn bản này được gạch ngang.~~
 ```
 ## Đoạn văn
@@ -84,7 +84,7 @@ Trong cài đặt Markdown để hiển thị file của GitHub,ta còn có gạ
 Đoạn văn bao gồm một hay nhiều dòng văn bản liên tiếp nhau được phân cách
 bởi một hay nhiều dòng trống.
 
-```markdown
+```md
 Đây là đoạn văn thứ nhất.
 
 Đây là đoạn văn thứ hai.
@@ -97,7 +97,7 @@ Dòng này vẫn thuộc đoạn văn thứ hai, do không có cách dòng.
 Nếu cần chèn thêm thẻ ngắt dòng `<br />` của HTML, ta có thể kết thúc đoạn văn bản
 bằng cách thêm vào từ 2 dấu cách (space) trở lên và bắt đầu đoạn văn bản mới.
 
-```markdown
+```md
 Dòng này kết thúc với 2 dấu cách (highlight để nhìn thấy).
 
 Có phần tử <br /> ở bên trên.
@@ -105,7 +105,7 @@ Có phần tử <br /> ở bên trên.
 
 Khối trích dẫn được sử dụng với kí tự >
 
-```markdown
+```md
 > Đây là khối trích dẫn. Ta có thể
 > ngắt dòng thủ công và thêm kí tự `>` trước mỗi dòng hoặc ta có thể để dòng tự ngắt nếu cần thiệt khi quá dài.
 > Không có sự khác biệt nào, chỉ cần nó bắt đầu với kí tự `>`
@@ -120,7 +120,7 @@ Khối trích dẫn được sử dụng với kí tự >
 
 Danh sách không có thứ tự có thể được tạo sử dụng dấu sao, dấu cộng hay dấu trừ đầu dòng.
 
-```markdown
+```md
 * Một mục
 * Một mục
 * Một mục nữa
@@ -140,7 +140,7 @@ hay
 
 Danh sách có thứ tự được tạo bởi một số theo sau bằng một dấu chấm.
 
-```markdown
+```md
 1. Mục thứ nhất
 2. Mục thứ hai
 3. Mục thứ ba
@@ -148,7 +148,7 @@ Danh sách có thứ tự được tạo bởi một số theo sau bằng một 
 
 Ta không nhất thiết phải điền số thứ thự cho chỉ mục đúng mà Markdown sẽ tự hiển thị danh sách theo thứ tự đã được sắp xếp, tuy nhiên cách làm này không tốt!
 
-```markdown
+```md
 1. Mục thứ nhất
 1. Mục thứ hai
 1. Mục thứ ba
@@ -157,7 +157,7 @@ Ta không nhất thiết phải điền số thứ thự cho chỉ mục đúng 
 
 Ta còn có thể sử dụng danh sách con
 
-```markdown
+```md
 1. Mục thứ nhất
 2. Mục thứ hai
 3. Mục thứ ba
@@ -168,7 +168,7 @@ Ta còn có thể sử dụng danh sách con
 
 Markdown còn cung cấp danh mục (checklist). Nó sẽ hiển thị ra hộp đánh dấu dạng HTML.
 
-```markdown
+```md
 Boxes below without the 'x' are unchecked HTML checkboxes.
 - [ ] First task to complete.
 - [ ] Second task that needs done
@@ -180,14 +180,14 @@ This checkbox below will be a checked HTML checkbox.
 
 Ta có thể đánh dấu một đoạn code (tương tự sử dụng phần tử HTML `<code>`) bằng việc thụt đầu dòng sử dụng bốn dấu cách (space) hoặc một dấu nhảy (tab)
 
-```markdown
+```md
     This is code
     So is this
 ```
 
 Ta còn có thể thêm dấu nhảy (hoặc thêm vào bốn dấu cách nữa) để căn chỉnh phần bên trong đoạn code
 
-```markdown
+```md
     my_array.each do |item|
         puts item
     end
@@ -195,7 +195,7 @@ Ta còn có thể thêm dấu nhảy (hoặc thêm vào bốn dấu cách nữa)
 
 Code hiển thị cùng dòng có thể được đánh dấu sử dụng cặp ``.
 
-```markdown
+```md
 John didn't even know what the `go_to()` function did!
 ```
 
@@ -217,7 +217,7 @@ highlighting of the language you specify after the \`\`\`
 Dòng kẻ ngang (`<hr />`) có thể được thêm vào dễ dàng sử dụng từ 3 kí tự sao (*) hoặc gạch ngang (-), không quan trọng có khoảng cách giữa các kí tự hay không.
 
 
-```markdown
+```md
 ***
 ---
 - - -
@@ -228,17 +228,17 @@ Dòng kẻ ngang (`<hr />`) có thể được thêm vào dễ dàng sử dụng
 
 Một trong những thứ tốt nhất khi làm việc với Markdown là khả năng tạo liên kết hết sức dễ dàng. Đoạn text hiển thị được đóng trong cặp ngoặc vuông [] kèm theo đường dẫn url trong cặp ngoặc tròn ().
 
-```markdown
+```md
 [Click me!](http://test.com/)
 ```
 Ta còn có thể tạo tiêu đề cho liên kết sử dụng cặp ngoặc nháy bên trong cặp ngoặc tròn
 
-```markdown
+```md
 [Click me!](http://test.com/ "Link to Test.com")
 ```
 Đường dẫn tương đối cũng hoạt động.
 
-```markdown
+```md
 [Go to music](/music/).
 ```
 
@@ -264,7 +264,7 @@ Nhưng nó không được sử dụng rộng rãi.
 
 Hiển thị ảnh tương tự như liên kết nhưng có thêm dấu chấm than đằng trước
 
-```markdown
+```md
 ![Thuộc tính alt cho ảnh](http://imgur.com/myimage.jpg "Tiêu đề tùy chọn")
 ```
 
@@ -278,20 +278,20 @@ Và kiểu tham chiếu cũng hoạt động như vậy.
 
 ### Tự động đặt liên kết
 
-```markdown
+```md
 <http://testwebsite.com/> tương đương với
 [http://testwebsite.com/](http://testwebsite.com/)
 ```
 
 ### Tự động đặt liên kết cho email
 
-```markdown
+```md
 <foo@bar.com>
 ```
 
 ### Hiển thị Kí tự đặc biệt
 
-```markdown
+```md
 Khi ta muốn viết *đoạn văn bản này có dấu sao bao quanh* nhưng ta không muốn nó bị in nghiêng, ta có thể sử dụng: \*đoạn văn bản này có dấu sao bao quanh\*.
 ```
 
@@ -299,7 +299,7 @@ Khi ta muốn viết *đoạn văn bản này có dấu sao bao quanh* nhưng ta
 
 Trong Markdown của Github, ta có thể sử dụng thẻ `<kbd>` để thay cho phím trên bàn phím.
 
-```markdown
+```md
 Máy treo? Thử bấm tổ hợp
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 ```
@@ -307,7 +307,7 @@ Máy treo? Thử bấm tổ hợp
 
 Bảng biểu được hỗ trợ trên Markdown của GitHub, Jira, Trello, v.v và khá khó viết:
 
-```markdown
+```md
 | Cột 1        | Cột2     | Cột 3         |
 | :----------- | :------: | ------------: |
 | Căn trái     | Căn giữa | Căn phải      |
@@ -315,7 +315,7 @@ Bảng biểu được hỗ trợ trên Markdown của GitHub, Jira, Trello, v.v
 ```
 Hoặc có thể sử dụng kết quả dưới đây
 
-```markdown
+```md
 Cột 1 | Cột 2 | Cột 3
 :-- | :-: | --:
 blah | blah | blah

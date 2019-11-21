@@ -340,7 +340,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 (def my-atom (atom {}))
 
 ; Atualize o atom com um swap!.
-; swap! pega uma funçnao and chama ela com o valor atual do atom
+; swap! pega uma função e chama ela com o valor atual do atom
 ; como primeiro argumento, e qualquer argumento restante como o segundo
 (swap! my-atom assoc :a 1) ; Coloca o valor do átomo my-atom como o resultado de  (assoc {} :a 1)
 (swap! my-atom assoc :b 2) ; Coloca o valor do átomo my-atom como o resultado de (assoc {:a 1} :b 2)
@@ -382,3 +382,6 @@ Clojuredocs.org tem documentação com exemplos para quase todas as funções pr
 
 Clojure-doc.org tem um bom número de artigos para iniciantes:
 [http://clojure-doc.org/](http://clojure-doc.org/)
+
+Clojure for the Brave and True é um livro de introdução ao Clojure e possui uma versão gratuita online:
+[https://www.braveclojure.com/clojure-for-the-brave-and-true/](https://www.braveclojure.com/clojure-for-the-brave-and-true/)

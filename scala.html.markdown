@@ -345,7 +345,7 @@ s(0)      // Boolean = false
 s(1)      // Boolean = true
 
 /* Look up the documentation of map here -
- * http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map
+ * https://www.scala-lang.org/api/current/scala/collection/immutable/Map.html
  * and make sure you can read it
  */
 
@@ -716,7 +716,7 @@ import scala.collection.immutable.{Map => _, Set => _, _}
 // Java classes can also be imported. Scala syntax can be used
 import java.swing.{JFrame, JWindow}
 
-// Your programs entry point is defined in an scala file using an object, with a
+// Your programs entry point is defined in a scala file using an object, with a
 // single method, main:
 object Application {
   def main(args: Array[String]): Unit = {

@@ -8,7 +8,7 @@ lang: pt-br
 filename: learnvisualbasic-pt.vb
 ---
 
-```vb
+```
 Module Module1
 
 module Module1

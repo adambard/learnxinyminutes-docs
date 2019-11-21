@@ -13,7 +13,7 @@ Markdown byl vytvořen Johnem Gruberem v roce 2004. Je zamýšlen jako lehce či
 a psatelná syntaxe, která je jednoduše převeditelná do HTML (a dnes i do mnoha
 dalších formátů)
 
-```markdown
+```md
 <!-- Markdown je nadstavba nad HTML, takže jakýkoliv kód HTML je validní
 Markdown, to znamená, že můžeme používat HTML elementy, třeba jako komentář, a
 nebudou ovlivněny parserem Markdownu. Avšak, pokud vytvoříte HTML element v

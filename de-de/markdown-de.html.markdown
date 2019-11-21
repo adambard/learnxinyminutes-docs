@@ -144,7 +144,7 @@ indem du eine Zeile mit vier Leerzeichen oder einem Tabulator einrückst -->
         puts item
     end
 
-<!-- Innerhalb normalen Texts kannst du Code mit Backticks ` auszeichnen -->
+<!-- Innerhalb normalen Texts kannst du Code mit Backticks \` auszeichnen -->
 
 Hermann hatte nicht die leiseste Ahnung, was dieses `go_to()` bedeuten könnte!
 

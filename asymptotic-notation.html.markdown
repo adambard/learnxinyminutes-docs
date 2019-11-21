@@ -110,7 +110,7 @@ Let's look to the definition of Big-O.
 3log n + 100 <= c * log n
 ```
 
-Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > <sub>0</sub>?
+Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > n<sub>0</sub>?
 
 ```
 3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)
@@ -155,7 +155,7 @@ Small-o, commonly written as **o**, is an Asymptotic Notation to denote the
 upper bound (that is not asymptotically tight) on the growth rate of runtime 
 of an algorithm.
 
-`f(n)` is o(g(n)), if for some real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is < `c g(n)` 
+`f(n)` is o(g(n)), if for all real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is < `c g(n)` 
 for every input size n (n > n<sub>0</sub>).
 
 The definitions of O-notation and o-notation are similar. The main difference 
@@ -168,7 +168,7 @@ Small-omega, commonly written as **ω**, is an Asymptotic Notation to denote
 the lower bound (that is not asymptotically tight) on the growth rate of 
 runtime of an algorithm.
 
-`f(n)` is ω(g(n)), if for some real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is > `c g(n)` 
+`f(n)` is ω(g(n)), if for all real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is > `c g(n)` 
 for every input size n (n > n<sub>0</sub>).
 
 The definitions of Ω-notation and ω-notation are similar. The main difference 

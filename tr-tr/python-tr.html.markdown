@@ -458,7 +458,7 @@ Human.grunt() #=> "*grunt*"
 
 # Modülleri sayfaya dahil edebilirsiniz
 import math
-print math.sqrt(16) #=> 4
+print math.sqrt(16) #=> 4.0
 
 # Modül içerisinden spesifik bir fonksiyonu getirebilirsiniz
 from math import ceil, floor

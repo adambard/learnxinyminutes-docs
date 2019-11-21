@@ -287,7 +287,11 @@ end
 PrivateMath.sum(1, 2)    #=> 3
 # PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
 
-# Function declarations also support guards and multiple clauses:
+# Function declarations also support guards and multiple clauses.
+# When a function with multiple clauses is called, the first function
+# that satisfies the clause will be invoked.
+# Example: invoking area({:circle, 3}) will call the second area
+# function defined below, not the first:
 defmodule Geometry do
   def area({:rectangle, w, h}) do
     w * h
@@ -448,7 +452,7 @@ Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 ## References
 
 * [Getting started guide](http://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](http://elixir-lang.org)
-* [Elixir Documentation](http://elixir-lang.org/docs/master/)
+* [Elixir Documentation](https://elixir-lang.org/docs.html)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
 * [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
 * ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) by Fred Hebert

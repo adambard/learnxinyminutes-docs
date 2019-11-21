@@ -17,14 +17,14 @@ concorrente, basato su classi e adatto a svariati scopi.
 ```java
 // I commenti su singola linea incominciano con //
 /*
-I commenti su piu' linee invece sono cosi'
+I commenti su più linee invece sono così
 */
 /**
-I commenti per la documentazione JavaDoc si fanno cosi'.
+I commenti per la documentazione JavaDoc si fanno così.
 Vengono usati per descrivere una classe o alcuni suoi attributi.
 */
 
-// Per importare la classe ArrayList conenuta nel package java.util
+// Per importare la classe ArrayList contenuta nel package java.util
 import java.util.ArrayList;
 // Per importare tutte le classi contenute nel package java.security
 import java.security.*;
@@ -48,7 +48,7 @@ public class LearnJava {
         System.out.print("Ciao ");
         System.out.print("Mondo ");
 
-        // Per stampare del testo formattato, si puo' usare System.out.printf
+        // Per stampare del testo formattato, si può usare System.out.printf
         System.out.printf("pi greco = %.5f", Math.PI); // => pi greco = 3.14159
 
         ///////////////////////////////////////
@@ -60,7 +60,7 @@ public class LearnJava {
         */
         // Per dichiarare una variabile basta fare <tipoDato> <nomeVariabile>
         int fooInt;
-        // Per dichiarare piu' di una variabile dello lo stesso tipo si usa:
+        // Per dichiarare più di una variabile dello lo stesso tipo si usa:
         // <tipoDato> <nomeVariabile1>, <nomeVariabile2>, <nomeVariabile3>
         int fooInt1, fooInt2, fooInt3;
 
@@ -71,7 +71,7 @@ public class LearnJava {
         // Per inizializzare una variabile si usa
         // <tipoDato> <nomeVariabile> = <valore>
         int fooInt = 1;
-        // Per inizializzare piu' di una variabile dello lo stesso tipo
+        // Per inizializzare più di una variabile dello lo stesso tipo
         // si usa <tipoDato> <nomeVariabile1>, <nomeVariabile2>, <nomeVariabile3> = <valore>
         int fooInt1, fooInt2, fooInt3;
         fooInt1 = fooInt2 = fooInt3 = 1;
@@ -94,7 +94,7 @@ public class LearnJava {
         // Long - intero con segno a 64 bit (in complemento a 2)
         // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
         long fooLong = 100000L;
-        // L viene usato per indicare che il valore e' di tipo Long;
+        // L viene usato per indicare che il valore è di tipo Long;
         // altrimenti il valore viene considerato come intero.
 
         // Nota: Java non dispone di interi senza segno.
@@ -102,14 +102,14 @@ public class LearnJava {
         // Float - Numero in virgola mobile a 32 bit con precisione singola (IEEE 754)
         // 2^-149 <= float <= (2-2^-23) * 2^127
         float fooFloat = 234.5f;
-        // f o F indicano the la variabile e' di tipo float;
+        // f o F indicano the la variabile è di tipo float;
         // altrimenti il valore viene considerato come double.
 
         // Double - Numero in virgola mobile a 64 bit con precisione doppia (IEEE 754)
         // 2^-1074 <= x <= (2-2^-52) * 2^1023
         double fooDouble = 123.4;
 
-        // Boolean - Puo' assumere il valore vero (true) o falso (false)
+        // Boolean - Può assumere il valore vero (true) o falso (false)
         boolean fooBoolean = true;
         boolean barBoolean = false;
 
@@ -118,26 +118,26 @@ public class LearnJava {
 
         // Le variabili precedute da final possono essere inizializzate una volta sola,
         final int HOURS_I_WORK_PER_WEEK = 9001;
-        // pero' e' possibile dichiararle e poi inizializzarle in un secondo momento.
+        // però è possibile dichiararle e poi inizializzarle in un secondo momento.
         final double E;
         E = 2.71828;
 
 
         // BigInteger - Interi a precisione arbitraria
         //
-        // BigInteger e' un tipo di dato che permette ai programmatori di
-        // gestire interi piu' grandi di 64 bit. Internamente, le variabili
+        // BigInteger è un tipo di dato che permette ai programmatori di
+        // gestire interi più grandi di 64 bit. Internamente, le variabili
         // di tipo  BigInteger vengono memorizzate come un vettore di byte e 
         // vengono manipolate usando funzioni dentro la classe BigInteger.
         //
-        // Una variabile di tipo BigInteger puo' essere inizializzata usando
+        // Una variabile di tipo BigInteger può essere inizializzata usando
         // un array di byte oppure una stringa.
         
         BigInteger fooBigInteger = new BigDecimal(fooByteArray);
 
         // BigDecimal - Numero con segno, immutabile, a precisione arbitraria
         //
-        // Una variabile di tipo BigDecimal e' composta da due parti: un intero
+        // Una variabile di tipo BigDecimal è composta da due parti: un intero
         // a precisione arbitraria detto 'non scalato', e un intero a 32 bit
         // che rappresenta la 'scala', ovvero la potenza di 10 con cui
         // moltiplicare l'intero non scalato.
@@ -158,9 +158,9 @@ public class LearnJava {
         // Stringhe
         String fooString = "Questa e' la mia stringa!";
 
-        // \n e' un carattere di escape che rappresenta l'andare a capo
+        // \n è un carattere di escape che rappresenta l'andare a capo
         String barString = "Stampare su una nuova riga?\nNessun problema!";
-        // \t e' un carattere di escape che aggiunge un tab
+        // \t è un carattere di escape che aggiunge un tab
         String bazString = "Vuoi aggiungere un tab?\tNessun problema!";
         System.out.println(fooString);
         System.out.println(barString);
@@ -168,7 +168,7 @@ public class LearnJava {
 
         // Vettori
         // La dimensione di un array deve essere decisa in fase di
-        // istanziazione. Per dichiarare un array si puo' fare in due modi:
+        // istanziazione. Per dichiarare un array si può fare in due modi:
         // <tipoDato>[] <nomeVariabile> = new <tipoDato>[<dimensioneArray>];
         // <tipoDato> <nomeVariabile>[] = new <tipoDato>[<dimensioneArray>];
         int[] intArray = new int[10];
@@ -189,8 +189,8 @@ public class LearnJava {
         System.out.println("intArray @ 1: " + intArray[1]); // => 1
 
         // Ci sono altri tipo di dato interessanti.
-        // ArrayList - Simili ai vettori, pero' offrono altre funzionalita',
-        //             e la loro dimensione puo' essere modificata.
+        // ArrayList - Simili ai vettori, però offrono altre funzionalità,
+        //             e la loro dimensione può essere modificata.
         // LinkedList - Si tratta di una lista linkata doppia, e come tale
         //              implementa tutte le operazioni del caso.
         // Map - Un insieme di oggetti che fa corrispondere delle chiavi
@@ -207,7 +207,7 @@ public class LearnJava {
 
         int i1 = 1, i2 = 2; // Dichiarazone multipla in contemporanea
 
-        // L'aritmetica e' lineare.
+        // L'aritmetica è lineare.
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
         System.out.println("2*1 = " + (i2 * i1)); // => 2
@@ -253,7 +253,7 @@ public class LearnJava {
         ///////////////////////////////////////
         System.out.println("\n->Strutture di controllo");
 
-        // La dichiarazione dell'If e'' C-like.
+        // La dichiarazione dell'If è C-like.
         int j = 10;
         if (j == 10){
             System.out.println("Io vengo stampato");
@@ -328,18 +328,18 @@ public class LearnJava {
         System.out.println("Risultato del costrutto switch: " + stringaMese);
 
         // Condizioni brevi
-        // Si puo' usare l'operatore '?' per un rapido assegnamento
+        // Si può usare l'operatore '?' per un rapido assegnamento
         // o per operazioni logiche.
         // Si legge: 
-        // Se (condizione) e' vera, usa <primo valore>, altrimenti usa <secondo valore>
+        // Se (condizione) è vera, usa <primo valore>, altrimenti usa <secondo valore>
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
         System.out.println("Se la condizione e' vera stampa A: "+bar); 
-        // Stampa A, perche' la condizione e' vera.
+        // Stampa A, perché la condizione è vera.
 
 
         /////////////////////////////////////////
-        // Convertire i tipi di tati e Typcasting
+        // Convertire i tipi di dati e Typecasting
         /////////////////////////////////////////
 
         // Convertire tipi di dati
@@ -397,16 +397,16 @@ class Bicicletta {
 
     // Variabili della bicicletta
     public int cadenza; 
-      // Public: Puo' essere richiamato da qualsiasi classe
+      // Public: Può essere richiamato da qualsiasi classe
     private int velocita; 
-      // Private: e'' accessibile solo dalla classe dove e'' stato inizializzato
+      // Private: è accessibile solo dalla classe dove è stato inizializzato
     protected int ingranaggi; 
-      // Protected: e'' visto sia dalla classe che dalle sottoclassi
+      // Protected: è visto sia dalla classe che dalle sottoclassi
     String nome; 
-      // default: e'' accessibile sono all'interno dello stesso package
+      // default: è accessibile sono all'interno dello stesso package
 
     // I costruttori vengono usati per creare variabili
-    // Questo e'' un costruttore
+    // Questo è un costruttore
     public Bicicletta() {
         ingranaggi = 1;
         cadenza = 50;
@@ -414,7 +414,7 @@ class Bicicletta {
         nome = "Bontrager";
     }
 
-    // Questo e'' un costruttore che richiede parametri
+    // Questo è un costruttore che richiede parametri
     public Bicicletta(int cadenza, int velocita, int ingranaggi, String nome) {
         this.ingranaggi = ingranaggi;
         this.cadenza = cadenza;
@@ -469,7 +469,7 @@ class Bicicletta {
     }
 } // Fine classe bicicletta
 
-// PennyFarthing e'' una sottoclasse della bicicletta
+// PennyFarthing è una sottoclasse della bicicletta
 class PennyFarthing extends Bicicletta {
     // (Sono quelle biciclette con un unica ruota enorme
     // Non hanno ingranaggi.)
@@ -481,7 +481,7 @@ class PennyFarthing extends Bicicletta {
 
     // Bisogna contrassegnre un medodo che si sta riscrivendo 
     // con una @annotazione
-    // Per saperne di piu' sulle annotazioni
+    // Per saperne di più sulle annotazioni
     // Vedi la guida: http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setIngranaggi(int ingranaggi) {
@@ -518,8 +518,8 @@ class Frutta implements Commestibile, Digestibile {
 	}
 }
 
-//In Java si puo' estendere solo una classe, ma si possono implementare 
-//piu' interfaccie, per esempio:
+//In Java si può estendere solo una classe, ma si possono implementare 
+//più interfaccie, per esempio:
 class ClasseEsempio extends AltraClasse implements PrimaInterfaccia, SecondaInterfaccia {
 	public void MetodoPrimaInterfaccia() {
 

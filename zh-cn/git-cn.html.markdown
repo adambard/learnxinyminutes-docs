@@ -131,7 +131,7 @@ $ git help init
 
 
 ```bash
-# 显示分支，为跟踪文件，更改和其他不同
+# 显示分支，未跟踪文件，更改和其他不同
 $ git status
 
 # 查看其他的git status的用法

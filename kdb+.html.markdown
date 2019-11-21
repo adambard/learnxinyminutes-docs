@@ -689,14 +689,14 @@ first each (1 2 3;4 5 6;7 8 9)
 
 / each-left (\:) and each-right (/:) modify a two-argument function
 / to treat one of the arguments and individual variables instead of a list
-1 2 3 +\: 1 2 3
-/ => 2 3 4
-/ => 3 4 5
-/ => 4 5 6
-1 2 3 +/: 1 2 3
-/ => 2 3 4
-/ => 3 4 5
-/ => 4 5 6
+1 2 3 +\: 11 22 33
+/ => 12 23 34
+/ => 13 24 35
+/ => 14 25 36
+1 2 3 +/: 11 22 33
+/ => 12 13 14
+/ => 23 24 25
+/ => 34 35 36
 
 / The true alternatives to loops in q are the adverbs scan (\) and over (/)
 / their behaviour differs based on the number of arguments the function they

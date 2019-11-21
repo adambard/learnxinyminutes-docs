@@ -270,12 +270,13 @@ func fabbricaDiFrasi(miaStringa string) func(prima, dopo string) string {
 }
 
 func imparaDefer() (ok bool) {
-    // Le istruzioni dette "deferred" (rinviate) sono eseguite
-    // appena prima che la funzione abbia termine.
+	// La parola chiave "defer" inserisce una funzione in una lista.
+	// La lista contenente tutte le chiamate a funzione viene eseguita DOPO
+	// il return finale della funzione che le circonda.
 	defer fmt.Println("le istruzioni 'deferred' sono eseguite in ordine inverso (LIFO).")
 	defer fmt.Println("\nQuesta riga viene stampata per prima perché")
     // defer viene usato di solito per chiudere un file, così la funzione che
-    // chiude il file viene messa vicino a quella che lo apre.
+    // chiude il file, preceduta da "defer", viene messa vicino a quella che lo apre.
 	return true
 }
 

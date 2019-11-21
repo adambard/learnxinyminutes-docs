@@ -14,7 +14,7 @@ The syntax of F# is different from C-style languages:
 * Curly braces are not used to delimit blocks of code. Instead, indentation is used (like Python).
 * Whitespace is used to separate parameters rather than commas.
 
-If you want to try out the code below, you can go to [tryfsharp.org](http://www.tryfsharp.org/Create) and paste it into an interactive REPL.
+If you want to try out the code below, you can go to [https://try.fsharp.org](https://try.fsharp.org) and paste it into an interactive REPL.
 
 ```csharp
 
@@ -34,7 +34,7 @@ let myFloat = 3.14
 let myString = "hello"           // note that no types needed
 
 // ------ Lists ------
-let twoToFive = [2; 3; 4; 5]        // Square brackets create a list with
+let twoToFive = [2; 3; 4; 5]     // Square brackets create a list with
                                  // semicolon delimiters.
 let oneToFive = 1 :: twoToFive   // :: creates list with new 1st element
 // The result is [1; 2; 3; 4; 5]
@@ -53,7 +53,8 @@ add 2 3                       // Now run the function.
 
 // to define a multiline function, just use indents. No semicolons needed.
 let evens list =
-   let isEven x = x % 2 = 0     // Define "isEven" as a sub function
+   let isEven x = x % 2 = 0   // Define "isEven" as a sub function. Note
+                              // that equality operator is single char "=".
    List.filter isEven list    // List.filter is a library function
                               // with two parameters: a boolean function
                               // and a list to work on
@@ -193,7 +194,7 @@ module ListExamples =
         | [] -> printfn "the list is empty"
         | [first] -> printfn "the list has one element %A " first
         | [first; second] -> printfn "list is %A and %A" first second
-        | _ -> printfn "the list has more than two elements"
+        | first :: _ -> printfn "the list has more than two elements, first element %A" first
 
     listMatcher [1; 2; 3; 4]
     listMatcher [1; 2]
@@ -306,7 +307,7 @@ module DataTypeExamples =
 
     // ------------------------------------
     // Union types (aka variants) have a set of choices
-    // Only case can be valid at a time.
+    // Only one case can be valid at a time.
     // ------------------------------------
 
     // Use "type" with bar/pipe to define a union type

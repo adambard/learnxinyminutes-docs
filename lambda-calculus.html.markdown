@@ -3,6 +3,7 @@ category: Algorithms & Data Structures
 name: Lambda Calculus
 contributors:
     - ["Max Sun", "http://github.com/maxsun"]
+    - ["Yan Hui Hang", "http://github.com/yanhh0"]
 ---
 
 # Lambda Calculus
@@ -54,7 +55,7 @@ Although lambda calculus traditionally supports only single parameter
 functions, we can create multi-parameter functions using a technique called 
 [currying](https://en.wikipedia.org/wiki/Currying).
 
-- `(λx.λy.λz.xyz)` is equivalent to `f(x, y, z) = x(y(z))`
+- `(λx.λy.λz.xyz)` is equivalent to `f(x, y, z) = ((x y) z)`
 
 Sometimes `λxy.<body>` is used interchangeably with: `λx.λy.<body>`
 
@@ -84,9 +85,9 @@ Using `IF`, we can define the basic boolean logic operators:
 
 `a OR b` is equivalent to: `λab.IF a T b`
 
-`a NOT b` is equivalent to: `λa.IF a F T`
+`NOT a` is equivalent to: `λa.IF a F T`
 
-*Note: `IF a b c` is essentially saying: `IF(a(b(c)))`*
+*Note: `IF a b c` is essentially saying: `IF((a b) c)`*
 
 ## Numbers:
 
@@ -110,12 +111,109 @@ we use the successor function `S(n) = n + 1` which is:
 
 Using successor, we can define add:
 
-`ADD = λab.(a S)n`
+`ADD = λab.(a S)b`
 
 **Challenge:** try defining your own multiplication function!
+
+## Get even smaller: SKI, SK and Iota
+
+### SKI Combinator Calculus
+
+Let S, K, I be the following functions:
+
+`I x = x`
+
+`K x y =  x`
+
+`S x y z = x z (y z)`
+
+We can convert an expression in the lambda calculus to an expression
+in the SKI combinator calculus:
+
+1. `λx.x = I`
+2. `λx.c = Kc`
+3. `λx.(y z) = S (λx.y) (λx.z)`
+
+Take the church number 2 for example:
+
+`2 = λf.λx.f(f x)`
+
+For the inner part `λx.f(f x)`:
+
+```
+  λx.f(f x)
+= S (λx.f) (λx.(f x))          (case 3)
+= S (K f)  (S (λx.f) (λx.x))   (case 2, 3)
+= S (K f)  (S (K f) I)         (case 2, 1)
+```
+
+So:
+
+```
+  2
+= λf.λx.f(f x)
+= λf.(S (K f) (S (K f) I))
+= λf.((S (K f)) (S (K f) I))
+= S (λf.(S (K f))) (λf.(S (K f) I)) (case 3)
+```
+
+For the first argument `λf.(S (K f))`:
+
+```
+  λf.(S (K f))
+= S (λf.S) (λf.(K f))       (case 3)
+= S (K S) (S (λf.K) (λf.f)) (case 2, 3)
+= S (K S) (S (K K) I)       (case 2, 3)
+```
+
+For the second argument `λf.(S (K f) I)`:
+
+```
+  λf.(S (K f) I)
+= λf.((S (K f)) I)
+= S (λf.(S (K f))) (λf.I)             (case 3)
+= S (S (λf.S) (λf.(K f))) (K I)       (case 2, 3)
+= S (S (K S) (S (λf.K) (λf.f))) (K I) (case 1, 3)
+= S (S (K S) (S (K K) I)) (K I)       (case 1, 2)
+```
+
+Merging them up:
+
+```
+  2
+= S (λf.(S (K f))) (λf.(S (K f) I))
+= S (S (K S) (S (K K) I)) (S (S (K S) (S (K K) I)) (K I))
+```
+
+Expanding this, we would end up with the same expression for the
+church number 2 again.
+
+### SK Combinator Calculus
+
+The SKI combinator calculus can still be reduced further. We can
+remove the I combinator by noting that `I = SKK`. We can substitute
+all `I`'s with `SKK`.
+
+### Iota Combinator
+
+The SK combinator calculus is still not minimal. Defining:
+
+```
+ι = λf.((f S) K)
+```
+
+We have:
+
+```
+I = ιι
+K = ι(ιI) = ι(ι(ιι))
+S = ι(K) = ι(ι(ι(ιι)))
+```
 
 ## For more advanced reading:
 
 1. [A Tutorial Introduction to the Lambda Calculus](http://www.inf.fu-berlin.de/lehre/WS03/alpi/lambda.pdf)
 2. [Cornell CS 312 Recitation 26: The Lambda Calculus](http://www.cs.cornell.edu/courses/cs3110/2008fa/recitations/rec26.html)
 3. [Wikipedia - Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus)
+4. [Wikipedia - SKI combinator calculus](https://en.wikipedia.org/wiki/SKI_combinator_calculus)
+5. [Wikipedia - Iota and Jot](https://en.wikipedia.org/wiki/Iota_and_Jot)

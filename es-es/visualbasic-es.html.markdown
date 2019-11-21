@@ -4,13 +4,11 @@ contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
     - ["Adolfo Jayme Barrientos", "https://github.com/fitojb"]
-author: Brian Martin
-author_url: https://github.com/fitojb
 filename: learnvisualbasic-es.vb
 lang: es-es
 ---
 
-```vb
+```
 Module Module1
 
     Sub Main()

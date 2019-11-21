@@ -3,19 +3,20 @@ language: coffeescript
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao", "http://github.com/xavieryao"]
+  - ["Claudio Busatto", "http://github.com/cjcbusatto"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
 lang: pt-br
 filename: learncoffeescript-pt.coffee
 ---
 
-CoffeeScript é uma pequena linguagem que compila um-para-um para o JavaScript 
-equivalente, e não há interpretação em tempo de execução. Como um dos sucessores 
-de JavaScript, CoffeeScript tenta o seu melhor para exibir uma saída legível, 
-bem-impressa e bom funcionamento dos códigos JavaScript em todo o tempo de 
+CoffeeScript é uma pequena linguagem que compila um-para-um para o JavaScript
+equivalente, e não há interpretação em tempo de execução. Como um dos sucessores
+de JavaScript, CoffeeScript tenta o seu melhor para exibir uma saída legível,
+bem-impressa e bom funcionamento dos códigos JavaScript em todo o tempo de
 execução JavaScript.
 
-Veja também [site do CoffeeScript](http://coffeescript.org/), que tem um tutorial 
+Veja também [site do CoffeeScript](http://coffeescript.org/), que tem um tutorial
 completo sobre CoffeeScript.
 
 ``` coffeescript
@@ -23,35 +24,35 @@ completo sobre CoffeeScript.
 #Segue as tendências de muitas linguagens modernas
 #Assim, os comentários são iguais a Ruby e Python, eles usam símbolos numéricos.
 
-### 
-Os comentários em bloco são como estes, e eles traduzem diretamente para '/ *'s e 
+###
+Os comentários em bloco são como estes, e eles traduzem diretamente para '/ *'s e
 '* /'s para o código JavaScript que resulta...
 
-Você deveria entender mais de semântica de JavaScript antes de continuar... 
+Você deveria entender mais de semântica de JavaScript antes de continuar...
 ###
 
-# Tarefa: 
-numero = 42 #=> número var = 42; 
+# Tarefa:
+numero = 42 #=> var numero = 42;
 oposto = true #=> var oposto = true;
 
-# Condições: 
-numero = -42 if oposto #=> if (oposto) {número = -42;}
+# Condições:
+numero = -42 if oposto #=> if (oposto) {numero = -42;}
 
-# Funções: 
+# Funções:
 quadrado = (x) -> x * x #=> var quadrado = function (x) {return x * x;}
 
-preencher = (recipiente, líquido = "coffee") ->
-  "Preenchendo o #{recipiente} with #{líquido}..."
+preencher = (recipiente, liquido = "coffee") ->
+  "Preenchendo o #{recipiente} with #{liquido}..."
 #=>var preencher;
 #
-#preencher = function(recipiente, líquido) {
-#  if (líquido == null) {
-#    líquido = "coffee";
+#preencher = function(recipiente, liquido) {
+#  if (liquido == null) {
+#    liquido = "coffee";
 #  }
-#  return "Preenchendo o " + recipiente + " with " + líquido + "...";
+#  return "Preenchendo o " + recipiente + " with " + liquido + "...";
 #};
 
-# Alcances: 
+# Alcances:
 list = [1 .. 5] #=> lista var = [1, 2, 3, 4, 5];
 
 # Objetos:
@@ -79,7 +80,7 @@ alert "Eu sabia!" if elvis?
 #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("Eu sabia!"); }
 
 # Compressão de Matrizes:
-cubes = (math.cube num for num in list) 
+cubes = (math.cube num for num in list)
 #=>cubes = (function() {
 #   var _i, _len, _results;
 #   _results = [];
@@ -99,6 +100,7 @@ eat alimento for alimento in comidas when alimento isnt 'chocolate'
 #  if (alimento !== 'chocolate') {
 #    eat(alimento);
 #  }
+```
 
 ## Recursos adicionais
 

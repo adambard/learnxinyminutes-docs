@@ -6,13 +6,16 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
+    - ["Rommel Martinez", "https://ebzzry.io"]
+    - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
 translators:
     - ["kakakaya", "https://github.com/kakakaya"]
+    - ["Ryota Kayanuma", "https://github.com/PicoSushi"]
 filename: learnpython3-jp.py
 lang: ja-jp
 ---
 
-90年代の初め、Guido Van RossumによってPythonは作成されました。現在となっては、最も有名な言語の1つです。
+90年代の初め、Guido van RossumによってPythonは作成されました。現在となっては、最も有名な言語の1つです。
 私は構文の明快さによって、Pythonと恋に落ちました。
 以下は基本的に実行可能な疑似コードです。
 
@@ -21,12 +24,11 @@ lang: ja-jp
 Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/python/) をご確認下さい。
 
 ```python
-
 # 1行のコメントは番号記号(#)から始まります。
 
 """ 複数行の文字は、"を3つ繋げることで
     書くことができます。
-    また、これはコメントとしてもよく使われます。
+    また、これはドキュメントとしてもよく使われます。
 """
 
 ####################################################
@@ -44,8 +46,8 @@ Note: この記事はPython 3に内容を絞っています。もし古いPython
 
 # 整数除算の結果は、正負に関わらず小数の切り捨てが行われます。
 5 // 3                          # => 1
-5.0 // 3.0                      # => 1.0 # 浮動小数点でも同様に動作します。
 -5 // 3                         # => -2
+5.0 // 3.0                      # => 1.0 # 浮動小数点でも同様に動作します。
 -5.0 // 3.0                     # => -2.0
 
 # 除算の結果は常に浮動小数点になります。
@@ -55,7 +57,7 @@ Note: この記事はPython 3に内容を絞っています。もし古いPython
 7 % 3                           # => 1
 
 # 冪乗 (x**y, x の y 乗)
-2**4                            # => 16
+2**3                            # => 8
 
 # 括弧により、計算の順番を優先させられます。
 (1 + 3) * 2                     # => 8
@@ -69,16 +71,28 @@ not True                        # => False
 not False                       # => True
 
 # ブール演算
-# 注意: "and" と "or" は小文字です
+# 注意: "and" と "or" は小文字です。
 True and False                  # => False
 False or True                   # => True
 
-# 整数でブール演算をするときのメモ
+# TrueとFalseは実際には1と0になるキーワードです。
+True + True                     # => 2
+True * 8                        # => 8
+False - 5                       # => -5
+
+# 比較演算子はTrueとFalseを数値として扱います。
+0 == False                      # => True
+1 == True                       # => True
+2 == True                       # => False
+-5 != True                      # => True
+
+# bool論理演算子を整数に対して使うことで整数を真偽値に変換して評価できますが、キャストされていない値が
+# bool(int)とビット演算子(& や |)を混同しないようにうにしましょう。
+bool(0)                         # => False
+bool(4)                         # => True
+bool(-6)                        # => True
 0 and 2                         # => 0
 -5 or 0                         # => -5
-0 == False                      # => True
-2 == True                       # => False
-1 == True                       # => True
 
 # 値が等しいか確認するには ==
 1 == 1                          # => True
@@ -94,7 +108,11 @@ False or True                   # => True
 2 <= 2                          # => True
 2 >= 2                          # => True
 
-# 比較は連結させられます!
+# 値がある範囲の中にあるか調べる方法
+1 < 2 and 2 < 3                # => True
+2 < 3 and 3 < 2                # => False
+
+# 連結させるともっと見やすくなります。
 1 < 2 < 3                       # => True
 2 < 3 < 2                       # => False
 
@@ -115,7 +133,7 @@ b == a               # => True, a と b が参照するオブジェクトの値�
 
 # 文字列も加算をすることができます!でも、あまり行わないように。
 "Hello " + "world!"             # => "Hello world!"
-# '+' を使わなくても連結はできます。
+# '+' を使わなくても文字列リテラル(変数ではないもの)の連結ができます。
 "Hello " "world!"               # => "Hello world!"
 
 # 文字列は文字のリストであるかのように扱うことができます。
@@ -138,6 +156,12 @@ len("This is a string")         # => 16
 # 旧式のフォーマット方法を使うこともできます。
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
+# Python3.6以上では、f-stringsやフォーマット文字列を使ってフォーマットすることもできます。
+name = "Reiko"
+f"She said her name is {name}."  # => "She said her name is Reiko"
+
+# 基本的に、任意のPythonの文を中括弧に書くことができ、それは評価されて出力されます。
+f"{name} is {len(name)} characters long."
 
 # None はオブジェクトです(大文字からです!)
 None                            # => None
@@ -170,7 +194,7 @@ print("Hello, World", end="!")  # => Hello, World!
 input_string_var = input("Enter some data: ")  # 入力を文字列として返します
 # Note: Python の初期のバージョンでは、 input() は raw_input() という名前で存在します。
 
-# 変数に代入する前に宣言する必要はありません。
+# Pythonでは変数の宣言は存在せず、代入のみです。
 # 慣例的に、小文字でアンダースコア区切り ( lower_case_with_underscores ) の変数が使われます。
 some_var = 5
 some_var                        # => 5
@@ -207,10 +231,11 @@ li[-1]                          # => 3
 li[4]                           # IndexError が発生します
 
 # スライス構文により範囲を参照できます。
+# 開始部分のインデックスに対応する部分は含まれますが、終了部分のインデックスに対応する部分は含まれません。
 li[1:3]                         # => [2, 4]
-# 先端を取り除く
+# 先端を取り除いたリスト
 li[2:]                          # => [4, 3]
-# 末尾を取り除く
+# 末尾を取り除いたリスト
 li[:3]                          # => [1, 2, 4]
 # 1つ飛ばしで選択する
 li[::2]                         # =>[1, 4]
@@ -272,7 +297,7 @@ a, b, c = (1, 2, 3)             # a, b, c にはそれぞれ 1, 2, 3 が代入�
 # 拡張記法もあります。
 a, *b, c = (1, 2, 3, 4)         # a は 1 、 b は [2, 3] 、c は4 になります。
 # 括弧を作成しなくてもデフォルトでタプルが作成されます。
-d, e, f = 4, 5, 6
+d, e, f = 4, 5, 6               # 4、5、6がそれぞれd、 e、 fに代入されます。
 # 2つの変数を交換するのがどれほど簡単か見てみましょう。
 e, d = d, e                     # d は 5 、 e は e になります。
 
@@ -293,14 +318,17 @@ filled_dict["one"]              # => 1
 
 # "keys()"により、全てのキーを反復可能な形式で取り出せます。
 # これをリストにするために、"list()"で囲んでいます。これについては後程解説します。
-# Note: 辞書のキーの順番は考慮されていません。実行した結果がこれと異なる場合があります。
-list(filled_dict.keys())        # => ["three", "two", "one"]
+# Note: Python3.7未満では、辞書のキーの順番は考慮されていません。実行した結果がこれと異なる場合があります。
+#       しかし、Python3.7以降ではキーの挿入順を保つようになりました。
+list(filled_dict.keys())        # => ["three", "two", "one"] in Python <3.7
+list(filled_dict.keys())        # => ["one", "two", "three"] in Python 3.7+
+
 
 # "values()"により、全ての値を反復可能な形式で取り出せます。
 # 前と同じように、これをリストにするために、"list()"で囲んでいます。
 # Note: 辞書の値の順番は考慮されていません。実行した結果がこれと異なる場合があります。
-list(filled_dict.values())      # => [3, 2, 1]
-
+list(filled_dict.values())      # => [3, 2, 1]  in Python <3.7
+list(filled_dict.values())      # => [1, 2, 3] in Python 3.7+
 
 # "in" により、辞書のキーが存在するか確認できます。
 "one" in filled_dict            # => True
@@ -322,7 +350,7 @@ filled_dict.setdefault("five", 6)  # filled_dict["five"] は 5 のままです�
 
 # 辞書にマップを追加する
 filled_dict.update({"four": 4})  # => {"one": 1, "two": 2, "three": 3, "four": 4}
-# filled_dict["four"] = 4        # 辞書に追加する別の方法
+filled_dict["four"] = 4        # 辞書に追加する別の方法
 
 # del により辞書からキーを削除できます。
 del filled_dict["one"]          # "one" キーを辞書から削除します。
@@ -341,11 +369,11 @@ some_set = {1, 1, 2, 2, 3, 4}   # some_set is now {1, 2, 3, 4}
 invalid_set = {[1], 1}         # => list はハッシュ化できないので、 TypeError が送出されます。
 valid_set = {(1,), 1}
 
-# 新しい値を集合にセットできます。
-filled_set = some_set
-
 # 集合に新しい要素を追加できます。
+filled_set = some_set
 filled_set.add(5)               # filled_set は {1, 2, 3, 4, 5} になりました。
+# 集合は重複した要素を持ちません。
+filled_set.add(5)               # 以前の{1, 2, 3, 4, 5}のままです。
 
 # & により、集合同士の共通部分が得られます。
 other_set = {3, 4, 5, 6}
@@ -378,7 +406,8 @@ filled_set | other_set          # => {1, 2, 3, 4, 5, 6}
 # まずは変数を作りましょう。
 some_var = 5
 
-# これはif文です。インデントがPythonでは特徴的ですね!
+# これはif文です。Pythonではインデントが特徴的ですね!
+# 規約ではタブではなく4つのスペースでインデントすることが推奨されています。
 # 以下の例では"some_var is smaller than 10"と出力されます。
 if some_var > 10:
     print("some_var is totally bigger than 10.")
@@ -541,9 +570,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # * を使ってタプルを展開したり、 ** を使って辞書を展開できます。
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)             # foo(1, 2, 3, 4) に対応します。
-all_the_args(**kwargs)          # foo(a=3, b=4) に対応します。
-all_the_args(*args, **kwargs)   # foo(1, 2, 3, 4, a=3, b=4) に対応します。
+all_the_args(*args)             # all_the_args(1, 2, 3, 4) と等しいです。
+all_the_args(**kwargs)          # all_the_args(a=3, b=4) と等しいです。
+all_the_args(*args, **kwargs)   # all_the_args(1, 2, 3, 4, a=3, b=4) と等しいです。
 
 
 # タプルで複数の値を返す
@@ -646,7 +675,7 @@ dir(math)
 # 6. クラス
 ####################################################
 
-# クラスを作成するために、"class"という演算子を使います。
+# クラスを作成するために、class文を使います。
 class Human:
 
     # クラスの属性です。このクラスの全てのインスタンスで共有されます。
@@ -656,14 +685,14 @@ class Human:
     # 2つのアンダースコアがオブジェクトや属性の前後についているとき、これらはPythonによって利用され、
     # ユーザーの名前空間には存在しないということに注意してください。
     # __init__ や __str__ 、 __repr__ のようなメソッド(やオブジェクト、属性)は、
-    # magic methods (または dunder methods)と呼ばれます。
-    # このような名前を自分で発明しないほうがよいでしょう。
+    # special methods (または dunder methods)と呼ばれます。
+    # 同じような名前を自分で発明しないほうがよいでしょう。
     def __init__(self, name):
         # 引数をインスタンスのname属性に設定します。
         self.name = name
 
         # プロパティの初期化
-        self.age = 0
+        self._age = 0
 
     # インスタンスメソッド。全てのメソッドは"self"を最初の引数に取ります。
     def say(self, msg):
@@ -686,6 +715,7 @@ class Human:
 
     # プロパティはgetterのようなものです。
     # age() メソッドを同名の読取専用属性に変換します。
+    # Pythonではわざわざgetterやsetterを書く必要はありません。
     @property
     def age(self):
         return self._age
@@ -720,24 +750,117 @@ if __name__ == '__main__':
     j.say(j.get_species())      # => "Joel: H. neanderthalensis"
 
     # スタティックメソッドを呼んでみましょう。
-    print(Human.grunt())            # => "*grunt*"
-    print(i.grunt())                # => "*grunt*"
+    print(Human.grunt())        # => "*grunt*"
+
+    # スタティックメソッドはインスタンスから呼ぶことはできません。
+    # なぜならば、 i.grunt() は自動的に"self" ( i オブジェクト ) を引数として渡してしまうからです。
+    print(i.grunt())  # => TypeError: grunt() takes 0 positional arguments but 1 was given
 
     # インスタンスのプロパティを更新してみましょう。
     i.age = 42
     # プロパティを取得してみましょう。
-    i.say(i.age)                    # => 42
-    j.say(j.age)                    # => 0
+    i.say(i.age)                # => "Ian: 42"
+    j.say(j.age)                # => "Joel: 0"
     # プロパティを削除してみましょう。
     del i.age
     # i.age                         # => AttributeError が発生します。
 
 
 ####################################################
-# 6.1 多重継承
+# 6.1 継承
+####################################################
+# 継承を行うことで、親クラスからメソッドと変数を継承する新しい子クラスを定義できます。
+
+# 上記で定義されたHumanクラスを親クラス(基底クラス)として使い、Superheroという子クラスを定義します。
+# これは"species"、"name"や"age"といった変数や、"sing"や"grunt"のようなメソッドをHumanから継承しますが、
+# Superhero独自のプロパティを持つこともできます。
+
+# ファイルを分割してモジュール化の利点を活用するために、上記のHumanクラスを独自のファイル、ここでは human.py に記述ましょう。
+
+# 別のファイルから関数をインポートするには次の形式を利用してください:
+# from "拡張子なしのファイル名" import "関数やクラス"
+
+from human import Human
+
+
+# 親クラスを子クラスのパラメータとして指定します
+class Superhero(Human):
+
+    # もし子クラスが親クラスの全ての定義を変更なしで継承する場合、"pass"キーワードのみを書くだけで良いです。
+    # しかし、今回は親クラスとは異なる子クラスを作成するので、今回は以下の通りコメントアウトしています。
+    # pass
+
+    # 子クラスは親クラスの属性を上書きできます。
+    species = 'Superhuman'
+
+    # 子クラスは親クラスのコンストラクタを引数含めて自動的に継承しますが、
+    # 追加の引数や定義を行ってコンストラクタのようなメソッドを上書きすることもできます。
+    # このコンストラクタは"name"引数を"Human"クラスから継承し、"superpower"と"movie"という引数を追加します。
+    def __init__(self, name, movie=False,
+                 superpowers=["super strength", "bulletproofing"]):
+
+        # 追加のクラス属性を作成する
+        self.fictional = True
+        self.movie = movie
+        # デフォルト値は共有されるので、可変のデフォルト値には注意してください。
+        self.superpowers = superpowers
+
+        # "super"関数を使うと子クラスに上書きされた親クラスのメソッド(今回は "__init__")にアクセスできます。
+        # これで、親クラスのコンストラクタを呼んでいます。
+        super().__init__(name)
+
+    # singメソッドを上書きし、
+    def sing(self):
+        return 'Dun, dun, DUN!'
+
+    # 追加のインスタンスメソッドを作成します。
+    def boast(self):
+        for power in self.superpowers:
+            print("I wield the power of {pow}!".format(pow=power))
+
+
+if __name__ == '__main__':
+    sup = Superhero(name="Tick")
+
+    # インスタンスの型を調べる
+    if isinstance(sup, Human):
+        print('I am human')
+    if type(sup) is Superhero:
+        print('I am a superhero')
+
+    # getattr()とsuper()で使われるメソッドの解決順序を調べてみます。
+    # この属性は動的であり、変更可能です。
+    print(Superhero.__mro__)    # => (<class '__main__.Superhero'>,
+                                # => <class 'human.Human'>, <class 'object'>)
+
+    # 親のメソッドを呼びだすものの、独自のクラス属性を参照します。
+    print(sup.get_species())    # => Superhuman
+
+    # 上書きされたメソッドを呼ぶ
+    print(sup.sing())           # => Dun, dun, DUN!
+
+    # Humanのメソッドを呼ぶ
+    sup.say('Spoon')            # => Tick: Spoon
+
+    # Superhero限定のメソッドを呼ぶ
+    sup.boast()                 # => I wield the power of super strength!
+                                # => I wield the power of bulletproofing!
+
+    # 継承されたクラス属性
+    sup.age = 31
+    print(sup.age)              # => 31
+
+    # Superhero限定の属性
+    print('Am I Oscar eligible? ' + str(sup.movie))
+
+
+
+####################################################
+# 6.2 多重継承
 ####################################################
 
 # 別のクラスを定義します。
+# bat.py
 class Bat:
 
     species = 'Baty'
@@ -759,31 +882,22 @@ if __name__ == '__main__':
     print(b.say('hello'))
     print(b.fly)
 
-# ファイル単位のモジュール化を利用するために、上記のクラスを別々のファイルに配置することができます。
-# ここでは、human.pyとbat.pyを作成してみましょう。
-
-# 他のファイルから関数をインポートするために、次のような形式を利用してください。
-# from "拡張子無しのファイル名" import "関数またはクラス"
-
 # superhero.py
-from human import Human
+from superhero import Superhero
 from bat import Bat
 
-
-# BatmanはHumanとBatの両方を継承します。
-class Batman(Human, Bat):
-
-    # Batmanは species のクラス属性に独自の値を持ちます。
-    species = 'Superhero'
+# BatmanをSuperheroとBatの両方を継承した子クラスとして定義します。
+class Batman(Superhero, Bat):
 
     def __init__(self, *args, **kwargs):
         # 通常、属性を継承するにはsuper()を呼び出します。
-        #     super(Batman, self).__init__(*args, **kwargs)
+        # super(Batman, self).__init__(*args, **kwargs)
         # しかし、ここでは多重継承を行っているので、 super() はMRO(メソッド解決順序)の次の基本クラスにのみ動作します。
         # なので、全ての祖先に対して明示的に __init__ を呼ぶことにします。
         # *args と **kwargs を使うことで、それぞれの継承元が
         # たまねぎの皮を剥がすごとく、引数を用いることができます。
-        Human.__init__(self, 'anonymous', *args, **kwargs)
+        Superhero.__init__(self, 'anonymous', movie=True,
+                           superpowers=['Wealthy'], *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
         # 名前の属性の値を上書きします。
         self.name = 'Sad Affleck'
@@ -795,22 +909,18 @@ class Batman(Human, Bat):
 if __name__ == '__main__':
     sup = Batman()
 
-    # インスタンスの型を調べてみましょう。
-    if isinstance(sup, Human):
-        print('I am human')
-    if isinstance(sup, Bat):
-        print('I am bat')
-    if type(sup) is Batman:
-        print('I am Batman')
-
     # getattr() や super() の両方で使われるMROを取得します。
     # この属性は動的であり、更新が可能です。
-    print(Batman.__mro__)  # => (<class '__main__.Batman'>, <class 'human.Human'>, <class 'bat.Bat'>, <class 'object'>)
+    print(Batman.__mro__)       # => (<class '__main__.Batman'>,
+                                # => <class 'superhero.Superhero'>,
+                                # => <class 'human.Human'>,
+                                # => <class 'bat.Bat'>, <class 'object'>)
+
 
     # 親メソッドを呼び出しますが、独自のクラス属性を参照します。
-    print(sup.get_species())    # => Superhero
+    print(sup.get_species())    # => Superhuman
 
-    # オーバーロードされたメソッドを呼び出します。
+    # 上書きされたメソッドを呼び出します。
     print(sup.sing())           # => nan nan nan nan nan batman!
 
     # 継承順により、Humanから継承されたメソッドを呼び出します。
@@ -821,10 +931,10 @@ if __name__ == '__main__':
 
     # 継承されたクラス属性
     sup.age = 100
-    print(sup.age)
+    print(sup.age)              # => 100
 
     # デフォルト値が上書きされて、2番目の先祖から継承された属性
-    print('Can I fly? ' + str(sup.fly))
+    print('Can I fly? ' + str(sup.fly))  # => Can I fly? False
 
 
 ####################################################

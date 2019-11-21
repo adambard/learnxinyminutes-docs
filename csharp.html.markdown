@@ -14,7 +14,7 @@ filename: LearnCSharp.cs
 
 C# is an elegant and type-safe object-oriented language that enables developers to build a variety of secure and robust applications that run on the .NET Framework.
 
-[Read more here.](http://msdn.microsoft.com/en-us/library/vstudio/z1zx9t92.aspx)
+[Read more here.](https://docs.microsoft.com/dotnet/csharp/getting-started/introduction-to-the-csharp-language-and-the-net-framework)
 
 ```c#
 // Single-line comments start with //
@@ -344,7 +344,7 @@ on a new line! ""Wow!"", the masses cried";
             tryInt.ToString();
 
             // Casting
-            // Cast decimal 15 to a int
+            // Cast decimal 15 to an int
             // and then implicitly cast to long
             long x = (int) 15M;
         }
@@ -552,7 +552,7 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             // PARALLEL FRAMEWORK
-            // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
+            // https://devblogs.microsoft.com/csharpfaq/parallel-programming-in-net-framework-4-getting-started/
 
             var words = new List<string> {"dog", "cat", "horse", "pony"};
 
@@ -960,7 +960,7 @@ on a new line! ""Wow!"", the masses cried";
     /// <summary>
     /// Used to connect to DB for LinqToSql example.
     /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
-    /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
+    /// https://docs.microsoft.com/ef/ef6/modeling/code-first/workflows/new-database
     /// </summary>
     public class BikeRepository : DbContext
     {
@@ -1310,13 +1310,11 @@ namespace Csharp7
 
 ## Further Reading
 
- * [DotNetPerls](http://www.dotnetperls.com)
- * [C# in Depth](http://manning.com/skeet2)
- * [Programming C#](http://shop.oreilly.com/product/0636920024064.do)
- * [LINQ](http://shop.oreilly.com/product/9780596519254.do)
- * [MSDN Library](http://msdn.microsoft.com/en-us/library/618ayhy6.aspx)
- * [ASP.NET MVC Tutorials](http://www.asp.net/mvc/tutorials)
- * [ASP.NET Web Matrix Tutorials](http://www.asp.net/web-pages/tutorials)
- * [ASP.NET Web Forms Tutorials](http://www.asp.net/web-forms/tutorials)
- * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
- * [C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
+ * [C# language reference](https://docs.microsoft.com/dotnet/csharp/language-reference/)
+ * [Learn .NET](https://dotnet.microsoft.com/learn)
+ * [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+ * [DotNetPerls](https://www.dotnetperls.com/)
+ * [C# in Depth](https://manning.com/skeet3)
+ * [Programming C# 5.0](http://shop.oreilly.com/product/0636920024064)
+ * [LINQ Pocket Reference](http://shop.oreilly.com/product/9780596519254)
+ * [Windows Forms Programming in C#](https://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)

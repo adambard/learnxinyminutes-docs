@@ -400,8 +400,8 @@ else:                  # Anche else è opzionale
     print("some_var è  10.")
 
 """
-I cicli for iterano sulle liste, cioé ripetono un codice per ogni elemento 
-# di una lista.
+I cicli for iterano sulle liste, cioè ripetono un codice per ogni elemento 
+di una lista.
 Il seguente codice scriverà:
     cane è un mammifero
     gatto è un mammifero
@@ -409,7 +409,7 @@ Il seguente codice scriverà:
 """
 for animale in ["cane", "gatto", "topo"]:
     # Puoi usare format() per interpolare le stringhe formattate.
-    print("{} is a mammal".format(animal))
+    print("{} è un mammifero".format(animale))
 
 """
 "range(numero)" restituisce una lista di numeri da zero al numero dato

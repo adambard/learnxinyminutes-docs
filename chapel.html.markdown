@@ -100,7 +100,7 @@ writeln(varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg);
 // be made to alias a variable other than the variable it is initialized with.
 // Here, refToActual refers to actual.
 var actual = 10;
-ref refToActual = actual; 
+ref refToActual = actual;
 writeln(actual, " == ", refToActual); // prints the same value
 actual = -123; // modify actual (which refToActual refers to)
 writeln(actual, " == ", refToActual); // prints the same value
@@ -444,7 +444,7 @@ arrayFromLoop = [value in arrayFromLoop] value + 1;
 
 // Procedures
 
-// Chapel procedures have similar syntax functions in other languages. 
+// Chapel procedures have similar syntax functions in other languages.
 proc fibonacci(n : int) : int {
   if n <= 1 then return n;
   return fibonacci(n-1) + fibonacci(n-2);
@@ -708,7 +708,7 @@ class MyClass {
 // We also get the compiler-generated initializer, with one argument per field.
 // Note that soon there will be no compiler-generated initializer when we
 // define any initializer(s) explicitly.
-  proc MyClass(val : real) {
+  proc init(val : real) {
     this.memberInt = ceil(val): int;
   }
 
@@ -893,7 +893,6 @@ foo();
 // We can declare a main procedure, but all the code above main still gets
 // executed.
 proc main() {
-  writeln("PARALLELISM START");
 
 // A begin statement will spin the body of that statement off
 // into one new task.
@@ -1141,11 +1140,13 @@ to see if more topics have been added or more tutorials created.
 Your input, questions, and discoveries are important to the developers!
 -----------------------------------------------------------------------
 
-The Chapel language is still in-development (version 1.16.0), so there are
+The Chapel language is still in active development, so there are
 occasional hiccups with performance and language features. The more information
 you give the Chapel development team about issues you encounter or features you
-would like to see, the better the language becomes. Feel free to email the team
-and other developers through the [sourceforge email lists](https://sourceforge.net/p/chapel/mailman).
+would like to see, the better the language becomes.
+There are several ways to interact with the developers:
++ [Gitter chat](https://gitter.im/chapel-lang/chapel)
++ [sourceforge email lists](https://sourceforge.net/p/chapel/mailman)
 
 If you're really interested in the development of the compiler or contributing
 to the project, [check out the master GitHub repository](https://github.com/chapel-lang/chapel).
@@ -1154,12 +1155,14 @@ It is under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0)
 Installing the Compiler
 -----------------------
 
+[The Official Chapel documentation details how to download and compile the Chapel compiler.](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html)
+
 Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
 and it's as easy as
 
- 1. `tar -xvf chapel-1.16.0.tar.gz`
- 2. `cd chapel-1.16.0`
+ 1. `tar -xvf chapel-<VERSION>.tar.gz`
+ 2. `cd chapel-<VERSION>`
  3. `source util/setchplenv.bash # or .sh or .csh or .fish`
  4. `make`
  5. `make check # optional`

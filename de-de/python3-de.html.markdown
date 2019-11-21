@@ -14,7 +14,7 @@ Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist he
 
 Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service].
 
-Hinweis: Dieser Beitrag bezieht sich insplizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/python/) weiter.
+Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/python/) weiter.
 
 ```python
 
@@ -152,7 +152,7 @@ print("Ich bin Python. Schön, dich kennenzulernen!")
 some_var = 5    # kleinschreibung_mit_unterstrichen entspricht der Norm
 some_var #=> 5
 
-# Das Ansprechen einer noch nicht deklarierte Variable löst eine Exception aus.
+# Das Ansprechen einer noch nicht deklarierten Variable löst eine Exception aus.
 # Unter "Kontrollstruktur" kann noch mehr über
 # Ausnahmebehandlung erfahren werden.
 some_unknown_var  # Löst einen NameError aus
@@ -225,7 +225,7 @@ a, b, c = (1, 2, 3)     # a ist jetzt 1, b ist jetzt 2 und c ist jetzt 3
 # Tupel werden standardmäßig erstellt, wenn wir uns die Klammern sparen
 d, e, f = 4, 5, 6
 # Es ist kinderleicht zwei Werte zu tauschen
-e, d = d, e     # d is now 5 and e is now 4
+e, d = d, e     # d ist nun 5 und e ist nun 4
 
 
 # Dictionarys (Wörterbucher) speichern Schlüssel-Werte-Paare
@@ -379,8 +379,8 @@ with open("meineDatei.txt") as f:
         print(line)
 
 # Python bietet ein fundamentales Konzept der Iteration.
-# Das Objekt, auf das die Interation, also die Wiederholung einer Methode angewandt wird heißt auf Englisch "iterable".
-# Die range Method gibt ein solches Objekt aus.
+# Das Objekt, auf das die Iteration, also die Wiederholung einer Methode angewandt wird heißt auf Englisch "iterable".
+# Die range Methode gibt ein solches Objekt aus.
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
@@ -396,8 +396,8 @@ our_iterable[1]  # TypeError
 # Ein iterable ist ein Objekt, das weiß wie es einen Iteratoren erschafft.
 our_iterator = iter(our_iterable)
 
-# Unser Iterator ist ein Objekt, das sich merkt, welchen Status es geraden hat während wir durch es gehen.
-# Das jeweeils nächste Objekt bekommen wir mit "next()"
+# Unser Iterator ist ein Objekt, das sich merkt, welchen Status es gerade hat während wir durch es gehen.
+# Das jeweils nächste Objekt bekommen wir mit "next()"
 next(our_iterator)  #=> "one"
 
 # Es hält den vorherigen Status
@@ -442,7 +442,7 @@ def keyword_args(**kwargs):
 # Rufen wir es mal auf, um zu sehen, was passiert
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
-# Wir können beides gleichzeitig machem, wenn wir wollen
+# Wir können beides gleichzeitig machen, wenn wir wollen
 def all_the_args(*args, **kwargs):
     print(args)
     print(kwargs)
@@ -555,7 +555,7 @@ Human.grunt() #=> "*grunt*"
 
 # Wir können Module importieren
 import math
-print(math.sqrt(16)) #=> 4
+print(math.sqrt(16)) #=> 4.0
 
 # Wir können auch nur spezielle Funktionen eines Moduls importieren
 from math import ceil, floor

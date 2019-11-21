@@ -266,6 +266,15 @@ for (var x in person){
     description += person[x] + " ";
 } // description = 'Paul Ken 18 '
 
+// The for/of statement allows iteration over iterable objects (including the built-in String, 
+// Array, e.g. the Array-like arguments or NodeList objects, TypedArray, Map and Set, 
+// and user-defined iterables).
+var myPets = "";
+var pets = ["cat", "dog", "hamster", "hedgehog"];
+for (var pet of pets){
+    myPets += pet + " ";
+} // myPets = 'cat dog hamster hedgehog '
+
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
     house.contains = "bear";
@@ -501,6 +510,7 @@ for (var x in myObj){
 // Hello world!
 // 43
 // [Function: myFunc]
+// true
 
 // To only consider properties attached to the object itself
 // and not its prototypes, use the `hasOwnProperty()` check.
@@ -600,10 +610,6 @@ of the language.
 [Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with
 attached terminal
 
-[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great
-derivative of Eloquent Javascript with extra explanations and clarifications for
-some of the more complicated examples.
-
 [Javascript: The Right Way][10] is a guide intended to introduce new developers
 to JavaScript and help experienced developers learn more about its best practices.
 
@@ -624,6 +630,5 @@ Mozilla Developer Network.
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [8]: http://eloquentjavascript.net/
-[9]: http://watchandcode.com/courses/eloquent-javascript-the-annotated-version
 [10]: http://jstherightway.org/
 [11]: https://javascript.info/

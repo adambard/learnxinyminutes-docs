@@ -11,7 +11,7 @@ contributors:
     - ["Michael Dähnert", "https://github.com/JaXt0r"]
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
     - ["Sean Nam", "https://github.com/seannam"]
-filename: JavaFr.java
+filename: java-fr.java
 translators:
     - ['Mathieu Gemard', 'https://github.com/mgemard']
 lang: fr-fr
