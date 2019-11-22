@@ -25,10 +25,10 @@ Conditions:  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/co
 Resources:
   NeptuneDBCluster:
     Type: AWS::Neptune::DBCluster
-    Condition: ShouldCreateResource  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html
+    Condition: ShouldCreateResource            # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html
     DependsOn: ConfigAggregationAuthorization  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html
-    DeletionPolicy: Delete  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html
-    UpdateReplacePolicy: Delete  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html      
+    DeletionPolicy: Delete                     # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html
+    UpdateReplacePolicy: Delete                # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html      
     Properties:
       Port: 99
 
@@ -37,4 +37,11 @@ Resources:
     Properties:
       AuthorizedAccountId: !Ref AWS::AccountId  # Pseudo parameters are parameters that are predefined by AWS CloudFormation
       AuthorizedAwsRegion: !Ref AWS::Region     # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/pseudo-parameter-reference.html
+
+  # Not all property types are required. Some resource types may not require any properties
+  # Property information can be found in both the documentation and the CloudFormation resource specification
+  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
+  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html
+  S3Bucket:
+    Type: AWS::S3::Bucket
 ```
