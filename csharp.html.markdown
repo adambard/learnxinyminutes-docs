@@ -18,16 +18,18 @@ C# is an elegant and type-safe object-oriented language that enables developers 
 
 ```c#
 // Single-line comments start with //
+
 /*
 Multi-line comments look like this
 */
+
 /// <summary>
 /// This is an XML documentation comment which can be used to generate external
 /// documentation or provide context help within an IDE
 /// </summary>
 /// <param name="firstParam">This is some parameter documentation for firstParam</param>
 /// <returns>Information on the returned value of a function</returns>
-//public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
+public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
 
 // Specify the namespaces this source code will be using
 // The namespaces below are all part of the standard .NET Framework Class Library
@@ -254,7 +256,7 @@ on a new line! ""Wow!"", the masses cried";
             int fooWhile = 0;
             while (fooWhile < 100)
             {
-                //Iterated 100 times, fooWhile 0->99
+                // Iterated 100 times, fooWhile 0->99
                 fooWhile++;
             }
 
@@ -273,10 +275,10 @@ on a new line! ""Wow!"", the masses cried";
 
             } while (fooDoWhile < 100);
 
-            //for loop structure => for(<start_statement>; <conditional>; <step>)
+            // for loop structure => for(<start_statement>; <conditional>; <step>)
             for (int fooFor = 0; fooFor < 10; fooFor++)
             {
-                //Iterated 10 times, fooFor 0->9
+                // Iterated 10 times, fooFor 0->9
             }
 
             // For Each Loop
@@ -287,7 +289,7 @@ on a new line! ""Wow!"", the masses cried";
             // (The ToCharArray() could be removed, because a string also implements IEnumerable)
             foreach (char character in "Hello World".ToCharArray())
             {
-                //Iterated over all the characters in the string
+                // Iterated over all the characters in the string
             }
 
             // Switch Case
@@ -329,7 +331,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // Convert String To Integer
             // this will throw a FormatException on failure
-            int.Parse("123");//returns an integer version of "123"
+            int.Parse("123"); // returns an integer version of "123"
 
             // try parse will default to type default on failure
             // in this case: 0
@@ -373,7 +375,7 @@ on a new line! ""Wow!"", the masses cried";
             Console.Read();
         } // End main method
 
-        // CONSOLE ENTRY A console application must have a main method as an entry point
+        // CONSOLE ENTRY - A console application must have a main method as an entry point
         public static void Main(string[] args)
         {
             OtherInterestingFeatures();
@@ -404,7 +406,7 @@ on a new line! ""Wow!"", the masses cried";
             ref int maxCount, // Pass by reference
             out int count)
         {
-            //the argument passed in as 'count' will hold the value of 15 outside of this function
+            // the argument passed in as 'count' will hold the value of 15 outside of this function
             count = 15; // out param must be assigned before control leaves the method
         }
 
@@ -564,11 +566,11 @@ on a new line! ""Wow!"", the masses cried";
                 }
             );
 
-            //Running this will produce different outputs
-            //since each thread finishes at different times.
-            //Some example outputs are:
-            //cat dog horse pony
-            //dog horse pony cat
+            // Running this will produce different outputs
+            // since each thread finishes at different times.
+            // Some example outputs are:
+            // cat dog horse pony
+            // dog horse pony cat
 
             // DYNAMIC OBJECTS (great for working with other languages)
             dynamic student = new ExpandoObject();
@@ -865,7 +867,7 @@ on a new line! ""Wow!"", the masses cried";
             }
         }
 
-        //Method to display the attribute values of this Object.
+        // Method to display the attribute values of this Object.
         public virtual string Info()
         {
             return "Gear: " + Gear +
@@ -1069,7 +1071,7 @@ on a new line! ""Wow!"", the masses cried";
     {
         private static bool LogException(Exception ex)
         {
-            /* log exception somewhere */
+            // log exception somewhere
             return false;
         }
 
@@ -1117,12 +1119,12 @@ on a new line! ""Wow!"", the masses cried";
         [Obsolete("Use NewMethod instead", false)]
         public static void ObsoleteMethod()
         {
-            /* obsolete code */
+            // obsolete code
         }
 
         public static void NewMethod()
         {
-            /* new code */
+            // new code
         }
 
         public static void Main()
@@ -1154,9 +1156,9 @@ namespace Learning.More.CSharp
     }
 }
 
-//New C# 7 Feature
-//Install Microsoft.Net.Compilers Latest from Nuget
-//Install System.ValueTuple Latest from Nuget
+// New C# 7 Feature
+// Install Microsoft.Net.Compilers Latest from Nuget
+// Install System.ValueTuple Latest from Nuget
 using System;
 namespace Csharp7
 {
