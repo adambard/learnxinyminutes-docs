@@ -6,8 +6,8 @@ contributors:
     - ["Dan Korostelev", "https://github.com/nadako/"]
 ---
 
-Haxe is a web-oriented language that provides platform support for C++, C#,
-Swf/ActionScript, Javascript, Java, PHP, Python, Lua, HashLink, and Neko byte code
+[Haxe](https://haxe.org/) is a general-purpose language that provides platform support for C++, C#,
+Swf/ActionScript, JavaScript, Java, PHP, Python, Lua, HashLink, and Neko bytecode
 (the latter two being also written by the Haxe author). Note that this guide is for
 Haxe version 3.  Some of the guide may be applicable to older versions, but it is
 recommended to use other references.
@@ -189,7 +189,7 @@ class LearnHaxe3 {
         trace(m.get('bar') + " is the value for m.get('bar')");
         trace(m['bar'] + " is the value for m['bar']");
 
-        var m2 =  ['foo' => 4, 'baz' => 6]; // Alternative map syntax
+        var m2 = ['foo' => 4, 'baz' => 6]; // Alternative map syntax
         trace(m2 + " is the value for m2");
 
         // Remember, you can use type inference.  The Haxe compiler will
@@ -234,10 +234,9 @@ class LearnHaxe3 {
             ^       Bitwise exclusive OR
             |       Bitwise inclusive OR
         */
-
-        // increments
+        
         var i = 0;
-        trace("Increments and decrements");
+        trace("Pre-/Post- Increments and Decrements");
         trace(i++); // i = 1. Post-Increment
         trace(++i); // i = 2. Pre-Increment
         trace(i--); // i = 1. Post-Decrement
@@ -287,7 +286,7 @@ class LearnHaxe3 {
         }
 
         // do-while loop
-        var  l = 0;
+        var l = 0;
         do {
             trace("do statement always runs at least once");
         } while (l > 0);
@@ -338,7 +337,7 @@ class LearnHaxe3 {
          */
         var my_dog_name = "fido";
         var favorite_thing  = "";
-        switch(my_dog_name) {
+        switch (my_dog_name) {
             case "fido" : favorite_thing = "bone";
             case "rex"  : favorite_thing = "shoe";
             case "spot" : favorite_thing = "tennis ball";
@@ -366,7 +365,7 @@ class LearnHaxe3 {
 
         trace("k equals ", k); // outputs 10
 
-        var other_favorite_thing = switch(my_dog_name) {
+        var other_favorite_thing = switch (my_dog_name) {
             case "fido" : "teddy";
             case "rex"  : "stick";
             case "spot" : "football";
@@ -559,7 +558,7 @@ class SimpleEnumTest {
         // You can specify the "full" name,
         var e_explicit:SimpleEnum = SimpleEnum.Foo;
         var e = Foo; // but inference will work as well.
-        switch(e) {
+        switch (e) {
             case Foo: trace("e was Foo");
             case Bar: trace("e was Bar");
             case Baz: trace("e was Baz"); // comment this line to throw an error.
@@ -572,7 +571,7 @@ class SimpleEnumTest {
 
            You can also specify a default for enum switches as well:
          */
-        switch(e) {
+        switch (e) {
             case Foo: trace("e was Foo again");
             default : trace("default works here too");
         }
@@ -595,21 +594,21 @@ class ComplexEnumTest {
         var e1:ComplexEnum = IntEnum(4); // specifying the enum parameter
         // Now we can switch on the enum, as well as extract any parameters
         // it might have had.
-        switch(e1) {
+        switch (e1) {
             case IntEnum(x) : trace('$x was the parameter passed to e1');
             default: trace("Shouldn't be printed");
         }
 
         // another parameter here that is itself an enum... an enum enum?
         var e2 = SimpleEnumEnum(Foo);
-        switch(e2){
+        switch (e2){
             case SimpleEnumEnum(s): trace('$s was the parameter passed to e2');
             default: trace("Shouldn't be printed");
         }
 
         // enums all the way down
         var e3 = ComplexEnumEnum(ComplexEnumEnum(MultiEnum(4, 'hi', 4.3)));
-        switch(e3) {
+        switch (e3) {
             // You can look for certain nested enums by specifying them
             //  explicitly:
             case ComplexEnumEnum(ComplexEnumEnum(MultiEnum(i,j,k))) : {
@@ -668,7 +667,7 @@ class TypedefsAndStructuralTypes {
 
            That would give us a single "Surface" type to work with across
            all of those platforms.
-        */
+         */
     }
 }
 
@@ -700,8 +699,7 @@ class UsingExample {
            instance, and the compiler still generates code equivalent to a
            static method.
          */
-      }
-
+    }
 }
 
 ```
