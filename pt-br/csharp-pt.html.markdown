@@ -78,7 +78,7 @@ namespace Learning.CSharp
             short fooShort = 10000;
             ushort fooUshort = 10000;
 
-            // Integer - 32-bit integer
+            // Integer - inteiro de 32 bits 
             int fooInt = 1; // (-2,147,483,648 <= int <= 2,147,483,647)
             uint fooUint = 1; // (0 <= uint <= 4,294,967,295)
 
