@@ -97,7 +97,7 @@ div.some-parent.class-name {}
 /* Ou qualquer irmão que o precede */
 .i am-qualquer-elemento antes ~ .Este elemento {}
 
-/* Existem alguns selectores chamado pseudo classes que podem ser usados para selecionar um
+/* Existem alguns seletores chamados pseudo classes que podem ser usados para selecionar um
    elemento quando ele está em um determinado estado */
 
 /* Por exemplo, quando o cursor passa sobre um elemento */
