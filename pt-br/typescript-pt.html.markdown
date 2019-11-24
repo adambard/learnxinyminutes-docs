@@ -22,7 +22,7 @@ var isDone: boolean = false;
 var lines: number = 42;
 var name: string = "Anders";
 
-// Quando é impossível saber, há o "Qualquer" tipo
+// Quando é impossível saber, há o tipo "Qualquer"
 var notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // Ok, definitivamente um boolean
@@ -65,7 +65,7 @@ interface Person {
   move(): void;
 }
 
-// Objeto que implementa a "Pessoa" Interface
+// Objeto que implementa a Interface "Pessoa"
 // Pode ser tratado como uma pessoa desde que tem o nome e mover propriedades
 var p: Person = { name: "Bobby", move: () => {} };
 // Os objetos que têm a propriedade opcional:
