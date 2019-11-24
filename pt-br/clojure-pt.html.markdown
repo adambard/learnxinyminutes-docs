@@ -382,3 +382,6 @@ Clojuredocs.org tem documentação com exemplos para quase todas as funções pr
 
 Clojure-doc.org tem um bom número de artigos para iniciantes:
 [http://clojure-doc.org/](http://clojure-doc.org/)
+
+Clojure for the Brave and True é um livro de introdução ao Clojure e possui uma versão gratuita online:
+[https://www.braveclojure.com/clojure-for-the-brave-and-true/](https://www.braveclojure.com/clojure-for-the-brave-and-true/)

@@ -78,7 +78,7 @@ namespace Learning.CSharp
             short fooShort = 10000;
             ushort fooUshort = 10000;
 
-            // Integer - 32-bit integer
+            // Integer - inteiro de 32 bits 
             int fooInt = 1; // (-2,147,483,648 <= int <= 2,147,483,647)
             uint fooUint = 1; // (0 <= uint <= 4,294,967,295)
             //Números por padrão são int ou uint, dependendo do tamanho.
@@ -86,7 +86,9 @@ namespace Learning.CSharp
             // Long - 64-bit integer
             long fooLong = 100000L; // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
             ulong fooUlong = 100000L; // (0 <= ulong <= 18,446,744,073,709,551,615)
-            // L is used to denote that this variable value is of type long or ulong
+            
+            // Números por padrão são int ou uint dependendo do tamanho.
+            // L é usado para denotar que o valor da variável é do tipo long ou ulong.
 
             // Double - Double-precision 64-bit IEEE 754 Floating Point
             double fooDouble = 123.4; // Precision: 15-16 digits
@@ -311,10 +313,10 @@ on a new line! ""Wow!"", the masses cried";
             // Converting Data Types And Typecasting
             ///////////////////////////////////////
 
-            // Converting data
+            // Convertendo dados
 
-            // Convert String To Integer
-            // this will throw a FormatException on failure
+            // Converter String para Integer
+            // isso lançará uma exceção "FormatException"
             int.Parse("123");//returns an integer version of "123"
 
             // try parse will default to type default on failure
@@ -407,12 +409,12 @@ on a new line! ""Wow!"", the masses cried";
             return result;
         }
 
-        // You can narrow down the objects that are passed in
+        // Você pode pode restringir os objetos que são passados
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
-            // We can iterate, since T is a IEnumerable
+            // Nos podemos iterar, desde que T seja um "IEnumerable"
             foreach (var item in toPrint)
-                // Item is an int
+                // Item é um inteiro
                 Console.WriteLine(item.ToString());
         }
 
@@ -720,9 +722,9 @@ on a new line! ""Wow!"", the masses cried";
             _speed -= decrement;
         }
 
-        // properties get/set values
-        // when only data needs to be accessed, consider using properties.
-        // properties may have either get or set, or both
+        // propriedade recupera e/ou atribui valores (get/set). 
+        // quando os dados precisam apenas ser acessados, considere o uso de propriedades.
+        // uma propriedade pode ter "get" ou "set", ou ambos.
         private bool _hasTassles; // private variable
         public bool HasTassles // public accessor
         {

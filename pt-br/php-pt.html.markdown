@@ -20,7 +20,7 @@ Este documento descreve PHP 5+.
 
 // Duas barras iniciam o comentário de uma linha.
 
-# O hash (aka pound symbol) também inicia, mas // é mais comum.
+# O hash (conhecido como "pound symbol") também inicia, mas // é mais comum.
 
 /*
      O texto envolto por barra-asterisco e asterisco-barra

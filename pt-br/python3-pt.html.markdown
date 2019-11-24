@@ -7,15 +7,16 @@ contributors:
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
 translators:
     - ["Paulo Henrique Rodrigues Pinheiro", "http://www.sysincloud.it"]
+    - ["Monique Baptista", "https://github.com/bfmonique"]
 lang: pt-br
 filename: learnpython3-pt.py
 ---
 
-Python foi criado por Guido Van Rossum nos anos 1990. Ele é atualmente uma
-das mais populares linguagens em existência. Eu fiquei morrendo de amor
-pelo Python por sua clareza sintática. É praticamente pseudocódigo executável.
+Python foi criada por Guido Van Rossum nos anos 1990. Ela é atualmente uma
+das linguagens mais populares existentes. Eu me apaixonei por
+Python por sua clareza sintática. É praticamente pseudocódigo executável.
 
-Suas opiniões são grandemente apreciadas. Você pode encontrar-me em
+Opniões são muito bem vindas. Você pode encontrar-me em
 [@louiedinh](http://twitter.com/louiedinh) ou louiedinh [em]
 [serviço de e-mail do google].
 
@@ -44,7 +45,7 @@ aprender o velho Python 2.7.
 8 - 1   # => 7
 10 * 2  # => 20
 
-# Números inteiros por padrão, exceto na divisão, que retorna número
+# Números são inteiros por padrão, exceto na divisão, que retorna número
 # de ponto flutuante (float).
 35 / 5  # => 7.0
 
@@ -64,7 +65,7 @@ aprender o velho Python 2.7.
 # Exponenciação (x**y, x elevado à potência y)
 2**4  # => 16
 
-# Determine a precedência usando parêntesis
+# Determine a precedência usando parênteses
 (1 + 3) * 2  # => 8
 
 # Valores lógicos são primitivos (Atenção à primeira letra maiúscula)
@@ -105,9 +106,8 @@ False or True   # => True
 1 < 2 < 3  # => True
 2 < 3 < 2  # => False
 
-# (operador 'is' e operador '==') is verifica se duas variáveis
-# referenciam um mesmo objeto, mas == verifica se as variáveis
-# apontam para o mesmo valor.
+# 'is' verifica se duas variáveis representam o mesmo endereço
+# na memória; '==' verifica se duas variáveis têm o mesmo valor
 a = [1, 2, 3, 4]  # Referência a uma nova lista, [1, 2, 3, 4]
 b = a             # b referencia o que está referenciado por a
 b is a            # => True, a e b referenciam o mesmo objeto
@@ -174,7 +174,7 @@ input_string_var = input("Digite alguma coisa: ") # Retorna o que foi digitado e
 # Observação: Em versões antigas do Python, o método input() era chamado raw_input()
 
 # Não é necessário declarar variáveis antes de iniciá-las
-# È uma convenção usar letras_minúsculas_com_sublinhados
+# É uma convenção usar letras_minúsculas_com_sublinhados
 alguma_variavel = 5
 alguma_variavel  # => 5
 
@@ -182,31 +182,31 @@ alguma_variavel  # => 5
 # Veja Controle de Fluxo para aprender mais sobre tratamento de exceções.
 alguma_variavel_nao_inicializada  # Gera a exceção NameError
 
-# Listas armazenam sequencias
+# Listas armazenam sequências
 li = []
-# Você pode iniciar com uma lista com alguns valores
+# Você pode iniciar uma lista com valores
 outra_li = [4, 5, 6]
 
-# Adicionar conteúdo ao fim da lista com append
+# Adicione conteúdo ao fim da lista com append
 li.append(1)    # li agora é [1]
 li.append(2)    # li agora é [1, 2]
 li.append(4)    # li agora é [1, 2, 4]
 li.append(3)    # li agora é [1, 2, 4, 3]
-# Remover do final da lista com pop
+# Remova do final da lista com pop
 li.pop()        # => 3 e agora li é [1, 2, 4]
 # Vamos colocá-lo lá novamente!
 li.append(3)    # li agora é [1, 2, 4, 3] novamente.
 
-# Acessar uma lista da mesma forma que você faz com um array
+# Acesse uma lista da mesma forma que você faz com um array
 li[0]   # => 1
-# Acessa o último elemento
+# Acessando o último elemento
 li[-1]  # => 3
 
-# Acessando além dos limites gera um IndexError
+# Acessar além dos limites gera um IndexError
 li[4]  # Gera o IndexError
 
 # Você pode acessar vários elementos com a sintaxe de limites
-# (É um limite fechado, aberto pra você que gosta de matemática.)
+# Inclusivo para o primeiro termo, exclusivo para o segundo
 li[1:3]   # => [2, 4]
 # Omitindo o final
 li[2:]    # => [4, 3]
