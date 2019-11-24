@@ -33,8 +33,13 @@ scientific_notation: 1e+12
 boolean: true
 null_value: null
 key with spaces: value
-# 注意到字符串不需要被括在引号中。但是，它们可以被括起来。
-"Keys can be quoted too.": "Useful if you want to put a ':' in your key."
+# 注意，字符串不必被括在引号中，但也可以被括起来。
+however: 'A string, enclosed in quotes.'
+'Keys can be quoted too.': "Useful if you want to put a ':' in your key."
+single quotes: 'have ''one'' escape pattern'
+double quotes: "have many: \", \0, \t, \u263A, \x0d\x0a == \r\n, and more."
+# UTF-8/16/32 字符需要被转义(encoded)
+Superscript two: \u00B2
 
 # 多行字符串既可以写成像一个'文字块'(使用 |)，
 # 或像一个'折叠块'(使用 '>')。
@@ -73,8 +78,8 @@ a_nested_map:
 # 键也可以是复合型的，比如多行对象
 # 我们用 ? 后跟一个空格来表示一个复合键的开始。
 ? |
-    This is a key
-    that has multiple lines
+  This is a key
+  that has multiple lines
 : and this is its value
 
 # YAML 也允许使用复杂键语法表示序列间的映射关系。
@@ -85,6 +90,7 @@ a_nested_map:
 : [ 2001-01-01, 2002-02-02 ]
 
 # 序列 (等价于列表或数组) 看起来像这样：
+# 注意 '-' 算作缩进
 a_sequence:
   - Item 1
   - Item 2
@@ -95,6 +101,8 @@ a_sequence:
   -
     - This is a sequence
     - inside another sequence
+  - - - Nested sequence indicators
+      - can be collapsed
 
 # 因为 YAML 是 JSON 的超集，你也可以写 JSON 风格的映射和序列：
 json_map: {"key": "value"}
@@ -157,15 +165,18 @@ gif_file: !!binary |
 
 # YAML 还有一个集合类型，它看起来像这样：
 set:
-    ? item1
-    ? item2
-    ? item3
+  ? item1
+  ? item2
+  ? item3
+or: {item1, item2, item3}
 
 # 集合只是值为 null 的映射；上面的集合等价于：
 set2:
-    item1: null
-    item2: null
-    item3: null
+  item1: null
+  item2: null
+  item3: null
+
+...  # document end
 ```
 
 ### 更多资源

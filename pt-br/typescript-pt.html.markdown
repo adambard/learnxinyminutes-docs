@@ -10,7 +10,7 @@ lang: pt-br
 
 Typescript é uma linguagem que visa facilitar o desenvolvimento de aplicações em grande escala escritos em JavaScript.
 Typescript acrescenta conceitos comuns como classes, módulos, interfaces, genéricos e (opcional) tipagem estática para JavaScript.
-É um super conjunto de JavaScript: todo o código JavaScript é o código do texto dactilografado válido para que possa ser adicionados diretamente a qualquer projeto. O compilador emite typescript JavaScript.
+É um super conjunto de JavaScript: todo o código JavaScript é TypeScript válido então ele pode ser adicionado diretamente a qualquer projeto. O compilador emite typescript JavaScript.
 
 Este artigo irá se concentrar apenas em texto datilografado sintaxe extra, ao contrário de [JavaScript](javascript-pt.html.markdown).
 
@@ -22,7 +22,7 @@ var isDone: boolean = false;
 var lines: number = 42;
 var name: string = "Anders";
 
-// Quando é impossível saber, há o "Qualquer" tipo
+// Quando é impossível saber, há o tipo "Qualquer"
 var notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // Ok, definitivamente um boolean
@@ -65,7 +65,7 @@ interface Person {
   move(): void;
 }
 
-// Objeto que implementa a "Pessoa" Interface
+// Objeto que implementa a Interface "Pessoa"
 // Pode ser tratado como uma pessoa desde que tem o nome e mover propriedades
 var p: Person = { name: "Bobby", move: () => {} };
 // Os objetos que têm a propriedade opcional:

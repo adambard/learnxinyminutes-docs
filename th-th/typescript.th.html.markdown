@@ -190,7 +190,7 @@ interface Person {
 }
 
 var p1: Person = { name: "Tyrone", age: 42 };
-p1.age = 25; // Error แน่นอน เพราะ p1.x ถูกกำหนดเป็น read-only
+p1.age = 25; // Error แน่นอน เพราะ p1.age ถูกกำหนดเป็น read-only
 
 var p2 = { name: "John", age: 60 }; // สังเกตว่า p2 ไม่ได้กำหนดเป็น Person
 var p3: Person = p2; // ทำได้ เป็น read-only alias ของ p2 และกำหนดเป็น Person

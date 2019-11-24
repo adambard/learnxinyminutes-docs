@@ -33,7 +33,7 @@ diretamente no shell.
 # Exemplo simples de hello world:
 echo Hello World!
 
-# Cada comando começa com uma nova linha, ou após um ponto virgula:
+# Cada comando começa com uma nova linha, ou após um ponto e vírgula:
 echo 'Essa é a primeira linha'; echo 'Essa é a segunda linha'
 
 # A declaração de variáveis é mais ou menos assim
@@ -41,14 +41,14 @@ Variavel="Alguma string"
 
 # Mas não assim:
 Variavel = "Alguma string"
-# Bash interpretará Variavel como um comando e tentará executar e lhe retornar
+# Bash interpretará Variavel como um comando e tentará executar e lhe retornará
 # um erro porque o comando não pode ser encontrado.
 
 # Ou assim:
 Variavel= 'Alguma string'
-# Bash interpretará 'Alguma string' como um comando e tentará executar e lhe retornar
+# Bash interpretará 'Alguma string' como um comando e tentará executar e lhe retornará
 # um erro porque o comando não pode ser encontrado. (Nesse caso a a parte 'Variavel=' 
-# é vista com uma declaração de variável valida apenas para o escopo do comando 'Uma string').
+# é vista com uma declaração de variável válida apenas para o escopo do comando 'Uma string').
 
 # Usando a variável:
 echo $Variavel
@@ -65,12 +65,12 @@ echo ${Variavel/Alguma/Uma}
 # Substring de uma variável
 Tamanho=7
 echo ${Variavel:0:Tamanho}
-# Isso retornará apenas os 7 primeiros caractéres da variável
+# Isso retornará apenas os 7 primeiros caracteres da variável
 
 # Valor padrão de uma variável
 echo ${Foo:-"ValorPadraoSeFooNaoExistirOuEstiverVazia"}
 # Isso funciona para nulo (Foo=) e (Foo=""); zero (Foo=0) retorna 0.
-# Note que isso apenas retornar o valor padrão e não mudar o valor da variável.
+# Note que isso apenas retornará o valor padrão e não mudará o valor da variável.
 
 # Variáveis internas
 # Tem algumas variáveis internas bem uteis, como
@@ -86,7 +86,7 @@ read Nome # Note que nós não precisamos declarar a variável
 echo Ola, $Nome
 
 # Nós temos a estrutura if normal:
-# use 'man test' para mais infomações para as condicionais
+# use 'man test' para mais informações para as condicionais
 if [ $Nome -ne $USER ]
 then
 	echo "Seu nome não é o seu username"
@@ -109,7 +109,7 @@ then
 	echo "Isso vai rodar se $Nome é Daniela ou Jose."
 fi
 
-# Expressões são denotadas com o seguinte formato
+# Expressões são escritas com o seguinte formato
 echo $(( 10 + 5))
 
 # Diferentemente das outras linguagens de programação, bash é um shell, então ele 
@@ -118,9 +118,9 @@ echo $(( 10 + 5))
 ls
 
 #Esse comando tem opções que controlam sua execução
-ls -l # Lista todo arquivo e diretorio em linhas separadas
+ls -l # Lista todo arquivo e diretório em linhas separadas
 
-# Os resultados do comando anterior pode ser passado para outro comando como input.
+# Os resultados do comando anterior podem ser passados para outro comando como input.
 # O comando grep filtra o input com o padrão passado. É assim que listamos apenas
 # os arquivos .txt no diretório atual:
 ls -l | grep "\.txt"
@@ -241,7 +241,7 @@ head -n 10 arquivo.txt
 sort arquivo.txt
 # reporta ou omite as linhas repetidas, com -d você as reporta
 uniq -d arquivo.txt
-# exibe apenas a primeira coluna após o caráctere ','
+# exibe apenas a primeira coluna após o caractere ','
 cut -d ',' -f 1 arquivo.txt
 # substitui todas as ocorrencias de 'okay' por 'legal' em arquivo.txt (é compativel com regex)
 sed -i 's/okay/legal/g' file.txt

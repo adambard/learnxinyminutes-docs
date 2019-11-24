@@ -9,7 +9,7 @@ contributors:
     - ["asyne", "https://github.com/justblah"]
     - ["habi", "http://github.com/habi"]
 translators:
-    - ["Oleg Gromyak", "https://github.com/ogroleg"]
+    - ["Oleh Hromiak", "https://github.com/ogroleg"]
 filename: learnpython-ua.py
 ---
 
