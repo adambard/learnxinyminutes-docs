@@ -407,12 +407,12 @@ on a new line! ""Wow!"", the masses cried";
             return result;
         }
 
-        // You can narrow down the objects that are passed in
+        // Você pode pode restringir os objetos que são passados
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
-            // We can iterate, since T is a IEnumerable
+            // Nos podemos iterar, desde que T seja um "IEnumerable"
             foreach (var item in toPrint)
-                // Item is an int
+                // Item é um inteiro
                 Console.WriteLine(item.ToString());
         }
 
