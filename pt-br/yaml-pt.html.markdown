@@ -11,7 +11,7 @@ lang: pt-br
 YAML é uma linguagem de serialização de dados projetado para ser diretamente gravável e
 legível por seres humanos.
 
-É um superconjunto de JSON, com a adição de indentação e quebras de linhas sintaticamente significativas, como Python. Ao contrário de Python, entretanto, YAML não permite o caracter literal tab para identação.
+É um superconjunto de JSON, com a adição de identação e quebras de linhas sintaticamente significativas, como Python. Ao contrário de Python, entretanto, YAML não permite o caracter literal tab para identação.
 
 ```yaml
 # Commentários em YAML são como este.
@@ -33,7 +33,7 @@ chave com espaco: valor
 porem: "Uma string, entre aspas."
 "Chaves podem estar entre aspas tambem.": "É útil se você quiser colocar um ':' na sua chave."
 
-# Seqüências de várias linhas podem ser escritos como um 'bloco literal' (utilizando |),
+# Seqüências de várias linhas podem ser escritas como um 'bloco literal' (utilizando |),
 # ou em um 'bloco compacto' (utilizando '>').
 bloco_literal: |
     Todo esse bloco de texto será o valor da chave 'bloco_literal',
@@ -76,7 +76,7 @@ um_mapa_aninhado:
 # também permite tipos de coleção de chaves, mas muitas linguagens de programação
 # vão reclamar.
 
-# Sequências (equivalente a listas ou arrays) semelhante à isso:
+# Sequências (equivalente a listas ou arrays) semelhante a isso:
 uma_sequencia:
     - Item 1
     - Item 2
@@ -118,7 +118,7 @@ datetime: 2001-12-15T02: 59: 43.1Z
 datetime_com_espacos 2001/12/14: 21: 59: 43.10 -5
 Data: 2002/12/14
 
-# A tag !!binary indica que a string é na verdade um base64-encoded (condificado)
+# A tag !!binary indica que a string é na verdade um base64-encoded (codificado)
 # representação de um blob binário.
 gif_file: !!binary |
     R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
