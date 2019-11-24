@@ -14,15 +14,15 @@ translators:
 lang: pt-br
 ---
 
-Nos primeiros dias da web não havia elementos visuais, apenas texto puro. Mas com maior desenvolvimento de navegadores da web, páginas web totalmente visuais também se tornou comum.
+No início da web não havia elementos visuais, apenas texto puro. Mas com maior desenvolvimento de navegadores da web, páginas web totalmente visuais também se tornara comum.
 
-CSS ajuda a manter a separação entre o conteúdo (HTML) e o look-and-feel de uma página web.
+CSS ajuda a manter a separação entre o conteúdo (HTML) e o visual de uma página web.
 
 CSS permite atingir diferentes elementos em uma página HTML e atribuir diferentes propriedades visuais para eles.
 
-Este guia foi escrito para CSS2, embora CSS3 está rapidamente se tornando popular.
+Este guia foi escrito para CSS2, embora CSS3 esteja rapidamente se tornando popular.
 
-**NOTA:** Porque CSS produz resultados visuais, a fim de aprender, você precisa tentar de tudo em um playground CSS como [dabblet](http://dabblet.com/).
+**NOTA:** Porque CSS produz resultados visuais, a fim de aprender, você precisa treinar em um playground CSS como [dabblet](http://dabblet.com/).
 O foco principal deste artigo é sobre a sintaxe e algumas dicas gerais.
 
 ```css
@@ -42,7 +42,7 @@ Abaixo um elemento de exemplo:
 <div class='class1 class2' id='anID' attr='value' otherAttr='pt-br foo bar' />
 */
 
-/* Você pode direciona-lo usando uma das suas classes CSS */
+/* Você pode direcioná-lo usando uma das suas classes CSS */
 .class1 { }
 
 /* ou ambas as classes! */
@@ -82,9 +82,9 @@ classe div.some [attr $ = 'ue'] {}
 /* Você pode selecionar um elemento que é filho de outro elemento */
 div.some-parent> .class-name {}
 
-/* Ou um descendente de um outro elemento. As crianças são os descendentes diretos de
-   seu elemento pai, apenas um nível abaixo da árvore. Pode ser qualquer descendentes
-   nivelar por baixo da árvore. */
+/* Ou um descendente de um outro elemento. Os filhos são os descendentes diretos de
+   seu elemento pai, apenas um nível abaixo da árvore. Pode ser quaisquer descendentes
+   nivelados por baixo da árvore. */
 div.some-parent class-name {}
 
 /* Atenção: o mesmo seletor sem espaço tem um outro significado.
@@ -118,7 +118,7 @@ seletor:first-child {}
 /* Qualquer elemento que é o último filho de seu pai */
 seletor:last-child {}
 
-/* Assim como pseudo classes, pseudo elementos permitem que você estilo certas partes de um documento */
+/* Assim como pseudo classes, pseudo elementos permitem que você estilize certas partes de um documento */
 
 /* Corresponde a um primeiro filho virtual do elemento selecionado */
 seletor::before {}
@@ -127,7 +127,7 @@ seletor::before {}
 seletor::after {}
 
 /* Nos locais apropriados, um asterisco pode ser utilizado como um curinga para selecionar todos
-   elemento */
+   os elementos */
 * {} /* */ Todos os elementos
 .parent * {} /* */ todos os descendentes
 .parent> * {} /* */ todas as crianças
@@ -181,7 +181,7 @@ seletor {
 
 ## Uso
 
-Guardar uma folha de estilo CSS com a extensão `.css`.
+Salvar uma folha de estilo CSS com a extensão `.css`.
 
 ```xml
 <!-- Você precisa incluir o arquivo css no da sua página <head>. Isto é o
