@@ -4,6 +4,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
+    - ["Monique Baptista", "https://github.com/bfmonique"]
 lang: pt-br    
 filename: learnmarkdown-pt.md
 ---
@@ -15,19 +16,19 @@ Dê-me feedback tanto quanto você quiser! / Sinta-se livre para a garfar (fork)
 puxar o projeto (pull request)
 
 ```md
-<!-- Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
-um arquivo Markdown válido, isso significa que nós podemos usar elementos HTML 
+<!-- Markdown é um superconjunto do HTML, de modo que qualquer arquivo HTML é 
+um arquivo Markdown válido. Isso significa que nós podemos usar elementos HTML 
 em Markdown, como o elemento de comentário, e eles não serão afetados pelo analisador
 de remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown, você
-não pode usar sintaxe remarcação dentro desse conteúdo do elemento.-->
+não pode usar sintaxe de remarcação dentro desse conteúdo do elemento.-->
 
-<!--Markdown também varia de implementação de um analisador para uma próxima.
+<!--A maneira como o Markdown é analisado varia de software para software.
 Este guia vai tentar esclarecer quando as características são universais, ou quando eles são 
-específico para um determinado parser -->
+específico para um determinado interpretador -->
 
 <!-- Cabeçalhos -->
 <!-- Você pode criar elementos HTML <h1> até <h6> facilmente antecedendo o texto
-que deseja estar nesse elemento por um número de hashes (#) -->
+que deseja estar nesse elemento por um número de cerquilhas (#) -->
 # Isto é um cabeçalho <h1>
 ## Isto é um cabeçalho <h2>
 ### Isto é um cabeçalho <h3>
@@ -65,7 +66,7 @@ uma ou múltiplas linhas em branco. -->
 
 Este é um parágrafo. Eu estou digitando em um parágrafo, não é legal?
 
-Agora, eu estou no parágrado 2.
+Agora, eu estou no parágrafo 2.
 ... Ainda continuo no parágrafo 2! :)
 
 Eu estou no parágrafo três.
@@ -111,7 +112,7 @@ ou
 
 1. Item um
 2. Item dois
-3. Tem três
+3. Item três
 
 <!-- Você não tem poder para rotular os itens corretamente e a remarcação será ainda
 tornar os números em ordem, mas isso pode não ser uma boa idéia -->

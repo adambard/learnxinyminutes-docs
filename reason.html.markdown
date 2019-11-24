@@ -162,7 +162,7 @@ let maxPassengers = firstTrip.capacity;
 
 /* If you define the record type in a different file, you have to reference the
    filename, if trainJourney was in a file called Trips.re */
-let secondTrip: Trips.firstTrip = {
+let secondTrip: Trips.trainJourney = {
   destination: "Paris",
   capacity: 50,
   averageSpeed: 150.0,

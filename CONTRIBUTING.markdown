@@ -103,11 +103,3 @@ You can buid the site locally to test your changes. Follow the steps below.
 these commands at `learnxinyminutes-site/`).
 	* Build - `bundle exec middleman build`
 	* Dev server - `bundle exec middleman --force-polling --verbose`
-
-## Building the site locally, for Nix users
-
-You can buid the site locally to test your changes too:
-
-* Clone or zip download the [learnxinyminutes-site](https://github.com/adambard/learnxinyminutes-site) repo.
-* Get the source in place following the instructions above
-* Install all site dependencies and start a dev server by running `nix-shell` at the `learnxinyminutes-site/` root directory.

@@ -62,7 +62,7 @@ Svetlana Golubeva}
 
 \newpage
 
-% Muitos artigos de pesquisa possuem um resumo, e pode-se isar comandos
+% Muitos artigos de pesquisa possuem um resumo, e pode-se usar comandos
 % predefinidos para isso.
 % Isso deve aparecer em sua ordem lógica, portanto, após o topo,
 % mas antes das seções principais do corpo.
