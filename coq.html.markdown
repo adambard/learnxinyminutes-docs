@@ -16,7 +16,7 @@ The standard usage model of Coq is to write it with interactive tool assistance,
 Inside Proof General `Ctrl+C Ctrl+<Enter>` will evaluate up to your cursor.
 
 
-```ocaml
+```coq
 (*** Comments ***)
 
 (* Comments are enclosed in (* and *). It's fine to nest comments. *)
