@@ -5,9 +5,9 @@ contributors:
 filename: learnpod.pod6
 ---
 
-Pod is an easy-to-use and purely descriptive mark-up language, 
+Pod is an easy-to-use and purely descriptive mark-up language,
 with no presentational components. Besides its use for documenting
-Raku Perl 6 programs and modules, Pod can be utilized to write language
+Raku programs and modules, Pod can be utilized to write language
 documentation, blogs, and other types of document composition as well.
 
 Pod documents can be easily converted to HTML and many other formats
@@ -49,12 +49,12 @@ generate documentation.
 ```
 =begin pod
 
-A very simple Raku Perl 6 Pod document. All the other directives go here!
+A very simple Raku Pod document. All the other directives go here!
 
 =end pod
 ```
 
-Pod documents usually coexist with Raku Perl 6 code. If by themselves, 
+Pod documents usually coexist with Raku code. If by themselves,
 Pod files often have the `.pod6` suffix. Moving forward, it's assumed that
 the constructs being discussed are surrounded by the `=begin pod ... =end pod`
 directives.
@@ -65,7 +65,7 @@ directives.
 
 Text can be easily styled as bold, italic, underlined or verbatim (for code
 formatting) using the following formatting codes: `B<>`, `I<>`, `U<>`
-and `C<>`. 
+and `C<>`.
 
 ```
 B<This text is in Bold.>
@@ -83,7 +83,7 @@ just a single capital letter followed immediately by a set of single or double
 angle brackets. The Unicode variant («») of the angle brackets can also be
 used.
 
-### Headings 
+### Headings
 
 Headings are created by using the `=headN` directive where `N` is the
 heading level.
@@ -145,7 +145,7 @@ Unordered lists can be created using the `=item` directive.
 ```
 
 Sublists are achieved with items at each level specified using the `=item1`,
-`=item2`, `=item3`, `...`, `=itemN` etc. directives. The `=item` directive 
+`=item2`, `=item3`, `...`, `=itemN` etc. directives. The `=item` directive
 defaults to `=item1`.
 
 ```
@@ -157,7 +157,7 @@ defaults to `=item1`.
 =item1 Item four
 ```
 
-Definition lists that define terms or commands use the `=defn` directive. 
+Definition lists that define terms or commands use the `=defn` directive.
 This is equivalent to the `<dl>` element in HTML.
 
 ```
@@ -186,13 +186,13 @@ As shown in the [Basic Text Formatting](#basic-text-formatting) section,
 inline code can be created using the `C<>` code.
 
 ```
-In Raku Perl 6, there are several functions/methods to output text. Some of them
+In Raku, there are several functions/methods to output text. Some of them
 are C<print>, C<put> and C<say>.
 ```
 
 ### Comments
 
-Although Pod blocks are ignored by the Raku Perl 6 compiler, everything
+Although Pod blocks are ignored by the Raku compiler, everything
 indentified as a Pod block will be read and interpreted by Pod renderers. In
 order to prevent Pod blocks from being rendered by any renderer, use the
 `=comment` directive.
@@ -206,21 +206,21 @@ order to prevent Pod blocks from being rendered by any renderer, use the
 To create inline comments, use the `Z<>` code.
 
 ```
-Pod is awesome Z<Of course it is!>. And Raku Perl 6 too!
+Pod is awesome Z<Of course it is!>. And Raku too!
 ```
 
-Given that the Perl interpreter never executes embedded Pod blocks,
+Given that the Raku interpreter never executes embedded Pod blocks,
 comment blocks can also be used as an alternative form of nestable block
-comments in Raku Perl 6.
+comments in Raku.
 
 ### Links
 
 Creating links in Pod is quite easy and is done by enclosing them in
 a `L<>` code. The general format is `L<Label|Url>` with `Label`
-being optional. 
+being optional.
 
 ```
-Raku Perl 6 homepage is L<https://perl6.org>.
+Raku homepage is L<https://raku.org/>.
 L<Click me!|http://link.org/>.
 ```
 
@@ -242,12 +242,12 @@ The Pod specifications are not completely handled properly yet and this
 includes the handling of table. For simplicity's sake, only one way of
 constructing tables is shown here. To learn about good practices and see
 examples of both good and bad tables, please visit
-<https://docs.perl6.org/language/tables>.
+<https://docs.raku.org/language/tables>.
 
 ```
 =begin table
-Option      | Description     
-============|================  
+Option      | Description
+============|================
 data        | path to data files.
 engine      | engine to be used for processing templates.
 ext         | extension to be used for dest files.
@@ -287,7 +287,7 @@ For example:
 
 Delimited blocks are bounded by `=begin` and `=end` markers, both of which are
 followed by a valid Pod identifier, which is the `typename` of the block.
-The general syntax is 
+The general syntax is
 
 ```
 =begin BLOCK_TYPE
@@ -304,7 +304,7 @@ Top level heading
 ```
 
 This type of blocks is useful for creating headings, list items, code blocks,
-etc. with multiple paragraphs. For example, 
+etc. with multiple paragraphs. For example,
 
 * a multiline item of a list
 
@@ -345,7 +345,7 @@ say pow(6);      #=> 36
 Paragraph blocks are introduced by a `=for` marker and terminated by
 the next Pod directive or the first blank line (which is not considered to
 be part of the block's contents). The `=for` marker is followed by the
-`typename` of the block. The general syntax is 
+`typename` of the block. The general syntax is
 
 ```
 =for BLOCK_TYPE
@@ -360,10 +360,10 @@ Top level heading
 ```
 
 ## Configuration Data
- 
+
 Except for abbreviated blocks, both delimited blocks and paragraph
 blocks can be supplied with configuration information about their
-contents right after the `typename` of the block. Thus the following 
+contents right after the `typename` of the block. Thus the following
 are more general syntaxes for these blocks:
 
 * Delimited blocks
@@ -384,16 +384,16 @@ BLOCK DATA
 ```
 
 The configuration information is provided in a format akin to the
-["colon pair"](https://docs.perl6.org/language/glossary#index-entry-Colon_Pair)
-syntax in Raku Perl 6. The following table is a simplified version of the 
-different ways in which configuration info can be supplied. Please go to 
-<https://docs.perl6.org/language/pod#Configuration_information> for a more
+["colon pair"](https://docs.raku.org/language/glossary#index-entry-Colon_Pair)
+syntax in Raku. The following table is a simplified version of the
+different ways in which configuration info can be supplied. Please go to
+<https://docs.raku.org/language/pod#Configuration_information> for a more
 thorough treatment of the subject.
 
 | Value     | Specify with...             | Example                        |
 | :-------- | :------                     | :------                        |
-| List      | :key($elem1, $elem2, ...)   | :tags('Pod', 'Perl6')          |
-| Hash      | :key{$key1 => $value1, ...} | :feeds{url => 'perl6.org'}     |
+| List      | :key($elem1, $elem2, ...)   | :tags('Pod', 'Raku')          |
+| Hash      | :key{$key1 => $value1, ...} | :feeds{url => 'raku.org'}     |
 | Boolean   | :key/:key(True)             | :skip-test(True)               |
 | Boolean   | :!key/:key(False)           | :!skip-test                    |
 | String    | :key('string')              | :nonexec-reason('SyntaxError') |
@@ -450,7 +450,7 @@ we get the following output:
 </pre>
 
 This is highly dependent on the format output. For example, while this works
-when Pod is converted to HTML, it might not be preserved when converted 
+when Pod is converted to HTML, it might not be preserved when converted
 to Markdown.
 
 ### Block Pre-configuration
@@ -549,48 +549,48 @@ a Pod document, enclose them in a `E<>` code.
 For example:
 
 ```
-Raku Perl 6 makes considerable use of the E<171> and E<187> characters.
-Raku Perl 6 makes considerable use of the E<laquo> and E<raquo> characters.
+Raku makes considerable use of the E<171> and E<187> characters.
+Raku makes considerable use of the E<laquo> and E<raquo> characters.
 ```
 
 is rendered as:
 
-Raku Perl 6 makes considerable use of the « and » characters.
-Raku Perl 6 makes considerable use of the « and » characters.
+Raku makes considerable use of the « and » characters.
+Raku makes considerable use of the « and » characters.
 
 ## Rendering Pod
 
-To generate any output (i.e., Markdown, HTML, Text, etc.), you need to 
-have the Raku Perl 6 compiler installed. In addition, you must install 
+To generate any output (i.e., Markdown, HTML, Text, etc.), you need to
+have the Raku compiler installed. In addition, you must install
 a module (e.g., `Pod::To::Markdown`, `Pod::To::HTML`, `Pod::To::Text`, etc.)
 that generates your desired output from Pod.
 
-For instructions about installing Raku Perl 6,
-[look here](https://perl6.org/downloads/).
+For instructions about installing Raku,
+[look here](https://raku.org/downloads/).
 
 Run the following command to generate a certain output:
 
 ```
-perl6 --doc=TARGET input.pod6 > output.html
+raku --doc=TARGET input.pod6 > output.html
 ```
 
 with `TARGET` being `Markdown`, `HTML`, `Text`, etc. Thus to generate
 Markdown from Pod, run this:
 
 ```
-perl6 --doc=Markdown input.pod6 > output.html
+raku --doc=Markdown input.pod6 > output.html
 ```
 
 ## Accessing Pod
 
-In order to access Pod documentation from within a Raku Perl 6 program, 
+In order to access Pod documentation from within a Raku program,
 it is required to use the special `=` twigil (e.g., `$=pod`, `$=SYNOPSIS`,etc).
 
-The `$=` construct provides the introspection over the Pod structure, 
+The `$=` construct provides the introspection over the Pod structure,
 producing a `Pod::Block` tree root from which it is possible to access
 the whole structure of the Pod document.
 
-If we place the following piece of Raku Perl 6 code and the Pod documentation
+If we place the following piece of Raku code and the Pod documentation
 in the section [Semantic blocks](#semantic-blocks) in the same file:
 
 ```
@@ -615,8 +615,8 @@ AUTHOR
 DESCRIPTION
 ```
 
-## Additional Information 
+## Additional Information
 
-* <https://docs.perl6.org/language/pod> for the Pod documentation.
-* <https://docs.perl6.org/language/tables> for advices about Pod tables.
-* <https://design.perl6.org/S26.html> for the Pod specification.
+* <https://docs.raku.org/language/pod> for the Pod documentation.
+* <https://docs.raku.org/language/tables> for advices about Pod tables.
+* <https://design.raku.org/S26.html> for the Pod specification.

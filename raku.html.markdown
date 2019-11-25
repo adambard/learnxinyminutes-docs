@@ -1,16 +1,16 @@
 ---
 category: language
-language: perl6
-filename: learnperl6.p6
+language: raku
+filename: learnraku.raku
 contributors:
     - ["vendethiel", "http://github.com/vendethiel"]
     - ["Samantha McVey", "https://cry.nu"]
 ---
 
-Perl 6 is a highly capable, feature-rich programming language made for at
+Raku is a highly capable, feature-rich programming language made for at
 least the next hundred years.
 
-The primary Perl 6 compiler is called [Rakudo](http://rakudo.org), which runs on
+The primary Raku compiler is called [Rakudo](http://rakudo.org), which runs on
 the JVM and [the MoarVM](http://moarvm.com).
 
 Meta-note: double pound signs (`##`) are used to indicate paragraphs,
@@ -18,7 +18,7 @@ while single pound signs (`#`) indicate notes.
 
 `#=>` represents the output of a command.
 
-```perl6
+```raku
 # Single line comments start with a pound sign.
 
 #`( Multiline comments use #` and a quoting construct.
@@ -33,15 +33,15 @@ for #`(each element in) @array {
 
 ## Variables
 
-```perl6
-## In Perl 6, you declare a lexical variable using the `my` keyword:
+```raku
+## In Raku, you declare a lexical variable using the `my` keyword:
 my $variable;
-## Perl 6 has 3 basic types of variables: scalars, arrays, and hashes.
+## Raku has 3 basic types of variables: scalars, arrays, and hashes.
 ```
 
 ### Scalars
 
-```perl6
+```raku
 # Scalars represent a single value. They start with the `$` sigil:
 my $str = 'String';
 
@@ -52,7 +52,7 @@ my $str2 = "String";
 ## and can contain (and end with) underscores:
 my $person's-belongings = 'towel'; # this works!
 
-my $bool = True;             # `True` and `False` are Perl 6's boolean values.
+my $bool = True;             # `True` and `False` are Raku's boolean values.
 my $inverse = !$bool;        # Invert a bool with the prefix `!` operator.
 my $forced-bool = so $str;   # And you can use the prefix `so` operator
 $forced-bool = ?$str;        # to turn its operand into a Bool. Or use `?`.
@@ -60,7 +60,7 @@ $forced-bool = ?$str;        # to turn its operand into a Bool. Or use `?`.
 
 ### Arrays and Lists
 
-```perl6
+```raku
 ## Arrays represent multiple values. An array variable starts with the `@`
 ## sigil. Unlike lists, from which arrays inherit, arrays are mutable.
 
@@ -86,7 +86,7 @@ say @array;               #=> a 6 b
 
 ### Hashes, or key-value Pairs.
 
-```perl6
+```raku
 ## Hashes are pairs of keys and values. You can construct a `Pair` object
 ## using the syntax `Key => Value`. Hash tables are very fast for lookup,
 ## and are stored unordered. Keep in mind that keys get "flattened" in hash
@@ -98,7 +98,7 @@ my %hash = 'a' => 1, 'b' => 2;
 ;
 
 ## Even though hashes are internally stored differently than arrays,
-## Perl 6 allows you to easily create a hash from an even numbered array:
+## Raku allows you to easily create a hash from an even numbered array:
 %hash = <key1 value1 key2 value2>;          # Or:
 %hash = "key1", "value1", "key2", "value2";
 
@@ -116,12 +116,12 @@ my %hash = 'a' => 1, 'b' => 2;
 say %hash{'key1'};   # You can use {} to get the value from a key.
 say %hash<key2>;     # If it's a string without spaces, you can actually use
                      # <> (quote-words operator). `{key1}` doesn't work,
-                     # as Perl6 doesn't have barewords.
+                     # as raku doesn't have barewords.
 ```
 
 ## Subs
 
-```perl6
+```raku
 ## Subroutines, or functions as most other languages call them, are
 ## created with the `sub` keyword.
 sub say-hello { say "Hello, world" }
@@ -180,7 +180,7 @@ sub with-named( $normal-arg, :$named ) {
 }
 with-named(1, named => 6); #=> 7
 
-## There's one gotcha to be aware of, here: If you quote your key, Perl 6
+## There's one gotcha to be aware of, here: If you quote your key, Raku
 ## won't be able to see it at compile time, and you'll have a single `Pair`
 ## object as a positional parameter, which means
 ## `with-named(1, 'named' => 6);` fails.
@@ -239,8 +239,8 @@ concat3(|@array); #=> a, b, c
 
 ## Containers
 
-```perl6
-## In Perl 6, values are actually stored in "containers". The assignment
+```raku
+## In Raku, values are actually stored in "containers". The assignment
 ## operator asks the container on the left to store the value on its right.
 ## When passed around, containers are marked as immutable which means that,
 ## in a function, you'll get an error if you try to mutate one of your
@@ -276,7 +276,7 @@ mutate $v; # Parameter '$n' expected a writable container, but got Int value
 my $x = 42;
 sub x-store() is rw { $x }
 x-store() = 52; # in this case, the parentheses are mandatory
-                # (else Perl 6 thinks `x-store` is an identifier)
+                # (else Raku thinks `x-store` is an identifier)
 say $x;         #=> 52
 ```
 
@@ -284,7 +284,7 @@ say $x;         #=> 52
 
 ### Conditionals
 
-```perl6
+```raku
 ## - `if`
 ## Before talking about `if`, we need to know which values are "Truthy"
 ## (represent True), and which are "Falsey" (represent False). Only these
@@ -316,11 +316,11 @@ say $age > 18 ?? "You are an adult" !! "You are under 18";
 #=> You are an adult
 ```
 
-### given/when, or Perl 6's switch construct
+### given/when, or Raku's switch construct
 
-```perl6
+```raku
 ## `given...when` looks like other languages' `switch`, but is much more
-## powerful thanks to smart matching and Perl 6's "topic variable", $_.
+## powerful thanks to smart matching and Raku's "topic variable", $_.
 ##
 ## The topic variable $_ contains the default argument of a block, a loop's
 ## current iteration (unless explicitly named), etc.
@@ -328,7 +328,7 @@ say $age > 18 ?? "You are an adult" !! "You are under 18";
 ## `given` simply puts its argument into `$_` (like a block would do),
 ##  and `when` compares it using the "smart matching" (`~~`) operator.
 ##
-## Since other Perl 6 constructs use this variable (as said before, like `for`,
+## Since other Raku constructs use this variable (as said before, like `for`,
 ## blocks, etc), this means the powerful `when` is not only applicable along
 ## with a `given`, but instead anywhere a `$_` exists.
 
@@ -354,7 +354,7 @@ given "foo bar" {
 
 ### Looping constructs
 
-```perl6
+```raku
 ## - `loop` is an infinite loop if you don't pass it arguments, but can also
 ## be a C-style `for` loop:
 loop {
@@ -411,7 +411,7 @@ for @array {
 }
 
 ## The "pointy block" syntax isn't specific to the `for` loop. It's just a way
-## to express a block in Perl 6.
+## to express a block in Raku.
 sub long-computation { "Finding factors of large primes" }
 if long-computation() -> $result {
     say "The result is $result.";
@@ -420,8 +420,8 @@ if long-computation() -> $result {
 
 ## Operators
 
-```perl6
-## Since Perl languages are very much operator-based languages, Perl 6
+```raku
+## Since Perl languages are very much operator-based languages, Raku
 ## operators are actually just funny-looking subroutines, in syntactic
 ## categories, like infix:<+> (addition) or prefix:<!> (bool not).
 
@@ -499,7 +499,7 @@ say False ~~ True;  #=> True
 
 ## Range constructor
 ##------------------
-3 .. 7;          # 3 to 7, both included. 
+3 .. 7;          # 3 to 7, both included.
 3 ..^ 7;         # 3 to 7, exclude right endpoint.
 3 ^.. 7;         # 3 to 7, exclude left endpoint.
 3 ^..^ 7;        # 3 to 7, exclude both endpoints.
@@ -508,7 +508,7 @@ say False ~~ True;  #=> True
 3.5 ~~ 4 .. 7;	 # False
 3.5 ~~ 3 ^.. 7;	 # True, This Range also contains decimals greater than 3.
 		 # We describe it like this in some math books: 3.5 ∈ (3,7]
-		 # If you don’t want to understand the concept of interval 
+		 # If you don’t want to understand the concept of interval
 		 # for the time being. At least we should know：
 3 ^.. 7 ~~ 4 .. 7; # False
 
@@ -516,14 +516,14 @@ say False ~~ True;  #=> True
 ## This also works as a shortcut for `0..^N`:
 ^10;             # means 0..^10
 
-## This also allows us to demonstrate that Perl 6 has lazy/infinite arrays,
+## This also allows us to demonstrate that Raku has lazy/infinite arrays,
 ## using the Whatever Star:
 my @array = 1..*;  # 1 to Infinite! Equivalent to `1..Inf`.
 say @array[^10];   # You can pass ranges as subscripts and it'll return
                    # an array of results. This will print
                    # "1 2 3 4 5 6 7 8 9 10" (and not run out of memory!)
 
-## Note: when reading an infinite list, Perl 6 will "reify" the elements
+## Note: when reading an infinite list, Raku will "reify" the elements
 ## it needs, then keep them in memory. They won't be calculated more than once.
 ## It also will never calculate more elements that are needed.
 
@@ -578,15 +578,15 @@ $d mod= 4;      # return remainder and assignment. Equivalent to $d = $d mod 4;
 
 ## More on subs!
 
-```perl6
-## As we said before, Perl 6 has *really* powerful subs. We're going
+```raku
+## As we said before, Raku has *really* powerful subs. We're going
 ## to see a few more key concepts that make them better than in any
 ## other language :-).
 ```
 
 ### Unpacking!
 
-```perl6
+```raku
 ## Unpacking is the ability to "extract" arrays and keys
 ## (AKA "destructuring"). It'll work in `my`s and in parameter lists.
 my ($f, $g) = 1, 2;
@@ -662,7 +662,7 @@ my @list3 = list-of(3); #=> (0, 1, 2)
 
 ### lambdas (or anonymous subroutines)
 
-```perl6
+```raku
 ## You can create a lambda with `-> {}` ("pointy block") ,
 ## `{}` ("block") or `sub {}`.
 
@@ -736,8 +736,8 @@ map(sub ($a, $b) { $a + $b + 3 }, @array);
 
 ### About types...
 
-```perl6
-## Perl 6 is gradually typed. This means you can specify the type of your
+```raku
+## Raku is gradually typed. This means you can specify the type of your
 ## variables/arguments/return types, or you can omit the type annotations in
 ## in which case they'll default to `Any`. Obviously you get access to a few
 ## base types, like `Int` and `Str`. The constructs for declaring types are
@@ -754,8 +754,8 @@ subset WholeNumber of Int where * >= 0;
 
 ### Multiple Dispatch
 
-```perl6
-## Perl 6 can decide which variant of a `sub` to call based on the type of the
+```raku
+## Raku can decide which variant of a `sub` to call based on the type of the
 ## arguments, or on arbitrary preconditions, like with a type or `where`:
 
 ## with types:
@@ -807,8 +807,8 @@ multi with-or-without-you {
 
 ## Scoping
 
-```perl6
-## In Perl 6, unlike many scripting languages, (such as Python, Ruby, PHP),
+```raku
+## In Raku, unlike many scripting languages, (such as Python, Ruby, PHP),
 ## you must declare your variables before using them. The `my` declarator
 ## you have learned uses "lexical scoping". There are a few other declarators,
 ## (`our`, `state`, ..., ) which we'll see later. This is called
@@ -831,13 +831,13 @@ outer()();  #=> 'Foo Bar'
 
 ## Twigils
 
-```perl6
-## There are many special `twigils` (composed sigils) in Perl 6. Twigils
+```raku
+## There are many special `twigils` (composed sigils) in Raku. Twigils
 ## define the variables' scope.
 ## The * and ? twigils work on standard variables:
 ## * Dynamic variable
 ## ? Compile-time variable
-## The ! and the . twigils are used with Perl 6's objects:
+## The ! and the . twigils are used with Raku's objects:
 ## ! Attribute (instance attribute)
 ## . Method (not really a variable)
 
@@ -872,7 +872,7 @@ say_dyn();      #=> 1 100 We changed the value of $*dyn_scoped_2 in
 
 ## Object Model
 
-```perl6
+```raku
 ## To call a method on an object, add a dot followed by the method name:
 ## `$object.method`
 
@@ -884,13 +884,13 @@ say_dyn();      #=> 1 100 We changed the value of $*dyn_scoped_2 in
 ## method named after the attribute. In fact, declaring an attribute with `.`
 ## is equivalent to declaring the same attribute with `!` and then creating
 ## a read-only method with the attribute's name. However, this is done for us
-## by Perl 6 automatically. The easiest way to remember the `$.` twigil is
+## by Raku automatically. The easiest way to remember the `$.` twigil is
 ## by comparing it to how methods are called.
 
-## Perl 6's object model ("SixModel") is very flexible, and allows you to
+## Raku's object model ("SixModel") is very flexible, and allows you to
 ## dynamically add methods, change semantics, etc... Unfortunately, these will
 ## not all be covered here, and you should refer to:
-## https://docs.perl6.org/language/objects.html.
+## https://docs.raku.org/language/objects.html.
 
 class Human {
     has Str $.name;           # `$.name` is immutable but with an accessor method.
@@ -947,8 +947,8 @@ $person1.do-decoration; # This fails since the method `do-decoration` is
 
 ### Object Inheritance
 
-```perl6
-## Perl 6 also has inheritance (along with multiple inheritance). While
+```raku
+## Raku also has inheritance (along with multiple inheritance). While
 ## methods are inherited, submethods are not. Submethods are useful for
 ## object construction and destruction tasks, such as BUILD, or methods that
 ## must be overridden by subtypes. We will learn about BUILD later on.
@@ -992,7 +992,7 @@ $Madison.talk;            #=> "Goo goo ga ga", due to the overridden method.
 
 ### Roles, or Mixins
 
-```perl6
+```raku
 ## Roles are supported too (which are called Mixins in other languages)
 role PrintableVal {
   	has $!counter = 0;
@@ -1027,9 +1027,9 @@ class Item does PrintableVal {
 
 ## Exceptions
 
-```perl6
+```raku
 ## Exceptions are built on top of classes, in the package `X` (like `X::IO`).
-## In Perl6 exceptions are automatically 'thrown':
+## In raku exceptions are automatically 'thrown':
 open 'foo';   #=> Failed to open file foo: no such file or directory
 ## It will also print out what line the error was thrown at
 ## and other error info.
@@ -1040,7 +1040,7 @@ die 'Error!'; #=> Error!
 ## Or more explicitly:
 X::AdHoc.new(payload => 'Error!').throw; #=> Error!
 
-## In Perl 6, `orelse` is similar to the `or` operator, except it only matches
+## In Raku, `orelse` is similar to the `or` operator, except it only matches
 ## undefined variables instead of anything evaluating as `False`.
 ## Undefined values include: `Nil`, `Mu` and `Failure` as well as `Int`, `Str`
 ## and other types that have not been initialized to any value yet.
@@ -1064,7 +1064,7 @@ open 'foo' orelse say "Something happened $_"; #=> Something happened
 
 ### Using `try` and `CATCH`
 
-```perl6
+```raku
 ## By using `try` and `CATCH` you can contain and handle exceptions without
 ## disrupting the rest of the program. The `try` block will set the last
 ## exception to the special variable `$!` (known as the error variable).
@@ -1075,7 +1075,7 @@ say "Well, I tried! $!" if defined $!;
 #=> Well, I tried! Failed to open file foo: no such file or directory
 
 ## Now, what if we want more control over handling the exception?
-## Unlike many other languages, in Perl 6, you put the `CATCH` block *within*
+## Unlike many other languages, in Raku, you put the `CATCH` block *within*
 ## the block to `try`. Similar to how the `$_` variable was set when we
 ## 'disarmed' the exception with `orelse`, we also use `$_` in the CATCH block.
 ## Note: The `$!` variable is only set *after* the `try` block has caught an
@@ -1112,7 +1112,7 @@ try {
 }
 #=>Error: Failed to open file /dir/foo: no such file or directory
 
-## There are also some subtleties to exceptions. Some Perl 6 subs return a
+## There are also some subtleties to exceptions. Some Raku subs return a
 ## `Failure`, which is a wrapper around an `Exception` object which is
 ## "unthrown". They're not thrown until you try to use the variables containing
 ## them unless you call `.Bool`/`.defined` on them - then they're handled.
@@ -1138,7 +1138,7 @@ try {
 
 ## Packages
 
-```perl6
+```raku
 ## Packages are a way to reuse code. Packages are like "namespaces", and any
 ## element of the six model (`module`, `role`, `class`, `grammar`, `subset` and
 ## `enum`) are actually packages. (Packages are the lowest common denominator)
@@ -1178,8 +1178,8 @@ my $actions = JSON::Tiny::Actions.new;
 
 ## Declarators
 
-```perl6
-## In Perl 6, you get different behaviors based on how you declare a variable.
+```raku
+## In Raku, you get different behaviors based on how you declare a variable.
 ## You've already seen `my` and `has`, we'll now explore the others.
 
 ## `our` - these declarations happen at `INIT` time -- (see "Phasers" below).
@@ -1247,8 +1247,8 @@ for ^5 -> $a {
 
 ## Phasers
 
-```perl6
-## Phasers in Perl 6 are blocks that happen at determined points of time in
+```raku
+## Phasers in Raku are blocks that happen at determined points of time in
 ## your program. They are called phasers because they mark a change in the
 ## phase of a program.  For example, when the program is compiled, a for loop
 ## runs, you leave a block, or an exception gets thrown (The `CATCH` block is
@@ -1325,7 +1325,7 @@ sub do-db-stuff {
 
 ## Statement prefixes
 
-```perl6
+```raku
 ## Those act a bit like phasers: they affect the behavior of the following
 ## code. Though, they run in-line with the executable code, so they're in
 ## lowercase. (`try` and `start` are theoretically in that list, but explained
@@ -1375,7 +1375,7 @@ constant thrice = eager gather for ^3 { say take $_ }; #=> 0 1 2
 
 ## Iterables
 
-```perl6
+```raku
 ## Iterables are objects that can be iterated over which are
 ## are similar to the `for` construct.
 
@@ -1407,11 +1407,11 @@ quietly { warn 'This is a warning!' }; #=> No output
 
 ## More operators thingies!
 
-```perl6
+```raku
 ## Everybody loves operators! Let's get more of them.
 
 ## The precedence list can be found here:
-## https://docs.perl6.org/language/operators#Operator_Precedence
+## https://docs.raku.org/language/operators#Operator_Precedence
 ## But first, we need a little explanation about associativity:
 
 ## Binary operators:
@@ -1429,10 +1429,10 @@ $a ! $b ! $c; # with a list-associative `!`, this is `infix:<>`
 
 ### Create your own operators!
 
-```perl6
+```raku
 ## Okay, you've been reading all of that, so you might want to try something
 ## more exciting?! I'll tell you a little secret (or not-so-secret):
-## In Perl 6, all operators are actually just funny-looking subroutines.
+## In Raku, all operators are actually just funny-looking subroutines.
 
 ## You can declare an operator just like you declare a sub:
 # prefix refers to the operator categories (prefix, infix, postfix, etc).
@@ -1479,7 +1479,7 @@ sub postcircumfix:<{ }>( Str $s, Int $idx ) {
 say "abc"{1}; #=> b
               # after the term `"abc"`, and around the index (1)
 
-## This really means a lot -- because everything in Perl 6 uses this.
+## This really means a lot -- because everything in Raku uses this.
 ## For example, to delete a key from a hash, you use the `:delete` adverb
 ## (a simple named argument underneath):
 %h{$key}:delete;
@@ -1495,7 +1495,7 @@ postcircumfix:<{ }>( %h, $key, :delete ); # (you can call operators like this)
 
 ### Meta operators!
 
-```perl6
+```raku
 ## Oh boy, get ready!. Get ready, because we're delving deep into the rabbit's
 ## hole, and you probably won't want to go back to other languages after
 ## reading this. (I'm guessing you don't want to go back at this point but
@@ -1556,13 +1556,13 @@ say 1..3 Z+ 4..6;    #=> (5, 7, 9), using the custom infix:<+> function
 
 ## And to end the operator list:
 
-## The sequence operator is one of Perl 6's most powerful features:
-## it's composed of first, on the left, the list you want Perl 6 to deduce from
+## The sequence operator is one of Raku's most powerful features:
+## it's composed of first, on the left, the list you want Raku to deduce from
 ## (and might include a closure), and on the right, a value or the predicate
 ## that says when to stop (or a Whatever Star for a lazy infinite list).
 
 my @list = 1, 2, 3...10;     # basic arithmetic sequence
-# my @list = 1, 3, 6...10;   # this dies because Perl 6 can't figure out the end
+# my @list = 1, 3, 6...10;   # this dies because Raku can't figure out the end
 my @list = 1, 2, 3...^10;    # as with ranges, you can exclude the last element
                              # (the iteration ends when the predicate matches).
 my @list = 1, 3, 9...* > 30; # you can use a predicate (with the Whatever Star).
@@ -1586,9 +1586,9 @@ say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 
 ## Regular Expressions
 
-```perl6
+```raku
 ## I'm sure a lot of you have been waiting for this one. Well, now that you know
-## a good deal of Perl 6 already, we can get started. First off, you'll have to
+## a good deal of Raku already, we can get started. First off, you'll have to
 ## forget about "PCRE regexps" (perl-compatible regexps).
 ##
 ## IMPORTANT: Don't skip them because you know PCRE. They're different. Some
@@ -1596,13 +1596,13 @@ say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 ## change (`|`). Make sure you read carefully, because you might trip over a
 ## new behavior.
 ##
-## Perl 6 has many features related to RegExps. After all, Rakudo parses itself.
+## Raku has many features related to RegExps. After all, Rakudo parses itself.
 ## We're first going to look at the syntax itself, then talk about grammars
 ## (PEG-like), differences between `token`, `regex` and `rule` declarators,
 ## and some more. Side note: you still have access to PCRE regexps using the
 ## `:P5` modifier which we won't be discussing this in this tutorial, though.
 ##
-## In essence, Perl 6 natively implements PEG ("Parsing Expression Grammars").
+## In essence, Raku natively implements PEG ("Parsing Expression Grammars").
 ## The pecking order for ambiguous parses is determined by a multi-level
 ## tie-breaking test:
 ##  - Longest token matching: `foo\s+` beats `foo` (by 2 or more positions)
@@ -1624,7 +1624,7 @@ say so 'a' ~~ / a /; #=> True, more readable with some spaces!
 ## the regexp can be matched with just one character of the string. We'll
 ## explain later how you can do it.
 
-## In Perl 6, you can have any alphanumeric as a literal, everything else has
+## In Raku, you can have any alphanumeric as a literal, everything else has
 ## to be escaped by using a backslash or quotes.
 say so 'a|b' ~~ / a '|' b /; #=> `True`, it wouldn't mean the same thing if
                              # `|` wasn't escaped.
@@ -1635,7 +1635,7 @@ say so 'a|b' ~~ / a \| b /;  #=> `True`, another way to escape it.
 say so 'a b c' ~~ / a  b  c /; #=> `False`, space is not significant here!
 say so 'a b c' ~~ /:s a b c /; #=> `True`, we added the modifier `:s` here.
 
-## If we use only one space between strings in a regex, Perl 6 will warn us:
+## If we use only one space between strings in a regex, Raku will warn us:
 say so 'a b c' ~~ / a b c /;   #=> `False`, with warning about space
 say so 'a b c' ~~ / a  b  c /; #=> `False`
 
@@ -1696,7 +1696,7 @@ so 'abbbbbbc' ~~ / a  b**3..*  c /; #=> `True`, (infinite ranges are okay)
 
 ## `<[]>` - Character classes
 ## Character classes are the equivalent of PCRE's `[]` classes, but they use a
-## more perl6-ish syntax:
+## more raku-ish syntax:
 say 'fooa' ~~ / f <[ o a ]>+ /;  #=> 'fooa'
 
 ## You can use ranges:
@@ -1724,7 +1724,7 @@ so 'foo!' ~~ / <-[ a..z ] + [ f o ]> + /; #=> `True`, (the + doesn't replace the
 
 ### Grouping and capturing
 
-```perl6
+```raku
 ## Group: you can group parts of your regexp with `[]`. Unlike PCRE's `(?:)`,
 ## these groups are *not* captured.
 so 'abc' ~~ / a [ b ] c /;  # `True`. The grouping does pretty much nothing
@@ -1825,20 +1825,20 @@ say 'foo' ~~ / fo || foo /; #=> `fo` now.
 
 ## Extra: the MAIN subroutine
 
-```perl6
-## The `MAIN` subroutine is called when you run a Perl 6 file directly. It's
-## very powerful, because Perl 6 actually parses the arguments and pass them
+```raku
+## The `MAIN` subroutine is called when you run a Raku file directly. It's
+## very powerful, because Raku actually parses the arguments and pass them
 ## as such to the sub. It also handles named argument (`--foo`) and will even
 ## go as far as to autogenerate a `--help` flag.
 sub MAIN($name) {
     say "Hello, $name!";
 }
 ## This produces:
-## $ perl6 cli.pl
+## $ raku cli.pl
 ## Usage:
 ##  t.pl <name>
 
-## And since it's a regular Perl 6 sub, you can have multi-dispatch:
+## And since it's a regular Raku sub, you can have multi-dispatch:
 ## (using a "Bool" for the named argument so that we can do `--replace`
 ## instead of `--replace=1`. The presence of `--replace` indicates truthness
 ## while its absence falseness).
@@ -1850,7 +1850,7 @@ multi MAIN('remove', $key) { ... }
 multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
 
 ## This produces:
-## $ perl6 cli.pl
+## $ raku cli.pl
 ## Usage:
 ##   cli.p6 [--replace] add <key> <value>
 ##   cli.p6 remove <key>
@@ -1863,8 +1863,8 @@ multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
 ## APPENDIX A:
 ### List of things
 
-```perl6
-## It's assumed by now you know the Perl6 basics. This section is just here to
+```raku
+## It's assumed by now you know the raku basics. This section is just here to
 ## list some common operations, but which are not in the "main part" of the
 ## tutorial to avoid bloating it up.
 
@@ -1956,21 +1956,21 @@ for <a b c> {
 
 If you want to go further, you can:
 
- - Read the [Perl 6 Docs](https://docs.perl6.org/). This is a great
- resource on Perl6. If you are looking for something, use the search bar.
+ - Read the [Raku Docs](https://docs.raku.org/). This is a great
+ resource on raku. If you are looking for something, use the search bar.
  This will give you a dropdown menu of all the pages referencing your search
- term (Much better than using Google to find Perl 6 documents!).
- - Read the [Perl 6 Advent Calendar](http://perl6advent.wordpress.com/). This
- is a great source of Perl 6 snippets and explanations. If the docs don't
+ term (Much better than using Google to find Raku documents!).
+ - Read the [Raku Advent Calendar](http://rakuadvent.wordpress.com/). This
+ is a great source of Raku snippets and explanations. If the docs don't
  describe something well enough, you may find more detailed information here.
  This information may be a bit older but there are many great examples and
  explanations. Posts stopped at the end of 2015 when the language was declared
- stable and Perl 6.c was released.
- - Come along on `#perl6` at `irc.freenode.net`. The folks here are
+ stable and Raku.c was released.
+ - Come along on `#raku` at `irc.freenode.net`. The folks here are
  always helpful.
- - Check the [source of Perl 6's functions and
+ - Check the [source of Raku's functions and
  classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is
- mainly written in Perl 6 (with a lot of NQP, "Not Quite Perl", a Perl 6 subset
+ mainly written in Raku (with a lot of NQP, "Not Quite Perl", a Raku subset
  easier to implement and optimize).
- - Read [the language design documents](http://design.perl6.org). They explain
+ - Read [the language design documents](http://design.raku.org). They explain
  P6 from an implementor point-of-view, but it's still very interesting.
