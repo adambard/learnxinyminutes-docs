@@ -266,8 +266,8 @@ for (var x in person){
     description += person[x] + " ";
 } // description = 'Paul Ken 18 '
 
-// The for/of statement allows iteration over iterable objects (including the built-in String, 
-// Array, e.g. the Array-like arguments or NodeList objects, TypedArray, Map and Set, 
+// The for/of statement allows iteration over iterable objects (including the built-in String,
+// Array, e.g. the Array-like arguments or NodeList objects, TypedArray, Map and Set,
 // and user-defined iterables).
 var myPets = "";
 var pets = ["cat", "dog", "hamster", "hedgehog"];

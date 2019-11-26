@@ -6,8 +6,8 @@ contributors:
 ---
 
 The MIPS (Microprocessor without Interlocked Pipeline Stages) Assembly language
-is designed to work with the MIPS microprocessor paradigm designed by J. L. 
-Hennessy in 1981. These RISC processors are used in embedded systems such as 
+is designed to work with the MIPS microprocessor paradigm designed by J. L.
+Hennessy in 1981. These RISC processors are used in embedded systems such as
 gateways and routers.
 
 [Read More](https://en.wikipedia.org/wiki/MIPS_architecture)
@@ -29,7 +29,7 @@ gateways and routers.
 
   arr1: .word 1, 2, 3, 4, 5                 # Array of words
   arr2: .byte 'a', 'b'                      # Array of chars (1 byte each)
-  buffer: .space 60                         # Allocates space in the RAM 
+  buffer: .space 60                         # Allocates space in the RAM
                                             # (not cleared to 0)
 
   # Datatype sizes
@@ -39,9 +39,9 @@ gateways and routers.
   _float: .float 3.14                       # 4 bytes
   _double: .double 7.0                      # 8 bytes
 
-  .align 2                                  # Memory alignment of data, where 
+  .align 2                                  # Memory alignment of data, where
                                             # number indicates byte alignment in
-                                            # powers of 2. (.align 2 represents 
+                                            # powers of 2. (.align 2 represents
                                             # word alignment since 2^2 = 4 bytes)
 
 .text                                       # Section that contains instructions
@@ -63,27 +63,27 @@ gateways and routers.
                                             # the given argument ($a0)
 
     # Registers (used to hold data during program execution)
-    # $t0 - $t9                             # Temporary registers used for 
-                                            # intermediate calculations inside 
-                                            # subroutines (not saved across 
+    # $t0 - $t9                             # Temporary registers used for
+                                            # intermediate calculations inside
+                                            # subroutines (not saved across
                                             # function calls)
 
-    # $s0 - $s7                             # Saved registers where values are 
-                                            # saved across subroutine calls. 
+    # $s0 - $s7                             # Saved registers where values are
+                                            # saved across subroutine calls.
                                             # Typically saved in stack
 
-    # $a0 - $a3                             # Argument registers for passing in 
+    # $a0 - $a3                             # Argument registers for passing in
                                             # arguments for subroutines
-    # $v0 - $v1                             # Return registers for returning 
+    # $v0 - $v1                             # Return registers for returning
                                             # values to caller function
 
     # Types of load/store instructions
     la $t0, label                           # Copy the address of a value in
-                                            # memory specified by the label into 
+                                            # memory specified by the label into
                                             # register $t0
     lw $t0, label                           # Copy a word value from memory
     lw $t1, 4($s0)                          # Copy a word value from an address
-                                            # stored in a register with an offset 
+                                            # stored in a register with an offset
                                             # of 4 bytes (addr + 4)
     lb $t2, label                           # Copy a byte value to the lower order
                                             # portion of the register $t2
@@ -91,9 +91,9 @@ gateways and routers.
                                             # address in $s0 with offset 0
     # Same idea with 'lh' for halfwords
 
-    sw $t0, label                           # Store word value into memory address 
+    sw $t0, label                           # Store word value into memory address
                                             # mapped by label
-    sw $t0, 8($s0)                          # Store word value into address 
+    sw $t0, 8($s0)                          # Store word value into address
                                             # specified in $s0 and offset of 8 bytes
     # Same idea using 'sb' and 'sh' for bytes and halfwords. 'sa' does not exist
 
@@ -106,23 +106,23 @@ gateways and routers.
     add $t2, $t0, $t1                       # $t2 = $t0 + $t1
     sub $t2, $t0, $t1                       # $t2 = $t0 - $t1
     mul $t2, $t0, $t1                       # $t2 = $t0 * $t1
-    div $t2, $t0, $t1                       # $t2 = $t0 / $t1 (Might not be 
+    div $t2, $t0, $t1                       # $t2 = $t0 / $t1 (Might not be
                                             # supported in some versons of MARS)
     div $t0, $t1                            # Performs $t0 / $t1. Get the quotient
                                             # using 'mflo' and remainder using 'mfhi'
 
     # Bitwise Shifting
-    sll $t0, $t0, 2                         # Bitwise shift to the left with 
+    sll $t0, $t0, 2                         # Bitwise shift to the left with
                                             # immediate (constant value) of 2
     sllv $t0, $t1, $t2                      # Shift left by a variable amount in
                                             # register
-    srl $t0, $t0, 5                         # Bitwise shift to the right (does 
+    srl $t0, $t0, 5                         # Bitwise shift to the right (does
                                             # not sign preserve, sign-extends with 0)
     srlv $t0, $t1, $t2                      # Shift right by a variable amount in
                                             # a register
-    sra $t0, $t0, 7                         # Bitwise arithmetic shift to the right 
+    sra $t0, $t0, 7                         # Bitwise arithmetic shift to the right
                                             # (preserves sign)
-    srav $t0, $t1, $t2                      # Shift right by a variable amount 
+    srav $t0, $t1, $t2                      # Shift right by a variable amount
                                             # in a register
 
     # Bitwise operators
@@ -169,7 +169,7 @@ gateways and routers.
 
     L1:
       sub $s0, $s0, $s3 # f = f - i
-    
+
     # Below is an example of finding the max of 3 numbers
     # A direct translation in Java from MIPS logic:
     # if (a > b)
@@ -200,7 +200,7 @@ gateways and routers.
 
 ## LOOPS ##
   _loops:
-    # The basic structure of loops is having an exit condition and a jump 
+    # The basic structure of loops is having an exit condition and a jump
     instruction to continue its execution
     li $t0, 0
     while:
@@ -231,7 +231,7 @@ gateways and routers.
 
 ## FUNCTIONS ##
   _functions:
-    # Functions are callable procedures that can accept arguments and return 
+    # Functions are callable procedures that can accept arguments and return
     values all denoted with labels, like above
 
     main:                                 # Programs begin with main func
@@ -252,7 +252,7 @@ gateways and routers.
 
       li $v0, 10
       syscall
-    
+
     # This function returns 1
     return_1:
       li $v0, 1                           # Load val in return register $v0
@@ -311,10 +311,10 @@ gateways and routers.
       lw $a0, %num
       syscall
     .end_macro
-    
+
     li $t0, 1
     print_int($t0)
-    
+
     # We can also pass in immediates for macros
     .macro immediates(%a, %b)
       add $t0, %a, %b
@@ -358,7 +358,7 @@ gateways and routers.
   end_loop:
 
 ## INCLUDE ##
-# You do this to import external files into your program (behind the scenes, 
+# You do this to import external files into your program (behind the scenes,
 # it really just takes whatever code that is in that file and places it where
 # the include statement is)
 .include "somefile.asm"

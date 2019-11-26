@@ -8,7 +8,7 @@ contributors:
 
 # Lambda Calculus
 
-Lambda calculus (λ-calculus), originally created by 
+Lambda calculus (λ-calculus), originally created by
 [Alonzo Church](https://en.wikipedia.org/wiki/Alonzo_Church),
 is the world's smallest programming language.
 Despite not having numbers, strings, booleans, or any non-function datatype,
@@ -36,7 +36,7 @@ the body of the function and a parameter.
 
 ## Evaluation:
 
-Evaluation is done via 
+Evaluation is done via
 [β-Reduction](https://en.wikipedia.org/wiki/Lambda_calculus#Beta_reduction),
 which is essentially lexically-scoped substitution.
 
@@ -51,8 +51,8 @@ You can even create higher-order functions:
 
 - `(λx.(λy.x))a` evaluates to: `λy.a`
 
-Although lambda calculus traditionally supports only single parameter 
-functions, we can create multi-parameter functions using a technique called 
+Although lambda calculus traditionally supports only single parameter
+functions, we can create multi-parameter functions using a technique called
 [currying](https://en.wikipedia.org/wiki/Currying).
 
 - `(λx.λy.λz.xyz)` is equivalent to `f(x, y, z) = ((x y) z)`

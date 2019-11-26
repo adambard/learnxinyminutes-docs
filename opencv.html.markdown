@@ -7,8 +7,8 @@ contributors:
 ---
 ### Opencv
 
-OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real-time computer vision. 
-Originally developed by Intel, it was later supported by Willow Garage then Itseez (which was later acquired by Intel). 
+OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real-time computer vision.
+Originally developed by Intel, it was later supported by Willow Garage then Itseez (which was later acquired by Intel).
 Opencv currently supports wide variety of languages like, C++, Python, Java etc
 
 #### Installation
@@ -127,7 +127,7 @@ cv2.imshow('img',img)
 cv2.waitKey(0)
 
 cv2.destroyAllWindows()
-# destroyAllWindows() destroys all windows. 
+# destroyAllWindows() destroys all windows.
 # If you wish to destroy specific window pass the exact name of window you created.
 ```
 

@@ -116,8 +116,8 @@ C-e --> Move to the end of the line
 
 * Beginning and end of buffer
 
-M-< ("Meta+Shift+,") --> Go to the beginning of the buffer 
-M-> ("Meta+Shift+.") --> Go to the end of the buffer 
+M-< ("Meta+Shift+,") --> Go to the beginning of the buffer
+M-> ("Meta+Shift+.") --> Go to the end of the buffer
 
 * Screen movement
 
@@ -233,7 +233,7 @@ Obtaining help on specific topics. Tab completion is available for function and 
 C-h f RET --> Prompts you for the name of an elisp function and
               displays help text on it along with a clickable link
               to its source code.
-C-h v RET --> Same as above with variables  
+C-h v RET --> Same as above with variables
 
 C-h k RET --> Allows you to enter a key combination and displays the
               name of the elisp function bound to it.

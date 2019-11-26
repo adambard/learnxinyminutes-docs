@@ -10,7 +10,7 @@ ColdFusion is a scripting language for web development.
 [Read more here.](http://www.adobe.com/products/coldfusion-family.html)
 
 ### CFML
-_**C**old**F**usion **M**arkup **L**anguage_  
+_**C**old**F**usion **M**arkup **L**anguage_
 ColdFusion started as a tag-based language. Almost all functionality is available using tags.
 
 ```cfm
@@ -145,8 +145,8 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 		</cfcase>
 		<cfdefaultcase>
 			<p><cfoutput>#i#</cfoutput> is not 5, 15, 45, or 99.</p>
-		</cfdefaultcase> 
-	</cfswitch> 
+		</cfdefaultcase>
+	</cfswitch>
 </cfloop>
 
 <hr />
@@ -158,7 +158,7 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 		border: 1px solid #000000;
 		padding: 2px;
 	}
-	
+
 	table.table th {
 		background-color: #CCCCCC;
 	}
@@ -241,27 +241,27 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 	<cffunction name="sayHello">
 		<cfreturn this.hello & ", " & this.world & "!" />
 	</cffunction>
-	
+
 	<cffunction name="setHello">
 		<cfargument name="newHello" type="string" required="true" />
-		
+
 		<cfset this.hello = arguments.newHello />
-		 
+
 		<cfreturn true />
 	</cffunction>
-	
+
 	<cffunction name="setWorld">
 		<cfargument name="newWorld" type="string" required="true" />
-		
+
 		<cfset this.world = arguments.newWorld />
-		 
+
 		<cfreturn true />
 	</cffunction>
-	
+
 	<cffunction name="getHello">
 		<cfreturn this.hello />
 	</cffunction>
-	
+
 	<cffunction name="getWorld">
 		<cfreturn this.world />
 	</cffunction>
@@ -276,17 +276,17 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 
 <cffunction name="setHello">
 	<cfargument name="newHello" type="string" required="true" />
-	
+
 	<cfset this.hello = arguments.newHello />
-	 
+
 	<cfreturn true />
 </cffunction>
 
 <cffunction name="setWorld">
 	<cfargument name="newWorld" type="string" required="true" />
-	
+
 	<cfset this.world = arguments.newWorld />
-	 
+
 	<cfreturn true />
 </cffunction>
 
@@ -318,7 +318,7 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 ```
 
 ### CFScript
-_**C**old**F**usion **S**cript_  
+_**C**old**F**usion **S**cript_
 In recent years, the ColdFusion language has added script syntax to mirror tag functionality. When using an up-to-date CF server, almost all functionality is available using scrypt syntax.
 
 ## Further Reading

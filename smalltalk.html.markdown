@@ -19,13 +19,13 @@ Yes, everything. Integers are instances of one of the numeric classes. Classes a
 
 ### Functions are not called; messages are sent to objects
 - Work is done by sending messages to objects, which decide how to respond to that message and run a method as a result, which eventually returns some object to the original message sending code.
-- The system knows the class of the object receiving a message and looks up the message in that class's list of methods. If it is not found, the lookup continues in the super class until either it is found or the root of the classes is reached and there is still no relevant method. 
+- The system knows the class of the object receiving a message and looks up the message in that class's list of methods. If it is not found, the lookup continues in the super class until either it is found or the root of the classes is reached and there is still no relevant method.
 - If a suitable method is found the code is run, and the same process keeps on going with all the methods sent by that method and so on forever.
 - If no suitable method is found an exception is raised, which typically results in a user interface notifier to tell the user that the message was not understood. It is entirely possible to catch the exception and do something to fix the problem, which might range from 'ignore it' to 'load some new packages for this class and try again'.
 - A method (more strictly an instance of the class CompiledMethod) is a chunk of Smalltalk code that has been compiled into bytecodes. Executing methods start at the beginning and return to the sender when a return is encountered (we use ^ to signify 'return the follwing object') or the end of the code is reached, in which case the current object running the code is returned.
 
 ### Simple syntax
-Smalltalk has a simple syntax with very few rules. 
+Smalltalk has a simple syntax with very few rules.
 The most basic operation is to send a message to an object
 `anObject aMessage`
 
@@ -53,11 +53,11 @@ We find a proper exact match and start to execute the code
 doSomethingWith: argumentObject
 "A comment about what this code is meant to do and any known limitations, problems, where it might be further documented etc"
 self size > 4 ifTrue: [^argumentObject sizeRelatingTo: self].
-```   
+```
 
 Everything here except the `^` involves sending more messages. Event the `ifTrue:` that you might think is a language control structure is just Smalltalk code.
 
-We start by sending `size` to `self`. `self` is the object currently running the code - so in this case it is the myObject we started with. `size` is a very common message that we might anticipate tells us something about how big an object is; you could look it up with the Smalltalk tools very simply. The result we get is then sent the message `>` with the plain old integer 4 (which is an object too; no strange primitive types to pollute the system here) and nobody should be surprised the `>` is a comparison that answers true or false. That boolean (which is actually a Boolean object in Smalltalk) is sent the message `ifTrue:` with the block of code between the `[]` as its argument; obvioulsy a true boolean might be expected to run that block of code and a false to ignore it. 
+We start by sending `size` to `self`. `self` is the object currently running the code - so in this case it is the myObject we started with. `size` is a very common message that we might anticipate tells us something about how big an object is; you could look it up with the Smalltalk tools very simply. The result we get is then sent the message `>` with the plain old integer 4 (which is an object too; no strange primitive types to pollute the system here) and nobody should be surprised the `>` is a comparison that answers true or false. That boolean (which is actually a Boolean object in Smalltalk) is sent the message `ifTrue:` with the block of code between the `[]` as its argument; obvioulsy a true boolean might be expected to run that block of code and a false to ignore it.
 
 If the block is run then we do some more message sending to the argument object and noting the `^` we return the answer back to our starting point and it gets assigned to `result`. If the block is ignored we seem to run out of code and so `self` is returned and assigned to `result`.
 
@@ -83,7 +83,7 @@ Taken from [Smalltalk Cheatsheet](http://www.angelfire.com/tx4/cus/notes/smallta
 - Method Temporary: local to a method
 - Block Temporary: local to a block
 - Pool: variables in a Dictionary object, possibly shared with classes not directly related by inheritance
-- Method Parameters: automatic method temp vars that name the incoming parameters. Cannot be assigned to 
+- Method Parameters: automatic method temp vars that name the incoming parameters. Cannot be assigned to
 - Block Parameters: automatic block temp vars that name the incoming parameters. Cannot be assigned to
 - Class: shared with all instances of a class & its subclasses
 - Class Instance: unique to each instance of a class. Too commonly confused with class variables
@@ -325,12 +325,12 @@ x > 10 ifTrue: [Transcript show: 'ifTrue'; cr].     "if then"
 x > 10 ifFalse: [Transcript show: 'ifFalse'; cr].   "if else"
 
 "if then else"
-x > 10                                                      
+x > 10
    ifTrue: [Transcript show: 'ifTrue'; cr]
    ifFalse: [Transcript show: 'ifFalse'; cr].
 
 "if else then"
-x > 10                                                      
+x > 10
    ifFalse: [Transcript show: 'ifFalse'; cr]
    ifTrue: [Transcript show: 'ifTrue'; cr].
 Transcript
@@ -341,7 +341,7 @@ Transcript
    cr.
 
 "nested if then else"
-Transcript                                                  
+Transcript
    show:
       (x > 10
          ifTrue: [x > 5
@@ -351,7 +351,7 @@ Transcript
    cr.
 
 "switch functionality"
-switch := Dictionary new.     
+switch := Dictionary new.
 switch at: $A put: [Transcript show: 'Case A'; cr].
 switch at: $B put: [Transcript show: 'Case B'; cr].
 switch at: $C put: [Transcript show: 'Case C'; cr].
@@ -471,7 +471,7 @@ y := x reject: [:a | a < 2].                     "return collection of elements 
 y := x collect: [:a | a + a].                    "transform each element for new collection"
 y := x detect: [:a | a > 3] ifNone: [].          "find position of first element that passes test"
 sum := 0. x do: [:a | sum := sum + a]. sum.      "sum array elements"
-sum := 0. 1 to: (x size) 
+sum := 0. 1 to: (x size)
             do: [:a | sum := sum + (x at: a)].   "sum array elements"
 sum := x inject: 0 into: [:a :c | a + c].        "sum array elements"
 max := x inject: 0 into: [:a :c | (a > c)        "find max element in array"
@@ -492,7 +492,7 @@ acts like an expandable array
 
 ```
 | b x y sum max |
-x := OrderedCollection 
+x := OrderedCollection
      with: 4 with: 3 with: 2 with: 1.            "create collection with up to 4 elements"
 x := OrderedCollection new.                      "allocate collection"
 x add: 3; add: 2; add: 1; add: 4; yourself.      "add element to collection"
@@ -520,7 +520,7 @@ y := x reject: [:a | a < 2].                     "return collection of elements 
 y := x collect: [:a | a + a].                    "transform each element for new collection"
 y := x detect: [:a | a > 3] ifNone: [].          "find position of first element that passes test"
 sum := 0. x do: [:a | sum := sum + a]. sum.      "sum elements"
-sum := 0. 1 to: (x size) 
+sum := 0. 1 to: (x size)
             do: [:a | sum := sum + (x at: a)].   "sum elements"
 sum := x inject: 0 into: [:a :c | a + c].        "sum elements"
 max := x inject: 0 into: [:a :c | (a > c)        "find max element in collection"
@@ -539,7 +539,7 @@ like OrderedCollection except order of elements determined by sorting criteria
 
 ```
 | b x y sum max |
-x := SortedCollection 
+x := SortedCollection
      with: 4 with: 3 with: 2 with: 1.              "create collection with up to 4 elements"
 x := SortedCollection new.                         "allocate collection"
 x := SortedCollection sortBlock: [:a :c | a > c].  "set sort criteria"
@@ -567,7 +567,7 @@ y := x reject: [:a | a < 2].                       "return collection of element
 y := x collect: [:a | a + a].                      "transform each element for new collection"
 y := x detect: [:a | a > 3] ifNone: [].            "find position of first element that passes test"
 sum := 0. x do: [:a | sum := sum + a]. sum.        "sum elements"
-sum := 0. 1 to: (x size) 
+sum := 0. 1 to: (x size)
             do: [:a | sum := sum + (x at: a)].     "sum elements"
 sum := x inject: 0 into: [:a :c | a + c].          "sum elements"
 max := x inject: 0 into: [:a :c | (a > c)          "find max element in collection"
@@ -665,7 +665,7 @@ y := x reject: [:a | a < 2].                      "return collection of elements
 y := x collect: [:a | a + a].                     "transform each element for new collection"
 y := x detect: [:a | a > 3] ifNone: [].           "find position of first element that passes test"
 sum := 0. x do: [:a | sum := sum + a]. sum.       "sum elements"
-sum := 0. 1 to: (x size) 
+sum := 0. 1 to: (x size)
             do: [:a | sum := sum + (x at: a)].    "sum elements"
 sum := x inject: 0 into: [:a :c | a + c].         "sum elements"
 max := x inject: 0 into: [:a :c | (a > c)         "find max element in collection"
@@ -693,9 +693,9 @@ uses identity test (== rather than =)
 ```
 | b x y |
 x := Dictionary new.                   "allocate collection"
-x add: #a->4; 
-  add: #b->3; 
-  add: #c->1; 
+x add: #a->4;
+  add: #b->3;
+  add: #c->1;
   add: #d->2; yourself.                "add element to collection"
 x at: #e put: 3.                       "set element at index"
 b := x isEmpty.                        "test if empty"
@@ -907,7 +907,7 @@ myPen go: 50.                                "move pen specified number of pixel
 myPen location.                              "get the pen position"
 myPen goto: 200@200.                         "move to specified point"
 myPen place: 250@250.                        "move to specified point without drawing"
-myPen print: 'Hello World' 
+myPen print: 'Hello World'
       withFont: (TextStyle default fontAt: 1).
 Display extent.                              "get display width@height"
 Display width.                               "get display width"
@@ -945,10 +945,10 @@ argument2 := 20.
 result := receiver
    perform: (keyword1, keyword2) asSymbol
    withArguments: (Array with: argument1 with: argument2).
-   
+
 result := Compiler evaluate:
    ((receiver storeString), ' ', keyword1, (argument1 storeString) , ' ', keyword2, (argument2 storeString)).
-   
+
 result := (Message
    new
       setSelector: (keyword1, keyword2) asSymbol

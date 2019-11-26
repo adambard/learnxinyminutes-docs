@@ -6,8 +6,8 @@ contributors:
   - ["Pratik Karki", "https://github.com/prertik"]
 ---
 
-Lisp Flavoured Erlang(LFE) is a functional, concurrent, general-purpose programming 
-language and Lisp dialect(Lisp-2) built on top of Core Erlang and the Erlang Virtual Machine(BEAM). 
+Lisp Flavoured Erlang(LFE) is a functional, concurrent, general-purpose programming
+language and Lisp dialect(Lisp-2) built on top of Core Erlang and the Erlang Virtual Machine(BEAM).
 
 LFE can be obtained from [LFE](https://github.com/rvirding/lfe)
 
@@ -56,7 +56,7 @@ t  ; another atom which denotes true.
 ;; Libraries can be used directly from the Erlang ecosystem. Rebar3 is the build tool.
 
 ;; LFE is usually developed with a text editor(preferably Emacs) and a REPL
-;; (Read Evaluate Print Loop) running at the same time. The REPL 
+;; (Read Evaluate Print Loop) running at the same time. The REPL
 ;; allows for interactive exploration of the program as it is "live"
 ;; in the system.
 
@@ -77,7 +77,7 @@ t  ; another atom which denotes true.
 #\x1f42d;	        ;Character notation with the value in hexadecimal
 
 ;;; Floating point numbers
-1.0 +2.0 -1.5 1.0e10 1.111e-10     
+1.0 +2.0 -1.5 1.0e10 1.111e-10
 
 ;;; Strings
 
@@ -86,7 +86,7 @@ t  ; another atom which denotes true.
 "Cat: \x1f639;" ; writing unicode in string for regular font ending with semicolon.
 
 #"This is a binary string \n with some \"escaped\" and quoted (\x1f639;) characters"
-; Binary strings are just strings but function different in the VM. 
+; Binary strings are just strings but function different in the VM.
 ; Other ways of writing it are:  #B("a"), #"a", and #B(97).
 
 
@@ -115,7 +115,7 @@ t  ; another atom which denotes true.
 ;;; Symbols: Things that cannot be parsed. Eg: foo, Foo, foo-bar, :foo
 | foo | ; explicit construction of symbol by wrapping vertical bars.
 
-;;; Evaluation 
+;;; Evaluation
 
 ;; #.(... some expression ...). E.g. '#.(+ 1 1) will evaluate the (+ 1 1) while it            ;; reads the expression and then be effectively '2.
 
@@ -190,8 +190,8 @@ lfe> (list-comp
 ;; 3. Macros
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Macros are part of the language to allow you to create abstractions 
-;; on top of the core language and standard library that move you closer 
+;; Macros are part of the language to allow you to create abstractions
+;; on top of the core language and standard library that move you closer
 ;; toward being able to directly express the things you want to express.
 
 ;; Top-level function
@@ -216,7 +216,7 @@ lfe> (list-comp
   ((argpat ...) ...)
   ...)
 
-;; Top-level macro using Scheme inspired syntax-rules format 
+;; Top-level macro using Scheme inspired syntax-rules format
 
 (defsyntax name
   (pat exp)
@@ -227,7 +227,7 @@ lfe> (list-comp
 (macrolet ((name (arg ... ) ... )
             ... )
     ... )
-    
+
 (syntaxlet ((name (pat exp) ...)
              ...)
  ...)
@@ -259,9 +259,9 @@ lfe> (list-comp
 ;; [P|Ps]=All                    (= (cons p ps) all)
 
   _    ; => is don't care while pattern matching
-  
+
   (= pattern1 pattern2)     ; => easier, better version of pattern matching
-  
+
 ;; Guards
 
 ;; Whenever pattern occurs(let, case, receive, lc, etc) it can be followed by an optional
@@ -317,19 +317,19 @@ lfe>msg
 ;; Functions are bound by top-level defun, flet and fletrec.
 ;; Macros are bound by top-level defmacro/defsyntax and by macrolet/syntaxlet.
 
-;; (funcall func arg ...) like CL to call lambdas/match-lambdas 
+;; (funcall func arg ...) like CL to call lambdas/match-lambdas
 ;; (funs) bound to variables are used.
 
 ;; separate bindings and special for apply.
-apply _F (...), 
+apply _F (...),
 apply _F/3 ( a1, a2, a3 )
-    
+
 ;; Cons'ing in function heads
 (defun sum (l) (sum l 0))
   (defun sum
     (('() total) total)
     (((cons h t) total) (sum t (+ h total))))
-    
+
 ;; ``cons`` literal instead of constructor form
       (defun sum (l) (sum l 0))
       (defun sum
@@ -350,7 +350,7 @@ apply _F/3 ( a1, a2, a3 )
         (receive
           ((tuple 'become func)
            (funcall func))))
-           
+
 ;; another way for receiving messages
 
  (defun universal-server ()
@@ -393,7 +393,7 @@ apply _F/3 ( a1, a2, a3 )
 (defun send-message (calling-pid msg)
   (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
     (! spawned-pid (tuple calling-pid msg))))
-    
+
 ;; Multiple simultaneous HTTP Requests:
 
 (defun parse-args (flag)

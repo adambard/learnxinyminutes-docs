@@ -179,7 +179,7 @@ selector {
     border-style:solid;
     border-color:red;      /* similar to how background-color is set */
     border: 5px solid red; /* this is a short hand approach for the same */
-    border-radius:20px;    /* this is a CSS3 property */    
+    border-radius:20px;    /* this is a CSS3 property */
 
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */

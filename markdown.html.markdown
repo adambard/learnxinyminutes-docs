@@ -7,8 +7,8 @@ filename: markdown.md
 ---
 
 
-Markdown was created by John Gruber in 2004. It's meant to be an easy to read 
-and write syntax which converts easily to HTML (and now many other formats as 
+Markdown was created by John Gruber in 2004. It's meant to be an easy to read
+and write syntax which converts easily to HTML (and now many other formats as
 well).
 
 Markdown also varies in implementation from one parser to a next. This
@@ -30,9 +30,9 @@ specific to a certain parser.
 Markdown is a superset of HTML, so any HTML file is valid Markdown.
 
 ```md
-<!--This means we can use HTML elements in Markdown, such as the comment 
-element, and they won't be affected by a markdown parser. However, if you 
-create an HTML element in your markdown file, you cannot use markdown syntax 
+<!--This means we can use HTML elements in Markdown, such as the comment
+element, and they won't be affected by a markdown parser. However, if you
+create an HTML element in your markdown file, you cannot use markdown syntax
 within that element's contents.-->
 ```
 
@@ -217,7 +217,7 @@ highlighting of the language you specify after the \`\`\`
 
 ## Horizontal rule
 
-Horizontal rules (`<hr/>`) are easily added with three or more asterisks or 
+Horizontal rules (`<hr/>`) are easily added with three or more asterisks or
 hyphens, with or without spaces.
 
 ```md
@@ -301,7 +301,7 @@ in italics, so I do this: \*this text surrounded by asterisks\*.
 
 ### Keyboard keys
 
-In GitHub Flavored Markdown, you can use a `<kbd>` tag to represent keyboard 
+In GitHub Flavored Markdown, you can use a `<kbd>` tag to represent keyboard
 keys.
 
 ```md

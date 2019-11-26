@@ -15,10 +15,10 @@ then download MontiLang or build from source code with the instructions provided
 /# Monti Reference sheet #/
 /#
 Comments are multiline
-Nested comments are not supported 
+Nested comments are not supported
 #/
 /# Whitespace is all arbitrary, indentation is optional #/
-/# All programming in Monti is done by manipulating the parameter stack 
+/# All programming in Monti is done by manipulating the parameter stack
 arithmetic and stack operations in MontiLang are similar to FORTH
 https://en.wikipedia.org/wiki/Forth_(programming_language)
 #/
@@ -35,7 +35,7 @@ similarly to floats, but anything without a remainder is treated as type int #/
 /#  5 and 3 are pushed onto the stack
     '+' replaces top 2 items on stack with sum of top 2 items
     'PRINT' prints out the top item on the stack
-    '.' pops the top item from the stack. 
+    '.' pops the top item from the stack.
     #/
 
 6 7 * PRINT . /# 42 #/
@@ -70,7 +70,7 @@ similarly to floats, but anything without a remainder is treated as type int #/
 
 /# strings are defined with | | #/
 
-|Hello World!| VAR world . /# sets variable 'world' equal to string 'Hello world! #/ 
+|Hello World!| VAR world . /# sets variable 'world' equal to string 'Hello world! #/
 
 /# variables can be called by typing its name. when called, the value of the variable is pushed
 to the top of the stack #/
@@ -84,10 +84,10 @@ world PRINT .
 |5| TOINT PSTACK . /# [5] #/
 45 TOSTR PSTACK . /# ['45'] #/
 
-/# User input is taken with INPUT and pushed to the stack. If the top item of the stack is a string, 
+/# User input is taken with INPUT and pushed to the stack. If the top item of the stack is a string,
 the string is used as an input prompt #/
 
-|What is your name? | INPUT NIP 
+|What is your name? | INPUT NIP
 |Hello, | OUT SWAP PRINT CLEAR
 
 
@@ -106,7 +106,7 @@ ENDFOR
 #/
 10 var loop .
 WHILE loop
-    loop print 
+    loop print
     1 - var loop
 ENDWHILE
 /#
@@ -130,7 +130,7 @@ ENDFOR
 
 /# this could be used #/
 7
-FOR : 
+FOR :
     |hello| PRINT .
 ENDFOR
 
@@ -173,11 +173,11 @@ printseven
 /# must have & on either side with no spaces, 'DEFINE' is case sensative. #/
 /# All statements are scanned and replaced before the program is run, regardless of where the statements are placed #/
 
-FOR LOOPSTR 7 PRINT . ENDFOR /# Prints '7' 20 times. At run, 'LOOPSTR' in source code is replaced with '20' #/ 
+FOR LOOPSTR 7 PRINT . ENDFOR /# Prints '7' 20 times. At run, 'LOOPSTR' in source code is replaced with '20' #/
 
 /# Multiple files can be used with the &INCLUDE <filename>& Command that operates similar to c++, where the file specified is tokenized,
    and the &INCLUDE statement is replaced with the file #/
-   
+
 /# E.G, you can have a program be run through several files. If you had the file 'name.mt' with the following data:
 
 [name.mt]
@@ -215,7 +215,7 @@ This can be used on arrays, as well as strings. #/
 list PRINT . /# [5, 6, 7] #/
 
 /# Values at specific indexes can be changed with the statement 'INSERT <index>' #/
-4 5 6 ARR 
+4 5 6 ARR
 97 INSERT 1 . PRINT /# 4, 97, 6 #/
 
 /# Values at specific indexes can be deleted with the statement 'DEL <index>' #/

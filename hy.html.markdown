@@ -97,7 +97,7 @@ True ; => True
   (print "And it also has:" props))
 
 (something-fancy "My horse" "amazing" :mane "spectacular")
-  
+
 ; you use apply instead of the splat operators:
 (apply something-fancy ["My horse" "amazing"] { "mane" "spectacular" })
 

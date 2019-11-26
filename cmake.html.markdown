@@ -16,7 +16,7 @@ command) and the ease-of-use on linking 3rd party libraries.
 CMake is an extensible, open-source system that manages the build process in
 an operating system and compiler-independent manner. Unlike many
 cross-platform systems, CMake is designed to be used in conjunction with the
-native build environment. Simple configuration files placed in each source 
+native build environment. Simple configuration files placed in each source
 directory (called CMakeLists.txt files) are used to generate standard build
 files (e.g., makefiles on Unix and projects/workspaces in Windows MSVC) which
 are used in the usual way.
@@ -28,7 +28,7 @@ are used in the usual way.
 #  - mkdir build && cd build
 #  - cmake ..
 #  - make
-# 
+#
 # With those steps, we will follow the best practice to compile into a subdir
 # and the second line will request to CMake to generate a new OS-dependent
 # Makefile. Finally, run the native Make command.
@@ -139,7 +139,7 @@ ${variable_name}
 
 # Lists
 # Setup the list of source files
-set( LEARN_CMAKE_SOURCES 
+set( LEARN_CMAKE_SOURCES
   src/main.c
   src/imagem.c
   src/pather.c
@@ -147,7 +147,7 @@ set( LEARN_CMAKE_SOURCES
 
 # Calls the compiler
 #
-# ${PROJECT_NAME} refers to Learn_CMake 
+# ${PROJECT_NAME} refers to Learn_CMake
 add_executable( ${PROJECT_NAME} ${LEARN_CMAKE_SOURCES} )
 
 # Link the libraries

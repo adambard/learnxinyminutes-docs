@@ -499,7 +499,7 @@ say False ~~ True;  #=> True
 
 ## Range constructor
 ##------------------
-3 .. 7;          # 3 to 7, both included. 
+3 .. 7;          # 3 to 7, both included.
 3 ..^ 7;         # 3 to 7, exclude right endpoint.
 3 ^.. 7;         # 3 to 7, exclude left endpoint.
 3 ^..^ 7;        # 3 to 7, exclude both endpoints.
@@ -508,7 +508,7 @@ say False ~~ True;  #=> True
 3.5 ~~ 4 .. 7;	 # False
 3.5 ~~ 3 ^.. 7;	 # True, This Range also contains decimals greater than 3.
 		 # We describe it like this in some math books: 3.5 ∈ (3,7]
-		 # If you don’t want to understand the concept of interval 
+		 # If you don’t want to understand the concept of interval
 		 # for the time being. At least we should know：
 3 ^.. 7 ~~ 4 .. 7; # False
 

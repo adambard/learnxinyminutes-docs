@@ -559,7 +559,7 @@ Point& Point::operator+=(const Point& rhs)
 {
     x += rhs.x;
     y += rhs.y;
-    
+
     // `this` is a pointer to the object, on which a method is called.
     return *this;
 }
@@ -820,7 +820,7 @@ void doSomethingWithAFile(const std::string& filename)
 
 // Generally a smart pointer is a class which wraps a "raw pointer" (usage of "new"
 // respectively malloc/calloc in C). The goal is to be able to
-// manage the lifetime of the object being pointed to without ever needing to explicitly delete 
+// manage the lifetime of the object being pointed to without ever needing to explicitly delete
 // the object. The term itself simply describes a set of pointers with the
 // mentioned abstraction.
 // Smart pointers should preferred over raw pointers, to prevent
@@ -852,7 +852,7 @@ std::shared_ptr<Dog> doggo_two(new Dog());
 doggo_one = doggo_two; // p1 references p2
 doggo_two = doggo_one; // p2 references p1
 
-// There are several kinds of smart pointers. 
+// There are several kinds of smart pointers.
 // The way you have to use them is always the same.
 // This leads us to the question: when should we use each kind of smart pointer?
 // std::unique_ptr - use it when you just want to hold one reference to
