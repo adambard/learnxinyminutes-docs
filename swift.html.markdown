@@ -904,7 +904,7 @@ func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
     }
     return nil
 }
-findIndex(array: [1, 2, 3, 4], valueToFind: 3) // 2
+findIndex(array: [1, 2, 3, 4], valueToFind: 3) // Optional(2)
 
 // You can extend types with generics as well
 extension Array where Array.Element == Int {
