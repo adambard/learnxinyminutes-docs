@@ -394,6 +394,9 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 2 in filled_set   # => True
 10 in filled_set  # => False
 
+# Make a one layer deep copy
+filled_set = some_set.copy()  # filled_set is {1, 2, 3, 4, 5}
+filled_set is some_set        # => False
 
 
 ####################################################
