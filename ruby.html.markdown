@@ -410,7 +410,7 @@ def guests(&block)
 end
 
 # The 'call' method on the Proc is similar to calling 'yield' when a block is 
-# present. The arguments passed to 'call' will be forwarded to the block as arugments.
+# present. The arguments passed to 'call' will be forwarded to the block as arguments.
 
 guests { |n| "You have #{n} guests." }
 # => "You have 4 guests."
