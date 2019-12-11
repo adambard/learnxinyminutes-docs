@@ -653,10 +653,10 @@ on a new line! ""Wow!"", the masses cried";
             return ++count;
         }
 
-        // A delegate is a reference to a method
+        // A delegate is a reference to a method.
         // To reference the Increment method,
-        // first declare a delegate with the same signature
-        // ie. takes no arguments and returns an int
+        // first declare a delegate with the same signature,
+        // i.e. takes no arguments and returns an int
         public delegate int IncrementDelegate();
 
         // An event can also be used to trigger delegates
