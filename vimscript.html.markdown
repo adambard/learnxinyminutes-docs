@@ -40,7 +40,7 @@ pwd                   " Displays the current working directory
 
 " Except for some commands it does not; use the command delemiter before the
 " comment (echo assumes that the quotation mark begins a string)
-echo 'Hello world!'  |" Displays a message
+echo 'Hello world!'  | " Displays a message
 
 " Line breaks can be escaped by pacing a backslash as the first non-whitespace
 " character on the *following* line. Only works in script files, not on the
@@ -67,23 +67,23 @@ echo {
 " Numbers (|expr-number|)
 " #######
 
-echo  123         |" Decimal
-echo  0b1111011   |" Binary
-echo  0173        |" Octal
-echo  0x7B        |" Hexadecimal
-echo  123.0       |" Floating-point
-echo  1.23e2      |" Floating-point (scientific notation)
+echo  123         | " Decimal
+echo  0b1111011   | " Binary
+echo  0173        | " Octal
+echo  0x7B        | " Hexadecimal
+echo  123.0       | " Floating-point
+echo  1.23e2      | " Floating-point (scientific notation)
 
 " Note that an *integer* number with a leading `0` is in octal notation. The
 " usual arithmetic operations are supported.
 
-echo  1 + 2       |" Addition
-echo  1 - 2       |" Subtraction
-echo  - 1         |" Negation (unary minus)
-echo  + 1         |" Unary plus (does nothing really, but still legal)
-echo  1 * 2       |" Multiplication
-echo  1 / 2       |" Division
-echo  1 % 2       |" Modulo (remainder)
+echo  1 + 2       | " Addition
+echo  1 - 2       | " Subtraction
+echo  - 1         | " Negation (unary minus)
+echo  + 1         | " Unary plus (does nothing really, but still legal)
+echo  1 * 2       | " Multiplication
+echo  1 / 2       | " Division
+echo  1 % 2       | " Modulo (remainder)
 
 " Booleans (|Boolean|)
 " ########
@@ -92,19 +92,19 @@ echo  1 % 2       |" Modulo (remainder)
 " converted to numbers (see below). There are two pre-defined semantic
 " constants.
 
-echo  v:true      |" Evaluates to 1 or the string 'v:true'
-echo  v:false     |" Evaluates to 0 or the string 'v:false'
+echo  v:true      | " Evaluates to 1 or the string 'v:true'
+echo  v:false     | " Evaluates to 0 or the string 'v:false'
 
 " Boolean values can result from comparison of two objects.
 
-echo  x == y             |" Equality by value
-echo  x != y             |" Unequality
-echo  x >  y             |" Greater than
-echo  x >= y             |" Greater than or equal
-echo  x <  y             |" Smaller than
-echo  x <= y             |" Smaller than or equal
-echo  x is y             |" Instance identity (lists and dictionaries)
-echo  x isnot y          |" Instance non-identity (lists and dictionaries)
+echo  x == y             | " Equality by value
+echo  x != y             | " Unequality
+echo  x >  y             | " Greater than
+echo  x >= y             | " Greater than or equal
+echo  x <  y             | " Smaller than
+echo  x <= y             | " Smaller than or equal
+echo  x is y             | " Instance identity (lists and dictionaries)
+echo  x isnot y          | " Instance non-identity (lists and dictionaries)
 
 " Strings are compared based on their alphanumerical ordering
 " echo 'a' < 'b'. Case sensitivity depends on the setting of 'ignorecase'
@@ -118,19 +118,19 @@ echo  'a' <? 'B'         | " True
 echo  'a' <# 'B'         | " False
 
 " Regular expression matching
-echo  "hi" =~  "hello"    |" Regular expression match, uses 'ignorecase'
-echo  "hi" =~# "hello"    |" Regular expression match, case sensitive
-echo  "hi" =~? "hello"    |" Regular expression match, case insensitive
-echo  "hi" !~  "hello"    |" Regular expression unmatch, use 'ignorecase'
-echo  "hi" !~# "hello"    |" Regular expression unmatch, case sensitive
-echo  "hi" !~? "hello"    |" Regular expression unmatch, case insensitive
+echo  "hi" =~  "hello"    | " Regular expression match, uses 'ignorecase'
+echo  "hi" =~# "hello"    | " Regular expression match, case sensitive
+echo  "hi" =~? "hello"    | " Regular expression match, case insensitive
+echo  "hi" !~  "hello"    | " Regular expression unmatch, use 'ignorecase'
+echo  "hi" !~# "hello"    | " Regular expression unmatch, case sensitive
+echo  "hi" !~? "hello"    | " Regular expression unmatch, case insensitive
 
 " Boolean operations are possible.
 
-echo  v:true && v:false       |" Logical AND
-echo  v:true || v:false       |" Logical OR
-echo  ! v:true                |" Logical NOT
-echo  v:true ? 'yes' : 'no'   |" Ternary operator
+echo  v:true && v:false       | " Logical AND
+echo  v:true || v:false       | " Logical OR
+echo  ! v:true                | " Logical NOT
+echo  v:true ? 'yes' : 'no'   | " Ternary operator
 
 
 " Strings (|String|)
@@ -140,9 +140,9 @@ echo  v:true ? 'yes' : 'no'   |" Ternary operator
 " depends on the option |'encoding'|.
 
 " Literal constructors
-echo  "Hello world\n"   |" The last two characters stand for newline
-echo  'Hello world\n'   |" The last two characters are literal
-echo  'Let''s go!'      |" Two single quotes become one quote character
+echo  "Hello world\n"   | " The last two characters stand for newline
+echo  'Hello world\n'   | " The last two characters are literal
+echo  'Let''s go!'      | " Two single quotes become one quote character
 
 " Single-quote strings take all characters are literal, except two single
 " quotes, which are taken to be a single quote in the string itself. See 
@@ -150,21 +150,21 @@ echo  'Let''s go!'      |" Two single quotes become one quote character
 
 " String concatenation
 " The .. operator is preferred, but only supported in since Vim 8.1.1114
-echo  'Hello ' .  'world'  |" String concatenation
-echo  'Hello ' .. 'world'  |" String concatenation (new variant)
+echo  'Hello ' .  'world'  | " String concatenation
+echo  'Hello ' .. 'world'  | " String concatenation (new variant)
 
 " String indexing
-echo  'Hello'[0]           |" First byte
-echo  'Hello'[1]           |" Second byte
-echo  'Hellö'[4]           |" Returns a byte, not the character 'ö'
+echo  'Hello'[0]           | " First byte
+echo  'Hello'[1]           | " Second byte
+echo  'Hellö'[4]           | " Returns a byte, not the character 'ö'
 
 " Substrings (second index is inclusive)
-echo  'Hello'[:]           |" Copy of entire string
-echo  'Hello'[1:3]         |" Substring, second to fourth byte
-echo  'Hello'[1:-2]        |" Substring until second to last byte
-echo  'Hello'[1:]          |" Substring with starting index
-echo  'Hello'[:2]          |" Substring with ending index
-echo  'Hello'[-2:]         |" Substring relative to end of string
+echo  'Hello'[:]           | " Copy of entire string
+echo  'Hello'[1:3]         | " Substring, second to fourth byte
+echo  'Hello'[1:-2]        | " Substring until second to last byte
+echo  'Hello'[1:]          | " Substring with starting index
+echo  'Hello'[:2]          | " Substring with ending index
+echo  'Hello'[-2:]         | " Substring relative to end of string
 
 " A negative index is relative to the end of the string. See
 " |string-functions| for all string-related functions.
@@ -176,23 +176,23 @@ echo  'Hello'[-2:]         |" Substring relative to end of string
 " objects.
 
 " Literal constructor
-echo  []                   |" Empty list
-echo  [1, 2, 'Hello']      |" List with elements
-echo  [1, 2, 'Hello', ]    |" Trailing comma permitted
-echo  [[1, 2], 'Hello']    |" Lists can be nested arbitrarily
+echo  []                   | " Empty list
+echo  [1, 2, 'Hello']      | " List with elements
+echo  [1, 2, 'Hello', ]    | " Trailing comma permitted
+echo  [[1, 2], 'Hello']    | " Lists can be nested arbitrarily
 
 " List concatenation
-echo  [1, 2] + [3, 4]      |" Creates a new list
+echo  [1, 2] + [3, 4]      | " Creates a new list
 
 " List indexing, negative is relative to end of list (|list-index|)
-echo  [1, 2, 3, 4][2]      |" Third element
-echo  [1, 2, 3, 4][-1]     |" Last element
+echo  [1, 2, 3, 4][2]      | " Third element
+echo  [1, 2, 3, 4][-1]     | " Last element
 
 " List slicing (|sublist|)
-echo  [1, 2, 3, 4][:]      |" Shallow copy of entire list
-echo  [1, 2, 3, 4][:2]     |" Sublist until third item (inclusive)
-echo  [1, 2, 3, 4][2:]     |" Sublist from third item (inclusive)
-echo  [1, 2, 3, 4][:-2]    |" Sublist until second-to-last item (inclusive)
+echo  [1, 2, 3, 4][:]      | " Shallow copy of entire list
+echo  [1, 2, 3, 4][:2]     | " Sublist until third item (inclusive)
+echo  [1, 2, 3, 4][2:]     | " Sublist from third item (inclusive)
+echo  [1, 2, 3, 4][:-2]    | " Sublist until second-to-last item (inclusive)
 
 " All slicing operations create new lists. To modify a list in-place use list
 " functions (|list-functions|) or assign directly to an item (see below about
@@ -206,14 +206,14 @@ echo  [1, 2, 3, 4][:-2]    |" Sublist until second-to-last item (inclusive)
 " are implicitly converted to strings).
 
 " Dictionary literal
-echo  {}                       |" Empty dictionary
-echo  {'a': 1, 'b': 2}         |" Dictionary literal
-echo  {'a': 1, 'b': 2, }       |" Trailing comma permitted
-echo  {'x': {'a': 1, 'b': 2}}  |" Nested dictionary
+echo  {}                       | " Empty dictionary
+echo  {'a': 1, 'b': 2}         | " Dictionary literal
+echo  {'a': 1, 'b': 2, }       | " Trailing comma permitted
+echo  {'x': {'a': 1, 'b': 2}}  | " Nested dictionary
 
 " Indexing a dictionary
-echo  {'a': 1, 'b': 2}['a']    |" Literal index
-echo  {'a': 1, 'b': 2}.a       |" Syntactic sugar for simple keys
+echo  {'a': 1, 'b': 2}['a']    | " Literal index
+echo  {'a': 1, 'b': 2}.a       | " Syntactic sugar for simple keys
 
 " See |dict-functions| for dictionary manipulation functions.
 
@@ -225,14 +225,14 @@ echo  {'a': 1, 'b': 2}.a       |" Syntactic sugar for simple keys
 " When stored in a variable the name of the variable has the same restrictions
 " as a function name (see below).
 
-echo  function('type')                   |" Reference to function type()
+echo  function('type')                   | " Reference to function type()
 " Note that `funcref('type')` will throw an error because the argument must be
 " a user-defined function; see further below for defining your own functions.
-echo  funcref('type')                    |" Reference by identity, not name
+echo  funcref('type')                    | " Reference by identity, not name
 " A lambda (|lambda|) is an anonymous function; it can only contain one
 " expression in its body, which is also its implicit return value.
-echo  {x -> x * x}                       |" Anonymous function
-echo  function('substitute', ['hello'])  |" Partial function
+echo  {x -> x * x}                       | " Anonymous function
+echo  function('substitute', ['hello'])  | " Partial function
 
 
 " Regular expression (|regular-expression|)
@@ -254,12 +254,12 @@ substitute/hello/Hello/
 " number becomes its decimal notation as a string. A string becomes its
 " numerical value if it can be parsed to a number, otherwise it becomes zero.
 
-echo  "1" + 1         |" Number
-echo  "1" .. 1        |" String
-echo  "0xA" + 1       |" Number
+echo  "1" + 1         | " Number
+echo  "1" .. 1        | " String
+echo  "0xA" + 1       | " Number
 
 " Strings are treated like numbers when used as booleans
-echo "true" ? 1 : 0   |" This string is parsed to 0, which is false
+echo "true" ? 1 : 0   | " This string is parsed to 0, which is false
 
 " ###########
 "  Variables
@@ -269,41 +269,41 @@ echo "true" ? 1 : 0   |" This string is parsed to 0, which is false
 " chosen by Vim. Use `:let` and `:const` to bind a value and `:unlet` to unbind
 " it.
 
-let b:my_var = 1        |" Local to current buffer
-let w:my_var = 1        |" Local to current window
-let t:my_var = 1        |" Local to current tab page
-let g:my_var = 1        |" Global variable
-let l:my_var = 1        |" Local to current function (see functions below)
-let s:my_var = 1        |" Local to current script file
-let a:my_arg = 1        |" Function argument (see functions below)
+let b:my_var = 1        | " Local to current buffer
+let w:my_var = 1        | " Local to current window
+let t:my_var = 1        | " Local to current tab page
+let g:my_var = 1        | " Global variable
+let l:my_var = 1        | " Local to current function (see functions below)
+let s:my_var = 1        | " Local to current script file
+let a:my_arg = 1        | " Function argument (see functions below)
 
 " The Vim scope is read-only
-echo  v:true            |" Special built-in Vim variables (|v:var|)
+echo  v:true            | " Special built-in Vim variables (|v:var|)
 
 " Access special Vim memory like variables
-let @a = 'Hello'        |" Register
-let $PATH=''            |" Environment variable
-let &textwidth = 79     |" Option
-let &l:textwidth = 79   |" Local option
-let &g:textwidth = 79   |" Global option
+let @a = 'Hello'        | " Register
+let $PATH=''            | " Environment variable
+let &textwidth = 79     | " Option
+let &l:textwidth = 79   | " Local option
+let &g:textwidth = 79   | " Global option
 
 " Access scopes as dictionaries (can be modified like all dictionaries)
 " See the |dict-functions|, especially |get()|, for access and manipulation
-echo  b:                |" All buffer variables
-echo  w:                |" All window variables
-echo  t:                |" All tab page variables
-echo  g:                |" All global variables
-echo  l:                |" All local variables
-echo  s:                |" All script variables
-echo  a:                |" All function arguments
-echo  v:                |" All Vim variables
+echo  b:                | " All buffer variables
+echo  w:                | " All window variables
+echo  t:                | " All tab page variables
+echo  g:                | " All global variables
+echo  l:                | " All local variables
+echo  s:                | " All script variables
+echo  a:                | " All function arguments
+echo  v:                | " All Vim variables
 
 " Constant variables
-const x = 10            |" See |:const|, |:lockvar|
+const x = 10            | " See |:const|, |:lockvar|
 
 " Function reference variables have the same restrictions as function names
-let IsString = {x -> type(x) == type('')}    |" Global: capital letter
-let s:isNumber = {x -> type(x) == type(0)}   |" Local: any name allowed
+let IsString = {x -> type(x) == type('')}    | " Global: capital letter
+let s:isNumber = {x -> type(x) == type(0)}   | " Local: any name allowed
 
 " When omitted the scope `g:` is implied, except in functions, there `l:` is
 " implied.
@@ -419,8 +419,8 @@ endtry
 " Unscoped function names have to start with a capital letter
 function! AddNumbersLoudly(x, y)
     " Use a: scope to access arguments
-    echo 'Adding'  .. a:x ..  'and'  .. a:y   |" A side effect
-    return a:x + a:y                          |" A return value
+    echo 'Adding'  .. a:x ..  'and'  .. a:y   | " A side effect
+    return a:x + a:y                          | " A return value
 endfunction
 
 " Scoped function names may start with a lower-case letter
@@ -448,7 +448,7 @@ endfunction
 
 " Aborting functions, abort once error occurs (|:func-abort|)
 function! SourceMyFile() abort
-    source my-file.vim        |" Try sourcing non-existing file
+    source my-file.vim        | " Try sourcing non-existing file
     echo 'This will never be printed'
 endfunction
 
@@ -460,11 +460,11 @@ function! MakeAdder(x)
     return funcref('Adder')
 endfunction
 let AddFive = MakeAdder(5)
-echo AddFive(3)               |" Prints 8
+echo AddFive(3)               | " Prints 8
 
 " Dictionary functions, poor man's OOP methods (|Dictionary-function|)
 function! Mylen() dict
-    return len(self.data)     |" Implicit variable self
+    return len(self.data)     | " Implicit variable self
 endfunction
 let mydict = {'data': [0, 1, 2, 3], 'len': function("Mylen")}
 echo mydict.len()
@@ -486,7 +486,7 @@ call sign_undefine()
 
 " The call() function calls a function reference and passes parameters as a
 " list, and returns the function's result.
-echo  call(function('get'), [{'a': 1, 'b': 2}, 'c', 3])   |" Prints 3
+echo  call(function('get'), [{'a': 1, 'b': 2}, 'c', 3])   | " Prints 3
 
 " Recall that Vim script is embedded within the ex-commands, that is why we
 " cannot just call a function directly, we have to use the `:call` ex-command.
@@ -547,10 +547,10 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " without deleting the old ones, causing auto-commands to pile up over time.
 " Use auto-groups and the following ritual to guard against this.
 
-augroup auto-source   |" The name of the group is arbitrary
-    autocmd!          |" Deletes all auto-commands in the current group
+augroup auto-source   | " The name of the group is arbitrary
+    autocmd!          | " Deletes all auto-commands in the current group
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END           |" Switch back to default auto-group
+augroup END           | " Switch back to default auto-group
 
 " It is also possible to assign a group directly. This is useful if the
 " definition of the group is in one script and the definition of the
@@ -570,8 +570,8 @@ autocmd auto-source BufWritePost $MYVIMRC source $MYVIMRC
 " Sometimes we need to construct an ex-command where part of the command is not
 " known until runtime.
 
-let line = 3                |" Line number determined at runtime
-execute line .. 'delete'    |" Delete a line
+let line = 3                | " Line number determined at runtime
+execute line .. 'delete'    | " Delete a line
 
 " Executing normal-mode commands
 " ##############################
@@ -579,11 +579,11 @@ execute line .. 'delete'    |" Delete a line
 " Use `:normal` to play back a sequence of normal mode commands from the
 " command-line. Add an exclamation mark to ignore user mappings.
 
-normal! ggddGp             |" Transplant first line to end of buffer
+normal! ggddGp             | " Transplant first line to end of buffer
 
 " Window commands can be used with :normal, or with :wincmd if :normal would
 " not work
-wincmd L                   |" Move current window all the way to the right
+wincmd L                   | " Move current window all the way to the right
 
 
 " ###########################
@@ -591,38 +591,38 @@ wincmd L                   |" Move current window all the way to the right
 " ###########################
 
 " Feature check
-echo  has('nvim')                  |" Running Neovim
-echo  has('python3')               |" Support for Python 3 plugins
-echo  has('unix')                  |" Running on a Unix system
-echo  has('win32')                 |" Running on a Windows system
+echo  has('nvim')                  | " Running Neovim
+echo  has('python3')               | " Support for Python 3 plugins
+echo  has('unix')                  | " Running on a Unix system
+echo  has('win32')                 | " Running on a Windows system
 
 
 " Test if something exists
-echo  exists('&mouse')             |" Option (exists only)
-echo  exists('+mouse')             |" Option (exists and works)
-echo  exists('$HOSTNAME')          |" Environment variable
-echo  exists('*strftime')          |" Built-in function
-echo  exists('**s:MyFunc')         |" User-defined function
-echo  exists('bufcount')           |" Variable (scope optional)
-echo  exists('my_dict["foo"]')     |" Variable (dictionary entry)
-echo  exists('my_dict["foo"]')     |" Variable (dictionary entry)
-echo  exists(':Make')              |" Command
-echo  exists("#CursorHold")        |" Auto-command defined for event
-echo  exists("#BufReadPre#*.gz")   |" Event and pattern
-echo  exists("#filetypeindent")    |" Auto-command group
-echo  exists("##ColorScheme")      |" Auto-commnand supported for event
+echo  exists('&mouse')             | " Option (exists only)
+echo  exists('+mouse')             | " Option (exists and works)
+echo  exists('$HOSTNAME')          | " Environment variable
+echo  exists('*strftime')          | " Built-in function
+echo  exists('**s:MyFunc')         | " User-defined function
+echo  exists('bufcount')           | " Variable (scope optional)
+echo  exists('my_dict["foo"]')     | " Variable (dictionary entry)
+echo  exists('my_dict["foo"]')     | " Variable (dictionary entry)
+echo  exists(':Make')              | " Command
+echo  exists("#CursorHold")        | " Auto-command defined for event
+echo  exists("#BufReadPre#*.gz")   | " Event and pattern
+echo  exists("#filetypeindent")    | " Auto-command group
+echo  exists("##ColorScheme")      | " Auto-commnand supported for event
 
 " Various dynamic values (see |expand()|)
-echo  expand('%')                  |" Current file name
-echo  expand('<cword>')            |" Current word under cursor
-echo  expand('%:p')                |" Modifier are possible
+echo  expand('%')                  | " Current file name
+echo  expand('<cword>')            | " Current word under cursor
+echo  expand('%:p')                | " Modifier are possible
 
 " Type tests
-echo  type(my_var) == type(0)                  |" Number
-echo  type(my_var) == type('')                 |" String
-echo  type(my_var) == type([])                 |" List
-echo  type(my_var) == type({})                 |" Dictionary
-echo  type(my_var) == type(function('type'))   |" Funcref
+echo  type(my_var) == type(0)                  | " Number
+echo  type(my_var) == type('')                 | " String
+echo  type(my_var) == type([])                 | " List
+echo  type(my_var) == type({})                 | " Dictionary
+echo  type(my_var) == type(function('type'))   | " Funcref
 
 " Format strings
 echo  printf('%d in hexadecimal is %X', 123, 123)
@@ -647,5 +647,5 @@ let g:loaded_my_plugin = v:true
 
 " Get a default value: if the user defines a variable use it, otherwise use a
 " hard-coded default. Uses the fact that a scope is also a dictionary.
-l
+let s:greeting = get(g:, 'my_plugin_greeting', 'Hello')
 ```
