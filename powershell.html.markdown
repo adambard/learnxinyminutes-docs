@@ -68,6 +68,7 @@ $aString="Some string"
 # Or like this:
 $aNumber = 5 -as [double]
 $aList = 1,2,3,4,5
+$anEmptyList = @()
 $aString = $aList -join '--' # yes, -split exists also
 $aHashtable = @{name1='val1'; name2='val2'}
 
@@ -244,7 +245,7 @@ function New-Website() {
 'string' | gm
 
 # Syntax for calling static .NET methods
-\[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
+[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
 
 # Note that .NET functions MUST be called with parentheses
 # while PS functions CANNOT be called with parentheses.

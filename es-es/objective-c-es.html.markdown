@@ -13,7 +13,7 @@ Objective C es el lenguaje de programación principal utilizado por Apple para l
 Es un lenguaje de programación para propósito general que le agrega al lenguaje de programación C una mensajería estilo "Smalltalk".
 
 
-```objective_c
+```objectivec
 // Los comentarios de una sola línea inician con //
 
 /*

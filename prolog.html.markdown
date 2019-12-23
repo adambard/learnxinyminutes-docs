@@ -38,9 +38,9 @@ magicNumber(42).
 % predicate names must start with lower case letters. We can now use
 % interactive mode to ask if it is true for different values:
 
-?- magicNumber(7).                 % True
-?- magicNumber(8).                 % False
-?- magicNumber(9).		   % True
+?- magicNumber(7).                   % True
+?- magicNumber(8).                   % False
+?- magicNumber(9).                   % True
 
 % Some older Prologs may display "Yes" and "No" instead of True and
 % False.
@@ -50,7 +50,7 @@ magicNumber(42).
 % starting with a capital letter is a variable in Prolog.
 
 ?- magicNumber(Presto).              % Presto = 7 ;
-				     % Presto = 9 ;
+                                     % Presto = 9 ;
                                      % Presto = 42.
 
 % Prolog makes magicNumber true by assigning one of the valid numbers to
@@ -66,26 +66,33 @@ magicNumber(42).
 % follows:
 %  If both sides are bound (ie, defined), check equality.
 %  If one side is free (ie, undefined), assign to match the other side.
-%  If both sides are free, abort because this can't be resolved.
+%  If both sides are free, the assignment is remembered. With some luck,
+%    one of the two sides will eventually be bound, but this isn't
+%    necessary.
+%
 % The = sign in Prolog represents unification, so:
 
 ?- 2 = 3.                            % False - equality test
-?- X = 3.	                     % X = 3 - assignment
-?- X = 2, X = Y.		     % X = Y = 2 - two assignments
-                                     % Note Y is assigned to, even though it is
+?- X = 3.                            % X = 3 - assignment
+?- X = 2, X = Y.                     % X = Y = 2 - two assignments
+                                     % Note Y is assigned too, even though it is
                                      % on the right hand side, because it is free
 ?- X = 3, X = 2.                     % False
-				     % First acts as assignment and binds X=3
-				     % Second acts as equality because X is bound
+                                     % First acts as assignment and binds X=3
+                                     % Second acts as equality because X is bound
                                      % Since 3 does not equal 2, gives False
                                      % Thus in Prolog variables are immutable
 ?- X = 3+2.                          % X = 3+2 - unification can't do arithmetic
 ?- X is 3+2.                         % X = 5 - "is" does arithmetic.
-?- 5 = X+2.			     % This is why = can't do arithmetic -
+?- 5 = X+2.                          % This is why = can't do arithmetic -
                                      % because Prolog can't solve equations
 ?- 5 is X+2.                         % Error. Unlike =, the right hand side of IS
                                      % must always be bound, thus guaranteeing
                                      % no attempt to solve an equation.
+?- X = Y, X = 2, Z is Y + 3.         % X = Y, Y = 2, Z = 5.
+                                     % X = Y are both free, so Prolog remembers
+                                     % it. Therefore assigning X will also
+                                     % assign Y.
 
 % Any unification, and thus any predicate in Prolog, can either:
 % Succeed (return True) without changing anything,
@@ -101,11 +108,11 @@ magicNumber(42).
 % example, Prolog has a built in predicate plus which represents
 % arithmetic addition but can reverse simple additions.
 
-?- plus(1, 2, 3).		     % True
+?- plus(1, 2, 3).                    % True
 ?- plus(1, 2, X).                    % X = 3 because 1+2 = X.
-?- plus(1, X, 3).		     % X = 2 because 1+X = 3.
-?- plus(X, 2, 3).		     % X = 1 because X+1 = 3.
-?- plus(X, 5, Y).		     % Error - although this could be solved,
+?- plus(1, X, 3).                    % X = 2 because 1+X = 3.
+?- plus(X, 2, 3).                    % X = 1 because X+2 = 3.
+?- plus(X, 5, Y).                    % Error - although this could be solved,
                                      % the number of solutions is infinite,
                                      % which most predicates try to avoid.
 
@@ -129,9 +136,9 @@ magicNumber(42).
 
 ?- print("Hello").                   % "Hello" true.
 ?- X = 2, print(X).                  % 2 true.
-?- X = 2, print(X), X = 3.	     % 2 false - print happens immediately when
-				     % it is encountered, even though the overall
-				     % compound goal fails (because 2 != 3,
+?- X = 2, print(X), X = 3.           % 2 false - print happens immediately when
+                                     % it is encountered, even though the overall
+                                     % compound goal fails (because 2 != 3,
                                      % see the example above).
 
 % By using Print we can see what actually happens when we give a
@@ -156,7 +163,7 @@ magicNumber(42).
 % the interactive prompt by pressing ;, for example:
 
 ?- magicNumber(X), print(X), X > 8.  % 7 9 X = 9 ;
-				     % 42 X = 42.
+                                     % 42 X = 42.
 
 % As you saw above we can define our own simple predicates as facts.
 % More complex predicates are defined as rules, like this:
@@ -168,7 +175,7 @@ nearby(X,Y) :- Y is X-1.
 % nearby(X,Y) is true if Y is X plus or minus 1.
 % However this predicate could be improved. Here's why:
 
-?- nearby(2,3).			      % True ; False.
+?- nearby(2,3).                      % True ; False.
 % Because we have three possible definitions, Prolog sees this as 3
 % possibilities. X = Y fails, so Y is X+1 is then tried and succeeds,
 % giving the True answer. But Prolog still remembers there are more
@@ -177,11 +184,11 @@ nearby(X,Y) :- Y is X-1.
 % the option of rejecting the True answer, which doesn't make a whole
 % lot of sense.
 
-?- nearby(4, X).                      % X = 4 ;
-                                      % X = 5 ;
-                                      % X = 3. Great, this works
-?- nearby(X, 4).		      % X = 4 ;
-				      % error
+?- nearby(4, X).                     % X = 4 ;
+                                     % X = 5 ;
+                                     % X = 3. Great, this works
+?- nearby(X, 4).                     % X = 4 ;
+                                     % error
 % After rejecting X = 4 prolog backtracks and tries "Y is X+1" which is
 % "4 is X+1" after substitution of parameters. But as we know from above
 % "is" requires its argument to be fully instantiated and it is not, so
@@ -195,10 +202,10 @@ nearbychk(X,Y) :- Y is X+1, !.
 nearbychk(X,Y) :- Y is X-1.
 
 % This solves the first problem:
-?- nearbychk(2,3).                    % True.
+?- nearbychk(2,3).                   % True.
 
 % But unfortunately it has consequences:
-?- nearbychk(2,X).		      % X = 2.
+?- nearbychk(2,X).                   % X = 2.
 % Because Prolog cannot backtrack past the cut after X = Y, it cannot
 % try the possibilities "Y is X+1" and "Y is X-1", so it only generates
 % one solution when there should be 3.
@@ -230,14 +237,14 @@ nearby3(X,Y) :- nearby2(X,Y).
 
 % Here is the structured comment declaration for nearby3:
 
-%%	nearby3(+X:Int, +Y:Int) is semidet.
-%%	nearby3(+X:Int, -Y:Int) is multi.
-%%	nearby3(-X:Int, +Y:Int) is multi.
+%!    nearby3(+X:Int, +Y:Int) is semideterministic.
+%!    nearby3(+X:Int, -Y:Int) is multi.
+%!    nearby3(-X:Int, +Y:Int) is multi.
 
 % For each variable we list a type. The + or - before the variable name
 % indicates if the parameter is bound (+) or free (-). The word after
 % "is" describes the behaviour of the predicate:
-%   semidet - can succeed once or fail
+%   semideterministic - can succeed once or fail
 %     ( Two specific numbers are either nearby or not )
 %   multi - can succeed multiple times but cannot fail
 %     ( One number surely has at least 3 nearby numbers )
@@ -250,13 +257,13 @@ nearby3(X,Y) :- nearby2(X,Y).
 % An unusual feature of Prolog is its support for atoms. Atoms are
 % essentially members of an enumerated type that are created on demand
 % whenever an unquoted non variable value is used. For example:
-character(batman).           % Creates atom value batman
-character(robin).	     % Creates atom value robin
-character(joker).            % Creates atom value joker
-character(darthVader).	     % Creates atom value darthVader
-?- batman = batman.	     % True - Once created value is reused
-?- batman = batMan.          % False - atoms are case sensitive
-?- batman = darthVader.      % False - atoms are distinct
+character(batman).            % Creates atom value batman
+character(robin).             % Creates atom value robin
+character(joker).             % Creates atom value joker
+character(darthVader).        % Creates atom value darthVader
+?- batman = batman.           % True - Once created value is reused
+?- batman = batMan.           % False - atoms are case sensitive
+?- batman = darthVader.       % False - atoms are distinct
 
 % Atoms are popular in examples but were created on the assumption that
 % Prolog would be used interactively by end users - they are less
@@ -267,54 +274,55 @@ character(darthVader).	     % Creates atom value darthVader
 % Note that below, writeln is used instead of print because print is
 % intended for debugging.
 
-%%	countTo(+X:Int) is det.
-%%	countUpTo(+Value:Int, +Limit:Int) is det.
+%!    countTo(+X:Int) is deterministic.
+%!    countUpTo(+Value:Int, +Limit:Int) is deterministic.
 countTo(X) :- countUpTo(1,X).
 countUpTo(Value, Limit) :- Value = Limit, writeln(Value), !.
 countUpTo(Value, Limit) :- Value \= Limit, writeln(Value),
-	NextValue is Value+1,
-	countUpTo(NextValue, Limit).
+    NextValue is Value+1,
+    countUpTo(NextValue, Limit).
 
-?- countTo(10).                        % Outputs 1 to 10
+?- countTo(10).                      % Outputs 1 to 10
 
 % Note the use of multiple declarations in countUpTo to create an
 % IF test. If Value = Limit fails the second declaration is run.
 % There is also a more elegant syntax.
 
-%%	countUpTo2(+Value:Int, +Limit:Int) is det.
+%!    countUpTo2(+Value:Int, +Limit:Int) is deterministic.
 countUpTo2(Value, Limit) :- writeln(Value),
-	Value = Limit -> true ; (
-			     NextValue is Value+1,
-			     countUpTo2(NextValue, Limit)).
+    Value = Limit -> true ; (
+        NextValue is Value+1,
+        countUpTo2(NextValue, Limit)).
 
-?- countUpTo2(1,10).		      % Outputs 1 to 10
+?- countUpTo2(1,10).                 % Outputs 1 to 10
 
 % If a predicate returns multiple times it is often useful to loop
 % through all the values it returns. Older Prologs used a hideous syntax
 % called a "failure-driven loop" to do this, but newer ones use a higher
 % order function.
 
-%%	countTo2(+X:Int) is det.
+%!    countTo2(+X:Int) is deterministic.
 countTo2(X) :- forall(between(1,X,Y),writeln(Y)).
 
-?- countTo2(10).                      % Outputs 1 to 10
+?- countTo2(10).                     % Outputs 1 to 10
 
 % Lists are given in square brackets. Use memberchk to check membership.
 % A group is safe if it doesn't include Joker or does include Batman.
-%%	safe(Group:list(atom)) is det.
+
+%!     safe(Group:list(atom)) is deterministic.
 safe(Group) :- memberchk(joker, Group) -> memberchk(batman, Group) ; true.
 
-?- safe([robin]).		      % True
-?- safe([joker]).                     % False
-?- safe([joker, batman]).             % True
+?- safe([robin]).                    % True
+?- safe([joker]).                    % False
+?- safe([joker, batman]).            % True
 
 % The member predicate works like memberchk if both arguments are bound,
 % but can accept free variables and thus can be used to loop through
 % lists.
 
-?- member(X, [1,2,3]).                  % X = 1 ; X = 2 ; X = 3 .
+?- member(X, [1,2,3]).               % X = 1 ; X = 2 ; X = 3 .
 ?- forall(member(X,[1,2,3]),
-	  (Y is X+1, writeln(Y))).      % 2 3 4
+       (Y is X+1, writeln(Y))).      % 2 3 4
 
 % The maplist function can be used to generate lists based on other
 % lists. Note that the output list is a free variable, causing an

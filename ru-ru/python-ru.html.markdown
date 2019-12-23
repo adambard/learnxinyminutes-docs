@@ -541,7 +541,7 @@ Human.grunt() #=> "*grunt*"
 
 # Вы можете импортировать модули
 import math
-print(math.sqrt(16)) #=> 4
+print(math.sqrt(16)) #=> 4.0
 
 # Вы можете импортировать отдельные функции модуля
 from math import ceil, floor

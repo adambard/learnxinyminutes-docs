@@ -142,11 +142,9 @@ lang: zh-cn
 
 ## 扩展阅读
 
-[Clojure for the Brave and True](http://www.braveclojure.com/)系列的编写宏
-http://www.braveclojure.com/writing-macros/
+[Clojure for the Brave and True](http://www.braveclojure.com/)
+[系列的编写宏](http://www.braveclojure.com/writing-macros/)
 
-官方文档
-http://clojure.org/macros
+[官方文档](http://clojure.org/macros)
 
-何时使用宏？
-http://dunsmor.com/lisp/onlisp/onlisp_12.html
+[何时使用宏？](https://lispcast.com/when-to-use-a-macro/)

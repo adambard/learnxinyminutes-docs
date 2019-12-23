@@ -1,5 +1,6 @@
 ---
-language: awk
+category: tool
+tool: awk
 filename: learnawk-pt.awk
 contributors:
     - ["Marshall Mason", "http://github.com/marshallmason"]
@@ -171,7 +172,7 @@ function arithmetic_functions(a, b, c,    d) {
     # Muitas implementações AWK possuem algumas funções trigonométricas padrão
     localvar = sin(a)
     localvar = cos(a)
-    localvar = atan2(a, b) # arco-tangente de b / a
+    localvar = atan2(b, a) # arco-tangente de b / a
 
     # E conteúdo logarítmico
     localvar = exp(a)

@@ -11,7 +11,7 @@ Rust é uma linguagem de programação desenvolvida pelo Mozilla Research. Rust
 combina controle de baixo nível sobre o desempenho com facilidades de alto
 nível e garantias de segurança.
 
-Ele atinge esse objetico sem necessitar de um coletor de lixo ou um processo
+Ele atinge esse objetivo sem necessitar de um coletor de lixo ou um processo
 *runtime*, permitindo que se use bibliotecas Rust em substituição a bibliotecas 
 em C.
 
@@ -27,7 +27,7 @@ noite. Rust adotou um modelo de versões *train-based* com novas versões
 regularmente liberadas a cada seis semanas. A versão 1.1 beta de Rust foi
 disponibilizada ao mesmo tempo que a versão 1.0.
 
-Apesar de Rust ser uma linguagem mais e baixo nível, Rust tem alguns conceitos
+Apesar de Rust ser uma linguagem mais de baixo nível, Rust tem alguns conceitos
 funcionais geralmente encontradas em linguagens de alto nível. Isso faz Rust
 não apenas rápido, mas também fácil e eficiente para programar.
 
@@ -68,7 +68,7 @@ fn main() {
     // Em geral, o compilador Rust consegue inferir qual o tipo de uma 
     // variável, então você não tem que escrever uma anotação explícita de tipo.
     // Ao longo desse tutorial, os tipos serão explicitamente anotados em 
-    // muitos lugares, mas apenas com propóstico demonstrativo. A inferência de 
+    // muitos lugares, mas apenas com propósito demonstrativo. A inferência de 
     // tipos pode gerenciar isso na maioria das vezes.
     let implicit_x = 1;
     let implicit_f = 1.3;

@@ -15,15 +15,15 @@ contributors:
 ---
 
 Go was created out of the need to get work done. It's not the latest trend
-in computer science, but it is the newest fastest way to solve real-world
+in programming language theory, but it is a way to solve real-world
 problems.
 
-It has familiar concepts of imperative languages with static typing.
+It draws concepts from imperative languages with static typing.
 It's fast to compile and fast to execute, it adds easy-to-understand
-concurrency to leverage today's multi-core CPUs, and has features to
-help with large-scale programming.
+concurrency because multi-core CPUs are now common, and it's used successfully
+in large codebases (~100 million loc at Google, Inc.).
 
-Go comes with a great standard library and an enthusiastic community.
+Go comes with a good standard library and a sizeable community.
 
 ```go
 // Single line comment
@@ -48,7 +48,7 @@ import (
 // executable program. Love it or hate it, Go uses brace brackets.
 func main() {
 	// Println outputs a line to stdout.
-	// Qualify it with the package name, fmt.
+	// It comes from the package fmt.
 	fmt.Println("Hello world!")
 
 	// Call another function within this package.
@@ -180,7 +180,7 @@ func learnFlowControl() {
 	if true {
 		fmt.Println("told ya")
 	}
-	// Formatting is standardized by the command line command "go fmt."
+	// Formatting is standardized by the command line command "go fmt".
 	if false {
 		// Pout.
 	} else {
@@ -277,7 +277,8 @@ func sentenceFactory(mystring string) func(before, after string) string {
 }
 
 func learnDefer() (ok bool) {
-	// Deferred statements are executed just before the function returns.
+	// A defer statement pushes a function call onto a list. The list of saved
+	// calls is executed AFTER the surrounding function returns.
 	defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
 	defer fmt.Println("\nThis line is being printed first because")
 	// Defer is commonly used to close a file, so the function closing the

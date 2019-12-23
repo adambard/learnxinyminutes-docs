@@ -1,5 +1,6 @@
 ---
-language: tcsh
+category: tool
+tool: tcsh
 filename: LearnTCSH.csh
 contributors:
        - ["Nicholas Christopoulos", "https://github.com/nereusx"]

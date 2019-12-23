@@ -20,7 +20,9 @@ package com.learnxinyminutes.kotlin
 
 /*
 The entry point to a Kotlin program is a function named "main".
-The function is passed an array containing any command line arguments.
+The function is passed an array containing any command-line arguments.
+Since Kotlin 1.3 the "main" function can also be defined without
+any parameters.
 */
 fun main(args: Array<String>) {
     /*
@@ -65,7 +67,7 @@ fun helloWorld(val name : String) {
     A template expression starts with a dollar sign ($).
     */
     val fooTemplateString = "$fooString has ${fooString.length} characters"
-    println(fooTemplateString) // => My String Is Here! has 18 characters 
+    println(fooTemplateString) // => My String Is Here! has 18 characters
 
     /*
     For a variable to hold null it must be explicitly specified as nullable.
@@ -107,7 +109,7 @@ fun helloWorld(val name : String) {
 
     /*
     When a function consists of a single expression then the curly brackets can
-    be omitted. The body is specified after a = symbol.
+    be omitted. The body is specified after the = symbol.
     */
     fun odd(x: Int): Boolean = x % 2 == 1
     println(odd(6)) // => false
@@ -175,12 +177,12 @@ fun helloWorld(val name : String) {
     // Objects can be destructured into multiple variables.
     val (a, b, c) = fooCopy
     println("$a $b $c") // => 1 100 4
-    
+
     // destructuring in "for" loop
     for ((a, b, c) in listOf(fooData)) {
         println("$a $b $c") // => 1 100 4
     }
-    
+
     val mapData = mapOf("a" to 1, "b" to 2)
     // Map.Entry is destructurable as well
     for ((key, value) in mapData) {
@@ -304,7 +306,7 @@ fun helloWorld(val name : String) {
     println(result)
 
     /*
-    We can check if an object is a particular type by using the "is" operator.
+    We can check if an object is of a particular type by using the "is" operator.
     If an object passes a type check then it can be used as that type without
     explicitly casting it.
     */
@@ -344,15 +346,25 @@ fun helloWorld(val name : String) {
         return this.filter {it != c}
     }
     println("Hello, world!".remove('l')) // => Heo, word!
-
-    println(EnumExample.A) // => A
-    println(ObjectExample.hello()) // => hello
 }
 
 // Enum classes are similar to Java enum types.
 enum class EnumExample {
-    A, B, C
+    A, B, C // Enum constants are separated with commas.
 }
+fun printEnum() = println(EnumExample.A) // => A
+
+// Since each enum is an instance of the enum class, they can be initialized as:
+enum class EnumExample(val value: Int) {
+    A(value = 1),
+    B(value = 2),
+    C(value = 3)
+}
+fun printProperty() = println(EnumExample.A.value) // => 1
+
+// Every enum has properties to obtain its name and ordinal(position) in the enum class declaration:
+fun printName() = println(EnumExample.A.name) // => A
+fun printPosition() = println(EnumExample.A.ordinal) // => 0
 
 /*
 The "object" keyword can be used to create singleton objects.
@@ -363,17 +375,80 @@ object ObjectExample {
     fun hello(): String {
         return "hello"
     }
+
+    override fun toString(): String {
+        return "Hello, it's me, ${ObjectExample::class.simpleName}"
+    }
 }
 
-fun useObject() {
-    ObjectExample.hello()
-    val someRef: Any = ObjectExample // we use objects name just as is
+
+fun useSingletonObject() {
+    println(ObjectExample.hello()) // => hello
+    // In Kotlin, "Any" is the root of the class hierarchy, just like "Object" is in Java
+    val someRef: Any = ObjectExample
+    println(someRef) // => Hello, it's me, ObjectExample
 }
 
+
+/* The not-null assertion operator (!!) converts any value to a non-null type and
+throws an exception if the value is null.
+*/
+var b: String? = "abc"
+val l = b!!.length
+
+data class Counter(var value: Int) {
+    // overload Counter += Int
+    operator fun plusAssign(increment: Int) {
+        this.value += increment
+    }
+
+    // overload Counter++ and ++Counter
+    operator fun inc() = Counter(value + 1)
+
+    // overload Counter + Counter
+    operator fun plus(other: Counter) = Counter(this.value + other.value)
+
+    // overload Counter * Counter
+    operator fun times(other: Counter) = Counter(this.value * other.value)
+
+    // overload Counter * Int
+    operator fun times(value: Int) = Counter(this.value * value)
+
+    // overload Counter in Counter
+    operator fun contains(other: Counter) = other.value == this.value
+
+    // overload Counter[Int] = Int
+    operator fun set(index: Int, value: Int) {
+        this.value = index + value
+    }
+
+    // overload Counter instance invocation
+    operator fun invoke() = println("The value of the counter is $value")
+
+}
+/* You can also overload operators through an extension methods */
+// overload -Counter
+operator fun Counter.unaryMinus() = Counter(-this.value)
+
+fun operatorOverloadingDemo() {
+    var counter1 = Counter(0)
+    var counter2 = Counter(5)
+    counter1 += 7
+    println(counter1) // => Counter(value=7)
+    println(counter1 + counter2) // => Counter(value=12)
+    println(counter1 * counter2) // => Counter(value=35)
+    println(counter2 * 2) // => Counter(value=10)
+    println(counter1 in Counter(5)) // => false
+    println(counter1 in Counter(7)) // => true
+    counter1[26] = 10
+    println(counter1) // => Counter(value=36)
+    counter1() // => The value of the counter is 36
+    println(-counter2) // => Counter(value=-5)
+}
 ```
 
 ### Further Reading
 
 * [Kotlin tutorials](https://kotlinlang.org/docs/tutorials/)
-* [Try Kotlin in your browser](http://try.kotlinlang.org/)
+* [Try Kotlin in your browser](https://play.kotlinlang.org/)
 * [A list of Kotlin resources](http://kotlin.link/)

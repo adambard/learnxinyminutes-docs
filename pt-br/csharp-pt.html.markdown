@@ -6,23 +6,23 @@ contributors:
 lang: pt-br
 ---
 
-C# é uma linguagem elegante e altamente tipado orientada a objetos que permite aos desenvolvedores criarem uma variedade de aplicações seguras e robustas que são executadas no .NET Framework.
+C# é uma linguagem elegante, altamente tipada e orientada a objetos que permite aos desenvolvedores criar uma variedade de aplicações seguras e robustas que são executadas no .NET Framework.
 
-[Read more here.](http://msdn.microsoft.com/pt-br/library/vstudio/z1zx9t92.aspx)
+[Leia mais aqui.](http://msdn.microsoft.com/pt-br/library/vstudio/z1zx9t92.aspx)
 
 ```c#
-// Comentário de linha única começa com //
+// Comentários de linha única começam com //
 /*
-Múltipas linhas é desta forma
+Comentários de múltiplas linhas são desta forma
 */
 /// <summary>
-/// Esta é uma documentação comentário XML que pode ser usado para gerar externo
-/// documentação ou fornecer ajuda de contexto dentro de um IDE
+/// Este é um comentário de documentação XML que pode ser usado para gerar documentação
+/// externa ou para fornecer ajuda de contexto dentro de uma IDE
 /// </summary>
 //public void MethodOrClassOrOtherWithParsableHelp() {}
 
-// Especificar qual namespace seu código irá usar
-// Os namespaces a seguir são padrões do .NET Framework Class Library 
+// Especifica os namespaces que o código irá usar
+// Os namespaces a seguir são padrões da biblioteca de classes do .NET Framework
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -33,11 +33,11 @@ using System.IO;
 
 // Mas este aqui não é :
 using System.Data.Entity;
-// Para que consiga utiliza-lo, você precisa adicionar novas referências
+// Para que consiga utilizá-lo, você precisa adicionar novas referências
 // Isso pode ser feito com o gerenciador de pacotes NuGet : `Install-Package EntityFramework`
 
-// Namespaces são escopos definidos para organizar o códgo em "pacotes" or "módulos"
-// Usando este código a partir de outra arquivo de origem: using Learning.CSharp;
+// Namespaces são escopos definidos para organizar o código em "pacotes" ou "módulos"
+// Usando este código a partir de outro arquivo de origem: using Learning.CSharp;
 namespace Learning.CSharp
 {
     // Cada .cs deve conter  uma classe com o mesmo nome do arquivo
@@ -59,7 +59,7 @@ namespace Learning.CSharp
             Console.Write("World");
 
             ///////////////////////////////////////////////////
-            // Tpos e Variáveis
+            // Tipos e Variáveis
             //
             // Declare uma variável usando <tipo> <nome>
             ///////////////////////////////////////////////////
@@ -78,15 +78,17 @@ namespace Learning.CSharp
             short fooShort = 10000;
             ushort fooUshort = 10000;
 
-            // Integer - 32-bit integer
+            // Integer - inteiro de 32 bits 
             int fooInt = 1; // (-2,147,483,648 <= int <= 2,147,483,647)
             uint fooUint = 1; // (0 <= uint <= 4,294,967,295)
-
+            //Números por padrão são int ou uint, dependendo do tamanho.
+            
             // Long - 64-bit integer
             long fooLong = 100000L; // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
             ulong fooUlong = 100000L; // (0 <= ulong <= 18,446,744,073,709,551,615)
-            // Numbers default to being int or uint depending on size.
-            // L is used to denote that this variable value is of type long or ulong
+            
+            // Números por padrão são int ou uint dependendo do tamanho.
+            // L é usado para denotar que o valor da variável é do tipo long ou ulong.
 
             // Double - Double-precision 64-bit IEEE 754 Floating Point
             double fooDouble = 123.4; // Precision: 15-16 digits
@@ -95,8 +97,8 @@ namespace Learning.CSharp
             float fooFloat = 234.5f; // Precision: 7 digits
             // f is used to denote that this variable value is of type float
 
-            // Decimal - a 128-bits data type, with more precision than other floating-point types,
-            // suited for financial and monetary calculations
+            // Decimal - um tipo de dados de 128 bits, com mais precisão do que outros tipos de ponto flutuante,
+            // adequado para cálculos financeiros e monetários
             decimal fooDecimal = 150.3m;
 
             // Boolean - true & false
@@ -294,9 +296,9 @@ on a new line! ""Wow!"", the masses cried";
                 case 3:
                     monthString = "March";
                     break;
-                // You can assign more than one case to an action
-                // But you can't add an action without a break before another case
-                // (if you want to do this, you would have to explicitly add a goto case x
+                // Você pode declarar mais de um "case" para uma ação
+                // Mas você não pode adicionar uma ação sem um "break" antes de outro "case"
+                // (se você quiser fazer isso, você tem que explicitamente adicionar um "goto case x")
                 case 6:
                 case 7:
                 case 8:
@@ -308,25 +310,26 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             ///////////////////////////////////////
-            // Converting Data Types And Typecasting
+            // Convertendo Data Types e Typecasting
             ///////////////////////////////////////
 
-            // Converting data
+            // Convertendo dados
 
-            // Convert String To Integer
-            // this will throw a FormatException on failure
-            int.Parse("123");//returns an integer version of "123"
+            // Converter String para Integer
 
-            // try parse will default to type default on failure
-            // in this case: 0
+            // isso vai jogar um erro FormatException quando houver falha
+            int.Parse("123");//retorna uma verão em Integer da String "123"
+
+            // try parse vai ir por padrão para o typo default quando houver uma falha
+            // nesse caso: 0
             int tryInt;
-            if (int.TryParse("123", out tryInt)) // Function is boolean
+            if (int.TryParse("123", out tryInt)) // Função booleana
                 Console.WriteLine(tryInt);       // 123
 
-            // Convert Integer To String
-            // Convert class has a number of methods to facilitate conversions
+            // Converter Integer para String
+            // A classe Convert possuí métodos para facilitar as conversões
             Convert.ToString(123);
-            // or
+            // ou
             tryInt.ToString();
 
             // Casting
@@ -336,28 +339,28 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         ///////////////////////////////////////
-        // CLASSES - see definitions at end of file
+        // CLASSES - Veja definições no fim do arquivo
         ///////////////////////////////////////
         public static void Classes()
         {
-            // See Declaration of objects at end of file
+            // Veja Declaração de objetos no fim do arquivo
 
-            // Use new to instantiate a class
+            // Use new para instanciar uma classe
             Bicycle trek = new Bicycle();
 
-            // Call object methods
-            trek.SpeedUp(3); // You should always use setter and getter methods
+            // Chame métodos do objeto
+            trek.SpeedUp(3); // Você deve sempre usar métodos setter e getter
             trek.Cadence = 100;
 
-            // ToString is a convention to display the value of this Object.
+            // ToString é uma convenção para exibir o valor desse Objeto.
             Console.WriteLine("trek info: " + trek.Info());
 
-            // Instantiate a new Penny Farthing
+            // Instancie um novo Penny Farthing
             PennyFarthing funbike = new PennyFarthing(1, 10);
             Console.WriteLine("funbike info: " + funbike.Info());
 
             Console.Read();
-        } // End main method
+        } // Fim do método principal
 
         // CONSOLE ENTRY A console application must have a main method as an entry point
         public static void Main(string[] args)
@@ -407,12 +410,12 @@ on a new line! ""Wow!"", the masses cried";
             return result;
         }
 
-        // You can narrow down the objects that are passed in
+        // Você pode pode restringir os objetos que são passados
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
-            // We can iterate, since T is a IEnumerable
+            // Nos podemos iterar, desde que T seja um "IEnumerable"
             foreach (var item in toPrint)
-                // Item is an int
+                // Item é um inteiro
                 Console.WriteLine(item.ToString());
         }
 
@@ -522,7 +525,7 @@ on a new line! ""Wow!"", the masses cried";
             foreach (var key in responses.Keys)
                 Console.WriteLine("{0}:{1}", key, responses[key]);
 
-            // DYNAMIC OBJECTS (great for working with other languages)
+            // OBJETOS DINÂMICOS (ótimo para trabalhar com outros idiomas)
             dynamic student = new ExpandoObject();
             student.FirstName = "First Name"; // No need to define class first!
 
@@ -720,9 +723,9 @@ on a new line! ""Wow!"", the masses cried";
             _speed -= decrement;
         }
 
-        // properties get/set values
-        // when only data needs to be accessed, consider using properties.
-        // properties may have either get or set, or both
+        // propriedade recupera e/ou atribui valores (get/set). 
+        // quando os dados precisam apenas ser acessados, considere o uso de propriedades.
+        // uma propriedade pode ter "get" ou "set", ou ambos.
         private bool _hasTassles; // private variable
         public bool HasTassles // public accessor
         {
@@ -730,10 +733,10 @@ on a new line! ""Wow!"", the masses cried";
             set { _hasTassles = value; }
         }
 
-        // You can also define an automatic property in one line
-        // this syntax will create a backing field automatically.
-        // You can set an access modifier on either the getter or the setter (or both)
-        // to restrict its access:
+        // Você também pode definir uma propriedade automática em uma linha
+        // Esta sintaxe criará um campo de apoio automaticamente.
+        // Você pode definir um modificador de acesso no getter ou no setter (ou ambos)
+        // para restringir seu acesso:
         public bool IsBroken { get; private set; }
 
         // Properties can be auto-implemented
@@ -762,7 +765,7 @@ on a new line! ""Wow!"", the masses cried";
             }
         }
 
-        //Method to display the attribute values of this Object.
+        //Método para exibir os valores dos atributos deste objeto.
         public virtual string Info()
         {
             return "Gear: " + Gear +
@@ -784,13 +787,13 @@ on a new line! ""Wow!"", the masses cried";
 
     } // end class Bicycle
 
-    // PennyFarthing is a subclass of Bicycle
+    // PennyFarthing é uma subclasse de Bicycle
     class PennyFarthing : Bicycle
     {
-        // (Penny Farthings are those bicycles with the big front wheel.
-        // They have no gears.)
+        // (Penny Farthings são aquelas bicicletas com uma grande roda frontal.
+        // Elas não tem correias.)
 
-        // calling parent constructor
+        // chamando construtor pai
         public PennyFarthing(int startCadence, int startSpeed) :
             base(startCadence, startSpeed, 0, "PennyFarthing", true, BikeBrand.Electra)
         {
@@ -823,10 +826,10 @@ on a new line! ""Wow!"", the masses cried";
         }
     }
 
-    // Interfaces only contain signatures of the members, without the implementation.
+    // Interfaces contêm apenas as assinaturas dos membros, sem a implementação.
     interface IJumpable
     {
-        void Jump(int meters); // all interface members are implicitly public
+        void Jump(int meters); // todos os membros da interface são implicitamente públicos
     }
 
     interface IBreakable
@@ -834,7 +837,7 @@ on a new line! ""Wow!"", the masses cried";
         bool Broken { get; } // interfaces can contain properties as well as methods & events
     }
 
-    // Class can inherit only one other class, but can implement any amount of interfaces
+    // Classes podem herdar apenas de uma outra classe, mas podem implementar qualquer quantidade de interfaces.
     class MountainBike : Bicycle, IJumpable, IBreakable
     {
         int damage = 0;
@@ -854,8 +857,8 @@ on a new line! ""Wow!"", the masses cried";
     }
 
     /// <summary>
-    /// Used to connect to DB for LinqToSql example.
-    /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
+    /// Exemplo de como conectar-se ao DB via LinqToSql.
+    /// EntityFramework First Code é impressionante (semelhante ao ActiveRecord de Ruby, mas bidirecional)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
     public class BikeRepository : DbContext

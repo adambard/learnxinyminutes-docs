@@ -14,7 +14,7 @@ fácilmente a HTML (y, actualmente, otros formatos también).
 ¡Denme toda la retroalimentación que quieran! / ¡Sientanse en la libertad de hacer forks o pull requests!
 
 
-```markdown
+```md
 <!-- Markdown está basado en HTML, así que cualquier archivo HTML es Markdown
 válido, eso significa que podemos usar elementos HTML en Markdown como, por
 ejemplo, el comentario y no serán afectados por un parseador Markdown. Aún 

@@ -640,7 +640,7 @@ i.age  # => Emette un AttributeError
 
 # Puoi importare moduli
 import math
-print math.sqrt(16)  # => 4
+print math.sqrt(16)  # => 4.0
 
 # Puoi ottenere specifiche funzione da un modulo
 from math import ceil, floor

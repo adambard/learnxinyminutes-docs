@@ -76,9 +76,13 @@ False or True   # => True
 # Používání logických operátorů s čísly
 0 and 2     # => 0
 -5 or 0     # => -5
-0 == False  # => True
-2 == True   # => False
-1 == True   # => True
+
+# Při porovnání s boolean hodnotou nepoužívejte operátor rovnosti "==". 
+# Stejně jako u hodnoty None.
+# Viz PEP8: https://www.python.org/dev/peps/pep-0008/ 
+0 is False  # => True
+2 is True   # => False
+1 is True   # => True
 
 # Rovnost je ==
 1 == 1  # => True
@@ -99,11 +103,11 @@ False or True   # => True
 2 < 3 < 2  # => False
 
 
-# Řetězce používají " nebo ' a mohou obsahovat UTF8 znaky
+# Řetězce používají " nebo ' a mohou obsahovat unicode znaky
 "Toto je řetězec."
 'Toto je také řetězec.'
 
-# Řetězce se také dají sčítat, ale nepoužívejte to
+# Řetězce se také dají slučovat
 "Hello " + "world!"  # => "Hello world!"
 # Dají se spojovat i bez '+'
 "Hello " "world!"  # => "Hello world!"
@@ -133,12 +137,14 @@ None  # => None
 "něco" is None  # => False
 None is None    # => True
 
-# None, 0, a prázdný řetězec/seznam/slovník se vyhodnotí jako False
+# None, 0, a prázdný řetězec/seznam/N-tice/slovník/množina se vyhodnotí jako False
 # Vše ostatní se vyhodnotí jako True
-bool(0)   # => False
-bool("")  # => False
-bool([])  # => False
-bool({})  # => False
+bool(0)        # => False
+bool("")       # => False
+bool([])       # => False
+bool(tuple())  # => False
+bool({})       # => False
+bool(set())    # => False
 
 
 ####################################################
@@ -152,10 +158,12 @@ print("Jsem 3. Python 3.")
 # Konvence je používat male_pismo_s_podtrzitky
 nazev_promenne = 5
 nazev_promenne  # => 5
-# Názvy proměnných mohou obsahovat i UTF8 znaky
+# Názvy proměnných mohou obsahovat i unicode znaky, ale nedělejte to.
+# Viz PEP 3131 -- Supporting Non-ASCII Identifiers: 
+# https://www.python.org/dev/peps/pep-3131/
 název_proměnné = 5
 
-# Přístup k předtím nepoužité proměnné vyvolá výjimku
+# Přístup k předtím nedefinované proměnné vyvolá výjimku
 # Odchytávání vyjímek - viz další kapitola
 neznama_promenna  # Vyhodí NameError
 
@@ -199,7 +207,7 @@ sez[::-1]  # => [3, 4, 2, 1]
 # Odebírat prvky ze seznamu lze pomocí del
 del sez[2]   # sez je nyní [1, 2, 3]
 
-# Seznamy můžete sčítat
+# Seznamy můžete slučovat
 # Hodnoty sez a jiny_seznam přitom nejsou změněny
 sez + jiny_seznam   # => [1, 2, 3, 4, 5, 6]
 
@@ -566,7 +574,7 @@ Clovek.odkaslej_si()  # => "*ehm*"
 
 # Lze importovat moduly
 import math
-print(math.sqrt(16.0))  # => 4
+print(math.sqrt(16.0))  # => 4.0
 
 # Lze také importovat pouze vybrané funkce z modulu
 from math import ceil, floor
@@ -596,18 +604,21 @@ dir(math)
 # Generátory jsou funkce, které místo return obsahují yield
 def nasobicka_2(sekvence):
     for i in sekvence:
+        print("Zpracovávám číslo {}".format(i))
         yield 2 * i
 
 # Generátor generuje hodnoty postupně, jak jsou potřeba. Místo toho, aby vrátil
 # celou sekvenci s prvky vynásobenými dvěma, provádí jeden výpočet v každé iteraci.
-# To znamená, že čísla větší než 15 se v metodě nasobicka_2 vůbec nezpracují.
+for nasobek in nasobicka_2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]):
+    # Vypíše postupně: "Zpracovávám číslo 1",  ...,  "Zpracovávám číslo 5"
+    if nasobek >= 10:
+        break
 
 # Funkce range() je také generátor - vytváření seznamu 900000000 prvků by zabralo
 # hodně času i paměti, proto se místo toho čísla generují postupně.
-
-for i in nasobicka_2(range(900000000)):
-    print(i)  # Vypíše čísla 0, 2, 4, 6, 8, ... 30
-    if i >= 30:
+for nasobek in nasobicka_2(range(900000000)):
+    # Vypíše postupně: "Zpracovávám číslo 1",  ...,  "Zpracovávám číslo 5"
+    if nasobek >= 10:
         break
 
 
@@ -627,7 +638,7 @@ def nekolikrat(puvodni_funkce):
 def pozdrav(jmeno):
     print("Měj se {}!".format(jmeno))
 
-pozdrav("Pepo")  # Vypíše 3x: Měj se Pepo!
+pozdrav("Pepo")  # Vypíše 3x: "Měj se Pepo!"
 ```
 
 ## Co dál?

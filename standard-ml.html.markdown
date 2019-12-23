@@ -6,6 +6,7 @@ contributors:
     - ["David Pedersen", "http://lonelyproton.com/"]
     - ["James Baker", "http://www.jbaker.io/"]
     - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
+    - ["Chris Wilson", "http://sencjw.com/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
@@ -266,6 +267,19 @@ fun second_elem (x::y::xs) = y
 fun evenly_positioned_elems (odd::even::xs) = even::evenly_positioned_elems xs
   | evenly_positioned_elems [odd] = []  (* Base case: throw away *)
   | evenly_positioned_elems []    = []  (* Base case *)
+  
+(* The case expression can also be used to pattern match and return a value *)
+datatype temp =
+      C of real
+    | F of real
+    
+(*  Declaring a new C temp value...
+    val t: temp = C 45.0  *)
+
+fun temp_to_f t =
+    case t of
+      C x => x * (9.0 / 5.0) + 32.0
+    | F x => x
 
 (* When matching on records, you must use their slot names, and you must bind
    every slot in a record. The order of the slots doesn't matter though. *)

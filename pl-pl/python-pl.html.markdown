@@ -532,7 +532,7 @@ Czlowiek.grunt()   # => "*grunt*"
 
 # Tak importuje się moduły:
 import math
-print(math.sqrt(16))  # => 4
+print(math.sqrt(16))  # => 4.0
 
 # Można podać konkretne funkcje, np. ceil, floor z modułu math
 from math import ceil, floor

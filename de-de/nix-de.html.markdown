@@ -8,11 +8,11 @@ translators:
 lang: de-de
 ---
 
-Nix ist eine simple funktionale Programmiersprache, die für den 
+Nix ist eine simple funktionale Programmiersprache, die für den
 [Nix package manager](https://nixos.org/nix/) und
 [NixOS](https://nixos.org/) entwickelt wurde.
 
-Du kannst Nix Ausdrücke evaluieren mithilfe von 
+Du kannst Nix Ausdrücke evaluieren mithilfe von
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
 oder [`nix-repl`](https://github.com/edolstra/nix-repl).
 
@@ -24,7 +24,7 @@ with builtins; [
 
   # Inline Kommentare sehen so aus.
 
-  /* Multizeilen Kommentare 
+  /* Multizeilen Kommentare
      sehen so aus. */
 
 
@@ -58,10 +58,10 @@ with builtins; [
   #  Strings
   #=========================================
 
-  "String Literale sind in Gänsefüßchen."
+  "String Literale sind in Anführungszeichen."
 
   "
-    String Literale können mehrere 
+    String Literale können mehrere
     Zeilen umspannen.
   "
 
@@ -87,7 +87,7 @@ with builtins; [
   #  Paths
   #=========================================
 
-  # Nix besitzt einen primitven Datentyp für Pfade
+  # Nix besitzt einen primitiven Datentyp für Pfade
   /tmp/tutorials/learn.nix
 
   # Ein relativer Pfad wird beim Parsing zu einem absoluten Pfad aufgelöst,
@@ -95,7 +95,7 @@ with builtins; [
   tutorials/learn.nix
   #=> /the-base-path/tutorials/learn.nix
 
-  # Ein Pfad muss mindestens einen Schrägstrich enthalten. Ein Pfad für eine 
+  # Ein Pfad muss mindestens einen Schrägstrich enthalten. Ein Pfad für eine
   # Datei im selben Verzeichnis benötigt ein ./ Präfix.
   ./learn.nix
   #=> /the-base-path/learn.nix
@@ -170,7 +170,7 @@ with builtins; [
   #  Listen
   #=========================================
 
-  # Listen werden durck eckige Klammern gekennzeichnet.
+  # Listen werden durch eckige Klammern gekennzeichnet.
 
   (length [1 2 3 "x"])
   #=> 4
@@ -218,18 +218,18 @@ with builtins; [
   ({ a = 1; } // { b = 2; })
   #=> { a = 1; b = 2; }
 
-  # Werte auf der rechten Seite überschrieben die Werte auf der linken Seite.
+  # Werte auf der rechten Seite überschreiben die Werte auf der linken Seite.
   ({ a = 1; b = 2; } // { a = 3; c = 4; })
   #=> { a = 3; b = 2; c = 4; }
 
-  # Das Schlüsselwort rec bezeichenet ein "rekursives Set", in der sich Attribute
+  # Das Schlüsselwort rec bezeichenet ein "rekursives Set", in dem sich Attribute
   # aufeinander beziehen können.
   (let a = 1; in     { a = 2; b = a; }.b)
   #=> 1
   (let a = 1; in rec { a = 2; b = a; }.b)
   #=> 2
 
-  # Verschachetelte Sets können stückweise definiert werden.
+  # Verschachtelte Sets können stückweise definiert werden.
   {
     a.b   = 1;
     a.c.d = 2;
@@ -238,7 +238,7 @@ with builtins; [
   #=> { d = 2; e = 3; }
 
   # Die Nachkommen eines Attributs können in diesem Feld nicht zugeordnet werden, wenn
-  # das Attribut selbst nicht zugeweisen wurde. 
+  # das Attribut selbst nicht zugewiesen wurde.
   {
     a = { b = 1; };
     a.c = 2;
@@ -249,7 +249,7 @@ with builtins; [
   #  With
   #=========================================
 
-  # Der Körper eines Sets Blocks wird mit der Zurodnung eines Satzes an die Variablen gebunden.
+  # Der Körper eines Sets Blocks wird mit der Zuordnung eines Satzes an die Variablen gebunden.
   (with { a = 1; b = 2; };
     a + b)
   # => 3
@@ -261,9 +261,9 @@ with builtins; [
   #=> 7
 
   # Die erste Linie diese Tutorials startet mit "with builtins;",
-  # weil builtins ein Set mit allen eingebauten 
+  # weil builtins ein Set mit allen eingebauten
   # Funktionen (length, head, tail, filter, etc.) umfasst.
-  # Das erspart uns beispielseweise "builtins.length" zu schreiben, 
+  # Das erspart uns beispielsweise "builtins.length" zu schreiben,
   # anstatt nur "length".
 
 
@@ -305,7 +305,7 @@ with builtins; [
   (tryEval (abort "foo"))
   #=> error: evaluation aborted with the following error message: ‘foo’
 
-  # `assert` evaluiert zu dem gegebenen Wert, wenn die Bedingung wahr ist, sonst 
+  # `assert` evaluiert zu dem gegebenen Wert, wenn die Bedingung wahr ist, sonst
   # löst es eine abfangbare Exception aus.
   (assert 1 < 2; 42)
   #=> 42
@@ -318,10 +318,10 @@ with builtins; [
   #  Impurity
   #=========================================
 
-  # Da die Wiederholbarkeit von Builds für den Nix Packetmangager entscheidend ist,
-  # werden in der Nix Sprache reine funktionale Elemente betont. Es gibt aber ein paar 
+  # Da die Wiederholbarkeit von Builds für den Nix Packetmanager entscheidend ist,
+  # werden in der Nix Sprache reine funktionale Elemente betont. Es gibt aber ein paar
   # unreine Elemente.
-  # Du kannst auf Umgebungsvarialben verweisen.
+  # Du kannst auf Umgebungsvariablen verweisen.
   (getEnv "HOME")
   #=> "/home/alice"
 
@@ -331,7 +331,7 @@ with builtins; [
   #=> trace: 1
   #=> 2
 
-  # Du kannst Dateien in den Nix store schreiben. Obwohl unrein, kannst du dir relativ sicher sein,
+  # Du kannst Dateien in den Nix Store schreiben. Obwohl unrein, kannst du dir relativ sicher sein,
   # dass es sicher ist, da der Dateiname aus dem Hash des Inhalts abgeleitet wird.
   # Du kannst Dateien von überall lesen. In diesem Beispiel schreiben wir Dateien in den Store
   # und lesen wieder davon.
@@ -339,14 +339,14 @@ with builtins; [
     [filename (builtins.readFile filename)])
   #=> [ "/nix/store/ayh05aay2anx135prqp0cy34h891247x-foo.txt" "hello!" ]
 
-  # Außerdem können wir Dateien in den Nix Store downloaden.
+  # Außerdem können wir Dateien in den Nix Store herunterladen.
   (fetchurl "https://example.com/package-1.2.3.tgz")
   #=> "/nix/store/2drvlh8r57f19s9il42zg89rdr33m2rm-package-1.2.3.tgz"
 
 ]
 ```
 
-### Weitere Resourcen
+### Weitere Ressourcen
 
 * [Nix Manual - Nix expression language]
   (https://nixos.org/nix/manual/#ch-expression-language)
@@ -355,4 +355,4 @@ with builtins; [
   (https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
 
 * [Susan Potter - Nix Cookbook - Nix By Example]
-  (http://funops.co/nix-cookbook/nix-by-example/)
+  (https://ops.functionalalgebra.com/nix-by-example/)

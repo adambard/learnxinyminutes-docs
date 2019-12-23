@@ -14,20 +14,22 @@ filename: LearnCSharp.cs
 
 C# is an elegant and type-safe object-oriented language that enables developers to build a variety of secure and robust applications that run on the .NET Framework.
 
-[Read more here.](http://msdn.microsoft.com/en-us/library/vstudio/z1zx9t92.aspx)
+[Read more here.](https://docs.microsoft.com/dotnet/csharp/getting-started/introduction-to-the-csharp-language-and-the-net-framework)
 
 ```c#
 // Single-line comments start with //
+
 /*
 Multi-line comments look like this
 */
+
 /// <summary>
 /// This is an XML documentation comment which can be used to generate external
 /// documentation or provide context help within an IDE
 /// </summary>
 /// <param name="firstParam">This is some parameter documentation for firstParam</param>
 /// <returns>Information on the returned value of a function</returns>
-//public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
+public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
 
 // Specify the namespaces this source code will be using
 // The namespaces below are all part of the standard .NET Framework Class Library
@@ -254,7 +256,7 @@ on a new line! ""Wow!"", the masses cried";
             int fooWhile = 0;
             while (fooWhile < 100)
             {
-                //Iterated 100 times, fooWhile 0->99
+                // Iterated 100 times, fooWhile 0->99
                 fooWhile++;
             }
 
@@ -273,10 +275,10 @@ on a new line! ""Wow!"", the masses cried";
 
             } while (fooDoWhile < 100);
 
-            //for loop structure => for(<start_statement>; <conditional>; <step>)
+            // for loop structure => for(<start_statement>; <conditional>; <step>)
             for (int fooFor = 0; fooFor < 10; fooFor++)
             {
-                //Iterated 10 times, fooFor 0->9
+                // Iterated 10 times, fooFor 0->9
             }
 
             // For Each Loop
@@ -287,7 +289,7 @@ on a new line! ""Wow!"", the masses cried";
             // (The ToCharArray() could be removed, because a string also implements IEnumerable)
             foreach (char character in "Hello World".ToCharArray())
             {
-                //Iterated over all the characters in the string
+                // Iterated over all the characters in the string
             }
 
             // Switch Case
@@ -329,7 +331,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // Convert String To Integer
             // this will throw a FormatException on failure
-            int.Parse("123");//returns an integer version of "123"
+            int.Parse("123"); // returns an integer version of "123"
 
             // try parse will default to type default on failure
             // in this case: 0
@@ -344,7 +346,7 @@ on a new line! ""Wow!"", the masses cried";
             tryInt.ToString();
 
             // Casting
-            // Cast decimal 15 to a int
+            // Cast decimal 15 to an int
             // and then implicitly cast to long
             long x = (int) 15M;
         }
@@ -373,7 +375,7 @@ on a new line! ""Wow!"", the masses cried";
             Console.Read();
         } // End main method
 
-        // CONSOLE ENTRY A console application must have a main method as an entry point
+        // CONSOLE ENTRY - A console application must have a main method as an entry point
         public static void Main(string[] args)
         {
             OtherInterestingFeatures();
@@ -404,7 +406,7 @@ on a new line! ""Wow!"", the masses cried";
             ref int maxCount, // Pass by reference
             out int count)
         {
-            //the argument passed in as 'count' will hold the value of 15 outside of this function
+            // the argument passed in as 'count' will hold the value of 15 outside of this function
             count = 15; // out param must be assigned before control leaves the method
         }
 
@@ -552,7 +554,7 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             // PARALLEL FRAMEWORK
-            // http://blogs.msdn.com/b/csharpfaq/archive/2010/06/01/parallel-programming-in-net-framework-4-getting-started.aspx
+            // https://devblogs.microsoft.com/csharpfaq/parallel-programming-in-net-framework-4-getting-started/
 
             var words = new List<string> {"dog", "cat", "horse", "pony"};
 
@@ -564,11 +566,11 @@ on a new line! ""Wow!"", the masses cried";
                 }
             );
 
-            //Running this will produce different outputs
-            //since each thread finishes at different times.
-            //Some example outputs are:
-            //cat dog horse pony
-            //dog horse pony cat
+            // Running this will produce different outputs
+            // since each thread finishes at different times.
+            // Some example outputs are:
+            // cat dog horse pony
+            // dog horse pony cat
 
             // DYNAMIC OBJECTS (great for working with other languages)
             dynamic student = new ExpandoObject();
@@ -639,6 +641,54 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine(obj.ToString());
         }
     }
+
+
+    // DELEGATES AND EVENTS
+    public class DelegateTest
+    {
+        public static int count = 0;
+        public static int Increment()
+        {
+            // increment count then return it
+            return ++count;
+        }
+
+        // A delegate is a reference to a method
+        // To reference the Increment method,
+        // first declare a delegate with the same signature
+        // ie. takes no arguments and returns an int
+        public delegate int IncrementDelegate();
+
+        // An event can also be used to trigger delegates
+        // Create an event with the delegate type
+        public static event IncrementDelegate MyEvent;
+
+        static void Main(string[] args)
+        {
+            // Refer to the Increment method by instantiating the delegate
+            // and passing the method itself in as an argument
+            IncrementDelegate inc = new IncrementDelegate(Increment);
+            Console.WriteLine(inc());  // => 1
+
+            // Delegates can be composed with the + operator
+            IncrementDelegate composedInc = inc;
+            composedInc += inc;
+            composedInc += inc;
+
+            // composedInc will run Increment 3 times
+            Console.WriteLine(composedInc());  // => 4
+
+
+            // Subscribe to the event with the delegate
+            MyEvent += new IncrementDelegate(Increment);
+            MyEvent += new IncrementDelegate(Increment);
+
+            // Trigger the event
+            // ie. run all delegates subscribed to this event
+            Console.WriteLine(MyEvent());  // => 6
+        }
+    }
+
 
     // Class Declaration Syntax:
     // <public/private/protected/internal> class <class name>{
@@ -817,7 +867,7 @@ on a new line! ""Wow!"", the masses cried";
             }
         }
 
-        //Method to display the attribute values of this Object.
+        // Method to display the attribute values of this Object.
         public virtual string Info()
         {
             return "Gear: " + Gear +
@@ -912,7 +962,7 @@ on a new line! ""Wow!"", the masses cried";
     /// <summary>
     /// Used to connect to DB for LinqToSql example.
     /// EntityFramework Code First is awesome (similar to Ruby's ActiveRecord, but bidirectional)
-    /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
+    /// https://docs.microsoft.com/ef/ef6/modeling/code-first/workflows/new-database
     /// </summary>
     public class BikeRepository : DbContext
     {
@@ -1021,7 +1071,7 @@ on a new line! ""Wow!"", the masses cried";
     {
         private static bool LogException(Exception ex)
         {
-            /* log exception somewhere */
+            // log exception somewhere
             return false;
         }
 
@@ -1069,12 +1119,12 @@ on a new line! ""Wow!"", the masses cried";
         [Obsolete("Use NewMethod instead", false)]
         public static void ObsoleteMethod()
         {
-            /* obsolete code */
+            // obsolete code
         }
 
         public static void NewMethod()
         {
-            /* new code */
+            // new code
         }
 
         public static void Main()
@@ -1106,25 +1156,144 @@ namespace Learning.More.CSharp
     }
 }
 
+// New C# 7 Feature
+// Install Microsoft.Net.Compilers Latest from Nuget
+// Install System.ValueTuple Latest from Nuget
 using System;
 namespace Csharp7
 {
-	//New C# 7 Feature
-	//Install Microsoft.Net.Compilers Latest from Nuget
-	//Install System.ValueTuple Latest from Nuget
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			//Type 1 Declaration
-			(string FirstName, string LastName) names1 = ("Peter", "Parker");
-			Console.WriteLine(names1.FirstName);
+    // TUPLES, DECONSTRUCTION AND DISCARDS
+    class TuplesTest
+    {
+        public (string, string) GetName()
+        {
+            // Fields in tuples are by default named Item1, Item2...
+            var names1 = ("Peter", "Parker");
+            Console.WriteLine(names1.Item2);  // => Parker
 
-			//Type 2 Declaration
-			var names2 = (First:"Peter", Last:"Parker");
-			Console.WriteLine(names2.Last);
-		}
-	}
+            // Fields can instead be explicitly named
+            // Type 1 Declaration
+            (string FirstName, string LastName) names2 = ("Peter", "Parker");
+
+            // Type 2 Declaration
+            var names3 = (First:"Peter", Last:"Parker");
+
+            Console.WriteLine(names2.FirstName);  // => Peter
+            Console.WriteLine(names3.Last);  // => Parker
+
+            return names3;
+        }
+
+        public string GetLastName() {
+            var fullName = GetName();
+
+            // Tuples can be deconstructed
+            (string firstName, string lastName) = fullName;
+
+            // Fields in a deconstructed tuple can be discarded by using _
+            var (_, last) = fullName;
+            return last;
+        }
+
+        // Any type can be deconstructed in the same way by
+        // specifying a Deconstruct method
+        public int randomNumber = 4;
+        public int anotherRandomNumber = 10;
+
+        public void Deconstruct(out int randomNumber, out int anotherRandomNumber)
+        {
+            randomNumber = this.randomNumber;
+            anotherRandomNumber = this.anotherRandomNumber;
+        }
+
+        static void Main(string[] args)
+        {
+            var tt = new TuplesTest();
+            (int num1, int num2) = tt;
+            Console.WriteLine($"num1: {num1}, num2: {num2}");  // => num1: 4, num2: 10
+
+            Console.WriteLine(tt.GetLastName());
+        }
+    }
+    
+    // PATTERN MATCHING
+    class PatternMatchingTest
+    {
+        public static (string, int)? CreateLogMessage(object data)
+        {
+            switch(data)
+            {
+                // Additional filtering using when
+                case System.Net.Http.HttpRequestException h when h.Message.Contains("404"):
+                    return (h.Message, 404);
+                case System.Net.Http.HttpRequestException h when h.Message.Contains("400"):
+                    return (h.Message, 400);
+                case Exception e:
+                    return (e.Message, 500);
+                case string s:
+                    return (s, s.Contains("Error") ? 500 : 200);
+                case null:
+                    return null;
+                default:
+                    return (data.ToString(), 500);
+            }
+        }
+    }
+
+    // REFERENCE LOCALS
+    // Allow you to return a reference to an object instead of just its value
+    class RefLocalsTest
+    {
+        // note ref in return
+        public static ref string FindItem(string[] arr, string el)
+        {
+            for(int i=0; i<arr.Length; i++)
+            {
+                if(arr[i] == el) {
+                    // return the reference
+                    return ref arr[i];
+                }
+            }
+            throw new Exception("Item not found");
+        }
+
+        public static void SomeMethod()
+        {
+            string[] arr = {"this", "is", "an", "array"};
+
+            // note refs everywhere
+            ref string item = ref FindItem(arr, "array");
+            item = "apple";
+            Console.WriteLine(arr[3]);  // => apple
+        }
+    }
+
+    // LOCAL FUNCTIONS
+    class LocalFunctionTest
+    {
+        private static int _id = 0;
+        public int id;
+        public LocalFunctionTest()
+        {
+            id = generateId();
+
+            // This local function can only be accessed in this scope
+            int generateId()
+            {
+                return _id++;
+            }
+        }
+
+        public static void AnotherMethod()
+        {
+            var lf1 = new LocalFunctionTest();
+            var lf2 = new LocalFunctionTest();
+            Console.WriteLine($"{lf1.id}, {lf2.id}");  // => 0, 1
+
+            int id = generateId();
+            // error CS0103: The name 'generateId' does not exist in the current context
+        }
+    }
 }
 
 ```
@@ -1143,13 +1312,11 @@ namespace Csharp7
 
 ## Further Reading
 
- * [DotNetPerls](http://www.dotnetperls.com)
- * [C# in Depth](http://manning.com/skeet2)
- * [Programming C#](http://shop.oreilly.com/product/0636920024064.do)
- * [LINQ](http://shop.oreilly.com/product/9780596519254.do)
- * [MSDN Library](http://msdn.microsoft.com/en-us/library/618ayhy6.aspx)
- * [ASP.NET MVC Tutorials](http://www.asp.net/mvc/tutorials)
- * [ASP.NET Web Matrix Tutorials](http://www.asp.net/web-pages/tutorials)
- * [ASP.NET Web Forms Tutorials](http://www.asp.net/web-forms/tutorials)
- * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
- * [C# Coding Conventions](http://msdn.microsoft.com/en-us/library/vstudio/ff926074.aspx)
+ * [C# language reference](https://docs.microsoft.com/dotnet/csharp/language-reference/)
+ * [Learn .NET](https://dotnet.microsoft.com/learn)
+ * [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+ * [DotNetPerls](https://www.dotnetperls.com/)
+ * [C# in Depth](https://manning.com/skeet3)
+ * [Programming C# 5.0](http://shop.oreilly.com/product/0636920024064)
+ * [LINQ Pocket Reference](http://shop.oreilly.com/product/9780596519254)
+ * [Windows Forms Programming in C#](https://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)

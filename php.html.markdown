@@ -443,7 +443,7 @@ echo $function_name(1, 2); // => 3
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
 
 
-// You can get the all the parameters passed to a function
+// You can get all the parameters passed to a function
 function parameters() {
     $numargs = func_num_args();
     if ($numargs > 0) {
@@ -794,7 +794,7 @@ But I'm ChildClass
 
 /**********************
 *  Magic constants
-*  
+*
 */
 
 // Get current class name. Must be used inside a class declaration.
@@ -826,7 +826,7 @@ echo "Current trait is " . __TRAIT__;
 
 /**********************
 *  Error Handling
-*  
+*
 */
 
 // Simple error handling can be done with try catch block
@@ -837,7 +837,10 @@ try {
     // Handle exception
 }
 
-// When using try catch blocks in a namespaced environment use the following
+// When using try catch blocks in a namespaced environment it is important to
+// escape to the global namespace, because Exceptions are classes, and the
+// Exception class exists in the global namespace. This can be done using a
+// leading backslash to catch the Exception.
 
 try {
     // Do something
@@ -870,6 +873,9 @@ and community input.
 
 If you're interested in up-to-date best practices, visit
 [PHP The Right Way](http://www.phptherightway.com/).
+
+A tutorial covering basics of language, setting up coding environment and making
+few practical projects at [Codecourse - PHP Basics](https://www.youtube.com/playlist?list=PLfdtiltiRHWHjTPiFDRdTOPtSyYfz3iLW).
 
 If you're coming from a language with good package management, check out
 [Composer](http://getcomposer.org/).

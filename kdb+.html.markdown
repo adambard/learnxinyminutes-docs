@@ -76,7 +76,7 @@ floor 3.14159 / => 3
 / ...getting the absolute value...
 abs -3.14159 / => 3.14159
 / ...and many other things
-/ see http://code.kx.com/wiki/Reference for more
+/ see http://code.kx.com/q/ref/card/ for more
 
 / q has no operator precedence, everything is evaluated right to left
 / so results like this might take some getting used to
@@ -174,7 +174,7 @@ t - 00:10:00.000 / => 00:50:00.000
 d.year / => 2015i
 d.mm / => 12i
 d.dd / => 25i
-/ see http://code.kx.com/wiki/JB:QforMortals2/atoms#Temporal_Data for more
+/ see http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#25-temporal-data for more
 
 / q also has an infinity value so div by zero will not throw an error
 1%0 / => 0w
@@ -183,7 +183,7 @@ d.dd / => 25i
 / And null types for representing missing values
 0N / => null int
 0n / => null float
-/ see http://code.kx.com/wiki/JB:QforMortals2/atoms#Null_Values for more
+/ see http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#27-nulls for more
 
 / q has standard control structures
 / if is as you might expect (; separates the condition and instructions)
@@ -642,7 +642,7 @@ kt upsert ([]name:`Thomas`Chester;age:33 58;height:175 179;sex:`f`m)
 / => Thomas 32  175    m
 
 / Most of the standard SQL joins are present in q-sql, plus a few new friends
-/ see http://code.kx.com/wiki/JB:QforMortals2/queries_q_sql#Joins
+/ see http://code.kx.com/q4m3/9_Queries_q-sql/#99-joins
 / the two most important (commonly used) are lj and aj
 
 / lj is basically the same as SQL LEFT JOIN
@@ -669,7 +669,7 @@ aj[`time`sym;trades;quotes]
 / => 10:01:04 ge   150
 / for each row in the trade table, the last (prevailing) quote (px) for that sym
 / is joined on.
-/ see http://code.kx.com/wiki/JB:QforMortals2/queries_q_sql#Asof_Join
+/ see http://code.kx.com/q4m3/9_Queries_q-sql/#998-as-of-joins
 
 ////////////////////////////////////
 /////     Extra/Advanced      //////
@@ -689,14 +689,14 @@ first each (1 2 3;4 5 6;7 8 9)
 
 / each-left (\:) and each-right (/:) modify a two-argument function
 / to treat one of the arguments and individual variables instead of a list
-1 2 3 +\: 1 2 3
-/ => 2 3 4
-/ => 3 4 5
-/ => 4 5 6
-1 2 3 +/: 1 2 3
-/ => 2 3 4
-/ => 3 4 5
-/ => 4 5 6
+1 2 3 +\: 11 22 33
+/ => 12 23 34
+/ => 13 24 35
+/ => 14 25 36
+1 2 3 +/: 11 22 33
+/ => 12 13 14
+/ => 23 24 25
+/ => 34 35 36
 
 / The true alternatives to loops in q are the adverbs scan (\) and over (/)
 / their behaviour differs based on the number of arguments the function they
@@ -716,7 +716,7 @@ first each (1 2 3;4 5 6;7 8 9)
 {x + y}/[1 2 3 4 5] / => 15 (only the final result)
 
 / There are other adverbs and uses, this is only intended as quick overview
-/ http://code.kx.com/wiki/JB:QforMortals2/functions#Adverbs
+/ http://code.kx.com/q4m3/6_Functions/#67-adverbs
 
 ////// Scripts //////
 / q scripts can be loaded from a q session using the "\l" command
@@ -756,7 +756,7 @@ select from splayed / (the columns are read from disk on request)
 / => 1 1
 / => 2 2
 / => 3 3
-/ see http://code.kx.com/wiki/JB:KdbplusForMortals/contents for more
+/ see http://code.kx.com/q4m3/14_Introduction_to_Kdb+/ for more
 
 ////// Frameworks //////
 / kdb+ is typically used for data capture and analysis.
@@ -769,8 +769,8 @@ select from splayed / (the columns are read from disk on request)
 
 ## Want to know more?
 
-* [*q for mortals* q language tutorial](http://code.kx.com/wiki/JB:QforMortals2/contents)
-* [*kdb for mortals* on disk data tutorial](http://code.kx.com/wiki/JB:KdbplusForMortals/contents)
-* [q language reference](http://code.kx.com/wiki/Reference)
+* [*q for mortals* q language tutorial](http://code.kx.com/q4m3/)
+* [*Introduction to Kdb+* on disk data tutorial](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/)
+* [q language reference](http://code.kx.com/q/ref/card/)
 * [Online training courses](http://training.aquaq.co.uk/)
 * [TorQ production framework](https://github.com/AquaQAnalytics/TorQ)
