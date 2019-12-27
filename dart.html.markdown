@@ -211,7 +211,7 @@ example14() {
   // statically typed null can not be convert to bool
   var c = "abc";
   c = null;
-  // complie failed
+  // compile failed
   // if (c) {
   //   print("true, c is $c");
   // } else {
