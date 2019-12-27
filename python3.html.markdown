@@ -16,8 +16,6 @@ Python was created by Guido van Rossum in the early 90s. It is now one of the mo
 languages in existence. I fell in love with Python for its syntactic clarity. It's basically
 executable pseudocode.
 
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
-
 Note: This article applies to Python 3 specifically. Check out [here](http://learnxinyminutes.com/docs/python/) if you want to learn the old Python 2.7
 
 ```python
