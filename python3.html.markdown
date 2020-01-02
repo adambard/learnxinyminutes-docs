@@ -8,6 +8,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
+    - ["caminsha", "https://github.com/caminsha"]
 filename: learnpython3.py
 ---
 
@@ -228,15 +229,11 @@ li[4]  # Raises an IndexError
 # You can look at ranges with slice syntax.
 # The start index is included, the end index is not
 # (It's a closed/open range for you mathy types.)
-li[1:3]   # => [2, 4]
-# Omit the beginning and return the list
-li[2:]    # => [4, 3]
-# Omit the end and return the list
-li[:3]    # => [1, 2, 4]
-# Select every second entry
-li[::2]   # =>[1, 4]
-# Return a reversed copy of the list
-li[::-1]  # => [3, 4, 2, 1]
+li[1:3]   # Return list from index 1 to 3 => [2, 4]
+li[2:]    # Return list starting from index 2 => [4, 3]
+li[:3]    # Return list from beginning until index 3  => [1, 2, 4]
+li[::2]   # Return list selecting every second entry => [1, 4]
+li[::-1]  # Return list in reverse order => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
 
@@ -462,8 +459,19 @@ prints:
 """
 for i in range(4, 8, 2):
     print(i)
-"""
 
+"""
+To loop over a list, and retrieve both the index and the value of each item in the list
+prints:
+    0 dog
+    1 cat
+    2 mouse
+"""
+list = ["dog", "cat", "mouse"]
+for i, value in enumerate(list):
+    print(i, value)
+
+"""
 While loops go until a condition is no longer met.
 prints:
     0
@@ -494,6 +502,26 @@ with open("myfile.txt") as f:
     for line in f:
         print(line)
 
+# Writing to a file
+contents = {"aa": 12, "bb": 21}
+with open("myfile1.txt", "w+") as file:
+    file.write(str(contents))        # writes a string to a file
+
+with open("myfile2.txt", "w+") as file:
+    file.write(json.dumps(contents)) # writes an object to a file
+
+# Reading from a file
+with open('myfile1.txt', "r+") as file:
+    contents = file.read()           # reads a string from a file
+print(contents)
+# print: {"aa": 12, "bb": 21}
+
+with open('myfile2.txt', "r+") as file:
+    contents = json.load(file)       # reads a json object from a file
+print(contents)     
+# print: {"aa": 12, "bb": 21}
+
+
 # Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
 # The object returned by the range function, is an iterable.
@@ -523,8 +551,14 @@ next(our_iterator)  # => "three"
 # After the iterator has returned all of its data, it raises a StopIteration exception
 next(our_iterator)  # Raises StopIteration
 
-# You can grab all the elements of an iterator by calling list() on it.
-list(filled_dict.keys())  # => Returns ["one", "two", "three"]
+# We can also loop over it, in fact, "for" does this implicitly!
+our_iterator = iter(our_iterable)
+for i in our_iterator:
+    print(i)  # Prints one, two, three
+
+# You can grab all the elements of an iterable or iterator by calling list() on it.
+list(our_iterable)  # => Returns ["one", "two", "three"]
+list(our_iterator)  # => Returns [] because state is saved
 
 
 ####################################################

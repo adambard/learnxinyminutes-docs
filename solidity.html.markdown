@@ -483,7 +483,7 @@ for(uint x = 0; x < refundAddressList.length; x++) {
 
 // A. Calling external contract
 contract InfoFeed {
-    function info() returns (uint ret) { return 42; }
+    function info() payable returns (uint ret)  { return 42; }
 }
 
 contract Consumer {

@@ -16,7 +16,7 @@ This article will focus only on TypeScript extra syntax, as opposed to
 [JavaScript](/docs/javascript).
 
 To test TypeScript's compiler, head to the
-[Playground] (http://www.typescriptlang.org/Playground) where you will be able
+[Playground](https://www.typescriptlang.org/play) where you will be able
 to type code, have auto completion and directly see the emitted JavaScript.
 
 ```ts
@@ -199,7 +199,7 @@ interface Person {
 }
 
 var p1: Person = { name: "Tyrone", age: 42 };
-p1.age = 25; // Error, p1.x is read-only
+p1.age = 25; // Error, p1.age is read-only
 
 var p2 = { name: "John", age: 60 };
 var p3: Person = p2; // Ok, read-only alias for p2
@@ -248,13 +248,13 @@ for (const val of arrayOfAnyType) {
 
 let list = [4, 5, 6];
 for (const i of list) {
-   console.log(i); // "4", "5", "6"
+   console.log(i); // 4, 5, 6
 }
 
 // for..in statement
 // iterate over the list of keys on the object being iterated
 for (const i in list) {
-   console.log(i); // "0", "1", "2",
+   console.log(i); // 0, 1, 2
 }
 
 

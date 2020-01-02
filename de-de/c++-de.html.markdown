@@ -9,6 +9,7 @@ contributors:
     - ["Ankush Goyal", "http://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
     - ["Maximilian Sonnenburg", "https://github.com/LamdaLamdaLamda"]
+    - ["caminsha", "https://github.com/caminsha"]
 lang: de-de
 ---
 
@@ -22,10 +23,12 @@ entworfen wurde um,
 - Objektorientierung zu unterstützen
 - generische Programmierung zu unterstützen
 
-Durch seinen Syntax kann sie durchaus schwieriger und komplexer als neuere Sprachen sein.
-Sie ist weit verbeitet, weil sie in Maschinen-Code compiliert, welches direkt vom Prozessor ausgeführt
+Durch seine Syntax kann sie durchaus schwieriger und komplexer als neuere Sprachen sein.
+
+Sie ist weit verbreitet, weil sie in Maschinen-Code kompiliert, welcher direkt vom Prozessor ausgeführt
 werden kann und somit eine strikte Kontrolle über die Hardware bietet und gleichzeitig
-High-Level-Features wie generics, exceptions und Klassen enthält. (wie C) 
+High-Level-Features wie generics, exceptions und Klassen enthält.
+
 Diese Kombination aus Geschwindigkeit und Funktionalität bildet C++ und ist eine der
 weitverbreitesten Programmiersprachen.
 
@@ -34,19 +37,20 @@ weitverbreitesten Programmiersprachen.
 // Vergleich zu C
 //////////////////
 
-// C++ ist fast eine Untermenge von C and teilt sich grundsätzlich den 
-// Syntax für Variablen Deklarationen, primitiven Typen und Funktionen. 
+// C ist fast eine Untermenge von C++ und teilt sich grundsätzlich die
+// Syntax für Variablen Deklarationen, primitiven Typen und Funktionen.
 
 // Wie in C ist der Programmeinsprungpunkt eine Funktion, welche "main" genannt wird und
-// einen Ineteger als Rückgabetyp besitzt.
+// einen Integer als Rückgabetyp besitzt.
+
 // Dieser Wert fungiert als Beendigungsstatus des Programms.
 // Siehe: https://de.wikipedia.org/wiki/Return_Code für weitere Informationen
 int main(int argc, char** argv)
 {
     // Kommandozeilen Argumente werden genauso wie in C über argc und argv übergeben
-    // argc entspricht der Anzahl von Argumenten und argv ist ein Array von C-style 
+    // argc entspricht der Anzahl von Argumenten und argv ist ein Array von C-style
     // strings (char*), welche die Argumente repräsentieren.
-    // Das erste Argument ist der Name des Programms welches aufgerufen wird.
+    // Das erste Argument ist der Name des Programms, welches aufgerufen wird.
     // Argc und argv können, wenn nicht benötigt, weg gelassen werden, indem
     // die Funktionssignatur "int main()" verwendet wird.
 
@@ -54,12 +58,12 @@ int main(int argc, char** argv)
     return 0;
 }
 
-// C++ unterscheidet sich in einigen Punkten:
+// C++ unterscheidet sich in einigen Punkten von C:
 
-// In C++ sind Zeichen-Literale chars
+// In C++ sind Zeichen-Literale char´s
 sizeof('c') == sizeof(char) == 1
 
-// In C sind Zeichen-Literale ints
+// In C sind Zeichen-Literale int´s
 sizeof('c') == sizeof(int)
 
 // C++ verwendet striktes prototyping
@@ -71,8 +75,8 @@ void func(); // Funktion mit beliebiger Anzahl von Argumenten
 // Verwende nullptr, anstatt von NULL!!!
 int* ip = nullptr;
 
-// C standard headers sind in C++ verfügbar.
-// C header enden mit .h, während 
+// C standard header sind in C++ verfügbar.
+// C header enden mit .h, während
 // C++ header das Präfix "c" besitzen und kein ".h" Suffix verwenden.
 
 // Die C++ Standard Version:
@@ -115,10 +119,9 @@ int main()
 
 // Argumente können per Standard für eine Funktion gesetzt werden,
 // wenn diese beim Aufruf nicht bereitgestellt werden.
-
 void doSomethingWithInts(int a = 1, int b = 4)
 {
-    // führe Anweisungen mit "ints" aus.
+    // führe Anweisungen mit "int´s" aus.
 }
 
 int main()
@@ -135,24 +138,24 @@ void invalidDeclaration(int a = 1, int b) // Fehler!
 
 
 /////////////
-// Namespaces (Namesräume)
+// Namespaces (Namensräume)
 /////////////
 
 // Namespaces stellen einen getrennten Gültigkeitsbereich für Variablen,
 // Funktionen und andere Deklarationen zur Verfügung.
 // Namespaces können geschachtelt werden.
-namespace First 
+namespace First
 {
-    namespace Nested 
+    namespace Nested
     {
         void foo()
         {
             printf("This is First::Nested::foo\n");
         }
-    } // Ende des Namespaces "Nested"
-} // Ende des Namespaces "First"
+    } // Ende des Namespace "Nested"
+} // Ende des Namespace "First"
 
-namespace Second 
+namespace Second
 {
     void foo()
     {
@@ -167,7 +170,7 @@ void foo()
 
 int main()
 {
-    // Fügt all Symbole aus dem namespace Second in den aktuellen Gültigkeitsbereich (scope).
+    // Fügt alle Symbole aus dem namespace Second in den aktuellen Gültigkeitsbereich (scope).
     // "foo()" wird nun nicht länger funktionieren, da es nun doppeldeutig ist, ob foo aus
     // dem namespace foo oder darüberliegenden aufgerufen wird.
     using namespace Second;
@@ -236,8 +239,8 @@ cout << myString; // "Hello Dog"
 // C++ besitzt _Referenzen_.
 // Diese sind Pointer-Typen, welche nicht erneut zugewiesen werden können
 // und nicht Null sein können.
-// Sie besitzen den selben Synthax wie Variablen.
-// Für die Dereferenzierung ist kein * notwendig und 
+// Sie besitzen den selben Syntax wie Variablen.
+// Für die Dereferenzierung ist kein * notwendig und
 // & (die Adresse) wird nicht für die Zuweisung verwendet.
 
 using namespace std;
@@ -261,19 +264,18 @@ cout << fooRef;  // Gibt "I am bar" aus
 
 // Die Adresse von fooRef verbleibt die selbe, sie verweist immer noch auf foo
 
-
 const string& barRef = bar; // Erzeugt konstante Referenz auf bar.
 // Wie in C, können konstante Werte ( und Pointer bzw. Referenzen) nicht verändert werden.
 
 barRef += ". Hi!"; // Fehler: konstante Referenzen können nicht verändert werden.
 
-// Hinweis: bevor wir genauer Referenzen besprechen, schauen wir uns zuerst ein Konzept an
+// Hinweis: bevor wir genauer Referenzen besprechen, schauen wir uns zuerst ein Konzept an,
 // welches als "temporäres Objekt" bezeichnet wird. Gehen wir von folgenden Code aus:
 string tempObjectFun() { ... }
 string retVal = tempObjectFun();
 
 // Was passiert nun in der zweiten Zeile:
-//  - ein String Objekt wird von tempObjectFun zurückgegeben 
+//  - ein String Objekt wird von "tempObjectFun" zurückgegeben
 //  - ein neuer String wird mit dem zurückgegebenen Objekt als Argument für den Konstruktor erzeugt.
 //  - das zurückgegebene Objekt wird zerstört
 // Das zurückgegbene Objekt wird temporäres Objekt genannt. Temporäre Objekte werden erzeugt
@@ -282,22 +284,23 @@ string retVal = tempObjectFun();
 // für Details). Wie in diesem Code:
 foo(bar(tempObjectFun()))
 
-// Nehmen wir an foo und bar existieren. Das Objekt wird von "tempObjectFun" zurückgegeben,
+// Nehmen wir an, foo und bar existieren. Das Objekt wird von "tempObjectFun" zurückgegeben,
 // wird an bar übergeben und ist zerstört bevor foo aufgerufen wird.
 
-// Zurück zu Referenzen. Die Ausnahme, dass die "am Ende des Ausdrucks" Regel ist gültig,
-// wenn das temporäre Objekt an eine konstante Referenz gebunden ist, in welchem Fall das 
-// Leben auf den aktuellen Gültigkeitsbereich erweitert wird.
+// Zurück zu Referenzen. Die Annahme, dass die "am Ende des Ausdrucks" Regel gültig ist,
+// wenn das temporäre Objekt an eine konstante Referenz gebunden ist, ist der Fall, wenn die Lebensdauer
+// auf den aktuellen Gültigkeitsbereich erweitert wird.
 
 void constReferenceTempObjectFun() {
-  // constRef erhält das temporäre Objekt und ist gültig bis ans Ende der Funktion 
+  // constRef erhält das temporäre Objekt und ist gültig bis ans Ende der Funktion
   const string& constRef = tempObjectFun();
   ...
 }
 
-// Eine andere Art von Referenzen wird in C++11 eingeführt und ist speziell für 
-// temporäre Objekte. Es ist nicht möglich Variablen des Typs zu besitzen, aber 
-// Vorrechte bei der Auflösung.
+// Eine andere Art von Referenzen wurde in C++11 eingeführt und ist speziell für
+// temporäre Objekte. Es ist nicht möglich Variablen des Typs zu besitzen, aber
+// Vorrechte bei der Auflösung zu besitzen.
+
 void someFun(string& s) { ... }  // Reguläre Referenz
 void someFun(string&& s) { ... }  // Referenz auf ein temporäres Objekt
 
@@ -310,8 +313,8 @@ someFun(tempObjectFun());  // Ruft die Funktion mit der temporären Referenz auf
 basic_string(const basic_string& other);
 basic_string(basic_string&& other);
 
-// Nehmen wir an, wir erzeugen einen neuen String eines temporären Objekts (welches später 
-// zerstört wird), hierbei existiert ein effizienterer Konstruktor. Dieses Konzept wird 
+// Nehmen wir an, wir erzeugen einen neuen String eines temporären Objekts (welches später
+// zerstört wird), hierbei existiert ein effizienterer Konstruktor. Dieses Konzept wird
 // als "move semantics" bezeichnet (bewegen eines Objekts in ein anderes in C++).
 
 /////////////////////
@@ -333,7 +336,7 @@ ECarTypes GetPreferredCarType()
 	return ECarTypes::Hatchback;
 }
 
-// Mit C++11 existiert eine einfache Möglichkeit einem Typ dem Enum zu zuweisen. Dies
+// Mit C++11 existiert eine einfache Möglichkeit einem Typ dem Enum zuzuweisen. Dies
 // kann durchaus sinnvoll bei der Serialisierung von Daten sein, oder bei der Konvertierung
 // zwischen Typen bzw. Konstanten.
 enum ECarTypes : uint8_t
@@ -346,18 +349,18 @@ enum ECarTypes : uint8_t
 
 void WriteByteToFile(uint8_t InputValue)
 {
-    // Serialisierung von InputValue in eine Datei
+    // Serialisierung von "InputValue" in eine Datei
 }
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
     // Das enum wird implizit zu einem "uint8_t" konvertiert. Bedingt dadurch, dass
-    // es sich um ein enum handelt.
+    // es sich um ein "enum" handelt.
 	WriteByteToFile(InputCarType);
 }
 
-// Nicht immer ist es gewünscht, dass enums zu einem Integer oder zu einem anderen 
-// enum umgewandelt werden. Daher ist es möglich eine enum-Klasse zu erzeugen, welche 
+// Nicht immer ist es gewünscht, dass enum´s zu einem Integer oder zu einem anderen
+// enum umgewandelt werden. Daher ist es möglich eine enum-Klasse zu erzeugen, welche
 // nicht implizit umgewandelt wird.
 enum class ECarTypes : uint8_t
 {
@@ -374,8 +377,8 @@ void WriteByteToFile(uint8_t InputValue)
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
-    // Wird nicht kompilieren, da ECarTypes ein "uint8_t" ist, da das enum 
-    // als "enum class" deklariert wurde!
+  // Wird nicht kompilieren, da "ECarTypes" ein "uint8_t" ist, da das enum
+  // als "enum class" deklariert wurde!
 	WriteByteToFile(InputCarType);
 }
 
@@ -401,15 +404,15 @@ public:
     // Standard Konstruktor
     Dog();
 
-    // Member-Funktonensdeklaration (Implementierung folgt)
+    // Member-Funktionsdeklaration (Implementierung folgt).
     // Bemerkung: std::string statt der Verwendung von namespace std;
     // "using namespace" sollte niemals in einem header verwendet werden.
     void setName(const std::string& dogsName);
 
     void setWeight(int dogsWeight);
 
-    // Funktionen, die Objekte nicht ändern sollte mit const deklariert werden.
-    // Funktionen müssen explizit als "virtual" deklariert werden, um in einer 
+    // Funktionen, die Objekte nicht ändern, sollten mit const deklariert werden.
+    // Funktionen müssen explizit als "virtual" deklariert werden, um in einer
     // abgeleiteten Klassen überschrieben zu werden.
     // Aus performance Gründen sind Funktionen nicht per default virtual.
     virtual void print() const;
@@ -419,24 +422,24 @@ public:
     void bark() const { std::cout << name << " barks!\n"; }
 
     // Neben Konstruktoren, bietet C++ Destruktoren.
-    // Diese werden aufgerufen, wenn ein Objekt freigegeben wird oder 
-    // seinen Wertebereich verlässt. 
+    // Diese werden aufgerufen, wenn ein Objekt freigegeben wird oder
+    // seinen Wertebereich verlässt.
     // Dies ermöglicht mächtige Paradigmen, wie auch RAII.
     // Destruktoren sollten virtual sein, wenn eine Klasse von ihr
     // abgeleitet wird. Ist dieser nicht virtual, dann wird der
-    // Destruktor der abgeleiteten Klasse nicht aufgerufen, insofern 
+    // Destruktor der abgeleiteten Klasse nicht aufgerufen, insofern
     // das Objekt durch eine Referenz/Pointer der Basisklasse entfernt wird.
     virtual ~Dog();
 
 }; // Ein Semikolon schließt die Definition der Klasse ab.  
 
-// Klassen-Member-Funktionen sind üblicherweise in der .cpp Datei implmentiert. 
+// Klassen-Member-Funktionen sind üblicherweise in der .cpp Datei implementiert.
 Dog::Dog()
 {
     std::cout << "A dog has been constructed\n";
 }
 
-// Objekte sollten als Referenz übergeben werden und wenn diese nicht 
+// Objekte sollten als Referenz übergeben werden und wenn diese nicht
 // verändert werden sollen, sollte das Objekt als const Referenz übergeben werden.
 void Dog::setName(const std::string& dogsName)
 {
@@ -468,8 +471,6 @@ int main()
     return 0;
 } // Ausgabe: "Goodbye Barkley"
 
-// Vererbung:
-
 // Diese Klasse erbt alles was public bzw. protected ist von der Dog-Klasse
 // und darüber hinaus auch private Methoden/Attribute, jedoch kann auf diese
 // nicht direkt zugegriffen werden. Lediglich über public/procted getter/setter.
@@ -481,7 +482,7 @@ public:
     // Überschreibt das Verhalten der "print" Funktion für alle "OwnedDogs".
     // Siehe: http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
     // für eine grundlegende Einführung in "Subtype Polymorphismus".
-    // Das "override" Schlüsselwort ist optional, aber stellt sicher, dass die 
+    // Das "override" Schlüsselwort ist optional, aber stellt sicher, dass die
     // Methode der Basisklasse tatsächlich überschrieben wurde.
     void print() const override;
 
@@ -555,7 +556,7 @@ Point& Point::operator+=(const Point& rhs)
     return *this;
 }
 
-int main () 
+int main ()
 {
     Point up (0,1);
     Point right (1,0);
@@ -574,26 +575,26 @@ int main ()
 // Templates in C++ werden in erster Linie dafür verwendet generisch zu programmieren.
 // Sie unterstützen explizite und partielle Spezialisierung und darüber hinaus können
 // sie für funktionale Klassen verwendet werden.
-// Tatsächlich bilden templates die Turing-Vollständigkeit 
+// Tatsächlich bilden Templates die Turing-Vollständigkeit
 // (universelle Programmierbarkeit) ab.
 
 
 // Zu Beginn ein einführendes Beispiel der generischen Programmierung.
 // Die Definition einer Klasse bzw. Funktion, welche mit dem Typ T parametriert wird.
 template<class T>
-class Box 
+class Box
 {
 public:
     // T repräsentiert an dieser Stelle einen beliebigen Typen.
     void insert(const T&) { ... }
 };
 
-// Während der Kompilierung generiert der Kompiler Kopien für jedes Template, wobei 
-// hierbei die Parameter substituiert werden. Somit muss bei jedem Aufruf die gesamte 
-// Definition der Klasse zur Verfügung stehen. Aus diesem Grund wird ein Template 
+// Während der Kompilierung generiert der Compiler Kopien für jedes Template, wobei
+// hierbei die Parameter substituiert werden. Somit muss bei jedem Aufruf die gesamte
+// Definition der Klasse zur Verfügung stehen. Aus diesem Grund wird ein Template
 // komplett im header definiert.
 
-// Erzeugung einer Template-Klasse auf dem stack:
+// Erzeugung einer Template-Klasse auf dem Stack:
 Box<int> intBox;
 
 // eine der zu erwartenden Verwendungen:
@@ -609,10 +610,10 @@ boxOfBox.insert(intBox);
 // Manchmal ist folgende Notation anzutreffen:
 // template<typename T>
 // Das 'class' Schlüsselwort und das 'typename' Schlüsselwort
-// sind fast identisch hinsichtlich der Funktionalität. Weitere 
+// sind fast identisch hinsichtlich der Funktionalität. Weitere
 // Informationen auf: http://en.wikipedia.org/wiki/Typename
 
-// Eine template-Funktion:
+// Eine Template-Funktion:
 template<class T>
 void barkThreeTimes(const T& input)
 {
@@ -622,8 +623,8 @@ void barkThreeTimes(const T& input)
 }
 
 // Hierbei ist zu beachten, dass an dieser Stelle nichts über den Typen des Parameters
-// definiert wurde. Der Kompiler wird bei jedem Aufruf bzw. jeder Erzeugung den Typen
-// prüfen. Somit funktioniert die zuvor definiert Funktion für jeden Typ 'T', die die 
+// definiert wurde. Der Compiler wird bei jedem Aufruf bzw. jeder Erzeugung den Typen
+// prüfen. Somit funktioniert die zuvor definierte Funktion für jeden Typ 'T', die die
 // const Methode 'bark' implementiert hat.
 
 Dog fluffy;
@@ -632,15 +633,15 @@ barkThreeTimes(fluffy); // Gibt "Fluffy barks" dreimal aus.
 
 // Template Parameter müssen keine Klassen sein.
 template<int Y>
-void printMessage() 
+void printMessage()
 {
   cout << "Learn C++ in " << Y << " minutes!" << endl;
 }
 
-// Des Weiteren können templates aus Effizienzgründen genauer spezifiziert werden.
-// Selbstverständlich sind reale-Problemen, welche genauer spezifiziert werden nicht
-// derart trivial. Auch wenn alle Parameter explizit definiert wurden, muss die 
-// Funktion oder Klasse als template deklariert werden.
+// Des Weiteren können Templates aus Effizienzgründen genauer spezifiziert werden.
+// Selbstverständlich sind reale Probleme, welche genauer spezifiziert werden, nicht
+// derart trivial. Auch wenn alle Parameter explizit definiert wurden, muss die
+// Funktion oder Klasse als Template deklariert werden.
 template<>
 void printMessage<10>()
 {
@@ -655,17 +656,17 @@ printMessage<10>();  // Gibt "Learn C++ faster in only 10 minutes!" aus.
 // Ausnahme Behandlungen (Exception-Handling)
 /////////////////////
 
-// Die Standard Bibliothek bietet einige Exceptions.
+// Die Standard Bibliothek bietet einige exceptions.
 // Siehe: http://en.cppreference.com/w/cpp/error/exception.
-// Grundsätzlich können alle Typen als Exception geworfen werden.
+// Grundsätzlich können alle Typen als exception geworfen werden.
 #include <exception>
 #include <stdexcept>
 
-// Alle Exceptions, die in dem "try" Block geworfen werden, können mittels 
+// Alle exceptions, die in dem "try" Block geworfen werden, können mittels
 // "catch" abgefangen werden.
-try 
+try
 {
-    // Exceptions sollten nicht auf dem heap mithilfe 
+    // exceptions sollten nicht auf dem heap mithilfe
     // von "new" allokiert werden.
     throw std::runtime_error("A problem occurred");
 }
@@ -690,7 +691,7 @@ catch (...)
 
 // RAII steht für "Resource Acquisition Is Initialization".
 // Oft wird dies als eines der wichtigsten Paradigmen in C++ betrachtet.
-// RAII beschreibt das Konzept, dass der Konstruktor für ein Objekt 
+// RAII beschreibt das Konzept, dass der Konstruktor für ein Objekt
 // die Ressourcen akquiriert und der Destruktor diese freigibt.
 
 // Zum Verständnis, warum dies sinnvoll ist, nachfolgend
@@ -726,7 +727,7 @@ bool doSomethingWithAFile(const char* filename)
         return false; // Fehler "melden".
     }
 
-    if (!doSomethingElseWithIt(fh)) 
+    if (!doSomethingElseWithIt(fh))
     {
         fclose(fh); // File handle schließen.
         return false; // Fehler "melden".
@@ -770,12 +771,12 @@ void doSomethingWithAFile(const char* filename)
         doSomethingWithTheFile(fh);
         doSomethingElseWithIt(fh);
     }
-    catch (...) 
+    catch (...)
     {
-        // Im Fehlerfall sollte sichergestellt sein, dass die 
+        // Im Fehlerfall sollte sichergestellt sein, dass die
         // Datei geschlossen wird.
-        fclose(fh); 
-        throw; // Erneutes werfen der Exception
+        fclose(fh);
+        throw; // Erneutes werfen der exception
     }
 
     fclose(fh); // Schließen der Datei
@@ -796,7 +797,7 @@ void doSomethingWithAFile(const std::string& filename)
 } // Die Datei wird automatisch vom Destruktor geschlossen.
 
 // Diese Vorgehensweise bietet massive Vorteile:
-// 1. Egal was passiert, die Ressource (das Datei-Handle) wird aufgelöst, 
+// 1. Egal was passiert, die Ressource (das Datei-Handle) wird aufgelöst,
 //    insofern der Destruktor korrekt beschrieben wurde. Es ist möglich
 //    zu vergessen das Datei-Handle zu schließen, was zu einem "leak" der
 //    entsprechenden Ressource führt.
@@ -804,13 +805,13 @@ void doSomethingWithAFile(const std::string& filename)
 //    Der Destruktor wird das Datei-Handle im Hintergrund schließen und der
 //    Programmierer muss sich darum keinerlei Sorgen machen.
 // 3. Der Code ist "exception sicher".
-//    Egal wo die exception geworfen wird, das Aufäumen wird definitv vollzogen.
+//    Egal wo die exception geworfen wird, das Aufräumen wird definitiv vollzogen.
 
 // Der gesamte idiomatische C++ Code verwendet RAII für alle Ressourcen.
 // Weitere Beispiele:
 // - Speicher verwenden "unique_ptr" und "shared_ptr".
 // - Container - verkettete Listen (linked list), vector (selbst organisierende
-//   Arrays), hash maps, etc., entfernen deren Inhalt, wenn diese außerhalb des 
+//   Arrays), hash maps, etc., entfernen deren Inhalt, wenn diese außerhalb des
 //   Gültigkeitsbereichs laufen.
 // - Mutex´s verwenden lock_guard und unique_lock.
 
@@ -818,9 +819,9 @@ void doSomethingWithAFile(const std::string& filename)
 // Container
 /////////////////////
 
-// Die Container der Standard Tenplate Bibliothek beinhaltet einige vordefinierter templates.
+// Die Container der Standard template Bibliothek beinhaltet einige vordefinierte Templates.
 // Diese verwalten die Speicherbereiche für die eigenen Elemente und stellen Member-Funktionen
-// für den Zugriff und die Maniplulation bereit.
+// für den Zugriff und die Manipulation bereit.
 
 // Beispielhafte Container:
 
@@ -842,7 +843,7 @@ for (int i = 0; i < my_vector.size(); i++)
 
 // Oder die Verwendung von Iteratoren:
 vector<string>::iterator it; // Initialisierng des Iterators.
-for (it = my_vector.begin(); it != my_vector.end(); ++it) 
+for (it = my_vector.begin(); it != my_vector.end(); ++it)
 {
 	cout << *it  << endl;
 }
@@ -861,13 +862,13 @@ ST.insert(30);  // Einfügen des Werts 30 in das Set ST
 //  10 20 30
 
 // Entfernen eines Elements:
-ST.erase(20); 
+ST.erase(20);
 
 // Set ST: 10 30
 // Für das iterieren verwenden wir Iteratoren:
 set<int>::iterator it;
 
-for(it=ST.begin();it<ST.end();it++) 
+for(it=ST.begin();it<ST.end();it++)
 {
 	cout << *it << endl;
 }
@@ -876,7 +877,7 @@ for(it=ST.begin();it<ST.end();it++)
 // 10
 // 30
 
-// Zum leeren des gesmten Container wird die Methode 
+// Zum leeren des gesamten Containers wird die Methode
 // Container._name.clear() verwendet.
 ST.clear();
 cout << ST.size();  // Ausgabe der Set-Größe
@@ -885,7 +886,7 @@ cout << ST.size();  // Ausgabe der Set-Größe
 
 // Bemerkung: für mehrdeutige Elemente werden multisets verwendet.
 // Für hash-Sets sollten unordered_set´s verwendet werden, da diese
-// wesentlich effizienter sind, allerdings keiner Ordnung folgen. 
+// wesentlich effizienter sind, allerdings keiner Ordnung folgen.
 // Verfügbar sind diese Features ab C++11.
 
 // Map
@@ -899,7 +900,7 @@ mymap.insert(pair<char,int>('A',1)); // Einfügen des Werts "1" für den Key "A"
 
 mymap.insert(pair<char,int>('Z',26)); // Einfügen des Werts "26" für den Key "Z".
 
-// Das Iterieren über Maps: 
+// Das Iterieren über Maps:
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
     std::cout << it->first << "->" << it->second << '\n';
@@ -918,25 +919,25 @@ cout << it->second;
 // sind effizienter und benötigen keine Reihenfolge. "unordered_maps" sind ab
 // C++11 verfügbar.
 
-// Container für nicht-primitve Datentypen benötigen Vergleichsfunktionen im Objekt selbst,
+// Container für nicht-primitive Datentypen benötigen Vergleichsfunktionen im Objekt selbst,
 // oder als Funktionspointer. Primitive Datentypen besitzen default-Vergleichsfunktionen.
 // Allerdings können diese überschrieben werden.
-class Foo 
+class Foo
 {
 public:
     int j;
     Foo(int a) : j(a) {}
 };
 
-struct compareFunction 
+struct compareFunction
 {
-    bool operator()(const Foo& a, const Foo& b) const 
+    bool operator()(const Foo& a, const Foo& b) const
     {
         return a.j < b.j;
     }
 };
 
-// Folgender Code ist nicht valide, könnte aber von einigen Compilern 
+// Folgender Code ist nicht valide, könnte aber von einigen Compilern
 // als valide angesehen werden:
 // std::map<Foo, int> fooMap;
 std::map<Foo, int, compareFunction> fooMap;
@@ -948,11 +949,11 @@ fooMap.find(Foo(1)); // Wahr
 // Lambda Ausdrücke (C++11 und höher)
 ///////////////////////////////////////
 
-// Lambdas sind eine gängige Methodik um anonyme Funktionen an dem
-// Ort der Verwendung zu definieren. Darüber hinaus auch bei der 
+// Lambdas sind eine gängige Methodik, um anonyme Funktionen an dem
+// Ort der Verwendung zu definieren. Darüber hinaus auch bei der
 // Verwendung von Funktionen als Argument einer Funktion.
 
-// Nehmen wir an es soll ein Vektor von "pairs" (Paaren) mithilfe 
+// Nehmen wir an, es soll ein Vektor von "pairs" (Paaren) mithilfe
 // des zweiten Werts des "pairs" sortiert werden.
 
 vector<pair<int, int> > tester;
@@ -966,21 +967,21 @@ sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int,
         return lhs.second < rhs.second;
 });
 
-// Beachte den Syntax von Lambda-Ausdrücken.
+// Beachte die Syntax von Lambda-Ausdrücken.
 // Die [] im Lambda Ausdruck werden für die Variablen verwendet.
-// Diese so genannte "Capture List" definiert, was außerhalb des Lambdas
+// Diese so genannte "capture list" definiert, was außerhalb des Lambdas,
 // innerhalb der Funktion verfügbar sein soll und in welcher Form.
 // Dies kann folgendes sein:
 //     1. ein Wert [x]
 //     2. eine Referenz [&x]
-//     3. eine beliebige Variable, welche sich im Gültigkeitsbereich durch 
+//     3. eine beliebige Variable, welche sich im Gültigkeitsbereich durch
 //        die Referenz [&] befindet.
 //     4. wie bei 3. aber mithilfe des Werts [=]
 // Beispiel:
 
 vector<int> dog_ids;
 
-for(int i = 0; i < 3; i++) 
+for(int i = 0; i < 3; i++)
 {
 	dog_ids.push_back(i);
 }
@@ -1013,8 +1014,7 @@ for(int elem: arr)
 }
 
 // Insofern "auto" verwendet wird, muss der Typ nicht weiter beachtet werden.
-
-for(auto elem: arr) 
+for(auto elem: arr)
 {
 	// Anweisungen ...
 }
@@ -1026,21 +1026,20 @@ for(auto elem: arr)
 // Einige Aspekte von C++ sind für Neueinsteiger häufig überraschend (aber auch für
 // C++ Veteranen).
 // Der nachfolgende Abschnitt ist leider nicht vollständig:
-// C++ ist eine der Sprachen, bei der es ein leichtes ist sich selbst ins Bein zu schießen.
+// C++ ist eine der Sprachen, bei der es ein Leichtes ist, sich selbst ins Bein zu schießen.
 
 // Private-Methoden können überschrieben werden
-class Foo 
+class Foo
 {
   virtual void bar();
 };
 
-class FooSub : public Foo 
+class FooSub : public Foo
 {
   virtual void bar();  // Überschreibt Foo::bar!
 };
 
-
-// 0 == false == NULL 
+// 0 == false == NULL
 bool* pt = new bool;
 *pt = 0; // Setzt den Wert des Pointers 'pt' auf false.
 pt = 0;  // Setzt 'pt' auf den "null-pointer". Keine Compiler-Warnung.
@@ -1050,18 +1049,17 @@ int* pt2 = new int;
 *pt2 = nullptr; // Kompiliert nicht.
 pt2 = nullptr;  // Setzt pt2 auf null.
 
-// Eine Ausnahme bilden bools.
+// Eine Ausnahme bilden bool´s.
 // Dies erlaubt es "null-pointer" zu testen: if(!ptr)
 // Die Konsequenz ist jedoch, dass dem nullptr ein bool zugewiesen werden kann.
-*pt = nullptr;  // Kompiliert auch wenn '*pt' ein bool ist!
-
+*pt = nullptr;  // Kompiliert auch, wenn '*pt' ein bool ist!
 
 // '=' != '=' != '='!
 // Ruft Foo::Foo(const Foo&) auf, oder den Kopierkonstruktor
 Foo f2;
 Foo f1 = f2;
 
-// Ruft Foo::Foo(const Foo&) auf, aber kopiert lediglich den "Foo" Teil von 
+// Ruft Foo::Foo(const Foo&) auf, aber kopiert lediglich den "Foo" Teil von
 // "fooSub". Alle zusätzlichen Member werden verworfen. Diese eigenartige Verhalten
 // wird auch "object slicing" genannt.
 FooSub fooSub;
@@ -1077,10 +1075,10 @@ f1 = f2;
 
 #include<tuple>
 
-// Konzeptionell sind Tuples alten Datenstrukturen sehr ähnlich, allerdings haben diese keine 
-// benamten Daten-Member, sondern werden durch die Reihenfolge angesprochen.
+// Konzeptionell sind Tupel alten Datenstrukturen sehr ähnlich, allerdings haben diese keine
+// bezeichneten Daten-Member, sondern werden durch die Reihenfolge angesprochen.
 
-// Erstellen des Tuples und das Einfügen eines Werts. 
+// Erstellen des Tupels und das Einfügen eines Werts.
 auto first = make_tuple(10, 'A');
 const int maxN = 1e9;
 const int maxL = 15;
@@ -1105,7 +1103,7 @@ tuple<int, char, double> third(11, 'A', 3.14141);
 
 cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
 
-// tuple_cat fügt die Elemente eines Tuples aneinander (in der selben Reihenfolge).
+// tuple_cat fügt die Elemente eines Tupels aneinander (in der selben Reihenfolge).
 
 auto concatenated_tuple = tuple_cat(first, second, third);
 // concatenated_tuple wird zu = (10, 'A', 1e9, 15, 11, 'A', 3.14141)
@@ -1122,8 +1120,7 @@ cout << get<5>(concatenated_tuple) << "\n"; // Ausgabe: 'A'
 // Die meisten Operatoren in C++ entsprechen denen aus anderen Sprachen
 
 // Logische Operatoren.
-
-// C++ verwendet so genannte "Short-circuit" Evaluierung für boolean-Ausdrücke.
+// C++ verwendet so genannte "Short-circuit" Evaluierung für Boolean-Ausdrücke.
 // Das zweite Argument wird ausgeführt bzw. evaluiert, wenn das erste Argument genügt,
 // um den Ausdruck zu bestimmen.
 

@@ -247,6 +247,14 @@ else
   'else, also optional'
 end
 
+# If a condition controls invokation of a single statement rather than a block of code
+# you can use postfix-if notation
+warnings = ['Patronimic is missing', 'Address too short']
+puts("Some warnings occurred:\n" + warnings.join("\n"))  if !warnings.empty?
+
+# Rephrase condition if `unless` sounds better than `if`
+puts("Some warnings occurred:\n" + warnings.join("\n"))  unless warnings.empty?
+
 # Loops
 # In Ruby, traditional `for` loops aren't very common. Instead, these 
 # basic loops are implemented using enumerable, which hinges on `each`.
@@ -402,7 +410,7 @@ def guests(&block)
 end
 
 # The 'call' method on the Proc is similar to calling 'yield' when a block is 
-# present. The arguments passed to 'call' will be forwarded to the block as arugments.
+# present. The arguments passed to 'call' will be forwarded to the block as arguments.
 
 guests { |n| "You have #{n} guests." }
 # => "You have 4 guests."

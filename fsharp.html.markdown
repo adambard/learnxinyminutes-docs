@@ -14,7 +14,7 @@ The syntax of F# is different from C-style languages:
 * Curly braces are not used to delimit blocks of code. Instead, indentation is used (like Python).
 * Whitespace is used to separate parameters rather than commas.
 
-If you want to try out the code below, you can go to [tryfsharp.org](http://www.tryfsharp.org/Create) and paste it into an interactive REPL.
+If you want to try out the code below, you can go to [https://try.fsharp.org](https://try.fsharp.org) and paste it into an interactive REPL.
 
 ```csharp
 
