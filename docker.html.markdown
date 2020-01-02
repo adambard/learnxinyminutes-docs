@@ -106,4 +106,29 @@ docker logs test_container
 ::  https://docs.docker.com/get-started/
 
 docker rm test_container
+
+docker run ubuntu
+::  Unable to find image 'ubuntu:latest' locally
+::  latest: Pulling from library/ubuntu
+::  2746a4a261c9: Pull complete                                                                                                                                                 4c1d20cdee96: Pull complete                                                                                                                                                 0d3160e1d0de: Pull complete                                                                                                                                                 c8e37668deea: Pull complete                                                                                                                                                 Digest: sha256:250cc6f3f3ffc5cdaa9d8f4946ac79821aafb4d3afc93928f0de9336eba21aa4
+::  Status: Downloaded newer image for ubuntu:latest
+
+docker ps -a
+::  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
+::  c19e9e5b000a        ubuntu              "/bin/bash"         5 seconds ago       Exited (0) 4 seconds ago                       relaxed_nobel
+
+::  running a container in an interactive mode
+docker run -it ubuntu
+::  root@e2cac48323d2:/# uname
+::  Linux
+::  root@e2cac48323d2:/# exit
+::  exit
+
+docker rm relaxed_nobel
+
+docker ps -a
+:: CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                          PORTS               NAMES
+:: e2cac48323d2        ubuntu              "/bin/bash"         2 minutes ago       Exited (0) About a minute ago                       nifty_goldwasser
+
+docker rm nifty_goldwasser
 ```
