@@ -471,7 +471,7 @@ void str_reverse_through_pointer(char *str_in) {
 Лучше всего найдите копию [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
 Это **книга** написанная создателями Си. Но будьте осторожны, она содержит идеи которые больше не считаются хорошими.
 
-Другой хороший ресурс: [Learn C the hard way](http://c.learncodethehardway.org/book/).
+Другой хороший ресурс: [Learn C the hard way](http://learncodethehardway.org/c/).
 
 Если у вас появился вопрос, почитайте [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
