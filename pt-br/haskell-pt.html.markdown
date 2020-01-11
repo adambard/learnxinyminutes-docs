@@ -41,7 +41,7 @@ o desenvolvimento deste paradigma de programação.
 7 * 7 -- 7 vezes 7
 7 / 7 -- 7 dividido por 7
 
--- Divisões não são inteiras, são fracionádas por padrão da linguagem
+-- Divisões não são inteiras, são fracionadas por padrão da linguagem
 28736 / 82374 -- 0.3488479374559934
 
 
