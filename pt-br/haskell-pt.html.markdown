@@ -67,7 +67,7 @@ not False -- Nega uma falácia
 7 > 7 -- 7 é maior que 7 ?
 
 
-{- Haskell é uma linguagem que tem uma sintáxe bastante familiar na
+{- Haskell é uma linguagem que tem uma sintaxe bastante familiar na
    matemática, por exemplo em chamadas de funções você tem:
 
    NomeFunção ArgumentoA ArgumentoB ArgumentoC ...
