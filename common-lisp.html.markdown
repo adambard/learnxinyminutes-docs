@@ -69,7 +69,7 @@ t             ; another atom, denoting true
 ;;; is a good starting point. Third party libraries can be easily installed with
 ;;; Quicklisp
 
-;;; CL is usually developed with a text editor and a Real Eval Print
+;;; CL is usually developed with a text editor and a Read Eval Print
 ;;; Loop (REPL) running at the same time. The REPL allows for interactive
 ;;; exploration of the program while it is running "live".
 
