@@ -289,7 +289,7 @@ public class LearnJava {
         //            interface. This allows the execution time of basic
         //            operations, such as get and insert element, to remain
         //            constant-amortized even for large sets.
-        // TreeMap - A Map that is sorted by its keys. Each modification 
+        // TreeMap - A Map that is sorted by its keys. Each modification
         //           maintains the sorting defined by either a Comparator
         //           supplied at instantiation, or comparisons of each Object
         //           if they implement the Comparable interface.
@@ -470,11 +470,11 @@ public class LearnJava {
         // <second value>"
         int foo = 5;
         String bar = (foo < 10) ? "A" : "B";
-        System.out.println("bar : " + bar); // Prints "bar : A", because the 
+        System.out.println("bar : " + bar); // Prints "bar : A", because the
         // statement is true.
         // Or simply
         System.out.println("bar : " + (foo < 10 ? "A" : "B"));
-        
+
 
         ////////////////////////////////////////
         // Converting Data Types
@@ -918,7 +918,7 @@ public class Lambdas {
         planets.keySet().forEach(p -> System.out.format("%s\n", p));
 
         // Tracing the above, we see that planets is a HashMap, keySet() returns
-        // a Set of its keys, forEach applies each element as the lambda 
+        // a Set of its keys, forEach applies each element as the lambda
         // expression of: (parameter p) -> System.out.format("%s\n", p). Each
         // time, the element is said to be "consumed" and the statement(s)
         // referred to in the lambda body is applied. Remember the lambda body
@@ -997,6 +997,8 @@ The links provided here below are just to get an understanding of the topic, fee
 * [Codingbat.com](http://codingbat.com/java)
 
 * [Codewars - Java Katas](https://www.codewars.com/?language=java)
+
+* [University of Helsinki - Object-Oriented programming with Java](http://moocfi.github.io/courses/2013/programming-part-1/)
 
 **Books**:
 
