@@ -15,7 +15,7 @@ in the shell.
 A key difference with Bash is that it is mostly objects that you manipulate
 rather than plain text.
 
-[Read more here.](https://docs.microsoft.com/zh-cn/powershell/scripting/overview)
+[Read more here.](https://docs.microsoft.com/powershell/scripting/overview)
 
 If you are uncertain about your environment:
 
