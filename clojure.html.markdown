@@ -306,6 +306,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 ;;;;;;;;;;;;;;;
 
 ; Use "use" to get all functions from the module
+; without the need to call functions with its namespace
 (use 'clojure.set)
 
 ; Now we can use set operations
