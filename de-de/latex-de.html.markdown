@@ -39,13 +39,13 @@ filename: latex-de.tex
 % Dieses Kommando kann man später benutzen.
 \newcommand{\comment}[1]{}
 
-% Es können durchaus noch weitere Optione für das Dokument gesetzt werden!
+% Es können durchaus noch weitere Optionen für das Dokument gesetzt werden!
 \author{Chaitanya Krishna Ande, Colton Kohnke \& Sricharan Chiruvolu}
 \date{\today}
 \title{Learn \LaTeX\ in Y Minutes!}
 
 % Nun kann's losgehen mit unserem Dokument.
-% Alles vor dieser Zeile wird die Preamble genannt.
+% Alles vor dieser Zeile wird die Präambel genannt.
 \begin{document}
 
 \comment{
@@ -62,7 +62,7 @@ filename: latex-de.tex
 % Inhalt erscheinen.
 % Dieser Befehl ist in den Dokumentenklassen article und report verfügbar.
 \begin{abstract}
- \LaTeX -Documentation geschrieben in \LaTeX ! Wie ungewöhnlich und garantiert nicht meine Idee!
+ \LaTeX -Dokumentation geschrieben in \LaTeX ! Wie ungewöhnlich und garantiert nicht meine Idee!
 \end{abstract}
 
 % Section Befehle sind intuitiv.
@@ -113,7 +113,7 @@ anderen Wissenschaften. Und deswegen müssen wir in der Lage sein, spezielle
 Symbole zu unserem Paper hinzuzufügen! \\
 
 Mathe kennt sehr viele Symbole, viel mehr als auf einer Tastatur zu finden sind;
-Symbole für Mengen und relationen, Pfeile, Operatoren und Griechische Buchstaben,
+Symbole für Mengen und Relationen, Pfeile, Operatoren und Griechische Buchstaben,
 um nur ein paar zu nennen.\\
 
 Mengen und Relationen spielen eine sehr wichtige Rolle in vielen mathematischen
