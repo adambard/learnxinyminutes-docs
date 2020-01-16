@@ -6,11 +6,12 @@ contributors:
   - ["Vince Ramces Oliveros", "https://github.com/ram231"]
 ---
 
-Dart is a newcomer into the realm of programming languages.
-It borrows a lot from other mainstream languages, having as a goal not to deviate too much from
-~~its JavaScript sibling. Like JavaScript, Dart aims for great browser integration.~~
+**Dart** is a single threaded, general puprose programming languages.
+It borrows a lot from other mainstream languages.
+It supports Streams, Futures(known as Promises in JavaScript), Generics, First-class functions(closures) and static type checking.
+Dart can run in any platform such as Web, CLI,Desktop, Mobile and IoT devices.
 
-Dart's most controversial feature must be its ~~Optional Typing~~ Static Type safety and [Sound Type checks](https://dart.dev/guides/language/sound-dart).
+Dart's most controversial feature is its ~~Optional Typing~~ Static Type safety and [Sound Type checks](https://dart.dev/guides/language/sound-dart).
 
 ```dart
 import "dart:collection";
@@ -20,11 +21,53 @@ import "dart:math" as math;
 /// This is an executable tutorial. You can run it with Dart or on
 /// the Try Dart! site if you copy/paste it there. http://dartpad.dev/
 /// You can also run Flutter in DartPad by click the `< > New Pad ` and choose Flutter
+
+
+/// In Dart, Everything is an Object.
+/// Every declaration of an object is an instance of Null and
+/// Null is also an object.
+
+
+/// 3 Types of comments in dart
+// Single line comment
+/**
+* Multi-line comment
+* Can comment more than 2 lines
+*/
+/// Code doc comment
+/// It uses markdown syntax to generate code docs when making an API.
+/// Code doc comment is the recommended choice when documenting your APIs, classes and methods.
+
+/// 4 types of variable declaration.
+/// Constants are variables that are immutable cannot be change or altered.
+/// `const` in dart should practice SCREAMING_SNAKE_CASE name declaration.
+const CONSTANT_VALUE = "I CANNOT CHANGE";
+CONSTANT_VALUE = "DID I?"; //Error
+/// Final is another variable declaration that cannot be change once it has been instantiated. Commonly used in classes and functions
+/// `final` can be declared in pascalCase.
+final finalValue = "value cannot be change once instantiated";
+finalValue = "Seems not"; //Error
+
+/// `var` is another variable declaration that is mutable and can change its value. Dart will infer types and will not change its data type
+var mutableValue = "Variable string";
+mutableValue = "this is valid";
+mutableValue = false; // Error.
+
+/// `dynamic` is another variable declaration in which the type is not evaluated by the dart static type checking.
+/// It can change its value and data type.
+/// Some dartisans uses dynamic cautiously as it cannot keep track of its data type. so use it at your own risk
+dynamic dynamicValue = "I'm a string";
+dynamicValue = false; // false
+
+
+/// Functions can be declared in a global space
 /// Function declaration and method declaration look the same. Function
 /// declarations can be nested. The declaration takes the form of
 /// name() {} or name() => singleLineExpression;
-/// The fat arrow function declaration can be an implicit or explicit return for the result of
-/// the expression.
+/// The fat arrow function declaration can be an implicit or
+/// explicit return for the result of the expression.
+/// Dart will execute a function called `main()` anywhere in the dart project.
+///
 example1() {
   nested1() {
     nested2() => print("Example1 nested 1 nested 2");
@@ -33,7 +76,7 @@ example1() {
   nested1();
 }
 
-/// Anonymous functions don't include a name.
+/// Anonymous functions don't include a name but can take number of arguments
 example2() {
   //// Explicit return type.
   nested1(Function<void> fn) {
@@ -43,10 +86,10 @@ example2() {
 }
 
 /// When a function parameter is declared, the declaration can include the
-/// number of parameters the function takes by specifying the names of the
+/// number of parameters the function takes by explicitly specifying the names of the
 /// parameters it takes.
 example3() {
-  planA(fn(informSomething)) {
+  planA(fn(String informSomething)) {
     fn("Example3 plan A");
   }
   planB(fn) { /// Or don't declare number of parameters.
@@ -57,6 +100,8 @@ example3() {
 }
 
 /// Functions have closure access to outer variables.
+/// Dart will infer types when the variable has a value of something.
+/// In this example dart knows that this variable is a String.
 var example4Something = "Example4 nested 1";
 example4() {
   nested1(fn(informSomething)) {
@@ -76,6 +121,7 @@ class Example5Class {
 example5() {
   /// Create an anonymous instance of the Example5Class and call the sayIt
   /// method on it.
+  /// the `new` keyword is optional in Dart.
   new Example5Class().sayIt();
 }
 
@@ -89,7 +135,7 @@ class Example6Class {
   }
 }
 example6() {
-  new Example6Class().sayIt();
+   Example6Class().sayIt();
 }
 
 /// Class methods and variables are declared with "static" terms.
@@ -107,24 +153,68 @@ example7() {
   new Example7Class().sayItFromInstance();
 }
 
-/// Literals are great, but there's a restriction for what literals can be
-/// outside of function/method bodies. Literals on the outer scope of class
+/// Dart supports Generics.
+/// Generics refers to the technique of writing the code for a class
+/// without specifying the data type(s) that the class works on.
+/// Source: https://stackoverflow.com/questions/4560890/what-are-generics-in-c
+
+/// Type `T` refers to any type that has been instantiated
+/// you can call whatever you want
+/// Programmers uses the convention in the following
+/// T - Type(used for class and primitype types)
+/// E - Element(used for List, Set, or Iterable)
+/// K,V - Key Value(used for Map)
+class GenericExample<T>{
+  void printType(){
+    print("$T")
+  }
+  // methods can also have generics
+  genericMethod<M>(){
+    print("class:$T, method: $M");
+  }
+}
+
+
+/// List are similar to arrays but list is a child of Iterable<E>
+/// Therefore Maps, List, LinkedList are all child of Iterable<E> to be able to loop using the keyword `for`
+/// Important things to remember:
+/// () - Iterable<E>
+/// [] - List<E>
+/// {} - Map<K,V>
+
+
+/// List are great, but there's a restriction for what List can be
+/// outside of function/method bodies. List on the outer scope of class
 /// or outside of class have to be constant. Strings and numbers are constant
 /// by default. But arrays and maps are not. They can be made constant by
-/// declaring them "const".
-var example8Array = const ["Example8 const array"],
-  example8Map = const {"someKey": "Example8 const map"};
+/// declaring them "const". Kind of similar to Javascript's Object.freeze()
+const example8List = ["Example8 const array"],
+const  example8Map = {"someKey": "Example8 const map"};
+/// Declare List or Maps as Objects.
+ List<String> explicitList = new List<String>();
+ Map<String,dynamic> explicitMaps = new Map<String,dynamic>();
+
+ explicitList.add("SomeArray");
 example8() {
   print(example8Array[0]);
   print(example8Map["someKey"]);
+  print(explicitList[0]);
 }
+
+/// Assigning a list from one variable to another will not be the same result.
+/// Because dart is pass-reference-by-value.
+/// So when you assign an existing list to a new variable.
+/// Instead of List, it becomes an Iterable
+var iterableExplicitList = explicitList;
+print(iterableExplicitList) // ("SomeArray"); "[]" becomes "()"
+var newExplicitLists = explicitList.toList() // Converts Iterable<E> to List<E>
 
 /// Loops in Dart take the form of standard for () {} or while () {} loops,
 /// slightly more modern for (.. in ..) {}, or functional callbacks with many
-/// supported features, starting with forEach.
+/// supported features, starting with forEach,map and where.
 var example9Array = const ["a", "b"];
 example9() {
-  for (var i = 0; i < example9Array.length; i++) {
+  for (final i = 0; i < example9Array.length; i++) {
     print("Example9 for loop '${example9Array[i]}'");
   }
   var i = 0;
@@ -132,10 +222,12 @@ example9() {
     print("Example9 while loop '${example9Array[i]}'");
     i++;
   }
-  for (var e in example9Array) {
+  for (final e in example9Array) {
     print("Example9 for-in loop '${e}'");
   }
+
   example9Array.forEach((e) => print("Example9 forEach loop '${e}'"));
+
 }
 
 /// To loop over the characters of a string or to extract a substring.
@@ -149,11 +241,34 @@ example10() {
   }
 }
 
-/// Int and double are the two supported number formats.
+/// `int`, `double`  and `num` are the three supported number formats.
+/// `num` can be either `int` or `double`.
+/// `int` and `double` are children of type `num`
 example11() {
   var i = 1 + 320, d = 3.2 + 0.01;
+  num myNumDouble = 2.2;
+  num myNumInt = 2;
+  int myInt = 1;
+  double myDouble = 0; // Dart will add decimal prefix, becomes 0.0;
+  myNumDouble = myInt; // valid
+  myNumDouble = myDouble; //valid
+  myNumDouble = myNumInt; //valid
+
+  myNumInt = myInt; // valid
+  myNumInt = myDouble; // valid
+  myNumInt = myNumDouble; // valid
+
+  myInt = myNumDouble; //Error
+  myInt = myDouble; //Error
+  myInt = myNumInt; //valid
+
+  myDouble = myInt; //error
+  myDouble = myNumInt; //valid
+  myDouble = myNumDouble; //valid
+
   print("Example11 int ${i}");
   print("Example11 double ${d}");
+
 }
 
 /// DateTime provides date/time arithmetic.
@@ -248,8 +363,9 @@ example16() {
   print("Example16 join string array '${a.join()}'");
 }
 
-/// Strings can be concatenated by just having string literals next to
+/// Strings can be concatenated by just having string List next to
 /// one another with no further operator needed.
+
 example17() {
   print("Example17 "
       "concatenate "
