@@ -212,6 +212,7 @@ found in the wonderful `std.algorithm` module!
 ```d
 import std.algorithm : map, filter, reduce;
 import std.range : iota; // builds an end-exclusive range
+import std.stdio;
 
 void main() {
     // We want to print the sum of a list of squares of even ints
