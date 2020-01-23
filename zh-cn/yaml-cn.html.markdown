@@ -16,7 +16,7 @@ YAML 根本不容许文字制表符。
 
 
 ```yaml
----  # document start
+---  # 文档开头
 
 # YAML 中的注解看起来像这样。
 
