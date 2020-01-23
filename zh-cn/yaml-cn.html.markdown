@@ -178,7 +178,7 @@ set2:
   item2: null
   item3: null
 
-...  # document end
+...  # 文档结束
 ```
 
 ### 更多资源
