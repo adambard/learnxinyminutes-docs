@@ -4,6 +4,7 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
+    - ["Monique Baptista", "https://github.com/bfmonique"]
 lang: pt-br    
 filename: learnmarkdown-pt.md
 ---
@@ -11,23 +12,23 @@ filename: learnmarkdown-pt.md
 Markdown foi criado por John Gruber in 2004. Originado para ser fácil de ler e 
 escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos também).
 
-Dê-me feedback tanto quanto você quiser! / Sinta-se livre para a garfar (fork) e 
+Dê-me feedback tanto quanto você quiser! / Sinta-se livre para fazer uma bifurcação (fork) e 
 puxar o projeto (pull request)
 
 ```md
-<!-- Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
-um arquivo Markdown válido, isso significa que nós podemos usar elementos HTML 
+<!-- Markdown é um superconjunto do HTML, de modo que qualquer arquivo HTML é 
+um arquivo Markdown válido. Isso significa que nós podemos usar elementos HTML 
 em Markdown, como o elemento de comentário, e eles não serão afetados pelo analisador
 de remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown, você
-não pode usar sintaxe remarcação dentro desse conteúdo do elemento.-->
+não pode usar sintaxe de remarcação dentro desse conteúdo do elemento.-->
 
-<!--Markdown também varia de implementação de um analisador para uma próxima.
+<!--A maneira como o Markdown é analisado varia de software para software.
 Este guia vai tentar esclarecer quando as características são universais, ou quando eles são 
-específico para um determinado parser -->
+específico para um determinado interpretador -->
 
 <!-- Cabeçalhos -->
 <!-- Você pode criar elementos HTML <h1> até <h6> facilmente antecedendo o texto
-que deseja estar nesse elemento por um número de hashes (#) -->
+que deseja estar nesse elemento por um número de cerquilhas (#) -->
 # Isto é um cabeçalho <h1>
 ## Isto é um cabeçalho <h2>
 ### Isto é um cabeçalho <h3>
@@ -65,7 +66,7 @@ uma ou múltiplas linhas em branco. -->
 
 Este é um parágrafo. Eu estou digitando em um parágrafo, não é legal?
 
-Agora, eu estou no parágrado 2.
+Agora, eu estou no parágrafo 2.
 ... Ainda continuo no parágrafo 2! :)
 
 Eu estou no parágrafo três.
@@ -77,19 +78,20 @@ Termino com dois espaços (destacar-me para vê-los).
 
 Há um <br /> acima de mim!
 
-<!-- Bloco de citações são fáceis e feito com o caractere >. -->
-
+<!-- Bloco de citações são fáceis e feitos com o caractere >. -->
+	
 > Este é um bloco de citação. Você pode 
-> Enrolar manualmente suas linhas e colocar um `>` antes de cada linha ou você pode
-> deixar suas linhas ficarem muito longas e enrolar por conta própria. Não faz diferença, 
+> Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você pode
+> deixar suas linhas ficarem muito longas e quebrarem por conta própria. Não faz diferença, 
 > desde que eles começam com um `>`.
+	
 
 > Você também pode usar mais de um nível 
 >> De recuo? 
 > Como pura é isso?
 
 <!-- Listas --> 
-<!-- As listas não ordenadas podem ser feitas usando asteriscos, positivos ou hífens -->
+<!-- As listas não ordenadas podem ser feitas usando asteriscos, soma ou hífens -->
 
 * Item
 * Item
@@ -111,10 +113,10 @@ ou
 
 1. Item um
 2. Item dois
-3. Tem três
+3. Item três
 
-<!-- Você não tem poder para rotular os itens corretamente e a remarcação será ainda
-tornar os números em ordem, mas isso pode não ser uma boa idéia -->
+<!-- Você não tem poder para rotular os itens corretamente e a remarcação ainda deixará os 
+itens em ordem, mas isso pode não ser uma boa idéia -->
 
 1. Item um
 1. Item dois
@@ -137,14 +139,14 @@ uma linha com quatro espaços ou uma guia -->
 	Isto é código
 	É assim, sacou?
 
-<!-- Você pode também re-guia (ou adicionar mais quatro espaços adicionais) para o recuo 
+<!-- Você pode também tabular (ou adicionar mais quatro espaços adicionais) para o recuo 
 dentro do seu código -->
 
 	my_array.each do |item|
         puts item
     end	
 
-<!-- Código embutido pode ser criada usando o caractere de crase ` -->
+<!-- Código embutido pode ser criado usando o caractere de crase ` -->
 
 John não sabia nem o que o função 'goto()' fazia!
 
@@ -155,13 +157,13 @@ ruby! -->
 def foobar
     puts "Hello world!"
 end
-\`\`\` <!-- Aqui também, não barras invertidas, apenas ``` -->
+\`\`\` <!-- Aqui também, não use barras invertidas, apenas ``` -->
 
 <-- O texto acima não requer recuo, mas o GitHub vai usar a sintaxe 
 destacando do idioma que você especificar após a ``` -->
 
 <!-- Regra Horizontal (<hr />) --> 
-<!-- Regras horizontais são facilmente adicionados com três ou mais asteriscos ou hífens,
+<!-- Regras horizontais são facilmente adicionadas com três ou mais asteriscos ou hífens,
 com ou sem espaços. -->
 
 ***
@@ -175,7 +177,7 @@ o texto a ser exibido entre parênteses rígidos [] seguido pela url em parênte
 
 [Click aqui!](http://test.com/)
 
-<!-- Você também pode adicionar um título link usando aspas dentro dos parênteses -->
+<!-- Você também pode adicionar um título para o link usando aspas dentro dos parênteses -->
 
 [Click aqui!](http://test.com/ "Link para Test.com")
 

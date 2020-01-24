@@ -9,6 +9,7 @@ contributors:
     - ["Ankush Goyal", "http://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
     - ["Maximilian Sonnenburg", "https://github.com/LamdaLamdaLamda"]
+    - ["caminsha", "https://github.com/caminsha"]
 lang: de-de
 ---
 
@@ -22,9 +23,9 @@ entworfen wurde um,
 - Objektorientierung zu unterstützen
 - generische Programmierung zu unterstützen
 
-Durch seinen Syntax kann sie durchaus schwieriger und komplexer als neuere Sprachen sein.
+Durch seine Syntax kann sie durchaus schwieriger und komplexer als neuere Sprachen sein.
 
-Sie ist weit verbreitet, weil sie in Maschinen-Code kompiliert, welches direkt vom Prozessor ausgeführt
+Sie ist weit verbreitet, weil sie in Maschinen-Code kompiliert, welcher direkt vom Prozessor ausgeführt
 werden kann und somit eine strikte Kontrolle über die Hardware bietet und gleichzeitig
 High-Level-Features wie generics, exceptions und Klassen enthält.
 
@@ -36,7 +37,7 @@ weitverbreitesten Programmiersprachen.
 // Vergleich zu C
 //////////////////
 
-// C ist fast eine Untermenge von C++ und teilt sich grundsätzlich den
+// C ist fast eine Untermenge von C++ und teilt sich grundsätzlich die
 // Syntax für Variablen Deklarationen, primitiven Typen und Funktionen.
 
 // Wie in C ist der Programmeinsprungpunkt eine Funktion, welche "main" genannt wird und
@@ -137,7 +138,7 @@ void invalidDeclaration(int a = 1, int b) // Fehler!
 
 
 /////////////
-// Namespaces (Namesräume)
+// Namespaces (Namensräume)
 /////////////
 
 // Namespaces stellen einen getrennten Gültigkeitsbereich für Variablen,
@@ -169,7 +170,7 @@ void foo()
 
 int main()
 {
-    // Fügt all Symbole aus dem namespace Second in den aktuellen Gültigkeitsbereich (scope).
+    // Fügt alle Symbole aus dem namespace Second in den aktuellen Gültigkeitsbereich (scope).
     // "foo()" wird nun nicht länger funktionieren, da es nun doppeldeutig ist, ob foo aus
     // dem namespace foo oder darüberliegenden aufgerufen wird.
     using namespace Second;
@@ -283,7 +284,7 @@ string retVal = tempObjectFun();
 // für Details). Wie in diesem Code:
 foo(bar(tempObjectFun()))
 
-// Nehmen wir an foo und bar existieren. Das Objekt wird von "tempObjectFun" zurückgegeben,
+// Nehmen wir an, foo und bar existieren. Das Objekt wird von "tempObjectFun" zurückgegeben,
 // wird an bar übergeben und ist zerstört bevor foo aufgerufen wird.
 
 // Zurück zu Referenzen. Die Annahme, dass die "am Ende des Ausdrucks" Regel gültig ist,
@@ -335,7 +336,7 @@ ECarTypes GetPreferredCarType()
 	return ECarTypes::Hatchback;
 }
 
-// Mit C++11 existiert eine einfache Möglichkeit einem Typ dem Enum zu zuweisen. Dies
+// Mit C++11 existiert eine einfache Möglichkeit einem Typ dem Enum zuzuweisen. Dies
 // kann durchaus sinnvoll bei der Serialisierung von Daten sein, oder bei der Konvertierung
 // zwischen Typen bzw. Konstanten.
 enum ECarTypes : uint8_t
@@ -574,7 +575,7 @@ int main ()
 // Templates in C++ werden in erster Linie dafür verwendet generisch zu programmieren.
 // Sie unterstützen explizite und partielle Spezialisierung und darüber hinaus können
 // sie für funktionale Klassen verwendet werden.
-// Tatsächlich bilden templates die Turing-Vollständigkeit
+// Tatsächlich bilden Templates die Turing-Vollständigkeit
 // (universelle Programmierbarkeit) ab.
 
 
@@ -588,12 +589,12 @@ public:
     void insert(const T&) { ... }
 };
 
-// Während der Kompilierung generiert der Compiler Kopien für jedes template, wobei
+// Während der Kompilierung generiert der Compiler Kopien für jedes Template, wobei
 // hierbei die Parameter substituiert werden. Somit muss bei jedem Aufruf die gesamte
 // Definition der Klasse zur Verfügung stehen. Aus diesem Grund wird ein Template
 // komplett im header definiert.
 
-// Erzeugung einer Template-Klasse auf dem stack:
+// Erzeugung einer Template-Klasse auf dem Stack:
 Box<int> intBox;
 
 // eine der zu erwartenden Verwendungen:
@@ -612,7 +613,7 @@ boxOfBox.insert(intBox);
 // sind fast identisch hinsichtlich der Funktionalität. Weitere
 // Informationen auf: http://en.wikipedia.org/wiki/Typename
 
-// Eine template-Funktion:
+// Eine Template-Funktion:
 template<class T>
 void barkThreeTimes(const T& input)
 {
@@ -622,7 +623,7 @@ void barkThreeTimes(const T& input)
 }
 
 // Hierbei ist zu beachten, dass an dieser Stelle nichts über den Typen des Parameters
-// definiert wurde. Der Kompiler wird bei jedem Aufruf bzw. jeder Erzeugung den Typen
+// definiert wurde. Der Compiler wird bei jedem Aufruf bzw. jeder Erzeugung den Typen
 // prüfen. Somit funktioniert die zuvor definierte Funktion für jeden Typ 'T', die die
 // const Methode 'bark' implementiert hat.
 
@@ -637,10 +638,10 @@ void printMessage()
   cout << "Learn C++ in " << Y << " minutes!" << endl;
 }
 
-// Des Weiteren können templates aus Effizienzgründen genauer spezifiziert werden.
-// Selbstverständlich sind reale-Problemen, welche genauer spezifiziert werden nicht
+// Des Weiteren können Templates aus Effizienzgründen genauer spezifiziert werden.
+// Selbstverständlich sind reale Probleme, welche genauer spezifiziert werden, nicht
 // derart trivial. Auch wenn alle Parameter explizit definiert wurden, muss die
-// Funktion oder Klasse als template deklariert werden.
+// Funktion oder Klasse als Template deklariert werden.
 template<>
 void printMessage<10>()
 {
@@ -818,9 +819,9 @@ void doSomethingWithAFile(const std::string& filename)
 // Container
 /////////////////////
 
-// Die Container der Standard template Bibliothek beinhaltet einige vordefinierter templates.
+// Die Container der Standard template Bibliothek beinhaltet einige vordefinierte Templates.
 // Diese verwalten die Speicherbereiche für die eigenen Elemente und stellen Member-Funktionen
-// für den Zugriff und die Maniplulation bereit.
+// für den Zugriff und die Manipulation bereit.
 
 // Beispielhafte Container:
 
@@ -876,7 +877,7 @@ for(it=ST.begin();it<ST.end();it++)
 // 10
 // 30
 
-// Zum leeren des gesamten Container wird die Methode
+// Zum leeren des gesamten Containers wird die Methode
 // Container._name.clear() verwendet.
 ST.clear();
 cout << ST.size();  // Ausgabe der Set-Größe
@@ -948,11 +949,11 @@ fooMap.find(Foo(1)); // Wahr
 // Lambda Ausdrücke (C++11 und höher)
 ///////////////////////////////////////
 
-// Lambdas sind eine gängige Methodik um anonyme Funktionen an dem
+// Lambdas sind eine gängige Methodik, um anonyme Funktionen an dem
 // Ort der Verwendung zu definieren. Darüber hinaus auch bei der
 // Verwendung von Funktionen als Argument einer Funktion.
 
-// Nehmen wir an es soll ein Vektor von "pairs" (Paaren) mithilfe
+// Nehmen wir an, es soll ein Vektor von "pairs" (Paaren) mithilfe
 // des zweiten Werts des "pairs" sortiert werden.
 
 vector<pair<int, int> > tester;
@@ -966,7 +967,7 @@ sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int,
         return lhs.second < rhs.second;
 });
 
-// Beachte den Syntax von Lambda-Ausdrücken.
+// Beachte die Syntax von Lambda-Ausdrücken.
 // Die [] im Lambda Ausdruck werden für die Variablen verwendet.
 // Diese so genannte "capture list" definiert, was außerhalb des Lambdas,
 // innerhalb der Funktion verfügbar sein soll und in welcher Form.
@@ -1025,7 +1026,7 @@ for(auto elem: arr)
 // Einige Aspekte von C++ sind für Neueinsteiger häufig überraschend (aber auch für
 // C++ Veteranen).
 // Der nachfolgende Abschnitt ist leider nicht vollständig:
-// C++ ist eine der Sprachen, bei der es ein leichtes ist sich selbst ins Bein zu schießen.
+// C++ ist eine der Sprachen, bei der es ein Leichtes ist, sich selbst ins Bein zu schießen.
 
 // Private-Methoden können überschrieben werden
 class Foo
@@ -1074,10 +1075,10 @@ f1 = f2;
 
 #include<tuple>
 
-// Konzeptionell sind Tuple´s alten Datenstrukturen sehr ähnlich, allerdings haben diese keine
+// Konzeptionell sind Tupel alten Datenstrukturen sehr ähnlich, allerdings haben diese keine
 // bezeichneten Daten-Member, sondern werden durch die Reihenfolge angesprochen.
 
-// Erstellen des Tuples und das Einfügen eines Werts.
+// Erstellen des Tupels und das Einfügen eines Werts.
 auto first = make_tuple(10, 'A');
 const int maxN = 1e9;
 const int maxL = 15;
@@ -1102,7 +1103,7 @@ tuple<int, char, double> third(11, 'A', 3.14141);
 
 cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
 
-// tuple_cat fügt die Elemente eines Tuples aneinander (in der selben Reihenfolge).
+// tuple_cat fügt die Elemente eines Tupels aneinander (in der selben Reihenfolge).
 
 auto concatenated_tuple = tuple_cat(first, second, third);
 // concatenated_tuple wird zu = (10, 'A', 1e9, 15, 11, 'A', 3.14141)

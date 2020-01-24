@@ -10,6 +10,7 @@ contributors:
     - ["himanshu", "https://github.com/himanshu81494"]
     - ["Joshua Li", "https://github.com/JoshuaRLi"]
     - ["Dragos B. Chirila", "https://github.com/dchirila"]
+    - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -820,7 +821,7 @@ Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://
 It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
-Another good resource is [Learn C The Hard Way](http://c.learncodethehardway.org/book/).
+Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/).
 
 If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 

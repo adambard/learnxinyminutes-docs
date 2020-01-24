@@ -536,6 +536,44 @@ example30() {
   }
 }
 
+// Optional Positional Parameter:
+// parameter will be disclosed with square bracket [ ] & square bracketed parameter are optional.
+example31() {
+    findVolume31(int length, int breath, [int height]) {
+      print('length = $length, breath = $breath, height = $height');
+    }
+
+    findVolume31(10,20,30); //valid
+    findVolume31(10,20); //also valid
+}
+
+// Optional Named Parameter:
+// parameter will be disclosed with curly bracket { }
+// curly bracketed parameter are optional.
+// have to use parameter name to assign a value which separated with colan :
+// in curly bracketed parameter order does not matter
+// these type parameter help us to avoid confusion while passing value for a function which has many parameter.
+example32() {
+    findVolume32(int length, int breath, {int height}) {
+    print('length = $length, breath = $breath, height = $height');
+    }
+
+    findVolume32(10,20,height:30);//valid & we can see the parameter name is mentioned here.
+    findVolume32(10,20);//also valid
+}
+
+// Optional Default Parameter:
+// same like optional named parameter in addition we can assign default value for this parameter.
+// which means no value is passed this default value will be taken.
+example33() {
+    findVolume33(int length, int breath, {int height=10}) {
+     print('length = $length, breath = $breath, height = $height');
+    } 
+
+    findVolume33(10,20,height:30);//valid
+    findVolume33(10,20);//valid 
+}
+
 // Programs have only one entry point in the main function.
 // Nothing is expected to be executed on the outer scope before a program
 // starts running with what's in its main function.
@@ -562,6 +600,3 @@ Dart has a comprehensive web-site. It covers API reference, tutorials, articles 
 useful Try Dart online.
 [https://www.dartlang.org](https://www.dartlang.org)
 [https://try.dartlang.org](https://try.dartlang.org)
-
-
-
