@@ -692,6 +692,11 @@ print(mySquare.sideLength) // 4
 // cast instance
 let aShape = mySquare as Shape
 
+// downcast instance: 
+// Because downcasting can fail, the result can be an optional (as?) or an implicitly unwrpped optional (as!).  
+let anOptionalSquare = aShape as? Square // This will return nil if aShape is not a Square
+let aSquare = aShape as! Square // This will throw a runtime error if aShape is not a Square
+
 // compare instances, not the same as == which compares objects (equal to)
 if mySquare === mySquare {
     print("Yep, it's mySquare")
