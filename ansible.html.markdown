@@ -303,7 +303,7 @@ Role can be included in your playbook (executed via your playbook).
 ```
 
 #### For remaining examples we would use additional repository
-This example installs ansible in `virtualenv` so it is independent from a system.
+This example installs ansible in `virtualenv` so it is independent from the system.
 You need to initialize it into your shell-context with the `source environment.sh`
 command.
 
