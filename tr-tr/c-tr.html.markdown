@@ -477,7 +477,7 @@ typedef void (*my_fnp_type)(char *);
 
 [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)'in bir kopyasını bulundurmak mükemmel olabilir
 
-Diğer bir iyi kaynak ise [Learn C the hard way](http://c.learncodethehardway.org/book/)
+Diğer bir iyi kaynak ise [Learn C the hard way](http://learncodethehardway.org/c/)
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the

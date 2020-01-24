@@ -217,7 +217,7 @@ done
 function foo ()
 {
     echo "Argumente funktionieren wie bei skripts: $@"
-    echo Und: $1 $2..."
+    echo "Und: $1 $2..."
     echo "Dies ist eine Funktion"
     return 0
 }

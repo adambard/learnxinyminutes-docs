@@ -7,7 +7,7 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Jakub Młokosiewicz", "https://github.com/hckr"]
-    - ["Mateusz Burniak", "https://gitbub.com/matbur"]
+    - ["Mateusz Burniak", "https://github.com/matbur"]
 lang: pl-pl
 
 ---

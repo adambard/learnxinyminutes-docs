@@ -361,7 +361,7 @@ myObj.myFunc(); // = "Olá mundo!"
 var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
-// Inversamente, uma função pode ser atribuída a um objeto e ganhar a acesso
+// Inversamente, uma função pode ser atribuída à um objeto e ganhar a acesso
 // através do `this`, até mesmo se ela não for chamada quando foi definida.
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
@@ -416,7 +416,7 @@ myNewObj.myNumber; // = 5
 // vai olhar imediatamente para o seu prototype.
 
 // Algumas implementações em JS deixam você acessar o objeto prototype com a 
-// propriedade mágica `__proto__`. Enquanto isso é util para explicar 
+// propriedade mágica `__proto__`. Enquanto isso é útil para explicar 
 // prototypes, não é parte de um padrão; nós vamos falar de algumas formas de 
 // usar prototypes depois.
 
@@ -489,7 +489,7 @@ if (0){
 }
 
 // Entretanto, esses objetos encapsulados e as funções originais compartilham
-// um mesmo prototype, portanto você pode adicionar funcionalidades a uma string,
+// um mesmo prototype, portanto você pode adicionar funcionalidades à uma string,
 // por exemplo.
 String.prototype.firstCharacter = function(){
     return this.charAt(0);

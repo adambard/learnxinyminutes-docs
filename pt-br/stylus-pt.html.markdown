@@ -132,7 +132,7 @@ body {
   background-color: $primary-color
 }
 
-/* Apoś compilar ficaria assim: */
+/* Após compilar ficaria assim: */
 div {
 	display: block;
 	margin-left: auto;
@@ -184,13 +184,13 @@ button
 /* Funções
 ==============================*/
 
-/* Funções no Stylus permitem fazer uma variedade de tarefas, como por exemplo, menipular algum dado. */
+/* Funções no Stylus permitem fazer uma variedade de tarefas, como por exemplo, manipular algum dado. */
 
 body {
   background darken(#0088DD, 50%) // Escurece a cor #0088DD em 50%
 }
 
-/** Criando sua própria função */
+/* Criando sua própria função */
 somar(a, b)
   a + b
 
@@ -221,7 +221,7 @@ for <val-name> [, <key-name>] in <expression>
 
 for $item in (1..2) /* Repete o bloco 12 vezes */
   .col-{$item}
-    width ($item / 12) * 100% /* Calcula a largula pelo número da coluna*
+    width ($item / 12) * 100% /* Calcula a largura pelo número da coluna*
 
 ```
 

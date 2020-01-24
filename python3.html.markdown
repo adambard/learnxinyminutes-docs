@@ -8,6 +8,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
+    - ["caminsha", "https://github.com/caminsha"]
 filename: learnpython3.py
 ---
 
@@ -230,7 +231,7 @@ li[4]  # Raises an IndexError
 # (It's a closed/open range for you mathy types.)
 li[1:3]   # Return list from index 1 to 3 => [2, 4]
 li[2:]    # Return list starting from index 2 => [4, 3]
-li[:3]    # Return list from beginning uptil index 3  => [1, 2, 4]
+li[:3]    # Return list from beginning until index 3  => [1, 2, 4]
 li[::2]   # Return list selecting every second entry => [1, 4]
 li[::-1]  # Return list in reverse order => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
@@ -466,8 +467,8 @@ prints:
     1 cat
     2 mouse
 """
-list = ["dog", "cat", "mouse"]
-for i, value in enumerate(list):
+animals = ["dog", "cat", "mouse"]
+for i, value in enumerate(animals):
     print(i, value)
 
 """
@@ -550,8 +551,14 @@ next(our_iterator)  # => "three"
 # After the iterator has returned all of its data, it raises a StopIteration exception
 next(our_iterator)  # Raises StopIteration
 
-# You can grab all the elements of an iterator by calling list() on it.
-list(filled_dict.keys())  # => Returns ["one", "two", "three"]
+# We can also loop over it, in fact, "for" does this implicitly!
+our_iterator = iter(our_iterable)
+for i in our_iterator:
+    print(i)  # Prints one, two, three
+
+# You can grab all the elements of an iterable or iterator by calling list() on it.
+list(our_iterable)  # => Returns ["one", "two", "three"]
+list(our_iterator)  # => Returns [] because state is saved
 
 
 ####################################################
