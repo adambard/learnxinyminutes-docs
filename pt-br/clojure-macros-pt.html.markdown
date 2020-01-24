@@ -13,15 +13,15 @@ do Clojure lhe dá acesso a toda a extensão da linguagem
 para escrever rotinas de geração de código chamados "macros". Macros fornecem uma poderosa forma de adequar a linguagem 
 às suas necessidades.
 
-Pórem Tenha cuidado. É considerado má pratica escrever uma macro quando uma função vai fazer. Use uma macro apenas 
-quando você precisar do controle sobre quando ou se os argumentos para um formulário será avaliado.
+Pórem, tenha cuidado. É considerado má pratica escrever uma macro quando uma função vai fazer. Use uma macro apenas 
+quando você precisar de controle sobre quando ou se os argumentos de um formulário serão avaliados.
 
 Você vai querer estar familiarizado com Clojure. Certifique-se de entender tudo em 
-[Clojure em Y Minutos](/docs/clojure/).
+[Aprenda Clojure em Y Minutos](/docs/clojure/).
 
 ```clojure
-;; Defina uma macro utilizando defmacro. Sua macro deve ter como saida uma lista que possa
-;; ser avaliada como codigo Clojure.
+;; Defina uma macro utilizando defmacro. Sua macro deve ter como saída uma lista que possa
+;; ser avaliada como código Clojure.
 ;;
 ;; Essa macro é a mesma coisa que se você escrever (reverse "Hello World")
 (defmacro my-first-macro []
@@ -33,14 +33,14 @@ Você vai querer estar familiarizado com Clojure. Certifique-se de entender tudo
 (macroexpand '(my-first-macro))
 ;; -> (#<core$reverse clojure.core$reverse@xxxxxxxx> "Hello World")
 
-;; Você pode avaliar o resultad de macroexpand diretamente:
+;; Você pode avaliar o resultado de macroexpand diretamente:
 (eval (macroexpand '(my-first-macro)))
 ; -> (\d \l \o \r \W \space \o \l \l \e \H)
 
-;; mas você deve usar esse mais suscinto, sintax como de função:
+;; mas você deve usar essa sintaxe mais sucinta e familiar a funções:
 (my-first-macro)  ; -> (\d \l \o \r \W \space \o \l \l \e \H)
 
-;; Você pode tornar as coisas mais faceis pra você, utilizando a sintaxe de citação mais suscinta
+;; Você pode tornar as coisas mais fáceis pra você, utilizando a sintaxe de citação mais suscinta
 ;; para criar listas nas suas macros:
 (defmacro my-first-quoted-macro []
   '(reverse "Hello World"))
