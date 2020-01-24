@@ -727,10 +727,10 @@ on a new line! ""Wow!"", the masses cried";
         int _speed; // Everything is private by default: Only accessible from within this class.
                     // can also use keyword private
         public string Name { get; set; }
-        
+
         // Properties also have a special syntax for when you want a readonly property
         // that simply returns the result of an expression
-        public string LongName => Name + " " + _speed + " speed"; 
+        public string LongName => Name + " " + _speed + " speed";
 
         // Enum is a value type that consists of a set of named constants
         // It is really just mapping a name to a value (an int, unless specified otherwise).
@@ -1091,7 +1091,7 @@ on a new line! ""Wow!"", the masses cried";
                 // Spell failed
                 return false;
             }
-            // Other exceptions, or MagicServiceException where Code is not 42 
+            // Other exceptions, or MagicServiceException where Code is not 42
             catch(Exception ex) when (LogException(ex))
             {
                 // Execution never reaches this block
@@ -1215,7 +1215,7 @@ namespace Csharp7
             Console.WriteLine(tt.GetLastName());
         }
     }
-    
+
     // PATTERN MATCHING
     class PatternMatchingTest
     {
@@ -1315,8 +1315,10 @@ namespace Csharp7
  * [C# language reference](https://docs.microsoft.com/dotnet/csharp/language-reference/)
  * [Learn .NET](https://dotnet.microsoft.com/learn)
  * [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
- * [DotNetPerls](https://www.dotnetperls.com/)
- * [C# in Depth](https://manning.com/skeet3)
- * [Programming C# 5.0](http://shop.oreilly.com/product/0636920024064)
- * [LINQ Pocket Reference](http://shop.oreilly.com/product/9780596519254)
- * [Windows Forms Programming in C#](https://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
+ * [DotNetPerls](http://www.dotnetperls.com)
+ * [C# in Depth](http://manning.com/skeet2)
+ * [Programming C# 5.0](http://shop.oreilly.com/product/0636920024064.do)
+ * [LINQ Pocket Reference](http://shop.oreilly.com/product/9780596519254.do)
+ * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
+ * [freeCodeCamp - C# Tutorial for Beginners](https://www.youtube.com/watch?v=GhQdlIFylQ8)
+ 
