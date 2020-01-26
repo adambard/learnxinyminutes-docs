@@ -20,12 +20,12 @@ gateways and routers.
 # Programs typically contain a .data and .text sections
 
 .data # Section where data is stored in memory (allocated in RAM), similar to
-      # variables in higher level languages
+      # variables in higher-level languages
 
   # Declarations follow a ( label: .type value(s) ) form of declaration
   hello_world: .asciiz "Hello World\n"      # Declare a null terminated string
   num1: .word 42                            # Integers are referred to as words
-                                            # (32 bit value)
+                                            # (32-bit value)
 
   arr1: .word 1, 2, 3, 4, 5                 # Array of words
   arr2: .byte 'a', 'b'                      # Array of chars (1 byte each)
@@ -139,7 +139,7 @@ gateways and routers.
     # The basic format of these branching instructions typically follow <instr>
     # <reg1> <reg2> <label> where label is the label we want to jump to if the
     # given conditional evaluates to true
-    # Sometimes it is easier to write the conditional logic backwards, as seen
+    # Sometimes it is easier to write the conditional logic backward, as seen
     # in the simple if statement example below
 
     beq $t0, $t1, reg_eq                    # Will branch to reg_eq if
@@ -156,7 +156,7 @@ gateways and routers.
     ble $t0, $t1, t0_gte_t1                 # Branches when $t0 <= $t1
     bltz $t0, t0_lt0                        # Branches when $t0 < 0
     slt $s0, $t0, $t1                       # Instruction that sends a signal when
-                                            # $t0 < $t1 with reuslt in $s0 (1 for true)
+                                            # $t0 < $t1 with result in $s0 (1 for true)
 
     # Simple if statement
     # if (i == j)
@@ -289,12 +289,12 @@ gateways and routers.
 
 ## MACROS ##
   _macros:
-    # Macros are extremly useful for substituting repeated code blocks with a
+    # Macros are extremely useful for substituting repeated code blocks with a
     # single label for better readability
     # These are in no means substitutes for functions
     # These must be declared before it is used
 
-    # Macro for printing new lines (since these can be very repetitive)
+    # Macro for printing newlines (since these can be very repetitive)
     .macro println()
       la $a0, newline                     # New line string stored here
       li $v0, 4
@@ -338,7 +338,7 @@ gateways and routers.
   buffer: .space 128                        # Allocates a block in memory, does
                                             # not automatically clear
                                             # These blocks of memory are aligned
-                                            # next each other
+                                            # next to each other
 
 .text
   la $s0, list                              # Load address of list

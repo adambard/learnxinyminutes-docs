@@ -111,7 +111,7 @@ filename: learn-emacs-lisp-pt.el
 (hello)
 ;; `C-xC-e' => Hello, I am Bastien
 
-;; Os parêntesis vazios na definição da função significam que ela
+;; Os parênteses vazios na definição da função significam que ela
 ;; não aceita argumentos. Mas sempre utilizar `my-name' é um tédio!
 ;; Vamos dizer à função para aceitar um argumento (o argumento é
 ;; chamado "name"):

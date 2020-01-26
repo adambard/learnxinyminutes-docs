@@ -612,7 +612,7 @@ typedef void (*my_fnp_type)(char *);
 最好找一本 [K&R, aka "The C Programming Language", “C程序设计语言”](https://en.wikipedia.org/wiki/The_C_Programming_Language)。它是关于C最重要的一本书，由C的创作者撰写。不过需要留意的是它比较古老了，因此有些不准确的地方。
 
 
-另一个比较好的资源是 [Learn C the hard way](http://c.learncodethehardway.org/book/)
+另一个比较好的资源是 [Learn C the hard way](http://learncodethehardway.org/c/)
 
 如果你有问题，请阅读[compl.lang.c Frequently Asked Questions](http://c-faq.com/)。
 

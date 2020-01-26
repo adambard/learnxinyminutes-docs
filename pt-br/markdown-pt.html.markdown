@@ -5,6 +5,7 @@ contributors:
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
     - ["Gabriele Luz", "https://github.com/gabrieleluz"]
+    - ["Monique Baptista", "https://github.com/bfmonique"]
 
 lang: pt-br    
 filename: learnmarkdown-pt.md
@@ -13,29 +14,28 @@ filename: learnmarkdown-pt.md
 Markdown foi criado por John Gruber in 2004. Originado para ser fácil de ler e 
 escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos também).
 
-Dê-me feedback tanto quanto você quiser! / Sinta-se livre para a garfar (fork) e 
+Dê-me feedback tanto quanto você quiser! / Sinta-se livre para fazer uma bifurcação (fork) e 
 puxar o projeto (pull request)
 
 ## Elementos HTML
 Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
 um arquivo Markdown válido.
 ```md
-<!-- Isso significa que nós podemos usar elementos HTML 
+<!-- Markdown é um superconjunto do HTML, de modo que qualquer arquivo HTML é 
+um arquivo Markdown válido. Isso significa que nós podemos usar elementos HTML 
 em Markdown, como o elemento de comentário, e eles não serão afetados pelo analisador
-de marcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown, você
-não pode usar sintaxe marcação dentro desse conteúdo do elemento.-->
+de remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown, você
+não pode usar sintaxe de remarcação dentro desse conteúdo do elemento.-->
 
-<!--Markdown também varia de implementação de um analisador para uma próxima.
-Este guia vai tentar esclarecer quando as características são universais, ou quando eles são 
-específico para um determinado parser -->
-```
+<!--A maneira como o Markdown é analisado varia de software para software.
+Este guia vai tentar esclarecer quando as características são universais, ou quando eles são específicos para um determinado interpretador -->
+
 
 ## Cabeçalhos
 
 Você pode criar elementos HTML `<h1>` até `<h6>` facilmente antecedendo o texto
 que deseja estar nesse elemento por um número de hashes (#)
 
-```md
 # Isto é um cabeçalho <h1>
 ## Isto é um cabeçalho <h2>
 ### Isto é um cabeçalho <h3>
@@ -83,8 +83,7 @@ uma ou múltiplas linhas em branco.
 ```md
 Este é um parágrafo. Eu estou digitando em um parágrafo, não é legal?
 
-
-Agora, eu estou no parágrado 2.
+Agora, eu estou no parágrafo 2.
 ... Ainda continuo no parágrafo 2! :)
 
 Eu estou no parágrafo três.
@@ -99,17 +98,18 @@ Termino com dois espaços (destacar-me para vê-los).
 Há um <br /> acima de mim!
 ```
 
+
 Bloco de citações são fáceis e feito com o caractere >.
 
 ```md
 > Este é um bloco de citação. Você pode 
-> Enrolar manualmente suas linhas e colocar um `>` antes de cada linha ou você pode
-> deixar suas linhas ficarem muito longas e enrolar por conta própria. Não faz diferença, 
+> Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você pode
+> deixar suas linhas ficarem muito longas e quebrarem por conta própria. Não faz diferença, 
 > desde que eles começam com um `>`.
+	
 
 > Você também pode usar mais de um nível 
->> De recuo? 
-> Como pura é isso?
+>> De recuo?
 ```
 
 ## Listas
@@ -138,11 +138,12 @@ Listas ordenadas são feitas com um número seguido por um ponto.
 ```md
 1. Item um
 2. Item dois
-3. Tem três
+3. Item três
 ```
 
-Você não tem poder para rotular os itens corretamente e a marcação será ainda
-tornar os números em ordem, mas isso pode não ser uma boa idéia
+<!-- Você não tem poder para rotular os itens corretamente e a remarcação ainda deixará os 
+itens em ordem, mas isso pode não ser uma boa idéia -->
+
 
 ```md
 1. Item um
@@ -206,6 +207,13 @@ Em GitHub Flavored Markdown, você pode usar uma sintaxe especial para o código
 	end
 	```
 ```
+=======
+\`\`\`ruby <!-- exceto remover essas barras invertidas quando você faz isso, apenas ```
+ruby! --> 
+def foobar
+    puts "Hello world!"
+end
+\`\`\` <!-- Aqui também, não use barras invertidas, apenas ``` -->
 
 O texto acima não requer recuo, além disso o GitHub vai usar a sintaxe highlight da linguagem que você especificar após a \`\`\`.
 

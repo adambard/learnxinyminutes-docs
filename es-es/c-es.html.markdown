@@ -5,6 +5,7 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Francisco García", "http://flaskbreaker.tumblr.com/"]
+    - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
 lang: es-es
 ---
 
@@ -423,7 +424,7 @@ libro de C, escrito por Dennis Ritchie, creador de C y Brian Kernighan. Aún as�
 se cuidadoso, es antiguo, contiene algunas inexactitudes, y algunas prácticas 
 han cambiado.
 
-Otro buen recurso es [Learn C the hard way](http://c.learncodethehardway.org/book/).
+Otro buen recurso es [Learn C the hard way](http://learncodethehardway.org/c/).
 
 Si tienes una pregunta, lee [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
