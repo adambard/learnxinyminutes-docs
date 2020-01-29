@@ -211,7 +211,7 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 内联代码可由反引号 ` 实现
 
 ```md
-John 甚至不知道 `go_to()` 方程是干嘛的!
+John 甚至不知道 `go_to()` 函数是干嘛的!
 ```
 
 在GitHub的 Markdown（GitHub Flavored Markdown）解析器中，你可以使用特殊的语法表示代码块
