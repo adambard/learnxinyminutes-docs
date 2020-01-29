@@ -63,7 +63,7 @@ echo ${Variabile}
 # Sotto ci sono altri esempi che analizzano l'uso dell'espansione dei parametri.
 
 # Sostituzione di stringhe nelle variabili
-echo ${Variabile/Una/A}
+echo ${Variabile/Una/La}
 # Questo sostituirà la prima occorrenza di "Una" con "La"
 
 # Sottostringa di una variabile
