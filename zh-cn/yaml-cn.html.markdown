@@ -16,6 +16,8 @@ YAML 根本不容许文字制表符。
 
 
 ```yaml
+---  # 文档开头
+
 # YAML 中的注解看起来像这样。
 
 ################
@@ -135,7 +137,7 @@ bar: &bar
 
 # foo 和 bar 将都含有 name: Everyone has same name
 
-# YAML 还有标签，你可以用它显示地声明类型。
+# YAML 还有标签，你可以用它显式地声明类型。
 explicit_string: !!str 0.5
 # 一些解析器实现特定语言的标签，就像这个针对 Python 的复数类型。
 python_complex_number: !!python/complex 1+2j
@@ -176,7 +178,7 @@ set2:
   item2: null
   item3: null
 
-...  # document end
+...  # 文档结束
 ```
 
 ### 更多资源
