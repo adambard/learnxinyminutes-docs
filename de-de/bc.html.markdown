@@ -44,7 +44,8 @@ if(hour < 12) { /*Operatoren sind genau wie in C*/
 } else {
 	/* Standardmässig sind Variablen global. */
     thisIsGlobal = 5
-	/*Variablen können lokal gemacht werden. Benutze das Schlüsselwort "auto" in einer Funktion.*/
+	/*Variablen können lokal gemacht werden. Benutze das Schlüsselwort "auto"
+      in einer Funktion.*/
 }
 
 /* Jede Variable hat als Voreinstellung den Wert 0. */
@@ -84,7 +85,8 @@ define x(n) {
     return n + x
 }
 x(3) /*4*/
-print x /*Es stellt sich heraus, dass x ausserhalb der Funktion nicht zugänglich ist.*/
+print x /*Es stellt sich heraus, dass x ausserhalb der Funktion nicht
+          zugänglich ist.*/
 /*Arrays sind äquivalent zu C Arrays.*/
 for(i = 0; i <= 3; i++) {
     a[i] = 1
