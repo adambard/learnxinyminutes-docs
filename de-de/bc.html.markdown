@@ -54,10 +54,10 @@ num = blankVariable /*num wurde auf 0 gesetzt.*/
 /*Wie in C ist nur 0 falsch.*/
 if(!num) {print "false\n"}
 
-/*Im Gegensatz zu C hat bc die Operatoren ?: nicht. Zum Beispiel
+/*Im Gegensatz zu C hat bc den Ternäroperator ?: nicht. Zum Beispiel
 führt dieser Codeblok zu einem Fehler:
 a = (num) ? 1 : 0
-/*Jedoch kann dies simuliert werden:*/
+Jedoch kann dies simuliert werden:*/
 a = (num) && (1) || (0) /*&& ist das UND, || ist das ODER*/
 
 /*For-Schleifen*/
