@@ -37,7 +37,7 @@ if(hour < 12) { /*Operatoren sind genau wie in C*/
 	Um Escape-Sequenzen klarer zu machen, ist hier eine vereinfachte
 	Liste, welche in bc funktioneren.:
     \b: Backspace
-    \c: Wagenrücklauf (carriage return)
+    \c: carriage return
     \n: Zeilenumbruch
     \t: Tab
     \\: Backslash*/
