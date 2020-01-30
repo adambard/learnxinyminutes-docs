@@ -29,7 +29,6 @@ obase: definiert die Basis der Ausgabe*/
 hour = read() /*Eingabe einer Zahl*/
 
 if(hour < 12) { /*Operatoren sind genau wie in C*/
-    print "Guten Morgen\n" /*"print" outputs strings or variables
     print "Guten Morgen\n" /*"print" Gibt Strings oder Variablen
 	mit einem Komma separiert aus.*/
 } else if(hour == 12) {
