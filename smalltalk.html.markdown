@@ -30,6 +30,7 @@ The most basic operation is to send a message to an object
 `anObject aMessage`
 
 There are three sorts of messages
+
 - unary - a single symbol that may be several words conjoined in what we call camelcase form, with no arguments. For example 'size', 'reverseBytes', 'convertToLargerFormatPixels'
 - binary - a small set of symbols of the sort often used for arithmetic operations in most languages, requiring a single argument. For example '+', '//', '@'. We do not use traditional arithmetic precedence, something to keep an eye on.
 - keyword - the general form where multiple arguments can be passed. As with the unary form we use camelcase to join words together but arguments are inserted in the midst of the message with colons used to separate them lexically. For example 'setTemperature:', 'at:put:', 'drawFrom:to:lineWidth:fillColor:'
