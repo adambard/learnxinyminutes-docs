@@ -80,4 +80,76 @@ int main(void){
 // argv[0] = Name des Programms
 // argv[1] = erstes Argument usw.
 int main (int argc, char** argv){
+    // Ausgabe mit Hilfe von printf (print formatted)
+    // %d ist ein Integer.
+    // \n steht für eine neue Zeile
+    printf("%d\n",0); // => Gibt 0 aus.
+
+    ////////////////////////////////////////////////
+    // Typen
+    ////////////////////////////////////////////////
+
+    // Alle Variable müssen am Anfang des jetzigen Blocks deklariert werden.
+    // Wir deklarieren die Variablen dynamisch im Code um die Lesbarkeit im
+    // Tutorial zu verbessern.
+    // C99-Konforme Compiler erlauben die Variablendeklaration an dem Punkt, an
+    // welchem die Variable verwendet wird.
+
+    // integer sind normalerweise 4 Bytes gross
+    int x_int = 0;
+
+    // shorts sind normalerweise 2 Bytes gross
+    short x_short = 0;
+
+    // chars sind garantiert 1 Byte gross
+    char x_char = 0;
+    char y_char = 'y'; // Charakterliterale werden mit '' gekennzeichnet.
+
+    // longs sind oft 4 bis 8 Bytes gross. long long sind garantiert mindestens 
+    // 8 Bytes gross.
+    long x_long = 0;
+    long long x_long_long = 0;
+
+    // floats sind normalerweise 32-Bit Gleitkommazahlen
+    float x_float = 0.0f; // 'f'-Suffix beschreibt eine Gleitkommazahl.
+
+    // doubles sind normalerweise 64-Bit Gleitkommazahlen
+    double x_double = 0.0; // echte Zahlen ohne Suffix sind vom Typ double
+
+    // integer-Typen können vorzeichenlos (unsigned) sein  (grösser oder kleiner als 0)
+    unsigned short ux_short;
+    unsigned int ux_int;
+    unsigned long long ux_long_long;
+
+    // chars innerhalb von einfachen Anführungszeichen sind Integers im
+    // Maschinenzeichensatz
+    '0'; // => 48 im ASCII-Zeichensatz
+    'A'; // => 65 im ASCII-Zeichensatz
+
+    // sizeof(T) gibt die Grösse einer Variablen des Typen T in Bytes zurück.
+    // sizeof(obj) ergibt die Grösse des Ausdrucks (Variable, Literal usw.)
+
+    printf("%zu\n", sizeof(int)); // => 4 (auf den meisten Rechnern mit einem 4-Byte-Wort)
+
+    // Wenn das Argument des `sizeof`-Operator ein Ausdruck ist, dann wird das
+    // Argument nicht ausgewertet (ausser Arrays mit variabler Länge)
+    // Der Wert, der in diesem Fall zurückgegeben wird, ist eine Konstante zur 
+    // Kompillierzeit.
+
+    int a = 1;
+    //size_t ist ein vorzeichenloser Integer Typ mit mindestens 2 Byte um die 
+    // Grösse eines Objekts zu repräsentieren.
+    size_t size = sizeof(a++); // a++ wird nicht ausgewertet
+    printf("sizeof(a++) = %zu, wobei a=%d ist\n", size, a);
+    // Gibt "sizeof(a++) = 4, wobei a=1 ist" aus (mit einer 32-Bit-Architektur)
+
+    // Arrays müssen mit einer Grösse initialisiert werden.
+    char my_char_array[20]; // Dieses Array beinhaltet 1 * 20 = 20 Bytes
+    int my_int_array[20]; // Dieses Array beinhaltet 4 * 20 = 80 Bytes.
+    // unter der Voraussetzung eines 4-Byte-Worts.
+
+    // Ein Array kann auf diese Weise mit 0 initialisiert werden.
+    char my_array[20] = {0};
+    // Hierbei ist der Teil "{0}" der "Array Initialisierer".
+
 }
