@@ -16,8 +16,6 @@ Python was created by Guido van Rossum in the early 90s. It is now one of the mo
 languages in existence. I fell in love with Python for its syntactic clarity. It's basically
 executable pseudocode.
 
-Feedback would be highly appreciated! You can reach me at [@louiedinh](http://twitter.com/louiedinh) or louiedinh [at] [google's email service]
-
 Note: This article applies to Python 3 specifically. Check out [here](http://learnxinyminutes.com/docs/python/) if you want to learn the old Python 2.7
 
 ```python
@@ -138,20 +136,6 @@ b == a            # => True, a's and b's objects are equal
 
 # You can find the length of a string
 len("This is a string")  # => 16
-
-# .format can be used to format strings, like this:
-"{} can be {}".format("Strings", "interpolated")  # => "Strings can be interpolated"
-
-# You can repeat the formatting arguments to save some typing.
-"{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
-# => "Jack be nimble, Jack be quick, Jack jump over the candle stick"
-
-# You can use keywords if you don't want to count.
-"{name} wants to eat {food}".format(name="Bob", food="lasagna")  # => "Bob wants to eat lasagna"
-
-# If your Python 3 code also needs to run on Python 2.5 and below, you can also
-# still use the old style of formatting:
-"%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
 
 # You can also format using f-strings or formatted string literals (in Python 3.6+)
 name = "Reiko"
