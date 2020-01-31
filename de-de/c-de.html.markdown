@@ -530,3 +530,103 @@ error:
 
     funktion_1();
 } // Ende der `main`-Funktion
+
+////////////////////////////////////////////////
+// Funktionen
+////////////////////////////////////////////////
+
+// Syntax einer Funktionsdeklaration
+// <rueckgabe_wert> <funktion_name>(<args>)
+
+int addiere_zwei_integer(int x1, int x2){
+    return x1 + x2; // verwendet return, um einen Wert zurückzugeben
+}
+
+/* 
+ * Funktionen werden auf Grund des Wertes aufgerufen (call-by-value). Wenn eine 
+ * Funktion aufgerufen wird, sind die Argumente Kopien der ursprüunglichen Werte
+ * (ausgenommen Arrays). Alles, was man innerhalb einer Funktion mit den Werten 
+ * macht, hat keinen Einfluss auf die Originalwerte als die Funktion aufgerufen
+ *  wurde
+
+ * Verwende Pointer, um den Originalinhalt zu bearbeiten.
+
+ * Beispiel:
+*/
+
+// Eine `void`-Funktion gibt keinen Wert zurück
+void str_reverse(char *str_in){
+    char tmp;
+    size_t ii = 0; 
+    size_t laenge = strlen(str_in);
+    // `strlen()` ist ein Teil der C Standard-Bibliothek.
+    // Merke: Die Länge, welche von `strlen` zurückgegeben wird, ist ohne den 
+    // Null-Byter Terminatur.
+    for (ii = 0; i < laenge /2; ii++){ // in C99 kann man `ii` direkt hier deklarieren.
+        tmp = str_in[ii];
+        str_in[ii] = str_in[laenge - ii - 1]; //#ii'tes Zeichen vom Ende her
+        str_in[laenge - ii- 1] = tmp;
+    }
+}
+// Merke: Die `string.h`-Headerdatei muss inkludiert werden, bevor `strlen()`
+// verwendet werden kann.
+
+/*
+   * char c[] = "Das ist ein Test";
+   * str_reverse(c);
+   * printf("%s\n", c), => "tseT nie tsi saD"
+*/
+
+// Weil wir lediglich eine Variable zurückgeben können, kann zum Ändern mehrerer
+// Variablen das Konzept call-by-reference verwendet werden.
+void tausche_zwei_zahlen(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int erste_zahl = 10; 
+int zweite_zahl = 20;
+printf("Erste Zahl: %d\n Zweite Zahl: %d\n", erste_zahl, zweite_zahl);
+tausche_zwei_zahlen(&erste_zahl, &zweite_zahl);
+printf("Erste Zahl: %d\n Zweite Zahl: %d\n", erste_zahl, zweite_zahl);
+// Werte sind vertauscht.
+
+/*
+Wenn man Arrays betrachtet, so werden diese immer als Pointer übergeben. Auch
+wenn die Arrays statisch alloziert werden (wie zum Beispiel `arr[10]`), werden
+diese als Pointer zum ersten Element des Arrays übergeben.
+Auch hier soll noch einmal erwähnt werden, dass keinen Standard gibt, wie die 
+Grösse eines dynamischen Arrays herausgefunden werden kann.
+*/
+// Die Grösse des Arrays muss unbedingt mitgegeben werden.
+// Sonst hat die Funktion keine Ahnung wie gross das Array ist.
+void ausgabe_int_array(int *arr, size_t size){
+    int i;
+    for (i = 0; i < size; i++){
+        printf("arr[%d] ist %d\n", i, arr[i]);
+    }
+}
+
+int mein_array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+int groesse = 10;
+ausgabe_int_array(mein_array, groesse);
+// Wird folgendes ausgeben: "arr[0] ist 1" usw.
+
+// Wenn man auf externe Variable (ausserhalb der Funktion) referenziert, sollte
+// man das Schlüsselwort `extern` verwenden.
+int i = 0;
+void test_funktion(){
+    extern int i; //i braucht nun die externe Variable i
+}
+
+// Das Schlüsselwort `static` macht, dass eine Variable ausserhalb der Kompilier-
+// einheit nicht zugreifbar ist.  (Auf den meisten Systemen ist eine Kompiliereinheit
+// eine `.c`-Datei.) Das Schlüsselwort `static` kann sowohl global (zur Kompiliereinheit gehörende)
+// Variablen, Funktionen und Funktionslokale Variablen angewendet werden.
+// Wenn man `static` bei lokalen Variablen verwendet, so ist diese Variable global
+// erreichbar und behält dessen Wert über Funktionsaufrufe hinweg, aber sie ist 
+// nur innerhalb der deklarierten Funktion verfügbar. Ausserdem werden statische
+// Variablen mit 0 initialisiert, wenn sie nicht mit einem anderen Startwert 
+// initialisiert werden.
+// Es ist auch möglich, Funktionen als statisch zu deklarieren, damit diese
+// `private` sind. Private heisst, dass sie nur in diesem Kontekt sichtbar sind.
