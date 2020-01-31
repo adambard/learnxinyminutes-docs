@@ -630,3 +630,56 @@ void test_funktion(){
 // initialisiert werden.
 // Es ist auch möglich, Funktionen als statisch zu deklarieren, damit diese
 // `private` sind. Private heisst, dass sie nur in diesem Kontekt sichtbar sind.
+
+
+////////////////////////////////////////////////
+// Benutzerdefinierte Typen und Strukturen (Structs)
+////////////////////////////////////////////////
+
+// `typdef`s können verwendet werden, um Typenaliase zu erstellen.
+typedef int mein_typ;
+mein_typ meine_typ_var = 0;
+
+// Structs sind lediglich Sammlungen von Daten, die Inhalte werden
+// (in der Reihenfolge wie sie geschrieben wurden) sequentiell alloziert.
+struct rechteck{
+    int breite;
+    int hoehe;
+};
+
+// Allgemein ist es nicht so, dass folgender Ausdruck wahr ist.
+// sizeof(struct rechteck) == sizeof(int) + sizeof(int)
+// Dies ist so, weil potentiell ein Padding zwischen den Struktur-Inhalten
+// möglich ist). siehe [1]
+
+void funktion_1(){
+    struct rechteck mein_rechteck;
+
+    // Greife auf Struct-Inhalte mit `.` zu.
+    mein_rechteck.breite = 10;
+    mein_rechteck.hoehe = 20;
+
+    // Du kannst Pointer zu Structs deklarieren.
+    struct rechteck *mein_rechteck_ptr = &mein_rechteck;
+
+    // Verwende Dereferenzierung, um Struct-Inhalte zu bearbeiten
+    (*mein_rechteck_ptr).breite = 30; 
+
+    //Noch besser: Verwende die Kurzschreibweise ->, um die Lesbarkeit zu verbessern.
+    mein_rechteck_ptr->hoehe = 10; // Das gleiche wie: (*mein_rechteck_ptr).hoehe = 10;
+}
+
+// Aus Bequemlichkeitsgründen ist es möglich einem `struct` ein `typedef`hinzuzufügen.
+typedef struct rechteck recht;
+
+int flaeche(recht r){
+    return r.breite * r.hoehe;
+}
+
+// Wenn du grosse Structs hast, kannst du diese mit dem Pointer kopieren, 
+// damit grosse Kopiervorgänge vermieden werden.
+int flaecheptr(const recht *r){
+    return r->breite * r->hoehe;
+}
+
+[1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
