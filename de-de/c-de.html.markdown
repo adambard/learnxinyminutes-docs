@@ -144,12 +144,147 @@ int main (int argc, char** argv){
     // Gibt "sizeof(a++) = 4, wobei a=1 ist" aus (mit einer 32-Bit-Architektur)
 
     // Arrays müssen mit einer Grösse initialisiert werden.
-    char my_char_array[20]; // Dieses Array beinhaltet 1 * 20 = 20 Bytes
-    int my_int_array[20]; // Dieses Array beinhaltet 4 * 20 = 80 Bytes.
+    char mein_char_array[20]; // Dieses Array beinhaltet 1 * 20 = 20 Bytes
+    int mein_int_array[20]; // Dieses Array beinhaltet 4 * 20 = 80 Bytes.
     // unter der Voraussetzung eines 4-Byte-Worts.
 
     // Ein Array kann auf diese Weise mit 0 initialisiert werden.
-    char my_array[20] = {0};
+    char mein_array[20] = {0};
     // Hierbei ist der Teil "{0}" der "Array Initialisierer".
+    // Beachte, dass die Länge des Arrays nicht explizit definiert werden muss, 
+    // wenn er auf derselben Linie initialisiert wird.
+    // Folgende Deklaration ist gleichwertig:
+    char mein_array[] = {0};
+    // Allerdings muss die Länge des Arrays dann zur Laufzeit ausgewertet werden:
+    size_t mein_array_size = sizeof(mein_array) / sizeof(mein_array[0]);
+    // WARNUNG: Wenn dieser Ansatz gewählt wird, muss man sicherstellen, dass die
+    // Grösse des Arrays ermittelt werden *bevor* dieser einer Funktion als
+    // Argument weitergegeben wird (siehe Diskussion weiter unten), weil Arrays
+    // einer Funktion nur als Zeiger übergeben werden. => Das obere Statement
+    // würde innerhalb einer Funktion ein falsches Resultat liefern.
 
+    // Das Indexieren eines Arrays funktioniert wie in anderen Sprache - resp.
+    // in anderen Sprachen funktioniert es gleich wie in C.
+    mein_array[0]; // => 0
+    
+    // Arrays sind veränderbar; es ist nur Arbeitsspeicher!
+    mein_array[1] = 2;
+    printf("%d\n", mein_array[1]); // => 2
+
+    // In C99 (und als optionales Feature in C11) können Arrays mit variabler
+    // Länge deklariert werden. Die Grösse eines solchen Array muss eine Konstante
+    // zur Kompilierzeit sein.
+    printf("Geben Sie die Arraygrösse an: "); //Frag den Benutzer nach der Arraygrösse
+    int array_size;
+    fcsanf(stdin, "%d", &array_size);
+    int var_length_array[array_size]; // deklariere Array mit variabler Länge
+    printf("sizeof array =%zu\n", sizeof var_length_array);
+
+    // Zum Beispiel:
+    // > Geben Sie die Arraygrösse an: 10
+    // > sizeof array = 40
+
+    // Strings sind lediglich Arrays von `chars`, welche mit einem Null-Byte
+    // (0x00) beendet werden. In Strings wird das Nullbyte durch das Zeichen \0
+    // repräsentiert. Wir müssen das Null-Byte nicht angeben in String-Literalen;
+    // Der Compiler fügt es am Ende des Array automatisch hinzu.
+    char ein_string[20] = "Das ist ein String";
+    printf("%s\n", ein_string); // %s formattiert einen String
+
+    printf("%d\n", ein_string[18]); // => 0
+    // Hier ist das Byte #19 0 (wie auch Byte #20)
+
+    // Wenn wir Zeichen zwischen einfachen Anführungszeichen haben, ist es ein
+    // Zeichenliteral vom Typ int und *nicht* char. (aus historischen Gründen)
+    int cha = 'a'; // Ok
+    char chb = 'a'; // auch ok (implizite Umwandlung von int zu char)
+
+    // Mehrdimensionale Arrays:
+    int multi_array[2][5] = {
+        {1,2,3,4,5},
+        {6,7,8,9,0}
+    };
+    // Auf Elemente zugreifen:
+    int array_int = multi_array[0][2]; // => 3
+
+    ////////////////////////////////////////////////
+    // Operatoren
+    ////////////////////////////////////////////////
+    
+    // Kurzschreibweise für mehrere Deklarationen
+    int i1 = 1, i2 = 2;
+    flaot f1 = 1.0, f2 = 2.0;
+
+    int b,c;
+    b = c = 0;
+
+    // Arithmetik ist unkompliziert
+    i1 + i2; // => 3
+    i2 - i1; // => 1
+    i2 * i1; // => 2
+    i1 / i2; // 0 (0.5, aber abgeschnitten, da es int sind.
+
+    // Man muss mindestens ein Integer to einen float konvertieren, damit man als
+    // Resultat eine Gleitkommazahl erhält.
+    (float)i1 / i2; // => 0.5f
+    i1 / (double)i2; // => 0.5 // das gleiche mit dem Typ `double`
+    f1 / f2; // => 0.5, plus oder minus Epsilon
+    // Gleitkommazahlen und deren Berechnungen sind nicht exakt.
+
+    // Es gibt auch die Möglichkeit, Modulo zu rechnen
+    11 % 3; // => 2
+
+    // Vergleichsoperatoren sind vielleicht schon bekannt, aber in C gibt es keinen
+    // Boolean-Typ. In C verwenden wir `int`. (Oder _Bool oder bool in C99.)
+    // 0 ist falsch, alles andere ist wahr (Die Vergleichsoperatoren ergeben
+    // immer 1 oder 0.
+    3 == 2; // => 0 (falsch)
+    3 != 2; // => 1 (wahr)
+    3 > 2; // => 1
+    3 < 2; // => 0
+    2 <= 2; // => 1
+    2 >= 2; // => 1
+
+    // C ist nicht Python - Vergleiche können nicht verkettet werden.
+    // Warnung: die folgende Zeile wird kompilieren, aber es bedeutet `(0 < a) < 2`.
+    // Dieser Ausdruck ist immer wahr, weil (0 < a) kann entweder 1 oder 0 sein.
+    // In diesem Falle ist es 1, weil (0 < 1).
+    int zwischen_0_und_2 = 0 < a < 2;
+    // Benutze stattdessen folgende Schreibweise:
+    int zwischen_0_und_2 = 0 < a && a < 2;
+
+    // Logik funktioniert auch mit ints
+    !3; // => 0 (logisches Nicht)
+    !0; // => 1
+    1 && 1; // => 1 (logisches Und)
+    0 && 1; // => 0
+    0 || 1; // => 1 (logisches Oder)
+    0 || 0; // => 0
+
+    // Bedingter ternärer Ausdruck ( ? : )
+    int e = 5;
+    int f = 10;
+    int z;
+    z = ( e > f) ? e : f; // => // => 10 "wenn e > f ist, gib e zurück, sonst f."
+
+    // Inkrementierungs- und Dekrementierungsoperatoren
+    int j = 0;
+    int s = j++; // gib j zurück und erhöhe danach j. (s = 0, j = 1)
+    s = ++j; // erhöhe zuerst j und gib dann j zurück (s = 2, j = 2)
+    // das gleiche gilt für j-- und --j
+
+    // Bitweise Operatoren
+    ~0x0F; // => 0xFFFFFFF0 (Bitweise Negation, "Einer-Komplement", Beispielresultat für 32-Bit int)
+    0x0F & 0xF0; // => 0x00 (Bitweises UND)
+    0x0F | 0xF0; // => 0xFF (Bitweises ODER)
+    0x04 ^ 0x0F; // => 0x0B (Bitweises XOR)
+    0x01 << 1; // => 0x02 (Bitweises  Linksshift (left shift) (um 1))
+    0x02 >> 1; // => 0x01 (Bitweises Rechtsshift (right shift) (um 1))
+
+    // Sei vorsichtig beim Shift mit vorzeichenbehafteten Integern - folgende Ausdrücke sind nicht definiert:
+    // - Verschiebung in das Vorzeichenbit (int a = 1 << 31)
+    // - Linksshift einer negativen Zahl (int a = -1 << 2)
+    // - Shift um einen Offset, welcher >= die Breite des linken Ausdrucks ist.
+    // int a = 1 << 32; // undefiniertes Verhalten, wenn int 32-Bit ist.
+    
 }
