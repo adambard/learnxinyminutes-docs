@@ -372,4 +372,31 @@ int main (int argc, char** argv){
 error:
     printf("Ein Fehler ist aufgetreten bei i = %d & j ? %d\n", i, j);
 
+    ////////////////////////////////////////////////
+    // Typenumwandlung
+    ////////////////////////////////////////////////
+
+    // Jeder Wert in C hat einen bestimmten Typen, aber es ist möglich, ein 
+    // Wert in einen anderen Typ umzuwandeln (mit einigen Einschränkungen).
+
+    int x_hex = 0x01; // Es ist möglich, Variablen Hexadezimalwerten zuzuweisen.
+
+    // Bei der Umwandlung zwischen Typen wird versucht, den numerischen Wert
+    // beizubehalten.
+    printf("%d\n", x_hex); // => 1
+    printf("%d\n", (short) x_hex); // => 1
+    printf("%d\n", (char) x_hex); // => 1
+
+    // Typen werden überlaufen (overflow) ohne jegliche Warnung
+    printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 wenn char 8 Bit lang ist)
+
+    // Um den maximalen Wert eines `char`, `signed char` oder `unsigned char` 
+    // herauszufinden, können die Makros `CHAR_MAX`, `SCHAR_MAX` und `UCHAR_MAX`
+    // aus der Header-Datei `<limits.h>` verwendet werden.
+
+    // Integer-Typen können zu Gleitkommazahlen und umgekehrt umgewandelt werden.
+    printf("%f\n", (double) 100); // %f formattiert immer zu einem `double`...
+    printf("%f\n", (flaot) 100); // ... auch mit einem `float`
+    printf("%d\n", (char)100.0); 
+
 }
