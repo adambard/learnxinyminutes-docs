@@ -289,7 +289,7 @@ if (false) {
 print (false ? 'Does not get printed' : 'Does');
 
 // ternary shortcut operator since PHP 5.3
-// equivalent of "$x ? $x : 'Does'""
+// equivalent of "$x ? $x : 'Does'"
 $x = false;
 print($x ?: 'Does');
 

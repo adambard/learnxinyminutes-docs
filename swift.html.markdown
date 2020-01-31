@@ -692,6 +692,11 @@ print(mySquare.sideLength) // 4
 // cast instance
 let aShape = mySquare as Shape
 
+// downcast instance: 
+// Because downcasting can fail, the result can be an optional (as?) or an implicitly unwrpped optional (as!).  
+let anOptionalSquare = aShape as? Square // This will return nil if aShape is not a Square
+let aSquare = aShape as! Square // This will throw a runtime error if aShape is not a Square
+
 // compare instances, not the same as == which compares objects (equal to)
 if mySquare === mySquare {
     print("Yep, it's mySquare")
@@ -904,7 +909,7 @@ func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
     }
     return nil
 }
-findIndex(array: [1, 2, 3, 4], valueToFind: 3) // 2
+findIndex(array: [1, 2, 3, 4], valueToFind: 3) // Optional(2)
 
 // You can extend types with generics as well
 extension Array where Array.Element == Int {

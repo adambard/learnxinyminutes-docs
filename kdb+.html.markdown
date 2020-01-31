@@ -771,6 +771,6 @@ select from splayed / (the columns are read from disk on request)
 
 * [*q for mortals* q language tutorial](http://code.kx.com/q4m3/)
 * [*Introduction to Kdb+* on disk data tutorial](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/)
-* [q language reference](http://code.kx.com/q/ref/card/)
+* [q language reference](https://code.kx.com/q/ref/)
 * [Online training courses](http://training.aquaq.co.uk/)
 * [TorQ production framework](https://github.com/AquaQAnalytics/TorQ)

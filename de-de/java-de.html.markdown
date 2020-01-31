@@ -477,7 +477,7 @@ Für tiefergreifende Fragen ist Google der beste Startpunkt.
 
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 
-* [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconventions-150003.pdf)
 
 **Online Tutorials**
 

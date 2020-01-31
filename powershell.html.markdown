@@ -15,7 +15,7 @@ in the shell.
 A key difference with Bash is that it is mostly objects that you manipulate
 rather than plain text.
 
-[Read more here.](https://technet.microsoft.com/en-us/library/bb978526.aspx)
+[Read more here.](https://docs.microsoft.com/powershell/scripting/overview)
 
 If you are uncertain about your environment:
 
@@ -321,7 +321,7 @@ Interesting Projects
 * [PSake](https://github.com/psake/psake) Build automation tool
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
 * [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
-* [PowerShell Community Extensions](http://pscx.codeplex.com/) (Dead)
+* [PowerShell Community Extensions](https://github.com/Pscx/Pscx)
 
 Not covered  
 

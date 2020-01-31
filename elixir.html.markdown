@@ -1,7 +1,7 @@
 ---
 language: elixir
 contributors:
-    - ["Joao Marques", "http://github.com/mrshankly"]
+    - ["Joao Marques", "https://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
     - ["Ryan Plant", "https://github.com/ryanplant-au"]
     - ["Ev Bogdanov", "https://github.com/evbogdanov"]
@@ -451,9 +451,9 @@ Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 
 ## References
 
-* [Getting started guide](http://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](http://elixir-lang.org)
+* [Getting started guide](https://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](https://elixir-lang.org)
 * [Elixir Documentation](https://elixir-lang.org/docs.html)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
-* [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
-* ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) by Fred Hebert
+* [Elixir Cheat Sheet](https://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
+* ["Learn You Some Erlang for Great Good!"](https://learnyousomeerlang.com/) by Fred Hebert
 * ["Programming Erlang: Software for a Concurrent World"](https://pragprog.com/book/jaerlang2/programming-erlang) by Joe Armstrong
