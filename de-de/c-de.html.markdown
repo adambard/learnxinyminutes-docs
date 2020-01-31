@@ -399,4 +399,134 @@ error:
     printf("%f\n", (flaot) 100); // ... auch mit einem `float`
     printf("%d\n", (char)100.0); 
 
-}
+    ////////////////////////////////////////////////
+    // Zeiger (aka Pointer)
+    ////////////////////////////////////////////////
+
+    // In diesem Tutorial wird das deutsche Wort Zeiger nicht verwendet, da es
+    // bei einer weiteren Recherche einfacher ist, wenn man von Pointern ausgeht.
+    // Ausserdem ist der Begriff Pointer auf im deutschen Sprachgebrauch zu finden.
+
+    // Ein Pointer ist eine Variable, welche deklariert wurde, um eine Speicher-
+    // Adresse zu speichern. Die Deklaration eines Pointers wird auch zeigen,
+    // auf welche Art von Daten der Pointer zeigt. Man kann die Speicheradresse
+    // von Variablen abrufen und dann mit diesen herumspielen.
+
+    int x = 0; 
+    printf("%p\n", (void *)&x); // verwende & um die Adresse der Variable zu erhalten
+    // %p  formattiert einen Objektpointer des Typen void*)
+    // => Gibt eine Adresse im Speicher aus
+
+    // Pointer starten mit einem * zu Beginn der Deklaration.
+    int *px, kein_pointer; // px ist ein Pointer zu einem int.
+    px = &x; // Speichert die Adresse von x in px
+    printf("%p\n", (void *)px); // => Gibt eine Adresse im Speicher aus
+    printf("%zu, %zu\n", sizeof(px), sizeof(kein_pointer));
+    // Gibt auf einem typischen 64-Bit-System folgendes aus: "8, 4"
+
+    // Um den Wert einer Adresse, auf welche ein Pointer zeigt, herauszufinden, 
+    // muss man vor die Variable ein * setzen, um sie zu dereferenzieren.
+    // Notiz: Ja, es kann verwirrend sein, dass '*' sowohl für das Deklarieren
+    // als auch das Derefenzieren verwendet werden kann.
+    printf("%d\n", *px); // => 0, der Wert von x
+
+    // Man kann den Wert, auf welchen ein Pointer zeigt, auch verändern.
+    // Man muss die Dereferenzierung in Klammern setzen, weil ++ eine höhere 
+    // Priorität als * hat.
+    (*px)++; // Inkrementiere den Wert, auf welchen px zeigt, um 1
+    printf("%d\n", *px); // => 1
+    printf("%d\n", x); // => 1
+
+    // Arrays sind eine gute Möglichekit, einen zusammenhängenden Block von
+    // Speicher zu allozieren.
+    int x_array[20]; // deklariert einen Array der Grösse 20 (Grösse kann
+    // nicht geändert werden.)
+    int xx;
+    for (xx =0; xx < 20; xx++){
+        x_array[xx]  20 -xx;
+    } // Initialisiere x_array zu 20, 19, 18, ... 2, 1
+
+    // Deklariere ein Pointer des Typs int und initalisiere ihn, um auf `x_array`
+    // zu zeigen.
+    int *x_ptr = x_array;
+    // x_ptr zeigt jetzt auf den ersten Wert innerhalb des Arrays (int 20)
+    // Das funktioniert, weil Arrays oft zu Pointern reduziert werden, welche
+    // auf das erste Element zeigen.
+    // Zum Beispiel: Wenn ein Array einer Funktion mitgegeben wird oder einem
+    // Pointer zugewiesen wird, wird es zu einem Pointer reduziert (implizites Casting)
+    // Ausnahme: Wenn das Array das Argument des Operators `&` ist.
+    int arr[10];
+    int (*ptr_zu_arr)[10] = &arr; //`&arr` ist nicht vom Typ `int *`!
+    // Es ist vom Typem "Pointer auf Array" (aus zehn `int`s)
+    // oder wenn das Array ein Stringliteral ist, welches gebraucht wird um ein
+    // `char`-Array zu initialisieren.
+    char anderer_arr[] = "foobarbazquirk";
+    // oder wenn es das Argument des des `sizeof` oder `alignof` Operators ist.
+    int dritter_array[10];
+    int *ptr = dritter_array; // gleich wie: `int *ptr = &arr[0]`
+    printf("%zu, %zu\n", sizeof(dritter_array), sizeof(ptr));
+    // Gibt wahrscheinlich "40, 4" oder "40, 8" aus
+
+    // Pointer werden basierend auf dem Typ in- und dekrementiert
+    // Dies wird Pointer-Arithmetik genannt.
+    printf("%d\n", *(x_ptr + 1)); // => 19
+    printf("%d\n", x_array[1]); // => 19
+
+    // Man kann zusammenhängende Speicherblöcke auch mit der Funktion `malloc`
+    // aus der Standardbibliothek dynamisch allozieren. Der Funktion `malloc` 
+    // muss ein Argument des Typs `size_t` übergeben werden, welches bestimmt, 
+    // wie viele Bytes alloziert werden sollen. (Normalerweise geschieht dies
+    // aus dem Heap - dies kann auf eingebetteten Systemen unterschiedlichen sein.
+    // Der C Standard sagt nichts darüber.)
+    int *mein_ptr = malloc(sizeof(*mein_ptr) * 20);
+    for (xx = 0; xx < 20; xx++){
+        *(mein_ptr + xx) = 20 -xx; //mein_ptr[xx] = 20-xx
+    } // initialisiere Speicher zu 20, 19, 18, 17, ... 2, 1 (als `int`)
+
+    // Sei vorsichtig beim Übergeben von Benutzerdefinierten Werten an `malloc`.
+    // Wenn du sicher sein willst, kannst du die Funktion `calloc` nutzen, welche
+    // (nicht wie `malloc`) auch den Speicher nullt.
+    int *mein_anderer_ptr = calloc(20, sizeof(int));
+
+    // Merke, dass es in C keinen Standard-Weg gibt, um die Länge eines dynamisch
+    // allozierten Arrays zu bestimmen. Auf Grund dessen sollte eine Variable 
+    // erstellt werden, welche sich die Anzahl der Elemente im Array merkt, wenn
+    // die Arrays mehrmals im Programm gebraucht werden.
+    // Weitere Informationen stehen im Abschnitt Funktionen.
+    size_t groesse = 10;
+    int *mein_array = calloc(groesse, sizeof(int));
+    // Füge dem Array ein Element hinzu 
+    groesse++;
+    mein_array = realloc(mein_array, sizeof(int) *groesse);
+    if (mein_array == NULL){
+        // Denke daran, realloc-Fehler zu prüfen
+        return
+    }
+    mein_array[10] = 5;
+
+    // Das Dereferenzieren von nicht alloziertem Speicher führt zu einem 
+    // Undefinierten Verhalten.
+    printf("%d\n", *(mein_ptr + 21)); // Gibt irgendwas aus. Das Programm kann auch abstürzen
+
+    // Nachdem du fertig mit einem Block bist, welcher `malloc` verwendet hat, 
+    // muss der Speicher befreit werden. Ansonsten kann dieser Speicherbereich
+    // niemand nutzen bis dein Programm beendet wird.
+    // Dies wird auch als "Speicherleck" (engl: memory leak) bezeichnet.
+    free(mein_ptr);
+
+    // Obwohl Strings normalerweise als Pointer-to-Char (Pointer zum ersten
+    // Zeichen des Arrays) repräsentiert werden, sind Strings sind Arrays aus `char`s.
+    // Es ist eine gute Praxis, `const char *` zu verwenden, wenn man ein
+    // String-Literal referenziert, da String-Literale nicht modifiziert werden
+    // sollten (z.B. "foo"[0] = 'a' ist ILLEGAL)
+    const char *mein_str = "Das ist mein eigener String";
+    printf("%c\n", *mein_str); // => D
+
+    // Dies ist nicht der Fall, wenn der String ein Array (möglicherweise mit
+    // einem String-Literal initialisiert) ist, welcher im beschreibbaren Speicher
+    // bleibt, wie zum Beispiel in:
+    char foo[] = "foo";
+    foo[0] = 'a'; // Dies ist legal, foo enthält jetzt "aoo"
+
+    funktion_1();
+} // Ende der `main`-Funktion
