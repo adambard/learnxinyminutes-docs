@@ -835,5 +835,27 @@ Knoten erstelleVerketteteListe(int *werte, int laenge);
 
 #endif /* Ende der Präprozessordirektive */
 ```
+## Weiterführende Literatur
+
+Das Beste wird es sein, wenn man sich ein Exemplar des Buches
+["The C Programming Language"](https://de.wikipedia.org/wiki/The_C_Programming_Language) besorgt.
+Dieses Buch gilt als *das* Buch über die Programmiersprache C und wurde von Dennis Ritchie,
+dem Erfinder der Programmiersprache C, und Brian Kernighan geschrieben.
+Sei vorsichtig, da dieses Buch mittlerweile schon etwas älter ist und gewisse
+Unkorrektheiten (d.h. Ideen, welche nicht mehr als gut empfunden werden.) oder
+mittlerweile geänderte Praktiken enthält. [Hinweis: Das Buch wurde auf Englisch
+geschrieben, es gibt aber auch eine Übersetzung davon]
+
+Eine weitere gute Resource ist [Learn C The Hard Way](http://learncodethehardway.org/c/).
+[Englisch]
+
+Solltest du Fragen zu C haben, so lies die FAQ [compl.lang.c Frequently Asked Questions](http://c-faq.com).[Englisch]
+
+Ausserdem ist es wichtig, eine saubere Einrückung zu verwenden. Des weiteren ist
+es wichtig, dass der Codestil möglichst konsistent ist. Es ist wichtiger, lesbaren
+Code zu schreiben als Code, welcher clever und schnell ist. Es lohnt sich ein
+Blick auf den [Codestil des Linuxkernel](https://www.kernel.org/doc/Documentation/process/coding-style.rst) zu werfen. [Englisch]
+
+Wenn die erwähnte Literatur dein Problem nicht löst, denke daran: "Google ist dein Freund"
 
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
