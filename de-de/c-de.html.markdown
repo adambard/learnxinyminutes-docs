@@ -773,7 +773,67 @@ typedef void (*mein_fnp_type)(char *);
 //-------------------------------------------------------//
 
 
+////////////////////////////////////////////////
+// Header-Dateien
+////////////////////////////////////////////////
 
+/*
+Header-Dateien sind ein wichtiger Teil von C, da sie eine Verbindung zwischen 
+unterschiedlichen C-Quelldateien herstellen. Ausserdem vereinfachen Header-Dateien
+den Code und Definitionen, da diese in separaten Daten geschrieben werden können.
 
+Header-Dateien sind von der Syntax her ähnlich zu C-Quelldateien, allerdings haben
+die Header-Dateien die Dateiendung `.h`. Header-Dateien können im Quellcode mit
+der `#include`-Anweisung eingebunden werden z.B. `#include "beispiel.h". Die
+vorherige Anweisung geht davon aus, dass sich die Header-Datei im selben Ordner
+befindet wie die C-Quelldatei.
+*/
+
+// Eine sichere Möglichkeit, einen Header mehrere Male zu definieren bietet, das
+// folgende Statement. Die mehrfache Definition geschieht, wenn Kreisabhängigkeiten
+// bestehen.
+#ifndef BEISPIEL_H /* Wenn BEISPIEL_H noch nicht definiert wurde */
+#define BEISPIEL_H /* definiere das Makro BEISPIEL_H */
+
+// Es könenn weitere Header innerhalb eines Headers eingebunden werden, was dazu
+// führt, dass diese bereits in anderen Dateien eingebunden wurden. So kann eine
+// Header-Datei in mehreren Dateien eingebunden werden. zum Beispiel:
+#include <string.h>
+
+// Wie in den Quelldateien können auch in den Header-Dateien Makros definiert
+// werden und in anderen Dateien verwendet werden, welche diesen Header einbinden.
+#define BEISPIEL_NAME "Dennis Ritchie"
+
+// Funktionsmakros können auch definiert werden.
+#define ADD(a, b) ((a) + (b))
+
+// Beachte die Klammern, welche um die Argumente geschrieben wurden - diese sind
+// wichtig, damit sichergestellt werden kann, dass a und b nicht unerwartet 
+// erweitert werden. Zum Beispiel: `MUL (x,y) (x * y)`; Bei der Verwendung von 
+// `MUL(1 + 2, 3)` würde dies wie folgt erweitert werden: `(1 + 2 * 3)`, was zu
+// einem falschen Resultat führen würde.
+
+// Strukturen und Typendefinitionen können verwendet werden, um die Konsistenz
+// zwischen unterschiedlichen Dateien beizubehalten.
+typedef struct Knoten{
+    int wert;
+    struct Knoten *naechster;
+}Knoten;
+
+// Dies kann auch mit Aufzählungen gemacht werden.
+enum ampel_status {GRUEN, GELB, ROT};
+
+// Funktionsprototypen könenn auch in Header-Dateien definiert werden, um die
+// Funktion in unterschiedlichen Dateien zu verwenden, aber dies wird als schlechte
+// Praxis angesehen. Definitionen sollten in einer C-Datei erstellt werden.
+Knoten erstelleVerketteteListe(int *werte, int laenge);
+
+// Ausser den oben genannten Elementen, sollten weitere Definitionen in einer
+// C-Datei gemacht werden. Übermässige Includes und Definitionen sollten auch 
+// nicht einer Header-Datei gemacht werden. Stattdessen wird es empfohlen, diese
+// in eine separate Header-Datei oder in eine C-Quelldatei zu schreiben.
+
+#endif /* Ende der Präprozessordirektive */
+```
 
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
