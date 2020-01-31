@@ -682,4 +682,76 @@ int flaecheptr(const recht *r){
     return r->breite * r->hoehe;
 }
 
+////////////////////////////////////////////////
+// Funktionspointer
+////////////////////////////////////////////////
+
+/* 
+Zur Laufzeit sind Funktionen in einer Speicheradresse gespeichert. 
+Funktionspointer sind wie normale Pointer (es wird einfach eine Speicheradresse 
+geseichert). Funktionspointer können verwendet werden, um Funktionen und
+Handler (oder Callback-Funktionen) direkt aufzurufen.
+Wie auch immer, die Syntax kann zu Beginn verwirrend wirken.
+
+Zum Beispiel: Verwende str_reverse von einem Pointer 
+*/
+void str_reverse_through_pointer(char *str_in){
+    // Definiere eine Funktionspointer-Variable, welche f genannt wird.
+    void (*f)(char *); // Signatur sollte genau der Funktion entsprechen.
+    f = &str_reverse; // weise die Adresse der wirklichen Funktion zu (zur Laufzeit bestimmt)
+    // `f = str_reverse;` würde auch funktionieren, da Funktionen zu Pointern
+    // reduziert werden (ähnlich wie Arrays)
+    (*f)(str_in); // Die Funktion einfach mit dem Pointer aufrufen
+    // f(str_in); // Dies ist eine weitere gültige Alternative um eine Funktion auzurufen.
+}
+
+/*
+Solange die Signaturen der Funktionen übereinstimmen, kann man sämtliche Funktionen
+demselben Pointer zuweisen. Funktionspointer sind auf Grund der Einfacheit und
+Leserlichkeit normalerweise wie folgt `typedef`d 
+*/
+typedef void (*mein_fnp_type)(char *);
+// Danach werden diese genutzt, um die wirkliche Pointervariable zu deklarieren.
+// ..
+// mein_fnp_type f;
+
+// Spezialzeichen
+// Im folgenden sin die englischen Begriffe jeweils in Klammern geschrieben,
+// da diese Begriffe auch im deutschten Sprachgebrauch verwendet werden.
+'\a'; // Alarmzeichen (alert (bell) character)
+'\n'; // Zeichen für neue Linie (newline character)
+'\t'; // Tab (tab character (left justifies text))
+'\v'; // Vertikaler Tab (vertical tab)
+'\f'; // Neue Seite (new page (form feed))
+'\r'; // Wagenrücklauf (carriage return)
+'\b'; // Backspace-Zeichen (backspace character)
+'\0'; // Null-Byte (NULL character). In C wird dieses Zeichen normalerweise am Ende eines Strings gesetzt.
+//   Beispiel: Hallo\n\0. \0  wird per Konvention verwendet, um das Ende eines Strings zu kennzeichnen.
+'\\'; // Backslash (backslash)
+'\?'; // Fragezeichen (question mark)
+'\''; // einfaches Anführungszeichen (single quote)
+'\"'; // doppeltes Anführungszeichen (double quote)
+'\xhh'; // Hexadezimale Zahl (hexadecimal number.) Beispiel: '\xb' = Zeichen für vertikalen Tab 
+'\0oo'; // Oktalzahl (octal number). Beispiel \013 = Zeichen für vertikalen Tab
+
+//Ausgabeformatierung
+"%d";    // Integer
+"%3d";   // integer mit einer minimalen Länge von drei Zeichen.
+"%s";    // String
+"%f";    // Float
+"%ld";   // Long
+"%3.2f"; // Mindest drei Zeichen vor und drei nach dem Komma.
+"%7.4s"; // (Kann auch mit Strings gemacht werden)
+"%c";    // Char
+"%p";    // Pointer. Merke: man muss den Pointer zu void umwandeln, bevor `printf`funktioniert.
+"%x";    // Hexadezimal
+"%o";    // Oktalzahl
+"%%";    // Gibt % aus
+
+
+
+
+
+
+
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
