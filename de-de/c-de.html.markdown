@@ -748,7 +748,29 @@ typedef void (*mein_fnp_type)(char *);
 "%o";    // Oktalzahl
 "%%";    // Gibt % aus
 
+////////////////////////////////////////////////
+// Reihenfolge der Auswertung
+////////////////////////////////////////////////
 
+//-------------------------------------------------------//
+//        Operatoren                 | Assoziativität    //
+//-------------------------------------------------------//
+// () [] -> .                        | linksassoziativ   //
+// ! ~ ++ -- + = *(type)sizeof       | rechtsassoziativ  //
+// * / %                             | linksassoziativ   //
+// + -                               | linksassoziativ   //
+// << >>                             | linksassoziativ   //
+// < <= > >=                         | linksassoziativ   //
+// == !=                             | linksassoziativ   //
+// &                                 | linksassoziativ   //
+// ^                                 | linksassoziativ   //
+// |                                 | linksassoziativ   //
+// &&                                | linksassoziativ   //
+// ||                                | linksassoziativ   //
+// ?:                                | rechtsassoziativ  //
+// = += -= *= /= %= &= ^= |= <<= >>= | rechtsassoziativ  //
+// ,                                 | linksassoziativ   //
+//-------------------------------------------------------//
 
 
 
