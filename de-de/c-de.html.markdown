@@ -287,4 +287,89 @@ int main (int argc, char** argv){
     // - Shift um einen Offset, welcher >= die Breite des linken Ausdrucks ist.
     // int a = 1 << 32; // undefiniertes Verhalten, wenn int 32-Bit ist.
     
+    ////////////////////////////////////////////////
+    // Kontrollstrukturen
+    ////////////////////////////////////////////////
+    if (0) {
+        printf("Ich werde nie ausgeführt.");
+    }
+    else if (0){
+        printf("Ich werde auch nie ausgeführt.");
+    }
+    else {
+        printf("Ich gebe etwas aus.");
+    }
+
+    // While-Schleifen existieren auch
+    int ii = 0;
+    while (ii < 10){ // JEDER Wert unter zehn ist wahr
+        printf("%d, " ii++); //i++ inkrementiert ii NACHDEM der Wert gebraucht wurde.
+    } // => gibt folgendes aus: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+
+    printf("\n");
+
+    int kk = 0;
+    do {
+        printf("%d, ", kk);
+    } while(++kk < 10); //++kk inkrementiert kk BEVOR der Wert gebraucht wurde.
+    // => gibt folgendes aus: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+
+    printf("\n");
+
+    // In C gibt es auch for-Schleifen
+    int jj; 
+    for (jj = 0; jj < 10; jj++){
+        printf("%d, ", jj);
+    } // => gibt folgendes aus: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+    
+    printf("\n");
+
+    // **Merke**
+    // Schleifen und Funktionen müssen einen Body haben. Wenn kein Body gebraucht
+    // wird, kann folgendes gemacht werden:
+    int i; 
+    for (i = 0; i <= 5; i++){
+        ; // Semikolon wird als Body behandelt (Null-Anweisung)
+    }
+    // Alternativ kann auch folgendes geschrieben werden:
+    for (i = 0; i <= 5; i++);
+
+    // Verzweigungen mit mehreren Möglichkeiten: `switch()`
+    switch (a){
+        case 0: //labels müssen integrale *konstante* Ausdrücke sein (z.B. Enums)
+            printf("Hey, 'a' ist gleich 0!\n");
+            break; //Wenn du kein break einsetzt, so geht der Kontrollfluss durch die Labels
+        case 1:
+            printf("Huh, 'a' ist gleich 1!\n");
+            break;
+            // Sei vorsichtig - wenn man das `break` vergisst, werden alle Anweisungen
+            // ausgeführt bis das nächste `break` erscheint.
+        case 3:
+        case 4:
+            printf("Schau mal ... 'a' ist entweder 3 oder 4.\n");
+            break;
+        default:
+            // wenn der Ausdruck `a` auf kein Label zutrifft.
+            fputs("Fehler!\n", stderr);
+            exit(-1);
+            break;
+    }
+
+    // Verwendung von "goto" in C
+    typedef enum { false, true } bool;
+    bool desaster = false;
+    int i, j; 
+    for(i=0; i < 100; ++i){
+        for (j=0; j < 100; ++j){
+            if ((i + j ) >= 150){
+                desaster = true;
+            }
+            if (desaster){
+                goto error;
+            }
+        }
+    }
+error:
+    printf("Ein Fehler ist aufgetreten bei i = %d & j ? %d\n", i, j);
+
 }
