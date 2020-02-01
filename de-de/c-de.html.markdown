@@ -841,7 +841,7 @@ Knoten erstelleVerketteteListe(int *werte, int laenge);
 
 Das Beste wird es sein, wenn man sich ein Exemplar des Buches
 ["The C Programming Language"](https://de.wikipedia.org/wiki/The_C_Programming_Language) besorgt.
-Dieses Buch gilt als *das* Buch über die Programmiersprache C und wurde von Dennis Ritchie,
+Dieses Buch gilt als **das** Buch über die Programmiersprache C und wurde von Dennis Ritchie,
 dem Erfinder der Programmiersprache C, und Brian Kernighan geschrieben.
 Sei vorsichtig, da dieses Buch mittlerweile schon etwas älter ist und gewisse
 Unkorrektheiten (d.h. Ideen, welche nicht mehr als gut empfunden werden.) oder
