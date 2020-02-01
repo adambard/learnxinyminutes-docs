@@ -13,11 +13,11 @@ Programmierer je brauchen werden. Die Geschwindigkeit von C ist enorm, allerding
 muss man sich stets der maneullen Speicherverwaltung bewusst sein.
 
 
-> **Über Compiler Flags**
+> **Über Compiler Optionen**
 > 
 > Standardmässig sind `gcc` und `clang` ziemlich ruhig bezüglich Warnungen und 
 > Fehlern, obwohl dies sehr nützliche Informationen sein können. Es wird
-> empfohlen, strengere Compiler Flags zu verwenden. Hier sind einige empfohlene
+> empfohlen, strengere Compiler Optionen zu verwenden. Hier sind einige empfohlene
 > Standards:
 > `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
 >
@@ -33,7 +33,7 @@ mehrzeilige Kommentare sehen so aus. Diese funktionieren auch in C89
 */
 
 /* 
-mehrzeilige Kommentare können nicht verschaltelt werden /* Sei Vorsichtig! */ // Kommentar endet auf dieser Linie ...
+mehrzeilige Kommentare können nicht verschachtelt werden /* Sei Vorsichtig! */ // Kommentar endet auf dieser Linie ...
 */ // ... nicht bei dieser!
 
 // Konstanten: #define <keyword>
@@ -89,7 +89,7 @@ int main (int argc, char** argv){
     // Typen
     ////////////////////////////////////////////////
 
-    // Alle Variable müssen am Anfang des jetzigen Blocks deklariert werden.
+    // Alle Variablen müssen am Anfang des jetzigen Blocks deklariert werden.
     // Wir deklarieren die Variablen dynamisch im Code um die Lesbarkeit im
     // Tutorial zu verbessern.
     // C99-Konforme Compiler erlauben die Variablendeklaration an dem Punkt, an
@@ -121,7 +121,7 @@ int main (int argc, char** argv){
     unsigned int ux_int;
     unsigned long long ux_long_long;
 
-    // chars innerhalb von einfachen Anführungszeichen sind Integers im
+    // Zeichen innerhalb von einfachen Anführungszeichen sind Integers im
     // Maschinenzeichensatz
     '0'; // => 48 im ASCII-Zeichensatz
     'A'; // => 65 im ASCII-Zeichensatz
@@ -187,7 +187,7 @@ int main (int argc, char** argv){
     // Strings sind lediglich Arrays von `chars`, welche mit einem Null-Byte
     // (0x00) beendet werden. In Strings wird das Nullbyte durch das Zeichen \0
     // repräsentiert. Wir müssen das Null-Byte nicht angeben in String-Literalen;
-    // Der Compiler fügt es am Ende des Array automatisch hinzu.
+    // der Compiler fügt es am Ende des Array automatisch hinzu.
     char ein_string[20] = "Das ist ein String";
     printf("%s\n", ein_string); // %s formattiert einen String
 
@@ -222,9 +222,9 @@ int main (int argc, char** argv){
     i1 + i2; // => 3
     i2 - i1; // => 1
     i2 * i1; // => 2
-    i1 / i2; // 0 (0.5, aber abgeschnitten, da es int sind.
+    i1 / i2; // 0 (0.5, aber abgeschnitten, da es int sind.)
 
-    // Man muss mindestens ein Integer to einen float konvertieren, damit man als
+    // Man muss mindestens ein Integer zu einen float konvertieren, damit man als
     // Resultat eine Gleitkommazahl erhält.
     (float)i1 / i2; // => 0.5f
     i1 / (double)i2; // => 0.5 // das gleiche mit dem Typ `double`
@@ -245,7 +245,7 @@ int main (int argc, char** argv){
     2 <= 2; // => 1
     2 >= 2; // => 1
 
-    // C ist nicht Python - Vergleiche können nicht verkettet werden.
+    // C ist nicht Python - Vergleiche können nicht einfach verkettet werden.
     // Warnung: die folgende Zeile wird kompilieren, aber es bedeutet `(0 < a) < 2`.
     // Dieser Ausdruck ist immer wahr, weil (0 < a) kann entweder 1 oder 0 sein.
     // In diesem Falle ist es 1, weil (0 < 1).
@@ -278,8 +278,8 @@ int main (int argc, char** argv){
     0x0F & 0xF0; // => 0x00 (Bitweises UND)
     0x0F | 0xF0; // => 0xFF (Bitweises ODER)
     0x04 ^ 0x0F; // => 0x0B (Bitweises XOR)
-    0x01 << 1; // => 0x02 (Bitweises  Linksshift (left shift) (um 1))
-    0x02 >> 1; // => 0x01 (Bitweises Rechtsshift (right shift) (um 1))
+    0x01 << 1; // => 0x02 (Bitweises  Linksverschiebung (left shift) (um 1))
+    0x02 >> 1; // => 0x01 (Bitweises Rechtsverschiebung (right shift) (um 1))
 
     // Sei vorsichtig beim Shift mit vorzeichenbehafteten Integern - folgende Ausdrücke sind nicht definiert:
     // - Verschiebung in das Vorzeichenbit (int a = 1 << 31)
@@ -325,18 +325,18 @@ int main (int argc, char** argv){
     printf("\n");
 
     // **Merke**
-    // Schleifen und Funktionen müssen einen Body haben. Wenn kein Body gebraucht
+    // Schleifen und Funktionen müssen einen Rumpf haben. Wenn kein Rumpf gebraucht
     // wird, kann folgendes gemacht werden:
     int i; 
     for (i = 0; i <= 5; i++){
-        ; // Semikolon wird als Body behandelt (Null-Anweisung)
+        ; // Semikolon wird als Rumpf behandelt (Null-Anweisung)
     }
     // Alternativ kann auch folgendes geschrieben werden:
     for (i = 0; i <= 5; i++);
 
     // Verzweigungen mit mehreren Möglichkeiten: `switch()`
     switch (a){
-        case 0: //labels müssen integrale *konstante* Ausdrücke sein (z.B. Enums)
+        case 0: // Labels müssen integrale *konstante* Ausdrücke sein (z.B. Enums)
             printf("Hey, 'a' ist gleich 0!\n");
             break; //Wenn du kein break einsetzt, so geht der Kontrollfluss durch die Labels
         case 1:
@@ -405,10 +405,10 @@ error:
 
     // In diesem Tutorial wird das deutsche Wort Zeiger nicht verwendet, da es
     // bei einer weiteren Recherche einfacher ist, wenn man von Pointern ausgeht.
-    // Ausserdem ist der Begriff Pointer auf im deutschen Sprachgebrauch zu finden.
+    // Ausserdem ist der Begriff Pointer auch im deutschen Sprachgebrauch zu finden.
 
     // Ein Pointer ist eine Variable, welche deklariert wurde, um eine Speicher-
-    // Adresse zu speichern. Die Deklaration eines Pointers wird auch zeigen,
+    // adresse zu speichern. Die Deklaration eines Pointers wird auch zeigen,
     // auf welche Art von Daten der Pointer zeigt. Man kann die Speicheradresse
     // von Variablen abrufen und dann mit diesen herumspielen.
 
@@ -461,7 +461,7 @@ error:
     // oder wenn das Array ein Stringliteral ist, welches gebraucht wird um ein
     // `char`-Array zu initialisieren.
     char anderer_arr[] = "foobarbazquirk";
-    // oder wenn es das Argument des des `sizeof` oder `alignof` Operators ist.
+    // oder wenn es das Argument des `sizeof` oder `alignof` Operators ist.
     int dritter_array[10];
     int *ptr = dritter_array; // gleich wie: `int *ptr = &arr[0]`
     printf("%zu, %zu\n", sizeof(dritter_array), sizeof(ptr));
@@ -515,7 +515,7 @@ error:
     free(mein_ptr);
 
     // Obwohl Strings normalerweise als Pointer-to-Char (Pointer zum ersten
-    // Zeichen des Arrays) repräsentiert werden, sind Strings sind Arrays aus `char`s.
+    // Zeichen des Arrays) repräsentiert werden, sind Strings Arrays aus `char`s.
     // Es ist eine gute Praxis, `const char *` zu verwenden, wenn man ein
     // String-Literal referenziert, da String-Literale nicht modifiziert werden
     // sollten (z.B. "foo"[0] = 'a' ist ILLEGAL)
@@ -536,22 +536,22 @@ error:
 ////////////////////////////////////////////////
 
 // Syntax einer Funktionsdeklaration
-// <rueckgabe_wert> <funktion_name>(<args>)
+// <rueckgabe_wert> <funktions_name>(<args>)
 
 int addiere_zwei_integer(int x1, int x2){
     return x1 + x2; // verwendet return, um einen Wert zurückzugeben
 }
 
 /* 
- * Funktionen werden auf Grund des Wertes aufgerufen (call-by-value). Wenn eine 
- * Funktion aufgerufen wird, sind die Argumente Kopien der ursprüunglichen Werte
- * (ausgenommen Arrays). Alles, was man innerhalb einer Funktion mit den Werten 
- * macht, hat keinen Einfluss auf die Originalwerte als die Funktion aufgerufen
- *  wurde
+Funktionen werden auf Grund des Wertes aufgerufen (call-by-value). Wenn eine 
+Funktion aufgerufen wird, sind die Argumente Kopien der ursprüunglichen Werte
+(ausgenommen Arrays). Alles, was man innerhalb einer Funktion mit den Werten 
+macht, hat keinen Einfluss auf die Originalwerte als die Funktion aufgerufen
+wurde
 
- * Verwende Pointer, um den Originalinhalt zu bearbeiten.
+Verwende Pointer, um den Originalinhalt zu bearbeiten.
 
- * Beispiel:
+Beispiel:
 */
 
 // Eine `void`-Funktion gibt keinen Wert zurück
@@ -561,7 +561,7 @@ void str_reverse(char *str_in){
     size_t laenge = strlen(str_in);
     // `strlen()` ist ein Teil der C Standard-Bibliothek.
     // Merke: Die Länge, welche von `strlen` zurückgegeben wird, ist ohne den 
-    // Null-Byter Terminatur.
+    // Null-Byte Terminator.
     for (ii = 0; i < laenge /2; ii++){ // in C99 kann man `ii` direkt hier deklarieren.
         tmp = str_in[ii];
         str_in[ii] = str_in[laenge - ii - 1]; //#ii'tes Zeichen vom Ende her
@@ -572,9 +572,9 @@ void str_reverse(char *str_in){
 // verwendet werden kann.
 
 /*
-   * char c[] = "Das ist ein Test";
-   * str_reverse(c);
-   * printf("%s\n", c), => "tseT nie tsi saD"
+char c[] = "Das ist ein Test";
+str_reverse(c);
+printf("%s\n", c), => "tseT nie tsi saD"
 */
 
 // Weil wir lediglich eine Variable zurückgeben können, kann zum Ändern mehrerer
@@ -595,7 +595,7 @@ printf("Erste Zahl: %d\n Zweite Zahl: %d\n", erste_zahl, zweite_zahl);
 Wenn man Arrays betrachtet, so werden diese immer als Pointer übergeben. Auch
 wenn die Arrays statisch alloziert werden (wie zum Beispiel `arr[10]`), werden
 diese als Pointer zum ersten Element des Arrays übergeben.
-Auch hier soll noch einmal erwähnt werden, dass keinen Standard gibt, wie die 
+Auch hier soll noch einmal erwähnt werden, dass es keinen Standard gibt, wie die 
 Grösse eines dynamischen Arrays herausgefunden werden kann.
 */
 // Die Grösse des Arrays muss unbedingt mitgegeben werden.
@@ -616,7 +616,7 @@ ausgabe_int_array(mein_array, groesse);
 // man das Schlüsselwort `extern` verwenden.
 int i = 0;
 void test_funktion(){
-    extern int i; //i braucht nun die externe Variable i
+    extern int i; // i braucht nun die externe Variable i
 }
 
 // Das Schlüsselwort `static` macht, dass eine Variable ausserhalb der Kompilier-
@@ -629,14 +629,14 @@ void test_funktion(){
 // Variablen mit 0 initialisiert, wenn sie nicht mit einem anderen Startwert 
 // initialisiert werden.
 // Es ist auch möglich, Funktionen als statisch zu deklarieren, damit diese
-// `private` sind. Private heisst, dass sie nur in diesem Kontekt sichtbar sind.
+// `private` sind. Privat heisst, dass sie nur in diesem Kontekt sichtbar sind.
 
 
 ////////////////////////////////////////////////
 // Benutzerdefinierte Typen und Strukturen (Structs)
 ////////////////////////////////////////////////
 
-// `typdef`s können verwendet werden, um Typenaliase zu erstellen.
+// `typedef`s können verwendet werden, um Typenaliase zu erstellen.
 typedef int mein_typ;
 mein_typ meine_typ_var = 0;
 
@@ -650,7 +650,7 @@ struct rechteck{
 // Allgemein ist es nicht so, dass folgender Ausdruck wahr ist.
 // sizeof(struct rechteck) == sizeof(int) + sizeof(int)
 // Dies ist so, weil potentiell ein Padding zwischen den Struktur-Inhalten
-// möglich ist). siehe [1]
+// möglich ist). (siehe [1, Englisch])
 
 void funktion_1(){
     struct rechteck mein_rechteck;
@@ -669,7 +669,7 @@ void funktion_1(){
     mein_rechteck_ptr->hoehe = 10; // Das gleiche wie: (*mein_rechteck_ptr).hoehe = 10;
 }
 
-// Aus Bequemlichkeitsgründen ist es möglich einem `struct` ein `typedef`hinzuzufügen.
+// Aus Bequemlichkeitsgründen ist es möglich einem `struct` ein `typedef` hinzuzufügen.
 typedef struct rechteck recht;
 
 int flaeche(recht r){
@@ -689,7 +689,7 @@ int flaecheptr(const recht *r){
 /* 
 Zur Laufzeit sind Funktionen in einer Speicheradresse gespeichert. 
 Funktionspointer sind wie normale Pointer (es wird einfach eine Speicheradresse 
-geseichert). Funktionspointer können verwendet werden, um Funktionen und
+gespeichert). Funktionspointer können verwendet werden, um Funktionen und
 Handler (oder Callback-Funktionen) direkt aufzurufen.
 Wie auch immer, die Syntax kann zu Beginn verwirrend wirken.
 
@@ -725,8 +725,10 @@ typedef void (*mein_fnp_type)(char *);
 '\f'; // Neue Seite (new page (form feed))
 '\r'; // Wagenrücklauf (carriage return)
 '\b'; // Backspace-Zeichen (backspace character)
-'\0'; // Null-Byte (NULL character). In C wird dieses Zeichen normalerweise am Ende eines Strings gesetzt.
-//   Beispiel: Hallo\n\0. \0  wird per Konvention verwendet, um das Ende eines Strings zu kennzeichnen.
+'\0'; // Null-Byte (NULL character). In C wird dieses Zeichen normalerweise am
+// Ende eines Strings gesetzt.
+// Beispiel: Hallo\n\0. "\0"  wird per Konvention verwendet, um das Ende
+// eines Strings zu kennzeichnen.
 '\\'; // Backslash (backslash)
 '\?'; // Fragezeichen (question mark)
 '\''; // einfaches Anführungszeichen (single quote)
@@ -736,20 +738,20 @@ typedef void (*mein_fnp_type)(char *);
 
 //Ausgabeformatierung
 "%d";    // Integer
-"%3d";   // integer mit einer minimalen Länge von drei Zeichen.
+"%3d";   // Integer mit einer minimalen Länge von drei Zeichen.
 "%s";    // String
-"%f";    // Float
-"%ld";   // Long
-"%3.2f"; // Mindest drei Zeichen vor und drei nach dem Komma.
+"%f";    // Gleitkommazahl (float)
+"%ld";   // genauere Gleitkommazahl (long)
+"%3.2f"; // Mindestens drei Zeichen vor und drei nach dem Komma.
 "%7.4s"; // (Kann auch mit Strings gemacht werden)
-"%c";    // Char
-"%p";    // Pointer. Merke: man muss den Pointer zu void umwandeln, bevor `printf`funktioniert.
+"%c";    // einzelnes Zeichen (char)
+"%p";    // Pointer. Merke: man muss den Pointer zu void umwandeln, bevor `printf` funktioniert.
 "%x";    // Hexadezimal
 "%o";    // Oktalzahl
 "%%";    // Gibt % aus
 
 ////////////////////////////////////////////////
-// Reihenfolge der Auswertung
+// Reihenfolge der Auswertung von Operatoren
 ////////////////////////////////////////////////
 
 //-------------------------------------------------------//
@@ -780,7 +782,7 @@ typedef void (*mein_fnp_type)(char *);
 /*
 Header-Dateien sind ein wichtiger Teil von C, da sie eine Verbindung zwischen 
 unterschiedlichen C-Quelldateien herstellen. Ausserdem vereinfachen Header-Dateien
-den Code und Definitionen, da diese in separaten Daten geschrieben werden können.
+den Code und Definitionen, da diese in separaten Dateien geschrieben werden können.
 
 Header-Dateien sind von der Syntax her ähnlich zu C-Quelldateien, allerdings haben
 die Header-Dateien die Dateiendung `.h`. Header-Dateien können im Quellcode mit
@@ -811,7 +813,7 @@ befindet wie die C-Quelldatei.
 // wichtig, damit sichergestellt werden kann, dass a und b nicht unerwartet 
 // erweitert werden. Zum Beispiel: `MUL (x,y) (x * y)`; Bei der Verwendung von 
 // `MUL(1 + 2, 3)` würde dies wie folgt erweitert werden: `(1 + 2 * 3)`, was zu
-// einem falschen Resultat führen würde.
+// einem falschen Resultat führt.
 
 // Strukturen und Typendefinitionen können verwendet werden, um die Konsistenz
 // zwischen unterschiedlichen Dateien beizubehalten.
