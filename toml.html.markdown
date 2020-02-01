@@ -12,7 +12,7 @@ It is an alternative to YAML and JSON. It aims to be more human friendly than JS
 Be warned, TOML's spec is still changing a lot. Until it's marked as 1.0, you
 should assume that it is unstable and act accordingly. This document follows TOML v0.4.0. 
 
-```
+```toml
 # Comments in TOML look like this.
 
 ################
@@ -223,8 +223,8 @@ emptyTableAreAllowed = true
 name = "Nail"
 sku = 284758393
 color = "gray"
-
-# JSON-land styled structure:
+```
+The equivalent in JSON would be:
 ```json
 { 
   "products": [
@@ -242,6 +242,8 @@ color = "gray"
   ]
 }
 ```
+
+```toml
 # You can create nested arrays of tables as well. Each double-bracketed
 # sub-table will belong to the nearest table element above it.
 
@@ -266,11 +268,11 @@ color = "gray"
   [[fruit.color]]
     name = "yellow"
     note = "I am an array item in banana fruit's table/map"
+
 ```
-
-# In JSON land, this code will be:
-
+The equivalent in JSON would be:
 ```json
+
 {
   "fruit": [
     {
