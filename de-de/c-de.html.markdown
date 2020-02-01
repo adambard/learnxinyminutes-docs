@@ -73,9 +73,10 @@ int main(void){
     // dein Programm
 }
 
-// Die Kommandozeilenargumente, welche gebraucht werden, damit dein Programm läuft,
-// werden als Argumente der `main`-Funktion mitgegeben.
-// argc steht für die Anzahl von Argumenten. - Der Programmname ist das erste Argument.
+// Die Kommandozeilenargumente, welche gebraucht werden, damit dein Programm 
+// läuft, werden als Argumente der `main`-Funktion mitgegeben.
+// argc steht für die Anzahl von Argumenten. - Der Programmname ist das erste
+// Argument.
 // argv ist ein Array von Zeichenarrays, welche die Argumente beinhaltet.
 // argv[0] = Name des Programms
 // argv[1] = erstes Argument usw.
@@ -116,7 +117,8 @@ int main (int argc, char** argv){
     // doubles sind normalerweise 64-Bit Gleitkommazahlen
     double x_double = 0.0; // echte Zahlen ohne Suffix sind vom Typ double
 
-    // integer-Typen können vorzeichenlos (unsigned) sein  (grösser oder kleiner als 0)
+    // integer-Typen können vorzeichenlos (unsigned) sein
+    // (grösser oder kleiner als 0)
     unsigned short ux_short;
     unsigned int ux_int;
     unsigned long long ux_long_long;
@@ -129,7 +131,7 @@ int main (int argc, char** argv){
     // sizeof(T) gibt die Grösse einer Variablen des Typen T in Bytes zurück.
     // sizeof(obj) ergibt die Grösse des Ausdrucks (Variable, Literal usw.)
 
-    printf("%zu\n", sizeof(int)); // => 4 (auf den meisten Rechnern mit einem 4-Byte-Wort)
+    printf("%zu\n", sizeof(int)); // => 4 (auf den Rechnern mit einem 4-Byte-Wort)
 
     // Wenn das Argument des `sizeof`-Operator ein Ausdruck ist, dann wird das
     // Argument nicht ausgewertet (ausser Arrays mit variabler Länge)
@@ -174,7 +176,8 @@ int main (int argc, char** argv){
     // In C99 (und als optionales Feature in C11) können Arrays mit variabler
     // Länge deklariert werden. Die Grösse eines solchen Array muss eine Konstante
     // zur Kompilierzeit sein.
-    printf("Geben Sie die Arraygrösse an: "); //Frag den Benutzer nach der Arraygrösse
+    printf("Geben Sie die Arraygrösse an: "); //Frag den Benutzer nach
+                                              // der Arraygrösse
     int array_size;
     fcsanf(stdin, "%d", &array_size);
     int var_length_array[array_size]; // deklariere Array mit variabler Länge
@@ -234,8 +237,8 @@ int main (int argc, char** argv){
     // Es gibt auch die Möglichkeit, Modulo zu rechnen
     11 % 3; // => 2
 
-    // Vergleichsoperatoren sind vielleicht schon bekannt, aber in C gibt es keinen
-    // Boolean-Typ. In C verwenden wir `int`. (Oder _Bool oder bool in C99.)
+    // Vergleichsoperatoren sind vielleicht schon bekannt, aber in C gibt es
+    // keinen Boolean-Typ. In C verwenden wir `int`. (Oder _Bool oder bool in C99)
     // 0 ist falsch, alles andere ist wahr (Die Vergleichsoperatoren ergeben
     // immer 1 oder 0.
     3 == 2; // => 0 (falsch)
@@ -274,14 +277,16 @@ int main (int argc, char** argv){
     // das gleiche gilt für j-- und --j
 
     // Bitweise Operatoren
-    ~0x0F; // => 0xFFFFFFF0 (Bitweise Negation, "Einer-Komplement", Beispielresultat für 32-Bit int)
+    ~0x0F; // => 0xFFFFFFF0 (Bitweise Negation, "Einer-Komplement",
+           // Beispielresultat für 32-Bit int)
     0x0F & 0xF0; // => 0x00 (Bitweises UND)
     0x0F | 0xF0; // => 0xFF (Bitweises ODER)
     0x04 ^ 0x0F; // => 0x0B (Bitweises XOR)
     0x01 << 1; // => 0x02 (Bitweises  Linksverschiebung (left shift) (um 1))
     0x02 >> 1; // => 0x01 (Bitweises Rechtsverschiebung (right shift) (um 1))
 
-    // Sei vorsichtig beim Shift mit vorzeichenbehafteten Integern - folgende Ausdrücke sind nicht definiert:
+    // Sei vorsichtig beim Shift mit vorzeichenbehafteten Integern
+    // folgende Ausdrücke sind nicht definiert:
     // - Verschiebung in das Vorzeichenbit (int a = 1 << 31)
     // - Linksshift einer negativen Zahl (int a = -1 << 2)
     // - Shift um einen Offset, welcher >= die Breite des linken Ausdrucks ist.
@@ -303,7 +308,8 @@ int main (int argc, char** argv){
     // While-Schleifen existieren auch
     int ii = 0;
     while (ii < 10){ // JEDER Wert unter zehn ist wahr
-        printf("%d, " ii++); //i++ inkrementiert ii NACHDEM der Wert gebraucht wurde.
+        printf("%d, " ii++); //i++ inkrementiert ii NACHDEM der Wert gebraucht
+                             // wurde.
     } // => gibt folgendes aus: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
@@ -338,12 +344,13 @@ int main (int argc, char** argv){
     switch (a){
         case 0: // Labels müssen integrale *konstante* Ausdrücke sein (z.B. Enums)
             printf("Hey, 'a' ist gleich 0!\n");
-            break; //Wenn du kein break einsetzt, so geht der Kontrollfluss durch die Labels
+            break; //Wenn du kein break einsetzt, so geht der Kontrollfluss
+                   // durch die Labels
         case 1:
             printf("Huh, 'a' ist gleich 1!\n");
             break;
-            // Sei vorsichtig - wenn man das `break` vergisst, werden alle Anweisungen
-            // ausgeführt bis das nächste `break` erscheint.
+            // Sei vorsichtig - wenn man das `break` vergisst, werden alle 
+            // Anweisungen ausgeführt bis das nächste `break` erscheint.
         case 3:
         case 4:
             printf("Schau mal ... 'a' ist entweder 3 oder 4.\n");
@@ -388,7 +395,7 @@ error:
     printf("%d\n", (char) x_hex); // => 1
 
     // Typen werden überlaufen (overflow) ohne jegliche Warnung
-    printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 wenn char 8 Bit lang ist)
+    printf("%d\n", (unsigned char) 257); // => 1 (Max char=255 wenn char 8 Bit ist)
 
     // Um den maximalen Wert eines `char`, `signed char` oder `unsigned char` 
     // herauszufinden, können die Makros `CHAR_MAX`, `SCHAR_MAX` und `UCHAR_MAX`
@@ -413,7 +420,8 @@ error:
     // von Variablen abrufen und dann mit diesen herumspielen.
 
     int x = 0; 
-    printf("%p\n", (void *)&x); // verwende & um die Adresse der Variable zu erhalten
+    printf("%p\n", (void *)&x); // verwende & um die Adresse der Variable
+    // zu erhalten
     // %p  formattiert einen Objektpointer des Typen void*)
     // => Gibt eine Adresse im Speicher aus
 
@@ -506,7 +514,8 @@ error:
 
     // Das Dereferenzieren von nicht alloziertem Speicher führt zu einem 
     // Undefinierten Verhalten.
-    printf("%d\n", *(mein_ptr + 21)); // Gibt irgendwas aus. Das Programm kann auch abstürzen
+    printf("%d\n", *(mein_ptr + 21)); // Gibt irgendwas aus.
+    // Das Programm kann auch abstürzen
 
     // Nachdem du fertig mit einem Block bist, welcher `malloc` verwendet hat, 
     // muss der Speicher befreit werden. Ansonsten kann dieser Speicherbereich
@@ -562,7 +571,7 @@ void str_reverse(char *str_in){
     // `strlen()` ist ein Teil der C Standard-Bibliothek.
     // Merke: Die Länge, welche von `strlen` zurückgegeben wird, ist ohne den 
     // Null-Byte Terminator.
-    for (ii = 0; i < laenge /2; ii++){ // in C99 kann man `ii` direkt hier deklarieren.
+    for (ii = 0; i < laenge /2; ii++){ // in C99 kann man `ii` hier deklarieren.
         tmp = str_in[ii];
         str_in[ii] = str_in[laenge - ii - 1]; //#ii'tes Zeichen vom Ende her
         str_in[laenge - ii- 1] = tmp;
@@ -621,8 +630,9 @@ void test_funktion(){
 
 // Das Schlüsselwort `static` macht, dass eine Variable ausserhalb der Kompilier-
 // einheit nicht zugreifbar ist.  (Auf den meisten Systemen ist eine Kompiliereinheit
-// eine `.c`-Datei.) Das Schlüsselwort `static` kann sowohl global (zur Kompiliereinheit gehörende)
-// Variablen, Funktionen und Funktionslokale Variablen angewendet werden.
+// eine `.c`-Datei.) Das Schlüsselwort `static` kann sowohl global
+// (zur Kompiliereinheit gehörende) Variablen, Funktionen und Funktionslokale
+// Variablen angewendet werden.
 // Wenn man `static` bei lokalen Variablen verwendet, so ist diese Variable global
 // erreichbar und behält dessen Wert über Funktionsaufrufe hinweg, aber sie ist 
 // nur innerhalb der deklarierten Funktion verfügbar. Ausserdem werden statische
@@ -665,8 +675,9 @@ void funktion_1(){
     // Verwende Dereferenzierung, um Struct-Inhalte zu bearbeiten
     (*mein_rechteck_ptr).breite = 30; 
 
-    //Noch besser: Verwende die Kurzschreibweise ->, um die Lesbarkeit zu verbessern.
-    mein_rechteck_ptr->hoehe = 10; // Das gleiche wie: (*mein_rechteck_ptr).hoehe = 10;
+    //Noch besser: Verwende die Kurzschreibweise ->, um die Lesbarkeit zu
+    // verbessern.
+    mein_rechteck_ptr->hoehe = 10; // Gleich wie: (*mein_rechteck_ptr).hoehe = 10;
 }
 
 // Aus Bequemlichkeitsgründen ist es möglich einem `struct` ein `typedef` hinzuzufügen.
@@ -698,11 +709,13 @@ Zum Beispiel: Verwende str_reverse von einem Pointer
 void str_reverse_through_pointer(char *str_in){
     // Definiere eine Funktionspointer-Variable, welche f genannt wird.
     void (*f)(char *); // Signatur sollte genau der Funktion entsprechen.
-    f = &str_reverse; // weise die Adresse der wirklichen Funktion zu (zur Laufzeit bestimmt)
+    f = &str_reverse; // weise die Adresse der wirklichen Funktion zu
+                      // (zur Laufzeit bestimmt)
     // `f = str_reverse;` würde auch funktionieren, da Funktionen zu Pointern
     // reduziert werden (ähnlich wie Arrays)
     (*f)(str_in); // Die Funktion einfach mit dem Pointer aufrufen
-    // f(str_in); // Dies ist eine weitere gültige Alternative um eine Funktion auzurufen.
+    // f(str_in); // Dies ist eine weitere gültige Alternative um eine Funktion
+                  // auzurufen.
 }
 
 /*
@@ -733,7 +746,8 @@ typedef void (*mein_fnp_type)(char *);
 '\?'; // Fragezeichen (question mark)
 '\''; // einfaches Anführungszeichen (single quote)
 '\"'; // doppeltes Anführungszeichen (double quote)
-'\xhh'; // Hexadezimale Zahl (hexadecimal number.) Beispiel: '\xb' = Zeichen für vertikalen Tab 
+'\xhh'; // Hexadezimale Zahl (hexadecimal number.) Beispiel:
+        // '\xb' = Zeichen für vertikalen Tab 
 '\0oo'; // Oktalzahl (octal number). Beispiel \013 = Zeichen für vertikalen Tab
 
 //Ausgabeformatierung
@@ -745,7 +759,8 @@ typedef void (*mein_fnp_type)(char *);
 "%3.2f"; // Mindestens drei Zeichen vor und drei nach dem Komma.
 "%7.4s"; // (Kann auch mit Strings gemacht werden)
 "%c";    // einzelnes Zeichen (char)
-"%p";    // Pointer. Merke: man muss den Pointer zu void umwandeln, bevor `printf` funktioniert.
+"%p";    // Pointer. Merke: man muss den Pointer zu void umwandeln,
+         // bevor `printf` funktioniert.
 "%x";    // Hexadezimal
 "%o";    // Oktalzahl
 "%%";    // Gibt % aus
@@ -841,8 +856,9 @@ Knoten erstelleVerketteteListe(int *werte, int laenge);
 
 Das Beste wird es sein, wenn man sich ein Exemplar des Buches
 ["The C Programming Language"](https://de.wikipedia.org/wiki/The_C_Programming_Language) besorgt.
-Dieses Buch gilt als **das** Buch über die Programmiersprache C und wurde von Dennis Ritchie,
-dem Erfinder der Programmiersprache C, und Brian Kernighan geschrieben.
+Dieses Buch gilt als **das** Buch über die Programmiersprache C und wurde
+von Dennis Ritchie, dem Erfinder der Programmiersprache C, und Brian Kernighan
+geschrieben.
 Sei vorsichtig, da dieses Buch mittlerweile schon etwas älter ist und gewisse
 Unkorrektheiten (d.h. Ideen, welche nicht mehr als gut empfunden werden.) oder
 mittlerweile geänderte Praktiken enthält. [Hinweis: Das Buch wurde auf Englisch
@@ -858,6 +874,7 @@ es wichtig, dass der Codestil möglichst konsistent ist. Es ist wichtiger, lesba
 Code zu schreiben als Code, welcher clever und schnell ist. Es lohnt sich ein
 Blick auf den [Codestil des Linuxkernel](https://www.kernel.org/doc/Documentation/process/coding-style.rst) zu werfen. [Englisch]
 
-Wenn die erwähnte Literatur dein Problem nicht löst, denke daran: "Google ist dein Freund"
+Wenn die erwähnte Literatur dein Problem nicht löst, denke daran:
+"Google ist dein Freund"
 
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
