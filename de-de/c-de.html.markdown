@@ -1,6 +1,6 @@
 ---
 language: c
-filename: learnc.c
+filename: learnc-de.c
 contributors:
     - ["caminsha", "https://github.com/caminsha"]
 lang: de-de
