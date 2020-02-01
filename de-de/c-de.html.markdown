@@ -47,7 +47,7 @@ enum tage {SO=1, MO, DI, MI, DO, FR, SA};
 
 // Importiere Header-Dateien mit #include
 #include <stdlib.h>
-#include <stio.h>
+#include <stdio.h>
 #include <string.h>
 
 // Dateien, welche zwischen <spitzen Klammern> stehen, sind Header-Dateien aus
