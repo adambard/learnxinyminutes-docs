@@ -22,6 +22,11 @@ manuellen Speicherverwaltung bewusst sein.
 > Standards:
 > `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
 >
+> Da gewisse Optionen (inbesondere der C-Standard) sehr stark vom Projekt
+> abhängen, lohnt es sich, wenn die unterschiedlichen Optionen genauer
+> angeschaut werden. Eine Übersicht über die Compiler-Optionen findet man unter
+> [diesem](https://stackoverflow.com/questions/3375697/useful-gcc-flags-for-c) Stackoverflow-Beitrag.
+>
 > Für weitere Informationen, was diese und weitere Optionen genau machen,
 > sollte die Man-Page des C-Compilers aufgerufen werden (z.B. `man 1 gcc`).
 > Alternativ kann auch online nach den unterschiedlichen Optionen gesucht werden.
