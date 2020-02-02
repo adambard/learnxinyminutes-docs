@@ -364,23 +364,6 @@ int main (int argc, char** argv){
             break;
     }
 
-    // Verwendung von "goto" in C
-    typedef enum { false, true } bool;
-    bool desaster = false;
-    int i, j; 
-    for(i=0; i < 100; ++i){
-        for (j=0; j < 100; ++j){
-            if ((i + j ) >= 150){
-                desaster = true;
-            }
-            if (desaster){
-                goto error;
-            }
-        }
-    }
-error:
-    printf("Ein Fehler ist aufgetreten bei i = %d & j ? %d\n", i, j);
-
     ////////////////////////////////////////////////
     // Typenumwandlung
     ////////////////////////////////////////////////
