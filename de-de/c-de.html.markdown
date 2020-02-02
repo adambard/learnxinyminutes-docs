@@ -8,9 +8,10 @@ lang: de-de
 
 Ach, C. Immer noch **die** Sprache für modernes High-Performance Computing.
 
-C ist wahrscheinlich die niedrigste Programmiersprache, welche die meisten
-Programmierer je brauchen werden. Die Geschwindigkeit von C ist enorm, allerdings
-muss man sich stets der maneullen Speicherverwaltung bewusst sein.
+C ist wahrscheinlich die Programmiersprache mit dem niedrigsten Abstraktionsnvieau,
+welche die meisten Programmierer je brauchen werden.
+Die Geschwindigkeit von C ist enorm, allerdings muss man sich stets der
+manuellen Speicherverwaltung bewusst sein.
 
 
 > **Über Compiler Optionen**
