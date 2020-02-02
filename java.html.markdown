@@ -381,7 +381,7 @@ public class LearnJava {
         do {
             System.out.println(fooDoWhile);
             // Increment the counter
-            // Iterated 99 times, fooDoWhile 0->99
+            // Iterated 100 times, fooDoWhile 0->99
             fooDoWhile++;
         } while(fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);

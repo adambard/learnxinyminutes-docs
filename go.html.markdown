@@ -12,6 +12,7 @@ contributors:
     - ["Alexej Friesen", "https://github.com/heyalexej"]
     - ["Clayton Walker", "https://github.com/cwalk"]
     - ["Leonid Shevtsov", "https://github.com/leonid-shevtsov"]
+    - ["Michael Graf", "https://github.com/maerf0x0"]
 ---
 
 Go was created out of the need to get work done. It's not the latest trend
@@ -29,6 +30,12 @@ Go comes with a good standard library and a sizeable community.
 // Single line comment
 /* Multi-
  line comment */
+
+ /* A build tag is a line comment starting with // +build
+  and can be execute by go build -tags="foo bar" command.
+  Build tags are placed before the package clause near or at the top of the file
+  followed by a blank line or other line comments. */
+// +build prod, dev, test
 
 // A package clause starts every source file.
 // Main is a special name declaring an executable rather than a library.
@@ -190,7 +197,7 @@ func learnFlowControl() {
 	x := 42.0
 	switch x {
 	case 0:
-	case 1:
+	case 1, 2: // Can have multiple matches on one case
 	case 42:
 		// Cases don't "fall through".
 		/*
@@ -202,6 +209,19 @@ func learnFlowControl() {
 	default:
 		// Default case is optional.
 	}
+
+	// Type switch allows switching on the type of something instead of value
+	var data interface{}
+	data = ""
+	switch c := data.(type) {
+	case string:
+		fmt.Println(c, "is a string")
+	case int64:
+		fmt.Printf("%d is an int64\n", c)
+	default:
+		// all other cases
+	}
+
 	// Like if, for doesn't use parens either.
 	// Variables declared in for and if are local to their scope.
 	for x := 0; x < 3; x++ { // ++ is a statement.

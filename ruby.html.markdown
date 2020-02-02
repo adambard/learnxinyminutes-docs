@@ -256,7 +256,7 @@ else
   'else, also optional'
 end
 
-# If a condition controls invokation of a single statement rather than a block of code
+# If a condition controls invocation of a single statement rather than a block of code
 # you can use postfix-if notation
 warnings = ['Patronimic is missing', 'Address too short']
 puts("Some warnings occurred:\n" + warnings.join("\n"))  if !warnings.empty?

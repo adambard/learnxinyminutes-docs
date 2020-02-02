@@ -73,6 +73,7 @@ example1() {
     nested2() => print("Example1 nested 1 nested 2");
     nested2();
   }
+
   nested1();
 }
 
@@ -82,6 +83,7 @@ example2() {
   nested1(Function<void> fn) {
     fn();
   }
+
   nested1(() => print("Example2 nested 1"));
 }
 
@@ -92,9 +94,11 @@ example3() {
   planA(fn(String informSomething)) {
     fn("Example3 plan A");
   }
-  planB(fn) { /// Or don't declare number of parameters.
+  planB(fn) {
+    // Or don't declare number of parameters.
     fn("Example3 plan B");
   }
+
   planA((s) => print(s));
   planB((s) => print(s));
 }
@@ -107,17 +111,20 @@ example4() {
   nested1(fn(informSomething)) {
     fn(example4Something);
   }
+
   nested1((s) => print(s));
 }
 
 /// Class declaration with a sayIt method, which also has closure access
 /// to the outer variable as though it were a function as seen before.
 var example5method = "Example5 sayIt";
+
 class Example5Class {
   sayIt() {
     print(example5method);
   }
 }
+
 example5() {
   /// Create an anonymous instance of the Example5Class and call the sayIt
   /// method on it.
@@ -134,6 +141,7 @@ class Example6Class {
     print(instanceVariable);
   }
 }
+
 example6() {
    Example6Class().sayIt();
 }
@@ -144,10 +152,12 @@ class Example7Class {
   static sayItFromClass() {
     print(classVariable);
   }
+
   sayItFromInstance() {
     print(classVariable);
   }
 }
+
 example7() {
   Example7Class.sayItFromClass();
   new Example7Class().sayItFromInstance();
@@ -289,6 +299,7 @@ example13() {
       print("Example13 regexp doesn't match '${s}'");
     }
   }
+
   match(s1);
   match(s2);
 }
@@ -357,9 +368,11 @@ example15() {
 /// StringBuffer. Or you could join a string array.
 example16() {
   var sb = new StringBuffer(), a = ["a", "b", "c", "d"], e;
-  for (e in a) { sb.write(e); }
+  for (e in a) {
+    sb.write(e);
+  }
   print("Example16 dynamic string created with "
-    "StringBuffer '${sb.toString()}'");
+      "StringBuffer '${sb.toString()}'");
   print("Example16 join string array '${a.join()}'");
 }
 
@@ -420,11 +433,13 @@ class Example21 {
   set names(List<String> list) {
     _names = list;
   }
+
   int get length => _names.length;
   void add(String name) {
     _names.add(name);
   }
 }
+
 void example21() {
   Example21 o = new Example21();
   o.add("c");
@@ -438,7 +453,9 @@ class Example22A {
   var _name = "Some Name!";
   get name => _name;
 }
+
 class Example22B extends Example22A {}
+
 example22() {
   var o = new Example22B();
   print("Example22 class inheritance '${o.name}'");
@@ -452,19 +469,21 @@ example22() {
 /// single inheritance doesn't get in the way of reusable code.
 /// Mixins follow the "with" statement during the class declaration.
 class Example23A {}
+
 class Example23Utils {
   addTwo(n1, n2) {
     return n1 + n2;
   }
 }
+
 class Example23B extends Example23A with Example23Utils {
   addThree(n1, n2, n3) {
     return addTwo(n1, n2) + n3;
   }
 }
+
 example23() {
-  var o = new Example23B(), r1 = o.addThree(1, 2, 3),
-    r2 = o.addTwo(1, 2);
+  var o = new Example23B(), r1 = o.addThree(1, 2, 3), r2 = o.addTwo(1, 2);
   print("Example23 addThree(1, 2, 3) results in '${r1}'");
   print("Example23 addTwo(1, 2) results in '${r2}'");
 }
@@ -480,12 +499,13 @@ class Example24A {
   }
   get value => _value;
 }
+
 class Example24B extends Example24A {
   Example24B({value: "someOtherValue"}) : super(value: value);
 }
+
 example24() {
-  var o1 = new Example24B(),
-    o2 = new Example24B(value: "evenMore");
+  var o1 = new Example24B(), o2 = new Example24B(value: "evenMore");
   print("Example24 calling super during constructor '${o1.value}'");
   print("Example24 calling super during constructor '${o2.value}'");
 }
@@ -497,10 +517,11 @@ class Example25 {
   var value, anotherValue;
   Example25({this.value, this.anotherValue});
 }
+
 example25() {
   var o = new Example25(value: "a", anotherValue: "b");
   print("Example25 shortcut for constructor '${o.value}' and "
-    "'${o.anotherValue}'");
+      "'${o.anotherValue}'");
 }
 
 /// Named parameters are available when declared between {}.
@@ -512,17 +533,19 @@ example26() {
     _name = name;
     _surname = surname;
   }
+
   setConfig2(name, [surname, email]) {
     _name = name;
     _surname = surname;
     _email = email;
   }
+
   setConfig1(surname: "Doe", name: "John");
   print("Example26 name '${_name}', surname '${_surname}', "
-    "email '${_email}'");
+      "email '${_email}'");
   setConfig2("Mary", "Jane");
   print("Example26 name '${_name}', surname '${_surname}', "
-  "email '${_email}'");
+      "email '${_email}'");
 }
 
 /// Variables declared with final can only be set once.
@@ -534,6 +557,7 @@ class Example27 {
   /// that follows the :
   Example27({this.color1, color2}) : color2 = color2;
 }
+
 example27() {
   final color = "orange", o = new Example27(color1: "lilac", color2: "white");
   print("Example27 color is '${color}'");
@@ -552,6 +576,7 @@ class Example28 extends IterableBase {
   }
   get iterator => names.iterator;
 }
+
 example28() {
   var o = new Example28();
   o.forEach((name) => print("Example28 '${name}'"));
@@ -577,10 +602,12 @@ example29() {
   callItForMe(fn()) {
     return fn();
   }
+
   rand() {
     v = new DM.Random().nextInt(50);
     return v;
   }
+
   while (true) {
     print("Example29 callItForMe(rand) '${callItForMe(rand)}'");
     if (v != 30) {
@@ -595,8 +622,12 @@ example29() {
 /// Parse int, convert double to int, or just keep int when dividing numbers
 /// by using the ~/ operation. Let's play a guess game too.
 example30() {
-  var gn, tooHigh = false,
-    n, n2 = (2.0).toInt(), top = int.parse("123") ~/ n2, bottom = 0;
+  var gn,
+      tooHigh = false,
+      n,
+      n2 = (2.0).toInt(),
+      top = int.parse("123") ~/ n2,
+      bottom = 0;
   top = top ~/ 6;
   gn = new DM.Random().nextInt(top + 1); /// +1 because nextInt top is exclusive
   print("Example30 Guess a number between 0 and ${top}");
@@ -606,10 +637,11 @@ example30() {
     } else {
       tooHigh = n > gn;
       print("Example30 Number ${n} is too "
-        "${tooHigh ? 'high' : 'low'}. Try again");
+          "${tooHigh ? 'high' : 'low'}. Try again");
     }
     return n == gn;
   }
+
   n = (top - bottom) ~/ 2;
   while (!guessNumber(n)) {
     if (tooHigh) {
@@ -671,12 +703,15 @@ var hasValue ??= "default Value";
 /// the program needs to startup with.
 main() {
   print("Learn Dart in 15 minutes!");
-  [example1, example2, example3, example4, example5, example6, example7,
-    example8, example9, example10, example11, example12, example13, example14,
-    example15, example16, example17, example18, example19, example20,
-    example21, example22, example23, example24, example25, example26,
-    example27, example28, example29, example30, example31, example32, example33
-    ].forEach((ef) => ef());
+  [
+    example1, example2, example3, example4, example5,
+    example6, example7, example8, example9, example10,
+    example11, example12, example13, example14, example15,
+    example16, example17, example18, example19, example20,
+    example21, example22, example23, example24, example25,
+    example26, example27, example28, example29,
+    example30 // Adding this comment stops the dart formatter from putting all items on a new line
+  ].forEach((ef) => ef());
 }
 
 ```
