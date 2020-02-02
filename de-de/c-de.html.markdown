@@ -270,7 +270,7 @@ int main (int argc, char** argv){
     int e = 5;
     int f = 10;
     int z;
-    z = ( e > f) ? e : f; // => // => 10 "wenn e > f ist, gib e zurück, sonst f."
+    z = ( e > f ) ? e : f; // => // => 10 "wenn e > f ist, gib e zurück, sonst f."
 
     // Inkrementierungs- und Dekrementierungsoperatoren
     int j = 0;
@@ -297,13 +297,13 @@ int main (int argc, char** argv){
     ////////////////////////////////////////////////
     // Kontrollstrukturen
     ////////////////////////////////////////////////
-    if (0) {
+    if (0){
         printf("Ich werde nie ausgeführt.");
     }
     else if (0){
         printf("Ich werde auch nie ausgeführt.");
     }
-    else {
+    else{
         printf("Ich gebe etwas aus.");
     }
 
@@ -317,9 +317,9 @@ int main (int argc, char** argv){
     printf("\n");
 
     int kk = 0;
-    do {
+    do{
         printf("%d, ", kk);
-    } while(++kk < 10); //++kk inkrementiert kk BEVOR der Wert gebraucht wurde.
+    }while(++kk < 10); //++kk inkrementiert kk BEVOR der Wert gebraucht wurde.
     // => gibt folgendes aus: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
