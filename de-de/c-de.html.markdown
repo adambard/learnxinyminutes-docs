@@ -855,7 +855,7 @@ Unkorrektheiten (d.h. Ideen, welche nicht mehr als gut empfunden werden.) oder
 mittlerweile geänderte Praktiken enthält. [Hinweis: Das Buch wurde auf Englisch
 geschrieben, es gibt aber auch eine Übersetzung davon]
 
-Eine weitere gute Resource ist [Learn C The Hard Way](http://learncodethehardway.org/c/).
+Eine weitere gute Ressource ist [Learn C The Hard Way](http://learncodethehardway.org/c/).
 [Englisch]
 
 Solltest du Fragen zu C haben, so lies die FAQ [compl.lang.c Frequently Asked Questions](http://c-faq.com).[Englisch]
