@@ -865,7 +865,4 @@ es wichtig, dass der Codestil möglichst konsistent ist. Es ist wichtiger, lesba
 Code zu schreiben als Code, welcher clever und schnell ist. Es lohnt sich ein
 Blick auf den [Codestil des Linuxkernel](https://www.kernel.org/doc/Documentation/process/coding-style.rst) zu werfen. [Englisch]
 
-Wenn die erwähnte Literatur dein Problem nicht löst, denke daran:
-"Google ist dein Freund"
-
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
