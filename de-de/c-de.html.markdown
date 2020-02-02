@@ -98,18 +98,18 @@ int main (int argc, char** argv){
     // C99-Konforme Compiler erlauben die Variablendeklaration an dem Punkt, an
     // welchem die Variable verwendet wird.
 
-    // integer sind normalerweise 4 Bytes gross
+    // integer sind normalerweise 4 Bytes groß
     int x_int = 0;
 
-    // shorts sind normalerweise 2 Bytes gross
+    // shorts sind normalerweise 2 Bytes groß
     short x_short = 0;
 
-    // chars sind garantiert 1 Byte gross
+    // chars sind garantiert 1 Byte groß
     char x_char = 0;
     char y_char = 'y'; // Charakterliterale werden mit '' gekennzeichnet.
 
-    // longs sind oft 4 bis 8 Bytes gross. long long sind garantiert mindestens 
-    // 8 Bytes gross.
+    // longs sind oft 4 bis 8 Bytes groß. long long sind garantiert mindestens 
+    // 8 Bytes groß.
     long x_long = 0;
     long long x_long_long = 0;
 
@@ -610,7 +610,7 @@ Auch hier soll noch einmal erwähnt werden, dass es keinen Standard gibt, wie di
 Grösse eines dynamischen Arrays herausgefunden werden kann.
 */
 // Die Grösse des Arrays muss unbedingt mitgegeben werden.
-// Sonst hat die Funktion keine Ahnung wie gross das Array ist.
+// Sonst hat die Funktion keine Ahnung wie groß das Array ist.
 void print_int_arrray(int *arr, size_t size){
     int i;
     for (i = 0; i < size; i++){
@@ -689,8 +689,8 @@ int area(rect r){
     return r.width * r.height;
 }
 
-// Wenn du grosse Structs hast, kannst du diese mit dem Pointer kopieren, 
-// damit grosse Kopiervorgänge vermieden werden.
+// Wenn du große Structs hast, kannst du diese mit dem Pointer kopieren, 
+// damit große Kopiervorgänge vermieden werden.
 int area_ptr(const rect *r){
     return r->width * r->height;
 }
