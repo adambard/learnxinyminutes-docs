@@ -89,6 +89,89 @@ int main (int argc, char** argv){
     printf("%d\n",0); // => Gibt 0 aus.
 
     ////////////////////////////////////////////////
+    // Operatoren
+    ////////////////////////////////////////////////
+    
+    // Kurzschreibweise für mehrere Deklarationen
+    int i1 = 1, i2 = 2;
+    flaot f1 = 1.0, f2 = 2.0;
+
+    int b,c;
+    b = c = 0;
+
+    // Arithmetik ist unkompliziert
+    1 + 2; // => 3
+    2 - 1; // => 1
+    2 * 1; // => 2
+    1 / 2; // 0 (0.5, aber abgeschnitten, da es int sind.)
+
+    // Man muss mindestens ein Integer zu einen float konvertieren, damit man als
+    // Resultat eine Gleitkommazahl erhält.
+    (float)1 / 2; // => 0.5f
+    1 / (double)2; // => 0.5 // das gleiche mit dem Typ `double`
+    1.0 / 2.0; // => 0.5, plus oder minus Epsilon
+    // Gleitkommazahlen und deren Berechnungen sind nicht exakt.
+
+    // Es gibt auch die Möglichkeit, Modulo zu rechnen
+    11 % 3; // => 2
+
+    // Vergleichsoperatoren sind vielleicht schon bekannt, aber in C gibt es
+    // keinen Boolean-Typ. In C verwenden wir `int`. (Oder _Bool oder bool in C99)
+    // 0 ist falsch, alles andere ist wahr (Die Vergleichsoperatoren ergeben
+    // immer 1 oder 0.
+    3 == 2; // => 0 (falsch)
+    3 != 2; // => 1 (wahr)
+    3 > 2; // => 1
+    3 < 2; // => 0
+    2 <= 2; // => 1
+    2 >= 2; // => 1
+
+    // C ist nicht Python - Vergleiche können nicht einfach verkettet werden.
+    // Warnung: die folgende Zeile wird kompilieren, aber es bedeutet `(0 < a) < 2`.
+    // Dieser Ausdruck ist immer wahr, weil (0 < a) kann entweder 1 oder 0 sein.
+    // In diesem Falle ist es 1, weil (0 < 1).
+    int zwischen_0_und_2 = 0 < a < 2;
+    // Benutze stattdessen folgende Schreibweise:
+    int zwischen_0_und_2 = 0 < a && a < 2;
+
+    // Logik funktioniert auch mit ints
+    !3; // => 0 (logisches Nicht)
+    !0; // => 1
+    1 && 1; // => 1 (logisches Und)
+    0 && 1; // => 0
+    0 || 1; // => 1 (logisches Oder)
+    0 || 0; // => 0
+
+    // Bedingter ternärer Ausdruck ( ? : )
+    int e = 5;
+    int f = 10;
+    int z;
+    z = ( e > f ) ? e : f; // => // => 10 "wenn e > f ist, gib e zurück, sonst f."
+
+    // Inkrementierungs- und Dekrementierungsoperatoren
+    int j = 0;
+    int s = j++; // gib j zurück und erhöhe danach j. (s = 0, j = 1)
+    s = ++j; // erhöhe zuerst j und gib dann j zurück (s = 2, j = 2)
+    // das gleiche gilt für j-- und --j
+
+    // Bitweise Operatoren
+    ~0x0F; // => 0xFFFFFFF0 (Bitweise Negation, "Einer-Komplement",
+           // Beispielresultat für 32-Bit int)
+    0x0F & 0xF0; // => 0x00 (Bitweises UND)
+    0x0F | 0xF0; // => 0xFF (Bitweises ODER)
+    0x04 ^ 0x0F; // => 0x0B (Bitweises XOR)
+    0x01 << 1; // => 0x02 (Bitweises  Linksverschiebung (left shift) (um 1))
+    0x02 >> 1; // => 0x01 (Bitweises Rechtsverschiebung (right shift) (um 1))
+
+    // Sei vorsichtig beim Shift mit vorzeichenbehafteten Integern
+    // folgende Ausdrücke sind nicht definiert:
+    // - Verschiebung in das Vorzeichenbit (int a = 1 << 31)
+    // - Linksshift einer negativen Zahl (int a = -1 << 2)
+    // - Shift um einen Offset, welcher >= die Breite des linken Ausdrucks ist.
+    // int a = 1 << 32; // undefiniertes Verhalten, wenn int 32-Bit ist.
+    
+
+    ////////////////////////////////////////////////
     // Typen
     ////////////////////////////////////////////////
 
@@ -212,88 +295,6 @@ int main (int argc, char** argv){
     // Auf Elemente zugreifen:
     int array_int = multi_array[0][2]; // => 3
 
-    ////////////////////////////////////////////////
-    // Operatoren
-    ////////////////////////////////////////////////
-    
-    // Kurzschreibweise für mehrere Deklarationen
-    int i1 = 1, i2 = 2;
-    flaot f1 = 1.0, f2 = 2.0;
-
-    int b,c;
-    b = c = 0;
-
-    // Arithmetik ist unkompliziert
-    i1 + i2; // => 3
-    i2 - i1; // => 1
-    i2 * i1; // => 2
-    i1 / i2; // 0 (0.5, aber abgeschnitten, da es int sind.)
-
-    // Man muss mindestens ein Integer zu einen float konvertieren, damit man als
-    // Resultat eine Gleitkommazahl erhält.
-    (float)i1 / i2; // => 0.5f
-    i1 / (double)i2; // => 0.5 // das gleiche mit dem Typ `double`
-    f1 / f2; // => 0.5, plus oder minus Epsilon
-    // Gleitkommazahlen und deren Berechnungen sind nicht exakt.
-
-    // Es gibt auch die Möglichkeit, Modulo zu rechnen
-    11 % 3; // => 2
-
-    // Vergleichsoperatoren sind vielleicht schon bekannt, aber in C gibt es
-    // keinen Boolean-Typ. In C verwenden wir `int`. (Oder _Bool oder bool in C99)
-    // 0 ist falsch, alles andere ist wahr (Die Vergleichsoperatoren ergeben
-    // immer 1 oder 0.
-    3 == 2; // => 0 (falsch)
-    3 != 2; // => 1 (wahr)
-    3 > 2; // => 1
-    3 < 2; // => 0
-    2 <= 2; // => 1
-    2 >= 2; // => 1
-
-    // C ist nicht Python - Vergleiche können nicht einfach verkettet werden.
-    // Warnung: die folgende Zeile wird kompilieren, aber es bedeutet `(0 < a) < 2`.
-    // Dieser Ausdruck ist immer wahr, weil (0 < a) kann entweder 1 oder 0 sein.
-    // In diesem Falle ist es 1, weil (0 < 1).
-    int zwischen_0_und_2 = 0 < a < 2;
-    // Benutze stattdessen folgende Schreibweise:
-    int zwischen_0_und_2 = 0 < a && a < 2;
-
-    // Logik funktioniert auch mit ints
-    !3; // => 0 (logisches Nicht)
-    !0; // => 1
-    1 && 1; // => 1 (logisches Und)
-    0 && 1; // => 0
-    0 || 1; // => 1 (logisches Oder)
-    0 || 0; // => 0
-
-    // Bedingter ternärer Ausdruck ( ? : )
-    int e = 5;
-    int f = 10;
-    int z;
-    z = ( e > f ) ? e : f; // => // => 10 "wenn e > f ist, gib e zurück, sonst f."
-
-    // Inkrementierungs- und Dekrementierungsoperatoren
-    int j = 0;
-    int s = j++; // gib j zurück und erhöhe danach j. (s = 0, j = 1)
-    s = ++j; // erhöhe zuerst j und gib dann j zurück (s = 2, j = 2)
-    // das gleiche gilt für j-- und --j
-
-    // Bitweise Operatoren
-    ~0x0F; // => 0xFFFFFFF0 (Bitweise Negation, "Einer-Komplement",
-           // Beispielresultat für 32-Bit int)
-    0x0F & 0xF0; // => 0x00 (Bitweises UND)
-    0x0F | 0xF0; // => 0xFF (Bitweises ODER)
-    0x04 ^ 0x0F; // => 0x0B (Bitweises XOR)
-    0x01 << 1; // => 0x02 (Bitweises  Linksverschiebung (left shift) (um 1))
-    0x02 >> 1; // => 0x01 (Bitweises Rechtsverschiebung (right shift) (um 1))
-
-    // Sei vorsichtig beim Shift mit vorzeichenbehafteten Integern
-    // folgende Ausdrücke sind nicht definiert:
-    // - Verschiebung in das Vorzeichenbit (int a = 1 << 31)
-    // - Linksshift einer negativen Zahl (int a = -1 << 2)
-    // - Shift um einen Offset, welcher >= die Breite des linken Ausdrucks ist.
-    // int a = 1 << 32; // undefiniertes Verhalten, wenn int 32-Bit ist.
-    
     ////////////////////////////////////////////////
     // Kontrollstrukturen
     ////////////////////////////////////////////////
