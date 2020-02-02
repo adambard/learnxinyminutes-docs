@@ -17,9 +17,9 @@ contributors:
 " very common for a script to mix programming-language features and raw
 " ex-commands.
 "
-" You can run Vim script directly by entering the commands in command-mode
-" (press `:` to enter command-mode), or you can write them to a file (without
-" the leading `:`) and source it in a running Vim instance (`:source
+" You can run Vim script directly by entering the commands in command-line mode
+" (press `:` to enter command-line mode), or you can write them to a file
+" (without the leading `:`) and source it in a running Vim instance (`:source
 " path/to/file`). Some files are sourced automatically as part of your
 " configuration (see |startup|). This guide assumes that you are familiar
 " with ex-commands and will only cover the scripting. Help topics to the
@@ -403,9 +403,9 @@ try
 catch /Cannot open/
     echo 'Looks like that file does not exist'
 catch /.*/
-    echo 'Something went wrong, but I don't know what'
+    echo 'Something went wrong, but I do not know what'
 finally
-    echo 'I'm done trying'
+    echo 'I am done trying'
 endtry
 
 
@@ -481,7 +481,7 @@ endfunction
 " Call a function for its return value, and possibly for its side effects
 let animals = keys({'cow': 'moo', 'dog': 'woof', 'cat': 'meow'})
 
-" Call a function for its side effects only, ignore potential result
+" Call a function for its side effects only, ignore potential return value
 call sign_undefine()
 
 " The call() function calls a function reference and passes parameters as a
@@ -527,7 +527,7 @@ command! SwapAdjacentLines normal! ddp
 " as `-nargs`, all of them start with a dash to set them apart from the command
 " name.
 
-:command -nargs=1 Error echoerr <args>
+command! -nargs=1 Error echoerr <args>
 
 
 " Defining auto-commands (|40.3|, |autocmd|, |autocommand-events|)
@@ -618,11 +618,18 @@ echo  expand('<cword>')            | " Current word under cursor
 echo  expand('%:p')                | " Modifier are possible
 
 " Type tests
-echo  type(my_var) == type(0)                  | " Number
-echo  type(my_var) == type('')                 | " String
-echo  type(my_var) == type([])                 | " List
-echo  type(my_var) == type({})                 | " Dictionary
-echo  type(my_var) == type(function('type'))   | " Funcref
+" There are unique constants defined for the following types. Older versions
+" of Vim lack the type variables, see the reference " documentation for a
+" workaround
+echo  type(my_var) == v:t_number      | " Number
+echo  type(my_var) == v:t_string      | " String
+echo  type(my_var) == v:t_func        | " Funcref
+echo  type(my_var) == v:t_list        | " List
+echo  type(my_var) == v:t_dict        | " Dictionary
+echo  type(my_var) == v:t_float       | " Float
+echo  type(my_var) == v:t_bool        | " Explicit Boolean
+" For the null object should compare it against itself
+echo  my_var is v:null
 
 " Format strings
 echo  printf('%d in hexadecimal is %X', 123, 123)
@@ -635,7 +642,7 @@ echo  printf('%d in hexadecimal is %X', 123, 123)
 " Source guard
 " ############
 
-" Prevent a file from being source multiple times; users can set the variable
+" Prevent a file from being sourced multiple times; users can set the variable
 " in their configuration to prevent the plugin from loading at all.
 if exists('g:loaded_my_plugin')
     finish
