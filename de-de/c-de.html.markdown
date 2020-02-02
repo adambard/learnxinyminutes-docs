@@ -76,9 +76,10 @@ int main(void){
 
 // Die Kommandozeilenargumente, welche gebraucht werden, damit dein Programm 
 // läuft, werden als Argumente der `main`-Funktion mitgegeben.
-// argc steht für die Anzahl von Argumenten. - Der Programmname ist das erste
-// Argument.
-// argv ist ein Array von Zeichenarrays, welche die Argumente beinhaltet.
+// argc (argument counter) steht für die Anzahl von Argumenten.
+// Der Programmname ist das erste Argument.
+// argv (argument vector) ist ein Array von Zeichenarrays, welche die
+// Argumente beinhaltet.
 // argv[0] = Name des Programms
 // argv[1] = erstes Argument usw.
 int main (int argc, char** argv){
