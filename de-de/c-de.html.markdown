@@ -16,7 +16,7 @@ manuellen Speicherverwaltung bewusst sein.
 
 > **Über Compiler Optionen**
 > 
-> Standardmässig sind `gcc` und `clang` ziemlich ruhig bezüglich Warnungen und 
+> Standardmäßig sind `gcc` und `clang` ziemlich ruhig bezüglich Warnungen und 
 > Fehlern, obwohl dies sehr nützliche Informationen sein können. Es wird
 > empfohlen, strengere Compiler Optionen zu verwenden. Hier sind einige empfohlene
 > Standards:
@@ -203,7 +203,7 @@ int main (int argc, char** argv){
     double x_double = 0.0; // echte Zahlen ohne Suffix sind vom Typ double
 
     // integer-Typen können vorzeichenlos (unsigned) sein
-    // (grösser oder kleiner als 0)
+    // (größer oder kleiner als 0)
     unsigned short ux_short;
     unsigned int ux_int;
     unsigned long long ux_long_long;
@@ -213,24 +213,24 @@ int main (int argc, char** argv){
     '0'; // => 48 im ASCII-Zeichensatz
     'A'; // => 65 im ASCII-Zeichensatz
 
-    // sizeof(T) gibt die Grösse einer Variablen des Typen T in Bytes zurück.
-    // sizeof(obj) ergibt die Grösse des Ausdrucks (Variable, Literal usw.)
+    // sizeof(T) gibt die Größe einer Variablen des Typen T in Bytes zurück.
+    // sizeof(obj) ergibt die Größe des Ausdrucks (Variable, Literal usw.)
 
     printf("%zu\n", sizeof(int)); // => 4 (auf den Rechnern mit einem 4-Byte-Wort)
 
     // Wenn das Argument des `sizeof`-Operator ein Ausdruck ist, dann wird das
-    // Argument nicht ausgewertet (ausser Arrays mit variabler Länge)
+    // Argument nicht ausgewertet (außer Arrays mit variabler Länge)
     // Der Wert, der in diesem Fall zurückgegeben wird, ist eine Konstante zur 
     // Kompillierzeit.
 
     int a = 1;
     //size_t ist ein vorzeichenloser Integer Typ mit mindestens 2 Byte um die 
-    // Grösse eines Objekts zu repräsentieren.
+    // Größe eines Objekts zu repräsentieren.
     size_t size = sizeof(a++); // a++ wird nicht ausgewertet
     printf("sizeof(a++) = %zu, wobei a=%d ist\n", size, a);
     // Gibt "sizeof(a++) = 4, wobei a=1 ist" aus (mit einer 32-Bit-Architektur)
 
-    // Arrays müssen mit einer Grösse initialisiert werden.
+    // Arrays müssen mit einer Größe initialisiert werden.
     char my_char_array[20]; // Dieses Array beinhaltet 1 * 20 = 20 Bytes
     int my_int_array[20]; // Dieses Array beinhaltet 4 * 20 = 80 Bytes.
     // unter der Voraussetzung eines 4-Byte-Worts.
@@ -245,7 +245,7 @@ int main (int argc, char** argv){
     // Allerdings muss die Länge des Arrays dann zur Laufzeit ausgewertet werden:
     size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
     // WARNUNG: Wenn dieser Ansatz gewählt wird, muss man sicherstellen, dass die
-    // Grösse des Arrays ermittelt werden *bevor* dieser einer Funktion als
+    // Größe des Arrays ermittelt werden *bevor* dieser einer Funktion als
     // Argument weitergegeben wird (siehe Diskussion weiter unten), weil Arrays
     // einer Funktion nur als Zeiger übergeben werden. => Das obere Statement
     // würde innerhalb einer Funktion ein falsches Resultat liefern.
@@ -259,17 +259,17 @@ int main (int argc, char** argv){
     printf("%d\n", my_array[1]); // => 2
 
     // In C99 (und als optionales Feature in C11) können Arrays mit variabler
-    // Länge deklariert werden. Die Grösse eines solchen Array muss eine Konstante
+    // Länge deklariert werden. Die Größe eines solchen Array muss eine Konstante
     // zur Kompilierzeit sein.
-    printf("Geben Sie die Arraygrösse an: "); //Frag den Benutzer nach
-                                              // der Arraygrösse
+    printf("Geben Sie die Arraygröße an: "); //Frag den Benutzer nach
+                                              // der Arraygröße
     int array_size;
     fcsanf(stdin, "%d", &array_size);
     int var_length_array[array_size]; // deklariere Array mit variabler Länge
     printf("sizeof array =%zu\n", sizeof var_length_array);
 
     // Zum Beispiel:
-    // > Geben Sie die Arraygrösse an: 10
+    // > Geben Sie die Arraygröße an: 10
     // > sizeof array = 40
 
     // Strings sind lediglich Arrays von `chars`, welche mit einem Null-Byte
@@ -398,7 +398,7 @@ int main (int argc, char** argv){
 
     // In diesem Tutorial wird das deutsche Wort Zeiger nicht verwendet, da es
     // bei einer weiteren Recherche einfacher ist, wenn man von Pointern ausgeht.
-    // Ausserdem ist der Begriff Pointer auch im deutschen Sprachgebrauch zu finden.
+    // Außerdem ist der Begriff Pointer auch im deutschen Sprachgebrauch zu finden.
 
     // Ein Pointer ist eine Variable, welche deklariert wurde, um eine Speicher-
     // adresse zu speichern. Die Deklaration eines Pointers wird auch zeigen,
@@ -433,7 +433,7 @@ int main (int argc, char** argv){
 
     // Arrays sind eine gute Möglichekit, einen zusammenhängenden Block von
     // Speicher zu allozieren.
-    int x_array[20]; // deklariert einen Array der Grösse 20 (Grösse kann
+    int x_array[20]; // deklariert einen Array der Größe 20 (Größe kann
     // nicht geändert werden.)
     int xx;
     for (xx =0; xx < 20; xx++){
@@ -591,9 +591,9 @@ Wenn man Arrays betrachtet, so werden diese immer als Pointer übergeben. Auch
 wenn die Arrays statisch alloziert werden (wie zum Beispiel `arr[10]`), werden
 diese als Pointer zum ersten Element des Arrays übergeben.
 Auch hier soll noch einmal erwähnt werden, dass es keinen Standard gibt, wie die 
-Grösse eines dynamischen Arrays herausgefunden werden kann.
+Größe eines dynamischen Arrays herausgefunden werden kann.
 */
-// Die Grösse des Arrays muss unbedingt mitgegeben werden.
+// Die Größe des Arrays muss unbedingt mitgegeben werden.
 // Sonst hat die Funktion keine Ahnung wie groß das Array ist.
 void print_int_arrray(int *arr, size_t size){
     int i;
@@ -607,25 +607,25 @@ int size = 10;
 print_int_array(my_array, size);
 // Wird folgendes ausgeben: "arr[0] ist 1" usw.
 
-// Wenn man auf externe Variable (ausserhalb der Funktion) referenziert, sollte
+// Wenn man auf externe Variable (außerhalb der Funktion) referenziert, sollte
 // man das Schlüsselwort `extern` verwenden.
 int i = 0;
 void test_function(){
     extern int i; // i braucht nun die externe Variable i
 }
 
-// Das Schlüsselwort `static` macht, dass eine Variable ausserhalb der Kompilier-
+// Das Schlüsselwort `static` macht, dass eine Variable außerhalb der Kompilier-
 // einheit nicht zugreifbar ist.  (Auf den meisten Systemen ist eine Kompiliereinheit
 // eine `.c`-Datei.) Das Schlüsselwort `static` kann sowohl bei globalen
 // (zur Kompiliereinheit gehörende) Variablen, Funktionen und Funktionslokale
 // Variablen angewendet werden.
 // Wenn man `static` bei lokalen Variablen verwendet, so ist diese Variable global
 // erreichbar und behält dessen Wert über Funktionsaufrufe hinweg, aber sie ist 
-// nur innerhalb der deklarierten Funktion verfügbar. Ausserdem werden statische
+// nur innerhalb der deklarierten Funktion verfügbar. Außerdem werden statische
 // Variablen mit 0 initialisiert, wenn sie nicht mit einem anderen Startwert 
 // initialisiert werden.
 // Es ist auch möglich, Funktionen als statisch zu deklarieren, damit diese
-// `private` sind. Privat heisst, dass sie nur in diesem Kontekt sichtbar sind.
+// `private` sind. Privat heißt, dass sie nur in diesem Kontekt sichtbar sind.
 
 
 ////////////////////////////////////////////////
@@ -782,7 +782,7 @@ typedef void (*my_fnp_type)(char *);
 
 /*
 Header-Dateien sind ein wichtiger Teil von C, da sie eine Verbindung zwischen 
-unterschiedlichen C-Quelldateien herstellen. Ausserdem vereinfachen Header-Dateien
+unterschiedlichen C-Quelldateien herstellen. Außerdem vereinfachen Header-Dateien
 den Code und Definitionen, da diese in separaten Dateien geschrieben werden können.
 
 Header-Dateien sind von der Syntax her ähnlich zu C-Quelldateien, allerdings haben
@@ -831,8 +831,8 @@ enum traffic_light_state {GREEN, YELLOW, RED};
 // Praxis angesehen. Definitionen sollten in einer C-Datei erstellt werden.
 Node create_linked_list(int *value, int length);
 
-// Ausser den oben genannten Elementen, sollten weitere Definitionen in einer
-// C-Datei gemacht werden. Übermässige Includes und Definitionen sollten auch 
+// Außer den oben genannten Elementen, sollten weitere Definitionen in einer
+// C-Datei gemacht werden. Übermäßige Includes und Definitionen sollten auch 
 // nicht einer Header-Datei gemacht werden. Stattdessen wird es empfohlen, diese
 // in eine separate Header-Datei oder in eine C-Quelldatei zu schreiben.
 
@@ -855,7 +855,7 @@ Eine weitere gute Resource ist [Learn C The Hard Way](http://learncodethehardway
 
 Solltest du Fragen zu C haben, so lies die FAQ [compl.lang.c Frequently Asked Questions](http://c-faq.com).[Englisch]
 
-Ausserdem ist es wichtig, eine saubere Einrückung zu verwenden. Des weiteren ist
+Außerdem ist es wichtig, eine saubere Einrückung zu verwenden. Des weiteren ist
 es wichtig, dass der Codestil möglichst konsistent ist. Es ist wichtiger, lesbaren
 Code zu schreiben als Code, welcher clever und schnell ist. Es lohnt sich ein
 Blick auf den [Codestil des Linuxkernel](https://www.kernel.org/doc/Documentation/process/coding-style.rst) zu werfen. [Englisch]
