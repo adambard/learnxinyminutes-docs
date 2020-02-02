@@ -39,12 +39,12 @@ mehrzeilige Kommentare können nicht verschachtelt werden /* Sei Vorsichtig! */ 
 
 // Konstanten: #define <keyword>
 // Konstanten werden laut der Konvention immer in GROSSBUCHSTABEN geschrieben
-#define TAGE_IM_JAHR 365
+#define DAYS_IN_YEAR 365
 
 // Konstanten können auch als Aufzählungskonstanten (Enums) definiert werden.
 // Alle Anweisungen müssen mit einem Semikolon beendet werden.
-enum tage {SO=1, MO, DI, MI, DO, FR, SA};
-// MO wird automatisch zu 2, DI zu 3 etc.
+enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
+// MON wird automatisch zu 2, TUE zu 3 etc.
 
 // Importiere Header-Dateien mit #include
 #include <stdlib.h>
@@ -58,13 +58,13 @@ enum tage {SO=1, MO, DI, MI, DO, FR, SA};
 
 // Funktionssignaturen werden entweder vorher in einer .h-Datei deklariert oder
 // am Anfang der .c-Datei.
-void funktion_1();
-int funktion_2(void);
+void function_1();
+int funkcion_2(void);
 
 // Es muss ein Funktionsprototyp deklariert werden vor der `main()` Funktion,
 // wenn die Funktion nach der `main()` Funktion gebraucht wird.
-int addiere_zwei_integer(int x1, int x2); // Funktionsprototyp
-// Auch wenn der Ausdrck `int addiere_zwei_integer(int, int)` auch valid wäre, 
+int add_two_ints(int x1, int x2); // Funktionsprototyp
+// Auch wenn der Ausdrck `int add_two_ints(int, int)` auch valid wäre, 
 // ist es empfohlen, dass man die Namen der Argumente hinschreibt für eine
 // einfachere Analyse.
 
@@ -147,19 +147,19 @@ int main (int argc, char** argv){
     // Gibt "sizeof(a++) = 4, wobei a=1 ist" aus (mit einer 32-Bit-Architektur)
 
     // Arrays müssen mit einer Grösse initialisiert werden.
-    char mein_char_array[20]; // Dieses Array beinhaltet 1 * 20 = 20 Bytes
-    int mein_int_array[20]; // Dieses Array beinhaltet 4 * 20 = 80 Bytes.
+    char my_char_array[20]; // Dieses Array beinhaltet 1 * 20 = 20 Bytes
+    int my_int_array[20]; // Dieses Array beinhaltet 4 * 20 = 80 Bytes.
     // unter der Voraussetzung eines 4-Byte-Worts.
 
     // Ein Array kann auf diese Weise mit 0 initialisiert werden.
-    char mein_array[20] = {0};
+    char my_array[20] = {0};
     // Hierbei ist der Teil "{0}" der "Array Initialisierer".
     // Beachte, dass die Länge des Arrays nicht explizit definiert werden muss, 
     // wenn er auf derselben Linie initialisiert wird.
     // Folgende Deklaration ist gleichwertig:
-    char mein_array[] = {0};
+    char my_array[] = {0};
     // Allerdings muss die Länge des Arrays dann zur Laufzeit ausgewertet werden:
-    size_t mein_array_size = sizeof(mein_array) / sizeof(mein_array[0]);
+    size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
     // WARNUNG: Wenn dieser Ansatz gewählt wird, muss man sicherstellen, dass die
     // Grösse des Arrays ermittelt werden *bevor* dieser einer Funktion als
     // Argument weitergegeben wird (siehe Diskussion weiter unten), weil Arrays
@@ -168,11 +168,11 @@ int main (int argc, char** argv){
 
     // Das Indexieren eines Arrays funktioniert wie in anderen Sprache - resp.
     // in anderen Sprachen funktioniert es gleich wie in C.
-    mein_array[0]; // => 0
+    my_array[0]; // => 0
     
     // Arrays sind veränderbar; es ist nur Arbeitsspeicher!
-    mein_array[1] = 2;
-    printf("%d\n", mein_array[1]); // => 2
+    my_array[1] = 2;
+    printf("%d\n", my_array[1]); // => 2
 
     // In C99 (und als optionales Feature in C11) können Arrays mit variabler
     // Länge deklariert werden. Die Grösse eines solchen Array muss eine Konstante
@@ -192,10 +192,10 @@ int main (int argc, char** argv){
     // (0x00) beendet werden. In Strings wird das Nullbyte durch das Zeichen \0
     // repräsentiert. Wir müssen das Null-Byte nicht angeben in String-Literalen;
     // der Compiler fügt es am Ende des Array automatisch hinzu.
-    char ein_string[20] = "Das ist ein String";
-    printf("%s\n", ein_string); // %s formattiert einen String
+    char a_string[20] = "Das ist ein String";
+    printf("%s\n", a_string); // %s formattiert einen String
 
-    printf("%d\n", ein_string[18]); // => 0
+    printf("%d\n", a_string[18]); // => 0
     // Hier ist das Byte #19 0 (wie auch Byte #20)
 
     // Wenn wir Zeichen zwischen einfachen Anführungszeichen haben, ist es ein
@@ -427,10 +427,10 @@ error:
     // => Gibt eine Adresse im Speicher aus
 
     // Pointer starten mit einem * zu Beginn der Deklaration.
-    int *px, kein_pointer; // px ist ein Pointer zu einem int.
+    int *px, not_a_pointer; // px ist ein Pointer zu einem int.
     px = &x; // Speichert die Adresse von x in px
     printf("%p\n", (void *)px); // => Gibt eine Adresse im Speicher aus
-    printf("%zu, %zu\n", sizeof(px), sizeof(kein_pointer));
+    printf("%zu, %zu\n", sizeof(px), sizeof(not_a_pointer));
     // Gibt auf einem typischen 64-Bit-System folgendes aus: "8, 4"
 
     // Um den Wert einer Adresse, auf welche ein Pointer zeigt, herauszufinden, 
@@ -465,15 +465,15 @@ error:
     // Pointer zugewiesen wird, wird es zu einem Pointer reduziert (implizites Casting)
     // Ausnahme: Wenn das Array das Argument des Operators `&` ist.
     int arr[10];
-    int (*ptr_zu_arr)[10] = &arr; //`&arr` ist nicht vom Typ `int *`!
+    int (*ptr_to_arr)[10] = &arr; //`&arr` ist nicht vom Typ `int *`!
     // Es ist vom Typem "Pointer auf Array" (aus zehn `int`s)
     // oder wenn das Array ein Stringliteral ist, welches gebraucht wird um ein
     // `char`-Array zu initialisieren.
-    char anderer_arr[] = "foobarbazquirk";
+    char other_arr[] = "foobarbazquirk";
     // oder wenn es das Argument des `sizeof` oder `alignof` Operators ist.
-    int dritter_array[10];
-    int *ptr = dritter_array; // gleich wie: `int *ptr = &arr[0]`
-    printf("%zu, %zu\n", sizeof(dritter_array), sizeof(ptr));
+    int third_array[10];
+    int *ptr = third_array; // gleich wie: `int *ptr = &arr[0]`
+    printf("%zu, %zu\n", sizeof(third_array), sizeof(ptr));
     // Gibt wahrscheinlich "40, 4" oder "40, 8" aus
 
     // Pointer werden basierend auf dem Typ in- und dekrementiert
@@ -487,50 +487,50 @@ error:
     // wie viele Bytes alloziert werden sollen. (Normalerweise geschieht dies
     // aus dem Heap - dies kann auf eingebetteten Systemen unterschiedlichen sein.
     // Der C Standard sagt nichts darüber.)
-    int *mein_ptr = malloc(sizeof(*mein_ptr) * 20);
+    int *my_ptr = malloc(sizeof(*my_ptr) * 20);
     for (xx = 0; xx < 20; xx++){
-        *(mein_ptr + xx) = 20 -xx; //mein_ptr[xx] = 20-xx
+        *(my_ptr + xx) = 20 -xx; //my_ptr[xx] = 20-xx
     } // initialisiere Speicher zu 20, 19, 18, 17, ... 2, 1 (als `int`)
 
     // Sei vorsichtig beim Übergeben von Benutzerdefinierten Werten an `malloc`.
     // Wenn du sicher sein willst, kannst du die Funktion `calloc` nutzen, welche
     // (nicht wie `malloc`) auch den Speicher nullt.
-    int *mein_anderer_ptr = calloc(20, sizeof(int));
+    int *my_other_ptr = calloc(20, sizeof(int));
 
     // Merke, dass es in C keinen Standard-Weg gibt, um die Länge eines dynamisch
     // allozierten Arrays zu bestimmen. Auf Grund dessen sollte eine Variable 
     // erstellt werden, welche sich die Anzahl der Elemente im Array merkt, wenn
     // die Arrays mehrmals im Programm gebraucht werden.
     // Weitere Informationen stehen im Abschnitt Funktionen.
-    size_t groesse = 10;
-    int *mein_array = calloc(groesse, sizeof(int));
+    size_t size = 10;
+    int *my_array = calloc(size, sizeof(int));
     // Füge dem Array ein Element hinzu 
-    groesse++;
-    mein_array = realloc(mein_array, sizeof(int) *groesse);
-    if (mein_array == NULL){
+    size++;
+    my_array = realloc(my_array, sizeof(int) *size);
+    if (my_array == NULL){
         // Denke daran, realloc-Fehler zu prüfen
         return
     }
-    mein_array[10] = 5;
+    my_array[10] = 5;
 
     // Das Dereferenzieren von nicht alloziertem Speicher führt zu einem 
     // Undefinierten Verhalten.
-    printf("%d\n", *(mein_ptr + 21)); // Gibt irgendwas aus.
+    printf("%d\n", *(my_ptr + 21)); // Gibt irgendwas aus.
     // Das Programm kann auch abstürzen
 
     // Nachdem du fertig mit einem Block bist, welcher `malloc` verwendet hat, 
     // muss der Speicher befreit werden. Ansonsten kann dieser Speicherbereich
     // niemand nutzen bis dein Programm beendet wird.
     // Dies wird auch als "Speicherleck" (engl: memory leak) bezeichnet.
-    free(mein_ptr);
+    free(my_ptr);
 
     // Obwohl Strings normalerweise als Pointer-to-Char (Pointer zum ersten
     // Zeichen des Arrays) repräsentiert werden, sind Strings Arrays aus `char`s.
     // Es ist eine gute Praxis, `const char *` zu verwenden, wenn man ein
     // String-Literal referenziert, da String-Literale nicht modifiziert werden
     // sollten (z.B. "foo"[0] = 'a' ist ILLEGAL)
-    const char *mein_str = "Das ist mein eigener String";
-    printf("%c\n", *mein_str); // => D
+    const char *my_str = "Das ist mein eigener String";
+    printf("%c\n", *my_str); // => D
 
     // Dies ist nicht der Fall, wenn der String ein Array (möglicherweise mit
     // einem String-Literal initialisiert) ist, welcher im beschreibbaren Speicher
@@ -538,7 +538,7 @@ error:
     char foo[] = "foo";
     foo[0] = 'a'; // Dies ist legal, foo enthält jetzt "aoo"
 
-    funktion_1();
+    function_1();
 } // Ende der `main`-Funktion
 
 ////////////////////////////////////////////////
@@ -548,16 +548,16 @@ error:
 // Syntax einer Funktionsdeklaration
 // <rueckgabe_wert> <funktions_name>(<args>)
 
-int addiere_zwei_integer(int x1, int x2){
+int add_two_ints(int x1, int x2){
     return x1 + x2; // verwendet return, um einen Wert zurückzugeben
 }
 
 /* 
 Funktionen werden auf Grund des Wertes aufgerufen (call-by-value). Wenn eine 
-Funktion aufgerufen wird, sind die Argumente Kopien der ursprüunglichen Werte
+Funktion aufgerufen wird, sind die Argumente Kopien der ursprünglichen Werte
 (ausgenommen Arrays). Alles, was man innerhalb einer Funktion mit den Werten 
 macht, hat keinen Einfluss auf die Originalwerte als die Funktion aufgerufen
-wurde
+wurde.
 
 Verwende Pointer, um den Originalinhalt zu bearbeiten.
 
@@ -568,14 +568,14 @@ Beispiel:
 void str_reverse(char *str_in){
     char tmp;
     size_t ii = 0; 
-    size_t laenge = strlen(str_in);
+    size_t size = strlen(str_in);
     // `strlen()` ist ein Teil der C Standard-Bibliothek.
     // Merke: Die Länge, welche von `strlen` zurückgegeben wird, ist ohne den 
     // Null-Byte Terminator.
-    for (ii = 0; i < laenge /2; ii++){ // in C99 kann man `ii` hier deklarieren.
+    for (ii = 0; i < size /2; ii++){ // in C99 kann man `ii` hier deklarieren.
         tmp = str_in[ii];
-        str_in[ii] = str_in[laenge - ii - 1]; //#ii'tes Zeichen vom Ende her
-        str_in[laenge - ii- 1] = tmp;
+        str_in[ii] = str_in[size - ii - 1]; //#ii'tes Zeichen vom Ende her
+        str_in[size - ii- 1] = tmp;
     }
 }
 // Merke: Die `string.h`-Headerdatei muss inkludiert werden, bevor `strlen()`
@@ -589,16 +589,16 @@ printf("%s\n", c), => "tseT nie tsi saD"
 
 // Weil wir lediglich eine Variable zurückgeben können, kann zum Ändern mehrerer
 // Variablen das Konzept call-by-reference verwendet werden.
-void tausche_zwei_zahlen(int *a, int *b){
+void swap_two_numbers(int *a, int *b){
     int temp = *a;
     *a = *b;
     *b = temp;
 }
-int erste_zahl = 10; 
-int zweite_zahl = 20;
-printf("Erste Zahl: %d\n Zweite Zahl: %d\n", erste_zahl, zweite_zahl);
-tausche_zwei_zahlen(&erste_zahl, &zweite_zahl);
-printf("Erste Zahl: %d\n Zweite Zahl: %d\n", erste_zahl, zweite_zahl);
+int first = 10; 
+int seconde = 20;
+printf("Erste Zahl: %d\n Zweite Zahl: %d\n", first, second);
+swap_two_numbers(&first, &second);
+printf("Erste Zahl: %d\n Zweite Zahl: %d\n", first, second);
 // Werte sind vertauscht.
 
 /*
@@ -610,28 +610,28 @@ Grösse eines dynamischen Arrays herausgefunden werden kann.
 */
 // Die Grösse des Arrays muss unbedingt mitgegeben werden.
 // Sonst hat die Funktion keine Ahnung wie gross das Array ist.
-void ausgabe_int_array(int *arr, size_t size){
+void print_int_arrray(int *arr, size_t size){
     int i;
     for (i = 0; i < size; i++){
         printf("arr[%d] ist %d\n", i, arr[i]);
     }
 }
 
-int mein_array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-int groesse = 10;
-ausgabe_int_array(mein_array, groesse);
+int my_array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+int size = 10;
+print_int_array(my_array, size);
 // Wird folgendes ausgeben: "arr[0] ist 1" usw.
 
 // Wenn man auf externe Variable (ausserhalb der Funktion) referenziert, sollte
 // man das Schlüsselwort `extern` verwenden.
 int i = 0;
-void test_funktion(){
+void test_function(){
     extern int i; // i braucht nun die externe Variable i
 }
 
 // Das Schlüsselwort `static` macht, dass eine Variable ausserhalb der Kompilier-
 // einheit nicht zugreifbar ist.  (Auf den meisten Systemen ist eine Kompiliereinheit
-// eine `.c`-Datei.) Das Schlüsselwort `static` kann sowohl global
+// eine `.c`-Datei.) Das Schlüsselwort `static` kann sowohl bei globalen
 // (zur Kompiliereinheit gehörende) Variablen, Funktionen und Funktionslokale
 // Variablen angewendet werden.
 // Wenn man `static` bei lokalen Variablen verwendet, so ist diese Variable global
@@ -648,50 +648,50 @@ void test_funktion(){
 ////////////////////////////////////////////////
 
 // `typedef`s können verwendet werden, um Typenaliase zu erstellen.
-typedef int mein_typ;
-mein_typ meine_typ_var = 0;
+typedef int my_type;
+my_type my_type_var = 0;
 
 // Structs sind lediglich Sammlungen von Daten, die Inhalte werden
 // (in der Reihenfolge wie sie geschrieben wurden) sequentiell alloziert.
-struct rechteck{
-    int breite;
-    int hoehe;
+struct rectangle{
+    int width;
+    int height;
 };
 
 // Allgemein ist es nicht so, dass folgender Ausdruck wahr ist.
-// sizeof(struct rechteck) == sizeof(int) + sizeof(int)
+// sizeof(struct rectangle) == sizeof(int) + sizeof(int)
 // Dies ist so, weil potentiell ein Padding zwischen den Struktur-Inhalten
 // möglich ist). (siehe [1, Englisch])
 
-void funktion_1(){
-    struct rechteck mein_rechteck;
+void function_1(){
+    struct rectangle my_rectangle;
 
     // Greife auf Struct-Inhalte mit `.` zu.
-    mein_rechteck.breite = 10;
-    mein_rechteck.hoehe = 20;
+    my_rectangle.width = 10;
+    my_rectangle.height = 20;
 
     // Du kannst Pointer zu Structs deklarieren.
-    struct rechteck *mein_rechteck_ptr = &mein_rechteck;
+    struct rectangle *my_rectangle_ptr = &my_rectangle;
 
     // Verwende Dereferenzierung, um Struct-Inhalte zu bearbeiten
-    (*mein_rechteck_ptr).breite = 30; 
+    (*my_rectangle_ptr).width = 30; 
 
     //Noch besser: Verwende die Kurzschreibweise ->, um die Lesbarkeit zu
     // verbessern.
-    mein_rechteck_ptr->hoehe = 10; // Gleich wie: (*mein_rechteck_ptr).hoehe = 10;
+    my_rectangle_ptr->height = 10; // Gleich wie: (*my_rectangle_ptr).height = 10;
 }
 
 // Aus Bequemlichkeitsgründen ist es möglich einem `struct` ein `typedef` hinzuzufügen.
-typedef struct rechteck recht;
+typedef struct rectangle rect;
 
-int flaeche(recht r){
-    return r.breite * r.hoehe;
+int area(rect r){
+    return r.width * r.height;
 }
 
 // Wenn du grosse Structs hast, kannst du diese mit dem Pointer kopieren, 
 // damit grosse Kopiervorgänge vermieden werden.
-int flaecheptr(const recht *r){
-    return r->breite * r->hoehe;
+int area_ptr(const rect *r){
+    return r->width * r->height;
 }
 
 ////////////////////////////////////////////////
@@ -724,10 +724,10 @@ Solange die Signaturen der Funktionen übereinstimmen, kann man sämtliche Funkt
 demselben Pointer zuweisen. Funktionspointer sind auf Grund der Einfacheit und
 Leserlichkeit normalerweise wie folgt `typedef`d 
 */
-typedef void (*mein_fnp_type)(char *);
+typedef void (*my_fnp_type)(char *);
 // Danach werden diese genutzt, um die wirkliche Pointervariable zu deklarieren.
 // ..
-// mein_fnp_type f;
+// my_fnp_type f;
 
 // Spezialzeichen
 // Im folgenden sin die englischen Begriffe jeweils in Klammern geschrieben,
@@ -810,8 +810,8 @@ befindet wie die C-Quelldatei.
 // Eine sichere Möglichkeit, einen Header mehrere Male zu definieren bietet, das
 // folgende Statement. Die mehrfache Definition geschieht, wenn Kreisabhängigkeiten
 // bestehen.
-#ifndef BEISPIEL_H /* Wenn BEISPIEL_H noch nicht definiert wurde */
-#define BEISPIEL_H /* definiere das Makro BEISPIEL_H */
+#ifndef EXAMPLE_H /* Wenn EXAMPLE_H noch nicht definiert wurde */
+#define EXAMPLE_H /* definiere das Makro EXAMPLE_H */
 
 // Es könenn weitere Header innerhalb eines Headers eingebunden werden, was dazu
 // führt, dass diese bereits in anderen Dateien eingebunden wurden. So kann eine
@@ -820,7 +820,7 @@ befindet wie die C-Quelldatei.
 
 // Wie in den Quelldateien können auch in den Header-Dateien Makros definiert
 // werden und in anderen Dateien verwendet werden, welche diesen Header einbinden.
-#define BEISPIEL_NAME "Dennis Ritchie"
+#define EXAMPLE_NAME "Dennis Ritchie"
 
 // Funktionsmakros können auch definiert werden.
 #define ADD(a, b) ((a) + (b))
@@ -833,18 +833,18 @@ befindet wie die C-Quelldatei.
 
 // Strukturen und Typendefinitionen können verwendet werden, um die Konsistenz
 // zwischen unterschiedlichen Dateien beizubehalten.
-typedef struct Knoten{
-    int wert;
-    struct Knoten *naechster;
-}Knoten;
+typedef struct Node{
+    int value;
+    struct Node *next;
+}Node;
 
 // Dies kann auch mit Aufzählungen gemacht werden.
-enum ampel_status {GRUEN, GELB, ROT};
+enum traffic_light_state {GREEN, YELLOW, RED};
 
 // Funktionsprototypen könenn auch in Header-Dateien definiert werden, um die
 // Funktion in unterschiedlichen Dateien zu verwenden, aber dies wird als schlechte
 // Praxis angesehen. Definitionen sollten in einer C-Datei erstellt werden.
-Knoten erstelleVerketteteListe(int *werte, int laenge);
+Node create_linked_list(int *value, int length);
 
 // Ausser den oben genannten Elementen, sollten weitere Definitionen in einer
 // C-Datei gemacht werden. Übermässige Includes und Definitionen sollten auch 
