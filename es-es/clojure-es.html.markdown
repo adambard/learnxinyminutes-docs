@@ -10,15 +10,16 @@ lang: es-es
 ---
 
 Clojure es un lenguaje de la familia Lisp desarrollado sobre la Máquina Virtual
-de Java. Tiene un énfasis mayor en la [programación funcional](https://es.wikipedia.org/wiki/Programación_funcional) pura
-que Common Lisp, pero incluyendo la posibilidad de usar [SMT](https://es.wikipedia.org/wiki/Memoria_transacional) para manipular
+de Java. Tiene un énfasis mayor en la
+[programación funcional](https://es.wikipedia.org/wiki/Programación_funcional)
+pura que Common Lisp, pero incluyendo la posibilidad de usar
+[SMT](https://es.wikipedia.org/wiki/Memoria_transacional) para manipular
 el estado según se presente.
 
 Esta combinación le permite gestionar la concurrencia de manera muy sencilla
 y a menudo automáticamente.
 
 (Necesitas la versión de Clojure 1.2 o posterior)
-
 
 ```clojure
 ; Los comentatios comienzan con punto y coma.
@@ -29,8 +30,8 @@ y a menudo automáticamente.
 ; El "reader" (lector) de Clojure asume que el primer objeto es una
 ; función o una macro que se va a llamar, y que el resto son argumentos.
 
-; El primer form en un archivo debe ser ns, para establecer el namespace (espacio de
-; nombres)
+; El primer form en un archivo debe ser ns, para establecer el namespace
+; (espacio de nombres)
 (ns learnclojure)
 
 ; Algunos ejemplos básicos:
@@ -78,9 +79,9 @@ y a menudo automáticamente.
 ; Colecciones & Secuencias
 ;;;;;;;;;;;;;;;;;;;
 
-; Las Listas están basadas en las listas enlazadas, mientras que los Vectores en
-; arrays.
-; ¡Los Vectores y las Listas también son clases de Java!
+; Las Listas están basadas en las listas enlazadas, mientras que los Vectores
+; en arrays.
+; Los Vectores y las Listas también son clases de Java!
 (class [1 2 3]); => clojure.lang.PersistentVector
 (class '(1 2 3)); => clojure.lang.PersistentList
 
@@ -168,7 +169,8 @@ x ; => 1
 (hello3 "Jake") ; => "Hello Jake"
 (hello3) ; => "Hello World"
 
-; Las funciones pueden usar argumentos extras dentro de un seq utilizable en la función
+; Las funciones pueden usar argumentos extras dentro de un seq utilizable en
+; la función
 (defn count-args [& args]
   (str "You passed " (count args) " args: " args))
 (count-args 1 2 3) ; => "You passed 3 args: (1 2 3)"
@@ -183,8 +185,8 @@ x ; => 1
 ; Mapas
 ;;;;;;;;;;
 
-; Mapas de Hash y mapas de arrays comparten una misma interfaz. Los mapas de Hash
-; tienen búsquedas más rápidas pero no mantienen el orden de las claves.
+; Mapas de Hash y mapas de arrays comparten una misma interfaz. Los mapas de
+; Hash tienen búsquedas más rápidas pero no mantienen el orden de las claves.
 (class {:a 1 :b 2 :c 3}) ; => clojure.lang.PersistentArrayMap
 (class (hash-map :a 1 :b 2 :c 3)) ; => clojure.lang.PersistentHashMap
 
@@ -193,7 +195,8 @@ x ; => 1
 
 ; Los mapas pueden usar cualquier tipo para sus claves, pero generalmente las
 ; keywords (palabras clave) son lo habitual.
-; Las keywords son parecidas a cadenas de caracteres con algunas ventajas de eficiencia
+; Las keywords son parecidas a cadenas de caracteres con algunas ventajas de
+; eficiencia
 (class :a) ; => clojure.lang.Keyword
 
 (def stringmap {"a" 1, "b" 2, "c" 3})
@@ -250,8 +253,8 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Patrones útiles
 ;;;;;;;;;;;;;;;;;
 
-; Las construcciones lógicas en clojure son macros, y presentan el mismo aspecto
-; que el resto de forms.
+; Las construcciones lógicas en clojure son macros, y presentan el mismo
+; aspecto que el resto de forms.
 (if false "a" "b") ; => "b"
 (if false "a") ; => nil
 
@@ -352,8 +355,10 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Actualiza un atom con swap!
 ; swap! toma una función y la llama con el valor actual del atom
 ; como su primer argumento, y cualquier argumento restante como el segundo
-(swap! my-atom assoc :a 1) ; Establece my-atom al resultado de (assoc {} :a 1)
-(swap! my-atom assoc :b 2) ; Establece my-atom al resultado de (assoc {:a 1} :b 2)
+(swap! my-atom assoc :a 1) ; Establece my-atom al resultado
+;                            de (assoc {} :a 1)
+(swap! my-atom assoc :b 2) ; Establece my-atom al resultado
+;                            de (assoc {:a 1} :b 2)
 
 ; Usa '@' para no referenciar al atom sino para obtener su valor
 my-atom  ;=> Atom<#...> (Regresa el objeto Atom)
@@ -377,7 +382,8 @@ my-atom  ;=> Atom<#...> (Regresa el objeto Atom)
 ; Agents: http://clojure.org/agents
 ### Lectura adicional
 
-Ésto queda lejos de ser exhaustivo, pero espero que sea suficiente para que puedas empezar tu camino.
+Ésto queda lejos de ser exhaustivo, pero espero que sea suficiente para que
+puedas empezar tu camino.
 
 Clojure.org tiene muchos artículos:
 [http://clojure.org/](http://clojure.org/)
