@@ -613,6 +613,12 @@ const isEven = (number) => {
 
 isEven(7); // false
 
+// An even shorter way to write a function similar to the above one is:
+// Parenthesis are not required if only one argument is specified;
+// By default, a single statement defined will be the return statement, hence `return` keyword is not required. 
+
+const isOdd = number => number % 2 !== 0;
+
 // The "equivalent" of this function in the traditional syntax would look like this:
 
 function isEven(number) {
