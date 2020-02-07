@@ -42,7 +42,7 @@ SELECT * FROM departments;
 
 -- Recupera todas las filas de la tabla departments, pero sólo las columnas
 -- dept_no y dept_name.
--- Separar los comandos en varias líneas es aceptable.
+-- Separar los comandos en varias líneas está permitido.
 SELECT dept_no,
        dept_name FROM departments;
 
