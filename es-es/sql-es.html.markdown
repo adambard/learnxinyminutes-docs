@@ -8,7 +8,7 @@ translators:
 lang: es-es
 ---
 
-El lenguaje de consulta estructurada (SQL en inglés) es un lenguaje estándar ISO para crear y trabajar con bases de datos almacenados en un conjunto de tablas. Usualmente las implementaciones más usadas añaden sus propias extensiones al lenguaje; [Una comparación entre diferentes implementaciones de SQL](http://troels.arvin.dk/db/rdbms/) es una buena referencia sobre las diferencias entre distintos productos.
+El lenguaje de consulta estructurada (SQL en inglés) es un lenguaje estándar ISO para crear y trabajar con bases de datos almacenados en un conjunto de tablas. Las implementaciones generalmente añaden sus propias extensiones al lenguaje; [Comparación entre diferentes implementaciones de SQL](http://troels.arvin.dk/db/rdbms/) es una buena referencia sobre las diferencias entre distintos productos.
 
 Las implementaciones típicamente proveen de una línea de comandos donde uno puede introducir los comandos que se muestran aquí en forma interactiva, y también ofrecen una forma de ejecutar una serie de estos comandos almacenados en un archivo de script (mostrar que uno ha terminado con el prompt interactivo es un buen ejemplo de algo que no está estandarizado: la mayoría de las implementaciones de SQL soportan las palabras clave QUIT, EXIT, o ambas).
 
