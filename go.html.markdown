@@ -109,12 +109,22 @@ can include line breaks.` // Same string type.
 	a5 := [...]int{3, 1, 5, 10, 100} // An array initialized with a fixed size of five
 	// elements, with values 3, 1, 5, 10, and 100.
 
+	// Arrays have value semantics.
+	a4_cpy := a4            // a4_cpy is a copy of a4, two separate instances.
+	a4_cpy[0] = 25          // Only a4_cpy is changed, a4 stays the same.
+	fmt.Println(a4_cpy[0] == a4[0]) // false
+
 	// Slices have dynamic size. Arrays and slices each have advantages
 	// but use cases for slices are much more common.
 	s3 := []int{4, 5, 9}    // Compare to a5. No ellipsis here.
 	s4 := make([]int, 4)    // Allocates slice of 4 ints, initialized to all 0.
 	var d2 [][]float64      // Declaration only, nothing allocated here.
 	bs := []byte("a slice") // Type conversion syntax.
+
+	// Slices (as well as maps and channels) have reference semantics.
+	s3_cpy := s3            // Both variables point to the same instance.
+	s3_cpy[0] = 0           // Which means both are updated.
+	fmt.Println(s3_cpy[0] == s3[0]) // true	
 
 	// Because they are dynamic, slices can be appended to on-demand.
 	// To append elements to a slice, the built-in append() function is used.
