@@ -9,7 +9,7 @@ lang: de-de
 ---
 
 ```c
-// Es war klar dass das kommt...
+// Es war klar, dass das kommt...
 module hello;
 
 import std.stdio;
@@ -20,10 +20,10 @@ void main(string[] args) {
 }
 ```
 
-Wenn du so wie ich bist und viel zeit im Internet verbringst stehen die Chancen gut
-das du schonmal über [D](http://dlang.org/) gehört hast.
-Die D-Sprache ist eine moderne, überall einsetzbare programmiersprache die von Low bis
-High Level verwendet werden kann und dabei viele Stile anbietet.
+Wenn du so wie ich bist und viel Zeit im Internet verbringst, stehen die Chancen
+gut, dass du schonmal über [D](http://dlang.org/) gehört hast.
+Die D-Sprache ist eine moderne, überall einsetzbare programmiersprache die von
+Low bis High Level verwendet werden kann und dabei viele Stile anbietet.
 
 D wird aktiv von Walter Bright und Andrei Alexandrescu entwickelt, zwei super schlaue,
 richtig coole leute. Da das jetzt alles aus dem weg ist - auf zu den Beispielen!
