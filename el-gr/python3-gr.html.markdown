@@ -8,7 +8,8 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
-filename: learnpython3.py
+filename: learnpython3-gr.py
+lang: el-gr
 ---
 
 Η Python δημιουργήθηκε από τον Guido van Rossum στις αρχές των 90s. Πλέον είναι μία από τις πιο
