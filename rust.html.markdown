@@ -188,7 +188,7 @@ fn main() {
     }
 
     let a_foo = Foo { bar: 1 };
-    println!("{}", a_foo.get_bar()); // 1
+    println!("{}", a_foo.bar()); // 1
 
     // Traits (known as interfaces or typeclasses in other languages) //
 
