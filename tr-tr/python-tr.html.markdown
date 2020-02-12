@@ -13,7 +13,7 @@ filename: learnpython3-tr.py
 
 Python,90ların başlarında Guido Van Rossum tarafından oluşturulmuştur. En popüler olan dillerden biridir. Beni Python'a aşık eden sebep onun syntax beraklığı. Çok basit bir çalıştırılabilir söz koddur.
 
-Not: Bu makale Python 3 içindir. Eğer Python 2.7 öğrenmek istiyorsanız [burayı](http://learnxinyminutes.com/docs/python/) kontrol edebilirsiniz.
+Not: Bu makale Python 3 içindir. Eğer Python 2.7 öğrenmek istiyorsanız [burayı](http://learnxinyminutes.com/docs/pythonlegacy/) kontrol edebilirsiniz.
 
 ```python
 

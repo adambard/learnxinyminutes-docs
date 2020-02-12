@@ -20,7 +20,7 @@ lang: el-gr
 ή τον αρχικό συγγραφέα στο [@louiedinh](http://twitter.com/louiedinh) ή στο
 louiedinh [at] [google's email service]
 
-Σημείωση: Το παρόν άρθρο ασχολείται μόνο με την Python 3. Δείτε [εδώ](http://learnxinyminutes.com/docs/python/) αν θέλετε να μάθετε την παλιά Python 2.7
+Σημείωση: Το παρόν άρθρο ασχολείται μόνο με την Python 3. Δείτε [εδώ](http://learnxinyminutes.com/docs/pythonlegacy/) αν θέλετε να μάθετε την παλιά Python 2.7
 
 ```python
 

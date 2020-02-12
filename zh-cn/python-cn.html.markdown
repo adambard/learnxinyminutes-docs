@@ -16,7 +16,7 @@ Python 是由吉多·范罗苏姆(Guido Van Rossum)在 90 年代早期设计。
 欢迎大家斧正。英文版原作 Louie Dinh [@louiedinh](http://twitter.com/louiedinh)
 邮箱 louiedinh [at] [谷歌的信箱服务]。中文翻译 Geoff Liu。
 
-注意：这篇教程是基于 Python 3 写的。如果你想学旧版 Python 2，我们特别有[另一篇教程](http://learnxinyminutes.com/docs/python/)。
+注意：这篇教程是基于 Python 3 写的。如果你想学旧版 Python 2，我们特别有[另一篇教程](http://learnxinyminutes.com/docs/pythonlegacy/)。
 
 ```python
 

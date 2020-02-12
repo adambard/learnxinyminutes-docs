@@ -23,7 +23,7 @@ vagy pedig a louiedinh [kukac] [google email szolgáltatása] címen.
 Figyelem: ez a leírás a Python 2.7 verziójára vonatkozok, illetve
 általánosságban a 2.x verziókra. A Python 2.7 azonban már csak 2020-ig lesz
 támogatva, ezért kezdőknek ajánlott, hogy a Python 3-mal kezdjék az
-ismerkedést. A Python 3.x verzióihoz a [Python 3 bemutató](http://learnxinyminutes.com/docs/python3/)
+ismerkedést. A Python 3.x verzióihoz a [Python 3 bemutató](http://learnxinyminutes.com/docs/python/)
 ajánlott.
 
 Lehetséges olyan Python kódot írni, ami egyszerre kompatibilis a 2.7 és a 3.x

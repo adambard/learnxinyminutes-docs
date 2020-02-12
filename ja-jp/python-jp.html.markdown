@@ -21,7 +21,7 @@ lang: ja-jp
 
 フィードバッグは大歓迎です! [@louiedinh](http://twitter.com/louiedinh) または louiedinh [at] [google's email service] にご連絡下さい!
 
-Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/python/) をご確認下さい。
+Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/pythonlegacy/) をご確認下さい。
 
 ```python
 # 1行のコメントは番号記号(#)から始まります。

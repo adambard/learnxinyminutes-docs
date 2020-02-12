@@ -19,7 +19,7 @@ như một loại mã giả (pseudocode) có thể thực thi được.
 
 Mọi phản hồi đều sẽ được tích cực ghi nhận! Bạn có thể liên lạc với tôi qua Twitter [@louiedinh](http://twitter.com/louiedinh) hoặc louiedinh [at] [google's email service]
 
-Lưu ý: Bài viết này áp dụng riêng cho Python 3. Truy cập [vào đây](http://learnxinyminutes.com/docs/python/) nếu bạn muốn học phiên bản cũ Python 2.7
+Lưu ý: Bài viết này áp dụng riêng cho Python 3. Truy cập [vào đây](http://learnxinyminutes.com/docs/pythonlegacy/) nếu bạn muốn học phiên bản cũ Python 2.7
 
 ```python
 

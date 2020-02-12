@@ -19,7 +19,7 @@ filename: learnpython3-ar.py
 
 ردود أفعالكم عن المقال مُقدرة بشدة. يمكنكم التواصل مع الكاتب الاساسي من خلال [@louiedinh](http://twitter.com/louiedinh) أو louiedinh [at] [google's email service]
 
-ملحوظة: هذا المقال يُطبق على بايثون 3 فقط. راجع المقال [هنا](http://learnxinyminutes.com/docs/python/) إذا أردت تعلم لغة البايثون نسخة 2.7 الأقدم
+ملحوظة: هذا المقال يُطبق على بايثون 3 فقط. راجع المقال [هنا](http://learnxinyminutes.com/docs/pythonlegacy/) إذا أردت تعلم لغة البايثون نسخة 2.7 الأقدم
 
 ```python
 
