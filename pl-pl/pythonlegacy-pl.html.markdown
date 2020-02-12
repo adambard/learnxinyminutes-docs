@@ -1,7 +1,7 @@
 ---
 name: python
 category: language
-language: python
+language: Python 2 (legacy)
 filename: learnpython-pl.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]

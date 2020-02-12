@@ -1,5 +1,5 @@
 ---
-language: python
+language: Python 2 (legacy)
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
