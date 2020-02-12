@@ -176,7 +176,13 @@ fn main() {
 
     impl<T> Foo<T> {
         // Methods take an explicit `self` parameter
-        fn get_bar(self) -> T {
+        fn bar(&self) -> &T { // self is borrowed
+            &self.bar
+        }
+        fn bar_mut(&mut self) -> &mut T { // self is mutably borrowed
+            &mut self.bar
+        }
+        fn into_bar(self) -> T { // here self is consumed
             self.bar
         }
     }
