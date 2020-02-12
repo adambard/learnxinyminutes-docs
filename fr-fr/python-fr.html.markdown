@@ -8,7 +8,7 @@ contributors:
 translators:
     - ["Gnomino", "https://github.com/Gnomino"]
     - ["Julien M'Poy", "http://github.com/groovytron"]
-filename: learnpython3-fr.py
+filename: learnpython-fr.py
 lang: fr-fr
 ---
 

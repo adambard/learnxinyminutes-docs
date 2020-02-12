@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["kultprok", "http:/www.kulturproktologie.de"]
     - ["matthiaskern", "https://github.com/matthiaskern"]
-filename: learnpython3-de.py
+filename: learnpython-de.py
 lang: de-de
 ---
 

@@ -11,7 +11,7 @@ contributors:
 translators:
     - ["kakakaya", "https://github.com/kakakaya"]
     - ["Ryota Kayanuma", "https://github.com/PicoSushi"]
-filename: learnpython3-jp.py
+filename: learnpython-jp.py
 lang: ja-jp
 ---
 

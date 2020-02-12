@@ -8,7 +8,7 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
-filename: learnpython3-gr.py
+filename: learnpython-gr.py
 lang: el-gr
 ---
 

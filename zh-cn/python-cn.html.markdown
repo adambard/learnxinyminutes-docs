@@ -6,7 +6,7 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
 translators:
     - ["Geoff Liu", "http://geoffliu.me"]
-filename: learnpython3-cn.py
+filename: learnpython-cn.py
 lang: zh-cn
 ---
 

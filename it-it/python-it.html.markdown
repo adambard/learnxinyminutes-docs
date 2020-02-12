@@ -1,6 +1,6 @@
 ---
 language: Python
-filename: learnpython3-it.py
+filename: learnpython-it.py
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
