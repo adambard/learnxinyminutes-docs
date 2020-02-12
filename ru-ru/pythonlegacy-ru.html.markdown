@@ -6,7 +6,7 @@ contributors:
 translators:
     - ["Yury Timofeev", "http://twitter.com/gagar1n"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-filename: learnpython-ru.py
+filename: learnpythonlegacy-ru.py
 ---
 
 Язык Python был создан Гвидо ван Россумом в начале 90-х. Сейчас это один из

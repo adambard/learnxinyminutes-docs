@@ -1,6 +1,6 @@
 ---
 language: Python 2 (legacy)
-filename: learnpython-tr.py
+filename: learnpythonlegacy-tr.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:

@@ -3,7 +3,7 @@ language: Python 2 (legacy)
 category: language
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
-filename: learnpython-ko.py
+filename: learnpythonlegacy-ko.py
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 lang: ko-kr

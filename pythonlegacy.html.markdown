@@ -8,7 +8,7 @@ contributors:
     - ["asyne", "https://github.com/justblah"]
     - ["habi", "http://github.com/habi"]
     - ["Rommel Martinez", "https://ebzzry.io"]
-filename: learnpython.py
+filename: learnpythonlegacy.py
 ---
 
 Python was created by Guido Van Rossum in the early 90s. It is now one of the

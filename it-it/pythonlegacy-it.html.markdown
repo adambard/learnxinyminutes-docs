@@ -1,6 +1,6 @@
 ---
 language: Python 2 (legacy)
-filename: learnpython-it.py
+filename: learnpythonlegacy-it.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]

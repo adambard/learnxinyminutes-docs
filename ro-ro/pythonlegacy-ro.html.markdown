@@ -4,7 +4,7 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Ovidiu Ciule", "https://github.com/ociule"]
-filename: learnpython-ro.py
+filename: learnpythonlegacy-ro.py
 lang: ro-ro
 ---
 
