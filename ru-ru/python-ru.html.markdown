@@ -1,5 +1,5 @@
 ---
-language: python3
+language: Python
 lang: ru-ru
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
