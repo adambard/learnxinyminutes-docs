@@ -2,7 +2,7 @@
 language: yaml
 filename: learnyaml.yaml
 contributors:
-- [Adam Brenecki, 'https://github.com/adambrenecki']
+- [Leigh Brenecki, 'https://leigh.net.au']
 - [Suhas SG, 'https://github.com/jargnar']
 ---
 

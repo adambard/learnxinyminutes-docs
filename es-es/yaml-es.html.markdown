@@ -3,7 +3,7 @@ language: yaml
 lang: es-es
 filename: learnyaml-es.yaml
 contributors:
-  - ["Adam Brenecki", "https://github.com/adambrenecki"]
+  - ["Leigh Brenecki", "https://github.com/adambrenecki"]
   - ["Everardo Medina","https://github.com/everblut"]
 translators:
   - ["Daniel Zendejas","https://github.com/DanielZendejas"]
