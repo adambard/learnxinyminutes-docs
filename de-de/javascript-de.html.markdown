@@ -1,7 +1,7 @@
 ---
 language: javascript
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
 translators:
     - ["ggb", "http://www.ideen-und-soehne.de"]
 filename: learnjavascript-de.js
@@ -13,7 +13,7 @@ JavaScript wurde im Jahr 1995 von Brendan Eich bei Netscape entwickelt. Ursprün
 
 Dabei ist JavaScript inzwischen nicht mehr auf Browser beschränkt: Node.js, ein Projekt, das eine eigene Laufzeitumgebung auf Grundlage von Google Chromes V8 mitbringt, wird derzeit immer populärer.
 
-Feedback ist herzlich Willkommen! Der ursprüngliche Autor ist unter [@adambrenecki](https://twitter.com/adambrenecki) oder [adam@brenecki.id.au](mailto:adam@brenecki.id.au) zu erreichen. Der Übersetzer unter [gregorbg@web.de](mailto:gregorbg@web.de).
+Feedback ist herzlich Willkommen! Der ursprüngliche Autor ist unter [@excitedleigh](https://twitter.com/excitedleigh) oder [l@leigh.net.au](mailto:l@leigh.net.au) zu erreichen. Der Übersetzer unter [gregorbg@web.de](mailto:gregorbg@web.de).
 
 ```js
 // Kommentare werden wie in C gesetzt: Einzeilige Kommentare starten mit zwei 

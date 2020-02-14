@@ -1,5 +1,5 @@
 ---
-language: python
+language: Python 2 (legacy)
 lang: uk-ua
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
@@ -10,7 +10,7 @@ contributors:
     - ["habi", "http://github.com/habi"]
 translators:
     - ["Oleh Hromiak", "https://github.com/ogroleg"]
-filename: learnpython-ua.py
+filename: learnpythonlegacy-ua.py
 ---
 
 Мову Python створив Гвідо ван Россум на початку 90-х. Наразі це одна з 

@@ -2,7 +2,7 @@
 language: yaml
 filename: learnyaml-ru.yaml
 contributors:
-- [Adam Brenecki, 'https://github.com/adambrenecki']
+- [Leigh Brenecki, 'https://github.com/adambrenecki']
 - [Suhas SG, 'https://github.com/jargnar']
 translators:
 - [Sergei Babin, 'https://github.com/serzn1']

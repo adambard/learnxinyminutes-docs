@@ -1,5 +1,5 @@
 ---
-language: python3
+language: Python
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
@@ -7,7 +7,7 @@ contributors:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
 translators:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
-filename: learnpython3-cz.py
+filename: learnpython-cz.py
 lang: cs-cz
 ---
 
@@ -17,7 +17,7 @@ Zamiloval jsem si Python pro jeho syntaktickou čistotu - je to vlastně spustit
 Vaše zpětná vazba je vítána! Můžete mě zastihnout na [@louiedinh](http://twitter.com/louiedinh) nebo louiedinh [at] [email od googlu] anglicky,
 autora českého překladu pak na [@tbedrich](http://twitter.com/tbedrich) nebo ja [at] tbedrich.cz
 
-Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit starší Python 2.7](http://learnxinyminutes.com/docs/python/).
+Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit starší Python 2.7](http://learnxinyminutes.com/docs/pythonlegacy/).
 
 ```python
 

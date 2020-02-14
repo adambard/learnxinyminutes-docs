@@ -1,7 +1,7 @@
 ---
 language: yaml
 contributors:
-  - ["Adam Brenecki", "https://github.com/adambrenecki"]
+  - ["Leigh Brenecki", "https://github.com/adambrenecki"]
 translators:
   - ["Zach Zhang", "https://github.com/checkcheckzz"]
   - ["Jiang Haiyun", "https://github.com/haiiiiiyun"]

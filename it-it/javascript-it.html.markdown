@@ -1,7 +1,7 @@
 ---
 language: javascript
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["vinniec", "https://github.com/vinniec"]

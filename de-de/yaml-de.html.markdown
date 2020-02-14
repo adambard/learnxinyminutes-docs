@@ -1,7 +1,7 @@
 ---
 language: yaml
 contributors:
-  - ["Adam Brenecki", "https://github.com/adambrenecki"]
+  - ["Leigh Brenecki", "https://github.com/adambrenecki"]
 translators:
   - ["Ruben M.", "https://github.com/switchhax"]
 filename: learnyaml-de.yaml

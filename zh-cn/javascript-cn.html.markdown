@@ -4,7 +4,7 @@ category: language
 name: javascript
 filename: javascript-zh.js
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
@@ -17,8 +17,8 @@ Javascript 于 1995 年由网景公司的 Brendan Eich 发明。最初它作为�
 不过，Javascript 不仅用于网页浏览器，一个名为 Node.js 的项目提供了面向 Google Chrome V8 引擎的独立运行时环境，它正在变得越来越流行。
 
 很欢迎来自您的反馈，您可以通过下列方式联系到我：
-[@adambrenecki](https://twitter.com/adambrenecki), 或者
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au).
+[@ExcitedLeigh](https://twitter.com/ExcitedLeigh), 或者
+[l@leigh.net.au](mailto:l@leigh.net.au).
 
 ```js
 // 注释方式和C很像，这是单行注释
