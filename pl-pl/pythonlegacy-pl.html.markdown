@@ -1,6 +1,4 @@
 ---
-name: python
-category: language
 language: Python 2 (legacy)
 filename: learnpythonlegacy-pl.py
 contributors:
