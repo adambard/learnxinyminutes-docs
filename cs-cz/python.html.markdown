@@ -1,5 +1,5 @@
 ---
-language: python3
+language: python
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
@@ -7,7 +7,7 @@ contributors:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
 translators:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
-filename: learnpython3-cz.py
+filename: learnpython-cz.py
 lang: cs-cz
 ---
 
