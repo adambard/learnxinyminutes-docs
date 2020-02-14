@@ -1,5 +1,5 @@
 ---
-language: python3
+language: python
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
