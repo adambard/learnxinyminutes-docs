@@ -1,29 +1,36 @@
 ---
-language: python
+language: Python
 contributors:
-    - ["Louie Dinh", "http://ldinh.ca"]
+    - ["Louie Dinh", "http://pythonpracticeprojects.com"]
+    - ["Steven Basart", "http://github.com/xksteven"]
+    - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["Zachary Ferguson", "http://github.com/zfergus2"]
 translators:
-    - ["Vilson Vieira", "http://automata.cc"]
+    - ["Paulo Henrique Rodrigues Pinheiro", "http://www.sysincloud.it"]
+    - ["Monique Baptista", "https://github.com/bfmonique"]
 lang: pt-br
 filename: learnpython-pt.py
 ---
 
-Python foi criado por Guido Van Rossum no começo dos anos 90. Atualmente é uma
-das linguagens de programação mais populares. Eu me apaixonei por Python, por
-sua clareza de sintaxe. É basicamente pseudocódigo executável.
+Python foi criada por Guido Van Rossum nos anos 1990. Ela é atualmente uma
+das linguagens mais populares existentes. Eu me apaixonei por
+Python por sua clareza sintática. É praticamente pseudocódigo executável.
 
-Comentários serão muito apreciados! Você pode me contactar em
-[@louiedinh](http://twitter.com/louiedinh) ou louiedinh [arroba]
-[serviço de email do google]
+Opniões são muito bem vindas. Você pode encontrar-me em
+[@louiedinh](http://twitter.com/louiedinh) ou louiedinh [em]
+[serviço de e-mail do google].
 
-Nota: Este artigo usa Python 2.7 especificamente, mas deveria ser aplicável a
-qualquer Python 2.x. Logo haverá uma versão abordando Python 3!
+Observação: Este artigo trata de Python 3 especificamente. Verifique
+[aqui](http://learnxinyminutes.com/docs/pt-br/python-pt/) se você pretende
+aprender o velho Python 2.7.
 
 ```python
-# Comentários de uma linha começam com cerquilha (ou sustenido)
+
+# Comentários em uma única linha começam com uma cerquilha (também conhecido por sustenido).
+
 """ Strings de várias linhas podem ser escritas
     usando três ", e são comumente usadas
-    como comentários
+    como comentários.
 """
 
 ####################################################
@@ -31,287 +38,385 @@ qualquer Python 2.x. Logo haverá uma versão abordando Python 3!
 ####################################################
 
 # Você usa números normalmente
-3 #=> 3
+3  # => 3
 
-# Operadores matemáticos são aqueles que você já está acostumado
-1 + 1 #=> 2
-8 - 1 #=> 7
-10 * 2 #=> 20
-35 / 5 #=> 7
+# Matemática é como você espera que seja
+1 + 1   # => 2
+8 - 1   # => 7
+10 * 2  # => 20
 
-# A divisão é um pouco estranha. A divisão de números inteiros arredonda
-# para baixo o resultado, automaticamente
-5 / 2 #=> 2
+# Números são inteiros por padrão, exceto na divisão, que retorna número
+# de ponto flutuante (float).
+35 / 5  # => 7.0
 
-# Para concertar a divisão, precisamos aprender sobre números de ponto
-# flutuante (conhecidos como 'float').
-2.0     # Isso é um 'float'
-11.0 / 4.0 #=> 2.75 ahhh... muito melhor
+# O resultado da divisão inteira arredonda para baixo tanto para números
+# positivos como para negativos.
+5 // 3       # => 1
+5.0 // 3.0   # => 1.0 # funciona em float também
+-5 // 3      # => -2
+-5.0 // 3.0  # => -2.0
 
-# Forçamos a precedência de operadores usando parênteses
-(1 + 3) * 2 #=> 8
+# Quando você usa um float, o resultado é float.
+3 * 2.0  # => 6.0
 
-# Valores booleanos (ou 'boolean') são também tipos primitivos
+# operador módulo
+7 % 3  # => 1
+
+# Exponenciação (x**y, x elevado à potência y)
+2**4  # => 16
+
+# Determine a precedência usando parênteses
+(1 + 3) * 2  # => 8
+
+# Valores lógicos são primitivos (Atenção à primeira letra maiúscula)
 True
 False
 
-# Negamos usando 'not'
-not True #=> False
-not False #=> True
+# negação lógica com not
+not True   # => False
+not False  # => True
 
-# Testamos igualdade usando '=='
-1 == 1 #=> True
-2 == 1 #=> False
+# Operadores lógicos
+# Observe que "and" e "or" são sensíveis a maiúsculas e minúsculas
+True and False  # => False
+False or True   # => True
 
-# E desigualdade com '!='
-1 != 1 #=> False
-2 != 1 #=> True
+# Observe a utilização de operadores lógicos com números inteiros
+0 and 2     # => 0
+-5 or 0     # => -5
+0 == False  # => True
+2 == True   # => False
+1 == True   # => True
+
+# Igualdade é ==
+1 == 1  # => True
+2 == 1  # => False
+
+# Diferença é !=
+1 != 1  # => False
+2 != 1  # => True
 
 # Mais comparações
-1 < 10 #=> True
-1 > 10 #=> False
-2 <= 2 #=> True
-2 >= 2 #=> True
+1 < 10  # => True
+1 > 10  # => False
+2 <= 2  # => True
+2 >= 2  # => True
 
-# As comparações podem ser encadeadas!
-1 < 2 < 3 #=> True
-2 < 3 < 2 #=> False
+# Comparações podem ser agrupadas
+1 < 2 < 3  # => True
+2 < 3 < 2  # => False
+
+# 'is' verifica se duas variáveis representam o mesmo endereço
+# na memória; '==' verifica se duas variáveis têm o mesmo valor
+a = [1, 2, 3, 4]  # Referência a uma nova lista, [1, 2, 3, 4]
+b = a             # b referencia o que está referenciado por a
+b is a            # => True, a e b referenciam o mesmo objeto
+b == a            # => True, objetos a e b tem o mesmo conteúdo
+b = [1, 2, 3, 4]  # Referência a uma nova lista, [1, 2, 3, 4]
+b is a            # => False, a e b não referenciam o mesmo objeto
+b == a            # => True, objetos a e b tem o mesmo conteúdo
 
 # Strings são criadas com " ou '
-"Isso é uma string."
-'Isso também é uma string.'
+"Isto é uma string."
+'Isto também é uma string.'
 
-# Strings podem ser somadas (ou melhor, concatenadas)!
-"Olá " + "mundo!" #=> "Olá mundo!"
+# Strings também podem ser somadas! Mas tente não fazer isso.
+"Olá " + "mundo!"  # => "Olá mundo!"
+# Strings podem ser somadas sem usar o '+'
+"Olá " "mundo!"    # => "Olá mundo!"
 
-# Uma string pode ser tratada como uma lista de caracteres
-"Esta é uma string"[0] #=> 'E'
+# Uma string pode ser manipulada como se fosse uma lista de caracteres
+"Isso é uma string"[0]  # => 'I'
 
-# O caractere % pode ser usado para formatar strings, desta forma:
-"%s podem ser %s" % ("strings", "interpoladas")
+# .format pode ser usado para formatar strings, dessa forma:
+"{} podem ser {}".format("Strings", "interpoladas")  # => "Strings podem ser interpoladas"
 
-# Um jeito novo de formatar strings é usando o método 'format'.
-# Esse método é o jeito mais usado
-"{0} podem ser {1}".format("strings", "formatadas")
-# Você pode usar palavras-chave (ou 'keywords') se você não quiser contar.
-"{nome} quer comer {comida}".format(nome="João", comida="lasanha")
+# Você pode repetir os argumentos para digitar menos.
+"Seja ágil {0}, seja rápido {0}, salte sobre o {1} {0}".format("Jack", "castiçal")
+# => "Seja ágil Jack, seja rápido Jack, salte sobre o castiçal Jack."
 
-# 'None' é um objeto
-None #=> None
+# Você pode usar palavras-chave se quiser contar.
+"{nome} quer comer {comida}".format(nome="Beto", comida="lasanha")  # => "Beto quer comer lasanha"
 
-# Não use o operador de igualdade `==` para comparar objetos com 'None'
-# Ao invés disso, use `is`
-"etc" is None #=> False
-None is None  #=> True
+# Se você precisa executar seu código Python3 com um interpretador Python 2.5 ou acima, você pode usar a velha forma para formatação de texto:
+"%s podem ser %s da forma %s" % ("Strings", "interpoladas", "antiga")  # => "Strings podem ser interpoladas da forma antiga"
 
-# O operador 'is' teste a identidade de um objeto. Isso não é
-# muito útil quando estamos lidando com valores primitivos, mas é
-# muito útil quando lidamos com objetos.
 
-# None, 0, e strings/listas vazias são todas interpretadas como 'False'.
-# Todos os outros valores são 'True'
-0 == False  #=> True
-"" == False #=> True
+# None é um objeto
+None  # => None
+
+# Não use o operador de igualdade "==" para comparar objetos com None
+# Use "is" para isso. Ele checará pela identidade dos objetos.
+"etc" is None  # => False
+None is None   # => True
+
+# None, 0, e strings/listas/dicionários vazios todos retornam False.
+# Qualquer outra coisa retorna True
+bool(0)   # => False
+bool("")  # => False
+bool([])  # => False
+bool({})  # => False
 
 
 ####################################################
-## 2. Variáveis e Coleções
+## 2. Variáveis e coleções
 ####################################################
 
-# Imprimir na tela é muito fácil
-print "Eu sou o Python. Prazer em te conhecer!"
+# Python tem uma função print
+print("Eu sou o Python. Prazer em conhecer!")  # => Eu sou o Python. Prazer em conhecer!
+
+# Por padrão a função print também imprime o caractere de nova linha ao final.
+# Use o argumento opcional end para mudar o caractere final.
+print("Olá, Mundo", end="!")  # => Olá, Mundo!
+
+# Forma simples para capturar dados de entrada via console
+input_string_var = input("Digite alguma coisa: ") # Retorna o que foi digitado em uma string
+# Observação: Em versões antigas do Python, o método input() era chamado raw_input()
+
+# Não é necessário declarar variáveis antes de iniciá-las
+# É uma convenção usar letras_minúsculas_com_sublinhados
+alguma_variavel = 5
+alguma_variavel  # => 5
+
+# Acessar uma variável que não tenha sido inicializada gera uma exceção.
+# Veja Controle de Fluxo para aprender mais sobre tratamento de exceções.
+alguma_variavel_nao_inicializada  # Gera a exceção NameError
+
+# Listas armazenam sequências
+li = []
+# Você pode iniciar uma lista com valores
+outra_li = [4, 5, 6]
+
+# Adicione conteúdo ao fim da lista com append
+li.append(1)    # li agora é [1]
+li.append(2)    # li agora é [1, 2]
+li.append(4)    # li agora é [1, 2, 4]
+li.append(3)    # li agora é [1, 2, 4, 3]
+# Remova do final da lista com pop
+li.pop()        # => 3 e agora li é [1, 2, 4]
+# Vamos colocá-lo lá novamente!
+li.append(3)    # li agora é [1, 2, 4, 3] novamente.
+
+# Acesse uma lista da mesma forma que você faz com um array
+li[0]   # => 1
+# Acessando o último elemento
+li[-1]  # => 3
+
+# Acessar além dos limites gera um IndexError
+li[4]  # Gera o IndexError
+
+# Você pode acessar vários elementos com a sintaxe de limites
+# Inclusivo para o primeiro termo, exclusivo para o segundo
+li[1:3]   # => [2, 4]
+# Omitindo o final
+li[2:]    # => [4, 3]
+# Omitindo o início
+li[:3]    # => [1, 2, 4]
+# Selecione cada segunda entrada
+li[::2]   # => [1, 4]
+# Tenha uma cópia em ordem invertida da lista
+li[::-1]  # => [3, 4, 2, 1]
+# Use qualquer combinação dessas para indicar limites complexos
+# li[inicio:fim:passo]
+
+# Faça uma cópia profunda de um nível usando limites
+li2 = li[:]  # => li2 = [1, 2, 4, 3] mas (li2 is li) resultará em False.
+
+# Apague elementos específicos da lista com "del"
+del li[2]  # li agora é [1, 2, 3]
+
+# Você pode somar listas
+# Observação: valores em li e other_li não são modificados.
+li + other_li  # => [1, 2, 3, 4, 5, 6]
+
+# Concatene listas com "extend()"
+li.extend(other_li)  # Agora li é [1, 2, 3, 4, 5, 6]
+
+# Verifique se algo existe na lista com "in"
+1 in li  # => True
+
+# Examine  tamanho com "len()"
+len(li)  # => 6
 
 
-# Nós não precisamos declarar variáveis antes de usá-las, basta usar!
-alguma_variavel = 5    # A convenção é usar caixa_baixa_com_sobrescritos
-alguma_variavel #=> 5
-
-# Acessar uma variável que não teve nenhum valor atribuído anteriormente é
-# uma exceção.
-# Veja a seção 'Controle' para aprender mais sobre tratamento de exceção.
-outra_variavel  # Gera uma exceção de erro de nome
-
-# 'if' pode ser usado como uma expressão
-"uepa!" if 3 > 2 else 2 #=> "uepa!"
-
-# Listas armazenam sequências de elementos
-lista = []
-# Você pode inicializar uma lista com valores
-outra_lista = [4, 5, 6]
-
-# Adicione elementos no final da lista usando 'append'
-lista.append(1)    # lista é agora [1]
-lista.append(2)    # lista é agora [1, 2]
-lista.append(4)    # lista é agora [1, 2, 4]
-lista.append(3)    # lista é agora [1, 2, 4, 3]
-# Remova elementos do fim da lista usando 'pop'
-lista.pop()        #=> 3 e lista é agora [1, 2, 4]
-# Vamos adicionar o elemento novamente
-lista.append(3)    # lista agora é [1, 2, 4, 3] novamente.
-
-# Acesse elementos de uma lista através de seu índices
-lista[0] #=> 1
-# Acesse o último elemento com índice negativo!
-lista[-1] #=> 3
-
-# Tentar acessar um elemento fora dos limites da lista gera uma exceção
-# do tipo 'IndexError'
-lista[4] # Gera uma exceção 'IndexError'
-
-# Você pode acessar vários elementos ao mesmo tempo usando a sintaxe de
-# limites
-# (Para quem gosta de matemática, isso é um limite fechado/aberto)
-lista[1:3] #=> [2, 4]
-# Você pode omitir o fim se quiser os elementos até o final da lista
-lista[2:] #=> [4, 3]
-# O mesmo para o início
-lista[:3] #=> [1, 2, 4]
-
-# Remova um elemento qualquer de uma lista usando 'del'
-del lista[2] # lista agora é [1, 2, 3]
-
-# Você pode somar listas (obs: as listas originais não são modificadas)
-lista + outra_lista #=> [1, 2, 3, 4, 5, 6]
-
-# Você também pode concatenar usando o método 'extend' (lista será modificada!)
-lista.extend(outra_lista) # Agora lista é [1, 2, 3, 4, 5, 6]
-
-# Para checar se um elemento pertence a uma lista, use 'in'
-1 in lista #=> True
-
-# Saiba quantos elementos uma lista possui com 'len'
-len(lista) #=> 6
-
-
-# Tuplas são iguais a listas, mas são imutáveis
+# Tuplas são como l istas, mas imutáveis.
 tup = (1, 2, 3)
-tup[0] #=> 1
-tup[0] = 3  # Isso gera uma exceção do tipo TypeError
+tup[0]      # => 1
+tup[0] = 3  # Gera um TypeError
 
-# Você pode fazer nas tuplas todas aquelas coisas fez com a lista
-len(tup) #=> 3
-tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
-tup[:2] #=> (1, 2)
-2 in tup #=> True
+# Observe que uma tupla de tamanho um precisa ter uma vírgula depois do
+# último elemento mas tuplas de outros tamanhos, mesmo vazias, não precisa,.
+type((1))   # => <class 'int'>
+type((1,))  # => <class 'tuple'>
+type(())    # => <class 'tuple'>
 
-# Você pode 'desempacotar' tuplas (ou listas) em variáveis, associando cada
-# elemento da tupla/lista a uma variável correspondente
-a, b, c = (1, 2, 3)     # a agora é 1, b agora é 2, c agora é 3
-# Tuplas são criadas por padrão, mesmo se você não usar parênteses
+# Você pode realizar com tuplas a maior parte das operações que faz com listas
+len(tup)         # => 3
+tup + (4, 5, 6)  # => (1, 2, 3, 4, 5, 6)
+tup[:2]          # => (1, 2)
+2 in tup         # => True
+
+# Você pode desmembrar tuplas (ou listas) em variáveis.
+a, b, c = (1, 2, 3)  # a é 1, b é 2 e c é 3
+# Por padrão, tuplas são criadas se você não coloca parêntesis.
 d, e, f = 4, 5, 6
-# Sabendo disso, veja só como é fácil trocar os valores de duas variáveis!
-e, d = d, e     # d agora é 5, e agora é 4
+# Veja como é fácil permutar dois valores
+e, d = d, e  # d é 5, e é 4
+
+# Dicionários armazenam mapeamentos
+empty_dict = {}
+# Aqui está um dicionário preenchido na definição da referência
+filled_dict = {"um": 1, "dois": 2, "três": 3}
+
+# Observe que chaves para dicionários devem ser tipos imutáveis. Isto é para
+# assegurar que a chave pode ser convertida para uma valor hash constante para
+# buscas rápidas.
+# Tipos imutáveis incluem inteiros, flotas, strings e tuplas.
+invalid_dict = {[1,2,3]: "123"}  # => Gera um TypeError: unhashable type: 'list'
+valid_dict = {(1,2,3):[1,2,3]}   # Já os valores, podem ser de qualquer tipo.
+
+# Acesse valores com []
+filled_dict["um"]  # => 1
+
+# Acesse todas as chaves como um iterável com "keys()". É necessário encapsular
+# a chamada com um list() para transformá-las em uma lista. Falaremos sobre isso
+# mais adiante. Observe que a ordem de uma chave de dicionário não é garantida.
+# Por isso, os resultados aqui apresentados podem não ser exatamente como os
+# aqui apresentados.
+list(filled_dict.keys())  # => ["três", "dois", "um"]
 
 
-# Dicionários armazenam 'mapeamentos' (do tipo chave-valor)
-dicionario_vazio = {}
-# Aqui criamos um dicionário já contendo valores
-dicionario = {"um": 1, "dois": 2, "três": 3}
-
-# Acesse valores usando []
-dicionario["um"] #=> 1
-
-# Retorna uma lista com todas as chaves do dicionário
-dicionario.keys() #=> ["três", "dois", "um"]
-# Nota: A ordem das chaves não é garantida.
-# O resultado no seu interpretador não necessariamente será igual a esse.
-
-# Retorna uma lista com todos os valores do dicionário
-dicionario.values() #=> [3, 2, 1]
-# Nota: A mesma nota acima sobre a ordenação é válida aqui.
-
-# Veja se uma chave qualquer está em um dicionário usando 'in'
-"um" in dicionario #=> True
-1 in dicionario #=> False
-
-# Tentar acessar uma chave que não existe gera uma exceção do tipo 'KeyError'
-dicionario["quatro"] # Gera uma exceção KeyError
-
-# Você pode usar o método 'get' para evitar gerar a exceção 'KeyError'.
-# Ao invés de gerar essa exceção, irá retornar 'None' se a chave não existir.
-dicionario.get("um") #=> 1
-dicionario.get("quatro") #=> None
-# O método 'get' suporta um argumento que diz qual valor deverá ser
-# retornado se a chave não existir (ao invés de 'None').
-dicionario.get("um", 4) #=> 1
-dicionario.get("quatro", 4) #=> 4
-
-# O método 'setdefault' é um jeito seguro de adicionar um novo par
-# chave-valor a um dicionário, associando um valor padrão imutável à uma chave
-dicionario.setdefault("cinco", 5) # dicionario["cinco"] é definido como 5
-dicionario.setdefault("cinco", 6) # dicionario["cinco"] ainda é igual a 5
+# Acesse todos os valores de um iterável com "values()". Novamente, é
+# necessário encapsular ele com list() para não termos um iterável, e sim os
+# valores. Observe que, como foi dito acima, a ordem dos elementos não é
+# garantida.
+list(filled_dict.values())  # => [3, 2, 1]
 
 
-# Conjuntos (ou sets) armazenam ... bem, conjuntos
-# Nota: lembre-se que conjuntos não admitem elementos repetidos!
-conjunto_vazio = set()
-# Podemos inicializar um conjunto com valores
-conjunto = set([1, 2, 2, 3, 4]) # conjunto é set([1, 2, 3, 4]), sem repetição!
+# Verifique a existência de chaves em um dicionário com "in"
+"um" in filled_dict  # => True
+1 in filled_dict      # => False
 
-# Desde o Python 2.7, {} pode ser usado para declarar um conjunto
-conjunto = {1, 2, 2, 3, 4} # => {1 2 3 4}
+# Acessar uma chave inexistente gera um KeyError
+filled_dict["quatro"]  # KeyError
 
-# Adicione mais ítens a um conjunto com 'add'
-conjunto.add(5) # conjunto agora é {1, 2, 3, 4, 5}
+# Use o método "get()" para evitar um KeyError
+filled_dict.get("um")      # => 1
+filled_dict.get("quatro")     # => None
+# O método get permite um parâmetro padrão para quando não existir a chave
+filled_dict.get("um", 4)   # => 1
+filled_dict.get("quatro", 4)  # => 4
 
-# Calcule a intersecção de dois conjuntos com &
-outro_conj = {3, 4, 5, 6}
-conjunto & outro_conj #=> {3, 4, 5}
+# "setdefault()" insere em dicionário apenas se a dada chave não existir
+filled_dict.setdefault("cinco", 5)  # filled_dict["cinco"] tem valor 5
+filled_dict.setdefault("cinco", 6)  # filled_dict["cinco"] continua 5
 
-# Calcule a união de dois conjuntos com |
-conjunto | outro_conj #=> {1, 2, 3, 4, 5, 6}
+# Inserindo em um dicionário
+filled_dict.update({"quatro":4})  # => {"um": 1, "dois": 2, "três": 3, "quatro": 4}
+#filled_dict["quatro"] = 4        #outra forma de inserir em um dicionário
 
-# E a diferença entre dois conjuntos com -
-{1,2,3,4} - {2,3,5} #=> {1, 4}
+# Remova chaves de um dicionário com del
+del filled_dict["um"]  # Remove a chave "um" de filled_dict
 
-# Veja se um elemento existe em um conjunto usando 'in'
-2 in conjunto #=> True
-10 in conjunto #=> False
+
+# Armazenamento em sets... bem, são conjuntos
+empty_set = set()
+# Inicializa um set com alguns valores. Sim, ele parece um dicionário. Desculpe.
+some_set = {1, 1, 2, 2, 3, 4}  # some_set agora é {1, 2, 3, 4}
+
+# Da mesma forma que chaves em um dicionário, elementos de um set devem ser
+# imutáveis.
+invalid_set = {[1], 1}  # => Gera um TypeError: unhashable type: 'list'
+valid_set = {(1,), 1}
+
+# Pode definir novas variáveis para um conjunto
+filled_set = some_set
+
+# Inclua mais um item no set
+filled_set.add(5)  # filled_set agora é {1, 2, 3, 4, 5}
+
+# Faça interseção de conjuntos com &
+other_set = {3, 4, 5, 6}
+filled_set & other_set  # => {3, 4, 5}
+
+# Faça união de conjuntos com |
+filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
+
+# Faça a diferença entre conjuntos com -
+{1, 2, 3, 4} - {2, 3, 5}  # => {1, 4}
+
+# Verifique a existência em um conjunto com in
+2 in filled_set   # => True
+10 in filled_set  # => False
+
 
 
 ####################################################
-## 3. Controle
+## 3. Controle de fluxo e iteráveis
 ####################################################
 
-# Para começar, vamos apenas criar uma variável
-alguma_var = 5
+# Iniciemos um variável
+some_var = 5
 
-# Aqui está uma expressão 'if'. Veja como a identação é importante em Python!
-# Esses comandos irão imprimir "alguma_var é menor que 10"
-if alguma_var > 10:
-    print "some_var é maior que 10."
-elif some_var < 10:    # Esse 'elif' é opcional
-    print "some_var é menor que 10."
-else:           # Esse 'else' também é opcional
-    print "some_var é igual a 10."
+# Aqui está uma expressão if. Indentação é significante em python!
+# imprime "somevar é menor que10"
+if some_var > 10:
+    print("some_var é absolutamente maior que 10.")
+elif some_var < 10:    # Esta cláusula elif é opcional.
+    print("some_var é menor que 10.")
+else:                  # Isto também é opcional.
+    print("some_var é, de fato, 10.")
 
 
 """
-Laços (ou loops) 'for' iteram em listas.
-Irá imprimir:
+Laços for iteram sobre listas
+imprime:
     cachorro é um mamífero
     gato é um mamífero
     rato é um mamífero
 """
 for animal in ["cachorro", "gato", "rato"]:
-    # Você pode usar % para interpolar strings formatadas
-    print "%s é um mamífero" % animal
-    
+    # Você pode usar format() para interpolar strings formatadas
+    print("{} é um mamífero".format(animal))
+
 """
-A função `range(um número)` retorna uma lista de números
-do zero até o número dado.
-Irá imprimir:
+"range(número)" retorna um iterável de números
+de zero até o número escolhido
+imprime:
     0
     1
     2
     3
 """
 for i in range(4):
-    print i
+    print(i)
 
 """
-Laços 'while' executam enquanto uma condição dada for verdadeira.
-Irá imprimir:
+"range(menor, maior)" gera um iterável de números
+começando pelo menor até o maior
+imprime:
+    4
+    5
+    6
+    7
+"""
+for i in range(4, 8):
+    print(i)
+
+"""
+"range(menor, maior, passo)" retorna um iterável de números
+começando pelo menor número até o maior númeno, pulando de
+passo em passo. Se o passo não for indicado, o valor padrão é um.
+imprime:
+    4
+    6
+"""
+for i in range(4, 8, 2):
+    print(i)
+"""
+
+Laços while executam até que a condição não seja mais válida.
+imprime:
     0
     1
     2
@@ -319,143 +424,221 @@ Irá imprimir:
 """
 x = 0
 while x < 4:
-    print x
-    x += 1  # Isso é um atalho para a expressão x = x + 1
+    print(x)
+    x += 1  # Maneira mais curta para for x = x + 1
 
-# Tratamos excessões usando o bloco try/except
-# Funciona em Python 2.6 e versões superiores:
-
+# Lide com exceções com um bloco try/except
 try:
-    # Use 'raise' para gerar um erro
-    raise IndexError("Isso é um erro de índice")
+    # Use "raise" para gerar um erro
+    raise IndexError("Isto é um erro de índice")
 except IndexError as e:
-    pass    # Pass é um operador que não faz nada, deixa passar.
-            # Usualmente você iria tratar a exceção aqui...
+    pass                 # Pass é um não-operador. Normalmente você usa algum código de recuperação aqui.
+except (TypeError, NameError):
+    pass                 # Varias exceções podem ser gerenciadas, se necessário.
+else:                    # Cláusula opcional para o bloco try/except. Deve estar após todos os blocos de exceção.
+    print("Tudo certo!")   # Executa apenas se o código em try não gera exceção
+finally:                 #  Sempre é executado
+    print("Nós podemos fazer o código de limpeza aqui.")
+
+# Ao invés de try/finally para limpeza você pode usar a cláusula with
+with open("myfile.txt") as f:
+    for line in f:
+        print(line)
+
+# Python provê uma abstração fundamental chamada Iterável.
+# Um iterável é um objeto que pode ser tratado como uma sequência.
+# O objeto retornou a função range, um iterável.
+
+filled_dict = {"um": 1, "dois": 2, "três": 3}
+our_iterable = filled_dict.keys()
+print(our_iterable)  # => range(1,10). Esse é um objeto que implementa nossa interface iterável.
+
+# Nós podemos percorrê-la.
+for i in our_iterable:
+    print(i)  # Imprime um, dois, três
+
+# Mas não podemos acessar os elementos pelo seu índice.
+our_iterable[1]  # Gera um TypeError
+
+# Um iterável é um objeto que sabe como criar um iterador.
+our_iterator = iter(our_iterable)
+
+# Nosso iterador é um objeto que pode lembrar o estado enquanto nós o percorremos.
+# Nós acessamos o próximo objeto com "next()".
+next(our_iterator)  # => "um"
+
+# Ele mantém o estado enquanto nós o percorremos.
+next(our_iterator)  # => "dois"
+next(our_iterator)  # => "três"
+
+# Após o iterador retornar todos os seus dados, ele gera a exceção StopIterator
+next(our_iterator)  # Gera StopIteration
+
+# Você pode capturar todos os elementos de um iterador aplicando list() nele.
+list(filled_dict.keys())  # => Retorna ["um", "dois", "três"]
 
 
 ####################################################
 ## 4. Funções
 ####################################################
 
-# Use 'def' para definir novas funções
-def soma(x, y):
-    print "x é %s e y é %s" % (x, y)
-    return x + y    # Retorne valores usando 'return'
+# Use "def" para criar novas funções.
+def add(x, y):
+    print("x é {} e y é {}".format(x, y))
+    return x + y  # Retorne valores com a cláusula return
 
 # Chamando funções com parâmetros
-soma(5, 6) #=> imprime "x é 5 e y é 6" e retorna o valor 11
+add(5, 6)  # => imprime "x é 5 e y é 6" e retorna 11
 
-# Um outro jeito de chamar funções é especificando explicitamente os valores
-# de cada parâmetro com chaves
-soma(y=6, x=5)   # Argumentos com chaves podem vir em qualquer ordem.
+# Outro meio de chamar funções é com argumentos nomeados
+add(y=6, x=5)  # Argumentos nomeados podem aparecer em qualquer ordem.
 
-# Você pode definir funções que recebem um número qualquer de argumentos
-# (respeitando a sua ordem)
+# Você pode definir funções que pegam um número variável de argumentos
+# posicionais
 def varargs(*args):
     return args
 
-varargs(1, 2, 3) #=> (1,2,3)
+varargs(1, 2, 3)  # => (1, 2, 3)
+
+# Você pode definir funções que pegam um número variável de argumentos nomeados
+# também
+def keyword_args(**kwargs):
+    return kwargs
+
+# Vamos chamá-lo para ver o que acontece
+keyword_args(peh="grande", lago="ness")  # => {"peh": "grande", "lago": "ness"}
 
 
-# Você também pode definir funções que recebem um número qualquer de argumentos
-# com chaves
-def args_com_chaves(**ch_args):
-    return ch_args
-
-# Vamos chamar essa função para ver o que acontece
-args_com_chaves(pe="grande", lago="Ness") #=> {"pe": "grande", "lago": "Ness"}
-
-# Você pode fazer as duas coisas ao mesmo tempo, se desejar
-def todos_args(*args, **ch_wargs):
-    print args
-    print ch_args
+# Você pode fazer ambos simultaneamente, se você quiser
+def all_the_args(*args, **kwargs):
+    print(args)
+    print(kwargs)
 """
-todos_args(1, 2, a=3, b=4) imprime:
+all_the_args(1, 2, a=3, b=4) imprime:
     (1, 2)
     {"a": 3, "b": 4}
 """
 
-# Quando você chamar funções, pode fazer o oposto do que fizemos até agora!
-# Podemos usar * para expandir tuplas de argumentos e ** para expandir
-# dicionários de argumentos com chave.
+# Quando chamar funções, você pode fazer o oposto de args/kwargs!
+# Use * para expandir tuplas e use ** para expandir dicionários!
 args = (1, 2, 3, 4)
-ch_args = {"a": 3, "b": 4}
-todos_args(*args)  # equivalente a todos_args(1, 2, 3, 4)
-todos_args(**ch_args) # equivalente a todos_args(a=3, b=4)
-todos_args(*args, **ch_args) # equivalente a todos_args(1, 2, 3, 4, a=3, b=4)
+kwargs = {"a": 3, "b": 4}
+all_the_args(*args)            # equivalente a foo(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalente a foo(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalente a foo(1, 2, 3, 4, a=3, b=4)
 
-# Em Python, funções são elementos de primeira ordem (são como objetos, 
-# strings ou números)
-def cria_somador(x):
-    def somador(y):
+# Retornando múltiplos valores (com atribuição de tuplas)
+def swap(x, y):
+    return y, x  # Retorna múltiplos valores como uma tupla sem os parêntesis.
+                 # (Observação: os parêntesis foram excluídos mas podem estar
+                 # presentes)
+
+x = 1
+y = 2
+x, y = swap(x, y)     # => x = 2, y = 1
+# (x, y) = swap(x,y)  # Novamente, os parêntesis foram excluídos mas podem estar presentes.
+
+# Escopo de função
+x = 5
+
+def setX(num):
+    # A variável local x não é a mesma variável global x
+    x = num    # => 43
+    print (x)  # => 43
+
+def setGlobalX(num):
+    global x
+    print (x)  # => 5
+    x = num    # variável global x agora é 6
+    print (x)  # => 6
+
+setX(43)
+setGlobalX(6)
+
+
+# Python tem funções de primeira classe
+def create_adder(x):
+    def adder(y):
         return x + y
-    return somador
+    return adder
 
-soma_10 = cria_somador(10)
-soma_10(3) #=> 13
+add_10 = create_adder(10)
+add_10(3)   # => 13
 
-# Desta forma, existem também funções anônimas
-(lambda x: x > 2)(3) #=> True
+# Também existem as funções anônimas
+(lambda x: x > 2)(3)                  # => True
+(lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
 
-# E existem funções de alta ordem por padrão
-map(soma_10, [1,2,3]) #=> [11, 12, 13]
-filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
-reduce(lambda x, y: x + y, [3, 4, 5, 6, 7]) #=> 25
+# TODO - Fix for iterables
+# Existem funções internas de alta ordem
+map(add_10, [1, 2, 3])          # => [11, 12, 13]
+map(max, [1, 2, 3], [4, 2, 1])  # => [4, 2, 3]
 
-# Nós podemos usar compreensão de listas para mapear e filtrar também
-[soma_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
-[x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
+filter(lambda x: x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
+
+# Nós podemos usar compreensão de lista para interessantes mapas e filtros
+# Compreensão de lista armazena a saída como uma lista que pode ser uma lista
+# aninhada
+[add_10(i) for i in [1, 2, 3]]         # => [11, 12, 13]
+[x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
 ####################################################
 ## 5. Classes
 ####################################################
 
-# Para criar uma nova classe, devemos herdar de 'object'
-class Humano(object):
+
+# Nós usamos o operador "class" para ter uma classe
+class Human:
 
     # Um atributo de classe. Ele é compartilhado por todas as instâncias dessa
-    # classe
-    especie = "H. sapiens"
+    # classe.
+    species = "H. sapiens"
 
-    # Definimos um inicializador básico
-    def __init__(self, nome):
-        # Atribui o valor de argumento dado a um atributo da instância
-        self.nome = nome
+    # Construtor básico, é chamado quando esta classe é instanciada.
+    # Note que dois sublinhados no início e no final de uma identificados
+    # significa objetos ou atributos que são usados pelo python mas vivem em
+    # um namespace controlado pelo usuário. Métodos (ou objetos ou atributos)
+    # como: __init__, __str__, __repr__, etc. são chamados métodos mágicos (ou
+    # algumas vezes chamados métodos dunder - "double underscore")
+    # Você não deve usar nomes assim por sua vontade.
+    def __init__(self, name):
+        @ Atribui o argumento ao atributo da  instância
+        self.name = name
 
-    # Um método de instância. Todos os métodos levam 'self' como primeiro
+    # Um método de instância. Todos os métodos tem "self" como primeiro
     # argumento
-    def diga(self, msg):
-       return "%s: %s" % (self.nome, msg)
+    def say(self, msg):
+        return "{name}: {message}".format(name=self.name, message=msg)
 
     # Um método de classe é compartilhado por todas as instâncias
-    # Eles são chamados passando o nome da classe como primeiro argumento
+    # Eles são chamados com a classe requisitante como primeiro argumento
     @classmethod
-    def get_especie(cls):
-        return cls.especie
+    def get_species(cls):
+        return cls.species
 
     # Um método estático é chamado sem uma referência a classe ou instância
     @staticmethod
-    def ronca():
-        return "*arrrrrrr*"
+    def grunt():
+        return "*grunt*"
 
 
 # Instancie uma classe
-i = Humano(nome="Ivone")
-print i.diga("oi")     # imprime "Ivone: oi"
+i = Human(name="Ian")
+print(i.say("oi"))     # imprime "Ian: oi"
 
 j = Human("Joel")
-print j.say("olá")  #prints out "Joel: olá"
+print(j.say("olá"))  # imprime "Joel: olá"
 
-# Chame nosso método de classe
-i.get_especie() #=> "H. sapiens"
+# Chama nosso método de classe
+i.get_species()  # => "H. sapiens"
 
-# Modifique um atributo compartilhado
-Humano.especie = "H. neanderthalensis"
-i.get_especie() #=> "H. neanderthalensis"
-j.get_especie() #=> "H. neanderthalensis"
+# Altera um atributo compartilhado
+Human.species = "H. neanderthalensis"
+i.get_species()  # => "H. neanderthalensis"
+j.get_species()  # => "H. neanderthalensis"
 
-# Chame o método estático
-Humano.ronca() #=> "*arrrrrrr*"
+# Chama o método estático
+Human.grunt()    # => "*grunt*"
 
 
 ####################################################
@@ -464,46 +647,100 @@ Humano.ronca() #=> "*arrrrrrr*"
 
 # Você pode importar módulos
 import math
-print math.sqrt(16) #=> 4.0
+print(math.sqrt(16))  # => 4.0
 
-# Você pode importar funções específicas de um módulo
+# Você pode importar apenas funções específicas de um módulo
 from math import ceil, floor
-print ceil(3.7)  #=> 4.0
-print floor(3.7) #=> 3.0
+print(ceil(3.7))   # => 4.0
+print(floor(3.7))  # => 3.0
 
-# Você também pode importar todas as funções de um módulo
-# Atenção: isso não é recomendado!
+# Você pode importar todas as funções de um módulo para o namespace atual
+# Atenção: isso não é recomendado
 from math import *
 
-# Você pode usar apelidos para os módulos, encurtando seus nomes
+# Você pode encurtar o nome dos módulos
 import math as m
-math.sqrt(16) == m.sqrt(16) #=> True
+math.sqrt(16) == m.sqrt(16)  # => True
 
-# Módulos em Python são apenas arquivos Python. Você
-# pode escrever o seu próprio módulo e importá-lo. O nome do
-# módulo será o mesmo que o nome do arquivo.
+# Módulos python são apenas arquivos python comuns. Você
+# pode escrever os seus, e importá-los. O nome do
+# módulo é o mesmo nome do arquivo.
 
-# Você pode descobrir quais funções e atributos
-# estão definidos em um módulo qualquer.
+# Você pode procurar que atributos e funções definem um módulo.
 import math
 dir(math)
 
 
+####################################################
+## 7. Avançado
+####################################################
+
+# Geradores podem ajudar você a escrever código "preguiçoso"
+def double_numbers(iterable):
+    for i in iterable:
+        yield i + i
+
+# Um gerador cria valores conforme necessário.
+# Ao invés de gerar e retornar todos os valores de uma só vez ele cria um em
+# cada interação. Isto significa que valores maiores que 15 não serão
+# processados em double_numbers.
+# Nós usamos um sublinhado ao final do nome das variáveis quando queremos usar
+# um nome que normalmente colide com uma palavra reservada do python.
+range_ = range(1, 900000000)
+# Multiplica por 2 todos os números até encontrar um resultado >= 30
+for i in double_numbers(range_):
+    print(i)
+    if i >= 30:
+        break
+
+
+# Decoradores
+# Neste exemplo beg encapsula say
+# beg irá chamar say. Se say_please é verdade então ele irá mudar a mensagem
+# retornada
+from functools import wraps
+
+
+def beg(target_function):
+    @wraps(target_function)
+    def wrapper(*args, **kwargs):
+        msg, say_please = target_function(*args, **kwargs)
+        if say_please:
+            return "{} {}".format(msg, "Por favor! Eu sou pobre :(")
+        return msg
+
+    return wrapper
+
+
+@beg
+def say(say_please=False):
+    msg = "Você me paga uma cerveja?"
+    return msg, say_please
+
+
+print(say())                # Você me paga uma cerveja?
+print(say(say_please=True)) # Você me paga uma cerveja? Por favor! Eu sou pobre :(
 ```
 
 ## Pronto para mais?
 
-### Online e gratuito
+### Free Online
 
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
-* [The Official Docs](http://docs.python.org/2.6/)
+* [Ideas for Python Projects](http://pythonpracticeprojects.com)
+* [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [Python Module of the Week](http://pymotw.com/2/)
+* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Python Course](http://www.python-course.eu/index.php)
+* [First Steps With Python](https://realpython.com/learn/python-first-steps/)
+* [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
+* [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
+* [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
 
-### Livros impressos
+### Dead Tree
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

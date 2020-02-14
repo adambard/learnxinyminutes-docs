@@ -1,9 +1,10 @@
 ---
-language: python
+language: Python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["kultprok", "http:/www.kulturproktologie.de"]
+    - ["matthiaskern", "https://github.com/matthiaskern"]
 filename: learnpython-de.py
 lang: de-de
 ---
@@ -11,13 +12,15 @@ lang: de-de
 Anmerkungen des ursprünglichen Autors:
 Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist heute eine der beliebtesten Sprachen. Ich habe mich in Python wegen seiner syntaktischen Übersichtlichkeit verliebt. Eigentlich ist es ausführbarer Pseudocode.
 
-Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service]
+Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service].
 
-Hinweis: Dieser Beitrag bezieht sich besonders auf Python 2.7, er sollte aber auf Python 2.x anwendbar sein. Haltet Ausschau nach einem Rundgang durch Python 3, der bald erscheinen soll.
+Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/pythonlegacy/) weiter.
 
 ```python
+
 # Einzeilige Kommentare beginnen mit einer Raute (Doppelkreuz)
-""" Mehrzeilige Strings werden mit 
+
+""" Mehrzeilige Strings werden mit
     drei '-Zeichen geschrieben und werden
     oft als Kommentare genutzt.
 """
@@ -33,15 +36,24 @@ Hinweis: Dieser Beitrag bezieht sich besonders auf Python 2.7, er sollte aber au
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
-35 / 5 #=> 7
 
-# Division ist ein wenig kniffliger. Ganze Zahlen werden ohne Rest dividiert
-# und das Ergebnis wird automatisch abgerundet.
-5 / 2 #=> 2
+# Außer Division, welche automatisch Gleitkommazahlen zurückgibt
+35 / 5  # => 7.0
 
-# Um das zu ändern, müssen wir Gleitkommazahlen einführen und benutzen
-2.0     # Das ist eine Gleitkommazahl
-11.0 / 4.0 #=> 2.75 Ahhh...schon besser
+# Eine Division kann mit "//" für positive sowie negative Werte abgerundet werden.
+5 // 3     # => 1
+5.0 // 3.0 # => 1.0 # works on floats too
+-5 // 3  # => -2
+-5.0 // 3.0 # => -2.0
+
+# Benutzt man eine Gleitkommazahl, ist auch das Ergebnis eine solche
+3 * 2.0 # => 6.0
+
+# Der Rest einer Division
+7 % 3 # => 1
+
+# Potenz
+2**4 # => 16
 
 # Rangfolge wird mit Klammern erzwungen
 (1 + 3) * 2 #=> 8
@@ -53,6 +65,18 @@ False
 # Mit not wird negiert
 not True #=> False
 not False #=> True
+
+# Boolesche Operatoren
+# Hinweis: "and" und "or" müssen klein geschrieben werden
+True and False #=> False
+False or True #=> True
+
+# Für die Benutzung von Booleschen Operatoren und ganzen Zahlen
+0 and 2 #=> 0
+-5 or 0 #=> -5
+0 == False #=> True
+2 == True #=> False
+1 == True #=> True
 
 # Gleichheit ist ==
 1 == 1 #=> True
@@ -76,37 +100,45 @@ not False #=> True
 "Das ist ein String."
 'Das ist auch ein String.'
 
-# Strings können addiert werden!
-"Hello " + "world!" #=> "Hello world!"
+# Strings können auch addiert werden! Vermeide dies aber lieber.
+"Hallo " + "Welt!" #=> "Hallo Welt!"
+# Strings können ohne "+" addiert werden
+"Hallo " "welt!"  # => "Hallo Welt!"
 
 # Ein String kann wie eine Liste von Zeichen verwendet werden
 "Das ist ein String"[0] #=> 'D'
 
-# Mit % können Strings formatiert werden, etwa so:
-"%s können %s werden" % ("Strings", "interpoliert")
+# .format kann Strings formatieren
+"{} können {} werden".format("Strings", "formatiert")
 
-# Ein modernerer Weg, um Strings zu formatieren, ist die format-Methode.
-# Diese Methode wird bevorzugt
-"{0} können {1} werden".format("Strings", "formatiert")
+# Schneller geht das mit Wiederholungen
+"{0} mag Spagetthi, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
+#=> "Hans mag Spagetthi, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
+
 # Wir können Schlüsselwörter verwenden, wenn wir nicht abzählen wollen.
 "{name} will {food} essen".format(name="Bob", food="Lasagne")
+#=> "Bob will Lasagne kochen"
+
+#Falls dein Python 3 Code auch unter Python 2.5 oder darunter laufen soll, kann das alte Format benutzt werden:
+"%s können %s werden" % ("Strings", "interpoliert")
+
 
 # None ist ein Objekt
 None #=> None
 
 # Verwendet nicht das Symbol für Gleichheit `==`, um Objekte mit None zu vergleichen
-# Benutzt stattdessen `is`
+# Benutzt stattdessen `is`. Dieser Operator testet Objektidentität
 "etc" is None #=> False
 None is None  #=> True
 
-# Der 'is'-Operator testet Objektidentität. Das ist nicht
-# sehr nützlich, wenn wir mit primitiven Datentypen arbeiten, aber
-# sehr nützlich bei Objekten.
+
 
 # None, 0, und leere Strings/Listen werden alle als False bewertet.
 # Alle anderen Werte sind True
-0 == False  #=> True
-"" == False #=> True
+bool(0)  # => False
+bool("")  # => False
+bool([]) #=> False
+bool({}) #=> False
 
 
 ####################################################
@@ -114,20 +146,16 @@ None is None  #=> True
 ####################################################
 
 # Textausgabe ist sehr einfach
-print "Ich bin Python. Schön, dich kennenzulernen!"
-
+print("Ich bin Python. Schön, dich kennenzulernen!")
 
 # Es gibt keinen Grund, Variablen vor der Zuweisung zu deklarieren.
 some_var = 5    # kleinschreibung_mit_unterstrichen entspricht der Norm
 some_var #=> 5
 
-# Das Ansprechen einer noch nicht deklarierte Variable löst eine Exception aus.
+# Das Ansprechen einer noch nicht deklarierten Variable löst eine Exception aus.
 # Unter "Kontrollstruktur" kann noch mehr über
 # Ausnahmebehandlung erfahren werden.
-some_other_var  # Löst einen NameError aus
-
-# if kann als Ausdruck verwendet werden
-"yahoo!" if 3 > 2 else 2 #=> "yahoo!"
+some_unknown_var  # Löst einen NameError aus
 
 # Listen speichern Sequenzen
 li = []
@@ -150,7 +178,7 @@ li[0] #=> 1
 li[-1] #=> 3
 
 # Bei Zugriffen außerhalb der Liste kommt es jedoch zu einem IndexError
-li[4] # Raises an IndexError
+li[4] # Verursacht einen IndexError
 
 # Wir können uns Ranges mit Slice-Syntax ansehen
 li[1:3] #=> [2, 4]
@@ -158,6 +186,12 @@ li[1:3] #=> [2, 4]
 li[2:] #=> [4, 3]
 # Das Ende auslassen
 li[:3] #=> [1, 2, 4]
+# Jeden Zweiten Eintrag auswählen
+li[::2]   # =>[1, 4]
+# Eine umgekehrte Kopie zurückgeben
+li[::-1]   # => [3, 4, 2, 1]
+# Jegliche Kombination dieser Syntax machen fortgeschrittene Slices möglich
+# li[Start:Ende:Schritt]
 
 # Ein bestimmtes Element mit del aus der Liste entfernen
 del li[2] # li ist jetzt [1, 2, 3]
@@ -191,10 +225,10 @@ a, b, c = (1, 2, 3)     # a ist jetzt 1, b ist jetzt 2 und c ist jetzt 3
 # Tupel werden standardmäßig erstellt, wenn wir uns die Klammern sparen
 d, e, f = 4, 5, 6
 # Es ist kinderleicht zwei Werte zu tauschen
-e, d = d, e     # d is now 5 and e is now 4
+e, d = d, e     # d ist nun 5 und e ist nun 4
 
 
-# Dictionarys (Wörterbucher) speichern Key-Value-Paare
+# Dictionarys (Wörterbucher) speichern Schlüssel-Werte-Paare
 empty_dict = {}
 # Hier ein gefülltes Wörterbuch
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -203,15 +237,15 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 filled_dict["one"] #=> 1
 
 # So holen wir alle Keys (Schlüssel) als Liste
-filled_dict.keys() #=> ["three", "two", "one"]
+list(filled_dict.keys()) #=> ["three", "two", "one"]
 # Hinweis - Die Reihenfolge von Schlüsseln in der Liste ist nicht garantiert.
 # Einzelne Resultate können anders angeordnet sein.
 
 # Alle Values (Werte) als Liste
-filled_dict.values() #=> [3, 2, 1]
+list(filled_dict.values()) #=> [3, 2, 1]
 # Hinweis - Hier gelten dieselben Einschränkungen für die Reihenfolge wie bei Schlüsseln.
 
-# Das Vorhandensein eines Schlüssels im Wörterbuch mit in prüfen
+# Das Vorhandensein eines Schlüssels im Wörterbuch mit "in" prüfen
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
@@ -229,17 +263,24 @@ filled_dict.get("four", 4) #=> 4
 filled_dict.setdefault("five", 5) #filled_dict["five"] wird auf 5 gesetzt
 filled_dict.setdefault("five", 6) #filled_dict["five"] ist noch immer 5
 
+# Einträge zu einem Wörterbuch hinzufügen
+filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
+#filled_dict["four"] = 4  # noch ein Weg, Werte hinzuzufügen
+
+# Schlüssel von einem Wörterbuch entfernen
+del filled_dict["one"]  # Entfert den Schlüssel "one"
+
 
 # Sets speichern Mengen
 empty_set = set()
 # Initialisieren wir ein Set mit ein paar Werten
-some_set = set([1,2,2,3,4]) # some_set ist jetzt set([1, 2, 3, 4])
+some_set = {1, 1, 2, 2, 3, 4} # some_set ist jetzt {1, 2, 3, 4}
 
-# Seit Python 2.7 kann {} benutzt werden, um ein Set zu erstellen
-filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
+# Neue Variablen können einer Menge gleichgesetzt werden
+filled_set = some_set
 
 # Mehr Elemente hinzufügen
-filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
+filled_set.add(5) # filled_set ist jetzt {1, 2, 3, 4, 5}
 
 # Schnittmengen werden mit & gebildet
 other_set = {3, 4, 5, 6}
@@ -257,7 +298,7 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 
 
 ####################################################
-## 3. Kontrollstruktur
+## 3. Kontrollstruktur und Iteratoren
 ####################################################
 
 # Erstellen wir mal eine Variable
@@ -266,11 +307,11 @@ some_var = 5
 # Hier eine if-Anweisung. Die Einrückung ist in Python wichtig!
 # gibt "some_var ist kleiner als 10" aus
 if some_var > 10:
-    print "some_var ist viel größer als 10."
+    print("some_var ist viel größer als 10.")
 elif some_var < 10:    # Dieser elif-Absatz ist optional.
-    print "some_var ist kleiner als 10."
+    print("some_var ist kleiner als 10.")
 else:           # Das hier ist auch optional.
-    print "some_var ist tatsächlich 10."
+    print("some_var ist tatsächlich 10.")
 
 
 """
@@ -281,9 +322,9 @@ Ausgabe:
     maus ist ein Säugetier
 """
 for animal in ["hund", "katze", "maus"]:
-    # Wir können Strings mit % formatieren
-    print "%s  ist ein Säugetier" % animal
-    
+    # Wir können Strings mit format() formatieren
+    print("{}  ist ein Säugetier".format(animal))
+
 """
 `range(Zahl)` gibt eine null-basierte Liste bis zur angegebenen Zahl wieder
 Ausgabe:
@@ -293,7 +334,18 @@ Ausgabe:
     3
 """
 for i in range(4):
-    print i
+    print(i)
+
+"""
+"range(unten, oben)" gibt eine Liste von der unteren Zahl bis zur oberen Zahl aus
+Ausgabe:
+    4
+    5
+    6
+    7
+"""
+for i in range(4, 8):
+    print(i)
 
 """
 While-Schleifen laufen, bis eine Bedingung erfüllt ist.
@@ -305,17 +357,59 @@ Ausgabe:
 """
 x = 0
 while x < 4:
-    print x
+    print(x)
     x += 1  # Kurzform für x = x + 1
 
 # Ausnahmebehandlung mit einem try/except-Block
-
-# Funktioniert in Python 2.6 und höher:
 try:
     # Mit raise wird ein Fehler ausgegeben
     raise IndexError("Das hier ist ein Index-Fehler")
 except IndexError as e:
     pass    # Pass ist nur eine no-op. Normalerweise würden wir hier den Fehler klären.
+except (TypeError, NameError):
+    pass    # Mehrere Fehler können zusammen geklärt werden, falls erforderlich.
+else:   # Optional, hinter allen except-Blöcken
+    print("Keine Probleme!")   # Wird nur ausgeführt, wenn keine Ausnahmen aufgetreten sind
+finally: #  Wird immer ausgeführt
+    print("Hier können wir Ressourcen aufräumen")
+
+# alternativ zu einem try/finally Block um Aufzuräumen:
+with open("meineDatei.txt") as f:
+    for line in f:
+        print(line)
+
+# Python bietet ein fundamentales Konzept der Iteration.
+# Das Objekt, auf das die Iteration, also die Wiederholung einer Methode angewandt wird heißt auf Englisch "iterable".
+# Die range Methode gibt ein solches Objekt aus.
+
+filled_dict = {"one": 1, "two": 2, "three": 3}
+our_iterable = filled_dict.keys()
+print(our_iterable) #=> range(1,10). Dies ist ein "iterable" Objekt.
+
+# Über dieses können  wir auch iterieren
+for i in our_iterable:
+    print(i)    # Gibt one, two, three aus
+
+# Allerdings können wir die einzelnen Elemente nicht mit ihrem index ausgeben
+our_iterable[1]  # TypeError
+
+# Ein iterable ist ein Objekt, das weiß wie es einen Iteratoren erschafft.
+our_iterator = iter(our_iterable)
+
+# Unser Iterator ist ein Objekt, das sich merkt, welchen Status es gerade hat während wir durch es gehen.
+# Das jeweils nächste Objekt bekommen wir mit "next()"
+next(our_iterator)  #=> "one"
+
+# Es hält den vorherigen Status
+next(our_iterator)  #=> "two"
+next(our_iterator)  #=> "three"
+
+# Nachdem alle Daten ausgegeben worden sind, kommt eine StopIterator Ausnahme zurück
+next(our_iterator) # Gibt StopIteration aus
+
+# Alle Elemente können mit "list()" ausgegeben werden
+list(filled_dict.keys())  #=> ["one", "two", "three"]
+
 
 
 ####################################################
@@ -324,7 +418,7 @@ except IndexError as e:
 
 # Mit def neue Funktionen erstellen
 def add(x, y):
-    print "x ist %s und y ist %s" % (x, y)
+    print("x ist %s und y ist %s" % (x, y))
     return x + y    # Werte werden mit return zurückgegeben
 
 # Funktionen mit Parametern aufrufen
@@ -348,10 +442,10 @@ def keyword_args(**kwargs):
 # Rufen wir es mal auf, um zu sehen, was passiert
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
-# Wir können beides gleichzeitig machem, wenn wir wollen
+# Wir können beides gleichzeitig machen, wenn wir wollen
 def all_the_args(*args, **kwargs):
-    print args
-    print kwargs
+    print(args)
+    print(kwargs)
 """
 all_the_args(1, 2, a=3, b=4) Ausgabe:
     (1, 2)
@@ -365,6 +459,25 @@ kwargs = {"a": 3, "b": 4}
 all_the_args(*args) # äquivalent zu foo(1, 2, 3, 4)
 all_the_args(**kwargs) # äquivalent zu foo(a=3, b=4)
 all_the_args(*args, **kwargs) # äquivalent zu  foo(1, 2, 3, 4, a=3, b=4)
+
+
+# Anwendungsbereich von Funktionen
+x = 5
+
+def setX(num):
+    # lokale Variable x ist nicht die globale Variable x
+    x = num # => 43
+    print (x) # => 43
+
+def setGlobalX(num):
+    global x
+    print (x) # => 5
+    x = num # globale Variable x ist jetzt 6
+    print (x) # => 6
+
+setX(43)
+setGlobalX(6)
+
 
 # Python hat First-Class-Funktionen
 def create_adder(x):
@@ -386,72 +499,24 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 
-
 ####################################################
-## 5. Module
-####################################################
-
-# Wir können Module importieren
-import math
-print math.sqrt(16) #=> 4.0
-
-# Wir können auch nur spezielle Funktionen eines Moduls importieren
-from math import ceil, floor
-print ceil(3.7)  #=> 4.0
-print floor(3.7) #=> 3.0
-
-# Wir können auch alle Funktionen eines Moduls importieren
-# Warnung: Dies wird nicht empfohlen
-from math import *
-
-# Wir können Modulnamen abkürzen
-import math as m
-math.sqrt(16) == m.sqrt(16) #=> True
-
-# Module sind in Python nur gewöhnliche Dateien. Wir
-# können unsere eigenen schreiben und importieren. Der Name des 
-# Moduls ist der Dateiname.
-
-# Wir können herausfinden, welche Funktionen und Attribute in einem 
-# Modul definiert sind.
-import math
-dir(math)
-
-# Wenn Sie ein Python-Skript namens math.py im selben Ordner 
-# wie Ihr aktuelles Skript haben, wird die Datei math.py 
-# anstelle des integrierten Python-Moduls geladen.
-# Dies geschieht, weil der lokale Ordner Vorrang
-# vor den in Python integrierten Bibliotheken hat.
-
-
-####################################################
-## 6. Klassen
+## 5. Klassen
 ####################################################
 
-# Wir verwenden das Schlüsselwort "class" um eine Klasse zu erzeugen.
+# Wir bilden die Unterklasse eines Objekts, um Klassen zu erhalten.
 class Human(object):
 
     # Ein Klassenattribut. Es wird von allen Instanzen einer Klasse geteilt
     species = "H. sapiens"
 
-    # Ein simpler Konstruktor, wird aufgerufen, wenn diese Klasse instanziiert wird.
-    # Beachten Sie, dass die doppelten vorangestellten und nachgestellten 
-    # Unterstriche Objekte oder Attribute bezeichnen, die von Python verwendet werden, 
-    # aber in benutzergesteuerten Namespaces leben. 
-    # Methoden (oder Objekte oder Attribute) wie: __init__, __str__, __repr__ usw. 
-    # werden als Sondermethoden (oder manchmal als Dundermethoden bezeichnet) bezeichnet.
-    # Sie sollten solche Namen nicht selbst erfinden.
+    # Ein simpler Konstruktor
     def __init__(self, name):
         # Wir weisen das Argument name dem name-Attribut der Instanz zu
         self.name = name
 
-    # Eine Instanzmethode. Alle Methoden erhalten "self" als erstes Argument.
+    # Eine Instanzmethode. Alle Methoden erhalten self als erstes Argument.
     def say(self, msg):
-       return "%s: %s" % (self.name, msg)
-
-    # Eine weitere Instanzmethode
-    def sing(self):
-        return 'yo... yo... microphone check... one two... one two...'
+        return "{name}: {message}".format(name=self.name, message=msg)
 
     # Eine Klassenmethode wird von allen Instanzen geteilt.
     # Sie werden mit der aufrufenden Klasse als erstem Argument aufgerufen
@@ -464,268 +529,88 @@ class Human(object):
     def grunt():
         return "*grunt*"
 
-    # Eine Eigenschaft (Property) ist wie ein Getter.
-    # Es verwandelt die Methode age() in ein schreibgeschütztes Attribut mit demselben Namen.
-    # Es ist jedoch nicht nötig, triviale Getter und Setter in Python zu schreiben.
-    @property
-    def age(self):
-        return self._age
 
-    # Damit kann die Eigenschaft festgelegt werden
-    @age.setter
-    def age(self, age):
-        self._age = age
+# Eine Instanz einer Klasse erstellen
+i = Human(name="Ian")
+print(i.say("hi"))     # gibt "Ian: hi" aus
 
-    # Damit kann die Eigenschaft gelöscht werden
-    @age.deleter
-    def age(self):
-        del self._age
+j = Human("Joel")
+print(j.say("hello"))  #gibt "Joel: hello" aus
 
-# Wenn ein Python-Interpreter eine Quelldatei liest, führt er den gesamten Code aus.
-# Diese __name__-Prüfung stellt sicher, dass dieser Codeblock nur ausgeführt wird, 
-# wenn dieses Modul das Hauptprogramm ist.
-if __name__ == '__main__':
-    # Eine Instanz einer Klasse erstellen
-    i = Human(name="Ian")
-    i.say("hi")                     # "Ian: hi"
-    j = Human("Joel")
-    j.say("hello")                  # "Joel: hello"
-    # i und j sind Instanzen des Typs Mensch, oder anders ausgedrückt: Sie sind Objekte des Menschen
+# Rufen wir mal unsere Klassenmethode auf
+i.get_species() #=> "H. sapiens"
 
-    # Rufen wir unsere Klassenmethode auf
-    i.say(i.get_species())          # "Ian: H. sapiens"
+# Ändern wir mal das gemeinsame Attribut
+Human.species = "H. neanderthalensis"
+i.get_species() #=> "H. neanderthalensis"
+j.get_species() #=> "H. neanderthalensis"
 
-    # Ändern wir das gemeinsame Attribut
-    Human.species = "H. neanderthalensis"
-    i.say(i.get_species())          # => "Ian: H. neanderthalensis"
-    j.say(j.get_species())          # => "Joel: H. neanderthalensis"
-    
-    # Aufruf der statischen Methode
-    print(Human.grunt())            # => "*grunt*"
+# Aufruf der statischen Methode
+Human.grunt() #=> "*grunt*"
 
-    # Kann keine statische Methode mit Instanz des Objekts aufrufen, 
-    # da i.grunt () automatisch "self" (das Objekt i) als Argument verwendet
-    print(i.grunt())                # => TypeError: grunt() takes 0 positional arguments but 1 was given
-
-    # Die Eigenschaft für diese Instanz aktualisieren
-    i.age = 42
-    # die Eigenschaft auslesen
-    i.say(i.age)                    # => "Ian: 42"
-    j.say(j.age)                    # => "Joel: 0"
-    # die Eigenschaft löschen
-    del i.age
-    # i.age                         # => würde einen AttributeError werfen
-    
-####################################################
-## 6.1 Inheritance
-####################################################
-    
-# Vererbung ermöglicht die Definition neuer untergeordneter Klassen, 
-# die Methoden und Variablen von ihrer übergeordneten Klasse erben.
-
-# Wenn Sie die oben definierte Human-Klasse als Basis- oder Elternklasse verwenden, 
-# können Sie eine untergeordnete Klasse, Superhero, definieren, die die Klassenvariablen 
-# wie "species", "name" und "age" sowie Methoden wie "sing" und "grunzen" aus der Klasse Human erbt. 
-# Die Untergeordnete Klasse kann aber auch eigene Eigenschaften haben.
-
-# Um von der Modularisierung per Datei zu profitieren, können Sie die Klassen 
-# in ihren eigenen Dateien platzieren, z. B. human.py
-
-# Um Funktionen aus anderen Dateien zu importieren, verwenden Sie das folgende Format 
-# from "Dateiname-ohne-Erweiterung" impotr "Funktion-oder-Klasse"
-
-from human import Human
-
-# Geben Sie die übergeordnete(n) Klasse(n) als Parameter für die Klassendefinition an
-class Superhero(Human):
-
-    # Wenn die untergeordnete Klasse alle Definitionen des übergeordneten Elements 
-    # ohne Änderungen erben soll, können Sie einfach das Schlüsselwort "pass" 
-    # (und nichts anderes) verwenden. In diesem Fall wird jedoch auskommentiert, 
-    # um eine eindeutige untergeordnete Klasse zuzulassen:
-    # pass
-
-    # Kindklassen können die Attribute ihrer Eltern überschreiben
-    species = 'Superhuman'
-
-    # Kinder erben automatisch den Konstruktor ihrer übergeordneten Klasse 
-    # einschließlich ihrer Argumente, können aber auch zusätzliche Argumente oder 
-    # Definitionen definieren und ihre Methoden zB den Klassenkonstruktor überschreiben.
-    # Dieser Konstruktor erbt das Argument "name" von der Klasse "Human" und 
-    # fügt die Argumente "superpowers" und "movie" hinzu:
-    def __init__(self, name, movie=False,
-                     superpowers=["super strength", "bulletproofing"]):
-
-        # zusätzliche Klassenattribute hinzufügen:
-        self.fictional = True
-        self.movie = movie
-        # Beachten Sie die veränderlichen Standardwerte, da die Standardwerte gemeinsam genutzt werden
-        self.superpowers = superpowers
-        
-        # Mit der Funktion "super" können Sie auf die Methoden der übergeordneten Klasse 
-        # zugreifen, die vom untergeordneten Objekt überschrieben werden, 
-        # in diesem Fall die Methode __init__.
-        # Dies ruft den Konstruktor der übergeordneten Klasse auf:
-        super().__init__(name)
-        
-    # überschreiben der "sing" Methode
-    def sing(self):
-        return 'Dun, dun, DUN!'
-        
-    # eine zusätzliche Instanzmethode hinzufügen
-    def boast(self):
-        for power in self.superpowers:
-            print("I wield the power of {pow}!".format(pow=power))
-
-if __name__ == '__main__':
-    sup = Superhero(name="Tick")
-    
-    # Instanztypprüfungen
-    if isinstance(sup, Human):
-        print('I am human')
-    if type(sup) is Superhero:
-        print('I am a superhero')
-        
-    # Die Reihenfolge der Methodenauflösung (MRO = Method Resolution Order) anzeigen, die sowohl von getattr() als auch von super() verwendet wird.
-    # Dieses Attribut ist dynamisch und kann aktualisiert werden.
-    print(Superhero.__mro__)    # => (<class '__main__.Superhero'>,
-                                # => <class 'human.Human'>, <class 'object'>)
-                                
-    # Ruft die übergeordnete Methode auf, verwendet jedoch das eigene Klassenattribut
-    print(sup.get_species())    # => Superhuman
-    
-    # Ruft die überschriebene Methode auf
-    print(sup.sing())           # => Dun, dun, DUN!
-    
-    # Ruft die Methode von Human auf
-    sup.say('Spoon')            # => Tick: Spoon
-    
-    # Aufruf einer Methode, die nur in Superhero existiert
-    sup.boast()                 # => I wield the power of super strength!
-                                # => I wield the power of bulletproofing!
-                                    
-    # Vererbtes Klassenattribut
-    sup.age = 31
-    print(sup.age)              # => 31
-    
-    # Attribut, das nur in Superhero existiert
-    print('Am I Oscar eligible? ' + str(sup.movie))
 
 ####################################################
-## 6.2 Multiple Inheritance
+## 6. Module
 ####################################################
 
-# Eine weitere Klassendefinition
-# bat.py
+# Wir können Module importieren
+import math
+print(math.sqrt(16)) #=> 4.0
 
-class Bat:
+# Wir können auch nur spezielle Funktionen eines Moduls importieren
+from math import ceil, floor
+print(ceil(3.7))  #=> 4.0
+print(floor(3.7)) #=> 3.0
 
-    species = 'Baty'
+# Wir können auch alle Funktionen eines Moduls importieren
+# Warnung: Dies wird nicht empfohlen
+from math import *
 
-    def __init__(self, can_fly=True):
-        self.fly = can_fly
+# Wir können Modulnamen abkürzen
+import math as m
+math.sqrt(16) == m.sqrt(16) #=> True
 
-    # This class also has a say method
-    def say(self, msg):
-        msg = '... ... ...'
-        return msg
+# Module sind in Python nur gewöhnliche Dateien. Wir
+# können unsere eigenen schreiben und importieren. Der Name des
+# Moduls ist der Dateiname.
 
-    # And its own method as well
-    def sonar(self):
-        return '))) ... ((('
+# Wir können auch die Funktionen und Attribute eines
+# Moduls herausfinden.
+import math
+dir(math)
 
-if __name__ == '__main__':
-    b = Bat()
-    print(b.say('hello'))
-    print(b.fly)
-    
-# Und noch eine andere Klassendefinition, die von Superhero und Bat erbt
-# superhero.py    
-from superhero import Superhero
-from bat import Bat
 
-# Definieren Sie Batman als eine Kindklasse, das von Superheld und Bat erbt
-class Batman(Superhero, Bat):
-
-    def __init__(self, *args, **kwargs):
-        # In der Regel müssen Sie super aufrufen, um Attribute zu erben:
-        # super (Batman, selbst) .__ init__ (* args, ** kwargs)
-        # Allerdings handelt es sich hier um Mehrfachvererbung, und super() 
-        # funktioniert nur mit der nächsten Basisklasse in der MRO-Liste.
-        # Stattdessen rufen wir explizit __init__ für alle Vorfahren auf.
-        # Die Verwendung von *args und **kwargs ermöglicht die saubere Übergabe von 
-        # Argumenten, wobei jedes übergeordnete Element eine Schicht der Zwiebel "abschält".
-        Superhero.__init__(self, 'anonymous', movie=True, 
-                           superpowers=['Wealthy'], *args, **kwargs)
-        Bat.__init__(self, *args, can_fly=False, **kwargs)
-        # überschreibt den Wert für das Namensattribut
-        self.name = 'Sad Affleck'
-
-    def sing(self):
-        return 'nan nan nan nan nan batman!'
-        
-if __name__ == '__main__':
-    sup = Batman()
-    
-    # Die Reihenfolge der Methodenauflösung (MRO = Method Resolution Order) anzeigen, 
-    # die sowohl von getattr() als auch von super() verwendet wird.
-    # Dieses Attribut ist dynamisch und kann aktualisiert werden.
-    print(Batman.__mro__)       # => (<class '__main__.Batman'>, 
-                                # => <class 'superhero.Superhero'>, 
-                                # => <class 'human.Human'>, 
-                                # => <class 'bat.Bat'>, <class 'object'>)
-                                
-    # Ruft die übergeordnete Methode auf, verwendet jedoch das eigene Klassenattribut                                
-    print(sup.get_species())    # => Superhuman                                
-    
-    # Ruft die überschriebene Methode auf
-    print(sup.sing())           # => nan nan nan nan nan batman!
-    
-    # Ruft die Methode von Human auf, weil die Reihenfolge der Vererbung wichtig ist
-    sup.say('I agree')          # => Sad Affleck: I agree
-    
-    # Aufrufmethode, die nur im 2. Vorfahren existiert
-    print(sup.sonar())          # => ))) ... (((
-    
-    # Vererbtes Klassenattribut
-    sup.age = 100
-    print(sup.age)              # => 100
-    
-    # Vererbtes Attribut vom 2. Vorfahren, dessen Standardwert überschrieben wurde.
-    print('Can I fly? ' + str(sup.fly)) # => Can I fly? False
-    
-    
 ####################################################
-## 7. Fortgeschrittenes
-####################################################    
-    
-# Generatoren helfen Ihnen, lazy Code zu erstellen.
+## 7. Fortgeschritten
+####################################################
+
+# Generatoren helfen um Code schnell und einfach zu schreiben
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
-        
-# Generatoren sind speichereffizient, da sie nur die Daten laden, 
-# die zur Verarbeitung des nächsten Werts in der iterierbaren Komponente 
-# erforderlich sind. Dadurch können sie ansonsten unzulässig große Wertebereiche ausführen.
-# HINWEIS: `range` ersetzt` xrange` in Python 3.        
-for i in double_numbers(range(1, 900000000)):  # `range` ist ein Generator.
+
+# Ein Generator erschafft Werte spontan
+# Statt alle Werte auf einmal, wird bei jeder Iteration einer erschaffen.
+# iteration.  Das heißt, Werte größer als 15 werden nicht behandelt.
+# Die range-Methode ist auch ein Generator. Im Fall einer Liste von 1-900000000
+# würde das sehr viel Zeit in Anspruch nehmen.
+# Wenn wir eine variable mit einem Namen erschaffen wollen, das
+# normalerweise mit einem Python - Schlüsselwort kollidieren würde,
+# benutzen wir einen Unterstrich nach dem Wort.
+range_ = range(1, 900000000)
+# Alle Nummern bis zu einem Ergebnis von >=30 werden verdoppelt
+for i in double_numbers(range_):
     print(i)
     if i >= 30:
         break
 
-# Genauso wie Sie ein 'list comprehension' (Listen Abstraktion) erstellen können, können Sie auch 'generator comprehension' (Generator Abstraktion) erstellen.
-values = (-x for x in [1,2,3,4,5])
-for x in values:
-    print(x)  # prints -1 -2 -3 -4 -5 to console/terminal
-    
-# Sie können eine Generator Abstraktion auch direkt in eine Liste umwandeln (casten).
-values = (-x for x in [1,2,3,4,5])
-gen_to_list = list(values)
-print(gen_to_list)  # => [-1, -2, -3, -4, -5]
 
-# Decorators
-# In diesem Beispiel umschliesst "beg" "say". Wenn say_please True ist, wird die zurückgegebene Nachricht geändert.
+# Dekoratoren
+# In diesem Beispiel die Methode beg umwickelt say
+# Beim Aufruf von beg, say wird aufgerufen
+# Falls say_please true ist, ändert sich die ausgegebene Nachricht
 from functools import wraps
+
 
 def beg(target_function):
     @wraps(target_function)
@@ -737,13 +622,14 @@ def beg(target_function):
 
     return wrapper
 
+
 @beg
 def say(say_please=False):
     msg = "Can you buy me a beer?"
     return msg, say_please
 
 
-print(say())                 # Can you buy me a beer?
+print(say())  # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 
 ```
@@ -752,15 +638,18 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 
 ### Kostenlos online (Englisch)
 
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
-* [The Official Docs](http://docs.python.org/2.6/)
+* [Ideas for Python Projects](http://pythonpracticeprojects.com)
+* [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [Python Module of the Week](http://pymotw.com/2/)
+* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Python Course](http://www.python-course.eu/index.php)
+* [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 
 ### Totholz (Englisch)
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
-

@@ -1,5 +1,5 @@
 ---
-language: python3
+language: Python
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]
@@ -11,7 +11,7 @@ contributors:
 translators:
     - ["Ahmad Hegazy", "https://github.com/ahegazy"]
 lang: ar-ar
-filename: learnpython3-ar.py
+filename: learnpython-ar.py
 ---
 
 لقد أُنشئت لغة البايثون بواسطة جايدو ڤان روسم في بداية التسعينات. هي الأن أحد أشهر اللغات الموجودة. 
@@ -19,7 +19,7 @@ filename: learnpython3-ar.py
 
 ردود أفعالكم عن المقال مُقدرة بشدة. يمكنكم التواصل مع الكاتب الاساسي من خلال [@louiedinh](http://twitter.com/louiedinh) أو louiedinh [at] [google's email service]
 
-ملحوظة: هذا المقال يُطبق على بايثون 3 فقط. راجع المقال [هنا](http://learnxinyminutes.com/docs/python/) إذا أردت تعلم لغة البايثون نسخة 2.7 الأقدم
+ملحوظة: هذا المقال يُطبق على بايثون 3 فقط. راجع المقال [هنا](http://learnxinyminutes.com/docs/pythonlegacy/) إذا أردت تعلم لغة البايثون نسخة 2.7 الأقدم
 
 ```python
 
