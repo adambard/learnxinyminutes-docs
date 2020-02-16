@@ -75,7 +75,7 @@ int add_two_ints(int x1, int x2); // Funktionsprototyp
 
 // Der Einstiegspunkt deines Programms ist eine Funktion mit dem Namen main und 
 // einem Integer als Rückgabewert.
-int main(void){
+int main(void) {
     // dein Programm
 }
 
@@ -87,7 +87,7 @@ int main(void){
 // Argumente beinhaltet.
 // argv[0] = Name des Programms
 // argv[1] = erstes Argument usw.
-int main (int argc, char** argv){
+int main (int argc, char** argv) {
     // Ausgabe mit Hilfe von printf (print formatted)
     // %d ist ein Integer.
     // \n steht für eine neue Zeile
@@ -303,19 +303,19 @@ int main (int argc, char** argv){
     ////////////////////////////////////////////////
     // Kontrollstrukturen
     ////////////////////////////////////////////////
-    if (0){
+    if (0) {
         printf("Ich werde nie ausgeführt.");
     }
-    else if (0){
+    else if (0) {
         printf("Ich werde auch nie ausgeführt.");
     }
-    else{
+    else {
         printf("Ich gebe etwas aus.");
     }
 
     // While-Schleifen existieren auch
     int ii = 0;
-    while (ii < 10){ // JEDER Wert unter zehn ist wahr
+    while (ii < 10) { // JEDER Wert unter zehn ist wahr
         printf("%d, " ii++); //i++ inkrementiert ii NACHDEM der Wert gebraucht
                              // wurde.
     } // => gibt folgendes aus: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
@@ -323,16 +323,16 @@ int main (int argc, char** argv){
     printf("\n");
 
     int kk = 0;
-    do{
+    do {
         printf("%d, ", kk);
-    }while(++kk < 10); //++kk inkrementiert kk BEVOR der Wert gebraucht wurde.
+    } while(++kk < 10); //++kk inkrementiert kk BEVOR der Wert gebraucht wurde.
     // => gibt folgendes aus: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
     printf("\n");
 
     // In C gibt es auch for-Schleifen
     int jj; 
-    for (jj = 0; jj < 10; jj++){
+    for (jj = 0; jj < 10; jj++) {
         printf("%d, ", jj);
     } // => gibt folgendes aus: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
     
@@ -342,14 +342,14 @@ int main (int argc, char** argv){
     // Schleifen und Funktionen müssen einen Rumpf haben. Wenn kein Rumpf gebraucht
     // wird, kann folgendes gemacht werden:
     int i; 
-    for (i = 0; i <= 5; i++){
+    for (i = 0; i <= 5; i++) {
         ; // Semikolon wird als Rumpf behandelt (Null-Anweisung)
     }
     // Alternativ kann auch folgendes geschrieben werden:
     for (i = 0; i <= 5; i++);
 
     // Verzweigungen mit mehreren Möglichkeiten: `switch()`
-    switch (a){
+    switch (a) {
         case 0: // Labels müssen integrale *konstante* Ausdrücke sein (z.B. Enums)
             printf("Hey, 'a' ist gleich 0!\n");
             break; //Wenn du kein break einsetzt, so geht der Kontrollfluss
@@ -441,7 +441,7 @@ int main (int argc, char** argv){
     int x_array[20]; // deklariert einen Array der Größe 20 (Größe kann
     // nicht geändert werden.)
     int xx;
-    for (xx =0; xx < 20; xx++){
+    for (xx =0; xx < 20; xx++) {
         x_array[xx]  20 -xx;
     } // Initialisiere x_array zu 20, 19, 18, ... 2, 1
 
@@ -478,7 +478,7 @@ int main (int argc, char** argv){
     // aus dem Heap - dies kann auf eingebetteten Systemen unterschiedlichen sein.
     // Der C Standard sagt nichts darüber.)
     int *my_ptr = malloc(sizeof(*my_ptr) * 20);
-    for (xx = 0; xx < 20; xx++){
+    for (xx = 0; xx < 20; xx++) {
         *(my_ptr + xx) = 20 -xx; //my_ptr[xx] = 20-xx
     } // initialisiere Speicher zu 20, 19, 18, 17, ... 2, 1 (als `int`)
 
@@ -497,7 +497,7 @@ int main (int argc, char** argv){
     // Füge dem Array ein Element hinzu 
     size++;
     my_array = realloc(my_array, sizeof(int) *size);
-    if (my_array == NULL){
+    if (my_array == NULL) {
         // Denke daran, realloc-Fehler zu prüfen
         return
     }
@@ -538,7 +538,7 @@ int main (int argc, char** argv){
 // Syntax einer Funktionsdeklaration
 // <rueckgabe_wert> <funktions_name>(<args>)
 
-int add_two_ints(int x1, int x2){
+int add_two_ints(int x1, int x2) {
     return x1 + x2; // verwendet return, um einen Wert zurückzugeben
 }
 
@@ -555,14 +555,14 @@ Beispiel:
 */
 
 // Eine `void`-Funktion gibt keinen Wert zurück
-void str_reverse(char *str_in){
+void str_reverse(char *str_in) {
     char tmp;
     size_t ii = 0; 
     size_t size = strlen(str_in);
     // `strlen()` ist ein Teil der C Standard-Bibliothek.
     // Merke: Die Länge, welche von `strlen` zurückgegeben wird, ist ohne den 
     // Null-Byte Terminator.
-    for (ii = 0; i < size /2; ii++){ // in C99 kann man `ii` hier deklarieren.
+    for (ii = 0; i < size /2; ii++) { // in C99 kann man `ii` hier deklarieren.
         tmp = str_in[ii];
         str_in[ii] = str_in[size - ii - 1]; //#ii'tes Zeichen vom Ende her
         str_in[size - ii- 1] = tmp;
@@ -579,7 +579,7 @@ printf("%s\n", c), => "tseT nie tsi saD"
 
 // Weil wir lediglich eine Variable zurückgeben können, kann zum Ändern mehrerer
 // Variablen das Konzept call-by-reference verwendet werden.
-void swap_two_numbers(int *a, int *b){
+void swap_two_numbers(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
@@ -600,9 +600,9 @@ Größe eines dynamischen Arrays herausgefunden werden kann.
 */
 // Die Größe des Arrays muss unbedingt mitgegeben werden.
 // Sonst hat die Funktion keine Ahnung wie groß das Array ist.
-void print_int_arrray(int *arr, size_t size){
+void print_int_arrray(int *arr, size_t size) {
     int i;
-    for (i = 0; i < size; i++){
+    for (i = 0; i < size; i++) {
         printf("arr[%d] ist %d\n", i, arr[i]);
     }
 }
@@ -615,7 +615,7 @@ print_int_array(my_array, size);
 // Wenn man auf externe Variable (außerhalb der Funktion) referenziert, sollte
 // man das Schlüsselwort `extern` verwenden.
 int i = 0;
-void test_function(){
+void test_function() {
     extern int i; // i braucht nun die externe Variable i
 }
 
@@ -643,7 +643,7 @@ my_type my_type_var = 0;
 
 // Structs sind lediglich Sammlungen von Daten, die Inhalte werden
 // (in der Reihenfolge wie sie geschrieben wurden) sequentiell alloziert.
-struct rectangle{
+struct rectangle {
     int width;
     int height;
 };
@@ -653,7 +653,7 @@ struct rectangle{
 // Dies ist so, weil potentiell ein Padding zwischen den Struktur-Inhalten
 // möglich ist). (siehe [1, Englisch])
 
-void function_1(){
+void function_1() {
     struct rectangle my_rectangle;
 
     // Greife auf Struct-Inhalte mit `.` zu.
@@ -674,13 +674,13 @@ void function_1(){
 // Aus Bequemlichkeitsgründen ist es möglich einem `struct` ein `typedef` hinzuzufügen.
 typedef struct rectangle rect;
 
-int area(rect r){
+int area(rect r) {
     return r.width * r.height;
 }
 
 // Wenn du große Structs hast, kannst du diese mit dem Pointer kopieren, 
 // damit große Kopiervorgänge vermieden werden.
-int area_ptr(const rect *r){
+int area_ptr(const rect *r) {
     return r->width * r->height;
 }
 
@@ -697,7 +697,7 @@ Wie auch immer, die Syntax kann zu Beginn verwirrend wirken.
 
 Zum Beispiel: Verwende str_reverse von einem Pointer 
 */
-void str_reverse_through_pointer(char *str_in){
+void str_reverse_through_pointer(char *str_in) {
     // Definiere eine Funktionspointer-Variable, welche f genannt wird.
     void (*f)(char *); // Signatur sollte genau der Funktion entsprechen.
     f = &str_reverse; // weise die Adresse der wirklichen Funktion zu
@@ -823,7 +823,7 @@ befindet wie die C-Quelldatei.
 
 // Strukturen und Typendefinitionen können verwendet werden, um die Konsistenz
 // zwischen unterschiedlichen Dateien beizubehalten.
-typedef struct Node{
+typedef struct Node {
     int value;
     struct Node *next;
 }Node;
