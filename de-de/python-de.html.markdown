@@ -116,10 +116,6 @@ False or True #=> True
 "{0} mag Spagetthi, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
 #=> "Hans mag Spagetthi, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
 
-# Wir können Schlüsselwörter verwenden, wenn wir nicht abzählen wollen.
-"{name} will {food} essen".format(name="Bob", food="Lasagne")
-#=> "Bob will Lasagne kochen"
-
 # None ist ein Objekt
 None #=> None
 
