@@ -1,6 +1,6 @@
 ---
 language: COBOL
-filename: learncobol.cbl
+filename: learncbl.cbl
 contributors:
     - ["Mikael Kemstedt", "https://github.com/MikaelKemstedt"]
 ---
@@ -20,6 +20,7 @@ working with COBOL you'll need to learn a bunch of other things surrounding it.
 Like JCL, PL/1, CICS, DB2 etc. 
 
 This guide will use:
+
     COBOL v6.3.0 as well as the standard IBM z/OS compiler. 
 
 
@@ -27,10 +28,16 @@ This guide will use:
 Before we go into the code block.
 The first thing you have to think about is the coloumns (80 in total):
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+
 The first 6 are reserved for line numbers looking something like this:
+
 00100
+
 00200
+
 00300
+
 ...
 
 If you're working on a mainframe you can type in line commands on those numbers.
@@ -38,13 +45,19 @@ But if you're on any other platform you can ignore these numbers.
 
 The 7th columnis reserved for comments, continuation, printer stopper and 
 debug indication marks:
-* 
-- 
+
+\*
+
+\-
+
 /
+
 D
 
 Column 8-11 is called "Column A" and column 12-72 is "Column B". 
+
 Column A is where you write the first level of your code, indention matters. 
+
 Column B is where you write everything else, indention does not matter.
 
 Column 73-80 is used for identification purpose. So the program will not read
@@ -111,7 +124,13 @@ don't write anything here and you're good.
       
       * Having one of those 3 characters at the start of your program
       * name might confuse the compiler. Which you do not want. 
-      * It's recommended to keep the ID the same as the file name for
+      * It's recommended to keep the ID the same as the file name fo\*
+
+\-
+
+/
+
+Dr
       * easier maintanence. 
        PROGRAM-ID.  LEARNCBL.
        AUTHOR. MIKAEL KEMSTEDT. 
@@ -483,3 +502,4 @@ don't write anything here and you're good.
 
  * [IBM Documentation](https://www.ibm.com/support/knowledgecenter/en/SS6SG3_6.3.0/welcome.html)
  * [IBM Programming Guide](https://www.ibm.com/support/knowledgecenter/en/SS6SG3_6.3.0/pg/abouthst.html)
+ 
