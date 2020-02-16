@@ -116,6 +116,14 @@ False or True #=> True
 "{0} mag Spagetthi, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
 #=> "Hans mag Spagetthi, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
 
+# Die Formatierung kann auch mit `f-strings` oder formattierten Strings gemacht
+# werden (ab Python 3.6+)
+name = "Sandra"
+f"Sie hat gesagt, ihr name sei {name}." # => Sie hat gesagt, ihr Name sei Sandra."
+# Es ist möglich, andere Anweisungen innerhalb der geschweiften Klammern zu 
+# setzen, welche dann im Output des Strings angezeigt werden.
+f"{name} ist {len(name)} Zeichen lang" # => Sandra ist 6 Zeichen lang.
+
 # None ist ein Objekt
 None #=> None
 
