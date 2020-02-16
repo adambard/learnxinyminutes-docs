@@ -14,7 +14,8 @@ Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist he
 
 Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service].
 
-Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/pythonlegacy/) weiter.
+Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/pythonlegacy/) weiter. Beachte hierbei,
+dass Python 2.7 als deprecated gilt und nicht mehr verwendet werden sollte.
 
 ```python
 
@@ -118,10 +119,6 @@ False or True #=> True
 # Wir können Schlüsselwörter verwenden, wenn wir nicht abzählen wollen.
 "{name} will {food} essen".format(name="Bob", food="Lasagne")
 #=> "Bob will Lasagne kochen"
-
-#Falls dein Python3 Code auch unter Python 2.5 oder darunter laufen soll,
-# kann das alte Format benutzt werden:
-"%s können %s werden" % ("Strings", "interpoliert")
 
 # None ist ein Objekt
 None #=> None
