@@ -176,13 +176,19 @@ fn main() {
 
     impl<T> Foo<T> {
         // Methods take an explicit `self` parameter
-        fn get_bar(self) -> T {
+        fn bar(&self) -> &T { // self is borrowed
+            &self.bar
+        }
+        fn bar_mut(&mut self) -> &mut T { // self is mutably borrowed
+            &mut self.bar
+        }
+        fn into_bar(self) -> T { // here self is consumed
             self.bar
         }
     }
 
     let a_foo = Foo { bar: 1 };
-    println!("{}", a_foo.get_bar()); // 1
+    println!("{}", a_foo.bar()); // 1
 
     // Traits (known as interfaces or typeclasses in other languages) //
 
