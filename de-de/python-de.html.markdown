@@ -14,7 +14,8 @@ Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist he
 
 Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service].
 
-Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/pythonlegacy/) weiter.
+Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/pythonlegacy/) weiter. Beachte hierbei,
+dass Python 2 als veraltet gilt und für neue Projekte nicht mehr verwendet werden sollte.
 
 ```python
 
@@ -42,7 +43,7 @@ Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Pyth
 
 # Eine Division kann mit "//" für positive sowie negative Werte abgerundet werden.
 5 // 3     # => 1
-5.0 // 3.0 # => 1.0 # works on floats too
+5.0 // 3.0 # => 1.0 # funktioniert auch mit floats
 -5 // 3  # => -2
 -5.0 // 3.0 # => -2.0
 
@@ -115,13 +116,13 @@ False or True #=> True
 "{0} mag Spagetthi, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
 #=> "Hans mag Spagetthi, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
 
-# Wir können Schlüsselwörter verwenden, wenn wir nicht abzählen wollen.
-"{name} will {food} essen".format(name="Bob", food="Lasagne")
-#=> "Bob will Lasagne kochen"
-
-#Falls dein Python 3 Code auch unter Python 2.5 oder darunter laufen soll, kann das alte Format benutzt werden:
-"%s können %s werden" % ("Strings", "interpoliert")
-
+# Die Formatierung kann auch mit `f-strings` oder formattierten Strings gemacht
+# werden (ab Python 3.6+)
+name = "Sandra"
+f"Sie hat gesagt, ihr name sei {name}." # => Sie hat gesagt, ihr Name sei Sandra."
+# Es ist möglich, andere Anweisungen innerhalb der geschweiften Klammern zu 
+# setzen, welche dann im Output des Strings angezeigt werden.
+f"{name} ist {len(name)} Zeichen lang" # => Sandra ist 6 Zeichen lang.
 
 # None ist ein Objekt
 None #=> None
@@ -131,15 +132,12 @@ None #=> None
 "etc" is None #=> False
 None is None  #=> True
 
-
-
 # None, 0, und leere Strings/Listen werden alle als False bewertet.
 # Alle anderen Werte sind True
 bool(0)  # => False
 bool("")  # => False
 bool([]) #=> False
 bool({}) #=> False
-
 
 ####################################################
 ## 2. Variablen und Collections
@@ -208,7 +206,6 @@ li.extend(other_li) # Jetzt ist li [1, 2, 3, 4, 5, 6]
 # Die Länge der Liste mit len ermitteln
 len(li) #=> 6
 
-
 # Tupel sind wie Listen, nur unveränderlich.
 tup = (1, 2, 3)
 tup[0] #=> 1
@@ -224,9 +221,8 @@ tup[:2] #=> (1, 2)
 a, b, c = (1, 2, 3)     # a ist jetzt 1, b ist jetzt 2 und c ist jetzt 3
 # Tupel werden standardmäßig erstellt, wenn wir uns die Klammern sparen
 d, e, f = 4, 5, 6
-# Es ist kinderleicht zwei Werte zu tauschen
+# Es ist kinderleicht, zwei Werte zu tauschen
 e, d = d, e     # d ist nun 5 und e ist nun 4
-
 
 # Dictionarys (Wörterbucher) speichern Schlüssel-Werte-Paare
 empty_dict = {}
@@ -269,7 +265,6 @@ filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
 
 # Schlüssel von einem Wörterbuch entfernen
 del filled_dict["one"]  # Entfert den Schlüssel "one"
-
 
 # Sets speichern Mengen
 empty_set = set()
@@ -379,7 +374,8 @@ with open("meineDatei.txt") as f:
         print(line)
 
 # Python bietet ein fundamentales Konzept der Iteration.
-# Das Objekt, auf das die Iteration, also die Wiederholung einer Methode angewandt wird heißt auf Englisch "iterable".
+# Das Objekt, auf das die Iteration, also die Wiederholung einer Methode
+# angewandt wird, heißt auf Englisch "iterable".
 # Die range Methode gibt ein solches Objekt aus.
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -390,14 +386,14 @@ print(our_iterable) #=> range(1,10). Dies ist ein "iterable" Objekt.
 for i in our_iterable:
     print(i)    # Gibt one, two, three aus
 
-# Allerdings können wir die einzelnen Elemente nicht mit ihrem index ausgeben
+# Allerdings können wir die einzelnen Elemente nicht mit ihrem Index ausgeben
 our_iterable[1]  # TypeError
 
 # Ein iterable ist ein Objekt, das weiß wie es einen Iteratoren erschafft.
 our_iterator = iter(our_iterable)
 
-# Unser Iterator ist ein Objekt, das sich merkt, welchen Status es gerade hat während wir durch es gehen.
-# Das jeweils nächste Objekt bekommen wir mit "next()"
+# Unser Iterator ist ein Objekt, das sich merkt, welchen Status es gerade hat
+# während wir durch es gehen. Das jeweils nächste Objekt bekommen wir mit "next()"
 next(our_iterator)  #=> "one"
 
 # Es hält den vorherigen Status
@@ -409,8 +405,6 @@ next(our_iterator) # Gibt StopIteration aus
 
 # Alle Elemente können mit "list()" ausgegeben werden
 list(filled_dict.keys())  #=> ["one", "two", "three"]
-
-
 
 ####################################################
 ## 4. Funktionen
@@ -579,12 +573,11 @@ math.sqrt(16) == m.sqrt(16) #=> True
 import math
 dir(math)
 
-
 ####################################################
 ## 7. Fortgeschritten
 ####################################################
 
-# Generatoren helfen um Code schnell und einfach zu schreiben
+# Generatoren helfen, um Code schnell und einfach zu schreiben
 def double_numbers(iterable):
     for i in iterable:
         yield i + i
@@ -594,7 +587,7 @@ def double_numbers(iterable):
 # iteration.  Das heißt, Werte größer als 15 werden nicht behandelt.
 # Die range-Methode ist auch ein Generator. Im Fall einer Liste von 1-900000000
 # würde das sehr viel Zeit in Anspruch nehmen.
-# Wenn wir eine variable mit einem Namen erschaffen wollen, das
+# Wenn wir eine Variable mit einem Namen erschaffen wollen, das
 # normalerweise mit einem Python - Schlüsselwort kollidieren würde,
 # benutzen wir einen Unterstrich nach dem Wort.
 range_ = range(1, 900000000)
@@ -604,10 +597,9 @@ for i in double_numbers(range_):
     if i >= 30:
         break
 
-
 # Dekoratoren
 # In diesem Beispiel die Methode beg umwickelt say
-# Beim Aufruf von beg, say wird aufgerufen
+# Beim Aufruf von beg, wird say aufgerufen
 # Falls say_please true ist, ändert sich die ausgegebene Nachricht
 from functools import wraps
 
