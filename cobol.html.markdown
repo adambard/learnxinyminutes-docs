@@ -10,14 +10,23 @@ It is a high-level programming language first developed in 1959
 (standardised in 1968) and as the name suggests it is designed for developing 
 business with mostly file-oriented applications.
 
-Today it's still in use mainly because there's just so much code written, and
-the cost of maintaining it is cheaper than translating it to another language 
-(like Java). Another part is the "If it ain't broke don't fix it" mentality. 
+It's still in use today, mainly because there are so many applications 
+implemented in COBOL and the cost of maintenance is often lower than migrating 
+to another language. 
+Another part is the "If it ain't broke don't fix it" mentality. 
 
 The syntax is pretty easy, it's almost like talking to the computer. But 
 actually using what you've learned is a bit harder since if you're going to be 
 working with COBOL you'll need to learn a bunch of other things surrounding it. 
-Like JCL, PL/1, CICS, DB2 etc. 
+Like:
+    JCL (Job Control Language), 
+    PL/1 (Programming Language One), 
+    CICS (Customer Information Control System), 
+    DB2 (Database 2, basically SQL in mainframe),
+    as well as different file types and the actual mainframe interface. 
+
+If you want a more in-depth information on those there will be links in the end
+to help you get started. 
 
 This guide will use:
 
@@ -26,9 +35,7 @@ This guide will use:
 
 
 Before we go into the code block.
-The first thing you have to think about is the coloumns (80 in total):
-12345678901234567890123456789012345678901234567890123456789012345678901234567890
-
+The first thing you have to think about is the coloumns (80 in total),
 
 The first 6 are reserved for line numbers looking something like this:
 
@@ -46,9 +53,15 @@ But if you're on any other platform you can ignore these numbers.
 The 7th columnis reserved for comments, continuation, printer stopper and 
 debug indication marks:
 
+<<<<<<< HEAD
 \*
 
 \-
+=======
+*
+
+-
+>>>>>>> Update cobol.html.markdown
 
 /
 
@@ -1013,4 +1026,3 @@ don't write anything here and you're good.
 
  * [IBM Documentation](https://www.ibm.com/support/knowledgecenter/en/SS6SG3_6.3.0/welcome.html)
  * [IBM Programming Guide](https://www.ibm.com/support/knowledgecenter/en/SS6SG3_6.3.0/pg/abouthst.html)
- 
