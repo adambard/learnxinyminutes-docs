@@ -53,15 +53,9 @@ But if you're on any other platform you can ignore these numbers.
 The 7th columnis reserved for comments, continuation, printer stopper and 
 debug indication marks:
 
-<<<<<<< HEAD
 \*
 
 \-
-=======
-*
-
--
->>>>>>> Update cobol.html.markdown
 
 /
 
@@ -83,8 +77,10 @@ don't write anything here and you're good.
       * In COBOL you usually write an annotation of when the program was
       * written as well as changed, who wrote / changed it, and what did
       * they do. 
-      * Keep in mind everyone got different standards so it might not 
-      * look the same for you as it does here. 
+      * Keep in mind everyone got different standards,
+      * The names and the way the code is formatted is going to be 
+      * different from where you end up. Some cases very different.
+      * BUT the syntax should at least feel familiar.
       *
       * Program name:    LEARNCBL                               
       * Original author: MIKAEL KEMSTEDT                                
@@ -93,9 +89,13 @@ don't write anything here and you're good.
       * Date      Author        Maintenance Requirement               
       * --------- ------------  --------------------------------------- 
       * 16/02/2020 MIKAEL KEMSTEDT  Started writing the guide.         
+      * 17/02/2020 MIKAEL KEMSTEDT  Changed some formatting and added
+      *                             a more in-depth explanation 
+      *                             of files.         
       *                                                               
       *****************************************************************
-      * There are 4 kinds of levels in COBOL:
+      * There are 5 kinds of levels in COBOL:
+      * PROGRAM
       * DIVISION
       * SECTION
       * PARAGRAPH
@@ -122,8 +122,8 @@ don't write anything here and you're good.
        IDENTIFICATION DIVISION.
       * This is where you write a some information about the program
       * itself. Though only PROGRAM-ID. is the mandatory field.
-      * Filenames should always be max 8 characters. Some characters are
-      * reserved, these are:
+      * Filenames should always be max 8 characters. 
+      * Some characters are reserved, these are:
       * AFB
       * AFH
       * CBC
@@ -142,21 +142,23 @@ don't write anything here and you're good.
       * IGZ
       * ILB
       
-      * Having one of those 3 characters at the start of your program
-      * name might confuse the compiler. Which you do not want. 
+      * Having one of those combinations of characters at the start of 
+      * your program name might confuse the compiler. 
+      * Which you do not want. 
+
       * It's recommended to keep the ID the same as the file name for
       * easier maintanence. 
        PROGRAM-ID.  LEARNCBL.
        AUTHOR. MIKAEL KEMSTEDT. 
        DATE-WRITTEN. 16/02/2020. 
-       DATE-COMPILED. 16/02/2020. 
+       DATE-COMPILED. 17/02/2020. 
        SECURITY. NON-CONFIDENTIAL.
       *****************************************************************
       *****************************************************************
       * The 2nd division is this one:
        ENVIRONMENT DIVISION.
       * Enviroment division has two sections,
-      * One for configuration (all optional):
+      * One for configuration (optional):
        CONFIGURATION SECTION.
       * Source computer is where the program will be compiled on.
        SOURCE-COMPUTER. IBM-370.
@@ -173,72 +175,172 @@ don't write anything here and you're good.
       * $ is the default currency symbol. 
       * If $ is written as currency sign then it is ignored.
 
-      * And One for files (all optional): 
+
+
+      * And One for files (optional): 
        INPUT-OUTPUT SECTION.
       * FILE-CONTROL is where you connect external files with your own
       * program as well as define a few extra variables if you want.
-      * Everything except the declarations and the 
-      * "SELECT <file_var> ASSIGN TO <file_name.ext>." bits are
-      * usually handled by like a JCL so it's not something you need to
+
+      * NOTE: 
+      * Everything except the declarations (defined later on), the 
+      * "SELECT <file_var> ASSIGN TO <file_name.ext>" 
+      * and if you want, the file status.
+      * Are usually handled by a JCL so it's not something you need to
       * deal with as a COBOL programmer. 
 
        FILE-CONTROL.
       * Read the following as:
-      * Select <file_var> to assign to the file "file.txt"
+      * Assign the variable <file_var> to the file <file_name.txt>
            SELECT FILEIN ASSIGN TO 'FILEIN.TXT'
       * In mainframe you'll write another vairable name instead of the 
-      * file because it is sent by the JCL instead.
-      *
-      * The one varoable that you almost always want is this one:
-              FILE STATUS IS FILEIN-STATUS
+      * file because it is sent by the JCL instead. 
+      
+      * Knowing the status of the file is usefull sometimes,
+      * Like if you want to continue running your program or not,
+      * or maybe just know if you got to the end of the file.
+               FILE STATUS IS FILEIN-STATUS
       * The ones you want to remember are "00" for success and "10" for 
       * end-of-file. You can find the rest of the codes here:
       * http://ibmmainframes.com/references/a27.html
       
-      * You also got the following.
-      * You got 3 types of files, sequential, relative, indexed. 
+
+      * You also got different options depending on the file type.
+      * There are 4 file types:
+      * Sequential
+      * Relative
+      * Indexed
+      * Transaction
+      * These are rare nowadays, but it's basically a collection of data
+      * that is structured in a very specific way
+      * If you want to read more about it, you can do that here:
+      * https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/rzase/sc092540.pdf?view=kc#%5B%7B%22num%22%3A4113%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C47.8942%2C589.697%2Cnull%5D
+      * Transaction files won't be covered since they are so rarely used
+
+
+      * As well as 4 data organizations. 
+      * Sequential (most used):
+               ORGANIZATION IS SEQUENTIAL
+      * Has no keys. The records are in sequence. It can be extended.
+      
+      * Relative:
+      *        ORGANIZATION IS RELATIVE
+      * The records are pre-determined, so you can pick and chose what
+      * record you want to read.
+
+      * Indexed:
+      *        ORGANIZATION IS INDEXED
+      * The records have an index to them inside the file, so you can
+      * access them specific row you want. The index has to be unique.
+      * The key is defined later in the declaration.
+      * You can also have one or more secondary keys.
+
+      * Line sequential:
+      *        ORGANIZATION IS LINE-SEQUENTIAL
+      * Like sequential but it is sperated by a delimiter, more often
+      * than not, a new line. 
+
+
+      * And you got 3 types of access mode.
       * The syntax for those are the following:
       * Sequential (most used):
-              ACCESS MODE SEQUENTIAL.  
-      * Relative:
-      *       ACCESS MODE {SEQUENTIAL/DYNAMIC/RANDOM} 
-      *       [RELATIVE KEY IS <var>]
-      * Indexed:
-      *       ACCESS MODE {SEQUENTIAL/DYNAMIC/RANDOM}
-          
-      *       ALTERNATE RECORD KEY IS <var> [WITH DUPLICATES]
-             
-      * Following is only needed if you use relative or indexed file.
-      * This describes the logical structore of the file.
-      * Default is sequential
-      *       ORGANIZATION IS {SEQUENTIAL/RELATIVE/INDEXED}
+               ACCESS MODE IS SEQUENTIAL.
+      * Side note: Some words aren't necessary, so the code above,
+      * is the same as below:                                           
+      *        ACCESS SEQUENTIAL 
+      * The records are in sequence.
 
-      * Optional in the following make the program create the file if it
-      * does not exist. 
+      * Random:
+      *        ACCESS RANDOM
+      * Lets you control the record / row you want to read / write.
+
+      * Dynamic:
+      *        ACCESS DYNAMIC
+      * Allows you to chose if it's random or sequential when you open
+      * the file later on.
+
+      * If you have an indexed file you need to spefiy a record key as 
+      * well. You do that by referencing a variable that you declared
+      * in the file declaration (shown later on)
+      *        RECORD KEY IS <var>
+      * Secondary keys are defined like:
+      *        ALTERNATE RECORD KEY <VAR2>
+      *        ALTERNATE RECORD KEY <VAR3>
+      * And so on.
+      * Secondary keys can have duplicates as well:
+      *        ALTERNATE RECORD KEY <VAR4> WITH DUPLICATES
+
+      * If you have a relative file, you have to declare a key as well:
+      *        RELATIVE KEY IS <var>
+      * Though this can't be declared in the file declaration.
+      * You declare this under the DATA DIVISION.
+
+      * NOTE: 
+      * There are more options but they are even less common than the 
+      * ones above.
+
+      * The options that you can use on a specific file type is as 
+      * follows;
+      * Sequential:
+      *    ORGANIZATION IS SEQUENTIAL
+      *    ACCESS MODE IS SEQUENTIAL
+      *    FILE STATUS IS <var>
+
+      * Relative:
+      *    ORGANIZATION IS REALTIVE
+      *    ACCESS MODE IS {SEQUENTIAL/RANDOM/DYNAMIC>
+      *    RELATIVE KEY IS <var>
+      *    FILE STATUS IS <var>
+
+      * Indexed:
+      *    ORGANIZATION IS INDEXED
+      *    ACCESS MODE IS {SEQUENTIAL/RANDOM/DYNAMIC>
+      *    RECORD KEY IS <var> 
+      *    WITH DUPLICATES
+      *    ALTERNATE RECORD KEY IS <var>
+      *    WITH DUPLICATES
+      *    FILE STATUS IS <var>
+
+      * Line Sequential:
+      *    ORGANIZATION IS LINE SEQUENTIAL
+      *    ACCESS MOVE IS SEQUENTIAL
+      *    FILE STATUS IS <var>
+
+      * Depending on the file type, you can also use a relative key:
+      *        [RELATIVE KEY IS <var>] 
+      * This only works on Relative and Transaction files.
+
+
       *    SELECT OPTIONAL FILEOUT ASSIGN TO 'FILEOUT.TXT'.
+      * Optional makes the program create the file if it does not exist. 
            SELECT FILEOUT ASSIGN TO 'FILEOUT.TXT'
-              FILE STATUS IS FILEOUT-STATUS
-              ACCESS MODE SEQUENTIAL.
+               FILE STATUS IS FILEOUT-STATUS
+               ACCESS SEQUENTIAL.
       * Note that the '.' is after the last row to connect all rows 
       * about the file together.
       
       
-      * SortfileS will be explained later on.
+      * Sortfiles will be explained later on.
            SELECT SORTFILE ASSIGN TO 'SORT.TXT'
+      * But this basically opens up a way to sort files through this one
 
       * I-O-Control specifies when checkpoints are to be taken and the 
       * storage areas to be shared by different files. Read more about
       * it here:
       * https://www.ibm.com/support/knowledgecenter/SSQ2R2_9.1.1/com.ibm.ent.cbl.zos.doc/PGandLR/ref/rliosioc.html
+
        I-O-CONTROL. 
       
+
+
       * DATA DIVISION is the 3rd division, it contains all the variables
       * and their information that you're using in your program. 
       * ALL the variables that you use have to be defined here. There
       * is no such thing as creating a variable inside the code. 
        DATA DIVISION.
+
       * There are 3 sections under DATA DIVISiON
-      * File section defines how the files you declared above, look.
+      * File section defines how the files you defined are declared.
        FILE SECTION.
       * FD <file_var>.
        FD  FILEIN.
@@ -250,37 +352,89 @@ don't write anything here and you're good.
            05 FILEIN-AMMOUNT             PIC ZZZ,ZZZ,ZZ9.99.
            05 FILEIN-BALANCEBEFORE       PIC ZZZ,ZZZ,ZZ9.99.
            05 FILEIN-BALANCEAFTER        PIC ZZZ,ZZZ,ZZ9.99.
+      
       * What exacly the PIC 9(5)... means will be covered after the file 
       * section.
+      * But the declaration above basically shows that we have 4 fields.
+      * With them being ready to read characters and numbers.
 
       * But you might not know exactly what the file looks like, in that
       * case. Just declare it as a single long variable
        FD  FILEOUT.
        01  FILEOUT-POST                  PIC X(80).
-      * You can also change other things, similar to the FILE-CONTROL
-      * declarations. It would look something like this:
-      * FD FILEIN
-      *    RECORD CONTAINS 80 CHARACTERS
-      *    BLOCK CONTAINS 10 RECORDS
-      *    DATA RECORD IS FILEIN-POST
+      
+      * NOTE:
+      * Once again, the options are usually handled by a JCL. No option
+      * is used a lot. But there are some more common ones. 
 
-      *    RECORDING MODE IS {F/D/V} 
-      * Using this changes recod and block size.
-      * F = FIXED LENGTH syntax is like above.
+      * Instead of changing the options of a file, you change the 
+      * options of the file content. The options depend on what type
+      * of file you have.
+      * Here we have 4 different ones:
+      * Sequential
+      * Relative / Indexed (they are combined)
+      * Line Sequential
+      * Sort files
 
-      * D = DYNAMIC LENGTH syntax is:
-      *    RECORD IS VARYING IN SIZE 1 TO 80 [DEPENDING ON <var>]
-      *    BLOCK CONTRAINS IN SIZE 1 TO 10 [DEPENDING ON <var>]
+      * The most common options are:
+      * RECORD CONTRAINS...
+      * BLOCK CONTRAINS...
+      * RECORDING MODE IS {F/V/U/S} 
+      * F = Fixed length
+      * V = Variable length
+      * U = Fixed or variable length
+      * S = Spanned length
+      
+      * A block is a collection of one or more records.
+      * It has to do with how data is stored on a harddrive.
+      * A record is like a smaller block. 
+      * Comparable to bit (record) vs byte (block)
 
-      * V = VARIABLE LENGTH syntax is:
-      *    RECORD CONTAINS 1 TO 80 CHARACTERS
-      *    BLOCK CONTRAINS 1 TO 10 CHARACTERS
-      * More in-depth here:
-      * https://www.mainframestechhelp.com/tutorials/cobol/cobol-file-section.htm
+      * If you have fixed, then all the records in the file are the 
+      * same length and is contained in a block.
+      * You don't need to define the block or record fields if you use
+      * fixed lengthed records. They are automatically defined in the
+      * file declaration.
+
+       FD FILEIN
+           RECORDING MODE IS F.
+       01 FILEIN-POST                  PIC X(80). 
+      * The record length is 80 characters.
+
+      * If you use V. Then the length of the field is not defined by you
+      * the program picks what it thinks is right. But you can chose the
+      * range of the record. A block has to contain at least one record.   
+       FD FILEIN
+           RECORDING MODE IS V
+           RECORD CONTAINS 1 TO 100 CHARACTERS.
+       01 FILEIN-POST                  PIC X(80).  
+      * This probably picks the record length 80
+
+      * Using recording more U means that each block only has one record
+      * looks like this:
+       FD FILEIN
+           RECORDING MODE U
+           RECORD CONTAINS 10 CHARACTERS. *> Overrides the declaration.
+       01 FILEIN-POST                  PIC X(80).          
+      * Don't define a block.
        
-      * SortfileS will be explained later on.
+      * Spanned records can be in one or more blocks:
+      *> If a block is full it will save the rest of the data and put it
+      * in the next block.
+       FD FILEIN
+           RECORDING MODE S
+           RECORD CONTAINS 2 CHARACTERS
+           BLOCK CONTAINS 10 RECORDS. 
+       01 FILEIN-POST                  PIC X(80).      
+
+      * Like the file options, there are more but these are the most
+      * common ones. 
+       
+      * Sortfile use SD instead of FD in their declarations.
        SD SORTFILE.
        01 SORT-POST                      PIC X(80).
+
+
 
       *****************************************************************
       * In WORKING-STORAGE we declare every variable that has its origin
@@ -288,10 +442,10 @@ don't write anything here and you're good.
        WORKING-STORAGE SECTION.
       * A variable is declared in 3 steps:
       * level-number data-name           picture clause
+
       * The level-number is two numbers that say what type of variable 
-      * it is (var, const, boolean) and at what level it is at.
+      * it is (group, var, boolean) and at what higharchy level it is at
       * The level-numbers that you use are:
-      * 01-49, 66, 77, and 88.
       * 01-49 are general level-numbers that you use to declare normal
       * variables.
       * 66 is not really used anymore, it has to do with groups which 
@@ -300,53 +454,128 @@ don't write anything here and you're good.
       * 88 are booleans. Either true or false.
 
       * Every variable has to start at a 01 or 77 level in column A.
-      * Then you got the data-name or the actual variable name you'll
-      * reference when writing your code. 
-      * Different places has different standards on how these are named.
+      * Then you got the actual variable name you'll reference when 
+      * writing your code. 
       
       * Last part is the declaration of what the variable contains.
       * PIC is short for PICTURE. After PIC You write what type of data
-      * it is. Here in the first we have 99 which means two numbers.
-      * A = ALPHABETIC (OR SPACE)
+      * it is and how many characters it contains. Some of the more
+      * common types are:
+      * X = ALPHANUMERIC CHARACTER (any from the EBCDIC set)
+      * A = ALPHABETIC (a-z, A-Z, and space)
+      * 9 = Number (0-9)
       * B = SPACE
+
+      * You can combine all the ones above with each other.
+       01 FIRST_VAR                      PIC XA9B.
+      * X is basically anything, A is a letter, 9 number, B space
+      * FIRST_VAR = "~f6 "
+      * Use VALUE to give the var a default value
+       01 VALUETOWN                      PIC 9(4) VALUE 9001.
+
       * P = DECIMAL SCALING POSITION (doesn't count in size of the item)
       * S = OPERATIONAL SIGN (doesn't count in size of the item)
       * V = ASSUMED DECIMAL POINT (doesn't count in size of the item)
-      * X = ALPHANUMERIC CHARACTER (any from the EBCDIC set)
       * Z = ZERO SUPRESSION CAHRACTER (001.00 -> 1.00)
+
+      * A signed number
+       01 WEARENUMBERONE                 PIC S9.
+      
+      * Signed decimal number
+       01 SIGNEDWITHLOVE                 PIC S9V9.
+
+      * Big number
+       01 BIGBOI                         PIC 99999999999999999999.
+      * but since that looks pretty ugly and we don't have all the space
+      * in the world to write. We can just do this instead
+       01 CLEANBIGBOI                    PIC 9(20).
+      
+      * Using 9s means that there HAS to be a number there. So we only 
+      * want to use this for calculations and things like that.
+      * But if we want to show it for some reason, we can get rid
+      * of the 0s that show up.
+       01 PRESENTABLE                    PIC Z(19)9.
+
+      * Decimals
+       01 BABYAGE_MONTHS                 PIC 9V9. 
+      * V is the deciamal if you have one.
+      
+       01 ACCOUNTBALANCE                 PIC S9,999,999,999.99.
+      * Using , as a seperator. It's just for show.
+      * The . is the decimal point, this actually shows in the output
+      * unlike V.
+
+       01 2NDACCOUNTBALANCE              PIC 999PPP.
+      * 123 = 123.000
+       01 3RDACCOUNTBALANCE              PIC PPP999.
+      * 123 = 0.000123
+
+      * Good to know special one
+      * Since you can't combine an S with a Z in the declaration.
+      * You can do this instead.
+       01 PROFIT                         PIC +(19)9.
+      * Or this
+       01 LOSS                           PIC -(19)9.
+      * -00000000000000000009 = -                   9
+      * It looks better if you put it in the end.
+       01 PRETTYLOSS                     PIC (19)9-.
+      * + - (cyrrency symbol) are all interchangable
+      * Using * is like Z but it replaces the 0s with * instead.
+
+
       * There are some more special ones, you can find them here:
       * https://www.ibm.com/support/knowledgecenter/en/ssw_ibm_i_73/rzasb/picsym.htm#picsym
 
-      * The ones you're going to use 99% of the time are: X, A, 9, V, Z,
-      * and S
+      * The ones you're going to use 99% of the time are: X, A, 9, V, S
       
+
       * When defining a file-status variable, it's two numbers.
-      * So we just put two 9s together when declaring it.
        01 FILEIN-STATUS                  PIC 99. 
+      * If you have one 88 level it's called a switch.
            88 FILEIN-EOF                     VALUE '10'.
       * 88 levels don't use pic, they use VALUE instead. 
       * if FILEIN-STATUS = 10 then FILEIN-EOF = TRUE 
       * if it's something else     FILEIN-EOF = FALSE.
-      * If you have one 88 level it's generally called a switch.
+
        01 FILEOUT-STATUS                 PIC 99.
            88 FILEOUT-EOF                    VALUE '10'.  
-           88 FILEOUT-NOTOPEN                VALUE '48'.
+           88 FILEOUT-OPENELSEWHERE          VALUE '48'.
       * If you have multiple, it's called flags.
       
-      * You have groups as well. This way you can easily split up a
-      * variable into smaller pieces in case you only want to change
-      * a small part of it
-       01 CURRENT-DATE. *> In this case, this group is declared as:
-      * PIC X(8).
-      * Groups are always declared as X.
-           05 C-YEAR                     PIC 9(4). *> same as PIC 9999.
+      * As you saw in the file declarations, there are group variables
+      * as well.This way you can easily split up a variable into smaller
+      * pieces in case you only want to change a small part of it.
+       01 CURRENT-DATE. *> No pic declaration here.
+
+      * But it has a higher level below it to indicate that it's a 
+      * parent.
+           05 C-YEAR                     PIC 9(4). 
       * We use 05 in case we want to add something later on and we don't
       * want to change every single level-number. So adding a 03 item
       * above this and below the 01 will make the 03 item the parent
       * and the 01 item the grand parent. 
+
            05 C-MONTH                    PIC 99.
-      * Note the '.' are after every declaration.
            05 C-DAY                      PIC 99.
+
+      * Now that we have declared a whole date. We can change only the 
+      * C-DAY variable when a new day begins. Instead of having to 
+      * enter the whole date again.
+
+      * Groups are always declared as X(n) where N is the total amount
+      * of characters that the children have. So CURRENT-DATE would be
+      * 4 + 2 + 2 = 8. Later on when handling strings, this can turn out
+      * to be useful. 
+
+      * They are also all the child variables in one. The children are
+      * basically just a new name for a specific part of the parent
+      * variable. Visual representation of that:
+      * CURRENT-DATE:    (2020)(01)(01)
+      *                   YEAR  l    l
+      *                       month  l
+      *                             day
+
+
 
       * We can also declare tables. (avoid if you're not sure they
       * will hold for ~50 years, also avoid big ones since they take up
@@ -371,7 +600,7 @@ don't write anything here and you're good.
                            25 YESNEST3                  OCCURS 10.
                                30 YESNEST4              OCCURS 10.
       * They don't have to be indented by 4 every time in column B. But
-      * it has to be more than the one above.
+      * it should be more than the one above.
                                    35 YESNEST5          OCCURS 10.
                                     45 YESNEST6         OCCURS 10000000.
                           *> It also doesn't have to be on the same row.
@@ -391,6 +620,10 @@ don't write anything here and you're good.
       * COMP-3 / PACKED DECIAMAL = (n + 1) / 2 bytes float
       * The ones you're going to use the most are COMP and COMP-3
 
+      * There are other ones, a list of them can be found here:
+      * https://www.ibm.com/support/knowledgecenter/en/SS6SG3_6.3.0/lr/ref/rlddeusa.html
+
+
       * Now we can talk about the number-level 66.
       * First we make a normal group.
        01 TIMESTAMP.
@@ -409,9 +642,9 @@ don't write anything here and you're good.
       * So now if you only want the date instead of the full timestamp,
       * you only get the date when you reference T-DATE.
       * Note that this only references the variables that you enter
-      * it doesn't change them.
+      * it doesn't change or move them.
 
-      * If you have something like a date and you want to make it look
+      * If you have a date and you want to make it look
       * like this instead: 2020-01-01
       * You can use filler like this:
        01 FIXED-TIMESTAMP.
@@ -430,6 +663,13 @@ don't write anything here and you're good.
       * directly, you have to change the whole FIXED-TIMESTAMP. Which 
       * you shouldn't do anyway, so using fillers prevents small 
       * mistakes like that. 
+
+      * Sometimes you might share variable with other files, then you
+      * can use copybook
+       COPY 'VARIABLES.COPY'.
+      * You can also change some characters in them if you need to:
+      * COPY <COPYBOOK> REPLACING ==<var>== BY ==<var2>== 
+       COPY 'VARIABLES2.COPY' REPLACING ==REPLACEME== BY ==REPLACED==.
 
       * Some variables we will use in the code below.
        01 A                              PIC X.
@@ -454,7 +694,20 @@ don't write anything here and you're good.
            05 WS-FILEIN-AMMOUNT          PIC ZZZ,ZZZ,ZZ9.99.
            05 WS-FILEIN-BALANCEBEFORE    PIC ZZZ,ZZZ,ZZ9.99.
            05 WS-FILEIN-BALANCEAFTER     PIC ZZZ,ZZZ,ZZ9.99.
+
+      * SQL is a thing as well. Though in the world of cobol it's
+      * called DB2. 
+       EXEC SQL
+           INCLUDE SQLCA 
+       END-EXEC. *> INCLUDE is like COPY but for SQL
+       
+      * SQLCA contains the basic variables for working with SQL.
+      * Like SQLCODE, which will be used a lot. SQLCODE is the code that
+      * the database sends back every time you do something. 
+      * More SQL later on. 
+
       * Last thing is the linkage-section.
+
        LINKAGE SECTION.
       * This is where variables that are used from a parent program 
       * are declared.
