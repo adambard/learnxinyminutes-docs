@@ -69,7 +69,6 @@ def showdialog():
     b1.move(50, 50)
     d.setWindowTitle("Dialog")
     # 这里的模态实现了在对话框弹出时阻塞程序同时屏蔽父窗口
-    # This modality tells the popup to block the parent whilst it's active
     d.setWindowModality(Qt.ApplicationModal)
     # 当按钮被点击时整个进程将会结束
     b1.clicked.connect(sys.exit)
