@@ -12,7 +12,7 @@ lang: zh-cn
 **Qt** 是一个用 C++ 实现的著名跨平台软件开发框架。只需少量更改有时候甚至不需要更改代码就能在多个软硬件平台上运行，同时拥有原生应用程序的功能和速度。
 
 
-以下是[Aleksey Kholovchuk](https://github.com/vortexxx192)对 QT 的 C++ 简介的部分代码的 python 实现。
+以下内容改编自 [Aleksey Kholovchuk](https://github.com/vortexxx192) 编写的 C++ 版 QT 简介，并用 pyqt 重构原文代码，实现了部分相同的功能。
 
 ```python
 import sys
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     window()
 ```
 
-为了运用 pyqt 中一些更高级的功能，我们需要开始学习使用其他控件。在这里演示了弹出对话框的代码，该对话框在用户确认操作或输入信息等情况下经常用到。
+为了运用 pyqt 中一些更高级的功能，我们需要开始学习使用其他控件。下文演示了如何弹出对话框，该对话框在用户确认操作或输入信息等情况下经常用到。
 
 ```Python 
 import sys
@@ -53,7 +53,7 @@ def window():
     b = QPushButton(w)
     b.setText("Press me")
     b.move(50, 50)
-    # 当按钮 b 被点击时调用下面这个函数
+    # 当按钮 b 被点击时调用 showdialog 函数
     # 注意函数调用时没有“()”，这样函数就能以对象的方式传入而非传入执行它所得到的返回值
     # 更多关于 pyqt 函数调用、传参等的内容见 pyqt 的信号机制
     b.clicked.connect(showdialog)
