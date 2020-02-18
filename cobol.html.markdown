@@ -91,7 +91,9 @@ don't write anything here and you're good.
       * 16/02/2020 MIKAEL KEMSTEDT  Started writing the guide.         
       * 17/02/2020 MIKAEL KEMSTEDT  Changed some formatting and added
       *                             a more in-depth explanation 
-      *                             of files.         
+      *                             of files and variables.  
+      * 18/02/2020 MIKAEL KEMSTEDT  Added basic SQL statements. Also
+      *                             added some function explanations.
       *                                                               
       *****************************************************************
       * There are 5 kinds of levels in COBOL:
@@ -626,23 +628,32 @@ don't write anything here and you're good.
 
       * Now we can talk about the number-level 66.
       * First we make a normal group.
-       01 TIMESTAMP.
+       01 TIMESTAMP-DATE.
            05 T-YEAR                     PIC X(4) VALUE '2020'. 
            *> Since it's x we have to use '' for the value.
            05 T-MONTH                    PIC X(2). 
            *> Don't use VALUE if you change the value later on.
            05 T-DAY                      PIC X(2). 
+       01 TIMESTAMP-TIME.
            05 T-HOUR                     PIC 9(2) VALUE 00.
            *> With 9 you get an error if you use ''. 
            05 T-MIN                      PIC 9(2). 
            05 T-SEC                      PIC 9(2). 
       
       * Now the 66 renames the variables above. 
-       66 T-DATE RENAMES T-YEAR THRU T-DAY.
-      * So now if you only want the date instead of the full timestamp,
-      * you only get the date when you reference T-DATE.
-      * Note that this only references the variables that you enter
-      * it doesn't change or move them.
+       66 T-DATE RENAMES T-DAY THRU T-MIN.
+      * NOTE: 
+      * It ignores the 01 level. 
+      * T-DATE = T-DAY
+      *          T-HOUR
+      *          T-MIN
+
+      * Instead of 66 you can redefine them
+       01 TIMESTAMP2 REDEFINES TIMESTAMP-DATE PIC X(8).
+      * Just gives it a new name. This can be useful in bigger groups
+      * or with splitting up smaller variables without changing the
+      * "original" declaration itself.    
+           
 
       * If you have a date and you want to make it look
       * like this instead: 2020-01-01
@@ -676,6 +687,9 @@ don't write anything here and you're good.
        01 B                              PIC X.
        01 C                              PIC 9  COMP. 
        01 D                              PIC 9  COMP.
+       01 E                              PIC 9  COMP.
+       01 F                              PIC 9  COMP.
+       01 G                              PIC 9  COMP.
        01 R                              PIC 9  COMP. 
        01 TEN                            PIC 99 COMP.     
        01 ELEVEN                         PIC 99 COMP.      
@@ -700,7 +714,7 @@ don't write anything here and you're good.
        EXEC SQL
            INCLUDE SQLCA 
        END-EXEC. *> INCLUDE is like COPY but for SQL
-       
+
       * SQLCA contains the basic variables for working with SQL.
       * Like SQLCODE, which will be used a lot. SQLCODE is the code that
       * the database sends back every time you do something. 
@@ -786,7 +800,7 @@ don't write anything here and you're good.
                       NOTABLE
                       NO-INDEX
                       YES-INDEX
-                      TIMESTAMP 
+                      TIMESTAMP-DATE 
                       T-DATE 
                       FIXED-TIMESTAMP
       * This resets the variables to either space (or . ) or 0
@@ -798,6 +812,8 @@ don't write anything here and you're good.
            PERFORM C150-INDEX-AND-TABLES 
            PERFORM C160-FILE-STATEMENTS 
            PERFORM C170-LOOPS
+           PERFORM C180-SQL
+           PERFORM C190-FUNCTIONS
       *    PERFORM C200-NO-GO-ZONE
            .
            
@@ -1090,7 +1106,7 @@ don't write anything here and you're good.
            REWRITE FILEOUT *> Rewrite that line
            END-REWRITE 
 
-      * And at last we close the files that we opened at the start
+      * And at last we close the files that we opened
            CLOSE FILEIN FILEOUT
 
            PERFORM C161-SORT-FILE 
@@ -1258,19 +1274,182 @@ don't write anything here and you're good.
            READ FILEIN
            END-READ
            .
+           
+       C180-SQL SECTION.
+      * The DB2 SQL statements are very similar to normal SQL. 
+      * The big difference is that you can only read one row at a time.
+           MOVE '1' TO C
+      * Here is a normal select statement. 
+           EXEC SQL
+               SELECT 
+                   * 
+       /* What variable(s) we want to put the selected value into */
+               INTO 
+                   :B
+      /*  COBOL variables need to have a : infront of them */
+               FROM 
+                   DB.TABLE
+               WHERE
+                   TABLE_ID = :C
+           END-EXEC
+
+      * If you need more than just the first row that it finds,
+      * You need a cursor
+           MOVE '12' TO D
+      * You can also declare these in the working-storage section.
+           EXEC SQL
+               DECLARE FIRSTCURSOR CURSOR FOR 
+                   SELECT * FROM DB.TABLE WHERE TABLE_ID = :D
+           END-EXEC
+
+      * Then open it when you want to use it
+           EXEC SQL
+               OPEN FIRSTCURSOR 
+           END-EXEC
+      * Since we have a variable in the cursor declaration, that 
+      * variable will change up until you open it, then the cursor
+      * won't update it with the new value until you open it again.
+           
+           MOVE '123' TO D *> Cursor doesn't care
+
+      * The cursor is now basically a file that you have opened in input
+      * mode. Getting a row:
+           EXEC SQL
+               FETCH FIRSTCURSOR INTO :A 
+           END-EXEC
+      * That's the first row, now to get the second row:
+           EXEC SQL
+               FETCH FIRSTCURSOR INTO :A 
+           END-EXEC
+      * You can keep going until you reach the end or you close the 
+      * cursor. And like a file, if you open it again you'll start
+      * over from row nr1.
+           EXEC SQL
+               CLOSE FIRSTCURSOR 
+           END-EXEC
+      
+           EXEC SQL
+               OPEN FIRSTCURSOR 
+           END-EXEC
+      * Now the variable D is updated for the cursor.
+           
+           EXEC SQL
+               CLOSE FIRSTCURSOR 
+           END-EXEC
+
+
+      * Avoid NULL data, it is a bit tricky to handle. 
+      * You can use coalesce to make it into another value instead.
+      * Then if you really need to you can turn it back into null.
+      * Then you can do that 
+           EXEC SQL
+               INSERT INTO DB.TABLE
+               VALUES (NULLIF(:C, 1)) 
+           END-EXEC
+      
+
+      * Then lastly, update
+           EXEC SQL
+               UPDATE DB.TABLE
+               SET COL1 = '2'
+           END-EXEC
+
+      * These four is probably what you'll be working with the most.
+      
+      * Pretty much every time you do something in SQL you want to see
+      * if it worked or not, same as with files.
+      * SQLCODE is what you need to use, it comes with the SQLCA we 
+      * declared earlier.
+           EVALUATE SQLCODE
+           WHEN 0
+               CONTINUE
+           WHEN 100 *> Worked but didn't find anything
+               CONTINUE 
+           WHEN OTHER
+               PERFORM Z999-TERMINATE
+           END-EVALUATE
+      
+      * There are a lot of statements that are not written here. 
+      * A list of those statements can be found here: 
+      * https://www.ibm.com/support/knowledgecenter/en/SSEPEK_12.0.0/sqlref/src/tpc/db2z_sqlstatementslist.html
+      * I would recommend looking up more info about WHERE if you're not
+      * familiar with SQL already. It can be very helpful.  
+           .
+       
+       C190-FUNCTIONS SECTION.
+      * There are a few built functions in COBOL. As you might suspect,
+      * the standard math functions exist. Like:
+      *    COS (Cosine)
+      *    SIN (Sine)
+      *    TAN (Tangent)
+      * and more. 
+
+      * The syntax for functions are like this (without the DISPLAY
+      * ofcourse):
+           DISPLAY FUNCTION LENGTH(A)
+      * This returns how long A is (including space)
+
+      * If you want to remove the space, so you get the actual length
+      * of the content of A, you can nest two functions:
+           DISPLAY FUNCTION LENGTH(FUNCTION TRIM(A))
+      
+      * These functions can also be used in normal statements of course
+           MOVE FUNCTION LENGTH(FUNCTION TRIM(A)) 
+             TO C
+
+      * Now we can finally get todays date as well
+           MOVE FUNCTION CURRENT-DATE TO CURRENT-DATE 
+
+      * And some functions that might prove useful when working with
+      * numbers:
+           DISPLAY FUNCTION MAX(C D E F) *> Returns the highest value
+      
+      * Now which one was the biggest?
+           EVALUATE FUNCTION MAX(C D E F)
+           WHEN C
+               DISPLAY 'C WAS THE BIGGEST'
+           WHEN D
+               DISPLAY 'D WAS THE BIGGEST'
+           WHEN E
+               DISPLAY 'E WAS THE BIGGEST'
+           WHEN F
+               DISPLAY 'F WAS THE BIGGEST'
+           END-EVALUATE
+
+      * You also got, MIN, MEDIAN, SUM, PI, MOD (modulo), 
+      * MIDRANGE (mean)
+      
+      * The full list of functions can be found here:
+      * https://www.ibm.com/support/knowledgecenter/SS6SG3_6.3.0/lr/ref/rlinf.html
+           .
 
        C200-NO-GO-ZONE SECTION.
       * Two statements you want to avoid:
            ALTER Z999-TERMINATE TO A100-PERFORM-CALL  
       * This just makes it incredibly hard to maintain. NEVER use this.
       * It's also deprecated but still works for backwards compatability 
+
            GO TO Z999-TERMINATE *> We altered it so we just start over.
       * Only time you may use go to is when you have to exit the code 
       * because you go an error or something like that. 
            .
 
        Z999-TERMINATE.
+      * Exiting the program can be done in multiple ways. They do 
+      * slightly different things to the program that called this.
+
+      * Basic one is
            GOBACK
+      * Quits this program and gives back control to the one that called
+      * this. If nothing called it then it is the same as STOP RUN.
+
+           STOP RUN
+      * Gives back control to the OS (stops programs that called this
+      * one as well)
+ 
+           EXIT PROGRAM
+      * Is only valid in sub-programs. It gives back control the program
+      * that called this one. 
            .
 ```
 
