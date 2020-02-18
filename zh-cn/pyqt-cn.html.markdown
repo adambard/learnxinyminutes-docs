@@ -9,10 +9,10 @@ translators:
 lang: zh-cn
 ---
 
-**Qt** 是一个著名的用C++实现的跨平台软件开发框架。只需更改少量甚至有时候不需要更改代码就能在多个软硬件平台上运行同时拥有原生应用程序的功能和速度。
+**Qt** 是一个用 C++ 实现的著名跨平台软件开发框架。只需少量更改有时候甚至不需要更改代码就能在多个软硬件平台上运行，同时拥有原生应用程序的功能和速度。
 
 
-这是[Aleksey Kholovchuk](https://github.com/vortexxx192)对QT的C++简介的改编，用pyqt实现了一些相同功能的代码！
+以下是[Aleksey Kholovchuk](https://github.com/vortexxx192)对 QT 的 C++ 简介的部分代码的 python 实现。
 
 ```python
 import sys
@@ -21,26 +21,26 @@ from PyQt4 import QtGui
 def window():
     # 创建应用对象
     app = QtGui.QApplication(sys.argv)
-    # 创建一个widget，label将会被放置在里面
+    # 创建一个 widget，作为 label 的父控件
     w = QtGui.QWidget()
-    # 在widget中添加一个label
+    # 在 widget 中添加一个 label 子控件
     b = QtGui.QLabel(w)
-    # 设置label的文字
+    # 设置 labe l的文字
     b.setText("Hello World!")
     # 设置尺寸和位置
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
     # 设置窗口的标题
     w.setWindowTitle("PyQt")
-    # 将所有东西都显示出来
+    # 显示 widget 及其所有子控件
     w.show()
-    # 完成所有设置后，执行我们要求的操作
+    # 下面让程序跑起来，这行代码会启动事件循环并阻塞直到应用程序退出。
     sys.exit(app.exec_())
 if __name__ == '__main__':
     window()
 ```
 
-为了获得pyqt中的一些更高级的功能，我们需要开始研究构建其他元素。在这里，我们展示了如何使用弹出对话框，该对话框对于要求用户确认操作或提供信息很有用。
+为了运用 pyqt 中一些更高级的功能，我们需要开始学习使用其他控件。在这里演示了弹出对话框的代码，该对话框在用户确认操作或输入信息等情况下经常用到。
 
 ```Python 
 import sys
@@ -49,20 +49,20 @@ from PyQt4.QtCore import *
 def window():
     app = QApplication(sys.argv)
     w = QWidget()
-    # 创建一个按钮并附加到widget w
+    # 创建一个按钮并添加到 widget 控件 w
     b = QPushButton(w)
     b.setText("Press me")
     b.move(50, 50)
-    # 当按钮b被点击时调用下面这个函数
-    # 注意函数调用时没有“()”，这样函数就能以对象的方式传入而非调用它所得到的返回值
-    # 更多关于pyqt函数调用、传参等的内容见pyqt的信号机制
+    # 当按钮 b 被点击时调用下面这个函数
+    # 注意函数调用时没有“()”，这样函数就能以对象的方式传入而非传入执行它所得到的返回值
+    # 更多关于 pyqt 函数调用、传参等的内容见 pyqt 的信号机制
     b.clicked.connect(showdialog)
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
     
-# 此函数将会创建一个带有按钮的对话框窗口
-# 当按钮被点击时会退出这个程序
+# 对话框窗口创建函数
+# 当窗口中的按钮被点击时退出本程序
 def showdialog():
     d = QDialog()
     b1 = QPushButton("ok", d)
