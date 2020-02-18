@@ -25,7 +25,7 @@ def window():
     w = QtGui.QWidget()
     # 在 widget 中添加一个 label 子控件
     b = QtGui.QLabel(w)
-    # 设置 labe l的文字
+    # 设置 label 的文字
     b.setText("Hello World!")
     # 设置 widget 的尺寸和位置
     w.setGeometry(100, 100, 200, 50)
