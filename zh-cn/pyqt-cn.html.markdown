@@ -17,24 +17,24 @@ lang: zh-cn
 ```python
 import sys
 from PyQt4 import QtGui
-	
+    
 def window():
-	# 创建应用对象
+    # 创建应用对象
     app = QtGui.QApplication(sys.argv)
-	# 创建一个widget，label将会被放置在里面
+    # 创建一个widget，label将会被放置在里面
     w = QtGui.QWidget()
-	# 在widget中添加一个label
+    # 在widget中添加一个label
     b = QtGui.QLabel(w)
-	# 设置label的文字
+    # 设置label的文字
     b.setText("Hello World!")
-	# 设置尺寸和位置
+    # 设置尺寸和位置
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
-	# 设置窗口的标题
+    # 设置窗口的标题
     w.setWindowTitle("PyQt")
-	# 将所有东西都显示出来
+    # 将所有东西都显示出来
     w.show()
-	# 完成所有设置后，执行我们要求的操作
+    # 完成所有设置后，执行我们要求的操作
     sys.exit(app.exec_())
 if __name__ == '__main__':
     window()
@@ -60,7 +60,7 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-	
+    
 # 此函数将会创建一个带有按钮的对话框窗口
 # 当按钮被点击时会退出这个程序
 def showdialog():
