@@ -27,7 +27,7 @@ def window():
     b = QtGui.QLabel(w)
     # 设置 labe l的文字
     b.setText("Hello World!")
-    # 设置尺寸和位置
+    # 设置 widget 的尺寸和位置
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
     # 设置窗口的标题
