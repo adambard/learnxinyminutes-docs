@@ -6,6 +6,8 @@ contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:
     - ["kdxcxs", "https://github.com/kdxcxs"]
+    - ["lsvih", "https://github.com/lsvih"]
+    - ["imlonghao", "https://github.com/imlonghao"]
 lang: zh-cn
 ---
 
