@@ -42,7 +42,8 @@ Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit sta
 # Až na dělení, které vrací desetinné číslo
 35 / 5  # => 7.0
 
-# Při celočíselném dělení je desetinná část oříznuta (pro kladná i záporná čísla)
+# Při celočíselném dělení je na výsledek aplikována funkce floor(),
+# což znamená zaokrouhlení směrem k mínus nekonečnu (pro kladná i záporná čísla).
 5 // 3       # => 1
 5.0 // 3.0   # => 1.0  #  celočíselně dělit lze i desetinným číslem
 -5 // 3      # => -2
