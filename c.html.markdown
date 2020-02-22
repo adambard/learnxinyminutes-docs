@@ -89,7 +89,7 @@ int main (int argc, char** argv)
   // Types
   ///////////////////////////////////////
 
-  // Compilers that are not C99-compliant requires that variables MUST be
+  // Compilers that are not C99-compliant require that variables MUST be
   // declared at the top of the current block scope.
   // Compilers that ARE C99-compliant allow declarations near the point where
   // the value is used.
