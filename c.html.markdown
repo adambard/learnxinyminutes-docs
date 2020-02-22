@@ -89,10 +89,12 @@ int main (int argc, char** argv)
   // Types
   ///////////////////////////////////////
 
-  // All variables MUST be declared at the top of the current block scope
-  // we declare them dynamically along the code for the sake of the tutorial
-  // (however, C99-compliant compilers allow declarations near the point where
-  // the value is used)
+  // Compilers that are not C99-compliant requires that variables MUST be
+  // declared at the top of the current block scope.
+  // Compilers that ARE C99-compliant allow declarations near the point where
+  // the value is used.
+  // For the sake of the tutorial, variables are declared dynamically under
+  // C99-compliant standards.
 
   // ints are usually 4 bytes
   int x_int = 0;
