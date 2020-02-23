@@ -13,6 +13,7 @@ contributors:
     - ["Clayton Walker", "https://github.com/cwalk"]
     - ["Leonid Shevtsov", "https://github.com/leonid-shevtsov"]
     - ["Michael Graf", "https://github.com/maerf0x0"]
+    - ["John Arundel", "https://bitfieldconsulting.com/golang"]
 ---
 
 Go was created out of the need to get work done. It's not the latest trend
@@ -459,7 +460,7 @@ There you can follow the tutorial, play interactively, and read lots.
 Aside from a tour, [the docs](https://golang.org/doc/) contain information on
 how to write clean and effective Go code, package and command docs, and release history.
 
-The language definition itself is highly recommended. It's easy to read
+The [Go language specification](https://golang.org/ref/spec) itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
 
 You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
@@ -471,5 +472,10 @@ idioms. Or you can click on a function name in [the
 documentation](http://golang.org/pkg/) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
+
+There are many excellent conference talks and video tutorials on Go available on YouTube, and Go trainer [John Arundel](https://bitfieldconsulting.com/golang) has put together three playlists of the very best, tailored for beginners, intermediate, and advanced Gophers respectively:
+* [Golang University 101](https://www.youtube.com/playlist?list=PLEcwzBXTPUE9V1o8mZdC9tNnRZaTgI-1P) introduces fundamental Go concepts and shows you how to use the Go tools to create and manage Go code
+* [Golang University 201](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs) steps it up a notch, explaining important techniques like testing, web services, and APIs
+* [Golang University 301](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs) dives into more advanced topics like the Go scheduler, implementation of maps and channels, and optimisation techniques
 
 Go Mobile adds support for mobile platforms (Android and iOS). You can write all-Go native mobile apps or write a library that contains bindings from a Go package, which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.
