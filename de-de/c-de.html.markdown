@@ -180,11 +180,12 @@ int main (int argc, char** argv) {
     // Typen
     ////////////////////////////////////////////////
 
-    // Alle Variablen müssen am Anfang des jetzigen Blocks deklariert werden.
-    // Wir deklarieren die Variablen dynamisch im Code um die Lesbarkeit im
-    // Tutorial zu verbessern.
+    // Compiler, welche nicht C99-kompatibel sind, verlangen, dass sämtliche
+    // Variablen zu Beginn des Blocks deklariert werden.
     // C99-Konforme Compiler erlauben die Variablendeklaration an dem Punkt, an
     // welchem die Variable verwendet wird.
+    // Wir deklarieren die Variablen dynamisch im Code um die Lesbarkeit im
+    // Tutorial zu verbessern.
 
     // integer sind normalerweise 4 Bytes groß
     int x_int = 0;
