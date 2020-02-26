@@ -140,7 +140,7 @@ SomeRandomClass myObjectInstantiated = new SomeRandomClass();
 
 // Arithmetic
 1 + 1 // 2
-2 - 1 // 0
+2 - 1 // 1
 2 * 3 // 6
 3 / 2 // 1
 3.0 / 2 // 1.5
