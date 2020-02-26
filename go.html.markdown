@@ -473,7 +473,7 @@ documentation](http://golang.org/pkg/) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
 
-There are many excellent conference talks and video tutorials on Go available on YouTube, and Go trainer [John Arundel](https://bitfieldconsulting.com/golang) has put together three playlists of the very best, tailored for beginners, intermediate, and advanced Gophers respectively:
+There are many excellent conference talks and video tutorials on Go available on YouTube, and Go trainer John Arundel of Bitfield Consulting has put together three playlists of the very best, tailored for beginners, intermediate, and advanced Gophers respectively:
 * [Golang University 101](https://www.youtube.com/playlist?list=PLEcwzBXTPUE9V1o8mZdC9tNnRZaTgI-1P) introduces fundamental Go concepts and shows you how to use the Go tools to create and manage Go code
 * [Golang University 201](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs) steps it up a notch, explaining important techniques like testing, web services, and APIs
 * [Golang University 301](https://www.youtube.com/watch?v=YHRO5WQGh0k&list=PLEcwzBXTPUE8KvXRFmmfPEUmKoy9LfmAf) dives into more advanced topics like the Go scheduler, implementation of maps and channels, and optimisation techniques
