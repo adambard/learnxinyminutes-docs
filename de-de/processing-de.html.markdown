@@ -159,3 +159,29 @@ SomeRandomClass myObjectInstantiated = new SomeRandomClass();
 3 / 2 // => 1
 3.0 / 2 // => 1.5
 3.0 % 2 // => 1.0 (Modulo)
+
+// Processing beinhaltet auch einige Funktionen, welche mathematische
+// Operationen vereinfachen
+float f = sq(3); // Quadrat => f = 9.0
+float p = pow(3, 3); // Potenz => p = 27.0
+int a = abs(-13); // Absolute Zahl => a = 13
+int r1 = round(3.1); // Runden => r1 = 3
+int r2 = round(3.7); // Runden => r2 = 4
+int sr = sqrt(25); // Quadratwurzel => sr = 5.0
+
+// Vektoren
+// Processing bietet eine einfache Möglichkeit an, mit Vektoren zu arbeiten mit
+// der Klasse PVector. Die Klasse kann zwei- und dreidimensionale Vektoren 
+// darstellen und bietet Methoden an, welche nützlich sein können für Matrizen-
+// Operationen. Weitere Informationen findest du hier: 
+// (https://processing.org/reference/PVector.html)
+
+// Trigonometrie
+// Processing unterstützt auch trigonometrische Operationen mit Hilfe dieser
+// Funktionen: `sin()`, `cos()`, `tan()`, `asin()`, `atan()`. Für die einfache
+// Konvertierung gibt es ausserdem noch die Funktionen `degrees()` und `radians()`.
+// Die trigonometrischen Funktionen rechnen mit dem Winkelmass Radian, wodurch
+// die Gradzahlen zuerst konvertiert werden müssen.
+float one = sin(PI/2); // => one = 1.0
+// Wie du vielleicht bemerkt hast, existieren einige Konstanten für trigo-
+// metrische Operationen; `PI`, `HALF_PI`, `QUARTER_PI` und so weiter ...
