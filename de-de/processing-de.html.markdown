@@ -185,3 +185,65 @@ int sr = sqrt(25); // Quadratwurzel => sr = 5.0
 float one = sin(PI/2); // => one = 1.0
 // Wie du vielleicht bemerkt hast, existieren einige Konstanten für trigo-
 // metrische Operationen; `PI`, `HALF_PI`, `QUARTER_PI` und so weiter ...
+
+/* -------------------------------------------------
+   Kontrollstrukturen
+   -------------------------------------------------
+*/
+
+// Bedingte Anweisungen
+// Bedinge Anweisungen werden gleich wie in Java geschrieben.
+if (author.getAppearence().equals("hot")) {
+    print("Narzissmus vom Feinsten!")
+} else {
+    // Du kannst hier weitere Bedingungen prüfen.
+    print("Irgendetwas ist falsch hier!");
+}
+// Für die `if`-Anweisungen gibt es auch eine Kurzschreibweise
+// Dies sind sogenannte ternäre Operatoren.
+int i = 3;
+String value = (i > 5) ? "Gross" : "Klein"; // => "Klein"
+
+// Die Switch-Case-Anweisung kann verwendet werden, um mehrere Bedingungen
+// zu prüfen.
+// Wichtig ist, dass nach jeder Bedingung ein `break`-Statement verwendet wird, 
+// sonst werden alle folgenden ausgeführt und es wird nicht mehr überprüft, ob
+// die Bedingung wahr ist.
+int value = 2;
+switch(value) {
+    case 0:
+        print("Auf keinen Fall!"); // Dies wird nicht ausgeführt.
+        break; // Geht zum nächsten Statement und prüft dieses
+    case 1:
+        print("Wir kommen näher..."); // Auch dies wird nicht ausgeführt
+        break;
+    case 2:
+        print("Bravo!"); // Dies wird ausgeführt.
+        break;
+    default:
+        print("Nicht gefunden."); // Diese Zeile wird ausgeführt, wenn keine
+                                  // der anderen Operatoren wahr sind.
+        break;
+}
+
+// Wiederholungen
+// For-Statements - Auch hier ist die Syntax wieder gleich wie in Java
+for(int i = 0; i < 5; i++){
+    print(i); // Gibt die Zahlen 0 bis 4 aus.
+}
+
+// While-Statements
+int j = 3; 
+while(j > 0) {
+    print(j);
+    j--; // Dies ist wichtig, dass der Code nicht unendlich lange läuft.
+}
+
+// `loop()` | `noloop()` | `redraw()` | `exit()`
+// Dies sind spezifische Funktionen, welche in Processing verwendet werden
+// können, um den Programmablauf zu steuern.
+loop(); // erlaubt es der `draw()`-Methode immer zu laufen, während
+noloop(); // dies nur für einmal erlaubt.
+redraw(); // führt die `draw()`-Methode noch einmal aus.
+exit(); // Diese Methode stoppt das Programm. Dies kann nützlich sein, wenn die
+        // Methode `draw()` immer läuft.
