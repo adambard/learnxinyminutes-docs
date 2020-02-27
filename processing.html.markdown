@@ -211,7 +211,7 @@ switch(value) {
 
 // Iterative statements
 // For Statements - Again, the same syntax as in Java
-for(int i = 0; i < 5; i ++){
+for(int i = 0; i < 5; i++){
   print(i); // prints from 0 to 4
 }
 
