@@ -150,7 +150,7 @@ SomeRandomClass myObjectInstantiated = new SomeRandomClass();
 // operations.
 float f = sq(3); // f = 9.0
 float p = pow(3, 3); // p = 27.0
-int a = abs(-13) // a = 13
+int a = abs(-13); // a = 13
 int r1 = round(3.1); // r1 = 3
 int r2 = round(3.7); // r2 = 4
 float sr = sqrt(25); // sr = 5.0
