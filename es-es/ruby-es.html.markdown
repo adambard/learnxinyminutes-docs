@@ -139,7 +139,7 @@ status == :pendiente #=> true
 
 status == 'pendiente' #=> false
 
-status == :aprovado #=> false
+status == :aprobado #=> false
 
 # Arreglos
 
