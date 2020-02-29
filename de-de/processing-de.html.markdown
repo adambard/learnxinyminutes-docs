@@ -247,3 +247,54 @@ noloop(); // dies nur für einmal erlaubt.
 redraw(); // führt die `draw()`-Methode noch einmal aus.
 exit(); // Diese Methode stoppt das Programm. Dies kann nützlich sein, wenn die
         // Methode `draw()` immer läuft.
+```
+
+## Mit Processing zeichnen
+
+Da du nun die Grundsätze der Programmiersprache verstanden hast, schauen wir 
+uns nun das Beste an Processing an - Das Zeichnen!
+
+```
+
+/* -------------------------------------------------
+   Figuren
+   -------------------------------------------------
+*/
+
+// 2D-Figuren
+
+// Punkte
+point(x,y); // im zweidimensionalen Raum
+point(x, y, z); // im dreidimensionalen Raum
+// Diese Befehle zeichnen einen Punkt an der Koordinate.
+
+// Linien
+line(x1, y1, x2, y2); // im zweidimensionalen Raum
+line(x1, y1, z1, x2, y2, z2); // im dreidimensionalen Raum
+// Dies zeichnet eine Linie, welche durch die zwei Punkte (x1, y1) und (x2, y2)
+// definiert wird.
+
+// Dreieck
+triangle(x1, y1, x2, y2, x3, y3);
+// Zeichnet ein Dreieck, welches als Eckpunkte die drei Koordinaten hat.
+
+// Rechteck
+rect(a, b, c, d, [r]); // Mit dem optionalen Parameter kann der Winkel aller
+                       // vier Ecken definiert werden
+rect(a, b, c, d, [tl, tr, br, bl]); // Mit weiteren optionalen Parametern kann 
+                                    // jeder Winkel des Rechtecks definiert werden.
+// Dies zeichnet ein Quadrat mit der Koordinate {a, b} als linke obere Ecke;
+// die Parameter c und d sind für die Breite und Höhe.
+
+// Vierecke
+quad(x, y, x2, y2, x3, y3, x4, y4);                                             
+// Dies zeichnet ein Viereck, welches die einzelnen Koordinaten als Eckpunkte hat.
+
+// Ellipse
+ellipse(x, y, x2, y2, x3, y3, x4, y4);
+// Zeichnet eine Ellipse beim Punkt {x. y}. Die Parameter Breite und Höhre 
+// sind auch definiert.
+
+// Arc
+arc(x, y, width, height, start, stop, [mode]);
+
