@@ -363,7 +363,7 @@ background(c); // By now, the background colour should be white.
 fill(color(0, 0, 0));
 // If you just want to colour the outlines of the shapes then you can use
 // stroke() function.
-stroke(255, 255, 255, 200); // stroke colour set to yellow with transparency
+stroke(255, 255, 0, 200); // stroke colour set to yellow with transparency
 // set to a lower value.
 
 // Images
