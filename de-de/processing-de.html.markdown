@@ -297,4 +297,50 @@ ellipse(x, y, x2, y2, x3, y3, x4, y4);
 
 // Arc
 arc(x, y, width, height, start, stop, [mode]);
+// Die ersten vier Parameter sollten selbsterklärend sein.
+// start und end definieren die Winkel, bei welchen `arc` starten resp. enden
+// (in Radians)
+// Der optionale Parameter `mode` definiert, ob der Kreisbogen gefüllt wird 
+// oder nicht.
+// Die möglichen Optionen für `mode` sind: PIE, CHORD und OPEN.
+
+// Kurven
+// Processing bietet zwei mögliche Kurven an, welche verwendet werden können.
+// Da es hier darum geht, dass es möglichst simpel ist, werden hier keine 
+// weiteren Details genannt. Wenn du Kurven in deinem Programm verwenden möchtest,
+// sind die folgenden Links empfehlenswert:
+// https://processing.org/reference/curve_.html
+// https://processing.org/reference/bezier_.html
+
+
+// 3D-Figuren
+
+// Der dreidimensionale Raum kann aktiviert werden, indem man den Renderer-
+// Parameter in der Methode `size()` zu "P3D" setzt.
+size(width, height, P3D);
+// Im dreidimensionalen Raum müssen die Koordinaten übersetzt werden, damit
+// diese korrekt gerendert werden.
+
+// Box
+box(size); // Würfel mit der Seitenlänge `size`
+box(w, h, d); // Quader definiert durch Breite, Hoehe und Tiefe
+
+// Kugel
+sphere(radius); // Die Grösse wird definiert durch den Parameter `radius`
+// Der Mechanismus hinter dem Rendern von Kugeln wurde durch mosaikartige
+// Dreiecke implementiert. 
+// Mit der folgenden Funktion ist es möglich, zu bestimmen wie detailliert die
+// Kugel gerendert wird.
+// spereDetail(res);
+// Weitere Informationen sind hier zu finden: (https://processing.org/reference/sphereDetail_.html)
+
+// Unregelmässige Figuren
+// Was ist, wenn du etwas zeichnen möchtest, was nicht durch Processing-Funktionen
+// abgedeckt ist?
+// Es ist möglich, die Funktionen `beginShape()`, `endShape()` und `vertex(x,y)
+// zu verwenden.
+// Weitere Informationen findest du hier: (https://processing.org/reference/beginShape_.html)
+// Du kannst selber gemachte Formen auch verwenden mit der PShape-Klasse.
+// Informationen zu PShape gibt es hier: (https://processing.org/reference/PShape.html)
+
 
