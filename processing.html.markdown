@@ -356,7 +356,7 @@ color c = color(255, 255, 255); // WHITE!
 // By default, Processing uses RGB colour scheme but it can be configured to
 // HSB using colorMode(). Read more here:
 // (https://processing.org/reference/colorMode_.html)
-background(color); // By now, the background colour should be white.
+background(c); // By now, the background colour should be white.
 // You can use fill() function to select the colour for filling the shapes.
 // It has to be configured before you start drawing shapes so the colours gets
 // applied.
