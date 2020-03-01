@@ -343,4 +343,28 @@ sphere(radius); // Die Grösse wird definiert durch den Parameter `radius`
 // Du kannst selber gemachte Formen auch verwenden mit der PShape-Klasse.
 // Informationen zu PShape gibt es hier: (https://processing.org/reference/PShape.html)
 
+/* -------------------------------------------------
+   Transformationen
+   -------------------------------------------------
+*/
 
+// Tranformationen sind nützlich, um ständig zu wissen, wo die Koordinaten und
+// die Ecken einer Form sind, welche du gezeichnet hast. Grundsätzlich sind dies
+// Matrizenoperationen. `pushMatrix()`, `popMatrix()` und `translate()`.
+pushMatrix(); // Speichert das aktuelle Koordinatensystem auf dem Stack
+// ... alle Transformationen werden hier angewendet.
+popMatrix(); // Stellt das gespeicherte Koordinatensystem wieder her.
+// Wenn du diese Funktionen verwendest, kann das Koordinatensystem gespeichert
+// und visualisiert werden, ohne dass es Konflikte gibt.
+
+// Translate
+translate(x,y); // Setzt den Ursprung zu diesem Punkt.
+translate(x, y, z); // Pendant zu der oberen Funktion im dreidimensionalen Raum
+
+// Rotationen
+rotate(angle); // Rotiere, um den Betrag, welcher spezifiert wurde.
+// Es gibt drei Pendants im dreidimensionalen Raum. 
+// Namentlich sind dies: `rotateX(angle)`, `rotateY(angle)` und `rotateZ(angle)`
+
+// Skalierung
+scale(s); // Skaliert das Koordinatensystem (entweder erweitern oder verkleinern)
