@@ -368,3 +368,45 @@ rotate(angle); // Rotiere, um den Betrag, welcher spezifiert wurde.
 
 // Skalierung
 scale(s); // Skaliert das Koordinatensystem (entweder erweitern oder verkleinern)
+
+/* -------------------------------------------------
+   Styling und Texturen
+   -------------------------------------------------
+*/
+
+// Farben
+// Wie ich zuvor schon erklärt habe, kann die Hintergrundfarbe mit der Funktion
+// `background()` definiert werden. Ausserdem ist es möglich, dass man zuerst 
+// eine Farbe definiert und diese erst danach der Funktion übergeben wird.
+color c = color(255, 255, 255); // WEISS!
+// Standardmässig verwendet Processing das RGB-Farbschema, aber dies kann 
+// zu HSB konfiguriert werden, indem die Funktion `colorMode()` verwendet wird.
+// Weitere Informationen findest du hier: (https://processing.org/reference/colorMode_.html)
+background(c); // Ab jetzt ist der Hintergrund in weiss.
+// Du kannst die Funktion `fill()` verwenden, um die Farbe auszuwählen, mit
+// welcher die Formen ausgefüllt werden. 
+// Dies muss konfiguriert werden bevor Formen und Figuren gezeichnet werden.
+fill(color(0, 0, 0));
+// Wenn du nur die Farbe der Umrandungen definieren möchtest, kannst du die 
+// Funktion `stroke()` verwenden.
+stroke(255, 255, 0, 200); // Linienfarbe wird zu gelb mit einer höheren
+                          // Transparenz geändert.
+
+// Bilder
+// Processing kann Bilder rendern und diese unterschiedlich verwenden. Die
+// meisten Bilder sind im Datentyp `PImage` gespeichert.
+filter(shader); // Processing unterstützt mehrere Filter-Funktionen, damit
+                // Bilder verändert werden können.
+texture(image); // PImage kann als Argument, weiteren Funktionen übergeben
+                // werden, um die Figuren zu "Text" zu machen.
+```
+
+Wenn du weitere Dinge mit Processing kennenlernen willst, dann gibt es unzählige
+Dinge, welche du mit Processing machen kannst. Das Rendern von Modellen,
+Schattierungen und viele mehr. Für ein kurzes Tutorial bietet Processing zu viel,
+daher verweise ich dich, falls du interessiert bist, auf die offizielle
+Dokumentaion.
+
+```
+// Bevor wir weiterfahren, werde ich einige Aspekte zum Importieren von 
+// Bibliotheken und Paketen sagen, damit du Processing erweitern kannst..
