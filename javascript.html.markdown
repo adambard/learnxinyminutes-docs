@@ -606,23 +606,15 @@ pi = 4.13; // You cannot do this.
 // There is a new syntax for functions in ES6 known as "lambda syntax".
 // This allows functions to be defined in a lexical scope like with variables
 // defined by const and let. 
-
-const isEven = (number) => {
-    return number % 2 === 0;
-};
-
-isEven(7); // false
-
-// An even shorter way to write a function similar to the above one is:
-// Parenthesis are not required if only one argument is specified;
-// By default, a single statement defined will be the return statement, hence `return` keyword is not required. 
+// By default, a single statement defined will be the return statement, hence the `return` keyword is not required. 
 
 const isOdd = number => number % 2 !== 0;
 
+// Parentheses are not required if only one argument is specified;
 // The "equivalent" of this function in the traditional syntax would look like this:
 
-function isEven(number) {
-    return number % 2 === 0;
+function isOdd(number) {
+    return number % 2 !== 0;
 };
 
 // I put the word "equivalent" in double quotes because a function defined
