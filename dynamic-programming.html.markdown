@@ -23,7 +23,7 @@ Always remember!
 
 ## Example of Dynamic Programming
 
-The Longest Increasing Subsequence problem is to find the longest increasing subsequence of a given sequence. Given a sequence `S= {a1 , a2 , a3, a4, ............., an-1, an }` we have to find a longest subset such that for all `j` and `i`,  `j<i` in the subset `aj<ai`.
+The Longest Increasing Subsequence problem is to find the longest increasing subsequence of a given sequence. Given a sequence `S={ a1, a2, a3, a4, ............., an-1, an }` we have to find a longest subset such that for all `j` and `i`,  `j<i` in the subset `aj<ai`.
 First of all we have to find the value of the longest subsequences(LSi) at every index i with last element of sequence being ai. Then largest LSi would be the longest subsequence in the given sequence. To begin LSi is assigned to be one since ai is element of the sequence(Last element). Then for all `j` such that `j<i` and `aj<ai`, we find Largest LSj and add it to LSi. Then algorithm take *O(n2)* time.
 
 Pseudo-code for finding the length of the longest increasing subsequence:
