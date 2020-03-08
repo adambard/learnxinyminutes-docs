@@ -410,3 +410,15 @@ Dokumentaion.
 ```
 // Bevor wir weiterfahren, werde ich einige Aspekte zum Importieren von 
 // Bibliotheken und Paketen sagen, damit du Processing erweitern kannst..
+
+/* -------------------------------------------------
+   Import
+   -------------------------------------------------
+*/
+
+// Die Macht von Processing kann besser veranschaulicht werden, wenn wir 
+// Bibliotheken und Pakete importieren.
+// Die Import-Anweisung kann wie unten geschrieben zu Beginn des Quelltextes 
+// geschrieben werden.
+import processing.something.*;
+``` 
