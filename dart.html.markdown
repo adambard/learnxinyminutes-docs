@@ -198,7 +198,7 @@ class GenericExample<T>{
 /// or outside of class have to be constant. Strings and numbers are constant
 /// by default. But arrays and maps are not. They can be made constant by
 /// declaring them "const". Kind of similar to Javascript's Object.freeze()
-const example8List = ["Example8 const array"],
+const example8List = ["Example8 const array"];
 const  example8Map = {"someKey": "Example8 const map"};
 /// Declare List or Maps as Objects.
  List<String> explicitList = new List<String>();
@@ -206,7 +206,6 @@ const  example8Map = {"someKey": "Example8 const map"};
 
  explicitList.add("SomeArray");
 example8() {
-  print(example8Array[0]);
   print(example8Map["someKey"]);
   print(explicitList[0]);
 }
