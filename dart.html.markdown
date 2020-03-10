@@ -694,7 +694,6 @@ example33() {
 /// Dart has also added feature such as Null aware operators
 var isBool = true;
 var hasString = isBool ?? "default String";
-var hasValue ??= "default Value";
 
 /// Programs have only one entry point in the main function.
 /// Nothing is expected to be executed on the outer scope before a program
