@@ -310,15 +310,15 @@ example14() {
   if (a) {
     print("true, a is $a");
   }
-  a = null;
+  a = false;
   if (a) {
-    print("true, a is $a");
+    print("true, a is $a"); 
   } else {
     print("false, a is $a"); /// runs here
   }
 
-  /// dynamic typed null can be convert to bool
-  var b;/// b is dynamic type
+  /// dynamic typed null can not be convert to bool
+  var b; /// b is dynamic type
   b = "abc";
   try {
     if (b) {
@@ -329,17 +329,17 @@ example14() {
   } catch (e) {
     print("error, b is $b"); /// this could be run but got error
   }
-  b = null;
-  if (b) {
+  b = null; 
+  if (b) { /// Failed assertion: boolean expression must not be null)
     print("true, b is $b");
   } else {
-    print("false, b is $b"); /// runs here
+    print("false, b is $b"); 
   }
 
   /// statically typed null can not be convert to bool
   var c = "abc";
   c = null;
-  /// complie failed
+  /// compilation failed
   /// if (c) {
   ///   print("true, c is $c");
   /// } else {
