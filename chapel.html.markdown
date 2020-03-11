@@ -954,7 +954,6 @@ Parallelism
 // We can declare a main procedure, but all the code above main still gets
 // executed.
 proc main() {
-  writeln("PARALLELISM START");
 
 // A ``begin`` statement will spin the body of that statement off
 // into one new task.
@@ -1124,14 +1123,14 @@ proc main() {
     }
   }
 
-// Heres an example using atomics and a ``sync`` variable to create a
+// Here's an example using atomics and a ``sync`` variable to create a
 // count-down mutex (also known as a multiplexer).
   var count: atomic int; // our counter
   var lock$: sync bool;   // the mutex lock
 
   count.write(2);       // Only let two tasks in at a time.
   lock$.writeXF(true);  // Set lock$ to full (unlocked)
-  // Note: The value doesnt actually matter, just the state
+  // Note: The value doesn't actually matter, just the state
   // (full:unlocked / empty:locked)
   // Also, writeXF() fills (F) the sync var regardless of its state (X)
 
