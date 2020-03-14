@@ -284,8 +284,8 @@ else". You can have as many parameters *before* a slurpy one, but not *after*.
 sub as-many($head, *@rest) {
     @rest.join(' / ') ~ " !";
 }
-say as-many('Happy', 'Happy', 'Birthday'); # OUTPUT: «Happy / Birthday !␤»
-say 'Happy', ['Happy', 'Birthday'], 'Day'; # OUTPUT: «Happy / Birthday / Day !␤»
+say as-many('Happy', 'Happy', 'Birthday');          # OUTPUT: «Happy / Birthday !␤»
+say as-many('Happy', ['Happy', 'Birthday'], 'Day'); # OUTPUT: «Happy / Birthday / Day !␤»
 
 # Note that the splat (the *) did not consume the parameter before it.
 
