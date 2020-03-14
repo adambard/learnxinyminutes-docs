@@ -769,7 +769,7 @@ sub unpack_array( @array [$fst, $snd] ) {
   # (^ remember the `[]` to interpolate the array)
 }
 unpack_array(@tail);
-# OUTPUT: «My first is 3, my second is 3! All in all, I'm 2 3.␤»
+# OUTPUT: «My first is 2, my second is 3! All in all, I'm 2 3.␤»
 
 # If you're not using the array itself, you can also keep it anonymous,
 # much like a scalar:
