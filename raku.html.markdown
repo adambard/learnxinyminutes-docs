@@ -284,8 +284,8 @@ else". You can have as many parameters *before* a slurpy one, but not *after*.
 sub as-many($head, *@rest) {
     @rest.join(' / ') ~ " !";
 }
-say as-many('Happy', 'Happy', 'Birthday'); # OUTPUT: «Happy / Birthday !␤»
-say 'Happy', ['Happy', 'Birthday'], 'Day'; # OUTPUT: «Happy / Birthday / Day !␤»
+say as-many('Happy', 'Happy', 'Birthday');          # OUTPUT: «Happy / Birthday !␤»
+say as-many('Happy', ['Happy', 'Birthday'], 'Day'); # OUTPUT: «Happy / Birthday / Day !␤»
 
 # Note that the splat (the *) did not consume the parameter before it.
 
@@ -769,7 +769,7 @@ sub unpack_array( @array [$fst, $snd] ) {
   # (^ remember the `[]` to interpolate the array)
 }
 unpack_array(@tail);
-# OUTPUT: «My first is 3, my second is 3! All in all, I'm 2 3.␤»
+# OUTPUT: «My first is 2, my second is 3! All in all, I'm 2 3.␤»
 
 # If you're not using the array itself, you can also keep it anonymous,
 # much like a scalar:
