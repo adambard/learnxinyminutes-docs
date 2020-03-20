@@ -12,17 +12,17 @@ lang: de-de
 
 ## Einführung
 
-Processing ist eine Programmiersprache, welche es ermöglicht digitale Kunst
+Processing ist eine Programmiersprache, welche es ermöglicht, digitale Kunst
 und multimediale Inhalte zu erstellen. Mit Processing können Personen ohne
-Programmiererfahrung die Grundlagen der Computererfahrung in einem visuellen 
-Kontext erlernen.
+Programmiererfahrung die Grundlagen der Computerprogrammierung in einem
+visuellen Kontext erlernen.
 
 Obwohl Processing von Java beeinflusst wurde und auf Java basiert, ist die Syntax
 sowohl von Java als auch Javascript beeinflusst worden. Weitere Informationen
 sind [hier](https://processing.org/reference/) zu finden.
 
 Die Programmiersprache wird statisch programmiert und kommt mit einer eigenen
-offiziellen IDE, damit die Programmie kompiliert und ausgeführt werden können.
+offiziellen IDE, damit die Programme kompiliert und ausgeführt werden können.
 
 ```
 /* ------------
@@ -43,7 +43,7 @@ offiziellen IDE, damit die Programmie kompiliert und ausgeführt werden können.
 */
 
 // In Processing ist der Startpunkt eines Programms die Funktion `setup()` 
-// mit dem Rückgabewert `void`.
+// mit dem Rückgabetyp `void`.
 // Beachte: Die Syntax ist derjenigen von C++ ziemlich ähnlich.
 void setup() {
     // Dies gibt beim Ausführen "Hallo Welt!" auf der Konsole aus.
@@ -68,7 +68,7 @@ int i = 0;
 void draw() {
     // Dieser Codeblock wird ausgeführt bis er gestoppt wird.
     print(i);
-    i++; // Inkrement Operator!
+    i++; // Inkrement-Operator
 }
 
 // Da wir nun wissen, wie man ein funktionierendes Skript erstellen kann und wie
@@ -81,14 +81,14 @@ void draw() {
 */
 
 // Gemäß den Angaben in der Processingreferenz, unterstützt Processing die
-// folgenden acht primitive Datentypen:
+// folgenden acht primitiven Datentypen:
 boolean booleanValue = true; // Boolean
 byte byteValueOfA = 23; // Byte
 char charValueOfA = 'A'; // Char (einzelnes Zeichen)
 color colorValueOfWhiteM = color(255, 255, 255); // Farben (angegeben durch die
                                                  // `color()`-Methode)
 color colorValueOfWhiteH = #FFFFFF; // Farbe (angegeben mit der Hexadezimal-
-                                    // schreibweise.
+                                    // schreibweise.)
 int intValue = 5; // Integer (ganze Zahl)
 long longValue = 2147483648L; // "L" wird hinzugefügt, um es als `long` zu 
                               // markieren.
@@ -129,7 +129,7 @@ int[] intArrayWithValues = {1, 2, 3} // Arrays können auch mit Daten gefüllt
 // ArrayList
 // Die Funktionen einer ArrayList sind ähnlich wie die eines Arrays und können
 // auch jegliche Datentypen beinhalten. Der einzige Unterschied zwischen Arrays
-// und `ArrayList`s ist, dass eine ArrayList die Größe dynamisch anpassen kann, 
+// und `ArrayList`s ist, dass eine `ArrayList` die Größe dynamisch anpassen kann, 
 // da es eine Implementierung des "List" Interface in Java ist.
 ArrayList<Integer> intArrayList = new ArrayList<Integer>();
 
@@ -138,13 +138,13 @@ ArrayList<Integer> intArrayList = new ArrayList<Integer>();
 // Programmierung. Dies bedeutet, dass du grundsätzlich jegliche Datentypen
 // selber erstellen kannst und diese nach deinen Bedürfnissen manipulieren kannst.
 // Selbstverständlich muss eine Klasse definiert werden bevor du ein Objekt
-// instanzieren kannst.
+// davon instanzieren kannst.
 // Format: ClassName InstanceName
 SomeRandomClass myObject // hier musst du das Objekt später instazieren
 // Hier wird das Objekt direkt instanziert:
 SomeRandomClass myObjectInstantiated = new SomeRandomClass(); 
 
-// Processing hat noch weitere Collection (wie zum Beispiel Dictionaries und 
+// Processing hat noch weitere Collections (wie zum Beispiel Dictionaries und 
 // Listen). Aus Einfachheitsgründen wird dies in diesem Tutorial weggelassen.
 
 /* -------------------------------------------------
@@ -227,8 +227,8 @@ switch(value) {
 }
 
 // Wiederholungen
-// For-Statements - Auch hier ist die Syntax wieder gleich wie in Java
-for(int i = 0; i < 5; i++){
+// For-Schleifen - Auch hier ist die Syntax wieder gleich wie in Java
+for(int i = 0; i < 5; i++) {
     print(i); // Gibt die Zahlen 0 bis 4 aus.
 }
 
@@ -270,9 +270,10 @@ point(x, y, z); // im dreidimensionalen Raum
 
 // Linien
 line(x1, y1, x2, y2); // im zweidimensionalen Raum
-line(x1, y1, z1, x2, y2, z2); // im dreidimensionalen Raum
 // Dies zeichnet eine Linie, welche durch die zwei Punkte (x1, y1) und (x2, y2)
 // definiert wird.
+line(x1, y1, z1, x2, y2, z2); // im dreidimensionalen Raum
+// Analog wird hier eine Linie gezeichnet mit drei Punkten
 
 // Dreieck
 triangle(x1, y1, x2, y2, x3, y3);
@@ -283,7 +284,7 @@ rect(a, b, c, d, [r]); // Mit dem optionalen Parameter kann der Winkel aller
                        // vier Ecken definiert werden
 rect(a, b, c, d, [tl, tr, br, bl]); // Mit weiteren optionalen Parametern kann 
                                     // jeder Winkel des Rechtecks definiert werden.
-// Dies zeichnet ein Quadrat mit der Koordinate {a, b} als linke obere Ecke;
+// Dies zeichnet ein Quadrat mit der Koordinate {a, b} als linke obere Ecke
 // die Parameter c und d sind für die Breite und Höhe.
 
 // Vierecke
@@ -291,9 +292,9 @@ quad(x, y, x2, y2, x3, y3, x4, y4);
 // Dies zeichnet ein Viereck, welches die einzelnen Koordinaten als Eckpunkte hat.
 
 // Ellipse
-ellipse(x, y, x2, y2, x3, y3, x4, y4);
-// Zeichnet eine Ellipse beim Punkt {x. y}. Die Parameter Breite und Höhre 
-// sind auch definiert.
+ellipse(x, y, width, height);
+// Zeichnet eine Ellipse beim Punkt {x. y}. Die Breite und die Höhe werden durch 
+// die Parameter width und height definiert.
 
 // Arc
 arc(x, y, width, height, start, stop, [mode]);
@@ -323,7 +324,7 @@ size(width, height, P3D);
 
 // Box
 box(size); // Würfel mit der Seitenlänge `size`
-box(w, h, d); // Quader definiert durch Breite, Hoehe und Tiefe
+box(w, h, d); // Quader definiert durch Breite, Höhe und Tiefe
 
 // Kugel
 sphere(radius); // Die Größe wird definiert durch den Parameter `radius`
@@ -352,7 +353,7 @@ sphere(radius); // Die Größe wird definiert durch den Parameter `radius`
 // die Ecken einer Form sind, welche du gezeichnet hast. Grundsätzlich sind dies
 // Matrizenoperationen. `pushMatrix()`, `popMatrix()` und `translate()`.
 pushMatrix(); // Speichert das aktuelle Koordinatensystem auf dem Stack
-// ... alle Transformationen werden hier angewendet.
+              // alle Transformationen werden hier angewendet.
 popMatrix(); // Stellt das gespeicherte Koordinatensystem wieder her.
 // Wenn du diese Funktionen verwendest, kann das Koordinatensystem gespeichert
 // und visualisiert werden, ohne dass es Konflikte gibt.
