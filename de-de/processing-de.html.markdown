@@ -422,3 +422,76 @@ Dokumentaion.
 // geschrieben werden.
 import processing.something.*;
 ``` 
+
+## Beispielprogramm
+
+Lass uns ein Beispiel von openprocessing.org ansehen, welches verdeutlicht,
+was man in Processing mit nur wenigen Zeilen Code machen kann.
+
+Kopiere den nachfolgenden Code in deine Processing IDE.
+
+```
+// Disclaimer: Ich habe das Porgramm nicht selbst geschriben. Diese Skizze
+// stammt aus openprocessing, allerdings soll dieses Programm zeigen, wie wenig
+// Zeilen Code notwendig sind, um etwas Cooles zu machen.
+// Abgerufen von: (https://www.openprocessing.org/sketch/559769)
+
+float theta;
+float a;
+float col;
+float num;
+
+void setup() {
+  size(600,600);
+}
+
+void draw() {
+  background(#F2F2F2);
+  translate(width/2, height/2);
+  theta = map(sin(millis()/1000.0), -1, 1, 0, PI/6);
+
+  float num=6;
+  for (int i=0; i<num; i++) {
+    a =350;
+    rotate(TWO_PI/num);
+    branch(a);
+  }
+}
+
+void branch(float len) {
+  col=map(len, 0, 90, 150, 255);
+  fill(col, 0, 74);
+  stroke (col, 0, 74);
+  line(0, 0, 0, -len);
+  ellipse(0, -len, 3, 3);
+  len*=0.7;
+
+  if (len>30) {
+    pushMatrix();
+    translate(0, -30);
+    rotate(theta);
+    branch(len);
+    popMatrix();
+
+    pushMatrix();
+    translate(0, -30);
+    rotate(-theta);
+    branch(len);
+    popMatrix();
+  }
+}
+```
+
+Processing ist einfach zu erlernen und ist vorallem nützlich, um Multimedia-
+Inhalte (auch in 3D) zu erstellen ohne viel Code zu schreiben. Es ist so einfach
+gehalten, dass man den Code durchlesen kann und man versteht den Programmablauf
+bereits.
+
+Wenn du externe Bibliotheken, Pakete oder eigene Klassen einbindest, kann ein
+Programm, welches mit Processing geschrieben wurde, durchaus auch kompliziert 
+werden.
+
+## Einige nützliche Links
+
+- [Processing Webseite](http://processing.org)
+- [Processing Sketches](http://openprocessing.org)
