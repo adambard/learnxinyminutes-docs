@@ -34,7 +34,7 @@ offiziellen IDE, damit die Programmie kompiliert und ausgeführt werden können.
 /*
    Da Processing von Java abstammt, ist die Syntax für Kommentare gleich
    wie bei Java (wie du vielleicht oben bemerkt hast)!
-   Mehrzeilige Kommentare werden wie hier umschlossen.
+   Mehrzeilige Kommentare werden wie hier umschloßen.
 */
 
 /* -------------------------------------------------
@@ -53,9 +53,9 @@ void setup() {
 // Normalerweise wird der Code für statische Elemente innerhalb der Methode 
 // `setup()` geschrieben, da diese lediglich einmal ausgeführt wird.
 // Dies kann zum Beispiel das Setzen der Hintergrundfarbe oder das Bestimmen
-// der Canvas-Grösse sein.
+// der Canvas-Größe sein.
 background(color); // Setze die Hintergrundfarbe 
-size(width, height, [renderer]); // bestimme die Canvasgrösse mit dem optionalen
+size(width, height, [renderer]); // bestimme die Canvasgröße mit dem optionalen
                                  // Parameter `renderer`.
 // Du wirst innerhalb dieses Dokuments noch weitere Parameter sehen.
 
@@ -80,7 +80,7 @@ void draw() {
    -------------------------------------------------
 */
 
-// Gemäss den Angaben in der Processingreferenz, unterstützt Processing die
+// Gemäß den Angaben in der Processingreferenz, unterstützt Processing die
 // folgenden acht primitive Datentypen:
 boolean booleanValue = true; // Boolean
 byte byteValueOfA = 23; // Byte
@@ -129,7 +129,7 @@ int[] intArrayWithValues = {1, 2, 3} // Arrays können auch mit Daten gefüllt
 // ArrayList
 // Die Funktionen einer ArrayList sind ähnlich wie die eines Arrays und können
 // auch jegliche Datentypen beinhalten. Der einzige Unterschied zwischen Arrays
-// und `ArrayList`s ist, dass eine ArrayList die Grösse dynamisch anpassen kann, 
+// und `ArrayList`s ist, dass eine ArrayList die Größe dynamisch anpassen kann, 
 // da es eine Implementierung des "List" Interface in Java ist.
 ArrayList<Integer> intArrayList = new ArrayList<Integer>();
 
@@ -179,8 +179,8 @@ int sr = sqrt(25); // Quadratwurzel => sr = 5.0
 // Trigonometrie
 // Processing unterstützt auch trigonometrische Operationen mit Hilfe dieser
 // Funktionen: `sin()`, `cos()`, `tan()`, `asin()`, `atan()`. Für die einfache
-// Konvertierung gibt es ausserdem noch die Funktionen `degrees()` und `radians()`.
-// Die trigonometrischen Funktionen rechnen mit dem Winkelmass Radian, wodurch
+// Konvertierung gibt es außerdem noch die Funktionen `degrees()` und `radians()`.
+// Die trigonometrischen Funktionen rechnen mit dem Winkelmaß Radian, wodurch
 // die Gradzahlen zuerst konvertiert werden müssen.
 float one = sin(PI/2); // => one = 1.0
 // Wie du vielleicht bemerkt hast, existieren einige Konstanten für trigo-
@@ -202,7 +202,7 @@ if (author.getAppearence().equals("hot")) {
 // Für die `if`-Anweisungen gibt es auch eine Kurzschreibweise
 // Dies sind sogenannte ternäre Operatoren.
 int i = 3;
-String value = (i > 5) ? "Gross" : "Klein"; // => "Klein"
+String value = (i > 5) ? "Groß" : "Klein"; // => "Klein"
 
 // Die Switch-Case-Anweisung kann verwendet werden, um mehrere Bedingungen
 // zu prüfen.
@@ -326,7 +326,7 @@ box(size); // Würfel mit der Seitenlänge `size`
 box(w, h, d); // Quader definiert durch Breite, Hoehe und Tiefe
 
 // Kugel
-sphere(radius); // Die Grösse wird definiert durch den Parameter `radius`
+sphere(radius); // Die Größe wird definiert durch den Parameter `radius`
 // Der Mechanismus hinter dem Rendern von Kugeln wurde durch mosaikartige
 // Dreiecke implementiert. 
 // Mit der folgenden Funktion ist es möglich, zu bestimmen wie detailliert die
@@ -334,7 +334,7 @@ sphere(radius); // Die Grösse wird definiert durch den Parameter `radius`
 // spereDetail(res);
 // Weitere Informationen sind hier zu finden: (https://processing.org/reference/sphereDetail_.html)
 
-// Unregelmässige Figuren
+// Unregelmäßige Figuren
 // Was ist, wenn du etwas zeichnen möchtest, was nicht durch Processing-Funktionen
 // abgedeckt ist?
 // Es ist möglich, die Funktionen `beginShape()`, `endShape()` und `vertex(x,y)
@@ -376,13 +376,13 @@ scale(s); // Skaliert das Koordinatensystem (entweder erweitern oder verkleinern
 
 // Farben
 // Wie ich zuvor schon erklärt habe, kann die Hintergrundfarbe mit der Funktion
-// `background()` definiert werden. Ausserdem ist es möglich, dass man zuerst 
+// `background()` definiert werden. Außerdem ist es möglich, dass man zuerst 
 // eine Farbe definiert und diese erst danach der Funktion übergeben wird.
 color c = color(255, 255, 255); // WEISS!
-// Standardmässig verwendet Processing das RGB-Farbschema, aber dies kann 
+// Standardmäßig verwendet Processing das RGB-Farbschema, aber dies kann 
 // zu HSB konfiguriert werden, indem die Funktion `colorMode()` verwendet wird.
 // Weitere Informationen findest du hier: (https://processing.org/reference/colorMode_.html)
-background(c); // Ab jetzt ist der Hintergrund in weiss.
+background(c); // Ab jetzt ist der Hintergrund in weiß.
 // Du kannst die Funktion `fill()` verwenden, um die Farbe auszuwählen, mit
 // welcher die Formen ausgefüllt werden. 
 // Dies muss konfiguriert werden bevor Formen und Figuren gezeichnet werden.
