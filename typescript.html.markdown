@@ -21,15 +21,15 @@ to type code, have auto completion and directly see the emitted JavaScript.
 
 ```ts
 // There are 3 basic types in TypeScript
-let isDone: boolean = false;
-let lines: number = 42;
-let name: string = "Anders";
+let isDone1: boolean = false;
+let lines1: number = 42;
+let name1: string = "Anders";
 
 // But you can omit the type annotation if the variables are derived
 // from explicit literals
-let isDone = false;
-let lines = 42;
-let name = "Anders";
+let isDone2 = false;
+let lines2 = 42;
+let name2 = "Anders";
 
 // When it's impossible to know, there is the "Any" type
 let notSure: any = 4;
@@ -41,9 +41,9 @@ const numLivesForCat = 9;
 numLivesForCat = 1; // Error
 
 // For collections, there are typed arrays and generic arrays
-let list: number[] = [1, 2, 3];
+let list1: number[] = [1, 2, 3];
 // Alternatively, using the generic array type
-let list: Array<number> = [1, 2, 3];
+let list2: Array<number> = [1, 2, 3];
 
 // For enumerations:
 enum Color { Red, Green, Blue };
@@ -53,6 +53,11 @@ let c: Color = Color.Green;
 function bigHorribleAlert(): void {
   alert("I'm a little annoying box!");
 }
+
+// Declaring a variable twice in the same scope results in an error.
+let myVar: int = 1;
+let myVar: int = 2; // Error
+myVar = 2; // OK
 
 // Functions are first class citizens, support the lambda "fat arrow" syntax and
 // use type inference
@@ -86,7 +91,7 @@ let p: Person = { name: "Bobby", move: () => { } };
 // Objects that have the optional property:
 let validPerson: Person = { name: "Bobby", age: 42, move: () => { } };
 // Is not a person because age is not a number
-let invalidPerson: Person = { name: "Bobby", age: true };
+let invalidPerson: Person = { name: "Bobby", age: true }; // Error
 
 // Interfaces can also describe a function type
 interface SearchFunc {
@@ -186,25 +191,25 @@ let tuple = pairToTuple({ item1: "hello", item2: "world" });
 
 // Template Strings (strings that use backticks)
 // String Interpolation with Template Strings
-let name = 'Tyrone';
-let greeting = `Hi ${name}, how are you?`
+let name3 = 'Tyrone';
+let greeting = `Hi ${name3}, how are you?`
 // Multiline Strings with Template Strings
 let multiline = `This is an example
 of a multiline string`;
 
 // READONLY: New Feature in TypeScript 3.1
-interface Person {
+interface PersonRead {
   readonly name: string;
   readonly age: number;
 }
 
-var p1: Person = { name: "Tyrone", age: 42 };
-p1.age = 25; // Error, p1.age is read-only
+var p4: PersonRead = { name: "Tyrone", age: 42 };
+p4.age = 25; // Error, p4.age is read-only
 
-var p2 = { name: "John", age: 60 };
-var p3: Person = p2; // Ok, read-only alias for p2
-p3.age = 35; // Error, p3.age is read-only
-p2.age = 45; // Ok, but also changes p3.age because of aliasing
+var p5 = { name: "John", age: 60 };
+var p6: PersonRead = p5; // Ok, read-only alias for p5
+p6.age = 35; // Error, p6.age is read-only
+p5.age = 45; // Ok, but also changes p6.age because of aliasing
 
 class Car {
   readonly make: string;
