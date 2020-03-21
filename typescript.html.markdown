@@ -114,7 +114,7 @@ class Point {
   }
 
   // Functions
-  dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
+  dist(): number { return Math.sqrt(this.x * this.x + this.y * this.y); }
 
   // Static members
   static origin = new Point(0, 0);
@@ -137,9 +137,9 @@ class Point3D extends Point {
   }
 
   // Overwrite
-  dist() {
+  dist(): number {
     let d = super.dist();
-    return Math.sqrt(d() * d() + this.z * this.z);
+    return Math.sqrt(d * d + this.z * this.z);
   }
 }
 
