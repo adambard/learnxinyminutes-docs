@@ -160,8 +160,8 @@ len("This is a string")         # => 16
 name = "Reiko"
 f"She said her name is {name}."  # => "She said her name is Reiko"
 
-# 基本的に、任意のPythonの文を中括弧に書くことができ、それは評価されて出力されます。
-f"{name} is {len(name)} characters long."
+# 基本的に、任意のPythonの文を中括弧に書くことができ、それは文字列で出力されます。
+f"{name} is {len(name)} characters long."  # => "Reiko is 5 characters long."
 
 # None はオブジェクトです(大文字からです!)
 None                            # => None
@@ -191,7 +191,7 @@ print("I'm Python. Nice to meet you!")  # => I'm Python. Nice to meet you!
 print("Hello, World", end="!")  # => Hello, World!
 
 # コンソールから入力を得るための簡単な例
-input_string_var = input("Enter some data: ")  # 入力を文字列として返します
+input_string_var = input("Enter some data: ")  # 入力を文字列として返します。
 # Note: Python の初期のバージョンでは、 input() は raw_input() という名前で存在します。
 
 # Pythonでは変数の宣言は存在せず、代入のみです。
@@ -201,7 +201,7 @@ some_var                        # => 5
 
 # 代入されていない変数へのアクセスは例外を引き起こします。
 # 例外の取り扱いについては、3章の制御の流れをご確認ください。
-some_unknown_var                # NameError を送出します
+some_unknown_var                # NameError を送出します。
 
 # ifは式として使用できます。
 # C言語の「?:(三項演算子)」に対応する例:
@@ -228,7 +228,7 @@ li[0]                           # => 1
 li[-1]                          # => 3
 
 # 範囲外の要素を参照すると IndexError になります。
-li[4]                           # IndexError が発生します
+li[4]                           # IndexError が発生します。
 
 # スライス構文により範囲を参照できます。
 # 開始部分のインデックスに対応する部分は含まれますが、終了部分のインデックスに対応する部分は含まれません。
@@ -238,28 +238,28 @@ li[2:]                          # => [4, 3]
 # 末尾を取り除いたリスト
 li[:3]                          # => [1, 2, 4]
 # 1つ飛ばしで選択する
-li[::2]                         # =>[1, 4]
+li[::2]                         # => [1, 4]
 # 反転したリストを得る
 li[::-1]                        # => [3, 4, 2, 1]
 # これらの任意の組み合わせにより、より複雑なスライスを作ることができます。
 # li[start:end:step]
 
 # スライスにより、深いコピーを1階層分行うことができます。
-li2 = li[:]          # => li2 = [1, 2, 4, 3] だが、 (li2 is li) はFalseになる。
+li2 = li[:]          # => li2 = [1, 2, 4, 3] だが、 (li2 is li) は False になる。
 
 # "del"によりリストから任意の要素を削除できます。
 del li[2]                       # li は [1, 2, 3] になりました。
 
 # "remove"で最初に出現する要素を削除できます。
 li.remove(2)                    # li は [1, 3] になりました。
-li.remove(2)                    # 2はリストの中に存在しないので、 ValueError が発生します。
+li.remove(2)                    # 2 はリストの中に存在しないので、 ValueError が発生します。
 
 # 要素を好きなところに挿入できます。
 li.insert(1, 2)                 # li は [1, 2, 3] に戻りました。
 
 # "index"で引数の要素が最初に出現する場所のインデックスを得られます。
 li.index(2)                     # => 1
-li.index(4)                     # 4はリストの中に存在しないので、 ValueError が発生します。
+li.index(4)                     # 4 はリストの中に存在しないので、 ValueError が発生します。
 
 # リスト同士を足すこともできます。
 # Note: li と other_li の値は変更されません。
@@ -295,11 +295,11 @@ tup[:2]                         # => (1, 2)
 # タプルやリストから複数の変数に代入することができます。
 a, b, c = (1, 2, 3)             # a, b, c にはそれぞれ 1, 2, 3 が代入されました。
 # 拡張記法もあります。
-a, *b, c = (1, 2, 3, 4)         # a は 1 、 b は [2, 3] 、c は4 になります。
+a, *b, c = (1, 2, 3, 4)         # a は 1、 b は [2, 3]、c は 4 になります。
 # 括弧を作成しなくてもデフォルトでタプルが作成されます。
 d, e, f = 4, 5, 6               # 4、5、6がそれぞれd、 e、 fに代入されます。
 # 2つの変数を交換するのがどれほど簡単か見てみましょう。
-e, d = d, e                     # d は 5 、 e は e になります。
+e, d = d, e                     # d は 5、 e は 4 になります。
 
 
 # 辞書はマップ(キーと値の組み合わせ)を保存できます。
@@ -373,7 +373,7 @@ valid_set = {(1,), 1}
 filled_set = some_set
 filled_set.add(5)               # filled_set は {1, 2, 3, 4, 5} になりました。
 # 集合は重複した要素を持ちません。
-filled_set.add(5)               # 以前の{1, 2, 3, 4, 5}のままです。
+filled_set.add(5)               # 以前の {1, 2, 3, 4, 5} のままです。
 
 # & により、集合同士の共通部分が得られます。
 other_set = {3, 4, 5, 6}
@@ -453,7 +453,7 @@ for i in range(4, 8):
 
 """
 "range(lower, upper, step)" は、lower の数値から upper の数値までが、
-step 刻みで表現されるiterableを返します
+step 刻みで表現されるiterableを返します。
 step が与えられない場合、デフォルトは1になります。
 出力:
     4
@@ -552,7 +552,7 @@ varargs(1, 2, 3)  # => (1, 2, 3)
 def keyword_args(**kwargs):
     return kwargs
 
-# 何が起こるか、試してみましょう
+# 何が起こるか、試してみましょう。
 keyword_args(big="foot", loch="ness")  # => {"big": "foot", "loch": "ness"}
 
 
@@ -591,7 +591,7 @@ x = 5
 
 
 def set_x(num):
-    # ローカル変数の x はグローバル変数の x とは異なります
+    # ローカル変数の x はグローバル変数の x とは異なります。
     x = num                     # => 43
     print(x)                    # => 43
 
@@ -783,7 +783,7 @@ if __name__ == '__main__':
 from human import Human
 
 
-# 親クラスを子クラスのパラメータとして指定します
+# 親クラスを子クラスのパラメータとして指定します。
 class Superhero(Human):
 
     # もし子クラスが親クラスの全ての定義を変更なしで継承する場合、"pass"キーワードのみを書くだけで良いです。
