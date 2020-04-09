@@ -61,7 +61,7 @@ contributors:
 
     ;; We have to use the right data type for each operation:
     ;; (local.set $mult_result (f32.mul (f32.const 2.0) (f32.const 4.0))) ;; WRONG! mult_result is f64!
-    (local.set $mult_result (f64.mul (f64.const 2.0) (f64.const 4.0))) ;; WRONG! mult_result is f64!
+    (local.set $mult_result (f64.mul (f64.const 2.0) (f64.const 4.0)))
 
     ;; WebAssembly has some builtin operations, like basic math and bitshifting.
     ;; Notably, it does not have built in trigonometric functions.
