@@ -116,7 +116,7 @@ function bar(a, b, c)
 end
 
 x, y = bar('zaphod')  --> prints "zaphod  nil nil"
--- Now x = 4, y = 8, values 15..42 are discarded.
+-- Now x = 4, y = 8, values 15...42 are discarded.
 
 -- Functions are first-class, may be local/global.
 -- These are the same:
