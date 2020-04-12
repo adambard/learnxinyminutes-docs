@@ -239,3 +239,165 @@ Proc(Int32, String).new { |x| x.to_s }
 
 # Rufe ein Proc auf mit der Methode `call`
 proc.call 10    # => "10"
+
+# Kontrollstatements
+
+if true
+    "if statement"
+elsif false
+    "else-f, optional"
+else
+    "else, auch optional"
+end
+
+puts "if as a suffix" if true
+
+# If als Ausdruck
+a = if 2 > 1
+        3
+    else
+        4
+    end
+
+a # => 3
+
+# Bedingter ternärer Ausdruck
+a = 1 > 2 ? 3 : 4   # => 4
+
+# Case-Statement
+cmd = "move"
+
+action = case cmd
+    when "create"
+        "Creating..."
+    when "copy"
+        "Copying..."
+    when "move"
+        "Moving..."
+    when "delete"
+        "Deleting..."
+end
+
+action # => "Moving..."
+
+# Schleifen
+index = 0
+while index <= 3
+    puts "Index: #{index}"
+    index += 1
+end
+# Index: 0
+# Index: 1
+# Index: 2
+# Index: 3
+
+index = 0
+until index > 3
+    puts "Index: #{index}"
+    index += 1
+end
+# Index: 0
+# Index: 1
+# Index: 2
+# Index: 3
+
+# Der bevorzugte Weg, ist `each` zu verwenden.
+(1..3).each do |index|
+    puts "Index: #{index}"
+end
+# Index: 1
+# Index: 2
+# Index: 3
+
+# Der Typ der Variablen hängt vom Typen innerhalb der Kontrollanweisung ab
+if a < 3
+    a = "hello"
+else
+    a = true
+end
+typeof a    # => (Bool | String)
+
+if a && b
+    # Hier wird garantiert, dass weder a noch b vom Typ Nil sind
+end
+
+if a.is_a? String
+    a.class # => String
+end
+
+# Funktionen
+def double(x)
+    x * 2
+end
+
+# Funktionen geben implizit den Wert der letzten Anweisung zurück
+# Dies ist auch bei anderen Blöcken der Fall.
+double(2)       # => 4
+
+# Klammern müssen nicht gesetzt werden, wenn der Aufruf eindeutig ist
+double 3        # => 6
+double double 3 # => 12
+
+def sum(x, y)
+    x + y
+end
+
+# Funktionsargument werden mit einem Komma separiert.
+sum 3, 4            # => 7
+
+sum sum(3, 4), 5    # => 12
+
+# yield
+# Alle Methoden haben einen impliziten, optionalen Blockparameter.
+# Dieser kann mit dem Schlüsselwort `yield` aufgerufen werden.
+
+def surround
+    puts '{'
+    yield
+    puts '}'
+end
+
+surround { puts "hello world" }
+
+# {
+# hello world
+#
+
+# Du kannst ein Block einer Funktion übergeben.
+# "&" kennzeichnet eine Referenz zu einem übergebenen Block
+def guests(&block)
+    block.call "some_argument"
+end
+
+# Du kannst eine Liste von Argumenten mitgeben, welche zu einem Array
+# umgewandelt werden.
+# Hierfür ist der Splat-Operator ("*")
+def guests(*array)
+    array.each { |guest| puts guest }
+end
+
+# Wenn eine Methode ein Array zurückgibt, kann destrukturiende Zuordnung
+# verwendet werden.
+def foods
+    ["pancake", "sandwich", "quesadilla"]
+end
+breakfast, lunch, dinner = foods
+breakfast   # => "pancake"
+dinner      # => "quesadilla"
+
+# Gemäss der Konvention enden alle Methoden, welchen einen Boolean zurückgeben
+# mit einem Fragezeichen.
+5.even? # false
+5.odd?  # true
+
+# Und wenn eine Methode mit einem Ausrufezeichen endet, macht sie etwas
+# destruktives. Zum Beispiel wird der Aufrufer verändert. Einige Methoden haben
+# eine !-Version, um eine Änderung zu machen und eine Nicht-!-Version, welche
+# lediglich eine neue veränderte Version zurückgibt.
+
+company_name = "Dunder Mifflin"
+company_name.gsub "Dunder", "Donald"    # => "Donald Mifflin"
+company_name    # => "Dunder Mifflin"
+company_name.gsub! "Dunder", "Donald"
+company_name    # => "Donald Mifflin"
+
