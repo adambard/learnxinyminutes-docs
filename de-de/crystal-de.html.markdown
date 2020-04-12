@@ -401,3 +401,161 @@ company_name    # => "Dunder Mifflin"
 company_name.gsub! "Dunder", "Donald"
 company_name    # => "Donald Mifflin"
 
+# definiere eine Klasse mit dem `class`-Schlüsselwort.
+class Human
+
+# eine Klassenvariable. Diese wird mit allen Instanzen dieser Klasse getilt.
+    @@species = "H. sapiens"
+
+    # type of name is String
+    @name: String
+
+    # Grundlegender Intialisierer
+    # Weise das Argument der Instanz-Variable "name" zu
+    # Wenn kein Alter angegeben wird, wird der Default genommen.
+    def initialize(@name, @age = 0)
+    end
+
+    # Einfache Setter-Methode
+    def name=(name)
+        @name = name
+    end
+
+    # einfache Getter-Methode
+    def name
+        @name
+    end
+
+    # Die obere Funktionalität kann mit der property-Methode gekapselt werden:
+    property :name
+
+    # Getter/Setter-Methoden können auch individuell erstellt werden:
+    getter :name
+    setter :name
+    
+    # eine Klassenmethode verwendet `self` um sich von Instanz-Methoden zu 
+    # unterscheiden. Diese kann lediglich von einer Klasse aufgerufen werden,
+    # nicht von einer Instanz.
+    def self.say(msg)
+        puts msg
+    end
+
+    def species
+        @@species
+    end
+end
+
+
+# Eine Klasse instanzieren
+jim = Human.new("Jim Halpert")
+
+dwight = Human.new("Dwight K. Schrute")
+
+# Lass uns ein paar Methoden aufrufen
+jim.species                     # => "H. sapiens"
+jim.name                        # => "Jim Halpert"
+jim.name = "Jim Halpert II"     # => "Jim Halpert II"
+jim.name                        # => "Jim Halpert II"
+dwight.species                  # => "H. sapiens"
+dwight.name                     # => "Dwight K. Schrute"
+
+# Rufe die Klassenmethode auf
+Human.say("Hi")     # => gibt Hi aus und gibt `nil` zurück
+
+# Variablen, welche mit @ starten, sind im Scope der Instanz
+class TestClass
+    @var = "Ich bin eine Instanzvariable"
+end
+
+# Variablen, welche mit @@ starten, sind im Scope der Klasse
+class TestClass
+    @@var = "Ich bin eine Klassenvariable"
+end
+
+# Variable, welche mit einem Grossbuchstaben starten, sind Konstanten.
+Var = "Ich bin eine Konstante"
+Var = "Ich kann nicht aktualisiert werden." # Die Konstante Var wurde bereits
+                                            # initialisiert.
+
+# In Crystal ist Class auch ein Objekt. Dadurch können Klassen Instanzvariablen
+# haben. Klassenvariablen werden mit der Klasse und allen Subklassen geteilt.
+
+# Basisklasse
+class Human
+    @@foo = 0
+
+    def self.foo
+        @@foo
+    end
+
+    def self.foo=(value)
+        @@foo = value
+    end
+end
+
+# abgeleitete Klasse
+class Worker < Human
+end
+
+Human.foo       # => 0
+Worker.foo      # => 0
+
+Human.foo = 2   # => 2
+Worker.foo      # => 0
+
+Worker.foo = 3  # => 3
+Human.foo       # => 2
+Worker.foo      # => 3
+
+module ModuleExample
+    def foo
+        "foo"
+    end
+end
+
+# Wenn ein Modul mit include eingeschlossen wird, so werden die Methoden an die
+# Instanzen gebunden.
+# Wenn eine Klasse mit einem Modul erweitert wird, so werden die Methoden an die
+# Klasse selbst gebunden.
+
+class Person 
+    include ModuleExample
+end
+
+class Book
+    extend ModuleExample
+end
+
+Person.foo      # => undefinierte Methode 'foo' für Person:Class
+Person.new.foo  # => 'foo'
+Book.foo        # => 'foo'
+Book.new.foo    # => undefinierte Methode für Book
+
+# Ausnahmebehandlung
+
+# Definiere eine neue Ausnahme
+class MyException < Exception
+end
+
+# Definiere eine weitere Ausnahme
+class MyAnotherException < Exception; end
+
+ex = begin
+    raise MyException.new
+rescue ex1 : IndexError
+    "ex1"
+rescue ex2 : MyException | MyAnotherException
+    "ex2"
+rescue ex3 : Exception
+    "ex3"
+rescue ex4 # fange alle Ausnahmen ab
+    "ex4"
+end
+
+ex # => "ex2"
+```
+
+
+## Weitere Unterlagen
+
+- [offizielle Dokumentation, englisch](https://crystal-lang.org/)
