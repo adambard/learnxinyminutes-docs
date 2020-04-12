@@ -551,4 +551,4 @@ ex #=> "ex2"
 
 ## Additional resources
 
-- [Official Documentation](http://crystal-lang.org/)
+- [Official Documentation](https://crystal-lang.org/)
