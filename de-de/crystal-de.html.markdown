@@ -1,0 +1,241 @@
+---
+language: crystal
+contributors:
+    - ["Vitalii Elenhaupt", "http://veelenga.com"]
+    - ["Arnaud Fernandés", "https://github.com/TechMagister/"] 
+translators:
+    - ["caminsha", "https://github.com/caminsha"]
+filename: learncrystal-de.cr
+lang: de-de
+---
+
+```crystal
+
+# Das ist ein Kommentar
+
+# Alles ist ein Objekt
+nil.class # => Nil
+100.class # => Int32
+true.class # => Bool
+
+# Falschwerte sind: nil, false und Nullpointer
+!nil    # => true    : Bool
+!false  # => true    : Bool
+!0      # => false   : Bool
+
+# Integer
+
+1.class # => Int32
+
+# Fünf vorzeichenbehaftete Ganzzahlen
+1_i8.classi  # =>    Int8
+1_i16.class  # =>    Int16
+1_i32.class  # =>    Int32
+1_i64.class  # =>    Int64
+1_i128.class # =>    Int128
+
+# Fünf vorzeichenlose Ganzzahlen
+1_u8.classi  # =>    UInt8
+1_u16.class  # =>    UInt16
+1_u32.class  # =>    UInt32
+1_u64.class  # =>    UInt64
+1_u128.class # =>    UInt128
+
+
+2147483648.class            # => Int64
+9223372036854775808.class   # => UInt64
+
+# Binäre Zahlen
+0b1101 # => 13  : Int32
+
+# Oktalzahlen
+0o123 # => 83   : Int32
+
+# Hexadezimalzahlen
+0xFE012D # => 16646445 : Int32
+0xfe012d # => 16646445 : Int32
+
+# Gleitkommazahlen (floats)
+
+1.0.class   # => Float64
+
+# Es gibt zwei Typen von Gleitkommazahlen
+
+1.0_f32.class   # => Float32
+1_f32.class     # => Float32
+
+1e10.class      # => Float64
+1.5e10.class    # => Float64
+1.5e-7.class    # => Float64
+
+
+# Chars (einzelne Zeichen)
+
+'a'.class   # => Char
+
+# Oktale Schreibweise
+'\101'      # => 'A' : Char
+
+# Unicode Schreibweise
+'\u0041'    # => 'A' : Char
+
+# Strings (Zeichenketten)
+"s".class   # => String
+
+# Strings sind unveränderlich
+s = 'hello, "   # => "hello, "          : String
+s.object_id     # => 1234667712         : UInt64
+s += "Crystal"  # => "hello, Crystal"   : String
+s.object_id     # => 142528472          : UInt64
+
+# Interpolation wird unterstützt
+"sum = #{1 + 2}"    # => "sum = 3"  : String
+
+# Mehrzeilige Strings
+" Dies ist ein
+    mehrzeiliger String."
+
+# String mit doppeltem Anführungszeichen
+%(hello "world")    # => "hello \"world\""
+
+# Symbole
+# Unveränderbare, wiederverwendbare Konstanten, welche intern als Int32 Integer
+# Werte repräsentiert werden.
+# Symbole werden oft statt Strings verwendet, um bestimmte Werte zu bestimmen.
+
+:symbol.class   # => Symbol
+
+sentence = :question?   # :"question?" : Symbol
+
+sentence = :question?       # => true   : Bool
+sentence = :exclamation!    # => false  : Bool
+sentence = "question?"      # => false  : Bool
+
+# Arrays
+[1, 2, 3].class         # => Array(Int32)
+[1, "hello", 'x'].class # => Array(Int32 | String | Char)
+
+# Leere Arrays sollten einen Typen definieren
+[]                  # => Syntaxfehler: für leere Arrays,
+                    # verwende `[] of ElementType`
+[] of Int32         # => [] : Array(Int32)
+Array(Int32).new    # => [] : Array(Int32)
+
+# Arrays können indiziert werden
+array = [1, 2, 3, 4, 5] # => [1, 2, 3, 4, 5] : Array(Int32)
+array[0]                # => 1               : Int32
+array[10]               # führt zu einem IndexError
+array[-6]               # führt zu einem IndexError
+array[10]?              # => nil             : (Int32 | Nil)
+array[-6]?              # => nil             : (Int32 | Nil)
+
+# Starte am Ende des Arrays
+array[-1]               # => 5
+
+# Mit einem Startindex und einer Länge
+array[2, 4]             # => [3, 4, 5]
+
+# oder mit einem Bereich
+array[1..3]             # => [2, 3, 4]
+
+# Füge etwas zu einem Array hinzu
+array << 6              # => [1, 2, 3, 4, 5, 6]
+
+# Entferne Einträge am Ende des Arrays
+array.pop               # => 6
+array                   # => [1, 2, 3, 4, 5]
+
+# Entferne ersten Eintrag im Array
+array.shift             # => 1
+array                   # => [2, 3, 4, 5]
+
+# Überprüfe, ob ein Element in einem Array existiert
+array.includes? 3       # => true
+
+# Spezielle Syntax für String-Arrays und Symbol-Arrays
+%w(one two three)   # => ["one", "two", "three"]    : Array(String)
+%i(one two three)   # 0> [:one, :two, :three]       : Array(Symbol)
+
+# Es gibt auch für andere Arrays eine spezielle Syntax, wenn die Methoden
+# `.new` und `#<<` definiert werden.
+set = Set{1, 2, 3}  # => [1, 2, 3]
+set.class           # => Set(Int32)
+
+# Das obere ist äquivalent zu:
+set = Set(typeof(1, 2, 3)).new
+set << 1
+set << 2
+set << 3
+
+# Hashes
+{1 => 2, 3 => 4}.class      # => Hash(Int32, Int32)
+{1 => 2, 'a' => 3}.class    # => Hash (Int32 | Char, Int32)
+
+# Leere Hashes sollten einen Typen spezifieren
+{}                      # Syntaxfehler
+{} of Int32 => Int32    # {}
+Hash(Int32, Int32).new  # {}
+
+# Hashes können schnell mit dem Key nachgeschaut werden
+hash = {"color" => "green", "number" => 5}
+hash["color"]           # => "green"
+hash["no_such_key"]     # => Fehlender hash key: "no_such_key" (KeyError)
+hash["no_such_key"]?    # => nil
+
+# Überprüfe die Existenz eines Hashkeys
+hash.has_key? "color"   # => true
+
+# Spezielle Schreibweise für Symbol- und Stringkeys
+{key1: 'a', key2: 'b'}      # {:key1 => 'a', :key2 => 'b'} 
+{"key1": 'a', "key2": 'b'}  # {"key1" => 'a', "key2" => 'b'}
+
+# Die spezielle Syntax für Hash-Literale gibt es auch für andere Typen, sofern
+# diese die Methoden `.new` und `#[]=` Methoden definieren.
+class MyType
+    def []=(key, value)
+        puts "do stuff"
+    end
+end
+
+MyType{"foo" => "bar"}
+
+# Das obere ist äquivalent zu:
+tmp = MyType.new
+tmp["foo"] = "bar"
+tmp
+
+# Ranges (Bereiche)
+1..10                   # => Range(Int32, Int32)
+Range.new(1,10).class   # => Range(Int32, Int32)
+
+# Ranges können inklusiv oder exklusiv sein.
+(3..5).to_a     # => [3, 4, 5]
+(3...5).to_a    # => [3, 4]
+
+# Überprüfe, ob ein Range einen Wert enthält oder nicht.
+(1..8).includes? 2  # => true
+
+# Tupel sind unveränderliche, Stack-zugewiese Folgen von Werten mit fester 
+# Grösse und möglicherweise unterschiedlichen Typen
+{1, "hello", 'x'}.class # => Tuple(Int32, String, Char)
+
+# Erhalte den Wert eines Tupels über den Index
+tuple = {:key1, :key2}
+tuple[1] # => :key2
+tuple[2] # syntax error: Index out of bound
+
+# Können auf mehrere Variablen erweitert werden
+a, b, c = {:a, 'b', "c"}
+a   # => :a
+b   # => 'b'
+c   # => "c"
+
+# Procs repräsentieren ein Funktionspointer mit einem optionalen Kontext.
+# Normalerweise wird ein Proc mit einem proc-Literal erstellt.
+proc = ->(x : Int32) { x.to_s }
+proc.class  # => Print(Int32, String)
+# Ausserdem kann man auch mit der Methode `new` ein Proc erstellen.
+Proc(Int32, String).new { |x| x.to_s }
+
+# Rufe ein Proc auf mit der Methode `call`
+proc.call 10    # => "10"
