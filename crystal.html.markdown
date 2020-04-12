@@ -229,7 +229,7 @@ b #=> 'b'
 c #=> "c"
 
 # Procs represent a function pointer with an optional context (the closure data)
-# It is typically created with a proc litteral
+# It is typically created with a proc literal
 proc = ->(x : Int32) { x.to_s }
 proc.class # Proc(Int32, String)
 # Or using the new method
