@@ -614,8 +614,8 @@ say Int === Int;       # OUTPUT: «True␤»
 # Here are some common comparison semantics:
 
 # String or numeric equality
-say 'Foo' ~~ 'Foo'; # OUTPU: «True␤», if strings are equal.
-say 12.5 ~~ 12.50;  # OUTPU: «True␤», if numbers are equal.
+say 'Foo' ~~ 'Foo'; # OUTPUT: «True␤», if strings are equal.
+say 12.5 ~~ 12.50;  # OUTPUT: «True␤», if numbers are equal.
 
 # Regex - For matching a regular expression against the left side.
 # Returns a `Match` object, which evaluates as True if regexp matches.
@@ -2078,19 +2078,19 @@ say so 'abc' ~~ / a  b+  c /;    # OUTPUT: «True␤», one is enough
 say so 'abbbbc' ~~ / a  b+  c /; # OUTPUT: «True␤», matched 4 "b"s
 
 # `*` - zero or more matches
-say so 'ac' ~~ / a  b*  c /;     # OUTPU: «True␤», they're all optional
-say so 'abc' ~~ / a  b*  c /;    # OUTPU: «True␤»
-say so 'abbbbc' ~~ / a  b*  c /; # OUTPU: «True␤»
-say so 'aec' ~~ / a  b*  c /;    # OUTPU: «False␤», "b"(s) are optional, not replaceable.
+say so 'ac' ~~ / a  b*  c /;     # OUTPUT: «True␤», they're all optional
+say so 'abc' ~~ / a  b*  c /;    # OUTPUT: «True␤»
+say so 'abbbbc' ~~ / a  b*  c /; # OUTPUT: «True␤»
+say so 'aec' ~~ / a  b*  c /;    # OUTPUT: «False␤», "b"(s) are optional, not replaceable.
 
 # `**` - (Unbound) Quantifier
 # If you squint hard enough, you might understand why exponentation is used
 # for quantity.
-say so 'abc' ~~ / a  b**1  c /;         # OUTPU: «True␤», exactly one time
-say so 'abc' ~~ / a  b**1..3  c /;      # OUTPU: «True␤», one to three times
-say so 'abbbc' ~~ / a  b**1..3  c /;    # OUTPU: «True␤»
-say so 'abbbbbbc' ~~ / a  b**1..3  c /; # OUTPU: «Fals␤», too much
-say so 'abbbbbbc' ~~ / a  b**3..*  c /; # OUTPU: «True␤», infinite ranges are ok
+say so 'abc' ~~ / a  b**1  c /;         # OUTPUT: «True␤», exactly one time
+say so 'abc' ~~ / a  b**1..3  c /;      # OUTPUT: «True␤», one to three times
+say so 'abbbc' ~~ / a  b**1..3  c /;    # OUTPUT: «True␤»
+say so 'abbbbbbc' ~~ / a  b**1..3  c /; # OUTPUT: «Fals␤», too much
+say so 'abbbbbbc' ~~ / a  b**3..*  c /; # OUTPUT: «True␤», infinite ranges are ok
 
 #
 # 18.2 `<[]>` - Character classes
@@ -2202,8 +2202,8 @@ say $/[0].list.perl; # OUTPUT: «(Match.new(...),).list␤»
 
 # Alternation - the `or` of regexes
 # WARNING: They are DIFFERENT from PCRE regexps.
-say so 'abc' ~~ / a [ b | y ] c /; # OUTPU: «True␤», Either "b" or "y".
-say so 'ayc' ~~ / a [ b | y ] c /; # OUTPU: «True␤», Obviously enough...
+say so 'abc' ~~ / a [ b | y ] c /; # OUTPUT: «True␤», Either "b" or "y".
+say so 'ayc' ~~ / a [ b | y ] c /; # OUTPUT: «True␤», Obviously enough...
 
 # The difference between this `|` and the one you're used to is
 # LTM ("Longest Token Matching") strategy. This means that the engine will
@@ -2218,7 +2218,7 @@ To decide which part is the "longest", it first splits the regex in two parts:
     yet introduced), literals, characters classes and quantifiers.
 
     * The "procedural part" includes everything else: back-references,
-    code assertions, and other things that can't traditionnaly be represented
+    code assertions, and other things that can't traditionally be represented
     by normal regexps.
 
 Then, all the alternatives are tried at once, and the longest wins.
