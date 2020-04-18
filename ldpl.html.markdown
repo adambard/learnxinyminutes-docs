@@ -165,19 +165,6 @@ display myNumber crlf
 exit
 ```
 
-## Topics Not Covered
-
- * [Command line arguments](https://docs.ldpl-lang.org/variables-in-ldpl/command-line-arguments)
- * [Error variables](https://docs.ldpl-lang.org/variables-in-ldpl/errorcode-and-errortext)
- * [Import other files](https://docs.ldpl-lang.org/structure-of-ldpl-source-code/importing-other-sources)
- * [Identifier naming schemes](https://docs.ldpl-lang.org/naming-rules)
- * [Text Statements](https://docs.ldpl-lang.org/text-statements/join-and-in)
- * [List Statements](https://docs.ldpl-lang.org/list-statements/push-to)
- * [Map Statements](https://docs.ldpl-lang.org/vector-statements/clear)
- * [File loading / writing](https://docs.ldpl-lang.org/i-o-statements/load-file-in)
- * [Executing commands](https://docs.ldpl-lang.org/i-o-statements/execute)
- * [Extending LDPL with C++](https://docs.ldpl-lang.org/extensions/c++-extensions)
-
 ## Further Reading
 
  * [LDPL Docs](https://docs.ldpl-lang.org)
