@@ -216,7 +216,7 @@ Range.new(1,10).class   # => Range(Int32, Int32)
 (1..8).includes? 2  # => true
 
 # Tupel sind unveränderliche, Stack-zugewiese Folgen von Werten mit fester 
-# Grösse und möglicherweise unterschiedlichen Typen
+# Größe und möglicherweise unterschiedlichen Typen
 {1, "hello", 'x'}.class # => Tuple(Int32, String, Char)
 
 # Erhalte den Wert eines Tupels über den Index
@@ -234,7 +234,7 @@ c   # => "c"
 # Normalerweise wird ein Proc mit einem proc-Literal erstellt.
 proc = ->(x : Int32) { x.to_s }
 proc.class  # => Print(Int32, String)
-# Ausserdem kann man auch mit der Methode `new` ein Proc erstellen.
+# Außerdem kann man auch mit der Methode `new` ein Proc erstellen.
 Proc(Int32, String).new { |x| x.to_s }
 
 # Rufe ein Proc auf mit der Methode `call`
@@ -385,7 +385,7 @@ breakfast, lunch, dinner = foods
 breakfast   # => "pancake"
 dinner      # => "quesadilla"
 
-# Gemäss der Konvention enden alle Methoden, welchen einen Boolean zurückgeben
+# Gemäß der Konvention enden alle Methoden, welchen einen Boolean zurückgeben
 # mit einem Fragezeichen.
 5.even? # false
 5.odd?  # true
@@ -472,7 +472,7 @@ class TestClass
     @@var = "Ich bin eine Klassenvariable"
 end
 
-# Variable, welche mit einem Grossbuchstaben starten, sind Konstanten.
+# Variable, welche mit einem Großbuchstaben starten, sind Konstanten.
 Var = "Ich bin eine Konstante"
 Var = "Ich kann nicht aktualisiert werden." # Die Konstante Var wurde bereits
                                             # initialisiert.
