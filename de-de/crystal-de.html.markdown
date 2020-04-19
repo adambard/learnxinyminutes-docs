@@ -28,14 +28,14 @@ true.class # => Bool
 1.class # => Int32
 
 # Fünf vorzeichenbehaftete Ganzzahlen
-1_i8.classi  # =>    Int8
+1_i8.class   # =>    Int8
 1_i16.class  # =>    Int16
 1_i32.class  # =>    Int32
 1_i64.class  # =>    Int64
 1_i128.class # =>    Int128
 
 # Fünf vorzeichenlose Ganzzahlen
-1_u8.classi  # =>    UInt8
+1_u8.class   # =>    UInt8
 1_u16.class  # =>    UInt16
 1_u32.class  # =>    UInt32
 1_u64.class  # =>    UInt64
@@ -101,7 +101,7 @@ s.object_id     # => 142528472          : UInt64
 # Symbole
 # Unveränderbare, wiederverwendbare Konstanten, welche intern als Int32 Integer
 # Werte repräsentiert werden.
-# Symbole werden oft statt Strings verwendet, um bestimmte Werte zu bestimmen.
+# Symbole werden oft anstelle von Strings verwendet, um bestimmte Werte zu bestimmen.
 
 :symbol.class   # => Symbol
 
@@ -250,7 +250,7 @@ else
     "else, auch optional"
 end
 
-puts "if as a suffix" if true
+puts "if as a suffix" if true # => if as a suffix
 
 # If als Ausdruck
 a = if 2 > 1
@@ -342,7 +342,7 @@ def sum(x, y)
     x + y
 end
 
-# Funktionsargument werden mit einem Komma separiert.
+# Funktionsargumente werden mit einem Komma separiert.
 sum 3, 4            # => 7
 
 sum sum(3, 4), 5    # => 12
@@ -357,11 +357,11 @@ def surround
     puts '}'
 end
 
-surround { puts "hello world" }
+surround { puts "Hallo Welt" }
 
 # {
-# hello world
-#
+# Hallo Welt 
+# }
 
 # Du kannst ein Block einer Funktion übergeben.
 # "&" kennzeichnet eine Referenz zu einem übergebenen Block
@@ -401,10 +401,10 @@ company_name    # => "Dunder Mifflin"
 company_name.gsub! "Dunder", "Donald"
 company_name    # => "Donald Mifflin"
 
-# definiere eine Klasse mit dem `class`-Schlüsselwort.
+# definiere eine Klasse mit dem Schlüsselwort `class`.
 class Human
 
-# eine Klassenvariable. Diese wird mit allen Instanzen dieser Klasse getilt.
+# eine Klassenvariable. Diese wird mit allen Instanzen dieser Klasse geteilt.
     @@species = "H. sapiens"
 
     # type of name is String
@@ -412,7 +412,7 @@ class Human
 
     # Grundlegender Intialisierer
     # Weise das Argument der Instanz-Variable "name" zu
-    # Wenn kein Alter angegeben wird, wird der Default genommen.
+    # Wenn kein Alter angegeben wird, wird der Default (hier 0) genommen.
     def initialize(@name, @age = 0)
     end
 
@@ -433,7 +433,7 @@ class Human
     getter :name
     setter :name
     
-    # eine Klassenmethode verwendet `self` um sich von Instanz-Methoden zu 
+    # eine Klassenmethode verwendet `self` um sich von Instanzmethoden zu 
     # unterscheiden. Diese kann lediglich von einer Klasse aufgerufen werden,
     # nicht von einer Instanz.
     def self.say(msg)
@@ -472,7 +472,7 @@ class TestClass
     @@var = "Ich bin eine Klassenvariable"
 end
 
-# Variable, welche mit einem Großbuchstaben starten, sind Konstanten.
+# Variablen, welche mit einem Großbuchstaben starten, sind Konstanten.
 Var = "Ich bin eine Konstante"
 Var = "Ich kann nicht aktualisiert werden." # Die Konstante Var wurde bereits
                                             # initialisiert.
