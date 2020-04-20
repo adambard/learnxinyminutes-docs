@@ -91,7 +91,7 @@ echo ${#Variable} # => 11
 # Indirect expansion
 OtherVariable="Variable"
 echo ${!OtherVariable} # => Some String
-# This will expand the value of the OtherVariable
+# This will expand the value of OtherVariable
 
 # Default value for variable
 echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
