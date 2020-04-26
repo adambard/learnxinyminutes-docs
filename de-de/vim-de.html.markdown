@@ -61,214 +61,220 @@ einer Datei.
 
     :%s/foo/bar/g    # Ersetze "foo" durch "bar" in allen Zeilen
     :s/foo/bar/g     # Ersetze "foo" durch "bar" in der aktuellen Zeile
-    :%s/\n/\r/g      # Replace new line characters with new line characters
+    :%s/\n/\r/g      # Ersetze das newline-Zeichen durch ein carriage return.
 
-    # Jumping to characters
+    # Zu einzelnen Zeichen springen
 
-    f<character>     # Jump forward and land on <character>
-    t<character>     # Jump forward and land right before <character>
+    f<character>     # Springe vorwärts und auf dem Zeichen  <character>
+    t<character>     # Springe vorwärts und lande vor dem Zeichen <character>
 
-    # For example,
-    f<               # Jump forward and land on <
-    t<               # Jump forward and land right before <
+    # Zum Beispiel,
+    f<               # Springe vorwärts und lande auf <
+    t<               # Springe vorwärts und lande vor <
 
-    # Moving by word
+    # Wortweise navigieren
 
-    w                # Move forward by one word
-    b                # Move back by one word
-    e                # Move to end of current word
+    w                # Springe um ein Wort vorwärts
+    b                # Gehe ein Wort zurück
+    e                # Springe zum Ende des aktuellen Wortes
 
-    # Other characters for moving around
+    # Weitere Befehle, um zu navigieren
 
-    gg               # Go to the top of the file
-    G                # Go to the bottom of the file
-    :NUM             # Go to line number NUM (NUM is any number)
-    H                # Move to the top of the screen
-    M                # Move to the middle of the screen
-    L                # Move to the bottom of the screen
+    gg               # Gehe an den Start der Datei
+    G                # Gehe an das Ende der Datei
+    :NUM             # Springe zur Zeile NUM (NUM kann eine beliebige Zahl sein)
+    H                # Navigiere zum Start des aktuellen Screens
+    M                # Navigiere in die Mitte des aktuellen Screens
+    L                # Navigiere an das Ende des aktuellen Screens
 ```
 
-## Help docs:
+## Hilfsdokumente:
 
-Vim has built in help documentation that can accessed with `:help <topic>`.
-For example `:help navigation` will pull up documentation about how to navigate
-your workspace!
+Vim hat eine eingebaute Dokumentation, welche mit `:help <topic>` aufgerufen
+werden kann.
+Zum Beispiel öffnet `:help navigation` die Dokumentation über das Navigieren
 
-`:help` can also be used without an option. This will bring up a default help dialog
+`:help` kann auch ohne ein Argument verwendet werden. Dies zeigt den Standard-
+Hilfsdialog an, welcher den Start mit vim einfacher macht.
 that aims to make getting started with vim more approachable!
 
-## Modes:
+## Modi:
 
-Vim is based on the concept on **modes**.
+Vim basiert auf dem Konzept von **modes**.
 
-- Command Mode - vim starts up in this mode, used to navigate and write commands
-- Insert Mode  - used to make changes in your file
-- Visual Mode  - used to highlight text and do operations to them
-- Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
-
-```
-    i                # Puts vim into insert mode, before the cursor position
-    a                # Puts vim into insert mode, after the cursor position
-    v                # Puts vim into visual mode
-    :                # Puts vim into ex mode
-    <esc>            # 'Escapes' from whichever mode you're in, into Command mode
-
-    # Copying and pasting text
-
-    y                # Yank whatever is selected
-    yy               # Yank the current line
-    d                # Delete whatever is selected
-    dd               # Delete the current line
-    p                # Paste the copied text after the current cursor position
-    P                # Paste the copied text before the current cursor position
-    x                # Deleting character under current cursor position
-```
-
-## The 'Grammar' of vim
-
-Vim can be thought of as a set of commands in a
-'Verb-Modifier-Noun' format, where:
-
-- Verb     - your action
-- Modifier - how you're doing your action
-- Noun     - the object on which your action acts on
-
-A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
+- Command Mode - Vim startet in diesem Modus, hier kann man navigieren und 
+                 Befehle eingeben
+- Insert Mode  - Wird verwendet, um Änderungen in der Datei zu machen.
+- Visual Mode  - Wird verwendet, um Text zu markieren und Operationen durchzuführen
+- Ex Mode      - Wird verwendet, um im ':'-Prompt Befehle einzugeben
 
 ```
-    # 'Verbs'
+    i                # Führt vim in den Insert Mode, vor der Cursorposition
+    a                # Führt vim in den Insert Mode, nach der Cursorposition
+    v                # Führt vim in den Visual Mode
+    :                # Führt vim in den Ex Mode
+    <esc>            # Führt zurück in den Command Mode, egal in welchem Mode
+                     # man sich gerade befindet.
 
-    d                # Delete
-    c                # Change
-    y                # Yank (copy)
-    v                # Visually select
+    # Kopieren und einfügen von Text
+
+    y                # Kopiere alles, was im Moment ausgewählt ist
+    yy               # Kopiert die aktuelle Zeile
+    d                # Löscht alles, was im Moment ausgewählt ist
+    dd               # Löscht die aktuelle Zeile
+    p                # Fügt den kopierten Text nach dem Cursor ein
+    P                # Fügt den kopierten Text vor dem Cursor ein
+    x                # Löscht das Zeichen unter dem Cursor
+```
+
+## Die 'Grammatik' von Vim
+
+Vim kann als Satz von Kommandos angesehen werden, welche im Format
+'Verb-Modifier-Noun' sind. Hierbei gilt:
+
+- Verb     - die Aktion, du machen willst
+- Modifier - wie die Aktion gemacht wird
+- Noun     - das Objekt, auf welchem die Aktion ausgeführt wird.
+
+Einige wichtige Beispiele von 'Verben', 'Modifier' und 'Nouns':
+
+```
+    # 'Verben'
+
+    d                # löschen
+    c                # ändern
+    y                # kopieren
+    v                # visuelles auswählen
 
     # 'Modifiers'
 
-    i                # Inside
-    a                # Around
-    NUM              # Number (NUM is any number)
-    f                # Searches for something and lands on it
-    t                # Searches for something and stops before it
-    /                # Finds a string from cursor onwards
-    ?                # Finds a string before cursor
+    i                # innerhalb
+    a                # ausserhalb
+    NUM              # Nummer (NUM kann irgendeine Zahl sein)
+    f                # Sucht nach etwas und landet darauf
+    t                # Sucht nach etwas und stoppt davor
+    /                # Suche eine Zeichenfolge ab dem Cursor
+    ?                # Suche eine Zeichenfolge vor dem Cursor
 
     # 'Nouns'
 
-    w                # Word
-    s                # Sentence
-    p                # Paragraph
+    w                # Wort
+    s                # Satz
+    p                # Abschnitt
     b                # Block
 
-    # Sample 'sentences' or commands
+    # Beispielsätze resp. Kommandos
 
-    d2w              # Delete 2 words
-    cis              # Change inside sentence
-    yip              # Yank inside paragraph (copy the para you're in)
-    ct<              # Change to open bracket
-                     # Change the text from where you are to the next open bracket
-    d$               # Delete till end of line
+    d2w              # lösche zwei Wörter
+    cis              # Ändere innerhalb des Satzes.
+    yip              # Kopiere innerhalb des Abschnitts (kopiere den Abschnitt, 
+                     # in welchem du bist)
+    ct<              # Ändere bis zur spitzen Klammer
+                     # Ändere den Text von deiner aktuellen Cursorposition bis
+                     # zur nächsten spitzen Klammer
+    d$               # Lösche bis zum Ende der Zeile
 ```
 
-## Some shortcuts and tricks
+## Einige Shortcuts und Tricks
 
-        <!--TODO: Add more!-->
 ```
-    >                # Indent selection by one block
-    <                # Dedent selection by one block
-    :earlier 15m     # Reverts the document back to how it was 15 minutes ago
-    :later 15m       # Reverse above command
-    ddp              # Swap position of consecutive lines, dd then p
-    .                # Repeat previous action
-    :w !sudo tee %   # Save the current file as root
-    :set syntax=c    # Set syntax highlighting to 'c'
-    :sort            # Sort all lines
-    :sort!           # Sort all lines in reverse
-    :sort u          # Sort all lines and remove duplicates
-    ~                # Toggle letter case of selected text
-    u                # Selected text to lower case
-    U                # Selected text to upper case
+    >                # Rücke die Auswahl um einen Block ein
+    <                # Lösche eine Einrückung der Auswahl
+    :earlier 15m     # Stellt das Dokument so wieder her, wie es vor 15 
+                     # Minuten war
+    :later 15m       # den oberen Befehl rückgängig machen
+    ddp              # Vertauschen zweier aufeinanderfolgenden Zeilen
+                     # Zuerst dd, dann p
+    .                # Wiederhole die vorherige Aktion
+    :w !sudo tee %   # Speichere die Datei als Root
+    :set syntax=c    # Stelle das Syntax-Highlighting für 'C' ein
+    :sort            # Alle Zeilen sortieren
+    :sort!           # Alle Zeilen rückwärts sortieren
+    :sort u          # Alle Zeilen sortieren und Duplikate entfernen
+    ~                # Umschalten der Groß-/Kleinschreibung des ausgewählten Textes
+    u                # Ausgewählten Text zu Kleinschreibung ändern
+    U                # Ausgewählten Text zu Großschreibung ändern
     
-    # Fold text
-    zf               # Create fold from selected text
-    zo               # Open current fold
-    zc               # Close current fold
-    zR               # Open all folds
-    zM               # Close all folds
+    # Text-Folding (Textfaltung)
+    zf               # Erstelle eine Faltung des ausgewählten Textes
+    zo               # Öffne die aktuelle Faltung
+    zc               # Schliesse die aktuelle Faltung
+    zR               # Öffne alle Faltungen
+    zM               # Schliesse alle Faltungen
 ```
 
-## Macros
+## Makros
 
-Macros are basically recordable actions.
-When you start recording a macro, it records **every** action and command
-you use, until you stop recording. On invoking a macro, it applies the exact
-same sequence of actions and commands again on the text selection.
-
-```
-    qa               # Start recording a macro named 'a'
-    q                # Stop recording
-    @a               # Play back the macro
-```
-
-### Configuring ~/.vimrc
-
-The .vimrc file can be used to configure Vim on startup.
-
-Here's a sample ~/.vimrc file:
+Makros sind grundsätzlich einfach aufgezeichnete Aktionen
+Wenn du mit dem Aufnehmen eines Makros beginnst, werden **alle** Aktionen und
+Kommandos, welche du braucht, aufgenommen bis die Aufnahme gestoppt wird.
+Wenn du ein Makro ausführst, werden exakt die gleichen Schritte gemacht.
 
 ```
-" Example ~/.vimrc
-" 2015.10
+    qa               # Starte das Aufnehmen des Makros 'a'
+    q                # Beende das Aufnehmen
+    @a               # Führe ein Makro aus
+```
 
-" Required for vim to be iMproved
+### Konfigurieren mit ~/.vimrc
+
+Die Datei .vimrc kann verwendet werden, um Vim beim Starten zu konfigurieren
+
+Hier ist eine Beispiel ~/.vimrc Datei:
+
+```
+" Beispiel ~/.vimrc
+
+" Erforderlich für vim, dass es iMproved ist.
 set nocompatible
 
-" Determines filetype from name to allow intelligent auto-indenting, etc.
+" Bestimme den Dateityp anhand des Namens, um ein intelligentes Einrücken etc.
+" zu ermöglichen
 filetype indent plugin on
 
-" Enable syntax highlighting
+" Aktiviere das Syntax-Highlighting
 syntax on
 
-" Better command-line completion
+" Bessere Kommandozeile Vervollständigung
 set wildmenu
 
-" Use case insensitive search except when using capital letters
+" Verwende die Suche ohne die Berücksichtigung der Groß-/Kleinschreibung, ausser
+" wenn mit Grossbuchstaben gesucht wird.
 set ignorecase
 set smartcase
 
-" When opening a new line and no file-specific indenting is enabled,
-" keep same indent as the line you're currently on
+" Wenn eine neue Zeile erstellt wird und kein Dateispezifisches Einrücken
+" aktiviert ist, behält die neue Zeile die gleiche Einrückung wie die aktuelle
+" Zeile
 set autoindent
 
-" Display line numbers on the left
+" Zeige links die Zeilennummern an
 set number
 
-" Indentation options, change according to personal preference
+" Einrückungsoptionen, ändere diese nach deinen Vorlieben
 
-" Number of visual spaces per TAB
+" Anzahl sichtbarer Leerzeichen bei einem TAB
 set tabstop=4
 
-" Number of spaces in TAB when editing
+" Anzahl der Leerzeichen während des Bearbeitens bei einem TAB
 set softtabstop=4
 
-" Number of spaces indented when reindent operations (>> and <<) are used
+" Anzahl der Einrückungstiefe bei den Operationen (>> und <<)
 set shiftwidth=4
 
-" Convert TABs to spaces
+" Konvertiere TABs zu Leerzeichen
 set expandtab
 
 " Enable intelligent tabbing and spacing for indentation and alignment
+" Aktiviere intelligente Tabs und Leerzeichen bei der Einrückung und Ausrichtung
 set smarttab
 ```
 
-### References
+### Verweise
 
-[Vim | Home](http://www.vim.org/index.php)
-
-`$ vimtutor`
-
-[A vim Tutorial and Primer](https://danielmiessler.com/study/vim/)
-
-[What are the dark corners of Vim your mom never told you about? (Stack Overflow thread)](http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about)
-
-[Arch Linux Wiki](https://wiki.archlinux.org/index.php/Vim)
+- [Vim | Homepage](http://www.vim.org/index.php)
+- In der Shell eingeben: `vimtutor`
+- [Ein vim Tutorial und Primer, englisch](https://danielmiessler.com/study/vim/)
+- [Deutsches Arch Linux Wiki](https://wiki.archlinux.de/title/Vim)
+- [Arch Linux Wiki, englisch (dafür ausführlicher)](https://wiki.archlinux.org/index.php/Vim)
+- [What are the dark corners of Vim your mom never told you about? (Stack Overflow thread)](http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about)
