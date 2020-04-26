@@ -22,6 +22,8 @@ einer Datei.
 ```
     vim <filename>   # Öffne <filename> in Vim
     :help <topic>    # Open up built-in help docs about <topic> if any exists
+    :help <topic>    # Öffne die eingebaute Hilfe zum Thema  <topic>, wenn
+                     # es existiert
     :q               # Schließe vim
     :w               # Speichere diese Datei
     :wq              # Speichere diese Datei und schließe vim
@@ -50,7 +52,7 @@ einer Datei.
 
     0                # Navigiere zum Anfang der Zeile
     $                # Navigiere zum Ende der Zeile
-    ^                # Navigiere zum ersten Zeichen, welchen kein Leerzeichen ist
+    ^                # Navigiere zum ersten Zeichen, welches kein Leerzeichen ist
 
     # Im Text suchen
 
@@ -61,7 +63,8 @@ einer Datei.
 
     :%s/foo/bar/g    # Ersetze "foo" durch "bar" in allen Zeilen
     :s/foo/bar/g     # Ersetze "foo" durch "bar" in der aktuellen Zeile
-    :%s/\n/\r/g      # Ersetze das newline-Zeichen durch ein carriage return.
+    :%s/\n/\r/g      # Ersetze das newline-Zeichen bei allen Zeilen durch
+                     # ein carriage return
 
     # Zu einzelnen Zeichen springen
 
@@ -83,9 +86,9 @@ einer Datei.
     gg               # Gehe an den Start der Datei
     G                # Gehe an das Ende der Datei
     :NUM             # Springe zur Zeile NUM (NUM kann eine beliebige Zahl sein)
-    H                # Navigiere zum Start des aktuellen Screens
-    M                # Navigiere in die Mitte des aktuellen Screens
-    L                # Navigiere an das Ende des aktuellen Screens
+    H                # Navigiere zum Start der aktuellen Bildschirmanzeige
+    M                # Navigiere in die Mitte der aktuellen Bildschirmanzeige
+    L                # Navigiere an das Ende der aktuellen Bildschirmanzeige
 ```
 
 ## Hilfsdokumente:
@@ -102,8 +105,7 @@ that aims to make getting started with vim more approachable!
 
 Vim basiert auf dem Konzept von **modes**.
 
-- Command Mode - Vim startet in diesem Modus, hier kann man navigieren und 
-                 Befehle eingeben
+- Command Mode - Vim startet in diesem Modus, hier kann man navigieren und Befehle eingeben
 - Insert Mode  - Wird verwendet, um Änderungen in der Datei zu machen.
 - Visual Mode  - Wird verwendet, um Text zu markieren und Operationen durchzuführen
 - Ex Mode      - Wird verwendet, um im ':'-Prompt Befehle einzugeben
@@ -136,10 +138,10 @@ Vim kann als Satz von Kommandos angesehen werden, welche im Format
 - Modifier - wie die Aktion gemacht wird
 - Noun     - das Objekt, auf welchem die Aktion ausgeführt wird.
 
-Einige wichtige Beispiele von 'Verben', 'Modifier' und 'Nouns':
+Einige wichtige Beispiele von 'Verb', 'Modifier' und 'Nouns':
 
 ```
-    # 'Verben'
+    # 'Verb'
 
     d                # löschen
     c                # ändern
@@ -213,7 +215,7 @@ Wenn du ein Makro ausführst, werden exakt die gleichen Schritte gemacht.
 ```
     qa               # Starte das Aufnehmen des Makros 'a'
     q                # Beende das Aufnehmen
-    @a               # Führe ein Makro aus
+    @a               # Führe das Makro 'a' aus
 ```
 
 ### Konfigurieren mit ~/.vimrc
@@ -235,7 +237,7 @@ filetype indent plugin on
 " Aktiviere das Syntax-Highlighting
 syntax on
 
-" Bessere Kommandozeile Vervollständigung
+" Bessere Kommandozeilen-Vervollständigung
 set wildmenu
 
 " Verwende die Suche ohne die Berücksichtigung der Groß-/Kleinschreibung, außer
