@@ -22,11 +22,11 @@ einer Datei.
 ```
     vim <filename>   # Öffne <filename> in Vim
     :help <topic>    # Open up built-in help docs about <topic> if any exists
-    :q               # Schliesse vim
+    :q               # Schließe vim
     :w               # Speichere diese Datei
-    :wq              # Speichere diese Datei und schliesse vim
-    ZZ               # Speichere diese Datei und schliesse vim
-    :q!              # Schliesse vim ohne die Datei zu speichern
+    :wq              # Speichere diese Datei und schließe vim
+    ZZ               # Speichere diese Datei und schließe vim
+    :q!              # Schließe vim ohne die Datei zu speichern
                      # ! *zwingt* die Ausführung von :q,
                      # daher wird die Datei nicht gespeichert.
     ZQ               # Beende vim ohne die Datei zu speichern
@@ -149,7 +149,7 @@ Einige wichtige Beispiele von 'Verben', 'Modifier' und 'Nouns':
     # 'Modifiers'
 
     i                # innerhalb
-    a                # ausserhalb
+    a                # außerhalb
     NUM              # Nummer (NUM kann irgendeine Zahl sein)
     f                # Sucht nach etwas und landet darauf
     t                # Sucht nach etwas und stoppt davor
@@ -198,9 +198,9 @@ Einige wichtige Beispiele von 'Verben', 'Modifier' und 'Nouns':
     # Text-Folding (Textfaltung)
     zf               # Erstelle eine Faltung des ausgewählten Textes
     zo               # Öffne die aktuelle Faltung
-    zc               # Schliesse die aktuelle Faltung
+    zc               # Schließe die aktuelle Faltung
     zR               # Öffne alle Faltungen
-    zM               # Schliesse alle Faltungen
+    zM               # Schließe alle Faltungen
 ```
 
 ## Makros
@@ -238,8 +238,8 @@ syntax on
 " Bessere Kommandozeile Vervollständigung
 set wildmenu
 
-" Verwende die Suche ohne die Berücksichtigung der Groß-/Kleinschreibung, ausser
-" wenn mit Grossbuchstaben gesucht wird.
+" Verwende die Suche ohne die Berücksichtigung der Groß-/Kleinschreibung, außer
+" wenn mit Großbuchstaben gesucht wird.
 set ignorecase
 set smartcase
 
