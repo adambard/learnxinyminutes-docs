@@ -5,7 +5,7 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["Wooseop Kim", "https://github.com/linterpreteur"]
-    - ["Luxor", "https://github.com/Liberatedwinner"]
+    - ["Yeongjae Jang", "https://github.com/Liberatedwinner"]
 filename: LearnVim-kr.txt
 lang: ko-kr
 ---
