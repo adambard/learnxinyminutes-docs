@@ -327,6 +327,11 @@ puts doubled
 puts array
 #=> [1,2,3,4,5]
 
+# another useful sintax is .map(&:method)
+a = ["FOO", "BAR", "BAZ"]
+a.map { |s| s.downcase } #=> ["foo", "bar", "baz"]
+a.map(&:downcase) #=> ["foo", "bar", "baz"]
+
 # Case construct
 grade = 'B'
 
