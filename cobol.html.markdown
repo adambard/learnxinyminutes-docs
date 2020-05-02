@@ -8,7 +8,7 @@ COBOL is a business-oriented language revised multiple times since its original 
 organizations.
 
 ```cobol
-      *COBOL. Coding like it's 1985.
+      *COBOL. Coding like it's 1985. 
       *Compiles with GnuCOBOL in OpenCobolIDE 4.7.6.
        
       *COBOL has significant differences between legacy (COBOL-85)
@@ -22,164 +22,161 @@ organizations.
       *Legacy COBOL also imposes a limit on maximum line length.
       *Keywords have to be in capitals in legacy COBOL,
       *but are case insensitive in modern.
+      *Although modern COBOL allows you to use mixed-case characters
+      *it is still common to use all caps when writing COBOL code.
+      *This is what most professional COBOL developers do.
+      *COBOL statements end with a period.
+      
+      *COBOL code is broken up into 4 divisions.
+      *Those divisions, in order, are:
+      *IDENTIFICATION DIVSION.
+      *ENVIRONMENT DIVISION.
+      *DATA DIVISION.
+      *PROCEDURE DIVISION.
 
-      *First, we must give our program ID.
+      *First, we must give our program an ID.
       *Identification division can include other values too,
-      *but they are comments only. Program-id is mandatory.
-       identification division.
-       program-id. learn.
+      *but they are comments only. Program-id is the only one that is mandatory.
+       IDENTIFICATION DIVISION.
+           PROGRAM-ID.    LEARN.
+           AUTHOR.        JOHN DOE.
+           DATE-WRITTEN.  05/02/2020.
 
       *Let's declare some variables.
-       data division.
-       working-storage section.
-
-      *Variables are specified by a "picture" - how they should be
-      *displayed, and variable type is inferred from this.
-      *The "01" value is the level number which is used for building
-      *data structures.
-       01  myname picture xxxxxxxxxx.    *> A 10 character string.
-       01  age picture 999.   *> A number up to 3 digits.
-       01  valx picture 999.  *> Another number up to 3 digits.
+      *We do this in the WORKING-STORAGE section within the DATA DIVISION.
+      *Each data item (aka variable) with start with a level number, then the name of the item,
+      *followed by a picture clause describing the type of data that the variable will contain.
+      *Almost every COBOL programmer will abbreviate PICTURE as PIC.
+      *A is for alphabetic, X is for alphanumeric, and 9 is for numeric.
+       
+       *example:
+       01  MYNAME PIC xxxxxxxxxx.    *> A 10 character string.
+       
+       *But counting all those x's can lead to errors, so the above code can, and should,
+       *be re-written as:
+       01 MYNAME PIC X(10).
+       
+       *Here are some more examples:
+       01  AGE             PIC      9(3).   *> A number up to 3 digits.
+       01  LAST_NAME       PIC      X(10).  *> A string up to 10 characters.
+       
+       *In COBOL, multiple spaces are the same as a single space, so it is common
+       *to use multiple spaces to line up your code so that it is easier for other
+       *coders to read.
        01  inyear picture s9(7). *> S makes number signed.
                                  *> Brackets indicate 7 repeats of 9,
                                  *> ie a 6 digit number (not an array).
 
-      *Now let's write some code.
-       procedure division.
+      *Now let's write some code. Here is a simple, Hello World program.
+      IDENTIFICATION DIVISION.
+      PROGRAM-ID. HELLO.
+      DATA DIVISION.
+      WORKING-STORAGE SECTION.
+      01 THE-MESSAGE      PIC X(20).
+      PROCEDURE DIVSION.
+          DISPLAY "STARTING PROGRAM".
+          MOVE "HELLO WORLD" TO THE-MESSAGE.
+          DISPLAY THE-MESSAGE.
+          STOP RUN.
+      
+      *The above code will output:
+      *STARTING PROGRAM
+      *HELLO WORLD
+      
 
-       main-procedure.
-            *> COBOL is the language that uses DISPLAY instead of PRINT.
-            *> Note: no full stops after commands. Only after the LAST
-            *> command.
-            display "Hello. What's your name?"
+      
+      ********COBOL can perform math***************
+      ADD 1 TO AGE GIVING NEW-AGE.
+      SUBTRACT 1 FROM COUNT.
+      DIVIDE VAR-1 INTO VAR-2 GIVING VAR-3.
+      COMPUTE TOTAL-COUNT = COUNT1 PLUS COUNT2.
+      
+      
+      *********PERFORM********************
+      *The PERFORM keyword allows you to jump to another specified section of the code, and then to return to the next executable
+      *statement once the specified section of code is completed. You must write the full word, PERFORM, you cannot abbreviate it.
 
-            *> Let's input a string.
-            *> If input too long, later characters are trimmed.
-            accept myname
-            display "Hello " myname    *> We can display several things.
-            display "How old are you?"
+      IDENTIFICATION DIVISION.
+      PROGRAM-ID. HELLOCOBOL.
 
-            *> Let's input a number.
-            *> If input too long, EARLIER characters are trimmed.
-            accept age
+      PROCEDURE DIVISION.
+         FIRST-PARA.
+             DISPLAY 'THIS IS IN FIRST-PARA'.
+         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip over second-para and perfrom third and fourth
+         *> then after performing third and fourth, return here and continue the program until STOP RUN.
+   
+         SECOND-PARA.
+             DISPLAY 'THIS IS IN SECOND-PARA'.
+         STOP RUN.
+   
+         THIRD-PARA.
+             DISPLAY 'THIS IS IN THIRD-PARA'.
+   
+         FOURTH-PARA.
+             DISPLAY 'THIS IS IN FOURTH-PARA'.
+   
+   
+      *When you compile and execute the above program, it produces the following result: 
+          THIS IS IN FIRST-PARA
+          THIS IS IN THIRD-PARA
+          THIS IS IN FOURTH-PARA
+          THIS IS IN SECOND-PARA
+          
+          
+      **********Combining variables together using STRING ***********
+      
+      *Now it is time to learn about two related COBOL verbs: string and unstring.
 
-            display age *> Left-padded to three chracaters with zeroes,
-                        *> because of the defined PICTURE for age.
+      *The string verb is used to concatenate, or put together, two or more stings. Unstring is used, not surprisingly, to separate a         *string into two or more smaller strings. It is important that you remember to use ‘delimited by’ when you
+      *are using string or unstring in your program. 
 
-            *> We have two ways of doing a FOR loop.
-            *> Old style way: doesn't give an index.
-            perform age times
-                display "*" with no advancing *> Ie, no newline at end
-            end-perform
-            display "." *> Output buffer isn't flushed until newline.
-
-            *> New style way: with an index.
-            perform varying valx from 1 by 1 until valx > age
-                display valx "-" with no advancing
-            end-perform
-            display "."
-
-            *> If tests are still good old if tests.
-            if myname = "Bob" then
-                display "I don't like Bob."
-            else
-                display "I don't know you."
-            end-if
-
-            *> There are two ways of doing subprograms and calling
-            *> them.
-            *> The simplest way: a paragraph.
-            perform subparagraph
-
-            *> The complex way, with parameters and stuff.
-            call "eratosthenes" using age returning valx
-
-            display "There were " valx " primes."
-
-            stop run.
-
-       subparagraph. *> Marks the top of an internal subprogram.
-           *> Shares variable score with its caller.
-           
-           *> Read year from system timer.
-           *> Remember the whole "year 2000 crisis"? The yyyyddd 
-           *> option was added in response to that.
-           accept inyear from day yyyyddd.
-
-           *> We can do math step-by-step like this...
-           divide 1000 into inyear.
-           subtract age from inyear.
-
-           display "You were born in " inyear "."
-
-           *> Or we can just use expressions.
-           compute inyear = 1970 - inyear.
-
-           if inyear >= 0 then
-               display "When you were " inyear ", " with no advancing
-           else
-               display inyear " years before you were born, " with no
-                 advancing
-           end-if
-
-           display "COBOL was the most popular language in the world."
-           . *> You can put the final . on a new line if it's clearer.
+      IDENTIFICATION DIVISION.
+      PROGRAM-ID. LEARNING.
+      ENVIRONMENT DIVISION.
+      DATA DIVISION.
+      WORKING-STORAGE SECTION.
+      01 FULL-NAME PIC X(20).
+      01 FIRST-NAME PIC X(13) VALUE "BOB GIBBERISH".
+      01 LAST-NAME PIC X(5) VALUE "COBB".
+      PROCEDURE DIVISION.
+          STRING FIRST-NAME DELIMITED BY SPACE
+            " "
+            LAST-NAME DELIMITED BY SIZE
+            INTO FULL-NAME
+          END-STRING.
+          DISPLAY "THE FULL NAME IS: "FULL-NAME.
+      STOP RUN.
 
 
-      *If we want to use a subprogram, we use literally a subprogram.
-      *This is the entire program layout, repeated for the 
-      *eratosthenes subroutine.
-       identification division.
-       program-id. eratosthenes.
+      *The above code will output:
 
-       data division.
-       working-storage section.
-      *Declare an array.
-      *We can declare a variable to use as an index for it at the
-      *same time.
-       01  sieve pic 9 occurs 999 times indexed by sa, sb.
-           *> Standard cobol doesn't have a boolean type.
-       01  pstart pic 999.
-       01  counter pic 999.
+      THE FULL NAME IS: BOB COBB
 
-      *Our parameters have to be declared in the linkage section.
-      *Their pictures must match the values they're called with.
-       linkage section.
-       01  maxvalue picture 999.
 
-      *"using" declares our actual parameter variables.
-      *"returning" declares the variable value returned at end.
-       procedure division using maxvalue returning counter.
-       main-procedure.
+      *Let’s examine it to see why.
 
-           display "Here are all the primes up to " maxvalue "."
+      *First, we declared all of our variables, including the one that we are creating by the string command, in the DATA DIVISISION.
 
-           perform varying sa from 1 by 1 until sa > maxvalue
-               move 1 to sieve (sa)
-           end-perform
+      *The action takes place down in the PROCEDURE DIVISION. We start with the STRING keyword and end with END-STRING. In between we         *list what we want to combine together into the larger, master variable. 
+      *Here, we are combining FIRST-NAME, a space, and LAST-NAME. 
 
-           perform varying sa from 2 by 1 until sa > maxvalue
-               if sieve(sa) = 1 then
-                   compute pstart = sa + sa
-                   perform varying sb from pstart by sa until sb >
-                   maxvalue
-                       move 0 to sieve(sb)
-                   end-perform
-               end-if
-           end-perform
+      *The DELIMITED BY phrase that follows FIRST-NAME and LAST-NAME tells the program how much of each variable we want to capture. 
+      *DELIMITED BY SPACE tells the program to start at the beginning, and capture the variable until it runs into a space. 
+      *DELIMITED BY SIZE tells the program to capture the full size of the variable. 
+      *Since we have DELIMITED BY SPACE after FIRST-NAME, the GIBBERISH part is ignored. 
 
-           initialise counter  *> To zero by default for a number.
+      *To make this clearer, change line 10 in the above code to:
 
-           perform varying sa from 2 by 1 until sa > maxvalue
-               if sieve(sa) = 1 THEN
-                   display sa
-                   add 1 to counter
-               end-if
-           end-perform.
+      STRING FIRST-NAME DELIMITED BY SIZE
 
-       end program eratosthenes.
+      *and then re-run the program. This time the output is:
 
-       end program learn.
+      THE FULL NAME IS: BOB GIBBERISH COBB
+
+
+
+
+
 
 ```
 
