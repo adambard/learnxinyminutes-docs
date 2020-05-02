@@ -181,6 +181,9 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # Arrays can contain different types of items.
 [1, 'hello', false] #=> [1, "hello", false]
 
+# You might prefer %w instead of quotes
+%w[foo bar baz] #=> ["foo", "bar", "baz"]
+
 # Arrays can be indexed.
 # From the front...
 array[0] #=> 1
