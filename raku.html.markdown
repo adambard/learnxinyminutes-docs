@@ -15,7 +15,7 @@ the JVM and the [MoarVM](http://moarvm.com).
 
 Meta-note:
 
-* Although the  pound sign (`#`) is used for sentences and notes, Pod-styled
+* Although the pound sign (`#`) is used for sentences and notes, Pod-styled
   comments (more below about them) are used whenever it's convenient.
 * `# OUTPUT:` is used to represent the output of a command to any standard
    stream. If the output has a newline, it's represented by the `␤` symbol.
@@ -265,7 +265,7 @@ takes-a-bool('config', :bool);  # OUTPUT: «config takes True␤»
 takes-a-bool('config', :!bool); # OUTPUT: «config takes False␤»
 
 =begin comment
-Since paranthesis can be omitted when calling a subroutine, you need to use
+Since parenthesis can be omitted when calling a subroutine, you need to use
 `&` in order to distinguish between a call to a sub with no arguments and 
 the code object. 
 
@@ -614,8 +614,8 @@ say Int === Int;       # OUTPUT: «True␤»
 # Here are some common comparison semantics:
 
 # String or numeric equality
-say 'Foo' ~~ 'Foo'; # OUTPU: «True␤», if strings are equal.
-say 12.5 ~~ 12.50;  # OUTPU: «True␤», if numbers are equal.
+say 'Foo' ~~ 'Foo'; # OUTPUT: «True␤», if strings are equal.
+say 12.5 ~~ 12.50;  # OUTPUT: «True␤», if numbers are equal.
 
 # Regex - For matching a regular expression against the left side.
 # Returns a `Match` object, which evaluates as True if regexp matches.
@@ -624,7 +624,7 @@ say $obj;       # OUTPUT: «｢a｣␤»
 say $obj.WHAT;  # OUTPUT: «(Match)␤»
 
 # Hashes
-say 'key' ~~ %hash; # OUTPUT:«True␤», if key exists in hash.
+say 'key' ~~ %hash; # OUTPUT: «True␤», if key exists in hash.
 
 # Type - Checks if left side "is of type" (can check superclasses and roles).
 say 1 ~~ Int;       # OUTPUT: «True␤»
@@ -862,7 +862,7 @@ Both pointy blocks and blocks are pretty much the same thing, except that
 the former can take arguments, and that the latter can be mistaken as
 a hash by the parser. That being said, blocks can declare what's known 
 as placeholders parameters through the twigils `$^` (for positional
-parameters) and `$:` (for named parameters). More on them latern on.
+parameters) and `$:` (for named parameters). More on them later on.
 =end comment
 
 my &mult = { $^numbers * $:times }
@@ -2078,19 +2078,19 @@ say so 'abc' ~~ / a  b+  c /;    # OUTPUT: «True␤», one is enough
 say so 'abbbbc' ~~ / a  b+  c /; # OUTPUT: «True␤», matched 4 "b"s
 
 # `*` - zero or more matches
-say so 'ac' ~~ / a  b*  c /;     # OUTPU: «True␤», they're all optional
-say so 'abc' ~~ / a  b*  c /;    # OUTPU: «True␤»
-say so 'abbbbc' ~~ / a  b*  c /; # OUTPU: «True␤»
-say so 'aec' ~~ / a  b*  c /;    # OUTPU: «False␤», "b"(s) are optional, not replaceable.
+say so 'ac' ~~ / a  b*  c /;     # OUTPUT: «True␤», they're all optional
+say so 'abc' ~~ / a  b*  c /;    # OUTPUT: «True␤»
+say so 'abbbbc' ~~ / a  b*  c /; # OUTPUT: «True␤»
+say so 'aec' ~~ / a  b*  c /;    # OUTPUT: «False␤», "b"(s) are optional, not replaceable.
 
 # `**` - (Unbound) Quantifier
 # If you squint hard enough, you might understand why exponentation is used
 # for quantity.
-say so 'abc' ~~ / a  b**1  c /;         # OUTPU: «True␤», exactly one time
-say so 'abc' ~~ / a  b**1..3  c /;      # OUTPU: «True␤», one to three times
-say so 'abbbc' ~~ / a  b**1..3  c /;    # OUTPU: «True␤»
-say so 'abbbbbbc' ~~ / a  b**1..3  c /; # OUTPU: «Fals␤», too much
-say so 'abbbbbbc' ~~ / a  b**3..*  c /; # OUTPU: «True␤», infinite ranges are ok
+say so 'abc' ~~ / a  b**1  c /;         # OUTPUT: «True␤», exactly one time
+say so 'abc' ~~ / a  b**1..3  c /;      # OUTPUT: «True␤», one to three times
+say so 'abbbc' ~~ / a  b**1..3  c /;    # OUTPUT: «True␤»
+say so 'abbbbbbc' ~~ / a  b**1..3  c /; # OUTPUT: «Fals␤», too much
+say so 'abbbbbbc' ~~ / a  b**3..*  c /; # OUTPUT: «True␤», infinite ranges are ok
 
 #
 # 18.2 `<[]>` - Character classes
@@ -2202,8 +2202,8 @@ say $/[0].list.perl; # OUTPUT: «(Match.new(...),).list␤»
 
 # Alternation - the `or` of regexes
 # WARNING: They are DIFFERENT from PCRE regexps.
-say so 'abc' ~~ / a [ b | y ] c /; # OUTPU: «True␤», Either "b" or "y".
-say so 'ayc' ~~ / a [ b | y ] c /; # OUTPU: «True␤», Obviously enough...
+say so 'abc' ~~ / a [ b | y ] c /; # OUTPUT: «True␤», Either "b" or "y".
+say so 'ayc' ~~ / a [ b | y ] c /; # OUTPUT: «True␤», Obviously enough...
 
 # The difference between this `|` and the one you're used to is
 # LTM ("Longest Token Matching") strategy. This means that the engine will
