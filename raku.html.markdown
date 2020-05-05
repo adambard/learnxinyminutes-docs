@@ -15,7 +15,7 @@ the JVM and the [MoarVM](http://moarvm.com).
 
 Meta-note:
 
-* Although the  pound sign (`#`) is used for sentences and notes, Pod-styled
+* Although the pound sign (`#`) is used for sentences and notes, Pod-styled
   comments (more below about them) are used whenever it's convenient.
 * `# OUTPUT:` is used to represent the output of a command to any standard
    stream. If the output has a newline, it's represented by the `␤` symbol.
@@ -265,7 +265,7 @@ takes-a-bool('config', :bool);  # OUTPUT: «config takes True␤»
 takes-a-bool('config', :!bool); # OUTPUT: «config takes False␤»
 
 =begin comment
-Since paranthesis can be omitted when calling a subroutine, you need to use
+Since parenthesis can be omitted when calling a subroutine, you need to use
 `&` in order to distinguish between a call to a sub with no arguments and 
 the code object. 
 
@@ -624,7 +624,7 @@ say $obj;       # OUTPUT: «｢a｣␤»
 say $obj.WHAT;  # OUTPUT: «(Match)␤»
 
 # Hashes
-say 'key' ~~ %hash; # OUTPUT:«True␤», if key exists in hash.
+say 'key' ~~ %hash; # OUTPUT: «True␤», if key exists in hash.
 
 # Type - Checks if left side "is of type" (can check superclasses and roles).
 say 1 ~~ Int;       # OUTPUT: «True␤»
@@ -862,7 +862,7 @@ Both pointy blocks and blocks are pretty much the same thing, except that
 the former can take arguments, and that the latter can be mistaken as
 a hash by the parser. That being said, blocks can declare what's known 
 as placeholders parameters through the twigils `$^` (for positional
-parameters) and `$:` (for named parameters). More on them latern on.
+parameters) and `$:` (for named parameters). More on them later on.
 =end comment
 
 my &mult = { $^numbers * $:times }
