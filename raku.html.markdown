@@ -1558,9 +1558,9 @@ END  { say "Runs at run time, as late as possible, only once" }
 #
 # 14.3 Block phasers
 #
-ENTER { say "[*] Runs everytime you enter a block, repeats on loop blocks" }
+ENTER { say "[*] Runs every time you enter a block, repeats on loop blocks" }
 LEAVE {
-    say "Runs everytime you leave a block, even when an exception
+    say "Runs every time you leave a block, even when an exception
     happened. Repeats on loop blocks."
 }
 
@@ -1619,9 +1619,9 @@ say "This code took " ~ (time - CHECK time) ~ "s to compile";
 
 # ... or clever organization:
 class DB {
-    method start-transaction { say "Starting transation!" }
-    method commit            { say "Commiting transaction..." }
-    method rollback          { say "Something went wrong. Rollingback!" }
+    method start-transaction { say "Starting transaction!" }
+    method commit            { say "Committing transaction..." }
+    method rollback          { say "Something went wrong. Rolling back!" }
 }
 
 sub do-db-stuff {
