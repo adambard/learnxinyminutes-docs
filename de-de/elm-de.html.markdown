@@ -62,7 +62,7 @@ List.range 1 5 ++ List.range 6 10 == List.range 1 10 -- True
 0 :: List.range 1 5 -- [0, 1, 2, 3, 4, 5]
 
 -- Die Funktionen "head" und "tail" haben als Rückgabewert den "Maybe" Typ.
--- Dadurch wird die Fehlerbehandlung von fehlenden Elemenent explizit, weil
+-- Dadurch wird die Fehlerbehandlung von fehlenden Elementen explizit, weil
 -- man immer mit jedem möglichen Fall umgehen muss.
 List.head (List.range 1 5) -- Just 1
 List.tail (List.range 1 5) -- Just [2, 3, 4, 5]
