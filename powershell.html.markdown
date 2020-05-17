@@ -345,7 +345,7 @@ Interesting Projects
 * [PSGet](https://github.com/psget/psget) NuGet for PowerShell
 * [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
 * [Posh-Git](https://github.com/dahlbyk/posh-git/) Fancy Git Prompt (Recommended!)
-* [Oh-My-Posh](https://github.com/JanDeDobbeleer/oh-my-posh)
+* [Oh-My-Posh](https://github.com/JanDeDobbeleer/oh-my-posh) Shell customization similar to the popular Oh-My-Zsh on Mac
 * [PSake](https://github.com/psake/psake) Build automation tool
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
 * [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
