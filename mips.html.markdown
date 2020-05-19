@@ -209,7 +209,7 @@ gateways and routers.
 ## LOOPS ##
   _loops:
     # The basic structure of loops is having an exit condition and a jump 
-    instruction to continue its execution
+    # instruction to continue its execution
     li $t0, 0
     while:
       bgt $t0, 10, end_while                # While $t0 is less than 10, 
