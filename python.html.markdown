@@ -1040,3 +1040,5 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 * [Dive Into Python 3](http://www.diveintopython3.net/index.html)
 * [A Crash Course in Python for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)
+* [Python Tutorial for Intermediates](https://pythonbasics.org/)
+* [Build a Desktop App with Python](https://pythonpyqt.com/)
