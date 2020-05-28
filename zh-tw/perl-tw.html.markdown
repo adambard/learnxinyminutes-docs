@@ -265,12 +265,6 @@ trim($string);
 
 #### 物件
 
-# Objects in Perl are just references that know which class (package)
-# they belong to, so that methods (subroutines) called on it can be
-# found there. The bless function is used in constructors (usually new)
-# to set this up. However, you never need to call it yourself if you use
-# a module like Moose or Moo (see below).
-
 # Perl 中的物件，只是個參照，但同時又知道自己屬於哪個類別（package），於是對自身
 # 調用方法（函式）時方知去何處尋找函式本體。在建構子（通常是 "new"）中，都是以
 # "bless" 函式來標記參照與其類別。只不過，若你使用像 Moose 或 Moo 模組的話，這些
