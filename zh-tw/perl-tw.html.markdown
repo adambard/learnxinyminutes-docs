@@ -94,37 +94,34 @@ my @colors = values %fruit_color;
 # 關於純量、陣列、雜湊，在 perldata 文件之中，有更完整的描述。
 # (perldoc perldata)
 
-#### References
+#### 參照
 
-# More complex data types can be constructed using references, which
-# allow you to build arrays and hashes within arrays and hashes.
+# 以參照能組出結構更為複雜的資料型別。像是在陣列中放入雜湊、在雜湊裡放入陣列的雜湊。
 
 my $array_ref = \@array;
 my $hash_ref = \%hash;
 my @array_of_arrays = (\@array1, \@array2, \@array3);
 
-# You can also create anonymous arrays or hashes, returning a reference:
+# 匿名陣列與匿名雜湊也是參照
 
 my $fruits = ["apple", "banana"];
 my $colors = {apple => "red", banana => "yellow"};
 
-# References can be dereferenced by prefixing the appropriate sigil.
+# 在參照之前補上適當的印記，是為解參照。
 
 my @fruits_array = @$fruits;
 my %colors_hash = %$colors;
 
-# As a shortcut, the arrow operator can be used to dereference and
-# access a single value.
+# 以箭頭算符，便可在解參照同時存取其中一值。
 
 my $first = $array_ref->[0];
 my $value = $hash_ref->{banana};
 
-# See perlreftut and perlref for more in-depth documentation on
-# references.
+# 欲深入了解參照，詳見 perlreftut 與 perlref 兩份文件
 
-#### Conditional and looping constructs
+#### 條件結構與迴圈結構
 
-# Perl has most of the usual conditional and looping constructs.
+# Perl 語言中亦具備常見的條件結講與迴圈結構。
 
 if ($var) {
   ...
@@ -137,9 +134,9 @@ if ($var) {
 unless (condition) {
   ...
 }
-# This is provided as a more readable version of "if (!condition)"
+# 這算是可讀性較好的 "if (!condition)"
 
-# the Perlish post-condition way
+# 倒裝句型算是某「很 Perl 的」寫法
 print "Yow!" if $zippy;
 print "We have no bananas" unless $bananas;
 
@@ -149,7 +146,7 @@ while (condition) {
 }
 
 my $max = 5;
-# for loops and iteration
+# 以 for 迴圈，$i 為迭代變數
 for my $i (0 .. $max) {
   print "index is $i";
 }
@@ -160,68 +157,63 @@ for my $element (@elements) {
 
 map {print} @elements;
 
-# implicitly
-
+# 迭代變數為 $_
 for (@elements) {
   print;
 }
 
-# iterating through a hash (for and foreach are equivalent)
+# 對雜湊進行迭代（for 與 foreach 完全相同）
 
 foreach my $key (keys %hash) {
   print $key, ': ', $hash{$key}, "\n";
 }
 
-# the Perlish post-condition way again
+# 又是「很 Perl 的」倒裝句法
 print for @elements;
 
-# iterating through the keys and values of a referenced hash
+# 對一雜湊參照之中迭代，逐一走過其鍵與值
 print $hash_ref->{$_} for keys %$hash_ref;
 
-#### Regular expressions
+#### 正規表示式
 
-# Perl's regular expression support is both broad and deep, and is the
-# subject of lengthy documentation in perlrequick, perlretut, and
-# elsewhere. However, in short:
+# Perl 中，對正規表示式的支援既廣亦深，在 perlrequick、perlretut 等各處文件中
+# 都有更加完整的文件。不過，簡而言之：
 
-# Simple matching
-if (/foo/)       { ... }  # true if $_ contains "foo"
-if ($x =~ /foo/) { ... }  # true if $x contains "foo"
+# 簡易比對
+if (/foo/)       { ... }  # 若 $_ 內含 "foo" 則為真
+if ($x =~ /foo/) { ... }  # 若 $x 內含 "foo" 則為真
 
-# Simple substitution
+# 簡易取代
+$x =~ s/foo/bar/;         # 將 $x 中第一個出現的 foo 換為 bar
+$x =~ s/foo/bar/g;        # 將 $x 中所有出現的 foo 換為 bar
 
-$x =~ s/foo/bar/;         # replaces foo with bar in $x
-$x =~ s/foo/bar/g;        # replaces ALL INSTANCES of foo with bar in $x
+#### 檔案與輸出入
 
+# 以 "open" 函式開檔後，便可自檔案輸入或對其輸出
 
-#### Files and I/O
-
-# You can open a file for input or output using the "open()" function.
-
-# For reading:
+# 讀檔：
 open(my $in,  "<",  "input.txt")  or die "Can't open input.txt: $!";
-# For writing (clears file if it exists):
+
+# 寫檔（若檔案已經存在，舊內容會被清空）：
 open(my $out, ">",  "output.txt") or die "Can't open output.txt: $!";
-# For writing (appends to end of file):
+
+# 寫檔（若檔案已經存在，會寫到檔尾去）：
 open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 
-# You can read from an open filehandle using the "<>" operator.  In
-# scalar context it reads a single line from the filehandle, and in list
-# context it reads the whole file in, assigning each line to an element
-# of the list:
+# 使用 "<>" 算符，能對檔案代號進行讀取。在純量語境下，會自檔案代號讀一列內容。
+# 而在串列語境下，對讀入整個檔案。每一列都會成為串列中一項元素。
 
 my $line  = <$in>;
 my @lines = <$in>;
 
-# You can write to an open filehandle using the standard "print"
-# function.
+# 以 "print" 函式，則可對檔案代號進行輸出。
 
 print $out @lines;
 print $log $msg, "\n";
 
-#### Writing subroutines
+#### 函式之撰寫
 
-# Writing subroutines is easy:
+# 撰寫函式很是容易：
 
 sub logger {
   my $logmessage = shift;
@@ -231,15 +223,18 @@ sub logger {
   print $logfile $logmessage;
 }
 
-# Now we can use the subroutine just as any other built-in function:
+# 之後，使用起來就與內建函式無異：
 
 logger("We have a logger subroutine!");
 
-#### Modules
+#### 模組
 
 # A module is a set of Perl code, usually subroutines, which can be used
 # in other Perl code. It is usually stored in a file with the extension
 # .pm so that Perl can find it.
+
+# 所謂模組，就是一組 Perl 程式碼，由一些函式組成，並可讓其他 Perl 程式碼來利用。
+# 為了讓 perl 能找至，通常模組之副標名為 .pm 。
 
 package MyModule;
 use strict;
@@ -254,30 +249,32 @@ sub trim {
 
 1;
 
-# From elsewhere:
+# 自他處利用：
 
 use MyModule;
 MyModule::trim($string);
 
-# The Exporter module can help with making subroutines exportable, so
-# they can be used like this:
+# Exporter 模組能將函式出口，好讓它們能被這樣利用：
 
 use MyModule 'trim';
 trim($string);
 
-# Many Perl modules can be downloaded from CPAN (http://www.cpan.org/)
-# and provide a range of features to help you avoid reinventing the
-# wheel.  A number of popular modules like Exporter are included with
-# the Perl distribution itself. See perlmod for more details on modules
-# in Perl.
+# 有許多 Perl 模組能從 CPAN (https://www.cpan.org) 下載下來，各式各樣的機能讓你
+# 能免於重新發明輪子。不少高人氣模組，如 Exporter，則是與 Perl 一同釋出、散佈。
+# 更多關於 Perl 模組的細節，詳見 perlmod 文件。
 
-#### Objects
+#### 物件
 
 # Objects in Perl are just references that know which class (package)
 # they belong to, so that methods (subroutines) called on it can be
 # found there. The bless function is used in constructors (usually new)
 # to set this up. However, you never need to call it yourself if you use
 # a module like Moose or Moo (see below).
+
+# Perl 中的物件，只是個參照，但同時又知道自己屬於哪個類別（package），於是對自身
+# 調用方法（函式）時方知去何處尋找函式本體。在建構子（通常是 "new"）中，都是以
+# "bless" 函式來標記參照與其類別。只不過，若你使用像 Moose 或 Moo 模組的話，這些
+# 都不必自己來（總之請繼續往下讀）。
 
 package MyCounter;
 use strict;
@@ -301,21 +298,18 @@ sub increment {
 
 1;
 
-# Methods can be called on a class or object instance with the arrow
-# operator.
-
+# 以箭頭運算符，便可對某類別或某物件呼叫某方法：
 use MyCounter;
 my $counter = MyCounter->new;
 print $counter->count, "\n"; # 0
 $counter->increment;
 print $counter->count, "\n"; # 1
 
-# The modules Moose and Moo from CPAN can help you set up your object
-# classes. They provide a constructor and simple syntax for declaring
-# attributes. This class can be used equivalently to the one above.
+# CPAN 上的 Moose 與 Moo 模組能助你撰寫類別本體。它們提供了建構子，與簡單易懂的
+# 語法能來宣告屬性。前述的類別改寫之後，如下：
 
 package MyCounter;
-use Moo; # imports strict and warnings
+use Moo; # 同時也啟用 strict 與 warnings
 
 has 'count' => (is => 'rwp', default => 0, init_arg => undef);
 
@@ -326,17 +320,18 @@ sub increment {
 
 1;
 
-# Object-oriented programming is covered more thoroughly in perlootut,
-# and its low-level implementation in Perl is covered in perlobj.
+# 物件導向程式設計於 perlootut 文件中有詳盡的說明，同時，perlobj 文件中更函蓋了
+# 底層實做之細節。
 ```
 
-#### FAQ
+#### 常見問答集
 
-perlfaq contains questions and answers related to many common tasks, and often provides suggestions for good CPAN modules to use.
+perlfaq 文件內含了許多問與答，都是關於常遇到的問題與工作，也對其提供一些建議與好
+用的 CPAN 模組。
 
-#### Further Reading
+#### 延伸閱讀
 
  - [perl-tutorial](http://perl-tutorial.org/)
- - [Learn at www.perl.com](http://www.perl.org/learn.html)
+ - [Learn Perl](https://www.perl.org/learn.html)
  - [perldoc](http://perldoc.perl.org/)
- - and perl built-in : `perldoc perlintro`
+ - 內建函式 : `perldoc perlintro`
