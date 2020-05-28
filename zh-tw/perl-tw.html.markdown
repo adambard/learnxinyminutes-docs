@@ -43,8 +43,8 @@ my $display = "You have $answer ${animal}s.\n";
 
 # 純量值可為字串、整數、浮點數。Perl 會自動地在需要之時進行轉換。
 
-# 以單引號括住的字串內容與其字面之值完全相同。而以雙引號括住的字串，其中則能內插變數
-# 與像是表示換列的 "\n" 這種控制碼。
+# 以單引號括住的字串內容與其字面之值完全相同。而以雙引號括住的字串，
+# 其中則能內插變數與像是這種表示換列字符 "\n" 的控制碼。
 
 ## 陣列
 # 一個陣列，可以裝下很多值：
@@ -55,12 +55,8 @@ my @mixed   = ("camel", 42, 1.23);
 # 陣列元素的存取，需要角括號。前方的印記為 $ 符號，表示只取一個值。
 my $second = $animals[1];
 
-# The size of an array is retrieved by accessing the array in a scalar
-# context, such as assigning it to a scalar variable or using the
-# "scalar" operator.
-
 # 欲知陣列之大小，在純量語境之下使用陣列便可。例如，將陣列裝到一個純量變數中。
-# 又或者是使用 scalar 算符。
+# 又或者是使用 "scalar" 算符。
 
 my $num_animals = @animals;
 print "Number of numbers: ", scalar(@numbers), "\n";
@@ -76,29 +72,27 @@ my @example = ('secret', 'array');
 my $oops_email = "foo@example.com"; # 'foosecret array.com'
 my $ok_email = 'foo@example.com';
 
-## Hashes
-#   A hash represents a set of key/value pairs:
+## 雜湊
+# 一個雜湊，能裝下許多對的鍵與值：
 
 my %fruit_color = ("apple", "red", "banana", "yellow");
 
-#  You can use whitespace and the "=>" operator to lay them out more
-#  nicely:
+# 善用空白與 "=>" 算符，就能將其排得得好看一些：
 
 my %fruit_color = (
   apple  => "red",
   banana => "yellow",
 );
 
-# Hash elements are accessed using curly braces, again with the $ sigil.
+# 雜湊元素的存取，需要大括號。前方的印記仍為 $ 符號，表示只取一個值。
 my $color = $fruit_color{apple};
 
-# All of the keys or values that exist in a hash can be accessed using
-# the "keys" and "values" functions.
+# 以 "keys" 與 "values" 兩個函數，則可一次取得雜湊中的所有鍵、所有值。
 my @fruits = keys %fruit_color;
 my @colors = values %fruit_color;
 
-# Scalars, arrays and hashes are documented more fully in perldata.
-# (perldoc perldata).
+# 關於純量、陣列、雜湊，在 perldata 文件之中，有更完整的描述。
+# (perldoc perldata)
 
 #### References
 
