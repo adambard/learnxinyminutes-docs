@@ -8,6 +8,7 @@ contributors:
     - ["Dan Book", "http://github.com/Grinnz"]
 translators:
     - ["Kang-min Liu", "https://gugod.org"]
+    - ["Shih-Kai Chiu", "https://twitter.com/zard1989"]
 lang: zh-tw
 ---
 
