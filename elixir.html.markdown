@@ -457,4 +457,4 @@ Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 * [Elixir Cheat Sheet](https://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
 * ["Learn You Some Erlang for Great Good!"](https://learnyousomeerlang.com/) by Fred Hebert
 * ["Programming Erlang: Software for a Concurrent World"](https://pragprog.com/book/jaerlang2/programming-erlang) by Joe Armstrong
-* ["Introduction to Elixir"](https://learn-elixir.com/)
+* [Introduction to Elixir](https://learn-elixir.com/)
