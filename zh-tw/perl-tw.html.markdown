@@ -14,7 +14,8 @@ lang: zh-tw
 
 Perl 5 是一款強大且功能豐富的程式語言，已經持續發展超過 25 年。
 
-從大型主機到行動裝置，Perl 5 能在上百種平台執行，適合快速打造產品原型，也適合大型專案開發。
+從大型主機到行動裝置，Perl 5 能在上百種平台執行，適合快速打造產品原型，也適合大
+型專案開發。
 
 ```perl
 # 註解列皆以井字號為開頭
@@ -96,7 +97,8 @@ my @colors = values %fruit_color;
 
 #### 參照
 
-# 以參照能組出結構更為複雜的資料型別。像是在陣列中放入雜湊、在雜湊裡放入陣列的雜湊。
+# 以參照能組出結構更為複雜的資料型別。
+# 像是在陣列中放入雜湊、或是在雜湊裡放入陣列的雜湊。
 
 my $array_ref = \@array;
 my $hash_ref = \%hash;
@@ -229,12 +231,8 @@ logger("We have a logger subroutine!");
 
 #### 模組
 
-# A module is a set of Perl code, usually subroutines, which can be used
-# in other Perl code. It is usually stored in a file with the extension
-# .pm so that Perl can find it.
-
 # 所謂模組，就是一組 Perl 程式碼，由一些函式組成，並可讓其他 Perl 程式碼來利用。
-# 為了讓 perl 能找至，通常模組之副標名為 .pm 。
+# 為了讓 perl 能找至，通常模組之副檔名 .pm 。
 
 package MyModule;
 use strict;
@@ -314,8 +312,8 @@ sub increment {
 
 1;
 
-# 物件導向程式設計於 perlootut 文件中有詳盡的說明，同時，perlobj 文件中更函蓋了
-# 底層實做之細節。
+# 物件導向程式設計於 perlootut 文件中有詳盡的說明。
+# 此外，perlobj 文件中更涵蓋了底層實做之細節。
 ```
 
 #### 常見問答集
