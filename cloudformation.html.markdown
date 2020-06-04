@@ -22,7 +22,7 @@ Conditions:  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/co
   ShouldCreateResource:
     !Equals [true, !Ref CreateResource]
 
-Resources:
+Resources:  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
   NeptuneDBCluster:
     Type: AWS::Neptune::DBCluster
     Condition: ShouldCreateResource            # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html
@@ -44,4 +44,8 @@ Resources:
   # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html
   S3Bucket:
     Type: AWS::S3::Bucket
+
+Outputs:  # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
+  Output:
+    Value: !Ref S3Bucket
 ```
