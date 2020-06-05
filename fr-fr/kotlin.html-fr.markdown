@@ -307,19 +307,19 @@ fun helloWorld(val name : String) {
     */
     fun smartCastExample(x: Any) : Boolean {
         if (x is Boolean) {
-            // x is automatically cast to Boolean
+            // x est automatiquement converti en booléen
             return x
         } else if (x is Int) {
-            // x is automatically cast to Int
+            // x est automatiquement converti en Int
             return x > 0
         } else if (x is String) {
-            // x is automatically cast to String
+            // x est automatiquement converti en String
             return x.isNotEmpty()
         } else {
             return false
         }
     }
-    println(smartCastExample("Hello, world!")) // => true
+    println(smartCastExample("Bonjour, le monde !")) // => true
     println(smartCastExample("")) // => false
     println(smartCastExample(5)) // => true
     println(smartCastExample(0)) // => false
