@@ -2392,7 +2392,7 @@ resource on Raku. If you are looking for something, use the search bar.
 This will give you a dropdown menu of all the pages referencing your search
 term (Much better than using Google to find Raku documents!).
 
-- Read the [Raku Advent Calendar](http://perl6advent.wordpress.com/). This
+- Read the [Raku Advent Calendar](https://rakuadventcalendar.wordpress.com/). This
 is a great source of Raku snippets and explanations. If the docs don't
 describe something well enough, you may find more detailed information here.
 This information may be a bit older but there are many great examples and
