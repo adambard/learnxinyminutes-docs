@@ -279,7 +279,7 @@ with builtins; [
   #=> 7
 
   # This first line of tutorial starts with "with builtins;"
-  # because builtins is a set the contains all of the built-in
+  # because builtins is a set that contains all of the built-in
   # functions (length, head, tail, filter, etc.). This saves
   # us from having to write, for example, "builtins.length"
   # instead of just "length".
