@@ -128,7 +128,7 @@ printf("Enter the array size: "); // 询问用户数组长度
 char buf[0x100];
 fgets(buf, sizeof buf, stdin);
 
-// stroul 将字符串解析为无符号整数
+// strtoul 将字符串解析为无符号整数
 size_t size = strtoul(buf, NULL, 10);
 int var_length_array[size]; // 声明VLA
 printf("sizeof array = %zu\n", sizeof var_length_array);
