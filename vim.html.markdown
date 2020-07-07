@@ -182,6 +182,7 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
     ~                # Toggle letter case of selected text
     u                # Selected text to lower case
     U                # Selected text to upper case
+    J                # Join the current line with the next line
     
     # Fold text
     zf               # Create fold from selected text
