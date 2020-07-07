@@ -388,7 +388,7 @@ y := $A max: $B.
 ```smalltalk
 | b x y |
 x := #Hello.                                      "symbol assignment"
-y := 'String', 'Concatenation'.                   "symbol concatenation (result is string)"
+y := #Symbol, #Concatenation.                     "symbol concatenation (result is string)"
 b := x isEmpty.                                   "test if symbol is empty"
 y := x size.                                      "string size"
 y := x at: 2.                                     "char at location"
