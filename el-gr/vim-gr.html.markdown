@@ -4,6 +4,7 @@ tool: vim
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 filename: LearnVim.txt
+lang: el-gr
 ---
 
 
