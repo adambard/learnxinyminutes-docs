@@ -29,11 +29,13 @@ These operators don't require a lot of text to describe.
 * `Z`, the set of all integers. `{…,-2,-1,0,1,2,…}`
 * `Q`, the set of all rational numbers.
 * `R`, the set of all real numbers.
+
 ### The empty set
 * The set containing no items is called the empty set. Representation: `∅`
 * The empty set can be described as `∅ = {x|x ≠ x}`
 * The empty set is always unique.
 * The empty set is the subset of all sets.
+
 ```
 A = {x|x∈N,x < 0}
 A = ∅
@@ -42,6 +44,7 @@ A = ∅
 |∅|   = 0
 |{∅}| = 1
 ```
+
 ## Representing sets
 ### Enumeration
 * List all items of the set, e.g. `A = {a,b,c,d}`
@@ -49,6 +52,7 @@ A = ∅
 
 ### Description
 * Describes the features of all items in the set. Syntax: `{body|condtion}`
+
 ```
 A = {x|x is a vowel}
 B = {x|x ∈ N, x < 10l}
@@ -84,6 +88,7 @@ C = {2x|x ∈ N}
 * The number of items in a set is called the base number of that set. Representation: `|A|`
 * If the base number of the set is finite, this set is a finite set.
 * If the base number of the set is infinite, this set is an infinite set.
+
 ```
 A   = {A,B,C}
 |A| = 3
@@ -94,6 +99,7 @@ B   = {a,{b,c}}
 
 ### Powerset
 * Let `A` be any set. The set that contains all possible subsets of `A` is called a powerset (written as `P(A)`).
+
 ```
 P(A) = {x|x ⊆ A}
 
@@ -103,41 +109,54 @@ P(A) = {x|x ⊆ A}
 ## Set operations among two sets
 ### Union
 Given two sets `A` and `B`, the union of the two sets are the items that appear in either `A` or `B`, written as `A ∪ B`.
+
 ```
 A ∪ B = {x|x∈A∨x∈B}
 ```
+
 ### Intersection
 Given two sets `A` and `B`, the intersection of the two sets are the items that appear in both `A` and `B`, written as `A ∩ B`.
+
 ```
 A ∩ B = {x|x∈A,x∈B}
 ```
+
 ### Difference
 Given two sets `A` and `B`, the set difference of `A` with `B` is every item in `A` that does not belong to `B`.
+
 ```
 A \ B = {x|x∈A,x∉B}
 ```
+
 ### Symmetrical difference
 Given two sets `A` and `B`, the symmetrical difference is all items among `A` and `B` that doesn't appear in their intersections.
+
 ```
 A △ B = {x|(x∈A∧x∉B)∨(x∈B∧x∉A)}
 
 A △ B = (A \ B) ∪ (B \ A)
 ```
+
 ### Cartesian product
 Given two sets `A` and `B`, the cartesian product between `A` and `B` consists of a set containing all combinations of items of `A` and `B`.
+
 ```
 A × B = { {x, y} | x ∈ A, y ∈ B }
 ```
+
 ## "Generalized" operations
 ### General union
 Better known as "flattening" of a set of sets.
+
 ```
 ∪A = {x|X∈A,x∈X}
 ∪A={a,b,c,d,e,f}
 ∪B={a}
 ∪C=a∪{c,d}
 ```
+
 ### General intersection
+
 ```
 ∩ A = A1 ∩ A2 ∩ … ∩ An
 ```
