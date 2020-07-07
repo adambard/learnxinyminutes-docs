@@ -6,7 +6,7 @@ contributors:
   - ["Vince Ramces Oliveros", "https://github.com/ram231"]
 ---
 
-**Dart** is a single threaded, general puprose programming languages.
+**Dart** is a single threaded, general purpose programming language.
 It borrows a lot from other mainstream languages.
 It supports Streams, Futures(known as Promises in JavaScript), Generics, First-class functions(closures) and static type checking.
 Dart can run in any platform such as Web, CLI, Desktop, Mobile and IoT devices.
