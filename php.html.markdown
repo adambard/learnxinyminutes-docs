@@ -34,6 +34,7 @@ echo "World\n"; // Prints "World" with a line break
 ?>
 Hello World Again!
 <?php
+// That is because historically PHP started as a Template engine
 
 
 /************************************
