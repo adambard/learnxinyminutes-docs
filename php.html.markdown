@@ -41,12 +41,15 @@ Hello World Again!
  */
 
 // Variables begin with the $ symbol.
-// A valid variable name starts with a letter or underscore,
+// A valid variable name starts with a letter or an underscore,
 // followed by any number of letters, numbers, or underscores.
+
+// You don't have to (and cannot) declare variables.
+// Once you assign a value, PHP will create the variable with the right type.
 
 // Boolean values are case-insensitive
 $boolean = true;  // or TRUE or True
-$boolean = false; // or FALSE or False
+$boolean = FALSE; // or false or False
 
 // Integers
 $int1 = 12;   // => 12
