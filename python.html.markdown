@@ -132,7 +132,7 @@ b == a            # => True, a's and b's objects are equal
 "Hello " "world!"    # => "Hello world!"
 
 # A string can be treated like a list of characters
-"This is a string"[0]  # => 'T'
+"Hello world!"[0]  # => 'H'
 
 # You can find the length of a string
 len("This is a string")  # => 16
