@@ -49,9 +49,11 @@ Subtitles with dashes
 
 You can put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``print()``.
 
+Special characters can be escaped using a backslash, e.g. \\ or \*.
+
 Lists are similar to Markdown, but a little more involved.
 
-Remember to line up list symbols (like - or *) with the left edge of the previous text block, and remember to use blank lines to separate new lists from parent lists:    
+Remember to line up list symbols (like - or \*) with the left edge of the previous text block, and remember to use blank lines to separate new lists from parent lists:    
 
 - First item
 - Second item
@@ -86,7 +88,7 @@ There are multiple ways to make links:
 - By typing a full comprehensible URL : https://github.com/ (will be automatically converted to a link)
 - By making a more Markdown-like link: `Github <https://github.com/>`_ .
 
-.. _Github https://github.com/
+.. _Github: https://github.com/
 
 ```
 
