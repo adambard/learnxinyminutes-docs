@@ -11,9 +11,9 @@ translators:
 lang: es-es
 ---
 
-Perl 5 es un lenguaje de programación altamente capaz, rico en características, con más de 25 años de desarrollo.
+Perl es un lenguaje de programación altamente capaz, rico en características, con más de 25 años de desarrollo.
 
-Perl 5 corre en más de 100 plataformas, desde portátiles hasta ordenadores centrales, y es adecuado para realizar desde prototipos rápidos hasta desarrollar proyectos a gran escala.
+Perl corre en más de 100 plataformas, desde portátiles hasta ordenadores centrales, y es adecuado para realizar desde prototipos rápidos hasta desarrollar proyectos a gran escala.
 
 ```perl
 # Comentarios de una sola línea con un carácter hash
@@ -31,7 +31,7 @@ Perl 5 corre en más de 100 plataformas, desde portátiles hasta ordenadores cen
 my $animal    = "camello";
 my $respuesta = 42;
 
-# Los valores escalares pueden ser cadenas de caracteres, números enteros o 
+# Los valores escalares pueden ser cadenas de caracteres, números enteros o
 # de punto flotante; Perl automáticamente los convertirá como sea requerido
 
 ## Arreglos
@@ -52,7 +52,7 @@ my %color_fruta = (
 
 # Los escalares, arreglos y hashes están más documentados en perldata (perldoc perldata)
 
-# Los tipos de datos más complejos se pueden construir utilizando 
+# Los tipos de datos más complejos se pueden construir utilizando
 # referencias, las cuales le permiten construir listas y hashes dentro
 # de listas y hashes
 
@@ -61,7 +61,7 @@ my %color_fruta = (
 # Perl tiene la mayoría de las estructuras condicionales y de ciclos más comunes
 if ( $var ) {
     ...;
-} elsif ( $var eq 'bar' ) { 
+} elsif ( $var eq 'bar' ) {
     ...;
 } else {
     ...;
@@ -98,7 +98,7 @@ foreach (@array) {
 
 #### Expresiones regulares
 
-# El soporte de expresiones regulares en Perl es muy amplio y profundo, y 
+# El soporte de expresiones regulares en Perl es muy amplio y profundo, y
 # está sujeto a una extensa documentación en perlrequick, perlretut, entre otros.
 # Sin embargo, resumiendo:
 
@@ -113,7 +113,7 @@ $a =~ s/foo/bar/g;        # remplaza TODAS LAS INSTANCIAS de "foo" con "bar" en 
 
 #### Archivos y E/S
 
-# Puede abrir un archivo para obtener datos o escribirlos utilizando la 
+# Puede abrir un archivo para obtener datos o escribirlos utilizando la
 # función "open()"
 
 open(my $entrada, "<"  "entrada.txt") or die "No es posible abrir entrada.txt: $!";
@@ -122,7 +122,7 @@ open(my $log,     ">>", "mi.log")     or die "No es posible abrir mi.log: $!";
 
 # Es posible leer desde un gestor de archivo abierto utilizando el operador "<>".
 # En contexto escalar, leer una sola línea desde el gestor de archivo, y
-# en contexto de lista, leer el archivo completo en donde asigna 
+# en contexto de lista, leer el archivo completo en donde asigna
 # cada línea a un elemento de la lista
 
 my $linea  = <$entrada>;

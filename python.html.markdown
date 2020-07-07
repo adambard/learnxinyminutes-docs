@@ -772,11 +772,11 @@ if __name__ == '__main__':
 
     # Call the static method
     print(Human.grunt())            # => "*grunt*"
-    
-    # Cannot call static method with instance of object 
+
+    # Cannot call static method with instance of object
     # because i.grunt() will automatically put "self" (the object i) as an argument
     print(i.grunt())                # => TypeError: grunt() takes 0 positional arguments but 1 was given
-                                    
+
     # Update the property for this instance
     i.age = 42
     # Get the property
@@ -792,7 +792,7 @@ if __name__ == '__main__':
 ####################################################
 
 # Inheritance allows new child classes to be defined that inherit methods and
-# variables from their parent class. 
+# variables from their parent class.
 
 # Using the Human class defined above as the base or parent class, we can
 # define a child class, Superhero, which inherits the class variables like
@@ -926,7 +926,7 @@ class Batman(Superhero, Bat):
         # So instead we explicitly call __init__ for all ancestors.
         # The use of *args and **kwargs allows for a clean way to pass arguments,
         # with each parent "peeling a layer of the onion".
-        Superhero.__init__(self, 'anonymous', movie=True, 
+        Superhero.__init__(self, 'anonymous', movie=True,
                            superpowers=['Wealthy'], *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
         # override the value for the name attribute
@@ -941,9 +941,9 @@ if __name__ == '__main__':
 
     # Get the Method Resolution search Order used by both getattr() and super().
     # This attribute is dynamic and can be updated
-    print(Batman.__mro__)       # => (<class '__main__.Batman'>, 
-                                # => <class 'superhero.Superhero'>, 
-                                # => <class 'human.Human'>, 
+    print(Batman.__mro__)       # => (<class '__main__.Batman'>,
+                                # => <class 'superhero.Superhero'>,
+                                # => <class 'human.Human'>,
                                 # => <class 'bat.Bat'>, <class 'object'>)
 
     # Calls parent method but uses its own class attribute
