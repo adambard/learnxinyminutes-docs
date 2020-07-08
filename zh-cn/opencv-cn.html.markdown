@@ -34,7 +34,7 @@ cv2.imshow('Image',img)
 cv2.waitKey(0)
 # waitKey() 是一个键盘绑定函数，参数以毫秒为单位。对于GUI事件，必须使用waitKey()函数。
 
-# Writing an image
+# 保存图片
 cv2.imwrite('catgray.png',img)
 # 第一个参数是文件名，第二个参数是图像
 
