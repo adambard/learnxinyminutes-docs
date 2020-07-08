@@ -181,6 +181,9 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # Arrays can contain different types of items.
 [1, 'hello', false] #=> [1, "hello", false]
 
+# You might prefer %w instead of quotes
+%w[foo bar baz] #=> ["foo", "bar", "baz"]
+
 # Arrays can be indexed.
 # From the front...
 array[0] #=> 1
@@ -323,6 +326,11 @@ puts doubled
 #=> [2,4,6,8,10]
 puts array
 #=> [1,2,3,4,5]
+
+# another useful syntax is .map(&:method)
+a = ["FOO", "BAR", "BAZ"]
+a.map { |s| s.downcase } #=> ["foo", "bar", "baz"]
+a.map(&:downcase) #=> ["foo", "bar", "baz"]
 
 # Case construct
 grade = 'B'
