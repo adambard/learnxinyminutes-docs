@@ -139,7 +139,7 @@ class Point3D extends Point {
   // Overwrite
   dist() {
     let d = super.dist();
-    return Math.sqrt(d() * d() + this.z * this.z);
+    return Math.sqrt(d * d + this.z * this.z);
   }
 }
 
