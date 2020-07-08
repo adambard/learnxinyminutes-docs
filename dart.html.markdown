@@ -223,7 +223,7 @@ var newExplicitLists = explicitList.toList() // Converts Iterable<E> to List<E>
 /// supported features, starting with forEach,map and where.
 var example9Array = const ["a", "b"];
 example9() {
-  for (final i = 0; i < example9Array.length; i++) {
+  for (int i = 0; i < example9Array.length; i++) {
     print("Example9 for loop '${example9Array[i]}'");
   }
   var i = 0;
