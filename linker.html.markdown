@@ -8,25 +8,25 @@ filename: linker
 ---
 
 # Basic concepts and definitions
-** Position counter ** - the linker has a special variable
+**Position counter** - the linker has a special variable
 "." (dot) always contains the current output position.
 
 # Functions
-** ADDR (section) ** - returns the absolute address of the specified section. However
+**ADDR (section)** - returns the absolute address of the specified section. However
 this section must be defined before using the ADDR function.
 
-** ALIGN (exp) ** - returns the value of the position counter aligned to the border
+**ALIGN (exp)** - returns the value of the position counter aligned to the border
 following the exp expression.
 
-** SIZEOF (section) ** - returns the size of the section in bytes.
+**SIZEOF (section)** - returns the size of the section in bytes.
 
-** FILL (param) ** - defines the fill pattern for the current section. All
+**FILL (param)** - defines the fill pattern for the current section. All
 other unspecified regions within the section are filled with the value indicated
 in function argument.
 
-** KEEP (param) ** - used to mark param as fatal.
+**KEEP (param)** - used to mark param as fatal.
 
-** ENTRY (func) ** - defines the function that will be the entry point
+**ENTRY (func)** - defines the function that will be the entry point
 into the program.
 
 ```bash
@@ -113,10 +113,10 @@ SECTIONS
 
 # TOTAL: The .text section that contains the program code is aligned on the border of 4 bytes,
 # includes: all sections with program code in all object files and protected
-from the garbage collector of the .init and .fini sections in all object files, located in FLASH
-microcontroller memory immediately after the table of vectors.
-The text, .init, and .fini sections. are located in memory in the order in which they
-declared in the script.
+# from the garbage collector of the .init and .fini sections in all object files, located in FLASH
+# microcontroller memory immediately after the table of vectors.
+# The text, .init, and .fini sections. are located in memory in the order in which they
+# declared in the script.
 
   # The third section contains constant data.
   .rodata :
