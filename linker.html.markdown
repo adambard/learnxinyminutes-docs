@@ -4,7 +4,6 @@ tool: linker
 contributors:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
     - ["Anuj Shah", "https://github.com/ShahAnuj2610"]
-filename: linker
 ---
 
 # Basic concepts and definitions
@@ -40,7 +39,7 @@ _Min_Heap_Size = 0x200;
 # Define a variable that contains the value of the stack size
 _Min_Stack_Size = 0x400;
 
-Description of the memory card available for this processor
+# Description of the memory card available for this processor
 # MEMORY
 # {
 #MEMORY_DOMAIN_NAME (access rights): ORIGIN = START_ADDRESS, LENGTH = SIZE
