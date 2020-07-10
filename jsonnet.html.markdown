@@ -16,7 +16,7 @@ click [here](https://jsonnet.org/learning/tutorial.html)
     multiline comment
 */
 
-// as well as python style comment
+# as well as python style comment
 
 # define a variable.
 # Variables have no effect in the generated JSON without being used.
