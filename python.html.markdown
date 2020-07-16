@@ -947,7 +947,7 @@ if __name__ == '__main__':
                                 # => <class 'bat.Bat'>, <class 'object'>)
 
     # Calls parent method but uses its own class attribute
-    print(sup.get_species())    # => Superhuman
+    print(sup.get_species())    # => Batman
 
     # Calls overridden method
     print(sup.sing())           # => nan nan nan nan nan batman!
