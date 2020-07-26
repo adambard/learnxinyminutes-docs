@@ -12,7 +12,7 @@ lang: zh-cn
 
 YAML 是一种数据序列化语言，旨在让人类直接可写可读。
 
-它是 JSON 的严格超集，增加了*在语法上有意义的*（syntactically significant，参见译注1）换行符和缩进，就像Python一样。但和Python的不同之处在于，YAML不允许使用*文字制表符*（literal tab characters）来表示缩进。
+它是 JSON 的严格超集，增加了*在语法上有意义的*（syntactically significant）换行符和缩进，就像Python一样。但和Python的不同之处在于，YAML不允许使用*文字制表符*（literal tab characters）来表示缩进。
 
 
 ```yaml
@@ -41,12 +41,10 @@ however: 'A string, enclosed in quotes.'
 single quotes: 'have ''one'' escape pattern'
 double quotes: "have many: \", \0, \t, \u263A, \x0d\x0a == \r\n, and more."
 # UTF-8/16/32字符需要指明编码（通过\u）。
-# 参见译注2。
 Superscript two: \u00B2
 
 # 多行字符串既可以写成一个'字面量块'(使用 '|')，
 # 也可以写成一个'折叠块'(使用 '>')。
-# 参见译注3。
 literal_block: |
     This entire block of text will be the value of the 'literal_block' key,
     with line breaks being preserved.
@@ -128,7 +126,6 @@ base: &base
 
 # '<<'称为语言无关的合并键类型（Merge Key Language-Independent Type）.
 # 它表明一个或多个指定映射中的所有键值会插入到当前的映射中。
-# 参见译注4。
 
 foo: &foo
   <<: *base
@@ -188,22 +185,4 @@ set2:
 
 + [YAML official website](http://yaml.org/)
 + [Online YAML Validator](http://codebeautify.org/yaml-validator)
-
-### 译注
-
-1. 原文为'syntactically significant newlines and indentation'，原译为“语法显著换行符和缩进”。
-
-   个人认为，significant在此处应为“有意义的”，而非“显著的”。联系上下文，此处应指YAML的换行和缩进具有语法含义，而非在语法上显著（虽然确实很醒目）。
-
-   故译为“在语法上有意义的换行符和缩进”。
-
-2. 原文为'UTF-8/16/32 characters need to be encoded'，原译为“UTF-8/16/32 字符需要被转义”。个人认为，“转义”应为escape，并且虽然`\u`本身是一个转义字符，但目的是为了表明编码。
-
-   故译为“UTF-8/16/32字符需要指明编码”。
-
-3. “字面量块”即'literal block'，此处取literal的“字面”之意。
-
-   从下文也可以看到，字面量块会保留原字符串，包括换行等特殊字符；而折叠块会把原字符串的每一行用空格分隔，然后合并到同一行。
-
-4. 原文为'The regexp << is called Merge Key Language-Independent Type.'。若regexp直译为正则表达式，似有不妥，故在尽量保留含义的基础上有所省略。
 
