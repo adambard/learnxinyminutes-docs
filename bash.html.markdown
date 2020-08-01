@@ -23,7 +23,7 @@ translators:
 ---
 
 Bash is a name of the unix shell, which was also distributed as the shell
-for the GNU operating system and as default shell on Linux and Mac OS X.
+for the GNU operating system and as the default shell on most Linux distros.
 Nearly all examples below can be a part of a shell script
 or executed directly in the shell.
 
@@ -231,7 +231,7 @@ cat file.txt
 # We can also read the file using `cat`:
 Contents=$(cat file.txt)
 # "\n" prints a new line character
-# "-e" to interpret the newline escape characters as escape characters 
+# "-e" to interpret the newline escape characters as escape characters
 echo -e "START OF FILE\n$Contents\nEND OF FILE"
 # => START OF FILE
 # => [contents of file.txt]
