@@ -186,7 +186,7 @@ some_unknown_var  # Raises a NameError
 
 # if can be used as an expression
 # Equivalent of C's '?:' ternary operator
-"yahoo!" if 3 > 2 else 2  # => "yahoo!"
+"yay!" if 0 > 1 else "nay!"  # => "nay!"
 
 # Lists store sequences
 li = []
