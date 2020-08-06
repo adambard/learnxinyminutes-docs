@@ -14,10 +14,12 @@ This is the new outline
 ```C#
 // Single-line comments start with //
 
-/
+*//
 Multi-line comments
 like so
-\
+\*/
+
+// Note: Using C# multi-line around Q# because there doesn't appear to be a markdown formatter yet.
 
 /////////////////////////////////////
 // 1. Quantum data types and operators
@@ -42,19 +44,19 @@ using (qs = Qubit[2]) {
     // You can apply multi-qubit gates to several qubits.
     CNOT(qs[0], qs[1]);
 
-    / You can also apply a controlled version of a gate: 
-      a gate that is applied if all control qubits are in |1⟩ state.
-    \ The first argument is an array of control qubits, the second argument is the target qubit.
+    // You can also apply a controlled version of a gate: 
+    // a gate that is applied if all control qubits are in |1⟩ state.
+    // The first argument is an array of control qubits, the second argument is the target qubit.
     Controlled Y([qs[0]], qs[1]); 
 
-    / If you want to apply an anti-controlled gate 
-      (a gate that is applied if all control qubits are in |0⟩ state), 
-    \ you can use a library function.
+    // If you want to apply an anti-controlled gate 
+    // (a gate that is applied if all control qubits are in |0⟩ state), 
+    // you can use a library function.
     ApplyControlledOnInt(0, X, [qs[0]], qs[1]);
 
-    / To read the information from the quantum system, you use measurements.
-      Measurements return a value of Result data type: Zero or One.
-    \ You can print measurement results as a classical value.
+    // To read the information from the quantum system, you use measurements.
+    // Measurements return a value of Result data type: Zero or One.
+    // You can print measurement results as a classical value.
     Message($"Measured {M(qs[0])}, {M(qs[1])}");
 }
 
@@ -91,9 +93,9 @@ let x = 10 == 15; // is false
 // Range is a sequence of integers and can be defined like: start..step..stop
 let xi = 1..2..7; // Gives the sequence 1,3,5,7
 
-/ Assigning new value to a variable:
-  by default all Q# variables are immutable;
-\ if the variable was defined using let, you cannot reassign its value.
+// Assigning new value to a variable:
+// by default all Q# variables are immutable;
+// if the variable was defined using let, you cannot reassign its value.
 
 // When you want to make a variable mutable, you have to declare it as such, 
 // and use the set word to update value
@@ -139,10 +141,10 @@ while (index < 10) {
     set index += 1;
 }
 
-/ Quantum equivalent of a while loop is a repeat-until-success loop.
-  Because of the probabilistic nature of quantum computing sometimes
-  you want to repeat a certain sequence of operations 
-\ until a specific condition is achieved; you can use this loop to express this.
+// Quantum equivalent of a while loop is a repeat-until-success loop.
+// Because of the probabilistic nature of quantum computing sometimes
+// you want to repeat a certain sequence of operations 
+// until a specific condition is achieved; you can use this loop to express this.
 repeat {
     // Your operation here
 }
@@ -160,10 +162,10 @@ operation ApplyXGate(source : Qubit) : Unit {
     X(source);
 }
 
-/ If the operation implements a unitary transformation, you can define 
-  adjoint and controlled variants of it. 
-  The easiest way to do that is to add "is Adj + Ctl" after Unit. 
-\ This will tell the compiler to generate the variants automatically.
+// If the operation implements a unitary transformation, you can define 
+// adjoint and controlled variants of it. 
+// The easiest way to do that is to add "is Adj + Ctl" after Unit. 
+// This will tell the compiler to generate the variants automatically.
 operation ApplyXGateCA (source : Qubit) : Unit is Adj + Ctl {
     X(source);
 }
@@ -183,16 +185,16 @@ operation XGateDemo() : Unit {
 // We will generate a classical array of random bits using quantum code.
 @EntryPoint()
 operation QRNGDemo() : Unit {
-    mutable bits = new Int[5];                / Array we'll use to store bits
-    using (q = Qubit()) {                     / Allocate a qubit
-        for (i in 0 .. 4) {                   / Generate each bit independently
-            H(q);                             / Apply Hadamard gate prepares equal superposition
-            let result = M(q);                / Measure the qubit to get 0 or 1 with 50/50 prob
-            let bit = result == Zero ? 0 | 1; / Convert measurement result to an integer
-            set bits w/= i <- bit;            / Write generated bit to an array
+    mutable bits = new Int[5];                // Array we'll use to store bits
+    using (q = Qubit()) {                     // Allocate a qubit
+        for (i in 0 .. 4) {                   // Generate each bit independently
+            H(q);                             // Apply Hadamard gate prepares equal superposition
+            let result = M(q);                // Measure the qubit to get 0 or 1 with 50/50 prob
+            let bit = result == Zero ? 0 | 1; // Convert measurement result to an integer
+            set bits w/= i <- bit;            // Write generated bit to an array
         }
     }
-    Message($"{bits}");                       / Print the result
+    Message($"{bits}");                       // Print the result
 }
 ```
 
