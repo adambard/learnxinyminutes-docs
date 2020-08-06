@@ -21,7 +21,8 @@ like so
 \
 */
 
-// Note: Using C# multi-line around Q# because there doesn't appear to be a markdown formatter yet.
+// Note: Using C# multi-line around Q# 
+// there doesn't appear to be a Q# markdown formatter yet.
 
 /////////////////////////////////////
 // 1. Quantum data types and operators
@@ -40,7 +41,8 @@ using (qs = Qubit[2]) {
     // If you want to change the state of a qubit
     // you have to do this by applying quantum gates to the qubit.
     H(q[0]);    // This changes the state of the first qubit 
-                // from |0⟩ (the initial state of allocated qubits) to (|0⟩ + |1⟩) / sqrt(2).
+                // from |0⟩ (the initial state of allocated qubits) 
+                // to (|0⟩ + |1⟩) / sqrt(2).
     // q[1] = |1⟩; - this does NOT work, you have to manipulate a qubit by using gates.
 
     // You can apply multi-qubit gates to several qubits.
@@ -48,7 +50,8 @@ using (qs = Qubit[2]) {
 
     // You can also apply a controlled version of a gate: 
     // a gate that is applied if all control qubits are in |1⟩ state.
-    // The first argument is an array of control qubits, the second argument is the target qubit.
+    // The first argument is an array of control qubits, 
+    // the second argument is the target qubit.
     Controlled Y([qs[0]], qs[1]); 
 
     // If you want to apply an anti-controlled gate 
@@ -74,7 +77,8 @@ let d = 1.0;          // This defines a Double variable d equal to 1
 // Arithmetic is done as expected, as long as the types are the same
 let n = 2 * 10;                // = 20
 // Q# does not have implicit type cast, 
-// so to perform arithmetic on values of different types, you need to cast type explicitly
+// so to perform arithmetic on values of different types, 
+// you need to cast type explicitly
 let nd = IntAsDouble(2) * 1.0; // = 20.0
 
 // Boolean type is called Bool
@@ -190,9 +194,9 @@ operation QRNGDemo() : Unit {
     mutable bits = new Int[5];                // Array we'll use to store bits
     using (q = Qubit()) {                     // Allocate a qubit
         for (i in 0 .. 4) {                   // Generate each bit independently
-            H(q);                             // Apply Hadamard gate prepares equal superposition
-            let result = M(q);                // Measure the qubit to get 0 or 1 with 50/50 prob
-            let bit = result == Zero ? 0 | 1; // Convert measurement result to an integer
+            H(q);                             // Hadamard gate sets equal superposition
+            let result = M(q);                // Measure qubit gets 0|1 with 50/50 prob
+            let bit = result == Zero ? 0 | 1; // Convert measurement result to integer
             set bits w/= i <- bit;            // Write generated bit to an array
         }
     }
