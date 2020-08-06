@@ -14,10 +14,12 @@ This is the new outline
 ```C#
 // Single-line comments start with //
 
-*//
+/*
+/
 Multi-line comments
 like so
-\*/
+\
+*/
 
 // Note: Using C# multi-line around Q# because there doesn't appear to be a markdown formatter yet.
 
