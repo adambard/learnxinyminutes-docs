@@ -9,20 +9,9 @@ filename: LearnQSharp.qs
 
 Q# is a high-level domain-specific language which enables developers to write quantum algorithms. Q# programs can be executed on a quantum simulator running on a classical computer and (in future) on quantum computers.
 
-This is the new outline
-
 ```C#
 // Single-line comments start with //
 
-/*
-/
-Multi-line comments
-like so
-\
-*/
-
-// Note: Using C# multi-line around Q# 
-// there doesn't appear to be a Q# markdown formatter yet.
 
 /////////////////////////////////////
 // 1. Quantum data types and operators
