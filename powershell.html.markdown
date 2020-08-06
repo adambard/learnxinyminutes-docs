@@ -41,6 +41,26 @@ Powershell as a Language:
 10 * 2  # => 20
 35 / 5  # => 7.0
 
+# Single line comments start with a number symbol.
+
+<#
+  Multi-line comments
+  like so
+#>
+
+####################################################
+## 1. Primitive Datatypes and Operators
+####################################################
+
+# Numbers
+3 # => 3
+
+# Math
+1 + 1   # => 2
+8 - 1   # => 7
+10 * 2  # => 20
+35 / 5  # => 7.0
+
 # Powershell uses banker's rounding
 # Meaning [int]1.5 would round to 2 but so would [int]2.5
 # division always returns a float. You must cast result to [int] to round
@@ -440,7 +460,7 @@ function New-Website() {
         [int]$port = 3000
     )
     BEGIN { Write-Verbose 'Creating new website(s)' }
-    PROCESS { echo "name: $siteName, port: $port" }
+    PROCESS { Write-Output "name: $siteName, port: $port" }
     END { Write-Verbose 'Website(s) created' }
 }
 
@@ -545,7 +565,7 @@ True     False    Guitar                                   Instrument
  And tell us how many instances of each process we have running
  Tip: Chrome and svcHost are usually big numbers in this regard
 #>
-Get-Process | Foreach ProcessName | Group-Object
+Get-Process | Foreach-Object ProcessName | Group-Object
 
 <#
  Asynchronous functions exist in the form of jobs
@@ -581,28 +601,45 @@ $Area
  You may one day be asked to create a func that could take $start and $end
  and reverse anything in an array within the given range
  based on an arbitrary array
- Let's see one way to do that
+ Let's see one way to do that and introduce another data structure
 #>
 
-$testArray = 'a','b','c','d','e','f','g','h','i','j','k','l','m','n'
+$targetArray = 'a','b','c','d','e','f','g','h','i','j','k','l','m','n'
 
-function Reverse-Range ($start, $end) {
-[System.Collections.ArrayList]$newArray = @()
-[System.Collections.ArrayList]$secondArray = @()
+function Format-Range ($start, $end) {
+[System.Collections.ArrayList]$firstSectionArray = @()
+[System.Collections.ArrayList]$secondSectionArray = @()
 [System.Collections.Stack]$stack = @()
-    for ($i = 0; $i -lt $testArray.Length; $i++) {
-        if ($i -lt $start) {
-            $newArray.Add($testArray[$i]) > $null
+    for ($index = 0; $index -lt $targetArray.Count; $index++) {
+        if ($index -lt $start) {
+            $firstSectionArray.Add($targetArray[$index]) > $null
         }
-        elseif ($i -ge $start -and $i -le $end) {
-            $stack.push($testArray[$i])
+        elseif ($index -ge $start -and $index -le $end) {
+            $stack.Push($targetArray[$index])
         }
-        elseif ($i -gt $end) {
-            $secondArray.Add($testArray[$i]) > $null
+        elseif ($index -gt $end) {
+            $secondSectionArray.Add($targetArray[$index]) > $null
         }
     }
-    $endArray = $newArray + $stack.ToArray() + $secondArray
-    Write-Output $endArray
+    $returnArray = $firstSectionArray + $stack.ToArray() + $secondSectionArray
+    Write-Output $returnArray
+}
+
+# The previous method works, but it uses extra memory by allocating new arrays
+# It's also kind of lengthy
+# Let's see how we can do this without allocating a new array
+# This is slightly faster as well
+
+function Format-Range ($start, $end) {
+  while ($start -lt $end)
+  {
+      $temp = $targetArray[$start]
+      $targetArray[$start] = $targetArray[$end]
+      $targetArray[$end] = $temp
+      $start++
+      $end--
+  }
+  return $targetArray
 }
 ```
 Powershell as a Tool:
@@ -698,6 +735,7 @@ foreach ($server in $serverList) {
 Interesting Projects  
 
 * [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell tutorials
+* [KevinMarquette's Powershell Blog](https://powershellexplained.com/) Really excellent blog that goes into great detail on Powershell
 * [PSGet](https://github.com/psget/psget) NuGet for PowerShell
 * [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
 * [Posh-Git](https://github.com/dahlbyk/posh-git/) Fancy Git Prompt (Recommended!)
