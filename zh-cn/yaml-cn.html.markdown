@@ -67,7 +67,7 @@ folded_style: >
 # 集合类型         #
 ####################
 
-# 嵌套是通过缩进完成的。推荐使用2个空格的缩进（但非必须）。
+# 嵌套是通过缩进完成的。推荐使用 2 个空格的缩进（但非必须）。
 a_nested_map:
   key: value
   another_key: Another Value
@@ -78,20 +78,20 @@ a_nested_map:
 0.25: a float key
 
 # 键也可以是复合（complex）的，比如多行对象
-# 我们用'?'后跟一个空格来表示一个复合键的开始。
+# 我们用 '?' 后跟一个空格来表示一个复合键的开始。
 ? |
   This is a key
   that has multiple lines
 : and this is its value
 
-# YAML也允许使用复合键语法表示序列间的映射关系。
+# YAML 也允许使用复杂键语法表示序列间的映射关系。
 # 但有些解析器可能会不支持。
 # 一个例子：
 ? - Manchester United
   - Real Madrid
 : [ 2001-01-01, 2002-02-02 ]
 
-# 序列 (sequences，等价于列表list或数组array) 看起来像这样
+# 序列 (sequences，等价于列表 list 或数组 array ) 看起来像这样：
 # 注意 '-' 代表缩进：
 a_sequence:
   - Item 1
@@ -106,7 +106,7 @@ a_sequence:
   - - - Nested sequence indicators
       - can be collapsed
 
-# 因为YAML是JSON的超集，你也可以写JSON风格的映射和序列：
+# 因为 YAML 是 JSON 的超集，你也可以写 JSON 风格的映射和序列：
 json_map: {"key": "value"}
 json_seq: [3, 2, 1, "takeoff"]
 and quotes are optional: {key: [3, 2, 1, takeoff]}
@@ -142,37 +142,37 @@ explicit_string: !!str 0.5
 # 一些解析器实现了特定语言的标签，就像这个针对Python的复数类型的标签。
 python_complex_number: !!python/complex 1+2j
 
-# 我们也可以在YAML的复合键中使用特定语言的标签：
+# 我们也可以在 YAML 的复合键中使用特定语言的标签：
 ? !!python/tuple [5, 7]
 : Fifty Seven
-# 将会是Python中的 {(5, 7): 'Fifty Seven'}
+# 将会是 Python 中的 {(5, 7): 'Fifty Seven'}
 
 ####################
 # 其余的 YAML 类型 #
 ####################
 
-# 除了字符串和数字，YAML还支持其它标量。
-# ISO格式的日期和时间字面量也可以被解析。
+# 除了字符串和数字，YAML 还支持其它标量。
+# ISO 格式的日期和时间字面量也可以被解析。
 datetime: 2001-12-15T02:59:43.1Z
 datetime_with_spaces: 2001-12-14 21:59:43.10 -5
 date: 2002-12-14
 
 # 这个 !!binary 标签表明这个字符串实际上
-# 是一个用base64编码表示的二进制blob。
+# 是一个用 base64 编码表示的二进制 blob。
 gif_file: !!binary |
   R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
   OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
   +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
   AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
 
-# YAML还有一个集合（set）类型，它看起来像这样：
+# YAML 还有一个集合（set）类型，它看起来像这样：
 set:
   ? item1
   ? item2
   ? item3
 or: {item1, item2, item3}
 
-# 集合只是值均为null的映射；上面的集合等价于：
+# 集合只是值均为 null 的映射；上面的集合等价于：
 set2:
   item1: null
   item2: null
@@ -185,4 +185,3 @@ set2:
 
 + [YAML official website](http://yaml.org/)
 + [Online YAML Validator](http://codebeautify.org/yaml-validator)
-
