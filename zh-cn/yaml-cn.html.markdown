@@ -92,7 +92,7 @@ a_nested_map:
 : [ 2001-01-01, 2002-02-02 ]
 
 # 序列 (sequences，等价于列表 list 或数组 array ) 看起来像这样：
-# 注意 '-' 代表缩进：
+# 注意 '-' 也算缩进：
 a_sequence:
   - Item 1
   - Item 2
