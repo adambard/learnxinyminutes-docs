@@ -12,7 +12,7 @@ lang: zh-cn
 
 YAML 是一种数据序列化语言，旨在让人类直接可写可读。
 
-它是 JSON 的严格超集，增加了*在语法上有意义的*（syntactically significant）换行符和缩进，就像Python一样。但和Python的不同之处在于，YAML不允许使用*文字制表符*（literal tab characters）来表示缩进。
+它是 JSON 的严格超集，增加了*在语法上有意义的*（syntactically significant）换行符和缩进，就像 Python 一样。但和 Python 的不同之处在于，YAML 不允许使用*文字制表符*（literal tab characters）来表示缩进。
 
 
 ```yaml
