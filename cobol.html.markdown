@@ -50,21 +50,22 @@ organizations.
       *Almost every COBOL programmer will abbreviate PICTURE as PIC.
       *A is for alphabetic, X is for alphanumeric, and 9 is for numeric.
        
-       *example:
-       01  MYNAME PIC xxxxxxxxxx.    *> A 10 character string.
+      *example:
+      01  MYNAME PIC xxxxxxxxxx.    *> A 10 character string.
        
-       *But counting all those x's can lead to errors, so the above code can, and should,
-       *be re-written as:
-       01 MYNAME PIC X(10).
+      *But counting all those x's can lead to errors, 
+      *so the above code can, and should
+      *be re-written as:
+      01 MYNAME PIC X(10).
        
-       *Here are some more examples:
-       01  AGE             PIC      9(3).   *> A number up to 3 digits.
-       01  LAST_NAME       PIC      X(10).  *> A string up to 10 characters.
+      *Here are some more examples:
+      01  AGE             PIC      9(3).   *> A number up to 3 digits.
+      01  LAST_NAME       PIC      X(10).  *> A string up to 10 characters.
        
-       *In COBOL, multiple spaces are the same as a single space, so it is common
-       *to use multiple spaces to line up your code so that it is easier for other
-       *coders to read.
-       01  inyear picture s9(7). *> S makes number signed.
+      *In COBOL, multiple spaces are the same as a single space, so it is common
+      *to use multiple spaces to line up your code so that it is easier for other
+      *coders to read.
+      01  inyear picture s9(7). *> S makes number signed.
                                  *> Brackets indicate 7 repeats of 9,
                                  *> ie a 6 digit number (not an array).
 
@@ -105,7 +106,7 @@ organizations.
       PROCEDURE DIVISION.
          FIRST-PARA.
              DISPLAY 'THIS IS IN FIRST-PARA'.
-         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip over second-para and perfrom 3rd & 4th
+         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip second-para and perfrom 3rd & 4th
          *> then after performing third and fourth,
          *> return here and continue the program until STOP RUN.
    
