@@ -15,7 +15,7 @@ organizations.
       *and modern (COBOL-2002 and COBOL-2014) versions.
       *Legacy versions require columns 1-6 to be blank (they are used
       *to store the index number of the punched card..)
-      *A * in column 7 means a comment.
+      *A '*' in column 7 means a comment.
       *In legacy COBOL, a comment can only be a full line.
       *Modern COBOL doesn't require fixed columns and uses *> for
       *a comment, which can appear in the middle of a line.
@@ -44,8 +44,9 @@ organizations.
 
       *Let's declare some variables.
       *We do this in the WORKING-STORAGE section within the DATA DIVISION.
-      *Each data item (aka variable) with start with a level number, then the name of the item,
-      *followed by a picture clause describing the type of data that the variable will contain.
+      *Each data item (aka variable) with start with a level number, 
+      *then the name of the item, followed by a picture clause 
+      *describing the type of data that the variable will contain.
       *Almost every COBOL programmer will abbreviate PICTURE as PIC.
       *A is for alphabetic, X is for alphanumeric, and 9 is for numeric.
        
@@ -93,8 +94,10 @@ organizations.
       
       
       *********PERFORM********************
-      *The PERFORM keyword allows you to jump to another specified section of the code, and then to return to the next executable
-      *statement once the specified section of code is completed. You must write the full word, PERFORM, you cannot abbreviate it.
+      *The PERFORM keyword allows you to jump to another specified section of the code,
+      *and then to return to the next executable
+      *statement once the specified section of code is completed. 
+      *You must write the full word, PERFORM, you cannot abbreviate it.
 
       IDENTIFICATION DIVISION.
       PROGRAM-ID. HELLOCOBOL.
@@ -102,8 +105,9 @@ organizations.
       PROCEDURE DIVISION.
          FIRST-PARA.
              DISPLAY 'THIS IS IN FIRST-PARA'.
-         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip over second-para and perfrom third and fourth
-         *> then after performing third and fourth, return here and continue the program until STOP RUN.
+         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip over second-para and perfrom 3rd & 4th
+         *> then after performing third and fourth,
+         *> return here and continue the program until STOP RUN.
    
          SECOND-PARA.
              DISPLAY 'THIS IS IN SECOND-PARA'.
@@ -127,7 +131,10 @@ organizations.
       
       *Now it is time to learn about two related COBOL verbs: string and unstring.
 
-      *The string verb is used to concatenate, or put together, two or more stings. Unstring is used, not surprisingly, to separate a         *string into two or more smaller strings. It is important that you remember to use ‘delimited by’ when you
+      *The string verb is used to concatenate, or put together, two or more stings.
+      *Unstring is used, not surprisingly, to separate a         
+      *string into two or more smaller strings. 
+      *It is important that you remember to use ‘delimited by’ when you
       *are using string or unstring in your program. 
 
       IDENTIFICATION DIVISION.
@@ -149,19 +156,23 @@ organizations.
 
 
       *The above code will output:
-
       THE FULL NAME IS: BOB COBB
 
 
       *Let’s examine it to see why.
 
-      *First, we declared all of our variables, including the one that we are creating by the string command, in the DATA DIVISISION.
+      *First, we declared all of our variables, including the one that we are creating
+      *by the string command, in the DATA DIVISION.
 
-      *The action takes place down in the PROCEDURE DIVISION. We start with the STRING keyword and end with END-STRING. In between we         *list what we want to combine together into the larger, master variable. 
+      *The action takes place down in the PROCEDURE DIVISION. 
+      *We start with the STRING keyword and end with END-STRING. In between we         
+      *list what we want to combine together into the larger, master variable. 
       *Here, we are combining FIRST-NAME, a space, and LAST-NAME. 
 
-      *The DELIMITED BY phrase that follows FIRST-NAME and LAST-NAME tells the program how much of each variable we want to capture. 
-      *DELIMITED BY SPACE tells the program to start at the beginning, and capture the variable until it runs into a space. 
+      *The DELIMITED BY phrase that follows FIRST-NAME and 
+      *LAST-NAME tells the program how much of each variable we want to capture. 
+      *DELIMITED BY SPACE tells the program to start at the beginning, 
+      *and capture the variable until it runs into a space. 
       *DELIMITED BY SIZE tells the program to capture the full size of the variable. 
       *Since we have DELIMITED BY SPACE after FIRST-NAME, the GIBBERISH part is ignored. 
 
