@@ -3,107 +3,94 @@ category: Algorithms & Data Structures
 name: Set theory
 contributors:
 ---
-The set theory is a study for sets, their operations, and their properties. It is the basis of the whole mathematical system.
+Set theory is a branch of mathematics that studies sets, their operations, and their properties.
 
-* A set is a collection of definite distinct items.
+* A set is a collection of disjoint items.
 
-## Basic operators
-These operators don't require a lot of text to describe.
+## Basic symbols
 
-* `∨` means or.
-* `∧` means and.
-* `,` separates the filters that determine the items in the set.
+### Operators
+* the union operator, `∪`, pronounced "cup", means "or";
+* the intersection operator, `∩`, pronounced "cap", means "and";
+* the exclusion operator, `\`, means "without";
+* the compliment operator, `'`, means "the inverse of";
+* the cross operator, `×`, means "the Cartesian product of".
 
-## A brief history of the set theory
-### Naive set theory
-* Cantor invented the naive set theory.
-* It has lots of paradoxes and initiated the third mathematical crisis.
+### Qualifiers 
+* the colon qualifier, `:`, means "such that";
+* the membership qualifier, `∈`, means "belongs to";
+* the subset qualifier, `⊆`, means "is a subset of";
+* the proper subset qualifier, `⊂`, means "is a subset of but is not equal to".
 
-### Axiomatic set theory
-* It uses axioms to define the set theory.
-* It prevents paradoxes from happening.
+### Canonical sets
+* `∅`, the empty set, i.e. the set containing no items;
+* `ℕ`, the set of all natural numbers;
+* `ℤ`, the set of all integers;
+* `ℚ`, the set of all rational numbers;
+* `ℝ`, the set of all real numbers.
 
-## Built-in sets
-* `∅`, the set of no items.
-* `N`, the set of all natural numbers. `{0,1,2,3,…}`
-* `Z`, the set of all integers. `{…,-2,-1,0,1,2,…}`
-* `Q`, the set of all rational numbers.
-* `R`, the set of all real numbers.
+There are a few caveats to mention regarding the canonical sets:
+1. Even though the empty set contains no items, the empty set is a subset of itself (and indeed every other set);
+2. Mathematicians generally do not universally agree on whether zero is a natural number, and textbooks will typically explicitly state whether or not the author considers zero to be a natural number.
 
-### The empty set
-* The set containing no items is called the empty set. Representation: `∅`
-* The empty set can be described as `∅ = {x|x ≠ x}`
-* The empty set is always unique.
-* The empty set is the subset of all sets.
 
-```
-A = {x|x∈N,x < 0}
-A = ∅
-∅ = {}              (Sometimes)
+### Cardinality
 
-|∅|   = 0
-|{∅}| = 1
-```
+The cardinality, or size, of a set is determined by the number of items in the set. The cardinality operator is given by a double pipe, `|...|`.
+
+For example, if `S = { 1, 2, 4 }`, then `|S| = 3`.
+
+### The Empty Set
+* The empty set can be constructed in set builder notation using impossible conditions, e.g. `∅ = { x : x =/= x }`, or `∅ = { x : x ∈ N, x < 0 }`;
+* the empty set is always unique (i.e. there is one and only one empty set);
+* the empty set is a subset of all sets;
+* the cardinality of the empty set is 1, i.e. `|∅| = 1`.
 
 ## Representing sets
-### Enumeration
-* List all items of the set, e.g. `A = {a,b,c,d}`
-* List some of the items of the set. Ignored items are represented with `…`. E.g. `B = {2,4,6,8,10,…}`
 
-### Description
-* Describes the features of all items in the set. Syntax: `{body|condtion}`
+### Literal Sets
 
-```
-A = {x|x is a vowel}
-B = {x|x ∈ N, x < 10l}
-C = {x|x = 2k, k ∈ N}
-C = {2x|x ∈ N}
-```
+A set can be constructed literally by supplying a complete list of objects contained in the set. For example, `S = { a, b, c, d }`.
 
-## Relations between sets
-### Belongs to
-* If the value `a` is one of the items of the set `A`, `a` belongs to `A`. Representation: `a∈A`
-* If the value `a` is not one of the items of the set `A`, `a` does not belong to `A`. Representation: `a∉A`
+Long lists may be shortened with ellipses as long as the context is clear. For example, `E = { 2, 4, 6, 8, ... }` is clearly the set of all even numbers, containing an infinite number of objects, even though we've only explicitly written four of them.
 
-### Equals
-* If all items in a set are exactly the same to another set, they are equal. Representation: `a=b`
-* Items in a set are not order sensitive. `{1,2,3,4}={2,3,1,4}`
-* Items in a set are unique. `{1,2,2,3,4,3,4,2}={1,2,3,4}`
-* Two sets are equal if and only if all of their items are exactly equal to each other. Representation: `A=B`. Otherwise, they are not equal. Representation: `A≠B`.
-* `A=B` if `A ⊆ B` and `B ⊆ A`
+### Set Builder
 
-### Belongs to
-* If the set A contains an item `x`, `x` belongs to A (`x∈A`).
-* Otherwise, `x` does not belong to A (`x∉A`).
-
-### Subsets
-* If all items in a set `B` are items of set `A`, we say that `B` is a subset of `A` (`B⊆A`).
-* If B is not a subset of A, the representation is `B⊈A`.
-
-### Proper subsets
-* If `B ⊆ A` and `B ≠ A`, B is a proper subset of A (`B ⊂ A`). Otherwise, B is not a proper subset of A (`B ⊄ A`).
-
-## Set operations
-### Base number
-* The number of items in a set is called the base number of that set. Representation: `|A|`
-* If the base number of the set is finite, this set is a finite set.
-* If the base number of the set is infinite, this set is an infinite set.
+Set builder notation is a more descriptive way of constructing a set. It relies on a _subject_ and a _predicate_ such that `S = { subject : predicate }`. For example,
 
 ```
-A   = {A,B,C}
-|A| = 3
-B   = {a,{b,c}}
-|B| = 2
-|∅| = 0         (it has no items)
+A = { x : x is a vowel } = { a, e, i, o, u, y}
+B = { x : x ∈ N, x < 10 } = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+C = { x : x = 2k, k ∈ N } = { 0, 2, 4, 6, 8, ... }
 ```
 
-### Powerset
-* Let `A` be any set. The set that contains all possible subsets of `A` is called a powerset (written as `P(A)`).
+Sometimes the predicate may "leak" into the subject, e.g.
 
 ```
-P(A) = {x|x ⊆ A}
+D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
+```
 
-|A| = N, |P(A)| = 2^N
+## Relations
+
+### Membership
+
+* If the value `a` is contained in the set `A`, then we say `a` belongs to `A` and represent this symbolically as `a ∈ A`.
+* If the value `a` is not contained in the set `A`, then we say `a` does not belong to `A` and represent this symbolically as `a ∉ A`.
+
+### Equality
+
+* If two sets contain the same items then we say the sets are equal, e.g. `A = B`.
+* Order does not matter when determining set equality, e.g. `{ 1, 2, 3, 4 } = { 2, 3, 1, 4 }`.
+* Sets are disjoint, meaning elements cannot be repeated, e.g. `{ 1, 2, 2, 3, 4, 3, 4, 2 } = { 1, 2, 3, 4 }`.
+* Two sets `A` and `B` are equal if and only if `A ⊂ B` and `B ⊂ A`.
+
+## Special Sets
+
+### The Power Set
+* Let `A` be any set. The set that contains all possible subsets of `A` is called a "power set" and is written as `P(A)`. If the set `A` contains `n` elements, then `P(A)` contains `2^N` elements.
+
+```
+P(A) = { x : x ⊆ A }
 ```
 
 ## Set operations among two sets
@@ -111,28 +98,28 @@ P(A) = {x|x ⊆ A}
 Given two sets `A` and `B`, the union of the two sets are the items that appear in either `A` or `B`, written as `A ∪ B`.
 
 ```
-A ∪ B = {x|x∈A∨x∈B}
+A ∪ B = { x : x ∈ A ∪ x ∈ B }
 ```
 
 ### Intersection
 Given two sets `A` and `B`, the intersection of the two sets are the items that appear in both `A` and `B`, written as `A ∩ B`.
 
 ```
-A ∩ B = {x|x∈A,x∈B}
+A ∩ B = { x : x ∈ A, x ∈ B }
 ```
 
 ### Difference
 Given two sets `A` and `B`, the set difference of `A` with `B` is every item in `A` that does not belong to `B`.
 
 ```
-A \ B = {x|x∈A,x∉B}
+A \ B = { x : x ∈ A, x ∉ B }
 ```
 
 ### Symmetrical difference
 Given two sets `A` and `B`, the symmetrical difference is all items among `A` and `B` that doesn't appear in their intersections.
 
 ```
-A △ B = {x|(x∈A∧x∉B)∨(x∈B∧x∉A)}
+A △ B = { x : ((x ∈ A) ∩ (x ∉ B)) ∪ ((x ∈ B) ∩ (x ∉ A)) }
 
 A △ B = (A \ B) ∪ (B \ A)
 ```
@@ -141,22 +128,5 @@ A △ B = (A \ B) ∪ (B \ A)
 Given two sets `A` and `B`, the cartesian product between `A` and `B` consists of a set containing all combinations of items of `A` and `B`.
 
 ```
-A × B = { {x, y} | x ∈ A, y ∈ B }
-```
-
-## "Generalized" operations
-### General union
-Better known as "flattening" of a set of sets.
-
-```
-∪A = {x|X∈A,x∈X}
-∪A={a,b,c,d,e,f}
-∪B={a}
-∪C=a∪{c,d}
-```
-
-### General intersection
-
-```
-∩ A = A1 ∩ A2 ∩ … ∩ An
+A × B = { (x, y) | x ∈ A, y ∈ B }
 ```
