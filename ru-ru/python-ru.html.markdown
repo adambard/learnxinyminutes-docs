@@ -380,7 +380,7 @@ else:   # Необязательное выражение. Должно след
 # Объект, который возвратила функция range(), итерируемый.
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable) #=> range(1,10). Это объект, реализующий интерфейс iterable
+print(our_iterable) #=> dict_keys(['one', 'two', 'three']). Это объект, реализующий интерфейс iterable
 
 # Мы можем проходить по нему циклом.
 for i in our_iterable:
