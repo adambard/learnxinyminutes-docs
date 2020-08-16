@@ -56,19 +56,19 @@ body {
 }
 
 
-/ * Este é muito mais fácil de manter do que ter de mudar a cor
-cada vez que aparece em toda a sua folha de estilo. * /
+/* Este é muito mais fácil de manter do que ter de mudar a cor
+cada vez que aparece em toda a sua folha de estilo. */
 
 
 
 
-/*Mixins
+/* Mixins
 ==============================*/
 
 
 
-/* Se você achar que você está escrevendo o mesmo código para mais de um
-elemento, você pode querer armazenar esse código em um mixin.
+/* Se você achar que está escrevendo o mesmo código para mais de um
+elemento, você pode armazenar esse código em um mixin.
 
 Use a diretiva '@mixin', além de um nome para o seu mixin. */
 
@@ -87,7 +87,7 @@ div {
 	background-color: $primary-color;
 }
 
-/* Apoś compilar ficaria assim: */
+/* Após compilar ficaria assim: */
 div {
 	display: block;
 	margin-left: auto;
@@ -128,7 +128,7 @@ div {
 
 
 
-/*Funções
+/* Funções
 ==============================*/
 
 
@@ -138,6 +138,7 @@ div {
 
 /* Funções pode ser chamado usando seu nome e passando o
     argumentos necessários */
+    
 body {
   width: round(10.25px);
 }
@@ -156,14 +157,14 @@ body {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-/* Você também pode definir suas próprias funções. As funções são muito semelhantes aos
-   mixins. Ao tentar escolher entre uma função ou um mixin, lembre-
-   que mixins são os melhores para gerar CSS enquanto as funções são melhores para
-   lógica que pode ser usado em todo o seu código Sass. Os exemplos
-   seção Operadores Math 'são candidatos ideais para se tornar um reutilizável
-   função. */
+/* Você também pode definir suas próprias funções. As funções são muito semelhantes 
+   aos mixins. Ao tentar escolher entre uma função ou um mixin, lembre
+   que mixins são os melhores para gerar CSS enquanto as funções são melhores para
+   lógica que pode ser usado em todo o seu código Sass. Os exemplos na 
+   seção "Operações Math" são candidatos ideais para se tornar um função 
+   reutilizável. */
 
-/* Esta função terá um tamanho de destino eo tamanho do pai e calcular
+/* Esta função terá um tamanho de destino e o tamanho do pai (parent), calcular
    e voltar a percentagem */
 
 @function calculate-percentage($target-size, $parent-size) {
@@ -220,21 +221,21 @@ $main-content: calculate-percentage(600px, 960px);
   border-color: #22df56;
 }
 
-/* Ampliando uma declaração CSS é preferível a criação de um mixin
-   por causa da maneira agrupa as classes que todos compartilham
+/* Ao ampliar uma declaração CSS é preferível a criação de um mixin,
+   por causa da maneira em que agrupa as classes com todos que compartilham
    o mesmo estilo base. Se isso for feito com um mixin, a largura,
    altura, e a borda seria duplicado para cada instrução que
    o chamado mixin. Enquanto isso não irá afetar o seu fluxo de trabalho, será
-   adicionar inchaço desnecessário para os arquivos criados pelo compilador Sass. */
+   adicionado inchaço desnecessário para os arquivos criados pelo compilador Sass. */
 
 
 
-/*Assentamento
+/* Assentamento
 ==============================*/
 
 
 
-/ * Sass permite seletores ninhos dentro seletores * /
+/* Sass permite seletores ninhos dentro seletores */
 
 ul {
 	list-style-type: none;
@@ -245,7 +246,7 @@ ul {
 	}
 }
 
-/* '&' será substituído pelo selector pai. */
+/* '&' será substituído pelo selector pai (parent). */
 /* Você também pode aninhar pseudo-classes. */
 /* Tenha em mente que o excesso de nidificação vai fazer seu código menos sustentável.
 Essas práticas também recomendam não vai mais de 3 níveis de profundidade quando nidificação.
@@ -290,7 +291,7 @@ ul li a {
 
 
 
-/*Parciais e Importações
+/* Parciais e Importações
 ==============================*/
 
 
@@ -313,7 +314,7 @@ ol {
 /* Sass oferece @import que pode ser usado para importar parciais em um arquivo.
    Isso difere da declaração CSS @import tradicional, que faz
    outra solicitação HTTP para buscar o arquivo importado. Sass converte os
-   importadas arquivo e combina com o código compilado. */
+   arquivo importados e combina com o código compilado. */
 
 @import 'reset';
 
@@ -322,7 +323,7 @@ body {
   font-family: Helvetica, Arial, Sans-serif;
 }
 
-/* Compiles to: */
+/* Compila para: */
 
 html, body, ul, ol {
   margin: 0;
@@ -336,14 +337,14 @@ body {
 
 
 
-/*Placeholder Selectors
+/* Placeholder Selectors
 ==============================*/  
 
 
-/* Os espaços reservados são úteis na criação de uma declaração CSS para ampliar. Se você
-   queria criar uma instrução CSS que foi usado exclusivamente com @extend,
-   Você pode fazer isso usando um espaço reservado. Espaços reservados começar com um '%' em vez
-   de '.' ou '#'. Espaços reservados não aparece no CSS compilado. * /
+/* Os Placeholders são úteis na criação de uma declaração CSS para ampliar. Se você
+   deseja criar uma instrução CSS que foi usado exclusivamente com @extend,
+   você pode fazer isso usando um Placeholder. Placeholder começar com um '%' em vez
+   de '.' ou '#'. Placeholder não aparece no CSS compilado. */
 
 %content-window {
   font-size: 14px;
@@ -372,14 +373,14 @@ body {
 
 
 
-/*Operações Math
-============================== * /
+/* Operações Math
+============================== */
 
 
 /* Sass fornece os seguintes operadores: +, -, *, /, e %. estes podem
-   ser úteis para calcular os valores diretamente no seu Sass arquivos em vez
-   de usar valores que você já calculados pela mão. Abaixo está um exemplo
-   de uma criação de um projeto simples de duas colunas. * /
+   ser úteis para calcular os valores diretamente no seu arquivos Sass em vez
+   de usar valores que você já calculados manualmente. O exemplo abaixo é
+   de um projeto simples de duas colunas. */
 
 $content-area: 960px;
 $main-content: 600px;
