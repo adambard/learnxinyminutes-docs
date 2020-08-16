@@ -183,11 +183,12 @@ $someVariable  # => 5
 # Ternary Operators exist in Powershell 7 and up
 0 ? 'yes' : 'no'  # => no
 
-# The default array object in Powershell is an immutable array
+# The default array object in Powershell is an fixed length array
 $defaultArray = "thing","thing2","thing3"
-# you are unable to add or remove objects
+# you can add objects with '+=', but cannot remove objects
 $defaultArray.Add("thing4") # => Exception "Collection was of a fixed size."
-# To have a mutable array, you will need to use the .NET ArrayList class
+# To have a more workable array, you'll want the .NET [ArrayList] class
+# It is also worth noting that ArrayLists are significantly faster
 
 # ArrayLists store sequences
 [System.Collections.ArrayList]$array = @()
