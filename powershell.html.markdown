@@ -143,7 +143,7 @@ $b -is $a.GetType()                     # => False, a and b types not equal
 $name = "Steve"
 $age = 22
 "He said his name is $name." # => "He said his name is Steve"
-“{0} said he is {1} years old.” -f $name, $age # => "Steve said he is 22 years old"
+"{0} said he is {1} years old." -f $name, $age # => "Steve said he is 22 years old"
 "$name's name is $($name.Length) characters long." # => "Steve's name is 5 characters long."
 
 # $null is not an object
