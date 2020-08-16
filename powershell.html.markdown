@@ -89,12 +89,12 @@ $False - 5   # => -5
 
 # Using boolean logical operators on ints casts them to booleans for evaluation
 # but their non-cast value is returned
-# Don't mix up with bool(ints) and bitwise and/or (&,|)
+# Don't mix up with bool(ints) and bitwise -band/-bor
 [bool](0)     # => False
 [bool](4)     # => True
 [bool](-6)    # => True
-0 -and 2     # => 0
--5 -or 0     # => -5
+0 -band 2     # => 0
+-5 -bor 0     # => -5
 
 # Equality is -eq (equals)
 1 -eq 1  # => True
