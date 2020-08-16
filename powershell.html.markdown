@@ -19,27 +19,8 @@ rather than plain text. After years of evolving, it resembles Python a bit.
 [Read more here.](https://docs.microsoft.com/powershell/scripting/overview)
 
 Powershell as a Language:
+
 ```powershell
-
-# Single line comments start with a number symbol.
-
-<#
-  Multi-line comments
-  like so
-#>
-
-####################################################
-## 1. Primitive Datatypes and Operators
-####################################################
-
-# Numbers
-3 # => 3
-
-# Math
-1 + 1   # => 2
-8 - 1   # => 7
-10 * 2  # => 20
-35 / 5  # => 7.0
 
 # Single line comments start with a number symbol.
 
