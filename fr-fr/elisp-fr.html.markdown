@@ -328,9 +328,9 @@ lang: fr-fr
     (other-window 1))
 
 ;; Cette fonction introduit `re-search-forward' : au lieu de chercher
-;; la chaîne "Bonjour", nous cherchons un "pattern" en utilisant une
-;; "expression régulière" (le préfixe "re-" signifie "regular
-;; expression").
+;; la chaîne "Bonjour", nous cherchons un motif ("pattern" en anglais)
+;; en utilisant une "expression régulière" (le préfixe "re-" signifie
+;; "regular expression").
 
 ;; L'expression régulière est "Bonjour \\(.+\\)!" et se lit :
 ;; la chaîne "Bonjour ", et
@@ -343,7 +343,7 @@ lang: fr-fr
 
 (boldify-names)
 
-;; `add-text-properties' ajoute des propriétés textuelles telle que
+;; `add-text-properties' ajoute des propriétés textuelles telles que
 ;; des "faces" (une "face" définit la fonte, la couleur, la taille et
 ;; d'autres propriétés du texte.)
 
@@ -361,7 +361,7 @@ lang: fr-fr
 ;; Pour lire en ligne une introduction à Emacs Lisp :
 ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
 
-;; Merci à ces personnes pour leurs retours et suggetions :
+;; Merci à ces personnes pour leurs retours et suggestions :
 ;; - Wes Hardaker
 ;; - notbob
 ;; - Kevin Montuori
