@@ -439,7 +439,7 @@ self() #=> #PID<0.27.0>
 
 # Create an agent with `Agent.start_link`, passing in a function
 # The initial state of the agent will be whatever that function returns
-{ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
+{:ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
 
 # `Agent.get` takes an agent name and a `fn` that gets passed the current state
 # Whatever that `fn` returns is what you'll get back
