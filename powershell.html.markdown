@@ -151,8 +151,6 @@ $null  # => None
 
 # $null, 0, and empty strings and arrays all evaluate to False.
 # All other values are True
-# $null, 0, and empty strings and arrays all evaluate to False.
-# All other values are True
 function test ($value) {
   if ($value) {
     Write-Output 'True'
