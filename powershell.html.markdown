@@ -163,26 +163,10 @@ function test ($value) {
 test ($null) # => False
 test (0)   # => False
 test ("")  # => False
-test []  # => True *[] Not valid in Powershell, creates null-valued expression
+test []  # => True *[] calls .NET classes; creates '[]' string when passed to func
 test ({})  # => True
 test @()  # => False
 
-<#
-IsPublic IsSerial Name                                     BaseType                                               
--------- -------- ----                                     --------                                               
-True     True     Int32                                    System.ValueType                                       
-True     True     Int32                                    System.ValueType                                       
-True     True     String                                   System.Object                                          
-You cannot call a method on a null-valued expression.
-At line:4 char:1
-+ $test3.getType()
-+ ~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
-    + FullyQualifiedErrorId : InvokeMethodOnNull
- 
-True     True     ScriptBlock                              System.Object                                          
-True     True     Object[]                                 System.Array  
-#>
 
 ####################################################
 ## 2. Variables and Collections
