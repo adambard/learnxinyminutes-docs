@@ -151,23 +151,47 @@ $null  # => None
 
 # $null, 0, and empty strings and arrays all evaluate to False.
 # All other values are True
+# $null, 0, and empty strings and arrays all evaluate to False.
+# All other values are True
 function test ($value) {
-  if ($value) {Write-Output 'True'}
-    else {Write-Output 'False'}
+  if ($value) {
+    Write-Output 'True'
+  }
+  else {
+    Write-Output 'False'
+  }
 }
+
 test ($null) # => False
 test (0)   # => False
 test ("")  # => False
-test []  # => True
+test []  # => True *[] Not valid in Powershell, creates null-valued expression
 test ({})  # => True
 test @()  # => False
+
+<#
+IsPublic IsSerial Name                                     BaseType                                               
+-------- -------- ----                                     --------                                               
+True     True     Int32                                    System.ValueType                                       
+True     True     Int32                                    System.ValueType                                       
+True     True     String                                   System.Object                                          
+You cannot call a method on a null-valued expression.
+At line:4 char:1
++ $test3.getType()
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+True     True     ScriptBlock                              System.Object                                          
+True     True     Object[]                                 System.Array  
+#>
 
 ####################################################
 ## 2. Variables and Collections
 ####################################################
 
 # Powershell uses the "Write-Output" function to print
-Write-Output "I'm Powershell. Nice to meet you!"  # => I'm Powershell. Nice to meet you!
+Write-Output "I'm Posh. Nice to meet you!"  # => I'm Posh. Nice to meet you!
 
 # Simple way to get input data from console
 $userInput = Read-Host "Enter some data: " # Returns the data as a string
@@ -367,7 +391,6 @@ switch($val) {
   { $_ -like 's*' }       { "Case insensitive"; break }
   { $_ -clike 's*'}       { "clike, ceq, cne for case sensitive"; break }
   { $_ -notmatch '^.*$'}  { "Regex matching. cnotmatch, cnotlike, ..."; break }
-  { 'x' -contains 'x'}    { "FALSE! -contains is for lists!"; break }
   default                 { "Others" }
 }
 
@@ -382,7 +405,6 @@ catch {
 finally {
     Write-Output "We can clean up resources here"
 }
-
 
 
 # Writing to a file
@@ -532,6 +554,7 @@ True     False    Guitar                                   Instrument
 #>
 
 
+
 ####################################################
 ## 7. Advanced
 ####################################################
@@ -582,7 +605,7 @@ $Area
  This is a silly one
  You may one day be asked to create a func that could take $start and $end
  and reverse anything in an array within the given range
- based on an arbitrary array
+ based on an arbitrary array without mutating the original array
  Let's see one way to do that and introduce another data structure
 #>
 
@@ -599,13 +622,15 @@ function Format-Range ($start, $end) {
         elseif ($index -ge $start -and $index -le $end) {
             $stack.Push($targetArray[$index])
         }
-        elseif ($index -gt $end) {
+        else {
             $secondSectionArray.Add($targetArray[$index]) > $null
         }
     }
     $returnArray = $firstSectionArray + $stack.ToArray() + $secondSectionArray
     Write-Output $returnArray
 }
+
+Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m','n'
 
 # The previous method works, but it uses extra memory by allocating new arrays
 # It's also kind of lengthy
@@ -623,10 +648,13 @@ function Format-Range ($start, $end) {
   }
   return $targetArray
 }
+
+Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m','n'
 ```
 Powershell as a Tool:
 
 Getting Help:
+
 ```Powershell
 # Find commands
 Get-Command about_* # alias: gcm
