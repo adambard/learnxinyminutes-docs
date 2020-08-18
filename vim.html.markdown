@@ -13,6 +13,9 @@ editor designed for speed and increased productivity, and is ubiquitous in most
 unix-based systems. It has numerous keybindings for speedy navigation to
 specific points in the file, and for fast editing.
 
+`vimtutor` is a an excellent application that teaches you how to use `Vim`. It comes with the vim package during installation. You should be able to just run "vimtutor" on the command line to open this tutor. It will guide you through all the major features in `vim`.
+
+
 ## Basics of navigating Vim
 
 ```
