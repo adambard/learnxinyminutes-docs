@@ -2,7 +2,7 @@
 language: yaml
 filename: learnyaml-nl.yaml
 contributors:
-  - ["Adam Brenecki", "https://github.com/adambrenecki"]
+  - ["Leigh Brenecki", "https://github.com/adambrenecki"]
 translators:
   - ["Niels van Velzen", "https://nielsvanvelzen.me"]
   - ["Sam van Kampen", "http://tehsvk.net"]

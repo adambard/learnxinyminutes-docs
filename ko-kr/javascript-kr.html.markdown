@@ -2,7 +2,7 @@
 language: javascript
 category: language
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 filename: javascript-kr.js
@@ -18,8 +18,8 @@ lang: ko-kr
 그렇지만 자바스크립트는 웹 브라우저에만 국한되지 않습니다. 구글 크롬의 V8 자바스크립트 
 엔진을 위한 독립형 런타임을 제공하는 Node.js는 점점 인기를 얻고 있습니다.
 
-피드백 주시면 대단히 감사하겠습니다! [@adambrenecki](https://twitter.com/adambrenecki)나 
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au)를 통해 저와 만나실 수 있습니다.
+피드백 주시면 대단히 감사하겠습니다! [@ExcitedLeigh](https://twitter.com/ExcitedLeigh)나 
+[l@leigh.net.au](mailto:l@leigh.net.au)를 통해 저와 만나실 수 있습니다.
 
 ```js
 // 주석은 C와 비슷합니다. 한 줄짜리 주석은 두 개의 슬래시로 시작하고,

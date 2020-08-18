@@ -5,26 +5,27 @@ contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]
   - ["himanshu", "https://github.com/himanshu81494"]
+  - ["Maarten Jacobs", "https://github.com/maartenJacobs"]
 translators:
   - ["Niels van Velzen", "https://nielsvanvelzen.me"]
 lang: nl-nl
 ---
 
-Gezien JSON een zeer eenvouding formaat heeft zal dit een van de simpelste
+Gezien JSON een zeer eenvouding formaat heeft zal dit één van de simpelste
 Learn X in Y Minutes ooit zijn.
 
-JSON heeft volgens de specificaties geen commentaar, ondanks dat hebben de
+JSON heeft volgens de specificaties geen commentaar. Ondanks dat hebben de
 meeste parsers support voor C-stijl (`//`, `/* */`) commentaar.
 Sommige parsers staan zelfs trailing komma's toe.
-(Een komma na het laatste element in een array of ahter de laatste eigenshap van een object).
-Het is wel beter om dit soort dingen te vermijden omdat het niet overal zal werken.
+(Een komma na het laatste element in een array of achter de laatste eigenschap van een object).
+Het is wel beter om dit soort dingen te vermijden omdat het niet in elke parser zal werken.
 
 In het voorbeeld zal alleen 100% geldige JSON gebruikt worden.
 
 Data types gesupport door JSON zijn: nummers, strings, booleans, arrays, objecten en null.
 Gesupporte browsers zijn: Firefox(Mozilla) 3.5, Internet Explorer 8, Chrome, Opera 10, Safari 4.
-De extensie voor JSON bestanden is ".json". De MIME type is "application/json"
-Enkele nadelen van JSON zijn het gebrek een type definities en een manier van DTD.
+De extensie voor JSON bestanden is ".json". De MIME type is "application/json".
+Enkele nadelen van JSON zijn het gebrek aan type definities en een manier van DTD.
 
 ```json
 {

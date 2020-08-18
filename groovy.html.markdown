@@ -184,7 +184,7 @@ class Foo {
   Methods with optional parameters
 */
 
-// A mthod can have default values for parameters
+// A method can have default values for parameters
 def say(msg = 'Hello', name = 'world') {
     "$msg $name!"
 }

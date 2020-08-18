@@ -1,7 +1,7 @@
 ---
 language: javascript
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 filename: javascript.js
 ---
@@ -188,7 +188,7 @@ someVar = myArray.pop(); // Remove last element and return it
 
 // Join all elements of an array with semicolon
 var myArray0 = [32,false,"js",12,56,90];
-myArray0.join(";") // = "32;false;js;12;56;90"
+myArray0.join(";"); // = "32;false;js;12;56;90"
 
 // Get subarray of elements from index 1 (include) to 4 (exclude)
 myArray0.slice(1,4); // = [false,"js",12]

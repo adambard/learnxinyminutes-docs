@@ -14,9 +14,9 @@ Opencv currently supports wide variety of languages like, C++, Python, Java etc
 #### Installation
 Please refer to these articles for installation of OpenCV on your computer.
 
-* Windows Installation Instructions: [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html#install-opencv-python-in-windows]()
-* Mac Installation Instructions (High Sierra): [https://medium.com/@nuwanprabhath/installing-opencv-in-macos-high-sierra-for-python-3-89c79f0a246a]()
-* Linux Installation Instructions (Ubuntu 18.04): [https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv]()
+* Windows Installation Instructions: [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html#install-opencv-python-in-windows](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html#install-opencv-python-in-windows)
+* Mac Installation Instructions (High Sierra): [https://medium.com/@nuwanprabhath/installing-opencv-in-macos-high-sierra-for-python-3-89c79f0a246a](https://medium.com/@nuwanprabhath/installing-opencv-in-macos-high-sierra-for-python-3-89c79f0a246a)
+* Linux Installation Instructions (Ubuntu 18.04): [https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv](https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv)
 
 ### Here we will be focusing on python implementation of OpenCV
 
@@ -133,12 +133,12 @@ cv2.destroyAllWindows()
 
 ### Further Reading:
 
-* Download Cascade from [https://github.com/opencv/opencv/blob/master/data/haarcascades]()
-* OpenCV drawing Functions [https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html]()
-* An up-to-date language reference can be found at [https://opencv.org]()
-* Additional resources may be found at [https://en.wikipedia.org/wiki/OpenCV]()
+* Download Cascade from [https://github.com/opencv/opencv/blob/master/data/haarcascades](https://github.com/opencv/opencv/blob/master/data/haarcascades)
+* OpenCV drawing Functions [https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html](https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html)
+* An up-to-date language reference can be found at [https://opencv.org](https://opencv.org)
+* Additional resources may be found at [https://en.wikipedia.org/wiki/OpenCV](https://en.wikipedia.org/wiki/OpenCV)
 * Good OpenCv Tutorials
-    * [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html]()
-    * [https://realpython.com/python-opencv-color-spaces]()
-    * [https://pyimagesearch.com]()
-    * [https://www.learnopencv.com]()
+    * [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
+    * [https://realpython.com/python-opencv-color-spaces](https://realpython.com/python-opencv-color-spaces)
+    * [https://pyimagesearch.com](https://pyimagesearch.com)
+    * [https://www.learnopencv.com](https://www.learnopencv.com)

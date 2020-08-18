@@ -28,7 +28,7 @@ Or for unparsable, broken code
 var                     # Declare (and assign) variables,
   letter: char = 'n'    # with or without type annotations
   lang = "N" & "im"
-  nLength : int = len(lang)
+  nLength: int = len(lang)
   boat: float
   truth: bool = false
 

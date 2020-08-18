@@ -12,7 +12,7 @@ It is an alternative to YAML and JSON. It aims to be more human friendly than JS
 Be warned, TOML's spec is still changing a lot. Until it's marked as 1.0, you
 should assume that it is unstable and act accordingly. This document follows TOML v0.4.0. 
 
-```
+```toml
 # Comments in TOML look like this.
 
 ################
@@ -117,7 +117,7 @@ date4 = 1979-05-27 # without offset or time
 
 array1 = [ 1, 2, 3 ]
 array2 = [ "Commas", "are", "delimiters" ]
-array3 = [ "Don't mixed", "different", "types" ]
+array3 = [ "Don't mix", "different", "types" ]
 array4 = [ [ 1.2, 2.4 ], ["all", 'strings', """are the same""", '''type'''] ]
 array5 = [
   "Whitespace", "is", "ignored"
@@ -171,6 +171,9 @@ c = 1
 [a]
 d = 2
 
+# Will generate the following in JSON:
+# { "a": {"b": {"c": 1}, "d": 2 } }
+
 # You cannot define any key or table more than once. Doing so is invalid.
 
 # DO NOT DO THIS
@@ -220,7 +223,27 @@ emptyTableAreAllowed = true
 name = "Nail"
 sku = 284758393
 color = "gray"
+```
+The equivalent in JSON would be:
+```json
+{ 
+  "products": [
+    {
+      "name": "array of table",
+      "sku": 7385594937,
+      "emptyTableAreAllowed": true
+    },
+    {},
+    {
+      "name": "Nail",
+      "sku": 284758393,
+      "color": "gray"
+    }
+  ]
+}
+```
 
+```toml
 # You can create nested arrays of tables as well. Each double-bracketed
 # sub-table will belong to the nearest table element above it.
 
@@ -245,11 +268,11 @@ color = "gray"
   [[fruit.color]]
     name = "yellow"
     note = "I am an array item in banana fruit's table/map"
+
 ```
-
-In JSON land, this code will be:
-
+The equivalent in JSON would be:
 ```json
+
 {
   "fruit": [
     {

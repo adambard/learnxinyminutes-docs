@@ -15,7 +15,7 @@ in the shell.
 A key difference with Bash is that it is mostly objects that you manipulate
 rather than plain text.
 
-[Read more here.](https://technet.microsoft.com/en-us/library/bb978526.aspx)
+[Read more here.](https://docs.microsoft.com/powershell/scripting/overview)
 
 If you are uncertain about your environment:
 
@@ -55,6 +55,11 @@ The tutorial starts here:
 ```powershell
 # As you already figured, comments start with #
 
+<#
+  Multi-line comments
+  like so
+#>
+
 # Simple hello world example:
 echo Hello world!
 # echo is an alias for Write-Output (=cmdlet)
@@ -68,6 +73,8 @@ $aString="Some string"
 # Or like this:
 $aNumber = 5 -as [double]
 $aList = 1,2,3,4,5
+# Reverse an array *Note this is a mutation on the existing array
+[array]::Reverse($aList)
 $anEmptyList = @()
 $aString = $aList -join '--' # yes, -split exists also
 $aHashtable = @{name1='val1'; name2='val2'}
@@ -99,6 +106,10 @@ echo "FUll path of current directory: $Pwd"
 echo "Bound arguments in a function, script or code block: $PSBoundParameters"
 echo "Unbound arguments: $($Args -join ', ')."
 # More builtins: `help about_Automatic_Variables`
+
+# Find the datatype of variables or properties you're working with
+$true.GetType()
+$aHashtable.name2.GetType()
 
 # Inline another file (dot operator)
 . .\otherScriptName.ps1
@@ -184,7 +195,7 @@ Get-Process | Sort-Object ID -Descending | Select-Object -First 10 Name,ID,VM `
 Get-EventLog Application -After (Get-Date).AddHours(-2) | Format-List
 
 # Use % as a shorthand for ForEach-Object
-(a,b,c) | ForEach-Object `
+('a','b','c') | ForEach-Object `
 	-Begin { "Starting"; $counter = 0 } `
 	-Process { "Processing $_"; $counter++ } `
 	-End { "Finishing: $counter" }
@@ -198,12 +209,13 @@ ps | Format-Table ID,Name,@{n='VM(MB)';e={'{0:n2}' -f ($_.VM / 1MB)}} -autoSize
 
 ### Functions
 # The [string] attribute is optional.
-function foo([string]$name) {
+# Function names should follow Verb-Noun convention
+function Get-Foo([string]$name) {
 	echo "Hey $name, have a function"
 }
 
 # Calling your function
-foo "Say my name"
+Get-Foo "Say my name"
 
 # Functions with named parameters, parameter attributes, parsable documentation
 <#
@@ -283,7 +295,22 @@ Pop-Location # change back to previous working directory
 # Unblock a directory after download
 Get-ChildItem -Recurse | Unblock-File
 
+# You can also pass arguments to a Function with a hash table
+# This is called Splatting
+# Normal Command
+Export-Csv -InputObject $csv -Path 'c:\mypath' -Encoding UTF8 -NoTypeInformation
+# With Splatting
+$csvArguments = @{
+    InputObject = $csv
+    Path = 'c:\mypath'
+    Encoding = 'UTF8'
+    NoTypeInformation = $true
+}
+Export-Csv @csvArguments
+
 # Open Windows Explorer in working directory
+Invoke-Item .
+# Or the alias
 ii .
 
 # Any key to exit
@@ -318,10 +345,11 @@ Interesting Projects
 * [PSGet](https://github.com/psget/psget) NuGet for PowerShell
 * [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
 * [Posh-Git](https://github.com/dahlbyk/posh-git/) Fancy Git Prompt (Recommended!)
+* [Oh-My-Posh](https://github.com/JanDeDobbeleer/oh-my-posh) Shell customization similar to the popular Oh-My-Zsh on Mac
 * [PSake](https://github.com/psake/psake) Build automation tool
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
 * [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
-* [PowerShell Community Extensions](http://pscx.codeplex.com/) (Dead)
+* [PowerShell Community Extensions](https://github.com/Pscx/Pscx)
 
 Not covered  
 

@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
 filename: learnrust.rs
@@ -22,7 +22,7 @@ currently available in the nightly builds. Rust has adopted a train-based releas
 model with regular releases every six weeks. Rust 1.1 beta was made available at
 the same time of the release of Rust 1.0.
 
-Although Rust is a relatively low-level language, Rust has some functional
+Although Rust is a relatively low-level language, it has some functional
 concepts that are generally found in higher-level languages. This makes
 Rust not only fast, but also easy and efficient to code in.
 
@@ -176,13 +176,19 @@ fn main() {
 
     impl<T> Foo<T> {
         // Methods take an explicit `self` parameter
-        fn get_bar(self) -> T {
+        fn bar(&self) -> &T { // self is borrowed
+            &self.bar
+        }
+        fn bar_mut(&mut self) -> &mut T { // self is mutably borrowed
+            &mut self.bar
+        }
+        fn into_bar(self) -> T { // here self is consumed
             self.bar
         }
     }
 
     let a_foo = Foo { bar: 1 };
-    println!("{}", a_foo.get_bar()); // 1
+    println!("{}", a_foo.bar()); // 1
 
     // Traits (known as interfaces or typeclasses in other languages) //
 

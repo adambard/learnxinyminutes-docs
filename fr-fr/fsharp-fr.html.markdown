@@ -140,7 +140,8 @@ module FunctionExamples =
     let a = add 1 2
     printfn "1+2 = %i" a
 
-    // partial application to "bake in" parameters (?)
+    // application partielle des paramètres (curryfication ou "currying" en anglais)
+    // add42 est une nouvelle fonction qui ne prend plus qu'un paramètre
     let add42 = add 42
     let b = add42 1
     printfn "42+1 = %i" b

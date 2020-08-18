@@ -63,7 +63,7 @@ echo ${Variabile}
 # Sotto ci sono altri esempi che analizzano l'uso dell'espansione dei parametri.
 
 # Sostituzione di stringhe nelle variabili
-echo ${Variabile/Una/A}
+echo ${Variabile/Una/La}
 # Questo sostituirà la prima occorrenza di "Una" con "La"
 
 # Sottostringa di una variabile
@@ -139,6 +139,25 @@ if [ "$Nome" == "Daniya" ] || [ "$Nome" == "Zach" ]
 then
     echo "Questo verrà eseguito se $Nome è Daniya O Zach."
 fi
+
+# C'è anche l'operatore `=~`, che serve per confrontare una stringa con un'espressione regolare:
+Email=me@example.com
+if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+then
+    echo "Email valida!"
+fi
+# L'operatore =~ funziona solo dentro alle doppie parentesi quadre [[ ]],
+# che hanno un comportamento leggermente diverso rispetto alle singole [ ].
+# Se vuoi approfondire, visita questo link (in inglese):
+# http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs
+
+# Usando `alias`, puoi definire nuovi comandi o modificare quelli già esistenti.
+# Ad esempio, così puoi ridefinire il comando ping per inviare solo 5 pacchetti
+alias ping='ping -c 5'
+# "Scavalca" l'alias e usa il comando vero, utilizzando il backslash
+\ping 192.168.1.1
+# Stampa la lista di tutti gli alias
+alias -p
 
 # Le espressioni sono nel seguente formato:
 echo $(( 10 + 5 ))

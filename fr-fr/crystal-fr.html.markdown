@@ -350,7 +350,7 @@ sum 3, 4 #=> 7
 sum sum(3, 4), 5 #=> 12
 
 # yield
-# Toutes les méthodes on un paramètre optionel et implicite de type bloc
+# Toutes les méthodes ont un paramètre optionel et implicite de type bloc
 # il peut être appelé avec le mot clé 'yield'
 def surround
   puts '{'

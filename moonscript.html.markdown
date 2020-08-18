@@ -192,7 +192,7 @@ items = {1, 2, 3, 4}
 doubled = [item * 2 for item in *items]
 -- Uses `when` to determine if a value should be included.
 
-slice = [item for item in *items when i > 1 and i < 3]
+slice = [item for item in *items when item > 1 and item < 3]
 
 -- `for` clauses inside of list comprehensions can be chained.
 

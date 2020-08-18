@@ -30,7 +30,8 @@ The most basic operation is to send a message to an object
 `anObject aMessage`
 
 There are three sorts of messages
-- unary - a single string that may be several words conjoined in what we call camelcase form, with no arguments. For example 'size', 'reverseBytes', 'convertToLargerFormatPixels'
+
+- unary - a single symbol that may be several words conjoined in what we call camelcase form, with no arguments. For example 'size', 'reverseBytes', 'convertToLargerFormatPixels'
 - binary - a small set of symbols of the sort often used for arithmetic operations in most languages, requiring a single argument. For example '+', '//', '@'. We do not use traditional arithmetic precedence, something to keep an eye on.
 - keyword - the general form where multiple arguments can be passed. As with the unary form we use camelcase to join words together but arguments are inserted in the midst of the message with colons used to separate them lexically. For example 'setTemperature:', 'at:put:', 'drawFrom:to:lineWidth:fillColor:'
 
@@ -38,21 +39,23 @@ There are three sorts of messages
 `result := myObject doSomethingWith: thatObject`
 We are sending the message 'doSomethingWith:' to myObject. This happens to be a message that has a single argument but that's not important yet.
 'myObject' is a 'MyExampleClass' instance so the system looks at the list of messages understood by MyExampleClass
+
 - beClever
 - doWierdThing:
 - doSomethingWith
 
 In searching we see what initially looks like a match - but no, it lacks the final colon. So we find the super class of MyExampleClass - BigExampleClass. Which has a list of known messages of its own
+
 - beClever
 - doSomethingWith:
 - buildCastleInAir
 - annoyUserByDoing:
 
-We find a proper exact match and start to execute the code
-```
+We find a proper exact match and start to execute the code:
+
+```smalltalk
 doSomethingWith: argumentObject
-"A comment about what this code is meant to do and any known limitations, problems, where it might be further documented etc"
-self size > 4 ifTrue: [^argumentObject sizeRelatingTo: self].
+    self size > 4 ifTrue: [^argumentObject sizeRelatingTo: self].
 ```   
 
 Everything here except the `^` involves sending more messages. Event the `ifTrue:` that you might think is a language control structure is just Smalltalk code.
@@ -94,7 +97,7 @@ Taken from [Smalltalk Cheatsheet](http://www.angelfire.com/tx4/cus/notes/smallta
 `"Period (.) is the statement separator. Not required on last line of a method"`
 
 #### Transcript:
-```
+```smalltalk
 Transcript clear.                        "clear to transcript window"
 Transcript show: 'Hello World'.          "output string in transcript window"
 Transcript nextPutAll: 'Hello World'.    "output string in transcript window"
@@ -108,26 +111,17 @@ Transcript endEntry.                     "flush the output buffer"
 ```
 
 #### Assignment:
-```
+```smalltalk
 | x y |
 x _ 4.                            "assignment (Squeak) <-"
 x := 5.                           "assignment"
 x := y := z := 6.                 "compound assignment"
 x := (y := 6) + 1.
 x := Object new.                  "bind to allocated instance of a class"
-x := 123 class.                   "discover the object class"
-x := Integer superclass.          "discover the superclass of a class"
-x := Object allInstances.         "get an array of all instances of a class"
-x := Integer allSuperclasses.     "get all superclasses of a class"
-x := 1.2 hash.                    "hash value for object"
-y := x copy.                      "copy object"
-y := x shallowCopy.               "copy object (not overridden)"
-y := x deepCopy.                  "copy object and instance vars"
-y := x veryDeepCopy.              "complete tree copy using a dictionary"
 ```
 
 #### Constants:
-```
+```smalltalk
 | b |
 b := true.                "true constant"
 b := false.               "false constant"
@@ -147,7 +141,7 @@ x := #('abc' 2 $a).       "mixing of types allowed"
 ```
 
 #### Booleans:
-```
+```smalltalk
 | b x y |
 x := 1. y := 2.
 b := (x = y).                         "equals"
@@ -185,7 +179,7 @@ b := $A isLowercase.                   "test if lower case character"
 ```
 
 #### Arithmetic expressions:
-```
+```smalltalk
 | x |
 x := 6 + 3.                             "addition"
 x := 6 - 3.                             "subtraction"
@@ -241,7 +235,7 @@ x := 100 atRandom.                      "quick random number"
 ```
 
 #### Bitwise Manipulation:
-```
+```smalltalk
 | b x |
 x := 16rFF bitAnd: 16r0F.           "and bits"
 x := 16rF0 bitOr: 16r0F.            "or bits"
@@ -257,7 +251,7 @@ b := 16rFF noMask: 16r0F.           "test if all bits set in mask clear in recei
 ```
 
 #### Conversion:
-```
+```smalltalk
 | x |
 x := 3.99 asInteger.               "convert number to integer (truncates in Squeak)"
 x := 3.99 asFraction.              "convert number to fraction"
@@ -281,7 +275,7 @@ x := 15 storeStringBase: 16.
 - `^`expression terminates block & method (exits all nested blocks)
 - blocks intended for long term storage should not contain `^`
 
-```
+```smalltalk
 | x y z |
 x := [ y := 1. z := 2. ]. x value.                          "simple block usage"
 x := [ :argOne :argTwo |   argOne, ' and ' , argTwo.].      "set up block with argument passing"
@@ -304,7 +298,7 @@ Transcript show: (x value: 'First' value: 'Second'); cr.    "use block with argu
 - private               (methods private to class)
 - instance-creation     (class methods for creating instance)
 
-```
+```smalltalk
 | x |
 x := 2 sqrt.                                  "unary message"
 x := 2 raisedTo: 10.                          "keyword message"
@@ -319,7 +313,7 @@ x := 3 + 2; * 100.                            "result=300. Sends message to same
 ```
 
 #### Conditional Statements:
-```
+```smalltalk
 | x |
 x > 10 ifTrue: [Transcript show: 'ifTrue'; cr].     "if then"
 x > 10 ifFalse: [Transcript show: 'ifFalse'; cr].   "if else"
@@ -359,7 +353,7 @@ result := (switch at: $B) value.
 ```
 
 #### Iteration statements:
-```
+```smalltalk
 | x y |
 x := 4. y := 1.
 [x > 0] whileTrue: [x := x - 1. y := y * 2].     "while true loop"
@@ -371,7 +365,7 @@ x timesRepeat: [y := y * 2].                     "times repeat loop (i := 1 to x
 ```
 
 #### Character:
-```
+```smalltalk
 | x y |
 x := $A.                         "character assignment"
 y := x isLowercase.              "test if lower case"
@@ -391,10 +385,10 @@ y := $A max: $B.
 ```
 
 #### Symbol:
-```
+```smalltalk
 | b x y |
 x := #Hello.                                      "symbol assignment"
-y := 'String', 'Concatenation'.                   "symbol concatenation (result is string)"
+y := #Symbol, #Concatenation.                     "symbol concatenation (result is string)"
 b := x isEmpty.                                   "test if symbol is empty"
 y := x size.                                      "string size"
 y := x at: 2.                                     "char at location"
@@ -413,7 +407,7 @@ y := x asSet.                                     "convert symbol to set collect
 ```
 
 #### String:
-```
+```smalltalk
 | b x y |
 x := 'This is a string'.                           "string assignment"
 x := 'String', 'Concatenation'.                    "string concatenation"
@@ -447,7 +441,7 @@ Fixed length collection
 - ByteArray:     Array limited to byte elements (0-255)
 - WordArray:     Array limited to word elements (0-2^32)
 
-```
+```smalltalk
 | b x y sum max |
 x := #(4 3 2 1).                                 "constant array"
 x := Array with: 5 with: 4 with: 3 with: 2.      "create array with up to 4 elements"
@@ -490,7 +484,7 @@ y := x asSet.                                    "convert to set collection"
 #### OrderedCollection:
 acts like an expandable array
 
-```
+```smalltalk
 | b x y sum max |
 x := OrderedCollection 
      with: 4 with: 3 with: 2 with: 1.            "create collection with up to 4 elements"
@@ -537,7 +531,7 @@ y := x asSet.                                    "convert to set collection"
 #### SortedCollection:
 like OrderedCollection except order of elements determined by sorting criteria
 
-```
+```smalltalk
 | b x y sum max |
 x := SortedCollection 
      with: 4 with: 3 with: 2 with: 1.              "create collection with up to 4 elements"
@@ -583,7 +577,7 @@ y := x asSet.                                       "convert to set collection"
 #### Bag:
 like OrderedCollection except elements are in no particular order
 
-```
+```smalltalk
 | b x y sum max |
 x := Bag with: 4 with: 3 with: 2 with: 1.        "create collection with up to 4 elements"
 x := Bag new.                                    "allocate collection"
@@ -619,7 +613,7 @@ like Bag except duplicates not allowed
 #### IdentitySet:
 uses identity test (== rather than =)
 
-```
+```smalltalk
 | b x y sum max |
 x := Set with: 4 with: 3 with: 2 with: 1.        "create collection with up to 4 elements"
 x := Set new.                                    "allocate collection"
@@ -649,7 +643,7 @@ y := x asSet.                                    "convert to set collection"
 ```
 
 #### Interval:
-```
+```smalltalk
 | b x y sum max |
 x := Interval from: 5 to: 10.                     "create interval object"
 x := 5 to: 10.
@@ -679,7 +673,7 @@ y := x asSet.                                     "convert to set collection"
 ```
 
 #### Associations:
-```
+```smalltalk
 | x y |
 x := #myVar->'hello'.
 y := x key.
@@ -690,7 +684,7 @@ y := x value.
 #### IdentityDictionary:
 uses identity test (== rather than =)
 
-```
+```smalltalk
 | b x y |
 x := Dictionary new.                   "allocate collection"
 x add: #a->4; 
@@ -757,7 +751,7 @@ Smalltalk removeKey: #CMRDictionary ifAbsent: [].     "remove user dictionary fr
 ```
 
 #### Internal Stream:
-```
+```smalltalk
 | b x ios |
 ios := ReadStream on: 'Hello read stream'.
 ios := ReadStream on: 'Hello read stream' from: 1 to: 5.
@@ -785,7 +779,7 @@ b := ios atEnd.
 ```
 
 #### FileStream:
-```
+```smalltalk
 | b x ios |
 ios := FileStream newFileNamed: 'ios.txt'.
 ios nextPut: $H; cr.
@@ -805,7 +799,7 @@ ios close.
 ```
 
 #### Date:
-```
+```smalltalk
 | x y |
 x := Date today.                                "create date for today"
 x := Date dateAndTimeNow.                       "create date from current time/date"
@@ -839,7 +833,7 @@ b := (x <= Date today).                         "comparison"
 ```
 
 #### Time:
-```
+```smalltalk
 | x y |
 x := Time now.                                      "create time from current time"
 x := Time dateAndTimeNow.                           "create time from current time/date"
@@ -859,7 +853,7 @@ b := (x <= Time now).                               "comparison"
 ```
 
 #### Point:
-```
+```smalltalk
 | x y |
 x := 200@100.                            "obtain a new point"
 y := x x.                                "x coordinate"
@@ -884,12 +878,12 @@ x := 20@5 dotProduct: 10@2.              "sum of product (x1*x2 + y1*y2)"
 ```
 
 #### Rectangle:
-```
+```smalltalk
 Rectangle fromUser.
 ```
 
 #### Pen:
-```
+```smalltalk
 | myPen |
 Display restoreAfter: [
    Display fillWhite.
@@ -917,7 +911,7 @@ Display height.                              "get display height"
 ```
 
 #### Dynamic Message Calling/Compiling:
-```
+```smalltalk
 | receiver message result argument keyword1 keyword2 argument1 argument2 |
 
 "unary message"
@@ -957,7 +951,7 @@ result := (Message
 ```
 
 #### Class/Meta-Class:
-```
+```smalltalk
 | b x |
 x := String name.                     "class name"
 x := String category.                 "organization category"
@@ -990,7 +984,7 @@ Object withAllSubclasses size.        "get total number of class entries"
 ```
 
 #### Debugging:
-```
+```smalltalk
 | a b x |
 x yourself.                             "returns receiver"
 String browse.                          "browse specified class"
@@ -1013,8 +1007,13 @@ Transcript show: a, b; cr.
 ```
 
 #### Miscellaneous
-```
+```smalltalk
 | x |
+x := 1.2 hash.                                  "hash value for object"
+y := x copy.                                    "copy object"
+y := x shallowCopy.                             "copy object (not overridden)"
+y := x deepCopy.                                "copy object and instance vars"
+y := x veryDeepCopy.                            "complete tree copy using a dictionary"
 "Smalltalk condenseChanges."                    "compress the change file"
 x := FillInTheBlank request: 'Prompt Me'.       "prompt user for input"
 Utilities openCommandKeyHelp

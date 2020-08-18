@@ -61,5 +61,5 @@ paren*.html.markdown linguist-language=lisp
 pcre*.html.markdown linguist-language=Perl
 perl.html.markdown linguist-language=Perl
 perl-*.html.markdown linguist-language=Perl
-perl6*.html.markdown linguist-language=Perl6
+raku*.html.markdown linguist-language=Perl6
 ruby*.html.markdown linguist-language=Ruby

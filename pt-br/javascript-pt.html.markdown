@@ -2,7 +2,7 @@
 language: javascript
 filename: javascript-pt.js
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Willian Justen", "http://willianjusten.com.br"]
@@ -20,8 +20,8 @@ que é um projeto que fornece um interpretador baseado no motor V8 do Google
 Chrome e está se tornando cada vez mais famoso.
 
 Feedback são muito apreciados! Você me encontrar em
-[@adambrenecki](https://twitter.com/adambrenecki), ou
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au).
+[@ExcitedLeigh](https://twitter.com/ExcitedLeigh), ou
+[l@leigh.net.au](mailto:l@leigh.net.au).
 
 ```js
 // Comentários são como em C. Comentários de uma linha começam com duas barras,

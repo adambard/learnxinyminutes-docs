@@ -23,7 +23,7 @@ Makefile 用于定义如何创建目标文件, 比如如何从源码到可执行
 ```make
 # 这行表示注释
 
-# 文件名一定要交 Makefile, 大小写区分, 使用 `make <target>` 生成 target
+# 文件名一定要叫 Makefile, 大小写区分, 使用 `make <target>` 生成 target
 # 如果想要取别的名字, 可以用 `make -f "filename" <target>`.
 
 # 重要的事情 - 只认识 TAB, 空格是不认的, 但是在 GNU Make 3.82 之后, 可以通过
@@ -87,7 +87,7 @@ ex0.txt ex1.txt: maker
 maker:
 	touch ex0.txt ex1.txt
 
-# 如果定义的 phony target 与文件名重名, 可以用 .PHONY 显示的指明哪些 targets 是 phony
+# 如果定义的 phony target 与文件名重名, 可以用 .PHONY 显式地指明哪些 targets 是 phony
 .PHONY: all maker process
 # This is a special target. There are several others.
 
@@ -116,7 +116,7 @@ process: ex1.txt file0.txt
 # 模式匹配
 #-----------------------------------------------------------------------
 
-# 可以让 make 知道如何转换某些文件到别格式
+# 可以让 make 知道如何转换某些文件到其他格式
 # 比如 从 svg 到 png
 %.png: %.svg
 	inkscape --export-png $^
@@ -149,7 +149,7 @@ echo:
 	@echo $(name)
 	@echo ${name2}
 	@echo $name    # 这个会被蠢蠢的解析成 $(n)ame.
-	@echo \"$(name3)\" # 为声明的变量或扩展成空字符串.
+	@echo \"$(name3)\" # 未声明的变量会被处理成空字符串.
 	@echo $(name4)
 	@echo $(name5)
 # 你可以通过4种方式设置变量.

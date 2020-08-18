@@ -15,7 +15,7 @@ the JVM and the [MoarVM](http://moarvm.com).
 
 Meta-note:
 
-* Although the  pound sign (`#`) is used for sentences and notes, Pod-styled
+* Although the pound sign (`#`) is used for sentences and notes, Pod-styled
   comments (more below about them) are used whenever it's convenient.
 * `# OUTPUT:` is used to represent the output of a command to any standard
    stream. If the output has a newline, it's represented by the `␤` symbol.
@@ -23,7 +23,7 @@ Meta-note:
 * `#=>` represents the value of an expression, return value of a sub, etc.
    In some cases, the value is accompanied by a comment.
 * Backticks are used to distinguish and highlight the language constructs
-  from the text. 
+  from the text.
 
 ```perl6
 ####################################################
@@ -95,7 +95,7 @@ my @array = 'a', 'b', 'c';
 # equivalent to:
 my @letters = <a b c>;
 # In the previous statement, we use the quote-words (`<>`) term for array
-# of words, delimited by space. Similar to perl5's qw, or Ruby's %w.
+# of words, delimited by space. Similar to perl's qw, or Ruby's %w.
 
 @array = 1, 2, 4;
 
@@ -152,7 +152,7 @@ though.
 =end comment
 say %hash{'n'};     # OUTPUT: «2␤», gets value associated to key 'n'
 say %hash<is-even>; # OUTPUT: «True␤», gets value associated to key 'is-even'
- 
+
 ####################################################
 # 2. Subroutines
 ####################################################
@@ -265,9 +265,9 @@ takes-a-bool('config', :bool);  # OUTPUT: «config takes True␤»
 takes-a-bool('config', :!bool); # OUTPUT: «config takes False␤»
 
 =begin comment
-Since paranthesis can be omitted when calling a subroutine, you need to use
-`&` in order to distinguish between a call to a sub with no arguments and 
-the code object. 
+Since parenthesis can be omitted when calling a subroutine, you need to use
+`&` in order to distinguish between a call to a sub with no arguments and
+the code object.
 
 For instance, in this example we must use `&` to store the sub `say-hello`
 (i.e., the sub's code object) in a variable, not a subroutine call.
@@ -276,7 +276,7 @@ my &s = &say-hello;
 my &other-s = sub { say "Anonymous function!" }
 
 =begin comment
-A sub can have a "slurpy" parameter, or what one'd call a 
+A sub can have a "slurpy" parameter, or what one'd call a
 "doesn't-matter-how-many" parameter. This is Raku's way of supporting variadic
 functions. For this, you must use `*@` (slurpy) which will "take everything
 else". You can have as many parameters *before* a slurpy one, but not *after*.
@@ -284,8 +284,8 @@ else". You can have as many parameters *before* a slurpy one, but not *after*.
 sub as-many($head, *@rest) {
     @rest.join(' / ') ~ " !";
 }
-say as-many('Happy', 'Happy', 'Birthday'); # OUTPUT: «Happy / Birthday !␤»
-say 'Happy', ['Happy', 'Birthday'], 'Day'; # OUTPUT: «Happy / Birthday / Day !␤»
+say as-many('Happy', 'Happy', 'Birthday');          # OUTPUT: «Happy / Birthday !␤»
+say as-many('Happy', ['Happy', 'Birthday'], 'Day'); # OUTPUT: «Happy / Birthday / Day !␤»
 
 # Note that the splat (the *) did not consume the parameter before it.
 
@@ -298,7 +298,7 @@ arguments (or Iterable ones).
 =end comment
 sub b(**@arr) { @arr.perl.say };
 b(['a', 'b', 'c']);             # OUTPUT: «[["a", "b", "c"],]»
-b(1, $('d', 'e', 'f'), [2, 3]); # OUTPUT: «[1, ("d", "e", "f"), [2, 3]]» 
+b(1, $('d', 'e', 'f'), [2, 3]); # OUTPUT: «[1, ("d", "e", "f"), [2, 3]]»
 b(1, [1, 2], ([3, 4], 5));      # OUTPUT: «[1, [1, 2], ([3, 4], 5)]␤»
 
 =begin comment
@@ -508,7 +508,7 @@ given "foo bar" {
 # can also be a C-style `for` loop:
 loop {
     say "This is an infinite loop !";
-    last; 
+    last;
 }
 # In the previous example, `last` breaks out of the loop very much
 # like the `break` keyword in other languages.
@@ -614,8 +614,8 @@ say Int === Int;       # OUTPUT: «True␤»
 # Here are some common comparison semantics:
 
 # String or numeric equality
-say 'Foo' ~~ 'Foo'; # OUTPU: «True␤», if strings are equal.
-say 12.5 ~~ 12.50;  # OUTPU: «True␤», if numbers are equal.
+say 'Foo' ~~ 'Foo'; # OUTPUT: «True␤», if strings are equal.
+say 12.5 ~~ 12.50;  # OUTPUT: «True␤», if numbers are equal.
 
 # Regex - For matching a regular expression against the left side.
 # Returns a `Match` object, which evaluates as True if regexp matches.
@@ -624,7 +624,7 @@ say $obj;       # OUTPUT: «｢a｣␤»
 say $obj.WHAT;  # OUTPUT: «(Match)␤»
 
 # Hashes
-say 'key' ~~ %hash; # OUTPUT:«True␤», if key exists in hash.
+say 'key' ~~ %hash; # OUTPUT: «True␤», if key exists in hash.
 
 # Type - Checks if left side "is of type" (can check superclasses and roles).
 say 1 ~~ Int;       # OUTPUT: «True␤»
@@ -652,7 +652,7 @@ say 'a' le 'b';  # OUTPUT: «True␤»
 # 5.2 Range constructor
 #
 
-say 3 .. 7;          # OUTPUT: «3..7␤»,   both included. 
+say 3 .. 7;          # OUTPUT: «3..7␤»,   both included.
 say 3 ..^ 7;         # OUTPUT: «3..^7␤»,  exclude right endpoint.
 say 3 ^.. 7;         # OUTPUT: «3^..7␤»,  exclude left endpoint.
 say 3 ^..^ 7;        # OUTPUT: «3^..^7␤», exclude both endpoints.
@@ -665,7 +665,7 @@ say 3.5 ~~ 3 ^.. 7;	 # OUTPUT: «True␤»,
 
 # This is because the range `3 ^.. 7` only excludes anything strictly
 # equal to 3. Hence, it contains decimals greater than 3. This could
-# mathematically be described as 3.5 ∈ (3,7] or in set notation, 
+# mathematically be described as 3.5 ∈ (3,7] or in set notation,
 # 3.5 ∈ { x | 3 < x ≤ 7 }.
 
 say 3 ^.. 7 ~~ 4 .. 7; # OUTPUT: «False␤»
@@ -769,7 +769,7 @@ sub unpack_array( @array [$fst, $snd] ) {
   # (^ remember the `[]` to interpolate the array)
 }
 unpack_array(@tail);
-# OUTPUT: «My first is 3, my second is 3! All in all, I'm 2 3.␤»
+# OUTPUT: «My first is 2, my second is 3! All in all, I'm 2 3.␤»
 
 # If you're not using the array itself, you can also keep it anonymous,
 # much like a scalar:
@@ -800,7 +800,7 @@ fst(1);    # OUTPUT: «1␤»
 
 =begin comment
 You can also destructure hashes (and classes, which you'll learn about later).
-The syntax is basically the same as 
+The syntax is basically the same as
 `%hash-name (:key($variable-to-store-value-in))`.
 The hash can stay anonymous if you only need the values you extracted.
 
@@ -842,7 +842,7 @@ my @list3 = list-of(3); #=> (0, 1, 2)
 # 6.2 Lambdas (or anonymous subroutines)
 #
 
-# You can create a lambda by using a pointy block (`-> {}`), a 
+# You can create a lambda by using a pointy block (`-> {}`), a
 # block (`{}`) or creating a `sub` without a name.
 
 my &lambda1 = -> $argument {
@@ -858,18 +858,18 @@ my &lambda3 = sub ($argument) {
 }
 
 =begin comment
-Both pointy blocks and blocks are pretty much the same thing, except that 
+Both pointy blocks and blocks are pretty much the same thing, except that
 the former can take arguments, and that the latter can be mistaken as
-a hash by the parser. That being said, blocks can declare what's known 
+a hash by the parser. That being said, blocks can declare what's known
 as placeholders parameters through the twigils `$^` (for positional
-parameters) and `$:` (for named parameters). More on them latern on.
+parameters) and `$:` (for named parameters). More on them later on.
 =end comment
 
 my &mult = { $^numbers * $:times }
 say mult 4, :times(6); #=> «24␤»
 
 # Both pointy blocks and blocks are quite versatile when working with functions
-# that accepts other functions such as `map`, `grep`, etc. For example, 
+# that accepts other functions such as `map`, `grep`, etc. For example,
 # we add 3 to each value of an array using the `map` function with a lambda:
 my @nums = 1..4;
 my @res1 = map -> $v { $v + 3 }, @nums; # pointy block, explicit parameter
@@ -1088,7 +1088,7 @@ sub call_say_dyn {
 
     # $*dyn_scoped 1 and 2 will be looked for in the call.
     say_dyn();  # OUTPUT: «25 100␤»
-    
+
     # The call to `say_dyn` uses the value of $*dyn_scoped_1 from inside
     # this sub's lexical scope even though the blocks aren't nested (they're
     # call-nested).                     
@@ -1162,7 +1162,7 @@ class Human {
 };
 
 # Create a new instance of Human class.
-# NOTE: Only attributes declared with the `.` twigil can be set via the 
+# NOTE: Only attributes declared with the `.` twigil can be set via the
 # default constructor (more later on). This constructor only accepts named
 # arguments.
 my $person1 = Human.new(
@@ -1317,7 +1317,7 @@ method on the `$_` variable to access the exception
 open 'foo' orelse say "Something happened {.exception}";
 
 # This also works:
-open 'foo' orelse say "Something happened $_"; 
+open 'foo' orelse say "Something happened $_";
 # OUTPUT: «Something happened Failed to open file foo: no such file or directory␤»
 
 =begin comment
@@ -1431,15 +1431,15 @@ use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
 say from-json('[1]').perl; # OUTPUT: «[1]␤»
 
 =begin comment
-You should not declare packages using the `package` keyword (unlike Perl 5).
+You should not declare packages using the `package` keyword (unlike Perl).
 Instead, use `class Package::Name::Here;` to declare a class, or if you only
 want to export variables/subs, you can use `module` instead.
 =end comment
 
 # If `Hello` doesn't exist yet, it'll just be a "stub", that can be redeclared
-# as something else later. 
+# as something else later.
 module Hello::World { # bracketed form
-    # declarations here 
+    # declarations here
 }
 
 # The file-scoped form which extends until the end of the file. For
@@ -1520,7 +1520,7 @@ fixed-rand for ^10; # will print the same number 10 times
 for ^5 -> $a {
     sub foo {
         # This will be a different value for every value of `$a`
-        state $val = rand; 
+        state $val = rand;
     }
     for ^5 -> $b {
         # This will print the same value 5 times, but only 5. Next iteration
@@ -1558,9 +1558,9 @@ END  { say "Runs at run time, as late as possible, only once" }
 #
 # 14.3 Block phasers
 #
-ENTER { say "[*] Runs everytime you enter a block, repeats on loop blocks" }
+ENTER { say "[*] Runs every time you enter a block, repeats on loop blocks" }
 LEAVE {
-    say "Runs everytime you leave a block, even when an exception
+    say "Runs every time you leave a block, even when an exception
     happened. Repeats on loop blocks."
 }
 
@@ -1610,7 +1610,7 @@ for ^5 {
 #
 # 14.6 Role/class phasers
 #
-COMPOSE { 
+COMPOSE {
     say "When a role is composed into a class. /!\ NOT YET IMPLEMENTED"
 }
 
@@ -1619,9 +1619,9 @@ say "This code took " ~ (time - CHECK time) ~ "s to compile";
 
 # ... or clever organization:
 class DB {
-    method start-transaction { say "Starting transation!" }
-    method commit            { say "Commiting transaction..." }
-    method rollback          { say "Something went wrong. Rollingback!" }
+    method start-transaction { say "Starting transaction!" }
+    method commit            { say "Committing transaction..." }
+    method rollback          { say "Something went wrong. Rolling back!" }
 }
 
 sub do-db-stuff {
@@ -1647,7 +1647,7 @@ braces `{` and `}`.
 =end comment
 
 #
-# 15.1 `do` - It runs a block or a statement as a term. 
+# 15.1 `do` - It runs a block or a statement as a term.
 #
 
 # Normally you cannot use a statement as a value (or "term"). `do` helps
@@ -1805,7 +1805,7 @@ sub postfix:<!>( Int $n ) {
 }
 say 5!; # OUTPUT: «120␤»
 
-# Postfix operators ('after') have to come *directly* after the term. 
+# Postfix operators ('after') have to come *directly* after the term.
 # No whitespace. You can use parentheses to disambiguate, i.e. `(5!)!`
 
 sub infix:<times>( Int $n, Block $r ) { # infix ('between')
@@ -1898,7 +1898,7 @@ say [+] (); # OUTPUT: «0␤», empty sum
 say [//];   # OUTPUT: «(Any)␤»
             # There's no "default value" for `//`.
 
-# You can also use it with a function you made up, 
+# You can also use it with a function you made up,
 # You can also surround  using double brackets:
 sub add($a, $b) { $a + $b }
 say [[&add]] 1, 2, 3; # OUTPUT: «6␤»
@@ -2078,19 +2078,19 @@ say so 'abc' ~~ / a  b+  c /;    # OUTPUT: «True␤», one is enough
 say so 'abbbbc' ~~ / a  b+  c /; # OUTPUT: «True␤», matched 4 "b"s
 
 # `*` - zero or more matches
-say so 'ac' ~~ / a  b*  c /;     # OUTPU: «True␤», they're all optional
-say so 'abc' ~~ / a  b*  c /;    # OUTPU: «True␤»
-say so 'abbbbc' ~~ / a  b*  c /; # OUTPU: «True␤»
-say so 'aec' ~~ / a  b*  c /;    # OUTPU: «False␤», "b"(s) are optional, not replaceable.
+say so 'ac' ~~ / a  b*  c /;     # OUTPUT: «True␤», they're all optional
+say so 'abc' ~~ / a  b*  c /;    # OUTPUT: «True␤»
+say so 'abbbbc' ~~ / a  b*  c /; # OUTPUT: «True␤»
+say so 'aec' ~~ / a  b*  c /;    # OUTPUT: «False␤», "b"(s) are optional, not replaceable.
 
 # `**` - (Unbound) Quantifier
 # If you squint hard enough, you might understand why exponentation is used
 # for quantity.
-say so 'abc' ~~ / a  b**1  c /;         # OUTPU: «True␤», exactly one time
-say so 'abc' ~~ / a  b**1..3  c /;      # OUTPU: «True␤», one to three times
-say so 'abbbc' ~~ / a  b**1..3  c /;    # OUTPU: «True␤»
-say so 'abbbbbbc' ~~ / a  b**1..3  c /; # OUTPU: «Fals␤», too much
-say so 'abbbbbbc' ~~ / a  b**3..*  c /; # OUTPU: «True␤», infinite ranges are ok
+say so 'abc' ~~ / a  b**1  c /;         # OUTPUT: «True␤», exactly one time
+say so 'abc' ~~ / a  b**1..3  c /;      # OUTPUT: «True␤», one to three times
+say so 'abbbc' ~~ / a  b**1..3  c /;    # OUTPUT: «True␤»
+say so 'abbbbbbc' ~~ / a  b**1..3  c /; # OUTPUT: «Fals␤», too much
+say so 'abbbbbbc' ~~ / a  b**3..*  c /; # OUTPUT: «True␤», infinite ranges are ok
 
 #
 # 18.2 `<[]>` - Character classes
@@ -2150,7 +2150,7 @@ say so 'fooABCABCbar' ~~ / foo ( 'A' <[A..Z]> 'C' ) + bar /; # OUTPUT: «True␤
 say $/;    # Will either print the matched object or `Nil` if nothing matched.
 
 # As we also said before, it has array indexing:
-say $/[0]; # OUTPUT: «｢ABC｣ ｢ABC｣␤», 
+say $/[0]; # OUTPUT: «｢ABC｣ ｢ABC｣␤»,
 
 # The corner brackets (｢..｣) represent (and are) `Match` objects. In the
 # previous example, we have an array of them.
@@ -2202,8 +2202,8 @@ say $/[0].list.perl; # OUTPUT: «(Match.new(...),).list␤»
 
 # Alternation - the `or` of regexes
 # WARNING: They are DIFFERENT from PCRE regexps.
-say so 'abc' ~~ / a [ b | y ] c /; # OUTPU: «True␤», Either "b" or "y".
-say so 'ayc' ~~ / a [ b | y ] c /; # OUTPU: «True␤», Obviously enough...
+say so 'abc' ~~ / a [ b | y ] c /; # OUTPUT: «True␤», Either "b" or "y".
+say so 'ayc' ~~ / a [ b | y ] c /; # OUTPUT: «True␤», Obviously enough...
 
 # The difference between this `|` and the one you're used to is
 # LTM ("Longest Token Matching") strategy. This means that the engine will
@@ -2218,7 +2218,7 @@ To decide which part is the "longest", it first splits the regex in two parts:
     yet introduced), literals, characters classes and quantifiers.
 
     * The "procedural part" includes everything else: back-references,
-    code assertions, and other things that can't traditionnaly be represented
+    code assertions, and other things that can't traditionally be represented
     by normal regexps.
 
 Then, all the alternatives are tried at once, and the longest wins.
@@ -2268,7 +2268,7 @@ while its absence falseness). For example:
 
     # convert to IO object to check the file exists
     subset File of Str where *.IO.d;
-    
+
     multi MAIN('add', $key, $value, Bool :$replace) { ... }
     multi MAIN('remove', $key) { ... }
     multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
@@ -2358,7 +2358,7 @@ side, once its left side changed:
 
 # In this case the right-hand-side wasn't tested until `$_` became "C"
 # (and thus did not match instantly).
-.say if 'B' fff 'B' for <A B C B A>; #=> «B C B␤», 
+.say if 'B' fff 'B' for <A B C B A>; #=> «B C B␤»,
 
 # A flip-flop can change state as many times as needed:
 for <test start print it stop not printing start print again stop not anymore> {
@@ -2392,21 +2392,20 @@ resource on Raku. If you are looking for something, use the search bar.
 This will give you a dropdown menu of all the pages referencing your search
 term (Much better than using Google to find Raku documents!).
 
-- Read the [Raku Advent Calendar](http://perl6advent.wordpress.com/). This
+- Read the [Raku Advent Calendar](https://rakuadventcalendar.wordpress.com/). This
 is a great source of Raku snippets and explanations. If the docs don't
 describe something well enough, you may find more detailed information here.
 This information may be a bit older but there are many great examples and
 explanations. Posts stopped at the end of 2015 when the language was declared
-stable and Raku 6.c was released.
+stable and `Raku v6.c` was released.
 
-- Come along on `#raku` at `irc.freenode.net`. The folks here are
+- Come along on `#raku` at [`irc.freenode.net`](https://webchat.freenode.net/?channels=#raku). The folks here are
 always helpful.
 
 - Check the [source of Raku's functions and
-classes](https://github.com/rakudo/rakudo/tree/nom/src/core). Rakudo is
+classes](https://github.com/rakudo/rakudo/tree/master/src/core.c). Rakudo is
 mainly written in Raku (with a lot of NQP, "Not Quite Perl", a Raku subset
 easier to implement and optimize).
 
 - Read [the language design documents](https://design.raku.org/). They explain
 Raku from an implementor point-of-view, but it's still very interesting.
-

@@ -633,6 +633,6 @@ module NetCompatibilityExamples =
 
 ## More Information
 
-For more demonstrations of F#, go to the [Try F#](http://www.tryfsharp.org/Learn) site, or my [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) series.
+For more demonstrations of F#, go to my [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) series.
 
-Read more about F# at [fsharp.org](http://fsharp.org/).
+Read more about F# at [fsharp.org](http://fsharp.org/) and [dotnet's F# page](https://dotnet.microsoft.com/languages/fsharp).

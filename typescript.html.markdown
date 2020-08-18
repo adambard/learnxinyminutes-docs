@@ -114,7 +114,7 @@ class Point {
   }
 
   // Functions
-  dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
+  dist(): number { return Math.sqrt(this.x * this.x + this.y * this.y); }
 
   // Static members
   static origin = new Point(0, 0);
@@ -137,7 +137,7 @@ class Point3D extends Point {
   }
 
   // Overwrite
-  dist() {
+  dist(): number {
     let d = super.dist();
     return Math.sqrt(d * d + this.z * this.z);
   }
@@ -257,8 +257,24 @@ for (const i in list) {
    console.log(i); // 0, 1, 2
 }
 
+// Type Assertion
 
+let foo = {} // Creating foo as an empty object
+foo.bar = 123 // Error: property 'bar' does not exist on `{}`
+foo.baz = 'hello world' // Error: property 'baz' does not exist on `{}`
 
+// Because the inferred type of foo is `{}` (an object with 0 properties), you 
+// are not allowed to add bar and baz to it. However with type assertion,
+// the following will pass:
+
+interface Foo { 
+  bar: number;
+  baz: string;
+}
+
+let foo = {} as Foo; // Type assertion here
+foo.bar = 123;
+foo.baz = 'hello world'
 
 ```
 
