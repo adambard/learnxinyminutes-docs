@@ -169,11 +169,11 @@ insect-friend  # => bee
 
 # Create them:
 (defn mult-by-2
-  ```First line of docstring.
+  ``First line of docstring.
 
   Some more of the docstring.
 
-  Possibly more!```
+  Possibly more!``
   [x]
   (print "Hi.")
   (print "Will compute using: " x)
