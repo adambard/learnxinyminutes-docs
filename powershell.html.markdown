@@ -18,7 +18,7 @@ rather than plain text. After years of evolving, it resembles Python a bit.
 
 [Read more here.](https://docs.microsoft.com/powershell/scripting/overview)
 
-Powershell as a Language:
+<H3>Powershell as a Language:</H3>
 
 ```powershell
 
@@ -116,6 +116,8 @@ $False - 5   # => -5
 
 # (-is vs. -eq) -is checks if two objects are the same type
 # -eq checks if the objects have the same values.
+# Note: we called '[Math]' from .NET previously without the preceeding
+# namespaces. We can do the same with [Collections.ArrayList] if preferred
 [System.Collections.ArrayList]$a = @()  # Point a at a new list
 $a = (1,2,3,4)
 $b = $a                                 # => Point b at what a is pointing to
@@ -541,7 +543,7 @@ True     False    Guitar                                   Instrument
 ## 7. Advanced
 ####################################################
 
-# The powershell pipeline allows us to do things like High-Order Functions
+# The powershell pipeline allows things like High-Order Functions
 
 # Group Object is a handy command that does incredible things for us
 # It works much like a GROUP BY in SQL would
@@ -553,6 +555,16 @@ True     False    Guitar                                   Instrument
  Tip: Chrome and svcHost are usually big numbers in this regard
 #>
 Get-Process | Foreach-Object ProcessName | Group-Object
+
+# Useful pipeline examples are iteration and filtering
+1..10 | ForEach-Object { "Loop number $PSITEM" }
+1..10 | where {$PSITEM -gt 5} | Format-Table
+
+# A noteable pitfall of the pipeline is it's performance when
+# compared with other options
+# additionally, raw bytes are not passed through the piipeline
+# so passing an image causes some issues
+# See more on that in the links at the bottom
 
 <#
  Asynchronous functions exist in the form of jobs
@@ -633,7 +645,7 @@ function Format-Range ($start, $end) {
 
 Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m','n'
 ```
-Powershell as a Tool:
+<H3>Powershell as a Tool:</H3>
 
 Getting Help:
 
@@ -647,7 +659,7 @@ Get-Alias -Definition Get-Process
 Get-Help ps | less # alias: help
 ps | Get-Member # alias: gm
 
-Show-Command Get-EventLog # Display GUI to fill in the parameters
+Show-Command Get-WinEvent # Display GUI to fill in the parameters
 
 Update-Help # Run as admin
 ```
@@ -668,10 +680,32 @@ $PSVersionTable
 ```
 
 ```Powershell
+# Calling external commands, executables, and functions with the call operator.
+# the call operator (&) is similar to Invoke-Expression, but IEX runs in current scope.
+# Standard usage of '&' would be to invoke a scriptblock inside of your script.
+# Notice the variables are scoped
+$i = 2
+$scriptblock = { $i=5; Write-Output $i }
+& $scriptblock # => 5
+$i # => 2
+
+invoke-expression ' $i=5; Write-Output $i ' # => 5
+$i # => 5
+
+# Alternatively, to preserve changes to public variables
+# you can use "Dot-Sourcing". This will run in the current scope
+$x=1
+&{$x=2};$x # => 1
+
+. {$x=2};$x # => 2
+
+
 # Remoting into computers is easy
 Enter-PSSession -ComputerName RemoteComputer
+
 # Once remoted in, you can run commands as if you're local
 RemoteComputer\PS> Get-Process powershell
+
 <#
 Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName                                             
 -------  ------    -----      -----     ------     --  -- -----------                                             
@@ -727,7 +761,7 @@ foreach ($server in $serverList) {
 Interesting Projects  
 
 * [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell tutorials
-* [KevinMarquette's Powershell Blog](https://powershellexplained.com/) Really excellent blog that goes into great detail on Powershell
+* [KevinMarquette's Powershell Blog](https://powershellexplained.com/) Excellent blog that goes into great detail on Powershell
 * [PSGet](https://github.com/psget/psget) NuGet for PowerShell
 * [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
 * [Posh-Git](https://github.com/dahlbyk/posh-git/) Fancy Git Prompt (Recommended!)
@@ -736,3 +770,4 @@ Interesting Projects
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
 * [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
 * [PowerShell Community Extensions](https://github.com/Pscx/Pscx)
+* [More on the Powershell Pipeline Issue](https://github.com/PowerShell/PowerShell/issues/1908)
