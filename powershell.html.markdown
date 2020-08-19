@@ -18,7 +18,7 @@ rather than plain text. After years of evolving, it resembles Python a bit.
 
 [Read more here.](https://docs.microsoft.com/powershell/scripting/overview)
 
-<H3>Powershell as a Language:</H3>
+Powershell as a Language:
 
 ```powershell
 
@@ -645,7 +645,7 @@ function Format-Range ($start, $end) {
 
 Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m','n'
 ```
-<H3>Powershell as a Tool:</H3>
+Powershell as a Tool:
 
 Getting Help:
 
