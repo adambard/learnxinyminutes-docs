@@ -86,7 +86,7 @@ let miBebida = bebidas[2]
 type
   Nombre = string # Un alias de tipo te da un nuevo tipo que es intercambiable
   Edad = int      # con el tipo viejo original pero es mas descriptivo.
-  Persona = tuple[nombre: Nombre, edad: Edad] # Puedes definir estructuras de datos tambien.
+  Persona = tuple[nombre: Nombre, edad: Edad] # Puedes definir estructuras de datos también.
   OtraSintaxis = tuple
     campoUno: string
     campoDos: int
