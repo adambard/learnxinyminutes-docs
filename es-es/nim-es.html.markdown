@@ -37,7 +37,7 @@ let               # Usa let para declarar y asignar variables.
   brazos = 2_000  # _ es ignorado y es útil para números largos.
   acercaDePi = 3.15
 
-const           # Las Constantes som computadas en tiempo de compilacion. This provides
+const           # Las constantes son computadas en tiempo de compilación. Esto provee
   debug = true  # Esto provee performance y es util para expresiones en tiempo de compilacion.
   compilarCodigoMalo = false
 
