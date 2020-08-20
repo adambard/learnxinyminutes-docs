@@ -13,7 +13,7 @@ lang: es-es
 Nim es un lenguaje de programación imperativo de tipado estático,
 que le da al programador mucho poder sin comprometer la eficiencia.
 
-Nim es eficiente, expresivo, y elegante.
+Nim es eficiente, expresivo y elegante.
 
 ```nim
 # Los comentatios de una linea comienzan con un #
