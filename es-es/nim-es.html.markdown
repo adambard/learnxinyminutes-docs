@@ -16,7 +16,7 @@ que le da al programador mucho poder sin comprometer la eficiencia.
 Nim es eficiente, expresivo y elegante.
 
 ```nim
-# Los comentatios de una linea comienzan con un #
+# Los comentarios de una linea comienzan con un #
 ## La Documentacion comienza con un ##
 
 #[
