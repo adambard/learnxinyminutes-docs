@@ -149,6 +149,18 @@ $age = 22
 "{0} said he is {1} years old." -f $name, $age # => "Steve said he is 22 years old"
 "$name's name is $($name.Length) characters long." # => "Steve's name is 5 characters long."
 
+# Escape Characters in Powershell
+# Many languages use the '\', but Windows uses this character for 
+# file paths. Powershell thus uses '`' to escape characters
+# Take caution when working with files, as '`' is a
+# valid character in NTFS filenames.
+"Showing`nEscape Chars" # => new line between Showing and Escape
+"Making`tTables`tWith`tTabs" # => Format things with tabs
+
+# Negate pound sign to prevent comment
+# Note that the function of '#' is removed, but '#" is still present
+`#Get-Process # => Fail: not a recognized cmdlet
+
 # $null is not an object
 $null  # => None
 
@@ -707,19 +719,6 @@ $x=1
 &{$x=2};$x # => 1
 
 .{$x=2};$x # => 2
-
-
-# Escape Characters in Powershell
-# Many languages use the '\', but Windows uses this character for 
-# file paths. Powershell thus uses '`' to escape characters
-# Take caution when working with files, as '`' is a
-# valid character in NTFS filenames.
-"Showing`nEscape Chars" # => new line between Showing and Escape
-"Making`tTables`tWith`tTabs" # +> Format things with tabs
-
-# Negate pound sign to prevent comment
-# Note that the function of '#' is removed, but '#" is still present
-`#Get-Process # => Fail: not a recognized cmdlet
 
 
 # Remoting into computers is easy
