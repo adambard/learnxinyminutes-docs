@@ -262,7 +262,7 @@ of aNo:
 # FFI
 #
 
-# Nim compila a C, por tal motivo el FFI es muy facil:
+# Nim compila a C, por tal motivo el FFI es muy fácil:
 
 proc strcmp(a, b: cstring): cint {.importc: "strcmp", nodecl.}
 
