@@ -34,7 +34,7 @@ var                      # Declarar (y asignar) variables,
 
 let               # Usa let para declarar y asignar variables.
   piernas = 400   # piernas es immutable por que usa let.
-  brazos = 2_000  # _ es ignorado y es util para numeros largos.
+  brazos = 2_000  # _ es ignorado y es útil para números largos.
   acercaDePi = 3.15
 
 const           # Las Constantes som computadas en tiempo de compilacion. This provides
