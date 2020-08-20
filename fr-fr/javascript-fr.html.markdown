@@ -1,12 +1,12 @@
 ---
 language: javascript
 contributors:
-    - ['Leigh Brenecki', 'https://leigh.net.au']
-    - ['Ariel Krakowski', 'http://www.learneroo.com']
+    - ["Leigh Brenecki", "https://leigh.net.au"]
+    - ["Ariel Krakowski", "http://www.learneroo.com"]
 filename: javascript-fr.js
 translators:
-    - ['@nbrugneaux', 'https://nicolasbrugneaux.me']
-    - ['Michel Antoine', 'https://github.com/antoin-m']
+    - ["@nbrugneaux", "https://nicolasbrugneaux.me"]
+    - ["Michel Antoine", "https://github.com/antoin-m"]
 lang: fr-fr
 ---
 
@@ -328,13 +328,15 @@ for (var x in person){
 }
 description; // = "Paul Ken 18 "
 
-// *ES6:* La boucle for...of permet d'itérer sur les propriétés d'un objet
-var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18};
-for (var x of person){
-    description += x + " ";
+// *ES6:* La boucle for...of permet de parcourir un objet itérable
+// (ce qui inclut les objets Array, Map, Set, String, ... Mais pas un objet littéral !)
+let myPets = "";
+const pets = ["cat", "dog", "hamster", "hedgehog"];
+for (let pet of pets){ //`(const pet of pets)` est également possible
+
+    myPets += pet + " ";
 }
-description; // = "Paul Ken 18 "
+myPets; // = 'cat dog hamster hedgehog '
 
 // && est le "et" logique, || est le "ou" logique
 if (house.size === 'big' && house.colour === 'blue'){
