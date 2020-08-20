@@ -29,6 +29,7 @@ Powershell as a Language:
   like so
 #>
 
+
 ####################################################
 ## 1. Primitive Datatypes and Operators
 ####################################################
@@ -191,6 +192,7 @@ $someVariable  # => 5
 # Ternary Operators exist in Powershell 7 and up
 0 ? 'yes' : 'no'  # => no
 
+
 # The default array object in Powershell is an fixed length array
 $defaultArray = "thing","thing2","thing3"
 # you can add objects with '+=', but cannot remove objects
@@ -282,8 +284,6 @@ $filledHash["one"]  # => 1
 # items maintain the order at which they are inserted into the dictionary.
 $filledHash.keys  # => ["one", "two", "three"]
 
-
-
 # Get all values as an iterable with ".Values".
 $filledHash.values  # => [1, 2, 3]
 
@@ -301,7 +301,6 @@ $filledHash["four"] = 4 # $filledHash["four"] is set to 4, run again and it does
 
 # Remove keys from a dictionary with del
 $filledHash.Remove("one") # Removes the key "one" from filled dict
-
 
 
 ####################################################
@@ -403,7 +402,6 @@ $contents | Out-File "$env:HOMEDRIVE\file.txt" # writes to another file
 Get-Content "$env:HOMEDRIVE\file.csv" | ConvertTo-Json
 
 
-
 ####################################################
 ## 4. Functions
 ####################################################
@@ -484,7 +482,6 @@ Get-Command -module dbaTools
 Get-Help dbaTools -Full
 
 
-
 ####################################################
 ## 6. Classes
 ####################################################
@@ -538,7 +535,6 @@ True     False    Guitar                                   Instrument
 #>
 
 
-
 ####################################################
 ## 7. Advanced
 ####################################################
@@ -558,13 +554,13 @@ Get-Process | Foreach-Object ProcessName | Group-Object
 
 # Useful pipeline examples are iteration and filtering
 1..10 | ForEach-Object { "Loop number $PSITEM" }
-1..10 | where {$PSITEM -gt 5} | Format-Table
+1..10 | Where-Object { $PSITEM -gt 5 } | ConvertTo-Json
 
 # A noteable pitfall of the pipeline is it's performance when
 # compared with other options
-# additionally, raw bytes are not passed through the piipeline
+# Additionally, raw bytes are not passed through the pipeline
 # so passing an image causes some issues
-# See more on that in the links at the bottom
+# See more on that in the link at the bottom
 
 <#
  Asynchronous functions exist in the form of jobs
