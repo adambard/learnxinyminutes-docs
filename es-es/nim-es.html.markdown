@@ -45,7 +45,7 @@ when compilarCodigoMalo:           # `when` es un `if` en tiempo de compilación
   piernas = piernas + 1            # Esto es un error y no compilara.
   const entrada = readLine(stdin)  # Los valores de las const deben ser conocidos en tiempo de compilacion.
 
-discard 1 > 2 # Nota: El compilador se quejara si el resultado de una expresion
+discard 1 > 2 # Nota: El compilador se quejara si el resultado de una expresión
               # no es usado. `discard` puede evitar esto.
 
 
