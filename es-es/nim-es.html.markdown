@@ -269,7 +269,7 @@ proc strcmp(a, b: cstring): cint {.importc: "strcmp", nodecl.}
 let cmp = strcmp("C?", "Facil!")
 ```
 
-Adicionalmente, Nim se diferencia del resto por su metaprogramacion,
+Adicionalmente, Nim se diferencia del resto por su metaprogramación,
 performance, y caracteristicas de ejecucion de codigo en tiempo de compilacion.
 
 
