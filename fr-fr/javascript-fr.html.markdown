@@ -332,7 +332,7 @@ description; // = "Paul Ken 18 "
 // (ce qui inclut les objets Array, Map, Set, String, ... Mais pas un objet littéral !)
 let myPets = "";
 const pets = ["cat", "dog", "hamster", "hedgehog"];
-for (let pet of pets){ //`(const pet of pets)` is also possible
+for (let pet of pets){ //`(const pet of pets)` est également possible
 
     myPets += pet + " ";
 }
