@@ -193,7 +193,7 @@ var
 
 while adivinado != numero:
   adivinado_crudo = readLine(stdin)
-  if adivinado_crudo == "": continue  # continue saltea esta iteracion.
+  if adivinado_crudo == "": continue  # Omite esta iteración.
   adivinado = str.parseInt(adivinado_crudo)
   if adivinado == 1001:
     echo "AAAAAAGGG!"
