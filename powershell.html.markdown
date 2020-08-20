@@ -43,9 +43,10 @@ Powershell as a Language:
 10 * 2  # => 20
 35 / 5  # => 7.0
 
-# Powershell uses banker's rounding
-# Meaning [int]1.5 would round to 2 but so would [int]2.5
-# division always returns a float. You must cast result to [int] to round
+# Powershell uses banker's rounding,
+# meaning [int]1.5 would round to 2 but so would [int]2.5
+# Division always returns a float. 
+# You must cast result to [int] to round.
 [int]5 / [int]3       # => 1.66666666666667
 [int]-5 / [int]3      # => -1.66666666666667
 5.0 / 3.0   # => 1.66666666666667
@@ -55,10 +56,10 @@ Powershell as a Language:
 # Modulo operation
 7 % 3  # => 1
 
-# Exponentiation requires longform or the built-in [Math] class
+# Exponentiation requires longform or the built-in [Math] class.
 [Math]::Pow(2,3)  # => 8
 
-# Enforce order of operations with parentheses
+# Enforce order of operations with parentheses.
 1 + 3 * 2  # => 7
 (1 + 3) * 2  # => 8
 
@@ -75,20 +76,20 @@ $False  # => False
 $True -and $False  # => False
 $False -or $True   # => True
 
-# True and False are actually 1 and 0 but only support limited arithmetic
-# However, casting the bool to int resolves this
+# True and False are actually 1 and 0 but only support limited arithmetic.
+# However, casting the bool to int resolves this.
 $True + $True # => 2
 $True * 8    # => '[System.Boolean] * [System.Int32]' is undefined
 [int]$True * 8 # => 8
 $False - 5   # => -5
 
-# Comparison operators look at the numerical value of True and False
+# Comparison operators look at the numerical value of True and False.
 0 -eq $False  # => True
 1 -eq $True   # => True
 2 -eq $True   # => False
 -5 -ne $False # => True
 
-# Using boolean logical operators on ints casts them to booleans for evaluation
+# Using boolean logical operators on ints casts to booleans for evaluation.
 # but their non-cast value is returned
 # Don't mix up with bool(ints) and bitwise -band/-bor
 [bool](0)     # => False
@@ -115,10 +116,10 @@ $False - 5   # => -5
 1 -lt 2 -and 2 -lt 3  # => True
 2 -lt 3 -and 3 -lt 2  # => False
 
-# (-is vs. -eq) -is checks if two objects are the same type
+# (-is vs. -eq) -is checks if two objects are the same type.
 # -eq checks if the objects have the same values.
 # Note: we called '[Math]' from .NET previously without the preceeding
-# namespaces. We can do the same with [Collections.ArrayList] if preferred
+# namespaces. We can do the same with [Collections.ArrayList] if preferred.
 [System.Collections.ArrayList]$a = @()  # Point a at a new list
 $a = (1,2,3,4)
 $b = $a                                 # => Point b at what a is pointing to
@@ -142,12 +143,15 @@ $b -is $a.GetType()                     # => False, a and b types not equal
 # You can find the length of a string
 ("This is a string").Length  # => 16
 
-# You can also format using f-strings or formatted string literals
+# You can also format using f-strings or formatted string literals.
 $name = "Steve"
 $age = 22
-"He said his name is $name." # => "He said his name is Steve"
-"{0} said he is {1} years old." -f $name, $age # => "Steve said he is 22 years old"
-"$name's name is $($name.Length) characters long." # => "Steve's name is 5 characters long."
+"He said his name is $name." 
+# => "He said his name is Steve"
+"{0} said he is {1} years old." -f $name, $age 
+# => "Steve said he is 22 years old"
+"$name's name is $($name.Length) characters long." 
+# => "Steve's name is 5 characters long."
 
 # Escape Characters in Powershell
 # Many languages use the '\', but Windows uses this character for 
@@ -166,7 +170,7 @@ $null  # => None
 
 # $null, 0, and empty strings and arrays all evaluate to False.
 # All other values are True
-function test ($value) {
+function Test-Value ($value) {
   if ($value) {
     Write-Output 'True'
   }
@@ -175,12 +179,13 @@ function test ($value) {
   }
 }
 
-test ($null) # => False
-test (0)   # => False
-test ("")  # => False
-test []  # => True *[] calls .NET classes; creates '[]' string when passed to func
-test ({})  # => True
-test @()  # => False
+Test-Value ($null) # => False
+Test-Value (0)     # => False
+Test-Value ("")    # => False
+Test-Value []      # => True 
+# *[] calls .NET class; creates '[]' string when passed to function
+Test-Value ({})    # => True
+Test-Value @()     # => False
 
 
 ####################################################
@@ -205,9 +210,9 @@ $someVariable  # => 5
 0 ? 'yes' : 'no'  # => no
 
 
-# The default array object in Powershell is an fixed length array
+# The default array object in Powershell is an fixed length array.
 $defaultArray = "thing","thing2","thing3"
-# you can add objects with '+=', but cannot remove objects
+# you can add objects with '+=', but cannot remove objects.
 $defaultArray.Add("thing4") # => Exception "Collection was of a fixed size."
 # To have a more workable array, you'll want the .NET [ArrayList] class
 # It is also worth noting that ArrayLists are significantly faster
@@ -217,12 +222,12 @@ $defaultArray.Add("thing4") # => Exception "Collection was of a fixed size."
 # You can start with a prefilled ArrayList
 [System.Collections.ArrayList]$otherArray = @(4, 5, 6)
 
-# Add stuff to the end of a list with add (Note: it produces output, so append to $null)
-$array.add(1) > $null    # $array is now [1]
-$array.add(2) > $null    # $array is now [1, 2]
-$array.add(4) > $null    # $array is now [1, 2, 4]
-$array.add(3) > $null    # $array is now [1, 2, 4, 3]
-# Remove from the end with index of count of objects-1 as arrays are indexed starting 0
+# Add to the end of a list with 'Add' (Note: produces output, append to $null)
+$array.Add(1) > $null    # $array is now [1]
+$array.Add(2) > $null    # $array is now [1, 2]
+$array.Add(4) > $null    # $array is now [1, 2, 4]
+$array.Add(3) > $null    # $array is now [1, 2, 4, 3]
+# Remove from end with index of count of objects-1; array index starts at 0
 $array.RemoveAt($array.Count-1) # => 3 and array is now [1, 2, 4]
 # Let's put it back
 $array.Add(3) > $null   # array is now [1, 2, 4, 3] again.
@@ -265,24 +270,24 @@ $array.AddRange($otherArray)  # Now $array is [1, 2, 3, 4, 5, 6]
 # Check for existence in a array with "in"
 1 -in $array  # => True
 
-# Examine the length with "Count" (Note: Length method on arrayList = each items length)
+# Examine length with "Count" (Note: "Length" on arrayList = each items length)
 $array.Count  # => 6
 
 
 # Tuples are like arrays but are immutable.
-# To use Tuples in powershell, you must use the .NET tuple class
+# To use Tuples in powershell, you must use the .NET tuple class.
 $tuple = [System.Tuple]::Create(1, 2, 3)
 $tuple.Item(0)      # => 1
 $tuple.Item(0) = 3  # Raises a TypeError
 
-# You can do some of the array methods on tuples, but they are limited
-$tuple.Length         # => 3
+# You can do some of the array methods on tuples, but they are limited.
+$tuple.Length       # => 3
 $tuple + (4, 5, 6)  # => Exception
-$tuple[0..2]          # => $null
+$tuple[0..2]        # => $null
 2 -in $tuple        # => False
 
 
-# Hashtables store mappings from keys to values, similar to Dictionaries
+# Hashtables store mappings from keys to values, similar to Dictionaries.
 $emptyHash = @{}
 # Here is a prefilled dictionary
 $filledHash = @{"one"= 1 
@@ -294,14 +299,14 @@ $filledHash["one"]  # => 1
 
 # Get all keys as an iterable with ".Keys".
 # items maintain the order at which they are inserted into the dictionary.
-$filledHash.keys  # => ["one", "two", "three"]
+$filledHash.Keys  # => ["one", "two", "three"]
 
 # Get all values as an iterable with ".Values".
-$filledHash.values  # => [1, 2, 3]
+$filledHash.Values  # => [1, 2, 3]
 
 # Check for existence of keys or values in a hash with "-in"
 "one" -in $filledHash.Keys  # => True
-1 -in $filledHash.Values      # => False
+1 -in $filledHash.Values    # => False
 
 # Looking up a non-existing key returns $null
 $filledHash["four"]  # $null
@@ -309,7 +314,7 @@ $filledHash["four"]  # $null
 # Adding to a dictionary
 $filledHash.Add("five",5)  # $filledHash["five"] is set to 5
 $filledHash.Add("five",6)  # exception "Item with key "five" has already been added"
-$filledHash["four"] = 4 # $filledHash["four"] is set to 4, run again and it does nothing
+$filledHash["four"] = 4 # $filledHash["four"] is set to 4, running again does nothing
 
 # Remove keys from a dictionary with del
 $filledHash.Remove("one") # Removes the key "one" from filled dict
@@ -428,8 +433,8 @@ Add-Numbers 1 2 # => 3
 
 # Calling functions with parameters
 function Add-ParamNumbers {
- param( [int]$FirstNumber, [int]$SecondNumber )
- $FirstNumber + $SecondNumber
+ param( [int]$firstNumber, [int]$secondNumber )
+ $firstNumber + $secondNumber
 }
 
 Add-ParamNumbers -FirstNumber 1 -SecondNumber 2 # => 3 
@@ -457,9 +462,9 @@ function New-Website() {
         [ValidateSet(3000,5000,8000)]
         [int]$port = 3000
     )
-    BEGIN { Write-Verbose 'Creating new website(s)' }
+    BEGIN { Write-Output 'Creating new website(s)' }
     PROCESS { Write-Output "name: $siteName, port: $port" }
-    END { Write-Verbose 'Website(s) created' }
+    END { Write-Output 'Website(s) created' }
 }
 
 
@@ -521,8 +526,8 @@ String Instrument Plucked String
 ## 6.1 Inheritance
 ####################################################
 
-# Inheritance allows new child classes to be defined that inherit methods and
-# variables from their parent class.
+# Inheritance allows new child classes to be defined that inherit 
+# methods and variables from their parent class.
 
 class Guitar : Instrument
 {
@@ -533,9 +538,9 @@ class Guitar : Instrument
 }
 
 $myGuitar = [Guitar]::new()
-$myGuitar.Brand = "Taylor"
-$myGuitar.SubType = "Acoustic"
-$myGuitar.ModelType = "Presentation"
+$myGuitar.Brand       = "Taylor"
+$myGuitar.SubType     = "Acoustic"
+$myGuitar.ModelType   = "Presentation"
 $myGuitar.ModelNumber = "PS14ce Blackwood"
 
 $myGuitar.GetType()
@@ -551,67 +556,68 @@ True     False    Guitar                                   Instrument
 ## 7. Advanced
 ####################################################
 
-# The powershell pipeline allows things like High-Order Functions
+# The powershell pipeline allows things like High-Order Functions.
 
-# Group Object is a handy command that does incredible things for us
-# It works much like a GROUP BY in SQL would
+# Group-Object is a handy cmdlet that does incredible things.
+# It works much like a GROUP BY in SQL.
 
 <#
- The following will get all the running processes
- Group them by Name
- And tell us how many instances of each process we have running
- Tip: Chrome and svcHost are usually big numbers in this regard
+ The following will get all the running processes,
+ group them by Name,
+ and tell us how many instances of each process we have running.
+ Tip: Chrome and svcHost are usually big numbers in this regard.
 #>
 Get-Process | Foreach-Object ProcessName | Group-Object
 
-# Useful pipeline examples are iteration and filtering
+# Useful pipeline examples are iteration and filtering.
 1..10 | ForEach-Object { "Loop number $PSITEM" }
 1..10 | Where-Object { $PSITEM -gt 5 } | ConvertTo-Json
 
-# A noteable pitfall of the pipeline is it's performance when
-# compared with other options
-# Additionally, raw bytes are not passed through the pipeline
-# so passing an image causes some issues
-# See more on that in the link at the bottom
+# A notable pitfall of the pipeline is it's performance when
+# compared with other options.
+# Additionally, raw bytes are not passed through the pipeline,
+# so passing an image causes some issues.
+# See more on that in the link at the bottom.
 
 <#
- Asynchronous functions exist in the form of jobs
- Typically a procedural language
- Powershell can operate many non-blocking functions when invoked as Jobs
+ Asynchronous functions exist in the form of jobs.
+ Typically a procedural language,
+ Powershell can operate non-blocking functions when invoked as Jobs.
 #>
 
-# This function is commonly known to be non-optimized, and therefore slow
+# This function is known to be non-optimized, and therefore slow.
 $installedApps = Get-CimInstance -ClassName Win32_Product
 
-# If we had a script, it would hang at this func for a period of time
+# If we had a script, it would hang at this func for a period of time.
 $scriptBlock = {Get-CimInstance -ClassName Win32_Product}
 Start-Job -ScriptBlock $scriptBlock
 
-# This will start a background job that runs the command
-# You can then obtain the status of jobs and their returned results
+# This will start a background job that runs the command.
+# You can then obtain the status of jobs and their returned results.
 $allJobs = Get-Job
-$JobResponse = Get-Job | Receive-Job
+$jobResponse = Get-Job | Receive-Job
 
 
-# Math is built in to powershell and has many functions
+# Math is built in to powershell and has many functions.
 $r=2
 $pi=[math]::pi
 $r2=[math]::pow( $r, 2 )
-$Area = $pi*$r2
-$Area
+$area = $pi*$r2
+$area
 
-# To see all possibilities, check the members
+# To see all possibilities, check the members.
 [System.Math] | Get-Member -Static -MemberType All
 
+
 <#
- This is a silly one
+ This is a silly one:
  You may one day be asked to create a func that could take $start and $end
  and reverse anything in an array within the given range
- based on an arbitrary array without mutating the original array
- Let's see one way to do that and introduce another data structure
+ based on an arbitrary array without mutating the original array.
+ Let's see one way to do that and introduce another data structure.
 #>
 
-$targetArray = 'a','b','c','d','e','f','g','h','i','j','k','l','m','n'
+$targetArray = 'a','b','c','d','e','f','g','h','i','j','k','l','m'
 
 function Format-Range ($start, $end) {
 [System.Collections.ArrayList]$firstSectionArray = @()
@@ -628,16 +634,16 @@ function Format-Range ($start, $end) {
             $secondSectionArray.Add($targetArray[$index]) > $null
         }
     }
-    $returnArray = $firstSectionArray + $stack.ToArray() + $secondSectionArray
-    Write-Output $returnArray
+    $finalArray = $firstSectionArray + $stack.ToArray() + $secondSectionArray
+    Write-Output $finalArray
 }
 
-Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m','n'
+Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m'
 
-# The previous method works, but it uses extra memory by allocating new arrays
-# It's also kind of lengthy
-# Let's see how we can do this without allocating a new array
-# This is slightly faster as well
+# The previous method works, but uses extra memory by allocating new arrays.
+# It's also kind of lengthy.
+# Let's see how we can do this without allocating a new array.
+# This is slightly faster as well.
 
 function Format-Range ($start, $end) {
   while ($start -lt $end)
@@ -651,7 +657,7 @@ function Format-Range ($start, $end) {
   return $targetArray
 }
 
-Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m','n'
+Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m'
 ```
 Powershell as a Tool:
 
@@ -688,22 +694,26 @@ $PSVersionTable
 ```
 
 ```Powershell
-# Calling external commands, executables, and functions with the call operator.
-# Executables with arguments passed create issues
+# Calling external commands, executables, 
+# and functions with the call operator.
+# Exe paths with arguments passed or containing spaces can create issues.
 C:\Program Files\dotnet\dotnet.exe
-The term 'C:\Program' is not recognized as a name of a cmdlet, function, script file, or executable program.
-Check the spelling of the name, or if a path was included, verify that the path is correct and try again
+# The term 'C:\Program' is not recognized as a name of a cmdlet,
+# function, script file, or executable program.
+# Check the spelling of the name, or if a path was included, 
+# verify that the path is correct and try again
 
 "C:\Program Files\dotnet\dotnet.exe"
-C:\Program Files\dotnet\dotnet.exe    # returns the string rather than execute it
+C:\Program Files\dotnet\dotnet.exe    # returns string rather than execute
 
 &"C:\Program Files\dotnet\dotnet.exe --help"   # fail
 &"C:\Program Files\dotnet\dotnet.exe" --help   # success
 # Alternatively, you can use dot-sourcing here
 ."C:\Program Files\dotnet\dotnet.exe" --help   # success
 
-# the call operator (&) is similar to Invoke-Expression, but IEX runs in current scope.
-# Standard usage of '&' would be to invoke a scriptblock inside of your script.
+# the call operator (&) is similar to Invoke-Expression, 
+# but IEX runs in current scope.
+# One usage of '&' would be to invoke a scriptblock inside of your script.
 # Notice the variables are scoped
 $i = 2
 $scriptblock = { $i=5; Write-Output $i }
@@ -714,17 +724,17 @@ invoke-expression ' $i=5; Write-Output $i ' # => 5
 $i # => 5
 
 # Alternatively, to preserve changes to public variables
-# you can use "Dot-Sourcing". This will run in the current scope
+# you can use "Dot-Sourcing". This will run in the current scope.
 $x=1
 &{$x=2};$x # => 1
 
 .{$x=2};$x # => 2
 
 
-# Remoting into computers is easy
+# Remoting into computers is easy.
 Enter-PSSession -ComputerName RemoteComputer
 
-# Once remoted in, you can run commands as if you're local
+# Once remoted in, you can run commands as if you're local.
 RemoteComputer\PS> Get-Process powershell
 
 <#
@@ -736,10 +746,10 @@ Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
 RemoteComputer\PS> Exit-PSSession
 
 <#
- Powershell is an incredible tool for Windows management and Automation
- Let's take the following scenario
- You have 10 servers
- You need to check whether a service is running on all of them
+ Powershell is an incredible tool for Windows management and Automation.
+ Let's take the following scenario:
+ You have 10 servers.
+ You need to check whether a service is running on all of them.
  You can RDP and log in, or PSSession to all of them, but why?
  Check out the following
 #>
@@ -757,24 +767,24 @@ $serverList = @(
     'server10'
 )
 
-[scriptblock]$Script = {
+[scriptblock]$script = {
     Get-Service -DisplayName 'Task Scheduler'
 }
 
 foreach ($server in $serverList) {
-    $CmdSplat = @{
-        ComputerName  = $Server
+    $cmdSplat = @{
+        ComputerName  = $server
         JobName       = 'checkService'
-        ScriptBlock   = $Script
+        ScriptBlock   = $script
         AsJob         = $true
         ErrorAction   = 'SilentlyContinue'
     }
-    Invoke-Command @CmdSplat | Out-Null
+    Invoke-Command @cmdSplat | Out-Null
 }
 
 <#
- Here we've invoked jobs across many servers
- We can now Receive-Job and see if they're all running
+ Here we've invoked jobs across many servers.
+ We can now Receive-Job and see if they're all running.
  Now scale this up 100x as many servers :)
 #>
 ```
