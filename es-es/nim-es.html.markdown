@@ -41,7 +41,7 @@ const           # Las constantes son computadas en tiempo de compilación. Esto 
   debug = true  # rendimiento y es útil para expresiones en tiempo de compilación.
   compilarCodigoMalo = false
 
-when compilarCodigoMalo:           # `when` es un `if` en tiempo de compilacion.
+when compilarCodigoMalo:           # `when` es un `if` en tiempo de compilación.
   piernas = piernas + 1            # Esto es un error y no compilara.
   const entrada = readLine(stdin)  # Los valores de las const deben ser conocidos en tiempo de compilacion.
 
