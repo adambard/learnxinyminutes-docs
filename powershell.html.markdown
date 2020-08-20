@@ -122,7 +122,7 @@ $False - 5   # => -5
 [System.Collections.ArrayList]$a = @()  # Point a at a new list
 $a = (1,2,3,4)
 $b = $a                                 # => Point b at what a is pointing to
-$b -is $a.getType()                     # => True, a and b equal same type
+$b -is $a.GetType()                     # => True, a and b equal same type
 $b -eq $a                               # => True, a and b values are equal
 [System.Collections.Hashtable]$b = @{}  # => Point a at a new hash table
 $b = @{'one' = 1 
@@ -158,7 +158,7 @@ $age = 22
 "Making`tTables`tWith`tTabs" # => Format things with tabs
 
 # Negate pound sign to prevent comment
-# Note that the function of '#' is removed, but '#" is still present
+# Note that the function of '#' is removed, but '#' is still present
 `#Get-Process # => Fail: not a recognized cmdlet
 
 # $null is not an object
