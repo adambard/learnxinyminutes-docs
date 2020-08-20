@@ -51,7 +51,8 @@ Powershell as a Language:
 [int]-5 / [int]3      # => -1.66666666666667
 5.0 / 3.0   # => 1.66666666666667
 -5.0 / 3.0  # => -1.66666666666667
-[int]$result = 5 / 3 # => 2
+[int]$result = 5 / 3 
+$result # => 2
 
 # Modulo operation
 7 % 3  # => 1
@@ -716,8 +717,8 @@ C:\Program Files\dotnet\dotnet.exe    # returns string rather than execute
 # One usage of '&' would be to invoke a scriptblock inside of your script.
 # Notice the variables are scoped
 $i = 2
-$scriptblock = { $i=5; Write-Output $i }
-& $scriptblock # => 5
+$scriptBlock = { $i=5; Write-Output $i }
+& $scriptBlock # => 5
 $i # => 2
 
 invoke-expression ' $i=5; Write-Output $i ' # => 5
