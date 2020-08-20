@@ -38,7 +38,7 @@ let               # Usa let para declarar y asignar variables.
   acercaDePi = 3.15
 
 const           # Las constantes son computadas en tiempo de compilación. Esto provee
-  debug = true  # Esto provee performance y es util para expresiones en tiempo de compilacion.
+  debug = true  # rendimiento y es útil para expresiones en tiempo de compilación.
   compilarCodigoMalo = false
 
 when compilarCodigoMalo:           # `when` es un `if` en tiempo de compilacion.
