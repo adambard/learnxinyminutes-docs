@@ -1,7 +1,7 @@
 ---
 category: tool
 tool: vim
-lang = de-de
+lang: de-de
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
