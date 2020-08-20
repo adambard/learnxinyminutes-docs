@@ -677,6 +677,19 @@ $PSVersionTable
 
 ```Powershell
 # Calling external commands, executables, and functions with the call operator.
+# Executables with arguments passed create issues
+C:\Program Files\dotnet\dotnet.exe
+The term 'C:\Program' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again
+
+"C:\Program Files\dotnet\dotnet.exe"
+C:\Program Files\dotnet\dotnet.exe    # returns the string rather than execute it
+
+&"C:\Program Files\dotnet\dotnet.exe --help"   # fail
+&"C:\Program Files\dotnet\dotnet.exe" --help   # success
+# Alternatively, you can use dot-sourcing here
+."C:\Program Files\dotnet\dotnet.exe" --help   # success
+
 # the call operator (&) is similar to Invoke-Expression, but IEX runs in current scope.
 # Standard usage of '&' would be to invoke a scriptblock inside of your script.
 # Notice the variables are scoped
@@ -693,7 +706,20 @@ $i # => 5
 $x=1
 &{$x=2};$x # => 1
 
-. {$x=2};$x # => 2
+.{$x=2};$x # => 2
+
+
+# Escape Characters in Powershell
+# Many languages use the '\', but Windows uses this character for 
+# file paths. Powershell thus uses '`' to escape characters
+# Take caution when working with files, as '`' is a
+# valid character in NTFS filenames.
+"Showing`nEscape Chars" # => new line between Showing and Escape
+"Making`tTables`tWith`tTabs" # +> Format things with tabs
+
+# Negate pound sign to prevent comment
+# Note that the function of '#' is removed, but '#" is still present
+`#Get-Process # => Fail: not a recognized cmdlet
 
 
 # Remoting into computers is easy
