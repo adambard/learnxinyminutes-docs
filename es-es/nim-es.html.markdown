@@ -81,7 +81,7 @@ let miBebida = bebidas[2]
 #
 
 # Definiendo tus propios tipos pone al compilador a trabajar por ti.
-# Es lo que hace el tipado estatico poderoso y util.
+# Es lo que hace el tipado estático poderoso y útil.
 
 type
   Nombre = string # Un alias de tipo te da un nuevo tipo que es intercambiable
