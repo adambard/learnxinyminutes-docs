@@ -82,7 +82,7 @@ D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
 * If two sets contain the same items then we say the sets are equal, e.g. `A = B`.
 * Order does not matter when determining set equality, e.g. `{ 1, 2, 3, 4 } = { 2, 3, 1, 4 }`.
 * Sets are disjoint, meaning elements cannot be repeated, e.g. `{ 1, 2, 2, 3, 4, 3, 4, 2 } = { 1, 2, 3, 4 }`.
-* Two sets `A` and `B` are equal if and only if `A ⊂ B` and `B ⊂ A`.
+* Two sets `A` and `B` are equal if and only if `A ⊆ B` and `B ⊆ A`.
 
 ## Special Sets
 
