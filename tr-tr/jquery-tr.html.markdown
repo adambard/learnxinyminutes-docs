@@ -1,5 +1,6 @@
 ---
-language: jquery
+category: tool
+tool: jquery
 contributors:
     - ["Seçkin KÜKRER", "https://github.com/leavenha"]
 filename: jquery-tr-tr.js
