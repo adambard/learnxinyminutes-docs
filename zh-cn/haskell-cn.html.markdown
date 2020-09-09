@@ -128,7 +128,7 @@ snd ("haskell", 1) -- 1
 -- 一个接受两个变量的简单函数
 add a b = a + b
 
--- 注意，如果你使用 ghci (Hakell 解释器)，你需要使用 `let`，也就是
+-- 注意，如果你使用 ghci (Haskell 解释器)，你需要使用 `let`，也就是
 -- let add a b = a + b
 
 -- 调用函数
