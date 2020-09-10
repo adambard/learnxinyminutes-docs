@@ -5,7 +5,7 @@ contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 ---
 
-Structured Query Language (SQL) is an ISO standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
+Structured Query Language (SQL) is an [ISO/IEC 9075](https://www.iso.org/standard/53686.html) standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
 
 Implementations typically provide a command line prompt where you can enter the commands shown here interactively, and they also offer a way to execute a series of these commands stored in a script file.  (Showing that you’re done with the interactive prompt is a good example of something that isn’t standardized--most SQL implementations support the keywords QUIT, EXIT, or both.)
 
