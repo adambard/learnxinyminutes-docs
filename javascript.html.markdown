@@ -611,15 +611,19 @@ pi = 4.13; // You cannot do this.
 
 const isOdd = number => number % 2 !== 0;
 
-// Parentheses are not required if only one argument is specified;
 // The "equivalent" of this function in the traditional syntax would look like this:
 
 function isOdd(number) {
     return number % 2 !== 0;
 };
 
-// I put the word "equivalent" in double quotes because a function defined
-// using the lambda syntax cannnot be called before the definition.
+// However if a function has no arguments, a slight change of adding the parenthesis in it's place is required:
+const helloWorld = () => {
+    console.log("Hello World")
+}
+
+// Also, I put the word "equivalent" in double quotes because a function defined
+// using the arrow function cannnot be called before the definition.
 // The following is an example of invalid usage:
 
 add(1, 8);
@@ -627,6 +631,7 @@ add(1, 8);
 const add = (firstNumber, secondNumber) => {
     return firstNumber + secondNumber;
 };
+
 ```
 
 ## Further Reading
