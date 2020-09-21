@@ -617,7 +617,7 @@ function isOdd(number) {
     return number % 2 !== 0;
 };
 
-// However if a function has no arguments, a slight change of adding the parenthesis in it's place is required:
+// However if a function has no arguments, a slight change of adding the parentheses in it's place is required:
 const helloWorld = () => {
     console.log("Hello World")
 }
