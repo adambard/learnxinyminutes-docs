@@ -603,7 +603,8 @@ const pi = 3.14;
 
 pi = 4.13; // You cannot do this.
 
-// There is a new syntax for functions in ES6 known as "lambda syntax".
+// There is a new syntax for functions in ES6 known as "arrow function"
+// (lambda syntax in many others languages).
 // This allows functions to be defined in a lexical scope like with variables
 // defined by const and let. 
 // By default, a single statement defined will be the return statement, hence the `return` keyword is not required. 
