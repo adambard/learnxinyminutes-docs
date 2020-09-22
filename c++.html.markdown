@@ -199,7 +199,7 @@ int main()
    cin >> myInt;
 
    // cout can also be formatted
-   cout << "Your favorite number is " << myInt << "\n";
+   cout << "Your favorite number is " << myInt << '\n';
    // prints "Your favorite number is <myInt>"
 
    cerr << "Used for error messages";
@@ -461,7 +461,7 @@ void Dog::print() const
 
 Dog::~Dog()
 {
-    std::cout << "Goodbye " << name << "\n";
+    std::cout << "Goodbye " << name << '\n';
 }
 
 int main() {
@@ -504,7 +504,7 @@ void OwnedDog::setOwner(const std::string& dogsOwner)
 void OwnedDog::print() const
 {
     Dog::print(); // Call the print function in the base Dog class
-    std::cout << "Dog is owned by " << owner << "\n";
+    std::cout << "Dog is owned by " << owner << '\n';
     // Prints "Dog is <name> and weights <weight>"
     //        "Dog is owned by <owner>"
 }
@@ -946,7 +946,7 @@ mymap.insert(pair<char,int>('Z',26));
 // To iterate
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second << '\n';
+    std::cout << it->first << "->" << it->second << std::cout;
 // Output:
 // A->1
 // Z->26
@@ -1117,33 +1117,33 @@ const int maxL = 15;
 auto second = make_tuple(maxN, maxL);
 
 // Printing elements of 'first' tuple
-cout << get<0>(first) << " " << get<1>(first) << "\n"; //prints : 10 A
+cout << get<0>(first) << " " << get<1>(first) << '\n'; //prints : 10 A
 
 // Printing elements of 'second' tuple
-cout << get<0>(second) << " " << get<1>(second) << "\n"; // prints: 1000000000 15
+cout << get<0>(second) << " " << get<1>(second) << '\n'; // prints: 1000000000 15
 
 // Unpacking tuple into variables
 
 int first_int;
 char first_char;
 tie(first_int, first_char) = first;
-cout << first_int << " " << first_char << "\n";  // prints : 10 A
+cout << first_int << " " << first_char << '\n';  // prints : 10 A
 
 // We can also create tuple like this.
 
 tuple<int, char, double> third(11, 'A', 3.14141);
 // tuple_size returns number of elements in a tuple (as a constexpr)
 
-cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
+cout << tuple_size<decltype(third)>::value << '\n'; // prints: 3
 
 // tuple_cat concatenates the elements of all the tuples in the same order.
 
 auto concatenated_tuple = tuple_cat(first, second, third);
 // concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A', 3.14141)
 
-cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
-cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
-cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
+cout << get<0>(concatenated_tuple) << '\n'; // prints: 10
+cout << get<3>(concatenated_tuple) << '\n'; // prints: 15
+cout << get<5>(concatenated_tuple) << '\n'; // prints: 'A'
 
 
 ///////////////////////////////////
