@@ -40,7 +40,7 @@ e muitos outros recursos.
 # Tuplas que são guardadas contiguamente em memória.
 {1,2,3} # tupla
 
-# Podemos acessar um elemento de uma tupla om a função `elem`:
+# Podemos acessar um elemento de uma tupla com a função `elem`:
 elem({1, 2, 3}, 0) #=> 1
 
 # Listas que são implementadas como listas ligadas.
