@@ -123,7 +123,7 @@ Math has many symbols, far beyond what you can find on a keyboard;
 Set and relation symbols, arrows, operators, and Greek letters to name a few.
 
 Sets and relations play a vital role in many mathematical research papers.
-Here's how you state all x that belong to X, $\forall$ x $\in$ X.
+Here's how you state all x that belong to X, $\forall x \in X$.
 % Notice how I needed to add $ signs before and after the symbols. This is
 % because when writing, we are in text-mode.
 % However, the math symbols only exist in math-mode.
