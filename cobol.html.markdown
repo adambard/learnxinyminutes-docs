@@ -29,7 +29,7 @@ organizations.
       
       *COBOL code is broken up into 4 divisions.
       *Those divisions, in order, are:
-      *IDENTIFICATION DIVSION.
+      *IDENTIFICATION DIVISION.
       *ENVIRONMENT DIVISION.
       *DATA DIVISION.
       *PROCEDURE DIVISION.
@@ -75,7 +75,7 @@ organizations.
       DATA DIVISION.
       WORKING-STORAGE SECTION.
       01 THE-MESSAGE      PIC X(20).
-      PROCEDURE DIVSION.
+      PROCEDURE DIVISION.
           DISPLAY "STARTING PROGRAM".
           MOVE "HELLO WORLD" TO THE-MESSAGE.
           DISPLAY THE-MESSAGE.
