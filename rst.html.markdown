@@ -3,7 +3,6 @@ language: restructured text (RST)
 contributors:
     - ["DamienVGN", "https://github.com/martin-damien"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-    - ["Tom Morris", "https://github.com/morristheaverage"]
 filename: restructuredtext.rst
 ---
 
