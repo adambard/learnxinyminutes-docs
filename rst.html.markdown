@@ -41,8 +41,8 @@ Main titles are written using equals signs over and under
 
 Note that each character, including spaces, needs an equals sign above and below.
 
-Title use equals signs but are only underlined
-==============================================
+Titles also use equals signs but are only underneath
+====================================================
 
 Subtitles with dashes
 ---------------------
