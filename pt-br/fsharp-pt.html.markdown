@@ -55,51 +55,51 @@ add 2 3                       // Agora execute a função.
 
 // para definir uma função de múltiplas linhas apenas use indentação. Nenhum ponto e vírgula é necessário
 let evens list =
-   let isEven x = x % 2 = 0   // Define "isEven" as a sub function. Note
-                              // that equality operator is single char "=".
-   List.filter isEven list    // List.filter is a library function
-                              // with two parameters: a boolean function
-                              // and a list to work on
+   let isEven x = x % 2 = 0   // Define "isEven"como uma sub função. Note
+                              // que o operador de igualdade é um simples "=".
+   List.filter isEven list    // List.filter é uma função da biblioteca padrão
+                              // com dois parâmetros: uma função que retorna boolean
+                              // e uma lista para verificar
 
-evens oneToFive               // Now run the function
+evens oneToFive               // Agora executando a função
 
-// You can use parens to clarify precedence. In this example,
-// do "map" first, with two args, then do "sum" on the result.
-// Without the parens, "List.map" would be passed as an arg to List.sum
+// Usando parênteses é possível deixar mais clara a precedência. Neste exemplo,
+// "map" é usado primeiro, com dois argumentos, então executa "sum" no resultado.
+// Sem os parênteses, "List.map" seria passado como uma argumento para List.sum
 let sumOfSquaresTo100 =
    List.sum ( List.map square [1..100] )
 
-// You can pipe the output of one operation to the next using "|>"
-// Piping data around is very common in F#, similar to UNIX pipes.
+// É possível redirecionar a saída de uma operação para a próxima usando pipe ("|>")
+// Redirecimento de dados é algo comum em F#, similar a pipes Unix.
 
-// Here is the same sumOfSquares function written using pipes
+// Aqui é a mesma função sumOfSquares escrita com pipe
 let sumOfSquaresTo100piped =
-   [1..100] |> List.map square |> List.sum  // "square" was defined earlier
+   [1..100] |> List.map square |> List.sum  // "square" foi definido anteriormente
 
-// you can define lambdas (anonymous functions) using the "fun" keyword
+// você pode definir lambdas (funções anônimas) usando a palavra reservada "fun"
 let sumOfSquaresTo100withFun =
    [1..100] |> List.map (fun x -> x * x) |> List.sum
 
-// In F# there is no "return" keyword. A function always
-// returns the value of the last expression used.
+// Em F# não há a palavra chave "return". Funções sempre
+// retornam o valor da última expressão usada.
 
-// ------ Pattern Matching ------
-// Match..with.. is a supercharged case/switch statement.
+// ------ Casamento de padrões (Pattern Matching) ------
+// Match..with.. é um poderoso case/switch.
 let simplePatternMatch =
    let x = "a"
    match x with
     | "a" -> printfn "x is a"
     | "b" -> printfn "x is b"
-    | _ -> printfn "x is something else"   // underscore matches anything
+    | _ -> printfn "x is something else"   // sublinhado combina com qualquer coisa
 
-// F# doesn't allow nulls by default -- you must use an Option type
-// and then pattern match.
-// Some(..) and None are roughly analogous to Nullable wrappers
+// F# não permite null por padrão -- deve-se usar um Option
+// e então efetuar um casamento de padrão.
+// Some(..) e None são análogos a Nullable
 let validValue = Some(99)
 let invalidValue = None
 
-// In this example, match..with matches the "Some" and the "None",
-// and also unpacks the value in the "Some" at the same time.
+// Neste exemplo, match..with casa com "Some" e "None",
+// e também desconstrói o valor em "Some" ao mesmo tempo.
 let optionPatternMatch input =
    match input with
     | Some i -> printfn "input is an int=%d" i
@@ -108,50 +108,50 @@ let optionPatternMatch input =
 optionPatternMatch validValue
 optionPatternMatch invalidValue
 
-// ------ Printing ------
-// The printf/printfn functions are similar to the
-// Console.Write/WriteLine functions in C#.
+// ------ Escrevando na tela ------
+// As funções printf/printfn são similares às
+// Console.Write/WriteLine encontradas no C#.
 printfn "Printing an int %i, a float %f, a bool %b" 1 2.0 true
 printfn "A string %s, and something generic %A" "hello" [1; 2; 3; 4]
 
-// There are also sprintf/sprintfn functions for formatting data
-// into a string, similar to String.Format in C#.
+// Exitem também as funções sprintf/sprintfn para formatação de dados
+// em uma string, semelhante à String.Format do C#.
 
 // ================================================
-// More on functions
+// Mais sobre funções
 // ================================================
 
-// F# is a true functional language -- functions are first
-// class entities and can be combined easily to make powerful
-// constructs
+// F# é uma liguagem verdadeiramente funcional -- funções fazem
+// parte das classes e podem ser combinadas facilmente para criar
+// poderosos construtores
 
-// Modules are used to group functions together
-// Indentation is needed for each nested module.
+// Módulos podem usar um grupo de funções
+// É necessário usar indentação para defini-las.
 module FunctionExamples =
 
-    // define a simple adding function
+    // define uma função de soma
     let add x y = x + y
 
-    // basic usage of a function
+    // básico uso de uma função
     let a = add 1 2
     printfn "1 + 2 = %i" a
 
-    // partial application to "bake in" parameters
+    // aplicação parcial de parâmetros
     let add42 = add 42
     let b = add42 1
     printfn "42 + 1 = %i" b
 
-    // composition to combine functions
+    // composição para combinar funções
     let add1 = add 1
     let add2 = add 2
     let add3 = add1 >> add2
     let c = add3 7
     printfn "3 + 7 = %i" c
 
-    // higher order functions
+    // funções de alta ordem
     [1..10] |> List.map add3 |> printfn "new list is %A"
 
-    // lists of functions, and more
+    // listas de funções e mais
     let add6 = [add1; add2; add3] |> List.reduce (>>)
     let d = add6 7
     printfn "1 + 2 + 3 + 7 = %i" d
@@ -160,37 +160,37 @@ module FunctionExamples =
 // Listas e coleções
 // ================================================
 
-// There are three types of ordered collection:
-// * Lists are most basic immutable collection.
-// * Arrays are mutable and more efficient when needed.
-// * Sequences are lazy and infinite (e.g. an enumerator).
+// Existem três tipos de coleções ordenadas:
+// * Listas são o tipo mais básico de coleção imutável;
+// * Arrays são mutáveis e mais eficientes;
+// * Sequences são lazy e infinitas (semelhante a enumerator).
 //
-// Other collections include immutable maps and sets
-// plus all the standard .NET collections
+// Outras coleções incluem maps e conjuntos imutáveis
+// mais todas as coleções padrões do .NET
 
 module ListExamples =
 
-    // lists use square brackets
+    // listas usam colchetes
     let list1 = ["a"; "b"]
-    let list2 = "c" :: list1    // :: is prepending
-    let list3 = list1 @ list2   // @ is concat
+    let list2 = "c" :: list1    // :: é usado para adicionar um elemento no início da lista
+    let list3 = list1 @ list2   // @ é o operador de concatenação
 
-    // list comprehensions (aka generators)
+    // list comprehensions (generators)
     let squares = [for i in 1..10 do yield i * i]
 
-    // A prime number generator
-    // - this is using a short notation for the pattern matching syntax
-    // - (p::xs) is 'first :: tail' of the list, could also be written as p :: xs
-    //   this means this matches 'p' (the first item in the list), and xs is the rest of the list
-    //   this is called the 'cons pattern'
-    // - uses 'rec' keyword, which is necessary when using recursion
+    // Um gerador de números primos
+    // - este usa a notação custa para casamento de padrões
+    // - (p::xs) significa 'primeiro :: cauda' da lista, e pode ser escrito como p :: xs
+    //   isto significa que casa 'p' (o primeiro item da lista), e xs recebe o resto da lista
+    //   que é chamdo de 'cons pattern'
+    // - usa a palavra chave 'rec', que é necessária quando se usa recursão
     let rec sieve = function
         | (p::xs) -> p :: sieve [ for x in xs do if x % p > 0 then yield x ]
         | []      -> []
     let primes = sieve [2..50]
     printfn "%A" primes
 
-    // pattern matching for lists
+    // casamento de padrões (pattern matching) com listas
     let listMatcher aList =
         match aList with
         | [] -> printfn "the list is empty"
@@ -203,7 +203,7 @@ module ListExamples =
     listMatcher [1]
     listMatcher []
 
-    // recursion using lists
+    // recursão usando listas
     let rec sum aList =
         match aList with
         | [] -> 0
@@ -211,7 +211,7 @@ module ListExamples =
     sum [1..10]
 
     // -----------------------------------------
-    // Standard library functions
+    // Funções da biblioteca padrão
     // -----------------------------------------
 
     // mapas
