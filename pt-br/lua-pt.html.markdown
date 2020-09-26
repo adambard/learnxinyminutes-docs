@@ -4,7 +4,7 @@ contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
 filename: learnlua.lua
 translators:
-  - ["Iaan Mesquita"], "https://github.com/ianitow"]
+    - ["Iaan Mesquita"], "https://github.com/ianitow"]
 lang:pt-br
 ---
 
