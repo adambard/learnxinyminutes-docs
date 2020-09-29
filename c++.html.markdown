@@ -915,7 +915,7 @@ ST.erase(20);  // Will erase element with value 20
 // Set ST: 10 30
 // To iterate through Set we use iterators
 set<int>::iterator it;
-for(it=ST.begin();it<ST.end();it++) {
+for(it=ST.begin();it!=ST.end();it++) {
 	cout << *it << endl;
 }
 // Output:
