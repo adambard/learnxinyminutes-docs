@@ -44,7 +44,7 @@ For example, if `S = { 1, 2, 4 }`, then `|S| = 3`.
 * The empty set can be constructed in set builder notation using impossible conditions, e.g. `∅ = { x : x =/= x }`, or `∅ = { x : x ∈ N, x < 0 }`;
 * the empty set is always unique (i.e. there is one and only one empty set);
 * the empty set is a subset of all sets;
-* the cardinality of the empty set is 1, i.e. `|∅| = 1`.
+* the cardinality of the empty set is 0, i.e. `|∅| = 0`.
 
 ## Representing sets
 
