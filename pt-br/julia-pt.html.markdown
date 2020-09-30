@@ -104,7 +104,7 @@ println("Eu sou Julia. Prazer em conhece-lo!")
 ## 2. Variáveis e coleções
 ####################################################
 
-#Você não declara variáveis antes de atribui-lás.
+#Você não declara variáveis antes de atribui-las.
 some_var = 5 # => 5
 some_var # => 5
 
