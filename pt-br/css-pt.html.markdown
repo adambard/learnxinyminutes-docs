@@ -14,7 +14,7 @@ translators:
 lang: pt-br
 ---
 
-No início da web não havia elementos visuais, apenas texto puro. Mas com maior desenvolvimento de navegadores da web, páginas web totalmente visuais também se tornara comum.
+No início da web não havia elementos visuais, apenas texto puro. Mas com maior desenvolvimento de navegadores da web, páginas web totalmente visuais também se tornaram comuns.
 
 CSS ajuda a manter a separação entre o conteúdo (HTML) e o visual de uma página web.
 
@@ -130,7 +130,7 @@ seletor::after {}
    os elementos */
 * {} /* */ Todos os elementos
 .parent * {} /* */ todos os descendentes
-.parent> * {} /* */ todas as crianças
+.parent> * {} /* */ todos os filhos
 
 /* ####################
    ## PROPRIEDADES
@@ -141,7 +141,7 @@ seletor {
     /* Unidades de comprimento pode ser absoluta ou relativa. */
 
     /* Unidades relativas */
-    width: 50%; /* Percentagem de largura elemento pai */
+    width: 50%; /* Percentagem de largura do elemento pai */
     font-size: 2em; /* Múltiplos de font-size original de elemento */
     font-size: 2rem; /* Ou do elemento raiz font-size */
     font-size: 2vw; /* Múltiplos de 1% da largura da janela de exibição (CSS 3) */
@@ -200,7 +200,7 @@ Salvar uma folha de estilo CSS com a extensão `.css`.
 
 ## Precedência ou Cascata
 
-Um elemento pode ser alvo de vários seletores e pode ter um conjunto de propriedades em que mais de uma vez. Nestes casos, uma das regras tem precedência sobre os outros. Geralmente, uma regra em um seletor mais específico têm precedência sobre um menos específico, e uma regra que ocorre mais tarde na folha de estilo substitui uma anterior.
+Um elemento pode ser alvo de vários seletores e pode ter um conjunto de propriedades em que mais de uma vez. Nestes casos, uma das regras tem precedência sobre as outras. Geralmente, uma regra em um seletor mais específico têm precedência sobre um menos específico, e uma regra que ocorre mais tarde na folha de estilo substitui uma anterior.
 
 Este processo é chamado de cascata, portanto, as Fichas de nome de estilo em cascata.
 
@@ -279,7 +279,7 @@ Muitos smartphones e tablets tentarão renderizar a página como se estivesse nu
 
 ## Compatibilidade
 
-A maior parte dos recursos do CSS 2 (e muitos em CSS 3) estão disponíveis em todos os navegadores e dispositivos. Mas é sempre boa prática para verificar antes de usar um novo recurso.
+A maior parte dos recursos do CSS 2 (e muitos em CSS 3) estão disponíveis em todos os navegadores e dispositivos. Mas é sempre boa prática verificar antes de usar um novo recurso.
 
 ## Recursos
 
