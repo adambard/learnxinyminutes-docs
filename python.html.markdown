@@ -773,9 +773,8 @@ if __name__ == '__main__':
     # Call the static method
     print(Human.grunt())            # => "*grunt*"
 
-    # Cannot call static method with instance of object
-    # because i.grunt() will automatically put "self" (the object i) as an argument
-    print(i.grunt())                # => TypeError: grunt() takes 0 positional arguments but 1 was given
+    # Static methods can be called by instances too
+    print(i.grunt())                # => "*grunt*"
 
     # Update the property for this instance
     i.age = 42
