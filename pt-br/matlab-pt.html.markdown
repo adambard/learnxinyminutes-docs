@@ -356,7 +356,7 @@ disp(a) % Imprime o valor da variável a
 disp('Olá Mundo') % Imprime a string
 fprintf % Imprime na janela de comandos com mais controle
 
-% Estruturas Condicionais (os parênteses são opicionais, porém uma boa prática)
+% Estruturas Condicionais (os parênteses são opcionais, porém uma boa prática)
 if (a > 15)
 	disp('Maior que 15')
 elseif (a == 23)
