@@ -166,7 +166,7 @@ fun olaMundo(val nome : String) {
 
     /*
     Classes de dados são um modo sucinto de criar classes que servem apenas
-    para guardas informações.
+    para guardar informações.
     Os métodos "hashCode", "equals" e "toString" são gerados automaticamente.
     */
     data class ExemploClasseDados (val x: Int, val y: Int, val z: Int)
