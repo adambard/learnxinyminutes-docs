@@ -70,7 +70,7 @@ fun olaMundo(val nome : String) {
     println(umaStringModelo)
 
     /*
-    Para uma variável receber null deve-se explicitamente declara-la
+    Para uma variável receber null deve-se explicitamente declará-la
     como anulável.
     A declaração de anulável é realizada incluindo uma "?" ao fim do tipo.
     Pode-se acessar uma variável anulável usando o operador "?."
