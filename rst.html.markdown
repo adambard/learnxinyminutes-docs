@@ -6,9 +6,9 @@ contributors:
 filename: restructuredtext.rst
 ---
 
-RST is a file format formely created by Python community to write documentation (and so, is part of Docutils).
+RST, Restructured Text, is a file format created by the Python community to write documentation. It is part of [Docutils](https://docutils.sourceforge.io/rst.html).
 
-RST files are simple text files with lightweight syntax (comparing to HTML).
+RST is a markdown language like HTML but is much more lightweight and easier to read.
 
 
 ## Installation
@@ -39,10 +39,10 @@ A simple example of the file syntax:
 Main titles are written using equals signs over and under
 =========================================================
 
-Note that there must be as many equals signs as title characters.
+Note that each character, including spaces, needs an equals sign above and below.
 
-Title are underlined with equals signs too
-==========================================
+Titles also use equals signs but are only underneath
+====================================================
 
 Subtitles with dashes
 ---------------------
@@ -84,7 +84,7 @@ More complex tables can be done easily (merged columns and/or rows) but I sugges
 
 There are multiple ways to make links:
 
-- By adding an underscore after a word : Github_ and by adding the target URL after the text (this way has the advantage to not insert unnecessary URLs inside readable text).
+- By adding an underscore after a word : Github_ and by adding the target URL after the text (this way has the advantage of not inserting unnecessary URLs in the visible text).
 - By typing a full comprehensible URL : https://github.com/ (will be automatically converted to a link)
 - By making a more Markdown-like link: `Github <https://github.com/>`_ .
 
