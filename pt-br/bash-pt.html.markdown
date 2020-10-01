@@ -47,7 +47,7 @@ Variavel = "Alguma string"
 # Ou assim:
 Variavel= 'Alguma string'
 # Bash interpretará 'Alguma string' como um comando e tentará executar e lhe retornará
-# um erro porque o comando não pode ser encontrado. (Nesse caso a a parte 'Variavel=' 
+# um erro porque o comando não pôde ser encontrado. (Nesse caso a a parte 'Variavel=' 
 # é vista com uma declaração de variável válida apenas para o escopo do comando 'Uma string').
 
 # Usando a variável:
@@ -73,7 +73,7 @@ echo ${Foo:-"ValorPadraoSeFooNaoExistirOuEstiverVazia"}
 # Note que isso apenas retornará o valor padrão e não mudará o valor da variável.
 
 # Variáveis internas
-# Tem algumas variáveis internas bem uteis, como
+# Tem algumas variáveis internas bem úteis, como
 echo "O ultimo retorno do programa: $?"
 echo "PID do script: $$"
 echo "Numero de argumentos passados para o script $#"
@@ -165,7 +165,7 @@ echo "#helloworld" | tee output.out > /dev/null
 rm -v output.out error.err output-and-error.log
 
 # Comando podem ser substituídos por outros comandos usando $( ):
-# O comando a seguir mostra o número de arquivos e diretórios no diretorio atual
+# O comando a seguir mostra o número de arquivos e diretórios no diretório atual
 echo "Existem $(ls | wc -l) itens aqui."
 
 # O mesmo pode ser feito usando crase `` mas elas não podem ser aninhadas - dá se 
@@ -248,7 +248,7 @@ sed -i 's/okay/legal/g' file.txt
 # exibe para o stdout todas as linhas do arquivo.txt que encaixam com o regex
 # O exemplo exibe linhas que começam com "foo" e terminam com "bar"
 grep "^foo.*bar$" arquivo.txt
-# passe a opção "-c" para ao invês de imprimir o numero da linha que bate com o regex
+# passe a opção "-c" para ao invés de imprimir o número da linha que bate com o regex
 grep -c "^foo.*bar$" arquivo.txt
 # se você quer literalmente procurar por uma string,
 # e não pelo regex, use fgrep (ou grep -F)
