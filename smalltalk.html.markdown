@@ -22,7 +22,7 @@ Yes, everything. Integers are instances of one of the numeric classes. Classes a
 - The system knows the class of the object receiving a message and looks up the message in that class's list of methods. If it is not found, the lookup continues in the super class until either it is found or the root of the classes is reached and there is still no relevant method. 
 - If a suitable method is found the code is run, and the same process keeps on going with all the methods sent by that method and so on forever.
 - If no suitable method is found an exception is raised, which typically results in a user interface notifier to tell the user that the message was not understood. It is entirely possible to catch the exception and do something to fix the problem, which might range from 'ignore it' to 'load some new packages for this class and try again'.
-- A method (more strictly an instance of the class CompiledMethod) is a chunk of Smalltalk code that has been compiled into bytecodes. Executing methods start at the beginning and return to the sender when a return is encountered (we use ^ to signify 'return the follwing object') or the end of the code is reached, in which case the current object running the code is returned.
+- A method (more strictly an instance of the class CompiledMethod) is a chunk of Smalltalk code that has been compiled into bytecodes. Executing methods start at the beginning and return to the sender when a return is encountered (we use ^ to signify 'return the following object') or the end of the code is reached, in which case the current object running the code is returned.
 
 ### Simple syntax
 Smalltalk has a simple syntax with very few rules. 
@@ -41,7 +41,7 @@ We are sending the message 'doSomethingWith:' to myObject. This happens to be a 
 'myObject' is a 'MyExampleClass' instance so the system looks at the list of messages understood by MyExampleClass
 
 - beClever
-- doWierdThing:
+- doWeirdThing:
 - doSomethingWith
 
 In searching we see what initially looks like a match - but no, it lacks the final colon. So we find the super class of MyExampleClass - BigExampleClass. Which has a list of known messages of its own
