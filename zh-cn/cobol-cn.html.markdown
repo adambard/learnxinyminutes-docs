@@ -1,10 +1,11 @@
 ---
 language: COBOL
+filename: learn.COB
 contributors:
     - ["Hyphz", "http://github.com/hyphz/"]
 translators:
     - ["GOLGO11", "https://github.com/GOLGO11/"]
-filename: learn.COB
+lang: zh-cn
 ---
 COBOL是一门面向商业的语言，它从1960年最初设计以来被修订过数次。它被宣称仍然有超过80%的机构在使用它。
 
