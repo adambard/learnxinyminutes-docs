@@ -620,26 +620,27 @@ $area
 
 $targetArray = 'a','b','c','d','e','f','g','h','i','j','k','l','m'
 
-function Format-Range ($start, $end) {
-[System.Collections.ArrayList]$firstSectionArray = @()
-[System.Collections.ArrayList]$secondSectionArray = @()
-[System.Collections.Stack]$stack = @()
-    for ($index = 0; $index -lt $targetArray.Count; $index++) {
+function Format-Range ($start, $end, $array) {
+    [System.Collections.ArrayList]$firstSectionArray = @()
+    [System.Collections.ArrayList]$secondSectionArray = @()
+    [System.Collections.Stack]$stack = @()
+    for ($index = 0; $index -lt $array.Count; $index++) {
         if ($index -lt $start) {
-            $firstSectionArray.Add($targetArray[$index]) > $null
+            $firstSectionArray.Add($array[$index]) > $null
         }
         elseif ($index -ge $start -and $index -le $end) {
-            $stack.Push($targetArray[$index])
+            $stack.Push($array[$index])
         }
         else {
-            $secondSectionArray.Add($targetArray[$index]) > $null
+            $secondSectionArray.Add($array[$index]) > $null
         }
     }
     $finalArray = $firstSectionArray + $stack.ToArray() + $secondSectionArray
-    Write-Output $finalArray
+    return $finalArray
 }
 
-Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m'
+Format-Range 2 6 $targetArray 
+# => 'a','b','g','f','e','d','c','h','i','j','k','l','m'
 
 # The previous method works, but uses extra memory by allocating new arrays.
 # It's also kind of lengthy.
