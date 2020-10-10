@@ -9,10 +9,11 @@ filename: terraform.txt
 ## Introduction
 
 HCL (Hashicorp Configuration Language) is a high-level configuration language used in tools from 
-Hashicorp (such as Terraform). This document focuses on a most recent HCL syntax (0.12).
+Hashicorp (such as Terraform). HCL/Terraform is widely used in provisioning cloud infastructure and
+configuring platforms/services through APIs. This document focuses on a most recent HCL syntax (0.13).
 
-HCL is a declarative language and will consume all `*.tf` in the current folder. Sub-folders
-can be consumed through modules.
+HCL is a declarative language and terraform will consume all `*.tf` in the current folder, so code
+placement and sequence has no significance. Sub-folders can be consumed through modules.
 
 This guide is focused on HCL specifics, you should be already familiar with what is Terraform.
 
@@ -26,7 +27,7 @@ variable "ready" {
 }
 
 // Module block consults a specified folder for *.tf files, would
-// effectively prefix all resources id's with "module.learn-basics."
+// effectively prefix all resources ids with "module.learn-basics."
 // 
 module "learn-basics" {
   source = "./learn-basics"
@@ -47,7 +48,7 @@ output "knowledge" {
 variable "ready" {
 }
 
-// It is good practice to define type though. There are 3 primitive types
+// It is a good practice to define type though. There are 3 primitive types
 // 3 collection types and 2 structural types. Structural types define
 // types recursively
 variable "structural-types" {
@@ -86,9 +87,7 @@ variable "favourites" {
 // When type is not specified or is mixed of scalars they will be
 // converted to strings.
 
-
-// IDEs (such as IntelliJ) syntax highlighting
-// plugin would offer type completion features. It does not matter
+// Use modern IDEs for type completion features. It does not matter
 // in which file and in which order you define variable, it becomes
 // accessible from anywhere.
 
@@ -103,7 +102,7 @@ locals {
   yaml = yamldecode(file("${path.module}/file-in-current-folder.yaml"))
 }
 
-// locals block can be defined multiple times, but all variable, resource
+// 'locals' block can be defined multiple times, but all variables, resources
 // and local names should be unique 
 
 locals {
@@ -123,14 +122,25 @@ output "knowledge" {
 }
 ```
 
-Terraform exist for managing "resources". A could be anything as long as it
+Terraform exists for managing cloud "resources". A resource could be anything as long as it
 can be created and destroyed through an API call. (compute instance, distribution,
-dns record, S3 bucket). Terraform provides list of official "providers" and
-there are third party providers available too.
+dns record, S3 bucket, SSL certificate or permission grant). Terraform relies on "providers"
+for implementing specific vendor APIs. For example "aws" provider enables use of resources
+for managing AWS cloud resources.
 
-When terraform apply is invoked, it will calculate all the resources and
-use provider API to ensure their state is as close to described state
-as possible.
+When "terraform" is invoked (`terraform apply`) it will validate code, create all resources
+in memory, load their existing state from file (state file), refresh against the current
+cloud APIs and then calculate the differences. Based on the differences, terraform proposes
+a "plan" - series of create, modify or delete action to bring your infrastructrue in
+alignment with a HCL definition.
+
+Terraform will also automatically calculate dependencies between resources and will maintain
+correct create / destroy order. Failure during execution allows you to retry entire process,
+which will usually pick off where things finished.
+
+## more-learning
+
+Time to introduce resources.
 
 ```hcl-terraform
 variable "yaml-data" {
@@ -141,7 +151,7 @@ variable "yaml-data" {
 }
 
 // You do not need to explicitly define providers, they all have reasonable
-// defaults with environment variables. Using resource that relies on
+// defaults with environment variables. Using a resource that relies on
 // provider will also transparently initialize it (when you invoke terraform init)
 resource "aws_s3_bucket" "bucket" {
   bucket = "abc"
@@ -160,9 +170,8 @@ resource "aws_s3_bucket_object" "test-file" {
 
   // all resources have attributes that can be referenced. Some of those
   // would be available right away (like bucket) and others may only
-  // become available during apply phase. Terraform automatically
-  // determine dependencies, although you could still specify depends_on
-  // when there is no direct dependency
+  // become after plan begins executing. test-file resource 
+  // will be created only after aws_s3_bucket.bucket finished creating
 
   // depends_on = aws_s3_bucket.bucket
   bucket = aws_s3_bucket.bucket.bucket
@@ -173,13 +182,16 @@ resource "aws_s3_bucket_object" "test-file" {
   provider = aws.as-role
 }
 
-// Normally it's not a very good practice to nest modules, as this
-// creates incredibly long identifiers for your resources, but
-// I'm doing it here with learning spirit.
+// Each resource will receive an ID in state, like "aws_s3_bucket.bucket". 
+// When resources are created inside a module, their state ID is prepended
+// with module.<module-name>
 
 module "learn-each" {
   source = "../learn-each"
 }
+
+// Nesting modules like this may not be the best practice, and it's only
+// used here for illustration purposes
 
 ```
 
@@ -204,8 +216,8 @@ output "red-bucket-name" {
   value = aws_s3_bucket.badly-coloured-bucket[0].bucket
 }
 
-// note that bucket resource id's will be "aws_s3_bucket.badly-coloured-bucket.0"
-// through to 2, because list indexes elements. If you remove "red" from
+// note that bucket resource id will be "aws_s3_bucket.badly-coloured-bucket[0]"
+// through to 2, because they are list indexes elements. If you remove "red" from
 // the list, however, it will re-create all the buckets as they would now
 // have new ids. A better way is to use for_each
 
@@ -214,6 +226,9 @@ resource "aws_s3_bucket" "coloured-bucket" {
   for_each = toset(local.list)
   bucket_prefix = "${each.value}-"
 }
+
+// the name for this resource would be aws_s3_bucket.coloured-bucket[red]
+
 output "red-bucket-name2" {
   value = aws_s3_bucket.badly-coloured-bucket["red"].bucket
 }
@@ -243,10 +258,114 @@ output "bucket-map" {
    }
 }
 
+// as of terraform 0.13 it is now also possible to use count/each for modules
 
+variable "learn-functions" {
+  type = bool
+  default = true
+}
+
+module "learn-functions" {
+  count = var.learn-functions ? 1: 0
+  source = "../learn-functions"
+}
 ```
 
-I will contribute more to this guide when I have time
+This is now popular syntax that works in terraform 0.13 that allow to include modules conditionally.
+
+## learn-functions
+
+Terraform do not allow you to define your own functions, but there extensive list of built-in functions
+
+```hcl-terraform
+locals {
+  list = ["one", "two", "three"]
+
+  upper_list = [for x in local.list : upper(x) ] // "ONE", "TWO", "THREE"
+
+  map = {for x in local.list : x => upper(x) } // "one":"ONE", "two":"TWO", "three":"THREE" 
+
+  filtered_list = [for k, v in local.map : substr(v, 0, 2) if k != "two" } // "ON", "TH"
+
+  prefixed_list = [for v in local.filtered_list : "pre-${k}" } // "pre-ON", "pre-TH"
+
+  joined_list = join(local.upper_list,local. filtered_list) // "ONE", "TWO", "THREE", "pre-ON", "pre-TH"
+
+  // Set is very similar to List, but element order is irrelevant
+  joined_set = toset(local.joined_list) // "ONE", "TWO", "THREE", "pre-ON", "pre-TH"
+
+  map_again = map(slice(local.joined_list, 0, 4)) // "ONE":"TWO", "THREE":"pre-ON"
+}
+
+// Usually all the list manipulation can be useful either for a resource with for_each or
+// to specify a dynamic block for a resource. This creates a bucket with some tags:
+
+resource "aws_s3_bucket" "bucket" {
+  name = "test-bucket"
+  tags = local.map_again
+}
+
+// this is identical to:
+// resource "aws_s3_bucket" "bucket" {
+//   name = "test-bucket"
+//   tags = {
+//     ONE = "TWO"
+//     THREE = "pre-ON"
+//   }
+// }
+
+// Some resources are also contain dynamic blocks. Next example will use "data" block
+// to look up 3 buckets (red, green and blue), will then create a policy that contains
+// read-only access to red and green bucket, and full access to blue bucket.
+
+
+locals {
+  buckets = {
+    red = "read-only"
+    green = "read-only"
+    blue = "full"
+  }
+  // we can load buckets from file if we wanted:
+  // bucket = file('bucket.json')
+
+  actions = {
+    "read-only" = ["s3:GetObject", "s3:GetObjectVersion"],
+    "full" = ["s3:GetObject", "s3:GetObjectVersion", "s3:PutObject", "s3:PutObjectVersion"]
+  }
+  // we will look up actions, so that we don't have to repeat actions
+}
+
+// using function to convert map keys into set
+data "aws_s3_bucket" "bucket" {
+  for_each = toset(keys(local.buckets))
+  bucket = each.value
+}
+
+// creates json for our policy
+data "aws_iam_policy_document" "role_policy" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "ec2:*",
+    ]
+    resources = ["*"]
+  }
+
+  dynamic "statement" {
+    for_each = local.buckets
+    content {
+      effect = "Allow"
+      actions = lookup(local.actions, statement.value, null)
+      resources = [data.aws_s3_bucket.bucket[statement.key]]
+    }
+  }
+}
+
+// and this actually creates AWS policy with permissions to all buckets
+resource "aws_iam_policy" "policy" {
+  policy = data.aws_iam_policy_document.role_policy.json
+}
+
 
 ## Additional Resources
 
