@@ -13,6 +13,9 @@ editor designed for speed and increased productivity, and is ubiquitous in most
 unix-based systems. It has numerous keybindings for speedy navigation to
 specific points in the file, and for fast editing.
 
+`vimtutor` is a an excellent application that teaches you how to use `Vim`. It comes with the vim package during installation. You should be able to just run "vimtutor" on the command line to open this tutor. It will guide you through all the major features in `vim`.
+
+
 ## Basics of navigating Vim
 
 ```
@@ -24,6 +27,7 @@ specific points in the file, and for fast editing.
     ZZ               # Save file and quit vim
     :q!              # Quit vim without saving file
                      # ! *forces* :q to execute, hence quiting vim without saving
+    ZQ               # Quit vim without saving file
     :x               # Save file and quit vim, shorter version of :wq
 
     u                # Undo
@@ -181,6 +185,7 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
     ~                # Toggle letter case of selected text
     u                # Selected text to lower case
     U                # Selected text to upper case
+    J                # Join the current line with the next line
     
     # Fold text
     zf               # Create fold from selected text

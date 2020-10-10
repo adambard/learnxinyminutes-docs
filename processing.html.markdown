@@ -140,7 +140,7 @@ SomeRandomClass myObjectInstantiated = new SomeRandomClass();
 
 // Arithmetic
 1 + 1 // 2
-2 - 1 // 0
+2 - 1 // 1
 2 * 3 // 6
 3 / 2 // 1
 3.0 / 2 // 1.5
@@ -150,7 +150,7 @@ SomeRandomClass myObjectInstantiated = new SomeRandomClass();
 // operations.
 float f = sq(3); // f = 9.0
 float p = pow(3, 3); // p = 27.0
-int a = abs(-13) // a = 13
+int a = abs(-13); // a = 13
 int r1 = round(3.1); // r1 = 3
 int r2 = round(3.7); // r2 = 4
 float sr = sqrt(25); // sr = 5.0
@@ -191,6 +191,8 @@ int i = 3;
 String value = (i > 5) ? "Big" : "Small"; // "Small"
 
 // Switch-case structure can be used to check multiple conditions concisely.
+// It is important to use the break statement. If the `break`-statement does 
+// not exist the program executes all the following cases after a case was true.
 int value = 2;
 switch(value) {
   case 0:
@@ -209,7 +211,7 @@ switch(value) {
 
 // Iterative statements
 // For Statements - Again, the same syntax as in Java
-for(int i = 0; i < 5; i ++){
+for(int i = 0; i < 5; i++){
   print(i); // prints from 0 to 4
 }
 
@@ -354,14 +356,14 @@ color c = color(255, 255, 255); // WHITE!
 // By default, Processing uses RGB colour scheme but it can be configured to
 // HSB using colorMode(). Read more here:
 // (https://processing.org/reference/colorMode_.html)
-background(color); // By now, the background colour should be white.
+background(c); // By now, the background colour should be white.
 // You can use fill() function to select the colour for filling the shapes.
 // It has to be configured before you start drawing shapes so the colours gets
 // applied.
 fill(color(0, 0, 0));
 // If you just want to colour the outlines of the shapes then you can use
 // stroke() function.
-stroke(255, 255, 255, 200); // stroke colour set to yellow with transparency
+stroke(255, 255, 0, 200); // stroke colour set to yellow with transparency
 // set to a lower value.
 
 // Images

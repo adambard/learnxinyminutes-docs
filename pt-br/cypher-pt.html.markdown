@@ -101,7 +101,7 @@ path = shortestPath( (user)-[:KNOWS*..5]-(other) )
 Crie consultas
 ---
 
-Create a new node
+Crie um novo nó
 ```
 CREATE (a:Person {name:"Théo Gauchoux"})
 RETURN a

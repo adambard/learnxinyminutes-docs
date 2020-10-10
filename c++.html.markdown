@@ -199,10 +199,10 @@ int main()
    cin >> myInt;
 
    // cout can also be formatted
-   cout << "Your favorite number is " << myInt << "\n";
+   cout << "Your favorite number is " << myInt << '\n';
    // prints "Your favorite number is <myInt>"
 
-    cerr << "Used for error messages";
+   cerr << "Used for error messages";
 }
 
 //////////
@@ -461,7 +461,7 @@ void Dog::print() const
 
 Dog::~Dog()
 {
-    std::cout << "Goodbye " << name << "\n";
+    std::cout << "Goodbye " << name << '\n';
 }
 
 int main() {
@@ -504,7 +504,7 @@ void OwnedDog::setOwner(const std::string& dogsOwner)
 void OwnedDog::print() const
 {
     Dog::print(); // Call the print function in the base Dog class
-    std::cout << "Dog is owned by " << owner << "\n";
+    std::cout << "Dog is owned by " << owner << '\n';
     // Prints "Dog is <name> and weights <weight>"
     //        "Dog is owned by <owner>"
 }
@@ -818,51 +818,51 @@ void doSomethingWithAFile(const std::string& filename)
 // Smart Pointer
 /////////////////////
 
-// Generally a smart pointer is a class, which wraps a "raw pointer" (usage of "new"
+// Generally a smart pointer is a class which wraps a "raw pointer" (usage of "new"
 // respectively malloc/calloc in C). The goal is to be able to
-// manage the lifetime of the object being point to without explicitly deleting
+// manage the lifetime of the object being pointed to without ever needing to explicitly delete 
 // the object. The term itself simply describes a set of pointers with the
 // mentioned abstraction.
-// Basically smart pointers should preferred over raw pointers, to prevent
-// risky memory leaks, which happens if you forget to delete the object.
+// Smart pointers should preferred over raw pointers, to prevent
+// risky memory leaks, which happen if you forget to delete an object.
 
 // Usage of a raw pointer:
 Dog* ptr = new Dog();
 ptr->bark();
 delete ptr;
 
-// With the usage of smart pointers you dont have to worry about the deletion
-// of a object anymore.
-// A smart pointer describes a policy, to count the references on the
-// pointer. As matter of fact the objects gets destroyed when the last
-// reference on the object gets destroyed.
+// By using a smart pointer, you don't have to worry about the deletion
+// of the object anymore.
+// A smart pointer describes a policy, to count the references to the
+// pointer. The object gets destroyed when the last
+// reference to the object gets destroyed.
 
 // Usage of "std::shared_ptr":
 void foo()
 {
-// Its not longer necessary to delete the Dog.
+// It's no longer necessary to delete the Dog.
 std::shared_ptr<Dog> doggo(new Dog());
 doggo->bark();
 }
 
 // Beware of possible circular references!!!
 // There will be always a reference, so it will be never destroyed!
-std::shared_ptr<Dog> doggo_one (new Dog());
-std::shared_ptr<Dog> doggo_two (new Dog());
+std::shared_ptr<Dog> doggo_one(new Dog());
+std::shared_ptr<Dog> doggo_two(new Dog());
 doggo_one = doggo_two; // p1 references p2
 doggo_two = doggo_one; // p2 references p1
 
-// As mentioned before there is a set of smart pointers. The way you have to
-// use it, is always the same.
-// This leads us to question, when to use which one?
-// std::unique_ptr - use it when you just want to hold one reference on
-// the same object.
-// std::shared_ptr - use it when you want to hold multiple references on the
-// same object and want to make sure that it´s de-allocated
-// when all refences are gone.
-// std::weak_ptr - use it when you want to hold multiple references from
-// different places for references for which it´s no problem
-// tp de-allocate.
+// There are several kinds of smart pointers. 
+// The way you have to use them is always the same.
+// This leads us to the question: when should we use each kind of smart pointer?
+// std::unique_ptr - use it when you just want to hold one reference to
+// the object.
+// std::shared_ptr - use it when you want to hold multiple references to the
+// same object and want to make sure that it's deallocated
+// when all references are gone.
+// std::weak_ptr - use it when you want to access
+// the underlying object of a std::shared_ptr without causing that object to stay allocated.
+// Weak pointers are used to prevent circular referencing.
 
 
 /////////////////////
@@ -915,7 +915,7 @@ ST.erase(20);  // Will erase element with value 20
 // Set ST: 10 30
 // To iterate through Set we use iterators
 set<int>::iterator it;
-for(it=ST.begin();it<ST.end();it++) {
+for(it=ST.begin();it!=ST.end();it++) {
 	cout << *it << endl;
 }
 // Output:
@@ -946,7 +946,7 @@ mymap.insert(pair<char,int>('Z',26));
 // To iterate
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second << '\n';
+    std::cout << it->first << "->" << it->second << std::cout;
 // Output:
 // A->1
 // Z->26
@@ -1117,33 +1117,33 @@ const int maxL = 15;
 auto second = make_tuple(maxN, maxL);
 
 // Printing elements of 'first' tuple
-cout << get<0>(first) << " " << get<1>(first) << "\n"; //prints : 10 A
+cout << get<0>(first) << " " << get<1>(first) << '\n'; //prints : 10 A
 
 // Printing elements of 'second' tuple
-cout << get<0>(second) << " " << get<1>(second) << "\n"; // prints: 1000000000 15
+cout << get<0>(second) << " " << get<1>(second) << '\n'; // prints: 1000000000 15
 
 // Unpacking tuple into variables
 
 int first_int;
 char first_char;
 tie(first_int, first_char) = first;
-cout << first_int << " " << first_char << "\n";  // prints : 10 A
+cout << first_int << " " << first_char << '\n';  // prints : 10 A
 
 // We can also create tuple like this.
 
 tuple<int, char, double> third(11, 'A', 3.14141);
 // tuple_size returns number of elements in a tuple (as a constexpr)
 
-cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
+cout << tuple_size<decltype(third)>::value << '\n'; // prints: 3
 
 // tuple_cat concatenates the elements of all the tuples in the same order.
 
 auto concatenated_tuple = tuple_cat(first, second, third);
 // concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A', 3.14141)
 
-cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
-cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
-cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
+cout << get<0>(concatenated_tuple) << '\n'; // prints: 10
+cout << get<3>(concatenated_tuple) << '\n'; // prints: 15
+cout << get<5>(concatenated_tuple) << '\n'; // prints: 'A'
 
 
 ///////////////////////////////////

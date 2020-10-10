@@ -216,7 +216,7 @@ The Red/System language specification can be found [here](http://static.red-lang
 
 To learn more about Rebol and Red join the [chat on Gitter](https://gitter.im/red/red). And if that is not working for you drop a mail to us on the [Red mailing list](mailto: red-langNO_SPAM@googlegroups.com) (remove NO_SPAM).
 
-Browse or ask questions on [Stack Overflow](stackoverflow.com/questions/tagged/red).
+Browse or ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/red).
 
 Maybe you want to try Red right away? That is possible on the [try Rebol and Red site](http://tryrebol.esperconsultancy.nl).
 

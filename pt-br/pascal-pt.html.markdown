@@ -4,6 +4,7 @@ filename: learnpascal-pt.pas
 contributors:
     - ["Ganesha Danu", "https://github.com/blinfoldking"]
     - ["Keith Miyake", "https//github.com/kaymmm"]
+    - ["Raul Almeida", "https://github.com/almeidaraul"]
 translators:
     - ["Raul Almeida", "https://github.com/almeidaraul"]
 lang: pt-br
@@ -157,7 +158,7 @@ BEGIN
     r := int; // um real pode receber um valor inteiro (mas não o contrário)
 
     c := str[1]; //acessando elementos de um vetor: vetor[índice do elemento]
-    str := 'hello' + 'world'; //concatenção de strings
+    str := 'hello' + 'world'; //concatenação de strings
 
     my_str[0] := 'a'; { só se pode atribuir valores a vetores elemento 
 						por elemento (não o vetor inteiro de uma vez) }

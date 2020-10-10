@@ -78,7 +78,7 @@ combinations called 'Prefix' keys.
   p                  # Change to the previous window
   {                  # Swap the current pane with the previous pane
   }                  # Swap the current pane with the next pane
-  ]                  # Enter Copy Mode to copy text or view history.
+  [                  # Enter Copy Mode to copy text or view history.
 
   s                  # Select a new session for the attached client
                      interactively

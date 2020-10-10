@@ -2,13 +2,13 @@
 language: reason
 filename: reason.re
 contributors:
-    - ["Seth Corker", "https://sethcorker.com"]
+  - ["Seth Corker", "https://sethcorker.com"]
 ---
 
 Reason is a syntax over OCaml that is easier to get started for programmers who are familiar with C-style syntax like JavaScript. BuckleScript is part of the toolchain which compiles Reason to JavaScript so you can write statically typed code for anywhere that JavaScript runs.
 
 ```javascript
-/* Comments start with slash-star, and end with slash-star */
+/* Comments start with slash-star, and end with star-slash */
 
 /*----------------------------------------------
  * Variable and function declaration
@@ -18,7 +18,7 @@ Reason is a syntax over OCaml that is easier to get started for programmers who 
  */
 
 let x = 5;
-/* - Notice we didn't add a type, Reason will infer it's an int */
+/* - Notice we didn't add a type, Reason will infer x is an int */
 
 /* A function like this, take two arguments and add them together */
 let add = (a, b) => a + b;
@@ -27,7 +27,7 @@ let add = (a, b) => a + b;
 /*----------------------------------------------
  * Type annotation
  *----------------------------------------------
- * Types don't need tp be explicitly annotated in most cases but when you need
+ * Types don't need to be explicitly annotated in most cases but when you need
  * to, you can add the type after the name
  */
 
@@ -85,7 +85,7 @@ let lastLetter = 'z';
 
 /* > Boolean */
 
-/* A boolean be either true or false */
+/* A boolean can be either true or false */
 let isLearning = true;
 
 true && false;  /* - : bool = false;  Logical and */
@@ -162,7 +162,7 @@ let maxPassengers = firstTrip.capacity;
 
 /* If you define the record type in a different file, you have to reference the
    filename, if trainJourney was in a file called Trips.re */
-let secondTrip: Trips.firstTrip = {
+let secondTrip: Trips.trainJourney = {
   destination: "Paris",
   capacity: 50,
   averageSpeed: 150.0,
@@ -445,11 +445,11 @@ switch (driveToTown(evan)) {
 };
 
 /* Alternatively, a try block can be used */
+/* - With Reason exceptions can be avoided with optionals and are seldom used */
 let messageToEvan =
   try (driveToTown(evan)) {
   | Under_Age => evan.firstName ++ " is too young to drive!"
   };
-/* - With Reason exceptions can be avoided with optionals and are seldom used */
 
 /*----------------------------------------------
  * Object
@@ -488,7 +488,7 @@ house#temperature; /* - : float = 22. */
 /*----------------------------------------------
  * Module
  *----------------------------------------------
- * Modules are used to organize your code and provide namespacing,
+ * Modules are used to organize your code and provide namespacing.
  * Each file is a module by default
  */
 
@@ -537,6 +537,7 @@ module SpecializedStaff = {
 ```
 
 ## Further Reading
+
 - [Official Reason Docs](https://reasonml.github.io/docs/en/what-and-why)
 - [Official BuckleScript Docs](https://bucklescript.github.io/docs/en/what-why)
 - [Try Reason](https://reasonml.github.io/en/try)

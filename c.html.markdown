@@ -10,6 +10,7 @@ contributors:
     - ["himanshu", "https://github.com/himanshu81494"]
     - ["Joshua Li", "https://github.com/JoshuaRLi"]
     - ["Dragos B. Chirila", "https://github.com/dchirila"]
+    - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -88,10 +89,12 @@ int main (int argc, char** argv)
   // Types
   ///////////////////////////////////////
 
-  // All variables MUST be declared at the top of the current block scope
-  // we declare them dynamically along the code for the sake of the tutorial
-  // (however, C99-compliant compilers allow declarations near the point where
-  // the value is used)
+  // Compilers that are not C99-compliant require that variables MUST be
+  // declared at the top of the current block scope.
+  // Compilers that ARE C99-compliant allow declarations near the point where
+  // the value is used.
+  // For the sake of the tutorial, variables are declared dynamically under
+  // C99-compliant standards.
 
   // ints are usually 4 bytes
   int x_int = 0;
@@ -820,7 +823,7 @@ Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://
 It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
-Another good resource is [Learn C The Hard Way](http://c.learncodethehardway.org/book/).
+Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/).
 
 If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 

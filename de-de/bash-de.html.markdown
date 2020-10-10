@@ -157,7 +157,7 @@ echo "#helloworld" | cat > output.out
 echo "#helloworld" | tee output.out >/dev/null
 
 # Löschen der Hilfsdateien von oberhalb, mit Anzeige der Dateinamen
-# (mit '-i' für "interactive" erfolgt für jede Date eine Rückfrage)
+# (mit '-i' für "interactive" erfolgt für jede Datei eine Rückfrage)
 rm -v output.out error.err output-and-error.log
 
 # Die Ausgabe von Befehlen kann mit Hilfe von $( ) in anderen Befehlen verwendet weden:
@@ -217,7 +217,7 @@ done
 function foo ()
 {
     echo "Argumente funktionieren wie bei skripts: $@"
-    echo Und: $1 $2..."
+    echo "Und: $1 $2..."
     echo "Dies ist eine Funktion"
     return 0
 }

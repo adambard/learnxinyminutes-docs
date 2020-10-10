@@ -27,7 +27,7 @@ In diesem Artikel wird am meisten auf generelle Hinweise und die Syntax geachtet
    ####################*/
 
 /* Eigentlich ist das grundlegende CSS-Statement sehr simpel */
-selektor { eigenschaft: wert; /* mehr eigenschaften...*/ }
+selektor { eigenschaft: wert; /* mehr Eigenschaften...*/ }
 
 /* Der Selektor wird dazu benutzt, ein Element auf der Seite auszuwählen.
 
@@ -35,7 +35,7 @@ Man kann aber auch alle Elemente auf einer Seite auswählen! */
 * { color:red; } /* farbe:rot */
 
 /*
-Angenommen wir haben folgendes Element auf einer Seite:
+Angenommen, wir haben folgendes Element auf einer Seite:
 
 <div class='eine-klasse klasse2' id='eineId' attr='wert' />
 */
@@ -170,7 +170,7 @@ empfohlen ist -->
 ## Spezifität
 
 Ein Element kann natürlich auch von mehr als einer Regel in einem Stylesheet
-angesprochen werdenm und kann eine Eigenschaft auch öfters als einmal zugewiesen
+angesprochen werden und kann eine Eigenschaft auch öfters als einmal zugewiesen
 bekommen. In diesen Fällen gibt es Regeln, die die Spezifität von Selektoren regeln.
 
 Wir haben dieses CSS:
