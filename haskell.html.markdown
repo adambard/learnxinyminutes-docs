@@ -61,6 +61,8 @@ not False -- True
 
 -- A string is a list of characters
 ['H', 'e', 'l', 'l', 'o'] -- "Hello"
+
+-- Lists can be indexed with the `!!` operator followed by an index
 "This is a string" !! 0 -- 'T'
 
 
