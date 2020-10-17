@@ -822,6 +822,17 @@ for _ in 0..<10 {
  See more here: https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html
  */
 
+// MARK: Preventing Overrides
+
+// You can add keyword `final` before a class or instance method, or a property to prevent it from being overridden
+class Shape {
+    final var finalInteger = 10
+}
+
+// Prevent a class from being subclassed
+final class ViewManager {
+}
+
 // MARK: Conditional Compilation, Compile-Time Diagnostics, & Availability Conditions
 
 // Conditional Compilation
