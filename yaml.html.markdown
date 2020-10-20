@@ -127,11 +127,11 @@ base: &base
 # indicate that all the keys of one or more specified maps should be inserted
 # into the current map.
 
-foo: &foo
+foo:
   <<: *base
   age: 10
 
-bar: &bar
+bar:
   <<: *base
   age: 20
 
@@ -184,5 +184,5 @@ set2:
 
 ### More Resources
 
-+ [YAML official website](http://yaml.org/)
++ [YAML official website](https://yaml.org/)
 + [Online YAML Validator](http://www.yamllint.com/)
