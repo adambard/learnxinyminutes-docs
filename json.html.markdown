@@ -9,7 +9,7 @@ contributors:
   - ["Athanasios Emmanouilidis", "https://github.com/athanasiosem"]
 ---
 
-JSON is an extremely simple data-interchange format. As [json.org](http://json.org) says, it is easy for humans to read and write and for machines to parse and generate.
+JSON is an extremely simple data-interchange format. As [json.org](https://json.org) says, it is easy for humans to read and write and for machines to parse and generate.
 
 A piece of JSON must represent either:
 
@@ -80,6 +80,5 @@ Supported data types:
 
 ## Further Reading
 
-* [JSON.org](http://json.org) All of JSON beautifully explained using flowchart-like graphics.
-
+* [JSON.org](https://json.org) All of JSON beautifully explained using flowchart-like graphics.
 * [JSON Tutorial](https://www.youtube.com/watch?v=wI1CWzNtE-M) A concise introduction to JSON.
