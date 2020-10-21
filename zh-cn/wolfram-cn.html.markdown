@@ -4,7 +4,7 @@ contributors:
   - ["hyphz", "http://github.com/hyphz/"]
 translators:
   - ["wuyudi", "http://github.com/wuyudi/"]
-filename: learnwolfram.nb
+filename: learnwolfram-cn.nb
 lang: zh-cn
 ---
 
@@ -19,7 +19,7 @@ Wolfram 语言有几个界面。
 本例中的代码可以在任何界面中输入，并使用 Wolfram Workbench 进行编辑。直接加载到 Mathematica 中可能会很不方便，因为该文件不包含单元格格式化信息（这将使该文件作为文本阅读时变得一团糟）--它可以被查看/编辑，但可能需要一些设置。
 
 ```mma
-(* 这是一个评论 *)
+(* 这是一个注释 *)
 
 (* 在Mathematica中，您可以创建一个文本单元格，用排版好的文本和图像来注释您的代码，而不是使用这些注释 *)
 
@@ -77,8 +77,8 @@ PrintTo[5]                                     (* 0 1 2 3 4 *)
 (* While 循环 *)
 x = 0; While[x < 2, (Print@x; x++)]     (* 带测试和程序体的 while 循环 *)
 
-(* 如果 和 条件 *)
-x = 8; If[x==8, Print@"Yes", Print@"No"]   (* 条件，返回真的情况下，否则 *)
+(* If 和 条件 *)
+x = 8; If[x==8, Print@"Yes", Print@"No"]   (* Condition, true case, else case *)
 Switch[x, 2, Print@"Two", 8, Print@"Yes"]  (* 值匹配风格切换 *)
 Which[x==2, Print@"No", x==8, Print@"Yes"] (* Elif风格切换 *)
 
@@ -122,9 +122,9 @@ myList[[2]] = 5          (* {1, 5, 3, 4} - 这确实更新了myList *)
 
 (* 关联，又称字典/哈希值 *)
 myHash = <|"Green" -> 2, "Red" -> 1|>   (* 创建一个关联 *)
-myHash[["Green"]]                       (* 2, 用它 *)
-myHash[["Green"]] := 5                  (* 5, 更新它 *)
-myHash[["Puce"]] := 3.5                 (* 3.5, 拓展它 *)
+myHash[["Green"]]                       (* 2, 使用 *)
+myHash[["Green"]] := 5                  (* 5, 更新 *)
+myHash[["Puce"]] := 3.5                 (* 3.5, 扩展 *)
 KeyDropFrom[myHash, "Green"]            (* 抹去绿色的键 *)
 Keys[myHash]                            (* {Red, Puce} *)
 Values[myHash]                          (* {1, 3.5} *)
