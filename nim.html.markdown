@@ -35,7 +35,6 @@ var                     # Declare (and assign) variables,
 let            # Use let to declare and bind variables *once*.
   legs = 400   # legs is immutable.
   arms = 2_000 # _ are ignored and are useful for long numbers.
-  words = 1e3  # the e notation makes floats
   aboutPi = 3.15
 
 const            # Constants are computed at compile time. This provides
@@ -45,6 +44,7 @@ const            # Constants are computed at compile time. This provides
 when compileBadCode:            # `when` is a compile time `if`
   legs = legs + 1               # This error will never be compiled.
   const input = readline(stdin) # Const values must be known at compile time.
+  let words: int = 1e3          # Use the e notation only with floats.
 
 discard 1 > 2 # Note: The compiler will complain if the result of an expression
               # is unused. `discard` bypasses this.
