@@ -110,9 +110,9 @@ myloop
 one-to-12                                  \ 1 2 3 4 5 6 7 8 9 10 11 12 ok
 
 \ `do` works similarly, except if start and end are exactly the same it will
-\ loop forever (until arithmetic underflow)
-: loop-forever 1 1 do i . loop ;            \ ok
-loop-forever                                \ 1 2 3 4 5 6 7 8 9 10 11 12 13 ...
+\ loop forever (until arithmetic underflow).
+: loop-forever 1 1 do i square . loop ;     \ ok
+loop-forever                                \ 1 4 9 16 25 36 49 64 81 100 ...
 
 \ Change the "step" with `+loop`:
 : threes ( n n -- ) ?do i . 3 +loop ;    \ ok
