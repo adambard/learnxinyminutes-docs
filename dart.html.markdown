@@ -80,7 +80,7 @@ example1() {
 /// Anonymous functions don't include a name but can take number of arguments
 example2() {
   //// Explicit return type.
-  nested1(Function<void> fn) {
+  nested1(void Function() fn) {
     fn();
   }
 
