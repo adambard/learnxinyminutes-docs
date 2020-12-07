@@ -722,7 +722,7 @@ catch (...)
 // gestion d'un fichier C :
 void faireQuelqueChoseAvecUnFichier(const char* nomDuFichier)
 {
-    // Pour commencer, supposns que rien ne peut échouer.
+    // Pour commencer, supposons que rien ne peut échouer.
 
     FILE* fh = fopen(nomDuFichier, "r"); // Ouvre le fichier en lecture
 
