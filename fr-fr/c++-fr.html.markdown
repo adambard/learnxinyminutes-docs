@@ -73,7 +73,7 @@ void func(); // fonction qui peut prendre n'importe quel nombre d'arguments
 int* ip = nullptr;
 
 // Les en-têtes standards du C sont disponibles en C++,
-// mais son préfixés avec "c" et n'ont pas de suffixe .h
+// mais sont préfixés avec "c" et n'ont pas de suffixe .h
 #include <cstdio>
 
 int main()
