@@ -69,7 +69,7 @@ void func(); // fonction qui ne prend aucun argument
 // En C
 void func(); // fonction qui peut prendre n'importe quel nombre d'arguments
 
-// Utilise nullptr au lieu de NULL in C++
+// Utilise nullptr au lieu de NULL en C++
 int* ip = nullptr;
 
 // Les en-têtes standards du C sont disponibles en C++,
