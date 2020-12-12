@@ -390,6 +390,12 @@ g()  -- Prints out 343; nothing printed before now.
 --]]
 
 ```
+
+## Community
+
+If you need support join the official Lua [mailing list](https://www.lua.org/lua-l.html), [irc channel](http://lua-users.org/wiki/IrcChannel), or [forum](https://luaforum.com).
+
+
 ## References
 
 I was excited to learn Lua so I could make games
