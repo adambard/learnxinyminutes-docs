@@ -211,10 +211,10 @@ c(1,2,3,1,2,3) * c(1,2,1,2,1,2)
 # There's no difference between strings and characters in R
 "Horatio" # "Horatio"
 class("Horatio") # "character"
-class('H') # "character"
+class("H") # "character"
 # Those were both character vectors of length 1
 # Here is a longer one:
-c('alef', 'bet', 'gimmel', 'dalet', 'he')
+c("alef", "bet", "gimmel", "dalet", "he")
 # =>
 # "alef"   "bet"    "gimmel" "dalet"  "he"
 length(c("Call","me","Ishmael")) # 3
@@ -250,8 +250,8 @@ c(TRUE,FALSE,TRUE) & c(FALSE,TRUE,TRUE) # FALSE FALSE TRUE
 # You can test if x is TRUE
 isTRUE(TRUE)	# TRUE
 # Here we get a logical vector with many elements:
-c('Z', 'o', 'r', 'r', 'o') == "Zorro" # FALSE FALSE FALSE FALSE FALSE
-c('Z', 'o', 'r', 'r', 'o') == "Z" # TRUE FALSE FALSE FALSE FALSE
+c("Z", "o", "r", "r", "o") == "Zorro" # FALSE FALSE FALSE FALSE FALSE
+c("Z", "o", "r", "r", "o") == "Z" # TRUE FALSE FALSE FALSE FALSE
 
 # FACTORS
 # The factor class is for categorical data
