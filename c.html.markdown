@@ -131,7 +131,7 @@ int main (int argc, char** argv)
   printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
 
   // If the argument of the `sizeof` operator is an expression, then its argument
-  // is not evaluated (except VLAs (see below)).
+  // is not evaluated (except arrays (see below)).
   // The value it yields in this case is a compile-time constant.
   int a = 1;
   // size_t is an unsigned integer type of at least 2 bytes used to represent
