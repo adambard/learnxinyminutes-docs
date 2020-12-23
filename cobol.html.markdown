@@ -44,7 +44,7 @@ organizations.
 
       *Let's declare some variables.
       *We do this in the WORKING-STORAGE section within the DATA DIVISION.
-      *Each data item (aka variable) with start with a level number, 
+      *Each data item (aka variable) starts with a level number, 
       *then the name of the item, followed by a picture clause 
       *describing the type of data that the variable will contain.
       *Almost every COBOL programmer will abbreviate PICTURE as PIC.
