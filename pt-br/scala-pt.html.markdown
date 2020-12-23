@@ -216,7 +216,7 @@ def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
 // A sintaxe para chamar funções é familiar:
 sumOfSquares(3, 4)  // => 25
 
-// Você poode usar o nome dos parâmetros para especificá-los numa ordem diferente
+// Você pode usar o nome dos parâmetros para especificá-los numa ordem diferente
 def subtract(x: Int, y: Int): Int = x - y
 
 subtract(10, 3)     // => 7
