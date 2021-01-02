@@ -7,12 +7,15 @@ translators:
     - ["Ahmed Omar Eissa", "https://github.com/AhmedOmarEissa"]
 lang: ar-ar
 ---
+<div dir="rtl">
+
 لغة الاستعلام الهيكلية 
 (SQL) 
 هي لغة قياسية لإنشاء قواعد البيانات المخزنة في مجموعة من الجداول التعامل معها. عادةً ما تضيف التطبيقات 
 امتدادات خاصة بها إلى اللغة ؛ تعد 
 [مقارنة تطبيقات SQL المختلفة](http://troels.arvin.dk/db/rdbms/) 
 مرجعًا جيدًا لاختلافات المنتج.
+</div>
 
 Structured Query Language (SQL) is an [ISO/IEC 9075](https://www.iso.org/standard/63555.html) standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
 
