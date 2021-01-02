@@ -65,9 +65,7 @@ SHOW DATABASES;
 USE employees;
 
 -- Select all rows and columns from the current database's departments table.
--- ارجاع كل السطور والاعمدة في جدول.
--- departments 
--- في قاعدة البيانات المستخدمة 
+-- ارجاع كل السطور والاعمدة في جدول الاقسام في قاعدة البيانات المستخدمة 
 
 
 -- Default activity is for the interpreter to scroll the results on your screen.
@@ -79,32 +77,62 @@ SELECT * FROM departments;
 -- Retrieve all rows from the departments table,
 -- but only the dept_no and dept_name columns.
 -- Splitting up commands across lines is OK.
+
+-- استرجاع كل الصفوف من جدول الاقسام لكن عمودي اسم القسم ورقم القسم فقط
+-- لا مانع من تقسيم الاوامر بين السطور
+
+
 SELECT dept_no,
        dept_name FROM departments;
 
 -- Retrieve all departments columns, but just 5 rows.
+-- استرجاع كل الاعمدة من جدول الاقسام لكن هذه المرة سنسترجع ٥ صفوف فقط
+
 SELECT * FROM departments LIMIT 5;
 
 -- Retrieve dept_name column values from the departments
 -- table where the dept_name value has the substring 'en'.
+-- استرجاع عمود اسم القسم من جدول الاقسام في حالة أن اسم القسم يحتوي علي 
+-- en
+
 SELECT dept_name FROM departments WHERE dept_name LIKE '%en%';
 
 -- Retrieve all columns from the departments table where the dept_name
 -- column starts with an 'S' and has exactly 4 characters after it.
+-- ظبط من هنا بقى 
+-- استرجاع كل أعمدة جدول الاقسام في حالة أن اسم القسم يبدأ بحرف متبوعا بأربعة حروف 
+
+
 SELECT * FROM departments WHERE dept_name LIKE 'S____';
 
 -- Select title values from the titles table but don't show duplicates.
+-- استرجاع قيم العناوين من جدول العناوين بدون تكرار 
+
 SELECT DISTINCT title FROM titles;
 
 -- Same as above, but sorted (case-sensitive) by the title values.
+-- نفس المثال السابق مع ترتيب العناوين أبجديا 
+
 SELECT DISTINCT title FROM titles ORDER BY title;
 
 -- Show the number of rows in the departments table.
+-- اظهار عدد السطور في جدول الأقسام 
+
 SELECT COUNT(*) FROM departments;
 
 -- Show the number of rows in the departments table that
 -- have 'en' as a substring of the dept_name value.
+-- اظهار عدد السطور في جدول الأقسام التي تحتوي في عمود اسم القسم علي 
+-- en 
+
 SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
+
+-- A JOIN of information from multiple tables: the titles table shows
+-- who had what job titles, by their employee numbers, from what
+-- date to what date. Retrieve this information, but instead of the
+-- employee number, use the employee number as a cross-reference to
+-- the employees table to get each employee's first and last name
+-- instead. (And only get 10 rows.)
 
 -- A JOIN of information from multiple tables: the titles table shows
 -- who had what job titles, by their employee numbers, from what
