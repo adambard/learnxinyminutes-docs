@@ -4,7 +4,7 @@ filename: learnsql.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
-    - ["Ahmed Omar Eissa", "https://github.com/AhmedOmarEissa"]
+    - ["Ahmed Omar Eissa", "https://twitter.com/AhmedOmarEissa"]
 lang: ar-ar
 ---
 <div dir="rtl">
@@ -20,36 +20,60 @@ lang: ar-ar
 
 توفر النسخ عادةً موجه سطر أوامر
 command line prompt
-حيث يمكنك إدخال الأوامر المعروضة هنا بشكل تفاعلي، كما أنها توفر طريقة لتنفيذ سلسلة من هذه الأوامر المخزنة في ملف نصي.إظهار رسالة الانتهاء من العمل مع الموجه التفاعلي مثال جيد على امكانية اضافة أوامر غير قياسية، معظم النسخ تدعم أحد أوامر
+حيث يمكنك إدخال الأوامر المعروضة هنا بشكل تفاعلي، كما أنها توفر طريقة لتنفيذ سلسلة من هذه الأوامر المخزنة في ملف نصي. إظهار رسالة الانتهاء من العمل مع الموجه التفاعلي مثال جيد على امكانية اضافة أوامر غير قياسية، معظم النسخ تدعم أحد أوامر
 QUIT , EXIT
 أو كليهما
+
+العديد من هده الأوامر تعتمد أن قاعدة بيانات الموظفين
+[MySQL employee sample database](https://dev.mysql.com/doc/employee/en/) 
+الموجودة على
+[github](https://github.com/datacharmer/test_db)
+قد تم تحليمها، 
+
+الملفات على
+github 
+هي مجموعة من الاوامر تشبه الموجودة بالاسفل و تقوم الأوامر بإنشاء الجدوال وإدخال بيانات مجموعة من الموظفين المتخيلين في شركة. تعتمد الأوامر المستخدمة في هذا البرنامج على نسخة 
+SQL 
+التي تستخدمها، 
 </div>
 
 
-Implementations typically provide a command line prompt where you can enter the commands shown here interactively, and they also offer a way to execute a series of these commands stored in a script file.  (Showing that you’re done with the interactive prompt is a good example of something that isn’t standardized--most SQL implementations support the keywords QUIT, EXIT, or both.)
-
-Several of these sample commands assume that the [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/) available on [github](https://github.com/datacharmer/test_db) has already been loaded. The github files are scripts of commands, similar to the relevant commands below, that create and populate tables of data about a fictional company’s employees. The syntax for running these scripts will depend on the SQL implementation you are using. A utility that you run from the operating system prompt is typical.
 
 
 ```sql
--- Comments start with two hyphens. End each command with a semicolon.
+-- تبدأ التعليقات بشرطتين. قم بإنهاء كل أمر بفاصلة منقوطة
 
--- SQL is not case-sensitive about keywords. The sample commands here
--- follow the convention of spelling them in upper-case because it makes
--- it easier to distinguish them from database, table, and column names.
+--  لا تعتبر اللغة حساسة لحالة الاحرف والاوامر الموجودة هنا
+-- تستخدم الحالة العليا للاحرف 
+-- UPPER-CASE 
+-- فقط ليسهل تمييزها عن أسماه الأعمدة والجداول وقواعد البيانات
 
 -- Create and delete a database. Database and table names are case-sensitive.
+-- إنشاء ومسح قاعدة بيانات، أسماء قواعد البيانات والجداول حساسة لحالة الأحرف.
+
 CREATE DATABASE someDatabase;
 DROP DATABASE someDatabase;
 
 -- List available databases.
+-- عرض قواعد البيانات الموجودة.
+
 SHOW DATABASES;
 
 -- Use a particular existing database.
+--استخدام قاعدة بيانات محددة.
+
 USE employees;
 
 -- Select all rows and columns from the current database's departments table.
+-- ارجاع كل السطور والاعمدة في جدول.
+-- departments 
+-- في قاعدة البيانات المستخدمة 
+
+
 -- Default activity is for the interpreter to scroll the results on your screen.
+-- ستظهر النتائج على الشاشة بشكل تلقائي لتتصفحها.
+
+
 SELECT * FROM departments;
 
 -- Retrieve all rows from the departments table,
