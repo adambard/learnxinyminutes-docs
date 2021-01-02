@@ -158,13 +158,13 @@ MIPS（Microprocessor without Interlocked Pipeline Stages）汇编语言是为�
     #     max = c;
 
     # 让 $s0 = a, $s1 = b, $s2 = c, $v0 = 返回寄存器
-    ble $s0, $s1, a_LTE_b                   # 如果 (a <= b) 跳转 (a_LTE_b)
-    ble $s0, $s2, max_C                     # 如果 (a > b && a <= c) 跳转 (max_C)
+    ble $s0, $s1, a_LTE_b                   # 如果 (a <= b) 跳转到 (a_LTE_b)
+    ble $s0, $s2, max_C                     # 如果 (a > b && a <= c) 跳转到 (max_C)
     move $v0, $s1                           # 否则 [a > b && a > c] max = a
     j done                                  # 跳转到程序结束
 
     a_LTE_b:                                # 当 a <= b 时的标签
-      ble $s1, $s2, max_C                   # 如果 (a <= b && b <= c) 跳转 (max_C)
+      ble $s1, $s2, max_C                   # 如果 (a <= b && b <= c) 跳转到 (max_C)
       move $v0, $s1                         # 如果 (a <= b && b > c) max = b
       j done                                # 跳转到 done
 
@@ -178,7 +178,7 @@ MIPS（Microprocessor without Interlocked Pipeline Stages）汇编语言是为�
     # 循环的基本结构是一个退出条件和一个继续执行的跳转指令
     li $t0, 0
     while:
-      bgt $t0, 10, end_while                # 当 $t0 is 小于 10，不停迭代
+      bgt $t0, 10, end_while                # 当 $t0 小于 10，不停迭代
       addi $t0, $t0, 1                      # 累加值
       j while                               # 跳转回循环开始
     end_while:
