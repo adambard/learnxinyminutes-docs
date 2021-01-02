@@ -11,13 +11,20 @@ lang: ar-ar
 
 لغة الاستعلام الهيكلية 
 (SQL) 
-هي لغة قياسية لإنشاء قواعد البيانات المخزنة في مجموعة من الجداول التعامل معها. عادةً ما تضيف التطبيقات 
+هي لغة قياسية
+[ISO/IEC 9075](https://www.iso.org/standard/63555.html)
+لإنشاء قواعد البيانات المخزنة في مجموعة من الجداول التعامل معها. عادةً ما تضيف التطبيقات 
 امتدادات خاصة بها إلى اللغة ؛ تعد 
-[مقارنة تطبيقات SQL المختلفة](http://troels.arvin.dk/db/rdbms/) 
-مرجعًا جيدًا لاختلافات المنتج.
+[مقارنة نسخ SQL المختلفة](http://troels.arvin.dk/db/rdbms/) 
+مرجعًا جيدًا لاختلافات النسخ.
+
+توفر النسخ عادةً موجه سطر أوامر
+command line prompt
+حيث يمكنك إدخال الأوامر المعروضة هنا بشكل تفاعلي، كما أنها توفر طريقة لتنفيذ سلسلة من هذه الأوامر المخزنة في ملف نصي.إظهار رسالة الانتهاء من العمل مع الموجه التفاعلي مثال جيد على امكانية اضافة أوامر غير قياسية، معظم النسخ تدعم أحد أوامر
+QUIT , EXIT
+أو كليهما
 </div>
 
-Structured Query Language (SQL) is an [ISO/IEC 9075](https://www.iso.org/standard/63555.html) standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
 
 Implementations typically provide a command line prompt where you can enter the commands shown here interactively, and they also offer a way to execute a series of these commands stored in a script file.  (Showing that you’re done with the interactive prompt is a good example of something that isn’t standardized--most SQL implementations support the keywords QUIT, EXIT, or both.)
 
