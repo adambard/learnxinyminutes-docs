@@ -44,30 +44,26 @@ SQL
 -- تبدأ التعليقات بشرطتين. قم بإنهاء كل أمر بفاصلة منقوطة
 
 --  لا تعتبر اللغة حساسة لحالة الاحرف والاوامر الموجودة هنا
--- تستخدم الحالة العليا للاحرف 
--- UPPER-CASE 
--- فقط ليسهل تمييزها عن أسماه الأعمدة والجداول وقواعد البيانات
+-- فقط ليسهل تمييزها عن أسماه الأعمدة والجداول وقواعد البيانات UPPER-CASE تستخدم الحالة العليا للاحرف 
 
 -- Create and delete a database. Database and table names are case-sensitive.
--- إنشاء ومسح قاعدة بيانات، أسماء قواعد البيانات والجداول حساسة لحالة الأحرف.
+-- إنشاء ومسح قاعدة بيانات، أسماء قواعد البيانات والجداول حساسة لحالة الأحرف
 
 CREATE DATABASE someDatabase;
 DROP DATABASE someDatabase;
 
 -- List available databases.
--- عرض قواعد البيانات الموجودة.
+-- عرض قواعد البيانات الموجودة
 
 SHOW DATABASES;
 
 -- Use a particular existing database.
---استخدام قاعدة بيانات محددة.
+--استخدام قاعدة بيانات محددة
 
 USE employees;
 
 -- Select all rows and columns from the current database's departments table.
--- ارجاع كل السطور والاعمدة في جدول الاقسام في قاعدة البيانات المستخدمة 
-
-
+-- في قاعدة البيانات المستخدمة departments ارجاع كل السطور والاعمدة في جدول 
 -- Default activity is for the interpreter to scroll the results on your screen.
 -- ستظهر النتائج على الشاشة بشكل تلقائي لتتصفحها.
 
@@ -78,7 +74,7 @@ SELECT * FROM departments;
 -- but only the dept_no and dept_name columns.
 -- Splitting up commands across lines is OK.
 
--- استرجاع كل الصفوف من جدول الاقسام لكن عمودي اسم القسم ورقم القسم فقط
+-- فقط dept_name و dept_no لكن سنسترجع عمودي  departments استرجاع كل أسطر من جدول 
 -- لا مانع من تقسيم الاوامر بين السطور
 
 
@@ -86,21 +82,21 @@ SELECT dept_no,
        dept_name FROM departments;
 
 -- Retrieve all departments columns, but just 5 rows.
--- استرجاع كل الاعمدة من جدول الاقسام لكن هذه المرة سنسترجع ٥ صفوف فقط
+-- لكن هذه المرة سنسترجع ٥ أسطر فقط departments استرجاع كل الاعمدة من جدول
+
 
 SELECT * FROM departments LIMIT 5;
 
 -- Retrieve dept_name column values from the departments
 -- table where the dept_name value has the substring 'en'.
--- استرجاع عمود اسم القسم من جدول الاقسام في حالة أن اسم القسم يحتوي علي 
--- en
+--en يحتوي علي dept_name في حالة أن عمود  departments من جدول  dept_name استرجاع عمود 
 
 SELECT dept_name FROM departments WHERE dept_name LIKE '%en%';
 
 -- Retrieve all columns from the departments table where the dept_name
 -- column starts with an 'S' and has exactly 4 characters after it.
--- ظبط من هنا بقى 
--- استرجاع كل أعمدة جدول الاقسام في حالة أن اسم القسم يبدأ بحرف متبوعا بأربعة حروف 
+-- S استرجاع كل أعمدة جدول الاقسام في حالة أن اسم القسم يبدأ بحرف  
+-- متبوعا بأربعة حروف 
 
 
 SELECT * FROM departments WHERE dept_name LIKE 'S____';
@@ -122,8 +118,8 @@ SELECT COUNT(*) FROM departments;
 
 -- Show the number of rows in the departments table that
 -- have 'en' as a substring of the dept_name value.
--- اظهار عدد السطور في جدول الأقسام التي تحتوي في عمود اسم القسم علي 
--- en 
+
+-- en اظهار عدد السطور في جدول الأقسام التي تحتوي في عمود اسم القسم علي 
 
 SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 
@@ -134,12 +130,9 @@ SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 -- the employees table to get each employee's first and last name
 -- instead. (And only get 10 rows.)
 
--- A JOIN of information from multiple tables: the titles table shows
--- who had what job titles, by their employee numbers, from what
--- date to what date. Retrieve this information, but instead of the
--- employee number, use the employee number as a cross-reference to
--- the employees table to get each employee's first and last name
--- instead. (And only get 10 rows.)
+-- ربط المعلومات بين الجداول، جدول العناوين يظهر رقم كل موظف ومسماه الوظيفي 
+-- ومتي حصل على هذا المسمى وإلي متى ولكن بدلا من اظهار رقم الموظف سنستخدم هذا الرقم
+-- للحصول على اسم الموظف الاول والأخير من جدول الموظفين مع إظهار ١٠ سطور فقط
 
 SELECT employees.first_name, employees.last_name,
        titles.title, titles.from_date, titles.to_date
@@ -148,34 +141,55 @@ FROM titles INNER JOIN employees ON
 
 -- List all the tables in all the databases. Implementations typically provide
 -- their own shortcut command to do this with the database currently in use.
+-- إظهار كل الجدوال في كل قواعد البيانات 
+-- النسخ المختلفة تقدم اختصارات لمثل هذا الأمر لقاعدة البيانات المستخدمة
+
 SELECT * FROM INFORMATION_SCHEMA.TABLES
 WHERE TABLE_TYPE='BASE TABLE';
 
 -- Create a table called tablename1, with the two columns shown, for
 -- the database currently in use. Lots of other options are available
 -- for how you specify the columns, such as their datatypes.
+-- يحتوى على عمودان في قاعدة البيانات المستخدمة tablename1 أنشاء جدول يسمى  
+-- يوجد العديد من الطرق لتعريف الاعمدة وأنواع البيانات في العمود
+
 CREATE TABLE tablename1 (fname VARCHAR(20), lname VARCHAR(20));
 
 -- Insert a row of data into the table tablename1. This assumes that the
 -- table has been defined to accept these values as appropriate for it.
+
+
 INSERT INTO tablename1 VALUES('Richard','Mutt');
 
 -- In tablename1, change the fname value to 'John'
 -- for all rows that have an lname value of 'Mutt'.
+
+--John إلى fname سنغير قيمة عمود tablename1  في 
+-- Mutt هي lname  في حالة أن قيمة العمود
+
 UPDATE tablename1 SET fname='John' WHERE lname='Mutt';
 
 -- Delete rows from the tablename1 table
 -- where the lname value begins with 'M'.
+-- 'M' تبدأ ب  lname في حالة أن قيمة عمود  tablename1 مسح السطور من جدول 
+
 DELETE FROM tablename1 WHERE lname like 'M%';
 
 -- Delete all rows from the tablename1 table, leaving the empty table.
+-- مع ترك الجدول فارغ tablename1 مسح جميع السطور من جدول 
+
 DELETE FROM tablename1;
 
 -- Remove the entire tablename1 table.
+-- تماما tablename1 إزالة جدول 
+
 DROP TABLE tablename1;
 ```
+<div dir="rtl">
 
-## Further Reading
+## اقرأ أكثر
 
-* [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) A good introduction to SQL in a "learn by doing it" format.
-* [Database System Concepts](https://www.db-book.com) book's Chapter 3 - Introduction to SQL has an in depth explanation of SQL concepts.
+* [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql)مقدمة جيدة للتعلم عن طريق التطبيق.
+* [Database System Concepts](https://www.db-book.com) الفصل رقم ٣ من الكتاب مقدمة في (SQL) تحتوى علي شرح مفصل لمفاهيم (SQL)
+
+</div>
