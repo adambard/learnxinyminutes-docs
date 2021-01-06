@@ -307,6 +307,8 @@ public class LearnJava {
         ///////////////////////////////////////
         System.out.println("\n->Operators");
 
+	int i1 = 1, i2 = 2;
+	
         // Arithmetic is straightforward
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
