@@ -83,8 +83,6 @@ public function fromHttpTriggerCosmosDBInput(
     return dbReq.toString();
 }
 
-http:Client webep = new("http://example.com");
-
 public function main() returns @tainted error? {
     int a = 10;               // 64-bit signed integer
     float b = 1.56;           // 64-bit IEEE 754-2008 binary floating point number
@@ -215,7 +213,7 @@ public function main() returns @tainted error? {
 
     // Asynchronous execution with futures
     future<int> f10 = start fib(10);
-    var webresult = webep->get("/");
+    var webresult = clientEP->get("/");
     int fresult = wait f10;
     if webresult is http:Response {
         io:println(webresult.getTextPayload());
