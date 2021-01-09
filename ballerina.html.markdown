@@ -8,17 +8,21 @@ filename: learn_ballerina.bal
 [Ballerina](https://ballerina.io/) is a statically-typed programming language for making development for the cloud an enjoyable experience. 
 
 ```ballerina
-// Only single-line comments are supported in Ballerina.
+// Single-line comment
 
 // Import modules into the current source file 
 import ballerina/io;
+import ballerina/time;
 import ballerina/http;
+import ballerinax/java.jdbc;
 import ballerina/lang.'int as ints;
 import ballerinax/awslambda;
 // Module alias "af" used in code in place of the full module name
 import ballerinax/azure.functions as af;
 
 http:Client clientEP = new ("https://freegeoip.app/");
+jdbc:Client accountsDB = new ({url: "jdbc:mysql://localhost:3306/AccountsDB", 
+                           username: "test", password: "test"});
 
 // A service is a first-class concept in Ballerina, and is one of the 
 // entrypoints to a Ballerina program. 
@@ -283,7 +287,48 @@ public function main() returns @tainted error? {
     // since we are passing a tainted value (s2x) to a function which 
     // exepects an untainted value.
     // mySecureFunction(s2x);
+
+    // Instantiating objects
+    Employee emp1 = new("E0001", "Jack Smith", "Sales", 2009);
+    io:println("The company service duration of ", emp1.name, 
+               " is ", emp1.serviceDuration());
+
+    // Supported operations can be executed in a transaction by enclosing the actions
+    // in a "transaction" block. 
+    transaction {
+        // Executes the below database operations in a single local transactions
+        var r1 = accountsDB->update("UPDATE Employee SET balance = balance + ? WHERE id = ?", 5500.0, "ID001");
+        var r2 = accountsDB->update("UPDATE Employee SET balance = balance + ? WHERE id = ?", 5500.0, "ID001");
+    }
 }
+
+// An object is a behavioural type, which encapsulates both data and functionality.
+type Employee object {
+    
+    // Private fields are only visible within the object and its methods
+    private string empId;
+    // Public fields can be accessed by anyone
+    public string name;
+    public string department;
+    // The default qualifier is a "protected" field, 
+    // which are accessible only within the module.
+    int yearJoined;           
+    
+    // The object initialization function; automatically called when an object is instantiated.
+    public function __init(string empId, string name, string department, int yearJoined) {
+        self.empId = empId;
+        self.name = name;
+        self.department = department;
+        self.yearJoined = yearJoined;        
+    }
+
+    // An object method
+    public function serviceDuration() returns int {
+        time:Time ct = time:currentTime();
+        return time:getYear(ct) - self.yearJoined;
+    }
+
+};
 
 // Student is a subtype of Person
 type Student record {
