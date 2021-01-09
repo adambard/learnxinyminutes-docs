@@ -22,7 +22,7 @@ import ballerinax/azure.functions as af;
 
 http:Client clientEP = new ("https://freegeoip.app/");
 jdbc:Client accountsDB = new ({url: "jdbc:mysql://localhost:3306/AccountsDB", 
-                           username: "test", password: "test"});
+                               username: "test", password: "test"});
 
 // A service is a first-class concept in Ballerina, and is one of the 
 // entrypoints to a Ballerina program. 
