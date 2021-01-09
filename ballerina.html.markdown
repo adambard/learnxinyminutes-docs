@@ -46,7 +46,7 @@ service geoservice on new http:Listener(8080) {
 // artifact to be deployed.
 @awslambda:Function
 public function echo(awslambda:Context ctx, json input) returns json {
-   return input;
+    return input;
 }
 
 @awslambda:Function
