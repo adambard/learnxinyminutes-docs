@@ -590,7 +590,7 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 // ES6 Additions
 
 // The "let" keyword allows you to define variables in a block scope, 
-// as opposed to an only functional scope like the var keyword does.
+// as opposed to a functional scope like the "var" keyword does.
 let name = "Billy";
 
 // Variables defined with let can be reassigned new values.
