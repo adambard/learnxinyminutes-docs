@@ -27,12 +27,12 @@ for the GNU operating system and as the default shell on most Linux distros.
 Nearly all examples below can be a part of a shell script
 or executed directly in the shell.
 
-[Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
+[Read more here.](https://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
 #!/usr/bin/env bash
 # First line of the script is the shebang which tells the system how to execute
-# the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
+# the script: https://en.wikipedia.org/wiki/Shebang_(Unix)
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
@@ -198,7 +198,7 @@ then
 fi
 # Note that =~ only works within double [[ ]] square brackets,
 # which are subtly different from single [ ].
-# See http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
+# See https://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
 
 # Redefine command `ping` as alias to send only 5 packets
 alias ping='ping -c 5'
@@ -325,6 +325,9 @@ echo "#helloworld" | tee output.out >/dev/null
 # WARNING: `rm` commands cannot be undone
 rm -v output.out error.err output-and-error.log
 rm -r tempDir/ # recursively delete
+# You can install the `trash-cli` Python package to have `trash`
+# which puts files in the system trash and doesn't delete them directly
+# see https://pypi.org/project/trash-cli/ if you want to be careful
 
 # Commands can be substituted within other commands using $( ):
 # The following command displays the number of files and directories in the
@@ -332,15 +335,15 @@ rm -r tempDir/ # recursively delete
 echo "There are $(ls | wc -l) items here."
 
 # The same can be done using backticks `` but they can't be nested -
-#the preferred way is to use $( ).
+# the preferred way is to use $( ).
 echo "There are `ls | wc -l` items here."
 
 # Bash uses a `case` statement that works similarly to switch in Java and C++:
 case "$Variable" in
-    #List patterns for the conditions you want to meet
+    # List patterns for the conditions you want to meet
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
-    *) echo "It is not null.";;
+    *) echo "It is not null.";;  # match everything
 esac
 
 # `for` loops iterate for as many arguments given:
@@ -373,6 +376,13 @@ done
 # ..or the output from a command
 # This will `cat` the output from `ls`.
 for Output in $(ls)
+do
+    cat "$Output"
+done
+
+# Bash can also accept patterns, like this to `cat`
+# all the Markdown files in current directory
+for Output in ./*.markdown
 do
     cat "$Output"
 done
@@ -431,6 +441,8 @@ cut -d ',' -f 1 file.txt
 # replaces every occurrence of 'okay' with 'great' in file.txt
 # (regex compatible)
 sed -i 's/okay/great/g' file.txt
+# be aware that this -i flag means that file.txt will be changed
+# -i or --in-place erase the input file (use --in-place=.backup to keep a back-up)
 
 # print to stdout all lines of file.txt which match some regex
 # The example prints lines which begin with "foo" and end in "bar"
@@ -448,7 +460,7 @@ grep -rI "^foo.*bar$" someDir/ # recursively `grep`, but ignore binary files
 grep "^foo.*bar$" file.txt | grep -v "baz"
 
 # if you literally want to search for the string,
-# and not the regex, use fgrep (or grep -F)
+# and not the regex, use `fgrep` (or `grep -F`)
 fgrep "foobar" file.txt
 
 # The `trap` command allows you to execute a command whenever your script
@@ -457,6 +469,7 @@ fgrep "foobar" file.txt
 trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
 
 # `sudo` is used to perform commands as the superuser
+# usually it will ask interactively the password of superuser
 NAME1=$(whoami)
 NAME2=$(sudo whoami)
 echo "Was $NAME1, then became more powerful $NAME2"
