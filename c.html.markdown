@@ -224,9 +224,15 @@ int main (int argc, char** argv)
   (float)i1 / i2; // => 0.5f
   i1 / (double)i2; // => 0.5 // Same with double
   f1 / f2; // => 0.5, plus or minus epsilon
+  
   // Floating-point numbers and calculations are not exact
+  // for instance it is not giving mathematically correct results
+  (0.1 + 0.1 + 0.1) != 0.3; // => 1 (true)
+  // and it is NOT associative
+  1 + (1e123 - 1e123) != (1 + 1e123) - 1e123; // => 1 (true)
+  // this notation is scientific notations for numbers: 1e123 = 1*10^123
 
-  // Modulo is there as well
+  // Modulo is there as well, but be careful if arguments are negative
   11 % 3; // => 2
 
   // Comparison operators are probably familiar, but
@@ -236,12 +242,12 @@ int main (int argc, char** argv)
   // operators always yield 0 or 1.)
   3 == 2; // => 0 (false)
   3 != 2; // => 1 (true)
-  3 > 2; // => 1
-  3 < 2; // => 0
+  3 > 2;  // => 1
+  3 < 2;  // => 0
   2 <= 2; // => 1
   2 >= 2; // => 1
 
-  // C is not Python - comparisons don't chain.
+  // C is not Python - comparisons do NOT chain.
   // Warning: The line below will compile, but it means `(0 < a) < 2`.
   // This expression is always true, because (0 < a) could be either 1 or 0.
   // In this case it's 1, because (0 < 1).
@@ -349,26 +355,28 @@ int main (int argc, char** argv)
     break;
   }
   /*
-  using "goto" in C
+    Using "goto" in C
   */
   typedef enum { false, true } bool;
   // for C don't have bool as data type before C99 :(
   bool disaster = false;
   int i, j;
-  for(i=0;i<100;++i)
-  for(j=0;j<100;++j)
+  for(i=0; i<100; ++i)
+  for(j=0; j<100; ++j)
   {
     if((i + j) >= 150)
         disaster = true;
     if(disaster)
-        goto error;
+        goto error;  // exit both for loops
   }
-  error :
+  error: // this is a label that you can "jump" to with "goto error;"
   printf("Error occurred at i = %d & j = %d.\n", i, j);
   /*
-  https://ideone.com/GuPhd6
-  this will print out "Error occurred at i = 51 & j = 99."
+    https://ideone.com/GuPhd6
+    this will print out "Error occurred at i = 51 & j = 99."
   */
+  /* it is generally considered bad practice to do so, except if  */
+  /* you really know what you are doing                           */
 
   ///////////////////////////////////////
   // Typecasting
@@ -741,6 +749,7 @@ typedef void (*my_fnp_type)(char *);
 // Order of Evaluation
 ///////////////////////////////////////
 
+// From top to bottom, top is has higher precedence
 //---------------------------------------------------//
 //        Operators                  | Associativity //
 //---------------------------------------------------//
@@ -783,8 +792,8 @@ as the C file.
 /* included into files that include this header.                       */
 #include <string.h>
 
-/* Like c source files macros can be defined in headers and used in files */
-/* that include this header file.                                         */
+/* Like for c source files, macros can be defined in headers */
+/* and used in files that include this header file.          */
 #define EXAMPLE_NAME "Dennis Ritchie"
 
 /* Function macros can also be defined.  */
