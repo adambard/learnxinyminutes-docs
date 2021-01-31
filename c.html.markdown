@@ -233,7 +233,9 @@ int main (int argc, char** argv)
   // this notation is scientific notations for numbers: 1e123 = 1*10^123
 
   // Modulo is there as well, but be careful if arguments are negative
-  11 % 3; // => 2
+  11 % 3;    // => 2 as 11 = 2 + 3*x (x=3)
+  (-11) % 3; // => -2, as one would expect
+  11 % (-3); // => 2 and not -2, and it's quite counter intuitive
 
   // Comparison operators are probably familiar, but
   // there is no Boolean type in C. We use ints instead.
@@ -375,8 +377,11 @@ int main (int argc, char** argv)
     https://ideone.com/GuPhd6
     this will print out "Error occurred at i = 51 & j = 99."
   */
-  /* it is generally considered bad practice to do so, except if  */
-  /* you really know what you are doing                           */
+  /*
+    it is generally considered bad practice to do so, except if
+    you really know what you are doing. See 
+    https://en.wikipedia.org/wiki/Spaghetti_code#Meaning
+  */
 
   ///////////////////////////////////////
   // Typecasting
@@ -749,12 +754,12 @@ typedef void (*my_fnp_type)(char *);
 // Order of Evaluation
 ///////////////////////////////////////
 
-// From top to bottom, top is has higher precedence
+// From top to bottom, top has higher precedence
 //---------------------------------------------------//
 //        Operators                  | Associativity //
 //---------------------------------------------------//
 // () [] -> .                        | left to right //
-// ! ~ ++ -- + = *(type)sizeof       | right to left //
+// ! ~ ++ -- + = *(type) sizeof      | right to left //
 // * / %                             | left to right //
 // + -                               | left to right //
 // << >>                             | left to right //
@@ -832,7 +837,7 @@ Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://
 It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
-Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/).
+Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/) (not free).
 
 If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
@@ -842,4 +847,4 @@ Readable code is better than clever code and fast code. For a good, sane coding 
 
 Other than that, Google is your friend.
 
-[1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
+[1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
