@@ -280,7 +280,7 @@ active links in the table of contents.
 \section{Writing in ASCII or other encodings}
 
 By default, historically LaTeX accepts input which are pure ASCII,
-meaning without accents (à, è etc) and non-latin symbols.
+meaning without accents (à, è etc.) and non-Latin symbols.
 
 It is easy to insert accents and basic Latin symbols, with backslash shortcuts
 Like \,c, \'e, \`A, \ae and \oe etc.  % for ç, é, À, etc
