@@ -2,7 +2,7 @@
 language: latex
 contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
-    - ["Colton Kohnke", "http://github.com/voltnor"]
+    - ["Colton Kohnke", "https://github.com/voltnor"]
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
     - ["Ramanan Balakrishnan", "https://github.com/ramananbalakrishnan"]
     - ["Svetlana Golubeva", "https://attillax.github.io/"]
@@ -279,8 +279,8 @@ active links in the table of contents.
 
 \section{Writing in ASCII or other encodings}
 
-By default, historically LaTeX accepts input which are pure ASCII,
-meaning without accents (à, è etc.) and non-Latin symbols.
+By default, historically LaTeX accepts inputs which are pure ASCII (128),
+not even extened ASCII, meaning without accents (à, è etc.) and non-Latin symbols.
 
 It is easy to insert accents and basic Latin symbols, with backslash shortcuts
 Like \,c, \'e, \`A, \ae and \oe etc.  % for ç, é, À, etc
