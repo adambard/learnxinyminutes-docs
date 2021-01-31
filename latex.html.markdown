@@ -200,7 +200,7 @@ We can also insert Tables in the same way as figures.
 \begin{table}[H]
   \caption{Caption for the Table.}
   % the {} arguments below describe how each row of the table is drawn.
-  % The basic is simple: one letter for each columns, to control alignment:
+  % The basic is simple: one letter for each column, to control alignment:
   % basic options are: c, l, r and p for centered, left, right and paragraph
   % optionnally, you can add a | for a vertical line
   % See https://en.wikibooks.org/wiki/LaTeX/Tables for more details
