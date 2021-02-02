@@ -83,7 +83,7 @@ composer require-dev phpunit/phpunit:^4.5.0
 # aggiungera' la dipendenza nell'ambiente di sviluppo utilizzando l'ultima versione
 # disponibile nel range >=4.5.0 and < 5.0.
 
-# Per maggiori informazioni riguardante il versioning, vedi [la documentazione di Composer sulle versioni](https://getcomposer.org/doc/articles/versions.md) per ulteriori dettagli
+# Per ulteriori dettagli riguardo le versioni, vedi [la documentazione di Composer sulle versioni](https://getcomposer.org/doc/articles/versions.md) per ulteriori dettagli
 
 # Per vedere quali pacchetti sono installabili e quali sono gia' stati installati
 composer show
@@ -153,8 +153,8 @@ Nel file `composer.json`, aggiungi il campo "autoload":
 Questo dira' all'autoloader di controllare ogni risorsa che corrisponde al 
 namespace `\Acme\` all'interno della cartella `src`.
 
-Puoi anche utilizzare [PSR-0, una Classmap o una lista di file da includere](https://getcomposer.org/doc/04-schema.md#autoload).
-Puoi anche usare il campo `autoload-dev` dedicato all'ambiente di sviluppo.
+In alternativa puoi usare [PSR-0, una Classmap o una lista di file da includere](https://getcomposer.org/doc/04-schema.md#autoload).
+Inoltre e' possibile anche utilizzare `autoload-dev` dedicato all'ambiente di sviluppo.
 
 Quando aggiungi o modifichi una chiave, dovrai ricompilare l'autoload attraverso:
 
@@ -184,7 +184,7 @@ composer clear-cache
 
 ## Argomenti che non sono stati (ancora) discussi in questo tutorial
 
-* Creare e distribuire pacchetti persona su Packagist.org o altrove
+* Creare e distribuire pacchetti personali su Packagist.org o altrove
 * Pre- e post- script hooks: eseguire operazioni quando vengono eseguiti degli eventi
 
 ### References
