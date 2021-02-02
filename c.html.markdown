@@ -154,7 +154,7 @@ int main (int argc, char** argv)
   // [1, 2, 0, 0, 0]
   // NOTE that you get away without explicitly declaring the size 
   // of the array IF you initialize the array on the same line:
-  char my_array[] = {0};
+  int my_array[] = {0};
   // NOTE that, when not declaring the size, the size of the array is the number 
   // of elements in the initializer. With "{0}", my_array is now of size one: [0]
   // To evaluate the size of the array at run-time, divide its byte size by the
