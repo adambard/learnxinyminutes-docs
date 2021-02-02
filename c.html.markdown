@@ -145,19 +145,25 @@ int main (int argc, char** argv)
   int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
   // (assuming 4-byte words)
 
-  // You can initialize an array to 0 thusly:
-  char my_array[20] = {0};
+  // You can initialize an array of twenty ints that all equal 0 thusly:
+  int my_array[20] = {0};
   // where the "{0}" part is called an "array initializer".
-  // NOTE that you get away without explicitly declaring the size of the array,
-  // IF you initialize the array on the same line. So, the following declaration
-  // is equivalent:
+  // All elements (if any) past the ones in the initializer are initialized to 0:
+  int my_array[5] = {1, 2};
+  // So my_array now has five elements, all but the first two of which are 0: 
+  // [1, 2, 0, 0, 0]
+  // NOTE that you get away without explicitly declaring the size 
+  // of the array IF you initialize the array on the same line:
   char my_array[] = {0};
-  // BUT, then you have to evaluate the size of the array at run-time, like this:
+  // NOTE that, when not declaring the size, the size of the array is the number 
+  // of elements in the initializer. With "{0}", my_array is now of size one: [0]
+  // To evaluate the size of the array at run-time, divide its byte size by the
+  // byte size of its element type:
   size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
-  // WARNING If you adopt this approach, you should evaluate the size *before*
-  // you begin passing the array to function (see later discussion), because
-  // arrays get "downgraded" to raw pointers when they are passed to functions
-  // (so the statement above will produce the wrong result inside the function).
+  // WARNING You should evaluate the size *before* you begin passing the array 
+  // to functions (see later discussion) because arrays get "downgraded" to 
+  // raw pointers when they are passed to functions (so the statement above 
+  // will produce the wrong result inside the function).
 
   // Indexing an array is like other languages -- or,
   // rather, other languages are like C
