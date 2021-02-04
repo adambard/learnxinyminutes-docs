@@ -426,7 +426,7 @@ data class Counter(var value: Int) {
     operator fun invoke() = println("The value of the counter is $value")
 
 }
-/* You can also overload operators through an extension methods */
+/* You can also overload operators through extension methods */
 // overload -Counter
 operator fun Counter.unaryMinus() = Counter(-this.value)
 
