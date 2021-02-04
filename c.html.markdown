@@ -536,7 +536,8 @@ the function are copies of the original arguments (except arrays). Anything you
 do to the arguments in the function do not change the value of the original
 argument where the function was called.
 
-Use pointers if you need to edit the original argument values.
+Use pointers if you need to edit the original argument values (arrays are always
+passed in as pointers).
 
 Example: in-place string reversal
 */
@@ -547,9 +548,11 @@ void str_reverse(char *str_in)
   char tmp;
   size_t ii = 0;
   size_t len = strlen(str_in); // `strlen()` is part of the c standard library
-                               // NOTE: length returned by `strlen` DOESN'T include the
-                               //       terminating NULL byte ('\0')
-  for (ii = 0; ii < len / 2; ii++) { // in C99 you can directly declare type of `ii` here
+                               // NOTE: length returned by `strlen` DOESN'T
+                               //       include the terminating NULL byte ('\0')
+  // in C99 and newer versions, you can directly declare loop control variables
+  // in the loop's parentheses. e.g., `for (size_t ii = 0; ...`
+  for (ii = 0; ii < len / 2; ii++) {
     tmp = str_in[ii];
     str_in[ii] = str_in[len - ii - 1]; // ii-th char from end
     str_in[len - ii - 1] = tmp;
