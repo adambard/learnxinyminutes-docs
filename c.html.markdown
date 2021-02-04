@@ -649,7 +649,7 @@ struct rectangle {
 
 void function_1()
 {
-  struct rectangle my_rec;
+  struct rectangle my_rec = { 1, 2 }; // Fields can be initialized immediately
 
   // Access struct members with .
   my_rec.width = 10;
@@ -672,6 +672,16 @@ int area(rect r)
 {
   return r.width * r.height;
 }
+
+// Typedefs can also be defined right during struct definition
+typedef struct {
+  int width;
+  int height;
+} rect;
+// Like before, doing this means one can type
+rect r;
+// instead of having to type
+struct rectangle r;
 
 // if you have large structs, you can pass them "by pointer" to avoid copying
 // the whole struct:
