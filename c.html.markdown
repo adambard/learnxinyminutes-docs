@@ -820,7 +820,7 @@ enum traffic_light_state {GREEN, YELLOW, RED};
 Node createLinkedList(int *vals, int len);
 
 /* Beyond the above elements, other definitions should be left to a C source */
-/* file. Excessive includes or definitions should, also not be contained in */
+/* file. Excessive includes or definitions should also not be contained in   */
 /* a header file but instead put into separate headers or a C file.          */
 
 #endif /* End of the if precompiler directive. */
