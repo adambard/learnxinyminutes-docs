@@ -97,7 +97,8 @@ fn main() {
     // This is basically an immutable pair of pointers to a string – it doesn’t
     // actually contain the contents of a string, just a pointer to
     // the begin and a pointer to the end of a string buffer,
-    // statically allocated or contained in another object (in this case, `s`)
+    // statically allocated or contained in another object (in this case, `s`).
+    // The string slice is like a view `&[u8]` into `Vec<T>`.
     let s_slice: &str = &s;
 
     println!("{} {}", s, s_slice); // hello world hello world
