@@ -11,26 +11,28 @@ contributors:
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
     - ["Etan Reisner", "https://github.com/deryni"]
-    - ["Jonathan Wang", "https://github.com/Jonathansw"]   
+    - ["Jonathan Wang", "https://github.com/Jonathansw"]
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
     - ["Martin Nicholson", "https://github.com/mn113"]
 filename: LearnBash.sh
+translators:
+    - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 ---
 
 Bash is a name of the unix shell, which was also distributed as the shell
-for the GNU operating system and as default shell on Linux and Mac OS X.
+for the GNU operating system and as the default shell on most Linux distros.
 Nearly all examples below can be a part of a shell script
 or executed directly in the shell.
 
-[Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
+[Read more here.](https://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
 #!/usr/bin/env bash
 # First line of the script is the shebang which tells the system how to execute
-# the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
+# the script: https://en.wikipedia.org/wiki/Shebang_(Unix)
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
@@ -67,7 +69,7 @@ echo '$Variable' # => $Variable
 # Parameter expansion ${ }:
 echo ${Variable} # => Some string
 # This is a simple usage of parameter expansion
-# Parameter Expansion gets a value from a variable. 
+# Parameter Expansion gets a value from a variable.
 # It "expands" or prints the value
 # During the expansion time the value or parameter can be modified
 # Below are other modifications that add onto this expansion
@@ -86,8 +88,13 @@ echo ${Variable: -5} # => tring
 # String length
 echo ${#Variable} # => 11
 
+# Indirect expansion
+OtherVariable="Variable"
+echo ${!OtherVariable} # => Some String
+# This will expand the value of OtherVariable
+
 # Default value for variable
-echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"} 
+echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
 # => DefaultValueIfFooIsMissingOrEmpty
 # This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
@@ -191,7 +198,7 @@ then
 fi
 # Note that =~ only works within double [[ ]] square brackets,
 # which are subtly different from single [ ].
-# See http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
+# See https://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
 
 # Redefine command `ping` as alias to send only 5 packets
 alias ping='ping -c 5'
@@ -223,7 +230,9 @@ cat file.txt
 
 # We can also read the file using `cat`:
 Contents=$(cat file.txt)
-echo "START OF FILE\n$Contents\nEND OF FILE" # "\n" prints a new line character
+# "\n" prints a new line character
+# "-e" to interpret the newline escape characters as escape characters
+echo -e "START OF FILE\n$Contents\nEND OF FILE"
 # => START OF FILE
 # => [contents of file.txt]
 # => END OF FILE
@@ -244,7 +253,7 @@ cp -r srcDirectory/ dst/ # recursively copy
 # `mv` is also useful for renaming files!
 mv s0urc3.txt dst.txt # sorry, l33t hackers...
 
-# Since bash works in the context of a current directory, you might want to 
+# Since bash works in the context of a current directory, you might want to
 # run your command in some other directory. We have cd for changing location:
 cd ~    # change to home directory
 cd      # also goes to home directory
@@ -280,7 +289,7 @@ for line in sys.stdin:
 EOF
 # Variables will be expanded if the first "EOF" is not quoted
 
-# Run the hello.py Python script with various stdin, stdout, and 
+# Run the hello.py Python script with various stdin, stdout, and
 # stderr redirections:
 python hello.py < "input.in" # pass input.in as input to the script
 
@@ -316,22 +325,25 @@ echo "#helloworld" | tee output.out >/dev/null
 # WARNING: `rm` commands cannot be undone
 rm -v output.out error.err output-and-error.log
 rm -r tempDir/ # recursively delete
+# You can install the `trash-cli` Python package to have `trash`
+# which puts files in the system trash and doesn't delete them directly
+# see https://pypi.org/project/trash-cli/ if you want to be careful
 
 # Commands can be substituted within other commands using $( ):
 # The following command displays the number of files and directories in the
 # current directory.
 echo "There are $(ls | wc -l) items here."
 
-# The same can be done using backticks `` but they can't be nested - 
-#the preferred way is to use $( ).
+# The same can be done using backticks `` but they can't be nested -
+# the preferred way is to use $( ).
 echo "There are `ls | wc -l` items here."
 
 # Bash uses a `case` statement that works similarly to switch in Java and C++:
 case "$Variable" in
-    #List patterns for the conditions you want to meet
+    # List patterns for the conditions you want to meet
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
-    *) echo "It is not null.";;
+    *) echo "It is not null.";;  # match everything
 esac
 
 # `for` loops iterate for as many arguments given:
@@ -364,6 +376,13 @@ done
 # ..or the output from a command
 # This will `cat` the output from `ls`.
 for Output in $(ls)
+do
+    cat "$Output"
+done
+
+# Bash can also accept patterns, like this to `cat`
+# all the Markdown files in current directory
+for Output in ./*.markdown
 do
     cat "$Output"
 done
@@ -422,6 +441,8 @@ cut -d ',' -f 1 file.txt
 # replaces every occurrence of 'okay' with 'great' in file.txt
 # (regex compatible)
 sed -i 's/okay/great/g' file.txt
+# be aware that this -i flag means that file.txt will be changed
+# -i or --in-place erase the input file (use --in-place=.backup to keep a back-up)
 
 # print to stdout all lines of file.txt which match some regex
 # The example prints lines which begin with "foo" and end in "bar"
@@ -439,15 +460,16 @@ grep -rI "^foo.*bar$" someDir/ # recursively `grep`, but ignore binary files
 grep "^foo.*bar$" file.txt | grep -v "baz"
 
 # if you literally want to search for the string,
-# and not the regex, use fgrep (or grep -F)
+# and not the regex, use `fgrep` (or `grep -F`)
 fgrep "foobar" file.txt
 
-# The `trap` command allows you to execute a command whenever your script 
-# receives a signal. Here, `trap` will execute `rm` if it receives any of the 
+# The `trap` command allows you to execute a command whenever your script
+# receives a signal. Here, `trap` will execute `rm` if it receives any of the
 # three listed signals.
 trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
 
 # `sudo` is used to perform commands as the superuser
+# usually it will ask interactively the password of superuser
 NAME1=$(whoami)
 NAME2=$(sudo whoami)
 echo "Was $NAME1, then became more powerful $NAME2"

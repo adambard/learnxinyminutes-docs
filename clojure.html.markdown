@@ -298,8 +298,8 @@ keymap ; => {:a 1, :b 2, :c 3}
 (as-> [1 2 3] input
   (map inc input);=> You can use last transform's output at the last position
   (nth input 2) ;=>  and at the second position, in the same expression
-  (conj [4 5 6] input [8 9 10])) ;=> or in the middle !
-
+  (conj [4 5 6] input 8 9 10)) ;=> or in the middle !
+                               ; Result: [4 5 6 4 8 9 10]
 
 
 ; Modules
@@ -416,3 +416,6 @@ Clojuredocs.org has documentation with examples for most core functions:
 
 Clojure-doc.org (yes, really) has a number of getting started articles:
 [http://clojure-doc.org/](http://clojure-doc.org/)
+
+Clojure for the Brave and True has a great introduction to Clojure and a free online version:
+[https://www.braveclojure.com/clojure-for-the-brave-and-true/](https://www.braveclojure.com/clojure-for-the-brave-and-true/)

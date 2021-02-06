@@ -8,6 +8,7 @@ translators:
     - ["João Farias", "https://github.com/JoaoGFarias"]
     - ["Elton Viana", "https://github.com/eltonvs"]
     - ["Cássio Böck", "https://github.com/cassiobsilva"]
+    - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
 lang: pt-br
 filename: c-pt.el
 ---
@@ -641,7 +642,7 @@ typedef void (*minha_função_type)(char *);
 Este é *o* livro sobre C, escrito pelos criadores da linguagem. Mas cuidado - ele é antigo e contém alguns erros (bem,
 ideias que não são mais consideradas boas) ou práticas ultrapassadas.
 
-Outra boa referência é [Learn C the hard way](http://c.learncodethehardway.org/book/).
+Outra boa referência é [Learn C the hard way](http://learncodethehardway.org/c/).
 
 Se você tem uma pergunta, leia [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 

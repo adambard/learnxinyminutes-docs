@@ -180,7 +180,7 @@ fun helloWorld(val name : String) {
 
     // destructuring in "for" loop
     for ((a, b, c) in listOf(fooData)) {
-        println("$a $b $c") // => 1 100 4
+        println("$a $b $c") // => 1 2 4
     }
 
     val mapData = mapOf("a" to 1, "b" to 2)
@@ -350,10 +350,21 @@ fun helloWorld(val name : String) {
 
 // Enum classes are similar to Java enum types.
 enum class EnumExample {
-    A, B, C
+    A, B, C // Enum constants are separated with commas.
 }
-
 fun printEnum() = println(EnumExample.A) // => A
+
+// Since each enum is an instance of the enum class, they can be initialized as:
+enum class EnumExample(val value: Int) {
+    A(value = 1),
+    B(value = 2),
+    C(value = 3)
+}
+fun printProperty() = println(EnumExample.A.value) // => 1
+
+// Every enum has properties to obtain its name and ordinal(position) in the enum class declaration:
+fun printName() = println(EnumExample.A.name) // => A
+fun printPosition() = println(EnumExample.A.ordinal) // => 0
 
 /*
 The "object" keyword can be used to create singleton objects.
@@ -415,7 +426,7 @@ data class Counter(var value: Int) {
     operator fun invoke() = println("The value of the counter is $value")
 
 }
-/* You can also overload operators through an extension methods */
+/* You can also overload operators through extension methods */
 // overload -Counter
 operator fun Counter.unaryMinus() = Counter(-this.value)
 

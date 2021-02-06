@@ -30,9 +30,9 @@ But ansible is way more! It provides execution plans, an API, library, and callb
 
 #### Pros
 
-* It is an agent-less tools In most scenarios, it use ssh as a transport layer.
+* It is an agent-less tool. In most scenarios, it uses ssh as a transport layer.
 In some way you can use it as 'bash on steroids'.
-* It is very easy to start. If you are familiar with ssh concept - you already
+* It is very easy to start. If you are familiar with the concept of ssh - you already
 know Ansible (ALMOST).
 * It executes 'as is' - other tools (salt, puppet, chef - might execute in
 different scenario than you would expect)
@@ -176,7 +176,7 @@ instances in the cloud, execute shell command). The simplest module is called
 Example of modules:
 
 * Module: `ping` - the simplest module that is useful to verify host connectivity
-* Module: `shell` - a module that executes shell command on a specified host(s).
+* Module: `shell` - a module that executes a shell command on a specified host(s).
 
 
 ```bash
@@ -204,13 +204,13 @@ the module subsystem (useful to install python2.7)
 Execution of a single Ansible **module** is called a **task**. The simplest
 module is called `ping` as you could see above.
 
-Another example of the module that allow you to execute command remotly on
+Another example of the module that allows you to execute a command remotely on
 multiple resources is called `shell`. See above how you were using them already.
 
 ### Playbook
 
 **Execution plan** written in a form of script file(s) is called **playbook**.
-Playbook consist of multiple elements -
+Playbooks consist of multiple elements -
 * a list (or group) of hosts that 'the play' is executed against
 * `task(s)` or `role(s)` that are going to be executed
 * multiple optional settings (like default variables, and way more)
@@ -247,7 +247,7 @@ Note: Example playbook is explained in the next chapter: 'Roles'
 
 ### Inventory
 
-Inventory is a set of objects or hosts, against which we are executing our
+An inventory is a set of objects or hosts, against which we are executing our
 playbooks or single tasks via shell commands. For these few minutes, let's
 assume that we are using the default ansible inventory (which in Debian based
 system is placed in `/etc/ansible/hosts`).
@@ -303,11 +303,11 @@ Role can be included in your playbook (executed via your playbook).
 ```
 
 #### For remaining examples we would use additional repository
-This example install ansible in `virtualenv` so it is independend from a system.
-You need to initialize it into your shell-context with `source environment.sh`
+This example installs ansible in `virtualenv` so it is independent from the system.
+You need to initialize it into your shell-context with the `source environment.sh`
 command.
 
-We are going to use this repository with examples: [https://github.com/sirkubax/ansible-for-learnXinYminutes]()
+We are going to use this repository with examples: [https://github.com/sirkubax/ansible-for-learnXinYminutes](https://github.com/sirkubax/ansible-for-learnXinYminutes)
 
 ```bash
 $ # The following example contains a shell-prompt to indicate the venv and relative path
@@ -513,7 +513,7 @@ $ # Now we would run the above playbook with roles
 You can use the jinja in the CLI too
 
 ```bash
-ansible -m shell -a 'echo {{ my_variable }}` -e 'my_variable=something, playbook_parameter=twentytwo" localhost
+ansible -m shell -a 'echo {{ my_variable }}' -e 'my_variable=something, playbook_parameter=twentytwo' localhost
 ```
 
 In fact - jinja is used to template parts of the playbooks too
@@ -551,7 +551,7 @@ provides a way to encrypt confidential files so you can store them in the
 repository, yet the files are decrypted on-the-fly during ansible execution.
 
 The best way to use it is to store the secret in some secure location, and
-configure ansible to use during runtime.
+configure ansible to use them during runtime.
 
 ```bash
 # Try (this would fail)
@@ -588,7 +588,7 @@ You might like to know, that you can build your inventory dynamically.
 deliver that to ansible - anything is possible.
 
 You do not need to reinvent the wheel - there are plenty of ready to use
-inventory scripts for most popular Cloud providers and a lot of in-house
+inventory scripts for the most popular Cloud providers and a lot of in-house
 popular usecases.
 
 [AWS example](http://docs.ansible.com/ansible/latest/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script)
@@ -614,7 +614,7 @@ callback_whitelist = profile_tasks
 
 ### facts-cache and ansible-cmdb
 
-You can pull some information about your environment from another hosts.
+You can pull some information about your environment from another host.
 If the information does not change - you may consider using a facts_cache
 to speed things up.
 

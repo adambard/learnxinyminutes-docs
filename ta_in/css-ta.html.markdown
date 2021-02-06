@@ -233,6 +233,48 @@ css முன்னுரிமை பின்வருமாறு
 * `B` இது அடுத்தது.
 * `D` இதுவே கடைசி .
 
+## Media Queries [மீடியா குரிஸ்]
+
+CSS மீடியா குரிஸ் CSS 3 அம்சங்கள். பயன்படுத்தும் கணினி, கைபேசி அல்லது சாதனத்தின் பிஸேல் டென்சிட்டிக்கு ஏற்றவாறு மீடியா குரிஸ் விதிகளை பயன்படுத்தலாம்.
+
+```css
+/* அனைத்து டேவிஸ்களுக்கும் பொதுவான விதி */
+h1 {
+  font-size: 2em;
+  color: white;
+  background-color: black;
+}
+
+/* பிரிண்ட் செய்யும்போது h1 கலர் மாற்ற */
+@media print {
+  h1 {
+    color: black;
+    background-color: white;
+  }
+}
+
+/* 480 பிஸேல்ளுக்கு மேல் சிகிரீன் அளவு உள்ள சாதனத்தில் எழுத்து அளவு மிகை படுத்த   */
+@media screen and (min-width: 480px) {
+  h1 {
+    font-size: 3em;
+    font-weight: normal;
+  }
+}
+```
+
+மீடியா குரிஸ் வழங்கும் அம்சங்கள் :
+`width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. இவையுள் பெரும்பான்மை `min-` அல்லது `max-` வுடன் பயன்படுத்தலாம் .
+
+`resolution` பழைய சாதனங்களில் பயன்படாது, எனவே `device-pixel-ratio` பயன்படுத்தவும்.
+
+பல கைபேசி மற்றும் கணினிகள், வீடு கணினி திரை அளவு காட்ட முற்படும். எனவே `viewport` மெட்டா டேக் பயன்படுத்தவும்.
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+</head>
+```
+
 ## css அம்சங்களின் பொருந்தகூடிய தன்மை
 
 பெரும்பாலான css 2 வின் அம்சங்கள் எல்லா உலாவிகளிலும் , கருவிகளிலும் உள்ளன. ஆனால் முன்கூட்டியே அந்த அம்சங்களை பரிசோதிப்பது நல்லது.

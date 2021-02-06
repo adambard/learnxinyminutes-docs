@@ -16,7 +16,7 @@ This article will focus only on TypeScript extra syntax, as opposed to
 [JavaScript](/docs/javascript).
 
 To test TypeScript's compiler, head to the
-[Playground] (http://www.typescriptlang.org/Playground) where you will be able
+[Playground](https://www.typescriptlang.org/play) where you will be able
 to type code, have auto completion and directly see the emitted JavaScript.
 
 ```ts
@@ -114,7 +114,7 @@ class Point {
   }
 
   // Functions
-  dist() { return Math.sqrt(this.x * this.x + this.y * this.y); }
+  dist(): number { return Math.sqrt(this.x * this.x + this.y * this.y); }
 
   // Static members
   static origin = new Point(0, 0);
@@ -137,7 +137,7 @@ class Point3D extends Point {
   }
 
   // Overwrite
-  dist() {
+  dist(): number {
     let d = super.dist();
     return Math.sqrt(d * d + this.z * this.z);
   }
@@ -199,7 +199,7 @@ interface Person {
 }
 
 var p1: Person = { name: "Tyrone", age: 42 };
-p1.age = 25; // Error, p1.x is read-only
+p1.age = 25; // Error, p1.age is read-only
 
 var p2 = { name: "John", age: 60 };
 var p3: Person = p2; // Ok, read-only alias for p2
@@ -224,6 +224,19 @@ moreNumbers.push(5); // Error, no push method (because it mutates array)
 moreNumbers.length = 3; // Error, length is read-only
 numbers = moreNumbers; // Error, mutating methods are missing
 
+// Tagged Union Types for modelling state that can be in one of many shapes
+type State = 
+  | { type: "loading" }
+  | { type: "success", value: number }
+  | { type: "error", message: string };
+
+declare const state: State;
+if (state.type === "success") {
+  console.log(state.value);
+} else if (state.type === "error") {
+  console.error(state.message);
+}
+
 // Iterators and Generators
 
 // for..of statement
@@ -235,17 +248,33 @@ for (const val of arrayOfAnyType) {
 
 let list = [4, 5, 6];
 for (const i of list) {
-   console.log(i); // "4", "5", "6"
+   console.log(i); // 4, 5, 6
 }
 
 // for..in statement
 // iterate over the list of keys on the object being iterated
 for (const i in list) {
-   console.log(i); // "0", "1", "2",
+   console.log(i); // 0, 1, 2
 }
 
+// Type Assertion
 
+let foo = {} // Creating foo as an empty object
+foo.bar = 123 // Error: property 'bar' does not exist on `{}`
+foo.baz = 'hello world' // Error: property 'baz' does not exist on `{}`
 
+// Because the inferred type of foo is `{}` (an object with 0 properties), you 
+// are not allowed to add bar and baz to it. However with type assertion,
+// the following will pass:
+
+interface Foo { 
+  bar: number;
+  baz: string;
+}
+
+let foo = {} as Foo; // Type assertion here
+foo.bar = 123;
+foo.baz = 'hello world'
 
 ```
 

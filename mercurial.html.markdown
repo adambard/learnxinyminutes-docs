@@ -350,6 +350,6 @@ $ hg remove *.txt
 
 ## Further information
 
-* [Learning Mercurial in Workflows](https://www.mercurial-scm.org/guid)
+* [Learning Mercurial in Workflows](https://www.mercurial-scm.org/guide)
 * [Mercurial Quick Start](https://www.mercurial-scm.org/wiki/QuickStart)
 * [Mercurial: The Definitive Guide by Bryan O'Sullivan](http://hgbook.red-bean.com/)

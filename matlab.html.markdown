@@ -234,7 +234,7 @@ A'  % Concise version of complex transpose
 % On their own, the arithmetic operators act on whole matrices. When preceded
 % by a period, they act on each element instead. For example:
 A * B % Matrix multiplication
-A .* B % Multiple each element in A by its corresponding element in B
+A .* B % Multiply each element in A by its corresponding element in B
 
 % There are several pairs of functions, where one acts on each element, and
 % the other (whose name ends in m) acts on the whole matrix.

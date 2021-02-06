@@ -147,7 +147,7 @@ o objeto '10' no slot 'x' e retornará o objeto original"
 
 # Protótipos
 
-Não existem classes em Self. A maneira de obter um objeto é encontrar um protótipo e copia-lo.
+Não existem classes em Self. A maneira de obter um objeto é encontrar um protótipo e copiá-lo.
 
 ```
 | d |

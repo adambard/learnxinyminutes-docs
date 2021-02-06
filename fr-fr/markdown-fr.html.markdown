@@ -178,8 +178,8 @@ Vous pouvez également utiliser des sous-listes.
 1. Item un
 2. Item deux
 3. Item trois
-* Sub-item
-* Sub-item
+   * Sub-item 
+   * Sub-item
 4. Item quatre
 ```
 
@@ -230,7 +230,7 @@ En Markdown GitHub, vous pouvez utiliser des syntaxes spécifiques.
     ```
 
 Pas besoin d'indentation pour le code juste au-dessus, de plus, GitHub 
-va utiliser une coloration syntaxique pour le langage indiqué après les ```.
+va utiliser une coloration syntaxique pour le langage indiqué après les <code>```</code>.
 
 ## Ligne Horizontale
 
@@ -267,13 +267,13 @@ Markdown supporte aussi les liens relatifs.
 
 Les liens de références sont eux aussi disponibles en Markdown.
 
-```md
-[Cliquez ici][link1] pour plus d'information!
-[Regardez aussi par ici][foobar] si vous voulez.
+<div class="highlight"><code><pre>
+[<span class="nv">Cliquez ici</span>][<span class="ss">link1</span>] pour plus d'information!
+[<span class="nv">Regardez aussi par ici</span>][<span class="ss">foobar</span>] si vous voulez.
 
-[link1]: http://test.com/ "Cool!"
-[foobar]: http://foobar.biz/ "Génial!"
-```
+[<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Cool!"</span>
+[<span class="nv">foobar</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Génial!"</span>
+</pre></code></div>
 
 Le titre peut aussi être entouré de guillemets simples, ou de parenthèses, ou
 absent. Les références peuvent être placées où vous voulez dans le document et
@@ -282,11 +282,11 @@ les identifiants peuvent être n'importe quoi tant qu'ils sont uniques.
 Il y a également le nommage implicite qui transforme le texte du lien en
 identifiant.
 
-```md
-[Ceci][] est un lien.
+<div class="highlight"><code><pre>
+[<span class="nv">Ceci</span>][] est un lien.
 
-[ceci]: http://ceciestunlien.com/
-```
+[<span class="nv">Ceci</span>]:<span class="sx">http://ceciestunlien.com/</span>
+</pre></code></div>
 
 Mais ce n'est pas beaucoup utilisé.
 
@@ -302,11 +302,11 @@ d'un point d'exclamation!
 Là aussi, on peut utiliser le mode "références".
 
 
-```md
-![Ceci est l'attribut ALT de l'image][monimage]
+<div class="highlight"><code><pre>
+![<span class="nv">Ceci est l'attribut ALT de l'image</span>][<span class="ss">monimage</span>]
 
-[monimage]: relative/urls/cool/image.jpg "si vous voulez un titre, c'est ici."
-```
+[<span class="nv">monimage</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"si vous voulez un titre, c'est ici."</span>
+</pre></code></div>
 
 ## Divers
 

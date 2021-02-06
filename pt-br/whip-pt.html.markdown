@@ -71,7 +71,7 @@ false
 (= 1 1) ; => true
 (equal 2 1) ; => false
 
-; Por exemplo, inigualdade pode ser verificada combinando as funções
+; Por exemplo, desigualdade pode ser verificada combinando as funções
 ;`not` e `equal`.
 (! (= 2 1)) ; => true
 

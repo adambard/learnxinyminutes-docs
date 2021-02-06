@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
 filename: learnrust.rs
@@ -22,7 +22,7 @@ currently available in the nightly builds. Rust has adopted a train-based releas
 model with regular releases every six weeks. Rust 1.1 beta was made available at
 the same time of the release of Rust 1.0.
 
-Although Rust is a relatively low-level language, Rust has some functional
+Although Rust is a relatively low-level language, it has some functional
 concepts that are generally found in higher-level languages. This makes
 Rust not only fast, but also easy and efficient to code in.
 
@@ -181,13 +181,19 @@ fn main() {
 
     impl<T> Foo<T> {
         // Methods take an explicit `self` parameter
-        fn get_bar(self) -> T {
+        fn bar(&self) -> &T { // self is borrowed
+            &self.bar
+        }
+        fn bar_mut(&mut self) -> &mut T { // self is mutably borrowed
+            &mut self.bar
+        }
+        fn into_bar(self) -> T { // here self is consumed
             self.bar
         }
     }
 
     let a_foo = Foo { bar: 1 };
-    println!("{}", a_foo.get_bar()); // 1
+    println!("{}", a_foo.bar()); // 1
 
     // Traits (known as interfaces or typeclasses in other languages) //
 
@@ -308,7 +314,7 @@ fn main() {
     // Reference – an immutable pointer that refers to other data
     // When a reference is taken to a value, we say that the value has been ‘borrowed’.
     // While a value is borrowed immutably, it cannot be mutated or moved.
-    // A borrow lasts until the end of the scope it was created in.
+    // A borrow is active until the last use of the borrowing variable.
     let mut var = 4;
     var = 3;
     let ref_var: &i32 = &var;
@@ -317,6 +323,8 @@ fn main() {
     println!("{}", *ref_var);
     // var = 5; // this would not compile because `var` is borrowed
     // *ref_var = 6; // this would not either, because `ref_var` is an immutable reference
+    ref_var; // no-op, but counts as a use and keeps the borrow active
+    var = 2; // ref_var is no longer used after the line above, so the borrow has ended
 
     // Mutable reference
     // While a value is mutably borrowed, it cannot be accessed at all.
@@ -327,6 +335,7 @@ fn main() {
     println!("{}", *ref_var2); // 6 , // var2 would not compile.
     // ref_var2 is of type &mut i32, so stores a reference to an i32, not the value.
     // var2 = 2; // this would not compile because `var2` is borrowed.
+    ref_var2; // no-op, but counts as a use and keeps the borrow active until here
 }
 ```
 

@@ -33,7 +33,7 @@ diretamente no shell.
 # Exemplo simples de hello world:
 echo Hello World!
 
-# Cada comando começa com uma nova linha, ou após um ponto virgula:
+# Cada comando começa com uma nova linha, ou após um ponto e vírgula:
 echo 'Essa é a primeira linha'; echo 'Essa é a segunda linha'
 
 # A declaração de variáveis é mais ou menos assim
@@ -41,14 +41,14 @@ Variavel="Alguma string"
 
 # Mas não assim:
 Variavel = "Alguma string"
-# Bash interpretará Variavel como um comando e tentará executar e lhe retornar
+# Bash interpretará Variavel como um comando e tentará executar e lhe retornará
 # um erro porque o comando não pode ser encontrado.
 
 # Ou assim:
 Variavel= 'Alguma string'
-# Bash interpretará 'Alguma string' como um comando e tentará executar e lhe retornar
-# um erro porque o comando não pode ser encontrado. (Nesse caso a a parte 'Variavel=' 
-# é vista com uma declaração de variável valida apenas para o escopo do comando 'Uma string').
+# Bash interpretará 'Alguma string' como um comando e tentará executar e lhe retornará
+# um erro porque o comando não pôde ser encontrado. (Nesse caso a a parte 'Variavel=' 
+# é vista com uma declaração de variável válida apenas para o escopo do comando 'Uma string').
 
 # Usando a variável:
 echo $Variavel
@@ -65,15 +65,15 @@ echo ${Variavel/Alguma/Uma}
 # Substring de uma variável
 Tamanho=7
 echo ${Variavel:0:Tamanho}
-# Isso retornará apenas os 7 primeiros caractéres da variável
+# Isso retornará apenas os 7 primeiros caracteres da variável
 
 # Valor padrão de uma variável
 echo ${Foo:-"ValorPadraoSeFooNaoExistirOuEstiverVazia"}
 # Isso funciona para nulo (Foo=) e (Foo=""); zero (Foo=0) retorna 0.
-# Note que isso apenas retornar o valor padrão e não mudar o valor da variável.
+# Note que isso apenas retornará o valor padrão e não mudará o valor da variável.
 
 # Variáveis internas
-# Tem algumas variáveis internas bem uteis, como
+# Tem algumas variáveis internas bem úteis, como
 echo "O ultimo retorno do programa: $?"
 echo "PID do script: $$"
 echo "Numero de argumentos passados para o script $#"
@@ -86,7 +86,7 @@ read Nome # Note que nós não precisamos declarar a variável
 echo Ola, $Nome
 
 # Nós temos a estrutura if normal:
-# use 'man test' para mais infomações para as condicionais
+# use 'man test' para mais informações para as condicionais
 if [ $Nome -ne $USER ]
 then
 	echo "Seu nome não é o seu username"
@@ -109,7 +109,7 @@ then
 	echo "Isso vai rodar se $Nome é Daniela ou Jose."
 fi
 
-# Expressões são denotadas com o seguinte formato
+# Expressões são escritas com o seguinte formato
 echo $(( 10 + 5))
 
 # Diferentemente das outras linguagens de programação, bash é um shell, então ele 
@@ -118,9 +118,9 @@ echo $(( 10 + 5))
 ls
 
 #Esse comando tem opções que controlam sua execução
-ls -l # Lista todo arquivo e diretorio em linhas separadas
+ls -l # Lista todo arquivo e diretório em linhas separadas
 
-# Os resultados do comando anterior pode ser passado para outro comando como input.
+# Os resultados do comando anterior podem ser passados para outro comando como input.
 # O comando grep filtra o input com o padrão passado. É assim que listamos apenas
 # os arquivos .txt no diretório atual:
 ls -l | grep "\.txt"
@@ -165,7 +165,7 @@ echo "#helloworld" | tee output.out > /dev/null
 rm -v output.out error.err output-and-error.log
 
 # Comando podem ser substituídos por outros comandos usando $( ):
-# O comando a seguir mostra o número de arquivos e diretórios no diretorio atual
+# O comando a seguir mostra o número de arquivos e diretórios no diretório atual
 echo "Existem $(ls | wc -l) itens aqui."
 
 # O mesmo pode ser feito usando crase `` mas elas não podem ser aninhadas - dá se 
@@ -241,14 +241,14 @@ head -n 10 arquivo.txt
 sort arquivo.txt
 # reporta ou omite as linhas repetidas, com -d você as reporta
 uniq -d arquivo.txt
-# exibe apenas a primeira coluna após o caráctere ','
+# exibe apenas a primeira coluna após o caractere ','
 cut -d ',' -f 1 arquivo.txt
 # substitui todas as ocorrencias de 'okay' por 'legal' em arquivo.txt (é compativel com regex)
 sed -i 's/okay/legal/g' file.txt
 # exibe para o stdout todas as linhas do arquivo.txt que encaixam com o regex
 # O exemplo exibe linhas que começam com "foo" e terminam com "bar"
 grep "^foo.*bar$" arquivo.txt
-# passe a opção "-c" para ao invês de imprimir o numero da linha que bate com o regex
+# passe a opção "-c" para ao invés de imprimir o número da linha que bate com o regex
 grep -c "^foo.*bar$" arquivo.txt
 # se você quer literalmente procurar por uma string,
 # e não pelo regex, use fgrep (ou grep -F)

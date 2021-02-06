@@ -4,6 +4,7 @@ lang: tr-tr
 filename: learnclojure-tr.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
+    - ["Seçkin KÜKRER", "https://leavenha.github.io"]
 translators:
     - ["Seçkin KÜKRER", "https://leavenha.github.io"]
 ---

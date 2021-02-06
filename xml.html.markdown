@@ -100,8 +100,9 @@ This is what makes XML versatile. It is human readable too. The following docume
 
 A XML document is *well-formed* if it is syntactically correct. However, it is possible to add more constraints to the document, using Document Type Definitions (DTDs). A document whose elements are attributes are declared in a DTD and which follows the grammar specified in that DTD is called *valid* with respect to that DTD, in addition to being well-formed.
 
+Declaring a DTD externally:
+
 ```xml
-<!-- Declaring a DTD externally: -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE bookstore SYSTEM "Bookstore.dtd">
 <!-- Declares that bookstore is our root element and 'Bookstore.dtd' is the path
@@ -114,8 +115,11 @@ A XML document is *well-formed* if it is syntactically correct. However, it is p
     <price>30.00</price>
   </book>
 </bookstore>
+```
 
-<!-- The DTD file: -->
+The DTD file (Bookstore.dtd):
+
+```
 <!ELEMENT bookstore (book+)>
 <!-- The bookstore element may contain one or more child book elements. -->
 <!ELEMENT book (title, price)>
@@ -128,10 +132,11 @@ A XML document is *well-formed* if it is syntactically correct. However, it is p
   only contain text which is read by the parser and must not contain children.
   Compare with CDATA, or character data. -->
 <!ELEMENT price (#PCDATA)>
-]>
+```
 
-<!-- The DTD could be declared inside the XML file itself.-->
+The DTD could be declared inside the XML file itself:
 
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE bookstore [

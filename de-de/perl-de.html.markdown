@@ -8,9 +8,9 @@ translators:
 lang: de-de
 ---
 
-Perl 5 ist eine sehr mächtige, funktionsreiche Programmiersprache mit über 25 Jahren Entwicklungsgeschichte.
+Perl ist eine sehr mächtige, funktionsreiche Programmiersprache mit über 25 Jahren Entwicklungsgeschichte.
 
-Perl 5 läuft auf über 100 Platformen von portablen Geräten bis hin zu Mainframes. Perl 5 ist geeignet für Rapid-Prototyping und auch groß angelegte Entwicklungs-Projekte.
+Perl läuft auf über 100 Platformen von portablen Geräten bis hin zu Mainframes. Perl ist geeignet für Rapid-Prototyping und auch groß angelegte Entwicklungs-Projekte.
 
 ```perl
 # Einzeilige Kommentare beginnen mit dem # Symbol.

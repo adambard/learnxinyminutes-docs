@@ -1,7 +1,7 @@
 ---
 language: elixir
 contributors:
-    - ["Joao Marques", "http://github.com/mrshankly"]
+    - ["Joao Marques", "https://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
     - ["Ryan Plant", "https://github.com/ryanplant-au"]
     - ["Ev Bogdanov", "https://github.com/evbogdanov"]
@@ -439,7 +439,7 @@ self() #=> #PID<0.27.0>
 
 # Create an agent with `Agent.start_link`, passing in a function
 # The initial state of the agent will be whatever that function returns
-{ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
+{:ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
 
 # `Agent.get` takes an agent name and a `fn` that gets passed the current state
 # Whatever that `fn` returns is what you'll get back
@@ -451,9 +451,10 @@ Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 
 ## References
 
-* [Getting started guide](http://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](http://elixir-lang.org)
+* [Getting started guide](https://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](https://elixir-lang.org)
 * [Elixir Documentation](https://elixir-lang.org/docs.html)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
-* [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
-* ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) by Fred Hebert
+* [Elixir Cheat Sheet](https://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
+* ["Learn You Some Erlang for Great Good!"](https://learnyousomeerlang.com/) by Fred Hebert
 * ["Programming Erlang: Software for a Concurrent World"](https://pragprog.com/book/jaerlang2/programming-erlang) by Joe Armstrong
+* [Introduction to Elixir](https://learn-elixir.com/)

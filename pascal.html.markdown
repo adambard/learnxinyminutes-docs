@@ -15,7 +15,7 @@ source : [wikipedia](https://en.wikipedia.org/wiki/Pascal_(programming_language)
 to compile and run a pascal program you could use a free pascal compiler. [Download Here](https://www.freepascal.org/)
 
 ```pascal
-//Anathomy of a Pascal Program
+//Anatomy of a Pascal Program
 //this is a comment
 {
     this is a 

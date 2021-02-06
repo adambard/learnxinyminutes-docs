@@ -20,12 +20,12 @@ gateways and routers.
 # Programs typically contain a .data and .text sections
 
 .data # Section where data is stored in memory (allocated in RAM), similar to
-      # variables in higher level languages
+      # variables in higher-level languages
 
   # Declarations follow a ( label: .type value(s) ) form of declaration
   hello_world: .asciiz "Hello World\n"      # Declare a null terminated string
   num1: .word 42                            # Integers are referred to as words
-                                            # (32 bit value)
+                                            # (32-bit value)
 
   arr1: .word 1, 2, 3, 4, 5                 # Array of words
   arr2: .byte 'a', 'b'                      # Array of chars (1 byte each)
@@ -39,28 +39,30 @@ gateways and routers.
   _float: .float 3.14                       # 4 bytes
   _double: .double 7.0                      # 8 bytes
 
-  .align 2                                  # Memory alignment of data, where 
-                                            # number indicates byte alignment in
-                                            # powers of 2. (.align 2 represents 
-                                            # word alignment since 2^2 = 4 bytes)
+  .align 2                                  # Memory alignment of data, where
+                                            # number indicates byte alignment
+                                            # in powers of 2. (.align 2
+                                            # represents word alignment since
+                                            # 2^2 = 4 bytes)
 
-.text                                       # Section that contains instructions
-                                            # and program logic
+.text                                       # Section that contains 
+                                            # instructions and program logic
 .globl _main                                # Declares an instruction label as
                                             # global, making it accessible to
                                             # other files
 
-  _main:                                    # MIPS programs execute instructions
-                                            # sequentially, where the code under
-                                            # this label will be executed firsts
+  _main:                                    # MIPS programs execute 
+                                            # instructions sequentially, where 
+                                            # the code under this label will be
+                                            # executed first
 
     # Let's print "hello world"
-    la $a0, hello_world                     # Load address of string stored in
-                                            # memory
-    li $v0, 4                               # Load the syscall value (indicating
-                                            # type of functionality)
-    syscall                                 # Perform the specified syscall with
-                                            # the given argument ($a0)
+    la $a0, hello_world                     # Load address of string stored
+                                            # in memory
+    li $v0, 4                               # Load the syscall value (number
+                                            # indicating which syscall to make)
+    syscall                                 # Perform the specified syscall
+                                            # with the given argument ($a0)
 
     # Registers (used to hold data during program execution)
     # $t0 - $t9                             # Temporary registers used for 
@@ -79,22 +81,24 @@ gateways and routers.
 
     # Types of load/store instructions
     la $t0, label                           # Copy the address of a value in
-                                            # memory specified by the label into 
-                                            # register $t0
+                                            # memory specified by the label
+                                            # into register $t0
     lw $t0, label                           # Copy a word value from memory
     lw $t1, 4($s0)                          # Copy a word value from an address
-                                            # stored in a register with an offset 
-                                            # of 4 bytes (addr + 4)
-    lb $t2, label                           # Copy a byte value to the lower order
-                                            # portion of the register $t2
+                                            # stored in a register with an
+                                            # offset of 4 bytes (addr + 4)
+    lb $t2, label                           # Copy a byte value to the 
+                                            # lower order portion of 
+                                            # the register $t2
     lb $t2, 0($s0)                          # Copy a byte value from the source
                                             # address in $s0 with offset 0
     # Same idea with 'lh' for halfwords
 
-    sw $t0, label                           # Store word value into memory address 
-                                            # mapped by label
+    sw $t0, label                           # Store word value into
+                                            # memory address mapped by label
     sw $t0, 8($s0)                          # Store word value into address 
-                                            # specified in $s0 and offset of 8 bytes
+                                            # specified in $s0 and offset of
+                                            # 8 bytes
     # Same idea using 'sb' and 'sh' for bytes and halfwords. 'sa' does not exist
 
 ### Math ###
@@ -108,20 +112,22 @@ gateways and routers.
     mul $t2, $t0, $t1                       # $t2 = $t0 * $t1
     div $t2, $t0, $t1                       # $t2 = $t0 / $t1 (Might not be 
                                             # supported in some versons of MARS)
-    div $t0, $t1                            # Performs $t0 / $t1. Get the quotient
-                                            # using 'mflo' and remainder using 'mfhi'
+    div $t0, $t1                            # Performs $t0 / $t1. Get the 
+                                            # quotient using 'mflo' and 
+                                            # remainder using 'mfhi'
 
     # Bitwise Shifting
     sll $t0, $t0, 2                         # Bitwise shift to the left with 
                                             # immediate (constant value) of 2
-    sllv $t0, $t1, $t2                      # Shift left by a variable amount in
-                                            # register
+    sllv $t0, $t1, $t2                      # Shift left by a variable amount
+                                            # in register
     srl $t0, $t0, 5                         # Bitwise shift to the right (does 
-                                            # not sign preserve, sign-extends with 0)
-    srlv $t0, $t1, $t2                      # Shift right by a variable amount in
-                                            # a register
-    sra $t0, $t0, 7                         # Bitwise arithmetic shift to the right 
-                                            # (preserves sign)
+                                            # not sign preserve, sign-extends 
+                                            # with 0)
+    srlv $t0, $t1, $t2                      # Shift right by a variable amount 
+                                            # in a register
+    sra $t0, $t0, 7                         # Bitwise arithmetic shift to  
+                                            # the right (preserves sign)
     srav $t0, $t1, $t2                      # Shift right by a variable amount 
                                             # in a register
 
@@ -139,14 +145,15 @@ gateways and routers.
     # The basic format of these branching instructions typically follow <instr>
     # <reg1> <reg2> <label> where label is the label we want to jump to if the
     # given conditional evaluates to true
-    # Sometimes it is easier to write the conditional logic backwards, as seen
+    # Sometimes it is easier to write the conditional logic backward, as seen
     # in the simple if statement example below
 
     beq $t0, $t1, reg_eq                    # Will branch to reg_eq if
                                             # $t0 == $t1, otherwise
                                             # execute the next line
     bne $t0, $t1, reg_neq                   # Branches when $t0 != $t1
-    b branch_target                         # Unconditional branch, will always execute
+    b branch_target                         # Unconditional branch, will 
+                                            # always execute
     beqz $t0, req_eq_zero                   # Branches when $t0 == 0
     bnez $t0, req_neq_zero                  # Branches when $t0 != 0
     bgt $t0, $t1, t0_gt_t1                  # Branches when $t0 > $t1
@@ -155,8 +162,9 @@ gateways and routers.
     blt $t0, $t1, t0_gt_t1                  # Branches when $t0 < $t1
     ble $t0, $t1, t0_gte_t1                 # Branches when $t0 <= $t1
     bltz $t0, t0_lt0                        # Branches when $t0 < 0
-    slt $s0, $t0, $t1                       # Instruction that sends a signal when
-                                            # $t0 < $t1 with reuslt in $s0 (1 for true)
+    slt $s0, $t0, $t1                       # Instruction that sends a signal 
+                                            # when $t0 < $t1 with result in $s0 
+                                            # (1 for true)
 
     # Simple if statement
     # if (i == j)
@@ -183,14 +191,14 @@ gateways and routers.
     #     max = c;
 
     # Let $s0 = a, $s1 = b, $s2 = c, $v0 = return register
-    ble $s0, $s1, a_LTE_b                   # if (a <= b) branch(a_LTE_b)
-    ble $s0, $s2, max_C                     # if (a > b && a <=c) branch(max_C)
+    ble $s0, $s1, a_LTE_b                   # if(a <= b) branch(a_LTE_b)
+    ble $s0, $s2, max_C                     # if(a > b && a <=c) branch(max_C)
     move $v0, $s1                           # else [a > b && a > c] max = a
     j done                                  # Jump to the end of the program
 
     a_LTE_b:                                # Label for when a <= b
-      ble $s1, $s2, max_C                   # if (a <= b && b <= c) branch(max_C)
-      move $v0, $s1                         # if (a <= b && b > c) max = b
+      ble $s1, $s2, max_C                   # if(a <= b && b <= c) branch(max_C)
+      move $v0, $s1                         # if(a <= b && b > c) max = b
       j done                                # Jump to done
 
     max_C:
@@ -201,12 +209,14 @@ gateways and routers.
 ## LOOPS ##
   _loops:
     # The basic structure of loops is having an exit condition and a jump 
-    instruction to continue its execution
+    # instruction to continue its execution
     li $t0, 0
     while:
-      bgt $t0, 10, end_while                # While $t0 is less than 10, keep iterating
+      bgt $t0, 10, end_while                # While $t0 is less than 10, 
+                                            # keep iterating
       addi $t0, $t0, 1                      # Increment the value
-      j while                               # Jump back to the beginning of the loop
+      j while                               # Jump back to the beginning of 
+                                            # the loop
     end_while:
 
     # 2D Matrix Traversal
@@ -246,7 +256,8 @@ gateways and routers.
 
       # How about recursion?
       # This is a bit more work since we need to make sure we save and restore
-      # the previous PC in $ra since jal will automatically overwrite on each call
+      # the previous PC in $ra since jal will automatically overwrite 
+      # on each call
       li $a0, 3
       jal fact
 
@@ -289,12 +300,12 @@ gateways and routers.
 
 ## MACROS ##
   _macros:
-    # Macros are extremly useful for substituting repeated code blocks with a
+    # Macros are extremely useful for substituting repeated code blocks with a
     # single label for better readability
     # These are in no means substitutes for functions
     # These must be declared before it is used
 
-    # Macro for printing new lines (since these can be very repetitive)
+    # Macro for printing newlines (since these can be very repetitive)
     .macro println()
       la $a0, newline                     # New line string stored here
       li $v0, 4
@@ -338,7 +349,7 @@ gateways and routers.
   buffer: .space 128                        # Allocates a block in memory, does
                                             # not automatically clear
                                             # These blocks of memory are aligned
-                                            # next each other
+                                            # next to each other
 
 .text
   la $s0, list                              # Load address of list

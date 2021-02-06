@@ -82,12 +82,12 @@ pushed to other repositories, or not!
 ### Branch
 
 A branch is essentially a pointer to the last commit you made. As you go on
-committing, this pointer will automatically update to point the latest commit.
+committing, this pointer will automatically update to point to the latest commit.
 
 ### Tag
 
 A tag is a mark on specific point in history. Typically people use this
-functionality to mark release points (v1.0, and so on)
+functionality to mark release points (v1.0, and so on).
 
 ### HEAD and head (component of .git dir)
 

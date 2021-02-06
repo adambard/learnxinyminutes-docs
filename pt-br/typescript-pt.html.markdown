@@ -10,11 +10,11 @@ lang: pt-br
 
 Typescript é uma linguagem que visa facilitar o desenvolvimento de aplicações em grande escala escritos em JavaScript.
 Typescript acrescenta conceitos comuns como classes, módulos, interfaces, genéricos e (opcional) tipagem estática para JavaScript.
-É um super conjunto de JavaScript: todo o código JavaScript é o código do texto dactilografado válido para que possa ser adicionados diretamente a qualquer projeto. O compilador emite typescript JavaScript.
+É um super conjunto de JavaScript: todo o código JavaScript é TypeScript válido então ele pode ser adicionado diretamente a qualquer projeto. O compilador emite TypeScript JavaScript.
 
-Este artigo irá se concentrar apenas em texto datilografado sintaxe extra, ao contrário de [JavaScript](javascript-pt.html.markdown).
+Este artigo irá se concentrar apenas na sintaxe extra do TypeScript, ao contrário de [JavaScript](javascript-pt.html.markdown).
 
-Para testar compilador do texto datilografado, de cabeça para o [Parque](http://www.typescriptlang.org/Playground), onde você vai ser capaz de escrever código, ter auto conclusão e ver diretamente o JavaScript emitida.
+Para testar o compilador TypeScript, vá para o [Playground](http://www.typescriptlang.org/Playground), onde você vai ser capaz de escrever código, ter auto conclusão e ver diretamente o JavaScript emitido.
 
 ```js
 // Existem 3 tipos básicos no TypeScript
@@ -22,7 +22,7 @@ var isDone: boolean = false;
 var lines: number = 42;
 var name: string = "Anders";
 
-// Quando é impossível saber, há o "Qualquer" tipo
+// Quando é impossível saber, há o tipo "Qualquer"
 var notSure: any = 4;
 notSure = "maybe a string instead";
 notSure = false; // Ok, definitivamente um boolean
@@ -44,13 +44,13 @@ function bigHorribleAlert(): void {
 // Funções são cidadãos de primeira classe, apoiar a sintaxe lambda "seta gordura" e
 // Tipo de uso inferência
 
-// A seguir são equivalentes, a mesma assinatura será inferido pelo
-// Compilador, e mesmo JavaScript será emitido
+// A seguir são equivalentes, a mesma assinatura será inferida pelo
+// Compilador, e o mesmo JavaScript será emitido
 var f1 = function(i: number): number { return i * i; }
-// Tipo de retorno inferida
+// Tipo de retorno inferido
 var f2 = function(i: number) { return i * i; }
 var f3 = (i: number): number => { return i * i; }
-// Tipo de retorno inferida
+// Tipo de retorno inferido
 var f4 = (i: number) => { return i * i; }
 // Tipo de retorno inferido, one-liner significa nenhuma palavra-chave retorno necessário
 var f5 = (i: number) =>  i * i;
@@ -65,7 +65,7 @@ interface Person {
   move(): void;
 }
 
-// Objeto que implementa a "Pessoa" Interface
+// Objeto que implementa a Interface "Pessoa"
 // Pode ser tratado como uma pessoa desde que tem o nome e mover propriedades
 var p: Person = { name: "Bobby", move: () => {} };
 // Os objetos que têm a propriedade opcional:
@@ -88,7 +88,7 @@ class Point {
   // Propriedades
     x: number;
 
-    // Construtor - the public/private keywords in this context will generate
+    // Construtor - as palavras-chave public/private nesse contexto irão gerar
     // o código clichê para a propriedade e a inicialização no
     // construtor.
     // Neste exemplo, "y" será definida como "X" é, mas com menos código

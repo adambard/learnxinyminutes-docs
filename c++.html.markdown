@@ -2,16 +2,16 @@
 language: c++
 filename: learncpp.cpp
 contributors:
-    - ["Steven Basart", "http://github.com/xksteven"]
+    - ["Steven Basart", "https://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]
     - ["Geoff Liu", "http://geoffliu.me"]
-    - ["Connor Waters", "http://github.com/connorwaters"]
-    - ["Ankush Goyal", "http://github.com/ankushg07"]
+    - ["Connor Waters", "https://github.com/connorwaters"]
+    - ["Ankush Goyal", "https://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
 ---
 
 C++ is a systems programming language that,
-[according to its inventor Bjarne Stroustrup](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote),
+[according to its inventor Bjarne Stroustrup](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote),
 was designed to
 
 - be a "better C"
@@ -37,7 +37,7 @@ one of the most widely-used programming languages.
 // Just like in C, your program's entry point is a function called
 // main with an integer return type.
 // This value serves as the program's exit status.
-// See http://en.wikipedia.org/wiki/Exit_status for more information.
+// See https://en.wikipedia.org/wiki/Exit_status for more information.
 int main(int argc, char** argv)
 {
     // Command line arguments are passed in by argc and argv in the same way
@@ -72,7 +72,7 @@ void func(); // function which may accept any number of arguments
 int* ip = nullptr;
 
 // C standard headers are available in C++.
-// C headers end in .h, while 
+// C headers end in .h, while
 // C++ headers are prefixed with "c" and have no ".h" suffix.
 
 // The C++ standard version:
@@ -199,10 +199,10 @@ int main()
    cin >> myInt;
 
    // cout can also be formatted
-   cout << "Your favorite number is " << myInt << "\n";
+   cout << "Your favorite number is " << myInt << '\n';
    // prints "Your favorite number is <myInt>"
 
-    cerr << "Used for error messages";
+   cerr << "Used for error messages";
 }
 
 //////////
@@ -461,7 +461,7 @@ void Dog::print() const
 
 Dog::~Dog()
 {
-    std::cout << "Goodbye " << name << "\n";
+    std::cout << "Goodbye " << name << '\n';
 }
 
 int main() {
@@ -483,7 +483,7 @@ public:
     void setOwner(const std::string& dogsOwner);
 
     // Override the behavior of the print function for all OwnedDogs. See
-    // http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
+    // https://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
     // for a more general introduction if you are unfamiliar with
     // subtype polymorphism.
     // The override keyword is optional but makes sure you are actually
@@ -504,7 +504,7 @@ void OwnedDog::setOwner(const std::string& dogsOwner)
 void OwnedDog::print() const
 {
     Dog::print(); // Call the print function in the base Dog class
-    std::cout << "Dog is owned by " << owner << "\n";
+    std::cout << "Dog is owned by " << owner << '\n';
     // Prints "Dog is <name> and weights <weight>"
     //        "Dog is owned by <owner>"
 }
@@ -553,10 +553,14 @@ Point Point::operator+(const Point& rhs) const
     return Point(x + rhs.x, y + rhs.y);
 }
 
+// It's good practice to return a reference to the leftmost variable of
+// an assignment. `(a += b) == c` will work this way.
 Point& Point::operator+=(const Point& rhs)
 {
     x += rhs.x;
     y += rhs.y;
+    
+    // `this` is a pointer to the object, on which a method is called.
     return *this;
 }
 
@@ -612,7 +616,7 @@ boxOfBox.insert(intBox);
 //   template<typename T>
 // instead. The 'class' keyword and 'typename' keywords are _mostly_
 // interchangeable in this case. For the full explanation, see
-//   http://en.wikipedia.org/wiki/Typename
+//   https://en.wikipedia.org/wiki/Typename
 // (yes, that keyword has its own Wikipedia page).
 
 // Similarly, a template function:
@@ -656,7 +660,7 @@ printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
 /////////////////////
 
 // The standard library provides a few exception types
-// (see http://en.cppreference.com/w/cpp/error/exception)
+// (see https://en.cppreference.com/w/cpp/error/exception)
 // but any type can be thrown as an exception
 #include <exception>
 #include <stdexcept>
@@ -757,7 +761,7 @@ failure:
 // things are a little cleaner, but still sub-optimal.
 void doSomethingWithAFile(const char* filename)
 {
-    FILE* fh = fopen(filename, "r"); // Open the file in read mode
+    FILE* fh = fopen(filename, "r"); // Open the file in shared_ptrread mode
     if (fh == nullptr)
         throw std::runtime_error("Could not open the file.");
 
@@ -811,6 +815,57 @@ void doSomethingWithAFile(const std::string& filename)
 
 
 /////////////////////
+// Smart Pointer
+/////////////////////
+
+// Generally a smart pointer is a class which wraps a "raw pointer" (usage of "new"
+// respectively malloc/calloc in C). The goal is to be able to
+// manage the lifetime of the object being pointed to without ever needing to explicitly delete 
+// the object. The term itself simply describes a set of pointers with the
+// mentioned abstraction.
+// Smart pointers should preferred over raw pointers, to prevent
+// risky memory leaks, which happen if you forget to delete an object.
+
+// Usage of a raw pointer:
+Dog* ptr = new Dog();
+ptr->bark();
+delete ptr;
+
+// By using a smart pointer, you don't have to worry about the deletion
+// of the object anymore.
+// A smart pointer describes a policy, to count the references to the
+// pointer. The object gets destroyed when the last
+// reference to the object gets destroyed.
+
+// Usage of "std::shared_ptr":
+void foo()
+{
+// It's no longer necessary to delete the Dog.
+std::shared_ptr<Dog> doggo(new Dog());
+doggo->bark();
+}
+
+// Beware of possible circular references!!!
+// There will be always a reference, so it will be never destroyed!
+std::shared_ptr<Dog> doggo_one(new Dog());
+std::shared_ptr<Dog> doggo_two(new Dog());
+doggo_one = doggo_two; // p1 references p2
+doggo_two = doggo_one; // p2 references p1
+
+// There are several kinds of smart pointers. 
+// The way you have to use them is always the same.
+// This leads us to the question: when should we use each kind of smart pointer?
+// std::unique_ptr - use it when you just want to hold one reference to
+// the object.
+// std::shared_ptr - use it when you want to hold multiple references to the
+// same object and want to make sure that it's deallocated
+// when all references are gone.
+// std::weak_ptr - use it when you want to access
+// the underlying object of a std::shared_ptr without causing that object to stay allocated.
+// Weak pointers are used to prevent circular referencing.
+
+
+/////////////////////
 // Containers
 /////////////////////
 
@@ -860,7 +915,7 @@ ST.erase(20);  // Will erase element with value 20
 // Set ST: 10 30
 // To iterate through Set we use iterators
 set<int>::iterator it;
-for(it=ST.begin();it<ST.end();it++) {
+for(it=ST.begin();it!=ST.end();it++) {
 	cout << *it << endl;
 }
 // Output:
@@ -873,7 +928,7 @@ cout << ST.size();  // will print the size of set ST
 // Output: 0
 
 // NOTE: for duplicate elements we can use multiset
-// NOTE: For hash sets, use unordered_set. They are more efficient but 
+// NOTE: For hash sets, use unordered_set. They are more efficient but
 // do not preserve order. unordered_set is available since C++11
 
 // Map
@@ -891,7 +946,7 @@ mymap.insert(pair<char,int>('Z',26));
 // To iterate
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second << '\n';
+    std::cout << it->first << "->" << it->second << std::cout;
 // Output:
 // A->1
 // Z->26
@@ -902,7 +957,7 @@ cout << it->second;
 
 // Output: 26
 
-// NOTE: For hash maps, use unordered_map. They are more efficient but do 
+// NOTE: For hash maps, use unordered_map. They are more efficient but do
 // not preserve order. unordered_map is available since C++11.
 
 // Containers with object keys of non-primitive values (custom classes) require
@@ -975,7 +1030,7 @@ sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
         return weight[lhs] < weight[rhs];
     });
 // Note we captured "weight" by reference in the above example.
-// More on Lambdas in C++ : http://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11
+// More on Lambdas in C++ : https://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11
 
 ///////////////////////////////
 // Range For (C++11 and above)
@@ -1051,7 +1106,8 @@ f1 = f2;
 
 #include<tuple>
 
-// Conceptually, Tuples are similar to  old data structures (C-like structs) but instead of having named data members,
+// Conceptually, Tuples are similar to old data structures (C-like structs)
+// but instead of having named data members,
 // its elements are accessed by their order in the tuple.
 
 // We start with constructing a tuple.
@@ -1062,33 +1118,33 @@ const int maxL = 15;
 auto second = make_tuple(maxN, maxL);
 
 // Printing elements of 'first' tuple
-cout << get<0>(first) << " " << get<1>(first) << "\n"; //prints : 10 A
+cout << get<0>(first) << " " << get<1>(first) << '\n'; //prints : 10 A
 
 // Printing elements of 'second' tuple
-cout << get<0>(second) << " " << get<1>(second) << "\n"; // prints: 1000000000 15
+cout << get<0>(second) << " " << get<1>(second) << '\n'; // prints: 1000000000 15
 
 // Unpacking tuple into variables
 
 int first_int;
 char first_char;
 tie(first_int, first_char) = first;
-cout << first_int << " " << first_char << "\n";  // prints : 10 A
+cout << first_int << " " << first_char << '\n';  // prints : 10 A
 
 // We can also create tuple like this.
 
 tuple<int, char, double> third(11, 'A', 3.14141);
 // tuple_size returns number of elements in a tuple (as a constexpr)
 
-cout << tuple_size<decltype(third)>::value << "\n"; // prints: 3
+cout << tuple_size<decltype(third)>::value << '\n'; // prints: 3
 
 // tuple_cat concatenates the elements of all the tuples in the same order.
 
 auto concatenated_tuple = tuple_cat(first, second, third);
 // concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A', 3.14141)
 
-cout << get<0>(concatenated_tuple) << "\n"; // prints: 10
-cout << get<3>(concatenated_tuple) << "\n"; // prints: 15
-cout << get<5>(concatenated_tuple) << "\n"; // prints: 'A'
+cout << get<0>(concatenated_tuple) << '\n'; // prints: 10
+cout << get<3>(concatenated_tuple) << '\n'; // prints: 15
+cout << get<5>(concatenated_tuple) << '\n'; // prints: 'A'
 
 
 ///////////////////////////////////

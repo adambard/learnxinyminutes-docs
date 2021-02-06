@@ -1,7 +1,7 @@
 ---
 language: javascript
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 filename: javascript-ru.js
 translators:
@@ -420,7 +420,7 @@ myObj.__proto__ = myPrototype;
 myObj.meaningOfLife; // = 42
 
 // Для функций это тоже работает.
-myObj.myFunc(); // = "Привет, мир!"
+myObj.myFunc(); // = "привет, мир!"
 
 // Если интерпретатор не найдёт свойство в прототипе, то продожит поиск
 // в прототипе прототипа и так далее.

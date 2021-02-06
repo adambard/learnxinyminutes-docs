@@ -10,9 +10,9 @@ translators:
 lang: pt-br
 ---
 
-Perl 5 é, uma linguagem de programação altamente capaz, rica em recursos, com mais de 25 anos de desenvolvimento.
+Perl é, uma linguagem de programação altamente capaz, rica em recursos, com mais de 25 anos de desenvolvimento.
 
-Perl 5 roda em mais de 100 plataformas, de portáteis a mainframes e é adequada tanto para prototipagem rápida, quanto em projetos de desenvolvimento em grande escala.
+Perl roda em mais de 100 plataformas, de portáteis a mainframes e é adequada tanto para prototipagem rápida, quanto em projetos de desenvolvimento em grande escala.
 
 ```perl
 # Comentários de uma linha começam com um sinal de número.

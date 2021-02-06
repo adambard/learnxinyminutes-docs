@@ -317,8 +317,8 @@ a > 0 {
 
 # Aqui está um exemplo rápido de um script simples, o tipo de coisa que o AWK
 # é perfeito para fazer. Ele irá ler um nome da entrada padrão e depois
-imprimirá a média de idade de todos com esse primeiro nome. Digamos que você
-forneça como argumento o nome de um arquivo com esses dados:
+# imprimirá a média de idade de todos com esse primeiro nome. Digamos que você
+# forneça como argumento o nome de um arquivo com esses dados:
 
 # Bob Jones 32
 # Jane Doe 22

@@ -181,6 +181,21 @@ class Foo {
 }
 
 /*
+  Methods with optional parameters
+*/
+
+// A method can have default values for parameters
+def say(msg = 'Hello', name = 'world') {
+    "$msg $name!"
+}
+
+// It can be called in 3 different ways
+assert 'Hello world!' == say()
+// Right most parameter with default value is eliminated first.
+assert 'Hi world!' == say('Hi')
+assert 'learn groovy' == say('learn', 'groovy')
+
+/*
   Logical Branching and Looping
 */
 

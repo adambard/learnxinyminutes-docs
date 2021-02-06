@@ -116,7 +116,7 @@ function bar(a, b, c)
 end
 
 x, y = bar('zaphod')  --> prints "zaphod  nil nil"
--- Now x = 4, y = 8, values 15..42 are discarded.
+-- Now x = 4, y = 8, values 15...42 are discarded.
 
 -- Functions are first-class, may be local/global.
 -- These are the same:
@@ -395,7 +395,7 @@ g()  -- Prints out 343; nothing printed before now.
 I was excited to learn Lua so I could make games
 with the <a href="http://love2d.org/">Love 2D game engine</a>. That's the why.
 
-I started with <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
+I started with <a href="https://ebens.me/post/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
 Next I read the official <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> book.
 That's the how.
 

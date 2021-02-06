@@ -2,7 +2,7 @@
 language: yaml
 filename: learnyaml.yaml
 contributors:
-- [Adam Brenecki, 'https://github.com/adambrenecki']
+- [Leigh Brenecki, 'https://leigh.net.au']
 - [Suhas SG, 'https://github.com/jargnar']
 ---
 
@@ -38,6 +38,8 @@ however: 'A string, enclosed in quotes.'
 'Keys can be quoted too.': "Useful if you want to put a ':' in your key."
 single quotes: 'have ''one'' escape pattern'
 double quotes: "have many: \", \0, \t, \u263A, \x0d\x0a == \r\n, and more."
+# UTF-8/16/32 characters need to be encoded
+Superscript two: \u00B2
 
 # Multiple-line strings can be written either as a 'literal block' (using |),
 # or a 'folded block' (using '>').
@@ -125,11 +127,11 @@ base: &base
 # indicate that all the keys of one or more specified maps should be inserted
 # into the current map.
 
-foo: &foo
+foo:
   <<: *base
   age: 10
 
-bar: &bar
+bar:
   <<: *base
   age: 20
 
@@ -182,5 +184,5 @@ set2:
 
 ### More Resources
 
-+ [YAML official website](http://yaml.org/)
++ [YAML official website](https://yaml.org/)
 + [Online YAML Validator](http://www.yamllint.com/)
