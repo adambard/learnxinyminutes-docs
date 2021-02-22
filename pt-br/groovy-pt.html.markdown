@@ -1,7 +1,7 @@
 ---
 language: Groovy
 category: language
-filename: learngroovy.groovy
+filename: learngroovy-pt.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
@@ -14,10 +14,10 @@ Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http:
 ```groovy
 
 /*
-  Prepara-se:
+  Prepare-se:
 
   1) Instale a máquina virtual de Groovy - http://gvmtool.net/
-  2) Intalse o Groovy: gvm install groovy
+  2) Instale o Groovy: gvm install groovy
   3) Inicie o console groovy digitando: groovyConsole
 
 */
@@ -104,7 +104,7 @@ tecnologiasOrdenadas = tecnologias.sort( false )
 
 /*** Manipulando listas ***/
 
-//Substitue todos os elementos da lista
+//Substitui todos os elementos da lista
 Collections.replaceAll(tecnologias, 'Gradle', 'gradle')
 
 //Desorganiza a lista
@@ -159,7 +159,7 @@ println devMap.values()
       usará este campo.
 
     * Se você quer uma propriedade private ou protected, você deve prover seus
-      próprios getters e setter, que devem ser declarados como private ou protected.
+      próprios getters e setters, que devem ser declarados como private ou protected.
 
     * Se você acessar uma propriedade dentro da classe e esta propriedade é definida
       em tempo de compilação com 'this', implícito ou explícito (por exemplo,
@@ -226,15 +226,17 @@ for (i in array) {
 
 //Itera sobre um mapa
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
-x = 0
+x = ""
 for ( e in map ) {
     x += e.value
+    x += " "
 }
+assert x.equals("Roberto Grails Groovy ")
 
 /*
   Operadores
 
-  Sobrecarregamento de Operadores para uma lsita dos operadores comuns que
+  Sobrecarga de Operadores para uma lista dos operadores comuns que
   Grooby suporta:
   http://www.groovy-lang.org/operators.html#Operator-Overloading
 
@@ -252,7 +254,7 @@ def nomeUsuario = usuario?.nomeUsuario
 
 /*
   Closures
-  Um closure, em Grooby, é como um "bloco de código" ou um ponteiro para método.
+  Um closure, em Groovy, é como um "bloco de código" ou um ponteiro para método.
   É um pedação de código que é definido e executado em um momento posterior.
 
   Mais informação em: http://www.groovy-lang.org/closures.html
@@ -267,7 +269,7 @@ clos()
 def soma = { a, b -> println a+b }
 soma(2,4)
 
-//Closdures por referir-se a variáveis que não estão listadas em sua
+//Closures podem referir-se a variáveis que não estão listadas em sua
 //lista de parêmetros.
 def x = 5
 def multiplicarPor = { num -> num * x }
@@ -307,7 +309,7 @@ chamaClosure(3, 4)
 /*
   Expando
 
-  A classe Expando é um bean dinâmico que permite adicionar propriedade e 
+  A classe Expando é um bean dinâmico que permite adicionar propriedades e 
   closures como métodos a uma instância desta classe
 
   http://mrhaki.blogspot.mx/2009/10/groovy-goodness-expando-as-dynamic-bean.html

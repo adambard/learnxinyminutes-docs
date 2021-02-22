@@ -1,11 +1,13 @@
 ---
 language: bf
-lang: zh-cn
+filename: brainfuck-cn.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["lyuehh", "https://github.com/lyuehh"]
+lang: zh-cn
+
 ---
 
 Brainfuck 是一个极小的只有8个指令的图灵完全的编程语言。

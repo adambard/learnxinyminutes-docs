@@ -1,7 +1,7 @@
 ---
 language: javascript
 contributors:
-    - ['Adam Brenecki', 'http://adam.brenecki.id.au']
+    - ['Leigh Brenecki', 'https://leigh.net.au']
     - ['Ariel Krakowski', 'http://www.learneroo.com']
 translators:
   - ["Rasendran Kirushan", "https://github.com/kirushanr"]
@@ -22,8 +22,8 @@ javascript 1995 ஆம்  ஆண்டு Netscape இல் பணிபுர
 V8 JavaScript engine Node .js உதவியுடன் இயங்குகிறது .
 
 உங்கள் கருத்துக்கள் மிகவும் வரவேற்கபடுகின்றன , என்னுடன் தொடர்புகொள்ள 
-[@adambrenecki](https://twitter.com/adambrenecki), or
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au).
+[@ExcitedLeigh](https://twitter.com/ExcitedLeigh), or
+[l@leigh.net.au](mailto:l@leigh.net.au).
 
 ```js
 // குறிப்புக்கள் C நிரலாக்கத்தை ஒத்தது .ஒரு வரி குறிப்புக்கள்  "//" குறியீடுடன் ஆரம்பமாகும் 

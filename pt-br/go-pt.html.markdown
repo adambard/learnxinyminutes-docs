@@ -16,7 +16,7 @@ A linguagem Go foi criada a partir da necessidade de ver trabalho feito. Não
 forma de resolver os problemas do mundo real.
 
 Tem conceitos familiares de linguagens imperativas com tipagem estática. É 
-rápida a compilar e rápida a executar, acrescentando mecanismos de concorrência
+rápida para compilar e rápida para executar, acrescentando mecanismos de concorrência
 fáceis de entender para tirar partido dos CPUs multi-core de hoje em dia, e tem
 recursos para ajudar com a programação em larga escala.
 
@@ -39,10 +39,10 @@ import (
 )
 
 // Definição de uma função. Main é especial. É o ponto de entrada para o
-// programa executável. Goste-se ou não, a linguagem Go usa chavetas.
+// programa executável. Goste-se ou não, a linguagem Go usa chaves.
 func main() {
     // A função Println envia uma linha para stdout.
-    // É necessário qualifica-la com o nome do pacote, fmt.
+    // É necessário qualificá-la com o nome do pacote, fmt.
     fmt.Println("Olá Mundo!")
 
     // Chama outra função dentro deste pacote.

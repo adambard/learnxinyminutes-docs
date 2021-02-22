@@ -1,5 +1,6 @@
 ---
 language: purescript
+filename: purescript.purs
 contributors:
     - ["Fredrik Dyrkell", "http://www.lexicallyscoped.com"]
     - ["Thimoteus", "https://github.com/Thimoteus"]
@@ -65,12 +66,13 @@ true && (9 >= 19 || 1 < 2) -- true
 """Hello
 world""" -- "Hello\nworld"
 -- Concatenate
-"such " ++ "amaze" -- "such amaze"
+"such " <> "amaze" -- "such amaze"
 
 --
 -- 2. Arrays are Javascript arrays, but must be homogeneous
 
-[1,1,2,3,5,8] :: Array Number -- [1,1,2,3,5,8]
+[1,1,2,3,5,8] :: Array Int -- [1,1,2,3,5,8]
+[1.2,2.0,3.14] :: Array Number -- [1.2,2.0,3.14]
 [true, true, false] :: Array Boolean -- [true,true,false]
 -- [1,2, true, "false"] won't work
 -- `Cannot unify Prim.Int with Prim.Boolean`
@@ -85,7 +87,7 @@ head [1,2,3] -- Just (1)
 tail [3,2,1] -- Just ([2,1])
 init [1,2,3] -- Just ([1,2])
 last [3,2,1] -- Just (1)
--- Random access - indexing
+-- Array access - indexing
 [3,4,5,6,7] !! 2 -- Just (5)
 -- Range
 1..5 -- [1,2,3,4,5]

@@ -731,7 +731,10 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 ///////////////////////////////////////
 // Blocks are statements of code, just like a function, that are able to be used as data.
 // Below is a simple block with an integer argument that returns the argument plus 4.
-int (^addUp)(int n); // Declare a variable to store the block.
+^(int n) {
+    return n + 4;
+}
+int (^addUp)(int n); // Declare a variable to store a block.
 void (^noParameterBlockVar)(void); // Example variable declaration of block with no arguments.
 // Blocks have access to variables in the same scope. But the variables are readonly and the
 // value passed to the block is the value of the variable when the block is created.
@@ -786,7 +789,7 @@ MyClass *newVar = [classVar retain]; // If classVar is released, object is still
 // Automatic Reference Counting (ARC)
 // Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
 // ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC,
-// you must not use retain, relase, or autorelease
+// you must not use retain, release, or autorelease
 MyClass *arcMyClass = [[MyClass alloc] init];
 // ... code using arcMyClass
 // Without ARC, you will need to call: [arcMyClass release] after you're done using arcMyClass. But with ARC,

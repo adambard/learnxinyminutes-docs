@@ -181,6 +181,21 @@ class Foo {
 }
 
 /*
+  Methods with optional parameters
+*/
+
+// A method can have default values for parameters
+def say(msg = 'Hello', name = 'world') {
+    "$msg $name!"
+}
+
+// It can be called in 3 different ways
+assert 'Hello world!' == say()
+// Right most parameter with default value is eliminated first.
+assert 'Hi world!' == say('Hi')
+assert 'learn groovy' == say('learn', 'groovy')
+
+/*
   Logical Branching and Looping
 */
 
@@ -230,10 +245,12 @@ for (i in array) {
 
 //Iterate over a map
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
-x = 0
+x = ""
 for ( e in map ) {
     x += e.value
+    x += " "
 }
+assert x.equals("Roberto Grails Groovy ")
 
 /*
   Operators

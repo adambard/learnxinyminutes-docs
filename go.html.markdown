@@ -12,23 +12,31 @@ contributors:
     - ["Alexej Friesen", "https://github.com/heyalexej"]
     - ["Clayton Walker", "https://github.com/cwalk"]
     - ["Leonid Shevtsov", "https://github.com/leonid-shevtsov"]
+    - ["Michael Graf", "https://github.com/maerf0x0"]
+    - ["John Arundel", "https://github.com/bitfield"]
 ---
 
 Go was created out of the need to get work done. It's not the latest trend
-in computer science, but it is the newest fastest way to solve real-world
+in programming language theory, but it is a way to solve real-world
 problems.
 
-It has familiar concepts of imperative languages with static typing.
+It draws concepts from imperative languages with static typing.
 It's fast to compile and fast to execute, it adds easy-to-understand
-concurrency to leverage today's multi-core CPUs, and has features to
-help with large-scale programming.
+concurrency because multi-core CPUs are now common, and it's used successfully
+in large codebases (~100 million loc at Google, Inc.).
 
-Go comes with a great standard library and an enthusiastic community.
+Go comes with a good standard library and a sizeable community.
 
 ```go
 // Single line comment
 /* Multi-
  line comment */
+
+ /* A build tag is a line comment starting with // +build
+  and can be executed by go build -tags="foo bar" command.
+  Build tags are placed before the package clause near or at the top of the file
+  followed by a blank line or other line comments. */
+// +build prod, dev, test
 
 // A package clause starts every source file.
 // Main is a special name declaring an executable rather than a library.
@@ -48,7 +56,7 @@ import (
 // executable program. Love it or hate it, Go uses brace brackets.
 func main() {
 	// Println outputs a line to stdout.
-	// Qualify it with the package name, fmt.
+	// It comes from the package fmt.
 	fmt.Println("Hello world!")
 
 	// Call another function within this package.
@@ -99,15 +107,25 @@ can include line breaks.` // Same string type.
 
 	// Arrays have size fixed at compile time.
 	var a4 [4]int           // An array of 4 ints, initialized to all 0.
-	a3 := [...]int{3, 1, 5} // An array initialized with a fixed size of three
-	// elements, with values 3, 1, and 5.
+	a5 := [...]int{3, 1, 5, 10, 100} // An array initialized with a fixed size of five
+	// elements, with values 3, 1, 5, 10, and 100.
+
+	// Arrays have value semantics.
+	a4_cpy := a4            // a4_cpy is a copy of a4, two separate instances.
+	a4_cpy[0] = 25          // Only a4_cpy is changed, a4 stays the same.
+	fmt.Println(a4_cpy[0] == a4[0]) // false
 
 	// Slices have dynamic size. Arrays and slices each have advantages
 	// but use cases for slices are much more common.
-	s3 := []int{4, 5, 9}    // Compare to a3. No ellipsis here.
+	s3 := []int{4, 5, 9}    // Compare to a5. No ellipsis here.
 	s4 := make([]int, 4)    // Allocates slice of 4 ints, initialized to all 0.
 	var d2 [][]float64      // Declaration only, nothing allocated here.
 	bs := []byte("a slice") // Type conversion syntax.
+
+	// Slices (as well as maps and channels) have reference semantics.
+	s3_cpy := s3            // Both variables point to the same instance.
+	s3_cpy[0] = 0           // Which means both are updated.
+	fmt.Println(s3_cpy[0] == s3[0]) // true	
 
 	// Because they are dynamic, slices can be appended to on-demand.
 	// To append elements to a slice, the built-in append() function is used.
@@ -134,7 +152,7 @@ can include line breaks.` // Same string type.
 
 	// Unused variables are an error in Go.
 	// The underscore lets you "use" a variable but discard its value.
-	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a3, s4, bs
+	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a5, s4, bs
 	// Usually you use it to ignore one of the return values of a function
 	// For example, in a quick and dirty script you might ignore the
 	// error value returned from os.Create, and expect that the file
@@ -161,10 +179,11 @@ func learnNamedReturns(x, y int) (z int) {
 
 // Go is fully garbage collected. It has pointers but no pointer arithmetic.
 // You can make a mistake with a nil pointer, but not by incrementing a pointer.
+// Unlike in C/Cpp taking and returning an address of a local varible is also safe. 
 func learnMemory() (p, q *int) {
 	// Named return values p and q have type pointer to int.
 	p = new(int) // Built-in function new allocates memory.
-	// The allocated int is initialized to 0, p is no longer nil.
+	// The allocated int slice is initialized to 0, p is no longer nil.
 	s := make([]int, 20) // Allocate 20 ints as a single block of memory.
 	s[3] = 7             // Assign one of them.
 	r := -2              // Declare another local variable.
@@ -180,7 +199,7 @@ func learnFlowControl() {
 	if true {
 		fmt.Println("told ya")
 	}
-	// Formatting is standardized by the command line command "go fmt."
+	// Formatting is standardized by the command line command "go fmt".
 	if false {
 		// Pout.
 	} else {
@@ -190,7 +209,7 @@ func learnFlowControl() {
 	x := 42.0
 	switch x {
 	case 0:
-	case 1:
+	case 1, 2: // Can have multiple matches on one case
 	case 42:
 		// Cases don't "fall through".
 		/*
@@ -202,6 +221,19 @@ func learnFlowControl() {
 	default:
 		// Default case is optional.
 	}
+
+	// Type switch allows switching on the type of something instead of value
+	var data interface{}
+	data = ""
+	switch c := data.(type) {
+	case string:
+		fmt.Println(c, "is a string")
+	case int64:
+		fmt.Printf("%d is an int64\n", c)
+	default:
+		// all other cases
+	}
+
 	// Like if, for doesn't use parens either.
 	// Variables declared in for and if are local to their scope.
 	for x := 0; x < 3; x++ { // ++ is a statement.
@@ -277,7 +309,8 @@ func sentenceFactory(mystring string) func(before, after string) string {
 }
 
 func learnDefer() (ok bool) {
-	// Deferred statements are executed just before the function returns.
+	// A defer statement pushes a function call onto a list. The list of saved
+	// calls is executed AFTER the surrounding function returns.
 	defer fmt.Println("deferred statements execute in reverse (LIFO) order.")
 	defer fmt.Println("\nThis line is being printed first because")
 	// Defer is commonly used to close a file, so the function closing the
@@ -295,7 +328,7 @@ type pair struct {
 	x, y int
 }
 
-// Define a method on type pair. Pair now implements Stringer.
+// Define a method on type pair. Pair now implements Stringer because Pair has defined all the methods in the interface.
 func (p pair) String() string { // p is called the "receiver"
 	// Sprintf is another public function in package fmt.
 	// Dot syntax references fields of p.
@@ -427,7 +460,7 @@ There you can follow the tutorial, play interactively, and read lots.
 Aside from a tour, [the docs](https://golang.org/doc/) contain information on
 how to write clean and effective Go code, package and command docs, and release history.
 
-The language definition itself is highly recommended. It's easy to read
+The [Go language specification](https://golang.org/ref/spec) itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
 
 You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
@@ -439,5 +472,10 @@ idioms. Or you can click on a function name in [the
 documentation](http://golang.org/pkg/) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
+
+There are many excellent conference talks and video tutorials on Go available on YouTube, and here are three playlists of the very best, tailored for beginners, intermediate, and advanced Gophers respectively:
+* [Golang University 101](https://www.youtube.com/playlist?list=PLEcwzBXTPUE9V1o8mZdC9tNnRZaTgI-1P) introduces fundamental Go concepts and shows you how to use the Go tools to create and manage Go code
+* [Golang University 201](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs) steps it up a notch, explaining important techniques like testing, web services, and APIs
+* [Golang University 301](https://www.youtube.com/watch?v=YHRO5WQGh0k&list=PLEcwzBXTPUE8KvXRFmmfPEUmKoy9LfmAf) dives into more advanced topics like the Go scheduler, implementation of maps and channels, and optimisation techniques
 
 Go Mobile adds support for mobile platforms (Android and iOS). You can write all-Go native mobile apps or write a library that contains bindings from a Go package, which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.

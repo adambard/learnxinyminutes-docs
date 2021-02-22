@@ -1,5 +1,6 @@
 ---
 language: bf
+filename: bf-es.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]

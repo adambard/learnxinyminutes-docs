@@ -1,5 +1,6 @@
 ---
 language: bf
+filename: learnbf-ru.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]

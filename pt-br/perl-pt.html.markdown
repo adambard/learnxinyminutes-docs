@@ -10,9 +10,9 @@ translators:
 lang: pt-br
 ---
 
-Perl 5 é, uma linguagem de programação altamente capaz, rica em recursos, com mais de 25 anos de desenvolvimento.
+Perl é, uma linguagem de programação altamente capaz, rica em recursos, com mais de 25 anos de desenvolvimento.
 
-Perl 5 roda em mais de 100 plataformas, de portáteis a mainframes e é adequada tanto para prototipagem rápida, quanto em projetos de desenvolvimento em grande escala.
+Perl roda em mais de 100 plataformas, de portáteis a mainframes e é adequada tanto para prototipagem rápida, quanto em projetos de desenvolvimento em grande escala.
 
 ```perl
 # Comentários de uma linha começam com um sinal de número.
@@ -21,7 +21,7 @@ Perl 5 roda em mais de 100 plataformas, de portáteis a mainframes e é adequada
 
 # Variáveis iniciam com um sigilo, que é um símbolo que mostra o tipo.
 # Um nome de variável válido começa com uma letra ou sublinhado,
-# seguido por qualquer número de letras, números ou sublinhados.
+# seguido por qualquer quantidade de letras, números ou sublinhados.
 
 ### Perl has three main variable types: $scalar, @array, e %hash.
 
@@ -52,10 +52,10 @@ my %fruta_cor = (
   banana => "amarelo",
 );
 
-# Scalars, arrays and hashes são documentados mais profundamentes em perldata.
+# Scalars, arrays and hashes são documentados mais profundamente em perldata.
 # (perldoc perldata).
 
-# Mais tipos de dados complexos podem ser construídas utilizando referências,
+# Mais tipos de dados complexos podem ser construídos utilizando referências,
 # o que permite que você crie listas e hashes dentro de listas e hashes.
 
 #### Condicionais e construtores de iteração

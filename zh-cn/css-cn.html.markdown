@@ -132,7 +132,7 @@ div.some-parent.class-name {}
     font-family: Arial;
     font-family: "Courier New"; /* 使用双引号包裹含空格的字体名称 */
     font-family: "Courier New", Trebuchet, Arial; /* 如果第一个
-    						 字体没找到，浏览器会使用第二个字体，一次类推 */
+    						 字体没找到，浏览器会使用第二个字体，以此类推 */
 }
 
 ```

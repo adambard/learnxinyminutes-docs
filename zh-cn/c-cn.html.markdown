@@ -41,7 +41,7 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 void function_1(char c);
 void function_2(void);
 
-// 如果函数出现在main()之后，那么必须在main()之前
+// 如果函数调用在main()之后，那么必须声明在main()之前
 // 先声明一个函数原型
 int add_two_ints(int x1, int x2); // 函数原型
 
@@ -128,7 +128,7 @@ printf("Enter the array size: "); // 询问用户数组长度
 char buf[0x100];
 fgets(buf, sizeof buf, stdin);
 
-// stroul 将字符串解析为无符号整数
+// strtoul 将字符串解析为无符号整数
 size_t size = strtoul(buf, NULL, 10);
 int var_length_array[size]; // 声明VLA
 printf("sizeof array = %zu\n", sizeof var_length_array);
@@ -612,7 +612,7 @@ typedef void (*my_fnp_type)(char *);
 最好找一本 [K&R, aka "The C Programming Language", “C程序设计语言”](https://en.wikipedia.org/wiki/The_C_Programming_Language)。它是关于C最重要的一本书，由C的创作者撰写。不过需要留意的是它比较古老了，因此有些不准确的地方。
 
 
-另一个比较好的资源是 [Learn C the hard way](http://c.learncodethehardway.org/book/)
+另一个比较好的资源是 [Learn C the hard way](http://learncodethehardway.org/c/)
 
 如果你有问题，请阅读[compl.lang.c Frequently Asked Questions](http://c-faq.com/)。
 

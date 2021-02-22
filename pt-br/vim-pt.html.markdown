@@ -5,15 +5,16 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["David Lima", "https://github.com/davelima"]
+    - ["Raul Almeida", "https://github.com/almeidaraul"]
 lang: pt-br
 filename: LearnVim-pt.txt
 ---
 
 
-[Vim](www.vim.org)
+[Vim](http://www.vim.org)
 (Vi IMproved - Vi Melhorado) é um clone do editor vi para Unix. Ele é um
 editor de texto projetado para ter velocidade e produtividade, e está presente
-na maioria dos systemas UNIX. O editor tem um grande número de atalhos de teclado
+na maioria dos sistemas UNIX. O editor tem um grande número de atalhos de teclado
 para agilizar a navegação para pontos específicos no arquivo, além de edição rápida.
 
 ## Navegação do Vim: o básico
@@ -24,8 +25,9 @@ para agilizar a navegação para pontos específicos no arquivo, além de ediç�
     :w               # Salva o arquivo atual
     :wq              # Salva o arquivo e fecha o vim
     :q!              # Fecha o vim e descarta as alterações no arquivo
+                     # ! depois de qualquer comando força a sua execução
                      # ! *força* :q a executar, fechando o vim sem salvar antes
-    :x               # Salvar o arquivo e fechao vim (atalho para :wq)
+    :x               # Salva o arquivo e fecha o vim (atalho para :wq)
 
     u                # Desfazer
     CTRL+R           # Refazer
@@ -62,7 +64,7 @@ para agilizar a navegação para pontos específicos no arquivo, além de ediç�
     
     # Movendo por palavras
 
-    w                # Move o cursor uma palavra a diante
+    w                # Move o cursor uma palavra adiante
     b                # Move o cursor uma palavra atrás
     e                # Move o cursor ao fim da palavra atual
 
@@ -158,7 +160,15 @@ Alguns exemplos importantes de 'Verbos', 'Modificadores' e 'Nomes':
     :earlier 15m     # Reverte o documento para como ele estava há 15 minutos atrás
     :later 15m       # Reverte o comando acima
     ddp              # Troca linhas consecutivas de posição, dd e depois p
+    xp               # Permuta caractere atual e o seguinte
+    Xp               # Permuta caractere atual e o anterior
     .                # Repete a última ação
+
+    # Em geral, o usuário pode associar um comando em maísculas (exemplo: D) com
+    # "executar este comando até o final da linha"
+
+    # Usar a tecla de um comando duas vezes geralmente significa executar este 
+    # comando sobre toda a linha (exemplo: dd apaga a linha inteira)
 ```
 
 ## Macros
@@ -172,6 +182,7 @@ exatamente a mesma sequencia de ações e comandos na seleção atual.
     qa               # Inicia a gravação de uma macro chamado 'a'
     q                # Para a gravação
     @a               # Executa a macro
+    @@               # Executa a última macro executada
 ```
 
 ### Configurando o ~/.vimrc

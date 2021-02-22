@@ -1,7 +1,7 @@
 ---
 language: javascript
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Daniel Zendejas","https://github.com/DanielZendejas"]
@@ -19,8 +19,8 @@ para front-end que Java.
 Sin embargo, JavaScript no sólo se limita a los navegadores web: Node.js, un proyecto que proporciona un entorno de ejecución independiente para el motor V8 de Google Chrome, se está volviendo más y más popular.
 
 ¡La retroalimentación es bienvenida! Puedes encontrarme en: 
-[@adambrenecki](https://twitter.com/adambrenecki), o
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au).
+[@ExcitedLeigh](https://twitter.com/ExcitedLeigh), o
+[l@leigh.net.au](mailto:l@leigh.net.au).
 
 ```js
 // Los comentarios en JavaScript son los mismos como comentarios en C. 

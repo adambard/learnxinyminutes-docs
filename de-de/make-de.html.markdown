@@ -1,7 +1,9 @@
 ---
-language: make
+category: tool
+tool: make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
+    - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
 translators:
   - ["Martin Schimandl", "https://github.com/Git-Jiro"]
 filename: Makefile-de
@@ -9,14 +11,14 @@ lang: de-de
 ---
 
 Eine Makefile definiert einen Graphen von Regeln um ein Ziel (oder Ziele)
-zu erzeugen. Es dient dazu die geringste Menge an Arbeit zu verrichten um
-ein Ziel in einklang mit dem Quellcode zu bringen. Make wurde berühmterweise
+zu erzeugen. Es dient dazu, die geringste Menge an Arbeit zu verrichten um
+ein Ziel in Einklang mit dem Quellcode zu bringen. Make wurde berühmterweise
 von Stuart Feldman 1976 übers Wochenende geschrieben. Make ist noch immer
-sehr verbreitet (vorallem im Unix umfeld) obwohl es bereits sehr viel
+sehr verbreitet (vorallem im Unix Umfeld) obwohl es bereits sehr viel
 Konkurrenz und Kritik zu Make gibt.
 
-Es gibt eine vielzahl an Varianten von Make, dieser Artikel beschäftig sich
-mit der Version GNU Make. Diese Version ist standard auf Linux.
+Es gibt eine Vielzahl an Varianten von Make, dieser Artikel beschäftigt sich
+mit der Version GNU Make. Diese Version ist Standard auf Linux.
 
 ```make
 
@@ -42,14 +44,15 @@ file0.txt:
 	# die erste Regel ist die Standard-Regel.
 
 
-# Diese Regel wird nur abgearbeitet wenn file0.txt aktueller als file1.txt ist.
+# Diese Regel wird nur abgearbeitet, wenn file0.txt aktueller als file1.txt ist.
 file1.txt: file0.txt
 	cat file0.txt > file1.txt
 	# Verwende die selben Quoting-Regeln wie die Shell
 	@cat file0.txt >> file1.txt
 	# @ unterdrückt die Ausgabe des Befehls an stdout.
 	-@echo 'hello'
-	# - bedeutet das Make die Abarbeitung fortsetzt auch wenn Fehler passieren.
+	# - bedeutet, dass Make die Abarbeitung fortsetzt auch wenn Fehler
+    # passieren.
 	# Versuche `make file1.txt` auf der Kommandozeile.
 
 # Eine Regel kann mehrere Ziele und mehrere Voraussetzungen haben.
@@ -57,16 +60,16 @@ file2.txt file3.txt: file0.txt file1.txt
 	touch file2.txt
 	touch file3.txt
 
-# Make wird sich beschweren wenn es mehrere Rezepte für die gleiche Regel gibt.
-# Leere Rezepte zählen nicht und können dazu verwendet werden weitere 
+# Make wird sich beschweren, wenn es mehrere Rezepte für die gleiche Regel gibt.
+# Leere Rezepte zählen nicht und können dazu verwendet werden weitere
 # Voraussetzungen hinzuzufügen.
 
 #-----------------------------------------------------------------------
 # Phony-Ziele
 #-----------------------------------------------------------------------
 
-# Ein Phony-Ziel ist ein Ziel das keine Datei ist.
-# Es wird nie aktuell sein, daher wird Make immer versuchen es abzuarbeiten
+# Ein Phony-Ziel ist ein Ziel, das keine Datei ist.
+# Es wird nie aktuell sein, daher wird Make immer versuchen, es abzuarbeiten
 all: maker process
 
 # Es ist erlaubt Dinge ausserhalb der Reihenfolge zu deklarieren.
@@ -87,14 +90,14 @@ ex0.txt ex1.txt: maker
 # Automatische Variablen & Wildcards
 #-----------------------------------------------------------------------
 
-process: file*.txt	# Eine Wildcard um Dateinamen zu Vergleichen
+process: file*.txt	# Eine Wildcard um Dateinamen zu vergleichen
 	@echo $^	# $^ ist eine Variable die eine Liste aller
 			# Voraussetzungen enthält.
 	@echo $@	# Namen des Ziels ausgeben.
 	#(Bei mehreren Ziel-Regeln enthält $@ den Verursacher der Abarbeitung
 	#der Regel.)
 	@echo $<	# Die erste Voraussetzung aus der Liste
-	@echo $?	# Nur die Voraussetzungen die nicht aktuell sind.
+	@echo $?	# Nur die Voraussetzungen, die nicht aktuell sind.
 	@echo $+	# Alle Voraussetzungen inklusive Duplikate (nicht wie Üblich)
 	#@echo $|	# Alle 'order only' Voraussetzungen
 
@@ -112,20 +115,20 @@ process: ex1.txt file0.txt
 %.png: %.svg
 	inkscape --export-png $^
 
-# Muster-Vergleichs-Regeln werden nur abgearbeitet wenn make entscheidet das Ziel zu
-# erzeugen
+# Muster-Vergleichs-Regeln werden nur abgearbeitet, wenn make entscheidet das
+# Ziel zu erzeugen
 
 # Verzeichnis-Pfade werden normalerweise bei Muster-Vergleichs-Regeln ignoriert.
 # Aber make wird versuchen die am besten passende Regel zu verwenden.
 small/%.png: %.svg
 	inkscape --export-png --export-dpi 30 $^
 
-# Make wird die letzte Version einer Muster-Vergleichs-Regel verwenden die es
+# Make wird die letzte Version einer Muster-Vergleichs-Regel verwenden, die es
 # findet.
 %.png: %.svg
 	@echo this rule is chosen
 
-# Allerdings wird make die erste Muster-Vergleicher-Regel verwenden die das
+# Allerdings wird make die erste Muster-Vergleicher-Regel verwenden, die das
 # Ziel erzeugen kann.
 %.png: %.ps
 	@echo this rule is not chosen if *.svg and *.ps are both present
@@ -169,7 +172,7 @@ name4 ?= Jean
 # nicht gibt.
 
 override name5 = David
-# Verhindert das Kommando-Zeilen Argumente diese Variable ändern können.
+# Verhindert, dass Kommando-Zeilen Argumente diese Variable ändern können.
 
 name4 +=grey
 # Werte an eine Variable anhängen (inkludiert Leerzeichen).
@@ -177,14 +180,14 @@ name4 +=grey
 # Muster-Spezifische Variablen Werte (GNU Erweiterung).
 echo: name2 = Sara # Wahr innerhalb der passenden Regel und auch innerhalb
 	# rekursiver Voraussetzungen (ausser wenn es den Graphen zerstören
-	# kann wenn es zu kompilizert wird!)
+	# kann, wenn es zu kompilizert wird!)
 
-# Ein paar Variablen die von Make automatisch definiert werden.
+# Ein paar Variablen, die von Make automatisch definiert werden.
 echo_inbuilt:
 	echo $(CC)
-	echo ${CXX)}
+	echo ${CXX}
 	echo $(FC)
-	echo ${CFLAGS)}
+	echo ${CFLAGS}
 	echo $(CPPFLAGS)
 	echo ${CXXFLAGS}
 	echo $(LDFLAGS)
@@ -194,7 +197,7 @@ echo_inbuilt:
 # Variablen 2
 #-----------------------------------------------------------------------
 
-# Der erste Typ von Variablen wird bei jeder verwendung ausgewertet.
+# Der erste Typ von Variablen wird bei jeder Verwendung ausgewertet.
 # Das kann aufwendig sein, daher exisitert ein zweiter Typ von Variablen.
 # Diese werden nur einmal ausgewertet. (Das ist eine GNU make Erweiterung)
 
@@ -213,7 +216,7 @@ var4 ::= good night
 # Funktionen
 #-----------------------------------------------------------------------
 
-# Make verfügt über eine vielzahl von Funktionen.
+# Make verfügt über eine Vielzahl von Funktionen.
 
 sourcefiles = $(wildcard *.c */*.c)
 objectfiles = $(patsubst %.c,%.o,$(sourcefiles))

@@ -61,6 +61,8 @@ $int4 = 0x0F; // => 15 (ведущие символы 0x означают шес
 
 // Двоичная запись integer доступна начиная с PHP 5.4.0.
 $int5 = 0b11111111; // 255 (0b в начале означает двоичное число)
+// Удаление переменной
+unset($int1);
 
 // Дробные числа
 $float = 1.234;
@@ -128,7 +130,7 @@ define("FOO", "something");
 
 // Доступ к константе возможен через прямое указание её имени без знака $
 echo FOO; // печатает 'something'
-echo 'This outputs ' . FOO; // печатает 'This ouputs something'
+echo 'This outputs ' . FOO; // печатает 'This outputs something'
 
 /********************************
  * Массивы
@@ -687,45 +689,6 @@ use My\Namespace as SomeOtherNamespace;
 
 $cls = new SomeOtherNamespace\MyClass();
 
-*//**********************
-* Позднее статическое связывание.
-*
-*/
-
-class ParentClass
-{
-    public static function who()
-    {
-        echo "I'm a " . __CLASS__ . "\n";
-    }
-
-    public static function test()
-    {
-        // self ссылается на класс в котором определен метод.
-        self::who();
-        // static ссылается на класс в котором метод вызван.
-        static::who();
-    }
-}
-
-ParentClass::test();
-/*
-I'm a ParentClass
-I'm a ParentClass
-*/
-
-class ChildClass extends ParentClass
-{
-    public static function who()
-    {
-        echo "But I'm " . __CLASS__ . "\n";
-    }
-}
-
-ChildClass::test();
-/*
-I'm a ParentClass
-But I'm ChildClass
 
 /**********************
 * Позднее статическое связывание.

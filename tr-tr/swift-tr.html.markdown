@@ -2,7 +2,7 @@
 language: swift
 contributors:
   - ["Özgür Şahin", "https://github.com/ozgurshn/"]
-filename: learnswift.swift
+filename: learnswift-tr.swift
 lang: tr-tr
 ---
 
@@ -443,47 +443,47 @@ if let daire = benimBosDairem {
 // Sınıflar gibi metotlar içerebilirler.
 
 enum Kart {
-    case Kupa, Maca, Sinek, Karo
+    case kupa, maca, sinek, karo
     func getIcon() -> String {
         switch self {
-        case .Maca: return "♤"
-        case .Kupa: return "♡"
-        case .Karo: return "♢"
-        case .Sinek: return "♧"
+        case .maca: return "♤"
+        case .kupa: return "♡"
+        case .karo: return "♢"
+        case .sinek: return "♧"
         }
     }
 }
 
 // Enum değerleri kısayol syntaxa izin verir. Eğer değişken tipi açık olarak belirtildiyse enum tipini yazmaya gerek kalmaz.
-var kartTipi: Kart = .Kupa
+var kartTipi: Kart = .kupa
 
 // Integer olmayan enumlar direk değer (rawValue) atama gerektirir.
 enum KitapAdi: String {
-    case John = "John"
-    case Luke = "Luke"
+    case john = "John"
+    case luke = "Luke"
 }
-print("Name: \(KitapAdi.John.rawValue)")
+print("Name: \(KitapAdi.john.rawValue)")
 
 // Değerlerle ilişkilendirilmiş Enum
 enum Mobilya {
     // Int ile ilişkilendirilmiş
-    case Masa(yukseklik: Int)
+    case masa(yukseklik: Int)
     // String ve Int ile ilişkilendirilmiş
-    case Sandalye(String, Int)
-    
+    case sandalye(String, Int)
+
     func aciklama() -> String {
         switch self {
-        case .Masa(let yukseklik):
+        case .masa(let yukseklik):
             return "Masa boyu \(yukseklik) cm"
-        case .Sandalye(let marka, let yukseklik):
+        case .sandalye(let marka, let yukseklik):
             return "\(brand) marka sandalyenin boyu \(yukseklik) cm"
         }
     }
 }
 
-var masa: Mobilya = .Masa(yukseklik: 80)
+var masa: Mobilya = .masa(yukseklik: 80)
 print(masa.aciklama())     // "Masa boyu 80 cm"
-var sandalye = Mobilya.Sandalye("Foo", 40)
+var sandalye = Mobilya.sandalye("Foo", 40)
 print(sandalye.aciklama())    // "Foo marka sandalyenin boyu 40 cm"
 
 

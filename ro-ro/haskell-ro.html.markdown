@@ -66,7 +66,7 @@ not False -- True
 
 
 ----------------------------------------------------
--- Liste si tupli
+-- 2. Liste si tupli
 ----------------------------------------------------
 
 -- Fiecare element dintr-o lista trebuie sa aiba acelasi tip.

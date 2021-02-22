@@ -8,9 +8,9 @@ contributors:
     - ["Dan Book", "http://github.com/Grinnz"]
 ---
 
-Perl 5 is a highly capable, feature-rich programming language with over 25 years of development.
+Perl is a highly capable, feature-rich programming language with over 25 years of development.
 
-Perl 5 runs on over 100 platforms from portables to mainframes and is suitable for both rapid prototyping and large scale development projects.
+Perl runs on over 100 platforms from portables to mainframes and is suitable for both rapid prototyping and large scale development projects.
 
 ```perl
 # Single line comments start with a number sign.
@@ -37,9 +37,13 @@ use warnings;
 #  A scalar represents a single value:
 my $animal = "camel";
 my $answer = 42;
+my $display = "You have $answer ${animal}s.\n";
 
 # Scalar values can be strings, integers or floating point numbers, and
 # Perl will automatically convert between them as required.
+
+# Strings in single quotes are literal strings. Strings in double quotes
+# will interpolate variables and escape codes like "\n" for newline.
 
 ## Arrays
 #  An array represents a list of values:
@@ -50,6 +54,25 @@ my @mixed   = ("camel", 42, 1.23);
 # Array elements are accessed using square brackets, with a $ to
 # indicate one value will be returned.
 my $second = $animals[1];
+
+# The size of an array is retrieved by accessing the array in a scalar
+# context, such as assigning it to a scalar variable or using the
+# "scalar" operator.
+
+my $num_animals = @animals;
+print "Number of numbers: ", scalar(@numbers), "\n";
+
+# Arrays can also be interpolated into double-quoted strings, and the
+# elements are separated by a space character by default.
+
+print "We have these numbers: @numbers\n";
+
+# Be careful when using double quotes for strings containing symbols
+# such as email addresses, as it will be interpreted as a variable.
+
+my @example = ('secret', 'array');
+my $oops_email = "foo@example.com"; # 'foosecret array.com'
+my $ok_email = 'foo@example.com';
 
 ## Hashes
 #   A hash represents a set of key/value pairs:
@@ -66,6 +89,11 @@ my %fruit_color = (
 
 # Hash elements are accessed using curly braces, again with the $ sigil.
 my $color = $fruit_color{apple};
+
+# All of the keys or values that exist in a hash can be accessed using
+# the "keys" and "values" functions.
+my @fruits = keys %fruit_color;
+my @colors = values %fruit_color;
 
 # Scalars, arrays and hashes are documented more fully in perldata.
 # (perldoc perldata).
@@ -124,24 +152,28 @@ while (condition) {
   ...
 }
 
-
+my $max = 5;
 # for loops and iteration
-for (my $i = 0; $i < $max; $i++) {
+for my $i (0 .. $max) {
   print "index is $i";
-}
-
-for (my $i = 0; $i < @elements; $i++) {
-  print "Current element is " . $elements[$i];
 }
 
 for my $element (@elements) {
   print $element;
 }
 
+map {print} @elements;
+
 # implicitly
 
 for (@elements) {
   print;
+}
+
+# iterating through a hash (for and foreach are equivalent)
+
+foreach my $key (keys %hash) {
+  print $key, ': ', $hash{$key}, "\n";
 }
 
 # the Perlish post-condition way again
@@ -170,8 +202,11 @@ $x =~ s/foo/bar/g;        # replaces ALL INSTANCES of foo with bar in $x
 
 # You can open a file for input or output using the "open()" function.
 
+# For reading:
 open(my $in,  "<",  "input.txt")  or die "Can't open input.txt: $!";
+# For writing (clears file if it exists):
 open(my $out, ">",  "output.txt") or die "Can't open output.txt: $!";
+# For writing (appends to end of file):
 open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 
 # You can read from an open filehandle using the "<>" operator.  In
@@ -181,6 +216,12 @@ open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 
 my $line  = <$in>;
 my @lines = <$in>;
+
+# You can write to an open filehandle using the standard "print"
+# function.
+
+print $out @lines;
+print $log $msg, "\n";
 
 #### Writing subroutines
 

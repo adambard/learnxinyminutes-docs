@@ -1,9 +1,10 @@
 ---
 language: elixir
 contributors:
-    - ["Joao Marques", "http://github.com/mrshankly"]
+    - ["Joao Marques", "https://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
     - ["Ryan Plant", "https://github.com/ryanplant-au"]
+    - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 filename: learnelixir.ex
 ---
 
@@ -127,7 +128,8 @@ rem(10, 3) #=> 1
 # These operators expect a boolean as their first argument.
 true and true #=> true
 false or true #=> true
-# 1 and true    #=> ** (ArgumentError) argument error
+# 1 and true
+#=> ** (BadBooleanError) expected a boolean on left-side of "and", got: 1
 
 # Elixir also provides `||`, `&&` and `!` which accept arguments of any type.
 # All values except `false` and `nil` will evaluate to true.
@@ -285,7 +287,11 @@ end
 PrivateMath.sum(1, 2)    #=> 3
 # PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
 
-# Function declarations also support guards and multiple clauses:
+# Function declarations also support guards and multiple clauses.
+# When a function with multiple clauses is called, the first function
+# that satisfies the clause will be invoked.
+# Example: invoking area({:circle, 3}) will call the second area
+# function defined below, not the first:
 defmodule Geometry do
   def area({:rectangle, w, h}) do
     w * h
@@ -433,11 +439,11 @@ self() #=> #PID<0.27.0>
 
 # Create an agent with `Agent.start_link`, passing in a function
 # The initial state of the agent will be whatever that function returns
-{ok, my_agent} = Agent.start_link(fn -> ["red, green"] end)
+{:ok, my_agent} = Agent.start_link(fn -> ["red", "green"] end)
 
 # `Agent.get` takes an agent name and a `fn` that gets passed the current state
 # Whatever that `fn` returns is what you'll get back
-Agent.get(my_agent, fn colors -> colors end) #=> ["red, "green"]
+Agent.get(my_agent, fn colors -> colors end) #=> ["red", "green"]
 
 # Update the agent's state the same way
 Agent.update(my_agent, fn colors -> ["blue" | colors] end)
@@ -445,9 +451,10 @@ Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 
 ## References
 
-* [Getting started guide](http://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](http://elixir-lang.org)
-* [Elixir Documentation](http://elixir-lang.org/docs/master/)
+* [Getting started guide](https://elixir-lang.org/getting-started/introduction.html) from the [Elixir website](https://elixir-lang.org)
+* [Elixir Documentation](https://elixir-lang.org/docs.html)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) by Dave Thomas
-* [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
-* ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) by Fred Hebert
+* [Elixir Cheat Sheet](https://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
+* ["Learn You Some Erlang for Great Good!"](https://learnyousomeerlang.com/) by Fred Hebert
 * ["Programming Erlang: Software for a Concurrent World"](https://pragprog.com/book/jaerlang2/programming-erlang) by Joe Armstrong
+* [Introduction to Elixir](https://learn-elixir.com/)

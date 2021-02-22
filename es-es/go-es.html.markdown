@@ -26,7 +26,7 @@ Es rápido compilando y rápido al ejecutar, añade una concurrencia fácil de
 entender para las CPUs de varios núcleos de hoy día, y tiene
 características que ayudan con la programación a gran escala.
 
-Go viene con una biblioteca estándar muy buena y una entusiasta comunidad.
+Go viene con una biblioteca estándar muy buena y una comunidad entusiasta.
 
 ```go
 // Comentario de una sola línea
@@ -52,7 +52,7 @@ import (
 // para el ejecutable. Te guste o no, Go utiliza llaves.
 func main() {
 	// Println imprime una línea a stdout.
-	// Cualificalo con el nombre del paquete, fmt.
+	// Llámalo con el nombre del paquete, fmt.
 	fmt.Println("¡Hola mundo!")
 
 	// Llama a otra función de este paquete.
@@ -90,12 +90,12 @@ saltos de línea.` // mismo tipo cadena
 	g := 'Σ' // Tipo rune, un alias de int32, alberga un carácter unicode.
 	f := 3.14195 // float64, el estándar IEEE-754 de coma flotante 64-bit.
 	c := 3 + 4i  // complex128, representado internamente por dos float64.
-	// Sintaxis Var con iniciadores.
+	// Sintaxis var con iniciadores.
 	var u uint = 7 // Sin signo, pero la implementación depende del tamaño
 	               // como en int.
 	var pi float32 = 22. / 7
 
-	// Sintáxis de conversión con una declaración corta.
+	// Sintaxis de conversión con una declaración corta.
 	n := byte('\n') // byte es un alias para uint8.
 
 	// Los Arreglos tienen un tamaño fijo a la hora de compilar.
@@ -377,8 +377,8 @@ func aprendeConcurrencia() {
 	go func() { c <- 84 }()       // Inicia una nueva rutinago solo para
 											// enviar un valor.
 	go func() { cs <- "verboso" }() // Otra vez, para cs en esta ocasión.
-	// Select tiene una sintáxis parecida a la instrucción switch pero cada
-	// caso involucra una operacion con un canal. Selecciona un caso de
+	// Select tiene una sintaxis parecida a la instrucción switch pero cada
+	// caso involucra una operación con un canal. Selecciona un caso de
 	// forma aleatoria de los casos que están listos para comunicarse.
 	select {
 	case i := <-c: // El valor recibido se puede asignar a una variable,

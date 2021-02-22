@@ -135,6 +135,10 @@ selector::after {}
 .parent * { } /* all descendants */
 .parent > * { } /* all children */
 
+/* Group any number of selectors to define styles that affect all selectors
+   in the group */
+selector1, selector2 { }
+
 /* ####################
    ## PROPERTIES
    #################### */
@@ -160,14 +164,14 @@ selector {
     max-width: 5in;   /* inches */
 
     /* Colors */
-    color: #F6E;                 /* short hex format */
-    color: #FF66EE;              /* long hex format */
-    color: tomato;               /* a named color */
-    color: rgb(255, 255, 255);   /* as rgb values */
-    color: rgb(10%, 20%, 50%);   /* as rgb percentages */
-    color: rgba(255, 0, 0, 0.3); /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
-    color: transparent;          /* equivalent to setting the alpha to 0 */
-    color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
+    color: #F6E;                    /* short hex format */
+    color: #FF66EE;                 /* long hex format */
+    color: tomato;                  /* a named color */
+    color: rgb(255, 255, 255);      /* as rgb values */
+    color: rgb(10%, 20%, 50%);      /* as rgb percentages */
+    color: rgba(255, 0, 0, 0.3);    /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
+    color: transparent;             /* equivalent to setting the alpha to 0 */
+    color: hsl(0, 100%, 50%);       /* as hsl percentages (CSS 3) */
     color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
 
     /* Borders */
@@ -175,7 +179,7 @@ selector {
     border-style:solid;
     border-color:red;      /* similar to how background-color is set */
     border: 5px solid red; /* this is a short hand approach for the same */
-    border-radius:20px;    /* this is a CSS3 property */    
+    border-radius:20px;    /* this is a CSS3 property */
 
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
@@ -313,6 +317,7 @@ a new feature.
 * [Dabblet](http://dabblet.com/) (CSS playground)
 * [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS) (Tutorials and reference)
 * [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/) (Reference)
+* [DevTips' CSS Basics](https://www.youtube.com/playlist?list=PLqGj3iMvMa4IOmy04kDxh_hqODMqoeeCy) (Tutorials)
 
 ## Further Reading
 

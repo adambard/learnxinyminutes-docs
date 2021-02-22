@@ -781,7 +781,7 @@ MyClass *newVar = [classVar retain]; // Если classVar освободится
 // автоматический подсчет ссылок (ARC).
 // ARC - это особенность компилятора, который помещает "retain", "release"
 // и "autorelease" автоматически за вас тогда, когда используется ARC,
-// вам не нужно больше обращаться к "retain", "relase" или "autorelease"
+// вам не нужно больше обращаться к "retain", "release" или "autorelease"
 MyClass *arcMyClass = [[MyClass alloc] init];
 // ... код, использующий объект arcMyClass
 // Без ARC, вам нужно было бы вызвать: [arcMyClass release] после того, как вы

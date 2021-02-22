@@ -221,11 +221,11 @@ A(1, :) =[] % Delete the first row of the matrix
 A(:, 1) =[] % Delete the first column of the matrix
 
 transpose(A) % Transpose the matrix, which is the same as:
-A one
-ctranspose(A) % Hermitian transpose the matrix
-% (the transpose, followed by taking complex conjugate of each element)
-A' % Concise version of complex transpose
 A.' % Concise version of transpose (without taking complex conjugate)
+ctranspose(A) % Hermitian transpose the matrix, which is the same as:
+A'  % Concise version of complex transpose
+    % (the transpose, followed by taking complex conjugate of each element)
+
 
 
 
@@ -234,7 +234,7 @@ A.' % Concise version of transpose (without taking complex conjugate)
 % On their own, the arithmetic operators act on whole matrices. When preceded
 % by a period, they act on each element instead. For example:
 A * B % Matrix multiplication
-A .* B % Multiple each element in A by its corresponding element in B
+A .* B % Multiply each element in A by its corresponding element in B
 
 % There are several pairs of functions, where one acts on each element, and
 % the other (whose name ends in m) acts on the whole matrix.
@@ -353,7 +353,7 @@ double_input(6) % ans = 12
 % anonymous function. Useful when quickly defining a function to pass to
 % another function (eg. plot with fplot, evaluate an indefinite integral
 % with quad, find roots with fzero, or find minimum with fminsearch).
-% Example that returns the square of it's input, assigned to the handle sqr:
+% Example that returns the square of its input, assigned to the handle sqr:
 sqr = @(x) x.^2;
 sqr(10) % ans = 100
 doc function_handle % find out more
@@ -374,8 +374,8 @@ disp('Hello World') % Print out a string
 fprintf % Print to Command Window with more control
 
 % Conditional statements (the parentheses are optional, but good style)
-if (a > 15)
-	disp('Greater than 15')
+if (a > 23)
+	disp('Greater than 23')
 elseif (a == 23)
 	disp('a is 23')
 else
@@ -545,7 +545,7 @@ ans = multiplyLatBy(a,3)
 
 % The method can also be called using dot notation. In this case, the object 
 % does not need to be passed to the method.
-ans = a.multiplyLatBy(a,1/3)
+ans = a.multiplyLatBy(1/3)
 
 % Matlab functions can be overloaded to handle objects. 
 % In the method above, we have overloaded how Matlab handles 

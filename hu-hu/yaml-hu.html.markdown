@@ -2,7 +2,7 @@
 language: yaml
 filename: learnyaml-hu.yaml
 contributors:
-  - ["Adam Brenecki", "https://github.com/adambrenecki"]
+  - ["Leigh Brenecki", "https://github.com/adambrenecki"]
 translators:
   - ["Tamás Diószegi", "https://github.com/ditam"]
 lang: hu-hu

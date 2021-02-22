@@ -71,7 +71,7 @@ false.class #=> FalseClass
 2 <= 2 #=> true
 2 >= 2 #=> true
 
-# Strings são objects
+# Strings são objetos
 
 'Eu sou uma string'.class #=> String
 "Eu também sou uma string".class #=> String

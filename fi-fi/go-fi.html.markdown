@@ -84,7 +84,7 @@ func learnTypes() {
     // Lyhyt ilmoitus antaa yleensä haluamasi.
 	str := "Opi Go!" // merkkijonotyyppi.
 
-	s2 := `"raaka" todellisarvoinen merrkijono
+	s2 := `"raaka" todellisarvoinen merkkijono
 voi sisältää rivinvaihtoja.` // Sama merkkijonotyyppi.
 
     // Ei-ASCII todellisarvo. Go-lähdekoodi on UTF-8.

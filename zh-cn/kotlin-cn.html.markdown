@@ -22,7 +22,7 @@ package com.learnxinyminutes.kotlin
 
 /*
 Kotlin程序的入口点是一个"main"函数
-该函数传递一个包含任何命令行参数的数组。
+该函数传递一个包含所有命令行参数的数组。
 */
 fun main(args: Array<String>) {
     /*
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
     所以我们不必要每次都去明确指定它。
     我们可以像这样明确地声明一个变量的类型：
     */
-    val foo : Int = 7
+    val foo: Int = 7
 
     /*
     可以采取和Java类似的方法来表示一个字符串。
@@ -67,10 +67,10 @@ fun helloWorld(val name : String) {
     模板表达式从一个美元符号($)开始。
     */
     val fooTemplateString = "$fooString has ${fooString.length} characters"
-    println(fooTemplateString)
+    println(fooTemplateString) // => 输出 My String Is Here! has 18 characters
 
     /*
-    当某个变量的值可以为 null 的时候，我们必须被明确指定它是可为空的。
+    当某个变量的值可以为 null 的时候，我们必须明确指定它是可为空的。
     在变量声明处的类型后面加上?来标识它是可为空的。
     我们可以用?.操作符来访问可为空的变量。
     我们可以用?:操作符来指定一个在变量为空时使用的替代值。
@@ -96,24 +96,24 @@ fun helloWorld(val name : String) {
     println(hello()) // => Hello, world!
 
     /*
-    用"vararg"关键字来修饰一个函数的参数来允许可变参数传递给该函数
+    函数的可变参数可使用 "vararg" 关键字来修饰
     */
     fun varargExample(vararg names: Int) {
         println("Argument has ${names.size} elements")
     }
-    varargExample() // => Argument has 0 elements
-    varargExample(1) // => Argument has 1 elements
-    varargExample(1, 2, 3) // => Argument has 3 elements
+    varargExample() // => 传入 0 个参数
+    varargExample(1) // => 传入 1 个参数
+    varargExample(1, 2, 3) // => 传入 3 个参数
 
     /*
-    当函数只包含一个单独的表达式时，大括号可以被省略。
-    函数体可以被指定在一个=符号后面。
+    当函数只包含一个单独的表达式时，大括号可以省略。
+    函数体可以写在一个=符号后面。
     */
     fun odd(x: Int): Boolean = x % 2 == 1
     println(odd(6)) // => false
     println(odd(7)) // => true
 
-    // 如果返回值类型可以被推断，那么我们不需要指定它。
+    // 如果返回值类型可以推断，那么我们不需要指定它。
     fun even(x: Int) = x % 2 == 0
     println(even(6)) // => true
     println(even(7)) // => false
@@ -122,15 +122,14 @@ fun helloWorld(val name : String) {
     fun not(f: (Int) -> Boolean) : (Int) -> Boolean {
         return {n -> !f.invoke(n)}
     }
-    // 命名函数可以用::运算符被指定为参数。
+    // 普通函数可以用::运算符传入引用作为函数参数。
     val notOdd = not(::odd)
     val notEven = not(::even)
-    // 匿名函数可以被指定为参数。
+    // lambda 表达式可以直接作为参数传递。
     val notZero = not {n -> n == 0}
     /*
-    如果一个匿名函数只有一个参数
-    那么它的声明可以被省略（连同->）。
-    这个参数的名字是"it"。
+    如果一个 lambda 表达式只有一个参数
+    那么它的声明可以省略（连同->），内部以 "it" 引用。
     */
     val notPositive = not {it > 0}
     for (i in 0..4) {
@@ -152,7 +151,7 @@ fun helloWorld(val name : String) {
     注意，Kotlin没有"new"关键字。
     */
     val fooExampleClass = ExampleClass(7)
-    // 可以使用一个点号来调用成员函数。
+    // 可以使用一个点号来调用成员方法。
     println(fooExampleClass.memberFunction(4)) // => 11
     /*
     如果使用"infix"关键字来标记一个函数
@@ -162,7 +161,7 @@ fun helloWorld(val name : String) {
 
     /*
     数据类是创建只包含数据的类的一个简洁的方法。
-    "hashCode"、"equals"和"toString"方法将被自动生成。
+    "hashCode"、"equals"和"toString"方法将自动生成。
     */
     data class DataClassExample (val x: Int, val y: Int, val z: Int)
     val fooData = DataClassExample(1, 2, 4)
@@ -178,13 +177,13 @@ fun helloWorld(val name : String) {
 
     // "with"函数类似于JavaScript中的"with"用法。
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
-    val fooMutableDate = MutableDataClassExample(7, 4, 9)
-    with (fooMutableDate) {
+    val fooMutableData = MutableDataClassExample(7, 4, 9)
+    with (fooMutableData) {
         x -= 2
         y += 2
         z--
     }
-    println(fooMutableDate) // => MutableDataClassExample(x=5, y=6, z=8)
+    println(fooMutableData) // => MutableDataClassExample(x=5, y=6, z=8)
 
     /*
     我们可以使用"listOf"函数来创建一个list。

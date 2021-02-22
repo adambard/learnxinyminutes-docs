@@ -1,7 +1,7 @@
 ---
 language: javascript
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 filename: javascript.js
 ---
@@ -103,7 +103,7 @@ false;
 
 // ... which works with more than just strings
 "1, 2, " + 3; // = "1, 2, 3"
-"Hello " + ["world", "!"] // = "Hello world,!"
+"Hello " + ["world", "!"]; // = "Hello world,!"
 
 // and are compared with < and >
 "a" < "b"; // = true
@@ -180,6 +180,24 @@ myArray.length; // = 4
 // Add/Modify at specific index
 myArray[3] = "Hello";
 
+// Add and remove element from front or back end of an array
+myArray.unshift(3); // Add as the first element
+someVar = myArray.shift(); // Remove first element and return it
+myArray.push(3); // Add as the last element
+someVar = myArray.pop(); // Remove last element and return it
+
+// Join all elements of an array with semicolon
+var myArray0 = [32,false,"js",12,56,90];
+myArray0.join(";"); // = "32;false;js;12;56;90"
+
+// Get subarray of elements from index 1 (include) to 4 (exclude)
+myArray0.slice(1,4); // = [false,"js",12]
+
+// Remove 4 elements starting from index 2, and insert there strings
+// "hi","wr" and "ld"; return removed subarray
+myArray0.splice(2,4,"hi","wr","ld"); // = ["js",12,56,90]
+// myArray0 === [32,false,"hi","wr","ld"]
+
 // JavaScript's objects are equivalent to "dictionaries" or "maps" in other
 // languages: an unordered collection of key-value pairs.
 var myObj = {key1: "Hello", key2: "World"};
@@ -222,10 +240,10 @@ while (true){
 var input;
 do {
     input = getInput();
-} while (!isValid(input))
+} while (!isValid(input));
 
 // The `for` loop is the same as C and Java:
-// initialisation; continue condition; iteration.
+// initialization; continue condition; iteration.
 for (var i = 0; i < 5; i++){
     // will run 5 times
 }
@@ -241,26 +259,21 @@ for (var i = 0; i < 10; i++) {
     }
 }
 
-// The for/in statement iterates over every property across the entire prototype chain.
+// The for/in statement allows iteration over properties of an object.
 var description = "";
 var person = {fname:"Paul", lname:"Ken", age:18};
 for (var x in person){
     description += person[x] + " ";
-}
+} // description = 'Paul Ken 18 '
 
-// To only consider properties attached to the object itself
-// and not its prototypes, use the `hasOwnProperty()` check.
-var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18};
-for (var x in person){
-    if (person.hasOwnProperty(x)){
-        description += person[x] + " ";
-    }
-}
-
-// For/in should not be used to iterate over an Array where the index order
-// is important, as there is no guarantee that for/in will return the indexes
-// in any particular order.
+// The for/of statement allows iteration over iterable objects (including the built-in String, 
+// Array, e.g. the Array-like arguments or NodeList objects, TypedArray, Map and Set, 
+// and user-defined iterables).
+var myPets = "";
+var pets = ["cat", "dog", "hamster", "hedgehog"];
+for (var pet of pets){
+    myPets += pet + " ";
+} // myPets = 'cat dog hamster hedgehog '
 
 // && is logical and, || is logical or
 if (house.size == "big" && house.colour == "blue"){
@@ -272,7 +285,6 @@ if (colour == "red" || colour == "blue"){
 
 // && and || "short circuit", which is useful for setting default values.
 var name = otherName || "default";
-
 
 // The `switch` statement checks for equality with `===`.
 // Use 'break' after each case
@@ -308,7 +320,7 @@ myFunction("foo"); // = "FOO"
 // automatic semicolon insertion. Watch out for this when using Allman style.
 function myFunction(){
     return // <- semicolon automatically inserted here
-    {thisIsAn: 'object literal'}
+    {thisIsAn: 'object literal'};
 }
 myFunction(); // = undefined
 
@@ -403,7 +415,7 @@ myFunc(); // = undefined
 // through `this`, even if it wasn't attached when it was defined.
 var myOtherFunc = function(){
     return this.myString.toUpperCase();
-}
+};
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "HELLO WORLD!"
 
@@ -412,7 +424,7 @@ myObj.myOtherFunc(); // = "HELLO WORLD!"
 
 var anotherFunc = function(s){
     return this.myString + s;
-}
+};
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
 // The `apply` function is nearly identical, but takes an array for an argument
@@ -435,7 +447,7 @@ boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
 
 // `bind` can also be used to partially apply (curry) a function.
 
-var product = function(a, b){ return a * b; }
+var product = function(a, b){ return a * b; };
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
@@ -445,9 +457,13 @@ doubler(8); // = 16
 
 var MyConstructor = function(){
     this.myNumber = 5;
-}
+};
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
+
+// Unlike most other popular object-oriented languages, JavaScript has no
+// concept of 'instances' created from 'class' blueprints; instead, JavaScript
+// combines instantiation and inheritance into a single concept: a 'prototype'.
 
 // Every JavaScript object has a 'prototype'. When you go to access a property
 // on an object that doesn't exist on the actual object, the interpreter will
@@ -462,7 +478,7 @@ var myObj = {
 var myPrototype = {
     meaningOfLife: 42,
     myFunc: function(){
-        return this.myString.toLowerCase()
+        return this.myString.toLowerCase();
     }
 };
 
@@ -485,6 +501,27 @@ myObj.myBoolean; // = true
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
+// The for/in statement allows iteration over properties of an object,
+// walking up the prototype chain until it sees a null prototype.
+for (var x in myObj){
+    console.log(myObj[x]);
+}
+///prints:
+// Hello world!
+// 43
+// [Function: myFunc]
+// true
+
+// To only consider properties attached to the object itself
+// and not its prototypes, use the `hasOwnProperty()` check.
+for (var x in myObj){
+    if (myObj.hasOwnProperty(x)){
+        console.log(myObj[x]);
+    }
+}
+///prints:
+// Hello world!
+
 // We mentioned that `__proto__` was non-standard, and there's no standard way to
 // change the prototype of an existing object. However, there are two ways to
 // create a new object with a given prototype.
@@ -506,7 +543,7 @@ MyConstructor.prototype = {
 };
 var myNewObj2 = new MyConstructor();
 myNewObj2.getMyNumber(); // = 5
-myNewObj2.myNumber = 6
+myNewObj2.myNumber = 6;
 myNewObj2.getMyNumber(); // = 6
 
 // Built-in types like strings and numbers also have constructors that create
@@ -531,7 +568,7 @@ if (new Number(0)){
 // you can actually add functionality to a string, for instance.
 String.prototype.firstCharacter = function(){
     return this.charAt(0);
-}
+};
 "abc".firstCharacter(); // = "a"
 
 // This fact is often used in "polyfilling", which is implementing newer
@@ -547,8 +584,50 @@ if (Object.create === undefined){ // don't overwrite it if it exists
         Constructor.prototype = proto;
         // then use it to create a new, appropriately-prototyped object
         return new Constructor();
-    }
+    };
 }
+
+// ES6 Additions
+
+// The "let" keyword allows you to define variables in a lexical scope, 
+// as opposed to a block scope like the var keyword does.
+let name = "Billy";
+
+// Variables defined with let can be reassigned new values.
+name = "William";
+
+// The "const" keyword allows you to define a variable in a lexical scope
+// like with let, but you cannot reassign the value once one has been assigned.
+
+const pi = 3.14;
+
+pi = 4.13; // You cannot do this.
+
+// There is a new syntax for functions in ES6 known as "lambda syntax".
+// This allows functions to be defined in a lexical scope like with variables
+// defined by const and let. 
+
+const isEven = (number) => {
+    return number % 2 === 0;
+};
+
+isEven(7); // false
+
+// The "equivalent" of this function in the traditional syntax would look like this:
+
+function isEven(number) {
+    return number % 2 === 0;
+};
+
+// I put the word "equivalent" in double quotes because a function defined
+// using the lambda syntax cannnot be called before the definition.
+// The following is an example of invalid usage:
+
+add(1, 8);
+
+const add = (firstNumber, secondNumber) => {
+    return firstNumber + secondNumber;
+};
 ```
 
 ## Further Reading
@@ -570,11 +649,14 @@ of the language.
 
 [JavaScript: The Definitive Guide][6] is a classic guide and reference book.
 
-[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with attached terminal
+[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with
+attached terminal
 
-[Eloquent Javascript - The Annotated Version][9] by Gordon Zhu is also a great derivative of Eloquent Javascript with extra explanations and clarifications for some of the more complicated examples.
+[Javascript: The Right Way][10] is a guide intended to introduce new developers
+to JavaScript and help experienced developers learn more about its best practices.
 
-[Javascript: The Right Way][10] is a guide intended to introduce new developers to JavaScript and help experienced developers learn more about its best practices.
+[Javascript:Info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
+as well as advanced topics with concise explanations.
 
 
 In addition to direct contributors to this article, some content is adapted from
@@ -590,5 +672,5 @@ Mozilla Developer Network.
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [8]: http://eloquentjavascript.net/
-[9]: http://watchandcode.com/courses/eloquent-javascript-the-annotated-version
 [10]: http://jstherightway.org/
+[11]: https://javascript.info/

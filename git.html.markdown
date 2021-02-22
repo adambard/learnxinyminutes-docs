@@ -8,6 +8,7 @@ contributors:
     - ["Bruno Volcov", "http://github.com/volcov"]
     - ["Andrew Taylor", "http://github.com/andrewjt71"]
     - ["Jason Stathopulos", "http://github.com/SpiritBreaker226"]
+    - ["Milo Gilad", "http://github.com/Myl0g"]
 filename: LearnGit.txt
 ---
 
@@ -23,13 +24,13 @@ manage your source code.
 
 Version control is a system that records changes to a file(s), over time.
 
-### Centralized Versioning VS Distributed Versioning
+### Centralized Versioning vs. Distributed Versioning
 
-* Centralized version control focuses on synchronizing, tracking, and backing 
+* Centralized version control focuses on synchronizing, tracking, and backing
 up files.
-* Distributed version control focuses on sharing changes. Every change has a 
+* Distributed version control focuses on sharing changes. Every change has a
 unique id.
-* Distributed systems have no defined structure. You could easily have a SVN 
+* Distributed systems have no defined structure. You could easily have a SVN
 style, centralized system, with git.
 
 [Additional Information](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
@@ -56,7 +57,7 @@ A git repository is comprised of the .git directory & working tree.
 
 ### .git Directory (component of repository)
 
-The .git directory contains all the configurations, logs, branches, HEAD, and 
+The .git directory contains all the configurations, logs, branches, HEAD, and
 more.
 [Detailed List.](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
@@ -67,36 +68,36 @@ referred to as your working directory.
 
 ### Index (component of .git dir)
 
-The Index is the staging area in git. It's basically a layer that separates 
-your working tree from the Git repository. This gives developers more power 
+The Index is the staging area in git. It's basically a layer that separates
+your working tree from the Git repository. This gives developers more power
 over what gets sent to the Git repository.
 
 ### Commit
 
-A git commit is a snapshot of a set of changes, or manipulations to your 
-Working Tree. For example, if you added 5 files, and removed 2 others, these 
-changes will be contained in a commit (or snapshot). This commit can then be 
+A git commit is a snapshot of a set of changes, or manipulations to your
+Working Tree. For example, if you added 5 files, and removed 2 others, these
+changes will be contained in a commit (or snapshot). This commit can then be
 pushed to other repositories, or not!
 
 ### Branch
 
 A branch is essentially a pointer to the last commit you made. As you go on
-committing, this pointer will automatically update to point the latest commit.
+committing, this pointer will automatically update to point to the latest commit.
 
 ### Tag
 
 A tag is a mark on specific point in history. Typically people use this
-functionality to mark release points (v1.0, and so on)
+functionality to mark release points (v1.0, and so on).
 
 ### HEAD and head (component of .git dir)
 
-HEAD is a pointer that points to the current branch. A repository only has 1 
-*active* HEAD.  
-head is a pointer that points to any commit. A repository can have any number 
+HEAD is a pointer that points to the current branch. A repository only has 1
+*active* HEAD.
+head is a pointer that points to any commit. A repository can have any number
 of heads.
 
 ### Stages of Git
-* Modified - Changes have been made to a file but file has not been committed 
+* Modified - Changes have been made to a file but file has not been committed
 to Git Database yet
 * Staged - Marks a modified file to go into your next commit snapshot
 * Committed - Files have been committed to the Git Database
@@ -110,7 +111,7 @@ to Git Database yet
 
 ### init
 
-Create an empty Git repository. The Git repository's settings, stored 
+Create an empty Git repository. The Git repository's settings, stored
 information, and more is stored in a directory (a folder) named ".git".
 
 ```bash
@@ -157,6 +158,7 @@ $ git init --help
 
 To intentionally untrack file(s) & folder(s) from git. Typically meant for
 private & temp files which would otherwise be shared in the repository.
+
 ```bash
 $ echo "temp/" >> .gitignore
 $ echo "private_key" >> .gitignore
@@ -177,7 +179,7 @@ $ git help status
 
 ### add
 
-To add files to the staging area/index. If you do not `git add` new files to 
+To add files to the staging area/index. If you do not `git add` new files to
 the staging area/index, they will not be included in commits!
 
 ```bash
@@ -189,6 +191,9 @@ $ git add /path/to/file/HelloWorld.c
 
 # Regular Expression support!
 $ git add ./*.java
+
+# You can also add everything in your working directory to the staging area.
+$ git add -A
 ```
 
 This only adds a file to the staging area/index, it doesn't commit it to the
@@ -196,7 +201,7 @@ working directory/repo.
 
 ### branch
 
-Manage your branches. You can view, edit, create, delete branches using this 
+Manage your branches. You can view, edit, create, delete branches using this
 command.
 
 ```bash
@@ -226,7 +231,7 @@ Manage your tags
 $ git tag
 
 # Create a annotated tag
-# The -m specifies a tagging message,which is stored with the tag.
+# The -m specifies a tagging message, which is stored with the tag.
 # If you don’t specify a message for an annotated tag,
 # Git launches your editor so you can type it in.
 $ git tag -a v2.0 -m 'my version 2.0'
@@ -245,7 +250,7 @@ $ git push origin --tags
 
 ### checkout
 
-Updates all files in the working tree to match the version in the index, or 
+Updates all files in the working tree to match the version in the index, or
 specified tree.
 
 ```bash
@@ -264,7 +269,7 @@ $ git checkout -b newBranch
 ### clone
 
 Clones, or copies, an existing repository into a new directory. It also adds
-remote-tracking branches for each branch in the cloned repo, which allows you 
+remote-tracking branches for each branch in the cloned repo, which allows you
 to push to a remote branch.
 
 ```bash
@@ -280,12 +285,16 @@ $ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git -
 
 ### commit
 
-Stores the current contents of the index in a new "commit." This commit 
+Stores the current contents of the index in a new "commit." This commit
 contains the changes made and a message created by the user.
 
 ```bash
 # commit with a message
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+
+# signed commit with a message (user.signingkey must have been set
+# with your GPG key e.g. git config --global user.signingkey 5173AAD5)
+$ git commit -S -m "signed commit message"
 
 # automatically stage modified or deleted files, except new files, and then commit
 $ git commit -a -m "Modified foo.php and removed bar.php"
@@ -392,11 +401,11 @@ Pulls from a repository and merges it with another branch.
 $ git pull origin master
 
 # By default, git pull will update your current branch
-# by merging in new changes from its remote-tracking branch 
+# by merging in new changes from its remote-tracking branch
 $ git pull
 
 # Merge in changes from remote branch and rebase
-# branch commits onto your local repo, like: "git fetch <remote> <branch>, git 
+# branch commits onto your local repo, like: "git fetch <remote> <branch>, git
 # rebase <remote>/<branch>"
 $ git pull origin master --rebase
 ```
@@ -412,7 +421,7 @@ Push and merge changes from a branch to a remote & branch.
 $ git push origin master
 
 # By default, git push will push and merge changes from
-# the current branch to its remote-tracking branch 
+# the current branch to its remote-tracking branch
 $ git push
 
 # To link up current local branch with a remote branch, add -u flag:
@@ -423,11 +432,11 @@ $ git push
 
 ### stash
 
-Stashing takes the dirty state of your working directory and saves it on a 
+Stashing takes the dirty state of your working directory and saves it on a
 stack of unfinished changes that you can reapply at any time.
 
 Let's say you've been doing some work in your git repo, but you want to pull
-from the remote. Since you have dirty (uncommited) changes to some files, you
+from the remote. Since you have dirty (uncommitted) changes to some files, you
 are not able to run `git pull`. Instead, you can run `git stash` to save your
 changes onto a stack!
 
@@ -455,7 +464,7 @@ nothing to commit, working directory clean
 ```
 
 You can see what "hunks" you've stashed so far using `git stash list`.
-Since the "hunks" are stored in a Last-In-First-Out stack, our most recent 
+Since the "hunks" are stored in a Last-In-First-Out stack, our most recent
 change will be at top.
 
 ```bash
@@ -486,7 +495,7 @@ Now you're ready to get back to work on your stuff!
 
 ### rebase (caution)
 
-Take all changes that were committed on one branch, and replay them onto 
+Take all changes that were committed on one branch, and replay them onto
 another branch.
 *Do not rebase commits that you have pushed to a public repo*.
 
@@ -501,7 +510,7 @@ $ git rebase master experimentBranch
 ### reset (caution)
 
 Reset the current HEAD to the specified state. This allows you to undo merges,
-pulls, commits, adds, and more. It's a great command but also dangerous if you 
+pulls, commits, adds, and more. It's a great command but also dangerous if you
 don't know what you are doing.
 
 ```bash
@@ -516,7 +525,7 @@ $ git reset --hard
 $ git reset 31f2bb1
 
 # Moves the current branch tip backward to the specified commit
-# and makes the working dir match (deletes uncommited changes and all commits
+# and makes the working dir match (deletes uncommitted changes and all commits
 # after the specified commit).
 $ git reset --hard 31f2bb1
 ```
@@ -526,12 +535,13 @@ $ git reset --hard 31f2bb1
 Reflog will list most of the git commands you have done for a given time period,
 default 90 days.
 
-This give you the a change to reverse any git commands that have gone wrong
-for instance if a rebase is has broken your application.
+This give you the chance to reverse any git commands that have gone wrong
+(for instance, if a rebase has broken your application).
 
 You can do this:
 
 1. `git reflog` to list all of the git commands for the rebase
+
 ```
 38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
 38b323f HEAD@{1}: rebase -i (pick): Clarify inc/dec operators
@@ -548,8 +558,8 @@ ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
 
 ### revert
 
-Revert can be used to undo a commit. It should not be confused with reset which 
-restores the state of a project to a previous point. Revert will add a new 
+Revert can be used to undo a commit. It should not be confused with reset which
+restores the state of a project to a previous point. Revert will add a new
 commit which is the inverse of the specified commit, thus reverting it.
 
 ```bash
@@ -594,3 +604,5 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Pro Git](http://www.git-scm.com/book/en/v2)
 
 * [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
+* [The New Boston tutorial to Git covering basic commands and workflow](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx)

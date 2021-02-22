@@ -206,8 +206,7 @@ size(A) % Resposta = 3 3
 A(1, :) =[] % Remove a primeira linha da matriz
 A(:, 1) =[] % Remove a primeira coluna da matriz
 
-transpose(A) % Transposta a matriz, que é o mesmo de:
-A one
+transpose(A) % Transposta a matriz, que é o mesmo de: A.'
 ctranspose(A) % Transposta a matriz
 % (a transposta, seguida pelo conjugado complexo de cada elemento)
 
@@ -357,7 +356,7 @@ disp(a) % Imprime o valor da variável a
 disp('Olá Mundo') % Imprime a string
 fprintf % Imprime na janela de comandos com mais controle
 
-% Estruturas Condicionais (os parênteses são opicionais, porém uma boa prática)
+% Estruturas Condicionais (os parênteses são opcionais, porém uma boa prática)
 if (a > 15)
 	disp('Maior que 15')
 elseif (a == 23)

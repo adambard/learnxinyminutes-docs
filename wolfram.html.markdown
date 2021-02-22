@@ -123,8 +123,8 @@ myHash[["Green"]]                       (* 2, use it *)
 myHash[["Green"]] := 5                  (* 5, update it *)
 myHash[["Puce"]] := 3.5                 (* 3.5, extend it *)
 KeyDropFrom[myHash, "Green"]            (* Wipes out key Green *)
-Keys[myHash]                            (* {Red} *)
-Values[myHash]                          (* {1} *)
+Keys[myHash]                            (* {Red, Puce} *)
+Values[myHash]                          (* {1, 3.5} *)
 
 (* And you can't do any demo of Wolfram without showing this off *)
 Manipulate[y^2, {y, 0, 20}] (* Return a reactive user interface that displays y^2

@@ -1,7 +1,7 @@
 ---
 language: javascript
 contributors:
-    - ["Adam Brenecki", "http://adam.brenecki.id.au"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
 translators:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 filename: javascript-fa.js
@@ -17,8 +17,8 @@ lang: fa-ir
 قدر دان نظرات سازنده شما هستم! شما میتوانید از طریق زیر با من تماس بگیرید:
 </p>
 
-[@adambrenecki](https://twitter.com/adambrenecki), or
-[adam@brenecki.id.au](mailto:adam@brenecki.id.au).
+[@ExcitedLeigh](https://twitter.com/ExcitedLeigh), or
+[l@leigh.net.au](mailto:l@leigh.net.au).
 
 <p dir='rtl'>
 // توضیحات همانند C هستند. توضیحات یک خطی با دو خط مورب شروع میشوند.,

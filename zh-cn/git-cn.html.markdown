@@ -131,7 +131,7 @@ $ git help init
 
 
 ```bash
-# 显示分支，为跟踪文件，更改和其他不同
+# 显示分支，未跟踪文件，更改和其他不同
 $ git status
 
 # 查看其他的git status的用法
@@ -234,7 +234,7 @@ $ git diff HEAD
 # 在搜索结果中显示行号
 $ git config --global grep.lineNumber true
 
-# 是搜索结果可读性更好
+# 使得搜索结果可读性更好
 $ git config --global alias.g "grep --break --heading --line-number"
 ```
 

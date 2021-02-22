@@ -2,11 +2,11 @@
 language: kdb+
 contributors:
     - ["Matt Doherty", "https://github.com/picodoc"]
-    - ["Jonny Press", "jonny.press@aquaq.co.uk"]
+    - ["Jonny Press", "https://github.com/jonnypress"]
 filename: learnkdb.q
 ---
 
-The q langauge and its database component kdb+ were developed by Arthur Whitney
+The q language and its database component kdb+ were developed by Arthur Whitney
 and released by Kx systems in 2003. q is a descendant of APL and as such is
 very terse and a little strange looking for anyone from a "C heritage" language
 background. Its expressiveness and vector oriented nature make it well suited
@@ -25,6 +25,8 @@ separable so this distinction is not really useful.
 
 All Feedback welcome!  You can reach me at matt.doherty@aquaq.co.uk, or Jonny
 at jonny.press@aquaq.co.uk
+
+To learn more about kdb+ you can join the [Personal kdb+](https://groups.google.com/forum/#!forum/personal-kdbplus) or [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) group.
 
 ```
 / Single line comments start with a forward-slash
@@ -74,7 +76,7 @@ floor 3.14159 / => 3
 / ...getting the absolute value...
 abs -3.14159 / => 3.14159
 / ...and many other things
-/ see http://code.kx.com/wiki/Reference for more
+/ see http://code.kx.com/q/ref/card/ for more
 
 / q has no operator precedence, everything is evaluated right to left
 / so results like this might take some getting used to
@@ -172,7 +174,7 @@ t - 00:10:00.000 / => 00:50:00.000
 d.year / => 2015i
 d.mm / => 12i
 d.dd / => 25i
-/ see http://code.kx.com/wiki/JB:QforMortals2/atoms#Temporal_Data for more
+/ see http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#25-temporal-data for more
 
 / q also has an infinity value so div by zero will not throw an error
 1%0 / => 0w
@@ -181,7 +183,7 @@ d.dd / => 25i
 / And null types for representing missing values
 0N / => null int
 0n / => null float
-/ see http://code.kx.com/wiki/JB:QforMortals2/atoms#Null_Values for more
+/ see http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#27-nulls for more
 
 / q has standard control structures
 / if is as you might expect (; separates the condition and instructions)
@@ -299,7 +301,7 @@ l:1+til 9 / til is a useful shortcut for generating ranges
 -5#l / => 5 6 7 8 9
 / drop the last 5
 -5_l / => 1 2 3 4
-/ find the first occurance of 4
+/ find the first occurrence of 4
 l?4 / => 3
 l[3] / => 4
 
@@ -314,7 +316,7 @@ key d / => `a`b`c
 / and value the second
 value d / => 1 2 3
 
-/ Indexing is indentical to lists
+/ Indexing is identical to lists
 / with the first list as a key instead of the position
 d[`a] / => 1
 d[`b] / => 2
@@ -404,7 +406,7 @@ k!t
 / We can also use this shortcut for defining keyed tables
 kt:([id:1 2 3]c1:1 2 3;c2:4 5 6;c3:7 8 9)
 
-/ Records can then be retreived based on this key
+/ Records can then be retrieved based on this key
 kt[1]
 / => c1| 1
 / => c2| 4
@@ -426,7 +428,7 @@ kt[`id!1]
 f:{x+x}
 f[2] / => 4
 
-/ Functions can be annonymous and called at point of definition
+/ Functions can be anonymous and called at point of definition
 {x+x}[2] / => 4
 
 / By default the last expression is returned
@@ -438,7 +440,7 @@ f[2] / => 4
 
 / Function arguments can be specified explicitly (separated by ;)
 {[arg1;arg2] arg1+arg2}[1;2] / => 3
-/ or if ommited will default to x, y and z
+/ or if omitted will default to x, y and z
 {x+y+z}[1;2;3] / => 6
 
 / Built in functions are no different, and can be called the same way (with [])
@@ -470,7 +472,7 @@ a / => 1
 / Functions cannot see nested scopes (only local and global)
 {local:1;{:local}[]}[] / throws error as local is not defined in inner function
 
-/ A function can have one or more of it's arguments fixed (projection)
+/ A function can have one or more of its arguments fixed (projection)
 f:+[4]
 f[4] / => 8
 f[5] / => 9
@@ -481,7 +483,7 @@ f[6] / => 10
 //////////     q-sql      //////////
 ////////////////////////////////////
 
-/ q has it's own syntax for manipulating tables, similar to standard SQL
+/ q has its own syntax for manipulating tables, similar to standard SQL
 / This contains the usual suspects of select, insert, update etc.
 / and some new functionality not typically available
 / q-sql has two significant differences (other than syntax) to normal SQL:
@@ -640,7 +642,7 @@ kt upsert ([]name:`Thomas`Chester;age:33 58;height:175 179;sex:`f`m)
 / => Thomas 32  175    m
 
 / Most of the standard SQL joins are present in q-sql, plus a few new friends
-/ see http://code.kx.com/wiki/JB:QforMortals2/queries_q_sql#Joins
+/ see http://code.kx.com/q4m3/9_Queries_q-sql/#99-joins
 / the two most important (commonly used) are lj and aj
 
 / lj is basically the same as SQL LEFT JOIN
@@ -667,7 +669,7 @@ aj[`time`sym;trades;quotes]
 / => 10:01:04 ge   150
 / for each row in the trade table, the last (prevailing) quote (px) for that sym
 / is joined on.
-/ see http://code.kx.com/wiki/JB:QforMortals2/queries_q_sql#Asof_Join
+/ see http://code.kx.com/q4m3/9_Queries_q-sql/#998-as-of-joins
 
 ////////////////////////////////////
 /////     Extra/Advanced      //////
@@ -680,21 +682,21 @@ aj[`time`sym;trades;quotes]
 / where possible functionality should be vectorized (i.e. operations on lists)
 / adverbs supplement this, modifying the behaviour of functions
 / and providing loop type functionality when required
-/ (in q functions are sometimes refered to as verbs, hence adverbs)
+/ (in q functions are sometimes referred to as verbs, hence adverbs)
 / the "each" adverb modifies a function to treat a list as individual variables
 first each (1 2 3;4 5 6;7 8 9)
 / => 1 4 7
 
 / each-left (\:) and each-right (/:) modify a two-argument function
 / to treat one of the arguments and individual variables instead of a list
-1 2 3 +\: 1 2 3
-/ => 2 3 4
-/ => 3 4 5
-/ => 4 5 6
-1 2 3 +/: 1 2 3
-/ => 2 3 4
-/ => 3 4 5
-/ => 4 5 6
+1 2 3 +\: 11 22 33
+/ => 12 23 34
+/ => 13 24 35
+/ => 14 25 36
+1 2 3 +/: 11 22 33
+/ => 12 13 14
+/ => 23 24 25
+/ => 34 35 36
 
 / The true alternatives to loops in q are the adverbs scan (\) and over (/)
 / their behaviour differs based on the number of arguments the function they
@@ -714,7 +716,7 @@ first each (1 2 3;4 5 6;7 8 9)
 {x + y}/[1 2 3 4 5] / => 15 (only the final result)
 
 / There are other adverbs and uses, this is only intended as quick overview
-/ http://code.kx.com/wiki/JB:QforMortals2/functions#Adverbs
+/ http://code.kx.com/q4m3/6_Functions/#67-adverbs
 
 ////// Scripts //////
 / q scripts can be loaded from a q session using the "\l" command
@@ -754,21 +756,21 @@ select from splayed / (the columns are read from disk on request)
 / => 1 1
 / => 2 2
 / => 3 3
-/ see http://code.kx.com/wiki/JB:KdbplusForMortals/contents for more
+/ see http://code.kx.com/q4m3/14_Introduction_to_Kdb+/ for more
 
 ////// Frameworks //////
 / kdb+ is typically used for data capture and analysis.
 / This involves using an architecture with multiple processes
 / working together.  kdb+ frameworks are available to streamline the setup
-/ and configuration of this architecuture and add additional functionality
+/ and configuration of this architecture and add additional functionality
 / such as disaster recovery, logging, access, load balancing etc.
 / https://github.com/AquaQAnalytics/TorQ
 ```
 
 ## Want to know more?
 
-* [*q for mortals* q language tutorial](http://code.kx.com/wiki/JB:QforMortals2/contents)
-* [*kdb for mortals* on disk data tutorial](http://code.kx.com/wiki/JB:KdbplusForMortals/contents)
-* [q language reference](http://code.kx.com/wiki/Reference)
+* [*q for mortals* q language tutorial](http://code.kx.com/q4m3/)
+* [*Introduction to Kdb+* on disk data tutorial](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/)
+* [q language reference](https://code.kx.com/q/ref/)
 * [Online training courses](http://training.aquaq.co.uk/)
 * [TorQ production framework](https://github.com/AquaQAnalytics/TorQ)
