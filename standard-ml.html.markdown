@@ -1,10 +1,12 @@
 ---
 language: "Standard ML"
+filename: standardml.sml
 contributors:
-    - ["Simon Shine", "http://shine.eu.org/"]
-    - ["David Pedersen", "http://lonelyproton.com/"]
+    - ["Simon Shine", "https://simonshine.dk/"]
+    - ["David Pedersen", "https://github.com/davidpdrsn"]
     - ["James Baker", "http://www.jbaker.io/"]
     - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
+    - ["Chris Wilson", "http://sencjw.com/"]
 ---
 
 Standard ML is a functional programming language with type inference and some
@@ -235,17 +237,18 @@ val hmm = answer "What is the meaning of life, the universe and everything?"
 
 (* Functions can take several arguments by taking one tuples as argument: *)
 fun solve2 (a : real, b : real, c : real) =
-    ( (~b + Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a),
-      (~b - Math.sqrt(b * b - 4.0*a*c)) / (2.0 * a) )
+    ((~b + Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a),
+     (~b - Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a))
 
 (* Sometimes, the same computation is carried out several times. It makes sense
    to save and re-use the result the first time. We can use "let-bindings": *)
 fun solve2 (a : real, b : real, c : real) =
-    let val discr  = b * b - 4.0*a*c
+    let val discr  = b * b - 4.0 * a * c
         val sqr = Math.sqrt discr
         val denom = 2.0 * a
     in ((~b + sqr) / denom,
-        (~b - sqr) / denom) end
+        (~b - sqr) / denom)
+    end
 
 
 (* Pattern matching is a funky part of functional programming.  It is an
@@ -264,6 +267,19 @@ fun second_elem (x::y::xs) = y
 fun evenly_positioned_elems (odd::even::xs) = even::evenly_positioned_elems xs
   | evenly_positioned_elems [odd] = []  (* Base case: throw away *)
   | evenly_positioned_elems []    = []  (* Base case *)
+  
+(* The case expression can also be used to pattern match and return a value *)
+datatype temp =
+      C of real
+    | F of real
+    
+(*  Declaring a new C temp value...
+    val t: temp = C 45.0  *)
+
+fun temp_to_f t =
+    case t of
+      C x => x * (9.0 / 5.0) + 32.0
+    | F x => x
 
 (* When matching on records, you must use their slot names, and you must bind
    every slot in a record. The order of the slots doesn't matter though. *)
@@ -292,6 +308,9 @@ val thermometer =
 val some_result = (fn x => thermometer (x - 5) ^ thermometer (x + 5)) 37
 
 (* Here is a higher-order function that works on lists (a list combinator) *)
+(* map f l
+       applies f to each element of l from left to right, 
+       returning the list of results. *)
 val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* first an int list *)
 val opinions = List.map thermometer readings (* gives [ "Cold", "Warm", ... ] *)
 
@@ -324,7 +343,11 @@ val n = op + (5, 5)   (* n is now 10 *)
 (* 'op' is useful when combined with high order functions because they expect
    functions and not operators as arguments. Most operators are really just
    infix functions. *)
-val sum_of_numbers = foldl op+ 0 [1,2,3,4,5]
+(* foldl f init [x1, x2, ..., xn]
+       returns
+       f(xn, ...f(x2, f(x1, init))...)
+       or init if the list is empty. *)
+val sum_of_numbers = foldl op+ 0 [1, 2, 3, 4, 5]
 
 
 (* Datatypes are useful for creating both simple and complex structures *)
@@ -343,7 +366,10 @@ val _ = print (say(Red) ^ "\n")
 fun say Red   = "You are red!"
   | say Green = "You are green!"
   | say Blue  = "You are blue!"
-  | say _     = raise Fail "Unknown color"
+
+(* We did not include the match arm `say _ = raise Fail "Unknown color"`
+because after specifying all three colors, the pattern is exhaustive
+and redundancy is not permitted in pattern matching *)
 
 
 (* Here is a binary tree datatype *)
@@ -377,7 +403,7 @@ fun calculate_interest(n) = if n < 0.0
 
 (* Exceptions can be caught using "handle" *)
 val balance = calculate_interest ~180.0
-              handle Domain => ~180.0    (* x now has the value ~180.0 *)
+              handle Domain => ~180.0    (* balance now has the value ~180.0 *)
 
 (* Some exceptions carry extra information with them *)
 (* Here are some examples of built-in exceptions *)
@@ -387,7 +413,7 @@ fun failing_function []    = raise Empty  (* used for empty lists *)
   | failing_function xs    = raise Fail "This list is too long!"
 
 (* We can pattern match in 'handle' to make sure
-   a specfic exception was raised, or grab the message *)
+   a specific exception was raised, or grab the message *)
 val err_msg = failing_function [1,2] handle Fail _ => "Fail was raised"
                                           | Domain => "Domain was raised"
                                           | Empty  => "Empty was raised"
@@ -407,7 +433,8 @@ fun writePoem(filename) =
     let val file = TextIO.openOut(filename)
         val _ = TextIO.output(file, "Roses are red,\nViolets are blue.\n")
         val _ = TextIO.output(file, "I have a gun.\nGet in the van.\n")
-    in TextIO.closeOut(file) end
+    in TextIO.closeOut(file)
+    end
 
 (* Read a nice poem from a file into a list of strings *)
 fun readPoem(filename) =
@@ -450,5 +477,6 @@ fun decrement_ret x y = (x := !x - 1; y)
   [Moscow ML](http://mosml.org),
   [SML/NJ](http://smlnj.org/).
 * Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
-* Get the book *ML for the Working Programmer* by Larry C. Paulson.
+* Read *[ML for the Working Programmer](https://www.cl.cam.ac.uk/~lp15/MLbook/pub-details.html)* by Larry C. Paulson.
 * Use [StackOverflow's sml tag](http://stackoverflow.com/questions/tagged/sml).
+* Solve exercises on [Exercism.io's Standard ML track](https://exercism.io/tracks/sml).

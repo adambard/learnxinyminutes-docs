@@ -1,15 +1,13 @@
 ---
 language: elisp
 contributors:
-    - ["Bastien Guerry", "http://bzg.fr"]
+    - ["Bastien Guerry", "https://bzg.fr"]
     - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
 filename: learn-emacs-lisp.el
 ---
 
 ```scheme
 ;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2d)
-;;
-;; Author: Bastien / @bzg2 / http://bzg.fr
 ;;
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
@@ -225,6 +223,8 @@ filename: learn-emacs-lisp.el
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Let's store a list of names:
+;; If you want to create a literal list of data, use ' to stop it from
+;; being evaluated - literally, "quote" the data.
 (setq list-of-names '("Sarah" "Chloe" "Mathilde"))
 
 ;; Get the first element of this list with `car':
@@ -281,7 +281,7 @@ filename: learn-emacs-lisp.el
 ;; should stop searching at some point in the buffer, and whether it
 ;; should silently fail when nothing is found:
 
-;; (search-forward "Hello" nil 't) does the trick:
+;; (search-forward "Hello" nil t) does the trick:
 
 ;; The `nil' argument says: the search is not bound to a position.
 ;; The `'t' argument says: silently fail when nothing is found.
@@ -295,18 +295,18 @@ filename: learn-emacs-lisp.el
     (mapcar 'hello list-of-names)
     (goto-char (point-min))
     ;; Replace "Hello" by "Bonjour"
-    (while (search-forward "Hello" nil 't)
+    (while (search-forward "Hello" nil t)
       (replace-match "Bonjour"))
     (other-window 1))
 
 (hello-to-bonjour)
 
-;; Let's colorize the names:
+;; Let's boldify the names:
 
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
     (goto-char (point-min))
-    (while (re-search-forward "Bonjour \\(.+\\)!" nil 't)
+    (while (re-search-forward "Bonjour \\(.+\\)!" nil t)
       (add-text-properties (match-beginning 1)
                            (match-end 1)
                            (list 'face 'bold)))
@@ -342,13 +342,4 @@ filename: learn-emacs-lisp.el
 ;;
 ;; To read an online introduction to Emacs Lisp:
 ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
-
-;; Thanks to these people for their feedback and suggestions:
-;; - Wes Hardaker
-;; - notbob
-;; - Kevin Montuori
-;; - Arne Babenhauserheide
-;; - Alan Schmitt
-;; - LinXitoW
-;; - Aaron Meurer
 ```

@@ -199,8 +199,7 @@ size(A) % ans = 3 3
 A(1, :) =[] % Rimuove la prima riga della matrice
 A(:, 1) =[] % Rimuove la prima colonna della matrice
 
-transpose(A) % Traspone la matrice, equivale a:
-A one
+transpose(A) % Traspone la matrice, equivale a: A.'
 ctranspose(A) % Trasposizione hermitiana della matrice
 % (ovvero il complesso coniugato di ogni elemento della matrice trasposta)
 
@@ -217,7 +216,7 @@ A .* B % Moltiplica ogni elemento di A per il corrispondente elemento di B
 % l'altra (il cui nome termina con m) agisce sull'intera matrice.
 exp(A) % Calcola l'esponenziale di ogni elemento
 expm(A) % Calcola la matrice esponenziale
-sqrt(A) % Calcola la radice quadrata di ogni elementotake the square root of each element
+sqrt(A) % Calcola la radice quadrata di ogni elemento
 sqrtm(A) % Trova la matrice di cui A nè è la matrice quadrata
 
 

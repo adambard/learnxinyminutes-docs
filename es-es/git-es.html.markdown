@@ -1,11 +1,11 @@
 ---
 category: tool
 tool: git
+filename: LearnGit-es.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translator:
     - ["Raúl Ascencio", "http://rscnt.github.io"]
-filename: LearnGit.txt
 lang: es-es
 
 ---

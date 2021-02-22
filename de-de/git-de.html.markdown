@@ -10,7 +10,7 @@ lang: de-de
 
 Git ist eine verteilte Versions- und Quellcodeverwaltung. 
 
-Es nimmt Schnappschüsse der Projekte, um mit diesen Schnappschüssen verschiedene Versionen unterscheiden und den Quellcode verwalten zu können.
+Es nimmt Schnappschüsse der Projekte auf, um mit diesen Schnappschüssen verschiedene Versionen unterscheiden und den Quellcode verwalten zu können.
 
 Anmerkung des Übersetzers: Einige englische Begriffe wie *Repository*, *Commit* oder *Head* sind idiomatische Bestandteile im Umgang mit Git. Sie wurden nicht übersetzt.
 
@@ -20,7 +20,7 @@ Anmerkung des Übersetzers: Einige englische Begriffe wie *Repository*, *Commit*
 
 Eine Versionsverwaltung erfasst die Änderungen einer Datei oder eines Verzeichnisses im Verlauf der Zeit.
 
-### Zentrale im Vergleich mit verteilter Versionverwaltung
+### Vergleich zwischen Zentraler und verteilter Versionverwaltung
 
 * Zentrale Versionsverwaltung konzentriert sich auf das Synchronisieren, Verfolgen und Sichern von Dateien.
 * Verteilte Versionsverwaltung konzentriert sich auf das Teilen der Änderungen. Jede Änderung hat eine eindeutige ID.
@@ -43,13 +43,13 @@ Eine Versionsverwaltung erfasst die Änderungen einer Datei oder eines Verzeichn
 
 ### Repository (Repo)
 
-Ein Satz von Dateien, Verzeichnisen, Historieneinträgen, Commits und Heads. Stell es dir wie eine Quellcode-Datenstruktur vor, unter anderem mit der Eigenschaft, dass alle *Elemente* dir Zugriff auf die Revisionshistorie geben.
+Ein Satz von Dateien, Verzeichnissen, Historieneinträgen, Commits und Heads. Stell es dir wie eine Quellcode-Datenstruktur vor, unter anderem mit der Eigenschaft, dass alle *Elemente* dir Zugriff auf die Revisionshistorie geben.
 
 Ein Repository besteht in Git aus dem .git-Verzeichnis und dem Arbeitsverzeichnis.
 
 ### .git-Verzeichnis (Teil des Repositorys)
 
-Das .git-Verzeichnis enthält alle Einstellung, Logs, Branches, den HEAD und mehr.
+Das .git-Verzeichnis enthält alle Einstellungen, Logs, Branches, den HEAD und mehr.
 [Ausführliche Übersicht](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Arbeitsverzeichnis (Teil des Repositorys)
@@ -66,7 +66,7 @@ Ein Commit ist ein Schnappschuss von Änderungen in deinem Arbeitsverzeichnis. W
 
 ### Branch
 
-Ein Branch, ein Ast oder Zweig, ist im Kern ein Pointer auf den letzten Commit, den du gemacht hast. Während des Commits wird der Pointer automatisch auf Stand gebracht und zeigt dann auf den neuen letzten Commit.
+Ein Branch, ein Ast oder Zweig, ist im Kern ein Pointer auf den letzten Commit, den du gemacht hast. Während des Commits wird der Pointer automatisch auf diesen Stand gebracht und zeigt dann auf den neuen letzten Commit.
 
 ### HEAD und head (Teil des .git-Verzeichnisses)
 
@@ -205,11 +205,17 @@ Speichert die aktuellen Inhalte des Index in einen neuen *Commit*. Dieser Commit
 ```bash
 # Commit mit Beschreibung erstellen.
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+
+# Alle veränderten oder gelöschten Dateien außer neue Dateien werden gestaged und dann wird ein Commit erstellt.
+$ git commit -a -m "Modified foo.php and removed bar.php"
+
+# Ändert den letzten Commit (der letzte Commit wird mit einem neuen Commit ersetzt)
+$ git commit --amend -m "Correct message"
 ```
 
 ### diff
 
-Zeigt die Unterschiede zwischen Dateien von Arbeitsverzeichnisse, dem Index und Commits an.
+Zeigt die Unterschiede zwischen Dateien vom Arbeitsverzeichnis, dem Index und Commits an.
 
 ```bash
 # Unterschiede zwischen deinem Arbeitsverzeichnis und dem Index anzeigen
@@ -324,7 +330,7 @@ $ git push origin master
 
 ### rebase (mit Vorsicht einsetzen) 
 
-Nimm alle Änderungen, die in einem Branch durch Commits vorgenommen wurden, und übertrage sie auf einen anderen Branch. Achtung: Führe keinen Rebase von Commits durch, die auf ein öffentliches Repo gepusht wurden.
+Nimm alle Änderungen, die in einem Branch durch Commits vorgenommen wurden, und übertrage sie auf einen anderen Branch. Achtung: Führe keinen Rebase von Commits durch, die auf ein öffentliches Repo gepusht wurden!
 
 ```bash
 # Rebase "experimentBranch" in den "master"-Branch

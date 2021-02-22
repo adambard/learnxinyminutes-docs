@@ -24,6 +24,7 @@ VDEV's offer better reliability and safety than a RAID card.  It is discouraged 
 RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
 
 Types of VDEV's
+
 * stripe (a single disk, no redundancy)
 * mirror (n-way mirrors supported)
 * raidz
@@ -60,6 +61,7 @@ single host can have 2^64 storage pools.  The limits are huge.
 ### Storage Pools
 
 Actions:
+
 * List
 * Status
 * Destroy
@@ -147,6 +149,7 @@ $ zpool destroy test
 ### Datasets
 
 Actions:
+
 * Create
 * List
 * Rename
@@ -218,7 +221,7 @@ Delete dataset
 
 ```bash
 # Datasets cannot be deleted if they have any snapshots
-zfs destroy tank/root/home
+$ zfs destroy tank/root/home
 ```
 
 Get / set properties of a dataset
@@ -267,6 +270,7 @@ ZFS snapshots are one of the things about zfs that are a really big deal
 * They are easy to automate.
 
 Actions:
+
 * Create
 * Delete
 * Rename
@@ -290,6 +294,7 @@ tank/home/sarlalian@now       0      -   259M  -
 tank/home/alice@now           0      -   156M  -
 tank/home/bob@now             0      -   156M  -
 ...
+```
 
 Destroy snapshots
 
@@ -309,13 +314,13 @@ Renaming Snapshots
 $ zfs rename tank/home/sarlalian@now tank/home/sarlalian@today
 $ zfs rename tank/home/sarlalian@now today
 
-# zfs rename -r tank/home@now @yesterday
+$ zfs rename -r tank/home@now @yesterday
 ```
 
 Accessing snapshots
 
 ```bash
-# CD Into a snapshot directory
+# CD into a snapshot directory
 $ cd /home/.zfs/snapshot/
 ```
 
@@ -331,11 +336,11 @@ $ zfs send tank/home/sarlalian@now | zfs recv backups/home/sarlalian
 # Send a snapshot to a remote host
 $ zfs send tank/home/sarlalian@now | ssh root@backup_server 'zfs recv tank/home/sarlalian'
 
-# Send full dataset with snapshos to new host
+# Send full dataset with snapshots to new host
 $ zfs send -v -R tank/home@now | ssh root@backup_server 'zfs recv tank/home'
 ```
 
-Cloneing Snapshots
+Cloning Snapshots
 
 ```bash
 # Clone a snapshot

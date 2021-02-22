@@ -1,7 +1,9 @@
 ---
-language: make
+category: tool
+tool: make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
+    - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
 filename: Makefile
 ---
 
@@ -11,7 +13,7 @@ target to the most recent version of the source. Famously written over a
 weekend by Stuart Feldman in 1976, it is still widely used (particularly
 on Unix and Linux) despite many competitors and criticisms.
 
-There are many varieties of make in existence, however this article 
+There are many varieties of make in existence, however this article
 assumes that we are using GNU make which is the standard on Linux.
 
 ```make
@@ -168,9 +170,9 @@ echo: name2 = Sara # True within the matching rule
 # Some variables defined automatically by make.
 echo_inbuilt:
 	echo $(CC)
-	echo ${CXX)}
+	echo ${CXX}
 	echo $(FC)
-	echo ${CFLAGS)}
+	echo ${CFLAGS}
 	echo $(CPPFLAGS)
 	echo ${CXXFLAGS}
 	echo $(LDFLAGS)

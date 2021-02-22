@@ -8,7 +8,7 @@ translators:
 lang: pt-br
 ---
 
-Julia é uma linguagem homoiconic funcional focada na computação tecnica. Ao mesmo tempo que ela tem todo o poder dos homoiconic macros, funções de primeira classe, e controle de baixo nivel, Julia é tão facil para aprender e usar quanto Python.
+Julia é uma linguagem homoicônica funcional focada na computação técnica. Ao mesmo tempo que ela tem todo o poder dos macros homoicônicos, funções de primeira classe, e controle de baixo nível, Julia é tão fácil para aprender e usar quanto Python.
 
 Este tutorial é baseado no Julia 0.3.
 
@@ -104,7 +104,7 @@ println("Eu sou Julia. Prazer em conhece-lo!")
 ## 2. Variáveis e coleções
 ####################################################
 
-#Você não declara variáveis antes de atribui-lás.
+#Você não declara variáveis antes de atribui-las.
 some_var = 5 # => 5
 some_var # => 5
 

@@ -182,8 +182,8 @@ a ; => (3 2)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Macros lhe permitem estender a sintaxe da linguagem.
-;; Os macros no Paren são fáceis.
-;; Na verdade, (defn) é um macro.
+;; As macros no Paren são fáceis.
+;; Na verdade, (defn) é uma macro.
 (defmacro setfn (nome ...) (set nome (fn ...)))
 (defmacro defn (nome ...) (def nome (fn ...)))
 
@@ -191,6 +191,6 @@ a ; => (3 2)
 (defmacro infix (a op ...) (op a ...))
 (infix 1 + 2 (infix 3 * 4)) ; => 15
 
-;; Macros não são higiênicos, você pode sobrescrever as variáveis já existentes!
-;; Eles são transformações de códigos.
+;; Macros não são higiênicas, você pode sobrescrever as variáveis já existentes!
+;; Elas são transformações de códigos.
 ```

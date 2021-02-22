@@ -190,7 +190,7 @@ Para usar el fichero creado en producción, simplemente intercambia `data-main`:
 
 Un increíblemente detallado [resumen de opciones de generación](https://github.com/jrburke/r.js/blob/master/build/example.build.js) está disponible en el repositorio de GitHub.
 
-### Tópicos no cubiertos en este tutorial
+### Temas no cubiertos en este tutorial
 * [Cargador de plugins / transformaciones](http://requirejs.org/docs/plugins.html)
 * [Cargando y exportando estilos CommonJS](http://requirejs.org/docs/commonjs.html)
 * [Configuración avanzada](http://requirejs.org/docs/api.html#config)

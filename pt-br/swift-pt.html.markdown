@@ -1,12 +1,13 @@
 ---
 language: swift
+filename: learnswift-pt.swift
 contributors:
     - ["Grant Timmerman", "http://github.com/grant"]
     - ["Christopher Bess", "http://github.com/cbess"]
 translators:
     - ["Mariane Siqueira Machado", "https://twitter.com/mariane_sm"]
 lang: pt-br
-filename: learnswift.swift
+
 ---
 
 Swift é uma linguagem de programação para desenvolvimento de aplicações no iOS e OS X criada pela Apple. Criada para
@@ -388,13 +389,13 @@ if mySquare === mySquare {
 // Podem conter métodos do mesmo jeito que classes.
 
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
     func getIcon() -> String {
         switch self {
-        case .Spades: return "♤"
-        case .Hearts: return "♡"
-        case .Diamonds: return "♢"
-        case .Clubs: return "♧"
+        case .spades: return "♤"
+        case .hearts: return "♡"
+        case .diamonds: return "♢"
+        case .clubs: return "♧"
         }
     }
 }

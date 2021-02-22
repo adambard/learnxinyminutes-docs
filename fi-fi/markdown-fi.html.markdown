@@ -10,7 +10,7 @@ lang: fi-fi
 
 John Gruber loi Markdownin vuona 2004. Sen tarkoitus on olla helposti luettava ja kirjoitettava syntaksi joka muuntuu helposti HTML:ksi (ja nyt myös moneksi muuksi formaatiksi).
 
-```markdown
+```md
 <!-- Jokainen HTML-tiedosto on pätevää Markdownia. Tämä tarkoittaa että voimme
 käyttää HTML-elementtejä Markdownissa, kuten kommentteja, ilman että markdown
 -jäsennin vaikuttaa niihin. Tästä johtuen et voi kuitenkaan käyttää markdownia

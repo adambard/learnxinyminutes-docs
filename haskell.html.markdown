@@ -1,5 +1,6 @@
 ---
 language: Haskell
+filename: learnhaskell.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 ---
@@ -60,15 +61,17 @@ not False -- True
 
 -- A string is a list of characters
 ['H', 'e', 'l', 'l', 'o'] -- "Hello"
+
+-- Lists can be indexed with the `!!` operator followed by an index
 "This is a string" !! 0 -- 'T'
 
 
 ----------------------------------------------------
--- Lists and Tuples
+-- 2. Lists and Tuples
 ----------------------------------------------------
 
 -- Every element in a list must have the same type.
--- These two lists are the same:
+-- These two lists are equal:
 [1, 2, 3, 4, 5]
 [1..5]
 
@@ -77,11 +80,11 @@ not False -- True
 
 -- You can create a step in a range.
 [0,2..10] -- [0, 2, 4, 6, 8, 10]
-[5..1] -- This doesn't work because Haskell defaults to incrementing.
+[5..1] -- [] (Haskell defaults to incrementing)
 [5,4..1] -- [5, 4, 3, 2, 1]
 
 -- indexing into a list
-[1..10] !! 3 -- 4
+[1..10] !! 3 -- 4 (zero-based indexing)
 
 -- You can also have infinite lists in Haskell!
 [1..] -- a list of all the natural numbers
@@ -123,6 +126,9 @@ last [1..5] -- 5
 fst ("haskell", 1) -- "haskell"
 snd ("haskell", 1) -- 1
 
+-- pair element accessing does not work on n-tuples (i.e. triple, quadruple, etc)
+snd ("snd", "can't touch this", "da na na na") -- error! see function below
+
 ----------------------------------------------------
 -- 3. Functions
 ----------------------------------------------------
@@ -152,14 +158,14 @@ fib x
   | otherwise = fib (x - 1) + fib (x - 2)
 
 -- Pattern matching is similar. Here we have given three different
--- definitions for fib. Haskell will automatically call the first
--- function that matches the pattern of the value.
+-- equations that define fib. Haskell will automatically use the first
+-- equation whose left hand side pattern matches the value.
 fib 1 = 1
 fib 2 = 2
 fib x = fib (x - 1) + fib (x - 2)
 
--- Pattern matching on tuples:
-foo (x, y) = (x + 1, y + 2)
+-- Pattern matching on tuples
+sndOfTriple (_, y, _) = y -- use a wild card (_) to bypass naming unused value
 
 -- Pattern matching on lists. Here `x` is the first element
 -- in the list, and `xs` is the rest of the list. We can write
@@ -198,15 +204,15 @@ foo 5 -- 15
 -- multiplies the result of that by 4, and then returns the final value.
 foo = (4*) . (10+)
 
--- 4*(10 + 5) = 60
+-- 4*(10+5) = 60
 foo 5 -- 60
 
 -- fixing precedence
--- Haskell has another operator called `$`. This operator applies a function 
--- to a given parameter. In contrast to standard function application, which 
--- has highest possible priority of 10 and is left-associative, the `$` operator 
+-- Haskell has an operator called `$`. This operator applies a function
+-- to a given parameter. In contrast to standard function application, which
+-- has highest possible priority of 10 and is left-associative, the `$` operator
 -- has priority of 0 and is right-associative. Such a low priority means that
--- the expression on its right is applied as the parameter to the function on its left.
+-- the expression on its right is applied as a parameter to the function on its left.
 
 -- before
 even (fib 7) -- false
@@ -222,7 +228,7 @@ even . fib $ 7 -- false
 -- 5. Type signatures
 ----------------------------------------------------
 
--- Haskell has a very strong type system, and every valid expression has a type. 
+-- Haskell has a very strong type system, and every valid expression has a type.
 
 -- Some basic types:
 5 :: Integer
@@ -244,10 +250,10 @@ double x = x * 2
 -- 6. Control Flow and If Expressions
 ----------------------------------------------------
 
--- if expressions
+-- if-expressions
 haskell = if 1 == 1 then "awesome" else "awful" -- haskell = "awesome"
 
--- if expressions can be on multiple lines too, indentation is important
+-- if-expressions can be on multiple lines too, indentation is important
 haskell = if 1 == 1
             then "awesome"
             else "awful"
@@ -289,19 +295,79 @@ foldr (\x y -> 2*x + y) 4 [1,2,3] -- 16
 -- 7. Data Types
 ----------------------------------------------------
 
--- Here's how you make your own data type in Haskell
+-- A data type is declared with a 'type constructor' on the left
+-- and one or more 'data constructors' on the right, separated by
+-- the pipe | symbol. This is a sum/union type. Each data constructor
+-- is a (possibly nullary) function that creates an object of the type
+-- named by the type constructor.
+
+-- This is essentially an enum
 
 data Color = Red | Blue | Green
 
 -- Now you can use it in a function:
 
-
 say :: Color -> String
-say Red = "You are Red!"
-say Blue = "You are Blue!"
-say Green =  "You are Green!"
+say Red   = "You are Red!"
+say Blue  = "You are Blue!"
+say Green = "You are Green!"
 
--- Your data types can have parameters too:
+-- Note that the type constructor is used in the type signature
+-- and the data constructors are used in the body of the function
+-- Data constructors are primarily pattern-matched against
+
+-- This next one is a traditional container type holding two fields
+-- In a type declaration, data constructors take types as parameters
+-- Data constructors can have the same name as type constructors
+-- This is common where the type only has a single data constructor
+
+data Point = Point Float Float
+
+-- This can be used in a function like:
+
+distance :: Point -> Point -> Float
+distance (Point x y) (Point x' y') = sqrt $ dx + dy
+    where dx = (x - x') ** 2
+          dy = (y - y') ** 2
+          
+-- Types can have multiple data constructors with arguments, too
+
+data Name = Mononym String
+          | FirstLastName String String
+          | FullName String String String
+
+-- To make things clearer we can use record syntax
+
+data Point2D = CartesianPoint2D { x :: Float, y :: Float } 
+             | PolarPoint2D { r :: Float, theta :: Float }
+
+myPoint = CartesianPoint2D { x = 7.0, y = 10.0 }
+
+-- Using record syntax automatically creates accessor functions
+-- (the name of the field)
+
+xOfMyPoint = x myPoint
+
+-- xOfMyPoint is equal to 7.0
+
+-- Record syntax also allows a simple form of update
+
+myPoint' = myPoint { x = 9.0 }
+
+-- myPoint' is CartesianPoint2D { x = 9.0, y = 10.0 }
+
+-- Even if a type is defined with record syntax, it can be declared like
+-- a simple data constructor. This is fine:
+
+myPoint'2 = CartesianPoint2D 3.3 4.0
+
+-- It's also useful to pattern match data constructors in `case` expressions
+
+distanceFromOrigin x = 
+    case x of (CartesianPoint2D x y) -> sqrt $ x ** 2 + y ** 2
+              (PolarPoint2D r _) -> r
+
+-- Your data types can have type parameters too:
 
 data Maybe a = Nothing | Just a
 
@@ -310,8 +376,98 @@ Just "hello"    -- of type `Maybe String`
 Just 1          -- of type `Maybe Int`
 Nothing         -- of type `Maybe a` for any `a`
 
+-- For convenience we can also create type synonyms with the 'type' keyword
+
+type String = [Char]
+
+-- Unlike `data` types, type synonyms need no constructor, and can be used 
+-- anywhere a synonymous data type could be used. Say we have the 
+-- following type synonyms and items with the following type signatures
+
+type Weight = Float
+type Height = Float
+type Point = (Float, Float)
+getMyHeightAndWeight :: Person -> (Height, Weight)
+findCenter :: Circle -> Point
+somePerson :: Person
+someCircle :: Circle
+distance :: Point -> Point -> Float
+
+-- The following would compile and run without issue, 
+-- even though it does not make sense semantically,
+-- because the type synonyms reduce to the same base types
+
+distance (getMyHeightAndWeight somePerson) (findCenter someCircle)
+
 ----------------------------------------------------
--- 8. Haskell IO
+-- 8. Typeclasses
+----------------------------------------------------
+
+-- Typeclasses are one way Haskell does polymorphism
+-- They are similar to interfaces in other languages
+-- A typeclass defines a set of functions that must 
+-- work on any type that is in that typeclass.
+
+-- The Eq typeclass is for types whose instances can 
+-- be tested for equality with one another.
+
+class Eq a where  
+    (==) :: a -> a -> Bool  
+    (/=) :: a -> a -> Bool  
+    x == y = not (x /= y)  
+    x /= y = not (x == y)
+    
+-- This defines a typeclass that requires two functions, (==) and (/=)
+-- It also declares that one function can be declared in terms of another
+-- So it is enough that *either* the (==) function or the (/=) is defined
+-- And the other will be 'filled in' based on the typeclass definition
+
+-- To make a type a member of a type class, the instance keyword is used
+
+instance Eq TrafficLight where  
+    Red == Red = True  
+    Green == Green = True  
+    Yellow == Yellow = True  
+    _ == _ = False 
+    
+-- Now we can use (==) and (/=) with TrafficLight objects
+
+canProceedThrough :: TrafficLight -> Bool
+canProceedThrough t = t /= Red
+
+-- You can NOT create an instance definition for a type synonym
+
+-- Functions can be written to take typeclasses with type parameters, 
+-- rather than types, assuming that the function only relies on 
+-- features of the typeclass
+
+isEqual (Eq a) => a -> a -> Bool
+isEqual x y = x == y
+
+-- Note that x and y MUST be the same type, as they are both defined
+-- as being of type parameter 'a'.
+-- A typeclass does not state that different types in the typeclass can 
+-- be mixed together.
+-- So `isEqual Red 2` is invalid, even though 2 is an Int which is an 
+-- instance of Eq, and Red is a TrafficLight which is also an instance of Eq
+
+-- Other common typeclasses are:
+-- Ord for types that can be ordered, allowing you to use >, <=, etc.
+-- Read for types that can be created from a string representation
+-- Show for types that can be converted to a string for display
+-- Num, Real, Integral, Fractional for types that can do math
+-- Enum for types that can be stepped through
+-- Bounded for types with a maximum and minimum
+
+-- Haskell can automatically make types part of Eq, Ord, Read, Show, Enum, 
+-- and Bounded with the `deriving` keyword at the end of the type declaration
+
+data Point = Point Float Float deriving (Eq, Read, Show)
+    
+-- In this case it is NOT necessary to create an 'instance' definition
+
+----------------------------------------------------
+-- 9. Haskell IO
 ----------------------------------------------------
 
 -- While IO can't be explained fully without explaining monads,
@@ -384,15 +540,15 @@ main'' = do
 -- The type `IO` is an example of a "monad". The way Haskell uses a monad to
 -- do IO allows it to be a purely functional language. Any function that
 -- interacts with the outside world (i.e. does IO) gets marked as `IO` in its
--- type signature. This lets us reason about what functions are "pure" (don't
--- interact with the outside world or modify state) and what functions aren't.
+-- type signature. This lets us reason about which functions are "pure" (don't
+-- interact with the outside world or modify state) and which functions aren't.
 
 -- This is a powerful feature, because it's easy to run pure functions
 -- concurrently; so, concurrency in Haskell is very easy.
 
 
 ----------------------------------------------------
--- 9. The Haskell REPL
+-- 10. The Haskell REPL
 ----------------------------------------------------
 
 -- Start the repl by typing `ghci`.
@@ -444,5 +600,6 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 There are two popular ways to install Haskell: The traditional [Cabal-based installation](http://www.haskell.org/platform/), and the newer [Stack-based process](https://www.stackage.org/install).
 
 You can find a much gentler introduction from the excellent
-[Learn you a Haskell](http://learnyouahaskell.com/) or
+[Learn you a Haskell](http://learnyouahaskell.com/),
+[Happy Learn Haskell Tutorial](http://www.happylearnhaskelltutorial.com/) or
 [Real World Haskell](http://book.realworldhaskell.org/).

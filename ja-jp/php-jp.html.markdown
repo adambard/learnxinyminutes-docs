@@ -119,7 +119,7 @@ echo 'Multiple', 'Parameters', 'Valid';
 define("FOO",     "something");
 
 // 定義した名前をそのまま($はつけずに)使用することで、定数にアクセスできます
-// access to a constant is possible by direct using the choosen name
+// access to a constant is possible by direct using the chosen name
 echo 'This outputs '.FOO;
 
 

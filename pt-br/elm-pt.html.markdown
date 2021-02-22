@@ -76,8 +76,8 @@ List.head [] -- Nothing
 
 -- Acesse os elementos de um par com as funções first e second.
 -- (Este é um atalho; nós iremos para o "caminho real" em breve.)
-fst ("elm", 42) -- "elm"
-snd ("elm", 42) -- 42
+Tuple.first ("elm", 42) -- "elm"
+Tuple.second ("elm", 42) -- 42
 
 -- Uma tupla vazia ou "unidade" às vezes é utilizada como um placeholder.
 -- É o único valor de seu tipo, também chamado de "Unit".

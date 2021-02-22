@@ -11,7 +11,7 @@ filename: markdown-tr.md
 Markdown, 2004 yılında John Gruber tarafından oluşturuldu. Asıl amacı kolay okuma ve yazmayı sağlamakla beraber kolayca HTML (artık bir çok diğer formatlara) dönüşüm sağlamaktır.
 
 
-```markdown
+```md
 <!-- Markdown, HTML'i kapsar, yani her HTML dosyası geçerli bir Markdown dosyasıdır, bu demektir
 ki Markdown içerisinde HTML etiketleri kullanabiliriz, örneğin bu yorum elementi, ve
 markdown işleyicisinde etki etmezler. Fakat, markdown dosyası içerisinde HTML elementi oluşturursanız,

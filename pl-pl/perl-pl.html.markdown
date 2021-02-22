@@ -2,17 +2,20 @@
 name: perl
 category: language
 language: perl
-filename: learnperl.pl
+filename: learnperl-pl.pm
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
+    - ["Dan Book", "http://github.com/Grinnz"]
+translators:
     - ["Michał Kupczyński", "http://github.com/ukoms"]
 lang: pl-pl
+
 ---
 
-Perl 5 jest wysoce użytecznym, bogatym w wiele opcji językiem programowania
+Perl jest wysoce użytecznym, bogatym w wiele opcji językiem programowania
 z ponad 25 latami nieustannego rozwoju.
 
-Perl 5 używany jest na ponad 100 różnych platformach (od przenośnych do w
+Perl używany jest na ponad 100 różnych platformach (od przenośnych do w
 pełni stacjonarnych) i nadaje się zarówno do szybkiego prototypowania jak
 i projektów deweloperskich prowadzonych na szeroką skalę.
 

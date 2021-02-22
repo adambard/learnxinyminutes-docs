@@ -10,9 +10,9 @@ translators:
     - ["Matteo Taroli", "http://www.matteotaroli.be"]
 lang: fr-fr
 ---
-Perl 5 est un langage de programmation riche en fonctionnalité, avec plus de 25 ans de développement.
+Perl est un langage de programmation riche en fonctionnalité, avec plus de 25 ans de développement.
 
-Perl 5 fonctionne sur plus de 100 plateformes, allant des pc portables aux mainframes et
+Perl fonctionne sur plus de 100 plateformes, allant des pc portables aux mainframes et
 est autant adapté à un prototypage rapide qu'à des projets de grande envergure.
 
 ```perl

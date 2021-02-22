@@ -1,316 +1,344 @@
 ---
-language: python
-filename: learnpython-tr.py
+language: Python
 contributors:
-    - ["Louie Dinh", "http://ldinh.ca"]
+    - ["Louie Dinh", "http://pythonpracticeprojects.com"]
+    - ["Steven Basart", "http://github.com/xksteven"]
+    - ["Andre Polykanine", "https://github.com/Oire"]
+    - ["Batuhan Osman T.", "https://github.com/BTaskaya"]
 translators:
-    - ["Haydar KULEKCI", "http://scanf.info/"]
+    - ["Eray AYDIN", "http://erayaydin.me/"]
 lang: tr-tr
+filename: learnpython-tr.py
 ---
-Python Guido Van Rossum tarafından 90'ların başında yaratılmıştır. Şu anda 
-varolanlar arasında en iyi dillerden birisidir. Ben (Louie Dinh) Python
-dilinin syntax'ının belirginliğine aşığım. O basit olarak çalıştırılabilir 
-pseudocode'dur.
 
-Geri bildirimlerden son derece mutluluk duyarım! Bana [@louiedinh](http://twitter.com/louiedinh)
-adresinden ya da louiedinh [at] [google's email service] adresinden ulaşabilirsiniz.
+Python,90ların başlarında Guido Van Rossum tarafından oluşturulmuştur. En popüler olan dillerden biridir. Beni Python'a aşık eden sebep onun syntax beraklığı. Çok basit bir çalıştırılabilir söz koddur.
 
-Çeviri için geri bildirimleri de [@kulekci](http://twitter.com/kulekci) 
-adresine yapabilirsiniz. 
-
-Not: Bu yazıdaki özellikler Python 2.7 için geçerlidir, ama Python 2.x için de 
-uygulanabilir. Python 3 için başka bir zaman tekrar bakınız. 
-
+Not: Bu makale Python 3 içindir. Eğer Python 2.7 öğrenmek istiyorsanız [burayı](http://learnxinyminutes.com/docs/pythonlegacy/) kontrol edebilirsiniz.
 
 ```python
-# Tek satır yorum hash işareti ile başlar.
-""" Çoklu satır diziler üç tane çift tırnak 
-    arasında yazılır. Ve yorum olarak da 
-    kullanılabilir
+
+# Tek satırlık yorum satırı kare(#) işareti ile başlamaktadır.
+
+""" Çok satırlı olmasını istediğiniz yorumlar
+    üç adet tırnak(") işareti ile
+    yapılmaktadır
 """
 
-
 ####################################################
-## 1. İlkel Veri Tipleri ve Operatörler
+## 1. Temel Veri Türleri ve Operatörler
 ####################################################
 
 # Sayılar
-3 #=> 3
+3  # => 3
 
-# Matematik beklediğiniz gibi
-1 + 1 #=> 2
-8 - 1 #=> 7
-10 * 2 #=> 20
-35 / 5 #=> 7
+# Tahmin edebileceğiniz gibi matematik
+1 + 1  # => 2
+8 - 1  # => 7
+10 * 2  # => 20
 
-# Bölünme biraz ilginç. EĞer tam sayılar üzerinde bölünme işlemi yapıyorsanız
-# sonuç otomatik olarak kırpılır. 
-5 / 2 #=> 2
+# Bölme işlemi varsayılan olarak onluk döndürür
+35 / 5  # => 7.0
 
-# Bölünme işlemini düzenlemek için kayan noktalı sayıları bilmeniz gerekir.
-2.0     # Bu bir kayan noktalı sayı
-11.0 / 4.0 #=> 2.75 ahhh...daha iyi
+# Tam sayı bölmeleri, pozitif ve negatif sayılar için aşağıya yuvarlar
+5 // 3     # => 1
+5.0 // 3.0 # => 1.0 # onluklar için de bu böyledir
+-5 // 3  # => -2
+-5.0 // 3.0 # => -2.0
 
-# İşlem önceliğini parantezler ile sağlayabilirsiniz.
-(1 + 3) * 2 #=> 8
+# Onluk kullanırsanız, sonuç da onluk olur
+3 * 2.0 # => 6.0
 
-# Boolean değerleri bilindiği gibi
+# Kalan operatörü
+7 % 3 # => 1
+
+# Üs (2 üzeri 4)
+2**4 # => 16
+
+# Parantez ile önceliği değiştirebilirsiniz
+(1 + 3) * 2  # => 8
+
+# Boolean(Doğru-Yanlış) değerleri standart
 True
 False
 
-# not ile nagatif(mantıksal) değerini alma
-not True #=> False
-not False #=> True
+# 'değil' ile terse çevirme
+not True  # => False
+not False  # => True
 
-# Eşitlik ==
-1 == 1 #=> True
-2 == 1 #=> False
+# Boolean Operatörleri
+# "and" ve "or" büyük küçük harf duyarlıdır
+True and False #=> False
+False or True #=> True
 
-# Eşitsizlik !=
-1 != 1 #=> False
-2 != 1 #=> True
+# Bool operatörleri ile sayı kullanımı
+0 and 2 #=> 0
+-5 or 0 #=> -5
+0 == False #=> True 
+2 == True #=> False 
+1 == True #=> True
 
-# Daha fazla karşılaştırma
-1 < 10 #=> True
-1 > 10 #=> False
-2 <= 2 #=> True
-2 >= 2 #=> True
+# Eşitlik kontrolü ==
+1 == 1  # => True
+2 == 1  # => False
 
-# Karşılaştırma zincirleme yapılabilir!
-1 < 2 < 3 #=> True
-2 < 3 < 2 #=> False
+# Eşitsizlik Kontrolü !=
+1 != 1  # => False
+2 != 1  # => True
 
-# Karakter dizisi " veya ' ile oluşturulabilir
-"This is a string."
-'This is also a string.'
+# Diğer karşılaştırmalar
+1 < 10  # => True
+1 > 10  # => False
+2 <= 2  # => True
+2 >= 2  # => True
 
-# Karakter dizileri birbirleri ile eklenebilir
-"Hello " + "world!" #=> "Hello world!"
+# Zincirleme şeklinde karşılaştırma da yapabilirsiniz!
+1 < 2 < 3  # => True
+2 < 3 < 2  # => False
 
-# A string can be treated like a list of characters
-# Bir string'e karakter listesi gibi davranabilirsiniz. 
-"This is a string"[0] #=> 'T'
+# Yazı(Strings) " veya ' işaretleri ile oluşturulabilir
+"Bu bir yazı."
+'Bu da bir yazı.'
 
-# % karakter dizisini(string) formatlamak için kullanılır, bunun gibi:
-"%s can be %s" % ("strings", "interpolated")
+# Yazılar da eklenebilir! Fakat bunu yapmanızı önermem.
+"Merhaba " + "dünya!"  # => "Merhaba dünya!"
 
-# String'leri formatlamanın yeni bir yöntem ise format metodudur. 
-# Bu metod tercih edilen yöntemdir.
-"{0} can be {1}".format("strings", "formatted")
-# Eğer saymak istemiyorsanız anahtar kelime kullanabilirsiniz.
-"{name} wants to eat {food}".format(name="Bob", food="lasagna")
+# Bir yazı(string) karakter listesi gibi işlenebilir
+"Bu bir yazı"[0]  # => 'B'
 
-# None bir objedir
-None #=> None
+# .format ile yazıyı biçimlendirebilirsiniz, şu şekilde:
+"{} da ayrıca {}".format("yazılar", "işlenebilir")
 
-# "==" eşitliğini non objesi ile karşılaştırmak için kullanmayın.
-# Onun yerine "is" kullanın.
-"etc" is None #=> False
-None is None  #=> True
+# Biçimlendirme işleminde aynı argümanı da birden fazla kullanabilirsiniz.
+"{0} çeviktir, {0} hızlıdır, {0} , {1} üzerinden atlayabilir".format("Ahmet", "şeker çubuğu")
+#=> "Ahmet çeviktir, Ahmet hızlıdır, Ahmet , şeker çubuğu üzerinden atlayabilir"
 
-# 'is' operatörü obje kimliği için test etmektedir. Bu ilkel değerler
-# için kullanışlı değildir, ama objeleri karşılaştırmak için kullanışlıdır.
+# Argümanın sırasını saymak istemiyorsanız, anahtar kelime kullanabilirsiniz.
+"{isim} yemek olarak {yemek} istiyor".format(isim="Ahmet", yemek="patates") #=> "Ahmet yemek olarak patates istiyor"
 
-# None, 0 ve boş string/list'ler False olarak değerlendirilir.
-# Tüm eşitlikler True döner
-0 == False  #=> True
-"" == False #=> True
+# Eğer Python 3 kodunuz ayrıca Python 2.5 ve üstünde çalışmasını istiyorsanız, 
+# eski stil formatlamayı kullanabilirsiniz:
+"%s bu %s yolla da %s" % ("yazılar", "eski", "biçimlendirilebilir")
+
+
+# Hiçbir şey(none) da bir objedir
+None  # => None
+
+# Bir değerin none ile eşitlik kontrolü için "==" sembolünü kullanmayın
+# Bunun yerine "is" kullanın. Obje türünün eşitliğini kontrol edecektir.
+"vb" is None  # => False
+None is None  # => True
+
+# None, 0, ve boş yazılar/listeler/sözlükler hepsi False değeri döndürü.
+# Diğer veriler ise True değeri döndürür
+bool(0)  # => False
+bool("")  # => False
+bool([]) #=> False
+bool({}) #=> False
 
 
 ####################################################
-## 2. Değişkenler ve Kolleksiyonlar
+## 2. Değişkenler ve Koleksiyonlar
 ####################################################
 
-# Ekrana yazdırma oldukça kolaydır.
-print "I'm Python. Nice to meet you!"
+# Python bir yazdırma fonksiyonuna sahip
+print("Ben Python. Tanıştığıma memnun oldum!")
 
+# Değişkenlere veri atamak için önce değişkeni oluşturmanıza gerek yok. 
+# Düzenli bir değişken için hepsi_kucuk_ve_alt_cizgi_ile_ayirin
+bir_degisken = 5
+bir_degisken  # => 5
 
-# Değişkenlere bir değer atamadan önce tanımlamaya gerek yoktur.
-some_var = 5    # Değişken isimlerinde gelenek küçük karakter ve alt çizgi 
-                # kullanmaktır.
-some_var #=> 5
+# Önceden tanımlanmamış değişkene erişmek hata oluşturacaktır.
+# Kontrol akışları başlığından hata kontrolünü öğrenebilirsiniz.
+bir_bilinmeyen_degisken  # NameError hatası oluşturur
 
-# Daha önceden tanımlanmamış ya da assign edilmemeiş bir değişkene erişmeye 
-# çalıştığınızda bir hata fırlatılacaktır. Hata ayıklama hakkında daha fazla 
-# bilgi için kontrol akışı kısmına göz atınız.
-some_other_var  # isim hatası fırlatılır
-
-# isterseniz "if"i bir ifade gibi kullanabilirsiniz.
-"yahoo!" if 3 > 2 else 2 #=> "yahoo!"
-
-# Listeler
+# Listeler ile sıralamaları tutabilirsiniz
 li = []
-# Önceden değerleri tanımlanmış listeler
-other_li = [4, 5, 6]
+# Önceden doldurulmuş listeler ile başlayabilirsiniz
+diger_li = [4, 5, 6]
 
-# Bir listenin sonuna birşeyler eklemek
-li.append(1)    #li şu anda [1]
-li.append(2)    #li şu anda [1, 2]
-li.append(4)    #li şu anda [1, 2, 4]
-li.append(3)    #li şu anda [1, 2, 4, 3]
-# pop ile sondan birşeyler silmek
-li.pop()        #=> 3 and li is now [1, 2, 4]
-# Tekrar sonuna eklemek
-li.append(3)    # li is now [1, 2, 4, 3] again.
+# 'append' ile listenin sonuna ekleme yapabilirsiniz
+li.append(1)    # li artık [1] oldu
+li.append(2)    # li artık [1, 2] oldu
+li.append(4)    # li artık [1, 2, 4] oldu
+li.append(3)    # li artık [1, 2, 4, 3] oldu
+# 'pop' ile listenin son elementini kaldırabilirsiniz
+li.pop()        # => 3 ve li artık [1, 2, 4]
+# Çıkarttığımız tekrardan ekleyelim
+li.append(3)    # li yeniden [1, 2, 4, 3] oldu.
 
-# Dizi gibi listenin elemanlarına erişmek
-li[0] #=> 1
-# Son elemanın değerine ulaşmak
-li[-1] #=> 3
+# Dizi gibi listeye erişim sağlayın
+li[0]  # => 1
+# Son elemente bakın
+li[-1]  # => 3
 
-# Listede bulunmayan bir index'teki elemana erişirken "IndexError" hatası 
-# fırlatılır 
-li[4] # IndexError fırlatılır
+# Listede olmayan bir elemente erişim sağlamaya çalışmak IndexError hatası oluşturur
+li[4]  # IndexError hatası oluşturur
 
-# slice syntax'ı ile belli aralıktakı değerlere bakabilirsiniz.
-# (Açık ve kapalı aralıklıdır.)
-li[1:3] #=> [2, 4]
-# Başlangıcı ihmal etme
-li[2:] #=> [4, 3]
-# Sonu ihmal etme
-li[:3] #=> [1, 2, 4]
+# Bir kısmını almak isterseniz.
+li[1:3]  # => [2, 4]
+# Başlangıç belirtmezseniz
+li[2:]  # => [4, 3]
+# Sonu belirtmesseniz
+li[:3]  # => [1, 2, 4]
+# Her ikişer objeyi seçme
+li[::2]   # =>[1, 4]
+# Listeyi tersten almak
+li[::-1]   # => [3, 4, 2, 1]
+# Kombinasyonları kullanarak gelişmiş bir şekilde listenin bir kısmını alabilirsiniz
+# li[baslangic:son:adim]
 
-# "del" ile istenilen bir elemanı listeden silmek
-del li[2] # li is now [1, 2, 3]
+# "del" ile isteğe bağlı, elementleri listeden kaldırabilirsiniz
+del li[2]   # li artık [1, 2, 3] oldu
 
-# Listeleri birbiri ile birleştirebilirsiniz.
-li + other_li #=> [1, 2, 3, 4, 5, 6] - Not: li ve other_li yanlız bırakılır
+# Listelerde de ekleme yapabilirsiniz
+# Not: değerler üzerinde değişiklik yapılmaz.
+li + diger_li   # => [1, 2, 3, 4, 5, 6] 
 
-# extend ile listeleri birleştirmek
-li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
+# Listeleri birbirine bağlamak için "extend()" kullanılabilir
+li.extend(diger_li)   #  li artık [1, 2, 3, 4, 5, 6] oldu
 
-# bir değerin liste içerisinde varlığını "in" ile kontrol etmek
-1 in li #=> True
+# Listedeki bir elementin olup olmadığı kontrolü "in" ile yapılabilir
+1 in li   # => True
 
-# "len" ile listenin uzunluğunu bulmak
-len(li) #=> 6
+# Uzunluğu öğrenmek için "len()" kullanılabilir
+len(li)   # => 6
 
-# Tüpler listeler gibidir sadece değişmezler(immutable)
+
+# Tüpler listeler gibidir fakat değiştirilemez.
 tup = (1, 2, 3)
-tup[0] #=> 1
-tup[0] = 3  # TypeError fırlatılır.
+tup[0]   # => 1
+tup[0] = 3  # TypeError hatası oluşturur
 
-# Litelerde yapılanların hepsini tüplerde de yapılabilir
-len(tup) #=> 3
-tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
-tup[:2] #=> (1, 2)
-2 in tup #=> True
+# Diğer liste işlemlerini tüplerde de uygulayabilirsiniz
+len(tup)   # => 3
+tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
+tup[:2]   # => (1, 2)
+2 in tup   # => True
 
-# Tüplerin(veya listelerin) içerisindeki değerleri değişkenelere
-# atanabilir
-a, b, c = (1, 2, 3)     # a şu anda 1, b şu anda 2 ve c şu anda 3
-# Eğer parantez kullanmaz iseniz tüpler varsayılan olarak oluşturulur
+# Tüpleri(veya listeleri) değişkenlere açabilirsiniz
+a, b, c = (1, 2, 3)     # 'a' artık 1, 'b' artık 2 ve 'c' artık 3
+# Eğer parantez kullanmazsanız varsayılan oalrak tüpler oluşturulur
 d, e, f = 4, 5, 6
-# şimdi iki değeri değiş tokuş etmek çok kolaydır.
-e, d = d, e     # d şimdi 5 ve e şimdi 4
+# 2 değeri birbirine değiştirmek bu kadar kolay
+e, d = d, e     # 'd' artık 5 ve 'e' artık 4
 
 
-# Sözlükler (Dictionaries) key-value saklanır.
-empty_dict = {}
-# Sözlüklere önceden değer atama örneği
-filled_dict = {"one": 1, "two": 2, "three": 3}
+# Sözlükler anahtar kodlarla verileri tutar
+bos_sozl = {}
+# Önceden doldurulmuş sözlük oluşturma
+dolu_sozl = {"bir": 1, "iki": 2, "uc": 3}
 
-# Değere ulaşmak için [] kullanılır
-filled_dict["one"] #=> 1
+# Değere bakmak için [] kullanalım
+dolu_sozl["bir"]   # => 1
 
-# Tüm anahtarlara(key) "keys()" metodu ile ulaşılır
-filled_dict.keys() #=> ["three", "two", "one"]
-# Not - Sözlüklerin anahtarlarının sıralı geleceği garanti değildir
-# Sonuçlarınız değer listesini aldığınızda tamamen eşleşmeyebilir 
-
-# Tüm değerleri almak için "values()" kullanabilirsiniz.
-filled_dict.values() #=> [3, 2, 1]
-# Not - Sıralama ile ilgili anahtarlar ile aynı durum geçerlidir.
-
-# Bir anahtarın sözlükte oluş olmadığını "in" ile kontrol edilebilir
-"one" in filled_dict #=> True
-1 in filled_dict #=> False
-
-# Olmayan bir anahtar çağrıldığında KeyError fırlatılır.
-filled_dict["four"] # KeyError
-
-# "get()" metodu KeyError fırlatılmasını önler
-filled_dict.get("one") #=> 1
-filled_dict.get("four") #=> None
-# get() metodu eğer anahtar mevcut değilse varsayılan bir değer atama
-# imknaı sağlar.
-filled_dict.get("one", 4) #=> 1
-filled_dict.get("four", 4) #=> 4
-
-# "setdefault()" metodu sözlüğe yeni bir key-value eşleşmesi eklemenin 
-# güvenli bir yoludur.
-filled_dict.setdefault("five", 5) #filled_dict["five"] is set to 5
-filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
+# Bütün anahtarları almak için  "keys()" kullanılabilir. 
+# Listelemek için list() kullanacağınız çünkü dönen değerin işlenmesi gerekiyor. Bu konuya daha sonra değineceğiz.
+# Not - Sözlük anahtarlarının sıralaması kesin değildir.
+# Beklediğiniz çıktı sizinkiyle tam uyuşmuyor olabilir.
+list(dolu_sozl.keys())   # => ["uc", "iki", "bir"]
 
 
-# Sets store ... well sets
-empty_set = set()
-# Bir demek değer ile bir "set" oluşturmak
-some_set = set([1,2,2,3,4]) # some_set is now set([1, 2, 3, 4])
+# Tüm değerleri almak için "values()" kullanacağız. Dönen değeri biçimlendirmek için de list() kullanmamız gerekiyor
+# Not - Sıralama değişebilir.
+list(dolu_sozl.values())   # => [3, 2, 1]
 
-# Python 2.7'den beri {}'ler bir "set" tanımlaman için kullanılabilir
-filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
 
-# Bir set'e daha fazla eleman eklemek
-filled_set.add(5) # filled_set is now {1, 2, 3, 4, 5}
+# Bir anahtarın sözlükte olup olmadığını "in" ile kontrol edebilirsiniz
+"bir" in dolu_sozl   # => True
+1 in dolu_sozl   # => False
 
-# "&" işareti ile iki set'in kesişimlerini alınabilir
-other_set = {3, 4, 5, 6}
-filled_set & other_set #=> {3, 4, 5}
+# Olmayan bir anahtardan değer elde etmek isterseniz KeyError sorunu oluşacaktır.
+dolu_sozl["dort"]   # KeyError hatası oluşturur
 
-# | işareti ile 
-filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
+# "get()" metodu ile değeri almaya çalışırsanız KeyError sorunundan kurtulursunuz
+dolu_sozl.get("bir")   # => 1
+dolu_sozl.get("dort")   # => None
+# "get" metoduna parametre belirterek değerin olmaması durumunda varsayılan bir değer döndürebilirsiniz.
+dolu_sozl.get("bir", 4)   # => 1
+dolu_sozl.get("dort", 4)   # => 4
 
-# "-" işareti ile iki set'in farkları alınabilir
-{1,2,3,4} - {2,3,5} #=> {1, 4}
+# "setdefault()" metodu sözlükte, belirttiğiniz anahtarın [olmaması] durumunda varsayılan bir değer atayacaktır
+dolu_sozl.setdefault("bes", 5)  # dolu_sozl["bes"] artık 5 değerine sahip
+dolu_sozl.setdefault("bes", 6)  # dolu_sozl["bes"] değişmedi, hala 5 değerine sahip
 
-# "in" ile değerin set içerisinde olup olmadığını kontrol edebilirsiniz
-2 in filled_set #=> True
-10 in filled_set #=> False
+# Sözlüğe ekleme
+dolu_sozl.update({"dort":4}) #=> {"bir": 1, "iki": 2, "uc": 3, "dort": 4}
+#dolu_sozl["dort"] = 4  #sözlüğe eklemenin bir diğer yolu
+
+# Sözlükten anahtar silmek için 'del' kullanılabilir
+del dolu_sozl["bir"]  # "bir" anahtarını dolu sözlükten silecektir
+
+
+# Setler ... set işte :D 
+bos_set = set()
+# Seti bir veri listesi ile de oluşturabilirsiniz. Evet, biraz sözlük gibi duruyor. Üzgünüm.
+bir_set = {1, 1, 2, 2, 3, 4}   # bir_set artık {1, 2, 3, 4}
+
+# Sete yeni setler ekleyebilirsiniz
+dolu_set = bir_set
+
+# Sete bir diğer öğe ekleme 
+dolu_set.add(5)   # dolu_set artık {1, 2, 3, 4, 5} oldu
+
+# Setlerin çakışan kısımlarını almak için '&' kullanabilirsiniz
+diger_set = {3, 4, 5, 6}
+dolu_set & diger_set   # => {3, 4, 5}
+
+# '|' ile aynı olan elementleri almayacak şekilde setleri birleştirebilirsiniz
+dolu_set | diger_set   # => {1, 2, 3, 4, 5, 6}
+
+# Farklılıkları almak için "-" kullanabilirsiniz
+{1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
+
+# Bir değerin olup olmadığının kontrolü için "in" kullanılabilir
+2 in dolu_set   # => True
+10 in dolu_set   # => False
 
 
 ####################################################
-## 3. Akış Denetimi
+## 3. Kontrol Akışları ve Temel Soyutlandırma
 ####################################################
 
-# Bir değişken oluşturmak
-some_var = 5
+# Bir değişken oluşturalım
+bir_degisken = 5
 
-# Buradaki bir if ifadesi. Girintiler(Intentation) Python'da önemlidir!
-# "some_var is smaller than 10" yazdırılır.
-if some_var > 10:
-    print "some_var is totally bigger than 10."
-elif some_var < 10:    # elif ifadesi isteğe bağlıdır
-    print "some_var is smaller than 10."
-else:           # Bu da isteğe bağlıdır.
-    print "some_var is indeed 10."
+# Burada bir "if" ifadesi var. Girinti(boşluk,tab) python için önemlidir!
+# çıktı olarak "bir_degisken 10 dan küçük" yazar
+if bir_degisken > 10:
+    print("bir_degisken 10 dan büyük")
+elif bir_degisken < 10:    # Bu 'elif' ifadesi zorunlu değildir.
+    print("bir_degisken 10 dan küçük")
+else:                  # Bu ifade de zorunlu değil.
+    print("bir_degisken değeri 10")
 
 
 """
-For döngüleri listeler üzerinde iterasyon yapar
-Ekrana yazdırılan:
-    dog is a mammal
-    cat is a mammal
-    mouse is a mammal
+Döngülerle lsiteleri döngüye alabilirsiniz
+çıktı:
+    köpek bir memeli hayvandır
+    kedi bir memeli hayvandır
+    fare bir memeli hayvandır
 """
-for animal in ["dog", "cat", "mouse"]:
-    # Biçimlendirmeleri string'e katmak için % kullanabilirsiniz
-    print "%s is a mammal" % animal
-    
+for hayvan in ["köpek", "kedi, "fare"]:
+    # format ile kolayca yazıyı biçimlendirelim
+    print("{} bir memeli hayvandır".format(hayvan))
+
 """
-"range(number)" ifadesi sıfırdan verilen sayıya kadar bir sayı listesi döner
-Ekrana yazdırılan:
+"range(sayi)" bir sayı listesi döndür
+0'dan belirttiğiniz sayıyıa kadar
+çıktı:
     0
     1
     2
     3
 """
 for i in range(4):
-    print i
+    print(i)
 
 """
-While döngüsü koşul sağlanmayana kadar devam eder
-Ekrana yazdırılan:
+'While' döngüleri koşul çalıştıkça işlemleri gerçekleştirir.
+çıktı:
     0
     1
     2
@@ -318,185 +346,295 @@ Ekrana yazdırılan:
 """
 x = 0
 while x < 4:
-    print x
-    x += 1  # Shorthand for x = x + 1
+    print(x)
+    x += 1  # Uzun hali x = x + 1
 
-# try/except bloğu ile hatalar ayıklanabilir
-
-# Python 2.6 ve üstü için çalışacaktır:
+# Hataları kontrol altına almak için try/except bloklarını kullanabilirsiniz
 try:
-    # "raise" bir hata fırlatmak için kullanılabilir
-    raise IndexError("This is an index error")
+    # Bir hata oluşturmak için "raise" kullanabilirsiniz
+    raise IndexError("Bu bir index hatası")
 except IndexError as e:
-    pass    # Pass is just a no-op. Usually you would do recovery here.
+    pass    # Önemsiz, devam et.
+except (TypeError, NameError):
+    pass    # Çoklu bir şekilde hataları kontrol edebilirsiniz, tabi gerekirse.
+else:   # İsteğe bağlı bir kısım. Eğer hiçbir hata kontrol mekanizması desteklemiyorsa bu blok çalışacaktır
+    print("Her şey iyi!")   # IndexError, TypeError ve NameError harici bir hatada bu blok çalıştı
+
+# Temel Soyutlandırma, bir objenin işlenmiş halidir.
+# Aşağıdaki örnekte; Obje, range fonksiyonuna temel soyutlandırma gönderdi.
+
+dolu_sozl = {"bir": 1, "iki": 2, "uc": 3}
+temel_soyut = dolu_sozl.keys()
+print(temel_soyut) #=> range(1,10). Bu obje temel soyutlandırma arayüzü ile oluşturuldu
+
+# Temel Soyutlandırılmış objeyi döngüye sokabiliriz.
+for i in temel_soyut:
+    print(i)    # Çıktısı: bir, iki, uc
+
+# Fakat, elementin anahtarına değerine.
+temel_soyut[1]  # TypeError hatası!
+
+# 'iterable' bir objenin nasıl temel soyutlandırıldığıdır.
+iterator = iter(temel_soyut)
+
+# 'iterator' o obje üzerinde yaptığımız değişiklikleri hatırlayacaktır
+# Bir sonraki objeyi almak için __next__ fonksiyonunu kullanabilirsiniz.
+iterator.__next__()  #=> "bir"
+
+# Bir önceki __next__ fonksiyonumuzu hatırlayıp bir sonraki kullanımda bu sefer ondan bir sonraki objeyi döndürecektir
+iterator.__next__()  #=> "iki"
+iterator.__next__()  #=> "uc"
+
+# Bütün nesneleri aldıktan sonra bir daha __next__ kullanımınızda, StopIterator hatası oluşturacaktır.
+iterator.__next__() # StopIteration hatası
+
+# iterator'deki tüm nesneleri almak için list() kullanabilirsiniz.
+list(dolu_sozl.keys())  #=> Returns ["bir", "iki", "uc"]
 
 
 ####################################################
 ## 4. Fonksiyonlar
 ####################################################
 
+# "def" ile yeni fonksiyonlar oluşturabilirsiniz
+def topla(x, y):
+    print("x = {} ve y = {}".format(x, y))
+    return x + y    # Değer döndürmek için 'return' kullanmalısınız
 
-# Yeni bir fonksiyon oluşturmak için "def" kullanılır
-def add(x, y):
-    print "x is %s and y is %s" % (x, y)
-    return x + y    # Return values with a return statement
+# Fonksiyonu parametleri ile çağırıyoruz
+topla(5, 6)   # => çıktı "x = 5 ve y = 6" ve değer olarak 11 döndürür
 
-# Fonksiyonu parametre ile çağırmak
-add(5, 6) #=> prints out "x is 5 and y is 6" and returns 11
+# Bir diğer fonksiyon çağırma yöntemi de anahtar değerleri ile belirtmek
+topla(y=6, x=5)   # Anahtar değeri belirttiğiniz için parametre sıralaması önemsiz.
 
-# Diğer bir yol fonksiyonları anahtar argümanları ile çağırmak
-add(y=6, x=5)   # Anahtar argümanlarının sırası farklı da olabilir
+# Sınırsız sayıda argüman da alabilirsiniz
+def argumanlar(*argumanlar):
+    return argumanlar
 
-# Değişken sayıda parametresi olan bir fonksiyon tanımlayabilirsiniz
-def varargs(*args):
-    return args
+argumanlar(1, 2, 3)   # => (1, 2, 3)
 
-varargs(1, 2, 3) #=> (1,2,3)
+# Parametrelerin anahtar değerlerini almak isterseniz
+def anahtar_par(**anahtarlar):
+    return anahtar
 
-# Değişken sayıda anahtar argümanlı parametre alan fonksiyonlar da 
-# tanımlayabilirsiniz.
-def keyword_args(**kwargs):
-    return kwargs
+# Çalıştırdığımızda
+anahtar_par(anah1="deg1", anah2="deg2")   # => {"anah1": "deg1", "anah2": "deg2"}
 
-# Şu şekilde kullanılacaktır
-keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
-# Eğer isterseniz ikisini aynı anda da yapabilirsiniz
-def all_the_args(*args, **kwargs):
-    print args
-    print kwargs
+# İsterseniz, bu ikisini birden kullanabilirsiniz
+def tum_argumanlar(*argumanlar, **anahtarla):
+    print(argumanlar)
+    print(anahtarla)
 """
-all_the_args(1, 2, a=3, b=4) prints:
+tum_argumanlar(1, 2, a=3, b=4) çıktı:
     (1, 2)
     {"a": 3, "b": 4}
 """
 
-# Fonksiyonu çağırırken, args/kwargs'ın tam tersini de yapabilirsiniz!
-# Tüpü yaymak için * ve kwargs'ı yaymak için ** kullanın.
-args = (1, 2, 3, 4)
-kwargs = {"a": 3, "b": 4}
-all_the_args(*args) # foo(1, 2, 3, 4) ile eşit
-all_the_args(**kwargs) # foo(a=3, b=4) ile eşit
-all_the_args(*args, **kwargs) # foo(1, 2, 3, 4, a=3, b=4) ile eşit
+# Fonksiyonu çağırırken de aynısını kullanabilirsiniz
+argumanlar = (1, 2, 3, 4)
+anahtarla = {"a": 3, "b": 4}
+tum_argumanlar(*argumanlar)   # = foo(1, 2, 3, 4)
+tum_argumanlar(**anahtarla)   # = foo(a=3, b=4)
+tum_argumanlar(*argumanlar, **anahtarla)   # = foo(1, 2, 3, 4, a=3, b=4)
 
-# Python first-class fonksiyonlara sahiptir
-def create_adder(x):
-    def adder(y):
+
+# Fonksiyonlarda kullanacağımız bir değişken oluşturalım                                  
+x = 5
+
+def belirleX(sayi):
+    # Fonksiyon içerisindeki x ile global tanımladığımız x aynı değil
+    x = sayi # => 43
+    print (x) # => 43
+    
+def globalBelirleX(sayi):
+    global x
+    print (x) # => 5
+    x = sayi # global olan x değişkeni artık 6
+    print (x) # => 6
+
+belirleX(43)
+globalBelirleX(6)
+
+
+# Sınıf fonksiyonları oluşturma
+def toplama_olustur(x):
+    def topla(y):
         return x + y
-    return adder
+    return topla
 
-add_10 = create_adder(10)
-add_10(3) #=> 13
+ekle_10 = toplama_olustur(10)
+ekle_10(3)   # => 13
 
-# Anonymous fonksiyonlar da vardır
-(lambda x: x > 2)(3) #=> True
+# Bilinmeyen fonksiyon
+(lambda x: x > 2)(3)   # => True
 
-# Dahili yüksek seviye fonksiyonlar vardır
-map(add_10, [1,2,3]) #=> [11, 12, 13]
-filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
+# TODO - Fix for iterables
+# Belirli sayıdan yükseğini alma fonksiyonu
+map(ekle_10, [1, 2, 3])   # => [11, 12, 13]
+filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
 
-# Map etme(maps) ve filtreleme(filtres) için liste kullanabiliriz. 
-[add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
-[x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
-
+# Filtreleme işlemi için liste comprehensions da kullanabiliriz
+[ekle_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
+[x for x in [3, 4, 5, 6, 7] if x > 5]   # => [6, 7]
 
 ####################################################
 ## 5. Sınıflar
 ####################################################
 
-# We subclass from object to get a class.
-class Human(object):
-    
-    # Bir sınıf özelliği. Bu sınıfın tüm "instance"larına paylaşılmıştır.
-    species = "H. sapiens"
 
-    # Basic initializer
-    def __init__(self, name):
-        # Metoda gelen argümanın değerini sınıfın elemanı olan "name" 
-        # değişkenine atama
-        self.name = name
+# Sınıf oluşturmak için objeden alt sınıf oluşturacağız.
+class Insan(object):
 
-    # Bir instance metodu. Tüm metodlar ilk argüman olarak "self" 
-    # parametresini alır
-    def say(self, msg):
-       return "%s: %s" % (self.name, msg)
+    # Sınıf değeri. Sınıfın tüm nesneleri tarafından kullanılabilir
+    tur = "H. sapiens"
 
-    # Bir sınıf metodu tüm "instance"lar arasında paylaşılır
-    # İlk argüman olarak sınıfı çağırarak çağrılırlar
+    # Basit başlatıcı, Sınıf çağrıldığında tetiklenecektir.
+    # Dikkat edin, iki adet alt çizgi(_) bulunmakta. Bunlar
+    # python tarafından tanımlanan isimlerdir. 
+    # Kendinize ait bir fonksiyon oluştururken __fonksiyon__ kullanmayınız!
+    def __init__(self, isim):
+        # Parametreyi sınıfın değerine atayalım
+        self.isim = isim
+
+    # Bir metot. Bütün metotlar ilk parametre olarak "self "alır.
+    def soyle(self, mesaj):
+        return "{isim}: {mesaj}".format(isim=self.isim, mesaj=mesaj)
+
+    # Bir sınıf metotu bütün nesnelere paylaştırılır
+    # İlk parametre olarak sınıf alırlar
     @classmethod
-    def get_species(cls):
-        return cls.species
+    def getir_tur(snf):
+        return snf.tur
 
-    # Bir statik metod bir sınıf ya da instance referansı olmadan çağrılır
+    # Bir statik metot, sınıf ve nesnesiz çağrılır
     @staticmethod
     def grunt():
         return "*grunt*"
 
 
-# Bir sınıf örneği oluşturmak
-i = Human(name="Ian")
-print i.say("hi")     # "Ian: hi" çıktısı verir
+# Sınıfı çağıralım
+i = Insan(isim="Ahmet")
+print(i.soyle("merhaba"))     # çıktı "Ahmet: merhaba"
 
-j = Human("Joel")
-print j.say("hello")  # "Joel: hello" çıktısı verir
+j = Insan("Ali")
+print(j.soyle("selam"))  # çıktı "Ali: selam"
 
-# Sınıf metodunu çağıralım
-i.get_species() #=> "H. sapiens"
+# Sınıf metodumuzu çağıraim
+i.getir_tur()   # => "H. sapiens"
 
-# Paylaşılan sınıf özellik değiştirelim.
-Human.species = "H. neanderthalensis"
-i.get_species() #=> "H. neanderthalensis"
-j.get_species() #=> "H. neanderthalensis"
+# Paylaşılan değeri değiştirelim
+Insan.tur = "H. neanderthalensis"
+i.getir_tur()   # => "H. neanderthalensis"
+j.getir_tur()   # => "H. neanderthalensis"
 
-# Statik metodu çağırma
-Human.grunt() #=> "*grunt*"
+# Statik metodumuzu çağıralım
+Insan.grunt()   # => "*grunt*"
 
 
 ####################################################
-## 6. Modüller
+## 6. Moduller
 ####################################################
 
-# Modülleri sayfaya dahil edebilirsiniz
+# Modülleri içe aktarabilirsiniz
 import math
-print math.sqrt(16) #=> 4
+print(math.sqrt(16))  # => 4.0
 
-# Modül içerisinden spesifik bir fonksiyonu getirebilirsiniz
+# Modülden belirli bir fonksiyonları alabilirsiniz
 from math import ceil, floor
-print ceil(3.7)  #=> 4.0
-print floor(3.7) #=> 3.0
+print(ceil(3.7))  # => 4.0
+print(floor(3.7))   # => 3.0
 
-# Modüldeki tüm fonksiyonları dahil edebilirsiniz
-# Uyarı: bu önerilmez
+# Modüldeki tüm fonksiyonları içe aktarabilirsiniz
+# Dikkat: bunu yapmanızı önermem.
 from math import *
 
-# Modülün adını kısaltabilirsiniz
+# Modül isimlerini değiştirebilirsiniz.
+# Not: Modül ismini kısaltmanız çok daha iyi olacaktır
 import math as m
-math.sqrt(16) == m.sqrt(16) #=> True
+math.sqrt(16) == m.sqrt(16)   # => True
 
-# Python modülleri sıradan python dosyalarıdır. Kendinize bir modül 
-# yazabilirsiniz, ve dahil edebilirsiniz. Modülün adı ile dosya adı
-# aynı olmalıdır.
+# Python modulleri aslında birer python dosyalarıdır.
+# İsterseniz siz de yazabilir ve içe aktarabilirsiniz Modulün
+# ismi ile dosyanın ismi aynı olacaktır.
 
-# Modüllerde tanımlanmış fonksiyon ve metodları öğrenebilirsiniz.
+# Moduldeki fonksiyon ve değerleri öğrenebilirsiniz.
 import math
 dir(math)
 
 
+####################################################
+## 7. Gelişmiş
+####################################################
 
+# Oluşturucular uzun uzun kod yazmamanızı sağlayacak ve yardımcı olacaktır
+def kare_sayilar(nesne):
+    for i in nesne:
+        yield i + i
+
+# Bir oluşturucu(generator) değerleri anında oluşturur.
+# Bir seferde tüm değerleri oluşturup göndermek yerine teker teker her oluşumdan
+# sonra geri döndürür.  Bu demektir ki, kare_sayilar fonksiyonumuzda 15'ten büyük
+# değerler işlenmeyecektir.
+# Not: range() da bir oluşturucu(generator)dur. 1-900000000 arası bir liste yapmaya çalıştığınızda
+# çok fazla vakit alacaktır.
+# Python tarafından belirlenen anahtar kelimelerden kaçınmak için basitçe alt çizgi(_) kullanılabilir. 
+range_ = range(1, 900000000)
+# kare_sayilar'dan dönen değer 30'a ulaştığında durduralım
+for i in kare_sayilar(range_):
+    print(i)
+    if i >= 30:
+        break
+
+
+# Dekoratörler
+# Bu örnekte,
+# Eğer lutfen_soyle True ise dönen değer değişecektir.
+from functools import wraps
+
+
+def yalvar(hedef_fonksiyon):
+    @wraps(hedef_fonksiyon)
+    def metot(*args, **kwargs):
+        msj, lutfen_soyle = hedef_fonksiyon(*args, **kwargs)
+        if lutfen_soyle:
+            return "{} {}".format(msj, "Lütfen! Artık dayanamıyorum :(")
+        return msj
+
+    return metot
+
+
+@yalvar
+def soyle(lutfen_soyle=False):
+    msj = "Bana soda alır mısın?"
+    return msj, lutfen_soyle
+
+
+print(soyle())  # Bana soda alır mısın?
+print(soyle(lutfen_soyle=True))  # Ban soda alır mısın? Lutfen! Artık dayanamıyorum :(
 ```
 
-## Daha fazlası için hazır mısınız?
+## Daha Fazlasına Hazır Mısınız?
 
-### Ücretsiz Dökümanlar
+### Ücretsiz Online
 
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
-* [The Official Docs](http://docs.python.org/2.6/)
+* [Ideas for Python Projects](http://pythonpracticeprojects.com)
+* [The Official Docs](http://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [Python Module of the Week](http://pymotw.com/2/)
+* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Python Course](http://www.python-course.eu/index.php)
+* [First Steps With Python](https://realpython.com/learn/python-first-steps/)
+* [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
+* [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
+* [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
+* [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 
-### Dead Tree
+### Kitaplar
 
 * [Programming Python](http://www.amazon.com/gp/product/0596158106/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596158106&linkCode=as2&tag=homebits04-20)
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
+

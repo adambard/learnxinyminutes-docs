@@ -13,7 +13,7 @@ lang: pt-br
 ## O que é?
 
 Notação Assintótica é uma linguagem que nos permite analisar o tempo de execução
- de um algoritmo através da indentificação de seu comportamento com o
+ de um algoritmo através da identificação de seu comportamento com o
  crescimento da entrada oferecida. Isso também é conhecido como taxa de
  crescimento do algoritmo. O algoritmo de repente torna-se lento quando o
  tamanho da entrada cresce? O algoritmo mantém, em geral, seu tempo de execução
@@ -33,12 +33,12 @@ Um modo seria contar o número de operações primitivas com diferentes tamanhos
 
 ## Tipos de Notação Assintótica
 
-Na primeira seção desse documento, descrevemos como Notação Assintótica identifica o comportamento de um algoritmo
+Na primeira seção deste documento, descrevemos como Notação Assintótica identifica o comportamento de um algoritmo
  a medida que o tamanho da entrada cresce. Imaginemos um algoritmo como uma função
  *f*, *n* como o tamanho da entrada e *f(n)* sendo o tempo de execução. Então,
  para dado algoritmo *f*, com entrada de tamanho *n*, você terá tempo de execução
- *f(n)*. Isto resulta em um gráfico onde a coordernada Y é o tempo de execução
-, a coordernada X representa o tamanho da entrada e os pontos representao o tempo
+ *f(n)*. Isto resulta em um gráfico onde a coordenada Y é o tempo de execução, 
+ a coordenada X representa o tamanho da entrada e os pontos representam o tempo
 de execução para dado tamanho de entrada.
 
 Você pode representar a função, ou o algoritmo, com Notação Assintótica de várias
@@ -49,7 +49,7 @@ não avalia o melhor caso, porque essas condições não são atingidas com freq
 Um bom exemplo disto seria em algoritmos de ordenação; especificamente, na adição
 de elementos à árvores. O melhor caso na maioria de algoritmos pode ser de apenas
 uma operação. Entretanto, na maioria dos casos, o elemento a ser adicionado terá
-que percorrer a árvore de forma apropriada, o que pode causar a analise de um
+que percorrer a árvore de forma apropriada, o que pode causar a análise de um
 ramo inteiro.
 Este é o pior caso, e isto é o que você está se preparando.
 
@@ -63,16 +63,16 @@ Função Polinomial - an^z + . . . + an^2 + a*n^1 + a*n^0, onde *z* é uma const
 Função Exponencial -  a^n, onde a é alguma constante
 ```
 Estas são as funções básicas de crescimento usadas em várias notações. A lista
- começa com a de crescimento mais lento (logarítima, a de execução mais rápida)
+ começa com a de crescimento mais lento (logarítmica, a de execução mais rápida)
 e segue para a de crescimento mais rápido (exponencial, de execução mais lenta).
-Repare que enquando *n*, a entrada, cresce, cada uma dessas funções cresce mais
-rápido que quadrático, polinimial e exponencial, comparadas com logaritma e linear.
+Repare que enquanto *n*, a entrada, cresce, cada uma dessas funções cresce mais
+rápido que quadrático, polinomial e exponencial, comparadas com logarítmica e linear.
 
 Uma nota extremamente importante para notações é tentar usar os termos mais simples.
 Isto significa descartar constantes e termos de ordem mais baixa, pois quando o
 tamanho da entrada cresce para o infinito (limites matemáticos), os termos de ordem
 mais baixa e constantes tornam-se irrelevantes. Por exemplo, se você tiver uma
-constante muito grande, 2^9001, a simplificação não afeterá sua notação.
+constante muito grande, 2^9001, a simplificação não afetará sua notação.
 
 Já que queremos as formas mais simples, mudemos nossa tabela um pouco...
 
@@ -87,8 +87,8 @@ Função Exponencial - a^n, onde *a* é uma constante
 ### Big-O
 
 Big-O, também escrita como O, é uma Notação Assintótica para o pior caso. Digamos
-*f(n)* seja o tempo de exeução de um algoritmo e *g(n)) um tempo de complexidade
-arbritário que você quer relacionar com seu algoritmo. *f(n)* é O(g(n)), se, para
+*f(n)* seja o tempo de execução de um algoritmo e *g(n)) um tempo de complexidade
+arbitrário que você quer relacionar com seu algoritmo. *f(n)* é O(g(n)), se, para
 quando constante real c (c > 0), *f(n)* <= *c g(n)* para todo tamanho de entrada
 n (n > 0).
 
@@ -116,7 +116,7 @@ Há alguma constante c que satisfaça a definição para todo n?
 3log n + 100 <= 150 * log n, n > 2 (Indefinido em n = 1)
 ```
 
-Sim! A definição de Big-I for atentida, portante `f(n)` é `O(g(n))`.
+Sim! A definição de Big-O foi atendida, portanto `f(n)` é `O(g(n))`.
 
 *Exemplo 2*
 
@@ -146,7 +146,7 @@ Big-Omega, também escrita como Ω, é uma Notação Assintótica para o melhor 
 Sinta-se livre para adicionar mais exemplos. Big-O é a notação primária usada para medir complexidade de algoritmos.
 
 ### Notas Finais
-É difícil manter esse tipo de tópico curto e você deveria ler os livros e artigos listados abaixo. Eles cobrem muito mais profundamente definições e exemplos. Mais x='Algoritms & Data Structures' virá; teremos um documento sobre analisar código em breve.
+É difícil manter esse tipo de tópico curto e você deveria ler os livros e artigos listados abaixo. Eles cobrem muito mais profundamente definições e exemplos. Mais x='Algorithms & Data Structures' virá; teremos um documento sobre analisar código em breve.
 
 ## Livros
 

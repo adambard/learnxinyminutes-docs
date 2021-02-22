@@ -1,5 +1,6 @@
 ---
 language: OCaml
+filename: learnocaml.ml
 contributors:
     - ["Daniil Baturin", "http://baturin.org/"]
 ---
@@ -160,7 +161,7 @@ let my_lambda = fun x -> x * x ;;
 
 (*** Operators ***)
 
-(* There is little distintion between operators and functions.
+(* There is little distinction between operators and functions.
    Every operator can be called as a function. *)
 
 (+) 3 4  (* Same as 3 + 4 *)
@@ -374,4 +375,3 @@ sum_int_list t ;;
 
 * Visit the official website to get the compiler and read the docs: <http://ocaml.org/>
 * Try interactive tutorials and a web-based interpreter by OCaml Pro: <http://try.ocamlpro.com/>
-* Read "OCaml for the skeptical" course: <http://www2.lib.uchicago.edu/keith/ocaml-class/home.html>

@@ -34,6 +34,7 @@ echo "World\n"; // Prints "World" with a line break
 ?>
 Hello World Again!
 <?php
+// That is because historically PHP started as a Template engine
 
 
 /************************************
@@ -41,12 +42,15 @@ Hello World Again!
  */
 
 // Variables begin with the $ symbol.
-// A valid variable name starts with a letter or underscore,
+// A valid variable name starts with a letter or an underscore,
 // followed by any number of letters, numbers, or underscores.
+
+// You don't have to (and cannot) declare variables.
+// Once you assign a value, PHP will create the variable with the right type.
 
 // Boolean values are case-insensitive
 $boolean = true;  // or TRUE or True
-$boolean = false; // or FALSE or False
+$boolean = FALSE; // or false or False
 
 // Integers
 $int1 = 12;   // => 12
@@ -122,9 +126,9 @@ echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
 // followed by any number of letters, numbers, or underscores.
 define("FOO", "something");
 
-// access to a constant is possible by calling the choosen name without a $
+// access to a constant is possible by calling the chosen name without a $
 echo FOO; // Returns 'something'
-echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
+echo 'This outputs ' . FOO;  // Returns 'This outputs something'
 
 
 
@@ -132,9 +136,7 @@ echo 'This outputs ' . FOO;  // Returns 'This ouputs something'
  * Arrays
  */
 
-// All arrays in PHP are associative arrays (hashmaps),
-
-// Associative arrays, known as hashmaps in some languages.
+// All arrays in PHP are associative arrays (hashmaps in some languages)
 
 // Works with all PHP versions
 $associative = array('One' => 1, 'Two' => 2, 'Three' => 3);
@@ -291,7 +293,7 @@ if (false) {
 print (false ? 'Does not get printed' : 'Does');
 
 // ternary shortcut operator since PHP 5.3
-// equivalent of "$x ? $x : 'Does'""
+// equivalent of "$x ? $x : 'Does'"
 $x = false;
 print($x ?: 'Does');
 
@@ -342,7 +344,7 @@ switch ($x) {
 $i = 0;
 while ($i < 5) {
     echo $i++;
-}; // Prints "01234"
+} // Prints "01234"
 
 echo "\n";
 
@@ -445,7 +447,7 @@ echo $function_name(1, 2); // => 3
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
 
 
-// You can get the all the parameters passed to a function
+// You can get all the parameters passed to a function
 function parameters() {
     $numargs = func_num_args();
     if ($numargs > 0) {
@@ -467,7 +469,7 @@ function variable($word, ...$list) {
 	}
 }
 
-variable("Separate", "Hello", "World") // Separate || Hello | World |
+variable("Separate", "Hello", "World"); // Separate || Hello | World |
 
 /********************************
  * Includes
@@ -796,7 +798,7 @@ But I'm ChildClass
 
 /**********************
 *  Magic constants
-*  
+*
 */
 
 // Get current class name. Must be used inside a class declaration.
@@ -824,11 +826,11 @@ echo "Current method is " . __METHOD__;
 echo "Current namespace is " . __NAMESPACE__;
 
 // Get the name of the current trait. Only returns a value when used inside a trait or object declaration.
-echo "Current namespace is " . __TRAIT__;
+echo "Current trait is " . __TRAIT__;
 
 /**********************
 *  Error Handling
-*  
+*
 */
 
 // Simple error handling can be done with try catch block
@@ -839,7 +841,10 @@ try {
     // Handle exception
 }
 
-// When using try catch blocks in a namespaced enviroment use the following
+// When using try catch blocks in a namespaced environment it is important to
+// escape to the global namespace, because Exceptions are classes, and the
+// Exception class exists in the global namespace. This can be done using a
+// leading backslash to catch the Exception.
 
 try {
     // Do something
@@ -856,7 +861,7 @@ try {
     $condition = true;
 
     if ($condition) {
-        throw new MyException('Something just happend');
+        throw new MyException('Something just happened');
     }
 
 } catch (MyException $e) {
@@ -872,6 +877,9 @@ and community input.
 
 If you're interested in up-to-date best practices, visit
 [PHP The Right Way](http://www.phptherightway.com/).
+
+A tutorial covering basics of language, setting up coding environment and making
+few practical projects at [Codecourse - PHP Basics](https://www.youtube.com/playlist?list=PLfdtiltiRHWHjTPiFDRdTOPtSyYfz3iLW).
 
 If you're coming from a language with good package management, check out
 [Composer](http://getcomposer.org/).

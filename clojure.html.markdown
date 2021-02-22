@@ -150,7 +150,7 @@ x ; => 1
 
 ; You can also use this shorthand to create functions:
 (def hello2 #(str "Hello " %1))
-(hello2 "Fanny") ; => "Hello Fanny"
+(hello2 "Julie") ; => "Hello Julie"
 
 ; You can have multi-variadic functions, too
 (defn hello3
@@ -292,14 +292,14 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; When you are in a situation where you want more freedom as where to
 ; put the result of previous data transformations in an 
 ; expression, you can use the as-> macro. With it, you can assign a
-; specific name to transformations' output ans use it as a
+; specific name to transformations' output and use it as a
 ; placeholder in your chained expressions:
 
 (as-> [1 2 3] input
   (map inc input);=> You can use last transform's output at the last position
   (nth input 2) ;=>  and at the second position, in the same expression
-  (conj [4 5 6] input [8 9 10])) ;=> or in the middle !
-
+  (conj [4 5 6] input 8 9 10)) ;=> or in the middle !
+                               ; Result: [4 5 6 4 8 9 10]
 
 
 ; Modules
@@ -416,3 +416,6 @@ Clojuredocs.org has documentation with examples for most core functions:
 
 Clojure-doc.org (yes, really) has a number of getting started articles:
 [http://clojure-doc.org/](http://clojure-doc.org/)
+
+Clojure for the Brave and True has a great introduction to Clojure and a free online version:
+[https://www.braveclojure.com/clojure-for-the-brave-and-true/](https://www.braveclojure.com/clojure-for-the-brave-and-true/)

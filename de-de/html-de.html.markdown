@@ -9,7 +9,7 @@ lang: de-de
 ---
 
 HTML steht für HyperText Markup Language (Hypertext-Auszeichnungssprache).
-Sie ist eine Sprache, um Seiten für das World Wide Web zu schreiben..
+Sie ist eine Sprache, um Seiten für das World Wide Web zu schreiben.
 Es ist eine Auszeichnugssprache, die es uns ermöglicht Webseiten mithilfe des Codes zu schreiben, der kennzeichnet  wie Text und Daten angezeigt werden sollen. Eigentlich sind HTML Dateien nur einfache Textdateien.
 Was sind das für Auszeichnungen? Es ist eine Methode, um die Daten der Website zu organisieren mithilfe von Start- und Endtags.
 Diese Auszeichnung dient dazu dem Text Bedeutung zu geben, welchen sie umschließt.
@@ -50,10 +50,10 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 <!-- Danach startet sie mit einem Öffnungtag <html>. -->
 <html>
 
-<!-- Dieser wird am Ende der Datei mit</html> geschlossen. -->
+<!-- Dieser wird am Ende der Datei mit </html> geschlossen. -->
 </html>
 
-<!-- Nichts sollte nach diesen finalen Tag erscheinen. -->
+<!-- Nichts sollte nach diesem finalen Tag erscheinen. -->
 
 <!-- Dazwischen (Zwischen dem Öffnungs- und Schließungstag <html></html>) finden wir: -->
 
@@ -65,13 +65,13 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 </head>
 
 <!-- Nach dem <head> Bereich findet sich der <body> Tag -->
-<!-- Bis zu diesen Punkt wird nichts im Browerfenster angezeigt. -->
-<!-- Wir müssen den Body mit dem Inhalt füllen der angezeigt werden soll. -->
+<!-- Bis zu diesem Punkt wird nichts im Browerfenster angezeigt. -->
+<!-- Wir müssen den Body mit dem Inhalt füllen, der angezeigt werden soll. -->
 
 <body>
 	<h1>Hallo, Welt!</h1> <!-- Der h1 Tag erstellt einen Titel. -->
 	<!-- Es gibt auch Untertitel für <h1> von den wichtigsten <h2> zu den Unwichtigsten (h6). -->
-	<a href = "http://codepen.io/anon/pen/xwjLbZ">Komm, schaue was das zeigt</a> <!-- Eine URL wird zum Hyperlink, wenn es das Attribut href=""  -->
+	<a href = "http://codepen.io/anon/pen/xwjLbZ">Komm, schaue was das zeigt</a> <!-- Eine URL wird zum Hyperlink, wenn es das Attribut href="" hat -->
 	<p>Das ist ein Absatz.</p> <!-- Der Tag <p> lässt uns Text auf die HTML Seite hinzufügen. -->
 	<p>Das ist ein anderer Absatz.</p>
 	<ul> <!-- Der <ul> Tag erstellt eine Aufzählungsliste. -->
@@ -93,12 +93,12 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 <!-- Es ist ebenso möglich eine Tabelle zu erstellen. -->
 
 <table> <!-- Wir öffnen ein <table> Element. -->
-	<tr> <!-- <tr> erlaubt es uns Reihe zu erstellen. -->
-		<th>Erster Tabellenkopf</th> <!-- <th> erlaubt es uns der Tabelle einen Titel zu geben. -->
+	<tr> <!-- <tr> erlaubt es uns, Reihen zu erstellen. -->
+		<th>Erster Tabellenkopf</th> <!-- <th> erlaubt es uns, der Tabelle einen Titel zu geben. -->
 		<th>Zweiter Tabllenkopf</th>
 	</tr>
 	<tr>
-		<td>Erste Zeile, erste Spalte</td> <!-- <td> erlaubt es eine Tabellenzelle zu erstellen. -->
+		<td>Erste Zeile, erste Spalte</td> <!-- <td> erlaubt es, eine Tabellenzelle zu erstellen. -->
 		<td>Erste Zeile, zweite Spalte</td>
 	</tr>
 	<tr>
@@ -111,7 +111,7 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 
 ## Verwendung
 
-HTML Dateien enden mit `.html`.
+HTML Dateien enden mit `.html` oder mit `.htm`. Der Mime Typ ist meist `text/html`.
 
 ## Um mehr zu lernen
 

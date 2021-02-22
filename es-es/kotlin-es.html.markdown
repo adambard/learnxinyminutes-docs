@@ -2,6 +2,7 @@
 language: kotlin
 contributors:
 - ["S Webber", "https://github.com/s-webber"]
+- ["Aitor Escolar", "https://github.com/aiescola"]
 translators:
 - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
 lang: es-es
@@ -39,7 +40,13 @@ fun main(args: Array<String>) {
     de tal manera que no tenemos que especificarlo explícitamente cada vez.
     Podemos declarar explícitamente el tipo de una variable así:
     */
-    val foo : Int = 7
+    val foo: Int = 7
+    
+    /* 
+    A diferencia de JavaScript, aunque el tipo se infiera, es tipado, por lo que no se puede cambiar el tipo a posteriori
+    */
+    var fooInt = 14 // Se infiere tipo Int
+    fooInt = "Cadena" // ERROR en tiempo de compilación: Type mismatch
 
     /*
     Las cadenas pueden ser representadas de la misma manera que Java.
@@ -84,7 +91,6 @@ fun main(args: Array<String>) {
     println(fooNullable?.length) // => null
     println(fooNullable?.length ?: -1) // => -1
 
-
     /*
     Las funciones pueden ser declaras usando la palabra clave "fun".
     Los argumentos de las funciones son especificados entre corchetes despues del nombre de la función.
@@ -122,6 +128,40 @@ fun main(args: Array<String>) {
     fun even(x: Int) = x % 2 == 0
     println(even(6)) // => true
     println(even(7)) // => false
+    
+    /* 
+    Kotlin permite el uso de lambdas, o funciones anónimas
+    */
+    
+    // Sin lambda:
+    interface MyListener {
+        fun onClick(foo: Foo)
+    }
+
+    fun listenSomething(listener: MyListener) {
+        listener.onClick(Foo())
+    }
+    
+    listenSomething(object: MyListener {
+        override fun onClick(foo: Foo) {
+            //...
+        }
+    })
+    
+    // Con lambda:
+    fun listenSomethingLambda(listener: (Foo) -> Unit) {
+        listener(Foo())
+    }
+    
+    listenSomethingLambda {
+        //Se recibe foo
+    }
+    
+    // el operador typealias permite, entre otras cosas, simplificar las expresiones con lambdas
+    typealias MyLambdaListener = (Foo) -> Unit
+    fun listenSomethingLambda(listener: MyLambdaListener) {
+        listener(Foo())
+    }
 
     // Las funciones pueden tomar funciones como argumentos y 
     // retornar funciones.
@@ -185,13 +225,13 @@ fun main(args: Array<String>) {
 
     // La función "with" es similar a la expresión de JavaScript "with".
     data class MutableDataClassExample (var x: Int, var y: Int, var z: Int)
-    val fooMutableDate = MutableDataClassExample(7, 4, 9)
-    with (fooMutableDate) {
+    val fooMutableData = MutableDataClassExample(7, 4, 9)
+    with (fooMutableData) {
         x -= 2
         y += 2
         z--
     }
-    println(fooMutableDate) // => MutableDataClassExample(x=5, y=6, z=8)
+    println(fooMutableData) // => MutableDataClassExample(x=5, y=6, z=8)
 
     /*
     Podemos crear una lista utilizando la función "listOf".
@@ -219,6 +259,11 @@ fun main(args: Array<String>) {
     val fooMap = mapOf("a" to 8, "b" to 7, "c" to 9)
     // Se puede acceder a los valores del mapa por su llave.
     println(fooMap["a"]) // => 8
+    
+    // Tanto Map como cualquier colección iterable, tienen la función de extensión forEach
+    fooMap.forEach {
+        println("${it.key} ${it.value}")
+    }
 
     /*
     Las secuencias representan colecciones evaluadas diferidamente.
@@ -245,7 +290,7 @@ fun main(args: Array<String>) {
     val y = fibonacciSequence().take(10).toList()
     println(y) // => [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 
-    // Kotlin provee funciones de Orden-Mayor para trabajar con colecciones.
+    // Kotlin provee funciones de orden superior para trabajar con colecciones.
     val z = (1..9).map {it * 3}
             .filter {it < 20}
             .groupBy {it % 2 == 0}
@@ -305,17 +350,11 @@ fun main(args: Array<String>) {
     ese tipo sin convertido de forma explícita.
      */
     fun smartCastExample(x: Any) : Boolean {
-        if (x is Boolean) {
-            // x es automaticamente convertido a Boolean
-            return x
-        } else if (x is Int) {
-            // x es automaticamente convertido a Int
-            return x > 0
-        } else if (x is String) {
-            // x  es automaticamente convertido a String
-            return x.isNotEmpty()
-        } else {
-            return false
+        return when (x) {
+            is Boolean -> x // x es automaticamente convertido a Boolean
+            is Int -> x > 0 // x es automaticamente convertido a Int
+            is String -> x.isNotEmpty() // x  es automaticamente convertido a String
+            else -> false
         }
     }
     println(smartCastExample("Hola, mundo!")) // => true
@@ -345,7 +384,8 @@ enum class EnumExample {
 /*
 La palabra clave "object" se puede utilizar para crear objetos únicos.
 No podemos asignarlo a una variable, pero podemos hacer referencia a ella por su nombre.
-Esto es similar a los objetos únicos de Scala
+Esto es similar a los objetos únicos de Scala.
+En la mayoría de ocasiones, los objetos únicos se usan como alternativa a los Singleton.
 */
 object ObjectExample {
     fun hello() : String {

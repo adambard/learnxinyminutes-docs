@@ -9,23 +9,25 @@ contributors:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
 translators:
     - ["Gabriel Gomes", "https://github.com/gabrielgomesferraz"]
+    - ["Gabriele Luz", "https://github.com/gabrieleluz"]
+
 lang: pt-br
 ---
 
-Nos primeiros dias da web não havia elementos visuais, apenas texto puro. Mas com maior desenvolvimento de navegadores da web, páginas web totalmente visuais também se tornou comum.
+No início da web não havia elementos visuais, apenas texto puro. Mas com maior desenvolvimento de navegadores da web, páginas web totalmente visuais também se tornaram comuns.
 
-CSS ajuda a manter a separação entre o conteúdo (HTML) e o look-and-feel de uma página web.
+CSS ajuda a manter a separação entre o conteúdo (HTML) e o visual de uma página web.
 
 CSS permite atingir diferentes elementos em uma página HTML e atribuir diferentes propriedades visuais para eles.
 
-Este guia foi escrito para CSS2, embora CSS3 está rapidamente se tornando popular.
+Este guia foi escrito para CSS2, embora CSS3 esteja rapidamente se tornando popular.
 
-**NOTA:** Porque CSS produz resultados visuais, a fim de aprender, você precisa tentar de tudo em um playground CSS como [dabblet](http://dabblet.com/).
+**NOTA:** Porque CSS produz resultados visuais, a fim de aprender, você precisa treinar em um playground CSS como [dabblet](http://dabblet.com/).
 O foco principal deste artigo é sobre a sintaxe e algumas dicas gerais.
 
 ```css
 /* Comentários aparecem dentro do slash-asterisk, tal como esta linha!
-   não há "comentários de uma linha"; este é o único estilo de comentário * /
+   Não há "comentários de uma linha"; este é o único estilo de comentário * /
 
 /* ####################
    ## SELETORES
@@ -40,7 +42,7 @@ Abaixo um elemento de exemplo:
 <div class='class1 class2' id='anID' attr='value' otherAttr='pt-br foo bar' />
 */
 
-/* Você pode direciona-lo usando uma das suas classes CSS */
+/* Você pode direcioná-lo usando uma das suas classes CSS */
 .class1 { }
 
 /* ou ambas as classes! */
@@ -80,9 +82,9 @@ classe div.some [attr $ = 'ue'] {}
 /* Você pode selecionar um elemento que é filho de outro elemento */
 div.some-parent> .class-name {}
 
-/* Ou um descendente de um outro elemento. As crianças são os descendentes diretos de
-   seu elemento pai, apenas um nível abaixo da árvore. Pode ser qualquer descendentes
-   nivelar por baixo da árvore. */
+/* Ou um descendente de um outro elemento. Os filhos são os descendentes diretos de
+   seu elemento pai, apenas um nível abaixo da árvore. Pode ser quaisquer descendentes
+   nivelados por baixo da árvore. */
 div.some-parent class-name {}
 
 /* Atenção: o mesmo seletor sem espaço tem um outro significado.
@@ -95,7 +97,7 @@ div.some-parent.class-name {}
 /* Ou qualquer irmão que o precede */
 .i am-qualquer-elemento antes ~ .Este elemento {}
 
-/* Existem alguns selectores chamado pseudo classes que podem ser usados para selecionar um
+/* Existem alguns seletores chamados pseudo classes que podem ser usados para selecionar um
    elemento quando ele está em um determinado estado */
 
 /* Por exemplo, quando o cursor passa sobre um elemento */
@@ -116,7 +118,7 @@ seletor:first-child {}
 /* Qualquer elemento que é o último filho de seu pai */
 seletor:last-child {}
 
-/* Assim como pseudo classes, pseudo elementos permitem que você estilo certas partes de um documento */
+/* Assim como pseudo classes, pseudo elementos permitem que você estilize certas partes de um documento */
 
 /* Corresponde a um primeiro filho virtual do elemento selecionado */
 seletor::before {}
@@ -125,10 +127,10 @@ seletor::before {}
 seletor::after {}
 
 /* Nos locais apropriados, um asterisco pode ser utilizado como um curinga para selecionar todos
-   elemento */
+   os elementos */
 * {} /* */ Todos os elementos
 .parent * {} /* */ todos os descendentes
-.parent> * {} /* */ todas as crianças
+.parent> * {} /* */ todos os filhos
 
 /* ####################
    ## PROPRIEDADES
@@ -139,7 +141,7 @@ seletor {
     /* Unidades de comprimento pode ser absoluta ou relativa. */
 
     /* Unidades relativas */
-    width: 50%; /* Percentagem de largura elemento pai */
+    width: 50%; /* Percentagem de largura do elemento pai */
     font-size: 2em; /* Múltiplos de font-size original de elemento */
     font-size: 2rem; /* Ou do elemento raiz font-size */
     font-size: 2vw; /* Múltiplos de 1% da largura da janela de exibição (CSS 3) */
@@ -179,7 +181,7 @@ seletor {
 
 ## Uso
 
-Guardar uma folha de estilo CSS com a extensão `.css`.
+Salvar uma folha de estilo CSS com a extensão `.css`.
 
 ```xml
 <!-- Você precisa incluir o arquivo css no da sua página <head>. Isto é o
@@ -198,7 +200,7 @@ Guardar uma folha de estilo CSS com a extensão `.css`.
 
 ## Precedência ou Cascata
 
-Um elemento pode ser alvo de vários seletores e pode ter um conjunto de propriedades em que mais de uma vez. Nestes casos, uma das regras tem precedência sobre os outros. Geralmente, uma regra em um seletor mais específico têm precedência sobre um menos específico, e uma regra que ocorre mais tarde na folha de estilo substitui uma anterior.
+Um elemento pode ser alvo de vários seletores e pode ter um conjunto de propriedades em que mais de uma vez. Nestes casos, uma das regras tem precedência sobre as outras. Geralmente, uma regra em um seletor mais específico têm precedência sobre um menos específico, e uma regra que ocorre mais tarde na folha de estilo substitui uma anterior.
 
 Este processo é chamado de cascata, portanto, as Fichas de nome de estilo em cascata.
 
@@ -236,9 +238,48 @@ A precedência de estilo é a seguinte. Lembre-se, a precedência é para cada  
 * `B` é o próximo.
 * `D` é a última.
 
+## Media Queries
+Media queries são recursos do CSS3 que permitem especificar quando determinadas regras de CSS devem ser aplicadas; é possível aplicar regras diferentes quando a página é impressa, quando a tela possui determinadas dimensões ou densidade de pixels e quando é lida por um leitor de tela. Media queries não adicionam especificidade ao seletor.
+
+```css
+/* Uma regra que será aplicada a todos os dispositivos */
+h1 {
+  font-size: 2em;
+  color: white;
+  background-color: black;
+}
+
+/* Altera a cor do h1 para utilizar menos tinta durante a impressão */
+@media print {
+  h1 {
+    color: black;
+    background-color: white;
+  }
+}
+
+/* Altera o tamanho da fonte quando exibida numa tela com pelo menos 480px de largura */
+@media screen and (min-width: 480px) {
+  h1 {
+    font-size: 3em;
+    font-weight: normal;
+  }
+}
+```
+Media queries podem incluir os seguintes atributos: `width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. A maioria desses atributos pode ser prefixada com `min-` ou `max-`.
+
+O atributo `resolution` não é suportado em dispositivos mais antigos. Em vez disso, use `device-pixel-ratio`.
+
+Muitos smartphones e tablets tentarão renderizar a página como se estivesse num desktop a menos que você utilize a meta-tag `viewport`.
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+</head>
+```
+
 ## Compatibilidade
 
-A maior parte dos recursos do CSS 2 (e muitos em CSS 3) estão disponíveis em todos os navegadores e dispositivos. Mas é sempre boa prática para verificar antes de usar um novo recurso.
+A maior parte dos recursos do CSS 2 (e muitos em CSS 3) estão disponíveis em todos os navegadores e dispositivos. Mas é sempre boa prática verificar antes de usar um novo recurso.
 
 ## Recursos
 

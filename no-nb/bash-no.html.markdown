@@ -217,8 +217,6 @@ bar ()
 # Å kalle en funksjon:
 foo "Mitt navn er" $NAME
 
-# There are a lot of useful commands you should learn:
-# prints last 10 lines of file.txt
 # Det er mange nyttige kommandoer du bør lære deg:
 # "tail" skriver ut slutten av en fil, i dette tilfellet de siste 10 linjene
 tail -n 10 file.txt

@@ -1,12 +1,13 @@
 ---
 language: java
+filename: LearnJava-ru.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]
 translators:
     - ["Sergey Gaykov", "https://github.com/gaykov"]
-filename: LearnJavaRu.java
 lang: ru-ru
+
 ---
 
 Java - это объектно-ориентированный язык программирования общего назначения,

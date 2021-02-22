@@ -257,7 +257,7 @@ class InvalidFooSubclass extends ConsistentFoo
         // ...
     }
 
-    // Using the __Override annotation on a non-overriden method will cause a
+    // Using the __Override annotation on a non-overridden method will cause a
     // type checker error:
     //
     //  "InvalidFooSubclass::otherMethod() is marked as override; no non-private
@@ -299,7 +299,7 @@ $cat instanceof KittenInterface === true; // True
 ## More Information
 
 Visit the [Hack language reference](http://docs.hhvm.com/manual/en/hacklangref.php)
-for detailed explainations of the features Hack adds to PHP, or the [official Hack website](http://hacklang.org/)
+for detailed explanations of the features Hack adds to PHP, or the [official Hack website](http://hacklang.org/)
 for more general information.
 
 Visit the [official HHVM website](http://hhvm.com/) for HHVM installation instructions.

@@ -34,7 +34,8 @@ brackets can be filled with useful information about this script or program:
 the author's name, the filename, the version, the license, a summary of what
 the program does or any other files it needs. The red/System header is just
 like the red header, only saying "red/System" and not "red".
-
+```
+```red
 Red []
 
 ;this is a commented line
@@ -50,7 +51,7 @@ comment {
 ; no need to restrict this to a 'main' function.
 
 ; Valid variable names start with a letter and can contain numbers,
-; variables containing only capital A thru F and numbers and ending with 'h'
+; variables containing only capital A through F and numbers and ending with 'h'
 ; are forbidden, because that is how hexadecimal numbers are expressed in Red
 ; and Red/System.
 
@@ -102,7 +103,8 @@ type? my-integer
 integer!
 
 ; A variable can be initialized using another variable that gets initialized
-; at the same time.
+; at the same time. Initialize here refers to both declaring a variable and
+; assigning a value to it.
 i2: 1 + i1: 1
 
 ; Arithmetic is straightforward
@@ -112,12 +114,12 @@ i2 * i1 ; result 2
 i1 / i2 ; result 0 (0.5, but truncated towards 0)
 
 ; Comparison operators are probably familiar, and unlike in other languages
-; you only need a single '=' sign for comparison.
+; you only need a single '=' sign for comparison. Inequality is '<>' like in Pascal.
 ; There is a boolean like type in Red. It has values true and false, but also
 ; the values on/off or yes/no can be used
 
 3 = 2 ; result false
-3 != 2 ; result true
+3 <> 2 ; result true
 3 > 2 ; result true
 3 < 2 ; result false
 2 <= 2 ; result true
@@ -127,22 +129,22 @@ i1 / i2 ; result 0 (0.5, but truncated towards 0)
 ; Control Structures
 ;
 ; if
-; Evaluate a block of code if a given condition is true. IF does not return
-; any value, so cannot be used in an expression.
+; Evaluate a block of code if a given condition is true. IF returns
+; the resulting value of the block or 'none' if the condition was false.
 if a < 0 [print "a is negative"]
 
 ; either
 ; Evaluate a block of code if a given condition is true, else evaluate an
 ; alternative block of code. If the last expressions in both blocks have the
 ; same type, EITHER can be used inside an expression.
-either a < 0 [
+either a > 0 [
+   msg: "positive"
+][
    either a = 0 [
        msg: "zero"
    ][
        msg: "negative"
    ]
-][
-   msg: "positive"
 ]
 
 print ["a is " msg lf]
@@ -150,20 +152,20 @@ print ["a is " msg lf]
 ; There is an alternative way to write this
 ; (Which is allowed because all code paths return a value of the same type):
 
-msg: either a < 0 [
+msg: either a > 0 [
+   "positive"
+][
    either a = 0 [
        "zero"
    ][
        "negative"
    ]
- ][
-   "positive"
 ]
 print ["a is " msg lf]
 
 ; until
 ; Loop over a block of code until the condition at end of block, is met.
-; UNTIL does not return any value, so it cannot be used in an expression.
+; UNTIL always returns the 'true' value from the final evaluation of the last expression.
 c: 5
 until [
    prin "o"
@@ -214,7 +216,7 @@ The Red/System language specification can be found [here](http://static.red-lang
 
 To learn more about Rebol and Red join the [chat on Gitter](https://gitter.im/red/red). And if that is not working for you drop a mail to us on the [Red mailing list](mailto: red-langNO_SPAM@googlegroups.com) (remove NO_SPAM).
 
-Browse or ask questions on [Stack Overflow](stackoverflow.com/questions/tagged/red).
+Browse or ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/red).
 
 Maybe you want to try Red right away? That is possible on the [try Rebol and Red site](http://tryrebol.esperconsultancy.nl).
 

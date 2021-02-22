@@ -6,6 +6,7 @@ contributors:
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
 translators:
     - ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
+    - ["Sylvain Abélard", "http://github.com/abelards"]
 lang: fr-fr
 
 ---
@@ -17,9 +18,9 @@ dépendances des gems.
 ## Ruby Managers
 
 Quelques plateformes possèdent Ruby pré-installé ou disponible en tant que
-paquet. La plupart des rubyists ne les utilisent pas, ou si c'est le cas, ne
-les utilise que pour faire démarrer un autre installateur ou implémentation de
-Ruby. Les rubyists tendent plutôt à installer un manager Ruby pour installer
+paquet. La plupart des rubyistes ne les utilisent pas, ou si c'est le cas, ne
+les utilisent que pour faire démarrer un autre installateur ou implémentation de
+Ruby. Les rubyistes tendent plutôt à installer un gestionnaire en Ruby pour installer
 et changer entre les différentes et nombreuses versions de Ruby et les
 environnements de leurs projets Ruby.
 
@@ -47,14 +48,14 @@ Implementation).
 
 Les trois versions majeures de Ruby actuellement utilisées sont :
 
-* 2.0.0 - Sortie en février 2013. La plupart des librairies et frameworks
+* 2.0.0 - Sortie en février 2013. La plupart des bibliothèques et frameworks
   gèrent la versions 2.0.0.
 * 1.9.3 - Sortie en octobre 2011. Il s'agit de la version que la majorité des
   rubyists utilisent actuellement. [Fin de vie](https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/)
 * 1.8.7 - Sortie en juin 2006. [Fin de vie](http://www.ruby-lang.org/en/news/2013/06/30/we-retire-1-8-7/).
 
-Les changements entre 1.8.7 à 1.9.x sont bien plus grands qu'entre 1.9.3
-jusqu'à 2.0.0. Par exemple, les versions 1.9 ont introduit le support des
+Les changements entre 1.8.7 et 1.9.x sont bien plus grands qu'entre 1.9.3
+et 2.0.0. Par exemple, les versions 1.9 ont introduit le support des
 encodages et d'une VM bytecode ([YARV](https://fr.wikipedia.org/wiki/YARV)).
 Il y a toujours des projets sur 1.8.7, mais ils deviennent minoritaires, étant
 donné que la majorité de la communauté a migré vers au moins 1.9.2 ou 1.9.3.
@@ -89,7 +90,7 @@ Mpyennement mature/compatible:
 * [Maglev](http://maglev.github.io/) - Basée sur Gemstone, une VM Smalltalk.
   Smalltalk possède quelques outils impressionnants, et ce projet tente
   de les apporter dans le développement Ruby.
-* [RubyMotion](http://www.rubymotion.com/) - Ruby pour développement iOS.
+* [RubyMotion](http://www.rubymotion.com/) - Ruby pour développement iOS et Android.
 * [Opal](http://opalrb.org/) - Compile le Ruby en Javascript
 
 Les implémentations de Ruby peuvent avoir leurs propres numéros de versions,
@@ -122,17 +123,17 @@ l(es) auteur(s) et la/les licence(s).
 
 ## Bundler
 
-[Bundler](http://bundler.io/) est un résolveur de dépendances des gems. Il
-utilise le Gemfile d'un projet ppur trouver les dépendances, et récupère
+[Bundler](http://bundler.io/) est un outil de résolution de dépendances des gems. Il
+utilise le Gemfile d'un projet pour en trouver les dépendances, et récupère
 ensuite les dépendances de ces dépendances récursivement. Il déroule cet
 algorithme jusqu'à ce que toutes les dépendances soient résolues et
 téléchargées, ou s'arrête si un conflit est trouvé.
 
 Bundler lèvera une erreur s'il trouve des conflits de dépendances. Par exemple,
 si la gem A recquiert la version 3 ou plus de gem Z, mais que gem B recquiert
-seulement la version 2, Bundler vous notifiera ce conflict. Cela devient
+seulement la version 2 de la même gem Z, Bundler vous notifiera ce conflit. Cela devient
 extrêmement utile, étant donné que beaucoup de gems font référence à d'autres
-gems (qui se réfèrent à d'autres gems), ce qui peut former un large graphe de
+gems (qui se réfèrent à d'autres gems et ainsi de suite), ce qui peut former un large graphe de
 dépendance à résoudre.
 
 # Les tests
@@ -151,4 +152,4 @@ différents.
 
 La communauté Ruby est fière d'être une communauté ouverte, riche et
 accueillante. Matz lui-même est extrêmement sociable, et la générosité des
-rubyists est généralement remarquable.
+rubyistes est généralement remarquable.
