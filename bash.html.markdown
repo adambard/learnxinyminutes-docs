@@ -220,7 +220,8 @@ ls -l # Lists every file and directory on a separate line
 ls -t # Sorts the directory contents by last-modified date (descending)
 ls -R # Recursively `ls` this directory and all of its subdirectories
 
-# Results of the previous command can be passed to the next command as input.
+# Results (stdout) of the previous command can be passed as input (stdin) to the next command
+# using a pipe |. Commands chained in this way are called a "pipeline", and are run concurrently.
 # The `grep` command filters the input with provided patterns.
 # That's how we can list .txt files in the current directory:
 ls -l | grep "\.txt"
@@ -275,9 +276,13 @@ mkdir -p myNewDir/with/intermediate/directories
 # if the intermediate directories didn't already exist, running the above
 # command without the `-p` flag would return an error
 
-# You can redirect command input and output (stdin, stdout, and stderr).
+# You can redirect command input and output (stdin, stdout, and stderr)
+# using "redirection operators". Unlike a pipe, which passes output to a command,
+# a redirection operator has a command's input come from a file or stream, or
+# sends its output to a file or stream.
+
 # Read from stdin until ^EOF$ and overwrite hello.py with the lines
-# between "EOF":
+# between "EOF" (which are called a "here document"):
 cat > hello.py << EOF
 #!/usr/bin/env python
 from __future__ import print_function
@@ -299,6 +304,8 @@ python hello.py 2> "error.err" # redirect error output to error.err
 
 python hello.py > "output-and-error.log" 2>&1
 # redirect both output and errors to output-and-error.log
+# &1 means file descriptor 1 (stdout), so 2>&1 redirects stderr (2) to the current
+# destination of stdout (1), which has been redirected to output-and-error.log.
 
 python hello.py > /dev/null 2>&1
 # redirect all output and errors to the black hole, /dev/null, i.e., no output
