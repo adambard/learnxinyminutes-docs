@@ -260,7 +260,7 @@ cd      # also goes to home directory
 cd ..   # go up one directory
         # (^^say, from /home/username/Downloads to /home/username)
 cd /home/username/Documents   # change to specified directory
-cd ~/Documents/..    # still in home directory..isn't it??
+cd ~/Documents/..    # now in home directory (if ~/Documents exists)
 cd -    # change to last directory
 # => /home/username/Documents
 
