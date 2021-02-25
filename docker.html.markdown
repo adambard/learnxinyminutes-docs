@@ -90,7 +90,7 @@ docker ps -a
 ::                test_container
 :: as you can see the name is now what we have specified
 
-:: retireve logs from a named container
+:: retrieve logs from a named container
 docker logs test_container
 :: Hello from Docker!
 :: This message shows that your installation appears to be working correctly.
