@@ -182,7 +182,7 @@ echo "Always executed" && echo "Only executed if first command does NOT fail"
 # output is printed to the terminal, but it cannot read from the input.
 sleep 30 &
 # List background jobs
-jobs  # "[1]+  Running                 sleep 30 &" - 1 is the job number
+jobs # => [1]+  Running                 sleep 30 &
 # Bring the background job to the foreground
 fg
 # Ctrl-C to kill the process, or Ctrl-Z to pause it
