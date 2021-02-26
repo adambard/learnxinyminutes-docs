@@ -5,7 +5,8 @@ contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]
   - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
-  - ["Shooter", "https://github.com/liushooter"]
+  - ["Shooter", "https://github.com/liushooter"]\
+  - ["Patrick Collins", "https://gist.github.com/PatrickAlphaC"]
 ---
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
@@ -18,7 +19,7 @@ state variables, functions, and common data types. Contract-specific features
 include modifier (guard) clauses, event notifiers for listeners, and custom
 global variables.
 
-Some Ethereum contract examples include crowdfunding, voting, and blind auctions.
+Some Ethereum contract examples include crowdfunding, voting, [decentralized finance](https://defipulse.com/), and blind auctions.
 
 There is a high risk and high cost of errors in Solidity code, so you must be very careful to test
 and slowly rollout. WITH THE RAPID CHANGES IN ETHEREUM, THIS DOCUMENT IS UNLIKELY TO STAY UP TO
@@ -32,6 +33,66 @@ popular design patterns.
 As Solidity and Ethereum are under active development, experimental or beta
 features are typically marked, and subject to change. Pull requests welcome.
 
+# Working with Remix and Metamask
+
+One of the easiest ways to build, deploy, and test solidity code is by using the:
+
+1. [Remix Web IDE](https://remix.ethereum.org/) 
+2. [Metamask wallet](https://metamask.io/).
+
+To get started, [download the Metamask Browser Extension](https://metamask.io/). 
+
+Once installed, we will be working with Remix. The below code will be pre-loaded, but before we head over there, let's look at a few tips to get started with remix. Load it all by [hitting this link](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=f490c0d51141dd0515244db40bbd0c17&runs=200).
+
+1. Choose the Solidity compiler
+
+![Solidity-in-remix](images/solidity/remix-solidity.png)
+
+2. Open the file loaded by that link
+
+![Solidity-choose-file](images/solidity/remix-choose-file.png)
+
+3. Compile the file
+
+![Solidity-compile](images/solidity/remix-compile.png)
+
+4. Deploy 
+
+![Solidity-deploy](images/solidity/remix-deploy.png)
+
+5. Play with contracts
+
+![Solidity-deploy](images/solidity/remix-interact.png)
+
+You've deployed your first contract! Congrats!
+
+You can test out and play with the functions defined. Check out the comments to learn about what each does. 
+
+
+## Working on a testnet
+
+Deploying and testing on a testnet is the most accurate way to test your smart contracts in solidity. 
+To do this let's first get some testnet ETH from the Kovan testnet. 
+
+[Pop into this Gitter Channel](https://gitter.im/kovan-testnet/faucet) and drop your metamask address in.
+
+In your metamask, you'll want to change to the `Kovan` testnet. 
+
+![Solidity-in-remix](images/solidity/metamask-kovan.png)
+
+You'll be given some free test Ethereum. Ethereum is needed to deploy smart contracts when working with a testnet. 
+
+In the previous example, we didn't use a testnet, we deployed to a fake virtual environment. 
+When working with a testnet, we can actually see and interact with our contracts in a persistent manner. 
+
+To deploy to a testnet, on the `#4 Deploy` step, change your `environment` to `injected web3`.
+This will use whatever network is currently selected in your metamask as the network to deploy to. 
+
+![Solidity-in-remix](images/solidity/remix-testnet.png)
+
+For now, please continue to use the `Javascript VM` unless instructed otherwise. When you deploy to a testnet, metamask will pop up to ask you to "confirm" the transaction. Hit yes, and after a delay, you'll get the same contract interface at the bottom of your screen. 
+
+
 ```javascript
 // First, a simple Bank contract
 // Allows deposits, withdrawals, and balance checks
@@ -40,7 +101,7 @@ features are typically marked, and subject to change. Pull requests welcome.
 /* **** START EXAMPLE **** */
 
 // Declare the source file compiler version
-pragma solidity ^0.4.19;
+pragma solidity ^0.6.6;
 
 // Start with Natspec comment (the three slashes)
 // used for documentation - and as descriptive data for UI elements/actions
@@ -67,7 +128,7 @@ contract SimpleBank { // CapWords
     event LogDepositMade(address accountAddress, uint amount);
 
     // Constructor, can receive one or many variables here; only one allowed
-    function SimpleBank() public {
+    constructor() public {
         // msg provides details about the message that's sent to the contract
         // msg.sender is contract caller (address of contract creator)
         owner = msg.sender;
@@ -84,7 +145,7 @@ contract SimpleBank { // CapWords
         // no "this." or "self." required with state variable
         // all values set to data type's initial value by default
 
-        LogDepositMade(msg.sender, msg.value); // fire event
+        emit LogDepositMade(msg.sender, msg.value); // fire event
 
         return balances[msg.sender];
     }
@@ -92,7 +153,7 @@ contract SimpleBank { // CapWords
     /// @notice Withdraw ether from bank
     /// @dev This does not return any excess ether sent to it
     /// @param withdrawAmount amount you want to withdraw
-    /// @return The balance remaining for the user
+    /// @return remainingBal
     function withdraw(uint withdrawAmount) public returns (uint remainingBal) {
         require(withdrawAmount <= balances[msg.sender]);
 
@@ -153,7 +214,7 @@ assert(c >= a); // assert tests for internal invariants; require is used for use
 // https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
 
 
-// No random functions built in, use other contracts for randomness
+// No random functions built in, see below for using Chainlink to get random numbers. 
 
 // Type casting
 int x = int(b);
@@ -584,9 +645,180 @@ reveal(100, "mySecret");
 // All data to start of time is stored in blockchain, so
 // anyone can observe all previous data and changes
 
+
+// E. Oracles and External Data
+// Oracles are ways to interact with your smart contracts outside the blockchain. 
+// They are used to get data from the real world, send post requests, to the real world
+// or vise versa.
+
+// Time-based implementations of contracts are also done through oracles, as 
+// contracts need to be directly called and can not "subscribe" to a time. 
+// Due to smart contracts being decentralized, you also want to get your data
+// in a decentralized manner, other your run into the centralized risk that 
+// smart contract design matter prevents. 
+
+// To easiest way get and use pre-boxed decentralized data is with Chainlink Data Feeds
+// https://docs.chain.link/docs/get-the-latest-price
+// We can reference on-chain reference points that have already been aggregated by 
+// multiple sources and delivered on-chain, and we can use it as a "data bank" 
+// of sources. 
+
+// We will need to be on a network that has the data already loaded. 
+// Let's look at an example
+```
+# Oracles
+### Getting data from Chainlink Data Feeds
+
+We will be deploying to a testnet with Chainlink. This way we can get decentralized data into our smart contracts. 
+
+**Deploy the following contract with remix to the `Kovan` testnet. If unfamiliar, reference the start of this file.**
+
+[Work with this code in Remix](https://remix.ethereum.org/#version=soljson-v0.6.7+commit.b8d736ae.js&optimize=false&evmVersion=null&gist=0c5928a00094810d2ba01fd8d1083581&runs=200)
+
+We can get the price of any asset by using the `getLatestPrice` function. You can see a list of addresses for the Kovan network from the [Chainlink Documentation](https://docs.chain.link/docs/get-the-latest-price). You can also view any other address as well. 
+
+
+```javascript
+/** This example code is designed to quickly deploy an example contract using Remix.
+ *  If you have never used Remix, try our example walkthrough: https://docs.chain.link/docs/example-walkthrough
+ *  You will need testnet ETH and LINK.
+ *     - Kovan ETH faucet: https://faucet.kovan.network/
+ *     - Kovan LINK faucet: https://kovan.chain.link/
+ */
+
+pragma solidity ^0.6.7;
+
+import "https://github.com/smartcontractkit/chainlink/blob/master/evm-contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+
+contract PriceConsumerV3 {
+
+    AggregatorV3Interface internal priceFeed;
+
+    /**
+     * Network: Kovan
+     * Aggregator: ETH/USD
+     * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+     */
+    constructor() public {
+        priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+    }
+
+    /**
+     * Returns the latest price
+     */
+    function getLatestPrice() public view returns (int) {
+        (
+            uint80 roundID, 
+            int price,
+            uint startedAt,
+            uint timeStamp,
+            uint80 answeredInRound
+        ) = priceFeed.latestRoundData();
+        return price;
+    }
+}
+
+```
+
+### Randomness / RNG
+
+Chainlink VRF (Verifiable Random Function) is a provably-fair and verifiable source of randomness designed for smart contracts. Randomness is difficult in blockchain, because blockchains are determanistic. We can get a random number by reaching outside the blockchain to an oracle. 
+
+Chainlink VRF then cryptographically guarantees that the random number returned is random. 
+
+**Deploy the following contract with remix to the `Kovan` testnet. If unfamiliar, reference the start of this file.**
+
+The only additional piece we need to do here is to fund our contract with LINK. [You can see a video on funding with LINK here.](https://www.youtube.com/watch?v=4ZgFijd02Jo)
+
+Once we deploy our Chainlink VRF contract, in order to `getRandomNumer` we need to fund the contract with LINK. Get some kovan testnet LINK [from this faucet](https://kovan.chain.link/). Once the transaction has gone through, in your metamask, hit `Add Token` and under `Custom Token` enter the address `0xa36085F69e2889c224210F603D836748e7dC0088`.
+
+![Remix-add-token](images/solidity/remix-add-token.png)
+
+NOTE: This is only the token address for Kovan. 
+
+Once you deploy your contract, you'll need to fund it with LINK. You can fund it with link by copying your contract address from remix, and then sending that address a few LINK from your metamask. Remember this is all testnet LINK, and we can always get more for free. 
+
+![Remix-add-token](images/solidity/copy-address.png)
+
+![Remix-add-token](images/solidity/send-link.png)
+
+And you'll be able to work with the VRF. After deploying the content, enter a number of choice into the `getRandomNumber` function. After a delay of ~1 minute, you can hit the `randomResult` button to get the random number returned. 
+
+```javascript
+/** This example code is designed to quickly deploy an example contract using Remix.
+ *  If you have never used Remix, try our example walkthrough: https://docs.chain.link/docs/example-walkthrough
+ *  You will need testnet ETH and LINK.
+ *     - Kovan ETH faucet: https://faucet.kovan.network/
+ *     - Kovan LINK faucet: https://kovan.chain.link/
+ */
+
+pragma solidity 0.6.6;
+
+import "https://raw.githubusercontent.com/smartcontractkit/chainlink/master/evm-contracts/src/v0.6/VRFConsumerBase.sol";
+
+contract RandomNumberConsumer is VRFConsumerBase {
+    
+    bytes32 internal keyHash;
+    uint256 internal fee;
+    
+    uint256 public randomResult;
+    
+    /**
+     * Constructor inherits VRFConsumerBase
+     * 
+     * Network: Kovan
+     * Chainlink VRF Coordinator address: 0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9
+     * LINK token address:                0xa36085F69e2889c224210F603D836748e7dC0088
+     * Key Hash: 0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4
+     */
+    constructor() 
+        VRFConsumerBase(
+            0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9, // VRF Coordinator
+            0xa36085F69e2889c224210F603D836748e7dC0088  // LINK Token
+        ) public
+    {
+        keyHash = 0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4;
+        fee = 0.1 * 10 ** 18; // 0.1 LINK
+    }
+    
+    /** 
+     * Requests randomness from a user-provided seed
+     */
+    function getRandomNumber(uint256 userProvidedSeed) public returns (bytes32 requestId) {
+        require(LINK.balanceOf(address(this)) > fee, "Not enough LINK - fill contract with faucet");
+        return requestRandomness(keyHash, fee, userProvidedSeed);
+    }
+
+    /**
+     * Callback function used by VRF Coordinator
+     */
+    function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
+        randomResult = randomness;
+    }
+    
+    /**
+     * Withdraw LINK from this contract
+     * 
+     * DO NOT USE THIS IN PRODUCTION AS IT CAN BE CALLED BY ANY ADDRESS.
+     * THIS IS PURELY FOR EXAMPLE PURPOSES.
+     */
+    function withdrawLink() external {
+        require(LINK.transfer(msg.sender, LINK.balanceOf(address(this))), "Unable to transfer");
+    }
+}
+```
+
+[You can learn more about Chainlink from the documentation.](https://docs.chain.link/docs)
+
+You can [make API calls](https://docs.chain.link/docs/make-a-http-get-request), [set timing intervals](https://docs.chain.link/docs/chainlink-alarm-clock), and so much more. 
+
+```javascript
+// Setting up oracle networks yourself
+
 // D. Cron Job
 // Contracts must be manually called to handle time-based scheduling; can create external
 // code to regularly ping, or provide incentives (ether) for others to
+//
 
 // E. Observer Pattern
 // An Observer Pattern lets you register as a subscriber and
@@ -628,8 +860,11 @@ contract SomeOracle {
 
 // F. State machines
 // see example below for State enum and inState modifier
+```
 
+Work with the full example below using the [`Javascript VM` in remix here.](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
 
+```javascript
 // *** EXAMPLE: A crowdfunding example (broadly similar to Kickstarter) ***
 // ** START EXAMPLE **
 
@@ -765,7 +1000,11 @@ contract CrowdFunder {
     }
 }
 // ** END EXAMPLE **
+```
 
+Some more functions. 
+
+```javascript
 // 10. OTHER NATIVE FUNCTIONS
 
 // Currency units
@@ -837,18 +1076,22 @@ someContractAddress.callcode('function_name');
 
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
+- [Chainlink Beginner Tutorials](https://docs.chain.link/docs/beginners-tutorial)
 - [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
 - [Superblocks Lab - Browser based IDE for Solidity](https://lab.superblocks.com/)
 - [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
+- [Chainlink Documentation](https://docs.chain.link/docs/getting-started)
 
 ## Important libraries
-- [Zeppelin](https://github.com/OpenZeppelin/zeppelin-solidity/): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
+- [Zeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
+- [Chainlink](https://github.com/smartcontractkit/chainlink): Code that allows you to interact with external data
 
 ## Sample contracts
 - [Dapp Bin](https://github.com/ethereum/dapp-bin)
+- [Defi Example](https://github.com/PatrickAlphaC/chainlink_defi)
 - [Solidity Baby Step Contracts](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
 - [ConsenSys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
 - [State of Dapps](http://dapps.ethercasts.com/)
@@ -862,6 +1105,7 @@ someContractAddress.callcode('function_name');
 - [Solidity Style Guide](http://solidity.readthedocs.io/en/latest/style-guide.html): Ethereum's style guide is heavily derived from Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
 
 ## Editors
+- [Remix](https://remix.ethereum.org/)
 - [Emacs Solidity Mode](https://github.com/ethereum/emacs-solidity)
 - [Vim Solidity](https://github.com/tomlion/vim-solidity)
 - Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
