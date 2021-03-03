@@ -297,8 +297,8 @@ class Bicycle {
     // Bicycle 类的成员变量和方法
     public int cadence; // Public: 任意位置均可访问
     private int speed;  // Private: 只在同类中可以访问
-    protected int gear; // Protected: 可以在同类与子类中可以访问
-    String name; // default: 可以在包内中可以访问
+    protected int gear; // Protected: 可以在同类与子类中访问
+    String name; // default: 可以在包内访问
 
     // 构造函数是初始化一个对象的方式
     // 以下是一个默认构造函数
