@@ -50,17 +50,19 @@ Note: This article applies to Python 3 specifically. Check out [here](http://lea
 10.0 / 3  # => 3.3333333333333335
 
 # Modulo operation
-7 % 3  # => 1
+7 % 3   # => 1
+# i % j have the same sign as j, unlike C
+-7 % 3  # => 2
 
 # Exponentiation (x**y, x to the yth power)
 2**3  # => 8
 
 # Enforce precedence with parentheses
-1 + 3 * 2  # => 7
+1 + 3 * 2    # => 7
 (1 + 3) * 2  # => 8
 
 # Boolean values are primitives (Note: the capitalization)
-True  # => True
+True   # => True
 False  # => False
 
 # negate with not
@@ -126,7 +128,7 @@ b == a            # => True, a's and b's objects are equal
 "This is a string."
 'This is also a string.'
 
-# Strings can be added too! But try not to do this.
+# Strings can be added too
 "Hello " + "world!"  # => "Hello world!"
 # String literals (but not variables) can be concatenated without using '+'
 "Hello " "world!"    # => "Hello world!"
@@ -140,9 +142,8 @@ len("This is a string")  # => 16
 # You can also format using f-strings or formatted string literals (in Python 3.6+)
 name = "Reiko"
 f"She said her name is {name}." # => "She said her name is Reiko"
-# You can basically put any Python statement inside the braces and it will be output in the string.
+# You can basically put any Python expression inside the braces and it will be output in the string.
 f"{name} is {len(name)} characters long." # => "Reiko is 5 characters long."
-
 
 # None is an object
 None  # => None
@@ -173,7 +174,6 @@ print("Hello, World", end="!")  # => Hello, World!
 
 # Simple way to get input data from console
 input_string_var = input("Enter some data: ") # Returns the data as a string
-# Note: In earlier versions of Python, input() method was named as raw_input()
 
 # There are no declarations, only assignments.
 # Convention is to use lower_case_with_underscores
@@ -506,7 +506,7 @@ print(contents)
 
 with open('myfile2.txt', "r+") as file:
     contents = json.load(file)       # reads a json object from a file
-print(contents)     
+print(contents)
 # print: {"aa": 12, "bb": 21}
 
 
@@ -919,7 +919,7 @@ class Batman(Superhero, Bat):
 
     def __init__(self, *args, **kwargs):
         # Typically to inherit attributes you have to call super:
-        # super(Batman, self).__init__(*args, **kwargs)      
+        # super(Batman, self).__init__(*args, **kwargs)
         # However we are dealing with multiple inheritance here, and super()
         # only works with the next base class in the MRO list.
         # So instead we explicitly call __init__ for all ancestors.
@@ -1029,15 +1029,15 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
-* [The Official Docs](http://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [Python Course](http://www.python-course.eu/index.php)
+* [The Official Docs](https://docs.python.org/3/)
+* [Hitchhiker's Guide to Python](https://docs.python-guide.org/en/latest/)
+* [Python Course](https://www.python-course.eu)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
-* [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
+* [30 Python Language Features and Tricks You May Not Know About](https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
 * [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
-* [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
-* [Dive Into Python 3](http://www.diveintopython3.net/index.html)
-* [A Crash Course in Python for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)
+* [Python 3 Computer Science Circles](https://cscircles.cemc.uwaterloo.ca/)
+* [Dive Into Python 3](https://www.diveintopython3.net/index.html)
+* [A Crash Course in Python for Scientists](https://nbviewer.jupyter.org/gist/anonymous/5924718)
 * [Python Tutorial for Intermediates](https://pythonbasics.org/)
 * [Build a Desktop App with Python](https://pythonpyqt.com/)

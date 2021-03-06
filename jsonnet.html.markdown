@@ -124,7 +124,7 @@ local obj5 = {
 };
 assert obj5 == {};
 
-# a jsonnet doucment have to evaluate to something
+# a jsonnet document has to evaluate to something
 # be it an object, list, number or just string literal
 "FIN"
 

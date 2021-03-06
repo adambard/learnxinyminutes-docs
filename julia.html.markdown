@@ -11,7 +11,7 @@ Julia is a new homoiconic functional language focused on technical computing.
 While having the full power of homoiconic macros, first-class functions,
 and low-level control, Julia is as easy to learn and use as Python.
 
-This is based on Julia 1.0.0
+This is based on Julia version 1.0.0.
 
 ```julia
 # Single line comments start with a hash (pound) symbol.
@@ -83,7 +83,7 @@ false
 1 > 10  # => false
 2 <= 2  # => true
 2 >= 2  # => true
-# Comparisons can be chained
+# Comparisons can be chained, like in Python but unlike many other languages
 1 < 2 < 3  # => true
 2 < 3 < 2  # => false
 
@@ -93,28 +93,29 @@ false
 # Character literals are written with '
 'a'
 
-# Strings are UTF8 encoded. Only if they contain only ASCII characters can
-# they be safely indexed.
-ascii("This is a string")[1]  
+# Strings are UTF8 encoded, so strings like "π" or "☃" are not directly equivalent
+# to an array of single characters.
+# Only if they contain only ASCII characters can they be safely indexed.
+ascii("This is a string")[1]    # => 'T'
 # => 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)
-# Julia indexes from 1
+# Beware, Julia indexes everything from 1 (like MATLAB), not 0 (like most languages).
 # Otherwise, iterating over strings is recommended (map, for loops, etc).
 
-# String can be compared lexicographically
-"good" > "bye" # => true
+# String can be compared lexicographically, in dictionnary order:
+"good" > "bye"   # => true
 "good" == "good" # => true
 "1 + 2 = 3" == "1 + 2 = $(1 + 2)" # => true
 
-# $ can be used for string interpolation:
+# $(..) can be used for string interpolation:
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
 # You can put any Julia expression inside the parentheses.
 
 # Printing is easy
-println("I'm Julia. Nice to meet you!") # => I'm Julia. Nice to meet you!
+println("I'm Julia. Nice to meet you!")  # => I'm Julia. Nice to meet you!
 
 # Another way to format strings is the printf macro from the stdlib Printf.
-using Printf
-@printf "%d is less than %f\n" 4.5 5.3  # => 5 is less than 5.300000
+using Printf   # this is how you load (or import) a module
+@printf "%d is less than %f\n" 4.5 5.3   # => 5 is less than 5.300000
 
 
 ####################################################
@@ -123,7 +124,7 @@ using Printf
 
 # You don't declare variables before assigning to them.
 someVar = 5  # => 5
-someVar  # => 5
+someVar      # => 5
 
 # Accessing a previously unassigned variable is an error
 try
@@ -137,9 +138,10 @@ end
 SomeOtherVar123! = 6  # => 6
 
 # You can also use certain unicode characters
+# here ☃ is a Unicode 'snowman' characters, see http://emojipedia.org/%E2%98%83%EF%B8%8F if it displays wrongly here
 ☃ = 8  # => 8
-# These are especially handy for mathematical notation
-2 * π # => 6.283185307179586
+# These are especially handy for mathematical notation, like the constant π
+2 * π  # => 6.283185307179586
 
 # A note on naming conventions in Julia:
 #
@@ -171,7 +173,7 @@ matrix = [1 2; 3 4] # => 2×2 Array{Int64,2}: [1 2; 3 4]
 b = Int8[4, 5, 6] # => 3-element Array{Int8,1}: [4, 5, 6]
 
 # Add stuff to the end of a list with push! and append!
-# By convention, the exclamation mark '!'' is appended to names of functions
+# By convention, the exclamation mark '!' is appended to names of functions
 # that modify their arguments
 push!(a, 1)    # => [1]
 push!(a, 2)    # => [1,2]
@@ -202,10 +204,10 @@ a # => [7,2,4,3,4,5,6]
 # Function names that end in exclamations points indicate that they modify
 # their argument.
 arr = [5,4,6]  # => 3-element Array{Int64,1}: [5,4,6]
-sort(arr)   # => [4,5,6]
-arr         # => [5,4,6]
-sort!(arr)  # => [4,5,6]
-arr         # => [4,5,6]
+sort(arr)      # => [4,5,6]
+arr            # => [5,4,6]
+sort!(arr)     # => [4,5,6]
+arr            # => [4,5,6]
 
 # Looking out of bounds is a BoundsError
 try
@@ -238,7 +240,7 @@ a = [1:5;]  # => 5-element Array{Int64,1}: [1,2,3,4,5]
 a2 = [1:5]  # => 1-element Array{UnitRange{Int64},1}: [1:5]
 
 # You can look at ranges with slice syntax.
-a[1:3]  # => [1, 2, 3]
+a[1:3]    # => [1, 2, 3]
 a[2:end]  # => [2, 3, 4, 5]
 
 # Remove elements from an array by index with splice!
@@ -276,15 +278,15 @@ in(2, tup)  # => true
 
 # You can unpack tuples into variables
 a, b, c = (1, 2, 3)  # => (1,2,3)  
-a # => 1
-b # => 2
-c # => 3
+a  # => 1
+b  # => 2
+c  # => 3
 
 # Tuples are created even if you leave out the parentheses
 d, e, f = 4, 5, 6  # => (4,5,6)
-d # => 4
-e # => 5
-f # => 6
+d  # => 4
+e  # => 5
+f  # => 6
 
 # A 1-element tuple is distinct from the value it contains
 (1,) == 1 # => false
@@ -292,8 +294,8 @@ f # => 6
 
 # Look how easy it is to swap two values
 e, d = d, e  # => (5,4) 
-d # => 5
-e # => 4
+d  # => 5
+e  # => 4
 
 # Dictionaries store mappings
 emptyDict = Dict()  # => Dict{Any,Any} with 0 entries
@@ -375,7 +377,8 @@ end
 # Iterable types include Range, Array, Set, Dict, and AbstractString.
 for animal = ["dog", "cat", "mouse"]
     println("$animal is a mammal")
-    # You can use $ to interpolate variables or expression into strings
+    # You can use $ to interpolate variables or expression into strings.
+    # In this special case, no need for parenthesis: $animal and $(animal) give the same
 end
 # => dog is a mammal
 # => cat is a mammal
@@ -408,7 +411,7 @@ end
 let x = 0
     while x < 4
         println(x)
-        x += 1  # Shorthand for x = x + 1
+        x += 1  # Shorthand for in place increment: x = x + 1
     end
 end
 # => 0

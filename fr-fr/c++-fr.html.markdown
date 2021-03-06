@@ -69,11 +69,11 @@ void func(); // fonction qui ne prend aucun argument
 // En C
 void func(); // fonction qui peut prendre n'importe quel nombre d'arguments
 
-// Utilise nullptr au lieu de NULL in C++
+// Utilise nullptr au lieu de NULL en C++
 int* ip = nullptr;
 
 // Les en-têtes standards du C sont disponibles en C++,
-// mais son préfixés avec "c" et n'ont pas de suffixe .h
+// mais sont préfixés avec "c" et n'ont pas de suffixe .h
 #include <cstdio>
 
 int main()
@@ -722,7 +722,7 @@ catch (...)
 // gestion d'un fichier C :
 void faireQuelqueChoseAvecUnFichier(const char* nomDuFichier)
 {
-    // Pour commencer, supposns que rien ne peut échouer.
+    // Pour commencer, supposons que rien ne peut échouer.
 
     FILE* fh = fopen(nomDuFichier, "r"); // Ouvre le fichier en lecture
 

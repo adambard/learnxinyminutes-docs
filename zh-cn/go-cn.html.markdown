@@ -40,7 +40,7 @@ import (
 func main() {
     // 往标准输出打印一行。
     // 用包名fmt限制打印函数。
-    fmt.Println("天坑欢迎你!")
+    fmt.Println("你好世界")
 
     // 调用当前包的另一个函数。
     beyondHello()

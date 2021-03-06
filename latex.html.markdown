@@ -2,7 +2,7 @@
 language: latex
 contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
-    - ["Colton Kohnke", "http://github.com/voltnor"]
+    - ["Colton Kohnke", "https://github.com/voltnor"]
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
     - ["Ramanan Balakrishnan", "https://github.com/ramananbalakrishnan"]
     - ["Svetlana Golubeva", "https://attillax.github.io/"]
@@ -181,7 +181,9 @@ Summations and Integrals are written with sum and int commands:
 \section{Figures}
 
 Let's insert a figure. Figure placement can get a little tricky.
+Basic options are [t] for top, [b] for bottom, [h] for here (approximately).
 I definitely have to lookup the placement options each time.
+% See https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions for more details
 
 \begin{figure}[H] % H here denoted the placement option.
     \centering % centers the figure on the page
@@ -198,13 +200,21 @@ We can also insert Tables in the same way as figures.
 \begin{table}[H]
   \caption{Caption for the Table.}
   % the {} arguments below describe how each row of the table is drawn.
-  % Again, I have to look these up. Each. And. Every. Time.
-  \begin{tabular}{c|cc}
+  % The basic is simple: one letter for each column, to control alignment:
+  % basic options are: c, l, r and p for centered, left, right and paragraph
+  % optionnally, you can add a | for a vertical line
+  % See https://en.wikibooks.org/wiki/LaTeX/Tables for more details
+  \begin{tabular}{c|cc}  % here it means "centered | vertical line, centered centered"
     Number &  Last Name & First Name \\ % Column rows are separated by &
     \hline % a horizontal line
     1 & Biggus & Dickus \\
     2 & Monty & Python
   \end{tabular}
+  % it will approximately be displayed like this
+  % Number | Last Name     First Name
+  % -------|---------------------------  % because of \hline
+  %   1    |   Biggus        Dickus
+  %   2    |   Monty         Python
 \end{table}
 
 \section{Getting \LaTeX{} to not compile something (i.e.\ Source Code)}
@@ -218,7 +228,8 @@ environment.
 \begin{verbatim}
   print("Hello World!")
   a%b; % look! We can use % signs in verbatim.
-  random = 4; #decided by fair random dice roll
+  random = 4; #decided by fair random dice roll, https://www.xkcd.com/221/
+  See https://www.explainxkcd.com/wiki/index.php/221:_Random_Number
 \end{verbatim}
 
 \section{Compiling}
@@ -244,6 +255,7 @@ Step 2 is still happening behind the scenes\footnote{In cases, where you use
 references (like Eqn.~\ref{eq:pythagoras}), you may need to run Step 2
 multiple times, to generate an intermediary *.aux file.}.
 % Also, this is how you add footnotes to your document!
+% with a simple \footnote{...} command. They are numbered ¹, ², ... by default.
 
 You write all your formatting information in plain text in Step 1.
 The compilation part in Step 2 takes care of producing the document in the
@@ -264,6 +276,27 @@ There exists two main types of links: visible URL \\
 
 This package also produces list of thumbnails in the output pdf document and
 active links in the table of contents.
+
+\section{Writing in ASCII or other encodings}
+
+By default, historically LaTeX accepts inputs which are pure ASCII (128),
+not even extened ASCII, meaning without accents (à, è etc.) and non-Latin symbols.
+
+It is easy to insert accents and basic Latin symbols, with backslash shortcuts
+Like \,c, \'e, \`A, \ae and \oe etc.  % for ç, é, À, etc
+% See https://en.wikibooks.org/wiki/LaTeX/Special_Characters#Escaped_codes for more
+
+To write directly in UTF-8, when compiling with pdflatex, use
+\begin{verbatim}
+    \usepackage[utf8]{inputenc}
+\end{verbatim}
+The selected font has to support the glyphs used for your document, you have to add
+\begin{verbatim}
+    \usepackage[T1]{fontenc}
+\end{verbatim}
+
+Not that there also exists LuaTeX and XeLaTeX that were designed to have builtin
+support for UTF-8 and case ease your life if you don't write in a latin alphabet.
 
 \section{End}
 
