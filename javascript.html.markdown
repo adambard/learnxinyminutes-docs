@@ -589,22 +589,24 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 
 // ES6 Additions
 
-// The "let" keyword allows you to define variables in a lexical scope, 
-// as opposed to a block scope like the var keyword does.
+// The "let" keyword allows you to define variables in a block scope, 
+// unlike the var keyword whose variables' scope is not limited by blocks.
 let name = "Billy";
 
 // Variables defined with let can be reassigned new values.
 name = "William";
 
-// The "const" keyword allows you to define a variable in a lexical scope
+// The "const" keyword allows you to define a variable in a block scope
 // like with let, but you cannot reassign the value once one has been assigned.
-
 const pi = 3.14;
-
 pi = 4.13; // You cannot do this.
 
+// Note: A function body creates a scope for all variables defined by "let",
+// "const", and "var". A code block (like an if or while statement) creates 
+// a scope for variables defined by "let" and "const" only.
+
 // There is a new syntax for functions in ES6 known as "lambda syntax".
-// This allows functions to be defined in a lexical scope like with variables
+// This allows functions to be defined in a block scope like with variables
 // defined by const and let. 
 
 const isEven = (number) => {
