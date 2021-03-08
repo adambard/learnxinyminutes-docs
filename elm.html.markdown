@@ -224,7 +224,7 @@ List.map : (a -> b) -> List a -> List b
 -- Comparable allows you to order numbers and strings, like a < b.
 -- Appendable things can be combined with a ++ b.
 
-{-- Type Aliases and Union Types --}
+{-- Type Aliases and Custom Types --}
 
 -- When you write a record or tuple, its type already exists.
 -- (Notice that record types use colon and record values use equals.)
@@ -244,28 +244,28 @@ otherOrigin =
 -- But it's still the same type, so you can equate them.
 origin == otherOrigin -- True
 
--- By contrast, defining a union type creates a type that didn't exist before.
--- A union type is so called because it can be one of many possibilities.
--- Each of the possibilities is represented as a "tag".
+-- By contrast, defining a custom type creates a type that didn't exist before.
+-- A custom type is so called because it can be one of many possibilities.
+-- Each of the possibilities is represented as a "type variant".
 type Direction =
   North | South | East | West
 
--- Tags can carry other values of known type. This can work recursively.
+-- Type variants can carry other values of known type. This can work recursively.
 type IntTree =
   Leaf | Node Int IntTree IntTree
--- "Leaf" and "Node" are the tags. Everything following a tag is a type.
+-- "Leaf" and "Node" are the type variants. Everything following a type variant is a type.
 
--- Tags can be used as values or functions.
+-- Type variants can be used as values or functions.
 root : IntTree
 root =
   Node 7 Leaf Leaf
 
--- Union types (and type aliases) can use type variables.
+-- Custom types (and type aliases) can use type variables.
 type Tree a =
   Leaf | Node a (Tree a) (Tree a)
 -- "The type tree-of-a is a leaf, or a node of a, tree-of-a, and tree-of-a."
 
--- Pattern match union tags. The uppercase tags will be matched exactly. The
+-- Pattern match variants in a custom type. The uppercase variants will be matched exactly. The
 -- lowercase variables will match anything. Underscore also matches anything,
 -- but signifies that you aren't using it.
 leftmostElement : Tree a -> Maybe a
@@ -289,7 +289,7 @@ module Name where
 -- By default, everything is exported. You can specify exports explicitly.
 module Name (MyType, myValue) where
 
--- One common pattern is to export a union type but not its tags. This is known
+-- One common pattern is to export a custom type but not its type variants. This is known
 -- as an "opaque type", and is frequently used in libraries.
 
 -- Import code from other modules to use it in this one.
