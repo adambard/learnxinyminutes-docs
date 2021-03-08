@@ -635,6 +635,21 @@ def create_adder(x):
 add_10 = create_adder(10)
 add_10(3)   # => 13
 
+# Closures in nested functions, the nonlocal keyword to work with variables in nested scope which shouldn't be in the inner functions.
+def create_avg():
+    total = 0
+    count = 0
+    def avg(n):
+        nonlocal total, count
+        total += n
+        count += 1
+        return total/count
+    return avg
+avg = create_avg()
+avg(3) # => 3.0
+avg(5) # (3+5)/2 => 4.0
+avg(7) # (8+7)/2 => 5.0
+
 # There are also anonymous functions
 (lambda x: x > 2)(3)                  # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
