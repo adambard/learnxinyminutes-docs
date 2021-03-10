@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQT
+category: framework
+framework: PyQT
 lang: ru-ru
 filename: learnpyqt-ru.py
 contributors:

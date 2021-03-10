@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: OpenGL
+category: framework
+framework: OpenGL
 filename: learnopengl.cpp
 contributors:
     - ["Simon Deitermann", "s.f.deitermann@t-online.de"]

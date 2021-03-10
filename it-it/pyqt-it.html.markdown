@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQT
+category: framework
+framework: PyQT
 filename: learnpyqt-it.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
