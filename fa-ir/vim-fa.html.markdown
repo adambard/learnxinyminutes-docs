@@ -29,7 +29,7 @@ filename: LearnVim-fa.txt
 vim <filename>
 ```
 
-<p dir="rtl">TODO</p>
+<p dir="rtl">Open up built-in help docs about <topic> if any exists TODO</p>
 
 ```
 :help <topic>
@@ -271,11 +271,16 @@ H                # Move to the top of the screen
 M                # Move to the middle of the screen
 ``` 
 <p dir="rtl">رفتن به آخر صفحه</p>
- 
+```
 ```
 L                # Move to the bottom of the screen
 ```
-<p dir="rtl"><strong>داک های help</strong></p>
+<h3>
+<p dir="rtl"><strong>
+داک های help
+</strong></p>
+</h3>
+
 TODO typo
 <p dir="rtl">
 Vim دارای یک help doc داخلی است که می‌توان با help: <topic> به آن دسترسی داشت. برای مثال :help navigation داک مربوط به مکان‌یابی در فضای کار را به شما نشان می‌دهد! <br />
@@ -283,6 +288,211 @@ help: همچنین می‌تواند بدون option مورد استفاده ق�
 This will bring up a default help dialog that aims to make getting started with vim more approachable!
 </p>
 
+<h3>
 <p dir="rtl"><strong>Modes:</strong></p>
+</h3
+
+<p dir="rtl">
+Vim is based on the concept on modes.
+
+    Command Mode - vim starts up in this mode, used to navigate and write commands
+    Insert Mode - used to make changes in your file
+    Visual Mode - used to highlight text and do operations to them
+    Ex Mode - used to drop down to the bottom with the ‘:’ prompt to enter commands
+
+</p>
+
+<p dir="rtl">رفتن به حالت insert, پیش از جایگاه cursor</p>
+
+```
+i                # Puts vim into insert mode, before the cursor position
+```
+<p dir="rtl">رفتن به حالت insert, پس از جایگاه cursor</p>
+
+```   
+a                # Puts vim into insert mode, after the cursor position
+```
+
+<p dir="rtl">رفتن به حالت visual</p>
+
+```   
+v                # Puts vim into visual mode
+```
+<p dir="rtl">رفتن به حالت ex</p>
+
+```
+:                # Puts vim into ex mode
+```
+<p dir="rtl">خروج از همه‌ی حالت ها و رفتن به حالت command</p>
+
+```    
+<esc>            # 'Escapes' from whichever mode you're in, into Command mode
+```
+<p dir="rtl"><strong>کپی و پیست در متن</strong></p>
+
+```
+y                # کپی کردن متن انتخاب شده
+yy               # کپی کردن خط فعلی
+d                # حذف کردن متن انتخاب شده
+dd               # حذف کردن خط فعلی
+p                # پیست کردن متن کپی شده پس از جایگاه فعلی کِرسر
+P                # پیست کردن متن کپی شده پیش از جایگاه فعلی کِرسر
+x                # حذف کردن یک کاراکتر از جایگاه کِرسر
+```
+<h3>
+<p dir="rtl"><strong>گرامر (Grammer) </strong></p>
+</h3>
+<p dir="rtl">
+Vim را می توان به عنوان مجموعه ای از دستورات در قالب (Verb - Modifier - Noun) تصور کرد ، جایی که:
+<br />
+    Verb - عمل شما
+<br />
+    Modifier - چگونگی انجام عمل شما
+<br />
+    Noun - شیئی که عمل شما بر اساس آن عمل می کند
+<br />
+اندکی از مثال های مهم Verbs ,Modifiers, Nouns:
+<br />
+ </p>
+<p dir="rtl"><strong>فعل ها (Verbs)</strong></p>
+
+```
+d                # حذف
+c                # تغییر
+y                # کپی
+v                # انتخاب 
+```
+<p dir="rtl"><strong>تغییردهنده ها (Modifiers)</strong></p>
+
+```
+i                # داخل
+a                # اطراف
+NUM              # شماره (NUM هر شماره‌ای است)
+f                # Searches for something and lands on it
+t                # Searches for something and stops before it
+/                # Finds a string from cursor onwards
+?                # Finds a string before cursor
+```
+<p dir="rtl"><strong>اسم ها (Nouns)</strong></p>
+
+```
+w                # کلمه
+s                # جمله
+p                # پاراگراف
+b                # بلوک
+```
+<p dir="rtl"><strong>جمله ها و کامند های نمونه</strong></p>
+
+```
+d2w              # حذف دو کلمه
+cis              # تغییر داخل جمله
+yip              # کپی داخل پاراگراف (از پاراگرافی که داخل آن هستید کپی کنید)
+ct<              # متن را از جایی که قرار دارید به براکت باز بعدی تغییر دهید
+d$               # حذف تا پایان
+```
+
+
+<p dir="rtl">TODO</p>
+TODO
+Some shortcuts and tricks
+```
+    <!--TODO: Add more!-->
+
+    >                # Indent selection by one block
+    <                # Dedent selection by one block
+    :earlier 15m     # Reverts the document back to how it was 15 minutes ago
+    :later 15m       # Reverse above command
+    ddp              # Swap position of consecutive lines, dd then p
+    .                # Repeat previous action
+    :w !sudo tee %   # Save the current file as root
+    :set syntax=c    # Set syntax highlighting to 'c'
+    :sort            # Sort all lines
+    :sort!           # Sort all lines in reverse
+    :sort u          # Sort all lines and remove duplicates
+    ~                # Toggle letter case of selected text
+    u                # Selected text to lower case
+    U                # Selected text to upper case
+    J                # Join the current line with the next line
+
+    # Fold text
+    zf               # Create fold from selected text
+    zo               # Open current fold
+    zc               # Close current fold
+    zR               # Open all folds
+    zM               # Close all folds
+```
+
+
+```
+Macros
+
+Macros are basically recordable actions. When you start recording a macro, it records every action and command you use, until you stop recording. On invoking a macro, it applies the exact same sequence of actions and commands again on the text selection.
+
+    qa               # Start recording a macro named 'a'
+    q                # Stop recording
+    @a               # Play back the macro
+
+Configuring ~/.vimrc
+
+The .vimrc file can be used to configure Vim on startup.
+
+Here’s a sample ~/.vimrc file:
+
+" Example ~/.vimrc
+" 2015.10
+
+" Required for vim to be iMproved
+set nocompatible
+
+" Determines filetype from name to allow intelligent auto-indenting, etc.
+filetype indent plugin on
+
+" Enable syntax highlighting
+syntax on
+
+" Better command-line completion
+set wildmenu
+
+" Use case insensitive search except when using capital letters
+set ignorecase
+set smartcase
+
+" When opening a new line and no file-specific indenting is enabled,
+" keep same indent as the line you're currently on
+set autoindent
+
+" Display line numbers on the left
+set number
+
+" Indentation options, change according to personal preference
+
+" Number of visual spaces per TAB
+set tabstop=4
+
+" Number of spaces in TAB when editing
+set softtabstop=4
+
+" Number of spaces indented when reindent operations (>> and <<) are used
+set shiftwidth=4
+
+" Convert TABs to spaces
+set expandtab
+
+" Enable intelligent tabbing and spacing for indentation and alignment
+set smarttab
+
+References
+
+Vim | Home
+
+$ vimtutor
+
+A vim Tutorial and Primer
+
+What are the dark corners of Vim your mom never told you about? (Stack Overflow thread)
+
+Arch Linux Wiki
+```
+
 
 
