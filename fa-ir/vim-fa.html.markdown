@@ -200,5 +200,89 @@ N                # Moves cursor to previous occerence of word
 :%s/\n/\r/g      # Replace new line characters with new line characters
 ```
 
-<p dir="rtl"><strong>پریدن به کاراکتر ها</strong></p>
-TODO
+<p dir="rtl"><strong>پرش به کاراکتر ها</strong></p>
+<p dir="rtl">پرش به جلو و قرار گرفتن روی کاراکتر مورد نظر</p>
+
+```
+f<character>     # Jump forward and land on <character>
+```
+
+<p dir="rtl">پرش به جلو و قرار گرفتن قبل کاراکتر مورد نظر</p>
+
+```
+t<character>     # Jump forward and land right before <character>
+```
+
+<p dir="rtl"><strong>برای مثال:</strong></p>
+
+<p dir="rtl">پرش به جلو و قرار گرفتن روی ></p>
+
+```
+f<               # Jump forward and land on <
+```
+
+<p dir="rtl">پرش به جلو و قرار گرفتن قبل از ></p>
+
+```
+t<               # Jump forward and land right before <
+```
+    # Moving by word
+
+<p dir="rtl"><strong>جابه‌جایی با کلمه ها</strong></p>
+<p dir="rtl">رفتن به جلو به اندازه‌ی یک کلمه</p>
+
+```
+w                # Move forward by one word
+```
+<p dir="rtl">رفتن به عقب به اندازه‌ی یک کلمه</p>
+
+```
+b                # Move back by one word
+```
+<p dir="rtl">رفتن به آخر کلمه‌ي فعلی</p>
+
+```
+e                # Move to end of current word
+```
+<p dir="rtl"><strong>سایر کاراکتر ها برای جابه‌جایی</strong></p>
+<p dir="rtl">رفتن به اول فایل</p>
+
+```
+gg               # Go to the top of the file
+```
+<p dir="rtl">رفتن به آخر فایل</p>
+
+```
+G                # Go to the bottom of the file
+```
+<p dir="rtl">رفتن به شماره‌ی خط مورد نظر (NUM شماره است)</p>
+
+```
+:NUM             # Go to line number NUM (NUM is any number)
+```
+<p dir="rtl">رفتن به اول صفحه</p>
+
+```
+H                # Move to the top of the screen
+```
+<p dir="rtl">رفتن به وسط صفحه</p>
+
+```
+M                # Move to the middle of the screen
+``` 
+<p dir="rtl">رفتن به آخر صفحه</p>
+ 
+```
+L                # Move to the bottom of the screen
+```
+<p dir="rtl"><strong>داک های help</strong></p>
+TODO typo
+<p dir="rtl">
+Vim دارای یک help doc داخلی است که می‌توان با help: <topic> به آن دسترسی داشت. برای مثال :help navigation داک مربوط به مکان‌یابی در فضای کار را به شما نشان می‌دهد! <br />
+help: همچنین می‌تواند بدون option مورد استفاده قرار گیرد.
+This will bring up a default help dialog that aims to make getting started with vim more approachable!
+</p>
+
+<p dir="rtl"><strong>Modes:</strong></p>
+
+
