@@ -13,63 +13,43 @@ filename: LearnVim-fa.txt
 [Vim](http://www.vim.org) (Vi رشدیافته) یک کلون از ادیتور مشهور vi است برای unix. ادیتورمتنی‌ست که برای سرعت و افزایش بهره‌وری طراحی شده‌ و در همه جا به ویژه در سیستم های unix-based دیده می‌شود. شورتکات کلید های بی‌شماری برای سرعت جهت‌یابی به نقاط ویژه‌ي فایل ها و تغییر سریع، دارد.
 <br />
 `vimtutor` یک برنامه‌ي عالیست که به شما چگونگی استفاده از `vim` را آموزش می‌دهد.
-این به همراه پکیج های vim هنگام نصب کردن، نصب می‌شود. شما باید بتوانید با ران کردن "vimtutor" در کامندلاین از آموزش ها استفاده کنید. این همه‌ی ویژگی های عمده‌ی `vim` را به شما راهنمایی می‌کند.
+این به همراه پکیج های vim هنگام نصب کردن، نصب می‌شود. شما باید بتوانید با ران کردن `vimtutor` در کامندلاین از آموزش ها استفاده کنید. این همه‌ی ویژگی های عمده‌ی `vim` را به شما راهنمایی می‌کند.
 </p>
+<h3>
 <p dir="rtl">
-<strong>
 مکان‌یابی اولیه vim
-</strong>
+</p>
+</h3>
+
+
+<p dir="rtl">
+باز کردن `<filename>` در ویم
 </p>
 
-<p dir="rtl"></p>
-
-<p dir="rtl">باز کردن فایل در ویم </p>
+```
+vim <filename>   # Open <filename> in vim
+```
+<p dir="rtl">
+باز کردن help docs های `<topic>` اگر وجود داشته باشد
+</p>
 
 ```
-vim <filename>
+:help <topic>    #  
 ```
-
-<p dir="rtl">Open up built-in help docs about <topic> if any exists TODO</p>
-
 ```
-:help <topic>
-```
+:q               # خروج از ویم
 
-<p dir="rtl">خروج از vim</p>
+:w               # ذخیره کردن فایل فعلی
 
-```
-:q               # Quit vim
-```
+:wq              # ذخیره کردن و خارج شدن از ویم
 
-<p dir="rtl">ذخیره کردن فایل فعلی</p>
+ZZ               # ذخیره کردن و خارج شدن از ویم
 
-```
-:w               # Save current file
-```
+:q!              # خارج شدن بدون ذخیره کردن فایل
 
-<p dir="rtl">ذخیره کردن و خارج شدن از vim</p>
+! *forces* :q to execute, hence quiting vim without saving
 
-```
-:wq              # Save file and quit vim
-```
-
-<p dir="rtl">ذخیره کردن و خارج شدن از vim</p>
-
-```
-ZZ               # Save file and quit vim
-```
-
-<p dir="rtl">خارج شدن بدون ذخیره کردن فایل</p>
-
-```
-:q!              # Quit vim without saving file
-```
-<!--# ! *forces* :q to execute, hence quiting vim without saving-->
-
-<p dir="rtl">خارج شدن بدون ذخیره کردن فایل</p>
-
-```
-ZQ               # Quit vim without saving file
+ZQ               # خارج شدن بدون ذخیره کردن فایل
 ```
 
 <p dir="rtl">ذخیره کردن و خارج شدن از vim ورژن خلاصه شده‌ی wq:</p>
@@ -90,96 +70,46 @@ ZQ               # Quit vim without saving file
 CTRL+R           # Redo
 ```
 
-<p dir="rtl">رفتن یک کاراکتر به چپ</p>
+<p dir="rtl">راه رفتن در صفحه</p>
 
 ```
-h                # Move left one character
+h                # رفتن یک کاراکتر به چپ
+
+j                # رفتن یک کاراکتر به پایین
+
+k                # رفتن یک کاراکتر به بالا
+
+l                # رفتن یک کاراکتر به راست
+
+Ctrl+B           # جابه‌جا شدن به عقب به اندازه یک صفحه
+
+Ctrl+F           # جابه‌جا شدن به جلو به اندازه یک صفحه
+
+Ctrl+D           # جابه‌جا شدن به جلو به اندازه نصف صفحه
+
+Ctrl+U           # جابه‌جا شدن به عقب به اندازه نصف صفحه
 ```
 
-<p dir="rtl">رفتن یک کاراکتر به پایین</p>
+<p dir="rtl"><strong>جابه‌جا شدن در خط</strong></p>
 
 ```
-j                # Move down one line
-```
+0                # رفتن به اول خط
 
-<p dir="rtl">رفتن یک کاراکتر به بالا</p>
+$                # رفتن به آخر خط
 
-```
-k                # Move up one line
-```
-
-<p dir="rtl">رفتن یک کاراکتر به راست</p>
-
-```
-l                # Move right one character
-```
-
-<p dir="rtl">جابه‌جا شدن به عقب به اندازه یک صفحه</p>
-
-```
-Ctrl+B           # Move back one full screen
-```
-
-<p dir="rtl">جابه‌جا شدن به جلو به اندازه یک صفحه</p>
-
-```
-Ctrl+F           # Move forward one full screen
-```
-
-<p dir="rtl">جابه‌جا شدن به جلو به اندازه نصف صفحه</p>
-
-```
-Ctrl+D           # Move forward 1/2 a screen
-```
-
-<p dir="rtl">جابه‌جا شدن به عقب به اندازه نصف صفحه</p>
-
-```
-Ctrl+U           # Move back 1/2 a screen
-```
-
-<p dir="rtl"><strong>جابه‌جایی در خط</strong></p>
-<p dir="rtl">رفتن به اول خط</p>
-
-```
-0                # Move to beginning of line
-```
-
-<p dir="rtl">رفتن به آخر خط</p>
-
-```
-$                # Move to end of line
-```
-
-<p dir="rtl">TODO</p>
-
-```
-^                # Move to first non-blank character in line
+^                # رفتن به اولین کاراکتر غیرخالی در خط
 ```
 
 <p dir="rtl"><strong>جست و جو در متن</strong></p>
-<p dir="rtl">هایلایت کردن همه‌ی کلمه های بعد cursor</p>
 
 ```
-/word            # Highlights all occurrences of word after cursor
-```
+/word            # هایلایت کردن همه‌ی کلمه های بعد کِرسر
 
-<p dir="rtl">هایلایت کردن همه‌ی کلمه های قبل cursor</p>
+?word            # هایلایت کردن همه‌ی کلمه های قبل کِرسر
 
-```
-?word            # Highlights all occurrences of word before cursor
-```
+n                # جابه‌جایی کِرسر به کلمه های بعدی پیدا شده
 
-<p dir="rtl">جابه‌جایی cursor به کلمه های بعدی پیدا شده</p>
-
-```
-n                # Moves cursor to next occurrence of word after search
-```
-
-<p dir="rtl">جابه‌جایی cursor به کلمه های قبلی پیدا شده</p>
-
-```
-N                # Moves cursor to previous occerence of word
+N                # جابه‌جایی کِرسر به کلمه های قبلی پیدا شده
 ```
 
 <p dir="rtl">عوض کردن 'foo' به 'bar' در هر خط از فایل</p>
@@ -194,7 +124,7 @@ N                # Moves cursor to previous occerence of word
 :s/foo/bar/g     # Change 'foo' to 'bar' on the current line
 ```
 
-<p dir="rtl">TODO</p>
+<p dir="rtl">جایگزینی کاراکتر های خط جدید با کاراکتر های خط جدید</p>
 
 ```
 :%s/\n/\r/g      # Replace new line characters with new line characters
@@ -226,23 +156,12 @@ f<               # Jump forward and land on <
 ```
 t<               # Jump forward and land right before <
 ```
-    # Moving by word
-
-<p dir="rtl"><strong>جابه‌جایی با کلمه ها</strong></p>
-<p dir="rtl">رفتن به جلو به اندازه‌ی یک کلمه</p>
+<p dir="rtl"><strong>جابه‌جا شدن با کلمه ها</strong></p>
 
 ```
-w                # Move forward by one word
-```
-<p dir="rtl">رفتن به عقب به اندازه‌ی یک کلمه</p>
-
-```
-b                # Move back by one word
-```
-<p dir="rtl">رفتن به آخر کلمه‌ي فعلی</p>
-
-```
-e                # Move to end of current word
+w                # رفتن به جلو به اندازه‌ی یک کلمه
+b                # رفتن به عقب به اندازه‌ی یک کلم
+e                # رفتن به آخر کلمه‌ی فعلی
 ```
 <p dir="rtl"><strong>سایر کاراکتر ها برای جابه‌جایی</strong></p>
 <p dir="rtl">رفتن به اول فایل</p>
@@ -269,38 +188,48 @@ H                # Move to the top of the screen
 
 ```
 M                # Move to the middle of the screen
-``` 
-<p dir="rtl">رفتن به آخر صفحه</p>
 ```
+<p dir="rtl">رفتن به آخر صفحه</p>
+
 ```
 L                # Move to the bottom of the screen
 ```
+
 <h3>
 <p dir="rtl"><strong>
 داک های help
 </strong></p>
 </h3>
 
-TODO typo
 <p dir="rtl">
-Vim دارای یک help doc داخلی است که می‌توان با help: <topic> به آن دسترسی داشت. برای مثال :help navigation داک مربوط به مکان‌یابی در فضای کار را به شما نشان می‌دهد! <br />
+Vim دارای یک help doc داخلی است که می‌توان با help: <topic> به آن دسترسی داشت. برای مثال help navigation: داک مربوط به مکان‌یابی در فضای کار را به شما نشان می‌دهد! <br /><br />
 help: همچنین می‌تواند بدون option مورد استفاده قرار گیرد.
-This will bring up a default help dialog that aims to make getting started with vim more approachable!
+این یه صورت یک help پیش‌فرض بالا می‌آید که شروع vim را قابل دسترس تر می‌کند!
 </p>
 
 <h3>
 <p dir="rtl"><strong>Modes:</strong></p>
-</h3
+</h3>
 
-<p dir="rtl">
-Vim is based on the concept on modes.
-
-    Command Mode - vim starts up in this mode, used to navigate and write commands
-    Insert Mode - used to make changes in your file
-    Visual Mode - used to highlight text and do operations to them
-    Ex Mode - used to drop down to the bottom with the ‘:’ prompt to enter commands
-
-</p>
+<div dir="rtl">
+Vim بر پایه‌ی مفهومی‌ست به نام <strong>modes</strong>
+<br /><br />
+<ul>
+    <li>
+    Command Mode - ویم در این حالت بالا می‌آید،‌ برای مکان‌یابی و نوشتن دستورات استفاده می‌شود
+</li>
+<li>
+    Insert Mode - برای ایجاد تغییر در فایل شما استفاده می‌شود
+</li>
+<li>
+    Visual Mode - برای هایلایت کردن متن و انجام عملی روی آن ها استفاده می‌شود
+</li>
+<li>
+    Ex Mode - برای وارد کردن دستورات توسط ":" در قسمت پایین استفاده می‌شود
+</li>
+</ul>
+<br />
+</div>
 
 <p dir="rtl">رفتن به حالت insert, پیش از جایگاه cursor</p>
 
@@ -328,32 +257,46 @@ v                # Puts vim into visual mode
 ```    
 <esc>            # 'Escapes' from whichever mode you're in, into Command mode
 ```
-<p dir="rtl"><strong>کپی و پیست در متن</strong></p>
+<p dir="rtl">کپی و پیست در متن</p>
 
 ```
 y                # کپی کردن متن انتخاب شده
+
 yy               # کپی کردن خط فعلی
+
 d                # حذف کردن متن انتخاب شده
+
 dd               # حذف کردن خط فعلی
+
 p                # پیست کردن متن کپی شده پس از جایگاه فعلی کِرسر
+
 P                # پیست کردن متن کپی شده پیش از جایگاه فعلی کِرسر
+
 x                # حذف کردن یک کاراکتر از جایگاه کِرسر
 ```
+
 <h3>
 <p dir="rtl"><strong>گرامر (Grammer) </strong></p>
 </h3>
-<p dir="rtl">
+
+<div dir="rtl">
 Vim را می توان به عنوان مجموعه ای از دستورات در قالب (Verb - Modifier - Noun) تصور کرد ، جایی که:
-<br />
+<br /><br />
+<ul>
+<li>
     Verb - عمل شما
-<br />
+</li>
+<li>
     Modifier - چگونگی انجام عمل شما
-<br />
+</li>
+<li>
     Noun - شیئی که عمل شما بر اساس آن عمل می کند
-<br />
+</li>
+</ul>
 اندکی از مثال های مهم Verbs ,Modifiers, Nouns:
-<br />
- </p>
+<br /><br />
+</div>
+
 <p dir="rtl"><strong>فعل ها (Verbs)</strong></p>
 
 ```
@@ -393,8 +336,10 @@ d$               # حذف تا پایان
 
 
 <p dir="rtl">TODO</p>
+
 TODO
 Some shortcuts and tricks
+
 ```
     <!--TODO: Add more!-->
 
@@ -422,22 +367,35 @@ Some shortcuts and tricks
     zM               # Close all folds
 ```
 
+<h3>
+<p dir="rtl">
+ماکرو ها(Macros)
+</p>
+</h3>
+
+<p dir="rtl">
+ماکرو ها اساسا عمل های قابل ضبط هستند. زمانی که شما شروع می‌کنید به ضبط ماکرو، هر عمل و دستوری را که استفاده می‌کنید، تا زمانی که ضبط را متوقف کنید، ضبط می‌شود. با فراخوانی ماکرو، دقیقاً همان توالی اعمال و دستورات، دوباره روی متن انتخاب شده اعمال می‌شود. 
+</p>
 
 ```
-Macros
-
-Macros are basically recordable actions. When you start recording a macro, it records every action and command you use, until you stop recording. On invoking a macro, it applies the exact same sequence of actions and commands again on the text selection.
-
     qa               # Start recording a macro named 'a'
     q                # Stop recording
     @a               # Play back the macro
+```
 
-Configuring ~/.vimrc
+<p dir="rtl">
+<strong>
+کانفیگ vimrc./~
+</strong>
+<p>
 
-The .vimrc file can be used to configure Vim on startup.
+<p dir="rtl">
+vimrc. فایلی‌ست که استفاده می‌شود برای کانفیگ vim هنگام بالا آمدن
+<br />
+این‌جا یک نمونه‌ فایل vimrc. آورده شده:
+</p>
 
-Here’s a sample ~/.vimrc file:
-
+```
 " Example ~/.vimrc
 " 2015.10
 
@@ -474,25 +432,23 @@ set softtabstop=4
 
 " Number of spaces indented when reindent operations (>> and <<) are used
 set shiftwidth=4
-
 " Convert TABs to spaces
 set expandtab
 
 " Enable intelligent tabbing and spacing for indentation and alignment
 set smarttab
-
-References
-
-Vim | Home
-
-$ vimtutor
-
-A vim Tutorial and Primer
-
-What are the dark corners of Vim your mom never told you about? (Stack Overflow thread)
-
-Arch Linux Wiki
 ```
 
+<h3>
+<p dir="rtl">رفرنس ها</p>
+</h3>
 
+[Vim | Home](http://www.vim.org/index.php)
 
+`$ vimtutor`
+
+[A vim Tutorial and Primer](https://danielmiessler.com/study/vim/)
+
+[What are the dark corners of Vim your mom never told you about? (St
+
+[Arch Linux Wiki](https://wiki.archlinux.org/index.php/Vim)    
