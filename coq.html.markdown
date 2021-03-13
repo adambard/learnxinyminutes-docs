@@ -472,7 +472,7 @@ Proof.
   intros A B ab.  destruct ab as [ a b ]. apply a.
 Qed.
 
-(* We can prove easily prove simple polynomial equalities using the
+(* We can easily prove simple polynomial equalities using the
    automated tactic ring. *)
 
 Require Import Ring.
