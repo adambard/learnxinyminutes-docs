@@ -16,9 +16,9 @@ filename: LearnVim-fa.txt
 این به همراه پکیج های vim هنگام نصب کردن، نصب می‌شود. شما باید بتوانید با ران کردن `vimtutor` در کامندلاین از آموزش ها استفاده کنید. این همه‌ی ویژگی های عمده‌ی `vim` را به شما راهنمایی می‌کند.
 </p>
 <h3>
-<p dir="rtl">
+	<p dir="rtl">
 مکان‌یابی اولیه vim
-</p>
+	</p>
 </h3>
 
 
@@ -34,7 +34,7 @@ vim <filename>   # Open <filename> in vim
 </p>
 
 ```
-:help <topic>    #  
+:help <topic>    # Open up built-in help docs about <topic> if any exists 
 ```
 ```
 :q               # خروج از ویم
@@ -94,9 +94,7 @@ Ctrl+U           # جابه‌جا شدن به عقب به اندازه نصف �
 
 ```
 0                # رفتن به اول خط
-
 $                # رفتن به آخر خط
-
 ^                # رفتن به اولین کاراکتر غیرخالی در خط
 ```
 
@@ -208,7 +206,7 @@ help: همچنین می‌تواند بدون option مورد استفاده ق�
 </p>
 
 <h3>
-<p dir="rtl"><strong>Modes:</strong></p>
+	<p dir="rtl"><strong>Modes:</strong></p>
 </h3>
 
 <div dir="rtl">
@@ -311,10 +309,10 @@ v                # انتخاب
 i                # داخل
 a                # اطراف
 NUM              # شماره (NUM هر شماره‌ای است)
-f                # Searches for something and lands on it
-t                # Searches for something and stops before it
-/                # Finds a string from cursor onwards
-?                # Finds a string before cursor
+f                # جست و جو کردن چیزی و متوقف شدن روی آن
+t                # جست و جو کردن چیزی و متوقف شدن قبل از آن
+/                # جست و جو کردن رشته‌ای پس از کِرسر
+?                # جست و جو کردن رشته‌ای پیش از کِرسر
 ```
 <p dir="rtl"><strong>اسم ها (Nouns)</strong></p>
 
@@ -334,42 +332,60 @@ ct<              # متن را از جایی که قرار دارید به بر�
 d$               # حذف تا پایان
 ```
 
-
-<p dir="rtl">TODO</p>
-
-TODO
-Some shortcuts and tricks
+<h3>
+	<p dir="rtl">بعضی از شورتکات ها و ترفند ها</p>
+</h3>
 
 ```
-    <!--TODO: Add more!-->
+<!--TODO: Add more!-->
 
-    >                # Indent selection by one block
-    <                # Dedent selection by one block
-    :earlier 15m     # Reverts the document back to how it was 15 minutes ago
-    :later 15m       # Reverse above command
-    ddp              # Swap position of consecutive lines, dd then p
-    .                # Repeat previous action
-    :w !sudo tee %   # Save the current file as root
-    :set syntax=c    # Set syntax highlighting to 'c'
-    :sort            # Sort all lines
-    :sort!           # Sort all lines in reverse
-    :sort u          # Sort all lines and remove duplicates
-    ~                # Toggle letter case of selected text
-    u                # Selected text to lower case
-    U                # Selected text to upper case
-    J                # Join the current line with the next line
+>                # ایجاد دندانه به اندازه یک بلوک
 
-    # Fold text
-    zf               # Create fold from selected text
-    zo               # Open current fold
-    zc               # Close current fold
-    zR               # Open all folds
-    zM               # Close all folds
+<                # حذف دندانه به اندازه یک بلوک
+
+:earlier 15m     # برگرداندن همه چیز به ۱۵ دقیقه قبل
+    
+:later 15m       # برعکس کامند قبلی
+    
+ddp              # تغییر مکان خطوط متوالی(dd, then p)
+    
+.                # تکرار دستور قبلی
+    
+:w !sudo tee %   # ذخیره کردن فایل فعلی به عنوان روت
+    
+:set syntax=c    # تنظیم سینتکس هایلایتینگ روی 'c'
+    
+:sort            # مرتب کردن همه‌ی خطوط
+    
+:sort!           # مرتب کردن همه‌ی خطوط به صورت برعکس
+
+:sort u          # مرتب کردن همه‌ی خطوط و پاک کردن تکراری ها
+
+~                # تبدیل متن انتخاب شده به حروف (اگر بزرگ است، کوچک و اگر کوچک است، بزرگ)
+
+u                # تبدیل متن انتخاب شده به حروف کوچک
+
+U                # تبدیل متن انتخاب شده به حروف بزرگ
+
+J                # اتصال خط فعلی به خط بعدی
+```
+<h4>
+<p dir="rtl">
+فولد (Fold)
+</p>
+</h4>
+
+```
+zf               # ایجاد فولد برای متن انتخاب شده
+zo               # باز کردن فولد فعلی
+zc               # بستن فولد فعلی
+zR               # باز کردن همه‌ی فولد ها
+zM               # بستن همه‌ی فولد ها 
 ```
 
 <h3>
 <p dir="rtl">
-ماکرو ها(Macros)
+ماکرو ها (Macros)
 </p>
 </h3>
 
@@ -378,16 +394,15 @@ Some shortcuts and tricks
 </p>
 
 ```
-    qa               # Start recording a macro named 'a'
-    q                # Stop recording
-    @a               # Play back the macro
+qa               # Start recording a macro named 'a'
+q                # Stop recording
+@a               # Play back the macro
 ```
-
+<h3>
 <p dir="rtl">
-<strong>
 کانفیگ vimrc./~
-</strong>
 <p>
+</h3>
 
 <p dir="rtl">
 vimrc. فایلی‌ست که استفاده می‌شود برای کانفیگ vim هنگام بالا آمدن
