@@ -61,8 +61,8 @@ Locate "+".
 
 (* Calling a function with insufficient number of arguments does not cause
    an error, it produces a new function. *)
-Definition make_inc x y := x + y. (* make_inc is int -> int -> int *)
-Definition inc_2 := make_inc 2.   (* inc_2 is int -> int *)
+Definition make_inc x y := x + y. (* make_inc is nat -> nat -> nat *)
+Definition inc_2 := make_inc 2.   (* inc_2 is nat -> nat *)
 Compute inc_2 3. (* Evaluates to 5 *)
 
 
