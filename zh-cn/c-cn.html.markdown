@@ -616,7 +616,7 @@ typedef void (*my_fnp_type)(char *);
 
 如果你有问题，请阅读[compl.lang.c Frequently Asked Questions](http://c-faq.com/)。
 
-使用合适的空格、缩进，保持一致的代码风格非常重要。可读性强的代码比聪明的代码、高速的代码更重要。可以参考下[Linux内核编码风格](https://www.kernel.org/doc/Documentation/CodingStyle)
+使用合适的空格、缩进，保持一致的代码风格非常重要。可读性强的代码比聪明的代码、高速的代码更重要。可以参考下[Linux内核编码风格](https://www.kernel.org/doc/Documentation/process/coding-style.rst)
 。
 除了这些，多多Google吧
 
