@@ -370,7 +370,7 @@ Close Scope string_scope.
           power series and results,...)
 • Relations : Relations (definitions and basic results)
 • Sorting : Sorted list (basic definitions and heapsort correctness)
-• Strings : 8-bits characters and strings
+• Strings : 8-bit characters and strings
 • Wellfounded : Well-founded relations (basic results)
  *)
 
