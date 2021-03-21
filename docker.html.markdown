@@ -3,9 +3,10 @@ language: docker
 filename: docker.bat
 contributors:
     - ["Ruslan López", "http://javapro.org/"]
+    - ["Michael Chen", "https://github.com/ML-Chen"]
 ---
 
-```
+```bat
 :: download, install and run hello-world image
 docker run hello-world
 
@@ -37,12 +38,12 @@ docker run hello-world
 :: For more examples and ideas, visit:
 :: https://docs.docker.com/get-started/
 
-:: now lets see currently running images
+:: now let's see currently running images
 docker ps
 :: CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS            
 ::   NAMES
 
-:: lets see the images we have ran previously
+:: let's see the images we have ran previously
 docker ps -a
 
 :: CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS     
@@ -54,7 +55,7 @@ docker ps -a
 :: let's remove our previously generated image
 docker rm happy_poincare
 
-:: lets test if it was really deleted
+:: let's test if it was really deleted
 docker ps -a
 :: CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS            
 ::   NAMES
@@ -89,7 +90,7 @@ docker ps -a
 ::                test_container
 :: as you can see the name is now what we have specified
 
-:: retireve logs from a named container
+:: retrieve logs from a named container
 docker logs test_container
 :: Hello from Docker!
 :: This message shows that your installation appears to be working correctly.
