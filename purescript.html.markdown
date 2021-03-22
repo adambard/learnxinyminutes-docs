@@ -12,8 +12,9 @@ PureScript is a small strongly, statically typed language compiling to JavaScrip
 * Documentation: [https://pursuit.purescript.org/](https://pursuit.purescript.org/)
 * Book: Purescript by Example, [https://book.purescript.org/](https://book.purescript.org/)
 
-All the noncommented lines of code can be run in the PSCI REPL, though some will
-require the `--multi-line-mode` flag.
+All the noncommented lines of code can be run in the PSCi REPL, though some
+will require "paste" mode (`:paste` followed by multiple lines, terminated by
+^D).
 
 ```haskell
 
@@ -59,7 +60,7 @@ true && (9 >= 19 || 1 < 2) -- true
 
 -- Strings
 "Hellow" :: String -- "Hellow"
--- Multiline string without newlines, to run in psci use the --multi-line-mode flag
+-- Multiline string without newlines, to run in PSCi use "paste" mode.
 "Hellow\
 \orld" -- "Helloworld"
 -- Multiline string with newlines
