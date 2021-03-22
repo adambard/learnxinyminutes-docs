@@ -77,12 +77,12 @@ world""" -- "Hello\nworld"
 [true, true, false] :: Array Boolean -- [true,true,false]
 -- [1,2, true, "false"] won't work
 -- `Cannot unify Int with Boolean`
+
+-- Requires purescript-arrays (Data.Array)
 -- Cons (prepend)
 1 : [2,4,3] -- [1,2,4,3]
 
--- Requires purescript-arrays (Data.Array)
 -- and purescript-maybe (Data.Maybe)
-
 -- Safe access return Maybe a
 head [1,2,3] -- Just (1)
 tail [3,2,1] -- Just ([2,1])
