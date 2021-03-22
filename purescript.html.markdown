@@ -6,7 +6,7 @@ contributors:
     - ["Thimoteus", "https://github.com/Thimoteus"]
 ---
 
-PureScript is a small strongly, statically typed language compiling to Javascript.
+PureScript is a small strongly, statically typed language compiling to JavaScript.
 
 * Learn more at [http://www.purescript.org/](http://www.purescript.org/)
 * Documentation: [http://pursuit.purescript.org/](http://pursuit.purescript.org/)
@@ -18,7 +18,7 @@ require the `--multi-line-mode` flag.
 ```haskell
 
 --
--- 1. Primitive datatypes that corresponds to their Javascript
+-- 1. Primitive datatypes that corresponds to their JavaScript
 -- equivalents at runtime.
 
 import Prelude
@@ -69,7 +69,7 @@ world""" -- "Hello\nworld"
 "such " <> "amaze" -- "such amaze"
 
 --
--- 2. Arrays are Javascript arrays, but must be homogeneous
+-- 2. Arrays are JavaScript arrays, but must be homogeneous
 
 [1,1,2,3,5,8] :: Array Int -- [1,1,2,3,5,8]
 [1.2,2.0,3.14] :: Array Number -- [1.2,2.0,3.14]
@@ -97,7 +97,7 @@ take 3 [5,4,3,2,1] -- [5,4,3]
 append [1,2,3] [4,5,6] -- [1,2,3,4,5,6]
 
 --
--- 3. Records are Javascript objects, with zero or more fields, which
+-- 3. Records are JavaScript objects, with zero or more fields, which
 -- can have different types.
 -- In psci you have to write `let` in front of the function to get a
 -- top level binding.
