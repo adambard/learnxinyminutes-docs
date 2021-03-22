@@ -40,7 +40,7 @@ import Prelude
 3.0 % 2.0 -- 1.0
 4.0 % 2.0 -- 0.0
 -- Inspect the type of an expression in psci
-:t 9.5/2.5 + 4.4 -- Prim.Number
+:t 9.5/2.5 + 4.4 -- Number
 
 -- Booleans
 true :: Boolean -- true
@@ -76,7 +76,7 @@ world""" -- "Hello\nworld"
 [1.2,2.0,3.14] :: Array Number -- [1.2,2.0,3.14]
 [true, true, false] :: Array Boolean -- [true,true,false]
 -- [1,2, true, "false"] won't work
--- `Cannot unify Prim.Int with Prim.Boolean`
+-- `Cannot unify Int with Boolean`
 -- Cons (prepend)
 1 : [2,4,3] -- [1,2,4,3]
 
