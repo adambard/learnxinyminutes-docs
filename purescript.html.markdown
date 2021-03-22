@@ -8,9 +8,9 @@ contributors:
 
 PureScript is a small strongly, statically typed language compiling to JavaScript.
 
-* Learn more at [http://www.purescript.org/](http://www.purescript.org/)
-* Documentation: [http://pursuit.purescript.org/](http://pursuit.purescript.org/)
-* Book: Purescript by Example, [https://leanpub.com/purescript/](https://leanpub.com/purescript/)
+* Learn more at [https://www.purescript.org/](https://www.purescript.org/)
+* Documentation: [https://pursuit.purescript.org/](https://pursuit.purescript.org/)
+* Book: Purescript by Example, [https://book.purescript.org/](https://book.purescript.org/)
 
 All the noncommented lines of code can be run in the PSCI REPL, though some will
 require the `--multi-line-mode` flag.
