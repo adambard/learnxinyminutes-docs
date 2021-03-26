@@ -5,7 +5,7 @@ contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]
   - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
-  - ["Shooter", "https://github.com/liushooter"]\
+  - ["Shooter", "https://github.com/liushooter"]
   - ["Patrick Collins", "https://gist.github.com/PatrickAlphaC"]
 ---
 
@@ -214,7 +214,8 @@ assert(c >= a); // assert tests for internal invariants; require is used for use
 // https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
 
 
-// No random functions built in, see below for using Chainlink to get random numbers. 
+// No random functions built in, you can get a pseduo-random number by hashing the current blockhash, or get a truely random number using something like Chainlink VRF. 
+// https://docs.chain.link/docs/get-a-random-number
 
 // Type casting
 int x = int(b);
@@ -645,7 +646,6 @@ reveal(100, "mySecret");
 // All data to start of time is stored in blockchain, so
 // anyone can observe all previous data and changes
 
-
 // E. Oracles and External Data
 // Oracles are ways to interact with your smart contracts outside the blockchain. 
 // They are used to get data from the real world, send post requests, to the real world
@@ -663,156 +663,12 @@ reveal(100, "mySecret");
 // multiple sources and delivered on-chain, and we can use it as a "data bank" 
 // of sources. 
 
-// We will need to be on a network that has the data already loaded. 
-// Let's look at an example
-```
-# Oracles
-### Getting data from Chainlink Data Feeds
+// You can see other examples making API calls here:
+// https://docs.chain.link/docs/make-a-http-get-request
 
-We will be deploying to a testnet with Chainlink. This way we can get decentralized data into our smart contracts. 
+// And you can of course build your own oracle network, just be sure to know 
+// how centralized vs decentralized your application is. 
 
-**Deploy the following contract with remix to the `Kovan` testnet. If unfamiliar, reference the start of this file.**
-
-[Work with this code in Remix](https://remix.ethereum.org/#version=soljson-v0.6.7+commit.b8d736ae.js&optimize=false&evmVersion=null&gist=0c5928a00094810d2ba01fd8d1083581&runs=200)
-
-We can get the price of any asset by using the `getLatestPrice` function. You can see a list of addresses for the Kovan network from the [Chainlink Documentation](https://docs.chain.link/docs/get-the-latest-price). You can also view any other address as well. 
-
-
-```javascript
-/** This example code is designed to quickly deploy an example contract using Remix.
- *  If you have never used Remix, try our example walkthrough: https://docs.chain.link/docs/example-walkthrough
- *  You will need testnet ETH and LINK.
- *     - Kovan ETH faucet: https://faucet.kovan.network/
- *     - Kovan LINK faucet: https://kovan.chain.link/
- */
-
-pragma solidity ^0.6.7;
-
-import "https://github.com/smartcontractkit/chainlink/blob/master/evm-contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
-
-contract PriceConsumerV3 {
-
-    AggregatorV3Interface internal priceFeed;
-
-    /**
-     * Network: Kovan
-     * Aggregator: ETH/USD
-     * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
-     */
-    constructor() public {
-        priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
-    }
-
-    /**
-     * Returns the latest price
-     */
-    function getLatestPrice() public view returns (int) {
-        (
-            uint80 roundID, 
-            int price,
-            uint startedAt,
-            uint timeStamp,
-            uint80 answeredInRound
-        ) = priceFeed.latestRoundData();
-        return price;
-    }
-}
-
-```
-
-### Randomness / RNG
-
-Chainlink VRF (Verifiable Random Function) is a provably-fair and verifiable source of randomness designed for smart contracts. Randomness is difficult in blockchain, because blockchains are determanistic. We can get a random number by reaching outside the blockchain to an oracle. 
-
-Chainlink VRF then cryptographically guarantees that the random number returned is random. 
-
-**Deploy the following contract with remix to the `Kovan` testnet. If unfamiliar, reference the start of this file.**
-
-The only additional piece we need to do here is to fund our contract with LINK. [You can see a video on funding with LINK here.](https://www.youtube.com/watch?v=4ZgFijd02Jo)
-
-Once we deploy our Chainlink VRF contract, in order to `getRandomNumer` we need to fund the contract with LINK. Get some kovan testnet LINK [from this faucet](https://kovan.chain.link/). Once the transaction has gone through, in your metamask, hit `Add Token` and under `Custom Token` enter the address `0xa36085F69e2889c224210F603D836748e7dC0088`.
-
-![Remix-add-token](images/solidity/remix-add-token.png)
-
-NOTE: This is only the token address for Kovan. 
-
-Once you deploy your contract, you'll need to fund it with LINK. You can fund it with link by copying your contract address from remix, and then sending that address a few LINK from your metamask. Remember this is all testnet LINK, and we can always get more for free. 
-
-![Remix-add-token](images/solidity/copy-address.png)
-
-![Remix-add-token](images/solidity/send-link.png)
-
-And you'll be able to work with the VRF. After deploying the content, enter a number of choice into the `getRandomNumber` function. After a delay of ~1 minute, you can hit the `randomResult` button to get the random number returned. 
-
-```javascript
-/** This example code is designed to quickly deploy an example contract using Remix.
- *  If you have never used Remix, try our example walkthrough: https://docs.chain.link/docs/example-walkthrough
- *  You will need testnet ETH and LINK.
- *     - Kovan ETH faucet: https://faucet.kovan.network/
- *     - Kovan LINK faucet: https://kovan.chain.link/
- */
-
-pragma solidity 0.6.6;
-
-import "https://raw.githubusercontent.com/smartcontractkit/chainlink/master/evm-contracts/src/v0.6/VRFConsumerBase.sol";
-
-contract RandomNumberConsumer is VRFConsumerBase {
-    
-    bytes32 internal keyHash;
-    uint256 internal fee;
-    
-    uint256 public randomResult;
-    
-    /**
-     * Constructor inherits VRFConsumerBase
-     * 
-     * Network: Kovan
-     * Chainlink VRF Coordinator address: 0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9
-     * LINK token address:                0xa36085F69e2889c224210F603D836748e7dC0088
-     * Key Hash: 0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4
-     */
-    constructor() 
-        VRFConsumerBase(
-            0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9, // VRF Coordinator
-            0xa36085F69e2889c224210F603D836748e7dC0088  // LINK Token
-        ) public
-    {
-        keyHash = 0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4;
-        fee = 0.1 * 10 ** 18; // 0.1 LINK
-    }
-    
-    /** 
-     * Requests randomness from a user-provided seed
-     */
-    function getRandomNumber(uint256 userProvidedSeed) public returns (bytes32 requestId) {
-        require(LINK.balanceOf(address(this)) > fee, "Not enough LINK - fill contract with faucet");
-        return requestRandomness(keyHash, fee, userProvidedSeed);
-    }
-
-    /**
-     * Callback function used by VRF Coordinator
-     */
-    function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
-        randomResult = randomness;
-    }
-    
-    /**
-     * Withdraw LINK from this contract
-     * 
-     * DO NOT USE THIS IN PRODUCTION AS IT CAN BE CALLED BY ANY ADDRESS.
-     * THIS IS PURELY FOR EXAMPLE PURPOSES.
-     */
-    function withdrawLink() external {
-        require(LINK.transfer(msg.sender, LINK.balanceOf(address(this))), "Unable to transfer");
-    }
-}
-```
-
-[You can learn more about Chainlink from the documentation.](https://docs.chain.link/docs)
-
-You can [make API calls](https://docs.chain.link/docs/make-a-http-get-request), [set timing intervals](https://docs.chain.link/docs/chainlink-alarm-clock), and so much more. 
-
-```javascript
 // Setting up oracle networks yourself
 
 // D. Cron Job
@@ -869,17 +725,17 @@ Work with the full example below using the [`Javascript VM` in remix here.](http
 // ** START EXAMPLE **
 
 // CrowdFunder.sol
-pragma solidity ^0.4.19;
+pragma solidity ^0.6.6;
 
 /// @title CrowdFunder
 /// @author nemild
 contract CrowdFunder {
     // Variables set on create by creator
     address public creator;
-    address public fundRecipient; // creator may be different than recipient
+    address payable public fundRecipient; // creator may be different than recipient, and must be payable
     uint public minimumToRaise; // required to tip, else everyone gets refund
     string campaignUrl;
-    byte constant version = 1;
+    byte version = "1";
 
     // Data structures
     enum State {
@@ -889,7 +745,7 @@ contract CrowdFunder {
     }
     struct Contribution {
         uint amount;
-        address contributor;
+        address payable contributor;
     }
 
     // State variables
@@ -919,10 +775,10 @@ contract CrowdFunder {
         _;
     }
 
-    function CrowdFunder(
+    function crowdFund(
         uint timeInHoursForFundraising,
-        string _campaignUrl,
-        address _fundRecipient,
+        string memory _campaignUrl,
+        address payable _fundRecipient,
         uint _minimumToRaise)
         public
     {
@@ -947,7 +803,7 @@ contract CrowdFunder {
         );
         totalRaised += msg.value;
 
-        LogFundingReceived(msg.sender, msg.value, totalRaised);
+        emit LogFundingReceived(msg.sender, msg.value, totalRaised);
 
         checkIfFundingCompleteOrExpired();
         return contributions.length - 1; // return id
@@ -971,7 +827,7 @@ contract CrowdFunder {
     public
     inState(State.Successful)
     {
-        fundRecipient.transfer(this.balance);
+        fundRecipient.transfer(address(this).balance);
         LogWinnerPaid(fundRecipient);
     }
 
@@ -1000,6 +856,7 @@ contract CrowdFunder {
     }
 }
 // ** END EXAMPLE **
+
 ```
 
 Some more functions. 
@@ -1084,6 +941,11 @@ someContractAddress.callcode('function_name');
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
 - [Chainlink Documentation](https://docs.chain.link/docs/getting-started)
+
+## Smart Contract Development Frameworks
+- [Hardhat](https://hardhat.org/)
+- [Brownie](https://github.com/eth-brownie/brownie)
+- [Truffle](https://www.trufflesuite.com/)
 
 ## Important libraries
 - [Zeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
