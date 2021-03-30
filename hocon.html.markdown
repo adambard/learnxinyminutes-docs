@@ -30,7 +30,7 @@ user-facing configurations than JSON.
 key: value
 another_key = another_value
 
-# You can use either separator with or without whitespace on either side.  
+# You can use either separator with or without whitespace on either side.
 colon1:value
 colon2: value
 colon3 : value
@@ -151,8 +151,8 @@ no_separator {
   key: value
   speed_of_light: very fast
   ten: 10
-  
-  # Objects can go inside other objects just like any other value. 
+
+  # Objects can go inside other objects just like any other value.
   another_object {
     twenty: 20
     speed_of_sound: also pretty fast
@@ -176,7 +176,7 @@ no_separator {
 ### DUPLICATE KEYS ###
 ######################
 
-is_happy: false 
+is_happy: false
 # If there is a duplicate key, the new value overrides the previous value.
 is_happy: true
 online_users: [Jacob, Mike]
@@ -200,13 +200,13 @@ my_car: {
   // These fields are added to the old, previous object.
   nickname: "My Favorite Car"
   type: 2-door sedan
-  
+
   // Since the value of this duplicate key is NOT an object,
   // it simply overrides the previous value.
   speed: 60
   // Same with arrays. They override, not merge.
   passengers: ["Nate", "Ty"]
-  
+
   // This object is recursively merged with the other object.
   engine: {
     // These two fields are added to the previous object.
@@ -251,7 +251,7 @@ null_concat: null null null // "null null null"
 mixed_concat: 1 true null // "1 true null"
 
 # String value concatenation can appear anywhere that a quoted string can.
-number_concat_in_array: [1 2, 3 4, 5 6] // same as: ["1 2", "3 4", "5 6"] 
+number_concat_in_array: [1 2, 3 4, 5 6] // same as: ["1 2", "3 4", "5 6"]
 
 # In fact, unquoted strings are actually just string value concatenations.
 unquoted_string_concat: his name is jeff // same as: "his name is jeff"
@@ -278,11 +278,11 @@ array_concat: [1, 2, 3] [4, 5, 6] // same as: [1, 2, 3, 4, 5, 6]
 
 ## OBJECT CONCATENATION ##
 
-# Objects separated by whitespace are merged into a single object. 
+# Objects separated by whitespace are merged into a single object.
 # The merge functionality is identical to that of duplicate key object merging.
 lamp: {on: true} {color: tan} // same as: {on: true, color: tan}
 
-# Similarly to arrays, objects cannot be concatenated with a non-object value. 
+# Similarly to arrays, objects cannot be concatenated with a non-object value.
 //object_concat: true {on: false} results in an error
 //object_concat: 1 {number: 2} results in an error
 
@@ -305,7 +305,7 @@ country: {
     }
   }
 }
-# For example, the path to the address of the house could be written as: 
+# For example, the path to the address of the house could be written as:
 # country.city.neighborhood.house.address
 # Country, city, neighborhood, house, and address are all elements.
 
@@ -466,7 +466,7 @@ OTHER_USERS: /usr/luke
 z += 3 // the value is: [3]
 z += 4 // the value is: [3, 4]
 
-NEW_USERS += /usr/sandra // the value is [/usr/sandra]
+NEW_USERS += /usr/sandra // the value is: [/usr/sandra]
 NEW_USERS += /usr/kennedy // [/usr/sandra, /usr/kennedy]
 NEW_USERS += /usr/robin // [/usr/sandra, /usr/kennedy, /usr/robin]
 
@@ -476,21 +476,13 @@ NEW_USERS += /usr/robin // [/usr/sandra, /usr/kennedy, /usr/robin]
 
 # Includes allow you to "import" one HOCON document into another.
 
-# Include statements can appear in place of a field. Anywhere that a field
-# could appear, an include statement could appear as well.
-
-# An include statement consists of the unquoted string "import" followed by
-# whitespace, and then a resource name, which is one of the following:
+# An include statement consists of the unquoted string "include" followed by
+# whitespace and then a resource name, which is one of the following:
 # - a single quoted string which is heuristically interpreted as a URL,
 #   filename, or a Java classpath resource.
-# - url(), file(), or classpath(), with the parentheses surrounding a quoted 
+# - url(), file(), or classpath(), with the parentheses surrounding a quoted
 #   string which is either a URL, filename, or classpath resource respectively.
 # - required(), with the parentheses surrounding one of the above.
-
-# The file specified by the include statement is called the included file, and
-# the document which contains the include statement is called the including 
-# file. Thus, this document is an including file. 
-
 include "https://example.com/config.conf"
 include "/foo/bar/config.conf"
 include "config.conf"
@@ -500,15 +492,18 @@ include file("/foo/bar/config.conf")
 include classpath("config.conf")
 
 # If the included file does not exist, it will be silently ignored and act as if
-# it were an empty object; however, if it is wrapped around required(), then
+# it were an empty object. However, if it is wrapped around required(), then
 # parsing will explicitly error if the file cannot be resolved.
 //include required("doesnt_exist.conf") will error
+//include required(url("https://example.com/doesnt_exist.conf")) will error
 //include required(file("doesnt_exist.conf")) will error
 //include required(classpath("doesnt_exist.conf")) will error
-//include required(url("https://example.com/doesnt_exist.conf")) will error
+
+# The file specified by the include statement is called the included file, and
+# the file which contains the include statement is called the including file.
 
 # Including a file functions as if you directly replaced the include statement,
-# wherever it may be, with the contents of the including file.
+# wherever it may be, with the contents of the included file's root object.
 
 # An included file must have an object as its root value and not an array.
 # If the included file has an array as its root value, then it is invalid and
@@ -518,20 +513,19 @@ include classpath("config.conf")
 username: RandomUser1337
 auto_login: true
 color_theme: dark
-
 screensaver: {
   image: usr/images/screensaver.jpg
   turn_on_after: 1m
 }
 
-# And then we import that file.
+# And then we include that file.
 include file("user_config.conf")
 
-# We can now reference values from that file as if it was in this document!
-path_to_user_screensaver: ${screensaver.image}
+# We can now reference values from that file!
+path_to_user_screensaver: ${screensaver.image} //
 greeting: "Welcome, "${username}"!" // the value is: "Welcome, RandomUser1337!"
 
-# Duplicate keys override exactly as you'd expect.
+# Duplicate keys override as they normally do.
 status: "Auto Login: "${auto_login} // the value is: "Auto Login: true"
 auto_login: false
 status: "Auto Login: "${auto_login} // the value is: "Auto Login: false"
@@ -543,6 +537,35 @@ screensaver: {
   // This overrides the previous value.
   turn_on_after: 30s
 }
+
+# Include statements can appear in place of a field. Anywhere that a field
+# could appear, an include statement could appear as well.
+
+# Pretend that the following is in a file called server_settings.conf:
+max_connections: 10
+url: example.com
+port: 80
+admin_page: {
+  username: admin
+  password: pass12345
+}
+
+# And then we include that file nested inside another object.
+websites: {
+  my_epic_website: {
+    include file("server_settings.conf")
+  }
+}
+
+# Now, we can reference the contents of server_settings.conf as if they
+# had been written directly into the object my_epic_website.
+server_port: ${websites.my_epic_website.port}
+
+the_password: "The password is: "${websites.my_epic_website.admin_page.password}
+// the value is: The password is: pass12345
+
+max_conn: "Max Connections: "${websites.my_epic_website.max_connections}
+// the value is: Max Connections: 10
 ```
 
 ### More Resources
