@@ -16,7 +16,7 @@ review them more effectively and/or individually.
 
 ## Style Guidelines
 
-- **Keep lines of under 80 chars**
+- **Keep lines under 80 chars**
   + Try to keep **line length in code blocks to 80 characters or fewer**.
   + Otherwise, the text will overflow and look odd.
 - **Prefer example to exposition**
@@ -78,7 +78,7 @@ lang: ep-ep
 
 If you want to add yourself to contributors, keep in mind that contributors get
 equal billing, and the first contributor usually wrote the whole article. Please
-use your judgement when deciding if your contribution constitutes a substantial
+use your judgment when deciding if your contribution constitutes a substantial
 addition or not.
 
 ## Building the site locally
