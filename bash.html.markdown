@@ -429,7 +429,7 @@ tail -n 10 file.txt
 # prints first 10 lines of file.txt
 head -n 10 file.txt
 
-# sort file.txt's lines
+# print file.txt's lines in sorted order
 sort file.txt
 
 # report or omit repeated lines, with -d it reports them
