@@ -2,15 +2,14 @@
 language: Smalltalk
 filename: smalltalk.st
 contributors:
-    - ["Jigyasa Grover", "https://github.com/jigyasa-grover"]
+    - ["Jigyasa Grover", "https://jigyasa-grover.github.io"]
     - ["tim Rowledge", "tim@rowledge.org"]
 ---
+<blockquote>Every effort has been made in the preparation of this material to ensure the accuracy and completeness of the information presented. However, no guarantee is given nor responsibility taken for errors or omissions. In case of any error, questions or suggestions on reach out to me at <a href="https://jigyasa-grover.github.io" target="_blank">jigyasa-grover.github.io</a> or drop me an e-mail at <a href="mailto:grover.jigyasa1@gmail.com" target="_blank">grover[dot]jigyasa1[at]gmail.com</a>.</blockquote>
 
 - Smalltalk is a fully object-oriented, dynamically typed, reflective programming language with no 'non-object' types.
 - Smalltalk was created as the language to underpin the "new world" of computing exemplified by "human–computer symbiosis."
 - It was designed and created in part for educational use, more so for constructionist learning, at the Learning Research Group (LRG) of Xerox PARC by Alan Kay, Dan Ingalls, Adele Goldberg, Ted Kaehler, Scott Wallace, and others during the 1970s.
-
-`Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/jigyasa_grover) or send me an e-mail at grover.jigyasa1@gmail.com.`
 
 ## The Basics
 
@@ -162,7 +161,7 @@ b := (x < 5) xor: (y > 1).             "test if one true and other false"
 b := 5 between: 3 and: 12.             "between (inclusive)"
 b := 123 isKindOf: Number.             "test if object is class or subclass of"
 b := 123 isMemberOf: SmallInteger.     "test if object is type of class"
-b := 123 respondsTo: sqrt.             "test if object responds to message"
+b := 123 respondsTo: #sqrt.             "test if object responds to message"
 b := x isNil.                          "test if object is nil"
 b := x isZero.                         "test if number is zero"
 b := x positive.                       "test if number is positive"
