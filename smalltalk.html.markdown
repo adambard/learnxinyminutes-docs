@@ -442,8 +442,9 @@ Fixed length collection
 - WordArray:     Array limited to word elements (0-2^32)
 
 ```smalltalk
-| b x y sum max |
+| b x y z sum max |
 x := #(4 3 2 1).                                 "constant array"
+z := #(1 2 3 'hi').                              "mixed type array"
 x := Array with: 5 with: 4 with: 3 with: 2.      "create array with up to 4 elements"
 x := Array new: 4.                               "allocate an array with specified size"
 x                                                "set array elements"
@@ -463,6 +464,8 @@ b := x conform: [:a | (a >= 1) & (a <= 4)].      "test if all elements meet cond
 y := x select: [:a | a > 2].                     "return collection of elements that pass test"
 y := x reject: [:a | a < 2].                     "return collection of elements that fail test"
 y := x collect: [:a | a + a].                    "transform each element for new collection"
+y := z separate: [:value | value class].         "return Dictionary with key as an associated class"
+
 y := x detect: [:a | a > 3] ifNone: [].          "find position of first element that passes test"
 sum := 0. x do: [:a | sum := sum + a]. sum.      "sum array elements"
 sum := 0. 1 to: (x size) 
