@@ -8,11 +8,11 @@ translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 ---
 
-HTML stands for HyperText Markup Language.
+HTML stands for Hypertext Markup Language.
 
-It is a language which allows us to write pages for the world wide web.
+It is a language which allows us to write pages for the World Wide Web.
 It is a markup language, it enables us to write webpages using code to indicate
-how text and data should be displayed.  In fact, html files are simple text
+how text and data should be displayed.  In fact, HTML files are simple text
 files.
 
 What is this markup? It is a method of organising the page's data by
@@ -171,6 +171,6 @@ HTML is written in files ending with `.html` or `.htm`. The mime type is
 **HTML is NOT a programming language**
 ## To Learn More
 
-* [wikipedia](https://en.wikipedia.org/wiki/HTML)
-* [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [W3School](http://www.w3schools.com/html/html_intro.asp)
+* [Wikipedia](https://en.wikipedia.org/wiki/HTML)
+* [HTML Tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [W3Schools](http://www.w3schools.com/html/html_intro.asp)
