@@ -1,24 +1,25 @@
 ---
 language: rust
 contributors:
-    - ["P1start", "http://p1start.github.io/"]
+  - ["P1start", "http://p1start.github.io/"]
+  - ["NicolasHov"]
 translators:
-    - ["Ryan Rembert", "http://jrrembert.github.io"]
+  - ["Ryan Rembert", "http://jrrembert.github.io"]
 filename: learnrust-fr.rs
 lang: fr-fr
 ---
 
-Rust est un langage de programmation développé par Mozilla Research. Rust combine le contrôle de bas niveau sur la performance avec la commodité et la sécurité garanties de haut niveau.
+Rust est un langage de programmation développé par Mozilla Research qui combine des avantages d'un langage bas niveau -le contrôle sur la performance- avec ceux d'un langage haut niveau -la commodité ainsi qu'une garantie de sureté.
 
-Il atteint ces objectifs sans avoir besoin d'un ramasse-miettes ou environnement d'exécution, ce qui rend possible l'utilisation de bibliothèques Rust comme une substitution directe pour C.
+Il atteint ces objectifs sans avoir besoin d'un ramasse-miettes ou d'un environnement d'exécution, ce qui rend possible l'utilisation de bibliothèques Rust comme une substitution directe du C.
 
-La première version de Rust, 0.1, est sortie en janvier 2012 et a tellement évolué rapidement que jusqu'à récemment, l'utilisation de versions stables était déconseillée - à la place ce était conseillé d'utiliser les nightly builds.
+Bien que ce soit un langage relativement bas niveau, il offre quelques concepts fonctionnels que l'on retrouve dans des langages de niveau supérieur. Cela le rend non seulement rapide, mais aussi efficace et facile à coder.
 
-Le 15 mai 2015, Rust 1.0 a été libéré avec une garantie complète de compatibilité ascendante. Améliorations aux temps de compilation et d'autres aspects du compilateur sont actuellement disponibles dans la nightly builds. Rust a adopté un modèle de train de livraison avec les versions régulières toutes les six semaines. Rust 1.1 beta a été mis à disposition au moment de la livraison de Rust 1.0.
+La première version de Rust, 0.1, est sortie en janvier 2012. Elle a évolué tellement rapidement que jusqu'à récemment, l'utilisation de versions stables était déconseillée - les nightly builds étant davantage recommandés.
 
-Bien que Rust soit un langage relativement bas niveau, Rust a quelques concepts fonctionnels qui se trouvent généralement dans les langues de niveau supérieur. Cela rend Rust non seulement rapide, mais aussi efficace et facile à coder.
+Rust 1.0 est ensuite sortie en mai 2015, proposant une garantie complète de compatibilité ascendante. Des améliorations des temps de compilation et d'autres aspects du compilateur sont actuellement disponibles dans la nightly builds. Une nouvelle version sort toutes les six semaines. Rust 1.1 beta a été mise à disposition lors de la livraison de Rust 1.0.
 
-```rust
+````rust
 // Ceci est un commentaire. Les commentaires de ligne ressemblent à ceci...
 // et continuent sur plusieurs lignes comme cela.
 
@@ -53,7 +54,7 @@ fn main() {
     let f: f64 = 1.3f64;
 
     // Inférence de type
-    // La plupart du temps, le compilateur Rust peut déduire quel est le type 
+    // La plupart du temps, le compilateur Rust peut déduire quel est le type
     // de variable, donc vous n'avez pas à écrire une annotation de type explicite.
     // Tout au long de ce tutoriel, les types sont explicitement annotées dans
     // de nombreux endroits, mais seulement à des fins de démonstration.
@@ -260,7 +261,7 @@ fn main() {
     // 5. Sécurité & pointeurs mémoire //
     /////////////////////////////////
 
-    // Pointeur occasion - une seule chose peut "posséder" pointeur à un moment.
+    // Pointeur occasion - une seule chose peut "posséder" un pointeur à un moment.
     // Cela signifie que lorsque le `Box` laisse son champ d'application, il
     // peut être automatiquement libérée en toute sécurité.
     let mut mine: Box<i32> = Box::new(3);
@@ -277,8 +278,8 @@ fn main() {
     // Référence - un pointeur immutable qui fait référence à d'autres données.
     // Quand une référence est prise à une valeur, nous disons que la valeur
     // a été "emprunté".
-    // Même si une valeur est emprunté immutablement, il ne peut pas être
-    // muté ou déplacé.
+    // Même si une valeur est emprunté immutablement, elle ne peut pas être
+    // mutée ou déplacée.
     // Un emprunt dure jusqu'à la fin de la portée, il a été créé.
     let mut var = 4;
     var = 3;
@@ -303,16 +304,15 @@ fn main() {
     // pas la valeur.
     // var2 = 2; // Cela ne compile pas parce que `var2` est emprunté.
 }
-```
+````
 
 ## Autres lectures
 
-Il y a beaucoup plus à Rust -- ce est juste l'essentiel de Rust afin que vous puissiez comprendre
-les choses les plus importantes. Pour en savoir plus sur Rust, lire [La Programmation Rust
-Langue](http://doc.rust-lang.org/book/index.html) et etudier la
-[/r/rust](http://reddit.com/r/rust) subreddit. Les gens sur le canal de #rust sur
-irc.mozilla.org sont aussi toujours prêts à aider les nouveaux arrivants.
+Maintenant que vous avez découvert les bases de Rust, vous pouvez aller plus loin en lisant [La Programmation Rust
+Langue](http://doc.rust-lang.org/book/index.html) et en etudiant le subreddit
+[/r/rust](http://reddit.com/r/rust). N'hésitez pas également à aller sur le canal de #rust sur
+irc.mozilla.org pour profiter d'un coup de main des membres plus expérimentés.
 
-Vous pouvez également essayer caractéristiques de Rust avec un compilateur en ligne sur le fonctionnaire
-[Rust parc](http://play.rust-lang.org) ou sur la principale
+Vous pouvez enfin tester les caractéristiques de Rust avec un compilateur en ligne sur le pratique site
+[Rust parc](http://play.rust-lang.org) ou sur la page offcielle
 [Site Rust](http://rust-lang.org).
