@@ -846,7 +846,7 @@ public abstract class Mammal()
 // des valeurs pédéfinies pour celle-ci. En Java, les variables constantes sont
 // notées en majuscules.
 // On définie un type enum en utilisant le mot clé enum. Par exemple pour les
-// jours de l'année:
+// jours de la semaine:
 public enum Day {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
     THURSDAY, FRIDAY, SATURDAY
