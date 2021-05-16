@@ -306,7 +306,7 @@ function LoudDog:makeSound()
 end
 
 seymour = LoudDog:new()                       -- 3.
-seymour:makeSound()  -- 'woof woof woof'      -- 4.
+seymour:makeSound()  -- 'woof woof woof '      -- 4.
 
 -- 1. LoudDog gets Dog's methods and variables.
 -- 2. self has a 'sound' key from new(), see 3.
