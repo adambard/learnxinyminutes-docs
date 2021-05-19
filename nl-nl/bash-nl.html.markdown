@@ -17,7 +17,7 @@ lang: nl-nl
 filename: LearnBash-nl.sh
 ---
 
-Bash is de naam van de unix shell, deze wordt gebruikt voor het GNU operating system en is de standaard shell op Linux en Mac OS X.
+Bash is de naam van de unix shell, deze wordt gebruikt voor het GNU operating system en is de standaard shell op Linux en macOS.
 Bijna alle voorbeelden hieronder kunnen deel uitmaken van een shell script of kunnen uitgevoerd worden in de shell.
 
 [Lees er meer over hier.](http://www.gnu.org/software/bash/manual/bashref.html)

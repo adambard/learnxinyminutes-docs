@@ -18,7 +18,7 @@ Tutorial de Shell en español.
 
 Bash es el nombre del shell de unix, el cual también es distribuido como 
 el shell del sistema operativo GNU. También es el shell
-por defecto de Linux y Mac OS X. Casi todos los ejemplos abajo pueden 
+por defecto de Linux y macOS. Casi todos los ejemplos abajo pueden 
 ser parte de un script shell o ser ejecutados directamente en la terminal.
 
 [Leer más aquí.](http://www.gnu.org/software/bash/manual/bashref.html)

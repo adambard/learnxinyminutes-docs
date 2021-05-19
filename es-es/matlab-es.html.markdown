@@ -31,7 +31,7 @@ esto
 % Dos símbolos de porcentaje denotan el comienzo de una nueva sección de código.
 % Secciones de código individuales pueden ser ejecutadas moviendo el cursor hacia la sección,
 % seguida por un clic en el botón de “Ejecutar Sección”
-% o usando Ctrl+Shift+Enter (Windows) o Cmd+Shift+Return (OS X)
+% o usando Ctrl+Shift+Enter (Windows) o Cmd+Shift+Return (macOS)
 
 %% Este es el comienzo de una sección de código
 % Una forma de usar las secciones es separar un código de inicio costoso que no cambia, como cargar datos

@@ -17,7 +17,7 @@ lang: fr-fr
 ---
 
 Bash est le nom du shell UNIX, qui était aussi distribué avec le système
-d’exploitation GNU et est le shell par défaut sur Linux et Mac OS X.
+d’exploitation GNU et est le shell par défaut sur Linux et macOS.
 
 Presque tous les exemples ci-dessous peuvent être écrits dans un script shell
 ou exécutés directement dans le terminal.

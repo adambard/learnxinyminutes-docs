@@ -23,7 +23,7 @@ filename: LearnBash-tw.sh
 lang: zh-tw
 ---
 
-Bash 是一個爲 GNU 計劃編寫的 Unix shell，是 Linux 和 Mac OS X 下預設的 shell。
+Bash 是一個爲 GNU 計劃編寫的 Unix shell，是 Linux 和 macOS 下預設的 shell。
 以下大多數例子可以作爲腳本的一部分運行，也可直接在 shell 下互動執行。
 
 [更多資訊](http://www.gnu.org/software/bash/manual/bashref.html)
