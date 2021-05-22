@@ -4,7 +4,7 @@ filename: learnhtml.txt
 contributors:
   - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
-  - ["Hiva zarei", "https://github.com/hivazarei"]
+  - ["Hiva Zarei", "https://github.com/hivazarei"]
 ---
 
 <p dir="rtl">HTML مخفف كلمه ی Hyper Text Markup Language می باشد.</p>
@@ -16,42 +16,41 @@ translators:
 <p dir="rtl"><b>توجه:</b> شما می توانید تگ ها و عناصر مختلفی را تست كنید، هرچه پیش می روید می توانید effect هارو در سایتی مانند codepen مشاهده كنید و روش عملكردشان را بیاموزید تا آشنایی بیشتری با این زبان پیدا كنید. این مقاله پر از syntax HTML  و نكات پر كاربرد می باشد.</p>
 
 ```html
-<!-- كامنت ها به شكل روبر باز و بسته ميشوند! -->
+<!-- كامنت ها مشابه همین خط جاری باز و بسته می شوند -->
 
 <!--
 	كامنت ها
-     ميتوانند
-      چند خطي
-       نيز باشند
+	می توانند
+	چند خطی
+	نیز باشند
 -->
 
 <!-- #################### تگ ها #################### -->
 
-////<!-- توضيحات زير مثال يك فايل( اچ تي ام ال) است كه تجزيه و تحليل شده است. -->
-
+<!-- توضیحات زیر مثال یك فایل( اچ تی ام ال) است كه تجزیه و تحلیل شده است. -->
 
 <!doctype html>
 	<html>
 		<head>
-			<title>My Site</title>
+			<title>وب سایت من</title>
 		</head>
 		<body>
-			<h1>Hello, world!</h1>
+			<h1>!سلام دنیا</h1>
 			<a href="http://codepen.io/anon/pen/xwjLbZ">
-				Come look at what this shows
+				به این لینک مراجعه فرمایید
 			</a>
-			<p>This is a paragraph.</p>
-			<p>This is another paragraph.</p>
+			<p>این یک پاراگراف است</p>
+			<p>این هم یک پاراگراف دیگر است</p>
 			<ul>
-				<li>This is an item in a non-enumerated list (bullet list)</li>
-				<li>This is another item</li>
-				<li>And this is the last item on the list</li>
+				<li>این یک گزینه در لیست غیرترتیبی می‌باشد</li>
+				<li>این یک گزینه دیگر می‌باشد</li>
+				<li>و این هم آخرین گزینه در لیست می باشد</li>
 			</ul>
 		</body>
 	</html>
 
 <!--
-	فايل html هميشه براي يادآوري به مرور گر با  نشانه شروع ميشود.
+	فایل اچ تی ام ال همیشه در ابتدای کار به مرورگر نشان می‌دهد که یک سند از نوع اچ تی ام ال است
 -->
 <!doctype html>
 
