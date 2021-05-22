@@ -134,13 +134,15 @@ translators:
 		<td>دومين رديف  دومين ستون</td>
 	</tr>
 </table>
+```
+
 <h2 dir="rtl">استفاده</h2>
 <p dir="rtl">
 فایل های HTML با پسوند .html یا .htm نمایش داده می شوند و با مایم تایپ text/html شناخته می شوند.
 </p>
 
 <h2 dir="rtl">HTML زبان برنامه‌نویسی محسوب نمی‌شود.</h2>
-```<h2 dir="rtl">برای یادگیری بیشتر</h2>
+<h2 dir="rtl">برای یادگیری بیشتر</h2>
 
 * [wikipedia](https://en.wikipedia.org/wiki/HTML)
 * [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
