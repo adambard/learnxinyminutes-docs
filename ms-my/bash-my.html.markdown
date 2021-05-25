@@ -17,7 +17,7 @@ translators:
 lang: ms-my   
 ---
 
-Bash adalah nama daripada unix shell, yang mana telah diagihkan sebagai shell untuk sistem operasi GNU dan sebagai shell lalai pada Linux dan Mac OS X. Hampir semua contoh di bawah boleh menjadi sebahagian daripada skrip shell atau dijalankan terus dalam shell.
+Bash adalah nama daripada unix shell, yang mana telah diagihkan sebagai shell untuk sistem operasi GNU dan sebagai shell lalai pada Linux dan macOS. Hampir semua contoh di bawah boleh menjadi sebahagian daripada skrip shell atau dijalankan terus dalam shell.
 
 [Baca lebih lanjut di sini.](http://www.gnu.org/software/bash/manual/bashref.html)
 

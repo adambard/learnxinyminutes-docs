@@ -28,7 +28,7 @@ this
 % Two percent signs denote the start of a new code section
 % Individual code sections can be run by moving the cursor to the section followed by
 % either clicking the "Run Section" button
-% or     using Ctrl+Shift+Enter (Windows) or Cmd+Shift+Return (OS X)
+% or     using Ctrl+Shift+Enter (Windows) or Cmd+Shift+Return (macOS)
 
 %% This is the start of a code section
 %  One way of using sections is to separate expensive but unchanging start-up code like loading data

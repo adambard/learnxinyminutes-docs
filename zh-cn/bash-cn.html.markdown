@@ -18,7 +18,7 @@ filename: LearnBash-cn.sh
 lang: zh-cn
 ---
 
-Bash 是一个为 GNU 计划编写的 Unix shell，是 Linux 和 Mac OS X 下的默认 shell。
+Bash 是一个为 GNU 计划编写的 Unix shell，是 Linux 和 macOS 下的默认 shell。
 以下大多数例子可以作为脚本的一部分运行，也可直接在 shell 下交互执行。
 
 [更多信息](http://www.gnu.org/software/bash/manual/bashref.html)

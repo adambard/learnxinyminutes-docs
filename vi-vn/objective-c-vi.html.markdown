@@ -7,7 +7,7 @@ lang: vi-vn
 filename: LearnObjectiveC-vi.m
 ---
 
-Objective-C là ngôn ngữ lập trình chính được sử dụng bởi Apple cho các hệ điều hành OS X, iOS và các framework tương ứng của họ, Cocoa và Cocoa Touch.
+Objective-C là ngôn ngữ lập trình chính được sử dụng bởi Apple cho các hệ điều hành macOS, iOS và các framework tương ứng của họ, Cocoa và Cocoa Touch.
 Nó là một ngôn ngữ lập trình mục đích tổng quát, hướng đối tượng có bổ sung thêm kiểu truyền thông điệp giống Smalltalk vào ngôn ngữ lập trình C.
 
 ```objective-c
