@@ -717,6 +717,6 @@ main() {
 ## Further Reading
 
 Dart has a comprehensive web-site. It covers API reference, tutorials, articles and more, including a
-useful Try Dart online.
-[https://www.dartlang.org](https://www.dartlang.org)
-[https://try.dartlang.org](https://try.dartlang.org)
+useful DartPad (a cloud-based Dart coding playground).
+[https://dart.dev/](https://dart.dev)
+[https://dartpad.dev/](https://dartpad.dev)
