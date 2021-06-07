@@ -6,19 +6,20 @@ contributors:
     - ["Thimoteus", "https://github.com/Thimoteus"]
 ---
 
-PureScript is a small strongly, statically typed language compiling to Javascript.
+PureScript is a small strongly, statically typed language compiling to JavaScript.
 
-* Learn more at [http://www.purescript.org/](http://www.purescript.org/)
-* Documentation: [http://pursuit.purescript.org/](http://pursuit.purescript.org/)
-* Book: Purescript by Example, [https://leanpub.com/purescript/](https://leanpub.com/purescript/)
+* Learn more at [https://www.purescript.org/](https://www.purescript.org/)
+* Documentation: [https://pursuit.purescript.org/](https://pursuit.purescript.org/)
+* Book: Purescript by Example, [https://book.purescript.org/](https://book.purescript.org/)
 
-All the noncommented lines of code can be run in the PSCI REPL, though some will
-require the `--multi-line-mode` flag.
+All the noncommented lines of code can be run in the PSCi REPL, though some
+will require "paste" mode (`:paste` followed by multiple lines, terminated by
+^D).
 
 ```haskell
 
 --
--- 1. Primitive datatypes that corresponds to their Javascript
+-- 1. Primitive datatypes that corresponds to their JavaScript
 -- equivalents at runtime.
 
 import Prelude
@@ -39,7 +40,7 @@ import Prelude
 3.0 % 2.0 -- 1.0
 4.0 % 2.0 -- 0.0
 -- Inspect the type of an expression in psci
-:t 9.5/2.5 + 4.4 -- Prim.Number
+:t 9.5/2.5 + 4.4 -- Number
 
 -- Booleans
 true :: Boolean -- true
@@ -59,7 +60,7 @@ true && (9 >= 19 || 1 < 2) -- true
 
 -- Strings
 "Hellow" :: String -- "Hellow"
--- Multiline string without newlines, to run in psci use the --multi-line-mode flag
+-- Multiline string without newlines, to run in PSCi use "paste" mode.
 "Hellow\
 \orld" -- "Helloworld"
 -- Multiline string with newlines
@@ -69,26 +70,26 @@ world""" -- "Hello\nworld"
 "such " <> "amaze" -- "such amaze"
 
 --
--- 2. Arrays are Javascript arrays, but must be homogeneous
+-- 2. Arrays are JavaScript arrays, but must be homogeneous
 
 [1,1,2,3,5,8] :: Array Int -- [1,1,2,3,5,8]
 [1.2,2.0,3.14] :: Array Number -- [1.2,2.0,3.14]
 [true, true, false] :: Array Boolean -- [true,true,false]
 -- [1,2, true, "false"] won't work
--- `Cannot unify Prim.Int with Prim.Boolean`
+-- `Cannot unify Int with Boolean`
+
+-- Requires purescript-arrays (Data.Array)
 -- Cons (prepend)
 1 : [2,4,3] -- [1,2,4,3]
 
--- Requires purescript-arrays (Data.Array)
 -- and purescript-maybe (Data.Maybe)
-
 -- Safe access return Maybe a
-head [1,2,3] -- Just (1)
-tail [3,2,1] -- Just ([2,1])
-init [1,2,3] -- Just ([1,2])
-last [3,2,1] -- Just (1)
+head [1,2,3] -- (Just 1)
+tail [3,2,1] -- (Just [2,1])
+init [1,2,3] -- (Just [1,2])
+last [3,2,1] -- (Just 1)
 -- Array access - indexing
-[3,4,5,6,7] !! 2 -- Just (5)
+[3,4,5,6,7] !! 2 -- (Just 5)
 -- Range
 1..5 -- [1,2,3,4,5]
 length [2,2,2] -- 3
@@ -97,31 +98,30 @@ take 3 [5,4,3,2,1] -- [5,4,3]
 append [1,2,3] [4,5,6] -- [1,2,3,4,5,6]
 
 --
--- 3. Records are Javascript objects, with zero or more fields, which
+-- 3. Records are JavaScript objects, with zero or more fields, which
 -- can have different types.
--- In psci you have to write `let` in front of the function to get a
--- top level binding.
-let book = {title: "Foucault's pendulum", author: "Umberto Eco"}
+book = {title: "Foucault's pendulum", author: "Umberto Eco"}
 -- Access properties
 book.title -- "Foucault's pendulum"
 
-let getTitle b = b.title
+getTitle b = b.title
 -- Works on all records with a title (but doesn't require any other field)
 getTitle book -- "Foucault's pendulum"
 getTitle {title: "Weekend in Monaco", artist: "The Rippingtons"} -- "Weekend in Monaco"
 -- Can use underscores as shorthand
 _.title book -- "Foucault's pendulum"
 -- Update a record
-let changeTitle b t = b {title = t}
+changeTitle b t = b {title = t}
 getTitle (changeTitle book "Ill nome della rosa") -- "Ill nome della rosa"
 
 --
 -- 4. Functions
--- In psci's multiline mode
-let sumOfSquares :: Int -> Int -> Int
-    sumOfSquares x y = x*x + y*y
+-- In PSCi's paste mode
+sumOfSquares :: Int -> Int -> Int
+sumOfSquares x y = x*x + y*y
 sumOfSquares 3 4 -- 25
-let myMod x y = x % y
+
+myMod x y = x % y
 myMod 3.0 2.0 -- 1.0
 -- Infix application of function
 3 `mod` 2 -- 1
@@ -131,48 +131,47 @@ myMod 3.0 2.0 -- 1.0
 sumOfSquares 3 4 * sumOfSquares 4 5 -- 1025
 
 -- Conditional
-let abs' n = if n>=0 then n else -n
+abs' n = if n>=0 then n else -n
 abs' (-3) -- 3
 
 -- Guarded equations
-let abs'' n | n >= 0    = n
-            | otherwise = -n
+-- In PSCi's paste mode
+abs'' n | n >= 0    = n
+        | otherwise = -n
 
 -- Pattern matching
 
 -- Note the type signature, input is a list of numbers. The pattern matching
 -- destructures and binds the list into parts.
--- Requires purescript-lists (Data.List)
-let first :: forall a. List a -> a
-    first (Cons x _) = x
-first (toList [3,4,5]) -- 3
-let second :: forall a. List a -> a
-    second (Cons _ (Cons y _)) = y
-second (toList [3,4,5]) -- 4
-let sumTwo :: List Int -> List Int
-    sumTwo (Cons x (Cons y rest)) = x + y : rest
-fromList (sumTwo (toList [2,3,4,5,6])) :: Array Int -- [5,4,5,6]
+-- Requires purescript-lists (Data.List) and purescript-maybe (Data.Maybe)
+first :: forall a. List a -> Maybe a
+first (x : _) = Just x
+first Nil = Nothing
+first (fromFoldable [3,4,5]) -- (Just 3)
 
--- sumTwo doesn't handle when the list is empty or there's only one element in
--- which case you get an error.
-sumTwo [1] -- Failed pattern match
+second :: forall a. List a -> Maybe a
+second Nil = Nothing
+second (_ : Nil) = Nothing
+second (_ : (y : _)) = Just y
+second (fromFoldable [3,4,5]) -- (Just 4)
 
 -- Complementing patterns to match
 -- Good ol' Fibonacci
-let fib 1 = 1
-    fib 2 = 2
-    fib x = fib (x-1) + fib (x-2)
+fib 1 = 1
+fib 2 = 2
+fib x = fib (x-1) + fib (x-2)
 fib 10 -- 89
 
 -- Use underscore to match any, where you don't care about the binding name
-let isZero 0 = true
-    isZero _ = false
+isZero 0 = true
+isZero _ = false
+isZero 9 -- false
 
 -- Pattern matching on records
-let ecoTitle {author = "Umberto Eco", title = t} = Just t
-    ecoTitle _ = Nothing
+ecoTitle {author: "Umberto Eco", title: t} = Just t
+ecoTitle _ = Nothing
 
-ecoTitle book -- Just ("Foucault's pendulum")
+ecoTitle {title: "Foucault's pendulum", author: "Umberto Eco"} -- (Just "Foucault's pendulum")
 ecoTitle {title: "The Quantum Thief", author: "Hannu Rajaniemi"} -- Nothing
 -- ecoTitle requires both field to type check:
 ecoTitle {title: "The Quantum Thief"} -- Object lacks required property "author"
@@ -180,13 +179,13 @@ ecoTitle {title: "The Quantum Thief"} -- Object lacks required property "author"
 -- Lambda expressions
 (\x -> x*x) 3 -- 9
 (\x y -> x*x + y*y) 4 5 -- 41
-let sqr = \x -> x*x
+sqr = \x -> x*x
 
 -- Currying
-let myAdd x y = x + y -- is equivalent with
-let myAdd' = \x -> \y -> x + y
-let add3 = myAdd 3
-:t add3 -- Prim.Int -> Prim.Int
+myAdd x y = x + y -- is equivalent with
+myAdd' = \x -> \y -> x + y
+add3 = myAdd 3
+:t add3 -- Int -> Int
 
 -- Forward and backward function composition
 -- drop 3 followed by taking 5
@@ -195,7 +194,7 @@ let add3 = myAdd 3
 (drop 3 <<< take 5) (1..20) -- [4,5]
 
 -- Operations using higher order functions
-let even x = x `mod` 2 == 0
+even x = x `mod` 2 == 0
 filter even (1..10) -- [2,4,6,8,10]
 map (\x -> x + 11) (1..5) -- [12,13,14,15,16]
 
