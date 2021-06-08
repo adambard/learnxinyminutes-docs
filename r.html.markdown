@@ -377,8 +377,8 @@ vec[6]	# NA
 # You can find the length of your vector with length()
 length(vec)	# 4
 # You can perform operations on entire vectors or subsets of vectors
-vec * 4	# 16 20 24 28
-vec[2:3] * 5	# 25 30
+vec * 4	# 32 36 40 44
+vec[2:3] * 5	# 45 50
 any(vec[2:3] == 8) # FALSE
 # and R has many built-in functions to summarize vectors
 mean(vec)	# 9.5
