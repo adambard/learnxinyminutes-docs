@@ -158,7 +158,7 @@ int main()
     // 如果没有特别指定，就从“Second”中取得所需的内容。
     using namespace Second;
 
-    foo(); // 显示“This is Second::foo”
+    Second::foo(); // 显示“This is Second::foo”
     First::Nested::foo(); // 显示“This is First::Nested::foo”
     ::foo(); // 显示“This is global foo”
 }
