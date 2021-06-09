@@ -247,15 +247,15 @@ string bar = "I am bar";
 
 string& fooRef = foo; // This creates a reference to foo.
 fooRef += ". Hi!"; // Modifies foo through the reference
-cout << fooRef; // Prints "I am foo. Hi!"
+cout << fooRef << endl; // Prints "I am foo. Hi!"
+cout << &fooRef << endl; // Prints the address of foo
 
 // Doesn't reassign "fooRef". This is the same as "foo = bar", and
 //   foo == "I am bar"
 // after this line.
-cout << &fooRef << endl; //Prints the address of foo
 fooRef = bar;
-cout << &fooRef << endl; //Still prints the address of foo
-cout << fooRef;  // Prints "I am bar"
+cout << fooRef << endl;  // Prints "I am bar"
+cout << &fooRef << endl; // Still prints the address of foo
 
 // The address of fooRef remains the same, i.e. it is still referring to foo.
 
