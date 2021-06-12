@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: raylib
+category: framework
+framework: raylib
 filename: learnraylib.c
 contributors:
     - ["Nikolas Wipper", "https://notnik.cc"]

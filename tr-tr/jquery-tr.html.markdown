@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: jquery
+category: framework
+framework: jquery
 contributors:
     - ["Seçkin KÜKRER", "https://github.com/leavenha"]
 filename: jquery-tr-tr.js

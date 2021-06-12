@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: jquery
+category: framework
+framework: jquery
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
     - ["Devansh Patil", "https://github.com/subtra3t"]
