@@ -167,7 +167,7 @@ else
   "Isso será"
 end
 
-# Lembra do patter matching? Muitas estruturas de fluxo de controle em elixir contam com ela.
+# Lembra do pattern matching? Muitas estruturas de fluxo de controle em elixir contam com ela.
 
 # `case` nos permite comparar um valor com muitos patterns:
 case {:um, :dois} do
