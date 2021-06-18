@@ -2,6 +2,9 @@
 category: Algorithms & Data Structures
 name: Set theory
 contributors:
+translators:
+    - ["Tianchen Xu", "https://github.com/lo0b0o"]
+lang: zh-cn
 ---
 集合论是数学的一个分支，研究集合、它们的运算和它们的性质。
 
