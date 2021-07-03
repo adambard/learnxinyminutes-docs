@@ -1,5 +1,5 @@
 ---
-language: purescript
+language: PureScript
 filename: purescript.purs
 contributors:
     - ["Fredrik Dyrkell", "http://www.lexicallyscoped.com"]
