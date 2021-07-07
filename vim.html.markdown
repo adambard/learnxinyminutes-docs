@@ -111,14 +111,21 @@ Vim is based on the concept on **modes**.
     <esc>            # 'Escapes' from whichever mode you're in, into Command mode
 
     # Copying and pasting text
+                     # Operations use the vim register by default
+                     # Think of it as vim's private clipboard
 
+                     # Yank ~ copy text into vim register
     y                # Yank whatever is selected
     yy               # Yank the current line
+
+                     # Delete ~ yank text and delete from file
     d                # Delete whatever is selected
     dd               # Delete the current line
-    p                # Paste the copied text after the current cursor position
-    P                # Paste the copied text before the current cursor position
-    x                # Deleting character under current cursor position
+
+    p                # Paste text in vim register after the current cursor position
+    P                # Paste text in vim register before the current cursor position
+
+    x                # Delete character under current cursor position
 ```
 
 ## The 'Grammar' of vim
