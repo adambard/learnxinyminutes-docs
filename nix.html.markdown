@@ -305,6 +305,9 @@ with builtins; [
   ({x, y, ...}: x + "-" + y) { x = "a"; y = "b"; z = "c"; }
   #=> "a-b"
 
+  # The entire set can be bound to a variable using `@`
+  (args@{x, y}: args.x + "-" + args.y) { x = "a"; y = "b"; }
+  #=> "a-b"
 
   #  Errors
   #=========================================
