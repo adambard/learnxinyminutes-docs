@@ -995,32 +995,39 @@ values = (-x for x in [1,2,3,4,5])
 gen_to_list = list(values)
 print(gen_to_list)  # => [-1, -2, -3, -4, -5]
 
+# Function Annotations
+# Annotations for functions are completely optional
+# they are only for documentation purposes.
+# Return annotations are defined after `->` followed by an expression.
+def message(name: str, age: int) -> str:
+    msg = "{name} is {age} years old!".format(name=name, age=age)
+    # Return type is not enforced
+    return msg
 
 # Decorators
-# In this example `beg` wraps `say`. If say_please is True then it
-# will change the returned message.
-from functools import wraps
-
-
-def beg(target_function):
-    @wraps(target_function)
+# In this example `beg` wraps `say`. 
+# Beg extends the behavior of the function `say` without modifying it.
+# Using decorators you can change behavior of functions before and after.
+def beg(func):
+    # Passing arguments and keyword arguments so the wrapped function is not effected.
     def wrapper(*args, **kwargs):
-        msg, say_please = target_function(*args, **kwargs)
-        if say_please:
-            return "{} {}".format(msg, "Please! I am poor :(")
-        return msg
-
+        # Before function `say.`
+        print("Please!")
+        result = func(*args, **kwargs)
+        # After function `say.`
+        print("I am poor :(")
+        return result
+    
     return wrapper
 
-
 @beg
-def say(say_please=False):
-    msg = "Can you buy me a beer?"
-    return msg, say_please
+def say(msg):
+    print(msg)
 
-
-print(say())                 # Can you buy me a beer?
-print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
+say("Can you buy me a beer?")
+# => Please!
+# => Can you buy me a beer?
+# => Maybe some steak too?
 ```
 
 ## Ready For More?
