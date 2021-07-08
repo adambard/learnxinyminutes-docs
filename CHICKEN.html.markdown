@@ -362,8 +362,6 @@ sqr                        ;; => #<procedure (sqr x)>
 ;; The CHICKEN core is very minimal, but additional features are provided by library extensions known as Eggs.
 ;; You can install Eggs with 'chicken-install <eggname>' command.
 
-;; 'numbers' egg provides support for full numeric tower.
-(require-extension numbers)
 ;; complex numbers
 3+4i                               ;; => 3+2i
 ;; Supports fractions without falling back to inexact flonums
@@ -375,12 +373,12 @@ sqr                        ;; => #<procedure (sqr x)>
 (numerator 2/3)                    ;; => 2
 
 ;; 'utf8' provides unicode support
-(require-extension utf8)
+(import utf8)
 "\u03BBx:(\u03BC\u0251.\u0251\u2192\u0251).xx" ;; => "λx:(μɑ.ɑ→ɑ).xx"
 
 ;; 'posix' provides file I/O and lots of other services for unix-like operating systems
 ;; Some of the functions are not available in Windows system,
-;; See http://wiki.call-cc.org/man/4/Unit%20posix for more details
+;; See http://wiki.call-cc.org/man/5/Module%20(chicken%20file%20posix) for more details
 
 ;; Open a file to append, open "write only" and create file if it does not exist
 (define outfn (file-open "chicken-hen.txt" (+ open/append open/wronly open/creat)))
@@ -396,14 +394,14 @@ sqr                        ;; => #<procedure (sqr x)>
 
 ;; CHICKEN also supports SRFI (Scheme Requests For Implementation) extensions
 ;; See 'http://srfi.schemers.org/srfi-implementers.html" to see srfi's supported by CHICKEN
-(require-extension srfi-1)         ;; list library
+(import srfi-1)                    ;; list library
 (filter odd? '(1 2 3 4 5 6 7))     ;; => (1 3 5 7)
 (count even? '(1 2 3 4 5))         ;; => 2
 (take '(12 24 36 48 60) 3)         ;; => (12 24 36)
 (drop '(12 24 36 48 60) 2)         ;; => (36 48 60)
 (circular-list 'z 'q)              ;; => z q z q ...
 
-(require-extension srfi-13)        ;; string library
+(import srfi-13)                   ;; string library
 (string-reverse "pan")             ;; => "nap"
 (string-index "Turkey" #\k)        ;; => 3
 (string-every char-upper-case? "CHICKEN") ;; => #t
@@ -448,7 +446,7 @@ sqr                        ;; => #<procedure (sqr x)>
 ; 9. Modules
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Also See http://wiki.call-cc.org/man/4/Modules
+;; Also See http://wiki.call-cc.org/man/5/Modules
 
 ;; The 'test' module exports a value named 'hello' and a macro named 'greet'
 (module test (hello greet)
@@ -509,11 +507,11 @@ sqr                        ;; => #<procedure (sqr x)>
 
 ```
 ## Further Reading
-* [CHICKEN User's Manual](http://wiki.call-cc.org/man/4/The%20User%27s%20Manual).
+* [CHICKEN User's Manual](https://wiki.call-cc.org/manual).
 * [R5RS standards](http://www.schemers.org/Documents/Standards/R5RS)
 
 
 ## Extra Info
 
-* [For programmers of other languages](http://wiki.call-cc.org/chicken-for-programmers-of-other-languages)
+* [For programmers of other languages](https://wiki.call-cc.org/chicken-for-programmers-of-other-languages)
 * [Compare CHICKEN syntax with other languages](http://plr.sourceforge.net/cgi-bin/plr/launch.py)
