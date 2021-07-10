@@ -17,7 +17,7 @@ La théorie des ensembles est une branche des mathématiques qui étudie les ens
 * l'opérateur intersection, `∩`, signifie "et";
 * l'opérateur différence, `\`, signifie "sans", (lire "A moins B");
 * l'opérateur complémentaire, `'`, signifie "le complémentaire de";
-* l'opérateur croix, `×`, signifie "le produit cartésien de".
+* l'opérateur croix, `×`, signifie "le produit cartésien de";
 
 ### Autres symboles
 * le symbole deux-points, `:`, signifie "tel que";
@@ -34,7 +34,7 @@ La théorie des ensembles est une branche des mathématiques qui étudie les ens
 
 Quelques mise en gardes sur les ensembles definis ci-dessus:
 1. Même si l'ensemble vide ne contient aucun élément, il est lui-même un sous-ensemble de n'importe quel ensemble.
-2. Il n'y a pas d'accord général sur l'appartenance de zéro dans l'ensemble des nombres naturels, et les livres indiquent explicitment si l'auteur considere le zéro comme nombre naturel ou pas.
+2. Il n'y a pas d'accord général sur l'appartenance de zéro dans l'ensemble des nombres naturels, et les livres indiquent explicitment si l'auteur considère le zéro comme nombre naturel ou pas.
 
 
 ### Cardinalité
@@ -43,16 +43,16 @@ La cardinalité, ou taille, d'un ensemble est déterminée par le nombre d'élé
 Par exemple, si `S = { 1, 2, 4 }`, alors `|S| = 3`.
 
 ### L'ensemble vide
-* L'ensemble vide peut se définir en comprehension à l'aide d'une propriété qui est satisfait par nul élément, e.g. `∅ = { x : x ≠ x }`, ou `∅ = { x : x ∈ N, x < 0 }`;
-* il n'y a q'un seul ensemble vide;
+* L'ensemble vide peut se définir en comprehension à l'aide d'une propriété qui n'est satisfaite par nul élément, e.g. `∅ = { x : x ≠ x }`, ou `∅ = { x : x ∈ N, x < 0 }`;
+* il n'y a qu'un seul ensemble vide;
 * l'ensemble vide est sous-ensemble de tout ensemble;
-* la cardinalité de l'ensemble vide est 0, i.e. `|∅| = 0`.
+* la cardinalité de l'ensemble vide est 0, ou `|∅| = 0`.
 
 ## Notation ensembliste
 
 ### Définition par extension
 
-Un ensemble peut être defini en extension par une liste de tous les éléments qui sont contenu dans l'ensemble. Par exemple, `S = { a, b, c, d }`.
+Un ensemble peut être defini en extension par une liste de tous les éléments qui sont contenus dans l'ensemble. Par exemple, `S = { a, b, c, d }`.
 
 Quand le contexte est clair, on peut raccourcir la liste en utilisant des points de suspension. Par exemple, `E = { 2, 4, 6, 8, ... }` est clairement l'ensemble de tous les nombres pairs, contenant un nombre infini des éléments, même si on a explicitement écrit seulement les quatres premiers.
 
@@ -82,8 +82,8 @@ D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
 ### Égalité
 
 * On dit que deux ensembles `A` et `B` sont égaux s'ils contiennent les mêmes éléments, et on le note `A = B`.
-* Les ensembles n'ont pas de notion d'ordre, e.g. `{ 1, 2, 3, 4 } = { 2, 3, 1, 4 }`.
-* Un élément ne peut apparaître q'au plus une seule fois - il n'y a jamais de répétition, e.g. `{ 1, 2, 2, 3, 4, 3, 4, 2 } = { 1, 2, 3, 4 }`.
+* Les ensembles n'ont pas de notion d'ordre, par exemple `{ 1, 2, 3, 4 } = { 2, 3, 1, 4 }`.
+* Un élément ne peut apparaître qu'au plus une seule fois - il n'y a jamais de répétition, e.g. `{ 1, 2, 2, 3, 4, 3, 4, 2 } = { 1, 2, 3, 4 }`.
 * Deux ensembles `A` and `B` sont égaux si et seulement si `A ⊆ B` and `B ⊆ A`.
 
 ## Ensemble puissance
@@ -109,7 +109,7 @@ A ∩ B = { x : x ∈ A, x ∈ B }
 ```
 
 ### Différence
-Le différence de deux ensembles `A` et `B` est l'ensemble contenant tous les éléments de l'ensemble `A` qui n'appartient pas à `B`.
+La différence de deux ensembles `A` et `B` est l'ensemble contenant tous les éléments de l'ensemble `A` qui n'appartient pas à `B`.
 
 ```
 A \ B = { x : x ∈ A, x ∉ B }
