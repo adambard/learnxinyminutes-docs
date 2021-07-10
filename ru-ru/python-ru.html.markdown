@@ -353,7 +353,6 @@ empty_set = set()
 # Да, оно выглядит примерно как словарь. Ну извините, так уж вышло.
 filled_set = {1, 2, 2, 3, 4}  # => {1, 2, 3, 4}
 
-# Similar to keys of a dictionary, elements of a set have to be immutable.
 # Как и ключи словаря, элементы множества должны быть неизменяемыми.
 invalid_set = {[1], 1}  # => Выбрасывает ошибку TypeError: unhashable type: 'list'
 valid_set = {(1,), 1}
