@@ -87,7 +87,7 @@ D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
 ## Special Sets
 
 ### The Power Set
-* Let `A` be any set. The set that contains all possible subsets of `A` is called a "power set" and is written as `P(A)`. If the set `A` contains `n` elements, then `P(A)` contains `2^N` elements.
+* Let `A` be any set. The set that contains all possible subsets of `A` is called a "power set" and is written as `P(A)`. If the set `A` contains `n` elements, then `P(A)` contains `2^n` elements.
 
 ```
 P(A) = { x : x ⊆ A }
