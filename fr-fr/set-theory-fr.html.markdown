@@ -13,23 +13,23 @@ La théorie des ensembles est une branche des mathématiques qui étudie les ens
 ## Symboles de base
 
 ### Opérateurs
-* l'opérateur réunion, `∪`, signifie "ou";
-* l'opérateur intersection, `∩`, signifie "et";
-* l'opérateur différence, `\`, signifie "sans", (lire "A moins B");
-* l'opérateur complémentaire, `'`, signifie "le complémentaire de";
-* l'opérateur croix, `×`, signifie "le produit cartésien de";
+* l'opérateur réunion, `∪`, signifie "ou" ;
+* l'opérateur intersection, `∩`, signifie "et" ;
+* l'opérateur différence, `\`, signifie "sans", (lire "A moins B") ;
+* l'opérateur complémentaire, `'`, signifie "le complémentaire de" ;
+* l'opérateur croix, `×`, signifie "le produit cartésien de".
 
 ### Autres symboles
-* le symbole deux-points, `:`, signifie "tel que";
-* le symbole d'appartenance, `∈`, signifie "appartient à";
-* le symbole sous-ensemble, `⊆`, signifie "est un sous-ensemble de";
+* le symbole deux-points, `:`, signifie "tel que" ;
+* le symbole d'appartenance, `∈`, signifie "appartient à" ;
+* le symbole sous-ensemble, `⊆`, signifie "est un sous-ensemble de" ;
 * le symbole sous-ensemble propre, `⊂`, signifie "est un sous-ensemble de mais n'est pas égal à".
 
 ### Ensembles importants
-* `∅`, l'ensemble vide, c'est-à-dire l'ensemble ne contenant aucun élément;
-* `ℕ`, l'ensemble des nombres naturels;
-* `ℤ`, l'ensemble des entiers;
-* `ℚ`, l'ensemble des nombres rationnels;
+* `∅`, l'ensemble vide, c'est-à-dire l'ensemble ne contenant aucun élément ;
+* `ℕ`, l'ensemble des nombres naturels ;
+* `ℤ`, l'ensemble des entiers ;
+* `ℚ`, l'ensemble des nombres rationnels ;
 * `ℝ`, l'ensemble des nombres réels.
 
 Quelques mise en gardes sur les ensembles definis ci-dessus:
@@ -43,9 +43,9 @@ La cardinalité, ou taille, d'un ensemble est déterminée par le nombre d'élé
 Par exemple, si `S = { 1, 2, 4 }`, alors `|S| = 3`.
 
 ### L'ensemble vide
-* L'ensemble vide peut se définir en comprehension à l'aide d'une propriété qui n'est satisfaite par nul élément, e.g. `∅ = { x : x ≠ x }`, ou `∅ = { x : x ∈ N, x < 0 }`;
-* il n'y a qu'un seul ensemble vide;
-* l'ensemble vide est sous-ensemble de tout ensemble;
+* L'ensemble vide peut se définir en comprehension à l'aide d'une propriété qui n'est satisfaite par nul élément, e.g. `∅ = { x : x ≠ x }`, ou `∅ = { x : x ∈ N, x < 0 }`.
+* il n'y a qu'un seul ensemble vide.
+* l'ensemble vide est sous-ensemble de tout ensemble.
 * la cardinalité de l'ensemble vide est 0, ou `|∅| = 0`.
 
 ## Notation ensembliste
