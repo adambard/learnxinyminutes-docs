@@ -3,6 +3,7 @@ language: javascript
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
+    - ["Sebastian Doe", "https://sebastiandoe5.github.io"]
 filename: javascript.js
 ---
 
@@ -612,6 +613,13 @@ const isEven = (number) => {
 };
 
 isEven(7); // false
+
+// In these functions, the braces, parentheses and return statement are optional.
+// Therefore, the following one-line function would produce the same result:
+
+const isEven2 = number => number % 2 === 0; // Return is implied
+
+isEven2(7); // false
 
 // The "equivalent" of this function in the traditional syntax would look like this:
 
