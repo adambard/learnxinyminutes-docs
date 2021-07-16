@@ -481,7 +481,7 @@ class SaintBernard extends Dog {
 	def bite = false
 }  
 
-scala> b  
+scala> val b = new SaintBernard()
 res0: SaintBernard = SaintBernard@3e57cd70  
 scala> b.breed  
 res1: String = Saint Bernard  
