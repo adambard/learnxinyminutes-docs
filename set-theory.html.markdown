@@ -13,7 +13,7 @@ Set theory is a branch of mathematics that studies sets, their operations, and t
 * the union operator, `∪`, pronounced "cup", means "or";
 * the intersection operator, `∩`, pronounced "cap", means "and";
 * the exclusion operator, `\`, means "without";
-* the compliment operator, `'`, means "the inverse of";
+* the complement operator, `'`, means "the inverse of";
 * the cross operator, `×`, means "the Cartesian product of".
 
 ### Qualifiers 
