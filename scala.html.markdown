@@ -599,7 +599,7 @@ List("Dom", "Bob", "Natalia") foreach println
 
 s.map(sq)
 
-val sSquared = s. map(sq)
+val sSquared = s.map(sq)
 
 sSquared.filter(_ < 10)
 
@@ -717,7 +717,7 @@ import scala.collection.immutable.{Map => _, Set => _, _}
 // Java classes can also be imported. Scala syntax can be used
 import java.swing.{JFrame, JWindow}
 
-// Your programs entry point is defined in a scala file using an object, with a
+// Your program's entry point is defined in a scala file using an object, with a
 // single method, main:
 object Application {
   def main(args: Array[String]): Unit = {
