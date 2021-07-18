@@ -3,13 +3,14 @@ category: tool
 tool: amd
 contributors:
     - ["Frederik Ring", "https://github.com/m90"]
+    - ["Jishan Shaikh", "https://github.com/jishanshaikh4"]
 filename: learnamd-hd.js
 lang: hd
 ---
 ## एएमडी के साथ प्रारंभ करना
 
 एपीआई को परिभाषित करने के लिए एक तंत्र को निर्दिष्ट ** ** अतुल्यकालिक मॉड्यूल परिभाषा
-जावास्क्रिप्ट मॉड्यूल ऐसे मॉड्यूल और इसकी अतुल्यकालिक निर्भरता से भरा हुआ है। यह ब्राउज़र पर्यावरण जहां के लिए विशेष रूप से अच्छी तरह से अनुकूल है, और प्रदर्शन , प्रयोज्य, डीबगिंग, और क्रॉस-डोमेन जैसे मॉड्यूल्स को जल्दी सिंक्रनाइज़ लोडिंग करता hai।
+जावास्क्रिप्ट मॉड्यूल ऐसे मॉड्यूल और इसकी अतुल्यकालिक निर्भरता से भरा हुआ है। यह ब्राउज़र पर्यावरण जहां के लिए विशेष रूप से अच्छी तरह से अनुकूल है, और प्रदर्शन , प्रयोज्य, डीबगिंग, और क्रॉस-डोमेन जैसे मॉड्यूल्स को जल्दी सिंक्रनाइज़ लोडिंग करता हैं।
 
 ### मूल अवधारणा
 ```javascript
@@ -181,27 +182,27 @@ $ r.js -o app.build.js
 <script src="require.js" data-main="app/main-built"></script>
 ```
 
-एक अविश्वसनीय रूप से विस्तृत [निर्माण विकल्पों में से अवलोकन] (https://github.com/jrburke/r.js/blob/master/build/example.build.js) GitHub रेपो में उपलब्ध है।
+एक अविश्वसनीय रूप से विस्तृत [निर्माण विकल्पों में से अवलोकन](https://github.com/jrburke/r.js/blob/master/build/example.build.js) GitHub रेपो में उपलब्ध है।
 
 ### विषय इस ट्यूटोरियल में शामिल नहीं
-* [लोडर प्लगइन्स / रूपांतरण] (http://requirejs.org/docs/plugins.html)
-* [CommonJS शैली लोड हो रहा है और निर्यात] (http://requirejs.org/docs/commonjs.html)
-* [उन्नत विन्यास] (http://requirejs.org/docs/api.html#config)
-* [शिम विन्यास (गैर एएमडी मॉड्यूल लोडिंग)] (http://requirejs.org/docs/api.html#config-shim)
-* [सीएसएस लदान और require.js साथ अनुकूलन] (http://requirejs.org/docs/optimization.html#onecss)
-* (Https://github.com/jrburke/almond) [बनाता है के लिए almond.js का प्रयोग]
+* [लोडर प्लगइन्स / रूपांतरण](http://requirejs.org/docs/plugins.html)
+* [CommonJS शैली लोड हो रहा है और निर्यात](http://requirejs.org/docs/commonjs.html)
+* [उन्नत विन्यास](http://requirejs.org/docs/api.html#config)
+* [शिम विन्यास (गैर एएमडी मॉड्यूल लोडिंग)](http://requirejs.org/docs/api.html#config-shim)
+* [सीएसएस लदान और require.js साथ अनुकूलन](http://requirejs.org/docs/optimization.html#onecss)
+* (Https://github.com/jrburke/almond)[बनाता है के लिए almond.js का प्रयोग]
 
 ### अग्रिम पठन:
 
-* [सरकारी कल्पना] (https://github.com/amdjs/amdjs-api/wiki/AMD)
-* [क्यों एएमडी?] (Http://requirejs.org/docs/whyamd.html)
-* [यूनिवर्सल मॉड्यूल परिभाषा] (https://github.com/umdjs/umd)
+* [सरकारी कल्पना](https://github.com/amdjs/amdjs-api/wiki/AMD)
+* [क्यों एएमडी?](Http://requirejs.org/docs/whyamd.html)
+* [यूनिवर्सल मॉड्यूल परिभाषा](https://github.com/umdjs/umd)
 
 ### कार्यान्वयन:
 
-* [Require.js] (http://requirejs.org)
-* [डोजो टूलकिट] (http://dojotoolkit.org/documentation/tutorials/1.9/modules/)
-* [Cujo.js] (http://cujojs.com/)
-* [Curl.js] (https://github.com/cujojs/curl)
-* [Lsjs] (https://github.com/zazl/lsjs)
-* [एमडी] (https://github.com/alexlawrence/mmd)
+* [Require.js](http://requirejs.org)
+* [डोजो टूलकिट](http://dojotoolkit.org/documentation/tutorials/1.9/modules/)
+* [Cujo.js](http://cujojs.com/)
+* [Curl.js](https://github.com/cujojs/curl)
+* [Lsjs](https://github.com/zazl/lsjs)
+* [एमडी](https://github.com/alexlawrence/mmd)
