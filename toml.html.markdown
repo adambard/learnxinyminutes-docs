@@ -272,7 +272,6 @@ The equivalent in JSON would be:
 ```
 The equivalent in JSON would be:
 ```json
-
 {
   "fruit": [
     {
