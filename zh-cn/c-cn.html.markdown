@@ -340,7 +340,7 @@ printf("%p\n", &x); // 用 & 来获取变量的地址
 // => 打印某个内存地址
 
 // 指针类型在声明中以*开头
-int* px, not_a_pointer; // px是一个指向int型的指针
+int *px, not_a_pointer; // px是一个指向int型的指针
 px = &x; // 把x的地址保存到px中
 printf("%p\n", (void *)px); // => 输出内存中的某个地址
 printf("%zu, %zu\n", sizeof(px), sizeof(not_a_pointer));
