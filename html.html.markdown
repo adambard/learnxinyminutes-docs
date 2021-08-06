@@ -3,6 +3,7 @@ language: html
 filename: learnhtml-fa.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
+    - ["Ehsan Parsania", "https://github.com/EhsanParsania"]
 translators:
     - ["Ehsan Parsania", "https://github.com/EhsanParsania"]
 ---
