@@ -1,46 +1,45 @@
 ---
 language: html
-filename: learnhtml.txt
+filename: learnhtml-fa.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
-    - ["Robert Steed", "https://github.com/robochat"]
-    - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
+    - ["Ehsan Parsania", "https://github.com/EhsanParsania"]
 ---
+<div dir='rtl'> 
+	
+**HTML مخفف HyperText Markup Language است.**
 
-HTML stands for HyperText Markup Language.
 
-It is a language which allows us to write pages for the world wide web.
-It is a markup language, it enables us to write webpages using code to indicate
-how text and data should be displayed.  In fact, html files are simple text
-files.
+ html زبانی است که به ما امکان می دهد صفحاتی را برای شبکه جهانی وب بنویسیم.
+این یک زیان برنامه نویسی نیست بلکه یک زبان نشانه گذاری است که ما را قادر می سازد تا صفحات وب را برای نشان دادن تکست ها و داده ها بنویسیم و تعیین کنیم که 
+چگونه متن و داده ها باید نمایش داده شوند. در واقع HTML یک متن ساده خام می باشد.
 
-What is this markup? It is a method of organising the page's data by
-surrounding it with opening tags and closing tags.  This markup serves to give
-significance to the text that it encloses.  Like other computer languages, HTML
-has many versions. Here we will talk about HTML5.
+این نشانه گذاری چیست؟ این یک روش سازماندهی داده های صفحه توسط تگ ها است
+	هر تکه کد باید درون تگ باز و بسته HTML .رار بگیرد
+نوع تگ 
+برای متنی که در آن قرار دارد اهمیت دارد. مانند سایر زبان هاHTML
+نسخه های زیادی دارد در اینجا ما در مورد HTML5 صحبت خواهیم کرد.
 
-**NOTE :**  You can test the different tags and elements as you progress through
-the tutorial on a site like [codepen](http://codepen.io/pen/) in order to see
-their effects, understand how they work and familiarise yourself with the
-language.  This article is concerned principally with HTML syntax and some
-useful tips.
-
+ توجه: ** می توانید برچسب ها و عناصر مختلف را در حین پیشرفت آزمایش کنید**
+	
+	
+به منظور آشنایی بیشتر میتوانید در سایتی مانند (http://codepen.io/pen/) کدهای HTML را امتحان و نتیجه آن را به سادگی ببینید ،تأثیرات آنها را بشناسید ، نحوه عملکرد آنها را بشناسید و با آنها آشنا شوید
+</div>
 
 ```html
-<!-- Comments are enclosed like this line! -->
+<!--تگ کامنت ها مانند این خط بسته نمی شود -->
 
 <!--
-	Comments
-	can
-	span
-	multiple
-	lines!
+	کامنت ها
+	میتوانند     
+	در خطوط 
+	متوالی باشند
 -->
 
-<!-- #################### The Tags #################### -->
+<!-- #################### تگ ها ################ -->
 
-<!-- Here is an example HTML file that we are going to analyse. -->
+<!-- این یک یک فایل HTML است که ما آن را بررسی میکنیم -->
 
 
 <!doctype html>
@@ -64,60 +63,90 @@ useful tips.
 	</html>
 
 <!--
-	An HTML file always starts by indicating to the browser that the page is HTML.
+در شروع یک فایل html همیشه یک معرف برای مرورگر وجود دارد
 -->
 <!doctype html>
 
-<!-- After this, it starts by opening an <html> tag. -->
+	<!-- بعد از آن تگ	 
+	html 
+	قرار میگیرد 
+	-->
 <html>
 
-<!-- that will be closed at the end of the file with </html>. -->
+<!-- 
+ و در آخر فایل آن تگ باید بسته شود
+-->
 </html>
 
-<!-- Nothing should appear after this final tag. -->
+<!-- 
+و هیج چیز دیگری بعد از بسته شدن این تگ نوشته نشود
+-->
 
-<!-- Inside (between the opening and closing tags <html></html>), we find: -->
+<!-- 
+ درون تگ 
+html
+ما تگهای دیگری خواهیم داشت:
+<head>
+</head>
+و 
+<body>
+</body>
+
+-->
 
 <!-- A header defined by <head> (it must be closed with </head>). -->
 <!--
-	The header contains some description and additional information which are not
-	displayed; this is metadata.
+			درون تگ هد اطلاعات از جمله توصیفات و اطلاعات تکمیلی قرار میگیرد مانند تگ های :
+	<title> : موضوع صفحه که در قسمت تب مرورگر قرار میگیرد
+<
 -->
 
 <head>
-	<!--
-		The tag <title> indicates to the browser the title to show in browser
-		window's title bar and tab name.
-	-->
 	<title>My Site</title>
 </head>
 
-<!-- After the <head> section, we find the tag - <body> -->
-<!-- Until this point, nothing described will show up in the browser window. -->
-<!-- We must fill the body with the content to be displayed. -->
+<!-- 
+بعد از آن تگ 
+body 
+قرار میگیرد که تمام کد ما در این تگ نوشته میشود
+-->
 
 <body>
-	<!-- The h1 tag creates a title. -->
+	<!-- 
+ 	تگ 
+	<h1>
+	برای نشان دادن موضوع میباشد 
+	-->
 	<h1>Hello, world!</h1>
 	<!--
-		There are also subtitles to <h1> from the most important (h2) to the most
-		precise (h6).
+		و تگ های دیگری با اولویت های کمتر هم برای موضوع 
+		وجود دارد مانند :
+		h2, h3, h4 ,h5, h6
 	-->
 
-	<!-- a hyperlink to the url given by the attribute href="" -->
+	<!-- 
+ 	 تگ لینک
+	<a>
+	با اتریبیوت href
+	 برای دادن آدرس لینک می باشد
+	-->
 	<a href="http://codepen.io/anon/pen/xwjLbZ">
 		Come look at what this shows
 	</a>
 
-	<!-- The tag <p> lets us include text in the html page. -->
+	<!-- 
+ 	تگ <p>
+	برای نشان دادن متن به صورت پارگراف میباشد
+	-->
 	<p>This is a paragraph.</p>
 	<p>This is another paragraph.</p>
 
-	<!-- The tag <ul> creates a bullet list. -->
-	<!--
-		To have a numbered list instead we would use <ol> giving 1. for the first
-		element, 2. for the second, etc.
+	<!-- 
+	تگ <ul>
+	برای ساختن لیست به صورت مرتب عددی و 
+	 به صورت غیرعددی میباشد.
 	-->
+	
 	<ul>
 		<li>This is an item in a non-enumerated list (bullet list)</li>
 		<li>This is another item</li>
@@ -125,33 +154,57 @@ useful tips.
 	</ul>
 </body>
 
-<!-- And that's it, creating an HTML file can be simple. -->
-
-<!-- But it is possible to add many additional types of HTML tags. -->
-
-<!-- The <img /> tag is used to insert an image. -->
-<!--
-	The source of the image is indicated using the attribute src=""
-	The source can be an URL or even path to a file on your computer.
+<!-- 
+ به همین راحتی اینها مفاهیم اولیه بودند 
 -->
+
+<!-- 
+اما صفت ها و جزییات بیشتری وجود داره که میتونید انها رو هم یاد بگیرید 
+-->
+
+<!-- 
+تگ <img>
+ برای نشان دادن عکس با آدرس مشخص است.
+-->
+
 <img src="http://i.imgur.com/XWG0O.gif"/>
 
-<!-- It is also possible to create a table. -->
+<!--
+همچنین میتوانید یک جدول هم به همین راحتی درست کنید. 
+-->
 
-<!-- We open a <table> element. -->
+<!-- 
+ با استفاده از تگ 
+<table>
+-->
+
 <table>
 
-	<!-- <tr> allows us to create a row. -->
+	<!-- <tr> 
+ 	و با تگ 
+	<tr>\
+	برای جدول ردیف درست کنید.
+	-->
+	
 	<tr>
 
-		<!-- <th> allows us to give a title to a table column. -->
+		<!-- 
+ 		و درون هر ردیف با تگ
+		<th>
+		سر ستون ها رو بسازید
+		-->
 		<th>First Header</th>
 		<th>Second Header</th>
 	</tr>
 
 	<tr>
 
-		<!-- <td> allows us to create a table cell. -->
+		<!-- 
+ 		و با تگ 
+		<td>
+		بقیه ستون ها رو درست کنید
+		-->
+		
 		<td>first row, first column</td>
 		<td>first row, second column</td>
 	</tr>
@@ -165,11 +218,18 @@ useful tips.
 ```
 
 ## Usage
+پسوند فایل HTML 
+.htm
+یا 
+.html 
+میباشد.
+و مایم تایپ آن
+'text/html'
+است.
 
-HTML is written in files ending with `.html` or `.htm`. The mime type is
-`text/html`.
-**HTML is NOT a programming language**
-## To Learn More
+**HTML یک زبان برنامه نویسی نیست**
+
+## برای یادگیری بیشتر : 
 
 * [wikipedia](https://en.wikipedia.org/wiki/HTML)
 * [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
