@@ -4,6 +4,7 @@ contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Steve Huguenin-Elie", "https://github.com/StEvUgnIn"]
     - ["Sebastian Speitel", "https://github.com/SebastianSpeitel"]
+    - ["Max Graey", "https://github.com/MaxGraey"]
 filename: learnassemblyscript.ts
 ---
 
@@ -180,6 +181,14 @@ moreNumbers[5] = 5; // Error, elements are read-only
 moreNumbers.push(5); // Error, no push method (because it mutates array)
 moreNumbers.length = 3; // Error, length is read-only
 numbers = moreNumbers; // Error, mutating methods are missing
+
+// Type inference in Arrays
+let ints = [0, 1, 2, 3, 4]  // will infer as Array<i32>
+let floats: f32[] = [0, 1, 2, 3, 4]  // will infer as Array<f32>
+let doubles = [0.0, 1.0, 2, 3, 4]  // will infer as Array<f64>
+let bytes = [0 as u8, 1, 2, 3, 4]  // will infer as Array<u8>
+let bytes = [0, 1, 2, 3, 4]  as u8[] // will infer as Array<u8>
+let bytes: u8[] = [0, 1, 2, 3, 4] // will infer as Array<u8>
 
 // This is how you import external JS functions in a namspace
 declare namespace console {
