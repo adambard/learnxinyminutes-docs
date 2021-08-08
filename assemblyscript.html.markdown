@@ -11,7 +11,7 @@ __AssemblyScript__ compiles a variant of __TypeScript__ (basically JavaScript wi
 This article will focus only on AssemblyScript extra syntax, as opposed to [TypeScript](/docs/typescript) and [JavaScript](/docs/javascript).
 
 To test AssemblyScript's compiler, head to the
-[Playground](https://www.assemblyscript.org/editor.html#IyFydW50aW1lPXN0dWIKLyoqIENhbGN1bGF0ZXMgdGhlIG4tdGggRmlib25hY2NpIG51bWJlci4gKi8KZXhwb3J0IGZ1bmN0aW9uIGZpYihuOiBpMzIpOiBpMzIgewogIHZhciBhID0gMCwgYiA9IDEKICBpZiAobiA+IDApIHsKICAgIHdoaWxlICgtLW4pIHsKICAgICAgbGV0IHQgPSBhICsgYgogICAgICBhID0gYgogICAgICBiID0gdAogICAgfQogICAgcmV0dXJuIGIKICB9CiAgcmV0dXJuIGEKfQoKIyFodG1sCjx0ZXh0YXJlYSBpZD0ib3V0cHV0IiBzdHlsZT0iaGVpZ2h0OiAxMDAlOyB3aWR0aDogMTAwJSIgcmVhZG9ubHk+PC90ZXh0YXJlYT4KPHNjcmlwdD4KbG9hZGVyLmluc3RhbnRpYXRlKG1vZHVsZV93YXNtLCB7IC8qIGltcG9ydHMgKi8gfSkKICAudGhlbigoeyBleHBvcnRzIH0pID0+IHsKICAgIGNvbnN0IG91dHB1dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdvdXRwdXQnKQogICAgZm9yIChsZXQgaSA9IDA7IGkgPD0gMTA7ICsraSkgewogICAgICBvdXRwdXQudmFsdWUgKz0gYGZpYigke2l9KSA9ICR7ZXhwb3J0cy5maWIoaSl9XG5gCiAgICB9CiAgfSkKPC9zY3JpcHQ+Cg==) where you will be able
+[Playground](https://bit.ly/asplayground) where you will be able
 to type code, have auto completion and directly see the emitted WebAssembly.
 
 ```ts
@@ -92,7 +92,7 @@ interface SearchFunc {
 }
 // Only the parameters' types are important, names are not important.
 let mySearch: SearchFunc;
-mySearch = function (src: string, sub: string) {
+mySearch = function (src: string, sub: string): boolean {
   return src.search(sub) != -1;
 }
 
@@ -161,7 +161,12 @@ let s2 = new G.Square(10);
 
 
 // Generics
-// AssemblyScript compiles generics to one concrete method or function per set of unique contextual type arguments, also known as [monomorphisation]. Implications are that a module only includes and exports concrete functions for sets of type arguments actually used and that concrete functions can be shortcutted with [static type checks] at compile time, which turned out to be quite useful.
+// AssemblyScript compiles generics to one concrete method or function per set 
+// of unique contextual type arguments, also known as [monomorphisation]. 
+// Implications are that a module only includes and exports concrete functions 
+// for sets of type arguments actually used and that concrete functions can be 
+// shortcutted with [static type checks] at compile time, which turned out to 
+// be quite useful.
 // Classes
 class Tuple<T1, T2> {
   constructor(public item1: T1, public item2: T2) {
