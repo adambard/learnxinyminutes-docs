@@ -3,6 +3,7 @@ language: Assemblyscript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Steve Huguenin-Elie", "https://github.com/StEvUgnIn"]
+    - ["Sebastian Speitel", "https://github.com/SebastianSpeitel"]
 filename: learnassemblyscript.ts
 ---
 
@@ -16,8 +17,10 @@ to type code, have auto completion and directly see the emitted WebAssembly.
 
 ```ts
 // There are many basic types in AssemblyScript,
+{
 let isDone: boolean = false;
 let name: string = "Anders";
+}
 
 // but integer type come as signed (sized from 8 to 64 bits)
 let lines8: i8 = 42;
@@ -37,22 +40,29 @@ let rate64: f64 = 1.0
 
 // But you can omit the type annotation if the variables are derived
 // from explicit literals
+{
 let isDone = false;
 let lines = 42;
 let name = "Anders";
+}
 
 // Use const keyword for constants
 const numLivesForCat = 9;
 numLivesForCat = 1; // Error
 
 // For collections, there are typed arrays and generic arrays
-let list: i32[] = [1, 2, 3];
+let list: i8[] = [1, 2, 3];
 // Alternatively, using the generic array type
-let list: Array<i32> = [1, 2, 3];
+let list: Array<i8> = [1, 2, 3];
 
 // For enumerations:
 enum Color { Red, Green, Blue };
 let c: Color = Color.Green;
+
+// Importing JS alert
+// @ts-ignore decorator
+@external("alert")
+declare function alert(msg: string[]): void;
 
 // Lastly, "void" is used in the special case of a function returning nothing
 function bigHorribleAlert(): void {
@@ -68,33 +78,6 @@ function f1 (i: i32): i32 { return i * i; }
 let f2 = (i: i32): i32 => { return i * i; }
 // "Fat arrow" syntax, braceless means no return keyword needed
 let f3 = (i: i32): i32 => i * i;
-
-// Interfaces are structural, anything that has the properties is compliant
-// with the interface
-interface Person {
-  name: string;
-  age: i32;
-  // And of course functions
-  move(): void;
-}
-
-// Object that implements the "Person" interface
-// Cannot be treated as a Person since it misses the age property
-let p: Person = { name: "Bobby", move: () => { } };
-// Objects that have the optional property:
-let validPerson: Person = { name: "Bobby", age: 42, move: () => { } };
-// Is not a person because age is not a number
-let invalidPerson: Person = { name: "Bobby", age: true };
-
-// Interfaces can also describe a function type
-interface SearchFunc {
-  (source: string, subString: string): boolean;
-}
-// Only the parameters' types are important, names are not important.
-let mySearch: SearchFunc;
-mySearch = function (src: string, sub: string): boolean {
-  return src.search(sub) != -1;
-}
 
 // Classes - members are public by default
 class Point {
@@ -115,14 +98,14 @@ class Point {
   dist(): f64 { return Math.sqrt(this.x * this.x + this.y * this.y); }
 
   // Static members
-  static origin = new Point(0, 0);
+  static origin: Point = new Point(0, 0);
 }
 
 // Classes can be explicitly marked as implementing an interface.
 // Any missing properties will then cause an error at compile-time.
 class PointPerson implements Person {
     name: string
-    move() {}
+    move(): void {}
 }
 
 let p1 = new Point(10, 20);
@@ -143,22 +126,16 @@ class Point3D extends Point {
 
 // Modules, "." can be used as separator for sub modules
 module Geometry {
-  export class Square {
+  class Square {
     constructor(public sideLength: f64 = 0) {
     }
-    area() {
+    area(): void {
       return Math.pow(this.sideLength, 2);
     }
   }
 }
 
 let s1 = new Geometry.Square(5);
-
-// Local alias for referencing a module
-import G = Geometry;
-
-let s2 = new G.Square(10);
-
 
 // Generics
 // AssemblyScript compiles generics to one concrete method or function per set 
@@ -197,20 +174,14 @@ let greeting = `Hi ${name}, how are you?`
 let multiline = `This is an example
 of a multiline string`;
 
-let numbers: Array<number> = [0, 1, 2, 3, 4];
-let moreNumbers: Array<number> = numbers;
+let numbers: Array<i8> = [0, 1, 2, 3, 4];
+let moreNumbers: Array<i8> = numbers;
 moreNumbers[5] = 5; // Error, elements are read-only
 moreNumbers.push(5); // Error, no push method (because it mutates array)
 moreNumbers.length = 3; // Error, length is read-only
 numbers = moreNumbers; // Error, mutating methods are missing
 
-// Tagged Union Types for modelling state that can be in one of many shapes
-type State = 
-  | { type: "loading" }
-  | { type: "success", value: i32 }
-  | { type: "error", message: string };
-
-// This is how you import external JS functions
+// This is how you import external JS functions in a namspace
 declare namespace console {
   // @ts-ignore decorator
   @external("console", "log")
@@ -219,33 +190,6 @@ declare namespace console {
    // @ts-ignore decorator
   @external("console", "error")
   function error(msg: string): void
-}
-
-declare const state: State;
-if (state.type === "success") {
-  console.log(state.value);
-} else if (state.type === "error") {
-  console.error(state.message);
-}
-
-// Iterators and Generators
-
-// for..of statement
-// iterate over the list of values on the object being iterated
-let arrayOfAnyType = [1, "string", false];
-for (const val of arrayOfAnyType) {
-    console.log(val); // 1, "string", false
-}
-
-let list = [4, 5, 6];
-for (const i of list) {
-   console.log(i); // 4, 5, 6
-}
-
-// for..in statement
-// iterate over the list of keys on the object being iterated
-for (const i in list) {
-   console.log(i); // 0, 1, 2
 }
 
 // Type Assertion
