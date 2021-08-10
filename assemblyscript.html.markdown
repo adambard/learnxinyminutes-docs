@@ -104,7 +104,7 @@ class Point {
 
 // Classes can be explicitly marked as implementing an interface.
 // Any missing properties will then cause an error at compile-time.
-class PointPerson implements Person {
+class PointPerson extends Point {
     name: string
     move(): void {}
 }
