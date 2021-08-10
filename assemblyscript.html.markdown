@@ -52,22 +52,29 @@ const numLivesForCat = 9;
 numLivesForCat = 1; // Error
 
 // For collections, there are typed arrays and generic arrays
-let list: i8[] = [1, 2, 3];
+let list1: i8[] = [1, 2, 3];
 // Alternatively, using the generic array type
-let list: Array<i8> = [1, 2, 3];
+let list2: Array<i8> = [1, 2, 3];
 
 // For enumerations:
 enum Color { Red, Green, Blue };
 let c: Color = Color.Green;
 
-// Importing JS alert
+// Functions imported from JavaScript need to be declared as external
 // @ts-ignore decorator
 @external("alert")
-declare function alert(msg: string): void;
+declare function alert(message: string): void;
+
+// and you can also import JS functions in a namespace
+declare namespace window {
+  // @ts-ignore decorator
+  @external("window", "alert")
+  function alert(message: string): void;
+}
 
 // Lastly, "void" is used in the special case of a function returning nothing
 function bigHorribleAlert(): void {
-  alert("I'm a little annoying box!");
+  alert("I'm a little annoying box!"); // calling JS function here
 }
 
 // Functions are first class citizens, support the lambda "fat arrow" syntax
@@ -102,7 +109,7 @@ class Point {
   static origin: Point = new Point(0, 0);
 }
 
-// Classes can be explicitly marked as implementing an interface.
+// Classes can be explicitly marked as extending a parent class.
 // Any missing properties will then cause an error at compile-time.
 class PointPerson extends Point {
     name: string
@@ -125,8 +132,8 @@ class Point3D extends Point {
   }
 }
 
-// Modules, "." can be used as separator for sub modules
-module Geometry {
+// Namespaces, "." can be used as separator for sub namespaces
+namespace Geometry {
   class Square {
     constructor(public sideLength: f64 = 0) {
     }
@@ -151,8 +158,7 @@ class Tuple<T1, T2> {
   }
 }
 
-// Interfaces
-interface Pair<T> {
+class Pair<T> {
   item1: T;
   item2: T;
 }
@@ -186,20 +192,9 @@ numbers = moreNumbers; // Error, mutating methods are missing
 let ints = [0, 1, 2, 3, 4]  // will infer as Array<i32>
 let floats: f32[] = [0, 1, 2, 3, 4]  // will infer as Array<f32>
 let doubles = [0.0, 1.0, 2, 3, 4]  // will infer as Array<f64>
-let bytes = [0 as u8, 1, 2, 3, 4]  // will infer as Array<u8>
-let bytes = [0, 1, 2, 3, 4]  as u8[] // will infer as Array<u8>
-let bytes: u8[] = [0, 1, 2, 3, 4] // will infer as Array<u8>
-
-// This is how you import external JS functions in a namspace
-declare namespace console {
-  // @ts-ignore decorator
-  @external("console", "log")
-  function log(msg: string): void
-
-   // @ts-ignore decorator
-  @external("console", "error")
-  function error(msg: string): void
-}
+let bytes1 = [0 as u8, 1, 2, 3, 4]  // will infer as Array<u8>
+let bytes2 = [0, 1, 2, 3, 4]  as u8[] // will infer as Array<u8>
+let bytes3: u8[] = [0, 1, 2, 3, 4] // will infer as Array<u8>
 
 ```
 
