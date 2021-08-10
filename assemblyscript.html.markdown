@@ -63,7 +63,7 @@ let c: Color = Color.Green;
 // Importing JS alert
 // @ts-ignore decorator
 @external("alert")
-declare function alert(msg: string[]): void;
+declare function alert(msg: string): void;
 
 // Lastly, "void" is used in the special case of a function returning nothing
 function bigHorribleAlert(): void {
