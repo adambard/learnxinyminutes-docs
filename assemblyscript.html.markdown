@@ -18,10 +18,8 @@ to type code, have auto completion and directly see the emitted WebAssembly.
 
 ```ts
 // There are many basic types in AssemblyScript,
-{
 let isDone: boolean = false;
 let name: string = "Anders";
-}
 
 // but integer type come as signed (sized from 8 to 64 bits)
 let lines8: i8 = 42;
@@ -41,11 +39,9 @@ let rate64: f64 = 1.0
 
 // But you can omit the type annotation if the variables are derived
 // from explicit literals
-{
-let isDone = false;
-let lines = 42;
-let name = "Anders";
-}
+let _isDone = false;
+let _lines = 42;
+let _name = "Anders";
 
 // Use const keyword for constants
 const numLivesForCat = 9;
@@ -73,7 +69,7 @@ declare namespace window {
 }
 
 // Lastly, "void" is used in the special case of a function returning nothing
-function bigHorribleAlert(): void {
+export function bigHorribleAlert(): void {
   alert("I'm a little annoying box!"); // calling JS function here
 }
 
@@ -81,14 +77,14 @@ function bigHorribleAlert(): void {
 
 // The following are equivalent, the compiler does not offer any type
 // inference for functions yet, and same WebAssembly will be emitted.
-function f1 (i: i32): i32 { return i * i; }
+export function f1 (i: i32): i32 { return i * i; }
 // "Fat arrow" syntax
 let f2 = (i: i32): i32 => { return i * i; }
 // "Fat arrow" syntax, braceless means no return keyword needed
 let f3 = (i: i32): i32 => i * i;
 
 // Classes - members are public by default
-class Point {
+export class Point {
   // Properties
   x: f64;
 
@@ -111,16 +107,18 @@ class Point {
 
 // Classes can be explicitly marked as extending a parent class.
 // Any missing properties will then cause an error at compile-time.
-class PointPerson extends Point {
-    name: string
-    move(): void {}
+export class PointPerson extends Point {
+  constructor(x: f64, y: f64, public name: string) {
+    super(x, y);
+  }
+  move(): void {}
 }
 
 let p1 = new Point(10, 20);
 let p2 = new Point(25); //y will be 0
 
 // Inheritance
-class Point3D extends Point {
+export class Point3D extends Point {
   constructor(x: f64, y: f64, public z: f64 = 0) {
     super(x, y); // Explicit call to the super class constructor is mandatory
   }
@@ -133,11 +131,11 @@ class Point3D extends Point {
 }
 
 // Namespaces, "." can be used as separator for sub namespaces
-namespace Geometry {
+export namespace Geometry {
   class Square {
     constructor(public sideLength: f64 = 0) {
     }
-    area(): void {
+    area(): f64 {
       return Math.pow(this.sideLength, 2);
     }
   }
@@ -153,24 +151,24 @@ let s1 = new Geometry.Square(5);
 // shortcutted with [static type checks] at compile time, which turned out to 
 // be quite useful.
 // Classes
-class Tuple<T1, T2> {
+export class Tuple<T1, T2> {
   constructor(public item1: T1, public item2: T2) {
   }
 }
 
-class Pair<T> {
+export class Pair<T> {
   item1: T;
   item2: T;
 }
 
 // And functions
-function pairToTuple <T>(p: Pair<T>): Tuple<T, T> {
+export function pairToTuple <T>(p: Pair<T>): Tuple<T, T> {
   return new Tuple(p.item1, p.item2);
 };
 
 let tuple = pairToTuple<string>({ item1: "hello", item2: "world" });
 
-// Including references to a definition file:
+// Including references to a TypeScript-only definition file:
 /// <reference path="jquery.d.ts" />
 
 // Template Strings (strings that use backticks)
