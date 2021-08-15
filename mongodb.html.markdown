@@ -1,8 +1,8 @@
 ---
-language: MongoDB
-filename: mongo.js
+language: MongoDB 
+filename: mongo.js 
 contributors:
-  - ['Raj Piskala', 'https://www.rajpiskala.ml/']
+  - ["Raj Piskala", "https://www.rajpiskala.ml/"]
 ---
 
 MongoDB is a NoSQL document database for high volume data storage.
@@ -65,7 +65,8 @@ of all types that are supported.
 /////////////////////////////////////////////////////////
 
 // Start up the mongo database server
-// NOTE - You will need to do this in a separate terminal as the process will take over the terminal. You may want to use the --fork option
+// NOTE - You will need to do this in a separate terminal as the process will 
+// take over the terminal. You may want to use the --fork option
 mongod // --fork
 
 // Connecting to a remote Mongo server
@@ -79,11 +80,13 @@ mongod // --fork
 show dbs
 
 // Switch to a new database (pre-existing or about to exist)
-// NOTE: There is no "create" command for a database in MongoDB. The database is created upon data being inserted into a collection
+// NOTE: There is no "create" command for a database in MongoDB. 
+// The database is created upon data being inserted into a collection
 use employees
 
 // Create a new collection
-// NOTE: Inserting a document will implicitly create a collection anyways, so this is not required
+// NOTE: Inserting a document will implicitly create a collection anyways,
+// so this is not required
 db.createCollection('engineers')
 db.createCollection('doctors')
 
@@ -97,7 +100,7 @@ show collections
 /////////////// Insert (Create) /////////////////////////
 
 // Insert one employee into the database
-// Each insertion returns an object that acknowledges that a document was inserted
+// Each insertion returns acknowledged true or false
 // Every document has a unique _id value assigned to it automatically
 db.engineers.insertOne({ name: "Jane Doe", age: 21, gender: 'Female' })
 
@@ -142,7 +145,8 @@ db.engineers.insertOne({
   gender: "Female",
 })
 
-// Be careful, as _id must ALWAYS be unique for the collection otherwise the insertion will fail
+// Be careful, as _id must ALWAYS be unique for the collection otherwise 
+// the insertion will fail
 // Fails with a WriteError indicating _id is a duplicate value
 db.engineers.insertOne({
   _id: 1,
@@ -163,19 +167,22 @@ db.doctors.insertOne({
 // Queries are in the form of db.collectionName.find(<filter>)
 // Where <filter> is an object
 
-// Show everything in our database so far, limited to a maximum of 20 documents at a time
+// Show everything in our database so far, limited to a 
+// maximum of 20 documents at a time
 // Press i to iterate this cursor to the next 20 documents
 db.engineers.find({})
 
 // We can pretty print the result of any find() query
 db.engineers.find({}).pretty()
 
-// MongoDB queries take in a JS object and search for documents that have matching key-value pairs
-// Returns the first document that matches the query in the collection
+// MongoDB queries take in a JS object and search for documents with matching 
+// key-value pairs
+// Returns the first document matching query
 // NOTE: Order of insertion is not preserved in the database, output can vary
 db.engineers.findOne({ name: 'Foo Bar' })
 
-// Returns all documents with the matching key-value properties as a cursor (which can be converted to an array)
+// Returns all documents with the matching key-value properties as a cursor 
+// (which can be converted to an array)
 db.engineers.find({ age: 25 })
 
 // Type matters when it comes to queries
@@ -198,7 +205,8 @@ db.engineers.find({
 
 ///////////////////////// Update ////////////////////////
 // Queries are in the form of db.collectionName.update(<filter>, <update>)
-// NOTE: <update> will always use the $set operator. Several operators are covered below.
+// NOTE: <update> will always use the $set operator.
+// Several operators are covered later on in the tutorial.
 
 // We can update a single object
 db.engineers.updateOne({ name: 'Foo Bar' }, { $set: { name: 'John Doe', age: 100 }})
@@ -206,7 +214,8 @@ db.engineers.updateOne({ name: 'Foo Bar' }, { $set: { name: 'John Doe', age: 100
 // Or update many objects at the same time
 db.engineers.update({ age: 25 }, { $set: { age: 26 }})
 
-// We can use { upsert: true } if we would like it to insert if the document doesn't already exist, or to update if it does
+// We can use { upsert: true } if we would like it to insert if the document doesn't already exist,
+// or to update if it does
 // Returns matched, upserted, modified count
 db.engineers.update({ name: 'Foo Baz' },
   { $set:
@@ -227,13 +236,18 @@ db.engineers.deleteOne({ name: 'Foo Baz' })
 // Delete many documents at once
 db.engineers.deleteMany({ gender: 'Male' })
 
-// NOTE: There are two methods db.collection.removeOne(<filter>) and db.collection.removeMany(<filter>) that also delete objects but have a slightly different return value. They are not included here as they have been deprecated in the NodeJS driver.
+// NOTE: There are two methods db.collection.removeOne(<filter>) and 
+// db.collection.removeMany(<filter>) that also delete objects but have a
+// slightly different return value.
+// They are not included here as they have been deprecated in the NodeJS driver.
 
 /////////////////////////////////////////////////////////
 //////////////////// Operators //////////////////////////
 /////////////////////////////////////////////////////////
 
-// Operators in MongoDB have a $ prefix. For this tutorial, we are only looking at comparison and logical operators, but there are many other types of operators
+// Operators in MongoDB have a $ prefix. For this tutorial, we are only looking 
+// at comparison and logical operators, but there are many other types of
+// operators
 
 //////////////// Comparison Operators ///////////////////
 
@@ -304,8 +318,8 @@ exit
 
 // Mongodump to export data as BSON for all databases
 // Exported data is found in under "MongoDB Database Tools/bin/dump"
-// NOTE: If the command is not found, navigate to "MongoDB Database Tools/bin" and use the executable from there
-mongodump
+// NOTE: If the command is not found, navigate to "MongoDB Database Tools/bin" 
+// and use the executable from there mongodump
 
 // Mongorestore to restore data from BSON
 mongorestore dump
@@ -324,7 +338,8 @@ mongoimport  --collection=example
 
 - [Install MongoDB - Windows 10](https://www.youtube.com/watch?v=85A6m1soKww)
 - [Install MongoDB - Mac](https://www.youtube.com/watch?v=DX15WbKidXY)
-- [Install MongoDB - Linux (Ubuntu)](https://www.youtube.com/watch?v=wD_2pojFWoE)
+- [Install MongoDB - Linux
+  (Ubuntu)](https://www.youtube.com/watch?v=wD_2pojFWoE)
 
 ### Input Validation
 
@@ -351,18 +366,24 @@ of videos and quiz questions and this was how I gained my knowledge of MongoDB.
 
 I would recommend the following video series for learning MongoDB:
 
-- [MongoDB Crash Course - Traversy Media](https://www.youtube.com/watch?v=-56x56UppqQ)
-- [MongoDB Tutorial for Beginners - Amigoscode](https://www.youtube.com/watch?v=Www6cTUymCY)
+- [MongoDB Crash Course - Traversy
+  Media](https://www.youtube.com/watch?v=-56x56UppqQ)
+- [MongoDB Tutorial for Beginners -
+  Amigoscode](https://www.youtube.com/watch?v=Www6cTUymCY)
 
 Language-specific ones that I used before:
 
-- [Build A REST API With Node.js, Express, & MongoDB - Web Dev Simplified](https://www.youtube.com/watch?v=fgTGADljAeg)
-- [MongoDB with Python Crash Course - Tutorial for Beginners - FreeCodeCamp](https://www.youtube.com/watch?v=E-1xI85Zog8)
-- [How to Use MongoDB with Java - Random Coder](https://www.youtube.com/watch?v=reYPUvu2Giw)
-- [An Introduction to Using MongoDB with Rust - MongoDB](https://www.youtube.com/watch?v=qFlftfLGwPM)
+- [Build A REST API With Node.js, Express, & MongoDB - Web Dev
+  Simplified](https://www.youtube.com/watch?v=fgTGADljAeg)
+- [MongoDB with Python Crash Course - Tutorial for Beginners -
+  FreeCodeCamp](https://www.youtube.com/watch?v=E-1xI85Zog8)
+- [How to Use MongoDB with Java - Random
+  Coder](https://www.youtube.com/watch?v=reYPUvu2Giw)
+- [An Introduction to Using MongoDB with Rust -
+  MongoDB](https://www.youtube.com/watch?v=qFlftfLGwPM)
 
-Most of the information above was cross-referenced with the
-[MongoDB docs](https://www.mongodb.com/). Here are the docs for each section:
+Most of the information above was cross-referenced with the [MongoDB
+docs](https://www.mongodb.com/). Here are the docs for each section:
 
 - [MongoDB Types](https://docs.mongodb.com/manual/reference/bson-types/) - List
   of all types that MongoDB supports natively
