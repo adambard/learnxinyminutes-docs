@@ -221,3 +221,92 @@ db.engineers.deleteOne({ name: 'Foo Baz' })
 db.engineers.deleteMany({ gender: 'Male' })
 
 // NOTE: There are two methods db.collection.removeOne(<filter>) and db.collection.removeMany(<filter>) that also delete objects but have a slightly different return value. They are not included here as they have been deprecated in the NodeJS driver.
+
+/////////////////////////////////////////////////////////
+//////////////////// Operators //////////////////////////
+/////////////////////////////////////////////////////////
+
+// Operators in MongoDB have a $ prefix. For this tutorial, we are only looking at comparison and logical operators, but there are many other types of operators
+
+//////////////// Comparison Operators ///////////////////
+
+// Find all greater than or greater than equal to some condition
+db.engineers.find({ $gt: { age: 25 }})
+db.engineers.find({ $gte: { age: 25 }})
+
+// Find all less than or less than equal to some condition
+db.engineers.find({ $lte: { age: 25 }})
+db.engineers.find({ $lte: { age: 25 }})
+
+// Find all equal or not equal to
+// Note: the $eq operator is added implicitly in most queries
+db.engineers.find({ $eq: { age: 25 }})
+db.engineers.find({ $ne: { age: 25 }})
+
+// Find all that match any element in the array
+db.engineers.find({ age: ${ in: [ 20, 23, 24, 25 ]}})
+
+//////////////// Logical Operators ///////////////////
+
+// Join two query clauses together
+// NOTE: MongoDB does this implicitly for most queries
+db.engineers.find({ $and: [
+  gender: 'Female',
+  age: {
+    $gte: 18
+  }
+]})
+
+// Match either query condition
+db.engineers.find({ $or: [
+  gender: 'Female',
+  age: {
+    $gte: 18
+  }
+]})
+
+// Negates the query
+db.engineers.find({ $not: {
+  gender: 'Female'
+}})
+
+// Must match none of the query conditions
+db.engineers.find({ $nor [
+  gender: 'Female,
+  age: {
+    $gte: 18
+  }
+]})
+
+/////////////////////////////////////////////////////////
+//////////////// Database Operations: ///////////////////
+/////////////////////////////////////////////////////////
+
+// Delete (drop) the employees database
+// THIS WILL DELETE ALL DOCUMENTS IN THE DATABASE!
+db.dropDatabase()
+
+// Create a new database with some data
+use example
+db.test.insertOne({ name: "Testing data, please ignore!", type: "Test" })
+
+// Quit Mongo shell
+exit
+
+// Import/export database as BSON:
+
+// Mongodump to export data as BSON for all databases
+// Exported data is found in under "MongoDB Database Tools/bin/dump"
+// NOTE: If the command is not found, navigate to "MongoDB Database Tools/bin" and use the executable from there
+mongodump
+
+// Mongorestore to restore data from BSON
+mongorestore dump
+
+// Import/export database as JSON:
+// Mongoexport to export data as JSON for all databases
+mongoexport --collection=example
+
+// Mongoimport to export data as JSON for all databases
+mongoimport  --collection=example
+```
