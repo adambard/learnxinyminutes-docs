@@ -310,3 +310,45 @@ mongoexport --collection=example
 // Mongoimport to export data as JSON for all databases
 mongoimport  --collection=example
 ```
+## Further Reading
+
+### Setup Videos
+* [Install MongoDB - Windows 10](https://www.youtube.com/watch?v=85A6m1soKww)
+* [Install MongoDB - Mac](https://www.youtube.com/watch?v=DX15WbKidXY)
+* [Install MongoDB - Linux (Ubuntu)](https://www.youtube.com/watch?v=wD_2pojFWoE)
+
+### Input Validation
+
+From the examples above, if input validation or structure is a concern, I would take a look at the following ORMs:
+
+[Mongoose (Node.js)](https://mongoosejs.com/docs/) - Input validation through schemas that support types, required values, minimum and maximum values.
+[MongoEngine (Python)](http://mongoengine.org/) - Similar to Mongoose, but I found it somewhat limited in my experience
+[MongoKit (Python)](https://github.com/namlook/mongokit) - Another great alternative to MongoEngine that I find easier to use than MongoEngine
+
+For statically strongly typed languages (e.g. Java, C++, Rust), input validation usually doesn't require a library as they define types and structure at compile time. 
+
+### Resources
+
+If you have the time to spare, I would strongly recommend the courses on [MongoDB University](https://university.mongodb.com/). They're by MongoDB themselves and go into much more detail while still being concise. They're a mix of videos and quiz questions and this was how I gained my knowledge of MongoDB.
+
+I would recommend the following video series for learning MongoDB:
+[MongoDB Crash Course - Traversy Media](https://www.youtube.com/watch?v=-56x56UppqQ)
+[MongoDB Tutorial for Beginners - Amigoscode](https://www.youtube.com/watch?v=Www6cTUymCY)
+
+
+Language-specific ones that I used before:
+[Build A REST API With Node.js, Express, & MongoDB - Web Dev Simplified](https://www.youtube.com/watch?v=fgTGADljAeg)
+[MongoDB with Python Crash Course - Tutorial for Beginners - FreeCodeCamp](https://www.youtube.com/watch?v=E-1xI85Zog8)
+[How to Use MongoDB with Java - Random Coder](https://www.youtube.com/watch?v=reYPUvu2Giw)
+[An Introduction to Using MongoDB with Rust - MongoDB](https://www.youtube.com/watch?v=qFlftfLGwPM)
+
+Most of the information above was cross-referenced with the [MongoDB docs](https://www.mongodb.com/). Here are the docs for each section:
+
+* [MongoDB Types](https://docs.mongodb.com/manual/reference/bson-types/) - List of all types that MongoDB supports natively
+* [MongoDB Operators](https://docs.mongodb.com/manual/reference/operator/) - List of operators MongoDB supports natively
+* [MongoDB CRUD](https://docs.mongodb.com/manual/reference/command/nav-crud/) - Main CRUD operations
+
+If you've been enjoying MongoDB so far and want to explore intermediate features, I would look at [aggregation](https://docs.mongodb.com/manual/reference/command/nav-aggregation/), [indexing](https://docs.mongodb.com/manual/indexes/), and [sharding](https://docs.mongodb.com/manual/sharding/). 
+* Aggregation - useful for creating advanced queries to be executed by the database
+* Idexing allows for caching, which allows for much faster execution of queries
+* Sharding allows for horizontal data scaling and distribution between multiple machines. 
