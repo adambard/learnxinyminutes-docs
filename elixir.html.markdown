@@ -33,7 +33,7 @@ and many more features.
 0x1F # integer
 3.0  # float
 
-# Atoms, that are literals, a constant with name. They start with `:`.
+# Atoms are constants whose values are their own name. They start with `:`.
 :hello # atom
 
 # Tuples that are stored contiguously in memory.
