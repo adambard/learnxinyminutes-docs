@@ -685,4 +685,4 @@ _(z.T. auf Englisch)_
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Eine ältere [freie Ausgabe](http://ruby-doc.com/docs/ProgrammingRuby/) ist online verfügbar.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Ein von der Community erstellter Ruby coding style guide.
-- [Try Ruby](http://tryruby.org) - Lerne die Grundlagen der Ruby Programmiersprache, interaktiv im Browser.
+- [Try Ruby](https://try.ruby-lang.org/) - Lerne die Grundlagen der Ruby Programmiersprache, interaktiv im Browser.
