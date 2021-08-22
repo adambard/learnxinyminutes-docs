@@ -17,6 +17,7 @@ contributors:
     - ["John Detter", "https://github.com/jdetter"]
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
     - ["Martin Nicholson", "https://github.com/mn113"]
+    - ["Mark Grimwood", "https://github.com/MarkGrimwood"]
 filename: LearnBash.sh
 translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
@@ -402,13 +403,17 @@ function foo ()
     echo "Arguments work just like script arguments: $@"
     echo "And: $1 $2..."
     echo "This is a function"
-    return 0
+    returnValue=0    # Variable values can be returned
+    return $returnValue
 }
 # Call the function `foo` with two arguments, arg1 and arg2:
 foo arg1 arg2
 # => Arguments work just like script arguments: arg1 arg2
 # => And: arg1 arg2...
 # => This is a function
+# Return values can be obtained with $?
+resultValue=$?
+# More than 9 arguments are also possible by using braces, e.g. ${10}, ${11}, ...
 
 # or simply
 bar ()
