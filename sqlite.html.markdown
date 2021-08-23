@@ -5,7 +5,9 @@ contributors:
   - ["Arihant Tripathy", "https://github.com/Arihant25"]
 ---
 
-SQLite is a relational database management system (RDBMS). It is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine. SQLite is the most widely used open-source database engine.
+[SQLite](https://sqlite.org) is a relational database management system (RDBMS). It is a software library that implements a self-contained, serverless, zero-configuration,
+transactional SQL database engine. SQLite is the most widely used open-source database engine.
+
 
 Here we are going to learn how to use SQLite to create a simple database and insert data into it, using Python.
 
