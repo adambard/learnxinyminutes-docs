@@ -59,8 +59,10 @@ enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 #include <stdio.h>
 #include <string.h>
 
-// File names between <angle brackets> tell the compiler to look in your system libraries for the headers.
-// For your own headers, use double quotes instead of angle brackets, and provide the path:
+// File names between <angle brackets> tell the compiler to look in your system
+// libraries for the headers.
+// For your own headers, use double quotes instead of angle brackets, and
+// provide the path:
 #include "my_header.h" 		// local file
 #include "../my_lib/my_lib_header.h" //relative path
 
@@ -69,14 +71,22 @@ enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 void function_1();
 int function_2(void);
 
-// Must declare a 'function prototype' before main() when functions occur after
-// your main() function.
+// At a minimum, you must declare a 'function prototype' before its use in any function.
+// Normally, protoypes are placed at the top of a file before any function definition.
 int add_two_ints(int x1, int x2); // function prototype
 // although `int add_two_ints(int, int);` is also valid (no need to name the args),
 // it is recommended to name arguments in the prototype as well for easier inspection
 
-// Your program's entry point is a function called
-// main with an integer return type.
+// Function protoypes are not necessary if the function definition comes before
+// any other function that calls that function. However, it's standard practice to
+// always add the function prototype to a header file (*.h) and then #include that
+// file at the top. This prevents any issues where a function might be called
+// before the compiler knows of its existence; while also giving the developer a
+// clean header file to share with the rest of the project.
+
+// Your program's entry point is a function called "main". The return type can
+// be anything, however most operating systems expect a return type of 'int' for
+// error code processing.
 int main(void) {
   // your program
 }
