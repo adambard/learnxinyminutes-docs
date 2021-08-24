@@ -72,7 +72,7 @@ void function_1();
 int function_2(void);
 
 // At a minimum, you must declare a 'function prototype' before its use in any function.
-// Normally, protoypes are placed at the top of a file before any function definition.
+// Normally, prototypes are placed at the top of a file before any function definition.
 int add_two_ints(int x1, int x2); // function prototype
 // although `int add_two_ints(int, int);` is also valid (no need to name the args),
 // it is recommended to name arguments in the prototype as well for easier inspection
