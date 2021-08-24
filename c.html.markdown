@@ -425,7 +425,8 @@ int main (int argc, char** argv)
   printf("%d\n", (short) x_hex); // => Prints 1
   printf("%d\n", (char) x_hex); // => Prints 1
 
-  // Types will overflow without warning
+  // If you assign a value greater than a types max val, it will rollover
+  // without warning.
   printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 if char is 8 bits long)
 
   // For determining the max value of a `char`, a `signed char` and an `unsigned char`,
