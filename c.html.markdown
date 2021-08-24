@@ -85,7 +85,7 @@ int add_two_ints(int x1, int x2); // function prototype
 // clean header file to share with the rest of the project.
 
 // Your program's entry point is a function called "main". The return type can
-// be anything, however most operating systems expect a return type of 'int' for
+// be anything, however most operating systems expect a return type of `int` for
 // error code processing.
 int main(void) {
   // your program
