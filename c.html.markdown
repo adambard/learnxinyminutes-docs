@@ -617,6 +617,24 @@ printf("first: %d\nsecond: %d\n", first, second);
 // values will be swapped
 */
 
+// Return multiple values. 
+// C does not allow for returning multiple values with the return statement. If
+// you would like to return multiple values, then the caller must pass in the
+// variables where they would like the returned values to go. These variables must
+// be passed in as pointers such that the function can modify them.
+int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
+{
+    if(array_of_3 == NULL)
+        return 0; //return error code (false)
+
+    //de-reference the pointer so we modify its value
+   *ret1 = array_of_3[0]; 
+   *ret2 = array_of_3[1]; 
+   *ret3 = array_of_3[2]; 
+
+   return 1; //return error code (true)
+}
+
 /*
 With regards to arrays, they will always be passed to functions
 as pointers. Even if you statically allocate an array like `arr[10]`,
