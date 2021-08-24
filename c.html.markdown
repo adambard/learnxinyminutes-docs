@@ -763,6 +763,10 @@ typedef void (*my_fnp_type)(char *);
 // my_fnp_type f;
 
 
+/////////////////////////////
+// Printing characters with printf()
+/////////////////////////////
+
 //Special characters:
 /*
 '\a'; // alert (bell) character
