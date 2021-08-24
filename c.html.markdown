@@ -115,7 +115,7 @@ int main (int argc, char** argv)
   // ints are usually 4 bytes (use the `sizeof` operator to check)
   int x_int = 0;
 
-  // shorts are usually 2 bytes (use the 'sizeof' operator to check)
+  // shorts are usually 2 bytes (use the `sizeof` operator to check)
   short x_short = 0;
 
   // chars are defined as the smallest addressable unit for a processor. 
