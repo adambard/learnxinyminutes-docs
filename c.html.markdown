@@ -265,7 +265,7 @@ int main (int argc, char** argv)
 
   // Comparison operators are probably familiar, but
   // there is no Boolean type in C. We use ints instead.
-  // (Or _Bool or bool in C99.)
+  // (C99 introduced the _Bool type provided in stdbool.h)
   // 0 is false, anything else is true. (The comparison
   // operators always yield 0 or 1.)
   3 == 2; // => 0 (false)
