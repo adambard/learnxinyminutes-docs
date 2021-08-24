@@ -77,7 +77,7 @@ int add_two_ints(int x1, int x2); // function prototype
 // although `int add_two_ints(int, int);` is also valid (no need to name the args),
 // it is recommended to name arguments in the prototype as well for easier inspection
 
-// Function protoypes are not necessary if the function definition comes before
+// Function prototypes are not necessary if the function definition comes before
 // any other function that calls that function. However, it's standard practice to
 // always add the function prototype to a header file (*.h) and then #include that
 // file at the top. This prevents any issues where a function might be called
