@@ -46,8 +46,13 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 
 // Enumeration constants are also ways to declare constants.
 // All statements must end with a semicolon
-enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
+enum days {SUN, MON, TUE, WED, THU, FRI, SAT};
+// SUN gets 0, MON gets 1, TUE gets 2, etc.
+
+// Enumeration values can also be specified
+enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
+// WED get 99, THU gets 100, FRI gets 101, etc.
 
 // Import headers with #include
 #include <stdlib.h>
