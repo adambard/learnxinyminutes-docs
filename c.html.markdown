@@ -112,7 +112,7 @@ int main (int argc, char** argv)
   // For the sake of the tutorial, variables are declared dynamically under
   // C99-compliant standards.
 
-  // ints are usually 4 bytes (use the 'sizeof' operator to check)
+  // ints are usually 4 bytes (use the `sizeof` operator to check)
   int x_int = 0;
 
   // shorts are usually 2 bytes (use the 'sizeof' operator to check)
