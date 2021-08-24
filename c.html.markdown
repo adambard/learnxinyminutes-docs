@@ -59,9 +59,10 @@ enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 #include <stdio.h>
 #include <string.h>
 
-// (File names between <angle brackets> are headers from the C standard library.)
-// For your own headers, use double quotes instead of angle brackets:
-//#include "my_header.h"
+// File names between <angle brackets> tell the compiler to look in your system libraries for the headers.
+// For your own headers, use double quotes instead of angle brackets, and provide the path:
+#include "my_header.h" 		// local file
+#include "../my_lib/my_lib_header.h" //relative path
 
 // Declare function signatures in advance in a .h file, or at the top of
 // your .c file.
