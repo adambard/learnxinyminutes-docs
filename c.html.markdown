@@ -242,12 +242,21 @@ int main (int argc, char** argv)
   i1 / (double)i2; // => 0.5 // Same with double
   f1 / f2; // => 0.5, plus or minus epsilon
   
-  // Floating-point numbers and calculations are not exact
-  // for instance it is not giving mathematically correct results
+  // Floating-point numbers are defined by IEEE 754, thus cannot store perfectly
+  // exact values. For instance, the following does not produce expected results 
+  // because 0.1 might actually be 0.099999999999 insided the computer, and 0.3 
+  // might be stored as 0.300000000001. 
   (0.1 + 0.1 + 0.1) != 0.3; // => 1 (true)
-  // and it is NOT associative
+  // and it is NOT associative due to reasons mentioned above.
   1 + (1e123 - 1e123) != (1 + 1e123) - 1e123; // => 1 (true)
   // this notation is scientific notations for numbers: 1e123 = 1*10^123
+
+  // It is important to note that most all systems have used IEEE 754 to
+  // represent floating points. Even python, used for scientific computing,
+  // eventually calls C which uses IEEE 754. It is mentioned this way not to
+  // indicate that this is a poor implementation, but instead as a warning
+  // that when doing floating point comparisons, a little bit of error (epsilon)
+  // needs to be considered. 
 
   // Modulo is there as well, but be careful if arguments are negative
   11 % 3;    // => 2 as 11 = 2 + 3*x (x=3)
