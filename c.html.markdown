@@ -81,7 +81,7 @@ int add_two_ints(int x1, int x2); // function prototype
 // any other function that calls that function. However, it's standard practice to
 // always add the function prototype to a header file (*.h) and then #include that
 // file at the top. This prevents any issues where a function might be called
-// before the compiler knows of its existence; while also giving the developer a
+// before the compiler knows of its existence, while also giving the developer a
 // clean header file to share with the rest of the project.
 
 // Your program's entry point is a function called "main". The return type can
