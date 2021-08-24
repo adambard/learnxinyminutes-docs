@@ -417,6 +417,8 @@ int main (int argc, char** argv)
   // if you want (with some constraints).
 
   int x_hex = 0x01; // You can assign vars with hex literals
+                    // binary is not in the standard, but allowed by some
+                    // compilers (x_bin = 0b0010010110) 
 
   // Casting between types will attempt to preserve their numeric values
   printf("%d\n", x_hex); // => Prints 1
