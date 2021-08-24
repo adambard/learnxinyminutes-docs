@@ -112,13 +112,14 @@ int main (int argc, char** argv)
   // For the sake of the tutorial, variables are declared dynamically under
   // C99-compliant standards.
 
-  // ints are usually 4 bytes
+  // ints are usually 4 bytes (use the 'sizeof' operator to check)
   int x_int = 0;
 
-  // shorts are usually 2 bytes
+  // shorts are usually 2 bytes (use the 'sizeof' operator to check)
   short x_short = 0;
 
-  // chars are guaranteed to be 1 byte
+  // chars are defined as the smallest addressable unit for a processor. 
+  // This is usually 1 byte, but some systems are more (ex. TMS320 from TI is 2 bytes).
   char x_char = 0;
   char y_char = 'y'; // Char literals are quoted with ''
 
