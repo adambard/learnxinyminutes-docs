@@ -42,8 +42,13 @@ INSERT INTO books VALUES(1, "Harry Potter", "J.K. Rowling", 9.3)
 # Commit the changes to the database so that they are saved.
 
 db.commit()
+
+# Close the connection after you're done making changes.
+
+db.close()
 ```
 
 ## Further Reading
 
+* [Official SQLite Docs](https://docs.python.org/3/library/sqlite3.html)
 * [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) A good introduction to basic SQL syntax in a "learn by doing it" format.
