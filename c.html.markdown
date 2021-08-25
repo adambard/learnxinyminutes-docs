@@ -46,31 +46,47 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 
 // Enumeration constants are also ways to declare constants.
 // All statements must end with a semicolon
-enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
+enum days {SUN, MON, TUE, WED, THU, FRI, SAT};
+// SUN gets 0, MON gets 1, TUE gets 2, etc.
+
+// Enumeration values can also be specified
+enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
+// WED get 99, THU gets 100, FRI gets 101, etc.
 
 // Import headers with #include
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-// (File names between <angle brackets> are headers from the C standard library.)
-// For your own headers, use double quotes instead of angle brackets:
-//#include "my_header.h"
+// File names between <angle brackets> tell the compiler to look in your system
+// libraries for the headers.
+// For your own headers, use double quotes instead of angle brackets, and
+// provide the path:
+#include "my_header.h" 		// local file
+#include "../my_lib/my_lib_header.h" //relative path
 
 // Declare function signatures in advance in a .h file, or at the top of
 // your .c file.
 void function_1();
 int function_2(void);
 
-// Must declare a 'function prototype' before main() when functions occur after
-// your main() function.
+// At a minimum, you must declare a 'function prototype' before its use in any function.
+// Normally, prototypes are placed at the top of a file before any function definition.
 int add_two_ints(int x1, int x2); // function prototype
 // although `int add_two_ints(int, int);` is also valid (no need to name the args),
 // it is recommended to name arguments in the prototype as well for easier inspection
 
-// Your program's entry point is a function called
-// main with an integer return type.
+// Function prototypes are not necessary if the function definition comes before
+// any other function that calls that function. However, it's standard practice to
+// always add the function prototype to a header file (*.h) and then #include that
+// file at the top. This prevents any issues where a function might be called
+// before the compiler knows of its existence, while also giving the developer a
+// clean header file to share with the rest of the project.
+
+// Your program's entry point is a function called "main". The return type can
+// be anything, however most operating systems expect a return type of `int` for
+// error code processing.
 int main(void) {
   // your program
 }
@@ -96,13 +112,14 @@ int main (int argc, char** argv)
   // For the sake of the tutorial, variables are declared dynamically under
   // C99-compliant standards.
 
-  // ints are usually 4 bytes
+  // ints are usually 4 bytes (use the `sizeof` operator to check)
   int x_int = 0;
 
-  // shorts are usually 2 bytes
+  // shorts are usually 2 bytes (use the `sizeof` operator to check)
   short x_short = 0;
 
-  // chars are guaranteed to be 1 byte
+  // chars are defined as the smallest addressable unit for a processor. 
+  // This is usually 1 byte, but for some systems it can be more (ex. for TMS320 from TI it's 2 bytes).
   char x_char = 0;
   char y_char = 'y'; // Char literals are quoted with ''
 
@@ -225,12 +242,21 @@ int main (int argc, char** argv)
   i1 / (double)i2; // => 0.5 // Same with double
   f1 / f2; // => 0.5, plus or minus epsilon
   
-  // Floating-point numbers and calculations are not exact
-  // for instance it is not giving mathematically correct results
+  // Floating-point numbers are defined by IEEE 754, thus cannot store perfectly
+  // exact values. For instance, the following does not produce expected results 
+  // because 0.1 might actually be 0.099999999999 insided the computer, and 0.3 
+  // might be stored as 0.300000000001. 
   (0.1 + 0.1 + 0.1) != 0.3; // => 1 (true)
-  // and it is NOT associative
+  // and it is NOT associative due to reasons mentioned above.
   1 + (1e123 - 1e123) != (1 + 1e123) - 1e123; // => 1 (true)
   // this notation is scientific notations for numbers: 1e123 = 1*10^123
+
+  // It is important to note that most all systems have used IEEE 754 to
+  // represent floating points. Even python, used for scientific computing,
+  // eventually calls C which uses IEEE 754. It is mentioned this way not to
+  // indicate that this is a poor implementation, but instead as a warning
+  // that when doing floating point comparisons, a little bit of error (epsilon)
+  // needs to be considered. 
 
   // Modulo is there as well, but be careful if arguments are negative
   11 % 3;    // => 2 as 11 = 2 + 3*x (x=3)
@@ -239,7 +265,7 @@ int main (int argc, char** argv)
 
   // Comparison operators are probably familiar, but
   // there is no Boolean type in C. We use ints instead.
-  // (Or _Bool or bool in C99.)
+  // (C99 introduced the _Bool type provided in stdbool.h)
   // 0 is false, anything else is true. (The comparison
   // operators always yield 0 or 1.)
   3 == 2; // => 0 (false)
@@ -391,13 +417,16 @@ int main (int argc, char** argv)
   // if you want (with some constraints).
 
   int x_hex = 0x01; // You can assign vars with hex literals
+                    // binary is not in the standard, but allowed by some
+                    // compilers (x_bin = 0b0010010110) 
 
   // Casting between types will attempt to preserve their numeric values
   printf("%d\n", x_hex); // => Prints 1
   printf("%d\n", (short) x_hex); // => Prints 1
   printf("%d\n", (char) x_hex); // => Prints 1
 
-  // Types will overflow without warning
+  // If you assign a value greater than a types max val, it will rollover
+  // without warning.
   printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 if char is 8 bits long)
 
   // For determining the max value of a `char`, a `signed char` and an `unsigned char`,
@@ -588,6 +617,24 @@ printf("first: %d\nsecond: %d\n", first, second);
 // values will be swapped
 */
 
+// Return multiple values. 
+// C does not allow for returning multiple values with the return statement. If
+// you would like to return multiple values, then the caller must pass in the
+// variables where they would like the returned values to go. These variables must
+// be passed in as pointers such that the function can modify them.
+int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
+{
+    if(array_of_3 == NULL)
+        return 0; //return error code (false)
+
+    //de-reference the pointer so we modify its value
+   *ret1 = array_of_3[0]; 
+   *ret2 = array_of_3[1]; 
+   *ret3 = array_of_3[2]; 
+
+   return 1; //return error code (true)
+}
+
 /*
 With regards to arrays, they will always be passed to functions
 as pointers. Even if you statically allocate an array like `arr[10]`,
@@ -715,6 +762,10 @@ typedef void (*my_fnp_type)(char *);
 // ...
 // my_fnp_type f;
 
+
+/////////////////////////////
+// Printing characters with printf()
+/////////////////////////////
 
 //Special characters:
 /*
