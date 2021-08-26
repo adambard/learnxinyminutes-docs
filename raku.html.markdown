@@ -644,7 +644,7 @@ say @natural[^10]; # OUTPUT: «1 2 3 4 5 6 7 8 9 10␤», doesn't run out of mem
 
 # NOTE: when reading an infinite list, Raku will "reify" the elements
 # it needs, then keep them in memory. They won't be calculated more than once.
-# It also will never calculate more elements that are needed.
+# It also will never calculate more elements than that are needed.
 
 # An array subscript can also be a closure. It'll be called with the array's
 # length as the argument. The following two examples are equivalent:
@@ -744,7 +744,7 @@ first-of-array(@small); #=> 1
 # Here, `@rest` is `(3,)`, since `$fst` holds the `2`. This results
 # since the length (.elems) of `@rest` is 1.
 sub slurp-in-array(@ [$fst, *@rest]) {
-    say $fst + @rest.elems;           
+    say $fst + @rest.elems;
 }
 slurp-in-array(@tail); # OUTPUT: «3␤»
 
@@ -1024,14 +1024,14 @@ sub call_say_dyn {
     my $*dyn_scoped_1 = 25;
 
     # Will change the value of the file scoped variable.
-    $*dyn_scoped_2 = 100;  
+    $*dyn_scoped_2 = 100;
 
     # $*dyn_scoped 1 and 2 will be looked for in the call.
     say_dyn();  # OUTPUT: «25 100␤»
 
     # The call to `say_dyn` uses the value of $*dyn_scoped_1 from inside
     # this sub's lexical scope even though the blocks aren't nested (they're
-    # call-nested).                     
+    # call-nested).
 }
 say_dyn();      # OUTPUT: «1 10␤»
 
@@ -1853,7 +1853,7 @@ my @fibv2 = 1, 1, { $^a + $^b } ... *;
 # In the example we use a range as an index to access the sequence. However,
 # it's worth noting that for ranges, once reified, elements aren't re-calculated.
 # That's why, for instance, `@primes[^100]` will take a long time the first
-# time you print it but then it will be instateneous.
+# time you print it but then it will be instantaneous.
 say @fibv0[^10]; # OUTPUT: «1 1 2 3 5 8 13 21 34 55␤»
 
 ####################################################
@@ -2262,7 +2262,7 @@ This information may be a bit older but there are many great examples and
 explanations. Posts stopped at the end of 2015 when the language was declared
 stable and `Raku v6.c` was released.
 
-- Come along on `#raku` at [`irc.freenode.net`](https://webchat.freenode.net/?channels=#raku). The folks here are
+- Come along on `#raku` at [`irc.libera.chat`](https://web.libera.chat/?channel=#raku). The folks here are
 always helpful.
 
 - Check the [source of Raku's functions and
