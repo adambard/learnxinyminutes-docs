@@ -106,5 +106,6 @@ DROP TABLE tablename1;
 
 ## Further Reading
 
+* [Flashcards of this guide](https://www.darigovresearch.com/learn-x-in-y-minutes-flashcards) is available to help make learning & revising the above using an open source app called Anki.
 * [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) A good introduction to SQL in a "learn by doing it" format.
 * [Database System Concepts](https://www.db-book.com) book's Chapter 3 - Introduction to SQL has an in depth explanation of SQL concepts.
