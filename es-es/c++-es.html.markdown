@@ -101,8 +101,8 @@ void print(int myInt)
 
 int main()
 {
-    print("Hello"); // Resolves to void print(const char*)
-    print(15); // Resolves to void print(int)
+    print("Hello"); // Corresponde a void print(const char*)
+    print(15); // Corresponde a void print(int)
 }
 
 ////////////////////////////////////
@@ -114,7 +114,7 @@ int main()
 
 void doSomethingWithInts(int a = 1, int b = 4)
 {
-    // Hacer algo con los enteros aqui
+    // Hacer algo con los enteros aquí
 }
 
 int main()
@@ -134,7 +134,7 @@ void invalidDeclaration(int a = 1, int b) // Error!
 // Espacios de nombre
 /////////////////////
 
-// Espacios de nombres proporcionan ámbitos separados para variable, función y
+// Los espacios de nombres proporcionan ámbitos separados para variable, función y
 // otras declaraciones.
 // Los espacios de nombres se pueden anidar.
 
@@ -184,7 +184,7 @@ int main()
 
 #include <iostream> // Incluir para el flujo de entrada/salida
 
-using namespace std; // Los streams estan en std namespace (libreria estandar)
+using namespace std; // Los streams estan en el espacio de nombre std (libreria estandar)
 
 int main()
 {
@@ -208,7 +208,7 @@ int main()
 // Las cadenas en C++ son objetos y tienen muchas funciones
 #include <string>
 
-using namespace std; // Strings también estan en namespace std
+using namespace std; // Las cadenas también estan en el nombre de espacio std
 
 string myString = "Hola";
 string myOtherString = " Mundo";
@@ -252,7 +252,7 @@ fooRef = bar;
 const string& barRef = bar; // Crea una referencia constante a bar.
 // Como en C, los valores constantes (y punteros y referencias) no pueden ser
 // modificados.
-barRef += ". Hola!"; // Error, referencia constante no puede ser modificada.
+barRef += ". Hola!"; // Error, una referencia constante no puede ser modificada.
 
 // Sidetrack: Antes de hablar más sobre referencias, hay que introducir un
 // concepto llamado objeto temporal. Supongamos que tenemos el siguiente código:
@@ -264,7 +264,7 @@ string retVal = tempObjectFun();
 // - Una nueva cadena se construye con el objeto devuelto como argumento al
 // constructor
 // - El objeto devuelto es destruido
-// El objeto devuelto se llama objeto temporal. Objetos temporales son
+// El objeto devuelto se llama objeto temporal. Los objetos temporales son
 // creados cada vez que una función devuelve un objeto, y es destruido en el
 // fin de la evaluación de la expresión que encierra (Bueno, esto es lo que la
 // norma dice, pero los compiladores están autorizados a cambiar este
@@ -295,7 +295,7 @@ void someFun(string&& s) { ... }  // Referencia a objeto temporal
 
 string foo;
 someFun(foo);  // Llama la función con referencia regular
-someFun(tempObjectFun());  // Llama la versión con referencia temporal
+someFun(tempObjectFun());  // Llama la función con referencia temporal
 
 // Por ejemplo, puedes ver estas dos versiones de constructores para
 // std::basic_string:
@@ -305,7 +305,7 @@ basic_string(basic_string&& other);
 // La idea es que si estamos construyendo una nueva cadena de un objeto temporal
 // (que va a ser destruido pronto de todos modos), podemos tener un constructor
 // mas eficiente que "rescata" partes de esa cadena temporal. Usted verá este
-// Concepto denominado "movimiento semántico".
+// concepto denominado "movimiento semántico".
 
 ////////////////////////////////////////////
 // Clases y programación orientada a objetos
@@ -322,9 +322,7 @@ class Dog {
     int weight;
 
 // Todos los miembros siguientes de este son públicos
-// Hasta que se encuentre "private" o "protected".
-// All members following this are public
-// until "private:" or "protected:" is found.
+// hasta que se encuentre "private" o "protected".
 public:
 
     // Constructor por defecto
@@ -339,8 +337,8 @@ public:
 
     void setWeight(int dogsWeight);
 	// Funciones que no modifican el estado del objeto
-	// Deben marcarse como const.
-	// Esto le permite llamarlas si se envia una referencia constante al objeto.
+	// deben marcarse como const.
+	// Esto le permite llamarlas si se envía una referencia constante al objeto.
 	// También tenga en cuenta que las funciones deben ser declaradas
 	// explícitamente como _virtual_ para que sea reemplazada en las clases
 	// derivadas.
@@ -357,8 +355,8 @@ public:
 	// Esto permite paradigmas potentes como RAII
 	// (mira abajo)
 	// El destructor debe ser virtual si una clase es dervada desde el;
-	// Si no es virtual, entonces la clase derivada destructor
-	// No será llamada si el objeto se destruye a través de una referencia de
+	// Si no es virtual, entonces la clase destructora derivada
+	// no será llamada si el objeto se destruye a través de una referencia de
 	// la clase base o puntero.
     virtual ~Dog();
 
@@ -373,7 +371,7 @@ Dog::Dog()
 }
 
 // Objetos (tales como cadenas) deben ser pasados por referencia
-// Si los estas modificando o referencia constante en caso contrario.
+// si los estás modificando, o referencia constante en caso contrario.
 void Dog::setName(const std::string& dogsName)
 {
     name = dogsName;
@@ -413,9 +411,9 @@ class OwnedDog : public Dog {
 	// Reemplaza el comportamiento de la función de impresión
 	// de todos los OwnedDogs. Mira
 	// http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
-	// Para una introducción más general si no está familiarizado con el
+	// para una introducción más general si no está familiarizado con el
 	// polimorfismo de subtipo.
-	// La palabra clave override es opcional, pero asegura que estás
+	// La palabra clave override es opcional, pero asegúrate de que estás
 	// reemplazando el método de una clase base.
     void print() const override;
 
