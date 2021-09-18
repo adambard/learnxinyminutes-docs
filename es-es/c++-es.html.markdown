@@ -8,6 +8,7 @@ contributors:
     - ["Connor Waters", "http://github.com/connorwaters"]
 translators:
     - ["Gerson Lázaro", "https://gersonlazaro.com"]
+    - ["Diego Ramirez", "https://DiddiLeija.github.io"]
 lang: es-es
 ---
 
@@ -458,8 +459,8 @@ public:
     // pero inicializa el punto al valor por defecto (0, 0)
     Point() { };
 
-    // The following syntax is known as an initialization list
-    // and is the proper way to initialize class member values
+    // La siguiente sintaxis se conoce como lista de inicialización
+    // y es la forma correcta de inicializar los valores de los miembros de la clase
     Point (double a, double b) :
         x(a),
         y(b)
@@ -472,7 +473,7 @@ public:
     Point& operator+=(const Point& rhs);
 
     // También tendría sentido añadir los operadores - y -=,
-   	// Pero vamos a omitirlos por razones de brevedad.
+   	// pero vamos a omitirlos por razones de brevedad.
 };
 
 Point Point::operator+(const Point& rhs) const
@@ -494,7 +495,7 @@ int main () {
     // Llama al operador + de Point
     // Point llama la función + con right como parámetro
     Point result = up + right;
-    // Prints "Result is upright (1,1)"
+    // Imprime "Result is upright (1,1)"
     cout << "Result is upright (" << result.x << ',' << result.y << ")\n";
     return 0;
 }
@@ -523,7 +524,7 @@ public:
 // plantilla con parámetros sustituidos, por lo que la definición completa
 // de la clase debe estar presente en cada invocación.
 // Es por esto que usted verá clases de plantilla definidas
-// Enteramente en archivos de cabecera.
+// enteramente en archivos de cabecera.
 
 //Para crear una instancia de una clase de plantilla en la pila:
 Box<int> intBox;
@@ -542,7 +543,7 @@ boxOfBox.insert(intBox);
 
 // A veces verás
 //   template<typename T>
-// en su lugar. La palabra clave "class" y las palabras clave "typename" son
+// en su lugar. La palabra clave "class" y la palabra clave "typename" son
 // mayormente intercambiables en este caso. Para la explicación completa, mira
 //   http://en.wikipedia.org/wiki/Typename
 // (sí, esa palabra clave tiene su propia página de Wikipedia).
@@ -566,7 +567,7 @@ Dog fluffy;
 fluffy.setName("Fluffy")
 barkThreeTimes(fluffy); // Imprime "Fluffy barks" 3 veces.
 
-Los parámetros de la plantilla no tienen que ser las clases:
+// Los parámetros de la plantilla no tienen que ser las clases:
 template<int Y>
 void printMessage() {
   cout << "Aprende C++ en " << Y << " minutos!" << endl;
@@ -602,7 +603,7 @@ printMessage<10>();  // Prints "Aprende C++ rapido en solo 10 minutos!"
 //Todas las excepciones lanzadas dentro del bloque _try_ pueden ser
 // capturados por los siguientes manejadores _catch_.
 try {
-    // No asignar excepciones en el heap usando _new_.
+    // No asigne excepciones en el heap usando _new_.
     throw std::runtime_error("Ocurrió un problema");
 }
 
@@ -627,10 +628,10 @@ catch (...)
 // (Adquisición de recursos es inicialización).
 // A menudo se considera el paradigma más poderoso en C++
 // Y el concepto es simple: un constructor de un objeto
-// Adquiere recursos de ese objeto y el destructor les libera.
+// adquiere recursos de ese objeto y el destructor les libera.
 
 // Para entender cómo esto es útil,
-// Considere una función que utiliza un identificador de archivo C:
+// considere una función que utiliza un identificador de archivo C:
 void doSomethingWithAFile(const char* filename)
 {
     // Para empezar, asuma que nada puede fallar.
@@ -689,11 +690,11 @@ bool doSomethingWithAFile(const char* filename)
 
 failure:
     fclose(fh);
-    return false; // Propagate el error
+    return false; // Propaga el error
 }
 
 // Si las funciones indican errores mediante excepciones,
-// Las cosas son un poco más claras, pero pueden optimizarse mas.
+// las cosas son un poco más claras, pero pueden optimizarse más.
 void doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r"); // Abrir el archivo en modo lectura
@@ -730,9 +731,9 @@ void doSomethingWithAFile(const std::string& filename)
 
 // Esto tiene ventajas _enormes_:
 // 1. No importa lo que pase,
-//    El recurso (en este caso el manejador de archivo) será limpiado.
+//    el recurso (en este caso el manejador de archivo) será limpiado.
 //    Una vez que escribes el destructor correctamente,
-//    Es _imposible_ olvidar cerrar el identificador y permitir
+//    es _imposible_ olvidar cerrar el identificador y permitir
 //    fugas del recurso.
 // 2. Tenga en cuenta que el código es mucho más limpio.
 //    El destructor se encarga de cerrar el archivo detrás de cámaras
