@@ -295,7 +295,7 @@ names.length; // get length
 names.length = 1; // lengths can be set (for dynamic arrays in storage only)
 
 // multidimensional array
-uint x[][5]; // arr with 5 dynamic array elements (opp order of most languages)
+uint[][5] x; // arr with 5 dynamic array elements (opp order of most languages)
 
 // Dictionaries (any type to any other type)
 mapping (string => uint) public balances;
