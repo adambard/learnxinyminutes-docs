@@ -202,10 +202,7 @@ $listvar[1..5]
 $listvar[-1]
 # e.g to access the last element.
 
-# Of course there's a for loop:
-for val in $PATH
-    echo "$val is in PATH."
-end
+
 
 # You can also do fancy cartesian products when you combine two list variables:
 set a 1 2 3
@@ -235,8 +232,7 @@ set myvar "The file"(ls -a)" is in the directory $PWD"
 
 set myvar "The files" (ls -a) " are in the directory $PWD"
 
-# There's also if, else if, lese, with the expected syntax from the previous for loop.
-
+# There's also if, else if, else
 if grep fish /etc/shells
     echo Found fish
 else if grep bash /etc/shells
