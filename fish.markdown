@@ -184,7 +184,7 @@ mkdir $turtlefolder
 # you can even have lists as variables. This actually makes sense, because if you want to have a variable that would create two folders, you just give mkdir a list of your foldernames.
 
 # you can then count the entries in that list with:
-count #PATH
+count $PATH
 
 # Not only is everything awesome, but in fish, everything is also a list. 
 # So $PWD for example is a list of length 1. 
