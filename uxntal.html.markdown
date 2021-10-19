@@ -97,7 +97,7 @@ POP2 ( pop a short )
 
 ( The zero-page can be addressed with a single byte )
 
-#1234 #80 STZ2 ( stored 12 at 0080 in memory )
+#1234 #80 STZ2 ( stored 12 at 0080, and 34 at 0081 )
 #80 LDZ2 ( 12  34 )
 
 ( Devices are ways for Uxn to communicate with the outside world
