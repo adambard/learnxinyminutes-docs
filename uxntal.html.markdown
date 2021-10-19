@@ -149,7 +149,7 @@ BRK
 
 @word "vermillion $1
 
-( Subroutines can be jumped to and returned from with the JSR opcode )
+( Subroutines can be jumped to with JSR, and returned from with JMP2r )
 
 ;word ,print-word JSR
 BRK
