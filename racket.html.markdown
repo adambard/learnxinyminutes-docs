@@ -124,8 +124,8 @@ some-var ; => 5
                      (or (zero? n)
                          (is-odd? (sub1 n))))]
          [is-odd? (lambda (n)
-                     (and (not (zero? n))
-                          (is-even? (sub1 n))))])
+                    (and (not (zero? n))
+                         (is-even? (sub1 n))))])
   (is-odd? 11))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
