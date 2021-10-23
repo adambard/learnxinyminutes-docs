@@ -1,6 +1,6 @@
 ---
 language: docker
-filename: docker.bat
+filename: docker-es.bat
 contributors:
     - ["Ruslan López", "http://javapro.org/"]
     - ["Michael Chen", "https://github.com/ML-Chen"]
@@ -38,6 +38,25 @@ docker run hello-world
 :: 
 :: For more examples and ideas, visit:
 :: https://docs.docker.com/get-started/
+:: El susodicho mensaje se podría traducir como:
+:: 
+:: Hola desde Docker!
+:: Este mensaje muestra que su instalación parece estar funcionando crrectamente.
+:: 
+:: Para generar este mensaje, Docker realizó los siguientes pasos:
+:: 1. El cliente de Docker contactó a Docker daemon.
+:: 2. El Docker daemon obtubo la imágen "hello-world" desde Docker Hub.
+::     (amd64)
+:: 3. El Docker daemon creó un nuevo contenedor a partir de esa imagen con la cual ejecuta el
+::     ejecutable que produce la salida que estás leyendo.
+:: 4. El Docker daemon transmitió dicha salida el cliente Docker, el cual
+::     la envió a tu terminal.
+:: 
+:: Para intentar algo más ambicioso, puede correr un contenedor Ubuntu mediante:
+::  $ docker run -it ubuntu bash
+:: 
+:: Comparte imágenes, automatice flujos y más con un Docker ID gratuito:
+::  https://hub.docker.com/
 
 :: ahora veamos las imágenes que se están ejecutando actualmente
 docker ps
