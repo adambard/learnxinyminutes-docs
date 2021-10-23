@@ -57,7 +57,7 @@ POP2 ( pop a short )
 #1234 #5678 SWP2 ( 56  78  12  34 )
 #1234 #5678 SWP ( 12  34  78  56 )
 
-( Individual bytes of of a short can be removed from the stack )
+( Individual bytes of a short can be removed from the stack )
 
 #1234 POP ( 12 )
 #1234 NIP ( 34 )
