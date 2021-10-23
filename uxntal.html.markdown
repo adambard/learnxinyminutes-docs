@@ -39,7 +39,7 @@ POP2 ( pop a short )
 
 #1234 #5678 ADD2k ( 12  34  56  78  68  ac )
 
-( The arithmetic/bitewise opcodes are:
+( The arithmetic/bitwise opcodes are:
 	ADD SUB MUL DIV
 	AND ORA EOR SFT )
 
