@@ -83,7 +83,7 @@ POP2 ( pop a short )
 
 ( ---------------------------------------------------------------------------- )
 
-( Uxn's accessible memory is as follow: 
+( Uxn's accessible memory is as follows: 
 	256 bytes of working stack 
 	256 bytes of return stack
 	65536 bytes of memory
