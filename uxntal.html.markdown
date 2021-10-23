@@ -5,7 +5,7 @@ contributors:
 filename: learnuxn.tal
 ---
 
-Uxntal is a stack-machine assembly language targeting the [Uxn virutal machine](https://wiki.xxiivv.com/site/uxn.html).
+Uxntal is a stack-machine assembly language targeting the [Uxn virtual machine](https://wiki.xxiivv.com/site/uxn.html).
 
 Stack machine programming might look at bit odd, as it uses a postfix notation, 
 which means that operators are always found at the end of an operation. For 
