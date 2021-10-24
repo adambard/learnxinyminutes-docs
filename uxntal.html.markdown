@@ -1,7 +1,7 @@
 ---
 language: uxntal
 contributors:
-	- ["Devine Lu Linvega", "https://wiki.xxiivv.com"]
+    - ["Devine Lu Linvega", "https://wiki.xxiivv.com"]
 filename: learnuxn.tal
 ---
 
