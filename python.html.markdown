@@ -1032,6 +1032,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [The Official Docs](https://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](https://docs.python-guide.org/en/latest/)
 * [Python Course](https://www.python-course.eu)
+* [Free Interactive Python Course](http://www.Kikodo.io)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
 * [30 Python Language Features and Tricks You May Not Know About](https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
