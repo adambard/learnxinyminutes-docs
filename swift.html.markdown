@@ -334,7 +334,7 @@ repeat {
 } while i < 5
 
 // The continue statement continues executing a loop at the next iteration
-// The break statement ends a swift or loop immediately
+// The break statement ends a loop immediately
 
 // MARK: - Functions
 
