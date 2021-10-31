@@ -158,7 +158,7 @@ As with every shell, you can not only execute commands in the shell, but also as
 # where that interpreter is. 
 # For fish you just add the following comment as the first line in your script:
 
-#!/bin/bash
+#!/bin/fish
 
 # When executing via e.g. fish /path/to/script.fish
 # you don't need that, because you specified fish as an interpreter
