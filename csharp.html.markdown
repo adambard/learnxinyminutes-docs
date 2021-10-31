@@ -12,9 +12,9 @@ contributors:
 filename: LearnCSharp.cs
 ---
 
-C# is an elegant and type-safe object-oriented language that enables developers to build a variety of secure and robust applications that run on the .NET Framework.
+C# is an elegant and type-safe object-oriented language that enables developers to build a variety of secure and robust applications that run on the cross-platform .NET framework.
 
-[Read more here.](https://docs.microsoft.com/dotnet/csharp/getting-started/introduction-to-the-csharp-language-and-the-net-framework)
+[Read more here.](https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/)
 
 ```c#
 // Single-line comments start with //
@@ -29,7 +29,7 @@ Multi-line comments look like this
 /// </summary>
 /// <param name="firstParam">This is some parameter documentation for firstParam</param>
 /// <returns>Information on the returned value of a function</returns>
-public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
+public void MethodOrClassOrOtherWithParsableHelp(string firstParam) { }
 
 // Specify the namespaces this source code will be using
 // The namespaces below are all part of the standard .NET Framework Class Library
@@ -48,6 +48,10 @@ using System.Data.Entity;
 
 // Namespaces define scope to organize code into "packages" or "modules"
 // Using this code from another source file: using Learning.CSharp;
+
+// You can also do this in C# 10, it is called file-scoped namespaces.
+// namespace Learning.CSharp;
+
 namespace Learning.CSharp
 {
     // Each .cs file should at least contain a class with the same name as the file.
@@ -341,8 +345,17 @@ on a new line! ""Wow!"", the masses cried";
 
             // Convert Integer To String
             // Convert class has a number of methods to facilitate conversions
+
+            // String to int
+
+            // Better
+            bool result = int.TryParse(string, out var integer)
+            int.Parse(string);
+
+            // Not recommended
             Convert.ToString(123);
-            // or
+
+            // Int to string
             tryInt.ToString();
 
             // Casting
@@ -374,6 +387,9 @@ on a new line! ""Wow!"", the masses cried";
 
             Console.Read();
         } // End main method
+
+        // Available in C# 9 and later, this is basically a syntactic sugar for a class. Records are immutable*.
+        public record ARecord(string Csharp);
 
         // CONSOLE ENTRY - A console application must have a main method as an entry point
         public static void Main(string[] args)
@@ -1299,16 +1315,27 @@ namespace Csharp7
 ```
 
 ## Topics Not Covered
+✨ New, 👍 Old, 🎈 LTS, 🔥 Cross-platform, 🎁 Windows-only
 
  * Attributes
- * async/await
+
+ * Asynchronous Programming
+
  * Web Development
- 	* ASP.NET MVC & WebApi (new)
- 	* ASP.NET Web Forms (old)
- 	* WebMatrix (tool)
+    * ASP.NET Core ✨
+
  * Desktop Development
- 	* Windows Presentation Foundation (WPF) (new)
- 	* Winforms (old)
+ 	* Windows Presentation Foundation 👍 🎈 🎁
+    * Universal Windows Platform ✨ 🎁
+    * Uno Platform 🔥 ✨
+ 	* WinForms 👍 🎈 🎁
+    * Avalonia 🔥 ✨
+    * WinUI ✨ 🎁
+
+* Cross-platform Development
+    * Xamarin.Forms 👍
+    * MAUI ✨
+
 
 ## Further Reading
 
