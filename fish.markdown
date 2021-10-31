@@ -4,8 +4,6 @@ tool: fish
 contributors:
     - ["MySurmise", "https://github.com/MySurmise"]
 filename: learn.fish
-translators:
-    - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 ---
 
 Fish (**f**riendly **i**nteractive **sh**ell) is the name of an exotic shell. That is a shell with a syntax that is derived from neither the Bourne-Shell nor the C-Shell. 
