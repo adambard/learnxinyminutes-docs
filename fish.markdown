@@ -228,7 +228,7 @@ echo (ls)" is in $PWD"
 set myvar "The file"(ls -a)" is in the directory $PWD"
 # will make a List with the string and all files. Try it out. Isn't that cool?
 
-# And to separate these variables in seperate arguments, just put a space between them:
+# And to separate these variables in separate arguments, just put a space between them:
 
 set myvar "The files" (ls -a) " are in the directory $PWD"
 
