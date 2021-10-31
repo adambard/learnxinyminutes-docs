@@ -210,7 +210,7 @@ set 1 a b c
 echo $a$1
 # Will output : 1a 2a 3a 1b 2b 3b 1c 2c 3c
 
-# Of course, if you separate them, it will see them as two seperate arguments and echo them one after the other. THAT is expected behavior @bash.
+# Of course, if you separate them, it will see them as two separate arguments and echo them one after the other. THAT is expected behavior @bash.
 
 # There are also other useful things, like command substitutions. For example, when you want to output the returns of two commands in one line. In bash you would do that with
 echo "`ls` is in $PWD" 
