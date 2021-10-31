@@ -114,7 +114,7 @@ Here comes a difference between single and double quotes. If you use a variable 
 
 More on variables later.
 
-To execute two commands, seperate them with `;`
+To execute two commands, separate them with `;`
 > echo Lol; echo this is fun
 
 The status code of the last command is stored in `$status`
