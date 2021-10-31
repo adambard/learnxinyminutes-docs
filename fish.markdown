@@ -283,7 +283,7 @@ functions --handlers
 # For example you can print the source code of every function:
 functions cd
 functions print
-# or get the name all functions:
+# or get the names of all functions:
 functions
 
 # There's while Loops, of course
