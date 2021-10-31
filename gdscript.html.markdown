@@ -40,7 +40,7 @@ var a = [1, false, "brown fox"] # Array - similar to list in Python,
 var d = {
   "key" : "value",
   42 : true
-}
+} # Dictionary holds key-value pairs.
 var p_arr = PoolStringArray(["Hi", "there", "!"]) # Pool arrays can
                                                   # only hold a certain type.
 
