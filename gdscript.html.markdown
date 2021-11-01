@@ -151,7 +151,7 @@ func control_flow():
 # Casting
 func casting_examples():
   var i = 42
-  var f = float(42) # cast using variables contructor
+  var f = float(42) # cast using variables constructor
   var b = i as bool # or using "as" keyword
 
 # Override functions
