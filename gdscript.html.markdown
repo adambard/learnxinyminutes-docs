@@ -175,7 +175,7 @@ func _process(delta):
   # which passed between the last frame and the current one.
   print("Delta time equals: ", delta)
 
-# _physics_process gets called every physics frame.
+# _physics_process gets called on every physics frame.
 # That means delta should be constant.
 func _physics_process(delta):
   # Simple movement using vector addition and multiplication.
