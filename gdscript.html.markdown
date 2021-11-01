@@ -292,7 +292,7 @@ onready var node_ref_typed := $Child as Node
 
 export var speed := 50.0
 
-const CONSTANT := "Typed contant."
+const CONSTANT := "Typed constant."
 
 func _ready() -> void:
   # function returns nothing
