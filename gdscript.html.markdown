@@ -2,7 +2,7 @@
 language: GDScript
 contributors:
     - ["Wichamir", "https://github.com/Wichamir/"]
-filename: learn_gdscript.gd
+filename: learngdscript.gd
 ---
 
 GDScript is a dynamically typed scripting language made specifically for
