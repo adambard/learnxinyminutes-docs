@@ -158,7 +158,7 @@ func casting_examples():
 # By a convention built-in overridable functions start with an underscore,
 # but in practice you can override virtually any function.
 
-# _init gets called when object gets initialized
+# _init is called when object gets initialized
 # This is the object's contructor.
 func _init():
   # Initialize object's internal stuff here.
