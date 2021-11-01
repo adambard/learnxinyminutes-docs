@@ -159,7 +159,7 @@ func casting_examples():
 # but in practice you can override virtually any function.
 
 # _init is called when object gets initialized
-# This is the object's contructor.
+# This is the object's constructor.
 func _init():
   # Initialize object's internal stuff here.
   pass
