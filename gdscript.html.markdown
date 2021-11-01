@@ -164,7 +164,7 @@ func _init():
   # Initialize object's internal stuff here.
   pass
 
-# _ready gets called when when script's node and
+# _ready gets called when script's node and
 # its children have entered the scene tree.
 func _ready():
   pass
