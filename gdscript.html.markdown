@@ -215,7 +215,7 @@ var sprite # This variable will hold the reference.
 func _ready() -> void:
   # NodePath is useful for accessing nodes.
   # Create NodePath by passing String to its constructor:
-  var path1 = NodePath("path/to/someting")
+  var path1 = NodePath("path/to/something")
   # Or by using NodePath literal:
   var path2 = @"path/to/something"
   # NodePath examples:
