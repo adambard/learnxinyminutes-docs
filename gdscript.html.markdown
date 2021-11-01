@@ -7,7 +7,7 @@ filename: learngdscript.gd
 
 GDScript is a dynamically typed scripting language made specifically for
 free and open source game engine Godot. GDScript's syntax is similar to
-Python's. It's main advantages are ease of use and tight integration with
+Python's. Its main advantages are ease of use and tight integration with
 the engine. It's a perfect fit for game development.
 
 ## Basics
