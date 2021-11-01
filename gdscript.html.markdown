@@ -135,7 +135,7 @@ func control_flow():
     1:
       print("Match is similar to switch.")
     2:
-      print("However you don't neeed to put cases before each value.")
+      print("However you don't need to put cases before each value.")
     3:
       print("Furthermore each case breaks on default.")
       break # ERROR! Break statement is unnecessary!
