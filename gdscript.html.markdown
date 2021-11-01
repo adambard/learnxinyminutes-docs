@@ -207,9 +207,9 @@ func use_inner_class():
 ## Accessing other nodes in the scene tree
 
 ```nim
-extends Node
+extends Node2D
 
-var timer
+var sprite # This variable will hold the reference.
 
 # You can get references to other nodes in _ready.
 func _ready() -> void:
@@ -220,25 +220,30 @@ func _ready() -> void:
   var path2 = @"path/to/something"
   # NodePath examples:
   var path3 = @"Sprite" # relative path, immediate child of the current node
-  var path4 = @"Timers/Firerate"
-  var path5 = @".." # current node's parent, equivalent to get_parent()
+  var path4 = @"Timers/Firerate" # relative path, child of the child
+  var path5 = @".." # current node's parent
   var path6 = @"../Enemy" # current node's sibling
   var path7 = @"/root" # absolute path, equivalent to get_tree().get_root()
   var path8 = @"/root/Main/Player/Sprite" # absolute path to Player's Sprite
-  var path9 = @"Timers/Firerate:wait_time" # path to one of node's properties
+  var path9 = @"Timers/Firerate:wait_time" # accessing properties
+  var path10 = @"Player:position:x" # accessing subproperties
 
   # Finally, to get a reference use one of these:
-  timer = get_node(@"Sprite") as Timer # always cast to the type you expect
-  timer = get_node("Sprite") as Timer # here String gets
-                                      # implicitly casted to NodePath
-  timer = get_node(path3) as Timer
-  timer = get_node_or_null("Sprite") as Timer
-  timer = $Sprite as Timer
+  sprite = get_node(@"Sprite") as Sprite # always cast to the type you expect
+  sprite = get_node("Sprite") as Sprite # here String gets
+                                        # implicitly casted to NodePath
+  sprite = get_node(path3) as Sprite
+  sprite = get_node_or_null("Sprite") as Sprite
+  sprite = $Sprite as Sprite
+
+func _process(delta):
+  # Now we can reuse the reference in other places.
+  prints("Sprite has global_position of", sprite.global_position)
 
 # Use onready keyword to assign a value to
 # a variable just before _ready executes.
 # This is a commonly used syntax sugar.
-onready var sprite = $Sprite as Sprite
+onready var tween = $Tween as Tween
 
 # You can export NodePath, so you can assign it within the inspector.
 export var nodepath = @""
@@ -251,7 +256,7 @@ Signal system is Godot's implementation of observer programming
 pattern. Here's an example:
 
 ```nim
-class_name Player extends Node
+class_name Player extends Node2D
 
 var hp = 10
 
