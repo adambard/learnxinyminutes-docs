@@ -252,7 +252,7 @@ onready var reference = get_node(nodepath) as Node
 
 ## Signals
 
-Signal system is Godot's implementation of observer programming
+Signal system is Godot's implementation of the observer programming
 pattern. Here's an example:
 
 ```nim
