@@ -250,7 +250,7 @@ fn AClass.is_ready() bool
 
 fn AClass.private_fun(errmsg string) void
 {
-    this.private_var = errmess;
+    this.private_var = errmsg;
 }
 
 // using a class
