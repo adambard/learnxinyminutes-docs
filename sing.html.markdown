@@ -63,7 +63,7 @@ public fn singmain(in argv [*]string) i32
     return(0);
 }
 
-// You can have as many argument as you want, comma separated. 
+// You can have as many arguments as you want, comma separated. 
 // You can also omit the 'in' direction qualifyer (it is the default).
 fn sum(arg1 i32, arg2 i32) i32
 {
