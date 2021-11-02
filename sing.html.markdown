@@ -59,7 +59,7 @@ public fn singmain(in argv [*]string) i32
     // referred here to avoid a 'not used' error.
     learnTypes();
 
-    // functions can anly return a single value of some basic type.
+    // functions can only return a single value of some basic type.
     return(0);
 }
 
