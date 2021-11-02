@@ -349,7 +349,7 @@ fn loops() void
     for (it in 10 : 0) {
     }
 
-    // configurable step. The loop stops when it >= the final value
+    // configurable step. The loop stops when it's >= the final value
     for (it in 0 : 100 step 3) {
     }
 
