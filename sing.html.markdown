@@ -320,7 +320,7 @@ fn interface_casting() i32
     // you can access interface members with (guess what ?) '.'
     if_ptr.identify_myself();
 
-    // downcasting requires a special contruct 
+    // downcasting requires a special construct 
     // (see also below the conditional structures)
     typeswitch(ref = if_ptr) {  
         case *Implementer1: return(ref.only_on_impl1);
