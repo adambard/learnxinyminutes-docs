@@ -442,5 +442,5 @@ fn conditionals(in object intface, in objptr *intface) void
 
 [official Sing web site](https://mdegirolami.wixsite.com/singlang).
 
-If you want to play with sing you are recommended to download the vscode pluging please
+If you want to play with sing you are recommended to download the vscode plugin. Please
 follow the instructions at [Getting Started](https://mdegirolami.wixsite.com/singlang/copy-of-interfacing-sing-and-c-2)
