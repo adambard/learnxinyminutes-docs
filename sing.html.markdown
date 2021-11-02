@@ -237,7 +237,7 @@ private:
     var private_var string; 
 
     // Changes the member variables and must be marked as 'mut' (mutable)
-    fn mut private_fun(errmess string) void;    
+    fn mut private_fun(errmsg string) void;    
 }
 
 // How to declare a member function
