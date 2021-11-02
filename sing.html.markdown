@@ -248,7 +248,7 @@ fn AClass.is_ready() bool
     return(this.public_var > 10);
 }
 
-fn AClass.private_fun(errmess string) void
+fn AClass.private_fun(errmsg string) void
 {
     this.private_var = errmess;
 }
