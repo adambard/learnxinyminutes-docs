@@ -12,7 +12,7 @@ can be a good replacement for c++ for high performance applications.
 
 Sing is an easy choice because it compiles to human-quality readable c++.
 
-Because of that, if you work for a while with Sing and, at any time, you discover you don't like Sing anymore, you loose nothing of your work
+Because of that, if you work for a while with Sing and, at any time, you discover you don't like Sing anymore, you lose nothing of your work
 because you are left with nice and clean c++ code. 
 
 In some way you can also think Sing as a tool to write c++ in a way that enforces some best practices.
