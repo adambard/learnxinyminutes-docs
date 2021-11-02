@@ -46,7 +46,7 @@ requires "sys";
 // ...then follows the argument name and the type.
 public fn singmain(in argv [*]string) i32
 {
-    // print is from the sio file and sends a string to the consolle
+    // print is from the sio file and sends a string to the console
     sio.print("Hello World\n");
 
     // type conversions are allowed in the form of <newtype>(expression).
