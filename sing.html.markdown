@@ -99,7 +99,7 @@ fn learnTypes() void
     // in this case an UTF-8 encoded string
     var my_name string;
 
-    // ints of 8..32 bits size
+    // ints of 8..64 bits size
     var int0 i8; 
     var int1 i16; 
     var int2 i32; 
