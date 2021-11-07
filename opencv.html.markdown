@@ -138,7 +138,6 @@ cv2.destroyAllWindows()
 * An up-to-date language reference can be found at [https://opencv.org](https://opencv.org)
 * Additional resources may be found at [https://en.wikipedia.org/wiki/OpenCV](https://en.wikipedia.org/wiki/OpenCV)
 * Good OpenCv Tutorials
-    * [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
     * [https://realpython.com/python-opencv-color-spaces](https://realpython.com/python-opencv-color-spaces)
     * [https://pyimagesearch.com](https://pyimagesearch.com)
     * [https://www.learnopencv.com](https://www.learnopencv.com)
