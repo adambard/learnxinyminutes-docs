@@ -48,6 +48,7 @@ let list: Array<number> = [1, 2, 3];
 // For enumerations:
 enum Color { Red, Green, Blue };
 let c: Color = Color.Green;
+console.log(Color[c]); // "Green"
 
 // Lastly, "void" is used in the special case of a function returning nothing
 function bigHorribleAlert(): void {
