@@ -238,7 +238,7 @@ if (state.type === "success") {
 }
 
 // Template Literal Types
-// Use to create complex stirng types
+// Use to create complex string types
 type OrderSize = "regular" | "large";
 type OrderItem = "Espresso" | "Cappuccino";
 type Order = `A ${OrderSize} ${OrderItem}`;
