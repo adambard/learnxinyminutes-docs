@@ -238,6 +238,16 @@ if (state.type === "success") {
   console.error(state.message);
 }
 
+// Template Literal Types
+// Use to create complex string types
+type OrderSize = "regular" | "large";
+type OrderItem = "Espresso" | "Cappuccino";
+type Order = `A ${OrderSize} ${OrderItem}`;
+
+let order1: Order = "A regular Cappuccino";
+let order2: Order = "A large Espresso";
+let order3: Order = "A small Espresso"; // Error
+
 // Iterators and Generators
 
 // for..of statement
