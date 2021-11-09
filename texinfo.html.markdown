@@ -2,7 +2,7 @@
 language: Texinfo
 contributors:
     - ["Julien Lepiller", "https://github.com/roptat"]
-filename: texinfo.texi
+filename: learntexinfo.texi
 ---
 
 Texinfo is a documentation format you can use to create various types of
