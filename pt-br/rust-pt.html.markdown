@@ -234,7 +234,7 @@ fn main() {
 
     // `for` laços de repetição/iteração
     let array = [1, 2, 3];
-    for i in array.iter() {
+    for i in array {
         println!("{}", i);
     }
 
@@ -329,4 +329,3 @@ mais na página oficial [Rust website](http://rust-lang.org).
 
 No Brasil acompanhe os encontros do [Meetup Rust São Paulo]
 (http://www.meetup.com/pt-BR/Rust-Sao-Paulo-Meetup/).
-

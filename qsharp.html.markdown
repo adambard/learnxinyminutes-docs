@@ -29,10 +29,10 @@ using (qs = Qubit[2]) {
 
     // If you want to change the state of a qubit
     // you have to do this by applying quantum gates to the qubit.
-    H(q[0]);    // This changes the state of the first qubit 
+    H(qs[0]);    // This changes the state of the first qubit 
                 // from |0⟩ (the initial state of allocated qubits) 
                 // to (|0⟩ + |1⟩) / sqrt(2).
-    // q[1] = |1⟩; - this does NOT work, you have to manipulate a qubit by using gates.
+    // qs[1] = |1⟩; - this does NOT work, you have to manipulate a qubit by using gates.
 
     // You can apply multi-qubit gates to several qubits.
     CNOT(qs[0], qs[1]);

@@ -48,6 +48,7 @@ let list: Array<number> = [1, 2, 3];
 // For enumerations:
 enum Color { Red, Green, Blue };
 let c: Color = Color.Green;
+console.log(Color[c]); // "Green"
 
 // Lastly, "void" is used in the special case of a function returning nothing
 function bigHorribleAlert(): void {
@@ -236,6 +237,16 @@ if (state.type === "success") {
 } else if (state.type === "error") {
   console.error(state.message);
 }
+
+// Template Literal Types
+// Use to create complex string types
+type OrderSize = "regular" | "large";
+type OrderItem = "Espresso" | "Cappuccino";
+type Order = `A ${OrderSize} ${OrderItem}`;
+
+let order1: Order = "A regular Cappuccino";
+let order2: Order = "A large Espresso";
+let order3: Order = "A small Espresso"; // Error
 
 // Iterators and Generators
 
