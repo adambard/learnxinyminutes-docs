@@ -281,6 +281,7 @@ func _on_death():
 ## Type hints
 
 GDScript can optionally use static typing.
+
 ```nim
 extends Node
 
