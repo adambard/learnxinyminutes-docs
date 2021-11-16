@@ -5,44 +5,73 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
+    - ["Tomáš Hartman", "https://github.com/tomas-hartman"]
 filename: markdown-cz.md
 lang: cs-cz
 ---
 
-Markdown byl vytvořen Johnem Gruberem v roce 2004. Je zamýšlen jako lehce čitelná
-a psatelná syntaxe, která je jednoduše převeditelná do HTML (a dnes i do mnoha
-dalších formátů)
+Markdown byl vytvořen Johnem Gruberem v roce 2004 jako značkovací jazyk, který půjde snadno číst a psát a který bude možné jednoduše převést do HTML (a dnes i do mnoha
+dalších formátů).
+
+Implementace markdownu se v různých parserech (syntaktických analyzátorech, které markdown dále zpracovávají) mírně odlišuje. V této příručce se budeme snažit upřesnit, kdy se jedná o obecnou vlastnost markdownu a kdy se jedná o specifickou vlastnost daného parseru.
+
+- [HTML Elementy](#html-elementy)
+- [Nadpisy](#nadpisy)
+- [Jednoduché stylování textu](#jednoduché-stylování-textu)
+- [Odstavce](#odstavce)
+  - [Blokové citace](#blokové-citace)
+- [Seznamy](#seznamy)
+- [Bloky kódu](#bloky-kódu)
+- [Vodorovná čára (`<hr />`)](#vodorovná-čára-hr-)
+- [Odkazy](#odkazy)
+  - [Obsahy](#obsahy)
+- [Obrázky](#obrázky)
+- [Ostatní](#ostatní)
+  - [Automatické odkazy](#automatické-odkazy)
+  - [Automatické odkazy z emailů](#automatické-odkazy-z-emailů)
+  - [Escapování znaků](#escapování-znaků)
+  - [Klávesové zkratky](#klávesové-zkratky)
+  - [Tabulky](#tabulky)
+- [Markdownlint](#markdownlint)
+
+## HTML Elementy
+
+Markdown je nadstavba HTML. To znamená, že každý HTML kód je zároveň validním kódem v Markdownu.
 
 ```md
-<!-- Markdown je nadstavba nad HTML, takže jakýkoliv kód HTML je validní
-Markdown, to znamená, že můžeme používat HTML elementy, třeba jako komentář, a
-nebudou ovlivněny parserem Markdownu. Avšak, pokud vytvoříte HTML element v
-Markdownu, tak nemůžete používat syntaxi Markdownu uvnitř tohoto elementu. -->
+<!-- To znamená, že v Markdownu můžeme používat HTML elementy jako například komentáře, které nebudou ovlivněny parserem Markdownu. Na druhou stranu to také znamená, že pokud ve svém Markdown kódu vytvoříte HTML element, už v rámci tohoto elementu nelze použít Markdown. 
 
-<!-- Markdown se také mírně liší v jednotlivých interpretacích parseru. Tento
-návod vás bude upozorňovat, které vlastnosti jsou obecné a které specifické pro
-konkrétní parser. -->
+Markdown využívá i tato stránka, a tak kdyby tento text nebyl obalen v bloku kódu (viz níže), jako komentář by vůbec nebyl vidět. -->
+```
 
-<!-- Nadpisy -->
-<!-- Můžete vytvořit HTML elementy <h1> až <h6> jednoduše tak, že text předsadíte
-počtem křížků (#), podle toho jaké úrovně to má být nadpis -->
+## Nadpisy
+
+HTML elementy `<h1>` až `<h6>` vytvoříte jednoduše tak, že nadpisu předsadíte takový počet křížků (#), jaký odpovídá úrovni nadpisu.
+
+```md
 # Toto je <h1>
 ## Toto je <h2>
 ### Toto je <h3>
 #### Toto je <h4>
 ##### Toto je <h5>
 ###### Toto je <h6>
+```
 
-<!-- Markdown obsahuje taky dvě další cesty, jak udělat h1 a h2 -->
+Markdown obsahuje ještě dva další způsoby, jak vytvořit h1 a h2:
+
+```md
 Toto je h1
 ==========
 
 Toto je h2
 ----------
+```
 
-<!-- Jednoduché stylování textu -->
-<!-- Pomocí markdownu můžete text jednoduše označit jako kurzívu či tučný -->
+## Jednoduché stylování textu
 
+Pomocí markdownu můžete text jednoduše označit jako kurzívu či tučný.
+
+```md
 *Tento text je kurzívou;*
 _Stejně jako tento._
 
@@ -50,47 +79,59 @@ _Stejně jako tento._
 __Stejně jako tento.__
 
 ***Tento text je obojí***
-**_Jako tento!_**
-*__A tento!__*
+**_Tak jako tento!_**
+*__Nebo tento!__*
+```
 
-<!-- Ve verzi Markdownu od GitHubu, máme k dispozici taky prošktrnutí: -->
+Ve verzi Markdownu od GitHubu, máme k dispozici taky přeškrtnutí:
 
-~~Tento text je prošktrnutý.~~
+```md
+~~Tento text je přeškrtlý.~~
+```
 
-<!-- Odstavce jsou jedna nebo více řádek textu, oddělených jednou nebo více prázdnými řádky. -->
+## Odstavce
 
-Toto je odstavec. Píši odstavec, není to zábava?
+Odstavce tvoří jeden nebo více řádků textu, oddělených jedním nebo více prázdnými řádky.
+
+```md
+Toto je odstavec. Zde jsem napsal odstavec, a je to bezva!
 
 Teď jsem v odstavci 2.
-Jsem pořád v odstavci 2!
+Pořád jsem v odstavci 2!
 
+A tady už je odstavec 3.
+```
 
-Toto je odstavec 3.
+Pokud byste chtěli vložit HTML element `<br />`, můžete na konec odstavce napsat dvě nebo více mezer a potom začít nový odstavec.
 
-<!-- Chtěli jste někdy vložit znak <br /> tag? Můžete napsat na konec odstavce
-dvě nebo více mezer a potom začít nový odstavec. -->
-
+```md
 Tento odstavec končí dvěma mezerami.  
 
-Nad tímto odstavcem je  <br />!
+Nad tímto odstavcem je <br />!
+```
 
-<!-- Blokové citace se dělají jednoduše pomocí znaku >. -->
+### Blokové citace
 
+Blokové citace se dělají jednoduše pomocí znaku >.
+
+```md
 > Toto je bloková citace. Můžete dokonce
 > manuálně rozdělit řádky, a před každý vložit >, nebo nechat vaše řádky jakkoliv dlouhé, ať se zarovnají sami.
-> Nedělá to rozdíl, dokud začínáte vždy znakem >.
+> Je to jedno, pokud vždy začinají symbolem `>`.
 
-> Můžu použít více než jednu
+> Použít můžu i více než jednu úroveň
 >> odsazení?
-> Jak je to úhledné, že?
+> Co vy na to?
+```
 
-<!-- Seznamy -->
-<!-- Nečíslovaný seznam můžete jednoduše udělat pomocí hvězdiček, plusů, nebo
- pomlček -->
+## Seznamy
 
+Nečíslovaný seznam můžete jednoduše udělat pomocí hvězdiček, plusů, nebo pomlček:
+
+```md
 * Položka
 * Položka
-* Jinná položka
+* Jiná položka
 
 nebo
 
@@ -103,158 +144,214 @@ nebo
 - Položka
 - Položka
 - Další položka
+```
 
-<!-- Číslovaný seznam se dělají pomocí čísla a . -->
+Číslované seznamy se dělají pomocí číslice a `.`.
 
+```md
 1. Položka jedna
 2. Položka dvě
 3. Položka tři
 
-<!-- Nemusíte dokonce psát čísla správně a markdown je zobrazi správně,
-     ale nemusí to být vždy dobrý nápad -->
+<!-- Čísla ani nemusíte psát popořadě. Markdown je umí zobrazit správně, jenom je třeba vždy překontrolovat, že číslování funguje správně. -->
 
 1. Položka jedna
 1. Položka dvě
 1. Položka tři
+
 <!-- (Toto zobrazí to samě, jako příklad nadtím.) -->
+```
 
-<!-- Můžete také tvořit podseznamy -->
+Můžete také tvořit podseznamy:
 
+```md
 1. Položka jedna
 2. Položka dvě
 3. Položka tři
-    * Podpoložka
-    * Podpoložka
+    - Podpoložka
+    - Podpoložka
 4. Položka čtyři
+```
 
-<!-- Existují i zašktávací seznamy. Toto vytvoří HTML checkboxy. -->
+Vytvořit lze i zaškrtávací seznamy. Toto vytvoří seznam s HTML checkboxy. (Boxy níže bez 'x' jsou nezašktrnuté checkboxy.)
 
-Boxy níže bez 'x' jsou nezašktrnuté checkboxy.
-- [ ] První úkol
-- [ ] Druhý úkol
+```md
+- [ ] První úkol, který je třeba dokoncič
+- [ ] Druhý úkol na dodělání
 Tento box bude zašktrnutý
 - [x] Tento úkol byl dokončen
+```
 
-<!-- Bloky ködu -->
-<!-- Můžete označit kód bloku (který používá <code> element) odsazením pomocí 4
-     mezer, nebo tabu -->
+## Bloky kódu
 
+Bloky kódu můžete označit tak, že řádek odsadíte čtyřmi mezerami nebo pomocí tabu. Pro interpretaci kódu parser používá `<code>` element.
+
+```md
     Toto je kód
     Stejně jako toto
+```
 
-<!-- Můžete dokonce přidat další 4 mezery nebo tab pro další odsazení -->
+Pro ještě hlubší odsazení můžete přidat další 4 mezery nebo další tab:
 
+```md
     moje_pole.each do |i|
         puts i
     end
+```
 
-<!-- Kód na řádku může být označen pomocí zpětných apostrofů ` -->
+Jednořádkový kód můžete zabalit do dvou zpětných apostrofů (`) podobně, jako kdybyste text normálně stylovali:
 
-Jan nevědel, jak se dělá `go_to()` funkce!
+```md
+Honza neměl tušení, co dělá funkce `go_to()`!
+```
 
-<!-- V Markdownu od GitHubu , můžete použít speciální syntaxi pro kód -->
+V Markdownu od GitHubu, můžete použít speciální syntaxi pro kód:
 
-\`\`\`ruby <!-- vyjma zpětných lomítek, jenom ```ruby ! -->
+<pre>
+<code class="highlight">&#x60;&#x60;&#x60;ruby
 def neco
     puts "Ahoj světe!"
 end
-\`\`\` <!-- zde taky, žádné zpětná lomítka, pouze ``` -->
+&#x60;&#x60;&#x60;
+</code>
+</pre>
 
-<!-- Text výše nepotřebuje odsazení a navíc GitHub použije zvýraznění označeného
- jazyka. -->
+Text výše nepotřebuje čtyřmezerové odsazení a parser navíc použije zvýraznění syntaxe pro zvolený jazyk.
 
-<!-- Horizontální čára (<hr />) -->
-<!-- Horizontální čára se jednoduše přidá pomocí 3 nebo více hvězdiček nebo pomlček
-s nebo bez mezer. -->
+## Vodorovná čára (`<hr />`)
 
+Vodorovnou oddělovací čáru lze snadno přidat pomocí 3 nebo více hvězdiček (nebo pomlček), a to buť s mezerami mezi jednotlivými znaky nebo bez nich.
+
+```md
 ***
 ---
 - - -
 ****************
+```
 
-<!-- Odkazy -->
-<!-- Jedna z nejlepších věcí na Markdownu je, jak jednoduše se dělají odkazy.
-Dejte text, který chcete zobrazit, do [] následovaný url v závorkách () a je to. -->
+## Odkazy
+
+```md
+<!-- Jedna z nejlepších vlastností Markdownu je, jak snadno lze s jeho pomocí vytvářet odkazy. Text odkazu, který chcete zobrazit, vložte do [], a hned za něj v kulatých závorkách () připojte url adresu. -->
 
 [Klikni na mě!](http://test.com/)
 
-<!-- Můžete také přidat jméno linku pomocí uvozovek -->
+
+<!-- V uvozovkách za url můžete přidat název linku -->
 
 [Klikni na mě!](http://test.com/ "Odkaz na Test.com")
 
-<!-- Relativní cesty fungují taky -->
+
+<!-- Relativní cesty fungují také -->
 
 [Jdi na hudbu](/hudba/).
 
-<!-- Markdown taktéž podporuje reference odkazů. -->
+
+<!-- Markdown taktéž podporuje referenční odkazy. -->
 
 [Klikni na tento odkaz][link1] pro více informací!
-[Taky zkontrolujte tento odkaz][neco], když chcete.
+[Taky zkontrolujte tento odkaz][neco], jestli teda chcete.
 
 [link1]: http://test.com/ "Cool!"
 [neco]: http://neco.czz/ "Dobře!"
 
-<!-- Titulek může být v apostrofech nebo závorkách, nebo vyjmutý úplně. Reference
- může být kdekoliv ve vašem dokumentu a identifikátor může být jakýkoliv, dokud
- je unikátní.-->
 
-<!-- Také existuje "implicitní pojmenování", které použije text jako id -->
+<!-- Titulek v tomto případě může být v jednoduchých uvozovkách, závorkách, nebo zcela vynechaný. Reference může být kdekoliv ve vašem dokumentu a identifikátory mohou být jakékoli, pokud jsou unikátní.
+
+V markdownu existuje rovněž "implicitní pojmenování", které použije text odkazu jako své id -->
 
 [Toto][] je odkaz..
 
 [toto]: http://totojelink.cz/
 
-<!-- Ale toto není zrovna běžné užívané. -->
+<!-- Ale tento způsob se obvykle nepoužítá. -->
+```
 
-<!-- Obrázky -->
-<!-- Obrázky se dělají stejně jako odkazy, ale s vykřičníkem na začátku -->
+### Obsahy
+
+Kombinace seznamů, odkazů a nadpisů využívají také některé parsery pro generování obsahu Markdown souborů. Jako identifikátory slouží jména nadpisů psané malými písmeny, které jsou uvozené křížkem (`#`). Víceslovné nadpisy bývají propojeny pomlčkou (`-`), která někdy nahrazuje i speciální znaky (jiné speciální znaky mohou být vynechány).
+
+```md
+- [Nadpis](#nadpis)
+- [Víceslovný text](#víceslovný-text)
+- [Odstavce](#odstavce)
+  - [Podkapitola <h3 />](#podkapitola-h3-)
+```
+
+V případě obsahů se v každém případě jedná o nadstavbu, která nemusí vždy fungovat stoprocentně.
+
+## Obrázky
+
+```md
+<!-- Obrázky se vytváří stejně jako odkazy, ale s vykřičníkem na začátku -->
 
 ![Toto je atribut alt pro obrázek](http://imgur.com/myimage.jpg "Nepovinný titulek")
 
-<!-- Reference fungují, jak bychom čekali-->
+<!-- Reference fungují tak, jak bychom čekali-->
 
 ![Toto je atribut alt][mujobrazek]
 
 [mujobrazek]: relativni/cesta/obrazek.jpg "a toto by byl titulek"
+```
 
-<!-- Ostatní -->
-<!-- Automatické odkazy -->
+## Ostatní
 
-<http://stranka.cz/> je stejná jako
+### Automatické odkazy
+
+```md
+<http://stranka.cz/> je stejné jako
 [http://stranka.cz/](http://stranka.cz/)
+```
 
-<!-- Automatické odkazy pro emaily-->
+### Automatické odkazy z emailů
 
+```md
 <jmeno@prijmeni.cz>
+```
 
-<!-- Escapování znaků -->
+###  Escapování znaků
 
-Chci napsat *tento text obklopený hvězdičkami*, ale nechci aby to bylo kurzívou, tak udělám: \*tento text obklopený hvězdičkami\*.
+```md
+Chci napsat *tento text obklopený hvězdičkami*, ale nechci aby to bylo kurzívou, tak udělám: \*tento text bude obklopený hvězdičkami\*.
+```
 
-<!-- Klávesové zkratky -->
+### Klávesové zkratky
+
+```md
 <!-- V Markdownu od GitHubu, můžete použít tag <kbd> k reprezentování klaves na počítači -->
 
 Váš počítač přestal pracovat? Zkuste
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
+```
 
-<!-- Tabulky -->
-<!-- Tabulky jsou povolené pouze v Markdownu od GitHubu a jsou trochu podivně,
-     ale když je opravdu chcete: -->
+### Tabulky
 
+Tabulky lze využít pouze v Markdownu od GitHubu a jejich syntax je trošku zvláštní. Pokud ale trváte na to, že je chcete použít, tady to máte:
+
+```md
 | Sloupec1     | Sloupec2 | Sloupec3      |
 | :----------- | :------: | ------------: |
 | Vlevo zarovn.| Na střed | Vpravo zarovn.|
 | blah         | blah     | blah          |
 
-<!-- nebo, to jde i taky: -->
+<!-- nebo to jde taky udělat takto: -->
 
 Sloupec 1 | Sloupec2 | Sloupec3
 :-- | :-: | --:
-Ohh toto je tak ošklivé | radši to | nedělejte
-
-<!-- Konec -->
-
+Že se to nedá číst? | Tak takhle to | radši nedělejte.
 ```
 
-Pro více informací, prozkoumejte oficiální článek o syntaxi od Johna Grubera
+## Markdownlint
+
+Pro usnadnění práce s Markdownem a s cílem sjednotit styl psaní jeho kódu vznikl nástroj `Markdownlint`. Tento nástroj je dostupný i jako plugin pro některé editory kódu (IDE) a lze jej použít jako nástroj pro vytváření a ověřování validity a čítelnosti Markdownu kódu.
+
+---
+
+> _Pozn. překladatele:_ Tento text vznikl jako překlad původního článku, který vznikl v roce 2013, který byl po obsahové stránce naposledy editován v roce 2015 a kombinace původního českého překladu z roku 2015. Některé informace v tomto článku, zejména ty, týkající se specifických vlastnostní parserů markdownu tak již dnes mohou být zasrtaralé.
+>
+> Za účelem aktualizace tohoto článku jsem přidal kapitoly o [generování obsahů](#obsahy), které mj. využívá i tento článek a o [Markdownlintu](#markdownlint).
+
+---
+
+Pro více informací doporučujeme oficiální článek o syntaxi od Johna Grubera
  [zde](http://daringfireball.net/projects/markdown/syntax) a skvělý tahák od Adama Pritcharda [zde](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
