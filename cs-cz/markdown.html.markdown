@@ -40,6 +40,7 @@ specifickou vlastnost daného parseru.
   - [Klávesové zkratky](#klávesové-zkratky)
   - [Tabulky](#tabulky)
 - [Markdownlint](#markdownlint)
+- [Reference](#reference)
 
 ## HTML Elementy
 
@@ -385,18 +386,21 @@ validity a čitelnosti Markdownu kódu.
 
 ---
 
-> _Pozn. překladatele:_ Tento text vznikl jako překlad původního článku, který
-> vznikl v roce 2013, který byl po obsahové stránce naposledy editován v roce
-> 2015 a kombinace původního českého překladu z roku 2015. Některé informace v
-> tomto článku, zejména ty, týkající se specifických vlastnostní parserů
-> markdownu tak již dnes mohou být zastaralé.
->
-> Za účelem aktualizace tohoto článku jsem přidal kapitoly o
-> [generování obsahů](#obsahy), které mj. využívá i tento článek a o
-> [Markdownlintu](#markdownlint).
-
----
+## Reference
 
 Pro více informací doporučujeme oficiální článek o syntaxi od Johna Grubera
  [zde](http://daringfireball.net/projects/markdown/syntax) a skvělý tahák od
  Adama Pritcharda [zde](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+
+---
+
+> _Pozn. překladatele:_ Tento text vznikl jako překlad původního článku, který
+> pochází z roku 2013 a kombinace původního českého překladu z roku 2015.
+> Některé informace v tomto článku, zejména ty, týkající se specifických
+> vlastností parserů markdownu tak již dnes mohou být zastaralé.
+
+Aktuální informace o specifických vlastnostech různých implementací Markdownu
+můžete nalézt zde (v angličtině):
+
+- [Markdown pro GitHub](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [Markdown pro GitLab](https://docs.gitlab.com/ee/user/markdown.html)
