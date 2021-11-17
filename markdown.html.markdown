@@ -283,7 +283,12 @@ But it's not that commonly used.
 
 ### Table of contents
 
-Some Markdown flavors even make use of the combination of lists, links and headings in order to create tables of contents. In this case, heading titles in lowercase are prepended with hash `#` and are used as link ids. Should the heading have multiple words, they will be connected with a hyphen (`-`), that also replaces some special characters. (Some other special characters are omitted though.)
+Some Markdown flavors even make use of the combination of lists, links and
+headings in order to create tables of contents. In this case, heading titles in
+lowercase are prepended with hash (`#`) and are used as link ids. Should the
+heading have multiple words, they will be connected with a hyphen (`-`), that
+also replaces some special characters. (Some other special characters are
+omitted though.)
 
 ```md
 - [Heading](#heading)
@@ -292,7 +297,8 @@ Some Markdown flavors even make use of the combination of lists, links and headi
   - [Subchapter <h3 />](#subchapter-h3-)
 ```
 
-Nontheless, this is a feature that might not be working in all Markdown implementations the same way.
+Nontheless, this is a feature that might not be working in all Markdown
+implementations the same way.
 
 ## Images
 
@@ -362,7 +368,10 @@ Ugh this is so ugly | make it | stop
 
 ## Markdownlint
 
-In order to simplify work with Markdown and to unify its coding style, `Markdownlint` has been created. This tool is available also as a plugin for some IDEs and can be used as an utility to ensure validity and readability of Markdown.
+In order to simplify work with Markdown and to unify its coding style,
+`Markdownlint` has been created. This tool is available also as a plugin for
+some IDEs and can be used as an utility to ensure validity and readability of
+Markdown.
 
 ---
 
