@@ -33,6 +33,7 @@ specific to a certain parser.
   - [Keyboard keys](#keyboard-keys)
   - [Tables](#tables)
 - [Markdownlint](#markdownlint)
+- [Further reading](#further-reading)
 
 ## HTML Elements
 
@@ -375,9 +376,9 @@ Markdown.
 
 ---
 
-For more info, check out John Gruber's official post of syntax [here](http://daringfireball.net/projects/markdown/syntax) and Adam Pritchard's great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+## Further reading
 
----
+For more info, check out John Gruber's official post of syntax [here](http://daringfireball.net/projects/markdown/syntax) and Adam Pritchard's great cheatsheet [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
 If you want to learn more on some major Markdown flavors' features, see:
 
