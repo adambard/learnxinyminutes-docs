@@ -607,9 +607,13 @@ pi = 4.13; // You cannot do this.
 // (lambda syntax in many others languages).
 // This allows functions to be defined in a lexical scope like with variables
 // defined by const and let. 
-// By default, a single statement defined will be the return statement, hence the `return` keyword is not required. 
+// By default, a single statement without '{ }' defined will be the return statement, hence the `return` keyword is not required. 
 
 const isOdd = number => number % 2 !== 0;
+
+// But, if '{ }' are used, then a `return` is required.
+
+const isEven = number => { return number % 2 == 0 }
 
 // The "equivalent" of this function in the traditional syntax would look like this:
 
