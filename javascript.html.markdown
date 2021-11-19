@@ -622,7 +622,7 @@ const helloWorld = () => {
     console.log("Hello World")
 }
 
-// Also, I put the word "equivalent" in double quotes because a function defined
+// "Equivalent" refers to the fact that a function defined
 // using the arrow function cannnot be called before the definition.
 // The following is an example of invalid usage:
 
