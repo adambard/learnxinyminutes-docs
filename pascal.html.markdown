@@ -23,7 +23,7 @@ To compile and run a pascal program you could use a free pascal compiler. [Downl
 }
 
 //name of the program
-program learn_pascal; //<-- dont forget a semicolon
+program learn_pascal; //<-- don't forget a semicolon
 
 const
     {
@@ -44,11 +44,11 @@ begin
     {
         area to declare your instruction
     }
-end. // End of a main program area should required a "." symbol
+end. // End of a main program area should require a "." symbol
 ```
 
 ```pascal
-//declaring variable
+//When declaring variables
 //you can do this
 var a:integer;
 var b:integer;
