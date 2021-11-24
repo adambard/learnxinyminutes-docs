@@ -123,7 +123,7 @@ CHIP And {
     PARTS:
     // Insert I and K into the nand gate and store the output in an internal
     // wire called notOut.
-    Nand(a=i,b=b,out=notOut);
+    Nand(a=i,b=k,out=notOut);
 
     // Use the not gate we constructed to invert notOut and send to the AND
     // output.
