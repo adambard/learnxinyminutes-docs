@@ -190,6 +190,7 @@ func learnMemory() (p, q *int) {
 	return &s[3], &r     // & takes the address of an object.
 }
 
+// Use the aliased math library (see imports, above) 
 func expensiveComputation() float64 {
 	return m.Exp(10)
 }
