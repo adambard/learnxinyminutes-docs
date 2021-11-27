@@ -40,6 +40,7 @@ specifickou vlastnost daného parseru.
   - [Klávesové zkratky](#klávesové-zkratky)
   - [Tabulky](#tabulky)
 - [Markdownlint](#markdownlint)
+- [Reference](#reference)
 
 ## HTML Elementy
 
@@ -99,7 +100,7 @@ __Stejně jako tento.__
 Ve verzi Markdownu od GitHubu máme k dispozici také přeškrtnutí:
 
 ```md
-~~Tento text je přeškrtlý.~~
+~~Tento text je přeškrtnutý.~~
 ```
 
 ## Odstavce
@@ -133,7 +134,7 @@ Blokové citace se dělají jednoduše uvozením řádku znakem >.
 > Toto je bloková citace. Můžete dokonce
 > manuálně rozdělit řádky, a před každý vložit >, nebo nechat vaše řádky 
 > jakkoli dlouhé, ať se zarovnají samy.
-> Je to jedno, pokud vždy začinají symbolem `>`.
+> Je to jedno, pokud vždy začínají symbolem `>`.
 
 > Použít můžu i více než jednu úroveň
 >> odsazení.
@@ -176,7 +177,7 @@ je třeba vždy překontrolovat, že číslování funguje správně. -->
 1. Položka dvě
 1. Položka tři
 
-<!-- (Toto zobrazí to samě, jako příklad nad tím.) -->
+<!-- (Toto zobrazí to samé, jako příklad nad tím.) -->
 ```
 
 Můžete také tvořit podseznamy:
@@ -191,12 +192,12 @@ Můžete také tvořit podseznamy:
 ```
 
 Vytvořit lze i zaškrtávací seznamy. Takto lze vytvořit seznam s HTML checkboxy.
-(Boxy níže bez 'x' jsou nezašktrnuté checkboxy.)
+(Boxy níže bez 'x' jsou nezaškrtnuté checkboxy.)
 
 ```md
 - [ ] První úkol, který je třeba dokončit
 - [ ] Druhý úkol na dodělání
-Tento box bude zašktrnutý
+Tento box bude zaškrtnutý
 - [x] Tento úkol byl dokončen
 ```
 
@@ -351,7 +352,7 @@ kurzívou, tak hvězdičky vyescapuji `\`: \*tento text bude obklopený hvězdi�
 ### Klávesové zkratky
 
 ```md
-<!-- V Markdownu od GitHubu můžete použít tag <kbd> k označení klaves na 
+<!-- V Markdownu od GitHubu můžete použít tag <kbd> k označení kláves na 
 počítači -->
 
 Váš počítač přestal pracovat? Zkuste
@@ -385,18 +386,21 @@ validity a čitelnosti Markdownu kódu.
 
 ---
 
-> _Pozn. překladatele:_ Tento text vznikl jako překlad původního článku, který
-> vznikl v roce 2013, který byl po obsahové stránce naposledy editován v roce
-> 2015 a kombinace původního českého překladu z roku 2015. Některé informace v
-> tomto článku, zejména ty, týkající se specifických vlastnostní parserů
-> markdownu tak již dnes mohou být zasrtaralé.
->
-> Za účelem aktualizace tohoto článku jsem přidal kapitoly o
-> [generování obsahů](#obsahy), které mj. využívá i tento článek a o
-> [Markdownlintu](#markdownlint).
-
----
+## Reference
 
 Pro více informací doporučujeme oficiální článek o syntaxi od Johna Grubera
  [zde](http://daringfireball.net/projects/markdown/syntax) a skvělý tahák od
  Adama Pritcharda [zde](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+
+---
+
+> _Pozn. překladatele:_ Tento text vznikl jako překlad původního článku, který
+> pochází z roku 2013 a kombinace původního českého překladu z roku 2015.
+> Některé informace v tomto článku, zejména ty, týkající se specifických
+> vlastností parserů markdownu tak již dnes mohou být zastaralé.
+
+Aktuální informace o specifických vlastnostech různých implementací Markdownu
+můžete nalézt zde (v angličtině):
+
+- [Markdown pro GitHub](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [Markdown pro GitLab](https://docs.gitlab.com/ee/user/markdown.html)
