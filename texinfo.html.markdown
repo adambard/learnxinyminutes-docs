@@ -16,7 +16,7 @@ what the generator should do.
 
 A simple example of a simple manual:
 
-```texinfo
+```
 \input texinfo
 @setfilename simple-document.info
 @documentencoding UTF-8
