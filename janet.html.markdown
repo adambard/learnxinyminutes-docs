@@ -18,7 +18,7 @@ As we only have a scant *y* minutes, we'll survey the basics here and
 leave the remaining details for the manual. So please, keep your arms and
 legs inside the vehicle at all times, and on with the scenic tour!
 
-```janet
+```python
 # A comment.
 
 # Some literal values.
