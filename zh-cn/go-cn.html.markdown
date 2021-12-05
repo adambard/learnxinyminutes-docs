@@ -141,7 +141,7 @@ func learnTypes() {
 // 只用写return一个词就能将函数内指定名称的变量返回
 func learnNamedReturns(x, y int) (z int) {
     z = x * y
-    return // z是隐式的，因为我们已经在前面命名了他。
+    return // 隐式返回z，因为前面指定了它。
 }
 
 // Go全面支持垃圾回收。Go有指针，但是不支持指针运算。
