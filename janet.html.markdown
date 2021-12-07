@@ -283,7 +283,7 @@ n  # => 3
   {:yar v} (print "matches key :yar! " v)
   {:moo v} (print "matches key :moo! " v)
   {:c   v} (print "matches key :c! "   v)
-  _ (print "no match"))  # => prints "matches key :c! 3"
+  _        (print "no match"))             # => prints "matches key :c! 3"
 
 # Iterating ###################################################################
 # Iterate over an integer range:
