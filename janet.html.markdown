@@ -29,9 +29,9 @@ nil
 # Typical style for symbols (identifiers-for / names-of things).
 do-stuff
 pants-on-fire!
-foo->bar  # Evidently for converting foos to bars.
+foo->bar        # Evidently for converting foos to bars.
 fully-charged?
-_  # Usually used as a dummy variable.
+_               # Usually used as a dummy variable.
 
 # Keywords are like symbols that start with a colon, are treated like
 # constants, and are typically used as map keys or pieces of syntax in
@@ -58,10 +58,11 @@ math/e   # => 2.71828
 "hello"
 "hey\tthere"  # contains a tab
 
-# For multi-line strings, use one or more backticks. No escapes allowed.
+# For multi-line strings, use one or more backticks. Backslash-escapes won't
+# work in these (bytes will be parsed literally).
 ``a long
 multi-line
-string``  # => "a long\nmulti-line\nstring"
+string``    # => "a long\nmulti-line\nstring"
 
 # Strings and data structures in Janet come in two varieties: mutable and
 # immutable. The literal for the mutable variety is written with a `@` in
@@ -81,7 +82,8 @@ one here`
 
 # See the string library for more (splitting, replacement, etc.)
 
-# Arrays and Tuples ###########################################################
+# Data Structures #############################################################
+# Arrays and Tuples
 # Arrays are mutable, tuples are immutable.
 
 # Arrays (mutable)
@@ -91,14 +93,15 @@ one here`
 # Tuples (immutable)
 # Note that an open paren usually indicates a function call, so if you want a
 # literal tuple with parens, you need to "quote" it (with a starting single
-# quote mark).
+# quote mark)...
 '(4 5 6)
 [4 5 6]  # ... or just use square brackets.
 
-# Tables and Structs (AKA: "maps", "hashmaps", "dictionaries")
+# Tables and Structs (associative data structures)
 @{:a 1 :b 2 :c 3}  # table  (mutable)
 {:a 1 :b 2 :c 3}   # struct (immutable)
 
+# To "pretty-print" these out, use `pp` instead of `print`.
 # More about how to work with arrays/tuples and tables/structs below.
 
 # Bindings ####################################################################
@@ -163,7 +166,7 @@ insect-friend  # => bee
 
 # Functions ###################################################################
 # Call them:
-(- 5 3)  # => 2 (Yes, operators and functions work the same.)
+(- 5 3)    # => 2 (Yes, operators and functions work the same.)
 (math/sin (/ math/pi 2))  # => 1
 (range 5)  # => @[0 1 2 3 4]
 
@@ -171,9 +174,7 @@ insect-friend  # => bee
 (defn mult-by-2
   ``First line of docstring.
 
-  Some more of the docstring.
-
-  Possibly more!``
+  Some more of the docstring.``
   [x]
   (print "Hi.")
   (print "Will compute using: " x)
@@ -206,7 +207,7 @@ n  # => 3
 # You might say that function bodies provide an "implicit do".
 
 # Operations on data structures ###############################################
-# (Making all these mutable so we can ... mutate them.)
+# (Making all of these mutable so we can ... mutate them.)
 (def s @"Hello, World!")
 (def a @[:a :b :c :d :e])
 (def t @{:a 1 :b 2})
@@ -216,9 +217,9 @@ n  # => 3
 (length t)  # =>  2
 
 # Getting values:
-(s 7)   # => 87 (which is the code point for "W")
-(a 1)   # => :b
-(t :a)  # => 1
+(s 7)       # => 87 (which is the code point for "W")
+(a 1)       # => :b
+(t :a)      # => 1
 (keys t)    # => @[:a :b]
 (values t)  # => @[1 2]
 
@@ -227,14 +228,14 @@ n  # => 3
 (put a 2 :x)   # @[:a :b :x :d :e]
 (put t :b 42)  # @{:a 1 :b 42}
 
-# Adding & removing values (again, for mutable data structures):
+# Adding and removing values (again, for mutable data structures):
 (buffer/push-string s "??")  # @"HeWlo, World!??"
 (array/push a :f)  # @[:a :b :x :d :e :f]
 (array/pop a)      # => :f, and it's also removed from `a`.
 (put t :x 88)      # @{:a 1 :b 42 :x 88}
 
 # See the manual for a wide variety of functions for working with
-# buffers/strings, arrays/tuples, and tables/struct.
+# buffers/strings, arrays/tuples, and tables/structs.
 
 # Flow control ################################################################
 (if some-condition
