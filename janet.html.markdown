@@ -58,8 +58,8 @@ math/e   # => 2.71828
 "hello"
 "hey\tthere"  # contains a tab
 
-# For multi-line strings, use one or more backticks. Backslash-escapes won't
-# work in these (bytes will be parsed literally).
+# For multi-line strings, use one or more backticks. Backslash-escapes not
+# recognized in these (bytes will be parsed literally).
 ``a long
 multi-line
 string``    # => "a long\nmulti-line\nstring"
@@ -73,7 +73,7 @@ string``    # => "a long\nmulti-line\nstring"
 @`a multi-line
 one here`
 
-(string "con" "cat" "enate")  # => "concatenate"
+(string "con" "cat" "enate")   # => "concatenate"
 
 # To get a substring:
 (string/slice "abcdefgh" 2 5)  # => "cde"
@@ -105,7 +105,7 @@ one here`
 # More about how to work with arrays/tuples and tables/structs below.
 
 # Bindings ####################################################################
-# ... or "Name Some Things!" (that is, bind a value to a symbol)
+# Bind a value to a symbol.
 (def x 4.7)  # Define a constant, `x`.
 x            # => 4.7
 (quote x)    # => x (the symbol x)
@@ -116,7 +116,7 @@ x            # => 4.7
 (set x 5.6)  # Error, `x` is a constant.
 
 (var y 10)
-(set y 12)  # Works, since `y` was made var.
+(set y 12)  # Works, since `y` was defined using `var`.
 
 # Note that bindings are local to the scope they're called in. `let`
 # creates a local scope and makes some bindings all in one shot:
@@ -154,11 +154,13 @@ insect-friend  # => bee
 (% 5 3)  # =>  2 (remainder)
 (- 5)    # => -5 (or you can just write `-5`)
 
-(++ i)    # increments
+(++ i)    # increments (modifies `i`)
 (-- i)    # decrements
 (+= i 3)  # add 3 to `i`
 (*= i 3)  # triple `i`
 # ... and so on for the other operations on numbers.
+
+# If you don't want to mutate `i`, use `(inc i)` and `(dec i)`.
 
 # Comparison
 # =  <  >  not=  <=  >=
@@ -166,9 +168,9 @@ insect-friend  # => bee
 
 # Functions ###################################################################
 # Call them:
-(- 5 3)    # => 2 (Yes, operators and functions work the same.)
+(- 5 3)                   # => 2 (Operators and functions work the same way.)
 (math/sin (/ math/pi 2))  # => 1
-(range 5)  # => @[0 1 2 3 4]
+(range 5)                 # => @[0 1 2 3 4]
 
 # Create them:
 (defn mult-by-2
@@ -313,7 +315,7 @@ n  # => 3
                (* x x))
              (range 10)))  # => @[0 4 16 36 64]
 
-(reduce + 0 (range 5))  # => 10
+(reduce + 0 (range 5))     # => 10
 
 # ...and lots more (see the API docs).
 
