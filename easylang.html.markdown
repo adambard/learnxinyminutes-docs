@@ -121,7 +121,7 @@ print str_ord "A"
 print str_chr 65
 # 
 # set number format
-numb_fmt 0 4
+numfmt 0 4
 print sqrt 2
 print pi
 print logn 10
