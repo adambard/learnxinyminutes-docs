@@ -29,26 +29,26 @@ It is a dialect of Lisp inspired by Phel and Janet.
 # More basic examples:
 
 # str will create a string out of all its arguments
-(str "Hello" " " "World") # => "Hello World"
+(str "Hello" " " "World") #=> "Hello World"
 
 # Math is straightforward
-(+ 1 1) # => 2
-(- 2 1) # => 1
-(* 1 2) # => 2
-(/ 2 1) # => 2
+(+ 1 1) #=> 2
+(- 2 1) #=> 1
+(* 1 2) #=> 2
+(/ 2 1) #=> 2
 
 # Equality is =
-(= 1 1) # => true
-(= 2 1) # => false
+(= 1 1) #=> true
+(= 2 1) #=> false
 
 # You need not for logic, too
-(not true) # => false
+(not true) #=> false
 
 # Nesting forms works as you expect
 (+ 1 (- 3 2)) # = 1 + (3 - 2) => 2
 
-# Phel inherits PHP under the hood, so it can use native PHP (functions and classes) without any additional cost 
-# by using the `php/` prefix to all PHP native functions.
+# Phel inherits PHP under the hood, so it can use native PHP (functions and classes) without 
+# any additional cost by using the `php/` prefix to all PHP native functions.
 
 # Types
 #############
@@ -100,158 +100,162 @@ string."
 # Collections & Sequences
 #############
 
-# Lists are linked-list data structures, while vectors are array-backed.
-(type '(1 2 3)) # :list
-(type [1 2 3])  # :vector
+# Lists are linked-list data structures, while vectors are array-backed
+(type '(1 2 3)) #=> :list
+(type [1 2 3])  #=> :vector
 
 # A list would be written as just (1 2 3), but we have to quote
 # it to stop the reader thinking it's a function.
 # Also, (list 1 2 3) is the same as '(1 2 3)
 
 # You can produce a (non-lazy) sequence between a range. 
-(range 1 10 2) # <- (range from to step)
+(range 1 10 2) #=> (range from to step)
 (take 4 (range 10))
 
 # Use cons to add an item to the beginning of a list
-(cons 4 '(1 2 3)) # => (4 1 2 3)
+(cons 4 '(1 2 3)) #=> (4 1 2 3)
 
 # Use push to add, and put to replace an item in a vector 
-(push [1 2 3] 4)  # => (1 2 3 4)
-(put [1 2 3] 1 4) # => (1 4 3)
+(push [1 2 3] 4)  #=> (1 2 3 4)
+(put [1 2 3] 1 4) #=> (1 4 3)
 
 # Use concat to add lists or vectors together
-(concat [1 2] '(3 4)) # => [1 2 3 4]
+(concat [1 2] '(3 4)) #=> [1 2 3 4]
 
 # Use filter, map to interact with collections
-(map inc [1 2 3]) # => [2 3 4]
-(filter even? [1 2 3]) # => [2]
+(map inc [1 2 3])      #=> [2 3 4]
+(filter even? [1 2 3]) #=> [2]
 
 # Use reduce to reduce them. The initial-value is mandatory
 (reduce + 0 [1 2 3 4])
-# => (+ (+ (+ 1 2) 3) 4)
-# => 10
+#=> (+ (+ (+ 1 2) 3) 4)
+#=> 10
 
 (reduce push [] '(3 2 1))
-# = (push (push (push [] 3) 2) 1)
-# => [3 2 1]
+#=> (push (push (push [] 3) 2) 1)
+#=> [3 2 1]
 
 # Functions
 #############
 
-# Use fn to create new functions. A function always returns its last statement.
-(fn [] "Hello World") # => :function
+# Use fn to create new functions
+# A function always returns its last statement
+(fn [] "Hello World") #=> <function>
 
 # You need extra parens to call it
-((fn [] "Hello World")) # => "Hello World"
+((fn [] "Hello World")) #=> "Hello World"
 
-# You can create a var using def
+# You can bind a value to a symbol using def for definition
 (def x 1)
-x # => 1
+x #=> 1
 
-# Assign a function to a var
+# Variables provide a way to manage mutable state
+(def foo (var 10)) # Define a variable with value 10
+
+# Assign a function to a definition
 (def hello-world (fn [] "Hello World"))
-(hello-world) # => "Hello World"
+(hello-world) #=> "Hello World"
 
 # You can shorten this process by using defn
 (defn hello-world [] "Hello World")
 
-# The [] is the list of arguments for the function.
+# The [] is the list of arguments for the function
 (defn hello [name]
   (str "Hello " name))
-(hello "Jens") # => "Hello Jens"
+(hello "Jens") #=> "Hello Jens"
 
-# You can also use this shorthand to create functions:
+# You can also use this shorthand to create functions
 (def hello2 |(str "Hello " $1))
-(hello2 "Anna") # => "Hello Anna"
+(hello2 "Anna") #=> "Hello Anna"
 
 # Functions can pack extra arguments up in a seq for you
 (defn count-args [& args]
   (str "You passed " (count args) " args: " args))
-(count-args 1 2 3) # => "You passed 3 args: @[1 2 3]"
+(count-args 1 2 3) #=> "You passed 3 args: @[1 2 3]"
 
 # You can mix regular and packed arguments
 (defn hello-count [name & args]
   (str "Hello " name ", you passed " (count args) " extra args"))
-(hello-count "Jesus" 1 2) # => "Hello Jesus, you passed 2 extra args"
+(hello-count "Jesus" 1 2) #=> "Hello Jesus, you passed 2 extra args"
 
 
 # Maps
 #############
 
-# Hash maps have faster lookups but don't retain key order.
-(type {:a 1 :b 2 :c 3})          # => :hash-map
-(type (hash-map :a 1 :b 2 :c 3)) # => :hash-map
+# Hash maps have faster lookups but don't retain key order
+(type {:a 1 :b 2 :c 3})          #=> :hash-map
+(type (hash-map :a 1 :b 2 :c 3)) #=> :hash-map
 
 # Maps can use any hashable type as a key, but usually keywords are best
 # Keywords are like strings with some efficiency bonuses and they start with `:`
-(type :a) # => :keyword
+(type :a) #=> :keyword
 
 (def stringmap {"a" 1 "b" 2 "c" 3})
-stringmap  # => {"a" 1 "b" 2 "c" 3}
+stringmap  #=> {"a" 1 "b" 2 "c" 3}
 
 (def keymap {:a 1 :b 2 :c 3})
-keymap # => {:a 1 :c 3 :b 2}
+keymap  #=> {:a 1 :c 3 :b 2}
 
 # Retrieve a value from a map by calling it as a function
-(stringmap "a") # => 1
-(keymap :a)     # => 1
+(stringmap "a") #=> 1
+(keymap :a)     #=> 1
 
 # Keywords can be used to retrieve their value from a map, too!
-(:b keymap) # => 2
+(:b keymap) #=> 2
 
-# Don't try this with strings.
+# Don't try this with strings
 # ("a" stringmap)
 # ...Exception: Call to undefined function a()
 
 # Retrieving a non-present key returns nil
-(stringmap "d") # => nil
+(stringmap "d") #=> nil
 
 # Use put to add new keys to hash-maps
 (def newkeymap (put keymap :d 4))
-newkeymap # => {:a 1 :b 2 :c 3 :d 4}
+newkeymap #=> {:a 1 :b 2 :c 3 :d 4}
 
 # But remember, phel types are immutable!
-keymap # => {:a 1 :b 2 :c 3}
+keymap #=> {:a 1 :b 2 :c 3}
 
 # Use unset to remove keys
-(unset keymap :a) # => {:b 2 :c 3}
+(unset keymap :a) #=> {:b 2 :c 3}
 
 # Sets
 #############
 
-# A Set contains unique values in random order.
+# A Set contains unique values in random order
 
-(type (set 1 2 3)) # => :set
-(set 1 2 3 1 2 3 3 2 1 3 2 1) # => (set 1 2 3)
+(type (set 1 2 3)) #=> :set
+(set 1 2 3 1 2 3 3 2 1 3 2 1) #=> (set 1 2 3)
 
 # Add a member with push
-(push (set 1 2 3) 4) # => (set 1 2 3 4)
+(push (set 1 2 3) 4) #=> (set 1 2 3 4)
 
 # Remove one with unset
-(unset (set 1 2 3) 1) # => (set 2 3)
+(unset (set 1 2 3) 1) #=> (set 2 3)
 
-# Test for existence by using the set as a function:
-((set 1 2 3) 1) # => 1
-((set 1 2 3) 4) # => nil
+# Test for existence by using the set as a function
+((set 1 2 3) 1) #=> 1
+((set 1 2 3) 4) #=> nil
 
-# There are more functions like: count, union, intersection, difference, etc.
+# There are more functions like: count, union, intersection, difference, etc
 
 
 # Useful forms
 #############
 
-# Logic constructs in clojure are just macros, and look like everything else
-(if false "a" "b") # => "b"
-(if false "a") # => nil
+# `If` conditionals in phel are special forms
+(if false "a" "b") #=> "b"
+(if false "a") #=> nil
 
 # Use let to create temporary bindings
 (let [a 1 b 2]
-  (> a b)) # => false
+  (> a b)) #=> false
 
 # Group statements together with do
 (do
   (print "Hello")
-  "World") #=> "World" (prints "Hello") 
+  "World") #=> "World" (prints "Hello")
 
 # Functions have an implicit do
 (defn print-and-say-hello [name]
@@ -262,7 +266,7 @@ keymap # => {:a 1 :b 2 :c 3}
 # So does let
 (let [name "Urkel"]
   (print "Saying hello to " name)
-  (str "Hello " name)) # => "Hello Urkel" (prints "Saying hello to Urkel")
+  (str "Hello " name)) #=> "Hello Urkel" (prints "Saying hello to Urkel")
 
 # Use the threading macros (-> and ->>) to express transformations of
 # data more clearly.
@@ -270,7 +274,7 @@ keymap # => {:a 1 :b 2 :c 3}
 # The "Thread-first" macro (->) inserts into each form the result of
 # the previous, as the first argument (second item)
 (->
-   {:a 1 :b 2} 
+   {:a 1 :b 2}
    (put :c 3)  #=> (put {:a 1 :b 2} :c 3)
    (unset :b)) #=> (unset (put {:a 1 :b 2} :c 3) :b)
 
@@ -286,7 +290,7 @@ keymap # => {:a 1 :b 2 :c 3}
 
 
 # When you are in a situation where you want more freedom as where to
-# put the result of previous data transformations in an 
+# put the result of previous data transformations in an
 # expression, you can use the as-> macro. With it, you can assign a
 # specific name to transformations' output and use it as a
 # placeholder in your chained expressions:
@@ -300,11 +304,11 @@ keymap # => {:a 1 :b 2 :c 3}
 # PHP
 #################
 
-# PHP has a huge and useful standard library, and you're able to use 
+# PHP has a huge and useful standard library, and you're able to use
 # all native functions with the prefix `php/`.
 (php/+ 1 2 3)
 
-# With :use you can use different namespaces. Similar as `use` in PHP. 
+# With :use you can use different namespaces. Similar as `use` in PHP
 (ns my\module
   (:use \DateTimeImmutable))
 
