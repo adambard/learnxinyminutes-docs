@@ -293,7 +293,7 @@ gateways and routers.
 
       fact_done:
         lw $s0, ($sp)
-        lw $ra, ($sp)                     # Restore the PC
+        lw $ra, 4($sp)                     # Restore the PC
         addi $sp, $sp, 8
 
         jr $ra
@@ -357,7 +357,7 @@ gateways and routers.
   li $t1, 5                                 # Length of the list
 
   loop:
-    bgt $t0, $t1, end_loop
+    bge $t0, $t1, end_loop
 
     lw $a0, ($s0)
     li $v0, 1
