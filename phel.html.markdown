@@ -6,7 +6,7 @@ contributors:
 ---
 
 [Phel](https://phel-lang.org/) is a functional programming language that compiles to PHP.
-It is a dialect of Lisp inspired by Phel and Janet.
+It is a dialect of Lisp inspired by Clojure and Janet.
 
 ## Features
 - Built on PHP's ecosystem
