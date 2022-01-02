@@ -150,11 +150,11 @@ msg: either a > 0 [
 ]
 print ["a 是 " msg lf]
 
-; util
+; until
 ; 循环执行一段代码块，直到满足给定的条件为止。
-; util 没有返回值，所以它不能用在表示式中。
+; until 没有返回值，所以它不能用在表示式中。
 c: 5
-util [
+until [
     prin "o"
     c: c - 1
     c = 0    ; 终止循环的条件
