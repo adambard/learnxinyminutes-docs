@@ -193,15 +193,15 @@ print twice b      ; 输出 6
 
 ## 更进一步
 
-Red 相关的源码信息在 [Red 语言主页](http://www.red-lang.org)。
+Red 相关的源码信息在 [Red 语言主页](https://www.red-lang.org)。
 
 源代码的 [github 库](https://github.com/red/red)。
 
-Red/System 特性在 [这里](http://static.red-lang.org/red-system-specs-light.html)。
+Red/System 特性在 [这里](https://static.red-lang.org/red-system-specs-light.html)。
 
 想要了解更多关于 Rebol 和 Red 的信息，加入 [Gitter 聊天室](https://gitter.im/red/red)。如果你无法加入，也可以给我们发[邮件](mailto:red-langNO_SPAM@googlegroups.com)。
 
-也可以在 [Stack Overflow](stackoverflow.com/questions/tagged/red) 上查阅、提交问题。
+也可以在 [Stack Overflow](https://stackoverflow.com/questions/tagged/red) 上查阅、提交问题。
 
 也许你现在就要试一试 Red ？可以在线尝试 [try Rebol and Red site](http://tryrebol.esperconsultancy.nl)。
 
