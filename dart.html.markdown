@@ -77,13 +77,11 @@ example1() {
   nested1();
 }
 
-/// Anonymous functions don't include a name but can take number of arguments
+/// Anonymous functions don't include a name
 example2() {
-  //// Explicit return type.
-  nested1(Function<void> fn) {
+  nested1(fn) {
     fn();
   }
-
   nested1(() => print("Example2 nested 1"));
 }
 
