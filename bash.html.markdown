@@ -179,6 +179,19 @@ echo "Always executed" && echo "Only executed if first command does NOT fail"
 # => Always executed
 # => Only executed if first command does NOT fail
 
+# A single ampersand & after a command runs it in the background. A background command's
+# output is printed to the terminal, but it cannot read from the input.
+sleep 30 &
+# List background jobs
+jobs # => [1]+  Running                 sleep 30 &
+# Bring the background job to the foreground
+fg
+# Ctrl-C to kill the process, or Ctrl-Z to pause it
+# Resume a background process after it has been paused with Ctrl-Z
+bg
+# Kill job number 2
+kill %2
+# %1, %2, etc. can be used for fg and bg as well
 
 # To use && and || with if statements, you need multiple pairs of square brackets:
 if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
