@@ -760,7 +760,7 @@ on a new line! ""Wow!"", the masses cried";
             Gitane // 43
         }
         // We defined this type inside a Bicycle class, so it is a nested type
-        // Code outside of this class should reference this type as Bicycle.Brand
+        // Code outside of this class should reference this type as Bicycle.BikeBrand
 
         public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
 
