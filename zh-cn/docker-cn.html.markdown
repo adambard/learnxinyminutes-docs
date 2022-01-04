@@ -1,19 +1,19 @@
 ---
 language: docker
 lang: zh-cn
-filename: docker.bat
+filename: docker-cn.bat
 contributors:
     - ["Ruslan López", "http://javapro.org/"]
 translators:
-    - ["Imba-TJD", "https://github.com/imba-tjd/"]
+    - ["imba-tjd", "https://github.com/imba-tjd/"]
 ---
 
-```
-:: 下载、安装、运行 hello-world 映像(image)
+```bat
+:: 下载、安装、运行 hello-world 镜像(image)
 docker run hello-world
 
 :: :: 如果这是第一次运行，你应该能见到这些信息
-:: Unable to find image 'hello-world:latest' locally # 在本地找不到映像xxx
+:: Unable to find image 'hello-world:latest' locally # 在本地找不到镜像xxx
 :: latest: Pulling from library/hello-world
 :: 1b930d010525: Pull complete
 ::   Digest: sha256:4fe721ccc2e8dc7362278a29dc660d833570ec2682f4e4194f4ee23e415e1064
@@ -24,9 +24,9 @@ docker run hello-world
 ::
 :: To generate this message, Docker took the following steps: # Docker进行了如下步骤来产生此信息
 :: 1. The Docker client contacted the Docker daemon. # Docker客户端联系Docker守护程序
-:: 2. The Docker daemon pulled the "hello-world" image from the Docker Hub. # Docker守护程序从Docker Hub拉取映像
+:: 2. The Docker daemon pulled the "hello-world" image from the Docker Hub. # Docker守护程序从Docker Hub拉取镜像
 ::     (amd64)
-:: 3. The Docker daemon created a new container from that image which runs the # Docker守护程序从映像中创建了一个容器
+:: 3. The Docker daemon created a new container from that image which runs the # Docker守护程序从镜像中创建了一个容器
 ::     executable that produces the output you are currently reading. # 运行了产生你正在读的输出的可执行文件
 :: 4. The Docker daemon streamed that output to the Docker client, which sent it # Docker守护程序把输出流式传输给Docker客户端，后者发送到你的终端上
 ::     to your terminal.
@@ -34,18 +34,18 @@ docker run hello-world
 :: To try something more ambitious, you can run an Ubuntu container with: # 若要尝试更强大的东西，你可以用该命令运行Ubuntu容器
 ::  $ docker run -it ubuntu bash
 ::
-:: Share images, automate workflows, and more with a free Docker ID: # 使用免费的Docker ID来分享映像，自动化工作流等
+:: Share images, automate workflows, and more with a free Docker ID: # 使用免费的Docker ID来分享镜像，自动化工作流等
 ::  https://hub.docker.com/
 ::
 :: For more examples and ideas, visit: # 欲获取更多例子和想法，访问
 :: https://docs.docker.com/get-started/
 
-:: 现在来看看当前正运行的映像
+:: 现在来看看当前正运行的镜像
 docker ps
 :: CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS
 ::   NAMES
 
-:: 看看之前运行过的映像
+:: 看看之前运行过的镜像
 docker ps -a
 
 :: CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS
@@ -54,7 +54,7 @@ docker ps -a
 ::          happy_poincare
 :: 名字(name)是自动生成的，因此它会和你的不同
 
-:: 移除(remove)我们之前生成的映像
+:: 移除(remove)我们之前生成的镜像
 docker rm happy_poincare
 
 :: 测试是否真的删除了
