@@ -546,5 +546,6 @@ configuredBar: conflicting values string and 200 (mismatched types string and in
 
 That's it for now. I understand there are more package management features coming in the future and the design decisions around `cue.mod` are looking ahead to that.
 
+Finally, CUE has built-in modules with powerful functionality. We saw one of these earlier, when we imported "strings" and used `strings.ToLower`. Imports without fully-qualified module names are assumed to be built-ins. The full list and documentation for each is here: https://pkg.go.dev/cuelang.org/go/pkg
 
 This has been a condensation of the official docs and tutorials, sometimes with examples pulled directly from there, so go give the source material some love: https://cuelang.org/docs/tutorials/
