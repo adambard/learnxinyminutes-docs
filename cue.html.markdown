@@ -10,7 +10,7 @@ contributors:
 
 CUE is an expressive (but not Turing-complete) JSON superset, exportable to JSON or YAML. It supports optional types and many other conveniences for working with large configuration sets. The unification engine has roots in logic programming, and as such it provides a ready solution to modern configuration management problems.
 
-When CUE is exported to JSON, values from every processed file is unified into one giant object. Consider these two files:
+When CUE is exported to JSON, values from every processed file are unified into one giant object. Consider these two files:
 
 ```cue
 //name.cue
@@ -47,9 +47,17 @@ works_fine: true
 
 Unification doesn't just unify across files, it is also a *global merge* of all types and values. The following fails, because the *types* are different.
 
+```cue
+//string_value.cue
+foo: "baz"
+```
+
+```cue
+//integer_value.cue
+foo: 100
+```
+
 ```bash
-% echo 'foo: "baz"' > string_value.cue
-% echo 'foo: 100' > integer_value.cue
 % cue export string_value.cue integer_value.cue 
 foo: conflicting values "baz" and 100 (mismatched types string and int):
     integer_value.cue:1:6
@@ -58,9 +66,17 @@ foo: conflicting values "baz" and 100 (mismatched types string and int):
 
 But even if we quote the integer, it still fails, because the *values* conflict and there is no way to unify everything into a top-level object.
 
+```cue
+//string_value.cue
+foo: "baz"
+```
+
+```cue
+//integer_value.cue
+foo: "100"  // a string now
+```
+
 ```bash
-% echo 'foo: "baz"' > string_value.cue
-% echo 'foo: "100"' > integer_value.cue  # a string now
 % cue export string_value.cue integer_value.cue
 foo: conflicting values "100" and "baz":
     integer_value.cue:1:6
@@ -126,6 +142,7 @@ Enum-style options ("disjunctions" in CUE) may be specified with an `|` separato
 ```cue
 //severity-enum.cue
 severity: "high" | "medium" | "low"
+severity: "unknown"
 ```
 
 ```bash
