@@ -247,7 +247,7 @@ outer: [string]: inner: int
 }
 ```
 
-In the same vein, CUE supports "templates", which are a bit like functions of a single argument. Here `Name` is bound to each string key immediately under `job` while the struct underneath *that* is evaluated.
+In the same vein, CUE supports "templates", which are a bit like functions of a single argument. Here `Name` is bound to each string key immediately under `container` while the struct underneath *that* is evaluated.
 
 ```cue
 //templates.cue
