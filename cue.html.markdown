@@ -286,7 +286,7 @@ And while we're talking about references like that, CUE supports scoped referenc
 
 ```cue
 //scopes-and-references.cue
-v: 1
+v: "top-level v"
 b: v // a reference
 a: {
     b: v // matches the top-level v
@@ -294,7 +294,7 @@ a: {
 
 let V = v
 a: {
-    v: 2
+    v: "a's inner v"
     c: v // matches the inner v
     d: V // matches the top-level v now shadowed by a.v
 }
@@ -303,14 +303,17 @@ av: a.v // matches a's v
 
 ```bash
 % cue eval --out yaml scopes-and-references.cue
-v: 1
-b: 1
+```
+
+```yaml
+v: top-level v
+b: top-level v
 a:
-  v: 2
-  b: 1
-  c: 2
-  d: 1
-av: 2
+  b: top-level v
+  v: a's inner v
+  c: a's inner v
+  d: top-level v
+av: a's inner v
 ```
 
 I changed the order of the keys in the output for clarity. Order doesn't actually matter, and notice that duplicate keys at a given level are *all* unified.
