@@ -24,7 +24,7 @@ Prior knowledge of C is recommended.
 - Zig introduces namespaces.
 - Try and catch mechanism, which is both convenient, efficient and optional.
 - Most of the C undefined behaviors (UBs) are fixed.
-- Raw pointers are safer to use and aren't nearly as used as before.
+- Compared to C, raw pointers are safer to use and less likely to be needed.
   * The type system distinguishes between a pointer to a single value, or multiple values, etc.
   * Slices are preferred, which is a structure with a pointer and a runtime known size, which characterizes most uses of pointers in the first place.
 - Some arbitrary language limitations are removed. For example, enumerations, structures and unions can have functions.
