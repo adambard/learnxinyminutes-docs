@@ -255,7 +255,7 @@ fn main() {
 
     // `for` Schleife/Iterationen
     let array = [1, 2, 3];
-    for i in array.iter() {
+    for i in array {
         println!("{}", i);
     }
 

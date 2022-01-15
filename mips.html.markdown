@@ -242,7 +242,7 @@ gateways and routers.
 ## FUNCTIONS ##
   _functions:
     # Functions are callable procedures that can accept arguments and return 
-    values all denoted with labels, like above
+    # values all denoted with labels, like above
 
     main:                                 # Programs begin with main func
       jal return_1                        # jal will store the current PC in $ra
@@ -293,7 +293,7 @@ gateways and routers.
 
       fact_done:
         lw $s0, ($sp)
-        lw $ra, ($sp)                     # Restore the PC
+        lw $ra, 4($sp)                     # Restore the PC
         addi $sp, $sp, 8
 
         jr $ra
@@ -357,7 +357,7 @@ gateways and routers.
   li $t1, 5                                 # Length of the list
 
   loop:
-    bgt $t0, $t1, end_loop
+    bge $t0, $t1, end_loop
 
     lw $a0, ($s0)
     li $v0, 1

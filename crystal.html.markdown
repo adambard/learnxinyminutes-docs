@@ -4,6 +4,7 @@ filename: learncrystal.cr
 contributors:
     - ["Vitalii Elenhaupt", "http://veelenga.com"]
     - ["Arnaud Fernandés", "https://github.com/TechMagister/"]
+    - ["Valentin Baca", "https://github.com/valbaca/"]
 
 ---
 
@@ -64,24 +65,25 @@ true.class #=> Bool
 1.5e10.class  #=> Float64
 1.5e-7.class  #=> Float64
 
-# Chars
+# Chars use 'a' pair of single quotes
 
 'a'.class #=> Char
 
-# Octal codepoint
-'\101' #=> 'A' : Char
+# Chars are 32-bit unicode
+'あ' #=> 'あ' : Char
 
 # Unicode codepoint
 '\u0041' #=> 'A' : Char
 
-# Strings
+# Strings use a "pair" of double quotes
 
 "s".class #=> String
 
 # Strings are immutable
 s = "hello, "  #=> "hello, "        : String
 s.object_id    #=> 134667712        : UInt64
-s += "Crystal" #=> "hello, Crystal" : String
+s += "Crystal"
+s              #=> "hello, Crystal" : String
 s.object_id    #=> 142528472        : UInt64
 
 # Supports interpolation
@@ -89,7 +91,8 @@ s.object_id    #=> 142528472        : UInt64
 
 # Multiline string
 "This is
-   multiline string"
+   multiline string" #=> "This is\n   multiline string"
+
 
 # String with double quotes
 %(hello "world") #=> "hello \"world\""
@@ -110,7 +113,7 @@ sentence == "question?"   #=> false : Bool
 # Arrays
 
 [1, 2, 3].class         #=> Array(Int32)
-[1, "hello", 'x'].class #=> Array(Int32 | String | Char)
+[1, "hello", 'x'].class #=> Array(Char | Int32 | String)
 
 # Empty arrays should specify a type
 []               # Syntax error: for empty arrays use '[] of ElementType'
@@ -154,30 +157,33 @@ array.includes? 3 #=> true
 
 # There is a special array syntax with other types too, as long as
 # they define a .new and a #<< method
-set = Set{1, 2, 3} #=> [1, 2, 3]
+set = Set{1, 2, 3} #=> Set{1, 2, 3}
 set.class          #=> Set(Int32)
 
 # The above is equivalent to
-set = Set(typeof(1, 2, 3)).new
-set << 1
-set << 2
-set << 3
+set = Set(typeof(1, 2, 3)).new #=> Set{} : Set(Int32)
+set << 1                       #=> Set{1} : Set(Int32)
+set << 2                       #=> Set{1, 2} : Set(Int32)
+set << 3                       #=> Set{1, 2, 3} : Set(Int32)
 
 # Hashes
 
 {1 => 2, 3 => 4}.class   #=> Hash(Int32, Int32)
-{1 => 2, 'a' => 3}.class #=> Hash(Int32 | Char, Int32)
+{1 => 2, 'a' => 3}.class #=> Hash(Char| Int32, Int32)
 
-# Empty hashes should specify a type
-{}                     # Syntax error
-{} of Int32 => Int32   # {}
-Hash(Int32, Int32).new # {}
+# Empty hashes must specify a type
+{}                     # Syntax Error: for empty hashes use '{} of KeyType => ValueType'
+{} of Int32 => Int32   # {} : Hash(Int32, Int32)
+Hash(Int32, Int32).new # {} : Hash(Int32, Int32)
 
 # Hashes can be quickly looked up by key
 hash = {"color" => "green", "number" => 5}
 hash["color"]        #=> "green"
 hash["no_such_key"]  #=> Missing hash key: "no_such_key" (KeyError)
 hash["no_such_key"]? #=> nil
+
+# The type of the returned value is based on all key types
+hash["number"] #=> 5 : (Int32 | String)
 
 # Check existence of keys hash
 hash.has_key? "color" #=> true
@@ -220,7 +226,7 @@ Range.new(1, 10).class #=> Range(Int32, Int32)
 # Access tuple's value by its index
 tuple = {:key1, :key2}
 tuple[1] #=> :key2
-tuple[2] #=> syntax error : Index out of bound
+tuple[2] #=> Error: index out of bounds for Tuple(Symbol, Symbol) (2 not in -2..1)
 
 # Can be expanded into multiple variables
 a, b, c = {:a, 'b', "c"}
@@ -246,7 +252,7 @@ elsif false
   "else-if, optional"
 else
   "else, also optional"
-end
+end 
 
 puts "if as a suffix" if true
 
@@ -314,7 +320,7 @@ if a < 3
 else
   a = true
 end
-typeof a #=> (Bool | String)
+typeof(a) #=> (Bool | String)
 
 if a && b
   # here both a and b are guaranteed not to be Nil
@@ -388,15 +394,19 @@ dinner    #=> "quesadilla"
 5.even? # false
 5.odd?  # true
 
-# And if a method ends with an exclamation mark, it does something destructive
-# like mutate the receiver. Some methods have a ! version to make a change, and
+# Also by convention, if a method ends with an exclamation mark, it does 
+# something destructive like mutate the receiver.
+# Some methods have a ! version to make a change, and
 # a non-! version to just return a new changed version
-company_name = "Dunder Mifflin"
-company_name.gsub "Dunder", "Donald"  #=> "Donald Mifflin"
-company_name  #=> "Dunder Mifflin"
-company_name.gsub! "Dunder", "Donald"
-company_name  #=> "Donald Mifflin"
+fruits = ["grapes", "apples", "bananas"]
+fruits.sort  #=> ["apples", "bananas", "grapes"]
+fruits       #=> ["grapes", "apples", "bananas"]
+fruits.sort! #=> ["apples", "bananas", "grapes"]
+fruits       #=> ["apples", "bananas", "grapes"]
 
+# However, some mutating methods do not end in !
+fruits.shift #=> "apples"
+fruits       #=> ["bananas", "grapes"]
 
 # Define a class with the class keyword
 class Human
@@ -404,7 +414,7 @@ class Human
   # A class variable. It is shared by all instances of this class.
   @@species = "H. sapiens"
 
-  # type of name is String
+  # An instance variable. Type of name is String
   @name : String
 
   # Basic initializer
@@ -469,9 +479,9 @@ class TestClass
 end
 # Variables that start with a capital letter are constants
 Var = "I'm a constant"
-Var = "can't be updated" # Already initialized constant Var
+Var = "can't be updated" # Error: already initialized constant Var
 
-# Class is also an object in crystal. So class can have instance variables.
+# Class is also an object in Crystal. So a class can have instance variables.
 # Class variable is shared among the class and all of its descendants.
 
 # base class

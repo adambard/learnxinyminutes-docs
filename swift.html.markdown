@@ -334,7 +334,7 @@ repeat {
 } while i < 5
 
 // The continue statement continues executing a loop at the next iteration
-// The break statement ends a swift or loop immediately
+// The break statement ends a loop immediately
 
 // MARK: - Functions
 
@@ -654,7 +654,7 @@ class Rect: Shape {
     // but still want to run code before and after getting or setting
     // a property, you can use `willSet` and `didSet`
     var identifier: String = "defaultID" {
-        // the `willSet` arg will be the variable name for the new value
+        // the `someIdentifier` arg will be the variable name for the new value
         willSet(someIdentifier) {
             print(someIdentifier)
         }

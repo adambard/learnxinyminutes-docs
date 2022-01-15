@@ -77,13 +77,11 @@ example1() {
   nested1();
 }
 
-/// Anonymous functions don't include a name but can take number of arguments
+/// Anonymous functions don't include a name
 example2() {
-  //// Explicit return type.
-  nested1(Function<void> fn) {
+  nested1(fn) {
     fn();
   }
-
   nested1(() => print("Example2 nested 1"));
 }
 
@@ -717,6 +715,6 @@ main() {
 ## Further Reading
 
 Dart has a comprehensive web-site. It covers API reference, tutorials, articles and more, including a
-useful Try Dart online.
-[https://www.dartlang.org](https://www.dartlang.org)
-[https://try.dartlang.org](https://try.dartlang.org)
+useful DartPad (a cloud-based Dart coding playground).
+[https://dart.dev/](https://dart.dev)
+[https://dartpad.dev/](https://dartpad.dev)

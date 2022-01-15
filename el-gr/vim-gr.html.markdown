@@ -3,7 +3,7 @@ category: tool
 tool: vim
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
-filename: LearnVim.txt
+filename: LearnVim-gr.txt
 lang: el-gr
 ---
 
