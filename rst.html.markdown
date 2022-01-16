@@ -80,12 +80,12 @@ France      Paris
 Japan       Tokyo
 =========== ========
 
-More complex tables can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this :)
+More complex tables can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this. :)
 
 There are multiple ways to make links:
 
 - By adding an underscore after a word : Github_ and by adding the target URL after the text (this way has the advantage of not inserting unnecessary URLs in the visible text).
-- By typing a full comprehensible URL : https://github.com/ (will be automatically converted to a link)
+- By typing a full comprehensible URL : https://github.com/ (will be automatically converted to a link).
 - By making a more Markdown-like link: `Github <https://github.com/>`_ .
 
 .. _Github: https://github.com/
