@@ -169,9 +169,9 @@ render the numbers in order, but this may not be a good idea.
 1. Item three
 ```
 
-(This renders the same as the above example)
+(This renders the same as the example above.)
 
-You can also use sublists
+You can also use sublists.
 
 ```md
 1. Item one
@@ -203,7 +203,7 @@ a line with four spaces or a tab.
 ```
 
 You can also re-tab (or add an additional four spaces) for indentation
-inside your code
+inside your code.
 
 ```md
     my_array.each do |item|
@@ -211,13 +211,13 @@ inside your code
     end
 ```
 
-Inline code can be created using the backtick character `` ` ``
+Inline code can be created using the backtick character `` ` ``.
 
 ```md
 John didn't even know what the `go_to()` function did!
 ```
 
-In GitHub Flavored Markdown, you can use a special syntax for code
+In GitHub Flavored Markdown, you can use a special syntax for code.
 
 <pre>
 <code class="highlight">&#x60;&#x60;&#x60;ruby
@@ -227,7 +227,7 @@ end
 &#x60;&#x60;&#x60;</code></pre>
 
 The above text doesn't require indenting, plus GitHub will use syntax
-highlighting of the language you specify after the \`\`\`
+highlighting of the language you specify after the opening <code>```</code>.
 
 ## Horizontal rule
 
@@ -278,7 +278,7 @@ There is also "implicit naming" which lets you use the link text as the id.
 
 <pre><code class="highlight">&#x5b;<span class="nv">This</span>][] is a link.
 
-&#x5b;<span class="nv">this</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
+&#x5b;<span class="nv">This</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
 
 But it's not that commonly used.
 
