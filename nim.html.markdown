@@ -142,7 +142,7 @@ when compileBadCode:
 # Arrays
 
 type
-  RollCounter = array[DieFaces, int]  # Array's are fixed length and
+  RollCounter = array[DieFaces, int]  # Arrays are fixed length and
   DirNames = array[Direction, string] # indexed by any ordinal type.
   Truths = array[42..44, bool]
 var
