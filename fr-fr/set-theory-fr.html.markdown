@@ -1,11 +1,11 @@
-```
 ---
-category: tool
-lang: fr-fr
+category: Algorithms & Data Structures
 name: Set theory
+lang: fr-fr
 contributors: 
-	- ["kieutrang", "https://github.com/kieutrang1729"]
+  - ["kieutrang", "https://github.com/kieutrang1729"]
 ---
+
 La théorie des ensembles est une branche des mathématiques qui étudie les ensembles, leurs opérations et leurs propriétés.
 
 * Un ensemble est une collection d'éléments disjoints.
@@ -129,6 +129,4 @@ Le produit cartésien de deux ensembles `A` et `B` est l'ensemble contenant tous
 
 ```
 A × B = { (x, y) | x ∈ A, y ∈ B }
-```
-
 ```
