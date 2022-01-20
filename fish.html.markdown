@@ -22,37 +22,53 @@ It was released in February 2005.
 # Guide
 
 Be sure you have the newest fish shell. This was made with version 3.3.0. To test, type:
-> fish -v
+```
+fish -v
+```
 
 To start the fish shell, type:
-> fish
+```
+fish
+```
 
 to exit, type:
-> exit
+```
+exit
+```
 
 or press <kbd>Ctrl + D</kbd>
 
 Now, right out of the gate, there's one annoying thing in fish. It's the welcome message. Who needs that, right? When your shell is started, just type:
-> set -U fish_greeting ""
+```
+set -U fish_greeting ""
+```
 
-To set that to the wanted value,  .
+To set that to the wanted value.
 
 
 If you want to execute a single command written in bash, without switching to that shell, you can type:
-> bash -c 'echo "fish is better than bash"'
+```
+bash -c 'echo "fish is better than bash"'
+```
 
 In fish, you can use single or double quotes.
 The escape character is a `\`
 
 You can change your configuration of fish either by editing the config file
-> vim ~/.config/fish/config.fish
+```
+vim ~/.config/fish/config.fish
+```
 
 or by opening the aforementioned web settings:
 
->fish_config
+```
+fish_config
+```
 
 Adding something to your fish PATH Variable is easy:
-> fish_path_add ~/cowsay
+```
+fish_path_add ~/cowsay
+```
 
 Can you do that with bash, huh? No, you always have to look it up... It's just that easy!
 
@@ -60,19 +76,25 @@ But there's more. Most fish-specific commands start, you guessed it, with 'fish'
 Now you can navigate with <kbd>TAB</kbd>, <kbd>Shift + TAB</kbd> and your Arrow-Keys <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd>.
 
 To get help, contact your local psychiatrist or type `man`. That will bring up the manual for that command, for example:
-> man set
+```
+man set
+```
 
 If you finally tried fish, you can see something other in fish that's really cool. Everything has cool colors, if you type in something wrong, it is red, without even executing, if you put something in quotes, you see where it ends and why that quote doesn't work, because there's another qoutation mark in the quote at position 26. 
 
 fish has even more cool things, like wildcards.
 For example, type
-> ls *.fish
+```
+ls *.fish
+```
 
 That will list all fish files in your current directory.
 
 You can have multiple wildcards per command or even a recursive wildcard, `**`, which basically means it includes files and directories, that fit.
 For example the following command would return (in your case):
-> ls ~/images/**.jpg
+```
+ls ~/images/**.jpg
+```
 
 ```
 ~/images/nudes/pewdiepie.jpg
@@ -83,43 +105,55 @@ For example the following command would return (in your case):
 
 Of course, you can also pipe the output of a command to another command
 
->echo sick egg, nadia. no u do really goofy shit.   | grep [udense]
+```
+echo sick egg, nadia. no u do really goofy shit.   | grep [udense]
+```
 
 write to a file:
 
->echo This\ is\ text > file.txt
+```
+echo This\ is\ text > file.txt
+```
 
 (noticed the escape character?)
 Add to a file:
 
->echo This\ is\ a\ line >> file.txt
-
->echo This\ is\ a\ second\ line >> file.txt
+```
+echo This\ is\ a\ line >> file.txt
+echo This\ is\ a\ second\ line >> file.txt
+```
 
 For Autocompletion, just always press <kbd>TAB</kbd>. You will be surprised how many things fish knows.
 
 To use variables, just type `$VAR`, like in bash.
 
-> echo "My home is $HOME"
+```
+echo "My home is $HOME"
 
-> My home is /home/myuser
+My home is /home/myuser
+```
 
 Here comes a difference between single and double quotes. If you use a variable in single quotes, it will not substitute it.
 
-> echo 'My home is $HOME'
+```
+echo 'My home is $HOME'
 
-> My home is $HOME
+My home is $HOME
+```
 
 More on variables later.
 
 To execute two commands, separate them with `;`
-> echo Lol; echo this is fun
+```
+echo Lol; echo this is fun
+```
 
 The status code of the last command is stored in `$status`
 
 You can use && for two commands that depend on each other.
-
-> set var lol && echo $var
+```
+set var lol && echo $var
+```
 
 You can also use and, 
 which executes if the previous command was successful
@@ -132,12 +166,13 @@ which inverts the exit status of a command.
 
 For example:
 
+```
+if not  echo It's very late I should not waste my time with this  
 
-> if not  echo It's very late I should not waste my time with this  
+echo Nobody heard you  
 
->> echo Nobody heard you  
-
->end
+end
+```
 
 (You can of course do all of that in the shell)
 
