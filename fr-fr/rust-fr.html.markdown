@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
