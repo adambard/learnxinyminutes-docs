@@ -17,7 +17,7 @@ It is a dialect of Lisp inspired by Clojure and Janet.
 - Powerful but simple Syntax
 - REPL
 
-```phel
+```newlisp
 # Comments begin with a # character and continue until the end of the line. There are no multi-line comments.
 
 # Phel is written in "forms", which are just
