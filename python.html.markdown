@@ -148,10 +148,9 @@ f"{name} is {len(name)} characters long." # => "Reiko is 5 characters long."
 # None is an object
 None  # => None
 
-# Don't use the equality "==" symbol to compare objects to None
-# Use "is" instead. This checks for equality of object identity.
-"etc" is None  # => False
-None is None   # => True
+# Compare objects with None using equality "=="
+"etc" == None  # => False
+None == None   # => True
 
 # None, 0, and empty strings/lists/dicts/tuples all evaluate to False.
 # All other values are True
