@@ -12,7 +12,7 @@ source : [wikipedia](https://en.wikipedia.org/wiki/Pascal_(programming_language)
 
 
 
-to compile and run a pascal program you could use a free pascal compiler. [Download Here](https://www.freepascal.org/)
+To compile and run a pascal program you could use a free pascal compiler. [Download Here](https://www.freepascal.org/)
 
 ```pascal
 //Anatomy of a Pascal Program
@@ -23,7 +23,7 @@ to compile and run a pascal program you could use a free pascal compiler. [Downl
 }
 
 //name of the program
-program learn_pascal; //<-- dont forget a semicolon
+program learn_pascal; //<-- don't forget a semicolon
 
 const
     {
@@ -31,7 +31,7 @@ const
     }
 type
     {
-        this is where you should delcare a custom
+        this is where you should declare custom
         data-types
     }
 var
@@ -44,11 +44,11 @@ begin
     {
         area to declare your instruction
     }
-end. // End of a main program area should required a "." symbol
+end. // End of a main program area should require a "." symbol
 ```
 
 ```pascal
-//declaring variable
+//When declaring variables
 //you can do this
 var a:integer;
 var b:integer;
@@ -62,7 +62,7 @@ var a,b : integer;
 
 ```pascal
 program Learn_More;
-//Lets learn about data types and their operations
+//Let's learn about data types and their operations
 
 const
     PI = 3.141592654;

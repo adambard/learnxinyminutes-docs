@@ -179,6 +179,19 @@ echo "Always executed" && echo "Only executed if first command does NOT fail"
 # => Always executed
 # => Only executed if first command does NOT fail
 
+# A single ampersand & after a command runs it in the background. A background command's
+# output is printed to the terminal, but it cannot read from the input.
+sleep 30 &
+# List background jobs
+jobs # => [1]+  Running                 sleep 30 &
+# Bring the background job to the foreground
+fg
+# Ctrl-C to kill the process, or Ctrl-Z to pause it
+# Resume a background process after it has been paused with Ctrl-Z
+bg
+# Kill job number 2
+kill %2
+# %1, %2, etc. can be used for fg and bg as well
 
 # To use && and || with if statements, you need multiple pairs of square brackets:
 if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
@@ -221,7 +234,8 @@ ls -l # Lists every file and directory on a separate line
 ls -t # Sorts the directory contents by last-modified date (descending)
 ls -R # Recursively `ls` this directory and all of its subdirectories
 
-# Results of the previous command can be passed to the next command as input.
+# Results (stdout) of the previous command can be passed as input (stdin) to the next command
+# using a pipe |. Commands chained in this way are called a "pipeline", and are run concurrently.
 # The `grep` command filters the input with provided patterns.
 # That's how we can list .txt files in the current directory:
 ls -l | grep "\.txt"
@@ -261,7 +275,7 @@ cd      # also goes to home directory
 cd ..   # go up one directory
         # (^^say, from /home/username/Downloads to /home/username)
 cd /home/username/Documents   # change to specified directory
-cd ~/Documents/..    # still in home directory..isn't it??
+cd ~/Documents/..    # now in home directory (if ~/Documents exists)
 cd -    # change to last directory
 # => /home/username/Documents
 
@@ -276,9 +290,13 @@ mkdir -p myNewDir/with/intermediate/directories
 # if the intermediate directories didn't already exist, running the above
 # command without the `-p` flag would return an error
 
-# You can redirect command input and output (stdin, stdout, and stderr).
+# You can redirect command input and output (stdin, stdout, and stderr)
+# using "redirection operators". Unlike a pipe, which passes output to a command,
+# a redirection operator has a command's input come from a file or stream, or
+# sends its output to a file or stream.
+
 # Read from stdin until ^EOF$ and overwrite hello.py with the lines
-# between "EOF":
+# between "EOF" (which are called a "here document"):
 cat > hello.py << EOF
 #!/usr/bin/env python
 from __future__ import print_function
@@ -300,6 +318,8 @@ python hello.py 2> "error.err" # redirect error output to error.err
 
 python hello.py > "output-and-error.log" 2>&1
 # redirect both output and errors to output-and-error.log
+# &1 means file descriptor 1 (stdout), so 2>&1 redirects stderr (2) to the current
+# destination of stdout (1), which has been redirected to output-and-error.log.
 
 python hello.py > /dev/null 2>&1
 # redirect all output and errors to the black hole, /dev/null, i.e., no output
@@ -434,7 +454,7 @@ tail -n 10 file.txt
 # prints first 10 lines of file.txt
 head -n 10 file.txt
 
-# sort file.txt's lines
+# print file.txt's lines in sorted order
 sort file.txt
 
 # report or omit repeated lines, with -d it reports them

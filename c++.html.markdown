@@ -946,7 +946,7 @@ mymap.insert(pair<char,int>('Z',26));
 // To iterate
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second << std::cout;
+    std::cout << it->first << "->" << it->second << std::endl;
 // Output:
 // A->1
 // Z->26

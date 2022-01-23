@@ -129,12 +129,13 @@ None  # => None
 "etc" is None  # => False
 None is None  # => True
 
-# None，0，空字符串，空列表，空字典都算是False
+# None，0，空字符串，空列表，空字典，空元组都算是False
 # 所有其他值都是True
 bool(0)  # => False
 bool("")  # => False
 bool([]) # => False
 bool({}) # => False
+bool(()) # => False
 
 
 ####################################################

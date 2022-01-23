@@ -162,19 +162,25 @@ int main (int argc, char** argv)
   int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
   // (assuming 4-byte words)
 
-  // You can initialize an array to 0 thusly:
-  char my_array[20] = {0};
+  // You can initialize an array of twenty ints that all equal 0 thusly:
+  int my_array[20] = {0};
   // where the "{0}" part is called an "array initializer".
-  // NOTE that you get away without explicitly declaring the size of the array,
-  // IF you initialize the array on the same line. So, the following declaration
-  // is equivalent:
-  char my_array[] = {0};
-  // BUT, then you have to evaluate the size of the array at run-time, like this:
+  // All elements (if any) past the ones in the initializer are initialized to 0:
+  int my_array[5] = {1, 2};
+  // So my_array now has five elements, all but the first two of which are 0: 
+  // [1, 2, 0, 0, 0]
+  // NOTE that you get away without explicitly declaring the size 
+  // of the array IF you initialize the array on the same line:
+  int my_array[] = {0};
+  // NOTE that, when not declaring the size, the size of the array is the number 
+  // of elements in the initializer. With "{0}", my_array is now of size one: [0]
+  // To evaluate the size of the array at run-time, divide its byte size by the
+  // byte size of its element type:
   size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
-  // WARNING If you adopt this approach, you should evaluate the size *before*
-  // you begin passing the array to function (see later discussion), because
-  // arrays get "downgraded" to raw pointers when they are passed to functions
-  // (so the statement above will produce the wrong result inside the function).
+  // WARNING You should evaluate the size *before* you begin passing the array 
+  // to functions (see later discussion) because arrays get "downgraded" to 
+  // raw pointers when they are passed to functions (so the statement above 
+  // will produce the wrong result inside the function).
 
   // Indexing an array is like other languages -- or,
   // rather, other languages are like C
@@ -572,7 +578,8 @@ the function are copies of the original arguments (except arrays). Anything you
 do to the arguments in the function do not change the value of the original
 argument where the function was called.
 
-Use pointers if you need to edit the original argument values.
+Use pointers if you need to edit the original argument values (arrays are always
+passed in as pointers).
 
 Example: in-place string reversal
 */
@@ -583,9 +590,11 @@ void str_reverse(char *str_in)
   char tmp;
   size_t ii = 0;
   size_t len = strlen(str_in); // `strlen()` is part of the c standard library
-                               // NOTE: length returned by `strlen` DOESN'T include the
-                               //       terminating NULL byte ('\0')
-  for (ii = 0; ii < len / 2; ii++) { // in C99 you can directly declare type of `ii` here
+                               // NOTE: length returned by `strlen` DOESN'T
+                               //       include the terminating NULL byte ('\0')
+  // in C99 and newer versions, you can directly declare loop control variables
+  // in the loop's parentheses. e.g., `for (size_t ii = 0; ...`
+  for (ii = 0; ii < len / 2; ii++) {
     tmp = str_in[ii];
     str_in[ii] = str_in[len - ii - 1]; // ii-th char from end
     str_in[len - ii - 1] = tmp;
@@ -700,7 +709,7 @@ struct rectangle {
 
 void function_1()
 {
-  struct rectangle my_rec;
+  struct rectangle my_rec = { 1, 2 }; // Fields can be initialized immediately
 
   // Access struct members with .
   my_rec.width = 10;
@@ -723,6 +732,16 @@ int area(rect r)
 {
   return r.width * r.height;
 }
+
+// Typedefs can also be defined right during struct definition
+typedef struct {
+  int width;
+  int height;
+} rect;
+// Like before, doing this means one can type
+rect r;
+// instead of having to type
+struct rectangle r;
 
 // if you have large structs, you can pass them "by pointer" to avoid copying
 // the whole struct:
@@ -876,7 +895,7 @@ enum traffic_light_state {GREEN, YELLOW, RED};
 Node createLinkedList(int *vals, int len);
 
 /* Beyond the above elements, other definitions should be left to a C source */
-/* file. Excessive includes or definitions should, also not be contained in */
+/* file. Excessive includes or definitions should also not be contained in   */
 /* a header file but instead put into separate headers or a C file.          */
 
 #endif /* End of the if precompiler directive. */
