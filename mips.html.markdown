@@ -193,7 +193,7 @@ gateways and routers.
     # Let $s0 = a, $s1 = b, $s2 = c, $v0 = return register
     ble $s0, $s1, a_LTE_b                   # if(a <= b) branch(a_LTE_b)
     ble $s0, $s2, max_C                     # if(a > b && a <=c) branch(max_C)
-    move $v0, $s1                           # else [a > b && a > c] max = a
+    move $v0, $s0                           # else [a > b && a > c] max = a
     j done                                  # Jump to the end of the program
 
     a_LTE_b:                                # Label for when a <= b
