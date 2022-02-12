@@ -102,11 +102,11 @@ func3: (λ s String() (textout "func3 is called: " s)),
  ) 
 }
 
-// Program can have more than one modules
+// Programs can have more than one module
 
 module Module2 : {
 
-// Modules can import other modules' content
+// Modules can import other modules' content with the 'import' statement
 
 import : "MainModule",  // now we can call functions defined in MainModule
 
