@@ -46,9 +46,120 @@ vec3: [1.34, 2.36, 7.89, 10.11],
 
 idx1: Index<Int String>( {1:"one", 2:"two", 3:"three"} ),
 
+// Function definition:
 
+func1: (lambda (textout "Hello, World!")), 
 
+// Function parameters are listed as name/Type pairs without separators,
+// expressions are written in prefix notation: ( OPERATOR [OPERANDS] )
+
+func2: (lambda a Int() b Int() (textout (+ a b))),
+
+// The keyword 'lambda' can be shortened with 'λ' symbol
+
+func3: (λ s String() (textout "func3 is called: " s)),
+
+// Every Transd program has an entry function, from which the program starts executing
+
+ _start: (lambda 
+     // call the previously defined 'func3' function and pass a string to it
+    (func3 "abc")  // <= "func3 is called: abc"
+    
+    // Local (scoped) variables are declared with the scope operator 'with' 
+    
+    (with a Int() b 5 
+        (= a 10)
+        (textout (* a b)) // <= 50
+    )
+    
+    // Containers can be initialized with values at the place of declaration
+    (with vi Vector<Int>( [1,2,3] )
+      // More concise form of initialization can be used
+      vs ["abc", "def", "ghi"]  // 'vs' has type 'Vector<String>'
+      
+      // Containers can be modified after their creation
+      // add to 'vi' vector three elements: 4, 5 and 6
+      (add vi 4) (add vi 5) (add vi 6)
+      
+      // Looping in Transd is done with the familiar 'for' constructtion
+      
+      (for i in vi do 
+          (textout i "; ")) // <= 1; 2; 3;
+          
+      (for i in Range(3) do
+          (textout (get vs i) " - "))  // <= abc - def - ghi -
+      
+      // 'for' construction can be used with additional 'where' clause
+      
+      (for i in vi where (not (mod i 2)) do (textout i " ")  // <= 2 4 6
+      
+      // 'for' construction is also used for list comprehensions
+      
+      (with vec (for i in Range(22) where (not (mod i 3)) project (* i i) )
+        (textout vec)   // <= [0, 9, 36, 81, 144, 225, 324, 441] 
+      )
+    )
+ ) 
+}
+
+// Program can have more than one modules
+
+module Module2 : {
+
+// Modules can import other modules' content
+
+import : "MainModule",  // now we can call functions defined in MainModule
+
+func4: (lambda 
+    (textout "2 + 3 is: " (func2 2 3)) // <= 2 + 3 is: 5
+)
+
+// Transd support regular expressions
+
+tstRegex: (lambda ),
+    
+// Transd has full support of Unicode 
+tstUnicode: (λ 
+    (with s1 "和平"  s2 "和平5"
+        (lout "size of " s1 " is: " (size s1))   // <= size of 和平 is: 2
+        (lout "second character in " s2 " is: " (subn s1 1))   // <= second character in 和平5 is: 平
+        (lout s1 " only contains letters: "
+                :boolalpha (match s1 "[[:alpha:]]+"))  // <= 和平 only contains letters: true
+                
+        (lout s2 " only contains letters: "
+                (match s2 "[[:alpha:]]+")))  // <= 和平5 only contains letters: false
+    )
+)
 
 }
+
+// Transd has classes
+
+class Point : {
+    x: Double(),
+    y: Double(),
+    // The special @init function can be used for initializing class members
+    @init: (λ _x Double() _y Double() (= x _x) (= y _y)),
+    
+    // Classes can have methods
+    distance: (lambda pt Point()
+					(sqrt (+ (pow (- x pt.x) 2 ) (pow (- y pt.y) 2 ) ) ) )
+}
+
+module Module3 : {
+    import: "Point",
+    
+    func5: (lambda 
+        // Objects of classes are created like usual built-in types
+        (with pt1 Point(5.0 6.0) pt2 Point(2.5 4.5)
+            // A class method is called on a class object by specifying the object as the first operand
+            // Call the 'Point::distance' method on 'pt1' and pass 'pt2' as an argument
+            (distance pt1 pt2) // <= 5.147815
+        )
+    )
+}
+
+
+
 
 ```
