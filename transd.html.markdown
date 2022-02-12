@@ -36,7 +36,7 @@ var2: 5,
 
 var3: "Hello, World!",
 
-// The language has generic containers
+// The language supports generic containers
 
 vec1: Vector<String>(),
 vec2: Vector<Int>( [1,2,3,4,5] ),
@@ -84,7 +84,7 @@ func3: (λ s String() (textout "func3 is called: " s)),
       // Looping in Transd is done with the familiar 'for' constructtion
       
       (for i in vi do 
-          (textout i "; ")) // <= 1; 2; 3;
+          (textout i "; ")) // <= 1; 2; 3; 4; 5; 6;
           
       (for i in Range(3) do
           (textout (get vs i) " - "))  // <= abc - def - ghi -
@@ -116,9 +116,17 @@ func4: (lambda
 
 // Transd support regular expressions
 
-tstRegex: (lambda ),
+tstRegex: (lambda 
+    (with s "abc   ddd"
+        (lout (match s "[[:alpha:]]+\s*d+")) // <= true
+    )
+    (with s "a1b2.,.,.c3d4"
+        (lout (match s "[[:alnum:]]+[.,]+[[:alnum:]]+")) // <= true
+    )
+),
     
 // Transd has full support of Unicode 
+
 tstUnicode: (λ 
     (with s1 "和平"  s2 "和平5"
         (lout "size of " s1 " is: " (size s1))   // <= size of 和平 is: 2
@@ -157,9 +165,28 @@ module Module3 : {
             (distance pt1 pt2) // <= 5.147815
         )
     )
+    
+    // Transd support functions as data
+    
+    // Create a typealias for shortening a type name 
+    Lii: typealias(Lambda<Int Int>()),
+    
+    // Define a function object of the 'Lambda' data type, which receives an Int as a parameter and returns Int
+    square: Lii(λ i Int() (ret (* i i))),
+    
+    // This is a function, which receives lambda objects as arguments
+    func6: (λ fun Lii() 
+      // lambda objects are called with the 'exec' operator
+      (ret (exec fun 6))
+    )
+    
+    func7: (lambda 
+    	// call the 'func6' function and pass the 'square' lambda to it
+    	(textout (func6 square))  // <= 36
+    )
 }
-
-
-
-
 ```
+
+Further reading about Transd and learning the language can be done on the language website:
+
+[http://transd.org](http://transd.org)
