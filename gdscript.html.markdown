@@ -95,7 +95,7 @@ func doing_math():
 func control_flow():
   x = 8
   y = 2 # y was originally a float,
-        # but we can change it's type to int
+        # but we can change its type to int
         # using the power of dynamic typing!
   
   if x < y:
