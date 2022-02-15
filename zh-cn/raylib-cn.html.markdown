@@ -10,7 +10,7 @@ translators:
 ---
 
 **raylib** 是一个跨平台、易用的图形库，围绕OpenGL 1.1、2.1、3.3和OpenGL ES 2.0构建。
-尽管它是用C语言编写的，却有超过50种不同语言的绑定。本教程将使用C语言。
+虽然它是用C语言编写的，却有超过50种不同语言的绑定。本教程将使用C语言。
 更确切地说，是C99。
 
 ```c
@@ -21,7 +21,7 @@ int main(void)
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    // 在初始化raylib之前，可以设置配置标志
+    // 在初始化raylib之前，可以设置标志位
     SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
 
     // raylib并不要求我们存储任何实例结构
