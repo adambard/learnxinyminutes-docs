@@ -5,6 +5,7 @@ contributors:
     - ["Daniil Baturin", "http://baturin.org/"]
 translators:
     - ["Chariton Charitonidis", "https://github.com/haritonch"]
+lang: el-gr
 ---
 
 Η OCaml είναι μία strictly evaluated συναρτησιακή γλώσσα με κάποια στοιχεία
