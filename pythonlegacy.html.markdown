@@ -19,8 +19,8 @@ Feedback would be highly appreciated! You can reach me at [@louiedinh](http://tw
 or louiedinh [at] [google's email service]
 
 Note: This article applies to Python 2.7 specifically, but should be applicable
-to Python 2.x. Python 2.7 is reaching end of life and will stop being
-maintained in 2020, it is though recommended to start learning Python with
+to Python 2.x. Python 2.7 has reached its end of life and is no longer being maintained.
+As such, it is recommended to start learning Python with
 Python 3. For Python 3.x, take a look at the [Python 3 tutorial](http://learnxinyminutes.com/docs/python/).
 
 It is also possible to write Python code which is compatible with Python 2.7
