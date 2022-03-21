@@ -193,7 +193,7 @@ print("Hello, World", end="!")  # => Hello, World!
 input_string_var = input("Enter some data: ") # 返回字符串数值
 
 # 在给变量赋值前不用提前声明
-# 传统的变量命名是小写，用下划线分隔单词
+# 习惯上变量命名是小写，用下划线分隔单词
 some_var = 5
 some_var  # => 5
 
