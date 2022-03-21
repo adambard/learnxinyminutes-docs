@@ -82,7 +82,7 @@ True + True # => 2
 True * 8    # => 8
 False - 5   # => -5
 
-# 数值与 True 和 False 之间的运算
+# 数值与 True 和 False 之间的比较运算
 0 == False # => True
 2 == True # => False
 1 == True # => True
