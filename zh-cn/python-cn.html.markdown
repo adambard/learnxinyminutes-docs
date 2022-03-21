@@ -509,15 +509,18 @@ with open("myfile2.txt", "w+") as file:
     file.write(json.dumps(contents)) # 写入对象到文件
 
 # Reading from a file
-with open('myfile1.txt', "r+") as file:
+with open("myfile1.txt", "r+") as file:
     contents = file.read()           # 从文件读取字符串
 print(contents)
 # print: {"aa": 12, "bb": 21}
 
-with open('myfile2.txt', "r+") as file:
+with open("myfile2.txt", "r+") as file:
     contents = json.load(file)       # 从文件读取 json 对象
 print(contents)
 # print: {"aa": 12, "bb": 21}
+
+with open("myfile3.txt", "r+", encoding = "utf-8") as file:
+    contents = file.read()           # 从文件以 utf-8 的编码读取字符串（默认为 ascii）
 
 
 # Python 提供一个叫做可迭代 (iterable) 的基本抽象。一个可迭代对象是可以被当作序列
