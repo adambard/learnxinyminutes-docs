@@ -914,7 +914,7 @@ class Batman(Superhero, Bat):
         # 通常要继承属性，你必须调用 super:
         # super(Batman, self).__init__(*args, **kwargs)
         # 然而在这里我们处理的是多重继承，而 super() 只会返回 MRO 列表的下一个基础类。
-        # 因此，我们需要显示的调用初始类的 __init___
+        # 因此，我们需要显式调用初始类的 __init__
         # *args 和 **kwargs 传递参数时更加清晰整洁，而对于父类而言像是 “剥了一层洋葱”
         Superhero.__init__(self, 'anonymous', movie=True,
                            superpowers=['Wealthy'], *args, **kwargs)
