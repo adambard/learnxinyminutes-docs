@@ -519,8 +519,9 @@ with open("myfile2.txt", "r+") as file:
 print(contents)
 # print: {"aa": 12, "bb": 21}
 
-with open("myfile3.txt", "r+", encoding = "utf-8") as file:
-    contents = file.read()           # 从文件以 utf-8 的编码读取字符串（默认为 ascii）
+# Windows 环境调用 open() 读取文件的默认编码为 ANSI，如果需要读取 utf-8 编码的文件，
+# 需要指定 encoding 参数:
+# open("myfile3.txt", "r+", encoding = "utf-8")
 
 
 # Python 提供一个叫做可迭代 (iterable) 的基本抽象。一个可迭代对象是可以被当作序列
