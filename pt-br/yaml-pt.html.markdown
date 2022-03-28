@@ -126,13 +126,13 @@ base: &base
 
 foo:
   <<: *base
-  age: 10
+  idade: 10
 
 bar:
   <<: *base
-  age: 20
+  idade: 20
 
-# foo and bar would also have name: Everyone has same name
+# foo e bar terão o mesmo nome: Todos possuem o mesmo nome
 
 # YAML também tem tags, que você pode usar para declarar explicitamente os tipos.
 string_explicita: !!str 0.5
