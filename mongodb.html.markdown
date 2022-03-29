@@ -252,17 +252,17 @@ db.engineers.deleteMany({ gender: 'Male' })
 //////////////// Comparison Operators ///////////////////
 
 // Find all greater than or greater than equal to some condition
-db.engineers.find({ $gt: { age: 25 }})
-db.engineers.find({ $gte: { age: 25 }})
+db.engineers.find({ age: { $gt: 25 }})
+db.engineers.find({ age: { $gte: 25 }})
 
 // Find all less than or less than equal to some condition
-db.engineers.find({ $lte: { age: 25 }})
-db.engineers.find({ $lte: { age: 25 }})
+db.engineers.find({ age: { $lt: 25 }})
+db.engineers.find({ age: { $lte: 25 }})
 
 // Find all equal or not equal to
 // Note: the $eq operator is added implicitly in most queries
-db.engineers.find({ $eq: { age: 25 }})
-db.engineers.find({ $ne: { age: 25 }})
+db.engineers.find({ age: { $eq: 25 }})
+db.engineers.find({ age: { $ne: 25 }})
 
 // Find all that match any element in the array
 db.engineers.find({ age: ${ in: [ 20, 23, 24, 25 ]}})
