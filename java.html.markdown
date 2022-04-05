@@ -1043,7 +1043,7 @@ The links provided here below are just to get an understanding of the topic, fee
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
-* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
+* [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
 
 * [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 
