@@ -150,6 +150,7 @@ None  # => None
 
 # Don't use the equality "==" symbol to compare objects to None
 # Use "is" instead. This checks for equality of object identity.
+# As of Python 3.8, using literals (e.g. 'etc') with is operator triggers a syntax warning!
 "etc" is None  # => False
 None is None   # => True
 
@@ -641,7 +642,7 @@ add_10(3)   # => 13
 
 # There are built-in higher order functions
 list(map(add_10, [1, 2, 3]))          # => [11, 12, 13]
-list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
+list(map(max, [1, 2, 3], [4, 2, 1]))  # Returns [4, 2, 3] like [max(1, 4), max(2, 2), max(3, 1)]
 
 list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
