@@ -150,7 +150,6 @@ None  # => None
 
 # Don't use the equality "==" symbol to compare objects to None
 # Use "is" instead. This checks for equality of object identity.
-# As of Python 3.8, using literals (e.g. 'etc') with is operator triggers a syntax warning!
 "etc" is None  # => False
 None is None   # => True
 
