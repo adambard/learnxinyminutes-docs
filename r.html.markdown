@@ -405,7 +405,7 @@ mat
 # [2,]    2    5
 # [3,]    3    6
 # Unlike a vector, the class of a matrix is "matrix", no matter what's in it
-class(mat) # => "matrix"
+class(mat) # => "matrix" "array"
 # Ask for the first row
 mat[1,]	# 1 4
 # Perform operation on the first column
