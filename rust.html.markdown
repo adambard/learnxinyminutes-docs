@@ -341,6 +341,10 @@ fn main() {
 
 ## Further reading
 
+For a deeper-yet-still-fast explanation into Rust and its symbols/keywords, the
+[half-hour to learn Rust](https://fasterthanli.me/articles/a-half-hour-to-learn-rust)
+article by Fasterthanlime explains (almost) everything in a clear and concise way!
+
 There’s a lot more to Rust—this is just the basics of Rust so you can understand
 the most important things. To learn more about Rust, read [The Rust Programming
 Language](http://doc.rust-lang.org/book/index.html) and check out the
