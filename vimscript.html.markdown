@@ -11,7 +11,7 @@ contributors:
 " ##############
 "
 " Vim script (also called VimL) is the subset of Vim's ex-commands which
-" supplies a number of features one one would expect from a scripting language,
+" supplies a number of features one would expect from a scripting language,
 " such as values, variables, functions or loops. Always keep in the back of
 " your mind that a Vim script file is just a sequence of ex-commands. It is
 " very common for a script to mix programming-language features and raw
