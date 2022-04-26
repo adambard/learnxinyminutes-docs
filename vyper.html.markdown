@@ -104,7 +104,7 @@ This document describes Vyper version `0.1.0-beta.8`.
 
 ## Example
 
-```python
+```vyper
 # First, a simple todo list contract
 # Implements CRUD operations for tasks
 
