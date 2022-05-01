@@ -256,7 +256,7 @@ db.engineers.find({ $gt: { age: 25 }})
 db.engineers.find({ $gte: { age: 25 }})
 
 // Find all less than or less than equal to some condition
-db.engineers.find({ $lte: { age: 25 }})
+db.engineers.find({ $lt: { age: 25 }})
 db.engineers.find({ $lte: { age: 25 }})
 
 // Find all equal or not equal to
