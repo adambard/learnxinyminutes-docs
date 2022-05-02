@@ -95,10 +95,12 @@ fn main() {
 
 	// You can also slice them. Start inclusive, end exclusive.
 	part1 := slice(dynNames, 0, 2)
-	// You can ommit the ending index and it will be replaced by the length of the array.
+	// You can ommit the ending index and it will be replaced by the length
+	// of the array.
 	part2 := slice(dynNames, 2)
 
-	// You can iterate over a string, array and a dynamic array using the for in loop.
+	// You can iterate over a string, array and a dynamic array
+	// using the "for in" loop.
 	for index, value in dynNames {
 		printf("%d: %s\n", index, value)
 	}
@@ -170,4 +172,9 @@ fn println(args ...Representable) {
 
 	printf("\n")
 }
+```
 
+## Further reading
+
+You can learn more details in the [spec](https://github.com/vtereshkov/umka-lang/tree/master/spec.md).
+If you want to read real umka code, read some of the [examples](https://github.com/vtereshkov/umka-lang/tree/master/examples).
