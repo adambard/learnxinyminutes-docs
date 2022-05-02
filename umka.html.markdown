@@ -4,7 +4,7 @@ category: language
 language: Umka
 filename: learnumka.um
 contributors:
-    - ["Marek Maškarinec", "https://github.com/marekmaskarinec"]
+    - ["Marek Maškarinec", "https://mrms.cz"]
 ---
 
 Umka is a statically typed scripting language meant to be embedded into
