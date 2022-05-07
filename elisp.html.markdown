@@ -230,7 +230,7 @@ filename: learn-emacs-lisp.el
 ;; Get the first element of this list with `car':
 (car list-of-names)
 
-;; Get a list of all but the first element with `cdr':
+;; Get a list of all but excluding the first element with `cdr':
 (cdr list-of-names)
 
 ;; Add an element to the beginning of a list with `push':
