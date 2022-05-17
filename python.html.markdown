@@ -1042,3 +1042,4 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [A Crash Course in Python for Scientists](https://nbviewer.jupyter.org/gist/anonymous/5924718)
 * [Python Tutorial for Intermediates](https://pythonbasics.org/)
 * [Build a Desktop App with Python](https://pythonpyqt.com/)
+* [Python Tutorial for beginner to advanced level](https://www.scaler.com/topics/python/)
