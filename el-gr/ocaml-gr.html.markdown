@@ -5,6 +5,7 @@ contributors:
     - ["Daniil Baturin", "http://baturin.org/"]
 translators:
     - ["Chariton Charitonidis", "https://github.com/haritonch"]
+lang: el-gr
 ---
 
 Η OCaml είναι μία strictly evaluated συναρτησιακή γλώσσα με κάποια στοιχεία
@@ -270,7 +271,7 @@ let line = read_line () ;;
 (*** User-defined τύποι δεδομένων ***)
 
 (* Μπορούμε να ορίζουμε τύπους δεδομένων με τη δομή "type some_type".
-   Όπως σε αυτό τον άχρηστο τύπο που αντιγράφει τους ακεραίους: )
+   Όπως σε αυτό τον άχρηστο τύπο που αντιγράφει τους ακεραίους: *)
 type my_int = int ;;
 
 (* Πιο ενδιαφέροντες τύποι περιλαμβάνουν τους λεγόμενους type constructors.
@@ -372,7 +373,6 @@ let rec sum_int_list l =
 
 let t = Cons (1, Cons (2, Cons (3, Nil))) ;;
 sum_int_list t ;;
-
 ```
 
 ## Περισσότερα για την OCaml

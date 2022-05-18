@@ -160,7 +160,7 @@ MIPS（Microprocessor without Interlocked Pipeline Stages）汇编语言是为�
     # 让 $s0 = a, $s1 = b, $s2 = c, $v0 = 返回寄存器
     ble $s0, $s1, a_LTE_b                   # 如果 (a <= b) 跳转到 (a_LTE_b)
     ble $s0, $s2, max_C                     # 如果 (a > b && a <= c) 跳转到 (max_C)
-    move $v0, $s1                           # 否则 [a > b && a > c] max = a
+    move $v0, $s0                           # 否则 [a > b && a > c] max = a
     j done                                  # 跳转到程序结束
 
     a_LTE_b:                                # 当 a <= b 时的标签
