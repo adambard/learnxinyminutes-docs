@@ -21,16 +21,16 @@ Nós
 É um *nó* vazio, para indicar que existe um *nó*, mas não é relevante para a consulta.
 
 `(n)`
-É um *nó* referido pela variável **n**, reutilizável na consulta. Começa com minúsculas e usa o camelCase.
+É um *nó* referido pela variável **n**, reutilizável na consulta. Ele usa camelCase.
 
 `(p:Person)`
-Você pode adicionar um *label* ao seu nó, aqui **Person**. É como um tipo / uma classe / uma categoria. Começa com maiúsculas e usa o camelCase.
+Você pode adicionar um *label* ao seu nó, aqui **Person**. É como um tipo / uma classe / uma categoria. Ele usa PascalCase.
 
 `(p:Person:Manager)`
 Um nó pode ter muitos *labels*.
 
 `(p:Person {name : 'Théo Gauchoux', age : 22})`
-Um nó pode ter algumas *propriedades*, aqui **name** e **age**. Começa com minúsculas e usa o camelCase.
+Um nó pode ter algumas *propriedades*, aqui **name** e **age**. Ele usa camelCase.
 
 Os tipos permitidos nas propriedades:
 
@@ -51,7 +51,7 @@ Relacionamentos (ou Arestas)
 **Conecta dois nós**
 
 `[:KNOWS]`
-É um *relacionamento* com o *label* **KNOWS**. É um *label* como um rótulo do nó. Começa com maiúsculas e usa UPPER_SNAKE_CASE.
+É um *relacionamento* com o *label* **KNOWS**. É um *label* como um rótulo do nó. Ele usa UPPER_SNAKE_CASE.
 
 `[k:KNOWS]`
 O mesmo *relacionamento*, referido pela variável **k**, reutilizável na consulta, mas não é necessário.
