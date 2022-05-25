@@ -320,3 +320,4 @@ That's all for now!
 * The amazing LaTeX Wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
 * An actual tutorial: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)
 * A quick guide for learning LaTeX: [Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+* An interactive platform to learn LaTeX (installationfree) [learnlatex.org/](https://www.learnlatex.org/)
