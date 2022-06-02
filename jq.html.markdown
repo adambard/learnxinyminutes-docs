@@ -132,8 +132,9 @@ jq --arg text "$(date; echo "Have a nice day!")" -n '{ "today": $text }'
 # }
 
 
-# Instead of outputting values as JSON, you can use the `-r` option to print string
-# values unquoted / unescaped. Non-string values are still printed as JSON.
+# Instead of outputting values as JSON, you can use the `-r` option to print
+# string values unquoted / unescaped. Non-string values are still printed as
+# JSON.
 #
 echo '"hello" 2 [1, "two", null] {}' | jq -r .
 
@@ -157,13 +158,14 @@ jq -rn '"1 + 2 = \(1+2)"'
 # 1 + 2 = 3
 
 
-# The `-r` option is most useful for generating text outputs to be processed down
-# in a shell pipeline, especially when combined with an intepolated string that is
-# prefixed the `@sh` prefix operator.
+# The `-r` option is most useful for generating text outputs to be processed
+# down in a shell pipeline, especially when combined with an intepolated
+# string that is prefixed the `@sh` prefix operator.
 #
-# The `@sh` operator escapes the outputs of `\(...)` inside a string with single
-# quotes so that each resulting string of `\(...)` can be evaluated by the shell
-# as a single word / token / argument without special interpretations.
+# The `@sh` operator escapes the outputs of `\(...)` inside a string with
+# single quotes so that each resulting string of `\(...)` can be evaluated
+# by the shell as a single word / token / argument without special
+# interpretations.
 #
 env_vars=$(
     echo '{"var1": "value one", "var2": "value\ntwo"}' \
@@ -187,11 +189,12 @@ declare -p var1 var2
 # declare -- var2="value
 # two"
 
-# There are other string `@prefix` operators (e.g., @base64, @uri, @csv, ...) that might
-# be useful to you. See `man jq` for details.
+# There are other string `@prefix` operators (e.g., @base64, @uri, @csv, ...)
+# that might be useful to you. See `man jq` for details.
 
 
-# The comma (`,`) operator in jq evaluates each operand and generates multiple outputs:
+# The comma (`,`) operator in jq evaluates each operand and generates multiple
+# outputs:
 #
 jq -n '"one", 2, ["three"], {"four": 4}'
 
@@ -206,7 +209,9 @@ jq -n '"one", 2, ["three"], {"four": 4}'
 # }
 
 
-# Any JSON value is a valid jq expression that evaluates to the JSON value itself.
+# Any JSON value is a valid jq expression that evaluates to the JSON value
+# itself.
+#
 jq -n '1, "one", [1, 2], {"one": 1}, null, true, false'
 
 # Output:
@@ -224,8 +229,8 @@ jq -n '1, "one", [1, 2], {"one": 1}, null, true, false'
 # false
 
 
-# Any jq expression can be used where a JSON value is expected, even as object keys.
-# (though parenthesis might be required for object keys or values)
+# Any jq expression can be used where a JSON value is expected, even as object
+# keys. (though parenthesis might be required for object keys or values)
 #
 jq -n '[2*3, 8-1, 16/2], {("tw" + "o"): (1 + 1)}'
 
@@ -259,8 +264,8 @@ jq -n '{ c: 3} | { a: 1, "b", c }'
 
 
 # jq programs are more commonly written as a series of expressions (filters)
-# connected by the pipe (`|`) operator, which makes the output of its left filter
-# the input to its right filter.
+# connected by the pipe (`|`) operator, which makes the output of its left
+# filter the input to its right filter.
 #
 jq -n '1 | . + 2 | . + 3'  # first dot is 1; second dot is 3
 
@@ -292,8 +297,8 @@ jq -n '1, 2, 3 | ., 4 | .'
 #  1,  2,  3 |  3, *4 | *4
 #
 #
-# To put it another way, the evaluation of the above example is very similar to the
-# following pieces of code in other programming languages:
+# To put it another way, the evaluation of the above example is very similar
+# to the following pieces of code in other programming languages:
 #
 # In Python:
 #
@@ -376,8 +381,8 @@ jq -n '"abc" | .name? // "unknown"' # => "unknown"
 # the current iteration of the loop in some programming languages.
 
 
-# Strings and arrays can be sliced with the same syntax (`[i:j]`, but no steppings)
-# and semantic as found in the Python programming language:
+# Strings and arrays can be sliced with the same syntax (`[i:j]`, but no
+# steppings) and semantic as found in the Python programming language:
 #
 #                0   1    2    3    4   5 ... infinite
 #        array = ["a", "b", "c", "d"]
@@ -596,7 +601,8 @@ echo $numbers | jq -rs '  # Slurp the numbers into an array.
   ] # Finally, contain all groups in an array.
 
   | sort_by([length, max]) # Sort the groups by their sizes.
-    # If two groups have the same size then the one with the largest number wins (is bigger).
+    # If two groups have the same size then the one with the largest
+    # number wins (is bigger).
 
   | to_entries[]           # Enumerate the array, generating key-value objects.
   |                        # For each object, generate two lines:
