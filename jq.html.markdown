@@ -245,8 +245,37 @@ jq -n '[2*3, 8-1, 16/2], {("tw" + "o"): (1 + 1)}'
 #
 jq -n '{ key_1: "value1" }'
 
+# If a JSON object's key's value is ommited, it is looked up in the current
+# input using the key:
+#
+jq -n '{ c: 3} | { a: 1, "b", c }'
+
 # Output:
-# 
+# {
+#   "a": 1,
+#   "b": null,
+#   "c": 3
+# }
+
+
+# jq programs are more commonly written as a series of expressions (filters)
+# connected by the pipe (`|`) operator, which makes the output of its left filter
+# the input to its right filter.
+#
+jq -n '1 | . + 2 | . + 3'  # first dot is 1; second dot is 3
+
+# Output:
+# 6
+
+# If an expression evaluates to multiple outputs, then jq will iterate through
+# them and propagate each output down the pipeline, and generate multiple
+# outputs in the end.
+#
+jq -n '1, 2, 3 | ., 4 | .'
+
+# Output:
+# 1
+# 4
 # 2
 # 4
 # 3
