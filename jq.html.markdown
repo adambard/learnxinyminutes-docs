@@ -107,7 +107,7 @@ jq . hello.json
 # Below, `val` is the variable name to bind the value, `123`, to.
 # The variable is then referenced as `$val`.
 #
-jq --arg val 123 -n '$val'  # $val is the string "123" here
+jq -n --arg val 123 '$val'  # $val is the string "123" here
 
 # Output:
 # "123"
@@ -115,7 +115,7 @@ jq --arg val 123 -n '$val'  # $val is the string "123" here
 
 # If you need to pass a JSON value, use `--argjson`
 #
-jq --arg val 123 -n '$val'  # $val is a number
+jq -n --argjson val 123 '$val'  # $val is a number
 
 # Output:
 # 123
@@ -773,9 +773,33 @@ jq -n '.a=1, .a.b=2'   # => {"a": 1} {"a": {"b": 2}}
 # nested objects.
 
 
+# In addition to the assignment operator, jq also has operators like:
+# `+=`, `-=`, `*=`, and '/=', ... etc. Basically, `a op= b` is a shorthand
+# for `a = a op b`, and they are handy for updating an object attribute or
+# an item in an array based on its current value. Examples:
+#
+jq -n '.a.b.c = 3 | .a.b.c = .a.b.c + 1' # => {"a": {"b": {"c": 4}}}
+jq -n '.a.b.c = 3 | .a.b.c += 1'         # => {"a": {"b": {"c": 4}}}
+
+
+# To delete a value, use `del/1`, which takes a path expression that specifies
+# the locations of the things to be deleted. Example:
+#
+jq -n '{a: 1, b: {c: 2}, d: [3, 4, 5]} | del(.b.c, .d[1]) | .b.x = 6'
+
+# Output:
+# {
+#   "a": 1,
+#   "b": {
+#     "x": 6
+#   },
+#   "d": [
+#     3,
+#     5
+#   ]
+# }
+
 # FIXME: Cover more topics
-# - update
-# - deletion
 # - function definition
 # - ...
 ```
@@ -783,3 +807,5 @@ jq -n '.a=1, .a.b=2'   # => {"a": 1} {"a": {"b": 2}}
 ## Further Reading
 - https://stedolan.github.io/jq/manual/
 - https://github.com/stedolan/jq/wiki/jq-Language-Description
+- https://github.com/stedolan/jq/wiki/Cookbook
+- https://github.com/stedolan/jq/blob/master/src/builtin.jq
