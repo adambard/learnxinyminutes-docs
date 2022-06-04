@@ -10,7 +10,7 @@ lang: pt-br
 filename: learnr.r
 ---
 
-R é uma linguagem de programação estatística. Ela tem muitas bibliotecas para carregar e limpar conjuntos de dados, executar análises estatísticos e produzir gráficos. Você também pode executar comandos do `R` dentro de um documento LaTeX.
+R é uma linguagem de programação estatística. Ela tem muitas bibliotecas para carregar e limpar conjuntos de dados, executar análises estatísticas e produzir gráficos. Você também pode executar comandos do `R` dentro de um documento LaTeX.
 
 ```r
 
@@ -22,7 +22,7 @@ R é uma linguagem de programação estatística. Ela tem muitas bibliotecas par
 # cerquilha (#) ao início de cada uma delas.
 
 # No Windows e Linux, você pode usar CTRL-ENTER para executar uma linha.
-# No MacOS o equivalente é COMMAND-ENTER
+# No MacOS, o equivalente é COMMAND-ENTER
 
 
 
@@ -357,7 +357,7 @@ jiggle(5)	# 5±ε. Após set.seed(2716057), jiggle(5)==5.005043
 
 
 ###########################################################################
-# Estruturas de dados: Vetores, matrizes, data frames, and arranjos
+# Estruturas de dados: Vetores, matrizes, data frames e arranjos (arrays)
 ###########################################################################
 
 # UNIDIMENSIONAL
@@ -573,7 +573,7 @@ estudantes[estudantes$casa != "G",]
 
 # MULTIDIMENSIONAL (TODOS OS ELEMENTOS DE UM TIPO)
 
-# Arranjos criam tabelas n-dimensionais
+# Arranjos (arrays) criam tabelas n-dimensionais
 # Todos os elementos devem ser do mesmo tipo
 # Você pode fazer uma tabela bidimensional (como uma matriz)
 array(c(c(1,2,4,5),c(8,9,3,6)), dim=c(2,4))
@@ -658,7 +658,7 @@ head(pets, 2) # primeiras duas linhas
 tail(pets, 1) # última linha
 
 # Para salvar um data frame ou matriz como um arquivo .csv:
-write.csv(pets, "pets2.csv") # to make a new .csv file
+write.csv(pets, "pets2.csv") # para criar um novo arquivo .csv
 # Define o diretório de trabalho com setwd(), confirme em qual você está com getwd()
 
 # Experimente ?read.csv e ?write.csv para obter mais informações
