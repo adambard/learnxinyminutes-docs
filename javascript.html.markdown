@@ -603,24 +603,31 @@ const pi = 3.14;
 
 pi = 4.13; // You cannot do this.
 
-// There is a new syntax for functions in ES6 known as "lambda syntax".
+// There is a new syntax for functions in ES6 known as "arrow function"
+// (lambda syntax in many others languages).
 // This allows functions to be defined in a lexical scope like with variables
 // defined by const and let. 
+// By default, a single statement without '{ }' defined will be the return statement, hence the `return` keyword is not required. 
 
-const isEven = (number) => {
-    return number % 2 === 0;
-};
+const isOdd = number => number % 2 !== 0;
 
-isEven(7); // false
+// But, if '{ }' are used, then a `return` is required.
+
+const isEven = number => { return number % 2 == 0 }
 
 // The "equivalent" of this function in the traditional syntax would look like this:
 
-function isEven(number) {
-    return number % 2 === 0;
+function isOdd(number) {
+    return number % 2 !== 0;
 };
 
-// I put the word "equivalent" in double quotes because a function defined
-// using the lambda syntax cannnot be called before the definition.
+// However if a function has no arguments, a slight change of adding the parentheses in it's place is required:
+const helloWorld = () => {
+    console.log("Hello World")
+}
+
+// "Equivalent" refers to the fact that a function defined
+// using the arrow function cannnot be called before the definition.
 // The following is an example of invalid usage:
 
 add(1, 8);
@@ -628,6 +635,7 @@ add(1, 8);
 const add = (firstNumber, secondNumber) => {
     return firstNumber + secondNumber;
 };
+
 ```
 
 ## Further Reading
