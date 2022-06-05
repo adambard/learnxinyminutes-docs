@@ -8,11 +8,14 @@ translators:
 ---
 
 `jq` is a tool for transforming JSON inputs and generating JSON outputs. As a
-programming language,`jq` supports boolean and arithmetic expressions, object
+programming language, jq supports boolean and arithmetic expressions, object
 and array indexing; it has conditionals, functions, and even exception
-handling... etc.  Knowing `jq` enables you to easily write small programs that
+handling... etc.  Knowing jq enables you to easily write small programs that
 can perform complex queries on JSON documents to find answers, make reports, or
 to produce another JSON document for further processing by other programs.
+
+> **NOTE**: This guide demonstrates the use of jq from the command line,
+> specifically, under an environment running the Bash shell.
 
 ```bash
 # When running jq from the command line, jq program code can be specified as the
@@ -251,9 +254,9 @@ jq -n '[2*3, 8-1, 16/2], {("tw" + "o"): (1 + 1)}'
 jq -n '{ key_1: "value1" }'
 
 # If a JSON object's key's value is ommited, it is looked up in the current
-# input using the key:
+# input using the key: (see next example for the meaning of `... | ...`)
 #
-jq -n '{ c: 3} | { a: 1, "b", c }'
+jq -n '{c: 3} | {a: 1, "b", c}'
 
 # Output:
 # {
@@ -321,35 +324,35 @@ jq -n '1, 2, 3 | ., 4 | .'
 
 
 # Below are some examples of array index and object attribute lookups using
-# the '[expr]` operator after an expression. If `expr` is a number then it's
+# the `[expr]` operator after an expression. If `expr` is a number then it's
 # an array index lookup; otherwise, it should be a string, in which case it's
 # an object attribute lookup:
 
 # Array index lookup
 #
-jq -n '[2, { "four": 4 }, 6][1 - 1]' # => 2
-jq -n '[2, { "four": 4 }, 6][0]'     # => 2
-jq -n '[2, { "four": 4 }, 6] | .[0]' # => 2
+jq -n '[2, {"four": 4}, 6][1 - 1]' # => 2
+jq -n '[2, {"four": 4}, 6][0]'     # => 2
+jq -n '[2, {"four": 4}, 6] | .[0]' # => 2
 
 # You can chain the lookups since they are just expressions.
 #
-jq -n '[2, { "four": 4 }, 6][1]["fo" + "ur"]' # => 4
+jq -n '[2, {"four": 4}, 6][1]["fo" + "ur"]' # => 4
 
 # For object attributes, you can also use the `.key` shortcut.
 #
-jq -n '[2, { "four": 4 }, 6][1].four'  # => 4
+jq -n '[2, {"four": 4}, 6][1].four'  # => 4
 
 # Use `."key"` if the key is not a valid identifier.
 #
-jq -n '[2, { "f o u r": 4 }, 6][1]."f o u r"' # => 4
+jq -n '[2, {"f o u r": 4}, 6][1]."f o u r"' # => 4
 
 # Array index lookup returns null if the index is not found.
 #
-jq -n '[2, { "four": 4 }, 6][99]' # => null
+jq -n '[2, {"four": 4}, 6][99]' # => null
 
 # Object attribute lookup returns null if the key is not found.
 #
-jq -n '[2, { "four": 4 }, 6][1].whatever' # => null
+jq -n '[2, {"four": 4}, 6][1].whatever' # => null
 
 # The alternative operator `//` can be used to provide a default
 # value when the result of the left operand is either `null` or `false`.
@@ -403,7 +406,7 @@ jq -n '["Peter", "Jerry", "Tom"][1:99]'  # => ["Jerry", "Tom"]
 echo 1 2 3 | jq .
 jq -n '1, 2, 3'
 jq -n '[1, 2, 3][]'
-jq -n '{ a: 1, b: 2, c: 3 }[]'
+jq -n '{a: 1, b: 2, c: 3}[]'
 
 # Output:
 # 1
@@ -413,7 +416,7 @@ jq -n '{ a: 1, b: 2, c: 3 }[]'
 
 # You can build an array out of multiple outputs.
 #
-jq -n '{ values: [{ a: 1, b: 2, c: 3 }[] | . * 2] }'
+jq -n '{values: [{a: 1, b: 2, c: 3}[] | . * 2]}'
 
 # Output:
 # {
@@ -428,7 +431,7 @@ jq -n '{ values: [{ a: 1, b: 2, c: 3 }[] | . * 2] }'
 # If multiple outputs are not contained, then we'd get multiple outputs
 # in the end.
 #
-jq -n '{ values: ({ a: 1, b: 2, c: 3 }[] | . * 2) }'
+jq -n '{values: ({a: 1, b: 2, c: 3}[] | . * 2)}'
 
 # Output:
 # {
@@ -483,6 +486,12 @@ jq -n '1, 2, 3, 4, 5 | select(. % 2 != 0)'  # NOTE: % gives the remainder.
 # treated as a lambda expression with the calling context of the call
 # site as its scope for variable and function references used in the
 # expression.
+#
+# In the above example, the expression `. % 2 != 0` is what's passed to
+# `select/1` as the argument, not `true` or `false`, which is what would
+# have been the case had the (boolean) expression was evaluated before it's
+# passed to the function.
+
 
 # The `range/1`, `range/2`, and `range/3` built-in functions generate
 # integers within a given range.
@@ -694,7 +703,7 @@ jq -n '["a", "b", "c"] | reduce .[] as $i (""; . + $i)'  # => "abc"
 #
 #    reduce (1, 2, 3, 4, 5) as $i (0; . + $i)
 #
-# can be think of as doing:
+# can be thought of as doing:
 #
 #    0 + 1 | . + 2 | . + 3 | . + 4 | . + 5
 #
@@ -781,6 +790,30 @@ EOF
 # c's total is 12
 
 
+# jq supports destructing during varible binding. This lets you extract values
+# from an array or an object and bind them to variables.
+#
+jq -n '[range(5)] | . as [$first, $second] | $second'
+
+# Output:
+# 1
+
+jq -n '{ name: "Tom", numbers: [1, 2, 3], age: 32}
+       | . as {
+            name: $who,                  # bind .name to $who
+            $name,                       # shorthand for `name: $name`
+            numbers: [$first, $second],
+         }
+       | $name, $second, $first, $who
+'
+
+# Output:
+# "Tom"
+# 2
+# 1
+# "Tom"
+
+
 # In jq, values can be assigned to an array index or object key via the
 # assignment operator, `=`. The same current input is given to both sides
 # of the assignment operator, and the assignment itself evaluates to the
@@ -865,10 +898,11 @@ jq -n '
 # - Function parameters are separated by `;` (semicolor). This is consistent with
 #   passing multiple arguments when calling a function.
 #
-# - `def f($a; $b): ...;` is a shorthand for: `def f(a; b): a as $a | b as $b | ...`
+# - A function can call itself; in fact, jq has TCO (Tail Call Optimization).
 #
-
+# - `def f($a; $b): ...;` is a shorthand for: `def f(a; b): a as $a | b as $b | ...`
 ```
+
 
 ## Further Reading
 - https://stedolan.github.io/jq/manual/
