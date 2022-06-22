@@ -41,11 +41,11 @@ package main
 // La instrucción `import` declara los paquetes de bibliotecas referidos
 // en este fichero.
 import (
-	"fmt"      // Un paquete en la biblioteca estándar de Go.
+	"fmt"       // Un paquete en la biblioteca estándar de Go.
 	"io/ioutil" // Implementa algunas útiles funciones de E/S.
-	m "math"   // Biblioteca de matemáticas con alias local m.
-	"net/http" // Sí, ¡un servidor web!
-	"strconv"  // Conversiones de cadenas.
+	m "math"    // Biblioteca de matemáticas con alias local m.
+	"net/http"  // Sí, ¡un servidor web!
+	"strconv"   // Conversiones de cadenas.
 )
 
 // Definición de una función. `main` es especial. Es el punto de entrada
@@ -63,7 +63,7 @@ func main() {
 // Si no hay parámetros, los paréntesis siguen siendo obligatorios.
 func másAlláDelHola() {
 	var x int // Declaración de una variable.
- 	          // Las variables se deben declarar antes de utilizarlas.
+	          // Las variables se deben declarar antes de utilizarlas.
 	x = 3     // Asignación de variable.
 	// Declaración "corta" con := para inferir el tipo, declarar y asignar.
 	y := 4
@@ -76,7 +76,7 @@ func másAlláDelHola() {
 // Las funciones pueden tener parámetros y (¡múltiples!) valores de
 // retorno.
 func aprendeMúltiple(x, y int) (suma, producto int) {
-    return x + y, x * y // Devuelve dos valores.
+	return x + y, x * y // Devuelve dos valores.
 }
 
 // Algunos tipos incorporados y literales.
@@ -113,7 +113,7 @@ saltos de línea.` // mismo tipo cadena
 	// Para añadir elementos a un sector, se utiliza la función incorporada
 	// append().
 	// El primer argumento es el sector al que se está anexando. Comúnmente,
-	// la variable del arreglo se actualiza en su lugar, como en el 
+	// la variable del arreglo se actualiza en su lugar, como en el
 	// siguiente ejemplo.
 	sec := []int{1, 2 , 3}      // El resultado es un sector de longitud 3.
 	sec = append(sec, 4, 5, 6)  // Añade 3 elementos. El sector ahora tiene una
@@ -222,7 +222,7 @@ func aprendeControlDeFlujo() {
 	// primero, luego comprobar y > x.
 	if y := cálculoCaro(); y > x {
 		x = y
-    }
+	}
 	// Las funciones literales son "cierres".
 	granX := func() bool {
 		return x > 100 // Referencia a x declarada encima de la instrucción
@@ -398,7 +398,7 @@ func aprendeConcurrencia() {
 
 // Una simple función del paquete http inicia un servidor web.
 func aprendeProgramaciónWeb() {
-// El primer parámetro es la direccinón TCP a la que escuchar.
+	// El primer parámetro es la direccinón TCP a la que escuchar.
 	// El segundo parámetro es una interfaz, concretamente http.Handler.
 	go func() {
 		err := http.ListenAndServe(":8080", par{})
