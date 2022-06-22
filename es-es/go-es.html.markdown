@@ -427,24 +427,33 @@ func consultaAlServidor() {
 La raíz de todas las cosas sobre Go es el
 [sitio web oficial de Go](http://golang.org/).
 Allí puedes seguir el tutorial, jugar interactivamente y leer mucho más.
+Aparte del recorrido, [la documentación](https://golang.org/doc/) tiene
+información sobre cómo escribir código efectivo y limpio en Go, documentación de
+paquetes y comandos, y el historial de versiones.
 
-La definición del lenguaje es altamente recomendada.  Es fácil de leer y
-sorprendentemente corta (como la definición del lenguaje Go en estos
-días).
+La [definición del lenguaje](https://golang.org/ref/spec) es altamente recomendada.
+Es fácil de leer y sorprendentemente corta
+(relativo a las definiciones de lenguajes en estos días).
 
 Puedes jugar con el código en el
 [parque de diversiones Go](https://play.golang.org/p/ncRC2Zevag).  ¡Trata
 de cambiarlo y ejecutarlo desde tu navegador!  Ten en cuenta que puedes
-utilizar [https://play.golang.org]( https://play.golang.org) como un
-[REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) para probar
-cosas y el código en el navegador, sin ni siquiera instalar Go.
+utilizar [https://play.golang.org](https://play.golang.org) como un
+[REPL](https://es.wikipedia.org/wiki/Read-eval-print_loop) para probar
+cosas y el código en el navegador, sin tener que instalar Go.
 
 En la lista de lecturas para estudiantes de Go está el
 [código fuente de la biblioteca estándar](http://golang.org/src/pkg/). 
-Ampliamente documentado, que demuestra lo mejor del legible y comprensible
+Ampliamente documentado, demuestra lo mejor del legible y comprensible
 Go, con su característico estilo y modismos.  ¡O puedes hacer clic en un
 nombre de función en [la documentación](http://golang.org/pkg/) y
 aparecerá el código fuente!
 
 Otro gran recurso para aprender Go está en
 [Go con ejemplos](http://goconejemplos.com/).
+
+Go Mobile provee soporte para plataformas móbiles (Android y iOS).
+Puedes escribir aplicaciones móbiles completamente en Go
+o escribir una biblioteca con bindings de un paquete de Go,
+que pueden invocarse en Java (en Android) y Objective-C (en iOS).
+Visita la [página de Go Mobile](https://github.com/golang/go/wiki/Mobile) para más información.
