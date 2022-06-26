@@ -4,6 +4,7 @@ contributors:
     - ["e99n09", "http://github.com/e99n09"]
     - ["isomorphismes", "http://twitter.com/isomorphisms"]
     - ["kalinn", "http://github.com/kalinn"]
+    - ["mribeirodantas", "http://github.com/mribeirodantas"]
 filename: learnr.r
 ---
 
@@ -403,7 +404,7 @@ mat
 # [2,]    2    5
 # [3,]    3    6
 # Unlike a vector, the class of a matrix is "matrix", no matter what's in it
-class(mat)      # "matrix"
+class(mat)      # "matrix" "array"
 # Ask for the first row
 mat[1, ]        # 1 4
 # Perform operation on the first column
@@ -476,9 +477,10 @@ class(students[,3])     # "factor"
 nrow(students)  # 6
 ncol(students)  # 3
 dim(students)   # 6 3
-# The data.frame() function converts character vectors to factor vectors
-# by default; turn this off by setting stringsAsFactors = FALSE when
-# you create the data.frame
+# The data.frame() function used to convert character vectors to factor
+# vectors by default; This has changed in R 4.0.0. If your R version is
+# older, turn this off by setting stringsAsFactors = FALSE when you
+# create the data.frame
 ?data.frame
 
 # There are many twisty ways to subset data frames, all subtly unalike

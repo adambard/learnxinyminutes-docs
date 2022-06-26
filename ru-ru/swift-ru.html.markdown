@@ -622,7 +622,7 @@ class MyShape: Rect {
 // MARK: Прочее
 //
 
-// `extension`s: Добавляет расширенный функционал к существующему типу
+// `extension`s: Добавляет расширенную функциональность к существующему типу
 
 // Класс Square теперь "соответствует" протоколу `CustomStringConvertible`
 extension Square: CustomStringConvertible {
