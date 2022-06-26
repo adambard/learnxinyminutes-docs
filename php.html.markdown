@@ -591,6 +591,12 @@ echo $my_class->property;     // => "public"
 echo $my_class->instanceProp; // => "An instance property"
 $my_class->myMethod();        // => "MyClass"
 
+// Nullsafe operators since PHP 8
+// You can use this when you're unsure if the abstraction of $my_class contains has a property/method
+// it can be used in conjunction with the nullish coalesce operator to ensure proper value
+echo $my_class->invalid_property // An error is thrown
+echo $my_class?->invalid_property // => NULL
+echo $my_class?->invalid_property ?? "public" // => "public"
 
 // Extend classes using "extends"
 class MyOtherClass extends MyClass

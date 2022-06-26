@@ -116,12 +116,10 @@ say @array;               # OUTPUT: «a 6 b␤»
 # 1.3 Hashes, or key-value Pairs.
 #
 
-=begin comment
-Hashes are pairs of keys and values. You can construct a `Pair` object
-using the syntax `key => value`. Hash tables are very fast for lookup,
-and are stored unordered. Keep in mind that keys get "flattened" in hash
-context, and any duplicated keys are deduplicated.
-=end comment
+# Hashes are pairs of keys and values. You can construct a `Pair` object
+# using the syntax `key => value`. Hash tables are very fast for lookup,
+# and are stored unordered. Keep in mind that keys get "flattened" in hash
+# context, and any duplicated keys are deduplicated.
 my %hash = 'a' => 1, 'b' => 2;
 
 # Keys get auto-quoted when the fat comman (`=>`) is used. Trailing commas are
@@ -144,12 +142,10 @@ my %hash = 'a' => 1, 'b' => 2;
 # The `:` (as in `:is-even`) and `:!` (as `:!is-odd`) constructs are known
 # as the `True` and `False` shortcuts respectively.
 
-=begin comment
-As demonstrated in the example below, you can use {} to get the value from a key.
-If it's a string without spaces, you can actually use the quote-words operator
-(`<>`). Since Raku doesn't have barewords, as Perl does, `{key1}` doesn't work
-though.
-=end comment
+# As demonstrated in the example below, you can use {} to get the value from a key.
+# If it's a string without spaces, you can actually use the quote-words operator
+# (`<>`). Since Raku doesn't have barewords, as Perl does, `{key1}` doesn't work
+# though.
 say %hash{'n'};     # OUTPUT: «2␤», gets value associated to key 'n'
 say %hash<is-even>; # OUTPUT: «True␤», gets value associated to key 'is-even'
 
@@ -187,13 +183,11 @@ sub return-for {
 }
 say return-for;        # OUTPUT: «Nil␤»
 
-=begin comment
-Positional arguments are required by default. To make them optional, use
-the `?` after the parameters' names.
+# Positional arguments are required by default. To make them optional, use
+# the `?` after the parameters' names.
 
-In the following example, the sub `with-optional` returns `(Any)` (Perl's
-null-like value) if no argument is passed. Otherwise, it returns its argument.
-=end comment
+# In the following example, the sub `with-optional` returns `(Any)` (Perl's
+# null-like value) if no argument is passed. Otherwise, it returns its argument.
 sub with-optional( $arg? ) {
     $arg;
 }
@@ -201,13 +195,11 @@ with-optional;     # returns Any
 with-optional();   # returns Any
 with-optional(1);  # returns 1
 
-=begin comment
-You can also give provide a default value when they're not passed. Doing
-this make said parameter optional. Required parameters must come before
-optional ones.
+# You can also give provide a default value when they're not passed. Doing
+# this make said parameter optional. Required parameters must come before
+# optional ones.
 
-In the sub `greeting`, the parameter `$type` is optional.
-=end comment
+# In the sub `greeting`, the parameter `$type` is optional.
 sub greeting( $name, $type = "Hello" ) {
   say "$type, $name!";
 }
@@ -215,22 +207,18 @@ sub greeting( $name, $type = "Hello" ) {
 greeting("Althea");                 # OUTPUT: «Hello, Althea!␤»
 greeting("Arthur", "Good morning"); # OUTPUT: «Good morning, Arthur!␤»
 
-=begin comment
-You can also, by using a syntax akin to the one of hashes (yay unified syntax!),
-declared named parameters and thus pass named arguments to a subroutine.
-By default, named parameter are optional and will default to `Any`.
-=end comment
+# You can also, by using a syntax akin to the one of hashes (yay unified syntax!),
+# declared named parameters and thus pass named arguments to a subroutine.
+# By default, named parameter are optional and will default to `Any`.
 sub with-named( $normal-arg, :$named ) {
 	say $normal-arg + $named;
 }
 with-named(1, named => 6); # OUTPUT: «7␤»
 
-=begin comment
-There's one gotcha to be aware of, here: If you quote your key, Raku
-won't be able to see it at compile time, and you'll have a single `Pair`
-object as a positional parameter, which means the function subroutine
-`with-named(1, 'named' => 6);` fails.
-=end comment
+# There's one gotcha to be aware of, here: If you quote your key, Raku
+# won't be able to see it at compile time, and you'll have a single `Pair`
+# object as a positional parameter, which means the function subroutine
+# `with-named(1, 'named' => 6);` fails.
 with-named(2, :named(5));  # OUTPUT: «7␤»
 
 # Similar to positional parameters, you can provide your named arguments with
@@ -241,11 +229,9 @@ sub named-def( :$def = 5 ) {
 named-def;            # OUTPUT: «5»
 named-def(def => 15); # OUTPUT: «15»
 
-=begin comment
-In order to make a named parameter mandatory, you can append `!` to the
-parameter. This is the inverse of `?`, which makes a required parameter
-optional.
-=end comment
+# In order to make a named parameter mandatory, you can append `!` to the
+# parameter. This is the inverse of `?`, which makes a required parameter
+# optional.
 
 sub with-mandatory-named( :$str! )  {
     say "$str!";
@@ -254,33 +240,27 @@ with-mandatory-named(str => "My String"); # OUTPUT: «My String!␤»
 # with-mandatory-named;   # runtime error: "Required named parameter not passed"
 # with-mandatory-named(3);# runtime error: "Too many positional parameters passed"
 
-=begin comment
-If a sub takes a named boolean argument, you can use the same "short boolean"
-hash syntax we discussed earlier.
-=end comment
+# If a sub takes a named boolean argument, you can use the same "short boolean"
+# hash syntax we discussed earlier.
 sub takes-a-bool( $name, :$bool ) {
     say "$name takes $bool";
 }
 takes-a-bool('config', :bool);  # OUTPUT: «config takes True␤»
 takes-a-bool('config', :!bool); # OUTPUT: «config takes False␤»
 
-=begin comment
-Since parenthesis can be omitted when calling a subroutine, you need to use
-`&` in order to distinguish between a call to a sub with no arguments and
-the code object.
+# Since parenthesis can be omitted when calling a subroutine, you need to use
+# `&` in order to distinguish between a call to a sub with no arguments and
+# the code object.
 
-For instance, in this example we must use `&` to store the sub `say-hello`
-(i.e., the sub's code object) in a variable, not a subroutine call.
-=end comment
+# For instance, in this example we must use `&` to store the sub `say-hello`
+# (i.e., the sub's code object) in a variable, not a subroutine call.
 my &s = &say-hello;
 my &other-s = sub { say "Anonymous function!" }
 
-=begin comment
-A sub can have a "slurpy" parameter, or what one'd call a
-"doesn't-matter-how-many" parameter. This is Raku's way of supporting variadic
-functions. For this, you must use `*@` (slurpy) which will "take everything
-else". You can have as many parameters *before* a slurpy one, but not *after*.
-=end comment
+# A sub can have a "slurpy" parameter, or what one'd call a
+# "doesn't-matter-how-many" parameter. This is Raku's way of supporting variadic
+# functions. For this, you must use `*@` (slurpy) which will "take everything
+# else". You can have as many parameters *before* a slurpy one, but not *after*.
 sub as-many($head, *@rest) {
     @rest.join(' / ') ~ " !";
 }
@@ -289,35 +269,29 @@ say as-many('Happy', ['Happy', 'Birthday'], 'Day'); # OUTPUT: «Happy / Birthday
 
 # Note that the splat (the *) did not consume the parameter before it.
 
-=begin comment
-There are other two variations of slurpy parameters in Raku. The previous one
-(namely, `*@`), known as flattened slurpy, flattens passed arguments. The other
-two are `**@` and `+@` known as unflattened slurpy and "single argument rule"
-slurpy respectively. The unflattened slurpy doesn't flatten its listy
-arguments (or Iterable ones).
-=end comment
+# There are other two variations of slurpy parameters in Raku. The previous one
+# (namely, `*@`), known as flattened slurpy, flattens passed arguments. The other
+# two are `**@` and `+@` known as unflattened slurpy and "single argument rule"
+# slurpy respectively. The unflattened slurpy doesn't flatten its listy
+# arguments (or Iterable ones).
 sub b(**@arr) { @arr.perl.say };
 b(['a', 'b', 'c']);             # OUTPUT: «[["a", "b", "c"],]»
 b(1, $('d', 'e', 'f'), [2, 3]); # OUTPUT: «[1, ("d", "e", "f"), [2, 3]]»
 b(1, [1, 2], ([3, 4], 5));      # OUTPUT: «[1, [1, 2], ([3, 4], 5)]␤»
 
-=begin comment
-On the other hand, the "single argument rule" slurpy follows the "single argument
-rule" which dictates how to handle the slurpy argument based upon context and
-roughly states that if only a single argument is passed and that argument is
-Iterable, that argument is used to fill the slurpy parameter array. In any
-other case, `+@` works like `**@`.
-=end comment
+# On the other hand, the "single argument rule" slurpy follows the "single argument
+# rule" which dictates how to handle the slurpy argument based upon context and
+# roughly states that if only a single argument is passed and that argument is
+# Iterable, that argument is used to fill the slurpy parameter array. In any
+# other case, `+@` works like `**@`.
 sub c(+@arr) { @arr.perl.say };
 c(['a', 'b', 'c']);             # OUTPUT: «["a", "b", "c"]␤»
 c(1, $('d', 'e', 'f'), [2, 3]); # OUTPUT: «[1, ("d", "e", "f"), [2, 3]]␤»
 c(1, [1, 2], ([3, 4], 5));      # OUTPUT: «[1, [1, 2], ([3, 4], 5)]␤»
 
-=begin comment
-You can call a function with an array using the "argument list flattening"
-operator `|` (it's not actually the only role of this operator,
-but it's one of them).
-=end comment
+# You can call a function with an array using the "argument list flattening"
+# operator `|` (it's not actually the only role of this operator,
+# but it's one of them).
 sub concat3($a, $b, $c) {
     say "$a, $b, $c";
 }
@@ -328,14 +302,12 @@ concat3(|@array); # OUTPUT: «a, b, c␤»
 # 3. Containers
 ####################################################
 
-=begin comment
-In Raku, values are actually stored in "containers". The assignment
-operator asks the container on the left to store the value on its right.
-When passed around, containers are marked as immutable which means that,
-in a function, you'll get an error if you try to mutate one of your
-arguments. If you really need to, you can ask for a mutable container by
-using the `is rw` trait.
-=end comment
+# In Raku, values are actually stored in "containers". The assignment
+# operator asks the container on the left to store the value on its right.
+# When passed around, containers are marked as immutable which means that,
+# in a function, you'll get an error if you try to mutate one of your
+# arguments. If you really need to, you can ask for a mutable container by
+# using the `is rw` trait.
 sub mutate( $n is rw ) {
     $n++; # postfix ++ operator increments its argument but returns its old value
 }
@@ -343,32 +315,26 @@ my $m = 42;
 mutate $m; #=> 42, the value is incremented but the old value is returned
 say $m;    # OUTPUT: «43␤»
 
-=begin comment
-This works because we are passing the container $m to the `mutate` sub.
-If we try to just pass a number instead of passing a variable, it won't work
-because there is no container being passed and integers are immutable by
-themselves:
+# This works because we are passing the container $m to the `mutate` sub.
+# If we try to just pass a number instead of passing a variable, it won't work
+# because there is no container being passed and integers are immutable by
+# themselves:
 
-mutate 42; # Parameter '$n' expected a writable container, but got Int value
-=end comment
+# mutate 42; # Parameter '$n' expected a writable container, but got Int value
 
-=begin comment
-Similar error would be obtained, if a bound variable is passed to
-to the subroutine. In Raku, you bind a value to a variable using the binding
-operator `:=`.
-=end comment
+# Similar error would be obtained, if a bound variable is passed to
+# to the subroutine. In Raku, you bind a value to a variable using the binding
+# operator `:=`.
 my $v := 50; # binding 50 to the variable $v
 # mutate $v;   # Parameter '$n' expected a writable container, but got Int value
 
-=begin comment
-If what you want is a copy instead, use the `is copy` trait which will
-cause the argument to be copied and allow you to modify the argument
-inside the routine without modifying the passed argument.
+# If what you want is a copy instead, use the `is copy` trait which will
+# cause the argument to be copied and allow you to modify the argument
+# inside the routine without modifying the passed argument.
 
-A sub itself returns a container, which means it can be marked as `rw`.
-Alternatively, you can explicitly mark the returned container as mutable
-by using `return-rw` instead of `return`.
-=end comment
+# A sub itself returns a container, which means it can be marked as `rw`.
+# Alternatively, you can explicitly mark the returned container as mutable
+# by using `return-rw` instead of `return`.
 my $x = 42;
 my $y = 45;
 sub x-store is rw { $x }
@@ -390,12 +356,10 @@ say $y; # OUTPUT: «90␤»
 # 4.1 if/if-else/if-elsif-else/unless
 #
 
-=begin comment
-Before talking about `if`, we need to know which values are "truthy"
-(represent `True`), and which are "falsey" (represent `False`). Only these
-values are falsey: 0, (), {}, "", Nil, a type (like `Str`, `Int`, etc.) and
-of course, `False` itself. Any other value is truthy.
-=end comment
+# Before talking about `if`, we need to know which values are "truthy"
+# (represent `True`), and which are "falsey" (represent `False`). Only these
+# values are falsey: 0, (), {}, "", Nil, a type (like `Str`, `Int`, etc.) and
+# of course, `False` itself. Any other value is truthy.
 my $number = 5;
 if $number < 5 {
     say "Number is less than 5"
@@ -422,11 +386,9 @@ unless False {
 say "Quite truthy" if True;      # OUTPUT: «Quite truthy␤»
 say "Quite falsey" unless False; # OUTPUT: «Quite falsey␤»
 
-=begin comment
-The ternary operator (`??..!!`) is structured as follows `condition ??
-expression1 !! expression2` and it returns expression1 if the condition is
-true. Otherwise, it returns expression2.
-=end comment
+# The ternary operator (`??..!!`) is structured as follows `condition ??
+# expression1 !! expression2` and it returns expression1 if the condition is
+# true. Otherwise, it returns expression2.
 my $age = 30;
 say $age > 18 ?? "You are an adult" !! "You are under 18";
 # OUTPUT: «You are an adult␤»
@@ -435,11 +397,9 @@ say $age > 18 ?? "You are an adult" !! "You are under 18";
 # 4.2 with/with-else/with-orwith-else/without
 #
 
-=begin comment
-The `with` statement is like `if`, but it tests for definedness rather than
-truth, and it topicalizes on the condition, much like `given` which will
-be discussed later.
-=end comment
+# The `with` statement is like `if`, but it tests for definedness rather than
+# truth, and it topicalizes on the condition, much like `given` which will
+# be discussed later.
 my $s = "raku";
 with   $s.index("r") { say "Found a at $_"      }
 orwith $s.index("k") { say "Found c at $_"      }
@@ -475,6 +435,7 @@ current iteration (unless explicitly named), etc.
 Since other Raku constructs use this variable (as said before, like `for`,
 blocks, `with` statement etc), this means the powerful `when` is not only
 applicable along with a `given`, but instead anywhere a `$_` exists.
+
 =end comment
 
 given "foo bar" {
@@ -589,6 +550,7 @@ The categories are:
 The associativity and precedence list are explained below.
 
 Alright, you're set to go!
+
 =end comment
 
 #
@@ -680,11 +642,9 @@ my @natural = 1..*; # 1 to Infinite! Equivalent to `1..Inf`.
 # You can pass ranges as subscripts and it'll return an array of results.
 say @natural[^10]; # OUTPUT: «1 2 3 4 5 6 7 8 9 10␤», doesn't run out of memory!
 
-=begin comment
-NOTE: when reading an infinite list, Raku will "reify" the elements
-it needs, then keep them in memory. They won't be calculated more than once.
-It also will never calculate more elements that are needed.
-=end comment
+# NOTE: when reading an infinite list, Raku will "reify" the elements
+# it needs, then keep them in memory. They won't be calculated more than once.
+# It also will never calculate more elements than that are needed.
 
 # An array subscript can also be a closure. It'll be called with the array's
 # length as the argument. The following two examples are equivalent:
@@ -784,7 +744,7 @@ first-of-array(@small); #=> 1
 # Here, `@rest` is `(3,)`, since `$fst` holds the `2`. This results
 # since the length (.elems) of `@rest` is 1.
 sub slurp-in-array(@ [$fst, *@rest]) {
-    say $fst + @rest.elems;           
+    say $fst + @rest.elems;
 }
 slurp-in-array(@tail); # OUTPUT: «3␤»
 
@@ -798,16 +758,14 @@ fst(1);    # OUTPUT: «1␤»
 # passed") though. After all, the `fst` sub declares only a single positional
 # parameter.
 
-=begin comment
-You can also destructure hashes (and classes, which you'll learn about later).
-The syntax is basically the same as
-`%hash-name (:key($variable-to-store-value-in))`.
-The hash can stay anonymous if you only need the values you extracted.
+# You can also destructure hashes (and classes, which you'll learn about later).
+# The syntax is basically the same as
+# `%hash-name (:key($variable-to-store-value-in))`.
+# The hash can stay anonymous if you only need the values you extracted.
 
-In order to call the function, you must supply a hash wither created with
-curly braces or with `%()` (recommended). Alternatively, you can pass
-a variable that contains a hash.
-=end comment
+# In order to call the function, you must supply a hash wither created with
+# curly braces or with `%()` (recommended). Alternatively, you can pass
+# a variable that contains a hash.
 
 sub key-of( % (:value($val), :qua($qua)) ) {
  	say "Got value $val, $qua time" ~~
@@ -826,12 +784,10 @@ sub next-index( $n ) {
 }
 my $new-n = next-index(3); # $new-n is now 4
 
-=begin comment
-This is true for everything, except for the looping constructs (due to
-performance reasons): there's no reason to build a list if we're just going to
-discard all the results. If you still want to build one, you can use the
-`do` statement prefix or the `gather` prefix, which we'll see later:
-=end comment
+# This is true for everything, except for the looping constructs (due to
+# performance reasons): there's no reason to build a list if we're just going to
+# discard all the results. If you still want to build one, you can use the
+# `do` statement prefix or the `gather` prefix, which we'll see later:
 
 sub list-of( $n ) {
  	do for ^$n { $_ }
@@ -857,13 +813,11 @@ my &lambda3 = sub ($argument) {
 	"The argument passed to this lambda is $argument"
 }
 
-=begin comment
-Both pointy blocks and blocks are pretty much the same thing, except that
-the former can take arguments, and that the latter can be mistaken as
-a hash by the parser. That being said, blocks can declare what's known
-as placeholders parameters through the twigils `$^` (for positional
-parameters) and `$:` (for named parameters). More on them later on.
-=end comment
+# Both pointy blocks and blocks are pretty much the same thing, except that
+# the former can take arguments, and that the latter can be mistaken as
+# a hash by the parser. That being said, blocks can declare what's known
+# as placeholders parameters through the twigils `$^` (for positional
+# parameters) and `$:` (for named parameters). More on them later on.
 
 my &mult = { $^numbers * $:times }
 say mult 4, :times(6); #=> «24␤»
@@ -876,12 +830,10 @@ my @res1 = map -> $v { $v + 3 }, @nums; # pointy block, explicit parameter
 my @res2 = map { $_ + 3 },       @nums; # block using an implicit parameter
 my @res3 = map { $^val + 3 },    @nums; # block with placeholder parameter
 
-=begin comment
-A sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`):
-A block doesn't have a "function context" (though it can have arguments),
-which means that if you return from it, you're going to return from the
-parent function.
-=end comment
+# A sub (`sub {}`) has different semantics than a block (`{}` or `-> {}`):
+# A block doesn't have a "function context" (though it can have arguments),
+# which means that if you return from it, you're going to return from the
+# parent function.
 
 # Compare:
 sub is-in( @array, $elem ) {
@@ -895,23 +847,19 @@ sub truthy-array( @array ) {
     say 'Hi';
 }
 
-=begin comment
-In the `is-in` sub, the block will `return` out of the `is-in` sub once the
-condition evaluates to `True`, the loop won't be run anymore and the
-following statement won't be executed. The last statement is only executed
-if the block never returns.
+# In the `is-in` sub, the block will `return` out of the `is-in` sub once the
+# condition evaluates to `True`, the loop won't be run anymore and the
+# following statement won't be executed. The last statement is only executed
+# if the block never returns.
 
-On the contrary, the `truthy-array` sub will produce an array of `True` and
-`False`, which will printed, and always execute the last execute statement.
-Thus, the `return` only returns from the anonymous `sub`
-=end comment
+# On the contrary, the `truthy-array` sub will produce an array of `True` and
+# `False`, which will printed, and always execute the last execute statement.
+# Thus, the `return` only returns from the anonymous `sub`
 
-=begin comment
-The `anon` declarator can be used to create an anonymous sub from a
-regular subroutine. The regular sub knows its name but its symbol is
-prevented from getting installed in the lexical scope, the method table
-and everywhere else.
-=end comment
+# The `anon` declarator can be used to create an anonymous sub from a
+# regular subroutine. The regular sub knows its name but its symbol is
+# prevented from getting installed in the lexical scope, the method table
+# and everywhere else.
 my $anon-sum = anon sub summation(*@a) { [+] @a }
 say $anon-sum.name;     # OUTPUT: «summation␤»
 say $anon-sum(2, 3, 5); # OUTPUT: «10␤»
@@ -983,31 +931,27 @@ multi with-or-without-you {
     say "Definitely can't live.";
 }
 
-=begin comment
-This is very, very useful for many purposes, like `MAIN` subs (covered
-later), and even the language itself uses it in several places.
+# This is very, very useful for many purposes, like `MAIN` subs (covered
+# later), and even the language itself uses it in several places.
 
-For example, the `is` trait is actually a `multi sub` named `trait_mod:<is>`,
-and it works off that. Thus, `is rw`, is simply a dispatch to a function with
-this signature `sub trait_mod:<is>(Routine $r, :$rw!) {}`
-=end comment
+# For example, the `is` trait is actually a `multi sub` named `trait_mod:<is>`,
+# and it works off that. Thus, `is rw`, is simply a dispatch to a function with
+# this signature `sub trait_mod:<is>(Routine $r, :$rw!) {}`
 
 ####################################################
 # 7. About types...
 ####################################################
 
-=begin comment
-Raku is gradually typed. This means you can specify the type of your
-variables/arguments/return types, or you can omit the type annotations in
-in which case they'll default to `Any`. Obviously you get access to a few
-base types, like `Int` and `Str`. The constructs for declaring types are
-`subset`, `class`, `role`, etc. which you'll see later.
+# Raku is gradually typed. This means you can specify the type of your
+# variables/arguments/return types, or you can omit the type annotations in
+# in which case they'll default to `Any`. Obviously you get access to a few
+# base types, like `Int` and `Str`. The constructs for declaring types are
+# `subset`, `class`, `role`, etc. which you'll see later.
 
-For now, let us examine `subset` which is a "sub-type" with additional
-checks. For example, "a very big integer is an `Int` that's greater than 500".
-You can specify the type you're subtyping (by default, `Any`), and add
-additional checks with the `where` clause.
-=end comment
+# For now, let us examine `subset` which is a "sub-type" with additional
+# checks. For example, "a very big integer is an `Int` that's greater than 500".
+# You can specify the type you're subtyping (by default, `Any`), and add
+# additional checks with the `where` clause.
 subset VeryBigInteger of Int where * > 500;
 
 # Or the set of the whole numbers:
@@ -1025,14 +969,12 @@ my PENFO $yes-penfo = 36;  # OK
 # 8. Scoping
 ####################################################
 
-=begin comment
-In Raku, unlike many scripting languages, (such as Python, Ruby, PHP),
-you must declare your variables before using them. The `my` declarator
-we've used so far uses "lexical scoping". There are a few other declarators,
-(`our`, `state`, ..., ) which we'll see later. This is called
-"lexical scoping", where in inner blocks, you can access variables from
-outer blocks.
-=end comment
+# In Raku, unlike many scripting languages, (such as Python, Ruby, PHP),
+# you must declare your variables before using them. The `my` declarator
+# we've used so far uses "lexical scoping". There are a few other declarators,
+# (`our`, `state`, ..., ) which we'll see later. This is called
+# "lexical scoping", where in inner blocks, you can access variables from
+# outer blocks.
 
 my $file_scoped = 'Foo';
 sub outer {
@@ -1052,17 +994,15 @@ outer()();  # OUTPUT: «Foo Bar␤»
 # 9. Twigils
 ####################################################
 
-=begin comment
-There are many special `twigils` (composed sigils) in Raku. Twigils
-define a variable's scope.
-The `*` and `?` twigils work on standard variables:
-    * for dynamic variables
-    ? for compile-time variables
-
-The `!` and the `.` twigils are used with Raku's objects:
-    ! for attributes (instance attribute)
-    . for methods (not really a variable)
-=end comment
+# There are many special `twigils` (composed sigils) in Raku. Twigils
+# define a variable's scope.
+# The `*` and `?` twigils work on standard variables:
+#     * for dynamic variables
+#     ? for compile-time variables
+#
+# The `!` and the `.` twigils are used with Raku's objects:
+#     ! for attributes (instance attribute)
+#     . for methods (not really a variable)
 
 #
 # `*` twigil: Dynamic Scope
@@ -1084,14 +1024,14 @@ sub call_say_dyn {
     my $*dyn_scoped_1 = 25;
 
     # Will change the value of the file scoped variable.
-    $*dyn_scoped_2 = 100;  
+    $*dyn_scoped_2 = 100;
 
     # $*dyn_scoped 1 and 2 will be looked for in the call.
     say_dyn();  # OUTPUT: «25 100␤»
 
     # The call to `say_dyn` uses the value of $*dyn_scoped_1 from inside
     # this sub's lexical scope even though the blocks aren't nested (they're
-    # call-nested).                     
+    # call-nested).
 }
 say_dyn();      # OUTPUT: «1 10␤»
 
@@ -1109,26 +1049,24 @@ say_dyn();      # OUTPUT: «1 100␤»
 # 10. Object Model
 ####################################################
 
-=begin comment
-To call a method on an object, add a dot followed by the method name:
-`$object.method`
+# To call a method on an object, add a dot followed by the method name:
+# `$object.method`
 
-Classes are declared with the `class` keyword. Attributes are declared
-with the `has` keyword, and methods declared with the `method` keyword.
+# Classes are declared with the `class` keyword. Attributes are declared
+# with the `has` keyword, and methods declared with the `method` keyword.
 
-Every attribute that is private uses the `!` twigil. For example: `$!attr`.
-Immutable public attributes use the `.` twigil which creates a read-only
-method named after the attribute. In fact, declaring an attribute with `.`
-is equivalent to declaring the same attribute with `!` and then creating
-a read-only method with the attribute's name. However, this is done for us
-by Raku automatically. The easiest way to remember the `$.` twigil is
-by comparing it to how methods are called.
+# Every attribute that is private uses the `!` twigil. For example: `$!attr`.
+# Immutable public attributes use the `.` twigil which creates a read-only
+# method named after the attribute. In fact, declaring an attribute with `.`
+# is equivalent to declaring the same attribute with `!` and then creating
+# a read-only method with the attribute's name. However, this is done for us
+# by Raku automatically. The easiest way to remember the `$.` twigil is
+# by comparing it to how methods are called.
 
-Raku's object model ("SixModel") is very flexible, and allows you to
-dynamically add methods, change semantics, etc... Unfortunately, these will
-not all be covered here, and you should refer to:
-https://docs.raku.org/language/objects.html.
-=end comment
+# Raku's object model ("SixModel") is very flexible, and allows you to
+# dynamically add methods, change semantics, etc... Unfortunately, these will
+# not all be covered here, and you should refer to:
+# https://docs.raku.org/language/objects.html.
 
 class Human {
     has Str $.name;           # `$.name` is immutable but with an accessor method.
@@ -1196,12 +1134,10 @@ $person1.get-info;      #=> Jord born in Togo and now lives in France. Age: 10
 # 10.1 Object Inheritance
 #
 
-=begin comment
-Raku also has inheritance (along with multiple inheritance). While
-methods are inherited, submethods are not. Submethods are useful for
-object construction and destruction tasks, such as `BUILD`, or methods that
-must be overridden by subtypes. We will learn about `BUILD` later on.
-=end  comment
+# Raku also has inheritance (along with multiple inheritance). While
+# methods are inherited, submethods are not. Submethods are useful for
+# object construction and destruction tasks, such as `BUILD`, or methods that
+# must be overridden by subtypes. We will learn about `BUILD` later on.
 
 class Parent {
   	has $.age;
@@ -1232,13 +1168,11 @@ my Child $Madison .= new(age => 1, name => 'Madison');
 $Madison.talk;            # OUTPUT: «Goo goo ga ga␤», due to the overridden method.
 # $Madison.favorite-color # does not work since it is not inherited.
 
-=begin comment
-When you use `my T $var`, `$var` starts off with `T` itself in it, so you can
-call `new` on it. (`.=` is just the dot-call and the assignment operator).
-Thus, `$a .= b` is the same as `$a = $a.b`. Also note that `BUILD` (the method
-called inside `new`) will set parent's properties too, so you can pass `val =>
-5`.
-=end comment
+# When you use `my T $var`, `$var` starts off with `T` itself in it, so you can
+# call `new` on it. (`.=` is just the dot-call and the assignment operator).
+# Thus, `$a .= b` is the same as `$a = $a.b`. Also note that `BUILD` (the method
+# called inside `new`) will set parent's properties too, so you can pass `val =>
+# 5`.
 
 #
 # 10.2 Roles, or Mixins
@@ -1281,15 +1215,13 @@ class Item does PrintableVal {
 # 11. Exceptions
 ####################################################
 
-=begin comment
-Exceptions are built on top of classes, in the package `X` (like `X::IO`).
-In Raku, exceptions are automatically 'thrown':
+# Exceptions are built on top of classes, in the package `X` (like `X::IO`).
+# In Raku, exceptions are automatically 'thrown':
 
-open 'foo';   # OUTPUT: «Failed to open file foo: no such file or directory␤»
+# open 'foo';   # OUTPUT: «Failed to open file foo: no such file or directory␤»
 
-It will also print out what line the error was thrown at
-and other error info.
-=end comment
+# It will also print out what line the error was thrown at
+# and other error info.
 
 # You can throw an exception using `die`. Here it's been commented out to
 # avoid stopping the program's execution:
@@ -1298,58 +1230,48 @@ and other error info.
 # Or more explicitly (commented out too):
 # X::AdHoc.new(payload => 'Error!').throw; # OUTPUT: «Error!␤»
 
-=begin comment
-In Raku, `orelse` is similar to the `or` operator, except it only matches
-undefined variables instead of anything evaluating as `False`.
-Undefined values include: `Nil`, `Mu` and `Failure` as well as `Int`, `Str`
-and other types that have not been initialized to any value yet.
-You can check if something is defined or not using the defined method:
-=end comment
+# In Raku, `orelse` is similar to the `or` operator, except it only matches
+# undefined variables instead of anything evaluating as `False`.
+# Undefined values include: `Nil`, `Mu` and `Failure` as well as `Int`, `Str`
+# and other types that have not been initialized to any value yet.
+# You can check if something is defined or not using the defined method:
 my $uninitialized;
 say $uninitialized.defined; # OUTPUT: «False␤»
 
-=begin comment
-When using `orelse` it will disarm the exception and alias $_ to that
-failure. This will prevent it to being automatically handled and printing
-lots of scary error messages to the screen. We can use the `exception`
-method on the `$_` variable to access the exception
-=end comment
+# When using `orelse` it will disarm the exception and alias $_ to that
+# failure. This will prevent it to being automatically handled and printing
+# lots of scary error messages to the screen. We can use the `exception`
+# method on the `$_` variable to access the exception
 open 'foo' orelse say "Something happened {.exception}";
 
 # This also works:
 open 'foo' orelse say "Something happened $_";
 # OUTPUT: «Something happened Failed to open file foo: no such file or directory␤»
 
-=begin comment
-Both of those above work but in case we get an object from the left side
-that is not a failure we will probably get a warning. We see below how we
-can use try` and `CATCH` to be more specific with the exceptions we catch.
-=end comment
+# Both of those above work but in case we get an object from the left side
+# that is not a failure we will probably get a warning. We see below how we
+# can use try` and `CATCH` to be more specific with the exceptions we catch.
 
 #
 # 11.1 Using `try` and `CATCH`
 #
 
-=begin comment
-By using `try` and `CATCH` you can contain and handle exceptions without
-disrupting the rest of the program. The `try` block will set the last
-exception to the special variable `$!` (known as the error variable).
-NOTE: This has no relation to $!variables seen inside class definitions.
-=end comment
+# By using `try` and `CATCH` you can contain and handle exceptions without
+# disrupting the rest of the program. The `try` block will set the last
+# exception to the special variable `$!` (known as the error variable).
+# NOTE: This has no relation to $!variables seen inside class definitions.
 
 try open 'foo';
 say "Well, I tried! $!" if defined $!;
 # OUTPUT: «Well, I tried! Failed to open file foo: no such file or directory␤»
 
-=begin comment
-Now, what if we want more control over handling the exception?
-Unlike many other languages, in Raku, you put the `CATCH` block *within*
-the block to `try`. Similar to how the `$_` variable was set when we
-'disarmed' the exception with `orelse`, we also use `$_` in the CATCH block.
-NOTE: The `$!` variable is only set *after* the `try` block has caught an
-exception. By default, a `try` block has a `CATCH` block of its own that
-catches any exception (`CATCH { default {} }`).
-=end comment
+# Now, what if we want more control over handling the exception?
+# Unlike many other languages, in Raku, you put the `CATCH` block *within*
+# the block to `try`. Similar to how the `$_` variable was set when we
+# 'disarmed' the exception with `orelse`, we also use `$_` in the CATCH block.
+# NOTE: The `$!` variable is only set *after* the `try` block has caught an
+# exception. By default, a `try` block has a `CATCH` block of its own that
+# catches any exception (`CATCH { default {} }`).
 
 try {
     my $a = (0 %% 0);
@@ -1387,15 +1309,13 @@ try {
 }
 # OUTPUT: «Failed to open file /dir/foo: no such file or directory␤»
 
-=begin comment
-There are also some subtleties to exceptions. Some Raku subs return a
-`Failure`, which is a wrapper around an `Exception` object which is
-"unthrown". They're not thrown until you try to use the variables containing
-them unless you call `.Bool`/`.defined` on them - then they're handled.
-(the `.handled` method is `rw`, so you can mark it as `False` back yourself)
-You can throw a `Failure` using `fail`. Note that if the pragma `use fatal`
-is on, `fail` will throw an exception (like `die`).
-=end comment
+# There are also some subtleties to exceptions. Some Raku subs return a
+# `Failure`, which is a wrapper around an `Exception` object which is
+# "unthrown". They're not thrown until you try to use the variables containing
+# them unless you call `.Bool`/`.defined` on them - then they're handled.
+# (the `.handled` method is `rw`, so you can mark it as `False` back yourself)
+# You can throw a `Failure` using `fail`. Note that if the pragma `use fatal`
+# is on, `fail` will throw an exception (like `die`).
 
 my $value = 0/0; # We're not trying to access the value, so no problem.
 try {
@@ -1407,34 +1327,28 @@ try {
   }
 }
 
-=begin comment
-There is also another kind of exception: Control exceptions. Those are "good"
-exceptions, which happen when you change your program's flow, using operators
-like `return`, `next` or `last`. You can "catch" those with `CONTROL` (not 100%
-working in Rakudo yet).
-=end comment
+# There is also another kind of exception: Control exceptions. Those are "good"
+# exceptions, which happen when you change your program's flow, using operators
+# like `return`, `next` or `last`. You can "catch" those with `CONTROL` (not 100%
+# working in Rakudo yet).
 
 ####################################################
 # 12. Packages
 ####################################################
 
-=begin comment
-Packages are a way to reuse code. Packages are like "namespaces", and any
-element of the six model (`module`, `role`, `class`, `grammar`, `subset` and
-`enum`) are actually packages. (Packages are the lowest common denominator)
-Packages are important - especially as Perl is well-known for CPAN,
-the Comprehensive Perl Archive Network.
-=end comment
+# Packages are a way to reuse code. Packages are like "namespaces", and any
+# element of the six model (`module`, `role`, `class`, `grammar`, `subset` and
+# `enum`) are actually packages. (Packages are the lowest common denominator)
+# Packages are important - especially as Perl is well-known for CPAN,
+# the Comprehensive Perl Archive Network.
 
 # You can use a module (bring its declarations into scope) with `use`:
 use JSON::Tiny; # if you installed Rakudo* or Panda, you'll have this module
 say from-json('[1]').perl; # OUTPUT: «[1]␤»
 
-=begin comment
-You should not declare packages using the `package` keyword (unlike Perl).
-Instead, use `class Package::Name::Here;` to declare a class, or if you only
-want to export variables/subs, you can use `module` instead.
-=end comment
+# You should not declare packages using the `package` keyword (unlike Perl).
+# Instead, use `class Package::Name::Here;` to declare a class, or if you only
+# want to export variables/subs, you can use `module` instead.
 
 # If `Hello` doesn't exist yet, it'll just be a "stub", that can be redeclared
 # as something else later.
@@ -1460,14 +1374,12 @@ my $actions = JSON::Tiny::Actions.new;
 # 13. Declarators
 ####################################################
 
-=begin comment
-In Raku, you get different behaviors based on how you declare a variable.
-You've already seen `my` and `has`, we'll now explore the others.
+# In Raku, you get different behaviors based on how you declare a variable.
+# You've already seen `my` and `has`, we'll now explore the others.
 
-`our` - these declarations happen at `INIT` time -- (see "Phasers" below).
-It's like `my`, but it also creates a package variable. All packagish
-things such as `class`, `role`, etc. are `our` by default.
-=end comment
+# `our` - these declarations happen at `INIT` time -- (see "Phasers" below).
+# It's like `my`, but it also creates a package variable. All packagish
+# things such as `class`, `role`, etc. are `our` by default.
 
 module Var::Increment {
     # NOTE: `our`-declared variables cannot be typed.
@@ -1533,15 +1445,13 @@ for ^5 -> $a {
 # 14. Phasers
 ####################################################
 
-=begin comment
-Phasers in Raku are blocks that happen at determined points of time in
-your program. They are called phasers because they mark a change in the
-phase of a program.  For example, when the program is compiled, a for loop
-runs, you leave a block, or an exception gets thrown (The `CATCH` block is
-actually a phaser!). Some of them can be used for their return values,
-some of them can't (those that can have a "[*]" in the beginning of their
-explanation text). Let's have a look!
-=end comment
+# Phasers in Raku are blocks that happen at determined points of time in
+# your program. They are called phasers because they mark a change in the
+# phase of a program.  For example, when the program is compiled, a for loop
+# runs, you leave a block, or an exception gets thrown (The `CATCH` block is
+# actually a phaser!). Some of them can be used for their return values,
+# some of them can't (those that can have a "[*]" in the beginning of their
+# explanation text). Let's have a look!
 
 #
 # 14.1 Compile-time phasers
@@ -1637,14 +1547,11 @@ do-db-stuff();
 # 15. Statement prefixes
 ####################################################
 
-=begin comment
-Those act a bit like phasers: they affect the behavior of the following
-code. Though, they run in-line with the executable code, so they're in
-lowercase. (`try` and `start` are theoretically in that list, but explained
-elsewhere) NOTE: all of these (except start) don't need explicit curly
-braces `{` and `}`.
-
-=end comment
+# Those act a bit like phasers: they affect the behavior of the following
+# code. Though, they run in-line with the executable code, so they're in
+# lowercase. (`try` and `start` are theoretically in that list, but explained
+# elsewhere) NOTE: all of these (except start) don't need explicit curly
+# braces `{` and `}`.
 
 #
 # 15.1 `do` - It runs a block or a statement as a term.
@@ -1757,40 +1664,34 @@ quietly { warn 'This is a warning!' }; # No output
 
 my ($p, $q, $r) = (1, 2, 3);
 
-=begin comment
-Given some binary operator § (not a Raku-supported operator), then:
+# Given some binary operator § (not a Raku-supported operator), then:
 
-$p § $q § $r; # with a left-associative  §, this is ($p § $q) § $r
-$p § $q § $r; # with a right-associative §, this is $p § ($q § $r)
-$p § $q § $r; # with a non-associative   §, this is illegal
-$p § $q § $r; # with a chain-associative §, this is ($p § $q) and ($q § $r)§
-$p § $q § $r; # with a list-associative  §, this is `infix:<>`
-=end comment
+# $p § $q § $r; # with a left-associative  §, this is ($p § $q) § $r
+# $p § $q § $r; # with a right-associative §, this is $p § ($q § $r)
+# $p § $q § $r; # with a non-associative   §, this is illegal
+# $p § $q § $r; # with a chain-associative §, this is ($p § $q) and ($q § $r)§
+# $p § $q § $r; # with a list-associative  §, this is `infix:<>`
 
 #
 # 17.2 Unary operators
 #
 
-=begin comment
-Given some unary operator § (not a Raku-supported operator), then:
-§$p§ # with left-associative  §, this is (§$p)§
-§$p§ # with right-associative §, this is §($p§)
-§$p§ # with non-associative   §, this is illegal
-=end comment
+# Given some unary operator § (not a Raku-supported operator), then:
+# §$p§ # with left-associative  §, this is (§$p)§
+# §$p§ # with right-associative §, this is §($p§)
+# §$p§ # with non-associative   §, this is illegal
 
 #
 # 17.3 Create your own operators!
 #
 
-=begin comment
-Okay, you've been reading all of that, so you might want to try something
-more exciting?! I'll tell you a little secret (or not-so-secret):
-In Raku, all operators are actually just funny-looking subroutines.
+# Okay, you've been reading all of that, so you might want to try something
+# more exciting?! I'll tell you a little secret (or not-so-secret):
+# In Raku, all operators are actually just funny-looking subroutines.
 
-You can declare an operator just like you declare a sub. In the following
-example, `prefix` refers to the operator categories (prefix, infix, postfix,
-circumfix, and post-circumfix).
-=end comment
+# You can declare an operator just like you declare a sub. In the following
+# example, `prefix` refers to the operator categories (prefix, infix, postfix,
+# circumfix, and post-circumfix).
 sub prefix:<win>( $winner ) {
 	say "$winner Won!";
 }
@@ -1834,12 +1735,10 @@ say "abc"{1}; # OUTPUT: «b␤», after the term `"abc"`, and around the index (
 
 # Post-circumfix is 'after a term, around something'
 
-=begin comment
-This really means a lot -- because everything in Raku uses this.
-For example, to delete a key from a hash, you use the `:delete` adverb
-(a simple named argument underneath). For instance, the following statements
-are equivalent.
-=end comment
+# This really means a lot -- because everything in Raku uses this.
+# For example, to delete a key from a hash, you use the `:delete` adverb
+# (a simple named argument underneath). For instance, the following statements
+# are equivalent.
 my %person-stans =
     'Giorno Giovanna'  => 'Gold Experience',
     'Bruno Bucciarati' => 'Sticky Fingers';
@@ -1848,34 +1747,30 @@ my $key = 'Bruno Bucciarati';
 postcircumfix:<{ }>( %person-stans, 'Giorno Giovanna', :delete );
 # (you can call operators like this)
 
-=begin comment
-It's *all* using the same building blocks! Syntactic categories
-(prefix infix ...), named arguments (adverbs), ..., etc. used to build
-the language - are available to you. Obviously, you're advised against
-making an operator out of *everything* -- with great power comes great
-responsibility.
-=end comment
+# It's *all* using the same building blocks! Syntactic categories
+# (prefix infix ...), named arguments (adverbs), ..., etc. used to build
+# the language - are available to you. Obviously, you're advised against
+# making an operator out of *everything* -- with great power comes great
+# responsibility.
 
 #
 # 17.4 Meta operators!
 #
 
-=begin comment
-Oh boy, get ready!. Get ready, because we're delving deep into the rabbit's
-hole, and you probably won't want to go back to other languages after
-reading this. (I'm guessing you don't want to go back at this point but
-let's continue, for the journey is long and enjoyable!).
+# Oh boy, get ready!. Get ready, because we're delving deep into the rabbit's
+# hole, and you probably won't want to go back to other languages after
+# reading this. (I'm guessing you don't want to go back at this point but
+# let's continue, for the journey is long and enjoyable!).
 
-Meta-operators, as their name suggests, are *composed* operators. Basically,
-they're operators that act on another operators.
+# Meta-operators, as their name suggests, are *composed* operators. Basically,
+# they're operators that act on another operators.
 
-The reduce meta-operator is a prefix meta-operator that takes a binary
-function and one or many lists. If it doesn't get passed any argument,
-it either returns a "default value" for this operator (a meaningless value)
-or `Any` if there's none (examples below). Otherwise, it pops an element
-from the list(s) one at a time, and applies the binary function to the last
-result (or the first element of a list) and the popped element.
-=end comment
+# The reduce meta-operator is a prefix meta-operator that takes a binary
+# function and one or many lists. If it doesn't get passed any argument,
+# it either returns a "default value" for this operator (a meaningless value)
+# or `Any` if there's none (examples below). Otherwise, it pops an element
+# from the list(s) one at a time, and applies the binary function to the last
+# result (or the first element of a list) and the popped element.
 
 # To sum a list, you could use the reduce meta-operator with `+`, i.e.:
 say [+] 1, 2, 3; # OUTPUT: «6␤», equivalent to (1+2)+3.
@@ -1903,13 +1798,11 @@ say [//];   # OUTPUT: «(Any)␤»
 sub add($a, $b) { $a + $b }
 say [[&add]] 1, 2, 3; # OUTPUT: «6␤»
 
-=begin comment
-The zip meta-operator is an infix meta-operator that also can be used as a
-"normal" operator. It takes an optional binary function (by default, it
-just creates a pair), and will pop one value off of each array and call
-its binary function on these until it runs out of elements. It returns an
-array with all of these new elements.
-=end comment
+# The zip meta-operator is an infix meta-operator that also can be used as a
+# "normal" operator. It takes an optional binary function (by default, it
+# just creates a pair), and will pop one value off of each array and call
+# its binary function on these until it runs out of elements. It returns an
+# array with all of these new elements.
 say (1, 2) Z (3, 4); # OUTPUT: «((1, 3), (2, 4))␤»
 say 1..3 Z+ 4..6;    # OUTPUT: «(5, 7, 9)␤»
 
@@ -1922,12 +1815,10 @@ say 1..3 Z+ 4..6;    # OUTPUT: «(5, 7, 9)␤»
 
 # And to end the operator list:
 
-=begin comment
-The sequence operator (`...`) is one of Raku's most powerful features:
-It's composed by the list (which might include a closure) you want Raku to
-deduce from on the left and a value (or either a predicate or a Whatever Star
-for a lazy infinite list) on the right that states when to stop.
-=end comment
+# The sequence operator (`...`) is one of Raku's most powerful features:
+# It's composed by the list (which might include a closure) you want Raku to
+# deduce from on the left and a value (or either a predicate or a Whatever Star
+# for a lazy infinite list) on the right that states when to stop.
 
 # Basic arithmetic sequence
 my @listv0 = 1, 2, 3...10;
@@ -1954,68 +1845,60 @@ my @fibv1 = 1, 1, -> $a, $b { $a + $b } ... *;
 # Equivalent to the above example but using a block with placeholder parameters.
 my @fibv2 = 1, 1, { $^a + $^b } ... *;
 
-=begin comment
-In the examples with explicit parameters (i.e., $a and $b), $a and $b
-will always take the previous values, meaning that for the Fibonacci sequence,
-they'll start with $a = 1 and $b = 1 (values we set by hand), then $a = 1
-and $b = 2 (result from previous $a + $b), and so on.
-=end comment
+# In the examples with explicit parameters (i.e., $a and $b), $a and $b
+# will always take the previous values, meaning that for the Fibonacci sequence,
+# they'll start with $a = 1 and $b = 1 (values we set by hand), then $a = 1
+# and $b = 2 (result from previous $a + $b), and so on.
 
-=begin comment
 # In the example we use a range as an index to access the sequence. However,
 # it's worth noting that for ranges, once reified, elements aren't re-calculated.
 # That's why, for instance, `@primes[^100]` will take a long time the first
-# time you print it but then it will be instateneous.
-=end comment
+# time you print it but then it will be instantaneous.
 say @fibv0[^10]; # OUTPUT: «1 1 2 3 5 8 13 21 34 55␤»
 
 ####################################################
 # 18. Regular Expressions
 ####################################################
 
-=begin comment
-I'm sure a lot of you have been waiting for this one. Well, now that you know
-a good deal of Raku already, we can get started. First off, you'll have to
-forget about "PCRE regexps" (perl-compatible regexps).
+# I'm sure a lot of you have been waiting for this one. Well, now that you know
+# a good deal of Raku already, we can get started. First off, you'll have to
+# forget about "PCRE regexps" (perl-compatible regexps).
 
-IMPORTANT: Don't skip them because you know PCRE. They're different. Some
-things are the same (like `?`, `+`, and `*`), but sometimes the semantics
-change (`|`). Make sure you read carefully, because you might trip over a
-new behavior.
+# IMPORTANT: Don't skip them because you know PCRE. They're different. Some
+# things are the same (like `?`, `+`, and `*`), but sometimes the semantics
+# change (`|`). Make sure you read carefully, because you might trip over a
+# new behavior.
 
-Raku has many features related to RegExps. After all, Rakudo parses itself.
-We're first going to look at the syntax itself, then talk about grammars
-(PEG-like), differences between `token`, `regex` and `rule` declarators,
-and some more. Side note: you still have access to PCRE regexps using the
-`:P5` modifier which we won't be discussing this in this tutorial, though.
+# Raku has many features related to RegExps. After all, Rakudo parses itself.
+# We're first going to look at the syntax itself, then talk about grammars
+# (PEG-like), differences between `token`, `regex` and `rule` declarators,
+# and some more. Side note: you still have access to PCRE regexps using the
+# `:P5` modifier which we won't be discussing this in this tutorial, though.
 
-In essence, Raku natively implements PEG ("Parsing Expression Grammars").
-The pecking order for ambiguous parses is determined by a multi-level
-tie-breaking test:
- - Longest token matching: `foo\s+` beats `foo` (by 2 or more positions)
- - Longest literal prefix: `food\w*` beats `foo\w*` (by 1)
- - Declaration from most-derived to less derived grammars
-   (grammars are actually classes)
- - Earliest declaration wins
-=end comment
+# In essence, Raku natively implements PEG ("Parsing Expression Grammars").
+# The pecking order for ambiguous parses is determined by a multi-level
+# tie-breaking test:
+#  - Longest token matching: `foo\s+` beats `foo` (by 2 or more positions)
+#  - Longest literal prefix: `food\w*` beats `foo\w*` (by 1)
+#  - Declaration from most-derived to less derived grammars
+#    (grammars are actually classes)
+#  - Earliest declaration wins
 say so 'a' ~~ /a/;   # OUTPUT: «True␤»
 say so 'a' ~~ / a /; # OUTPUT: «True␤», more readable with some spaces!
 
-=begin comment
-In all our examples, we're going to use the smart-matching operator against
-a regexp. We're converting the result using `so` to a Boolean value because,
-in fact, it's returning a `Match` object. They know how to respond to list
-indexing, hash indexing, and return the matched string. The results of the
-match are available in the `$/` variable (implicitly lexically-scoped). You
-can also use the capture variables which start at 0: `$0`, `$1', `$2`...
+# In all our examples, we're going to use the smart-matching operator against
+# a regexp. We're converting the result using `so` to a Boolean value because,
+# in fact, it's returning a `Match` object. They know how to respond to list
+# indexing, hash indexing, and return the matched string. The results of the
+# match are available in the `$/` variable (implicitly lexically-scoped). You
+# can also use the capture variables which start at 0: `$0`, `$1', `$2`...
 
-You can also note that `~~` does not perform start/end checking, meaning
-the regexp can be matched with just one character of the string. We'll
-explain later how you can do it.
+# You can also note that `~~` does not perform start/end checking, meaning
+# the regexp can be matched with just one character of the string. We'll
+# explain later how you can do it.
 
-In Raku, you can have any alphanumeric as a literal, everything else has
-to be escaped by using a backslash or quotes.
-=end comment
+# In Raku, you can have any alphanumeric as a literal, everything else has
+# to be escaped by using a backslash or quotes.
 say so 'a|b' ~~ / a '|' b /; # OUTPUT: «True␤», it wouldn't mean the same
                              # thing if `|` wasn't escaped.
 say so 'a|b' ~~ / a \| b /;  # OUTPUT: «True␤», another way to escape it.
@@ -2030,12 +1913,10 @@ say so 'a b c' ~~ /:s a b c /; #=> `True`, we added the modifier `:s` here.
 say so 'a b c' ~~ / a b c /;   # OUTPUT: «False␤»
 say so 'a b c' ~~ / a  b  c /; # OUTPUT: «False»
 
-=begin comment
-NOTE: Please use quotes or `:s` (`:sigspace`) modifier (or, to suppress this
-warning, omit the space, or otherwise change the spacing). To fix this and make
-the spaces less ambiguous, either use at least two spaces between strings
-or use the `:s` adverb.
-=end comment
+# NOTE: Please use quotes or `:s` (`:sigspace`) modifier (or, to suppress this
+# warning, omit the space, or otherwise change the spacing). To fix this and make
+# the spaces less ambiguous, either use at least two spaces between strings
+# or use the `:s` adverb.
 
 # As we saw before, we can embed the `:s` inside the slash delimiters, but we
 # can also put it outside of them if we specify `m` for 'match':
@@ -2157,18 +2038,16 @@ say $/[0]; # OUTPUT: «｢ABC｣ ｢ABC｣␤»,
 
 say $0;    # The same as above.
 
-=begin comment
-Our capture is `$0` because it's the first and only one capture in the
-regexp. You might be wondering why it's an array, and the answer is simple:
-Some captures (indexed using `$0`, `$/[0]` or a named one) will be an array
-if and only if they can have more than one element. Thus any capture with
-`*`, `+` and `**` (whatever the operands), but not with `?`.
-Let's use examples to see that:
+# Our capture is `$0` because it's the first and only one capture in the
+# regexp. You might be wondering why it's an array, and the answer is simple:
+# Some captures (indexed using `$0`, `$/[0]` or a named one) will be an array
+# if and only if they can have more than one element. Thus any capture with
+# `*`, `+` and `**` (whatever the operands), but not with `?`.
+# Let's use examples to see that:
 
-NOTE: We quoted A B C to demonstrate that the whitespace between them isn't
-significant. If we want the whitespace to *be* significant there, we can use the
-`:sigspace` modifier.
-=end comment
+# NOTE: We quoted A B C to demonstrate that the whitespace between them isn't
+# significant. If we want the whitespace to *be* significant there, we can use the
+# `:sigspace` modifier.
 say so 'fooABCbar' ~~ / foo ( "A" "B" "C" )? bar /; # OUTPUT: «True␤»
 say $/[0];   # OUTPUT: «｢ABC｣␤»
 say $0.WHAT; # OUTPUT: «(Match)␤»
@@ -2187,17 +2066,15 @@ say $0.WHAT; # OUTPUT: «(Array)␤», A specific quantifier will always capture
 say $/[0].Str;    # OUTPUT: «hello~␤»
 say $/[0][0].Str; # OUTPUT: «~␤»
 
-=begin comment
-This stems from a very simple fact: `$/` does not contain strings, integers
-or arrays, it only contains `Match` objects. These contain the `.list`, `.hash`
-and `.Str` methods but you can also just use `match<key>` for hash access
-and `match[idx]` for array access.
+# This stems from a very simple fact: `$/` does not contain strings, integers
+# or arrays, it only contains `Match` objects. These contain the `.list`, `.hash`
+# and `.Str` methods but you can also just use `match<key>` for hash access
+# and `match[idx]` for array access.
 
-In the following example, we can see `$_` is a list of `Match` objects.
-Each of them contain a wealth of information: where the match started/ended,
-the "ast" (see actions later), etc. You'll see named capture below with
-grammars.
-=end comment
+# In the following example, we can see `$_` is a list of `Match` objects.
+# Each of them contain a wealth of information: where the match started/ended,
+# the "ast" (see actions later), etc. You'll see named capture below with
+# grammars.
 say $/[0].list.perl; # OUTPUT: «(Match.new(...),).list␤»
 
 # Alternation - the `or` of regexes
@@ -2210,19 +2087,17 @@ say so 'ayc' ~~ / a [ b | y ] c /; # OUTPUT: «True␤», Obviously enough...
 # always try to match as much as possible in the string.
 say 'foo' ~~ / fo | foo /; # OUTPUT: «foo», instead of `fo`, because it's longer.
 
-=begin comment
-To decide which part is the "longest", it first splits the regex in two parts:
+# To decide which part is the "longest", it first splits the regex in two parts:
+#
+#     * The "declarative prefix" (the part that can be statically analyzed)
+#     which includes alternations (`|`), conjunctions (`&`), sub-rule calls (not
+#     yet introduced), literals, characters classes and quantifiers.
+#
+#     * The "procedural part" includes everything else: back-references,
+#     code assertions, and other things that can't traditionally be represented
+#     by normal regexps.
 
-    * The "declarative prefix" (the part that can be statically analyzed)
-    which includes alternations (`|`), conjunctions (`&`), sub-rule calls (not
-    yet introduced), literals, characters classes and quantifiers.
-
-    * The "procedural part" includes everything else: back-references,
-    code assertions, and other things that can't traditionally be represented
-    by normal regexps.
-
-Then, all the alternatives are tried at once, and the longest wins.
-=end comment
+# Then, all the alternatives are tried at once, and the longest wins.
 
 # Examples:
 # DECLARATIVE | PROCEDURAL
@@ -2243,55 +2118,49 @@ say 'foo' ~~ / fo || foo /; # OUTPUT: «fo␤», in this case.
 # 19. Extra: the MAIN subroutine
 ####################################################
 
-=begin comment
-The `MAIN` subroutine is called when you run a Raku file directly. It's
-very powerful, because Raku actually parses the arguments and pass them
-as such to the sub. It also handles named argument (`--foo`) and will even
-go as far as to autogenerate a `--help` flag.
-=end comment
+# The `MAIN` subroutine is called when you run a Raku file directly. It's
+# very powerful, because Raku actually parses the arguments and pass them
+# as such to the sub. It also handles named argument (`--foo`) and will even
+# go as far as to autogenerate a `--help` flag.
 
 sub MAIN($name) {
     say "Hello, $name!";
 }
-=begin comment
-Supposing the code above is in file named cli.raku, then running in the command
-line (e.g., $ raku cli.raku) produces:
-Usage:
- cli.raku <name>
-=end comment
+# Supposing the code above is in file named cli.raku, then running in the command
+# line (e.g., $ raku cli.raku) produces:
+# Usage:
+# cli.raku <name>
 
-=begin comment
-And since MAIN is a regular Raku sub, you can have multi-dispatch:
-(using a `Bool` for the named argument so that we can do `--replace`
-instead of `--replace=1`. The presence of `--replace` indicates truthness
-while its absence falseness). For example:
+# And since MAIN is a regular Raku sub, you can have multi-dispatch:
+# (using a `Bool` for the named argument so that we can do `--replace`
+# instead of `--replace=1`. The presence of `--replace` indicates truthness
+# while its absence falseness). For example:
 
     # convert to IO object to check the file exists
+    =begin comment
     subset File of Str where *.IO.d;
 
     multi MAIN('add', $key, $value, Bool :$replace) { ... }
     multi MAIN('remove', $key) { ... }
     multi MAIN('import', File, Str :$as) { ... } # omitting parameter name
+    =end comment
 
-Thus $ raku cli.raku produces:
-Usage:
-  cli.raku [--replace] add <key> <value>
-  cli.raku remove <key>
-  cli.raku [--as=<Str>] import <File>
+# Thus $ raku cli.raku produces:
+# Usage:
+#   cli.raku [--replace] add <key> <value>
+#   cli.raku remove <key>
+#   cli.raku [--as=<Str>] import <File>
 
-As you can see, this is *very* powerful. It even went as far as to show inline
-the constants (the type is only displayed if the argument is `$`/is named).
-=end comment
+# As you can see, this is *very* powerful. It even went as far as to show inline
+# the constants (the type is only displayed if the argument is `$`/is named).
 
 ####################################################
 # 20. APPENDIX A:
 ####################################################
 
-=begin comment
-It's assumed by now you know the Raku basics. This section is just here to
-list some common operations, but which are not in the "main part" of the
-tutorial to avoid bloating it up.
-=end comment
+# It's assumed by now you know the Raku basics. This section is just here to
+# list some common operations, but which are not in the "main part" of the
+# tutorial to avoid bloating it up.
 
 #
 # 20.1 Operators
@@ -2316,14 +2185,12 @@ say Any // Nil // 0 // 5;        # OUTPUT: «0␤»
 # its arguments is true
 say True ^^ False;               # OUTPUT: «True␤»
 
-=begin comment
-Flip flops. These operators (`ff` and `fff`, equivalent to P5's `..`
-and `...`) are operators that take two predicates to test: They are `False`
-until their left side returns `True`, then are `True` until their right
-side returns `True`. Similar to ranges, you can exclude the iteration when
-it become `True`/`False` by using `^` on either side. Let's start with an
-example :
-=end comment
+# Flip flops. These operators (`ff` and `fff`, equivalent to P5's `..`
+# and `...`) are operators that take two predicates to test: They are `False`
+# until their left side returns `True`, then are `True` until their right
+# side returns `True`. Similar to ranges, you can exclude the iteration when
+# it become `True`/`False` by using `^` on either side. Let's start with an
+# example :
 
 for <well met young hero we shall meet later> {
     # by default, `ff`/`fff` smart-match (`~~`) against `$_`:
@@ -2336,20 +2203,16 @@ for <well met young hero we shall meet later> {
     }
 }
 
-=begin comment
-This will print "young hero we shall meet" (excluding "met"): the flip-flop
-will start returning `True` when it first encounters "met" (but will still
-return `False` for "met" itself, due to the leading `^` on `ff`), until it
-sees "meet", which is when it'll start returning `False`.
-=end comment
+# This will print "young hero we shall meet" (excluding "met"): the flip-flop
+# will start returning `True` when it first encounters "met" (but will still
+# return `False` for "met" itself, due to the leading `^` on `ff`), until it
+# sees "meet", which is when it'll start returning `False`.
 
-=begin comment
-The difference between `ff` (awk-style) and `fff` (sed-style) is that `ff`
-will test its right side right when its left side changes to `True`, and can
-get back to `False` right away (*except* it'll be `True` for the iteration
-that matched) while `fff` will wait for the next iteration to try its right
-side, once its left side changed:
-=end comment
+# The difference between `ff` (awk-style) and `fff` (sed-style) is that `ff`
+# will test its right side right when its left side changes to `True`, and can
+# get back to `False` right away (*except* it'll be `True` for the iteration
+# that matched) while `fff` will wait for the next iteration to try its right
+# side, once its left side changed:
 
 # The output is due to the right-hand-side being tested directly (and returning
 # `True`). "B"s are printed since it matched that time (it just went back to
@@ -2399,7 +2262,7 @@ This information may be a bit older but there are many great examples and
 explanations. Posts stopped at the end of 2015 when the language was declared
 stable and `Raku v6.c` was released.
 
-- Come along on `#raku` at [`irc.freenode.net`](https://webchat.freenode.net/?channels=#raku). The folks here are
+- Come along on `#raku` at [`irc.libera.chat`](https://web.libera.chat/?channel=#raku). The folks here are
 always helpful.
 
 - Check the [source of Raku's functions and

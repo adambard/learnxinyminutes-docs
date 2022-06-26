@@ -146,7 +146,7 @@ perlfaq有很多常见问题和相应回答，也经常有对优秀CPAN模块的
 
 #### 深入阅读
 
-    - [perl-tutorial](http://perl-tutorial.org/)
-    - [www.perl.com的learn站点](http://www.perl.org/learn.html)
-    - [perldoc](http://perldoc.perl.org/)
-    - 以及 perl 内置的： `perldoc perlintro`
+- [perl-tutorial](http://perl-tutorial.org/)
+- [www.perl.com的learn站点](http://www.perl.org/learn.html)
+- [perldoc](http://perldoc.perl.org/)
+- 以及 perl 内置的： `perldoc perlintro`

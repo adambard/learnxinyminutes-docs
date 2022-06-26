@@ -10,7 +10,7 @@ filename: LearnObjectiveC-fr.m
 lang: fr-fr
 ---
 
-L'Objective-C est un langage de programmation orienté objet réflexif principalement utilisé par Apple pour les systèmes d'exploitations Mac OS X et iOS et leurs frameworks respectifs, Cocoa et Cocoa Touch.
+L'Objective-C est un langage de programmation orienté objet réflexif principalement utilisé par Apple pour les systèmes d'exploitations macOS et iOS et leurs frameworks respectifs, Cocoa et Cocoa Touch.
 
 ```objective-c
 // Les commentaires sur une seule ligne commencent par //
@@ -30,7 +30,7 @@ ceci
 #import <Foundation/Foundation.h>
 #import "MaClasse.h"
 
-// Si vous activez les modules dans les projets iOS >= 7 ou Mac OS X >= 10.9
+// Si vous activez les modules dans les projets iOS >= 7 ou OS X >= 10.9
 // dans Xcode 5, vous pouvez importer les frameworks comme cela :
 @import Foundation;
 

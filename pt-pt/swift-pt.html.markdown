@@ -12,7 +12,7 @@ translators:
 lang: pt-pt
 ---
 
-Swift é uma linguagem de programação criada pela Apple para o desenvolvimento em iOS e OS X.
+Swift é uma linguagem de programação criada pela Apple para o desenvolvimento em iOS e macOS.
 Desenhada de forma a coexistir com Objective-C e ser mais resiliente contra código errôneo, a linguagem Swift foi introduzida em 2014 na conferência para desenvolvedores WWDC da Apple.
 Swift usa o compilador LLVM incluido no XCode 6+.
 

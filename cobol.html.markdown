@@ -14,7 +14,7 @@ organizations.
       *COBOL has significant differences between legacy (COBOL-85)
       *and modern (COBOL-2002 and COBOL-2014) versions.
       *Legacy versions require columns 1-6 to be blank (they are used
-      *to store the index number of the punched card..)
+      *to store the index number of the punched card).
       *A '*' in column 7 means a comment.
       *In legacy COBOL, a comment can only be a full line.
       *Modern COBOL doesn't require fixed columns and uses *> for
@@ -44,7 +44,7 @@ organizations.
 
       *Let's declare some variables.
       *We do this in the WORKING-STORAGE section within the DATA DIVISION.
-      *Each data item (aka variable) with start with a level number, 
+      *Each data item (aka variable) starts with a level number, 
       *then the name of the item, followed by a picture clause 
       *describing the type of data that the variable will contain.
       *Almost every COBOL programmer will abbreviate PICTURE as PIC.
@@ -106,7 +106,7 @@ organizations.
       PROCEDURE DIVISION.
          FIRST-PARA.
              DISPLAY 'THIS IS IN FIRST-PARA'.
-         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip second-para and perfrom 3rd & 4th
+         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip second-para and perform 3rd & 4th
          *> then after performing third and fourth,
          *> return here and continue the program until STOP RUN.
    

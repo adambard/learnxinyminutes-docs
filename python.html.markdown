@@ -482,7 +482,7 @@ except (TypeError, NameError):
     pass                 # Multiple exceptions can be handled together, if required.
 else:                    # Optional clause to the try/except block. Must follow all except blocks
     print("All good!")   # Runs only if the code in try raises no exceptions
-finally:                 #  Execute under all circumstances
+finally:                 # Execute under all circumstances
     print("We can clean up resources here")
 
 # Instead of try/finally to cleanup resources you can use a with statement
@@ -735,7 +735,7 @@ class Human:
         return "*grunt*"
 
     # A property is just like a getter.
-    # It turns the method age() into an read-only attribute of the same name.
+    # It turns the method age() into a read-only attribute of the same name.
     # There's no need to write trivial getters and setters in Python, though.
     @property
     def age(self):
@@ -1032,6 +1032,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [The Official Docs](https://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](https://docs.python-guide.org/en/latest/)
 * [Python Course](https://www.python-course.eu)
+* [Free Interactive Python Course](http://www.Kikodo.io)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
 * [30 Python Language Features and Tricks You May Not Know About](https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)

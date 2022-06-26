@@ -383,19 +383,26 @@ dofile('mod2.lua')  --> Hi! (runs it again)
 -- loadfile loads a lua file but doesn't run it yet.
 f = loadfile('mod2.lua')  -- Call f() to run it.
 
--- loadstring is loadfile for strings.
-g = loadstring('print(343)')  -- Returns a function.
+-- load is loadfile for strings.
+-- (loadstring is deprecated, use load instead)
+g = load('print(343)')  -- Returns a function.
 g()  -- Prints out 343; nothing printed before now.
 
 --]]
 
 ```
+
+## Community
+
+If you need support join the official Lua [mailing list](https://www.lua.org/lua-l.html), [irc channel](http://lua-users.org/wiki/IrcChannel), or [forum](https://luaforum.com).
+
+
 ## References
 
 I was excited to learn Lua so I could make games
 with the <a href="http://love2d.org/">Love 2D game engine</a>. That's the why.
 
-I started with <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
+I started with <a href="https://ebens.me/post/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
 Next I read the official <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> book.
 That's the how.
 

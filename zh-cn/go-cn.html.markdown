@@ -35,12 +35,12 @@ import (
     "strconv"   // 字符串转换
 )
 
-// 函数声明：Main是程序执行的入口。
+// 函数声明：main是程序执行的入口。
 // 不管你喜欢还是不喜欢，反正Go就用了花括号来包住函数体。
 func main() {
     // 往标准输出打印一行。
     // 用包名fmt限制打印函数。
-    fmt.Println("天坑欢迎你!")
+    fmt.Println("你好世界")
 
     // 调用当前包的另一个函数。
     beyondHello()
@@ -81,7 +81,7 @@ func learnTypes() {
     f := 3.14195 // float64类型，IEEE-754 64位浮点数
     c := 3 + 4i  // complex128类型，内部使用两个float64表示
 
-    // Var变量可以直接初始化。
+    // var变量可以直接初始化。
     var u uint = 7  // unsigned 无符号变量，但是实现依赖int型变量的长度
     var pi float32 = 22. / 7
 
@@ -141,7 +141,7 @@ func learnTypes() {
 // 只用写return一个词就能将函数内指定名称的变量返回
 func learnNamedReturns(x, y int) (z int) {
     z = x * y
-    return // z is implicit here, because we named it earlier.
+    return // 隐式返回z，因为前面指定了它。
 }
 
 // Go全面支持垃圾回收。Go有指针，但是不支持指针运算。
@@ -161,7 +161,7 @@ func expensiveComputation() int {
 }
 
 func learnFlowControl() {
-    // If需要花括号，括号就免了
+    // if需要花括号，括号就免了
     if true {
         fmt.Println("这句话肯定被执行")
     }

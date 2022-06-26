@@ -180,7 +180,7 @@ fun helloWorld(val name : String) {
 
     // destructuring in "for" loop
     for ((a, b, c) in listOf(fooData)) {
-        println("$a $b $c") // => 1 100 4
+        println("$a $b $c") // => 1 2 4
     }
 
     val mapData = mapOf("a" to 1, "b" to 2)
@@ -426,7 +426,7 @@ data class Counter(var value: Int) {
     operator fun invoke() = println("The value of the counter is $value")
 
 }
-/* You can also overload operators through an extension methods */
+/* You can also overload operators through extension methods */
 // overload -Counter
 operator fun Counter.unaryMinus() = Counter(-this.value)
 

@@ -11,7 +11,7 @@ lang: es-es
 filename: learnswift-es.swift
 ---
 
-Swift es un lenguaje de programación para el desarrollo en iOS y OS X creado
+Swift es un lenguaje de programación para el desarrollo en iOS y macOS creado
 por Apple. Diseñado para coexistir con Objective-C y ser más resistente contra
 el código erroneo, Swift fue introducido en el 2014 en el WWDC, la conferencia
 de desarrolladores de Apple.

@@ -89,11 +89,16 @@ fn main() {
     println!("{} {}", f, x); // 1.3 hello world
 
     // A `String` – a heap-allocated string
+    // Stored as a `Vec<u8>` and always hold a valid UTF-8 sequence, 
+    // which is not null terminated.
     let s: String = "hello world".to_string();
 
     // A string slice – an immutable view into another string
-    // The string buffer can be statically allocated like in a string literal
-    // or contained in another object (in this case, `s`)
+    // This is basically an immutable pair of pointers to a string – it doesn’t
+    // actually contain the contents of a string, just a pointer to
+    // the begin and a pointer to the end of a string buffer,
+    // statically allocated or contained in another object (in this case, `s`).
+    // The string slice is like a view `&[u8]` into `Vec<T>`.
     let s_slice: &str = &s;
 
     println!("{} {}", s, s_slice); // hello world hello world
@@ -205,6 +210,21 @@ fn main() {
     let another_foo = Foo { bar: 1 };
     println!("{:?}", another_foo.frobnicate()); // Some(1)
 
+    // Function pointer types // 
+
+    fn fibonacci(n: u32) -> u32 {
+        match n {
+            0 => 1,
+            1 => 1,
+            _ => fibonacci(n - 1) + fibonacci(n - 2),
+        }
+    }
+
+    type FunctionPointer = fn(u32) -> u32;
+
+    let fib : FunctionPointer = fibonacci;
+    println!("Fib: {}", fib(4));
+
     /////////////////////////
     // 3. Pattern matching //
     /////////////////////////
@@ -236,7 +256,7 @@ fn main() {
 
     // `for` loops/iteration
     let array = [1, 2, 3];
-    for i in array.iter() {
+    for i in array {
         println!("{}", i);
     }
 

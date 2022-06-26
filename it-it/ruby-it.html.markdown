@@ -650,4 +650,4 @@ Something.new.qux #=> 'qux'
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Una passata [edizione libera](http://ruby-doc.com/docs/ProgrammingRuby/) è disponibile online.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - A community-driven Ruby coding style guide.
-- [Try Ruby](http://tryruby.org) - Imparare le basi del linguaggio di programmazion Ruby, interattivamente nel browser.
+- [Try Ruby](https://try.ruby-lang.org/) - Imparare le basi del linguaggio di programmazion Ruby, interattivamente nel browser.

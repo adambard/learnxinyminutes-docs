@@ -8,6 +8,7 @@ contributors:
     - ["Connor Waters", "http://github.com/connorwaters"]
 translators:
     - ["Gerson Lázaro", "https://gersonlazaro.com"]
+    - ["Diego Ramirez", "https://DiddiLeija.github.io"]
 lang: es-es
 ---
 
@@ -101,8 +102,8 @@ void print(int myInt)
 
 int main()
 {
-    print("Hello"); // Resolves to void print(const char*)
-    print(15); // Resolves to void print(int)
+    print("Hello"); // Corresponde a void print(const char*)
+    print(15); // Corresponde a void print(int)
 }
 
 ////////////////////////////////////
@@ -114,7 +115,7 @@ int main()
 
 void doSomethingWithInts(int a = 1, int b = 4)
 {
-    // Hacer algo con los enteros aqui
+    // Hacer algo con los enteros aquí
 }
 
 int main()
@@ -134,7 +135,7 @@ void invalidDeclaration(int a = 1, int b) // Error!
 // Espacios de nombre
 /////////////////////
 
-// Espacios de nombres proporcionan ámbitos separados para variable, función y
+// Los espacios de nombres proporcionan ámbitos separados para variable, función y
 // otras declaraciones.
 // Los espacios de nombres se pueden anidar.
 
@@ -184,7 +185,7 @@ int main()
 
 #include <iostream> // Incluir para el flujo de entrada/salida
 
-using namespace std; // Los streams estan en std namespace (libreria estandar)
+using namespace std; // Los streams estan en el espacio de nombre std (libreria estandar)
 
 int main()
 {
@@ -208,7 +209,7 @@ int main()
 // Las cadenas en C++ son objetos y tienen muchas funciones
 #include <string>
 
-using namespace std; // Strings también estan en namespace std
+using namespace std; // Las cadenas también estan en el nombre de espacio std
 
 string myString = "Hola";
 string myOtherString = " Mundo";
@@ -252,7 +253,7 @@ fooRef = bar;
 const string& barRef = bar; // Crea una referencia constante a bar.
 // Como en C, los valores constantes (y punteros y referencias) no pueden ser
 // modificados.
-barRef += ". Hola!"; // Error, referencia constante no puede ser modificada.
+barRef += ". Hola!"; // Error, una referencia constante no puede ser modificada.
 
 // Sidetrack: Antes de hablar más sobre referencias, hay que introducir un
 // concepto llamado objeto temporal. Supongamos que tenemos el siguiente código:
@@ -264,7 +265,7 @@ string retVal = tempObjectFun();
 // - Una nueva cadena se construye con el objeto devuelto como argumento al
 // constructor
 // - El objeto devuelto es destruido
-// El objeto devuelto se llama objeto temporal. Objetos temporales son
+// El objeto devuelto se llama objeto temporal. Los objetos temporales son
 // creados cada vez que una función devuelve un objeto, y es destruido en el
 // fin de la evaluación de la expresión que encierra (Bueno, esto es lo que la
 // norma dice, pero los compiladores están autorizados a cambiar este
@@ -295,7 +296,7 @@ void someFun(string&& s) { ... }  // Referencia a objeto temporal
 
 string foo;
 someFun(foo);  // Llama la función con referencia regular
-someFun(tempObjectFun());  // Llama la versión con referencia temporal
+someFun(tempObjectFun());  // Llama la función con referencia temporal
 
 // Por ejemplo, puedes ver estas dos versiones de constructores para
 // std::basic_string:
@@ -305,7 +306,7 @@ basic_string(basic_string&& other);
 // La idea es que si estamos construyendo una nueva cadena de un objeto temporal
 // (que va a ser destruido pronto de todos modos), podemos tener un constructor
 // mas eficiente que "rescata" partes de esa cadena temporal. Usted verá este
-// Concepto denominado "movimiento semántico".
+// concepto denominado "movimiento semántico".
 
 ////////////////////////////////////////////
 // Clases y programación orientada a objetos
@@ -322,9 +323,7 @@ class Dog {
     int weight;
 
 // Todos los miembros siguientes de este son públicos
-// Hasta que se encuentre "private" o "protected".
-// All members following this are public
-// until "private:" or "protected:" is found.
+// hasta que se encuentre "private" o "protected".
 public:
 
     // Constructor por defecto
@@ -339,8 +338,8 @@ public:
 
     void setWeight(int dogsWeight);
 	// Funciones que no modifican el estado del objeto
-	// Deben marcarse como const.
-	// Esto le permite llamarlas si se envia una referencia constante al objeto.
+	// deben marcarse como const.
+	// Esto le permite llamarlas si se envía una referencia constante al objeto.
 	// También tenga en cuenta que las funciones deben ser declaradas
 	// explícitamente como _virtual_ para que sea reemplazada en las clases
 	// derivadas.
@@ -357,8 +356,8 @@ public:
 	// Esto permite paradigmas potentes como RAII
 	// (mira abajo)
 	// El destructor debe ser virtual si una clase es dervada desde el;
-	// Si no es virtual, entonces la clase derivada destructor
-	// No será llamada si el objeto se destruye a través de una referencia de
+	// Si no es virtual, entonces la clase destructora derivada
+	// no será llamada si el objeto se destruye a través de una referencia de
 	// la clase base o puntero.
     virtual ~Dog();
 
@@ -373,7 +372,7 @@ Dog::Dog()
 }
 
 // Objetos (tales como cadenas) deben ser pasados por referencia
-// Si los estas modificando o referencia constante en caso contrario.
+// si los estás modificando, o referencia constante en caso contrario.
 void Dog::setName(const std::string& dogsName)
 {
     name = dogsName;
@@ -413,9 +412,9 @@ class OwnedDog : public Dog {
 	// Reemplaza el comportamiento de la función de impresión
 	// de todos los OwnedDogs. Mira
 	// http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
-	// Para una introducción más general si no está familiarizado con el
+	// para una introducción más general si no está familiarizado con el
 	// polimorfismo de subtipo.
-	// La palabra clave override es opcional, pero asegura que estás
+	// La palabra clave override es opcional, pero asegúrate de que estás
 	// reemplazando el método de una clase base.
     void print() const override;
 
@@ -460,8 +459,8 @@ public:
     // pero inicializa el punto al valor por defecto (0, 0)
     Point() { };
 
-    // The following syntax is known as an initialization list
-    // and is the proper way to initialize class member values
+    // La siguiente sintaxis se conoce como lista de inicialización
+    // y es la forma correcta de inicializar los valores de los miembros de la clase
     Point (double a, double b) :
         x(a),
         y(b)
@@ -474,7 +473,7 @@ public:
     Point& operator+=(const Point& rhs);
 
     // También tendría sentido añadir los operadores - y -=,
-   	// Pero vamos a omitirlos por razones de brevedad.
+   	// pero vamos a omitirlos por razones de brevedad.
 };
 
 Point Point::operator+(const Point& rhs) const
@@ -496,7 +495,7 @@ int main () {
     // Llama al operador + de Point
     // Point llama la función + con right como parámetro
     Point result = up + right;
-    // Prints "Result is upright (1,1)"
+    // Imprime "Result is upright (1,1)"
     cout << "Result is upright (" << result.x << ',' << result.y << ")\n";
     return 0;
 }
@@ -525,7 +524,7 @@ public:
 // plantilla con parámetros sustituidos, por lo que la definición completa
 // de la clase debe estar presente en cada invocación.
 // Es por esto que usted verá clases de plantilla definidas
-// Enteramente en archivos de cabecera.
+// enteramente en archivos de cabecera.
 
 //Para crear una instancia de una clase de plantilla en la pila:
 Box<int> intBox;
@@ -544,7 +543,7 @@ boxOfBox.insert(intBox);
 
 // A veces verás
 //   template<typename T>
-// en su lugar. La palabra clave "class" y las palabras clave "typename" son
+// en su lugar. La palabra clave "class" y la palabra clave "typename" son
 // mayormente intercambiables en este caso. Para la explicación completa, mira
 //   http://en.wikipedia.org/wiki/Typename
 // (sí, esa palabra clave tiene su propia página de Wikipedia).
@@ -568,7 +567,7 @@ Dog fluffy;
 fluffy.setName("Fluffy")
 barkThreeTimes(fluffy); // Imprime "Fluffy barks" 3 veces.
 
-Los parámetros de la plantilla no tienen que ser las clases:
+// Los parámetros de la plantilla no tienen que ser las clases:
 template<int Y>
 void printMessage() {
   cout << "Aprende C++ en " << Y << " minutos!" << endl;
@@ -604,7 +603,7 @@ printMessage<10>();  // Prints "Aprende C++ rapido en solo 10 minutos!"
 //Todas las excepciones lanzadas dentro del bloque _try_ pueden ser
 // capturados por los siguientes manejadores _catch_.
 try {
-    // No asignar excepciones en el heap usando _new_.
+    // No asigne excepciones en el heap usando _new_.
     throw std::runtime_error("Ocurrió un problema");
 }
 
@@ -629,10 +628,10 @@ catch (...)
 // (Adquisición de recursos es inicialización).
 // A menudo se considera el paradigma más poderoso en C++
 // Y el concepto es simple: un constructor de un objeto
-// Adquiere recursos de ese objeto y el destructor les libera.
+// adquiere recursos de ese objeto y el destructor les libera.
 
 // Para entender cómo esto es útil,
-// Considere una función que utiliza un identificador de archivo C:
+// considere una función que utiliza un identificador de archivo C:
 void doSomethingWithAFile(const char* filename)
 {
     // Para empezar, asuma que nada puede fallar.
@@ -691,11 +690,11 @@ bool doSomethingWithAFile(const char* filename)
 
 failure:
     fclose(fh);
-    return false; // Propagate el error
+    return false; // Propaga el error
 }
 
 // Si las funciones indican errores mediante excepciones,
-// Las cosas son un poco más claras, pero pueden optimizarse mas.
+// las cosas son un poco más claras, pero pueden optimizarse más.
 void doSomethingWithAFile(const char* filename)
 {
     FILE* fh = fopen(filename, "r"); // Abrir el archivo en modo lectura
@@ -732,9 +731,9 @@ void doSomethingWithAFile(const std::string& filename)
 
 // Esto tiene ventajas _enormes_:
 // 1. No importa lo que pase,
-//    El recurso (en este caso el manejador de archivo) será limpiado.
+//    el recurso (en este caso el manejador de archivo) será limpiado.
 //    Una vez que escribes el destructor correctamente,
-//    Es _imposible_ olvidar cerrar el identificador y permitir
+//    es _imposible_ olvidar cerrar el identificador y permitir
 //    fugas del recurso.
 // 2. Tenga en cuenta que el código es mucho más limpio.
 //    El destructor se encarga de cerrar el archivo detrás de cámaras

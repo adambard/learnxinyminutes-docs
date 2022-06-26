@@ -2,16 +2,16 @@
 language: c++
 filename: learncpp.cpp
 contributors:
-    - ["Steven Basart", "http://github.com/xksteven"]
+    - ["Steven Basart", "https://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]
     - ["Geoff Liu", "http://geoffliu.me"]
-    - ["Connor Waters", "http://github.com/connorwaters"]
-    - ["Ankush Goyal", "http://github.com/ankushg07"]
+    - ["Connor Waters", "https://github.com/connorwaters"]
+    - ["Ankush Goyal", "https://github.com/ankushg07"]
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
 ---
 
 C++ is a systems programming language that,
-[according to its inventor Bjarne Stroustrup](http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote),
+[according to its inventor Bjarne Stroustrup](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote),
 was designed to
 
 - be a "better C"
@@ -37,7 +37,7 @@ one of the most widely-used programming languages.
 // Just like in C, your program's entry point is a function called
 // main with an integer return type.
 // This value serves as the program's exit status.
-// See http://en.wikipedia.org/wiki/Exit_status for more information.
+// See https://en.wikipedia.org/wiki/Exit_status for more information.
 int main(int argc, char** argv)
 {
     // Command line arguments are passed in by argc and argv in the same way
@@ -483,7 +483,7 @@ public:
     void setOwner(const std::string& dogsOwner);
 
     // Override the behavior of the print function for all OwnedDogs. See
-    // http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
+    // https://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Subtyping
     // for a more general introduction if you are unfamiliar with
     // subtype polymorphism.
     // The override keyword is optional but makes sure you are actually
@@ -616,7 +616,7 @@ boxOfBox.insert(intBox);
 //   template<typename T>
 // instead. The 'class' keyword and 'typename' keywords are _mostly_
 // interchangeable in this case. For the full explanation, see
-//   http://en.wikipedia.org/wiki/Typename
+//   https://en.wikipedia.org/wiki/Typename
 // (yes, that keyword has its own Wikipedia page).
 
 // Similarly, a template function:
@@ -660,7 +660,7 @@ printMessage<10>();  // Prints "Learn C++ faster in only 10 minutes!"
 /////////////////////
 
 // The standard library provides a few exception types
-// (see http://en.cppreference.com/w/cpp/error/exception)
+// (see https://en.cppreference.com/w/cpp/error/exception)
 // but any type can be thrown as an exception
 #include <exception>
 #include <stdexcept>
@@ -946,7 +946,7 @@ mymap.insert(pair<char,int>('Z',26));
 // To iterate
 map<char,int>::iterator it;
 for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second << std::cout;
+    std::cout << it->first << "->" << it->second << std::endl;
 // Output:
 // A->1
 // Z->26
@@ -1030,7 +1030,7 @@ sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
         return weight[lhs] < weight[rhs];
     });
 // Note we captured "weight" by reference in the above example.
-// More on Lambdas in C++ : http://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11
+// More on Lambdas in C++ : https://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11
 
 ///////////////////////////////
 // Range For (C++11 and above)
@@ -1106,7 +1106,8 @@ f1 = f2;
 
 #include<tuple>
 
-// Conceptually, Tuples are similar to  old data structures (C-like structs) but instead of having named data members,
+// Conceptually, Tuples are similar to old data structures (C-like structs)
+// but instead of having named data members,
 // its elements are accessed by their order in the tuple.
 
 // We start with constructing a tuple.
@@ -1195,5 +1196,6 @@ compl 4    // Performs a bitwise not
 Further Reading:
 
 * An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).
-* Additional resources may be found at [CPlusPlus](http://cplusplus.com).
+* A tutorial  for beginners or experts, covering many modern features and good practices: [LearnCpp.com](https://www.learncpp.com/)
 * A tutorial covering basics of language and setting up coding environment is available at [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
+* Additional resources may be found at [CPlusPlus](http://cplusplus.com).

@@ -13,7 +13,7 @@ Set theory is a branch of mathematics that studies sets, their operations, and t
 * the union operator, `∪`, pronounced "cup", means "or";
 * the intersection operator, `∩`, pronounced "cap", means "and";
 * the exclusion operator, `\`, means "without";
-* the compliment operator, `'`, means "the inverse of";
+* the complement operator, `'`, means "the inverse of";
 * the cross operator, `×`, means "the Cartesian product of".
 
 ### Qualifiers 
@@ -41,7 +41,7 @@ The cardinality, or size, of a set is determined by the number of items in the s
 For example, if `S = { 1, 2, 4 }`, then `|S| = 3`.
 
 ### The Empty Set
-* The empty set can be constructed in set builder notation using impossible conditions, e.g. `∅ = { x : x =/= x }`, or `∅ = { x : x ∈ N, x < 0 }`;
+* The empty set can be constructed in set builder notation using impossible conditions, e.g. `∅ = { x : x ≠ x }`, or `∅ = { x : x ∈ N, x < 0 }`;
 * the empty set is always unique (i.e. there is one and only one empty set);
 * the empty set is a subset of all sets;
 * the cardinality of the empty set is 0, i.e. `|∅| = 0`.
@@ -87,7 +87,7 @@ D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
 ## Special Sets
 
 ### The Power Set
-* Let `A` be any set. The set that contains all possible subsets of `A` is called a "power set" and is written as `P(A)`. If the set `A` contains `n` elements, then `P(A)` contains `2^N` elements.
+* Let `A` be any set. The set that contains all possible subsets of `A` is called a "power set" and is written as `P(A)`. If the set `A` contains `n` elements, then `P(A)` contains `2^n` elements.
 
 ```
 P(A) = { x : x ⊆ A }

@@ -201,7 +201,7 @@ let (~/) x = 1.0 /. x ;;
 
 (* Lists are enclosed in square brackets, items are separated by
    semicolons. *)
-let my_list = [1; 2; 3] ;;
+let my_list = [1; 2; 3] ;; (* Has type "int list". *)
 
 (* Tuples are (optionally) enclosed in parentheses, items are separated
    by commas. *)

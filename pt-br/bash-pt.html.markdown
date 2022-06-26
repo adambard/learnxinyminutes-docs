@@ -17,7 +17,7 @@ lang: pt-br
 Tutorial de shell em português
 
 Bash é o nome do shell do Unix, que também é distribuído como shell do sistema 
-operacional GNU e como shell padrão para Linux e Mac OS X. Praticamente todos 
+operacional GNU e como shell padrão para Linux e macOS. Praticamente todos 
 os exemplos abaixo podem fazer parte de um shell script e pode ser executados
 diretamente no shell.
 

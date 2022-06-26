@@ -12,7 +12,7 @@ TypeScript es un lenguaje cuyo objetivo es facilitar el desarrollo de aplicacion
 TypeScript añade conceptos comunes como clases, módulos, interfaces, genéricos y (opcionalmente) tipeo estático a JavaScript.
 Es un superset de JavaScript: todo el código JavaScript es código válido en TypeScript de manera que se puede integrar fácilmente a cualquier proyecto . El compilador TypeScript emite JavaScript.
 
-Este artículo se enfocará solo en la sintáxis extra de TypeScript, y no en [JavaScript] (../javascript/).
+Este artículo se enfocará solo en la sintáxis extra de TypeScript, y no en [JavaScript] (../javascript-es/).
 
 Para probar el compilador de TypeScript, diríjase al [Área de Pruebas] (http://www.typescriptlang.org/Playground) donde podrá tipear código, y ver como se auto-completa al tiempo que ve el código emitido JavaScript.
 

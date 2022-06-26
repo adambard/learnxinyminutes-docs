@@ -61,8 +61,8 @@ Locate "+".
 
 (* Calling a function with insufficient number of arguments does not cause
    an error, it produces a new function. *)
-Definition make_inc x y := x + y. (* make_inc is int -> int -> int *)
-Definition inc_2 := make_inc 2.   (* inc_2 is int -> int *)
+Definition make_inc x y := x + y. (* make_inc is nat -> nat -> nat *)
+Definition inc_2 := make_inc 2.   (* inc_2 is nat -> nat *)
 Compute inc_2 3. (* Evaluates to 5 *)
 
 
@@ -370,7 +370,7 @@ Close Scope string_scope.
           power series and results,...)
 • Relations : Relations (definitions and basic results)
 • Sorting : Sorted list (basic definitions and heapsort correctness)
-• Strings : 8-bits characters and strings
+• Strings : 8-bit characters and strings
 • Wellfounded : Well-founded relations (basic results)
  *)
 
@@ -472,7 +472,7 @@ Proof.
   intros A B ab.  destruct ab as [ a b ]. apply a.
 Qed.
 
-(* We can prove easily prove simple polynomial equalities using the
+(* We can easily prove simple polynomial equalities using the
    automated tactic ring. *)
 
 Require Import Ring.

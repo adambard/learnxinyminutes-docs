@@ -17,6 +17,7 @@ contributors:
     - ["John Detter", "https://github.com/jdetter"]
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
     - ["Martin Nicholson", "https://github.com/mn113"]
+    - ["Mark Grimwood", "https://github.com/MarkGrimwood"]
 filename: LearnBash.sh
 translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
@@ -27,12 +28,12 @@ for the GNU operating system and as the default shell on most Linux distros.
 Nearly all examples below can be a part of a shell script
 or executed directly in the shell.
 
-[Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
+[Read more here.](https://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
 #!/usr/bin/env bash
 # First line of the script is the shebang which tells the system how to execute
-# the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
+# the script: https://en.wikipedia.org/wiki/Shebang_(Unix)
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
@@ -178,6 +179,19 @@ echo "Always executed" && echo "Only executed if first command does NOT fail"
 # => Always executed
 # => Only executed if first command does NOT fail
 
+# A single ampersand & after a command runs it in the background. A background command's
+# output is printed to the terminal, but it cannot read from the input.
+sleep 30 &
+# List background jobs
+jobs # => [1]+  Running                 sleep 30 &
+# Bring the background job to the foreground
+fg
+# Ctrl-C to kill the process, or Ctrl-Z to pause it
+# Resume a background process after it has been paused with Ctrl-Z
+bg
+# Kill job number 2
+kill %2
+# %1, %2, etc. can be used for fg and bg as well
 
 # To use && and || with if statements, you need multiple pairs of square brackets:
 if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
@@ -198,7 +212,7 @@ then
 fi
 # Note that =~ only works within double [[ ]] square brackets,
 # which are subtly different from single [ ].
-# See http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
+# See https://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
 
 # Redefine command `ping` as alias to send only 5 packets
 alias ping='ping -c 5'
@@ -220,7 +234,8 @@ ls -l # Lists every file and directory on a separate line
 ls -t # Sorts the directory contents by last-modified date (descending)
 ls -R # Recursively `ls` this directory and all of its subdirectories
 
-# Results of the previous command can be passed to the next command as input.
+# Results (stdout) of the previous command can be passed as input (stdin) to the next command
+# using a pipe |. Commands chained in this way are called a "pipeline", and are run concurrently.
 # The `grep` command filters the input with provided patterns.
 # That's how we can list .txt files in the current directory:
 ls -l | grep "\.txt"
@@ -260,7 +275,7 @@ cd      # also goes to home directory
 cd ..   # go up one directory
         # (^^say, from /home/username/Downloads to /home/username)
 cd /home/username/Documents   # change to specified directory
-cd ~/Documents/..    # still in home directory..isn't it??
+cd ~/Documents/..    # now in home directory (if ~/Documents exists)
 cd -    # change to last directory
 # => /home/username/Documents
 
@@ -275,9 +290,13 @@ mkdir -p myNewDir/with/intermediate/directories
 # if the intermediate directories didn't already exist, running the above
 # command without the `-p` flag would return an error
 
-# You can redirect command input and output (stdin, stdout, and stderr).
+# You can redirect command input and output (stdin, stdout, and stderr)
+# using "redirection operators". Unlike a pipe, which passes output to a command,
+# a redirection operator has a command's input come from a file or stream, or
+# sends its output to a file or stream.
+
 # Read from stdin until ^EOF$ and overwrite hello.py with the lines
-# between "EOF":
+# between "EOF" (which are called a "here document"):
 cat > hello.py << EOF
 #!/usr/bin/env python
 from __future__ import print_function
@@ -299,6 +318,8 @@ python hello.py 2> "error.err" # redirect error output to error.err
 
 python hello.py > "output-and-error.log" 2>&1
 # redirect both output and errors to output-and-error.log
+# &1 means file descriptor 1 (stdout), so 2>&1 redirects stderr (2) to the current
+# destination of stdout (1), which has been redirected to output-and-error.log.
 
 python hello.py > /dev/null 2>&1
 # redirect all output and errors to the black hole, /dev/null, i.e., no output
@@ -325,6 +346,9 @@ echo "#helloworld" | tee output.out >/dev/null
 # WARNING: `rm` commands cannot be undone
 rm -v output.out error.err output-and-error.log
 rm -r tempDir/ # recursively delete
+# You can install the `trash-cli` Python package to have `trash`
+# which puts files in the system trash and doesn't delete them directly
+# see https://pypi.org/project/trash-cli/ if you want to be careful
 
 # Commands can be substituted within other commands using $( ):
 # The following command displays the number of files and directories in the
@@ -332,15 +356,15 @@ rm -r tempDir/ # recursively delete
 echo "There are $(ls | wc -l) items here."
 
 # The same can be done using backticks `` but they can't be nested -
-#the preferred way is to use $( ).
+# the preferred way is to use $( ).
 echo "There are `ls | wc -l` items here."
 
 # Bash uses a `case` statement that works similarly to switch in Java and C++:
 case "$Variable" in
-    #List patterns for the conditions you want to meet
+    # List patterns for the conditions you want to meet
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
-    *) echo "It is not null.";;
+    *) echo "It is not null.";;  # match everything
 esac
 
 # `for` loops iterate for as many arguments given:
@@ -377,6 +401,13 @@ do
     cat "$Output"
 done
 
+# Bash can also accept patterns, like this to `cat`
+# all the Markdown files in current directory
+for Output in ./*.markdown
+do
+    cat "$Output"
+done
+
 # while loop:
 while [ true ]
 do
@@ -392,13 +423,17 @@ function foo ()
     echo "Arguments work just like script arguments: $@"
     echo "And: $1 $2..."
     echo "This is a function"
-    return 0
+    returnValue=0    # Variable values can be returned
+    return $returnValue
 }
 # Call the function `foo` with two arguments, arg1 and arg2:
 foo arg1 arg2
 # => Arguments work just like script arguments: arg1 arg2
 # => And: arg1 arg2...
 # => This is a function
+# Return values can be obtained with $?
+resultValue=$?
+# More than 9 arguments are also possible by using braces, e.g. ${10}, ${11}, ...
 
 # or simply
 bar ()
@@ -419,7 +454,7 @@ tail -n 10 file.txt
 # prints first 10 lines of file.txt
 head -n 10 file.txt
 
-# sort file.txt's lines
+# print file.txt's lines in sorted order
 sort file.txt
 
 # report or omit repeated lines, with -d it reports them
@@ -431,6 +466,8 @@ cut -d ',' -f 1 file.txt
 # replaces every occurrence of 'okay' with 'great' in file.txt
 # (regex compatible)
 sed -i 's/okay/great/g' file.txt
+# be aware that this -i flag means that file.txt will be changed
+# -i or --in-place erase the input file (use --in-place=.backup to keep a back-up)
 
 # print to stdout all lines of file.txt which match some regex
 # The example prints lines which begin with "foo" and end in "bar"
@@ -448,7 +485,7 @@ grep -rI "^foo.*bar$" someDir/ # recursively `grep`, but ignore binary files
 grep "^foo.*bar$" file.txt | grep -v "baz"
 
 # if you literally want to search for the string,
-# and not the regex, use fgrep (or grep -F)
+# and not the regex, use `fgrep` (or `grep -F`)
 fgrep "foobar" file.txt
 
 # The `trap` command allows you to execute a command whenever your script
@@ -457,6 +494,7 @@ fgrep "foobar" file.txt
 trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
 
 # `sudo` is used to perform commands as the superuser
+# usually it will ask interactively the password of superuser
 NAME1=$(whoami)
 NAME2=$(sudo whoami)
 echo "Was $NAME1, then became more powerful $NAME2"

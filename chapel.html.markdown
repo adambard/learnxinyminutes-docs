@@ -1171,7 +1171,7 @@ You will need to `source util/setchplenv.EXT` from within the Chapel directory
 (`$CHPL_HOME`) every time your terminal starts so it's suggested that you drop
 that command in a script that will get executed on startup (like .bashrc).
 
-Chapel is easily installed with Brew for OS X
+Chapel is easily installed with Brew for macOS
 
  1. `brew update`
  2. `brew install chapel`

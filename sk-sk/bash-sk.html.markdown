@@ -19,7 +19,7 @@ filename: LearnBash-sk.sh
 
 Bash je pomenovanie pre unix shell (príkazový interpreter), ktorý bol
 tiež distribuovaný ako shell pre GNU operačné systémy a ako predvolený
-shell pre Linux a Mac OS X.
+shell pre Linux a macOS.
 Takmer všetky príklady uvedené nižšie môžu byť súčasťou shell skriptu alebo
 vykonané priamo v shelli.
 
