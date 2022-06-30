@@ -131,16 +131,15 @@ func control_flow():
       print("但是，您不需要在每个值之前写一个 case 关键字。")
     3:
       print("此外，每种情况都会默认跳出。")
-      break # ❌错误！不要在 match 里用 break 语句！
+      break # 错误！不要在 match 里用 break 语句！
     4:
       print("如果您需要跳过后续代码，这里也使用 continue 关键字。")
       continue
-      print("会被跳过的打印")
     _:
       print("下划线分支，在其他分支都不满足时，在这里书写默认的逻辑。")
   
   # 三元运算符 (写在一行的 if-else 语句)
-  prints("x is", "positive" if x >= 0 else "negative")
+  prints("x 是", "正值" if x >= 0 else "负值")
 
 # 类型转换
 func casting_examples():
@@ -286,7 +285,7 @@ const CONSTANT := "Typed constant."
 
 func _ready() -> void:
   # 此函数不返回任何东西
-  x = "string" # ❌错误！不要更改类型！
+  x = "string" # 错误！不要更改类型！
   return
 
 func join(arg1: String, arg2: String) -> String:
@@ -297,7 +296,7 @@ func get_child_at(index: int) -> Node:
   # 此函数接受一个 int 并返回一个 Node
   return get_children()[index]
 
-signal example(arg: int) # ❌错误！信号不能接受类型参数！
+signal example(arg: int) # 错误！信号不能接受类型参数！
 ```
 
 ## 延展阅读
