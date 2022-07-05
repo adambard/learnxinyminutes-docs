@@ -256,7 +256,7 @@ db.engineers.find({ $gt: { age: 25 }})
 db.engineers.find({ $gte: { age: 25 }})
 
 // Find all less than or less than equal to some condition
-db.engineers.find({ $lte: { age: 25 }})
+db.engineers.find({ $lt: { age: 25 }})
 db.engineers.find({ $lte: { age: 25 }})
 
 // Find all equal or not equal to
@@ -293,7 +293,7 @@ db.engineers.find({ $not: {
 
 // Must match none of the query conditions
 db.engineers.find({ $nor [
-  gender: 'Female,
+  gender: 'Female',
   age: {
     $gte: 18
   }
@@ -400,6 +400,6 @@ features, I would look at
 
 - Aggregation - useful for creating advanced queries to be executed by the
   database
-- Idexing allows for caching, which allows for much faster execution of queries
+- Indexing allows for caching, which allows for much faster execution of queries
 - Sharding allows for horizontal data scaling and distribution between multiple
   machines.
