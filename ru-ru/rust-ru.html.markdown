@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 
 filename: learnrust-ru.rs
 contributors:
