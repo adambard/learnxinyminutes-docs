@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 contributors:
     - ["Carlo Milanesi", "http://github.com/carlomilanesi"]
 lang: it-it
