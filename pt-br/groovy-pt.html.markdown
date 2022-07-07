@@ -5,7 +5,8 @@ filename: learngroovy-pt.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
-    - ["João Farias", "https://github.com/JoaoGFarias"]
+    - ["João Farias", "https://github.com/joaogfarias"]
+    - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
 lang: pt-br
 ---
 
