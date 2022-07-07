@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: Computação estatística com Python
+tool: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 translators:
