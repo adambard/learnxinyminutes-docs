@@ -201,8 +201,16 @@ if(x==1) {
 
 //Groovy também suporta o operador ternário
 def y = 10
-def x = (y > 1) ? "functionou" : "falhou"
-assert x == "functionou"
+def x = (y > 1) ? "funcionou" : "falhou"
+assert x == "funcionou"
+
+//E suporta o 'The Elvis Operator' também!
+//Em vez de usar o operador ternário:
+
+displayName = nome.name ? nome.name : 'Anonimo'
+
+//Podemos escrever:
+displayName = nome.name ?: 'Anonimo'
 
 //Loop 'for'
 //Itera sobre um intervalo (range)
