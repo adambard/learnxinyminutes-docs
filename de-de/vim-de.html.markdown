@@ -21,7 +21,6 @@ einer Datei.
 
 ```
     vim <filename>   # Öffne <filename> in Vim
-    :help <topic>    # Open up built-in help docs about <topic> if any exists
     :help <topic>    # Öffne die eingebaute Hilfe zum Thema  <topic>, wenn
                      # es existiert
     :q               # Schließe vim
