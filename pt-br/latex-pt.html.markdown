@@ -212,7 +212,7 @@ Também podemos incluir tabelas da mesma forma que figuras.
   % opcionalmente, você pode adicionar um | para linha vertical
   % Veja https://en.wikibooks.org/wiki/LaTeX/Tables para mais detalhes
   \begin{tabular}{c|cc} 
-    Número &  Primeiro Nome ˆ& Sobrenome \\ % Colunas são separadas por &
+    Número &  Primeiro Nome & Sobrenome \\ % Colunas são separadas por &
     \hline % uma linha horizontal
     1 & Biggus & Dickus \\
     2 & Monty & Python
