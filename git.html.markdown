@@ -597,8 +597,6 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [SalesForce Cheat Sheet](http://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
 
-* [GitGuys](http://www.gitguys.com/)
-
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)

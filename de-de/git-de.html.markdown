@@ -385,6 +385,4 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
-* [GitGuys](http://www.gitguys.com/)
-
 * [gitflow - Ein Modell um mit Branches zu arbeiten](http://nvie.com/posts/a-successful-git-branching-model/)
