@@ -54,7 +54,7 @@ specific points in the file, and for fast editing.
     /word            # Highlights all occurrences of word after cursor
     ?word            # Highlights all occurrences of word before cursor
     n                # Moves cursor to next occurrence of word after search
-    N                # Moves cursor to previous occerence of word
+    N                # Moves cursor to previous occurrence of word
 
     :%s/foo/bar/g    # Change 'foo' to 'bar' on every line in the file
     :s/foo/bar/g     # Change 'foo' to 'bar' on the current line
