@@ -2,7 +2,7 @@
 language: Fortran
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
-filename: learnfortran.f95
+filename: learnfortran.f90
 ---
 
 Fortran is one of the oldest computer languages. It was developed in the 1950s 
