@@ -10,8 +10,8 @@ by IBM for numeric calculations (Fortran is an abbreviation of "Formula
 Translation"). Despite its age, it is still used for high-performance computing
 such as weather prediction. However, the language has changed considerably over
 the years, although mostly maintaining backwards compatibility; well known
-versions are FORTRAN 77, Fortran 90, Fortran 95, Fortran 2003, Fortran 2008 and
-Fortran 2015.
+versions are FORTRAN 77, Fortran 90, Fortran 95, Fortran 2003, Fortran 2008,
+Fortran 2015, and Fortran 2018.
 
 This overview will discuss the features of Fortran 95 since it is the most
 widely implemented of the more recent specifications and the later versions are
