@@ -48,7 +48,7 @@ BEGIN {
     # the preliminary set-up code, before you process any text files. If you
     # have no text files, then think of BEGIN as the main entry point.
 
-    # Variables are global. Just set them or use them, no need to declare..
+    # Variables are global. Just set them or use them, no need to declare.
     count = 0;
 
     # Operators just like in C and friends
@@ -209,7 +209,7 @@ function string_functions(    localvar, arr) {
     # Both return number of matches replaced
     localvar = "fooooobar";
     sub("fo+", "Meet me at the ", localvar); # localvar => "Meet me at the bar"
-    gsub("e+", ".", localvar); # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar); # localvar => "m..t m. at th. bar"
 
     # Search for a string that matches a regular expression
     # index() does the same thing, but doesn't allow a regular expression
