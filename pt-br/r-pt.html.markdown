@@ -7,7 +7,7 @@ contributors:
 translators:
     - ["Marcel Ribeiro-Dantas", "http://github.com/mribeirodantas"]
 lang: pt-br    
-filename: learnr.r
+filename: learnr-pt.r
 ---
 
 R é uma linguagem de programação estatística. Ela tem muitas bibliotecas para carregar e limpar conjuntos de dados, executar análises estatísticas e produzir gráficos. Você também pode executar comandos do `R` dentro de um documento LaTeX.
