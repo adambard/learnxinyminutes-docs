@@ -1,6 +1,6 @@
 ---
 language: c
-filename: learnc.c
+filename: learnc-pt.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
@@ -10,7 +10,6 @@ translators:
     - ["Cássio Böck", "https://github.com/cassiobsilva"]
     - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
 lang: pt-br
-filename: c-pt.el
 ---
 
 Ah, C. Ainda é **a** linguagem de computação de alta performance.
