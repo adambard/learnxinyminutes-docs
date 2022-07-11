@@ -64,7 +64,7 @@ namespace LearnHackinYMinutes {
 
   function demo_hack_types(): void {
 
-    // Hack has five primitive types: bool, int, float, string, and null
+    // Hack has five primitive types: bool, int, float, string, and null.
     $is_helpful = true; // bool
     $int_value = 10; // int
     $precise_value = 2.0; // float
@@ -106,6 +106,12 @@ namespace LearnHackinYMinutes {
     Delete = 'D';
   }
 
+  // In contrast, an enum class can be of any value type!
+  enum class Random : mixed {
+    int X = 42;
+    string S = 'foo';
+  }
+
   /* ==================================
    *            HACK ARRAYS
    * ==================================
@@ -140,8 +146,8 @@ namespace LearnHackinYMinutes {
    * ==================================
    */
 
-  // The Hack Standard Library is a set of functions and classes for the Hack language
-  // Imports are ideally at the top of your file but are placed here for instruction purposes
+  // The Hack Standard Library is a set of functions and classes for the Hack language.
+  // Namespace use declarations are ideally at the top of your file but are placed here for instruction purposes.
 
   use namespace HH\Lib\C; // the `C` library operates on containers (like Hack Arrays)
   use namespace HH\Lib\Str; // The `Str` library operates on strings
@@ -154,7 +160,8 @@ namespace LearnHackinYMinutes {
 
     C\contains($letters, 'c'); // checks for a value; returns 'true'
     C\contains($colors, 'purple'); // checks for a value; returns 'false'
-    C\contains($alphabet, 'a'); // checks for a value; returns 'true'
+    C\contains_key($alphabet, 'a'); // checks for a key; returns 'true'
+    C\contains($alphabet, 'd'); // checks for a value; returns 'false'
 
     Str\length("foo"); // returns `3`
     Str\join(vec['foo', 'bar', 'baz'], '!'); // returns `foo!bar!baz`
@@ -184,7 +191,9 @@ namespace LearnHackinYMinutes {
   // Functions are defined globally.
   // When a function is defined in a class, we refer to the function as a method.
 
-  // Functions have return types (here: `int`) and must return a type or nothing (`void`).
+  // Functions have return types (here: `int`) and must return a value of
+  // that type or return no value when a void return type annotation was used.
+
   function add_one(int $x): int {
     return $x + 1;
   }
@@ -217,9 +226,9 @@ namespace LearnHackinYMinutes {
 
   // As another example, `__Memoize` caches the result of a function.
   <<__Memoize>>
-  function do_expensive_task(): ?string {
-    // return file_get_contents('http://hacklang.org');
-    return "dynamic string with contents from hacklang.org";
+  async function do_expensive_task(): Awaitable<string> {
+    $site_contents = await \HH\Asio\curl_exec("http://hacklang.org");
+    return $site_contents;
   }
 
   /* ==================================
@@ -319,7 +328,7 @@ namespace LearnHackinYMinutes {
    * ==================================
    */
 
-  // A class can implement a set of capabilities via an interface.
+  // A class can implement a set of requirements via an interface.
   // An interface is a set of method declarations and constants.
 
   interface Plane {
@@ -336,10 +345,9 @@ namespace LearnHackinYMinutes {
   // A trait defines properties and method declarations.
   // Traits are recommended when abstracting code for reuse.
   // Traits are included in code via the `use` keyword.
-  // `use` allows for other includes, like namespaces, classes, and functions (and more)!
 
   trait Airplane {
-    // Like other languages, classes are extended, and interfaces are implemented.
+    // Introduce a class or interface requirement with the following syntax:
     require extends Machine; // abstract class
     require implements Plane; // interface
 
