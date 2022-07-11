@@ -79,14 +79,14 @@ namespace LearnHackinYMinutes {
 
     // Use `arraykey` to represent either an integer or string.
     $the_answer = 42;
-    $is_answer = processKey($the_answer);
+    $is_answer = process_key($the_answer);
 
     // Similarily, `num` represents either an int or float.
     $lucky_number = 7;
     $lucky_square = calculate_square($lucky_number);
   }
 
-  function processKey(arraykey $the_answer): bool {
+  function process_key(arraykey $the_answer): bool {
     if ($the_answer is int) {
       return true;
     } else {
@@ -217,7 +217,7 @@ namespace LearnHackinYMinutes {
 
   // As another example, `__Memoize` caches the result of a function.
   <<__Memoize>>
-  function doExpensiveTask(): ?string {
+  function do_expensive_task(): ?string {
     // return file_get_contents('http://hacklang.org');
     return "dynamic string with contents from hacklang.org";
   }
