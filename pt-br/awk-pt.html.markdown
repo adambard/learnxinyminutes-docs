@@ -202,7 +202,7 @@ function string_functions(    localvar, arr) {
     # Ambas retornam o número de instâncias substituídas
     localvar = "fooooobar"
     sub("fo+", "Meet me at the ", localvar) # localvar => "Meet me at the bar"
-    gsub("e+", ".", localvar) # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar) # localvar => "m..t m. at th. bar"
 
     # Localiza um texto que casa com uma expressão regular
     # index() faz a mesma coisa, mas não permite uma expressão regular
