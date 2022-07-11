@@ -199,7 +199,7 @@ function string_functions(    localvar, arr) {
     # Les deux renvoient le nombre de correspondances remplacées
     localvar = "fooooobar";
     sub("fo+", "Meet me at the ", localvar); # localvar => "Meet me at the bar"
-    gsub("e+", ".", localvar); # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar); # localvar => "m..t m. at th. bar"
 
     # Rechercher une chaîne de caractères qui correspond à une expression régulière
     # index() fait la même chose, mais n'autorise pas les expressions régulières
