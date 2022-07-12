@@ -179,7 +179,7 @@ function string_functions(    localvar, arr) {
     # 都是返回替换的个数
     localvar = "fooooobar"
     sub("fo+", "Meet me at the ", localvar) # localvar => "Meet me at the bar"
-    gsub("e+", ".", localvar) # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar) # localvar => "m..t m. at th. bar"
 
     # 搜索匹配正则的字符串
     # index() 也是搜索, 不支持正则
