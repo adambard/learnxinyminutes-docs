@@ -1,5 +1,6 @@
 ---
-language: docker
+category: tool
+tool: docker
 filename: docker.bat
 contributors:
     - ["Ruslan López", "http://javapro.org/"]
