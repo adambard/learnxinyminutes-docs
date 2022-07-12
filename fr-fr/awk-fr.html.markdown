@@ -38,14 +38,14 @@ règle2 { action; }
 # AWK lit et analyse automatiquement chaque ligne de chaque fichier fourni.
 # Chaque ligne est divisée par un délimiteur FS qui est par défaut l'espace
 # (plusieurs espaces ou une tabulation comptent pour un espace). Ce délimiteur
-# peut être changer grâce à l'option -F ou être renseigné au début d'un bloc
+# peut être changé grâce à l'option -F ou être renseigné au début d'un bloc
 # (exemple: FS = " ").
 
 # BEGIN est une règle spécifique exécutée au début du programme. C'est à cet
 # endroit que vous mettrez tout le code à exécuter avant de traiter les fichiers
 # texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le
 # point d’entrée principal du script.
-# A l'opposé de BEGIN, il existe la règle END. Cette règle est présente après
+# À l'opposé de BEGIN, il existe la règle END. Cette règle est présente après
 #chaque fin de fichier (EOF : End Of File).
 
 BEGIN {
@@ -54,7 +54,7 @@ BEGIN {
     count = 0;
 
     # les opérateurs sont identiques au langage C et aux langages similaires 
-    # (telsque C#, C++, etc.)
+    # (tels que C#, C++, etc.)
     a = count + 1; # addition
     b = count - 1; # soustraction
     c = count * 1; # multiplication
@@ -128,7 +128,7 @@ BEGIN {
     assoc["foo"] = "bar";
     assoc["bar"] = "baz";
 
-    # et les tableaux multi-dimentions, avec certaines limitations que l'on ne
+    # et les tableaux multi-dimensions, avec certaines limitations que l'on ne
     # mentionnera pas ici
 
     multidim[0,0] = "foo";
@@ -140,7 +140,8 @@ BEGIN {
     if ("foo" in assoc)
         print "Fooey!";
 
-    # Vous pouvez aussi utilisez l'opérateur 'in' pour parcourir les clés d'un tableau
+    # Vous pouvez aussi utilisez l'opérateur 'in' pour parcourir les clés
+    # d'un tableau
     for (key in assoc)
         print assoc[key];
 
@@ -168,11 +169,11 @@ BEGIN {
 # Voici comment définir une fonction
 function arithmetic_functions(a, b, c,     d) {
 
-    # La partie la plus ennuieuse de AWK est probablement l’absence de variables
+    # La partie la plus ennuyeuse de AWK est probablement l’absence de variables
     # locales. Tout est global. Pour les scripts courts, c'est très utile, mais
-    # pour les scripts plus longs, cela peut poser problème.
+    # pour les scripts plus longs, cela peut poser un problème.
 
-    # Il y a cepandant une solution de contournement (enfin ... une bidouille).
+    # Il y a cependant une solution de contournement (enfin ... une bidouille).
     # Les arguments d'une fonction sont locaux à cette fonction.
     # Et AWK vous permet de définir plus d'arguments à la fonction que nécessaire.
     # Il suffit donc de mettre une variable locale dans la déclaration de fonction,
@@ -184,7 +185,8 @@ function arithmetic_functions(a, b, c,     d) {
 
     # Maintenant, les fonctions arithmétiques
 
-    # La plupart des implémentations de AWK ont des fonctions trigonométriques standards
+    # La plupart des implémentations de AWK ont des fonctions trigonométriques
+    # standards
     localvar = sin(a);
     localvar = cos(a);
     localvar = atan2(b, a); # arc tangente de b / a
@@ -215,7 +217,8 @@ function string_functions(    localvar, arr) {
     # AWK a plusieurs fonctions pour le traitement des chaînes de caractères,
     # dont beaucoup reposent sur des expressions régulières.
 
-    # Chercher et remplacer, la première occurence (sub) ou toutes les occurences (gsub)
+    # Chercher et remplacer, la première occurrence (sub) ou toutes les
+    # occurrences (gsub)
     # Les deux renvoient le nombre de correspondances remplacées
 
     localvar = "fooooobar";
@@ -247,7 +250,8 @@ function io_functions(    localvar) {
     printf("%s %d %d %d\n", "Testing", 1, 2, 3);
 
     # AWK n'a pas de descripteur de fichier en soi. Il ouvrira automatiquement
-    # un descripteur de fichier lorsque vous utilisez quelque chose qui en a besoin.
+    # un descripteur de fichier lorsque vous utilisez quelque chose qui en a
+    # besoin.
     # La chaîne de caractères que vous avez utilisée pour cela peut être traitée
     # comme un descripteur de fichier à des fins d'entrée / sortie.
 
@@ -262,11 +266,12 @@ function io_functions(    localvar) {
     # Voici comment exécuter quelque chose dans le shell
     system("echo foobar"); # => affiche foobar
 
-    # Lire quelque chose depuis l'entrée standard et la stocker dans une variable locale
+    # Lire quelque chose depuis l'entrée standard et la stocker dans une variable
+    # locale
     getline localvar;
 
     # Lire quelque chose à partir d'un pipe (encore une fois, utilisez une
-    # chaine de caractère que vous fermerez proprement)
+    # chaîne de caractère que vous fermerez proprement)
     "echo foobar" | getline localvar # localvar => "foobar"
     close("echo foobar")
 
@@ -281,7 +286,7 @@ function io_functions(    localvar) {
 # utilisées que si vous traitez des lignes à partir de fichiers ou l'entrée
 # standard (stdin).
 # Quand vous passez des arguments à AWK, ils sont considérés comme des noms de
-# fichiers à traiter. AWK les traitera tous dans l'ordre. Voyez les comme dans à
+# fichiers à traiter. AWK les traitera tous dans l'ordre. Voyez les comme dans
 # une boucle implicite, parcourant les lignes de ces fichiers. Ces règles et ces
 # actions ressemblent à des instructions switch dans la boucle.
 
@@ -314,21 +319,21 @@ function io_functions(    localvar) {
     print $NF;
 }
 
-# Chaque règle est en réalité un test conditionel.
+# Chaque règle est en réalité un test conditionnel.
 
 a > 0 {
     # Ceci s’exécutera une fois pour chaque ligne, tant que le test est positif
 }
 
-# Les expressions régulières sont également des tests conditionels.
+# Les expressions régulières sont également des tests conditionnels.
 # Si le test de l'expression régulières n'est pas vrais alors le bloc
-# n'est pas executé
+# n'est pas exécuté.
 
 $0 /^fobar/ {
-   print "la ligne commance par fobar"
+   print "la ligne commence par foobar"
 }
 
-# Dans le cas où vous voulez tester votre chaine de caractères sur la ligne
+# Dans le cas où vous voulez tester votre chaîne de caractères sur la ligne
 # en cours de traitement $0 est optionnelle.
 
 /^[a-zA-Z0-9]$/ {
@@ -357,7 +362,7 @@ $0 /^fobar/ {
 BEGIN {
 
     # Premièrement, on demande à l'utilisateur le prénom voulu
-    print "Pour quel prénom vouldriez vous savoir l'age moyen ?";
+    print "Pour quel prénom voudriez vous savoir l'age moyen ?";
 
     # On récupère la ligne à partir de l'entrée standard, pas de la ligne de commande
     getline name < "/dev/stdin";
