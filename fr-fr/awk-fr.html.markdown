@@ -38,14 +38,14 @@ règle2 { action; }
 # AWK lit et analyse automatiquement chaque ligne de chaque fichier fourni.
 # Chaque ligne est divisée par un délimiteur FS qui est par défaut l'espace
 # (plusieurs espaces ou une tabulation comptent pour un espace). Ce délimiteur
-# peut être changer grâce à l'option -F ou être renseigné au début d'un bloc
+# peut être changé grâce à l'option -F ou être renseigné au début d'un bloc
 # (exemple: FS = " ").
 
 # BEGIN est une règle spécifique exécutée au début du programme. C'est à cet
 # endroit que vous mettrez tout le code à exécuter avant de traiter les fichiers
 # texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le
 # point d’entrée principal du script.
-# A l'opposé de BEGIN, il existe la règle END. Cette règle est présente après
+# À l'opposé de BEGIN, il existe la règle END. Cette règle est présente après
 #chaque fin de fichier (EOF : End Of File).
 
 BEGIN {
@@ -54,7 +54,7 @@ BEGIN {
     count = 0;
 
     # les opérateurs sont identiques au langage C et aux langages similaires 
-    # (telsque C#, C++, etc.)
+    # (tels que C#, C++, etc.)
     a = count + 1; # addition
     b = count - 1; # soustraction
     c = count * 1; # multiplication
@@ -128,7 +128,7 @@ BEGIN {
     assoc["foo"] = "bar";
     assoc["bar"] = "baz";
 
-    # et les tableaux multi-dimentions, avec certaines limitations que l'on ne
+    # et les tableaux multi-dimensions, avec certaines limitations que l'on ne
     # mentionnera pas ici
 
     multidim[0,0] = "foo";
@@ -281,7 +281,7 @@ function io_functions(    localvar) {
 # utilisées que si vous traitez des lignes à partir de fichiers ou l'entrée
 # standard (stdin).
 # Quand vous passez des arguments à AWK, ils sont considérés comme des noms de
-# fichiers à traiter. AWK les traitera tous dans l'ordre. Voyez les comme dans à
+# fichiers à traiter. AWK les traitera tous dans l'ordre. Voyez les comme dans
 # une boucle implicite, parcourant les lignes de ces fichiers. Ces règles et ces
 # actions ressemblent à des instructions switch dans la boucle.
 
