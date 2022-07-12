@@ -396,14 +396,17 @@ func requestServer() {
 在那里你可以获得教程参考，在线试用，和更多的资料。
 在简单的尝试过后，在[官方文档](https://golang.org/doc/)那里你会得到你所需要的所有资料、关于编写代码的规范、库和命令行工具的文档与Go的版本历史。
 
-强烈推荐阅读语言定义部分，很简单而且很简洁！（赶时髦！）
+强烈推荐阅读[Go语言规范](https://golang.org/ref/spec)，很简单而且很简洁！（赶时髦！）
 
 你还可以前往[Go在线体验中心](https://play.golang.org/p/tnWMjr16Mm)进，在浏览器里修改并运行这些代码，一定要试一试哦！你可以将[https://play.golang.org](https://play.golang.org)当作一个[REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop)，在那里体验语言特性或运行自己的代码，连环境都不用配！
 
-学习Go还要阅读Go[标准库的源代码](http://golang.org/src/)，全部文档化了，可读性非常好，可以学到go，go style和go idioms。在[文档](http://golang.org/pkg/)中点击函数名，源代码就出来了！
+学习Go还要阅读[Go标准库的源代码](http://golang.org/src/)。这些标准库已经全部文档化了，提供了很好的可读性，可以学到Go的核心技术和代码风格。在[Go标准库列表](http://golang.org/pkg/)中点击函数名，对应源代码就出来了！
 
 [Go by example](https://gobyexample.com/)也是一个学习的好地方。
 
+在YouTube上有很多关于Go的优秀的会议和视频教程，这里有三个最好的播放列表，分别为初级、中级和高级Go语言使用者量身定制：
+[Golang University 101](https://www.youtube.com/playlist?list=PLEcwzBXTPUE9V1o8mZdC9tNnRZaTgI-1P)介绍了Go的基本概念，同时向你展示了如何使用Go语言工具来创建和管理Go代码；
+[Golang University 201](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs)则更进一步，讲解了包括测试、网络服务和API在内的重要技术；
+[Golang University 301](https://www.youtube.com/watch?v=YHRO5WQGh0k&list=PLEcwzBXTPUE8KvXRFmmfPEUmKoy9LfmAf)深入探讨了更高级的Go语言主题，如Go调度器、Map和Channel的实现以及其他优化技术。
 
-
-Go Mobile添加了对移动平台的支持（Android and iOS）。你可以完全用go语言来创造一个app或编写一个可以从Java或Obj-C调用的函数库，敬请参考[Go Mobile page](https://github.com/golang/go/wiki/Mobile)。
+Go Mobile添加了对移动平台的支持（Android and iOS）。你可以完全用Go语言来创造一个APP或编写一个可以从Java或Obj-C调用的函数库，敬请参考[Go Mobile page](https://github.com/golang/go/wiki/Mobile)。
