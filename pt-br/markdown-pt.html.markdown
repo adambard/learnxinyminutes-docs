@@ -12,11 +12,11 @@ lang: pt-br
 filename: learnmarkdown-pt.md
 ---
 
-Markdown foi criado por John Gruber in 2004. Originado para ser fácil de ler e 
-escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos
-também).
+O Markdown foi lançado por John Gruber em 2004. Criado para ser uma sintaxe
+fácil de ler e escrever e que é facilmente convertida em HTML (hoje, suporta
+outros formatos também).
 
-Markdown varia em termos de implementação de um parser para outro. Esse guia
+O Markdown varia em termos de implementação de um parser para outro. Esse guia
 irá tentar deixar explícito quando os recursos são universais ou quando são
 específicos para um parser em específico.
 
@@ -40,22 +40,20 @@ específicos para um parser em específico.
 - [Leitura complementar](#further-reading)
 
 ## Elementos HTML
-Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
+O Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
 um arquivo Markdown válido.
 
 ```md
-<!--Markdown é um superconjunto do HTML, de modo que qualquer arquivo HTML é 
-um arquivo Markdown válido. Isso significa que nós podemos usar elementos HTML 
-em Markdown, como o elemento de comentário, e eles não serão afetados pelo
-analisador de remarcação. No entanto, se você criar um elemento HTML em seu
-arquivo Markdown, você não pode usar sintaxe de remarcação dentro desse
-conteúdo do elemento.-->
+<!--Isso significa que nós podemos usar elementos HTML em Markdown, como o
+elemento de comentário, e eles não serão afetados pelo analisador de
+remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown,
+você não pode usar sintaxe de remarcação dentro do conteúdo desse elemento.-->
 ```
 
 ## Cabeçalhos
 
 Você pode criar elementos HTML `<h1>` até `<h6>` facilmente antecedendo o texto
-que deseja estar nesse elemento por um número de hashes (#).
+que deseja estar nesse elemento por um número de cerquilhas (#).
 
 ```md
 # Isto é um cabeçalho <h1>
@@ -78,15 +76,14 @@ Isto é um cabeçalho h2
 
 ## Estilos de texto simples
 
-O texto pode ser facilmente denominado como marcação itálico, negrito ou
-tachado usando:
+O texto pode ser facilmente estilizado como itálico ou negrito usando Markdown.
 
 ```md
 *Este texto está em itálico*
 _E este também está._
 
 **Este texto está em negrito**
-__E este também está._
+__E este também está.__
 
 ***Este texto está em negrito e itálico.***
 **_E este também está_**
@@ -101,7 +98,7 @@ GitHub, nós também temos:
 ```
 
 ## Parágrafos
-Os parágrafos estão uma ou várias linhas adjacentes de texto separadas por 
+Os parágrafos estão em uma ou várias linhas adjacentes de texto separadas por 
 uma ou múltiplas linhas em branco.
 
 ```md
@@ -118,18 +115,18 @@ Se você quiser inserir uma tag HTML `<br />`, você pode acabar com um parágra
 com dois ou mais espaços e, em seguida, começar um novo parágrafo.
 
 ```md
-Termino com dois espaços (destacar-me para vê-los). 
+Termino com dois espaços (selecione essa linha para vê-los). 
 
 Há um <br /> acima de mim!
 ```
 
-Bloco de citações são fáceis e feito com o caractere >.
+Blocos de citações são fáceis e feitos com o caractere >.
 
 ```md
 > Este é um bloco de citação. Você pode 
 > Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você
 > pode deixar suas linhas ficarem muito longas e quebrarem por conta própria.
-> Não faz diferença, desde que eles começam com um `>`.
+> Não faz diferença, desde que elas comecem com um `>`.
 
 > Você também pode usar mais de um nível 
 >> De recuo?
@@ -139,7 +136,8 @@ Bloco de citações são fáceis e feito com o caractere >.
 
 ## Listas
 
-As listas não ordenadas podem ser feitas usando asteriscos, positivos ou hífens.
+As listas não ordenadas podem ser feitas usando asteriscos, sinais de positivo
+ou hífens.
 
 ```md
 * Item
@@ -167,9 +165,8 @@ Listas ordenadas são feitas com um número seguido por um ponto.
 3. Item três
 ```
 
-Você não tem poder para rotular os itens corretamente e a remarcação ainda
-deixará os itens em ordem, mas isso pode não ser uma boa idéia.
-
+Você não precisa sequer rotular os itens corretamente e o Markdown ainda
+assim deixará os itens em ordem, mas isso pode não ser uma boa idéia.
 
 ```md
 1. Item um
@@ -190,7 +187,7 @@ Você também pode usar sublistas.
 4. Item quatro
 ```
 
-Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) de 
+Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) do 
 HTML.
 
 ```md
@@ -203,16 +200,16 @@ A caixa de seleção abaixo será exibida como uma checkbox HTML marcada.
 
 ## Blocos de código
 
-Você pode indicar um bloco de código (que utiliza o elemento `<code>`) pelo
-recuo uma linha com quatro espaços ou uma guia.
+Você pode indicar um bloco de código (que utiliza o elemento `<code>`) através
+de indentação com quatro espaços ou uma tabulação.
 
 ```md
     Isto é código
     É assim, sacou?
 ```
 
-Você pode também re-guia (ou adicionar mais quatro espaços adicionais) para o
-recuo dentro do seu código.
+Você pode também adicionar mais tabulações (ou adicionar mais quatro espaços
+adicionais) para indentação no seu código.
 
 ```md
     my_array.each do |item|
@@ -220,13 +217,13 @@ recuo dentro do seu código.
     end	
 ```
 
-Código embutido pode ser criada usando o caractere de crase `` ` ``
+Código embutido pode ser criado usando o caractere de crase `` ` ``.
 
 ```md
-John não sabia nem o que o função `go_to()` fazia!
+John não sabia nem o que a função `go_to()` fazia!
 ```
 
-No GitHub Flavored Markdown, você pode usar uma sintaxe especial para o código.
+No GitHub Flavored Markdown, você pode usar uma sintaxe especial para código.
 
 <pre>
 <code class="highlight">&#x60;&#x60;&#x60;ruby
@@ -236,12 +233,12 @@ end
 &#x60;&#x60;&#x60;</code></pre>
 
 
-O texto acima não requer recuo, além disso o GitHub vai usar a sintaxe
-highlight da linguagem que você especificar após <code>```</code>.
+O texto acima não requer indentação, além disso o GitHub vai usar o destaque
+de sintaxe da linguagem qeu você especificar após a tag <code>```</code>.
 
 ## Linha Horizontal
 
-Linhas horizontais são facilmente adicionados com três ou mais asteriscos ou
+Linhas horizontais são facilmente adicionadas com três ou mais asteriscos ou
 hífens, com ou sem espaços.
 
 ```md
@@ -253,18 +250,18 @@ hífens, com ou sem espaços.
 
 ## Links
 
-Uma das melhores coisas sobre a marcação é o quão fácil é fazer ligações.
-Colocar o texto a ser exibido entre parênteses rígidos [] seguido pela url em
+Uma das melhores coisas sobre o Mardkwon é o quão fácil é criar links.
+Coloque o texto a ser exibido entre colchetes [] seguido pela url entre
 parênteses ()
 
 ```md
-[Click aqui!](http://test.com/)
+[Clique aqui!](http://test.com/)
 ```
 
-Você também pode adicionar um título link usando aspas dentro dos parênteses
+Você também pode adicionar um título ao link usando aspas dentro dos parênteses.
 
 ```md
-[Click aqui!](http://test.com/ "Link para Test.com")
+[Cliqueaqui!](http://test.com/ "Link para Test.com")
 ```
 
 Caminhos relativos funcionam também.
@@ -273,7 +270,7 @@ Caminhos relativos funcionam também.
 [Ir para música](/música/).
 ```
 
-Markdown também suporta ligações de estilo de referência.
+O Markdown também suporta links para referências no texto.
 
 <pre><code class="highlight">&#x5b;<span class="nv">Clique nesse link</span>][<span class="ss">link1</span>] para mais informações!
 &#x5b;<span class="nv">Também cheque esse link</span>][<span class="ss">foobar</span>] se você quiser.
@@ -283,9 +280,9 @@ Markdown também suporta ligações de estilo de referência.
 
 O título também pode estar entre aspas simples ou entre parênteses, ou omitido 
 inteiramente. As referências podem estar em qualquer lugar no documento e os
-IDs de referência pode ser qualquer um, desde que eles são únicos.
+IDs de referência podem ser qualquer um, desde que eles sejam únicos.
 
-Existe também a "nomeação implicita", que permite que você use o texto do link
+Existe também a "nomeação implícita", que permite que você use o texto do link
 como o id:
 
 <pre><code class="highlight">&#x5b;<span class="nv">Isso</span>][] é um link.
@@ -293,7 +290,7 @@ como o id:
 &#x5b;<span class="nv">Isso</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
 
 
-Mas não são usados normalmente.
+Mas geralmente não são usados.
 
 ### Tabela de conteúdo
 
@@ -316,11 +313,11 @@ implementações do Markdown da mesma forma.
 
 ## Imagens
 
-As imagens são feitas da mesma forma que as ligações, mas com um ponto de
+As imagens são feitas da mesma forma que os links, mas com um ponto de
 exclamação na frente!
 
 ```md
-![Este é pairar-texto (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional") 
+![Este é alt-text (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional") 
 ```
 
 E estilo de referência funciona como esperado
