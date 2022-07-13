@@ -6,6 +6,7 @@ translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
     - ["Gabriele Luz", "https://github.com/gabrieleluz"]
     - ["Monique Baptista", "https://github.com/bfmonique"]
+    - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
 
 lang: pt-br    
 filename: learnmarkdown-pt.md
@@ -20,22 +21,21 @@ puxar o projeto (pull request)
 ## Elementos HTML
 Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
 um arquivo Markdown válido.
+
 ```md
-<!-- Markdown é um superconjunto do HTML, de modo que qualquer arquivo HTML é 
+<!--Markdown é um superconjunto do HTML, de modo que qualquer arquivo HTML é 
 um arquivo Markdown válido. Isso significa que nós podemos usar elementos HTML 
 em Markdown, como o elemento de comentário, e eles não serão afetados pelo analisador
 de remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown, você
 não pode usar sintaxe de remarcação dentro desse conteúdo do elemento.-->
-
-<!--A maneira como o Markdown é analisado varia de software para software.
-Este guia vai tentar esclarecer quando as características são universais, ou quando eles são específicos para um determinado interpretador -->
-
+```
 
 ## Cabeçalhos
 
 Você pode criar elementos HTML `<h1>` até `<h6>` facilmente antecedendo o texto
-que deseja estar nesse elemento por um número de hashes (#)
+que deseja estar nesse elemento por um número de hashes (#).
 
+```md
 # Isto é um cabeçalho <h1>
 ## Isto é um cabeçalho <h2>
 ### Isto é um cabeçalho <h3>
@@ -44,7 +44,7 @@ que deseja estar nesse elemento por um número de hashes (#)
 ###### Isto é um cabeçalho <h6>
 ```
 
-Markdown também nos fornece duas maneiras alternativas de indicar h1 e h2
+Markdown também nos fornece duas maneiras alternativas de indicar h1 e h2.
 
 ```md
 Isto é um cabeçalho h1
@@ -55,6 +55,7 @@ Isto é um cabeçalho h2
 ```
 
 ## Estilos de texto simples
+
 O texto pode ser facilmente denominado como marcação itálico, negrito ou tachado usando:
 
 ```md
@@ -66,10 +67,10 @@ __E este também está._
 
 ***Este texto está em negrito e itálico.***
 **_E este também está_**
-*--Danouse! Este também__*
+*__Danou-se! Este também__*
 ```
 
-Em GitHub Flavored Markdown, que é usado para processar arquivos Markdown 
+No GitHub Flavored Markdown, que é usado para processar arquivos Markdown
 GitHub, nós também temos:
 
 ```md
@@ -84,20 +85,20 @@ uma ou múltiplas linhas em branco.
 Este é um parágrafo. Eu estou digitando em um parágrafo, não é legal?
 
 Agora, eu estou no parágrafo 2.
-... Ainda continuo no parágrafo 2! :)
+Ainda continuo no parágrafo 2!
 
-Eu estou no parágrafo três.
+
+Eu estou no parágrafo três!
 ```
 
 Se você quiser inserir uma tag HTML `<br />`, você pode acabar com um parágrafo 
-com dois ou mais espaços e, em seguida, começar um novo parágrafo
+com dois ou mais espaços e, em seguida, começar um novo parágrafo.
 
 ```md
 Termino com dois espaços (destacar-me para vê-los). 
 
 Há um <br /> acima de mim!
 ```
-
 
 Bloco de citações são fáceis e feito com o caractere >.
 
@@ -106,14 +107,16 @@ Bloco de citações são fáceis e feito com o caractere >.
 > Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você pode
 > deixar suas linhas ficarem muito longas e quebrarem por conta própria. Não faz diferença, 
 > desde que eles começam com um `>`.
-	
 
 > Você também pode usar mais de um nível 
 >> De recuo?
+> O quão legal é isso?
+
 ```
 
 ## Listas
-As listas não ordenadas podem ser feitas usando asteriscos, positivos ou hífens
+
+As listas não ordenadas podem ser feitas usando asteriscos, positivos ou hífens.
 
 ```md
 * Item
@@ -141,8 +144,8 @@ Listas ordenadas são feitas com um número seguido por um ponto.
 3. Item três
 ```
 
-<!-- Você não tem poder para rotular os itens corretamente e a remarcação ainda deixará os 
-itens em ordem, mas isso pode não ser uma boa idéia -->
+Você não tem poder para rotular os itens corretamente e a remarcação ainda deixará os 
+itens em ordem, mas isso pode não ser uma boa idéia.
 
 
 ```md
@@ -150,9 +153,10 @@ itens em ordem, mas isso pode não ser uma boa idéia -->
 1. Item dois
 1. Item três
 ```
+
 (Isto é processado da mesma forma que o exemplo acima)
 
-Você também pode usar sublistas
+Você também pode usar sublistas.
 
 ```md
 1. Item um
@@ -163,61 +167,56 @@ Você também pode usar sublistas
 4. Item quatro
 ```
 
-Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) de HTML
+Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) de HTML.
 
 ```md
-As caixas abaixo sem o 'x' são checkboxes HTML desmarcadas
-- [ ] Primeira tarefa a completar
+As caixas abaixo sem o 'x' são checkboxes HTML desmarcadas.
+- [ ] Primeira tarefa a completar.
 - [ ] Segunda tarefa a completar
-A caixa de seleção abaixo será exibida como uma checkbox HTML marcada
+A caixa de seleção abaixo será exibida como uma checkbox HTML marcada.
 - [x] Essa tarefa foi completa
-
 ```
 
-
 ## Blocos de código
+
 Você pode indicar um bloco de código (que utiliza o elemento `<code>`) pelo recuo
-uma linha com quatro espaços ou uma guia
+uma linha com quatro espaços ou uma guia.
+
 ```md
-	Isto é código
-	É assim, sacou?
-	
+    Isto é código
+    É assim, sacou?
 ```
 
 Você pode também re-guia (ou adicionar mais quatro espaços adicionais) para o recuo 
-dentro do seu código
+dentro do seu código.
 
 ```md
-	my_array.each do |item|
+    my_array.each do |item|
         puts item
     end	
- ```
+```
 
 Código embutido pode ser criada usando o caractere de crase `` ` ``
 
 ```md
-John não sabia nem o que o função `goto()` fazia!
+John não sabia nem o que o função `go_to()` fazia!
 ```
 
-Em GitHub Flavored Markdown, você pode usar uma sintaxe especial para o código
-```md
-	``` ruby
-	def foobar
-    	puts "Hello world!"
-	end
-	```
-```
-=======
-\`\`\`ruby <!-- exceto remover essas barras invertidas quando você faz isso, apenas ```
-ruby! --> 
+No GitHub Flavored Markdown, você pode usar uma sintaxe especial para o código.
+
+<pre>
+<code class="highlight">&#x60;&#x60;&#x60;ruby
 def foobar
-    puts "Hello world!"
+    puts "Olá mundo!"
 end
-\`\`\` <!-- Aqui também, não use barras invertidas, apenas ``` -->
+&#x60;&#x60;&#x60;</code></pre>
 
-O texto acima não requer recuo, além disso o GitHub vai usar a sintaxe highlight da linguagem que você especificar após a \`\`\`.
+
+O texto acima não requer recuo, além disso o GitHub vai usar a sintaxe
+highlight da linguagem que você especificar após <code>```</code>.
 
 ## Linha Horizontal
+
 Linhas horizontais são facilmente adicionados com três ou mais asteriscos ou hífens,
 com ou sem espaços.
 
@@ -229,6 +228,7 @@ com ou sem espaços.
 ```
 
 ## Links
+
 Uma das melhores coisas sobre a marcação é o quão fácil é fazer ligações. Colocar 
 o texto a ser exibido entre parênteses rígidos [] seguido pela url em parênteses ()
 
@@ -248,31 +248,29 @@ Caminhos relativos funcionam também.
 [Ir para música](/música/).
 ```
 
-Markdown também suporta ligações de estilo de referência
+Markdown também suporta ligações de estilo de referência.
 
-```md
-[Clique neste link] [link1] para mais informações sobre isso!
-[Além disso, verifique este link] [foobar] se você quiser.
+<pre><code class="highlight">&#x5b;<span class="nv">Clique nesse link</span>][<span class="ss">link1</span>] para mais informações!
+&#x5b;<span class="nv">Também cheque esse link</span>][<span class="ss">foobar</span>] se você quiser.
 
-[link1]: http://test.com/ "Legal!"
-[foobar]: http://foobar.biz/ "OK!"
-```
+&#x5b;<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Legal!"</span>
+&#x5b;<span class="nv">link2r</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Certo!"</span></code></pre>
 
 O título também pode estar entre aspas simples ou entre parênteses, ou omitido 
 inteiramente. As referências podem estar em qualquer lugar no documento e os IDs de referência 
 pode ser qualquer um, desde que eles são únicos.
 
-Existe também a "nomeação implicita", que permite que você use o texto do link como o id
+Existe também a "nomeação implicita", que permite que você use o texto do link como o id:
 
-```md
-[Este] [] é um link. 
+<pre><code class="highlight">&#x5b;<span class="nv">Isso</span>][] é um link.
 
-[este]: http://thisisalink.com/ 
-```
+&#x5b;<span class="nv">Isso</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
 
-Mas não são usados normalmente
+
+Mas não são usados normalmente.
 
 ## Imagens
+
 As imagens são feitas da mesma forma que as ligações, mas com um ponto de exclamação na frente!
 
 ```md
@@ -281,13 +279,12 @@ As imagens são feitas da mesma forma que as ligações, mas com um ponto de exc
 
 E estilo de referência funciona como esperado
 
-```md
-![Este é o pairar-texto.][Myimage] 
+<pre><code class="highlight">!&#x5b;<span class="nv">Esse é o alt-attribute.</span>][<span class="ss">myimage</span>]
 
-[myimage]: relative/urls/legal/image.jpg "se você precisa de um título, é aqui" 
-```
+&#x5b;<span class="nv">Minha imagem</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"se precisar de um título, está aqui"</span></code></pre>
 
 ## Miscelânea 
+
 ### Auto-links 
 
 ```md
@@ -307,10 +304,11 @@ Quero digitar * Este texto entre asteriscos *, mas eu não quero que ele seja
 em itálico, então eu faço o seguinte: \*Este texto entre asteriscos \*.
 
 ### Tabelas 
+
 Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente 
 complicadas, mas se você realmente quer:
-```md
 
+```md
 | Col1         | Col2     | Col3          |
 | :----------- | :------: | ------------: |
 | esquerda-alin| Centrado | direita-alinh |
