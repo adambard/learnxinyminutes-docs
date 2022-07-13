@@ -13,10 +13,11 @@ filename: learnmarkdown-pt.md
 ---
 
 Markdown foi criado por John Gruber in 2004. Originado para ser fácil de ler e 
-escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos também).
+escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos
+também).
 
-Dê-me feedback tanto quanto você quiser! / Sinta-se livre para fazer uma bifurcação (fork) e 
-puxar o projeto (pull request)
+Dê-me feedback tanto quanto você quiser! / Sinta-se livre para fazer uma
+bifurcação (fork) e puxar o projeto (pull request)
 
 ## Elementos HTML
 Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
@@ -25,9 +26,10 @@ um arquivo Markdown válido.
 ```md
 <!--Markdown é um superconjunto do HTML, de modo que qualquer arquivo HTML é 
 um arquivo Markdown válido. Isso significa que nós podemos usar elementos HTML 
-em Markdown, como o elemento de comentário, e eles não serão afetados pelo analisador
-de remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown, você
-não pode usar sintaxe de remarcação dentro desse conteúdo do elemento.-->
+em Markdown, como o elemento de comentário, e eles não serão afetados pelo
+analisador de remarcação. No entanto, se você criar um elemento HTML em seu
+arquivo Markdown, você não pode usar sintaxe de remarcação dentro desse
+conteúdo do elemento.-->
 ```
 
 ## Cabeçalhos
@@ -56,7 +58,8 @@ Isto é um cabeçalho h2
 
 ## Estilos de texto simples
 
-O texto pode ser facilmente denominado como marcação itálico, negrito ou tachado usando:
+O texto pode ser facilmente denominado como marcação itálico, negrito ou
+tachado usando:
 
 ```md
 *Este texto está em itálico*
@@ -104,9 +107,9 @@ Bloco de citações são fáceis e feito com o caractere >.
 
 ```md
 > Este é um bloco de citação. Você pode 
-> Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você pode
-> deixar suas linhas ficarem muito longas e quebrarem por conta própria. Não faz diferença, 
-> desde que eles começam com um `>`.
+> Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você
+> pode deixar suas linhas ficarem muito longas e quebrarem por conta própria.
+> Não faz diferença, desde que eles começam com um `>`.
 
 > Você também pode usar mais de um nível 
 >> De recuo?
@@ -144,8 +147,8 @@ Listas ordenadas são feitas com um número seguido por um ponto.
 3. Item três
 ```
 
-Você não tem poder para rotular os itens corretamente e a remarcação ainda deixará os 
-itens em ordem, mas isso pode não ser uma boa idéia.
+Você não tem poder para rotular os itens corretamente e a remarcação ainda
+deixará os itens em ordem, mas isso pode não ser uma boa idéia.
 
 
 ```md
@@ -167,7 +170,8 @@ Você também pode usar sublistas.
 4. Item quatro
 ```
 
-Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) de HTML.
+Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) de 
+HTML.
 
 ```md
 As caixas abaixo sem o 'x' são checkboxes HTML desmarcadas.
@@ -179,16 +183,16 @@ A caixa de seleção abaixo será exibida como uma checkbox HTML marcada.
 
 ## Blocos de código
 
-Você pode indicar um bloco de código (que utiliza o elemento `<code>`) pelo recuo
-uma linha com quatro espaços ou uma guia.
+Você pode indicar um bloco de código (que utiliza o elemento `<code>`) pelo
+recuo uma linha com quatro espaços ou uma guia.
 
 ```md
     Isto é código
     É assim, sacou?
 ```
 
-Você pode também re-guia (ou adicionar mais quatro espaços adicionais) para o recuo 
-dentro do seu código.
+Você pode também re-guia (ou adicionar mais quatro espaços adicionais) para o
+recuo dentro do seu código.
 
 ```md
     my_array.each do |item|
@@ -217,8 +221,8 @@ highlight da linguagem que você especificar após <code>```</code>.
 
 ## Linha Horizontal
 
-Linhas horizontais são facilmente adicionados com três ou mais asteriscos ou hífens,
-com ou sem espaços.
+Linhas horizontais são facilmente adicionados com três ou mais asteriscos ou
+hífens, com ou sem espaços.
 
 ```md
 ***
@@ -229,8 +233,9 @@ com ou sem espaços.
 
 ## Links
 
-Uma das melhores coisas sobre a marcação é o quão fácil é fazer ligações. Colocar 
-o texto a ser exibido entre parênteses rígidos [] seguido pela url em parênteses ()
+Uma das melhores coisas sobre a marcação é o quão fácil é fazer ligações.
+Colocar o texto a ser exibido entre parênteses rígidos [] seguido pela url em
+parênteses ()
 
 ```md
 [Click aqui!](http://test.com/)
@@ -257,10 +262,11 @@ Markdown também suporta ligações de estilo de referência.
 &#x5b;<span class="nv">link2r</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Certo!"</span></code></pre>
 
 O título também pode estar entre aspas simples ou entre parênteses, ou omitido 
-inteiramente. As referências podem estar em qualquer lugar no documento e os IDs de referência 
-pode ser qualquer um, desde que eles são únicos.
+inteiramente. As referências podem estar em qualquer lugar no documento e os
+IDs de referência pode ser qualquer um, desde que eles são únicos.
 
-Existe também a "nomeação implicita", que permite que você use o texto do link como o id:
+Existe também a "nomeação implicita", que permite que você use o texto do link
+como o id:
 
 <pre><code class="highlight">&#x5b;<span class="nv">Isso</span>][] é um link.
 
@@ -271,7 +277,8 @@ Mas não são usados normalmente.
 
 ## Imagens
 
-As imagens são feitas da mesma forma que as ligações, mas com um ponto de exclamação na frente!
+As imagens são feitas da mesma forma que as ligações, mas com um ponto de
+exclamação na frente!
 
 ```md
 ![Este é pairar-texto (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional") 
