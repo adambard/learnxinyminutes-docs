@@ -34,7 +34,10 @@ específicos para um parser em específico.
   - [Auto-links](#auto-links)
   - [Auto-links para e-mails](#auto-links-for-emails)
   - [Escapando caracteres](#escaping-characters)
+  - [Teclas do teclado](#keyboard-keys)
   - [Tabelas](#tables)
+- [Markdownlint](#markdownlint)
+- [Leitura complementar](#further-reading)
 
 ## Elementos HTML
 Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
@@ -292,6 +295,25 @@ como o id:
 
 Mas não são usados normalmente.
 
+### Tabela de conteúdo
+
+Alguns sabores de Markdown fazem inclusive uso de combinação de listas, links e
+cabeçalhos de modo a criar uma tabela de conteúdo. Nesse caso, títulos em
+cabeçalhos são precedidos de (`#`) e são usados como ids para links. Se o
+cabeçalho consistir de várias palavras, elas serão conectadas por hífens (`-`),
+que também substitui alguns caracteres especiais. (Embora alguns outros
+carácteres especiais sejam omitidos.)
+
+```md
+- [Cabeçalho](#cabecalho)
+- [Um outro cabeçalho](#outro-cabecalho)
+- [Capítulo](#capitulo)
+  - [Subcapítulo <h3 />](#subcapitulo-h3-)
+```
+
+De qualquer modo, esse é um recurso que talvez não funcione em todas as
+implementações do Markdown da mesma forma.
+
 ## Imagens
 
 As imagens são feitas da mesma forma que as ligações, mas com um ponto de
@@ -324,8 +346,18 @@ E estilo de referência funciona como esperado
 
 ### Escapando caracteres
 
-Quero digitar * Este texto entre asteriscos *, mas eu não quero que ele seja 
+Quero digitar *Este texto entre asteriscos*, mas eu não quero que ele seja 
 em itálico, então eu faço o seguinte: \*Este texto entre asteriscos \*.
+
+### Teclas do teclado
+
+No GitHub Flavored Markdown, você pode usar a tag `<kbd>` para representar uma
+tecla do teclado.
+
+```md
+Seu computador travou? Tente apertar
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
+```
 
 ### Tabelas 
 
@@ -347,8 +379,21 @@ Col 1 | Col2 | Col3
 Ugh isso é tão feio | faça isto | parar
 ```
 
-Fim!
+## Markdownlint
+
+De modo a simplificar o trabalho com Markdown e padronizar estilo de código, o
+`Markdownlint` foi criado. Essa ferramenta está disponível como plugin para
+algumas interfaces de desenvolvimento (IDEs) e pode ser utilizada como um
+utilitário para garantir validade e legibilidade do Markdown.
 
 ---
+
+## Further reading
+
 Para mais informações, confira o post oficial de John Gruber de sintaxe [aqui](http://daringfireball.net/projects/markdown/syntax)
 e de Adam Pritchard grande cheatsheet [aqui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+
+Se você quiser aprender mais sobre recursos de alguns sabores de Markdown, veja:
+
+- [GitHub flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitLab flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)
