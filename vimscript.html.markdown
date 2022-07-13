@@ -42,7 +42,7 @@ pwd                   " Displays the current working directory
 " comment (echo assumes that the quotation mark begins a string)
 echo 'Hello world!'  | " Displays a message
 
-" Line breaks can be escaped by pacing a backslash as the first non-whitespace
+" Line breaks can be escaped by placing a backslash as the first non-whitespace
 " character on the *following* line. Only works in script files, not on the
 " command line
 echo " Hello
