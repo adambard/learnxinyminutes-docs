@@ -16,8 +16,25 @@ Markdown foi criado por John Gruber in 2004. Originado para ser fácil de ler e
 escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos
 também).
 
-Dê-me feedback tanto quanto você quiser! / Sinta-se livre para fazer uma
-bifurcação (fork) e puxar o projeto (pull request)
+Markdown varia em termos de implementação de um parser para outro. Esse guia
+irá tentar deixar explícito quando os recursos são universais ou quando são
+específicos para um parser em específico.
+
+- [Elementos HTML](#html-elements)
+- [Cabeçalhos](#headings)
+- [Estilos de texto simples](#simple-text-styles)
+- [Parágrafos](#paragraphs)
+- [Listas](#lists)
+- [Blocos de código](#code-blocks)
+- [Linha Horizontal](#horizontal-rule)
+- [Links](#links)
+  - [Table of contents](#table-of-contents)
+- [Imagens](#images)
+- [Miscelânea](#miscellany)
+  - [Auto-links](#auto-links)
+  - [Auto-links para e-mails](#auto-links-for-emails)
+  - [Escapando caracteres](#escaping-characters)
+  - [Tabelas](#tables)
 
 ## Elementos HTML
 Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
