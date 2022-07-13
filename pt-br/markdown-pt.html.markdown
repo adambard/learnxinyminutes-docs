@@ -385,12 +385,13 @@ utilitário para garantir validade e legibilidade do Markdown.
 
 ---
 
-## Further reading
+## Leitura complementar
 
-Para mais informações, confira o post oficial de John Gruber de sintaxe [aqui](http://daringfireball.net/projects/markdown/syntax)
-e de Adam Pritchard grande cheatsheet [aqui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Para mais informações, confira o post oficial de John Gruber sobre sintaxe [aqui](http://daringfireball.net/projects/markdown/syntax)
+e o do cheatsheet do Adam Pritchard [aqui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
-Se você quiser aprender mais sobre recursos de alguns sabores de Markdown, veja:
+Se você quiser aprender mais sobre recursos de alguns sabores específicos de
+Markdown, veja:
 
 - [GitHub flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 - [GitLab flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)
