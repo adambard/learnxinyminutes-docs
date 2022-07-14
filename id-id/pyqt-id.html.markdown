@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQt
+category: framework
+framework: PyQt
 language: Python
 filename: learnqt-id.py
 contributors:
