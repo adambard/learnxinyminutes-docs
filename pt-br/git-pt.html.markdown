@@ -84,7 +84,7 @@ para outros repositórios ou não!
 
 ### *Branch*
 
-Um *branch* é essencialmente uma referência que aponta para o último *commit*
+Uma *branch* é essencialmente uma referência que aponta para o último *commit*
 efetuado. Na medida que são feitos novos commits, esta referência é atualizada
 automaticamente e passa a apontar para o commit mais recente.
 
@@ -95,7 +95,7 @@ pessoas usam esta funcionalidade para marcar pontos de release (v2.0, e por aí 
 
 ### *HEAD* e *head* (componentes do diretório .git)
 
-*HEAD* é a referência que aponta para o *branch* em uso. Um repositório só tem
+*HEAD* é a referência que aponta para a *branch* em uso. Um repositório só tem
 uma *HEAD* activa.
 *head* é uma referência que aponta para qualquer *commit*. Um repositório pode
 ter um número indefinido de *heads*
@@ -157,7 +157,7 @@ do repositório) e o *commit* da *HEAD* atual.
 
 
 ```bash
-# Apresenta o *branch*, arquivos não monitorados, alterações e outras
+# Apresenta a *branch*, arquivos não monitorados, alterações e outras
 # diferenças
 $ git status
 
@@ -180,28 +180,34 @@ $ git add /path/to/file/HelloWorld.c
 
 # permite usar expressões regulares!
 $ git add ./*.java
+
+# Você também pode adicionar tudo no seu diretório de trabalho como alterações
+prontas para o próximo commit.
+$ git add -A
 ```
+Esse comando apenas adiciona os arquivos no estado de preparados para o próximo
+commit, mas não realiza o commit de fato.
 
 ### branch
 
-Gerencia os *branches*. É possível ver, editar, criar e apagar branches com este
+Gerencia as *branches*. É possível ver, editar, criar e apagar branches com este
 comando.
 
 ```bash
 # listar *branches* existentes e remotos
 $ git branch -a
 
-# criar um novo *branch*
+# criar uma nova *branch*
 $ git branch myNewBranch
 
-# apagar um *branch*
+# apagar uma *branch*
 $ git branch -d myBranch
 
-# alterar o nome de um *branch*
+# alterar o nome de uma *branch*
 # git branch -m <oldname> <newname>
 $ git branch -m myBranchName myNewBranchName
 
-# editar a descrição de um *branch*
+# editar a descrição de uma *branch*
 $ git branch myBranchName --edit-description
 ```
 
@@ -231,14 +237,16 @@ $ git push origin --tags
 ### checkout
 
 Atualiza todos os arquivos no diretório do projeto para que fiquem iguais
-à versão do index ou do *branch* especificado.
+à versão do index ou da *branch* especificado.
 
 ```bash
-# Checkout de um repositório - por padrão para o branch master
+# Checkout de um repositório - por padrão para a branch master
 $ git checkout
-# Checkout de um branch especifico
+
+# Checkout de uma branch especifica
 $ git checkout branchName
-# Cria um novo branch e faz checkout para ele.
+
+# Cria uma nova branch e faz checkout para ele.
 # Equivalente a: "git branch <name>; git checkout <name>"
 $ git checkout -b newBranch
 ```
@@ -322,13 +330,13 @@ $ git log --merges
 
 ### merge
 
-"Merge" junta as alterações de commits externos com o *branch* atual.
+"Merge" junta as alterações de commits externos com a *branch* atual.
 
 ```bash
-# Junta o branch especificado com o atual
+# Junta a branch especificado com o atual
 $ git merge branchName
 
-# Para gerar sempre um commit ao juntar os branches
+# Para gerar sempre um commit ao juntar as branches
 $ git merge --no-ff branchName
 ```
 
@@ -350,7 +358,7 @@ $ git mv -f myFile existingFile
 
 ### pull
 
-Puxa alterações de um repositório e as junta com outro branch
+Puxa alterações de um repositório e as junta com outra branch
 
 ```bash
 # Atualiza o repositório local, juntando as novas alterações
@@ -359,19 +367,19 @@ Puxa alterações de um repositório e as junta com outro branch
 # git pull => aplica a predefinição => git pull origin master
 $ git pull origin master
 
-# Juntar alterações do branch remote e fazer rebase commits do branch
+# Juntar alterações da branch remote e fazer rebase commits da branch
 # no repositório local, como: "git pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
 ```
 
 ### push
 
-Enviar e juntar alterações de um branch para o seu branch correspondente
+Enviar e juntar alterações de uma branch para a sua branch correspondente
 num repositório remoto.
 
 ```bash
 # Envia e junta as alterações de um repositório local
-# para um remoto denominado "origin" no branch "master".
+# para um remoto denominado "origin" na branch "master".
 # git push <remote> <branch>
 # git push => aplica a predefinição => git push origin master
 $ git push origin master
@@ -379,8 +387,8 @@ $ git push origin master
 
 ### rebase (cautela!)
 
-Pega em todas as alterações que foram registadas num branch e volta a
-aplicá-las em outro branch.
+Pega em todas as alterações que foram registadas numa branch e volta a
+aplicá-las em outra branch.
 *Não deve ser feito rebase de commits que foram enviados para um repositório
 público*
 
@@ -407,11 +415,11 @@ $ git reset
 # sobrescreve o projeto atual
 $ git reset --hard
 
-# Move a head do branch atual para o commit especificado, sem alterar o projeto.
+# Move a head da branch atual para o commit especificado, sem alterar o projeto.
 # todas as alterações ainda existem no projeto
 $ git reset 31f2bb1
 
-# Inverte a head do branch atual para o commit especificado
+# Inverte a head da branch atual para o commit especificado
 # fazendo com que este esteja em sintonia com o diretório do projeto
 # Remove alterações não registadas e todos os commits após o commit especificado
 $ git reset --hard 31f2bb1
@@ -419,7 +427,7 @@ $ git reset --hard 31f2bb1
 
 ### rm
 
-O oposto de git add, git rm remove arquivos do branch atual.
+O oposto de git add, git rm remove arquivos da branch atual.
 
 ```bash
 # remove HelloWorld.c
