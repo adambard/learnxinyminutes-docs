@@ -100,6 +100,15 @@ uma *HEAD* activa.
 *head* é uma referência que aponta para qualquer *commit*. Um repositório pode
 ter um número indefinido de *heads*
 
+### Estados no Git
+
+* Modificado (Modified): Ocorreram mudanças em arquivo mas essas mudanças
+ainda não foram registradas na base de dados do Git
+* Preparado (Staged): Marca o arquivo como preparado para ser adicionado ao
+próximo commit.
+* Consolidado (Committed): As mudanças foram registradas na base de dados do
+Git.
+
 ### Recursos conceituais (EN)
 
 * [Git para Cientistas de Computação](http://eagain.net/articles/git-for-computer-scientists/)
@@ -148,6 +157,22 @@ $ git help -a
 $ git help add
 $ git help commit
 $ git help init
+# ou git <comando_aqui> --help
+$ git add --help
+$ git commit --help
+$ git init --help
+```
+
+### Ignorando arquivos
+
+É possível intencionalmente ignorar arquivos e pastas. Costuma-se utilizar o
+arquivo .gitignore para fazer o git ignorar a existência de arquivos e pastas
+geralmente utilizados para arquivos privados ou temporários que, de outro modo,
+seriam compartilhados com todos que tem acesso ao repositório.
+
+```bash
+$ echo "temp/" >> .gitignore
+$ echo "chave_privada" >> .gitignore
 ```
 
 ### status
@@ -218,18 +243,22 @@ Gerencia as *tags*
 ```bash
 # Listar tags
 $ git tag
+
 # Criar uma tag anotada.
 # O parâmetro -m define uma mensagem, que é armazenada com a tag.
 # Se você não especificar uma mensagem para uma tag anotada,
 # o Git vai rodar seu editor de texto para você digitar alguma coisa.
 $ git tag -a v2.0 -m 'minha versão 2.0'
+
 # Mostrar informações sobre a tag
 # O comando mostra a informação da pessoa que criou a tag,
 # a data de quando o commit foi taggeado,
 # e a mensagem antes de mostrar a informação do commit.
 $ git show v2.0
+
 # Enviar uma tag para o repositório remoto
 $ git push origin v2.0
+
 # Enviar várias tags para o repositório remoto
 $ git push origin --tags
 ```
@@ -255,11 +284,17 @@ $ git checkout -b newBranch
 
 Clona ou copia um repositório existente para um novo diretório. Também
 adiciona *branches* de monitoramento remoto para cada *branch* no repositório
-clonado o que permite enviar alterações para um *branch* remoto.
+clonado o que permite enviar alterações para uma *branch* remoto.
 
 ```bash
 # Clona learnxinyminutes-docs
 $ git clone https://github.com/adambard/learnxinyminutes-docs.git
+
+# Clone superficial - É mais rápido, mas puxa apenas o último commit
+$ git clone --depth 1 https://github.com/adambard/learnxinyminutes-docs.git
+
+# Clona apenas uma branch em específica
+$ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git --single-branch
 ```
 
 ### commit
@@ -268,8 +303,20 @@ Guarda o conteudo atual do index num novo *commit*. Este *commit* contém
 as alterações feitas e a mensagem criada pelo usuário.
 
 ```bash
-# commit com uma mensagem
+# Realize um commit com uma mensagem
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+
+# Assine um commit com sua chave GPG. Antes disso, você precisa ter
+# configurado a opção user.signkey do git com o comando:
+# git config --global user.signinkey ID_CHAVE_AQUI
+$ git commit -S -m "mensagem do commit aqui"
+
+# Automaticamente adicione como preparados arquivos modificados ou apagados e
+# então realize um commit:
+$ git commit -a -m "Modified foo.php and removed bar.php"
+
+# Altere o último commit (Esse comando reescreve o commit anterior)
+$ git commit --amend -m "Correct message"
 ```
 
 ### diff
@@ -321,11 +368,14 @@ Apresenta commits do repositório.
 # Apresenta todos os commits
 $ git log
 
-# Apresenta X commits
-$ git log -n 10
+# Apresenta apenas mensagem do commit e referência
+$ git log --oneline
 
 # Apresenta apenas commits de merge
 $ git log --merges
+
+# Apresenta todos os commits representados por um gráfico em ASCII
+$ git log --graph
 ```
 
 ### merge
@@ -367,6 +417,10 @@ Puxa alterações de um repositório e as junta com outra branch
 # git pull => aplica a predefinição => git pull origin master
 $ git pull origin master
 
+# Por padrão, o git irá realizar o pull na branch atual fazendo um merge
+# com as alterações novas na branch remota
+$ git pull
+
 # Juntar alterações da branch remote e fazer rebase commits da branch
 # no repositório local, como: "git pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
@@ -383,6 +437,17 @@ num repositório remoto.
 # git push <remote> <branch>
 # git push => aplica a predefinição => git push origin master
 $ git push origin master
+
+# Por padrão, o git push irá enviar e realizar merge das mudanças da sua branch
+# local com a branch remota
+$ git push
+
+# Para associar a branch local com uma branch específica remota, adicione a
+# flag -u
+$ git push -u origin master
+
+# Agora, sempre que você realizar um push daquela branch local, use o atalho:
+$ git push
 ```
 
 ### rebase (cautela!)
