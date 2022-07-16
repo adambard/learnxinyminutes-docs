@@ -214,7 +214,7 @@ assert(c >= a); // assert tests for internal invariants; require is used for use
 // https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
 
 
-// No random functions built in, you can get a pseduo-random number by hashing the current blockhash, or get a truely random number using something like Chainlink VRF. 
+// No random functions built in, you can get a pseduo-random number by hashing the current blockhash, or get a truly random number using something like Chainlink VRF. 
 // https://docs.chain.link/docs/get-a-random-number
 
 // Type casting
@@ -396,13 +396,13 @@ function increment(uint x) returns (uint) {
     return x;
 }
 
-// Functions can return many arguments, and by specifying returned arguments
-// name don't need to explicitly return
+// Functions can return many arguments,
+// and by specifying returned arguments name explicit return is not needed
 function increment(uint x, uint y) returns (uint x, uint y) {
     x += 1;
     y += 1;
 }
-// Call previous functon
+// Call previous function
 uint (a,b) = increment(1,1);
 
 // 'view' (alias for 'constant')
@@ -654,7 +654,7 @@ reveal(100, "mySecret");
 // Time-based implementations of contracts are also done through oracles, as 
 // contracts need to be directly called and can not "subscribe" to a time. 
 // Due to smart contracts being decentralized, you also want to get your data
-// in a decentralized manner, other your run into the centralized risk that 
+// in a decentralized manner, otherwise you run into the centralized risk that 
 // smart contract design matter prevents. 
 
 // To easiest way get and use pre-boxed decentralized data is with Chainlink Data Feeds

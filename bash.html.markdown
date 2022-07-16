@@ -112,7 +112,7 @@ echo ${array0[@]} # => "one two three four five six"
 echo ${#array0[@]} # => "6"
 # Print number of characters in third element
 echo ${#array0[2]} # => "5"
-# Print 2 elements starting from forth
+# Print 2 elements starting from fourth
 echo ${array0[@]:3:2} # => "four five"
 # Print all elements. Each of them on new line.
 for i in "${array0[@]}"; do

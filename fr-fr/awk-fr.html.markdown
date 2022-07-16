@@ -10,13 +10,19 @@ lang: fr-fr
 
 ---
 
-AWK est un outil standard présent dans chaque système UNIX conforme aux normes POSIX.
-C’est un outil en ligne de commande qui ressemble au Perl et qui est excellent dans les tâches de traitement de fichiers texte.
-Vous pouvez l’appeler à partir d’un script shell, ou l’utiliser comme un langage de script autonome.
+AWK est un outil standard présent dans chaque système UNIX conforme aux normes
+POSIX. C’est un outil en ligne de commande qui ressemble au Perl et qui est
+excellent dans les tâches de traitement de fichiers texte.
+Vous pouvez l’appeler à partir d’un script shell, ou l’utiliser comme un langage
+de script autonome.
 
 Pourquoi utiliser AWK au lieu du langage Perl ?
-Principalement, car AWK fait partie d'UNIX et est donc présent par défaut sur une très grande partie des systèmes d'exploitation UNIX et Linux. 
-AWK est aussi plus facile à lire que le langage Perl ; et est l'outil idéal pour ce qui concerne le traitement de texte simple. Notamment le traitement de ceux qui necéssitent de lire des fichiers ligne par ligne ; chaque ligne comportant des champs séparés par des délimiteur.
+Principalement, car AWK fait partie d'UNIX et est donc présent par défaut sur
+une très grande partie des systèmes d'exploitation UNIX et Linux.
+AWK est aussi plus facile à lire que le langage Perl ; et est l'outil idéal pour
+ce qui concerne le traitement de texte simple. Notamment le traitement de ceux
+qui nécessitent de lire des fichiers ligne par ligne ; chaque ligne comportant
+des champs séparés par des délimiteur.
 
 
 ```awk
@@ -30,17 +36,25 @@ règle1 { action; }
 règle2 { action; }
 
 # AWK lit et analyse automatiquement chaque ligne de chaque fichier fourni.
-# Chaque ligne est divisée par un délimiteur FS qui est par défaut l'espace (plusieurs espaces ou une tabulation comptent pour un espace). Ce délimiteur peut être changer grâce à l'option -F ou être renseigné au début d'un bloc (exemple: FS = " ").
+# Chaque ligne est divisée par un délimiteur FS qui est par défaut l'espace
+# (plusieurs espaces ou une tabulation comptent pour un espace). Ce délimiteur
+# peut être changé grâce à l'option -F ou être renseigné au début d'un bloc
+# (exemple: FS = " ").
 
-# BEGIN est une règle spécifique exécutée au début du programme. C'est à cet endroit que vous mettrez tout le code à exécuter avant de traiter les fichiers texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le point d’entrée principal du script.
-# A l'opposé de BEGIN, il existe la règle END. Cette règle est présente après chaque fin de fichier (EOF : End Of File).
+# BEGIN est une règle spécifique exécutée au début du programme. C'est à cet
+# endroit que vous mettrez tout le code à exécuter avant de traiter les fichiers
+# texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le
+# point d’entrée principal du script.
+# À l'opposé de BEGIN, il existe la règle END. Cette règle est présente après
+#chaque fin de fichier (EOF : End Of File).
 
 BEGIN {
 
     # Les variables sont globales. Pas besoin de les déclarer.
     count = 0;
 
-    # les opérateurs sont identiques au langage C et aux langages similaires (exemple: C#, C++)
+    # les opérateurs sont identiques au langage C et aux langages similaires 
+    # (tels que C#, C++, etc.)
     a = count + 1; # addition
     b = count - 1; # soustraction
     c = count * 1; # multiplication
@@ -74,7 +88,8 @@ BEGIN {
 
     # Les blocs sont composés d'une multitude de lignes entre accolades
     while (a < 10) {
-        print "La concaténation de chaînes de caractères" " se fait avec des séries de chaînes "    " séparées par des espaces";
+        print "La concaténation de chaînes de caractères" " se fait avec"
+            "des séries de chaînes " "séparées par des espaces";
         print a;
 
         a++;
@@ -113,7 +128,9 @@ BEGIN {
     assoc["foo"] = "bar";
     assoc["bar"] = "baz";
 
-    # et les tableaux multi-dimentions, avec certaines limitations que l'on ne mentionnera pas ici
+    # et les tableaux multi-dimensions, avec certaines limitations que l'on ne
+    # mentionnera pas ici
+
     multidim[0,0] = "foo";
     multidim[0,1] = "bar";
     multidim[1,0] = "baz";
@@ -123,7 +140,8 @@ BEGIN {
     if ("foo" in assoc)
         print "Fooey!";
 
-    # Vous pouvez aussi utilisez l'opérateur 'in' pour parcourir les clés d'un tableau
+    # Vous pouvez aussi utilisez l'opérateur 'in' pour parcourir les clés
+    # d'un tableau
     for (key in assoc)
         print assoc[key];
 
@@ -132,10 +150,12 @@ BEGIN {
         print ARGV[argnum];
 
     # Vous pouvez supprimer des éléments d'un tableau
-    # C'est utile pour empêcher AWK de supposer que certains arguments soient des fichiers à traiter.
+    # C'est utile pour empêcher AWK de supposer que certains arguments soient
+    # des fichiers à traiter.
+
     delete ARGV[1];
 
-    # Le nombre d'arguments de la ligne de commande est dans une variable appellée ARGC
+    # Le nombre d'arguments de la ligne de commande est assigné à la variable ARGC
     print ARGC;
 
     # AWK inclue trois catégories de fonction.
@@ -149,22 +169,24 @@ BEGIN {
 # Voici comment définir une fonction
 function arithmetic_functions(a, b, c,     d) {
 
-    # La partie la plus ennuieuse de AWK est probablement l’absence de variables locales.
-    # Tout est global. Pour les scripts courts, c'est très utile, mais pour les scripts plus longs,
-    # cela peut poser problème.
+    # La partie la plus ennuyeuse de AWK est probablement l’absence de variables
+    # locales. Tout est global. Pour les scripts courts, c'est très utile, mais
+    # pour les scripts plus longs, cela peut poser un problème.
 
-    # Il y a cepandant une solution de contournement (enfin ... une bidouille).
+    # Il y a cependant une solution de contournement (enfin ... une bidouille).
     # Les arguments d'une fonction sont locaux à cette fonction.
     # Et AWK vous permet de définir plus d'arguments à la fonction que nécessaire.
     # Il suffit donc de mettre une variable locale dans la déclaration de fonction,
-    # comme ci-dessus. La convention veut que vous mettiez quelques espaces supplémentaires
-    # pour faire la distinction entre les paramètres réels et les variables locales.
+    # comme ci-dessus. La convention veut que vous mettiez quelques espaces
+    # supplémentaires pour faire la distinction entre les paramètres réels et
+    # les variables locales.
     # Dans cet exemple, a, b et c sont des paramètres réels,
     # alors que d est simplement une variable locale.
 
     # Maintenant, les fonctions arithmétiques
 
-    # La plupart des implémentations de AWK ont des fonctions trigonométriques standards
+    # La plupart des implémentations de AWK ont des fonctions trigonométriques
+    # standards
     localvar = sin(a);
     localvar = cos(a);
     localvar = atan2(b, a); # arc tangente de b / a
@@ -180,10 +202,10 @@ function arithmetic_functions(a, b, c,     d) {
     localvar = int(5.34); # localvar => 5
 
     # Les nombres aléatoires
-    srand(); 
+    srand();
     # L'argument de la fonction srand() est la valeur de départ pour générer
     # les nombres aléatoires . Par défaut, il utilise l'heure du système
-    
+
     localvar = rand(); # Nombre aléatoire entre 0 et 1.
 
     # Maintenant on retourne la valeur
@@ -195,11 +217,13 @@ function string_functions(    localvar, arr) {
     # AWK a plusieurs fonctions pour le traitement des chaînes de caractères,
     # dont beaucoup reposent sur des expressions régulières.
 
-    # Chercher et remplacer, la première occurence (sub) ou toutes les occurences (gsub)
+    # Chercher et remplacer, la première occurrence (sub) ou toutes les
+    # occurrences (gsub)
     # Les deux renvoient le nombre de correspondances remplacées
+
     localvar = "fooooobar";
     sub("fo+", "Meet me at the ", localvar); # localvar => "Meet me at the bar"
-    gsub("e+", ".", localvar); # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar); # localvar => "m..t m. at th. bar"
 
     # Rechercher une chaîne de caractères qui correspond à une expression régulière
     # index() fait la même chose, mais n'autorise pas les expressions régulières
@@ -226,7 +250,8 @@ function io_functions(    localvar) {
     printf("%s %d %d %d\n", "Testing", 1, 2, 3);
 
     # AWK n'a pas de descripteur de fichier en soi. Il ouvrira automatiquement
-    # un descripteur de fichier lorsque vous utilisez quelque chose qui en a besoin.
+    # un descripteur de fichier lorsque vous utilisez quelque chose qui en a
+    # besoin.
     # La chaîne de caractères que vous avez utilisée pour cela peut être traitée
     # comme un descripteur de fichier à des fins d'entrée / sortie.
 
@@ -241,11 +266,12 @@ function io_functions(    localvar) {
     # Voici comment exécuter quelque chose dans le shell
     system("echo foobar"); # => affiche foobar
 
-    # Lire quelque chose depuis l'entrée standard et la stocker dans une variable locale
+    # Lire quelque chose depuis l'entrée standard et la stocker dans une variable
+    # locale
     getline localvar;
 
-    # Lire quelque chose à partir d'un pipe (encore une fois, utilisez une chaine de caractère
-    # que vous fermerez proprement)
+    # Lire quelque chose à partir d'un pipe (encore une fois, utilisez une
+    # chaîne de caractère que vous fermerez proprement)
     "echo foobar" | getline localvar # localvar => "foobar"
     close("echo foobar")
 
@@ -256,18 +282,19 @@ function io_functions(    localvar) {
 }
 
 # Comme dit au début, AWK consiste en une collection de règles et d'actions.
-# Vous connaissez déjà les règles BEGIN et END. Les autres règles ne sont utilisées que si vous traitez 
-# des lignes à partir de fichiers ou l'entrée standard (stdin).
-# Quand vous passez des arguments à AWK, ils sont considérés comme des noms de fichiers à traiter.
-# AWK les traitera tous dans l'ordre. Voyez les comme dans à une boucle implicite,
-# parcourant les lignes de ces fichiers.
-# Ces règles et ces actions ressemblent à des instructions switch dans la boucle.
+# Vous connaissez déjà les règles BEGIN et END. Les autres règles ne sont
+# utilisées que si vous traitez des lignes à partir de fichiers ou l'entrée
+# standard (stdin).
+# Quand vous passez des arguments à AWK, ils sont considérés comme des noms de
+# fichiers à traiter. AWK les traitera tous dans l'ordre. Voyez les comme dans
+# une boucle implicite, parcourant les lignes de ces fichiers. Ces règles et ces
+# actions ressemblent à des instructions switch dans la boucle.
 
 /^fo+bar$/ {
 
-    # Cette action sera exécutée pour chaque ligne qui correspond à l'expression régulière,
-    # /^fo+bar$/, et sera ignorée pour toute ligne qui n'y correspond pas.
-    # Imprimons simplement la ligne:
+    # Cette action sera exécutée pour chaque ligne qui correspond à l'expression
+    # régulière, /^fo+bar$/, et sera ignorée pour toute ligne qui n'y correspond
+    # pas. Imprimons simplement la ligne:
 
     print;
 
@@ -275,14 +302,15 @@ function io_functions(    localvar) {
     # $0 est le nom de la ligne en cours de traitement. Il est créé automatiquement.
 
     # Vous devinez probablement qu'il existe d'autres variables $.
-    # Chaque ligne est divisée implicitement avant que chaque action soit exécutée, comme
-    # le fait le shell. Et, comme le shell, chaque champ est accessible avec un signe dollar
+    # Chaque ligne est divisée implicitement avant que chaque action soit exécutée,
+    # comme le fait le shell. Et, comme le shell, chaque champ est accessible
+    # avec un signe dollar
 
      # Ceci affichera les deuxième et quatrième champs de la ligne.
     print $2, $4;
 
-    # AWK défini automatiquement beaucoup d'autres variables qui peuvent vous aider
-    # à inspecter et traiter chaque ligne. La plus importante est NF
+    # AWK défini automatiquement beaucoup d'autres variables qui peuvent vous
+    # aider à inspecter et traiter chaque ligne. La plus importante est NF
 
     # Affiche le nombre de champs de la ligne
     print NF;
@@ -291,33 +319,37 @@ function io_functions(    localvar) {
     print $NF;
 }
 
-# Chaque règle est en réalité un test conditionel. 
+# Chaque règle est en réalité un test conditionnel.
 
 a > 0 {
     # Ceci s’exécutera une fois pour chaque ligne, tant que le test est positif
 }
 
-# Les expressions régulières sont également des tests conditionels.
-#Si le test de l'expression régulières n'est pas vrais alors le bloc n'est pas executé
-$0 /^fobar/ { 
-   print "la ligne commance par fobar"  
+# Les expressions régulières sont également des tests conditionnels.
+# Si le test de l'expression régulières n'est pas vrais alors le bloc
+# n'est pas exécuté.
+
+$0 /^fobar/ {
+   print "la ligne commence par foobar"
 }
 
-# Dans le cas où vous voulez tester votre chaine de caractères sur la ligne en cours de traitement
-# $0 est optionnelle.
+# Dans le cas où vous voulez tester votre chaîne de caractères sur la ligne
+# en cours de traitement $0 est optionnelle.
 
 /^[a-zA-Z0-9]$/ {
     print "La ligne courante ne contient que des caractères alphanumériques.";
 }
 
 
-# AWK peut parcourir un fichier texte ligne par ligne et exécuter des actions en fonction de règles établies
-# Cela est si courant sous UNIX qu'AWK est un langage de script.
+# AWK peut parcourir un fichier texte ligne par ligne et exécuter des actions en
+# fonction de règles établies. Cela est si courant sous UNIX qu'AWK est un
+# langage de script.
 
-# Ce qui suit est un exemple rapide d'un petit script, pour lequel AWK est parfait.
-# Le script lit un nom à partir de l'entrée standard, puis affiche l'âge moyen de toutes les
-# personnes portant ce prénom.
-# Supposons que vous fournissiez comme argument le nom d'un fichier comportant ces données:
+# Ce qui suit est un exemple rapide d'un petit script, pour lequel AWK est
+# parfait. Le script lit un nom à partir de l'entrée standard, puis affiche
+# l'âge moyen de toutes les personnes portant ce prénom.
+# Supposons que vous fournissiez comme argument le nom d'un fichier comportant
+# ces données:
 #
 # Bob Jones 32
 # Jane Doe 22
@@ -330,7 +362,7 @@ $0 /^fobar/ {
 BEGIN {
 
     # Premièrement, on demande à l'utilisateur le prénom voulu
-    print "Pour quel prénom vouldriez vous savoir l'age moyen ?";
+    print "Pour quel prénom voudriez vous savoir l'age moyen ?";
 
     # On récupère la ligne à partir de l'entrée standard, pas de la ligne de commande
     getline name < "/dev/stdin";
