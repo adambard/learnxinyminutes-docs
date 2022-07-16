@@ -11,6 +11,7 @@ contributors:
 translators:
   - ["Suzane Sant Ana", "http://github.com/suuuzi"]
   - ["Bruno Volcov", "http://github.com/volcov"]
+  - ["Marcel Ribeiro-Dantas", "http://github.com/mribeirodantas"]
 ---
 
 Git é um sistema distribuido de gestão para código fonte e controle de versões.
