@@ -81,7 +81,7 @@ namespace LearnHackinYMinutes {
     $the_answer = 42;
     $is_answer = process_key($the_answer);
 
-    // Similarily, `num` represents either an int or float.
+    // Similarly, `num` represents either an int or float.
     $lucky_number = 7;
     $lucky_square = calculate_square($lucky_number);
   }
@@ -107,7 +107,7 @@ namespace LearnHackinYMinutes {
   }
 
   // In contrast, an enum class can be of any value type!
-  enum class Random : mixed {
+  enum class Random: mixed {
     int X = 42;
     string S = 'foo';
   }
@@ -117,27 +117,39 @@ namespace LearnHackinYMinutes {
    * ==================================
    */
 
+  // The following line lets us use functions in the `C\` namespace.
+  use namespace HH\Lib\C; // the `C` library operates on containers
+
   function demo_hack_arrays(): void {
 
-    //  vec: ordered
+    // vec: ordered
     $v = vec[1, 2, 3];
     $letters = vec['a', 'b', 'c'];
-    $letters[0]; // indexing at `0` returns 'a'
-    $letters[] = 'd'; // appends 'd'
-    // unset($letters['a']); error: remove-at-index is unsupported for vec
 
-    //  keyset: ordered, without duplicates
+    $letters[0]; // returns 'a'
+    $letters[] = 'd'; // appends 'd'
+
+    // `inout` provides pass-by-reference behavior
+    C\pop_back(inout $letters); // removes 'd'
+    C\pop_front(inout $letters); // removes 'a'
+
+    // keyset: ordered, without duplicates
     $k = keyset[1, 2, 3]; // values must be int or string
     $colors = keyset['red', 'blue', 'green'];
-    // $colors[0]; error: indexing not supported for keyset
+
+    // keyset keys are identical to their values
+    $colors['blue']; // returns 'blue'.
+
     $colors[] = 'yellow'; // appends 'yellow'
     unset($colors['red']); // removes 'red'
 
     //  dict: ordered, by key-value
     $d = dict['a' => 1, 'b' => 3]; // keys must be int or string
     $alphabet = dict['a' => 1, 'b' => 2];
+
     $alphabet['a']; // indexing at 'a' returns `1`
     $alphabet['c'] = 3; // adds a new key-value pair of `c => 3`
+
     unset($alphabet['b']); // removes 'b'
   }
 
@@ -149,7 +161,6 @@ namespace LearnHackinYMinutes {
   // The Hack Standard Library is a set of functions and classes for the Hack language.
   // Namespace use declarations are ideally at the top of your file but are placed here for instruction purposes.
 
-  use namespace HH\Lib\C; // the `C` library operates on containers (like Hack Arrays)
   use namespace HH\Lib\Str; // The `Str` library operates on strings
 
   function demo_hack_standard_library(): void {
@@ -215,6 +226,26 @@ namespace LearnHackinYMinutes {
 
   // Functions can also be anonymous (defined with the `==>` arrow).
   // $f = (int $x): int ==> $x + 1;
+
+  /* ==================================
+   *           PIPE OPERATOR
+   * ==================================
+   */
+
+  // The pipe operator, `|>`, evaluates the result of a left-hand expression
+  // and stores the result in `$$`, the predefined pipe variable.
+
+  use namespace HH\Lib\Vec;
+
+  function demo_pipe_operator(): void {
+
+    Vec\sort(Vec\map(vec[2, 1, 3], $a ==> $a * $a)); // vec[1,4,9]
+
+    // the same result, but using the pipe operator and pipe variable:
+    $x = vec[2, 1, 3]
+      |> Vec\map($$, $a ==> $a * $a) // $$ with value vec[2,1,3]
+      |> Vec\sort($$); // $$ with value vec[4,1,9]
+  }
 
   /* ==================================
    *             ATTRIBUTES
