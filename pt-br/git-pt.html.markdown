@@ -451,6 +451,74 @@ $ git push -u origin master
 $ git push
 ```
 
+### stash
+
+O objetivo desse comando do git é pegar o estado "sujo" do seu diretório de
+trabalho, que não está pronto (staged), e salvá-lo em um outro lugar para que
+você possa trabalhar no seu repositório do zero, mas sem perder as mudanças que
+fez. Em qualquer outro momento que você quiser, você pode trazer de volta as
+alterações que você tirou dali com oc omando stash.
+
+Digamos que você tem feito algumas alterações no seu repositório, mas agora
+você quer realizar um pull do repositório remoto. Como você tem alterações não
+commitadas no seu diretório (ele está "sujo"), você não irá conseguir realizar
+o `git pull` com sucesso. Mas você pode executar o `git stash` para salvar
+essas alterações e conseguir realizar o pull. Depois, você traz de volta.
+
+```bash
+$ git stash
+Saved working directory and index state \
+  "WIP on master: 049d078 added the index file"
+  HEAD is now at 049d078 added the index file
+  (To restore them type "git stash apply")
+```
+
+Agora você irá conseguir realizar o pull!
+
+```bash
+git pull
+```
+`...changes apply...`
+
+Verifique se está tudo OK com o `git status`
+
+```bash
+$ git status
+# On branch master
+nothing to commit, working directory clean
+```
+
+É possível verificar as alterações que você guardou com cada uso do comando
+`git stash` com o `git stash list`. Como os usos desse comando são guardados
+como em uma pilha, os usos mais recentes estarão no topo.
+
+```bash
+$ git stash list
+stash@{0}: WIP on master: 049d078 added the index file
+stash@{1}: WIP on master: c264051 Revert "added file_size"
+stash@{2}: WIP on master: 21d80a5 added number to log
+```
+
+Agora vamos trazer o que havíamos salvado com o `git stash` de volta para o
+diretório de trabalho.
+
+```bash
+$ git stash pop
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#
+#      modified:   index.html
+#      modified:   lib/simplegit.rb
+#
+```
+
+`git stash apply` faz a mesma coisa
+
+Agora podemos voltar a trabalhar no que havíamos deixado de lado!
+
+[Additional Reading.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
+
 ### rebase (cautela!)
 
 Pega em todas as alterações que foram registadas numa branch e volta a
