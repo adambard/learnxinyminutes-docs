@@ -491,6 +491,18 @@ $ git reset 31f2bb1
 $ git reset --hard 31f2bb1
 ```
 
+### revert
+
+O comando revert pode ser utilizado para desfazer um commit. Não deve ser
+confundido com o comando reset que restabelece o estado do repositório para um
+momento anterior. O revert irá criar um novo commit com alterações inversas a
+de um outro commit especificado, portanto revertendo aquelas alterações.
+
+```bash
+# Revertendo um commit específico
+$ git revert <commit>
+```
+
 ### rm
 
 O oposto de git add, git rm remove arquivos da branch atual.
