@@ -133,12 +133,12 @@ Permite configurar o git, seja com respeito a definições deste repositório,
 do sistema ou configurações globais para todos os repositórios.
 
 ```bash
-# Imprime e define algumas variáveis de configuração básicas (global)
-$ git config --global user.email
-$ git config --global user.name
-
+# Define e imprime algumas variáveis de configuração básicas (global)
 $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
+
+$ git config --global user.email
+$ git config --global user.name
 ```
 
 [Aprenda mais sobre git config. (EN)](http://git-scm.com/docs/git-config)
