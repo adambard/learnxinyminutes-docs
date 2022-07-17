@@ -503,9 +503,15 @@ $ git rm HelloWorld.c
 $ git rm /pather/to/the/file/HelloWorld.c
 ```
 
-## Informação complementar (EN)
+## Leitura complementar
 
-* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
+* [Configurar o Git (GitHub Docs)](https://docs.github.com/pt/get-started/quickstart/set-up-git)
+
+* [Learn Git Branching - the most visual and interactive way to learn Git on the web](http://learngitbranching.js.org/)
+
+* [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+
+* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
 
 * [git-scm - Video Tutorials](http://git-scm.com/videos)
 
@@ -514,3 +520,11 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+
+* [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
+
+* [Pro Git (em Português)](https://www.git-scm.com/book/pt-br/v2)
+
+* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
+* [The New Boston tutorial to Git covering basic commands and workflow](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx)
