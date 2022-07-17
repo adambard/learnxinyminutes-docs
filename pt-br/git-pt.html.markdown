@@ -11,6 +11,7 @@ contributors:
 translators:
   - ["Suzane Sant Ana", "http://github.com/suuuzi"]
   - ["Bruno Volcov", "http://github.com/volcov"]
+  - ["Marcel Ribeiro-Dantas", "http://github.com/mribeirodantas"]
 ---
 
 Git é um sistema distribuido de gestão para código fonte e controle de versões.
@@ -67,7 +68,8 @@ referências e outros.
 
 ### *Working Tree* (componente do repositório)
 
-A *Working Tree* é basicamente a listagem dos diretórios e arquivos do repositório. É chamada também de diretório do projeto.
+A *Working Tree* é basicamente a listagem dos diretórios e arquivos do
+repositório. É chamada também de diretório do projeto.
 
 ### *Index* (componente do diretório .git)
 
@@ -77,28 +79,37 @@ maior controle sobre o que é registado no repositório git.
 
 ### *Commit*
 
-Um *commit** de git é um registo de um cojunto de alterações ou manipulações nos arquivos do projeto.
-Por exemplo, ao adicionar cinco arquivos e remover outros 2, estas alterações
-serão gravadas num *commit* (ou registo). Este *commit* pode então ser enviado
-para outros repositórios ou não!
+Um *commit** de git é um registo de um conjunto de alterações ou manipulações
+nos arquivos do projeto. Por exemplo, ao adicionar cinco arquivos e remover
+outros 2, estas alterações serão gravadas em um *commit* (ou registro). Este
+*commit* pode então ser enviado para outros repositórios, caso você queira.
 
 ### *Branch*
 
-Um *branch* é essencialmente uma referência que aponta para o último *commit*
+Uma *branch* é essencialmente uma referência que aponta para o último *commit*
 efetuado. Na medida que são feitos novos commits, esta referência é atualizada
 automaticamente e passa a apontar para o commit mais recente.
 
 ### *Tag*
 
 Uma tag é uma marcação em um ponto específico da história. Geralmente as
-pessoas usam esta funcionalidade para marcar pontos de release (v2.0, e por aí vai)
+pessoas usam esta funcionalidade para marcar pontos de release (v2.0, e por aí
+vai)
 
 ### *HEAD* e *head* (componentes do diretório .git)
 
-*HEAD* é a referência que aponta para o *branch* em uso. Um repositório só tem
-uma *HEAD* activa.
-*head* é uma referência que aponta para qualquer *commit*. Um repositório pode
-ter um número indefinido de *heads*
+*HEAD* é a referência que aponta para a *branch* em uso. Um repositório só tem
+uma *HEAD* activa. *head* é uma referência que aponta para qualquer *commit*. Um
+repositório pode ter um número indefinido de *heads*.
+
+### Estados no Git
+
+* Modificado (Modified): Ocorreram mudanças em ao menos um arquivo mas essas
+mudanças ainda não foram registradas na base de dados do Git
+* Preparado (Staged): Marca o arquivo como preparado para ser adicionado ao
+próximo commit
+* Consolidado (Committed): As mudanças foram registradas na base de dados do
+Git
 
 ### Recursos conceituais (EN)
 
@@ -109,8 +120,8 @@ ter um número indefinido de *heads*
 
 ### *init*
 
-Cria um repositório Git vazio. As definições, informação guardada e outros do
-repositório git são guardados em uma pasta chamada ".git".
+Cria um repositório Git vazio. As configurações do repositório, e outras
+informações são guardadas em uma pasta dentro do repositório com o nome ".git".
 
 ```bash
 $ git init
@@ -118,8 +129,8 @@ $ git init
 
 ### *config*
 
-Permite configurar as definições, sejam as definições do repositório, sistema
-ou configurações globais.
+Permite configurar o git, seja com respeito a definições deste repositório,
+do sistema ou configurações globais para todos os repositórios.
 
 ```bash
 # Imprime e define algumas variáveis de configuração básicas (global)
@@ -134,7 +145,8 @@ $ git config --global user.name "My Name"
 
 ### help
 
-Para visualizar rapidamente o detalhamento de cada comando ou apenas lembrar da semântica.
+Para visualizar rapidamente o detalhamento de cada comando ou apenas lembrar da
+semântica.
 
 ```bash
 # Ver rapidamente os comandos disponiveis
@@ -148,16 +160,32 @@ $ git help -a
 $ git help add
 $ git help commit
 $ git help init
+# ou git <comando_aqui> --help
+$ git add --help
+$ git commit --help
+$ git init --help
+```
+
+### Ignorando arquivos
+
+É possível intencionalmente ignorar arquivos e pastas. Costuma-se utilizar o
+arquivo .gitignore para fazer o git ignorar a existência de arquivos e pastas
+geralmente utilizados para arquivos privados ou temporários que, de outro modo,
+seriam compartilhados com todos que tem acesso ao repositório.
+
+```bash
+$ echo "temp/" >> .gitignore
+$ echo "chave_privada" >> .gitignore
 ```
 
 ### status
 
-Apresenta as diferenças entre o arquivo *index* (a versão corrente
-do repositório) e o *commit* da *HEAD* atual.
+Apresenta as diferenças entre o arquivo *index* (a versão corrente do
+repositório) e o *commit* da *HEAD* atual.
 
 
 ```bash
-# Apresenta o *branch*, arquivos não monitorados, alterações e outras
+# Apresenta a *branch*, arquivos não monitorados, alterações e outras
 # diferenças
 $ git status
 
@@ -173,35 +201,42 @@ incluidos nos commits!
 
 ```bash
 # adiciona um arquivo no diretório do projeto atual
-$ git add HelloWorld.java
+$ git add OlaMundo.java
 
-# adiciona um arquivo num sub-diretório
-$ git add /path/to/file/HelloWorld.c
+# adiciona um arquivo em um sub-diretório
+$ git add /caminho/para/arquivo/OlaMundo.java
 
 # permite usar expressões regulares!
 $ git add ./*.java
+
+# Você também pode adicionar tudo no seu diretório de trabalho como alterações
+prontas para o próximo commit.
+$ git add -A
 ```
+
+Esse comando apenas adiciona os arquivos no estado de preparados para o próximo
+commit, mas não realiza o commit de fato.
 
 ### branch
 
-Gerencia os *branches*. É possível ver, editar, criar e apagar branches com este
+Gerencia as *branches*. É possível ver, editar, criar e apagar branches com este
 comando.
 
 ```bash
 # listar *branches* existentes e remotos
 $ git branch -a
 
-# criar um novo *branch*
+# criar uma nova *branch*
 $ git branch myNewBranch
 
-# apagar um *branch*
+# apagar uma *branch*
 $ git branch -d myBranch
 
-# alterar o nome de um *branch*
+# alterar o nome de uma *branch*
 # git branch -m <oldname> <newname>
 $ git branch -m myBranchName myNewBranchName
 
-# editar a descrição de um *branch*
+# editar a descrição de uma *branch*
 $ git branch myBranchName --edit-description
 ```
 
@@ -212,18 +247,22 @@ Gerencia as *tags*
 ```bash
 # Listar tags
 $ git tag
+
 # Criar uma tag anotada.
 # O parâmetro -m define uma mensagem, que é armazenada com a tag.
 # Se você não especificar uma mensagem para uma tag anotada,
 # o Git vai rodar seu editor de texto para você digitar alguma coisa.
 $ git tag -a v2.0 -m 'minha versão 2.0'
+
 # Mostrar informações sobre a tag
 # O comando mostra a informação da pessoa que criou a tag,
 # a data de quando o commit foi taggeado,
 # e a mensagem antes de mostrar a informação do commit.
 $ git show v2.0
+
 # Enviar uma tag para o repositório remoto
 $ git push origin v2.0
+
 # Enviar várias tags para o repositório remoto
 $ git push origin --tags
 ```
@@ -231,14 +270,16 @@ $ git push origin --tags
 ### checkout
 
 Atualiza todos os arquivos no diretório do projeto para que fiquem iguais
-à versão do index ou do *branch* especificado.
+à versão do index ou da *branch* especificado.
 
 ```bash
-# Checkout de um repositório - por padrão para o branch master
+# Checkout de um repositório - por padrão para a branch master
 $ git checkout
-# Checkout de um branch especifico
+
+# Checkout de uma branch especifica
 $ git checkout branchName
-# Cria um novo branch e faz checkout para ele.
+
+# Cria uma nova branch e faz checkout para ela.
 # Equivalente a: "git branch <name>; git checkout <name>"
 $ git checkout -b newBranch
 ```
@@ -246,22 +287,41 @@ $ git checkout -b newBranch
 ### clone
 
 Clona ou copia um repositório existente para um novo diretório. Também
-adiciona *branches* de monitoramento remoto para cada *branch* no repositório
-clonado o que permite enviar alterações para um *branch* remoto.
+adiciona *branches* no repositório clonado para cada *branch* no repositório
+remoto o que permite enviar alterações para uma *branch* no repositório remoto.
 
 ```bash
 # Clona learnxinyminutes-docs
 $ git clone https://github.com/adambard/learnxinyminutes-docs.git
+
+# Clone superficial - É mais rápido, mas puxa apenas o último commit
+$ git clone --depth 1 https://github.com/adambard/learnxinyminutes-docs.git
+
+# Clona apenas uma branch em específica
+$ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git --single-branch
 ```
 
 ### commit
 
-Guarda o conteudo atual do index num novo *commit*. Este *commit* contém
+Guarda o conteúdo atual do index em um novo *commit*. Este *commit* contém
 as alterações feitas e a mensagem criada pelo usuário.
 
 ```bash
-# commit com uma mensagem
-$ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+# Realiza um commit com uma mensagem
+$ git commit -m "Adicione a função multipliqueNumeros() em OlaMundo.c"
+
+# Assine um commit com sua chave GPG. Antes disso, você precisa ter
+# configurado a opção user.signkey do git com o comando:
+# git config --global user.signinkey ID_CHAVE_AQUI
+$ git commit -S -m "mensagem do commit aqui"
+
+# Automaticamente adicione como preparados arquivos modificados ou apagados e
+# então realize um commit:
+$ git commit -a -m "Modified foo.php and removed bar.php"
+
+# Altere o último commit (Esse comando cria um novo commit com o conteúdo do
+# commit anterior mais suas novas alterações e sobrescreve o último commit)
+$ git commit --amend -m "Correct message"
 ```
 
 ### diff
@@ -282,7 +342,7 @@ $ git diff HEAD
 
 ### grep
 
-Permite procurar facilmente num repositório
+Permite procurar facilmente em um repositório.
 
 Configurações opcionais:
 
@@ -313,74 +373,158 @@ Apresenta commits do repositório.
 # Apresenta todos os commits
 $ git log
 
-# Apresenta X commits
-$ git log -n 10
+# Apresenta apenas mensagem do commit e referência
+$ git log --oneline
 
 # Apresenta apenas commits de merge
 $ git log --merges
+
+# Apresenta todos os commits representados por um gráfico em ASCII
+$ git log --graph
 ```
 
 ### merge
 
-"Merge" junta as alterações de commits externos com o *branch* atual.
+"Merge" junta as alterações de commits externos com a *branch* atual.
 
 ```bash
-# Junta o branch especificado com o atual
+# Junta a branch especificada com o atual
 $ git merge branchName
 
-# Para gerar sempre um commit ao juntar os branches
+# Para gerar sempre um commit ao juntar as branches
 $ git merge --no-ff branchName
 ```
 
 ### mv
 
-Alterar o nome ou mover um arquivo.
+Altera o nome ou move um arquivo.
 
 ```bash
 # Alterar o nome de um arquivo
-$ git mv HelloWorld.c HelloNewWorld.c
+$ git mv OlaMundo.c OlaNovoMundo.c
 
 # Mover um arquivo
-$ git mv HelloWorld.c ./new/path/HelloWorld.c
+$ git mv OlaMundo.c ./novo/caminho/OlaMundo.c
 
-# Forçar a alteração de nome ou mudança local
-# "existingFile" já existe no directório, será sobrescrito.
+# Forçar a alteração de nome ou mudança de local
+# Se o arquivo já existir no diretório, será sobrescrito.
 $ git mv -f myFile existingFile
 ```
 
 ### pull
 
-Puxa alterações de um repositório e as junta com outro branch
+Puxa alterações de um repositório e as junta com outra branch
 
 ```bash
 # Atualiza o repositório local, juntando as novas alterações
 # do repositório remoto 'origin' e branch 'master'
 # git pull <remote> <branch>
-# git pull => aplica a predefinição => git pull origin master
 $ git pull origin master
 
-# Juntar alterações do branch remote e fazer rebase commits do branch
+# Por padrão, o git irá realizar o pull na branch atual fazendo um merge
+# com as alterações novas na branch remota
+$ git pull
+
+# Juntar alterações da branch remote e fazer rebase commits da branch
 # no repositório local, como: "git pull <remote> <branch>, git rebase <branch>"
 $ git pull origin master --rebase
 ```
 
 ### push
 
-Enviar e juntar alterações de um branch para o seu branch correspondente
-num repositório remoto.
+Enviar e juntar alterações de uma branch para a sua branch correspondente
+em um repositório remoto.
 
 ```bash
 # Envia e junta as alterações de um repositório local
-# para um remoto denominado "origin" no branch "master".
+# para um remoto denominado "origin" na branch "master".
 # git push <remote> <branch>
-# git push => aplica a predefinição => git push origin master
 $ git push origin master
+
+# Por padrão, o git push irá enviar e realizar merge das mudanças da sua branch
+# local com a branch remota
+$ git push
+
+# Para associar a branch local com uma branch específica remota, adicione a
+# flag -u
+$ git push -u origin master
+
+# Agora, sempre que você realizar um push daquela branch local, use o atalho:
+$ git push
 ```
+
+### stash
+
+O objetivo desse comando do git é pegar o estado "sujo" do seu diretório de
+trabalho, que não está pronto (staged), e salvá-lo em um outro lugar para que
+você possa trabalhar no seu repositório do zero, mas sem perder as mudanças que
+fez. Em qualquer outro momento que você quiser, você pode trazer de volta as
+alterações que você tirou dali com o comando stash.
+
+Digamos que você tem feito algumas alterações no seu repositório, mas agora
+você quer realizar um pull do repositório remoto. Como você tem alterações não
+commitadas no seu diretório (ele está "sujo"), você não irá conseguir realizar
+o `git pull` com sucesso. Mas você pode executar o `git stash` para salvar
+essas alterações e conseguir realizar o pull. Depois, você traz de volta.
+
+```bash
+$ git stash
+Saved working directory and index state \
+  "WIP on master: 049d078 added the index file"
+  HEAD is now at 049d078 added the index file
+  (To restore them type "git stash apply")
+```
+
+Agora você irá conseguir realizar o pull!
+
+```bash
+git pull
+```
+`...changes apply...`
+
+Verifique se está tudo OK com o `git status`
+
+```bash
+$ git status
+# On branch master
+nothing to commit, working directory clean
+```
+
+É possível verificar as alterações que você guardou com cada uso do comando
+`git stash` com o `git stash list`. Como os usos desse comando são guardados
+como em uma pilha, os usos mais recentes estarão no topo.
+
+```bash
+$ git stash list
+stash@{0}: WIP on master: 049d078 added the index file
+stash@{1}: WIP on master: c264051 Revert "added file_size"
+stash@{2}: WIP on master: 21d80a5 added number to log
+```
+
+Agora vamos trazer o que havíamos salvado com o `git stash` de volta para o
+diretório de trabalho.
+
+```bash
+$ git stash pop
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#
+#      modified:   index.html
+#      modified:   lib/simplegit.rb
+#
+```
+
+`git stash apply` faz a mesma coisa
+
+Agora podemos voltar a trabalhar no que havíamos deixado de lado!
+
+[Additional Reading.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
 
 ### rebase (cautela!)
 
-Pega em todas as alterações que foram registadas num branch e volta a
-aplicá-las em outro branch.
+Pega em todas as alterações que foram registadas em uma branch e volta a
+aplicá-las em outra branch.
 *Não deve ser feito rebase de commits que foram enviados para um repositório
 público*
 
@@ -407,31 +551,79 @@ $ git reset
 # sobrescreve o projeto atual
 $ git reset --hard
 
-# Move a head do branch atual para o commit especificado, sem alterar o projeto.
+# Move a head da branch atual para o commit especificado, sem alterar o projeto.
 # todas as alterações ainda existem no projeto
 $ git reset 31f2bb1
 
-# Inverte a head do branch atual para o commit especificado
+# Inverte a head da branch atual para o commit especificado
 # fazendo com que este esteja em sintonia com o diretório do projeto
-# Remove alterações não registadas e todos os commits após o commit especificado
+# Remove alterações não registradas e todos os commits após o commit
+# especificado
 $ git reset --hard 31f2bb1
+```
+
+### reflog (cuidado!)
+
+O reflog irá listar a maior parte dos comandos que você realizou no git em um
+determinado intervalo de tempo. O intervalo padrão é de 90 dias.
+
+Isso te dá a oportunidade de reverter qualquer comando que você realizou no git
+e que tenha tido consequências indesejadas (por exemplo, se um rebase quebrou
+sua aplicação).
+
+Você pode fazer assim:
+
+1. `git reflog` para listar todos os comandos utilizados no git para o rebase
+
+```
+38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
+38b323f HEAD@{1}: rebase -i (pick): Clarify inc/dec operators
+4fff859 HEAD@{2}: rebase -i (pick): Update java.html.markdown
+34ed963 HEAD@{3}: rebase -i (pick): [yaml/en] Add more resources (#1666)
+ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
+2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
+```
+2. Selecione para onde você quer resetar. No nosso exemplo, seria o commit
+`2e6c386`, ou `HEAD@{5}`
+3. 'git reset --hard HEAD@{5}' esse comando irá resetar o seu repositório para
+aquele ponto (5 commits atrás).
+4. Agora você pode recomeçar o rebase ou apenas deixar como está.
+
+[Leitura complementar](https://git-scm.com/docs/git-reflog)
+
+### revert
+
+O comando revert pode ser utilizado para desfazer um commit. Não deve ser
+confundido com o comando reset que restabelece o estado do repositório para um
+momento anterior. O revert irá criar um novo commit com alterações inversas a
+de um outro commit especificado, portanto revertendo aquelas alterações.
+
+```bash
+# Revertendo um commit específico
+$ git revert <commit>
 ```
 
 ### rm
 
-O oposto de git add, git rm remove arquivos do branch atual.
+O oposto de git add, git rm remove arquivos da branch atual.
 
 ```bash
-# remove HelloWorld.c
-$ git rm HelloWorld.c
+# remove OlaMundo.c
+$ git rm OlaMundo.c
 
-# Remove um arquivo de um sub-directório
-$ git rm /pather/to/the/file/HelloWorld.c
+# Remove um arquivo de um sub-diretório
+$ git rm /caminho/para/o/arquivo/OlaMundo.c
 ```
 
-## Informação complementar (EN)
+## Leitura complementar
 
-* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
+* [Configurar o Git (GitHub Docs)](https://docs.github.com/pt/get-started/quickstart/set-up-git)
+
+* [Learn Git Branching - the most visual and interactive way to learn Git on the web](http://learngitbranching.js.org/)
+
+* [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+
+* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
 
 * [git-scm - Video Tutorials](http://git-scm.com/videos)
 
@@ -440,3 +632,11 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+
+* [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
+
+* [Pro Git (em Português)](https://www.git-scm.com/book/pt-br/v2)
+
+* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
+* [The New Boston tutorial to Git covering basic commands and workflow](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx)
