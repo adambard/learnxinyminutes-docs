@@ -491,6 +491,35 @@ $ git reset 31f2bb1
 $ git reset --hard 31f2bb1
 ```
 
+### reflog (cuidado!)
+
+O reflog irá listar a maior parte dos comandos que você realizou no git em um
+determinado intervalo de tempo. O padrão é 90 dias.
+
+Isso te dá a oportunidade de reverter qualquer comando que você realizou no git
+e que tenha tido consequências indesejados (por exemplo, se um rebase quebrou
+sua aplicação).
+
+Você pode fazer assim:
+
+1. `git reflog` para listar todos os comandos utilizados no git para o rebase
+
+```
+38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
+38b323f HEAD@{1}: rebase -i (pick): Clarify inc/dec operators
+4fff859 HEAD@{2}: rebase -i (pick): Update java.html.markdown
+34ed963 HEAD@{3}: rebase -i (pick): [yaml/en] Add more resources (#1666)
+ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
+2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
+```
+2. Selecione para onde você quer resetar. No nosso exemplo, seria o commit
+`2e6c386`, ou `HEAD@{5}`
+3. 'git reset --hard HEAD@{5}' esse comando irá resetar o seu repositório para
+aquele ponto (5 commits atrás).
+4. Agora você pode recomeçar o rebase ou apenas deixar como está.
+
+[Leitura complementar](https://git-scm.com/docs/git-reflog)
+
 ### revert
 
 O comando revert pode ser utilizado para desfazer um commit. Não deve ser
