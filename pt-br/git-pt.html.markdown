@@ -68,7 +68,8 @@ referências e outros.
 
 ### *Working Tree* (componente do repositório)
 
-A *Working Tree* é basicamente a listagem dos diretórios e arquivos do repositório. É chamada também de diretório do projeto.
+A *Working Tree* é basicamente a listagem dos diretórios e arquivos do
+repositório. É chamada também de diretório do projeto.
 
 ### *Index* (componente do diretório .git)
 
@@ -78,10 +79,10 @@ maior controle sobre o que é registado no repositório git.
 
 ### *Commit*
 
-Um *commit** de git é um registo de um cojunto de alterações ou manipulações nos arquivos do projeto.
-Por exemplo, ao adicionar cinco arquivos e remover outros 2, estas alterações
-serão gravadas num *commit* (ou registo). Este *commit* pode então ser enviado
-para outros repositórios ou não!
+Um *commit** de git é um registo de um conjunto de alterações ou manipulações
+nos arquivos do projeto. Por exemplo, ao adicionar cinco arquivos e remover
+outros 2, estas alterações serão gravadas em um *commit* (ou registro). Este
+*commit* pode então ser enviado para outros repositórios, caso você queira.
 
 ### *Branch*
 
@@ -92,23 +93,23 @@ automaticamente e passa a apontar para o commit mais recente.
 ### *Tag*
 
 Uma tag é uma marcação em um ponto específico da história. Geralmente as
-pessoas usam esta funcionalidade para marcar pontos de release (v2.0, e por aí vai)
+pessoas usam esta funcionalidade para marcar pontos de release (v2.0, e por aí
+vai)
 
 ### *HEAD* e *head* (componentes do diretório .git)
 
 *HEAD* é a referência que aponta para a *branch* em uso. Um repositório só tem
-uma *HEAD* activa.
-*head* é uma referência que aponta para qualquer *commit*. Um repositório pode
-ter um número indefinido de *heads*
+uma *HEAD* activa. *head* é uma referência que aponta para qualquer *commit*. Um
+repositório pode ter um número indefinido de *heads*.
 
 ### Estados no Git
 
-* Modificado (Modified): Ocorreram mudanças em arquivo mas essas mudanças
-ainda não foram registradas na base de dados do Git
+* Modificado (Modified): Ocorreram mudanças em ao menos um arquivo mas essas
+mudanças ainda não foram registradas na base de dados do Git
 * Preparado (Staged): Marca o arquivo como preparado para ser adicionado ao
-próximo commit.
+próximo commit
 * Consolidado (Committed): As mudanças foram registradas na base de dados do
-Git.
+Git
 
 ### Recursos conceituais (EN)
 
@@ -119,8 +120,8 @@ Git.
 
 ### *init*
 
-Cria um repositório Git vazio. As definições, informação guardada e outros do
-repositório git são guardados em uma pasta chamada ".git".
+Cria um repositório Git vazio. As configurações do repositório, e outras
+informações são guardadas em uma pasta dentro do repositório com o nome ".git".
 
 ```bash
 $ git init
@@ -128,8 +129,8 @@ $ git init
 
 ### *config*
 
-Permite configurar as definições, sejam as definições do repositório, sistema
-ou configurações globais.
+Permite configurar o git, seja com respeito a definições deste repositório,
+do sistema ou configurações globais para todos os repositórios.
 
 ```bash
 # Imprime e define algumas variáveis de configuração básicas (global)
@@ -144,7 +145,8 @@ $ git config --global user.name "My Name"
 
 ### help
 
-Para visualizar rapidamente o detalhamento de cada comando ou apenas lembrar da semântica.
+Para visualizar rapidamente o detalhamento de cada comando ou apenas lembrar da
+semântica.
 
 ```bash
 # Ver rapidamente os comandos disponiveis
@@ -178,8 +180,8 @@ $ echo "chave_privada" >> .gitignore
 
 ### status
 
-Apresenta as diferenças entre o arquivo *index* (a versão corrente
-do repositório) e o *commit* da *HEAD* atual.
+Apresenta as diferenças entre o arquivo *index* (a versão corrente do
+repositório) e o *commit* da *HEAD* atual.
 
 
 ```bash
@@ -199,10 +201,10 @@ incluidos nos commits!
 
 ```bash
 # adiciona um arquivo no diretório do projeto atual
-$ git add HelloWorld.java
+$ git add OlaMundo.java
 
-# adiciona um arquivo num sub-diretório
-$ git add /path/to/file/HelloWorld.c
+# adiciona um arquivo em um sub-diretório
+$ git add /caminho/para/arquivo/OlaMundo.java
 
 # permite usar expressões regulares!
 $ git add ./*.java
@@ -211,6 +213,7 @@ $ git add ./*.java
 prontas para o próximo commit.
 $ git add -A
 ```
+
 Esse comando apenas adiciona os arquivos no estado de preparados para o próximo
 commit, mas não realiza o commit de fato.
 
@@ -276,7 +279,7 @@ $ git checkout
 # Checkout de uma branch especifica
 $ git checkout branchName
 
-# Cria uma nova branch e faz checkout para ele.
+# Cria uma nova branch e faz checkout para ela.
 # Equivalente a: "git branch <name>; git checkout <name>"
 $ git checkout -b newBranch
 ```
@@ -284,8 +287,8 @@ $ git checkout -b newBranch
 ### clone
 
 Clona ou copia um repositório existente para um novo diretório. Também
-adiciona *branches* de monitoramento remoto para cada *branch* no repositório
-clonado o que permite enviar alterações para uma *branch* remoto.
+adiciona *branches* no repositório clonado para cada *branch* no repositório
+remoto o que permite enviar alterações para uma *branch* no repositório remoto.
 
 ```bash
 # Clona learnxinyminutes-docs
@@ -300,12 +303,12 @@ $ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git -
 
 ### commit
 
-Guarda o conteudo atual do index num novo *commit*. Este *commit* contém
+Guarda o conteúdo atual do index em um novo *commit*. Este *commit* contém
 as alterações feitas e a mensagem criada pelo usuário.
 
 ```bash
-# Realize um commit com uma mensagem
-$ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
+# Realiza um commit com uma mensagem
+$ git commit -m "Adicione a função multipliqueNumeros() em OlaMundo.c"
 
 # Assine um commit com sua chave GPG. Antes disso, você precisa ter
 # configurado a opção user.signkey do git com o comando:
@@ -316,7 +319,8 @@ $ git commit -S -m "mensagem do commit aqui"
 # então realize um commit:
 $ git commit -a -m "Modified foo.php and removed bar.php"
 
-# Altere o último commit (Esse comando reescreve o commit anterior)
+# Altere o último commit (Esse comando cria um novo commit com o conteúdo do
+# commit anterior mais suas novas alterações e sobrescreve o último commit)
 $ git commit --amend -m "Correct message"
 ```
 
@@ -338,7 +342,7 @@ $ git diff HEAD
 
 ### grep
 
-Permite procurar facilmente num repositório
+Permite procurar facilmente em um repositório.
 
 Configurações opcionais:
 
@@ -384,7 +388,7 @@ $ git log --graph
 "Merge" junta as alterações de commits externos com a *branch* atual.
 
 ```bash
-# Junta a branch especificado com o atual
+# Junta a branch especificada com o atual
 $ git merge branchName
 
 # Para gerar sempre um commit ao juntar as branches
@@ -393,17 +397,17 @@ $ git merge --no-ff branchName
 
 ### mv
 
-Alterar o nome ou mover um arquivo.
+Altera o nome ou move um arquivo.
 
 ```bash
 # Alterar o nome de um arquivo
-$ git mv HelloWorld.c HelloNewWorld.c
+$ git mv OlaMundo.c OlaNovoMundo.c
 
 # Mover um arquivo
-$ git mv HelloWorld.c ./new/path/HelloWorld.c
+$ git mv OlaMundo.c ./novo/caminho/OlaMundo.c
 
-# Forçar a alteração de nome ou mudança local
-# "existingFile" já existe no directório, será sobrescrito.
+# Forçar a alteração de nome ou mudança de local
+# Se o arquivo já existir no diretório, será sobrescrito.
 $ git mv -f myFile existingFile
 ```
 
@@ -415,7 +419,6 @@ Puxa alterações de um repositório e as junta com outra branch
 # Atualiza o repositório local, juntando as novas alterações
 # do repositório remoto 'origin' e branch 'master'
 # git pull <remote> <branch>
-# git pull => aplica a predefinição => git pull origin master
 $ git pull origin master
 
 # Por padrão, o git irá realizar o pull na branch atual fazendo um merge
@@ -430,13 +433,12 @@ $ git pull origin master --rebase
 ### push
 
 Enviar e juntar alterações de uma branch para a sua branch correspondente
-num repositório remoto.
+em um repositório remoto.
 
 ```bash
 # Envia e junta as alterações de um repositório local
 # para um remoto denominado "origin" na branch "master".
 # git push <remote> <branch>
-# git push => aplica a predefinição => git push origin master
 $ git push origin master
 
 # Por padrão, o git push irá enviar e realizar merge das mudanças da sua branch
@@ -457,7 +459,7 @@ O objetivo desse comando do git é pegar o estado "sujo" do seu diretório de
 trabalho, que não está pronto (staged), e salvá-lo em um outro lugar para que
 você possa trabalhar no seu repositório do zero, mas sem perder as mudanças que
 fez. Em qualquer outro momento que você quiser, você pode trazer de volta as
-alterações que você tirou dali com oc omando stash.
+alterações que você tirou dali com o comando stash.
 
 Digamos que você tem feito algumas alterações no seu repositório, mas agora
 você quer realizar um pull do repositório remoto. Como você tem alterações não
@@ -521,7 +523,7 @@ Agora podemos voltar a trabalhar no que havíamos deixado de lado!
 
 ### rebase (cautela!)
 
-Pega em todas as alterações que foram registadas numa branch e volta a
+Pega em todas as alterações que foram registadas em uma branch e volta a
 aplicá-las em outra branch.
 *Não deve ser feito rebase de commits que foram enviados para um repositório
 público*
@@ -555,17 +557,18 @@ $ git reset 31f2bb1
 
 # Inverte a head da branch atual para o commit especificado
 # fazendo com que este esteja em sintonia com o diretório do projeto
-# Remove alterações não registadas e todos os commits após o commit especificado
+# Remove alterações não registradas e todos os commits após o commit
+# especificado
 $ git reset --hard 31f2bb1
 ```
 
 ### reflog (cuidado!)
 
 O reflog irá listar a maior parte dos comandos que você realizou no git em um
-determinado intervalo de tempo. O padrão é 90 dias.
+determinado intervalo de tempo. O intervalo padrão é de 90 dias.
 
 Isso te dá a oportunidade de reverter qualquer comando que você realizou no git
-e que tenha tido consequências indesejados (por exemplo, se um rebase quebrou
+e que tenha tido consequências indesejadas (por exemplo, se um rebase quebrou
 sua aplicação).
 
 Você pode fazer assim:
@@ -605,11 +608,11 @@ $ git revert <commit>
 O oposto de git add, git rm remove arquivos da branch atual.
 
 ```bash
-# remove HelloWorld.c
-$ git rm HelloWorld.c
+# remove OlaMundo.c
+$ git rm OlaMundo.c
 
-# Remove um arquivo de um sub-directório
-$ git rm /pather/to/the/file/HelloWorld.c
+# Remove um arquivo de um sub-diretório
+$ git rm /caminho/para/o/arquivo/OlaMundo.c
 ```
 
 ## Leitura complementar
