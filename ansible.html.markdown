@@ -753,3 +753,4 @@ the `register` command.
 * [A system administrator's guide to getting started with Ansible - FAST!](https://www.redhat.com/en/blog/system-administrators-guide-getting-started-ansible-fast)
 * [Ansible Tower](https://www.ansible.com/products/tower) - Ansible Tower provides a web UI, dashboard and rest interface to ansible.
 * [Ansible AWX](https://github.com/ansible/awx) - The Open Source version of Ansible Tower.
+* [Ansible Tutorial for Beginners: Ultimate Playbook & Examples](https://spacelift.io/blog/ansible-tutorial)
