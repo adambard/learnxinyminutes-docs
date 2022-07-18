@@ -75,3 +75,36 @@ Per ora continua a usare la `Javascript VM` a meno che non ti sia detto di cambi
 ti chiederà di "confermare" la transazione. Premi `yes` e dopo un certo lasso
 di tempo, ti apparirà la stessa interfaccia per il contratto nella parte
 inferiore dello schermo.
+
+
+## Lavorare su una testnet
+
+Distribuire e testare su una testnet è il modo più accurato per mettere alla
+prova i tuoi smart contract in Solidity. Per farlo procuriamoci prima degli ETH
+di test dalla testnet Kovan.
+
+[Entra in questo Gitter Channel](https://gitter.im/kovan-testnet/faucet) e
+scrivici l'indirizzo del tuo wallet Metamask.
+
+Sul tuo Metamask, dovrai cambiare la testnet in `Kovan`.
+
+![Solidity-in-remix](../images/solidity/metamask-kovan.png)
+
+Rivecerai degli Ethereum di test gratuiti. Per distribuire degli smart contract
+su una testnet abbiamo bisogno di Ethereum.
+
+Nell'esempio precedente non avevamo usato una testnet, ma avevamo distribuito
+su un ambiente virtuale fittizio. Quando si lavora su una testnet, possiamo
+davvero monitorare e interagire con i nostri contratti in maniera persistente.
+
+Per distribuire su una testnet, allo step `#4 Fai il deploy`, cambia
+l'`environment` selezionato in `injected web3`. In questo modo verrà usato
+come network su cui fare il deploy qualsiasi network selezionato sul tuo
+Metamask.
+
+![Solidity-in-remix](../images/solidity/remix-testnet.png)
+
+Per ora continua a usare la `Javascript VM` a meno che non ti sia detto di cambiarla. Quando distribuisci su una testnet, Metamask aprirà un pop up che
+ti chiederà di "confermare" la transazione. Premi `yes` e dopo un certo lasso
+di tempo, ti apparirà la stessa interfaccia per il contratto nella parte
+inferiore dello schermo.
