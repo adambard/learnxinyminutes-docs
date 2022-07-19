@@ -116,3 +116,103 @@ cambiarla. Quando distribuisci su una testnet, Metamask aprirà un pop up che
 ti chiederà di "confermare" la transazione. Premi `yes` e dopo un certo lasso
 di tempo, ti apparirà la stessa interfaccia per il contratto nella parte
 inferiore dello schermo.
+
+
+```javascript
+// Iniziamo con un semplice contratto su una Banca
+// Permette di depositare, prelevare e fare l'estratto conto
+
+// simple_bank.sol (nota l'estensione .sol)
+/* **** INIZIO DELL'ESEMPIO **** */
+
+// Dichiara la versione del compilatore per il file sorgente
+pragma solidity ^0.6.6;
+
+// Inizia con il commento Natspec (i tre slash)
+// viene usato per la documentazione - e per i dati descrittivi per gli elementi
+// dell'interfaccia utente / azioni
+
+/// @title SimpleBank
+/// @author nemild
+
+/* 'contract' somiglia a 'class' in altri linguaggi (ha variabili di classe,
+ereditarietà, etc.) */
+contract SimpleBank { // CapWords
+    // Dichiariamo le variabili di stato fuori dalle funzioni, persisteranno
+    // durante tutta la vita del contratto
+
+    // i dizionari mappano gli indirizzi con i saldi
+    // fai sempre attenzione agli overflow attack che sfruttano i numeri
+    mapping (address => uint) private balances;
+
+    // "private" significa che che altri contratti non possono leggere i
+    // saldi ma le informazioni restano visibili ad altri attori sulla blockchain
+
+    address public owner;
+    // 'public' lo rende leggibile dall'esterno (ma non modificabile) dagli
+    // utenti e dai contratti
+
+    // Gli 'event' pubblicano le azioni in modo che siano ascoltabili da
+    // listener esterni
+    event LogDepositMade(address accountAddress, uint amount);
+
+    // I 'constructor' possono ricevere una o più parametri; Si può
+    // dichiarare un solo costruttore
+    constructor() public {
+        // 'msg' fornisce i dettagli sul messaggio che è stato mandato al contratto
+        // 'msg.sender' è chi invoca il contratto (l'indirizzo di chi lo crea)
+        owner = msg.sender;
+    }
+
+    /// @notice Deposita ether nella banca
+    /// @return Il saldo dell'utente dopo che è stato effettualto il deposito
+    function deposit() public payable returns (uint) {
+        // Usiamo 'require' per testare gli input dell'utente, 'assert' per gli
+        // invarianti interni. Qui ci assicuriamo di non avere a che fare con
+        // un overflow
+        require((balances[msg.sender] + msg.value) >= balances[msg.sender]);
+
+        balances[msg.sender] += msg.value;
+        // Non servono "this." o "self." con le variabili di stato
+        // Tutti i valori iniziali delle variabili sono impostati automaticamente
+        // al valore di default per quel tipo di dato
+
+        emit LogDepositMade(msg.sender, msg.value); // Fa scattare l'evento
+
+        return balances[msg.sender];
+    }
+
+    /// @notice Preleva ether dalla banca
+    /// @dev Non restituisce gli ether inviati in eccesso
+    /// @param withdrawAmount L'importo che si vuole ritirare
+    /// @return remainingBal
+    function withdraw(uint withdrawAmount) public returns (uint remainingBal) {
+        require(withdrawAmount <= balances[msg.sender]);
+
+        // Notiamo come per prima cosa scaliamo i soldi dal saldo, prima di
+        // invarli. Ogni .transfer/.send in questo contratto può chiamare una 
+        // funzione esterna. Questa cosa potrebbe permettere a chi invoca la
+        // funzione di richiedere un importo maggiore del suo saldo usando
+        // una chiamata ricorsiva. Miriamo ad aggiornare lo stato prima che sia
+        // chiamata una funzione esterna, incluse .transfer/.send
+        balances[msg.sender] -= withdrawAmount;
+
+        // Qui lancia automaticamente un errore se fallisce, il che implica
+        // che il saldo (non più aggiornato) viene ripristinato a prima della
+        // transazione
+        msg.sender.transfer(withdrawAmount);
+
+        return balances[msg.sender];
+    }
+
+    /// @notice Recupera il saldo
+    /// @return Il saldo dell'utente
+    // 'view' (ex: constant) impedisce alle funzioni di modificare lo stato
+    // delle variabili; consente alle le funzioni di essere disponibili in
+    // locale/fuori dalla blockchain
+    function balance() view public returns (uint) {
+        return balances[msg.sender];
+    }
+}
+// ** FINE DELL'ESEMPIO **
+```
