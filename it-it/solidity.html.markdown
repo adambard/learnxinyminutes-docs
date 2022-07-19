@@ -44,37 +44,44 @@ sperimentali o beta sono evidenziate e soggette a cambiamenti. Ogni Pull Request
 è ben accetta.
 
 
-## Lavorare su una testnet
+# Lavorare con Remix e Metamask
 
-Distribuire e testare su una testnet è il modo più accurato per mettere alla
-prova i tuoi smart contract in Solidity. Per farlo procuriamoci prima degli ETH
-di test dalla testnet Kovan.
+Uno dei modi più semplici di scrivere, distribuire e testare il codice Solidity
+è usare :
 
-[Entra in questo Gitter Channel](https://gitter.im/kovan-testnet/faucet) e
-scrivici l'indirizzo del tuo wallet Metamask.
+1. [L'ambiente di sviluppo online Remix](https://remix.ethereum.org/) 
+2. [Il wallet Metamask](https://metamask.io/).
 
-Sul tuo Metamask, dovrai cambiare la testnet in `Kovan`.
+Per cominciare, [scarichiamo l'estesione per browser di Metamask](https://metamask.io/). 
 
-![Solidity-in-remix](../images/solidity/metamask-kovan.png)
+Una volta installata, potremo iniziare ad usare Remix. Il codice seguente è
+pre-inizializzato, ma prima di addentrarci, diamo un'occhiata a qualche
+trucchetto per iniziare ad usare Remix. Carica tutto il necessario [clickando su questo link](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=f490c0d51141dd0515244db40bbd0c17&runs=200).
 
-Rivecerai degli Ethereum di test gratuiti. Per distribuire degli smart contract
-su una testnet abbiamo bisogno di Ethereum.
+1. Scegli il compilatore per Solidity
 
-Nell'esempio precedente non avevamo usato una testnet, ma avevamo distribuito
-su un ambiente virtuale fittizio. Quando si lavora su una testnet, possiamo
-davvero monitorare e interagire con i nostri contratti in maniera persistente.
+![Solidity-in-remix](../images/solidity/remix-solidity.png)
 
-Per distribuire su una testnet, allo step `#4 Fai il deploy`, cambia
-l'`environment` selezionato in `injected web3`. In questo modo verrà usato
-come network su cui fare il deploy qualsiasi network selezionato sul tuo
-Metamask.
+2. Apri il file che si caricherà su quel link
 
-![Solidity-in-remix](../images/solidity/remix-testnet.png)
+![Solidity-choose-file](../images/solidity/remix-choose-file.png)
 
-Per ora continua a usare la `Javascript VM` a meno che non ti sia detto di cambiarla. Quando distribuisci su una testnet, Metamask aprirà un pop up che
-ti chiederà di "confermare" la transazione. Premi `yes` e dopo un certo lasso
-di tempo, ti apparirà la stessa interfaccia per il contratto nella parte
-inferiore dello schermo.
+3. Compila il file
+
+![Solidity-compile](../images/solidity/remix-compile.png)
+
+4. Fai il deploy
+
+![Solidity-deploy](../images/solidity/remix-deploy.png)
+
+5. Smanetta con i contratti
+
+![Solidity-deploy](../images/solidity/remix-interact.png)
+
+Hai distribuito il tuo primo contrattto! Congratulazioni!
+
+Potrai testarlo e smanettare con le funzioni già definite. Dai un'occhiata ai
+commenti per scoprire cosa fanno.
 
 
 ## Lavorare su una testnet
