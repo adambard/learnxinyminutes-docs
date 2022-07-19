@@ -215,4 +215,122 @@ contract SimpleBank { // CapWords
     }
 }
 // ** FINE DELL'ESEMPIO **
+
+
+// Passiamo alle basi di Solidity
+
+// 1. TIPI DI DATO E I LORO METODI
+// uint viene usato per gli importi in valuta (non ci sono double o float)
+// e per le date (in unix time)
+uint x;
+
+// int di 256 bit, non possono essere modificati dopo l'istanziazione
+int constant a = 8;
+int256 constant a = 8; // stesso effetto della riga prima, qui viene
+// dichiarato esplicitamente che è di 256 bit
+uint constant VERSION_ID = 0x123A1; // Una costante esadecimale
+// con 'constant', il compilatore rimpiazza ogni occorrenza con il valore
+
+// Tutte le variabili di stato (quelle fuori da una funzione)
+// sono 'interne' di default e accessibili SOLO dall'interno del contratto 
+// e da tutti contratti che le ereditano
+// Bisogna usare esplicitamente 'public' per consentire l'accesso dai contratti 
+// esterni
+int256 public a = 8;
+
+// Per int e uint possiamo esplicitamente assegnare una dimensione tra 8 e 256
+// es. int8, int16, int24
+uint8 b;
+int64 c;
+uint248 e;
+
+// Attenzione a non andare in overflow, e a proteggersi dagli attacchi che lo fanno
+// Ad esempio per quanto rigrada l'addizione, conviene fare:
+uint256 c = a + b;
+assert(c >= a); // 'assert' testa gli invarianti interni; require viene usato 
+// per gli input
+// Per altri esempi di problemi comuni con le operazioni aritmentiche, dai una
+// occhiata alla Zeppelin's SafeMath library
+// https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
+
+
+// Non ci sono funzioni random built-in, puoi ottenere un numero pseudo-casuale
+// hashando l'ultimo blockhash, o ottenere un numero realmente casuale usando
+// qualcosa come Chainlink VRF. 
+// https://docs.chain.link/docs/get-a-random-number
+
+// Conversione di tipo
+int x = int(b);
+
+bool b = true; // oppure 'var b = true;' per l'inferenza di tipo
+
+// Indirizzi - contengono indirizzi Ethereum di 20 byte/160 bit
+// Non sono consentite operazioni aritmetiche
+address public owner;
+
+// Tipi di account:
+// Contract account: l'indirizzo viene impostato quando lo si crea (funzione con
+// l'indirzzo di chi lo crea, il numero della transazione inviata)
+// External Account: (persona/enitità esterna): l'indirizzo viene creato dala
+// chiave pubblica
+
+// Aggiungi il campo 'public' per indicare che è pubblico/accessibile dall'esterno
+// un getter viene creato automaticamente, ma NON un setter
+
+// Si possono mandare ether a tutti gli indirizzi
+owner.transfer(SOME_BALANCE); // fallisce e, in tal caso, ripristina
+// lo stato precedente
+
+// Possiamo anche usare la funzione di livello più basso .send, che restituisce
+// false se fallisce
+if (owner.send) {} // RICORDA: metti la send in un 'if' dato che gli indirizzi
+// usati nei contratti hanno delle funzioni, che vengono eseguite quando viene
+// fatta una send, che possono fallire
+// Inoltre fai attenzione a scalare i saldi PRIMA di provare a fare una send,
+// dato il rischio di chiamate riscorsive che potrebbero prosciugare il contratto
+
+// Possiamo controllare il saldo
+owner.balance; // il saldo del propietario (utente o contratto)
+
+
+// I Byte sono disposibili in dimensioni da 1 a 32
+byte a; // 'byte' è la stessa cosa di 'bytes1'
+bytes2 b;
+bytes32 c;
+
+// Byte con dimensione dinamica
+bytes m; // Un array particolare, la stessa cosa dell'array 'byte[]' (ma scritto stringato)
+// È più dispendioso di byte1-byte32, che di solito sono preferibili
+
+// come bytes, ma non permette di accedere alla lunghezza o all'indice (per ora)
+string n = "hello"; // salvato in UTF8, nota i doppi apici, non singoli
+// le utility function per le stringhe saranno aggiunte in futuro
+// sono preferibili bytes32/bytes, dato che UTF8 occupa più memoria
+
+// Inferenza di tipo
+// 'var' fa inferenza di tipo a seconda del primo assegnamento,
+// non può essere usata tra i parametri di una funzione
+var a = true;
+// da usare con cautela, può inferire un tipo errato
+// es. un int8 quando un contatore dev'essere un int16
+
+// var può essere usata per assegnare una funzione ad una variabile
+function a(uint x) returns (uint) {
+    return x * 2;
+}
+var f = a;
+f(22); // chiamata
+
+// di default, tutte le variabili sono impostate a 0 durante l'istanziazione
+
+
+// Delete può essere chiamato sulla maggior parte dei valori
+// (NON distrugge il valore, ma lo setta a 0, il valore did default)
+uint x = 5;
+
+
+// Destructuring/Tuple
+(x, y) = (2, 7); // assegna/scambia più valori
+
+
 ```
