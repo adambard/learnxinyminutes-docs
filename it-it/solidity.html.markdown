@@ -8,7 +8,7 @@ contributors:
   - ["Shooter", "https://github.com/liushooter"]
   - ["Patrick Collins", "https://gist.github.com/PatrickAlphaC"]
 translators:
-    - ["Alias", "http://github.com/al-ias"]
+    - ["Al", "http://github.com/al-ias"]
 lang: it-it
 ---
 
