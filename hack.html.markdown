@@ -11,7 +11,7 @@ filename: learnhack.hh
 
 To run Hack code, [install HHVM](https://docs.hhvm.com/hhvm/installation/introduction), the open-source virtual machine.
 
-```Hack
+```php
 /* ==================================
  *           READ THE DOCS!
  * ==================================
