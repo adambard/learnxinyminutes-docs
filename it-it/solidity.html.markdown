@@ -97,7 +97,7 @@ Sul tuo Metamask, dovrai cambiare la testnet in `Kovan`.
 
 ![Solidity-in-remix](../images/solidity/metamask-kovan.png)
 
-Rivecerai degli Ethereum di test gratuiti. Per distribuire degli smart contract
+Riceverai degli Ethereum di test gratuiti. Per distribuire degli smart contract
 su una testnet abbiamo bisogno di Ethereum.
 
 Nell'esempio precedente non avevamo usato una testnet, ma avevamo distribuito
