@@ -111,7 +111,8 @@ Metamask.
 
 ![Solidity-in-remix](../images/solidity/remix-testnet.png)
 
-Per ora continua a usare la `Javascript VM` a meno che non ti sia detto di cambiarla. Quando distribuisci su una testnet, Metamask aprirà un pop up che
+Per ora continua a usare la `Javascript VM` a meno che non ti sia detto di
+cambiarla. Quando distribuisci su una testnet, Metamask aprirà un pop up che
 ti chiederà di "confermare" la transazione. Premi `yes` e dopo un certo lasso
 di tempo, ti apparirà la stessa interfaccia per il contratto nella parte
 inferiore dello schermo.
