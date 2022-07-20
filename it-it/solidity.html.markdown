@@ -404,4 +404,11 @@ uint createdState = uint(State.Created); //  0
 // quale data location usare
 
 
+// 3. Operatori semplici
+// Ci sono operatori logici, a bit e aritmetici
+// Potenza: **
+// Or esclusivo: ^
+// Negazione bitwise: ~
+
+
 ```
