@@ -333,4 +333,75 @@ uint x = 5;
 (x, y) = (2, 7); // assegna/scambia più valori
 
 
+// 2. STRUTTURE DATI
+// Array
+bytes32[5] nicknames; // array statico
+bytes32[] names; // array dinamico
+uint newLength = names.push("John"); // aggiungere un elemento restituisce
+// la nuova dimensione dell'array
+// Dimesione
+names.length; // ottenere la dimensione
+names.length = 1; // la dimensione può essere assegnata (solo per gli array nello storage)
+
+// array multidimensionali
+uint[][5] x; // array con 5 array dinamici (ordine opposto rispetto ad
+// altri linguaggi)
+
+// Dizionari (da un tipo qualsiasi a un tipo qualsiasi)
+mapping (string => uint) public balances;
+balances["charles"] = 1;
+// il risultato balances["ada"] è 0, tutte le chiavi non settate 
+// restituiscono zero
+// 'public' permette che si possa fare questo da un altro contratto:
+contractName.balances("charles"); // restituisce 1
+// 'public' ha creato getter (ma non un setter), come il seguente:
+function balances(string _account) returns (uint balance) {
+    return balances[_account];
+}
+
+//  Mapping annidati
+mapping (address => mapping (address => uint)) public custodians;
+
+// Fare una delete
+delete balances["John"];
+delete balances; // assegna 0 a tutti gli elementi
+
+// Diversamente da altri linguaggi NON si può iterare tra gli elementi di un
+// mapping senza conoscere le chiavi - ma si può costruire una struttura dati a monte
+// che lo faccia
+
+// Strutture dati
+struct Bank {
+    address owner;
+    uint balance;
+}
+Bank b = Bank({
+    owner: msg.sender,
+    balance: 5
+});
+// oppure
+Bank c = Bank(msg.sender, 5);
+
+c.balance = 5; // imposta ad un nuovo valore
+delete b;
+// reimposta, imposta tutte le variabili della struttura a 0, tranne i mapping
+
+// Enumerazioni
+enum State { Created, Locked, Inactive }; // di solito si usano per le macchine di stato
+State public state; // Dichiara una variabile da un enum
+state = State.Created;
+// Le enum possono essere convertite esplicitamente in int
+uint createdState = uint(State.Created); //  0
+
+// Data location: Memory vs. storage vs. calldata - tutti i tipi complessi
+// (array, struct) hanno una data location
+// 'memory' non è persistente, 'storage' sì
+// Il default è 'storage' per varibili locali e di stato; 
+// 'memory' per i parametri delle funzioni
+// Lo stack può contenere poche varaibili locali
+
+// Per la maggior parte dei tipi, si può impostare esplicitamente
+// quale data location usare
+
+
 ```
