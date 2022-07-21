@@ -411,4 +411,38 @@ uint createdState = uint(State.Created); //  0
 // Negazione bitwise: ~
 
 
+// 4. Variabili globali degne di nota
+// ** this **
+this; // indirizzo del contratto
+// di solito si usa per trasferire il aldo rimanente altrove 
+// al termine della vita del contratto 
+this.balance;
+this.someFunction(); // invoca una funzione esterna tramite chiamata,
+// non attraverso un salto interno
+
+// ** msg - Il messaggio corrente ricevuto dal contratto **
+msg.sender; // indirizzo di chi ha inviato msg
+msg.value; // l'importo di ether forniti a questo contratto espresso in "wei",
+// la funzione dovrebbe essere marcata come "payable"
+msg.data; // in bytes, tutti gli argomenti del messaggio
+msg.gas; // 'gas' restante
+
+// ** tx - Questa transazione **
+tx.origin; // l'indirizzo di chi ha avviato questa transazione
+tx.gasprice; // il prezzo del "gas" per la transazione
+
+// ** block - Informazioni sul blocco attuale **
+now; // ora corrente (approssimatamente), alias di block.timestamp (in Unix time)
+// Da notare come può essere manipolata dai miner, quindi da usare con cautela
+
+block.number; // numero del blocco attuale
+block.difficulty; // difficulty del blocco attuale
+block.blockhash(1); // restituisce un bytes32, funziona solo per i 256 blocchi
+// più recenti
+block.gasLimit();
+
+// ** storage - Memoria persistente (in hash) **
+storage['abc'] = 'def'; // mappa da parole di 256 bit a parole di 256 bit
+
+
 ```
