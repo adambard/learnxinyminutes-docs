@@ -547,4 +547,37 @@ Coin.LogSent().watch({}, '', function(error, result) {
 // È prassi che un contratto dipenda da un altro (es. che dipenda
 // dai tassi di cambio forniti da un altro contratto)
 
+// C. Modifier
+// I modifier validano gli input per conto dele funzioni verificando ad esempio
+// il saldo minimo o l'autenticazione dell'utente;
+// sono simili alle calusole di guardia di altri linguaggi
+
+// '_' (underscore) viene spesso posizionato nell'ultima riga del body, e indica
+// che la funzione chiamata dev'essere posizionata lì
+modifier onlyAfter(uint _time) { require (now >= _time); _; }
+modifier onlyOwner { require(msg.sender == owner) _; }
+// usate comunemente negli automi a stati finiti
+modifier onlyIfStateA (State currState) { require(currState == State.A) _; }
+
+// Si dichiarano appena dopo la definizione di una funzione
+function changeOwner(newOwner)
+onlyAfter(someTime)
+onlyOwner()
+onlyIfState(State.A)
+{
+    owner = newOwner;
+}
+
+// L'underscore può essere messo prima della fine del body,
+// ma un'istruzione di ritorno esplicita lo salterebbe,
+// quindi è da usare con cautela
+modifier checkValue(uint amount) {
+    _;
+    if (msg.value > amount) {
+        uint amountToRefund = amount - msg.value;
+        msg.sender.transfer(amountToRefund);
+    }
+}
+
+
 ```
