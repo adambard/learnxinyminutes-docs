@@ -445,4 +445,70 @@ block.gasLimit();
 storage['abc'] = 'def'; // mappa da parole di 256 bit a parole di 256 bit
 
 
+// 4. FUNZIONI E ALTRO
+// A. Funzioni
+// Una semplice funzione
+function increment(uint x) returns (uint) {
+    x += 1;
+    return x;
+}
+
+// Le funzioni possono restituire molti valori,
+// e visto che i valori di ritorno vengono dichiarati prima
+// non è richiesta un'instruzione return esplicita
+function increment(uint x, uint y) returns (uint x, uint y) {
+    x += 1;
+    y += 1;
+}
+// Chiama la funzione di cui sopra
+uint (a,b) = increment(1,1);
+
+// 'view' (un alias di 'constant')
+// indica che la funzione non cambia / non può cambiare le variabili persistenti
+// Le funzioni definite con view vengono eseguite localmente, non sulla blockchain
+// N.B. la keyword constant sarà presto deprecata
+uint y = 1;
+
+function increment(uint x) view returns (uint x) {
+    x += 1;
+    y += 1; // questa riga fallirebbe
+    // y è una variabile di stato, e non può essere cambiata in una funzione di view
+}
+
+// 'pure' è più restrittivo di 'view' o 'constant', e non
+// permette nemmeno di leggere le varaibili di stato
+// In realtà è più complicato, per approfondire su
+// view/pure:
+// http://solidity.readthedocs.io/en/develop/contracts.html#view-functions
+
+// Modificatori di visibilità per le funzioni
+// Possono essere messi vicino a 'view' e includono:
+// public - visibile esternamente e internamente (di default per function)
+// external - visible solo esternamente (comprese le chiamate fatte con this.)
+// private - visibile slo dal contratto attuale
+// internal - visibile solo dal contratto attuale, e da quelli che ne derivano
+
+// Di solito è una buona idea marcare esplicitamente ogni funzione
+
+// Funzioni hoisted - e si può assegnare una funzione ad una variabile
+function a() {
+    var z = b;
+    b();
+}
+
+function b() {
+
+}
+
+// Tutte le funzioni che ricevono ether devono essere dichiarate come 'payable'
+function depositEther() public payable {
+    balances[msg.sender] += msg.value;
+}
+
+
+// I cicli sono da preferire alla ricorsione
+// (la profondità massima dello stack è 1024)
+// Inoltre, non impostare dei loop senza limiti,
+// perchè potresti reggiungere il limite per il gas
+
 ```
