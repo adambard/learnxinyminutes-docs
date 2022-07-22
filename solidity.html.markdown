@@ -278,7 +278,7 @@ f(22); // call
 
 // Delete can be called on most types
 // (does NOT destroy value, but sets value to 0, the initial value)
-uint x = 5;
+delete x;
 
 
 // Destructuring/Tuples
