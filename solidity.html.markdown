@@ -435,7 +435,7 @@ function increment(uint x) view returns (uint x) {
 // Functions hoisted - and can assign a function to a variable
 function a() {
     var z = b;
-    b();
+    z();
 }
 
 function b() {
