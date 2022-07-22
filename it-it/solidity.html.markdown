@@ -511,4 +511,40 @@ function depositEther() public payable {
 // Inoltre, non impostare dei loop senza limiti,
 // perchè potresti reggiungere il limite per il gas
 
+// B. Eventi
+// Gli eventi notificano a terze parti; è facile ispezionare e
+// accedere agli eventi al di fuori della blockchain (con client leggeri);
+// Tipicamente si dichiarano dopo i parametri del contratto
+
+// Tipicamente, sono capitalized - si usa Log come prefisso per esplicitarli
+// meglio ed evitare che si confondano con una chiamata a funzione
+
+// Dichiarazione
+event LogSent(address indexed from, address indexed to, uint amount); 
+// Da notare le prime lettere maiuscole
+
+// Chiamata
+LogSent(from, to, amount);
+
+/**
+
+Una terza parte esterna (entità o contratto), può osservare usando
+la libreria Javascript Web3:
+
+// Quel che se segue è codice Javascript, non Solidity
+Coin.LogSent().watch({}, '', function(error, result) {
+    if (!error) {
+        console.log("Trasferimento valuta: " + result.args.amount +
+            " la valuta è stata mandata da " + result.args.from +
+            " a " + result.args.to + ".");
+        console.log("I saldi ora sono:\n" +
+            "Mittente: " + Coin.balances.call(result.args.from) +
+            "Destinatario: " + Coin.balances.call(result.args.to));
+    }
+}
+**/
+
+// È prassi che un contratto dipenda da un altro (es. che dipenda
+// dai tassi di cambio forniti da un altro contratto)
+
 ```
