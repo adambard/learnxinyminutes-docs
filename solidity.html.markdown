@@ -388,7 +388,7 @@ block.gasLimit();
 storage['abc'] = 'def'; // maps 256 bit words to 256 bit words
 
 
-// 4. FUNCTIONS AND MORE
+// 5. FUNCTIONS AND MORE
 // A. Functions
 // Simple function
 function increment(uint x) returns (uint) {
