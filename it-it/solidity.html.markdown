@@ -992,4 +992,17 @@ successBoolean = someContractAddress.call('function_name', 'arg1', 'arg2');
 someContractAddress.callcode('function_name');
 
 
+// 13. NOTE SULLO STILE
+// Basate sulla guida allo stile PEP8 di Python
+// Guida completa allo stile: http://solidity.readthedocs.io/en/develop/style-guide.html
+
+// Riassunto veloce:
+// 4 spazi per l'indentazione
+// Due righe per separare la dichiarazione dei contratti
+// (e altre dichirazioni top level)
+// Evitare spazi ai lati interni delle parentesi tonde
+// Si possono omettere le parentesi graffe per statement monolinea (if, for, etc)
+// L'else dovrebbe essere posizionato su una riga a se
+
+
 ```
