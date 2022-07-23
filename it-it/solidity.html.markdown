@@ -712,4 +712,15 @@ reveal(100, "ilMioSegreto");
 // I costi per conservare cose come array multidimensionali sono spesso alti
 // (costa conservare dati - non dichiarare variabili parzialmente vuote)
 
+// C. Accesso ai dati sulla blockchain
+// Non si può impedire alle persone o ai computer di leggere il contenuto
+// o lo stato delle transazioni
+
+// Anche se 'private' non permette agli altri *contratti* di leggere alcune
+// informazioni direttamente, qualsiasi altro attore può leggere i dati
+// sulla blockchain
+
+// Tutti i dati, dall'inizio, vegono conservati sulla blockchain e
+// tutti possono accedere alle informazioni passate e ai cambiamenti futuri
+
 ```
