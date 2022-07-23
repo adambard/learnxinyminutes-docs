@@ -973,4 +973,12 @@ sha3("ab", "cd");
 ripemd160("abc");
 sha256("def");
 
+
+// 11.SICUREZZA
+
+// I bug possono essere disastrosi per i contratti Ethereum e anche 
+// i pattern comuni di Solidity potrebbero riverlarsi degli antipattern
+
+// Dai un'occhiata ai link sulla sicurezza alla fine di questo documento
+
 ```
