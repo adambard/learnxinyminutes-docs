@@ -1019,3 +1019,51 @@ someContractAddress.callcode('function_name');
 /// @param someParam Una descrizione di quel che fa il parametro
 /// @return Descrizione del valore di ritorno
 ```
+
+## Risorse Aggiuntive
+- [Documentazione di Solidity](https://solidity.readthedocs.org/en/latest/)
+- [Tutorial Chainlink per Principianti](https://docs.chain.link/docs/beginners-tutorial)
+- [Best Practice  per Smart Contract](https://github.com/ConsenSys/smart-contract-best-practices)
+- [Superblocks Lab - Ambiente di sviluppo su browser per Solidity](https://lab.superblocks.com/)
+- [EthFiddle - Il JsFiddle di Solidity](https://ethfiddle.com/)
+- [Solidity Editor su Browser](https://remix.ethereum.org/)
+- [Chat Room Gitter su Solidity](https://gitter.im/ethereum/solidity)
+- [Stategie di Progettazione Modulare per Contratti Ethereum](https://docs.erisindustries.com/tutorials/solidity/)
+- [Documentazione Chainlink](https://docs.chain.link/docs/getting-started)
+
+## Framework di Sviluppo per Smart Contract
+- [Hardhat](https://hardhat.org/)
+- [Brownie](https://github.com/eth-brownie/brownie)
+- [Truffle](https://www.trufflesuite.com/)
+
+## Librerie importanti
+- [Zeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts): Librerie che offrono pattern comuni (crowdfuding, safemath, ecc)
+- [Chainlink](https://github.com/smartcontractkit/chainlink): Codice che permette di interagire con dati esterni
+
+## Contratti di esempio
+- [Dapp Bin](https://github.com/ethereum/dapp-bin)
+- [Esempi Defi](https://github.com/PatrickAlphaC/chainlink_defi)
+- [Solidity per Contratti a Piccoli Passi](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
+- [Contratti ConsenSys](https://github.com/ConsenSys/dapp-store-contracts)
+- [Lo stato delle Dapp](http://dapps.ethercasts.com/)
+
+## Sicurezza
+- [Pensando Alla Sicurezza Degli Smart Contract](https://blog.ethereum.org/2016/06/19/thinking-smart-contract-security/)
+- [Sicurezza Degli Smart Contract](https://blog.ethereum.org/2016/06/10/smart-contract-security/)
+- [Blog Distribuito di Hacking](http://hackingdistributed.com/)
+
+## Stile
+- [Guida allo Stile di Solidity](http://solidity.readthedocs.io/en/latest/style-guide.html): La guida allo stile di Ethereum deriva in gran parte dalla guida allo stile [PEP 8](https://www.python.org/dev/peps/pep-0008/) di Python.
+
+## Editor
+- [Remix](https://remix.ethereum.org/)
+- [Emacs Modalità Solidity](https://github.com/ethereum/emacs-solidity)
+- [Vim Solidity](https://github.com/tomlion/vim-solidity)
+- Snippet per gli Editor ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
+
+## Cose da fare in futuro
+- Nuove keyword: protected, inheritable
+- Lista dei design pattern comuni (throttling, RNG, upgrade di versione)
+-Anti patterns comuni sulla sicurezza
+
+Sentiti libero di mandare una pull request con qualsiasi modifica - o scrivi una mail a nemild -/at-/ gmail
