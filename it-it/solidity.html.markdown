@@ -723,4 +723,31 @@ reveal(100, "ilMioSegreto");
 // Tutti i dati, dall'inizio, vegono conservati sulla blockchain e
 // tutti possono accedere alle informazioni passate e ai cambiamenti futuri
 
+// D. Oracle e dati esterni
+// Gli oracle consentono di interagire con i tuoi smart contract
+// al di fuori della blockchain. 
+// Vengono usati per ricevere informazioni dal mondo reale, mandare
+// richieste post al mondo reale o vice versa.
+
+// Anche le implementazioni che sfruttano l'ora vengono fatte attraverso
+// gli oracle, visto che i contratti devono essere chiamati direttamente e
+// non possono fare una "subscribe" a un certo orario. 
+// Data la decentralizzazione degli smart contract, vorrai ricevere informazioni
+// in maniera decentralizzata, altrimenti rischi di ricreare l'accentramento
+// che la progettazione degli smart contract si prefigge di prevenire.
+
+// Il modo migliore di ottenere e usare dati decentralizzati già pronti
+// è attraverso i Chainlink Data Feeds
+// https://docs.chain.link/docs/get-the-latest-price
+// Possiamo fare riferimento a certe informazioni della blockchain
+// che sono già state aggregate da più fonti e ridistribuite on-chain,
+// usandole come "banche dati" di fonti di informazione. 
+
+// Puoi vedere altri esempi che effettuano chiamate alle API qui:
+// https://docs.chain.link/docs/make-a-http-get-request
+
+// E ovviamente puoi costruire la tua rete di orace, ma assicurati di sapere
+// quant'è accentrata o decentralizzata la tua applicazione. 
+
+// Mettere su una rete di oracle per conto tuo
 ```
