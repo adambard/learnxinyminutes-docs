@@ -1,6 +1,6 @@
 ---
 language: openscad
-filename: leanopenscad.scad
+filename: learnopenscad.scad
 contributors:
     - ["Thomas Preston", "https://github.com/tompreston/"]
 ---
