@@ -981,4 +981,15 @@ sha256("def");
 
 // Dai un'occhiata ai link sulla sicurezza alla fine di questo documento
 
+
+// 12. FUNZIONI DI BASSO LIVELLO
+// call - è di basso livello, non viene usata spesso, perchè non è type safe
+successBoolean = someContractAddress.call('function_name', 'arg1', 'arg2');
+
+// callcode - Il codice all'indirizzo target viene eseguito *contestualmente*
+// alla chiamata del contratto
+// fornisce le stesse funzionalità di una libreria
+someContractAddress.callcode('function_name');
+
+
 ```
