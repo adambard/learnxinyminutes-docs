@@ -664,4 +664,28 @@ import "filename";
 import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
 
 
+// 8. ALTRE KEYWORD
+
+// A. Selfdestruct
+// autodistrugge il contratto corrente, inviando i fondi ad un indirizzo
+// (di solito il creatore)
+selfdestruct(SOME_ADDRESS);
+
+// rimuove il codice e quanto in memoria dal blocco corrente e tutti i futuri blocchi
+// aiuta ad alleggerire i client, ma le informazioni precedenti continueranno
+// a persistere sulla blockchain
+
+// È un pattern comune, permette al proprietario di terminare il contratto
+// e ricevere i fondi rimasti
+function remove() {
+    if(msg.sender == creator) { // Solo il creatore del contratto può farlo
+        selfdestruct(creator); // Cessa l'attività del contratto, trasferisce i fondi
+    }
+}
+
+// Si potrebbe voler disattivare il contratto manualmente, anzichè usare una
+// selfdestruct (gli ether inviati ad un contratto dopo una selfdestruct
+// vengono persi)
+
+
 ```
