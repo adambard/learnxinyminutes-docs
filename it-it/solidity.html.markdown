@@ -942,3 +942,35 @@ contract CrowdFunder {
 // ** END EXAMPLE **
 
 ```
+
+Qualche altra funzionalità.
+
+```javascript
+// 10. ATRE FUNZIONALITA' NATIVE
+
+// Unità di valuta
+// La valuta viene definita partendo dai wei, l'unità più piccola di Ether
+uint minAmount = 1 wei;
+uint a = 1 finney; // 1 ether == 1000 finney
+// Per altre unità, vedi: http://ether.fund/tool/converter
+
+// Unità temporali
+1 == 1 second
+1 minutes == 60 seconds
+
+// Le unità temporali si possono moltiplicare, visto che non vegono salvate
+// nelle variabili
+uint x = 5;
+(x * 1 days); // 5 giorni
+
+// Attenzione ad usare l'operatore di uguaglianza con i secondi/anni bisestili
+// (sono da preferire maggiore/minore di)
+
+// Crittografia
+// Tutte le stringhe che vengono passate vengono concatenate prima di
+// calcolare l'hash
+sha3("ab", "cd");
+ripemd160("abc");
+sha256("def");
+
+```
