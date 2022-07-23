@@ -608,4 +608,60 @@ for(uint x = 0; x < refundAddressList.length; x++) {
 // Ad es. preferire pull payments ai push payment
 
 
+// 7. OGGETTI/CONTRATTI
+
+// A. Invocare un contratto esterno
+contract InfoFeed {
+    function info() payable returns (uint ret)  { return 42; }
+}
+
+contract Consumer {
+    InfoFeed feed; // punta ad un contratto sulla blockchain
+
+    // Imposta il feed sull'istanza del contratto esistente
+    function setFeed(address addr) {
+        // fare attenzione alla conversione di tipo automatica;
+        // il costruttore non viene invocato
+        feed = InfoFeed(addr);
+    }
+
+    // Imposta il feed ad una nuova istanza del contratto
+    function createNewFeed() {
+        feed = new InfoFeed(); // viene creata una nuova istanza;
+        // viene invocato il costruttore
+    }
+
+    function callFeed() {
+        // le parentesi finali invocano il contratto, opzionalmente si può
+        // specificare un importo custom di ether o di gas
+        feed.info.value(10).gas(800)();
+    }
+}
+
+// B. ereditarietà
+
+// Conta l'ordine, l'ultimo contratto ereditato (es. 'def') può andare
+// in overriding su parti dei contratti precedentemente ereditati
+contract MyContract is abc, def("a custom argument to def") {
+
+// Funzione in overriding
+    function z() {
+        if (msg.sender == owner) {
+            def.z(); // invoca la funzione overridden da def
+            super.z(); // chiama la funzione overridden del padre
+        }
+    }
+}
+
+// Funzioni astratte
+function someAbstractFunction(uint x);
+// non possono essere compilate, vengono usate nei contratti base/astratti
+// e poi verranno implementate
+
+// C. Import
+
+import "filename";
+import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
+
+
 ```
