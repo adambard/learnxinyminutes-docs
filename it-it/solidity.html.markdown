@@ -756,4 +756,42 @@ reveal(100, "ilMioSegreto");
 // in base all'orario; si può creare un codice esterno che li pinghi reglarmente
 //  oppure fornire degli incentivi (ether) a qualcun'altro che lo faccia
 
+// F. Pattern Observer
+// Un pattern observer permette di iscriversi come osservatore e
+// registrare una funzione che verrà chiamata dall'oracle
+// (N.B. l'oracolo paga perchè sia eseguita quest'azione)
+// Ci sono alcune somoglianze nella registrazione con Pub/sub
+
+// Questo è un contratto astratto che importano sia il client che il server
+// Il client dovrebbe implementarlo
+contract SomeOracleCallback {
+    function oracleCallback(int _value, uint _time, bytes32 info) external;
+}
+
+contract SomeOracle {
+    SomeOracleCallback[] callbacks; // array di tutti gli osservatori iscritti
+
+    // Osservatori iscritti
+    function addSubscriber(SomeOracleCallback a) {
+        callbacks.push(a);
+    }
+
+    function notify(value, time, info) private {
+        for(uint i = 0;i < callbacks.length; i++) {
+            // tutti gli osservatori iscritti dovranno implementare la oracleCallback
+            callbacks[i].oracleCallback(value, time, info);
+        }
+    }
+
+    function doSomething() public {
+        // Codice che fa qualcosa
+
+        // Notifica a tutti gli iscritti
+        notify(_value, _time, _info);
+    }
+}
+
+// Il contratto client può aggiungersi agli iscritti (con addSubscriber) 
+// del contratto SomeOracle, importando SomeOracleCallback
+
 ```
