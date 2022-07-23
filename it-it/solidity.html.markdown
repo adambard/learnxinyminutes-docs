@@ -702,4 +702,14 @@ keccak256("una_puntata_d_asta", "un segreto"); // impegno
 // mostrerà la puntata ed il segreto che produce lo SHA3
 reveal(100, "ilMioSegreto");
 
+// B. Ottimizzazione della memoria (storage)
+// Scrivere dati sulla blockchain può essere costoso visto che vengono 
+// conservati per sempre; siamo incoraggati ad usare la memoria in maniera
+// scaltra (un giorno la compilazione migliorerà, ma per ora è vantaggioso
+// pianificare le strutture dati da usare - e conservarne il minimo possibile
+// sulla blockchain)
+
+// I costi per conservare cose come array multidimensionali sono spesso alti
+// (costa conservare dati - non dichiarare variabili parzialmente vuote)
+
 ```
