@@ -794,4 +794,151 @@ contract SomeOracle {
 // Il contratto client può aggiungersi agli iscritti (con addSubscriber) 
 // del contratto SomeOracle, importando SomeOracleCallback
 
+// G. Automi a stati finiti
+// vedi l'esempio sotto che usa enum per lo stato e il modifier inState
+```
+
+Prova l'esempio completo qui sotto [usando remix e la `Javascript VM`](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
+
+```javascript
+// *** ESEMPIO: Un esempio di crowdfunding (molto simile a Kickstarter) ***
+// ** START EXAMPLE **
+
+// CrowdFunder.sol
+pragma solidity ^0.6.6;
+
+/// @title CrowdFunder
+/// @author nemild
+contract CrowdFunder {
+    // Variabili impostate alla creazione dal creatore
+    address public creator;
+    address payable public fundRecipient; // il creatore può essere diverso
+    // da chi riceve i fondi, che dev'essere payable
+    uint public minimumToRaise; // è richiesto per chiedere il finanziamento,
+    // altrimenti tutti ricevono un rimborso
+    string campaignUrl;
+    byte version = "1";
+
+    // Strutture dati
+    enum State {
+        Fundraising,
+        ExpiredRefund,
+        Successful
+    }
+    struct Contribution {
+        uint amount;
+        address payable contributor;
+    }
+
+    // Variabili di stato
+    State public state = State.Fundraising; // inizializzato alla creazione
+    uint public totalRaised;
+    uint public raiseBy;
+    uint public completeAt;
+    Contribution[] contributions;
+
+    event LogFundingReceived(address addr, uint amount, uint currentTotal);
+    event LogWinnerPaid(address winnerAddress);
+
+    modifier inState(State _state) {
+        require(state == _state);
+        _;
+    }
+
+    modifier isCreator() {
+        require(msg.sender == creator);
+        _;
+    }
+
+    // Aspetta 24 settimane dopo l'ultimo cambio di stato prima di consentire
+    // che in contratto venga distrutto
+    modifier atEndOfLifecycle() {
+    require(((state == State.ExpiredRefund || state == State.Successful) &&
+        completeAt + 24 weeks < now));
+        _;
+    }
+
+    function crowdFund(
+        uint timeInHoursForFundraising,
+        string memory _campaignUrl,
+        address payable _fundRecipient,
+        uint _minimumToRaise)
+        public
+    {
+        creator = msg.sender;
+        fundRecipient = _fundRecipient;
+        campaignUrl = _campaignUrl;
+        minimumToRaise = _minimumToRaise;
+        raiseBy = now + (timeInHoursForFundraising * 1 hours);
+    }
+
+    function contribute()
+    public
+    payable
+    inState(State.Fundraising)
+    returns(uint256 id)
+    {
+        contributions.push(
+            Contribution({
+                amount: msg.value,
+                contributor: msg.sender
+            }) // usiamo un array per iterare
+        );
+        totalRaised += msg.value;
+
+        emit LogFundingReceived(msg.sender, msg.value, totalRaised);
+
+        checkIfFundingCompleteOrExpired();
+        return contributions.length - 1; // restituisce l'id
+    }
+
+    function checkIfFundingCompleteOrExpired()
+    public
+    {
+        if (totalRaised > minimumToRaise) {
+            state = State.Successful;
+            payOut();
+
+            // qui si può incentivare chi ha provocato il cambiamento di stato
+        } else if ( now > raiseBy )  {
+            state = State.ExpiredRefund; // ora i finanziatori possono avere
+            // il rimborso chiamando getRefund(id)
+        }
+        completeAt = now;
+    }
+
+    function payOut()
+    public
+    inState(State.Successful)
+    {
+        fundRecipient.transfer(address(this).balance);
+        LogWinnerPaid(fundRecipient);
+    }
+
+    function getRefund(uint256 id)
+    inState(State.ExpiredRefund)
+    public
+    returns(bool)
+    {
+        require(contributions.length > id && id >= 0 && contributions[id].amount != 0 );
+
+        uint256 amountToRefund = contributions[id].amount;
+        contributions[id].amount = 0;
+
+        contributions[id].contributor.transfer(amountToRefund);
+
+        return true;
+    }
+
+    function removeContract()
+    public
+    isCreator()
+    atEndOfLifecycle()
+    {
+        selfdestruct(msg.sender);
+        // il creatore riceve tutti i fondi che non sono stati riscossi
+    }
+}
+// ** END EXAMPLE **
+
 ```
