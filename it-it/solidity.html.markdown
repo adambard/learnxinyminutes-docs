@@ -750,4 +750,10 @@ reveal(100, "ilMioSegreto");
 // quant'è accentrata o decentralizzata la tua applicazione. 
 
 // Mettere su una rete di oracle per conto tuo
+
+// E. Cron Job
+// I contratti devono essere chiamati manualmente per gestire la lo scheduling
+// in base all'orario; si può creare un codice esterno che li pinghi reglarmente
+//  oppure fornire degli incentivi (ether) a qualcun'altro che lo faccia
+
 ```
