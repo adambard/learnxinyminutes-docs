@@ -1004,5 +1004,18 @@ someContractAddress.callcode('function_name');
 // Si possono omettere le parentesi graffe per statement monolinea (if, for, etc)
 // L'else dovrebbe essere posizionato su una riga a se
 
+// 14. COMMENTI NATSPEC
+// usati per la documentazione, commenti e UI esterne
 
+// Natspec dei contratti - sempre sopra la definizione del contratto
+/// @title Titolo del contratto
+/// @author Nome dell'autore
+
+// Natspec delle funzioni
+/// @notice informazioni su quel che fa la funzione; mostrate quando la funzione viene eseguita
+/// @dev Documentazione della funzione per sviluppatori
+
+// Natspec dei parametri/valori di ritorno delle funzioni
+/// @param someParam Una descrizione di quel che fa il parametro
+/// @return Descrizione del valore di ritorno
 ```
