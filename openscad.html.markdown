@@ -2,42 +2,38 @@
 language: openscad
 filename: learnopenscad.scad
 contributors:
-    - ["Thomas Preston", "https://github.com/tompreston/"]
+    - ["Tom Preston", "https://github.com/tompreston/"]
 ---
 
 Draw 3D models with code using [OpenSCAD](https://openscad.org/).
 
 ```openscad
-// Single-line comments start with //
+// Comments look like this
 
-/*
-Multi-line comments look like this.
-*/
-
-/* 3D Primitives */
+// 3D Primitives
 cube(10);
 cube([5, 10, 20]);
 sphere(10);
 
-/* Transformations */
+// Transformations
 translate([20, 0, 0]) cube(10);
 rotate([0, 20, 30]) cube(10);
 
 translate([20, 0, 0]) rotate([0, 20, 30]) cube(10);
 rotate([0, 20, 30]) translate([20, 0, 0]) cube(10);
 
-/* Modifiers
- * * disable
- * ! show only
- * # highlight / debug
- * % transparent / background
- */
-/* For example, show only the rotated cube at the origin, before we translate it. */
+// Modifiers
+//
+//     * disable
+//     ! show only
+//     # highlight / debug
+//     % transparent / background
+//
+// For example, show only the rotated cube at the origin, before we translate it.
 translate([20, 0, 0]) !rotate([0, 20, 30]) cube(10);
 
-/* Formatting
- * The following models are the same. The official docs prefer the second.
- */
+// Formatting
+// The following models are the same. The official docs prefer the second.
 rotate([0, 20, 30]) translate([20, 0, 0]) cube(10);
 
 rotate([0, 20, 30])
@@ -50,7 +46,7 @@ rotate([0, 20, 30]) {
     }
 }
 
-/* Loops */
+// Loops
 num_cubes = 5;
 r = 20;
 cube_len = 5;
@@ -62,11 +58,12 @@ for (i = [0:num_cubes]) {
         cube(cube_len, center=true);
 }
 
-/* Boolean operations.
- * union() - the sum of both shapes
- * difference() - the first shape, minus the second shape
- * intersection() - only parts of both shapes which intersect
- */
+// Boolean operations
+//
+//            union() - the sum of both shapes
+//       difference() - the first shape, minus the second shape
+//     intersection() - only parts of both shapes which intersect
+//
 cube_l = 20;
 cube_w = 10;
 cube_h = 10;
@@ -82,12 +79,12 @@ difference() {
         cylinder(cube_w, r=hole_r);
 }
 
-/* Functions calculate values. */
+// Functions calculate values
 function inch2mm(i) = i * 25.4;
 
 cube(inch2mm(2));
 
-/* Modules create objects you want to use later. */
+// Modules create objects you want to use later
 module house(roof="flat", paint=[1,0,0]) {
     color(paint)
     if (roof=="flat") {
@@ -101,7 +98,7 @@ module house(roof="flat", paint=[1,0,0]) {
         translate([0,-1,0]) {
             translate([0.5,0.5,1])
                 sphere(r=0.5,$fn=20);
-            cube(); 
+            cube();
         }
     }
 }
@@ -109,9 +106,9 @@ module house(roof="flat", paint=[1,0,0]) {
 house("pitched");
 translate([2, 0, 0]) house("domical");
 
-/* Import modules and function from other files. */
-include <filename> /* Import the content of the file as if they were written in this file. */
-use <filename> /* Import modules and functions, but do not execute any commands. */
+// Import modules and function from other files
+include <filename> // Import the content of the file as if they were written in this file
+use <filename>     // Import modules and functions, but do not execute any commands
 ```
 
 ## Further Reading
