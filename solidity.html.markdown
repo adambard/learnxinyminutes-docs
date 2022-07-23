@@ -646,7 +646,7 @@ reveal(100, "mySecret");
 // All data to start of time is stored in blockchain, so
 // anyone can observe all previous data and changes
 
-// E. Oracles and External Data
+// D. Oracles and External Data
 // Oracles are ways to interact with your smart contracts outside the blockchain. 
 // They are used to get data from the real world, send post requests, to the real world
 // or vise versa.
@@ -671,12 +671,12 @@ reveal(100, "mySecret");
 
 // Setting up oracle networks yourself
 
-// D. Cron Job
+// E. Cron Job
 // Contracts must be manually called to handle time-based scheduling; can create external
 // code to regularly ping, or provide incentives (ether) for others to
 //
 
-// E. Observer Pattern
+// F. Observer Pattern
 // An Observer Pattern lets you register as a subscriber and
 // register a function which is called by the oracle (note, the oracle pays
 // for this action to be run)
@@ -714,7 +714,7 @@ contract SomeOracle {
 // Now, your client contract can addSubscriber by importing SomeOracleCallback
 // and registering with Some Oracle
 
-// F. State machines
+// G. State machines
 // see example below for State enum and inState modifier
 ```
 
