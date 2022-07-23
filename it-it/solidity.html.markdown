@@ -688,4 +688,18 @@ function remove() {
 // vengono persi)
 
 
+// 9. NOTE SUL DESIGN DEI CONTRATTI
+
+// A. Offruscamento
+// Tutte le variabili sono pubblicamente visibili sulla blockchain, quindi 
+// qualsiasi cosa privata ha bisogno di essere offruscata (es. hash con una
+// chiave segreta)
+
+// Passi: 1. Impegnarsi pagare una certa cifra, 2. Rivelare l'impegno preso
+keccak256("una_puntata_d_asta", "un segreto"); // impegno
+
+// in futuro, l'invocazione della funzione rivelatrice del contratto
+// mostrerà la puntata ed il segreto che produce lo SHA3
+reveal(100, "ilMioSegreto");
+
 ```
