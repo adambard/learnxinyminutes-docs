@@ -580,4 +580,32 @@ modifier checkValue(uint amount) {
 }
 
 
+// 6. ISTRUZIONI CONDIZIONALI E CICLI
+
+// Troviamo tutte le istruzioni condizionali di base - incluse if/else, for,
+// while, break, continue e return - ma non c'è lo switch
+
+// La sintassi è la stessa di javascript, ma non esiste la conversione di tipo
+// in booleano dai non booleani (bisogna usare gli operatori logici per
+// ottenere il valore boolean)
+
+// Bisogna stare attenti i loop che iterano in base al comportamento
+// dell'utente, dato che i contratti hanno un tetto massimo di gas
+// per blocco di codice e falliranno se lo superano
+// Ad esempio:
+for(uint x = 0; x < refundAddressList.length; x++) {
+    refundAddressList[x].transfer(SOME_AMOUNT);
+}
+
+// Ci sono due errori nel codice precedente:
+// 1. Un fallimento su una transfer impedisce al loop di completare tutti
+// i cicli, bloccando dei soldi;
+// 2. Questo loop potrebbe essere arbitrariamente lungo (si basa sul numero
+// degli utenti che hanno diritto al rimborso), quindi potrebbe fallire sempre
+// se supera il tetto massimo di gas per blocco;
+// Come soluzione, si potrebbe permettere agli utenti di prelevare
+// individualmente dal loro subaccount e segnare il rimborso come riscosso
+// Ad es. preferire pull payments ai push payment
+
+
 ```
