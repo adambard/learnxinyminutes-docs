@@ -494,7 +494,7 @@ Coin.LogSent().watch({}, '', function(error, result) {
 // '_' (underscore) often included as last line in body, and indicates
 // function being called should be placed there
 modifier onlyAfter(uint _time) { require (now >= _time); _; }
-modifier onlyOwner { require(msg.sender == owner) _; }
+modifier onlyOwner { require(msg.sender == owner); _; }
 // commonly used with state machines
 modifier onlyIfStateA (State currState) { require(currState == State.A) _; }
 
