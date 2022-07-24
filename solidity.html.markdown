@@ -278,7 +278,7 @@ f(22); // call
 
 // Delete can be called on most types
 // (does NOT destroy value, but sets value to 0, the initial value)
-uint x = 5;
+delete x;
 
 
 // Destructuring/Tuples
@@ -435,7 +435,7 @@ function increment(uint x) view returns (uint x) {
 // Functions hoisted - and can assign a function to a variable
 function a() {
     var z = b;
-    b();
+    z();
 }
 
 function b() {
@@ -494,7 +494,7 @@ Coin.LogSent().watch({}, '', function(error, result) {
 // '_' (underscore) often included as last line in body, and indicates
 // function being called should be placed there
 modifier onlyAfter(uint _time) { require (now >= _time); _; }
-modifier onlyOwner { require(msg.sender == owner) _; }
+modifier onlyOwner { require(msg.sender == owner); _; }
 // commonly used with state machines
 modifier onlyIfStateA (State currState) { require(currState == State.A) _; }
 
