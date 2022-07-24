@@ -406,7 +406,7 @@ I started with <a href="https://ebens.me/post/lua-for-programmers-part-1/">Black
 Next I read the official <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> book.
 That's the how.
 
-It might be helpful to check out the <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
+It might be helpful to check out the <a href="http://lua-users.org/wiki/LuaShortReference">Lua short
 reference</a> on lua-users.org.
 
 The main topics not covered are standard libraries:

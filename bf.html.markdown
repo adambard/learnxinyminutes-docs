@@ -9,7 +9,7 @@ contributors:
 Brainfuck (not capitalized except at the start of a sentence) is an extremely
 minimal Turing-complete programming language with just 8 commands.
 
-You can try brainfuck on your browser with [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
+You can try brainfuck on your browser with [brainfuck-visualizer](https://brainfuck-visualizer.herokuapp.com).
 
 ```bf
 Any character not "><+-.,[]" (excluding quotation marks) is ignored.
