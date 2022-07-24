@@ -35,7 +35,7 @@ BLOG DI ETHEREUM PER TENERSI AGGIORNATI. TUTTO IL CODICE QUI PRESENTE E' FORNITO
 COSÌ COM'È, CON ANNESSI RISCHI SOSTANZIALI DI ERRORI O PATTERN DI PROGRAMMAZIONE
 DEPRECATI. 
 
-A differenza di altri tipi di codice, potresti aver bisogno di usare pattern di
+A differenza di altri linguaggi, potresti aver bisogno di usare pattern di
 pausing, deprecation e throttling usage per ridurre il rischio. Questo documento
 tratta principalmene la sintassi e quindi esclude molti design pattern in voga.
 
@@ -97,8 +97,8 @@ Sul tuo Metamask, dovrai cambiare la testnet in `Kovan`.
 
 ![Solidity-in-remix](../images/solidity/metamask-kovan.png)
 
-Riceverai degli Ethereum di test gratuiti. Per distribuire degli smart contract
-su una testnet abbiamo bisogno di Ethereum.
+Riceverai degli Ethereum di test gratuiti. Abbiamo bisogno di Ethereum per
+distribuire degli smart contract su una testnet.
 
 Nell'esempio precedente non avevamo usato una testnet, ma avevamo distribuito
 su un ambiente virtuale fittizio. Quando si lavora su una testnet, possiamo
@@ -244,7 +244,7 @@ uint8 b;
 int64 c;
 uint248 e;
 
-// Attenzione a non andare in overflow, e a proteggersi dagli attacchi che lo fanno
+// Attenzione a non andare in overflow e a proteggersi dagli attacchi che lo fanno
 // Ad esempio per quanto rigrada l'addizione, conviene fare:
 uint256 c = a + b;
 assert(c >= a); // 'assert' testa gli invarianti interni; require viene usato 
@@ -285,7 +285,7 @@ owner.transfer(SOME_BALANCE); // fallisce e, in tal caso, ripristina
 // false se fallisce
 if (owner.send) {} // RICORDA: metti la send in un 'if' dato che gli indirizzi
 // usati nei contratti hanno delle funzioni, che vengono eseguite quando viene
-// fatta una send, che possono fallire
+// fatta una send, che possono fallire.
 // Inoltre fai attenzione a scalare i saldi PRIMA di provare a fare una send,
 // dato il rischio di chiamate riscorsive che potrebbero prosciugare il contratto
 
@@ -387,7 +387,7 @@ delete b;
 // reimposta, imposta tutte le variabili della struttura a 0, tranne i mapping
 
 // Enumerazioni
-enum State { Created, Locked, Inactive }; // di solito si usano per le macchine di stato
+enum State { Created, Locked, Inactive }; // di solito si usano per gli automi a stati finiti
 State public state; // Dichiara una variabile da un enum
 state = State.Created;
 // Le enum possono essere convertite esplicitamente in int
@@ -414,7 +414,7 @@ uint createdState = uint(State.Created); //  0
 // 4. Variabili globali degne di nota
 // ** this **
 this; // indirizzo del contratto
-// di solito si usa per trasferire il aldo rimanente altrove 
+// di solito si usa per trasferire altrove il saldo rimanente 
 // al termine della vita del contratto 
 this.balance;
 this.someFunction(); // invoca una funzione esterna tramite chiamata,
@@ -490,7 +490,7 @@ function increment(uint x) view returns (uint x) {
 
 // Di solito è una buona idea marcare esplicitamente ogni funzione
 
-// Funzioni hoisted - e si può assegnare una funzione ad una variabile
+// Le funzioni sono hoisted e si può assegnare una funzione ad una variabile
 function a() {
     var z = b;
     b();
@@ -603,7 +603,7 @@ for(uint x = 0; x < refundAddressList.length; x++) {
 // 2. Questo loop potrebbe essere arbitrariamente lungo (si basa sul numero
 // degli utenti che hanno diritto al rimborso), quindi potrebbe fallire sempre
 // se supera il tetto massimo di gas per blocco;
-// Come soluzione, si potrebbe permettere agli utenti di prelevare
+// Come soluzione, si permette agli utenti di prelevare
 // individualmente dal loro subaccount e segnare il rimborso come riscosso
 // Ad es. preferire pull payments ai push payment
 
@@ -671,7 +671,7 @@ import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
 // (di solito il creatore)
 selfdestruct(SOME_ADDRESS);
 
-// rimuove il codice e quanto in memoria dal blocco corrente e tutti i futuri blocchi
+// rimuove il codice e quanto in memoria dal blocco corrente e da tutti i blocchi futuri
 // aiuta ad alleggerire i client, ma le informazioni precedenti continueranno
 // a persistere sulla blockchain
 
@@ -692,14 +692,14 @@ function remove() {
 
 // A. Offruscamento
 // Tutte le variabili sono pubblicamente visibili sulla blockchain, quindi 
-// qualsiasi cosa privata ha bisogno di essere offruscata (es. hash con una
+// qualsiasi informazione privata ha bisogno di essere offruscata (es. hash con una
 // chiave segreta)
 
 // Passi: 1. Impegnarsi pagare una certa cifra, 2. Rivelare l'impegno preso
 keccak256("una_puntata_d_asta", "un segreto"); // impegno
 
 // in futuro, l'invocazione della funzione rivelatrice del contratto
-// mostrerà la puntata ed il segreto che produce lo SHA3
+// mostrerà la puntata con il segreto che produce lo SHA3
 reveal(100, "ilMioSegreto");
 
 // B. Ottimizzazione della memoria (storage)
@@ -717,7 +717,7 @@ reveal(100, "ilMioSegreto");
 // o lo stato delle transazioni
 
 // Anche se 'private' non permette agli altri *contratti* di leggere alcune
-// informazioni direttamente, qualsiasi altro attore può leggere i dati
+// informazioni direttamente, qualsiasi altro attore può leggerle
 // sulla blockchain
 
 // Tutti i dati, dall'inizio, vegono conservati sulla blockchain e
