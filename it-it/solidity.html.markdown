@@ -78,7 +78,7 @@ trucchetto per iniziare ad usare Remix. Carica tutto il necessario [clickando su
 
 ![Solidity-deploy](../images/solidity/remix-interact.png)
 
-Hai distribuito il tuo primo contrattto! Congratulazioni!
+Hai distribuito il tuo primo contratto! Congratulazioni!
 
 Potrai testarlo e smanettare con le funzioni già definite. Dai un'occhiata ai
 commenti per scoprire cosa fanno.
@@ -156,7 +156,7 @@ contract SimpleBank { // CapWords
     // listener esterni
     event LogDepositMade(address accountAddress, uint amount);
 
-    // I 'constructor' possono ricevere una o più parametri; Si può
+    // I 'constructor' possono ricevere uno o più parametri; Si può
     // dichiarare un solo costruttore
     constructor() public {
         // 'msg' fornisce i dettagli sul messaggio che è stato mandato al contratto
@@ -271,7 +271,7 @@ address public owner;
 // Tipi di account:
 // Contract account: l'indirizzo viene impostato quando lo si crea (funzione con
 // l'indirzzo di chi lo crea, il numero della transazione inviata)
-// External Account: (persona/enitità esterna): l'indirizzo viene creato dala
+// External Account: (persona/enitità esterna): l'indirizzo viene creato dalla
 // chiave pubblica
 
 // Aggiungi il campo 'public' per indicare che è pubblico/accessibile dall'esterno
@@ -485,7 +485,7 @@ function increment(uint x) view returns (uint x) {
 // Possono essere messi vicino a 'view' e includono:
 // public - visibile esternamente e internamente (di default per function)
 // external - visible solo esternamente (comprese le chiamate fatte con this.)
-// private - visibile slo dal contratto attuale
+// private - visibile solo dal contratto attuale
 // internal - visibile solo dal contratto attuale, e da quelli che ne derivano
 
 // Di solito è una buona idea marcare esplicitamente ogni funzione
@@ -509,7 +509,7 @@ function depositEther() public payable {
 // I cicli sono da preferire alla ricorsione
 // (la profondità massima dello stack è 1024)
 // Inoltre, non impostare dei loop senza limiti,
-// perchè potresti reggiungere il limite per il gas
+// perchè potresti raggiungere il limite per il gas
 
 // B. Eventi
 // Gli eventi notificano a terze parti; è facile ispezionare e
@@ -752,7 +752,7 @@ reveal(100, "ilMioSegreto");
 // Mettere su una rete di oracle per conto tuo
 
 // E. Cron Job
-// I contratti devono essere chiamati manualmente per gestire la lo scheduling
+// I contratti devono essere chiamati manualmente per gestire lo scheduling
 // in base all'orario; si può creare un codice esterno che li pinghi reglarmente
 //  oppure fornire degli incentivi (ether) a qualcun'altro che lo faccia
 
