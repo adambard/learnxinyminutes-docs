@@ -496,7 +496,7 @@ Coin.LogSent().watch({}, '', function(error, result) {
 modifier onlyAfter(uint _time) { require (now >= _time); _; }
 modifier onlyOwner { require(msg.sender == owner); _; }
 // commonly used with state machines
-modifier onlyIfStateA (State currState) { require(currState == State.A) _; }
+modifier onlyIfStateA (State currState) { require(currState == State.A); _; }
 
 // Append right after function declaration
 function changeOwner(newOwner)
