@@ -178,26 +178,26 @@ function arithmetic_functions(a, b, c,     d) {
     # Now, to demonstrate the arithmetic functions
 
     # Most AWK implementations have some standard trig functions
-    localvar = sin(a);
-    localvar = cos(a);
-    localvar = atan2(b, a); # arc tangent of b / a
+    d = sin(a);
+    d = cos(a);
+    d = atan2(b, a); # arc tangent of b / a
 
     # And logarithmic stuff
-    localvar = exp(a);
-    localvar = log(a);
+    d = exp(a);
+    d = log(a);
 
     # Square root
-    localvar = sqrt(a);
+    d = sqrt(a);
 
     # Truncate floating point to integer
-    localvar = int(5.34); # localvar => 5
+    d = int(5.34); # d => 5
 
     # Random numbers
     srand(); # Supply a seed as an argument. By default, it uses the time of day
-    localvar = rand(); # Random number between 0 and 1.
+    d = rand(); # Random number between 0 and 1.
 
     # Here's how to return a value
-    return localvar;
+    return d;
 }
 
 function string_functions(    localvar, arr) {
