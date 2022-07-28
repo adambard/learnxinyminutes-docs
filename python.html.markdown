@@ -153,13 +153,14 @@ None  # => None
 "etc" is None  # => False
 None is None   # => True
 
-# None, 0, and empty strings/lists/dicts/tuples all evaluate to False.
+# None, 0, and empty strings/lists/dicts/tuples/sets all evaluate to False.
 # All other values are True
-bool(0)   # => False
-bool("")  # => False
-bool([])  # => False
-bool({})  # => False
-bool(())  # => False
+bool(0)     # => False
+bool("")    # => False
+bool([])    # => False
+bool({})    # => False
+bool(())    # => False
+bool(set()) # => False
 
 ####################################################
 ## 2. Variables and Collections
