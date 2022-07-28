@@ -497,6 +497,7 @@ with open("myfile1.txt", "w+") as file:
     file.write(str(contents))        # writes a string to a file
 
 with open("myfile2.txt", "w+") as file:
+    import json
     file.write(json.dumps(contents)) # writes an object to a file
 
 # Reading from a file
@@ -506,6 +507,7 @@ print(contents)
 # print: {"aa": 12, "bb": 21}
 
 with open('myfile2.txt', "r+") as file:
+    import json
     contents = json.load(file)       # reads a json object from a file
 print(contents)
 # print: {"aa": 12, "bb": 21}
