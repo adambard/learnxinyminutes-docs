@@ -697,7 +697,7 @@ import math
 dir(math)
 
 # 当你的脚本文件所在的文件夹也包含了一个名为 math.py 的 Python 文件
-# 这个 math.p 文件会被代替引入，而不是引入 Python 內建模块中的 math
+# 这个 math.py 文件会被代替引入，而不是引入 Python 內建模块中的 math
 # 出现这个情况的原因是本地文件夹的引入优先级要比 Python 內建库引入优先级要高
 
 
