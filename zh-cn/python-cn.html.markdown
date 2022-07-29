@@ -552,7 +552,7 @@ next(our_iterator)  # => "three"
 # 当迭代器所有元素都取出后，会抛出 StopIteration
 next(our_iterator) # 抛出 StopIteration
 
-# 我们可以通过遍历还访问所有的值，实际上，for 内部实现了迭代
+# 我们还可以通过遍历访问所有的值，实际上，for 内部实现了迭代
 our_iterator = iter(our_iterable)
 for i in our_iterator:
     print(i)  # 依次打印 one, two, three
