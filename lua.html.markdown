@@ -58,7 +58,7 @@ foo = anUnknownVariable  -- Now foo = nil.
 aBoolValue = false
 
 -- Only nil and false are falsy; 0 and '' are true!
-if not aBoolValue then print('twas false') end
+if not aBoolValue then print('it was false') end
 
 -- 'or' and 'and' are short-circuited.
 -- This is similar to the a?b:c operator in C/js:
@@ -193,7 +193,7 @@ end
 
 -- A table can have a metatable that gives the table
 -- operator-overloadish behavior. Later we'll see
--- how metatables support js-prototypey behavior.
+-- how metatables support js-prototype behavior.
 
 f1 = {a = 1, b = 2}  -- Represents the fraction a/b.
 f2 = {a = 2, b = 3}
@@ -364,7 +364,7 @@ end)()
 -- locals inside mod.lua are invisible outside it.
 
 -- This works because mod here = M in mod.lua:
-mod.sayHello()  -- Says hello to Hrunkner.
+mod.sayHello() -- Prints: Why hello there Hrunkner
 
 -- This is wrong; sayMyName only exists in mod.lua:
 mod.sayMyName()  -- error
