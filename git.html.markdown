@@ -581,7 +581,19 @@ $ git rm HelloWorld.c
 # Remove a file from a nested dir
 $ git rm /pather/to/the/file/HelloWorld.c
 ```
+### blame
 
+Examine specific points the code's history and find out who the last author was on that modified line
+```bash
+# find the authors on the latest modified lines
+$ git blame google_python_style.vim
+b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 12) " See the License for the specific language governing permissions and
+b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 13) " limitations under the License.
+b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 14) 
+222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 15) " Indent Python in the Google way.
+222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 16) 
+222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 17) setlocal indentexpr=GetGooglePythonIndent(v:lnum)
+```
 ## Further Information
 
 * [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
