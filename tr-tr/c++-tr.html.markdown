@@ -1,5 +1,5 @@
 ---
-language: c++
+language: C++
 lang: tr-tr
 filename: learncpp-tr.cpp
 contributors:
