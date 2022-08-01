@@ -581,8 +581,8 @@ $ git rm HelloWorld.c
 # Remove a file from a nested dir
 $ git rm /pather/to/the/file/HelloWorld.c
 ```
-### blame
 
+### blame
 Examine specific points the code's history and find out who the last author was on that modified line
 ```bash
 # find the authors on the latest modified lines
