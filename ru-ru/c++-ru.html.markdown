@@ -1,5 +1,5 @@
 ---
-language: c++
+language: C++
 filename: learncpp-ru.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]

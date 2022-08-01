@@ -1,5 +1,5 @@
 ---
-language: c#
+language: C#
 filename: csharp-pt.cs
 contributors:
     - ["Robson Alves", "http://robsonalves.net/"]    
