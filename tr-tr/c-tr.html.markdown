@@ -1,5 +1,5 @@
 ---
-name: c
+name: C
 category: language
 language: c
 filename: learnc-tr.c
