@@ -46,7 +46,7 @@ package main
 import (
 	"fmt"       // A package in the Go standard library.
 	"io/ioutil" // Implements some I/O utility functions.
-	m "math"    // Math library with local alias m.
+	"math"    // Math library with local alias m.
 	"net/http"  // Yes, a web server!
 	"os"        // OS functions like working with the file system
 	"strconv"   // String conversions.
