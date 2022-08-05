@@ -111,6 +111,9 @@ func control_flow():
   for i in range(20): # GDScript 有类似 Python 的 range 函数
     print(i) # 所以这句将打印从 0 到 19 的数字
 
+  for i in 20: # 与 Python 略有不同的是，你可以直接用一个整型数开始循环
+    print(i) # 所以这行代码也将打印从 0 到 19 的数字
+
   for i in ["two", 3, 1.0]: # 遍历数组
     print(i)
   
