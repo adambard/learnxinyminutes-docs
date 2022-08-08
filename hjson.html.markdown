@@ -33,7 +33,7 @@ Let's take a look at examples to see the key syntax differences!
     # Notice that commas are also not required!
     # If using commas, strings DO require quotes!
     object: {
-        name: hjson
+        name: Hjson
         properties: [
             readable
             exciting
