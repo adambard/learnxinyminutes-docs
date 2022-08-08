@@ -65,7 +65,7 @@ Let's take a look at examples to see the key syntax differences!
     example3: [because, this, is, totally, BROKEN!]
     example4: this is technically OK though: {}[],:
     
-    # Enjoy working with HJSON!
+    # Enjoy working with Hjson!
     party-time: {
         hjson-lovers: [
             me
