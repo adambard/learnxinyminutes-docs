@@ -1,5 +1,5 @@
 ---
-language: hjson
+language: Hjson
 filename: learnhjson.hjson
 contributors:
   - ["MrTeferi", "https://github.com/MrTeferi"]
