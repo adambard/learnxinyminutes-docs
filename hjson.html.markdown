@@ -67,7 +67,7 @@ Let's take a look at examples to see the key syntax differences!
     
     # Enjoy working with Hjson!
     party-time: {
-        hjson-lovers: [
+        Hjson-lovers: [
             me
             my mom
             "my dad"
