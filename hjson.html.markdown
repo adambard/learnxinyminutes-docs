@@ -52,7 +52,7 @@ Let's take a look at examples to see the key syntax differences!
         '''
         I wish JSON was more human readable.
         If only there was a JSON for my needs!
-        Oh wait.. there is! It's called HJSON.
+        Oh wait.. there is! It's called Hjson.
         '''
     
     # Backslashes are interpretted as an escape character ONLY in quoted strings
