@@ -8,7 +8,7 @@ lang: en
 
 Hjson is an attempt to make [JSON](https://learnxinyminutes.com/docs/json/) more human readable.
 
-HJSON is a syntax extension to JSON. 
+Hjson is a syntax extension to JSON. 
 It's NOT a proposal to replace JSON or to incorporate it into the JSON spec itself. 
 It's intended to be used like a user interface for humans, 
 to read and edit before passing the JSON data to the machine.
