@@ -72,7 +72,7 @@ Let's take a look at examples to see the key syntax differences!
             my mom
             "my dad"
         ]
-        hjson-power-level: 9000
+        Hjson-power-level: 9000
         supported: {
             python: yes
             java: yes
