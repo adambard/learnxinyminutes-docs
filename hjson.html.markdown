@@ -90,5 +90,5 @@ Let's take a look at examples to see the key syntax differences!
 
 ## Further Reading
 
-* [HJSON.github.io](https://hjson.github.io/) Main HJSON site including editor support, how-to, etc.
+* [Hjson.github.io](https://hjson.github.io/) Main Hjson site including editor support, how-to, etc.
 * [HJSON Packages](https://github.com/hjson/) Various HJSON packages for different applications.
