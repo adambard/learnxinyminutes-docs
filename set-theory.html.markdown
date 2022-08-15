@@ -98,21 +98,21 @@ P(A) = { x : x ⊆ A }
 Given two sets `A` and `B`, the union of the two sets are the items that appear in either `A` or `B`, written as `A ∪ B`.
 
 ```
-A ∪ B = { x : x ∈ A ∪ x ∈ B }
+A ∪ B = { x : x ∈ A ∨ x ∈ B }
 ```
 
 ### Intersection
 Given two sets `A` and `B`, the intersection of the two sets are the items that appear in both `A` and `B`, written as `A ∩ B`.
 
 ```
-A ∩ B = { x : x ∈ A, x ∈ B }
+A ∩ B = { x : x ∈ A ∧ x ∈ B }
 ```
 
 ### Difference
 Given two sets `A` and `B`, the set difference of `A` with `B` is every item in `A` that does not belong to `B`.
 
 ```
-A \ B = { x : x ∈ A, x ∉ B }
+A \ B = { x : x ∈ A ∧ x ∉ B }
 ```
 
 ### Symmetrical difference
