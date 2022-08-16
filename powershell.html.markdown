@@ -802,6 +802,6 @@ Interesting Projects
 * [Oh-My-Posh](https://github.com/JanDeDobbeleer/oh-my-posh) Shell customization similar to the popular Oh-My-Zsh on Mac
 * [PSake](https://github.com/psake/psake) Build automation tool
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
-* [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
+* [ZLocation](https://github.com/vors/ZLocation) Powershell `cd` that reads your mind
 * [PowerShell Community Extensions](https://github.com/Pscx/Pscx)
 * [More on the Powershell Pipeline Issue](https://github.com/PowerShell/PowerShell/issues/1908)
