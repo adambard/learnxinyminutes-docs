@@ -906,7 +906,8 @@ on a new line! ""Wow!"", the masses cried";
     } // end class Bicycle
 
     // PennyFarthing is a subclass of Bicycle
-    class PennyFarthing : Bicycle
+    // The sealed modifer prevents other classes from inheriting from PennyFarthing.
+    sealed class PennyFarthing : Bicycle
     {
         // (Penny Farthings are those bicycles with the big front wheel.
         // They have no gears.)
