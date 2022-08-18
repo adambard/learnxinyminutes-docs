@@ -42,8 +42,8 @@ echo "Hello world!" # => Hello world!
 
 # Each command starts on a new line, or after a semicolon:
 echo "This is the first command"; echo "This is the second command"
-# => This is the first command 
-# => This is the second command 
+# => This is the first command
+# => This is the second command
 
 # Declaring a variable looks like this:
 variable="Some string"
