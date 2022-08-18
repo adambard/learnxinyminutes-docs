@@ -6,15 +6,28 @@ contributors:
 lang: en-en
 ---
 
-RDF (Resource Description Framework) is a [W3C standard](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/) data model. The W3C has standardized several RDF syntaxes; examples below use the most popular one, [Turtle](https://www.w3.org/TR/turtle/). 
+RDF (Resource Description Framework) is a [W3C
+standard](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/) data
+model. The W3C has standardized several RDF syntaxes; examples below use the
+most popular one, [Turtle](https://www.w3.org/TR/turtle/).
 
-One nice advantage of Turtle files is that if you concatenate any two syntactically valid Turtle files, you will have another syntactically valid Turtle file. This is one of many things about RDF that ease data integration.
+One nice advantage of Turtle files is that if you concatenate any two
+syntactically valid Turtle files, you will have another syntactically valid
+Turtle file. This is one of many things about RDF that ease data integration.
 
-The W3C standard query language for RDF datasets is [SPARQL](https://www.w3.org/TR/sparql11-query/).
+The W3C standard query language for RDF datasets is
+[SPARQL](https://www.w3.org/TR/sparql11-query/).
 
-RDF expresses all facts as three-part {subject, predicate, object} statements known as triples. Because the same entity can be the subject of some triples and the object of others, a set of triples can represent a graph data structure. A large-scale storage system for triples is called a triplestore, and falls into the graph database category of NoSQL databases.
+RDF expresses all facts as three-part {subject, predicate, object} statements
+known as triples. Because the same entity can be the subject of some triples
+and the object of others, a set of triples can represent a graph data
+structure. A large-scale storage system for triples is called a triplestore,
+and falls into the graph database category of NoSQL databases.
 
-RDF subjects and predicates must be URIs (Uniform Resource Identifiers), which usually look like URLs but function as identifiers, not locators. The use of URIs provides context for resource identifiers to make them unambiguous—for example, to tell a book title from a job title.
+RDF subjects and predicates must be URIs (Uniform Resource Identifiers), which
+usually look like URLs but function as identifiers, not locators. The use of
+URIs provides context for resource identifiers to make them unambiguous—for
+example, to tell a book title from a job title.
 
 ```turtle
 # The hash symbol is the comment delimiter. 
@@ -138,3 +151,11 @@ ex:birthday rdf:type rdf:Property ;
             rdfs:range xsd:date .
 
 ```
+
+## Further Reading
+
+* [RDF Primer — Turtle version](https://www.w3.org/2007/02/turtle/primer/) from the W3C
+* [What is RDF?](https://www.bobdc.com/blog/whatisrdf/) on bobdc.com
+* [Learn RDF at Cambridge Semantics](https://cambridgesemantics.com/blog/semantic-university/learn-rdf/)
+* [Introduction to RDF and SPARQL](https://data.europa.eu/sites/default/files/d2.1.2_training_module_1.3_introduction_to_rdf_sparql_en_edp.pdf) at data.europa.eu
+
