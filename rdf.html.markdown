@@ -156,5 +156,6 @@ ex:birthday rdf:type rdf:Property ;
 
 * [RDF Primer — Turtle version](https://www.w3.org/2007/02/turtle/primer/) from the W3C
 * [What is RDF?](https://www.bobdc.com/blog/whatisrdf/) on bobdc.com
+* [What is RDFS?](https://www.bobdc.com/blog/whatisrdfs/) on bobdc.com 
 * [Introduction to RDF and SPARQL](https://data.europa.eu/sites/default/files/d2.1.2_training_module_1.3_introduction_to_rdf_sparql_en_edp.pdf) at data.europa.eu
 
