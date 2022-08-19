@@ -63,7 +63,7 @@ variable= "Some string" # => returns error: "Some string: command not found"
 # Using the variable:
 echo "$variable" # => Some string
 echo '$variable' # => $variable
-# When you use the variable itself — assign it, export it, or else — you write
+# When you use a variable itself — assign it, export it, or else — you write
 # its name without $. If you want to use the variable's value, you should use $.
 # Note that ' (single quote) won't expand the variables!
 # You can write variable without surrounding quotes but it's not recommended.
@@ -96,7 +96,7 @@ other_variable="variable"
 echo ${!other_variable} # => Some string
 # This will expand the value of `other_variable`.
 
-# Default value for variable:
+# The default value for variable:
 echo "${foo:-"DefaultValueIfFooIsMissingOrEmpty"}"
 # => DefaultValueIfFooIsMissingOrEmpty
 # This works for null (foo=) and empty string (foo=""); zero (foo=0) returns 0.
