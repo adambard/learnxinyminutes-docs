@@ -102,38 +102,40 @@ echo "${foo:-"DefaultValueIfFooIsMissingOrEmpty"}"
 # This works for null (foo=) and empty string (foo=""); zero (foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
 
-# Declare an array with 6 elements
-array0=(one two three four five six)
-# Print first element
-echo $array0 # => "one"
-# Print first element
-echo ${array0[0]} # => "one"
-# Print all elements
-echo ${array0[@]} # => "one two three four five six"
-# Print number of elements
-echo ${#array0[@]} # => "6"
-# Print number of characters in third element
-echo ${#array0[2]} # => "5"
-# Print 2 elements starting from fourth
-echo ${array0[@]:3:2} # => "four five"
-# Print all elements. Each of them on new line.
-for i in "${array0[@]}"; do
-    echo "$i"
+# Declare an array with 6 elements:
+array=(one two three four five six)
+# Print the first element:
+echo "${array[0]}" # => "one"
+# Print all elements:
+echo "${array[@]}" # => "one two three four five six"
+# Print the number of elements:
+echo "${#array[@]}" # => "6"
+# Print the number of characters in third element
+echo "${#array[2]}" # => "5"
+# Print 2 elements starting from fourth:
+echo "${array[@]:3:2}" # => "four five"
+# Print all elements each of them on new line.
+for item in "${array[@]}"; do
+    echo "$item"
 done
 
-# Brace Expansion { }
-# Used to generate arbitrary strings
-echo {1..10} # => 1 2 3 4 5 6 7 8 9 10
-echo {a..z} # => a b c d e f g h i j k l m n o p q r s t u v w x y z
-# This will output the range from the start value to the end value
-
 # Built-in variables:
-# There are some useful built-in variables, like
+# There are some useful built-in variables, like:
 echo "Last program's return value: $?"
 echo "Script's PID: $$"
 echo "Number of arguments passed to script: $#"
 echo "All arguments passed to script: $@"
 echo "Script's arguments separated into different variables: $1 $2..."
+
+# Brace Expansion {...}
+# used to generate arbitrary strings:
+echo {1..10} # => 1 2 3 4 5 6 7 8 9 10
+echo {a..z} # => a b c d e f g h i j k l m n o p q r s t u v w x y z
+# This will output the range from the start value to the end value.
+# Note that you can't use variables here:
+from=1
+to=10
+echo {$from..$to} # => {$from..$to}
 
 # Now that we know how to echo and use variables,
 # let's learn some of the other basics of bash!
