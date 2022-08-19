@@ -138,7 +138,7 @@ to=10
 echo {$from..$to} # => {$from..$to}
 
 # Now that we know how to echo and use variables,
-# let's learn some of the other basics of bash!
+# let's learn some of the other basics of Bash!
 
 # Our current directory is available through the command `pwd`.
 # `pwd` stands for "print working directory".
@@ -148,33 +148,46 @@ echo "I'm in $(pwd)" # execs `pwd` and interpolates output
 echo "I'm in $PWD" # interpolates the variable
 
 # If you get too much output in your terminal, or from a script, the command
-# `clear` clears your screen
+# `clear` clears your screen:
 clear
-# Ctrl-L also works for clearing output
+# Ctrl-L also works for clearing output.
 
 # Reading a value from input:
 echo "What's your name?"
-read Name # Note that we didn't need to declare a new variable
-echo Hello, $Name!
+read name
+# Note that we didn't need to declare a new variable.
+echo "Hello, $name!"
 
-# We have the usual if structure:
-# use `man test` for more info about conditionals
-if [ $Name != $USER ]
-then
+# We have the usual if structure.
+# Condition is true if the value of $name is not equal to the current user's login username:
+if [[ "$name" != "$USER" ]]; then
     echo "Your name isn't your username"
 else
     echo "Your name is your username"
 fi
-# True if the value of $Name is not equal to the current user's login username
 
-# NOTE: if $Name is empty, bash sees the above condition as:
-if [ != $USER ]
-# which is invalid syntax
-# so the "safe" way to use potentially empty variables in bash is:
-if [ "$Name" != $USER ] ...
-# which, when $Name is empty, is seen by bash as:
-if [ "" != $USER ] ...
-# which works as expected
+# To use && and || with if statements, you need multiple pairs of square brackets:
+read age
+if [[ "$name" == "Steve" ]] && [[ "$age" -eq 15 ]]; then
+    echo "This will run if $name is Steve AND $age is 15."
+fi
+
+if [[ "$name" == "Daniya" ]] || [[ "$name" == "Zach" ]]; then
+    echo "This will run if $name is Daniya OR Zach."
+fi
+# There are other comparison operators for numbers listed below:
+# -ne - not equal
+# -lt - less than
+# -gt - greater than
+# -le - less than or equal to
+# -ge - greater than or equal to
+
+# There is also the `=~` operator, which tests a string against the Regex pattern:
+email=me@example.com
+if [[ "$email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+then
+    echo "Valid email!"
+fi
 
 # There is also conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
@@ -196,27 +209,6 @@ bg
 # Kill job number 2
 kill %2
 # %1, %2, etc. can be used for fg and bg as well
-
-# To use && and || with if statements, you need multiple pairs of square brackets:
-if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
-then
-    echo "This will run if $Name is Steve AND $Age is 15."
-fi
-
-if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
-then
-    echo "This will run if $Name is Daniya OR Zach."
-fi
-
-# There is also the `=~` operator, which tests a string against a Regex pattern:
-Email=me@example.com
-if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
-then
-    echo "Valid email!"
-fi
-# Note that =~ only works within double [[ ]] square brackets,
-# which are subtly different from single [ ].
-# See https://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
 
 # Redefine command `ping` as alias to send only 5 packets
 alias ping='ping -c 5'
