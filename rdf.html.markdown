@@ -3,7 +3,6 @@ language: RDF
 filename: learnrdf.ttl
 contributors:
 - ["Bob DuCharme", "http://bobdc.com/"]
-lang: en-en
 ---
 
 RDF (Resource Description Framework) is a [W3C
