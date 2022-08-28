@@ -85,12 +85,24 @@ False - 5   # => -5
 2 == True   # => False
 -5 != False # => True
 
+# None, 0, and empty strings/lists/dicts/tuples/sets all evaluate to False.
+# All other values are True
+bool(0)     # => False
+bool("")    # => False
+bool([])    # => False
+bool({})    # => False
+bool(())    # => False
+bool(set()) # => False
+bool(4)     # => True
+bool(-6)    # => True
+
 # Using boolean logical operators on ints casts them to booleans for evaluation, but their non-cast value is returned
 # Don't mix up with bool(ints) and bitwise and/or (&,|)
 bool(0)     # => False
-bool(4)     # => True
-bool(-6)    # => True
+bool(2)     # => True
 0 and 2     # => 0
+bool(-5)    # => True
+bool(2)     # => True
 -5 or 0     # => -5
 
 # Equality is ==
