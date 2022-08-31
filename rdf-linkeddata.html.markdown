@@ -1,11 +1,3 @@
----
-language: RDF
-filename: learnrdf.ttl
-contributors:
-- ["Bob DuCharme", "http://bobdc.com/"]
-- ["Kingsley Idehen", "https://twitter.com/kidehen#netid"]
----
-
 RDF (Resource Description Framework) is a [W3C
 standard](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/) data
 model. The W3C has standardized several RDF syntaxes; examples below use the
