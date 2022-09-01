@@ -1,33 +1,19 @@
-RDF (Resource Description Framework) is a [W3C
-standard](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/) data
-model. The W3C has standardized several RDF syntaxes; examples below use the
-most popular one, [Turtle](https://www.w3.org/TR/turtle/).
+RDF (Resource Description Framework) is a [W3C standard](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/) standard data definition language for structured data representation.
 
-One nice advantage of Turtle files is that if you concatenate any two
-syntactically valid Turtle files, you will have another syntactically valid
-Turtle file. This is one of many things about RDF that ease data integration.
+Data is expressed using sentences/statements that manifest as a subject->predicate->object or entity->attribute-value graph -- representable using a variety of notations and serialized using a variety of document content-types. [
 
-The W3C standard query language for RDF datasets is
-[SPARQL](https://www.w3.org/TR/sparql11-query/).
+[RDF-Turtle (Turtle)](https://www.w3.org/TR/turtle/) is one an example of both a notation and content serialization type used for creating structured data using RDF. In regards to RDF-based structured data representation, Turtle provides the following benefits:
 
-RDF expresses all facts as three-part {subject, predicate, object} statements
-known as triples. Because the same entity can be the subject of some triples
-and the object of others, a set of triples can represent a graph data
-structure. A large-scale storage system for triples is called a triplestore,
-and falls into the graph database category of NoSQL databases.
+* Human readable notation syntax that aligns natural language subject->predicate->object sentence structure 
+* Doubles as both a notation and document content-type
 
-RDF subjects and predicates must be URIs (Uniform Resource Identifiers), which
-usually look like URLs but function as identifiers, not locators. The use of
-URIs provides context for resource identifiers to make them unambiguous—for
-example, to tell a book title from a job title.
+# Deployment using Linked Data Principles
 
-Using HTTP URIs to denote the subject, predicate, and optionally the object, of RDF
-statements is a best practice known as Linked Data Principles -- a deceptively 
-simple methodology for contributing to a fine-grained public or private Web of Data 
-deployable from any HTTP-accessible document location.  
+Popularized by the World Wide Web, hyperlinks (typically HTTP URIs) provide powerful tooling for unambiguous entity naming. Net effect, you can contribute to a public or private "Web of Data" by simply denoting the subject, predicate, and object (optionally) of an RDF sentence using a hyperlink.
+
+As per the example Turtle snippet provided below, you can extend this powerful structured data representation method by leveraging the dynamic power of relative HTTP URIs for entity naming. Net effect, your "Web of Data" is deployable from any HTTP-accessible document location.  
 
 ```turtle
-
 ## Turtle Start ##
 @prefix : <#> . 
 
@@ -161,7 +147,6 @@ He always has a joke for everyone.""" .
 * [What is RDFS?](https://www.bobdc.com/blog/whatisrdfs/) on bobdc.com 
 * [Introduction to RDF and SPARQL](https://data.europa.eu/sites/default/files/d2.1.2_training_module_1.3_introduction_to_rdf_sparql_en_edp.pdf) at data.europa.eu
 
+## Related
 
-
-
-
+* [rdf.html.markdown](https://github.com/adambard/learnxinyminutes-docs/blob/master/rdf.html.markdown)
