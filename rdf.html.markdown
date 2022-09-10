@@ -28,7 +28,7 @@ usually look like URLs but function as identifiers, not locators. The use of
 URIs provides context for resource identifiers to make them unambiguous—for
 example, to tell a book title from a job title.
 
-```turtle
+```
 # The hash symbol is the comment delimiter. 
 
 # Turtle triple statements end with periods like natural language sentences.
