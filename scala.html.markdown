@@ -626,19 +626,20 @@ List(
 
 // Certain collections (such as List) in Scala have a `foreach` method,
 // which takes as an argument a type returning Unit - that is, a void method
+// Some languages call this the `iter` method
 val aListOfNumbers = List(1, 2, 3, 4, 10, 20, 100)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
 
 // For comprehensions
 
-for { n <- s } yield sq(n)
+for { n <- s } yield sq(n) // Set(1, 9, 49)
 
-val nSquared2 = for { n <- s } yield sq(n)
+val nSquared2 = for { n <- s } yield sq(n) // Set(1, 9, 49)
 
-for { n <- nSquared2 if n < 10 } yield n
+for { n <- nSquared2 if n < 10 } yield n // Set(1, 9)
 
-for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
+for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared // Set(1, 9)
 
 /* NB Those were not for loops. The semantics of a for loop is 'repeat', whereas
    a for-comprehension defines a relationship between two sets of data. */
