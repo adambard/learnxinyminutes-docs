@@ -683,10 +683,12 @@ sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!
 sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 
 // Implicit function parameters enable us to simulate type classes in other
-// functional languages. It is so often used that it gets its own shorthand. The
-// following two lines mean the same thing:
-// def foo[T](implicit c: C[T]) = ...
-// def foo[T : C] = ...
+// functional languages. It is so often used that it gets its own shorthand.
+// This function takes `f` and `l` and automatically fills in `K` and `V`.
+def mapList[K,V](f: K=>V, l: List[K]): List[V] = l match {
+  case Nil => Nil
+  case h :: t => f(h) :: mapList(f, t)
+}
 
 
 // Another situation in which the compiler looks for an implicit is if you have
