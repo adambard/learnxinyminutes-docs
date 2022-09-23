@@ -342,8 +342,8 @@ val safeM = m.withDefaultValue("no lo se")
 safeM("bottle")   // java.lang.String = no lo se
 
 val s = Set(1, 3, 7)
-s(0)      // Boolean = false
-s(1)      // Boolean = true
+s(0)      // Boolean = false (0 isn't in `s`)
+s(1)      // Boolean = true (1 is in `s`)
 
 /* Look up the documentation of map here -
  * https://www.scala-lang.org/api/current/scala/collection/immutable/Map.html
