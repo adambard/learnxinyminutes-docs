@@ -604,7 +604,7 @@ val sSquared = s.map(sq)
 
 sSquared.filter(_ < 10)
 
-sSquared.reduce (_+_)
+sSquared.reduce (_ + _)
 
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
@@ -615,6 +615,14 @@ List(
   Person(name = "Bob", age = 30)
 ).filter(_.age > 25) // List(Person("Bob", 30))
 
+// The reduce function takes a function of type A -> B -> A which it repeatedly
+// applies to the sequence, accumulating the result
+List(1, 2, 3) reduce (_ * _) // 6
+List(
+  "Dom",
+  "Bob",
+  "Alice"
+).reduce(_ + " " + _) // Dom Bob Alice
 
 // Certain collections (such as List) in Scala have a `foreach` method,
 // which takes as an argument a type returning Unit - that is, a void method
