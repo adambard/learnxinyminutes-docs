@@ -429,7 +429,7 @@ println(mydog.bark)  // => "Woof, woof!"
 // The "object" keyword creates a type AND a singleton instance of it. It is
 // common for Scala classes to have a "companion object", where the per-instance
 // behavior is captured in the classes themselves, but behavior related to all
-// instance of that class go in objects. The difference is similar to class
+// instances of that class go into that object. The difference is similar to class
 // methods vs static methods in other languages. Note that objects and classes
 // can have the same name.
 object Dog {
