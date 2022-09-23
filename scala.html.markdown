@@ -594,8 +594,9 @@ List("Dom", "Bob", "Natalia") foreach println
 
 
 // Combinators
-// Using `s` from above:
+// Using `s` and `sq` from above:
 // val s = Set(1, 3, 7)
+// def sq(x: Int) = x * x
 
 s.map(sq)
 
