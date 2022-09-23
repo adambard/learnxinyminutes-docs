@@ -661,8 +661,8 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared // Set(1, 9)
 // Any value (vals, functions, objects, etc) can be declared to be implicit by
 // using the, you guessed it, "implicit" keyword. Note we are using the Dog
 // class from section 5 in these examples.
-implicit val myImplicitInt = 100
-implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
+implicit val myImplicitInt: Int = 100
+implicit def myImplicitFunction(breed: String): Dog = new Dog("Golden " + breed)
 
 // By itself, implicit keyword doesn't change the behavior of the value, so
 // above values can be used as usual.
