@@ -112,3 +112,8 @@ DELETE FROM tablename1;
 -- A tabela tablename1, é excluída completamente.
 DROP TABLE tablename1;
 ```
+
+# Leitura adicional
+
+* [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) A good introduction to SQL in a “learn by doing it” format.
+* [Database System Concepts](https://www.db-book.com/) book’s Chapter 3 - Introduction to SQL has an in depth explanation of SQL concepts.
