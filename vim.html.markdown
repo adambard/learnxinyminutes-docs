@@ -3,6 +3,7 @@ category: tool
 tool: vim
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
+    - ["kaymmm", "https://github.com/kaymmm"]
 filename: LearnVim.txt
 ---
 
