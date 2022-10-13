@@ -12,7 +12,7 @@ lang: pt-br
 Dart é uma novata no reino das linguagens de programação.
 Ela absorve muitas teorias de outras linguagens mais conhecidas, e tem a meta de não se diferenciar muito de seu irmão, JavaScript. Assim como JavaScript, Dart foi pensada para oferecer grande integração com o navegador.
 
-Dart tem tipagem obrigatória, contudo não é obrigatório informar devido a função de [detecção automática](https://dart.dev/guides/language/type-system#type-inference).
+As variáveis em Dart tem tipos, mas não é obrigatório declarar devido à função de [detecção automática](https://dart.dev/guides/language/type-system#type-inference).
 
 ```dart
 import "dart:collection";
