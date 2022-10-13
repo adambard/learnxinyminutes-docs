@@ -7,47 +7,82 @@ contributors:
 filename: p5.js
 ---
 
-p5.js is a JavaScript library that starts with the original goal of [Processing](https://processing.org), to make coding accessible for artists, designers, educators, and beginners, and reinterprets this for today's web.
-Since p5 is a JavaScript library, you should learn [Javascript](https://learnxinyminutes.com/docs/javascript/) first.
+p5.js is a JavaScript library that brings [Processing](https://processing.org) to the web. Processing's goal is to make coding accessible for artists, designers, educators, and beginners.
+
+Since p5.js is a JavaScript library, you should learn [JavaScript](https://learnxinyminutes.com/docs/javascript/) fundamentals first.
+
+p5.js's [reference documentation](https://p5js.org/reference/) is a critical resource throughout your p5.js journey. Whenever you're not sure what functions are available or how to use a particular function, take a peek there.
+
+## Environment Setup
+
+The easiest way to get started with p5 is to run code in the [online editor](https://editor.p5js.org/).
+
+If you want to make your own webpage with p5 to run locally, or hosted on a site like [Codepen](https://codepen.io/), include the library from a CDN in a `<script>` tag. Here's a small HTML page with p5 included:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+  </head>
+  <body>
+    <script>
+    // Our code goes within these script tags
+
+    function setup() {
+      console.log("hello p5!");
+    }
+    </script>
+  </body>
+</html>
+```
+
+If you open this HTML page in your browser and open the console in the [developer tools](https://javascript.info/devtools), you should see "hello p5!" printed in the log.
+
+## Fundamentals
+
+### Setup and Rendering Functions
+
+p5 lets you define many functions to hook into the library. The most common are `preload`, `setup` and `draw`.
+
+[`preload`](https://p5js.org/reference/#/p5/preload) is called first, providing the opportunity to load external assets and resources asynchronously. The only p5 functions that can be called in `preload` are `load*` functions, such as [`loadImage`](https://p5js.org/reference/#/p5/loadImage).
+
+[`setup`](https://p5js.org/reference/#/p5/setup) is called next, and enables one-time initialization for data structures and variables. Unlike the global scope and `preload`, the full suite of p5 library functions are available to use in `setup`.
+
+[`draw`](https://p5js.org/reference/#/p5/draw) is an animation loop that is called repeatedly after `setup` completes. In the common case, most of your application logic to update and render the screen will be chained from `draw`. p5 provides functions to control `draw`'s behavior include [`noLoop()`](https://p5js.org/reference/#/p5/noLoop) and [`frameRate()`](https://p5js.org/reference/#/p5/frameRate).
+
+### Common p5 Functions and Values
+
+- [`createCanvas(width, height)`](https://p5js.org/reference/#/p5/createCanvas) creates a canvas to draw onto.
+- [`background(color)`](https://p5js.org/reference/#/p5/background) draws a background on the canvas with `color`.
+- [`ellipse(x, y, width, [height])`](https://p5js.org/reference/#/p5/ellipse) draws an ellipse on the canvas. All coordinates are relative to the top-left of the canvas: 0, 0. This coordinate system ensures that all visible positions are positive numbers.
+- [`mouseIsPressed`](https://p5js.org/reference/#/p5/mouseIsPressed) is a boolean which reports whether the primary mouse button is pressed on the current frame. You can also implement [`mousePressed`](https://p5js.org/reference/#/p5/mousePressed) and similar functions like [`keyPressed`](https://p5js.org/reference/#/p5/keyPressed) if you prefer an event-driven approach to handling user actions.
+- [`fill(color)`](https://p5js.org/reference/#/p5/fill) changes the fill color to `color`. You can provide [RGB](https://en.wikipedia.org/wiki/RGB_color_model) values like `fill(72, 240, 80)` or a single value for grayscale, as well as hex strings and other formats. See the reference docs for the function for details.
+- [`mouseX`](https://p5js.org/reference/#/p5/mouseX)/[`mouseY`](https://p5js.org/reference/#/p5/mouseY): the x, y coordinates of the mouse on the current frame.
+
+## A Simple Example
+
+The following code draws a circle at the mouse's location on the canvas. When the mouse is clicked, the circle is black, otherwise it's white.
 
 ```js
-///////////////////////////////////
-// p5.js has two important functions to work with.
-
 function setup() {
-    // the setup function gets executed just once when the window is loaded
-}
-function draw() {
-    // the draw function gets called every single frame. This means that for a frameRate(30) it would get called 30 times per second.
-}
-
-// the following code explains all features
-
-function setup() {
-    createCanvas(640, 480); // creates a new canvas element with 640px as width as 480px as height
-    background(128); // changes the background color of the canvas, can accept rgb values like background(100,200,20) else grayscale values like background(0) = black or background(255) = white
+  createCanvas(640, 480);
 }
 
 function draw() {
-    ellipse(10, 10, 50, 50); // creates a ellipse at the 10px from the left and 10px from the top with width adn height as 50 each, so its basically a circle.
-    //remember in p5.js the origin is at the top-left corner of the canvas
+  background(128);
 
-    if (mouseIsPressed) {
-        // mouseIsPressed is a boolean variable that changes to true if the mouse buttton is pressed down at that instant
+  if (mouseIsPressed) {
+    fill(0);
+  } else {
+    fill(255);
+  }
 
-        fill(0); // fill refers to the innner color or filling color of whatever shape you are going to draw next
-    } else {
-        fill(255); // you can give in rgb values like fill(72, 240, 80) to get colors, else a single values determines the grayscale where fill(255) stands for #FFF(white) and fill(0) stands for #000(black)
-    }
-
-    ellipse(mouseX, mouseY, 80, 80);
-    // mouseX is the x-coordinate of the mouse's current position and mouseY is the y-coordinate of the mouse's current position
-
-    // the above code creates a circle wherever mouse's current position and fills it either black or white based on the mouseIsPressed
+  ellipse(mouseX, mouseY, 80, 80);
 }
 ```
 
 ## Further Reading
 
 - [p5.js | get started](http://p5js.org/get-started/) The official documentation
-- [Code! Programming for Beginners with p5.js - YouTube](https://www.youtube.com/watch?v=yPWkPOfnGsw&vl=en) Introduction and Coding challenges using Processing and p5.js by Coding Train
+- [Code! Programming for Beginners with p5.js - YouTube](https://www.youtube.com/watch?v=yPWkPOfnGsw&vl=en) Introduction and coding challenges using Processing and p5.js by Coding Train
