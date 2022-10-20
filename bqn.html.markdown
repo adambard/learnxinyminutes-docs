@@ -38,7 +38,11 @@ recommended for quick start, since it comes with keyboard and easy to access hel
 1‿2‿3       # Stranding, good for simple lists
 ⟨1,2,3⟩     # General list notation
 ⟨1‿2,2‿3⟩   # Both can be mixed
-[1‿2,2‿3]   # Array notation (lists are different from arrays)
+[1‿2,2‿3]   # Array notation 
+            # An array is multidimensional, as opposed to containing sublists.
+            # It must be rectangular in shape (a grid structure rather than a tree structure)
+[1‿2‿3,4‿5] # This is hence invalid
+            # May be familiar coming from Numpy, MATLAB and similar languages.
 "asdf"      # Character array (String)
 "newline
 separated"  # Allows newlines
@@ -89,10 +93,14 @@ separated"  # Allows newlines
 1+˜2+○-∘×3  # 1(+˜)(2((+○-)∘×)3)
 
 # Variables
-#  Since the case of a variable matters to determine what it means, BQN variables are *case insensitive*.
-#  Variable assignment is done with `←`. Variables have naming conventions based on their syntactic role:
-array_or_atom ← 1‿2‿3  # Starts with a lowercase letter
-Function      ← {𝕨+𝕩}  # Starts with an uppercase letter
+#  Since the case of a variable matters to determine what it means, BQN variables are *case insensitive*
+#  The case that a variable is written in can change the way it is interpreted by BQN.
+#  Eg. `F` refers to a value as a callable function, whereas `f` refers to the same variable as just a value.
+#  Variable assignment is done with `←`. Variables have naming conventions based on their value:
+subject ← 1‿2‿3        # Arrays, single values, namespaces come under this
+                       # name must start with with a lowercase letter
+Function      ← {𝕨+𝕩}  # Primitive and user defined functions come under this, both monadic and dyadic
+                       # Starts with an uppercase letter
 _1modifier    ← {𝕨𝔽𝕩}  # Starts with an underscore
 _2modifier_   ← {𝔽𝕨𝔾𝕩} # Starts and ends with an underscore
 # Variable modification is done with `↩`. An existing name cannot be reassigned with `←`.
@@ -135,6 +143,7 @@ array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
 ∾, ≍, ⋈       # Joining arrays together
 ⊑, ⊏, ⊒, ⊐    # Indexing
 ↑, ↓          # Getting Subarrays
+⥊             # Reshape/repeat items to create a new array
 
 # Primitive 1-Modifiers
 ## Looping combinators
@@ -163,6 +172,8 @@ array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
 # Code delimited by {}
 # Lexically scoped
 # For more info: https://mlochbaum.github.io/BQN/doc/block.html
+# Can have headers, which are ways to explicitly define what a block should be.
+# A block without headers is automatically inferred from its special variables.
 
 # Function blocks
 # Implicit variables(Capitals are functions):
@@ -249,6 +260,7 @@ DoWhile ← {𝕏@ ⋄ While 𝕨‿𝕩}´
 ```
 
 ## Ready for more?
+- [Quickstart guide](https://mlochbaum.github.io/BQN/doc/quick.html)
 - [Full length, explained documentation](https://mlochbaum.github.io/BQN/doc/index.html)
 - [Short docs](https://mlochbaum.github.io/BQN/help/index.html)
 - [BQN community!](https://mlochbaum.github.io/BQN/community/index.html)
