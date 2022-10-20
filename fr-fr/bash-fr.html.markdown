@@ -26,10 +26,10 @@ ou exécutés directement dans le terminal.
 
 ```bash
 #!/bin/bash
-# La première ligne du script s’appelle le « shebang, » qui indique au système
+# La première ligne du script s’appelle le « shebang », elle indique au système
 # comment exécuter le script : http://fr.wikipedia.org/wiki/Shebang
-# Comme vous pouvez le remarquer, les commentaires commencent par #. Le shebang
-# est aussi un commentaire
+# Comme vous pouvez le remarquer, les commentaires commencent par un « # ». 
+# Le shebang est donc aussi un commentaire
 
 # Un exemple simple qui affiche « Hello world! » :
 echo Hello world!
@@ -47,10 +47,10 @@ VARIABLE = "Du texte" # => renvoie une erreur : "Variable: command not found"
 
 # Ni comme ça :
 VARIABLE= 'Some string' # => renvoie une erreur : "Du texte: command not found"
-# Bash décidera que Du texte' est une commande qu'il doit exécuter et émettra
-# une erreur car elle est introuvable. (Dans ce cas, la partie 'VARIABLE=' est
-# considérée comme une affectation de variable valable uniquement pour la portée
-# de la commande 'Du texte').
+# Bash va penser que 'Di texte' est une commande qu’il doit exécuter et va
+# afficher une erreur parce qu’elle est introuvable. (Dans ce cas, la partie 
+# 'VARIABLE=' est considérée comme une affectation de variable valable uniquement
+# pour la portée de la commande 'Du texte').
 
 # Utiliser une variable :
 echo $VARIABLE # => Du texte
