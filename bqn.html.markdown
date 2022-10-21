@@ -237,6 +237,19 @@ n.a # ERROR
 ####################
 # Basic constructs #
 ####################
+# Functional programming
+# `¨` is used for mapping, as discussed before:
+{𝕩∾2}¨1‿2‿3 #≡ ⟨1‿2,2‿2,3‿2⟩
+# ⋈¨ is a plain zip, which produces pairs.
+# `¨` acts as a zipWith when used with two arguments:
+1‿2‿3 {⟨𝕩+2,2⥊𝕨⟩} 4‿5‿6 #≡ ⟨⟨6,1‿1⟩,⟨7,2‿2⟩,⟨8,3‿3⟩⟩
+# `/` is replicate, which serves several purposes *including* filtering.
+# elements in 𝕩 are repeated by the corresponding number in 𝕨.
+1‿2‿3‿0/4‿5‿6‿7 #≡ 4‿5‿5‿6‿6‿6
+# a simple filter idiom is F⊸/:
+{2|𝕩}⊸/67‿42‿83 # keep the odd elements
+                #≡ 67‿83
+
 # Conditionals
 # There are two main ways to define a conditional.
 ## Predicate headers
