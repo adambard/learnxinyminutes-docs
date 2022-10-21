@@ -84,7 +84,8 @@ separated"  # Allows newlines
 # Evaluation order:
 #  BQN evaluates functions right to left with no precedence rules governing *functions*. Functions are what
 #  one would call operators in a mainstream language. 
-1×2+3       # 1×(2+3)
+1÷2+3       # 1÷(2+3)   = 0.2
+(1÷2)+3     # ((1÷2)+3) = 1.5
 
 # Modifiers:
 #  Modifiers are higher order functions, and bind tighter than functions. Modifiers execute left to right.
@@ -125,6 +126,7 @@ array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
 
 ## Arithmetic Functions
 +, -, ×, ÷ # Add, Subtract, Signum/Multiply, Reciprocal/Divide , '*' does NOT do multiplication
+           # ⌊∘÷ does floor division 
 √, ⋆       # Square root/Nth root, e^x/Power
 #   All Arithmetic functions vectorize:
 1 + 2‿3‿4     #≡ 3‿4‿5
@@ -141,8 +143,16 @@ array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
 ## Array manipulation Functions
 ↕             # Make a range
 ∾, ≍, ⋈       # Joining arrays together
-⊑, ⊏, ⊒, ⊐    # Indexing
-↑, ↓          # Getting Subarrays
+a←1‿2‿3,b←4‿5 # Let us take a and b.
+a∾b           #≡ 1‿2‿3‿4‿5
+a≍b           #  Same as previous, since a and b are not multidimensional
+              #  Adds an extra dimension, similar to a ⋈ for multidimensional arrays.
+a⋈b           #≡ ⟨1‿2‿3, 4‿5⟩
+⊑, ⊏          # Indexing
+1⊑1‿2‿3       #≡ 2 (BQN is 0-indexed)
+1‿2⊏1‿2‿3     #≡ 2‿3 (for multiple indices)
+↑, ↓          # Getting a prefix, suffix of an array.
+              # together they can be used for slicing
 ⥊             # Reshape/repeat items to create a new array
 
 # Primitive 1-Modifiers
@@ -173,7 +183,7 @@ array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
 # Lexically scoped
 # For more info: https://mlochbaum.github.io/BQN/doc/block.html
 # Can have headers, which are ways to explicitly define what a block should be.
-# A block without headers is automatically inferred from its special variables.
+# A block without headers is automatically inferred from its special variables (𝕨, 𝕩, ...).
 
 # Function blocks
 # Implicit variables(Capitals are functions):
@@ -188,7 +198,7 @@ array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
   𝕊 0: 1;
   𝕊 𝕩: 𝕩×𝕊 𝕩-1 
 }
-{ # Factorial with predicate headers
+{ # Factorial with predicates
   𝕩<2 ? 1; # Similar to an if-else pattern.
   𝕩×𝕊 𝕩-1
 }
