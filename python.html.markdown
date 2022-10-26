@@ -613,15 +613,17 @@ y = 2
 x, y = swap(x, y)     # => x = 2, y = 1
 # (x, y) = swap(x,y)  # Again parenthesis have been excluded but can be included.
 
-# Function Scope
+# global scope
 x = 5
 
 def set_x(num):
-    # Local var x not the same as global variable x
+    # local scope begins here
+    # local var x not the same as global var x
     x = num    # => 43
     print(x)   # => 43
 
 def set_global_x(num):
+    # global indicates that particular var lives in the global scope
     global x
     print(x)   # => 5
     x = num    # global var x is now set to 6
