@@ -419,7 +419,7 @@ for animal in ["dog", "cat", "mouse"]:
 
 """
 "range(number)" returns an iterable of numbers
-from zero to the given number
+from zero up to (but excluding) the given number
 prints:
     0
     1
@@ -628,6 +628,12 @@ def set_global_x(num):
 
 set_x(43)
 set_global_x(6)
+"""
+prints:
+    43
+    5
+    6
+"""
 
 
 # Python has first class functions
