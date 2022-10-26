@@ -9,6 +9,7 @@ contributors:
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
     - ["caminsha", "https://github.com/caminsha"]
+    - ["Stanislav Modrak", "https://stanislav.gq"]
 filename: learnpython.py
 ---
 
