@@ -9,6 +9,7 @@ contributors:
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
     - ["caminsha", "https://github.com/caminsha"]
+    - ["Stanislav Modrak", "https://stanislav.gq"]
 filename: learnpython.py
 ---
 
@@ -81,7 +82,7 @@ False - 5   # => -5
 
 # Comparison operators look at the numerical value of True and False
 0 == False  # => True
-1 == True   # => True
+2 > True    # => True
 2 == True   # => False
 -5 != False # => True
 
