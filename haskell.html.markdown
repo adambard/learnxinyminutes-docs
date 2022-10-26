@@ -3,6 +3,7 @@ language: Haskell
 filename: learnhaskell.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
+    - ["Stanislav Modrak", "https://stanislav.gq"]
 ---
 
 Haskell was designed as a practical, purely functional programming
