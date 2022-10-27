@@ -12,11 +12,12 @@ lang: pt-br
 ## Introdução
 
 Processing é uma linguagem de programação para criação de artes digitais e
-conteúdo multimídia, permitindo que não programadores aprendam os fundamentos da 
-programação computacional em um contexto visual.
+conteúdo multimídia, permitindo que não programadores aprendam os fundamentos 
+da programação computacional em um contexto visual.
 
 Embora a linguagem seja baseada na linguagem Java, sua sintaxe foi amplamente
-influenciado por ambas as sintaxes Java e Javascript. [Veja mais aqui](https://processing.org/reference/)
+influenciado por ambas as sintaxes Java e Javascript.
+[Veja mais aqui](https://processing.org/reference/)
 
 A linguagem é tipada estaticamente e também vem com a sua IDE oficial para
 compilar e executar os scripts.
@@ -31,7 +32,8 @@ compilar e executar os scripts.
 
 /*
    Como o Processing é baseado em Java,
-   a sintaxe para seus comentários é a mesma do Java (como você deve ter notado acima)!
+   a sintaxe para seus comentários é a mesma do Java (como você deve ter notado 
+   acima)!
    Comentários de várias linhas são agrupados como visto aqui.
 */
 
@@ -40,25 +42,26 @@ compilar e executar os scripts.
    ---------------------------------------
 */
 
-// No Processing, o ponto de entrada do programa é uma função chamada setup() com um
-// tipo de retorno void.
+// No Processing, o ponto de entrada do programa é uma função chamada setup() 
+// com um tipo de retorno void.
 // Observação! A sintaxe é muito semelhante à do C++.
 void setup() {
-  // Isso imprime a saída clássica "Hello World!" para o console quando executado.
-  println("Olá Mundo!"); // Outra linguagem com cilada para ponto e vírgula, não é?
+  // Isso imprime a saída clássica "Hello World!" no console quando executado.
+  println("Olá Mundo!"); // Outra linguagem cilada para ponto e vírgula, não é?
 }
 
-// Normalmente, colocamos todos os códigos estáticos dentro do método setup() como o próprio nome
-// sugere, uma vez que é executado apenas uma vez.
+// Normalmente, colocamos todos os códigos estáticos dentro do método setup() 
+// como o próprio nome sugere, uma vez que é executado apenas uma vez.
 // Pode variar da definição das cores de fundo, ou o tamanho da tela.
 background(color); //define a cor do fundo
 size(largura,altura,[renderizador]); // define o tamanho da tela com parâmetro
 // opcional para definir o renderizador
 // Você verá mais sobre isso ao longo deste documento.
 
-// Se você deseja executar os códigos indefinidamente, eles devem ser colocados dentro do método draw()
-// draw() deve existir caso você queira que o código seja executado continuamente e, obviamente,
-// só pode haver um método draw().
+// Se você deseja executar os códigos indefinidamente, eles devem ser colocados 
+// dentro do método draw()
+// draw() deve existir caso você queira que o código seja executado 
+// continuamente e, obviamente, só pode haver um método draw().
 int = 0;
 void draw(){
   // Este bloco de código faz um loop para sempre até parar
@@ -92,40 +95,43 @@ double valorDouble = 1,12345D; // Double (números de ponto flutuante de 64 bits
 // NOTA!
 // Embora os tipos de dados "long" e "double" funcionem na linguagem,
 // funções do Processing não usam esses tipos de dados, portanto
-// eles precisam ser convertidos em tipos de dados "int" e "float", respectivamente,
-// usando a sintaxe (int) e (float) antes de passar para uma função.
+// eles precisam ser convertidos em tipos de dados "int" e "float", 
+// respectivamente, usando a sintaxe (int) e (float) antes de passar para uma 
+// função.
 
-// Existem vários tipos de dados compostos que estão disponíveis por padrão para uso
-// no Processing.
+// Existem vários tipos de dados compostos que estão disponíveis por padrão para 
+// uso no Processing.
 // Primeiramente, farei um resumo dos mais usados ​​para economizar tempo.
 
 // String
-// Enquanto o tipo de dados char usa '', o tipo de dados String usa "" - aspas duplas.
+// Enquanto o tipo de dados char usa '', o tipo de dados String usa "" - aspas 
+// duplas.
 string stringExemplo = "Olá, Processing!";
-// String também pode ser construída a partir de um array de tipos de dados char. Nós vamos
-// discutir array muito em breve.
+// String também pode ser criada a partir de um array de tipos de dados char.
+// Nós vamos discutir array muito em breve.
 char fonte = {'H', 'E', 'L', 'L', 'O'};
 String stringDeFonte = new String(source); // HELLO
 // Como em Java, strings podem ser concatenadas usando o operador "+".
 print("Olá " + "Mundo!"); // Olá Mundo!
 
 // Array
-// Arrays em Processing podem conter quaisquer tipos de dados, incluindo os próprios objetos.
-// Como os arrays são semelhantes aos objetos, eles devem ser criados com a palavra-chave
-// "new".
+// Arrays em Processing podem conter quaisquer tipos de dados, incluindo os 
+// próprios objetos. Como os arrays são semelhantes aos objetos, eles devem 
+// ser criados com a palavra-chave "new".
 int[] arrayInt = new int[5];
 int[] arrayIntComValores ​​= {1, 2, 3}; // Você também pode preencher com dados.
 
 // Lista de Arrays
-// As funções são semelhantes às do array; arraylists podem conter qualquer tipo de dados.
-// A única diferença é que as listas de matrizes são redimensionadas dinamicamente, pois é uma forma de
-// implementação de matriz redimensionável da interface "List" do Java .
+// As funções são semelhantes às do array; arraylists podem conter qualquer 
+// tipo de dados. A única diferença é que as listas de matrizes são 
+// redimensionadas dinamicamente, pois é uma forma de implementação de matriz 
+// redimensionável da interface "List" do Java .
 ArrayList<Integer> intArrayList = new ArrayList<Integer>();
 
 // Objeto
 // Como é baseado em Java, o Processing suporta programação orientada a objetos.
-// Isso significa que você pode basicamente definir quaisquer tipos de dados de sua preferência e manipulá-los
-// para suas necessidades.
+// Isso significa que você pode basicamente definir quaisquer tipos de dados de 
+// sua preferência e manipulá-los para suas necessidades.
 // Claro, uma classe tem que ser definida antes para o objeto que você quer.
 // Formato --> NomeClasse NameInstancia
 UmaClasseQualquer meuObjeto // então instancia mais tarde
@@ -133,7 +139,7 @@ UmaClasseQualquer meuObjeto // então instancia mais tarde
 UmaClasseQualquer meuObjetoInstanciado = new UmaClasseQualquer();
 
 // O Processing surge com mais coleções (ex. - Dicionários e Listas) por
-// padrão, por uma questão de simplicidade, vou deixá-los fora de discussão aqui.
+// padrão, por uma questão de simplicidade, vou deixá-los fora da discussão aqui.
 
 /* ------------
    Matemática
@@ -148,7 +154,8 @@ UmaClasseQualquer meuObjetoInstanciado = new UmaClasseQualquer();
 3.0 / 2 // 1.5
 3.0% 2 // 1.0
 
-// O Processing também vem com um conjunto de funções que simplificam operações matemáticas.
+// O Processing também vem com um conjunto de funções que simplificam operações 
+// matemáticas.
 float f = sq(3); // f = 9.0
 float p = pow(3, 3); // p = 27.0
 int a = abs(-13); // a = 13
@@ -160,18 +167,18 @@ float sr = sqrt(25); // sr = 5.0
 // O Processing fornece uma maneira fácil de implementar vetores em seu ambiente
 // usando a classe PVector. Ela pode descrever um vetor bi ou tridimensional e
 // vem com um conjunto de métodos que são úteis para operações com matrizes.
-// Você pode encontrar mais informações sobre a classe PVector e suas funções aqui.
-// (https://processing.org/reference/PVector.html)
+// Você pode encontrar mais informações sobre a classe PVector e suas funções 
+// aqui. (https://processing.org/reference/PVector.html)
 
 // Trigonometria
-// O processamento também suporta operações trigonométricas fornecendo um conjunto de
-// funções. sin(), cos(), tan(), asin(), acos(), atan() e também degrees()
-// e radians() para conversão conveniente.
-// No entanto, essas funções usam o ângulo em radianos como parâmetro, então é necessário
-// converter previamente.
+// O processamento também suporta operações trigonométricas fornecendo um 
+// conjunto de funções. sin(), cos(), tan(), asin(), acos(), atan() e também 
+// degrees() e radians() para conversão conveniente.
+// No entanto, essas funções usam o ângulo em radianos como parâmetro, então é 
+// necessário converter previamente.
 float um = sin(PI/2); // um = 1.0
-// Como você deve ter notado, existe um conjunto de constantes para usos trigonométricos;
-// PI, HALF_PI, QUARTER_PI e assim por diante...
+// Como você deve ter notado, existe um conjunto de constantes para usos 
+// trigonométricos; PI, HALF_PI, QUARTER_PI e assim por diante...
 
 /* -------------
    Controle de fluxo
@@ -190,9 +197,10 @@ if (author.getAppearance().equals("quente")) {
 int = 3;
 String valor = (i > 5) ? "Grande" : "Pequena"; // "Pequena"
 
-// A estrutura switch-case pode ser usada para verificar várias condições de forma concisa.
-// É importante usar a instrução break. Se a instrução `break`
-// não existe o programa executa todos os casos a seguir após um caso ser verdadeiro.
+// A estrutura switch-case pode ser usada para verificar várias condições de 
+// forma concisa. É importante usar a instrução break. Se a instrução `break`
+// não existe o programa executa todos os casos a seguir após um caso ser 
+// verdadeiro.
 int valor = 2;
 switch(valor) {
   case 0:
@@ -215,7 +223,8 @@ for(int i = 0; i < 5; i++){
   print(i); // imprime de 0 a 4
 }
 
-// Declarações While - Novamente, nada de novo se você estiver familiarizado com a sintaxe Java.
+// Declarações While - Novamente, nada de novo se você estiver familiarizado com
+// a sintaxe Java.
 int j = 3;
 while(j > 0) {
   print(j);
@@ -223,7 +232,8 @@ while(j > 0) {
 }
 
 // loop()| noLoop() | redraw() | exit()
-// Estas são mais funções específicas do Processing para configurar o fluxo do programa.
+// Estas são mais funções específicas do Processing para configurar o fluxo do 
+// programa.
 loop(); // permite que o método draw() seja executado para sempre enquanto
 noLoop(); // só permite que ele seja executado uma vez.
 redraw(); // executa o método draw() mais uma vez.
@@ -283,10 +293,10 @@ arc(x, y, largura, altura, inicio, fim, [modo]);
 // CHORD porém sem contorno
 
 // Curvas
-// O processamento fornece duas implementações de curvas; usando curve() e bezier().
-// Como pretendo manter isso simples, não vou discutir mais detalhes.
-// No entanto, se você quiser implementá-lo em seu sketch, aqui estão as referências:
-// (https://processing.org/reference/curve_.html)
+// O processamento fornece duas implementações de curvas; usando curve() e 
+// bezier(). Como pretendo manter isso simples, não vou discutir mais detalhes.
+// No entanto, se você quiser implementá-lo em seu sketch, aqui estão as 
+// referências: (https://processing.org/reference/curve_.html)
 // (https://processing.org/reference/bezier_.html)
 
 // Formas 3D
@@ -300,13 +310,13 @@ size(largura, altura, P3D);
 
 // Caixa
 box(tamanho); // Cubo com o mesmo comprimento definido pelo tamanho
-caixa(w, h, d); // Caixa com largura, altura e profundidade definidas separadamente
+box(w, h, d); // Caixa com largura, altura e profundidade definidas separadamente
 
 // Esfera
 sphere(raio); // Seu tamanho é definido usando o parâmetro raio
-// O mecanismo por trás da renderização das esferas é implementado por triângulos em mosaico.
-// Dito isso, o nível de detalhe sendo renderizado é controlado pela função
-// sphereDetail(res)
+// O mecanismo por trás da renderização das esferas é implementado por 
+// triângulos em mosaico. Dito isso, o nível de detalhe sendo renderizado é 
+// controlado pela função sphereDetail(res)
 // Mais informações aqui: (https://processing.org/reference/sphereDetail_.html)
 
 // Formas irregulares
@@ -323,8 +333,8 @@ sphere(raio); // Seu tamanho é definido usando o parâmetro raio
    ---------------
 */
 
-// As transformações são particularmente úteis para acompanhar o espaço de coordenadas
-// e os vértices das formas que você desenhou. Particularmente;
+// As transformações são particularmente úteis para acompanhar o espaço de 
+// coordenadas e os vértices das formas que você desenhou. Particularmente;
 // métodos de pilha de matrizes; pushMatrix(), popMatrix() e translate(x,y)
 pushMatriz(); // Salva o sistema de coordenadas atual na pilha
 // ... aplique todas as transformações aqui ...
@@ -338,7 +348,8 @@ translate(x, y, z); // Contraparte 3D da função
 
 // Rotacionar
 rotate(ângulo); // Gira a quantidade especificada pelo parâmetro ângulo
-// Possui 3 contrapartes 3D para realizar a rotação, uma para cada dimensão: rotateX(ângulo), rotateY(ângulo), rotateZ(ângulo)
+// Possui 3 contrapartes 3D para realizar a rotação, uma para cada dimensão: 
+// rotateX(ângulo), rotateY(ângulo), rotateZ(ângulo)
 
 // Escala
 scale(s); // Dimensiona o sistema de coordenadas expandindo ou contraindo-o.
@@ -349,17 +360,17 @@ scale(s); // Dimensiona o sistema de coordenadas expandindo ou contraindo-o.
 */
 
 // Cores
-// Como discuti anteriormente, a cor de fundo pode ser configurada usando a função
-// background(). Você pode definir a cor de um objeto de antemão e depois
+// Como discuti anteriormente, a cor de fundo pode ser configurada usando a 
+// função background(). Você pode definir a cor de um objeto de antemão e depois
 // passar para a função como um argumento.
 color c = cor(255, 255, 255); // BRANCO!
-// Por padrão, o Processing usa o esquema de cores RGB, mas pode ser configurado para
-// HSB usando colorMode(). Leia mais aqui:
+// Por padrão, o Processing usa o esquema de cores RGB, mas pode ser configurado
+//  para HSB usando colorMode(). Leia mais aqui:
 // (https://processing.org/reference/colorMode_.html)
 background(c); // Até agora, a cor de fundo deve ser branca.
 // Você pode usar a função fill() para selecionar a cor para preencher as formas.
-// Tem que ser configurado antes de você começar a desenhar formas para que as cores fiquem
-// aplicadas.
+// Tem que ser configurado antes de você começar a desenhar formas para que as 
+// cores fiquem aplicadas.
 fill(color(0, 0, 0));
 // Se você quiser apenas colorir os contornos das formas, você pode usar
 // função stroke().
@@ -367,16 +378,14 @@ stroke(255, 255, 0, 200); // cor do traço definida para amarelo com transparên
 // definido para um valor menor.
 
 // Imagens
-// O processamento pode renderizar imagens e usá-las de várias maneiras. Principalmente armazenado como
-// Tipo de dados PImage.
+// O processamento pode renderizar imagens e usá-las de várias maneiras. 
+// Principalmente armazenado como Tipo de dados PImage.
 filter(sombreador); // O processamento suporta várias funções de filtro para manipulação de imagens.
 texture(imagem); // PImage pode ser passado em argumentos para mapeamento de textura das formas.
 ```
 
-Se você quiser levar as coisas adiante, há mais coisas que o Processing tem o poder de fazer.
-Renderizar modelos, shaders e outros efeitos. Há muito para se cobrir em uma
-documentação curta, então vou deixá-los aqui. Se você se interessar,
-por favor verifique as referências.
+Se você quiser levar as coisas adiante, há mais coisas que o Processing tem o poder de fazer. Renderizar modelos, shaders e outros efeitos. Há muito para se cobrir em uma
+documentação curta, então vou deixá-los aqui. Se você se interessar, por favor verifique as referências.
 
 ```
 // Antes de prosseguirmos, vou falar um pouco mais sobre como importar bibliotecas
@@ -387,9 +396,10 @@ por favor verifique as referências.
    -------
 */
 
-// As possibilidades do Processing pode ser estendidas ainda mais quando importamos bibliotecas
-// e pacotes em nossos esboços.
-// A instrução de importação pode ser escrita como abaixo na parte superior do código-fonte.
+// As possibilidades do Processing pode ser estendidas ainda mais quando 
+// importamos bibliotecas e pacotes em nossos esboços.
+// A instrução de importação pode ser escrita como abaixo na parte superior 
+// do código-fonte.
 import processing.algumacoisa.*;
 ```
 
@@ -403,9 +413,9 @@ capaz de fazer com poucas linhas de código.
 Copie o código abaixo em seu IDE do Processing e veja a mágica.
 
 ```
-// Isenção de responsabilidade: eu não escrevi este programa porque atualmente estou ocupado com meu
-// estágio e este sketch é adaptado do openprocessing pois mostra
-// algo legal com um código simples.
+// Isenção de responsabilidade: eu não escrevi este programa porque atualmente 
+// estou ocupado com meu estágio e este sketch é adaptado do openprocessing pois
+//  mostra algo legal com um código simples.
 // Recuperado de: (https://www.openprocessing.org/sketch/559769)
 
 float theta;
