@@ -9,6 +9,7 @@ contributors:
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
     - ["caminsha", "https://github.com/caminsha"]
+    - ["Stanislav Modrak", "https://stanislav.gq"]
 filename: learnpython.py
 ---
 
@@ -419,7 +420,7 @@ for animal in ["dog", "cat", "mouse"]:
 
 """
 "range(number)" returns an iterable of numbers
-from zero to the given number
+from zero up to (but excluding) the given number
 prints:
     0
     1
@@ -612,15 +613,17 @@ y = 2
 x, y = swap(x, y)     # => x = 2, y = 1
 # (x, y) = swap(x,y)  # Again parenthesis have been excluded but can be included.
 
-# Function Scope
+# global scope
 x = 5
 
 def set_x(num):
-    # Local var x not the same as global variable x
+    # local scope begins here
+    # local var x not the same as global var x
     x = num    # => 43
     print(x)   # => 43
 
 def set_global_x(num):
+    # global indicates that particular var lives in the global scope
     global x
     print(x)   # => 5
     x = num    # global var x is now set to 6
@@ -628,6 +631,12 @@ def set_global_x(num):
 
 set_x(43)
 set_global_x(6)
+"""
+prints:
+    43
+    5
+    6
+"""
 
 
 # Python has first class functions
