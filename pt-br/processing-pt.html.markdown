@@ -45,7 +45,7 @@ compilar e executar os scripts.
 // Observação! A sintaxe é muito semelhante à do C++.
 void setup() {
   // Isso imprime a saída clássica "Hello World!" para o console quando executado.
-  println("Olá Mundo!"); // Outra linguagem com cilada para ponto-e-vígula, não é?
+  println("Olá Mundo!"); // Outra linguagem com cilada para ponto e vírgula, não é?
 }
 
 // Normalmente, colocamos todos os códigos estáticos dentro do método setup() como o próprio nome
@@ -105,7 +105,7 @@ string stringExemplo = "Olá, Processing!";
 // String também pode ser construída a partir de um array de tipos de dados char. Nós vamos
 // discutir array muito em breve.
 char fonte = {'H', 'E', 'L', 'L', 'O'};
-string stringDeFonte = new String(source); // HELLO
+String stringDeFonte = new String(source); // HELLO
 // Como em Java, strings podem ser concatenadas usando o operador "+".
 print("Olá " + "Mundo!"); // Olá Mundo!
 
@@ -145,8 +145,8 @@ UmaClasseQualquer meuObjetoInstanciado = new UmaClasseQualquer();
 2 - 1 // 1
 2 * 3 // 6
 3/2 // 1
-3,0 / 2 // 1,5
-3,0% 2 // 1,0
+3.0 / 2 // 1.5
+3.0% 2 // 1.0
 
 // O Processing também vem com um conjunto de funções que simplificam operações matemáticas.
 float f = sq(3); // f = 9.0
@@ -180,15 +180,15 @@ float um = sin(PI/2); // um = 1.0
 
 // Declarações Condicionais
 // Instruções If - A mesma sintaxe das instruções if em Java.
-if (autor.getAppearance().equals("quente")) {
-  print("Narcisismo no seu melhor!");
-} senão {
+if (author.getAppearance().equals("quente")) {
+  print("Narcisismo no máximo!");
+} else {
   // Você pode verificar outras condições aqui.
   print("Algo está realmente errado aqui!");
 }
 // Um ​​atalho para instruções if-else também pode ser usado.
 int = 3;
-Valor da string = (i > 5) ? "Grande" : "Pequena"; // "Pequena"
+String valor = (i > 5) ? "Grande" : "Pequena"; // "Pequena"
 
 // A estrutura switch-case pode ser usada para verificar várias condições de forma concisa.
 // É importante usar a instrução break. Se a instrução `break`
@@ -260,7 +260,7 @@ triangle(x1, y1, x2, y2, x3, y3);
 
 // Retângulo
 rect(a, b, c, d, [r]); // Com parâmetro opcional definindo o raio de todos os cantos
-rect(a, b, c, d, [tl, tr, br, bl]); // Com conjunto opcional de parâmetros definindo
+rect(a, b, c, d, [te, td, bd, be]); // Com conjunto opcional de parâmetros definindo
 // raio de cada canto
 // Desenha um retângulo com {a, b} como coordenada superior esquerda e c e d como largura
 // e altura respectivamente.
@@ -374,7 +374,7 @@ texture(imagem); // PImage pode ser passado em argumentos para mapeamento de tex
 ```
 
 Se você quiser levar as coisas adiante, há mais coisas que o Processing tem o poder de fazer.
-Renderizar modelos, shaders e outros enfeites. Há muito para se cobrir em uma
+Renderizar modelos, shaders e outros efeitos. Há muito para se cobrir em uma
 documentação curta, então vou deixá-los aqui. Se você se interessar,
 por favor verifique as referências.
 
@@ -387,10 +387,10 @@ por favor verifique as referências.
    -------
 */
 
-// As possibilidades do Processing pode ser extendidas ainda mais quando importamos bibliotecas
+// As possibilidades do Processing pode ser estendidas ainda mais quando importamos bibliotecas
 // e pacotes em nossos esboços.
 // A instrução de importação pode ser escrita como abaixo na parte superior do código-fonte.
-import processing.something.*;
+import processing.algumacoisa.*;
 ```
 
 ## VAC?
@@ -465,5 +465,5 @@ e até mesmo suas próprias aulas. (Confie em mim! O processamento de projetos p
 
 ## Alguns recursos úteis
 
-  - [Site de processamento](http://processing.org)
-  - [Processando esboços](http://openprocessing.org)
+  - [Site do Processing](http://processing.org)
+  - [Sketches em Processing](http://openprocessing.org)
