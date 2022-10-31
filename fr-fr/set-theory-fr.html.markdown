@@ -125,7 +125,7 @@ A △ B = (A \ B) ∪ (B \ A)
 ```
 
 ### Produit cartésien
-Le produit cartésien de deux ensembles `A` et `B` est l'ensemble contenant tous les couples dont la première élément appartient à `A` et la deuxième à `B`.
+Le produit cartésien de deux ensembles `A` et `B` est l'ensemble contenant tous les couples dont le premier élément appartient à `A` et le deuxième à `B`.
 
 ```
 A × B = { (x, y) | x ∈ A, y ∈ B }
