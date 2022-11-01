@@ -29,6 +29,8 @@ URIs provides context for resource identifiers to make them unambiguous—for
 example, to tell a book title from a job title.
 
 ```turtle
+@prefix : <#> . 
+
 # The hash symbol is the comment delimiter. 
 
 # Turtle triple statements end with periods like natural language sentences.
@@ -36,34 +38,34 @@ example, to tell a book title from a job title.
 # These two triples tell us that the mythical Example Company's
 # employee 134 has a hire date of 2022-11-12 and a family name of Smith:
 
-<http://example.com/emp134> <http://example.com/hireDate> "2022-11-12" .
-<http://example.com/emp134> <http://example.com/familyName> "Smith" .
+:emp134 :hireDate "2022-11-12" .
+:emp134 :familyName "Smith" .
 
 # Declaring prefixes to stand in for namespaces reduces verbosity. These
 # declarations typically go at the beginning of the file, but the only
 # requirement is that they come before the first use of the prefix they declare.
 
-@prefix ex: <http://example.com/> .
-ex:emp134 ex:hireDate "2022-11-12" .
-ex:emp134 ex:familyName "Smith" .
+
+:emp134 :hireDate "2022-11-12" .
+:emp134 :familyName "Smith" .
 
 # A semicolon means that the next triple uses the same subject as the last
 # one. This is handy for listing data about a single resource. The following
 # example means the same thing as the previous one.
 
-@prefix ex: <http://example.com/> .
-ex:emp134 ex:hireDate "2022-11-12" ;
-          ex:familyName "Smith" .
+
+:emp134 :hireDate "2022-11-12" ;
+          :familyName "Smith" .
 
 # A comma means that the next triple has the same subject and predicate as
 # the previous one.
 
-ex:emp134 ex:nickname "Smithy", "Skipper", "Big J". 
+:emp134 :nickname "Smithy", "Skipper", "Big J". 
 
 # Three single or double quote marks at the beginning and end of a value let
 # you define a  multi-line string value.
 
-ex:emp134 ex:description """
+:emp134 :description """
 Skipper joined the company in November. 
 
 He always has a joke for everyone.""" . 
@@ -74,7 +76,7 @@ He always has a joke for everyone.""" .
 # common.
 
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-ex:emp134 ex:hireDate "2022-11-12" ;
+:emp134 :hireDate "2022-11-12" ;
           vcard:family-name "Smith" .
 
 # Related RDF standards provide vocabularies that are popular for basic
@@ -82,28 +84,28 @@ ex:emp134 ex:hireDate "2022-11-12" ;
 # way to indicate a human-readable name.
 
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-ex:hireDate rdfs:label "hire date" . 
+:hireDate rdfs:label "hire date" . 
 
 # String object values can include language codes, making
 # multi-lingual representation of entities easier for applications
 # reading the data (for example, when generating a user interface).
 
-ex:hireDate rdfs:label "hire date"@en, "date d'embauche"@fr  . 
+:hireDate rdfs:label "hire date"@en, "date d'embauche"@fr  . 
 
 # Representing a triple's object with a URI (or prefixed name) is not required
 # but lets you connect up triples into a graph.
 
-ex:emp134 vcard:family-name "Smith" .
-ex:emp113 vcard:family-name "Jones" ;
-          ex:reportsTo ex:emp134 . 
+:emp134 vcard:family-name "Smith" .
+:emp113 vcard:family-name "Jones" ;
+          :reportsTo :emp134 . 
 
 # Objects can be datatypes from the XML Schema part 2 standard or your own
 # custom datatypes.
 
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-ex:emp134 vcard:family-name "Smith"^^xsd:string ;  # default data type
-          ex:hireDate "2022-11-12"^^xsd:date ;
-          ex:rating "3.5"^^ex:someCustomType . 
+:emp134 vcard:family-name "Smith"^^xsd:string ;  # default data type
+          :hireDate "2022-11-12"^^xsd:date ;
+          :rating "3.5"^^:someCustomType . 
 
 # The use of schemas with RDF is optional. Schemas may describe all or a
 # subset of a dataset. They use a vocabulary described by the W3C RDF Schema
@@ -115,28 +117,28 @@ ex:emp134 vcard:family-name "Smith"^^xsd:string ;  # default data type
 # expressed in triples.)
 
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
-ex:Person rdf:type rdfs:Class .
+:Person rdf:type rdfs:Class .
 
 # The following triple means the same as the preceding one but 
 # uses a Turtle shortcut for terseness and more readability.
 
-ex:Person a rdfs:Class .
+:Person a rdfs:Class .
 
-# That last triple declares that ex:Person is an instance of a class, and the
+# That last triple declares that :Person is an instance of a class, and the
 # following declares that employee 113 is an instance of the class Employee.
 
-ex:emp113 a ex:Employee . 
+:emp113 a :Employee . 
 
 # The first triple below is actually unnecessary because a typical
-# RDFS processor will infer from the second one that ex:Employee is a
+# RDFS processor will infer from the second one that :Employee is a
 # class. (Only a subset of RDF parsers perform RDFS inferencing.)
 
-ex:Employee a rdfs:Class .
-ex:Employee rdfs:subClassOf ex:Person .
+:Employee a rdfs:Class .
+:Employee rdfs:subClassOf :Person .
 
 # An RDF parser that reads the last four triples shown and understands
-# RDFS will infer that ex:emp113 is an instance of ex:Person, because
-# it's an instance of ex:Employee, a subclass of ex:Person.
+# RDFS will infer that :emp113 is an instance of :Person, because
+# it's an instance of :Employee, a subclass of :Person.
 
 # RDFS lets you declare properties and associate them with classes. 
 # Properties are first class resources and don't "belong" to classes 
@@ -145,10 +147,9 @@ ex:Employee rdfs:subClassOf ex:Person .
 # means "the property named by this triple's subject will have a value of 
 # the following class or type". 
 
-ex:birthday rdf:type rdf:Property ; 
-            rdfs:domain ex:Person ;
+:birthday rdf:type rdf:Property ; 
+            rdfs:domain :Person ;
             rdfs:range xsd:date .
-
 ```
 
 ## Further Reading
