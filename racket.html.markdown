@@ -348,7 +348,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (eq? 3 3.0) ; => #f
 
 (eq? (expt 2 100) (expt 2 100))               ; => #f
-(eq? (integer->char 955) (integer->char 955)) ; => #f
+(eq? (integer->char 955) (integer->char 955)) ; => #t
 
 (eq? (string-append "foo" "bar") (string-append "foo" "bar")) ; => #f
 
