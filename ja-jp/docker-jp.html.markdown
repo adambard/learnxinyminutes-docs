@@ -1,7 +1,7 @@
 ---
 category: tool
 tool: docker
-filename: docker.bat
+filename: docker-jp.bat
 contributors:
     - ["Ruslan López", "http://javapro.org/"]
     - ["Michael Chen", "https://github.com/ML-Chen"]
