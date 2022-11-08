@@ -155,10 +155,10 @@ b == a            # => True, a's and b's objects are equal
 # You can find the length of a string
 len("This is a string")  # => 16
 
-# You can also format using f-strings or formatted string literals (in Python 3.6+)
+# Since Python 3.6, you can use f-strings or formatted string literals.
 name = "Reiko"
 f"She said her name is {name}." # => "She said her name is Reiko"
-# You can basically put any Python expression inside the braces and it will be output in the string.
+# Any valid Python expression inside these braces is returned to the string.
 f"{name} is {len(name)} characters long." # => "Reiko is 5 characters long."
 
 # None is an object
@@ -297,7 +297,7 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 # Note keys for dictionaries have to be immutable types. This is to ensure that
 # the key can be converted to a constant hash value for quick look-ups.
 # Immutable types include ints, floats, strings, tuples.
-invalid_dict = {[1,2,3]: "123"}  # => Raises a TypeError: unhashable type: 'list'
+invalid_dict = {[1,2,3]: "123"}  # => Yield a TypeError: unhashable type: 'list'
 valid_dict = {(1,2,3):[1,2,3]}   # Values can be of any type, however.
 
 # Look up values with []
@@ -457,8 +457,7 @@ for i in range(4, 8, 2):
     print(i)
 
 """
-To loop over a list, and retrieve both the index and the value of each item in the list
-prints:
+Loop over a list to retrieve both the index and the value of each list item:
     0 dog
     1 cat
     2 mouse
@@ -485,10 +484,11 @@ try:
     # Use "raise" to raise an error
     raise IndexError("This is an index error")
 except IndexError as e:
-    pass                 # Pass is just a no-op. Usually you would do recovery here.
+    pass                 # Refrain from this, provide a recovery (next example).
 except (TypeError, NameError):
-    pass                 # Multiple exceptions can be handled together, if required.
-else:                    # Optional clause to the try/except block. Must follow all except blocks
+    pass                 # Multiple exceptions can be processed jointly.
+else:                    # Optional clause to the try/except block. Must follow
+                         # all except blocks.
     print("All good!")   # Runs only if the code in try raises no exceptions
 finally:                 # Execute under all circumstances
     print("We can clean up resources here")
@@ -524,7 +524,8 @@ print(contents)
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable)  # => dict_keys(['one', 'two', 'three']). This is an object that implements our Iterable interface.
+print(our_iterable)  # => dict_keys(['one', 'two', 'three']). This is an object
+                     # that implements our Iterable interface.
 
 # We can loop over it.
 for i in our_iterable:
@@ -544,7 +545,8 @@ next(our_iterator)  # => "one"
 next(our_iterator)  # => "two"
 next(our_iterator)  # => "three"
 
-# After the iterator has returned all of its data, it raises a StopIteration exception
+# After the iterator has returned all of its data, it raises a
+# StopIteration exception
 next(our_iterator)  # Raises StopIteration
 
 # We can also loop over it, in fact, "for" does this implicitly!
@@ -552,7 +554,7 @@ our_iterator = iter(our_iterable)
 for i in our_iterator:
     print(i)  # Prints one, two, three
 
-# You can grab all the elements of an iterable or iterator by calling list() on it.
+# You can grab all the elements of an iterable or iterator by call of list().
 list(our_iterable)  # => Returns ["one", "two", "three"]
 list(our_iterator)  # => Returns [] because state is saved
 
@@ -602,9 +604,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)            # equivalent to all_the_args(1, 2, 3, 4)
-all_the_args(**kwargs)         # equivalent to all_the_args(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)            # equivalent: all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalent: all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent: all_the_args(1, 2, 3, 4, a=3, b=4)
 
 # Returning multiple values (with tuple assignments)
 def swap(x, y):
@@ -614,7 +616,7 @@ def swap(x, y):
 x = 1
 y = 2
 x, y = swap(x, y)     # => x = 2, y = 1
-# (x, y) = swap(x,y)  # Again parenthesis have been excluded but can be included.
+# (x, y) = swap(x,y)  # Again the use of parenthesis is optional.
 
 # global scope
 x = 5
@@ -662,7 +664,7 @@ list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
-# List comprehension stores the output as a list which can itself be a nested list
+# List comprehension stores the output as a list (which itself may be nested).
 [add_10(i) for i in [1, 2, 3]]         # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
@@ -777,7 +779,7 @@ if __name__ == '__main__':
     i.say("hi")                     # "Ian: hi"
     j = Human("Joel")
     j.say("hello")                  # "Joel: hello"
-    # i and j are instances of type Human, or in other words: they are Human objects
+    # i and j are instances of type Human; i.e., they are Human objects.
 
     # Call our class method
     i.say(i.get_species())          # "Ian: H. sapiens"
@@ -939,8 +941,8 @@ class Batman(Superhero, Bat):
         # However we are dealing with multiple inheritance here, and super()
         # only works with the next base class in the MRO list.
         # So instead we explicitly call __init__ for all ancestors.
-        # The use of *args and **kwargs allows for a clean way to pass arguments,
-        # with each parent "peeling a layer of the onion".
+        # The use of *args and **kwargs allows for a clean way to pass
+        # arguments, with each parent "peeling a layer of the onion".
         Superhero.__init__(self, 'anonymous', movie=True,
                            superpowers=['Wealthy'], *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
@@ -1038,8 +1040,6 @@ def say(say_please=False):
 print(say())                 # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ```
-
-## Ready For More?
 
 ### Free Online
 
