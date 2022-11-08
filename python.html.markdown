@@ -13,11 +13,13 @@ contributors:
 filename: learnpython.py
 ---
 
-Python was created by Guido van Rossum in the early 90s. It is now one of the most popular
-languages in existence. I fell in love with Python for its syntactic clarity. It's basically
-executable pseudocode.
+Python was created by Guido van Rossum in the early 90s. It is now one of the
+most popular languages in existence. I fell in love with Python for its
+syntactic clarity. It's basically executable pseudocode.
 
-Note: This article applies to Python 3 specifically. Check out [here](http://learnxinyminutes.com/docs/pythonlegacy/) if you want to learn the old Python 2.7
+Note: This article applies to Python 3 specifically. Check out
+[here](http://learnxinyminutes.com/docs/pythonlegacy/) if you want to learn the
+old Python 2.7
 
 ```python
 
@@ -97,8 +99,9 @@ bool(set()) # => False
 bool(4)     # => True
 bool(-6)    # => True
 
-# Using boolean logical operators on ints casts them to booleans for evaluation, but their non-cast value is returned
-# Don't mix up with bool(ints) and bitwise and/or (&,|)
+# Using boolean logical operators on ints casts them to booleans for evaluation,
+# but their non-cast value is returned. Don't mix up with bool(ints) and bitwise
+# and/or (&,|)
 bool(0)     # => False
 bool(2)     # => True
 0 and 2     # => 0
@@ -348,7 +351,7 @@ del filled_dict["one"]  # Removes the key "one" from filled dict
 
 # Sets store ... well sets
 empty_set = set()
-# Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
+# Initialize a set with a bunch of values.
 some_set = {1, 1, 2, 2, 3, 4}  # some_set is now {1, 2, 3, 4}
 
 # Similar to keys of a dictionary, elements of a set have to be immutable.
@@ -533,8 +536,8 @@ our_iterable[1]  # Raises a TypeError
 # An iterable is an object that knows how to create an iterator.
 our_iterator = iter(our_iterable)
 
-# Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object with "next()".
+# Our iterator is an object that can remember the state as we traverse through
+# it. We get the next object with "next()".
 next(our_iterator)  # => "one"
 
 # It maintains state as we iterate.
@@ -719,8 +722,8 @@ class Human:
     # Note that the double leading and trailing underscores denote objects
     # or attributes that are used by Python but that live in user-controlled
     # namespaces. Methods(or objects or attributes) like: __init__, __str__,
-    # __repr__ etc. are called special methods (or sometimes called dunder methods)
-    # You should not invent such names on your own.
+    # __repr__ etc. are called special methods (or sometimes called dunder
+    # methods). You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
@@ -811,8 +814,8 @@ if __name__ == '__main__':
 # "species", "name", and "age", as well as methods, like "sing" and "grunt"
 # from the Human class, but can also have its own unique properties.
 
-# To take advantage of modularization by file you could place the classes above in their own files,
-# say, human.py
+# To take advantage of modularization by file you could place the classes above
+# in their own files, say, human.py
 
 # To import functions from other files use the following format
 # from "filename-without-extension" import "function-or-class"
