@@ -29,7 +29,7 @@ specific points in the file, and for fast editing.
     :q!               # Quit vim without saving file
                       # ! *forces* :q to execute, hence quiting vim without saving
     ZQ                # Quit vim without saving file
-    :x                # Save file and quit vim, shorter version of :wq
+    :x                # Save file(only when the file is modified) and quit vim
 
     u                 # Undo
     CTRL+R            # Redo
