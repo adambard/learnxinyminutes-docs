@@ -101,7 +101,7 @@ Hilfsdialog an, welcher den Start mit vim einfacher macht.
 
 Vim basiert auf dem Konzept von **modes**.
 
-- Command Mode - Vim erster Modus, hier kann man navigieren und Befehle eingeben
+- Command Mode - Vims erster Modus, hier kann man navigieren und Befehle eingeben
 - Insert Mode  - Wird verwendet, um Änderungen in der Datei zu machen.
 - Visual Mode  - Wird verwendet, um Text zu markieren und diesen zu verändern
 - Ex Mode      - Wird verwendet, um im ':'-Prompt Befehle einzugeben
