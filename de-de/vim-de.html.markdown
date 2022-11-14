@@ -13,26 +13,25 @@ filename: LearnVim-de.txt
 [Vim](http://www.vim.org)
 (Vi IMproved) ist ein Klon von vi, dem bekannten Editor für Unix. Es ist ein
 Texteditor, welcher mit Fokus auf Geschwindigkeit und Prouktivität entwickelt
-wurde.
-Vim hat viele Keybindings für ein schnelles navigieren und schnelles bearbeiten
-einer Datei.
+wurde. Vim hat viele Keybindings für ein schnelles navigieren und schnelles
+bearbeiten einer Datei.
 
 ## Grundlagen, um in Vim zu navigieren
 
 ```
 vim <filename>   # Öffne <filename> in Vim
 :help <topic>    # Öffne die eingebaute Hilfe zum Thema  <topic>, wenn
-# es existiert
+                 # es existiert
 :q               # Schließe vim
 :w               # Speichere diese Datei
 :wq              # Speichere diese Datei und schließe vim
 ZZ               # Speichere diese Datei und schließe vim
 :q!              # Schließe vim ohne die Datei zu speichern
-# ! *zwingt* die Ausführung von :q,
-# daher wird die Datei nicht gespeichert.
+                 # ! *zwingt* die Ausführung von :q,
+                 # daher wird die Datei nicht gespeichert.
 ZQ               # Beende vim ohne die Datei zu speichern
 :x               # Speichere die Datei und beende vim
-# Dies ist eine kürzere Version von :wq
+                 # Dies ist eine kürzere Version von :wq
 
 u                # Änderung rückgängig machen
 CTRL+R           # Änderung wiederherstellen
@@ -63,7 +62,7 @@ N                # Bewegt den Cursor zum vorherigen Ergebnis der Suche
 :%s/foo/bar/g    # Ersetze "foo" durch "bar" in allen Zeilen
 :s/foo/bar/g     # Ersetze "foo" durch "bar" in der aktuellen Zeile
 :%s/\n/\r/g      # Ersetze das newline-Zeichen bei allen Zeilen durch
-# ein carriage return
+                 # ein carriage return
 
 # Zu einzelnen Zeichen springen
 
@@ -115,7 +114,7 @@ a                # Führt vim in den Insert Mode, nach der Cursorposition
 v                # Führt vim in den Visual Mode
 :                # Führt vim in den Ex Mode
 <esc>            # Führt zurück in den Command Mode, egal in welchem Mode
-# man sich gerade befindet.
+                 # man sich gerade befindet.
 
 # Kopieren und einfügen von Text
 
@@ -169,10 +168,10 @@ b                # Block
 d2w              # lösche zwei Wörter
 cis              # Ändere innerhalb des Satzes.
 yip              # Kopiere innerhalb des Abschnitts (kopiere den Abschnitt,
-# in welchem du bist)
+                 # in welchem du bist)
 ct<              # Ändere bis zur spitzen Klammer
-# Ändere den Text von deiner aktuellen Cursorposition bis
-# zur nächsten spitzen Klammer
+                 # Ändere den Text von deiner aktuellen Cursorposition bis
+                 # zur nächsten spitzen Klammer
 d$               # Lösche bis zum Ende der Zeile
 ```
 
@@ -181,11 +180,10 @@ d$               # Lösche bis zum Ende der Zeile
 ```
 >                # Rücke die Auswahl um einen Block ein
 <                # Lösche eine Einrückung der Auswahl
-:earlier 15m     # Stellt das Dokument so wieder her, wie es vor 15
-# Minuten war
+:earlier 15m     # Stellt das Dokument so wieder her, wie es vor 15 Minuten war
 :later 15m       # den oberen Befehl rückgängig machen
 ddp              # Vertauschen zweier aufeinanderfolgenden Zeilen
-# Zuerst dd, dann p
+                 # Zuerst dd, dann p
 .                # Wiederhole die vorherige Aktion
 :w !sudo tee %   # Speichere die Datei als Root
 :set syntax=c    # Stelle das Syntax-Highlighting für 'C' ein
