@@ -9,7 +9,6 @@ translators:
 filename: LearnVim-de.txt
 ---
 
-
 [Vim](http://www.vim.org)
 (Vi IMproved) ist ein Klon von vi, dem bekannten Editor für Unix. Es ist ein
 Texteditor, welcher mit Fokus auf Geschwindigkeit und Produktivität entwickelt
@@ -41,9 +40,9 @@ j                # Den Cursor eine Zeile nach unten bewegen
 k                # Den Cursor eine Zeile nach oben bewegen
 l                # Den Cursor um ein Zeichen nach rechts bewegen
 
-Ctrl+B 	         # Gehe eine Bildschirmanzeige zurück
-Ctrl+F 	         # Gehe eine Bildschirmanzeige vorwärts
-Ctrl+D 	         # Gehe eine halbe Bildschirmanzeige vorwärts
+Ctrl+B           # Gehe eine Bildschirmanzeige zurück
+Ctrl+F           # Gehe eine Bildschirmanzeige vorwärts
+Ctrl+D           # Gehe eine halbe Bildschirmanzeige vorwärts
 Ctrl+U           # Gehe eine halbe Bildschirmanzeige zurück
 
 # Navigieren innerhalb einer Zeile
@@ -89,7 +88,7 @@ M                # Navigiere in die Mitte der aktuellen Bildschirmanzeige
 L                # Navigiere an das Ende der aktuellen Bildschirmanzeige
 ```
 
-## Hilfsdokumente:
+## Hilfsdokumente
 
 Vim hat eine eingebaute Dokumentation, welche mit `:help <topic>` aufgerufen
 werden kann.
@@ -98,13 +97,13 @@ Zum Beispiel öffnet `:help navigation` die Dokumentation über das Navigieren
 `:help` kann auch ohne ein Argument verwendet werden. Dies zeigt den Standard-
 Hilfsdialog an, welcher den Start mit vim einfacher macht.
 
-## Modi:
+## Modi
 
 Vim basiert auf dem Konzept von **modes**.
 
-- Command Mode - Vim startet in diesem Modus, hier kann man navigieren und Befehle eingeben
+- Command Mode - Vim erster Modus, hier kann man navigieren und Befehle eingeben
 - Insert Mode  - Wird verwendet, um Änderungen in der Datei zu machen.
-- Visual Mode  - Wird verwendet, um Text zu markieren und Operationen durchzuführen
+- Visual Mode  - Wird verwendet, um Text zu markieren und diesen zu verändern
 - Ex Mode      - Wird verwendet, um im ':'-Prompt Befehle einzugeben
 
 ```
