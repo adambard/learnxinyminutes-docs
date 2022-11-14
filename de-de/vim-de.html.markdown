@@ -12,7 +12,7 @@ filename: LearnVim-de.txt
 
 [Vim](http://www.vim.org)
 (Vi IMproved) ist ein Klon von vi, dem bekannten Editor für Unix. Es ist ein
-Texteditor, welcher mit Fokus auf Geschwindigkeit und Prouktivität entwickelt
+Texteditor, welcher mit Fokus auf Geschwindigkeit und Produktivität entwickelt
 wurde. Vim hat viele Keybindings für ein schnelles navigieren und schnelles
 bearbeiten einer Datei.
 
@@ -97,7 +97,6 @@ Zum Beispiel öffnet `:help navigation` die Dokumentation über das Navigieren
 
 `:help` kann auch ohne ein Argument verwendet werden. Dies zeigt den Standard-
 Hilfsdialog an, welcher den Start mit vim einfacher macht.
-that aims to make getting started with vim more approachable!
 
 ## Modi:
 
