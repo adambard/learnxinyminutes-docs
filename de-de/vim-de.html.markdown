@@ -12,7 +12,7 @@ filename: LearnVim-de.txt
 
 [Vim](http://www.vim.org)
 (Vi IMproved) ist ein Klon von vi, dem bekannten Editor für Unix. Es ist ein
-Texteditor, welcher mit Fokus auf Geschwindigkeit und Prouktivität entwickelt 
+Texteditor, welcher mit Fokus auf Geschwindigkeit und Prouktivität entwickelt
 wurde.
 Vim hat viele Keybindings für ein schnelles navigieren und schnelles bearbeiten
 einer Datei.
@@ -168,7 +168,7 @@ Einige wichtige Beispiele von 'Verb', 'Modifier' und 'Nouns':
 
     d2w              # lösche zwei Wörter
     cis              # Ändere innerhalb des Satzes.
-    yip              # Kopiere innerhalb des Abschnitts (kopiere den Abschnitt, 
+    yip              # Kopiere innerhalb des Abschnitts (kopiere den Abschnitt,
                      # in welchem du bist)
     ct<              # Ändere bis zur spitzen Klammer
                      # Ändere den Text von deiner aktuellen Cursorposition bis
@@ -181,7 +181,7 @@ Einige wichtige Beispiele von 'Verb', 'Modifier' und 'Nouns':
 ```
     >                # Rücke die Auswahl um einen Block ein
     <                # Lösche eine Einrückung der Auswahl
-    :earlier 15m     # Stellt das Dokument so wieder her, wie es vor 15 
+    :earlier 15m     # Stellt das Dokument so wieder her, wie es vor 15
                      # Minuten war
     :later 15m       # den oberen Befehl rückgängig machen
     ddp              # Vertauschen zweier aufeinanderfolgenden Zeilen
@@ -195,7 +195,7 @@ Einige wichtige Beispiele von 'Verb', 'Modifier' und 'Nouns':
     ~                # Umschalten der Groß-/Kleinschreibung des ausgewählten Textes
     u                # Ausgewählten Text zu Kleinschreibung ändern
     U                # Ausgewählten Text zu Großschreibung ändern
-    
+
     # Text-Folding (Textfaltung)
     zf               # Erstelle eine Faltung des ausgewählten Textes
     zo               # Öffne die aktuelle Faltung
