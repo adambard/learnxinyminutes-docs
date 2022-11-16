@@ -171,7 +171,7 @@ float sr = sqrt(25); // sr = 5.0
 // aqui. (https://processing.org/reference/PVector.html)
 
 // Trigonometria
-// O processamento também suporta operações trigonométricas fornecendo um 
+// O Processamento também suporta operações trigonométricas fornecendo um 
 // conjunto de funções. sin(), cos(), tan(), asin(), acos(), atan() e também 
 // degrees() e radians() para conversão conveniente.
 // No entanto, essas funções usam o ângulo em radianos como parâmetro, então é 
