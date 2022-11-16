@@ -5,7 +5,7 @@ contributors:
     - ["Phone Thant Ko", "http://github.com/phonethantko"]
     - ["Divay Prakash", "https://github.com/divayprakash"]
 translators:
-	- ["Kemel Zaidan", "https://github.com/kemelzaidan"]
+    - ["Kemel Zaidan", "https://github.com/kemelzaidan"]
 lang: pt-br
 ---
 
@@ -19,7 +19,8 @@ Embora a linguagem seja baseada na linguagem Java, sua sintaxe foi amplamente
 influenciado por ambas as sintaxes Java e Javascript.
 [Veja mais aqui](https://processing.org/reference/)
 
-A linguagem é tipada estaticamente e também vem com a sua IDE oficial para
+A linguagem é tipada estaticamente e também vem com o seu Ambiente de Desenvolvimento
+Integrado (do inglês Integrated Development Environment - IDE) oficial para
 compilar e executar os scripts.
 
 ```
@@ -47,7 +48,7 @@ compilar e executar os scripts.
 // Observação! A sintaxe é muito semelhante à do C++.
 void setup() {
   // Isso imprime a saída clássica "Hello World!" no console quando executado.
-  println("Olá Mundo!"); // Outra linguagem cilada para ponto e vírgula, não é?
+  println("Olá Mundo!"); // Mais uma linguagem com esse maldito ponto e vírgula, não é?
 }
 
 // Normalmente, colocamos todos os códigos estáticos dentro do método setup() 
@@ -244,7 +245,7 @@ exit(); // Isso para o programa. É útil para programas com draw()
 ## Desenho com Processing
 
 Como você já deve ter entendido o básico da linguagem, vamos agora
-veja a melhor parte do Processing - DESENHAR.
+ver a melhor parte do Processing - DESENHAR.
 
 ```
 /* ------
@@ -378,9 +379,9 @@ stroke(255, 255, 0, 200); // cor do traço definida para amarelo com transparên
 // definido para um valor menor.
 
 // Imagens
-// O processamento pode renderizar imagens e usá-las de várias maneiras. 
+// O Processing pode renderizar imagens e usá-las de várias maneiras. 
 // Principalmente armazenado como Tipo de dados PImage.
-filter(sombreador); // O processamento suporta várias funções de filtro para manipulação de imagens.
+filter(sombreador); // O Processing suporta várias funções de filtro para manipulação de imagens.
 texture(imagem); // PImage pode ser passado em argumentos para mapeamento de textura das formas.
 ```
 
@@ -466,12 +467,12 @@ void branch(float len) {
 }
 ```
 
-O processamento é fácil de aprender e é particularmente útil para criar
+A linguagem Processing é fácil de aprender e é particularmente útil para criar
 conteúdo (mesmo em 3D) sem ter que digitar muitos códigos. É tão simples
 que você pode ler o código e ter uma ideia aproximada do fluxo do programa.
 
 No entanto, isso não se aplica quando você introduz bibliotecas externas, pacotes
-e até mesmo suas próprias aulas. (Confie em mim! O processamento de projetos pode ficar realmente monstruoso...)
+e até mesmo suas próprias aulas. (Confie em mim! Projetos em processing podem ficar realmente monstruosos...)
 
 ## Alguns recursos úteis
 
