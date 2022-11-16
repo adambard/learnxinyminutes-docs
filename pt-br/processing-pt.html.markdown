@@ -171,7 +171,7 @@ float sr = sqrt(25); // sr = 5.0
 // aqui. (https://processing.org/reference/PVector.html)
 
 // Trigonometria
-// O Processamento também suporta operações trigonométricas fornecendo um 
+// O Processing também suporta operações trigonométricas fornecendo um 
 // conjunto de funções. sin(), cos(), tan(), asin(), acos(), atan() e também 
 // degrees() e radians() para conversão conveniente.
 // No entanto, essas funções usam o ângulo em radianos como parâmetro, então é 
@@ -293,7 +293,7 @@ arc(x, y, largura, altura, inicio, fim, [modo]);
 // CHORD porém sem contorno
 
 // Curvas
-// O processamento fornece duas implementações de curvas; usando curve() e 
+// O Processing fornece duas implementações de curvas; usando curve() e 
 // bezier(). Como pretendo manter isso simples, não vou discutir mais detalhes.
 // No entanto, se você quiser implementá-lo em seu sketch, aqui estão as 
 // referências: (https://processing.org/reference/curve_.html)
