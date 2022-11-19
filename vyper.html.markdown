@@ -3,6 +3,7 @@ language: Vyper
 filename: learnVyper.vy
 contributors:
   - ["Kenny Peluso", "kennyp.herokuapp.com"]
+  - ["Valery Cherepanov", "che.rocks"]
 ---
 
 > The content of this document is largely inspired by ["Learn Solidity in Y Minutes"](https:#github.com/adambard/learnxinyminutes-docs/blob/master/solidity.html.markdown)
@@ -73,7 +74,7 @@ This allows for the following features:
 4. *Strong typing* - for built-in and custom types
 5. *Small and understandable compiler code*
 6. *Limited support for pure functions*
-    - Anything marked `@constant` is not allowed to change the state
+    - Anything marked `@view` is not allowed to change the state
 
 Following the principles and goals, Vyper does not provide the following features:
 
@@ -97,7 +98,7 @@ popular design patterns.
 As Vyper and Ethereum are under active development, experimental or beta
 features are typically marked, and subject to change. Pull requests welcome.
 
-This document describes Vyper version `0.1.0-beta.8`.
+This document describes Vyper version `0.3.3`.
 
 *All of the following code exists for educational purposes only!*
 *None of the following code should be used in production as-is!*
@@ -133,15 +134,17 @@ struct Task:
 
 # Interfaces
 
-contract AnotherContract():
-    def fetch() -> bytes32: constant
+interface AnotherContract():
+    def fetch() -> bytes32: view
     def inform(_taskId: uint256, _status: uint256) -> bool: modifying
 
 # Events
 
 # Events - publicize actions to external listeners
 # `indexed` means that it's easier to search/filter on this field
-TaskStatus: event({_taskId: indexed(uint256), _status: uint256})
+event TaskStatus: 
+    _taskId: indexed(uint256)
+    _status: uint256
 
 # Global Variables
 
@@ -162,19 +165,19 @@ other: public(address)
 # uint256 means "unsigned positive integer between 0 and 2^256 - 1"
 # Overflow protection is built-in to Vyper
 taskCount: uint256
-tasks: map(uint256, Task) # dictionary: key=uint256, value: Task struct
+tasks: HashMap[uint256, Task] # dictionary: key=uint256, value: Task struct
 
 # Private Functions
 
 # Start each function with Pythonic decorators
 # These decorators resemble Natspec but are actually enforced by Vyper's compiler
 # These decorators are:
-# @public XOR @private (either one or the other)
-#   @public (if any contract/user can call it)
-#   @private (if only internal functions can call it)
+# @external XOR @internal (either one or the other)
+#   @external (if any contract/user can call it)
+#   @internal (if only internal functions can call it)
 # @payable (if the function is payable i.e. accepting ETH)
-# @constant (if the function is not modifying anything on-chain)
-@private
+# @view (if the function is not modifying anything on-chain)
+@internal
 def _changeTaskStatus( \
         _sender: address, \
         _taskId: uint256, \
@@ -210,12 +213,12 @@ def _changeTaskStatus( \
     elif _status == DELETED:
         self.tasks[_taskId].deleted = True
     AnotherContract(self.other).inform(_taskId, _status) # modifying external call
-    log.TaskStatus(_taskId, _status) # emit an event
+    log TaskStatus(_taskId, _status) # emit an event
 
 # Public Functions
 
 # Pythonic constructor - can receive none or many arguments
-@public
+@external
 def __init__(_owner: address, _other_contract: address):
     """
     @dev Called once and only upon contract depoyment
@@ -225,7 +228,7 @@ def __init__(_owner: address, _other_contract: address):
 
 # NOTE: Pythonic whitespace rules are mandated in Vyper
 
-@public
+@external
 def addTask(_task: string[100]) -> uint256:
     """
     @notice Adds a task to contract
@@ -238,7 +241,7 @@ def addTask(_task: string[100]) -> uint256:
     self.taskCount += 1
     return self.taskCount - 1
 
-@public
+@external
 def addSpecialTask(_task: string[100]) -> uint256:
     """
     @notice Adds a task with metadata pulled from elsewhere
@@ -251,7 +254,7 @@ def addSpecialTask(_task: string[100]) -> uint256:
     self.taskCount += 1
     return self.taskCount - 1
 
-@public
+@external
 def completeTask(_taskId: uint256):
     """
     @notice Marks a task as "completed"
@@ -259,7 +262,7 @@ def completeTask(_taskId: uint256):
     """
     self._changeTaskStatus(msg.sender, _taskId, COMPLETED)
 
-@public
+@external
 def deleteTask(_taskId: uint256):
     """
     @notice Adds a task to contract
@@ -267,7 +270,7 @@ def deleteTask(_taskId: uint256):
     """
     self._changeTaskStatus(msg.sender, _taskId, DELETED)
 
-@public
+@external
 @constant # allows function to run locally/off blockchain
 def getTask(_taskId: uint256) -> string[100]:
     """
@@ -323,7 +326,7 @@ owner.codesize # returns code size of address as `int128`
 owner.is_contract # `True` if Contract Account
 
 # All addresses can be sent ether via `send()` built-in
-@public
+@external
 @payable
 def sendWei(any_addr: address):
     send(any_addr, msg.value)
@@ -347,27 +350,6 @@ a: string[100]
 b: string[8]
 c: string[108] = concat(a, b) # check the latest docs for more built-ins
 
-# Time
-t1: timedelta
-t2: timestamp
-# Both types are built-in "custom type" variants of `uint256`
-# `timedelta` values can be added but not `timestamp` values
-
-# Money
-m: wei_value
-# Also has the base type `uint256` like `timestamp` and `timedelta`
-# 1 unit of WEI (a small amount of ETH i.e. ether)
-
-# Custom types
-# specify units used in the contract:
-units: {
-    cm: "centimeter",
-    km: "kilometer"
-}
-# usage:
-a: int128(cm)
-b: uint256(km)
-
 # BY DEFAULT: all values are set to 0 on instantiation
 
 # `clear()` can be called on most types
@@ -390,7 +372,7 @@ names.length = 1; # lengths can be set (for dynamic arrays in storage only)
 # At initialization, array dimensions must be hard-coded or constants
 # Initialize a 10-column by 3-row, multidimensional fixed array
 ls: (uint256[10])[3] # parentheses are optional
-@public
+@external
 def setToThree():
     # Multidimensional Array Access and Write
     # access indices are reversed
@@ -398,11 +380,11 @@ def setToThree():
     self.ls[2][5] = 3
 
 # Dictionaries (any simple type to any other type including structs)
-theMap: map(uint256, bytes32)
+theMap: HashMap[uint256, bytes32]
 theMap[5] = sha3("charles")
 # theMap[255] result is 0, all non-set key values return zeroes
 # To make read public, make a getter that accesses the mapping
-@public
+@external
 def getMap(_idx: uint256) -> bytes32:
     """
     @notice Get the value of `theMap` at `_idx`
@@ -431,7 +413,7 @@ struct Struct:
 
 exampleStuct: Struct
 
-@public
+@external
 def foo() -> uint256:
     self.exampleStuct = Struct({owner: msg.sender, _balance: 5})
     self.exampleStuct._balance = 10
@@ -503,28 +485,29 @@ function increment(uint x) returns (uint) {
 }
 
 # Functions can return many arguments
-@public
-@constant
+# "@pure" is used for functions which can't read state.
+@external
+@pure
 def increment(x: uint256, y: uint256) -> (uint256, uint256):
     x += 1
     y += 1
     return  (x, y)
 
 # Call previous functon
-@public
-@constant
+@external
+@view
 def willCall() -> (uint256, uint256):
     return  self.increment(1,1)
 
 # One should never have to call a function / hold any logic outside
 #   outside the scope of a function in Vyper
 
-# '@constant'
+# '@view'
 # indicates that function does not/cannot change persistent vars
 # Constant function execute locally, not on blockchain
 y: uint256
-@public
-@constant
+@external
+@view
 def increment(x: uint256) -> uint256:
     x += 1
     y += 1 # this line would fail
@@ -533,9 +516,10 @@ def increment(x: uint256) -> uint256:
 
 # 'Function Decorators'
 # Used like python decorators but are REQUIRED by Vyper
-# @public - visible externally and internally (default for function)
-# @private - only visible in the current contract
-# @constant - doesn't change state
+# @external - visible externally and internally (default for function)
+# @internal - only visible in the current contract
+# @pure - doesn't read state
+# @view - doesn't change state
 # @payable - receive ether/ETH
 # @nonrentant(<unique_key>) - Function can only be called once, both externally
 #                             and internally. Used to prevent reentrancy attacks
@@ -545,7 +529,7 @@ def increment(x: uint256) -> uint256:
 # Functions cannot be recursive
 
 # All functions that receive ether must be marked 'payable'
-@public
+@external
 @payable
 def depositEther():
     self.balances[msg.sender] += msg.value
@@ -557,9 +541,12 @@ def depositEther():
 #   typically declare after contract parameters
 
 # Declare
-LogSent: event({_from: indexed(address), address: indexed(_to), _amount: uint256})
+event LogSent:
+    _from: indexed(address)
+    address: indexed(_to)
+    _amount: uint256
 # Call
-log.LogSent(from, to, amount)
+log LogSent(from, to, amount)
 
 /**
 For an external party (a contract or external entity), to watch using
@@ -605,25 +592,25 @@ Coin.LogSent().watch({}, '', function(error, result) {
 # A. CALLING EXTERNAL CONTRACTS
 # You must define an interface to an external contract in the current contract
 
-contract InfoFeed():
+interface InfoFeed():
     def getInfo() -> uint256: constant
 
 info: uint256
 
-@public
+@external
 def __init__(_source: address):
     self.info = InfoFeed(_source).getInfo()
 
 
 # B. ERC20 BUILT-IN
-# Using the `ERC20` keyword implies that the contract at the address
+# Using the `ERC20` implies that the contract at the address
 #   follows the ERC20 token standard, allowing you to safely call
 #   functions like `transfer()`, etc.
 
-tokenAddress: address(ERC20)
+tokenAddress: ERC20
 
-@public
-def transferIt(_to: address, _amt: uint256(wei)):
+@external
+def transferIt(_to: address, _amt: uint256):
     self.tokenAddress.transfer(_to, _amt)
 
 
@@ -650,7 +637,7 @@ selfdestruct(SOME_ADDRESS);
 # helps thin clients, but previous data persists in blockchain
 
 # Common pattern, lets owner end the contract and receive remaining funds
-@public
+@external
 def endItAll() {
     assert msg.sender == self.creator # Only let the contract creator do this
     selfdestruct(self.creator) # Makes contract inactive, returns funds
@@ -684,14 +671,14 @@ sha3(concat("secret", "other secret", "salt")); # commit multiple things
 # The `sha3()` calculation should occur off-chain, only the bytes32
 #   output should be inputted into some `commit()` function
 commits: map(address, bytes32)
-@public
+@external
 def commit(commitment: bytes32):
     self.commits[msg.sender] = commitment
 
 # Step 2. Reveal
 # Send your previously committed data so the contract can check
 #   if your commitment was honest
-@public
+@external
 def reveal(_secret: string[100], _salt: string[100]) -> bool:
     return sha3(concat(_secret, _salt)) == self.commits[msg.sender]
 
@@ -740,7 +727,7 @@ MAX_SUBS: constant(uint256) = 100
 numSubs: public(uint256) # number of subscribers
 subs: map(uint256, address) # enumerates subscribers
 
-@public
+@external
 def addSub(_sub: address) -> uint256:
     """
     @notice Add subscriber
@@ -751,7 +738,7 @@ def addSub(_sub: address) -> uint256:
     self.numSubs += 1
     return self.numSubs - 1
 
-@private
+@internal
 def notify(_value: uint256, _time: timestamp, _info: bytes32) -> bool:
     """
     @notice Notify all subscribers
@@ -768,7 +755,7 @@ def notify(_value: uint256, _time: timestamp, _info: bytes32) -> bool:
             return True
         SomeOracleCallback(self.subs[j]).oracleCallback(_value, _time, _info)
 
-@public
+@external
 def doSomething():
     """
     @notice Do something and notify subscribers
