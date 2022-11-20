@@ -181,6 +181,7 @@ print(_G['_G'] == _G)  -- Prints 'true'.
 
 -- _ENV is like _G, but it stores locals
 function asd(env)
+    local j = 'juice'
     print(_ENV == env)
 end
 
