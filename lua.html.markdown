@@ -26,7 +26,9 @@ s = 'walternate'  -- Immutable strings like Python.
 t = "double-quotes are also fine"
 u = [[ Double brackets
        start and end
-       multi-line strings.]]
+       multi-line strings.
+       Escape sequences are
+       ignored - \n will stay \n.]]
 t = nil  -- Undefines t; Lua has garbage collection.
 
 -- Blocks are denoted with keywords like do/end:
@@ -176,6 +178,19 @@ end
 
 -- _G is a special table of all globals.
 print(_G['_G'] == _G)  -- Prints 'true'.
+
+-- _ENV is like _G, but it stores locals
+function asd(env)
+    print(_ENV == env)
+end
+
+asd(_ENV) -- Prints 'false'.
+-- Note that LuaJIT uses getfenv & setfenv functions
+-- instead of _ENV table.
+-- Getting value of local 'j':
+-- getfenv(1, 'j')
+-- Setting locals table (undefines all other locals):
+-- setfenv(1, {j = "juice"})
 
 -- Using tables as lists / arrays:
 
@@ -384,7 +399,7 @@ dofile('mod2.lua')  --> Hi! (runs it again)
 f = loadfile('mod2.lua')  -- Call f() to run it.
 
 -- load is loadfile for strings.
--- (loadstring is deprecated, use load instead)
+-- loadstring is deprecated, but LuaJIT still uses it.
 g = load('print(343)')  -- Returns a function.
 g()  -- Prints out 343; nothing printed before now.
 
