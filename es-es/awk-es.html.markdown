@@ -158,8 +158,8 @@ function arithmetic_functions(a, b, c,     localvar) {
     # de los que necesita, por lo que define las variables locales en la
     # declaración como en la función de arriba. Como convención, agrega
     # espacios en blanco para distinguir los parámetros de la función de las
-    # variables locales. En este ejemplo, a, b y c son parámetros y localvar es una
-    # variable local.
+    # variables locales. En este ejemplo, a, b y c son parámetros y localvar es
+    # una variable local.
 
     # Ahora, a demostrar las funciones aritméticas
 
@@ -224,8 +224,8 @@ function io_functions(    localvar) {
 
     # AWK no tiene handles de archivos en sí mismo. Automáticamente abrirá un
     # handle de archivo cuando use algo que necesite uno. El string que usaste
-    # para esto puede ser tratada como un handle de archivo para propósitos de I/O.
-    # Esto lo hace similar al scripting de shell:
+    # para esto puede ser tratada como un handle de archivo para propósitos
+    # de I/O. Esto lo hace similar al scripting de shell:
 
     print "foobar" >"/tmp/foobar.txt"
 
@@ -356,8 +356,10 @@ END {
 }
 
 ```
+
 Más información:
 
 * [Tutorial de AWK](http://www.grymoire.com/Unix/Awk.html)
 * [Página man de AWK](https://linux.die.net/man/1/awk)
-* [La guía del usuario de GNU Awk](https://www.gnu.org/software/gawk/manual/gawk.html): GNU Awk se encuentra en la mayoría de los sistemas Linux.
+* [La guía del usuario de GNU Awk](https://www.gnu.org/software/gawk/manual/gawk.html):
+  GNU Awk se encuentra en la mayoría de los sistemas Linux.
