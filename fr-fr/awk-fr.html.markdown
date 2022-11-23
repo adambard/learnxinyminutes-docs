@@ -53,7 +53,7 @@ BEGIN {
     # Les variables sont globales. Pas besoin de les déclarer.
     count = 0;
 
-    # les opérateurs sont identiques au langage C et aux langages similaires 
+    # les opérateurs sont identiques au langage C et aux langages similaires
     # (tels que C#, C++, etc.)
     a = count + 1; # addition
     b = count - 1; # soustraction
