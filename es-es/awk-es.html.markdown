@@ -75,7 +75,7 @@ BEGIN {
     # Bloques formados por múltiples líneas usan llaves
     while (a < 10) {
         print "La concatenación de strings se hace " " con series "
-	print " de" " strings separados por espacios"
+        print " de" " strings separados por espacios"
         print a
 
         a++
