@@ -73,7 +73,8 @@ BEGIN {
     a++;
     b--;
 
-    # En tant qu'opérateur préfixé, c'est la valeur incrémentée qui est retournée
+    # En tant qu'opérateur préfixé, c'est la valeur incrémentée qui
+    # est retournée
     ++a;
     --b;
 
@@ -155,7 +156,8 @@ BEGIN {
 
     delete ARGV[1];
 
-    # Le nombre d'arguments de la ligne de commande est assigné à la variable ARGC
+    # Le nombre d'arguments de la ligne de commande est assigné à
+    # la variable ARGC
     print ARGC;
 
     # AWK inclue trois catégories de fonction.
@@ -175,11 +177,11 @@ function arithmetic_functions(a, b, c,     d) {
 
     # Il y a cependant une solution de contournement (enfin ... une bidouille).
     # Les arguments d'une fonction sont locaux à cette fonction.
-    # Et AWK vous permet de définir plus d'arguments à la fonction que nécessaire.
-    # Il suffit donc de mettre une variable locale dans la déclaration de fonction,
-    # comme ci-dessus. La convention veut que vous mettiez quelques espaces
-    # supplémentaires pour faire la distinction entre les paramètres réels et
-    # les variables locales.
+    # Et AWK vous permet de définir plus d'arguments à la fonction que
+    # nécessaire. Il suffit donc de mettre une variable locale dans la
+    # déclaration de fonction, comme ci-dessus. La convention veut que vous
+    # mettiez quelques espaces supplémentaires pour faire la distinction entre
+    # les paramètres réels et les variables locales.
     # Dans cet exemple, a, b et c sont des paramètres réels,
     # alors que d est simplement une variable locale.
 
@@ -225,12 +227,14 @@ function string_functions(    localvar, arr) {
     sub("fo+", "Meet me at the ", localvar); # localvar => "Meet me at the bar"
     gsub("e", ".", localvar); # localvar => "m..t m. at th. bar"
 
-    # Rechercher une chaîne de caractères qui correspond à une expression régulière
-    # index() fait la même chose, mais n'autorise pas les expressions régulières
+    # Rechercher une chaîne de caractères qui correspond à une expression
+    # régulière index() fait la même chose, mais n'autorise pas les expressions
+    # régulières
     match(localvar, "t"); # => 4, puisque 't' est le quatrième caractère
 
     # Séparer par un délimiteur
-    n = split("foo-bar-baz", arr, "-"); # a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
+    n = split("foo-bar-baz", arr, "-");
+    # résultat : a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
 
     # Autre astuces utiles
     sprintf("%s %d %d %d", "Testing", 1, 2, 3); # => "Testing 1 2 3"
@@ -259,15 +263,15 @@ function io_functions(    localvar) {
 
     print "foobar" > outfile;
 
-    # Maintenant, la chaîne de caractères "outfile" est un descripteur de fichier.
-    # Vous pouvez le fermer
+    # Maintenant, la chaîne de caractères "outfile" est un descripteur de
+    # fichier. Vous pouvez le fermer
     close(outfile);
 
     # Voici comment exécuter quelque chose dans le shell
     system("echo foobar"); # => affiche foobar
 
-    # Lire quelque chose depuis l'entrée standard et la stocker dans une variable
-    # locale
+    # Lire quelque chose depuis l'entrée standard et la stocker dans une
+    # variable locale
     getline localvar;
 
     # Lire quelque chose à partir d'un pipe (encore une fois, utilisez une
@@ -299,12 +303,13 @@ function io_functions(    localvar) {
     print;
 
     # Pas d'argument ! C'est parce que print a un défaut : $0.
-    # $0 est le nom de la ligne en cours de traitement. Il est créé automatiquement.
+    # $0 est le nom de la ligne en cours de traitement. Il est créé
+    # automatiquement.
 
     # Vous devinez probablement qu'il existe d'autres variables $.
-    # Chaque ligne est divisée implicitement avant que chaque action soit exécutée,
-    # comme le fait le shell. Et, comme le shell, chaque champ est accessible
-    # avec un signe dollar
+    # Chaque ligne est divisée implicitement avant que chaque action soit
+    # exécutée, comme le fait le shell. Et, comme le shell, chaque champ est
+    # accessible avec un signe dollar.
 
      # Ceci affichera les deuxième et quatrième champs de la ligne.
     print $2, $4;
@@ -364,22 +369,24 @@ BEGIN {
     # Premièrement, on demande à l'utilisateur le prénom voulu
     print "Pour quel prénom voudriez vous savoir l'age moyen ?";
 
-    # On récupère la ligne à partir de l'entrée standard, pas de la ligne de commande
+    # On récupère la ligne à partir de l'entrée standard, pas de la ligne
+    # de commande :
     getline name < "/dev/stdin";
 }
 
 # Maintenant, pour chaque ligne dont le premier champ est le prénom donné
 $1 == name {
 
-    # Ici, nous avons accès à un certain nombre de variables utiles déjà préchargées :
+    # Ici, nous avons accès à un certain nombre de variables utiles déjà
+    # préchargées :
     # $0 est la ligne entière
     # $3 est le troisième champ. Ici il correspond à l'age qui nous intéresse
     # NF est le nombre de champs et vaut 3
     # NR est le nombre d'enregistrements (lignes) vus jusqu'à présent
     # FILENAME est le nom du fichier en cours de traitement
     # FS est séparateur de champs, ici c'est " " (un espace)
-    # ...etc. Et beaucoup d'autre que vous pouvez connaître dans le manuel de man.
-    # Pour cela exécutez "man awk" dans votre terminal
+    # ...etc. Et beaucoup d'autre que vous pouvez connaître dans le manuel de
+    # man. Pour cela exécutez "man awk" dans votre terminal.
 
     # Garder une trace du total accumulé et du nombre de lignes correspondant.
     sum += $3;
@@ -405,5 +412,6 @@ Pour plus d'informations :
 
 * [Awk tutorial](http://www.grymoire.com/Unix/Awk.html)
 * [Awk man page](https://linux.die.net/man/1/awk)
-* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html) GNU Awk est dans la majorité des systèmes Linux.
+* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
+  GNU Awk est dans la majorité des systèmes Linux.
 * [AWK one-liner collection](http://tuxgraphics.org/~guido/scripts/awk-one-liner.html)
