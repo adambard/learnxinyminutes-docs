@@ -24,14 +24,12 @@ ce qui concerne le traitement de texte simple. Notamment le traitement de ceux
 qui nécessitent de lire des fichiers ligne par ligne ; chaque ligne comportant
 des champs séparés par des délimiteur.
 
-
 ```awk
 #!/usr/bin/awk -f
 
 # Les commentaires commencent par un #
 
-
-# les programmes AWK consistent en une collection de règles et d'actions
+# Les programmes AWK consistent en une collection de règles et d'actions.
 règle1 { action; }
 règle2 { action; }
 
@@ -46,14 +44,14 @@ règle2 { action; }
 # texte. Si vous ne disposez pas de fichiers texte, considérez BEGIN comme le
 # point d’entrée principal du script.
 # À l'opposé de BEGIN, il existe la règle END. Cette règle est présente après
-#chaque fin de fichier (EOF : End Of File).
+# chaque fin de fichier (EOF : End Of File).
 
 BEGIN {
 
     # Les variables sont globales. Pas besoin de les déclarer.
     count = 0;
 
-    # les opérateurs sont identiques au langage C et aux langages similaires
+    # Les opérateurs sont identiques au langage C et aux langages similaires
     # (tels que C#, C++, etc.)
     a = count + 1; # addition
     b = count - 1; # soustraction
@@ -122,7 +120,6 @@ BEGIN {
     arr[1] = "bar";
 
     # Vous pouvez aussi initialiser un tableau avec la fonction split()
-
     n = split("foo:bar:baz", arr, ":");
 
     # Il y a aussi les tableaux associatifs
@@ -131,7 +128,6 @@ BEGIN {
 
     # et les tableaux multi-dimensions, avec certaines limitations que l'on ne
     # mentionnera pas ici
-
     multidim[0,0] = "foo";
     multidim[0,1] = "bar";
     multidim[1,0] = "baz";
@@ -150,19 +146,16 @@ BEGIN {
     for (argnum in ARGV)
         print ARGV[argnum];
 
-    # Vous pouvez supprimer des éléments d'un tableau
+    # Vous pouvez supprimer des éléments d'un tableau.
     # C'est utile pour empêcher AWK de supposer que certains arguments soient
     # des fichiers à traiter.
-
     delete ARGV[1];
 
     # Le nombre d'arguments de la ligne de commande est assigné à
     # la variable ARGC
     print ARGC;
 
-    # AWK inclue trois catégories de fonction.
-    # On les examinera plus tard
-
+    # AWK inclue trois catégories de fonction. On les examinera plus tard.
     return_value = arithmetic_functions(a, b, c);
     string_functions();
     io_functions();
@@ -182,8 +175,8 @@ function arithmetic_functions(a, b, c,     d) {
     # déclaration de fonction, comme ci-dessus. La convention veut que vous
     # mettiez quelques espaces supplémentaires pour faire la distinction entre
     # les paramètres réels et les variables locales.
-    # Dans cet exemple, a, b et c sont des paramètres réels,
-    # alors que d est simplement une variable locale.
+    # Dans cet exemple, a, b et c sont des paramètres réels, alors que d est
+    # simplement une variable locale.
 
     # Maintenant, les fonctions arithmétiques
 
@@ -219,17 +212,16 @@ function string_functions(    localvar, arr) {
     # AWK a plusieurs fonctions pour le traitement des chaînes de caractères,
     # dont beaucoup reposent sur des expressions régulières.
 
-    # Chercher et remplacer, la première occurrence (sub) ou toutes les
-    # occurrences (gsub)
+    # Chercher et remplacer, la première occurrence (sub), ou toutes les
+    # occurrences (gsub).
     # Les deux renvoient le nombre de correspondances remplacées
-
     localvar = "fooooobar";
     sub("fo+", "Meet me at the ", localvar); # localvar => "Meet me at the bar"
     gsub("e", ".", localvar); # localvar => "m..t m. at th. bar"
 
     # Rechercher une chaîne de caractères qui correspond à une expression
     # régulière index() fait la même chose, mais n'autorise pas les expressions
-    # régulières
+    # régulières.
     match(localvar, "t"); # => 4, puisque 't' est le quatrième caractère
 
     # Séparer par un délimiteur
@@ -255,16 +247,13 @@ function io_functions(    localvar) {
 
     # AWK n'a pas de descripteur de fichier en soi. Il ouvrira automatiquement
     # un descripteur de fichier lorsque vous utilisez quelque chose qui en a
-    # besoin.
-    # La chaîne de caractères que vous avez utilisée pour cela peut être traitée
-    # comme un descripteur de fichier à des fins d'entrée / sortie.
-
+    # besoin. La chaîne de caractères que vous avez utilisée pour cela peut être
+    # traitée comme un descripteur de fichier à des fins d'entrée / sortie.
     outfile = "/tmp/foobar.txt";
-
     print "foobar" > outfile;
 
     # Maintenant, la chaîne de caractères "outfile" est un descripteur de
-    # fichier. Vous pouvez le fermer
+    # fichier. Vous pouvez le fermer.
     close(outfile);
 
     # Voici comment exécuter quelque chose dans le shell
@@ -298,7 +287,7 @@ function io_functions(    localvar) {
 
     # Cette action sera exécutée pour chaque ligne qui correspond à l'expression
     # régulière, /^fo+bar$/, et sera ignorée pour toute ligne qui n'y correspond
-    # pas. Imprimons simplement la ligne:
+    # pas. Imprimons simplement la ligne :
 
     print;
 
@@ -311,11 +300,11 @@ function io_functions(    localvar) {
     # exécutée, comme le fait le shell. Et, comme le shell, chaque champ est
     # accessible avec un signe dollar.
 
-     # Ceci affichera les deuxième et quatrième champs de la ligne.
+    # Ceci affichera les deuxième et quatrième champs de la ligne.
     print $2, $4;
 
     # AWK défini automatiquement beaucoup d'autres variables qui peuvent vous
-    # aider à inspecter et traiter chaque ligne. La plus importante est NF
+    # aider à inspecter et traiter chaque ligne. La plus importante est NF.
 
     # Affiche le nombre de champs de la ligne
     print NF;
@@ -325,7 +314,6 @@ function io_functions(    localvar) {
 }
 
 # Chaque règle est en réalité un test conditionnel.
-
 a > 0 {
     # Ceci s’exécutera une fois pour chaque ligne, tant que le test est positif
 }
@@ -333,18 +321,15 @@ a > 0 {
 # Les expressions régulières sont également des tests conditionnels.
 # Si le test de l'expression régulières n'est pas vrais alors le bloc
 # n'est pas exécuté.
-
 $0 /^fobar/ {
    print "la ligne commence par foobar"
 }
 
 # Dans le cas où vous voulez tester votre chaîne de caractères sur la ligne
 # en cours de traitement $0 est optionnelle.
-
 /^[a-zA-Z0-9]$/ {
     print "La ligne courante ne contient que des caractères alphanumériques.";
 }
-
 
 # AWK peut parcourir un fichier texte ligne par ligne et exécuter des actions en
 # fonction de règles établies. Cela est si courant sous UNIX qu'AWK est un
@@ -354,7 +339,7 @@ $0 /^fobar/ {
 # parfait. Le script lit un nom à partir de l'entrée standard, puis affiche
 # l'âge moyen de toutes les personnes portant ce prénom.
 # Supposons que vous fournissiez comme argument le nom d'un fichier comportant
-# ces données:
+# ces données :
 #
 # Bob Jones 32
 # Jane Doe 22
@@ -397,9 +382,9 @@ $1 == name {
 # les fichiers texte. Contrairement à BEGIN, il ne fonctionne que si vous lui
 # donnez une entrée à traiter. Il sera exécuté une fois que tous les fichiers
 # auront été lus et traités conformément aux règles et aux actions que vous
-# avez fournies. Le but est généralement de produire un rapport final
-# ou de faire quelque chose avec l'ensemble des données que vous avez
-# accumulées au cours du script.
+# avez fournies. Le but est généralement de produire un rapport final, ou de
+# faire quelque chose avec l'ensemble des données que vous avez accumulées
+# au cours du script.
 
 
 END {
@@ -408,6 +393,7 @@ END {
 }
 
 ```
+
 Pour plus d'informations :
 
 * [Awk tutorial](http://www.grymoire.com/Unix/Awk.html)
