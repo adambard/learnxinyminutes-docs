@@ -118,12 +118,12 @@ BEGIN {
     # Arrays
     arr[0] = "foo";
     arr[1] = "bar";
-    
+
     # You can also initialize an array with the built-in function split()
-    
+
     n = split("foo:bar:baz", arr, ":");
-   
-    # You also have associative arrays (actually, they're all associative arrays)
+
+    # You also have associative arrays (indeed, they're all associative arrays)
     assoc["foo"] = "bar";
     assoc["bar"] = "baz";
 
@@ -216,7 +216,8 @@ function string_functions(    localvar, arr) {
     match(localvar, "t"); # => 4, since the 't' is the fourth character
 
     # Split on a delimiter
-    n = split("foo-bar-baz", arr, "-"); # a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
+    n = split("foo-bar-baz", arr, "-");
+    # result: a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
 
     # Other useful stuff
     sprintf("%s %d %d %d", "Testing", 1, 2, 3); # => "Testing 1 2 3"
@@ -238,9 +239,9 @@ function io_functions(    localvar) {
     # AWK doesn't have file handles, per se. It will automatically open a file
     # handle for you when you use something that needs one. The string you used
     # for this can be treated as a file handle, for purposes of I/O. This makes
-    # it feel sort of like shell scripting, but to get the same output, the string
-    # must match exactly, so use a variable:
-    
+    # it feel sort of like shell scripting, but to get the same output, the
+    # string must match exactly, so use a variable:
+
     outfile = "/tmp/foobar.txt";
 
     print "foobar" > outfile;
@@ -261,7 +262,7 @@ function io_functions(    localvar) {
 
     # Reads a line from a file and stores in localvar
     infile = "/tmp/foobar.txt";
-    getline localvar < infile; 
+    getline localvar < infile;
     close(infile);
 }
 
@@ -273,10 +274,10 @@ function io_functions(    localvar) {
 # When you pass arguments to AWK, they are treated as file names to process.
 # It will process them all, in order. Think of it like an implicit for loop,
 # iterating over the lines in these files. these patterns and actions are like
-# switch statements inside the loop. 
+# switch statements inside the loop.
 
 /^fo+bar$/ {
-    
+
     # This action will execute for every line that matches the regular
     # expression, /^fo+bar$/, and will be skipped for any line that fails to
     # match it. Let's just print the line:
@@ -376,11 +377,15 @@ END {
 }
 
 ```
+
 Further Reading:
 
 * [Awk tutorial](http://www.grymoire.com/Unix/Awk.html)
 * [Awk man page](https://linux.die.net/man/1/awk)
-* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html) GNU Awk is found on most Linux systems.
+* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
+  GNU Awk is found on most Linux systems.
 * [AWK one-liner collection](http://tuxgraphics.org/~guido/scripts/awk-one-liner.html)
-* [Awk alpinelinux wiki](https://wiki.alpinelinux.org/wiki/Awk) a technical summary and list of "gotchas" (places where different implementations may behave in different or unexpected ways). 
+* [Awk alpinelinux wiki](https://wiki.alpinelinux.org/wiki/Awk) a technical
+  summary and list of "gotchas" (places where different implementations may
+  behave in different or unexpected ways).
 * [basic libraries for awk](https://github.com/dubiousjim/awkenough)
