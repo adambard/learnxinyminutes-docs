@@ -123,7 +123,79 @@ $docker exec -it 7b272 bash
 # This command is used to run a command in the running container's default directory
 # Here 7b272 was our ubuntu container and the above command would help us interact with the container by opening a bash session
 
-$docker compose
+$docker logs <container-id>
+# Displays the information logged by the specified container
+# root@7b27222e4bb7:/# whoami
+# root
+# root@7b27222e4bb7:/# pwd
+# /
+# root@7b27222e4bb7:/# ls
+# bin  boot  dev  etc  home  lib  lib32  lib64 libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+# root@7b27222e4bb7:/# exit
+# exit
 
 # More commands can be found at https://docs.docker.com/engine/reference/commandline/docker/
+```
+## The Dockerfile
+The Dockerfile is a blueprint of a Docker image. We can mention the artifacts from our application along with their configurations into this file in the specific syntax to let anyone create a Docker image of our application.
+
+### A few things to keep in mind:
+* It is always strictly named `Dockerfile` without any extensions
+* We have to build our custom image on top of some already available Docker base image. (there is an empty image called `scratch` which literally lets you build an image from scratch)
+* All capitalised commands are part of the syntax, they are not case-sensitive but used like a convention
+* Below is a sample Dockerfile but you can read in depth from the [official docs](https://docs.docker.com/engine/reference/builder/).
+
+```Dockerfile
+FROM <base-image>
+# define base image
+
+ENV USERNAME='admin'\
+    PWD='****'
+# optionally define environmental variables
+
+RUN apt-get update
+# run linux commands inside container env, does not affect host env
+# This executes during the time of image creation
+
+COPY <src> <target>
+# executes on the host, copies files from src (usually on the host) to target on the container
+
+ENTRYPOINT ["some-script.sh"]
+# executes an entire script as an entrypoint
+
+CMD [<args>,...]
+# always part of dockerfile, introduces entry point linux command e.g. `CMD node server.js`
+# This executes after image creation only when the container from the image is running.
+```
+### Build your images
+Use the `docker build` command after wrapping your application into a Docker image to run ( or build) it.
+
+```bash
+
+$docker build <path-to-dockerfile>
+# used to build an image from the specified Dockerfile
+# instead of path we could also specify a URL
+# -t tag is optional and used to name and tag your images for e.g. `$docker build -t my-image:0.1 ./home/app`
+# rebuild images everytime you make changes in the dockerfile
+```
+
+## Push your image to DockerHub
+If you want your application's Docker image to be made publically available for any Docker user, you might wanna push it to the [Docker Hub](https://hub.docker.com/) which is a registry of Docker images. Make sure you have an account with a username and password on Docker Hub.
+
+When pushing an image to Docker Hub, we must specify our Docker Hub username as part of the source image name. We need to create the target image with the tag name of username/image-name much like GitHub repositories. 
+
+```bash
+$docker login
+# to login to Docker Hub using your username and password
+
+$docker tag <src-image>[:<src-tag>] <target-image>[:<target-tag>]
+# this tags a local src-image to a public target-image
+# e.g. `docker tag my-sample-app:1.0.0  akshitadixit/my-sample-app`
+# if tags are not specified, they're defaulted to `latest`
+
+$docker push <target-image>[:<target-tag>]
+# uploads our image to Docker Hub
+# e.g. `docker push akshitadixit/my-sample-app`
+# this image will be accessible under your profile's repositories as `https://hub.docker.com/r/username/image-name`
+
 ```
