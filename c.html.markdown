@@ -2,15 +2,15 @@
 language: C
 filename: learnc.c
 contributors:
-    - ["Adam Bard", "http://adambard.com/"]
-    - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
-    - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
-    - ["Marco Scannadinari", "https://marcoms.github.io"]
-    - ["Zachary Ferguson", "https://github.io/zfergus2"]
-    - ["himanshu", "https://github.com/himanshu81494"]
-    - ["Joshua Li", "https://github.com/JoshuaRLi"]
-    - ["Dragos B. Chirila", "https://github.com/dchirila"]
-    - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
+  - ["Adam Bard", "http://adambard.com/"]
+  - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
+  - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
+  - ["Marco Scannadinari", "https://marcoms.github.io"]
+  - ["Zachary Ferguson", "https://github.io/zfergus2"]
+  - ["himanshu", "https://github.com/himanshu81494"]
+  - ["Joshua Li", "https://github.com/JoshuaRLi"]
+  - ["Dragos B. Chirila", "https://github.com/dchirila"]
+  - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -101,6 +101,12 @@ int main (int argc, char** argv)
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
 
+  // take input using scanf
+  // '&' is used to define the location
+  // where we want to store the input value
+  int input;
+  scanf("%d", &input);
+
   ///////////////////////////////////////
   // Types
   ///////////////////////////////////////
@@ -118,7 +124,7 @@ int main (int argc, char** argv)
   // shorts are usually 2 bytes (use the `sizeof` operator to check)
   short x_short = 0;
 
-  // chars are defined as the smallest addressable unit for a processor. 
+  // chars are defined as the smallest addressable unit for a processor.
   // This is usually 1 byte, but for some systems it can be more (ex. for TMS320 from TI it's 2 bytes).
   char x_char = 0;
   char y_char = 'y'; // Char literals are quoted with ''
@@ -167,19 +173,19 @@ int main (int argc, char** argv)
   // where the "{0}" part is called an "array initializer".
   // All elements (if any) past the ones in the initializer are initialized to 0:
   int my_array[5] = {1, 2};
-  // So my_array now has five elements, all but the first two of which are 0: 
+  // So my_array now has five elements, all but the first two of which are 0:
   // [1, 2, 0, 0, 0]
-  // NOTE that you get away without explicitly declaring the size 
+  // NOTE that you get away without explicitly declaring the size
   // of the array IF you initialize the array on the same line:
   int my_array[] = {0};
-  // NOTE that, when not declaring the size, the size of the array is the number 
+  // NOTE that, when not declaring the size, the size of the array is the number
   // of elements in the initializer. With "{0}", my_array is now of size one: [0]
   // To evaluate the size of the array at run-time, divide its byte size by the
   // byte size of its element type:
   size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
-  // WARNING You should evaluate the size *before* you begin passing the array 
-  // to functions (see later discussion) because arrays get "downgraded" to 
-  // raw pointers when they are passed to functions (so the statement above 
+  // WARNING You should evaluate the size *before* you begin passing the array
+  // to functions (see later discussion) because arrays get "downgraded" to
+  // raw pointers when they are passed to functions (so the statement above
   // will produce the wrong result inside the function).
 
   // Indexing an array is like other languages -- or,
@@ -247,11 +253,11 @@ int main (int argc, char** argv)
   (float)i1 / i2; // => 0.5f
   i1 / (double)i2; // => 0.5 // Same with double
   f1 / f2; // => 0.5, plus or minus epsilon
-  
+
   // Floating-point numbers are defined by IEEE 754, thus cannot store perfectly
-  // exact values. For instance, the following does not produce expected results 
-  // because 0.1 might actually be 0.099999999999 insided the computer, and 0.3 
-  // might be stored as 0.300000000001. 
+  // exact values. For instance, the following does not produce expected results
+  // because 0.1 might actually be 0.099999999999 insided the computer, and 0.3
+  // might be stored as 0.300000000001.
   (0.1 + 0.1 + 0.1) != 0.3; // => 1 (true)
   // and it is NOT associative due to reasons mentioned above.
   1 + (1e123 - 1e123) != (1 + 1e123) - 1e123; // => 1 (true)
@@ -262,7 +268,7 @@ int main (int argc, char** argv)
   // eventually calls C which uses IEEE 754. It is mentioned this way not to
   // indicate that this is a poor implementation, but instead as a warning
   // that when doing floating point comparisons, a little bit of error (epsilon)
-  // needs to be considered. 
+  // needs to be considered.
 
   // Modulo is there as well, but be careful if arguments are negative
   11 % 3;    // => 2 as 11 = 2 + 3*x (x=3)
@@ -411,7 +417,7 @@ int main (int argc, char** argv)
   */
   /*
     it is generally considered bad practice to do so, except if
-    you really know what you are doing. See 
+    you really know what you are doing. See
     https://en.wikipedia.org/wiki/Spaghetti_code#Meaning
   */
 
@@ -424,7 +430,7 @@ int main (int argc, char** argv)
 
   int x_hex = 0x01; // You can assign vars with hex literals
                     // binary is not in the standard, but allowed by some
-                    // compilers (x_bin = 0b0010010110) 
+                    // compilers (x_bin = 0b0010010110)
 
   // Casting between types will attempt to preserve their numeric values
   printf("%d\n", x_hex); // => Prints 1
@@ -626,7 +632,7 @@ printf("first: %d\nsecond: %d\n", first, second);
 // values will be swapped
 */
 
-// Return multiple values. 
+// Return multiple values.
 // C does not allow for returning multiple values with the return statement. If
 // you would like to return multiple values, then the caller must pass in the
 // variables where they would like the returned values to go. These variables must
@@ -637,9 +643,9 @@ int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
         return 0; //return error code (false)
 
     //de-reference the pointer so we modify its value
-   *ret1 = array_of_3[0]; 
-   *ret2 = array_of_3[1]; 
-   *ret3 = array_of_3[2]; 
+   *ret1 = array_of_3[0];
+   *ret2 = array_of_3[1];
+   *ret3 = array_of_3[2];
 
    return 1; //return error code (true)
 }
@@ -901,10 +907,11 @@ Node createLinkedList(int *vals, int len);
 #endif /* End of the if precompiler directive. */
 
 ```
+
 ## Further Reading
 
 Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
-It is *the* book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
+It is _the_ book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
 Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/) (not free).
