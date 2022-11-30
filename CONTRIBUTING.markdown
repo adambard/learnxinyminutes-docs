@@ -37,7 +37,6 @@ review them more effectively and/or individually.
     `file language.html.markdown`  You will see this if it uses a BOM:
     `UTF-8 Unicode (with BOM) text`.
 
-
 ### Header configuration
 
 The actual site uses Middleman to generate HTML files from these Markdown ones.
@@ -56,7 +55,7 @@ Other fields:
   *tool* or *Algorithms & Data Structures*. Defaults to *language* if omitted.
 * **filename**: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
-   * For non-English articles, *filename* should   have a language-specific 
+   * For non-English articles, *filename* should   have a language-specific
      suffix.
 * **lang**: For translations, the human language this article is in. For
   categorization, mostly.
@@ -85,8 +84,12 @@ addition or not.
 
 You can build the site locally to test your changes. Follow the steps below.
 
-* Install Ruby language runtime and RubyGems. See [here](https://middlemanapp.com/basics/install/) for more details.
-* Clone or zip download the [learnxinyminutes-site](https://github.com/adambard/learnxinyminutes-site) repo.
+* Install Ruby language runtime and RubyGems. See
+  [here](https://middlemanapp.com/basics/install/)
+  for more details.
+* Clone or zip download the
+  [learnxinyminutes-site](https://github.com/adambard/learnxinyminutes-site)
+  repository.
    * `git clone https://github.com/adambard/learnxinyminutes-site`
 * Install Middleman and other required dependencies using Bundler.
    * `cd learnxinyminutes-site/`
@@ -100,6 +103,6 @@ You can build the site locally to test your changes. Follow the steps below.
       * `cd source/docs/`
       * `git clone https://github.com/YOUR-USERNAME/learnxinyminutes-docs ./source/docs/`
 * Build the site or run a development server to test your changes (NOTE: run
-these commands at `learnxinyminutes-site/`).
+  these commands at `learnxinyminutes-site/`).
    * Build - `bundle exec middleman build`
    * Dev server - `bundle exec middleman --force-polling --verbose`
