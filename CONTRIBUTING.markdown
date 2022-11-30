@@ -17,23 +17,23 @@ review them more effectively and/or individually.
 ## Style Guidelines
 
 * **Keep lines under 80 chars**
-  + Try to keep **line length in code blocks to 80 characters or fewer**.
-  + Otherwise, the text will overflow and look odd.
+   * Try to keep **line length in code blocks to 80 characters or fewer**.
+   * Otherwise, the text will overflow and look odd.
 * **Prefer example to exposition**
-  + Try to use as few words as possible.
-  + Code examples are preferred over exposition in all cases.
+   * Try to use as few words as possible.
+   * Code examples are preferred over exposition in all cases.
 * **Eschew surplusage**
-  + We welcome newcomers, but the target audience for this site is programmers
+   * We welcome newcomers, but the target audience for this site is programmers
     with some experience.
-  + Try to avoid explaining basic concepts except for those specific to the
+   * Try to avoid explaining basic concepts except for those specific to the
     language in question.
-  + Keep articles succinct and scannable. We all know how to use Google here.
+   * Keep articles succinct and scannable. We all know how to use Google here.
 * **Use UTF-8**
-  + For translations (or EN articles with non-ASCII characters) please make sure
+   * For translations (or EN articles with non-ASCII characters) please make sure
     your file is UTF-8 encoded.
-  + Try to leave out the byte-order-mark at the start of the file. (`:set nobomb`
+   * Try to leave out the byte-order-mark at the start of the file. (`:set nobomb`
     in Vim)
-  + You can check if the file contains a BOM on Linux/Unix systems by running
+   * You can check if the file contains a BOM on Linux/Unix systems by running
     `file language.html.markdown`  You will see this if it uses a BOM:
     `UTF-8 Unicode (with BOM) text`.
 
