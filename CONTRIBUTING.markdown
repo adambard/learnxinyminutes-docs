@@ -24,15 +24,15 @@ review them more effectively and/or individually.
    * Code examples are preferred over exposition in all cases.
 * **Eschew surplusage**
    * We welcome newcomers, but the target audience for this site is programmers
-    with some experience.
+     with some experience.
    * Try to avoid explaining basic concepts except for those specific to the
-    language in question.
+     language in question.
    * Keep articles succinct and scannable. We all know how to use Google here.
 * **Use UTF-8**
-   * For translations (or EN articles with non-ASCII characters) please make sure
-    your file is UTF-8 encoded.
-   * Try to leave out the byte-order-mark at the start of the file. (`:set nobomb`
-    in Vim)
+   * For translations (or EN articles with non-ASCII characters) please ensure
+     your file is UTF-8 encoded.
+   * Try to leave out the byte-order-mark at the start of the file (in Vim, use
+     `:set nobomb`).
    * You can check if the file contains a BOM on Linux/Unix systems by running
     `file language.html.markdown`  You will see this if it uses a BOM:
     `UTF-8 Unicode (with BOM) text`.
@@ -56,8 +56,8 @@ Other fields:
   *tool* or *Algorithms & Data Structures*. Defaults to *language* if omitted.
 * **filename**: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
-    + For non-English articles, *filename* should   have a language-specific 
-      suffix.
+   * For non-English articles, *filename* should   have a language-specific 
+     suffix.
 * **lang**: For translations, the human language this article is in. For
   categorization, mostly.
 
@@ -87,19 +87,19 @@ You can build the site locally to test your changes. Follow the steps below.
 
 * Install Ruby language runtime and RubyGems. See [here](https://middlemanapp.com/basics/install/) for more details.
 * Clone or zip download the [learnxinyminutes-site](https://github.com/adambard/learnxinyminutes-site) repo.
-    * `git clone https://github.com/adambard/learnxinyminutes-site`
+   * `git clone https://github.com/adambard/learnxinyminutes-site`
 * Install Middleman and other required dependencies using Bundler.
-    * `cd learnxinyminutes-site/`
-    * `bundle install`
+   * `cd learnxinyminutes-site/`
+   * `bundle install`
 * Get the source in place
-    * Copy the contents of your clone of the fork of learnxinyminutes-docs repo
-    into the `source/docs` folder. There shouldn't be a `learnxinyminutes-docs`
-    folder inside the `docs` folder, it should just contain all the repo
-    contents.
-    * Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
+   * Copy the contents of your clone of the fork of learnxinyminutes-docs repo
+     into the `source/docs` folder. There shouldn't be a `learnxinyminutes-docs`
+     folder inside the `docs` folder, it should just contain all the repo
+     contents.
+   * Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
         * `cd source/docs/`
         * `git clone https://github.com/YOUR-USERNAME/learnxinyminutes-docs ./source/docs/`
 * Build the site or run a development server to test your changes (NOTE: run
 these commands at `learnxinyminutes-site/`).
-    * Build - `bundle exec middleman build`
-    * Dev server - `bundle exec middleman --force-polling --verbose`
+   * Build - `bundle exec middleman build`
+   * Dev server - `bundle exec middleman --force-polling --verbose`
