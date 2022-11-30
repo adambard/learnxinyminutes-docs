@@ -4,6 +4,7 @@ filename: learnFunC.fc
 contributors:
   - ["Ivan Romanovich", "https://t.me/ton_learn"]
   - ["Kirill Malev", "https://fslabs.io"]
+  - ["Roman Krutovyi", "https://t.me/SwiftAdviser"]
 ---
 
 The FunC language is used to program smart contracts on the [The Open Network](https://ton.org) blockchain. Contract logic is executed in TVM, the stack-based TON Virtual Machine.
@@ -306,24 +307,30 @@ do {
 ;; 
 ```
 
-## Additional resources
-- [FunC Lessons](https://github.com/romanovichim/TonFunClessons_Eng)
-- [TON Development Onboarding](https://www.tonspace.co)
-- [TON Documentation](https://ton.org/docs/#/)
-- [FunC Documentation](https://ton.org/docs/#/func/overview)
+## What's next?
+
+- [FunC Journey Part 1](https://blog.ton.org/func_journey_part_1)
+- [TON DevPortal](https://ton.org/dev/)
+- [TON Documentation](https://ton.org/docs/)
+- [FunC Documentation](https://ton.org/docs/develop/func/overview)
 - [TON Smart Contracts examples](https://github.com/ton-blockchain/ton/tree/master/crypto/smartcont)
-- [Community portal](https://society.ton.org)
-- [Blockchain portal](https://ton.org)
-- [Stackoverflow](https://stackoverflow.com/questions/tagged/ton)
+
+## Have questions?
+
+- [TON Overflow](https://answers.ton.org/)
+- [Builders portal](https://society.ton.org)
+- [TON Blockchain website](https://ton.org)
 
 ## Social
 - [Developer community](https://t.me/tondev_eng)
 - [TON Learn](https://t.me/ton_learn)
 - [FunC Lessons Channel](https://github.com/romanovichim/TonFunClessons_Eng)
-- [FunC onboarding](https://t.me/func_guide)
+- [FunC Onboarding](https://t.me/func_guide)
 - [Tondev News](https://t.me/tondevnews)
+- [TON Contests](https://t.me/toncontests)
 
 ## Useful blogposts
+- [FunC Journey Part 1](https://blog.ton.org/func_journey_part_1)
 - [Setting up a TON Development Environment](https://society.ton.org/setting-up-a-ton-development-environment)
 - [Hello World on TON](https://society.ton.org/ton-hello-world-step-by-step-guide-for-writing-your-first-smart-contract-in-func)
 
