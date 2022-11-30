@@ -16,19 +16,19 @@ review them more effectively and/or individually.
 
 ## Style Guidelines
 
-- **Keep lines under 80 chars**
+* **Keep lines under 80 chars**
   + Try to keep **line length in code blocks to 80 characters or fewer**.
   + Otherwise, the text will overflow and look odd.
-- **Prefer example to exposition**
+* **Prefer example to exposition**
   + Try to use as few words as possible.
   + Code examples are preferred over exposition in all cases.
-- **Eschew surplusage**
+* **Eschew surplusage**
   + We welcome newcomers, but the target audience for this site is programmers
     with some experience.
   + Try to avoid explaining basic concepts except for those specific to the
     language in question.
   + Keep articles succinct and scannable. We all know how to use Google here.
-- **Use UTF-8**
+* **Use UTF-8**
   + For translations (or EN articles with non-ASCII characters) please make sure
     your file is UTF-8 encoded.
   + Try to leave out the byte-order-mark at the start of the file. (`:set nobomb`
@@ -47,31 +47,31 @@ some key information be defined in the header.
 The following fields are necessary for English articles about programming
 languages:
 
-- **language** The *programming language* in question
-- **contributors** A list of [author, URL] lists to credit
+* **language** The *programming language* in question
+* **contributors** A list of [author, URL] lists to credit
 
 Other fields:
 
-- **category**: The category of the article. So far, can be one of *language*,
+* **category**: The category of the article. So far, can be one of *language*,
   *tool* or *Algorithms & Data Structures*. Defaults to *language* if omitted.
-- **filename**: The filename for this article's code. It will be fetched, mashed
+* **filename**: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
     + For non-English articles, *filename* should   have a language-specific 
       suffix.
-- **lang**: For translations, the human language this article is in. For
+* **lang**: For translations, the human language this article is in. For
   categorization, mostly.
 
 Here's an example header for an Esperanto translation of Ruby:
 
 ```yaml
----
+*--
 language: ruby
 filename: learnruby-epo.ruby
 contributors:
     - ["Doktor Esperanto", "http://example.com/"]
     - ["Someone else", "http://someoneelseswebsite.com/"]
 lang: ep-ep
----
+*--
 ```
 
 ### Should I add myself as a Contributor?
