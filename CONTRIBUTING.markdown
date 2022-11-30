@@ -35,7 +35,7 @@ review them more effectively and/or individually.
     in Vim)
   + You can check if the file contains a BOM on Linux/Unix systems by running
     `file language.html.markdown`  You will see this if it uses a BOM:
-	`UTF-8 Unicode (with BOM) text`.
+    `UTF-8 Unicode (with BOM) text`.
 
 
 ### Header configuration
@@ -87,19 +87,19 @@ You can build the site locally to test your changes. Follow the steps below.
 
 * Install Ruby language runtime and RubyGems. See [here](https://middlemanapp.com/basics/install/) for more details.
 * Clone or zip download the [learnxinyminutes-site](https://github.com/adambard/learnxinyminutes-site) repo.
-	* `git clone https://github.com/adambard/learnxinyminutes-site`
+    * `git clone https://github.com/adambard/learnxinyminutes-site`
 * Install Middleman and other required dependencies using Bundler.
-	* `cd learnxinyminutes-site/`
-	* `bundle install`
+    * `cd learnxinyminutes-site/`
+    * `bundle install`
 * Get the source in place
-	* Copy the contents of your clone of the fork of learnxinyminutes-docs repo
-	into the `source/docs` folder. There shouldn't be a `learnxinyminutes-docs`
-	folder inside the `docs` folder, it should just contain all the repo
-	contents.
-	* Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
-		* `cd source/docs/`
-		* `git clone https://github.com/YOUR-USERNAME/learnxinyminutes-docs ./source/docs/`
+    * Copy the contents of your clone of the fork of learnxinyminutes-docs repo
+    into the `source/docs` folder. There shouldn't be a `learnxinyminutes-docs`
+    folder inside the `docs` folder, it should just contain all the repo
+    contents.
+    * Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
+        * `cd source/docs/`
+        * `git clone https://github.com/YOUR-USERNAME/learnxinyminutes-docs ./source/docs/`
 * Build the site or run a development server to test your changes (NOTE: run
 these commands at `learnxinyminutes-site/`).
-	* Build - `bundle exec middleman build`
-	* Dev server - `bundle exec middleman --force-polling --verbose`
+    * Build - `bundle exec middleman build`
+    * Dev server - `bundle exec middleman --force-polling --verbose`
