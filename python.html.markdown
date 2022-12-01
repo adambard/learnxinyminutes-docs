@@ -503,6 +503,7 @@ contents = {"aa": 12, "bb": 21}
 with open("myfile1.txt", "w+") as file:
     file.write(str(contents))        # writes a string to a file
 
+import json
 with open("myfile2.txt", "w+") as file:
     file.write(json.dumps(contents)) # writes an object to a file
 
