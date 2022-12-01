@@ -512,6 +512,7 @@ with open('myfile1.txt', "r+") as file:
 print(contents)
 # print: {"aa": 12, "bb": 21}
 
+import json #import json to load the file content..
 with open('myfile2.txt', "r+") as file:
     contents = json.load(file)       # reads a json object from a file
 print(contents)
