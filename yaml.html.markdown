@@ -38,6 +38,7 @@ octal_notation: 0123 # evaluates to 83
 # If you want it to be interpreted as a boolean, use true.
 boolean: true
 null_value: null
+another_null_value: ~
 key with spaces: value
 
 # Yes and No (doesn't matter the case) will be evaluated to boolean 
