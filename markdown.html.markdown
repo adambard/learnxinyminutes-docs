@@ -298,7 +298,7 @@ omitted though.)
   - [Subchapter <h3 />](#subchapter-h3-)
 ```
 
-Nontheless, this is a feature that might not be working in all Markdown
+Nonetheless, this is a feature that might not be working in all Markdown
 implementations the same way.
 
 ## Images

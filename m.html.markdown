@@ -198,7 +198,7 @@ M has an execution stack. When all levels of the stack have returned, the progra
 With an argument: execute a block of code & add a level to the stack. 
 
 ```
-d ^routine    ;run a routine from the begining. 
+d ^routine    ;run a routine from the beginning. 
 ;             ;routines are identified by a caret.
 d tag         ;run a tag in the current routine
 d tag^routine ;run a tag in different routine

@@ -713,7 +713,7 @@ end
 #### About [T]CSH:
 # * CSH is notorious about its bugs;
 # * It was also famous about its advanced interactive mode.
-# * TCSH is famous that have the most advanced completition subsystem.
+# * TCSH is famous that have the most advanced completion subsystem.
 # * TCSH is famous that have the most advanced aliases subsystem; aliases
 #   can take parameters and often used as functions!
 # * TCSH is well known that preferred by people  (me too) because of better

@@ -254,7 +254,7 @@ $docker build <path-to-dockerfile>
 ```
 
 ## Push your image to DockerHub
-If you want your application's Docker image to be made publically available for
+If you want your application's Docker image to be made publicly available for
 any Docker user, you might wanna push it to the [Docker Hub](https://hub.docker.com/) which is a
 registry of Docker images. Make sure you have an account with a username and
 password on Docker Hub.

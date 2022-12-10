@@ -183,7 +183,7 @@ bind a send-prefix
 ### Theme
 ###########################################################################
 
-# Statusbar Color Palatte
+# Statusbar Color Palette
 set-option -g status-justify left
 set-option -g status-bg black
 set-option -g status-fg white
