@@ -69,7 +69,7 @@ pub fn main() void {
 ### Booleans, integers and float.
 ```zig
 // Booleans.
-// Keywords are prefered to operators for boolean operations.
+// Keywords are preferred to operators for boolean operations.
 print("{}\n{}\n{}\n", .{
     true and false,
     true or false,
@@ -138,7 +138,7 @@ var some_integers: [10]i32 = undefined;
 
 some_integers[0] = 30; // first element of the array is now 30
 
-var x = some_integers[0]; // "x" now equals to 30, its type is infered.
+var x = some_integers[0]; // "x" now equals to 30, its type is inferred.
 var y = some_integers[1]; // Second element of the array isn't defined.
                           // "y" got a stack garbage value (no runtime error).
 
@@ -707,8 +707,8 @@ However, here are some examples, to get an idea of what you can expect:
   Use a fixed buffer to get its memory, don't ask memory to the kernel.
   Very simple, limited and wasteful (can't deallocate), but very fast.
 - ArenaAllocator.
-  Allow to free all allocted memory at once.
-  To use in combinaison with another allocator.
+  Allow to free all allocated memory at once.
+  To use in combinations with another allocator.
   Very simple way of avoiding leaks.
 
 A first example.
@@ -825,7 +825,7 @@ fn arena_allocator_fn() !void {
 
 
 // Combining the general purpose and arena allocators. Both are very useful,
-// and their combinaison should be in everyone's favorite cookbook.
+// and their combinations should be in everyone's favorite cookbook.
 fn gpa_arena_allocator_fn() !void {
     const config = .{.safety = true};
     var gpa = std.heap.GeneralPurposeAllocator(config){};
@@ -925,7 +925,7 @@ test "returns true" {
 The compiler has special functions called "built-ins", starting with an "@".
 There are more than a hundred built-ins, allowing very low-level stuff:
 - compile-time errors, logging, verifications
-- type coercion and convertion, even in an unsafe way
+- type coercion and conversion, even in an unsafe way
 - alignment management
 - memory tricks (such as getting the byte offset of a field in a struct)
 - calling functions at compile-time
@@ -956,7 +956,7 @@ if (@enumToInt(Value.blah)  == 2) { ... }
     Unions cannot be reinterpreted (in an union with an integer and a float, one cannot take a value for another by accident).
     Etc.
 - Removing most of the C undefined behaviors (UBs), and when the compiler encounters one, it stops.
-- Slice and Array structures are prefered to pointers.
+- Slice and Array structures are preferred to pointers.
   Types enforced by the compiler are less prone to errors than pointer manipulations.
 - Numerical overflows produce an error, unless explicitly accepted using wrapping operators.
 - Try and catch mechanism.
@@ -964,7 +964,7 @@ if (@enumToInt(Value.blah)  == 2) { ... }
 - Unused variables are considered as errors by the compiler.
 - Many pointer types exist in order to represent what is pointed.
   Example: is this a single value or an array, is the length known, etc.
-- Structures need a value for their attributes, and it still is possible to give an undefined value (stack garbage), but at least it is explicitely undefined.
+- Structures need a value for their attributes, and it still is possible to give an undefined value (stack garbage), but at least it is explicitly undefined.
 
 
 ## Further Reading

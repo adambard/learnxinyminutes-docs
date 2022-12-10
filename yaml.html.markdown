@@ -204,7 +204,7 @@ python_complex_number: !!python/complex 1+2j
 # Strings and numbers aren't the only scalars that YAML can understand.
 # ISO-formatted date and datetime literals are also parsed.
 datetime_canonical: 2001-12-15T02:59:43.1Z
-datetime_space_seperated_with_time_zone: 2001-12-14 21:59:43.10 -5
+datetime_space_separated_with_time_zone: 2001-12-14 21:59:43.10 -5
 date_implicit: 2002-12-14
 date_explicit: !!timestamp 2002-12-14
 

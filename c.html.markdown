@@ -256,7 +256,7 @@ int main (int argc, char** argv)
 
   // Floating-point numbers are defined by IEEE 754, thus cannot store perfectly
   // exact values. For instance, the following does not produce expected results
-  // because 0.1 might actually be 0.099999999999 insided the computer, and 0.3
+  // because 0.1 might actually be 0.099999999999 inside the computer, and 0.3
   // might be stored as 0.300000000001.
   (0.1 + 0.1 + 0.1) != 0.3; // => 1 (true)
   // and it is NOT associative due to reasons mentioned above.

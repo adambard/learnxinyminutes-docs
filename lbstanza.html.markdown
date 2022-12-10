@@ -193,7 +193,7 @@ while condition[0]:
 for i in 0 to 10 do:  
   vector[i] = i
 
-; stanza also supports named labels which can functin as break or return 
+; stanza also supports named labels which can function as break or return 
 ; statements
 defn another-fn (): 
   label<False> return:
@@ -218,7 +218,7 @@ for (x in xs, y in ys, z in zs) do :
   println("x:%_, y:%_, z:%_" % [x, y, z])
 
 
-;xs, ys, and zs are all "Seqable" meaing they are Seq types (sequences). 
+;xs, ys, and zs are all "Seqable" meaning they are Seq types (sequences). 
 ; the `do` identifier is a special function that just applies the body of
 ; the for loop to each element of the sequence.
 ; 
