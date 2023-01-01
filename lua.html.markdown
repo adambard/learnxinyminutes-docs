@@ -354,6 +354,8 @@ return M
 
 -- Another file can use mod.lua's functionality:
 local mod = require('mod')  -- Run the file mod.lua.
+- notice: require
+-- 注意：'require' needs to cooperate with LUA_ PATH used together, for example: export LUA_ PATH="$HOME/workspace/projectName/?.lua;;"
 
 -- require is the standard way to include modules.
 -- require acts like:     (if not cached; see below)
@@ -377,13 +379,14 @@ local a = require('mod2')  -- Prints Hi!
 local b = require('mod2')  -- Doesn't print; a=b.
 
 -- dofile is like require without caching:
-dofile('mod2.lua')  --> Hi!
-dofile('mod2.lua')  --> Hi! (runs it again)
+dofile('./mod2.lua')  --> Hi!
+dofile('./mod2.lua')  --> Hi! (runs it again)
+-- notice: the difference between this and 'require' is that you need to specify the file path and suffix
 
 -- loadfile loads a lua file but doesn't run it yet.
-f = loadfile('mod2.lua')  -- Call f() to run it.
+f = loadfile('./mod2.lua')  -- Call f() to run it.
+-- notice: like 'dofile', relative path and file suffix are required
 
--- load is loadfile for strings.
 -- (loadstring is deprecated, use load instead)
 g = load('print(343)')  -- Returns a function.
 g()  -- Prints out 343; nothing printed before now.
