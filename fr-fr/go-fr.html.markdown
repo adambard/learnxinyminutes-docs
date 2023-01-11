@@ -32,7 +32,7 @@ communauté active.
  multiligne */
 
 // Un paquet débute avec une clause "package"
-// "Main" est un nom spécial déclarant un paquet de type exécutable plutôt
+// "main" est un nom spécial déclarant un paquet de type exécutable plutôt
 // qu'une bibliothèque
 package main
 

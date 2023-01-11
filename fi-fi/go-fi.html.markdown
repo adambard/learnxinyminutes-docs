@@ -33,7 +33,7 @@ Go tuo mukanaan loistavan oletuskirjaston sekä innokkaan yhteisön.
  rivin kommentti */
 
 // Package -lausekkeella aloitetaan jokainen lähdekooditiedosto.
-// Main on erityinen nimi joka ilmoittaa
+// main on erityinen nimi joka ilmoittaa
 // suoritettavan tiedoston kirjaston sijasta.
 package main
 
