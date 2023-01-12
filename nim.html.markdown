@@ -4,7 +4,6 @@ filename: learnNim.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
     - ["Dennis Felsing", "http://felsin9.de/nnis/"]
-    - ["Glenn Lewis", "http://github.com/gmlewis/"]
 ---
 
 Nim (formerly Nimrod) is a statically typed, imperative programming language
