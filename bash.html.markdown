@@ -419,8 +419,8 @@ function foo ()
     echo "Arguments work just like script arguments: $@"
     echo "And: $1 $2..."
     echo "This is a function"
-    returnValue=0    # Variable values can be returned
-    return $returnValue
+    returnValue=0    # Functions in Bash only return status codes(integers of range 0-255)
+    return $returnValue # Using the return command is optional
 }
 # Call the function `foo` with two arguments, arg1 and arg2:
 foo arg1 arg2
@@ -439,6 +439,10 @@ bar ()
 }
 # Call the function `bar` with no arguments:
 bar # => Another way to declare functions!
+
+# Capture function stdout outputs using command substitution
+barResult=$(bar)
+echo barResult # => Another way to declare functions!
 
 # Calling your function
 foo "My name is" $Name
