@@ -72,7 +72,7 @@ protostar build
 
 And you should get an output similar to what you see below, with a `main.json`
 and `main_abi.json` files created in the `build` folder.
-<img src="./cairo_assets/build.png" alt="building your contract">
+<img src="./images/cairo/build.png" alt="building your contract">
 
 ### Declaring Contracts
 
@@ -103,7 +103,7 @@ where `network` specifies the network we are deploying to, `account` specifies
 account whose private key we are using, `max-fee` specifies the maximum fee to
 be paid for the transaction. You should get the class hash outputted as seen
 below:
-<img src="./cairo_assets/declare.png" alt="declaring your contract">
+<img src="./images/cairo/declare.png" alt="declaring your contract">
 
 ### Deploying Contracts
 
@@ -120,7 +120,7 @@ protostar \
 
 where `0x02a5de1b145e18dfeb31c7cd7ff403714ededf5f3fdf75f8b0ac96f2017541bc` is
 the class hash of our contract.
-<img src="./cairo_assets/deploy.png" alt="deploying your contract">
+<img src="./images/cairo/deploy.png" alt="deploying your contract">
 
 ### Interacting with Contracts
 
@@ -135,9 +135,9 @@ contract. Once found, you can make write calls to the contract in the following
 sequence:
 
 + click on the "connect wallet" button,
-  <img src="./cairo_assets/connect.png" alt="connect wallet">
+  <img src="./images/cairo/connect.png" alt="connect wallet">
 + select `Argent X` and approve the connection
-  <img src="./cairo_assets/connect2.png" alt="connect to argentX">
+  <img src="./images/cairo/connect2.png" alt="connect to argentX">
 + you can now make read and write calls easily.
 
 ## Let's learn Cairo
