@@ -1,6 +1,5 @@
 ---
 language: markdown
-lang: cs-cz
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
