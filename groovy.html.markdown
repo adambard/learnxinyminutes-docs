@@ -1,9 +1,8 @@
 ---
 language: Groovy
-filename: learngroovy.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
-filename: learngroovy.groovy
+filename: groovy.html.markdown
 ---
 
 Groovy - A dynamic language for the Java platform [Read more here.](http://www.groovy-lang.org/)
