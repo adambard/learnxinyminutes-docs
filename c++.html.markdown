@@ -1205,3 +1205,5 @@ Further Reading:
 * A tutorial  for beginners or experts, covering many modern features and good practices: [LearnCpp.com](https://www.learncpp.com/)
 * A tutorial covering basics of language and setting up coding environment is available at [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
 * Additional resources may be found at [CPlusPlus](http://cplusplus.com).
+* Fundamentals to the advanced concepts of C++: [Learn CPP in Detail](https://www.scaler.com/topics/cpp/).
+
