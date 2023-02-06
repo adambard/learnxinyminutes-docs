@@ -157,14 +157,16 @@ from starkware.cairo.common.cairo_builtins import HashBuiltin
 // @storage_var is a decorator that instructs the compiler the function
 //   below it is a storage variable.
 @storage_var
-func balance() -> (res: felt){}
+func balance() -> (res: felt) {}
 
 // @dev Constructor writes the balance variable to 0 on deployment
 // Constructors sets storage variables on deployment. Can accept arguments too.
 @constructor
 func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}() {balance.write(0); return();
-  }
+range_check_ptr}() {
+  balance.write(0); 
+  return();
+}
 
 // @dev increase_balance updates the balance variable
 // @param amount the amount you want to add to balance
@@ -172,23 +174,23 @@ func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
 //   function.
 @external
 func increase_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}(amount: felt){
-    with_attr error_message("Amount must be positive. Got: {amount}.") {
-      assert_nn(amount);
-    }
+range_check_ptr}(amount: felt){
+  with_attr error_message("Amount must be positive. Got: {amount}.") {
+    assert_nn(amount);
+  }
 
-    let (res) = balance.read();
-    balance.write(res + amount);
-    return ();
+  let (res) = balance.read();
+  balance.write(res + amount);
+  return ();
 }
 
 // @dev returns the balance variable
 // @view is a decorator that specifies the func below it is a view function.
 @view
 func get_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}() -> (res: felt) {
-    let (res) = balance.read();
-    return (res,);
+range_check_ptr}() -> (res: felt) {
+  let (res) = balance.read();
+  return (res,);
 }
 ```
 
@@ -449,7 +451,7 @@ const ADMIN = 0x01C6cfC1DB2ae90dACEA243F0a8C2F4e32560F7cDD398e4dA2Cc56B733774E9b
 with_attr error_message("You do not have access to make this action!"){
   let (caller) = get_caller_address();
   assert ADMIN = caller;
-  }
+}
 
 // using an assert statement throws if condition is not true, thus
 // returning the specified error.
@@ -810,15 +812,15 @@ range_check_ptr}(
 }
 
 
-  // @dev internal function to get the opposite token type
-  // @param token_type Token whose opposite pair needs to be gotten
-  func get_opposite_token(token_type: felt) -> (t: felt) {
-    if(token_type == TOKEN_TYPE_A) {
-      return (t=TOKEN_TYPE_B);
-    } else {
-      return (t=TOKEN_TYPE_A);
-    }
+// @dev internal function to get the opposite token type
+// @param token_type Token whose opposite pair needs to be gotten
+func get_opposite_token(token_type: felt) -> (t: felt) {
+  if(token_type == TOKEN_TYPE_A) {
+    return (t=TOKEN_TYPE_B);
+  } else {
+    return (t=TOKEN_TYPE_A);
   }
+}
 ```
 
 ## Additional Resources
