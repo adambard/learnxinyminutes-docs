@@ -180,7 +180,7 @@ func increase_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
     let (res) = balance.read();
     balance.write(res + amount);
     return ();
-  }
+}
 
 // @dev returns the balance variable
 // @view is a decorator that specifies the func below it is a view function.
@@ -189,7 +189,7 @@ func get_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
   range_check_ptr}() -> (res: felt) {
     let (res) = balance.read();
     return (res,);
-  }
+}
 ```
 
 Before proceeding to the main lessons, try to build, deploy and interact with
@@ -204,10 +204,10 @@ just a single data type `..felts`. Felts stands for Field elements, and are a
 create a `Uint256` in Cairo by utlizing a struct of two 128 bits felts.
 
 ```cairo
-struct Uint256{
+struct Uint256 {
   low: felt, // The low 128 bits of the value.
   high: felt, // The high 128 bits of the value.
-  }
+}
 ```
 
 To avoid running into issues with divisions, it's safer to work with the
@@ -239,19 +239,19 @@ from starkware.cairo.common.bool import TRUE
 
 + Storage variables: Cairo's storage is a map with `2^251` slots, where each
   slot is a felt which is initialized to `0`. You create one using the
-  `@storage_var` decorator
+  `@storage_var` decorator.
 
   ```cairo
   @storage_var
-  func names() -> (name: felt){}
+  func names() -> (name: felt) {}
   ```
 
-+ Storage mappings: Unlike soldity where mappings have a separate keyword, in
++ Storage mappings: Unlike Solidity where mappings have a separate keyword, in
   Cairo you create mappings using storage variables.
 
   ```cairo
   @storage_var
-  func names(address: felt) -> (name: felt){}
+  func names(address: felt) -> (name: felt) {}
   ```
 
 + Structs: are a means to create custom data types in Cairo. A `struct` has a
@@ -269,7 +269,7 @@ from starkware.cairo.common.bool import TRUE
 
 + Constants: Constants are fixed and as such can't be altered after being set.
   They evaluate to an integer (field element) at compile time. To create a
-  constant in Cairo, you use the `const` keyword. Its proper practice to
+  constant in Cairo, you use the `const` keyword. It's proper practice to
   capitalize constant names.
 
   ```cairo
@@ -423,11 +423,11 @@ Here are the most common decorators you'll encounter in Cairo:
 
   ```cairo
   func store_name{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-    range_check_ptr}(_name: felt){
-      let (caller) = get_caller_address();
-      names.write(caller, _name);
-      stored_name.emit(caller, _name);
-      return ();
+  range_check_ptr}(_name: felt){
+    let (caller) = get_caller_address();
+    names.write(caller, _name);
+    stored_name.emit(caller, _name);
+    return ();
   }
   ```
 
@@ -479,12 +479,12 @@ contract passing in the contract address as the first parameter like this:
 IENS.store_name(contract_address, _name);
 ```
 
-Note that Interfaces excludes the function body/logic and the implicit
+Note that Interfaces exclude the function body/logic and the implicit
 arguments.
 
 ### 9. Recursions
 
-Due to the unavailability of loops, Recursions are the go-to for similar
+Due to the unavailability of loops, Recursion is the go-to for similar
 operations. In simple terms, a recursive function is one which calls itself
 repeatedly.
 
@@ -494,25 +494,25 @@ fibonacci number:
 ```cairo
 @external
 func fibonacci{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}(n : felt) -> (result : felt){
-    alloc_locals;
-    if (n == 0){
-      return (0);
-    }
-    if (n == 1){
-      return (1);
-    }
-    let (local x) = fibonacci(n - 1);
-    let (local y) = fibonacci(n - 2);
-    return (result=(x + y));
+range_check_ptr}(n : felt) -> (result : felt){
+  alloc_locals;
+  if (n == 0){
+    return (0);
   }
+  if (n == 1){
+    return (1);
+  }
+  let (local x) = fibonacci(n - 1);
+  let (local y) = fibonacci(n - 2);
+  return (result=(x + y));
+}
 ```
 
 The nth fibonacci term is the sum of the `nth - 1` and the `nth - 2` numbers,
 that's why we get these two as `(x,y)` using recursion.
 
 NB: when implementing recursive functions, always remember to implement a base
-case (`n==0`, `n==1` in our case), to prevent stack overflow.
+case (`n==0`, `n==1` in our case), to prevent stack overflows.
 
 ### 10. Registers
 
@@ -529,8 +529,8 @@ registers:
 
 ### 11. Revoked References
 
-Revoked references occurs when there is a call instruction to another function,
-between the definition of a reference variable that depends on `ap`(temp
+Revoked references occur when there is a call instruction to another function,
+between the definition of a reference variable that depends on `ap` (temp
 variables) and its usage. This occurs as the compiler may not be able to compute
 the change of `ap` (as one may jump to the label from another place in the
 program, or call a function that might change ap in an unknown way).
@@ -540,18 +540,18 @@ Here is an example to demonstrate what I mean:
 ```cairo
 @external
 func get_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}() -> (res: felt) {
-    return (res=100);
-  }
+range_check_ptr}() -> (res: felt) {
+  return (res=100);
+}
 
 @external
 func double_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}() -> (res: felt) {
-    let multiplier = 2;
-    let (balance) = get_balance();
-    let new_balance = balance * multiplier;
-    return (res=new_balance);
-  }
+range_check_ptr}() -> (res: felt) {
+  let multiplier = 2;
+  let (balance) = get_balance();
+  let new_balance = balance * multiplier;
+  return (res=new_balance);
+}
 ```
 
 If you run that code, you'll run into the revoked reference error as we are
@@ -559,20 +559,20 @@ trying to access the `multiplier` variable after calling the `get_balance`
 function.
 
 In simple cases you can resolve revoked references by adding the keyword
-`alloc_locals` within function scopes. In most complex cases you might need to
+`alloc_locals` within function scopes. In more complex cases you might need to
 create a local variable to resolve it.
 
 ```cairo
 // resolving the `double_balance` function:
 @external
 func double_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}() -> (res: felt) {
-    alloc_locals;
-    let multiplier = 2;
-    let (balance) = get_balance();
-    let new_balance = balance * multiplier;
-    return (res=new_balance);
-  }
+range_check_ptr}() -> (res: felt) {
+  alloc_locals;
+  let multiplier = 2;
+  let (balance) = get_balance();
+  let new_balance = balance * multiplier;
+  return (res=new_balance);
+}
 ```
 
 ### 12. Understanding Cairo's Punctuations
@@ -627,7 +627,7 @@ const ACCOUNT_BALANCE_BOUND = 1073741; // (2 ** 30 / 1000)
 //
 // @dev A map from account and token type to corresponding balance
 @storage_var
-func account_balance(account_id: felt, token_type: felt) -> (balance: felt){}
+func account_balance(account_id: felt, token_type: felt) -> (balance: felt) {}
 
 // @dev a map from token type to corresponding pool balance
 @storage_var
@@ -641,21 +641,21 @@ func pool_balance(token_type: felt) -> (balance: felt) {}
 // @param token_type Token to be queried
 @view
 func get_account_token_balance{syscall_ptr: felt*, pedersen_ptr:
-  HashBuiltin*, range_check_ptr}(
-    account_id: felt, token_type: felt
-    ) -> (balance: felt) {
-    return account_balance.read(account_id, token_type);
-  }
+HashBuiltin*, range_check_ptr}(
+  account_id: felt, token_type: felt
+  ) -> (balance: felt) {
+  return account_balance.read(account_id, token_type);
+}
 
 // @dev return the pool's balance
 // @param token_type Token type to get pool balance
 @view
 func get_pool_token_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}(
-    token_type: felt
-    ) -> (balance: felt) {
-    return pool_balance.read(token_type);
-  }
+range_check_ptr}(
+  token_type: felt
+  ) -> (balance: felt) {
+  return pool_balance.read(token_type);
+}
 
 
 // EXTERNALS
@@ -665,54 +665,54 @@ func get_pool_token_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
 // @param balance Amount to be set as balance
 @external
 func set_pool_token_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}(
-    token_type: felt, balance: felt
-    ) {
-    with_attr error_message("exceeds maximum allowed tokens!"){
-      assert_nn_le(balance, BALANCE_UPPER_BOUND - 1);
-    }
+range_check_ptr}(
+  token_type: felt, balance: felt
+  ) {
+  with_attr error_message("exceeds maximum allowed tokens!"){
+    assert_nn_le(balance, BALANCE_UPPER_BOUND - 1);
+  }
 
   pool_balance.write(token_type, balance);
   return ();
-  }
+}
 
 // @dev add demo token to the given account
 // @param token_a_amount amount of token a to be added
 // @param token_b_amount amount of token b to be added
 @external
 func add_demo_token{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}(
+range_check_ptr}(
     token_a_amount: felt, token_b_amount: felt
   ) {
-    alloc_locals;
-    let (account_id) = get_caller_address();
+  alloc_locals;
+  let (account_id) = get_caller_address();
 
-    modify_account_balance(account_id=account_id, token_type=TOKEN_TYPE_A,
-      amount=token_a_amount);
-    modify_account_balance(account_id=account_id, token_type=TOKEN_TYPE_B,
-      amount=token_b_amount);
+  modify_account_balance(account_id=account_id, token_type=TOKEN_TYPE_A,
+    amount=token_a_amount);
+  modify_account_balance(account_id=account_id, token_type=TOKEN_TYPE_B,
+    amount=token_b_amount);
 
-    return ();
-  }
+  return ();
+}
 
 // @dev intialize AMM
 // @param token_a amount of token a to be set in pool
 // @param token_b amount of token b to be set in pool
 @external
 func init_pool{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
-  range_check_ptr}(
-    token_a: felt, token_b: felt
-    ) {
-      with_attr error_message("exceeds maximum allowed tokens!"){
-        assert_nn_le(token_a, POOL_UPPER_BOUND - 1);
-        assert_nn_le(token_b, POOL_UPPER_BOUND - 1);
-      }
-
-      set_pool_token_balance(token_type=TOKEN_TYPE_A, balance=token_a);
-      set_pool_token_balance(token_type=TOKEN_TYPE_B, balance=token_b);
-
-      return ();
+range_check_ptr}(
+  token_a: felt, token_b: felt
+  ) {
+  with_attr error_message("exceeds maximum allowed tokens!"){
+    assert_nn_le(token_a, POOL_UPPER_BOUND - 1);
+    assert_nn_le(token_b, POOL_UPPER_BOUND - 1);
   }
+
+  set_pool_token_balance(token_type=TOKEN_TYPE_A, balance=token_a);
+  set_pool_token_balance(token_type=TOKEN_TYPE_B, balance=token_b);
+
+  return ();
+}
 
 
 // @dev swaps token between the given account and the pool
@@ -723,32 +723,32 @@ func init_pool{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
 func swap{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
   token_from: felt, amount_from: felt
   ) -> (amount_to: felt) {
-    alloc_locals;
-    let (account_id) = get_caller_address();
+  alloc_locals;
+  let (account_id) = get_caller_address();
 
-    // verify token_from is TOKEN_TYPE_A or TOKEN_TYPE_B
-    with_attr error_message("token not allowed in pool!"){
-      assert (token_from - TOKEN_TYPE_A) * (token_from - TOKEN_TYPE_B) = 0;
-      }
+  // verify token_from is TOKEN_TYPE_A or TOKEN_TYPE_B
+  with_attr error_message("token not allowed in pool!"){
+    assert (token_from - TOKEN_TYPE_A) * (token_from - TOKEN_TYPE_B) = 0;
+    }
 
-    // check requested amount_from is valid
-    with_attr error_message("exceeds maximum allowed tokens!"){
-      assert_nn_le(amount_from, BALANCE_UPPER_BOUND - 1);
-      }
+  // check requested amount_from is valid
+  with_attr error_message("exceeds maximum allowed tokens!"){
+    assert_nn_le(amount_from, BALANCE_UPPER_BOUND - 1);
+    }
 
-    // check user has enough funds
-    let (account_from_balance) =
-      get_account_token_balance(account_id=account_id, token_type=token_from);
-    with_attr error_message("insufficient balance!"){
-      assert_le(amount_from, account_from_balance);
-      }
+  // check user has enough funds
+  let (account_from_balance) =
+    get_account_token_balance(account_id=account_id, token_type=token_from);
+  with_attr error_message("insufficient balance!"){
+    assert_le(amount_from, account_from_balance);
+    }
 
-    let (token_to) = get_opposite_token(token_type=token_from);
-    let (amount_to) = do_swap(account_id=account_id, token_from=token_from,
-      token_to=token_to, amount_from=amount_from);
+  let (token_to) = get_opposite_token(token_type=token_from);
+  let (amount_to) = do_swap(account_id=account_id, token_from=token_from,
+    token_to=token_to, amount_from=amount_from);
 
-    return (amount_to=amount_to);
-  }
+  return (amount_to=amount_to);
+}
 
 
 // INTERNALS
@@ -761,17 +761,17 @@ func modify_account_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
 range_check_ptr}(
   account_id: felt, token_type: felt, amount: felt
   ) {
-    let (current_balance) = account_balance.read(account_id, token_type);
-    tempvar new_balance = current_balance + amount;
+  let (current_balance) = account_balance.read(account_id, token_type);
+  tempvar new_balance = current_balance + amount;
 
-    with_attr error_message("exceeds maximum allowed tokens!"){
-      assert_nn_le(new_balance, BALANCE_UPPER_BOUND - 1);
-      }
+  with_attr error_message("exceeds maximum allowed tokens!"){
+    assert_nn_le(new_balance, BALANCE_UPPER_BOUND - 1);
+    }
 
-    account_balance.write(account_id=account_id, token_type=token_type,
-      value=new_balance);
-    return ();
-  }
+  account_balance.write(account_id=account_id, token_type=token_type,
+    value=new_balance);
+  return ();
+}
 
 // @dev internal function that swaps tokens between the given account and
 // the pool
@@ -783,31 +783,31 @@ func do_swap{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
 range_check_ptr}(
   account_id: felt, token_from: felt, token_to: felt, amount_from: felt
   ) -> (amount_to: felt) {
-    alloc_locals;
+  alloc_locals;
 
-    // get pool balance
-    let (local amm_from_balance) = get_pool_token_balance(token_type =
-      token_from);
-    let (local amm_to_balance) = get_pool_token_balance(token_type=token_to);
+  // get pool balance
+  let (local amm_from_balance) = get_pool_token_balance(token_type =
+    token_from);
+  let (local amm_to_balance) = get_pool_token_balance(token_type=token_to);
 
-    // calculate swap amount
-    let (local amount_to, _) = unsigned_div_rem((amm_to_balance *
-      amount_from), (amm_from_balance + amount_from));
+  // calculate swap amount
+  let (local amount_to, _) = unsigned_div_rem((amm_to_balance *
+    amount_from), (amm_from_balance + amount_from));
 
-    // update token_from balances
-    modify_account_balance(account_id=account_id, token_type=token_from,
-      amount=-amount_from);
-    set_pool_token_balance(token_type=token_from, balance=(amm_from_balance
-      + amount_from));
+  // update token_from balances
+  modify_account_balance(account_id=account_id, token_type=token_from,
+    amount=-amount_from);
+  set_pool_token_balance(token_type=token_from, balance=(amm_from_balance
+    + amount_from));
 
-    // update token_to balances
-    modify_account_balance(account_id=account_id, token_type=token_to,
-      amount=amount_to);
-    set_pool_token_balance(token_type=token_to, balance=(amm_to_balance -
-      amount_to));
+  // update token_to balances
+  modify_account_balance(account_id=account_id, token_type=token_to,
+    amount=amount_to);
+  set_pool_token_balance(token_type=token_to, balance=(amm_to_balance -
+    amount_to));
 
-    return (amount_to=amount_to);
-  }
+  return (amount_to=amount_to);
+}
 
 
   // @dev internal function to get the opposite token type
