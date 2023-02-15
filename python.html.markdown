@@ -10,6 +10,7 @@ contributors:
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
     - ["caminsha", "https://github.com/caminsha"]
     - ["Stanislav Modrak", "https://stanislav.gq"]
+    - ["John Paul Wohlscheid", "https://gitpi.us"]
 filename: learnpython.py
 ---
 
@@ -1045,7 +1046,6 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ### Free Online
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
-* [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](https://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](https://docs.python-guide.org/en/latest/)
 * [Python Course](https://www.python-course.eu)
