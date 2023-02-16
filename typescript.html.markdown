@@ -1,15 +1,15 @@
 ---
 language: TypeScript
 contributors:
-    - ["Philippe Vlérick", "https://github.com/pvlerick"]
-    - ["Kiwimoe", "https://github.com/kiwimoe"]
+  - ["Philippe Vlérick", "https://github.com/pvlerick"]
+  - ["Kiwimoe", "https://github.com/kiwimoe"]
 filename: learntypescript.ts
 ---
 
 TypeScript is a language that aims at easing development of large scale
-applications written in JavaScript.  TypeScript adds common concepts such as
+applications written in JavaScript. TypeScript adds common concepts such as
 classes, modules, interfaces, generics and (optional) static typing to
-JavaScript.  It is a superset of JavaScript: all JavaScript code is valid
+JavaScript. It is a superset of JavaScript: all JavaScript code is valid
 TypeScript code so it can be added seamlessly to any project. The TypeScript
 compiler emits JavaScript.
 
@@ -227,7 +227,7 @@ moreNumbers.length = 3; // Error, length is read-only
 numbers = moreNumbers; // Error, mutating methods are missing
 
 // Tagged Union Types for modelling state that can be in one of many shapes
-type State = 
+type State =
   | { type: "loading" }
   | { type: "success", value: number }
   | { type: "error", message: string };
@@ -275,11 +275,11 @@ let foo = {} // Creating foo as an empty object
 foo.bar = 123 // Error: property 'bar' does not exist on `{}`
 foo.baz = 'hello world' // Error: property 'baz' does not exist on `{}`
 
-// Because the inferred type of foo is `{}` (an object with 0 properties), you 
+// Because the inferred type of foo is `{}` (an object with 0 properties), you
 // are not allowed to add bar and baz to it. However with type assertion,
 // the following will pass:
 
-interface Foo { 
+interface Foo {
   bar: number;
   baz: string;
 }
@@ -288,10 +288,52 @@ let foo = {} as Foo; // Type assertion here
 foo.bar = 123;
 foo.baz = 'hello world'
 
+// Enums
+
+enum Color {
+  Red,
+  Green,
+  Blue
+}
+
+// Computed Members
+enum Color {
+  Red = 1,
+  Green = Red * 2,
+  Blue = Green
+}
+
+// Const enums reduce the code generated and
+// are completely removed at compile time, but cannot have computed members;
+const enum Color {
+  Red,
+  Green,
+  Blue
+}
+
+// This is equivalent to: `type availableColors = 'Red' | 'Green' | 'Blue';`
+const avaliableColors = keyof typeof Color;
+
+// String enums
+enum Color {
+  Red = "Red",
+  Green = "Green",
+  Blue = "Blue"
+}
+
+
+// Enums and const Enums can have unintended side effects.
+// To avoid these pitfalls consider using const objects
+const Color = {
+  Red: "Red",
+  Green: "Green",
+  Blue: "Blue"
+} as const;
 ```
 
 ## Further Reading
- * [TypeScript Official website] (http://www.typescriptlang.org/)
- * [TypeScript language specifications] (https://github.com/microsoft/TypeScript/blob/main/doc/spec-ARCHIVED.md)
- * [Learn TypeScript] (https://learntypescript.dev/)
- * [Source Code on GitHub] (https://github.com/Microsoft/TypeScript)
+
+- [TypeScript Official website] (http://www.typescriptlang.org/)
+- [TypeScript language specifications] (https://github.com/microsoft/TypeScript/blob/main/doc/spec-ARCHIVED.md)
+- [Learn TypeScript] (https://learntypescript.dev/)
+- [Source Code on GitHub] (https://github.com/Microsoft/TypeScript)
