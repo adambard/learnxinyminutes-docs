@@ -17,7 +17,7 @@ Set theory is a branch of mathematics that studies sets, their operations, and t
 * the cross operator, `×`, means "the Cartesian product of".
 
 ### Qualifiers 
-* the colon qualifier, `:`, means "such that";
+* the colon, `:`, or the vertical bar `|` qualifiers are interchangeable and mean "such that";
 * the membership qualifier, `∈`, means "belongs to";
 * the subset qualifier, `⊆`, means "is a subset of";
 * the proper subset qualifier, `⊂`, means "is a subset of but is not equal to".
