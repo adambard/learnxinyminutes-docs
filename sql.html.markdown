@@ -3,6 +3,7 @@ language: SQL
 filename: learnsql.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
+  - ["Jonathan Bowman", "https://bowmanjd.com/"]
 ---
 
 Structured Query Language (SQL) is an [ISO/IEC 9075](https://www.iso.org/standard/63555.html) standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
@@ -22,9 +23,6 @@ Several of these sample commands assume that the [MySQL employee sample database
 -- Create and delete a database. Database and table names are case-sensitive.
 CREATE DATABASE someDatabase;
 DROP DATABASE someDatabase;
-
--- List available databases.
-SHOW DATABASES;
 
 -- Use a particular existing database.
 USE employees;
