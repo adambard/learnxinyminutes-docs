@@ -145,7 +145,7 @@ sequence:
 First let's look at a default contract that comes with Protostar which allows
 you to set balance on deployment, increase, and get the balance.
 
-```cairo
+```
 // Language directive - instructs compiler its a StarkNet contract
 %lang starknet
 
@@ -205,7 +205,7 @@ just a single data type `..felts`. Felts stands for Field elements, and are a
 252 bit integer in the range `0<=x<=P` where `P` is a prime number. You can
 create a `Uint256` in Cairo by utlizing a struct of two 128 bits felts.
 
-```cairo
+```
 struct Uint256 {
   low: felt, // The low 128 bits of the value.
   high: felt, // The high 128 bits of the value.
@@ -219,7 +219,7 @@ To avoid running into issues with divisions, it's safer to work with the
 
 To get started with writing a StarkNet contract, you must specify the directive:
 
-```cairo
+```
 %lang starknet
 ```
 
@@ -230,7 +230,7 @@ storage, programs don't and as such are stateless.
 There are important functions you might need to import from the official
 Cairo-lang library or Openzeppelin's, e.g.
 
-```cairo
+```
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from cairo_contracts.src.openzeppelin.token.erc20.library import ERC20
 from starkware.cairo.common.uint256 import Uint256
@@ -243,7 +243,7 @@ from starkware.cairo.common.bool import TRUE
   slot is a felt which is initialized to `0`. You create one using the
   `@storage_var` decorator.
 
-  ```cairo
+  ```
   @storage_var
   func names() -> (name: felt) {}
   ```
@@ -251,7 +251,7 @@ from starkware.cairo.common.bool import TRUE
 + Storage mappings: Unlike Solidity where mappings have a separate keyword, in
   Cairo you create mappings using storage variables.
 
-  ```cairo
+  ```
   @storage_var
   func names(address: felt) -> (name: felt) {}
   ```
@@ -261,7 +261,7 @@ from starkware.cairo.common.bool import TRUE
   retrieved using `MyStruct.SIZE`. You create a struct in Cairo using the
   `struct` keyword.
 
-  ```cairo
+  ```
   struct Person {
     name: felt,
     age: felt,
@@ -274,7 +274,7 @@ from starkware.cairo.common.bool import TRUE
   constant in Cairo, you use the `const` keyword. It's proper practice to
   capitalize constant names.
 
-  ```cairo
+  ```
   const USER = 0x01C6cfC1DB2ae90dACEA243F0a8C2F4e32560F7cDD398e4dA2Cc56B733774E9b
   ```
 
@@ -283,7 +283,7 @@ from starkware.cairo.common.bool import TRUE
   cells. The `alloc` keyword can be used to dynamically allocate a new memory
   segment, which can be used to store an array:
 
-  ```cairo
+  ```
   let (myArray: felt*) = alloc ();
   assert myArray[0] = 1;
   assert myArray[1] = 2;
@@ -294,7 +294,7 @@ from starkware.cairo.common.bool import TRUE
   tuples. The new operator is useful as it enables you allocate memory and
   initialize the object in one instruction
 
-  ```cairo
+  ```
   func foo() {
     tempvar arr: felt* = new (1, 1, 2, 3, 5);
     assert arr[4] = 5;
@@ -306,7 +306,7 @@ from starkware.cairo.common.bool import TRUE
   represented as a comma-separated list of elements enclosed by parentheses.
   Their elements may be of any combination of valid types.
 
-  ```cairo
+  ```
   local tuple0: (felt, felt, felt) = (7, 9, 13);
   ```
 
@@ -314,7 +314,7 @@ from starkware.cairo.common.bool import TRUE
   execution, that can be used outside of StarkNet. An event can be created,
   subsequently emitted:
 
-  ```cairo
+  ```
   @event
   func name_stored(address, name) {}
 
@@ -327,7 +327,7 @@ from starkware.cairo.common.bool import TRUE
   contract deployment. You create a constructor using the `@constructor`
   decorator.
 
-  ```cairo
+  ```
   @constructor
   func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
   range_check_ptr}(_name: felt) {
@@ -341,7 +341,7 @@ from starkware.cairo.common.bool import TRUE
   of the network. You create an external function using the `@external`
   decorator:
 
-  ```cairo
+  ```
   @external
   func store_name{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
   range_check_ptr}(_name: felt){
@@ -355,7 +355,7 @@ from starkware.cairo.common.bool import TRUE
 + View functions: View functions do not modify the state of the blockchain.
   You can create a view function using the `@view` decorator.
 
-  ```cairo
+  ```
   @view
   func get_name{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
   range_check_ptr}(_address: felt) -> (name: felt){
@@ -413,7 +413,7 @@ Here are the most common decorators you'll encounter in Cairo:
   you can in your contracts, as hints are not added to the bytecode, and thus
   do not count in the total number of execution steps.
 
-  ```cairo
+  ```
   %{
     # Python hint goes here
   %}
@@ -423,7 +423,7 @@ Here are the most common decorators you'll encounter in Cairo:
   inherited by other functions calls that require them. Implicit arguments are
   passed in between curly bracelets, like you can see below:
 
-  ```cairo
+  ```
   func store_name{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
   range_check_ptr}(_name: felt){
     let (caller) = get_caller_address();
@@ -440,7 +440,7 @@ execution. This can be very useful for implementing checks and proper access
 control mechanisms. An example is preventing a user to call a function except
 user is `admin`.
 
-```cairo
+```
 // imports
 from starkware.starknet.common.syscalls import get_caller_address
 
@@ -463,7 +463,7 @@ Contract interfaces provide a means for one contract to invoke or call the
 external function of another contract. To create a contract interface, you use
 the `@contract_interface` keyword:
 
-```cairo
+```
 @contract_interface
   namespace IENS {
     func store_name(_name: felt) {
@@ -477,7 +477,7 @@ the `@contract_interface` keyword:
 Once a contract interface is specified, any contract can make calls to that
 contract passing in the contract address as the first parameter like this:
 
-```cairo
+```
 IENS.store_name(contract_address, _name);
 ```
 
@@ -493,7 +493,7 @@ repeatedly.
 A good example to demonstrate this is writing a function for getting the nth
 fibonacci number:
 
-```cairo
+```
 @external
 func fibonacci{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
 range_check_ptr}(n : felt) -> (result : felt){
@@ -539,7 +539,7 @@ program, or call a function that might change ap in an unknown way).
 
 Here is an example to demonstrate what I mean:
 
-```cairo
+```
 @external
 func get_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
 range_check_ptr}() -> (res: felt) {
@@ -564,7 +564,7 @@ In simple cases you can resolve revoked references by adding the keyword
 `alloc_locals` within function scopes. In more complex cases you might need to
 create a local variable to resolve it.
 
-```cairo
+```
 // resolving the `double_balance` function:
 @external
 func double_balance{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*,
@@ -600,7 +600,7 @@ range_check_ptr}() -> (res: felt) {
 Below is a simple automated market maker contract example that implements most
 of what we just learnt! Re-write, deploy, have fun!
 
-```cairo
+```
 %lang starknet
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin
