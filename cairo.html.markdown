@@ -2,7 +2,7 @@
 language: Cairo
 filename: learnCairo.sol
 contributors:
-  - ["Darlington Nnam", "https://github.com/Darlington02"]
+    - ["Darlington Nnam", "https://github.com/Darlington02"]
 ---
 
 # Cairo
