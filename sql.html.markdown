@@ -10,9 +10,6 @@ Structured Query Language (SQL) is an [ISO/IEC 9075](https://www.iso.org/standar
 
 Implementations typically provide a command line prompt where you can enter the commands shown here interactively, and they also offer a way to execute a series of these commands stored in a script file.  (Showing that you’re done with the interactive prompt is a good example of something that isn’t standardized--most SQL implementations support the keywords QUIT, EXIT, or both.)
 
-Several of these sample commands assume that the [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/) available on [github](https://github.com/datacharmer/test_db) has already been loaded. The github files are scripts of commands, similar to the relevant commands below, that create and populate tables of data about a fictional company’s employees. The syntax for running these scripts will depend on the SQL implementation you are using. A utility that you run from the operating system prompt is typical.
-
-
 ```sql
 -- Comments start with two hyphens. End each command with a semicolon.
 
