@@ -22,8 +22,15 @@ the engine. It's a perfect fit for game development.
   are
   written
   using
-  docstrings.
+  triple
+  quoted
+  strings
 """
+
+# Doc Comments can add a decription to classes and fields
+# which can be viewed in the in-engine docs.
+
+## This class is a demonstration of GDScript 2.0
 
 # Script file is a class in itself and you can optionally define a name for it.
 class_name MyClass
@@ -45,6 +52,11 @@ var d = {
 } # Dictionary holds key-value pairs.
 var p_arr = PoolStringArray(["Hi", "there", "!"]) # Pool arrays can
                                                   # only hold a certain type.
+
+# Doc comments can apply to properties
+
+## How many times this object has jumped
+var jump_count = 0
 
 # Built-in vector types:
 var v2 = Vector2(1, 2)
@@ -75,6 +87,12 @@ func foo():
 
 func add(first, second):
   return first + second
+
+# Doc Comments on functions
+
+## Increases the Jump Count
+func jump():
+  jump_count += 1
 
 # Printing values
 func printing():
@@ -273,6 +291,9 @@ class_name Player extends Node2D
 
 var hp = 10
 
+# Doc comments can go on signals too
+
+## Emitted when the player dies
 signal died() # define signal
 signal hurt(hp_old, hp_new) # signals can take arguments
 
