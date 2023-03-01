@@ -15,7 +15,7 @@ to read and edit before passing the JSON data to the machine.
 
 Let's take a look at examples to see the key syntax differences!
 
-```hjson
+```
 {
     # Comments are totally supported!
     
