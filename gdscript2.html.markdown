@@ -59,10 +59,15 @@ enum { ZERO, ONE , TWO, THREE }
 enum NamedEnum { ONE = 1, TWO, THREE }
 
 # Exported variables are visible in the inspector.
-export(int) var age
-export(float) var height
-export var person_name = "Bob" # Export type hints are unnecessary
-                        # if you set a default value.
+#
+# Either a type hint (explained later) or a default value are needed in order
+# for the editor to know what options to give
+@export var age: int
+@export var height: float
+@export var person_name = "Bob"
+# But both is also acceptable
+@export var favorite_color: String = "Green"
+@export var favorite_food := "Pizza"
 
 # Functions
 func foo():
@@ -248,11 +253,14 @@ func _process(delta):
 # Use onready keyword to assign a value to
 # a variable just before _ready executes.
 # This is a commonly used syntax sugar.
-onready var tween = $Tween as Tween
+@onready var tween = $Tween as Tween
 
 # You can export NodePath, so you can assign it within the inspector.
-export var nodepath = ^""
-onready var reference = get_node(nodepath) as Node
+@export var nodepath = ^""
+@onready var reference = get_node(nodepath) as Node
+
+# Or export Node directly
+@export var other_reference: Node
 ```
 
 ## Signals
@@ -294,9 +302,9 @@ var x: int # define typed variable
 var y: float = 4.2
 var z := 1.0 # infer type based on default value using := operator
 
-onready var node_ref_typed := $Child as Node
+@onready var node_ref_typed := $Child as Node
 
-export var speed := 50.0
+@export var speed := 50.0
 
 const CONSTANT := "Typed constant."
 
