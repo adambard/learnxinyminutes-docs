@@ -268,10 +268,10 @@ func _process(delta):
   # Now we can reuse the reference in other places.
   prints("Sprite has global_position of", sprite.global_position)
 
-# Use onready keyword to assign a value to
+# Use @onready annotation to assign a value to
 # a variable just before _ready executes.
 # This is a commonly used syntax sugar.
-@onready var tween = $Tween as Tween
+@onready var other_sprite = $Sprite as Sprite
 
 # You can export NodePath, so you can assign it within the inspector.
 @export var nodepath = ^""
