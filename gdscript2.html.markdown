@@ -317,7 +317,8 @@ func _on_death():
 
 ## Type hints
 
-GDScript can optionally use static typing.
+GDScript can optionally use static typing, for both code clarity and
+performance benefits.
 
 ```nim
 extends Node
@@ -325,6 +326,8 @@ extends Node
 var x: int # define typed variable
 var y: float = 4.2
 var z := 1.0 # infer type based on default value using := operator
+
+var a: Array[int] = [1, 2, 3] # Array can also have its type content specified
 
 @onready var node_ref_typed := $Child as Node
 
@@ -337,6 +340,7 @@ signal example(arg: int)
 func _ready() -> void:
   # function returns nothing
   x = "string" # ERROR! Type can't be changed!
+  a.append("q") # ERROR! Array[int] can't hold strings!
   return
 
 func join(arg1: String, arg2: String) -> String:
