@@ -222,19 +222,19 @@ func _ready() -> void:
   # Create NodePath by passing String to its constructor:
   var path1 = NodePath("path/to/something")
   # Or by using NodePath literal:
-  var path2 = @"path/to/something"
+  var path2 = ^"path/to/something"
   # NodePath examples:
-  var path3 = @"Sprite" # relative path, immediate child of the current node
-  var path4 = @"Timers/Firerate" # relative path, child of the child
-  var path5 = @".." # current node's parent
-  var path6 = @"../Enemy" # current node's sibling
-  var path7 = @"/root" # absolute path, equivalent to get_tree().get_root()
-  var path8 = @"/root/Main/Player/Sprite" # absolute path to Player's Sprite
-  var path9 = @"Timers/Firerate:wait_time" # accessing properties
-  var path10 = @"Player:position:x" # accessing subproperties
+  var path3 = ^"Sprite" # relative path, immediate child of the current node
+  var path4 = ^"Timers/Firerate" # relative path, child of the child
+  var path5 = ^".." # current node's parent
+  var path6 = ^"../Enemy" # current node's sibling
+  var path7 = ^"/root" # absolute path, equivalent to get_tree().get_root()
+  var path8 = ^"/root/Main/Player/Sprite" # absolute path to Player's Sprite
+  var path9 = ^"Timers/Firerate:wait_time" # accessing properties
+  var path10 = ^"Player:position:x" # accessing subproperties
 
   # Finally, to get a reference use one of these:
-  sprite = get_node(@"Sprite") as Sprite # always cast to the type you expect
+  sprite = get_node(^"Sprite") as Sprite # always cast to the type you expect
   sprite = get_node("Sprite") as Sprite # here String gets
                                         # implicitly casted to NodePath
   sprite = get_node(path3) as Sprite
@@ -251,7 +251,7 @@ func _process(delta):
 onready var tween = $Tween as Tween
 
 # You can export NodePath, so you can assign it within the inspector.
-export var nodepath = @""
+export var nodepath = ^""
 onready var reference = get_node(nodepath) as Node
 ```
 
