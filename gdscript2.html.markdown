@@ -300,16 +300,19 @@ signal hurt(hp_old, hp_new) # signals can take arguments
 func apply_damage(dmg):
   var hp_old = hp
   hp -= dmg
-  emit_signal("hurt", hp_old, hp) # emit signal and pass arguments
+  hurt.emit(hp_old, hp) # emit signal and pass arguments
   if hp <= 0:
-    emit_signal("died")
+    died.emit()
 
 func _ready():
   # connect signal "died" to function "_on_death" defined in self
-  self.connect("died", self, "_on_death")
+  died.connect(_on_death)
+  # Alternate way
+  # needed if the target object is not self
+  # died.connect(Callable(self, &"_on_death"))
 
 func _on_death():
-  self.queue_free() # destroy Player on death
+  queue_free() # destroy Player on death
 ```
 
 ## Type hints
@@ -329,6 +332,8 @@ var z := 1.0 # infer type based on default value using := operator
 
 const CONSTANT := "Typed constant."
 
+signal example(arg: int)
+
 func _ready() -> void:
   # function returns nothing
   x = "string" # ERROR! Type can't be changed!
@@ -342,7 +347,6 @@ func get_child_at(index: int) -> Node:
   # function takes an int and returns a Node
   return get_children()[index]
 
-signal example(arg: int) # ERROR! Signals can't take typed arguments!
 ```
 
 ## Further Reading
