@@ -171,16 +171,15 @@ SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE';
 -- for all rows that have a last_name value of 'Facello'.
 UPDATE employees SET first_name='John' WHERE last_name='Facello';
 
--- In tablename1, change the fname value to 'John'
--- for all rows that have an lname value of 'Mutt'.
-UPDATE tablename1 SET fname='John' WHERE lname='Mutt';
+-- Delete rows from the title table where the title value begins with
+-- 'Senior'.
+DELETE FROM title WHERE title like 'Senior%';
 
--- Delete rows from the tablename1 table
--- where the lname value begins with 'M'.
-DELETE FROM tablename1 WHERE lname like 'M%';
+-- Delete all rows from the title table, leaving the empty table.
+DELETE FROM title;
 
--- Delete all rows from the tablename1 table, leaving the empty table.
-DELETE FROM tablename1;
+-- Remove the entire title table.
+DROP TABLE title;
 
 -- Remove the entire employee database. Some engines may require you to disconnect
 -- or switch to a different database before dropping the current one.
