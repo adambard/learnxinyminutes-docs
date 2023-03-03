@@ -45,12 +45,12 @@ USE employee;
 -- sqlite3 employee.sqlite3
 -- will create (or attach to an existing) SQLite database.
 
--- Create a table called employee for the database currently in use.
+-- Create a table called employees for the database currently in use.
 -- Some of the columns are marked required by specifying NOT NULL.
 -- The emp_no column is declared as the primary key.
 -- If your database client has difficulty with multiline commands, you
 -- may need to join the lines together into one line first.
-CREATE TABLE employee (
+CREATE TABLE employees (
     emp_no INT NOT NULL,
     birth_date DATE,
     first_name VARCHAR(14) NOT NULL,
@@ -65,29 +65,29 @@ CREATE TABLE employee (
 -- NOT NULL, and are also declared as a compound primary key.
 -- (All primary key columns are required to uniquely identify a row.)
 -- A foreign key constraint defines a connection between emp_no in
--- this table, and the emp_no in the employee table.
+-- this table, and the emp_no in the employees table.
 CREATE TABLE title (
     emp_no INT NOT NULL,
     title VARCHAR(50) NOT NULL,
     from_date DATE NOT NULL,
     to_date DATE,
     PRIMARY KEY (emp_no, title, from_date),
-    FOREIGN KEY (emp_no) REFERENCES employee (emp_no)
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no)
 );
 
--- Insert a row of data into the table employee. This assumes that the
+-- Insert a row of data into the table employees. This assumes that the
 -- table has been defined to accept these values as appropriate for it.
 -- If using Oracle, you may need to adjust the expected date format with
 -- ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD'
-INSERT INTO employee (emp_no, birth_date, first_name, last_name, gender, hire_date)
+INSERT INTO employees (emp_no, birth_date, first_name, last_name, gender, hire_date)
 VALUES (10001,'1953-09-02','Georgi','Facello','M','1986-06-26');
 
--- Insert additional multiple rows of data into the table employee,
+-- Insert additional multiple rows of data into the table employees,
 -- leaving birth_date and gender NULL. This will not affect the first row
 -- that we already inserted.
 -- If using Oracle, the multiple insert syntax here does not work. Instead,
 -- each row will need to be inserted individually as above.
-INSERT INTO employee (emp_no, first_name, last_name, hire_date)
+INSERT INTO employees (emp_no, first_name, last_name, hire_date)
 VALUES (10002,'Bezalel','Simmel','1985-11-21'),
        (10003,'Parto','Bamford','1986-08-28'),
        (10004,'Chirstian','Koblick','1986-12-01'),
@@ -107,59 +107,58 @@ VALUES (10001,'Senior Engineer','1986-06-26','9999-01-01'),
        (10005,'Staff','1989-09-12','1996-09-12'),
        (10006,'Senior Engineer','1990-08-05','9999-01-01');
 
--- Select all rows and columns from the current database's employee table.
-SELECT * FROM employee;
+-- Select all rows and columns from the current database's employees table.
+SELECT * FROM employees;
 
--- Retrieve all rows from the employee table,
+-- Retrieve all rows from the employees table,
 -- but only the first_name and last_name columns.
 SELECT first_name,
-       last_name FROM employee;
+       last_name FROM employees;
 
 -- Same as above, but sorted (case-sensitive) by the last_name values.
 SELECT first_name,
-       last_name FROM employee ORDER BY last_name;
+       last_name FROM employees ORDER BY last_name;
 
--- Retrieve all employee columns, but just 4 rows, sorted by hire_date.
-SELECT * FROM employee ORDER BY hire_date OFFSET 0 ROWS FETCH NEXT 4 ROWS ONLY;
+-- Retrieve all employees columns, but just 4 rows, sorted by hire_date.
+SELECT * FROM employees ORDER BY hire_date OFFSET 0 ROWS FETCH NEXT 4 ROWS ONLY;
 
 -- While ORDER BY... OFFSET... FETCH... is ANSI compliant, and supported
 -- by database engines such as MariaDB, PostgreSQL, and Microsoft SQL Server,
 -- engines such as MySQL and SQLite do not support it. However, such engines
 -- often support a LIMIT clause:
-SELECT * FROM employee ORDER BY hire_date LIMIT 4;
+SELECT * FROM employees ORDER BY hire_date LIMIT 4;
 
 -- Alternatively, Microsoft SQL Server and Sybase support a TOP keyword.
-SELECT TOP 4 * FROM employee ORDER BY hire_date;
+SELECT TOP 4 * FROM employees ORDER BY hire_date;
 
--- Retrieve last_name column values from the employee
+-- Retrieve last_name column values from the employees
 -- table where the last_name value has the substring 'li'.
-SELECT last_name FROM employee WHERE last_name LIKE '%li%';
+SELECT last_name FROM employees WHERE last_name LIKE '%li%';
 
--- Retrieve all columns from the employee table where the last_name
+-- Retrieve all columns from the employees table where the last_name
 -- column starts with an 'S' and has exactly 5 characters after it.
-SELECT last_name FROM employee WHERE last_name LIKE 'S_____';
+SELECT last_name FROM employees WHERE last_name LIKE 'S_____';
 
 -- Select title values from the title table but don't show duplicates.
 SELECT DISTINCT title FROM title;
 
--- Show the number of rows in the employee table.
-SELECT COUNT(*) FROM employee;
+-- Show the number of rows in the employees table.
+SELECT COUNT(*) FROM employees;
 
--- Show the number of rows in the employee table that
+-- Show the number of rows in the employees table that
 -- have 'li' as a substring of the last_name value.
-SELECT COUNT(*) FROM employee WHERE last_name LIKE '%li%';
+SELECT COUNT(*) FROM employees WHERE last_name LIKE '%li%';
 
 -- A JOIN of information from multiple tables: the titles table shows
 -- who had what job titles, by their employee numbers, from what
 -- date to what date. Retrieve this information, but instead of the
 -- employee number, use the employee number as a cross-reference to
--- the employees table to get each employee's first and last name
--- instead. (And only get 10 rows.)
-
+-- the employee table to get each employee's first and last name
+-- instead.
 SELECT employees.first_name, employees.last_name,
-       titles.title, titles.from_date, titles.to_date
-FROM titles INNER JOIN employees ON
-       employees.emp_no = titles.emp_no LIMIT 10;
+       title.title, title.from_date, title.to_date
+FROM title INNER JOIN employees ON
+       employees.emp_no = title.emp_no;
 
 -- List all the tables in all the databases. Implementations typically provide
 -- their own shortcut command to do this with the database currently in use.
@@ -171,9 +170,9 @@ WHERE TABLE_TYPE='BASE TABLE';
 -- for how you specify the columns, such as their datatypes.
 CREATE TABLE tablename1 (fname VARCHAR(20), lname VARCHAR(20));
 
--- Insert a row of data into the table tablename1. This assumes that the
--- table has been defined to accept these values as appropriate for it.
-INSERT INTO tablename1 VALUES('Richard','Mutt');
+-- In employees, change the first_name value to 'John'
+-- for all rows that have a last_name value of 'Facello'.
+UPDATE employees SET first_name='John' WHERE last_name='Facello';
 
 -- In tablename1, change the fname value to 'John'
 -- for all rows that have an lname value of 'Mutt'.
