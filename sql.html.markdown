@@ -26,42 +26,128 @@ comments end with an asterisk followed by a forward slash.
 -- Create a database. Database and table names are often case-sensitive.
 CREATE DATABASE employee;
 
+-- If using Oracle, the database creation process is significantly more involved
+-- than just CREATE DATABASE. You might consider using the graphical DBCA tool or
+-- creating the database when installing Oracle.
+
 -- Use a particular existing database.
-USE employees;
+USE employee;
 
--- Select all rows and columns from the current database's departments table.
--- Default activity is for the interpreter to scroll the results on your screen.
-SELECT * FROM departments;
+-- Some database engines do not support the USE command. If using PostgreSQL
+-- and the psql client, you can switch to the database with "\c employee". Or you
+-- can disconnect and reconnect, specifying the employee database. If using IBM
+-- DB2, you can connect with "connect to employee"
 
--- Retrieve all rows from the departments table,
--- but only the dept_no and dept_name columns.
--- Splitting up commands across lines is OK.
-SELECT dept_no,
-       dept_name FROM departments;
+-- If you are using the SQLite database engine, it does not support the
+-- CREATE DATABASE or USE commands. Instead, each file is itself a
+-- database. If the filename does not already exist when you launch
+-- sqlite3, it will be created. For instance, the command:
+-- sqlite3 employee.sqlite3
+-- will create (or attach to an existing) SQLite database.
 
--- Retrieve all departments columns, but just 5 rows.
-SELECT * FROM departments LIMIT 5;
+-- Create a table called employee for the database currently in use.
+-- Some of the columns are marked required by specifying NOT NULL.
+-- The emp_no column is declared as the primary key.
+-- If your database client has difficulty with multiline commands, you
+-- may need to join the lines together into one line first.
+CREATE TABLE employee (
+    emp_no INT NOT NULL,
+    birth_date DATE,
+    first_name VARCHAR(14) NOT NULL,
+    last_name VARCHAR(16) NOT NULL,
+    gender CHAR(1), 
+    hire_date DATE NOT NULL,
+    PRIMARY KEY (emp_no)
+);
 
--- Retrieve dept_name column values from the departments
--- table where the dept_name value has the substring 'en'.
-SELECT dept_name FROM departments WHERE dept_name LIKE '%en%';
+-- Create a table called title for the database currently in use.
+-- Three of the columns: emp_no, title, and from_date are marked
+-- NOT NULL, and are also declared as a compound primary key.
+-- (All primary key columns are required to uniquely identify a row.)
+-- A foreign key constraint defines a connection between emp_no in
+-- this table, and the emp_no in the employee table.
+CREATE TABLE title (
+    emp_no INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    from_date DATE NOT NULL,
+    to_date DATE,
+    PRIMARY KEY (emp_no, title, from_date),
+    FOREIGN KEY (emp_no) REFERENCES employee (emp_no)
+);
 
--- Retrieve all columns from the departments table where the dept_name
--- column starts with an 'S' and has exactly 4 characters after it.
-SELECT * FROM departments WHERE dept_name LIKE 'S____';
+-- Insert a row of data into the table employee. This assumes that the
+-- table has been defined to accept these values as appropriate for it.
+-- If using Oracle, you may need to adjust the expected date format with
+-- ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD'
+INSERT INTO employee (emp_no, birth_date, first_name, last_name, gender, hire_date)
+VALUES (10001,'1953-09-02','Georgi','Facello','M','1986-06-26');
 
--- Select title values from the titles table but don't show duplicates.
-SELECT DISTINCT title FROM titles;
+-- Insert additional multiple rows of data into the table employee,
+-- leaving birth_date and gender NULL. This will not affect the first row
+-- that we already inserted.
+-- If using Oracle, the multiple insert syntax here does not work. Instead,
+-- each row will need to be inserted individually as above.
+INSERT INTO employee (emp_no, first_name, last_name, hire_date)
+VALUES (10002,'Bezalel','Simmel','1985-11-21'),
+       (10003,'Parto','Bamford','1986-08-28'),
+       (10004,'Chirstian','Koblick','1986-12-01'),
+       (10005,'Kyoichi','Maliniak','1989-09-12'),
+       (10006,'Anneke','Preusig','1989-06-02');
 
--- Same as above, but sorted (case-sensitive) by the title values.
-SELECT DISTINCT title FROM titles ORDER BY title;
+-- Insert multiple rows of data into the table title.
+-- Notice that each emp_no corresponds to one that we inserted above,
+-- supporting the foreign key constraint define above in on the title table.
+INSERT INTO title (emp_no, title, from_date, to_date)
+VALUES (10001,'Senior Engineer','1986-06-26','9999-01-01'),
+       (10002,'Staff','1996-08-03','9999-01-01'),
+       (10003,'Senior Engineer','1995-12-03','9999-01-01'),
+       (10004,'Engineer','1986-12-01','1995-12-01'),
+       (10004,'Senior Engineer','1995-12-01','9999-01-01'),
+       (10005,'Senior Staff','1996-09-12','9999-01-01'),
+       (10005,'Staff','1989-09-12','1996-09-12'),
+       (10006,'Senior Engineer','1990-08-05','9999-01-01');
 
--- Show the number of rows in the departments table.
-SELECT COUNT(*) FROM departments;
+-- Select all rows and columns from the current database's employee table.
+SELECT * FROM employee;
 
--- Show the number of rows in the departments table that
--- have 'en' as a substring of the dept_name value.
-SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
+-- Retrieve all rows from the employee table,
+-- but only the first_name and last_name columns.
+SELECT first_name,
+       last_name FROM employee;
+
+-- Same as above, but sorted (case-sensitive) by the last_name values.
+SELECT first_name,
+       last_name FROM employee ORDER BY last_name;
+
+-- Retrieve all employee columns, but just 4 rows, sorted by hire_date.
+SELECT * FROM employee ORDER BY hire_date OFFSET 0 ROWS FETCH NEXT 4 ROWS ONLY;
+
+-- While ORDER BY... OFFSET... FETCH... is ANSI compliant, and supported
+-- by database engines such as MariaDB, PostgreSQL, and Microsoft SQL Server,
+-- engines such as MySQL and SQLite do not support it. However, such engines
+-- often support a LIMIT clause:
+SELECT * FROM employee ORDER BY hire_date LIMIT 4;
+
+-- Alternatively, Microsoft SQL Server and Sybase support a TOP keyword.
+SELECT TOP 4 * FROM employee ORDER BY hire_date;
+
+-- Retrieve last_name column values from the employee
+-- table where the last_name value has the substring 'li'.
+SELECT last_name FROM employee WHERE last_name LIKE '%li%';
+
+-- Retrieve all columns from the employee table where the last_name
+-- column starts with an 'S' and has exactly 5 characters after it.
+SELECT last_name FROM employee WHERE last_name LIKE 'S_____';
+
+-- Select title values from the title table but don't show duplicates.
+SELECT DISTINCT title FROM title;
+
+-- Show the number of rows in the employee table.
+SELECT COUNT(*) FROM employee;
+
+-- Show the number of rows in the employee table that
+-- have 'li' as a substring of the last_name value.
+SELECT COUNT(*) FROM employee WHERE last_name LIKE '%li%';
 
 -- A JOIN of information from multiple tables: the titles table shows
 -- who had what job titles, by their employee numbers, from what
