@@ -190,3 +190,4 @@ DROP DATABASE employee;
 
 * [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) A good introduction to SQL in a "learn by doing it" format.
 * [Database System Concepts](https://www.db-book.com) book's Chapter 3 - Introduction to SQL has an in depth explanation of SQL concepts.
+* [Sakila example database](https://github.com/jOOQ/sakila), sample data from a mock DVD store, compatible with a variety of database engines
