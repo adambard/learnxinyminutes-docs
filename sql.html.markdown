@@ -162,13 +162,10 @@ FROM title INNER JOIN employees ON
 
 -- List all the tables in all the databases. Implementations typically provide
 -- their own shortcut command to do this with the database currently in use.
-SELECT * FROM INFORMATION_SCHEMA.TABLES
-WHERE TABLE_TYPE='BASE TABLE';
-
--- Create a table called tablename1, with the two columns shown, for
--- the database currently in use. Lots of other options are available
--- for how you specify the columns, such as their datatypes.
-CREATE TABLE tablename1 (fname VARCHAR(20), lname VARCHAR(20));
+-- (For instance, the below doesn't work in SQLite, Oracle, or DB2, but
+-- SQLite supports the ".tables" command, Oracle supports "SELECT * FROM all_tables"
+-- and DB2 supports "list tables for all")
+SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE';
 
 -- In employees, change the first_name value to 'John'
 -- for all rows that have a last_name value of 'Facello'.
