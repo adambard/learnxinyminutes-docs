@@ -11,11 +11,17 @@ Structured Query Language (SQL) is an [ISO/IEC 9075](https://www.iso.org/standar
 Implementations typically provide a command line prompt where you can enter the commands shown here interactively, and they also offer a way to execute a series of these commands stored in a script file.  (Showing that you’re done with the interactive prompt is a good example of something that isn’t standardized--most SQL implementations support the keywords QUIT, EXIT, or both.)
 
 ```sql
--- Comments start with two hyphens. End each command with a semicolon.
+-- Simple comments start with two hyphens.
 
--- SQL is not case-sensitive about keywords. The sample commands here
--- follow the convention of spelling them in upper-case because it makes
--- it easier to distinguish them from database, table, and column names.
+/*
+Bracketed comments start with a forward slash and asterisk. End each
+complete SQL command with a semicolon. This is good practice even when
+the database engine does not require it in all cases. SQL is not
+case-sensitive about keywords. The sample commands here follow the
+convention of spelling them in upper-case because it makes it easier
+to distinguish them from database, table, and column names. Bracketed
+comments end with an asterisk followed by a forward slash.
+*/
 
 -- Create and delete a database. Database and table names are case-sensitive.
 CREATE DATABASE someDatabase;
