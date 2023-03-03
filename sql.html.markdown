@@ -23,9 +23,8 @@ to distinguish them from database, table, and column names. Bracketed
 comments end with an asterisk followed by a forward slash.
 */
 
--- Create and delete a database. Database and table names are case-sensitive.
-CREATE DATABASE someDatabase;
-DROP DATABASE someDatabase;
+-- Create a database. Database and table names are often case-sensitive.
+CREATE DATABASE employee;
 
 -- Use a particular existing database.
 USE employees;
@@ -101,8 +100,9 @@ DELETE FROM tablename1 WHERE lname like 'M%';
 -- Delete all rows from the tablename1 table, leaving the empty table.
 DELETE FROM tablename1;
 
--- Remove the entire tablename1 table.
-DROP TABLE tablename1;
+-- Remove the entire employee database. Some engines may require you to disconnect
+-- or switch to a different database before dropping the current one.
+DROP DATABASE employee;
 ```
 
 ## Further Reading
