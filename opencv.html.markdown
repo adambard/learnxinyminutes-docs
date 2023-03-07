@@ -4,6 +4,7 @@ tool: OpenCV
 filename: learnopencv.py
 contributors:
     - ["Yogesh Ojha", "http://github.com/yogeshojha"]
+    - ["Cillian Smith", "https://github.com/smithc36-tcd"]
 ---
 ### Opencv
 
@@ -11,7 +12,9 @@ OpenCV (Open Source Computer Vision) is a library of programming functions mainl
 Originally developed by Intel, it was later supported by Willow Garage then Itseez (which was later acquired by Intel). 
 Opencv currently supports wide variety of languages like, C++, Python, Java etc
 
-#### Installation
+
+## Python
+#### Python Installation
 Please refer to these articles for installation of OpenCV on your computer.
 
 * Windows Installation Instructions: [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html#install-opencv-python-in-windows](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html#install-opencv-python-in-windows)
@@ -141,3 +144,188 @@ cv2.destroyAllWindows()
     * [https://realpython.com/python-opencv-color-spaces](https://realpython.com/python-opencv-color-spaces)
     * [https://pyimagesearch.com](https://pyimagesearch.com)
     * [https://www.learnopencv.com](https://www.learnopencv.com)
+
+## C++ OpenCV Implementation
+#### C++ Installation
+
+```bash
+# Install minimal prerequisites (Ubuntu 18.04 as reference)
+sudo apt update && sudo apt install -y cmake g++ wget unzip
+# Download and unpack sources
+wget -O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip
+unzip opencv.zip
+# Create build directory
+mkdir -p build && cd build
+# Configure
+cmake  ../opencv-4.x
+# Build
+cmake --build .
+```
+
+More detailed installation information can be found below. 
+* Linux : [https://docs.opencv.org/4.x/d7/d9f/tutorial_linux_install.html](https://docs.opencv.org/4.x/d7/d9f/tutorial_linux_install.html)
+* Windows : [https://docs.opencv.org/4.x/d3/d52/tutorial_windows_install.html](https://docs.opencv.org/4.x/d3/d52/tutorial_windows_install.html)
+* MacOS : [https://docs.opencv.org/4.x/d0/db2/tutorial_macos_install.html](https://docs.opencv.org/4.x/d0/db2/tutorial_macos_install.html)
+
+### Opening Images and Video
+```cpp
+#include "opencv2/core.hpp"
+#include "opencv2/imgproc.hpp"
+#include "opencv2/video.hpp"
+
+// Using namespaces for simplicity
+using namespace std;
+using namespace cv;
+
+int main() {
+
+  /* Reading an Image
+   * imread(filename, optional-formatting)
+   * IMREAD_COLOR, IMREAD_UNCHANGED, IMREAD_GRAYSCALE
+   */
+  Mat src = cv::imread("sample_image.jpg", IMREAD_COLOR);
+  if (src.empty()) {
+    std::cerr << "No Image found" << endl;
+    return -1;
+  }
+
+  // Display an image
+  imshow("Title", src);
+  // Waits for 1000 miliseconds
+  waitKey(1000);
+  // waitKey(0) will indefinately for a keypress
+  
+  // Writing an image to a file
+  bool isSuccess = imwrite("sample.jpg", image); //write the image to a file as JPEG 
+  //bool isSuccess = imwrite("sample.png", image); //write the image to a file as PNG
+  if (!isSuccess)
+  {
+      std::cerr << "Failed to save the image" << std::endl;
+      return -1;
+  }
+
+  // loading a video file
+  VideoCapture cap("sample_video.mp4");
+  if (!cap.isOpened()) {
+    std::cerr << "Error opening video file" << std::endl;
+    return -1;
+  }
+
+  // Capturing from webcam (webcam is indexed from 0, additional cameras
+  // can be indexed from 1,2, ...)
+  VideoCapture cam(0);
+
+  // Displaying a video or webcam
+  while (1) {
+
+    // Create a Mat object to store current frame
+    Mat frame;
+    // Capture frame-by-frame
+    cap >> frame;
+
+    if (frame.empty()) { // Check if video is finished
+      break;
+    }
+    // Display Frame
+    imshow("Video", frame);
+  }
+  // release the video capture object
+  cap.release();
+ 
+  // Closes all windows
+  destroyAllWindows();
+  return 0;
+}
+```
+
+### Basic Vision operations
+```cpp
+
+// Format conversion (RBG, HSV, RGBA, etc.)
+Mat src = imread( "Sample.jpg", IMREAD_COLOR);
+Mat gray_image;
+cvtColor( image, gray_image, CV_BGR2GRAY );
+// Other colour codes can be found here 
+// https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html#ga4e0972be5de079fed4e3a10e24ef5ef0jk
+
+// Thresholding
+Mat src_gray = imread("sample.jpg", IMREAD_GREYSCALE);
+// max_binary value = 255
+// threshold value is pixel value of threshold
+// threshold type can be set to THRESH_BINARY, THRESH_BINARY_INV, THRESH_TRUNC,
+//    THRESH_TOZERO, THRESH_TOZERO_INV
+threshold( src_gray, dst, threshold_value, max_binary_value, threshold_type );
+
+
+// Blending images
+src1 = imread("image1.jpg", IMREAD_COLOR);
+src2 = imread("image2.jpg", IMREAD_COLOR);
+// where 0 <= aplha <= 1  
+float aplha = 0.5, beta = 1 - alpha; 
+addWeighted( src1, alpha, src2, beta, 0.0, dest);
+imshow( "Blended Image", dest );
+waitKey(0);
+
+// Image Smoothing
+// Size is the size of the neighbourhood
+// Point specifies the center as a anchor
+blur( src, dst, Size( i, i ), Point(-1,-1) );
+GaussianBlur( src, dst, Size( i, i ), 0, 0 );
+// Median only considers square neighbourhoods so an int is passed
+medianBlur ( src, dst, i );
+// Src, dest, size, std dev in color, std dev in coord
+bilateralFilter ( src, dst, i, i*2, i/2 );
+
+// Edge Detection ( Canny )
+Mat src_gray, dettected_edges
+blur( src_gray, detected_edges, Size(3,3) );
+int ratio = 3 // specified by Canny
+Canny( detected_edges, detected_edges, lowThreshold, lowThreshold*ratio, kernel_size );
+
+// Drawing Shapes
+Mat image = Mat::zeros( w, w, CV_8UC3 ); // Create image of shape width 
+
+  int thickness = 2;
+  vec3 lineColor = Scalar(0,0,0) // black
+  
+  line(image, start_pt, end_pt, Scalar(0, 0, 0), thickness, LINE_8);
+  circle(image, center, w/2, Scalar(0, 0, 255), FILLED, LINE_8);
+  
+  
+//  Histogram Backprojection 
+// Backproject an image onto a given sample historgram, returns a probability image
+Mat backProject_image(Mat image, string sample_string, int bins)
+{
+    Mat sample = imread(sample_string, IMREAD_COLOR);
+
+    Mat hist;
+    int r_bins = bins;
+    int g_bins = bins;
+    int b_bins = bins;
+    int histSize[] = {r_bins, g_bins, b_bins};
+
+    float R_range[] = {0, 255};
+    float G_range[] = {0, 255};
+    float B_range[] = {0, 255};
+    const float *ranges[] = {R_range, G_range, B_range};
+
+    int channels[] = {0, 1, 2};
+
+    calcHist(&sample, 1, channels, Mat(), hist, 3, histSize, ranges, true, false);
+
+    normalize(hist, hist, 0, 255, NORM_MINMAX, -1, Mat());
+
+    Mat backprojected_image;
+    calcBackProject(&image, 1, channels, hist, backprojected_image, ranges, 1, true);
+
+    return backprojected_image;
+}
+
+
+```
+
+### More help and documentation
+* OpenCV Documentation [https://docs.opencv.org/4.x/index.html](https://docs.opencv.org/4.x/index.html)
+* C++ OpenCV Tutorials [https://www.opencv-srf.com/p/introduction.html](https://www.opencv-srf.com/p/introduction.html)
+* Learn OpenCV [https://learnopencv.com/getting-started-with-opencv/](https://learnopencv.com/getting-started-with-opencv/)
+
