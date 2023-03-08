@@ -443,7 +443,7 @@ $bar('C'); // Prints "A - B - C"
 // You can call named functions using strings
 $function_name = 'add';
 echo $function_name(1, 2); // => 3
-// Useful for programatically determining which function to run.
+// Useful for programmatically determining which function to run.
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
 
 

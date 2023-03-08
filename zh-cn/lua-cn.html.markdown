@@ -391,7 +391,8 @@ dofile('mod2')  --> Hi! (再次运行，与require不同)
 f = loadfile('mod2')  -- Calling f() runs mod2.lua. 
 
 -- loadstring是loadfile的字符串版本。 
-g = loadstring('print(343)')  --返回一个函数。 
+-- (loadstring已弃用, 使用load代替)
+g = load('print(343)')  --返回一个函数。
 g()  -- 打印343; 在此之前什么也不打印。 
 
 --]] 

@@ -39,7 +39,7 @@ Go comes with a good standard library and a sizeable community.
 // +build prod, dev, test
 
 // A package clause starts every source file.
-// Main is a special name declaring an executable rather than a library.
+// main is a special name declaring an executable rather than a library.
 package main
 
 // Import declaration declares library packages referenced in this file.

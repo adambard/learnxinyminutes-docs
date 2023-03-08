@@ -620,7 +620,7 @@ function isEven(number) {
 };
 
 // I put the word "equivalent" in double quotes because a function defined
-// using the lambda syntax cannnot be called before the definition.
+// using the lambda syntax cannot be called before the definition.
 // The following is an example of invalid usage:
 
 add(1, 8);

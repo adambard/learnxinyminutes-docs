@@ -111,7 +111,7 @@ gateways and routers.
     sub $t2, $t0, $t1                       # $t2 = $t0 - $t1
     mul $t2, $t0, $t1                       # $t2 = $t0 * $t1
     div $t2, $t0, $t1                       # $t2 = $t0 / $t1 (Might not be 
-                                            # supported in some versons of MARS)
+                                            # supported in some versions of MARS)
     div $t0, $t1                            # Performs $t0 / $t1. Get the 
                                             # quotient using 'mflo' and 
                                             # remainder using 'mfhi'

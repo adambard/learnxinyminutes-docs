@@ -39,7 +39,7 @@ Prior knowledge of C is recommended.
 ## Zig language
 
 
-```zig
+```
 //! Top-level documentation.
 
 /// Documentation comment.
@@ -49,7 +49,7 @@ Prior knowledge of C is recommended.
 
 
 ### Hello world.
-```zig
+```
 // Import standard library, reachable through the "std" constant.
 const std = @import("std");
 
@@ -67,9 +67,9 @@ pub fn main() void {
 ```
 
 ### Booleans, integers and float.
-```zig
+```
 // Booleans.
-// Keywords are prefered to operators for boolean operations.
+// Keywords are preferred to operators for boolean operations.
 print("{}\n{}\n{}\n", .{
     true and false,
     true or false,
@@ -109,7 +109,7 @@ i <<| 8   == 255   // u8: won't go higher than 255
 ```
 
 ### Arrays.
-```zig
+```
 // An array is a well-defined structure with a length attribute (len).
 
 // 5-byte array with undefined content (stack garbage).
@@ -138,7 +138,7 @@ var some_integers: [10]i32 = undefined;
 
 some_integers[0] = 30; // first element of the array is now 30
 
-var x = some_integers[0]; // "x" now equals to 30, its type is infered.
+var x = some_integers[0]; // "x" now equals to 30, its type is inferred.
 var y = some_integers[1]; // Second element of the array isn't defined.
                           // "y" got a stack garbage value (no runtime error).
 
@@ -156,7 +156,7 @@ try some_integers[i]; // Runtime error 'index out of bounds'.
 ```
 
 ### Multidimensional arrays.
-```zig
+```
 
 const mat4x4 = [4][4]f32{
     [_]f32{ 1.0, 0.0, 0.0, 0.0 },
@@ -177,7 +177,7 @@ for (mat4x4) |row, row_index| {
 ```
 
 ### Strings.
-```zig
+```
 
 // Simple string constant.
 const greetings = "hello";
@@ -195,7 +195,7 @@ print("string: {s}\n", .{greetings});
 ```
 
 ### Slices.
-```zig
+```
 
 // A slice is a pointer and a size, an array without compile-time known size.
 // Slices have runtime out-of-band verifications.
@@ -206,7 +206,7 @@ const slice = array[0..array.len];  // "slice" represents the whole array.
 ```
 
 ### Pointers.
-```zig
+```
 
 // Pointer on a value can be created with "&".
 const x: i32 = 1;
@@ -223,7 +223,7 @@ const foo = pointer.?; // Get the pointed value, otherwise crash.
 ```
 
 ### Optional values (?<type>).
-```zig
+```
 // An optional is a value than can be of any type or null.
 
 // Example: "optional_value" can either be "null" or an unsigned 32-bit integer.
@@ -239,7 +239,7 @@ if (x) |value| {
 ```
 
 ### Errors.
-```zig
+```
 // Zig provides an unified way to express errors.
 
 // Errors are defined in error enumerations, example:
@@ -299,7 +299,7 @@ var value = try some_function();
 
 ### Control flow.
 
-```zig
+```
 // Conditional branching.
 
 if (condition) {
@@ -384,7 +384,7 @@ const result = for (items) |value| {
 ```
 
 ### Labels.
-```zig
+```
 
 // Labels are a way to name an instruction, a location in the code.
 // Labels can be used to "continue" or "break" in a nested loop.
@@ -434,7 +434,7 @@ const result = for (items) |value| { // First: loop.
 ```
 
 ### Switch.
-```zig
+```
 
 // As a switch in C, but slightly more advanced.
 // Syntax:
@@ -461,7 +461,7 @@ const bar = switch (foo) {
 ```
 
 ### Structures.
-```zig
+```
 
 // Structure containing a single value.
 const Full = struct {
@@ -564,7 +564,7 @@ print("p.y: {}\n", .{p.y}); // 30
 ```
 
 ### Tuples.
-```zig
+```
 // A tuple is a list of elements, possibly of different types.
 
 const foo = .{ "hello", true, 42 };
@@ -572,7 +572,7 @@ const foo = .{ "hello", true, 42 };
 ```
 
 ### Enumerations.
-```zig
+```
 
 const Type = enum { ok, not_ok };
 
@@ -606,7 +606,7 @@ const x = switch (direction) {
 ```
 
 ### Unions.
-```zig
+```
 
 const Bar = union {
   boolean: bool,
@@ -622,7 +622,7 @@ const foo: Bar = .{ .int = 42 };
 ```
 
 ### Tagged unions.
-```zig
+```
 
 // Unions can be declared with an enum tag type, allowing them to be used in
 // switch expressions.
@@ -653,7 +653,7 @@ switch (nay) {
 ```
 
 ### Defer and errdefer.
-```zig
+```
 
 // Make sure that an action (single instruction or block of code) is executed
 // before the end of the scope (function, block of code).
@@ -707,12 +707,12 @@ However, here are some examples, to get an idea of what you can expect:
   Use a fixed buffer to get its memory, don't ask memory to the kernel.
   Very simple, limited and wasteful (can't deallocate), but very fast.
 - ArenaAllocator.
-  Allow to free all allocted memory at once.
-  To use in combinaison with another allocator.
+  Allow to free all allocated memory at once.
+  To use in combinations with another allocator.
   Very simple way of avoiding leaks.
 
 A first example.
-```zig
+```
 // "!void" means the function doesn't return any value except for errors.
 // In this case we try to allocate memory, and this may fail.
 fn foo() !void {
@@ -735,7 +735,7 @@ fn foo() !void {
 ```
 
 ### Memory allocation combined with error management and defer.
-```zig
+```
 
 fn some_memory_allocation_example() !void {
     // Memory allocation may fail, so we "try" to allocate the memory and
@@ -759,7 +759,7 @@ fn some_memory_allocation_example() !void {
 ```
 
 ### Memory allocators: a taste of the standard library.
-```zig
+```
 
 // Allocators: 4 main functions to know
 //   single_value = create (type)
@@ -825,7 +825,7 @@ fn arena_allocator_fn() !void {
 
 
 // Combining the general purpose and arena allocators. Both are very useful,
-// and their combinaison should be in everyone's favorite cookbook.
+// and their combinations should be in everyone's favorite cookbook.
 fn gpa_arena_allocator_fn() !void {
     const config = .{.safety = true};
     var gpa = std.heap.GeneralPurposeAllocator(config){};
@@ -846,7 +846,7 @@ fn gpa_arena_allocator_fn() !void {
 ```
 
 ### Comptime.
-```zig
+```
 
 // Comptime is a way to avoid the pre-processor.
 // The idea is simple: run code at compilation.
@@ -883,7 +883,7 @@ list.items[0] = 10;
 ```
 
 ### Conditional compilation.
-```zig
+```
 const available_os = enum { OpenBSD, Linux };
 const myos = available_os.OpenBSD;
 
@@ -905,7 +905,7 @@ const myprint = switch(myos) {
 ```
 
 ### Testing our functions.
-```zig
+```
 const std = @import("std");
 const expect = std.testing.expect;
 
@@ -925,7 +925,7 @@ test "returns true" {
 The compiler has special functions called "built-ins", starting with an "@".
 There are more than a hundred built-ins, allowing very low-level stuff:
 - compile-time errors, logging, verifications
-- type coercion and convertion, even in an unsafe way
+- type coercion and conversion, even in an unsafe way
 - alignment management
 - memory tricks (such as getting the byte offset of a field in a struct)
 - calling functions at compile-time
@@ -936,7 +936,7 @@ There are more than a hundred built-ins, allowing very low-level stuff:
 - etc.
 
 Example: enums aren't integers, they have to be converted with a built-in.
-```zig
+```
 const Value = enum { zero, stuff, blah };
 if (@enumToInt(Value.zero)  == 0) { ... }
 if (@enumToInt(Value.stuff) == 1) { ... }
@@ -956,7 +956,7 @@ if (@enumToInt(Value.blah)  == 2) { ... }
     Unions cannot be reinterpreted (in an union with an integer and a float, one cannot take a value for another by accident).
     Etc.
 - Removing most of the C undefined behaviors (UBs), and when the compiler encounters one, it stops.
-- Slice and Array structures are prefered to pointers.
+- Slice and Array structures are preferred to pointers.
   Types enforced by the compiler are less prone to errors than pointer manipulations.
 - Numerical overflows produce an error, unless explicitly accepted using wrapping operators.
 - Try and catch mechanism.
@@ -964,7 +964,7 @@ if (@enumToInt(Value.blah)  == 2) { ... }
 - Unused variables are considered as errors by the compiler.
 - Many pointer types exist in order to represent what is pointed.
   Example: is this a single value or an array, is the length known, etc.
-- Structures need a value for their attributes, and it still is possible to give an undefined value (stack garbage), but at least it is explicitely undefined.
+- Structures need a value for their attributes, and it still is possible to give an undefined value (stack garbage), but at least it is explicitly undefined.
 
 
 ## Further Reading

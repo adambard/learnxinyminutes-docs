@@ -94,7 +94,7 @@ let banta = "Harry", santa = "Hermione";
 
 // L'égalité est === ou ==
 // === compare la valeur exacte 2 === '2' // = false
-// == convertit la valeur pour comparer 2 === '2' // = true
+// == convertit la valeur pour comparer 2 == '2' // = true
 // En général, il vaut mieux utiliser === pour ne pas faire d'erreur.
 1 === 1; // = true
 2 === 1; // = false

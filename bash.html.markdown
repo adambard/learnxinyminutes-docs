@@ -18,6 +18,7 @@ contributors:
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
     - ["Martin Nicholson", "https://github.com/mn113"]
     - ["Mark Grimwood", "https://github.com/MarkGrimwood"]
+    - ["Emily Grace Seville", "https://github.com/EmilySeville7cfg"]
 filename: LearnBash.sh
 translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
@@ -37,104 +38,107 @@ or executed directly in the shell.
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
-echo Hello world! # => Hello world!
+echo "Hello world!" # => Hello world!
 
 # Each command starts on a new line, or after a semicolon:
-echo 'This is the first line'; echo 'This is the second line'
-# => This is the first line
-# => This is the second line
+echo "This is the first command"; echo "This is the second command"
+# => This is the first command
+# => This is the second command
 
 # Declaring a variable looks like this:
-Variable="Some string"
+variable="Some string"
 
 # But not like this:
-Variable = "Some string" # => returns error "Variable: command not found"
-# Bash will decide that Variable is a command it must execute and give an error
+variable = "Some string" # => returns error "variable: command not found"
+# Bash will decide that `variable` is a command it must execute and give an error
 # because it can't be found.
 
 # Nor like this:
-Variable= 'Some string' # => returns error: "Some string: command not found"
-# Bash will decide that 'Some string' is a command it must execute and give an
-# error because it can't be found. (In this case the 'Variable=' part is seen
-# as a variable assignment valid only for the scope of the 'Some string'
-# command.)
+variable= "Some string" # => returns error: "Some string: command not found"
+# Bash will decide that "Some string" is a command it must execute and give an
+# error because it can't be found. In this case the "variable=" part is seen
+# as a variable assignment valid only for the scope of the "Some string"
+# command.
 
 # Using the variable:
-echo $Variable # => Some string
-echo "$Variable" # => Some string
-echo '$Variable' # => $Variable
-# When you use the variable itself — assign it, export it, or else — you write
+echo "$variable" # => Some string
+echo '$variable' # => $variable
+# When you use a variable itself — assign it, export it, or else — you write
 # its name without $. If you want to use the variable's value, you should use $.
 # Note that ' (single quote) won't expand the variables!
+# You can write variable without surrounding quotes but it's not recommended.
 
-# Parameter expansion ${ }:
-echo ${Variable} # => Some string
-# This is a simple usage of parameter expansion
-# Parameter Expansion gets a value from a variable.
-# It "expands" or prints the value
-# During the expansion time the value or parameter can be modified
-# Below are other modifications that add onto this expansion
+# Parameter expansion ${...}:
+echo "${variable}" # => Some string
+# This is a simple usage of parameter expansion such as two examples above.
+# Parameter expansion gets a value from a variable.
+# It "expands" or prints the value.
+# During the expansion time the value or parameter can be modified.
+# Below are other modifications that add onto this expansion.
 
-# String substitution in variables
-echo ${Variable/Some/A} # => A string
-# This will substitute the first occurrence of "Some" with "A"
+# String substitution in variables:
+echo "${variable/Some/A}" # => A string
+# This will substitute the first occurrence of "Some" with "A".
 
-# Substring from a variable
-Length=7
-echo ${Variable:0:Length} # => Some st
+# Substring from a variable:
+length=7
+echo "${variable:0:length}" # => Some st
 # This will return only the first 7 characters of the value
-echo ${Variable: -5} # => tring
-# This will return the last 5 characters (note the space before -5)
+echo "${variable: -5}" # => tring
+# This will return the last 5 characters (note the space before -5).
+# The space before minus is mandatory here.
 
-# String length
-echo ${#Variable} # => 11
+# String length:
+echo "${#variable}" # => 11
 
-# Indirect expansion
-OtherVariable="Variable"
-echo ${!OtherVariable} # => Some String
-# This will expand the value of OtherVariable
+# Indirect expansion:
+other_variable="variable"
+echo ${!other_variable} # => Some string
+# This will expand the value of `other_variable`.
 
-# Default value for variable
-echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
+# The default value for variable:
+echo "${foo:-"DefaultValueIfFooIsMissingOrEmpty"}"
 # => DefaultValueIfFooIsMissingOrEmpty
-# This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
+# This works for null (foo=) and empty string (foo=""); zero (foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
 
-# Declare an array with 6 elements
-array0=(one two three four five six)
-# Print first element
-echo $array0 # => "one"
-# Print first element
-echo ${array0[0]} # => "one"
-# Print all elements
-echo ${array0[@]} # => "one two three four five six"
-# Print number of elements
-echo ${#array0[@]} # => "6"
-# Print number of characters in third element
-echo ${#array0[2]} # => "5"
-# Print 2 elements starting from fourth
-echo ${array0[@]:3:2} # => "four five"
-# Print all elements. Each of them on new line.
-for i in "${array0[@]}"; do
-    echo "$i"
+# Declare an array with 6 elements:
+array=(one two three four five six)
+# Print the first element:
+echo "${array[0]}" # => "one"
+# Print all elements:
+echo "${array[@]}" # => "one two three four five six"
+# Print the number of elements:
+echo "${#array[@]}" # => "6"
+# Print the number of characters in third element
+echo "${#array[2]}" # => "5"
+# Print 2 elements starting from fourth:
+echo "${array[@]:3:2}" # => "four five"
+# Print all elements each of them on new line.
+for item in "${array[@]}"; do
+    echo "$item"
 done
 
-# Brace Expansion { }
-# Used to generate arbitrary strings
-echo {1..10} # => 1 2 3 4 5 6 7 8 9 10
-echo {a..z} # => a b c d e f g h i j k l m n o p q r s t u v w x y z
-# This will output the range from the start value to the end value
-
 # Built-in variables:
-# There are some useful built-in variables, like
+# There are some useful built-in variables, like:
 echo "Last program's return value: $?"
 echo "Script's PID: $$"
 echo "Number of arguments passed to script: $#"
 echo "All arguments passed to script: $@"
 echo "Script's arguments separated into different variables: $1 $2..."
 
+# Brace Expansion {...}
+# used to generate arbitrary strings:
+echo {1..10} # => 1 2 3 4 5 6 7 8 9 10
+echo {a..z} # => a b c d e f g h i j k l m n o p q r s t u v w x y z
+# This will output the range from the start value to the end value.
+# Note that you can't use variables here:
+from=1
+to=10
+echo {$from..$to} # => {$from..$to}
+
 # Now that we know how to echo and use variables,
-# let's learn some of the other basics of bash!
+# let's learn some of the other basics of Bash!
 
 # Our current directory is available through the command `pwd`.
 # `pwd` stands for "print working directory".
@@ -144,33 +148,46 @@ echo "I'm in $(pwd)" # execs `pwd` and interpolates output
 echo "I'm in $PWD" # interpolates the variable
 
 # If you get too much output in your terminal, or from a script, the command
-# `clear` clears your screen
+# `clear` clears your screen:
 clear
-# Ctrl-L also works for clearing output
+# Ctrl-L also works for clearing output.
 
 # Reading a value from input:
 echo "What's your name?"
-read Name # Note that we didn't need to declare a new variable
-echo Hello, $Name!
+read name
+# Note that we didn't need to declare a new variable.
+echo "Hello, $name!"
 
-# We have the usual if structure:
-# use `man test` for more info about conditionals
-if [ $Name != $USER ]
-then
+# We have the usual if structure.
+# Condition is true if the value of $name is not equal to the current user's login username:
+if [[ "$name" != "$USER" ]]; then
     echo "Your name isn't your username"
 else
     echo "Your name is your username"
 fi
-# True if the value of $Name is not equal to the current user's login username
 
-# NOTE: if $Name is empty, bash sees the above condition as:
-if [ != $USER ]
-# which is invalid syntax
-# so the "safe" way to use potentially empty variables in bash is:
-if [ "$Name" != $USER ] ...
-# which, when $Name is empty, is seen by bash as:
-if [ "" != $USER ] ...
-# which works as expected
+# To use && and || with if statements, you need multiple pairs of square brackets:
+read age
+if [[ "$name" == "Steve" ]] && [[ "$age" -eq 15 ]]; then
+    echo "This will run if $name is Steve AND $age is 15."
+fi
+
+if [[ "$name" == "Daniya" ]] || [[ "$name" == "Zach" ]]; then
+    echo "This will run if $name is Daniya OR Zach."
+fi
+# There are other comparison operators for numbers listed below:
+# -ne - not equal
+# -lt - less than
+# -gt - greater than
+# -le - less than or equal to
+# -ge - greater than or equal to
+
+# There is also the `=~` operator, which tests a string against the Regex pattern:
+email=me@example.com
+if [[ "$email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+then
+    echo "Valid email!"
+fi
 
 # There is also conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
@@ -192,27 +209,6 @@ bg
 # Kill job number 2
 kill %2
 # %1, %2, etc. can be used for fg and bg as well
-
-# To use && and || with if statements, you need multiple pairs of square brackets:
-if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
-then
-    echo "This will run if $Name is Steve AND $Age is 15."
-fi
-
-if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
-then
-    echo "This will run if $Name is Daniya OR Zach."
-fi
-
-# There is also the `=~` operator, which tests a string against a Regex pattern:
-Email=me@example.com
-if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
-then
-    echo "Valid email!"
-fi
-# Note that =~ only works within double [[ ]] square brackets,
-# which are subtly different from single [ ].
-# See https://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
 
 # Redefine command `ping` as alias to send only 5 packets
 alias ping='ping -c 5'

@@ -41,7 +41,7 @@ Evaluation is done via
 which is essentially lexically-scoped substitution.
 
 When evaluating the
-expression `(λx.x)a`, we replace all occurences of "x" in the function's body
+expression `(λx.x)a`, we replace all occurrences of "x" in the function's body
 with "a".
 
 - `(λx.x)a` evaluates to: `a`

@@ -370,8 +370,10 @@ END {
 }
 
 ```
+
 Leituras adicionais (em inglês):
 
 * [Awk tutorial](http://www.grymoire.com/Unix/Awk.html)
 * [Awk man page](https://linux.die.net/man/1/awk)
-* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html) GNU AWK é encontrado na maioria dos sistemas GNU/Linux.
+* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
+  GNU AWK é encontrado na maioria dos sistemas GNU/Linux.

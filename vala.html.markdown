@@ -486,7 +486,7 @@ int more = 57;
 int* more_pointer = &more; // & = address-of
 int indirection_demo = more_pointer*; // indirection
 
-// Profiles: affect which Vala features are avaliable and which libraries the
+// Profiles: affect which Vala features are available and which libraries the
 // C-code will use.
 // - gobject (default)
 // posix

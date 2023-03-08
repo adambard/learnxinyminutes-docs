@@ -4,12 +4,13 @@ filename: bf.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
+    - ["rilysh", "https://github.com/rilysh"]
 ---
 
 Brainfuck (not capitalized except at the start of a sentence) is an extremely
 minimal Turing-complete programming language with just 8 commands.
 
-You can try brainfuck on your browser with [brainfuck-visualizer](https://brainfuck-visualizer.herokuapp.com).
+You can try brainfuck on your browser with [brainfuck-online](https://copy.sh/brainfuck/).
 
 ```bf
 Any character not "><+-.,[]" (excluding quotation marks) is ignored.
@@ -80,3 +81,8 @@ And that's brainfuck. Not that hard, eh? For fun, you can write your own
 brainfuck programs, or you can write a brainfuck interpreter in another
 language. The interpreter is fairly simple to implement, but if you're a
 masochist, try writing a brainfuck interpreter… in brainfuck.
+
+## Further Reading
+ * [esolang-wiki](https://esolangs.org/wiki/Brainfuck)
+ * [learn brainfuck](http://cydathria.com/bf/brainfuck.html)
+ * [other resources](http://www.muppetlabs.com/~breadbox/bf/)

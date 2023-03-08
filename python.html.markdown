@@ -10,14 +10,17 @@ contributors:
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
     - ["caminsha", "https://github.com/caminsha"]
     - ["Stanislav Modrak", "https://stanislav.gq"]
+    - ["John Paul Wohlscheid", "https://gitpi.us"]
 filename: learnpython.py
 ---
 
-Python was created by Guido van Rossum in the early 90s. It is now one of the most popular
-languages in existence. I fell in love with Python for its syntactic clarity. It's basically
-executable pseudocode.
+Python was created by Guido van Rossum in the early 90s. It is now one of the
+most popular languages in existence. I fell in love with Python for its
+syntactic clarity. It's basically executable pseudocode.
 
-Note: This article applies to Python 3 specifically. Check out [here](http://learnxinyminutes.com/docs/pythonlegacy/) if you want to learn the old Python 2.7
+Note: This article applies to Python 3 specifically. Check out
+[here](http://learnxinyminutes.com/docs/pythonlegacy/) if you want to learn the
+old Python 2.7
 
 ```python
 
@@ -97,8 +100,9 @@ bool(set()) # => False
 bool(4)     # => True
 bool(-6)    # => True
 
-# Using boolean logical operators on ints casts them to booleans for evaluation, but their non-cast value is returned
-# Don't mix up with bool(ints) and bitwise and/or (&,|)
+# Using boolean logical operators on ints casts them to booleans for evaluation,
+# but their non-cast value is returned. Don't mix up with bool(ints) and bitwise
+# and/or (&,|)
 bool(0)     # => False
 bool(2)     # => True
 0 and 2     # => 0
@@ -152,10 +156,10 @@ b == a            # => True, a's and b's objects are equal
 # You can find the length of a string
 len("This is a string")  # => 16
 
-# You can also format using f-strings or formatted string literals (in Python 3.6+)
+# Since Python 3.6, you can use f-strings or formatted string literals.
 name = "Reiko"
 f"She said her name is {name}." # => "She said her name is Reiko"
-# You can basically put any Python expression inside the braces and it will be output in the string.
+# Any valid Python expression inside these braces is returned to the string.
 f"{name} is {len(name)} characters long." # => "Reiko is 5 characters long."
 
 # None is an object
@@ -294,7 +298,7 @@ filled_dict = {"one": 1, "two": 2, "three": 3}
 # Note keys for dictionaries have to be immutable types. This is to ensure that
 # the key can be converted to a constant hash value for quick look-ups.
 # Immutable types include ints, floats, strings, tuples.
-invalid_dict = {[1,2,3]: "123"}  # => Raises a TypeError: unhashable type: 'list'
+invalid_dict = {[1,2,3]: "123"}  # => Yield a TypeError: unhashable type: 'list'
 valid_dict = {(1,2,3):[1,2,3]}   # Values can be of any type, however.
 
 # Look up values with []
@@ -348,7 +352,7 @@ del filled_dict["one"]  # Removes the key "one" from filled dict
 
 # Sets store ... well sets
 empty_set = set()
-# Initialize a set with a bunch of values. Yeah, it looks a bit like a dict. Sorry.
+# Initialize a set with a bunch of values.
 some_set = {1, 1, 2, 2, 3, 4}  # some_set is now {1, 2, 3, 4}
 
 # Similar to keys of a dictionary, elements of a set have to be immutable.
@@ -420,7 +424,7 @@ for animal in ["dog", "cat", "mouse"]:
 
 """
 "range(number)" returns an iterable of numbers
-from zero to the given number
+from zero up to (but excluding) the given number
 prints:
     0
     1
@@ -454,8 +458,7 @@ for i in range(4, 8, 2):
     print(i)
 
 """
-To loop over a list, and retrieve both the index and the value of each item in the list
-prints:
+Loop over a list to retrieve both the index and the value of each list item:
     0 dog
     1 cat
     2 mouse
@@ -482,10 +485,11 @@ try:
     # Use "raise" to raise an error
     raise IndexError("This is an index error")
 except IndexError as e:
-    pass                 # Pass is just a no-op. Usually you would do recovery here.
+    pass                 # Refrain from this, provide a recovery (next example).
 except (TypeError, NameError):
-    pass                 # Multiple exceptions can be handled together, if required.
-else:                    # Optional clause to the try/except block. Must follow all except blocks
+    pass                 # Multiple exceptions can be processed jointly.
+else:                    # Optional clause to the try/except block. Must follow
+                         # all except blocks.
     print("All good!")   # Runs only if the code in try raises no exceptions
 finally:                 # Execute under all circumstances
     print("We can clean up resources here")
@@ -500,6 +504,7 @@ contents = {"aa": 12, "bb": 21}
 with open("myfile1.txt", "w+") as file:
     file.write(str(contents))        # writes a string to a file
 
+import json
 with open("myfile2.txt", "w+") as file:
     file.write(json.dumps(contents)) # writes an object to a file
 
@@ -521,7 +526,8 @@ print(contents)
 
 filled_dict = {"one": 1, "two": 2, "three": 3}
 our_iterable = filled_dict.keys()
-print(our_iterable)  # => dict_keys(['one', 'two', 'three']). This is an object that implements our Iterable interface.
+print(our_iterable)  # => dict_keys(['one', 'two', 'three']). This is an object
+                     # that implements our Iterable interface.
 
 # We can loop over it.
 for i in our_iterable:
@@ -533,15 +539,16 @@ our_iterable[1]  # Raises a TypeError
 # An iterable is an object that knows how to create an iterator.
 our_iterator = iter(our_iterable)
 
-# Our iterator is an object that can remember the state as we traverse through it.
-# We get the next object with "next()".
+# Our iterator is an object that can remember the state as we traverse through
+# it. We get the next object with "next()".
 next(our_iterator)  # => "one"
 
 # It maintains state as we iterate.
 next(our_iterator)  # => "two"
 next(our_iterator)  # => "three"
 
-# After the iterator has returned all of its data, it raises a StopIteration exception
+# After the iterator has returned all of its data, it raises a
+# StopIteration exception
 next(our_iterator)  # Raises StopIteration
 
 # We can also loop over it, in fact, "for" does this implicitly!
@@ -549,7 +556,7 @@ our_iterator = iter(our_iterable)
 for i in our_iterator:
     print(i)  # Prints one, two, three
 
-# You can grab all the elements of an iterable or iterator by calling list() on it.
+# You can grab all the elements of an iterable or iterator by call of list().
 list(our_iterable)  # => Returns ["one", "two", "three"]
 list(our_iterator)  # => Returns [] because state is saved
 
@@ -599,9 +606,9 @@ all_the_args(1, 2, a=3, b=4) prints:
 # Use * to expand tuples and use ** to expand kwargs.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
-all_the_args(*args)            # equivalent to all_the_args(1, 2, 3, 4)
-all_the_args(**kwargs)         # equivalent to all_the_args(a=3, b=4)
-all_the_args(*args, **kwargs)  # equivalent to all_the_args(1, 2, 3, 4, a=3, b=4)
+all_the_args(*args)            # equivalent: all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalent: all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent: all_the_args(1, 2, 3, 4, a=3, b=4)
 
 # Returning multiple values (with tuple assignments)
 def swap(x, y):
@@ -611,17 +618,19 @@ def swap(x, y):
 x = 1
 y = 2
 x, y = swap(x, y)     # => x = 2, y = 1
-# (x, y) = swap(x,y)  # Again parenthesis have been excluded but can be included.
+# (x, y) = swap(x,y)  # Again the use of parenthesis is optional.
 
-# Function Scope
+# global scope
 x = 5
 
 def set_x(num):
-    # Local var x not the same as global variable x
+    # local scope begins here
+    # local var x not the same as global var x
     x = num    # => 43
     print(x)   # => 43
 
 def set_global_x(num):
+    # global indicates that particular var lives in the global scope
     global x
     print(x)   # => 5
     x = num    # global var x is now set to 6
@@ -629,6 +638,12 @@ def set_global_x(num):
 
 set_x(43)
 set_global_x(6)
+"""
+prints:
+    43
+    5
+    6
+"""
 
 
 # Python has first class functions
@@ -651,7 +666,7 @@ list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # We can use list comprehensions for nice maps and filters
-# List comprehension stores the output as a list which can itself be a nested list
+# List comprehension stores the output as a list (which itself may be nested).
 [add_10(i) for i in [1, 2, 3]]         # => [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
@@ -711,8 +726,8 @@ class Human:
     # Note that the double leading and trailing underscores denote objects
     # or attributes that are used by Python but that live in user-controlled
     # namespaces. Methods(or objects or attributes) like: __init__, __str__,
-    # __repr__ etc. are called special methods (or sometimes called dunder methods)
-    # You should not invent such names on your own.
+    # __repr__ etc. are called special methods (or sometimes called dunder
+    # methods). You should not invent such names on your own.
     def __init__(self, name):
         # Assign the argument to the instance's name attribute
         self.name = name
@@ -766,7 +781,7 @@ if __name__ == '__main__':
     i.say("hi")                     # "Ian: hi"
     j = Human("Joel")
     j.say("hello")                  # "Joel: hello"
-    # i and j are instances of type Human, or in other words: they are Human objects
+    # i and j are instances of type Human; i.e., they are Human objects.
 
     # Call our class method
     i.say(i.get_species())          # "Ian: H. sapiens"
@@ -803,8 +818,8 @@ if __name__ == '__main__':
 # "species", "name", and "age", as well as methods, like "sing" and "grunt"
 # from the Human class, but can also have its own unique properties.
 
-# To take advantage of modularization by file you could place the classes above in their own files,
-# say, human.py
+# To take advantage of modularization by file you could place the classes above
+# in their own files, say, human.py
 
 # To import functions from other files use the following format
 # from "filename-without-extension" import "function-or-class"
@@ -928,8 +943,8 @@ class Batman(Superhero, Bat):
         # However we are dealing with multiple inheritance here, and super()
         # only works with the next base class in the MRO list.
         # So instead we explicitly call __init__ for all ancestors.
-        # The use of *args and **kwargs allows for a clean way to pass arguments,
-        # with each parent "peeling a layer of the onion".
+        # The use of *args and **kwargs allows for a clean way to pass
+        # arguments, with each parent "peeling a layer of the onion".
         Superhero.__init__(self, 'anonymous', movie=True,
                            superpowers=['Wealthy'], *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
@@ -1028,12 +1043,9 @@ print(say())                 # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ```
 
-## Ready For More?
-
 ### Free Online
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
-* [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](https://docs.python.org/3/)
 * [Hitchhiker's Guide to Python](https://docs.python-guide.org/en/latest/)
 * [Python Course](https://www.python-course.eu)

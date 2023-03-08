@@ -2,7 +2,7 @@
 language: processing
 filename: learnprocessing.pde
 contributors:
-    - ["Phone Thant Ko", "http://github.com/phonethantko"]
+    - ["Phone Than Ko", "http://github.com/phonethantko"]
     - ["Divay Prakash", "https://github.com/divayprakash"]
 ---
 
@@ -256,7 +256,7 @@ line(x1, y1, z1, x2, y2, z2); // In 3D space
 
 // Triangle
 triangle(x1, y1, x2, y2, x3, y3);
-// Draws a triangle connecting three points defined by coordinate paramters.
+// Draws a triangle connecting three points defined by coordinate parameters.
 
 // Rectangle
 rect(a, b, c, d, [r]); // With optional parameter defining the radius of all corners
@@ -375,7 +375,7 @@ texture(image); // PImage can be passed into arguments for texture-mapping the s
 
 If you want to take things further, there are more things Processing is powered
 for. Rendering models, shaders and whatnot. There's too much to cover in a
-short documentation, so I will leave them out here. Shoud you be interested,
+short documentation, so I will leave them out here. Should you be interested,
 please check out the references.
 
 ```
