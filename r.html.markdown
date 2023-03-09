@@ -12,7 +12,7 @@ R is a statistical computing language. It has lots of libraries for uploading an
 
 ```r
 
-# Comments start with number symbols.
+# Comments start with hash signs / number symbols.
 
 # You can't make multi-line comments,
 # but you can stack multiple comments like so.
