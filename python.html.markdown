@@ -85,7 +85,7 @@ False - 5   # => -5
 
 # Comparison operators look at the numerical value of True and False
 0 == False  # => True
-1 == True   # => True
+2 > True    # => True
 2 == True   # => False
 -5 != False # => True
 
