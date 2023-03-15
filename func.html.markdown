@@ -4,6 +4,7 @@ filename: learnFunC.fc
 contributors:
   - ["Ivan Romanovich", "https://t.me/ton_learn"]
   - ["Kirill Malev", "https://fslabs.io"]
+  - ["Roman Krutovoy", "https://github.com/SwiftAdviser"]
 ---
 
 The FunC language is used to program smart contracts on the [The Open Network](https://ton.org) blockchain. Contract logic is executed in TVM, the stack-based TON Virtual Machine.
@@ -307,30 +308,38 @@ do {
 ```
 
 ## Additional resources
-- [FunC Lessons](https://github.com/romanovichim/TonFunClessons_Eng)
-- [TON Development Onboarding](https://www.tonspace.co)
-- [TON Documentation](https://ton.org/docs/#/)
-- [FunC Documentation](https://ton.org/docs/#/func/overview)
-- [TON Smart Contracts examples](https://github.com/ton-blockchain/ton/tree/master/crypto/smartcont)
+
+- [TON Developers Portal](https://www.ton.org/dev)
+- [TON Documentation](https://ton.org/docs/)
+- [FunC Documentation](https://ton.org/docs/develop/func/)
 - [Community portal](https://society.ton.org)
 - [Blockchain portal](https://ton.org)
-- [Stackoverflow](https://stackoverflow.com/questions/tagged/ton)
+- [TON Answers portal](https://answers.ton.org/)
 
 ## Social
-- [Developer community](https://t.me/tondev_eng)
+
+- [Developer Community](https://t.me/tondev_eng)
 - [TON Learn](https://t.me/ton_learn)
 - [FunC Lessons Channel](https://github.com/romanovichim/TonFunClessons_Eng)
 - [FunC onboarding](https://t.me/func_guide)
 - [Tondev News](https://t.me/tondevnews)
 
-## Useful blogposts
-- [Setting up a TON Development Environment](https://society.ton.org/setting-up-a-ton-development-environment)
-- [Hello World on TON](https://society.ton.org/ton-hello-world-step-by-step-guide-for-writing-your-first-smart-contract-in-func)
+## Tutorials
 
+- [Get Started with TON](https://ton.org/docs/develop/onboarding-challenge)
+- [TON Hello World part 1: Step by step guide for working with your first TON wallet](https://ton-community.github.io/tutorials/01-wallet/)
+- [TON Hello World part 2: Step by step guide for writing your first smart contract](https://ton-community.github.io/tutorials/02-contract/)
+- [TON Hello World part 3: Step by step guide for building your first web client](https://ton-community.github.io/tutorials/03-client/)
+- [TON Hello World part 4: Step by step guide for testing your first smart contract](https://ton-community.github.io/tutorials/04-testing/)
 
-## Future To Dos
-- Add smart contracts examples
-- Add more posts
+## Smart Contract examples
+
+- [FunC Cookbook](https://ton.org/docs/develop/func/cookbook)
+- [Super Simple Chatbot: doge.fc](https://github.com/LaDoger/doge.fc)
+- [Wallet V4 smart contract example](https://github.com/ton-blockchain/wallet-contract)
+- [Getgems NFT, sale, auctions smart contracts (FunC)](https://github.com/getgems-io/nft-contracts)
+- [Fungible (Jettons), Non-Fungible (NFT), Semi-Fungible Tokens smart contracts](https://github.com/ton-blockchain/token-contract/tree/main)
+- [TON Standard Smart Contracts examples](https://github.com/ton-blockchain/ton/tree/master/crypto/smartcont)
 
 
 This file is mostly copied from [TonFunClessons 15 minutes intro](https://github.com/romanovichim/TonFunClessons_Eng/blob/main/13lesson/15min.md).
