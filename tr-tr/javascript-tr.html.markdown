@@ -618,14 +618,6 @@ bunun yanı sıra özlü açıklamalarla ileri düzey konulara sahiptir.
 Bu makaleye doğrudan katkıda bulunanlara ek olarak, bazı içerikler şu kaynaklardan uyarlanmıştır
 Louie Dinh'in bu sitedeki Python öğreticisi ve [JS Öğreticisi][7]Mozilla Geliştirici Ağı.
 
-### Türkçe Kaynaklar
-
-[tr.javaScript.info][12] JavaScript'in temellerini öğrenmek için harika bir kaynaktır.
-
-[Javascript Dersleri][13] Javascript'i baştan sona öğrenmek için harika bir kaynaktır.
-
-
-
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
@@ -636,10 +628,3 @@ Louie Dinh'in bu sitedeki Python öğreticisi ve [JS Öğreticisi][7]Mozilla Gel
 [8]: http://eloquentjavascript.net/
 [10]: http://jstherightway.org/
 [11]: https://javascript.info/
-
-[12]: https://tr.javascript.info/
-[13]: https://www.yusufsezer.com.tr/javascript-dersleri/
-
-
-
-
