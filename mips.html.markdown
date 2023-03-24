@@ -162,7 +162,7 @@ gateways and routers.
     blt $t0, $t1, t0_gt_t1                  # Branches when $t0 < $t1
     ble $t0, $t1, t0_gte_t1                 # Branches when $t0 <= $t1
     bltz $t0, t0_lt0                        # Branches when $t0 < 0
-    slt $s0, $t0, $t1                       # Instruction that sends a signal 
+    slt $s0, $t0, $t1                       # "Set on Less Than"
                                             # when $t0 < $t1 with result in $s0 
                                             # (1 for true)
 
