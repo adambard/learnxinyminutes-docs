@@ -186,6 +186,7 @@ gateways and routers.
     #   else
     #     max = c;
     # else
+    #   if (b > c)
     #     max = b;
     #   else
     #     max = c;
