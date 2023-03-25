@@ -1,132 +1,102 @@
 ---
 category: Algorithms & Data Structures
 name: Set theory
-contributors:
+lang: ar-ar
+contributors: 
+  - ["Mansour Alnuaimi", "https://github.com/MansourAlnuaimi"]
 ---
-Set theory is a branch of mathematics that studies sets, their operations, and their properties.
+## نظرية المجموعات (Set theory)
+نظرية المجموعات علمٌ متفرّعٌ عن الرياضات. يبحث هذا العلم في المجموعات (sets)، ,وعملياتها، وخصائصها.
+- المجموعة: عناصر مجتمعة غير متكررة.
 
-* A set is a collection of disjoint items.
+## الرموز الأساسية:
+### رموز العمليات (Operators)
+- رمز الاتحاد، `U`، يعني "أو" (or).
+- رمز التقاطع، `∩`، يعني "و" (and).
+- رمز الاستثناء، `\`، يعني "بدون" (without).
+- رمز المكمِّل،` ‘`، يعني "المقلوب" (inverse of).
+- رمز الضرب، `×`، يعني "الجِداء الديكارتي" (cartesian product of).
 
-## Basic symbols
+### رموز أخرى 
+- النقطتان الرأسيتان (`:`)، أو الخط الرأسي (`|`): يعني "حيث أن" (such that).
+- رمز الانتساب (`∈`): يعني "ينتمي إلى" (belongs to).
+- رمز الجزئية (`⊆`): يعني "فرع من" (is a subset of).
+- رمز الجزئية التامة (`⊂`): يعني "فرع من مجموعة، ولكن لا تساويها" (is a subset of, but not equal to).
 
-### Operators
-* the union operator, `∪`, pronounced "cup", means "or";
-* the intersection operator, `∩`, pronounced "cap", means "and";
-* the exclusion operator, `\`, means "without";
-* the complement operator, `'`, means "the inverse of";
-* the cross operator, `×`, means "the Cartesian product of".
+## مجموعات مهمة:
+- `∅`: المجموعة الخالية، لا تحتوي أي عنصر.
+- `ℕ`: مجموعة الأعداد الطبيعية، `{1, 2, 3, 4, ... }`.
+- `ℤ`: مجموعة الأعداد الصحيحة، `{..., -2, -1, 0, 1, 2, ...}`.
+- `ℚ`: مجموعة الأعداد الكسرية، التي تُكتب على شكل كسر. `{..., -0.97, -1/2, 0.1, 1/3, ...}`
+- `ℝ`: مجموعة الأعداد الحقيقية، تشمل الأعداد جميعها `{-∞, ∞}`.
 
-### Qualifiers 
-* the colon, `:`, or the vertical bar `|` qualifiers are interchangeable and mean "such that";
-* the membership qualifier, `∈`, means "belongs to";
-* the subset qualifier, `⊆`, means "is a subset of";
-* the proper subset qualifier, `⊂`, means "is a subset of but is not equal to".
+**ملاحظات**: 1) المجموعة الخالية فرع من نفسها؛ وإن كانت لا تحوي أي عنصر. وهي أيضًا فرع من أي مجموعة أخرى. 2) قد اختلف الرياضيون (علماء الرياضيات) في الصفر؛ أهُوَ عدد طبيعي. كتب الرياضيات تحدد - في العادة - رأي المؤلف في مسألة الصفر.
 
-### Canonical sets
-* `∅`, the empty set, i.e. the set containing no items;
-* `ℕ`, the set of all natural numbers;
-* `ℤ`, the set of all integers;
-* `ℚ`, the set of all rational numbers;
-* `ℝ`, the set of all real numbers.
-
-There are a few caveats to mention regarding the canonical sets:
-1. Even though the empty set contains no items, the empty set is a subset of itself (and indeed every other set);
-2. Mathematicians generally do not universally agree on whether zero is a natural number, and textbooks will typically explicitly state whether or not the author considers zero to be a natural number.
+## حجم المجموعة:
+حجم المجموعة يُحدد بعدد عناصرها، رمز الحجم: خطان رأسيان، بينهما اسم المجموعة، `|...|`.
+خذ المجموعة `S`:
+`S = {1, 2, 4}`، إذن، `S|= 3|`
 
 
-### Cardinality
+## المجموعة الخالية:
+- قد تُكتب على صيغة باني المجموعات  (set builder notation) باستخدام شروط مستحيلة، مثل: `  ∅ = { x : x ≠ x }`، أو `∅ = { x : x ∈ N, x < 0 }`.
+- المجموعة الخالية متفردة، توجد مجموعة خالية واحدة فقط.
+- المجموعة الخالية فرع من كل المجموعات.
+- حجم المجموعة الخالية صفرٌ، `|∅| = 0` .
 
-The cardinality, or size, of a set is determined by the number of items in the set. The cardinality operator is given by a double pipe, `|...|`.
-
-For example, if `S = { 1, 2, 4 }`, then `|S| = 3`.
-
-### The Empty Set
-* The empty set can be constructed in set builder notation using impossible conditions, e.g. `∅ = { x : x ≠ x }`, or `∅ = { x : x ∈ N, x < 0 }`;
-* the empty set is always unique (i.e. there is one and only one empty set);
-* the empty set is a subset of all sets;
-* the cardinality of the empty set is 0, i.e. `|∅| = 0`.
-
-## Representing sets
-
-### Literal Sets
-
-A set can be constructed literally by supplying a complete list of objects contained in the set. For example, `S = { a, b, c, d }`.
-
-Long lists may be shortened with ellipses as long as the context is clear. For example, `E = { 2, 4, 6, 8, ... }` is clearly the set of all even numbers, containing an infinite number of objects, even though we've only explicitly written four of them.
-
-### Set Builder
-
-Set builder notation is a more descriptive way of constructing a set. It relies on a _subject_ and a _predicate_ such that `S = { subject : predicate }`. For example,
-
+## صِيَغ المجموعات:
+### الصيغة الفعلية
+يُمكن أن تصاغ المجموعة فعليًّا، بعرض جميع عناصر المجموعة. مثلًا: `S = { a, b, c, d }` .
+المجموعات الكبيرة تُختصر عناصرها بنُقاط، على أن تكون عناصرها واضحة، ويُستطاع تقدير بقية العناصر. مثل: `E = { 2, 4, 6, 8, ... }` ، واضح أن المجموعة هذه هي مجموعة الأعداد الزوجية، تحتوي على أعداد لا نهائية، على أننا لم نذكر سوى العناصر الأربعة الأُوَل.
+### الصيغة الوصفية (set-builder notation)
+هي صيغة وصفية، تعتمد على الوصف في تعريف المجموعات، على هذه الطريقة: `S = { خبر : مبتدأ }`. أمثلة:
 ```
 A = { x : x is a vowel } = { a, e, i, o, u, y}
 B = { x : x ∈ N, x < 10 } = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
 C = { x : x = 2k, k ∈ N } = { 0, 2, 4, 6, 8, ... }
 ```
-
-Sometimes the predicate may "leak" into the subject, e.g.
-
+وقد نستخدم دالّة في مكان المبتدأ، نحو: 
 ```
 D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
 ```
 
-## Relations
+## العلاقات
+### الانتماء
+- نقول: إن القيمة `a` تنتمي إلى المجموعة `A` ، إذا كانت a ضمن عناصر المجموعة `A`. يُرمز لها بـ `a ∈ A`.
+- أما إن لم تكن `a` أصلًا من عناصر `A`، فنحكم على أن `a` لا تنتمي إلى المجموعة `A`. يُرمز لهذا بـ` a ∉ A`.
+### التساوي
+- إذا تضمنت مجموعتان العناصرَ نفسها، فهما متساويتان، `A = B`.
+- ترتيب العناصر لا يهم في الحكم على مجموعتين بالتساوي، مثلًا: `{ 1, 2, 3, 4 } = { 2, 3, 1, 4 }`.
+- العنصر في المجموعة لا يتكرر؛ `{ 1, 2, 2, 3, 4, 3, 4, 2 } = { 1, 2, 3, 4 }`.
+- المجموعتان `A` و `B` متساويتان فقط إن كان `A ⊆ B` و `B ⊆ A`.
 
-### Membership
-
-* If the value `a` is contained in the set `A`, then we say `a` belongs to `A` and represent this symbolically as `a ∈ A`.
-* If the value `a` is not contained in the set `A`, then we say `a` does not belong to `A` and represent this symbolically as `a ∉ A`.
-
-### Equality
-
-* If two sets contain the same items then we say the sets are equal, e.g. `A = B`.
-* Order does not matter when determining set equality, e.g. `{ 1, 2, 3, 4 } = { 2, 3, 1, 4 }`.
-* Sets are disjoint, meaning elements cannot be repeated, e.g. `{ 1, 2, 2, 3, 4, 3, 4, 2 } = { 1, 2, 3, 4 }`.
-* Two sets `A` and `B` are equal if and only if `A ⊆ B` and `B ⊆ A`.
-
-## Special Sets
-
-### The Power Set
-* Let `A` be any set. The set that contains all possible subsets of `A` is called a "power set" and is written as `P(A)`. If the set `A` contains `n` elements, then `P(A)` contains `2^n` elements.
-
-```
-P(A) = { x : x ⊆ A }
-```
-
-## Set operations among two sets
-### Union
-Given two sets `A` and `B`, the union of the two sets are the items that appear in either `A` or `B`, written as `A ∪ B`.
-
+## المجموعة الأُسِّية
+خذ مجموعةً اسمها `A`. المجموعة الأسية لـ`A`  تتضمن جميعَ المجموعات المتفرعة من المجموعة A. تكتب المجموعة الأسية ` P(A)`. إن كان حجم المجموعة `A` يساوي `n`، فحجم ` P(A)` يساوي `2^n`.
+## عمليات المجموعات
+### الاتحاد
+لديك مجموعتان، `A` و `B`. المجموعة الناتجة عن اتحادهما تحتوي عناصر إما من A، أو من B. تكتب `A ∪ B`.
 ```
 A ∪ B = { x : x ∈ A ∪ x ∈ B }
 ```
-
-### Intersection
-Given two sets `A` and `B`, the intersection of the two sets are the items that appear in both `A` and `B`, written as `A ∩ B`.
-
+### التقاطع
+لديك مجموعتان، `A` و `B`. المجموعة الناتجة عن تقاطعهما تحتوي العناصر الموجودة في A و B. تكتب `A ∩ B`.
 ```
 A ∩ B = { x : x ∈ A, x ∈ B }
 ```
-
-### Difference
-Given two sets `A` and `B`, the set difference of `A` with `B` is every item in `A` that does not belong to `B`.
-
+### الفرق
+لديك مجموعتان، `A` و `B`. مجموعة الفرق بينهما  تحتوي العناصر الموجودة في A وغير الموجودة في B.
 ```
 A \ B = { x : x ∈ A, x ∉ B }
 ```
-
-### Symmetrical difference
-Given two sets `A` and `B`, the symmetrical difference is all items among `A` and `B` that doesn't appear in their intersections.
-
+### الفرق التناظري
+لديك مجموعتان، `A` و `B`. الفرق التناظري بينهما يحتوي على العناصر الموجودة في إحدى المجموعات، وغير موجودة في الأخرى.
 ```
 A △ B = { x : ((x ∈ A) ∩ (x ∉ B)) ∪ ((x ∈ B) ∩ (x ∉ A)) }
 
 A △ B = (A \ B) ∪ (B \ A)
 ```
-
-### Cartesian product
-Given two sets `A` and `B`, the cartesian product between `A` and `B` consists of a set containing all combinations of items of `A` and `B`.
-
+### الجِداء الديكارتي
+الجداء الديكارتي بين المجموعتين `A` و `B`، يُنتج مجموعةً تحتوي على أزواج ديكارتية؛ زوجٌ من المجموعة `A`، وزوج من المجموعة `B`.
 ```
 A × B = { (x, y) | x ∈ A, y ∈ B }
-```
+``` 
