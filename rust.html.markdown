@@ -223,7 +223,7 @@ fn main() {
     type FunctionPointer = fn(u32) -> u32;
 
     let fib : FunctionPointer = fibonacci;
-    println!("Fib: {}", fib(4));
+    println!("Fib: {}", fib(4)); // 5
 
     /////////////////////////
     // 3. Pattern matching //
