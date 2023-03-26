@@ -122,7 +122,7 @@ say @array;               # OUTPUT: «a 6 b␤»
 # context, and any duplicated keys are deduplicated.
 my %hash = 'a' => 1, 'b' => 2;
 
-# Keys get auto-quoted when the fat comman (`=>`) is used. Trailing commas are
+# Keys get auto-quoted when the fat comma (`=>`) is used. Trailing commas are
 # okay.
 %hash = a => 1, b => 2, ;
 
