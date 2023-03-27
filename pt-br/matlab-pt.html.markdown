@@ -1,5 +1,5 @@
 ---
-language: Matlab
+language: MATLAB
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
@@ -120,7 +120,7 @@ A.d.e = false;
 
 % Vetores
 x = [4 32 53 7 1]
-x(2) % Resposta = 32, índices no Matlab começam por 1, não 0
+x(2) % Resposta = 32, índices no MATLAB começam por 1, não 0
 x(2:3) % Resposta = 32 53
 x(2:end) % Resposta = 32 53 7 1
 
@@ -479,7 +479,7 @@ perms(x) % Lista todas as permutações de elementos de x
 
 
 % Classes
-% Matlab pode suportar programação orientada a objetos.
+% MATLAB pode suportar programação orientada a objetos.
 % Classes devem ser colocadas em um arquivo de mesmo nome com a extensão *.m
 % Para começar, criamos uma simples classe que armazena posições de GPS
 % Início ClassePosicoesGPS.m
@@ -501,7 +501,7 @@ classdef ClassePosicoesGPS % O nome da classe.
     end
 
     % Se quisermos somar dois objetos de PosicoesGPS juntos sem chamar
-    % uma função especial nós podemos sobrepor a aritmética do Matlab, desta maneira:
+    % uma função especial nós podemos sobrepor a aritmética do MATLAB, desta maneira:
     function r = plus(o1,o2)
       r = ClassePosicoesGPS([o1.latitude] +[o2.latitude], ...
                         [o1.longitude]+[o2.longitude]);
@@ -513,7 +513,7 @@ end
 % Podemos criar um objeto da classe usando o construtor
 a = ClassePosicoesGPS(45.0, 45.0)
 
-% Propriedades da classe se comportam exatamente como estruturas Matlab
+% Propriedades da classe se comportam exatamente como estruturas MATLAB
 a.latitude = 70.0
 a.longitude = 25.0
 
@@ -524,15 +524,15 @@ ans = multiplicarLatPor(a,3)
 % o objeto não precisa ser passado para o método.
 ans = a.multiplicarLatPor(a,1/3)
 
-% Funções do Matlab podem ser sobrepostas para lidar com objetos.
-% No método abaixo, nós sobrepomos a forma como o Matlab lida com a soma de
+% Funções do MATLAB podem ser sobrepostas para lidar com objetos.
+% No método abaixo, nós sobrepomos a forma como o MATLAB lida com a soma de
 % dois objetos PosicoesGPS.
 b = ClassePosicoesGPS(15.0, 32.0)
 c = a + b
 
 ```
 
-## Mais sobre Matlab
+## Mais sobre MATLAB
 
 * O site oficial [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
 * O fórum oficial de respostas: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
