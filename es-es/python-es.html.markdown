@@ -328,7 +328,7 @@ dicc_lleno = {"uno": 1, "dos": 2, "tres": 3}
 nuestro_iterable = dicc_lleno.keys()
 print(nuestro_iterable) #=> dict_keys(['uno', 'dos', 'tres']). Este es un objeto que implementa nuestra interfaz Iterable
 
-Podemos recorrerla.
+# Podemos recorrerla.
 for i in nuestro_iterable:
     print(i)    # Imprime uno, dos, tres
 
@@ -548,7 +548,7 @@ def pedir(_decir):
 
 
 @pedir
-def say(decir_por_favor=False):
+def decir(decir_por_favor=False):
     mensaje = "¿Puedes comprarme una cerveza?"
     return mensaje, decir_por_favor
 
