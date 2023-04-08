@@ -19,7 +19,7 @@ YAML doesn't allow literal tab characters for indentation.
 ---  # document start
 
 # Comments in YAML look like this.
-# YAML support single-line comments.
+# YAML supports single-line comments.
 
 ################
 # SCALAR TYPES #
