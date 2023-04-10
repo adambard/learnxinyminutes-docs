@@ -329,6 +329,9 @@ var z := 1.0 # infer type based on default value using := operator
 
 var a: Array[int] = [1, 2, 3] # Array can also have its type content specified
 
+enum NamedEnum { ONE = 1, TWO, THREE }
+var n: NamedEnum = NamedEnum.ONE # Enums can be used as types as well
+
 @onready var node_ref_typed := $Child as Node
 
 @export var speed := 50.0
