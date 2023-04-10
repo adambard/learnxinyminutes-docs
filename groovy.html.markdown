@@ -193,7 +193,7 @@ def say(msg = 'Hello', name = 'world') {
 assert 'Hello world!' == say()
 // Right most parameter with default value is eliminated first.
 assert 'Hi world!' == say('Hi')
-assert 'learn groovy' == say('learn', 'groovy')
+assert 'learn groovy!' == say('learn', 'groovy')
 
 /*
   Logical Branching and Looping
