@@ -101,6 +101,11 @@ func printing():
   printt("These", "words", "are", "divided", "by", "tabs.")
   printraw("This gets printed to system console.")
 
+  # Lambdas
+  var my_lambda = func(): print("hello from lambda!")
+
+  my_lambda.call()
+
 # Math
 func doing_math():
   var first = 8
