@@ -50,8 +50,8 @@ var d = {
   "key" : "value",
   42 : true
 } # Dictionary holds key-value pairs.
-var p_arr = PoolStringArray(["Hi", "there", "!"]) # Pool arrays can
-                                                  # only hold a certain type.
+var p_arr = PackedStringArray(["Hi", "there", "!"]) # Packed Arrays can
+                                                    # only hold a certain type.
 
 # Doc comments can apply to properties
 
