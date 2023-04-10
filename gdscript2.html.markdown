@@ -216,7 +216,7 @@ func _physics_process(delta):
 # like here:
 func get_children():
   # Do some additional things here.
-  var r = .get_children() # call parent's implementation
+  var r = super() # call parent's implementation
   return r
 
 # Inner class
