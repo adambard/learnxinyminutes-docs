@@ -12,7 +12,7 @@ contributors:
 **OpenMP** is a library used for parallel programming on shared-memory machines.
 OpenMP is allows you to use simple high-level constructs for parallelism, 
 while hiding the details keeping it easy to use and quick to write.
-OpenMP is supported my C, C++, and Fortran. 
+OpenMP is supported by C, C++, and Fortran. 
 
 ## Structure
 Generally an openMP program will use the following structure. 
