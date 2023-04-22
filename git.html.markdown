@@ -594,6 +594,39 @@ b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 14)
 222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 16) 
 222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 17) setlocal indentexpr=GetGooglePythonIndent(v:lnum)
 ```
+
+### git-lfs
+
+Git initially was written for text files.  [Git-lfs](https://git-lfs.com/) is an
+extension to git to provide a more efficient management of binary data.  Within
+the repository already managed by git, issue an additional
+
+``` shell
+git lfs install
+```
+
+Use then either one of commands in pattern of
+
+``` shell
+git lfs track Debian.iso   # to add a single binary file
+git lfs track *.iso        # to add multiple files of a folder by file pattern
+git lfs track ./example/*  # to add all files of sub folder `example`
+```
+
+to indicate `git` the binary file(s) of interest now to be maintained with
+`git-lfs`.  This then adds special notes into file `.gitattributes`.  (If not
+already existing, `git-lfs` creates this file on the fly for you.)  Continue
+with the usual set of commands, e.g.
+
+``` shell
+git add .gitattributes
+git add Debian.iso
+git commit -m "manage now a Debian iso file"
+```
+
+Hosts for version control may offer a different billing plan for projects'
+additional use of `git-lfs`.
+
 ## Further Information
 
 * [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
