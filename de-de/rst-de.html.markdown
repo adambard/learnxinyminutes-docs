@@ -11,13 +11,14 @@ lang: de-de
 
 RST ist ein Dateiformat, das von der Python Community entwickelt wurde,
 um Dokumentation zu schreiben (und ist somit Teil von Docutils).
-RST-Dateien sind simple Textdateien mit einer leichtgewichtigen Syntax (im Vergleich zu HTML).
+RST-Dateien sind simple Textdateien mit einer leichtgewichtigen Syntax (im
+Vergleich zu HTML).
 
 ## Installation
 
 Um Restructured Text zu vewenden musst du [Python](http://www.python.org)
-installieren und das `docutils` Packet installieren. `docutils` kann mit dem folgenden
-Befehl auf der Kommandozeile installiert werden:
+installieren und das `docutils` Packet installieren. `docutils` kann mit dem
+folgenden Befehl auf der Kommandozeile installiert werden:
 
 ```bash
 $ easy_install docutils
@@ -76,7 +77,8 @@ Japan       Tokyo
 =========== ========
 
 Komplexere Tabellen (zusammengeführte Spalten und Zeilen) können einfach
-erstellt werden, aber ich empfehle dir dafür die komplette Dokumentation zu lesen :)
+erstellt werden, aber ich empfehle dir dafür die komplette Dokumentation zu
+lesen :)
 
 Es gibt mehrere Möglichkeiten um Links zu machen:
 
