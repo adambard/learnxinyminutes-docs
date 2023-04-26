@@ -16,19 +16,21 @@ Vergleich zu HTML).
 
 ## Installation
 
-Um Restructured Text zu vewenden musst du [Python](http://www.python.org)
-installieren und das `docutils` Packet installieren. `docutils` kann mit dem
+Um Restructured Text zu verwenden musst du [Python](http://www.python.org)
+installieren und das `docutils` Paket installieren. `docutils` kann mit dem
 folgenden Befehl auf der Kommandozeile installiert werden:
 
 ```bash
 easy_install docutils
 ```
 
-Wenn auf deinem System `pip` installiert kannst du es statdessen auch verwenden:
+Ebenso kann die Installation mit `pip`
 
 ```bash
 pip install docutils
 ```
+
+initiiert werden.
 
 ## Dateisyntax
 
@@ -95,13 +97,19 @@ muss man die Zielurl nach dem Text hinzufügen.
 
 ## Wie man es verwendet
 
-RST kommt mit docutils, dort hast du den Befehl `rst2html`, zum Beispiel:
+Mit der Installation von [docutils](https://docutils.sourceforge.io/) bietet
+sich beispielsweise die Umwandlung zu html (mehrere Standards stehen zur
+Auswahl) an:
 
 ```bash
 rst2html myfile.rst output.html
 ```
 
-*Anmerkung : Auf manchen Systemen könnte es rst2html.py sein*
+*Anmerkung: Auf manchen Systemen könnte es `rst2html.py` sein.*
+
+Weitere Exporte bieten beispielsweise `rst2latex`, `rst2man`, `rst2odt`,
+`rst2pdf` und `rst2xml`.
+
 Es gibt komplexere Anwendungen, die das RST Format verwenden:
 
 - [Pelican](http://blog.getpelican.com/), ein statischer Websitengenerator
