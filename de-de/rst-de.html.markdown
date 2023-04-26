@@ -21,13 +21,13 @@ installieren und das `docutils` Packet installieren. `docutils` kann mit dem
 folgenden Befehl auf der Kommandozeile installiert werden:
 
 ```bash
-$ easy_install docutils
+easy_install docutils
 ```
 
 Wenn auf deinem System `pip` installiert kannst du es statdessen auch verwenden:
 
 ```bash
-$ pip install docutils
+pip install docutils
 ```
 
 ## Dateisyntax
@@ -98,7 +98,7 @@ muss man die Zielurl nach dem Text hinzufügen.
 RST kommt mit docutils, dort hast du den Befehl `rst2html`, zum Beispiel:
 
 ```bash
-$ rst2html myfile.rst output.html
+rst2html myfile.rst output.html
 ```
 
 *Anmerkung : Auf manchen Systemen könnte es rst2html.py sein*
