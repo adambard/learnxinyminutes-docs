@@ -10,18 +10,13 @@ lang: de-de
 ---
 
 RST ist ein Dateiformat, das von der Python Community entwickelt wurde,
-
 um Dokumentation zu schreiben (und ist somit Teil von Docutils).
-
 RST-Dateien sind simple Textdateien mit einer leichtgewichtigen Syntax (im Vergleich zu HTML).
-
 
 ## Installation
 
 Um Restructured Text zu vewenden musst du [Python](http://www.python.org)
-
 installieren und das `docutils` Packet installieren. `docutils` kann mit dem folgenden
-
 Befehl auf der Kommandozeile installiert werden:
 
 ```bash
@@ -33,7 +28,6 @@ Wenn auf deinem System `pip` installiert kannst du es statdessen auch verwenden:
 ```bash
 $ pip install docutils
 ```
-
 
 ## Dateisyntax
 
@@ -97,7 +91,6 @@ muss man die Zielurl nach dem Text hinzufügen.
 
 ```
 
-
 ## Wie man es verwendet
 
 RST kommt mit docutils, dort hast du den Befehl `rst2html`, zum Beispiel:
@@ -107,7 +100,6 @@ $ rst2html myfile.rst output.html
 ```
 
 *Anmerkung : Auf manchen Systemen könnte es rst2html.py sein*
-
 Es gibt komplexere Anwendungen, die das RST Format verwenden:
 
 - [Pelican](http://blog.getpelican.com/), ein statischer Websitengenerator
