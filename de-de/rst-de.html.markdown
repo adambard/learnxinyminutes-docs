@@ -11,7 +11,7 @@ lang: de-de
 
 RST ist ein Dateiformat, das von der Python Community entwickelt wurde,
 
-um Dokumentation zu schreiben (und ist somit Teil von Docutils). 
+um Dokumentation zu schreiben (und ist somit Teil von Docutils).
 
 RST-Dateien sind simple Textdateien mit einer leichtgewichtigen Syntax (im Vergleich zu HTML).
 
@@ -20,7 +20,7 @@ RST-Dateien sind simple Textdateien mit einer leichtgewichtigen Syntax (im Vergl
 
 Um Restructured Text zu vewenden musst du [Python](http://www.python.org)
 
-installieren und das `docutils` Packet installieren. `docutils` kann mit dem folgenden 
+installieren und das `docutils` Packet installieren. `docutils` kann mit dem folgenden
 
 Befehl auf der Kommandozeile installiert werden:
 
@@ -40,9 +40,9 @@ $ pip install docutils
 Ein einfaches Beispiel für die Dateisyntax:
 
 ```
-.. Zeilen, die mit zwei Punkten starten sind spezielle Befehle. 
+.. Zeilen, die mit zwei Punkten starten sind spezielle Befehle.
 
-.. Wenn kein Befehl gefunden wird, wird die Zeile als Kommentar gewertet. 
+.. Wenn kein Befehl gefunden wird, wird die Zeile als Kommentar gewertet.
 
 ============================================================================
 Haupttitel werden mit Gleichheitszeichen darüber und darunter gekennzeichnet
@@ -75,19 +75,19 @@ oder
 Tabellen sind einfach zu schreiben:
 
 =========== ==========
-Land        Hauptstadt 
+Land        Hauptstadt
 =========== ==========
 Frankreich  Paris
 Japan       Tokyo
 =========== ========
 
-Komplexere Tabellen (zusammengeführte Spalten und Zeilen) können einfach 
+Komplexere Tabellen (zusammengeführte Spalten und Zeilen) können einfach
 erstellt werden, aber ich empfehle dir dafür die komplette Dokumentation zu lesen :)
 
 Es gibt mehrere Möglichkeiten um Links zu machen:
 
-- Wenn man einen Unterstrich hinter einem Wort hinzufügt: Github_ Zusätzlich 
-muss man die Zielurl nach dem Text hinzufügen. 
+- Wenn man einen Unterstrich hinter einem Wort hinzufügt: Github_ Zusätzlich
+muss man die Zielurl nach dem Text hinzufügen.
 (Dies hat den Vorteil, dass man keine unnötigen Urls in lesbaren Text einfügt.
 - Wenn man die vollständige Url eingibt : https://github.com/
 (Dies wird automatisch in ein Link konvertiert.)
@@ -108,7 +108,7 @@ $ rst2html myfile.rst output.html
 
 *Anmerkung : Auf manchen Systemen könnte es rst2html.py sein*
 
-Es gibt komplexere Anwendungen, die das RST Format verwenden: 
+Es gibt komplexere Anwendungen, die das RST Format verwenden:
 
 - [Pelican](http://blog.getpelican.com/), ein statischer Websitengenerator
 - [Sphinx](http://sphinx-doc.org/), Ein Dokumentationsgenerator
