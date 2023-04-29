@@ -8,7 +8,7 @@ filename: learnrust-es.rs
 lang: es-es
 ---
 
-Rust es un lenguaje de programación desarrollado por Mozzilla Research. Rust
+Rust es un lenguaje de programación desarrollado por Mozilla Research. Rust
 combina el control del rendimiento a bajo nivel con la comodidad del alto nivel
 y garantías de seguridad.
 
@@ -85,8 +85,8 @@ fn main() {
     // Un `String` – una cadena en memoria dinámica (heap)
     let s: String = "hola mundo".to_string();
 
-    // Una porión de cadena (slice) – una vista inmutable a otra cadena
-    // Esto es básicamente un puntero inmutable a un string string – en realidad
+    // Una porción de cadena (slice) – una vista inmutable a otra cadena
+    // Esto es básicamente un puntero inmutable a un string – en realidad
     // no contiene los caracteres de la cadena, solo un puntero a algo que los
     // tiene (en este caso, `s`)
     let s_slice: &str = &s;
@@ -95,7 +95,7 @@ fn main() {
 
     // Vectores/arrays //
 
-    // A fixed-size array
+    // Un array de tamaño fijo
     let cuatro_enteros: [i32; 4] = [1, 2, 3, 4];
 
     // Un array dinámico (vector)
@@ -171,28 +171,28 @@ fn main() {
 
     impl<T> Foo<T> {
         // Los métodos reciben un parámetro explícito `self`
-        fn get_bar(self) -> T {
+        fn tomar_bar(self) -> T {
             self.bar
         }
     }
 
     let un_foo = Foo { bar: 1 };
-    println!("{}", un_foo.get_bar()); // 1
+    println!("{}", un_foo.tomar_bar()); // 1
 
     // Traits (conocidos como interfaces o typeclasses en otros lenguajes) //
 
-    trait Frobnicate<T> {
-        fn frobnicate(self) -> Option<T>;
+    trait Retocar<T> {
+        fn retocar(self) -> Option<T>;
     }
 
-    impl<T> Frobnicate<T> for Foo<T> {
-        fn frobnicate(self) -> Option<T> {
+    impl<T> Retocar<T> for Foo<T> {
+        fn retocar(self) -> Option<T> {
             Some(self.bar)
         }
     }
 
     let otro_foo = Foo { bar: 1 };
-    println!("{:?}", otro_foo.frobnicate()); // Some(1)
+    println!("{:?}", otro_foo.retocar()); // Some(1)
 
     /////////////////////////////////
     // 3. Comparación con patrones //
@@ -275,7 +275,7 @@ fn main() {
     *ahora_es_mio += 2;
 
     println!("{}", ahora_es_mio); // 7
-    // println!("{}", mio); // esto no compilaría, porque `now_its_mine` es el
+    // println!("{}", mio); // esto no compilaría, porque `ahora_es_mio` es el
     // que posee el puntero
 
     // Referencia – un puntero inmutable que referencia a otro dato
