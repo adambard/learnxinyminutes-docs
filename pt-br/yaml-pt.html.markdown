@@ -74,7 +74,8 @@ um_mapa_aninhado:
 # Mapas não tem que ter chaves com string.
 0.25: uma chave com valor flutuante
 
-# As chaves podem ser também objetos multi linhas, utilizando ? para indicar o começo de uma chave.
+# As chaves podem ser complexas, como sequência de várias linhas
+# Utilizando ? seguido por espaço para indicar o começo de uma chave complexa.
 ? |
   Esta é uma chave
   que tem várias linhas
@@ -91,13 +92,13 @@ um_mapa_aninhado:
 uma_sequencia:
   - Item 1
   - Item 2
-  - 0.5 # sequencias podem conter tipos diferentes.
+  - 0.5 # sequências podem conter tipos diferentes.
   - Item 4
   - chave: valor
     outra_chave: outro_valor
   -
-    - Esta é uma sequencia
-    - dentro de outra sequencia
+    - Esta é uma sequência
+    - dentro de outra sequência
   - - - Indicadores de sequência aninhadas
       - podem ser recolhidas
 
@@ -170,7 +171,7 @@ conjunto:
   ? item3
 ou: {item1, item2, item3}
 
-# Como Python, são apenas conjuntos de mapas com valors nulos; o acima é equivalente a:
+# Como Python, são apenas conjuntos de mapas com valores nulos; o acima é equivalente a:
 conjunto2:
   item1: null
   item2: null
