@@ -5,219 +5,221 @@ language: Red
 filename: learnred.red
 contributors:
     - ["Arnold van Hofwegen", "https://github.com/iArnold"]
+translators:
+    - ["Fadis F.", "https://github.com/Fadis-Fairushin"]
+lang: ru-ru
 ---
 
+Red был создан из-за необходимости выполнить работу, и инструмент, который автор хотел использовать, язык REBOL, имел пару недостатков.
+В то время у него не было открытого исходного кода, и это интерпретируемый язык, что означает, что он в среднем медленный по сравнению с компилируемым языком.
 
-Red was created out of the need to get work done, and the tool the author wanted to use, the language of REBOL, had a couple of drawbacks.
-It was not Open Sourced at that time and it is an interpreted language, what means that it is on average slow compared to a compiled language.
+Red, вместе со своим диалектом уровня C Red /System, предоставляет язык, который охватывает все пространство программирования, на котором вам когда-либо понадобится что-либо программировать.
+Red - это язык, в значительной степени основанный на языке REBOL. Там, где сам Red воспроизводит гибкость языка REBOL, базовый язык, на котором будет построен Red,
+Red /System, удовлетворяет более базовые потребности программирования, такие как C can, будучи ближе к железу.
 
-Red, together with its C-level dialect Red/System, provides a language that covers the entire programming space you ever need to program something in.
-Red is a language heavily based on the language of REBOL. Where Red itself reproduces the flexibility of the REBOL language, the underlying language Red will be built upon,
-Red/System, covers the more basic needs of programming like C can, being closer to the metal.
+Red станет первым в мире полнотекстовым языком программирования. Это означает, что это будет эффективный инструмент для выполнения (почти) любой задачи программирования на всех уровнях
+от низкого уровня до метапрограммирования без помощи других инструментов стека.
+Кроме того, Red сможет кросс-компилировать исходный код Red без использования какой-либо GCC-подобной цепочки инструментов
+с любой платформы на любую другую платформу. И все это он сделает из двоичного исполняемого файла, размер которого должен составлять менее 1 МБ.
 
-Red will be the world's first Full Stack Programming Language. This means that it will be an effective tool to do (almost) any programming task on every level
-from the metal to the meta without the aid of other stack tools.
-Furthermore Red will be able to cross-compile Red source code without using any GCC like toolchain
-from any platform to any other platform. And it will do this all from a binary executable that is supposed to stay under 1 MB.
-
-Ready to learn your first Red?
+Готовы выучить свой первый красный?
 
 ```
-All text before the header will be treated as comment, as long as you avoid
-using the word "red" starting with a capital "R" in this pre-header text.
-This is a temporary shortcoming of the used lexer but most of the time you
-start your script or program with the header itself.
+Весь текст перед заголовком будет рассматриваться как комментарий, при условии, что вы не
+будете использовать слово "Red", начинающееся с заглавной буквы "R" в этом тексте перед заголовком.
+Это временный недостаток используемого лексера, но большую часть времени вы
+запускаете свой скрипт или программу с самого заголовка.
 
-The header of a red script is the capitalized word "red" followed by a
-whitespace character followed by a block of square brackets []. The block of
-brackets can be filled with useful information about this script or program:
-the author's name, the filename, the version, the license, a summary of what
-the program does or any other files it needs. The red/System header is just
-like the red header, only saying "red/System" and not "red".
+Заголовок сценария red - это слово "red", написанное с заглавной буквы, за которым следует символ
+пробела, за которым следует блок квадратных скобок []. Блок из
+скобки могут быть заполнены полезной информацией об этом скрипте или программе:
+имя автора, имя файла, версия, лицензия, краткое описание того, что
+делает программа, или любые другие файлы, которые ей нужны. Заголовок red/System
+точно такой же, как и заголовок red, только с надписью "red/System", а не "red"..
 ```
 ```red
 Red []
 
-;this is a commented line
+; это комментарий
 
-print "Hello Red World"    ; this is another comment
+print "Привет, Red мир" ; второй комментарий
 
 comment {
-    This is a multiline comment.
-    You just saw the Red version of the "Hello World" program.
+    Это многострочный комментарий.
+    Вы только что видели красную версию программы "Hello World".
 }
 
-; Your program's entry point is the first executable code that is found
-; no need to restrict this to a 'main' function.
+; Точкой входа вашей программы является первый найденный исполняемый код
+; нет необходимости ограничивать это "main" функцией.
 
-; Valid variable names start with a letter and can contain numbers,
-; variables containing only capital A through F and numbers and ending with 'h'
-; are forbidden, because that is how hexadecimal numbers are expressed in Red
-; and Red/System.
+; Допустимые имена переменных начинаются с буквы и могут содержать цифры
+; переменные, содержащие только заглавные буквы от A до F и цифры, заканчивающиеся на "h"
+; запрещены, потому что именно так шестнадцатеричные числа выражаются в Red
+; и Red/System.
 
-; assign a value to a variable using a colon ":"
+; присваиваем значение переменной с помощью двоеточия ":"
 my-name: "Red"
-reason-for-using-the-colon: {Assigning values using the colon makes
- the equality sign "=" exclusively usable for comparisons purposes,
- exactly what "=" was intended for in the first place!
- Remember this y = x + 1 and x = 1 => y = 2 stuff from school?
+reason-for-using-the-colon: {Присвоение значений с помощью двоеточия делает
+знак равенства "=" пригодным исключительно для целей сравнения,
+именно для этого "=" и предназначался в первую очередь!
+Помните эти школьные штучки про y = x + 1 и x = 1 => y = 2?
 }
 is-this-name-valid?: true
 
-; print output using print, or prin for printing without a newline or linefeed
-; at the end of the printed text.
+; вывод на печать с использованием print или prin для печати без перевода строки
+; в конце печатаемого текста.
 
-prin " My name is " print my-name
-My name is Red
+prin "Моё имя " print my-name
+Моё имя Red
 
-print ["My name is " my-name lf]
-My name is Red
+print ["Моё имя " my-name lf]
+Моё имя Red
 
-; If you haven't already noticed: statements do NOT end with a semicolon ;-)
+; Если вы еще не заметили: инструкции не заканчиваются точкой с запятой ;-)
 
 ;
-; Datatypes
+; Типы данных
 ;
-; If you know Rebol, you probably have noticed it has lots of datatypes. Red
-; does not have yet all those types, but as Red want to be close to Rebol it
-; will have a lot of datatypes.
-; You can recognize types by the exclamation sign at the end. But beware
-; names ending with an exclamation sign are allowed.
-; Some of the available types are integer! string! block!
+; ; Если вы знаете Rebol, вы, вероятно, заметили, что в нем много типов данных. Red
+; еще не имеет всех этих типов, но поскольку Red хочет быть близок к Rebol, у него
+; будет много типов данных.
+; Вы можете распознавать типы по восклицательному знаку в конце. Но будьте осторожны
+; имена, заканчивающиеся восклицательным знаком, разрешены.
+; Некоторые из доступных типов являются integer! string! block!
 
-; Declaring variables before using them?
-; Red knows by itself what variable is best to use for the data you want to
-; use it for.
-; A variable declaration is not always necessary.
-; It is considered good coding practise to declare your variables,
-; but it is not forced upon you by Red.
-; You can declare a variable and specify its type. a variable's type
-; determines its size in bytes.
+; Объявлять переменные перед их использованием?
+; Red сам знает, какую переменную лучше всего использовать для данных, для которых вы хотите
+; ее использовать.
+; Объявление переменной не всегда является необходимым.
+; Хорошей практикой кодирования считается объявление ваших переменных,
+; но Red не навязывает вам это.
+; Вы можете объявить переменную и указать ее тип. тип переменной
+; определяет ее размер в байтах.
 
-; Variables of integer! type are usually 4 bytes or 32 bits
+; Переменные целого числа! тип обычно составляет 4 байта или 32 бита
 my-integer: 0
-; Red's integers are signed. No support for unsigned atm but that will come.
+; Целые числа Red имеют знак. Нет поддержки неподписанного atm, но это придет.
 
-; To find out the type of variable use type?
+; Чтобы узнать тип переменной, используйте type?
 type? my-integer
 integer!
 
-; A variable can be initialized using another variable that gets initialized
-; at the same time. Initialize here refers to both declaring a variable and
-; assigning a value to it.
+; Переменная может быть инициализирована с помощью другой переменной, которая инициализируется
+; в то же время. Инициализация здесь относится как к объявлению переменной, так и
+к присвоению ей значения.
 i2: 1 + i1: 1
 
-; Arithmetic is straightforward
-i1 + i2 ; result 3
-i2 - i1 ; result 1
-i2 * i1 ; result 2
-i1 / i2 ; result 0 (0.5, but truncated towards 0)
+; Арифметика проста
+i1 + i2 ; результат 3
+i2 - i1 ; результат 1
+i2 * i1 ; результат 2
+i1 / i2 ; результат 0 (0.5, но усеченный в сторону 0)
 
-; Comparison operators are probably familiar, and unlike in other languages
-; you only need a single '=' sign for comparison. Inequality is '<>' like in Pascal.
-; There is a boolean like type in Red. It has values true and false, but also
-; the values on/off or yes/no can be used
+; Операторы сравнения, вероятно, знакомы и непохожи на другие языки
+; для сравнения вам нужен только один знак '='. Неравенство - это "<>", как в Pascal.
+; Красным цветом выделен логический тип, подобный. Он имеет значения true и false, но также
+; можно использовать значения on/off или yes/no
 
-3 = 2 ; result false
-3 <> 2 ; result true
-3 > 2 ; result true
-3 < 2 ; result false
-2 <= 2 ; result true
-2 >= 2 ; result true
+3 = 2 ; результат false
+3 <> 2 ; результат true
+3 > 2 ; результат true
+3 < 2 ; результат false
+2 <= 2 ; результат true
+2 >= 2 ; результат true
 
 ;
-; Control Structures
+; Управляющие структуры
 ;
 ; if
-; Evaluate a block of code if a given condition is true. IF returns
-; the resulting value of the block or 'none' if the condition was false.
-if a < 0 [print "a is negative"]
+; Вычисляют блок кода, если заданное условие истинно. IF возвращает
+; результирующее значение блока или 'none', если условие было ложным.
+if a < 0 [print "a отрицательный"]
 
 ; either
-; Evaluate a block of code if a given condition is true, else evaluate an
-; alternative block of code. If the last expressions in both blocks have the
-; same type, EITHER can be used inside an expression.
+; Вычислите блок кода, если данное условие истинно, либо вычислите
+; альтернативный блок кода. Если последние выражения в обоих блоках имеют один и тот
+; же тип, то любое из них может быть использовано внутри выражения.
 either a > 0 [
-   msg: "positive"
+   msg: "положительный"
 ][
    either a = 0 [
-       msg: "zero"
+       msg: "ноль"
    ][
-       msg: "negative"
+       msg: "отрицательный"
    ]
 ]
 
-print ["a is " msg lf]
+print ["a это " msg lf]
 
-; There is an alternative way to write this
-; (Which is allowed because all code paths return a value of the same type):
+; Существует альтернативный способ написать это
+; (Который разрешен, поскольку все пути к коду возвращают значение одного и того же типа):
 
 msg: either a > 0 [
-   "positive"
+   "положительный"
 ][
    either a = 0 [
-       "zero"
+       "ноль"
    ][
-       "negative"
+       "отрицательный"
    ]
 ]
-print ["a is " msg lf]
+print ["a это " msg lf]
 
 ; until
-; Loop over a block of code until the condition at end of block, is met.
-; UNTIL always returns the 'true' value from the final evaluation of the last expression.
+; Цикл над блоком кода до тех пор, пока не будет выполнено условие в конце блока.
+; UNTIL всегда возвращает значение 'true' из окончательной оценки последнего выражения.
 c: 5
 until [
    prin "o"
    c: c - 1
-   c = 0    ; the condition to end the until loop
+   c = 0    ; условие для завершения цикла until
 ]
-;   will output:
+; выведет:
 ooooo
-; Note that the loop will always be evaluated at least once, even if the
-; condition is not met from the beginning.
+; Обратите внимание, что цикл всегда будет вычисляться по крайней мере один раз, даже если
+; условие не выполняется с самого начала.
 
 ; while
-; While a given condition is met, evaluate a block of code.
-; WHILE does not return any value, so it cannot be used in an expression.
+; Пока выполняется заданное условие, вычислите блок кода.
+; WHILE не возвращает никакого значения, поэтому его нельзя использовать в выражении.
 c: 5
 while [c > 0][
    prin "o"
    c: c - 1
 ]
-; will output:
+; выведет:
 ooooo
 
 ;
-; Functions
+; Функция
 ;
-; function example
+; Пример функции
 twice: function [a [integer!] /one return: [integer!]][
         c: 2
         a: a * c
         either one [a + 1][a]
 ]
 b: 3
-print twice b   ; will output 6.
+print twice b   ; выведет 6.
 
-; Import external files with #include and filenames start with a % sign
+; Импортируйте внешние файлы с помощью #include, а имена файлов начинаются со знака %.
 #include %includefile.red
-; Now the functions in the included file can be used too.
+; Теперь можно использовать и функции из прилагаемого файла.
 
 ```
 
-## Further Reading
+## Дальнейшее чтение
 
-The main source for information about Red is the [Red language homepage](http://www.red-lang.org).
+Основным источником информации о Red является [Домашняя страница Red](http://www.red-lang.org).
 
-The source can be found on [github](https://github.com/red/red).
+Источник можно найти на [github](https://github.com/red/red).
 
-The Red/System language specification can be found [here](http://static.red-lang.org/red-system-specs-light.html).
+Спецификацию Red/System language можно найти [здесь](http://static.red-lang.org/red-system-specs-light.html).
 
-To learn more about Rebol and Red join the [chat on Gitter](https://gitter.im/red/red). And if that is not working for you drop a mail to us on the [Red mailing list](mailto: red-langNO_SPAM@googlegroups.com) (remove NO_SPAM).
+Чтобы узнать больше о Rebol и Red, присоединяйтесь к [чату на Gitter](https://gitter.im/red/red). И если у вас это не работает, отправьте нам письмо в [Red список рассылки](mailto: red-langNO_SPAM@googlegroups.com) (remove NO_SPAM).
 
-Browse or ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/red).
+Просматривайте или задавайте вопросы на [Stack Overflow](https://stackoverflow.com/questions/tagged/red).
 
-Maybe you want to try Red right away? That is possible on the [try Rebol and Red site](http://tryrebol.esperconsultancy.nl).
+Может быть, вы хотите попробовать красное прямо сейчас? Это возможно на сайте [попробуйте Rebol и Red](http://tryrebol.esperconsultancy.nl).
 
-You can also learn Red by learning some [Rebol](http://www.rebol.com/docs.html).
+Вы также можете выучить Red, изучив некоторые [Rebol](http://www.rebol.com/docs.html).
