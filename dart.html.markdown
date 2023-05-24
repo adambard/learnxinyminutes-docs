@@ -159,6 +159,8 @@ class Example7Class {
 example7() {
   Example7Class.sayItFromClass();
   new Example7Class().sayItFromInstance();
+  //the new keyword is optional, so this is the same
+  Example7Class().sayItFromInstance();
 }
 
 /// Dart supports Generics.
@@ -174,7 +176,7 @@ example7() {
 /// K,V - Key Value(used for Map)
 class GenericExample<T>{
   void printType(){
-    print("$T")
+    print("$T");
   }
   // methods can also have generics
   genericMethod<M>(){
@@ -199,8 +201,8 @@ class GenericExample<T>{
 const example8List = ["Example8 const array"];
 const  example8Map = {"someKey": "Example8 const map"};
 /// Declare List or Maps as Objects.
- List<String> explicitList = new List<String>();
- Map<String,dynamic> explicitMaps = new Map<String,dynamic>();
+List<String> explicitList = <String>[]; //new List<String>() is now
+Map<String,dynamic> explicitMaps = <String,dynamic>{};
 
  explicitList.add("SomeArray");
 example8() {
@@ -213,8 +215,8 @@ example8() {
 /// So when you assign an existing list to a new variable.
 /// Instead of List, it becomes an Iterable
 var iterableExplicitList = explicitList;
-print(iterableExplicitList) // ("SomeArray"); "[]" becomes "()"
-var newExplicitLists = explicitList.toList() // Converts Iterable<E> to List<E>
+print(iterableExplicitList); // ("SomeArray"); "[]" becomes "()"
+var newExplicitLists = explicitList.toList(); // Converts Iterable<E> to List<E>
 
 /// Loops in Dart take the form of standard for () {} or while () {} loops,
 /// slightly more modern for (.. in ..) {}, or functional callbacks with many
@@ -303,12 +305,12 @@ example13() {
 
 /// Boolean expressions support implicit conversions and dynamic type
 example14() {
-  var a = true;
+  bool? a = true;
   if (a) {
     print("true, a is $a");
   }
   a = null;
-  if (a) {
+  if (a ?? false) { //if null count as false
     print("true, a is $a");
   } else {
     print("false, a is $a"); /// runs here
@@ -411,39 +413,6 @@ example20() {
   print("Example20 \$ interpolation ${s1} or $s2 works.");
 }
 
-/// Optional types allow for the annotation of APIs and come to the aid of
-/// IDEs so the IDEs can better refactor, auto-complete and check for
-/// errors. So far we haven't declared any types and the programs have
-/// worked just fine. In fact, types are disregarded during runtime.
-/// Types can even be wrong and the program will still be given the
-/// benefit of the doubt and be run as though the types didn't matter.
-/// There's a runtime parameter that checks for type errors which is
-/// the checked mode, which is said to be useful during development time,
-/// but which is also slower because of the extra checking and is thus
-/// avoided during deployment runtime.
-class Example21 {
-  List<String> _names;
-  Example21() {
-    _names = ["a", "b"];
-  }
-  List<String> get names => _names;
-  set names(List<String> list) {
-    _names = list;
-  }
-
-  int get length => _names.length;
-  void add(String name) {
-    _names.add(name);
-  }
-}
-
-void example21() {
-  Example21 o = new Example21();
-  o.add("c");
-  print("Example21 names '${o.names}' and length '${o.length}'");
-  o.names = ["d", "e"];
-  print("Example21 names '${o.names}' and length '${o.length}'");
-}
 
 /// Class inheritance takes the form of class name extends AnotherClassName {}.
 class Example22A {
@@ -465,7 +434,7 @@ example22() {
 /// Mixin is mostly used to share methods with distant classes, so the
 /// single inheritance doesn't get in the way of reusable code.
 /// Mixins follow the "with" statement during the class declaration.
-class Example23A {}
+mixin class Example23A {}
 
 class Example23Utils {
   addTwo(n1, n2) {
@@ -491,14 +460,14 @@ example23() {
 /// super-parent's constructor.
 class Example24A {
   var _value;
-  Example24A({value: "someValue"}) {
+  Example24A({value = "someValue"}) {
     _value = value;
   }
   get value => _value;
 }
 
 class Example24B extends Example24A {
-  Example24B({value: "someOtherValue"}) : super(value: value);
+  Example24B({value = "someOtherValue"}) : super(value: value);
 }
 
 example24() {
@@ -601,7 +570,7 @@ example29() {
   }
 
   rand() {
-    v = new DM.Random().nextInt(50);
+    v = new math.Random().nextInt(50);
     return v;
   }
 
@@ -626,7 +595,7 @@ example30() {
       top = int.parse("123") ~/ n2,
       bottom = 0;
   top = top ~/ 6;
-  gn = new DM.Random().nextInt(top + 1); /// +1 because nextInt top is exclusive
+  gn = new math.Random().nextInt(top + 1); /// +1 because nextInt top is exclusive
   print("Example30 Guess a number between 0 and ${top}");
   guessNumber(i) {
     if (n == gn) {
@@ -704,7 +673,7 @@ main() {
     example6, example7, example8, example9, example10,
     example11, example12, example13, example14, example15,
     example16, example17, example18, example19, example20,
-    example21, example22, example23, example24, example25,
+    example22, example23, example24, example25,
     example26, example27, example28, example29,
     example30 // Adding this comment stops the dart formatter from putting all items on a new line
   ].forEach((ef) => ef());
