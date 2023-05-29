@@ -35,6 +35,7 @@ specific to a certain parser.
 - [Markdownlint](#markdownlint)
 - [Further reading](#further-reading)
 
+
 ## HTML Elements
 
 Markdown is a superset of HTML, so any HTML file is valid Markdown.
@@ -314,7 +315,8 @@ And reference style works as expected.
 <pre><code class="highlight">!&#x5b;<span class="nv">This is the alt-attribute.</span>][<span class="ss">myimage</span>]
 
 &#x5b;<span class="nv">myimage</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"if you need a title, it's here"</span></code></pre>
-
+An alternative way to add an image is using HTML tags as below:
+<img src="/PATH to Image/Image.png" alt="alternatetext" width="500" height="600" />
 ## Miscellany
 
 ### Auto-links
