@@ -168,16 +168,16 @@ base: &base
 # The regexp << is called 'Merge Key Language-Independent Type'. It is used to
 # indicate that all the keys of one or more specified maps should be inserted
 # into the current map.
-# NOTE: If key already exists alias will not be merged
+# NOTE: If key already exists, alias will not be merged
 foo:
-  <<: *base # doesn't merge the anchor
+  # doesn't merge the anchor, so value of foo's name is "John"
+  <<: *base 
   age: 10
   name: John
 bar:
-  <<: *base # base anchor will be merged
+  # base anchor will be merged, so value of bar's name is "Everyone has same name"
+  <<: *base
   age: 20
-
-# foo and bar would also have name: Everyone has same name
 
 # YAML also has tags, which you can use to explicitly declare types.
 # Syntax: !![typeName] [value]
