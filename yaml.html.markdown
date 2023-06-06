@@ -170,12 +170,12 @@ base: &base
 # into the current map.
 # NOTE: If key already exists, alias will not be merged
 foo:
-  # doesn't merge the anchor, so value of foo's name is "John"
+  # won't merge base anchor, so value of foo's name is "John"
   <<: *base 
   age: 10
   name: John
 bar:
-  # base anchor will be merged, so value of bar's name is "Everyone has same name"
+  # will merge base anchor, so value of bar's name is "Everyone has same name"
   <<: *base
   age: 20
 
