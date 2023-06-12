@@ -122,7 +122,7 @@ There are three kinds of external linking. The third kind is preferred:
 
 Templates are macros for wikitext, and they look like `{{template name|attribute=value|...}}`. There are thousands of templates, but only a few are in common use.
 
-The most (in)famous one is the \[citation needed\]`{{cn}}` template.
+The most (in)famous one is the \[citation needed\]`{{cn}}` template. Note that `{{cn}}` is synonymous with `{{citation needed}}`, as one template can have many names.
 
 `{{reflist}}` is usually put at the ends of pages, to generate a list of references used in the page.
 
