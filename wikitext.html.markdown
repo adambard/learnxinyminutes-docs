@@ -20,12 +20,13 @@ A wiki is an online collaboratively edited hypertext publication, the most famou
 | `<nowiki>do not render</nowiki>` | N/A | `do not render` |
 | `<code>inline code snippet</code>` | \`inline code snippet\` | `inline code snippet` |
 | `----` | `----` | horizontal linebreak |
+| `<s>strikethrough</s>` | `~~strikethrough~~` | ~~strikethrough~~ |
 
 Section headings are bracketed by `=`. They go from `= One equal sign =` to `====== Six equal signs ======`. They are equivalent to Markdown's hashtag headings, from `# One hashtag` to `###### Six hashtags`. Why six in both? I believe it's because HTML has six levels of headings, from `<h1>` to `<h6>`.
 
 Note that the `= One equal sign =` heading actually corresponds to the title of the page, and so cannot actually be used within a page. Consequently, the least number of equal signs is `== Two equal signs ==`.
 
-Subscripts and superscripts can be written as `x<sub>1</sub>` and `x<sup>1</sup>`. Alternatively they can be written by the `<math>` tag (see below). `<small>Small</small>` and `<big>big</big>` texts are rarely used.
+Subscripts and superscripts can be written as `x<sub>1</sub>` and `x<sup>1</sup>`. Alternatively they can be written by the `<math>` tag (see below). `<small>Small</small>` and `<big>big</big>` texts are rarely used. 
 
 ```
 Colons allow indentation
@@ -212,9 +213,13 @@ The concept '''X''' is usually bolded. Now define the concept X. For non-special
 
 Here one usually sets up the notation, overviews the history, and such. Details follow in the next sections.
 
-
 Footnotes are numbered separately from inline references.{{NoteTag|note=Footnote text.}}
 
+== Relation to Y ==
+{{Main|Y}}
+{{See also|Another page}}
+
+Something about the relation between X and Y.
 
 == See also ==
 * [[Very relevant link]]
