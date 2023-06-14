@@ -225,9 +225,141 @@ Window {
 }
 ```
 
-[//]: <> (# Basic visual elements)
+# Custom Elements, Components and Nesting
 
-[//]: <> (# Custom Elements and nesting)
+You can create new element out of existing ones by defining a QML file
+that describes it's interface and implementation. These custom elements, also
+known as **Components**, are reusable and can be nested within other elements.
+
+This is a powerful feature that allows to build complex user interfaces out of
+simpler components.
+
+## Defining a Custom Element
+
+To create new element the easy way, you should create a QML file and put it
+near your main QML file, where you want to use it.
+
+The filename (without the .qml extension) would be the element's type name,
+and it must start with an uppercase letter. The root item in this file defines
+the properties, functions, and signals that are part of the element's interface
+and would be accessible from outside.
+
+```qml
+// Filename: MyButton.qml
+import QtQuick
+
+// Rectangle is the root element of our custom element
+// All properties, signals etc. of Rectangle will be part of MyButton interface
+// and also be accessible from outside
+Rectangle {
+    // We give a root element an id to access it from inside
+    // Because root element is responsible for the whole element interactions,
+    // it's a common practice to give it id. It's not required, but recommended.
+    id: root
+
+    width: 200
+    height: 100
+    color: "cyan"
+
+    // We add a text property that can be set from outside
+    property string text: "Default Text"
+
+    // We add a clicked signal that we will emit from inside,
+    // but it could be handled from outside.
+    // This helps to make some level of abstraction and encapsulation
+    signal clicked
+
+    Text {
+        // This thing just makes the text to fill size of the parent
+        // Would be explained later
+        anchors.centerIn: parent
+        // Here we bind text property of Text element to text property of
+        // root element
+        text: root.text
+    }
+
+    MouseArea {
+        // Because it is a second child of root element, it will be drawn
+        // over the Text element. Without special layouting, all siblings
+        // are drawn in order of their declaration in left top corner of
+        // parent element.
+
+        // Also make the area fill the whole element
+        anchors.fill: parent
+
+        // Here we handle clicked signal of MouseArea and emit clicked signal
+        // of root element
+        onClicked: root.clicked()
+    }
+}
+```
+
+## Using Custom Elements
+
+Once a custom element has been defined in a QML file, it can be used in other
+QML files.
+
+```qml
+import QtQuick
+import QtQuick.Window
+
+Window {
+    visible: true
+
+    // Here we use the custom element MyButton
+    // We set its text property and add a handler for its clicked signal
+    MyButton {
+        text: "Click me!"
+        onClicked: console.log("Button was clicked!")
+    }
+}
+```
+
+## Creating Components
+
+A **Component** is a special non-visual element that can wrap other elements,
+configure them and define the time of their creation.
+It is useful for simple elements that don't need a separate QML file and would
+be reused only in the same QML file. Or in case when you need to create a lot
+of similar elements.
+
+```qml
+import QtQuick
+import QtQuick.Window
+
+Window {
+    visible: true
+
+    // This is an Component of green circle
+    Component {
+        id: myButton
+
+        Rectangle {
+            width: 100
+            height: 100
+            radius: 50
+            color: "green"
+        }
+    }
+
+    // Here we use a Loader element to create an instance of the element,
+    // wrapped by the Component
+    Loader {
+        sourceComponent: myButton
+    }
+    // Here we create another instance of the same element
+    // but place it lower
+    Loader {
+        y: 120
+        sourceComponent: myButton
+    }
+    // And just as a syntax example, you can write it on one line
+    // but split properties with semicolon
+    Loader { y: 240; sourceComponent: myButton; }
+}
+```
+
+[//]: <> (# Basic visual elements)
 
 [//]: <> (# sizing and positioning)
 
