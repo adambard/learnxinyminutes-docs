@@ -1,9 +1,9 @@
----
-language: Qml
+*--
+language: QML
+filename: learnQml.qml
 contributors:
     - ["Savenkov Igor", "https://github.com/SavenkovIgor"]
-filename: learnQml.qml
----
+*--
 
 **QML** is a declarative language that allows user interfaces to be described in
 terms of their visual elements and how they interact with each other.
