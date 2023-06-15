@@ -11,6 +11,7 @@ contributors:
 translators:
     - ["kakakaya", "https://github.com/kakakaya"]
     - ["Ryota Kayanuma", "https://github.com/PicoSushi"]
+    - ["Kenryu Shibata", "https://github.com/kenryuS"]
 filename: learnpython-jp.py
 lang: ja-jp
 ---
@@ -21,7 +22,7 @@ lang: ja-jp
 
 フィードバッグは大歓迎です! [@louiedinh](http://twitter.com/louiedinh) または louiedinh [at] [google's email service] にご連絡下さい!
 
-Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/pythonlegacy/) をご確認下さい。
+注: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/pythonlegacy/) をご確認下さい。
 
 ```python
 # 1行のコメントは番号記号(#)から始まります。
@@ -180,7 +181,7 @@ bool({})                        # => False
 bool(())                        # => False
 
 ####################################################
-# 2. Variables and Collections
+# 2. 変数とコレクション
 ####################################################
 
 # Python にはprint関数があります。
@@ -192,7 +193,7 @@ print("Hello, World", end="!")  # => Hello, World!
 
 # コンソールから入力を得るための簡単な例
 input_string_var = input("Enter some data: ")  # 入力を文字列として返します。
-# Note: Python の初期のバージョンでは、 input() は raw_input() という名前で存在します。
+# 注: Python の初期のバージョンでは、 input() は raw_input() という名前で存在します。
 
 # Pythonでは変数の宣言は存在せず、代入のみです。
 # 慣例的に、小文字でアンダースコア区切り ( lower_case_with_underscores ) の変数が使われます。
@@ -200,7 +201,7 @@ some_var = 5
 some_var                        # => 5
 
 # 代入されていない変数へのアクセスは例外を引き起こします。
-# 例外の取り扱いについては、3章の制御の流れをご確認ください。
+# 例外の取り扱いについては、第３章の制御の流れをご確認ください。
 some_unknown_var                # NameError を送出します。
 
 # ifは式として使用できます。
@@ -262,7 +263,7 @@ li.index(2)                     # => 1
 li.index(4)                     # 4 はリストの中に存在しないので、 ValueError が発生します。
 
 # リスト同士を足すこともできます。
-# Note: li と other_li の値は変更されません。
+# 注: li と other_li の値は変更されません。
 li + other_li                   # => [1, 2, 3, 4, 5, 6]
 
 # "extend()"で他のリストを連結することができます。
@@ -400,7 +401,7 @@ filled_set | other_set          # => {1, 2, 3, 4, 5, 6}
 
 
 ####################################################
-# 3. 制御の流れとiterable
+# 3. 制御の流れと反複
 ####################################################
 
 # まずは変数を作りましょう。
@@ -615,7 +616,7 @@ def create_adder(x):
 add_10 = create_adder(10)
 add_10(3)                       # => 13
 
-# 無名関数もサポートしています。
+# 無名関数(ラムダ式)もサポートしています。
 (lambda x: x > 2)(3)                 # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
 
@@ -649,7 +650,7 @@ print(ceil(3.7))                # => 4.0
 print(floor(3.7))               # => 3.0
 
 # 全部の関数をモジュールからインポートすることができます。
-# Warning: この方法は推奨されません。
+# 注意: この方法は推奨されません。
 from math import *
 
 # 短い名前でモジュールをインポートすることができます。
@@ -990,9 +991,9 @@ print(say())                 # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ```
 
-## Ready For More?
+## さらなる学習の準備ができましたか？
 
-### Free Online
+### 無料のオンライン資料・記事
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
