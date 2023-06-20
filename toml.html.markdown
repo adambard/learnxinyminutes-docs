@@ -31,7 +31,8 @@ boolean = true
 dateTime = 1979-05-27T07:32:00-08:00
 scientificNotation = 1e+12
 "key can be quoted" = true # Both " and ' are fine
-"key may contain" = "letters, numbers, underscores, dashes"
+"unquoted key may contain" = "letters, numbers, underscores, and dashes"
+other_kêys = "are permitted by spec but most implementations don't actually permit them"
 
 # A bare key must be non-empty, but an empty quoted key is allowed
 "" = "blank"     # VALID but discouraged
