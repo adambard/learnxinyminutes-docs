@@ -9,8 +9,7 @@ TOML stands for Tom's Obvious, Minimal Language. It is a data serialisation lang
 
 It is an alternative to YAML and JSON. It aims to be more human friendly than JSON and simpler that YAML. TOML is designed to map unambiguously to a hash table. TOML should be easy to parse into data structures in a wide variety of languages.
 
-Be warned, TOML's spec is still changing a lot. Until it's marked as 1.0, you
-should assume that it is unstable and act accordingly. This document follows TOML v0.4.0. 
+This document follows [TOML v1.0.0](https://toml.io/en/v1.0.0). Future [changes](https://github.com/toml-lang/toml/blob/main/CHANGELOG.md) are expected to be minor and backwards-compatible.
 
 ```toml
 # Comments in TOML look like this.
@@ -32,7 +31,7 @@ boolean = true
 dateTime = 1979-05-27T07:32:00-08:00
 scientificNotation = 1e+12
 "key can be quoted" = true # Both " and ' are fine
-"key may contain" = "letters, numbers, underscores, and dashes"
+"key may contain" = "letters, numbers, underscores, dashes"
 
 # A bare key must be non-empty, but an empty quoted key is allowed
 "" = "blank"     # VALID but discouraged
@@ -201,8 +200,12 @@ c = 2
 # Inline table #
 ################
 
-inlineTables = { areEnclosedWith = "{ and }", mustBeInline = true }
+inlineTables = { areEnclosedWith = "{ and }", a = { b = { c = { d = 1 } } } }
 point = { x = 1, y = 2 }
+usingMultiple = {
+  lines = "discouraged!",
+  instead = "use normal TOML tables",
+}
 
 ###################
 # Array of Tables #
