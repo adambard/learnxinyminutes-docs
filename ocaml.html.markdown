@@ -3,6 +3,7 @@ language: OCaml
 filename: learnocaml.ml
 contributors:
     - ["Daniil Baturin", "http://baturin.org/"]
+    - ["Stanislav Modrak", "https://stanislav.gq/"]
 ---
 
 OCaml is a strictly evaluated functional language with some imperative
@@ -374,4 +375,8 @@ sum_int_list t ;;
 ## Further reading
 
 * Visit the official website to get the compiler and read the docs: <http://ocaml.org/>
+* Quick tutorial on OCaml: <https://ocaml.org/docs/up-and-running>
+* Complete online OCaml v5 playground: <https://ocaml.org/play>
+* An up-to-date (2022) book (with free online version) "Real World OCaml": <https://www.cambridge.org/core/books/real-world-ocaml-functional-programming-for-the-masses/052E4BCCB09D56A0FE875DD81B1ED571>
+* Online interactive textbook "OCaml Programming: Correct + Efficient + Beautiful" from Cornell University: <https://cs3110.github.io/textbook/cover.html>
 * Try interactive tutorials and a web-based interpreter by OCaml Pro: <http://try.ocamlpro.com/>
