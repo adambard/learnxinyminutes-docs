@@ -59,5 +59,3 @@ for i=0 to n-1
   * [Optimal Substructure Property](https://www.geeksforgeeks.org/dynamic-programming-set-2-optimal-substructure-property/)
   * [How to solve a DP problem](https://www.geeksforgeeks.org/solve-dynamic-programming-problem/)
 * [How to write DP solutions](https://www.quora.com/Are-there-any-good-resources-or-tutorials-for-dynamic-programming-DP-besides-the-TopCoder-tutorial/answer/Michal-Danilák)
-
-And a [quiz](https://www.commonlounge.com/discussion/cdbbfe83bcd64281964b788969247253) to test your knowledge.
