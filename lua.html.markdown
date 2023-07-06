@@ -267,7 +267,7 @@ Dog = {}                                   -- 1.
 
 function Dog:new()                         -- 2.
   newObj = {sound = 'woof'}                -- 3.
-  self.__index = self                      -- 4.
+  setmetatable(newObj, {__index = self})   -- 4.
   return setmetatable(newObj, self)        -- 5.
 end
 
