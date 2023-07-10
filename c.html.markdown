@@ -370,13 +370,17 @@ int main (int argc, char** argv)
   printf("\n");
 
   // *****NOTES*****:
-  // Loops and Functions MUST have a body. If no body is needed:
+  // If the body of control expression is only one statement than parenthesises
+  // are optional, but often recommended:
+  for (jj = 0; jj < 5; jj++)
+      printf("%d\n", jj);
+
+  // Loops and if statements MUST have a body. If no body is needed:
   int i;
   for (i = 0; i <= 5; i++) {
-    ; // use semicolon to act as the body (null statement)
   }
   // Or
-  for (i = 0; i <= 5; i++);
+  for (i = 0; i <= 5; i++); // use semicolon to act as the body (null statement)
 
   // branching with multiple choices: switch()
   switch (a) {
