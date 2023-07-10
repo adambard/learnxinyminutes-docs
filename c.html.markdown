@@ -11,6 +11,7 @@ contributors:
   - ["Joshua Li", "https://github.com/JoshuaRLi"]
   - ["Dragos B. Chirila", "https://github.com/dchirila"]
   - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
+  - ["Chris Harding", "https://github.com/sjrct"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
