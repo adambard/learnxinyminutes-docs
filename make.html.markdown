@@ -252,8 +252,8 @@ endif
 # Programmatically generated dependency rules
 #-----------------------------------------------------------------------
 
-# Some compilers will generate dependency rules for dependent files so that
-# a file will be recompiled whenever that file's dependencies are changed.
+# Some compilers will generate dependency rules so that a source file will
+# be recompiled whenever that file's dependencies are changed.
 
 # An example using gcc
 %.o: %.c
@@ -265,7 +265,7 @@ endif
 	gcc -c -o $@ $<
 
 # Include the generated dependency files. The `-` prevents an error from
-# occurring when there are no .d files have been generated yet.
+# occurring when no .d files have been generated yet.
 -include *.d
 
 # Then if for example we compile a file called `test.c` that includes
