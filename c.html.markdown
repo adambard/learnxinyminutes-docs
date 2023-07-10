@@ -27,7 +27,8 @@ memory management and C will take you as far as you need to go.
 >
 > `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
 >
-> For information on what these flags do as well as other flags, consult the man page for your C compiler (e.g. `man 1 gcc`) or just search online.
+> For information on what these flags do as well as other flags, consult the man
+> page for your C compiler (e.g. `man 1 gcc`) or just search online.
 
 ```c
 // Single-line comments start with // - only available in C99 and later.
@@ -63,7 +64,7 @@ enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 // libraries for the headers.
 // For your own headers, use double quotes instead of angle brackets, and
 // provide the path:
-#include "my_header.h" 		// local file
+#include "my_header.h" // local file
 #include "../my_lib/my_lib_header.h" //relative path
 
 // Declare function signatures in advance in a .h file, or at the top of
@@ -71,18 +72,20 @@ enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 void function_1();
 int function_2(void);
 
-// At a minimum, you must declare a 'function prototype' before its use in any function.
-// Normally, prototypes are placed at the top of a file before any function definition.
+// At a minimum, you must declare a 'function prototype' before its use in any
+// function. Normally, prototypes are placed at the top of a file before any
+// function definition.
 int add_two_ints(int x1, int x2); // function prototype
-// although `int add_two_ints(int, int);` is also valid (no need to name the args),
-// it is recommended to name arguments in the prototype as well for easier inspection
+// although `int add_two_ints(int, int);` is also valid (no need to name the
+// args), it is recommended to name arguments in the prototype as well for
+// easier inspection
 
 // Function prototypes are not necessary if the function definition comes before
-// any other function that calls that function. However, it's standard practice to
-// always add the function prototype to a header file (*.h) and then #include that
-// file at the top. This prevents any issues where a function might be called
-// before the compiler knows of its existence, while also giving the developer a
-// clean header file to share with the rest of the project.
+// any other function that calls that function. However, it's standard practice
+// to always add the function prototype to a header file (*.h) and then #include
+// that file at the top. This prevents any issues where a function might be
+// called before the compiler knows of its existence, while also giving the
+// developer a clean header file to share with the rest of the project.
 
 // Your program's entry point is a function called "main". The return type can
 // be anything, however most operating systems expect a return type of `int` for
@@ -125,7 +128,8 @@ int main (int argc, char** argv)
   short x_short = 0;
 
   // chars are defined as the smallest addressable unit for a processor.
-  // This is usually 1 byte, but for some systems it can be more (ex. for TMS320 from TI it's 2 bytes).
+  // This is usually 1 byte, but for some systems it can be more (ex. for TMS320
+  // from TI it's 2 bytes).
   char x_char = 0;
   char y_char = 'y'; // Char literals are quoted with ''
 
@@ -153,8 +157,8 @@ int main (int argc, char** argv)
   // sizeof(obj) yields the size of the expression (variable, literal, etc.).
   printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
 
-  // If the argument of the `sizeof` operator is an expression, then its argument
-  // is not evaluated (except VLAs (see below)).
+  // If the argument of the `sizeof` operator is an expression, then its
+  // argument is not evaluated (except VLAs (see below)).
   // The value it yields in this case is a compile-time constant.
   int a = 1;
   // size_t is an unsigned integer type of at least 2 bytes used to represent
@@ -171,15 +175,15 @@ int main (int argc, char** argv)
   // You can initialize an array of twenty ints that all equal 0 thusly:
   int my_array[20] = {0};
   // where the "{0}" part is called an "array initializer".
-  // All elements (if any) past the ones in the initializer are initialized to 0:
+  // Elements (if any) past the ones in the initializer are initialized to 0:
   int my_array[5] = {1, 2};
   // So my_array now has five elements, all but the first two of which are 0:
   // [1, 2, 0, 0, 0]
-  // NOTE that you get away without explicitly declaring the size
-  // of the array IF you initialize the array on the same line:
+  // NOTE that you get away without explicitly declaring the size of the
+  // array IF you initialize the array on the same line:
   int my_array[] = {0};
-  // NOTE that, when not declaring the size, the size of the array is the number
-  // of elements in the initializer. With "{0}", my_array is now of size one: [0]
+  // NOTE that, when not declaring the size, the array's size is the number of
+  // elements in the initializer. With "{0}", my_array is now of size one: [0]
   // To evaluate the size of the array at run-time, divide its byte size by the
   // byte size of its element type:
   size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
@@ -249,7 +253,7 @@ int main (int argc, char** argv)
   i2 * i1; // => 2
   i1 / i2; // => 0 (0.5, but truncated towards 0)
 
-  // You need to cast at least one integer to float to get a floating-point result
+  // You need to cast at least one int to float to get a floating-point result
   (float)i1 / i2; // => 0.5f
   i1 / (double)i2; // => 0.5 // Same with double
   f1 / f2; // => 0.5, plus or minus epsilon
@@ -441,8 +445,9 @@ int main (int argc, char** argv)
   // without warning.
   printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 if char is 8 bits long)
 
-  // For determining the max value of a `char`, a `signed char` and an `unsigned char`,
-  // respectively, use the CHAR_MAX, SCHAR_MAX and UCHAR_MAX macros from <limits.h>
+  // For determining the max value of a `char`, a `signed char` and an
+  // `unsigned char`, respectively, use the CHAR_MAX, SCHAR_MAX and UCHAR_MAX
+  // macros from <limits.h>
 
   // Integral types can be cast to floating-point types, and vice-versa.
   printf("%f\n", (double) 100); // %f always formats a double...
@@ -453,9 +458,9 @@ int main (int argc, char** argv)
   // Pointers
   ///////////////////////////////////////
 
-  // A pointer is a variable declared to store a memory address. Its declaration will
-  // also tell you the type of data it points to. You can retrieve the memory address
-  // of your variables, then mess with them.
+  // A pointer is a variable declared to store a memory address. Its declaration
+  // will also tell you the type of data it points to. You can retrieve the
+  // memory address of your variables, then mess with them.
 
   int x = 0;
   printf("%p\n", (void *)&x); // Use & to retrieve the address of a variable
@@ -493,9 +498,9 @@ int main (int argc, char** argv)
   int* x_ptr = x_array;
   // x_ptr now points to the first element in the array (the integer 20).
   // This works because arrays often decay into pointers to their first element.
-  // For example, when an array is passed to a function or is assigned to a pointer,
-  // it decays into (implicitly converted to) a pointer.
-  // Exceptions: when the array is the argument of the `&` (address-of) operator:
+  // For example, when an array is passed to a function or is assigned to a
+  // pointer, it decays into (implicitly converted to) a pointer.
+  // Exception: when the array is the argument of the `&` (address-of) operator:
   int arr[10];
   int (*ptr_to_arr)[10] = &arr; // &arr is NOT of type `int *`!
   // It's of type "pointer to array" (of ten `int`s).
@@ -514,22 +519,23 @@ int main (int argc, char** argv)
 
   // You can also dynamically allocate contiguous blocks of memory with the
   // standard library function malloc, which takes one argument of type size_t
-  // representing the number of bytes to allocate (usually from the heap, although this
-  // may not be true on e.g. embedded systems - the C standard says nothing about it).
+  // representing the number of bytes to allocate (usually from the heap,
+  // although this may not be true on e.g. embedded systems - the C standard
+  // says nothing about it).
   int *my_ptr = malloc(sizeof(*my_ptr) * 20);
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
 
-  // Be careful passing user-provided values to malloc! If you want
-  // to be safe, you can use calloc instead (which, unlike malloc, also zeros out the memory)
+  // Be careful passing user-provided values to malloc! If you want to be safe,
+  // you can use calloc instead (which, unlike malloc, also zeros the memory)
   int* my_other_ptr = calloc(20, sizeof(int));
 
-  // Note that there is no standard way to get the length of a
-  // dynamically allocated array in C. Because of this, if your arrays are
-  // going to be passed around your program a lot, you need another variable
-  // to keep track of the number of elements (size) of an array. See the
-  // functions section for more info.
+  // Note that there is no standard way to get the length of a dynamically
+  // allocated array in C. Because of this, if your arrays are going to be
+  // passed around your program a lot, you need another variable to keep track
+  // of the number of elements (size) of an array. See the functions section
+  // for more info.
   size_t size = 10;
   int *my_arr = calloc(size, sizeof(int));
   // Add an element to the array
@@ -541,19 +547,19 @@ int main (int argc, char** argv)
   }
   my_arr[10] = 5;
 
-  // Dereferencing memory that you haven't allocated gives
-  // "unpredictable results" - the program is said to invoke "undefined behavior"
-  printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what? It may even crash.
+  // Dereferencing memory that you haven't allocated gives "unpredictable
+  // results" - the program is said to invoke "undefined behavior"
+  printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what? It may even crash
 
   // When you're done with a malloc'd block of memory, you need to free it,
-  // or else no one else can use it until your program terminates
-  // (this is called a "memory leak"):
+  // or else no one else can use it until your program terminates (this is
+  // called a "memory leak"):
   free(my_ptr);
 
   // Strings are arrays of char, but they are usually represented as a
   // pointer-to-char (which is a pointer to the first element of the array).
-  // It's good practice to use `const char *' when referring to a string literal,
-  // since string literals shall not be modified (i.e. "foo"[0] = 'a' is ILLEGAL.)
+  // It's good practice to use `const char *' when referring to a string literal
+  // since string literals shall not be modified (i.e. foo[0] = 'a' is ILLEGAL.)
   const char *my_str = "This is my very own string literal";
   printf("%c\n", *my_str); // => 'T'
 
@@ -635,8 +641,8 @@ printf("first: %d\nsecond: %d\n", first, second);
 // Return multiple values.
 // C does not allow for returning multiple values with the return statement. If
 // you would like to return multiple values, then the caller must pass in the
-// variables where they would like the returned values to go. These variables must
-// be passed in as pointers such that the function can modify them.
+// variables where they would like the returned values to go. These variables
+// must be passed in as pointers such that the function can modify them.
 int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
 {
     if(array_of_3 == NULL)
@@ -672,7 +678,7 @@ printIntArray(my_arr, size);
 // will print "arr[0] is: 1" etc
 */
 
-// if referring to external variables outside function, you should use the extern keyword.
+// if referring to external variables outside function, use the extern keyword.
 int i = 0;
 void testFunc() {
   extern int i; //i here is now using external variable i
@@ -760,10 +766,10 @@ int areaptr(const rect *r)
 // Function pointers
 ///////////////////////////////////////
 /*
-At run time, functions are located at known memory addresses. Function pointers are
-much like any other pointer (they just store a memory address), but can be used
-to invoke functions directly, and to pass handlers (or callback functions) around.
-However, definition syntax may be initially confusing.
+At run time, functions are located at known memory addresses. Function pointers
+are much like any other pointer (they just store a memory address), but can be
+used to invoke functions directly, and to pass handlers (or callback functions)
+around. However, definition syntax may be initially confusing.
 
 Example: use str_reverse from a pointer
 */
@@ -773,12 +779,13 @@ void str_reverse_through_pointer(char *str_in) {
   f = &str_reverse; // Assign the address for the actual function (determined at run time)
   // f = str_reverse; would work as well - functions decay into pointers, similar to arrays
   (*f)(str_in); // Just calling the function through the pointer
-  // f(str_in); // That's an alternative but equally valid syntax for calling it.
+  // f(str_in); // That's an alternative but equally valid syntax for calling it
 }
 
 /*
-As long as function signatures match, you can assign any function to the same pointer.
-Function pointers are usually typedef'd for simplicity and readability, as follows:
+As long as function signatures match, you can assign any function to the same
+pointer. Function pointers are usually typedef'd for simplicity and readability,
+as follows:
 */
 
 typedef void (*my_fnp_type)(char *);
