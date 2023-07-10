@@ -893,10 +893,15 @@ as the C file.
 */
 
 /* A safe guard to prevent the header from being defined too many times. This */
-/* happens in the case of circle dependency, the contents of the header is    */
-/* already defined.                                                           */
+/* happens in the case of circlular dependencies, or such as when a header is */
+/* included alongside a header that includes the same header itself.          */
 #ifndef EXAMPLE_H /* if EXAMPLE_H is not yet defined. */
 #define EXAMPLE_H /* Define the macro EXAMPLE_H. */
+
+/* This is a less verbose non-standard alternative to the include guards just */
+/* mentioned. While non-standard it avoids errors from the two header files   */
+/* accidentally defining the same macro. Place it at the top of the header.   */
+#pragma once
 
 /* Other headers can be included in headers and therefore transitively */
 /* included into files that include this header.                       */
@@ -924,9 +929,10 @@ typedef struct Node
 /* So can enumerations. */
 enum traffic_light_state {GREEN, YELLOW, RED};
 
-/* Function prototypes can also be defined here for use in multiple files,  */
-/* but it is bad practice to define the function in the header. Definitions */
-/* should instead be put in a C file.                                       */
+/* Function prototypes can also be defined here for use in multiple files,   */
+/* but it is bad practice to define the function in the header. Definitions  */
+/* should instead be put in a C file. An uncommon exception is when defining */
+/* static inline functions.                                                  */
 Node createLinkedList(int *vals, int len);
 
 /* Beyond the above elements, other definitions should be left to a C source */
