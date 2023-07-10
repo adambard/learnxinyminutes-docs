@@ -69,8 +69,8 @@ enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 
 // Declare function signatures in advance in a .h file, or at the top of
 // your .c file.
-void function_1();
-int function_2(void);
+void function_1(void);
+int function_2(int a, float b);
 
 // At a minimum, you must declare a 'function prototype' before its use in any
 // function. Normally, prototypes are placed at the top of a file before any
@@ -643,9 +643,9 @@ printf("first: %d\nsecond: %d\n", first, second);
 // you would like to return multiple values, then the caller must pass in the
 // variables where they would like the returned values to go. These variables
 // must be passed in as pointers such that the function can modify them.
-int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
+int return_multiple(int *array_of_3, int *ret1, int *ret2, int *ret3)
 {
-    if(array_of_3 == NULL)
+    if (array_of_3 == NULL)
         return 0; //return error code (false)
 
     //de-reference the pointer so we modify its value
@@ -680,13 +680,13 @@ printIntArray(my_arr, size);
 
 // if referring to external variables outside function, use the extern keyword.
 int i = 0;
-void testFunc() {
+void testFunc(void) {
   extern int i; //i here is now using external variable i
 }
 
 // make external variables private to source file with static:
 static int j = 0; //other files using testFunc2() cannot access variable j
-void testFunc2() {
+void testFunc2(void) {
   extern int j;
 }
 // The static keyword makes a variable inaccessible to code outside the
@@ -698,6 +698,18 @@ void testFunc2() {
 // is declared in. Additionally, static variables are initialized to 0 if not
 // declared with some other starting value.
 //**You may also declare functions as static to make them private**
+
+// NOTE that before C23, and unlike C++, functions taking no arguments without
+// an explicit `void` inside the parameter list will be treated as taking an
+// unknown number of arguments rather than no arguments.
+void testFunc3(void) {
+  // Functions can be prototyped inside other functions
+  void foobie();
+  void bletch(void);
+
+  foobie(1, 2, 3); // This will give a warning at most, not an error
+  bletch(1, 2, 3); // This will produce an error
+}
 
 ///////////////////////////////////////
 // User-defined types and structs
@@ -719,7 +731,7 @@ struct rectangle {
 // due to potential padding between the structure members (this is for alignment
 // reasons). [1]
 
-void function_1()
+void function_1(void)
 {
   struct rectangle my_rec = { 1, 2 }; // Fields can be initialized immediately
 
