@@ -739,6 +739,12 @@ void function_1(void)
 {
   struct rectangle my_rec = { 1, 2 }; // Fields can be initialized immediately
 
+  // Fields can also be initialized in an arbitrary order with the field name
+  struct rectangle my_rec2 = {
+      .height = 2,
+      .width = 1
+  };
+
   // Access struct members with .
   my_rec.width = 10;
   my_rec.height = 20;
