@@ -187,7 +187,7 @@ echo_inbuilt:
 # only evaluated once. (This is a GNU make extension)
 
 var := hello
-var2 ::=  $(var) hello
+var2 ::= $(var) hello
 #:= and ::= are equivalent.
 
 # These variables are evaluated procedurally (in the order that they
@@ -246,6 +246,32 @@ foo = true
 ifdef $(foo)
 bar = 'hello'
 endif
+
+#-----------------------------------------------------------------------
+# Programmatically generated dependency rules
+#-----------------------------------------------------------------------
+
+# Some compilers will generate dependency rules for dependent files so that
+# a file will be recompiled whenever that file's dependencies are changed.
+
+# An example using gcc
+%.o: %.c
+	# -M tells gcc to write out a dependency rule for the given input file
+	# -MF tells gcc to write that dependency rule to a file with the .d suffix
+	gcc -M -MF $<.d $<
+
+	# Then compile the file separately
+	gcc -c -o $@ $<
+
+# Include the generated dependency files. The `-` prevents an error from
+# occurring when there are no .d files have been generated yet.
+-include *.d
+
+# Then if for example we compile a file called `test.c` that includes
+# `test.h` a file called `test.c.d` will be created that looks like this:
+test.o: test.c test.h
+
+# So then modifying `test.h` will cause `test.c` to be recompiled.
 ```
 
 ### More Resources
