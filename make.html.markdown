@@ -4,6 +4,7 @@ tool: make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
+    - ["Chris Harding", "https://github.com/sjrct"]
 filename: Makefile
 ---
 
