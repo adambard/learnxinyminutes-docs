@@ -214,6 +214,15 @@ ls:	* src/*
 	@echo $(notdir $^)
 	@echo $(join $(dir $^),$(notdir $^))
 
+# You can call custom functions with the `call` builtin. Arguments are
+# assigned to the variables $1, $2, $3, etc.
+
+to_upper = $(shell echo $1 | tr '[:lower:]' '[:upper:]')
+
+shout:
+	# call takes the name of the function as its first argument
+	@echo $(call to_upper,hello everybody)
+
 #-----------------------------------------------------------------------
 # Directives
 #-----------------------------------------------------------------------
