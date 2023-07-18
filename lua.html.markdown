@@ -17,10 +17,7 @@ filename: learnlua.lua
 -- 1. Variables and flow control.
 ----------------------------------------------------
 
-num = 42  -- All numbers are doubles.
--- Don't freak out, 64-bit doubles have 52 bits for
--- storing exact int values; machine precision is
--- not a problem for ints that need < 52 bits.
+num = 42  -- Numbers can be integer or floating point.
 
 s = 'walternate'  -- Immutable strings like Python.
 t = "double-quotes are also fine"
