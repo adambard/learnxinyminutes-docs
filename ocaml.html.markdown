@@ -9,21 +9,23 @@ contributors:
 OCaml is a strictly evaluated functional language with some imperative
 features.
 
-Along with StandardML and its dialects it belongs to ML language family.
+Along with Standard ML and its dialects it belongs to ML language family.
 F# is also heavily influenced by OCaml.
 
-Just like StandardML, OCaml features both an interpreter, that can be
+Just like Standard ML, OCaml features both an interpreter, that can be
 used interactively, and a compiler.
-The interpreter binary is normally called "ocaml" and the compiler is "ocamlopt".
-There is also a bytecode compiler, "ocamlc", but there are few reasons to use it.
+The interpreter binary is normally called `ocaml` and the compiler is `ocamlopt`.
+There is also a bytecode compiler, `ocamlc`, but there are few reasons to use it.
 
 It is strongly and statically typed, but instead of using manually written
-type annotations, it infers types of expressions using Hindley-Milner algorithm.
+type annotations, it infers types of expressions using the
+[Hindley-Milner](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system)
+algorithm.
 It makes type annotations unnecessary in most cases, but can be a major
 source of confusion for beginners.
 
 When you are in the top level loop, OCaml will print the inferred type
-after you enter an expression.
+after you enter an expression
 
 ```
 # let inc x = x	+ 1 ;;
@@ -32,8 +34,8 @@ val inc : int -> int = <fun>
 val a : int = 99
 ```
 
-For a source file you can use "ocamlc -i /path/to/file.ml" command
-to print all names and type signatures.
+For a source file you can use the `ocamlc -i /path/to/file.ml` command
+to print all names and type signatures
 
 ```
 $ cat sigtest.ml
@@ -49,11 +51,12 @@ val a : int
 ```
 
 Note that type signatures of functions of multiple arguments are
-written in curried form. A function that takes multiple arguments can be
+written in [curried](https://en.wikipedia.org/wiki/Currying) form.
+A function that takes multiple arguments can be
 represented as a composition of functions that take only one argument.
-The "f(x,y) = x + y" function from the example above applied to
-arguments 2 and 3 is equivalent to the "f0(y) = 2 + y" function applied to 3.
-Hence the "int -> int -> int" signature.
+The `f(x,y) = x + y` function from the example above applied to
+arguments 2 and 3 is equivalent to the `f0(y) = 2 + y` function applied to 3.
+Hence the `int -> int -> int` signature.
 
 
 ```ocaml
@@ -66,13 +69,13 @@ Hence the "int -> int -> int" signature.
 
 (*** Variables and functions ***)
 
-(* Expressions can be separated by a double semicolon symbol, ";;".
+(* Expressions can be separated by a double semicolon ";;".
    In many cases it's redundant, but in this tutorial we use it after
    every expression for easy pasting into the interpreter shell.
    Unnecessary use of expression separators in source code files
    is often considered to be a bad style. *)
 
-(* Variable and function declarations use "let" keyword. *)
+(* Variable and function declarations use the "let" keyword. *)
 let x = 10 ;;
 
 (* OCaml allows single quote characters in identifiers.
@@ -110,42 +113,42 @@ let sqr2 = sqr (-2) ;;
    "unit" type for it that has the only one value written as "()" *)
 let print_hello () = print_endline "hello world" ;;
 
-(* Note that you must specify "()" as argument when calling it. *)
+(* Note that you must specify "()" as the argument when calling it. *)
 print_hello () ;;
 
-(* Calling a function with insufficient number of arguments
+(* Calling a function with an insufficient number of arguments
    does not cause an error, it produces a new function. *)
 let make_inc x y = x + y ;; (* make_inc is int -> int -> int *)
 let inc_2 = make_inc 2 ;;   (* inc_2 is int -> int *)
 inc_2 3 ;; (* Evaluates to 5 *)
 
-(* You can use multiple expressions in function body.
+(* You can use multiple expressions in the function body.
    The last expression becomes the return value. All other
    expressions must be of the "unit" type.
    This is useful when writing in imperative style, the simplest
-   form of it is inserting a debug print. *)
+   form of which is inserting a debug print. *)
 let print_and_return x =
     print_endline (string_of_int x);
     x
 ;;
 
 (* Since OCaml is a functional language, it lacks "procedures".
-   Every function must return something. So functions that
-   do not really return anything and are called solely for their
-   side effects, like print_endline, return value of "unit" type. *)
+   Every function must return something. So functions that do not
+   really return anything and are called solely for their side
+   effects, like print_endline, return a value of "unit" type. *)
 
 
-(* Definitions can be chained with "let ... in" construct.
-   This is roughly the same to assigning values to multiple
+(* Definitions can be chained with the "let ... in" construct.
+   This is roughly the same as assigning values to multiple
    variables before using them in expressions in imperative
    languages. *)
 let x = 10 in
 let y = 20 in
 x + y ;;
 
-(* Alternatively you can use "let ... and ... in" construct.
+(* Alternatively you can use the "let ... and ... in" construct.
    This is especially useful for mutually recursive functions,
-   with ordinary "let .. in" the compiler will complain about
+   with ordinary "let ... in" the compiler will complain about
    unbound values. *)
 let rec
   is_even = function
@@ -187,9 +190,9 @@ let my_lambda = fun x -> x * x ;;
 ~-. 3.4 (* Float only *)
 
 (* You can define your own operators or redefine existing ones.
-   Unlike SML or Haskell, only selected symbols can be used
-   for operator names and first symbol defines associativity
-   and precedence rules. *)
+   Unlike Standard ML or Haskell, only certain symbols can be
+   used for operator names and the operator's first symbol determines
+   its associativity and precedence rules. *)
 let (+) a b = a - b ;; (* Surprise maintenance programmers. *)
 
 (* More useful: a reciprocal operator for floats.
@@ -259,7 +262,7 @@ let ocaml = (String.make 1 'O') ^ "Caml" ;;
 (* There is a printf function. *)
 Printf.printf "%d %s" 99 "bottles of beer" ;;
 
-(* Unformatted read and write functions are there too. *)
+(* There's also unformatted read and write functions. *)
 print_string "hello world\n" ;;
 print_endline "hello world" ;;
 let line = read_line () ;;
@@ -293,14 +296,14 @@ type 'a list_of_lists = 'a list list ;;
 type int_list_list = int list_of_lists ;;
 
 (* Types can also be recursive. Like in this type analogous to
-   built-in list of integers. *)
+   a built-in list of integers. *)
 type my_int_list = EmptyList | IntList of int * my_int_list ;;
 let l = IntList (1, EmptyList) ;;
 
 
 (*** Pattern matching ***)
 
-(* Pattern matching is somewhat similar to switch statement in imperative
+(* Pattern matching is somewhat similar to the switch statement in imperative
    languages, but offers a lot more expressive power.
 
    Even though it may look complicated, it really boils down to matching
@@ -312,7 +315,7 @@ let l = IntList (1, EmptyList) ;;
 let is_zero x =
     match x with
     | 0 -> true
-    | _ -> false  (* The "_" pattern means "anything else". *)
+    | _ -> false  (* The "_" means "anything else". *)
 ;;
 
 (* Alternatively, you can use the "function" keyword. *)
@@ -369,7 +372,6 @@ let rec sum_int_list l =
 
 let t = Cons (1, Cons (2, Cons (3, Nil))) ;;
 sum_int_list t ;;
-
 ```
 
 ## Further reading
