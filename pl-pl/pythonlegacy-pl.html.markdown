@@ -636,3 +636,6 @@ print(say(say_please=True))  # Kupisz mi piwo? Proszę! Jestem spłukany :(
 * [Dive Into Python](http://www.amazon.com/gp/product/1441413022/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1441413022&linkCode=as2&tag=homebits04-20)
 * [Python Essential Reference](http://www.amazon.com/gp/product/0672329786/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0672329786&linkCode=as2&tag=homebits04-20)
 
+### Abishek Kafle
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
+
