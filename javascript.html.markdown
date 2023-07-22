@@ -671,6 +671,7 @@ Mozilla Developer Network.
 [5]: http://bonsaiden.github.io/JavaScript-Garden/
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+[8]: https://www.javascripttutorial.net/
 [8]: http://eloquentjavascript.net/
 [10]: http://jstherightway.org/
 [11]: https://javascript.info/
