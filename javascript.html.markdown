@@ -181,7 +181,7 @@ myArray.length; // = 4
 myArray[3] = "Hello";
 
 // Add and remove element from front or back end of an array
-myArray.unshift(3); // Add as the first element
+myArray.unshift(3); // Add at the beggining of the array and return the new length
 someVar = myArray.shift(); // Remove first element and return it
 myArray.push(3); // Add as the last element
 someVar = myArray.pop(); // Remove last element and return it
