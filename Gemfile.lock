@@ -2,7 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     charlock_holmes (0.7.3)
-    rake (12.0.0)
+    rake (12.3.3)
 
 PLATFORMS
   ruby
