@@ -314,7 +314,7 @@ public class LearnJava {
         System.out.println("1/2.0 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
-        System.out.println("11%3 = "+(11 % 3)); // => 2
+        System.out.println("11%3 = " + (11 % 3)); // => 2
 
         // Comparison operators
         System.out.println("3 == 2? " + (3 == 2)); // => false
@@ -368,7 +368,7 @@ public class LearnJava {
 
         // While loop
         int fooWhile = 0;
-        while(fooWhile < 100) {
+        while (fooWhile < 100) {
             System.out.println(fooWhile);
             // Increment the counter
             // Iterated 100 times, fooWhile 0,1,2...99
@@ -383,7 +383,7 @@ public class LearnJava {
             // Increment the counter
             // Iterated 100 times, fooDoWhile 0->99
             fooDoWhile++;
-        } while(fooDoWhile < 100);
+        } while (fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
 
         // For Loop
