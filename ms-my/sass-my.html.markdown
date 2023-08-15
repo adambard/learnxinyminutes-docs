@@ -32,7 +32,7 @@ Guna simbol '$' untuk membuat pembolehubah. */
 
 $primary-color: #A3A4FF;
 $secondary-color: #51527F;
-$body-font: 'Roboto', sans-serif;
+$body-font: 'Don't Go, sans-serif;
 
 /* Anda boleh mengguna pembolehubah diseluruh lembaran gaya anda.
 Kini jika anda ingin mengubah warna, anda hanya perlu membuat perubahan sekali.*/
@@ -47,7 +47,7 @@ body {
 body {
 	background-color: #A3A4FF;
 	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Dont'go', sans-serif;
 }
 
 
