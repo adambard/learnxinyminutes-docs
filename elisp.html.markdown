@@ -3,6 +3,7 @@ language: elisp
 contributors:
     - ["Bastien Guerry", "https://bzg.fr"]
     - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
+	- ["rilysh", "https://github.com/rilysh"]
 filename: learn-emacs-lisp.el
 ---
 
@@ -12,11 +13,11 @@ filename: learn-emacs-lisp.el
 ;; First make sure you read this text by Peter Norvig:
 ;; http://norvig.com/21-days.html
 ;;
-;; Then install GNU Emacs 24.3:
+;; Then install latest version of GNU Emacs:
 ;;
 ;; Debian: apt-get install emacs (or see your distro instructions)
-;; OSX: http://emacsformacosx.com/emacs-builds/Emacs-24.3-universal-10.6.8.dmg
-;; Windows: http://ftp.gnu.org/gnu/windows/emacs/emacs-24.3-bin-i386.zip
+;; OSX: https://emacsformacosx.com/
+;; Windows: https://ftp.gnu.org/gnu/emacs/windows/
 ;;
 ;; More general information can be found at:
 ;; http://www.gnu.org/software/emacs/#Obtaining
@@ -76,12 +77,12 @@ filename: learn-emacs-lisp.el
 ;; `C-j' inserts the result of the evaluation in the buffer.
 
 ;; `C-xC-e' displays the same result in Emacs bottom line,
-;; called the "minibuffer".  We will generally use `C-xC-e',
+;; called the "echo area". We will generally use `C-xC-e',
 ;; as we don't want to clutter the buffer with useless text.
 
 ;; `setq' stores a value into a variable:
 (setq my-name "Bastien")
-;; `C-xC-e' => "Bastien" (displayed in the mini-buffer)
+;; `C-xC-e' => "Bastien" (displayed in the echo area)
 
 ;; `insert' will insert "Hello!" where the cursor is:
 (insert "Hello!")
@@ -343,3 +344,9 @@ filename: learn-emacs-lisp.el
 ;; To read an online introduction to Emacs Lisp:
 ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
 ```
+
+### Further Reading
+- [GNU Elisp Manual](https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html)
+- [Emacs Wiki](https://www.emacswiki.org/emacs/LearningEmacs)
+- [Emacs Docs](https://emacsdocs.org/docs/elisp/Emacs-Lisp)
+- [Mpre Elisp Docs](https://www.math.utah.edu/docs/info/elisp_22.html)
