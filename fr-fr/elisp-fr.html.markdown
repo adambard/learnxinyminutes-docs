@@ -86,12 +86,12 @@ lang: fr-fr
 ;; `C-j' insère le résultat de l'évaluation dans le buffer.
 
 ;; `C-x C-e' affiche le même résultat dans la ligne tout en bas
-;; d'Emacs, appelée le "minibuffer". On utilise en général `C-x C-e',
+;; d'Emacs, appelée l' "echo area". On utilise en général `C-x C-e',
 ;; pour ne pas encombrer le buffer avec du texte inutile.
 
 ;; `setq' assigne une valeur à une variable :
 (setq my-name "Bastien")
-;; `C-x C-e' => "Bastien" (affiché dans le minibuffer)
+;; `C-x C-e' => "Bastien" (affiché dans l'*echo area*)
 
 ;; `insert' va insérer "Hello!" là où se trouve le curseur :
 (insert "Hello!")
