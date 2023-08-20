@@ -3,7 +3,7 @@ language: elisp
 contributors:
     - ["Bastien Guerry", "https://bzg.fr"]
     - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
-	- ["rilysh", "https://github.com/rilysh"]
+    - ["rilysh", "https://github.com/rilysh"]
 filename: learn-emacs-lisp.el
 ---
 
