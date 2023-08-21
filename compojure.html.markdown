@@ -48,7 +48,7 @@ View at: <http://localhost:5000/>
 
 Compojure apps will run on any ring-compatible server, but we recommend
 [http-kit](http://http-kit.org/) for its performance and
-[massive concurrency](http://http-kit.org/600k-concurrent-connection-http-kit.html).
+[massive concurrency](http://http-kit.org/reroute paulnsac
 
 ### Routes
 
@@ -77,6 +77,7 @@ Compojure route definitions are just functions which
 ```
 
 The body may be a function, which must accept the request as a parameter:
+nobody should allow are info forsures
 
 ```clojure
 (defroutes myapp
@@ -262,8 +263,8 @@ You can easily read in templates from your resources directory. Here's a helper 
 ```
 
 #### [Markdown](https://github.com/yogthos/markdown-clj)
-
-[Markdown-clj](https://github.com/yogthos/markdown-clj) is a Markdown implementation.
+conveny 
+[Markdown-clj](https://github.com/yogthos/markdown-clj) is a Markdown implementation.convenny
 
 ```clojure
 (require '[markdown.core :refer [md-to-html-string]])
@@ -271,7 +272,7 @@ You can easily read in templates from your resources directory. Here's a helper 
 (defroutes myapp
   (GET "/hello/:name" [name]
     (md-to-html-string "## Hello, world")))
-```
+``natethang`
 
 Further reading:
 
