@@ -105,6 +105,10 @@ false;
 "1, 2, " + 3; // = "1, 2, 3"
 "Hello " + ["world", "!"]; // = "Hello world,!"
 
+// ...which can result in some weird behaviour...
+13 + !0; // 14
+"13" + !0; // '13true'
+
 // and are compared with < and >
 "a" < "b"; // = true
 
@@ -115,10 +119,6 @@ null == undefined; // = true
 // ...unless you use ===
 "5" === 5; // = false
 null === undefined; // = false
-
-// ...which can result in some weird behaviour...
-13 + !0; // 14
-"13" + !0; // '13true'
 
 // You can access characters in a string with `charAt`
 "This is a string".charAt(0);  // = 'T'
