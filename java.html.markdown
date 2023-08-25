@@ -91,6 +91,9 @@ public class LearnJava {
         int numInt = scanner.nextInt();
 
         // read long input
+        long numLong = scanner.nextLong();
+
+        // read float input
         float numFloat = scanner.nextFloat();
 
         // read double input

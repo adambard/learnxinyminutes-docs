@@ -297,7 +297,7 @@ fun helloWorld(val name : String) {
         else -> println("none of the above")
     }
 
-    // "when" can be used as a function that returns a value.
+    // "when" can be used as an expression that returns a value.
     var result = when (i) {
         0, 21 -> "0 or 21"
         in 1..20 -> "in the range 1 to 20"

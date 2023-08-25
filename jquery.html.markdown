@@ -15,7 +15,6 @@ Because jQuery is a JavaScript library you should [learn JavaScript first](https
 
 ```js
 
-
 ///////////////////////////////////
 // 1. Selectors
 
