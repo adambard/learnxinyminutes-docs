@@ -474,7 +474,7 @@ void testFunc() {
 // 用户自定义类型和结构
 ///////////////////////////////////////
 
-// Typedefs可以创建类型别名
+// typedef 可以创建类型别名
 typedef int my_type;
 my_type my_type_var = 0;
 
