@@ -876,7 +876,8 @@ if __name__ == '__main__':
     if type(sup) is Superhero:
         print('I am a superhero')
 
-    # Get the Method Resolution search Order used by both getattr() and super()
+    # Get the "Method Resolution Order" used by both getattr() and super()
+    # (the order in which classes are searched for an attribute or method)
     # This attribute is dynamic and can be updated
     print(Superhero.__mro__)    # => (<class '__main__.Superhero'>,
                                 # => <class 'human.Human'>, <class 'object'>)
@@ -958,8 +959,7 @@ class Batman(Superhero, Bat):
 if __name__ == '__main__':
     sup = Batman()
 
-    # Get the Method Resolution search Order used by both getattr() and super().
-    # This attribute is dynamic and can be updated
+    # The Method Resolution Order
     print(Batman.__mro__)       # => (<class '__main__.Batman'>,
                                 # => <class 'superhero.Superhero'>,
                                 # => <class 'human.Human'>,
