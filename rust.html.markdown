@@ -30,6 +30,9 @@ Rust not only fast, but also easy and efficient to code in.
 // This is a comment. Line comments look like this...
 // and extend multiple lines like this.
 
+/* Block comments
+  /* can be nested. */ */
+
 /// Documentation comments look like this and support markdown notation.
 /// # Examples
 ///
