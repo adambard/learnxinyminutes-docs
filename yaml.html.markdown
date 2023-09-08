@@ -44,8 +44,8 @@ key with spaces: value
 # Yes and No (doesn't matter the case) will be evaluated to boolean 
 # true and false values respectively.
 # To use the actual value use single or double quotes.
-no: no            # evaluates to "false": false
-yes: No           # evaluates to "true": false
+no: no            # evaluates to "no": false
+yes: No           # evaluates to "yes": false
 not_enclosed: yes # evaluates to "not_enclosed": true
 enclosed: "yes"   # evaluates to "enclosed": yes
 
