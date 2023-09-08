@@ -733,7 +733,9 @@ class Human:
         self.name = name
 
         # Initialize property
-        self._age = 0
+        self._age = 0   # the leading underscore indicates the "age" property is 
+                        # intended to be used internally
+                        # do not rely on this to be enforced: it's a hint to other devs
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
