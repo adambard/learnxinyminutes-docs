@@ -185,7 +185,7 @@ public class LearnJava {
         //
         // BigInteger is a data type that allows programmers to manipulate
         // integers longer than 64-bits. Integers are stored as an array of
-        // of bytes and are manipulated using functions built into BigInteger
+        // bytes and are manipulated using functions built into BigInteger
         //
         // BigInteger can be initialized using an array of bytes or a string.
         BigInteger fooBigInteger = new BigInteger(fooByteArray);
