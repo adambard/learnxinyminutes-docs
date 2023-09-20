@@ -226,7 +226,7 @@ li[4]  # Raises an IndexError
 li[1:3]   # Return list from index 1 to 3 => [2, 4]
 li[2:]    # Return list starting from index 2 => [4, 3]
 li[:3]    # Return list from beginning until index 3  => [1, 2, 4]
-li[::2]   # Return list selecting every second entry => [1, 4]
+li[::2]   # Return list selecting elements with a step size of 2 => [1, 4]
 li[::-1]  # Return list in reverse order => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
