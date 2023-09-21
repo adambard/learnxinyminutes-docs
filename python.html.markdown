@@ -603,7 +603,7 @@ all_the_args(1, 2, a=3, b=4) prints:
 """
 
 # When calling functions, you can do the opposite of args/kwargs!
-# Use * to expand tuples and use ** to expand kwargs.
+# Use * to expand args (tuples) and use ** to expand kwargs (dictionaries).
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
 all_the_args(*args)            # equivalent: all_the_args(1, 2, 3, 4)
