@@ -1,5 +1,41 @@
 ---
-language: yaml
+uBlock Origin: 1.52.2
+Chromium: 117
+filterset (summary):
+ network: 97724
+ cosmetic: 40003
+ scriptlet: 18783
+ html: 0
+listset (total-discarded, last-updated):
+ added:
+  https://ublockorigin.github.io/uAssets/filters/resource-abuse.txt: 75-0, 12m
+ default:
+  user-filters: 0-0, never
+  CZE-0: 745-1, 12m
+  easylist: 71035-15, 12m
+  easyprivacy: 33179-69, 12m
+  plowe-0: 3719-1066, 12m
+  ublock-badware: 7879-142, 12m
+  ublock-filters: 34817-141, 12m
+  ublock-privacy: 556-81, 12m
+  ublock-quick-fixes: 165-64, 12m
+  ublock-unbreak: 2124-31, 12m
+  urlhaus-1: 3972-0, 12m
+filterset (user): [empty]
+trustedset:
+ added: [array of 4 redacted]
+userSettings: [none]
+hiddenSettings: [none]
+supportStats:
+ allReadyAfter: 2910 ms (selfie)
+ maxAssetCacheWait: 1333 ms
+popupPanel:
+ blocked: 3
+ no-remote-fonts: true
+ no-scripting: true
+ network:
+  europa.eu: 2
+  piwik.pro: 1language: yaml
 filename: learnyaml.yaml
 contributors:
 
