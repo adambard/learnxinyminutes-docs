@@ -69,11 +69,9 @@ discard 1 > 2 # Note: コンパイラーはある式の結果が使われてい�
 
 #
 # データ構造
-# Data Structures
 #
 
 # タプル
-# Tuples
 
 var
   child: tuple[name: string, age: int]   # タプルにはフィールド名
@@ -183,7 +181,7 @@ counter[my_roll] += 1
 var anotherArray = ["Default index", "starts at", "0"]
 
 # 他にも表、集合、リスト、キュー、Crit-bit treeなどのデータ構造があります。
-# https://nim-lang.org/docs/lib.html#collections-and-algorithms
+# http://nim-lang.org/docs/lib.html#collections-and-algorithms
 
 #
 # IOと制御
@@ -203,7 +201,7 @@ else:
 
 # `while`, `if`, `continue`, `break`
 
-import strutils as str # https://nim-lang.org/docs/strutils.html
+import strutils as str # http://nim-lang.org/docs/strutils.html
 echo "I'm thinking of a number between 41 and 43. Guess which!"
 let number: int = 42
 var
