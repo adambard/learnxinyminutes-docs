@@ -108,7 +108,8 @@ type
   Desc = distinct string # 元の型の互換性がなくなります。
 
 var
-  money: Cash = 100.Cash # `.Cash`がint型をわれわれ独自の型に変換しています。
+  money: Cash = 100.Cash  # `.Cash`がint型をわれわれ独自の型に
+                          #変換しています。
   description: Desc  = "Interesting".Desc
 
 when compileBadCode:
@@ -123,14 +124,14 @@ when compileBadCode:
 
 type
   Color = enum cRed, cBlue, cGreen
-  Direction = enum # 別の書き方
+  Direction = enum  # 別の書き方
     dNorth
     dWest
     dEast
     dSouth
 var
   orient = dNorth # `orient`はDirection型で値は`dNorth`
-  pixel = cGreen # `pixel`はColor型で値は`cGreen`
+  pixel = cGreen  # `pixel`はColor型で値は`cGreen`
 
 discard dNorth > dEast # 列挙には通常、順序があります。
 
@@ -274,10 +275,10 @@ proc strcmp(a, b: cstring): cint {.importc: "strcmp", nodecl.}
 let cmp = strcmp("C?", "Easy!")
 ```
 
-Additionally, Nim separates itself from its peers with metaprogramming,
-performance, and compile-time features.
+これらの他に、Nimはほかの言語と比較してメタプログラミング、
+実行時パフォーマンス、コンパイル時の機能で特長があります。
 
-## Further Reading
+## 参考
 
 * [Home Page](http://nim-lang.org)
 * [Download](http://nim-lang.org/download.html)
