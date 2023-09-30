@@ -1,12 +1,11 @@
 ---
 language: Nim
-filename: learnNim.nim
+filename: learnNim-jp.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
     - ["Dennis Felsing", "https://dennis.felsing.org"]
 translators:
     - ["Seiichi Ariga", "https://github.com/s-ariga"]
-filename: learnnim-jp.jl
 lang: ja-jp
 ---
 
