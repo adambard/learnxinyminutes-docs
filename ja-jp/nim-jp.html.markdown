@@ -9,23 +9,13 @@ translators:
 lang: ja-jp
 ---
 
-Nim (formerly Nimrod) is a statically typed, imperative programming language
-that gives the programmer power without compromises on runtime efficiency.
 Nim (元 Nimrod)は、静的型付けの命令型言語です。ランタイムの効率を損なうこと
 なく、プログラマーに恩恵を与えてくれます。
 
-Nim is efficient, expressive, and elegant.
 Nimは、効率的で、表現力があり、エレガントです。
 
 ```nim
-# Single-line comments start with a #
 # 単一行コメントは # で開始
-
-#[
-  This is a multiline comment.
-  In Nim, multiline comments can be nested, beginning with #[
-  ... and ending with ]#
-]#
 
 #[
   複数行コメントです。
@@ -34,16 +24,14 @@ Nimは、効率的で、表現力があり、エレガントです。
 ]#
 
 discard """
-This can also work as a multiline comment.
-Or for unparsable, broken code
 これも複数行コメントとして機能します。
 あるいは、解析不能のコードです。
 """
 
 
 
-var                     # 変数宣言 (そして割当て) # Declare (and assign) variables, 
-  letter: char = 'n'    # 型注釈ありとなし #with or without type annotations
+var                     # 変数宣言 (そして割当て)
+  letter: char = 'n'    # 型注釈ありとなし
   lang = "N" & "im"
   nLength: int = len(lang)
   boat: float
