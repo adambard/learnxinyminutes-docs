@@ -48,10 +48,11 @@ const            # 定数はコンパイル時に評価されます。
 
 when compileBadCode:            # `when`はコンパイル時の`if`です。
   legs = legs + 1               # この部分はコンパイルされません。ed.
-  const input = readline(stdin) # 定数値はコンパイル時に決まっていなければなりません。
+  const input = readline(stdin) # 定数値はコンパイル時に決まっていなければ
+                                # なりません。
 
-discard 1 > 2 # Note: コンパイラーはある式の結果が使われていないと警告を表示します。
-              # `discard`により、これを回避できます。
+discard 1 > 2 # Note: コンパイラーはある式の結果が使われていないと警告を
+              # 表示します。`discard`により、これを回避できます。
 
 
 #
@@ -117,7 +118,7 @@ when compileBadCode:
   john.name = description  # コンパイル時のエラーになります。
 
 #
-# もっと型とデータ構造
+# さらに型とデータ構造
 #
 
 # 列挙は型にいくつかの値の中から1つの値をとることを許します。
@@ -145,7 +146,7 @@ var
 when compileBadCode:
   my_roll = 23 # エラー!
 
-# 配列 Arrays
+# 配列
 
 type
   RollCounter = array[DieFaces, int]  # 配列の長さは固定で、順序のある型の
@@ -173,7 +174,6 @@ var anotherArray = ["Default index", "starts at", "0"]
 
 #
 # IOと制御
-# IO and Control Flow
 #
 
 # `case`, `readLine()`
@@ -210,8 +210,7 @@ while guess != number:
     echo("Yeeeeeehaw!")
 
 #
-# イタレーション
-# Iteration
+# 繰返し
 #
 
 for i, elem in ["Yes", "No", "Maybe so"]: # または単に`for elem in`
