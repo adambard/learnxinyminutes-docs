@@ -1,9 +1,11 @@
 ---
 category: Algorithms & Data Structures
 name: Set theory
-lang: pt-pt
+lang: pt-br
 contributors:
-  - ["Bárbara Luz", "https://github.com/barbluz"]
+    - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
+translators:
+    - ["Bárbara Luz", "https://github.com/barbluz"]
 ---
 
 Teoria de conjuntos é uma área da matemática que estuda conjuntos, suas operações e propriedades.
