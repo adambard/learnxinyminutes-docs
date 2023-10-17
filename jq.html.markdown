@@ -4,7 +4,6 @@ tool: jq
 contributors:
     - ["Jack Kuan", "https://github.com/kjkuan"]
 filename: learnjq.sh
-translators:
 ---
 
 `jq` is a tool for transforming JSON inputs and generating JSON outputs. As a
