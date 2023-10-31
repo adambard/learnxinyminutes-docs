@@ -26,7 +26,7 @@ any parameters.
 */
 fun main(args: Array<String>) {
     /*
-    Declaring values is done using either "var" or "val".
+    Declaring variables is done using either "var" or "val".
     "val" declarations cannot be reassigned, whereas "vars" can.
     */
     val fooVal = 10 // we cannot later reassign fooVal to something else
