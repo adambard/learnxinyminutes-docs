@@ -90,6 +90,7 @@ class Ball {
 
   render() {
     // you can figure out what this does by now
+    fill(this.col);
     ellipse(this.position.x, this.position.y, this.radius);
   }
 }
