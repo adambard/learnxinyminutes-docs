@@ -510,6 +510,9 @@ if (Object.create === undefined){ // überschreib nichts, was eventuell bereits
 }
 ```
 
+## Zur weiteren Lektüre (deutsch)
+Mit dem Tutorial auf [Programmieren lernen mit JavaScript](https://programmieren-lernen-mit-javascript.ch) kannst du selbständig, anhand diverser Übungen und Beispiele, spielerisch lernen zu programmieren. Verwendet wir dazu [P5.js](https://learnxinyminutes.com/docs/p5/). Das ist ein Werkzeug um 2D Grafiken zu zeichnen und animieren, sowie einfache interaktive 2D Spiele zu programmieren.
+
 ## Zur weiteren Lektüre (englisch)
 
 Das [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) bietet eine ausgezeichnete Dokumentation für die Verwendung von JavaScript im Browser. Es ist außerdem ein Wiki und ermöglicht es damit anderen zu helfen, wenn man selbst ein wenig Wissen angesammelt hat.
