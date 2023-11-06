@@ -873,10 +873,10 @@ if __name__ == '__main__':
     sup = Superhero(name="Tick")
 
     # Instance type checks
-    if isinstance(sup, Human):
-        print('I am human')
-    if type(sup) is Superhero:
-        print('I am a superhero')
+    if type(sup) is Superhero && type(sup) is not Human:
+        print('I am not just a human but a superhero')
+    if isinstance(sup, Superhero) && isinstance(sup, Human):
+        print('I am still a human too though'
 
     # Get the "Method Resolution Order" used by both getattr() and super()
     # (the order in which classes are searched for an attribute or method)
