@@ -199,6 +199,9 @@ class GenericExample<T>{
 const example8List = ["Example8 const array"];
 const  example8Map = {"someKey": "Example8 const map"};
 /// Declare List or Maps as Objects.
+/// The List constructor will not be available when null safety is enabled, and might result in a
+/// runtime error if you try to add a null value to a list.
+/// Null safety prevents errors that result from unintentional access of variables set to null.
  List<String> explicitList = new List<String>();
  Map<String,dynamic> explicitMaps = new Map<String,dynamic>();
 
