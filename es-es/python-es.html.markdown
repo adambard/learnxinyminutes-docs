@@ -421,7 +421,7 @@ map(sumar_10, [1,2,3]) #=> [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
 # Podemos usar listas por comprensión para mapeos y filtros agradables
-[add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
+[sumar_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 # también hay diccionarios
 {k:k**2 for k in range(3)} #=> {0: 0, 1: 1, 2: 4}
