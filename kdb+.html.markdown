@@ -76,7 +76,7 @@ floor 3.14159 / => 3
 / ...getting the absolute value...
 abs -3.14159 / => 3.14159
 / ...and many other things
-/ see http://code.kx.com/q/ref/card/ for more
+/ see http://code.kx.com/q/ref/ for more
 
 / q has no operator precedence, everything is evaluated right to left
 / so results like this might take some getting used to
@@ -715,8 +715,8 @@ first each (1 2 3;4 5 6;7 8 9)
 {x + y}\[1 2 3 4 5] / => 1 3 6 10 15 (i.e. the running sum)
 {x + y}/[1 2 3 4 5] / => 15 (only the final result)
 
-/ There are other adverbs and uses, this is only intended as quick overview
-/ http://code.kx.com/q4m3/6_Functions/#67-adverbs
+/ There are other iterators (previously adverbs) and uses, this is only intended as quick overview
+/ http://code.kx.com/q4m3/6_Functions/#67-iterators
 
 ////// Scripts //////
 / q scripts can be loaded from a q session using the "\l" command
