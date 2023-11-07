@@ -84,8 +84,8 @@ div(class=myClass)
 
 //- JS Styles
 - const myStyles = {'color':'white', 'background-color':'blue'}
-div(styles=myStyles)
-//- <div styles="{&quot;color&quot;:&quot;white&quot;,&quot;background-color&quot;:&quot;blue&quot;}"></div>
+div(style=myStyles)
+//- <div style="color:white;background-color:blue;"></div>
 
 //- JS Attributes
 - const myAttributes = {"src": "photo.png", "alt": "My Photo"}
@@ -158,13 +158,13 @@ case orderStatus
 //- <p class="warn">Your order is pending</p>
 
 //- --INCLUDE--
-//- File path -> "includes/nav.png"
+//- File path -> "includes/nav.pug"
 h1 Company Name
 nav
   a(href="index.html") Home
   a(href="about.html") About Us
 
-//- File path -> "index.png"
+//- File path -> "index.pug"
 html
   body
     include includes/nav.pug
