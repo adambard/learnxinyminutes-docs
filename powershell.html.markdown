@@ -307,7 +307,7 @@ $filledHash.Values  # => [1, 2, 3]
 
 # Check for existence of keys or values in a hash with "-in"
 "one" -in $filledHash.Keys  # => True
-1 -in $filledHash.Values    # => False
+1 -in $filledHash.Values    # => True
 
 # Looking up a non-existing key returns $null
 $filledHash["four"]  # $null
