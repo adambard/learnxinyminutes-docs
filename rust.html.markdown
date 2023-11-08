@@ -353,3 +353,7 @@ irc.mozilla.org are also always keen to help newcomers.
 You can also try out features of Rust with an online compiler at the official
 [Rust playpen](http://play.rust-lang.org) or on the main
 [Rust website](http://rust-lang.org).
+
+If you're looking for Rust projects to build, CodeCrafters has a 
+[Rust track](https://app.codecrafters.io/tracks/rust) where you can recreate
+popular developer tools from scratch in Rust (e.g Build your own BitTorrent).
