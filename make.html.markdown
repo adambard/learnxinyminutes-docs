@@ -4,6 +4,7 @@ tool: make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
+    - ["Chris Harding", "https://github.com/sjrct"]
 filename: Makefile
 ---
 
@@ -187,7 +188,7 @@ echo_inbuilt:
 # only evaluated once. (This is a GNU make extension)
 
 var := hello
-var2 ::=  $(var) hello
+var2 ::= $(var) hello
 #:= and ::= are equivalent.
 
 # These variables are evaluated procedurally (in the order that they
@@ -214,6 +215,15 @@ ls:	* src/*
 	@echo $(notdir $^)
 	@echo $(join $(dir $^),$(notdir $^))
 
+# You can call custom functions with the `call` builtin. Arguments are
+# assigned to the variables $1, $2, $3, etc.
+
+to_upper = $(shell echo $1 | tr '[:lower:]' '[:upper:]')
+
+shout:
+	# call takes the name of the function as its first argument
+	@echo $(call to_upper,hello everybody)
+
 #-----------------------------------------------------------------------
 # Directives
 #-----------------------------------------------------------------------
@@ -237,6 +247,32 @@ foo = true
 ifdef $(foo)
 bar = 'hello'
 endif
+
+#-----------------------------------------------------------------------
+# Programmatically generated dependency rules
+#-----------------------------------------------------------------------
+
+# Some compilers will generate dependency rules so that a source file will
+# be recompiled whenever that file's dependencies are changed.
+
+# An example using gcc
+%.o: %.c
+	# -M tells gcc to write out a dependency rule for the given input file
+	# -MF tells gcc to write that dependency rule to a file with the .d suffix
+	gcc -M -MF $<.d $<
+
+	# Then compile the file separately
+	gcc -c -o $@ $<
+
+# Include the generated dependency files. The `-` prevents an error from
+# occurring when no .d files have been generated yet.
+-include *.d
+
+# Then if for example we compile a file called `test.c` that includes
+# `test.h` a file called `test.c.d` will be created that looks like this:
+test.o: test.c test.h
+
+# So then modifying `test.h` will cause `test.c` to be recompiled.
 ```
 
 ### More Resources
