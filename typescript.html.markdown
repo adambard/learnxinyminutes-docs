@@ -100,6 +100,11 @@ mySearch = function (src: string, sub: string) {
   return src.search(sub) != -1;
 }
 
+// pass option of `string | undefined` to a function
+function printConfigPath(cfgPath: string | undefined): void {
+  console.log("The config is at: ", cfgPath!); // use `!` to unwrap type
+}
+
 // Classes - members are public by default
 class Point {
   // Properties
