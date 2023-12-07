@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -23,10 +23,10 @@ y otras características más.
 # No hay comentarios multilinea,
 # pero se pueden apilar varios comentarios.
 
-# Para usar el shell de elixir se usa el comando `iex`.
+# Para usar el shell de Elixir se usa el comando `iex`.
 # Los módulos se compilan con el comando `elixirc`.
 
-# Ambos deberían estar en la ruta si elixir se instaló correctamente.
+# Ambos deberían estar en la ruta si Elixir se instaló correctamente.
 
 ## ---------------------------
 ## -- Tipos básicos
@@ -55,7 +55,7 @@ elem({1, 2, 3}, 0) #=> 1
 head #=> 1
 tail #=> [2,3]
 
-# En elixir, solo como Erlang, el `=` denota la coincidencia de patrones y
+# En Elixir, solo como Erlang, el `=` denota la coincidencia de patrones y
 # no una asignación.
 #
 # This is how the above example of accessing the head and tail of a list works.
@@ -87,7 +87,7 @@ string.
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
 
-# `?a` en elixir devuelve el valor ASCII para el caracter `a`
+# `?a` en Elixir devuelve el valor ASCII para el caracter `a`
 ?a #=> 97
 
 # Para concatenar listas se usa `++`, para binarios `<>`
@@ -120,7 +120,7 @@ genders.gillian #=> "female"
 5 * 2  #=> 10
 10 / 2 #=> 5.0
 
-# En elixir el operador `/` siempre devuelve un número flotante
+# En Elixir el operador `/` siempre devuelve un número flotante
 
 # Para hacer la división de número entero se debe usar `div`
 div(10, 2) #=> 5
@@ -175,7 +175,7 @@ else
 end
 
 # Se acuerda de la coincidencia de patrones?
-# Muchas estructuras de control de flujo en elixir confían en ella.
+# Muchas estructuras de control de flujo en Elixir confían en ella.
 
 # `case` permite comparar un valor con muchos patrones:
 case {:one, :two} do
@@ -305,7 +305,7 @@ Geometry.area({:circle, 3})       #=> 28.25999999999999801048
 # Geometry.area({:circle, "not_a_number"})
 #=> ** (FunctionClauseError) no function clause matching in Geometry.area/1
 
-# Debido a la inmutabilidad, la recursión es una gran parte de elixir
+# Debido a la inmutabilidad, la recursión es una gran parte de Elixir
 defmodule Recursion do
   def sum_list([head | tail], acc) do
     sum_list(tail, acc + head)
@@ -380,7 +380,7 @@ end
 ## ---------------------------
 
 # Elixir confía en el modelo actor para la concurrencia. Todo lo que se necesita para escribir
-# programas concurrentes en elixir son tres primitivas: procesos de desove,
+# programas concurrentes en Elixir son tres primitivas: procesos de desove,
 # envío de mensajes y recepción de mensajes.
 
 # Para empezar un nuevo proceso se usa la función `spawn`,
