@@ -42,7 +42,7 @@ contributors:
     ;; To set them to a value, we can use <type>.const:
 
     (local.set $int_32 (i32.const 16))
-    (local.set $int_32 (i64.const 128))
+    (local.set $int_64 (i64.const 128))
     (local.set $float_32 (f32.const 3.14))
     (local.set $float_64 (f64.const 1.28))
   )

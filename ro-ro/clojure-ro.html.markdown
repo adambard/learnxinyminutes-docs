@@ -380,7 +380,7 @@ Clojuredocs.org contine documentatie cu exemple pentru majoritatea functiilor de
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
 4Clojure este o metoda excelenta pentru a exersa Clojure/FP (Programarea Functionala):
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org are un numar de article pentru incepatori:
 [http://clojure-doc.org/](http://clojure-doc.org/)

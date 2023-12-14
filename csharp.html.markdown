@@ -1,5 +1,5 @@
 ---
-language: c#
+language: C#
 contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
     - ["Max Yankov", "https://github.com/golergka"]
@@ -12,9 +12,9 @@ contributors:
 filename: LearnCSharp.cs
 ---
 
-C# is an elegant and type-safe object-oriented language that enables developers to build a variety of secure and robust applications that run on the .NET Framework.
+C# is an elegant and type-safe object-oriented language that enables developers to build a variety of secure and robust applications that run on the cross-platform .NET framework.
 
-[Read more here.](https://docs.microsoft.com/dotnet/csharp/getting-started/introduction-to-the-csharp-language-and-the-net-framework)
+[Read more here.](https://docs.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/)
 
 ```c#
 // Single-line comments start with //
@@ -29,7 +29,7 @@ Multi-line comments look like this
 /// </summary>
 /// <param name="firstParam">This is some parameter documentation for firstParam</param>
 /// <returns>Information on the returned value of a function</returns>
-public void MethodOrClassOrOtherWithParsableHelp(string firstParam) {}
+public void MethodOrClassOrOtherWithParsableHelp(string firstParam) { }
 
 // Specify the namespaces this source code will be using
 // The namespaces below are all part of the standard .NET Framework Class Library
@@ -48,6 +48,10 @@ using System.Data.Entity;
 
 // Namespaces define scope to organize code into "packages" or "modules"
 // Using this code from another source file: using Learning.CSharp;
+
+// You can also do this in C# 10, it is called file-scoped namespaces.
+// namespace Learning.CSharp;
+
 namespace Learning.CSharp
 {
     // Each .cs file should at least contain a class with the same name as the file.
@@ -154,7 +158,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // Arrays - zero indexed
             // The array size must be decided upon declaration
-            // The format for declaring an array is follows:
+            // The format for declaring an array is
             // <datatype>[] <var name> = new <datatype>[<array size>];
             int[] intArray = new int[10];
 
@@ -168,7 +172,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // Lists
             // Lists are used more frequently than arrays as they are more flexible
-            // The format for declaring a list is follows:
+            // The format for declaring a list is
             // List<datatype> <var name> = new List<datatype>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
@@ -178,14 +182,14 @@ on a new line! ""Wow!"", the masses cried";
             // Lists don't default to a value;
             // A value must be added before accessing the index
             intList.Add(1);
-            Console.WriteLine("intList @ 0: " + intList[0]);
+            Console.WriteLine("intList at 0: " + intList[0]);
 
-            // Others data structures to check out:
+            // Other data structures to check out:
             // Stack/Queue
             // Dictionary (an implementation of a hash map)
             // HashSet
             // Read-only Collections
-            // Tuple (.Net 4+)
+            // Tuple (.NET 4+)
 
             ///////////////////////////////////////
             // Operators
@@ -218,20 +222,20 @@ on a new line! ""Wow!"", the masses cried";
             |       Bitwise inclusive OR
             */
 
-            // Incrementations
+            // Incrementing
             int i = 0;
-            Console.WriteLine("\n->Inc/Dec-rementation");
-            Console.WriteLine(i++); //Prints "0", i = 1. Post-Incrementation
-            Console.WriteLine(++i); //Prints "2", i = 2. Pre-Incrementation
-            Console.WriteLine(i--); //Prints "2", i = 1. Post-Decrementation
-            Console.WriteLine(--i); //Prints "0", i = 0. Pre-Decrementation
+            Console.WriteLine("\n->Inc/Dec-rement");
+            Console.WriteLine(i++); //Prints "0", i = 1. Post-Increment
+            Console.WriteLine(++i); //Prints "2", i = 2. Pre-Increment
+            Console.WriteLine(i--); //Prints "2", i = 1. Post-Decrement
+            Console.WriteLine(--i); //Prints "0", i = 0. Pre-Decrement
 
             ///////////////////////////////////////
             // Control Structures
             ///////////////////////////////////////
             Console.WriteLine("\n->Control Structures");
 
-            // If statements are c-like
+            // If statements are C-like
             int j = 10;
             if (j == 10)
             {
@@ -284,7 +288,7 @@ on a new line! ""Wow!"", the masses cried";
             // For Each Loop
             // foreach loop structure => foreach(<iteratorType> <iteratorName> in <enumerable>)
             // The foreach loop loops over any object implementing IEnumerable or IEnumerable<T>
-            // All the collection types (Array, List, Dictionary...) in the .Net framework
+            // All the collection types (Array, List, Dictionary...) in the .NET framework
             // implement one or both of these interfaces.
             // (The ToCharArray() could be removed, because a string also implements IEnumerable)
             foreach (char character in "Hello World".ToCharArray())
@@ -293,7 +297,7 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             // Switch Case
-            // A switch works with the byte, short, char, and int data types.
+            // A switch works with byte, short, char, and int data types.
             // It also works with enumerated types (discussed in Enum Types),
             // the String class, and a few special classes that wrap
             // primitive types: Character, Byte, Short, and Integer.
@@ -312,7 +316,7 @@ on a new line! ""Wow!"", the masses cried";
                     break;
                 // You can assign more than one case to an action
                 // But you can't add an action without a break before another case
-                // (if you want to do this, you would have to explicitly add a goto case x
+                // (if you want to do this, you would have to explicitly add a goto case x)
                 case 6:
                 case 7:
                 case 8:
@@ -333,16 +337,25 @@ on a new line! ""Wow!"", the masses cried";
             // this will throw a FormatException on failure
             int.Parse("123"); // returns an integer version of "123"
 
-            // try parse will default to type default on failure
-            // in this case: 0
+            // TryParse will default to the type's default value on failure
+            // in this case 0
             int tryInt;
             if (int.TryParse("123", out tryInt)) // Function is boolean
                 Console.WriteLine(tryInt);       // 123
 
             // Convert Integer To String
-            // Convert class has a number of methods to facilitate conversions
+            // The Convert class has a number of methods to facilitate conversions
+
+            // String to int
+
+            // Better
+            bool result = int.TryParse(string, out var integer)
+            int.Parse(string);
+
+            // Not recommended
             Convert.ToString(123);
-            // or
+
+            // Int to string
             tryInt.ToString();
 
             // Casting
@@ -374,6 +387,9 @@ on a new line! ""Wow!"", the masses cried";
 
             Console.Read();
         } // End main method
+
+        // Available in C# 9 and later, this is basically syntactic sugar for a class. Records are immutable*.
+        public record ARecord(string Csharp);
 
         // CONSOLE ENTRY - A console application must have a main method as an entry point
         public static void Main(string[] args)
@@ -412,7 +428,7 @@ on a new line! ""Wow!"", the masses cried";
 
         // GENERICS
         // The classes for TKey and TValue is specified by the user calling this function.
-        // This method emulates the SetDefault of Python
+        // This method emulates Python's dict.setdefault()
         public static TValue SetDefault<TKey, TValue>(
             IDictionary<TKey, TValue> dictionary,
             TKey key,
@@ -744,7 +760,7 @@ on a new line! ""Wow!"", the masses cried";
             Gitane // 43
         }
         // We defined this type inside a Bicycle class, so it is a nested type
-        // Code outside of this class should reference this type as Bicycle.Brand
+        // Code outside of this class should reference this type as Bicycle.BikeBrand
 
         public BikeBrand Brand; // After declaring an enum type, we can declare the field of this type
 
@@ -1299,16 +1315,27 @@ namespace Csharp7
 ```
 
 ## Topics Not Covered
+✨ New, 👍 Old, 🎈 LTS, 🔥 Cross-platform, 🎁 Windows-only
 
  * Attributes
- * async/await
+
+ * Asynchronous Programming
+
  * Web Development
- 	* ASP.NET MVC & WebApi (new)
- 	* ASP.NET Web Forms (old)
- 	* WebMatrix (tool)
+    * ASP.NET Core ✨
+
  * Desktop Development
- 	* Windows Presentation Foundation (WPF) (new)
- 	* Winforms (old)
+ 	* Windows Presentation Foundation 👍 🎈 🎁
+    * Universal Windows Platform ✨ 🎁
+    * Uno Platform 🔥 ✨
+ 	* WinForms 👍 🎈 🎁
+    * Avalonia 🔥 ✨
+    * WinUI ✨ 🎁
+
+* Cross-platform Development
+    * Xamarin.Forms 👍
+    * MAUI ✨
+
 
 ## Further Reading
 

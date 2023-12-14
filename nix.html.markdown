@@ -355,7 +355,7 @@ with builtins; [
   # its contents. You can read files from anywhere. In this example,
   # we write a file into the store, and then read it back out.
   (let filename = toFile "foo.txt" "hello!"; in
-    [filename (builtins.readFile filename)])
+    [filename (readFile filename)])
   #=> [ "/nix/store/ayh05aay2anx135prqp0cy34h891247x-foo.txt" "hello!" ]
 
   # We can also download files into the Nix store.
@@ -373,5 +373,8 @@ with builtins; [
 * [James Fisher - Nix by example - Part 1: The Nix expression language]
   (https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
 
+* [Susan Potter - Nix Cookbook - Nix By Example]
+  (https://ops.functionalalgebra.com/nix-by-example/)
+  
 * [Rommel Martinez - A Gentle Introduction to the Nix Family]
-  (https://ebzzry.io/en/nix/#nix)
+  (https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)

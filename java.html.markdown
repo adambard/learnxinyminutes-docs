@@ -91,6 +91,9 @@ public class LearnJava {
         int numInt = scanner.nextInt();
 
         // read long input
+        long numLong = scanner.nextLong();
+
+        // read float input
         float numFloat = scanner.nextFloat();
 
         // read double input
@@ -123,6 +126,9 @@ public class LearnJava {
         // <name1> = <name2> = <name3> = <val>
         int barInt1, barInt2, barInt3;
         barInt1 = barInt2 = barInt3 = 1;
+	// Shorthand for multiple declarations
+	int barInt4 = 1, barInt5 = 2; 
+
 
         /*
         *  Variable types
@@ -182,7 +188,7 @@ public class LearnJava {
         //
         // BigInteger is a data type that allows programmers to manipulate
         // integers longer than 64-bits. Integers are stored as an array of
-        // of bytes and are manipulated using functions built into BigInteger
+        // bytes and are manipulated using functions built into BigInteger
         //
         // BigInteger can be initialized using an array of bytes or a string.
         BigInteger fooBigInteger = new BigInteger(fooByteArray);
@@ -304,8 +310,8 @@ public class LearnJava {
         ///////////////////////////////////////
         System.out.println("\n->Operators");
 
-        int i1 = 1, i2 = 2; // Shorthand for multiple declarations
-
+	int i1 = 1, i2 = 2;
+	
         // Arithmetic is straightforward
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
@@ -314,7 +320,7 @@ public class LearnJava {
         System.out.println("1/2.0 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
-        System.out.println("11%3 = "+(11 % 3)); // => 2
+        System.out.println("11%3 = " + (11 % 3)); // => 2
 
         // Comparison operators
         System.out.println("3 == 2? " + (3 == 2)); // => false
@@ -368,7 +374,7 @@ public class LearnJava {
 
         // While loop
         int fooWhile = 0;
-        while(fooWhile < 100) {
+        while (fooWhile < 100) {
             System.out.println(fooWhile);
             // Increment the counter
             // Iterated 100 times, fooWhile 0,1,2...99
@@ -383,7 +389,7 @@ public class LearnJava {
             // Increment the counter
             // Iterated 100 times, fooDoWhile 0->99
             fooDoWhile++;
-        } while(fooDoWhile < 100);
+        } while (fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
 
         // For Loop
@@ -510,10 +516,12 @@ public class LearnJava {
 
         // toString returns this Object's string representation.
         System.out.println("trek info: " + trek.toString());
+    } // End main method
 
+    private static class TestInitialization {
         // Double Brace Initialization
-        // The Java Language has no syntax for how to create static Collections
-        // in an easy way. Usually you end up in the following way:
+        // Before Java 11, the Java Language had no syntax for how to create
+        // static Collections in an easy way. Usually you end up like this:
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
            COUNTRIES.add("DENMARK");
@@ -521,10 +529,10 @@ public class LearnJava {
            COUNTRIES.add("FINLAND");
         }
 
-        // But there's a nifty way to achieve the same thing in an
-        // easier way, by using something that is called Double Brace
-        // Initialization.
-        private static final Set<String> COUNTRIES = new HashSet<String>() {{
+        // There's a nifty way to achieve the same thing, 
+        // by using something that is called Double Brace Initialization.
+        private static final Set<String> COUNTRIES_DOUBLE_BRACE = 
+        new HashSet<String>() {{
             add("DENMARK");
             add("SWEDEN");
             add("FINLAND");
@@ -535,8 +543,45 @@ public class LearnJava {
         // is called when the anonymous inner class is created.
         // This does not only work for Collections, it works for all
         // non-final classes.
+        
 
-    } // End main method
+        // Another option was to initialize the Collection from an array,
+        // using Arrays.asList() method:
+        private static final List<String> COUNTRIES_AS_LIST = 
+                        Arrays.asList("SWEDEN", "DENMARK", "NORWAY");
+        // This has one catch: the list we get is internally backed by the array,
+        // and since arrays can't change their size, the list backed by the array
+        // is not resizeable, which means we can't add new elements to it: 
+        public static void main(String[] args) {
+            COUNTRIES.add("FINLAND"); // throws UnsupportedOperationException!
+            // However, we can replace elements by index, just like in array: 
+            COUNTRIES.set(1, "FINLAND");
+            System.out.println(COUNTRIES); // prints [SWEDEN, FINLAND, NORWAY]
+        }
+        // The resizing problem can be circumvented 
+        // by creating another Collection from the List:
+         private static final Set<String> COUNTRIES_SET = 
+                new HashSet<>(Arrays.asList("SWEDEN", "DENMARK", "NORWAY"));
+        // It's perfectly fine to add anything to the Set of COUNTRIES now. 
+    } // End TestInitialization class
+
+    private static class TestJava11Initialization {
+        // Since Java 11, there is a convenient option to initialize Collections:
+        // Set.of() and List.of() methods. 
+        private static final Set<String> COUNTRIES = 
+                Set.of("SWEDEN", "DENMARK", "NORWAY");
+        // There is a massive catch, though: Lists and Sets initialized like this 
+        // 1) are immutable 
+        // 2) can't contain null elements (even check for null elements fails)!
+        public static void main(String[] args) {
+            COUNTRIES.add("FINLAND"); // throws UnsupportedOperationException
+            COUNTRIES.remove("NORWAY"); // throws UnsupportedOperationException 
+            COUNTRIES.contains(null); // throws NullPointerException
+        }
+        private static final Set<String> COUNTRIES_WITH_NULL = 
+                    Set.of("SWEDEN", null, "NORWAY"); // throws NullPointerException
+
+    } // End TestJava11Initialization class
 } // End LearnJava class
 
 // You can include other, non-public outer-level classes in a .java file,

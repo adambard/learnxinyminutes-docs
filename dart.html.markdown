@@ -45,7 +45,7 @@ const CONSTANT_VALUE = "I CANNOT CHANGE";
 CONSTANT_VALUE = "DID I?"; //Error
 /// Final is another variable declaration that cannot be change once it has been instantiated. Commonly used in classes and functions
 /// `final` can be declared in pascalCase.
-final finalValue = "value cannot be change once instantiated";
+final finalValue = "value cannot be changed once instantiated";
 finalValue = "Seems not"; //Error
 
 /// `var` is another variable declaration that is mutable and can change its value. Dart will infer types and will not change its data type
@@ -77,13 +77,12 @@ example1() {
   nested1();
 }
 
-/// Anonymous functions don't include a name but can take number of arguments
+/// Anonymous functions don't include a name
 example2() {
   //// Explicit return type.
-  nested1(Function<void> fn) {
+  nested1(void Function() fn) {
     fn();
   }
-
   nested1(() => print("Example2 nested 1"));
 }
 
@@ -717,6 +716,6 @@ main() {
 ## Further Reading
 
 Dart has a comprehensive web-site. It covers API reference, tutorials, articles and more, including a
-useful Try Dart online.
-[https://www.dartlang.org](https://www.dartlang.org)
-[https://try.dartlang.org](https://try.dartlang.org)
+useful DartPad (a cloud-based Dart coding playground).
+[https://dart.dev/](https://dart.dev)
+[https://dartpad.dev/](https://dartpad.dev)

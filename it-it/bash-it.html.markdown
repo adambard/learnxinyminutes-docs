@@ -22,7 +22,7 @@ translators:
 lang: it-it
 ---
 
-Bash è il nome della shell di unix, la quale è stata distribuita anche come shell del sistema oprativo GNU e la shell di default su Linux e Mac OS X.
+Bash è il nome della shell di unix, la quale è stata distribuita anche come shell del sistema oprativo GNU e la shell di default su Linux e macOS.
 Quasi tutti gli esempi sottostanti possono fare parte di uno shell script o eseguiti direttamente nella shell.
 
 [Per saperne di più.](http://www.gnu.org/software/bash/manual/bashref.html)

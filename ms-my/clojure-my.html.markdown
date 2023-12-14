@@ -413,7 +413,7 @@ Clojuredocs.org mempunyai dokumentasi berserta contoh untuk menggunakan kebanyak
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
 4Clojure ialah cara yang baik untuk mengasah skill Clojure dan functional programming:
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org (yup, serius) juga mengandungi beberapa artikel sebagai permulaan:
 [http://clojure-doc.org/](http://clojure-doc.org/)

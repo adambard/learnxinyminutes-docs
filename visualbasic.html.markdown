@@ -102,7 +102,8 @@ Module Module1
         Console.WriteLine("Hello, What is your name? ") 'Ask the user their name.
         username = Console.ReadLine() 'Stores the users name.
         Console.WriteLine("Hello " + username) 'Output is Hello 'Their name'
-        Console.ReadLine() 'Outputs the above.
+        Console.ReadLine() 'Pauses the execution for user to read 
+       
         'The above will ask you a question followed by printing your answer.
         'Other variables include Integer and we use Integer for whole numbers.
     End Sub

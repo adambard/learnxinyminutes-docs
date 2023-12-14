@@ -41,7 +41,7 @@ Evaluation is done via
 which is essentially lexically-scoped substitution.
 
 When evaluating the
-expression `(λx.x)a`, we replace all occurences of "x" in the function's body
+expression `(λx.x)a`, we replace all occurrences of "x" in the function's body
 with "a".
 
 - `(λx.x)a` evaluates to: `a`
@@ -131,7 +131,7 @@ We can convert an expression in the lambda calculus to an expression
 in the SKI combinator calculus:
 
 1. `λx.x = I`
-2. `λx.c = Kc`
+2. `λx.c = Kc` provided that `x` does not occur free in `c`
 3. `λx.(y z) = S (λx.y) (λx.z)`
 
 Take the church number 2 for example:

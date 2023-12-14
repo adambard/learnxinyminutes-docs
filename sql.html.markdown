@@ -95,7 +95,7 @@ UPDATE tablename1 SET fname='John' WHERE lname='Mutt';
 
 -- Delete rows from the tablename1 table
 -- where the lname value begins with 'M'.
-DELETE FROM tablename1 WHERE lname like 'M%';
+DELETE FROM tablename1 WHERE lname LIKE 'M%';
 
 -- Delete all rows from the tablename1 table, leaving the empty table.
 DELETE FROM tablename1;

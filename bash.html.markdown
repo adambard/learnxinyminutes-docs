@@ -17,6 +17,8 @@ contributors:
     - ["John Detter", "https://github.com/jdetter"]
     - ["Harry Mumford-Turner", "https://github.com/harrymt"]
     - ["Martin Nicholson", "https://github.com/mn113"]
+    - ["Mark Grimwood", "https://github.com/MarkGrimwood"]
+    - ["Emily Grace Seville", "https://github.com/EmilySeville7cfg"]
 filename: LearnBash.sh
 translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
@@ -27,113 +29,116 @@ for the GNU operating system and as the default shell on most Linux distros.
 Nearly all examples below can be a part of a shell script
 or executed directly in the shell.
 
-[Read more here.](http://www.gnu.org/software/bash/manual/bashref.html)
+[Read more here.](https://www.gnu.org/software/bash/manual/bashref.html)
 
 ```bash
 #!/usr/bin/env bash
 # First line of the script is the shebang which tells the system how to execute
-# the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
+# the script: https://en.wikipedia.org/wiki/Shebang_(Unix)
 # As you already figured, comments start with #. Shebang is also a comment.
 
 # Simple hello world example:
-echo Hello world! # => Hello world!
+echo "Hello world!" # => Hello world!
 
 # Each command starts on a new line, or after a semicolon:
-echo 'This is the first line'; echo 'This is the second line'
-# => This is the first line
-# => This is the second line
+echo "This is the first command"; echo "This is the second command"
+# => This is the first command
+# => This is the second command
 
 # Declaring a variable looks like this:
-Variable="Some string"
+variable="Some string"
 
 # But not like this:
-Variable = "Some string" # => returns error "Variable: command not found"
-# Bash will decide that Variable is a command it must execute and give an error
+variable = "Some string" # => returns error "variable: command not found"
+# Bash will decide that `variable` is a command it must execute and give an error
 # because it can't be found.
 
 # Nor like this:
-Variable= 'Some string' # => returns error: "Some string: command not found"
-# Bash will decide that 'Some string' is a command it must execute and give an
-# error because it can't be found. (In this case the 'Variable=' part is seen
-# as a variable assignment valid only for the scope of the 'Some string'
-# command.)
+variable= "Some string" # => returns error: "Some string: command not found"
+# Bash will decide that "Some string" is a command it must execute and give an
+# error because it can't be found. In this case the "variable=" part is seen
+# as a variable assignment valid only for the scope of the "Some string"
+# command.
 
 # Using the variable:
-echo $Variable # => Some string
-echo "$Variable" # => Some string
-echo '$Variable' # => $Variable
-# When you use the variable itself — assign it, export it, or else — you write
+echo "$variable" # => Some string
+echo '$variable' # => $variable
+# When you use a variable itself — assign it, export it, or else — you write
 # its name without $. If you want to use the variable's value, you should use $.
 # Note that ' (single quote) won't expand the variables!
+# You can write variable without surrounding quotes but it's not recommended.
 
-# Parameter expansion ${ }:
-echo ${Variable} # => Some string
-# This is a simple usage of parameter expansion
-# Parameter Expansion gets a value from a variable.
-# It "expands" or prints the value
-# During the expansion time the value or parameter can be modified
-# Below are other modifications that add onto this expansion
+# Parameter expansion ${...}:
+echo "${variable}" # => Some string
+# This is a simple usage of parameter expansion such as two examples above.
+# Parameter expansion gets a value from a variable.
+# It "expands" or prints the value.
+# During the expansion time the value or parameter can be modified.
+# Below are other modifications that add onto this expansion.
 
-# String substitution in variables
-echo ${Variable/Some/A} # => A string
-# This will substitute the first occurrence of "Some" with "A"
+# String substitution in variables:
+echo "${variable/Some/A}" # => A string
+# This will substitute the first occurrence of "Some" with "A".
 
-# Substring from a variable
-Length=7
-echo ${Variable:0:Length} # => Some st
+# Substring from a variable:
+length=7
+echo "${variable:0:length}" # => Some st
 # This will return only the first 7 characters of the value
-echo ${Variable: -5} # => tring
-# This will return the last 5 characters (note the space before -5)
+echo "${variable: -5}" # => tring
+# This will return the last 5 characters (note the space before -5).
+# The space before minus is mandatory here.
 
-# String length
-echo ${#Variable} # => 11
+# String length:
+echo "${#variable}" # => 11
 
-# Indirect expansion
-OtherVariable="Variable"
-echo ${!OtherVariable} # => Some String
-# This will expand the value of OtherVariable
+# Indirect expansion:
+other_variable="variable"
+echo ${!other_variable} # => Some string
+# This will expand the value of `other_variable`.
 
-# Default value for variable
-echo ${Foo:-"DefaultValueIfFooIsMissingOrEmpty"}
+# The default value for variable:
+echo "${foo:-"DefaultValueIfFooIsMissingOrEmpty"}"
 # => DefaultValueIfFooIsMissingOrEmpty
-# This works for null (Foo=) and empty string (Foo=""); zero (Foo=0) returns 0.
+# This works for null (foo=) and empty string (foo=""); zero (foo=0) returns 0.
 # Note that it only returns default value and doesn't change variable value.
 
-# Declare an array with 6 elements
-array0=(one two three four five six)
-# Print first element
-echo $array0 # => "one"
-# Print first element
-echo ${array0[0]} # => "one"
-# Print all elements
-echo ${array0[@]} # => "one two three four five six"
-# Print number of elements
-echo ${#array0[@]} # => "6"
-# Print number of characters in third element
-echo ${#array0[2]} # => "5"
-# Print 2 elements starting from forth
-echo ${array0[@]:3:2} # => "four five"
-# Print all elements. Each of them on new line.
-for i in "${array0[@]}"; do
-    echo "$i"
+# Declare an array with 6 elements:
+array=(one two three four five six)
+# Print the first element:
+echo "${array[0]}" # => "one"
+# Print all elements:
+echo "${array[@]}" # => "one two three four five six"
+# Print the number of elements:
+echo "${#array[@]}" # => "6"
+# Print the number of characters in third element
+echo "${#array[2]}" # => "5"
+# Print 2 elements starting from fourth:
+echo "${array[@]:3:2}" # => "four five"
+# Print all elements each of them on new line.
+for item in "${array[@]}"; do
+    echo "$item"
 done
 
-# Brace Expansion { }
-# Used to generate arbitrary strings
-echo {1..10} # => 1 2 3 4 5 6 7 8 9 10
-echo {a..z} # => a b c d e f g h i j k l m n o p q r s t u v w x y z
-# This will output the range from the start value to the end value
-
 # Built-in variables:
-# There are some useful built-in variables, like
+# There are some useful built-in variables, like:
 echo "Last program's return value: $?"
 echo "Script's PID: $$"
 echo "Number of arguments passed to script: $#"
 echo "All arguments passed to script: $@"
 echo "Script's arguments separated into different variables: $1 $2..."
 
+# Brace Expansion {...}
+# used to generate arbitrary strings:
+echo {1..10} # => 1 2 3 4 5 6 7 8 9 10
+echo {a..z} # => a b c d e f g h i j k l m n o p q r s t u v w x y z
+# This will output the range from the start value to the end value.
+# Note that you can't use variables here:
+from=1
+to=10
+echo {$from..$to} # => {$from..$to}
+
 # Now that we know how to echo and use variables,
-# let's learn some of the other basics of bash!
+# let's learn some of the other basics of Bash!
 
 # Our current directory is available through the command `pwd`.
 # `pwd` stands for "print working directory".
@@ -143,33 +148,46 @@ echo "I'm in $(pwd)" # execs `pwd` and interpolates output
 echo "I'm in $PWD" # interpolates the variable
 
 # If you get too much output in your terminal, or from a script, the command
-# `clear` clears your screen
+# `clear` clears your screen:
 clear
-# Ctrl-L also works for clearing output
+# Ctrl-L also works for clearing output.
 
 # Reading a value from input:
 echo "What's your name?"
-read Name # Note that we didn't need to declare a new variable
-echo Hello, $Name!
+read name
+# Note that we didn't need to declare a new variable.
+echo "Hello, $name!"
 
-# We have the usual if structure:
-# use `man test` for more info about conditionals
-if [ $Name != $USER ]
-then
+# We have the usual if structure.
+# Condition is true if the value of $name is not equal to the current user's login username:
+if [[ "$name" != "$USER" ]]; then
     echo "Your name isn't your username"
 else
     echo "Your name is your username"
 fi
-# True if the value of $Name is not equal to the current user's login username
 
-# NOTE: if $Name is empty, bash sees the above condition as:
-if [ != $USER ]
-# which is invalid syntax
-# so the "safe" way to use potentially empty variables in bash is:
-if [ "$Name" != $USER ] ...
-# which, when $Name is empty, is seen by bash as:
-if [ "" != $USER ] ...
-# which works as expected
+# To use && and || with if statements, you need multiple pairs of square brackets:
+read age
+if [[ "$name" == "Steve" ]] && [[ "$age" -eq 15 ]]; then
+    echo "This will run if $name is Steve AND $age is 15."
+fi
+
+if [[ "$name" == "Daniya" ]] || [[ "$name" == "Zach" ]]; then
+    echo "This will run if $name is Daniya OR Zach."
+fi
+# There are other comparison operators for numbers listed below:
+# -ne - not equal
+# -lt - less than
+# -gt - greater than
+# -le - less than or equal to
+# -ge - greater than or equal to
+
+# There is also the `=~` operator, which tests a string against the Regex pattern:
+email=me@example.com
+if [[ "$email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+then
+    echo "Valid email!"
+fi
 
 # There is also conditional execution
 echo "Always executed" || echo "Only executed if first command fails"
@@ -178,27 +196,19 @@ echo "Always executed" && echo "Only executed if first command does NOT fail"
 # => Always executed
 # => Only executed if first command does NOT fail
 
-
-# To use && and || with if statements, you need multiple pairs of square brackets:
-if [ "$Name" == "Steve" ] && [ "$Age" -eq 15 ]
-then
-    echo "This will run if $Name is Steve AND $Age is 15."
-fi
-
-if [ "$Name" == "Daniya" ] || [ "$Name" == "Zach" ]
-then
-    echo "This will run if $Name is Daniya OR Zach."
-fi
-
-# There is also the `=~` operator, which tests a string against a Regex pattern:
-Email=me@example.com
-if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
-then
-    echo "Valid email!"
-fi
-# Note that =~ only works within double [[ ]] square brackets,
-# which are subtly different from single [ ].
-# See http://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.
+# A single ampersand & after a command runs it in the background. A background command's
+# output is printed to the terminal, but it cannot read from the input.
+sleep 30 &
+# List background jobs
+jobs # => [1]+  Running                 sleep 30 &
+# Bring the background job to the foreground
+fg
+# Ctrl-C to kill the process, or Ctrl-Z to pause it
+# Resume a background process after it has been paused with Ctrl-Z
+bg
+# Kill job number 2
+kill %2
+# %1, %2, etc. can be used for fg and bg as well
 
 # Redefine command `ping` as alias to send only 5 packets
 alias ping='ping -c 5'
@@ -220,7 +230,8 @@ ls -l # Lists every file and directory on a separate line
 ls -t # Sorts the directory contents by last-modified date (descending)
 ls -R # Recursively `ls` this directory and all of its subdirectories
 
-# Results of the previous command can be passed to the next command as input.
+# Results (stdout) of the previous command can be passed as input (stdin) to the next command
+# using a pipe |. Commands chained in this way are called a "pipeline", and are run concurrently.
 # The `grep` command filters the input with provided patterns.
 # That's how we can list .txt files in the current directory:
 ls -l | grep "\.txt"
@@ -260,7 +271,7 @@ cd      # also goes to home directory
 cd ..   # go up one directory
         # (^^say, from /home/username/Downloads to /home/username)
 cd /home/username/Documents   # change to specified directory
-cd ~/Documents/..    # still in home directory..isn't it??
+cd ~/Documents/..    # now in home directory (if ~/Documents exists)
 cd -    # change to last directory
 # => /home/username/Documents
 
@@ -275,9 +286,13 @@ mkdir -p myNewDir/with/intermediate/directories
 # if the intermediate directories didn't already exist, running the above
 # command without the `-p` flag would return an error
 
-# You can redirect command input and output (stdin, stdout, and stderr).
+# You can redirect command input and output (stdin, stdout, and stderr)
+# using "redirection operators". Unlike a pipe, which passes output to a command,
+# a redirection operator has a command's input come from a file or stream, or
+# sends its output to a file or stream.
+
 # Read from stdin until ^EOF$ and overwrite hello.py with the lines
-# between "EOF":
+# between "EOF" (which are called a "here document"):
 cat > hello.py << EOF
 #!/usr/bin/env python
 from __future__ import print_function
@@ -299,6 +314,8 @@ python hello.py 2> "error.err" # redirect error output to error.err
 
 python hello.py > "output-and-error.log" 2>&1
 # redirect both output and errors to output-and-error.log
+# &1 means file descriptor 1 (stdout), so 2>&1 redirects stderr (2) to the current
+# destination of stdout (1), which has been redirected to output-and-error.log.
 
 python hello.py > /dev/null 2>&1
 # redirect all output and errors to the black hole, /dev/null, i.e., no output
@@ -325,6 +342,9 @@ echo "#helloworld" | tee output.out >/dev/null
 # WARNING: `rm` commands cannot be undone
 rm -v output.out error.err output-and-error.log
 rm -r tempDir/ # recursively delete
+# You can install the `trash-cli` Python package to have `trash`
+# which puts files in the system trash and doesn't delete them directly
+# see https://pypi.org/project/trash-cli/ if you want to be careful
 
 # Commands can be substituted within other commands using $( ):
 # The following command displays the number of files and directories in the
@@ -332,15 +352,15 @@ rm -r tempDir/ # recursively delete
 echo "There are $(ls | wc -l) items here."
 
 # The same can be done using backticks `` but they can't be nested -
-#the preferred way is to use $( ).
+# the preferred way is to use $( ).
 echo "There are `ls | wc -l` items here."
 
 # Bash uses a `case` statement that works similarly to switch in Java and C++:
 case "$Variable" in
-    #List patterns for the conditions you want to meet
+    # List patterns for the conditions you want to meet
     0) echo "There is a zero.";;
     1) echo "There is a one.";;
-    *) echo "It is not null.";;
+    *) echo "It is not null.";;  # match everything
 esac
 
 # `for` loops iterate for as many arguments given:
@@ -377,6 +397,13 @@ do
     cat "$Output"
 done
 
+# Bash can also accept patterns, like this to `cat`
+# all the Markdown files in current directory
+for Output in ./*.markdown
+do
+    cat "$Output"
+done
+
 # while loop:
 while [ true ]
 do
@@ -392,13 +419,17 @@ function foo ()
     echo "Arguments work just like script arguments: $@"
     echo "And: $1 $2..."
     echo "This is a function"
-    return 0
+    returnValue=0    # Variable values can be returned
+    return $returnValue
 }
 # Call the function `foo` with two arguments, arg1 and arg2:
 foo arg1 arg2
 # => Arguments work just like script arguments: arg1 arg2
 # => And: arg1 arg2...
 # => This is a function
+# Return values can be obtained with $?
+resultValue=$?
+# More than 9 arguments are also possible by using braces, e.g. ${10}, ${11}, ...
 
 # or simply
 bar ()
@@ -419,7 +450,7 @@ tail -n 10 file.txt
 # prints first 10 lines of file.txt
 head -n 10 file.txt
 
-# sort file.txt's lines
+# print file.txt's lines in sorted order
 sort file.txt
 
 # report or omit repeated lines, with -d it reports them
@@ -431,6 +462,8 @@ cut -d ',' -f 1 file.txt
 # replaces every occurrence of 'okay' with 'great' in file.txt
 # (regex compatible)
 sed -i 's/okay/great/g' file.txt
+# be aware that this -i flag means that file.txt will be changed
+# -i or --in-place erase the input file (use --in-place=.backup to keep a back-up)
 
 # print to stdout all lines of file.txt which match some regex
 # The example prints lines which begin with "foo" and end in "bar"
@@ -448,7 +481,7 @@ grep -rI "^foo.*bar$" someDir/ # recursively `grep`, but ignore binary files
 grep "^foo.*bar$" file.txt | grep -v "baz"
 
 # if you literally want to search for the string,
-# and not the regex, use fgrep (or grep -F)
+# and not the regex, use `fgrep` (or `grep -F`)
 fgrep "foobar" file.txt
 
 # The `trap` command allows you to execute a command whenever your script
@@ -457,6 +490,7 @@ fgrep "foobar" file.txt
 trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
 
 # `sudo` is used to perform commands as the superuser
+# usually it will ask interactively the password of superuser
 NAME1=$(whoami)
 NAME2=$(sudo whoami)
 echo "Was $NAME1, then became more powerful $NAME2"

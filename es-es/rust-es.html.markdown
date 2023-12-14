@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
@@ -225,7 +225,7 @@ fn main() {
 
     // bucles `for`
     let array = [1, 2, 3];
-    for i in array.iter() {
+    for i in array {
         println!("{}", i);
     }
 

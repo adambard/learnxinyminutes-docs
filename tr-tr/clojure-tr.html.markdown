@@ -482,7 +482,7 @@ Clojuredocs.org, örneklerle bezenmiş Clojure dökümantasyonu:
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
 4Clojure, interaktif bir şekilde FP ve Clojure yeteneklerinizi geliştirmenize olanak veriyor:
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org, Başlangıç için bir içeriklere sahip:
 [http://clojure-doc.org/](http://clojure-doc.org/)

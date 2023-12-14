@@ -111,7 +111,7 @@ gateways and routers.
     sub $t2, $t0, $t1                       # $t2 = $t0 - $t1
     mul $t2, $t0, $t1                       # $t2 = $t0 * $t1
     div $t2, $t0, $t1                       # $t2 = $t0 / $t1 (Might not be 
-                                            # supported in some versons of MARS)
+                                            # supported in some versions of MARS)
     div $t0, $t1                            # Performs $t0 / $t1. Get the 
                                             # quotient using 'mflo' and 
                                             # remainder using 'mfhi'
@@ -162,7 +162,7 @@ gateways and routers.
     blt $t0, $t1, t0_gt_t1                  # Branches when $t0 < $t1
     ble $t0, $t1, t0_gte_t1                 # Branches when $t0 <= $t1
     bltz $t0, t0_lt0                        # Branches when $t0 < 0
-    slt $s0, $t0, $t1                       # Instruction that sends a signal 
+    slt $s0, $t0, $t1                       # "Set on Less Than"
                                             # when $t0 < $t1 with result in $s0 
                                             # (1 for true)
 
@@ -186,6 +186,7 @@ gateways and routers.
     #   else
     #     max = c;
     # else
+    #   if (b > c)
     #     max = b;
     #   else
     #     max = c;
@@ -193,7 +194,7 @@ gateways and routers.
     # Let $s0 = a, $s1 = b, $s2 = c, $v0 = return register
     ble $s0, $s1, a_LTE_b                   # if(a <= b) branch(a_LTE_b)
     ble $s0, $s2, max_C                     # if(a > b && a <=c) branch(max_C)
-    move $v0, $s1                           # else [a > b && a > c] max = a
+    move $v0, $s0                           # else [a > b && a > c] max = a
     j done                                  # Jump to the end of the program
 
     a_LTE_b:                                # Label for when a <= b
@@ -212,8 +213,9 @@ gateways and routers.
     # instruction to continue its execution
     li $t0, 0
     while:
-      bgt $t0, 10, end_while                # While $t0 is less than 10, 
+      bgt $t0, 9, end_while                 # While $t0 is less than 10, 
                                             # keep iterating
+      #actual loop content would go here
       addi $t0, $t0, 1                      # Increment the value
       j while                               # Jump back to the beginning of 
                                             # the loop
@@ -242,7 +244,7 @@ gateways and routers.
 ## FUNCTIONS ##
   _functions:
     # Functions are callable procedures that can accept arguments and return 
-    values all denoted with labels, like above
+    # values all denoted with labels, like above
 
     main:                                 # Programs begin with main func
       jal return_1                        # jal will store the current PC in $ra
@@ -293,7 +295,7 @@ gateways and routers.
 
       fact_done:
         lw $s0, ($sp)
-        lw $ra, ($sp)                     # Restore the PC
+        lw $ra, 4($sp)                     # Restore the PC
         addi $sp, $sp, 8
 
         jr $ra
@@ -357,7 +359,7 @@ gateways and routers.
   li $t1, 5                                 # Length of the list
 
   loop:
-    bgt $t0, $t1, end_loop
+    bge $t0, $t1, end_loop
 
     lw $a0, ($s0)
     li $v0, 1

@@ -483,10 +483,10 @@ pointer_obj->some_data; // Returns some_data
 delete pointer_obj;
 
 int more = 57;
-int* more_pointer = &i; // & = address-of
+int* more_pointer = &more; // & = address-of
 int indirection_demo = more_pointer*; // indirection
 
-// Profiles: affect which Vala features are avaliable and which libraries the
+// Profiles: affect which Vala features are available and which libraries the
 // C-code will use.
 // - gobject (default)
 // posix
@@ -494,10 +494,10 @@ int indirection_demo = more_pointer*; // indirection
 // Use "--profile=whatever" when compiling.
 
 ```
-* More Vala documentation can be found [here](https://valadoc.org/).
+* More [Vala documentation](https://valadoc.org/).
 * [Alternate construction syntax](https://wiki.gnome.org/Projects/Vala/Tutorial#GObject-Style_Construction) similar to GObject
-* More on contract programming [here](http://en.wikipedia.org/wiki/Contract_programming)
-* Collections library can be found [here](https://wiki.gnome.org/Projects/Vala/Tutorial#Collections)
+* More on [contract programming](http://en.wikipedia.org/wiki/Contract_programming)
+* [Collections library](https://wiki.gnome.org/Projects/Vala/Tutorial#Collections)
 * [Multithreading](https://wiki.gnome.org/Projects/Vala/Tutorial#Multi-Threading)
-* Read about building GUIs with GTK+ and Vala [here](http://archive.is/7C7bw).
-* D-Bus [integration](https://wiki.gnome.org/Projects/Vala/Tutorial#D-Bus_Integration)
+* Read about [building GUIs with GTK+ and Vala](http://archive.is/7C7bw).
+* [D-Bus integration](https://wiki.gnome.org/Projects/Vala/Tutorial#D-Bus_Integration)

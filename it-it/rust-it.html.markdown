@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 contributors:
     - ["Carlo Milanesi", "http://github.com/carlomilanesi"]
 lang: it-it
@@ -229,7 +229,7 @@ fn main() {
 
     // Ciclo/iterazione con `for`
     let array = [1, 2, 3];
-    for i in array.iter() {
+    for i in array {
         println!("{}", i);
     }
 

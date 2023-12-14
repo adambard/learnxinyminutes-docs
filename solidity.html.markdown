@@ -6,6 +6,7 @@ contributors:
   - ["Joseph Chow", ""]
   - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
   - ["Shooter", "https://github.com/liushooter"]
+  - ["Patrick Collins", "https://gist.github.com/PatrickAlphaC"]
 ---
 
 Solidity lets you program on [Ethereum](https://www.ethereum.org/), a
@@ -18,7 +19,7 @@ state variables, functions, and common data types. Contract-specific features
 include modifier (guard) clauses, event notifiers for listeners, and custom
 global variables.
 
-Some Ethereum contract examples include crowdfunding, voting, and blind auctions.
+Some Ethereum contract examples include crowdfunding, voting, [decentralized finance](https://defipulse.com/), and blind auctions.
 
 There is a high risk and high cost of errors in Solidity code, so you must be very careful to test
 and slowly rollout. WITH THE RAPID CHANGES IN ETHEREUM, THIS DOCUMENT IS UNLIKELY TO STAY UP TO
@@ -32,6 +33,66 @@ popular design patterns.
 As Solidity and Ethereum are under active development, experimental or beta
 features are typically marked, and subject to change. Pull requests welcome.
 
+# Working with Remix and Metamask
+
+One of the easiest ways to build, deploy, and test solidity code is by using the:
+
+1. [Remix Web IDE](https://remix.ethereum.org/) 
+2. [Metamask wallet](https://metamask.io/).
+
+To get started, [download the Metamask Browser Extension](https://metamask.io/). 
+
+Once installed, we will be working with Remix. The below code will be pre-loaded, but before we head over there, let's look at a few tips to get started with remix. Load it all by [hitting this link](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=f490c0d51141dd0515244db40bbd0c17&runs=200).
+
+1. Choose the Solidity compiler
+
+![Solidity-in-remix](images/solidity/remix-solidity.png)
+
+2. Open the file loaded by that link
+
+![Solidity-choose-file](images/solidity/remix-choose-file.png)
+
+3. Compile the file
+
+![Solidity-compile](images/solidity/remix-compile.png)
+
+4. Deploy 
+
+![Solidity-deploy](images/solidity/remix-deploy.png)
+
+5. Play with contracts
+
+![Solidity-deploy](images/solidity/remix-interact.png)
+
+You've deployed your first contract! Congrats!
+
+You can test out and play with the functions defined. Check out the comments to learn about what each does. 
+
+
+## Working on a testnet
+
+Deploying and testing on a testnet is the most accurate way to test your smart contracts in solidity. 
+To do this let's first get some testnet ETH from the Kovan testnet. 
+
+[Pop into this Gitter Channel](https://gitter.im/kovan-testnet/faucet) and drop your metamask address in.
+
+In your metamask, you'll want to change to the `Kovan` testnet. 
+
+![Solidity-in-remix](images/solidity/metamask-kovan.png)
+
+You'll be given some free test Ethereum. Ethereum is needed to deploy smart contracts when working with a testnet. 
+
+In the previous example, we didn't use a testnet, we deployed to a fake virtual environment. 
+When working with a testnet, we can actually see and interact with our contracts in a persistent manner. 
+
+To deploy to a testnet, on the `#4 Deploy` step, change your `environment` to `injected web3`.
+This will use whatever network is currently selected in your metamask as the network to deploy to. 
+
+![Solidity-in-remix](images/solidity/remix-testnet.png)
+
+For now, please continue to use the `Javascript VM` unless instructed otherwise. When you deploy to a testnet, metamask will pop up to ask you to "confirm" the transaction. Hit yes, and after a delay, you'll get the same contract interface at the bottom of your screen. 
+
+
 ```javascript
 // First, a simple Bank contract
 // Allows deposits, withdrawals, and balance checks
@@ -40,7 +101,7 @@ features are typically marked, and subject to change. Pull requests welcome.
 /* **** START EXAMPLE **** */
 
 // Declare the source file compiler version
-pragma solidity ^0.4.19;
+pragma solidity ^0.6.6;
 
 // Start with Natspec comment (the three slashes)
 // used for documentation - and as descriptive data for UI elements/actions
@@ -67,7 +128,7 @@ contract SimpleBank { // CapWords
     event LogDepositMade(address accountAddress, uint amount);
 
     // Constructor, can receive one or many variables here; only one allowed
-    function SimpleBank() public {
+    constructor() public {
         // msg provides details about the message that's sent to the contract
         // msg.sender is contract caller (address of contract creator)
         owner = msg.sender;
@@ -84,7 +145,7 @@ contract SimpleBank { // CapWords
         // no "this." or "self." required with state variable
         // all values set to data type's initial value by default
 
-        LogDepositMade(msg.sender, msg.value); // fire event
+        emit LogDepositMade(msg.sender, msg.value); // fire event
 
         return balances[msg.sender];
     }
@@ -92,7 +153,7 @@ contract SimpleBank { // CapWords
     /// @notice Withdraw ether from bank
     /// @dev This does not return any excess ether sent to it
     /// @param withdrawAmount amount you want to withdraw
-    /// @return The balance remaining for the user
+    /// @return remainingBal
     function withdraw(uint withdrawAmount) public returns (uint remainingBal) {
         require(withdrawAmount <= balances[msg.sender]);
 
@@ -153,7 +214,8 @@ assert(c >= a); // assert tests for internal invariants; require is used for use
 // https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
 
 
-// No random functions built in, use other contracts for randomness
+// No random functions built in, you can get a pseduo-random number by hashing the current blockhash, or get a truly random number using something like Chainlink VRF. 
+// https://docs.chain.link/docs/get-a-random-number
 
 // Type casting
 int x = int(b);
@@ -216,7 +278,7 @@ f(22); // call
 
 // Delete can be called on most types
 // (does NOT destroy value, but sets value to 0, the initial value)
-uint x = 5;
+delete x;
 
 
 // Destructuring/Tuples
@@ -233,7 +295,7 @@ names.length; // get length
 names.length = 1; // lengths can be set (for dynamic arrays in storage only)
 
 // multidimensional array
-uint x[][5]; // arr with 5 dynamic array elements (opp order of most languages)
+uint[][5] x; // arr with 5 dynamic array elements (opp order of most languages)
 
 // Dictionaries (any type to any other type)
 mapping (string => uint) public balances;
@@ -326,7 +388,7 @@ block.gasLimit();
 storage['abc'] = 'def'; // maps 256 bit words to 256 bit words
 
 
-// 4. FUNCTIONS AND MORE
+// 5. FUNCTIONS AND MORE
 // A. Functions
 // Simple function
 function increment(uint x) returns (uint) {
@@ -334,13 +396,13 @@ function increment(uint x) returns (uint) {
     return x;
 }
 
-// Functions can return many arguments, and by specifying returned arguments
-// name don't need to explicitly return
+// Functions can return many arguments,
+// and by specifying returned arguments name explicit return is not needed
 function increment(uint x, uint y) returns (uint x, uint y) {
     x += 1;
     y += 1;
 }
-// Call previous functon
+// Call previous function
 uint (a,b) = increment(1,1);
 
 // 'view' (alias for 'constant')
@@ -373,7 +435,7 @@ function increment(uint x) view returns (uint x) {
 // Functions hoisted - and can assign a function to a variable
 function a() {
     var z = b;
-    b();
+    z();
 }
 
 function b() {
@@ -432,9 +494,9 @@ Coin.LogSent().watch({}, '', function(error, result) {
 // '_' (underscore) often included as last line in body, and indicates
 // function being called should be placed there
 modifier onlyAfter(uint _time) { require (now >= _time); _; }
-modifier onlyOwner { require(msg.sender == owner) _; }
+modifier onlyOwner { require(msg.sender == owner); _; }
 // commonly used with state machines
-modifier onlyIfStateA (State currState) { require(currState == State.A) _; }
+modifier onlyIfStateA (State currState) { require(currState == State.A); _; }
 
 // Append right after function declaration
 function changeOwner(newOwner)
@@ -584,11 +646,37 @@ reveal(100, "mySecret");
 // All data to start of time is stored in blockchain, so
 // anyone can observe all previous data and changes
 
-// D. Cron Job
+// D. Oracles and External Data
+// Oracles are ways to interact with your smart contracts outside the blockchain. 
+// They are used to get data from the real world, send post requests, to the real world
+// or vise versa.
+
+// Time-based implementations of contracts are also done through oracles, as 
+// contracts need to be directly called and can not "subscribe" to a time. 
+// Due to smart contracts being decentralized, you also want to get your data
+// in a decentralized manner, otherwise you run into the centralized risk that 
+// smart contract design matter prevents. 
+
+// To easiest way get and use pre-boxed decentralized data is with Chainlink Data Feeds
+// https://docs.chain.link/docs/get-the-latest-price
+// We can reference on-chain reference points that have already been aggregated by 
+// multiple sources and delivered on-chain, and we can use it as a "data bank" 
+// of sources. 
+
+// You can see other examples making API calls here:
+// https://docs.chain.link/docs/make-a-http-get-request
+
+// And you can of course build your own oracle network, just be sure to know 
+// how centralized vs decentralized your application is. 
+
+// Setting up oracle networks yourself
+
+// E. Cron Job
 // Contracts must be manually called to handle time-based scheduling; can create external
 // code to regularly ping, or provide incentives (ether) for others to
+//
 
-// E. Observer Pattern
+// F. Observer Pattern
 // An Observer Pattern lets you register as a subscriber and
 // register a function which is called by the oracle (note, the oracle pays
 // for this action to be run)
@@ -626,25 +714,28 @@ contract SomeOracle {
 // Now, your client contract can addSubscriber by importing SomeOracleCallback
 // and registering with Some Oracle
 
-// F. State machines
+// G. State machines
 // see example below for State enum and inState modifier
+```
 
+Work with the full example below using the [`Javascript VM` in remix here.](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
 
+```javascript
 // *** EXAMPLE: A crowdfunding example (broadly similar to Kickstarter) ***
 // ** START EXAMPLE **
 
 // CrowdFunder.sol
-pragma solidity ^0.4.19;
+pragma solidity ^0.6.6;
 
 /// @title CrowdFunder
 /// @author nemild
 contract CrowdFunder {
     // Variables set on create by creator
     address public creator;
-    address public fundRecipient; // creator may be different than recipient
+    address payable public fundRecipient; // creator may be different than recipient, and must be payable
     uint public minimumToRaise; // required to tip, else everyone gets refund
     string campaignUrl;
-    byte constant version = 1;
+    byte version = "1";
 
     // Data structures
     enum State {
@@ -654,7 +745,7 @@ contract CrowdFunder {
     }
     struct Contribution {
         uint amount;
-        address contributor;
+        address payable contributor;
     }
 
     // State variables
@@ -684,10 +775,10 @@ contract CrowdFunder {
         _;
     }
 
-    function CrowdFunder(
+    function crowdFund(
         uint timeInHoursForFundraising,
-        string _campaignUrl,
-        address _fundRecipient,
+        string memory _campaignUrl,
+        address payable _fundRecipient,
         uint _minimumToRaise)
         public
     {
@@ -712,7 +803,7 @@ contract CrowdFunder {
         );
         totalRaised += msg.value;
 
-        LogFundingReceived(msg.sender, msg.value, totalRaised);
+        emit LogFundingReceived(msg.sender, msg.value, totalRaised);
 
         checkIfFundingCompleteOrExpired();
         return contributions.length - 1; // return id
@@ -736,7 +827,7 @@ contract CrowdFunder {
     public
     inState(State.Successful)
     {
-        fundRecipient.transfer(this.balance);
+        fundRecipient.transfer(address(this).balance);
         LogWinnerPaid(fundRecipient);
     }
 
@@ -766,6 +857,11 @@ contract CrowdFunder {
 }
 // ** END EXAMPLE **
 
+```
+
+Some more functions. 
+
+```javascript
 // 10. OTHER NATIVE FUNCTIONS
 
 // Currency units
@@ -837,18 +933,27 @@ someContractAddress.callcode('function_name');
 
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
+- [Chainlink Beginner Tutorials](https://docs.chain.link/docs/beginners-tutorial)
 - [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
 - [Superblocks Lab - Browser based IDE for Solidity](https://lab.superblocks.com/)
 - [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
+- [Chainlink Documentation](https://docs.chain.link/docs/getting-started)
+
+## Smart Contract Development Frameworks
+- [Hardhat](https://hardhat.org/)
+- [Brownie](https://github.com/eth-brownie/brownie)
+- [Truffle](https://www.trufflesuite.com/)
 
 ## Important libraries
-- [Zeppelin](https://github.com/OpenZeppelin/zeppelin-solidity/): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
+- [Zeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
+- [Chainlink](https://github.com/smartcontractkit/chainlink): Code that allows you to interact with external data
 
 ## Sample contracts
 - [Dapp Bin](https://github.com/ethereum/dapp-bin)
+- [Defi Example](https://github.com/PatrickAlphaC/chainlink_defi)
 - [Solidity Baby Step Contracts](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
 - [ConsenSys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
 - [State of Dapps](http://dapps.ethercasts.com/)
@@ -862,6 +967,7 @@ someContractAddress.callcode('function_name');
 - [Solidity Style Guide](http://solidity.readthedocs.io/en/latest/style-guide.html): Ethereum's style guide is heavily derived from Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
 
 ## Editors
+- [Remix](https://remix.ethereum.org/)
 - [Emacs Solidity Mode](https://github.com/ethereum/emacs-solidity)
 - [Vim Solidity](https://github.com/tomlion/vim-solidity)
 - Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))

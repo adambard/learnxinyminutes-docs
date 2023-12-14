@@ -106,8 +106,8 @@ myloop
 \ start number (inclusive).
 
 \ We can get the value of the index as we loop with `i`:
-: one-to-12 ( -- ) 13 1 ?do i . loop ;     \ ok
-one-to-12                                  \ 1 2 3 4 5 6 7 8 9 10 11 12 ok
+: one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
+one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 ok
 
 \ `do` works similarly, except if start and end are exactly the same it will
 \ loop forever (until arithmetic underflow).

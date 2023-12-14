@@ -35,6 +35,10 @@ viele Features mit.
 0x1F # Integer
 3.0  # Float
 
+# Für bessere Lesbarkeit des Codes können Unterstriche "_" als Trennzeichen verwendet werden
+1_000_000 == 1000000  # Integer
+1_000.567 == 1000.567 # Float
+
 # Atome, das sind Literale, sind Konstanten mit Namen. Sie starten mit einem 
 # ':'.
 :hello # Atom

@@ -29,11 +29,11 @@ function setup() {
 }
 
 function draw() {
-    ellipse(10, 10, 50, 50); // creates a ellipse at the 10px from the left and 10px from the top with width adn height as 50 each, so its basically a circle.
+    ellipse(10, 10, 50, 50); // creates a ellipse at the 10px from the left and 10px from the top with width and height as 50 each, so its basically a circle.
     //remember in p5.js the origin is at the top-left corner of the canvas
 
     if (mouseIsPressed) {
-        // mouseIsPressed is a boolean variable that changes to true if the mouse buttton is pressed down at that instant
+        // mouseIsPressed is a boolean variable that changes to true if the mouse button is pressed down at that instant
 
         fill(0); // fill refers to the innner color or filling color of whatever shape you are going to draw next
     } else {

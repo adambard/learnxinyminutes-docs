@@ -10,7 +10,7 @@ translators:
 lang: zh-cn
 ---
 
-Swift 是 Apple 开发的用于 iOS 和 OS X 开发的编程语言。Swift 于2014年 Apple WWDC （全球开发者大会）中被引入，用以与 Objective-C 共存，同时对错误代码更具弹性。Swift 由 Xcode 6 beta 中包含的 LLVM 编译器编译。
+Swift 是 Apple 开发的用于 iOS 和 macOS 开发的编程语言。Swift 于2014年 Apple WWDC （全球开发者大会）中被引入，用以与 Objective-C 共存，同时对错误代码更具弹性。Swift 由 Xcode 6 beta 中包含的 LLVM 编译器编译。
 
 Swift 的官方语言教程 [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) 可以从 iBooks 免费下载.
 

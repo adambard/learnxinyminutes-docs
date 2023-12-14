@@ -33,7 +33,7 @@ Go má již v základu vynikající knihovnu a je s ním spojená nadšená komu
  řádkový komentář */
 
 // Každý zdroják začíná deklarací balíčku (package)
-// Main je vyhrazené jméno, které označuje spustitelný soubor,
+// main je vyhrazené jméno, které označuje spustitelný soubor,
 // narozdíl od knihovny
 package main
 
