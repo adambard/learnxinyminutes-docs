@@ -98,7 +98,7 @@ linhas.
 # Ranges são representados como `início..fim` (ambos inclusivos)
 1..10 #=> 1..10
 menor..maior = 1..10 # Pattern matching pode ser usada em ranges também
-[lower, upper] #=> [1, 10]
+[menor, maior] #=> [1, 10]
 
 ## ---------------------------
 ## -- Operadores
