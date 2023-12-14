@@ -1,5 +1,5 @@
 ---
-language: Matlab
+language: MATLAB
 filename: learnmatlab-es.mat
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
@@ -31,7 +31,7 @@ esto
 % Dos símbolos de porcentaje denotan el comienzo de una nueva sección de código.
 % Secciones de código individuales pueden ser ejecutadas moviendo el cursor hacia la sección,
 % seguida por un clic en el botón de “Ejecutar Sección”
-% o usando Ctrl+Shift+Enter (Windows) o Cmd+Shift+Return (OS X)
+% o usando Ctrl+Shift+Enter (Windows) o Cmd+Shift+Return (macOS)
 
 %% Este es el comienzo de una sección de código
 % Una forma de usar las secciones es separar un código de inicio costoso que no cambia, como cargar datos
@@ -139,7 +139,7 @@ A.d.e = false;
 
 % Vectores
 x = [4 32 53 7 1]
-x(2) % ans = 32, los índices en Matlab comienzan 1, no 0
+x(2) % ans = 32, los índices en MATLAB comienzan 1, no 0
 x(2:3) % ans = 32 53
 x(2:end) % ans = 32 53 7 1
 
@@ -506,7 +506,7 @@ find(x) % Encuentra todos los elementos distintos de cero de x y devuelve sus í
 
 
 % Clases
-% Matlab puede soportar programación orientada a objetos.
+% MATLAB puede soportar programación orientada a objetos.
 % Las clases deben colocarse en un archivo del nombre de la clase con la extensión .m. 
 % Para comenzar, creamos una clase simple para almacenar puntos de referencia de GPS.
 % Comience WaypointClass.m
@@ -528,7 +528,7 @@ classdef WaypointClass % El nombre de la clase.
     end
 
     % Si queremos agregar dos objetos Waypoint juntos sin llamar
-    % a una función especial, podemos sobrecargar la aritmética de Matlab así:
+    % a una función especial, podemos sobrecargar la aritmética de MATLAB así:
     function r = plus(o1,o2)
       r = WaypointClass([o1.latitude] +[o2.latitude], ...
                         [o1.longitude]+[o2.longitude]);
@@ -540,7 +540,7 @@ end
 % Podemos crear un objeto de la clase usando el constructor
 a = WaypointClass(45.0, 45.0)
 
-% Las propiedades de clase se comportan exactamente como estructuras de Matlab.
+% Las propiedades de clase se comportan exactamente como estructuras de MATLAB.
 a.latitude = 70.0
 a.longitude = 25.0
 
@@ -551,15 +551,15 @@ ans = multiplyLatBy(a,3)
 % no necesita ser pasado al método.
 ans = a.multiplyLatBy(a,1/3)
 
-% Las funciones de Matlab pueden sobrecargarse para manejar objetos.
-% En el método anterior, hemos sobrecargado cómo maneja Matlab
+% Las funciones de MATLAB pueden sobrecargarse para manejar objetos.
+% En el método anterior, hemos sobrecargado cómo maneja MATLAB
 % la adición de dos objetos Waypoint.
 b = WaypointClass(15.0, 32.0)
 c = a + b
 
 ```
 
-## Más sobre Matlab
+## Más sobre MATLAB
 
 * [The official website (EN)](http://www.mathworks.com/products/matlab/)
 * [The official MATLAB Answers forum (EN)](http://www.mathworks.com/matlabcentral/answers/)

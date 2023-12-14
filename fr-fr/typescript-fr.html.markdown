@@ -12,7 +12,7 @@ TypeScript est un langage visant à faciliter le développement d'applications l
 TypeScript ajoute des concepts classiques comme les classes, les modules, les interfaces, les génériques et le typage statique (optionnel) à JavaScript.
 C'est une surcouche de JavaScript : tout le code JavaScript est valide en TypeScript ce qui permet de l'ajouter de façon transparente à n'importe quel projet. Le code TypeScript est transcompilé en JavaScript par le compilateur.
 
-Cet article se concentrera seulement sur la syntaxe supplémentaire de TypeScript, plutôt que celle de [JavaScript] (../javascript/).
+Cet article se concentrera seulement sur la syntaxe supplémentaire de TypeScript, plutôt que celle de [JavaScript] (../javascript-fr/).
 
 Pour tester le compilateur de TypeScript, rendez-vous au [Playground] (http://www.typescriptlang.org/Playground) où vous pourrez coder, profiter d'une autocomplétion et accéder directement au rendu JavaScript.
 

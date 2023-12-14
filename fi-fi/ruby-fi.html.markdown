@@ -605,4 +605,4 @@ Something.new.qux # => 'qux'
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Vanhempi, mutta [ilmainen painos](http://ruby-doc.com/docs/ProgrammingRuby/) on luettavissa netissä
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Yhteisön luoma Ruby-tyyliopas
-- [Try Ruby](http://tryruby.org) - Rubyn perusteet interaktiivisesti
+- [Try Ruby](https://try.ruby-lang.org/) - Rubyn perusteet interaktiivisesti

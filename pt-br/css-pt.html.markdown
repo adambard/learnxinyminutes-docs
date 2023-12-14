@@ -290,9 +290,9 @@ A maior parte dos recursos do CSS 2 (e muitos em CSS 3) estão disponíveis em t
 
 ## Leitura adicional
 
-* [Entendendo Estilo Precedência em CSS: Especificidade, Herança, eo Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
+* [Entendendo Estilo Precedência em CSS: Especificidade, Herança, e o Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
 * [Selecionando elementos usando atributos](https://css-tricks.com/almanac/selectors/a/attribute/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
 * [Z-Index - O empilhamento context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
-* [SASS](http://sass-lang.com/) e [menos](http://lesscss.org/) para CSS pré-processamento
+* [SASS](http://sass-lang.com/) e [Less](http://lesscss.org/) para CSS pré-processamento
 * [CSS-Tricks](https://css-tricks.com)

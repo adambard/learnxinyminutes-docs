@@ -28,7 +28,7 @@ Go vem com uma biblioteca padrão exaustiva e uma comunidade entusiasta.
    várias linhas */
 
 // A cláusula package aparece no início de cada arquivo.
-// Main é um nome especial declarando um executável ao invés de uma biblioteca.
+// main é um nome especial declarando um executável ao invés de uma biblioteca.
 package main
 
 // A cláusula Import declara os pacotes referenciados neste arquivo.

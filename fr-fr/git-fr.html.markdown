@@ -574,8 +574,6 @@ $ git rm /chemin/vers/le/fichier/HelloWorld.c
 
 * [SalesForce Cheat Sheet (EN)](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
-* [GitGuys (EN)](http://www.gitguys.com/)
-
 * [Git - the simple guide (EN)](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Livre Pro Git](http://www.git-scm.com/book/fr/v1)

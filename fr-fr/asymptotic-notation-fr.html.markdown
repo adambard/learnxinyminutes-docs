@@ -67,21 +67,21 @@ f(n) = 3log n + 100
 g(n) = log n
 ```
 
-Est-ce que `f(n)` O(g(n))?
-Est-ce que `3 log n + 100` O(log n)?
+Est-ce que `f(n)` est égal à O(g(n))?
+Est-ce que `3 log n + 100` est égal à O(log n)?
 Regardons maintenant la définition de Big-O.
 
 ```
 3log n + 100 <= c * log n
 ```
 
-Existe t-il une paire de constantes c, n<sub>0</sub> qui satisfait cela pour tout n > <sub>0</sub>?
+Existe t-il une paire de constantes c, n<sub>0</sub> qui satisfait cela pour tout n > n<sub>0</sub>?
 
 ```
 3log n + 100 <= 150 * log n, n > 2 (Indéfini avec n = 1)
 ```
 
-Oui ! La définition de Big-O a été satisfaite, donc `f(n)` is O(g(n)).
+Oui ! La définition de Big-O a été satisfaite, donc `f(n)` est égal à O(g(n)).
 
 *Exemple 2*
 
@@ -90,15 +90,15 @@ f(n) = 3*n^2
 g(n) = n
 ```
 
-Est-ce que `f(n)` O(g(n))?
-Est-ce que `3 * n^2` O(n)?
+Est-ce que `f(n)` est égal à O(g(n))?  
+Est-ce que `3 * n^2` est égal à O(n)?
 Regardons de nouveau la définition de Big-O.
 
 ```
 3 * n^2 <= c * n
 ```
 
-Existe t-il une paire de constantes c, n<sub>0</sub> qui satisfait cela pour tout n > <sub>0</sub>?
+Existe t-il une paire de constantes c, n<sub>0</sub> qui satisfait cela pour tout n > n<sub>0</sub>?
 Non, il n'en existe pas. `f(n)` n'est pas égal à O(g(n)).
 
 ### Big-Omega

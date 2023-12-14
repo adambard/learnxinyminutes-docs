@@ -273,7 +273,7 @@ namespace eval people::person1 {
 
 
 ###############################################################################
-## 4. Built-in Routines
+## 5. Built-in Routines
 ###############################################################################
 
 # Math can be done with the "expr":
@@ -308,7 +308,7 @@ set result [+ 5 3]
 set name Neo
 expr {{Bob} eq $name}
 
-# The general operators fall back to string string comparison if numeric
+# The general operators fall back to string comparison if numeric
 # operation isn't feasible:
 expr {{Bob} == $name}
 

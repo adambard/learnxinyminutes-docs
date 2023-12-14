@@ -560,7 +560,7 @@ select avg height by sex from t
 / => f  | 160
 / => m  | 177.5
 
-/ If no aggreation function is specified, last is assumed
+/ If no aggregation function is specified, last is assumed
 select by sex from t
 / => sex| name   age height
 / => ---| -----------------

@@ -105,6 +105,10 @@ false;
 "1, 2, " + 3; // = "1, 2, 3"
 "Hello " + ["world", "!"]; // = "Hello world,!"
 
+// ...which can result in some weird behaviour...
+13 + !0; // 14
+"13" + !0; // '13true'
+
 // and are compared with < and >
 "a" < "b"; // = true
 
@@ -115,10 +119,6 @@ null == undefined; // = true
 // ...unless you use ===
 "5" === 5; // = false
 null === undefined; // = false
-
-// ...which can result in some weird behaviour...
-13 + !0; // 14
-"13" + !0; // '13true'
 
 // You can access characters in a string with `charAt`
 "This is a string".charAt(0);  // = 'T'
@@ -590,7 +590,7 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 // ES6 Additions
 
 // The "let" keyword allows you to define variables in a lexical scope, 
-// as opposed to a block scope like the var keyword does.
+// as opposed to a function scope like the var keyword does.
 let name = "Billy";
 
 // Variables defined with let can be reassigned new values.
@@ -620,7 +620,7 @@ function isEven(number) {
 };
 
 // I put the word "equivalent" in double quotes because a function defined
-// using the lambda syntax cannnot be called before the definition.
+// using the lambda syntax cannot be called before the definition.
 // The following is an example of invalid usage:
 
 add(1, 8);
@@ -671,6 +671,7 @@ Mozilla Developer Network.
 [5]: http://bonsaiden.github.io/JavaScript-Garden/
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+[8]: https://www.javascripttutorial.net/
 [8]: http://eloquentjavascript.net/
 [10]: http://jstherightway.org/
 [11]: https://javascript.info/

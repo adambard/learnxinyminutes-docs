@@ -190,7 +190,7 @@ public class LearnJava {
         {
             //System.out.println(fooWhile);
             //增加计数器
-            //遍历99次， fooWhile 0->99
+            //遍历100次， fooWhile 0->99
             fooWhile++;
         }
         System.out.println("fooWhile Value: " + fooWhile);
@@ -201,7 +201,7 @@ public class LearnJava {
         {
             //System.out.println(fooDoWhile);
             //增加计数器
-            //遍历99次, fooDoWhile 0->99
+            //遍历100次, fooDoWhile 0->99
             fooDoWhile++;
         }while(fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
@@ -297,8 +297,8 @@ class Bicycle {
     // Bicycle 类的成员变量和方法
     public int cadence; // Public: 任意位置均可访问
     private int speed;  // Private: 只在同类中可以访问
-    protected int gear; // Protected: 可以在同类与子类中可以访问
-    String name; // default: 可以在包内中可以访问
+    protected int gear; // Protected: 可以在同类与子类中访问
+    String name; // default: 可以在包内访问
 
     // 构造函数是初始化一个对象的方式
     // 以下是一个默认构造函数

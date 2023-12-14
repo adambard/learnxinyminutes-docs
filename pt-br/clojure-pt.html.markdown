@@ -561,7 +561,7 @@ Caso queira aprender mais:
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
 * 4clojure possui alguns problemas e desafios interessantes para quem quiser treinar clojure ou programação funcional:
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 * clojure-doc.org tem um bom número de artigos para iniciantes:
 [http://clojure-doc.org/](http://clojure-doc.org/)

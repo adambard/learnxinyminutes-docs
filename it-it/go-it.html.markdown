@@ -34,7 +34,7 @@ Go include un'ottima libreria standard e ha una community entusiasta.
  su riga multipla */
 
 // In cima ad ogni file è necessario specificare il package.
-// Main è un package speciale che identifica un eseguibile anziché una libreria.
+// main è un package speciale che identifica un eseguibile anziché una libreria.
 package main
 
 // Con import sono dichiarate tutte le librerie a cui si fa riferimento 

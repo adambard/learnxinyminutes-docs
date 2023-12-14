@@ -217,6 +217,12 @@ open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 my $line  = <$in>;
 my @lines = <$in>;
 
+# You can iterate through the lines in a file one at a time with a while loop:
+
+while (my $line = <$in>) {
+  print "Found apples\n" if $line =~ m/apples/;
+}
+
 # You can write to an open filehandle using the standard "print"
 # function.
 

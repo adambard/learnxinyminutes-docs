@@ -17,7 +17,7 @@ lang: no-nb
 ---
 Bash er navnet på unix skallet, som også var distribuert som skallet for GNU 
 operativsystemet og som standard skall på de fleste Linux distribusjoner og 
-Mac OS X.
+macOS.
 
 [Les mer her.](http://www.gnu.org/software/bash/manual/bashref.html)
 

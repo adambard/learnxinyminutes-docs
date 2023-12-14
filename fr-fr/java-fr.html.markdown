@@ -31,7 +31,7 @@ Les commentaires sur plusieurs lignes ressemblent à ceci.
 /**
  * Les commentaires de la JavaDoc ressemblent à ceci. Ils sont utilisés pour
  * décrire la classe et ses différents attributs.
- * Attributs principaux:
+ * Attributs principaux :
  *
  * @author      Nom (et information de contact comme l'email) de(s) auteur(s).
  * @version     Version actuelle du programme.
@@ -82,7 +82,7 @@ public class JavaFr {
          */
 
         // Utilisez Scanner pour lire l'entrée
-        // Nécessite: import java.util.Scanner;
+        // Nécessite : import java.util.Scanner;
         Scanner scanner = new Scanner(System.in);
 
         // Lire une chaîne de caractères
@@ -160,7 +160,7 @@ public class JavaFr {
         // L est utilisé pour indiquer que la variable est de type long;
         // le nombre serait traité comme un int sans le L
 
-        // Note: byte, short, int et long sont signés. Ils peuvent avoir des
+        // Note : byte, short, int et long sont signés. Ils peuvent avoir des
         // valeurs positives et négatives.
         // Il n'existe pas de variantes non-signées.
         // char, toutefois, est non-signé sur 16 bits
@@ -203,7 +203,7 @@ public class JavaFr {
 
         // BigDecimal - entier immuable et positif de taille arbitraire
         //
-        // BigDecimal comprend deux parties: une entier de taille arbitraire
+        // BigDecimal comprend deux parties : une entier de taille arbitraire
         // (BigInteger) et un entier de 32 bits représantant la position de la
         // virgule.
         //
@@ -240,13 +240,13 @@ public class JavaFr {
         // C'est la manière la plus simple et optimisé par le compilateur
         String plusConcatenated = "Strings can " + "be concatenated " + "via + operator.";
         System.out.println(plusConcatenated);
-        // Affiche: Strings can be concatenated via + operator.
+        // Affiche : Strings can be concatenated via + operator.
 
         // #2 - avec StringBuilder
         // Cette méthode ne nécessite pas d'objet String intermédiaire. Elle
         // stocke juste les différentes chaînes de caractères et les assemble
         // lorsque la méthode toString() est appelée.
-        // Attention: Cette classe n'est pas thread-safe (l'objet ne peut pas être partagé
+        // Attention : Cette classe n'est pas thread-safe (l'objet ne peut pas être partagé
         // entre les threads). Une alternative
         // (avec un impact sur les performances) thread-safe est d'utiliser la
         // classe StringBuffer.
@@ -255,7 +255,7 @@ public class JavaFr {
         builderConcatenated.append("can use ");
         builderConcatenated.append("the StringBuilder class.");
         System.out.println(builderConcatenated.toString()); // only now is the string built
-        // Affiche: You can use the StringBuilder class.
+        // Affiche : You can use the StringBuilder class.
 
         // StringBuffer est efficace quand la chaîne de caractères n'est pas
         // utilisée avec la fin de sa construction.
@@ -276,7 +276,7 @@ public class JavaFr {
         // #3 - avec la méthode format() de la classe String.
         // Une autre alternative. Rapide et lisible.
         String.format("%s may prefer %s.", "Or you", "String.format()");
-        // Affiche: Or you may prefer String.format().
+        // Affiche : Or you may prefer String.format().
 
         // Tableau
         // La taille du tableau doit être précisée à l'instantiation
@@ -419,7 +419,7 @@ public class JavaFr {
         System.out.println("fooFor Value: " + fooFor);
 
         // Fin d'une boucle for avec un label
-        outer:
+        outer :
         for (int i = 0; i < 10; i++) {
           for (int j = 0; j < 10; j++) {
             if (i == 5 && j ==5) {
@@ -433,9 +433,9 @@ public class JavaFr {
         // La boucle for est également capable d'itérer aussi bien sur un
         // tableau que sur des objets qui implémentent l'interface Iterable.
         int[] fooList = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        // De la forme: for (<object> : <iterable>)
-        // Lu comme: "Pour chaque élément du tableau"
-        // note: le type doit correspondre à celui de l'objet itérable
+        // De la forme : for (<object> : <iterable>)
+        // Lu comme : "Pour chaque élément du tableau"
+        // note : le type doit correspondre à celui de l'objet itérable
         for (int bar : fooList) {
             System.out.println(bar);
             //Itère 9 fois et affiche les chiffres de 1 à 9
@@ -511,7 +511,7 @@ public class JavaFr {
         // Convert Integer To String
         Integer.toString(123); // retourne un object String correspondant à"123"
 
-        // Pour les autres conversions, référer vous aux classes suivantes:
+        // Pour les autres conversions, référer vous aux classes suivantes :
         // Double
         // Long
         // String
@@ -537,7 +537,7 @@ public class JavaFr {
 
         // Initialisation avec double accolades
         // Le langage Java ne permet pas de créer des collections statiques d'une
-        // manière simple. Généralement, on utilise la forme suivante:
+        // manière simple. Généralement, on utilise la forme suivante :
         private static final Set<String> COUNTRIES = new HashSet<String>();
         static {
            COUNTRIES.add("DENMARK");
@@ -566,7 +566,7 @@ public class JavaFr {
 // Cependant, il est préférable de séparer les
 // classes dans des fichiers différents.
 
-// Syntaxe de déclaration des classes:
+// Syntaxe de déclaration des classes :
 // <public/private/protected> class <Nom de la classe> {
 //    // Les attributs, les constructeurs et les méthodes de la classe vont ici.
 //    // Les functions de classes sont appelées méthode.
@@ -575,11 +575,11 @@ public class JavaFr {
 class Bicycle {
 
     // Attributs et variables de la classe Bicycle
-    public int cadence; // Public: Peut être accesible depuis n'importe où
-    private int speed;  // Private: Accisible depuis la classe
-    protected int gear; // Protected: Accisible depuis la classe et ses sous-
+    public int cadence; // Public : Peut être accesible depuis n'importe où
+    private int speed;  // Private : Accisible depuis la classe
+    protected int gear; // Protected : Accisible depuis la classe et ses sous-
                         // classes
-    String name; // default: Uniquement accesible depuis ce package
+    String name; // default : Uniquement accesible depuis ce package
     static String className; // Variable de classe static
 
     // Bloc static
@@ -595,7 +595,7 @@ class Bicycle {
     // Ceci est le constructeur de la classe Bicycle
     public Bicycle() {
         // Vous pouvez aussie appeler un autre constructeur. Par exemple en
-        // appelant le constructeur de la classe mère (voir héritage):
+        // appelant le constructeur de la classe mère (voir héritage) :
         // this(1, 50, 5, "Bontrager");
         gear = 1;
         cadence = 50;
@@ -665,7 +665,7 @@ class PennyFarthing extends Bicycle {
     // Ici nous modifions la méthode setGear() de la classe mère. Il faut donc
     // utiliser l'annotation @Overide. Pour en savoir plus sur les annotations,
     // consulter la documention officiel (en anglais) :
-    // out: http://docs.oracle.com/javase/tutorial/java/annotations/
+    // out : http://docs.oracle.com/javase/tutorial/java/annotations/
     @Override
     public void setGear(int gear) {
         this.gear = 0;
@@ -719,7 +719,7 @@ public class Fruit implements Edible, Digestible {
 }
 
 // En Java, on peut hériter uniquement d'une classe mais on peut implémenter
-// plusieurs interfaces:
+// plusieurs interfaces :
 public class ExampleClass extends ExampleClassParent implements InterfaceOne,
     InterfaceTwo {
     @Override
@@ -734,7 +734,7 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne,
 
 // Classes abstraites
 
-// Syntaxe de déclaration:
+// Syntaxe de déclaration :
 // <niveau d'accès> abstract class <nom de la classe abstraite> extends <nom de la
 //   classe mère abstraite> {
 //     // Constantes et variables
@@ -758,7 +758,7 @@ public abstract class Animal
     public void eat()
     {
         System.out.println("I am an animal and I am Eating.");
-        // Note: On peut accéder à une variable privée ici.
+        // Note : On peut accéder à une variable privée ici.
         age = 30;
     }
 
@@ -790,7 +790,7 @@ class Dog extends Animal
         // age = 30;    ==> ERREUR!    age est privé et n'est pas accesible.
     }
 
-    // NOTE: Vous obtiendrez une erreur si vous utilisé l'annotation @Override
+    // NOTE : Vous obtiendrez une erreur si vous utilisé l'annotation @Override
     // ici car Java n'autorise pas la surcharge de méthodes statiques. Ce qui ce
     // passe est appelé "method hiding". Si vous voulez en savoir plus,
     // consultez cette discussion (en anglais) :
@@ -828,7 +828,7 @@ public final class SaberToothedCat extends Animal
 // Méthodes final
 public abstract class Mammal()
 {
-    // Syntaxe:
+    // Syntaxe :
     // <niveau d'accès> final <type de retour> <nom de la fonction>(<arguments>)
 
     // Les méthodes déclarées comme final ne peuvent pas être surchargées par
@@ -846,13 +846,13 @@ public abstract class Mammal()
 // des valeurs pédéfinies pour celle-ci. En Java, les variables constantes sont
 // notées en majuscules.
 // On définie un type enum en utilisant le mot clé enum. Par exemple pour les
-// jours de l'année:
+// jours de la semaine :
 public enum Day {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
     THURSDAY, FRIDAY, SATURDAY
 }
 
-// On l'utilise ainsi:
+// On l'utilise ainsi :
 public class EnumTest {
     // On utilise notre énumération
     Day day;
@@ -889,7 +889,7 @@ public class EnumTest {
 
 // Le type enum permet de faire bien plus que ce qui est montré ici. Il ne se
 // limite pas à une liste de constante mais peut inclure des champs et méthodes.
-// Vous pouvez en savoir plus ici (en anglais):
+// Vous pouvez en savoir plus ici (en anglais) :
 //https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
 
 ```
@@ -899,7 +899,7 @@ public class EnumTest {
 Les liens ci-dessous sont données si vous souhaitez approfondir sur le sujet,
 n'hésitez pas à consulter Google pour trouver des exemples spécifiques.
 
-**Guides officiels d'Oracle**:
+**Guides officiels d'Oracle** :
 
 * [Java Tutorial Trail from Sun / Oracle](https://docs.oracle.com/javase/tutorial/index.html)
 
@@ -918,7 +918,7 @@ n'hésitez pas à consulter Google pour trouver des exemples spécifiques.
 
 * [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 
-* Nouvelles fonctionnalités Java 8:
+* Nouvelles fonctionnalités Java 8 :
     * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
     * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
@@ -928,7 +928,7 @@ n'hésitez pas à consulter Google pour trouver des exemples spécifiques.
 
 * [Codingbat.com](http://codingbat.com/java)
 
-**Livres**:
+**Livres** :
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 

@@ -124,9 +124,12 @@ To configure settings. Whether it be for the repository, the system itself,
 or global configurations ( global config file is `~/.gitconfig` ).
 
 ```bash
-# Print & Set Some Basic Config Variables (Global)
+# Set & Print Some Basic Config Variables (Global)
 $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
+
+$ git config --global user.email
+$ git config --global user.name
 ```
 
 [Learn More About git config.](http://git-scm.com/docs/git-config)
@@ -579,6 +582,19 @@ $ git rm HelloWorld.c
 $ git rm /pather/to/the/file/HelloWorld.c
 ```
 
+### blame
+Examine specific parts of the code's history and find out who was the last author to modify that line.
+
+```bash
+# find the authors on the latest modified lines
+$ git blame google_python_style.vim
+b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 12) " See the License for the specific language governing permissions and
+b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 13) " limitations under the License.
+b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 14) 
+222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 15) " Indent Python in the Google way.
+222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 16) 
+222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 17) setlocal indentexpr=GetGooglePythonIndent(v:lnum)
+```
 ## Further Information
 
 * [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
@@ -596,8 +612,6 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
 * [SalesForce Cheat Sheet](http://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
-
-* [GitGuys](http://www.gitguys.com/)
 
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
 

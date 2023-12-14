@@ -2,6 +2,7 @@
 language: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
+    - ["Kiwimoe", "https://github.com/kiwimoe"]
 filename: learntypescript.ts
 ---
 
@@ -48,6 +49,7 @@ let list: Array<number> = [1, 2, 3];
 // For enumerations:
 enum Color { Red, Green, Blue };
 let c: Color = Color.Green;
+console.log(Color[c]); // "Green"
 
 // Lastly, "void" is used in the special case of a function returning nothing
 function bigHorribleAlert(): void {
@@ -237,6 +239,16 @@ if (state.type === "success") {
   console.error(state.message);
 }
 
+// Template Literal Types
+// Use to create complex string types
+type OrderSize = "regular" | "large";
+type OrderItem = "Espresso" | "Cappuccino";
+type Order = `A ${OrderSize} ${OrderItem}`;
+
+let order1: Order = "A regular Cappuccino";
+let order2: Order = "A large Espresso";
+let order3: Order = "A small Espresso"; // Error
+
 // Iterators and Generators
 
 // for..of statement
@@ -280,7 +292,6 @@ foo.baz = 'hello world'
 
 ## Further Reading
  * [TypeScript Official website] (http://www.typescriptlang.org/)
- * [TypeScript language specifications] (https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md)
- * [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
+ * [TypeScript language specifications] (https://github.com/microsoft/TypeScript/blob/main/doc/spec-ARCHIVED.md)
+ * [Learn TypeScript] (https://learntypescript.dev/)
  * [Source Code on GitHub] (https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - repository for type definitions] (http://definitelytyped.org/)

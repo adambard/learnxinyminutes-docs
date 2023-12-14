@@ -11,7 +11,7 @@ filename: learnswift-de.swift
 lang: de-de
 ---
 
-Swift ist eine Programmiersprache von Apple für die Entwicklung von iOS und OS X Applikationen. Swift wurde 2014 zu Apples WWDC Entwicklerkonferenz vorgestellt und wurde mit dem Ziel entwickelt, fehlerträchtigen Code zu vermeiden sowie mit Objective-C zu koexistieren. Es wird mit dem LLVM Compiler gebaut und ist ab Xcode 6+ verfügbar.
+Swift ist eine Programmiersprache von Apple für die Entwicklung von iOS und macOS Applikationen. Swift wurde 2014 zu Apples WWDC Entwicklerkonferenz vorgestellt und wurde mit dem Ziel entwickelt, fehlerträchtigen Code zu vermeiden sowie mit Objective-C zu koexistieren. Es wird mit dem LLVM Compiler gebaut und ist ab Xcode 6+ verfügbar.
 
 Das offizielle [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) Buch von Apple ist kostenlos via iBooks verfügbar.
 

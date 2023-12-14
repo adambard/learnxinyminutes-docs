@@ -183,9 +183,9 @@ style
   include styles/theme.css
 
 //- ---MIXIN---
-mixin basic()
+mixin basic
   div Hello
-+basic("Bob")
++basic
 //- <div>Hello</div>
 
 mixin comment(name, comment)
@@ -193,7 +193,11 @@ mixin comment(name, comment)
     span.comment-name= name
     div.comment-text= comment
 +comment("Bob", "This is Awesome")
-//- <div>Hello</div>
+//- 
+  <div>
+    <span class="comment-name">Bob</span>
+    <div class="comment-text">This is Awesome</div>
+  </div>
 
 ```
 

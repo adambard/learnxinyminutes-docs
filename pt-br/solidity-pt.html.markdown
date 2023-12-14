@@ -259,7 +259,7 @@ nomes.length; // pega o tamanho
 nomes.length = 1; // tamanhos pode ser alterados (para arrays dinâmicos)
 
 // arrays multidimensionais
-uint x[][5]; // array com 5 arrays dinâmicos como elementos (ordem da maioria
+uint[][5] x; // array com 5 arrays dinâmicos como elementos (ordem da maioria
 // das linguagens)
 
 // Dicionários (qualquer tipo para qualquer tipo)

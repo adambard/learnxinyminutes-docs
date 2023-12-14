@@ -1,5 +1,5 @@
 ---
-language: c#
+language: C#
 filename: csharp-pt.cs
 contributors:
     - ["Robson Alves", "http://robsonalves.net/"]    
@@ -153,7 +153,7 @@ on a new line! ""Wow!"", the masses cried";
             intArray[1] = 1;
 
             // Listas
-            // Listas são usadas frequentemente tanto quanto matriz por serem mais flexiveis
+            // Listas são usadas frequentemente tanto quanto matriz por serem mais flexíveis
             // O formato de declarar uma lista é o seguinte:
             // List<tipodado> <var nome> = new List<tipodado>();
             List<int> intList = new List<int>();

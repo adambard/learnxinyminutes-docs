@@ -302,7 +302,7 @@ do {
 // Recursion is the idiomatic way of repeating an action in Scala (as in most
 // other functional languages).
 // Recursive functions need an explicit return type, the compiler can't infer it.
-// Here it's Unit, which is analagous to a `void` return type in Java
+// Here it's Unit, which is analogous to a `void` return type in Java
 def showNumbersInRange(a: Int, b: Int): Unit = {
   print(a)
   if (a < b)
@@ -481,7 +481,7 @@ class SaintBernard extends Dog {
 	def bite = false
 }  
 
-scala> b  
+scala> val b = new SaintBernard
 res0: SaintBernard = SaintBernard@3e57cd70  
 scala> b.breed  
 res1: String = Saint Bernard  
@@ -599,7 +599,7 @@ List("Dom", "Bob", "Natalia") foreach println
 
 s.map(sq)
 
-val sSquared = s. map(sq)
+val sSquared = s.map(sq)
 
 sSquared.filter(_ < 10)
 
@@ -717,7 +717,7 @@ import scala.collection.immutable.{Map => _, Set => _, _}
 // Java classes can also be imported. Scala syntax can be used
 import java.swing.{JFrame, JWindow}
 
-// Your programs entry point is defined in a scala file using an object, with a
+// Your program's entry point is defined in a scala file using an object, with a
 // single method, main:
 object Application {
   def main(args: Array[String]): Unit = {

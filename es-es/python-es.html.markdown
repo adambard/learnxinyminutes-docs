@@ -328,7 +328,7 @@ dicc_lleno = {"uno": 1, "dos": 2, "tres": 3}
 nuestro_iterable = dicc_lleno.keys()
 print(nuestro_iterable) #=> dict_keys(['uno', 'dos', 'tres']). Este es un objeto que implementa nuestra interfaz Iterable
 
-Podemos recorrerla.
+# Podemos recorrerla.
 for i in nuestro_iterable:
     print(i)    # Imprime uno, dos, tres
 
@@ -388,8 +388,8 @@ keyword_args(pie="grande", lago="ness") #=> {"pie": "grande", "lago": "ness"}
 
 # Puedes hacer ambas a la vez si quieres
 def todos_los_argumentos(*args, **kwargs):
-    print args
-    print kwargs
+    print(args)
+    print(kwargs)
 """
 todos_los_argumentos(1, 2, a=3, b=4) imprime:
     (1, 2)
@@ -462,10 +462,10 @@ class Humano(object):
 
 # Instancia una clase
 i = Humano(nombre="Ian")
-print i.decir("hi")     # imprime "Ian: hi"
+print(i.decir("hi"))     # imprime "Ian: hi"
 
 j = Humano("Joel")
-print j.decir("hello")  #imprime "Joel: hello"
+print(j.decir("hello"))  #imprime "Joel: hello"
 
 # Llama nuestro método de clase
 i.get_especie() #=> "H. sapiens"
@@ -548,7 +548,7 @@ def pedir(_decir):
 
 
 @pedir
-def say(decir_por_favor=False):
+def decir(decir_por_favor=False):
     mensaje = "¿Puedes comprarme una cerveza?"
     return mensaje, decir_por_favor
 

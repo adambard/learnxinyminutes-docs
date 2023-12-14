@@ -11,8 +11,8 @@ lang: es-es
 
 AWK es una herramienta estándar en cada sistema UNIX compatible con POSIX.
 Es como un Perl restringido, perfecto para tareas de procesamiento de texto y
-otras necesidades de scripting. Tiene una sintaxis similar a C, pero sin 
-puntos y comas, manejo manual de memoria y tipado estático. Puedes llamarlo 
+otras necesidades de scripting. Tiene una sintaxis similar a C, pero sin
+puntos y comas, manejo manual de memoria y tipado estático. Puedes llamarlo
 desde un script de shell o usarlo como un lenguaje stand-alone para scripting.
 
 ¿Por qué elegir AWK sobre Perl? Principalmente, porque AWK es parte de UNIX.
@@ -74,8 +74,8 @@ BEGIN {
 
     # Bloques formados por múltiples líneas usan llaves
     while (a < 10) {
-        print "La concatenación de strings se hace " " con series " 
-	print " de" " strings separados por espacios"
+        print "La concatenación de strings se hace " " con series "
+        print " de" " strings separados por espacios"
         print a
 
         a++
@@ -153,13 +153,13 @@ function arithmetic_functions(a, b, c,     localvar) {
     # Todo es global. No es problema en scripts pequeños, pero sí para
     # scripts más grandes.
 
-    # Hay un work-around (mmm... hack). Los argumentos de las funciones son 
+    # Hay un work-around (mmm... hack). Los argumentos de las funciones son
     # locales para la función, y AWK permite definir más argumentos de función
-    # de los que necesita, por lo que define las variables locales en la 
+    # de los que necesita, por lo que define las variables locales en la
     # declaración como en la función de arriba. Como convención, agrega
-    # espacios en blanco para distinguir los parámetros de la función de las 
-    # variables locales. En este ejemplo, a, b y c son parámetros y localvar es una 
-    # variable local.
+    # espacios en blanco para distinguir los parámetros de la función de las
+    # variables locales. En este ejemplo, a, b y c son parámetros y localvar es
+    # una variable local.
 
     # Ahora, a demostrar las funciones aritméticas
 
@@ -196,7 +196,7 @@ function string_functions(    localvar, arr) {
     # Ambas regresan el número de matches remplazados.
     localvar = "fooooobar"
     sub("fo+", "Meet me at the ", localvar) # localvar => "Meet me at the bar"
-    gsub("e+", ".", localvar) # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar) # localvar => "M..t m. at th. bar"
 
     # Buscar una cadena que haga match con una expresión regular
     # index() hace lo mismo, pero no permite expresiones regulares
@@ -222,10 +222,10 @@ function io_functions(    localvar) {
     # También hay printf
     printf("%s %d %d %d\n", "Testing", 1, 2, 3)
 
-    # AWK no tiene handles de archivos en sí mismo. Automáticamente abrirá un 
-    # handle de archivo cuando use algo que necesite uno. El string que usaste 
-    # para esto puede ser tratada como un handle de archivo para propósitos de I/O.
-    # Esto lo hace similar al scripting de shell:
+    # AWK no tiene handles de archivos en sí mismo. Automáticamente abrirá un
+    # handle de archivo cuando use algo que necesite uno. El string que usaste
+    # para esto puede ser tratada como un handle de archivo para propósitos
+    # de I/O. Esto lo hace similar al scripting de shell:
 
     print "foobar" >"/tmp/foobar.txt"
 
@@ -247,17 +247,17 @@ function io_functions(    localvar) {
     close("/tmp/foobar.txt")
 }
 
-# Como dije al inicio, los programas en AWK son una colección de patrones y 
+# Como dije al inicio, los programas en AWK son una colección de patrones y
 # acciones. Ya conociste el patrón BEGIN. otros patrones sólo se usan si estás
 # procesando líneas desde archivos o stdin.
 
-# Cuando pasas argumentos a AWK, son tratados como nombres de archivos a 
-# procesar. Los va a procesar todos, en orden. Imagínalos como un ciclo for 
+# Cuando pasas argumentos a AWK, son tratados como nombres de archivos a
+# procesar. Los va a procesar todos, en orden. Imagínalos como un ciclo for
 # implícito, iterando sobre las líneas de estos archivos. Estos patrones y
 # acciones son como instrucciones switch dentro del ciclo.
 
 /^fo+bar$/ {
-    
+
     # Esta acción se ejecutará por cada línea que haga match con la expresión
     # regular /^fo+bar$/, y será saltada por cualquier línea que no haga match.
     # Vamos a sólo mostrar la línea:
@@ -268,7 +268,7 @@ function io_functions(    localvar) {
     # $0 es el nombre de la línea actual que se está procesando.
     # Se crea automáticamente para ti.
 
-    # Probablemente puedas adivinar que hay otras variables $. Cada línea es 
+    # Probablemente puedas adivinar que hay otras variables $. Cada línea es
     # separada implícitamente antes de que se llame cada acción, justo como lo
     # hace shell. Y, como shell, cada campo puede ser accesado con $.
 
@@ -301,7 +301,7 @@ a > 0 {
 # Y ya te das una idea. Procesar archivos de texto, leyendo una línea a la vez,
 # y haciendo algo con ella, particularmente separando en un deliminator, es tan
 # común en UNIX que AWK es un lenguaje de scripting que hace todo eso por ti
-# sin que tengas que pedirlo. Basta con escribir los patrones y acciones 
+# sin que tengas que pedirlo. Basta con escribir los patrones y acciones
 # basados en lo que esperas de la entrada y lo quieras quieras hacer con ella.
 
 # Aquí está un ejemplo de un script simple, para lo que AWK es perfecto.
@@ -343,7 +343,7 @@ $1 == name {
     nlines++
 }
 
-# Otro patrón especial es END. Va a ejecutarse después de procesar todos los 
+# Otro patrón especial es END. Va a ejecutarse después de procesar todos los
 # archivos de texto. A diferencia de BEGIN, sólo se ejecuta si le das dado una
 # entrada a procesar. Se ejecutará después de que todos los archivos hayan sido
 # leídos y procesados según las reglas y acciones que programaste. El propósito
@@ -356,8 +356,10 @@ END {
 }
 
 ```
+
 Más información:
 
 * [Tutorial de AWK](http://www.grymoire.com/Unix/Awk.html)
 * [Página man de AWK](https://linux.die.net/man/1/awk)
-* [La guía del usuario de GNU Awk](https://www.gnu.org/software/gawk/manual/gawk.html): GNU Awk se encuentra en la mayoría de los sistemas Linux.
+* [La guía del usuario de GNU Awk](https://www.gnu.org/software/gawk/manual/gawk.html):
+  GNU Awk se encuentra en la mayoría de los sistemas Linux.

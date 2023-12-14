@@ -59,47 +59,49 @@ As seções tmux acopladas são controladas através de teclas de atalho. (prefi
 ----------------------------------------------------------------------
   (C-b) = Ctrl + b    # Abre a opção de receber comandos(atalhos).
 
-  (M-1) = Meta + 1 -or- Alt + 1
+  (M-1) = Meta + 1 -ou- Alt + 1
 ----------------------------------------------------------------------
 
-  ?           # Lista todos os comandos.
-  :           # Acessa o prompt command do tmux
-  r           # Força a reinicialização do cliente acoplado.
-  c           # Cria uma nova janela.
+  ?                  # Lista todos os comandos.
+  :                  # Acessa o prompt command do tmux
+  r                  # Força a reinicialização do cliente acoplado.
+  c                  # Cria uma nova janela.
 
-  !           # Retira o painel atual da janela.
-  %           # Divide o painel atual em dois. Esquerda e direita.
-  "           # Divide o painel atual em dois. Para cima e para baixo.
+  !                  # Retira o painel atual da janela.
+  %                  # Divide o painel atual em dois. Esquerda e direita.
+  "                  # Divide o painel atual em dois. Para cima e para baixo.
 
-  n           # Muda para a próxima janela.
-  p           # Muda para a janela anterior.
-  {           # Troca o painel atual pelo anterior.
-  }           # Troca o painel corrent pelo posterior.
+  n                  # Muda para a próxima janela.
+  p                  # Muda para a janela anterior.
+  {                  # Troca o painel atual pelo anterior.
+  }                  # Troca o painel corrent pelo posterior.
+  [                  # Entra no modo cópia (Copy Mode) para copiar texto ou ver o histórico.
 
-  s           # Seleciona uma nova seção para o cliente acoplado iterativamente.
-  w           # Seleciona a janela atual iterativamente.
-  0 to 9      # Seleciona a janela de 0 à 9.
 
-  d           # Separa o cliente atual.
-  D           # Seleciona um cliente a ser separado.
+  s                  # Seleciona uma nova seção para o cliente acoplado iterativamente.
+  w                  # Seleciona a janela atual iterativamente.
+  0 to 9             # Seleciona a janela de 0 à 9.
 
-  &           # Encerra a janela atual.
-  x           # Encerra o painel atual.
+  d                  # Separa o cliente atual.
+  D                  # Seleciona um cliente a ser separado.
 
-  Up, Down    # Move para o painel acima, abaixo, a esquerda ou a direita.
+  &                  # Encerra a janela atual.
+  x                  # Encerra o painel atual.
+
+  Up, Down           # Move para o painel acima, abaixo, a esquerda ou a direita.
   Left, Right
 
-  M-1 to M-5  # Organiza os paines:
+  M-1 to M-5         # Organiza os paines:
                        # 1) Horizontalmente de maneira igual
                        # 2) Verticalmente de maineira igual.
                        # 3) Principal horizontalmente
                        # 4) Principal verticamente.
                        # 5) Mosaico
 
-  C-Up, C-Down    # Altera o tamanho do painel atual em uma célula.
+  C-Up, C-Down       # Altera o tamanho do painel atual em uma célula.
   C-Left, C-Right
 
-  M-Up, M-Down    # Altera o tamanho do painel atual em cinco células.
+  M-Up, M-Down       # Altera o tamanho do painel atual em cinco células.
   M-Left, M-Right
 
 ```

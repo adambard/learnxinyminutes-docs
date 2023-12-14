@@ -12,7 +12,7 @@ lang: ro-ro
 filename: LearnBash-ro.sh
 ---
 
-Bash este numele shell-ului UNIX, care a fost de asemenea distribuit drept shell pentru sistemul de operare GNU și ca shell implicit pentru Linux si Mac OS X.
+Bash este numele shell-ului UNIX, care a fost de asemenea distribuit drept shell pentru sistemul de operare GNU și ca shell implicit pentru Linux si macOS.
 Aproape toate exemplele de mai jos pot fi parte dintr-un script sau pot fi executate direct in linia de comanda.
 
 [Citește mai multe:](http://www.gnu.org/software/bash/manual/bashref.html)

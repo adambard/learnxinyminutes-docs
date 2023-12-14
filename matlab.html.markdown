@@ -1,5 +1,5 @@
 ---
-language: Matlab
+language: MATLAB
 filename: learnmatlab.mat
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
@@ -28,7 +28,7 @@ this
 % Two percent signs denote the start of a new code section
 % Individual code sections can be run by moving the cursor to the section followed by
 % either clicking the "Run Section" button
-% or     using Ctrl+Shift+Enter (Windows) or Cmd+Shift+Return (OS X)
+% or     using Ctrl+Shift+Enter (Windows) or Cmd+Shift+Return (macOS)
 
 %% This is the start of a code section
 %  One way of using sections is to separate expensive but unchanging start-up code like loading data
@@ -134,7 +134,7 @@ A.d.e = false;
 
 % Vectors
 x = [4 32 53 7 1]
-x(2) % ans = 32, indices in Matlab start 1, not 0
+x(2) % ans = 32, indices in MATLAB start 1, not 0
 x(2:3) % ans = 32 53
 x(2:end) % ans = 32 53 7 1
 
@@ -502,7 +502,7 @@ find(x) % Finds all non-zero elements of x and returns their indexes, can use co
 
 
 % Classes
-% Matlab can support object-oriented programming. 
+% MATLAB can support object-oriented programming. 
 % Classes must be put in a file of the class name with a .m extension. 
 % To begin, we create a simple class to store GPS waypoints.
 % Begin WaypointClass.m
@@ -524,7 +524,7 @@ classdef WaypointClass % The class name.
     end
 
     % If we want to add two Waypoint objects together without calling
-    % a special function we can overload Matlab's arithmetic like so:
+    % a special function we can overload MATLAB's arithmetic like so:
     function r = plus(o1,o2)
       r = WaypointClass([o1.latitude] +[o2.latitude], ...
                         [o1.longitude]+[o2.longitude]);
@@ -536,7 +536,7 @@ end
 % We can create an object of the class using the constructor
 a = WaypointClass(45.0, 45.0)
 
-% Class properties behave exactly like Matlab Structures.
+% Class properties behave exactly like MATLAB Structures.
 a.latitude = 70.0
 a.longitude = 25.0
 
@@ -547,15 +547,15 @@ ans = multiplyLatBy(a,3)
 % does not need to be passed to the method.
 ans = a.multiplyLatBy(1/3)
 
-% Matlab functions can be overloaded to handle objects. 
-% In the method above, we have overloaded how Matlab handles 
+% MATLAB functions can be overloaded to handle objects. 
+% In the method above, we have overloaded how MATLAB handles 
 % the addition of two Waypoint objects.
 b = WaypointClass(15.0, 32.0)
 c = a + b
 
 ```
 
-## More on Matlab
+## More on MATLAB
 
 * [The official website](http://www.mathworks.com/products/matlab/)
 * [The official MATLAB Answers forum](http://www.mathworks.com/matlabcentral/answers/)

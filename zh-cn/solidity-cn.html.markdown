@@ -213,7 +213,7 @@ names.length; // 获得数组长度
 names.length = 1; // 可以设定长度（仅针对 storage 中的动态数组）
 
 // 多维数组
-uint x[][5]; // 5个动态数组元素的数组(和多数语言的顺序相反)
+uint[][5] x; // 5个动态数组元素的数组(和多数语言的顺序相反)
 
 // 字典类型 (任一类型到其他类型的映射)
 mapping (string => uint) public balances;

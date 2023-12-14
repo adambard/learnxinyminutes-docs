@@ -1,7 +1,7 @@
 ---
-name: c
+name: C
 category: language
-language: c
+language: C
 filename: learnc-tr.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
