@@ -185,7 +185,7 @@ print("Hello, World", end="!")  # => Hello, World!
 input_string_var = input("Enter some data: ") # Returns the data as a string
 
 # There are no declarations, only assignments.
-# Convention is to use lower_case_with_underscores
+# Convention in naming variables is snake_case style
 some_var = 5
 some_var  # => 5
 
