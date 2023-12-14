@@ -5,7 +5,7 @@ lang: pt-pt
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators:
-	- ["André Martins", "https://github.com/chriptus13"]
+    - ["André Martins", "https://github.com/chriptus13"]
 ---
 
 Kotlin é uma linguagem de programação de tipificação estática para a JVM, Android e browser. Ela é 100% interoperável com Java.
