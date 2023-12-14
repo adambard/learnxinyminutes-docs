@@ -635,7 +635,8 @@ def create_adder(x):
 add_10 = create_adder(10)
 add_10(3)   # => 13
 
-# Closures in nested functions, the nonlocal keyword to work with variables in nested scope which shouldn't be in the inner functions.
+# Closures in nested functions:
+# We can use the nonlocal keyword to work with variables in nested scope which shouldn't be declared in the inner functions.
 def create_avg():
     total = 0
     count = 0
