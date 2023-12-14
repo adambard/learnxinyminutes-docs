@@ -126,6 +126,9 @@ public class LearnJava {
         // <name1> = <name2> = <name3> = <val>
         int barInt1, barInt2, barInt3;
         barInt1 = barInt2 = barInt3 = 1;
+	// Shorthand for multiple declarations
+	int barInt4 = 1, barInt5 = 2; 
+
 
         /*
         *  Variable types
@@ -307,8 +310,8 @@ public class LearnJava {
         ///////////////////////////////////////
         System.out.println("\n->Operators");
 
-        int i1 = 1, i2 = 2; // Shorthand for multiple declarations
-
+	int i1 = 1, i2 = 2;
+	
         // Arithmetic is straightforward
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
