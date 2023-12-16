@@ -20,12 +20,14 @@ YAML doesn't allow literal tab characters for indentation.
 
 # Comments in YAML look like this.
 # YAML supports single-line comments.
+learnyaml.yaml
 
 ################
 # SCALAR TYPES #
 ################
 
-# Our root object (which continues for the entire document) will be a map,
+# Our root object (learnyaml.yaml
+ continues for the entire document) will be a map,
 # which is equivalent to a dictionary, hash or object in other languages.
 key: value
 another_key: Another value goes here.
