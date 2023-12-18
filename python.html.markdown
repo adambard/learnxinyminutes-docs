@@ -669,7 +669,7 @@ def create_avg():
 avg = create_avg()
 avg(3) # => 3.0
 avg(5) # (3+5)/2 => 4.0
-avg(7) # (8+7)/2 => 5.0
+avg(7) # (8+7)/3 => 5.0
 
 # There are also anonymous functions
 (lambda x: x > 2)(3)                  # => True
