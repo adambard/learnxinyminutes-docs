@@ -32,7 +32,7 @@ You can [try ATS in your browser](http://www.ats-lang.org/SERVER/MYCODE/Patsopta
 or install it from [http://www.ats-lang.org/](http://www.ats-lang.org/).
 
 
-```ats
+```ocaml
 // Include the standard library
 #include "share/atspre_define.hats"
 #include "share/atspre_staload.hats"
