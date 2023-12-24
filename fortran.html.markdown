@@ -260,7 +260,7 @@ program example         ! declare a program called example.
     m = func(3, 2, k)       ! function call.
 
     ! Function calls can also be evoked within expressions.
-    Print *, func2(3, 2, k)
+    print *, func2(3, 2, k)
 
     ! A pure function is a function that doesn't modify its input parameters
     ! or cause any side-effects.
