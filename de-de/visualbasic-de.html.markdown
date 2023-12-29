@@ -4,7 +4,7 @@ contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
     - ["Enno Nagel", "https://github.com/konfekt"]
-filename: visualbasic-de.vb
+filename: learnvisualbasic-de.vb
 lang: de-de
 ---
 
@@ -74,15 +74,16 @@ Sub Main()
   End Select
 End Sub
 
-'Eins - Ich habe Zahlen verwendet, um mich durch das obige Navigationssystem zu führen
-'auf das ich später zurückkomme, um es zu implementieren.
+'Eins - Ich habe Zahlen verwendet, um mich durch das obige Navigationssystem zu
+'führen auf das ich später zurückkomme, um es zu implementieren.
 
-'wir verwenden private Unterprogramme, um verschiedene Abschnitte des Programms zu trennen.
+'wir verwenden private Unterprogramme, um verschiedene Abschnitte des Programms
+'zu trennen.
 Private Sub AusgabeHalloWelt()
   'Titel der Konsolenanwendung
   Console.Title = "Ausgabe 'Hallo, Welt' | Lerne X in Y Minuten"
-  'Verwenden Sie Console.Write("") oder Console.WriteLine(""), um die Ausgabe anzuzeigen.
-  'gefolgt von Console.Read(), oder Console.Readline()
+  'Verwenden Sie Console.Write("") oder Console.WriteLine(""), um die Ausgabe
+  'anzuzeigen, gefolgt von Console.Read(), oder Console.Readline()
   'Console.ReadLine() zeigt die Ausgabe auf der Konsole an.
   Console.WriteLine ("Hallo, Welt")
   Console.ReadLine()
@@ -99,12 +100,13 @@ Private Sub EingabeHalloWelt()
   'auf ihn antworten.
   Dim nutzername As String
   ' Wir verwenden "String", weil es sich um eine textbasierte Variable handelt.
-  Console.WriteLine ("Hallo, wie ist Ihr Name?") 'Fragen Sie nach dem Benutzernamen.
+  Console.WriteLine ("Hallo, wie ist Ihr Name?") 'Frage nach dem Benutzernamen.
   nutzername = Console.ReadLine() 'Benutzernamen speichern.
   Console.WriteLine ("Hallo, " + nutzername) 'Ausgabe ist Hallo, Name
   Console.ReadLine() 'Die obige Ausgabe anzeigen.
   'Der obige Code stellt Ihnen eine Frage und zeigt die Antwort an.
-  'Neben anderen Variablentypen gibt es Integer, den wir für ganze Zahlen verwenden werden.
+  'Neben anderen Variablentypen gibt es Integer, den wir für ganze Zahlen
+  'verwenden werden.
 End Sub
 
 'Drei
@@ -171,10 +173,10 @@ End Sub
 Private Sub WhileSchleife()
   'Gleich zur vorherigen privaten Subroutine.
   'Diesmal fragen wir den Benutzer, ob er fortfahren möchte (ja oder nein?).
-  'Wir verwenden die Do While-Schleife, weil wir nicht wissen, ob der Benutzer das Programm mehr als einmal verwenden möchte
+  'Wir verwenden die Do While-Schleife, weil wir nicht wissen, ob der Benutzer
   'das Programm mehr als einmal verwenden möchte.
   Console.Title = "Do While-Schleifen verwenden | X in Y Minuten lernen"
-  Dim antwort As String 'Wir verwenden die Variable "String", weil die Antwort ein Text ist
+  Dim antwort As String 'Wir verwenden "String", weil die Antwort ein Text ist
   Do 'Wir beginnen das Programm mit
     Console.Write ("Erste Zahl: ")
     Dim a As Double = Console.Readline()
@@ -210,8 +212,8 @@ Private Sub ForSchleife()
   'In diesem Programm werden wir von 10 loszählen.
 
   Console.Title = "Mit "For"-Schleifen | X in Y Minuten lernen"
-  'Deklarieren Sie die Variable und ab welcher Zahl in Schritt -1 gezählt werden soll,
-  'Schritt -2, Schritt -3, usw.
+  'Deklarieren Sie die Variable und ab welcher Zahl in Schritt -1 gezählt
+  'werden soll, Schritt -2, Schritt -3, usw.
   For i As Integer = 10 To 0 Schritt -1
     Console.WriteLine (i.ToString) 'Zählerwert anzeigen
   Next i 'Berechne den neuen Wert
@@ -223,7 +225,8 @@ End Sub
 Private Sub BedingteAnweisung()
   Console.Title = "Bedingte Anweisungen | X in Y Minuten lernen"
   Dim username As String = Console.Readline()
-  Console.WriteLine ("Hallo, wie ist Ihr Name?") 'Aufforderung zur Eingabe des Benutzernamens.
+  'Aufforderung zur Eingabe des Benutzernamens.
+  Console.WriteLine ("Hallo, wie ist Ihr Name?")
   username = Console.ReadLine() 'Benutzernamen speichern.
   If username = "Adam" Then
     Console.WriteLine ("Hallo, Adam")
@@ -244,7 +247,8 @@ Private Sub IfElseAnweisung()
     'In diesem Fall brauchen wir mehr als eine "if"-Anweisung.
     'Eine "if"-Anweisung ist für Verkaufsautomaten geeignet.
     'Der Benutzer gibt einen Code ein (A1, A2, A3), aus dem er wählen kann.
-    'Alle Auswahlmöglichkeiten können in einer einzigen "if"-Anweisung kombiniert werden.
+    'Alle Auswahlmöglichkeiten können in einer einzigen "if"-Anweisung
+    'kombiniert werden.
 
     Dim auswahl As String = Console.ReadLine 'Der Wert der Auswahl
     Console.WriteLine ("A1. für 7Up")
@@ -280,3 +284,4 @@ Für diejenigen, die mehr wissen wollen, hat Brian Martin ein umfassenderes <a h
 
 Die gesamte Syntax sollte gültig sein.
 Kopieren Sie den Code und fügen Sie ihn in den Visual Basic Compiler ein und führen Sie das Programm aus (F5).
+
