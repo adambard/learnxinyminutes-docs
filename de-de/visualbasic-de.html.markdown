@@ -280,8 +280,11 @@ End Module
 
 ## Referenzen
 
-Für diejenigen, die mehr wissen wollen, hat Brian Martin ein umfassenderes <a href="http://www.vbbootcamp.co.uk/" Title="Visual Basic Tutorial">Visual Basic Tutorial</a> erstellt.
+Für diejenigen, die mehr wissen wollen, hat Brian Martin ein umfassenderes
+[Visual Basic Tutorial](http://www.vbbootcamp.co.uk/ "Visual Basic Tutorial")
+erstellt.
 
 Die gesamte Syntax sollte gültig sein.
-Kopieren Sie den Code und fügen Sie ihn in den Visual Basic Compiler ein und führen Sie das Programm aus (F5).
+Kopieren Sie den Code und fügen Sie ihn in den Visual Basic Compiler ein und
+führen Sie das Programm aus (F5).
 
