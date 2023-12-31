@@ -231,7 +231,7 @@ List.filter (fun x -> x mod 2 = 0) [1; 2; 3; 4] ;;
 
 (* Remember that the cons :: constructor can only cons a single item to the front
    of a list. To combine two lists use the append @ operator *)
-[1; 2] @ [3; 4] ;; (* Gives [1; 2; 3; 4])
+[1; 2] @ [3; 4] ;; (* Gives [1; 2; 3; 4] *)
 
 (* Arrays are enclosed in [| |] *)
 let my_array = [| 1; 2; 3 |] ;;
@@ -329,7 +329,9 @@ let example_tree: int tree =
 *)
 
 (*** Records ***)
+
 (* A collection of values with named fields *)
+
 type animal = 
    {
       name: string;
@@ -456,7 +458,9 @@ rev [1; 2; 3] ;; (* Gives [3; 2; 1] *)
 (* This function works on lists of any element type *)
 
 (*** Higher Order Functions ***)
+
 (* Functions are first class in OCaml *)
+
 let rec transform (f: 'a -> 'b) (l: 'a list) : 'b list =
   match l with
   | [] -> []
@@ -478,7 +482,9 @@ let rec filter (pred: 'a -> bool) (l: 'a list) : 'a list =
 filter (fun x -> x < 4) [3; 1; 4; 1; 5] ;; (* Gives [3; 1; 1]) *)
 
 (*** Mutability ***)
+
 (* Records and variables are immutable: you cannot change where a variable points to *)
+
 (* However, you can create mutable polymorphic fields *)
 type counter = { mutable num : int } ;;
 
