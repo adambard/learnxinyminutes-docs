@@ -3,6 +3,7 @@ category: tool
 tool: zfs
 contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
+    - ["81reap", "https://github.com/81reap"]
 filename: LearnZfs.txt
 ---
 
@@ -18,19 +19,24 @@ usability for systems administrators.
 
 ### Virtual Devices
 
-A VDEV (Virtual Device) in ZFS is analogous to a RAID device and simmilaly offers different benefits in terms of redundancy and performance. In general VDEV's offer better reliability and safety than a RAID card.  It is discouraged to use a RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
+A VDEV (Virtual Device) in ZFS is analogous to a RAID device and simmilaly offers different
+benefits in terms of redundancy and performance. In general VDEV's offer better reliability 
+and safety than a RAID card. It is discouraged to use a RAID setup with ZFS, as ZFS expects 
+to directly manage the underlying disks.
 
-| VDEV Type | Similar RAID   | Notes                                 |
+| VDEV Type | Similar RAID | Notes |
 |-----------|----------------|---------------------------------------|
-| Stripe    | Single disk    | No redundancy. Data is not mirrored or parity-protected. |
-| Mirror    | RAID 1         | Supports n-way mirroring for redundancy. |
-| raidz1    | RAID 5         | Single disk parity, offering fault tolerance of one disk failure. |
-| raidz2    | RAID 6         | Two-disk parity, can tolerate two disk failures. |
-| raidz3    | - | Three-disk parity, can tolerate three disk failures. |
-| Disk      | -              | Represents a single physical disk in a VDEV. |
-| File      | -              | File-based VDEV, not recommended for production as it adds complexity and reduces reliability. |
+| Stripe | Single disk | No redundancy. Data is not mirrored or parity-protected. |
+| Mirror | RAID 1 | Supports n-way mirroring for redundancy. |
+| raidz1 | RAID 5 | Single disk parity, offering fault tolerance of one disk failure. |
+| raidz2 | RAID 6 | Two-disk parity, can tolerate two disk failures. |
+| raidz3 | - | Three-disk parity, can tolerate three disk failures. |
+| Disk | - | Represents a single physical disk in a VDEV. |
+| File | - | File-based VDEV, not recommended for production as it adds complexity and reduces reliability. |
 
-Data in a ZFS storage pool is striped across all VDEVs. Adding more VDEVs, Logs, or Caches can increase IOPS (Input/Output Operations Per Second), enhancing performance. It's crucial to balance VDEVs for optimal performance and redundancy.
+Data in a ZFS storage pool is striped across all VDEVs. Adding more VDEVs, Logs, or Caches
+can increase IOPS (Input/Output Operations Per Second), enhancing performance. It's crucial 
+to balance VDEVs for optimal performance and redundancy.
 
 ### Storage Pools
 
@@ -258,7 +264,8 @@ zroot/var                                                           none    none
 
 #### Write Log Pool
 
-The ZFS Intent Log (ZIL) is a write log designed to speed up syncronus writes. This is typically a faster drive or drive partition than the larger storage pools.
+The ZFS Intent Log (ZIL) is a write log designed to speed up syncronus writes. This is 
+typically a faster drive or drive partition than the larger storage pools.
 
 ```bash
 # Add a log pool
@@ -270,7 +277,9 @@ $ zpool status mypool/lamb
 
 #### Read Cache Pool
 
-The Level 2 Adaptive Replacement Cache (L2ARC) extends the primary ARC (in-RAM cache) and is used for read caching. This is typically a faster drive or drive partition than the larger storage pools.
+The Level 2 Adaptive Replacement Cache (L2ARC) extends the primary ARC (in-RAM cache) and is 
+used for read caching. This is typically a faster drive or drive partition than the larger 
+storage pools.
 
 ```bash
 # Add a cache pool
@@ -282,7 +291,9 @@ $ zpool status mypool/lamb
 
 #### Data Compression
 
-Data compression reduces the amount of space data occupies on disk in excange for some extra CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It especially beneficial on systems with more CPU resources than disk bandwidth.
+Data compression reduces the amount of space data occupies on disk in excange for some extra 
+CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It 
+especially beneficial on systems with more CPU resources than disk bandwidth.
 
 ```bash
 # Get compression options
@@ -316,7 +327,8 @@ $ zfs set encryption=on mypool/lamb
 $ zpool get encryption mypool/lamb
 ```
 
-It should be noted that there are parts of the system where the data is not encrypted. See the table below for a breakdown.
+It should be noted that there are parts of the system where the data is not encrypted. See 
+the table below for a breakdown.
 
 | Component | Encrypted | Notes |
 |----------------------|-------------------------------------------|------------------------------------------------------|
