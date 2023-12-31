@@ -311,7 +311,8 @@ $ zpool get compression mypool/lamb
 
 #### Encryption at Rest
 
-Encryption allows data to be encrypted on the device at the cost of extra CPU cycles.
+Encryption allows data to be encrypted on the device at the cost of extra CPU cycles. This
+propery can only be set when a pool is being created.
 
 ```bash
 # Get encryption options
@@ -320,8 +321,8 @@ $ zfs get -help
 encryption       NO      YES   on | off | aes-128-ccm | aes-192-ccm | aes-256-ccm | aes-128-gcm | aes-192-gcm | aes-256-gcm
 ...
 
-# Set encryption
-$ zfs set encryption=on mypool/lamb
+# Create an encrypted pool with a prompt
+$ zfs create -o encryption=on -o keysource=passphrase,prompt mypool/lamb
 
 # Check the configureation
 $ zpool get encryption mypool/lamb
