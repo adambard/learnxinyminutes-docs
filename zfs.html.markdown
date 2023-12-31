@@ -18,24 +18,19 @@ usability for systems administrators.
 
 ### Virtual Devices
 
-A VDEV is similar to a raid device presented by a RAID card, there are several different
-types of VDEV's that offer various advantages, including redundancy and speed.  In general
-VDEV's offer better reliability and safety than a RAID card.  It is discouraged to use a
-RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
+A VDEV (Virtual Device) in ZFS is analogous to a RAID device and simmilaly offers different benefits in terms of redundancy and performance. In general VDEV's offer better reliability and safety than a RAID card.  It is discouraged to use a RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
 
-Types of VDEV's
+| VDEV Type | Similar RAID   | Notes                                 |
+|-----------|----------------|---------------------------------------|
+| Stripe    | Single disk    | No redundancy. Data is not mirrored or parity-protected. |
+| Mirror    | RAID 1         | Supports n-way mirroring for redundancy. |
+| raidz1    | RAID 5         | Single disk parity, offering fault tolerance of one disk failure. |
+| raidz2    | RAID 6         | Two-disk parity, can tolerate two disk failures. |
+| raidz3    | - | Three-disk parity, can tolerate three disk failures. |
+| Disk      | -              | Represents a single physical disk in a VDEV. |
+| File      | -              | File-based VDEV, not recommended for production as it adds complexity and reduces reliability. |
 
-* stripe (a single disk, no redundancy)
-* mirror (n-way mirrors supported)
-* raidz
-	* raidz1 (1-disk parity, similar to RAID 5)
-	* raidz2 (2-disk parity, similar to RAID 6)
-	* raidz3 (3-disk parity, no RAID analog)
-* disk
-* file (not recommended for production due to another filesystem adding unnecessary layering)
-
-Your data is striped across all the VDEV's present in your Storage Pool, so more VDEV's will
-increase your IOPS.
+Data in a ZFS storage pool is striped across all VDEVs. Adding more VDEVs, Logs, or Caches can increase IOPS (Input/Output Operations Per Second), enhancing performance. It's crucial to balance VDEVs for optimal performance and redundancy.
 
 ### Storage Pools
 
@@ -258,6 +253,81 @@ zroot/home                                                          none    none
 zroot/var                                                           none    none
 ...
 ```
+
+### Adjusting ZFS Performance
+
+#### Write Log Pool
+
+The ZFS Intent Log (ZIL) is a write log designed to speed up syncronus writes. This is typically a faster drive or drive partition than the larger storage pools.
+
+```bash
+# Add a log pool
+$ zpool add mypool/lamb log /dev/sdX
+
+# Check the configureation
+$ zpool status mypool/lamb
+```
+
+#### Read Cache Pool
+
+The Level 2 Adaptive Replacement Cache (L2ARC) extends the primary ARC (in-RAM cache) and is used for read caching. This is typically a faster drive or drive partition than the larger storage pools.
+
+```bash
+# Add a cache pool
+$ zpool add mypool/lamb cache /dev/sdY
+
+# Check the configureation
+$ zpool status mypool/lamb
+```
+
+#### Data Compression
+
+Data compression reduces the amount of space data occupies on disk in excange for some extra CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It especially beneficial on systems with more CPU resources than disk bandwidth.
+
+```bash
+# Get compression options
+$ zfs get -help
+...
+compression     NO       YES   on | off | lzjb | gzip | gzip-[1-9] | zle | lz4 | zstd | zstd-[1-19] | zstd-fast | zstd-fast-[1-10,20,30,40,50,60,70,80,90,100,500,1000]
+...
+
+# Set compression
+$ zfs set compression=on mypool/lamb
+
+# Check the configureation
+$ zpool get compression mypool/lamb
+```
+
+#### Encryption at Rest
+
+Encryption allows data to be encrypted on the device at the cost of extra CPU cycles.
+
+```bash
+# Get encryption options
+$ zfs get -help
+...
+encryption       NO      YES   on | off | aes-128-ccm | aes-192-ccm | aes-256-ccm | aes-128-gcm | aes-192-gcm | aes-256-gcm
+...
+
+# Set encryption
+$ zfs set encryption=on mypool/lamb
+
+# Check the configureation
+$ zpool get encryption mypool/lamb
+```
+
+It should be noted that there are parts of the system where the data is not encrypted. See the table below for a breakdown.
+
+| Component | Encrypted | Notes |
+|----------------------|-------------------------------------------|------------------------------------------------------|
+| Main Data Storage | Yes | Data in datasets/volumes is encrypted. |
+| ZFS Intent Log (ZIL) | Yes | Synchronous write requests are encrypted. |
+| L2ARC (Cache) | Yes | Cached data is stored in an encrypted form. |
+| RAM (ARC) | No | Data in the primary ARC, in RAM, is not encrypted. |
+| Swap Area | Conditional | Encrypted if the ZFS swap dataset is encrypted. |
+| ZFS Metadata | Yes | Metadata is encrypted for encrypted datasets. |
+| Snapshot Data | Yes | Snapshots of encrypted datasets are also encrypted. |
+| ZFS Send/Receive | Conditional | Encrypted during send/receive if datasets are encrypted and `-w` flag is used. |
 
 
 ### Snapshots
