@@ -4,8 +4,8 @@ filename: learnocaml.ml
 contributors:
     - ["Daniil Baturin", "http://baturin.org/"]
     - ["Stanislav Modrak", "https://stanislav.gq/"]
+    - ["Luke Tong", "https://lukert.me/"]
 ---
-
 OCaml is a strictly evaluated functional language with some imperative
 features.
 
@@ -16,6 +16,8 @@ Just like Standard ML, OCaml features both an interpreter, that can be
 used interactively, and a compiler.
 The interpreter binary is normally called `ocaml` and the compiler is `ocamlopt`.
 There is also a bytecode compiler, `ocamlc`, but there are few reasons to use it.
+
+It also includes a package manager, `opam`, and a build system, `dune`.
 
 It is strongly and statically typed, but instead of using manually written
 type annotations, it infers types of expressions using the
@@ -58,7 +60,6 @@ The `f(x,y) = x + y` function from the example above applied to
 arguments 2 and 3 is equivalent to the `f0(y) = 2 + y` function applied to 3.
 Hence the `int -> int -> int` signature.
 
-
 ```ocaml
 (*** Comments ***)
 
@@ -76,6 +77,7 @@ Hence the `int -> int -> int` signature.
    is often considered to be a bad style. *)
 
 (* Variable and function declarations use the "let" keyword. *)
+(* Variables are immutable by default in OCaml *)
 let x = 10 ;;
 
 (* OCaml allows single quote characters in identifiers.
@@ -227,6 +229,10 @@ List.filter (fun x -> x mod 2 = 0) [1; 2; 3; 4] ;;
    often referred to as "cons". *)
 1 :: [2; 3] ;; (* Gives [1; 2; 3] *)
 
+(* Remember that the cons :: constructor can only cons a single item to the front
+   of a list. To combine two lists use the append @ operator *)
+[1; 2] @ [3; 4] ;; (* Gives [1; 2; 3; 4])
+
 (* Arrays are enclosed in [| |] *)
 let my_array = [| 1; 2; 3 |] ;;
 
@@ -295,11 +301,53 @@ let my_point = Point (2.0, 3.0) ;;
 type 'a list_of_lists = 'a list list ;;
 type int_list_list = int list_of_lists ;;
 
+(* These features allow for useful optional types *)
+type 'a option = Some of 'a | None ;;
+let x = Some x ;;
+let y = None ;;
+
 (* Types can also be recursive. Like in this type analogous to
    a built-in list of integers. *)
 type my_int_list = EmptyList | IntList of int * my_int_list ;;
 let l = IntList (1, EmptyList) ;;
 
+(* or Trees *)
+type 'a tree =
+   | Empty
+   | Node of 'a tree * 'a * 'a tree
+
+let example_tree: int tree =
+   Node (
+      Node (Empty, 7, Empty),
+      5,
+      Node (Empty, 9, Empty)
+   )
+(*
+   5
+  / \
+ 7   9
+*)
+
+(*** Records ***)
+(* A collection of values with named fields *)
+type animal = 
+   {
+      name: string;
+      color: string;
+      legs: int;
+   }
+;;
+
+let cow = 
+   {  name: "cow";
+      color: "black and white";
+      legs: 4; 
+   }
+;;
+val cow : animal
+
+cow.name ;;
+- : string = "cow"
 
 (*** Pattern matching ***)
 
@@ -346,6 +394,19 @@ let say x =
 
 say (Cat "Fluffy") ;; (* "Fluffy says meow". *)
 
+(* However, pattern matching must be exhaustive *)
+type color = Red | Blue | Green ;;
+let what_color x = 
+   match x with 
+   | Red -> "color is red"
+   | Blue -> "color is blue"
+   (* Won't compile! You have to add a _ case or a Green case 
+      to ensure all possibilities are accounted for *)
+;;
+(* Also, the match statement checks each case in order.
+   So, if a _ case appears first, none of the 
+   following cases will be reached! *)
+
 (** Traversing data structures with pattern matching **)
 
 (* Recursive types can be traversed with pattern matching easily.
@@ -372,13 +433,72 @@ let rec sum_int_list l =
 
 let t = Cons (1, Cons (2, Cons (3, Nil))) ;;
 sum_int_list t ;;
+
+(* Heres a function to tell if a list is sorted *)
+let rec is_sorted l = 
+   match l with 
+   | x :: y :: tail -> x <= y && is_sorted (y :: tail)
+   | _ -> true
+;;
+
+is_sorted [1; 2; 3] ;; (* True *)
+(* OCaml's powerful type inference guesses that l is of type int list
+   since the <= operator is used on elements of l *)
+
+(* And another to reverse a list *)
+let rec rev (l: 'a list) : 'a list = 
+  match l with 
+  | [] -> []
+  | x::tl -> (rev tl) @ [x]
+;;
+
+rev [1; 2; 3] ;; (* Gives [3; 2; 1] *)
+(* This function works on lists of any element type *)
+
+(*** Higher Order Functions ***)
+(* Functions are first class in OCaml *)
+let rec transform (f: 'a -> 'b) (l: 'a list) : 'b list =
+  match l with
+  | [] -> []
+  | head :: tail -> (f head) :: transform f tail
+;;
+
+transform (fun x -> x + 1) [1; 2; 3] ;; (* Gives [2; 3; 4] *)
+
+(** Lets combine everything we learned! **)
+let rec filter (pred: 'a -> bool) (l: 'a list) : 'a list =
+  begin match l with
+  | [] -> []
+  | x :: xs ->
+     let rest = filter pred xs in
+     if pred x then x :: rest else rest
+  end
+;;
+
+filter (fun x -> x < 4) [3; 1; 4; 1; 5] ;; (* Gives [3; 1; 1]) *)
+
+(*** Mutability ***)
+(* Records and variables are immutable: you cannot change where a variable points to *)
+(* However, you can create mutable polymorphic fields *)
+type counter = { mutable num : int } ;;
+
+let c = { num: 0 } ;;
+c.num ;; (* Gives 0 *)
+c.num <- 1 ;; (* <- operator can set mutable record fields *)
+c.num ;; (* Gives 1 *)
+
+(* OCaml's standard library provides a ref type to make single field mutability easier *)
+type 'a ref = { mutable contents : 'a } ;;
+let counter = ref 0 ;;
+!counter ;; (* ! operator returns x.contents *)
+counter := !counter + 1 ;; (* := can be used to set contents *)
 ```
 
 ## Further reading
 
-* Visit the official website to get the compiler and read the docs: <http://ocaml.org/>
-* Quick tutorial on OCaml: <https://ocaml.org/docs/up-and-running>
-* Complete online OCaml v5 playground: <https://ocaml.org/play>
-* An up-to-date (2022) book (with free online version) "Real World OCaml": <https://www.cambridge.org/core/books/real-world-ocaml-functional-programming-for-the-masses/052E4BCCB09D56A0FE875DD81B1ED571>
-* Online interactive textbook "OCaml Programming: Correct + Efficient + Beautiful" from Cornell University: <https://cs3110.github.io/textbook/cover.html>
-* Try interactive tutorials and a web-based interpreter by OCaml Pro: <http://try.ocamlpro.com/>
+* Visit the official website to get the compiler and read the docs: [http://ocaml.org/](http://ocaml.org/)
+* Quick tutorial on OCaml: [https://ocaml.org/docs/up-and-running](https://ocaml.org/docs/up-and-running)
+* Complete online OCaml v5 playground: [https://ocaml.org/play](https://ocaml.org/play)
+* An up-to-date (2022) book (with free online version) "Real World OCaml": [https://www.cambridge.org/core/books/real-world-ocaml-functional-programming-for-the-masses/052E4BCCB09D56A0FE875DD81B1ED571](https://www.cambridge.org/core/books/real-world-ocaml-functional-programming-for-the-masses/052E4BCCB09D56A0FE875DD81B1ED571)
+* Online interactive textbook "OCaml Programming: Correct + Efficient + Beautiful" from Cornell University: [https://cs3110.github.io/textbook/cover.html](https://cs3110.github.io/textbook/cover.html)
+* Try interactive tutorials and a web-based interpreter by OCaml Pro: [http://try.ocamlpro.com/](http://try.ocamlpro.com/)
