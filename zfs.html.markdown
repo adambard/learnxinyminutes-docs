@@ -260,9 +260,8 @@ zroot/var                                                           none    none
 ...
 ```
 
-### Adjusting ZFS Performance
 
-#### Write Log Pool
+### Write Log Pool
 
 The ZFS Intent Log (ZIL) is a write log designed to speed up syncronus writes. This is 
 typically a faster drive or drive partition than the larger storage pools.
@@ -275,7 +274,7 @@ $ zpool add mypool/lamb log /dev/sdX
 $ zpool status mypool/lamb
 ```
 
-#### Read Cache Pool
+### Read Cache Pool
 
 The Level 2 Adaptive Replacement Cache (L2ARC) extends the primary ARC (in-RAM cache) and is 
 used for read caching. This is typically a faster drive or drive partition than the larger 
@@ -289,7 +288,7 @@ $ zpool add mypool/lamb cache /dev/sdY
 $ zpool status mypool/lamb
 ```
 
-#### Data Compression
+### Data Compression
 
 Data compression reduces the amount of space data occupies on disk in excange for some extra 
 CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It 
@@ -309,7 +308,7 @@ $ zfs set compression=on mypool/lamb
 $ zpool get compression mypool/lamb
 ```
 
-#### Encryption at Rest
+### Encryption at Rest
 
 Encryption allows data to be encrypted on the device at the cost of extra CPU cycles. This
 propery can only be set when a dataset is being created.
