@@ -102,6 +102,8 @@ procedure LearnAdaInY is
 
    --  You can have normal Latin 1 based strings by default.
    Str  : constant String    := "This is a constant string";
+   --  When initialising from a string literal, the compiler knows the bounds,
+   --  so we don't have to define them.
 
    --  Strings are arrays. Note how parentheses are used to access elements of
    --  an array? This is a mathematical notation. It was used because at the
@@ -109,10 +111,37 @@ procedure LearnAdaInY is
    --  Ada was created and because an array can be seen as a function from a
    --  mathematical perspective, so it made converting between arrays and
    --  functions easier.
-   Char : constant character := Str (Str'First);
+   Char : constant Character := Str (Str'First);
 
    --  Ada 2022 includes the use of [] for array initialisation when using
    --  the containers, which were added in Ada 2012.
+
+   --  Arrays are usually always defined as a type.
+   --  They can be any dimension.
+   type My_Array_1 is array (1 .. 4, 3 .. 7, -20 .. 20) of Integer;
+
+   --  Yes, unlike other languages, you can index arrays with other discrete
+   --  types / ranges.
+   type Axes is (X, Y, Z);
+
+   --  You can define the array's range using the 'Range attribute.
+   type Vector is array (Axes'Range) of Float;
+
+   V1 : constant Vector := (0.0, 0.0, 1.0);
+
+   --  A record is the same as a structure in C, C++.
+   type Entities is record
+      Name     : String (1 .. 10);  --  Always start at 1, inclusive range.
+      Position : Vector;
+   end record;
+
+   --  In Ada, you have to pad out the full string. Change the number of spaces
+   --  to less than 6 to see it raise an exception.
+   --  There are [dynamic length strings](https://ada-lang.io/docs/arm/AA-A/AA-A.4#Subclause_A.4.5) available.
+   E1 : constant Entities := ("Blob      ", (0.0, 0.0, 0.0));
+
+   --  Object-orientation is accomplished via an extension of record syntax,
+   --  tagged records, see link above.
 
    --  We can rename objects (aliases) to make readability a bit better.
    package IO renames Ada.Text_IO;
@@ -189,6 +218,19 @@ begin
 
       IO.New_Line;
    end;
+
+   --  All objects know their bounds, including strings.
+   declare
+      C : Character := Str (50);  --  Warning caused and exception raised at
+                                  --  runtime.
+      --  The exception raised above can only be handled by an outer scope,
+      --  see [wikipbook](https://en.wikibooks.org/wiki/Ada_Programming/Exceptions#Exception_handlers).
+   begin
+      null;  --  We will never get to this point because of the above.
+   end;
+exception
+   when Constraint_Error =>
+      IO.Put_Line ("Caught the exception");
 end LearnAdaInY;
 ```
 
