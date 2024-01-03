@@ -24,48 +24,66 @@ begin
    --  Statements go here.
    null;  -- Do nothing here.
 end Empty;
-```
 
-Multi-line comments are not allowed as they are error prone.
+--  Ada compiler's accept compilation units which can be library packages,
+--  tasks, sub-programs, generics, etc.
+with Ada.Text_IO;  --  Get access to a library package.
 
-> Such comments would require a closing comment delimiter and this would again raise the dangers associated with the (unintentional) omission of the closing delimiter: entire sections of a program could be ignored by the compiler without the programmer realizing it
->
-> [Ada 83 Rationale](http://archive.adaic.com/standards/83rat/html/ratl-02-01.html#2.1)
 
-The most important feature in Ada is the type, objects have types and an object of one type cannot be assigned to an object of another type.
+procedure Hello is
+begin
+   Ada.Text_IO.Put_Line ("Hello, world");
 
-```ada
-type Degrees is range 0 .. 360;   --  This is a type.
+   Ada.Text_IO.Put ("Hello again, world");
+   Ada.Text_IO.New_Line;
+end Hello;
 
-type Hues is (Red, Green, Blue, Purple, Yellow);  --  So, is this.
-```
 
-You can restrict a type's range using a subtype, this makes them compatible with each other, i.e. the subtype can be assigned to an object of the type, as can be seen below.
+procedure LearnAdaInY is
+   --  The most important feature in Ada is the type, objects have types and an
+   --  object of one type cannot be assigned to an object of another type.
 
-```ada
-subtype Primaries is Hues range Red .. Blue;
-```
+   type Degrees is range 0 .. 360;   --  This is a type.
 
-You can define variables or constants like this:
+   type Hues is (Red, Green, Blue, Purple, Yellow);  --  So, is this.
 
-```ada
+   --  You can restrict a type's range using a subtype, this makes them
+   --  compatible with each other, i.e. the subtype can be assigned to an object
+   --  of the type, as can be seen below.
+   subtype Primaries is Hues range Red .. Blue;
+
+   --  You can define variables or constants like this:
+
+   --  10 is the universal integer. These universal numerics can be used with
+   --  any type which matches the base type.
+   Angle : Degrees := 10;
+   Value : Integer := 20;
+   --  New_Angle : Degrees := Value;   -- Incompatible types.
+   --  New_Value : Integer := Angle;
+
    Blue_Hue   :          Primaries := Blue;  --  A variable.
    Red_Hue    : constant Primaries := Red;   --  A constant.
    Yellow_Hue : constant Hues      := Yellow;
    Colour_1   : constant Hues      := Red_Hue;
-   Colour_2   : constant Primaries := Yellow_Hue;   --  Uncomment to see it fail.
-```
-
-```Colour_2``` will cause a compilation warning.
-
-```bash
-learnadainy.adb:13:39: warning: value not in range of type "Primaries" defined at line 7 [enabled by default]
-learnadainy.adb:13:39: warning: Constraint_Error will be raised at run time [enabled by default]
+   --  Colour_2   : constant Primaries := Yellow_Hue;   --  Comment to compile.
+begin
+   null;
+end LearnAdaInY;
 ```
 
 ## Download this source
 
-Download [Alire](https://alire.ada.dev), copy it to somewhere in your PATH and then do this:
+You can cut and paste the above into a new file, e.g. ```learn-ada-in-y.ada```
+and then run the following:
+
+```
+$ gnatchop learn-ada-in-y.ada
+$ gnatmake empty.adb
+$ gnatmake hello.adb
+$ gnatmake learnadainy.adb
+```
+
+Or, download [Alire](https://alire.ada.dev), copy it to somewhere in your PATH and then do this:
 
 ```bash
 $ alr toolchain --select    # Select the GCC and GPR tools to install
@@ -79,3 +97,12 @@ $ alr run learnadainy
 
 * [Ada Language](https://ada-lang.io)
 * [Ada 2022 Reference Manual](https://ada-lang.io/docs/arm)
+
+### Multi-line comments
+
+Multi-line comments are not allowed as they are error prone.
+
+> Such comments would require a closing comment delimiter and this would again raise the dangers associated with the (unintentional) omission of the closing delimiter: entire sections of a program could be ignored by the compiler without the programmer realizing it
+>
+> [Ada 83 Rationale](http://archive.adaic.com/standards/83rat/html/ratl-02-01.html#2.1)
+
