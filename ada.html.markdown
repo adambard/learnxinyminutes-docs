@@ -6,21 +6,13 @@ contributors:
     ["Luke A. Guest", "https://github.com/Lucretia"]
 ---
 
-Download [Alire](https://alire.ada.dev), copy it to somewhere in your PATH and then do this:
+Ada is a strong statically typed imperative, object-oriented and parallel programming language from the Pascal/Algol family of languages, but only has a passing resemblence to Pascal.
 
-```bash
-$ alr toolchain --select    # Select the GCC and GPR tools to install
-$ alr search learnadainy
-$ alr get learnadainy
-$ cd learnadainy
-$ alr run learnadainy
-```
-
-Ada is a strong statically typed imperative, object-oriented and parallel programming language.
-
-Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 1000's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became Object-Oriented in 1995, adding interfaces from Java in 2005.
+Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 1000's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became Object-Oriented in 1995, and added interfaces derived from Java in 2005.
 
 Ada was designed to be easy to read, even for non-programmers, like management within an organisation, so programs written in the language tend to be a bit more verbose.
+
+Ada is a modern programming language, and now has a package manager like other modern languages, alire, see below.
 
 Comments are written with a double hyphen and exist until the end of the line.
 
@@ -63,6 +55,18 @@ You can define variables or constants like this:
 ```bash
 learnadainy.adb:13:39: warning: value not in range of type "Primaries" defined at line 7 [enabled by default]
 learnadainy.adb:13:39: warning: Constraint_Error will be raised at run time [enabled by default]
+```
+
+## Download this source
+
+Download [Alire](https://alire.ada.dev), copy it to somewhere in your PATH and then do this:
+
+```bash
+$ alr toolchain --select    # Select the GCC and GPR tools to install
+$ alr search learnadainy
+$ alr get learnadainy
+$ cd learnadainy
+$ alr run learnadainy
 ```
 
 ## Further Reading
