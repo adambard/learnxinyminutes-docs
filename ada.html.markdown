@@ -165,6 +165,8 @@ begin
 end LearnAdaInY;
 ```
 
+The above source code will compile, but also will give warnings.
+
 ## Download this source
 
 You can cut and paste the above into a new file, e.g. ```learn-ada-in-y.ada```
