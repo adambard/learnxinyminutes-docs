@@ -90,7 +90,7 @@ end LearnAdaInY;
 You can cut and paste the above into a new file, e.g. ```learn-ada-in-y.ada```
 and then run the following:
 
-```
+```bash
 $ gnatchop learn-ada-in-y.ada
 $ gnatmake empty.adb
 $ gnatmake hello.adb
