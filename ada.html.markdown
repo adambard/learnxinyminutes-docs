@@ -14,10 +14,16 @@ Ada was designed to be easy to read, even for non-programmers, like management w
 
 Ada is a modern programming language, and now has a package manager like other modern languages, alire, see below.
 
-Comments are written with a double hyphen and exist until the end of the line.
-
 ```ada
---  This is a comment.
+--  Comments are written with a double hyphen and exist until the end of
+--  the line.
+
+procedure Empty is
+   --  This is a declarative part.
+begin
+   --  Statements go here.
+   null;  -- Do nothing here.
+end Empty;
 ```
 
 Multi-line comments are not allowed as they are error prone.
