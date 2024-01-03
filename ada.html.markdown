@@ -44,9 +44,10 @@ end Hello;
 
 
 with Ada.Unchecked_Conversion;
+with Ada.Text_IO;
 
 procedure LearnAdaInY is
-   -- Indentation is 3 spaces.
+   --  Indentation is 3 spaces.
 
    --  The most important feature in Ada is the type, objects have types and an
    --  object of one type cannot be assigned to an object of another type.
@@ -56,9 +57,9 @@ procedure LearnAdaInY is
    type Hues is (Red, Green, Blue, Purple, Yellow);  --  So, is this.
 
    --  You can restrict a type's range using a subtype, this makes them
-   --  compatible with each other, i.e. the subtype can be assigned to an object
-   --  of the type, as can be seen below.
-   subtype Primaries is Hues range Red .. Blue;
+   --  compatible with each other, i.e. the subtype can be assigned to an
+   --  object of the type, as can be seen below.
+   subtype Primaries is Hues range Red .. Blue;  --  This is a range.
 
    --  You can define variables or constants like this:
 
@@ -66,14 +67,14 @@ procedure LearnAdaInY is
    --  any type which matches the base type.
    Angle : Degrees := 10;
    Value : Integer := 20;
-   --  New_Angle : Degrees := Value;   -- Incompatible types.
+   --  New_Angle : Degrees := Value;   -- Incompatible types won't compile.
    --  New_Value : Integer := Angle;
 
    Blue_Hue   :          Primaries := Blue;  --  A variable.
    Red_Hue    : constant Primaries := Red;   --  A constant.
    Yellow_Hue : constant Hues      := Yellow;
    Colour_1   : constant Hues      := Red_Hue;
-   --  Colour_2   : constant Primaries := Yellow_Hue;   --  Comment to compile.
+   --  Colour_2   : constant Primaries := Yellow_Hue; --  uncomment to compile.
 
    --  You can force conversions, but the you are warned by the name of the
    --  package that you are doing something unsafe.
@@ -82,8 +83,22 @@ procedure LearnAdaInY is
       Target => Integer);
 
    New_Value_2 : Integer := Degrees_To_Int (Angle);   --  Note, space before (.
+
+   --  Ada has a style guide and GNAT will force you to adhere to it, so that
+   --  all Ada source looks consistent.
+
+   --  We can rename objects (aliases) to make readability a bit better.
+   package IO renames Ada.Text_IO;
 begin
-   null;
+   --  We can output enumerations as names.
+   IO.Put_Line ("Blue_Hue   = " &  --  & is the string concatenation operator.
+                Blue'Image);       --  ' accesses attributes on objects.
+                  --  The Image attribute converts a value to a string.
+                  --  Ada 2022 has extended Image to custom types too.
+                  --  Access this with -gnat2022 compiler flag.
+   IO.Put_Line ("Yellow_Hue = " &
+                --  We can use the type's attribute.
+                Primaries'Image (Yellow_Hue));
 end LearnAdaInY;
 ```
 
