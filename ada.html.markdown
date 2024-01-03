@@ -99,6 +99,69 @@ begin
    IO.Put_Line ("Yellow_Hue = " &
                 --  We can use the type's attribute.
                 Primaries'Image (Yellow_Hue));
+
+   --  We can define local variables within a declare block, this can be made
+   --  more readable by giving it a label.
+   Enum_IO : declare
+      package Hue_IO is new IO.Enumeration_IO (Hues);
+
+      --  Using a package makes everything inside that package visible within
+      --  this block, it is good practice to only do this locally and not on
+      --  a whole package within the context clause.
+      use Hue_IO;
+   begin
+      --  We can print out the enumeration values too.
+      Put (Purple); --  Note we don't have to prefix the Put procedure with
+                    --  Hue_IO.
+      IO.New_Line;  --  We still need to prefix with IO here.
+      Put (Red_Hue);
+      IO.New_Line;
+   end Enum_IO;
+
+   --  Loops have a consistent form.
+   --  <form> can be while or for or missing as below.
+   --
+   --  Infinite - Uncomment to see it loop forever.
+   --  loop
+   --     null;
+   --  end loop;  -- Useful to state machines.
+
+   declare  --  We don't have to have a label.
+      Counter : Positive := Positive'First;  --  This is 1.
+   begin
+      while Counter < 10 loop
+         IO.Put_Line ("Counter = " & Counter'Image);
+
+         Counter := Counter + 1;  --  There is no explicit inc/decrement.
+
+         --  Ada 2022 introduced @ for LHS, so the above would be written as
+         --  Counter := @ + 1;  --  Try it, -gnat2022.
+      end loop;
+   end;
+
+   declare
+      package Hue_IO is new IO.Enumeration_IO (Hues);
+
+      --  We can have multiple packages on one line, but I tend to use one
+      --  package per line for readability.
+      use IO, Hue_IO;
+   begin
+      Put ("Hues : ");  -- Note, no prefix.
+
+      --  Because we are using the 'Range attribute, the compiler knows it is
+      --  safe and can omit run-time checks here.
+      for Hue in Hues'Range loop
+         Put (Hue);
+
+         --  Types and objects know about their bounds, their First .. Last
+         --  values. These can be specified as range types.
+         if Hue /= Hues'Last then
+            Put (", ");
+         end if;
+      end loop;
+
+      IO.New_Line;
+   end;
 end LearnAdaInY;
 ```
 
