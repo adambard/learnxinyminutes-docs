@@ -52,6 +52,15 @@ procedure LearnAdaInY is
    --  The most important feature in Ada is the type, objects have types and an
    --  object of one type cannot be assigned to an object of another type.
 
+   --  You can and should define your own types for the domain you are
+   --  modelling. But you can use the standard types to start with and then
+   --  replace them later with your own types, this could be called a form of
+   --  gradual typing.
+   --
+   --  But would only really be a good starting point for binding to other
+   --  languages, like C. Ada is the only language with a standardised way to
+   --  bind with [C](https://ada-lang.io/docs/arm/AA-B/AA-B.3).
+
    type Degrees is range 0 .. 360;   --  This is a type.
 
    type Hues is (Red, Green, Blue, Purple, Yellow);  --  So, is this.
@@ -193,6 +202,7 @@ $ alr run learnadainy
 
 * [Ada Language](https://ada-lang.io)
 * [Ada 2022 Reference Manual](https://ada-lang.io/docs/arm)
+* [Ada Style Guide](https://ada-lang.io/docs/style-guide/Ada_Style_Guide)
 
 ### Multi-line comments
 
