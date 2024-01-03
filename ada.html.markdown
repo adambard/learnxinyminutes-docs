@@ -8,7 +8,7 @@ contributors:
 
 Ada is a strong statically typed imperative, object-oriented, real-time and parallel programming language from the Pascal/Algol family of languages, but only has a passing resemblence to Pascal.
 
-Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 1000's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became Object-Oriented in 1995, and added interfaces derived from Java in 2005.
+Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 1000's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became [Object-Oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9) in 1995, and added [interfaces](https://ada-lang.io/docs/arm/AA-3/AA-3.9#Subclause_3.9.4) derived from Java in 2005.
 
 [Aspect-oriented](https://ada-lang.io/docs/arm/AA-13/AA-13.1#Subclause_13.1.1) (or contract based) programming, was introduced with Ada 2012.
 
