@@ -98,6 +98,22 @@ procedure LearnAdaInY is
    --  Ada has a style guide and GNAT will force you to adhere to it, so that
    --  all Ada source looks consistent.
 
+   --  TODO: Add fixed and floating point types.
+
+   --  You can have normal Latin 1 based strings by default.
+   Str  : constant String    := "This is a constant string";
+
+   --  Strings are arrays. Note how parentheses are used to access elements of
+   --  an array? This is a mathematical notation. It was used because at the
+   --  time square brackets were not available on all keyboards at the time
+   --  Ada was created and because an array can be seen as a function from a
+   --  mathematical perspective, so it made converting between arrays and
+   --  functions easier.
+   Char : constant character := Str (Str'First);
+
+   --  Ada 2022 includes the use of [] for array initialisation when using
+   --  the containers, which were added in Ada 2012.
+
    --  We can rename objects (aliases) to make readability a bit better.
    package IO renames Ada.Text_IO;
 begin
