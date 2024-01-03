@@ -45,8 +45,55 @@ begin
 end Hello;
 
 
+--  Ada has a real module system, they are called packages and are split into
+--  two component parts, the specification (this file) and a body, the other.
+package Stuff is
+   --  pragma Preelaborate;
+
+   --  Packages can be nested within the same file or externally.
+   --  Nested packages are accessed via dot notation, e.g. Stuff.Things.My.
+   package Things is
+      My : constant Integer := 100;
+   end Things;
+
+   --  If there are sub-programs declared within the specification, the body
+   --  of the sub-program must be declared within the package bod.
+   procedure Do_Something;  --  If a subprogram takes no parameters, it is not
+                            --  shown.
+
+   --  Sometimes we want to hide how a type is defined from the outside world
+   --  so that nobody can mess with it directly. The full type must be defined
+   --  within the private section below.
+   type Blobs is private;
+private
+   type Blobs is new Integer range -25 .. 25;
+end Stuff;
+
+
+package body Stuff is
+   --  Sub-program body.
+   procedure Do_Something is
+      --  We can nest sub-programs too.
+      --  Parameters are defined with the direction of travel, in, in out, out.
+      function Times_4 (Value : in Integer) return Integer is
+      begin
+         return Value * 4;
+      end Times_4;
+
+      I : Integer := 4;
+   begin
+      I := Times_4 (I);
+   end Do_Something;
+begin
+   --  If we need to initialise something within the package, we can do it
+   --  here.
+   Do_Something;
+end Stuff;
+
+
 with Ada.Unchecked_Conversion;
 with Ada.Text_IO;
+with Stuff;
 
 procedure LearnAdaInY is
    --  Indentation is 3 spaces.
@@ -139,6 +186,10 @@ procedure LearnAdaInY is
    --  to less than 6 to see it raise an exception.
    --  There are [dynamic length strings](https://ada-lang.io/docs/arm/AA-A/AA-A.4#Subclause_A.4.5) available.
    E1 : constant Entities := ("Blob      ", (0.0, 0.0, 0.0));
+
+   --  We can make an object be initialised to it's default values with the box
+   --  notation, <>.
+   Null_Entity : constant Entities := (others => <>);
 
    --  Object-orientation is accomplished via an extension of record syntax,
    --  tagged records, see link above.
