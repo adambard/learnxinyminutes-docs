@@ -10,7 +10,9 @@ Ada is a strong statically typed imperative, object-oriented, real-time and para
 
 Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 1000's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became Object-Oriented in 1995, and added interfaces derived from Java in 2005.
 
-Ada was designed to be easy to read, even for non-programmers, like management within an organisation, so programs written in the language tend to be a bit more verbose.
+[Aspect-oriented](https://ada-lang.io/docs/arm/AA-13/AA-13.1#Subclause_13.1.1) (or contract based) programming, was introduced with Ada 2012.
+
+Ada was designed to be easy to read, even for non-programmers, e.g. management within an organisation, therefore programs written in the language tend to be a bit more verbose.
 
 Ada is a modern programming language, and now has a package manager like other modern languages, alire, see below.
 
