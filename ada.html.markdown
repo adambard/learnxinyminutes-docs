@@ -6,7 +6,7 @@ contributors:
     ["Luke A. Guest", "https://github.com/Lucretia"]
 ---
 
-Ada is a strong statically typed imperative, object-oriented, real-time and parallel programming language from the Pascal/Algol family of languages, but only has a passing resemblence to Pascal.
+Ada is a strong statically typed imperative, object-oriented, real-time and parallel programming language from the Pascal/Algol family of languages, but only has a passing resemblence to Pascal, I think the only remnants left are the ```begin/end``` pair and the ```:=``` assignment symbol.
 
 Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 1000's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became [Object-Oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9) in 1995, and added [interfaces](https://ada-lang.io/docs/arm/AA-3/AA-3.9#Subclause_3.9.4) derived from Java in 2005.
 
