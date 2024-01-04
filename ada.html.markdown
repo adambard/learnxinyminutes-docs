@@ -145,7 +145,13 @@ procedure LearnAdaInY is
    --  Ada has a style guide and GNAT will force you to adhere to it, so that
    --  all Ada source looks consistent.
 
-   --  TODO: Add fixed and floating point types.
+   --  Yes, you can even define your own floating and fixed point types, this
+   --  is a very rare and unique ability.
+   type Real_Angles is digits 3 range 0.0 .. 360.0;
+   type Fixed_Angles is delta 0.01 digits 5 range 0.0 .. 360.0;
+
+   RA : constant Real_Angles  := 36.45;
+   FA : constant Fixed_Angles := 360.0;
 
    --  You can have normal Latin 1 based strings by default.
    Str  : constant String    := "This is a constant string";
@@ -228,10 +234,20 @@ begin
    --  Loops have a consistent form.
    --  <form> can be while or for or missing as below.
    --
-   --  Infinite - Uncomment to see it loop forever.
-   --  loop
-   --     null;
-   --  end loop;  -- Useful to state machines.
+   declare
+      Counter : Positive := Positive'First;  --  This is 1.
+   begin
+      --  We can label loops so we can exit from them more easily if we need to.
+      Infinite : loop
+         IO.Put_Line ("[Infinite loop] Counter = " & Counter'Image);
+
+         Counter := Counter + 1;
+
+         --  This next line implements a repeat ... until or do ... while loop construct.
+         --  Comment it out for an infinite loop.
+         exit Infinite when Counter = 5;
+      end loop Infinite;  -- Useful to state machines.
+   end;
 
    declare  --  We don't have to have a label.
       Counter : Positive := Positive'First;  --  This is 1.
@@ -262,7 +278,8 @@ begin
 
          --  Types and objects know about their bounds, their First .. Last
          --  values. These can be specified as range types.
-         if Hue /= Hues'Last then
+         if Hue /= Hues'Last then  --  The /= means "not equal to" like the
+                                   --  maths symbol ≠.
             Put (", ");
          end if;
       end loop;
