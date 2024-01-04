@@ -4,13 +4,14 @@ language: Ada
 filename: learnc.ada
 contributors:
     ["Luke A. Guest", "https://github.com/Lucretia"]
+    ["Fernando Oleo Blanco", "https://github.com/Irvise"]
 ---
 
-Ada is a strong statically typed imperative, [object-oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9), [real-time](https://ada-lang.io/docs/arm/AA-D), [parallel](https://ada-lang.io/docs/arm/AA-9) and [distributed](https://ada-lang.io/docs/arm/AA-9) programming language from the Pascal/Algol family of languages, but only has a passing resemblence to Pascal, with the only remnants left being the ```begin/end``` keyword pair, the ```:=``` assignment symbol, records and ```if/case``` control statement structures.
+Ada is a strong statically typed imperative, [object-oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9), [real-time](https://ada-lang.io/docs/arm/AA-D), [parallel](https://ada-lang.io/docs/arm/AA-9) and [distributed](https://ada-lang.io/docs/arm/AA-9) programming language from the Pascal/Algol family of languages, but nowadays, it only has a passing resemblence to Pascal, with the only remnants left being the ```begin/end``` keyword pair, the ```:=``` assignment symbol, records and ```if/case``` control statement structures.
 
-Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 100's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became [Object-Oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9) in 1995, and added [interfaces](https://ada-lang.io/docs/arm/AA-3/AA-3.9#Subclause_3.9.4) derived from Java in 2005. [contract based](https://ada-lang.io/docs/arm/AA-13/AA-13.1#Subclause_13.1.1) programming, was introduced with Ada 2012.
+Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 100's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became [Object-Oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9) in 1995, and added [interfaces](https://ada-lang.io/docs/arm/AA-3/AA-3.9#Subclause_3.9.4) derived from Java in 2005. [Contract based](https://ada-lang.io/docs/arm/AA-13/AA-13.1#Subclause_13.1.1) programming was introduced with Ada 2012.
 
-Ada was designed to be easy to read, even for non-programmers, e.g. management within an organisation, therefore programs written in the language tend to be a bit more verbose.
+Ada was designed to be easy to read and learn, even for non-programmers, e.g. management within an organisation, therefore programs written in the language tend to be a bit more verbose.
 
 Ada is a modern programming language, and now has a package manager like other modern languages, alire, see below.
 
@@ -18,20 +19,21 @@ Ada is a modern programming language, and now has a package manager like other m
 --  Comments are written with a double hyphen and exist until the end of
 --  the line.
 
---  You do not need to call the entry point "Main" or "main," you should name
+--  You do not need to call the entry point "Main" or "main," you should
 --  name it based on what the program does.
 procedure Empty is
    --  This is a declarative part.
 begin
    --  Statements go here.
-   null;  -- Do nothing here.
+   null;  --  Do nothing here.
 end Empty;
 
---  Ada compiler's accept compilation units which can be library packages,
+--  Ada compilers accept compilation units which can be library packages,
 --  tasks, sub-programs, generics, etc.
 
 --  This is where "context clauses" go, these can be pragmas or ```with```
---  statements.
+--  statements. ```with``` is equivalent to "include" or "import" in other
+--  languages.
 with Ada.Text_IO;  --  Get access to a library package.
 
 procedure Hello is
@@ -43,11 +45,13 @@ begin
 end Hello;
 
 
---  Ada has a real module system, they are called packages and are split into
+--  Ada has a real module system. Modules are called packages and are split into
 --  two component parts, the specification (this file) and a body, the other.
 --  It is important to introduce packages early, as you will be using them from
 --  the start.
 package Stuff is
+   --  We could add the following line in order to tell the compiler that this
+   --  package does not have to run any code before the "main" procedure starts.
    --  pragma Preelaborate;
 
    --  Packages can be nested within the same file or externally.
@@ -57,7 +61,7 @@ package Stuff is
    end Things;
 
    --  If there are sub-programs declared within the specification, the body
-   --  of the sub-program must be declared within the package bod.
+   --  of the sub-program must be declared within the package body.
    procedure Do_Something;  --  If a subprogram takes no parameters, it is not
                             --  shown.
 
@@ -75,6 +79,7 @@ package body Stuff is
    procedure Do_Something is
       --  We can nest sub-programs too.
       --  Parameters are defined with the direction of travel, in, in out, out.
+      --  If the direction of travel is not specified, they are in by default.
       function Times_4 (Value : in Integer) return Integer is
       begin
          return Value * 4;
@@ -98,21 +103,32 @@ with Stuff;
 procedure LearnAdaInY is
    --  Indentation is 3 spaces.
 
-   --  The most important feature in Ada is the type, objects have types and an
+   --  The most important feature in Ada is the type. Objects have types and an
    --  object of one type cannot be assigned to an object of another type.
 
-   --  You can and should define your own types for the domain you are
+   --  You can, and should, define your own types for the domain you are
    --  modelling. But you can use the standard types to start with and then
    --  replace them later with your own types, this could be called a form of
    --  gradual typing.
    --
-   --  But would only really be a good starting point for binding to other
-   --  languages, like C. Ada is the only language with a standardised way to
-   --  bind with [C](https://ada-lang.io/docs/arm/AA-B/AA-B.3).
+   --  The standard types would only really be a good starting point for binding
+   --  to other languages, like C. Ada is the only language with a standardised
+   --  way to bind with [C](https://ada-lang.io/docs/arm/AA-B/AA-B.3),
+   --  [Fortran](https://ada-lang.io/docs/arm/AA-B/AA-B.5/), and even
+   --  [COBOL](https://ada-lang.io/docs/arm/AA-B/AA-B.4/)!
 
-   type Degrees is range 0 .. 360;   --  This is a type.
+   type Degrees is range 0 .. 360;  --  This is a type. Its underlying logic
+                                    --  is an Integer.
 
-   type Hues is (Red, Green, Blue, Purple, Yellow);  --  So, is this.
+   type Hues is (Red, Green, Blue, Purple, Yellow);  --  So, is this. Here, we
+                                                     --  are declaring an
+                                                     --  Enumeration.
+
+   --  This is a modular type. They behave like Integers that automatically
+   --  wrap around. In this specific case, the range would be 0 .. 359.
+   --  If we added ```+ 1``` to a variable containing the value 359,
+   --  we would receive back 0. They are very useful for arrays
+   type Degrees_Wrap is mod 360;
 
    --  You can restrict a type's range using a subtype, this makes them
    --  compatible with each other, i.e. the subtype can be assigned to an
@@ -120,38 +136,41 @@ procedure LearnAdaInY is
    subtype Primaries is Hues range Red .. Blue;  --  This is a range.
 
    --  You can define variables or constants like this:
+   --  Var_Name : Type := Value;
 
-   --  10 is the universal integer. These universal numerics can be used with
+   --  10 is a universal integer. These universal numerics can be used with
    --  any type which matches the base type.
    Angle : Degrees := 10;
    Value : Integer := 20;
-   --  New_Angle : Degrees := Value;   -- Incompatible types won't compile.
+   --  New_Angle : Degrees := Value;  --  Incompatible types won't compile.
    --  New_Value : Integer := Angle;
 
    Blue_Hue   :          Primaries := Blue;  --  A variable.
    Red_Hue    : constant Primaries := Red;   --  A constant.
    Yellow_Hue : constant Hues      := Yellow;
    Colour_1   : constant Hues      := Red_Hue;
-   --  Colour_2   : constant Primaries := Yellow_Hue; --  uncomment to compile.
+   --  Colour_2   : constant Primaries := Yellow_Hue;  --  uncomment to compile.
 
-   --  You can force conversions, but the you are warned by the name of the
-   --  package that you are doing something unsafe.
+   --  You can force conversions, but then you are warned by the name of the
+   --  package that you may be doing something unsafe.
    function Degrees_To_Int is new Ada.Unchecked_Conversion
      (Source => Degrees,   --  Line continuations are indented by 2 spaces.
       Target => Integer);
 
-   New_Value_2 : Integer := Degrees_To_Int (Angle);   --  Note, space before (.
+   New_Value_2 : Integer := Degrees_To_Int (Angle);  --  Note, space before (.
 
    --  Ada has a style guide and GNAT will force you to adhere to it, so that
-   --  all Ada source looks consistent.
+   --  all Ada source looks consistent. However, the style can be customized.
 
    --  Yes, you can even define your own floating and fixed point types, this
-   --  is a very rare and unique ability.
+   --  is a very rare and unique ability. ```digits``` refers to the minimum
+   --  digit precission that the type should support. ```delta``` is for fixed
+   --  point types and refers to the smallest change that the type will support.
    type Real_Angles is digits 3 range 0.0 .. 360.0;
    type Fixed_Angles is delta 0.01 digits 5 range 0.0 .. 360.0;
 
    RA : constant Real_Angles  := 36.45;
-   FA : constant Fixed_Angles := 360.0;
+   FA : constant Fixed_Angles := 360.0;  --  ".0" in order to make it a Float.
 
    --  You can have normal Latin 1 based strings by default.
    Str  : constant String    := "This is a constant string";
@@ -164,20 +183,22 @@ procedure LearnAdaInY is
    --  Ada was created and because an array can be seen as a function from a
    --  mathematical perspective, so it made converting between arrays and
    --  functions easier.
-   Char : constant Character := Str (Str'First);
+   Char : constant Character := Str (Str'First);  --  ```'First``` is a type
+                                                  --  attribute.
 
    --  Ada 2022 includes the use of [] for array initialisation when using
-   --  the containers, which were added in Ada 2012.
+   --  containers, which were added in Ada 2012.
 
    --  Arrays are usually always defined as a type.
    --  They can be any dimension.
    type My_Array_1 is array (1 .. 4, 3 .. 7, -20 .. 20) of Integer;
 
    --  Yes, unlike other languages, you can index arrays with other discrete
-   --  types / ranges.
+   --  types such as enumerations and modular types or arbitrary ranges.
    type Axes is (X, Y, Z);
 
-   --  You can define the array's range using the 'Range attribute.
+   --  You can define the array's range using the 'Range attribute from
+   --  another type.
    type Vector is array (Axes'Range) of Float;
 
    V1 : constant Vector := (0.0, 0.0, 1.0);
@@ -194,7 +215,8 @@ procedure LearnAdaInY is
    E1 : constant Entities := ("Blob      ", (0.0, 0.0, 0.0));
 
    --  We can make an object be initialised to it's default values with the box
-   --  notation, <>.
+   --  notation, <>. ```others``` is used to indicate anything else that has not
+   --  been explicitly initialized.
    Null_Entity : constant Entities := (others => <>);
 
    --  Object-orientation is accomplished via an extension of record syntax,
@@ -245,8 +267,8 @@ begin
 
          --  This next line implements a repeat ... until or do ... while loop construct.
          --  Comment it out for an infinite loop.
-         exit Infinite when Counter = 5;
-      end loop Infinite;  -- Useful to state machines.
+         exit Infinite when Counter = 5;  --  Equality tests use a single ```=```
+      end loop Infinite;  --  Useful to state machines.
    end;
 
    declare  --  We don't have to have a label.
@@ -269,7 +291,7 @@ begin
       --  package per line for readability.
       use IO, Hue_IO;
    begin
-      Put ("Hues : ");  -- Note, no prefix.
+      Put ("Hues : ");  --  Note, no prefix.
 
       --  Because we are using the 'Range attribute, the compiler knows it is
       --  safe and can omit run-time checks here.
@@ -313,8 +335,8 @@ The above source code will compile, but also will give warnings showing the powe
 If you already have the GNAT toolchain installed, you can cut and paste the above into a new file, e.g. ```learn-ada-in-y.ada``` and then run the following:
 
 ```bash
-$ gnatchop learn-ada-in-y.ada
-$ gnatmake empty.adb
+$ gnatchop learn-ada-in-y.ada # This breaks the program int its specificication ".ads" and body ".adb".
+$ gnatmake empty.adb # gnatmake takes care of compilation of all units and linking.
 $ gnatmake hello.adb
 $ gnatmake learnadainy.adb
 ```
