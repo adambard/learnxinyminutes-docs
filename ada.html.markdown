@@ -254,7 +254,6 @@ begin
 
    --  Loops have a consistent form.
    --  <form> can be while or for or missing as below.
-   --
    declare
       Counter : Positive := Positive'First;  --  This is 1.
    begin
