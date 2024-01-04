@@ -302,7 +302,7 @@ exception
 end LearnAdaInY;
 ```
 
-The above source code will compile, but also will give warnings.
+The above source code will compile, but also will give warnings showing the power of the strong static type system.
 
 ## Download this source
 
