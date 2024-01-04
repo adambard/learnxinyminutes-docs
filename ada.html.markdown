@@ -1,5 +1,4 @@
 ---
----
 language: Ada
 filename: learnc.ada
 contributors:
