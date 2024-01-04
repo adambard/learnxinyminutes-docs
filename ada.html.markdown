@@ -1,6 +1,6 @@
 ---
 language: Ada
-filename: learnc.ada
+filename: learn.ada
 contributors:
     ["Luke A. Guest", "https://github.com/Lucretia"]
     ["Fernando Oleo Blanco", "https://github.com/Irvise"]
