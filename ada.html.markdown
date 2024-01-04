@@ -6,7 +6,7 @@ contributors:
     ["Luke A. Guest", "https://github.com/Lucretia"]
 ---
 
-Ada is a strong statically typed imperative, [object-oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9), [real-time](https://ada-lang.io/docs/arm/AA-D), [parallel](https://ada-lang.io/docs/arm/AA-9) and [distributed](https://ada-lang.io/docs/arm/AA-9) programming language from the Pascal/Algol family of languages, but only has a passing resemblence to Pascal, with the only remnants left being the ```begin/end``` keyword pair and the ```:=``` assignment symbol.
+Ada is a strong statically typed imperative, [object-oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9), [real-time](https://ada-lang.io/docs/arm/AA-D), [parallel](https://ada-lang.io/docs/arm/AA-9) and [distributed](https://ada-lang.io/docs/arm/AA-9) programming language from the Pascal/Algol family of languages, but only has a passing resemblence to Pascal, with the only remnants left being the ```begin/end``` keyword pair, the ```:=``` assignment symbol, records and ```if/case``` control statement structures.
 
 Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 1000's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became [Object-Oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9) in 1995, and added [interfaces](https://ada-lang.io/docs/arm/AA-3/AA-3.9#Subclause_3.9.4) derived from Java in 2005. [Aspect-oriented](https://ada-lang.io/docs/arm/AA-13/AA-13.1#Subclause_13.1.1) (or contract based) programming, was introduced with Ada 2012.
 
@@ -301,6 +301,8 @@ exception
       IO.Put_Line ("Caught the exception");
 end LearnAdaInY;
 ```
+
+Now, that's a lot of information for a basic intro to Ada, and I've only touched the surface, there's much more to look at in the references section below. As I stated above, Ada barely looks like Pascal and if you look at the original [Green specification](https://apps.dtic.mil/sti/trecms/pdf/ADB950587.pdf) (Warning: Huge 4575 page scanned PDF - starting on page 460), it looks nothing like it at all.
 
 The above source code will compile, but also will give warnings showing the power of the strong static type system.
 
