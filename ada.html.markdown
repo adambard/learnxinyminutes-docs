@@ -302,7 +302,7 @@ exception
 end LearnAdaInY;
 ```
 
-Now, that's a lot of information for a basic intro to Ada, and I've only touched the surface, there's much more to look at in the references section below.
+Now, that's a lot of information for a basic intro to Ada, and I've only touched the surface, there's much more to look at in the references section below. I haven't even touched on dynamic memory allocation which includes [pools](https://ada-lang.io/docs/arm/AA-13/AA-13.11), this is because for the most part, Ada programs don't need it, you can do a lot without it.
 
 As I stated above, Ada barely looks like Pascal and if you look at the original [Green specification](https://apps.dtic.mil/sti/trecms/pdf/ADB950587.pdf) (Warning: Huge 4575 page scanned PDF - starting on page 460), it looks nothing like it at all (page 505 of that PDF).
 
