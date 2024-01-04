@@ -335,7 +335,7 @@ The above source code will compile, but also will give warnings showing the powe
 If you already have the GNAT toolchain installed, you can cut and paste the above into a new file, e.g. ```learn-ada-in-y.ada``` and then run the following:
 
 ```bash
-$ gnatchop learn-ada-in-y.ada # This breaks the program int its specificication ".ads" and body ".adb".
+$ gnatchop learn-ada-in-y.ada # This breaks the program into its specificication ".ads" and body ".adb".
 $ gnatmake empty.adb # gnatmake takes care of compilation of all units and linking.
 $ gnatmake hello.adb
 $ gnatmake learnadainy.adb
