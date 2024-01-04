@@ -311,7 +311,7 @@ The above source code will compile, but also will give warnings showing the powe
 ## Download this source
 
 You can cut and paste the above into a new file, e.g. ```learn-ada-in-y.ada```
-and then run the following:
+and then run the following, if you already have the GNAT toolchain installed:
 
 ```bash
 $ gnatchop learn-ada-in-y.ada
