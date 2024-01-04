@@ -326,6 +326,8 @@ $ alr toolchain --select    # Select the GCC and GPR tools to install
 $ alr search learnadainy
 $ alr get learnadainy
 $ cd learnadainy
+$ alr run empty
+$ alr run hello
 $ alr run learnadainy
 ```
 
