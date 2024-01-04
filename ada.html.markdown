@@ -302,7 +302,9 @@ exception
 end LearnAdaInY;
 ```
 
-Now, that's a lot of information for a basic intro to Ada, and I've only touched the surface, there's much more to look at in the references section below. As I stated above, Ada barely looks like Pascal and if you look at the original [Green specification](https://apps.dtic.mil/sti/trecms/pdf/ADB950587.pdf) (Warning: Huge 4575 page scanned PDF - starting on page 460), it looks nothing like it at all.
+Now, that's a lot of information for a basic intro to Ada, and I've only touched the surface, there's much more to look at in the references section below.
+
+As I stated above, Ada barely looks like Pascal and if you look at the original [Green specification](https://apps.dtic.mil/sti/trecms/pdf/ADB950587.pdf) (Warning: Huge 4575 page scanned PDF - starting on page 460), it looks nothing like it at all (page 505 of that PDF).
 
 The above source code will compile, but also will give warnings showing the power of the strong static type system.
 
