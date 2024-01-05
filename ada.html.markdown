@@ -220,7 +220,8 @@ procedure LearnAdaInY is
 
    --  A record is the same as a structure in C, C++.
    type Entities is record
-      Name     : String (1 .. 10);  --  Always start at 1, inclusive range.
+      Name     : String (1 .. 10);  --  Always starts at a positive value,
+                                    --  inclusive range.
       Position : Vector;
    end record;
 
