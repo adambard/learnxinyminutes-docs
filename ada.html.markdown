@@ -382,6 +382,7 @@ $ alr run learnadainy
 * [Ada Language](https://ada-lang.io)
 * [Ada 2022 Reference Manual](https://ada-lang.io/docs/arm)
 * [Ada Style Guide](https://ada-lang.io/docs/style-guide/Ada_Style_Guide)
+* [Learn more Ada/Spark at AdaCore's site](https://learn.adacore.com)
 
 ### Multi-line comments
 
