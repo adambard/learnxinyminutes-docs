@@ -225,10 +225,18 @@ procedure LearnAdaInY is
       Position : Vector;
    end record;
 
-   --  In Ada, you have to pad out the full string. Change the number of spaces
-   --  to less than 6 to see it raise an exception.
-   --  There are [dynamic length strings](https://ada-lang.io/docs/arm/AA-A/AA-A.4#Subclause_A.4.5) available.
+   --  In Ada, array bounds are immutable. You therefore have to provide a
+   --  string literal with a value for every character.
    E1 : constant Entities := ("Blob      ", (0.0, 0.0, 0.0));
+
+   --  An alternative is to use an array aggregate and assign a default value
+   --  to every element that wasn't previously assigned in this aggregate.
+   --  ```others``` is used to indicate anything else that has not been
+   --  explicitly initialized.
+   E2 : constant Entities := (('B', 'l', 'o', 'b', others => ' '),
+                              (0.0, 0.0, 0.0));
+
+   -- There are [dynamic length strings](https://ada-lang.io/docs/arm/AA-A/AA-A.4#Subclause_A.4.5) available in the standard library.
 
    --  We can make an object be initialised to it's default values with the box
    --  notation, <>. ```others``` is used to indicate anything else that has not
