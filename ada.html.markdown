@@ -364,10 +364,11 @@ $ gnatmake hello.adb
 $ gnatmake learnadainy.adb
 ```
 
-Or, download [Alire](https://alire.ada.dev), copy it to somewhere in your PATH and then do this:
+Or, download [Alire](https://alire.ada.dev), copy it to somewhere in your PATH and then do the following:
+
+**N.B.** Alire will automatically install the toolchain for you if you don't have one installed and will ask you to select which you want to use.
 
 ```bash
-$ alr toolchain --select    # Select the GCC and GPR tools to install
 $ alr search learnadainy
 $ alr get learnadainy
 $ cd learnadainy
