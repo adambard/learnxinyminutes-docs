@@ -172,8 +172,10 @@ procedure LearnAdaInY is
 
    New_Value_2 : Integer := Degrees_To_Int (Angle);  --  Note, space before (.
 
-   --  Ada has a style guide and GNAT will force you to adhere to it, so that
-   --  all Ada source looks consistent. However, the style can be customized.
+   --  GNAT is the GNU Ada Translator (compiler).
+   --  Ada has a style guide and GNAT will warn you to adhere to it, and has
+   --  option to check your style so that you can correct it so that all Ada
+   --  source looks consistent. However, the style can be customized.
 
    --  Yes, you can even define your own floating and fixed point types, this
    --  is a very rare and unique ability. ```digits``` refers to the minimum
