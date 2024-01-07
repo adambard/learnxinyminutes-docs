@@ -76,6 +76,10 @@ package Stuff is
    --  so that nobody can mess with it directly. The full type must be defined
    --  within the private section below.
    type Blobs is private;
+
+   --  We can also make types "limited" by putting this keyword after the "is"
+   --  keyword, this means that the user cannot copy objects of that type
+   --  around, like they normally could.
 private
    type Blobs is new Integer range -25 .. 25;
 end Stuff;
