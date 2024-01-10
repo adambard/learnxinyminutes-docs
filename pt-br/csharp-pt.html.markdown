@@ -252,7 +252,7 @@ on a new line! ""Wow!"", the masses cried";
             {
                 // Inicia a interação 100 vezes, fooDoWhile 0->99
                 if (false)
-                    continue; // pule a intereção atual para apróxima
+                    continue; // pule a intereção atual para a próxima
 
                 fooDoWhile++;
 
@@ -269,7 +269,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // For Each Loop
             // Estrutura do foreach  => foreach(<Tipo Iterador> <Nome do Iterador> in <enumerable>)
-            // O laço foreach  percorre sobre qualquer objeto que implementa IEnumerable ou IEnumerable<T>
+            // O laço foreach percorre sobre qualquer objeto que implementa IEnumerable ou IEnumerable<T>
             // Toda a coleção de tipos  (Array, List, Dictionary...) no .Net framework
             // implementa uma ou mais destas interfaces.
             // (O ToCharArray() pode ser removido, por que uma string também implementa IEnumerable)
