@@ -387,7 +387,7 @@ if ([myClass respondsToSelector:selectorVar]) { // Checks if class contains meth
 // Implement the methods in an implementation (MyClass.m) file:
 @implementation MyClass {
     long distance; // Private access instance variable
-    NSNumber height;
+    NSNumber *height;
 }
 
 // To access a public variable from the interface file, use '_' followed by variable name:

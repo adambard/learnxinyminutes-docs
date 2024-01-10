@@ -185,7 +185,7 @@ print("Hello, World", end="!")  # => Hello, World!
 input_string_var = input("Enter some data: ") # Returns the data as a string
 
 # There are no declarations, only assignments.
-# Convention is to use lower_case_with_underscores
+# Convention in naming variables is snake_case style
 some_var = 5
 some_var  # => 5
 
@@ -654,6 +654,22 @@ def create_adder(x):
 
 add_10 = create_adder(10)
 add_10(3)   # => 13
+
+# Closures in nested functions:
+# We can use the nonlocal keyword to work with variables in nested scope which shouldn't be declared in the inner functions.
+def create_avg():
+    total = 0
+    count = 0
+    def avg(n):
+        nonlocal total, count
+        total += n
+        count += 1
+        return total/count
+    return avg
+avg = create_avg()
+avg(3) # => 3.0
+avg(5) # (3+5)/2 => 4.0
+avg(7) # (8+7)/3 => 5.0
 
 # There are also anonymous functions
 (lambda x: x > 2)(3)                  # => True

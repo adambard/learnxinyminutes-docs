@@ -574,7 +574,7 @@ Get-Process | Foreach-Object ProcessName | Group-Object
 1..10 | ForEach-Object { "Loop number $PSITEM" }
 1..10 | Where-Object { $PSITEM -gt 5 } | ConvertTo-Json
 
-# A notable pitfall of the pipeline is it's performance when
+# A notable pitfall of the pipeline is its performance when
 # compared with other options.
 # Additionally, raw bytes are not passed through the pipeline,
 # so passing an image causes some issues.
