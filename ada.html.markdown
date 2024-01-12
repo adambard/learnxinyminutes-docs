@@ -140,7 +140,7 @@ procedure LearnAdaInY is
    type Degrees is range 0 .. 360;  --  This is a type. Its underlying
                                     --  representation is an Integer.
 
-   type Hues is (Red, Green, Blue, Purple, Yellow);  --  So, is this. Here, we
+   type Hues is (Red, Green, Blue, Purple, Yellow);  --  So is this. Here, we
                                                      --  are declaring an
                                                      --  Enumeration.
 
