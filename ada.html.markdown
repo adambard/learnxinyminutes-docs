@@ -32,8 +32,8 @@ end Empty;
 --  Ada compilers accept compilation units which can be library packages,
 --  tasks, sub-programs, generics, etc.
 
---  This is where "context clauses" go, these can be pragmas or ```with```
---  statements. ```with``` is equivalent to "include" or "import" in other
+--  This is where "context clauses" go, these can be pragmas or "with"
+--  statements. "with" is equivalent to "include" or "import" in other
 --  languages.
 with Ada.Text_IO;  --  Get access to a library package.
 
@@ -134,9 +134,8 @@ procedure LearnAdaInY is
 
    --  The standard types would only really be a good starting point for binding
    --  to other languages, like C. Ada is the only language with a standardised
-   --  way to bind with [C](https://ada-lang.io/docs/arm/AA-B/AA-B.3),
-   --  [Fortran](https://ada-lang.io/docs/arm/AA-B/AA-B.5/), and even
-   --  [COBOL](https://ada-lang.io/docs/arm/AA-B/AA-B.4/)!
+   --  way to bind with C, Fortran and COBOL! See the links in the References
+   --  section with more information on binding to these languages.
 
    type Degrees is range 0 .. 360;  --  This is a type. Its underlying
                                     --  representation is an Integer.
@@ -147,8 +146,8 @@ procedure LearnAdaInY is
 
    --  This is a modular type. They behave like Integers that automatically
    --  wrap around. In this specific case, the range would be 0 .. 359.
-   --  If we added ```+ 1``` to a variable containing the value 359,
-   --  we would receive back 0. They are very useful for arrays.
+   --  If we added 1 to a variable containing the value 359, we would receive
+   --  back 0. They are very useful for arrays.
    type Degrees_Wrap is mod 360;
 
    --  You can restrict a type's range using a subtype, this makes them
@@ -186,8 +185,8 @@ procedure LearnAdaInY is
    --  source looks consistent. However, the style can be customized.
 
    --  Yes, you can even define your own floating and fixed point types, this
-   --  is a very rare and unique ability. ```digits``` refers to the minimum
-   --  digit precision that the type should support. ```delta``` is for fixed
+   --  is a very rare and unique ability. "digits" refers to the minimum
+   --  digit precision that the type should support. "delta" is for fixed
    --  point types and refers to the smallest change that the type will support.
    type Real_Angles is digits 3 range 0.0 .. 360.0;
    type Fixed_Angles is delta 0.01 digits 5 range 0.0 .. 360.0;
@@ -206,7 +205,7 @@ procedure LearnAdaInY is
    --  created. Also, because an array can be seen as a function from a
    --  mathematical perspective, so it made converting between arrays and
    --  functions easier.
-   Char : constant Character := Str (Str'First);  --  ```'First``` is a type
+   Char : constant Character := Str (Str'First);  --  "'First" is a type
                                                   --  attribute.
 
    --  Ada 2022 includes the use of [] for array initialisation when using
@@ -239,15 +238,16 @@ procedure LearnAdaInY is
 
    --  An alternative is to use an array aggregate and assign a default value
    --  to every element that wasn't previously assigned in this aggregate.
-   --  ```others``` is used to indicate anything else that has not been
+   --  "others" is used to indicate anything else that has not been
    --  explicitly initialized.
    E2 : constant Entities := (('B', 'l', 'o', 'b', others => ' '),
                               (0.0, 0.0, 0.0));
 
-   -- There are [dynamic length strings](https://ada-lang.io/docs/arm/AA-A/AA-A.4#Subclause_A.4.5) available in the standard library.
+   --  There are dynamic length strings (see references section) available in
+   --  the standard library.
 
    --  We can make an object be initialised to its default values with the box
-   --  notation, <>. ```others``` is used to indicate anything else that has not
+   --  notation, "<>". "others" is used to indicate anything else that has not
    --  been explicitly initialized.
    Null_Entity : constant Entities := (others => <>);
 
@@ -285,9 +285,9 @@ begin
       IO.New_Line;
    end Enum_IO;
 
-   --  Loops have a consistent form. ```<form> loop ... end loop``.
-   --  Where "form" can be ```while``` or ```for``` or missing as below, if
-   --  you place the ```loop ... end loop;``` construct on their own lines,
+   --  Loops have a consistent form. "<form> loop ... end loop".
+   --  Where "form" can be "while" or "for" or missing as below, if
+   --  you place the "loop ... end loop;" construct on their own lines,
    --  you can comment out or experiment with different loop constructs more
    --  easily.
    declare
@@ -302,7 +302,7 @@ begin
 
          --  This next line implements a repeat ... until or do ... while loop construct.
          --  Comment it out for an infinite loop.
-         exit Infinite when Counter = 5;  --  Equality tests use a single ```=```
+         exit Infinite when Counter = 5;  --  Equality tests use a single "=".
       end loop Infinite;  --  Useful when implementing state machines.
    end;
 
@@ -351,7 +351,7 @@ begin
       C : Character := Str (50);  --  Warning caused and exception raised at
                                   --  runtime.
       --  The exception raised above can only be handled by an outer scope,
-      --  see [wikibook](https://en.wikibooks.org/wiki/Ada_Programming/Exceptions#Exception_handlers).
+      --  see wikibook link below.
    begin
       null;  --  We will never get to this point because of the above.
    end;
@@ -397,6 +397,14 @@ $ alr run learnadainy
 * [Ada 2022 Reference Manual](https://ada-lang.io/docs/arm)
 * [Ada Style Guide](https://ada-lang.io/docs/style-guide/Ada_Style_Guide)
 * [Learn more Ada/Spark at AdaCore's site](https://learn.adacore.com)
+
+## References from the source above
+
+1. [wikibook](https://en.wikibooks.org/wiki/Ada_Programming/Exceptions#Exception_handlers)
+2. [C](https://ada-lang.io/docs/arm/AA-B/AA-B.3)
+3. [Fortran](https://ada-lang.io/docs/arm/AA-B/AA-B.5/)
+4. [COBOL](https://ada-lang.io/docs/arm/AA-B/AA-B.4/)
+5. [dynamic length strings](https://ada-lang.io/docs/arm/AA-A/AA-A.4#Subclause_A.4.5)
 
 ### Multi-line comments
 
