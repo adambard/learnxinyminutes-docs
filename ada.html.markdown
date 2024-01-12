@@ -69,7 +69,8 @@ package Stuff is
 
    --  We can also make generic sub-programs.
    generic
-      type Element is (<>);
+      type Element is (<>);  --  The "(<>)" notation specifies that only
+                             --  discrete types can be passed into the generic.
    procedure Swap (Left, Right : in out Element);
 
    --  Sometimes we want to hide how a type is defined from the outside world
