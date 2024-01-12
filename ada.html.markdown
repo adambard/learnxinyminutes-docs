@@ -252,7 +252,7 @@ procedure LearnAdaInY is
    Null_Entity : constant Entities := (others => <>);
 
    --  Object-orientation is accomplished via an extension of record syntax,
-   --  tagged records, see link above.
+   --  tagged records, see link above in first paragraph.
 
    --  We can rename objects (aliases) to make readability a bit better.
    package IO renames Ada.Text_IO;
