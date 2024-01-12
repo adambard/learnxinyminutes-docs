@@ -47,7 +47,7 @@ end Hello;
 
 
 --  Ada has a real module system. Modules are called packages and are split into
---  two component parts, the specification (this file) and a body, the other.
+--  two component parts, the specification and a body.
 --  It is important to introduce packages early, as you will be using them from
 --  the start.
 package Stuff is
@@ -137,8 +137,8 @@ procedure LearnAdaInY is
    --  [Fortran](https://ada-lang.io/docs/arm/AA-B/AA-B.5/), and even
    --  [COBOL](https://ada-lang.io/docs/arm/AA-B/AA-B.4/)!
 
-   type Degrees is range 0 .. 360;  --  This is a type. Its underlying logic
-                                    --  is an Integer.
+   type Degrees is range 0 .. 360;  --  This is a type. Its underlying
+                                    --  representation is an Integer.
 
    type Hues is (Red, Green, Blue, Purple, Yellow);  --  So, is this. Here, we
                                                      --  are declaring an
@@ -147,7 +147,7 @@ procedure LearnAdaInY is
    --  This is a modular type. They behave like Integers that automatically
    --  wrap around. In this specific case, the range would be 0 .. 359.
    --  If we added ```+ 1``` to a variable containing the value 359,
-   --  we would receive back 0. They are very useful for arrays
+   --  we would receive back 0. They are very useful for arrays.
    type Degrees_Wrap is mod 360;
 
    --  You can restrict a type's range using a subtype, this makes them
