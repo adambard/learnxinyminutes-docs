@@ -303,7 +303,7 @@ begin
          --  This next line implements a repeat ... until or do ... while loop construct.
          --  Comment it out for an infinite loop.
          exit Infinite when Counter = 5;  --  Equality tests use a single ```=```
-      end loop Infinite;  --  Useful to state machines.
+      end loop Infinite;  --  Useful when implementing state machines.
    end;
 
    declare  --  We don't have to have a label.
