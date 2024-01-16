@@ -170,7 +170,7 @@ try expect(mat4x4[1][1] == 1.0);
 
 // Here we iterate with for loops.
 for (mat4x4) |row, row_index| {
-    for (row) |cell, column_index| {
+    for (row) |column, column_index| {
         // ...
     }
 }
