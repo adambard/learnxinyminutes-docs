@@ -12,12 +12,12 @@ CUE is an expressive (but not Turing-complete) JSON superset, exportable to JSON
 
 When CUE is exported to JSON, values from every processed file are unified into one giant object. Consider these two files:
 
-```cue
+```yaml
 //name.cue
 name: "Daniel"
 ```
 
-```cue
+```yaml
 //disposition.cue
 disposition: "oblivious"
 ```
@@ -40,19 +40,19 @@ disposition: oblivious
 
 Notice the C-style comments are not in the output. Also notice that the keys in CUE syntax did not require quotes. Some special characters do require quotes:
 
-```cue
+```yaml
 works_fine: true
 "needs-quotes": true
 ```
 
 Unification doesn't just unify across files, it is also a *global merge* of all types and values. The following fails, because the *types* are different.
 
-```cue
+```yaml
 //string_value.cue
 foo: "baz"
 ```
 
-```cue
+```yaml
 //integer_value.cue
 foo: 100
 ```
@@ -66,12 +66,12 @@ foo: conflicting values "baz" and 100 (mismatched types string and int):
 
 But even if we quote the integer, it still fails, because the *values* conflict and there is no way to unify everything into a top-level object.
 
-```cue
+```yaml
 //string_value.cue
 foo: "baz"
 ```
 
-```cue
+```yaml
 //integer_value.cue
 foo: "100"  // a string now
 ```
@@ -85,14 +85,14 @@ foo: conflicting values "100" and "baz":
 
 Types in CUE *are* values; special ones that the unification engine knows have certain behavior relative to other values. During unification it requires that values match the specified types, and when concrete values are required, you will get an error if there's only a type. So this is fine:
 
-```cue
+```yaml
 street: "1 Infinite Loop"
 street: string
 ```
 
 While `cue export` produces YAML or JSON, `cue eval` produces CUE. This is useful for converting YAML or JSON to CUE, or for inspecting the unified output in CUE itself. It's fine to be missing concrete values in CUE (though it prefers concrete values when emitting CUE when both are available and match),
 
-```cue
+```yaml
 //type-only.cue
 amount: float
 ```
@@ -111,7 +111,7 @@ amount: incomplete value float
 
 Give it a value that unifies with the type, and all is well.
 
-```cue
+```yaml
 //concrete-value.cue
 amount: 3.14
 ```
@@ -127,7 +127,7 @@ The method of unifying concrete values with types that share a common syntax is 
 
 Default values may be supplied with a type using an asterisk:
 
-```cue
+```yaml
 // default-port.cue
 port: int | *8080
 ```
@@ -139,7 +139,7 @@ port: 8080
 
 Enum-style options ("disjunctions" in CUE) may be specified with an `|` separator:
 
-```cue
+```yaml
 //severity-enum.cue
 severity: "high" | "medium" | "low"
 severity: "unknown"
@@ -163,7 +163,7 @@ You can even have disjunctions of structs (not shown, but it works like you'd ex
 
 CUE has "definitions", and you can use them like you would variable declarations in other languages. They are also for defining struct types. You can apply a struct of type definitions to some concrete value(s) with `&`. Also notice you can say "a list with type #Whatever" using `[...#Whatever]`.
 
-```cue
+```yaml
 // definitions.cue
 
 #DashboardPort: 1337
@@ -208,7 +208,7 @@ more_addresses:
 
 CUE supports more complex values and validation:
 
-```cue
+```yaml
 #Country: {
   name: =~"^\\p{Lu}" // Must start with an upper-case letter
   pop: >800 & <9_000_000_000 // More than 800, fewer than 9 billion
@@ -222,7 +222,7 @@ vatican_city: #Country & {
 
 CUE may save you quite a bit of time with all the sugar it provides on top of mere JSON. Here we're defining, "modifying", and validating a nested structure in three lines: (Notice the `[]` syntax used around `string` to signal to the engine that `string` is a constraint, not a string in this case.) 
 
-```cue
+```yaml
 //paths.cue
 
 // path-value pairs
@@ -249,7 +249,7 @@ outer: [string]: inner: int
 
 In the same vein, CUE supports "templates", which are a bit like functions of a single argument. Here `Name` is bound to each string key immediately under `container` while the struct underneath *that* is evaluated.
 
-```cue
+```yaml
 //templates.cue
 
 container: [Name=_]: {
@@ -284,7 +284,7 @@ container: {
 
 And while we're talking about references like that, CUE supports scoped references.
 
-```cue
+```yaml
 //scopes-and-references.cue
 v: "top-level v"
 b: v // a reference
@@ -320,7 +320,7 @@ I changed the order of the keys in the output for clarity. Order doesn't actuall
 
 You can hide fields be prefixing them with `_` (quote the field if you need a `_` prefix in an emitted field)
 
-```cue
+```yaml
 //hiddens.cue
 "_foo": 2
 _foo:   3
@@ -346,7 +346,7 @@ Notice the difference between `eval` and `export` with respect to definitions. I
 
 Interpolation of values and fields:
 
-```cue
+```yaml
 //interpolation.cue
 
 #expense: 90
@@ -372,7 +372,7 @@ cat: {
 
 Operators, list comprehensions, conditionals, imports...:
 
-```cue
+```yaml
 //getting-out-of-hand-now.cue
 import "strings"  // we'll come back to this
 
@@ -446,7 +446,7 @@ At this point it's worth mentioning that CUE may not be Turing-complete, but it 
 
 To that end, CUE supports packages and modules. CUE files are standalone by default, but if you put a package clause at the top, you're saying that file is unifiable with other files "in" the same package.
 
-```cue
+```yaml
 //a.cue
 package config
 
@@ -454,7 +454,7 @@ foo: 100
 bar: int
 ```
 
-```cue
+```yaml
 //b.cue
 package config
 
@@ -508,7 +508,7 @@ configuredBar: 200
 
 The contents of `main.cue` is:
 
-```cue
+```yaml
 //main.cue
 
 package main
@@ -519,7 +519,7 @@ configuredBar: config.bar
 
 `config/a.cue` and `config/b.cue` are files from earlier, except now they've both got `package config` at the top:
 
-```cue
+```yaml
 //a.cue
 package config
 
@@ -527,7 +527,7 @@ foo: 100
 bar: int
 ```
 
-```cue
+```yaml
 //b.cue
 package config
 

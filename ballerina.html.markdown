@@ -7,7 +7,7 @@ filename: learn_ballerina.bal
 
 [Ballerina](https://ballerina.io/) is a statically-typed programming language for making development for the cloud an enjoyable experience. 
 
-```ballerina
+```java
 // Single-line comment
 
 // Import modules into the current source file 
