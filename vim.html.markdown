@@ -14,7 +14,7 @@ editor designed for speed and increased productivity, and is ubiquitous in most
 unix-based systems. It has numerous keybindings for speedy navigation to
 specific points in the file, and for fast editing.
 
-`vimtutor` is a an excellent application that teaches you how to use `Vim`. It comes with the vim package during installation. You should be able to just run "vimtutor" on the command line to open this tutor. It will guide you through all the major features in `vim`.
+`vimtutor` is a an excellent application that teaches you how to use `Vim`. It comes with the vim package during installation. You should be able to just run "vimtutor" on the line to open this tutor. It will guide you through all the major features in `vim`.
 
 
 ## Basics of navigating Vim
@@ -100,7 +100,7 @@ that aims to make getting started with vim more approachable!
 
 Vim is based on the concept on **modes**.
 
-- Command Mode - vim starts up in this mode, used to navigate and write commands
+- Normal Mode - vim starts up in this mode, used to navigate and write commands
 - Insert Mode  - used to make changes in your file
 - Visual Mode  - used to highlight text and do operations to them
 - Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
@@ -110,7 +110,7 @@ Vim is based on the concept on **modes**.
     a                 # Puts vim into insert mode, after the cursor position
     v                 # Puts vim into visual mode
     :                 # Puts vim into ex mode
-    <esc>             # 'Escapes' from whichever mode you're in, into Command mode
+    <esc>             # 'Escapes' from whichever mode you're in, into Normal mode
 
     # Copying and pasting text
                       # Operations use the vim register by default
