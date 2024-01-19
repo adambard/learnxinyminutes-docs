@@ -12,7 +12,7 @@ that your program is the machine and that the input data is the program.
 While Tailspin is unlikely to become mainstream, or even production-ready,
 it will change the way you think about programming in a good way.
 
-```tailspin
+```c
 // Comment to end of line
 
 // Process data in a pipeline with steps separated by ->
@@ -379,5 +379,5 @@ end hexToBytes
 
 ## Further Reading
 
-[Main Tailspin site](https://github.com/tobega/tailspin-v0/)
-[Tailspin language reference](https://github.com/tobega/tailspin-v0/blob/master/TailspinReference.md)
+- [Main Tailspin site](https://github.com/tobega/tailspin-v0/)
+- [Tailspin language reference](https://github.com/tobega/tailspin-v0/blob/master/TailspinReference.md)
