@@ -26,7 +26,7 @@ on its standard output.
 You can suppress the default output by specifying the `-n` command-line
 argument.
 
-```sed
+```perl
 #!/usr/bin/sed -f
 # Files that begin with the above line and are given execute permission
 # can be run as regular scripts.
