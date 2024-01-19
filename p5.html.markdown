@@ -60,8 +60,8 @@ function draw() {
 }
 
 /** Bouncing balls animation
- * See the finished product at
- * https://editor.p5js.org/Kaamkiya/sketches/t5B78hIUg
+ * You can copy-paste this code into the online editor at
+ * https://editor.p5js.org/
  */
 class Ball {
   constructor(x, y, xvel, yvel, radius, col) {
@@ -153,4 +153,9 @@ function draw() {
 
 - [p5.js | get started](http://p5js.org/get-started/) The official documentation
 - [Code! Programming for Beginners with p5.js - YouTube](https://www.youtube.com/watch?v=yPWkPOfnGsw&vl=en) Introduction and Coding challenges using Processing and p5.js by Coding Train
-- [The Coding Train](https://codingtra.in/)
+- [The Coding Train](https://codingtra.in/) A website with sketches made in p5 and processing
+
+## Source
+
+- [p5's source code](https://github.com/processing/p5.js)
+- [p5.sound.js source](https://github.com/processing/p5.js-sound)
