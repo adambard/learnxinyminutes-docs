@@ -399,7 +399,7 @@ If you need support join the official Lua [mailing list](https://www.lua.org/lua
 I was excited to learn Lua so I could make games
 with the <a href="http://love2d.org/">Love 2D game engine</a>. That's the why.
 
-I started with <a href="https://ebens.me/post/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
+I started with <a href="https://ebens.me/posts/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
 Next I read the official <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> book.
 That's the how.
 
