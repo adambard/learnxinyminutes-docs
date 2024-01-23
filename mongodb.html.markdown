@@ -264,8 +264,9 @@ db.engineers.find({ $lte: { age: 25 }})
 db.engineers.find({ $eq: { age: 25 }})
 db.engineers.find({ $ne: { age: 25 }})
 
-// Find all that match any element in the array
-db.engineers.find({ age: ${ in: [ 20, 23, 24, 25 ]}})
+// Find all that match any element in the array, or not in the array
+db.engineers.find({ age: { $in: [ 20, 23, 24, 25 ]}})
+db.engineers.find({ age: { $nin: [ 20, 23, 24, 25 ]}})
 
 //////////////// Logical Operators ///////////////////
 
