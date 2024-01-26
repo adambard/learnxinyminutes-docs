@@ -357,7 +357,7 @@ func learnInterfaces() {
 // Functions can have variadic parameters.
 func learnVariadicParams(myStrings ...interface{}) {
 	// Iterate each value of the variadic.
-	// The underbar here is ignoring the index argument of the array.
+	// The underscore here is ignoring the index argument of the array.
 	for _, param := range myStrings {
 		fmt.Println("param:", param)
 	}
