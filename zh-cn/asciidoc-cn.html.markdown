@@ -1,6 +1,6 @@
 ---
 language: asciidoc
-filename: asciidoc-cn.md
+filename: asciidoc-cn.adoc
 contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
