@@ -15,7 +15,7 @@ for HTML, XHTML, and XML users -->
 
 <svg xmlns="https://w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
   <!-- Around this comment is the wrapper for an SVG
-  the xmlns attribute specifies which SVG standard to use
+  the xmlns attribute specifies which SVG standard to use (stands for XML namespace)
   width and height attributes are obvious
   viewBox is where you zoom in on, in a way. It's what you see.
   In this example, viewBox="0 0 400 400" means you see from coordinates
@@ -30,8 +30,24 @@ for HTML, XHTML, and XML users -->
   
 </svg>
 
+
+<!-- Let's make a Christmas ornament! -->
+<svg xmlns="https://w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+    <rect x="180" y="90" width="40" height="20" fill="goldenrod"></rect>
+
+    <circle cx="200" cy="200" r="100" fill="tomato"></circle>
+    <!-- cx: x position,
+         cy: y position,
+         r:  radius -->
+
+    <circle cx="200" cy="83" r="15" fill="none" stroke="goldenrod" stroke-width="2px"></circle>
+    <!-- fill="none" means "don't fill me!"
+         stroke means border color
+         stroke-width means border width -->
+</svg>
 ```
 
 ### Further Reading
 
-<!-- Add some resources -->
+* [svg-tutorial.com](https://svg-tutorial.com/) - A series of tutorials made by Hunor Márton Borbély
+<!-- mdn -->
