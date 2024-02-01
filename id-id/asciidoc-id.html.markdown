@@ -4,7 +4,7 @@ contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 translators:
     - ["Rizky Luthfianto", "http://github.com/rilut"]
-filename: asciidoc-id.md
+filename: asciidoc-id.adoc
 lang: id-id
 ---
 
