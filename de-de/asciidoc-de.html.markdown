@@ -4,7 +4,7 @@ contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 translators:
   - ["Dennis Keller", "https://github.com/denniskeller"]
-filename: asciidoc-de.md
+filename: asciidoc-de.adoc
 lang: de-de
 ---
 
