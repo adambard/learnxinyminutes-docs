@@ -147,13 +147,15 @@ nil && 20  #=> nil
 1 == 1.0  #=> true
 1 === 1.0 #=> false
 
-# We can also compare two different data types:
+# Elixir operators are strict in theiar arguments, with the exception
+# of comparison operators that work across different data types:
 1 < :hello #=> true
 
-# The overall sorting order is defined below:
-# number < atom < reference < functions < port < pid < tuple < list < bit string
+# This enables building collections of mixed types:
+["string", 123, :atom]
 
-# To quote Joe Armstrong on this: "The actual order is not important,
+# While there is an overall order of all data types,
+# to quote Joe Armstrong on this: "The actual order is not important,
 # but that a total ordering is well defined is important."
 
 ## ---------------------------
