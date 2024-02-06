@@ -504,7 +504,7 @@ if (Object.create === undefined) { // не перезаписываем мето
 
 [Mozilla Developer Network](https://developer.mozilla.org/ru/docs/Web/JavaScript) —
 предоставляет отличную документацию для JavaScript, как он используется в браузерах.
-Кроме того, это вики, поэтому, если вы знаете больше, вы можете помочь другим,
+Кроме того, это вики. Поэтому, если вы знаете больше, вы можете помочь другим,
 делясь своими знаниями.
 
 [JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/ru/) — это

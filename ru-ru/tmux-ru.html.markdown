@@ -249,4 +249,4 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 [Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux)
 
-[Отображение CPU/MEM % в статусбаре](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
+[Отображение CPU/MEM % в статус баре](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
