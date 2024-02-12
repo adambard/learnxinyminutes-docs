@@ -88,7 +88,7 @@ saltos de línea.` // mismo tipo cadena
 
 	// Literal no ASCII. Los ficheros fuente de Go son UTF-8.
 	g := 'Σ' // Tipo rune, un alias de int32, alberga un carácter unicode.
-	f := 3.14195 // float64, el estándar IEEE-754 de coma flotante 64-bit.
+	f := 3.14159 // float64, el estándar IEEE-754 de coma flotante 64-bit.
 	c := 3 + 4i  // complex128, representado internamente por dos float64.
 	// Sintaxis var con iniciadores.
 	var u uint = 7 // Sin signo, pero la implementación depende del tamaño
