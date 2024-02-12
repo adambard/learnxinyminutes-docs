@@ -78,7 +78,7 @@ func learnTypes() {
     // 非ascii字符。Go使用UTF-8编码。
     g := 'Σ' // rune类型，int32的别名，使用UTF-8编码
 
-    f := 3.14195 // float64类型，IEEE-754 64位浮点数
+    f := 3.14159 // float64类型，IEEE-754 64位浮点数
     c := 3 + 4i  // complex128类型，内部使用两个float64表示
 
     // var变量可以直接初始化。
