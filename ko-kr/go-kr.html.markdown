@@ -81,7 +81,7 @@ func learnTypes() {
     // non-ASCII 리터럴. Go 소스는 UTF-8로 작성해야 한다.
     g := 'Σ' // 유니코드 코드 포인트를 담고 있고, int32 타입의 가칭(alias)인 rune 타입
 
-    f := 3.14195 // float64, an IEEE-754 64-bit 부동소수 타입
+    f := 3.14159 // float64, an IEEE-754 64-bit 부동소수 타입
     c := 3 + 4i  // complex128, 내부적으로는 두 개의 float64 타입으로 표현됨
 
     // 초기값과 함께 사용하는 var 키워드.
