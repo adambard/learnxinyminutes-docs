@@ -105,6 +105,7 @@ This document describes Vyper version `0.1.0-beta.8`.
 ## Example
 
 ```python
+
 # First, a simple todo list contract
 # Implements CRUD operations for tasks
 
@@ -162,7 +163,7 @@ other: public(address)
 # uint256 means "unsigned positive integer between 0 and 2^256 - 1"
 # Overflow protection is built-in to Vyper
 taskCount: uint256
-tasks: map(uint256, Task) # dictionary: key=uint256, value: Task struct
+tasks: HashMap(uint256, Task) # dictionary: key=uint256, value: Task struct
 
 # Private Functions
 
@@ -370,9 +371,6 @@ b: uint256(km)
 
 # BY DEFAULT: all values are set to 0 on instantiation
 
-# `clear()` can be called on most types
-#   Does NOT destroy value, but sets value to 0, the initial value
-
 
 # ---
 
@@ -398,7 +396,7 @@ def setToThree():
     self.ls[2][5] = 3
 
 # Dictionaries (any simple type to any other type including structs)
-theMap: map(uint256, bytes32)
+theMap: HashMap(uint256, bytes32)
 theMap[5] = sha3("charles")
 # theMap[255] result is 0, all non-set key values return zeroes
 # To make read public, make a getter that accesses the mapping
@@ -412,13 +410,10 @@ def getMap(_idx: uint256) -> bytes32:
 self.getMap(5) # returns sha3("charles") in bytes32
 
 # Nested mappings
-aMap: map(address, map(address, uint256))
+aMap: HashMap(address, HashMap(address, uint256))
 # NOTE: Mappings are only allowed as state variables
 # NOTE: Mappings are not iterable; can only be accessed
 
-# To delete (reset the mapping's value to default at a key)
-clear(balances["John"])
-clear(balances); # sets all elements to 0
 
 # Unlike other languages, CANNOT iterate through all elements in
 #   mapping, without knowing source keys - can build data structure
@@ -436,8 +431,6 @@ def foo() -> uint256:
     self.exampleStruct = Struct({owner: msg.sender, _balance: 5})
     self.exampleStruct._balance = 10
     self.exampleStruct._balance = 5 # set to new value
-    clear(self.exampleStruct._balance)
-    clear(self.exampleStruct)
     return self.exampleStruct._balance
 
 
@@ -683,7 +676,7 @@ sha3("a secret"); # bytes32 commit
 sha3(concat("secret", "other secret", "salt")); # commit multiple things
 # The `sha3()` calculation should occur off-chain, only the bytes32
 #   output should be inputted into some `commit()` function
-commits: map(address, bytes32)
+commits: HashMap(address, bytes32)
 @public
 def commit(commitment: bytes32):
     self.commits[msg.sender] = commitment
@@ -738,7 +731,7 @@ contract SomeOracleCallback():
 
 MAX_SUBS: constant(uint256) = 100
 numSubs: public(uint256) # number of subscribers
-subs: map(uint256, address) # enumerates subscribers
+subs: HashMap(uint256, address) # enumerates subscribers
 
 @public
 def addSub(_sub: address) -> uint256:
