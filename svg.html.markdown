@@ -45,6 +45,44 @@ for HTML, XHTML, and XML users -->
          stroke means border color
          stroke-width means border width -->
 </svg>
+
+
+<!-- Notice that the entire SVG has a class. This helps with styling -->
+<svg
+  xmlns="https://w3.org/2000/svg"
+  class="house"
+  width="200"
+  height="200"
+  viewBox="0 0 200 200"
+>
+  <style>
+    .wall {
+      fill: #F5F5DC;
+      stroke-width: 2px;
+      stroke: #000000;
+    }
+
+    .window {
+      width: 20;
+      height: 20;
+      fill: skyblue;
+    }
+  </style>
+
+  <!-- `points` is a list of x,y pairs. 
+  For example, "0,0 40,50 70,90" means:
+    > go to x 0 and y 0
+    > draw a line to x 40, y 50
+    > draw a line to 70, 90
+    > connect the start and end points
+
+  Of course, if you set `stroke` to none, there will be no line.
+  -->
+  <polygon class="wall" points="100,20 50,75 50,150 150,150 150,75" />
+  
+  <rect class="window" x="60" y="85"></rect>
+  <rect class="window" x="120" y="85"></rect>
+</svg>
 ```
 
 ### Further Reading
