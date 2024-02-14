@@ -363,7 +363,7 @@ void OwnedDog::print() const
 {
     Dog::print(); // Chame a função de impressão na classe Dog base de
     std::cout << "Dog is owned by " << owner << "\n";
-    // Prints "Dog is <name> and weights <weight>"
+    // Imprime "Dog is <name> and weights <weight>"
     //        "Dog is owned by <owner>"
 }
 
@@ -484,7 +484,7 @@ void doSomethingWithAFile(const char* filename)
 // exceções são a forma preferida de lidar com o fracasso, mas alguns
 // programadores, especialmente aqueles com um conhecimento em C, discordam
 // sobre a utilidade de exceções). Agora temos que verificar cada chamada para
-// o fracasso e fechar o identificador de arquivo se ocorreu um problema.
+// o fracasso e fechar o identificador de arquivo se ocorreu um probhttps://learnxinyminutes.com/docs/pt-br/c++-pt/lema.
 
 bool doSomethingWithAFile(const char* filename)
 {
