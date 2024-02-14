@@ -363,7 +363,7 @@ void OwnedDog::print() const
 {
     Dog::print(); // Chame a função de impressão na classe Dog base de
     std::cout << "Dog is owned by " << owner << "\n";
-    // Prints "Dog is <name> and weights <weight>"
+    // Imprime "Dog is <name> and weights <weight>"
     //        "Dog is owned by <owner>"
 }
 

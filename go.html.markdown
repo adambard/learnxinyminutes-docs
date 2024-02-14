@@ -95,7 +95,7 @@ can include line breaks.` // Same string type.
 	// Non-ASCII literal. Go source is UTF-8.
 	g := 'Σ' // rune type, an alias for int32, holds a unicode code point.
 
-	f := 3.14195 // float64, an IEEE-754 64-bit floating point number.
+	f := 3.14159 // float64, an IEEE-754 64-bit floating point number.
 	c := 3 + 4i  // complex128, represented internally with two float64's.
 
 	// var syntax with initializers.

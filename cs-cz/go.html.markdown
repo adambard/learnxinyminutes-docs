@@ -90,7 +90,7 @@ může obsahovat nové řádky` // Opět typ řetězec.
 	// Můžeme použít ne ASCII znaky, Go používá UTF-8.
 	g := 'Σ' // type runa, což je alias na int32 a ukládá se do něj znak UTF-8
 
-	f := 3.14195 // float64, je IEEE-754 64-bit číslem s plovoucí čárkou.
+	f := 3.14159 // float64, je IEEE-754 64-bit číslem s plovoucí čárkou.
 	c := 3 + 4i  // complex128, interně uložené jako dva float64.
 
 	// takhle vypadá var s inicializací

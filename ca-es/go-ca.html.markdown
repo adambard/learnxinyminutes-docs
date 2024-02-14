@@ -95,7 +95,7 @@ salts de línia.` // El mateix tipus
 	// literals Non-ASCII literal. El tipus de Go és UTF-8.
 	g := 'Σ' // El tipus rune, és un àlies de int32 conté un caràcter unicode.
 
-	f := 3.14195 // float64, un número de 64 bits amb coma flotant IEEE-754.
+	f := 3.14159 // float64, un número de 64 bits amb coma flotant IEEE-754.
 	c := 3 + 4i  // complex128, representat internament amb dos float64.
 
 	// Sintaxi amb var i inicialitzadors.
