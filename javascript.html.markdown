@@ -3,6 +3,7 @@ language: javascript
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
+    - ["Stanislav Modrak", "https://www.stanislav.gq"]
 filename: javascript.js
 ---
 
@@ -655,8 +656,8 @@ attached terminal
 [Javascript: The Right Way][10] is a guide intended to introduce new developers
 to JavaScript and help experienced developers learn more about its best practices.
 
-[Javascript:Info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
-as well as advanced topics with concise explanations.
+[javascript.info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
+as well as advanced topics with concise explanations. Continuously maintained and updated by the community.
 
 
 In addition to direct contributors to this article, some content is adapted from
