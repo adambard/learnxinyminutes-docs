@@ -1,6 +1,6 @@
 ---
 language: toml
-filename: learntoml.toml
+filename: learntoml-pt.toml
 contributors:
   - ["Alois de Gouvello", "https://github.com/aloisdg"]
 translators:
