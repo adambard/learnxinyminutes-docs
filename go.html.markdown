@@ -130,7 +130,7 @@ can include line breaks.` // Same string type.
 	// Because they are dynamic, slices can be appended to on-demand.
 	// To append elements to a slice, the built-in append() function is used.
 	// First argument is a slice to which we are appending. Commonly,
-	// the array variable is updated in place, as in example below.
+	// the slice variable is updated in place, as in example below.
 	s := []int{1, 2, 3}		// Result is a slice of length 3.
 	s = append(s, 4, 5, 6)	// Added 3 elements. Slice now has length of 6.
 	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
