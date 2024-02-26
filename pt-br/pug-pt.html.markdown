@@ -37,7 +37,7 @@ div
 //- <div></div>
     <div></div>
 
-//- Tags com filhos
+//- Tags aninhadas
 div
   div
 //- <div>
