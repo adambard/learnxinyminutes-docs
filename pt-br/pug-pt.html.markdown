@@ -205,7 +205,7 @@ mixin comment(nome, comentario)
 ```
 
 
-### Additional Resources
+### Saiba Mais
 - [Site Oficial](https://pugjs.org/)
 - [Documentação](https://pugjs.org/api/getting-started.html)
 - [Repositório no Github](https://github.com/pugjs/pug)
