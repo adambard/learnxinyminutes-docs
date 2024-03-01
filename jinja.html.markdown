@@ -63,7 +63,9 @@ as follows:
 
 ## Template Inheritance
 
-One of the most powerful features of Jinja is template inheritance. You can create a base layout with predefined blocks that you can extend in another file and override with your own content.
+One of the most powerful features of Jinja is template inheritance. You can
+create a base layout with predefined blocks that you can extend in another file
+and override with your own content.
 
 ```html
 {# file: base.html.j2 #}
@@ -131,8 +133,8 @@ One of the most powerful features of Jinja is template inheritance. You can crea
 
 ### Including Content
 
-You can include content from another template on your current template using the
-`{% include "template/path" %}` tag.
+You can include content from another template on your current template using
+the `{% include "template/path" %}` tag.
 
 ```html
 
@@ -150,12 +152,28 @@ You can include content from another template on your current template using the
     <main>
         <h1>Hi! I'm John Doe!</h1>
     </main>
-    {% include "footer.html.j2 " %}
+    {% include "footer.html.j2" %}
+</body>
+...
+
+
+
+{# RESULT #}
+
+...
+<body>
+    <main>
+        <h1>Hi! I'm John Doe!</h1>
+    </main>
+    <footer>
+        <p>&copy; 2024 - John Doe</p>
+    </footer>
 </body>
 ...
 ```
 
-Variables passed to the main template can also be used in the include, as the included template has access to the context of the main template.
+Variables passed to the main template can also be used in the include, as the
+included template has access to the context of the main template.
 
 ```html
 {# file: greetings.html.j2 #}
@@ -210,4 +228,45 @@ Variables passed to the main template can also be used in the include, as the in
 
 ## Conditionals
 
-...
+The if statement in Jinja is similar to the if statement in Python. It is
+commonly used to check if a variable is defined, not empty, and not false in
+its most basic form.
+
+```html
+{% if users %}
+<ul>
+{% for user in users %}
+    <li>{{ user.username }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+
+{# For multiple branches, elif and else can be used like in Python. #}
+
+
+{% if message.status == "error" %}
+    <p class="text-red-400">{{ message.content }}</p>
+{% elif message.status == "success" %}
+    <p class="text-green-400">{{ message.content }}</p>
+{% else %}
+    <p class="text-blue-400">{{ message.content }}</p>
+{% endif %}
+```
+
+## Macros
+
+Macros are basically like functions in another languages. You can define macros with or without arguments and reuse them in various parts of your template.
+
+```html
+{% macro input(value="", type="text", placeholder="") -%}
+    <input type="{{ type }}" value="{{ value }}" placeholder="{{ placeholder }}">
+{%- endmacro %}
+
+<p>{{ input(placeholder="Your username") }}</p>
+<p>{{ input(type="password") }}</p>
+```
+
+## Official Documentation
+
+To learn more, access the [official documentation](https://jinja.palletsprojects.com/en/).
