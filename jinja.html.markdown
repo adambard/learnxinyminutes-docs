@@ -60,6 +60,58 @@ as follows:
 {{ name }}
 ```
 
+## Loops
+
+```html
+<h1>Members</h1>
+<ul>
+{% for user in users %}
+    <li>{{ user.username }}</li>
+{% endfor %}
+</ul>
+
+
+<div>
+{% for key, value in my_dict.items() %}
+    <p>{{ key }}</p> - <p>{{ value }}</p>
+{% endfor %}
+</div>
+
+
+<div>
+{% for idx, url in enumerate(urls) %}
+    <a href="{{ url }}">Go to url {{ idx + 1 }}</a>
+{% endfor %}
+</div>
+```
+
+## Conditionals
+
+The if statement in Jinja is similar to the if statement in Python. It is
+commonly used to check if a variable is defined, not empty, and not false in
+its most basic form.
+
+```html
+{% if users %}
+<ul>
+{% for user in users %}
+    <li>{{ user.username }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+
+{# For multiple branches, elif and else can be used like in Python. #}
+
+
+{% if message.status == "error" %}
+    <p class="text-red-400">{{ message.content }}</p>
+{% elif message.status == "success" %}
+    <p class="text-green-400">{{ message.content }}</p>
+{% else %}
+    <p class="text-blue-400">{{ message.content }}</p>
+{% endif %}
+```
 
 ## Template Inheritance
 
@@ -198,60 +250,6 @@ included template has access to the context of the main template.
 <div>
     <p>I'm the Captain Nemo and i like to navigate through the depths of the ocean.</p>
 </div>
-```
-
-
-## Loops
-
-```html
-<h1>Members</h1>
-<ul>
-{% for user in users %}
-    <li>{{ user.username }}</li>
-{% endfor %}
-</ul>
-
-
-<div>
-{% for key, value in my_dict.items() %}
-    <p>{{ key }}</p> - <p>{{ value }}</p>
-{% endfor %}
-</div>
-
-
-<div>
-{% for idx, url in enumerate(urls) %}
-    <a href="{{ url }}">Go to url {{ idx + 1 }}</a>
-{% endfor %}
-</div>
-```
-
-## Conditionals
-
-The if statement in Jinja is similar to the if statement in Python. It is
-commonly used to check if a variable is defined, not empty, and not false in
-its most basic form.
-
-```html
-{% if users %}
-<ul>
-{% for user in users %}
-    <li>{{ user.username }}</li>
-{% endfor %}
-</ul>
-{% endif %}
-
-
-{# For multiple branches, elif and else can be used like in Python. #}
-
-
-{% if message.status == "error" %}
-    <p class="text-red-400">{{ message.content }}</p>
-{% elif message.status == "success" %}
-    <p class="text-green-400">{{ message.content }}</p>
-{% else %}
-    <p class="text-blue-400">{{ message.content }}</p>
-{% endif %}
 ```
 
 ## Macros
