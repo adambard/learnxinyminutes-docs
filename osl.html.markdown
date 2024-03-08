@@ -25,6 +25,7 @@ divide(1,2);
 
 // Declating variables
 float Num = 3.00;  // Scalar floating-point data (numbers)
+color Blue; // Initializing a variable
 int _num = 3; // Integer data
 float c[3] = {0.1, 0.2, 3.14}; // Array
 
@@ -85,7 +86,7 @@ sum(2,3); // 5
 // 2. Shaders //
 ////////////////
 
-// Shaders extend the functionality of a renderer with custom behavior of materials and light
+// Shaders explain the custom behavior of materials and light
 // Shader's syntax is similar to the main function in C
 // The inputs and the outputs should be initialized to default types
 shader multiply(float a = 0.0,
@@ -132,7 +133,7 @@ surface plastic
 
 // There are different types of shaders
 
-/* Surface shaders determine the basic material properties of a surface and 
+/* Surface shaders determine the basic material properties of a surface and
 how it reacts to light */
 // Light shaders are a type of SURFACE shaders used for emissive objects.
 // Displacement shaders alter the geometry using position and normals.
@@ -148,49 +149,163 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 
 // Data Types
 
-// 1. int (Integer)
-int x = -12; // Minimum size of 32-bits
-int new2 = 0x01cf // Hexadecimal can also be specified
+// 1. The void type indicates a function that doesn't return any value
 
-///////////////////////////////////////
-// Order of Evaluation
-///////////////////////////////////////
+// 2. int (Integer)
+	int x = -12; // Minimum size of 32-bits
+	int new2 = 0x01cf; // Hexadecimal can also be specified
 
-// From top to bottom, top has higher precedence
-//-----------------------------------//
-//        Operators                  //
-//-----------------------------------//
-// int++, int--                      //
-// ++ int --int - ~ !                //
-// * / %                             //
-// + -                               //
-// << >>                             //
-// < <= > >=                         //
-// == !=                             //
-// &                                 //
-// ^                                 //
-// |                                 //
-// &&                                //
-// ||                                //
-// ?:                                //
-// = += -= *= /=             		 //
-//-----------------------------------//
+	///////////////////////////////////////
+	// Order of Evaluation
+	///////////////////////////////////////
 
-// 2. float (Floating-point number)
-float A = 2.3; // minimum  IEEE 32-bit float
-float Z = -4.1e2
+	// From top to bottom, top has higher precedence
+	//-----------------------------------//
+	//        Operators                  //
+	//-----------------------------------//
+	// int++, int--                      //
+	// ++ int --int - ~ !                //
+	// * / %                             //
+	// + -                               //
+	// << >>                             //
+	// < <= > >=                         //
+	// == !=                             //
+	// &                                 //
+	// ^                                 //
+	// |                                 //
+	// &&                                //
+	// ||                                //
+	// ?:                                //
+	// = += -= *= /=             		 //
+	//-----------------------------------//
 
-// Order of evaluation is similar to int.
-// Operations like ( ~ ! % << >> ^ | & && || ) aren't available in float
+// 3. float (Floating-point number)
+	float A = 2.3; // minimum  IEEE 32-bit float
+	float Z = -4.1e2;
 
-// 3. color (Red, Green, Blue)
-color p = color(0,0,0) // black
-color q = color(1) // white ( same as color(1,1,1) )
-color r = color("rgb", 0.23, 0.1, 0.8) // explicitly specify in RGB
-color s = color("hsv", 0.23, 0.1, 0.8) // specify in HSV
-// HSV stands for (Hue, Saturation, Luminance)
-// HSL stands for (Hue, Saturation, Lightness)
-// YIQ, XYZ and xyY formats can also be used
+	// Order of evaluation is similar to int.
+	// Operations like ( ~ ! % << >> ^ | & && || ) aren't available in float
+
+// 4. string
+	// The syntax is similar to C
+	string new = "Hello World";
+	// some Special characters:
+	/*
+	'\"'; // double quote
+	'\n'; // newline character
+	'\t'; // tab character (left justifies text)
+	'\v'; // vertical tab
+	'\\'; // back slash
+	'\r'; // carriage return
+	'\b'; // backspace character
+	*/
+
+	// Strings are concatenated with whitespace
+	"Hello " "world!"; // "Hello world!"
+	// concat function can also be used
+	string concat ("Hello ","World!");
+
+	// printf function is same as C
+	int i = 18
+	printf("I am %d years old",i);
+
+	// String functions can alse be used
+	int strlen (string s) // gives the length of the string
+	int startswith (string s, "the") // gives 1 if string starts with suffix
+	int endswith (string s, "the") // gives 1 if string ends with suffix
+
+// 5. color (Red, Green, Blue)
+	color p = color(0,0,0); // black
+	color q = color(1); // white ( same as color(1,1,1) )
+	color r = color("rgb", 0.23, 0.1, 0.8); // explicitly specify in RGB
+	color s = color("hsv", 0.23, 0.1, 0.8); // specify in HSV
+	// HSV stands for (Hue, Saturation, Luminance)
+	// HSL stands for (Hue, Saturation, Lightness)
+	// YIQ, XYZ and xyY formats can also be used
+	// We can also access the indivudual values of (R,G,B)
+	float Red = p[0]; // access the red component  
+	float Green = p[1]; // access the green component  
+	float Blue = p[2]; // access the blue component
+
+	// They can also be accessed like this
+	float Red = p.r; // access the red component  
+	float Green = p.g; // access the green component  
+	float Blue = p.b; // access the blue component
+
+	// Math operators work like this with decreasing precedence
+	color C = (3,2,3) * (1,0,0); // (3, 0, 0)
+	color D = (1,1,1) * 255; // (255, 255, 255)
+	color E = (25,5,125) / 5; // (5, 1, 25)
+	color F = (30,40,50) / (3,4,5); // (10, 10, 10)
+	color A = (1,2,3) + (1,0,0); // (2, 2, 3)
+	color B = (1,2,3) - (1,0,0); // (0, 2, 3)
+	// Operators like ( - == != ) are also used
+
+	// Color Functions
+	color blackbody (float 1500) // Gives color based on temperature 
+	float luminance (color A) // gives luminance as 0.2126R+0.7152G+0.0722B
+	color wavelength color (float 700) // Gives color based on wavelength
+	color transformc ("hsl", "rgb") //converts rgb to hsl and etc
+
+// 6. point (x,y,z) is position of a point in the 3D space
+// 7. vector (x,y,z) has length and direction but no position
+// 8. normal (x,y,z) is a special vector perpendicular to a surface
+	L = point(0.5, 0.5, 0.5);
+	M = vector(1, 1, 1);
+	N = normal(0, 0, 1);
+
+	// These 3 types can be assigned to a coordinate system
+	L = point("object", 0.5, 0.5, 0.5); // relative to local space
+	M = vector("common", 0.5, 0.5, 0.5); // relative to world space
+	// There's also ("shader", "world", "camera", "screen", "raster", "NDC")
+
+	float x = L[0]; // access the x-component  
+	float y = L[1]; // access the y-component  
+	float z = L[2]; // access the z-component
+
+	// They can also be accessed like this
+	float x = M.x; // access the x-component
+	float y = M.y; // access the y-component  
+	float z = M.z; // access the z-component
+
+	// Operators are the same as color and have the same precedence
+
+// 9. matrix
+	// Used for transforming vectors between different coordinate systems.
+	// They are usually 4x4 (or) 16 floats
+	matrix zero = 0; // makes a 4x4 zero matrix
+	matrix ident = 1; // makes a 4x4 identity matrix
+	matrix m = 7; // Maked a 4x4 scalar matrix with scaling factor of 7
+	float x = m[1][1]; // 7
+	
+	// matrices can be constructed using floats in row-major order
+	matrix new = matrix (m00, m01, m02, m03, m10, m11, m12, m13,
+					     m20, m21, m22, m23, m30, m31, m32, m33);
+
+
+// 10. array 
+	// Arrays in OSL are similar to C
+	float a[5]; // initialize array a with size 5
+	int b[3] = {90,80,70}; // declare array with size 3
+	int len = arraylength(b); // 3
+	int f = b[1]; // 80
+	float anotherarray[3] = b; // arrays can be copied if same type
+
+// 11. struct (Structures)
+	// Structures in OSL are similar to C and C++.
+	struct RGBA { // Defining a structure
+		color rgb;
+		float alpha;
+	};
+
+	
+	RGBA col; // Declare a structure
+	RGBA b = { color(.1,.2,.3), 1 }; // Can also be declared like this
+	
+	r.rgb = color (1, 0, 0); // Assign to one field
+	color c = r.rgb; // Read from a structure field
+
+
 
 // Global Variables
 // Contains info that the renderer knows
