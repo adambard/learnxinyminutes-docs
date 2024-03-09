@@ -326,6 +326,10 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	color c = r.rgb; // Read from a structure field
 
 // 12. closure
+	// Used to store data that aren't considered during Shader's execution
+	// Can't be manipulated, nor read
+	// A null closure can always be assigned
+	closure color(255,255,255);
 
 // Global Variables
 // Contains info that the renderer knows
@@ -401,6 +405,19 @@ for (int i = 0; i < 5; i += 1) {
 				output vector R, output vector T);
 	/* Computes the Reflection (R) and Transmission (T) vectors, along with the
 	scaling factors for reflected (Kr) and transmitted (Kt) light. */
+
+	// Rotating a point along a given axis 
+	point rotate (point Q, float angle, vector axis) 
+	// Rotating a point along a line made by 2 points
+	point rotate (point Q, float angle, point P0, point P1)
+	// Transforming units is easy
+	float transformu ("cm", float x) // converts to cm
+	float transformu ("cm", "m", float y) // converts cm to m
+
+// Displacement Functions
+	void displace (float 5); // Displace by 5 amp units
+	void bump (float 10); // Bump by 10 amp units
+
 
 
 ```
