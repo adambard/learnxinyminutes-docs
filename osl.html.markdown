@@ -268,6 +268,17 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	float y = M.y; // access the y-component  
 	float z = M.z; // access the z-component
 
+	float a = dot ((1,2,3), (1,2,3)) // Dot Product
+	vector b = cross ((1,2,3), (1,2,3)) // Cross Product
+	float l = length(b) // length of vector
+	vector normalize (vector b) //  Normalizes the vector
+
+	float distance (point P0, point P1) //Finds the distance between two points
+	float distance (point P0, point P1, point Q) /* Perpendicular distance from
+	Q to line joining P0 and P1 */
+
+
+
 	// Operators are the same as color and have the same precedence
 
 // 9. matrix
@@ -282,6 +293,15 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	matrix new = matrix (m00, m01, m02, m03, m10, m11, m12, m13,
 					     m20, m21, m22, m23, m30, m31, m32, m33);
 
+	// matrix transformations are easy to implement
+	matrix a = matrix ("shader", 1); // converted shader to common
+	matrix m = matrix ("object", "world"); // converted object to world
+
+	// Operations that can be used with decreasing precedence are:
+	// ( - * / == !=)
+
+	float determinant (matrix M) // returns the determinant of the matrix
+	float transpose (matrix M) // returns the transpose of the matrix
 
 // 10. array 
 	// Arrays in OSL are similar to C
@@ -301,11 +321,11 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	
 	RGBA col; // Declare a structure
 	RGBA b = { color(.1,.2,.3), 1 }; // Can also be declared like this
-	
+
 	r.rgb = color (1, 0, 0); // Assign to one field
 	color c = r.rgb; // Read from a structure field
 
-
+// 12. closure
 
 // Global Variables
 // Contains info that the renderer knows
@@ -356,4 +376,31 @@ do {
 for (int i = 0; i < 5; i += 1) {
     printf("Current value of i: %d\n", i);
 }
+
+/////////////////////
+// 5. Functions //
+/////////////////////
+
+// Math Functions
+	M_PI // π
+	M_PI_35 // π/35
+	m_E // e
+	M_LN2 // ln 2
+	M_SQRT2 // √2
+	M_SQRT1_2 // √(1/2)
+
+// Geometry Functions
+	
+	vector reflect (vector I, vector N)
+	vector faceforward (vector N, vector I) // Tells the direction of vector
+	vector faceforward (vector N, vector I, vector Nref) // Using a reference
+	vector reflect (vector I, vector N) // gives Reflection vector along normal
+	vector refract (vector I, vector N, float IOR) // gives refracted vector
+	void fresnel (vector I, normal N, float eta,
+				output float Kr, output float Kt,
+				output vector R, output vector T);
+	/* Computes the Reflection (R) and Transmission (T) vectors, along with the
+	scaling factors for reflected (Kr) and transmitted (Kt) light. */
+
+
 ```
