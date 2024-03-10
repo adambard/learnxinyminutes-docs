@@ -213,14 +213,14 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	int strlen (string s); // gives the length of the string
 	int len = strlen("Hello, World!"); // len = 13
 
-	int startswith (string s, "the"); // gives 1 if string starts with suffix
+	// startswith returns 1 if string starts with prefix, else returns 0
 	int starts = startswith("The quick brown fox", "The"); // starts = 1
 
-	int endswith (string s, "the"); // gives 1 if string ends with suffix
+	// endswith returns 1 if string starts with suffix, else returns 0
 	int ends = endswith("The quick brown fox", "fox"); // ends will be 1
 
 // 5. color (Red, Green, Blue)
-	color p = color(0,0,0); // black
+	color p = color(0,1,2); // black
 	color q = color(1); // white ( same as color(1,1,1) )
 	color r = color("rgb", 0.23, 0.1, 0.8); // explicitly specify in RGB
 	color s = color("hsv", 0.23, 0.1, 0.8); // specify in HSV
@@ -228,14 +228,14 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	// HSL stands for (Hue, Saturation, Lightness)
 	// YIQ, XYZ and xyY formats can also be used
 	// We can also access the indivudual values of (R,G,B)
-	float Red = p[0]; // access the red component  
-	float Green = p[1]; // access the green component  
-	float Blue = p[2]; // access the blue component
+	float Red = p[0]; // 0 (access the red component)
+	float Green = p[1]; // 1 (access the green component)
+	float Blue = p[2]; // 2 (access the blue component)
 
 	// They can also be accessed like this
-	float Red = p.r; // access the red component  
-	float Green = p.g; // access the green component  
-	float Blue = p.b; // access the blue component
+	float Red = p.r; // 0 (access the red component)  
+	float Green = p.g; // 1 (access the green component) 
+	float Blue = p.b; // 2 (access the blue component)
 
 	// Math operators work like this with decreasing precedence
 	color C = (3,2,3) * (1,0,0); // (3, 0, 0)
@@ -247,10 +247,11 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	// Operators like ( - == != ) are also used
 
 	// Color Functions
-	color blackbody (float 1500) // Gives color based on temperature 
-	float luminance (color A) // gives luminance as 0.2126R+0.7152G+0.0722B
-	color wavelength color (float 700) // Gives color based on wavelength
-	color transformc ("hsl", "rgb") //converts rgb to hsl and etc
+	color blackbody (1500) // Gives color based on temperature (in Kelvin)
+	float luminance (0.5, 0.3, 0.8) // 0.37 gives luminance cd/m^2
+	// Luminance is calculated by 0.2126R+0.7152G+0.0722B
+	color wavelength color (700) // (1, 0, 0) Gives color based on wavelength
+	color transformc ("hsl", "rgb") // converts one system to another
 
 // 6. point (x,y,z) is position of a point in the 3D space
 // 7. vector (x,y,z) has length and direction but no position
@@ -279,24 +280,45 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	float l = length(L); // 1.085 (length of vector)
 	vector normalize (vector L); // (0.460, 0.552, 0.644) Normalizes the vector
 
+	point p0 = point(1, 2, 3);
+	point p1 = point(4, 5, 6);
+	point Q = point(0, 0, 0);
 
-	float distance (point P0, point P1); // Finds  distance between two points
-	float len = distance(point(1, 2, 3), point(4, 5, 6)); //5.196
-	float distance (point P0, point P1, point Q); /* Perpendicular distance
-	from Q to line joining P0 and P1 */
+	// Finding distance between two points
+	float len = distance(point(1, 2, 3), point(4, 5, 6)); // 5.196
+	// Perpendicular distance from Q to line joining P0 and P1
+	float distance (point P0, point P1, point Q); // 2.45
 
 
 // 9. matrix
 	// Used for transforming vectors between different coordinate systems.
 	// They are usually 4x4 (or) 16 floats
 	matrix zero = 0; // makes a 4x4 zero matrix
+	/* 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0 */
+	
 	matrix ident = 1; // makes a 4x4 identity matrix
+	/* 1.0, 0.0, 0.0, 0.0,
+	   0.0, 1.0, 0.0, 0.0,
+	   0.0, 0.0, 1.0, 0.0,
+	   0.0, 0.0, 0.0, 1.0 */
+		
 	matrix m = 7; // Maked a 4x4 scalar matrix with scaling factor of 7
+	/* 7.0, 0.0, 0.0, 0.0,
+	   0.0, 7.0, 0.0, 0.0,
+	   0.0, 0.0, 7.0, 0.0,
+	   0.0, 0.0, 0.0, 7.0 */
+	
 	float x = m[1][1]; // 7
 	
 	// matrices can be constructed using floats in row-major order
-	matrix new = matrix (m00, m01, m02, m03, m10, m11, m12, m13,
-					     m20, m21, m22, m23, m30, m31, m32, m33);
+	// matrices are usually 4x4 with 16 elements
+	matrix myMatrix = matrix(1.0, 0.0, 0.0, 0.0,    // Row 1
+                             0.0, 2.0, 0.0, 0.0,    // Row 2
+                             0.0, 0.0, 3.0, 0.0,    // Row 3
+                             0.0, 0.0, 0.0, 4.0);	// Row 4
 
 	// matrix transformations are easy to implement
 	matrix a = matrix ("shader", 1); // converted shader to common
@@ -305,8 +327,12 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	// Operations that can be used with decreasing precedence are:
 	// ( - * / == !=)
 
-	float determinant (matrix M) // returns the determinant of the matrix
+	float determinant (matrix M) // 24 (returns the determinant of the matrix)
 	float transpose (matrix M) // returns the transpose of the matrix
+	/* 1.0, 0.0, 0.0, 0.0,
+       0.0, 2.0, 0.0, 0.0,
+       0.0, 0.0, 3.0, 0.0,
+       0.0, 0.0, 0.0, 4.0 */
 
 // 10. array 
 	// Arrays in OSL are similar to C
@@ -324,8 +350,8 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	};
 
 	
-	RGBA col; // Declare a structure
-	RGBA b = { color(.1,.2,.3), 1 }; // Can also be declared like this
+	RGBA col; // Declaring a structure
+	RGBA b = { color(0.1, 0.2, 0.3), 1 }; // Can also be declared like this
 
 	r.rgb = color (1, 0, 0); // Assign to one field
 	color c = r.rgb; // Read from a structure field
@@ -448,29 +474,51 @@ for (int i = 0; i < 5; i += 1) {
 	M_SQRT1_2 // √(1/2)
 
 // Geometry Functions
-	 
-	vector faceforward (vector N, vector I); // Tells the direction of vector
-	vector faceforward (vector N, vector I, vector Nref); // Using a reference
-	vector reflect (vector I, vector N); // gives Reflected vector along normal
-	vector refract (vector I, vector N, float IOR); // gives refracted vector
-	void fresnel (vector I, normal N, float eta,
-				output float Kr, output float Kt,
-				output vector R, output vector T);
-	/* Computes the Reflection (R) and Transmission (T) vectors, along with the
-	scaling factors for reflected (Kr) and transmitted (Kt) light. */
+	vector N = vector(0.1, 1, 0.2); // Normal vector
+	vector I = vector(-0.5, 0.2, 0.8); // Incident vector
 
-	// Rotating a point along a given axis 
-	point rotate (point Q, float angle, vector axis);
-	point rotated_point = rotate(point(1, 0, 0), radians(90), vector(0, 0, 1));
-	// (0, 1, 0)
+	// Faceforward tells the direction of vector
+	vector facing_dir = faceforward(N, I); // facing_dir = (-0.5, 0.2, 0.8)
+
+	// faceforward with three arguments
+	vector ref = vector(0.3, -0.7, 0.6); // Reference normal
+	facing_dir = faceforward(N, I, ref); // facing_dir = (0.5, -0.2, -0.8)
+
+	// reflect gives the reflected vector along normal
+	vector refl = reflect(I, N); // refl = (-0.7, -0.4, 1.4)\
+
+	// refract gives the refracted vector along normal
+	float ior = 1.5; // Index of refraction
+	vector refr = refract(I, N, ior); // refr = (-0.25861, 0.32814, 0.96143)
+
+	/* Fresnel computes the Reflection (R) and Transmission (T) vectors, along
+	with the scaling factors for reflected (Kr) and transmitted (Kt) light. */
+	float Kr, Kt;
+	vector R, T;
+	fresnel(I, N, ior, Kr, Kt, R, T);
+/* Kr = 0.03958, Kt = 0.96042
+	R = (-0.19278, -0.07711, 0.33854)
+	T = (-0.25861, 0.32814, 0.96143) */
+
+	// Rotating a point along a given axis
+	point Q = point(1, 0, 0);
+	float angle = radians(90); // 90 degrees
+	vector axis = vector(0, 0, 1);
+	point rotated_point = rotate(Q, angle, axis);
+	// rotated_point = point(0, 1, 0)
 
 	// Rotating a point along a line made by 2 points
-	point rotate (point Q, float angle, point P0, point P1);
-	point rotated_point = rotate(point(1, 0, 0), radians(45), point(0, 0, 0),
-		point(1, 1, 0));
-	// (0.707, 0.707, 0)
+	point P0 = point(0, 0, 0);
+	point P1 = point(1, 1, 0);
+	angle = radians(45); // 45 degrees
+	Q = point(1, 0, 0);
+	rotated_point = rotate(Q, angle, P0, P1);
+	// rotated_point = point(0.707107, 0.707107, 0)
 
-	vector calculatenormal (point p) // Calculates normal of surface at point p
+	// Calculating normal of surface at point p
+	point p1 = point(1, 0, 0); // Point on the sphere of radius 1
+	vector normal1 = calculatenormal(p1);
+	// normal1 = vector(1, 0, 0)
 
 	// Transforming units is easy
 	float transformu ("cm", float x) // converts to cm
@@ -480,8 +528,8 @@ for (int i = 0; i < 5; i += 1) {
 	void displace (float 5); // Displace by 5 amp units
 	void bump (float 10); // Bump by 10 amp units
 
-// Pattern Generations
-	// Noise Generation
+
+// Noise Generation
 
 	type noise (type noise (string noisetype, float u, float v, ...)); // noise
 	type noise (string noisetype, point p,...); // point instead of coordinates
@@ -564,6 +612,7 @@ for (int i = 0; i < 5; i += 1) {
 	// 2D hash noise
 	int n6 = hash(0.7, 0.3);
 
+// Step Function
 	// Step Functions are used to compare input and threshold
 
 	// The type may be of float, color, point, vector, or normal.
@@ -576,7 +625,7 @@ for (int i = 0; i < 5; i += 1) {
 
 	type linearstep (type edge0, type edge1, type x); /* Linearstep Returns 0
 	if x ≤ edge0, and 1 if x ≥ edge1, with linear interpolation */
-	color gradient = linearstep(0, 1, P);  
+	color gradient = linearstep(0, 1, P);
 	// P is a point on the surface between 0 and 1
 	// Color will graduate smoothly from black to white as P moves from 0 to 1
 	float fade = linearstep(0.85, 1, N.z);  // N.z is the z-component
@@ -588,22 +637,83 @@ for (int i = 0; i < 5; i += 1) {
 	value between 0 and 1. soft_mask will vary smoothly between 0 and 1 based
 	on noise(P), with a smoother curve than linearstep */
 
+// Splines
 	// Splines are smooth curves based on a set of control points
-	// Splines are created in two ways
-	type spline (string basis, float x, int nknots, type y[]);
-	type spline (string basis, float x, type y0, type y1, ... type yn−1);
-	/* basis is the type of interpolation ranges from "catmull-rom", "bezier",
+
+	/* The type of interpolation ranges from "catmull-rom", "bezier",
 	"bspline", "hermite", "linear", or "constant" */
 
+	// Spline with knot vector
+	float[] knots = {0, 0, 0, 0.25, 0.5, 0.75, 1, 1, 1};
+	point[] controls = {point(0),point(1, 2, 1),point(2, 1, 2),point(3, 3, 1)};
+	spline curve1 = spline("bezier", 0.5, len(knots), controls);
+	// curve1 is a Bezier spline evaluated at u = 0.5
+
+	// Spline with control points
+	spline curve2 = spline("catmull-rom", 0.25, point(0, 0, 0), point(1, 2, 1),
+	                       point(2, 1, 2), point(3, 3, 1));
+	// curve2 is a Catmull-Rom spline evaluated at u = 0.25
+
+	// Constant spline with a single float value
+	float value = 10;
+	u = 0.1;
+	spline curve5 = spline("constant", u, value);
+	// curve5 is a constant spline with value 10 evaluated at u = 0.1
+
+	// Hermite spline with point and vector controls
+	point q0 = point(0, 0, 0), q1 = point(3, 3, 3);
+	vector t0 = vector(1, 0, 0), t1 = vector(-1, 1, 1);
+	u = 0.75;
+	spline curve3 = spline("hermite", u, q0, t0, q1, t1);
+	// curve3 is a Hermite spline evaluated at u = 0.75
+
+	// Linear spline with float controls
+	float f0 = 0, f1 = 1, f2 = 2, f3 = 3;
+	u = 0.4;
+	spline curve4 = spline("linear", u, f0, f1, f2, f3);
+	// curve4 is a linear spline evaluated at u = 0.4
+	
 	// InverseSplines also exist
-	float splineinverse (string basis, float v, float y0, ... float yn−1);
-	float splineinverse (string basis, float v, int nknots, float y[]);
+	
+	// Inverse spline with control values
+	float y0 = 0, y1 = 1, y2 = 2, y3 = 3;
+	float v = 1.5;
+	float u1 = splineinverse("linear", v, y0, y1, y2, y3);
+	// u1 = 0.5 (linear interpolation between y1 and y2)
+
+	// Inverse spline with knot vector
+	float[] knots = {0, 0, 0, 0.25, 0.5, 0.75, 1, 1, 1};
+	float[] values = {0, 1, 4, 9};
+	v = 6;
+	float u2 = splineinverse("bezier", v, len(knots), values);
+	// u2 = 0.75 (Bezier spline inverse evaluated at v = 6)
+
+	// Inverse spline with constant value
+	v = 10;
+	float u3 = splineinverse("constant", v, 10);
+	// u3 = 0 (since the constant spline always returns 10)
+
+	// Inverse spline with periodic values
+	float y4 = 0, y5 = 1, y6 = 0;
+	v = 0.5;
+	float u4 = splineinverse("periodic", v, y4, y5, y6);
+	// u4 = 0.75 (periodic spline inverse evaluated at v = 0.5)
+
+
 
 // Calculus Operators
-	type Dx (type f), Dy (type f), Dz (type f)
-	// The type can be of float, vector and color
-	// Returns partial derivative of f with respect to x, y and z
-	vector Dx (point a), Dy (point a), Dz (point a)
+	// Partial derivative of f with respect to x, y and z using Dx, Dy, Dz
+	float a = 3.14;
+	float dx = Dx(a); // partial derivative of a with respect to x
+
+	point p = point(1.0, 2.0, 3.0);
+	vector dp_dx = Dx(p); // partial derivative of p with respect to x
+
+	vector dv_dy = Dy(N); // partial derivative of normal with respect to y
+
+	color c = color(0.5, 0.2, 0.8);
+	color dc_dz = Dz(c); // partial derivative of c with respect to z
+	
 
 	float area (point p) // gives the surface area at the position p 
 
@@ -611,26 +721,27 @@ for (int i = 0; i < 5; i += 1) {
 
 // Texture Functions
 	// lookup for a texture at coordinates (x,y)
-	type texture (string filename, float x, float y, ...params...);
+	color col1 = texture("texture.png", 0.5, 0.2);
+	// Lookup color at (0.5, 0.2) in texture.png
+
 	// 3D lookup for a texture at coordinates (x,y)
-	type texture3d (string filename, point p, ...params...);
+	color col3 = texture3d("texture3d.vdb", point(0.25, 0.5, 0.75));
+
 	// parameters are ("blur","width","wrap","fill","alpha","interp", ...)
+	color col2 = texture("texture.png",1.0,0.75,"blur",0.1,"wrap", "periodic");
+	// Lookup color at (1.0, 0.75) with blur 0.1 and periodic wrap mode
 	
 // Light Functions
 
 	float surfacearea (); // Returns the surface area of area light covers
 	int backfacing (); // Outputs 1 if the normals are backfaced, else 0
-	int raytype (string name); // returns 1 if the ray is a particular raytype 
-	int trace (point pos, vector dir, ...) // Trace ray from pos in a direction
-	// Parameters are ("mindist", "mindist", "shade", "traceset")
+	int raytype (string name); // returns 1 if the ray is a particular raytype
 
-// Lookup Functions
-	// Regex can be used to search inside strings
-	int regex search (string subject, string re); // search for subject in re
-	int regex match (string subject, string re);
+	// Tracing a ray from a position in a direction
+	point pos = point(0, 0, 0); // Starting position of the ray
+	vector dir = vector(0, 0, 1); // Direction of the ray
+	int hit = trace(pos, dir); // returns 1 if it hits, else 0
 
-	// Dictionaries exist either as a string or a file
-	int dict find (string dictionary, string query);
 ```
 ### Further reading
 
