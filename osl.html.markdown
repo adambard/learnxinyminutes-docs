@@ -160,28 +160,28 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	///////////////////////////////////////
 
 	// From top to bottom, top has higher precedence
-	//-----------------------------------//
-	//        Operators                  //
-	//-----------------------------------//
-	// int++, int--                      //
-	// ++ int --int - ~ !                //
-	// * / %                             //
-	// + -                               //
-	// << >>                             //
-	// < <= > >=                         //
-	// == !=                             //
-	// &                                 //
-	// ^                                 //
-	// |                                 //
-	// &&                                //
-	// ||                                //
-	// ?:                                //
-	// = += -= *= /=             		 //
-	//-----------------------------------//
+	//--------------------------//
+	//        Operators         //
+	//--------------------------//
+	// int++, int--             //
+	// ++ int --int - ~ !       //
+	// * / %                    //
+	// + -                      //
+	// << >>                    //
+	// < <= > >=                //
+	// == !=                    //
+	// &                        //
+	// ^                        //
+	// |                        //
+	// &&                       //
+	// ||                       //
+	// ?:                       //
+	// = += -= *= /=            //
+	//--------------------------//
 
 // 3. float (Floating-point number)
 	float A = 2.3; // minimum  IEEE 32-bit float
-	float Z = -4.1e2;
+	float Z = -4.1e2; // Z = -4.1 * 10^2
 
 	// Order of evaluation is similar to int.
 	// Operations like ( ~ ! % << >> ^ | & && || ) aren't available in float
@@ -203,16 +203,21 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	// Strings are concatenated with whitespace
 	"Hello " "world!"; // "Hello world!"
 	// concat function can also be used
-	string concat ("Hello ","World!");
+	string concat ("Hello ","World!"); // "Hello world!"
 
 	// printf function is same as C
-	int i = 18
-	printf("I am %d years old",i);
+	int i = 18;
+	printf("I am %d years old",i); // I am 18 years old
 
 	// String functions can alse be used
-	int strlen (string s) // gives the length of the string
-	int startswith (string s, "the") // gives 1 if string starts with suffix
-	int endswith (string s, "the") // gives 1 if string ends with suffix
+	int strlen (string s); // gives the length of the string
+	int len = strlen("Hello, World!"); // len = 13
+
+	int startswith (string s, "the"); // gives 1 if string starts with suffix
+	int starts = startswith("The quick brown fox", "The"); // starts = 1
+
+	int endswith (string s, "the"); // gives 1 if string ends with suffix
+	int ends = endswith("The quick brown fox", "fox"); // ends will be 1
 
 // 5. color (Red, Green, Blue)
 	color p = color(0,0,0); // black
@@ -250,36 +255,36 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 // 6. point (x,y,z) is position of a point in the 3D space
 // 7. vector (x,y,z) has length and direction but no position
 // 8. normal (x,y,z) is a special vector perpendicular to a surface
-	L = point(0.5, 0.5, 0.5);
-	M = vector(1, 1, 1);
+	// These Operators are the same as color and have the same precedence
+	L = point(0.5, 0.6, 0.7);
+	M = vector(30, 100, 70);
 	N = normal(0, 0, 1);
 
 	// These 3 types can be assigned to a coordinate system
-	L = point("object", 0.5, 0.5, 0.5); // relative to local space
-	M = vector("common", 0.5, 0.5, 0.5); // relative to world space
+	L = point("object", 0.5, 0.6, 0.7); // relative to local space
+	M = vector("common", 30, 100, 70); // relative to world space
 	// There's also ("shader", "world", "camera", "screen", "raster", "NDC")
 
-	float x = L[0]; // access the x-component  
-	float y = L[1]; // access the y-component  
-	float z = L[2]; // access the z-component
+	float x = L[0]; // 0.5 (access the x-component)  
+	float y = L[1]; // 0.6 (access the y-component)  
+	float z = L[2]; // 0.7 (access the z-component)
 
 	// They can also be accessed like this
-	float x = M.x; // access the x-component
-	float y = M.y; // access the y-component  
-	float z = M.z; // access the z-component
+	float x = M.x; // 30 (access the x-component)
+	float y = M.y; // 100 (access the y-component)
+	float z = M.z; // 70 (access the z-component)
 
-	float a = dot ((1,2,3), (1,2,3)) // Dot Product
-	vector b = cross ((1,2,3), (1,2,3)) // Cross Product
-	float l = length(b) // length of vector
-	vector normalize (vector b) //  Normalizes the vector
-
-	float distance (point P0, point P1) //Finds the distance between two points
-	float distance (point P0, point P1, point Q) /* Perpendicular distance from
-	Q to line joining P0 and P1 */
+	float a = dot ((1,2,3), (1,2,3)); // 14 (Dot Product)
+	vector b = cross ((1,2,3), (1,2,3)); // (0,0,0) (Cross Product)
+	float l = length(L); // 1.085 (length of vector)
+	vector normalize (vector L); // (0.460, 0.552, 0.644) Normalizes the vector
 
 
+	float distance (point P0, point P1); // Finds  distance between two points
+	float len = distance(point(1, 2, 3), point(4, 5, 6)); //5.196
+	float distance (point P0, point P1, point Q); /* Perpendicular distance
+	from Q to line joining P0 and P1 */
 
-	// Operators are the same as color and have the same precedence
 
 // 9. matrix
 	// Used for transforming vectors between different coordinate systems.
@@ -326,38 +331,57 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	color c = r.rgb; // Read from a structure field
 
 // 12. closure
-	// Used to store data that aren't considered during Shader's execution
-	// Can't be manipulated, nor read
-	// A null closure can always be assigned
-	
-	closure color oren nayar diffuse_bsdf(normal N, color alb, float roughness)
-	closure color burley diffuse_bsdf (normal N, color alb, float roughness)
-	closure color dielectric_bsdf (normal N, vector U, color reflection tint,
-		color transmission tint, float roughness x, float roughness y,
-		float ior, string distribution)
-	closure color conductor_bsdf (normal N, vector U, float roughness x,
-		float roughness y, color ior, color extinction, string distribution)
-	closure color generalized schlick_bsdf (normal N, vector U,
-		color reflection tint, color transmission tint,
-		float roughness x, float roughness y, color f0, color f90,
-		float exponent, string distribution)
-	closure color translucent_bsdf (normal N, color albedo)
-	closure color transparent_bsdf ()
-	closure color subsurface bssrdf ()
-	closure color sheen_bsdf (normal N, color albedo, float roughness)
+	// Closure is used to store data that aren't considered during Shader's execution.
+	// It cannot be manipulated or read.
+	// A null closure can always be assigned.
+	// OSL currently only supports color as their closure.
 
-	// Also exist for Volumetrics
+	// A few examples of closures are:
 
+	// Diffuse BSDF closures:
+	closure color oren_nayar_diffuse_bsdf(normal N, color alb, float roughness)
+	closure color burley_diffuse_bsdf(normal N, color alb, float roughness);
+
+	// Dielectric BSDF closure:
+	closure color dielectric_bsdf(normal N, vector U, color reflection_tint,
+	    color transmission_tint, float roughness_x, float roughness_y,
+	    float ior, string distribution);
+
+	// Conductor BSDF closure:
+	closure color conductor_bsdf(normal N, vector U, float roughness_x,
+	    float roughness_y, color ior, color extinction, string distribution);
+
+	// Generalized Schlick BSDF closure:
+	closure color generalized_schlick_bsdf(normal N, vector U,
+	    color reflection_tint, color transmission_tint,
+	    float roughness_x, float roughness_y, color f0, color f90,
+	    float exponent, string distribution);
+
+	// Translucent BSDF closure:
+	closure color translucent_bsdf(normal N, color albedo);
+
+	// Transparent BSDF closure:
+	closure color transparent_bsdf();
+
+	// Subsurface BSSRDF closure:
+	closure color subsurface_bssrdf();
+
+	// Sheen BSDF closure:
+	closure color sheen_bsdf(normal N, color albedo, float roughness);
+
+	// Anisotropic VDF closure: (Volumetric)
 	closure color anisotropic_vdf(color albedo, color extinction,
-		float anisotropy)
-	closure color medium vdf (color albedo, float transmission depth,
-		color transmission color, float anisotropy, float ior, int priority)
+	    float anisotropy);
 
-	closure color uniform edf (color emittance) // Emission closure
-	closure color holdout () // Hides objects beneath it
+	// Medium VDF closure: (Volumetric)
+	closure color medium_vdf(color albedo, float transmission_depth,
+	    color transmission_color, float anisotropy, float ior, int priority);
+
+	closure color uniform edf(color emittance); // Emission closure
+	closure color holdout(); // Holdout Hides objects beneath it
 
 	// BSDFs can be layered using this closure
-	closure color layer (closure color top, closure color base)
+	closure color layer (closure color top, closure color base);
 
 
 
@@ -424,12 +448,11 @@ for (int i = 0; i < 5; i += 1) {
 	M_SQRT1_2 // √(1/2)
 
 // Geometry Functions
-	
-	vector reflect (vector I, vector N)
-	vector faceforward (vector N, vector I) // Tells the direction of vector
-	vector faceforward (vector N, vector I, vector Nref) // Using a reference
-	vector reflect (vector I, vector N) // gives Reflection vector along normal
-	vector refract (vector I, vector N, float IOR) // gives refracted vector
+	 
+	vector faceforward (vector N, vector I); // Tells the direction of vector
+	vector faceforward (vector N, vector I, vector Nref); // Using a reference
+	vector reflect (vector I, vector N); // gives Reflection vector along normal
+	vector refract (vector I, vector N, float IOR); // gives refracted vector
 	void fresnel (vector I, normal N, float eta,
 				output float Kr, output float Kt,
 				output vector R, output vector T);
@@ -437,9 +460,16 @@ for (int i = 0; i < 5; i += 1) {
 	scaling factors for reflected (Kr) and transmitted (Kt) light. */
 
 	// Rotating a point along a given axis 
-	point rotate (point Q, float angle, vector axis) 
+	point rotate (point Q, float angle, vector axis);
+	point rotated_point = rotate(point(1, 0, 0), radians(90), vector(0, 0, 1));
+	// (0, 1, 0)
+
 	// Rotating a point along a line made by 2 points
-	point rotate (point Q, float angle, point P0, point P1)
+	point rotate (point Q, float angle, point P0, point P1);
+	point rotated_point = rotate(point(1, 0, 0), radians(45), point(0, 0, 0),
+		point(1, 1, 0));
+	// (0.707, 0.707, 0)
+
 	vector calculatenormal (point p) // Calculates normal of surface at point p
 
 	// Transforming units is easy
@@ -451,34 +481,123 @@ for (int i = 0; i < 5; i += 1) {
 	void bump (float 10); // Bump by 10 amp units
 
 // Pattern Generations
-	type step (type edge, type x) // Returns 1 if x ≥ edge, else 0
-	type linearstep (type edge0, type edge1, type x) /* Linearstep Returns 0 if
-	x ≤ edge0, and 1 if x ≥ edge1, with linear interpolation */
-	type linearstep (type edge0, type edge1, type x) /* smoothstep Returns 0 if
-	x ≤ edge0, and 1 if x ≥ edge1, with Hermite interpolation */
+	// Noise Generation
 
-	type noise (type noise (string noisetype, float u, float v, ...)) // noise
+	type noise (type noise (string noisetype, float u, float v, ...)); // noise
+	type noise (string noisetype, point p,...); // point instead of coordinates
 	/* some noises are ("perlin", "snoise", "uperlin", "noise", "cell", "hash"
 	"simplex", "usimplex", "gabor", etc) */
+	
+	// Noise Names
 
-	type pnoise (string noisetype, float u, float uperiod) // periodic noise
-	type pnoise (string noisetype, float u, float v, float uperiod, float vperiod)
-	type snoise (float u, float v)
-	type psnoise (float u, float v, float uperiod, float vperiod)
-	type cellnoise (float u, float v)
-	type hashnoise (float u, float v)
+	// 1. Perlin Noise (perlin, snoise):
+	// Creates smooth, swirling noise often used for textures.
+	// Range: [-1, 1] (signed)
+	color cloud_texture = noise("perlin", P);
+
+	// 2. Simplex Noise (simplex, usimplex):
+	// Similar to Perlin noise but faster.
+	// Range: [-1, 1] (signed) for simplex, [0, 1] (unsigned) for usimplex
+	float bump_amount = 0.2 * noise("simplex", P * 5.0);
+
+	// 3. UPerlin Noise (uperlin, noise):
+	// Similar to peril
+	// Range: [0, 1] (unsigned)
+	color new_texture = noise("uperlin", P);
+	
+	// 4. Cell Noise (cell):
+	// Creates a blocky, cellular and constant values within each unit block
+	// Range: [0, 1] (unsigned)
+	color new_texture = noise("cell", P);
+
+	// 5. Hash Noise (hash):
+	// Generates random, uncorrelated values at each point.
+	// Range: [0, 1] (unsigned)
+	color new_texture = noise("hash", P);
+
+	// Gabor Noise (gabor) 
+	// Gabor Noise is advanced version of Perin noies and gives more control
+	// Range: [-1, 1] (signed)
+	// Gabor Noise Parameters
+
+	// Anisotropic (default: 0)
+	// Controls anisotropy:
+	// 0: Isotropic (equal frequency in all directions)
+	// 1: Anisotropic with user-defined direction vector (defaults to (1,0,0))
+	/* 2: Hybrid mode, anisotropic along direction vector but radially isotropic 
+	perpendicularly. */
+
+	// Direction (default: (1,0,0))
+	// Specifies the direction of anisotropy (used only if anisotropic is 1).
+
+	// bandwidth (default: 1.0)
+	// Controls the frequency range of the noise.
+
+	// impulses (default: 16)
+	// Controls the number of impulses used per cell, affecting detail level.
+
+	// do_filter (default: 1)
+	// Enables/disables antialiasing (filtering). Filtering is generally recommended.
+
+	result = noise(
+        "gabor",
+        P,
+        "anisotropic", anisotropic,
+        "direction", direction,
+        "bandwidth", bandwidth,
+        "impulses", impulses,
+        "do_filter", do_filter
+    );
+
+	// Specific noises can also be used instead of passing them as types
+	// pnoise is periodic noise
+	float n1 = pnoise("perlin", 0.5, 1.0);
+	// 2D periodic noise with Gabor type
+	float n2 = pnoise("gabor", 0.2, 0.3, 2.0, 3.0);
+	// 2D non-periodic simplex noise
+	float n3 = snoise(0.1, 0.7);
+	// 2D periodic simplex noise
+	type psnoise (float u, float v, float uperiod, float vperiod);
+	float n4 = psnoise(0.4, 0.6, 0.5, 0.25);
+	// 2D cellular noise
+	float n5 = cellnoise(0.2, 0.8);
+	// 2D hash noise
+	int n6 = hash(0.7, 0.3);
+
+	// Step Functions are used to compare input and threshold
+
 	// The type may be of float, color, point, vector, or normal.
-	int hash (float u, float v)
+	type step (type edge, type x); // Returns 1 if x ≥ edge, else 0
+	color checker = step(0.5, P);  // P is a point on the surface
+	/* Pixels with P values below 0.5 will be black, those above or equal will
+	be white */
+	float visibility = step(10, distance(P, light_position));
+	// Light is fully visible within 10 units, completely invisible beyond
 
-	// Splines can be created in two ways
-	type spline (string basis, float x, int nknots, type y[])
-	type spline (string basis, float x, type y0, type y1, ... type y(n−1))
+	type linearstep (type edge0, type edge1, type x); /* Linearstep Returns 0
+	if x ≤ edge0, and 1 if x ≥ edge1, with linear interpolation */
+	color gradient = linearstep(0, 1, P);  
+	// P is a point on the surface between 0 and 1
+	// Color will graduate smoothly from black to white as P moves from 0 to 1
+	float fade = linearstep(0.85, 1, N.z);  // N.z is the z-component
+	// Object edges with normals close to vertical (N.z near 1) will fade out
+	
+	type smoothstep (type edge0, type edge1, type x); /* smoothstep Returns 0
+	if x ≤ edge0, and 1 if x ≥ edge1, with Hermite interpolation */
+	float soft_mask = smoothstep(0.2, 0.8, noise(P));  /* noise(P) is a noisy
+	value between 0 and 1. soft_mask will vary smoothly between 0 and 1 based
+	on noise(P), with a smoother curve than linearstep */
+
+	// Splines are smooth curves based on a set of control points
+	// Splines are created in two ways
+	type spline (string basis, float x, int nknots, type y[]);
+	type spline (string basis, float x, type y0, type y1, ... type yn−1);
 	/* basis is the type of interpolation ranges from "catmull-rom", "bezier",
 	"bspline", "hermite", "linear", or "constant" */
 
 	// InverseSplines also exist
-	float splineinverse (string basis, float v, float y0, ... float yn−1)
-	float splineinverse (string basis, float v, int nknots, float y[])
+	float splineinverse (string basis, float v, float y0, ... float yn−1);
+	float splineinverse (string basis, float v, int nknots, float y[]);
 
 // Calculus Operators
 	type Dx (type f), Dy (type f), Dz (type f)
@@ -492,26 +611,26 @@ for (int i = 0; i < 5; i += 1) {
 
 // Texture Functions
 	// lookup for a texture at coordinates (x,y)
-	type texture (string filename, float x, float y, ...params...)
+	type texture (string filename, float x, float y, ...params...);
 	// 3D lookup for a texture at coordinates (x,y)
-	type texture3d (string filename, point p, ...params...)
+	type texture3d (string filename, point p, ...params...);
 	// parameters are ("blur","width","wrap","fill","alpha","interp", ...)
 	
 // Light Functions
 
-	float surfacearea () // Returns the surface area of area light covers
-	int backfacing () // Outputs 1 if the normals are backfaced, else 0
-	int raytype (string name) // returns 1 if the ray is a particular raytype 
-	int trace (point pos, vector dir, ...) // Trace ray from pos in a direction
+	float surfacearea (); // Returns the surface area of area light covers
+	int backfacing (); // Outputs 1 if the normals are backfaced, else 0
+	int raytype (string name); // returns 1 if the ray is a particular raytype 
+	int trace (point pos, vector dir, ...); // Trace ray from pos in a direction
 	// Parameters are ("mindist", "mindist", "shade", "traceset")
 
 // Lookup Functions
 	// Regex can be used to search inside strings
-	int regex search (string subject, string re) // search for subject in re
-	int regex match (string subject, string re)
+	int regex search (string subject, string re); // search for subject in re
+	int regex match (string subject, string re);
 
 	// Dictionaries exist either as a string or a file
-	int dict find (string dictionary, string query)
+	int dict find (string dictionary, string query);
 ```
 ### Further reading
 
