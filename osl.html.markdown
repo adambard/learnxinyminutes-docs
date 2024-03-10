@@ -331,7 +331,7 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	color c = r.rgb; // Read from a structure field
 
 // 12. closure
-	// Closure is used to store data that aren't considered during Shader's execution.
+	// Closure is used to store data that aren't considered when it executes.
 	// It cannot be manipulated or read.
 	// A null closure can always be assigned.
 	// OSL currently only supports color as their closure.
@@ -451,7 +451,7 @@ for (int i = 0; i < 5; i += 1) {
 	 
 	vector faceforward (vector N, vector I); // Tells the direction of vector
 	vector faceforward (vector N, vector I, vector Nref); // Using a reference
-	vector reflect (vector I, vector N); // gives Reflection vector along normal
+	vector reflect (vector I, vector N); // gives Reflected vector along normal
 	vector refract (vector I, vector N, float IOR); // gives refracted vector
 	void fresnel (vector I, normal N, float eta,
 				output float Kr, output float Kt,
@@ -524,7 +524,7 @@ for (int i = 0; i < 5; i += 1) {
 	// Controls anisotropy:
 	// 0: Isotropic (equal frequency in all directions)
 	// 1: Anisotropic with user-defined direction vector (defaults to (1,0,0))
-	/* 2: Hybrid mode, anisotropic along direction vector but radially isotropic 
+	/* 2: Hybrid mode,anisotropic along direction vector but radially isotropic
 	perpendicularly. */
 
 	// Direction (default: (1,0,0))
@@ -537,7 +537,7 @@ for (int i = 0; i < 5; i += 1) {
 	// Controls the number of impulses used per cell, affecting detail level.
 
 	// do_filter (default: 1)
-	// Enables/disables antialiasing (filtering). Filtering is generally recommended.
+	// Enables/disables antialiasing (filtering).
 
 	result = noise(
         "gabor",
@@ -621,7 +621,7 @@ for (int i = 0; i < 5; i += 1) {
 	float surfacearea (); // Returns the surface area of area light covers
 	int backfacing (); // Outputs 1 if the normals are backfaced, else 0
 	int raytype (string name); // returns 1 if the ray is a particular raytype 
-	int trace (point pos, vector dir, ...); // Trace ray from pos in a direction
+	int trace (point pos, vector dir, ...) // Trace ray from pos in a direction
 	// Parameters are ("mindist", "mindist", "shade", "traceset")
 
 // Lookup Functions
