@@ -5,7 +5,7 @@ contributors:
   - ["Preetham Pemmasani", "https://github.com/Preetham-ai"]
 ---
 
-OSL (Open Shading Language) is a programming language designed for creating shaders to describe how surfaces react to light in computer graphics.
+OSL (Open Shading Language) is a programming language designed by Sony for Arnold Renderer used for creating shaders.
 
 [Read more here.](https://raw.githubusercontent.com/imageworks/OpenShadingLanguage/master/src/doc/osl-languagespec.pdf)
 
@@ -24,9 +24,9 @@ divide(1,2);
 ///////////////
 
 // Declating variables
-float Num = 3.00;  // Scalar floating-point data (numbers)
 color Blue; // Initializing a variable
-int _num = 3; // Integer data
+int _num = 3;
+float Num = 3.00;
 float c[3] = {0.1, 0.2, 3.14}; // Array
 
 // Math works as you would expect
@@ -53,8 +53,8 @@ true;
 false;
 
 // Booleans can't be compared to integers
-true = 1 // Error
-false = 0 // Error
+true == 1 // Error
+false == 0 // Error
 
 // Negation uses the ! symbol
 !0; // 1
@@ -329,7 +329,37 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	// Used to store data that aren't considered during Shader's execution
 	// Can't be manipulated, nor read
 	// A null closure can always be assigned
-	closure color(255,255,255);
+	
+	closure color oren nayar diffuse_bsdf(normal N, color alb, float roughness)
+	closure color burley diffuse_bsdf (normal N, color alb, float roughness)
+	closure color dielectric_bsdf (normal N, vector U, color reflection tint,
+		color transmission tint, float roughness x, float roughness y,
+		float ior, string distribution)
+	closure color conductor_bsdf (normal N, vector U, float roughness x,
+		float roughness y, color ior, color extinction, string distribution)
+	closure color generalized schlick_bsdf (normal N, vector U,
+		color reflection tint, color transmission tint,
+		float roughness x, float roughness y, color f0, color f90,
+		float exponent, string distribution)
+	closure color translucent_bsdf (normal N, color albedo)
+	closure color transparent_bsdf ()
+	closure color subsurface bssrdf ()
+	closure color sheen_bsdf (normal N, color albedo, float roughness)
+
+	// Also exist for Volumetrics
+
+	closure color anisotropic_vdf(color albedo, color extinction,
+		float anisotropy)
+	closure color medium vdf (color albedo, float transmission depth,
+		color transmission color, float anisotropy, float ior, int priority)
+
+	closure color uniform edf (color emittance) // Emission closure
+	closure color holdout () // Hides objects beneath it
+
+	// BSDFs can be layered using this closure
+	closure color layer (closure color top, closure color base)
+
+
 
 // Global Variables
 // Contains info that the renderer knows
@@ -385,7 +415,7 @@ for (int i = 0; i < 5; i += 1) {
 // 5. Functions //
 /////////////////////
 
-// Math Functions
+// Math Constants
 	M_PI // π
 	M_PI_35 // π/35
 	m_E // e
@@ -410,6 +440,8 @@ for (int i = 0; i < 5; i += 1) {
 	point rotate (point Q, float angle, vector axis) 
 	// Rotating a point along a line made by 2 points
 	point rotate (point Q, float angle, point P0, point P1)
+	vector calculatenormal (point p) // Calculates normal of surface at point p
+
 	// Transforming units is easy
 	float transformu ("cm", float x) // converts to cm
 	float transformu ("cm", "m", float y) // converts cm to m
@@ -418,6 +450,72 @@ for (int i = 0; i < 5; i += 1) {
 	void displace (float 5); // Displace by 5 amp units
 	void bump (float 10); // Bump by 10 amp units
 
+// Pattern Generations
+	type step (type edge, type x) // Returns 1 if x ≥ edge, else 0
+	type linearstep (type edge0, type edge1, type x) /* Linearstep Returns 0 if
+	x ≤ edge0, and 1 if x ≥ edge1, with linear interpolation */
+	type linearstep (type edge0, type edge1, type x) /* smoothstep Returns 0 if
+	x ≤ edge0, and 1 if x ≥ edge1, with Hermite interpolation */
 
+	type noise (type noise (string noisetype, float u, float v, ...)) // noise
+	/* some noises are ("perlin", "snoise", "uperlin", "noise", "cell", "hash"
+	"simplex", "usimplex", "gabor", etc) */
 
+	type pnoise (string noisetype, float u, float uperiod) // periodic noise
+	type pnoise (string noisetype, float u, float v, float uperiod, float vperiod)
+	type snoise (float u, float v)
+	type psnoise (float u, float v, float uperiod, float vperiod)
+	type cellnoise (float u, float v)
+	type hashnoise (float u, float v)
+	// The type may be of float, color, point, vector, or normal.
+	int hash (float u, float v)
+
+	// Splines can be created in two ways
+	type spline (string basis, float x, int nknots, type y[])
+	type spline (string basis, float x, type y0, type y1, ... type y(n−1))
+	/* basis is the type of interpolation ranges from "catmull-rom", "bezier",
+	"bspline", "hermite", "linear", or "constant" */
+
+	// InverseSplines also exist
+	float splineinverse (string basis, float v, float y0, ... float yn−1)
+	float splineinverse (string basis, float v, int nknots, float y[])
+
+// Calculus Operators
+	type Dx (type f), Dy (type f), Dz (type f)
+	// The type can be of float, vector and color
+	// Returns partial derivative of f with respect to x, y and z
+	vector Dx (point a), Dy (point a), Dz (point a)
+
+	float area (point p) // gives the surface area at the position p 
+
+	float filterwidth (float x) // gives the changes of x in adjacent samples
+
+// Texture Functions
+	// lookup for a texture at coordinates (x,y)
+	type texture (string filename, float x, float y, ...params...)
+	// 3D lookup for a texture at coordinates (x,y)
+	type texture3d (string filename, point p, ...params...)
+	// parameters are ("blur","width","wrap","fill","alpha","interp", ...)
+	
+// Light Functions
+
+	float surfacearea () // Returns the surface area of area light covers
+	int backfacing () // Outputs 1 if the normals are backfaced, else 0
+	int raytype (string name) // returns 1 if the ray is a particular raytype 
+	int trace (point pos, vector dir, ...) // Trace ray from pos in a direction
+	// Parameters are ("mindist", "mindist", "shade", "traceset")
+
+// Lookup Functions
+	// Regex can be used to search inside strings
+	int regex search (string subject, string re) // search for subject in re
+	int regex match (string subject, string re)
+
+	// Dictionaries exist either as a string or a file
+	int dict find (string dictionary, string query)
 ```
+### Further reading
+
+* [Blender Docs for OSL](https://docs.blender.org/manual/en/latest/render/shader_nodes/osl.html)
+* [C4D Docs for OSL](https://docs.otoy.com/cinema4d//OpenShadingLanguageOSL.html)
+* Open Shading Language on [Github](https://github.com/AcademySoftwareFoundation/OpenShadingLanguage)
+* [Official OSL Documentation](https://open-shading-language.readthedocs.io/en/main/)
