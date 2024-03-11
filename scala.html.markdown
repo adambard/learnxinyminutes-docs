@@ -342,8 +342,8 @@ val safeM = m.withDefaultValue("no lo se")
 safeM("bottle")   // java.lang.String = no lo se
 
 val s = Set(1, 3, 7)
-s(0)      // Boolean = false
-s(1)      // Boolean = true
+s(0)      // Boolean = false (0 isn't in `s`)
+s(1)      // Boolean = true (1 is in `s`)
 
 /* Look up the documentation of map here -
  * https://www.scala-lang.org/api/current/scala/collection/immutable/Map.html
@@ -429,7 +429,7 @@ println(mydog.bark)  // => "Woof, woof!"
 // The "object" keyword creates a type AND a singleton instance of it. It is
 // common for Scala classes to have a "companion object", where the per-instance
 // behavior is captured in the classes themselves, but behavior related to all
-// instance of that class go in objects. The difference is similar to class
+// instances of that class go into that object. The difference is similar to class
 // methods vs static methods in other languages. Note that objects and classes
 // can have the same name.
 object Dog {
@@ -594,8 +594,9 @@ List("Dom", "Bob", "Natalia") foreach println
 
 
 // Combinators
-// Using `s` from above:
+// Using `s` and `sq` from above:
 // val s = Set(1, 3, 7)
+// def sq(x: Int) = x * x
 
 s.map(sq)
 
@@ -603,7 +604,7 @@ val sSquared = s.map(sq)
 
 sSquared.filter(_ < 10)
 
-sSquared.reduce (_+_)
+sSquared.reduce (_ + _)
 
 // The filter function takes a predicate (a function from A -> Boolean) and
 // selects all elements which satisfy the predicate
@@ -614,22 +615,31 @@ List(
   Person(name = "Bob", age = 30)
 ).filter(_.age > 25) // List(Person("Bob", 30))
 
+// The reduce function takes a function of type A -> B -> A which it repeatedly
+// applies to the sequence, accumulating the result
+List(1, 2, 3) reduce (_ * _) // 6
+List(
+  "Dom",
+  "Bob",
+  "Alice"
+).reduce(_ + " " + _) // Dom Bob Alice
 
 // Certain collections (such as List) in Scala have a `foreach` method,
 // which takes as an argument a type returning Unit - that is, a void method
+// Some languages call this the `iter` method
 val aListOfNumbers = List(1, 2, 3, 4, 10, 20, 100)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
 
 // For comprehensions
 
-for { n <- s } yield sq(n)
+for { n <- s } yield sq(n) // Set(1, 9, 49)
 
-val nSquared2 = for { n <- s } yield sq(n)
+val nSquared2 = for { n <- s } yield sq(n) // Set(1, 9, 49)
 
-for { n <- nSquared2 if n < 10 } yield n
+for { n <- nSquared2 if n < 10 } yield n // Set(1, 9)
 
-for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
+for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared // Set(1, 9)
 
 /* NB Those were not for loops. The semantics of a for loop is 'repeat', whereas
    a for-comprehension defines a relationship between two sets of data. */
@@ -651,8 +661,8 @@ for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 // Any value (vals, functions, objects, etc) can be declared to be implicit by
 // using the, you guessed it, "implicit" keyword. Note we are using the Dog
 // class from section 5 in these examples.
-implicit val myImplicitInt = 100
-implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
+implicit val myImplicitInt: Int = 100
+implicit def myImplicitFunction(breed: String): Dog = new Dog("Golden " + breed)
 
 // By itself, implicit keyword doesn't change the behavior of the value, so
 // above values can be used as usual.
@@ -673,10 +683,12 @@ sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!
 sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 
 // Implicit function parameters enable us to simulate type classes in other
-// functional languages. It is so often used that it gets its own shorthand. The
-// following two lines mean the same thing:
-// def foo[T](implicit c: C[T]) = ...
-// def foo[T : C] = ...
+// functional languages. It is so often used that it gets its own shorthand.
+// This function takes `f` and `l` and automatically fills in `K` and `V`.
+def mapList[K,V](f: K=>V, l: List[K]): List[V] = l match {
+  case Nil => Nil
+  case h :: t => f(h) :: mapList(f, t)
+}
 
 
 // Another situation in which the compiler looks for an implicit is if you have
