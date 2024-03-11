@@ -20,16 +20,16 @@ Nodes
 It's an empty *node*, to indicate that there is a *node*, but it's not relevant for the query.
 
 `(n)`
-It's a *node* referred by the variable **n**, reusable in the query. It begins with lowercase and uses camelCase.
+It's a *node* referred by the variable **n**, reusable in the query. It uses camelCase.
 
 `(p:Person)`
-You can add a *label* to your node, here **Person**. It's like a type / a class / a category. It begins with uppercase and uses camelCase.
+You can add a *label* to your node, here **Person**. It's like a type / a class / a category. It uses PascalCase.
 
 `(p:Person:Manager)`
 A node can have many *labels*.
 
 `(p:Person {name : 'Théo Gauchoux', age : 22})`
-A node can have some *properties*, here **name** and **age**. It begins with lowercase and uses camelCase.
+A node can have some *properties*, here **name** and **age**. It uses camelCase.
 
 The types allowed in properties :
 
@@ -50,7 +50,7 @@ Relationships (or Edges)
 **Connects two nodes**
 
 `[:KNOWS]`
-It's a *relationship* with the *label* **KNOWS**. It's a *label* as the node's label. It begins with uppercase and use UPPER\_SNAKE\_CASE.
+It's a *relationship* with the *label* **KNOWS**. It's a *label* as the node's label. It use UPPER\_SNAKE\_CASE.
 
 `[k:KNOWS]`
 The same *relationship*, referred by the variable **k**, reusable in the query, but it's not necessary.
