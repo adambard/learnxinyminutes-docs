@@ -1113,3 +1113,4 @@ print(my_function.__code__.co_argcount) # => 2
 * [A Crash Course in Python for Scientists](https://nbviewer.jupyter.org/gist/anonymous/5924718)
 * [Python Tutorial for Intermediates](https://pythonbasics.org/)
 * [Build a Desktop App with Python](https://pythonpyqt.com/)
+* [Learn Python through notebooks](https://www.nbshare.io/notebooks/python/)
