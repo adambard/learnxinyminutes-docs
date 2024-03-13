@@ -405,7 +405,7 @@ myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
-// What this is set to has to do with how the function is called, not where
+// What `this` is set to has to do with how the function is called, not where
 // it's defined. So, our function doesn't work if it isn't called in the
 // context of the object.
 var myFunc = myObj.myFunc;
