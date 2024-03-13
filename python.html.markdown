@@ -231,8 +231,8 @@ li[::-1]  # Return list in reverse order => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
 
-# Make a one layer deep copy using slices
-li2 = li[:]  # => li2 = [1, 2, 4, 3] but (li2 is li) will result in false.
+# Creates a shallow copy of li
+li2 = li[:]  # => li2 = [1, 2, 4, 3] 
 
 # Remove arbitrary elements from a list with "del"
 del li[2]  # li is now [1, 2, 3]
