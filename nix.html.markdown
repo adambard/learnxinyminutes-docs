@@ -381,3 +381,6 @@ with builtins; [
   
 * [Rommel Martinez - A Gentle Introduction to the Nix Family]
   (https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)
+
+* [Gabriella Gonzalez - NixOS in Production]
+  (https://leanpub.com/nixos-in-production)
