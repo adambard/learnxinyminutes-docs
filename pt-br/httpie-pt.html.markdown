@@ -64,27 +64,27 @@ http https://api.example.com/search q==httpie per_page==20
 
 Você pode enviar dados nos mais diversos formatos, como JSON, formulários ou arquivos.
 
-### JSON Data
+### Enviando JSON
 
 ```bash
-http POST https://api.example.com/posts title="Hello" body="World"
+http POST https://api.example.com/posts title="Olá" body="Mundo"
 ```
 
-### Form Data
+### Enviando Formulário
 
 ```bash
 http -f POST https://api.example.com/submit name=John email=john@example.com
 ```
 
-### Files
+### Enviando Arquivos
 
 ```bash
-http --form POST https://api.example.com/upload file@/path/to/file.txt
+http --form POST https://api.example.com/upload file@/caminho/do/arquivo.txt
 ```
 
-## Headers and Authentication
+## Headers e Autenticação
 
-HTTPie allows you to set headers and handle authentication easily.
+HTTPie permite que você adicione headers e lide com autenticação de uma forma fácil.
 
 ### Headers
 
@@ -92,31 +92,31 @@ HTTPie allows you to set headers and handle authentication easily.
 http GET https://api.example.com/posts Authorization:"Bearer Token" User-Agent:"HTTPie"
 ```
 
-### Basic Authentication
+### Autenticação Básica
 
 ```bash
-http -a username:password GET https://api.example.com/protected
+http -a usuario:senha GET https://api.example.com/protected
 ```
 
-### Bearer Authentication
+### Autenticação Bearer
 
 ```bash
 https -A bearer -a token https://api.example.com/admin
 ```
 
-## Response Handling
+## Lidando com Respostas
 
-HTTPie provides various options for handling responses.
+HTTPie fornece várias opções para lidar com respostas.
 
 ```bash
-http GET https://api.example.com/data Accept:application/json  # Pretty Print JSON
+http GET https://api.example.com/data Accept:application/json  # Exibe o JSON de uma forma legível
 
-http GET https://api.example.com/image --output image.png      # Save Response to File
+http GET https://api.example.com/image --output image.png      # Grava a resposta em um arquivo
 
-http --follow GET https://example.com  # Follow Redirects
+http --follow GET https://example.com  # Segue redirecionamentos
 ```
 
-## Further Reading
+## Leitura Adicional
 
-- [Official Documentation](https://httpie.io/docs/cli).
+- [Documentação Oficial](https://httpie.io/docs/cli).
 - [Github](https://github.com/httpie).
