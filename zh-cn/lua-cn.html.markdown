@@ -361,6 +361,7 @@ return M
 
 -- 另一个文件可以使用mod.lua的功能： 
 local mod = require('mod')  -- 运行文件mod.lua. 
+-- 注意：require 需要配合 LUA_PATH 一起使用 例如：export LUA_PATH="$HOME/workspace/projectName/?.lua;;"
 
 -- require是包含模块的标准做法。 
 -- require等价于:     (针对没有被缓存的情况；参见后面的内容) 
@@ -384,11 +385,13 @@ local a = require('mod2')  -- 打印Hi!
 local b = require('mod2')  -- 不再打印; a=b. 
 
 -- dofile与require类似，但是不缓存： 
-dofile('mod2')  --> Hi! 
-dofile('mod2')  --> Hi! (再次运行，与require不同) 
+dofile('./mod2.lua')  --> Hi! 
+dofile('./mod2.lua')  --> Hi! (再次运行，与require不同) 
+-- 注意：这里与require的区别，这里需要指定文件路径及后缀
 
 -- loadfile加载一个lua文件，但是并不运行它。 
-f = loadfile('mod2')  -- Calling f() runs mod2.lua. 
+f = loadfile('./mod2.lua')  -- Calling f() runs mod2.lua. 
+-- 注意：同dofile一样，需要相对路径和文件后缀
 
 -- loadstring是loadfile的字符串版本。 
 -- (loadstring已弃用, 使用load代替)
