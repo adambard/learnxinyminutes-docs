@@ -2,14 +2,14 @@ GEM
   remote: http://rubygems.org/
   specs:
     charlock_holmes (0.7.3)
-    rake (12.0.0)
+    rake (13.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   charlock_holmes
-  rake
+  rake (>= 12.3.3)
 
 BUNDLED WITH
-   1.13.7
+   1.17.3
