@@ -39,7 +39,7 @@ Prior knowledge of C is recommended.
 ## Zig language
 
 
-```
+```zig
 //! Top-level documentation.
 
 /// Documentation comment.
@@ -49,7 +49,7 @@ Prior knowledge of C is recommended.
 
 
 ### Hello world.
-```
+```zig
 // Import standard library, reachable through the "std" constant.
 const std = @import("std");
 
@@ -67,7 +67,7 @@ pub fn main() void {
 ```
 
 ### Booleans, integers and float.
-```
+```zig
 // Booleans.
 // Keywords are preferred to operators for boolean operations.
 print("{}\n{}\n{}\n", .{
@@ -109,7 +109,7 @@ i <<| 8   == 255   // u8: won't go higher than 255
 ```
 
 ### Arrays.
-```
+```zig
 // An array is a well-defined structure with a length attribute (len).
 
 // 5-byte array with undefined content (stack garbage).
@@ -156,7 +156,7 @@ try some_integers[i]; // Runtime error 'index out of bounds'.
 ```
 
 ### Multidimensional arrays.
-```
+```zig
 
 const mat4x4 = [4][4]f32{
     [_]f32{ 1.0, 0.0, 0.0, 0.0 },
@@ -177,7 +177,7 @@ for (mat4x4) |row, row_index| {
 ```
 
 ### Strings.
-```
+```zig
 
 // Simple string constant.
 const greetings = "hello";
@@ -195,7 +195,7 @@ print("string: {s}\n", .{greetings});
 ```
 
 ### Slices.
-```
+```zig
 
 // A slice is a pointer and a size, an array without compile-time known size.
 // Slices have runtime out-of-band verifications.
@@ -206,7 +206,7 @@ const slice = array[0..array.len];  // "slice" represents the whole array.
 ```
 
 ### Pointers.
-```
+```zig
 
 // Pointer on a value can be created with "&".
 const x: i32 = 1;
@@ -223,7 +223,7 @@ const foo = pointer.?; // Get the pointed value, otherwise crash.
 ```
 
 ### Optional values (?<type>).
-```
+```zig
 // An optional is a value than can be of any type or null.
 
 // Example: "optional_value" can either be "null" or an unsigned 32-bit integer.
@@ -239,7 +239,7 @@ if (x) |value| {
 ```
 
 ### Errors.
-```
+```zig
 // Zig provides an unified way to express errors.
 
 // Errors are defined in error enumerations, example:
@@ -299,7 +299,7 @@ var value = try some_function();
 
 ### Control flow.
 
-```
+```zig
 // Conditional branching.
 
 if (condition) {
@@ -384,7 +384,7 @@ const result = for (items) |value| {
 ```
 
 ### Labels.
-```
+```zig
 
 // Labels are a way to name an instruction, a location in the code.
 // Labels can be used to "continue" or "break" in a nested loop.
@@ -434,7 +434,7 @@ const result = for (items) |value| { // First: loop.
 ```
 
 ### Switch.
-```
+```zig
 
 // As a switch in C, but slightly more advanced.
 // Syntax:
@@ -461,7 +461,7 @@ const bar = switch (foo) {
 ```
 
 ### Structures.
-```
+```zig
 
 // Structure containing a single value.
 const Full = struct {
@@ -564,7 +564,7 @@ print("p.y: {}\n", .{p.y}); // 30
 ```
 
 ### Tuples.
-```
+```zig
 // A tuple is a list of elements, possibly of different types.
 
 const foo = .{ "hello", true, 42 };
@@ -572,7 +572,7 @@ const foo = .{ "hello", true, 42 };
 ```
 
 ### Enumerations.
-```
+```zig
 
 const Type = enum { ok, not_ok };
 
@@ -606,7 +606,7 @@ const x = switch (direction) {
 ```
 
 ### Unions.
-```
+```zig
 
 const Bar = union {
   boolean: bool,
@@ -622,7 +622,7 @@ const foo: Bar = .{ .int = 42 };
 ```
 
 ### Tagged unions.
-```
+```zig
 
 // Unions can be declared with an enum tag type, allowing them to be used in
 // switch expressions.
@@ -653,7 +653,7 @@ switch (nay) {
 ```
 
 ### Defer and errdefer.
-```
+```zig
 
 // Make sure that an action (single instruction or block of code) is executed
 // before the end of the scope (function, block of code).
@@ -712,7 +712,7 @@ However, here are some examples, to get an idea of what you can expect:
   Very simple way of avoiding leaks.
 
 A first example.
-```
+```zig
 // "!void" means the function doesn't return any value except for errors.
 // In this case we try to allocate memory, and this may fail.
 fn foo() !void {
@@ -735,7 +735,7 @@ fn foo() !void {
 ```
 
 ### Memory allocation combined with error management and defer.
-```
+```zig
 
 fn some_memory_allocation_example() !void {
     // Memory allocation may fail, so we "try" to allocate the memory and
@@ -759,7 +759,7 @@ fn some_memory_allocation_example() !void {
 ```
 
 ### Memory allocators: a taste of the standard library.
-```
+```zig
 
 // Allocators: 4 main functions to know
 //   single_value = create (type)
@@ -846,7 +846,7 @@ fn gpa_arena_allocator_fn() !void {
 ```
 
 ### Comptime.
-```
+```zig
 
 // Comptime is a way to avoid the pre-processor.
 // The idea is simple: run code at compilation.
@@ -883,7 +883,7 @@ list.items[0] = 10;
 ```
 
 ### Conditional compilation.
-```
+```zig
 const available_os = enum { OpenBSD, Linux };
 const myos = available_os.OpenBSD;
 
@@ -905,7 +905,7 @@ const myprint = switch(myos) {
 ```
 
 ### Testing our functions.
-```
+```zig
 const std = @import("std");
 const expect = std.testing.expect;
 
@@ -936,7 +936,7 @@ There are more than a hundred built-ins, allowing very low-level stuff:
 - etc.
 
 Example: enums aren't integers, they have to be converted with a built-in.
-```
+```zig
 const Value = enum { zero, stuff, blah };
 if (@enumToInt(Value.zero)  == 0) { ... }
 if (@enumToInt(Value.stuff) == 1) { ... }
