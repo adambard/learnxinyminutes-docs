@@ -379,6 +379,9 @@ Se il codice sorgente dell'oggetto non è disponibile e bisogna correggere l'app
 Dopo la compilazione e il caricamento della categoria nell'applicazione in esecuzione si ottiene:
 
 ```logtalk
+?- set_logtalk_flag(complements, allow).
+yes
+
 ?- {patch}.
 yes
 
@@ -387,7 +390,7 @@ bar
 yes
 ```
 
-Poiché l'hot-patching pregiudica forzatamente l'incapsulamento, un apposito flag di compilazione `complementary` può essere impostato (a livello globale o per un singolo oggetto) per consentire, limitare o prevenire l'hot-patching.
+Poiché l'hot-patching interrompe forzatamente l'incapsulamento, è possibile impostare il flag del compilatore `complementary` può essere impostato (a livello globale o per un singolo oggetto) per consentire, limitare o prevenire l'hot-patching.
 
 # Oggetti Parametrici e Categorie
 
@@ -463,6 +466,9 @@ Logtalk supporta l'_event-driven programming_ mediante la definizione di eventi 
 Supponendo che l'oggetto `tracer` e l'oggetto `list` definito in precedenza siano stati già compilati e caricati, si possono osservare i gestori di eventi in azione durante l'invio di un messaggio:
 
 ```logtalk
+?- set_logtalk_flag(events, allow).
+yes
+
 ?- list::member(X, [1,2,3]).
 
 call: list <-- member(X, [1,2,3]) from user
@@ -481,11 +487,11 @@ La programmazione event-driven può essere vista come una forma di _computationa
 
 # Espressioni lambda
 
-Logtalk supporta anche le espressioni lambda. I parametri della espressioni lambda sono rappresentati mediante una lista con l'operatore infisso `(>>)/2` che collega i parametri alla relativa lambda espressione. Ecco alcuni semplici esempi di che usano i meta-predicati.
+Logtalk supporta anche le espressioni lambda. I parametri della espressioni lambda sono rappresentati mediante una lista con l'operatore infisso `(>>)/2` che collega i parametri alla relativa lambda espressione. Ecco alcuni semplici esempi che utilizzano la libreria `meta`.
 
 
 ```logtalk
-?- {library(metapredicates_loader)}.
+?- {meta(loader)}.
 yes
 
 ?- meta::map([X,Y]>>(Y is 2*X), [1,2,3], Ys).
