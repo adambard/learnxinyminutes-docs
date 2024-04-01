@@ -422,9 +422,9 @@ func richiediServer() {
 
 ## Letture consigliate
 
-La risorsa più importante per imparare il Go è il [sito ufficiale di Go](http://golang.org/).
+La risorsa più importante per imparare il Go è il [sito ufficiale di Go](https://go.dev/).
 Qui puoi seguire i tutorial, scrivere codice in modo interattivo, e leggere tutti i dettagli.
-Oltre al tour, [la documentazione](https://golang.org/doc/) contiene informazioni su
+Oltre al tour, [la documentazione](https://go.dev/doc/) contiene informazioni su
 come scrivere ottimo codice in Go, documentazione sui package e sui comandi, e
 la cronologia delle release.
 
@@ -432,17 +432,17 @@ Anche il documento che definisce il linguaggio è un'ottima lettura. E' semplice
 da leggere e incredibilmente corto (rispetto ad altri documenti riguardanti
 la creazione di linguaggi).
 
-Puoi giocare con il codice visto finora nel [Go playground](https://play.golang.org/p/Am120Xe7qf).
+Puoi giocare con il codice visto finora nel [Go playground](https://go.dev/play/p/Am120Xe7qf).
 Prova a cambiarlo e ad eseguirlo dal browser!
-Osserva che puoi usare [https://play.golang.org](https://play.golang.org) come
+Osserva che puoi usare [https://go.dev/play/](https://go.dev/play/) come
 una [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) per scrivere
 codice all'interno del browser, senza neanche installare Go!
 
 Una lettura importante per capire Go in modo più profondo è il [codice 
-sorgente della libreria standard](http://golang.org/src/pkg/). Infatti è
+sorgente della libreria standard](https://go.dev/src/). Infatti è
 molto ben documentato e costituisce quanto più chiaro e conciso ci sia riguardo
 gli idiomi e le buone pratiche del Go. Inoltre, clickando sul nome di una
-funzione [nella documentazione](http://golang.org/pkg/) compare il relativo
+funzione [nella documentazione](https://go.dev/pkg/) compare il relativo
 codice sorgente!
 
 Un'altra ottima risorsa per imparare è [Go by example](https://gobyexample.com/).

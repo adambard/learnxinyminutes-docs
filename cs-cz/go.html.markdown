@@ -408,20 +408,20 @@ func requestServer() {
 
 ## Kam dále
 
-Vše hlavní o Go se nachází na [oficiálních stránkách go](http://golang.org/).
+Vše hlavní o Go se nachází na [oficiálních stránkách go](https://go.dev/).
 Tam najdete tutoriály, interaktivní konzolu a mnoho materiálu ke čtení.
-Kromě úvodu, [dokumenty](https://golang.org/doc/) tam obsahují jak psát čistý kód v Go
+Kromě úvodu, [dokumenty](https://go.dev/doc/) tam obsahují jak psát čistý kód v Go
 popis balíčků (package), dokumentaci příkazové řádky a historii releasů.
 
 Také doporučujeme přečíst si definici jazyka. Je čtivá a překvapivě krátká. Tedy alespoň proti
 jiným současným jazyků.
 
-Pokud si chcete pohrát s Go, tak navštivte [hřiště Go](https://play.golang.org/p/r46YvCu-XX).
-Můžete tam spouštět programy s prohlížeče. Také můžete [https://play.golang.org](https://play.golang.org) použít jako
+Pokud si chcete pohrát s Go, tak navštivte [hřiště Go](https://go.dev/play/p/r46YvCu-XX).
+Můžete tam spouštět programy s prohlížeče. Také můžete [https://go.dev/play/](https://go.dev/play/) použít jako
 [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop), kde si v rychlosti vyzkoušíte věci, bez instalace Go.
 
-Na vašem knižním seznamu, by neměly chybět [zdrojáky stadardní knihovny](http://golang.org/src/pkg/).
-Důkladně popisuje a dokumentuje Go, styl zápisu Go a Go idiomy. Pokud kliknete na [dokumentaci](http://golang.org/pkg/)
+Na vašem knižním seznamu, by neměly chybět [zdrojáky stadardní knihovny](https://go.dev/src/).
+Důkladně popisuje a dokumentuje Go, styl zápisu Go a Go idiomy. Pokud kliknete na [dokumentaci](https://go.dev/pkg/)
 tak se podíváte na dokumentaci.
 
 Dalším dobrým zdrojem informací je [Go v ukázkách](https://gobyexample.com/).

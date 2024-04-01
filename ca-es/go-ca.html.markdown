@@ -433,25 +433,25 @@ func requestServer() {
 ## Més informació
 
 L'arrel de tot en Go és la web oficial [official Go web site]
-(http://golang.org/). Allà es pot seguir el tutorial, jugar interactivament
+(https://go.dev/). Allà es pot seguir el tutorial, jugar interactivament
 i llegir molt més del que hem vist aquí.En el "tour",
-[the docs](https://golang.org/doc/) conté informació sobre com escriure codi
+[the docs](https://go.dev/doc/) conté informació sobre com escriure codi
 net i efectiu en Go, comandes per empaquetar i generar documentació, i
 història de les versions.
 
 És altament recomanable llegir La definició del llenguatge. És fàcil de llegir
 i sorprenentment curta (com la definició del llenguatge en aquests dies).
 
-Es pot jugar amb codi a [Go playground](https://play.golang.org/p/tnWMjr16Mm).
+Es pot jugar amb codi a [Go playground](https://go.dev/play/p/tnWMjr16Mm).
 Prova de fer canvis en el codi i executar-lo des del navegador! Es pot fer
-servir [https://play.golang.org](https://play.golang.org) com a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) per provar coses i codi
+servir [https://go.dev/play/](https://go.dev/play/) com a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) per provar coses i codi
 en el navegador sense haver d'instal·lar Go.
 
 En la llista de lectures pels estudiants de Go hi ha
-[el codi font de la llibreria estàndard](http://golang.org/src/pkg/).
+[el codi font de la llibreria estàndard](https://go.dev/src/).
 Ampliament comentada, que demostra el fàcil que és de llegir i entendre els
 programes en Go, l'estil de programació, i les formes de treballar-hi. O es
-pot clicar en un nom de funció en [la documentació](http://golang.org/pkg/)
+pot clicar en un nom de funció en [la documentació](https://go.dev/pkg/)
 i veure'n el codi!
 
 Un altre gran recurs per aprendre Go és
