@@ -325,7 +325,7 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 ## További olvasmányok
 
-Minden Go-val kapcsolatos megtaláható a [hivatalos Go weboldalon](http://golang.org/).
+Minden Go-val kapcsolatos megtaláható a [hivatalos Go weboldalon](https://go.dev/).
 Ott követhetsz egy tutorialt, játszhatsz a nyelvvel az interneten, és sok érdekességet olvashatsz.
 
 A nyelv specifikációját kifejezetten érdemes olvasni, viszonylag rövid és sokat tanul belőle az ember.

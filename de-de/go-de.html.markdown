@@ -308,13 +308,13 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 ```
 
 ## Weitere Resourcen
-Informationen zu Go findet man auf der [offiziellen Go Webseite](http://golang.org/).
+Informationen zu Go findet man auf der [offiziellen Go Webseite](https://go.dev/).
 Dort gibt es unter anderem ein Tutorial und interaktive Quelltext-Beispiele, vor
 allem aber Dokumentation zur Sprache und den Paketen.
 
 Auch zu empfehlen ist die Spezifikation von Go, die nach heutigen Standards sehr
 kurz und gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
-ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/)
+ist außerdem der Quelltext der [Go standard Bibliothek](https://go.dev/src/)
 einzusehen. Dieser kann als Referenz für leicht zu verstehendes und im idiomatischen Stil
 verfasstes Go dienen. Erreichbar ist der Quelltext auch durch das Klicken der Funktionsnamen
-in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
+in der [offiziellen Dokumentation von Go](https://go.dev/pkg/).

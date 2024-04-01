@@ -456,21 +456,21 @@ func requestServer() {
 
 ## Further Reading
 
-The root of all things Go is the [official Go web site](http://golang.org/).
+The root of all things Go is the [official Go web site](https://go.dev/).
 There you can follow the tutorial, play interactively, and read lots.
-Aside from a tour, [the docs](https://golang.org/doc/) contain information on
+Aside from a tour, [the docs](https://go.dev/doc/) contain information on
 how to write clean and effective Go code, package and command docs, and release history.
 
-The [Go language specification](https://golang.org/ref/spec) itself is highly recommended. It's easy to read
+The [Go language specification](https://go.dev/ref/spec) itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
 
-You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
+You can play around with the code on [Go playground](https://go.dev/play/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://go.dev/play/](https://go.dev/play/) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
 
 On the reading list for students of Go is the [source code to the standard
-library](http://golang.org/src/pkg/). Comprehensively documented, it
+library](https://go.dev/src/). Comprehensively documented, it
 demonstrates the best of readable and understandable Go, Go style, and Go
 idioms. Or you can click on a function name in [the
-documentation](http://golang.org/pkg/) and the source code comes up!
+documentation](https://go.dev/pkg/) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
 
