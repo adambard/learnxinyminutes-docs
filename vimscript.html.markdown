@@ -11,7 +11,7 @@ contributors:
 " ##############
 "
 " Vim script (also called VimL) is the subset of Vim's ex-commands which
-" supplies a number of features one one would expect from a scripting language,
+" supplies a number of features one would expect from a scripting language,
 " such as values, variables, functions or loops. Always keep in the back of
 " your mind that a Vim script file is just a sequence of ex-commands. It is
 " very common for a script to mix programming-language features and raw
@@ -38,11 +38,11 @@ echo 'Hello' | echo 'world!'
 " Putting a comment after a command usually works
 pwd                   " Displays the current working directory
 
-" Except for some commands it does not; use the command delemiter before the
+" Except for some commands it does not; use the command delimiter before the
 " comment (echo assumes that the quotation mark begins a string)
 echo 'Hello world!'  | " Displays a message
 
-" Line breaks can be escaped by pacing a backslash as the first non-whitespace
+" Line breaks can be escaped by placing a backslash as the first non-whitespace
 " character on the *following* line. Only works in script files, not on the
 " command line
 echo " Hello
@@ -98,7 +98,7 @@ echo  v:false     | " Evaluates to 0 or the string 'v:false'
 " Boolean values can result from comparison of two objects.
 
 echo  x == y             | " Equality by value
-echo  x != y             | " Unequality
+echo  x != y             | " Inequality
 echo  x >  y             | " Greater than
 echo  x >= y             | " Greater than or equal
 echo  x <  y             | " Smaller than
@@ -110,7 +110,7 @@ echo  x isnot y          | " Instance non-identity (lists and dictionaries)
 " echo 'a' < 'b'. Case sensitivity depends on the setting of 'ignorecase'
 "
 " Explicit case-sensitivity is specified by appending '#' (match case) or '?'
-" (ignore case) to the operator. Prefer explicity case sensitivity when writing
+" (ignore case) to the operator. Prefer explicitly case sensitivity when writing
 " portable scripts.
 
 echo  'a' <  'B'         | " True or false depending on 'ignorecase'
@@ -315,7 +315,7 @@ let s:isNumber = {x -> type(x) == type(0)}   | " Local: any name allowed
 " Assign values of list to multiple variables (number of items must match)
 let [x, y] = [1, 2]
 
-" Assign the remainer to a rest variable (note the semicolon)
+" Assign the remainder to a rest variable (note the semicolon)
 let [mother, father; children] = ['Alice', 'Bob', 'Carol', 'Dennis', 'Emily']
 
 
@@ -610,7 +610,7 @@ echo  exists(':Make')              | " Command
 echo  exists("#CursorHold")        | " Auto-command defined for event
 echo  exists("#BufReadPre#*.gz")   | " Event and pattern
 echo  exists("#filetypeindent")    | " Auto-command group
-echo  exists("##ColorScheme")      | " Auto-commnand supported for event
+echo  exists("##ColorScheme")      | " Auto-command supported for event
 
 " Various dynamic values (see |expand()|)
 echo  expand('%')                  | " Current file name

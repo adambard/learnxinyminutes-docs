@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -22,7 +22,7 @@ posibilități.
 # Pentru comentarii pe mai multe linii nu există sintaxă separată,
 # de aceea folosiți mai multe linii cu comentarii.
 
-# Pentru a folosi shell-ul elixir utilizați comanda `iex`.
+# Pentru a folosi shell-ul Elixir utilizați comanda `iex`.
 # Compilați modulele cu comanda `elixirc`.
 
 # Ambele comenzi vor lucra în terminal, dacă ați instalat Elixir corect.

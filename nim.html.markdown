@@ -3,7 +3,7 @@ language: Nim
 filename: learnNim.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
-    - ["Dennis Felsing", "http://felsin9.de/nnis/"]
+    - ["Dennis Felsing", "https://dennis.felsing.org"]
 ---
 
 Nim (formerly Nimrod) is a statically typed, imperative programming language
@@ -142,7 +142,7 @@ when compileBadCode:
 # Arrays
 
 type
-  RollCounter = array[DieFaces, int]  # Array's are fixed length and
+  RollCounter = array[DieFaces, int]  # Arrays are fixed length and
   DirNames = array[Direction, string] # indexed by any ordinal type.
   Truths = array[42..44, bool]
 var

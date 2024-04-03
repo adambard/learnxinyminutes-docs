@@ -165,11 +165,11 @@ but again, they use different HTML markup and thus the distinction.
 
 ###. Superscripts and Subscripts use carats and tildes:
 
-Superscripts are 2 ^nd^ to none, but subscripts are CO ~2~ L too.
+Superscripts are 2 ^and^ to none, but subscripts are CO ~2~ L too.
 Note the spaces around the superscripts and subscripts.
 
 To avoid the spaces, add square brackets around them:
-2[^nd^] and CO[~2~]L
+2[^and^] and CO[~2~]L
 
 ###. Insertions and deletions are indicated using -/+ symbols:
 This is -deleted- text and this is +inserted+ text.
@@ -375,7 +375,7 @@ table(tableclass).
 |a|classy|table|
 |a|classy|table|
 
-###. Spanning rows and colums:
+###. Spanning rows and columns:
 A backslash \ is used for a column span:
 
 |\2. spans two cols |

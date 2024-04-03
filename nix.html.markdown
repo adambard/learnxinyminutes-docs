@@ -305,6 +305,9 @@ with builtins; [
   ({x, y, ...}: x + "-" + y) { x = "a"; y = "b"; z = "c"; }
   #=> "a-b"
 
+  # The entire set can be bound to a variable using `@`
+  (args@{x, y}: args.x + "-" + args.y) { x = "a"; y = "b"; }
+  #=> "a-b"
 
   #  Errors
   #=========================================
@@ -355,7 +358,7 @@ with builtins; [
   # its contents. You can read files from anywhere. In this example,
   # we write a file into the store, and then read it back out.
   (let filename = toFile "foo.txt" "hello!"; in
-    [filename (builtins.readFile filename)])
+    [filename (readFile filename)])
   #=> [ "/nix/store/ayh05aay2anx135prqp0cy34h891247x-foo.txt" "hello!" ]
 
   # We can also download files into the Nix store.

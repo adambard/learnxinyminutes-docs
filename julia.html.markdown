@@ -356,6 +356,20 @@ intersect(filledSet, otherSet)      # => Set([4, 3, 5])
 union(filledSet, otherSet)          # => Set([4, 2, 3, 5, 6, 1])
 setdiff(Set([1,2,3,4]), Set([2,3,5])) # => Set([4, 1])
 
+# Assignment with `=` attaches a new label to the same value without copying
+a = [1, 2, 3]
+b = a
+# Now `b` and `a` point to the same value, so changing one affects the other:
+a[3] = 5
+b[3]  # => 5
+
+# The `copy()` function can create a shallow copy of an array, dictionary,
+# or other container
+a = [1, 2, 3]
+c = copy(a)
+a[3] = 5
+c[3] # => 3
+
 ####################################################
 ## 3. Control Flow
 ####################################################

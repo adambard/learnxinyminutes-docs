@@ -3,7 +3,7 @@ language: asciidoc
 contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
-filename: asciidoc.md
+filename: asciidoc.adoc
 ---
 
 AsciiDoc is a markup language similar to Markdown and it can be used for anything from books to blogs. Created in 2002 by Stuart Rackham the language is simple but it allows for a great amount of customization.

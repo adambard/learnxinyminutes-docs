@@ -118,14 +118,15 @@ $False - 5   # => -5
 2 -lt 3 -and 3 -lt 2  # => False
 
 # (-is vs. -eq) -is checks if two objects are the same type.
-# -eq checks if the objects have the same values.
+# -eq checks if the objects have the same values, but sometimes doesn't work
+# as expected.
 # Note: we called '[Math]' from .NET previously without the preceeding
 # namespaces. We can do the same with [Collections.ArrayList] if preferred.
 [System.Collections.ArrayList]$a = @()  # Point a at a new list
 $a = (1,2,3,4)
 $b = $a                                 # => Point b at what a is pointing to
 $b -is $a.GetType()                     # => True, a and b equal same type
-$b -eq $a                               # => True, a and b values are equal
+$b -eq $a                               # => None! See below
 [System.Collections.Hashtable]$b = @{}  # => Point a at a new hash table
 $b = @{'one' = 1 
        'two' = 2}
@@ -153,6 +154,13 @@ $age = 22
 # => "Steve said he is 22 years old"
 "$name's name is $($name.Length) characters long." 
 # => "Steve's name is 5 characters long."
+
+# Strings can be compared with -eq, but are case insensitive. We can
+# force with -ceq or -ieq.
+"ab" -eq "ab"  # => True
+"ab" -eq "AB"  # => True!
+"ab" -ceq "AB"  # => False
+"ab" -ieq "AB"  # => True
 
 # Escape Characters in Powershell
 # Many languages use the '\', but Windows uses this character for 
@@ -274,6 +282,10 @@ $array.AddRange($otherArray)  # Now $array is [1, 2, 3, 4, 5, 6]
 # Examine length with "Count" (Note: "Length" on arrayList = each items length)
 $array.Count  # => 6
 
+# -eq doesn't compare array but extract the matching elements
+$array = 1,2,3,1,1
+$array -eq 1          # => 1,1,1
+($array -eq 1).Count  # => 3
 
 # Tuples are like arrays but are immutable.
 # To use Tuples in powershell, you must use the .NET tuple class.
@@ -574,7 +586,7 @@ Get-Process | Foreach-Object ProcessName | Group-Object
 1..10 | ForEach-Object { "Loop number $PSITEM" }
 1..10 | Where-Object { $PSITEM -gt 5 } | ConvertTo-Json
 
-# A notable pitfall of the pipeline is it's performance when
+# A notable pitfall of the pipeline is its performance when
 # compared with other options.
 # Additionally, raw bytes are not passed through the pipeline,
 # so passing an image causes some issues.
@@ -802,6 +814,6 @@ Interesting Projects
 * [Oh-My-Posh](https://github.com/JanDeDobbeleer/oh-my-posh) Shell customization similar to the popular Oh-My-Zsh on Mac
 * [PSake](https://github.com/psake/psake) Build automation tool
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
-* [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
+* [ZLocation](https://github.com/vors/ZLocation) Powershell `cd` that reads your mind
 * [PowerShell Community Extensions](https://github.com/Pscx/Pscx)
 * [More on the Powershell Pipeline Issue](https://github.com/PowerShell/PowerShell/issues/1908)

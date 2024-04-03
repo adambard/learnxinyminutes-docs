@@ -45,7 +45,7 @@ const CONSTANT_VALUE = "I CANNOT CHANGE";
 CONSTANT_VALUE = "DID I?"; //Error
 /// Final is another variable declaration that cannot be change once it has been instantiated. Commonly used in classes and functions
 /// `final` can be declared in pascalCase.
-final finalValue = "value cannot be change once instantiated";
+final finalValue = "value cannot be changed once instantiated";
 finalValue = "Seems not"; //Error
 
 /// `var` is another variable declaration that is mutable and can change its value. Dart will infer types and will not change its data type
@@ -79,7 +79,8 @@ example1() {
 
 /// Anonymous functions don't include a name
 example2() {
-  nested1(fn) {
+  //// Explicit return type.
+  nested1(void Function() fn) {
     fn();
   }
   nested1(() => print("Example2 nested 1"));
