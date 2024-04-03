@@ -2,10 +2,10 @@
 language: Ada
 filename: learn.ada
 contributors:
-    ["Luke A. Guest", "https://github.com/Lucretia"]
-    ["Fernando Oleo Blanco", "https://github.com/Irvise"]
-    ["Fabien Chouteau", "https://github.com/Fabien-Chouteau"]
-    ["Manuel", "https://github.com/mgrojo"]
+    - ["Luke A. Guest", "https://github.com/Lucretia"]
+    - ["Fernando Oleo Blanco", "https://github.com/Irvise"]
+    - ["Fabien Chouteau", "https://github.com/Fabien-Chouteau"]
+    - ["Manuel", "https://github.com/mgrojo"]
 ---
 
 Ada is a strong statically typed imperative, [object-oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9), [real-time](https://ada-lang.io/docs/arm/AA-D), [parallel](https://ada-lang.io/docs/arm/AA-9) and [distributed](https://ada-lang.io/docs/arm/AA-9) programming language from the Pascal/Algol family of languages, but nowadays, it only has a passing resemblance to Pascal, with the only remnants left being the ```begin/end``` keyword pair, the ```:=``` assignment symbol, records and ```if/case``` control statement structures.
