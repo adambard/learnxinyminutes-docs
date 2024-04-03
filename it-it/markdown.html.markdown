@@ -183,7 +183,7 @@ Potete inoltre inserire un altro tab (o altri quattro spazi) per indentare il vo
 
 ```md
     my_array.each do |item|
-        puts item
+      puts item
     end
 ```
 
@@ -194,12 +194,15 @@ Giovanni non sapeva neppure a cosa servisse la funzione `go_to()`!
 ```
 
 In Github Flavored Markdown, potete inoltre usare una sintassi speciale per il codice
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Hello world!"
 end
-&#x60;&#x60;&#x60;</code></pre>
+```
+````
+
 Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre Github userà l'evidenziazione della sintassi del linguaggio specificato dopo i \`\`\` iniziali
 
 ## Linea orizzontale

@@ -8,7 +8,7 @@ translators:
     - ["Monique Baptista", "https://github.com/bfmonique"]
     - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
 
-lang: pt-br    
+lang: pt-br
 filename: learnmarkdown-pt.md
 ---
 
@@ -213,8 +213,8 @@ adicionais) para indentação no seu código.
 
 ```md
     my_array.each do |item|
-        puts item
-    end	
+      puts item
+    end
 ```
 
 Código embutido pode ser criado usando o caractere de crase `` ` ``.
@@ -225,13 +225,13 @@ John não sabia nem o que a função `go_to()` fazia!
 
 No GitHub Flavored Markdown, você pode usar uma sintaxe especial para código.
 
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+````md
+```ruby
 def foobar
-    puts "Olá mundo!"
+  puts "Olá mundo!"
 end
-&#x60;&#x60;&#x60;</code></pre>
-
+```
+````
 
 O texto acima não requer indentação, além disso o GitHub vai usar o destaque
 de sintaxe da linguagem qeu você especificar após a tag <code>```</code>.
@@ -272,11 +272,13 @@ Caminhos relativos funcionam também.
 
 O Markdown também suporta links para referências no texto.
 
-<pre><code class="highlight">&#x5b;<span class="nv">Clique nesse link</span>][<span class="ss">link1</span>] para mais informações!
-&#x5b;<span class="nv">Também cheque esse link</span>][<span class="ss">foobar</span>] se você quiser.
+```md
+[Clique nesse link][link1] para mais informações!
+[Também cheque esse link][foobar] se você quiser.
 
-&#x5b;<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Legal!"</span>
-&#x5b;<span class="nv">link2r</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Certo!"</span></code></pre>
+[link1]: http://test.com/ "Legal!"
+[link2r]: http://foobar.biz/ "Certo!"
+```
 
 O título também pode estar entre aspas simples ou entre parênteses, ou omitido 
 inteiramente. As referências podem estar em qualquer lugar no documento e os
@@ -285,10 +287,11 @@ IDs de referência podem ser qualquer um, desde que eles sejam únicos.
 Existe também a "nomeação implícita", que permite que você use o texto do link
 como o id:
 
-<pre><code class="highlight">&#x5b;<span class="nv">Isso</span>][] é um link.
+```md
+[Isso][] é um link.
 
-&#x5b;<span class="nv">Isso</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
-
+[Isso]: http://thisisalink.com/
+```
 
 Mas geralmente não são usados.
 
@@ -322,9 +325,11 @@ exclamação na frente!
 
 E estilo de referência funciona como esperado
 
-<pre><code class="highlight">!&#x5b;<span class="nv">Esse é o alt-attribute.</span>][<span class="ss">myimage</span>]
+```md
+![Esse é o alt-attribute.][myimage]
 
-&#x5b;<span class="nv">Minha imagem</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"se precisar de um título, está aqui"</span></code></pre>
+[Minha imagem]: relative/urls/cool/image.jpg "se precisar de um título, está aqui"
+```
 
 ## Miscelânea 
 
