@@ -253,7 +253,7 @@ Ma non è comunemente usato.
 Le immagini sono inserite come i link ma con un punto esclamativo inserito prima delle parentesi quadre!
 
 ```md
-![Qeusto è il testo alternativo per l'immagine](http://imgur.com/myimage.jpg "Il titolo opzionale")
+![Questo è il testo alternativo per l'immagine](http://imgur.com/myimage.jpg "Il titolo opzionale")
 ```
 
 E la modalità a riferimento funziona esattamente come ci si aspetta
@@ -307,4 +307,4 @@ Col 1 | Col2 | Col3
 ```
 
 ---
-Per altre informazioni, leggete il post ufficiale di John Gruber sulla sintassi [qui](http://daringfireball.net/projects/markdown/syntax) e il magnifico cheatsheet di Adam Pritchard [qui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Per altre informazioni, leggete il post ufficiale di John Gruber sulla sintassi [qui](https://daringfireball.net/projects/markdown/syntax) e il magnifico cheatsheet di Adam Pritchard [qui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).

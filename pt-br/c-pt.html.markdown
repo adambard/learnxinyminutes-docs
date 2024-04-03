@@ -384,7 +384,6 @@ int main() {
 	// Por exemplo, quando um array é passado para uma função ou é atribuído a um
 	// ponteiro, ele transforma-se (convertido implicitamente) em um ponteiro.
 	// Exceções: quando o array é o argumento de um operador `&` (endereço-de):
-    // Exceptions: when the array is the argument of the `&` (address-of) operator:
     int arr[10];
     int (*ptr_to_arr)[10] = &arr; // &arr não é do tipo `int *`!
                                   // É do tipo "ponteiro para array" (de `int`s).

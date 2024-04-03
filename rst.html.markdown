@@ -8,7 +8,7 @@ filename: restructuredtext.rst
 
 RST, Restructured Text, is a file format created by the Python community to write documentation. It is part of [Docutils](https://docutils.sourceforge.io/rst.html).
 
-RST is a markdown language like HTML but is much more lightweight and easier to read.
+RST is a markup language like HTML but is much more lightweight and easier to read.
 
 
 ## Installation

@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["David Lima", "https://github.com/davelima"]
 lang: pt-br
-filename: asciidoc-pt.md
+filename: asciidoc-pt.adoc
 ---
 
 AsciiDoc é uma linguagem de marcação similar ao Markdown e pode ser

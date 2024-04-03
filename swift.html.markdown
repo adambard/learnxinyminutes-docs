@@ -679,6 +679,9 @@ class Rect: Shape {
 
 // A simple class `Square` extends `Rect`
 class Square: Rect {
+    // Use a convenience initializer to make calling a designated initializer faster and more "convenient".
+    // Convenience initializers call other initializers in the same class and pass default values to one or more of their parameters.
+    // Convenience initializers can have parameters as well, which are useful to customize the called initializer parameters or choose a proper initializer based on the value passed.
     convenience init() {
         self.init(sideLength: 5)
     }

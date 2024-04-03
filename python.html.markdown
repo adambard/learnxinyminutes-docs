@@ -185,7 +185,7 @@ print("Hello, World", end="!")  # => Hello, World!
 input_string_var = input("Enter some data: ") # Returns the data as a string
 
 # There are no declarations, only assignments.
-# Convention is to use lower_case_with_underscores
+# Convention in naming variables is snake_case style
 some_var = 5
 some_var  # => 5
 
@@ -226,7 +226,7 @@ li[4]  # Raises an IndexError
 li[1:3]   # Return list from index 1 to 3 => [2, 4]
 li[2:]    # Return list starting from index 2 => [4, 3]
 li[:3]    # Return list from beginning until index 3  => [1, 2, 4]
-li[::2]   # Return list selecting every second entry => [1, 4]
+li[::2]   # Return list selecting elements with a step size of 2 => [1, 4]
 li[::-1]  # Return list in reverse order => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
@@ -603,7 +603,7 @@ all_the_args(1, 2, a=3, b=4) prints:
 """
 
 # When calling functions, you can do the opposite of args/kwargs!
-# Use * to expand tuples and use ** to expand kwargs.
+# Use * to expand args (tuples) and use ** to expand kwargs (dictionaries).
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
 all_the_args(*args)            # equivalent: all_the_args(1, 2, 3, 4)
@@ -655,6 +655,22 @@ def create_adder(x):
 add_10 = create_adder(10)
 add_10(3)   # => 13
 
+# Closures in nested functions:
+# We can use the nonlocal keyword to work with variables in nested scope which shouldn't be declared in the inner functions.
+def create_avg():
+    total = 0
+    count = 0
+    def avg(n):
+        nonlocal total, count
+        total += n
+        count += 1
+        return total/count
+    return avg
+avg = create_avg()
+avg(3) # => 3.0
+avg(5) # (3+5)/2 => 4.0
+avg(7) # (8+7)/3 => 5.0
+
 # There are also anonymous functions
 (lambda x: x > 2)(3)                  # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
@@ -685,8 +701,8 @@ print(math.sqrt(16))  # => 4.0
 
 # You can get specific functions from a module
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))   # => 4
+print(floor(3.7))  # => 3
 
 # You can import all functions from a module.
 # Warning: this is not recommended
@@ -733,7 +749,9 @@ class Human:
         self.name = name
 
         # Initialize property
-        self._age = 0
+        self._age = 0   # the leading underscore indicates the "age" property is 
+                        # intended to be used internally
+                        # do not rely on this to be enforced: it's a hint to other devs
 
     # An instance method. All methods take "self" as the first argument
     def say(self, msg):
@@ -876,7 +894,8 @@ if __name__ == '__main__':
     if type(sup) is Superhero:
         print('I am a superhero')
 
-    # Get the Method Resolution search Order used by both getattr() and super()
+    # Get the "Method Resolution Order" used by both getattr() and super()
+    # (the order in which classes are searched for an attribute or method)
     # This attribute is dynamic and can be updated
     print(Superhero.__mro__)    # => (<class '__main__.Superhero'>,
                                 # => <class 'human.Human'>, <class 'object'>)
@@ -958,8 +977,7 @@ class Batman(Superhero, Bat):
 if __name__ == '__main__':
     sup = Batman()
 
-    # Get the Method Resolution search Order used by both getattr() and super().
-    # This attribute is dynamic and can be updated
+    # The Method Resolution Order
     print(Batman.__mro__)       # => (<class '__main__.Batman'>,
                                 # => <class 'superhero.Superhero'>,
                                 # => <class 'human.Human'>,
@@ -1016,31 +1034,67 @@ gen_to_list = list(values)
 print(gen_to_list)  # => [-1, -2, -3, -4, -5]
 
 
-# Decorators
-# In this example `beg` wraps `say`. If say_please is True then it
-# will change the returned message.
-from functools import wraps
+# Decorators are a form of syntactic sugar.
+# They make code easier to read while accomplishing clunky syntax.
 
+# Wrappers are one type of decorator.
+# They're really useful for adding logging to existing functions without needing to modify them.
 
-def beg(target_function):
-    @wraps(target_function)
+def log_function(func):
     def wrapper(*args, **kwargs):
-        msg, say_please = target_function(*args, **kwargs)
-        if say_please:
-            return "{} {}".format(msg, "Please! I am poor :(")
-        return msg
-
+        print("Entering function", func.__name__)
+        result = func(*args, **kwargs)
+        print("Exiting function", func.__name__)
+        return result
     return wrapper
 
+@log_function               # equivalent:
+def my_function(x,y):       # def my_function(x,y):
+    return x+y              #   return x+y
+                            # my_function = log_function(my_function)
+# The decorator @log_function tells us as we begin reading the function definition
+# for my_function that this function will be wrapped with log_function.
+# When function definitions are long, it can be hard to parse the non-decorated
+# assignment at the end of the definition.
 
-@beg
-def say(say_please=False):
-    msg = "Can you buy me a beer?"
-    return msg, say_please
+my_function(1,2) # => "Entering function my_function"
+                 # => "3"
+                 # => "Exiting function my_function"
 
+# But there's a problem.
+# What happens if we try to get some information about my_function?
 
-print(say())                 # Can you buy me a beer?
-print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
+print(my_function.__name__) # => 'wrapper'
+print(my_function.__code__.co_argcount) # => 0. The argcount is 0 because both arguments in wrapper()'s signature are optional.
+
+# Because our decorator is equivalent to my_function = log_function(my_function)
+# we've replaced information about my_function with information from wrapper
+
+# Fix this using functools
+
+from functools import wraps
+
+def log_function(func):
+    @wraps(func) # this ensures docstring, function name, arguments list, etc. are all copied
+                 # to the wrapped function - instead of being replaced with wrapper's info
+    def wrapper(*args, **kwargs):
+        print("Entering function", func.__name__)
+        result = func(*args, **kwargs)
+        print("Exiting function", func.__name__)
+        return result
+    return wrapper
+
+@log_function               
+def my_function(x,y):       
+    return x+y              
+                            
+my_function(1,2) # => "Entering function my_function"
+                 # => "3"
+                 # => "Exiting function my_function"
+
+print(my_function.__name__) # => 'my_function'
+print(my_function.__code__.co_argcount) # => 2
+
 ```
 
 ### Free Online

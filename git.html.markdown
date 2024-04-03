@@ -583,7 +583,8 @@ $ git rm /pather/to/the/file/HelloWorld.c
 ```
 
 ### blame
-Examine specific parts of the code's history and find out who was the last author to modify that line
+Examine specific parts of the code's history and find out who was the last author to modify that line.
+
 ```bash
 # find the authors on the latest modified lines
 $ git blame google_python_style.vim

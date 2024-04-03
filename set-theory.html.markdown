@@ -2,7 +2,9 @@
 category: Algorithms & Data Structures
 name: Set theory
 contributors:
+    - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
 ---
+
 Set theory is a branch of mathematics that studies sets, their operations, and their properties.
 
 * A set is a collection of disjoint items.
@@ -59,7 +61,7 @@ Long lists may be shortened with ellipses as long as the context is clear. For e
 Set builder notation is a more descriptive way of constructing a set. It relies on a _subject_ and a _predicate_ such that `S = { subject : predicate }`. For example,
 
 ```
-A = { x : x is a vowel } = { a, e, i, o, u, y}
+A = { x : x is a vowel } = { a, e, i, o, u }
 B = { x : x ∈ N, x < 10 } = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
 C = { x : x = 2k, k ∈ N } = { 0, 2, 4, 6, 8, ... }
 ```

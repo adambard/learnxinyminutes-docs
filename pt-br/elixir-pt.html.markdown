@@ -98,7 +98,7 @@ linhas.
 # Ranges são representados como `início..fim` (ambos inclusivos)
 1..10 #=> 1..10
 menor..maior = 1..10 # Pattern matching pode ser usada em ranges também
-[lower, upper] #=> [1, 10]
+[menor, maior] #=> [1, 10]
 
 ## ---------------------------
 ## -- Operadores
@@ -167,7 +167,7 @@ else
   "Isso será"
 end
 
-# Lembra do patter matching? Muitas estruturas de fluxo de controle em Elixir contam com ela.
+# Lembra do pattern matching? Muitas estruturas de fluxo de controle em Elixir contam com ela.
 
 # `case` nos permite comparar um valor com muitos patterns:
 case {:um, :dois} do

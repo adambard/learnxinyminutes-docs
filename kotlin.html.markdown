@@ -26,7 +26,7 @@ any parameters.
 */
 fun main(args: Array<String>) {
     /*
-    Declaring values is done using either "var" or "val".
+    Declaring variables is done using either "var" or "val".
     "val" declarations cannot be reassigned, whereas "vars" can.
     */
     val fooVal = 10 // we cannot later reassign fooVal to something else
@@ -297,7 +297,7 @@ fun helloWorld(val name : String) {
         else -> println("none of the above")
     }
 
-    // "when" can be used as a function that returns a value.
+    // "when" can be used as an expression that returns a value.
     var result = when (i) {
         0, 21 -> "0 or 21"
         in 1..20 -> "in the range 1 to 20"

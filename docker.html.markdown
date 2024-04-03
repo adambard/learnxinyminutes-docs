@@ -187,7 +187,7 @@ $ docker exec -it 7b272 bash
 # directory. Here 7b272 was our ubuntu container and the above command would
 # help us interact with the container by opening a bash session.
 
-$docker logs <container-id>
+$ docker logs <container-id>
 # Displays the information logged by the specified container
 # root@7b27222e4bb7:/# whoami
 # root
@@ -245,11 +245,11 @@ image to run ( or build) it.
 
 ```bash
 
-$docker build <path-to-dockerfile>
+$ docker build <path-to-dockerfile>
 # used to build an image from the specified Dockerfile
 # instead of path we could also specify a URL
 # -t tag is optional and used to name and tag your images for e.g.
-# `$docker build -t my-image:0.1 ./home/app`
+# `$ docker build -t my-image:0.1 ./home/app`
 # rebuild images everytime you make changes in the dockerfile
 ```
 
@@ -264,15 +264,15 @@ as part of the source image name. We need to create the target image with the
 tag name of username/image-name much like GitHub repositories. 
 
 ```bash
-$docker login
+$ docker login
 # to login to Docker Hub using your username and password
 
-$docker tag <src-image>[:<src-tag>] <target-image>[:<target-tag>]
+$ docker tag <src-image>[:<src-tag>] <target-image>[:<target-tag>]
 # this tags a local src-image to a public target-image
 # e.g. `docker tag my-sample-app:1.0.0  akshitadixit/my-sample-app`
 # if tags are not specified, they're defaulted to `latest`
 
-$docker push <target-image>[:<target-tag>]
+$ docker push <target-image>[:<target-tag>]
 # uploads our image to Docker Hub
 # e.g. `docker push akshitadixit/my-sample-app`
 # this image will be accessible under your profile's repositories as

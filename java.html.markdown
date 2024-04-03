@@ -91,6 +91,9 @@ public class LearnJava {
         int numInt = scanner.nextInt();
 
         // read long input
+        long numLong = scanner.nextLong();
+
+        // read float input
         float numFloat = scanner.nextFloat();
 
         // read double input
@@ -123,6 +126,9 @@ public class LearnJava {
         // <name1> = <name2> = <name3> = <val>
         int barInt1, barInt2, barInt3;
         barInt1 = barInt2 = barInt3 = 1;
+	// Shorthand for multiple declarations
+	int barInt4 = 1, barInt5 = 2; 
+
 
         /*
         *  Variable types
@@ -182,7 +188,7 @@ public class LearnJava {
         //
         // BigInteger is a data type that allows programmers to manipulate
         // integers longer than 64-bits. Integers are stored as an array of
-        // of bytes and are manipulated using functions built into BigInteger
+        // bytes and are manipulated using functions built into BigInteger
         //
         // BigInteger can be initialized using an array of bytes or a string.
         BigInteger fooBigInteger = new BigInteger(fooByteArray);
@@ -304,8 +310,8 @@ public class LearnJava {
         ///////////////////////////////////////
         System.out.println("\n->Operators");
 
-        int i1 = 1, i2 = 2; // Shorthand for multiple declarations
-
+	int i1 = 1, i2 = 2;
+	
         // Arithmetic is straightforward
         System.out.println("1+2 = " + (i1 + i2)); // => 3
         System.out.println("2-1 = " + (i2 - i1)); // => 1
@@ -314,7 +320,7 @@ public class LearnJava {
         System.out.println("1/2.0 = " + (i1 / (double)i2)); // => 0.5
 
         // Modulo
-        System.out.println("11%3 = "+(11 % 3)); // => 2
+        System.out.println("11%3 = " + (11 % 3)); // => 2
 
         // Comparison operators
         System.out.println("3 == 2? " + (3 == 2)); // => false
@@ -368,7 +374,7 @@ public class LearnJava {
 
         // While loop
         int fooWhile = 0;
-        while(fooWhile < 100) {
+        while (fooWhile < 100) {
             System.out.println(fooWhile);
             // Increment the counter
             // Iterated 100 times, fooWhile 0,1,2...99
@@ -383,7 +389,7 @@ public class LearnJava {
             // Increment the counter
             // Iterated 100 times, fooDoWhile 0->99
             fooDoWhile++;
-        } while(fooDoWhile < 100);
+        } while (fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
 
         // For Loop
