@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -20,7 +20,7 @@ e muitos outros recursos.
 # Não há comentários de múltiplas linhas,
 # mas você pode empilhar os comentários.
 
-# Para usar o shell do elixir use o comando `iex`.
+# Para usar o shell do Elixir use o comando `iex`.
 # Compile seus módulos com o comando `elixirc`.
 
 # Ambos devem estar em seu path se você instalou o Elixir corretamente.
@@ -51,7 +51,7 @@ elem({1, 2, 3}, 0) #=> 1
 head #=> 1
 tail #=> [2,3]
 
-# Em elixir, bem como em Erlang, o sinal `=` denota pattern match,
+# Em Elixir, bem como em Erlang, o sinal `=` denota pattern match,
 # e não uma atribuição.
 #
 # Isto significa que o que estiver à esquerda (pattern) é comparado com o que
@@ -85,7 +85,7 @@ linhas.
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
 
-# `?a` em elixir retorna o valor ASCII para a letra `a`
+# `?a` em Elixir retorna o valor ASCII para a letra `a`
 ?a #=> 97
 
 # Para concatenar listas use `++`, para binários use `<>`
@@ -110,7 +110,7 @@ menor..maior = 1..10 # Pattern matching pode ser usada em ranges também
 5 * 2  #=> 10
 10 / 2 #=> 5.0
 
-# Em elixir o operador `/` sempre retorna um float.
+# Em Elixir o operador `/` sempre retorna um float.
 
 # Para divisão de inteiros use `div`
 div(10, 2) #=> 5
@@ -167,7 +167,7 @@ else
   "Isso será"
 end
 
-# Lembra do pattern matching? Muitas estruturas de fluxo de controle em elixir contam com ela.
+# Lembra do pattern matching? Muitas estruturas de fluxo de controle em Elixir contam com ela.
 
 # `case` nos permite comparar um valor com muitos patterns:
 case {:um, :dois} do
@@ -296,7 +296,7 @@ Geometry.area({:circle, 3})       #=> 28.25999999999999801048
 # Geometry.area({:circle, "not_a_number"})
 #=> ** (FunctionClauseError) no function clause matching in Geometry.area/1
 
-# Devido à imutabilidade, recursão é uma grande parte do elixir
+# Devido à imutabilidade, recursão é uma grande parte do Elixir
 defmodule Recursion do
   def sum_list([head | tail], acc) do
     sum_list(tail, acc + head)
@@ -309,7 +309,7 @@ end
 
 Recursion.sum_list([1,2,3], 0) #=> 6
 
-# Módulos do elixir suportam atributos, hpa atributos embutidos e você
+# Módulos do Elixir suportam atributos, hpa atributos embutidos e você
 # pode também adicionar os seus próprios.
 defmodule MyMod do
   @moduledoc """
@@ -361,7 +361,7 @@ end
 ## ---------------------------
 
 # Elixir conta com o modelo de ator para concorrência. Tudo o que precisamos para
-# escrever programas concorrentes em elixir são três primitivos: spawning processes,
+# escrever programas concorrentes em Elixir são três primitivos: spawning processes,
 # sending messages e receiving messages.
 
 # Para iniciar um novo processo usamos a função `spawn`, a qual leva uma função
