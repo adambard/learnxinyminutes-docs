@@ -1,7 +1,7 @@
 ---
 name: CUE
 category: language
-language: cue
+language: CUE
 filename: learncue.cue
 contributors:
     - ["Daniel Cox", "https://github.com/danielpcox"]
@@ -24,7 +24,7 @@ disposition: "oblivious"
 
 Now we can unify and export to JSON:
 ```bash
-% cue export name.cue disposition.cue 
+% cue export name.cue disposition.cue
 {
     "name": "Daniel",
     "disposition": "oblivious"
