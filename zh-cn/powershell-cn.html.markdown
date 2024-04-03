@@ -13,7 +13,7 @@ PowerShell 是 Windows 平台下的脚本语言同时也是配置管理框架，
 
 与 Bash 最大的不同是你大部分操作的东西是对象而不是普通的文本。
 
-[延伸阅读](https://technet.microsoft.com/en-us/library/bb978526.aspx)
+[延伸阅读](https://docs.microsoft.com/zh-cn/powershell/scripting/overview)
 
 如果你不确定你的环境，执行如下操作：
 
@@ -263,7 +263,7 @@ Get-Command ConvertTo-*,ConvertFrom-*
 
 ### 有用的东西
 # 更新 PATH
-$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + 
+$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") +
 	";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 # 找到 Python 的 PATH
@@ -319,7 +319,7 @@ if (-not (Test-Path $Profile)) {
 
 尚未涉及
 
-* WMI: Windows 管理规范 (Get-CimInstance)  
+* WMI: Windows 管理规范 (Get-CimInstance)
 * 多任务: Start-Job -scriptBlock {...},
 * 代码签名
 * 远程 (Enter-PSSession/Exit-PSSession; Invoke-Command)

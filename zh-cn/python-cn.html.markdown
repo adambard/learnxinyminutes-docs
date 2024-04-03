@@ -552,7 +552,7 @@ next(our_iterator)  # => "three"
 # 当迭代器所有元素都取出后，会抛出 StopIteration
 next(our_iterator) # 抛出 StopIteration
 
-# 我们可以通过遍历还访问所有的值，实际上，for 内部实现了迭代
+# 我们还可以通过遍历访问所有的值，实际上，for 内部实现了迭代
 our_iterator = iter(our_iterable)
 for i in our_iterator:
     print(i)  # 依次打印 one, two, three
@@ -697,7 +697,7 @@ import math
 dir(math)
 
 # 当你的脚本文件所在的文件夹也包含了一个名为 math.py 的 Python 文件
-# 这个 math.p 文件会被代替引入，而不是引入 Python 內建模块中的 math
+# 这个 math.py 文件会被代替引入，而不是引入 Python 內建模块中的 math
 # 出现这个情况的原因是本地文件夹的引入优先级要比 Python 內建库引入优先级要高
 
 
@@ -760,7 +760,7 @@ class Human:
         del self._age
 
 # 当 Python 解释器在读取源文件的时候，就会执行文件中所有的代码
-# 对 __name__ 的检查可以保证这块代码只会在执行这个模块是住程序情况下被运行（而不是在引用时运行）
+# 对 __name__ 的检查可以保证这块代码只会在这个模块是主程序的情况下被运行（而不是在引用时运行）
 if __name__ == '__main__':
     # 
     i = Human(name="Ian")

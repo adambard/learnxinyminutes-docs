@@ -183,7 +183,7 @@ Potete inoltre inserire un altro tab (o altri quattro spazi) per indentare il vo
 
 ```md
     my_array.each do |item|
-        puts item
+      puts item
     end
 ```
 
@@ -194,12 +194,15 @@ Giovanni non sapeva neppure a cosa servisse la funzione `go_to()`!
 ```
 
 In Github Flavored Markdown, potete inoltre usare una sintassi speciale per il codice
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Hello world!"
 end
-&#x60;&#x60;&#x60;</code></pre>
+```
+````
+
 Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre Github userà l'evidenziazione della sintassi del linguaggio specificato dopo i \`\`\` iniziali
 
 ## Linea orizzontale
@@ -253,7 +256,7 @@ Ma non è comunemente usato.
 Le immagini sono inserite come i link ma con un punto esclamativo inserito prima delle parentesi quadre!
 
 ```md
-![Qeusto è il testo alternativo per l'immagine](http://imgur.com/myimage.jpg "Il titolo opzionale")
+![Questo è il testo alternativo per l'immagine](http://imgur.com/myimage.jpg "Il titolo opzionale")
 ```
 
 E la modalità a riferimento funziona esattamente come ci si aspetta
@@ -307,4 +310,4 @@ Col 1 | Col2 | Col3
 ```
 
 ---
-Per altre informazioni, leggete il post ufficiale di John Gruber sulla sintassi [qui](http://daringfireball.net/projects/markdown/syntax) e il magnifico cheatsheet di Adam Pritchard [qui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Per altre informazioni, leggete il post ufficiale di John Gruber sulla sintassi [qui](https://daringfireball.net/projects/markdown/syntax) e il magnifico cheatsheet di Adam Pritchard [qui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).

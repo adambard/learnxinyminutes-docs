@@ -2,6 +2,7 @@
 language: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
+    - ["Kiwimoe", "https://github.com/kiwimoe"]
 filename: learntypescript.ts
 ---
 
@@ -291,7 +292,6 @@ foo.baz = 'hello world'
 
 ## Further Reading
  * [TypeScript Official website] (http://www.typescriptlang.org/)
- * [TypeScript language specifications] (https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md)
- * [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
+ * [TypeScript language specifications] (https://github.com/microsoft/TypeScript/blob/main/doc/spec-ARCHIVED.md)
+ * [Learn TypeScript] (https://learntypescript.dev/)
  * [Source Code on GitHub] (https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - repository for type definitions] (http://definitelytyped.org/)

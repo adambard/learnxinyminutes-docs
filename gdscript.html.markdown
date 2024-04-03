@@ -95,7 +95,7 @@ func doing_math():
 func control_flow():
   x = 8
   y = 2 # y was originally a float,
-        # but we can change it's type to int
+        # but we can change its type to int
         # using the power of dynamic typing!
   
   if x < y:
@@ -113,6 +113,9 @@ func control_flow():
 
   for i in range(20): # GDScript's range is similar to Python's
     print(i) # so this will print numbers from 0 to 19
+
+  for i in 20: # unlike Python, you can loop over an int directly
+    print(i) # so this will also print numbers from 0 to 19
 
   for i in ["two", 3, 1.0]: # iterating over an array
     print(i)

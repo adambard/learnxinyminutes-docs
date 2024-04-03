@@ -421,7 +421,7 @@ Clojuredocs.org — сайт документации языка с пример
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
 4Clojure — отличный способ закрепить навыки программирования на clojure, решая задачи вместе с коллегами со всего мира:
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org (да, именно) неплохой перечень статей для начинающих:
 [http://clojure-doc.org/](http://clojure-doc.org/)

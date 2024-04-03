@@ -131,7 +131,7 @@ lang: zh-cn
 
 ; 然而，如果我们希望它在编译期执行，就需要创建宏
 (defmacro inline-2 [form]
-  (inline-2-helper form)))
+  (inline-2-helper form))
 
 (macroexpand '(inline-2 (1 + (3 / 2) - (1 / 2) + 1)))
 ; -> (+ (- (+ 1 (/ 3 2)) (/ 1 2)) 1)

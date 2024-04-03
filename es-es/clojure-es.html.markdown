@@ -431,7 +431,7 @@ funciones principales (pertenecientes al core):
 [http://clojuredocs.org/quickref](http://clojuredocs.org/quickref)
 
 4Clojure es una genial forma de mejorar tus habilidades con clojure/FP:
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org (sí, de verdad) tiene un buen número de artículos con los que
 iniciarse en Clojure: [http://clojure-doc.org](http://clojure-doc.org)

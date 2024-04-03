@@ -48,6 +48,7 @@ bằng cách thêm số lượng dấu thăng (#) đằng trước chuỗi cần
 ##### Đây là đầu mục <h5>
 ###### Đây là đầu mục <h6>
 ```
+
 Markdown còn cung cấp cách khác để tạo đầu mục hạng nhất h1 và hạng nhì h2.
 
 ```md
@@ -79,6 +80,7 @@ Trong cài đặt Markdown để hiển thị file của GitHub,ta còn có gạ
 ```md
 ~~Đoạn văn bản này được gạch ngang.~~
 ```
+
 ## Đoạn văn
 
 Đoạn văn bao gồm một hay nhiều dòng văn bản liên tiếp nhau được phân cách
@@ -153,6 +155,7 @@ Ta không nhất thiết phải điền số thứ thự cho chỉ mục đúng 
 1. Mục thứ hai
 1. Mục thứ ba
 ```
+
 (Sẽ hiển thị như ví dụ trước đó)
 
 Ta còn có thể sử dụng danh sách con
@@ -189,7 +192,7 @@ Ta còn có thể thêm dấu nhảy (hoặc thêm vào bốn dấu cách nữa)
 
 ```md
     my_array.each do |item|
-        puts item
+      puts item
     end
 ```
 
@@ -201,12 +204,13 @@ John didn't even know what the `go_to()` function did!
 
 Trong Markdown của GitHub, ta còn có thêm cách để hiển thị code:
 
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Hello world!"
 end
-&#x60;&#x60;&#x60;</code></pre>
+```
+````
 
 The above text doesn't require indenting, plus GitHub will use syntax
 highlighting of the language you specify after the \`\`\`
@@ -231,11 +235,13 @@ Một trong những thứ tốt nhất khi làm việc với Markdown là khả 
 ```md
 [Click me!](http://test.com/)
 ```
+
 Ta còn có thể tạo tiêu đề cho liên kết sử dụng cặp ngoặc nháy bên trong cặp ngoặc tròn
 
 ```md
 [Click me!](http://test.com/ "Link to Test.com")
 ```
+
 Đường dẫn tương đối cũng hoạt động.
 
 ```md
@@ -244,19 +250,23 @@ Ta còn có thể tạo tiêu đề cho liên kết sử dụng cặp ngoặc nh
 
 Markdown còn hỗ trợ liên kết kiểu tham chiếu.
 
-<pre><code class="highlight">&#x5b;<span class="nv">Nhấn vào đây</span>][<span class="ss">link1</span>] để xem thêm!
-&#x5b;<span class="nv">Ngoài ra nhấn vào đây</span>][<span class="ss">foobar</span>] nếu bạn muốn xem qua.
+```md
+[Nhấn vào đây][link1] để xem thêm!
+[Ngoài ra nhấn vào đây][foobar] nếu bạn muốn xem qua.
 
-&#x5b;<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Tuyệt!"</span>
-&#x5b;<span class="nv">foobar</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Tốt!"</span></code></pre>
+[link1]: http://test.com/ "Tuyệt!"
+[foobar]: http://foobar.biz/ "Tốt!"
+```
 
 Tiêu đề có thể được đóng trong dấu nháy hay ngoặc đơn, hoặc có thể được bỏ qua. Tham chiếu có thể được đặt bất kì đâu trong văn bản và ID của tham chiếu có thể là bất kì gì miễn là nó độc nhất.
 
 Ngoài ra còn có kiểu đặt tên ngầm cho phép ta sử dụng đường dẫn làm ID.
 
-<pre><code class="highlight">&#x5b;<span class="nv">This</span>][] is a link.
+```md
+[This][] is a link.
 
-&#x5b;<span class="nv">this</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
+[this]: http://thisisalink.com/
+```
 
 Nhưng nó không được sử dụng rộng rãi.
 
@@ -270,9 +280,11 @@ Hiển thị ảnh tương tự như liên kết nhưng có thêm dấu chấm t
 
 Và kiểu tham chiếu cũng hoạt động như vậy.
 
-<pre><code class="highlight">!&#x5b;<span class="nv">Đây là thuộc tính alt.</span>][<span class="ss">myimage</span>]
+```md
+![Đây là thuộc tính alt.][myimage]
 
-&#x5b;<span class="nv">myimage</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"Đây là tiêu đề"</span></code></pre>
+[myimage]: relative/urls/cool/image.jpg "Đây là tiêu đề"
+```
 
 ## Khác
 
@@ -303,6 +315,7 @@ Trong Markdown của Github, ta có thể sử dụng thẻ `<kbd>` để thay c
 Máy treo? Thử bấm tổ hợp
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 ```
+
 ### Bảng biểu
 
 Bảng biểu được hỗ trợ trên Markdown của GitHub, Jira, Trello, v.v và khá khó viết:
@@ -313,6 +326,7 @@ Bảng biểu được hỗ trợ trên Markdown của GitHub, Jira, Trello, v.v
 | Căn trái     | Căn giữa | Căn phải      |
 | blah         | blah     | blah          |
 ```
+
 Hoặc có thể sử dụng kết quả dưới đây
 
 ```md

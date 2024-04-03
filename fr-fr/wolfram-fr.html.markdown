@@ -21,7 +21,7 @@ Ce code d'exemple peut être utilisé et modifié dans ces logiciels. Cependant,
 copier-coller directement dans Mathematica peut causer des problèmes de
 formatage, car il ne contient aucune information de mise en page.
 
-```
+```mathematica
 (* Ceci est un commentaire *)
 
 (* Dans Mathematica, au lieu d'utiliser ces commentaires, vous pouvez créer des

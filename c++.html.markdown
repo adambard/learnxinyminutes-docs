@@ -1,5 +1,5 @@
 ---
-language: c++
+language: C++
 filename: learncpp.cpp
 contributors:
     - ["Steven Basart", "https://github.com/xksteven"]
@@ -158,6 +158,10 @@ namespace Second {
     {
         printf("This is Second::foo\n");
     }
+    void bar()
+    {
+    	printf("This is Second::bar\n");
+    }
 }
 
 void foo()
@@ -168,10 +172,12 @@ void foo()
 int main()
 {
     // Includes all symbols from namespace Second into the current scope. Note
-    // that simply foo() no longer works, since it is now ambiguous whether
-    // we're calling the foo in namespace Second or the top level.
+    // that while bar() works, simply using foo() no longer works, since it is
+    // now ambiguous whether we're calling the foo in namespace Second or the
+    // top level.
     using namespace Second;
 
+    bar(); // prints "This is Second::bar"
     Second::foo(); // prints "This is Second::foo"
     First::Nested::foo(); // prints "This is First::Nested::foo"
     ::foo(); // prints "This is global foo"

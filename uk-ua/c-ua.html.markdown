@@ -1,5 +1,5 @@
 ---
-language: c
+language: C
 filename: learnc-ua.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]

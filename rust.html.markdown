@@ -30,6 +30,9 @@ Rust not only fast, but also easy and efficient to code in.
 // This is a comment. Line comments look like this...
 // and extend multiple lines like this.
 
+/* Block comments
+  /* can be nested. */ */
+
 /// Documentation comments look like this and support markdown notation.
 /// # Examples
 ///
@@ -223,7 +226,7 @@ fn main() {
     type FunctionPointer = fn(u32) -> u32;
 
     let fib : FunctionPointer = fibonacci;
-    println!("Fib: {}", fib(4));
+    println!("Fib: {}", fib(4)); // 5
 
     /////////////////////////
     // 3. Pattern matching //

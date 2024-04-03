@@ -16,7 +16,7 @@ Esta es una adaptación de la introducción a QT con C++ por [Aleksey Kholovchuk
 ```python
 import sys
 from PyQt4 import QtGui
-	
+
 def window():
     # Crear el objeto de la aplicación
     app = QtGui.QApplication(sys.argv)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 Para poder hacer uso de las funciones más avanzades en **pyqt** necesitamos agregar elementos adicionales.
 Aquí mostramos cómo introducir una caja de diálogo popup, útil para permitir al usuario confirmar su decisión o para brindarnos información.
 
-```Python 
+```python
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -63,7 +63,7 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-	
+
 # Esta función debería crear una ventana de diálogo con un botón
 # que espera a recibir un click y luego sale del programa
 def showdialog():

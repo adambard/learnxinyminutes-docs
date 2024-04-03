@@ -214,7 +214,7 @@ assert(c >= a); // assert tests for internal invariants; require is used for use
 // https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
 
 
-// No random functions built in, you can get a pseduo-random number by hashing the current blockhash, or get a truely random number using something like Chainlink VRF. 
+// No random functions built in, you can get a pseduo-random number by hashing the current blockhash, or get a truly random number using something like Chainlink VRF. 
 // https://docs.chain.link/docs/get-a-random-number
 
 // Type casting
@@ -278,7 +278,7 @@ f(22); // call
 
 // Delete can be called on most types
 // (does NOT destroy value, but sets value to 0, the initial value)
-uint x = 5;
+delete x;
 
 
 // Destructuring/Tuples
@@ -388,7 +388,7 @@ block.gasLimit();
 storage['abc'] = 'def'; // maps 256 bit words to 256 bit words
 
 
-// 4. FUNCTIONS AND MORE
+// 5. FUNCTIONS AND MORE
 // A. Functions
 // Simple function
 function increment(uint x) returns (uint) {
@@ -396,13 +396,13 @@ function increment(uint x) returns (uint) {
     return x;
 }
 
-// Functions can return many arguments, and by specifying returned arguments
-// name don't need to explicitly return
+// Functions can return many arguments,
+// and by specifying returned arguments name explicit return is not needed
 function increment(uint x, uint y) returns (uint x, uint y) {
     x += 1;
     y += 1;
 }
-// Call previous functon
+// Call previous function
 uint (a,b) = increment(1,1);
 
 // 'view' (alias for 'constant')
@@ -435,7 +435,7 @@ function increment(uint x) view returns (uint x) {
 // Functions hoisted - and can assign a function to a variable
 function a() {
     var z = b;
-    b();
+    z();
 }
 
 function b() {
@@ -494,9 +494,9 @@ Coin.LogSent().watch({}, '', function(error, result) {
 // '_' (underscore) often included as last line in body, and indicates
 // function being called should be placed there
 modifier onlyAfter(uint _time) { require (now >= _time); _; }
-modifier onlyOwner { require(msg.sender == owner) _; }
+modifier onlyOwner { require(msg.sender == owner); _; }
 // commonly used with state machines
-modifier onlyIfStateA (State currState) { require(currState == State.A) _; }
+modifier onlyIfStateA (State currState) { require(currState == State.A); _; }
 
 // Append right after function declaration
 function changeOwner(newOwner)
@@ -646,7 +646,7 @@ reveal(100, "mySecret");
 // All data to start of time is stored in blockchain, so
 // anyone can observe all previous data and changes
 
-// E. Oracles and External Data
+// D. Oracles and External Data
 // Oracles are ways to interact with your smart contracts outside the blockchain. 
 // They are used to get data from the real world, send post requests, to the real world
 // or vise versa.
@@ -654,7 +654,7 @@ reveal(100, "mySecret");
 // Time-based implementations of contracts are also done through oracles, as 
 // contracts need to be directly called and can not "subscribe" to a time. 
 // Due to smart contracts being decentralized, you also want to get your data
-// in a decentralized manner, other your run into the centralized risk that 
+// in a decentralized manner, otherwise you run into the centralized risk that 
 // smart contract design matter prevents. 
 
 // To easiest way get and use pre-boxed decentralized data is with Chainlink Data Feeds
@@ -671,12 +671,12 @@ reveal(100, "mySecret");
 
 // Setting up oracle networks yourself
 
-// D. Cron Job
+// E. Cron Job
 // Contracts must be manually called to handle time-based scheduling; can create external
 // code to regularly ping, or provide incentives (ether) for others to
 //
 
-// E. Observer Pattern
+// F. Observer Pattern
 // An Observer Pattern lets you register as a subscriber and
 // register a function which is called by the oracle (note, the oracle pays
 // for this action to be run)
@@ -714,7 +714,7 @@ contract SomeOracle {
 // Now, your client contract can addSubscriber by importing SomeOracleCallback
 // and registering with Some Oracle
 
-// F. State machines
+// G. State machines
 // see example below for State enum and inState modifier
 ```
 

@@ -158,13 +158,13 @@ case orderStatus
 //- <p class="warn">Your order is pending</p>
 
 //- --INCLUDE--
-//- File path -> "includes/nav.png"
+//- File path -> "includes/nav.pug"
 h1 Company Name
 nav
   a(href="index.html") Home
   a(href="about.html") About Us
 
-//- File path -> "index.png"
+//- File path -> "index.pug"
 html
   body
     include includes/nav.pug

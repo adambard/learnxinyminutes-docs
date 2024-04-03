@@ -154,7 +154,7 @@ fn learnTypes() void
     sys.validate(dyna_array.size() == 1); 
 
     // a map that associates a number to a string. 
-    // "map(x)..." reads "map with key of type x and vaue of type..." 
+    // "map(x)..." reads "map with key of type x and value of type..." 
     var a_map map(string)i32;
 
     a_map.insert("one", 1);
