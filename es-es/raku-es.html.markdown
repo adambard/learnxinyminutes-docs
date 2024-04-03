@@ -1,5 +1,5 @@
 ---
-name: perl6
+name: Raku
 category: language
 language: Raku
 filename: learnraku-es.raku
