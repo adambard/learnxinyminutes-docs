@@ -147,7 +147,6 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 - 项目
 - 项目
 - 最后一个项目
-
 ```
 
 有序序列可由数字加上点 `.` 来实现
@@ -188,6 +187,7 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 下面这个选择框将会是选中状态
 - [x] 这个任务已经完成
 ```
+
 - [ ] 你看完了这个任务（注：此选择框是无法直接更改的，即禁用状态。）
 
 ## 代码块
@@ -204,7 +204,7 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 
 ```md
     my_array.each do |item|
-        puts item
+      puts item
     end
 ```
 
@@ -216,12 +216,13 @@ John 甚至不知道 `go_to()` 函数是干嘛的!
 
 在GitHub的 Markdown（GitHub Flavored Markdown）解析器中，你可以使用特殊的语法表示代码块
 
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Hello world!"
 end
-&#x60;&#x60;&#x60;</code></pre>
+```
+````
 
 以上代码不需要缩进，而且 GitHub 会根据\`\`\`后指定的语言来进行语法高亮显示
 
@@ -246,7 +247,6 @@ Markdown 最棒的地方就是便捷的书写链接。把链接文字放在中�
 
 ```md
 [点我点我!](http://test.com/)
-
 ```
 
 你也可以在小括号内使用引号，为链接加上一个标题（title）
@@ -345,6 +345,7 @@ Markdown同样支持引用形式的链接
 | 我是左对齐    | 居个中    | 右对齐       |
 | 注意          | 冒       | 号           |
 ```
+
 好吧，强行对齐字符是很难的。但是，至少比下面这种写法好一点——
 
 ```md
@@ -352,6 +353,7 @@ Markdown同样支持引用形式的链接
 :-- | :-: | --:
 这真的太丑了 | 药不能 | 停！！！！
 ```
+
 真的是*看着令人头晕*
 
 

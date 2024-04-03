@@ -51,7 +51,7 @@ müssen wir anfangen zusätzliche Elemente zu bauen.
 Hier zeigen wir wie man eine Dialog Popup Box einführt. 
 Diese ist nützlich, um den Benutzer eine Entscheidung zu bestätigen oder um Informationen anzuzeigen.
 
-```Python 
+```python 
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *

@@ -8,7 +8,7 @@ lang: zh-cn
 filename: learnvisualbasic-cn.vb
 ---
 
-```
+```visualbasic
 Module Module1
 
     Sub Main()

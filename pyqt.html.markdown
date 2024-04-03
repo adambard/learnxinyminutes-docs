@@ -44,7 +44,7 @@ if __name__ == '__main__':
 In order to get some of the more advanced features in **pyqt** we need to start looking at building additional elements. 
 Here we show how to introduce a dialog popup box, useful for asking the user to confirm a decision or to provide information.
 
-```Python 
+```python 
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *

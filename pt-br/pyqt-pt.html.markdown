@@ -54,7 +54,7 @@ outros elementos.
 Aqui mostraremos como criar uma janela popup, muito útil para perguntar ao
 usuário qual decisão tomar ou exibir alguma informação.
 
-```Python 
+```python 
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *

@@ -228,11 +228,13 @@ Honza neměl tušení, co dělá funkce `go_to()`!
 
 V Markdownu od GitHubu, můžete použít speciální syntaxi pro kód:
 
-<pre><code class="highlight">&#x60;&#x60;&#x60;ruby
+````md
+```ruby
 def neco
-    puts "Ahoj světe!"
+  puts "Ahoj světe!"
 end
-&#x60;&#x60;&#x60;</code></pre>
+```
+````
 
 Text výše nepotřebuje čtyřmezerové odsazení a parser navíc použije zvýraznění
 syntaxe pro zvolený jazyk.

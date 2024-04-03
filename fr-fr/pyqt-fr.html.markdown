@@ -47,7 +47,7 @@ if __name__ == '__main__':
 Pour obtenir certaines des fonctionnalités les plus avancées de **pyqt** nous devons commencer par chercher à construire des éléments supplémentaires.
 Ici nous voyons comment introduire une boîte de dialogue popup, utile pour demander une confirmation à un utilisateur ou fournir des informations.
 
-```Python 
+```python 
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *

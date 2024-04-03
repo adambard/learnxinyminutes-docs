@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
 为了运用 pyqt 中一些更高级的功能，我们需要开始学习使用其他控件。下文演示了如何弹出对话框，该对话框在用户确认操作或输入信息等情况下经常用到。
 
-```Python 
+```python 
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *

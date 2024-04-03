@@ -677,7 +677,7 @@ Powershell as a Tool:
 
 Getting Help:
 
-```Powershell
+```powershell
 # Find commands
 Get-Command about_* # alias: gcm
 Get-Command -Verb Add
@@ -694,7 +694,7 @@ Update-Help # Run as admin
 
 If you are uncertain about your environment:
 
-```Powershell
+```powershell
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Execution policies include:
@@ -708,7 +708,7 @@ help about_Execution_Policies # for more info
 $PSVersionTable
 ```
 
-```Powershell
+```powershell
 # Calling external commands, executables, 
 # and functions with the call operator.
 # Exe paths with arguments passed or containing spaces can create issues.

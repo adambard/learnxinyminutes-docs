@@ -47,7 +47,7 @@ if __name__ == '__main__':
 Per ottenere alcune delle funzionalità più avanzate in **pyqt**, dobbiamo iniziare a cercare di creare elementi aggiuntivi.
 Qui mostriamo come creare una finestra popup di dialogo, utile per chiedere all'utente di confermare una decisione o fornire informazioni
 
-```Python 
+```python 
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
