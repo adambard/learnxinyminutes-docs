@@ -14,7 +14,7 @@ Elixir je moderný funkcionálny jazyk vytvorený nad Erlang VM (virtuálnym
 strojom). Je plne kompatibilný s Erlangom, ale ponúka viac štandardnú syntax
 a množstvo funkcií.
 
-```Elixir
+```elixir
 
 # Jednoriadkový komentár začína symbolom #
 
