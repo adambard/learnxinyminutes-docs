@@ -1,5 +1,5 @@
 ---
-language: Matlab
+language: MATLAB
 filename: matlab-cn.m
 contributors:
     - ["mendozao", "http://github.com/mendozao"]

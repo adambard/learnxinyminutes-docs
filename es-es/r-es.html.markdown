@@ -16,7 +16,7 @@ LaTeX.
 
 ```r
 
-# Los comentariso inician con símbolos numéricos.
+# Los comentarios inician con símbolos numéricos.
 
 # No puedes hacer comentarios de múltiples líneas
 # pero puedes agrupar múltiples comentarios de esta manera. 

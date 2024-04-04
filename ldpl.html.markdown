@@ -3,6 +3,7 @@ language: LDPL
 filename: learnLDPL.ldpl
 contributors:
     - ["Martín del Río", "https://github.com/lartu"]
+    - ["John Paul Wohlscheid", "https://github.com/JohnBlood"]
 ---
 
 **LDPL** is a powerful, C++ transpiled, open-source programming language designed
@@ -68,7 +69,7 @@ else if myMap:"someIndex" is not equal to 45 then
 else
     display "Else!" crlf
 end if
-# Valid LDPL comparisson operators are
+# Valid LDPL comparison operators are
 # - IS EQUAL TO
 # - IS NOT EQUAL TO
 # - IS LESS THAN
@@ -123,8 +124,8 @@ get random in myNumber # get a random number between 0 and 1
 # files, are divided in sections. The sections found in sub-procedures are
 # the PARAMETERS section, the LOCAL DATA section and the PROCEDURE section.
 # All sections except the PROCEDURE section can be skipped if they aren't
-# used. If no PARAMTERS nor LOCAL DATA sections are used, the PROCEDURE
-# keyword may be omited.
+# used. If no PARAMETERS nor LOCAL DATA sections are used, the PROCEDURE
+# keyword may be omitted.
 sub myFunction
     parameters:
         a is number # LDPL is pass by reference

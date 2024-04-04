@@ -95,8 +95,9 @@ to the source code.
 
 Separate paragraphs by empty lines.
 
-You need to add a backslash after abbreviations (if not followed by a comma), because otherwise the spacing after the dot is too large:
-E.g., i.e., etc.\ are are such abbreviations.
+You need to add a tilde after abbreviations (if not followed by a comma) for a
+non-breaking space, because otherwise the spacing after the dot is too large:
+E.g., i.e., etc.~are are such abbreviations.
 
 \section{Lists}
 Lists are one of the easiest things to create in \LaTeX! I need to go shopping
@@ -140,8 +141,7 @@ about!
 Operators are essential parts of a mathematical document:
 trigonometric functions ($\sin$, $\cos$, $\tan$),
 logarithms and exponentials ($\log$, $\exp$),
-limits ($\lim$), etc.\ 
-have pre-defined LaTeX commands.
+limits ($\lim$), etc.~have pre-defined LaTeX commands.
 Let's write an equation to see how it's done:
 $\cos(2\theta) = \cos^{2}(\theta) - \sin^{2}(\theta)$
 
@@ -200,24 +200,24 @@ We can also insert Tables in the same way as figures.
 \begin{table}[H]
   \caption{Caption for the Table.}
   % the {} arguments below describe how each row of the table is drawn.
-  % The basic is simple: one letter for each column, to control alignment:
+  % The basics are simple: one letter for each column, to control alignment:
   % basic options are: c, l, r and p for centered, left, right and paragraph
-  % optionnally, you can add a | for a vertical line
+  % optionally, you can add a | for a vertical line
   % See https://en.wikibooks.org/wiki/LaTeX/Tables for more details
   \begin{tabular}{c|cc}  % here it means "centered | vertical line, centered centered"
-    Number &  Last Name & First Name \\ % Column rows are separated by &
+    Number &  First Name & Last Name \\ % Column rows are separated by &
     \hline % a horizontal line
     1 & Biggus & Dickus \\
     2 & Monty & Python
   \end{tabular}
   % it will approximately be displayed like this
-  % Number | Last Name     First Name
+  % Number | First Name     Last Name
   % -------|---------------------------  % because of \hline
   %   1    |   Biggus        Dickus
   %   2    |   Monty         Python
 \end{table}
 
-\section{Getting \LaTeX{} to not compile something (i.e.\ Source Code)}
+\section{Getting \LaTeX{} to not compile something (i.e.~Source Code)}
 Let's say we want to include some code into our \LaTeX{} document,
 we would then need \LaTeX{} to not try and interpret that text and
 instead just print it to the document. We do this with a verbatim
@@ -236,7 +236,7 @@ environment.
 
 By now you're probably wondering how to compile this fabulous document
 and look at the glorious glory that is a \LaTeX{} pdf.
-(yes, this document actually does compile).
+(Yes, this document actually does compile).
 
 Getting to the final document using \LaTeX{} consists of the following
 steps:
@@ -274,13 +274,13 @@ There exists two main types of links: visible URL \\
 % You can not add extra-spaces or special symbols into shadowing text since it
 % will cause mistakes during the compilation
 
-This package also produces list of thumbnails in the output pdf document and
+This package also produces list of thumbnails in the output PDF document and
 active links in the table of contents.
 
 \section{Writing in ASCII or other encodings}
 
 By default, historically LaTeX accepts inputs which are pure ASCII (128),
-not even extened ASCII, meaning without accents (à, è etc.) and non-Latin symbols.
+but not extended ASCII, meaning without accents (à, è etc.) and non-Latin symbols.
 
 It is easy to insert accents and basic Latin symbols, with backslash shortcuts
 Like \,c, \'e, \`A, \ae and \oe etc.  % for ç, é, À, etc
@@ -295,8 +295,8 @@ The selected font has to support the glyphs used for your document, you have to 
     \usepackage[T1]{fontenc}
 \end{verbatim}
 
-Not that there also exists LuaTeX and XeLaTeX that were designed to have builtin
-support for UTF-8 and case ease your life if you don't write in a latin alphabet.
+Since LuaTeX and XeLaTeX were designed with built-in support for UTF-8, making
+life easier for writing in non-Latin alphabets.
 
 \section{End}
 
@@ -317,6 +317,8 @@ That's all for now!
 
 ## More on LaTeX
 
-* The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
+* The amazing LaTeX Wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
 * An actual tutorial: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)
 * A quick guide for learning LaTeX: [Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+* An interactive platform to learn LaTeX (installationfree) [learnlatex.org/](https://www.learnlatex.org/)
+* Stack Exchange's question and answer site about TeX, LaTeX, ConTeXt, etc. [tex.stackexchange.com](https://tex.stackexchange.com/)

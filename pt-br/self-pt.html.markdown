@@ -117,6 +117,7 @@ Múltiplas expressões são separadas por ponto final. ^ retorna imediatamente.
 ```
 
 Blocos são realizados (completados) ao enviá-los a mensagem 'value' e herdando (imcumbir a) seus contextos:
+
 ```
 "retorna 0"
 [|x|

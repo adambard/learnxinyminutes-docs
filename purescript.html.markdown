@@ -1,5 +1,5 @@
 ---
-language: purescript
+language: PureScript
 filename: purescript.purs
 contributors:
     - ["Fredrik Dyrkell", "http://www.lexicallyscoped.com"]
@@ -59,9 +59,9 @@ compare 3 2 -- GT
 true && (9 >= 19 || 1 < 2) -- true
 
 -- Strings
-"Hellow" :: String -- "Hellow"
+"Hello" :: String -- "Hello"
 -- Multiline string without newlines, to run in PSCi use "paste" mode.
-"Hellow\
+"Hello\
 \orld" -- "Helloworld"
 -- Multiline string with newlines
 """Hello

@@ -117,16 +117,16 @@ some-var ; => 5
 ;; let* is like let, but allows you to use previous bindings in creating later bindings
 (let* ([x 1]
        [y (+ x 1)])
-       (* x y))
+  (* x y))
 
 ;; finally, letrec allows you to define recursive and mutually recursive functions
 (letrec ([is-even? (lambda (n)
-                       (or (zero? n)
-                           (is-odd? (sub1 n))))]
-           [is-odd? (lambda (n)
-                      (and (not (zero? n))
-                           (is-even? (sub1 n))))])
-    (is-odd? 11))
+                     (or (zero? n)
+                         (is-odd? (sub1 n))))]
+         [is-odd? (lambda (n)
+                    (and (not (zero? n))
+                         (is-even? (sub1 n))))])
+  (is-odd? 11))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 3. Structs and Collections
@@ -413,7 +413,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (loop 5) ; => i=5, i=6, ...
 
 ;; Similarly, with a named let
-(let loop ((i 0))
+(let loop ([i 0])
   (when (< i 10)
     (printf "i=~a\n" i)
     (loop (add1 i)))) ; => i=0, i=1, ...
@@ -441,17 +441,19 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 (for ([i (in-set (set 'x 'y 'z))])
   (displayln i))
 
-(for ([(k v) (in-hash (hash 'a 1 'b 2 'c 3 ))])
+(for ([(k v) (in-hash (hash 'a 1 'b 2 'c 3))])
   (printf "key:~a value:~a\n" k v))
 
 ;;; More Complex Iterations
 
 ;; Parallel scan of multiple sequences (stops on shortest)
-(for ([i 10] [j '(x y z)]) (printf "~a:~a\n" i j))
+(for ([i 10] [j '(x y z)]) 
+  (printf "~a:~a\n" i j))
 ; => 0:x 1:y 2:z
 
 ;; Nested loops
-(for* ([i 2] [j '(x y z)]) (printf "~a:~a\n" i j))
+(for* ([i 2] [j '(x y z)]) 
+  (printf "~a:~a\n" i j))
 ; => 0:x, 0:y, 0:z, 1:x, 1:y, 1:z
 
 ;; Conditions
@@ -663,8 +665,7 @@ vec ; => #(1 2 3 4)
 
   (define amount 0)
   (define (deposit a) (set! amount (+ amount a)))
-  (define (balance) amount)
-  )
+  (define (balance) amount))
 
 (require 'bank-account)
 (deposit 5)

@@ -254,7 +254,7 @@ received(crypto(Type, _Wallet, Amount)) = S :-  % _Wallet is named throwaway
 
 * [Mercury Tutorial](https://mercurylang.org/documentation/papers/book.pdf) (pdf link) - a more traditional tutorial with a more relaxed pace
 * [Mercury Crash Course](https://mercury-in.space/crash.html) - a dense example-driven tutorial with Q&A format
-* [Github Wiki Tutorial](https://github.com/Mercury-Language/mercury/wiki/Tutorial)
+* [GitHub Wiki Tutorial](https://github.com/Mercury-Language/mercury/wiki/Tutorial)
 * [Getting Started with Mercury](https://bluishcoder.co.nz/2019/06/23/getting-started-with-mercury.html) - installation and your first steps
   
 ### Documentation

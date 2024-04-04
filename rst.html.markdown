@@ -8,7 +8,7 @@ filename: restructuredtext.rst
 
 RST, Restructured Text, is a file format created by the Python community to write documentation. It is part of [Docutils](https://docutils.sourceforge.io/rst.html).
 
-RST is a markdown language like HTML but is much more lightweight and easier to read.
+RST is a markup language like HTML but is much more lightweight and easier to read.
 
 
 ## Installation
@@ -33,7 +33,7 @@ $ pip install docutils
 A simple example of the file syntax:
 
 ```
-.. Lines starting with two dots are special commands. But if no command can be found, the line is considered as a comment
+.. Lines starting with two dots are special commands. But if no command can be found, the line is considered as a comment.
 
 =========================================================
 Main titles are written using equals signs over and under
@@ -80,15 +80,15 @@ France      Paris
 Japan       Tokyo
 =========== ========
 
-More complex tables can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this :)
+More complex tables can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this. :)
 
 There are multiple ways to make links:
 
-- By adding an underscore after a word : Github_ and by adding the target URL after the text (this way has the advantage of not inserting unnecessary URLs in the visible text).
-- By typing a full comprehensible URL : https://github.com/ (will be automatically converted to a link)
-- By making a more Markdown-like link: `Github <https://github.com/>`_ .
+- By adding an underscore after a word : GitHub_ and by adding the target URL after the text (this way has the advantage of not inserting unnecessary URLs in the visible text).
+- By typing a full comprehensible URL : https://github.com/ (will be automatically converted to a link).
+- By making a more Markdown-like link: `GitHub <https://github.com/>`_ .
 
-.. _Github: https://github.com/
+.. _GitHub: https://github.com/
 
 ```
 

@@ -334,7 +334,7 @@ repeat {
 } while i < 5
 
 // The continue statement continues executing a loop at the next iteration
-// The break statement ends a swift or loop immediately
+// The break statement ends a loop immediately
 
 // MARK: - Functions
 
@@ -654,7 +654,7 @@ class Rect: Shape {
     // but still want to run code before and after getting or setting
     // a property, you can use `willSet` and `didSet`
     var identifier: String = "defaultID" {
-        // the `willSet` arg will be the variable name for the new value
+        // the `someIdentifier` arg will be the variable name for the new value
         willSet(someIdentifier) {
             print(someIdentifier)
         }
@@ -679,6 +679,9 @@ class Rect: Shape {
 
 // A simple class `Square` extends `Rect`
 class Square: Rect {
+    // Use a convenience initializer to make calling a designated initializer faster and more "convenient".
+    // Convenience initializers call other initializers in the same class and pass default values to one or more of their parameters.
+    // Convenience initializers can have parameters as well, which are useful to customize the called initializer parameters or choose a proper initializer based on the value passed.
     convenience init() {
         self.init(sideLength: 5)
     }

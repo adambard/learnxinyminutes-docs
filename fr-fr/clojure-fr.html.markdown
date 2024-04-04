@@ -427,7 +427,7 @@ plupart des fonctions principales :
 
 4Clojure est une super manière d'augmenter vos compétences en Clojure et
 en programmation fonctionnelle :
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org a pas mal d'article pour débuter :
 [http://clojure-doc.org/](http://clojure-doc.org/)

@@ -619,4 +619,4 @@ Sesuatu.new.qux # => 'qux'
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Edisi lama yang [gratis](http://ruby-doc.com/docs/ProgrammingRuby/) tersedia online.
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - Panduan penulisan kode Ruby oleh komunitas.
-- [Try Ruby](http://tryruby.org) - Pelajari dasar bahasa pemrograman Ruby, secara interaktif di browser.
+- [Try Ruby](https://try.ruby-lang.org/) - Pelajari dasar bahasa pemrograman Ruby, secara interaktif di browser.

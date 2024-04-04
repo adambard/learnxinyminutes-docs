@@ -14,7 +14,7 @@ organizations.
       *COBOL has significant differences between legacy (COBOL-85)
       *and modern (COBOL-2002 and COBOL-2014) versions.
       *Legacy versions require columns 1-6 to be blank (they are used
-      *to store the index number of the punched card..)
+      *to store the index number of the punched card).
       *A '*' in column 7 means a comment.
       *In legacy COBOL, a comment can only be a full line.
       *Modern COBOL doesn't require fixed columns and uses *> for
@@ -106,7 +106,7 @@ organizations.
       PROCEDURE DIVISION.
          FIRST-PARA.
              DISPLAY 'THIS IS IN FIRST-PARA'.
-         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip second-para and perfrom 3rd & 4th
+         PERFORM THIRD-PARA THRU FOURTH-PARA. *>skip second-para and perform 3rd & 4th
          *> then after performing third and fourth,
          *> return here and continue the program until STOP RUN.
    
@@ -132,7 +132,7 @@ organizations.
       
       *Now it is time to learn about two related COBOL verbs: string and unstring.
 
-      *The string verb is used to concatenate, or put together, two or more stings.
+      *The string verb is used to concatenate, or put together, two or more strings.
       *Unstring is used, not surprisingly, to separate a         
       *string into two or more smaller strings. 
       *It is important that you remember to use ‘delimited by’ when you

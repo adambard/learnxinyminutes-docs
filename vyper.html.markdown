@@ -181,7 +181,7 @@ def _changeTaskStatus( \
         _status: uint256, \
     ):
     # backslashes (\) allow for multi-line code
-    # Natspec comments are particularly helpful for documentation and readibility
+    # Natspec comments are particularly helpful for documentation and readability
     # Natspec can be included using familiar Pythonic docstring syntax
     """
     @notice
@@ -429,16 +429,16 @@ struct Struct:
     owner: address
     _balance: uint256 # balance is a reserved keyword, is a member for addresses
 
-exampleStuct: Struct
+exampleStruct: Struct
 
 @public
 def foo() -> uint256:
-    self.exampleStuct = Struct({owner: msg.sender, _balance: 5})
-    self.exampleStuct._balance = 10
-    self.exampleStuct._balance = 5 # set to new value
-    clear(self.exampleStuct._balance)
-    clear(self.exampleStuct)
-    return self.exampleStuct._balance
+    self.exampleStruct = Struct({owner: msg.sender, _balance: 5})
+    self.exampleStruct._balance = 10
+    self.exampleStruct._balance = 5 # set to new value
+    clear(self.exampleStruct._balance)
+    clear(self.exampleStruct)
+    return self.exampleStruct._balance
 
 
 # Data locations: Memory vs. storage vs. calldata - all complex types (arrays,
@@ -510,7 +510,7 @@ def increment(x: uint256, y: uint256) -> (uint256, uint256):
     y += 1
     return  (x, y)
 
-# Call previous functon
+# Call previous function
 @public
 @constant
 def willCall() -> (uint256, uint256):
@@ -679,7 +679,7 @@ sha3(concat("ab", "cd")) # returns bytes32
 
 # Step 1. Commit
 # Place a commitment by sending output of `sha3()`
-sha3("a secret"); # btyes32 commit
+sha3("a secret"); # bytes32 commit
 sha3(concat("secret", "other secret", "salt")); # commit multiple things
 # The `sha3()` calculation should occur off-chain, only the bytes32
 #   output should be inputted into some `commit()` function

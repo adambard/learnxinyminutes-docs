@@ -171,6 +171,7 @@ $ git init --help
 Ne plus suivre certains fichiers et dossiers de Git.
 Habituellement fait pour les fichiers privés et temporaires qui seraient,
 autrement, partagés dans le dépôt.
+
 ```bash
 $ echo "temp/" >> .gitignore
 $ echo "cle_privee" >> .gitignore
@@ -466,6 +467,7 @@ Vous pouvez maintenant pull !
 ```bash
 git pull
 ```
+
 `...changes apply...`
 
 Vérifiez maintenant que tout est OK
@@ -573,8 +575,6 @@ $ git rm /chemin/vers/le/fichier/HelloWorld.c
 * [Atlassian Git - Tutoriaux et Workflows](https://www.atlassian.com/git/)
 
 * [SalesForce Cheat Sheet (EN)](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
-
-* [GitGuys (EN)](http://www.gitguys.com/)
 
 * [Git - the simple guide (EN)](http://rogerdudler.github.io/git-guide/index.html)
 

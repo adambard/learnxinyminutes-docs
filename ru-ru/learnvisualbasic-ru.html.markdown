@@ -8,7 +8,7 @@ filename: learnvisualbasic-ru.vb
 lang: ru-ru
 ---
 
-```vbnet
+```visualbasic
 Module Module1
 
     Sub Main()

@@ -39,7 +39,7 @@ Go comes with a good standard library and a sizeable community.
 // +build prod, dev, test
 
 // A package clause starts every source file.
-// Main is a special name declaring an executable rather than a library.
+// main is a special name declaring an executable rather than a library.
 package main
 
 // Import declaration declares library packages referenced in this file.
@@ -95,7 +95,7 @@ can include line breaks.` // Same string type.
 	// Non-ASCII literal. Go source is UTF-8.
 	g := 'Σ' // rune type, an alias for int32, holds a unicode code point.
 
-	f := 3.14195 // float64, an IEEE-754 64-bit floating point number.
+	f := 3.14159 // float64, an IEEE-754 64-bit floating point number.
 	c := 3 + 4i  // complex128, represented internally with two float64's.
 
 	// var syntax with initializers.
@@ -130,7 +130,7 @@ can include line breaks.` // Same string type.
 	// Because they are dynamic, slices can be appended to on-demand.
 	// To append elements to a slice, the built-in append() function is used.
 	// First argument is a slice to which we are appending. Commonly,
-	// the array variable is updated in place, as in example below.
+	// the slice variable is updated in place, as in example below.
 	s := []int{1, 2, 3}		// Result is a slice of length 3.
 	s = append(s, 4, 5, 6)	// Added 3 elements. Slice now has length of 6.
 	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
@@ -179,7 +179,7 @@ func learnNamedReturns(x, y int) (z int) {
 
 // Go is fully garbage collected. It has pointers but no pointer arithmetic.
 // You can make a mistake with a nil pointer, but not by incrementing a pointer.
-// Unlike in C/Cpp taking and returning an address of a local varible is also safe. 
+// Unlike in C/Cpp taking and returning an address of a local variable is also safe. 
 func learnMemory() (p, q *int) {
 	// Named return values p and q have type pointer to int.
 	p = new(int) // Built-in function new allocates memory.
@@ -190,6 +190,7 @@ func learnMemory() (p, q *int) {
 	return &s[3], &r     // & takes the address of an object.
 }
 
+// Use the aliased math library (see imports, above) 
 func expensiveComputation() float64 {
 	return m.Exp(10)
 }
@@ -356,7 +357,7 @@ func learnInterfaces() {
 // Functions can have variadic parameters.
 func learnVariadicParams(myStrings ...interface{}) {
 	// Iterate each value of the variadic.
-	// The underbar here is ignoring the index argument of the array.
+	// The underscore here is ignoring the index argument of the array.
 	for _, param := range myStrings {
 		fmt.Println("param:", param)
 	}
@@ -455,27 +456,28 @@ func requestServer() {
 
 ## Further Reading
 
-The root of all things Go is the [official Go web site](http://golang.org/).
+The root of all things Go is the [official Go web site](https://go.dev/).
 There you can follow the tutorial, play interactively, and read lots.
-Aside from a tour, [the docs](https://golang.org/doc/) contain information on
+Aside from a tour, [the docs](https://go.dev/doc/) contain information on
 how to write clean and effective Go code, package and command docs, and release history.
 
-The [Go language specification](https://golang.org/ref/spec) itself is highly recommended. It's easy to read
+The [Go language specification](https://go.dev/ref/spec) itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
 
-You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
+You can play around with the code on [Go playground](https://go.dev/play/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://go.dev/play/](https://go.dev/play/) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
 
 On the reading list for students of Go is the [source code to the standard
-library](http://golang.org/src/pkg/). Comprehensively documented, it
+library](https://go.dev/src/). Comprehensively documented, it
 demonstrates the best of readable and understandable Go, Go style, and Go
 idioms. Or you can click on a function name in [the
-documentation](http://golang.org/pkg/) and the source code comes up!
+documentation](https://go.dev/pkg/) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
 
 There are many excellent conference talks and video tutorials on Go available on YouTube, and here are three playlists of the very best, tailored for beginners, intermediate, and advanced Gophers respectively:
-* [Golang University 101](https://www.youtube.com/playlist?list=PLEcwzBXTPUE9V1o8mZdC9tNnRZaTgI-1P) introduces fundamental Go concepts and shows you how to use the Go tools to create and manage Go code
-* [Golang University 201](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs) steps it up a notch, explaining important techniques like testing, web services, and APIs
-* [Golang University 301](https://www.youtube.com/watch?v=YHRO5WQGh0k&list=PLEcwzBXTPUE8KvXRFmmfPEUmKoy9LfmAf) dives into more advanced topics like the Go scheduler, implementation of maps and channels, and optimisation techniques
+
+- [Golang University 101](https://www.youtube.com/playlist?list=PLEcwzBXTPUE9V1o8mZdC9tNnRZaTgI-1P) introduces fundamental Go concepts and shows you how to use the Go tools to create and manage Go code
+- [Golang University 201](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs) steps it up a notch, explaining important techniques like testing, web services, and APIs
+- [Golang University 301](https://www.youtube.com/playlist?list=PLEcwzBXTPUE8KvXRFmmfPEUmKoy9LfmAf) dives into more advanced topics like the Go scheduler, implementation of maps and channels, and optimisation techniques
 
 Go Mobile adds support for mobile platforms (Android and iOS). You can write all-Go native mobile apps or write a library that contains bindings from a Go package, which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.

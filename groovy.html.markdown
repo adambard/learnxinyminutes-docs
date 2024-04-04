@@ -55,6 +55,9 @@ println x
 //Creating an empty list
 def technologies = []
 
+// or create a list with data
+technologies = ["Kotlin", "Swift"]
+
 /*** Adding a elements to the list ***/
 
 // As with Java
@@ -193,7 +196,7 @@ def say(msg = 'Hello', name = 'world') {
 assert 'Hello world!' == say()
 // Right most parameter with default value is eliminated first.
 assert 'Hi world!' == say('Hi')
-assert 'learn groovy' == say('learn', 'groovy')
+assert 'learn groovy!' == say('learn', 'groovy')
 
 /*
   Logical Branching and Looping

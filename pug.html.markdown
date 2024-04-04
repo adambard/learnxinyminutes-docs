@@ -158,13 +158,13 @@ case orderStatus
 //- <p class="warn">Your order is pending</p>
 
 //- --INCLUDE--
-//- File path -> "includes/nav.png"
+//- File path -> "includes/nav.pug"
 h1 Company Name
 nav
   a(href="index.html") Home
   a(href="about.html") About Us
 
-//- File path -> "index.png"
+//- File path -> "index.pug"
 html
   body
     include includes/nav.pug
@@ -183,9 +183,9 @@ style
   include styles/theme.css
 
 //- ---MIXIN---
-mixin basic()
+mixin basic
   div Hello
-+basic("Bob")
++basic
 //- <div>Hello</div>
 
 mixin comment(name, comment)
@@ -193,7 +193,11 @@ mixin comment(name, comment)
     span.comment-name= name
     div.comment-text= comment
 +comment("Bob", "This is Awesome")
-//- <div>Hello</div>
+//- 
+  <div>
+    <span class="comment-name">Bob</span>
+    <div class="comment-text">This is Awesome</div>
+  </div>
 
 ```
 
@@ -201,4 +205,4 @@ mixin comment(name, comment)
 ### Additional Resources
 - [The Site](https://pugjs.org/)
 - [The Docs](https://pugjs.org/api/getting-started.html)
-- [Github Repo](https://github.com/pugjs/pug)
+- [GitHub Repo](https://github.com/pugjs/pug)

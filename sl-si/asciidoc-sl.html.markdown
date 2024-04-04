@@ -6,7 +6,7 @@ contributors:
 translators:
     - ["Filip Štamcar", "https://github.com/filips123"]
 lang: sl-si
-filename: asciidoc-sl.md
+filename: asciidoc-sl.adoc
 ---
 
 AsciiDoc je označevalni jezik, ki je podoben Markdownu in ga je mogoče uporabiti za vse od knjig do spletnih dnevnikov. Jezik, ki ga je leta 2002 ustvaril Stuart Rackham, je preprost, vendar omogoča veliko prilagoditev.

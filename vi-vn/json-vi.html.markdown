@@ -37,7 +37,7 @@ kiểu dữ liệu cũng như quy chuẩn cú pháp chặt chẽ sử dụng DTD
 
   "các khóa": "phải luôn được đặt trong dấu ngoặc kép",
   "số": 0,
-  "chuỗi kí tự": "Xin chàø. Tất cả kí tự unicode đều được chấp nhận, sử dụng với dạng \"kí tự\"."
+  "chuỗi kí tự": "Xin chàø. Tất cả kí tự unicode đều được chấp nhận, sử dụng với dạng \"kí tự\".",
   "có đúng không?": true,
   "không có gì": null,
 

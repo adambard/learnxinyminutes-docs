@@ -7,7 +7,7 @@ translators:
     - ["Abdala Cerqueira", "http://abda.la"]
     - ["Raquel Diniz", "http://twitter.com/raquelrdiniz"]
 lang: pt-br
-filename: php-pt.html.markdown
+filename: learnphp-pt.php
 ---
 
 Este documento descreve PHP 5+.

@@ -56,6 +56,7 @@ wie `largest_sequences_so_far` und dessen Index würde eine Menge Zeit sparen.
 
 Ein ähnliches Konzept könnte auch bei der Suche nach dem längsten Weg
 in gerichteten azyklischen Graphen angewandt werden.
+
 ```python
 for i=0 to n-1
     LS[i]=1

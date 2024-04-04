@@ -11,7 +11,7 @@ contributors:
 
 JSON is an extremely simple data-interchange format. As [json.org](https://json.org) says, it is easy for humans to read and write and for machines to parse and generate.
 
-A piece of JSON must represent either:
+A piece of JSON can be any value of the types listed later, but in practice almost always represents either:
 
 * A collection of name/value pairs (`{ }`). In various languages, this is realized as an object, record, struct, dictionary, hash table, keyed list, or associative array.
 * An ordered list of values (`[ ]`). In various languages, this is realized as an array, vector, list, or sequence.

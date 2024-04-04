@@ -410,10 +410,8 @@ $ git rm /directorio/del/archivo/FooBar.c
 
 * [SalesForce Chuleta](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
-* [GitGuys](http://www.gitguys.com/)
-
 * [Git - La guía simple](http://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
 
-* [Una introducción a Git y Github para principiantes (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Una introducción a Git y GitHub para principiantes (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)

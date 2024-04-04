@@ -54,8 +54,8 @@ __Dan juga teks ini.__
 **_Dan juga ini!_**
 *__Dan ini!__*
 
-<!-- Di markdown ala Github, yang digunakan untuk me-render berkas markdown pada
-Github, kita juga punya coretan: -->
+<!-- Di markdown ala GitHub, yang digunakan untuk me-render berkas markdown pada
+GitHub, kita juga punya coretan: -->
 
 ~~Teks ini dirender dengan coretan.~~
 
@@ -155,7 +155,7 @@ di dalam kode Anda -->
 
 John bahkan tidak tahu apa fungsi dari `go_to()` !
 
-<!-- Di Markdown ala Github, Anda dapat menggunakan syntax spesial untuk kode -->
+<!-- Di Markdown ala GitHub, Anda dapat menggunakan syntax spesial untuk kode -->
 
 \`\`\`ruby <!-- kecuali hapus backlash tersebut ketika melakukannya, hanya ```ruby ! -->
 def foobar
@@ -163,7 +163,7 @@ def foobar
 end
 \`\`\` <!-- Disini juga, tidak ada backslashes, hanya ``` -->
 
-<!-- Teks di atas tidak membutuhkan indentasi, plus Github akan menggunakan syntax
+<!-- Teks di atas tidak membutuhkan indentasi, plus GitHub akan menggunakan syntax
 highlighting dari bahasa yang digunakan setelah ``` -->
 
 <!-- Horizontal rule (<hr />) -->
@@ -236,14 +236,14 @@ Saya ingin mengetik *teks ini dikelilingi tanda bintang* tapi saya tidak mau tek
 miring, jadi saya melakukan: \*teks ini dikelilingi tanda bintang\*.
 
 <!-- Tombol keyboard -->
-<!-- Pada Markdown ala Github, Anda dapat menggunakan tag <kbd> untuk merepresentasikan tombol
+<!-- Pada Markdown ala GitHub, Anda dapat menggunakan tag <kbd> untuk merepresentasikan tombol
 keyboard -->
 
 Komputer Anda hang? Coba kirim sebuah
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 
 <!-- Tabel -->
-<!-- Tabel hanya tersedia pada Markdown ala Github dan sedikit merepotkan, namun jika Anda
+<!-- Tabel hanya tersedia pada Markdown ala GitHub dan sedikit merepotkan, namun jika Anda
 sangat menginginkannya: -->
 
 | Kol1         | Kol2     | Kol3          |

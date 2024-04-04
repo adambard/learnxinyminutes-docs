@@ -411,5 +411,3 @@ $ git rm /pather/to/the/file/HelloWorld.c
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
-
-* [GitGuys](http://www.gitguys.com/)

@@ -4,7 +4,9 @@ tool: make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
-filename: Makefile
+translators:
+    - ["Rogério Gomes Rio", "https://github.com/rogerlista"]
+filename: Makefile-pt
 
 lang: pt-br
 ---

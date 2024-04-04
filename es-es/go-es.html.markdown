@@ -88,7 +88,7 @@ saltos de línea.` // mismo tipo cadena
 
 	// Literal no ASCII. Los ficheros fuente de Go son UTF-8.
 	g := 'Σ' // Tipo rune, un alias de int32, alberga un carácter unicode.
-	f := 3.14195 // float64, el estándar IEEE-754 de coma flotante 64-bit.
+	f := 3.14159 // float64, el estándar IEEE-754 de coma flotante 64-bit.
 	c := 3 + 4i  // complex128, representado internamente por dos float64.
 	// Sintaxis var con iniciadores.
 	var u uint = 7 // Sin signo, pero la implementación depende del tamaño
@@ -425,7 +425,7 @@ func consultaAlServidor() {
 ## Más información
 
 La raíz de todas las cosas sobre Go es el
-[sitio web oficial de Go](http://golang.org/).
+[sitio web oficial de Go](https://go.dev/).
 Allí puedes seguir el tutorial, jugar interactivamente y leer mucho más.
 
 La definición del lenguaje es altamente recomendada.  Es fácil de leer y
@@ -433,17 +433,17 @@ sorprendentemente corta (como la definición del lenguaje Go en estos
 días).
 
 Puedes jugar con el código en el
-[parque de diversiones Go](https://play.golang.org/p/ncRC2Zevag).  ¡Trata
+[parque de diversiones Go](https://go.dev/play/p/ncRC2Zevag).  ¡Trata
 de cambiarlo y ejecutarlo desde tu navegador!  Ten en cuenta que puedes
-utilizar [https://play.golang.org]( https://play.golang.org) como un
+utilizar [https://go.dev/play/]( https://go.dev/play/) como un
 [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) para probar
 cosas y el código en el navegador, sin ni siquiera instalar Go.
 
 En la lista de lecturas para estudiantes de Go está el
-[código fuente de la biblioteca estándar](http://golang.org/src/pkg/). 
+[código fuente de la biblioteca estándar](https://go.dev/src/). 
 Ampliamente documentado, que demuestra lo mejor del legible y comprensible
 Go, con su característico estilo y modismos.  ¡O puedes hacer clic en un
-nombre de función en [la documentación](http://golang.org/pkg/) y
+nombre de función en [la documentación](https://go.dev/pkg/) y
 aparecerá el código fuente!
 
 Otro gran recurso para aprender Go está en

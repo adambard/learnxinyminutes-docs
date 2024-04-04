@@ -16,7 +16,7 @@ dan kompatibel dengan semua *runtime* JavaScript.
 
 Lihat juga [website CoffeeScript](http://coffeescript.org/) yang memiliki tutorial lengkap tentang CoffeeScript.
 
-```CoffeeScript
+```coffeescript
 # CoffeeScript adalah bahasa hipster.
 # Mengikuti tren bahasa modern lainnya.
 # Sehingga, seperti Ruby dan Python, untuk komentar digunakan tanda pagar.

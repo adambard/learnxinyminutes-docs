@@ -12,7 +12,7 @@ It is used by circuit designers to simulate circuits and logic prior to wiring a
 HDL allows circuit designers to simulate circuits at a high level without being connected to specific components.
 
 ## Basic building blocks & introduction to the language---
-This programming language is built by simulating hardware chips and wiring. Normal programming functions are replaced with specialized chips that are added to the current wiring desing. Every base chip must be written as it's own file and imported to be used in the current chip, though they may be reused as often as desired.
+This programming language is built by simulating hardware chips and wiring. Normal programming functions are replaced with specialized chips that are added to the current wiring design. Every base chip must be written as it's own file and imported to be used in the current chip, though they may be reused as often as desired.
 
 ```verilog
 // Single line comments start with two forward slashes.
@@ -79,7 +79,7 @@ foo(in=a[0..7], out=c); // C is now a 2 bit internal bus
 
 
 // Note that internally defined busses cannot be subbussed!
-// To access these elements, output or input them seperately:
+// To access these elements, output or input them separately:
 foo(in[0]=false, in[1..7]=a[0..6], out[0]=out1, out[1]=out2);
 // out1 and out2 can then be passed into other circuits within the design.
 
@@ -123,7 +123,7 @@ CHIP And {
     PARTS:
     // Insert I and K into the nand gate and store the output in an internal
     // wire called notOut.
-    Nand(a=i,b=b,out=notOut);
+    Nand(a=i,b=k,out=notOut);
 
     // Use the not gate we constructed to invert notOut and send to the AND
     // output.
