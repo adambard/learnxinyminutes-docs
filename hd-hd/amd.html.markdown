@@ -12,6 +12,7 @@ lang: hd
 जावास्क्रिप्ट मॉड्यूल ऐसे मॉड्यूल और इसकी अतुल्यकालिक निर्भरता से भरा हुआ है। यह ब्राउज़र पर्यावरण जहां के लिए विशेष रूप से अच्छी तरह से अनुकूल है, और प्रदर्शन , प्रयोज्य, डीबगिंग, और क्रॉस-डोमेन जैसे मॉड्यूल्स को जल्दी सिंक्रनाइज़ लोडिंग करता hai।
 
 ### मूल अवधारणा
+
 ```javascript
 // बुनियादी एएमडी एपीआई दो तरीकों लेकिन कुछ भी नहीं होते : ` define` और` require`
 // और सभी मॉड्यूल परिभाषा और खपत के बारे में है :
@@ -79,6 +80,7 @@ function require(deps, callback){
 ### Require.js के साथ वास्तविक दुनिया के उपयोग
 
 परिचयात्मक उदाहरण के विपरीत, ` require.js` (सबसे लोकप्रिय एएमडी पुस्तकालय ) वास्तव में लागू करता है ** ** Amd ** में  *A * **, आप XHR के माध्यम से  मॉड्यूल और उनकी निर्भरता लोड करने के लिए सक्षम करने के लिए :
+
 ```javascript
 /* file: app/main.js */
 require(['modules/someClass'], function(SomeClass){
@@ -113,6 +115,7 @@ define(['daos/things', 'modules/someHelpers'], function(thingsDao, helpers){
   return SomeClass;
 });
 ```
+
 अपने ` main.js` में डिफ़ॉल्ट पथ मानचित्रण व्यवहार का उपयोग ` requirejs.config ( configObj ) ` में परिवर्तन करने के लिए:
 
 ```javascript
@@ -131,6 +134,7 @@ require(['jquery', 'coolLibFromBower', 'modules/someHelpers'], function($, coolL
   coolLib.doFancyStuffWith(helpers.transform($('#foo')));
 });
 ```
+
 ` require.js` आधारित क्षुधा आमतौर पर एक डाटा विशेषता के रूप में ` require.js` स्क्रिप्ट टैग को पारित कर दिया है कि एक एकल प्रवेश बिंदु (` main.js` ) होगा। यह स्वचालित रूप से भरी हुई है और pageload पर क्रियान्वित किया जाएगा :
 
 ```html
@@ -151,16 +155,19 @@ require(['jquery', 'coolLibFromBower', 'modules/someHelpers'], function($, coolL
 
 (राइनो भी समर्थन किया है, तो आप शायद Node.js में चलेगा ) ` require.js` ( अपनी परियोजना की निर्भरता ग्राफ का विश्लेषण , और अपने सभी मॉड्यूल युक्त एक एकल फाइल निर्माण कर सकते हैं कि ` r.js` नामक एक स्क्रिप्ट के साथ आता है ठीक से minified और उपभोग के लिए तैयार है, ) नाम दिया है।
 Install it using `npm`:
+
 ```shell
 $ npm install requirejs -g
 ```
 
 अब आप एक विन्यास फाइल के साथ फ़ीड कर सकते हैं:
+
 ```shell
 $ r.js -o app.build.js
 ```
 
 हमारे ऊपर के उदाहरण के लिए विन्यास की तरह लग सकता है:
+
 ```javascript
 /* file : app.build.js */
 ({
@@ -177,6 +184,7 @@ $ r.js -o app.build.js
 ```
 
 उत्पादन में बनाया फ़ाइल का उपयोग करने के लिए, बस ` Data-main` स्वैप:
+
 ```html
 <script src="require.js" data-main="app/main-built"></script>
 ```

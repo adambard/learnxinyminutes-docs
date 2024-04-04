@@ -288,6 +288,7 @@ tank/home/sarlalian@now       0      -   259M  -
 tank/home/alice@now           0      -   156M  -
 tank/home/bob@now             0      -   156M  -
 ...
+```
 
 Destroy snapshots （删除快照）
 
@@ -297,7 +298,6 @@ $ zfs destroy tank/home/sarlalian@now
 
 # 删除某一数据集及其子集的快照
 $ zfs destroy -r tank/home/sarlalian@now
-
 ```
 
 Renaming Snapshots （重命名）
