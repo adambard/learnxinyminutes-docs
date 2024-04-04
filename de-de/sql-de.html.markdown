@@ -18,7 +18,7 @@ Einige dieser Beispielbefehle gehen davon aus, dass sie die [MySQL employee samp
 -- Kommentare starten mit zwei Bindestrichen. Jeder Befehl endet mit einem Semikolon.
 
 -- SQL unterscheidet nicht zwischen Groß- und Kleinschreibung bei
--- Schlüsselwörtern. Die Beispielbefehele folgen der Konvention der
+-- Schlüsselwörtern. Die Beispielbefehle folgen der Konvention der
 -- Schreibweise in Großbuchstaben, damit sie leichter von Datebank-,
 -- Tabellen- und Spaltennamen zu unterscheiden sind.
 
@@ -52,7 +52,7 @@ SELECT * FROM departments LIMIT 5;
 -- in der der Wert dept_name die Teilzeichenfolge 'en' hat.
 SELECT dept_name FROM departments WHERE dept_name LIKE '%en%';
 
--- Hole dir alle Spalten von der departments Tabele, in der die dept_name
+-- Hole dir alle Spalten von der departments Tabelle, in der die dept_name
 -- Spalte mit einem 'S' beginnt und exakt 4 Zeichen danach besitzt.
 SELECT * FROM departments WHERE dept_name LIKE 'S____';
 
