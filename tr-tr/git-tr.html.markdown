@@ -591,4 +591,4 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
 
-* [Yeni başlayanlar için Git ve Github](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Yeni başlayanlar için Git ve GitHub](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)

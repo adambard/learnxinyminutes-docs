@@ -309,7 +309,7 @@ Khi ta muốn viết *đoạn văn bản này có dấu sao bao quanh* nhưng ta
 
 ### Phím bàn phím
 
-Trong Markdown của Github, ta có thể sử dụng thẻ `<kbd>` để thay cho phím trên bàn phím.
+Trong Markdown của GitHub, ta có thể sử dụng thẻ `<kbd>` để thay cho phím trên bàn phím.
 
 ```md
 Máy treo? Thử bấm tổ hợp

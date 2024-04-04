@@ -747,5 +747,5 @@ for (int i = 0; i < 5; i += 1) {
 
 * [Blender Docs for OSL](https://docs.blender.org/manual/en/latest/render/shader_nodes/osl.html)
 * [C4D Docs for OSL](https://docs.otoy.com/cinema4d//OpenShadingLanguageOSL.html)
-* Open Shading Language on [Github](https://github.com/AcademySoftwareFoundation/OpenShadingLanguage)
+* Open Shading Language on [GitHub](https://github.com/AcademySoftwareFoundation/OpenShadingLanguage)
 * [Official OSL Documentation](https://open-shading-language.readthedocs.io/en/main/)

@@ -208,4 +208,4 @@ mixin comment(nome, comentario)
 ### Saiba Mais
 - [Site Oficial](https://pugjs.org/)
 - [Documentação](https://pugjs.org/api/getting-started.html)
-- [Repositório no Github](https://github.com/pugjs/pug)
+- [Repositório no GitHub](https://github.com/pugjs/pug)

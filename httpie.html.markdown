@@ -117,4 +117,4 @@ http --follow GET https://example.com  # Follow Redirects
 ## Further Reading
 
 - [Official Documentation](https://httpie.io/docs/cli).
-- [Github](https://github.com/httpie).
+- [GitHub](https://github.com/httpie).

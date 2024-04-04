@@ -335,7 +335,7 @@ Tapez \*ce texte\*.
 
 ### Touches de clavier
 
-Avec le "Github Flavored Markdown", vous pouvez utiliser la balise `<kdb>`
+Avec le "GitHub Flavored Markdown", vous pouvez utiliser la balise `<kdb>`
 pour représenter une touche du clavier.
 
 ```md

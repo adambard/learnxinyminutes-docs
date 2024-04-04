@@ -564,4 +564,4 @@ ex #=> "ex2"
 - [官方网站](https://crystal-lang.org/)
 - [官方文档](https://crystal-lang.org/docs/overview/)
 - [在线运行代码](https://play.crystal-lang.org/#/cr)
-- [Github仓库](https://github.com/crystal-lang/crystal)
+- [GitHub仓库](https://github.com/crystal-lang/crystal)

@@ -205,4 +205,4 @@ mixin comment(name, kommentar)
 ### Zusätzliche Ressourcen
 - [The Site](https://pugjs.org/)
 - [The Docs](https://pugjs.org/api/getting-started.html)
-- [Github Repo](https://github.com/pugjs/pug)
+- [GitHub Repo](https://github.com/pugjs/pug)
