@@ -438,7 +438,7 @@ end module fruity
 
 
 ! ISO Standard Fortran 2008 introduced the DO CONCURRENT construct to allow you
-! to express loop-level parallelis
+! to express loop-level parallelism
 
 integer :: i
 real :: array(100)
