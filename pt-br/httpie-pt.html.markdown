@@ -119,4 +119,4 @@ http --follow GET https://example.com  # Segue redirecionamentos
 ## Leitura Adicional
 
 - [Documentação Oficial](https://httpie.io/docs/cli).
-- [Github](https://github.com/httpie).
+- [GitHub](https://github.com/httpie).
