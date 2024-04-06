@@ -46,7 +46,6 @@ def window():
 
 if __name__ == '__main__':
     window()
-
 ```
 
 Para utilizar mais funcionalidades no **pyqt** veremos a construção de alguns

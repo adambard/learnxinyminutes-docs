@@ -693,7 +693,6 @@ import {foo, baz} from "api"; // = importe les attributs `foo` et `baz` du modul
 import {foo as moo, baz} from "api"; // = importe les attributs `foo` (en le renommant `moo`) et `baz` du module
 import _, {map} from "api"; // = importe les exports par défaut ET `map`
 import * as coolapi from "api"; // = importe le namespace global du module
-
 ```
 
 ## Pour aller plus loin (en anglais)

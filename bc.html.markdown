@@ -93,6 +93,7 @@ print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
 quit /*Add this line of code to make sure
 that your program exits. This line of code is optional.*/
 ```
+
 Enjoy this simple calculator! (Or this programming language, to be exact.)
 
 This whole program is written in GNU bc. To run it, use ```bc learnbc.bc```.

@@ -417,8 +417,8 @@ g = loadstring('print(343)')  -- Retourne une fonction.
 g()  -- Affiche 343; Rien n'est affiché avant cet appel.
 
 --]]
-
 ```
+
 ## Références
 
 *Les références qui suivent sont en Anglais.*

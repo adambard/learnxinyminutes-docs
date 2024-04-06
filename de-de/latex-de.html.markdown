@@ -240,6 +240,7 @@ Das war's erst mal!
 % Dokument beenden
 \end{document}
 ```
+
 ## Mehr Informationen über LateX
 
 * Das tolle LaTeX wikibook: [https://de.wikibooks.org/wiki/LaTeX-Kompendium](https://de.wikibooks.org/wiki/LaTeX-Kompendium)

@@ -22,8 +22,8 @@ Une façon simple d'implémenter la recherche est de faire une recherche linéai
 Recherche Linéaire: O (n)               Temps Linéaire
 
 Recherche Binaire:  O ( log(n) )        Temps Logarithmique
-
 ```
+
 ```
 def search(arr, x):
 
@@ -33,8 +33,8 @@ def search(arr, x):
             return i
 
     return -1
-
 ```
+
 ## L'Algorithme de Recherche Binaire
 
 Le prérequis fondamental de la recherche binaire est que les éléments soient triés.
@@ -48,7 +48,6 @@ L'idée derrière la recherche binaire est d'utiliser le fait que le tableau est
 3) Sinon, si x est plus grand que l'élément du milieu, alors x peut seulement être dans la dernière moitié du tableau. Donc, nous recommençons la procédure avec cette dernière moitié.
 4) Sinon (x est plus petit), nous recommençons la procédure avec la première moitié du tableau.
 Ensuite nous avons une implémentation récursive de la recherche binaire.
-
 ```
 
 ### Note de la fin

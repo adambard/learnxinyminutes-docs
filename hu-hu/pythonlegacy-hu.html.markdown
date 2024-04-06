@@ -32,7 +32,6 @@ A `__future__` import használata esetén Python 3-ban írhatod a kódot, ami
 Python 2 alatt is futni fog, így ismét a fenti Python 3 bemutató ajánlott.
 
 ```python
-
 # Az egysoros kommentek kettőskereszttel kezdődnek
 
 """ Többsoros stringeket három darab " közé

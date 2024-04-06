@@ -16,7 +16,6 @@ Es completamente compatibe con Erlang, sin embargo, ofrece una sintaxis más est
 y otras características más.
 
 ```elixir
-
 # Los comentarios de única línea
 # comienzan con un símbolo numérico.
 

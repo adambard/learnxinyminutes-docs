@@ -148,7 +148,6 @@ ex:Employee rdfs:subClassOf ex:Person .
 ex:birthday rdf:type rdf:Property ; 
             rdfs:domain ex:Person ;
             rdfs:range xsd:date .
-
 ```
 
 ## Further Reading

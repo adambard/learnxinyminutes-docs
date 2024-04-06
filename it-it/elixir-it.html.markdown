@@ -15,7 +15,6 @@ Elixir è un linguaggio funzionale moderno, costruito sulla VM Erlang.
 e molte altre funzionalità.
 
 ```elixir
-
 # I commenti su una riga iniziano con un cancelletto.
 
 # Non esistono commenti multilinea,

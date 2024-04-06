@@ -16,7 +16,6 @@ Python,90ların başlarında Guido Van Rossum tarafından oluşturulmuştur. En 
 Not: Bu makale Python 3 içindir. Eğer Python 2.7 öğrenmek istiyorsanız [burayı](http://learnxinyminutes.com/docs/pythonlegacy/) kontrol edebilirsiniz.
 
 ```python
-
 # Tek satırlık yorum satırı kare(#) işareti ile başlamaktadır.
 
 """ Çok satırlı olmasını istediğiniz yorumlar

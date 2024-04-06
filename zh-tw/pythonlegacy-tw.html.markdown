@@ -23,7 +23,6 @@ Python 3.X可以看這篇[Python 3 教學 (英文)](http://learnxinyminutes.com/
  `__future__` 模組允許你撰寫可以在Python 2上執行的Python 3程式碼，詳細訊息請參考Python 3 教學。
 
 ```python
-
 # 單行註解從井字號開始
 
 """ 多行字串可以用三個雙引號

@@ -121,7 +121,6 @@ errors: No known data errors
 Properties of zpools
 
 ```bash
-
 # Getting properties from the pool properties can be user set or system provided.
 $ zpool get all zroot
 NAME   PROPERTY                       VALUE                          SOURCE
@@ -304,7 +303,6 @@ $ zfs destroy zroot/home/sarlalian@now
 
 # Delete a snapshot on a parent dataset and its children
 $ zfs destroy -r zroot/home/sarlalian@now
-
 ```
 
 Renaming Snapshots

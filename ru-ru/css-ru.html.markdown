@@ -160,7 +160,6 @@ selector {
     font-family: "Courier New", Trebuchet, Arial, sans-serif; /* если шрифт не найден,
                              будет использован следующий за ним в списке */
 }
-
 ```
 
 ## Использование
@@ -182,7 +181,6 @@ selector {
 Используйте этот способ только в случае крайней необходимости. -->
 <div style="border: 1px solid red;">
 </div>
-
 ```
 
 ## Приоритет
@@ -208,7 +206,6 @@ p {}
 
 /*E*/
 p { property: value !important; }
-
 ```
 
 и следующую разметку:

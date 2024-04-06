@@ -161,7 +161,6 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // Incluindo referências a um arquivo de definição:
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## Leitura adicional

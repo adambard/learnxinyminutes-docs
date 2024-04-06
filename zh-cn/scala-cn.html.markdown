@@ -15,7 +15,6 @@ lang: zh-cn
 Scala - 一门可拓展的语言
 
 ```scala
-
 /*
   自行设置:
 
@@ -600,7 +599,6 @@ val writer = new PrintWriter("myfile.txt")
 writer.write("Writing line for line" + util.Properties.lineSeparator)
 writer.write("Another line here" + util.Properties.lineSeparator)
 writer.close()
-
 ```
 
 ## 更多的资源

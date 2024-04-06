@@ -10,7 +10,6 @@ Java %100 birlikte çalışabilir.
 [Daha:](https://kotlinlang.org/)
 
 ```kotlin
-
 // Tek satır yoruma almak için : //
 /*
     Birkaç satırı yoruma almak için
@@ -463,7 +462,6 @@ fun useObject() {
     ObjectExample.hello()
     val someRef: Any = ObjectExample
 }
-
 ```
 
 ### İlerisi için:

@@ -316,7 +316,6 @@ CalculerAire ! {cercle, 2}. % 12.56000000000000049738
 % L'interpréteur est lui-même un processus ; on peut utiliser `self` pour
 % obtenir le pid actuel.
 self(). % <0.41.0>
-
 ```
 
 ## Ressources (en anglais)

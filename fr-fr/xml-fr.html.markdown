@@ -59,8 +59,6 @@ On crée les nœuds avec des balises d'ouverture / fermeture, et les enfants son
   
 <!-- Ci-dessous, un élément avec deux attributs -->
 <fichier type="gif" id="4293">ordinateur.gif</fichier>
-
-
 ```
 
 * Un document bien formaté & le validation
@@ -75,7 +73,6 @@ en ce qui concerne ce document.
 Avec cet outil, vous pouvez vérifier les données XML en dehors de la logique de l'application.
 
 ```xml
-
 <!-- Ci-dessous, vous pouvez voir une version simplifiée du document de librairie, 
    avec l'addition de définition DTD. -->
 

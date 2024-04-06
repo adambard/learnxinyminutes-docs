@@ -163,7 +163,6 @@ var tupel = paarNaarTupel({ item1: "hallo", item2: "wereld" });
 
 // Refferentie naar een definitie bestand:
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## Verder lezen (engels)

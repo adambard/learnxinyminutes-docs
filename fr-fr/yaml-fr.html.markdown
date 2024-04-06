@@ -152,7 +152,6 @@ set2:
     item1: null
     item2: null
     item3: null
-
 ```
 
 Quelques références et outils :

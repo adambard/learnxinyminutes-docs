@@ -22,7 +22,6 @@ Feedback sono altamente apprezzati! Potete contattarmi su [@louiedinh](http://tw
 Nota: Questo articolo è riferito a Python 3 in modo specifico. Se volete avete la necessità di utilizzare Python 2.7 potete consultarla [qui](https://learnxinyminutes.com/docs/it-it/python-it/)
 
 ```python
-
 # I commenti su una sola linea iniziano con un cancelletto
 
 

@@ -813,7 +813,6 @@ public class EnumTest {
 // Το σώμα του enum (enum body) μπορεί να περιέχει μεθόδους και άλλα πεδία.
 // Μπορείς να δεις περισσότερα στο 
 // https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
-
 ```
 
 ## Επιπλέων διάβασμα

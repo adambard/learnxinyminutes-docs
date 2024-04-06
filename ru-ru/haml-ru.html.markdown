@@ -224,7 +224,6 @@ $ haml input_file.haml output_file.html
   Существует множество типов фильтров (:markdown, :javascript, :coffee,
   :css, :ruby и так далее). Вы можете определить собственный фильтр c
   помощью Haml::Filters.
-
 ```
 
 ## Дополнительные ресурсы

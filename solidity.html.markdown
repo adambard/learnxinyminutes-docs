@@ -856,7 +856,6 @@ contract CrowdFunder {
     }
 }
 // ** END EXAMPLE **
-
 ```
 
 Some more functions. 

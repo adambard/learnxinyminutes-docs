@@ -23,7 +23,6 @@ Note: This article applies to Python 3 specifically. Check out
 old Python 2.7
 
 ```python
-
 # Single line comments start with a number symbol.
 
 """ Multiline strings can be written
@@ -1094,7 +1093,6 @@ my_function(1,2) # => "Entering function my_function"
 
 print(my_function.__name__) # => 'my_function'
 print(my_function.__code__.co_argcount) # => 2
-
 ```
 
 ### Free Online

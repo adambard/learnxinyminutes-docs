@@ -164,7 +164,6 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // definíciós fájl hivatkozása:
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## További források

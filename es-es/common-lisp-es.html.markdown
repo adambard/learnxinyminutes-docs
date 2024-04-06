@@ -20,7 +20,6 @@ popular y reciente es [Land of Lisp](http://landoflisp.com/). Un nuevo libro ace
 prácticas, [Common Lisp Recipes](http://weitz.de/cl-recipes/), fue publicado recientemente.
 
 ```lisp
-
 ;;;-----------------------------------------------------------------------------
 ;;; 0. Sintaxis
 ;;;-----------------------------------------------------------------------------

@@ -180,7 +180,6 @@ and override with your own content.
     </main>
 </body>
 </html>
-
 ```
 
 ### Including Content
@@ -189,7 +188,6 @@ You can include content from another template on your current template using
 the `{% include "template/path" %}` tag.
 
 ```html
-
 {# file: footer.html.j2 #}
 
 <footer>

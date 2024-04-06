@@ -15,8 +15,8 @@ com algumas funcionalidades adicionais, como declarações if e loops. Também p
 como uma linguagem de templates no lado do servidor para tecnologias como o Node.js.
 
 ### The Language
-```pug
 
+```pug
 //- Comentário de uma linha
 
 //- Comentário de
@@ -201,7 +201,6 @@ mixin comment(nome, comentario)
     <span class="comment-name">Gil</span>
     <div class="comment-text">Tudo é divino, tudo é maravilhoso</div>
   </div>
-
 ```
 
 

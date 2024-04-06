@@ -118,8 +118,6 @@ Pengurai XML dirancang menjadi sangat ketat, dan akan berhenti melakukan pengura
   
 <!-- Di bawah ini, unsur dengan dua atribut-->
 <file type="gif" id="4293">komputer.gif</file>
-
-
 ```
 
 ## Dokumen yang well-formated & Validasi
@@ -134,7 +132,6 @@ jika sesuai dokumen itu.
 Dengan alat ini, Anda dapat memeriksa data XML di luar logika aplikasi.
 
 ```xml
-
 <!-- Di bawah, Anda dapat melihat versi sederhana dari dokumen tokobuku,
   dengan penambahan definisi DTD .-->
 
@@ -185,6 +182,7 @@ Dengan alat ini, Anda dapat memeriksa data XML di luar logika aplikasi.
   </buku>
 </tokobuku>
 ```
+
 ## Kompatibilitas DTD dan Definisi Skema XML
 
 Dukungan untuk DTD dapat ditemukan dimana-mana karena sudah sangat lama. Namun sayangnya, fitur XML terkini seperti *namespaces* tidak didukung oleh DTD. XML Xchema Definitions (XSDs) bertujuan untuk mengganti DTD dalam mendefinisikan tatabahasa dokumen XML.

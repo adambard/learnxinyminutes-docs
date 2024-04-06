@@ -52,6 +52,7 @@ selector { property: value; /* more properties...*/ }
 ```html
 <div class='some-class class2' id='someId' attr='value' otherAttr='en-us foo bar' />
 ```
+
 <p dir='rtl'>شما میتوانید با استفاده از نام کلاس آنرا انتخاب کنید</p>
 
 
@@ -150,6 +151,7 @@ div.some-parent.class-name {}
 ```css
 .i-am-any-before ~ .this-element {}
 ```
+
 <p dir='rtl'>در زیر چند نمونه از شبه کلاسها را معرفی میکنیم که به شما اجازه میدهد عناصر را بر اساس رفتار آنها در صفحه انتخاب کنید.</p>
 <p dir='rtl'>برای مثال زمانی که اشاره گر ماوس روی عنصری بر روی صفحه قرار دارد.</p>
 
@@ -262,7 +264,6 @@ p {}
 
 /*E*/
 p { property: value !important; }
-
 ```
 
 <p dir='rtl'>و همچنین به کد زیر:</p>
@@ -270,8 +271,8 @@ p { property: value !important; }
 ```html
 <p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 </p>
-
 ```
+
 ‍‍
 <p dir='rtl'>حق تقدم یا اولویت برای مثال بالا به این صورت است:</p>
 <p dir='rtl'>توجه داشته باشید که حق تقدم برای هر کدام از ویژگیها است نه برای کل مجموعه.</p>

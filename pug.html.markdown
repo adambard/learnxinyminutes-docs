@@ -12,8 +12,8 @@ with additional features like if statements and loops. It can also be used
 as a server side templating language for server languages like NodeJS.
 
 ### The Language
-```pug
 
+```pug
 //- Single Line Comment
 
 //- Multi Line
@@ -198,7 +198,6 @@ mixin comment(name, comment)
     <span class="comment-name">Bob</span>
     <div class="comment-text">This is Awesome</div>
   </div>
-
 ```
 
 

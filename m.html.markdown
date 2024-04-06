@@ -46,6 +46,7 @@ within a running program.
 ```
  ;   Comments start with a semicolon (;)
 ```
+
 ### Data Types
 
 M has one data type (String) and three interpretations of that string.:
@@ -64,6 +65,7 @@ M has one data type (String) and three interpretations of that string.:
 ;
 ;   Truthvalues - String interpreted as 0  is used for false and any string interpreted as non-zero (such as 1) for true.
 ```
+
 ### Commands
 
 Commands are case insensitive, and have full form, and a shortened abbreviation, often the first letter. Commands have zero or more arguments,depending on the command. This page includes programs written in this terse syntax. M is whitespace-aware. Spaces are treated as a delimiter between commands and arguments. Each command is separated from its arguments by 1 space. Commands with zero arguments are followed by 2 spaces. (technically these are called argumentless commands)
@@ -98,6 +100,7 @@ Retrieve input from the user
 READ var
 r !,"Wherefore art thou Romeo? ",why
 ```
+
 As with all M commands, multiple arguments can be passed to a read command. Constants like quoted strings, numbers, and formatting characters are output directly. Values for both global variables and local variables are retrieved from the user. The terminal waits for the user to enter the first variable before displaying the second prompt.
 
 ```
@@ -116,16 +119,19 @@ w !,centi,!,micro
 ;.01
 ;.00001
 ```
+
 #### Kill (abbreviated as K)
 
 Remove a variable from memory or remove a database entry from disk.
 A database node (global variable) is killed depending on the variable name being prefixed by the caret character (^).
 If it is not, then the local variable is removed from memory. 
 If KILLed, automatic garbage collection occurs.
+
 ```
 KILL centi
 k micro
 ```
+
 ### Globals and Arrays
 
 In addition to local variables, M has persistent, shared variables that are the built-in database of M.  They are stored to disk and called _globals_. Global names must start with a __caret__ (__^__). 
@@ -155,7 +161,9 @@ s ^TEMPS("11/12","1030",48)=""
 s ^TEMPS("11/12","1400",49)=""
 s ^TEMPS("11/12","1700",43)=""
 ```
+
 ### Operators
+
 ```jinja
 ; Assignment:       =
 ; Unary:            +   Convert a string value into a numeric value.
@@ -302,7 +310,6 @@ f  s var=var_"%" w !,var i var="%%%%%%%%%%" q
 ; %%%%%%%%
 ; %%%%%%%%%
 ; %%%%%%%%%%
-
 ```
 
 #### I(f), E(lse), Postconditionals
@@ -331,8 +338,8 @@ f  s var=var_"%" q:var="%%%%%%%%%%" d  ;Read as "Quit if var equals "%%%%%%%%%%"
 s var=""
 f  s var=var_"%" q:$L(var)>10  d  ;
 . w !,var
-
 ```
+
 #### Array Looping - $Order
 As we saw in the previous example, M has built-in functions called with a single $, compared to user-defined functions called with $$. These functions have shortened abbreviations, like commands.
 One of the most useful is __$Order()__ / $O(). When given an array subscript, $O returns the next subscript in that array. When it reaches the last subscript, it returns "".

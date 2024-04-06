@@ -607,6 +607,7 @@ h=sum<double>(f,g);
 
 // Deste modo, não precisamos fazer overload nas funções! (:
 ```
+
 Leitura Adicional:
 
 * Uma referência atualizada da linguagem pode ser encontrada em [CPP Reference](http://cppreference.com/w/cpp).

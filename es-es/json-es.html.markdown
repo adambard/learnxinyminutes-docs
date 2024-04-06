@@ -14,7 +14,6 @@ Siendo JSON un formato de intercambio de infomación tan sencillo, probablemente
 JSON en su forma más pura no tiene comentarios, pero la mayoría de los parseadores aceptarán comentarios de C (//, /\* \*/). De todas formas, para el propóstio de esto todo será JSON 100% válido. Por suerte, habla por sí mismo.
 
 ```json
-
 {
   "llave": "valor",
   

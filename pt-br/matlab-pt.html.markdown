@@ -529,7 +529,6 @@ ans = a.multiplicarLatPor(a,1/3)
 % dois objetos PosicoesGPS.
 b = ClassePosicoesGPS(15.0, 32.0)
 c = a + b
-
 ```
 
 ## Mais sobre MATLAB

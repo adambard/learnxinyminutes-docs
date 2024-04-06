@@ -452,7 +452,6 @@ infixl 6 +
 What is your name?
 Friend!
 Hello, Friend!
-
 ```
 
 Υπάρχουν πολλά ακόμα πράγματα να εξερευνήσετε στην Haskell, όπως τα typeclasses

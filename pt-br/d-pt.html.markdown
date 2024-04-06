@@ -130,7 +130,6 @@ class Matrix(uint m, uint n, T = int) {
 }
 
 auto mat = new Matrix!(3, 3); // O tipo 'T' foi padronizado como 'int'.
-
 ```
 
 Falando em aulas, vamos falar sobre propriedades por um segundo. Uma propriedade

@@ -15,7 +15,6 @@ Il est totalement compatible avec Erlang mais dispose d'une syntaxe plus agréab
 
 
 ```elixir
-
 # Un commentaire simple sur une seule ligne commence par un dièse.
 
 # Il n'y a pas de commentaire multi-ligne,

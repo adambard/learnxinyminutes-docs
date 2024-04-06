@@ -599,7 +599,6 @@ namespace Learning
         }
     }
 } // Fin del espacio de nombres
-
 ```
 
 ## Temas no cubiertos

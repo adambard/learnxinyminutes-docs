@@ -1910,8 +1910,8 @@ for <a b c> {
 ## en los objetos para compararlos.
 ## - `=:=` es la identidad de contenedor y usa `VAR()`
 ## en los objetos para compararlos.
-
 ```
+
 Si quieres ir más allá de lo que se muestra aquí, puedes:
 
  - Leer la [documentación de Raku](https://docs.raku.org/). Esto es un recurso

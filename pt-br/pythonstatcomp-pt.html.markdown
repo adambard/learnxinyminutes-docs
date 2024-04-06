@@ -14,9 +14,6 @@ Este é um tutorial sobre como fazer algumas tarefas típicas de programação e
 Stata, SAS, SPSS ou MATLAB.
 
 ```python
-
-
-
 # 0. Preparando-se ====
 
 """  Para começar, instale o seguinte : jupyther, numpy, scipy, pandas, 
@@ -237,7 +234,6 @@ sns.lmplot("BirthY", "EstAge", data=hre)
     Para ver uma versão da análise dos sagrados imperadores romanos usando R, consulte
       - http://github.com/e99n09/R-notes/blob/master/holy_roman_emperors_dates.R
 """
-
 ```
 
 Se você quiser saber mais, obtenha o Python para análise de dados de Wes McKinney. É um excelente recurso e usei-o como referência ao escrever este tutorial.

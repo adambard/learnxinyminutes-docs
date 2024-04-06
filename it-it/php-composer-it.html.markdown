@@ -123,7 +123,6 @@ composer update phpunit/phpunit
 # attraverso i seguenti comandi:
 composer remove --dev phpunit/phpunit
 composer require --dev phpunit/phpunit:^5.0
-
 ```
 
 ## Autoloader
@@ -150,6 +149,7 @@ Nel file `composer.json`, aggiungi il campo "autoload":
   }
 }
 ```
+
 Questo dira' all'autoloader di controllare ogni risorsa che corrisponde al 
 namespace `\Acme\` all'interno della cartella `src`.
 

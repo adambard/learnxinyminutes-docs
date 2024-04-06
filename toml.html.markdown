@@ -228,6 +228,7 @@ name = "Nail"
 sku = 284758393
 color = "gray"
 ```
+
 The equivalent in JSON would be:
 
 ```json
@@ -273,13 +274,11 @@ The equivalent in JSON would be:
   [[fruit.color]]
     name = "yellow"
     note = "I am an array item in banana fruit's table/map"
-
 ```
 
 The equivalent in JSON would be:
 
 ```
-
 {
   "fruit": [
     {

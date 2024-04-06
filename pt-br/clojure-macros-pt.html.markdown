@@ -141,7 +141,6 @@ Você vai querer estar familiarizado com Clojure. Certifique-se de entender tudo
 
 (inline-2 (1 + (3 / 2) - (1 / 2) + 1))
 ; -> 3 (Na verdade, 3N, desde que o numero ficou convertido em uma fração racional com /
-
 ```
 
 ### Leitura adicional

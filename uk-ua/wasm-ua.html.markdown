@@ -222,5 +222,4 @@ translators:
   )
   (export "apply_cos64" (func $apply_cos64))
 )
-
 ```

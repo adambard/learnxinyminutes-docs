@@ -193,7 +193,6 @@ let doubles = [0.0, 1.0, 2, 3, 4]  // will infer as Array<f64>
 let bytes1 = [0 as u8, 1, 2, 3, 4]  // will infer as Array<u8>
 let bytes2 = [0, 1, 2, 3, 4]  as u8[] // will infer as Array<u8>
 let bytes3: u8[] = [0, 1, 2, 3, 4] // will infer as Array<u8>
-
 ```
 
 ## Further Reading

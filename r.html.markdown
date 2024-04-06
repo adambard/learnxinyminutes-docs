@@ -11,7 +11,6 @@ filename: learnr.r
 R is a statistical computing language. It has lots of libraries for uploading and cleaning data sets, running statistical procedures, and making graphs. You can also run `R` commands within a LaTeX document.
 
 ```r
-
 # Comments start with hash signs, also known as number symbols (#).
 
 # You can't make multi-line comments,
@@ -795,9 +794,6 @@ ll <- as.data.table(list1)
 pp <- ggplot(ll, aes(x = time, price))
 pp + geom_point()
 # ggplot2 has excellent documentation (available http://docs.ggplot2.org/current/)
-
-
-
 ```
 
 ## How do I get R?

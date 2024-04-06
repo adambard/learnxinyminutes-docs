@@ -374,7 +374,6 @@ end hexToBytes
 
 '1a5c678d' -> hexToBytes -> ($ and [x 07 x]) -> $(last-1..last) -> '$;
 ' -> !OUT::write // Outputs 0005
-
 ```
 
 ## Further Reading

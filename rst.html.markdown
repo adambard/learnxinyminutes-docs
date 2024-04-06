@@ -89,7 +89,6 @@ There are multiple ways to make links:
 - By making a more Markdown-like link: `GitHub <https://github.com/>`_ .
 
 .. _GitHub: https://github.com/
-
 ```
 
 

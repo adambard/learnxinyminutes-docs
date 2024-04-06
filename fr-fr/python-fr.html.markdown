@@ -21,7 +21,6 @@ L'auteur original apprécierait les retours (en anglais): vous pouvez le contact
 Note : Cet article s'applique spécifiquement à Python 3. Jettez un coup d'oeil [ici](http://learnxinyminutes.com/docs/fr-fr/python-fr/) pour apprendre le vieux Python 2.7
 
 ```python
-
 # Un commentaire d'une ligne commence par un dièse
 
 """ Les chaînes de caractères peuvent être écrites
