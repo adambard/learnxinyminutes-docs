@@ -13,5 +13,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT_LEARNXINYMINUTES_SITE }}
-          repository: adambard/learnxinyminutes.com
+          repository: adambard/learnxinyminutes-site
           event-type: doc-update
