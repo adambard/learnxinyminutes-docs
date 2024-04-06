@@ -96,7 +96,6 @@ otomatis diubah menjadi sebuah link)
 - Dengan membuat link seperti di Markdown: `GitHub <https://github.com/>`_ .
 
 .. _GitHub https://github.com/
-
 ```
 
 

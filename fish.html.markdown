@@ -338,5 +338,4 @@ end
 # The bashrc equivalent is not fishrc, but the previously mentioned config.fish file in ~/.config/fish/
 # To add a function to fish, though, you should create a simple .fish file in that directory. Don't just paste that function in the config.fish. That's ugly. 
 # If you have more, just add it, but those are the most important basics.
-
 ```

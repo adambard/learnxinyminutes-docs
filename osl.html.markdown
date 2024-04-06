@@ -10,8 +10,6 @@ OSL (Open Shading Language) is a programming language designed by Sony for Arnol
 [Read more here.](https://raw.githubusercontent.com/imageworks/OpenShadingLanguage/master/src/doc/osl-languagespec.pdf)
 
 ```c
-
-
 // Single-line comments start with //
 
 /* Multi line comments are preserved. */
@@ -741,8 +739,8 @@ for (int i = 0; i < 5; i += 1) {
 	point pos = point(0, 0, 0); // Starting position of the ray
 	vector dir = vector(0, 0, 1); // Direction of the ray
 	int hit = trace(pos, dir); // returns 1 if it hits, else 0
-
 ```
+
 ### Further reading
 
 * [Blender Docs for OSL](https://docs.blender.org/manual/en/latest/render/shader_nodes/osl.html)

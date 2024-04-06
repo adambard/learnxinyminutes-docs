@@ -71,6 +71,7 @@ void main() {
     }
 }
 ```
+
 On peut définir de nouveaux types avec les mots-clés `struct`, `class`,
 `union` et `enum`. Ces types sont passés à la fonction par valeur (ils sont copiés)
 De plus, on peut utiliser les templates pour rendre toutes ces abstractions génériques.
@@ -133,8 +134,8 @@ class Matrix(uint m, uint n, T = int) {
 }
 
 auto mat = new Matrix!(3, 3); // T est 'int' par défaut
-
 ```
+
 À propos de classes, parlons des propriétés. Une propriété est, en gros,
 une méthode qui peut se comporter comme une lvalue. On peut donc utiliser
 la syntaxe des structures classiques (`struct.x = 7`) comme si il
@@ -197,6 +198,7 @@ void main() {
     writefln("Later: data = %d, str = %s", mc.data, mc.other);
 }
 ```
+
 Avec les propriétés, on peut construire nos setters et nos getters
 comme on le souhaite, tout en gardant une syntaxe très propre,
 comme si on accédait directement à des membres de la classe.
@@ -259,6 +261,4 @@ void main() {
         ref = sqrt(i + 1.0);
     }
 }
-
-
 ```

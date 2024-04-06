@@ -16,8 +16,8 @@ Sie kann auch als serverseitige Templatingsprache für Serversprachen
 wie NodeJS verwendet werden.
 
 ### Die Sprache
-```pug
 
+```pug
 //- Einzeilenkommentar
 
 //- Mehrzeiliger
@@ -198,7 +198,6 @@ mixin comment(name, kommentar)
     div.comment-text= kommentar
 +comment("Bob", "Das ist super")
 //- <div>Hallo</div>
-
 ```
 
 

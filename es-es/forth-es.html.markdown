@@ -216,7 +216,6 @@ page
 
 \ Terminando Gforth:
 \ bye
-
 ```
 
 ##Listo Para Mas?

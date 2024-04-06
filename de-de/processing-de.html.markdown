@@ -255,7 +255,6 @@ Da du nun die Grundsätze der Programmiersprache verstanden hast, schauen wir
 uns nun das Beste an Processing an - Das Zeichnen!
 
 ```
-
 /* -------------------------------------------------
    Figuren
    -------------------------------------------------

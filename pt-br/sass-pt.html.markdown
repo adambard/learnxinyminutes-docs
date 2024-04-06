@@ -20,8 +20,6 @@ Este tutorial é escrito usando SCSS.
 Se você já está familiarizado com CSS3, você será capaz de pegar Sass de forma relativamente rápida. Ele não fornece quaisquer novas opções de estilo, mas sim as ferramentas para escrever sua CSS de forma mais eficiente e fazer a manutenção mais facilmente.
 
 ```scss
-
-
 // Comentários de linha única são removidos quando Sass é compilado para CSS.
 
 /* Comentários multi-line são preservados. */
@@ -424,8 +422,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
-
 ```
 
 

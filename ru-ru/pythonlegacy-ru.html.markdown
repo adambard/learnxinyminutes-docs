@@ -621,7 +621,6 @@ def say(say_please=False):
 
 print(say())  # Вы не купите мне пива?
 print(say(say_please=True)) # Вы не купите мне пива? Пожалуйста! У меня нет денег :(
-
 ```
 
 ## Хотите ещё?

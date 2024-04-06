@@ -163,7 +163,6 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // Inclure des références à un fichier :
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## Lectures complémentaires

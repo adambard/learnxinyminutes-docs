@@ -86,7 +86,6 @@ Esistono diversi modi per creare collegamenti:
 - Utilizzando una sintassi simile a Markdown: `GitHub <https://github.com/>`_ .
 
 .. _GitHub https://github.com/
-
 ```
 
 ## Come usarlo

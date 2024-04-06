@@ -375,7 +375,6 @@ END {
     if (nlines)
         print "The average age for " name " is " sum / nlines;
 }
-
 ```
 
 Further Reading:

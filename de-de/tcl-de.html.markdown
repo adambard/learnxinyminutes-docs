@@ -462,8 +462,6 @@ puts [countdown 1] ;# -> 1
 puts [countdown 1] ;# -> 0 
 puts [coundown 1] ;# -> invalid command name "countdown1"
 puts [countdown 2] ;# -> 1 
-
-
 ```
 
 ## Referenzen

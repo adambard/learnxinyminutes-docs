@@ -1126,8 +1126,8 @@ compl 4    // Effettua il NOT bit-a-bit
 4 bitor 3  // Effettua il OR bit-a-bit
 4 bitand 3 // Effettua il AND bit-a-bit
 4 xor 3    // Effettua il XOR bit-a-bit
-
 ```
+
 Letture consigliate:
 
 * Un riferimento aggiornato del linguaggio può essere trovato qui [CPP Reference](http://cppreference.com/w/cpp).

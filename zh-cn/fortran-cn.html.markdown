@@ -426,7 +426,6 @@ contains
     end function complex_abs
 
 end module fruity
-
 ```
 
 ### 更多资源

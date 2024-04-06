@@ -1196,9 +1196,8 @@ compl 4    // Performs a bitwise not
 4 bitor 3  // Performs bitwise or
 4 bitand 3 // Performs bitwise and
 4 xor 3    // Performs bitwise xor
-
-
 ```
+
 Further Reading:
 
 * An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).

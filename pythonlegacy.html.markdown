@@ -29,7 +29,6 @@ allow you to write Python 3 code that will run on Python 2, so check out the
 Python 3 tutorial.
 
 ```python
-
 # Single line comments start with a number symbol.
 
 """ Multiline strings can be written

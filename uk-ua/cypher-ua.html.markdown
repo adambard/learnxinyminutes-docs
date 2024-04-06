@@ -96,7 +96,6 @@ path = shortestPath( (user)-[:KNOWS*..5]-(other) )
 
 // Навігація по дереву
 (root)<-[:PARENT*]-(leaf:Category)-[:ITEM]->(data:Product)
-
 ```
 
 
@@ -104,13 +103,16 @@ path = shortestPath( (user)-[:KNOWS*..5]-(other) )
 ---
 
 Створити нову вершину:
+
 ```
 CREATE (a:Person {name:"Théo Gauchoux"})
 RETURN a
 ```
+
 *`RETURN`  дозволяє повернути результат після виконання запиту. Можна повертати кілька значень, наприклад, `RETURN a, b`.*
 
 Створити новий зв'язок (із двома вершинами):
+
 ```
 CREATE (a:Person)-[k:KNOWS]-(b:Person)
 RETURN a,k,b
@@ -120,36 +122,42 @@ RETURN a,k,b
 ---
 
 Знайти всі вершини:
+
 ```
 MATCH (n)
 RETURN n
 ```
 
 Знайти вершини за ярликом:
+
 ```
 MATCH (a:Person)
 RETURN a
 ```
 
 Знайти вершини за ярликом та властивістю:
+
 ```
 MATCH (a:Person {name:"Théo Gauchoux"})
 RETURN a
 ```
 
 Знайти вершини відповідно до зв'язків (ненаправлених):
+
 ```
 MATCH (a)-[:KNOWS]-(b)
 RETURN a,b
 ```
 
 Знайти вершини відповідно до зв'язків (направлених):
+
 ```
 MATCH (a)-[:MANAGES]->(b)
 RETURN a,b
 ```
 
 Знайти вершини за допомогою `WHERE`:
+
 ```
 MATCH (p:Person {name:"Théo Gauchoux"})-[s:LIVES_IN]->(city:City)
 WHERE s.since = 2015
@@ -157,6 +165,7 @@ RETURN p,state
 ```
 
 Можна використовувати вираз `MATCH WHERE` разом із операцією `CREATE`:
+
 ```
 MATCH (a), (b)
 WHERE a.name = "Jacquie" AND b.name = "Michel"
@@ -168,6 +177,7 @@ CREATE (a)-[:KNOWS]-(b)
 ---
 
 Оновити окрему властивість вершини:
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -175,6 +185,7 @@ SET p.age = 23
 ```
 
 Оновити всі властивості вершини:
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -182,6 +193,7 @@ SET p = {name: "Michel", age: 23}
 ```
 
 Додати нову властивіcть до вершини:
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -189,6 +201,7 @@ SET p + = {studies: "IT Engineering"}
 ```
 
 Повісити ярлик на вершину:
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -200,6 +213,7 @@ SET p:Internship
 ---
 
 Видалити окрему вершину (пов'язані ребра повинні бути видалені перед цим):
+
 ```
 MATCH (p:Person)-[relationship]-()
 WHERE p.name = "Théo Gauchoux"
@@ -207,6 +221,7 @@ DELETE relationship, p
 ```
 
 Видалити властивість певної вершини:
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -216,6 +231,7 @@ REMOVE p.age
 *Зверніть увагу, що ключове слово `REMOVE` це не те саме, що й  `DELETE`!*
 
 Видалити ярлик певної вершини: 
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -223,6 +239,7 @@ DELETE p:Person
 ```
 
 Видалити всю базу даних: 
+
 ```
 MATCH (n)
 OPTIONAL MATCH (n)-[r]-()

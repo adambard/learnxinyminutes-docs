@@ -603,5 +603,4 @@ var bar: Float = 20
 
 foo <-> bar
 print("foo is \(foo), bar is \(bar)") // "foo is 20.0, bar is 10.0"
-
 ```

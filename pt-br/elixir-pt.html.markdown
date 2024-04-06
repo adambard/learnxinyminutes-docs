@@ -14,7 +14,6 @@ Elixir é uma linguagem funcional moderna construída no topo da Erlang VM.
 e muitos outros recursos.
 
 ```elixir
-
 # Comentários de linha única começam com um símbolo de número.
 
 # Não há comentários de múltiplas linhas,

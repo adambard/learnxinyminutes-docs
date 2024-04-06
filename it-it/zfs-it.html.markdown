@@ -123,7 +123,6 @@ errors: No known data errors
 Proprietà delle zpool
 
 ```bash
-
 # Proprietà di una zpool (gestite dal sistema o dall'utente)
 $ zpool get all zroot
 NAME   PROPERTY                       VALUE                          SOURCE
@@ -306,7 +305,6 @@ $ zfs destroy tank/home/sarlalian@now
 
 # Elimina uno snapshot ricorsivamente
 $ zfs destroy -r tank/home/sarlalian@now
-
 ```
 
 Rinominare uno snapshot

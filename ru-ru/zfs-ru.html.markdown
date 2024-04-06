@@ -123,7 +123,6 @@ errors: No known data errors
 Свойства пулов
 
 ```bash
-
 # Получение свойств пула, свойства могут быть заданы пользователем или системой.
 $ zpool get all zroot
 NAME   PROPERTY                       VALUE                          SOURCE
@@ -306,7 +305,6 @@ $ zfs destroy zroot/home/sarlalian@now
 
 # Удаление снапшота в родительском и дочерних датасетах
 $ zfs destroy -r zroot/home/sarlalian@now
-
 ```
 
 Переименование снапшотов

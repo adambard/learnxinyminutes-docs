@@ -10,7 +10,6 @@ lang: zh-cn
 ---
 
 ```crystal
-
 # 这是一行注释
 
 # 一切都是对象(object)
@@ -556,7 +555,6 @@ rescue ex4 # 捕捉任何类型的异常
 end
 
 ex #=> "ex2"
-
 ```
 
 ## 参考资料

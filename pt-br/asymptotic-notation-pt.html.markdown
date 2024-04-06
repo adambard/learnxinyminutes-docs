@@ -62,6 +62,7 @@ Função Quadrática - an^2 + bn + c
 Função Polinomial - an^z + . . . + an^2 + a*n^1 + a*n^0, onde *z* é uma constante
 Função Exponencial -  a^n, onde a é alguma constante
 ```
+
 Estas são as funções básicas de crescimento usadas em várias notações. A lista
  começa com a de crescimento mais lento (logarítmica, a de execução mais rápida)
 e segue para a de crescimento mais rápido (exponencial, de execução mais lenta).

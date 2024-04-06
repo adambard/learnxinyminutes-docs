@@ -169,7 +169,6 @@ var selamlama = `Merhaba ${isim}, nasılsın?`
 // Şablon Stringleri ile çok satırlı stringler
 var çokSatırlıString = `Bu çok satırlı
 bir string örneği`;
-
 ```
 
 ## Daha fazlası

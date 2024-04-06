@@ -466,8 +466,6 @@ math.sqrt(16) == m.sqrt(16) #=> True
 # On peut trouver quelle fonction et attributs déterminent un module
 import math
 dir(math)
-
-
 ```
 
 ## Prêt à aller plus loin?

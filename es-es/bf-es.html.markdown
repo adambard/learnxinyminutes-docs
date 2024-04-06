@@ -16,7 +16,6 @@ Puedes probar brainfuck en tu navegador con [brainfuck-visualizer](http://fatihe
 
 
 ```
-
 Cualquier caracter que no sea "><+-.,[]" (sin incluir las comillas)
 será ignorado.
 
@@ -84,6 +83,7 @@ hasta la próxima vez. Para resolver este problema también incrementamos la
 celda #4 y luego copiamos la celda #4 a la celda #2. La celda #3 contiene
 el resultado.
 ```
+
 Y eso es brainfuck. No es tan difícil, ¿verdad? Como diversión, puedes escribir
 tu propio intérprete de brainfuck o tu propio programa en brainfuck. El
 intérprete es relativamente sencillo de hacer, pero si eres masoquista,

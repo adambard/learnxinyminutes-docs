@@ -94,7 +94,6 @@ muss man die Zielurl nach dem Text hinzufügen.
 - Wenn man es mehr Markdown ähnlich eingibt: `GitHub <https://github.com/>`_ .
 
 .. _GitHub https://github.com/
-
 ```
 
 

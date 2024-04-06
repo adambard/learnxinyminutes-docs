@@ -128,7 +128,6 @@ class Matrix(uint m, uint n, T = int) {
 }
 
 auto mat = new Matrix!(3, 3); // Standardmäßig ist T vom Typ Integer
-
 ```
 
 Wo wir schon bei Klassen sind - Wie wäre es mit Properties! Eine Property
@@ -248,5 +247,4 @@ void main() {
         ref = sqrt(i + 1.0);
     }
 }
-
 ```

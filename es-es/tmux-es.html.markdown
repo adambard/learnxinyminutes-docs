@@ -18,7 +18,6 @@ y luego ser insertado nuevamente.
 
 
 ```
-
   tmux [command]     # Corre un comando
                      # 'tmux' sin comandos creará una nueva sesión
 
@@ -52,7 +51,6 @@ y luego ser insertado nuevamente.
      -t "#"          # Cierra la sesión destino
      -a              # Cierra todas las sesiones
      -a -t "#"       # Cierra todas las sesiones menos el destino
-
 ```
 
 
@@ -108,7 +106,6 @@ combinaciones de teclas llamadas teclas 'Prefijo'.
 
   M-Up, M-Down       # Redimensiona el panel actual en pasos de cinco celdas
   M-Left, M-Right
-
 ```
 
 
@@ -236,7 +233,6 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # Requiere https://github.com/thewtex/tmux-mem-cpu-load/
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
 
 

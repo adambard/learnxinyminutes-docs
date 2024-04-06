@@ -15,7 +15,6 @@ Es básicamente pseudocódigo ejecutable.
 ¡Comentarios serán muy apreciados! Pueden contactarme en [@louiedinh](http://twitter.com/louiedinh) o louiedinh [at] [servicio de email de google]
 
 ```python
-
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
 
 """ Strings multilinea pueden escribirse

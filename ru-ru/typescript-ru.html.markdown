@@ -162,7 +162,6 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // Включение ссылки на файл определения:
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## Для дальнейшего чтения

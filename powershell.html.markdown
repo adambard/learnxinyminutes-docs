@@ -21,7 +21,6 @@ rather than plain text. After years of evolving, it resembles Python a bit.
 Powershell as a Language:
 
 ```powershell
-
 # Single line comments start with a number symbol.
 
 <#
@@ -670,6 +669,7 @@ function Format-Range ($start, $end) {
 
 Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m'
 ```
+
 Powershell as a Tool:
 
 Getting Help:

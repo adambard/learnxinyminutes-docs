@@ -10,7 +10,6 @@ lang: de-de
 ---
 
 ```crystal
-
 # Das ist ein Kommentar
 
 # Alles ist ein Objekt

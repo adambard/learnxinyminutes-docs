@@ -117,7 +117,6 @@ errors: No known data errors
 Properties of zpools （存储池属性）
 
 ```bash
-
 # 获取某一存储池的全部属性。属性可能是系统提供，也可能是用户设置
 $ zpool get all zroot
 NAME   PROPERTY                       VALUE                          SOURCE

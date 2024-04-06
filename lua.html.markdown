@@ -386,7 +386,6 @@ g = load('print(343)')  -- Returns a function.
 g()  -- Prints out 343; nothing printed before now.
 
 --]]
-
 ```
 
 ## Community

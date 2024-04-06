@@ -480,9 +480,6 @@ math.sqrt(16) == m.sqrt(16) #=> True
 # Modüllerde tanımlanmış fonksiyon ve metodları öğrenebilirsiniz.
 import math
 dir(math)
-
-
-
 ```
 
 ## Daha fazlası için hazır mısınız?

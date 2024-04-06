@@ -587,8 +587,6 @@ coroutine c apply {{} {
 
 # Pon las cosas en marcha
 a
-
-
 ```
 
 ## Reference

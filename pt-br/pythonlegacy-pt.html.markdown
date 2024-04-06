@@ -487,8 +487,6 @@ math.sqrt(16) == m.sqrt(16) #=> True
 # estão definidos em um módulo qualquer.
 import math
 dir(math)
-
-
 ```
 
 ## Pronto para mais?

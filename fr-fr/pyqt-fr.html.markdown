@@ -41,7 +41,6 @@ def window():
 
 if __name__ == '__main__':
     window()
-
 ```
 
 Pour obtenir certaines des fonctionnalités les plus avancées de **pyqt** nous devons commencer par chercher à construire des éléments supplémentaires.

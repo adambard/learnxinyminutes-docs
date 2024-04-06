@@ -36,13 +36,11 @@ There are two different sets of metacharacters:
 * Those that are recognized within square brackets. Outside square brackets. They are also called as character classes.
 
 ```
-
   \      general escape character
   ^      negate the class, but only if the first character
   -      indicates character range
   [      POSIX character class (only if followed by POSIX syntax)
   ]      terminates the character class
-
 ```
 
 PCRE provides some generic character types, also called as character classes.

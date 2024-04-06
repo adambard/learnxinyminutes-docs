@@ -16,7 +16,6 @@ E total compatibil cu Erlang, dar are o sintaxă mai prietenoasă și propune ma
 posibilități.
 
 ```elixir
-
 # Comentariile de o linie încep cu simbolul diez.
 
 # Pentru comentarii pe mai multe linii nu există sintaxă separată,

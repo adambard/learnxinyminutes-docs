@@ -15,7 +15,6 @@ strojom). Je plne kompatibilný s Erlangom, ale ponúka viac štandardnú syntax
 a množstvo funkcií.
 
 ```elixir
-
 # Jednoriadkový komentár začína symbolom #
 
 # Neexistuje viacriadkový komentár, avšak je možné vyskladať za sebou viac

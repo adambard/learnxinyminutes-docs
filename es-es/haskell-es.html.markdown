@@ -415,7 +415,6 @@ foo :: Integer
 ¿Cual es tu nombre?
 Amigo
 Hola, Amigo
-
 ```
 
 Existe mucho más de Haskell, incluyendo clases de tipos y mónadas. Estas son
