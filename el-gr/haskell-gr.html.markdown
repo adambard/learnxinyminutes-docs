@@ -1,8 +1,9 @@
 ---
 language: Haskell
-filename: haskell-gr.html.markdown
 contributors:
     - ["Miltiadis Stouras", "https://github.com/mstou"]
+lang: el-gr
+filename: learnhaskell-gr.hs
 ---
 
 Η Haskell σχεδιάστηκε για να είναι μια πρακτική, αγνή συναρτησιακή γλώσσα προγραμματισμού.
