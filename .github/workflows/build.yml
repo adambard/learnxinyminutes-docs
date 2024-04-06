@@ -2,7 +2,7 @@ name: Trigger site build
 
 on:
   push:
-    branches: [master]
+    branches: [main, master]
 
 jobs:
   deploy:
