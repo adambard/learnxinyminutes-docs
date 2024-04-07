@@ -321,7 +321,7 @@ $ zpool set feature@encryption=enabled black_hole
 $ zfs create -o encryption=on -o keyformat=passphrase black_hole/enc
 
 # Check the configureation
-$ zfs get all black_hole/enc | grep encryption
+$ zfs get encryption black_hole/enc
 ```
 
 It should be noted that there are parts of the system where the data is not encrypted. See 
