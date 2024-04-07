@@ -8,7 +8,7 @@ contributors:
   - ["Athanasios Emmanouilidis", "https://github.com/athanasiosem"]
 translators:
     - ["Namami Shanker", "https://github.com/NamamiShanker"]
-lang: hd-hd
+lang: hi-in
 ---
 
 जैसन(JSON) इस अत्यंत सरल डाटा-इंटरचेंज फॉर्मेट है| जैसा [json.org](https://json.org) कहती है, ये इंसानो के पढ़ने और लिखने के लिए भी आसान है और और मशीन के लिए इसे पार्स और उतपन्न करना भी बेहद सरल है|

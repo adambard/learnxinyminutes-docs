@@ -4,7 +4,7 @@ tool: amd
 contributors:
     - ["Frederik Ring", "https://github.com/m90"]
 filename: learnamd-hd.js
-lang: hd-hd
+lang: hi-in
 ---
 ## एएमडी के साथ प्रारंभ करना
 
