@@ -27,7 +27,6 @@ utilizzare ZFS insieme a RAID, poichè ZFS è fatto per gestire direttamente i d
 
 Tipi di VDEV:
 
-* stripe (disco singolo, senza ridondanza)
 * mirror (mirror su più dischi)
 * raidz
 	* raidz1 (parity a 1 disco, simile a RAID 5)
@@ -73,7 +72,7 @@ Lista delle zpool
 
 ```bash
 # Crea una zpool raidz
-$ zpool create bucket raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
+$ zpool create zroot raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
 
 # Lista delle zpool
 $ zpool list
@@ -123,7 +122,6 @@ errors: No known data errors
 Proprietà delle zpool
 
 ```bash
-
 # Proprietà di una zpool (gestite dal sistema o dall'utente)
 $ zpool get all zroot
 NAME   PROPERTY                       VALUE                          SOURCE
@@ -155,29 +153,29 @@ Azioni:
 * Create
 * List
 * Rename
-* Delete 
+* Delete
 * Get/Set (proprietà)
 
 Creazione dataset
 
 ```bash
 # Crea un dataset
-$ zfs create tank/root/data
+$ zfs create zroot/root/data
 $ mount | grep data
-tank/root/data on /data (zfs, local, nfsv4acls)
+zroot/root/data on /data (zfs, local, nfsv4acls)
 
 # Crea un sottodataset
-$ zfs create tank/root/data/stuff
+$ zfs create zroot/root/data/stuff
 $ mount | grep data
-tank/root/data on /data (zfs, local, nfsv4acls)
-tank/root/data/stuff on /data/stuff (zfs, local, nfsv4acls)
+zroot/root/data on /data (zfs, local, nfsv4acls)
+zroot/root/data/stuff on /data/stuff (zfs, local, nfsv4acls)
 
 
 # Crea un volume
 $ zfs create -V zroot/win_vm
 $ zfs list zroot/win_vm
 NAME                 USED  AVAIL  REFER  MOUNTPOINT
-tank/win_vm         4.13G  17.9G    64K  -
+zroot/win_vm         4.13G  17.9G    64K  -
 ```
 
 Lista dei dataset
@@ -215,28 +213,28 @@ zroot/var/tmp@daily-2015-10-15                                                  
 Rinominare un dataset
 
 ```bash
-$ zfs rename tank/root/home tank/root/old_home
-$ zfs rename tank/root/new_home tank/root/home
+$ zfs rename zroot/root/home zroot/root/old_home
+$ zfs rename zroot/root/new_home zroot/root/home
 ```
 
 Eliminare un dataset
 
 ```bash
 # I dataset non possono essere eliminati se hanno degli snapshot
-$ zfs destroy tank/root/home
+$ zfs destroy zroot/root/home
 ```
 
 Lettura/modifica proprietà
 
 ```bash
 # Tutte le proprietà di un dataset
-$ zfs get all  zroot/usr/home                                                                                              │157 # Create Volume
-NAME            PROPERTY              VALUE                  SOURCE                                                                          │158 $ zfs create -V zroot/win_vm
-zroot/home      type                  filesystem             -                                                                               │159 $ zfs list zroot/win_vm
-zroot/home      creation              Mon Oct 20 14:44 2014  -                                                                               │160 NAME                 USED  AVAIL  REFER  MOUNTPOINT
-zroot/home      used                  11.9G                  -                                                                               │161 tank/win_vm         4.13G  17.9G    64K  -
-zroot/home      available             94.1G                  -                                                                               │162 ```
-zroot/home      referenced            11.9G                  -                                                                               │163
+$ zfs get all zroot/usr/home
+NAME            PROPERTY              VALUE                  SOURCE
+zroot/home      type                  filesystem             -
+zroot/home      creation              Mon Oct 20 14:44 2014  -
+zroot/home      used                  11.9G                  -
+zroot/home      available             94.1G                  -
+zroot/home      referenced            11.9G                  -
 zroot/home      mounted               yes                    -
 ...
 
@@ -246,7 +244,7 @@ NAME            PROPERTY     VALUE     SOURCE
 zroot/home      compression  off       default
 
 # Modifica di una proprietà
-$ zfs set compression=gzip-9 mypool/lamb
+$ zfs set compression=lz4 zroot/lamb
 
 # Specifiche proprietà per tutti i dataset
 $ zfs list -o name,quota,reservation
@@ -285,16 +283,16 @@ Creazione di uno snapshot
 
 ```bash
 # Crea uno snapshot di un singolo dataset
-zfs snapshot tank/home/sarlalian@now
+zfs snapshot zroot/home/sarlalian@now
 
 # Crea uno snapshot di un dataset e dei suoi sottodataset
-$ zfs snapshot -r tank/home@now
+$ zfs snapshot -r zroot/home@now
 $ zfs list -t snapshot
 NAME                       USED  AVAIL  REFER  MOUNTPOINT
-tank/home@now                 0      -    26K  -
-tank/home/sarlalian@now       0      -   259M  -
-tank/home/alice@now           0      -   156M  -
-tank/home/bob@now             0      -   156M  -
+zroot/home@now                 0      -    26K  -
+zroot/home/sarlalian@now       0      -   259M  -
+zroot/home/alice@now           0      -   156M  -
+zroot/home/bob@now             0      -   156M  -
 ...
 ```
 
@@ -302,20 +300,19 @@ Eliminazione di uno snapshot
 
 ```bash
 # Elimina uno snapshot
-$ zfs destroy tank/home/sarlalian@now
+$ zfs destroy zroot/home/sarlalian@now
 
 # Elimina uno snapshot ricorsivamente
-$ zfs destroy -r tank/home/sarlalian@now
-
+$ zfs destroy -r zroot/home/sarlalian@now
 ```
 
 Rinominare uno snapshot
 
 ```bash
-$ zfs rename tank/home/sarlalian@now tank/home/sarlalian@today
-$ zfs rename tank/home/sarlalian@now today
+$ zfs rename zroot/home/sarlalian@now zroot/home/sarlalian@today
+$ zfs rename zroot/home/sarlalian@now today
 
-$ zfs rename -r tank/home@now @yesterday
+$ zfs rename -r zroot/home@now @yesterday
 ```
 
 Accedere ad uno snapshot
@@ -329,26 +326,26 @@ Invio e ricezione
 
 ```bash
 # Backup di uno snapshot su un file
-$ zfs send tank/home/sarlalian@now | gzip > backup_file.gz
+$ zfs send zroot/home/sarlalian@now | gzip > backup_file.gz
 
 # Invia uno snapshot ad un altro dataset
-$ zfs send tank/home/sarlalian@now | zfs recv backups/home/sarlalian
+$ zfs send zroot/home/sarlalian@now | zfs recv backups/home/sarlalian
 
 # Invia uno snapshot ad un host remoto
-$ zfs send tank/home/sarlalian@now | ssh root@backup_server 'zfs recv tank/home/sarlalian'
+$ zfs send zroot/home/sarlalian@now | ssh root@backup_server 'zfs recv zroot/home/sarlalian'
 
 # Invia l'intero dataset e i suoi snapshot ad un host remoto
-$ zfs send -v -R tank/home@now | ssh root@backup_server 'zfs recv tank/home'
+$ zfs send -v -R zroot/home@now | ssh root@backup_server 'zfs recv zroot/home'
 ```
 
 Clonare gli snapshot
 
 ```bash
 # Clona uno snapshot
-$ zfs clone tank/home/sarlalian@now tank/home/sarlalian_new
+$ zfs clone zroot/home/sarlalian@now zroot/home/sarlalian_new
 
 # Rende il clone indipendente dallo snapshot originale
-$ zfs promote tank/home/sarlalian_new
+$ zfs promote zroot/home/sarlalian_new
 ```
 
 ### Letture aggiuntive (in inglese)

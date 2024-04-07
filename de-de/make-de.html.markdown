@@ -21,7 +21,6 @@ Es gibt eine Vielzahl an Varianten von Make, dieser Artikel beschäftigt sich
 mit der Version GNU Make. Diese Version ist Standard auf Linux.
 
 ```make
-
 # Kommentare können so geschrieben werden.
 
 # Dateien sollten Makefile heißen, denn dann können sie als `make <ziel>`

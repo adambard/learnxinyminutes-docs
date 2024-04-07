@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -14,8 +14,7 @@ Elixir je moderný funkcionálny jazyk vytvorený nad Erlang VM (virtuálnym
 strojom). Je plne kompatibilný s Erlangom, ale ponúka viac štandardnú syntax
 a množstvo funkcií.
 
-```Elixir
-
+```elixir
 # Jednoriadkový komentár začína symbolom #
 
 # Neexistuje viacriadkový komentár, avšak je možné vyskladať za sebou viac
@@ -24,7 +23,7 @@ a množstvo funkcií.
 # Pre spustenie Elixir shellu zadajte príkaz `iex`
 # Kompiláciu zdrojových kódov vykonáte príkazom `elixirc`
 
-# Obe príkazy by sa už mali nachádzať v path pokiaľ ste nainštalovali elixir
+# Obe príkazy by sa už mali nachádzať v path pokiaľ ste nainštalovali Elixir
 # správne.
 
 ## ---------------------------
@@ -86,7 +85,7 @@ reťazec.
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
 
-# `?a` v elixire vráti ASCII číselnú reprezentáciu pre znak `a`
+# `?a` v Elixir vráti ASCII číselnú reprezentáciu pre znak `a`
 ?a #=> 97
 
 # Pre spájanie zoznamov sa používa `++`, pre binárne typy `<>`
@@ -119,7 +118,7 @@ pohlavia.gillian #=> "žena"
 5 * 2  #=> 10
 10 / 2 #=> 5.0
 
-# V elixire operátor `/` vždy vráti float (reálne číslo).
+# V Elixir operátor `/` vždy vráti float (reálne číslo).
 
 # Pre celočíselné delenie sa používa `div`
 div(10, 2) #=> 5
@@ -182,7 +181,7 @@ else
 end
 
 # Pamätáte sa na pattern matching? Mnoho štruktúr pre riadenie toku v
-# elixire sa spoliehajú práve na pattern matching.
+# Elixir sa spoliehajú práve na pattern matching.
 
 # `case` dovolí nám porovnať hodnotu oproti mnohým vzorom:
 case {:one, :two} do
@@ -314,7 +313,7 @@ Geometria.oblast({:kruh, 3})       #=> 28.25999999999999801048
 # Geometria.oblast({:kruh, "nie_je_cislo"})
 #=> ** (FunctionClauseError) no function clause matching in Geometria.oblast/1
 
-# Vďaka nemeniteľnosti (immutability) je rekurzia významnou časťou elixiru
+# Vďaka nemeniteľnosti (immutability) je rekurzia významnou časťou Elixir
 defmodule Rekurzia do
   def sumuj_zoznam([hlavicka | schvost], acc) do
     sumuj_zoznam(chvost, acc + hlavicka)
@@ -389,7 +388,7 @@ end
 ## ---------------------------
 
 # Elixir sa pri konkurencii spolieha na Actor model. Všetko čo je
-# potrebné na písanie konkuretných programov v elixire sú tri primitívy:
+# potrebné na písanie konkuretných programov v Elixir sú tri primitívy:
 # spawning procesy, posielanie a prijímanie správ.
 
 # Na spustnenie nového procesu použijeme `spawn` funkciu, ktorá má ako

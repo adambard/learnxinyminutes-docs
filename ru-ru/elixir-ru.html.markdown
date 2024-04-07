@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -15,7 +15,6 @@ Elixir — современный функциональный язык прог
 дружелюбным синтаксисом и предлагает больше возможностей.
 
 ```elixir
-
 # Однострочные комментарии начинаются с символа решётки.
 
 # Для многострочных комментариев отдельного синтаксиса нет,

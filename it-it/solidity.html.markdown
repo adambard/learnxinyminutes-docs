@@ -940,7 +940,6 @@ contract CrowdFunder {
     }
 }
 // ** END EXAMPLE **
-
 ```
 
 Qualche altra funzionalità.

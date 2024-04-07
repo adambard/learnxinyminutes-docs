@@ -64,8 +64,6 @@ tylko je przechowuje.
 
 <!-- Poniższy element ma dwa atrybuty -->
 <plik type="gif" id="4293">komputer.gif</plik>
-
-
 ```
 
 * Dobrze sformatowany dokument i walidacja
@@ -81,8 +79,6 @@ Korzystając z tych narzędzi możesz sprawdzić dane zawarte w dokumencie poza
 logiką aplikacji.
 
 ```xml
-
-
 <!-- Poniżej jest uproszczona wersja dokumentu księgarni,
   z dodatkową definicją DTD.-->
 

@@ -174,10 +174,10 @@ True ; => True
 
 ; create lexical bindings with `let', all variables defined thusly
 ; have local scope
-(let [[nemesis {"superman" "lex luther"
+(let [nemesis {"superman" "lex luther"
                 "sherlock" "moriarty"
-                "seinfeld" "newman"}]]
-  (for [(, h v) (.items nemesis)]
+                "seinfeld" "newman"}]
+  (for [[h v] (.items nemesis)]
 	(print (.format "{0}'s nemesis was {1}" h v))))
 
 ;; classes

@@ -277,6 +277,7 @@ The content terminates at the next Pod directive or the first blank line
 ```
 =BLOCK_TYPE  BLOCK_DATA
 ```
+
 For example:
 
 ```

@@ -118,8 +118,8 @@ END IF
 PRINT aa
 
 PAUSE
-
 ```
+
 ## Artículos
 
 * [Primeros pasos](http://smallbasic.sourceforge.net/?q=node/1573)

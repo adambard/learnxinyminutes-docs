@@ -531,6 +531,7 @@ class ClasseEsempio extends AltraClasse implements PrimaInterfaccia, SecondaInte
 }
 */
 ```
+
 ## Letture future
 
 I link di seguito sono solo per capire l'argomento, cerca pure su Google degli esempi specifici

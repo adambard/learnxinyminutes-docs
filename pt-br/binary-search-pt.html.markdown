@@ -32,8 +32,8 @@ elementos, retornar -1.
 Busca Linear: O (n)               Tempo Linear
 
 Busca Binária: O ( log(n) )		   Tempo Logarítmico
-
 ```
+
 ```
 def busca(arr, x):
  
@@ -43,8 +43,8 @@ def busca(arr, x):
             return i
  
     return -1
-
 ```
+
 ## Algoritmo de Busca Binária
 
 O pré-requisito básico para que uma busca binária funcione é que os dados que se
@@ -64,7 +64,6 @@ direito do elemento do meio. Portanto nós pulamos para a metade direita.
 4) Senão (x é menor) pulamos para a metade esquerda.
 
 Essa é a ideia da implementação recursiva da busca binária.
-
 ```
 
 ### Considerações Finais

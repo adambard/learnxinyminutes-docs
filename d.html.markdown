@@ -128,7 +128,6 @@ class Matrix(uint m, uint n, T = int) {
 }
 
 auto mat = new Matrix!(3, 3); // We've defaulted type 'T' to 'int'.
-
 ```
 
 Speaking of classes, let's talk about properties for a second. A property

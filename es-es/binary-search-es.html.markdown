@@ -22,8 +22,8 @@ Un método sencillo para poner en práctica la búsqueda es hacer una búsqueda 
 Búsqueda Lineal: O (n)               Tiempo lineal
 
 Búsqueda Binaria: O ( log(n) )		   Tiempo logarítmico
-
 ```
+
 ```
 def search(arr, x):
  
@@ -33,8 +33,8 @@ def search(arr, x):
             return i
  
     return -1
-
 ```
+
 ## Algoritmo de Búsqueda Binaria 
 
 El requisito básico para que la búsqueda binaria funcione es que los datos a buscar deben estar ordenados (en cualquier orden).
@@ -49,7 +49,6 @@ La idea de la búsqueda binaria es usar la información de que la matriz está o
 3) Si no coincide, si x es mayor que el elemento del medio, entonces x solo puede estar en la mitad derecha justo después del elemento del medio. Así que recurrimos a la mitad derecha. 
 4) Si no (x es más pequeño) recurrimos a la mitad izquierda.
 Siguiendo la implementación recursiva de búsqueda binaria.
-
 ```
 
 ### Notas finales 

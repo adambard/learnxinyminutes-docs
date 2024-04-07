@@ -905,7 +905,6 @@ Node createLinkedList(int *vals, int len);
 /* a header file but instead put into separate headers or a C file.          */
 
 #endif /* End of the if precompiler directive. */
-
 ```
 
 ## Further Reading

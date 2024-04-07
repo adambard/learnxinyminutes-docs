@@ -93,7 +93,6 @@ path = shortestPath( (user)-[:KNOWS*..5]-(other) )
 
 // Tree navigation 
 (root)<-[:PARENT*]-(leaf:Category)-[:ITEM]->(data:Product)
-
 ```
 
 
@@ -101,13 +100,16 @@ Create queries
 ---
 
 Create a new node
+
 ```
 CREATE (a:Person {name:"Théo Gauchoux"})
 RETURN a
 ```
+
 *`RETURN` allows to have a result after the query. It can be multiple, as `RETURN a, b`.*
 
 Create a new relationship (with 2 new nodes)
+
 ```
 CREATE (a:Person)-[k:KNOWS]-(b:Person)
 RETURN a,k,b
@@ -117,36 +119,42 @@ Match queries
 ---
 
 Match all nodes
+
 ```
 MATCH (n)
 RETURN n
 ```
 
 Match nodes by label
+
 ```
 MATCH (a:Person)
 RETURN a
 ```
 
 Match nodes by label and property
+
 ```
 MATCH (a:Person {name:"Théo Gauchoux"})
 RETURN a
 ```
 
 Match nodes according to relationships (undirected)
+
 ```
 MATCH (a)-[:KNOWS]-(b)
 RETURN a,b
 ```
 
 Match nodes according to relationships (directed)
+
 ```
 MATCH (a)-[:MANAGES]->(b)
 RETURN a,b
 ```
 
 Match nodes with a `WHERE` clause
+
 ```
 MATCH (p:Person {name:"Théo Gauchoux"})-[s:LIVES_IN]->(city:City)
 WHERE s.since = 2015
@@ -154,6 +162,7 @@ RETURN p,state
 ```
 
 You can use `MATCH WHERE` clause with `CREATE` clause
+
 ```
 MATCH (a), (b)
 WHERE a.name = "Jacquie" AND b.name = "Michel"
@@ -165,6 +174,7 @@ Update queries
 ---
 
 Update a specific property of a node
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -172,6 +182,7 @@ SET p.age = 23
 ```
 
 Replace all properties of a node
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -179,6 +190,7 @@ SET p = {name: "Michel", age: 23}
 ```
 
 Add new property to a node
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -186,6 +198,7 @@ SET p + = {studies: "IT Engineering"}
 ```
 
 Add a label to a node
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -197,6 +210,7 @@ Delete queries
 ---
 
 Delete a specific node (linked relationships must be deleted before)
+
 ```
 MATCH (p:Person)-[relationship]-()
 WHERE p.name = "Théo Gauchoux"
@@ -204,14 +218,17 @@ DELETE relationship, p
 ```
 
 Remove a property in a specific node
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
 REMOVE p.age
 ```
+
 *Pay attention to the `REMOVE`keyword, it's not `DELETE` !*
 
 Remove a label from a specific node
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -219,11 +236,13 @@ DELETE p:Person
 ```
 
 Delete entire database
+
 ```
 MATCH (n)
 OPTIONAL MATCH (n)-[r]-()
 DELETE n, r
 ```
+
 *Seriously, it's the `rm -rf /` of Cypher !*
 
 

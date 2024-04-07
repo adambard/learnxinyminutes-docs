@@ -701,7 +701,6 @@ class UsingExample {
          */
     }
 }
-
 ```
 
 We're still only scratching the surface here of what Haxe can do.  For a formal

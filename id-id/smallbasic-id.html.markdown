@@ -119,7 +119,6 @@ End If
 Print aa
 
 PAUSE
-
 ```
 
 ## Artikel

@@ -23,7 +23,6 @@ louiedinh [at] [google's email service]
 Σημείωση: Το παρόν άρθρο ασχολείται μόνο με την Python 3. Δείτε [εδώ](http://learnxinyminutes.com/docs/pythonlegacy/) αν θέλετε να μάθετε την παλιά Python 2.7
 
 ```python
-
 # Τα σχόλια μίας γραμμής ξεκινούν με #
 
 """ Τα σχόλια πολλαπλών γραμμών μπορούν

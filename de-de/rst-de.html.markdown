@@ -86,15 +86,14 @@ erstellt werden, aber ich empfehle dir dafür die komplette Dokumentation zu les
 
 Es gibt mehrere Möglichkeiten um Links zu machen:
 
-- Wenn man einen Unterstrich hinter einem Wort hinzufügt: Github_ Zusätzlich 
+- Wenn man einen Unterstrich hinter einem Wort hinzufügt: GitHub_ Zusätzlich 
 muss man die Zielurl nach dem Text hinzufügen. 
 (Dies hat den Vorteil, dass man keine unnötigen Urls in lesbaren Text einfügt.
 - Wenn man die vollständige Url eingibt : https://github.com/
 (Dies wird automatisch in ein Link konvertiert.)
-- Wenn man es mehr Markdown ähnlich eingibt: `Github <https://github.com/>`_ .
+- Wenn man es mehr Markdown ähnlich eingibt: `GitHub <https://github.com/>`_ .
 
-.. _Github https://github.com/
-
+.. _GitHub https://github.com/
 ```
 
 

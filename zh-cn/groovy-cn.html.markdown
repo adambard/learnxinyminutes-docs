@@ -11,7 +11,6 @@ lang: zh-cn
 Groovy - Java平台的动态语言。[了解更多。](http://www.groovy-lang.org/)
 
 ```groovy
-
 /*
   安装：
 
@@ -394,8 +393,6 @@ int sum(int x, int y) {
 }
 
 assert sum(2,5) == 7
-
-
 ```
 
 ## 进阶资源

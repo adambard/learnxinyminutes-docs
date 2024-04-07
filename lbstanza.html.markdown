@@ -8,7 +8,7 @@ contributors:
 LB Stanza (or Stanza for short) is a new optionally-typed general purpose programming language from the University of California, Berkeley. Stanza was designed to help programmers tackle the complexity of architecting large programs and significantly increase the productivity of application programmers across the entire software development life cycle.
 
 
-```stanza
+```
 ; this is a comment 
 ;<A>
 This is a block comment 
@@ -268,7 +268,7 @@ is-there = any?({_ == 2.0}, numbers)
 doc: \<doc>
     # Document Strings 
 
-    ```stanza
+    ```
     val you-can = "include code snippets, too" 
     ```
 

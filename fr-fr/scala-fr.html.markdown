@@ -12,7 +12,6 @@ lang: fr-fr
 ### Scala - le langage évolutif
 
 ```scala
-
 /*
   Pour vous préparer :
 
@@ -443,8 +442,6 @@ for(line <- Source.fromFile("myfile.txt").getLines())
   println(line)
 
 // On utilise le PrintWriter de Java pour écrire un fichier
-
-
 ```
 
 ## Autres ressources

@@ -105,7 +105,6 @@ Cet article porte principalement sur la syntaxe et quelques astuces.
 		<td>Deuxième ligne, deuxième cellule</td>
 	</tr>
 </table>
-
 ```
 
 ## Utilisation

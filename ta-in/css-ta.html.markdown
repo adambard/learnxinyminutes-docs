@@ -9,7 +9,7 @@ contributors:
 translators:
     - ["Rasendran Kirushan", "https://github.com/kirushanr"]
 filename: learncss-ta.css
-lang: in-ta
+lang: ta-in
 ---
 
 
@@ -37,7 +37,7 @@ CSS ஆனது முற்று முழுதாக visual(காட்ச
    ## SELECTORS
    #################### */
 
-/* ஒரு HTML பக்கத்தில் இருக்கும் உறுப்பை நாம் selector மூலம் தெரிவு செய்யலாம்
+/* ஒரு HTML பக்கத்தில் இருக்கும் உறுப்பை நாம் selector மூலம் தெரிவு செய்யலாம் */
 selector { property: value; /* more properties...*/ }
 
 /*

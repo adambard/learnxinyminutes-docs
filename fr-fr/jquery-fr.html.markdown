@@ -15,8 +15,6 @@ C'est pourquoi aujourd'hui, jQuery est utilisée par de nombreuses grandes entre
 Étant donné que jQuery est une bibliothèque JavaScript, vous devriez d'abord [apprendre le JavaScript](https://learnxinyminutes.com/docs/fr-fr/javascript-fr/)
 
 ```js
-
-
 ///////////////////////////////////
 // 1. Les sélecteurs
 
@@ -137,7 +135,5 @@ var heights = [];
 $('p').each(function() {
   heights.push($(this).height()); // Ajoute la hauteur de tous les éléments 'p' à la liste
 });
-
-
 ```
 

@@ -15,7 +15,6 @@ Es básicamente pseudocódigo ejecutable.
 ¡Comentarios serán muy apreciados! Pueden contactarme en [@louiedinh](http://twitter.com/louiedinh) o louiedinh [at] [servicio de email de google]
 
 ```python
-
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
 
 """ Strings multilinea pueden escribirse
@@ -328,7 +327,7 @@ dicc_lleno = {"uno": 1, "dos": 2, "tres": 3}
 nuestro_iterable = dicc_lleno.keys()
 print(nuestro_iterable) #=> dict_keys(['uno', 'dos', 'tres']). Este es un objeto que implementa nuestra interfaz Iterable
 
-Podemos recorrerla.
+# Podemos recorrerla.
 for i in nuestro_iterable:
     print(i)    # Imprime uno, dos, tres
 
@@ -421,7 +420,7 @@ map(sumar_10, [1,2,3]) #=> [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
 # Podemos usar listas por comprensión para mapeos y filtros agradables
-[add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
+[sumar_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 # también hay diccionarios
 {k:k**2 for k in range(3)} #=> {0: 0, 1: 1, 2: 4}
@@ -548,7 +547,7 @@ def pedir(_decir):
 
 
 @pedir
-def say(decir_por_favor=False):
+def decir(decir_por_favor=False):
     mensaje = "¿Puedes comprarme una cerveza?"
     return mensaje, decir_por_favor
 

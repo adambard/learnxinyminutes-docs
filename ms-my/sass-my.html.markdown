@@ -15,7 +15,6 @@ Sass mempunyai dua perbezaan pilihan sintaks untuk dipilih. SCSS, yang mana memp
 Tutorial ini ditulis menggunakan SCSS.
 
 ```scss
-
 //Komen baris tunggal dikeluarkan apabila Sass dikompil ke CSS.
 
 /*Komen multi dikekalkan. */
@@ -210,10 +209,6 @@ ul li:hover {
 ul li a {
   color: white;
 }
-
-
-
-
 ```
 
 

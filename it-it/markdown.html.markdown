@@ -72,7 +72,7 @@ __Come pure questo.__
 *__E questo!__*
 ```
 
-In Github Flavored Markdown, che è utilizzato per renderizzare i file markdown su Github, è presente anche lo stile barrato:
+In GitHub Flavored Markdown, che è utilizzato per renderizzare i file markdown su GitHub, è presente anche lo stile barrato:
 
 ```md
 ~~Questo testo è barrato.~~
@@ -183,7 +183,7 @@ Potete inoltre inserire un altro tab (o altri quattro spazi) per indentare il vo
 
 ```md
     my_array.each do |item|
-        puts item
+      puts item
     end
 ```
 
@@ -193,14 +193,17 @@ Codice inline può essere inserito usando il carattere backtick `
 Giovanni non sapeva neppure a cosa servisse la funzione `go_to()`!
 ```
 
-In Github Flavored Markdown, potete inoltre usare una sintassi speciale per il codice
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+In GitHub Flavored Markdown, potete inoltre usare una sintassi speciale per il codice
+
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Hello world!"
 end
-&#x60;&#x60;&#x60;</code></pre>
-Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre Github userà l'evidenziazione della sintassi del linguaggio specificato dopo i \`\`\` iniziali
+```
+````
+
+Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre GitHub userà l'evidenziazione della sintassi del linguaggio specificato dopo i \`\`\` iniziali
 
 ## Linea orizzontale
 Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asterischi o trattini, con o senza spazi. 
@@ -253,7 +256,7 @@ Ma non è comunemente usato.
 Le immagini sono inserite come i link ma con un punto esclamativo inserito prima delle parentesi quadre!
 
 ```md
-![Qeusto è il testo alternativo per l'immagine](http://imgur.com/myimage.jpg "Il titolo opzionale")
+![Questo è il testo alternativo per l'immagine](http://imgur.com/myimage.jpg "Il titolo opzionale")
 ```
 
 E la modalità a riferimento funziona esattamente come ci si aspetta
@@ -282,7 +285,7 @@ Voglio inserire *questo testo circondato da asterischi* ma non voglio che venga 
 ```
 
 ### Combinazioni di tasti
-In Github Flavored Markdown, potete utilizzare il tag `<kbd>` per raffigurare i tasti della tastiera.
+In GitHub Flavored Markdown, potete utilizzare il tag `<kbd>` per raffigurare i tasti della tastiera.
 
 ```md
 Il tuo computer è crashato? Prova a premere
@@ -290,7 +293,7 @@ Il tuo computer è crashato? Prova a premere
 ```
 
 ### Tabelle
-Le tabelle sono disponibili solo in Github Flavored Markdown e sono leggeremente complesse, ma se proprio volete inserirle fate come segue:
+Le tabelle sono disponibili solo in GitHub Flavored Markdown e sono leggeremente complesse, ma se proprio volete inserirle fate come segue:
 
 ```md
 | Col1                 | Col2     | Col3               |
@@ -307,4 +310,4 @@ Col 1 | Col2 | Col3
 ```
 
 ---
-Per altre informazioni, leggete il post ufficiale di John Gruber sulla sintassi [qui](http://daringfireball.net/projects/markdown/syntax) e il magnifico cheatsheet di Adam Pritchard [qui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Per altre informazioni, leggete il post ufficiale di John Gruber sulla sintassi [qui](https://daringfireball.net/projects/markdown/syntax) e il magnifico cheatsheet di Adam Pritchard [qui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).

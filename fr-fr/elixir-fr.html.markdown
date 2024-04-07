@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -15,7 +15,6 @@ Il est totalement compatible avec Erlang mais dispose d'une syntaxe plus agréab
 
 
 ```elixir
-
 # Un commentaire simple sur une seule ligne commence par un dièse.
 
 # Il n'y a pas de commentaire multi-ligne,

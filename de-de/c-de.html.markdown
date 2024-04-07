@@ -844,6 +844,7 @@ Node create_linked_list(int *value, int length);
 
 #endif /* Ende der Präprozessordirektive */
 ```
+
 ## Weiterführende Literatur
 
 Das Beste wird es sein, wenn man sich ein Exemplar des Buches

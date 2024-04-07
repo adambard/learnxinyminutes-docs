@@ -21,7 +21,7 @@ Diese Version wurde in pyqt erstellt.
 ```python
 import sys
 from PyQt4 import QtGui
-	
+
 def window():
 	# Erschafft ein Anwendungsobjekt.
     app = QtGui.QApplication(sys.argv)
@@ -43,15 +43,14 @@ def window():
 
 if __name__ == '__main__':
     window()
-
 ```
 
 Damit wir weitere fortgeschrittene Funktionen in **pyqt** verwenden können,
 müssen wir anfangen zusätzliche Elemente zu bauen.
-Hier zeigen wir wie man eine Dialog Popup Box einführt. 
+Hier zeigen wir wie man eine Dialog Popup Box einführt.
 Diese ist nützlich, um den Benutzer eine Entscheidung zu bestätigen oder um Informationen anzuzeigen.
 
-```Python 
+```python
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -70,7 +69,7 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-	
+
 # Diese Funktion soll ein Dialogfenster mit einem Knopf erschaffen.
 # Der Knopf wartet bis er geklickt wird und beendet das Programm
 def showdialog():

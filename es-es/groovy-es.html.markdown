@@ -11,7 +11,6 @@ filename: groovy-es.html
 Groovy - Un lenguaje dinámico para la plataforma Java [Leer más aquí.](http://www.groovy-lang.org/)
 
 ```groovy
-
 /*
   Hora de configurar:
 
@@ -411,8 +410,6 @@ int sum(int x, int y) {
 }
 
 assert sum(2,5) == 7
-
-
 ```
 
 ## Más recursos

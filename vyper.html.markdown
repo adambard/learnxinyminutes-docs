@@ -834,7 +834,6 @@ def doSomething():
 # Function parameter/return value natspec
 # @param someParam Some description of what the param does
 # @return Description of the return value
-
 ```
 
 ## Additional resources

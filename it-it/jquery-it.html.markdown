@@ -14,8 +14,6 @@ jQuery è una libreria JavaScript che ti aiuta a "fare di più, scrivendo meno".
 Visto che jQuery è una libreria JavaScript dovresti prima [imparare JavaScript](https://learnxinyminutes.com/docs/javascript/)
 
 ```js
-
-
 ///////////////////////////////////
 // 1. Selettori
 
@@ -126,6 +124,4 @@ var heights = [];
 $('p').each(function() {
   heights.push($(this).height()); // Aggiunge tutte le altezze del tag 'p' all'array
 });
-
-
 ```

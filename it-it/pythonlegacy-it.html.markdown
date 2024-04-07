@@ -28,7 +28,6 @@ Il modulo `__future__` permette di scrivere codice in Python 3, che può essere 
 utilizzando Python 2: cosa aspetti a vedere il tutorial di Python 3?
 
 ```python
-
 # I commenti su una sola linea iniziano con un cancelletto
 
 """ Più stringhe possono essere scritte

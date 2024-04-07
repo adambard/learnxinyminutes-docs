@@ -47,7 +47,6 @@ p. This line is not commented
 <!-- HTML comments are also…
 
 respected -->
-
 ```
 
 ## Paragraphs
@@ -116,7 +115,6 @@ pre.. This is a multi-line preformatted…
 …text block that includes blank lines
 
 p. End a multi-line preformatted text block with a new block element.
-
 ```
 
 ## Headings
@@ -138,7 +136,6 @@ h4. This is an <h4>
 h5. This is an <h5>
 
 h6. This is an <h6>
-
 ```
 
 
@@ -177,7 +174,6 @@ This is -deleted- text and this is +inserted+ text.
 ###. Citations are indicated using double '?':
 
 ??This is a cool citation??
-
 ```
 
 ## Lists
@@ -237,7 +233,6 @@ Blank lines are included in the multi-line code block
 p. End a multi-line code block with any block element
 
 p. Indicate @inline code@ using the '@' symbol.
-
 ```
 
 ## Horizontal rule
@@ -265,7 +260,6 @@ Horizontal rules (`<hr/>`) are easily added with two hyphens
 Multiple "references":txstyle to the "txstyle":txstyle website.
 
 [txstyle]https://txstyle.org/
-
 ```
 
 ## Images
@@ -279,7 +273,6 @@ Alt text is included in parenthesis after the URL, and they can be linked too:
 !http://imageurl.com(image alt-text)!
 
 !http://imageurl.com(alt-text)!:http://image-link-url.com
-
 ```
 
 ## Footnotes and Endnotes
@@ -399,8 +392,8 @@ A backslash \ is used for a column span:
 |=. center alignment |
 | no alignment |
 |>. right alignment |
-
 ```
+
 or, for the same results
 
 ```
@@ -464,6 +457,7 @@ Three quarters: (3/4) => ¾
 Degree: (o) => °
 Plus/minus: (+/-) => ±
 ```
+
 ### Multiplication/Dimension
 
 ```
@@ -496,6 +490,7 @@ p(#my-id). IDs are enclosed in parentheses and prefaced with a pound '#'.
 %spans% are enclosed in percent symbols
 div. Divs are indicated by the 'div.' shorthand
 ```
+
 ---
 
 ## For More Info

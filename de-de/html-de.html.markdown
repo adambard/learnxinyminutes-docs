@@ -106,7 +106,6 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 		<td>Zweite Zeile, zweite Spalte</td>
 	</tr>
 </table>
-
 ```
 
 ## Verwendung

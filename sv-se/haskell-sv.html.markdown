@@ -438,7 +438,6 @@ infixl 6 +
 Vad är ditt namn?
 Kompis!
 Hello, Kompis!
-
 ```
 
 Det finns mycket mer att upptäcka med Haskell, inklusive typklasser och monader.

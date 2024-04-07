@@ -18,7 +18,6 @@ nuo ekrano ir veikti fone, o vėliau gali būti vėl prijungtas.
 
 
 ```
-
   tmux [komanda]     # Vykdyti komandą
                      # 'tmux' be komandų sukurs naują sesiją
 
@@ -52,7 +51,6 @@ nuo ekrano ir veikti fone, o vėliau gali būti vėl prijungtas.
      -t "#"          # Užbaigti nurodytą sesiją
      -a              # Užbaigti visas sesijas
      -a -t "#"       # Užbaigti visas sesijas, bet ne taikinį
-
 ```
 
 
@@ -107,7 +105,6 @@ Priskirta tmux sesija yra valdoma klavišų kompinacijomis.
 
   M-Up, M-Down       # Keisti esamo skydelio dydį penkių ląstelių žingsniu
   M-Left, M-Right
-
 ```
 
 
@@ -236,7 +233,6 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # Requires https://github.com/thewtex/tmux-mem-cpu-load/
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
 
 

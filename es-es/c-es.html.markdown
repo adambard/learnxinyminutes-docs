@@ -414,7 +414,6 @@ typedef void (*my_fnp_type)(char *);
 // Es usado para declarar la variable puntero actual:
 // ...
 // my_fnp_type f; 
-
 ```
 
 ## Otras lecturas

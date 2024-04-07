@@ -891,7 +891,6 @@ public class EnumTest {
 // limite pas à une liste de constante mais peut inclure des champs et méthodes.
 // Vous pouvez en savoir plus ici (en anglais) :
 //https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
-
 ```
 
 ## Pour aller plus loin (en anglais)

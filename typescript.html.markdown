@@ -287,7 +287,6 @@ interface Foo {
 let foo = {} as Foo; // Type assertion here
 foo.bar = 123;
 foo.baz = 'hello world'
-
 ```
 
 ## Further Reading

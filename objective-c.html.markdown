@@ -387,7 +387,7 @@ if ([myClass respondsToSelector:selectorVar]) { // Checks if class contains meth
 // Implement the methods in an implementation (MyClass.m) file:
 @implementation MyClass {
     long distance; // Private access instance variable
-    NSNumber height;
+    NSNumber *height;
 }
 
 // To access a public variable from the interface file, use '_' followed by variable name:
@@ -804,8 +804,8 @@ MyClass *arcMyClass = [[MyClass alloc] init];
 __strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope
 __weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil
 __unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not set to nil when existing object is released
-
 ```
+
 ## Further Reading
 
 [Wikipedia Objective-C](http://en.wikipedia.org/wiki/Objective-C)

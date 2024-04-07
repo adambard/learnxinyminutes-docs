@@ -188,7 +188,6 @@ print twice b      ; 输出 6
 ; 使用 #include 和 %文件名 来导入外部文件
 #include %includefile.red
 ; 现在就可以使用 includefile.red 中的函数了。
-
 ```
 
 ## 更进一步

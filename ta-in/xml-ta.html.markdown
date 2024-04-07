@@ -6,7 +6,7 @@ contributors:
 translators:
   - ["Rasendran Kirushan", "https://github.com/kirushanr"]
   - ["Sridhar Easwaran", "https://github.com/sridhareaswaran"]
-lang: in-ta
+lang: ta-in
 ---
 
 
@@ -123,8 +123,6 @@ Elements  ஒரு `<` ஆரம்பாமாகி `>` முடிவடை
 
 <!-- கிழே உள்ள element இரண்டு பெறுமானங்களை கொண்டுள்ளது  -->
 <file type="gif" id="4293">computer.gif</file>
-
-
 ```
 
 * சரியான முறையில் ஒழுகுபடுத்தபட்ட X document
@@ -143,7 +141,6 @@ With this tool, you can check the XML data outside the application logic.
 இந்த கருவியை உபயோகித்து xml தகவல்களை சோதிக்க முடியும் 
 
 ```xml
-
 <!-- கீழே bookstore html document இன் எளிமையான வடிவம் 
     DTD வரையறைகளுடன்
 -->

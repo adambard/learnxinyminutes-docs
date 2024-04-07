@@ -234,6 +234,7 @@ ColdFusion comenzó como un lenguaje basado en etiquetas. Casi toda la funcional
 
 <em>Código de referencia (las funciones deben devolver algo para admitir IE)</em>
 ```
+
 ```cfs
 <cfcomponent>
 	<cfset this.hola = "Hola" />

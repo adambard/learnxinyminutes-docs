@@ -307,10 +307,8 @@ int main (int argc, const char * argv[])
 @protocol MyProtocol
     - (void)myProtocolMethod;
 @end
-
-
-
 ```
+
 ## Daha Fazla Okuma
 
 [Vikipedi Objective-C](http://tr.wikipedia.org/wiki/Objective-C)

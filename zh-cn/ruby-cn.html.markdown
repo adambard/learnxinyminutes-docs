@@ -430,7 +430,7 @@ def guests(*array)
   array.each { |guest| puts guest }
 end
 
-# 结构
+# 解构
 
 # 如果函数返回一个数组，在赋值时可以进行拆分：
 def foods
@@ -449,7 +449,7 @@ end
 
 best *ranked_competitors.first(3) #=> Winners are John, Sally, and Dingus.
 
-# 结构操作符也可放在参数里面
+# 解构操作符也可放在参数里面
 def best(first, second, third, *others)
   puts "Winners are #{first}, #{second}, and #{third}."
   puts "There were #{others.count} other participants."

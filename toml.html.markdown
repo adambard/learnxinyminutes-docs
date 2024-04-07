@@ -69,11 +69,15 @@ The first newline is trimmed in raw strings.
 ###########
 
 ## Integers can start with a +, a - or nothing.
-## Leading zeros are not allowed. Hex, octal, and binary forms are not allowed.
+## Leading zeros are not allowed.
+## Hex, octal, and binary forms are allowed.
 ## Values that cannot be expressed as a series of digits are not allowed.
 int1 = +42
 int2 = 0
 int3 = -21
+int4 = 0xdeadbeef
+int5 = 0o755
+int6 = 0b11011100
 integerRange = 64
 
 ## You can use underscores to enhance readability. Each
@@ -224,6 +228,7 @@ name = "Nail"
 sku = 284758393
 color = "gray"
 ```
+
 The equivalent in JSON would be:
 
 ```json
@@ -269,13 +274,11 @@ The equivalent in JSON would be:
   [[fruit.color]]
     name = "yellow"
     note = "I am an array item in banana fruit's table/map"
-
 ```
 
 The equivalent in JSON would be:
 
 ```
-
 {
   "fruit": [
     {

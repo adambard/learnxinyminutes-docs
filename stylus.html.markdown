@@ -16,7 +16,6 @@ Stylus syntax is very flexible. You can use standard CSS syntax and leave the se
 Stylus does not provide new style options, but gives functionality that lets you make your CSS much more dynamic.
 
 ```scss
-
 /* Code style
 ==============================*/
 

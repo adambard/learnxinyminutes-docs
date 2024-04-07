@@ -18,7 +18,6 @@ Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Pyth
 dass Python 2 als veraltet gilt und für neue Projekte nicht mehr verwendet werden sollte.
 
 ```python
-
 # Einzeilige Kommentare beginnen mit einer Raute (Doppelkreuz)
 
 """ Mehrzeilige Strings werden mit
@@ -623,7 +622,6 @@ def say(say_please=False):
 
 print(say())  # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
-
 ```
 
 ## Lust auf mehr?
