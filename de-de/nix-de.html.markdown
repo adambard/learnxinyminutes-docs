@@ -16,7 +16,7 @@ Du kannst Nix Ausdrücke evaluieren mithilfe von
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
 oder [`nix-repl`](https://github.com/edolstra/nix-repl).
 
-```
+```nix
 with builtins; [
 
   #  Kommentare

@@ -16,7 +16,7 @@ Du kan utvärdera Nix uttryck genom att använda
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
 eller [`nix-repl`](https://github.com/edolstra/nix-repl).
 
-```
+```nix
 with builtins; [
 
   #  Kommentarer

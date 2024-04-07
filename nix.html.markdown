@@ -15,7 +15,7 @@ You can evaluate Nix expressions using
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
 or [`nix repl`](https://nixos.org/nix/manual/#ssec-relnotes-2.0).
 
-```
+```nix
 with builtins; [
 
   #  Comments
