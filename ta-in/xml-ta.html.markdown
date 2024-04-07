@@ -6,7 +6,7 @@ contributors:
 translators:
   - ["Rasendran Kirushan", "https://github.com/kirushanr"]
   - ["Sridhar Easwaran", "https://github.com/sridhareaswaran"]
-lang: in-ta
+lang: ta-in
 ---
 
 
