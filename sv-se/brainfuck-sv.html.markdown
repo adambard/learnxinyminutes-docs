@@ -1,5 +1,5 @@
 ---
-language: brainfuck
+language: bf
 filename: brainfuck-sv.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
