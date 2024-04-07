@@ -228,10 +228,19 @@ cout << myString + myOtherString; // "Hello World"
 
 cout << myString + " You"; // "Hello You"
 
+// C++ string length can be found from either string::length() or string::size()
+cout << myString.length() + myOtherString.size(); // Outputs 11 (= 5 + 6).
+
 // C++ strings are mutable.
 myString.append(" Dog");
 cout << myString; // "Hello Dog"
 
+// C++ can handle C-style strings with related functions using cstrings
+#include <cstring>
+
+char myOldString[10] = "Hello CPP";
+cout << myOldString;
+cout << "Length = " << strlen(myOldString); // Length = 9
 
 /////////////
 // References
