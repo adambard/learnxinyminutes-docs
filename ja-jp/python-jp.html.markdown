@@ -20,8 +20,6 @@ lang: ja-jp
 私は構文の明快さによって、Pythonと恋に落ちました。
 以下は基本的に実行可能な疑似コードです。
 
-フィードバッグは大歓迎です! [@louiedinh](http://twitter.com/louiedinh) または louiedinh [at] [google's email service] にご連絡下さい!
-
 Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/pythonlegacy/) をご確認下さい。
 
 ```python

@@ -17,9 +17,6 @@ A Python nyelvet Guido Van Rossum alkotta meg a 90-es évek elején. Manapság a
 egyik legnépszerűbb programozási nyelv. Én a tiszta szintaxisa miatt szerettem
 bele. Tulajdonképpen futtatható pszeudokód.
 
-Szívesen fogadok visszajelzéseket! Elérsz itt: [@louiedinh](http://twitter.com/louiedinh)
-vagy pedig a louiedinh [kukac] [google email szolgáltatása] címen.
-
 Figyelem: ez a leírás a Python 2.7 verziójára vonatkozik, illetve
 általánosságban a 2.x verziókra. A Python 2.7 azonban már csak 2020-ig lesz
 támogatva, ezért kezdőknek ajánlott, hogy a Python 3-mal kezdjék az

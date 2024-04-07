@@ -12,8 +12,6 @@ lang: de-de
 Anmerkungen des ursprünglichen Autors:
 Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist heute eine der beliebtesten Sprachen. Ich habe mich in Python wegen seiner syntaktischen Übersichtlichkeit verliebt. Eigentlich ist es ausführbarer Pseudocode.
 
-Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service].
-
 Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/pythonlegacy/) weiter. Beachte hierbei,
 dass Python 2 als veraltet gilt und für neue Projekte nicht mehr verwendet werden sollte.
 

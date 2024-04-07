@@ -11,8 +11,6 @@ lang: zh-cn
 Python 由 Guido Van Rossum 在90年代初创建。 它现在是最流行的语言之一
 我喜爱python是因为它有极为清晰的语法，甚至可以说，它就是可以执行的伪代码
 
-很欢迎来自您的反馈，你可以在[@louiedinh](http://twitter.com/louiedinh) 和 louiedinh [at] [google's email service] 这里找到我
-
 注意: 这篇文章针对的版本是Python 2.7，但大多也可使用于其他Python 2的版本
 如果是Python 3，请在网络上寻找其他教程
 
