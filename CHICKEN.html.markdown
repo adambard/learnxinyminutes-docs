@@ -504,8 +504,8 @@ sqr                        ;; => #<procedure (sqr x)>
 
 (import star-squarer)
 (square 3)              ;; => ((* * *)(* * *)(* * *))
-
 ```
+
 ## Further Reading
 * [CHICKEN User's Manual](https://wiki.call-cc.org/manual).
 * [R5RS standards](http://www.schemers.org/Documents/Standards/R5RS)

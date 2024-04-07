@@ -125,6 +125,7 @@ DELETE FROM tablename1;
 -- تماما tablename1 إزالة جدول 
 DROP TABLE tablename1;
 ```
+
 <div dir="rtl">
 
 ## اقرأ أكثر

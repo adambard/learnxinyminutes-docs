@@ -171,6 +171,7 @@ $ git init --help
 Ne plus suivre certains fichiers et dossiers de Git.
 Habituellement fait pour les fichiers privés et temporaires qui seraient,
 autrement, partagés dans le dépôt.
+
 ```bash
 $ echo "temp/" >> .gitignore
 $ echo "cle_privee" >> .gitignore
@@ -466,6 +467,7 @@ Vous pouvez maintenant pull !
 ```bash
 git pull
 ```
+
 `...changes apply...`
 
 Vérifiez maintenant que tout est OK

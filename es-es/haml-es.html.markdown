@@ -150,7 +150,6 @@ $ haml archivo_entrada.haml archivo_salida.html
 
 :javascript
   console.log('Este es un <script> en linea');
-
 ```
 
 ## Recusros adicionales

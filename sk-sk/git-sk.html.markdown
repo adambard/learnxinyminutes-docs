@@ -139,6 +139,7 @@ $ git init --help
 ### ignoruj súbory
 
 Zámerne prestaneš sledovať súbor(y) a zložky. Typicky sa používa pre súkromné a dočasné súbory, ktoré by boli inak zdieľané v repozitári.
+
 ```bash
 $ echo "temp/" >> .gitignore
 $ echo "private_key" >> .gitignore
@@ -172,6 +173,7 @@ $ git add /cesta/k/súboru/HelloWorld.c
 # Môžeš použiť regulárne výrazy!
 $ git add ./*.java
 ```
+
 Tento príkaz len pridáva súbory do staging indexu, necommituje ich do repozitára.
 
 ### branch
@@ -476,6 +478,7 @@ $ git reset 31f2bb1
 # a zosúladí ju s pracovným adresárom (vymaže nekomitnuté zmeny).
 $ git reset --hard 31f2bb1
 ```
+
 ### revert
 
 Vezme naspäť ("od-urobí") commit. Nezamieňaj s resetom, ktorý obnoví stav

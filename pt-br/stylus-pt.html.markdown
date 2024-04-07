@@ -16,7 +16,6 @@ Stylus não fornece novas opções de estilos, mas dá funcionalidades que permi
 
 
 ```scss
-
 /* Estilo de código
 ==============================*/
 
@@ -222,7 +221,6 @@ for <val-name> [, <key-name>] in <expression>
 for $item in (1..2) /* Repete o bloco 12 vezes */
   .col-{$item}
     width ($item / 12) * 100% /* Calcula a largura pelo número da coluna*
-
 ```
 
 Agora que você conhece um pouco sobre esse poderoso pré-processador de CSS, você está pronto para criar folhas de estilos mais dinâmicas. Para aprofundar seus conhecimentos visite a documentação oficial do stylus em http://stylus-lang.com.

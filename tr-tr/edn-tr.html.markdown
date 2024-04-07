@@ -138,7 +138,6 @@ laminat
 ; UUID Etiketi
 ;; Bu etiket `uuid` ön-ekinden sonra bir UUID karşılığını karakter katarı olarak kabul eder.
 #uuid "11k12fae-7d3c-11k0-a765-0010ckke6hgk"
-
 ```
 
 # Son Ek

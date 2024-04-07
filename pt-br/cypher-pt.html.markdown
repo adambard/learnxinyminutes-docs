@@ -94,7 +94,6 @@ path = shortestPath( (user)-[:KNOWS*..5]-(other) )
 
 // Navegação de árvore
 (root)<-[:PARENT*]-(leaf:Category)-[:ITEM]->(data:Product)
-
 ```
 
 
@@ -102,13 +101,16 @@ Crie consultas
 ---
 
 Crie um novo nó
+
 ```
 CREATE (a:Person {name:"Théo Gauchoux"})
 RETURN a
 ```
+
 *`RETURN` permite ter um resultado após a consulta. Pode ser múltiplo, como `RETURN a, b`.*
 
 Crie um novo relacionamento (com 2 novos nós)
+
 ```
 CREATE (a:Person)-[k:KNOWS]-(b:Person)
 RETURN a,k,b
@@ -118,36 +120,42 @@ Consultas que casam
 ---
 
 Casam todos os nós
+
 ```
 MATCH (n)
 RETURN n
 ```
 
 Casam nós por label
+
 ```
 MATCH (a:Person)
 RETURN a
 ```
 
 Casam nós por label e propriedade
+
 ```
 MATCH (a:Person {name:"Théo Gauchoux"})
 RETURN a
 ```
 
 Casam nós de acordo com os relacionamentos (não direcionados)
+
 ```
 MATCH (a)-[:KNOWS]-(b)
 RETURN a,b
 ```
 
 Casam nós de acordo com os relacionamentos (direcionados)
+
 ```
 MATCH (a)-[:MANAGES]->(b)
 RETURN a,b
 ```
 
 Casam nós com um cláusula `WHERE`
+
 ```
 MATCH (p:Person {name:"Théo Gauchoux"})-[s:LIVES_IN]->(city:City)
 WHERE s.since = 2015
@@ -155,6 +163,7 @@ RETURN p,state
 ```
 
 Você pode usa a cláusula `MATCH WHERE` com a cláusula `CREATE`
+
 ```
 MATCH (a), (b)
 WHERE a.name = "Jacquie" AND b.name = "Michel"
@@ -166,6 +175,7 @@ Atualizar consultas
 ---
 
 Atualizar uma propriedade específica de um nó
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -173,6 +183,7 @@ SET p.age = 23
 ```
 
 Substituir todas as propriedades de um nó
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -180,6 +191,7 @@ SET p = {name: "Michel", age: 23}
 ```
 
 Adicionar nova propriedade a um nó
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -187,6 +199,7 @@ SET p + = {studies: "IT Engineering"}
 ```
 
 Adicione um label a um nó
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -198,6 +211,7 @@ Excluir consultas
 ---
 
 Excluir um nó específico (os relacionamentos vinculados devem ser excluídos antes)
+
 ```
 MATCH (p:Person)-[relationship]-()
 WHERE p.name = "Théo Gauchoux"
@@ -205,14 +219,17 @@ DELETE relationship, p
 ```
 
 Remover uma propriedade em um nó específico
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
 REMOVE p.age
 ```
+
 *Prestar atenção à palavra chave `REMOVE`, não é `DELETE` !*
 
 Remover um label de um nó específico
+
 ```
 MATCH (p:Person)
 WHERE p.name = "Théo Gauchoux"
@@ -220,11 +237,13 @@ DELETE p:Person
 ```
 
 Excluir o banco de dados inteiro
+
 ```
 MATCH (n)
 OPTIONAL MATCH (n)-[r]-()
 DELETE n, r
 ```
+
 *Sério, é o `rm -rf /` do Cypher !*
 
 

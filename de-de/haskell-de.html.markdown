@@ -419,7 +419,6 @@ foo :: Integer
 What is your name?
 Friend!
 Hello, Friend!
-
 ```
 
 Es gibt noch viel mehr in Haskell, wie zum Beispiel Typklassen und Monaden.

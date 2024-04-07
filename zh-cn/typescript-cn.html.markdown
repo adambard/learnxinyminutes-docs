@@ -168,7 +168,6 @@ let greeting = `Hi ${name}, how are you?`;
 // 有多行内容的模板字符串
 let multiline = `This is an example
 of a multiline string`;
-
 ```
 
 ## 参考资料

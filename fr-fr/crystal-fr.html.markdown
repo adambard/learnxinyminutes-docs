@@ -10,7 +10,6 @@ lang: fr-fr
 ---
 
 ```crystal
-
 # Ceci est un commentaire
 
 # Tout est objet
@@ -546,7 +545,6 @@ rescue ex4 # attrape toutes les autres exceptions
 end
 
 ex #=> "ex2"
-
 ```
 
 ## Ressources additionnelles

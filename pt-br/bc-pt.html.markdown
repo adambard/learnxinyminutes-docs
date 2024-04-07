@@ -99,6 +99,7 @@ print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
 quit /*Adicione essa linha no final do código
 para garantir que o programa encerre. Essa linha é opcional.*/ 
 ```
+
 Aproveite bem essa simples calculadora! (Ou essa linguagem de programação, para ser exato.)
 
 Este programa inteiro foi escrito em GNU bc. Para rodá-lo, use ```bc learnbc-pt.bc```

@@ -318,8 +318,8 @@ END {
     if (nlines)
         print "The average age for " name " is " sum / nlines
 }
-
 ```
+
 更多:
 
 * [Awk 教程](http://www.grymoire.com/Unix/Awk.html)

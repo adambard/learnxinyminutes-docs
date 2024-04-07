@@ -756,7 +756,6 @@ public class CobaEnum {
 // Tipe enum memiliki banyak kegunaan selain yang dicontohkan diatas.
 // Tipe enum dapat memiliki isi seperti method dan variabel.
 // Penjelasan lebih detail di https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
-
 ```
 
 ## Referensi Lainnya

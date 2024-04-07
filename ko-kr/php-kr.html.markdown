@@ -648,7 +648,6 @@ use My\Namespace as SomeOtherNamespace;
 $cls = new SomeOtherNamespace\MyClass();
 
 */
-
 ```
 
 ## 더 자세한 정보

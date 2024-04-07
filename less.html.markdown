@@ -9,8 +9,6 @@ Less is a CSS pre-processor, that adds features such as variables, nesting, mixi
 Less (and other preprocessors, such as [Sass](http://sass-lang.com/)) help developers to write maintainable and DRY (Don't Repeat Yourself) code.
 
 ```css
-
-
 //Single line comments are removed when Less is compiled to CSS.
 
 /*Multi line comments are preserved. */
@@ -368,8 +366,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
-
 ```
 
 ## Practice Less

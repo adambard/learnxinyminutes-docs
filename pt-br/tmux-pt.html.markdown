@@ -14,7 +14,6 @@ ele permite criar vários terminais e gerenciar tudo na mesma interface.
 tmux pode também rodar em background e depois ser recuperado(exibido) novamente.
 
 ```
-
   tmux [command]     # Roda um [comando]
                      # 'tmux' sem comandos irá criar uma nova seção
 
@@ -48,7 +47,6 @@ tmux pode também rodar em background e depois ser recuperado(exibido) novamente
      -t "#"          # Encerrar seção com nome "#"
      -a              # Encerrar todas as seções
      -a -t "#"       # Encerrar todas as seções exceto a "#"
-
 ```
 
 ### Teclas de atalhos (comandos)
@@ -103,7 +101,6 @@ As seções tmux acopladas são controladas através de teclas de atalho. (prefi
 
   M-Up, M-Down       # Altera o tamanho do painel atual em cinco células.
   M-Left, M-Right
-
 ```
 
 
@@ -227,7 +224,6 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # Requires https://github.com/thewtex/tmux-mem-cpu-load/
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
 
 

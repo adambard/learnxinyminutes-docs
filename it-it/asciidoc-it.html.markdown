@@ -6,7 +6,7 @@ contributors:
 translators:
     - ["Ale46", "https://github.com/ale46"]
 lang: it-it
-filename: asciidoc-it.md
+filename: asciidoc-it.adoc
 ---
 
 AsciiDoc è un linguaggio di markup simile a Markdown e può essere usato per qualsiasi cosa, dai libri ai blog. Creato nel 2002 da Stuart Rackman, questo linguaggio è semplice ma permette un buon numero di personalizzazioni.
@@ -84,7 +84,6 @@ Titoli di sezione
 ==== Livello 3 <h4>
 
 ===== Livello 4 <h5>
-
 ```
 
 Liste

@@ -831,7 +831,6 @@ try {
 } catch (ExceptionSaya $e) {
     // Penanganan untuk exception khusus
 }
-
 ```
 
 ## Informasi lainnya

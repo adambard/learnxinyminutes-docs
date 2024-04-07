@@ -19,6 +19,7 @@ módulos de forma síncrona fica sujeito a problemas de performance, usabilidade
 debugging e problemas de acesso em requisições cross-domain.
 
 ### Conceito básico
+
 ```javascript
 // O básico da API de AMD consiste de nada mais que dois métodos: `define` e `require`
 // e isso é tudo sobre a definição de módulo e consumo:
@@ -122,6 +123,7 @@ define(['daos/coisas', 'modules/algunsHelpers'], function(coisasDao, helpers){
   return AlgumaClasse;
 });
 ```
+
 Para alterar o comportamento padrão de mapeamento de caminho de pastas utilize
 `requirejs.config(configObj)` em seu `main.js`:
 
@@ -141,6 +143,7 @@ require(['jquery', 'coolLibFromBower', 'modules/algunsHelpers'], function($, coo
   coolLib.facaAlgoDoidoCom(helpers.transform($('#foo')));
 });
 ```
+
 Apps baseados em `require.js` geralmente terão um único ponto de acesso (`main.js`) que é passado à tag script do `require.js` como um data-attribute. Ele vai ser automaticamente carregado e executado com o carregamento da página:
 
 ```html
@@ -162,16 +165,19 @@ Muitas pessoas preferem usar AMD para sanar a organização do código durante o
 `require.js` vem com um script chamado `r.js` (que você vai provavelmente rodar em node.js, embora Rhino suporte também) que você pode analisar o gráfico de dependências de seu projeto, e fazer em um único arquivo contendo todos os seus módulos (corretamente nomeados), minificados e prontos para serem consumidos.
 
 Instale-o utilizando `npm`:
+
 ```shell
 $ npm install requirejs -g
 ```
 
 Agora você pode alimentá-lo com um arquivo de configuração:
+
 ```shell
 $ r.js -o app.build.js
 ```
 
 Para o nosso exemplo acima a configuração pode ser essa:
+
 ```javascript
 /* file : app.build.js */
 ({
@@ -188,6 +194,7 @@ Para o nosso exemplo acima a configuração pode ser essa:
 ```
 
 Para usar o arquivo gerado, em produção, simplesmente troque o `data-main`:
+
 ```html
 <script src="require.js" data-main="app/main-built"></script>
 ```

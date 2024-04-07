@@ -1,3 +1,16 @@
+---
+language: latex
+contributors:
+    - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
+    - ["Colton Kohnke", "http://github.com/voltnor"]
+    - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
+translators:
+    - ["Terka Slanináková", "http://github.com/TerkaSlan"]
+lang: sk-sk
+filename: learn-latex-sk.tex
+---
+
+```tex
 % Všetky komentáre začínajú s %
 % Viac-riadkové komentáre sa nedajú urobiť
 
@@ -207,3 +220,9 @@ To je zatiaľ všetko!
 
 % koniec dokumentu
 \end{document}
+```
+
+## Viac o LaTeXe (anglicky)
+
+* Úžasná LaTeX wikikniha: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
+* Naozajstný tutoriál: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)

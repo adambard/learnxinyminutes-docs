@@ -22,7 +22,6 @@ Mọi phản hồi đều sẽ được tích cực ghi nhận! Bạn có thể 
 Lưu ý: Bài viết này áp dụng riêng cho Python 3. Truy cập [vào đây](http://learnxinyminutes.com/docs/pythonlegacy/) nếu bạn muốn học phiên bản cũ Python 2.7
 
 ```python
-
 # Dòng bình luận (comment) bắt đầu bằng dấu thăng (#)
 
 """ Những chuỗi ký tự (string) nằm trên nhiều dòng

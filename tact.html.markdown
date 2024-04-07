@@ -567,7 +567,6 @@ contract Counter with Deployable, Ownable {
         self.val = self.val + 1;
     }
 }
-
 ```
 
 ## Additional resources

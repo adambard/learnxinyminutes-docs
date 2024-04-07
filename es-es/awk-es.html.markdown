@@ -354,7 +354,6 @@ END {
     if (nlines)
         print "La edad promedio para " name " es " sum / nlines
 }
-
 ```
 
 Más información:

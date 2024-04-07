@@ -471,8 +471,6 @@ math.sqrt(16) == m.sqrt(16) #=> True
 # Cu "dir" inspectăm ce funcţii conţine un modul
 import math
 dir(math)
-
-
 ```
 
 ## Doriţi mai mult?

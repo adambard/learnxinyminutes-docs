@@ -139,7 +139,6 @@ sub logger {
 
 # Ahora podemos utilizar la subrutina al igual que cualquier otra función incorporada:
 logger("Tenemos una subrutina logger!");
-
 ```
 
 #### Utilizando módulos Perl

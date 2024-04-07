@@ -476,7 +476,7 @@ void str_reverse_through_pointer(char *str_in) {
 Если у вас появился вопрос, почитайте [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
 Очень важно использовать правильные отступы и ставить пробелы в нужных местах.
-Читаемый код лучше чем красивый или быстрый код.
+Читаемый код лучше, чем красивый или быстрый код.
 Чтобы научиться писать хороший код, почитайте [Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
 
 Также не забывайте, что [Google](http://google.com) и [Яндекс](http://yandex.ru) – ваши хорошие друзья.

@@ -12,8 +12,8 @@ with additional features like if statements and loops. It can also be used
 as a server side templating language for server languages like NodeJS.
 
 ### The Language
-```pug
 
+```pug
 //- Single Line Comment
 
 //- Multi Line
@@ -158,13 +158,13 @@ case orderStatus
 //- <p class="warn">Your order is pending</p>
 
 //- --INCLUDE--
-//- File path -> "includes/nav.png"
+//- File path -> "includes/nav.pug"
 h1 Company Name
 nav
   a(href="index.html") Home
   a(href="about.html") About Us
 
-//- File path -> "index.png"
+//- File path -> "index.pug"
 html
   body
     include includes/nav.pug
@@ -198,11 +198,10 @@ mixin comment(name, comment)
     <span class="comment-name">Bob</span>
     <div class="comment-text">This is Awesome</div>
   </div>
-
 ```
 
 
 ### Additional Resources
 - [The Site](https://pugjs.org/)
 - [The Docs](https://pugjs.org/api/getting-started.html)
-- [Github Repo](https://github.com/pugjs/pug)
+- [GitHub Repo](https://github.com/pugjs/pug)

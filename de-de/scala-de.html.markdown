@@ -824,7 +824,6 @@ val writer = new PrintWriter("myfile.txt")
 writer.write("Schreibe Zeile" + util.Properties.lineSeparator)
 writer.write("Und noch eine Zeile" + util.Properties.lineSeparator)
 writer.close()
-
 ```
 
 ## Weiterführende Hinweise

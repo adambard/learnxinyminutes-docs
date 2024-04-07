@@ -229,7 +229,6 @@ Begin
                                 // การประกาศพารามิเตอร์ใน
                                 // โพรซีเยอร์ get_integer ด้านบน
 End.
-
 ```
 
 [1]:	https://en.wikipedia.org/wiki/Pascal_(programming_language)

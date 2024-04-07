@@ -216,7 +216,6 @@ page
 
 \ Exiting Gforth:
 \ bye
-
 ```
 
 ##Ready For More?

@@ -18,7 +18,6 @@ Puoi provarlo nel tuo browser utilizzando
 [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
 ```
-
 Qualsiasi carattere diverso da "><+-.,[]" (escludendo gli apici)
 viene ignorato.
 Branfuck è caratterizzato da un array di 30,000 celle inizializzate a zero

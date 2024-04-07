@@ -804,8 +804,8 @@ MyClass *arcMyClass = [[MyClass alloc] init];
 __strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope
 __weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil
 __unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not set to nil when existing object is released
-
 ```
+
 ## Further Reading
 
 [Wikipedia Objective-C](http://en.wikipedia.org/wiki/Objective-C)

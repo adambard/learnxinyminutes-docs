@@ -23,7 +23,6 @@ Note: This article applies to Python 3 specifically. Check out
 old Python 2.7
 
 ```python
-
 # Single line comments start with a number symbol.
 
 """ Multiline strings can be written
@@ -501,20 +500,20 @@ with open("myfile.txt") as f:
 
 # Writing to a file
 contents = {"aa": 12, "bb": 21}
-with open("myfile1.txt", "w+") as file:
+with open("myfile1.txt", "w") as file:
     file.write(str(contents))        # writes a string to a file
 
 import json
-with open("myfile2.txt", "w+") as file:
+with open("myfile2.txt", "w") as file:
     file.write(json.dumps(contents)) # writes an object to a file
 
 # Reading from a file
-with open('myfile1.txt', "r+") as file:
+with open('myfile1.txt', "r") as file:
     contents = file.read()           # reads a string from a file
 print(contents)
 # print: {"aa": 12, "bb": 21}
 
-with open('myfile2.txt', "r+") as file:
+with open('myfile2.txt', "r") as file:
     contents = json.load(file)       # reads a json object from a file
 print(contents)
 # print: {"aa": 12, "bb": 21}
@@ -1094,7 +1093,6 @@ my_function(1,2) # => "Entering function my_function"
 
 print(my_function.__name__) # => 'my_function'
 print(my_function.__code__.co_argcount) # => 2
-
 ```
 
 ### Free Online

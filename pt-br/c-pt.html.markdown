@@ -631,7 +631,6 @@ typedef void (*minha_função_type)(char *);
 // = += -= *= /= %= &= ^= |= <<= >>= | direita para esqureda //
 // ,                                 | esquerda para direita //
 //-----------------------------------------------------------//
-
 ```
 
 ## Leitura adicional

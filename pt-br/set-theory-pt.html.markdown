@@ -66,6 +66,7 @@ C = { x : x = 2k, k ∈ N } = { 0, 2, 4, 6, 8, ... }
 ```
 
 Ou pode-se também aplicar uma função ao sujeito, ex:
+
 ```
 D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
 ```
@@ -85,6 +86,7 @@ D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
 ### Conjuntos especiais
 O Conjunto das Partes
 - Seja `A` um conjunto qualquer. O conjunto que contém todos os possíveis subconjuntos de `A` é chamado "conjunto das partes" e é denotado como `P(A)`. Se o conjunto `A` contém `n` elementos, então o conjunto das partes conterá `2^n` elementos.
+
 ```
 P(A) = { x : x ⊆ A }
 ```
@@ -107,6 +109,7 @@ A ∩ B = { x : x ∈ A, x ∈ B }
 
 ### Diferença
 Dados dois conjuntos `A` e `B`, o conjunto da diferença entre `A` e `B` são todos os itens de `A` que não pertencem a `B`.
+
 ```
 A \ B = { x : x ∈ A, x ∉ B }
 ```
@@ -122,6 +125,7 @@ A △ B = (A \ B) ∪ (B \ A)
 
 ### Produto Cartesiano
 Dados dois conjuntos `A` e `B`, o produto cartesiano de `A` e `B` consiste no conjunto contendo todas as combinações dos itens de `A` e `B`.
+
 ```
 A × B = { (x, y) | x ∈ A, y ∈ B }
 ```

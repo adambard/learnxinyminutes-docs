@@ -586,7 +586,6 @@ infixl 6 +
 What is your name?
 Friend!
 Hello, Friend!
-
 ```
 
 There's a lot more to Haskell, including typeclasses and monads. These are the

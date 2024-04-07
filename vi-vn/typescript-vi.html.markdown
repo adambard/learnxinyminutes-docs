@@ -181,7 +181,6 @@ let greeting = `Chào ${name}, bạn khỏe không?`
 // Chuỗi nhiều dòng với template string
 let multiline = `Đây là ví dụ
 cho chuỗi nhiều dòng`;
-
 ```
 
 ## Tìm hiểu thêm

@@ -16,7 +16,7 @@ Swift é uma linguagem de programação criada pela Apple para o desenvolvimento
 Desenhada de forma a coexistir com Objective-C e ser mais resiliente contra código errôneo, a linguagem Swift foi introduzida em 2014 na conferência para desenvolvedores WWDC da Apple.
 Swift usa o compilador LLVM incluido no XCode 6+.
 
-O livro oficial [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) da Apple está agora disponivel via iBooks.
+O livro oficial [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) da Apple está agora disponivel via Apple Books.
 
 Consulta também o [guia de iniciação](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/) da Apple, que contêm um tutorial completo em Swift.
 

@@ -15,7 +15,6 @@ then later reattached.
 
 
 ```
-
   tmux [command]     # Run a command
                      # 'tmux' with no commands will create a new session
 
@@ -49,7 +48,6 @@ then later reattached.
      -t "#"          # Kill target session
      -a              # Kill all sessions
      -a -t "#"       # Kill all sessions but the target
-
 ```
 
 
@@ -106,7 +104,6 @@ combinations called 'Prefix' keys.
 
   M-Up, M-Down       # Resize the current pane in steps of five cells
   M-Left, M-Right
-
 ```
 
 
@@ -229,7 +226,6 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # Requires https://github.com/thewtex/tmux-mem-cpu-load/
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
 
 

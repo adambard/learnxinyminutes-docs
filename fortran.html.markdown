@@ -18,7 +18,6 @@ widely implemented of the more recent specifications and the later versions are
 largely similar (by comparison FORTRAN 77 is a very different language).
 
 ```fortran
-
 ! This is a comment.
 
 program example         ! declare a program called example.
@@ -439,7 +438,6 @@ contains
     end function complex_abs
 
 end module fruity
-
 ```
 
 ### More Resources

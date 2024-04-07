@@ -25,7 +25,6 @@ Es ist verfügbar als pip install.
 Starten wir mit dem einfachsten Beispiel. Erstelle eine Datei names example.py
 
 ```python
-
 import shutit
 session = shutit.create_session('bash')
 session.send('echo Hello World', echo=True)

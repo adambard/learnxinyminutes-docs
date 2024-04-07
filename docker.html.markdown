@@ -78,6 +78,7 @@ architecture wherein the CLI client communicates with the server component,
 which here is, the Docker Engine using RESTful API to issue commands.
 
 ## The Docker CLI
+
 ```bash
 # after installing Docker from https://docs.docker.com/get-docker/
 # To list available commands, either run `docker` with no parameters or execute
@@ -200,6 +201,7 @@ $ docker logs <container-id>
 
 # More commands can be found at https://docs.docker.com/engine/reference/commandline/docker/
 ```
+
 ## The Dockerfile
 The Dockerfile is a blueprint of a Docker image. We can mention the artifacts
 from our application along with their configurations into this file in the 
@@ -239,12 +241,12 @@ CMD [<args>,...]
 # This executes after image creation only when the container from the image
 # is running.
 ```
+
 ### Build your images
 Use the `docker build` command after wrapping your application into a Docker
 image to run ( or build) it.
 
 ```bash
-
 $ docker build <path-to-dockerfile>
 # used to build an image from the specified Dockerfile
 # instead of path we could also specify a URL
@@ -277,5 +279,4 @@ $ docker push <target-image>[:<target-tag>]
 # e.g. `docker push akshitadixit/my-sample-app`
 # this image will be accessible under your profile's repositories as
 # `https://hub.docker.com/r/username/image-name`
-
 ```

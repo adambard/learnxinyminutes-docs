@@ -710,7 +710,6 @@ main() {
     example30 // Adding this comment stops the dart formatter from putting all items on a new line
   ].forEach((ef) => ef());
 }
-
 ```
 
 ## Further Reading

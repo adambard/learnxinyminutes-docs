@@ -356,6 +356,9 @@ with builtins; [
 
 * [Susan Potter - Nix Cookbook - Nix By Example]
   (https://ops.functionalalgebra.com/nix-by-example/)
-  
+
+* [Zero to Nix - Nix Tutorial]
+  (https://zero-to-nix.com/)
+
 * [Rommel Martinez - A Gentle Introduction to the Nix Family]
   (https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)

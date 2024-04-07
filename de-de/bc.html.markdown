@@ -96,6 +96,7 @@ print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
 quit /* Füge diese Codezeile hinzu, um sicherzustellen, dass
 das Programm beendet. Diese Codezeile ist optional.*/
 ```
+
 Viel Spass mit diesem einfachen Rechner! (Oder dieser Programmiersprache, um exakt zu sein.)
 
 Das ganze Programm wurde in GNU bc geschrieben. Um es auszuführen, benutze ```bc learnbc.bc```.

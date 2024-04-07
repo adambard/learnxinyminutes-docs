@@ -874,7 +874,6 @@ try {
 } catch (MyException $e) {
     // Handle my exception
 }
-
 ```
 
 ## More Information

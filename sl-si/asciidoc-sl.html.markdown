@@ -6,7 +6,7 @@ contributors:
 translators:
     - ["Filip Štamcar", "https://github.com/filips123"]
 lang: sl-si
-filename: asciidoc-sl.md
+filename: asciidoc-sl.adoc
 ---
 
 AsciiDoc je označevalni jezik, ki je podoben Markdownu in ga je mogoče uporabiti za vse od knjig do spletnih dnevnikov. Jezik, ki ga je leta 2002 ustvaril Stuart Rackham, je preprost, vendar omogoča veliko prilagoditev.
@@ -35,7 +35,6 @@ Prvi stavek dokumenta.
 ### Naslov in več avtorjev
 
 ```
-
 = Naslov dokumenta
 Ime Priimek <ime.priimek@learnxinyminutes.com>; Janez Novak <janez.novak@pirate.com>
 
@@ -85,7 +84,6 @@ _podčrtaj za pošvno_
 ==== Stopnja 3 <h4>
 
 ===== Stopnja 4 <h5>
-
 ```
 
 ## Seznami

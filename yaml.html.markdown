@@ -165,7 +165,7 @@ other_anchor: *anchor_name
 base: &base
   name: Everyone has same name
 
-# The regexp << is called 'Merge Key Language-Independent Type'. It is used to
+# The expression << is called 'Merge Key Language-Independent Type'. It is used to
 # indicate that all the keys of one or more specified maps should be inserted
 # into the current map.
 # NOTE: If key already exists alias will not be merged

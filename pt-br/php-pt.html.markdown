@@ -686,7 +686,6 @@ use Meu\Espaconominal as OutroEspaconominal;
 $cls = new OutroEspaconominal\MinhaClasse();
 
 */
-
 ```
 
 ## Mais informações

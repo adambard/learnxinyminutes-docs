@@ -16,8 +16,8 @@ Sie kann auch als serverseitige Templatingsprache für Serversprachen
 wie NodeJS verwendet werden.
 
 ### Die Sprache
-```pug
 
+```pug
 //- Einzeilenkommentar
 
 //- Mehrzeiliger
@@ -162,13 +162,13 @@ case bestellungsStatus
 //- <p class="warn">Deine Bestellung steht noch aus</p>
 
 //- --INCLUDE--
-//- File path -> "includes/nav.png"
+//- File path -> "includes/nav.pug"
 h1 Firmenname
 nav
   a(href="index.html") Home
   a(href="about.html") Über uns
 
-//- Dateipfad -> "index.png"
+//- Dateipfad -> "index.pug"
 html
   body
     include includes/nav.pug
@@ -198,11 +198,10 @@ mixin comment(name, kommentar)
     div.comment-text= kommentar
 +comment("Bob", "Das ist super")
 //- <div>Hallo</div>
-
 ```
 
 
 ### Zusätzliche Ressourcen
 - [The Site](https://pugjs.org/)
 - [The Docs](https://pugjs.org/api/getting-started.html)
-- [Github Repo](https://github.com/pugjs/pug)
+- [GitHub Repo](https://github.com/pugjs/pug)

@@ -247,8 +247,6 @@ for (const i of list) {
 for (const i in list) {
    console.log(i); // 0, 1, 2
 }
-
-
 ```
 
 ## อ่านเพิ่มเติมที่

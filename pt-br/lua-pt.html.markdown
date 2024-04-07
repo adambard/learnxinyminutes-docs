@@ -392,7 +392,6 @@ g = loadstring('print(343)')  -- Retorna uma função.
 g()  -- Imprime 343; nada foi impresso antes disso.
 
 --]]
-
 ```
 
 ## Referências

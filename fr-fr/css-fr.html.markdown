@@ -141,7 +141,6 @@ selecteur {
     font-family: "Courier New"; /* Si espace, entre guillemets */
     font-family: "Courier New", Trebuchet, Arial; /* Si la première n'est pas trouvée, la deuxième est utilisée, etc... */
 }
-
 ```
 
 ## Utilisation
@@ -161,7 +160,6 @@ Le CSS s'écrit dans des fichiers `.css`.
 PS : à ne pas faire. -->
 <div style='propriete:valeur;'>
 </div>
-
 ```
 
 ## Priorités
@@ -187,7 +185,6 @@ p {}
 
 /*E*/
 p { propriete: valeur !important; }
-
 ```
 
 et le code HTML:

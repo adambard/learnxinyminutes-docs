@@ -10,7 +10,6 @@ lang: zh-cn
 ---
 
 ```crystal
-
 # 这是一行注释
 
 # 一切都是对象(object)
@@ -556,7 +555,6 @@ rescue ex4 # 捕捉任何类型的异常
 end
 
 ex #=> "ex2"
-
 ```
 
 ## 参考资料
@@ -564,4 +562,4 @@ ex #=> "ex2"
 - [官方网站](https://crystal-lang.org/)
 - [官方文档](https://crystal-lang.org/docs/overview/)
 - [在线运行代码](https://play.crystal-lang.org/#/cr)
-- [Github仓库](https://github.com/crystal-lang/crystal)
+- [GitHub仓库](https://github.com/crystal-lang/crystal)

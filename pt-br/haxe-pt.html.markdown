@@ -777,8 +777,8 @@ class UsingExample {
       }
 
 }
-
 ```
+
 Isso foi apenas o começo do que Haxe pode fazer. Para uma documentação de todos
 os recursos de Haxe, veja o [manual](https://haxe.org/manual) e a
 [documentação de API](https://api.haxe.org/). Para um diretório de bibliotecas de terceiros

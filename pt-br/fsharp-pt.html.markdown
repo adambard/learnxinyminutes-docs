@@ -19,7 +19,6 @@ A sintaxe é diferente das linguagens do estilo C (C, C#, Java, etc):
 Se você deseja executar o código abaixo, copie e cole em [https://try.fsharp.org](https://try.fsharp.org), que é um REPL online.
 
 ```fsharp
-
 // comentários de linhas únicas usam barras duplas
 (* comentários de linhas múltiplas usam o par (* . . . *)
 
@@ -629,7 +628,6 @@ module NetCompatibilityExamples =
             printfn "Click event with arg=%O" arg)
 
     myButton.TestEvent("Hello World!")
-
 ```
 
 ## Mais Informações
