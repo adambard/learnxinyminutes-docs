@@ -157,7 +157,7 @@ nil && 20  #=> nil
 # număr < atom < referință < funcție < port < proces < tuple < listă < șir de caractere
 
 # Cităm pe Joe Armstrong în acest caz: "Ordinea actuală nu e importantă,
-dar că ordinea totală este bine definită este important."
+# dar că ordinea totală este bine definită este important."
 
 ## ---------------------------
 ## -- Ordinea execuției
