@@ -647,6 +647,4 @@ Se você tem uma pergunta, leia [compl.lang.c Frequently Asked Questions](http:/
 Código legível é melhor que código 'esperto' e rápido. Para adotar um estilo de código bom e sensato, veja
 [Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
 
-Além disso, Google é teu amigo.
-
 [1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
