@@ -82,7 +82,7 @@ true.class # => Bool
 "s".class   # => String
 
 # Strings sind unveränderlich
-s = 'hello, "   # => "hello, "          : String
+s = "hello, "   # => "hello, "          : String
 s.object_id     # => 1234667712         : UInt64
 s += "Crystal"  # => "hello, Crystal"   : String
 s.object_id     # => 142528472          : UInt64
