@@ -5,7 +5,7 @@ contributors:
 filename: learnvisualbasic.vb
 ---
 
-```visualbasic
+```vbnet
 Module Module1
 
     Sub Main()

@@ -16,7 +16,7 @@ noisy than some other formats.
 Additionally, its support for comments makes it much better suited for
 user-facing configurations than JSON.
 
-```hocon
+```
 // Comments can either look like this,
 # or they can look like this.
 // Anything after // or # is a comment.
