@@ -1,6 +1,6 @@
 ---
-language: D 
-filename: learnd-de.d 
+language: D
+filename: learnd-de.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 translators:
@@ -8,7 +8,7 @@ translators:
 lang: de-de
 ---
 
-```c
+```d
 // Es war klar, dass das kommt...
 module hello;
 
@@ -28,7 +28,7 @@ Low bis High Level verwendet werden kann und dabei viele Stile anbietet.
 D wird aktiv von Walter Bright und Andrei Alexandrescu entwickelt, zwei super schlaue,
 richtig coole leute. Da das jetzt alles aus dem Weg ist - auf zu den Beispielen!
 
-```c
+```d
 import std.stdio;
 
 void main() {
@@ -73,7 +73,7 @@ Structs und unions werden as-value (koppiert) an Methoden übergeben wogegen
 Klassen als Referenz übergeben werden. Templates können verwendet werden um
 alle Typen zu parameterisieren.
 
-```c
+```d
 // Hier, T ist ein Type-Parameter, Er funktioniert wie Generics in C#/Java/C++
 struct LinkedList(T) {
     T data = null;
@@ -134,7 +134,7 @@ Wo wir schon bei Klassen sind - Wie wäre es mit Properties! Eine Property
 ist eine Funktion, die wie ein Wert agiert. Das gibt uns viel klarere Syntax
 im Stil von `structure.x = 7` was gleichgültig wäre zu `structure.setX(7)`
 
-```c
+```d
 // Diese Klasse ist parameterisiert mit T, U
 
 class MyClass(T, U) {
@@ -201,7 +201,7 @@ puren Funktionen und unveränderbaren Daten.
 Zusätzlich können viele funktionale Algorithmen wie z.B
 map, filter, reduce und friends im `std.algorithm` Modul gefunden werden!
 
-```c
+```d
 import std.algorithm : map, filter, reduce;
 import std.range : iota; // builds an end-exclusive range
 
@@ -231,7 +231,7 @@ Methode auf A anwenden.
 
 Parrallel Computing ist eine Tolle sache, findest du nicht auch?
 
-```c
+```d
 import std.stdio;
 import std.parallelism : parallel;
 import std.math : sqrt;

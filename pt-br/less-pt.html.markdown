@@ -10,7 +10,7 @@ lang: pt-br
 Less é um pré-processador de CSS, que adiciona recursos como variáveis, aninhamento, mixins e muito mais.
 Less (e outros pré-processadores, como o [Sass](http://sass-lang.com/)) ajudam os desenvolvedores a escreverem código que pode ser mantido e DRY (não se repita).
 
-```css
+```less
 //Comentários de linha única são removidos quando Less é compilado para CSS.
 
 /*Comentários de várias linhas são preservados.*/

@@ -22,7 +22,7 @@ Feedback is always welcome, so feel free to reach me over at
 [@kurisuwhyte](https://twitter.com/kurisuwhyte) :)
 
 
-```coffeescript
+```livescript
 # Just like its CoffeeScript cousin, LiveScript uses number symbols for
 # single-line comments.
 
@@ -30,8 +30,7 @@ Feedback is always welcome, so feel free to reach me over at
  Multi-line comments are written C-style. Use them if you want comments
  to be preserved in the JavaScript output.
  */
-```
-```coffeescript
+
 # As far as syntax goes, LiveScript uses indentation to delimit blocks,
 # rather than curly braces, and whitespace to apply functions, rather
 # than parenthesis.

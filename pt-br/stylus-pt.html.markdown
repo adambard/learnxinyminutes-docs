@@ -15,7 +15,7 @@ A sintaxe do Stylus é muito flexivel podendo utilizar a sintaxe padrão do CSS 
 Stylus não fornece novas opções de estilos, mas dá funcionalidades que permitem deixar seu CSS muito mais dinâmico.
 
 
-```scss
+```sass
 /* Estilo de código
 ==============================*/
 
