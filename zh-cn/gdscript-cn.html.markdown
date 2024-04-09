@@ -215,19 +215,19 @@ func _ready() -> void:
   # 将 String 传递给其构造函数来创建 NodePath：
   var path1 = NodePath("path/to/something")
   # 或者使用 NodePath 字面量:
-  var path2 = @"path/to/something"
+  var path2 = ^"path/to/something"
   # NodePath 示例:
-  var path3 = @"Sprite" # 相对路径，当前节点的直接子节点
-  var path4 = @"Timers/Firerate" # 相对路径，子节点的子节点
-  var path5 = @".." # 当前节点的父节点
-  var path6 = @"../Enemy" # 当前节点的兄弟节点
-  var path7 = @"/root" # 绝对路径，等价于 get_tree().get_root()
-  var path8 = @"/root/Main/Player/Sprite" # Player 的 Sprite 的绝对路径
-  var path9 = @"Timers/Firerate:wait_time" # 访问属性
-  var path10 = @"Player:position:x" # 访问子属性
+  var path3 = ^"Sprite" # 相对路径，当前节点的直接子节点
+  var path4 = ^"Timers/Firerate" # 相对路径，子节点的子节点
+  var path5 = ^".." # 当前节点的父节点
+  var path6 = ^"../Enemy" # 当前节点的兄弟节点
+  var path7 = ^"/root" # 绝对路径，等价于 get_tree().get_root()
+  var path8 = ^"/root/Main/Player/Sprite" # Player 的 Sprite 的绝对路径
+  var path9 = ^"Timers/Firerate:wait_time" # 访问属性
+  var path10 = ^"Player:position:x" # 访问子属性
 
   # 最后，获取节点引用可以使用以下方法:
-  sprite = get_node(@"Sprite") as Sprite # 始终转换为您期望的类型
+  sprite = get_node(^"Sprite") as Sprite # 始终转换为您期望的类型
   sprite = get_node("Sprite") as Sprite # 这里 String 被隐式转换为 NodePath
   sprite = get_node(path3) as Sprite
   sprite = get_node_or_null("Sprite") as Sprite
@@ -242,7 +242,7 @@ func _process(delta):
 onready var tween = $Tween as Tween
 
 # 您可以导出这个 NodePath，以便在检查器中给它赋值。
-export var nodepath = @""
+export var nodepath = ^""
 onready var reference = get_node(nodepath) as Node
 ```
 
