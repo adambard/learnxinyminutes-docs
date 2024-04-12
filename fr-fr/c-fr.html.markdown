@@ -16,15 +16,10 @@ translators:
 lang: fr-fr
 ---
 
-Ah! C. Aujourd'hui encore, c'est **le** langage par excellence de
-l'informatique moderne haute performance.
+Le C est le langage de plus bas niveau que la plupart des programmeurs seront
+amenés à utiliser, mais ceci est largement conpensé par sa vitesse brute.
 
-C est le langage de plus bas niveau que la plupart des programmeurs ne
-rencontreront jamais, mais ceci est largement conpensé par sa vitesse brute.
-Après avoir apprivoisé sa gestion manuelle de la mémoire,
-C vous emmènera aussi loin que nécessaire.
-
-> **A propos des options de compilation**
+> **À propos des options de compilation**
 >
 > Par défaut, gcc et clang sont assez silencieux sur les avertissements et
 > les erreurs de compilation, qui peuvent être des informations très utiles.
@@ -38,7 +33,7 @@ C vous emmènera aussi loin que nécessaire.
 > ou recherchez simplement en ligne.
 
 ```c
-// Les commantaires sur une ligne commencent par // - valable seulement pour C99 et plus tard.
+// Les commentaires sur une ligne commencent par // - valable seulement pour C99 et plus tard.
 
 /*
 Les commentaires multilignes resemblent à ceci. Ils restent valables en C89.
@@ -46,13 +41,13 @@ Les commentaires multilignes resemblent à ceci. Ils restent valables en C89.
 
 /*
 Les commentaires multilignes ne s'emboîtent pas /* Attention */  // Le commentaire se termine sur cette ligne...
-*/ // ...pas celui-ci!
+*/ // ...pas ici !
 
-// Constante: #define <keyword>
-// Les constantes sont écrites en majuscules en dehors de toute convention, pas d'obligation
+// Constante : #define <nom>
+// Les constantes sont écrites en majuscules par convention, pas d'obligation
 #define DAYS_IN_YEAR 365
 
-// Les constantes d'énumeration sont aussi une façon de déclarer des variables.
+// Les constantes d'énumeration sont aussi une façon de déclarer des valeurs.
 // Toutes les instructions doivent se terminer par un point-virgule.
 enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // MON vaut 2 automatiquement, TUE vaut 3, etc.
@@ -62,7 +57,6 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 #include <stdio.h>
 #include <string.h>
 
-// (Nom des fichiers entre <crochet sup. et inf.> sont des fichiers d'en-tête présents dans la bibliothèque standard du C.)
 // Pour vos propres fichiers d'en-tête, utilisez les doubles quotes au lieu des crochets sup. et inf.:
 //#include "my_header.h"
 
@@ -71,11 +65,12 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 void function_1();
 int function_2(void);
 
-// Il est obligatoire de déclarer une 'fonction prototype' avant la fonction main() lorsque ces fonctions apparaissent
-// après votre fonction main().
-int add_two_ints(int x1, int x2); // fonction prototype
+// Si vous voulez appeler une fonction avant de la définir,
+// vous pouvez déclarer son prototype
+// (types des arguments et de la valeur renvoyée)
+int add_two_ints(int x1, int x2); // prototype de la fonction
 // bien que `int add_two_ints (int, int);` soit également valide (pas besoin de nommer les arguments),
-// il est également recommandé de nommer les arguments dans le prototype pour faciliter l'inspection
+// il est recommandé de nommer les arguments dans le prototype pour faciliter l'inspection.
 
 // Le point d'entrée de votre programme est une fonction appélée
 // main avec une sortie de type entier.
@@ -86,7 +81,7 @@ int main(void) {
 // Les arguments de la ligne de commande utilisés pour exécuter votre programme sont également passés à la fonction main
 // argc étant le nombre d'arguments - le nom de votre programme compte pour 1
 // argv est un tableau de tableaux de caractères - contenant les arguments eux-mêmes
-// argv[0] = nom de votre programme, argv [1] = premier argument, etc.
+// argv[0] = nom de votre programme, argv[1] = premier argument, etc.
 int main (int argc, char** argv)
 {
   // écriture en sortie à l'aide de printf, pour "print formatted"
@@ -97,12 +92,10 @@ int main (int argc, char** argv)
   // Types
   ///////////////////////////////////////
 
-  // Les compilateurs qui ne sont pas conformes C99 nécessitent des variables DEVANT être
-  // déclarées en début de scope du bloc de code courant.
-  // Les compilateurs qui SONT conformes C99 acceptent les déclarations proche de l'endroit où
-  // la valeur est utilisée.
-  // Pour les besoins du tutoriel, les variables sont déclarées dynamiquement
-  // suivant les standards C99.
+  // Les compilateurs qui ne sont pas conformes C99 nécessitent de déclarer
+  // les variables en début de portée du bloc de code courant.
+  // Les compilateurs qui SONT conformes C99 acceptent les déclarations
+  // plus tard dans les fonctions.
 
   // Les entiers font généralement de 4 octets
   int x_int = 0;
@@ -112,7 +105,7 @@ int main (int argc, char** argv)
 
   // Les caractères ont une taille fixée à 1 octet
   char x_char = 0;
-  char y_char = 'y'; // les caractères littéraux (ou anonymes) sont entre guillemets simples ''
+  char y_char = 'y'; // les caractères littéraux sont entre apostrophes ''
 
   // Les entiers longs font généralement 4 à 8 octets; les entiers longs de type long font
   // 8 octets
@@ -135,12 +128,12 @@ int main (int argc, char** argv)
   'A'; // => 65 dans le jeu de caractères ASCII.
 
   // sizeof(T) vous rend la taille d'une variable de type T en octets.
-  // sizeof(obj) revoie la taille en sortie de l'expression (variable, literal, etc.).
+  // sizeof obj revoie la taille en sortie de l'expression (variable, littéral, etc.).
   printf("%zu\n", sizeof(int)); // => 4 (sur la plupart des machines les mots font 4 octets)
 
   // Si l'argument de l'opérateur `sizeof` est une expression, alors son argument
-  // n'est pas évalué (sauf les VLA (voir ci-dessous)).
-  // La valeur qu'elle donne dans ce cas est une constante de temps de compilation.
+  // n'est pas évalué (sauf les VLA - voir ci-dessous).
+  // La valeur qu'elle donne dans ce cas est une constante évaluée à la compilation.
   int a = 1;
   // size_t est un type entier non signé d'au moins 2 octets utilisé pour représenter
   // la taille d'un objet.
@@ -177,39 +170,38 @@ int main (int argc, char** argv)
   // les tableaux sont "rétrogradés" en pointeurs bruts lorsqu'ils sont passés à des fonctions
   // (donc l'instruction ci-dessus produira le mauvais résultat à l'intérieur de la fonction).
 
-  // L'indexation d'un tableau est comme les autres langages - ou,
-  // plutôt, les autres langages sont comme C
+  // L'indexation commence à zero et utilise []
   my_array[0]; // => 0
 
-  // Les tableaux sont modifiables; c'est juste de la mémoire!
+  // Les tableaux sont modifiables ; c'est juste de la mémoire!
   my_array[1] = 2;
   printf("%d\n", my_array[1]); // => 2
 
-  // En C99 (et optionnellement en C11), des tableaux à longueur variable (VLAs)
+  // En C99 (et optionnellement en C11), des tableaux à taille variable (VLAs)
   // peuvent également être déclarés. La taille d'un tel tableau n'a pas besoin d'être
   // une constante définie lors de la compilation:
   printf("Enter the array size: "); // demande à l'utilisateur la taille du tableau
   int array_size;
   fscanf(stdin, "%d", &array_size);
-  int var_length_array[array_size]; // déclare la VLA
+  int var_length_array[array_size]; // déclare le VLA
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
   // Exemple:
   // > Enter the array size: 10
   // > sizeof array = 40
 
-  // Les chaînes de caractères sont juste des tableaux de caractères de terminant par NULL octet (0x00),
+  // Les chaînes de caractères sont juste des tableaux de caractères de terminant par octet NULL (0x00),
   // représenté dans les chaînes de caractères par le caractère spécial '\0'.
   // (Nous n'avons pas besoin d'ajouter l'octet NULL dans les chaînes de caractères littérales; le compilateur
   // l'ajoute à la fin du tableau pour nous.)
   char a_string[20] = "This is a string";
-  printf("%s\n", a_string); // %s forme une chaîne de caractères
+  printf("%s\n", a_string); // %s insère une chaîne de caractères
 
   printf("%d\n", a_string[16]); // => 0
   // i.e., l'octet #17 est 0 (comme le sont 18, 19, et 20)
 
-  // Si nous avons un caractère entre guillemets simples, c'est un caractère littéral.
-  // C'est de type `int`, et *non* `char` (pour des raisons historiques).
+  // Si nous avons un caractère entre apostrophes, c'est un caractère littéral.
+  // Ils sont de types `int`, et *non* `char` (pour des raisons historiques).
   int cha = 'a'; // bon
   char chb = 'a'; // bon aussi (conversion implicite de int vers char)
 
@@ -232,7 +224,7 @@ int main (int argc, char** argv)
   int b, c;
   b = c = 0;
 
-  // L'arithmétique est simple
+  // Arithmétique
   i1 + i2; // => 3
   i2 - i1; // => 1
   i2 * i1; // => 2
@@ -248,10 +240,10 @@ int main (int argc, char** argv)
   11 % 3; // => 2
 
   // Les opérateurs de comparaison sont probablement familiers, mais
-  // il n'y a pas de type booléen en C. Nous utilisons plutôt des entiers.
-  // (Ou _Bool ou bool en C99.)
-  // 0 est faux, tout le reste est vrai. (La comparaison
-  // les opérateurs donnent toujours 0 ou 1.)
+  // il n'y a pas de type booléen en C. On utilise plutôt des entiers
+  // (C99 introduit _Bool ou bool).
+  // 0 est faux, tout le reste est vrai.
+  // (La comparaison les opérateurs donnent toujours 0 ou 1)
   3 == 2; // => 0 (faux)
   3 != 2; // => 1 (vrai)
   3 > 2; // => 1
@@ -260,7 +252,7 @@ int main (int argc, char** argv)
   2 >= 2; // => 1
 
   // C n'est pas Python - les comparaisons ne s'enchaînent pas.
-  // Avertissement: la ligne ci-dessous se compilera, mais cela signifie `(0 < a) <2`.
+  // Attention : la ligne ci-dessous se compilera, mais cela signifie `(0 < a) <2`.
   // Cette expression est toujours vraie, car (0 < a) peut être 1 ou 0.
   // Dans ce cas, c'est 1, car (0 < 1).
   int between_0_and_2 = 0 < a < 2;
@@ -275,7 +267,7 @@ int main (int argc, char** argv)
   0 || 1; // => 1 (ou logique)
   0 || 0; // => 0
 
-  // Expression ternaire conditionnelle ( ? : )
+  // Expression conditionnelle ternaire ( ? : )
   int e = 5;
   int f = 10;
   int z;
@@ -287,19 +279,19 @@ int main (int argc, char** argv)
   s = ++j; // Augmente j PUIS revoi j. (s = 2, j = 2)
   // pareil avec j-- et --j
 
-  // Opérateurs de manipulation des bits!
+  // Opérateurs de manipulation des bits !
   ~0x0F; // => 0xFFFFFFF0 (opérateur de négation, "complémentaire de 1", exemple d'un résultat pour un entier 32-bit)
   0x0F & 0xF0; // => 0x00 (opérateur AND)
   0x0F | 0xF0; // => 0xFF (opérateur OR)
   0x04 ^ 0x0F; // => 0x0B (opérateur XOR)
-  0x01 << 1; // => 0x02 (opérateur de décalage à gauche (de 1))
-  0x02 >> 1; // => 0x01 (opérateur de décalage à droite (de 1))
+  0x01 << 1; // => 0x02 (opérateur de décalage à gauche - de 1)
+  0x02 >> 1; // => 0x01 (opérateur de décalage à droite - de 1)
 
   // Soyez prudent lorsque vous effectuez un décalage sur des entiers signés - les éléments suivants ne sont pas définis:
   // - décalage du bit de signe d'un entier signé (int a = 1 << 31)
   // - décalage à gauche d'un nombre négatif (int a = -1 << 2)
   // - décalage par un offset qui est >= à la largeur du type LHS (partie de gauche de l'affectation):
-  // int a = 1 << 32; // UB (comportement indéfini) si int a une largeur de 32 bits
+  // int a = 1 << 32; // UB (comportement indéfini) si int a une taille de 32 bits
 
   ///////////////////////////////////////
   // Structures de contrôle
@@ -313,10 +305,10 @@ int main (int argc, char** argv)
     printf("Je suis affiché\n");
   }
 
-  // Les boucles while existent
+  // Les boucles while
   int ii = 0;
-  while (ii < 10) { //TOUTE valaur plus petite que dix est vrai.
-    printf("%d, ", ii++); // ii++ augmente ii APRES avoir utilisé sa valaur courante.
+  while (ii < 10) { // TOUTE valeur plus petite que dix est vraie.
+    printf("%d, ", ii++); // ii++ augmente ii APRES avoir utilisé sa valeur actuelle.
   } // => affiche "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
   printf("\n");
@@ -324,12 +316,12 @@ int main (int argc, char** argv)
   int kk = 0;
   do {
     printf("%d, ", kk);
-  } while (++kk < 10); // ++kk augmente kk AVANT d'utiliser sa valeur courante.
+  } while (++kk < 10); // ++kk augmente kk AVANT d'utiliser sa valeur actuelle.
   // => affiche "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
   printf("\n");
 
-  // Les boucles for aussi
+  // Les boucles for
   int jj;
   for (jj=0; jj < 10; jj++) {
     printf("%d, ", jj);
@@ -337,20 +329,20 @@ int main (int argc, char** argv)
 
   printf("\n");
 
-  // *****NOTES*****:
-  // Les boucles et les fonctions DOIVENT posséder un corps. Si un corps est inutile:
+  // *NOTES* :
+  // Les boucles et les fonctions DOIVENT posséder un corps.
+  // Vous pouvez toutefois utiliser un bloc vide ({}) ou un point-virgule.
   int i;
   for (i = 0; i <= 5; i++) {
-    ; // Utilisez un point-virgule pour agir comme le corps (instruction nulle)
   }
   // Ou
-  for (i = 0; i <= 5; i++);
+  for (i = 0; i <= 5; i++); // Déconseillé, car facilement confondable
 
-  // ramification à choix multiples: switch()
+  // condition à choix multiples : switch()
   switch (a) {
   case 0: // les options doivent être des expressions intégrales *constantes* (telles que des énumérations)
     printf("Hey, 'a' equals 0!\n");
-    break; // si vous ne mettez pas 'break', le flux de contrôle continue avec les autres options
+    break; // si vous ne mettez pas 'break', le cas d'après est exécuté sans tester le `case`
   case 1:
     printf("Huh, 'a' equals 1!\n");
     break;
@@ -361,32 +353,27 @@ int main (int argc, char** argv)
     printf("Look at that.. 'a' is either 3, or 4\n");
     break;
   default:
-    // si l' `expression_intégrale` ne correspond à aucune option
-    fputs("Error!\n", stderr);
+    // si `a` ne correspond à aucune option
+    fputs("Erreur !\n", stderr);
     exit(-1);
     break;
   }
-  /*
-  Utilisation de "goto" en C
-  */
+  
+  // Utilisation de "goto" en C
   typedef enum { false, true } bool;
-  // C n'a pas de booléen comme type de données avant C99 :(
   bool disaster = false;
   int i, j;
-  for(i=0;i<100;++i)
-  for(j=0;j<100;++j)
+  for(i=0; i<100; ++i)
+  for(j=0; j<100; ++j)
   {
-    if((i + j) >= 150)
+    if (i + j >= 150)
         disaster = true;
-    if(disaster)
+    if (disaster)
         goto error;
   }
-  error :
+  error:
   printf("Error occurred at i = %d & j = %d.\n", i, j);
-  /*
-  https://ideone.com/GuPhd6
-  Ceci affichera "Error occurred at i = 51 & j = 99."
-  */
+  // Ceci affichera "Error occurred at i = 51 & j = 99."
 
   ///////////////////////////////////////
   // Transtypage
@@ -458,8 +445,8 @@ int main (int argc, char** argv)
   // x_ptr pointe maintenant vers le premier élément du tableau (l'entier 20).
   // Cela fonctionne car les tableaux s'interprètent souvent comme pointeurs vers leur premier élément.
   // Par exemple, lorsqu'un tableau est transmis à une fonction ou affecté à un pointeur,
-  // il s'interprète (converti implicitement en) un pointeur.
-  // Exceptions: lorsque le tableau est l'argument de l'opérateur `&` (adresse de):
+  // il est converti implicitement en pointeur.
+  // Exceptions : lorsque le tableau est l'argument de l'opérateur `&` (adresse de):
   int arr[10];
   int (*ptr_to_arr)[10] = &arr; // &arr n'est PAS de type `int *`!
   // Il est de type "pointeur sur tableau" (de dix entiers).
@@ -510,12 +497,12 @@ int main (int argc, char** argv)
   my_arr[10] = 5;
 
   // Déréférencer de la mémoire que vous n'avez pas allouée donne des
-  // "résultats imprévisibles" - le programme aborde un "comportement indéfini"
-  printf("%d\n", *(my_ptr + 21)); // => Affiche qui sait ça ? Il peut même se bloquer.
+  // UBs "undefined behaviors" ou "comportement imprévisibles",
+  printf("%d\n", *(my_ptr + 21)); // => Peut crash, afficher n'importe quoi, ou autre
 
   // Lorsque vous avez terminé avec un bloc de mémoire alloué via malloc, vous devez le libérer,
-  // ou bien personne d'autre ne pourra l'utiliser jusqu'à la fin de votre programme
-  // (cela s'appelle une "fuite de mémoire"):
+  // ou bien personne d'autre ne pourra l'utiliser jusqu'à la fin de votre programme :
+  // (cela s'appelle une "fuite de mémoire")
   free(my_ptr);
 
   // Les chaînes de caractères sont des tableaux de caractères, mais ils sont généralement représentés comme
@@ -554,24 +541,24 @@ originaux avant appel de la fonction.
 
 Utilisez les pointeurs si vous avez besoin de modifier la valeur d'origine des arguments.
 
-Exemple: inversion sur place d'une chaîne de caractères
+Exemple : inversion sur place d'une chaîne de caractères
 */
 
-// Une fonction void retourne aucune valeur
+// Une fonction void ne retourne aucune valeur
 void str_reverse(char *str_in)
 {
   char tmp;
   size_t ii = 0;
   size_t len = strlen(str_in); // `strlen()` fait partie de la bibliothèque standard c
-                               // REMARQUE: la longueur renvoyée par `strlen` N'INCLUT PAS
-                               //       l'octet de fin NULL ('\0')
+                               // REMARQUE : la longueur renvoyée par `strlen` N'INCLUT PAS
+                               //            l'octet NULL de fin ('\0').
   for (ii = 0; ii < len / 2; ii++) { // en C99 vous pouvez déclarer directement le type de `ii` ici
     tmp = str_in[ii];
     str_in[ii] = str_in[len - ii - 1]; // ii-ème caractère depuis la fin
     str_in[len - ii - 1] = tmp;
   }
 }
-//REMARQUE: string.h fichier d'entête à besoin d'être inclus pour utiliser strlen()
+// REMARQUE : le fichier d'entête string.h a besoin d'être inclus pour utiliser strlen()
 
 /*
 char c[] = "This is a test.";
@@ -580,7 +567,7 @@ printf("%s\n", c); // => ".tset a si sihT"
 */
 /*
 car nous ne pouvons renvoyer qu'une seule variable
-pour changer les valeurs de plusieurs variables, nous utilisons un appel par référence
+pour changer les valeurs de plusieurs variables, nous passons des pointeurs
 */
 void swapTwoNumbers(int *a, int *b)
 {
@@ -675,7 +662,7 @@ void function_1()
   // Utiliser le déréférencement pour définir les membres du pointeur de structure...
   (*my_rec_ptr).width = 30;
 
-  // ... ou encore mieux: préférez le raccourci -> par souci de lisibilité
+  // préférez le raccourci -> par souci de lisibilité
   my_rec_ptr->height = 10; // Identique à (*my_rec_ptr).height = 10;
 }
 
@@ -698,10 +685,6 @@ int areaptr(const rect *r)
 // Pointeurs sur fonction
 ///////////////////////////////////////
 /*
-At run time, functions are located at known memory addresses. Function pointers are
-much like any other pointer (they just store a memory address), but can be used
-to invoke functions directly, and to pass handlers (or callback functions) around.
-However, definition syntax may be initially confusing.
 Au moment de l'exécution, les fonctions sont situées à des adresses de mémoire connues. Les pointeurs de fonction sont
 un peu comme n'importe quel autre pointeur (ils stockent juste une adresse mémoire), mais peuvent être utilisés
 pour appeler directement des fonctions et pour transmettre des gestionnaires de fonctions (ou des fonctions de rappel).
@@ -846,18 +829,11 @@ Node createLinkedList(int *vals, int len);
 ```
 ## Lectures complémentaires
 
-Le mieux est de vous trouver une copie de [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
-C'est *le* livre sur C, écrit par Dennis Ritchie, le créateur de C, et Brian Kernighan. Attention cependant - c'est ancien et il en contient
-des inexactitudes (enfin, des idées qui ne sont plus considérées comme bonnes) ou des pratiques désormais modifiées.
-
-Une autre bonne ressource est [Learn C The Hard Way](http://learncodethehardway.org/c/).
-
-Si vous avez une question, lisez le [compl.lang.c Frequently Asked Questions](http://c-faq.com).
+- [Learn C The Hard Way](http://learncodethehardway.org/c/).
+- Si vous avez une question, lisez le [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
 Il est très important d'utiliser un espacement et une indentation appropriés et d'être cohérent avec votre style de codage en général.
 Un code lisible est meilleur qu'un code intelligent et un code rapide. Pour un bon style de codage sain à adopter, consultez le
 [Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
-
-À part cela, Google est votre ami.
 
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
