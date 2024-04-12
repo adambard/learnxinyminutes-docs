@@ -41,15 +41,11 @@ if(hour < 12) { /*Operators are exactly like C.*/
     \t: tab
     \\: backslash*/
 } else {
-    /*Variables are global by default.*/
-    thisIsGlobal = 5
-    /*You can make a variable local. Use the "auto" keyword in a function.*/
+    print "Good afternoon\n"
 }
 
-/*Every variable is pre-set to 0.*/
-num = blankVariable /*num is set to 0.*/
-
 /*Like C, only 0 is falsy.*/
+num = 0
 if(!num) {print "false\n"}
 
 /*Unlike C, bc does not have the ?: operators. For example,
