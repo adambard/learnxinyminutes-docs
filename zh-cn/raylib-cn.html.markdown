@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: raylib
+category: framework
+framework: raylib
 lang: zh-cn
 filename: learnraylib-cn.c
 contributors:

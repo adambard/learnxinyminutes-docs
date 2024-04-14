@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: Statistical Computing with Python
+category: framework
+framework: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 translators:
