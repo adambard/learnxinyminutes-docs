@@ -1,7 +1,7 @@
 ---
-category: tool
+category: framework
 filename: learnshutit-de.html
-tool: ShutIt
+framework: ShutIt
 contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]
 translators:

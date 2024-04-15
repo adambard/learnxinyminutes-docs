@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: p5
+category: framework
+framework: p5
 contributors:
     - ['Amey Bhavsar', 'https://github.com/ameybhavsar24']
     - ['Claudio Busatto', 'https://github.com/cjcbusatto']
