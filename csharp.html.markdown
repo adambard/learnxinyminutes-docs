@@ -9,6 +9,7 @@ contributors:
     - ["Jo Pearce", "http://github.com/jdpearce"]
     - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
     - ["Shawn McGuire", "https://github.com/bigbash"]
+    - ["Asher S", "https://github.com/Asher-gh"]
 filename: LearnCSharp.cs
 ---
 
