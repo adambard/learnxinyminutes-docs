@@ -1,6 +1,6 @@
 ---
 language: SQL
-filename: learnsql.sql
+filename: learnsql-fr.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
@@ -8,7 +8,7 @@ translators:
 lang: fr-fr
 ---
 
-Le Structured Query Language (SQL) est un langage standard [ISO/IEC 9075](https://www.iso.org/standard/63555.html) permettant de créer et d'utiliser des bases de données stockées dans un ensemble de tables. Les implémentations (MySQL, PostgreSQL, Oracle etc.) ajoutent généralement leurs propres extensions au langage ([Comparaison des différentes implémentations SQL](http://troels.arvin.dk/db/rdbms/)).
+Le Structured Query Language (SQL) est un langage standard [ISO/IEC 9075](https://www.iso.org/standard/63555.html) permettant de créer et d'utiliser des bases de données. Les implémentations (MySQL, PostgreSQL, Oracle etc.) ajoutent généralement leurs propres extensions au langage ([Comparaison des différentes implémentations SQL](http://troels.arvin.dk/db/rdbms/)).
 
 Les implémentations fournissent généralement une interface en ligne de commande, où vous pouvez saisir les commandes présentées ici de manière interactive. Elles offrent également un moyen d'exécuter une série de ces commandes stockées dans un fichier script. (Exemple de commande non standardisée, pour quitter l'invite de commande, la plupart des implémentations SQL prennent en charge les mots-clés QUIT, EXIT, ou les deux).
 
@@ -67,14 +67,15 @@ SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 -- Une jointure (JOIN) permet de réunir des informations de plusieurs tables.
 -- La table titles contient l'intitulé de poste (title), le numéro d'employé (emp_no),
 -- de quelle date (from_date) à quelle date (to_date).
--- Plutôt que d'afficher le numéro d'employé, nous allons l'utiliser comme référence croisé
+-- Plutôt que d'afficher le numéro d'employé, nous allons l'utiliser comme référence croisée
 -- pour récupérer le nom et le prénom de chaque employé, depuis la table employees.
 -- (Affiche seulement 10 lignes)
 
 SELECT employees.first_name, employees.last_name,
        titles.title, titles.from_date, titles.to_date
 FROM titles INNER JOIN employees ON
-       employees.emp_no = titles.emp_no LIMIT 10;
+       employees.emp_no = titles.emp_no
+LIMIT 10;
 
 -- Liste toutes les tables, de toutes les bases de données. 
 -- Les implémentations SQL fournissent généralement leur propre commande de raccourci
@@ -107,5 +108,5 @@ DROP TABLE tablename1;
 
 ## Lectures complémentaires
 
-* [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) : Une bonne introduction à SQL, avec des exercices pratiques.
+* [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) : Une bonne introduction au SQL, avec des exercices pratiques.
 * Chapitre 3 du livre [Database System Concepts](https://www.db-book.com) : contient une explication approfondie des concepts SQL.
