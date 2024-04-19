@@ -94,7 +94,7 @@ SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 SELECT dept_no, COUNT(dept_no) FROM dept_emp GROUP BY dept_no
 HAVING COUNT(dept_no) > 100
 
--- Aliases, using the optional keyword AS, can be used for column / table names.
+-- Aliases, using the optional keyword AS, can be used for column/table names.
 SELECT COUNT(A.*) AS total_employees, COUNT(B.*) total_departments
 FROM employees AS A, departments B
 
