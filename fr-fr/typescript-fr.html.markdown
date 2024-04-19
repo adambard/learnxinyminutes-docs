@@ -12,9 +12,9 @@ TypeScript est un langage visant à faciliter le développement d'applications l
 TypeScript ajoute des concepts classiques comme les classes, les modules, les interfaces, les génériques et le typage statique (optionnel) à JavaScript.
 C'est une surcouche de JavaScript : tout le code JavaScript est valide en TypeScript ce qui permet de l'ajouter de façon transparente à n'importe quel projet. Le code TypeScript est transcompilé en JavaScript par le compilateur.
 
-Cet article se concentrera seulement sur la syntaxe supplémentaire de TypeScript, plutôt que celle de [JavaScript] (../javascript-fr/).
+Cet article se concentrera seulement sur la syntaxe supplémentaire de TypeScript, plutôt que celle de [JavaScript](../javascript-fr/).
 
-Pour tester le compilateur de TypeScript, rendez-vous au [Playground] (http://www.typescriptlang.org/Playground) où vous pourrez coder, profiter d'une autocomplétion et accéder directement au rendu JavaScript.
+Pour tester le compilateur de TypeScript, rendez-vous au [Playground](https://www.typescriptlang.org/Playground) où vous pourrez coder, profiter d'une autocomplétion et accéder directement au rendu JavaScript.
 
 ```js
 // Il y a 3 types basiques en TypeScript
@@ -65,7 +65,7 @@ interface Person {
   move(): void;
 }
 
-// Un objet implémentant l'interface "Person" peut être traité comme 
+// Un objet implémentant l'interface "Person" peut être traité comme
 // une Person car il a les propriétés "name" et "move"
 var p: Person = { name: "Bobby", move: () => {} };
 // Des objets implémentants la propriété optionnelle :
@@ -166,8 +166,6 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 ```
 
 ## Lectures complémentaires
- * [Site officiel de TypeScript] (http://www.typescriptlang.org/)
- * [Spécification du langage TypeScript (pdf)] (http://go.microsoft.com/fwlink/?LinkId=267238)
- * [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [Code source sur GitHub] (https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - repository for type definitions] (http://definitelytyped.org/)
+
+* [Site officiel de TypeScript](https://www.typescriptlang.org/)
+* [Code source sur GitHub](https://github.com/microsoft/TypeScript)
