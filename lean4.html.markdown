@@ -505,8 +505,8 @@ abbrev between (lower what upper : Nat) : Prop := lower ≤ what ∧ what ≤ up
 mutual
   def Alice : Nat → Nat → Prop
     | n1, n2 =>
-      ∃ k, (between 1 k n1 ∧ between 1 k n1 → Bob (n1-k) n2)
-         ∨ (between 1 k n2 ∧ between 1 k n2 → Bob n1 (n2-k))
+      ∃ k, (between 1 k n1 ∧ (between 1 k n1 → Bob (n1-k) n2))
+         ∨ (between 1 k n2 ∧ (between 1 k n2 → Bob n1 (n2-k)))
 
   def Bob : Nat → Nat → Prop
     | n1, n2 =>
