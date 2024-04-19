@@ -27,7 +27,6 @@ to directly manage the underlying disks.
 
 | VDEV Type | Similar RAID | Notes |
 |-----------|----------------|---------------------------------------|
-| Stripe | Single disk | No redundancy. Data is not mirrored or parity-protected. |
 | Mirror | RAID 1 | Supports n-way mirroring for redundancy. |
 | raidz1 | RAID 5 | Single disk parity, offering fault tolerance of one disk failure. |
 | raidz2 | RAID 6 | Two-disk parity, can tolerate two disk failures. |
