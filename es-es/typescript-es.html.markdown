@@ -16,7 +16,7 @@ Este artículo se enfocará solo en la sintáxis extra de TypeScript, y no en [J
 
 Para probar el compilador de TypeScript, diríjase al [Área de Pruebas](https://www.typescriptlang.org/Playground) donde podrá tipear código, y ver como se auto-completa al tiempo que ve el código emitido JavaScript.
 
-```js
+```ts
 // Existen 3 tipos básicos en TypeScript
 var isDone: boolean = false;
 var lines: number = 42;

@@ -16,7 +16,7 @@ Bu makale sadece TypeScript'e ait ekstra söz dizimini konu alır, JavaScript i�
 
 TypeScript derleyiciyi test etmek için [Playground](https://www.typescriptlang.org/Playground)'a gidin. Orada otomatik tamamlama ile kod yazabilecek ve üretilen JavaScript'i görebileceksiniz.
 
-```js
+```ts
 // TypeScript'te üç ana tip vardır.
 var bittiMi: boolean = false;
 var satırlar: number = 42;

@@ -20,7 +20,7 @@ Dit artikel focust zich alleen op de extra's van TypeScript tegenover [JavaScrip
 Om de compiler van TypeScript te kunnen proberen kun je naar de [Playground](https://www.typescriptlang.org/Playground) gaan.
 Hier kun je automatisch aangevulde code typen in TypeScript en de JavaScript variant bekijken.
 
-```js
+```ts
 // Er zijn 3 basis typen in TypeScript
 var isKlaar: boolean = false;
 var lijnen: number = 42;

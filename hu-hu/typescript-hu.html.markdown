@@ -16,7 +16,7 @@ Ez a dokumentum a TypeScript által hozzáadott új szintaxissal foglalkozik, ne
 
 Hogy kipróbáld a TypeScript fordítót, látogass el a [Játszótérre avagy Playground-ra](https://www.typescriptlang.org/Playground) ahol kódot írhatsz automatikus kódkiegészítéssel, és közvetlenül láthatod az előállított JavaScript kódot.
 
-```js
+```ts
 // 3 alapvető típus létezik TypeScriptben
 var isDone: boolean = false;
 var lines: number = 42;
