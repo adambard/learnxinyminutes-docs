@@ -10,13 +10,13 @@ filename: learntypescript-ru.ts
 ---
 
 TypeScript — это язык программирования, целью которого является лёгкая разработка широко масштабируемых JavaScript-приложений.
-TypeScript добавляет в Javascript общие концепции, такие как классы, модули, интерфейсы, обобщённое программирование и (опционально) статическую типизацию.  
-Это надмножество языка JavaScript: весь JavaScript-код является валидным TypeScript-кодом, следовательно, может быть добавлен бесшовно в любой проект. 
+TypeScript добавляет в Javascript общие концепции, такие как классы, модули, интерфейсы, обобщённое программирование и (опционально) статическую типизацию.
+Это надмножество языка JavaScript: весь JavaScript-код является валидным TypeScript-кодом, следовательно, может быть добавлен бесшовно в любой проект.
 Компилятор TypeScript генерирует JavaScript-код.
 
-Эта статья концентрируется только на синтаксисе TypeScript, в противовес статье о [JavaScript](javascript-ru/).
+Эта статья концентрируется только на синтаксисе TypeScript, в противовес статье о [JavaScript](../javascript-ru/).
 
-Для тестирования компилятора TypeScript пройдите по ссылке в [песочницу](http://www.typescriptlang.org/Playground). 
+Для тестирования компилятора TypeScript пройдите по ссылке в [песочницу](https://www.typescriptlang.org/Playground).
 Там вы можете написать код (с поддержкой автодополнения) и сразу же увидеть сгенерированный JavaScript код.
 
 ```js
@@ -87,7 +87,7 @@ mySearch = function(src: string, sub: string) {
 
 // Классы. Члены класса по умолчанию являются публичными
 class Point {
-  	// Свойства
+    // Свойства
     x: number;
 
     // Конструктор — ключевые слова public/private в данном контексте сгенерируют
@@ -165,8 +165,6 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 ```
 
 ## Для дальнейшего чтения
- * [Официальный веб-сайт TypeScript](http://www.typescriptlang.org/)
- * [Спецификация языка TypeScript (pdf)](http://go.microsoft.com/fwlink/?LinkId=267238)
- * [Anders Hejlsberg — Introducing TypeScript на Channel 9](http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [Исходный код на GitHub](https://github.com/Microsoft/TypeScript)
- * [Definitely Typed — репозиторий определений типов](http://definitelytyped.org/)
+
+* [Официальный веб-сайт TypeScript](https://www.typescriptlang.org/)
+* [Исходный код на GitHub](https://github.com/microsoft/TypeScript)
