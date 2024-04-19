@@ -313,7 +313,7 @@ Encryption allows data to be encrypted on the device at the cost of extra CPU cy
 propery can only be set when a dataset is being created.
 
 ```bash
-# Enable comporession on the pool
+# Enable encryption on the pool
 $ zpool set feature@encryption=enabled black_hole
 
 # Create an encrypted dataset with a prompt
