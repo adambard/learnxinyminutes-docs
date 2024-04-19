@@ -390,5 +390,5 @@ For more info, check out John Gruber's official post of syntax [here](http://dar
 
 If you want to learn more on some major Markdown flavors' features, see:
 
-- [GitHub flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-- [GitLab flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)
+- [GitHub Flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitLab Flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)

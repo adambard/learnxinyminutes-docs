@@ -194,7 +194,7 @@ print twice b      ; 输出 6
 
 Red 相关的源码信息在 [Red 语言主页](https://www.red-lang.org)。
 
-源代码的 [github 库](https://github.com/red/red)。
+源代码的 [GitHub 库](https://github.com/red/red)。
 
 Red/System 特性在 [这里](https://static.red-lang.org/red-system-specs-light.html)。
 

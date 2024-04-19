@@ -12,7 +12,7 @@ Le Structured Query Language (SQL) est un langage standard [ISO/IEC 9075](https:
 
 Les implémentations fournissent généralement une interface en ligne de commande, où vous pouvez saisir les commandes présentées ici de manière interactive. Elles offrent également un moyen d'exécuter une série de ces commandes stockées dans un fichier script. (Exemple de commande non standardisée, pour quitter l'invite de commande, la plupart des implémentations SQL prennent en charge les mots-clés QUIT, EXIT, ou les deux).
 
-Les exemples de commandes présentés ici utilisent la [base de données d'exemple des employés MySQL](https://dev.mysql.com/doc/employee/en/), disponible sur [github](https://github.com/datacharmer/test_db). Des fichiers scripts sont présents, et permettent de créer et de remplir des tables de données sur les employés d'une entreprise fictive. La syntaxe d'exécution de ces scripts dépendra de l'implémentation SQL que vous utilisez, et du système d'exploitation.
+Les exemples de commandes présentés ici utilisent la [base de données d'exemple des employés MySQL](https://dev.mysql.com/doc/employee/en/), disponible sur [GitHub](https://github.com/datacharmer/test_db). Des fichiers scripts sont présents, et permettent de créer et de remplir des tables de données sur les employés d'une entreprise fictive. La syntaxe d'exécution de ces scripts dépendra de l'implémentation SQL que vous utilisez, et du système d'exploitation.
 
 ```sql
 -- Un commentaire commence par deux traits d'union. Chaque commande se termine par un point-virgule.

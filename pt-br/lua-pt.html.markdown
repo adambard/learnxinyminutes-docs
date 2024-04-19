@@ -417,6 +417,6 @@ A propósito, todo este arquivo é um código LUA válido, salve-o como
 aprenda.lua e rode-o com "lua aprenda.lua" !
 
 Este guia foi escrito pela primeira vez por tylerneylon.com, e agora
-também disponível em <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. E também em português.
+também disponível em <a href="https://gist.github.com/tylerneylon/5853042">GitHub gist</a>. E também em português.
 
 Se divirta com lua

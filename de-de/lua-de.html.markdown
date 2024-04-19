@@ -423,4 +423,4 @@ Wichtige Themen die hier nicht angesprochen wurden; die Standard-Bibliotheken:
 Übrigends, die gesamte Datei ist gültiges Lua. Speichere sie als learn.lua und
 starte sie als "lua learn.lua" !
 
-Die Erstfassung ist von tylerneylon.com, und ist auch hier verfügbar: <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Viel Spaß mit Lua!
+Die Erstfassung ist von tylerneylon.com, und ist auch hier verfügbar: <a href="https://gist.github.com/tylerneylon/5853042">GitHub gist</a>. Viel Spaß mit Lua!

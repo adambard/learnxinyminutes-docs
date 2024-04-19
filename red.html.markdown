@@ -210,7 +210,7 @@ print twice b   ; will output 6.
 
 The main source for information about Red is the [Red language homepage](http://www.red-lang.org).
 
-The source can be found on [github](https://github.com/red/red).
+The source can be found on [GitHub](https://github.com/red/red).
 
 The Red/System language specification can be found [here](http://static.red-lang.org/red-system-specs-light.html).
 

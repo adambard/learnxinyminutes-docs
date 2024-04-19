@@ -51,7 +51,7 @@ __En deze tekst ook!__
 **_Deze ook!_**
 *__En zelfs deze!__*
 
-<!-- In de github versie van markdown, die gebruikt wordt om markdown te renderen
+<!-- In de GitHub versie van markdown, die gebruikt wordt om markdown te renderen
 op GitHub, is er ook doorstrepen -->
 
 ~~Deze tekst wordt doorstreept.~~

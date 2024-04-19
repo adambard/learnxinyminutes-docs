@@ -417,4 +417,4 @@ By the way, the entire file is valid Lua; save it
 as learn.lua and run it with "lua learn.lua" !
 
 This was first written for tylerneylon.com, and is
-also available as a <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Have fun with Lua!
+also available as a <a href="https://gist.github.com/tylerneylon/5853042">GitHub gist</a>. Have fun with Lua!

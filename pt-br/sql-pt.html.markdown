@@ -12,7 +12,7 @@ A linguagem de consulta estruturada (SQL em inglês) é uma linguagem padrão IS
 
 As implementações normalmente fornecem uma linha de comando onde se pode digitar os comandos mostrados aqui de forma interativa, e também oferecem uma maneira de executar uma série desses comandos armazenados em um arquivo de script (mostrar que é feito com o prompt interativo é um bom exemplo de algo que não é padronizado - a maioria das implementações SQL suporta as palavras-chave QUIT, EXIT ou ambas).
 
-Vários desses comandos de exemplo assumem que o [banco de dados de funcionários de exemplo MySQL](https://dev.mysql.com/doc/employee/en/) disponível em [github](https://github.com/datacharmer/test_db) já foi carregado. Os arquivos do GitHub são scripts de comandos, semelhantes aos comandos abaixo, que criam e carregam tabelas de dados sobre os funcionários de uma empresa fictícia. A sintaxe para executar esses scripts dependerá da implementação SQL que você está usando. Um aplicativo executado a partir do prompt do sistema operacional geralmente é o normal.
+Vários desses comandos de exemplo assumem que o [banco de dados de funcionários de exemplo MySQL](https://dev.mysql.com/doc/employee/en/) disponível em [GitHub](https://github.com/datacharmer/test_db) já foi carregado. Os arquivos do GitHub são scripts de comandos, semelhantes aos comandos abaixo, que criam e carregam tabelas de dados sobre os funcionários de uma empresa fictícia. A sintaxe para executar esses scripts dependerá da implementação SQL que você está usando. Um aplicativo executado a partir do prompt do sistema operacional geralmente é o normal.
 
 
 ```sql

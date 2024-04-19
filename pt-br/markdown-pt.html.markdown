@@ -398,5 +398,5 @@ e o do cheatsheet do Adam Pritchard [aqui](https://github.com/adam-p/markdown-he
 Se você quiser aprender mais sobre recursos de alguns sabores específicos de
 Markdown, veja:
 
-- [GitHub flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-- [GitLab flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)
+- [GitHub Flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitLab Flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)

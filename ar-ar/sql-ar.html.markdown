@@ -27,9 +27,9 @@ QUIT , EXIT
 في الامثلة بالأسفل تعتمدالعديد من الأوامرأن قاعدة بيانات الموظفين
 [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/) 
 الموجودة على
-[github](https://github.com/datacharmer/test_db)
+[GitHub](https://github.com/datacharmer/test_db)
 قد تم تحميلها مسبقا. الملفات على
-github 
+GitHub 
 هي مجموعة من الاوامر تشبه الموجودة بالاسفل و تقوم الأوامر بإنشاء الجدوال وإدخال بيانات مجموعة من الموظفين المتخيلين في شركة. تعتمد الأوامر المستخدمة في هذا البرنامج على نسخة 
 SQL 
 التي تستخدمها، 
