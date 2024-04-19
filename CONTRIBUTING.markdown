@@ -78,7 +78,8 @@ lang: ep-ep
 
 ### Syntax highlighter
 
-[Rouge](https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers) is used for syntax highlighting.
+[Pygments](https://pygments.org/languages/) is used for syntax highlighting through
+[pygments.rb](https://github.com/pygments/pygments.rb).
 
 ### Should I add myself as a contributor?
 
