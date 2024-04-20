@@ -7,11 +7,9 @@ contributors:
 
 [Zig][ziglang] aims to be a replacement for the C programming language.
 
-**WARNING**: this document expects you to understand a few basic concepts in computer science, such as pointers, stack and heap memory, etc.
-
-**WARNING**: Zig isn't considered as ready for production. Bugs are expected.
-
-Prior knowledge of C is recommended.
+**WARNING**: this document expects you to understand a few basic concepts in computer
+science, such as pointers, stack and heap memory, etc. Prior knowledge of C is
+recommended.
 
 ## Quick overview: Zig compared to C
 
@@ -20,8 +18,8 @@ Prior knowledge of C is recommended.
 - `try` and `catch` mechanism, which is both convenient, efficient and optional.
 - Most of the C undefined behaviors (UBs) are fixed.
 - Compared to C, raw pointers are safer to use and less likely to be needed.
-  * The type system distinguishes between a pointer to a single value, or multiple values, etc.
-  * Slices are preferred, which is a structure with a pointer and a runtime known size, which characterizes most uses of pointers in the first place.
+  - The type system distinguishes between a pointer to a single value, or multiple values, etc.
+  - Slices are preferred, which is a structure with a pointer and a runtime known size, which characterizes most uses of pointers in the first place.
 - Some arbitrary language limitations are removed. For example, enumerations, structures and unions can have functions.
 - Simple access to SIMD operations (basic maths on vectors).
 - Zig provides both low-level features of C and the one provided through compiler extensions.
@@ -218,7 +216,7 @@ if (pointer.* == 1) {
 const foo = pointer.?; // Get the pointed value, otherwise crash.
 ```
 
-### Optional values (?<type>).
+### Optional values (?\<type\>).
 
 ```zig
 // An optional is a value than can be of any type or null.
@@ -694,6 +692,7 @@ Thus, the standard library lets developers handle memory as they need, through s
 **NOTE**: the choice of the allocator isn't in the scope of this document.
 A whole book could be written about it.
 However, here are some examples, to get an idea of what you can expect:
+
 - `page_allocator`.
   Allocate a whole page of memory each time we ask for some memory.
   Very simple, very dumb, very wasteful.
@@ -924,8 +923,10 @@ test "returns true" {
 ```
 
 ### Compiler built-ins.
+
 The compiler has special functions called "built-ins", starting with an "@".
 There are more than a hundred built-ins, allowing very low-level stuff:
+
 - compile-time errors, logging, verifications
 - type coercion and conversion, even in an unsafe way
 - alignment management
@@ -967,7 +968,6 @@ if (@enumToInt(Value.blah)  == 2) { ... }
 - Many pointer types exist in order to represent what is pointed to.
   Example: is this a single value or an array, is the length known, etc.
 - Structures need a value for their attributes, and it is still possible to give an undefined value (stack garbage), but at least it is explicitly undefined.
-
 
 ## Further Reading
 
