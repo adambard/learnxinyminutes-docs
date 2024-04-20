@@ -358,17 +358,8 @@ with builtins; [
 
 ### Vidare Läsning (eng)
 
-* [Nix Manual - Nix expression language]
-  (https://nixos.org/nix/manual/#ch-expression-language)
-
-* [James Fisher - Nix by example - Part 1: The Nix expression language]
-  (https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
-
-* [Susan Potter - Nix Cookbook - Nix By Example]
-  (https://ops.functionalalgebra.com/nix-by-example/)
-
-* [Zero to Nix - Nix Tutorial]
-  (https://zero-to-nix.com/)
-
-* [Rommel Martinez - A Gentle Introduction to the Nix Family]
-  (https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)
+* [Nix Manual - Nix expression language](https://nixos.org/nix/manual/#ch-expression-language)
+* [James Fisher - Nix by example - Part 1: The Nix expression language](https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
+* [Susan Potter - Nix Cookbook - Nix By Example](https://ops.functionalalgebra.com/nix-by-example/)
+* [Zero to Nix - Nix Tutorial](https://zero-to-nix.com/)
+* [Rommel Martinez - A Gentle Introduction to the Nix Family](https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)
