@@ -465,7 +465,7 @@ function sayHelloInFiveSeconds(name){
 sayHelloInFiveSeconds('Adam'); // ouvre un popup avec 'Hello, Adam!' dans 5sec
 
 // Gestion des erreurs
-// Essaye d'exécuter les instruction du bloc try. En cas d'erreur, plutôt que d'arrêter l'éxécution,
+// Essaye d'exécuter les instructions du bloc try. En cas d'erreur, plutôt que d'arrêter l'éxécution,
 // capture l'erreur et continue avec les instructions du bloc catch.
 try {
     let json = 'bad JSON';
@@ -497,7 +497,7 @@ function sleep(ms) {
     })
 }
 
-// *ES6:* Exécture entièrement fnThen. Une fois la Promesse résolue, exécute la fonction de rappel.
+// *ES6:* Exécute entièrement fnThen. Une fois la Promesse résolue, exécute la fonction de rappel.
 // Affiche "function end", puis "sleep end".
 (function fnThen() {
     sleep(1000).then(x => {
@@ -688,7 +688,7 @@ if (Object.create === undefined){ // pour ne pas reécrire si la fonction existe
     }
 }
 
-// *ES2020:* 0pérateur de chaînage optionnel ?.
+// *ES2020:* Opérateur de chaînage optionnel ?.
 // Permet d'accéder aux propriétés dans une chaine d'objets.
 // Retourne undefined si un objet intermédiaire n'est pas défini.
 let optChainObj = {}
