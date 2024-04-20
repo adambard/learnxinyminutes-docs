@@ -114,7 +114,7 @@ Error = error(
 yes
 ```
 
-Un punto fondamentale da capire è che le direttive che specificano il predicato nello scope specificano la semantica di chiamata (_calling_) del predicato, e non la semantica di definizione (_definition_). Ad esempio, se un oggetto ha il ruolo di una classe e dichiara un predicato privato, tale predicato può essere definito nelle sue sottoclassi e nelle istanze * ma * può essere chiamato solo nelle sue istanza (_from_) dalla classe.
+Un punto fondamentale da capire è che le direttive che specificano il predicato nello scope specificano la semantica di chiamata (_calling_) del predicato, e non la semantica di definizione (_definition_). Ad esempio, se un oggetto ha il ruolo di una classe e dichiara un predicato privato, tale predicato può essere definito nelle sue sottoclassi e nelle istanze *ma* può essere chiamato solo nelle sue istanza (_from_) dalla classe.
 
 # Definizione e implementazione di un protocollo
 
