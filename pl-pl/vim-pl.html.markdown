@@ -11,10 +11,10 @@ filename: LearnVim-pl.txt
 
 
 [Vim](http://www.vim.org)
-(Vi IMproved) jest klonem popularnego edytora vi dla systemów Unix. 
-Zaprojektowany z myślą o prędkości edycji i zwiększeniu produktywności jest 
-wszechobecny na systemach UNIXopodobnych. Posiada wiele skrótów klawiszowych 
-do szybkiej nawigacji do wybranych miejsc w plikach oraz szybkiej edycji 
+(Vi IMproved) jest klonem popularnego edytora vi dla systemów Unix.
+Zaprojektowany z myślą o prędkości edycji i zwiększeniu produktywności jest
+wszechobecny na systemach UNIXopodobnych. Posiada wiele skrótów klawiszowych
+do szybkiej nawigacji do wybranych miejsc w plikach oraz szybkiej edycji
 danych fragmentów.
 
 ## Podstawy nawigacji w Vim
@@ -55,12 +55,12 @@ danych fragmentów.
     # Skoki do znaków
 
     f<znak>          # Skocz do przodu i zatrzymaj się na <znak>
-    t<znak>          # Skocz do przodu i zatrzymaj się przed <znak> 
+    t<znak>          # Skocz do przodu i zatrzymaj się przed <znak>
 
-    # Na przykład,    
+    # Na przykład,
     f<               # Skocz do przodu i zatrzymaj się na <
     t<               # Skocz do przodu i zatrzymaj się przed <
-    
+
     # Moving by word
 
     w                # Przesuń kursor do przodu o jedno słowo
@@ -77,14 +77,14 @@ danych fragmentów.
     L                # Skocz na dół ekranu
 ```
 
-## Tryby:
+## Tryby
 
 Vim oparty jest na koncepcji **trybów**.
 
 Command Mode - (Tryb komend) vim zaczyna w tym trybie, używany do nawigacji i wpisywania komend
 Insert Mode  - (Tryb wprowadzania) używany do wprowadzania zmian w pliku
 Visual Mode  - (Tryb wizualny) używany do zaznaczania tekstu i wykonywania komend na nim
-Ex Mode      - (Tryb Ex) 
+Ex Mode      - (Tryb Ex)
 
 ```
     i                # Przechodzi to trybu wprowadzania, przed pozycją kursora
@@ -116,7 +116,7 @@ Kilka ważnych przykładów Akcji, Modyfikatorów i Obiektów:
 
 ```
     # 'Akcje'
- 
+
     d                # Usuń
     c                # Zmień
     y                # Skopiuj
@@ -138,7 +138,7 @@ Kilka ważnych przykładów Akcji, Modyfikatorów i Obiektów:
     s                # Zdanie
     p                # Paragraf
     b                # Blok
-    
+
     # Przykładowe 'zdania'
 
     d2w              # Usuń 2 słowa
@@ -154,7 +154,7 @@ Kilka ważnych przykładów Akcji, Modyfikatorów i Obiektów:
 ```
     >                # Zrób wcięcie zaznaczonego bloku
     <                # Usuń wcięcie zaznaczonego bloku
-    :earlier 15m     # Przywróć dokument do stanu z przed 15 minut 
+    :earlier 15m     # Przywróć dokument do stanu z przed 15 minut
     :later 15m       # Odwróć efekt poprzedniej komendy
     ddp              # Zamień kolejnością kolejne linie, dd potem p
     .                # Powtórz poprzednią komendę
@@ -178,9 +178,9 @@ Plik .vimrc może być użyty do skonfigurowania Vim'a przy jego starcie
 
 Poniżej zamieszczono przykładowy plik ~/.vimrc:
 
-```
+```vim
 " Przykładowy ~/.vimrc
-" 2016.10 
+" 2016.10
 
 " Wymagane aby korzystać z opcji iMproved
 set nocompatible
