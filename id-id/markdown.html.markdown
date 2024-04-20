@@ -12,7 +12,6 @@ Markdown dibuat oleh John Gruber pada tahun 2004. Tujuannya untuk menjadi syntax
 
 Beri masukan sebanyak-banyaknya! / Jangan sungkan untuk melakukan fork dan pull request!
 
-
 ```md
 <!-- Markdown adalah superset dari HTML, jadi setiap berkas HTML adalah markdown yang
 valid, ini berarti kita dapat menggunakan elemen HTML dalam markdown, seperti elemen

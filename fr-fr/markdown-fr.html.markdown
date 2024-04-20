@@ -6,7 +6,6 @@ filename: markdown-fr.md
 lang: fr-fr
 ---
 
-
 Markdown a été créé par John Gruber en 2004. Il se veut être d'une syntaxe
 facile à lire et à écrire, aisément convertible en HTML (et dans beaucoup
 d'autres formats aussi).
@@ -14,17 +13,6 @@ d'autres formats aussi).
 Les implémentations du Markdown varient d'un analyseur syntaxique à un autre.
 Ce guide va essayer de clarifier quand une fonctionnalité est universelle ou
 quand elle est specifique à un certain analyseur syntaxique.
-
-- [Balises HTML](#balises-html)
-- [En-têtes](#en-tetes)
-- [Styles de texte basiques](#style-de-text-basiques)
-- [Paragraphes](#paragraphes)
-- [Listes](#listes)
-- [Blocs de code](#blocs-de-code)
-- [Séparateur horizontal](#separateur-horizontal)
-- [Liens hypertextes](#liens-hypertextes)
-- [Images](#images)
-- [Divers](#divers)
 
 ## Balises HTML
 
@@ -107,7 +95,7 @@ un ou plusieurs espaces à la fin de votre paragraphe, et en commencer un
 nouveau.
 
 ```md
-J'ai deux espaces vides à la fin (sélectionnez moi pour les voir).
+J'ai deux espaces vides à la fin (sélectionnez moi pour les voir).  
 
 Bigre, il y a un <br /> au dessus de moi!
 ```

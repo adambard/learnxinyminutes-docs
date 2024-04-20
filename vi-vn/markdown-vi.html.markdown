@@ -9,23 +9,12 @@ filename: markdown-vi.md
 lang: vi-vn
 ---
 
-
 Ngôn ngữ Markdown được sáng lập bởi John Gruber vào năm 2004. Nó được tạo ra với mục đích dễ đọc với cú pháp có thể được dễ dàng chuyển đổi qua HTML và các ngôn ngữ khác
 
 Markdown có sự khác biệt trong cách cài đặt giữa các trình phân tích cú pháp. Hướng dẫn này sẽ đề cập, giải thích tới nếu tính năng có thể được sử dụng chung hay nó chỉ áp dụng cho một trình phân tích riêng biệt.
 
-- [Phần tử HTML](#html-elements)
-- [Đầu mục](#headings)
-- [Định dạng văn bản](#simple-text-styles)
-- [Đoạn văn](#paragraphs)
-- [Danh sách](#lists)
-- [Khối code](#code-blocks)
-- [Đường kẻ ngang](#horizontal-rule)
-- [Liên kết](#links)
-- [Ảnh](#images)
-- [Khác](#miscellany)
-
 ## Phần tử HTML
+
 Markdown là tập cha của HTML, vì vậy bất cứ file HTML nào đều là Markdown đúng.
 
 ```md

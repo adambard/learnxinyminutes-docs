@@ -20,27 +20,8 @@ O Markdown varia em termos de implementação de um parser para outro. Esse guia
 irá tentar deixar explícito quando os recursos são universais ou quando são
 específicos para um parser em específico.
 
-- [Elementos HTML](#elementos-html)
-- [Cabeçalhos](#cabeçalhos)
-- [Estilos de texto simples](#estilos-de-texto-simples)
-- [Parágrafos](#parágrafos)
-- [Listas](#listas)
-- [Blocos de código](#blocos-de-código)
-- [Linha Horizontal](#linha-horizontal)
-- [Links](#links)
-  - [Tabela de conteúdo](#tabela-de-conteúdo)
-- [Imagens](#imagens)
-- [Miscelânea](#miscelânea)
-  - [Auto-links](#auto-links)
-  - [Auto-links para e-mails](#auto-links-com-e-mails)
-  - [Escapando caracteres](#escapando-caracteres)
-  - [Teclas do teclado](#teclas-do-teclado)
-  - [Tabelas](#tabelas)
-- [Markdownlint](#markdownlint)
-- [Leitura complementar](#leitura-complementar)
-
 ## Elementos HTML
-O Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
+O Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é
 um arquivo Markdown válido.
 
 ```md
@@ -98,7 +79,7 @@ GitHub, nós também temos:
 ```
 
 ## Parágrafos
-Os parágrafos estão em uma ou várias linhas adjacentes de texto separadas por 
+Os parágrafos estão em uma ou várias linhas adjacentes de texto separadas por
 uma ou múltiplas linhas em branco.
 
 ```md
@@ -111,11 +92,11 @@ Ainda continuo no parágrafo 2!
 Eu estou no parágrafo três!
 ```
 
-Se você quiser inserir uma tag HTML `<br />`, você pode acabar com um parágrafo 
+Se você quiser inserir uma tag HTML `<br />`, você pode acabar com um parágrafo
 com dois ou mais espaços e, em seguida, começar um novo parágrafo.
 
 ```md
-Termino com dois espaços (selecione essa linha para vê-los). 
+Termino com dois espaços (selecione essa linha para vê-los).  
 
 Há um <br /> acima de mim!
 ```
@@ -123,12 +104,12 @@ Há um <br /> acima de mim!
 Blocos de citações são fáceis e feitos com o caractere >.
 
 ```md
-> Este é um bloco de citação. Você pode 
+> Este é um bloco de citação. Você pode
 > Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você
 > pode deixar suas linhas ficarem muito longas e quebrarem por conta própria.
 > Não faz diferença, desde que elas comecem com um `>`.
 
-> Você também pode usar mais de um nível 
+> Você também pode usar mais de um nível
 >> De recuo?
 > O quão legal é isso?
 
@@ -187,7 +168,7 @@ Você também pode usar sublistas.
 4. Item quatro
 ```
 
-Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) do 
+Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) do
 HTML.
 
 ```md
@@ -244,7 +225,7 @@ hífens, com ou sem espaços.
 ```md
 ***
 ---
-- - - 
+- - -
 ****************
 ```
 
@@ -280,7 +261,7 @@ O Markdown também suporta links para referências no texto.
 [link2r]: http://foobar.biz/ "Certo!"
 ```
 
-O título também pode estar entre aspas simples ou entre parênteses, ou omitido 
+O título também pode estar entre aspas simples ou entre parênteses, ou omitido
 inteiramente. As referências podem estar em qualquer lugar no documento e os
 IDs de referência podem ser qualquer um, desde que eles sejam únicos.
 
@@ -320,7 +301,7 @@ As imagens são feitas da mesma forma que os links, mas com um ponto de
 exclamação na frente!
 
 ```md
-![Este é alt-text (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional") 
+![Este é alt-text (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional")
 ```
 
 E estilo de referência funciona como esperado
@@ -331,24 +312,24 @@ E estilo de referência funciona como esperado
 [Minha imagem]: relative/urls/cool/image.jpg "se precisar de um título, está aqui"
 ```
 
-## Miscelânea 
+## Miscelânea
 
-### Auto-links 
+### Auto-links
 
 ```md
-<http://testwebsite.com/> é equivalente a 
-[http://testwebsite.com/](http://testwebsite.com/) 
+<http://testwebsite.com/> é equivalente a
+[http://testwebsite.com/](http://testwebsite.com/)
 ```
 
 ### Auto-links para e-mails
 
 ```md
-<foo@bar.com> 
+<foo@bar.com>
 ```
 
 ### Escapando caracteres
 
-Quero digitar *Este texto entre asteriscos*, mas eu não quero que ele seja 
+Quero digitar *Este texto entre asteriscos*, mas eu não quero que ele seja
 em itálico, então eu faço o seguinte: \*Este texto entre asteriscos \*.
 
 ### Teclas do teclado
@@ -361,9 +342,9 @@ Seu computador travou? Tente apertar
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 ```
 
-### Tabelas 
+### Tabelas
 
-Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente 
+Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente
 complicadas, mas se você realmente quer:
 
 ```md
@@ -373,7 +354,7 @@ complicadas, mas se você realmente quer:
 | blah         | blah     | blah          |
 ```
 
-Ou, para os mesmos resultados 
+Ou, para os mesmos resultados
 
 ```md
 Col 1 | Col2 | Col3
