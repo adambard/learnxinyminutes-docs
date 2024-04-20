@@ -9,13 +9,13 @@ lang: fr-fr
 
 ---
 
-Une expression régulière (regex ou regexp en abrégé) est une chaîne de texte spéciale pour décrire un masque de recherche. Par exemple, pour extraire le nom de domaine d'une chaîne, nous pouvons dire `/^[a-z]+:/` et cela correspondra à `http:` à partir de `http://github.com/`.
+Une expression régulière (regex ou regexp en abrégé) est une chaîne de texte spéciale pour décrire un masque de recherche. Par exemple, pour extraire le protocole d'une URL, nous pouvons dire `/^[a-z]+:/` et cela correspondra à `http:` à partir de `http://github.com/`.
 
 PCRE (Perl Compatible Regular Expressions) est une bibliothèque C implémentant les expressions régulières. Elle a été écrite en 1997, à l'époque où Perl était le choix de facto pour les tâches complexes de traitement de texte. La syntaxe utilisée dans PCRE ressemble beaucoup à Perl, et est utilisée dans de nombreux grands projets, notamment PHP, Apache et R, pour n'en citer que quelques-uns.
 
 Il existe deux sortes de méta-caractères :
 
-* Ceux-là sont reconnus n'importe où dans le masque, sauf entre crochets.
+* Ceux reconnus n'importe où dans le masque, sauf entre crochets, sont :
 
 ```
   \      caractère d'échappement général ayant plusieurs usages
@@ -35,7 +35,7 @@ Il existe deux sortes de méta-caractères :
   {      début d'un quantificateur min/max
 ```
 
-* Ceux-là sont reconnus entre crochets. En dehors des crochets. Elles sont également appelées classes de caractères.
+* Ceux reconnus entre crochets, en dehors des crochets, et appelées également classes de caractères, sont :
 
 ```
   \      caractère d'échappement général
@@ -49,15 +49,15 @@ PCRE fournit des types de caractères génériques, également appelés classes 
 
 ```
   \d     tout chiffre décimal
-  \D     tout chiffre non décimal
+  \D     tout sauf un chiffre décimal
   \h     tout caractère d'espace horizontal blanc
-  \H     tout caractère, autre que l'espace horizontal blanc
+  \H     tout sauf un caractère d'espace horizontal blanc
   \s     tout caractère d'espace blanc
-  \S     tout caractère, autre que l'espace blanc
+  \S     tout sauf un caractère d'espace blanc
   \v     tout caractère d'espace vertical blanc
-  \V     tout caractère, autre que l'espace vertical blanc
+  \V     tout sauf un caractère d'espace vertical blanc
   \w     tout caractère pouvant former un mot (lettre, chiffre, underscore)
-  \W     tout caractère, ne pouvant pas former un mot
+  \W     tout sauf un caractère pouvant former un mot (lettre, chiffre, underscore)
 ``
 
 ## Exemples
@@ -68,7 +68,7 @@ Nous allons tester nos exemples sur la chaîne sujet suivante :
 66.249.64.13 - - [18/Sep/2004:11:07:48 +1000] "GET /robots.txt HTTP/1.0" 200 468 "-" "Googlebot/2.1"
 ```
 
- It is a standard Apache access log.
+Il s'agit d'un log d'accès Apache standard.
 
 | Regex | Résultat          | Commentaire |
 | :---- | :-------------- | :------ |
