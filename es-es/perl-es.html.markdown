@@ -149,7 +149,7 @@ perlfaq contiene preguntas y respuestas relacionadas con muchas tareas comunes, 
 
 #### Material de Lectura
 
-     - [perl-tutorial](http://perl-tutorial.org/)
-     - [Learn Perl](http://www.perl.org/learn.html)
-     - [perldoc](http://perldoc.perl.org/)
-     - y en su propio perl: `perldoc perlintro`
+- [perl-tutorial](http://perl-tutorial.org/)
+- [Learn Perl](http://www.perl.org/learn.html)
+- [perldoc](http://perldoc.perl.org/)
+- y en su propio perl: `perldoc perlintro`

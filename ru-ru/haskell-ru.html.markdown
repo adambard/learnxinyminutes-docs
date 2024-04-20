@@ -543,4 +543,4 @@ Haskell прост в установке, забирайте [здесь](http:/
 [Learn you a Haskell](http://learnyouahaskell.com/) и
 [Real World Haskell](http://book.realworldhaskell.org/).
 
-[author]: http://adit.io имеется в виду автор оригинального текста Adit Bhargava *(примечание переводчика)*
+[author]: http://adit.io "имеется в виду автор оригинального текста Adit Bhargava *(примечание переводчика)*"
