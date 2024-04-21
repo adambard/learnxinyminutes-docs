@@ -15,4 +15,4 @@ jobs:
         with:
           ruby-version: '3.2'
       - run: gem install mdl
-      - run: mdl . --ignore-front-matter -r MD011,MD023,MD027,MD028,MD037
+      - run: mdl . --ignore-front-matter -r MD011,MD023,MD027,MD028,MD037,MD047
