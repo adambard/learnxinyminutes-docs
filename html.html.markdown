@@ -161,6 +161,71 @@ useful tips.
 		<td>second row, second column</td>
 	</tr>
 </table>
+
+<!-- ################ Additional Tags ################# -->
+
+<!-- In addition to the first example, here are some more common HTML element tags. -->
+
+<head>
+	<!-- <meta> describes metadata. -->
+	<!-- We define the content-type and the viewport. -->
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--
+		Enhance your HTML with JavaScript and CSS.
+		Javascript allows interaction between the user and the page.
+		CSS (Cascading Style Sheet) tells how to display HTML elements in the browser.
+	-->
+
+	<!-- External JavaScript file -->
+	<script src='scripts.js'></script>
+
+	<!-- Inline JavaScript code -->
+	<script>
+		console.log('Hello world')
+	</script>
+
+	<!-- External CSS file -->
+	<link href="styles.css" rel="stylesheet">
+
+	<!-- Inline CSS -->
+	<style>
+	html, body {
+		margin: 0px;
+	}
+	</style>
+</head>
+
+<!-- <div> is a simple block container that can contains other elements. -->
+<!-- <br> adds a line break. -->
+<div>
+	First line.<br>Second line.<br>
+	<i>italics</i> <b>bold</b> <u>underline</u>
+</div>
+
+<!-- An HTML form. -->
+<form method="post" action="action.php" id="myForm">
+	Post title: <input name="name" type="text"><br>
+	Category:
+	<select name="category">
+		<option selected="selected" value="general">General</option>
+		<option value="js">Javascript</option>
+		<option value="html">HTML</option>
+	</select><br>
+	Post language:
+	<label><input checked="checked" name="lang" type="radio" value="markdown"> Markdown</label>
+	<label><input name="lang" type="radio" value="html"> HTML</label><br>
+	<textarea name="post">Post content</textarea><br>
+</form>
+
+<button type="submit" form="myForm" value="Submit">Submit</button>
+
+<!-- Iframe embeds another HTML page into the current one. -->
+<iframe src="https://www.openstreetmap.org/export/embed.html">
+</iframe>
+
+
 ```
 
 ## Usage
