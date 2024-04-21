@@ -21,13 +21,13 @@ void main(string[] args) {
 ```
 
 Se você é como eu e passa muito tempo na Internet, é provável que tenha ouvido
-sobre [D] (http://dlang.org/). A linguagem de programação D é moderna, de uso geral,
+sobre [D](http://dlang.org/). A linguagem de programação D é moderna, de uso geral,
 linguagem multiparadigma com suporte para tudo, desde recursos de baixo nível até
 abstrações expressivas de alto nível.
 
 D é desenvolvido ativamente por um grande grupo de pessoas super-inteligentes e é liderado por
-[Walter Bright] (https://en.wikipedia.org/wiki/Walter_Bright) e
-[Andrei Alexandrescu] (https://en.wikipedia.org/wiki/Andrei_Alexandrescu).
+[Walter Bright](https://en.wikipedia.org/wiki/Walter_Bright) e
+[Andrei Alexandrescu](https://en.wikipedia.org/wiki/Andrei_Alexandrescu).
 Com tudo isso fora do caminho, vamos dar uma olhada em alguns exemplos!
 
 ```d
@@ -71,7 +71,7 @@ void main() {
 }
 ```
 
-Podemos definir novos tipos com `struct`,` class`, `union` e` enum`. Estruturas e uniões
+Podemos definir novos tipos com `struct`, `class`, `union` e `enum`. Estruturas e uniões
 são passados para funções por valor(ou seja, copiados) e as classes são passadas por referência. Além disso,
 podemos usar modelos para parametrizar tudo isso em tipos e valores!
 
@@ -114,7 +114,7 @@ T max(T)(T a, T b) {
     return a;
 }
 
-// Use a palavra-chave ref para garantir a passagem por referência. Ou seja, mesmo que 'a' 
+// Use a palavra-chave ref para garantir a passagem por referência. Ou seja, mesmo que 'a'
 // e 'b' sejam tipos de valor, eles sempre serão passados por referência a 'swap ()'.
 void swap(T)(ref T a, ref T b) {
     auto temp = a;
@@ -179,7 +179,7 @@ class MyClass(T, U) {
 void main() {
     auto mc = new MyClass!(int, string)(7, "seven");
 
-    // Importe o módulo 'stdio' da biblioteca padrão para gravar no 
+    // Importe o módulo 'stdio' da biblioteca padrão para gravar no
     // console (as importações podem ser locais para um escopo).
     import std.stdio;
 
@@ -215,7 +215,7 @@ import std.algorithm : map, filter, reduce;
 import std.range : iota; // cria uma gama exclusiva de final
 
 void main() {
-    // Queremos imprimir a soma de uma lista de quadrados de ints pares 
+    // Queremos imprimir a soma de uma lista de quadrados de ints pares
     // de 1 a 100. Fácil!
 
     // Basta passar expressões lambda como parâmetros de modelo!
@@ -232,16 +232,16 @@ Observe como conseguimos construir um bom pipeline haskelliano para calcular num
 Isso se deve a uma inovação em D, conhecida como Uniform Function Call Syntax (UFCS).
 Com o UFCS, podemos optar por escrever uma chamada de função como método
 ou chamada de função grátis! Walter escreveu um bom artigo sobre isso
-[aqui.] (http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394)
+[aqui](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394).
 Em resumo, você pode chamar funções cujo primeiro parâmetro
 é de algum tipo A em qualquer expressão do tipo A como método.
 
 Eu gosto de paralelismo. Alguém mais gosta de paralelismo? Com certeza. Vamos fazer um pouco!
 
 ```d
-// Digamos que queremos preencher uma matriz grande com a raiz quadrada de todos 
-// os números inteiros consecutivos começando de 1 (até o tamanho da matriz), e queremos 
-// fazer isso simultaneamente, aproveitando o número de núcleos que temos 
+// Digamos que queremos preencher uma matriz grande com a raiz quadrada de todos
+// os números inteiros consecutivos começando de 1 (até o tamanho da matriz), e queremos
+// fazer isso simultaneamente, aproveitando o número de núcleos que temos
 // disponível.
 
 import std.stdio;
@@ -252,7 +252,7 @@ void main() {
     // Crie sua grande variedade
     auto arr = new double[1_000_000];
 
-    // Use um índice, acesse todos os elementos da matriz por referência (porque vamos 
+    // Use um índice, acesse todos os elementos da matriz por referência (porque vamos
     // mudar cada elemento) e apenas chame paralelo na matriz!
     foreach(i, ref elem; parallel(arr)) {
         elem = sqrt(i + 1.0);
