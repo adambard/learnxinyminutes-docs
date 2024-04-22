@@ -370,7 +370,6 @@ a new feature.
 * [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS) (Tutorials and reference)
 * [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/) (Reference)
 * [DevTips' CSS Basics](https://www.youtube.com/playlist?list=PLqGj3iMvMa4IOmy04kDxh_hqODMqoeeCy) (Tutorials)
-* [W3Schools](https://www.w3schools.com/css/)
 
 ## Further Reading
 
