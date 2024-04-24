@@ -510,7 +510,7 @@ with open('myfile1.txt', "r+") as file:
     contents = file.read()           # Читает строку из файла
 print(contents)                      # => '{"aa": 12, "bb": 21}'
 
-with open('myfile2.txt', "r+") as file:
+with open('myfile2.txt', "r") as file:
     contents = json.load(file)       # Читает объект json из файла
 print(contents)                      # => {"aa": 12, "bb": 21}
 
