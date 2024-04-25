@@ -159,12 +159,9 @@ True ; => True
 
 ; nest multiple if else if clauses with cond
 (cond
- [(= someval 42)
-  (print "Life, universe and everything else!")]
- [(> someval 42)
-  (print "val too large")]
- [(< someval 42)
-  (print "val too small")])
+  (= someval 42) (print "Life, universe and everything else!")
+  (> someval 42) (print "val too large")
+  (< someval 42) (print "val too small"))
 
 ; group statements with do, these are executed sequentially
 ; forms like defn have an implicit do
