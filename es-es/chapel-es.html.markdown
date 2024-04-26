@@ -11,9 +11,8 @@ lang: es-es
 
 Puede leer todo sobre Chapel en [el sitio web oficial de Chapel de Cray](https://chapel-lang.org).
 En resumen, Chapel es un lenguaje de programación paralela, código abierto, de alta productividad
-desarrolladp en Cray Inc. y está diseñado para ejecutarse en PC multi-nucleos, 
+desarrolladp en Cray Inc. y está diseñado para ejecutarse en PC multi-nucleos,
 así como en supercomputadoras multi-kilocore.
-
 
 Puede encontrar más información y asistencia al final de este documento.
 
@@ -39,7 +38,7 @@ stdout.writeln("Esto va a la salida estándar, al igual que lo hace writeln()");
 stderr.writeln("Esto va al error estándar");
 
 
-// Las variables no tienen que escribirse explícitamente 
+// Las variables no tienen que escribirse explícitamente
 // mientras el compilador pueda determinar el tipo que contendrá.
 
 // 10 es un entero, asi que myVar es explícitamente un entero
@@ -86,7 +85,7 @@ var white: RGBColor = (255, 255, 255);
 // establecerla en tiempo de ejecución.
 const almostPi: real = 22.0/7.0;
 
-// Un parámetro es una constante cuyo valor debe conocerse estáticamente 
+// Un parámetro es una constante cuyo valor debe conocerse estáticamente
 // en tiempo de compilación.
 
 param compileTimeConst: int = 16;
@@ -103,8 +102,8 @@ writeln(varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg);
 
 // Referencias
 
-// ref funciona de manera muy similar a una referencia en C ++. En Chapel, 
-// no se puede hacer una referencia como alias a una variable distinta 
+// ref funciona de manera muy similar a una referencia en C ++. En Chapel,
+// no se puede hacer una referencia como alias a una variable distinta
 // de la variable con la que se inicializa.
 
 // Aquí, refToActual se refiere a actual.
@@ -152,7 +151,7 @@ a *= thatInt;          // Multiplicación-igual (a = a * thatInt;)
 b &&= thatBool;        // Lógico e igual (b = b && thatBool;)
 a <<= 3;               // Desplazamiento a la izquierda igual (a = a << 10;)
 
-// A diferencia de otros lenguajes de familia C, no hay operadores de 
+// A diferencia de otros lenguajes de familia C, no hay operadores de
 // pre / post-incremento / decremento, tales como:
 //
 // ++j, --j, j++, j--
@@ -185,7 +184,7 @@ diffTup(1) = -1;
 var (tupInt, tupReal, tupCplx) = diffTup;
 writeln(diffTup == (tupInt, tupReal, tupCplx));
 
-// También son útiles para imprimit una lista de variables, 
+// También son útiles para imprimit una lista de variables,
 // como es común en la depuración.
 writeln((a,b,thisInt,thatInt,thisBool,thatBool));
 
@@ -223,7 +222,7 @@ if a % 3 == 0 {
 var maximum = if thisInt < thatInt then thatInt else thisInt;
 
 // las declaraciones select son muy parecidas a las declaraciones switch
-// en otros idiomas. Sin embargo, las declaraciones select no caen 
+// en otros idiomas. Sin embargo, las declaraciones select no caen
 // en cascada como en C o Java.
 var inputOption = "anOption";
 select inputOption {
@@ -253,7 +252,7 @@ do {
 } while (j <= 10000);
 writeln(jSum);
 
-// Los bucles for son muy parecidos a los de Python porque iteran en un rango. 
+// Los bucles for son muy parecidos a los de Python porque iteran en un rango.
 // Los rangos (como la expresión 1..10 a continuación) son un objeto de primera clase
 // en Chapel, y como tal pueden almacenarse en variables.
 for i in 1..10 do write(i, ", ");
@@ -275,8 +274,8 @@ for x in 1..10 {
 // Rangos y Dominios
 
 // Los bucles y matrices utilizan rangos y dominios para definir un conjunto de índices
-// que se pueden iterar. Los rangos son índices enteros unidimensionales, mientras 
-// que los dominios pueden ser multidimensionales y representan índices 
+// que se pueden iterar. Los rangos son índices enteros unidimensionales, mientras
+// que los dominios pueden ser multidimensionales y representan índices
 // de diferentes tipos.
 
 // Son tipos ciudadanos de primera clase y pueden asignarse a variables.
@@ -296,7 +295,7 @@ var reverse2to10by2 = 2..10 by -2; // 10, 8, 6, 4, 2
 var trapRange = 10..1 by -1; // No te dejes engañar, esto sigue siendo un rango vacío
 writeln("Size of range ", trapRange, " = ", trapRange.length);
 
-// Note: range(boundedType= ...) and range(stridable= ...) solo son necesarios 
+// Note: range(boundedType= ...) and range(stridable= ...) solo son necesarios
 // si escribimos explícitamente la variable.
 
 // El punto final de un rango se puede determinar utilizando el operador de conteo (#).
@@ -316,7 +315,7 @@ for i in rangeCountBy {
   write(i, if i == rangeCountBy.last then "\n" else ", ");
 }
 
-// Los dominios rectangulares se definen usando la misma sintaxis de rango, 
+// Los dominios rectangulares se definen usando la misma sintaxis de rango,
 // pero se requiere que estén delimitados (a diferencia de los rangos).
 var domain1to10: domain(1) = {1..10};        // 1D domain from 1..10;
 var twoDimensions: domain(2) = {-2..2,0..2}; // 2D domain over product of ranges
@@ -352,7 +351,7 @@ writeln(stringSet.sorted());
 // Los dominios asociativos también pueden tener una sintaxis literal
 var intSet = {1, 2, 4, 5, 100};
 
-// Tanto los rangos como los dominios se pueden dividir para producir un rango 
+// Tanto los rangos como los dominios se pueden dividir para producir un rango
 // o dominio con la intersección de los índices.
 var rangeA = 1.. ; // range from 1 to infinity
 var rangeB =  ..5; // range from negative infinity to 5
@@ -377,7 +376,7 @@ for i in 1..10 do
 writeln(intArray);
 
 // No podemos acceder a intArray[0] porque existe fuera del conjunto de índices,
-// {1..10}, que definimos al principio. 
+// {1..10}, que definimos al principio.
 // intArray [11] es ilegal por la misma razón.
 var realDomain: domain(2) = {1..5,1..7};
 var realArray: [realDomain] real;
@@ -431,12 +430,12 @@ writeln((thisArray, thatArray));
 thatArray[4..5] = thisArray[1..2];
 writeln((thisArray, thatArray));
 
-// Las operaciones también se pueden promover para trabajar en arreglos. 
+// Las operaciones también se pueden promover para trabajar en arreglos.
 // 'thisPlusThat' también es una matriz.
 var thisPlusThat = thisArray + thatArray;
 writeln(thisPlusThat);
 
-// Continuando, las matrices y los bucles también pueden ser expresiones, donde 
+// Continuando, las matrices y los bucles también pueden ser expresiones, donde
 // la expresión del cuerpo del bucle es el resultado de cada iteración.
 var arrayFromLoop = for i in 1..10 do i;
 writeln(arrayFromLoop);
@@ -494,11 +493,11 @@ writeln(defaultsProc(x=11));
 writeln(defaultsProc(x=12, y=5.432));
 writeln(defaultsProc(y=9.876, x=13));
 
-// El operador ? se llama operador de consulta y se usa para tomar valores 
-// indeterminados como tuplas o tamaños de matriz y tipos genéricos. 
-// Por ejemplo, tomar matrices como parámetros. 
+// El operador ? se llama operador de consulta y se usa para tomar valores
+// indeterminados como tuplas o tamaños de matriz y tipos genéricos.
+// Por ejemplo, tomar matrices como parámetros.
 
-// El operador de consulta se utiliza para determinar el dominio de A. 
+// El operador de consulta se utiliza para determinar el dominio de A.
 // Esto es útil para definir el tipo de retorno, aunque no es obligatorio.
 proc invertArray(A: [?D] int): [D] int{
   for a in A do a = -a;
@@ -523,9 +522,9 @@ genericProc(1.2, 2.3);
 genericProc(1.0+2.0i, 3.0+4.0i);
 
 // También podemos imponer una forma de polimorfismo con la cláusula where
-// Esto permite que el compilador decida qué función usar. 
+// Esto permite que el compilador decida qué función usar.
 
-// Nota: Eso significa que toda la información debe conocerse en tiempo de compilación. 
+// Nota: Eso significa que toda la información debe conocerse en tiempo de compilación.
 // El modificador param en el argumento se usa para imponer esta restricción.
 proc whereProc(param N : int): void
  where (N > 0) {
@@ -541,7 +540,7 @@ whereProc(10);
 whereProc(-1);
 
 // whereProc(0) daría lugar a un error del compilador porque no hay funciones
-// que satisfagan la condición de la cláusula where. 
+// que satisfagan la condición de la cláusula where.
 // Podríamos haber definido un whereProc sin una cláusula where que
 // hubiera servido como captura para todos los demás casos (de los cuales solo hay uno).
 
@@ -583,9 +582,9 @@ writeln("Afuera antes: ", (inVar, outVar, inoutVar, refVar));
 intentsProc(inVar, outVar, inoutVar, refVar);
 writeln("Afuera después: ", (inVar, outVar, inoutVar, refVar));
 
-// Del mismo modo, podemos definir intentos en el tipo de retorno. 
-// refElement devuelve una referencia a un elemento de la matriz. Esto tiene más sentido 
-// práctico para los métodos de clase donde las referencias a elementos en una estructura 
+// Del mismo modo, podemos definir intentos en el tipo de retorno.
+// refElement devuelve una referencia a un elemento de la matriz. Esto tiene más sentido
+// práctico para los métodos de clase donde las referencias a elementos en una estructura
 // de datos se devuelven a través de un método o iterador.
 proc refElement(array : [?D] ?T, idx) ref : T {
   return array[idx];
@@ -638,12 +637,12 @@ writeln(1 * 2);   // Utiliza el operador predeterminado *.
 
 // Iteradores
 
-// Los iteradores son hermanas del procedimiento, y casi todo lo relacionado 
-// con los procedimientos también se aplica a los iteradores. Sin embargo, en lugar de 
+// Los iteradores son hermanas del procedimiento, y casi todo lo relacionado
+// con los procedimientos también se aplica a los iteradores. Sin embargo, en lugar de
 // devolver un solo valor, los iteradores pueden generar múltiples valores en un bucle.
 
-// Esto es útil cuando se necesita un conjunto u orden complicado de iteraciones, 
-// ya que permite que el código que define las iteraciones 
+// Esto es útil cuando se necesita un conjunto u orden complicado de iteraciones,
+// ya que permite que el código que define las iteraciones
 // se separe del cuerpo del bucle.
 iter oddsThenEvens(N: int): int {
   for i in 1..N by 2 do
@@ -668,13 +667,13 @@ for i in absolutelyNothing(10) {
   writeln("Woa there! absolutelyNothing yielded ", i);
 }
 
-// Podemos comprimir dos o más iteradores (que tienen el mismo número de iteraciones) 
-// usando zip () para crear un solo iterador comprimido, donde cada iteración 
+// Podemos comprimir dos o más iteradores (que tienen el mismo número de iteraciones)
+// usando zip () para crear un solo iterador comprimido, donde cada iteración
 // del iterador comprimido produce una tupla de un valor de cada iterador.
 for (positive, negative) in zip(1..5, -5..-1) do
   writeln((positive, negative));
 
-// La iteración de la cremallera es bastante importante en la asignación de matrices, 
+// La iteración de la cremallera es bastante importante en la asignación de matrices,
 // segmentos de matrices y expresiones de matriz / bucle.
 var fromThatArray : [1..#5] int = [1,2,3,4,5];
 var toThisArray : [100..#5] int;
@@ -696,7 +695,7 @@ for (i, j) in zip(toThisArray.domain, -100..#5) {
 writeln(toThisArray);
 
 /*
- Esto es muy importante para entender por qué esta declaración 
+ Esto es muy importante para entender por qué esta declaración
  exhibe un error de tiempo de ejecución.
 */
 
@@ -718,16 +717,16 @@ class MyClass {
   var memberInt : int;
   var memberBool : bool = true;
 
-// Inicializador definido explícitamente. 
+// Inicializador definido explícitamente.
 // También obtenemos el inicializador generado por el compilador, con un argumento por campo.
-// Tenga en cuenta que pronto no habrá un inicializador generado por el compilador 
+// Tenga en cuenta que pronto no habrá un inicializador generado por el compilador
 // cuando definamos los inicializadores explícitamente.
   proc init(val : real) {
     this.memberInt = ceil(val): int;
   }
 
 // Desinicializador explícitamente definido.
-// Si no escribiéramos uno, obtendríamos el desinicializador generado por el compilador, 
+// Si no escribiéramos uno, obtendríamos el desinicializador generado por el compilador,
 // que tiene un cuerpo vacío.
   proc deinit() {
     writeln("MyClass deinitializer called ", (this.memberInt, this.memberBool));
@@ -751,7 +750,7 @@ class MyClass {
   }
 } // termina MyClass
 
-// Llame al inicializador generado por el compilador, 
+// Llame al inicializador generado por el compilador,
 // utilizando el valor predeterminado para memberBool.
 var myObject = new MyClass(10);
     myObject = new MyClass(memberInt = 10); // Equivalente
@@ -801,8 +800,8 @@ class GenericClass {
 
 // Copiar constructor.
 // Nota: Todavía tenemos que poner el tipo como argumento, pero podemos usar
-// el operador de consulta (?) como predeterminado para el tipo del otro objeto. 
-// Además, podemos aprovechar esto para permitir a nuestro constructor de copias 
+// el operador de consulta (?) como predeterminado para el tipo del otro objeto.
+// Además, podemos aprovechar esto para permitir a nuestro constructor de copias
 // copiar clases de diferentes tipos y emitir sobre la marcha.
   proc GenericClass(other : GenericClass(?otherType),
                      type classType = otherType) {
@@ -818,7 +817,7 @@ class GenericClass {
     return this.classArray[i];
   }
 
-// Definir un iterador implícito para que la clase produzca 
+// Definir un iterador implícito para que la clase produzca
 // valores de la matriz a un bucle
 // i.e. for i in objVar do ...
   iter these() ref : classType {
@@ -827,12 +826,12 @@ class GenericClass {
   }
 } // end GenericClass
 
-// Podemos asignar a la matriz de miembros del objeto usando la notación de 
+// Podemos asignar a la matriz de miembros del objeto usando la notación de
 // corchete que definimos.
 var realList = new GenericClass(real, 10);
 for i in realList.classDomain do realList[i] = i + 1.0;
 
-// Podemos iterar sobre los valores en nuestra lista con el iterador 
+// Podemos iterar sobre los valores en nuestra lista con el iterador
 // que definimos.
 for value in realList do write(value, ", ");
 writeln();
@@ -852,7 +851,7 @@ writeln();
 
 // Los módulos son la forma en que Chapel administra los espacios de nombres.
 // Los archivos que contienen estos módulos no necesitan ser nombrados después
-// de los módulos (como en Java), pero los archivos implícitamente nombran módulos. 
+// de los módulos (como en Java), pero los archivos implícitamente nombran módulos.
 // Por ejemplo, este archivo nombra implícitamente el módulo learnChapelInYMinutes
 
 module OurModule {
@@ -888,7 +887,7 @@ module OurModule {
 // Como OurModule usa Time, nosotros también usamos Time.
 use OurModule;
 
-// En este punto no hemos usado ChildModule o SiblingModule, por lo que sus símbolos 
+// En este punto no hemos usado ChildModule o SiblingModule, por lo que sus símbolos
 // (es decir, foo) no están disponibles para nosotros. Sin embargo, los nombres de
 // los módulos están disponibles y podemos llamar explícitamente a foo () a través de ellos.
 SiblingModule.foo();
@@ -901,7 +900,7 @@ foo();
 // Paralelismo
 
 // En otros idiomas, el paralelismo generalmente se realiza con librerias complicadas
-// y extrañas jerarquías de estructura de clases. 
+// y extrañas jerarquías de estructura de clases.
 // Chapel lo tiene directamente en el idioma.
 
 // Podemos declarar un procedimiento principal, pero todo el código anterior
@@ -909,7 +908,7 @@ foo();
 proc main() {
 
 // Una declaración de inicio hará girar el cuerpo de esa declaración en una nueva tarea.
-// Una declaración de sincronización garantizará que el progreso de la tarea principal 
+// Una declaración de sincronización garantizará que el progreso de la tarea principal
 // no avance hasta que los hijos hayan sincronizado nuevamente.
 
   sync {
@@ -927,15 +926,15 @@ proc main() {
   }
 
 // Una declaración de cobegin girará cada declaración del cuerpo en una nueva tarea.
-// Observe aquí que las impresiones de cada declaración pueden ocurrir en 
+// Observe aquí que las impresiones de cada declaración pueden ocurrir en
 // cualquier orden.
   cobegin {
     printFibb(20); // nueva tarea
     printFibb(10); // nueva tarea
     printFibb(5);  // nueva tarea
     {
-      // Este es un cuerpo de declaración anidado y, por lo tanto, es una 
-      // declaración única para la declaración principal, ejecutada 
+      // Este es un cuerpo de declaración anidado y, por lo tanto, es una
+      // declaración única para la declaración principal, ejecutada
       // por una sola tarea.
       writeln("esto se ");
       writeln("ejecuta");
@@ -943,29 +942,29 @@ proc main() {
     }
   }
 
-// Un bucle coforall creará una nueva tarea para CADA iteración. 
-// Nuevamente vemos que las impresiones suceden en cualquier orden. 
-// NOTA: ¡coforall debe usarse solo para crear tareas! 
+// Un bucle coforall creará una nueva tarea para CADA iteración.
+// Nuevamente vemos que las impresiones suceden en cualquier orden.
+// NOTA: ¡coforall debe usarse solo para crear tareas!
 // ¡Usarlo para iterar sobre una estructura es una muy mala idea!
   var num_tasks = 10; // Number of tasks we want
   coforall taskID in 1..#num_tasks {
     writeln("Hola de tarea# ", taskID);
   }
 
-// los bucles forall son otro bucle paralelo, pero solo crean un número 
+// los bucles forall son otro bucle paralelo, pero solo crean un número
 // menor de tareas, específicamente --dataParTasksPerLocale = número de tareas.
   forall i in 1..100 {
     write(i, ", ");
   }
   writeln();
 
-// Aquí vemos que hay secciones que están en orden, seguidas de una sección 
-// que no seguiría (por ejemplo, 1, 2, 3, 7, 8, 9, 4, 5, 6,). 
+// Aquí vemos que hay secciones que están en orden, seguidas de una sección
+// que no seguiría (por ejemplo, 1, 2, 3, 7, 8, 9, 4, 5, 6,).
 // Esto se debe a que cada tarea está asumiendo un fragmento del rango 1..10
-// (1..3, 4..6 o 7..9) haciendo ese fragmento en serie, pero cada tarea ocurre en paralelo. 
+// (1..3, 4..6 o 7..9) haciendo ese fragmento en serie, pero cada tarea ocurre en paralelo.
 // Sus resultados pueden depender de su máquina y configuración
 
-// Para los bucles forall y coforall, la ejecución de la tarea principal 
+// Para los bucles forall y coforall, la ejecución de la tarea principal
 // no continuará hasta que todos los hijos se sincronicen.
 
 // los bucles forall son particularmente útiles para la iteración paralela sobre matrices.
@@ -1002,7 +1001,7 @@ proc main() {
 
 // Las variables atómicas, comunes a muchos idiomas, son aquellas cuyas operaciones
 // ocurren sin interrupciones. Por lo tanto, varios subprocesos pueden modificar
-// las variables atómicas y pueden saber que sus valores son seguros. 
+// las variables atómicas y pueden saber que sus valores son seguros.
 // Las variables atómicas de la capilla pueden ser de tipo bool, int, uint y real.
   var uranium: atomic int;
   uranium.write(238);      // escribir atómicamente una variable
@@ -1041,7 +1040,7 @@ proc main() {
   }
 
 // las variables de sincronización tienen dos estados: vacío y lleno.
-// Si lee una variable vacía o escribe una variable completa, 
+// Si lee una variable vacía o escribe una variable completa,
 // se espera hasta que la variable esté llena o vacía nuevamente.
   var someSyncVar$: sync int; // varName$ Es una convención, no una ley.
   sync {
@@ -1058,7 +1057,7 @@ proc main() {
     }
   }
 
-// las variales individuales solo se pueden escribir una vez. 
+// las variales individuales solo se pueden escribir una vez.
 // Una lectura en un solo no escrito da como resultado una espera,
 // pero cuando la variable tiene un valor, puede leerse indefinidamente.
   var someSingleVar$: single int; // varName$ Es una convención, no una ley.
@@ -1078,7 +1077,7 @@ proc main() {
     }
   }
 
-// Aquí hay un ejemplo usando atómica y una variable de sincronización 
+// Aquí hay un ejemplo usando atómica y una variable de sincronización
 // para crear un mutex de cuenta regresiva
 //  (también conocido como multiplexor).
   var count: atomic int; // nuestro mostrador
@@ -1133,8 +1132,7 @@ proc main() {
 } // end main()
 ```
 
-¿Para quién es este tutorial?
--------------------------
+## ¿Para quién es este tutorial?
 
 Este tutorial es para personas que desean aprender las cuerdas de chapel sin tener
 que escuchar sobre qué mezcla de fibras son las cuerdas, o cómo fueron trenzadas,
@@ -1148,61 +1146,58 @@ para ver si se han agregado más temas o se han creado más tutoriales.
 
 ### Lo que le falta a este tutorial:
 
- * Exposición de los [módulos estándar](https://chapel-lang.org/docs/latest/modules/standard.html)
- * Múltiples configuraciones regionales (sistema de memoria distribuida)
- * Registros
- * Iteradores paralelos
+* Exposición de los [módulos estándar](https://chapel-lang.org/docs/latest/modules/standard.html)
+* Múltiples configuraciones regionales (sistema de memoria distribuida)
+* Registros
+* Iteradores paralelos
 
-¡Sus comentarios, preguntas y descubrimientos son importantes para los desarrolladores!
------------------------------------------------------------------------
+## ¡Sus comentarios, preguntas y descubrimientos son importantes para los desarrolladores!
 
-El lenguaje Chapel todavía está en desarrollo activo, por lo que 
-ocasionalmente hay problemas con el rendimiento y 
+El lenguaje Chapel todavía está en desarrollo activo, por lo que
+ocasionalmente hay problemas con el rendimiento y
 las características del lenguaje.
 
-Cuanta más información brinde al equipo de desarrollo de Chapel 
-sobre los problemas que encuentre o las características que le gustaría ver, 
+Cuanta más información brinde al equipo de desarrollo de Chapel
+sobre los problemas que encuentre o las características que le gustaría ver,
 mejor será el lenguaje.
 
-
 Hay varias formas de interactuar con los desarrolladores:
-+ [Chat de Gitter](https://gitter.im/chapel-lang/chapel)
-+ [lista de emails de Sourceforge](https://sourceforge.net/p/chapel/mailman)
+
+* [Chat de Gitter](https://gitter.im/chapel-lang/chapel)
+* [lista de emails de Sourceforge](https://sourceforge.net/p/chapel/mailman)
 
 Si está realmente interesado en el desarrollo del compilador o en contribuir al proyecto,
 [consulte el repositorio maestro de GitHub](https://github.com/chapel-lang/chapel).
 Está bajo el [La licencia Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
-Instalar el compilador
------------------------
+## Instalar el compilador
 
 [La documentación oficial de Chapel detalla cómo descargar y compilar el compilador de Chapel.](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html)
 
-Chapel se puede construir e instalar en su máquina promedio 'nix (y cygwin). 
+Chapel se puede construir e instalar en su máquina promedio 'nix (y cygwin).
 [Descargue la última versión de lanzamiento](https://github.com/chapel-lang/chapel/releases/)
 y es tan fácil como
 
- 1. `tar -xvf chapel-<VERSION>.tar.gz`
- 2. `cd chapel-<VERSION>`
- 3. `source util/setchplenv.bash # or .sh or .csh or .fish`
- 4. `make`
- 5. `make check # optional`
+1. `tar -xvf chapel-<VERSION>.tar.gz`
+2. `cd chapel-<VERSION>`
+3. `source util/setchplenv.bash # or .sh or .csh or .fish`
+4. `make`
+5. `make check # optional`
 
 You will need to `source util/setchplenv.EXT` from within the Chapel directory
 (`$CHPL_HOME`) every time your terminal starts so it's suggested that you drop
 that command in a script that will get executed on startup (like .bashrc).
 
 Necesitará `source util/setchplenv.EXT` desde el directorio de Chapel (`$CHPL_HOME`)
-cada vez que se inicie su terminal, por lo que se sugiere que suelte ese comando 
+cada vez que se inicie su terminal, por lo que se sugiere que suelte ese comando
 en un script que se ejecutará al inicio (como .bashrc).
 
 Chapel se instala fácilmente con Brew para OS X
 
- 1. `brew update`
- 2. `brew install chapel`
+1. `brew update`
+2. `brew install chapel`
 
-Compilando Código
---------------
+## Compilando Código
 
 Construye como otros compiladores:
 
@@ -1210,10 +1205,10 @@ Construye como otros compiladores:
 
 Argumentos notables:
 
- * `--fast`: habilita varias optimizaciones y deshabilita las comprobaciones 
- de los límites de la matriz Solo debe habilitarse cuando la aplicación es estable.
- * `--set <Nombre del Symbolo>=<Valor>`: establece el param de configuracion 
- `<Nombre del Symbolo>` a `<Valor>`en tiempo de compilación.
- * `--main-module <Nombre del módulo>`: use el procedimiento main() que se encuentra en el módulo
-    `<Nombre del módulo>` como principal del ejecutable.
- * `--module-dir <Directorio>`: incluye `<Directorio>` en la ruta de búsqueda del módulo.
+* `--fast`: habilita varias optimizaciones y deshabilita las comprobaciones
+  de los límites de la matriz Solo debe habilitarse cuando la aplicación es estable.
+* `--set <Nombre del Symbolo>=<Valor>`: establece el param de configuracion
+  `<Nombre del Symbolo>` a `<Valor>`en tiempo de compilación.
+* `--main-module <Nombre del módulo>`: use el procedimiento main() que se encuentra en el módulo
+  `<Nombre del módulo>` como principal del ejecutable.
+* `--module-dir <Directorio>`: incluye `<Directorio>` en la ruta de búsqueda del módulo.

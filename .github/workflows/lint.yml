@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI
 
 on:
   push:
@@ -15,4 +15,4 @@ jobs:
         with:
           ruby-version: '3.2'
       - run: gem install mdl
-      - run: mdl . --ignore-front-matter -r MD011,MD023,MD027,MD028,MD037,MD038,MD039,MD047
+      - run: mdl . --ignore-front-matter -r MD003,MD011,MD023,MD027,MD028,MD035,MD037,MD038,MD039,MD047

@@ -1116,8 +1116,7 @@ proc main() {
 } // end main()
 ```
 
-Who is this tutorial for?
--------------------------
+## Who is this tutorial for?
 
 This tutorial is for people who want to learn the ropes of chapel without
 having to hear about what fiber mixture the ropes are, or how they were
@@ -1132,28 +1131,27 @@ to see if more topics have been added or more tutorials created.
 
 ### What this tutorial is lacking:
 
- * Exposition of the [standard modules](https://chapel-lang.org/docs/latest/modules/standard.html)
- * Multiple Locales (distributed memory system)
- * Records
- * Parallel iterators
+* Exposition of the [standard modules](https://chapel-lang.org/docs/latest/modules/standard.html)
+* Multiple Locales (distributed memory system)
+* Records
+* Parallel iterators
 
-Your input, questions, and discoveries are important to the developers!
------------------------------------------------------------------------
+## Your input, questions, and discoveries are important to the developers!
 
 The Chapel language is still in active development, so there are
 occasional hiccups with performance and language features. The more information
 you give the Chapel development team about issues you encounter or features you
 would like to see, the better the language becomes.
 There are several ways to interact with the developers:
-+ [Gitter chat](https://gitter.im/chapel-lang/chapel)
-+ [sourceforge email lists](https://sourceforge.net/p/chapel/mailman)
+
+* [Gitter chat](https://gitter.im/chapel-lang/chapel)
+* [sourceforge email lists](https://sourceforge.net/p/chapel/mailman)
 
 If you're really interested in the development of the compiler or contributing
 to the project, [check out the master GitHub repository](https://github.com/chapel-lang/chapel).
 It is under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
 
-Installing the Compiler
------------------------
+## Installing the Compiler
 
 [The Official Chapel documentation details how to download and compile the Chapel compiler.](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html)
 
@@ -1161,23 +1159,22 @@ Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
 and it's as easy as
 
- 1. `tar -xvf chapel-<VERSION>.tar.gz`
- 2. `cd chapel-<VERSION>`
- 3. `source util/setchplenv.bash # or .sh or .csh or .fish`
- 4. `make`
- 5. `make check # optional`
+1. `tar -xvf chapel-<VERSION>.tar.gz`
+2. `cd chapel-<VERSION>`
+3. `source util/setchplenv.bash # or .sh or .csh or .fish`
+4. `make`
+5. `make check # optional`
 
 You will need to `source util/setchplenv.EXT` from within the Chapel directory
 (`$CHPL_HOME`) every time your terminal starts so it's suggested that you drop
 that command in a script that will get executed on startup (like .bashrc).
 
-Chapel is easily installed with Brew for macOS
+Chapel is easily installed on macOS with Homebrew
 
- 1. `brew update`
- 2. `brew install chapel`
+1. `brew update`
+2. `brew install chapel`
 
-Compiling Code
---------------
+## Compiling Code
 
 Builds like other compilers:
 
@@ -1185,10 +1182,10 @@ Builds like other compilers:
 
 Notable arguments:
 
- * `--fast`: enables a number of optimizations and disables array bounds
-   checks. Should only enable when application is stable.
- * `--set <Symbol Name>=<Value>`: set config param `<Symbol Name>` to `<Value>`
-   at compile-time.
- * `--main-module <Module Name>`: use the main() procedure found in the module
-   `<Module Name>` as the executable's main.
- * `--module-dir <Directory>`: includes `<Directory>` in the module search path.
+* `--fast`: enables a number of optimizations and disables array bounds
+  checks. Should only enable when application is stable.
+* `--set <Symbol Name>=<Value>`: set config param `<Symbol Name>` to `<Value>`
+  at compile-time.
+* `--main-module <Module Name>`: use the main() procedure found in the module
+  `<Module Name>` as the executable's main.
+* `--module-dir <Directory>`: includes `<Directory>` in the module search path.
