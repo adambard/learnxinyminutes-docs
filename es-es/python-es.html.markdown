@@ -562,9 +562,8 @@ print(decir(decir_por_favor=True))  # ¿Puedes comprarme una cerveza? ¡Por favo
 * [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](http://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
+* [Hitchhiker's Guide to Python](http://docs.python-guide.org/)
 * [Python Module of the Week](http://pymotw.com/3/)
-* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 
 ### Encuadernados
 

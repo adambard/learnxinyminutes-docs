@@ -42,7 +42,7 @@ syntactic clarity. It's basically executable pseudocode.
 # Integer division rounds down for both positive and negative numbers.
 5 // 3       # => 1
 -5 // 3      # => -2
-5.0 // 3.0   # => 1.0 # works on floats too
+5.0 // 3.0   # => 1.0  # works on floats too
 -5.0 // 3.0  # => -2.0
 
 # The result of division is always a float
@@ -74,36 +74,36 @@ True and False  # => False
 False or True   # => True
 
 # True and False are actually 1 and 0 but with different keywords
-True + True # => 2
-True * 8    # => 8
-False - 5   # => -5
+True + True  # => 2
+True * 8     # => 8
+False - 5    # => -5
 
 # Comparison operators look at the numerical value of True and False
-0 == False  # => True
-2 > True    # => True
-2 == True   # => False
--5 != False # => True
+0 == False   # => True
+2 > True     # => True
+2 == True    # => False
+-5 != False  # => True
 
 # None, 0, and empty strings/lists/dicts/tuples/sets all evaluate to False.
 # All other values are True
-bool(0)     # => False
-bool("")    # => False
-bool([])    # => False
-bool({})    # => False
-bool(())    # => False
-bool(set()) # => False
-bool(4)     # => True
-bool(-6)    # => True
+bool(0)      # => False
+bool("")     # => False
+bool([])     # => False
+bool({})     # => False
+bool(())     # => False
+bool(set())  # => False
+bool(4)      # => True
+bool(-6)     # => True
 
 # Using boolean logical operators on ints casts them to booleans for evaluation,
 # but their non-cast value is returned. Don't mix up with bool(ints) and bitwise
 # and/or (&,|)
-bool(0)     # => False
-bool(2)     # => True
-0 and 2     # => 0
-bool(-5)    # => True
-bool(2)     # => True
--5 or 0     # => -5
+bool(0)   # => False
+bool(2)   # => True
+0 and 2   # => 0
+bool(-5)  # => True
+bool(2)   # => True
+-5 or 0   # => -5
 
 # Equality is ==
 1 == 1  # => True
@@ -153,9 +153,9 @@ len("This is a string")  # => 16
 
 # Since Python 3.6, you can use f-strings or formatted string literals.
 name = "Reiko"
-f"She said her name is {name}." # => "She said her name is Reiko"
+f"She said her name is {name}."  # => "She said her name is Reiko"
 # Any valid Python expression inside these braces is returned to the string.
-f"{name} is {len(name)} characters long." # => "Reiko is 5 characters long."
+f"{name} is {len(name)} characters long."  # => "Reiko is 5 characters long."
 
 # None is an object
 None  # => None
@@ -177,7 +177,7 @@ print("I'm Python. Nice to meet you!")  # => I'm Python. Nice to meet you!
 print("Hello, World", end="!")  # => Hello, World!
 
 # Simple way to get input data from console
-input_string_var = input("Enter some data: ") # Returns the data as a string
+input_string_var = input("Enter some data: ")  # Returns the data as a string
 
 # There are no declarations, only assignments.
 # Convention in naming variables is snake_case style
@@ -340,9 +340,8 @@ filled_dict["four"] = 4         # another way to add to dict
 del filled_dict["one"]  # Removes the key "one" from filled dict
 
 # From Python 3.5 you can also use the additional unpacking options
-{'a': 1, **{'b': 2}}  # => {'a': 1, 'b': 2}
-{'a': 1, **{'a': 2}}  # => {'a': 2}
-
+{"a": 1, **{"b": 2}}  # => {'a': 1, 'b': 2}
+{"a": 1, **{"a": 2}}  # => {'a': 2}
 
 
 # Sets store ... well sets
@@ -374,10 +373,10 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 {1, 2, 3, 4} ^ {2, 3, 5}  # => {1, 4, 5}
 
 # Check if set on the left is a superset of set on the right
-{1, 2} >= {1, 2, 3} # => False
+{1, 2} >= {1, 2, 3}  # => False
 
 # Check if set on the left is a subset of set on the right
-{1, 2} <= {1, 2, 3} # => True
+{1, 2} <= {1, 2, 3}  # => True
 
 # Check for existence in a set with in
 2 in filled_set   # => True
@@ -501,15 +500,15 @@ with open("myfile1.txt", "w") as file:
 
 import json
 with open("myfile2.txt", "w") as file:
-    file.write(json.dumps(contents)) # writes an object to a file
+    file.write(json.dumps(contents))  # writes an object to a file
 
 # Reading from a file
-with open('myfile1.txt', "r") as file:
+with open("myfile1.txt") as file:
     contents = file.read()           # reads a string from a file
 print(contents)
 # print: {"aa": 12, "bb": 21}
 
-with open('myfile2.txt', "r") as file:
+with open("myfile2.txt", "r") as file:
     contents = json.load(file)       # reads a json object from a file
 print(contents)
 # print: {"aa": 12, "bb": 21}
@@ -662,9 +661,9 @@ def create_avg():
         return total/count
     return avg
 avg = create_avg()
-avg(3) # => 3.0
-avg(5) # (3+5)/2 => 4.0
-avg(7) # (8+7)/3 => 5.0
+avg(3)  # => 3.0
+avg(5)  # (3+5)/2 => 4.0
+avg(7)  # (8+7)/3 => 5.0
 
 # There are also anonymous functions
 (lambda x: x > 2)(3)                  # => True
@@ -682,7 +681,7 @@ list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 [x for x in [3, 4, 5, 6, 7] if x > 5]  # => [6, 7]
 
 # You can construct set and dict comprehensions as well.
-{x for x in 'abcddeef' if x not in 'abc'}  # => {'d', 'e', 'f'}
+{x for x in "abcddeef" if x not in "abc"}  # => {'d', 'e', 'f'}
 {x: x**2 for x in range(5)}  # => {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 
 
@@ -744,7 +743,7 @@ class Human:
         self.name = name
 
         # Initialize property
-        self._age = 0   # the leading underscore indicates the "age" property is 
+        self._age = 0   # the leading underscore indicates the "age" property is
                         # intended to be used internally
                         # do not rely on this to be enforced: it's a hint to other devs
 
@@ -754,7 +753,7 @@ class Human:
 
     # Another instance method
     def sing(self):
-        return 'yo... yo... microphone check... one two... one two...'
+        return "yo... yo... microphone check... one two... one two..."
 
     # A class method is shared among all instances
     # They are called with the calling class as the first argument
@@ -788,7 +787,7 @@ class Human:
 # When a Python interpreter reads a source file it executes all its code.
 # This __name__ check makes sure this code block is only executed when this
 # module is the main program.
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Instantiate a class
     i = Human(name="Ian")
     i.say("hi")                     # "Ian: hi"
@@ -849,7 +848,7 @@ class Superhero(Human):
     # pass
 
     # Child classes can override their parents' attributes
-    species = 'Superhuman'
+    species = "Superhuman"
 
     # Children automatically inherit their parent class's constructor including
     # its arguments, but can also define additional arguments or definitions
@@ -872,7 +871,7 @@ class Superhero(Human):
 
     # override the sing method
     def sing(self):
-        return 'Dun, dun, DUN!'
+        return "Dun, dun, DUN!"
 
     # add an additional instance method
     def boast(self):
@@ -880,14 +879,14 @@ class Superhero(Human):
             print("I wield the power of {pow}!".format(pow=power))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sup = Superhero(name="Tick")
 
     # Instance type checks
     if isinstance(sup, Human):
-        print('I am human')
+        print("I am human")
     if type(sup) is Superhero:
-        print('I am a superhero')
+        print("I am a superhero")
 
     # Get the "Method Resolution Order" used by both getattr() and super()
     # (the order in which classes are searched for an attribute or method)
@@ -902,7 +901,7 @@ if __name__ == '__main__':
     print(sup.sing())           # => Dun, dun, DUN!
 
     # Calls method from Human
-    sup.say('Spoon')            # => Tick: Spoon
+    sup.say("Spoon")            # => Tick: Spoon
 
     # Call method that exists only in Superhero
     sup.boast()                 # => I wield the power of super strength!
@@ -913,33 +912,35 @@ if __name__ == '__main__':
     print(sup.age)              # => 31
 
     # Attribute that only exists within Superhero
-    print('Am I Oscar eligible? ' + str(sup.movie))
+    print("Am I Oscar eligible? " + str(sup.movie))
 
 ####################################################
 ## 6.2 Multiple Inheritance
 ####################################################
 
+
 # Another class definition
 # bat.py
 class Bat:
 
-    species = 'Baty'
+    species = "Baty"
 
     def __init__(self, can_fly=True):
         self.fly = can_fly
 
     # This class also has a say method
     def say(self, msg):
-        msg = '... ... ...'
+        msg = "... ... ..."
         return msg
 
     # And its own method as well
     def sonar(self):
-        return '))) ... ((('
+        return "))) ... ((("
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     b = Bat()
-    print(b.say('hello'))
+    print(b.say("hello"))
     print(b.fly)
 
 
@@ -959,44 +960,43 @@ class Batman(Superhero, Bat):
         # So instead we explicitly call __init__ for all ancestors.
         # The use of *args and **kwargs allows for a clean way to pass
         # arguments, with each parent "peeling a layer of the onion".
-        Superhero.__init__(self, 'anonymous', movie=True,
-                           superpowers=['Wealthy'], *args, **kwargs)
+        Superhero.__init__(self, "anonymous", movie=True,
+                           superpowers=["Wealthy"], *args, **kwargs)
         Bat.__init__(self, *args, can_fly=False, **kwargs)
         # override the value for the name attribute
-        self.name = 'Sad Affleck'
+        self.name = "Sad Affleck"
 
     def sing(self):
-        return 'nan nan nan nan nan batman!'
+        return "nan nan nan nan nan batman!"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sup = Batman()
 
     # The Method Resolution Order
-    print(Batman.__mro__)       # => (<class '__main__.Batman'>,
-                                # => <class 'superhero.Superhero'>,
-                                # => <class 'human.Human'>,
-                                # => <class 'bat.Bat'>, <class 'object'>)
+    print(Batman.__mro__)     # => (<class '__main__.Batman'>,
+                              # => <class 'superhero.Superhero'>,
+                              # => <class 'human.Human'>,
+                              # => <class 'bat.Bat'>, <class 'object'>)
 
     # Calls parent method but uses its own class attribute
-    print(sup.get_species())    # => Superhuman
+    print(sup.get_species())  # => Superhuman
 
     # Calls overridden method
-    print(sup.sing())           # => nan nan nan nan nan batman!
+    print(sup.sing())         # => nan nan nan nan nan batman!
 
     # Calls method from Human, because inheritance order matters
-    sup.say('I agree')          # => Sad Affleck: I agree
+    sup.say("I agree")        # => Sad Affleck: I agree
 
     # Call method that exists only in 2nd ancestor
-    print(sup.sonar())          # => ))) ... (((
+    print(sup.sonar())        # => ))) ... (((
 
     # Inherited class attribute
     sup.age = 100
-    print(sup.age)              # => 100
+    print(sup.age)            # => 100
 
     # Inherited attribute from 2nd ancestor whose default value was overridden.
-    print('Can I fly? ' + str(sup.fly)) # => Can I fly? False
-
+    print("Can I fly? " + str(sup.fly))  # => Can I fly? False
 
 
 ####################################################
@@ -1052,15 +1052,15 @@ def my_function(x,y):       # def my_function(x,y):
 # When function definitions are long, it can be hard to parse the non-decorated
 # assignment at the end of the definition.
 
-my_function(1,2) # => "Entering function my_function"
-                 # => "3"
-                 # => "Exiting function my_function"
+my_function(1,2)  # => "Entering function my_function"
+                  # => "3"
+                  # => "Exiting function my_function"
 
 # But there's a problem.
 # What happens if we try to get some information about my_function?
 
-print(my_function.__name__) # => 'wrapper'
-print(my_function.__code__.co_argcount) # => 0. The argcount is 0 because both arguments in wrapper()'s signature are optional.
+print(my_function.__name__)  # => 'wrapper'
+print(my_function.__code__.co_argcount)  # => 0. The argcount is 0 because both arguments in wrapper()'s signature are optional.
 
 # Because our decorator is equivalent to my_function = log_function(my_function)
 # we've replaced information about my_function with information from wrapper
@@ -1070,8 +1070,8 @@ print(my_function.__code__.co_argcount) # => 0. The argcount is 0 because both a
 from functools import wraps
 
 def log_function(func):
-    @wraps(func) # this ensures docstring, function name, arguments list, etc. are all copied
-                 # to the wrapped function - instead of being replaced with wrapper's info
+    @wraps(func)  # this ensures docstring, function name, arguments list, etc. are all copied
+                  # to the wrapped function - instead of being replaced with wrapper's info
     def wrapper(*args, **kwargs):
         print("Entering function", func.__name__)
         result = func(*args, **kwargs)
@@ -1079,31 +1079,28 @@ def log_function(func):
         return result
     return wrapper
 
-@log_function               
-def my_function(x,y):       
-    return x+y              
-                            
-my_function(1,2) # => "Entering function my_function"
-                 # => "3"
-                 # => "Exiting function my_function"
+@log_function
+def my_function(x,y):
+    return x+y
 
-print(my_function.__name__) # => 'my_function'
-print(my_function.__code__.co_argcount) # => 2
+my_function(1,2)  # => "Entering function my_function"
+                  # => "3"
+                  # => "Exiting function my_function"
+
+print(my_function.__name__)  # => 'my_function'
+print(my_function.__code__.co_argcount)  # => 2
 ```
 
 ### Free Online
 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [The Official Docs](https://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](https://docs.python-guide.org/en/latest/)
+* [Hitchhiker's Guide to Python](https://docs.python-guide.org/)
 * [Python Course](https://www.python-course.eu)
-* [Free Interactive Python Course](http://www.Kikodo.io)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
-* [30 Python Language Features and Tricks You May Not Know About](https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
-* [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
+* [Official Style Guide for Python](https://peps.python.org/pep-0008/)
 * [Python 3 Computer Science Circles](https://cscircles.cemc.uwaterloo.ca/)
-* [Dive Into Python 3](https://www.diveintopython3.net/index.html)
-* [A Crash Course in Python for Scientists](https://nbviewer.jupyter.org/gist/anonymous/5924718)
+* [Dive Into Python 3](https://www.diveintopython3.net/)
 * [Python Tutorial for Intermediates](https://pythonbasics.org/)
 * [Build a Desktop App with Python](https://pythonpyqt.com/)

@@ -1003,14 +1003,11 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ### مجانا عبر الانترنت
 
 * [أتمتتة المهمات المُملة عبر بايثون](https://automatetheboringstuff.com)
-* [أفكار لمشروعات بلغة البايثون](http://pythonpracticeprojects.com)
 * [التوثيقات الرسمية](http://docs.python.org/3/)
 * [دليل المُسافر لبايثون](http://docs.python-guide.org/en/latest/)
 * [دورة بايثون](http://www.python-course.eu/index.php)
 * [أولى الخطوات مع بايثون](https://realpython.com/learn/python-first-steps/)
 * [قائمة مُختارة من إطارات عمل بايثون الرائعة, المكتبات والبرمجيات](https://github.com/vinta/awesome-python)
-* [ثلاثون خاصية وخدعة للغة البايثون ربما لم تعرف بها](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
-* [الدليل الرسمي لنمط البايثون](https://www.python.org/dev/peps/pep-0008/)
+* [الدليل الرسمي لنمط البايثون](https://peps.python.org/pep-0008/)
 * [بايثون 3 دوائر علوم الحاسب](http://cscircles.cemc.uwaterloo.ca/)
 * [غُص في بايثون 3](http://www.diveintopython3.net/index.html)
-* [دورة سريعة في البايثون للعلماء](http://nbviewer.jupyter.org/gist/anonymous/5924718)

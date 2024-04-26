@@ -622,13 +622,11 @@ print(soyle(lutfen_soyle=True))  # Ban soda alır mısın? Lutfen! Artık dayana
 * [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](http://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Hitchhiker's Guide to Python](http://docs.python-guide.org/)
 * [Python Course](http://www.python-course.eu/index.php)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
-* [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
-* [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
+* [Official Style Guide for Python](https://peps.python.org/pep-0008/)
 * [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 
 ### Kitaplar
