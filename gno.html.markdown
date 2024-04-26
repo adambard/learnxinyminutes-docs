@@ -1,38 +1,36 @@
 ---
 language: Gno
-filename: learnGno.gno
 contributors:
-    - ["Lav Leon Hudak", "https://github.com/leohhhn"]
-    - ["Miloš Zivković", "https://github.com/zivkovicmilos"]
+  - ["Lav Leon Hudak", "https://github.com/leohhhn"]
 ---
 
 # Gno
 Gno is an interpretation of the widely-used Go (Golang) programming language
 created by Cosmos co-founder Jae Kwon to mark a new era in smart
-contracting. Syntax-wise, Gno is ~99% identical to Go, allowing Go programmers 
+contracting. Syntax-wise, Gno is ~99% identical to Go, allowing Go programmers
 can start coding blockchain apps right away, with a minimal learning curve.
 
 Gno can be run inside the GnoVM. It is possible to run the GnoVM in two modes:
-- as a standalone binary, 
-- contained in a Gno.land blockchain node. 
+- as a standalone binary,
+- contained in a Gno.land blockchain node.
 
-Visit the gno.land [homepage](https://gno.land), as well as the [Official 
+Visit the gno.land [homepage](https://gno.land), as well as the [Official
 Gno Documentation](https://docs.gno.land) to learn more.
 
 Let's get started with Gno development.
 
 ## Installing necessary tools & binaries
-Before installing any Gno-specific tooling, make sure the following 
+Before installing any Gno-specific tooling, make sure the following
 prerequisites are present on your machine:
 
 - **Git**
 - **`make` (for running Makefiles)**
 - **Go 1.21+**
 - **Go Environment Setup**:
-  - Make sure `$GOPATH` is well-defined, and `$GOPATH/bin` is added to your 
-`$PATH` variable.
+  - Make sure `$GOPATH` is well-defined, and `$GOPATH/bin` is added to your
+    `$PATH` variable.
 
-After all prerequisites are present, you can continue with the installation. 
+After all prerequisites are present, you can continue with the installation.
 All tools needed for Gno development can be found in the
 [Gno monorepo](https://github.com/gnolang/gno).
 
@@ -50,21 +48,26 @@ make install
 ```
 
 This will install three binaries required to continue:
+
 - `gnodev` - an all-in-one tool for simple Gno development,
 - `gno` - the GnoVM binary for running & testing the Gno code,
 - `gnokey` - binary used for keypair management.
 
 ## Creating a new Gno project
 Gno mimics Go in most areas - including setting up a new project. Let's create
-a simple counter application. In an empty folder, run 
-`gno mod init gno.land/r/<your_username>/counter`. This will initiate a `gno.mod`
-file with an appropriate path for your app. Read more about Gno package paths
+a simple counter application. In an empty folder, run the following:
+
+```bash
+gno mod init gno.land/r/<your_username>/counter
+```
+
+This will initiate a `gno.mod` file with an appropriate path for your app. Read more about Gno package paths
 [here](https://docs.gno.land/concepts/namespaces).
 
 Following this, you can create a `counter.gno` file which will be the place for your
 Gno code. If you already know Go, Gno code will come to you very naturally.
 
-```shell
+```bash
 touch counter.gno
 ```
 
@@ -84,9 +87,9 @@ This is where Gno starts to differ from Go - variables declared in the global
 scope get auto-persisted. What does this mean?
 
 **Gno is a transaction-based language** - this means that each call to a Gno app
-happens within a transactional context, ensuring atomicity, & consistency. Because 
-of this, developers can focus on the business logic of their apps instead of 
-having to deal with the intricacies of application state management and persistence.  
+happens within a transactional context, ensuring atomicity, & consistency. Because
+of this, developers can focus on the business logic of their apps instead of
+having to deal with the intricacies of application state management and persistence.
 
 Moving forward, we can declare an `Increment()` function that will increment our
 counter variable by `1`.
@@ -108,13 +111,14 @@ func Render(_ string) string {
 
 The `Render()` function is meant to return a correctly-formatted Markdown string.
 We need to import `strconv`, which is part of the Gno standard library, to convert
-the counter value to a string. Furthermore, a valid `Render()` function must 
-take in a string parameter, which in our case is not used. 
+the counter value to a string. Furthermore, a valid `Render()` function must
+take in a string parameter, which in our case is not used.
 
 ### Testing in Gno
 We can test our counter app exactly the same way we would in Go. First, create a
 `counter_test.gno` file:
-```shell
+
+```bash
 touch counter_test.gno
 ```
 
@@ -138,39 +142,39 @@ func TestIncrement(t*testing.T) {
 }
 ```
 
-To run the tests, use the `gno test` command in the package folder: 
+To run the tests, use the `gno test` command in the package folder:
 
-```shell
+```bash
 gno test . -v
 ```
 
 If all went well, you will get the following output:
 
-```shell
+```bash
 === RUN   TestIncrement
 --- PASS: TestIncrement (0.00s)
 ok      .       0.71s
 ```
 
-Congratulations! You've just written & tested your first Gno app. Next step - 
+Congratulations! You've just written & tested your first Gno app. Next step -
 deploying the app.
 
 ## Deploying a Gno app
-Apart from running them locally, Gno apps can be deployed and ran on blockchain 
+Apart from running them locally, Gno apps can be deployed and ran on blockchain
 networks. This is another fundamental difference between Go and Gno.
 
 Developers can choose to deploy to a local or remote blockchain network
 depending on the development stage of their app. Let's discuss how to set up a
-local development environment for Gno. 
+local development environment for Gno.
 
 ### Running a local dev environment
-The fastest and most convenient way to run a local development environment for 
+The fastest and most convenient way to run a local development environment for
 Gno is by using `gnodev`. It is a binary containing multiple tools that make up
 everything you need to write Gno apps:
 - a local gno.land node running in the background,
 - a `gnoweb` server allowing you to immediately see the state of your app using
-the aforementioned `Render()` function.
-  
+  the aforementioned `Render()` function.
+
 Read more about `gnodev` [here](https://docs.gno.land/gno-tooling/cli/gno-tooling-gnodev).
 
 To start `gnodev`, simply give it the path to where your `.gno` and `gno.mod` files
@@ -182,7 +186,7 @@ gnodev <your_path>
 
 Starting `gnodev` will leave you with the following terminal output:
 
-```go
+```bash
 ❯ gnodev .
 Node        ┃ I pkgs loaded path=[<your_working_dir> <your_gnodev_installation_path>]
 Node        ┃ I node started lisn=tcp://127.0.0.1:36657 addr=g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5 chainID=dev
@@ -194,11 +198,16 @@ By giving `gnodev` the path to your counter application, you have automatically
 loaded the code into the built-in node. `gnodev` also watches your development
 directory, so that it can do an automatic reload of the code when needed.
 
-You can view the output of the `Render` function in your app by visiting the 
+You can view the output of the `Render` function in your app by visiting the
 `gnoweb` address listed above, and adding to it the path of your app.
 In case of the local node contained within `gnodev`, `gno.land/` is replaced by
-`http://127.0.0.1:8888`, so the `Render` of your app will be displayed on
-`http://127.0.0.1:8888/r/<your_username>/counter`.
+`http://127.0.0.1:8888`, so the `Render` of your app will be displayed on the
+following link:
+
+```
+http://127.0.0.1:8888/r/<your_username>/counter
+```
+
 
 ### Setting up a Gno keypair
 To interact with any `gno.land` network, including the local node contained within
@@ -214,36 +223,32 @@ for the keypair. For more info on keypairs, look into `BIP39` and `HD Wallets`.
 
 To generate a keypair, we can use the `gnokey` tool. `gnokey` provides users with
 a randomly generated phrase (and thus keypair) to ensure privacy &
-security. 
+security.
 
 To start, run the following command:
 
-```shell
+```bash
 gnokey add MyKeypair
 ```
 
-`gnokey` will ask for a password to encrypt the keypair on your local disk. After 
+`gnokey` will ask for a password to encrypt the keypair on your local disk. After
 this, it will show you the phrase that your keypair will be derived from.
 Make sure you write this phrase down, as it is the only way you can recover your
 keys in case of losing them.
 
 To check if you've successfully added the keypair, run `gnokey list`:
 
-```shell
+```bash
 ❯ gnokey list           
 0. MyKeypair (local) - addr: g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5 pub: gpub1pgfj7ard9eg82cjtv4u4xetrwqer2dntxyfzxz3pq0skzdkmzu0r9h6gny6eg8c9dc303xrrudee6z4he4y7cs5rnjwmyf40yaj, path: <nil>
 ```
-
-> The mnemonic and keypair stated above are publicly known. Do not use it 
-> for anything other than testing. Instead, generate your own keypair and keep it
-> private.
 
 ### Interacting with your Gno app
 Apart from testing locally, we can manually call our app's `Render()` and
 `Increment()` functions using the `gnokey maketx call` command to check if
 it's working correctly:
 
-```shell
+```bash
 # Calling Render to check current value of counter
 gnokey maketx call \
 --pkgpath "gno.land/r/demo/counter" \
@@ -263,22 +268,24 @@ MyKeypair
 ```
 
 Let's break down all the options from the `gnokey` command:
+
 1. `maketx` - create a transaction and sign it
 2. `call` - type of message to send to the chain, in this case
-[Call](https://docs.gno.land/gno-tooling/cli/gno-tooling-gnokey/#call)
+   [Call](https://docs.gno.land/gno-tooling/cli/gno-tooling-gnokey/#call)
 3. `--pkgpath` - path to where the app is found on-chain, defined in the `gno.mod`
-file
+   file
 4. `--func` - name of the function to be called
 5. `--gas-wanted` - the upper limit of gas for the execution of the transaction
-6. `--gas-fee` - the amount of network currency, in this case `ugnot`s, the caller 
-is willing to pay
+6. `--gas-fee` - the amount of network currency, in this case `ugnot`s, the caller
+   is willing to pay
 7. `--broadcast` - broadcast the transaction on-chain
 8. `--chain-id` - id of the chain to connect to, in our case the local node, `dev`
 9. `--remote` - specify node endpoint, in our case it's our local node
 10. `MyKeypair` - the keypair to use for the transaction
 
 Calling `Increment()`:
-```shell
+
+```bash
 gnokey maketx call \
 --pkgpath "gno.land/r/demo/counter" \
 --func "Increment" \
@@ -291,7 +298,7 @@ test1
 
 Finally, calling `Render()` again, we see the updated value:
 
-```shell
+```bash
 gnokey maketx call \
 --pkgpath "gno.land/r/demo/counter" \
 --func "Render" \   
@@ -318,7 +325,7 @@ to organize Gno code exists. Code is meant to be organized in two main categorie
 
 Packages can be deployed under `gno.land/p/demo/`, while realms can be deployed
 under `gno.land/r/`. You can view *and import* packages with this path. Try
-browsing for this link: [`gno.land/p/demo/blog`](https://gno.land/p/demo/blog). 
+browsing for this link: [`gno.land/p/demo/blog`](https://gno.land/p/demo/blog).
 
 Below are some commonly used packages.
 
@@ -339,8 +346,8 @@ var tree *avl.Tree
 
 // Save simply exposes the avl.Set function to the user
 func Save(key string, value int) {
-	// tree.Set takes in a string key, and a value that can be of any type
-	tree.Set(key, value)
+  // tree.Set takes in a string key, and a value that can be of any type
+  tree.Set(key, value)
 }
 
 // Get gets back a value at a specific key, if it exists
@@ -349,7 +356,7 @@ func Get(key string) int {
   // and a bool to signify the existence of the key-value pair
   rawValue, exists := tree.Get(key)
   if !exists {
-	  panic("value at given key does not exist")
+    panic("value at given key does not exist")
   }
   // rawValue needs to be converted into the proper type before returning it
   return rawValue.(int)
@@ -381,24 +388,24 @@ You can view more package (and realm) examples
 
 ## Blockchain-specific functionality
 Gno is designed to follow the syntax of Go. There are very few exceptions in how
-Gno differs from Go syntactically, which is why this section will outline the 
+Gno differs from Go syntactically, which is why this section will outline the
 major differences and added features. For a full list of Go-Gno compatability,
-check out the [compatability page](https://docs.gno.land/reference/go-gno-compatibility) 
+check out the [compatability page](https://docs.gno.land/reference/go-gno-compatibility)
 in the official documentation.
 
-This section also concerns the blockchain aspect of Gno. It will introduce 
-blockchain concepts that are commonly used in Gno apps. 
+This section also concerns the blockchain aspect of Gno. It will introduce
+blockchain concepts that are commonly used in Gno apps.
 
 When Gno code runs on a blockchain network, it has access to the environment variables of
-that network, such as the block height, block timestamp, current caller, amount 
+that network, such as the block height, block timestamp, current caller, amount
 of native currency sent along the call, etc. This context is fundamental for
 Gno app development and can be accessed through functions found in the special
-`std` package. 
+`std` package.
 
-Below you can find a "Learn X in Y"-styled report. Since Gno is designed to 
+Below you can find a "Learn X in Y"-styled report. Since Gno is designed to
 be as close as possible to Go syntax, we will not cover all bits and pieces
 of its syntax, but only the most prominent ones, and the ones that are specific
-to the language. 
+to the language.
 
 ```go
 // Single line comment
@@ -513,8 +520,9 @@ func main() {
 
 ## Additional resources
 For more information, view the following resources:
+
 - [Gno.land home page](https://gno.land)
-- [Official Documentation](https://docs.gno.land) 
+- [Official Documentation](https://docs.gno.land)
 - [gno-by-example](https://gno-by-example.com/)
 - [Gno monorepo](https://github.com/gnolang/gno)
 
