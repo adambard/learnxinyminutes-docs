@@ -68,13 +68,13 @@ SELECT DISTINCT title FROM titles ORDER BY title;
 SELECT * FROM departments WHERE dept_no = 'd001' OR dept_no = 'd002';
 
 -- Identique qu'au-dessus.
-SELECT * FROM departments WHERE dept_no IN ('d001', 'd0002');
+SELECT * FROM departments WHERE dept_no IN ('d001', 'd002');
 
 -- Le contraire d'au-dessus.
-SELECT * FROM departments WHERE dept_no NOT IN ('d001', 'd0002');
+SELECT * FROM departments WHERE dept_no NOT IN ('d001', 'd002');
 
 -- Sélectionne dans un intervalle donné.
-SELECT * from departments WHERE dept_no BETWEEN 'd001' AND 'd0002';
+SELECT * from departments WHERE dept_no BETWEEN 'd001' AND 'd002';
 
 -- Indique le nombre de lignes dans la table departments.
 SELECT COUNT(*) FROM departments;
