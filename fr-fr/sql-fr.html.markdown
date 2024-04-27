@@ -65,16 +65,16 @@ SELECT DISTINCT title FROM titles ORDER BY title;
 
 -- Utilise les opérateurs de comparaison (=, >, <, >=, <=, <>) et
 -- les mots-clés conditionnels (AND, OR) pour affiner votre requête.
-SELECT * FROM departments WHERE dept_no = 'd001' OR dept_no = 'd002'
+SELECT * FROM departments WHERE dept_no = 'd001' OR dept_no = 'd002';
 
 -- Identique qu'au-dessus.
-SELECT * FROM departments WHERE dept_no IN ('d001', 'd0002')
+SELECT * FROM departments WHERE dept_no IN ('d001', 'd0002');
 
 -- Le contraire d'au-dessus.
-SELECT * FROM departments WHERE dept_no NOT IN ('d001', 'd0002')
+SELECT * FROM departments WHERE dept_no NOT IN ('d001', 'd0002');
 
 -- Sélectionne dans un intervalle donné.
-SELECT * from departments WHERE dept_no BETWEEN 'd001' AND 'd0002'
+SELECT * from departments WHERE dept_no BETWEEN 'd001' AND 'd0002';
 
 -- Indique le nombre de lignes dans la table departments.
 SELECT COUNT(*) FROM departments;
@@ -91,17 +91,17 @@ SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 -- Récupère le nombre total d'employés, par numéro de département (dept_no),
 -- à condition d'avoir plus de 100 employés.
 SELECT dept_no, COUNT(dept_no) FROM dept_emp GROUP BY dept_no
-HAVING COUNT(dept_no) > 100
+HAVING COUNT(dept_no) > 100;
 
 -- Des alias peuvent être utilisés, en utilisant le mot-clé optionnel AS,
 -- pour les noms des colonnes et tables.
 SELECT COUNT(A.*) AS total_employees, COUNT(B.*) total_departments
-FROM employees AS A, departments B
+FROM employees AS A, departments B;
 
 -- En général, le format de la date est "aaaa-mm-jj".
 -- Cependant, cela peut varier en fonction de l'implémentation, du système d'exploitation,
 -- et des paramètres locaux de session.
-SELECT * FROM dept_manager WHERE from_date >= '1990-01-01'
+SELECT * FROM dept_manager WHERE from_date >= '1990-01-01';
 
 -- Une jointure (JOIN) permet de réunir des informations de plusieurs tables.
 -- La table titles contient l'intitulé de poste (title), le numéro d'employé (emp_no),
@@ -120,7 +120,7 @@ LIMIT 10;
 -- UNION sélectionne des lignes distinctes, UNION ALL sélectionne toutes les lignes.
 SELECT * FROM departments WHERE dept_no = 'd001'
 UNION
-SELECT * FROM departments WHERE dept_no = 'd002'
+SELECT * FROM departments WHERE dept_no = 'd002';
 
 -- L'ordre de la syntaxe SQL, avec plusieurs mots-clés appris jusqu'à présent, est :
 -- SELECT _ FROM _ JOIN _ ON _ WHERE _ GROUP BY _ HAVING _ ORDER BY _ UNION
