@@ -347,5 +347,5 @@ Language](http://doc.rust-lang.org/book/index.html)
 irc.mozilla.orgの#rustチャンネルにいる人たちも、新参者にも熱心に助けてくれます。
 
 また、Rustの機能を公式のオンラインコンパイラで試すこともできます。
-[Rust playpen](http://play.rust-lang.org) またはメインの
+[Rust Playground](https://play.rust-lang.org) またはメインの
 [Rust website](http://rust-lang.org).

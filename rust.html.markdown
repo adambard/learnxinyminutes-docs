@@ -351,5 +351,5 @@ Language](http://doc.rust-lang.org/book/index.html) and check out the
 irc.mozilla.org are also always keen to help newcomers.
 
 You can also try out features of Rust with an online compiler at the official
-[Rust playpen](http://play.rust-lang.org) or on the main
+[Rust Playground](https://play.rust-lang.org) or on the main
 [Rust website](http://rust-lang.org).

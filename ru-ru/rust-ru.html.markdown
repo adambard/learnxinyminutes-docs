@@ -308,5 +308,5 @@ fn main() {
 [The Rust Programming Language](http://doc.rust-lang.org/book/index.html) 
 
 Для компиляции программ при изучении языка весьма удобно использовать 
-[Rust playpen](http://play.rust-lang.org). 
+[Rust Playground](https://play.rust-lang.org). 
 Множество ресурсов на разных языках можно найти в [этом проекте](https://github.com/ctjhoa/rust-learning).

@@ -320,5 +320,5 @@ ayuda o a [Rust internals](https://internals.rust-lang.org/) para aprender más
 sobre el lenguaje y colaborar en su desarrollo.
 
 También puedes probar Rust con un compilador online en el oficial [Rust
-playground](http://play.rust-lang.org) o en la [web principal de
+Playground](https://play.rust-lang.org) o en la [web principal de
 Rust](http://rust-lang.org).
