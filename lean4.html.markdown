@@ -10,13 +10,6 @@ language and an interactive theorem prover.
 
 ```lean4
 /-
-Imports have to be at the top of the file.
-
-We will need `use` for some of the proofs below.
--/
-import Mathlib.Tactic.Use
-
-/-
 An enumerated data type.
 -/
 inductive Grade where
@@ -77,7 +70,7 @@ defined for that type.
 Using this we can prove `1 = 1` as follows.
 -/
 
-def one_eq_one : 1 = 1 := Eq.refl 1
+theorem one_eq_one : 1 = 1 := Eq.refl 1
 
 /-
 But there is no way to prove (construct a value of type) `0 = 1`.
@@ -85,112 +78,32 @@ But there is no way to prove (construct a value of type) `0 = 1`.
 The following will fail. As will `Eq.refl 1`
 -/
 
-/- def zero_eq_one : 0 = 1 := Eq.refl 0 -/
+/- theorem zero_eq_one : 0 = 1 := Eq.refl 0 -/
 
 /-
-Let us prove a more complicated equality.
+Let us prove an inequality involving variables.
 
-The following will fail because both sides are not "obviously equal".
--/
-
-/- def pf : 2^9-2^8 = 2^8 := Eq.refl (2^8) -/
-
-/-
-We can prove this in painstaking detail by proving a series of equalities.
-
-We prove:
-
-  2^9 - 2^8 = 2^8 * 2 - 2^8
-            = 2^8 * (2 - 1)
-            = 2^8 * 1
-            = 2^8
--/
-def two_power_eight''' : 2^9-2^8 = 2^8 :=
-  let p1 : 2^9 = 2^8 * 2               := sorry
-  let p2 : 2^9-2^8 = 2^8 * 2 - 2^8     := sorry
-  let p3 : 2^8 * 2 - 2^8 = 2^8 * (2-1) := sorry
-  let p4 : 2^8 * (2-1) = 2^8           := sorry
-  Eq.trans (Eq.trans p2 p3) p4
-/-
-`sorry` is a special proof that proves everything. It should not be used in real
-proofs.
-
-`Eq.trans` is the transitivity of equality. We prove a series of equalities and
-apply transitivity.
--/
-
-/-
-Here's another proof of the same theorem with all the `sorry` replaced with real
-proofs.
--/
-def two_power_eight'' : 2^9 - 2^8 = 2^8 :=
-  let p1 : 2^9 = 2^8 * 2 :=
-    Nat.pow_succ 2 8
-  let p2 : 2^9 - 2^8 = 2^8 * 2 - 2^8 :=
-    congrArg (fun x => x - 2^8) p1
-  let p3 : 2^8 * 2 - 2^8 = 2^8 * (2 - 1) :=
-    Eq.symm (Nat.mul_sub_left_distrib (2^8) 2 1)
-  let p4 : 2^8 * (2 - 1) = 2^8 :=
-    Nat.mul_one (2^8)
-  Eq.trans (Eq.trans p2 p3) p4
-
-/-
-For individual steps, we use proofs already available in Lean. For example:
-
-  `Nat.pow_succ a b` is the proof of `a^(b + 1) = a^b * a`.
-
-We use some general mechanisms in the above proof that are trivial in written,
-English mathematics.
-
-`congrArg f p`is a proof of `f a = f b` from `a = b`.
-
-  Notice how we use `p1` to build `p2`. Indeed, `p2` is just the rewrite proved
-  by `p1` in a complicated function.
-
-`Eq.symm p` takes a proof `p` of `a=b` and gives us a proof of `b=a`.
-
-The left distributivity is defined as `a * (b - c) = a * b - a * c`. The
-equality we want to prove is its symmetric version.
--/
-
-/-
-We don't want to write proofs in such detail. We would like to specify them at a
-high-level. This is what we do when we write mathematics in English.
-
-Enter *tactics*. These are commands to Lean that guide it to construct proofs by
-itself.
-
-A common tactic is `simp`, short for simplify.
-
-We can ask to Lean to try to prove by simplifying using `by simp`. The `by`
-tells Lean that what follows is a tactic, and not a complete proof.
-
-Then, the proof becomes:
--/
-def two_power_eight' : 2^9 - 2^8 = 2^8 := by
-  simp
-
-/-
-We can use `theorem` instead of `def` as a notational convenience.
--/
-theorem two_power_eight : 2^9 - 2^8 = 2^8 := by simp
-
-/-
 The `calc` primitive allows us to prove equalities using stepwise
 calculations. Each step has to be justified by a proof.
 -/
 theorem plus_squared (a b : Nat) : (a+b)^2 = a^2 + 2*a*b + b^2 :=
   calc
-    (a+b)^2 = (a+b)*(a+b)             := Nat.pow_two (a+b)
-    _       = (a+b)*a + (a+b)*b       := Nat.mul_add (a+b) a b
+    (a+b)^2 = (a+b)*(a+b)             := Nat.pow_two _
+    _       = (a+b)*a + (a+b)*b       := Nat.mul_add _ _ _
     _       = a*a + b*a + (a*b + b*b) := by repeat rw [Nat.add_mul]
     _       = a*a + b*a + a*b + b*b   := by rw [← Nat.add_assoc]
-    _       = a*a + a*b + a*b + b*b   := by rw [Nat.mul_comm b a]
-    _       = a^2 + a*b + a*b + b*b   := by rw [← Nat.pow_two a]
-    _       = a^2 + a*b + a*b + b^2   := by rw [← Nat.pow_two b]
-    _       = a^2 + (a*b + a*b) + b^2 := by rw [Nat.add_assoc (a^2)]
-    _       = a^2 + 2*(a*b) + b^2     := by rw [← Nat.two_mul (a*b)]
-    _       = a^2 + 2*a*b + b^2       := by rw [Nat.mul_assoc 2 a b]
+    _       = a*a + a*b + a*b + b*b   := by rw [Nat.mul_comm b _]
+    _       = a^2 + a*b + a*b + b*b   := by rw [← Nat.pow_two _]
+    _       = a^2 + a*b + a*b + b^2   := by rw [← Nat.pow_two _]
+    _       = a^2 + (a*b + a*b) + b^2 := by rw [Nat.add_assoc (a^_)]
+    _       = a^2 + 2*(a*b) + b^2     := by rw [← Nat.two_mul _]
+    _       = a^2 + 2*a*b + b^2       := by rw [Nat.mul_assoc _ _ _]
+/-
+Underscores can be used when there is no ambiguity in what is to be matched.
+
+For example, in the first step, we want to apply `Nat.pow_two (a+b)`. But,
+`(a+b)` is the only pattern here to apply `Nat.pow_two`. So we can omit it.
+-/
 
 /-
 Let us now prove more "realistic" theorems. Those involving logical connectives.
@@ -204,7 +117,7 @@ def Odd  (n : Nat) := ∃ k, n = 2*k + 1
 To prove an existential, we can provide specific values if we know them.
 -/
 theorem zero_even : Even 0 :=
-  let h : 0 = 2 * 0 := Eq.symm (Nat.mul_zero 2)
+  have h : 0 = 2 * 0 := Eq.symm (Nat.mul_zero 2)
   Exists.intro 0 h
 /-
 `Exists.intro v h` proves `∃ x, p x` by substituting `x` by `v` and using the
@@ -214,8 +127,11 @@ proof `h` for `p v`.
 /-
 Now, we will see how to use hypothesis that are existentials to prove
 conclusions that are existentials.
+
+The curly braces around parameters `n` and `m` indicate that they are
+implicit. Here, Lean will infer them from `hn` and `hm`.
 -/
-theorem even_mul_even_is_even' (hn : Even n) (hm : Even m) : Even (n*m) :=
+theorem even_mul_even_is_even' {n m : Nat} (hn : Even n) (hm : Even m) : Even (n*m) :=
   Exists.elim hn (fun k1 hk1 =>
     Exists.elim hm (fun k2 hk2 =>
       Exists.intro (k1 * ( 2 * k2)) (
@@ -227,12 +143,15 @@ theorem even_mul_even_is_even' (hn : Even n) (hm : Even m) : Even (n*m) :=
   )
 
 /-
+Most proofs are written using *tactics*. These are commands to Lean that guide
+it to construct proofs by itself.
+
 The same theorem, proved using tactics.
 -/
-theorem even_mul_even_is_even (hn : Even n) (hm : Even m) : Even (n*m) := by
+theorem even_mul_even_is_even {n m : Nat} (hn : Even n) (hm : Even m) : Even (n*m) := by
   let ⟨k1, hk1⟩ := hn
   let ⟨k2, hk2⟩ := hm
-  use k1 * (2 * k2)
+  apply Exists.intro $ k1 * (2 * k2)
   calc
     n*m = (2 * k1) * (2 * k2) := by rw [hk1, hk2]
     _   = 2 * (k1 * (2 * k2)) := by rw [Nat.mul_assoc]
@@ -240,7 +159,7 @@ theorem even_mul_even_is_even (hn : Even n) (hm : Even m) : Even (n*m) := by
 /-
 Let us work with implications.
 -/
-theorem succ_of_even_is_odd' : Even n → Odd (n+1) :=
+theorem succ_of_even_is_odd' {n : Nat} : Even n → Odd (n+1) :=
   fun hn =>
     let ⟨k, hk⟩ := hn
     Exists.intro k (
@@ -262,21 +181,23 @@ that substitutes `2 * k` for `n`, which is allowed by `hk`.
 /-
 Same theorem, now using tactics.
 -/
-theorem succ_of_even_is_odd : Even n → Odd (n+1) := by
+theorem succ_of_even_is_odd {n : Nat} : Even n → Odd (n+1) := by
   intro hn
   let ⟨k, hk⟩ :=  hn
-  use k
+  apply Exists.intro k
   rw [hk]
 
 /-
 The following theorem can be proved similarly.
 
 We will use this theorem later.
+
+A `sorry` proves any theorem. It should not be used in real proofs.
 -/
-theorem  succ_of_odd_is_even : Odd n → Even (n+1) := sorry
+theorem succ_of_odd_is_even {n : Nat} : Odd n → Even (n+1) := sorry
 
 /-
-We can use implications by applying them.
+We can use theorems by applying them.
 -/
 example : Odd 1 := by
   apply succ_of_even_is_odd
@@ -285,13 +206,13 @@ example : Odd 1 := by
 The two new tactics are:
 
   - `apply p` where `p` is an implication `q → r` and `r` is the goal rewrites
-  the goal to `q`.
+  the goal to `q`. More generally, `apply t` will unify the current goal with
+  the conclusion of `t` and generate goals for each hypothesis of `t`.
   - `exact h` solves the goal by stating that the goal is the same as `h`.
-
 -/
 
 /-
-Let us see an example of a disjunction.
+Let us see examples of disjunctions.
 -/
 example : Even 0 ∨ Odd 0 := Or.inl zero_even
 example : Even 0 ∨ Odd 1 := Or.inl zero_even
@@ -316,7 +237,7 @@ The inductive hypothesis is a disjunction. When disjunctions appear at the
 hypothesis, we use *proof by exhaustive cases*. This is done using the `cases`
 tactic.
 -/
-theorem even_or_odd (n : Nat) : Even n ∨ Odd n := by
+theorem even_or_odd {n : Nat} : Even n ∨ Odd n := by
   induction n
   case zero => left ; exact zero_even
   case succ n ihn =>
@@ -324,7 +245,8 @@ theorem even_or_odd (n : Nat) : Even n ∨ Odd n := by
     | inl h => right ; apply (succ_of_even_is_odd h)
     | inr h => left  ; apply (succ_of_odd_is_even h)
 /-
-`induction` is not just for natural numbers. It is for any inductive type.
+`induction` is not just for natural numbers. It is for any type, since all types
+in Lean are inductive.
 -/
 
 /-
@@ -379,7 +301,7 @@ theorem.
 
 The forward direction does not require classical logic.
 -/
-theorem contrapositive_forward' : (p → q) → (¬q → ¬p) :=
+theorem contrapositive_forward' (p q : Prop) : (p → q) → (¬q → ¬p) :=
   fun pq => fun hqf => fun hp => hqf (pq hp)
 /-
 Use the definition `¬q := q → False`. Notice that we have to construct `p →
@@ -389,7 +311,7 @@ False` given `p → q` and `q → False`. This is just function composition.
 /-
 The above proof, using tactics.
 -/
-theorem contrapositive_forward : (p → q) → (¬q → ¬p) := by
+theorem contrapositive_forward (p q : Prop) : (p → q) → (¬q → ¬p) := by
   intro hpq
   intro
   intro hp
@@ -406,7 +328,7 @@ Here, we are required to construct a `q` given values of following types:
 
 This is impossible without using the law of excluded middle.
 -/
-theorem contrapositive_reverse' : (¬q → ¬p) → (p → q) :=
+theorem contrapositive_reverse' (p q : Prop) : (¬q → ¬p) → (p → q) :=
   fun hnqnp =>
   Classical.byCases
     (fun hq  => fun  _ => hq)
@@ -422,7 +344,7 @@ case, we give the `q → False` to obtain a `p → False`.  Then, we use the fac
 /-
 Same proof, using tactics.
 -/
-theorem contrapositive_reverse : (¬q → ¬p) → (p → q) := by
+theorem contrapositive_reverse (p q : Prop) : (¬q → ¬p) → (p → q) := by
   intro hnqnp
   intro hp
   have emq := Classical.em q
@@ -437,7 +359,11 @@ Algebra" by Herstein, Second edition.
 -/
 
 /-
-A class defines a set of axioms
+A `section` introduces a namespace.
+-/
+section GroupTheory
+/-
+To define abstract objects like groups, we may use `class`.
 -/
 class Group (G : Type u) where
   op : G → G → G
@@ -453,8 +379,8 @@ open Group
 infixl:70 " * " => op
 
 /-
-`G` will always stand for a group. Variables `a b c` will be elements of that
-group.
+`G` will always stand for a group and variables `a b c` will be elements of that
+group in this `section`.
 -/
 variable [Group G] {a b c : G}
 
@@ -467,10 +393,10 @@ theorem identity_element_unique : ∀ e' : G, is_identity e' → e' = e := by
   intro e'
   intro h
   specialize h e
-  obtain ⟨h1, _⟩ := h
+  let ⟨h1, _⟩ := h
   have h' := identity e'
-  obtain ⟨_, h2⟩ := h'
-  apply Eq.trans (Eq.symm h2) h1
+  let ⟨_, h2⟩ := h'
+  exact Eq.trans (Eq.symm h2) h1
 /-
 Note that we used the `identity` axiom.
 -/
@@ -481,8 +407,8 @@ Left cancellation. We have to use both `identity` and `inverse` axioms from
 -/
 theorem left_cancellation : ∀ x y : G, a * x = a * y → x = y := by
   have h1 := inverse a
-  obtain ⟨ai, a_inv⟩ := h1
-  obtain ⟨_, h2⟩ := a_inv
+  let ⟨ai, a_inv⟩ := h1
+  let ⟨_, h2⟩ := a_inv
   intro x y
   intro h3
   calc
@@ -494,9 +420,10 @@ theorem left_cancellation : ∀ x y : G, a * x = a * y → x = y := by
     _ = (e : G) * y  := by rw [h2]
     _ = y            := (identity y).right
 
+end GroupTheory /- Variables `G`, `a`, `b`, `c` are now not in scope. -/
+
 /-
-Mutually recursive definitions have to be carefully constructed. In particular,
-the hypotheses when recursing should imply well-foundedness.
+Let us see a mutually recursive definition.
 
 The game of Nim with two heaps.
 -/
@@ -527,10 +454,9 @@ example : Bob 0 0 := by
     intro a ; have := a.right ; contradiction
 
 /-
-Programming algorithms in Lean is harder.
-
-This is because we have to convince Lean of termination. Here's a simple
-primality checking algorithm that tests all candidate divisors.
+We have to convince Lean of termination when a function is defined using just a
+`def`. Here's a simple primality checking algorithm that tests all candidate
+divisors.
 -/
 def prime' (n : Nat) : Bool :=
   if h : n < 2 then
@@ -553,11 +479,16 @@ recursive call site. But the function itself can only assume that `n ≥ k`. We
 label the test `n ≤ k` by `h` so that the falsification of this proposition can
 be used by `omega` later to conclude that `n > k`.
 
-The tactic `omega` is a general-purpose solver for equalities and inequalities.
+The tactic `omega` can solve simple equalities and inequalities.
+-/
+/-
+You can also instruct Lean to not check for totality by prefixing `partial` to
+`def`.
 -/
 
 /-
-We can rewrite the function to test the divisors from largest to smallest.
+Or, we can rewrite the function to test the divisors from largest to
+smallest. In this case, Lean easily verifies that the function is total.
 -/
 def prime (n : Nat) : Bool :=
   if n < 2 then
