@@ -149,8 +149,8 @@ it to construct proofs by itself.
 The same theorem, proved using tactics.
 -/
 theorem even_mul_even_is_even {n m : Nat} (hn : Even n) (hm : Even m) : Even (n*m) := by
-  let ⟨k1, hk1⟩ := hn
-  let ⟨k2, hk2⟩ := hm
+  have ⟨k1, hk1⟩ := hn
+  have ⟨k2, hk2⟩ := hm
   apply Exists.intro $ k1 * (2 * k2)
   calc
     n*m = (2 * k1) * (2 * k2) := by rw [hk1, hk2]
@@ -161,7 +161,7 @@ Let us work with implications.
 -/
 theorem succ_of_even_is_odd' {n : Nat} : Even n → Odd (n+1) :=
   fun hn =>
-    let ⟨k, hk⟩ := hn
+    have ⟨k, hk⟩ := hn
     Exists.intro k (
       calc
         n + 1 = 2 * k + 1 := by rw [hk]
@@ -183,7 +183,7 @@ Same theorem, now using tactics.
 -/
 theorem succ_of_even_is_odd {n : Nat} : Even n → Odd (n+1) := by
   intro hn
-  let ⟨k, hk⟩ :=  hn
+  have ⟨k, hk⟩ :=  hn
   apply Exists.intro k
   rw [hk]
 
@@ -393,9 +393,9 @@ theorem identity_element_unique : ∀ e' : G, is_identity e' → e' = e := by
   intro e'
   intro h
   specialize h e
-  let ⟨h1, _⟩ := h
+  have ⟨h1, _⟩ := h
   have h' := identity e'
-  let ⟨_, h2⟩ := h'
+  have ⟨_, h2⟩ := h'
   exact Eq.trans (Eq.symm h2) h1
 /-
 Note that we used the `identity` axiom.
@@ -407,8 +407,8 @@ Left cancellation. We have to use both `identity` and `inverse` axioms from
 -/
 theorem left_cancellation : ∀ x y : G, a * x = a * y → x = y := by
   have h1 := inverse a
-  let ⟨ai, a_inv⟩ := h1
-  let ⟨_, h2⟩ := a_inv
+  have ⟨ai, a_inv⟩ := h1
+  have ⟨_, h2⟩ := a_inv
   intro x y
   intro h3
   calc
