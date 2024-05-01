@@ -64,7 +64,7 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // Funktionssignaturen werden entweder vorher in einer .h-Datei deklariert oder
 // am Anfang der .c-Datei.
 void function_1();
-int funkcion_2(void);
+int function_2(void);
 
 // Es muss ein Funktionsprototyp deklariert werden vor der `main()` Funktion,
 // wenn die Funktion nach der `main()` Funktion gebraucht wird.
