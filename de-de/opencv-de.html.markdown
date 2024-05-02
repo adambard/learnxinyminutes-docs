@@ -8,17 +8,17 @@ translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
 lang: de-de
 ---
-### Opencv
+### OpenCV
 
 OpenCV (Open Source Computer Vision) ist eine Bibliothek von Programmierfunktionen, 
 die hauptsächlich auf maschinelles Sehen in Echtzeit ausgerichtet ist.
-Ursprünglich wurde OpenCV von Intel entwickelt. Später wurde es von von 
+Ursprünglich wurde OpenCV von Intel entwickelt. Später wurde es von 
 Willow Garage und dann Itseez (das später von Intel übernommen wurde) unterstützt.
 OpenCV unterstützt derzeit eine Vielzahl von Sprachen, wie C++, Python, Java uvm.
 
 #### Installation
 
-Bitte lese diese Artikel für die Installation von OpenCV auf deinen Computer.
+Bitte lies diesen Artikel für die Installation von OpenCV auf deinem Computer.
 
 * Windows Installationsanleitung: [https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html#install-opencv-python-in-windows]()
 * Mac Installationsanleitung (High Sierra): [https://medium.com/@nuwanprabhath/installing-opencv-in-macos-high-sierra-for-python-3-89c79f0a246a]()
@@ -35,7 +35,7 @@ img = cv2.imread('Katze.jpg')
 # Die imshow() Funktion wird verwendet um das Display darzustellen.
 cv2.imshow('Image',img)
 # Das erste Argument ist der Titel des Fensters und der zweite Parameter ist das Bild
-# Wenn du den Fehler Object Type None bekommst ist eventuell dein Bildpfad falsch.
+# Wenn du den Fehler Object Type None bekommst, ist eventuell dein Bildpfad falsch.
 # Bitte überprüfe dann den Pfad des Bildes erneut.
 cv2.waitKey(0)
 # waitKey() ist eine Tastaturbindungsfunktion, sie nimmt Argumente in 
@@ -43,9 +43,9 @@ cv2.waitKey(0)
 
 # Ein Bild schreiben
 cv2.imwrite('graueKatze.png',img)
-# Das erste Arkument ist der Dateiname und das Zweite ist das Bild
+# Das erste Argument ist der Dateiname und das zweite ist das Bild
 
-# Konveriere das Bild zu Graustufen
+# Konvertiert das Bild zu Graustufen
 gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Videoaufnahme von der Webcam
@@ -91,7 +91,7 @@ cv2.ellipse(img,(256,256),(100,50),0,0,180,255,-1)
 # Text auf Bildern hinzufügen
 cv2.putText(img,"Hello World!!!", (x,y), cv2.FONT_HERSHEY_SIMPLEX, 2, 255)
 
-# Bilder zusammenfüggen
+# Bilder zusammenfügen
 img1 = cv2.imread('Katze.png')
 img2 = cv2.imread('openCV.jpg')
 dst = cv2.addWeighted(img1,0.5,img2,0.5,0)
@@ -103,7 +103,7 @@ _,thresImg = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
 adapThres = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
 
 # Weichzeichnung von einem Bild
-# Gausßscher Weichzeichner
+# Gaußscher Weichzeichner
 blur = cv2.GaussianBlur(img,(5,5),0)
 # Rangordnungsfilter
 medianBlur = cv2.medianBlur(img,5)
@@ -136,7 +136,7 @@ cv2.waitKey(0)
 
 cv2.destroyAllWindows()
 # destroyAllWindows() zerstört alle Fenster
-# Wenn du ein bestimmtes Fenter zerstören möchtest musst du den genauen Namen des 
+# Wenn du ein bestimmtes Fenster zerstören möchtest, musst du den genauen Namen des 
 # von dir erstellten Fensters übergeben.
 ```
 
