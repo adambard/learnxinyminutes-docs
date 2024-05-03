@@ -275,7 +275,7 @@ fn main() {
     *ahora_es_mio += 2;
 
     println!("{}", ahora_es_mio); // 7
-    // println!("{}", mio); // esto no compilaría, porque `now_its_mine` es el
+    // println!("{}", mio); // esto no compilaría, porque `ahora_es_mio` es el
     // que posee el puntero
 
     // Referencia – un puntero inmutable que referencia a otro dato
