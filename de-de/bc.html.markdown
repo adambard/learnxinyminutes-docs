@@ -6,7 +6,7 @@ filename: learnbc-de.bc
 lang: de-de
 ---
 ```c
-/* Das is ein mehr-
+/* Das ist ein mehr-
 zeiliger Kommentar */
 # Das ist ein (einzeiliger) Kommentar (in GNU bc).
 
@@ -33,9 +33,9 @@ if(hour < 12) { /*Operatoren sind genau wie in C*/
 	mit einem Komma separiert aus.*/
 } else if(hour == 12) {
     print "Hallo\n"
-	/* Escape-Sequenzen starten mite einem \ in einem String.
+	/* Escape-Sequenzen starten mit einem \ in einem String.
 	Um Escape-Sequenzen klarer zu machen, ist hier eine vereinfachte
-	Liste, welche in bc funktioneren.:
+	Liste, welche in bc funktioneren:
     \b: Backspace
     \c: carriage return
     \n: Zeilenumbruch
@@ -55,7 +55,7 @@ num = blankVariable /*num wurde auf 0 gesetzt.*/
 if(!num) {print "false\n"}
 
 /*Im Gegensatz zu C hat bc den Ternäroperator ?: nicht. Zum Beispiel
-führt dieser Codeblok zu einem Fehler:
+führt dieser Codeblock zu einem Fehler:
 a = (num) ? 1 : 0
 Jedoch kann dies simuliert werden:*/
 a = (num) && (1) || (0) /*&& ist das UND, || ist das ODER*/
