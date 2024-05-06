@@ -18,9 +18,9 @@ RST-Dateien sind simple Textdateien mit einer leichtgewichtigen Syntax (im Vergl
 
 ## Installation
 
-Um Restructured Text zu vewenden musst du [Python](http://www.python.org)
+Um Restructured Text zu verwenden, musst du [Python](http://www.python.org)
 
-installieren und das `docutils` Packet installieren. `docutils` kann mit dem folgenden 
+installieren und das `docutils` Paket installieren. `docutils` kann mit dem folgenden 
 
 Befehl auf der Kommandozeile installiert werden:
 
@@ -28,7 +28,7 @@ Befehl auf der Kommandozeile installiert werden:
 $ easy_install docutils
 ```
 
-Wenn auf deinem System `pip` installiert kannst du es statdessen auch verwenden:
+Wenn auf deinem System `pip` installiert kannst du es stattdessen auch verwenden:
 
 ```bash
 $ pip install docutils
@@ -57,7 +57,7 @@ Titel werden auch mit Gleichheitszeichen unterstrichen
 Untertitel werden mit Strichen gekennzeichnet
 ---------------------------------------------
 
-Text in *kursiv* oder in **fett**. Du kannst Text als Code "makieren", wenn
+Text in *kursiv* oder in **fett**. Du kannst Text als Code "markieren", wenn
 du doppelte Backquotes verwendest ``: ``print()``.
 
 Listen sind so einfach wie in Markdown:
@@ -89,7 +89,7 @@ Es gibt mehrere Möglichkeiten um Links zu machen:
 - Wenn man einen Unterstrich hinter einem Wort hinzufügt: GitHub_ Zusätzlich 
 muss man die Zielurl nach dem Text hinzufügen. 
 (Dies hat den Vorteil, dass man keine unnötigen Urls in lesbaren Text einfügt.
-- Wenn man die vollständige Url eingibt : https://github.com/
+- Wenn man die vollständige Url eingibt: https://github.com/
 (Dies wird automatisch in ein Link konvertiert.)
 - Wenn man es mehr Markdown ähnlich eingibt: `GitHub <https://github.com/>`_ .
 
@@ -109,8 +109,8 @@ $ rst2html myfile.rst output.html
 
 Es gibt komplexere Anwendungen, die das RST Format verwenden: 
 
-- [Pelican](http://blog.getpelican.com/), ein statischer Websitengenerator
-- [Sphinx](http://sphinx-doc.org/), Ein Dokumentationsgenerator
+- [Pelican](http://blog.getpelican.com/), ein statischer Webseitengenerator
+- [Sphinx](http://sphinx-doc.org/), ein Dokumentationsgenerator
 - und viele Andere
 
 ## Zum Lesen
