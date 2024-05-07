@@ -19,7 +19,7 @@ Brainfuck im Browser ausprobiert werden.
 ```
 Alle Zeichen außer "><+-.,[]" (ohne die Klammern) werden ignoriert.
 
-Brainfuck besteht aus einem Array mit unendlich vielen Elementen, die alle mit Null initalisiert
+Brainfuck besteht aus einem Array mit unendlich vielen Elementen, die alle mit Null initialisiert
 sind und einem Datenzeiger auf das aktuelle Element.
 
 Es gibt acht Befehle:
@@ -59,11 +59,11 @@ daher wird 'A' am Terminal ausgegeben..
 
 Dieses Programm liest ein Zeichen von der Benutzereingabe und schreibt dessen Wert
 in Zelle #1. Danach beginnt eine Schleife. Rücke vor auf Zelle #2, erhöhe den Wert der Zelle #2,
-gehe zurück auf Zelle #1, verringere den Wert der Zelle #1. Dies geht solange bis
+gehe zurück auf Zelle #1, verringere den Wert der Zelle #1. Dies geht so lange bis
 Zelle #1 den Wert 0 und Zelle #2 den alten Wert aus #1 hat. Da wir am Ende der Schleife
-bie Zelle #1 sind, gehe vor zu Zelle #2 und gibt denb Wert als ASCII Zeichen aus.
+bie Zelle #1 sind, gehe vor zu Zelle #2 und gibt den Wert als ASCII Zeichen aus.
 
-Beachte biite, dass die Leerzeichen nur aus Gründen der Lesbarkeit geschrieben werden.
+Beachte bitte, dass die Leerzeichen nur aus Gründen der Lesbarkeit geschrieben werden.
 Man könnte genauso schreiben:
 
 ,[>+<-]>.
@@ -84,6 +84,6 @@ Am Ende steht in Zelle #3 das Ergebnis.
 ```
 
 Das ist Brainfuck. Nicht so schwierig, oder? Zum Spaß kannst du dein eigenes Brainfuck
-Programm schreiben oder du schreibst einen Brainfuck Interpreter in einer anderen
+Programm schreiben oder du schreibst einen Brainfuck-Interpreter in einer anderen
 Programmiersprache. Der Interpreter lässt sich ziemlich einfach implementieren.
-Falls du Masochist bist, kannst du auch versuchen, einen Brainfuck Interpreter in Brainfuck zu implementieren.
+Falls du Masochist bist, kannst du auch versuchen, einen Brainfuck-Interpreter in Brainfuck zu implementieren.
