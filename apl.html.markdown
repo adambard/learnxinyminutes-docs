@@ -1,6 +1,11 @@
-⍝ These examples can be tested here:
-⍝    http://ngn.github.io/apl/web/index.html
-⍝
+---
+language: APL
+contributors:
+    - ["nooodl", "https://github.com/nooodl"]
+filename: learnapl.apl
+---
+
+```apl
 ⍝ Comments in APL are prefixed by ⍝.
 
 ⍝ A list of numbers. (¯ is negative)
@@ -17,7 +22,7 @@
 
 ⍝ All functions have single-argument and dual-argument
 ⍝ meanings. For example, "×" applied to two arguments
-⍝ means multiply, but when applied to only a right-hand 
+⍝ means multiply, but when applied to only a right-hand
 ⍝ side, it returns the sign:
 
 × ¯4 ¯2 0 2 4            ⍝ ¯1 ¯1 0 1 1
@@ -55,3 +60,4 @@ A ← 10 60 55 23
 ⍝ We can define this as a function using {} and ⍵:
 mean ← {(+/⍵)÷⍴⍵}
 mean A                   ⍝ 37
+```
