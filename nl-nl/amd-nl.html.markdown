@@ -12,7 +12,7 @@ lang: nl-nl
 ## Aan de slag met AMD
 
 De **Asynchronous Module Definition** API specificeert een mechanisme om JavaScript
- modules the definiëren zodat de module en dependencies (afhankelijkheden) asynchroon
+ modules the definiÃ«ren zodat de module en dependencies (afhankelijkheden) asynchroon
  geladen kunnen worden. Dit is vooral erg geschikt voor de browseromgeving, waar het
  synchroon laden van modules zorgt voor problemen qua prestatie, gebruiksvriendelijkheid,
  debugging en cross-domain toegangsproblemen. 
@@ -26,7 +26,7 @@ De **Asynchronous Module Definition** API specificeert een mechanisme om JavaScr
 // gebruikt ze in de gegeven callback
 
 // Laten we starten met het gebruiken van define om een nieuwe module (met naam)
-// te creëeren, welke geen dependencies heeft. Dit doen we door een naam
+// te creÃ«eren, welke geen dependencies heeft. Dit doen we door een naam
 // en een zogeheten factory functie door te geven aan define:
 define('awesomeAMD', function(){
   var isAMDAwesome = function(){
@@ -35,7 +35,7 @@ define('awesomeAMD', function(){
   // De return waarde van een module's factory functie is
   // wat andere modules of require calls ontvangen wanneer
   // ze onze `awesomeAMD` module requiren. 
-  // De geëxporteerde waarde kan van alles zijn: (constructor) functies,
+  // De geÃ«xporteerde waarde kan van alles zijn: (constructor) functies,
   // objecten, primitives, zelfs undefined (hoewel dat niet veel nut heeft).
   return isAMDAwesome;
 });
@@ -99,7 +99,7 @@ require(['modules/someClass'], function(SomeClass){
 console.log('Dus, hier wachten we!'); // dit wordt als eerste uitgevoerd
 ```
 
-De afspraak is dat je over het algemeen één module in één bestand opslaat.
+De afspraak is dat je over het algemeen Ã©Ã©n module in Ã©Ã©n bestand opslaat.
 `require.js` kan module-namen achterhalen gebaseerd op de bestandslocatie,
 dus je hoeft je module geen naam te geven. Je kan simpelweg aan ze referen 
  door hun locatie te gebruiken.
