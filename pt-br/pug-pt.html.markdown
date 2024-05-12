@@ -8,13 +8,9 @@ translators:
 lang: pt-br
 ---
 
-## Começando com Pug
-
-Pug é uma pequena linguagem que compila para HTML. Possui uma sintaxe limpa 
-com algumas funcionalidades adicionais, como declarações if e loops. Também pode ser utilizada 
+Pug é uma pequena linguagem que compila para HTML. Possui uma sintaxe limpa
+com algumas funcionalidades adicionais, como declarações if e loops. Também pode ser utilizada
 como uma linguagem de templates no lado do servidor para tecnologias como o Node.js.
-
-### The Language
 
 ```pug
 //- Comentário de uma linha
@@ -128,7 +124,7 @@ each value, index in [1,2,3]
 
 each value in []
   p=value
-//- 
+//-
 
 each value in []
   p=value
@@ -196,15 +192,15 @@ mixin comment(nome, comentario)
     span.comment-name= nome
     div.comment-text= comentario
 +comment("Gil", "Tudo é divino, tudo é maravilhoso")
-//- 
+//-
   <div>
     <span class="comment-name">Gil</span>
     <div class="comment-text">Tudo é divino, tudo é maravilhoso</div>
   </div>
 ```
 
-
 ### Saiba Mais
+
 - [Site Oficial](https://pugjs.org/)
 - [Documentação](https://pugjs.org/api/getting-started.html)
 - [Repositório no GitHub](https://github.com/pugjs/pug)

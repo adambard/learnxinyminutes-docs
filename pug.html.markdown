@@ -5,13 +5,9 @@ contributors:
 filename: index.pug
 ---
 
-## Getting Started with Pug
-
-Pug is a little language that compiles into the HTML. It has cleaner syntax 
-with additional features like if statements and loops. It can also be used 
-as a server side templating language for server languages like NodeJS.
-
-### The Language
+Pug is a language that compiles to HTML. It has a cleaner syntax
+with additional features like if statements and loops. It can also be used
+as a server-side templating language for server languages like Node.js.
 
 ```pug
 //- Single Line Comment
@@ -125,7 +121,7 @@ each value, index in [1,2,3]
 
 each value in []
   p=value
-//- 
+//-
 
 each value in []
   p=value
@@ -193,15 +189,15 @@ mixin comment(name, comment)
     span.comment-name= name
     div.comment-text= comment
 +comment("Bob", "This is Awesome")
-//- 
+//-
   <div>
     <span class="comment-name">Bob</span>
     <div class="comment-text">This is Awesome</div>
   </div>
 ```
 
-
 ### Additional Resources
-- [The Site](https://pugjs.org/)
-- [The Docs](https://pugjs.org/api/getting-started.html)
-- [GitHub Repo](https://github.com/pugjs/pug)
+
+- [The site](https://pugjs.org/)
+- [The docs](https://pugjs.org/api/getting-started.html)
+- [GitHub repo](https://github.com/pugjs/pug)
