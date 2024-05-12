@@ -15,12 +15,13 @@ De **Asynchronous Module Definition** API specificeert een mechanisme om JavaScr
  modules the definiëren zodat de module en dependencies (afhankelijkheden) asynchroon
  geladen kunnen worden. Dit is vooral erg geschikt voor de browseromgeving, waar het
  synchroon laden van modules zorgt voor problemen qua prestatie, gebruiksvriendelijkheid,
- debugging en cross-domain toegangsproblemen. 
+ debugging en cross-domain toegangsproblemen.
 
 ### Basis concept
+
 ```javascript
 // De basis AMD API bestaat uit niks meer dan twee methodes: `define` en `require`
-// and gaat vooral over de definitie en gebruik van modules: 
+// and gaat vooral over de definitie en gebruik van modules:
 // `define(id?, dependencies?, factory)` definieert een module
 // `require(dependencies, callback)` importeert een set van dependencies en
 // gebruikt ze in de gegeven callback
@@ -34,15 +35,15 @@ define('awesomeAMD', function(){
   };
   // De return waarde van een module's factory functie is
   // wat andere modules of require calls ontvangen wanneer
-  // ze onze `awesomeAMD` module requiren. 
+  // ze onze `awesomeAMD` module requiren.
   // De geëxporteerde waarde kan van alles zijn: (constructor) functies,
   // objecten, primitives, zelfs undefined (hoewel dat niet veel nut heeft).
   return isAMDAwesome;
 });
 
 
-// We gaan nu een andere module defineren die afhankelijk is van onze 
-// `awesomeAMD` module. Merk hierbij op dat er nu een extra functieargument 
+// We gaan nu een andere module defineren die afhankelijk is van onze
+// `awesomeAMD` module. Merk hierbij op dat er nu een extra functieargument
 // is die de dependencies van onze module defineert:
 define('schreewlelijk', ['awesomeAMD'], function(awesomeAMD){
   // dependencies worden naar de factory's functieargumenten
@@ -101,7 +102,7 @@ console.log('Dus, hier wachten we!'); // dit wordt als eerste uitgevoerd
 
 De afspraak is dat je over het algemeen één module in één bestand opslaat.
 `require.js` kan module-namen achterhalen gebaseerd op de bestandslocatie,
-dus je hoeft je module geen naam te geven. Je kan simpelweg aan ze referen 
+dus je hoeft je module geen naam te geven. Je kan simpelweg aan ze referen
  door hun locatie te gebruiken.
 In het voorbeeld nemen we aan dat `someClass` aanwezig is in de `modules` map,
  relatief ten opzichte van de `baseUrl` uit je configuratie.
@@ -129,8 +130,9 @@ define(['daos/things', 'modules/someHelpers'], function(thingsDao, helpers){
   return SomeClass;
 });
 ```
+
 Gebruik `requirejs.config(configObj)` om het gedrag van de standaard mapping
- aan te passen in je `main.js`: 
+ aan te passen in je `main.js`:
 
 ```javascript
 /* file: main.js */
@@ -148,6 +150,7 @@ require(['jquery', 'coolLibUitBower', 'modules/someHelpers'], function($, coolLi
   coolLib.doFancyDingenMet(helpers.transform($('#foo')));
 });
 ```
+
 Op `require.js` gebaseerde apps hebben vaak een enkel beginpunt (`main.js`)
  welke toegevoegd wordt aan de `require.js` script tag als een data-attribuut.
 Deze zal automisch geladen en uitgevoerd worden als de pagina laadt:
@@ -166,27 +169,30 @@ Deze zal automisch geladen en uitgevoerd worden als de pagina laadt:
 
 ### Een heel project optimaliseren met r.js
 
-Veel mensen geven er de voorkeur aan om AMD te gebruiken tijdens de 
-  ontwikkelfase om code op een gezonde manier te organiseren maar 
-  willen nog steeds een enkel scriptbestand gebruiken in productie in 
+Veel mensen geven er de voorkeur aan om AMD te gebruiken tijdens de
+  ontwikkelfase om code op een gezonde manier te organiseren maar
+  willen nog steeds een enkel scriptbestand gebruiken in productie in
   plaats van honderderen XHR verzoeken uit te voeren als de pagina laadt.
 
 `require.js` wordt geleverd met een script genaamd `r.js` (die je waarschijnlijk
-uitvoert in node.js, hoewel Rhino ook ondersteund wordt) welke de 
+uitvoert in node.js, hoewel Rhino ook ondersteund wordt) welke de
 dependency book van je project analyseert en een enkel bestand bouwt met daarin
 al je module (juist genaamd), geminificeerd en klaar voor productie.
 
 Instaleren met `npm`:
+
 ```shell
 $ npm install requirejs -g
 ```
 
 Nu kun je het een configuratiebestand voeden:
+
 ```shell
 $ r.js -o app.build.js
 ```
 
 Voor ons bovenstaande voorbeeld zou de configuratie er zo uit kunnen zien:
+
 ```javascript
 /* file : app.build.js */
 ({
@@ -201,7 +207,9 @@ Voor ons bovenstaande voorbeeld zou de configuratie er zo uit kunnen zien:
   }
 })
 ```
+
 Verwissel simpelweg `data-main` om het gebouwde bestand te gebruiken in productie:
+
 ```html
 <script src="require.js" data-main="app/main-built"></script>
 ```
@@ -212,6 +220,7 @@ beschikbar in de GitHub repo (Engels).
 Hieronder vind je nog meer informatie over AMD (Engels).
 
 ### Onderwerpen die niet aan bod zijn gekomen
+
 * [Loader plugins / transforms](http://requirejs.org/docs/plugins.html)
 * [CommonJS style loading and exporting](http://requirejs.org/docs/commonjs.html)
 * [Advanced configuration](http://requirejs.org/docs/api.html#config)
