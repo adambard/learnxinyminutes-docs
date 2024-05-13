@@ -39,7 +39,7 @@ syntactic clarity. It's basically executable pseudocode.
 10 * 2  # => 20
 35 / 5  # => 7.0
 
-# Integer division rounds down for both positive and negative numbers.
+# Integer division rounds towards zero for both positive and negative numbers.
 5 // 3       # => 1
 -5 // 3      # => -2
 5.0 // 3.0   # => 1.0  # works on floats too
