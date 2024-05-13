@@ -43,8 +43,8 @@ asume que estamos utilizando GNU Make, que es el estándar en Linux.
 file0.txt:
 	echo "foo" > file0.txt
 	# Incluso los comandos en esta sección de 'receta' se pasan a la shell.
-    # Prueba `make file0.txt` o  simplemente 'make' - La primera regla es la
-    # predeterminada.
+	# Prueba `make file0.txt` o  simplemente 'make' - La primera regla es la
+	# predeterminada.
 
 # Esta regla se ejecutará solo si file0.txt es más reciente que file1.txt.
 file1.txt: file0.txt
@@ -257,6 +257,5 @@ endif
 
 ### Más recursos (en inglés)
 
-+ [gnu make documentation](https://www.gnu.org/software/make/manual/)
-+ [software carpentry tutorial](http://swcarpentry.github.io/make-novice/)
-+ learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html) [ex28](http://c.learncodethehardway.org/book/ex28.html)
++ [GNU Make documentation](https://www.gnu.org/software/make/manual/)
++ [Software carpentry tutorial](http://swcarpentry.github.io/make-novice/)
