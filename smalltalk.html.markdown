@@ -464,8 +464,6 @@ b := x conform: [:a | (a >= 1) & (a <= 4)].      "test if all elements meet cond
 y := x select: [:a | a > 2].                     "return collection of elements that pass test"
 y := x reject: [:a | a < 2].                     "return collection of elements that fail test"
 y := x collect: [:a | a + a].                    "transform each element for new collection"
-y := z separate: [:value | value class].         "return Dictionary with key as an associated class"
-
 y := x detect: [:a | a > 3] ifNone: [].          "find position of first element that passes test"
 sum := 0. x do: [:a | sum := sum + a]. sum.      "sum array elements"
 sum := 0. 1 to: (x size) 
