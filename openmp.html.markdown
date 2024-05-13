@@ -1,19 +1,19 @@
 ---
 category: tool
 tool: OpenMP
-filename: learnopenMP.c
+filename: learnopenMP.cpp
 contributors:
     - ["Cillian Smith", "https://github.com/smithc36-tcd"]
 ---
 
 **OpenMP** is a library used for parallel programming on shared-memory machines.
-OpenMP is allows you to use simple high-level constructs for parallelism,
-while hiding the details keeping it easy to use and quick to write.
-OpenMP is supported my C, C++, and Fortran.
+OpenMP allows you to use simple high-level constructs for parallelism,
+while hiding the details, keeping it easy to use and quick to write.
+OpenMP is supported by C, C++, and Fortran.
 
 ## Structure
 
-Generally an openMP program will use the following structure.
+Generally an OpenMP program will use the following structure.
 
 - **Master**: Start a Master thread, which will be used to set up the environment and
 initialize variables
@@ -22,7 +22,7 @@ initialize variables
 directive, these are the threads which will run the parallel sections.
 
 Each thread will have its own ID which can be obtained using the function
-`omp_get_thread_num()`, but there will be more on that later.
+`omp_get_thread_num()`, but more on that later.
 
 ```
           __________ Slave
@@ -36,7 +36,7 @@ Master ------------- Master
 
 ## Compiling and running OpenMP
 
-Writing a simple hello world program we parallelize it using the `#pragma omp parallel` directive
+A simple "hello world" program can be parallelized using the `#pragma omp parallel` directive
 
 ```cpp
 #include <stdio.h>
@@ -50,17 +50,17 @@ int main() {
 }
 ```
 
-Compile this using
+Compile it like this
 
 ```bash
-# The openMP flat depends on the compiler
+# The OpenMP flat depends on the compiler
 # intel : -openmp
 # gcc : -fopenmp
 # pgcc : -mp
 gcc -fopenmp hello.c -o Hello
 ```
 
-Running this code should output
+Running it should output
 
 ```
 Hello, World!
@@ -68,7 +68,7 @@ Hello, World!
 Hello, World!
 ```
 
-The exact number of Hello, Worlds depends on the number of cores of your machine,
+The exact number of "`Hello, Worlds`" depends on the number of cores of your machine,
 for example I got 12 my laptop.
 
 ## Threads and processes
@@ -78,10 +78,10 @@ You can change the default number of threads using `export OMP_NUM_THREADS=8`
 Here are some useful library functions in the `omp.h` library
 
 ```cpp
-// To check the number of threads
-printf("Max Threads: %d", omp_get_max_threads()); // Max Threads
-printf("Current number of threads: %d", omp_get_num_threads());
-printf("Current Thread ID: %d", omp_get_thread_num());
+// Check the number of threads
+printf("Max Threads: %d\n", omp_get_max_threads());
+printf("Current number of threads: %d\n", omp_get_num_threads());
+printf("Current Thread ID: %d\n", omp_get_thread_num());
 
 // Modify the number of threads
 omp_set_num_threads(int);
@@ -89,12 +89,12 @@ omp_set_num_threads(int);
 // Check if we are in a parallel region
 omp_in_parallel();
 
-// Dynamically vary the number of Threads
+// Dynamically vary the number of threads
 omp_set_dynamic(int);
 omp_get_dynamic();
 
 // Check the number of processors
-printf("Number of processors: %d", omp_num_procs());
+printf("Number of processors: %d\n", omp_num_procs());
 ```
 
 ## Private and shared variables
@@ -112,10 +112,9 @@ printf("Number of processors: %d", omp_num_procs());
 * all variables in the work sharing region are shared except the loop
 * iteration counter.
 *
-* Shared variables should be used with care are they can cause race conditions.
+* Shared variables should be used with care as they can cause race conditions.
 */
 #pragma omp parallel shared(a, b, c)
-
 
 // They can be declared together as follows
 #pragma omp parallel private(x, y) shared(a,b,c)
@@ -136,8 +135,8 @@ OpenMP provides a number of directives to control the synchronization of threads
     data += data + computed;
 
 
-    /* `single`: used when a block of code need to be run by only a single thread
-     * in a parallel section. Good for managing control variables.
+    /* `single`: used when a block of code needs to be run by only a single
+     * thread in a parallel section. Good for managing control variables.
      */
     #pragma omp single
     printf("Current number of threads: %d\n", omp_get_num_threads());
@@ -159,17 +158,17 @@ OpenMP provides a number of directives to control the synchronization of threads
 
     /* `barrier`: Forces all threads to wait until all threads reach this point
      * before proceeding.  */
-     #pragma omp barrier
+    #pragma omp barrier
 
     /* `nowait`: Allows threads to proceed with their next task without waiting
      * for other threads to complete the current one. */
-     #pragma omp for nowait
+    #pragma omp for nowait
     for (int i = 0; i < N; ++i) {
         process(data[i]);
     }
 
-   /* `reduction` : Combines the results of each thread's computation into a
-   single result.  */
+    /* `reduction` : Combines the results of each thread's computation into a
+     * single result.  */
     #pragma omp parallel for reduction(+:sum)
     for (int i = 0; i < N; ++i) {
         sum += a[i] * b[i];
@@ -191,7 +190,7 @@ int main() {
 
 #pragma omp parallel
   {
-      //Current thread ID
+      // Current thread ID
       printf("Thread ID: %d\n", omp_get_thread_num());
 
 #pragma omp barrier <--- Wait here until other threads have returned
@@ -218,9 +217,10 @@ It is simple to parallelise loops using OpenMP. Using a work-sharing directive w
 ```
 
 A loop must be easily parallelisable for OpenMP to unroll and facilitate the assignment amoungst threads.
-If there are aby data dependancies between iteration to the next, OpenMP can't parallelise it.
+If there are any data dependancies between one iteration to the next, OpenMP can't parallelise it.
 
 ## Speed Comparison
+
 The following is a C++ program which compares parallelised code with serial code
 
 ```cpp
@@ -263,7 +263,7 @@ int main() {
 }
 ```
 
-The results in
+This results in
 
 ```
 Serial execution time: 488 ms
@@ -271,13 +271,13 @@ Parallel execution time: 148 ms
 Speedup: 3.2973
 ```
 
-It should be noted that this example is fairly contrived and actual speedup
+It should be noted that this example is fairly contrived and the actual speedup
 depends on implementation and it should also be noted that serial code may run
 faster than parallel code due to cache preformace.
 
 ## Example
 
-The following example uses openMP to calculates the mandlebrot set.
+The following example uses OpenMP to calculate the Mandlebrot set
 
 ```cpp
 #include <iostream>
