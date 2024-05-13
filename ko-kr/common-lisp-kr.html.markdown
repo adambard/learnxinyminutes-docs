@@ -1,5 +1,4 @@
 ---
-
 language: "Common Lisp"
 category: language
 filename: commonlisp-kr.lisp
@@ -9,22 +8,16 @@ contributors:
 translators:
   - ["Eunpyoung Kim", "https://github.com/netpyoung"]
 lang: ko-kr
-
 ---
 
 커먼 리스프(Common Lisp, CL)는 다양한 산업 어플리케이션에 적합한 범용적인 멀티페러다임 언어입니다.
  프로그래밍할 수 있는 프로그래밍 언어로서 자주 언급되곤 합니다.
 
-
-
 처음 접하기 좋은책은 [Practical Common Lisp](http://www.gigamonkeys.com/book/)입니다.
  또 다른 유명한 책으로는 최근에 나온 [Land of Lisp](http://landoflisp.com/)입니다.
  베스트 프렉틱스에 관한 [Common Lisp Recipes](http://weitz.de/cl-recipes/) 책도 최근에 출판되었습니다.
 
-
-
 ```lisp
-
 ;;;-----------------------------------------------------------------------------
 ;;; 0. 구문 (Syntax, 신택스)
 ;;;-----------------------------------------------------------------------------
@@ -43,7 +36,7 @@ t             ; atom, 참을 나타냅니다
 
 ;;; 주석
 
-;;; 한줄주석은 세미콜론으로 시작합니다( ; ) 
+;;; 한줄주석은 세미콜론으로 시작합니다( ; )
 ;;; 파일 단위로는 4개, 구획(section) 설명으로는 3개, 정의(definition) 안에서는 2개,
 ;;; 한 라인에 대해서는 1개를 사용합니다. 예를들면,
 
@@ -58,7 +51,7 @@ t             ; atom, 참을 나타냅니다
     ;; Invoke krakaboom
     (loop :for x :across meh
        :collect x)))                    ; 값을 x에 저장한 다음, 이를 반환합니다.
-       
+
 
 ;;; 반면, 블록주석은 자유롭게 쓸 수 있습니다.
 ;;; #| 와 |# 로 구역을 나눌 수 있습니다.
@@ -157,7 +150,7 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
 
 (concatenate 'string "Hello, " "world!") ; => "Hello, world!"
 
-;;; 문자열을 마치 문자들이 나열된것처럼 취급할 수도 있습니다. 
+;;; 문자열을 마치 문자들이 나열된것처럼 취급할 수도 있습니다.
 
 (elt "Apple" 0) ; => #\A
 
@@ -672,12 +665,10 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
 ;;; 매크로에 대해 더 자세한 정보를 얻고 싶으시다면, Practical Common Lisp와 On Lisp를 살펴보시기 바랍니다.
 ```
 
-
 ## 더 읽어볼거리
 
 - [Practical Common Lisp](http://www.gigamonkeys.com/book/)
 - [Common Lisp: A Gentle Introduction to Symbolic Computation](https://www.cs.cmu.edu/~dst/LispBook/book.pdf)
-
 
 ## 추가 정보
 
@@ -685,7 +676,6 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
 - [common-lisp.net](https://common-lisp.net/)
 - [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 - [Lisp Lang](http://lisp-lang.org/)
-
 
 ## 크레딧
 
