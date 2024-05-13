@@ -10,7 +10,7 @@ translators:
 lang: fr-fr
 ---
 
-Nix est un language fonctionnel developé pour
+Nix est un langage fonctionnel développé pour
 le gestionnaire de paquet [Nix](https://nixos.org/nix/) et
 [NixOS](https://nixos.org/).
 
