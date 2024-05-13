@@ -5,6 +5,8 @@ contributors:
     - ["Chris Martin", "http://chris-martin.org/"]
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Javier Candeira", "https://candeira.com/"]
+translators:
+    - ["Loïc Reynier", "https://github.com/loicreynier"]
 lang: fr-fr
 ---
 
@@ -50,7 +52,7 @@ with builtins; [
 
   123.43 .27e13     # Quelques exemples de nombre flottants
 
-  # Les opérations convervent le type du nombre
+  # Les opérations conservent le type du nombre
 
   (4 + 6 + 12 - 2)  # Addition
   #=> 20
@@ -291,12 +293,6 @@ with builtins; [
       a + b))
   #=> 7
 
-  # This first line of tutorial starts with "with builtins;"
-  # because builtins is a set that contains all of the built-in
-  # functions (length, head, tail, filter, etc.). This saves
-  # us from having to write, for example, "builtins.length"
-  # instead of just "length".
-
   # La première ligne du tutoriel commence par `with builtins;`
   # car `builtins` est un ensmble qui contient toutes les fonctions
   # de base (`length`, `head`, `tail`, `filter`, etc.). Cela permet
@@ -393,13 +389,7 @@ with builtins; [
 
 ### Pour en savoir plus (anglais)
 
-- [Nix Manual - Nix expression language]
-  (https://nixos.org/nix/manual/#ch-expression-language)
-
-- [James Fisher - Nix by example - Part 1: The Nix expression language]
-  (https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
-
-- [Susan Potter - Nix Cookbook - Nix By Example]
-  (https://ops.functionalalgebra.com/nix-by-example/)
-- [Rommel Martinez - A Gentle Introduction to the Nix Family]
-  (https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)
+- [Nix Manual - Nix expression language](https://nixos.org/nix/manual/#ch-expression-language)
+- [James Fisher - Nix by example - Part 1: The Nix expression language](https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
+- [Susan Potter - Nix Cookbook - Nix By Example](https://ops.functionalalgebra.com/nix-by-example/)
+- [Rommel Martinez - A Gentle Introduction to the Nix Family](https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)
