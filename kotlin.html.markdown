@@ -127,7 +127,10 @@ fun helloWorld(val name : String) {
     // Named functions can be specified as arguments using the :: operator.
     val notOdd = not(::odd)
     val notEven = not(::even)
-    // Lambda expressions can be specified as arguments.
+    /*
+    Lambda expressions can be specified as arguments.
+    If it's the only argument parentheses can be omitted.
+    */
     val notZero = not {n -> n == 0}
     /*
     If a lambda has only one parameter
