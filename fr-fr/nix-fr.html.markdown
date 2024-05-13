@@ -114,7 +114,7 @@ with builtins; [
   ./learn.nix
   #=> /the-base-path/learn.nix
 
-  # L'opérateur `/` doit être entouré d'epaces afin d'être
+  # L'opérateur `/` doit être entouré d'espaces afin d'être
   # traité comme une division
   7/2        # Ceci est un chemin
   (7 / 2)    # Ceci est une division entière
