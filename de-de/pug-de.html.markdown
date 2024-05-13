@@ -84,8 +84,8 @@ div(class=meineKlasse)
 
 //- JS Stil
 - const meineStile = {'color':'white', 'background-color':'blue'}
-div(styles=meineStile)
-//- <div styles="{&quot;color&quot;:&quot;white&quot;,&quot;background-color&quot;:&quot;blue&quot;}"></div>
+div(style=meineStile)
+//- <div style="color:white;background-color:blue;"></div>
 
 //- JS Attributte
 - const meineAttribute = {"src": "foto.png", "alt": "meine Bilder"}

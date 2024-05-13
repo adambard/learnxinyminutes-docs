@@ -80,8 +80,8 @@ div(class=myClass)
 
 //- JS Styles
 - const myStyles = {'color':'white', 'background-color':'blue'}
-div(styles=myStyles)
-//- <div styles="{&quot;color&quot;:&quot;white&quot;,&quot;background-color&quot;:&quot;blue&quot;}"></div>
+div(style=myStyles)
+//- <div style="color:white;background-color:blue;"></div>
 
 //- JS Attributes
 - const myAttributes = {"src": "photo.png", "alt": "My Photo"}
