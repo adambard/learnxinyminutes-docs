@@ -188,8 +188,7 @@ echo "I'm thinking of a number between 41 and 43. Guess which!"
 let number: int = 42
 var
   raw_guess: string
-  guess: int # Variables in Nim are always initialized with a zero value.
-             # See: https://nim-lang.org/docs/manual.html#statements-and-expressions-var-statement
+  guess: int # Variables in Nim are always initialized with a zero value
 while guess != number:
   raw_guess = readLine(stdin)
   if raw_guess == "": continue # Skip this iteration
