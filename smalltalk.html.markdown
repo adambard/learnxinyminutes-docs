@@ -441,8 +441,9 @@ Fixed length collection
 - WordArray:     Array limited to word elements (0-2^32)
 
 ```smalltalk
-| b x y sum max |
+| b x y z sum max |
 x := #(4 3 2 1).                                 "constant array"
+z := #(1 2 3 'hi').                              "mixed type array"
 x := Array with: 5 with: 4 with: 3 with: 2.      "create array with up to 4 elements"
 x := Array new: 4.                               "allocate an array with specified size"
 x                                                "set array elements"
