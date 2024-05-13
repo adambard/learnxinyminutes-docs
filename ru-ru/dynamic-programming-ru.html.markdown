@@ -20,9 +20,9 @@ lang: ru-ru
 
 ## Способы решения подобных задач
 
-1. *Сверху-вниз* : Начните с разбиения задачи на подзадачи. Если вы видите, что подзадача уже была решена, тогда используйте сохраненный ранее результат. Иначе решите подзадачу и сохраните её результат. Эта техника интуитивно понятна и называется мемоизацией.
+1. *Сверху-вниз*: Начните с разбиения задачи на подзадачи. Если вы видите, что подзадача уже была решена, тогда используйте сохраненный ранее результат. Иначе решите подзадачу и сохраните её результат. Эта техника интуитивно понятна и называется мемоизацией.
 
-2. *Снизу-вверх* : Проанализируйте задачу и определите порядок, в котором решаются подзадачи, и начните решать от тривиальной подзадачи до изначальной задачи. Это гарантирует, что подзадачи будут решены, прежде чем решится вся задача. В этом и заключается динамическое программирование.
+2. *Снизу-вверх*: Проанализируйте задачу и определите порядок, в котором решаются подзадачи, и начните решать от тривиальной подзадачи до изначальной задачи. Это гарантирует, что подзадачи будут решены, прежде чем решится вся задача. В этом и заключается динамическое программирование.
 
 ## Пример задачи динамического программирования
 
@@ -48,9 +48,9 @@ for i=0 to n-1
 
 ### Некоторые известные задачи DP
 
-- [Floyd Warshall Algorithm - Tutorial and C Program source code](http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code)
-- [Integer Knapsack Problem - Tutorial and C Program source code](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem)
-- [Longest Common Subsequence - Tutorial and C Program source code](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence)
+* [Floyd Warshall Algorithm - Tutorial and C Program source code](http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code)
+* [Integer Knapsack Problem - Tutorial and C Program source code](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem)
+* [Longest Common Subsequence - Tutorial and C Program source code](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence)
 
 ## Онлайн-ресурсы
 
@@ -64,5 +64,3 @@ for i=0 to n-1
   * [Optimal Substructure Property](https://www.geeksforgeeks.org/dynamic-programming-set-2-optimal-substructure-property/)
   * [How to solve a DP problem](https://www.geeksforgeeks.org/solve-dynamic-programming-problem/)
 * [How to write DP solutions](https://www.quora.com/Are-there-any-good-resources-or-tutorials-for-dynamic-programming-DP-besides-the-TopCoder-tutorial/answer/Michal-Danilák)
-
-Пройдите [квиз](https://www.commonlounge.com/discussion/cdbbfe83bcd64281964b788969247253), чтобы проверить свои знания.
