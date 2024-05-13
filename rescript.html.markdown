@@ -2,6 +2,7 @@
 language: ReScript
 filename: rescript.res
 contributors:
+  - ["Seth Corker", "https://sethcorker.com"]
   - ["Danny Yang", "https://yangdanny97.github.io"]
 ---
 
@@ -471,13 +472,13 @@ let surfaceBook: surfaceComputer = { "color": "blue", "capacity": 512 }
 
 /* Objects don't require types */
 let hamster = { "color": "brown", "age": 2 }
-  
+
 /* Object typing is structural, so you can have functions that accept any object with the required fields */
 let getAge = animal => animal["age"]
 getAge(hamster)
 getAge({ "name": "Fido", "color": "silver", "age": 3 })
 getAge({ "age": 5 })
-  
+
 /*----------------------------------------------
  * Module
  *----------------------------------------------
