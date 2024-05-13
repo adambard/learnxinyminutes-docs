@@ -3,14 +3,17 @@ category: tool
 tool: linker
 contributors:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
+translators:
     - ["Anuj Shah", "https://github.com/ShahAnuj2610"]
 ---
 
-# Basic concepts and definitions
+## Basic concepts and definitions
+
 **Position counter** - the linker has a special variable
 "." (dot) always contains the current output position.
 
-# Functions
+## Functions
+
 **ADDR (section)** - returns the absolute address of the specified section. However
 this section must be defined before using the ADDR function.
 
@@ -198,5 +201,3 @@ SECTIONS
   } >RAM
 }
 ```
-
-
