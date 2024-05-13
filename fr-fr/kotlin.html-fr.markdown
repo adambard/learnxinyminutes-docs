@@ -1,4 +1,12 @@
-
+---
+language: kotlin
+filename: LearnKotlin-fr.kt
+lang: fr-fr
+contributors:
+    - ["S Webber", "https://github.com/s-webber"]
+translators:
+    - ["Eric Ampire", "https://github.com/eric-ampire"]
+---
 
 Kotlin est un langage de programmation à typage statique pour la JVM, Android et le
 navigateur. Il est 100% interopérable avec Java.
@@ -41,7 +49,7 @@ fun main(args: Array<String>) {
     */
     val fooString = "Ma chaine est là !"
     val barString = "Imprimer sur une nouvelle ligne ? \nPas de problème !"
-    val bazString = "Vous voulez ajouter une tabulation ? \tPas de problème !" 
+    val bazString = "Vous voulez ajouter une tabulation ? \tPas de problème !"
     println(fooString)
     println(barString)
     println(bazString)
@@ -437,7 +445,7 @@ fun operatorOverloadingDemo() {
     println(counter1 in Counter(7)) // => true
     counter1[26] = 10
     println(counter1) // => Counter(value=36)
-    counter1() // => The value of the counter is 36
+    counter1() // => La valeur est 36
     println(-counter2) // => Counter(value=-5)
 }
 ```
