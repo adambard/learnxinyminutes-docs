@@ -21,7 +21,6 @@ Existen muchas variedades de Make en existencia, no obstante, este artículo
 asume que estamos utilizando GNU Make, que es el estándar en Linux.
 
 ```make
-
 # Los comentarios se pueden escribir de esta forma.
 
 # El fichero debe tener el nombre de Makefile y luego puede ser ejecutado
