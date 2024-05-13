@@ -6,25 +6,23 @@ contributors:
     - ["Cillian Smith", "https://github.com/smithc36-tcd"]
 ---
 
-
-# OpenMP (Open Multi-Processing)
-
 **OpenMP** is a library used for parallel programming on shared-memory machines.
-OpenMP is allows you to use simple high-level constructs for parallelism, 
+OpenMP is allows you to use simple high-level constructs for parallelism,
 while hiding the details keeping it easy to use and quick to write.
-OpenMP is supported my C, C++, and Fortran. 
+OpenMP is supported my C, C++, and Fortran.
 
 ## Structure
-Generally an openMP program will use the following structure. 
- 
-- **Master**: Start a Master thread, which will be used to set up the environment and 
-initialize variables 
 
-- **Slave**: Slave threads are created for sections of code which are marked by a special  
-directive, these are the threads which will run the parallel sections. 
+Generally an openMP program will use the following structure.
 
-Each thread will have its own ID which can be obtained using the function 
-`omp_get_thread_num()`, but there will be more on that later. 
+- **Master**: Start a Master thread, which will be used to set up the environment and
+initialize variables
+
+- **Slave**: Slave threads are created for sections of code which are marked by a special
+directive, these are the threads which will run the parallel sections.
+
+Each thread will have its own ID which can be obtained using the function
+`omp_get_thread_num()`, but there will be more on that later.
 
 ```
           __________ Slave
@@ -43,21 +41,22 @@ Writing a simple hello world program we parallelize it using the `#pragma omp pa
 ```cpp
 #include <stdio.h>
 
-int main() { 
-    #pragma omp parallel 
+int main() {
+    #pragma omp parallel
     {
         printf("Hello, World!\n");
     }
     return 0;
 }
 ```
-Compile this using 
 
-```bash 
-# The openMP flat depends on the compiler 
-# intel : -openmp 
-# gcc : -fopenmp 
-# pgcc : -mp 
+Compile this using
+
+```bash
+# The openMP flat depends on the compiler
+# intel : -openmp
+# gcc : -fopenmp
+# pgcc : -mp
 gcc -fopenmp hello.c -o Hello
 ```
 
@@ -69,9 +68,8 @@ Hello, World!
 Hello, World!
 ```
 
-The exact number of Hello, Worlds depends on the number of cores of your machine, 
-for example I got 12 my laptop. 
-
+The exact number of Hello, Worlds depends on the number of cores of your machine,
+for example I got 12 my laptop.
 
 ## Threads and processes
 
@@ -99,21 +97,22 @@ omp_get_dynamic();
 printf("Number of processors: %d", omp_num_procs());
 ```
 
-## Private and shared variables 
-```cpp
-// Variables in parallel sections can be either private or shared. 
+## Private and shared variables
 
-/* Private variables are private to each thread, as each thread has its own 
-* private copy. These variables are not initialized or maintained outside 
-* the thread.  
+```cpp
+// Variables in parallel sections can be either private or shared.
+
+/* Private variables are private to each thread, as each thread has its own
+* private copy. These variables are not initialized or maintained outside
+* the thread.
 */
 #pragma omp parallel private(x, y)
 
-/* Shared variables are visible and accessible by all threads. By default, 
-* all variables in the work sharing region are shared except the loop 
-* iteration counter. 
+/* Shared variables are visible and accessible by all threads. By default,
+* all variables in the work sharing region are shared except the loop
+* iteration counter.
 *
-* Shared variables should be used with care are they can cause race conditions. 
+* Shared variables should be used with care are they can cause race conditions.
 */
 #pragma omp parallel shared(a, b, c)
 
@@ -129,8 +128,8 @@ OpenMP provides a number of directives to control the synchronization of threads
 ```cpp
 #pragma omp parallel {
 
-    /* `critical`: the enclosed code block will be executed by only one thread 
-     * at a time, and not simultaneously executed by multiple threads. It is 
+    /* `critical`: the enclosed code block will be executed by only one thread
+     * at a time, and not simultaneously executed by multiple threads. It is
      * often used to protect shared data from race conditions.
      */
     #pragma omp critical
@@ -138,18 +137,18 @@ OpenMP provides a number of directives to control the synchronization of threads
 
 
     /* `single`: used when a block of code need to be run by only a single thread
-     * in a parallel section. Good for managing control variables. 
+     * in a parallel section. Good for managing control variables.
      */
-    #pragma omp single 
+    #pragma omp single
     printf("Current number of threads: %d\n", omp_get_num_threads());
 
-    /*  `atomic`: Ensures that a specific memory location is updated atomically 
-     *  to avoid race conditions.  */ 
+    /*  `atomic`: Ensures that a specific memory location is updated atomically
+     *  to avoid race conditions.  */
     #pragma omp atomic
     counter += 1;
 
 
-    /* `ordered`: the structured block is executed in the order in which 
+    /* `ordered`: the structured block is executed in the order in which
      * iterations would be executed in a sequential loop     */
     #pragma omp for ordered
     for (int i = 0; i < N; ++i) {
@@ -158,19 +157,19 @@ OpenMP provides a number of directives to control the synchronization of threads
     }
 
 
-    /* `barrier`: Forces all threads to wait until all threads reach this point 
+    /* `barrier`: Forces all threads to wait until all threads reach this point
      * before proceeding.  */
      #pragma omp barrier
 
-    /* `nowait`: Allows threads to proceed with their next task without waiting 
+    /* `nowait`: Allows threads to proceed with their next task without waiting
      * for other threads to complete the current one. */
      #pragma omp for nowait
     for (int i = 0; i < N; ++i) {
         process(data[i]);
     }
 
-   /* `reduction` : Combines the results of each thread's computation into a 
-   single result.  */ 
+   /* `reduction` : Combines the results of each thread's computation into a
+   single result.  */
     #pragma omp parallel for reduction(+:sum)
     for (int i = 0; i < N; ++i) {
         sum += a[i] * b[i];
@@ -179,15 +178,15 @@ OpenMP provides a number of directives to control the synchronization of threads
 }
 ```
 
-
 Example of the use of `barrier`
+
 ```c
 #include <omp.h>
 #include <stdio.h>
 
 int main() {
 
-  // Current number of active threads 
+  // Current number of active threads
   printf("Num of threads is %d\n", omp_get_num_threads());
 
 #pragma omp parallel
@@ -212,18 +211,19 @@ It is simple to parallelise loops using OpenMP. Using a work-sharing directive w
 ```c
 #pragma omp parallel
 {
-    #pragma omp for 
-    // for loop to be parallelized 
+    #pragma omp for
+    // for loop to be parallelized
     for() ...
 }
 ```
+
 A loop must be easily parallelisable for OpenMP to unroll and facilitate the assignment amoungst threads.
-If there are aby data dependancies between iteration to the next, OpenMP can't parallelise it. 
+If there are aby data dependancies between iteration to the next, OpenMP can't parallelise it.
 
 ## Speed Comparison
 The following is a C++ program which compares parallelised code with serial code
 
-```cpp 
+```cpp
 
 #include <iostream>
 #include <vector>
@@ -263,21 +263,23 @@ int main() {
 }
 ```
 
-The results in 
+The results in
 
 ```
 Serial execution time: 488 ms
 Parallel execution time: 148 ms
 Speedup: 3.2973
 ```
-It should be noted that this example is fairly contrived and actual speedup 
-depends on implementation and it should also be noted that serial code may run 
+
+It should be noted that this example is fairly contrived and actual speedup
+depends on implementation and it should also be noted that serial code may run
 faster than parallel code due to cache preformace.
 
-## Example 
+## Example
 
-The following example uses openMP to calculates the mandlebrot set. 
-```cpp 
+The following example uses openMP to calculates the mandlebrot set.
+
+```cpp
 #include <iostream>
 #include <fstream>
 #include <complex>
@@ -335,10 +337,10 @@ int main() {
 
     return 0;
 }
-
 ```
 
 ## Resources
+
 - [Intro to parallel programming](https://tildesites.bowdoin.edu/~ltoma/teaching/cs3225-GIS/fall17/Lectures/openmp.html)
 - [Tutorials currated by OpenMP](https://www.openmp.org/resources/tutorials-articles/)
 - [OpenMP cheatsheet](https://www.openmp.org/wp-content/uploads/OpenMPRefCard-5-2-web.pdf)
