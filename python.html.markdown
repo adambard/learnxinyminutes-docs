@@ -826,8 +826,8 @@ if __name__ == "__main__":
 # variables from their parent class.
 
 # Using the Human class defined above as the base or parent class, we can
-# define a child class, Superhero, which inherits the class variables like
-# "species", "name", and "age", as well as methods, like "sing" and "grunt"
+# define a child class, Superhero, which inherits variables like "species",
+# "name", and "age", as well as methods, like "sing" and "grunt"
 # from the Human class, but can also have its own unique properties.
 
 # To take advantage of modularization by file you could place the classes above
