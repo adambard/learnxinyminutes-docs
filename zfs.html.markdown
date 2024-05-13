@@ -8,21 +8,19 @@ contributors:
 filename: LearnZfs.txt
 ---
 
-
 [ZFS](http://open-zfs.org/wiki/Main_Page)
 is a rethinking of the storage stack, combining traditional file systems as well as volume
 managers into one cohesive tool.  ZFS has some specific terminology that sets it apart from
 more traditional storage systems, however it has a great set of features with a focus on
 usability for systems administrators.
 
-
 ## ZFS Concepts
 
 ### Virtual Devices
 
 A VDEV (Virtual Device) in ZFS is analogous to a RAID device and simmilaly offers different
-benefits in terms of redundancy and performance. In general VDEV's offer better reliability 
-and safety than a RAID card. It is discouraged to use a RAID setup with ZFS, as ZFS expects 
+benefits in terms of redundancy and performance. In general VDEV's offer better reliability
+and safety than a RAID card. It is discouraged to use a RAID setup with ZFS, as ZFS expects
 to directly manage the underlying disks.
 
 | VDEV Type | Similar RAID | Notes |
@@ -35,7 +33,7 @@ to directly manage the underlying disks.
 | File | - | File-based VDEV, not recommended for production as it adds complexity and reduces reliability. |
 
 Data in a ZFS storage pool is striped across all VDEVs. Adding more VDEVs, Logs, or Caches
-can increase IOPS (Input/Output Operations Per Second), enhancing performance. It's crucial 
+can increase IOPS (Input/Output Operations Per Second), enhancing performance. It's crucial
 to balance VDEVs for optimal performance and redundancy.
 
 ### Storage Pools
@@ -49,13 +47,11 @@ ZFS datasets are analogous to traditional filesystems but with many more feature
 provide many of ZFS's advantages.  Datasets support [Copy on Write](https://en.wikipedia.org/wiki/Copy-on-write)
 snapshots, quota's, compression and de-duplication.
 
-
 ### Limits
 
 One directory may contain up to 2^48 files, up to 16 exabytes each.  A single storage pool
 can contain up to 256 zettabytes (2^78) of space, and can be striped across 2^64 devices.  A
 single host can have 2^64 storage pools.  The limits are huge.
-
 
 ## Commands
 
@@ -144,7 +140,6 @@ Remove zpool
 ```bash
 $ zpool destroy test
 ```
-
 
 ### Datasets
 
@@ -259,10 +254,9 @@ zroot/var                                                           none    none
 ...
 ```
 
-
 ### Write Log Pool
 
-The ZFS Intent Log (ZIL) is a write log designed to speed up syncronus writes. This is 
+The ZFS Intent Log (ZIL) is a write log designed to speed up syncronus writes. This is
 typically a faster drive or drive partition than the larger storage pools.
 
 ```bash
@@ -275,8 +269,8 @@ $ zpool status mypool/lamb
 
 ### Read Cache Pool
 
-The Level 2 Adaptive Replacement Cache (L2ARC) extends the primary ARC (in-RAM cache) and is 
-used for read caching. This is typically a faster drive or drive partition than the larger 
+The Level 2 Adaptive Replacement Cache (L2ARC) extends the primary ARC (in-RAM cache) and is
+used for read caching. This is typically a faster drive or drive partition than the larger
 storage pools.
 
 ```bash
@@ -289,8 +283,8 @@ $ zpool status mypool/lamb
 
 ### Data Compression
 
-Data compression reduces the amount of space data occupies on disk in excange for some extra 
-CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It 
+Data compression reduces the amount of space data occupies on disk in excange for some extra
+CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It
 especially beneficial on systems with more CPU resources than disk bandwidth.
 
 ```bash
@@ -323,7 +317,7 @@ $ zfs create -o encryption=on -o keyformat=passphrase black_hole/enc
 $ zfs get encryption black_hole/enc
 ```
 
-It should be noted that there are parts of the system where the data is not encrypted. See 
+It should be noted that there are parts of the system where the data is not encrypted. See
 the table below for a breakdown.
 
 | Component | Encrypted | Notes |
@@ -336,7 +330,6 @@ the table below for a breakdown.
 | ZFS Metadata | Yes | Metadata is encrypted for encrypted datasets. |
 | Snapshot Data | Yes | Snapshots of encrypted datasets are also encrypted. |
 | ZFS Send/Receive | Conditional | Encrypted during send/receive if datasets are encrypted and `-w` flag is used. |
-
 
 ### Snapshots
 
@@ -355,7 +348,6 @@ Actions:
 * Access snapshots
 * Send / Receive
 * Clone
-
 
 Create snapshots
 
@@ -470,7 +462,6 @@ echo "==== Makes the staging database not pull from the master ===="
 echo "STOP SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 echo "RESET SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 ```
-
 
 ### Additional Reading
 
