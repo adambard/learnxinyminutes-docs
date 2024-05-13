@@ -101,9 +101,9 @@ that aims to make getting started with vim more approachable!
 Vim is based on the concept on **modes**.
 
 - Normal Mode - vim starts up in this mode, used to navigate and write commands
-- Insert Mode  - used to make changes in your file
-- Visual Mode  - used to highlight text and do operations to them
-- Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
+- Insert Mode - used to make changes in your file
+- Visual Mode - used to highlight text and do operations to them
+- Ex Mode     - used to drop down to the bottom with the ':' prompt to enter commands
 
 ```
     i                 # Puts vim into insert mode, before the cursor position
