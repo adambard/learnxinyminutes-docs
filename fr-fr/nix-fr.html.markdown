@@ -94,7 +94,7 @@ with builtins; [
   # L'antiquotation vous permet d'intégrer des valeurs
   # dans des chaînes de caracères.
   ("Votre répertoire personnel est ${getEnv "HOME"}")
-  #=> "Votre répertoire pesonnel est /home/alice"
+  #=> "Votre répertoire personnel est /home/alice"
 
 
   #  Chemins
