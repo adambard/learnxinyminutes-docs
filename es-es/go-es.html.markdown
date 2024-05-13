@@ -436,24 +436,22 @@ Es fácil de leer y sorprendentemente corta
 (relativo a las definiciones de lenguajes en estos días).
 
 Puedes jugar con el código en el
-[parque de diversiones Go](https://go.dev/play/p/ncRC2Zevag).  ¡Trata
-de cambiarlo y ejecutarlo desde tu navegador!  Ten en cuenta que puedes
+[parque de diversiones Go](https://go.dev/play/p/ncRC2Zevag). ¡Trata
+de cambiarlo y ejecutarlo desde tu navegador! Ten en cuenta que puedes
 utilizar [https://go.dev/play/](https://go.dev/play/) como un
-[REPL](https://es.wikipedia.org/wiki/Read-eval-print_loop) para probar
+[REPL](https://es.wikipedia.org/wiki/REPL) para probar
 cosas y el código en el navegador, sin tener que instalar Go.
 
 En la lista de lecturas para estudiantes de Go está el
 [código fuente de la biblioteca estándar](https://go.dev/src/). 
 Ampliamente documentado, demuestra lo mejor del legible y comprensible
-Go, con su característico estilo y modismos.  ¡O puedes hacer clic en un
-nombre de función en [la documentación](https://go.dev/pkg/) y
+Go, con su característico estilo y modismos. ¡O puedes hacer clic en un
+nombre de función en [la documentación](https://pkg.go.dev/std) y
 aparecerá el código fuente!
-
-Otro gran recurso para aprender Go está en
-[Go con ejemplos](http://goconejemplos.com/).
 
 Go Mobile provee soporte para plataformas móbiles (Android y iOS).
 Puedes escribir aplicaciones móbiles completamente en Go
 o escribir una biblioteca con bindings de un paquete de Go,
 que pueden invocarse en Java (en Android) y Objective-C (en iOS).
-Visita la [página de Go Mobile](https://github.com/golang/go/wiki/Mobile) para más información.
+Visita la [página de Go Mobile](https://go.dev/wiki/Mobile)
+para más información.
