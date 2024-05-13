@@ -55,20 +55,20 @@ pub fn main() {
   // io.println("This statement got commented out by a two slashes comment.!")
 
   // Modules are the units in which all Gleam code gets organized.
-  // In a module full will find a bunch of definitions of types, functions, etc. 
-  // that seem to belong together. 
+  // In a module full will find a bunch of definitions of types, functions, etc.
+  // that seem to belong together.
   // For example, the gleam/io module contains a variety of functions for
   // printing, like println.
 
   // All gleam code is in some module or other, whose name comes from the name
-  // of the file it's in. 
+  // of the file it's in.
   // For example, gleam/io is in a file called io.gleam in a directory called
   // gleam.
 
   // Gleam has a robust static type system that helps you as you write and edit
   // code, catching mistakes and showing you where to make changes.
   // io.println(10)
-  // If you uncomment the previous line you'll get a compile time error reported 
+  // If you uncomment the previous line you'll get a compile time error reported
   // as the io.println function only works with strings, not ints.
 
   // The compile will output an error that looks like this:
@@ -89,7 +89,7 @@ pub fn main() {
   // Working with numbers
 
   // When running on the Erlang virtual machine ints have no maximum and minimum
-  // size. 
+  // size.
   // When running on JavaScript runtimes ints are represented using JavaScript's
   // 64 bit floating point numbers.
 
@@ -277,13 +277,13 @@ pub fn main() {
   //      │
   //  219 │   let _has_wrong_type_annotation: Int = True
   //      │                                         ^^^^
-  //  
+  //
   //  Expected type:
-  //  
+  //
   //      Int
-  //  
+  //
   //  Found type:
-  //  
+  //
   //      Bool
 
   // Type aliases
@@ -368,7 +368,7 @@ fn double(a: Int) -> Int {
 // Only public functions are exported and can be called from outside the module.
 
 // Type annotations are optional for function arguments and return values
-// but are considered good practice for clarity and in order to encourage 
+// but are considered good practice for clarity and in order to encourage
 // intentional and thoughtful design.
 
 pub fn is_leap_year(year: Int) -> Bool {
@@ -376,7 +376,7 @@ pub fn is_leap_year(year: Int) -> Bool {
 }
 
 fn more_examples() {
-  // Debug also returns a value so its output is the return value of 
+  // Debug also returns a value so its output is the return value of
   // this function
   io.debug(double(10))
   // 20
@@ -386,7 +386,7 @@ fn more_examples() {
 
 // Gleam supports higher order functions:
 // They can be assigned to variables, passed as arguments to other functions
-// or even be returned as values from blocks or other functions 
+// or even be returned as values from blocks or other functions
 fn call_func_on_int(func: fn(Int) -> Int, value: Int) -> Int {
   func(value)
 }
@@ -515,7 +515,7 @@ fn add_two_integers(first n: Int, second m: Int) -> Int {
 }
 
 fn labels_in_function_calls() -> Int {
-  // Since we are labelling the arguments we can switch the order 
+  // Since we are labelling the arguments we can switch the order
   // if we want to
   io.debug(call_func_on_int_with_labels(value: 8, func: double))
   io.debug(add_one(number: 1))
@@ -529,7 +529,7 @@ fn labels_in_function_calls() -> Int {
 
 fn showcase_flow_control() {
   // Use case if you want to use pattern-matching in order to
-  // select which code to execute. 
+  // select which code to execute.
   // Gleam will make sure all possible values are covered
   // by performing exhaustiveness checks.
   // Otherwise you get compilation errors.
@@ -585,11 +585,11 @@ fn from_one_to_ten(n: Int) {
   }
 }
 
-// In order to avoid memory exhaustion due to creating excesive 
+// In order to avoid memory exhaustion due to creating excesive
 // stack frames when calling functions recursively, Gleam supports
-// "tail call optimisation" which means that the compiler can reuse 
+// "tail call optimisation" which means that the compiler can reuse
 // the stack frame for the current function if a function call is
-// the last thing the function does. 
+// the last thing the function does.
 
 pub fn fib(x: Int) -> Int {
   // The public function calls the private tail recursive function
@@ -823,13 +823,13 @@ fn roll_two_dices_without_use() {
   })
 }
 
-// The use expression still let us write code that uses callbacks 
+// The use expression still let us write code that uses callbacks
 // but cleans up excessive indentation:
 // - A call to higher order function go the right side of the <- operator
 // - The argument names for the callback function go on the left hand side of
 //   the <- operator
 // - All the remaining code in the enclosing {} block becomes the body of the
-//   callback function. 
+//   callback function.
 fn roll_two_dices_with_use() {
   use first_dice <- result.try(throw_dice_as_result())
   use second_dice <- result.try(throw_dice_as_result())
@@ -856,7 +856,7 @@ fn showcase_externals() {
 
 fn showcase_panic() {
   // We can deliberately abort execution by using the panic keyword
-  // in order to make our program crash immediately 
+  // in order to make our program crash immediately
   case 3 == 2 {
     True -> panic as "The equality operator is broken!"
     False -> "Equality operator works for integers"
@@ -879,6 +879,7 @@ pub fn homework() {
 * [Exercism track for Gleam](https://exercism.org/tracks/gleam)
 
 There official docs have cheatsheets for people familiar with:
+
 * [Elixir](https://gleam.run/cheatsheets/gleam-for-elixir-users)
 * [Elm](https://gleam.run/cheatsheets/gleam-for-elm-users)
 * [Erlang](https://gleam.run/cheatsheets/gleam-for-erlang-users)
