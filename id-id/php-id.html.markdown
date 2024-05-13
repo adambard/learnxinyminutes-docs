@@ -762,9 +762,9 @@ class KelasInduk {
     }
     public static function coba() {
         // kata kunci "self" merujuk pada method yang berada dalam satu kelas
-        self::who();
+        self::siapa();
         // kata kunci "static" merujuk pada method yang berada di kelas dimana method itu dijalankan
-        static::who();
+        static::siapa();
     }
 }
 
