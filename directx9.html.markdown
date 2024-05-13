@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: DirectX 9
+category: framework
+framework: DirectX 9
 filename: learndirectx9.cpp
 contributors:
     - ["Simon Deitermann", "s.f.deitermann@t-online.de"]
@@ -12,7 +12,7 @@ all began with Direct, such as Direct3D, DirectDraw, DirectMusic, DirectPlay, Di
 Direct3D (the 3D graphics API within DirectX) is widely used in the development of video games for Microsoft
 Windows and the Xbox line of consoles.<sup>[1]</sup>
 
-In this tutorial we will be focusing on DirectX 9, which is not as low-level as it's sucessors, which are aimed at programmers very familiar with how graphics hardware works. It makes a great starting point for learning Direct3D. In this tutorial I will be using the Win32-API for window handling and the DirectX 2010 SDK.
+In this tutorial we will be focusing on DirectX 9, which is not as low-level as it's successors, which are aimed at programmers very familiar with how graphics hardware works. It makes a great starting point for learning Direct3D. In this tutorial I will be using the Win32-API for window handling and the DirectX 2010 SDK.
 
 ## Window creation
 
@@ -125,7 +125,7 @@ bool InitD3D(HWND hWnd) {
     pp.hDeviceWindow = hWnd;                  // associated window handle
     pp.Windowed = true;                       // display in window mode
     pp.Flags = 0;                             // no special flags
-    // Variable to store results of methods to check if everything succeded.
+    // Variable to store results of methods to check if everything succeeded.
     HRESULT result{ };
     result = _d3d->CreateDevice(D3DADAPTER_DEFAULT, // use default graphics card
                                 D3DDEVTYPE_HAL,     // use hardware acceleration
@@ -144,7 +144,7 @@ bool InitD3D(HWND hWnd) {
     viewport.Y = 0;         // ..
     viewport.Width = clientRect.right;   // use the entire window
     viewport.Height = clientRect.bottom; // ..
-    viewport.MinZ = 0.0f;   // minimun view distance
+    viewport.MinZ = 0.0f;   // minimum view distance
     viewport.MaxZ = 100.0f; // maximum view distance
     // Apply the created viewport.
     result = _device->SetViewport(&viewport);
@@ -157,7 +157,7 @@ bool InitD3D(HWND hWnd) {
 // ...
 // Back in our WinMain function we call our initialization function.
 // ...
-// Check if Direct3D initialization succeded, else exit the application.
+// Check if Direct3D initialization succeeded, else exit the application.
 if (!InitD3D(hWnd))
     return -1;
         
@@ -197,7 +197,7 @@ Let's create a vertex buffer to store the vertices for our triangle
 #include <vector>
 // First we declare a new ComPtr holding a vertex buffer.
 ComPtr<IDirect3DVertexBuffer9> _vertexBuffer{ };
-// Lets define a funtion to calculate the byte size of a std::vector
+// Lets define a function to calculate the byte size of a std::vector
 template <typename T>
 unsigned int GetByteSize(const std::vector<T>& vec) {
     return sizeof(vec[0]) * vec.size();
@@ -253,7 +253,7 @@ if (!InitD3D(hWnd))
     return -1;
 // Define the vertices we need to draw a triangle.
 // Values are declared in a clockwise direction else Direct3D would cull them.
-// If you want to diable culling just call:
+// If you want to disable culling just call:
 // _device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 std::vector<VStruct> vertices {
     // Bottom left
@@ -274,7 +274,7 @@ if (!(_vertexBuffer = CreateBuffer(vertices)))
 Before we can use the vertex buffer to draw our primitives, we first need to set up the matrices.
 
 ```cpp
-// Lets create a new funtions for the matrix transformations.
+// Lets create a new functions for the matrix transformations.
 bool SetupTransform() {
     // Create a view matrix that transforms world space to
     // view space.
@@ -338,7 +338,7 @@ if (FAILED(result))
 // Create a world transformation matrix and set it to an identity matrix.
 D3DXMATRIX world{ };
 D3DXMatrixIdentity(&world);
-// Create a scalation matrix scaling our primitve by 10 in the x,
+// Create a scalation matrix scaling our primitive by 10 in the x,
 // 10 in the y and keeping the z direction.
 D3DXMATRIX scaling{ };
 D3DXMatrixScaling(&scaling, // matrix to scale
@@ -499,7 +499,7 @@ std::vector<D3DVERTEXELEMENT9> vertexDeclDesc {
       0,                     // byte offset from the struct beginning
       D3DDECLTYPE_FLOAT3,    // data type (3d float vector)
       D3DDECLMETHOD_DEFAULT, // tessellator operation
-      D3DDECLUSAGE_POSTION,  // usage of the data
+      D3DDECLUSAGE_POSITION,  // usage of the data
       0 },                   // index (multiples usage of the same type)
     { 0,
       12,                    // byte offset (3 * sizeof(float) bytes)

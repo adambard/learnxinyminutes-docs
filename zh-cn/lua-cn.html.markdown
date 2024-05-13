@@ -391,7 +391,8 @@ dofile('mod2')  --> Hi! (再次运行，与require不同)
 f = loadfile('mod2')  -- Calling f() runs mod2.lua. 
 
 -- loadstring是loadfile的字符串版本。 
-g = loadstring('print(343)')  --返回一个函数。 
+-- (loadstring已弃用, 使用load代替)
+g = load('print(343)')  --返回一个函数。
 g()  -- 打印343; 在此之前什么也不打印。 
 
 --]] 
@@ -418,6 +419,6 @@ lua-users.org上的[Lua简明参考](http://lua-users.org/files/wiki_insecure/us
 顺便说一下，整个文件是可运行的Lua; 
 保存为 learn-cn.lua 用命令 `lua learn-cn.lua` 启动吧！
 
-本文首次撰写于 [tylerneylon.com](http://tylerneylon.com) 同时也有 [github gist](https://gist.github.com/tylerneylon/5853042) 版.
+本文首次撰写于 [tylerneylon.com](http://tylerneylon.com) 同时也有 [GitHub gist](https://gist.github.com/tylerneylon/5853042) 版.
 
 使用Lua，欢乐常在！

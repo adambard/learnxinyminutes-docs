@@ -305,7 +305,6 @@ class Samuel
 
 $cat = new Samuel();
 $cat instanceof KittenInterface === true; // True
-
 ```
 
 ## Weitere Informationen

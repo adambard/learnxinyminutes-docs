@@ -170,7 +170,7 @@ printseven
 /# currently, preprocessor statements can be used to make c++-style constants #/
 
 &DEFINE LOOPSTR 20&
-/# must have & on either side with no spaces, 'DEFINE' is case sensative. #/
+/# must have & on either side with no spaces, 'DEFINE' is case sensitive. #/
 /# All statements are scanned and replaced before the program is run, regardless of where the statements are placed #/
 
 FOR LOOPSTR 7 PRINT . ENDFOR /# Prints '7' 20 times. At run, 'LOOPSTR' in source code is replaced with '20' #/ 
@@ -230,4 +230,4 @@ DEL 1 PRINT . /# [1, 3] #/
 ## Extra information
 
 - [MontiLang.ml](http://montilang.ml/)
-- [Github Page](https://github.com/lduck11007/MontiLang)
+- [GitHub Page](https://github.com/lduck11007/MontiLang)

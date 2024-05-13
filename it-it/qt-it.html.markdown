@@ -1,7 +1,7 @@
 ---
-category: tool
-tool: Qt Framework
-language: c++
+category: framework
+framework: Qt Framework
+language: C++
 filename: learnqt-it.cpp
 contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]

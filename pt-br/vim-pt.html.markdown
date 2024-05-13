@@ -56,12 +56,12 @@ para agilizar a navegação para pontos específicos no arquivo, além de ediç�
     # Pulando para caracteres específicos
 
     f<caracter>      # Posiciona o cursor no próximo <caracter>
-    t<character>     # Posiciona o cursor antes do próximo <caracter> 
+    t<character>     # Posiciona o cursor antes do próximo <caracter>
 
-    # Por exemplo,    
+    # Por exemplo,
     f<               # Posiciona o cursor no <
     t<               # Posiciona o cursor logo antes do <
-    
+
     # Movendo por palavras
 
     w                # Move o cursor uma palavra adiante
@@ -78,19 +78,19 @@ para agilizar a navegação para pontos específicos no arquivo, além de ediç�
     L                # Move para o final da tela visível
 ```
 
-## Modos:
+## Modos
 
 O Vim é baseado no conceito de **modos**.
 
 Modo Comando  - usado para navegar e escrever comandos - o Vim já inicia nesse modo
 Modo Inserção - usado para fazer alterações no arquivo
 Modo Visual   - usado para destacar textos e executar comandos neles
-Modo Ex       - usado para ir a linha com ':' no final da tela para executar comandos 
+Modo Ex       - usado para ir a linha com ':' no final da tela para executar comandos
 
 ```
     i                # Coloca o Vim no Modo Inserção, logo antes do cursor
     a                # Coloca o Vim no Modo Inserção, logo após o cursor
-    v                # Coloca o Vim no Modo Visual 
+    v                # Coloca o Vim no Modo Visual
     :                # Coloca o Vim no Modo Ex
     <esc>            # Sai de qualquer modo que você estiver, e coloca o Vim no Modo Comando
 
@@ -110,7 +110,7 @@ Modo Ex       - usado para ir a linha com ':' no final da tela para executar com
 Podemos pensar no Vim como uma série de comendos
 em um formato 'Verbo-Modificador-Nome', onde:
 
-Verbo       - sua ação 
+Verbo       - sua ação
 Modificador - como você executará sua ação
 Nome        - o objeto onde você vai executar sua acão
 
@@ -118,7 +118,7 @@ Alguns exemplos importantes de 'Verbos', 'Modificadores' e 'Nomes':
 
 ```
     # 'Verbos'
- 
+
     d                # Apagar (Delete)
     c                # Alterar (Change)
     y                # Copiar (Yank)
@@ -140,7 +140,7 @@ Alguns exemplos importantes de 'Verbos', 'Modificadores' e 'Nomes':
     s                # Sentência
     p                # Parágrafo
     b                # Bloco
-    
+
     # Exemplos de comandos
 
     d2w              # Apaga 2 palavras
@@ -167,7 +167,7 @@ Alguns exemplos importantes de 'Verbos', 'Modificadores' e 'Nomes':
     # Em geral, o usuário pode associar um comando em maísculas (exemplo: D) com
     # "executar este comando até o final da linha"
 
-    # Usar a tecla de um comando duas vezes geralmente significa executar este 
+    # Usar a tecla de um comando duas vezes geralmente significa executar este
     # comando sobre toda a linha (exemplo: dd apaga a linha inteira)
 ```
 
@@ -191,9 +191,9 @@ O arquivo .vimrc pode ser usado para configurar o Vim no seu início.
 
 Exemplo de arquivo ~/.vimrc
 
-```
+```vim
 " Exemplo de ~/.vimrc
-" 2015.10 
+" 2015.10
 
 " Obrigatório para rodar apenas no Vim (Vi Improved)
 set nocompatible

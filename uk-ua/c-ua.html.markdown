@@ -1,5 +1,5 @@
 ---
-language: c
+language: C
 filename: learnc-ua.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
@@ -839,8 +839,8 @@ Node createLinkedList(int *vals, int len);
 */
 
 #endif /* Кінець директиви передкомпіляції if. */
-
 ```
+
 ## Додаткові матеріали
 
 Кращим посібником для вивчення С буде книга авторства Деніса Рітчі (творець С) та Браяна Кернігана, 

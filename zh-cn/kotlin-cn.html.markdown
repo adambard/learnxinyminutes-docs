@@ -335,7 +335,6 @@ object ObjectExample {
         return "hello"
     }
 }
-
 ```
 
 ### 进一步阅读

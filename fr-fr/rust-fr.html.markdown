@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
@@ -309,7 +309,7 @@ fn main() {
 
 Il y a beaucoup plus à Rust -- ce est juste l'essentiel de Rust afin que vous puissiez comprendre
 les choses les plus importantes. Pour en savoir plus sur Rust, lire [La Programmation Rust
-Langue](http://doc.rust-lang.org/book/index.html) et etudier la
+Langue](http://doc.rust-lang.org/book/index.html) et étudier la
 [/r/rust](http://reddit.com/r/rust) subreddit. Les gens sur le canal de #rust sur
 irc.mozilla.org sont aussi toujours prêts à aider les nouveaux arrivants.
 

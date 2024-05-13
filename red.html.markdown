@@ -35,6 +35,7 @@ the author's name, the filename, the version, the license, a summary of what
 the program does or any other files it needs. The red/System header is just
 like the red header, only saying "red/System" and not "red".
 ```
+
 ```red
 Red []
 
@@ -203,14 +204,13 @@ print twice b   ; will output 6.
 ; Import external files with #include and filenames start with a % sign
 #include %includefile.red
 ; Now the functions in the included file can be used too.
-
 ```
 
 ## Further Reading
 
 The main source for information about Red is the [Red language homepage](http://www.red-lang.org).
 
-The source can be found on [github](https://github.com/red/red).
+The source can be found on [GitHub](https://github.com/red/red).
 
 The Red/System language specification can be found [here](http://static.red-lang.org/red-system-specs-light.html).
 

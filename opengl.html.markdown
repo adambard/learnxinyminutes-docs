@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: OpenGL
+category: framework
+framework: OpenGL
 filename: learnopengl.cpp
 contributors:
     - ["Simon Deitermann", "s.f.deitermann@t-online.de"]
@@ -35,7 +35,7 @@ int main() {
 		       context };
     window.setVerticalSyncEnabled(true);
     window.setActive(true);
-    // After that we initialise GLEW and check if an error occured.
+    // After that we initialise GLEW and check if an error occurred.
     GLenum error;
     glewExperimental = GL_TRUE;
     if ((err = glewInit()) != GLEW_OK)
@@ -140,7 +140,7 @@ if (logSize > 0) {
 }
 ```
 
-The same is possibile after <code>glLinkProgram()</code>, just replace <code>glGetShaderiv()</code> with <code>glGetProgramiv()</code>
+The same is possible after <code>glLinkProgram()</code>, just replace <code>glGetShaderiv()</code> with <code>glGetProgramiv()</code>
 and <code>glGetShaderInfoLog()</code> with <code>glGetProgramInfoLog()</code>.
 
 ```cpp
@@ -194,7 +194,7 @@ void main() {
 out vec4 outColor;
 
 void main() {
-    // We simply set the ouput color to red.
+    // We simply set the output color to red.
     // The parameters are red, green, blue and alpha.
     outColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
@@ -233,7 +233,7 @@ glBufferData(GL_ARRAY_BUFFER,     // target buffer
 // After filling the VBO link it to the location 0 in our vertex shader,
 // which holds the vertex position.
 // ...
-// To ask for the attibute location, if you haven't set it:
+// To ask for the attribute location, if you haven't set it:
 GLint posLocation = glGetAttribLocation(program, "position");
 // ..
 glEnableVertexAttribArray(0);
@@ -463,7 +463,7 @@ glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(iboData[0]) * iboData.size(),
              iboData.data(), GL_STATIC_DRAW);
 // Next in our render loop, we replace glDrawArrays() with:
-glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
+glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSIGNED_INT, nullptr);
 // Remember to delete the allocated memory for the IBO.
 ```
 
@@ -535,7 +535,7 @@ glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 // ...
 glBindVertexArray(vao);
 glBindTexture(GL_TEXTURE_2D, texture);
-glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSINGED_INT, nullptr);
+glDrawElements(GL_TRIANGLES, iboData.size(), GL_UNSIGNED_INT, nullptr);
 // ...
 ```
 
@@ -673,7 +673,7 @@ glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 
 ## Geometry Shader
 
-Gemoetry shaders were introduced in OpenGL 3.2, they can produce vertices
+Geometry shaders were introduced in OpenGL 3.2, they can produce vertices
 that are send to the rasterizer. They can also change the primitive type e.g.
 they can take a point as an input and output other primitives.
 Geometry shaders are inbetween the vertex and the fragment shader.

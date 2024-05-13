@@ -115,7 +115,6 @@ composer update phpunit/phpunit
 # remover o pacote antigo e suas dependências primeiro
 composer remove --dev phpunit/phpunit
 composer require --dev phpunit/phpunit:^5.0
-
 ```
 
 ## Autoloader
@@ -142,6 +141,7 @@ No `composer.json`, adicione um campo 'autoload':
   }
 }
 ```
+
 Isso irá dizer ao autoloader para buscar na pasta `src` tudo o que estiver no namespace `\Acme\`.
 
 Você também pode [usar a PSR-0, um mapa de classes ou apenas listar os arquivos para incluir](https://getcomposer.org/doc/04-schema.md#autoload),

@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: Statistical Computing with Python
+category: framework
+framework: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 filename: pythonstatcomp-es.py
@@ -12,7 +12,6 @@ lang: es-es
 Este es un tutorial de como realizar tareas típicas de programación estadística usando Python. Está destinado a personas con cierta familiaridad con Python y con experiencia en programación estadística en lenguajes como R, Stata, SAS, SPSS, or MATLAB.
 
 ```python
-
 # 0. Cómo configurar ====
 
 """ Configurar con IPython y pip install lo siguiente: numpy, scipy, pandas,

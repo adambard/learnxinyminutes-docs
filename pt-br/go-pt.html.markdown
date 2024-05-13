@@ -28,7 +28,7 @@ Go vem com uma biblioteca padrão exaustiva e uma comunidade entusiasta.
    várias linhas */
 
 // A cláusula package aparece no início de cada arquivo.
-// Main é um nome especial declarando um executável ao invés de uma biblioteca.
+// main é um nome especial declarando um executável ao invés de uma biblioteca.
 package main
 
 // A cláusula Import declara os pacotes referenciados neste arquivo.
@@ -77,7 +77,7 @@ pode incluir quebras de linha.` // mesmo tipo string
     // literal não-ASCII. A linguagem Go utiliza de raiz a codificação UTF-8.
     g := 'Σ' // tipo rune, um alias para int32, que contém um código unicode
 
-    f := 3.14195 // float64, número de vírgula flutuante de 64bit (IEEE-754)
+    f := 3.14159 // float64, número de vírgula flutuante de 64bit (IEEE-754)
     c := 3 + 4i  // complex128, representado internamente com dois float64s
 
     // Declaração de variáveis, com inicialização.
@@ -295,17 +295,17 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 ## Leitura Recomendada
 
-A principal fonte de informação é o [web site oficial Go](http://golang.org/).
+A principal fonte de informação é o [web site oficial Go](https://go.dev/).
 Lá é possível seguir o tutorial, experimentar de forma iterativa, e ler muito.
 
 A própria especificação da linguagem é altamente recomendada. É fácil de ler e
 incrivelmente curta (em relação ao que é habitual hoje em dia).
 
 Na lista de leitura para os aprendizes de Go deve constar o [código fonte da 
-biblioteca padrão](http://golang.org/src/pkg/). Exaustivamente documentado, é
+biblioteca padrão](https://go.dev/src/). Exaustivamente documentado, é
 a melhor demonstração de código fácil de ler e de perceber, do estilo Go, e da
 sua escrita idiomática. Ou então clique no nome de uma função na [documentação]
-(http://golang.org/pkg/) e veja o código fonte aparecer!
+(https://go.dev/pkg/) e veja o código fonte aparecer!
 
 Outra ótima fonte para aprender Go é o [Go by example](https://gobyexample.com/).
 Apesar de ser em inglês, é possível recodificar os exemplos para aprender sobre

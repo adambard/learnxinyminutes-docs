@@ -102,19 +102,24 @@ div.some-parent.class-name { }
 /* There are some selectors called pseudo classes that can be used to select an
    element only when it is in a particular state */
 
-/* for example, when the cursor hovers over an element */
-selector:hover { }
+/* for example, when a link hasn't been visited */
+selected:link { }
 
 /* or a link has been visited */
 selector:visited { }
 
-/* or hasn't been visited */
-selected:link { }
-
 /* or an element is in focus */
 selected:focus { }
 
-/* any element that is the first child of its parent */
+/* or when the cursor hovers over an element */
+selector:hover { }
+
+/* or when a link is clicked on */
+selector:active { }
+
+/* These pseudo classes regarding links should always be written in the above order or the code might not work as expected */
+
+/* Any element that is the first child of its parent */
 selector:first-child {}
 
 /* any element that is the last child of its parent */

@@ -19,41 +19,18 @@ které markdown dále zpracovávají) mírně odlišuje. V této příručce se 
 upozorňovat, kdy se jedná o obecnou vlastnost markdownu a kdy se jedná o
 specifickou vlastnost daného parseru.
 
-## Obsah
-
-- [Obsah](#obsah)
-- [HTML Elementy](#html-elementy)
-- [Nadpisy](#nadpisy)
-- [Jednoduché stylování textu](#jednoduché-stylování-textu)
-- [Odstavce](#odstavce)
-  - [Blokové citace](#blokové-citace)
-- [Seznamy](#seznamy)
-- [Bloky kódu](#bloky-kódu)
-- [Vodorovná čára (`<hr />`)](#vodorovná-čára-hr-)
-- [Odkazy](#odkazy)
-  - [Obsahy](#obsahy)
-- [Obrázky](#obrázky)
-- [Ostatní](#ostatní)
-  - [Automatické odkazy](#automatické-odkazy)
-  - [Automatické odkazy z emailů](#automatické-odkazy-z-emailů)
-  - [Escapování znaků](#escapování-znaků)
-  - [Klávesové zkratky](#klávesové-zkratky)
-  - [Tabulky](#tabulky)
-- [Markdownlint](#markdownlint)
-- [Reference](#reference)
-
 ## HTML Elementy
 
 Markdown je nadstavba HTML. To znamená, že každý HTML kód je zároveň validním
 kódem v Markdownu.
 
 ```md
-<!-- To znamená, že v Markdownu můžeme používat HTML elementy jako například 
-komentáře, které nebudou ovlivněny parserem Markdownu. Na druhou stranu to také 
-znamená, že pokud ve svém Markdown kódu vytvoříte HTML element, už v rámci 
-tohoto elementu nelze použít Markdown. 
+<!-- To znamená, že v Markdownu můžeme používat HTML elementy jako například
+komentáře, které nebudou ovlivněny parserem Markdownu. Na druhou stranu to také
+znamená, že pokud ve svém Markdown kódu vytvoříte HTML element, už v rámci
+tohoto elementu nelze použít Markdown.
 
-Markdown využívá i tato stránka, a tak by tento text, kdyby nebyl obalen v bloku 
+Markdown využívá i tato stránka, a tak by tento text, kdyby nebyl obalen v bloku
 kódu (viz níže), jako validní HTML komentář vůbec nebyl vidět. -->
 ```
 
@@ -132,7 +109,7 @@ Blokové citace se dělají jednoduše uvozením řádku znakem >.
 
 ```md
 > Toto je bloková citace. Můžete dokonce
-> manuálně rozdělit řádky, a před každý vložit >, nebo nechat vaše řádky 
+> manuálně rozdělit řádky, a před každý vložit >, nebo nechat vaše řádky
 > jakkoli dlouhé, ať se zarovnají samy.
 > Je to jedno, pokud vždy začínají symbolem `>`.
 
@@ -170,7 +147,7 @@ nebo
 2. Položka dvě
 3. Položka tři
 
-<!-- Čísla ani nemusíte psát popořadě. Markdown je umí zobrazit správně, jenom 
+<!-- Čísla ani nemusíte psát popořadě. Markdown je umí zobrazit správně, jenom
 je třeba vždy překontrolovat, že číslování funguje správně. -->
 
 1. Položka jedna
@@ -215,7 +192,7 @@ Pro ještě hlubší odsazení můžete přidat další 4 mezery nebo další ta
 
 ```md
     moje_pole.each do |i|
-        puts i
+      puts i
     end
 ```
 
@@ -228,11 +205,13 @@ Honza neměl tušení, co dělá funkce `go_to()`!
 
 V Markdownu od GitHubu, můžete použít speciální syntaxi pro kód:
 
-<pre><code class="highlight">&#x60;&#x60;&#x60;ruby
+````md
+```ruby
 def neco
-    puts "Ahoj světe!"
+  puts "Ahoj světe!"
 end
-&#x60;&#x60;&#x60;</code></pre>
+```
+````
 
 Text výše nepotřebuje čtyřmezerové odsazení a parser navíc použije zvýraznění
 syntaxe pro zvolený jazyk.
@@ -252,8 +231,8 @@ pomlček), a to buď s mezerami mezi jednotlivými znaky, nebo bez nich.
 ## Odkazy
 
 ```md
-<!-- Jedna z nejlepších vlastností Markdownu je, jak snadno lze s jeho pomocí 
-vytvářet odkazy. Text odkazu, který chcete zobrazit vložte do [] a hned za něj 
+<!-- Jedna z nejlepších vlastností Markdownu je, jak snadno lze s jeho pomocí
+vytvářet odkazy. Text odkazu, který chcete zobrazit vložte do [] a hned za něj
 v kulatých závorkách () připojte url adresu. -->
 
 [Klikni na mě!](http://test.com/)
@@ -277,12 +256,12 @@ v kulatých závorkách () připojte url adresu. -->
 [link1]: http://test.com/ "Cool!"
 [neco]: http://neco.czz/ "Dobře!"
 
-<!-- Titulek v tomto případě může být v jednoduchých uvozovkách, závorkách, nebo 
-zcela vynechaný. Reference může být kdekoliv ve vašem dokumentu a identifikátory 
+<!-- Titulek v tomto případě může být v jednoduchých uvozovkách, závorkách, nebo
+zcela vynechaný. Reference může být kdekoliv ve vašem dokumentu a identifikátory
 mohou být jakékoli, pokud jsou unikátní. -->
 
 
-<!-- V markdownu existuje rovněž "implicitní pojmenování", které použije text 
+<!-- V markdownu existuje rovněž "implicitní pojmenování", které použije text
 odkazu jako své id -->
 
 [Toto][] je odkaz..
@@ -329,7 +308,7 @@ fungovat stejně.
 ### Automatické odkazy
 
 ```md
-<http://stranka.cz/> 
+<http://stranka.cz/>
 
 je stejné jako
 
@@ -345,14 +324,14 @@ je stejné jako
 ### Escapování znaků
 
 ```md
-Chci napsat *tento text obklopený hvězdičkami*, ale protože nechci, aby to bylo 
+Chci napsat *tento text obklopený hvězdičkami*, ale protože nechci, aby to bylo
 kurzívou, tak hvězdičky vyescapuji `\`: \*tento text bude obklopený hvězdičkami\*.
 ```
 
 ### Klávesové zkratky
 
 ```md
-<!-- V Markdownu od GitHubu můžete použít tag <kbd> k označení kláves na 
+<!-- V Markdownu od GitHubu můžete použít tag <kbd> k označení kláves na
 počítači -->
 
 Váš počítač přestal pracovat? Zkuste

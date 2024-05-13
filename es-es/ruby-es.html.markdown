@@ -89,10 +89,10 @@ true || false #=> true
 # Estos son usados como constructores controladores de flujo que encadenan
 # sentencias hasta que una de ellas retorne verdadero o falso
 
-# `has_otra_cosa` solo se llama si `has_algo` retorna verdadero.
-has_algo() and has_otra_cosa()
-# `registra_error` solo se llama si `has_algo` falla
-has_algo() or registra_error()
+# `haz_otra_cosa` solo se llama si `haz_algo` retorna verdadero.
+haz_algo() and haz_otra_cosa()
+# `registra_error` solo se llama si `haz_algo` falla
+haz_algo() or registra_error()
 
 
 # Los strings son objetos

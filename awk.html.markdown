@@ -48,7 +48,7 @@ BEGIN {
     # the preliminary set-up code, before you process any text files. If you
     # have no text files, then think of BEGIN as the main entry point.
 
-    # Variables are global. Just set them or use them, no need to declare..
+    # Variables are global. Just set them or use them, no need to declare.
     count = 0;
 
     # Operators just like in C and friends
@@ -118,12 +118,12 @@ BEGIN {
     # Arrays
     arr[0] = "foo";
     arr[1] = "bar";
-    
+
     # You can also initialize an array with the built-in function split()
-    
+
     n = split("foo:bar:baz", arr, ":");
-   
-    # You also have associative arrays (actually, they're all associative arrays)
+
+    # You also have associative arrays (indeed, they're all associative arrays)
     assoc["foo"] = "bar";
     assoc["bar"] = "baz";
 
@@ -178,26 +178,26 @@ function arithmetic_functions(a, b, c,     d) {
     # Now, to demonstrate the arithmetic functions
 
     # Most AWK implementations have some standard trig functions
-    localvar = sin(a);
-    localvar = cos(a);
-    localvar = atan2(b, a); # arc tangent of b / a
+    d = sin(a);
+    d = cos(a);
+    d = atan2(b, a); # arc tangent of b / a
 
     # And logarithmic stuff
-    localvar = exp(a);
-    localvar = log(a);
+    d = exp(a);
+    d = log(a);
 
     # Square root
-    localvar = sqrt(a);
+    d = sqrt(a);
 
     # Truncate floating point to integer
-    localvar = int(5.34); # localvar => 5
+    d = int(5.34); # d => 5
 
     # Random numbers
     srand(); # Supply a seed as an argument. By default, it uses the time of day
-    localvar = rand(); # Random number between 0 and 1.
+    d = rand(); # Random number between 0 and 1.
 
     # Here's how to return a value
-    return localvar;
+    return d;
 }
 
 function string_functions(    localvar, arr) {
@@ -209,14 +209,15 @@ function string_functions(    localvar, arr) {
     # Both return number of matches replaced
     localvar = "fooooobar";
     sub("fo+", "Meet me at the ", localvar); # localvar => "Meet me at the bar"
-    gsub("e+", ".", localvar); # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar); # localvar => "M..t m. at th. bar"
 
     # Search for a string that matches a regular expression
     # index() does the same thing, but doesn't allow a regular expression
     match(localvar, "t"); # => 4, since the 't' is the fourth character
 
     # Split on a delimiter
-    n = split("foo-bar-baz", arr, "-"); # a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
+    n = split("foo-bar-baz", arr, "-");
+    # result: a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
 
     # Other useful stuff
     sprintf("%s %d %d %d", "Testing", 1, 2, 3); # => "Testing 1 2 3"
@@ -238,9 +239,9 @@ function io_functions(    localvar) {
     # AWK doesn't have file handles, per se. It will automatically open a file
     # handle for you when you use something that needs one. The string you used
     # for this can be treated as a file handle, for purposes of I/O. This makes
-    # it feel sort of like shell scripting, but to get the same output, the string
-    # must match exactly, so use a variable:
-    
+    # it feel sort of like shell scripting, but to get the same output, the
+    # string must match exactly, so use a variable:
+
     outfile = "/tmp/foobar.txt";
 
     print "foobar" > outfile;
@@ -261,7 +262,7 @@ function io_functions(    localvar) {
 
     # Reads a line from a file and stores in localvar
     infile = "/tmp/foobar.txt";
-    getline localvar < infile; 
+    getline localvar < infile;
     close(infile);
 }
 
@@ -273,10 +274,10 @@ function io_functions(    localvar) {
 # When you pass arguments to AWK, they are treated as file names to process.
 # It will process them all, in order. Think of it like an implicit for loop,
 # iterating over the lines in these files. these patterns and actions are like
-# switch statements inside the loop. 
+# switch statements inside the loop.
 
 /^fo+bar$/ {
-    
+
     # This action will execute for every line that matches the regular
     # expression, /^fo+bar$/, and will be skipped for any line that fails to
     # match it. Let's just print the line:
@@ -374,13 +375,16 @@ END {
     if (nlines)
         print "The average age for " name " is " sum / nlines;
 }
-
 ```
+
 Further Reading:
 
 * [Awk tutorial](http://www.grymoire.com/Unix/Awk.html)
 * [Awk man page](https://linux.die.net/man/1/awk)
-* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html) GNU Awk is found on most Linux systems.
+* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
+  GNU Awk is found on most Linux systems.
 * [AWK one-liner collection](http://tuxgraphics.org/~guido/scripts/awk-one-liner.html)
-* [Awk alpinelinux wiki](https://wiki.alpinelinux.org/wiki/Awk) a technical summary and list of "gotchas" (places where different implementations may behave in different or unexpected ways). 
+* [Awk alpinelinux wiki](https://wiki.alpinelinux.org/wiki/Awk) a technical
+  summary and list of "gotchas" (places where different implementations may
+  behave in different or unexpected ways).
 * [basic libraries for awk](https://github.com/dubiousjim/awkenough)

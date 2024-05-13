@@ -4,15 +4,19 @@ contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 translators:
   - ["Dennis Keller", "https://github.com/denniskeller"]
-filename: asciidoc-de.md
+filename: asciidoc-de.adoc
 lang: de-de
 ---
 
-AsciiDoc ist eine Auszeichnungssprache ähnlich zu Markdown. Sie kann für alles verwendet werden von Büchern zu Blogs. Erfunden wurde sie 2002 von Stuart Rackham. Die Sprache ist simpel aber sie ermöglicht eine große Anzahl an Anpassungen.
+AsciiDoc ist eine Auszeichnungssprache, ähnlich zu Markdown. Sie kann für alles
+verwendet werden von Büchern zu Blogs. Erfunden wurde sie 2002 von Stuart
+Rackham. Die Sprache ist simpel, aber sie ermöglicht eine große Anzahl an
+Anpassungen.
 
 Kopfzeile des Dokuments
 
-Kopfzeilen sind optional und dürfen keine Leerzeilen besitzen. Sie müssen mindestens eine Leerzeile vom Inhalt versetzt sein.
+Kopfzeilen sind optional und dürfen keine Leerzeilen besitzen. Sie müssen
+mindestens eine Leerzeile vom Inhalt versetzt sein.
 
 Nur Titel
 
@@ -53,12 +57,12 @@ Dieser Artikel über Chips wird Spaß machen.
 Absätze
 
 ```
-Du musst nichts besonderes machen für Absätze.
+Du musst nichts Besonderes machen für Absätze.
 
 Füge eine Leerzeile zwischen zwei Absätze, um sie zu trennen.
 
 Um eine Leerzeile zu erhalten musst du ein +
-ergänzen und du erhälst einen Umbruch!
+ergänzen und du erhältst einen Umbruch!
 ```
 
 Textformatierung
@@ -83,7 +87,6 @@ Abteilungstitel
 ==== Level 3 <h4>
 
 ===== Level 4 <h5>
-
 ```
 
 Listen
@@ -104,7 +107,8 @@ Um eine nummerierte Liste zu erstellen, verwendest du Punkte.
 . item 3
 ```
 
-Um Listen zu verschachteln, musst du zusätzliche Sternchen beziehungsweise Punkte hinzufügen. Dies ist bis zu fünf Mal möglich.
+Um Listen zu verschachteln, musst du zusätzliche Sternchen beziehungsweise
+Punkte hinzufügen. Dies ist bis zu fünf Mal möglich.
 
 ```
 * foo 1

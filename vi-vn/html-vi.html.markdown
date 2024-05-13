@@ -109,7 +109,6 @@ Bài viết này chủ yếu bàn về cú pháp của HTML và một vài mẹo
 		<td>hàng hai, cột hai</td>
 	</tr>
 </table>
-
 ```
 
 ## Cách sử dụng

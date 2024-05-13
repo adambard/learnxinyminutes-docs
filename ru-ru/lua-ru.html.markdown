@@ -400,8 +400,8 @@ g = loadstring('print(343)')  -- Вернет функцию.
 g()  -- Напишет 343.
 
 --]]
-
 ```
+
 ## Примечание (от автора)
 
 Мне было интересно изучить Lua, чтобы делать игры при помощи <a href="http://love2d.org/">игрового движка LÖVE</a>.
@@ -422,4 +422,4 @@ g()  -- Напишет 343.
 Кстати, весь файл написан на Lua; сохраните его как learn.lua и запустите при помощи "lua learn.lua" !
 
 Изначально эта статья была написана для tylerneylon.com.
-Также она доступна как <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Удачи с Lua!
+Также она доступна как <a href="https://gist.github.com/tylerneylon/5853042">GitHub gist</a>. Удачи с Lua!

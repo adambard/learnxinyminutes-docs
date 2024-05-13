@@ -36,6 +36,7 @@ valeur_numérique: 100
 notation_scientifique: 1e+12
 booléen: true
 valeur_null: null
+une_autre_valeur_null: ~
 clé avec espaces: valeur
 # Bien qu'il ne soit pas nécessaire de mettre les chaînes de caractères
 # entre guillemets, cela reste possible, et parfois utile.
@@ -151,7 +152,6 @@ set2:
     item1: null
     item2: null
     item3: null
-
 ```
 
 Quelques références et outils :

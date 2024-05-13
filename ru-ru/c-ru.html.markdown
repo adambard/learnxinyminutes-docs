@@ -1,5 +1,5 @@
 ---
-language: c
+language: C
 filename: learnc-ru.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
@@ -476,9 +476,7 @@ void str_reverse_through_pointer(char *str_in) {
 Если у вас появился вопрос, почитайте [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
 Очень важно использовать правильные отступы и ставить пробелы в нужных местах.
-Читаемый код лучше чем красивый или быстрый код.
+Читаемый код лучше, чем красивый или быстрый код.
 Чтобы научиться писать хороший код, почитайте [Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
-
-Также не забывайте, что [Google](http://google.com) и [Яндекс](http://yandex.ru) – ваши хорошие друзья.
 
 [1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member

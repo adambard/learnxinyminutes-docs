@@ -1,5 +1,5 @@
 ---
-language: rust
+language: Rust
 contributors:
     - ["Carlo Milanesi", "http://github.com/carlomilanesi"]
 lang: it-it
@@ -319,4 +319,4 @@ Language](http://doc.rust-lang.org/book/index.html) e tieni d'occhio l'area di i
 [/r/rust](http://reddit.com/r/rust).
 
 Puoi anche provare a programmare in varie versioni di Rust usando il compilatore online al sito ufficiale
-[Rust playpen](http://play.rust-lang.org).
+[Rust Playground](https://play.rust-lang.org).

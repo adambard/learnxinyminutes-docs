@@ -44,7 +44,7 @@ for, which provides an excellent UI.
 #### Cons
 
 * It is an agent-less tool - every agent consumes up to 16MB ram - in some
-environments, it may be noticable amount.
+environments, it may be noticeable amount.
 * It is agent-less - you have to verify your environment consistency
 'on-demand' - there is no built-in mechanism that would warn you about some
 change automatically (this can be achieved with reasonable effort)
@@ -632,7 +632,7 @@ fact_caching_timeout = 86400
 ```
 
 I like to use `jsonfile` as my backend. It allows to use another project
-`ansible-cmdb` [(project on github)](https://github.com/fboender/ansible-cmdb) that generates a HTML page of your inventory
+`ansible-cmdb` [(project on GitHub)](https://github.com/fboender/ansible-cmdb) that generates a HTML page of your inventory
 resources. A nice 'free' addition!
 
 ### Debugging ansible [chapter in progress]
@@ -691,7 +691,7 @@ to specify the username.
 
 Note: You may like to execute Ansible with `--ask-sudo-pass` or add the user to
 sudoers file in order to allow non-supervised execution if you require 'admin'
-privilages.
+privileges.
 
 [Read more](http://docs.ansible.com/ansible/latest/become.html)
 
@@ -753,3 +753,4 @@ the `register` command.
 * [A system administrator's guide to getting started with Ansible - FAST!](https://www.redhat.com/en/blog/system-administrators-guide-getting-started-ansible-fast)
 * [Ansible Tower](https://www.ansible.com/products/tower) - Ansible Tower provides a web UI, dashboard and rest interface to ansible.
 * [Ansible AWX](https://github.com/ansible/awx) - The Open Source version of Ansible Tower.
+* [Ansible Tutorial for Beginners: Ultimate Playbook & Examples](https://spacelift.io/blog/ansible-tutorial)

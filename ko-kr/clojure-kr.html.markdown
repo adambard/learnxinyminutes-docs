@@ -377,7 +377,7 @@ Clojuredocs.org는 core 함수들에 대해 다양한 예제와 문서를 보유
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
 4Clojure는 clojure/FP 스킬을 올릴 수 있는 좋은 길입니다:
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org는 많고 많은 문서들을 보유하고 있습니다:
 [http://clojure-doc.org/](http://clojure-doc.org/)

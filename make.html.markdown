@@ -17,7 +17,6 @@ There are many varieties of make in existence, however this article
 assumes that we are using GNU make which is the standard on Linux.
 
 ```make
-
 # Comments can be written like this.
 
 # File should be named Makefile and then can be run as `make <target>`.

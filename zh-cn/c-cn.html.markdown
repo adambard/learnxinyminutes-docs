@@ -1,5 +1,5 @@
 ---
-language: c
+language: C
 filename: learnc-cn.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
@@ -474,7 +474,7 @@ void testFunc() {
 // 用户自定义类型和结构
 ///////////////////////////////////////
 
-// Typedefs可以创建类型别名
+// typedef 可以创建类型别名
 typedef int my_type;
 my_type my_type_var = 0;
 
@@ -604,7 +604,6 @@ typedef void (*my_fnp_type)(char *);
 // = += -= *= /= %= &= ^= |= <<= >>= | 从右到左      //
 // ,                                 | 从左到右      //
 //---------------------------------------------------//
-
 ```
 
 ## 更多阅读

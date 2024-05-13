@@ -3,17 +3,23 @@ language: SQL
 filename: learnsql.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
+  - ["Th3G33k", "https://github.com/Th3G33k"]
+
 ---
 
 Structured Query Language (SQL) is an [ISO/IEC 9075](https://www.iso.org/standard/63555.html) standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
 
 Implementations typically provide a command line prompt where you can enter the commands shown here interactively, and they also offer a way to execute a series of these commands stored in a script file.  (Showing that you’re done with the interactive prompt is a good example of something that isn’t standardized--most SQL implementations support the keywords QUIT, EXIT, or both.)
 
-Several of these sample commands assume that the [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/) available on [github](https://github.com/datacharmer/test_db) has already been loaded. The github files are scripts of commands, similar to the relevant commands below, that create and populate tables of data about a fictional company’s employees. The syntax for running these scripts will depend on the SQL implementation you are using. A utility that you run from the operating system prompt is typical.
+Several of these sample commands assume that the [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/) available on [GitHub](https://github.com/datacharmer/test_db) has already been loaded. The GitHub files are scripts of commands, similar to the relevant commands below, that create and populate tables of data about a fictional company’s employees. The syntax for running these scripts will depend on the SQL implementation you are using. A utility that you run from the operating system prompt is typical.
 
 
 ```sql
 -- Comments start with two hyphens. End each command with a semicolon.
+
+/*
+Multi-line comments
+*/
 
 -- SQL is not case-sensitive about keywords. The sample commands here
 -- follow the convention of spelling them in upper-case because it makes
@@ -54,7 +60,22 @@ SELECT * FROM departments WHERE dept_name LIKE 'S____';
 SELECT DISTINCT title FROM titles;
 
 -- Same as above, but sorted (case-sensitive) by the title values.
-SELECT DISTINCT title FROM titles ORDER BY title;
+-- The order can be specified by adding ASC (ascending) or DESC (descending).
+-- If omitted, it will sort in ascending order by default.
+SELECT DISTINCT title FROM titles ORDER BY title ASC;
+
+-- Use the comparison operators (=, >, <, >=, <=, <>) and
+-- the conditional keywords (AND, OR) to refine your queries.
+SELECT * FROM departments WHERE dept_no = 'd001' OR dept_no = 'd002';
+
+-- Same as above.
+SELECT * FROM departments WHERE dept_no IN ('d001', 'd002');
+
+-- Opposite of the above.
+SELECT * FROM departments WHERE dept_no NOT IN ('d001', 'd002');
+
+-- Select in a given range.
+SELECT * from departments WHERE dept_no BETWEEN 'd001' AND 'd002';
 
 -- Show the number of rows in the departments table.
 SELECT COUNT(*) FROM departments;
@@ -62,6 +83,24 @@ SELECT COUNT(*) FROM departments;
 -- Show the number of rows in the departments table that
 -- have 'en' as a substring of the dept_name value.
 SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
+
+-- Aggregate functions can be used, with GROUP BY, to compute a value
+-- from a set of values. Most commonly used functions are:
+-- MIN(), MAX(), COUNT(), SUM(), AVG().
+-- Use HAVING to filter rows by aggregated values.
+
+-- Retrieve the total number of employees, by department number,
+-- with the condition of having more than 100 employees.
+SELECT dept_no, COUNT(dept_no) FROM dept_emp GROUP BY dept_no
+HAVING COUNT(dept_no) > 100;
+
+-- Aliases, using the optional keyword AS, can be used for column/table names.
+SELECT COUNT(A.*) AS total_employees, COUNT(B.*) total_departments
+FROM employees AS A, departments B;
+
+-- Common date format is "yyyy-mm-dd".
+-- However, it can vary according to the implementation, the operating system, and the session's locale.
+SELECT * FROM dept_manager WHERE from_date >= '1990-01-01';
 
 -- A JOIN of information from multiple tables: the titles table shows
 -- who had what job titles, by their employee numbers, from what
@@ -74,6 +113,15 @@ SELECT employees.first_name, employees.last_name,
        titles.title, titles.from_date, titles.to_date
 FROM titles INNER JOIN employees ON
        employees.emp_no = titles.emp_no LIMIT 10;
+
+-- Combine the result of multiple SELECT.
+-- UNION selects distinct rows, UNION ALL selects all rows.
+SELECT * FROM departments WHERE dept_no = 'd001'
+UNION
+SELECT * FROM departments WHERE dept_no = 'd002';
+
+-- SQL syntax order is:
+-- SELECT _ FROM _ JOIN _ ON _ WHERE _ GROUP BY _ HAVING _ ORDER BY _ UNION
 
 -- List all the tables in all the databases. Implementations typically provide
 -- their own shortcut command to do this with the database currently in use.
@@ -95,7 +143,7 @@ UPDATE tablename1 SET fname='John' WHERE lname='Mutt';
 
 -- Delete rows from the tablename1 table
 -- where the lname value begins with 'M'.
-DELETE FROM tablename1 WHERE lname like 'M%';
+DELETE FROM tablename1 WHERE lname LIKE 'M%';
 
 -- Delete all rows from the tablename1 table, leaving the empty table.
 DELETE FROM tablename1;

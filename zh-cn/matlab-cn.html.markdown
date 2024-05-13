@@ -1,5 +1,5 @@
 ---
-language: Matlab
+language: MATLAB
 filename: matlab-cn.m
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
@@ -495,7 +495,6 @@ median  % 中位数
 mean    % 平均值 
 std     % 标准差
 perms(x) % x 元素的全排列
-
 ```
 
 ## 相关资料

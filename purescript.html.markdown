@@ -17,7 +17,6 @@ will require "paste" mode (`:paste` followed by multiple lines, terminated by
 ^D).
 
 ```haskell
-
 --
 -- 1. Primitive datatypes that corresponds to their JavaScript
 -- equivalents at runtime.
@@ -59,9 +58,9 @@ compare 3 2 -- GT
 true && (9 >= 19 || 1 < 2) -- true
 
 -- Strings
-"Hellow" :: String -- "Hellow"
+"Hello" :: String -- "Hello"
 -- Multiline string without newlines, to run in PSCi use "paste" mode.
-"Hellow\
+"Hello\
 \orld" -- "Helloworld"
 -- Multiline string with newlines
 """Hello
@@ -207,5 +206,4 @@ product (1..10) -- 3628800
 -- Testing with predicate
 any even [1,2,3] -- true
 all even [1,2,3] -- false
-
 ```

@@ -2,15 +2,14 @@
 language: Smalltalk
 filename: smalltalk.st
 contributors:
-    - ["Jigyasa Grover", "https://github.com/jigyasa-grover"]
+    - ["Jigyasa Grover", "https://jigyasa-grover.github.io"]
     - ["tim Rowledge", "tim@rowledge.org"]
 ---
+<blockquote>Every effort has been made in the preparation of this material to ensure the accuracy and completeness of the information presented. However, no guarantee is given nor responsibility taken for errors or omissions. In case of any error, questions or suggestions on reach out to me at <a href="https://jigyasa-grover.github.io" target="_blank">jigyasa-grover.github.io</a> or drop me an e-mail at <a href="mailto:grover.jigyasa1@gmail.com" target="_blank">grover[dot]jigyasa1[at]gmail.com</a>.</blockquote>
 
 - Smalltalk is a fully object-oriented, dynamically typed, reflective programming language with no 'non-object' types.
 - Smalltalk was created as the language to underpin the "new world" of computing exemplified by "human–computer symbiosis."
 - It was designed and created in part for educational use, more so for constructionist learning, at the Learning Research Group (LRG) of Xerox PARC by Alan Kay, Dan Ingalls, Adele Goldberg, Ted Kaehler, Scott Wallace, and others during the 1970s.
-
-`Feedback highly appreciated! Reach me at [@jigyasa_grover](https://twitter.com/jigyasa_grover) or send me an e-mail at grover.jigyasa1@gmail.com.`
 
 ## The Basics
 
@@ -60,7 +59,7 @@ doSomethingWith: argumentObject
 
 Everything here except the `^` involves sending more messages. Event the `ifTrue:` that you might think is a language control structure is just Smalltalk code.
 
-We start by sending `size` to `self`. `self` is the object currently running the code - so in this case it is the myObject we started with. `size` is a very common message that we might anticipate tells us something about how big an object is; you could look it up with the Smalltalk tools very simply. The result we get is then sent the message `>` with the plain old integer 4 (which is an object too; no strange primitive types to pollute the system here) and nobody should be surprised the `>` is a comparison that answers true or false. That boolean (which is actually a Boolean object in Smalltalk) is sent the message `ifTrue:` with the block of code between the `[]` as its argument; obvioulsy a true boolean might be expected to run that block of code and a false to ignore it. 
+We start by sending `size` to `self`. `self` is the object currently running the code - so in this case it is the myObject we started with. `size` is a very common message that we might anticipate tells us something about how big an object is; you could look it up with the Smalltalk tools very simply. The result we get is then sent the message `>` with the plain old integer 4 (which is an object too; no strange primitive types to pollute the system here) and nobody should be surprised the `>` is a comparison that answers true or false. That boolean (which is actually a Boolean object in Smalltalk) is sent the message `ifTrue:` with the block of code between the `[]` as its argument; obviously a true boolean might be expected to run that block of code and a false to ignore it. 
 
 If the block is run then we do some more message sending to the argument object and noting the `^` we return the answer back to our starting point and it gets assigned to `result`. If the block is ignored we seem to run out of code and so `self` is returned and assigned to `result`.
 
@@ -162,7 +161,7 @@ b := (x < 5) xor: (y > 1).             "test if one true and other false"
 b := 5 between: 3 and: 12.             "between (inclusive)"
 b := 123 isKindOf: Number.             "test if object is class or subclass of"
 b := 123 isMemberOf: SmallInteger.     "test if object is type of class"
-b := 123 respondsTo: sqrt.             "test if object responds to message"
+b := 123 respondsTo: #sqrt.             "test if object responds to message"
 b := x isNil.                          "test if object is nil"
 b := x isZero.                         "test if number is zero"
 b := x positive.                       "test if number is positive"

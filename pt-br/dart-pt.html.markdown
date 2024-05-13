@@ -3,15 +3,16 @@ language: dart
 filename: learndart-pt.dart
 contributors:
     - ["Joao Pedrosa", "https://github.com/jpedrosa/"]
+    - ["Hélio Oliveira", "https://github.com/insign/"]
 translators:
     - ["Junior Damacena", "https://github.com/jdamacena/"]
 lang: pt-br
 ---
 
 Dart é uma novata no reino das linguagens de programação.
-Ela empresta muito de outras linguagens mais conhecidas, e tem a meta de não se diferenciar muito de seu irmão, JavaScript. Assim como JavaScript, Dart foi pensada para oferecer grande integração com o Browser.
+Ela absorve muitas teorias de outras linguagens mais conhecidas, e tem a meta de não se diferenciar muito de seu irmão, JavaScript. Assim como JavaScript, Dart foi pensada para oferecer grande integração com o navegador.
 
-A característica mais controversa da Dart é a sua Tipagem Opcional, ou seja, não é obrigatório declarar tipos.
+As variáveis em Dart tem tipos, mas não é obrigatório declarar devido à função de [detecção automática](https://dart.dev/guides/language/type-system#type-inference).
 
 ```dart
 import "dart:collection";
@@ -494,7 +495,6 @@ main() {
     example27, example28, example29, example30
     ].forEach((ef) => ef());
 }
-
 ```
 
 ## Continue lendo

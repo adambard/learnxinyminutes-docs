@@ -6,36 +6,37 @@ translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
     - ["Gabriele Luz", "https://github.com/gabrieleluz"]
     - ["Monique Baptista", "https://github.com/bfmonique"]
+    - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
 
-lang: pt-br    
+lang: pt-br
 filename: learnmarkdown-pt.md
 ---
 
-Markdown foi criado por John Gruber in 2004. Originado para ser fácil de ler e 
-escrever sintaxe que converte facilmente em HTML (hoje, suporta outros formatos também).
+O Markdown foi lançado por John Gruber em 2004. Criado para ser uma sintaxe
+fácil de ler e escrever e que é facilmente convertida em HTML (hoje, suporta
+outros formatos também).
 
-Dê-me feedback tanto quanto você quiser! / Sinta-se livre para fazer uma bifurcação (fork) e 
-puxar o projeto (pull request)
+O Markdown varia em termos de implementação de um parser para outro. Esse guia
+irá tentar deixar explícito quando os recursos são universais ou quando são
+específicos para um parser em específico.
 
 ## Elementos HTML
-Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
+O Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é
 um arquivo Markdown válido.
+
 ```md
-<!-- Markdown é um superconjunto do HTML, de modo que qualquer arquivo HTML é 
-um arquivo Markdown válido. Isso significa que nós podemos usar elementos HTML 
-em Markdown, como o elemento de comentário, e eles não serão afetados pelo analisador
-de remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown, você
-não pode usar sintaxe de remarcação dentro desse conteúdo do elemento.-->
-
-<!--A maneira como o Markdown é analisado varia de software para software.
-Este guia vai tentar esclarecer quando as características são universais, ou quando eles são específicos para um determinado interpretador -->
-
+<!--Isso significa que nós podemos usar elementos HTML em Markdown, como o
+elemento de comentário, e eles não serão afetados pelo analisador de
+remarcação. No entanto, se você criar um elemento HTML em seu arquivo Markdown,
+você não pode usar sintaxe de remarcação dentro do conteúdo desse elemento.-->
+```
 
 ## Cabeçalhos
 
 Você pode criar elementos HTML `<h1>` até `<h6>` facilmente antecedendo o texto
-que deseja estar nesse elemento por um número de hashes (#)
+que deseja estar nesse elemento por um número de cerquilhas (#).
 
+```md
 # Isto é um cabeçalho <h1>
 ## Isto é um cabeçalho <h2>
 ### Isto é um cabeçalho <h3>
@@ -44,7 +45,7 @@ que deseja estar nesse elemento por um número de hashes (#)
 ###### Isto é um cabeçalho <h6>
 ```
 
-Markdown também nos fornece duas maneiras alternativas de indicar h1 e h2
+Markdown também nos fornece duas maneiras alternativas de indicar h1 e h2.
 
 ```md
 Isto é um cabeçalho h1
@@ -55,21 +56,22 @@ Isto é um cabeçalho h2
 ```
 
 ## Estilos de texto simples
-O texto pode ser facilmente denominado como marcação itálico, negrito ou tachado usando:
+
+O texto pode ser facilmente estilizado como itálico ou negrito usando Markdown.
 
 ```md
 *Este texto está em itálico*
 _E este também está._
 
 **Este texto está em negrito**
-__E este também está._
+__E este também está.__
 
 ***Este texto está em negrito e itálico.***
 **_E este também está_**
-*--Danouse! Este também__*
+*__Danou-se! Este também__*
 ```
 
-Em GitHub Flavored Markdown, que é usado para processar arquivos Markdown 
+No GitHub Flavored Markdown, que é usado para processar arquivos Markdown
 GitHub, nós também temos:
 
 ```md
@@ -77,43 +79,46 @@ GitHub, nós também temos:
 ```
 
 ## Parágrafos
-Os parágrafos estão uma ou várias linhas adjacentes de texto separadas por 
+Os parágrafos estão em uma ou várias linhas adjacentes de texto separadas por
 uma ou múltiplas linhas em branco.
 
 ```md
 Este é um parágrafo. Eu estou digitando em um parágrafo, não é legal?
 
 Agora, eu estou no parágrafo 2.
-... Ainda continuo no parágrafo 2! :)
+Ainda continuo no parágrafo 2!
 
-Eu estou no parágrafo três.
+
+Eu estou no parágrafo três!
 ```
 
-Se você quiser inserir uma tag HTML `<br />`, você pode acabar com um parágrafo 
-com dois ou mais espaços e, em seguida, começar um novo parágrafo
+Se você quiser inserir uma tag HTML `<br />`, você pode acabar com um parágrafo
+com dois ou mais espaços e, em seguida, começar um novo parágrafo.
 
 ```md
-Termino com dois espaços (destacar-me para vê-los). 
+Termino com dois espaços (selecione essa linha para vê-los).  
 
 Há um <br /> acima de mim!
 ```
 
-
-Bloco de citações são fáceis e feito com o caractere >.
+Blocos de citações são fáceis e feitos com o caractere >.
 
 ```md
-> Este é um bloco de citação. Você pode 
-> Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você pode
-> deixar suas linhas ficarem muito longas e quebrarem por conta própria. Não faz diferença, 
-> desde que eles começam com um `>`.
-	
+> Este é um bloco de citação. Você pode
+> Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você
+> pode deixar suas linhas ficarem muito longas e quebrarem por conta própria.
+> Não faz diferença, desde que elas comecem com um `>`.
 
-> Você também pode usar mais de um nível 
+> Você também pode usar mais de um nível
 >> De recuo?
+> O quão legal é isso?
+
 ```
 
 ## Listas
-As listas não ordenadas podem ser feitas usando asteriscos, positivos ou hífens
+
+As listas não ordenadas podem ser feitas usando asteriscos, sinais de positivo
+ou hífens.
 
 ```md
 * Item
@@ -141,18 +146,18 @@ Listas ordenadas são feitas com um número seguido por um ponto.
 3. Item três
 ```
 
-<!-- Você não tem poder para rotular os itens corretamente e a remarcação ainda deixará os 
-itens em ordem, mas isso pode não ser uma boa idéia -->
-
+Você não precisa sequer rotular os itens corretamente e o Markdown ainda
+assim deixará os itens em ordem, mas isso pode não ser uma boa idéia.
 
 ```md
 1. Item um
 1. Item dois
 1. Item três
 ```
+
 (Isto é processado da mesma forma que o exemplo acima)
 
-Você também pode usar sublistas
+Você também pode usar sublistas.
 
 ```md
 1. Item um
@@ -163,83 +168,81 @@ Você também pode usar sublistas
 4. Item quatro
 ```
 
-Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) de HTML
+Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) do
+HTML.
 
 ```md
-As caixas abaixo sem o 'x' são checkboxes HTML desmarcadas
-- [ ] Primeira tarefa a completar
+As caixas abaixo sem o 'x' são checkboxes HTML desmarcadas.
+- [ ] Primeira tarefa a completar.
 - [ ] Segunda tarefa a completar
-A caixa de seleção abaixo será exibida como uma checkbox HTML marcada
+A caixa de seleção abaixo será exibida como uma checkbox HTML marcada.
 - [x] Essa tarefa foi completa
-
 ```
-
 
 ## Blocos de código
-Você pode indicar um bloco de código (que utiliza o elemento `<code>`) pelo recuo
-uma linha com quatro espaços ou uma guia
+
+Você pode indicar um bloco de código (que utiliza o elemento `<code>`) através
+de indentação com quatro espaços ou uma tabulação.
+
 ```md
-	Isto é código
-	É assim, sacou?
-	
+    Isto é código
+    É assim, sacou?
 ```
 
-Você pode também re-guia (ou adicionar mais quatro espaços adicionais) para o recuo 
-dentro do seu código
+Você pode também adicionar mais tabulações (ou adicionar mais quatro espaços
+adicionais) para indentação no seu código.
 
 ```md
-	my_array.each do |item|
-        puts item
-    end	
- ```
-
-Código embutido pode ser criada usando o caractere de crase `` ` ``
-
-```md
-John não sabia nem o que o função `goto()` fazia!
+    my_array.each do |item|
+      puts item
+    end
 ```
 
-Em GitHub Flavored Markdown, você pode usar uma sintaxe especial para o código
+Código embutido pode ser criado usando o caractere de crase `` ` ``.
+
 ```md
-	``` ruby
-	def foobar
-    	puts "Hello world!"
-	end
-	```
+John não sabia nem o que a função `go_to()` fazia!
 ```
-=======
-\`\`\`ruby <!-- exceto remover essas barras invertidas quando você faz isso, apenas ```
-ruby! --> 
+
+No GitHub Flavored Markdown, você pode usar uma sintaxe especial para código.
+
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Olá mundo!"
 end
-\`\`\` <!-- Aqui também, não use barras invertidas, apenas ``` -->
+```
+````
 
-O texto acima não requer recuo, além disso o GitHub vai usar a sintaxe highlight da linguagem que você especificar após a \`\`\`.
+O texto acima não requer indentação, além disso o GitHub vai usar o destaque
+de sintaxe da linguagem qeu você especificar após a tag <code>```</code>.
 
 ## Linha Horizontal
-Linhas horizontais são facilmente adicionados com três ou mais asteriscos ou hífens,
-com ou sem espaços.
+
+Linhas horizontais são facilmente adicionadas com três ou mais asteriscos ou
+hífens, com ou sem espaços.
 
 ```md
 ***
 ---
-- - - 
+- - -
 ****************
 ```
 
 ## Links
-Uma das melhores coisas sobre a marcação é o quão fácil é fazer ligações. Colocar 
-o texto a ser exibido entre parênteses rígidos [] seguido pela url em parênteses ()
+
+Uma das melhores coisas sobre o Mardkwon é o quão fácil é criar links.
+Coloque o texto a ser exibido entre colchetes [] seguido pela url entre
+parênteses ()
 
 ```md
-[Click aqui!](http://test.com/)
+[Clique aqui!](http://test.com/)
 ```
 
-Você também pode adicionar um título link usando aspas dentro dos parênteses
+Você também pode adicionar um título ao link usando aspas dentro dos parênteses.
 
 ```md
-[Click aqui!](http://test.com/ "Link para Test.com")
+[Cliqueaqui!](http://test.com/ "Link para Test.com")
 ```
 
 Caminhos relativos funcionam também.
@@ -248,76 +251,110 @@ Caminhos relativos funcionam também.
 [Ir para música](/música/).
 ```
 
-Markdown também suporta ligações de estilo de referência
+O Markdown também suporta links para referências no texto.
 
 ```md
-[Clique neste link] [link1] para mais informações sobre isso!
-[Além disso, verifique este link] [foobar] se você quiser.
+[Clique nesse link][link1] para mais informações!
+[Também cheque esse link][foobar] se você quiser.
 
 [link1]: http://test.com/ "Legal!"
-[foobar]: http://foobar.biz/ "OK!"
+[link2r]: http://foobar.biz/ "Certo!"
 ```
 
-O título também pode estar entre aspas simples ou entre parênteses, ou omitido 
-inteiramente. As referências podem estar em qualquer lugar no documento e os IDs de referência 
-pode ser qualquer um, desde que eles são únicos.
+O título também pode estar entre aspas simples ou entre parênteses, ou omitido
+inteiramente. As referências podem estar em qualquer lugar no documento e os
+IDs de referência podem ser qualquer um, desde que eles sejam únicos.
 
-Existe também a "nomeação implicita", que permite que você use o texto do link como o id
+Existe também a "nomeação implícita", que permite que você use o texto do link
+como o id:
 
 ```md
-[Este] [] é um link. 
+[Isso][] é um link.
 
-[este]: http://thisisalink.com/ 
+[Isso]: http://thisisalink.com/
 ```
 
-Mas não são usados normalmente
+Mas geralmente não são usados.
+
+### Tabela de conteúdo
+
+Alguns sabores de Markdown fazem inclusive uso de combinação de listas, links e
+cabeçalhos de modo a criar uma tabela de conteúdo. Nesse caso, títulos em
+cabeçalhos são precedidos de (`#`) e são usados como ids para links. Se o
+cabeçalho consistir de várias palavras, elas serão conectadas por hífens (`-`),
+que também substitui alguns caracteres especiais. (Embora alguns outros
+carácteres especiais sejam omitidos.)
+
+```md
+- [Cabeçalho](#cabecalho)
+- [Um outro cabeçalho](#outro-cabecalho)
+- [Capítulo](#capitulo)
+  - [Subcapítulo <h3 />](#subcapitulo-h3-)
+```
+
+De qualquer modo, esse é um recurso que talvez não funcione em todas as
+implementações do Markdown da mesma forma.
 
 ## Imagens
-As imagens são feitas da mesma forma que as ligações, mas com um ponto de exclamação na frente!
+
+As imagens são feitas da mesma forma que os links, mas com um ponto de
+exclamação na frente!
 
 ```md
-![Este é pairar-texto (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional") 
+![Este é alt-text (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional")
 ```
 
 E estilo de referência funciona como esperado
 
 ```md
-![Este é o pairar-texto.][Myimage] 
+![Esse é o alt-attribute.][myimage]
 
-[myimage]: relative/urls/legal/image.jpg "se você precisa de um título, é aqui" 
+[Minha imagem]: relative/urls/cool/image.jpg "se precisar de um título, está aqui"
 ```
 
-## Miscelânea 
-### Auto-links 
+## Miscelânea
+
+### Auto-links
 
 ```md
-<http://testwebsite.com/> é equivalente a 
-[http://testwebsite.com/](http://testwebsite.com/) 
+<http://testwebsite.com/> é equivalente a
+[http://testwebsite.com/](http://testwebsite.com/)
 ```
 
 ### Auto-links para e-mails
 
 ```md
-<foo@bar.com> 
+<foo@bar.com>
 ```
 
 ### Escapando caracteres
 
-Quero digitar * Este texto entre asteriscos *, mas eu não quero que ele seja 
+Quero digitar *Este texto entre asteriscos*, mas eu não quero que ele seja
 em itálico, então eu faço o seguinte: \*Este texto entre asteriscos \*.
 
-### Tabelas 
-Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente 
-complicadas, mas se você realmente quer:
-```md
+### Teclas do teclado
 
+No GitHub Flavored Markdown, você pode usar a tag `<kbd>` para representar uma
+tecla do teclado.
+
+```md
+Seu computador travou? Tente apertar
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
+```
+
+### Tabelas
+
+Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente
+complicadas, mas se você realmente quer:
+
+```md
 | Col1         | Col2     | Col3          |
 | :----------- | :------: | ------------: |
 | esquerda-alin| Centrado | direita-alinh |
 | blah         | blah     | blah          |
 ```
 
-Ou, para os mesmos resultados 
+Ou, para os mesmos resultados
 
 ```md
 Col 1 | Col2 | Col3
@@ -325,8 +362,22 @@ Col 1 | Col2 | Col3
 Ugh isso é tão feio | faça isto | parar
 ```
 
-Fim!
+## Markdownlint
+
+De modo a simplificar o trabalho com Markdown e padronizar estilo de código, o
+`Markdownlint` foi criado. Essa ferramenta está disponível como plugin para
+algumas interfaces de desenvolvimento (IDEs) e pode ser utilizada como um
+utilitário para garantir validade e legibilidade do Markdown.
 
 ---
-Para mais informações, confira o post oficial de John Gruber de sintaxe [aqui](http://daringfireball.net/projects/markdown/syntax)
-e de Adam Pritchard grande cheatsheet [aqui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+
+## Leitura complementar
+
+Para mais informações, confira o post oficial de John Gruber sobre sintaxe [aqui](http://daringfireball.net/projects/markdown/syntax)
+e o do cheatsheet do Adam Pritchard [aqui](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+
+Se você quiser aprender mais sobre recursos de alguns sabores específicos de
+Markdown, veja:
+
+- [GitHub Flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitLab Flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)

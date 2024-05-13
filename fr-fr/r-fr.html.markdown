@@ -16,7 +16,6 @@ On peut également exécuter des commmandes `R` au sein d'un document LaTeX.
 
 
 ```r
-
 # Les commentaires commencent avec des symboles numériques.
 
 # Il n'est pas possible de faire des commentaires multilignes,
@@ -736,9 +735,6 @@ pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()
 # ggplot2 a une documentation excellente
 #(disponible sur http://docs.ggplot2.org/current/)
-
-
-
 ```
 
 ## Comment obtenir R ?

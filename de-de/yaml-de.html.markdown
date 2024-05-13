@@ -10,7 +10,7 @@ lang: de-de
 
 YAML ist eine Sprache zur Datenserialisierung, die sofort von Menschenhand geschrieben und gelesen werden kann.
 
-YAML ist ein Erweiterung von JSON mit der Erweiterung um syntaktisch wichtige Zeilenumbrüche und Einrückungen, ähnlich wie auch in Python geschrieben werden können. Anders als in Python allerdings erlaubt YAML keine Tabulator-Zeichen.
+YAML ist eine Erweiterung von JSON mit der Erweiterung um syntaktisch wichtige Zeilenumbrüche und Einrückungen, ähnlich wie auch in Python geschrieben werden können. Anders als in Python allerdings erlaubt YAML keine Tabulator-Zeichen.
 
 ```yaml
 # Kommentare in YAML schauen so aus.
@@ -29,7 +29,7 @@ boolean: true
 null_Wert: null
 Schlüssel mit Leerzeichen: value
 # Strings müssen nicht immer mit Anführungszeichen umgeben sein, können aber:
-jedoch: "Ein String in Anführungzeichen"
+jedoch: "Ein String in Anführungszeichen"
 "Ein Schlüssel in Anführungszeichen": "Nützlich, wenn du einen Doppelpunkt im Schlüssel haben willst."
 
 # Mehrzeilige Strings schreibst du am besten als 'literal block' (| gefolgt vom Text)
@@ -38,7 +38,7 @@ literal_block: |
     Dieser ganze Block an Text ist der Wert vom Schlüssel literal_block,
     mit Erhaltung der Zeilenumbrüche.
 
-    Das Literal fährt solange fort bis dieses unverbeult ist und die vorherschende Einrückung wird 
+    Das Literal fährt solange fort bis dieses unverbeult ist und die vorherrschende Einrückung wird 
     gekürzt.
 
         Zeilen, die weiter eingerückt sind, behalten den Rest ihrer Einrückung -
@@ -112,7 +112,7 @@ python_komplexe_Zahlen: !!python/komplex 1+2j
 ####################
 
 # Strings und Zahlen sind nicht die einzigen Skalare, welche YAML versteht.
-# ISO-formatierte Datumsangaben and Zeiangaben können ebenso geparsed werden.
+# ISO-formatierte Datumsangaben und Zeitangaben können ebenso geparsed werden.
 DatumZeit: 2001-12-15T02:59:43.1Z
 DatumZeit_mit_Leerzeichen: 2001-12-14 21:59:43.10 -5
 Datum: 2002-12-14

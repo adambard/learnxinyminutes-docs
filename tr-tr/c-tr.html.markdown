@@ -1,7 +1,7 @@
 ---
-name: c
+name: C
 category: language
-language: c
+language: C
 filename: learnc-tr.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
@@ -470,7 +470,6 @@ typedef void (*my_fnp_type)(char *);
 // Gerçek bir işaretçi tanımlandığı zaman ki kullanımı:
 // ...
 // my_fnp_type f; 
-
 ```
 
 ## Daha Fazla Okuma Listesi

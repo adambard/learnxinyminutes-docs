@@ -1,5 +1,5 @@
 ---
-language: c++
+language: C++
 filename: learncpp.cpp
 contributors:
     - ["Steven Basart", "https://github.com/xksteven"]
@@ -158,6 +158,10 @@ namespace Second {
     {
         printf("This is Second::foo\n");
     }
+    void bar()
+    {
+    	printf("This is Second::bar\n");
+    }
 }
 
 void foo()
@@ -168,10 +172,12 @@ void foo()
 int main()
 {
     // Includes all symbols from namespace Second into the current scope. Note
-    // that simply foo() no longer works, since it is now ambiguous whether
-    // we're calling the foo in namespace Second or the top level.
+    // that while bar() works, simply using foo() no longer works, since it is
+    // now ambiguous whether we're calling the foo in namespace Second or the
+    // top level.
     using namespace Second;
 
+    bar(); // prints "This is Second::bar"
     Second::foo(); // prints "This is Second::foo"
     First::Nested::foo(); // prints "This is First::Nested::foo"
     ::foo(); // prints "This is global foo"
@@ -222,10 +228,19 @@ cout << myString + myOtherString; // "Hello World"
 
 cout << myString + " You"; // "Hello You"
 
+// C++ string length can be found from either string::length() or string::size()
+cout << myString.length() + myOtherString.size(); // Outputs 11 (= 5 + 6).
+
 // C++ strings are mutable.
 myString.append(" Dog");
 cout << myString; // "Hello Dog"
 
+// C++ can handle C-style strings with related functions using cstrings
+#include <cstring>
+
+char myOldString[10] = "Hello CPP";
+cout << myOldString;
+cout << "Length = " << strlen(myOldString); // Length = 9
 
 /////////////
 // References
@@ -1190,9 +1205,8 @@ compl 4    // Performs a bitwise not
 4 bitor 3  // Performs bitwise or
 4 bitand 3 // Performs bitwise and
 4 xor 3    // Performs bitwise xor
-
-
 ```
+
 Further Reading:
 
 * An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).

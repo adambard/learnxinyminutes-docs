@@ -1,7 +1,7 @@
 ---
 language: erlang
 contributors:
-    - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
+    - ["Giovanni Cappellotto", "http://giovanni.curlybrackets.it/"]
 filename: learnerlang.erl
 ---
 
@@ -335,7 +335,6 @@ fib:test()
 % ```
 % rebar eunit
 % ```
-
 ```
 
 ## References
