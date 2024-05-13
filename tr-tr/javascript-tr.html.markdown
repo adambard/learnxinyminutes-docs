@@ -1,12 +1,15 @@
 ---
 language: javascript
 contributors:
-  - ["Kaan Kaçar", "https://github.com/kaankacar"]
+    - ["Leigh Brenecki", "https://leigh.net.au"]
+    - ["Ariel Krakowski", "http://www.learneroo.com"]
+translators:
+    - ["Kaan Kaçar", "https://github.com/kaankacar"]
 filename: learnjavascript-tr.js
 lang: tr-tr
 ---
 
-JavaScript, Brendan Eich tarafından 1995 yılında oluşturuldu. Başlangıçta, daha karmaşık web uygulamaları için Java'nın kullanıldığı siteler için daha basit bir betik dili olarak tasarlandı, ancak Web sayfalarıyla sıkı entegrasyonu ve tarayıcılardaki yerleşik desteği nedeniyle Java'dan daha yaygın hale geldi. 
+JavaScript, Brendan Eich tarafından 1995 yılında oluşturuldu. Başlangıçta, daha karmaşık web uygulamaları için Java'nın kullanıldığı siteler için daha basit bir betik dili olarak tasarlandı, ancak Web sayfalarıyla sıkı entegrasyonu ve tarayıcılardaki yerleşik desteği nedeniyle Java'dan daha yaygın hale geldi.
 
 Ancak, JavaScript yalnızca web tarayıcılarıyla sınırlı değildir: Google Chrome'un V8 JavaScript motoru için bağımsız bir çalışma ortamı sağlayan Node.js giderek daha popüler hale gelmektedir.
 
@@ -297,7 +300,7 @@ fonksiyonum("foo"); // = "FOO"
 
 // Dikkat edilmesi gereken bir nokta, döndürülecek değerin `return` anahtar kelimesiyle
 // aynı satırda başlaması gerektiğidir. Aksi takdirde, otomatik noktalı virgül ekleme
-// nedeniyle her zaman `undefined` döndürülür. 
+// nedeniyle her zaman `undefined` döndürülür.
 function fonksiyonum(){
     return // <- buraya otomatik olarak noktalı virgül eklenir
     {buBir: 'nesne haritası'};
@@ -536,9 +539,9 @@ if (Object.create === undefined){ // mevcut ise üzerine yazma
     };
 }
 
-// ES6 
+// ES6
 
-// "let" anahtar kelimesi, değişkenleri bir fonksiyon kapsamı yerine 
+// "let" anahtar kelimesi, değişkenleri bir fonksiyon kapsamı yerine
 // bir leksikal kapsamda tanımlamanıza olanak tanır, var anahtar kelimesi gibi.
 let name = "Billy";
 
@@ -589,12 +592,9 @@ MDN'nin [A re-introduction to JavaScript(JavaScript'e Yeniden Giriş)][2] başl�
 
 [JavaScript Garden][6] tüm detaylarının derinlemesine incelendiği bir rehberdir.
 
-[Yusuf Sezer][7] Hem Türkçe hem yazılı olsun diyenler için kapsamlı bir kaynak. 
+[Yusuf Sezer][7] Hem Türkçe hem yazılı olsun diyenler için kapsamlı bir kaynak.
 
-[BTK Akademi][8] BTK Akademi Javascript kursu 
-
-
-
+[BTK Akademi][8] BTK Akademi Javascript kursu
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
