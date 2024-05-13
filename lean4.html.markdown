@@ -3,6 +3,7 @@ language: "Lean 4"
 filename: learnlean4.lean
 contributors:
     - ["Balagopal Komarath", "https://bkomarath.rbgo.in/"]
+    - ["Ferinko", "https://github.com/Ferinko"]
 ---
 
 [Lean 4](https://lean-lang.org/) is a dependently typed functional programming
