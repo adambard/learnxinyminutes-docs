@@ -8,12 +8,11 @@ translators:
 lang: de-de
 ---
 
-Clojure ist ein Lispdialekt, der für die Java Virtual Maschine entwickelt worden ist. Sie hat eine stärkere Betonung auf pure [funktionale Programmierung](https://en.wikipedia.org/wiki/Functional_programming) als Common Lisp. Jedoch besitzt sie je nach Bedarf mehrere [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) Werkzeuge zur Handhabung von Zustand.
+Clojure ist ein Lispdialekt, der für die Java Virtual Maschine entwickelt worden ist. Sie hat eine stärkere Betonung auf reine [funktionale Programmierung](https://en.wikipedia.org/wiki/Functional_programming) als Common Lisp. Jedoch besitzt sie je nach Bedarf mehrere [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) Werkzeuge zur Handhabung von Zustand.
 
 Diese Verknüpfung erlaubt es parallele Verarbeitung sehr einfach und häufig automatisch zu verarbeiten.
 
 (Du brauchst die Clojure Version 1.2 oder neuer)
-
 
 ```clojure
 ; Kommentare starten mit einem Semikolon.
@@ -180,7 +179,7 @@ x ; => 1
 (class (hash-map :a 1 :b 2 :c 3)) ; => clojure.lang.PersistentHashMap
 
 ; Arraymaps werden durch die meisten Operatioen automatisch zu Hashmaps,
-; wenn Sie groß genug werden. Das heißt du musst dich nicht darum sorgen.
+; sobald sie groß genug werden. Das heißt du musst dich nicht darum sorgen.
 
 ; Maps können einen beliebigen Hash-Typ als Schlüssel verwenden, in der Regel
 ; sind jedoch Keywords am besten. Keywords sind wie Strings, jedoch besitzen sie
