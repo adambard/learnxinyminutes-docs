@@ -81,7 +81,7 @@ Window {
         // You can then declare functions with the same name as the signal
         // handler.
         function onClicked() {
-            console.log("objSignals.clicked() signal is handler from Connections.")
+            console.log("objSignals.clicked() signal is handled from Connections.")
         }
     }
 
