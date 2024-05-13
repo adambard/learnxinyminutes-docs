@@ -715,7 +715,7 @@ first each (1 2 3;4 5 6;7 8 9)
 {x + y}\[1 2 3 4 5] / => 1 3 6 10 15 (i.e. the running sum)
 {x + y}/[1 2 3 4 5] / => 15 (only the final result)
 
-/ There are other iterators (previously adverbs) and uses, this is only intended as quick overview
+/ There are other iterators and uses, this is only intended as quick overview
 / http://code.kx.com/q4m3/6_Functions/#67-iterators
 
 ////// Scripts //////
