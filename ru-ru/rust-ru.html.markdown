@@ -300,7 +300,6 @@ fn main() {
     // ref_var2 имеет тип &mut i32, т.е. он содержит ссылку на i32, а не значение.
     // var2 = 2; // не скомпилируется, т.к. эта переменная уже была заимствована ранее
 } 
-
 ```
 
 ## Более подробная информация о языке
@@ -309,5 +308,5 @@ fn main() {
 [The Rust Programming Language](http://doc.rust-lang.org/book/index.html) 
 
 Для компиляции программ при изучении языка весьма удобно использовать 
-[Rust playpen](http://play.rust-lang.org). 
+[Rust Playground](https://play.rust-lang.org). 
 Множество ресурсов на разных языках можно найти в [этом проекте](https://github.com/ctjhoa/rust-learning).

@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQt
+category: framework
+framework: PyQt
 language: Python
 filename: learnqt-id.py
 contributors:
@@ -15,10 +15,10 @@ lang: id-id
 
 Tulisan ini diadaptasi dari **Intro Qt untuk C++** oleh [Aleksey Kholovchuk](https://github.com/vortexxx192). Kode-kode yang tertulis di sini akan menghasilkan fungsionalitas yang sama. Bedanya, versi ini dibangun menggunakan **PyQt**!
 
-```Python
+```python
 import sys
 from PyQt4 import QtGui
-	
+
 def window():
 # Buat objek aplikasi
     app = QtGui.QApplication(sys.argv)
@@ -45,7 +45,7 @@ if __name__ == '__main__':
 Untuk menunjukkan beberapa fitur yang lebih canggih di **PyQt**, kita akan membangun elemen tambahan.
 Di sini, kita akan membuat Kotak Popup Dialog, yang berguna untuk meminta pengguna untuk mengkonfirmasi keputusan atau untuk menampilkan informasi.
 
-```Python 
+```python
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *

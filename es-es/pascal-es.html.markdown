@@ -200,6 +200,5 @@ Begin // bloque de programa principal
     // muestra i!
     writeln('dummy = ', dummy); // siempre muestra '3' ya que dummy no ha cambiado.
 End.
-
 ```
 

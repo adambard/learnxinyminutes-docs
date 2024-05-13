@@ -21,7 +21,6 @@ Le programme make a plusieurs variantes. Dans ce tutoriel, nous utiliserons
 l'implémentation standard : GNU make.
 
 ```make
-
 # Ceci est un commentaire.
 
 # Un makefile devrait être nommé "Makefile" (avec ou sans la

@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: Statistical Computing with Python
+category: framework
+framework: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 ---
@@ -8,9 +8,6 @@ contributors:
 This is a tutorial on how to do some typical statistical programming tasks using Python. It's intended for people basically familiar with Python and experienced at statistical programming in a language like R, Stata, SAS, SPSS, or MATLAB.
 
 ```python
-
-
-
 # 0. Getting set up ====
 
 """ To get started, pip install the following: jupyter, numpy, scipy, pandas,
@@ -226,7 +223,6 @@ sns.lmplot("BirthY", "EstAge", data=hre)
     To see a version of the Holy Roman Emperors analysis using R, see
       - http://github.com/e99n09/R-notes/blob/master/holy_roman_emperors_dates.R
 """
-
 ```
 
 If you want to learn more, get _Python for Data Analysis_ by Wes McKinney. It's a superb resource and I used it as a reference when writing this tutorial.

@@ -1,0 +1,17 @@
+name: Trigger site build
+
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.repository_owner == 'adambard'
+    steps:
+      - name: Trigger site build
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT_LEARNXINYMINUTES_SITE }}
+          repository: adambard/learnxinyminutes-site
+          event-type: doc-update

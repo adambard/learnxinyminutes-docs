@@ -61,8 +61,6 @@ Tidak seperti HTML, XML tidak menyatakan bagaimana paparan atau mengformat data,
 
 <!-- Di bawah, elemen dengan dua atribut -->
 <file type="gif" id="4293">computer.gif</file>
-
-
 ```
 
 * Dokumen Format sempurna x Pengesahan
@@ -77,7 +75,6 @@ mengenai dokumen itu.
 Dengan alat ini, anda boleh menyemak data XML di luar logik aplikasi.
 
 ```xml
-
 <!-- Dibawah, anda boleh melihat versi ringkas daripada dokumen bookstore,
   dengan tambahan definisi DTD. -->
 

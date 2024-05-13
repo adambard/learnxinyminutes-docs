@@ -51,8 +51,8 @@ __En deze tekst ook!__
 **_Deze ook!_**
 *__En zelfs deze!__*
 
-<!-- In de github versie van markdown, die gebruikt wordt om markdown te renderen
-op Github, is er ook doorstrepen -->
+<!-- In de GitHub versie van markdown, die gebruikt wordt om markdown te renderen
+op GitHub, is er ook doorstrepen -->
 
 ~~Deze tekst wordt doorstreept.~~
 
@@ -142,7 +142,7 @@ Dit item zal aangevinkt zijn in de gerenderde html.
 
 John wist zelfs niet dat de `go_to()` functie bestond!
 
-<!-- In Github Markdown kan je een speciale syntax gebruiken die aangeeft welke
+<!-- In GitHub Markdown kan je een speciale syntax gebruiken die aangeeft welke
 taal gebruikt wordt in het code blok. -->
 
 \`\`\`ruby <!-- Wis de backslashes om dit te doen, juist ```ruby ! -->
@@ -151,7 +151,7 @@ def foobar
 end
 \`\`\` <!-- Hier ook, geen backslashes, juist ``` -->
 
-<!-- Voor bovenstaande tekst moet geen tab gebruikt worden. Plus, Github zal syntax
+<!-- Voor bovenstaande tekst moet geen tab gebruikt worden. Plus, GitHub zal syntax
 highlighting gebruiken voor deze specifieke taal. Hier, Ruby.
 
 <!-- Horizontale lijn (<hr />) -->
@@ -215,13 +215,13 @@ worden.
 Dit kan je oplossen met backslashes: \*dit\* staat tussen sterretjes
 
 <!-- Toetsenbord toetsen -->
-<!-- In Github Markdown, kan je <kbd> gebruiken om toetsenbord toetsen weer te geven -->
+<!-- In GitHub Markdown, kan je <kbd> gebruiken om toetsenbord toetsen weer te geven -->
 
 Loopt je computer vast? Probeer volgende toetsen combinatie:
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 
 <!-- Tabellen -->
-<!-- Tabellen zijn momenteel enkel beschikbaar in Github Markdown en zijn redelijk omslachtig.
+<!-- Tabellen zijn momenteel enkel beschikbaar in GitHub Markdown en zijn redelijk omslachtig.
 Maar als je er echt wilt toevoegen: -->
 
 | Col1             | Col2        | Col3              |

@@ -14,7 +14,6 @@ lang: pt-pt
 Scala - a linguagem escalável
 
 ```scala
-
 /*
   Prepare tudo:
 
@@ -639,7 +638,6 @@ val writer = new PrintWriter("ficheiro.txt")
 writer.write("Escrevendo linha por linha" + util.Properties.lineSeparator)
 writer.write("Outra linha aqui" + util.Properties.lineSeparator)
 writer.close()
-
 ```
 
 ## Mais recursos

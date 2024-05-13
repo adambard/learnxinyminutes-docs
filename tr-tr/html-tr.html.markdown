@@ -142,7 +142,6 @@ Kaynak, bir URL veya bilgisayarınızdaki bir dosyanın yolu olabilir.
 		<td>ikinci satırın, ikinci hücresi (sutunu)</td>
 	</tr>
 </table>
-
 ```
 
 ## Kullanım

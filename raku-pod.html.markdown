@@ -193,7 +193,7 @@ are C<print>, C<put> and C<say>.
 ### Comments
 
 Although Pod blocks are ignored by the Rakudo Raku compiler, everything
-indentified as a Pod block will be read and interpreted by Pod renderers. In
+identified as a Pod block will be read and interpreted by Pod renderers. In
 order to prevent Pod blocks from being rendered by any renderer, use the
 `=comment` directive.
 
@@ -277,6 +277,7 @@ The content terminates at the next Pod directive or the first blank line
 ```
 =BLOCK_TYPE  BLOCK_DATA
 ```
+
 For example:
 
 ```

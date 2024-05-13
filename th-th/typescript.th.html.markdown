@@ -12,7 +12,7 @@ TypeScript เป็นภาษาที่มีเป้าหมายเพ
 บทความนี้จะเน้นเฉพาะ syntax ส่วนขยายของ TypeScript ซึ่งจะไม่รวมกับที่มีใน  [JavaScript](/docs/javascript)
 
 การทดสอบเขียน TypeScript เริ่มได้ง่าย ๆ โดยเข้าไปที่
-[Playground](http://www.typescriptlang.org/Playground) ซึ่งคุณจะเขียนโค้ดพร้อม autocomplete และเห็นเลยว่ามันจะแปลงมาเป็นผลลัพธ์แบบ JavaScript อย่างไร
+[Playground](https://www.typescriptlang.org/Playground) ซึ่งคุณจะเขียนโค้ดพร้อม autocomplete และเห็นเลยว่ามันจะแปลงมาเป็นผลลัพธ์แบบ JavaScript อย่างไร
 
 ```ts
 // TypeScript มี data type พื้นฐาน 3 แบบ
@@ -71,7 +71,7 @@ interface Person {
   move(): void;
 }
 
-// Object นี้ implements "Person" interface ทำให้มันเป็นชนิด Person และมันก็มี property name และ function move() 
+// Object นี้ implements "Person" interface ทำให้มันเป็นชนิด Person และมันก็มี property name และ function move()
 let p: Person = { name: "Bobby", move: () => { } };
 // Objects นี้เป็นชนิด Person ด้วย และมี optional property หรือ age?: นั่นเอง
 let validPerson: Person = { name: "Bobby", age: 42, move: () => { } };
@@ -216,7 +216,7 @@ moreNumbers.length = 3; // Error, เพราะ length ก็ต้อง read
 numbers = moreNumbers;  // Error, method ที่ทำให้อะเรย์เปลี่ยนได้จะไม่อนุญาต
 
 // Tagged Union Types สำหรับโมเดลสเตท ที่อาจจะมีได้หลายๆ สเตท
-type State = 
+type State =
   | { type: "loading" }
   | { type: "success", value: number }
   | { type: "error", message: string };
@@ -247,13 +247,9 @@ for (const i of list) {
 for (const i in list) {
    console.log(i); // 0, 1, 2
 }
-
-
 ```
 
 ## อ่านเพิ่มเติมที่
- * [TypeScript Official website] (http://www.typescriptlang.org/)
- * [TypeScript language specifications] (https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md)
- * [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [Source Code on GitHub] (https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - repository for type definitions] (http://definitelytyped.org/)
+
+* [TypeScript Official website](https://www.typescriptlang.org/)
+* [Source Code on GitHub](https://github.com/microsoft/TypeScript)

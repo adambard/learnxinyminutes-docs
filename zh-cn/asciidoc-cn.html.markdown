@@ -1,6 +1,6 @@
 ---
 language: asciidoc
-filename: asciidoc-cn.md
+filename: asciidoc-cn.adoc
 contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
@@ -84,7 +84,6 @@ _用下划线创建斜体_
 ==== 第 3 级 <h4>
 
 ===== 第 4 级 <h5>
-
 ```
 
 列表

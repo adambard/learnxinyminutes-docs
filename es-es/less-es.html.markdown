@@ -11,9 +11,7 @@ translators:
 Less es un pre-procesador CSS, que añade características como variables, anidación, mixins y más.
 Less (y otros pre-procesadores como [Sass](http://sass-lang.com/) ayudan a los desarrolladores a escribir código mantenible y DRY (Don't Repeat Yourself).
 
-```css
-
-
+```less
 //Los comentarios de una línea son borrados cuando Less es compilado a CSS.
 
 /* Los comentarios multi-línea se mantienen. */
@@ -372,8 +370,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
-
 ```
 
 ## Practica Less

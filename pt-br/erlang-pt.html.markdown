@@ -242,7 +242,6 @@ catcher(N) ->
 % O outro é encapsular a chamada em uma expressão `catch`. Quando você captura
 % uma exceção, é convertida em uma tupla que descreve o erro.
 catcher(N) -> catch generate_exception(N).
-
 ```
 
 ## Referências

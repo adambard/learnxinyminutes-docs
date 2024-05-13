@@ -19,8 +19,6 @@ Wenn du bereits mit CSS3 vertraut bist, wirst du dir Sass relativ schnell aneign
 
 
 ```scss
-
-
 //Einzeilige Kommentare werden entfernt, wenn Sass zu CSS kompiliert wird.
 
 /* Mehrzeilige Kommentare bleiben bestehen. */
@@ -427,7 +425,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
 ```
 
 ## SASS oder Sass?

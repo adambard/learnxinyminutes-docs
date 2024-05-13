@@ -3,7 +3,7 @@ language: Hjson
 filename: learnhjson.hjson
 contributors:
   - ["MrTeferi", "https://github.com/MrTeferi"]
-lang: en
+lang: en-us
 ---
 
 Hjson is an attempt to make [JSON](https://learnxinyminutes.com/docs/json/) more human readable.
@@ -15,7 +15,7 @@ to read and edit before passing the JSON data to the machine.
 
 Let's take a look at examples to see the key syntax differences!
 
-```hjson
+```
 {
     # Comments are totally supported!
     
@@ -55,7 +55,7 @@ Let's take a look at examples to see the key syntax differences!
         Oh wait.. there is! It's called Hjson.
         '''
     
-    # Backslashes are interpretted as an escape character ONLY in quoted strings
+    # Backslashes are interpreted as an escape character ONLY in quoted strings
     slash: This will not have a new line\n
     slash-quoted: "This will definitely have a new line\n"
 

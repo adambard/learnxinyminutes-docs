@@ -380,7 +380,6 @@ foo :: Integer
 What is your name?
 Friend!
 Hello, Friend!
-
 ```
 
 Haskell 还有许多内容，包括类型类 (typeclasses) 与 Monads。这些都是令 Haskell 编程非常有趣的好东西。我们最后给出 Haskell 的一个例子，一个快速排序的实现：

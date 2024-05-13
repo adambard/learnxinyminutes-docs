@@ -187,6 +187,7 @@ $ git add ./*.java
 # You can also add everything in your working directory to the staging area.
 $ git add -A
 ```
+
 Bu yalnızca dosyayı staging area'a/index'e ekler, çalışılan dizine/repo'ya commit etmez.
 
 ### branch
@@ -443,6 +444,7 @@ Saved working directory and index state \
 ```bash
 git pull
 ```
+
 `...changes apply...`
 
 Herşeyin tamam olduğunu kontrol et
@@ -452,6 +454,7 @@ $ git status
 # On branch master
 nothing to commit, working directory clean
 ```
+
 Şu ana kadar neleri stash'lediğini `git stash list` kullanarak görebilirsin.
 Stash'lenen şeyler Son-Giren-İlk-Çıkar şeklinde tutulduğundan en son değişim
 en üste olacaktır.
@@ -462,6 +465,7 @@ stash@{0}: WIP on master: 049d078 added the index file
 stash@{1}: WIP on master: c264051 Revert "added file_size"
 stash@{2}: WIP on master: 21d80a5 added number to log
 ```
+
 Şimdi de kirli değişiklileri yığından çıkarıp uygulayalım.
 
 ```bash
@@ -540,6 +544,7 @@ Bu sana beklemediğin şekilde yanlış giden komutları geriye çevirme şansı
 ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
 2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
 ```
+
 2. Nereye reset'leyeceğini seç, şu durumda `2e6c386` veya `HEAD@{5}`
 3. 'git reset --hard HEAD@{5}' bu repo'nu seçilen head'e eşitler 
 4. Rebase'e yeniden başlayabilir veya onu yalnız bırakabilirsin.
@@ -591,4 +596,4 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
 
-* [Yeni başlayanlar için Git ve Github](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Yeni başlayanlar için Git ve GitHub](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)

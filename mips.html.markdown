@@ -111,7 +111,7 @@ gateways and routers.
     sub $t2, $t0, $t1                       # $t2 = $t0 - $t1
     mul $t2, $t0, $t1                       # $t2 = $t0 * $t1
     div $t2, $t0, $t1                       # $t2 = $t0 / $t1 (Might not be 
-                                            # supported in some versons of MARS)
+                                            # supported in some versions of MARS)
     div $t0, $t1                            # Performs $t0 / $t1. Get the 
                                             # quotient using 'mflo' and 
                                             # remainder using 'mfhi'
@@ -162,7 +162,7 @@ gateways and routers.
     blt $t0, $t1, t0_gt_t1                  # Branches when $t0 < $t1
     ble $t0, $t1, t0_gte_t1                 # Branches when $t0 <= $t1
     bltz $t0, t0_lt0                        # Branches when $t0 < 0
-    slt $s0, $t0, $t1                       # Instruction that sends a signal 
+    slt $s0, $t0, $t1                       # "Set on Less Than"
                                             # when $t0 < $t1 with result in $s0 
                                             # (1 for true)
 
@@ -186,6 +186,7 @@ gateways and routers.
     #   else
     #     max = c;
     # else
+    #   if (b > c)
     #     max = b;
     #   else
     #     max = c;
@@ -212,8 +213,9 @@ gateways and routers.
     # instruction to continue its execution
     li $t0, 0
     while:
-      bgt $t0, 10, end_while                # While $t0 is less than 10, 
+      bgt $t0, 9, end_while                 # While $t0 is less than 10, 
                                             # keep iterating
+      #actual loop content would go here
       addi $t0, $t0, 1                      # Increment the value
       j while                               # Jump back to the beginning of 
                                             # the loop
@@ -373,5 +375,4 @@ gateways and routers.
 # it really just takes whatever code that is in that file and places it where
 # the include statement is)
 .include "somefile.asm"
-
 ```

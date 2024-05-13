@@ -11,24 +11,22 @@ and released by Kx systems in 2003. q is a descendant of APL and as such is
 very terse and a little strange looking for anyone from a "C heritage" language
 background. Its expressiveness and vector oriented nature make it well suited
 to performing complex calculations on large amounts of data (while also
-encouraging some amount of [code
-golf](https://en.wikipedia.org/wiki/Code_golf)). The fundamental structure in
-the language is not the object but instead the list, and tables are built as
-collections of lists. This means - unlike most traditional RDBMS systems -
-tables are column oriented.  The language has both an in-memory and on-disk
-database built in, giving a large amount of flexibility. kdb+ is most widely
-used in the world of finance to store, analyze, process and retrieve large
+encouraging some amount of [code golf](https://en.wikipedia.org/wiki/Code_golf)).
+The fundamental structure in the language is not the object but instead the list,
+and tables are built as collections of lists. This means - unlike most traditional
+RDBMS systems - tables are column oriented.  The language has both an in-memory
+and on-disk database built in, giving a large amount of flexibility. kdb+ is most
+widely used in the world of finance to store, analyze, process and retrieve large
 time-series data sets.
 
 The terms *q* and *kdb+* are usually used interchangeably, as the two are not
 separable so this distinction is not really useful.
 
-All Feedback welcome!  You can reach me at matt.doherty@aquaq.co.uk, or Jonny
-at jonny.press@aquaq.co.uk
+To learn more about kdb+ you can join the
+[KX Community forums](https://learninghub.kx.com/forums/) or
+the [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) group.
 
-To learn more about kdb+ you can join the [Personal kdb+](https://groups.google.com/forum/#!forum/personal-kdbplus) or [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) group.
-
-```
+```q
 / Single line comments start with a forward-slash
 / These can also be used in-line, so long as at least one whitespace character
 / separates it from text to the left
@@ -47,7 +45,7 @@ To learn more about kdb+ you can join the [Personal kdb+](https://groups.google.
 / We have integers, which are 8 byte by default
 3 / => 3
 
-/ And floats, also 8 byte as standard.  Trailing f distinguishes from int
+/ And floats, also 8 byte as standard. Trailing f distinguishes from int
 3.0 / => 3f
 
 / 4 byte numerical types can also be specified with trailing chars
@@ -560,7 +558,7 @@ select avg height by sex from t
 / => f  | 160
 / => m  | 177.5
 
-/ If no aggreation function is specified, last is assumed
+/ If no aggregation function is specified, last is assumed
 select by sex from t
 / => sex| name   age height
 / => ---| -----------------
@@ -656,7 +654,7 @@ t lj le
 / => Polly  52  160    f   85
 / => John   25  178    m   78
 
-/ aj is an asof join.  This is not a standard SQL join, and can be very powerful
+/ aj is an asof join. This is not a standard SQL join, and can be very powerful
 / The canonical example of this is joining financial trades and quotes tables
 trades:([]time:10:01:01 10:01:03 10:01:04;sym:`msft`ibm`ge;qty:100 200 150)
 quotes:([]time:10:01:00 10:01:01 10:01:01 10:01:03;
@@ -700,7 +698,7 @@ first each (1 2 3;4 5 6;7 8 9)
 
 / The true alternatives to loops in q are the adverbs scan (\) and over (/)
 / their behaviour differs based on the number of arguments the function they
-/ are modifying receives.  Here I'll summarise some of the most useful cases
+/ are modifying receives. Here I'll summarise some of the most useful cases
 / a single argument function modified by scan given 2 args behaves like "do"
 {x * 2}\[5;1] / => 1 2 4 8 16 32 (i.e. multiply by 2, 5 times)
 {x * 2}/[5;1] / => 32 (using over only the final result is shown)
@@ -761,10 +759,10 @@ select from splayed / (the columns are read from disk on request)
 ////// Frameworks //////
 / kdb+ is typically used for data capture and analysis.
 / This involves using an architecture with multiple processes
-/ working together.  kdb+ frameworks are available to streamline the setup
+/ working together. kdb+ frameworks are available to streamline the setup
 / and configuration of this architecture and add additional functionality
 / such as disaster recovery, logging, access, load balancing etc.
-/ https://github.com/AquaQAnalytics/TorQ
+/ https://github.com/DataIntellectTech/TorQ
 ```
 
 ## Want to know more?
@@ -772,5 +770,4 @@ select from splayed / (the columns are read from disk on request)
 * [*q for mortals* q language tutorial](http://code.kx.com/q4m3/)
 * [*Introduction to Kdb+* on disk data tutorial](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/)
 * [q language reference](https://code.kx.com/q/ref/)
-* [Online training courses](http://training.aquaq.co.uk/)
-* [TorQ production framework](https://github.com/AquaQAnalytics/TorQ)
+* [TorQ production framework](https://github.com/DataIntellectTech/TorQ)

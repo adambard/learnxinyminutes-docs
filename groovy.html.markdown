@@ -9,7 +9,6 @@ filename: learngroovy.groovy
 Groovy - A dynamic language for the Java platform [Read more here.](http://www.groovy-lang.org/)
 
 ```groovy
-
 /*
   Set yourself up:
 
@@ -54,6 +53,9 @@ println x
 
 //Creating an empty list
 def technologies = []
+
+// or create a list with data
+technologies = ["Kotlin", "Swift"]
 
 /*** Adding a elements to the list ***/
 
@@ -193,7 +195,7 @@ def say(msg = 'Hello', name = 'world') {
 assert 'Hello world!' == say()
 // Right most parameter with default value is eliminated first.
 assert 'Hi world!' == say('Hi')
-assert 'learn groovy' == say('learn', 'groovy')
+assert 'learn groovy!' == say('learn', 'groovy')
 
 /*
   Logical Branching and Looping
@@ -424,8 +426,6 @@ int sum(int x, int y) {
 }
 
 assert sum(2,5) == 7
-
-
 ```
 
 ## Further resources

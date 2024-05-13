@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: messagepack
+category: framework
+framework: messagepack
 filename: learnmessagepack.mpac
 contributors:
   - ["Gabriel Chuan", "https://github.com/gczh"]
@@ -11,7 +11,6 @@ MessagePack is an efficient binary serialization format. It lets you exchange da
 In MessagePack, small integers are encoded into a single byte, and typical short strings require only one extra byte in addition to the strings themselves. This makes MessagePack useful for efficient transmission over wire.
 
 ```
-
 # 0. Understanding The Structure ====
 
 JSON, 40 Bytes UTF-8
@@ -162,7 +161,6 @@ function mytipeDecode(data) {
 
   return result
 }
-
 ```
 
 

@@ -132,7 +132,7 @@ organizations.
       
       *Now it is time to learn about two related COBOL verbs: string and unstring.
 
-      *The string verb is used to concatenate, or put together, two or more stings.
+      *The string verb is used to concatenate, or put together, two or more strings.
       *Unstring is used, not surprisingly, to separate a         
       *string into two or more smaller strings. 
       *It is important that you remember to use ‘delimited by’ when you
@@ -184,12 +184,6 @@ organizations.
       *and then re-run the program. This time the output is:
 
       THE FULL NAME IS: BOB GIBBERISH COBB
-
-
-
-
-
-
 ```
 
 ##Ready For More?

@@ -93,8 +93,8 @@ see square     \ : square dup * ; ok
 
 \ ------------------------------------ Loops -----------------------------------
 
-\ `do` is also a compile-only word.
-: myloop ( -- ) 5 0 do cr ." Hello!" loop ; \ ok
+\ `?do` is also a compile-only word.
+: myloop ( -- ) 5 0 ?do cr ." Hello!" loop ; \ ok
 myloop
 \ Hello!
 \ Hello!
@@ -102,16 +102,17 @@ myloop
 \ Hello!
 \ Hello! ok
 
-\ `do` expects two numbers on the stack: the end number and the start number.
+\ `?do` expects two numbers on the stack: the end number (exclusive) and the
+\ start number (inclusive).
 
 \ We can get the value of the index as we loop with `i`:
 : one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
-one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 12 ok
+one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 ok
 
-\ `?do` works similarly, except it will skip the loop if the end and start
-\ numbers are equal.
-: squares ( n -- ) 0 ?do i square . loop ;   \ ok
-10 squares                                   \ 0 1 4 9 16 25 36 49 64 81 ok
+\ `do` works similarly, except if start and end are exactly the same it will
+\ loop forever (until arithmetic underflow).
+: loop-forever 1 1 do i square . loop ;     \ ok
+loop-forever                                \ 1 4 9 16 25 36 49 64 81 100 ...
 
 \ Change the "step" with `+loop`:
 : threes ( n n -- ) ?do i . 3 +loop ;    \ ok
@@ -215,7 +216,6 @@ page
 
 \ Exiting Gforth:
 \ bye
-
 ```
 
 ##Ready For More?

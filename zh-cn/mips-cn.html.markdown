@@ -330,5 +330,4 @@ MIPS（Microprocessor without Interlocked Pipeline Stages）汇编语言是为�
 # 使用 include 语句可以将外部文件导入到程序中
 # （它只是将文件中的代码放入 include 语句的位置）
 .include "somefile.asm"
-
 ```
