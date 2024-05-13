@@ -43,7 +43,7 @@ with builtins; [
   #=> "a"
 
 
-  #  Entiers et nombre flottants
+  #  Entiers et nombres flottants
   #=========================================
 
   # Il y a deux types de nombres : les entiers et les flottants.
