@@ -657,7 +657,7 @@ reveal(100, "mySecret");
 // in a decentralized manner, otherwise you run into the centralized risk that 
 // smart contract design matter prevents. 
 
-// Easiest way to get and use pre-boxed decentralized data is with Chainlink Data Feeds
+// The easiest way to get and use pre-boxed decentralized data is with Chainlink Data Feeds
 // https://docs.chain.link/docs/get-the-latest-price
 // We can reference on-chain reference points that have already been aggregated by 
 // multiple sources and delivered on-chain, and we can use it as a "data bank" 
