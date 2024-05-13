@@ -3,7 +3,7 @@ language: "clojure macros"
 filename: learnclojuremacros-kr.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
-- translators:
+translators:
     - ["Eunpyoung Kim", "https://github.com/netpyoung"]
 lang: ko-kr
 ---
@@ -16,8 +16,6 @@ lang: ko-kr
 인자가 평가되는 시점을 제어해야 할 때만 매크로를 사용하는게 좋습니다.
 
 Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes](/docs/ko-kr/clojure-kr/)를 한번 읽어보세요.
-
-
 
 ```clojure
 ;; defmacro로 매크로를 정의합니다.
@@ -140,13 +138,10 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 
 (inline-2 (1 + (3 / 2) - (1 / 2) + 1))
 ; -> 3 (실제로는 3N이라는 결과가 나옵니다. / 연산자를 사용하면 숫자가 유리수로 캐스팅되기 때문입니다.)
-
 ```
 
 ### 더 읽어볼거리
 
-[Writing Macros](http://www.braveclojure.com/writing-macros/)
-
-[Official docs](http://clojure.org/macros)
-
-[When to use macros?](https://lispcast.com/when-to-use-a-macro/)
+- [Writing Macros](http://www.braveclojure.com/writing-macros/)
+- [Official docs](http://clojure.org/macros)
+- [When to use macros?](https://lispcast.com/when-to-use-a-macro/)
