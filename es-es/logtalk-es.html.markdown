@@ -25,7 +25,7 @@ El elemento fundamental de Logtalk es el objeto. Veremos que casi todo en Logtal
         write('Created by: Guido van Rossum'),nl.
 
 :- end_object.
-``` 
+```
 
 Este código crea un objeto llamado _python_ con un predicado o método público, llamado _say\_creator_ con aridad 0. El predicado en sí lo que hace es imprimir por pantalla un texto. Lo vamos a guardar en un fichero llamado langs.lgt (lgt es la extensión de Logtalk).
 
@@ -36,6 +36,7 @@ Vamos a ejecutarlo. Para ello, lanzamos el comando de Logtalk de nuestro Prolog,
 ```
 
 Si todo va bien, ahora podremos mandar un mensaje al objeto python.
+
 ```logtalk
 ?- python::say_creator.
 Creator: Guido van Rossum
@@ -136,6 +137,7 @@ Por ejemplo, estos dos códigos son equivalentes:
 
 :- end_object.
 ```
+
 Lo normal es dejar la creación de objetos dinámicos en un objeto prototito o en una metaclase.
 
 Los objetos dinámicos se pueden borrar con _abolish\_object/1_.
@@ -144,16 +146,15 @@ Los objetos dinámicos se pueden borrar con _abolish\_object/1_.
 
 Existen unos objetos algo diferentes, los objetos paramétricos. Son objetos cuyo identificador no es un átomo sino un término compuesto de Prolog. De este modo los propios objetos cargan con información en su definición de nombre.
 
-
 ```logtalk
 :- object(ruby(_Creator)).
-    
+
     :- public(say_creator/0).
     say_creator :-
         write('Created by: '),
         parameter(1, Creator),
         write(Creator),nl.
-        
+
 :- end_object.
 ```
 
@@ -196,12 +197,12 @@ Las categorías son unidades de código reutilizables. Podemos pensar en ellos c
 :- end_category.
 
 :- object(ruby(CreatorParam), implements(langp), imports(reverse_creator(CreatorParam))).
-    
+
     say_creator :-
         write('Created by: '),
         parameter(1, Creator),
         write(Creator),nl.
-        
+
 :- end_object.
 ```
 
@@ -233,6 +234,7 @@ loader.lgt deberá contener todo lo necesario para cargar la aplicación, normal
     logtalk_load(app)
 )).
 ```
+
 Este es un ejemplo de fichero loader, que carga las librerías sets, meta y el fichero app.lgt.
 
 El fichero tester.lgt es igual, pero deberá incluir una llamada a ejecutar los tests de lgtUnit. lgtUnit es el framework de testing de Logtalk, muy interesante pero del que hablaré en otro artículo.
@@ -245,12 +247,15 @@ Logtalk incluye predicados lambda, es decir, predicados definidos sobre un metap
 ?- meta::map([X, Y]>>(Y is 2*X), [1,2,3], Ys).
    Ys = [2,4,6].
 ```
-<p>En este caso, el predicado lambda es equivalente al predicado:</p>
+
+En este caso, el predicado lambda es equivalente al predicado:
+
 ```logtalk
 times2(X, Y) :- Y is 2 * X.
 ```
+
 Pero sin tener que haber definido un nombre ni ubicarlo en otro sitio.
 
 Logtalk incluye más funcionalidad aparte de objetos, protocolos y categorías. Eventos, multithreading, type checking, debugger, documentation, tests, etc. Definitivamente, escribir sobre todo ello llevaría un buen rato.
 
-Esto es solo una introducción a Logtalk. Aparte del [handbook](https://logtalk.org/manuals/index.html) también puedes ver los [ejemplos del repo de GitHub](https://github.com/LogtalkDotOrg/logtalk3/)</a>
+Esto es solo una introducción a Logtalk. Aparte del [handbook](https://logtalk.org/manuals/index.html) también puedes ver los [ejemplos del repo de GitHub](https://github.com/LogtalkDotOrg/logtalk3/).
