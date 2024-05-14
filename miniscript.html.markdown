@@ -5,18 +5,18 @@ contributors:
 filename: miniscript.ms
 ---
 
-**MiniScript** is a simple scripting language designed to be easily embedded in games and other software.  It can also be used on the command line, or as a cross-platform game development environment via [Soda](https://github.com/JoeStrout/soda) or [Mini Micro](https://miniscript.org/MiniMicro).
+**MiniScript** is a simple scripting language designed to be easily embedded in games and other software. It can also be used on the command line, or as a cross-platform game development environment via [Soda](https://github.com/JoeStrout/soda) or [Mini Micro](https://miniscript.org/MiniMicro).
 
-An easy way to get started with MiniScript is on the [Try-It! page](https://miniscript.org/tryit/), which runs MiniScript code on the server.  Note however that the code on this page is limited to 2000 characters.  (The tutorial scripts below are broken up into blocks 2048 characters or less so they will run on the Try-It! page.)
+An easy way to get started with MiniScript is on the [Try-It! page](https://miniscript.org/tryit/), which runs MiniScript code on the server. Note however that the code on this page is limited to 2000 characters. (The tutorial scripts below are broken up into blocks 2048 characters or less so they will run on the Try-It! page.)
 
-Once you are ready to go beyond the Try-It! page, your next stop should probably be to download [Mini Micro](https://miniscript.org/MiniMicro), a free virtual computer that uses MiniScript both on the command line and in programs.  In that environment, enter **edit** at the prompt to edit code, then click the Run button in the editor to run it.
+Once you are ready to go beyond the Try-It! page, your next stop should probably be to download [Mini Micro](https://miniscript.org/MiniMicro), a free virtual computer that uses MiniScript both on the command line and in programs. In that environment, enter **edit** at the prompt to edit code, then click the Run button in the editor to run it.
 
 ```
 print "Hello world"
 
-// MiniScript is very syntax-light.  Notice that no parentheses are
-// needed on the print statement above.  Comments begin with //, and
-// extend to the end of the line.  MiniScript is case-sensitive.
+// MiniScript is very syntax-light. Notice that no parentheses are
+// needed on the print statement above. Comments begin with //, and
+// extend to the end of the line. MiniScript is case-sensitive.
 
 // CONTROL FLOW
 // Use if blocks to do different things depending on some condition.
@@ -47,8 +47,8 @@ for i in range(10, 1)
 end for
 print "Liftoff!"
 
-// Two additional keywords are useful inside loops.  The break statement
-// jumps out of the nearest while or for loop.  The continue statement
+// Two additional keywords are useful inside loops. The break statement
+// jumps out of the nearest while or for loop. The continue statement
 // jumps to the top of the loop, skipping the rest of the current iteration.
 for i in range(1,100)
     if i % 3 == 0 then continue  // skip multiples of 3
@@ -60,7 +60,7 @@ end for
 ### Numbers
 
 ```
-// All numbers are stored in full-precision format.  Numbers also
+// All numbers are stored in full-precision format. Numbers also
 // represent true (1) and false (0), and there are built-in keywords
 // (true and false) for those.
 a = 7
@@ -97,8 +97,8 @@ print a <= b    // less than or equal
 ### Strings
 
 ```
-// Text is stored in strings of Unicode characters.  Write strings
-// by surrounding them with quotes.  If you need to include a
+// Text is stored in strings of Unicode characters. Write strings
+// by surrounding them with quotes. If you need to include a
 // quotation mark in a string, type it twice.
 print "Hello, ""Bob""."
 a = "Hello"
@@ -120,9 +120,9 @@ print a < b     // less than
 print a <= b    // less than or equal
 
 // Indexing and slicing in a string is done with an index (or two)
-// in square brackets.  Use a 0-based index to count from the front,
-// or a negative index to count from the end.  Get a slice (substring)
-// with two indices, separated by a colon.  Either one may be omitted
+// in square brackets. Use a 0-based index to count from the front,
+// or a negative index to count from the end. Get a slice (substring)
+// with two indices, separated by a colon. Either one may be omitted
 // to extend the slice to the beginning or end of the string.
 print "Indexing and slicing:"
 print a[0]      // get a character, starting with 0 ("H")
@@ -133,7 +133,7 @@ print a[1:-1]   // same as above, but using a negative index
 print a[1:]     // get slice from 1 to the end ("ello")
 print a[:2]     // get slice from beginning up to 2 ("He")
 
-// Note that strings in MiniScript are immutable.  You can't reache
+// Note that strings in MiniScript are immutable. You can't reache
 // into a string and change what characters it contains (but you can
 // always create a new string with different characters).
 ```
@@ -141,7 +141,7 @@ print a[:2]     // get slice from beginning up to 2 ("He")
 ### Lists
 
 ```
-// A list is an ordered sequence of values of any type.  You can
+// A list is an ordered sequence of values of any type. You can
 // iterate over a list with a for loop, or iterate over the indexes
 // using .indexes.
 x = ["alpha", "beta", "gamma", "delta"]
@@ -154,8 +154,8 @@ end for
 
 // Indexing and slicing in a list is exactly like a string: use a
 // 0-based index to count from the front, or a negative number to
-// count from the end.  Get a slice (subset) of a list with two
-// indices, separated by a colon.  Either one may be omitted
+// count from the end. Get a slice (subset) of a list with two
+// indices, separated by a colon. Either one may be omitted
 // to extend the slice to the beginning or end of the list.
 print x[0]      // alpha
 print x[-1]     // delta
@@ -178,11 +178,11 @@ print x != y    // inequality
 ### Maps
 
 ```
-// A map is a set of values associated with unique keys.  Maps
+// A map is a set of values associated with unique keys. Maps
 // are an extremely powerful and versatile data type, used to
 // represent data records, objects, sparse arrays, and much more.
 // Create a map with curly braces; get or set a single value
-// with square brackets.  Keys and values may be any type.
+// with square brackets. Keys and values may be any type.
 // ("Key" and "index" mean the same thing in the context of a map.)
 m = {1:"one", 2:"two"}
 print m[1]      // one
@@ -191,7 +191,7 @@ print m[2]      // dos
 
 // In the special case where the key (index) is a string that
 // would be a valid variable name, there is an alternate to the
-// square-bracket syntax called dot syntax.  Just put the key,
+// square-bracket syntax called dot syntax. Just put the key,
 // without quotes, after the map and a dot (period).
 m.pi = 3.14     // equivalent to: m["pi"] = 3.14
 print m["pi"]   // 3.14
@@ -220,8 +220,8 @@ end for
 
 ```
 // Create a function in miniscript with a function...end function
-// block.  In most cases you will assign the result to a variable
-// so you can call it later.  If a function needs to return a
+// block. In most cases you will assign the result to a variable
+// so you can call it later. If a function needs to return a
 // a result, do that with the return keyword.
 rollDie = function
     return ceil(rnd * 6)  // return a random number from 1-6
@@ -230,7 +230,7 @@ print rollDie
 print rollDie
 
 // If it needs parameters, put them after function keyword inside
-// parentheses.  Parameters may have default values.
+// parentheses. Parameters may have default values.
 roll = function(numberOfDice, sides=6)
     sum = 0
     for i in range(1, numberOfDice)
@@ -241,16 +241,16 @@ end function
 print roll(2)     // roll two 6-sided dice
 print roll(2,20)  // roll two 20-sided dice
 
-// Variables are always local by default in MiniScript.  The
+// Variables are always local by default in MiniScript. The
 // variables i and sum in the function above are not accessible
 // outside the function, and disappear as soon as the function
-// returns.  (We'll talk more about variable scope later.)
+// returns. (We'll talk more about variable scope later.)
 
 // Parentheses are needed only if (1) you're passing arguments
 // (parameter values) to the function, and (2) you're using the
-// result as part of some larger statement.  Notice how the first
+// result as part of some larger statement. Notice how the first
 // example above, rollDie did not need any parentheses because we
-// weren't passing an arguments.  Here's an example of a function
+// weren't passing an arguments. Here's an example of a function
 // that, like the built-in print function, is used as a statement
 // by itself, and so does not need parentheses.
 doRoll = function(numberOfDice, sides=6)
@@ -275,9 +275,9 @@ f 2,4            // rolls 2d4
 ### Classes and Objects
 
 ```
-// MiniScript uses prototype-based inheritance.  A class or object
+// MiniScript uses prototype-based inheritance. A class or object
 // is just a map with a special __isa entry that points to the
-// parent class.  This is set automatically when you use the new
+// parent class. This is set automatically when you use the new
 // operator.
 Shape = {}            // make a base class
 Shape.sides = 0       // give it 0 sides by default
@@ -288,10 +288,10 @@ Square.sides = 4      // override the number of sides
 x = new Square        // create an instance of the Square class
 print x.sides         // 4, because x is a Square and Square.sides is 4
 
-// A method is just a function stored in a class (map).  These
+// A method is just a function stored in a class (map). These
 // are inherited through the __isa chain, just like other values.
 // Within a method, the keyword self refers to the object on which
-// the method was invoked (using dot syntax).  This is how you
+// the method was invoked (using dot syntax). This is how you
 // refer to data or methods on the object.
 Shape.describe = function
     print
@@ -299,7 +299,7 @@ Shape.describe = function
 end function
 x.describe            // This is a 4-sided shape.
 
-// Methods may be overridden (again just like values).  In a
+// Methods may be overridden (again just like values). In a
 // subclass/instance method, you may use super to invoke the next
 // version of the method up the inheritance chain, while still
 // keeping self bound to the object this method was called on.
@@ -327,7 +327,7 @@ print "Outside the function, x is " + x
 
 // In the example above, the assignment to x inside the function
 // has no effect on the global value of x, even though they happen
-// to have the same name.  (This is a Good Thing because it helps
+// to have the same name. (This is a Good Thing because it helps
 // you avoid unintended side-effects in your code.)  Global variables
 // are generally discouraged, but if you must update one inside
 // a function, you can use a "globals." prefix to do so.
@@ -347,7 +347,7 @@ print "Outside the function, x is " + x
 // However there is an important difference: when READING (not
 // assigning to) a variable, if the variable name is not found
 // among the local variables, MiniScript will automatically look
-// for a global variable of that name.  Thus no "globals." prefix
+// for a global variable of that name. Thus no "globals." prefix
 // is needed when reading a variable, but only when assigning it.
 count = 0
 addToCount = function(amount=1)
@@ -359,7 +359,7 @@ print "count is now: " + count
 
 // In the addToCount function above, note how we need the globals
 // prefix on the left-hand side of the assignment, since otherwise
-// it would create a local variable.  But we don't need it on the
+// it would create a local variable. But we don't need it on the
 // right-hand side, where we are merely reading the global value.
 ```
 
