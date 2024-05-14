@@ -5,7 +5,7 @@ contributors:
 filename: learnphix.exw
 ---
 
-
+```
             -- single line comment
 
             // single line comment
@@ -424,11 +424,8 @@ filename: learnphix.exw
 
         ? r.size       --> {250,190}
         ? r.get_size() --> {250,190}
-
-
-/*
-
 ```
+
 Phix does not (although most can be emulated) directly support
 operator|builtin|function overloading, lambda expressions, closures,
 currying, eval, partial function application, function composition,
@@ -448,7 +445,7 @@ The author wryly comments:
 
 ## References
 
-* <a href="http://phix.x10.mx/">
-* <a href="https://github.com/petelomax/Phix" >
-* <a href="https://openeuphoria.org/forum/index.wc" >
-* <a href="www.rosettacode.org/wiki/Rosetta_Code">
+* [http://phix.x10.mx](http://phix.x10.mx)
+* [Source code](https://github.com/petelomax/Phix)
+* [Forum](https://openeuphoria.org/forum/index.wc)
+* [Rosetta Code](https://rosettacode.org/wiki/Category:Phix)
