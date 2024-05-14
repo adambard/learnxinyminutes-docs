@@ -14,8 +14,8 @@ Once you are ready to go beyond the Try-It! page, your next stop should probably
 ```
 print "Hello world"
 
-// MiniScript is very syntax-light.  Notice that no parentheses are 
-// needed on the print statement above.  Comments begin with //, and 
+// MiniScript is very syntax-light.  Notice that no parentheses are
+// needed on the print statement above.  Comments begin with //, and
 // extend to the end of the line.  MiniScript is case-sensitive.
 
 // CONTROL FLOW
@@ -36,14 +36,14 @@ end if
 // Use a while block to loop as long as a condition is true.
 s = "Spam"
 while s.len < 50
-   s = s + ", spam"
+    s = s + ", spam"
 end while
 print s + " and spam!"
 
-// A for loop can loop over any list, including ones easily created 
+// A for loop can loop over any list, including ones easily created
 // with the range function.
 for i in range(10, 1)
-	print i + "..."
+    print i + "..."
 end for
 print "Liftoff!"
 
@@ -60,7 +60,7 @@ end for
 ### Numbers
 
 ```
-// All numbers are stored in full-precision format.  Numbers also 
+// All numbers are stored in full-precision format.  Numbers also
 // represent true (1) and false (0), and there are built-in keywords
 // (true and false) for those.
 a = 7
@@ -78,7 +78,7 @@ print a - b     // subtraction
 print a * b     // multiplication
 print a / b     // division
 print a % b     // modulo (remainder)
-print a ^ b		// power
+print a ^ b     // power
 
 print "Logic:"
 print n and m   // logical "and"
@@ -120,7 +120,7 @@ print a < b     // less than
 print a <= b    // less than or equal
 
 // Indexing and slicing in a string is done with an index (or two)
-// in square brackets.  Use a 0-based index to count from the front, 
+// in square brackets.  Use a 0-based index to count from the front,
 // or a negative index to count from the end.  Get a slice (substring)
 // with two indices, separated by a colon.  Either one may be omitted
 // to extend the slice to the beginning or end of the string.
@@ -146,10 +146,10 @@ print a[:2]     // get slice from beginning up to 2 ("He")
 // using .indexes.
 x = ["alpha", "beta", "gamma", "delta"]
 for item in x
-	print item
+    print item
 end for
 for i in x.indexes
-	print "x[" + i + "] is " + x[i]
+    print "x[" + i + "] is " + x[i]
 end for
 
 // Indexing and slicing in a list is exactly like a string: use a
@@ -219,12 +219,12 @@ end for
 ### Functions
 
 ```
-// Create a function in miniscript with a function...end function 
-// block.  In most cases you will assign the result to a variable 
+// Create a function in miniscript with a function...end function
+// block.  In most cases you will assign the result to a variable
 // so you can call it later.  If a function needs to return a
 // a result, do that with the return keyword.
 rollDie = function
-	return ceil(rnd * 6)  // return a random number from 1-6
+    return ceil(rnd * 6)  // return a random number from 1-6
 end function
 print rollDie
 print rollDie
@@ -232,36 +232,36 @@ print rollDie
 // If it needs parameters, put them after function keyword inside
 // parentheses.  Parameters may have default values.
 roll = function(numberOfDice, sides=6)
-	sum = 0
-	for i in range(1, numberOfDice)
-		sum = sum + ceil(rnd * sides)
-	end for
-	return sum
+    sum = 0
+    for i in range(1, numberOfDice)
+        sum = sum + ceil(rnd * sides)
+    end for
+    return sum
 end function
 print roll(2)     // roll two 6-sided dice
 print roll(2,20)  // roll two 20-sided dice
 
-// Variables are always local by default in MiniScript.  The 
+// Variables are always local by default in MiniScript.  The
 // variables i and sum in the function above are not accessible
 // outside the function, and disappear as soon as the function
 // returns.  (We'll talk more about variable scope later.)
 
-// Parentheses are needed only if (1) you're passing arguments 
+// Parentheses are needed only if (1) you're passing arguments
 // (parameter values) to the function, and (2) you're using the
-// result as part of some larger statement.  Notice how the first 
+// result as part of some larger statement.  Notice how the first
 // example above, rollDie did not need any parentheses because we
 // weren't passing an arguments.  Here's an example of a function
 // that, like the built-in print function, is used as a statement
 // by itself, and so does not need parentheses.
 doRoll = function(numberOfDice, sides=6)
-	print "Rolling " + numberOfDice + "d" + sides + "..."
-	sum = 0
-	for i in range(1, numberOfDice)
-		roll = ceil(rnd * sides)
-		print "You rolled a " + roll + "."
-		sum = sum + roll
-	end for
-	print "Your total is: " + sum
+    print "Rolling " + numberOfDice + "d" + sides + "..."
+    sum = 0
+    for i in range(1, numberOfDice)
+        roll = ceil(rnd * sides)
+        print "You rolled a " + roll + "."
+        sum = sum + roll
+    end for
+    print "Your total is: " + sum
 end function
 doRoll 3         // roll 3d6 -- note no parentheses needed
 doRoll 3, 8      // same here, but rolling 3d6
@@ -276,7 +276,7 @@ f 2,4            // rolls 2d4
 
 ```
 // MiniScript uses prototype-based inheritance.  A class or object
-// is just a map with a special __isa entry that points to the 
+// is just a map with a special __isa entry that points to the
 // parent class.  This is set automatically when you use the new
 // operator.
 Shape = {}            // make a base class
@@ -288,14 +288,14 @@ Square.sides = 4      // override the number of sides
 x = new Square        // create an instance of the Square class
 print x.sides         // 4, because x is a Square and Square.sides is 4
 
-// A method is just a function stored in a class (map).  These 
+// A method is just a function stored in a class (map).  These
 // are inherited through the __isa chain, just like other values.
 // Within a method, the keyword self refers to the object on which
 // the method was invoked (using dot syntax).  This is how you
 // refer to data or methods on the object.
 Shape.describe = function
     print
-	print "This is a " + self.sides + "-sided shape."
+    print "This is a " + self.sides + "-sided shape."
 end function
 x.describe            // This is a 4-sided shape.
 
@@ -304,8 +304,8 @@ x.describe            // This is a 4-sided shape.
 // version of the method up the inheritance chain, while still
 // keeping self bound to the object this method was called on.
 Square.describe = function
-	super.describe    // first, do the standard description
-	print "It looks very squarish."  // then add this
+    super.describe    // first, do the standard description
+    print "It looks very squarish."  // then add this
 end function
 x.describe
 ```
@@ -367,8 +367,8 @@ print "count is now: " + count
 
 ```
 // Intrinsic methods are ones that are built into MiniScript or its
-// environment. Particular MiniScript environments (e.g. Mini Micro, 
-// Soda, command-line MiniScript, some game using MiniScript as an 
+// environment. Particular MiniScript environments (e.g. Mini Micro,
+// Soda, command-line MiniScript, some game using MiniScript as an
 // embedded language, etc.) will probably add additional intrinsics.
 // But there is a core of about 50 intrinsics that should always be
 // available.
@@ -417,13 +417,6 @@ print m
 ## Further Reading
 
 * [MiniScript.org website](https://miniscript.org/) — center of the MiniScript universe
-
 * [MiniScript Quick Reference](https://miniscript.org/files/MiniScript-QuickRef.pdf) — this tutorial, in one page
-
 * [MiniScript User's Manual](https://miniscript.org/files/MiniScript-Manual.pdf) — more in-depth documentation
-
 * [MiniScript Wiki](https://miniscript.org/wiki/) — community-driven documentation
-
-* [_Introduction to Computer Programming_](https://www.amazon.com/dp/1736167618) — entry-level book with colorful pictures and lots of sample code
-
-* [_Learn to Code in 30 Days_](https://www.amazon.com/Learn-Code-Days-Joe-Strout/dp/173616760X) — in-depth book teaching programming through MiniScript and Mini Micro
