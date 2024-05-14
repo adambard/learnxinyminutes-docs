@@ -1,12 +1,11 @@
 ---
 language: html
-filename: learnhtml.txt
+filename: learnhtml-fa.txt
 contributors:
   - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
   - ["Hiva Zarei", "https://github.com/hivazarei"]
 ---
-
 <p dir="rtl">HTML مخفف كلمه ی Hyper Text Markup Language می باشد.</p>
 
 <p dir="rtl">یك زبان نشانه گیری است كه با استفاده از كد نویسی می توانیم متن و داده های مختلف را با استفاده از آن نمایش دهیم.</p>
@@ -81,11 +80,11 @@ translators:
 	<!-- یک عنوان را ایجاد می‌ کند <h1> تگ -->
 	<h1>سلام، دنيا!</h1>
 	<!-- نیز ایجاد کرد (h6) تا درجه اهمیت پایین تر (h2) همچنین می توانید زیرعنوان های دیگری با درجه اهمیت بالا -->
-	
+
 
 	<!-- می توانیم یک لینک به آدرس مورد نظر ایجاد کنیم href و صفت <a> با استفاده از تگ -->
 	<a href="http://codepen.io/anon/pen/xwjLbZ">
-	به این لینک مراجعه فرمایید	
+	به این لینک مراجعه فرمایید
 	</a>
 
 	<!-- این امکان را به ما می دهد تا متنی را در صفحه قرار دهیم <p> تگ -->
@@ -93,9 +92,9 @@ translators:
 	<p> اين يك پاراگراف ديگر است</p>
 
 	<!-- یک لیست ایجاد می کند ul تگ -->
-	
+
 		<!-- استفاده کنیم <ol> برای داشتن یک لیست شمارشی باید از تگ -->
-	
+
 	<ul>
 		<li>ین یک گزینه در لیست غیرترتیبی می‌باشد</li>
 		<li> اين يك آيتم ديگر است</li>
@@ -113,10 +112,10 @@ translators:
 
 <!-- شروع می‌کنیم <table> با یک تگ -->
 <table>
-	
+
 <!-- باعث ایجاد سطر های جدول می شود tr تگ  -->
 	<tr>
-		
+
 <!-- می توان برای ستون های جدول، عناوین مناسب تعیین کرد th با استفاده از تگ  -->
 		<th>اولين هدر</th>
 		<th>دومين هدر</th>
@@ -144,6 +143,5 @@ translators:
 <h2 dir="rtl">HTML زبان برنامه‌نویسی محسوب نمی‌شود.</h2>
 <h2 dir="rtl">برای یادگیری بیشتر</h2>
 
-* [wikipedia](https://en.wikipedia.org/wiki/HTML)
+* [Wikipedia](https://en.wikipedia.org/wiki/HTML)
 * [HTML tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [W3School](http://www.w3schools.com/html/html_intro.asp)
