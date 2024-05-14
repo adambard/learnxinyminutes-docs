@@ -8,12 +8,11 @@ translators:
 
 BQN is a modern array language (similar to APL) that aims to eliminate burdensome aspects of the APL tradition.
 
-It is recommended to try these code examples out in a REPL. The [online REPL](https://mlochbaum.github.io/BQN/try.html) is 
-recommended for quick start, since it comes with keyboard and easy to access help. You can try building 
+It is recommended to try these code examples out in a REPL. The [online REPL](https://mlochbaum.github.io/BQN/try.html) is
+recommended for quick start, since it comes with keyboard and easy to access help. You can try building
 [CBQN](https://github.com/dzaima/CBQN) for a local install, but it will need keyboard setup.
 
 ```bqn
-
 # This is a comment.
 # The characters ',' and `⋄` are statement separators.
 
@@ -22,15 +21,15 @@ recommended for quick start, since it comes with keyboard and easy to access hel
 ##################
 
 # Numbers
-1,2,3,4   
+1,2,3,4
 ¯1,¯2,¯3  # Negative numbers are written with a high minus
 π,∞,¯π,¯∞ # Pi and Infinity are defined constants
-1_234_456 # You can add underscores in between numbers 
+1_234_456 # You can add underscores in between numbers
           # This does not change their value
 1.3E4     # Scientific notation is supported
 
 # Characters
-'a','⥊'   
+'a','⥊'
 '
 '         # Yes, you can put *any* character in a character literal
 @         # Null character ('\0' in C)
@@ -38,7 +37,7 @@ recommended for quick start, since it comes with keyboard and easy to access hel
 1‿2‿3       # Stranding, good for simple lists
 ⟨1,2,3⟩     # General list notation
 ⟨1‿2,2‿3⟩   # Both can be mixed
-[1‿2,2‿3]   # Array notation 
+[1‿2,2‿3]   # Array notation
             # An array is multidimensional, as opposed to containing sublists.
             # It must be rectangular in shape (a grid structure rather than a tree structure)
 [1‿2‿3,4‿5] # This is hence invalid
@@ -47,8 +46,8 @@ recommended for quick start, since it comes with keyboard and easy to access hel
 "newline
 separated"  # Allows newlines
 "quo""tes"  # Escape a double quote by typing it twice
-# Functions 
-1{𝕨+𝕩}3       # All functions are infix  
+# Functions
+1{𝕨+𝕩}3       # All functions are infix
               # 𝕨 is left argument, 𝕩 is right argument
 {-𝕩}5         # 𝕨 can be omitted
 1+3           # Same as the above
@@ -75,7 +74,7 @@ separated"  # Allows newlines
 # The above train is an F G H train, where
 # (F G H) 𝕩 → (F 𝕩) G (H 𝕩)
 # F ← +´, G ← ÷, H ← ≠
-# In explicit form, this is 
+# In explicit form, this is
 {(+´𝕩)÷≠𝕩}
 # The second pattern is (f g) 𝕩 → f g 𝕩.
 # longer trains are complex arrangements of these patterns, involving constants and Nothing (·).
@@ -83,7 +82,7 @@ separated"  # Allows newlines
 
 # Evaluation order:
 #  BQN evaluates functions right to left with no precedence rules governing *functions*. Functions are what
-#  one would call operators in a mainstream language. 
+#  one would call operators in a mainstream language.
 1÷2+3       # 1÷(2+3)   = 0.2
 (1÷2)+3     # ((1÷2)+3) = 1.5
 
@@ -122,23 +121,23 @@ array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
 
 # Primitive Functions
 #  All BQN functions are variadic, and can take one or two arguments. The base functions have both monadic and dyadic overloads.
-#  Usually the two overloads for a function are related. 
+#  Usually the two overloads for a function are related.
 
 ## Arithmetic Functions
 +, -, ×, ÷ # Add, Subtract, Signum/Multiply, Reciprocal/Divide , '*' does NOT do multiplication
-           # ⌊∘÷ does floor division 
+           # ⌊∘÷ does floor division
 √, ⋆       # Square root/Nth root, e^x/Power
 #   All Arithmetic functions vectorize:
 1 + 2‿3‿4     #≡ 3‿4‿5
 1‿2‿3 + 2‿3‿4 #≡ 3‿5‿7
 #   Character arithmetic(+ and - only):
 "abc"+3       #≡ "def"
-'a'-'d'       #≡ ¯3 
+'a'-'d'       #≡ ¯3
 
 ## Logic Functions
 ∧, ∨, ¬       # For Booleans, retrun 1 or 0
 ≤, <, >, ≥, = # Vectorizing comparisons
-≡, ≢          # Nonvectorizing comparisons 
+≡, ≢          # Nonvectorizing comparisons
 
 ## Array manipulation Functions
 ↕             # Make a range
@@ -165,7 +164,7 @@ a⋈b           #≡ ⟨1‿2‿3, 4‿5⟩
 ˜       # duplicate argument/swap args - Very useful!
 ˙       # Create constant function
 1 -˜ 2  #≡ 2 - 1
-+˜ 2    #≡ 2 + 2 
++˜ 2    #≡ 2 + 2
 
 # Primitive 2-modifiers
 ## Control Flow
@@ -196,7 +195,7 @@ a⋈b           #≡ ⟨1‿2‿3, 4‿5⟩
 
 { # A factorial using headers:
   𝕊 0: 1;
-  𝕊 𝕩: 𝕩×𝕊 𝕩-1 
+  𝕊 𝕩: 𝕩×𝕊 𝕩-1
 }
 { # Factorial with predicates
   𝕩<2 ? 1; # Similar to an if-else pattern.
@@ -207,7 +206,7 @@ a⋈b           #≡ ⟨1‿2‿3, 4‿5⟩
 # create 1-modifiers and 2-modifiers, which have separate types
 # Implicit variables(Capitals are functions):
 #  - has 𝕨 and 𝕩 if needed
-#  - 𝕗, 𝔽 left operand 
+#  - 𝕗, 𝔽 left operand
 #  - 𝕘, 𝔾 right operand (only in 2-modifiers)
 #  - 𝕣 represents the block itself* (requires underscores as per convention)
 # Same header rules as functions.
@@ -276,13 +275,14 @@ IfElse  ← {c‿T‿F: c◶F‿T@}         # Used as IfElse ⟨Condition, Block
 
 # Looping
 # The primary form of unbounded looping is recursion (performed with 𝕊).
-# BQN does not eliminate tail calls, but the while idiom can be used to work around this: 
+# BQN does not eliminate tail calls, but the while idiom can be used to work around this:
 While ← {𝕩{𝔽⍟𝔾∘𝔽_𝕣_𝔾∘𝔽⍟𝔾𝕩}𝕨@}´  # While 1‿{... to run forever
 DoWhile ← {𝕏@ ⋄ While 𝕨‿𝕩}´
 # A For loop can be done with ¨, functions need not be pure.
 ```
 
 ## Ready for more?
+
 - [Quickstart guide](https://mlochbaum.github.io/BQN/doc/quick.html)
 - [Full length, explained documentation](https://mlochbaum.github.io/BQN/doc/index.html)
 - [Short docs](https://mlochbaum.github.io/BQN/help/index.html)
