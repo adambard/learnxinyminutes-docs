@@ -1,20 +1,19 @@
 ---
-language: GDScript 2.0
+language: GDScript
 contributors:
     - ["Wichamir", "https://github.com/Wichamir/"]
     - ["zacryol", "https://github.com/zacryol"]
-filename: learngdscript2.gd
+filename: learngdscript.gd
 ---
 
-GDScript 2.0 is a dynamically and statically typed scripting language
-made specifically for free and open source game engine Godot, now revamped
-for the new Godot Engine 4.0. GDScript's syntax is vaguely similar to
-Python's. Its main advantages are ease of use and tight integration with
-the engine. It's a perfect fit for game development.
+GDScript is a dynamically and statically typed scripting language
+for the free and open source game engine Godot. Its syntax is vaguely
+similar to Python's. Its main advantages are ease of use and tight
+integration with the engine. It's a perfect fit for game development.
 
 ## Basics
 
-```nim
+```gdscript
 # Single-line comments are written using hash symbol.
 """
   Multi-line
@@ -30,7 +29,7 @@ the engine. It's a perfect fit for game development.
 # Doc Comments can add a decription to classes and fields
 # which can be viewed in the in-engine docs.
 
-## This class is a demonstration of GDScript 2.0
+## This class is a demonstration of GDScript
 
 # Script file is a class in itself and you can optionally define a name for it.
 class_name MyClass
@@ -127,14 +126,14 @@ func control_flow():
   y = 2 # y was originally a float,
         # but we can change its type to int
         # using the power of dynamic typing!
-  
+
   if x < y:
     print("x is smaller than y")
   elif x > y:
     print("x is bigger than y")
   else:
     print("x and y are equal")
-  
+
   var a = true
   var b = false
   var c = false
@@ -149,7 +148,7 @@ func control_flow():
 
   for i in ["two", 3, 1.0]: # iterating over an array
     print(i)
-  
+
   while x > y:
     printt(x, y)
     y += 1
@@ -177,7 +176,7 @@ func control_flow():
       continue
     _:
       print("Underscore is a default case.")
-  
+
   # ternary operator (one line if-else statement)
   prints("x is", "positive" if x >= 0 else "negative")
 
@@ -239,7 +238,7 @@ func use_inner_class():
 
 ## Accessing other nodes in the scene tree
 
-```nim
+```gdscript
 extends Node2D
 
 var sprite # This variable will hold the reference.
@@ -291,7 +290,7 @@ func _process(delta):
 Signal system is Godot's implementation of the observer programming
 pattern. Here's an example:
 
-```nim
+```gdscript
 class_name Player extends Node2D
 
 var hp = 10
@@ -325,7 +324,7 @@ func _on_death():
 GDScript can optionally use static typing, for both code clarity and
 performance benefits.
 
-```nim
+```gdscript
 extends Node
 
 var x: int # define typed variable
@@ -358,7 +357,6 @@ func join(arg1: String, arg2: String) -> String:
 func get_child_at(index: int) -> Node:
   # function takes an int and returns a Node
   return get_children()[index]
-
 ```
 
 ## Further Reading
