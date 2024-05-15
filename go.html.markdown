@@ -464,10 +464,9 @@ how to write clean and effective Go code, package and command docs, and release 
 The [Go language specification](https://go.dev/ref/spec) itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
 
-
 You can play around with the code on [Go playground](https://go.dev/play/p/Y96bRpJWzjr).
-Try to change it and run it from your browser! 
-Note that you can use [https://go.dev/play/](https://go.dev/play/) 
+Try to change it and run it from your browser!
+Note that you can use [https://go.dev/play/](https://go.dev/play/)
 as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
 
 On the reading list for students of Go is the [source code to the standard
@@ -475,7 +474,6 @@ library](https://go.dev/src/). Comprehensively documented, it
 demonstrates the best of readable and understandable Go, Go style, and Go
 idioms. Or you can click on a function name in [the
 documentation](https://pkg.go.dev/std) and the source code comes up!
-
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
 
@@ -485,6 +483,6 @@ There are many excellent conference talks and video tutorials on Go available on
 - [Golang University 201](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs) steps it up a notch, explaining important techniques like testing, web services, and APIs
 - [Golang University 301](https://www.youtube.com/playlist?list=PLEcwzBXTPUE8KvXRFmmfPEUmKoy9LfmAf) dives into more advanced topics like the Go scheduler, implementation of maps and channels, and optimisation techniques
 
-Go Mobile adds support for mobile platforms (Android and iOS). 
-You can write all-Go native mobile apps or write a library that contains bindings from a Go package, 
+Go Mobile adds support for mobile platforms (Android and iOS).
+You can write all-Go native mobile apps or write a library that contains bindings from a Go package,
 which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.
