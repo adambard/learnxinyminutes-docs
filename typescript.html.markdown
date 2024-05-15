@@ -72,6 +72,11 @@ let f4 = (i: number) => { return i * i; }
 // keyword needed
 let f5 = (i: number) => i * i;
 
+// Functions can accept more than one type
+function f6(i: string | number): void {
+  console.log("The value was " + i);
+}
+
 // Interfaces are structural, anything that has the properties is compliant with
 // the interface
 interface Person {
