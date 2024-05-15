@@ -532,7 +532,6 @@ barplot(c(1,4,5,1,2), names.arg = c("red","blue","purple","green","yellow"))
 install.packages("ggplot2")
 require(ggplot2)
 ?ggplot2
-
 ```
 
 ## 获得 R

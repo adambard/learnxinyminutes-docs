@@ -384,7 +384,6 @@ int main() {
 	// Por exemplo, quando um array é passado para uma função ou é atribuído a um
 	// ponteiro, ele transforma-se (convertido implicitamente) em um ponteiro.
 	// Exceções: quando o array é o argumento de um operador `&` (endereço-de):
-    // Exceptions: when the array is the argument of the `&` (address-of) operator:
     int arr[10];
     int (*ptr_to_arr)[10] = &arr; // &arr não é do tipo `int *`!
                                   // É do tipo "ponteiro para array" (de `int`s).
@@ -632,7 +631,6 @@ typedef void (*minha_função_type)(char *);
 // = += -= *= /= %= &= ^= |= <<= >>= | direita para esqureda //
 // ,                                 | esquerda para direita //
 //-----------------------------------------------------------//
-
 ```
 
 ## Leitura adicional
@@ -648,7 +646,5 @@ Se você tem uma pergunta, leia [compl.lang.c Frequently Asked Questions](http:/
 É importante usar espaços e indentação adequadamente e ser consistente com seu estilo de código em geral.
 Código legível é melhor que código 'esperto' e rápido. Para adotar um estilo de código bom e sensato, veja
 [Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
-
-Além disso, Google é teu amigo.
 
 [1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member

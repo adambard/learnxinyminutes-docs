@@ -12,11 +12,11 @@ TypeScript, JavaScript'le yazılmış büyük ölçekli uygulamaların geliştir
 TypeScript, JavaScript'e sınıflar, modüller, arayüzler, jenerik tipler ve (isteğe bağlı) static tipleme gibi genel konseptler ekler.
 JavaScript, TypeScript'in bir alt kümesidir: Bütün JavaScript kodları geçerli birer TypeScript kodudur ve sorunsuz herhangi bir projeye eklenebilirler. TypeScript derleyici JavaScript kodu üretir.
 
-Bu makale sadece TypeScript'e ait ekstra söz dizimini konu alır, JavaScript için bkz: [JavaScript] (../javascript/).
+Bu makale sadece TypeScript'e ait ekstra söz dizimini konu alır, JavaScript için bkz: [JavaScript](../javascript/).
 
-TypeScript derleyiciyi test etmek için [Playground] (http://www.typescriptlang.org/Playground)'a gidin. Orada otomatik tamamlama ile kod yazabilecek ve üretilen JavaScript'i görebileceksiniz.
+TypeScript derleyiciyi test etmek için [Playground](https://www.typescriptlang.org/Playground)'a gidin. Orada otomatik tamamlama ile kod yazabilecek ve üretilen JavaScript'i görebileceksiniz.
 
-```js
+```ts
 // TypeScript'te üç ana tip vardır.
 var bittiMi: boolean = false;
 var satırlar: number = 42;
@@ -169,12 +169,9 @@ var selamlama = `Merhaba ${isim}, nasılsın?`
 // Şablon Stringleri ile çok satırlı stringler
 var çokSatırlıString = `Bu çok satırlı
 bir string örneği`;
-
 ```
 
 ## Daha fazlası
- * [TypeScript Resmi Sitesi] (http://www.typescriptlang.org/)
- * [TypeScript dil spesifikasyonu (pdf)] (http://go.microsoft.com/fwlink/?LinkId=267238)
- * [Anders Hejlsberg - Channel 9'da TypeScript'e Giriş] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [GitHub'ta Açık Kaynak Kodu] (https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - tip tanımları için kaynak] (http://definitelytyped.org/)
+
+* [TypeScript Resmi Sitesi](https://www.typescriptlang.org/)
+* [GitHub'ta Açık Kaynak Kodu](https://github.com/microsoft/TypeScript)

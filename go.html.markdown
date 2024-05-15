@@ -96,7 +96,7 @@ can include line breaks.` // Same string type.
 	// Non-ASCII literal. Go source is UTF-8.
 	g := 'Σ' // rune type, an alias for int32, holds a unicode code point.
 
-	f := 3.14195 // float64, an IEEE-754 64-bit floating point number.
+	f := 3.14159 // float64, an IEEE-754 64-bit floating point number.
 	c := 3 + 4i  // complex128, represented internally with two float64's.
 
 	// var syntax with initializers.
@@ -131,7 +131,7 @@ can include line breaks.` // Same string type.
 	// Because they are dynamic, slices can be appended to on-demand.
 	// To append elements to a slice, the built-in append() function is used.
 	// First argument is a slice to which we are appending. Commonly,
-	// the array variable is updated in place, as in example below.
+	// the slice variable is updated in place, as in example below.
 	s := []int{1, 2, 3}    // Result is a slice of length 3.
 	s = append(s, 4, 5, 6) // Added 3 elements. Slice now has length of 6.
 	fmt.Println(s)         // Updated slice is now [1 2 3 4 5 6]
@@ -358,7 +358,7 @@ func learnInterfaces() {
 // Functions can have variadic parameters.
 func learnVariadicParams(myStrings ...any) { // any is an alias for interface{}
 	// Iterate each value of the variadic.
-	// The underbar here is ignoring the index argument of the array.
+	// The underscore here is ignoring the index argument of the array.
 	for _, param := range myStrings {
 		fmt.Println("param:", param)
 	}
@@ -464,9 +464,10 @@ how to write clean and effective Go code, package and command docs, and release 
 The [Go language specification](https://go.dev/ref/spec) itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
 
+
 You can play around with the code on [Go playground](https://go.dev/play/p/Y96bRpJWzjr).
 Try to change it and run it from your browser! 
-Note that you can use [https://play.golang.org](https://go.dev/play/) 
+Note that you can use [https://go.dev/play/](https://go.dev/play/) 
 as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
 
 On the reading list for students of Go is the [source code to the standard
@@ -474,6 +475,7 @@ library](https://go.dev/src/). Comprehensively documented, it
 demonstrates the best of readable and understandable Go, Go style, and Go
 idioms. Or you can click on a function name in [the
 documentation](https://pkg.go.dev/std) and the source code comes up!
+
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
 

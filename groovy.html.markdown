@@ -9,7 +9,6 @@ filename: learngroovy.groovy
 Groovy - A dynamic language for the Java platform [Read more here.](http://www.groovy-lang.org/)
 
 ```groovy
-
 /*
   Set yourself up:
 
@@ -427,8 +426,6 @@ int sum(int x, int y) {
 }
 
 assert sum(2,5) == 7
-
-
 ```
 
 ## Further resources

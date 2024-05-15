@@ -9,7 +9,7 @@ lang: tr-tr
 Swift iOS ve OSX platformlarında geliştirme yapmak için Apple tarafından oluşturulan yeni bir programlama dilidir.  Objective - C ile beraber kullanılabilecek ve de hatalı kodlara karşı daha esnek bir yapı sunacak bir şekilde tasarlanmıştır. Swift 2014 yılında Apple'ın geliştirici konferansı WWDC de tanıtıldı. Xcode 6+'a dahil edilen LLVM derleyici ile geliştirildi.
  
 
-Apple'ın resmi [Swift Programlama Dili](https://itunes.apple.com/us/book/swift-programming-language/id881256329) kitabı iBooks'ta yerini aldı.
+Apple'ın resmi [Swift Programlama Dili](https://itunes.apple.com/us/book/swift-programming-language/id881256329) kitabı Apple Books'ta yerini aldı.
 
 Ayrıca Swift ile gelen tüm özellikleri görmek için Apple'ın [başlangıç kılavuzu](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html)na bakmanızda yarar var.
 

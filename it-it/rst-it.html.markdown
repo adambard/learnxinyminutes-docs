@@ -81,12 +81,11 @@ Anche le tabelle più complesse possono essere inserite facilmente (colonne e/o 
 
 Esistono diversi modi per creare collegamenti:
 
-- Aggiungendo un underscore dopo una parola: Github_ e aggiungendo l'URL di destinazione dopo il testo (questo metodo ha il vantaggio di non inserire URL non necessari all'interno del testo leggibile).
+- Aggiungendo un underscore dopo una parola: GitHub_ e aggiungendo l'URL di destinazione dopo il testo (questo metodo ha il vantaggio di non inserire URL non necessari all'interno del testo leggibile).
 - Digitando un URL completo: https://github.com/ (verrà automaticamente convertito in un collegamento)
-- Utilizzando una sintassi simile a Markdown: `Github <https://github.com/>`_ .
+- Utilizzando una sintassi simile a Markdown: `GitHub <https://github.com/>`_ .
 
-.. _Github https://github.com/
-
+.. _GitHub https://github.com/
 ```
 
 ## Come usarlo

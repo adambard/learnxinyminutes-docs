@@ -321,7 +321,6 @@ fib:test()
 % ```
 % rebar eunit
 % ```
-
 ```
 
 ## 참조

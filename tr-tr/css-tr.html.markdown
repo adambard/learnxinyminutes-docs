@@ -134,19 +134,19 @@ selector::after {}
    #################### */
 
 selector {
-	
-	/* Ölçü birimleri kesin veya göreceli olabilir.*/
 
-	/* Göreceli birimler */
+    /* Ölçü birimleri kesin veya göreceli olabilir.*/
+
+    /* Göreceli birimler */
     width: 50%;       /* Ebeveyn elementin yüzdesel olarak genişliği */
     font-size: 2em;   /* Öğenin özgün yazı tipi boyutunda katları */
     font-size: 2rem;  /* veya kök ögenin yazı tipi boyutu */
     font-size: 2vw;   /* Görüntüleme çerçevesinin genişliğinin %1 olarak katları (CSS 3) */
     font-size: 2vh;   /* veya onun yüksekliğinin */
-	font-size: 2vmin; /* Bir vh veya vw'nin hangisi küçükse */
-	font-size: 2vmax; /* veya daha büyük... */
+    font-size: 2vmin; /* Bir vh veya vw'nin hangisi küçükse */
+    font-size: 2vmax; /* veya daha büyük... */
 
-	/* Kesin birimler */
+    /* Kesin birimler */
     width: 200px;     /* Piksel */
     font-size: 20pt;  /* Nokta */
     width: 5cm;       /* Santimetre */
@@ -236,7 +236,7 @@ Stilin önceliği ise aşağıdaki gibidir. Unutmayın, öncelik **her bir özel
 
 * `E` `!important` kelimesi yüzünden en yüksek önceliğe sahiptir. Kullanımından kaçınmanız önerilir.
 * `F` satıriçi stil olduğu için bir sonraki önceliğe sahiptir.
-* `A` bir sonraki önceliğe sahiptir. Çünkü her şeyden daha "özgüdür". 3 belirteci vardır: `p` ögesinin adı, sınıf` class1`, bir öznitelik `attr = 'değer'.
+* `A` bir sonraki önceliğe sahiptir. Çünkü her şeyden daha "özgüdür". 3 belirteci vardır: `p` ögesinin adı, sınıf `class1`, bir öznitelik `attr = 'değer'.
 * `C`, `B` ile aynı özdeşliğe sahip olsa da, bundan sonra geldiğinden dolayı öncelik hakkına sahiptir.
 * `B` bir sonraki önceliğe sahiptir.
 * Sonuncu önceliğe sahip olan`D`'dir.
@@ -271,7 +271,7 @@ h1 {
 ```
 
 Medya sorguları aşağıdaki bu özellikleri içerebilir:
-`width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. Bu özelliklerin birçoğunu `min-` veya `max-` öneki ile kullanabilirsiniz. 
+`width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. Bu özelliklerin birçoğunu `min-` veya `max-` öneki ile kullanabilirsiniz.
 
 `resolution` özelliği eski cihazlarda desteklenmediğinden ötürü `device-pixel-ratio` kullanın.
 

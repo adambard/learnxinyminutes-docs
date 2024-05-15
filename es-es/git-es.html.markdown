@@ -414,4 +414,4 @@ $ git rm /directorio/del/archivo/FooBar.c
 
 * [Pro Git](http://www.git-scm.com/book/en/v2)
 
-* [Una introducción a Git y Github para principiantes (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Una introducción a Git y GitHub para principiantes (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)

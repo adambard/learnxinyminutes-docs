@@ -15,12 +15,12 @@ generieken en statische typen toe aan JavaScript.
 TypeScript is een superset van JavaScript: alle JavaScript code is geldige
 TypeScript code waardoor de overgang van JavaScript naar TypeScript wordt versoepeld.
 
-Dit artikel focust zich alleen op de extra's van TypeScript tegenover [JavaScript] (../javascript-nl/).
+Dit artikel focust zich alleen op de extra's van TypeScript tegenover [JavaScript](../javascript-nl/).
 
-Om de compiler van TypeScript te kunnen proberen kun je naar de [Playground] (http://www.typescriptlang.org/Playground) gaan.
+Om de compiler van TypeScript te kunnen proberen kun je naar de [Playground](https://www.typescriptlang.org/Playground) gaan.
 Hier kun je automatisch aangevulde code typen in TypeScript en de JavaScript variant bekijken.
 
-```js
+```ts
 // Er zijn 3 basis typen in TypeScript
 var isKlaar: boolean = false;
 var lijnen: number = 42;
@@ -163,12 +163,9 @@ var tupel = paarNaarTupel({ item1: "hallo", item2: "wereld" });
 
 // Refferentie naar een definitie bestand:
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## Verder lezen (engels)
- * [TypeScript Official website] (http://www.typescriptlang.org/)
- * [TypeScript language specifications (pdf)] (http://go.microsoft.com/fwlink/?LinkId=267238)
- * [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [Source Code on GitHub] (https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - repository for type definitions] (http://definitelytyped.org/)
+
+* [TypeScript Official website](https://www.typescriptlang.org/)
+* [Source Code on GitHub](https://github.com/microsoft/TypeScript)

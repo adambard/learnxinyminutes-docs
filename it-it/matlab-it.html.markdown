@@ -516,7 +516,6 @@ ans = a.multiplyLatBy(a,1/3)
 % l'addizione di due oggetti Waypoint.
 b = WaypointClass(15.0, 32.0)
 c = a + b
-
 ```
 
 ## Di più su MATLAB

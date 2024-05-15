@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -13,16 +13,15 @@ Elixir 是一門建構在 Erlang 虛擬機上的現代函數式語言。它完�
 採行了比較常見的語法，並提供更多的功能。
 
 ```elixir
-
 # 單行註解以井字號開頭
 
 # 沒有多行註解的功能
 # 但你可以連續使用多個單行
 
-# 用 `iex` 來進入 elixir shell
+# 用 `iex` 來進入 Elixir shell
 # 用 `elixirc` 來編譯你的模組
 
-# 如果你已成功安裝 elixir 的話，這兩個命令應已在你的 path 下。
+# 如果你已成功安裝 Elixir 的話，這兩個命令應已在你的 path 下。
 
 ## ---------------------------
 ## -- 基本型別
@@ -50,7 +49,7 @@ elem({1, 2, 3}, 0) #=> 1
 head #=> 1
 tail #=> [2,3]
 
-# 在 elixir 中，就如同 Erlang 裡一樣，`=` 代表的是模式比對，而非指派。
+# 在 Elixir 中，就如同 Erlang 裡一樣，`=` 代表的是模式比對，而非指派。
 #
 # 這代表將使用左手邊的模式 (pattern) 去與右手邊的值進行比對。
 #
@@ -80,7 +79,7 @@ string.
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
 
-# `?a` 在 elixir 中會回傳字母 `a` 的 ASCII 整數
+# `?a` 在 Elixir 中會回傳字母 `a` 的 ASCII 整數
 ?a #=> 97
 
 # 用 `++` 來合併串列，而合併二進位則要用 `<>`
@@ -105,7 +104,7 @@ lower..upper = 1..10 # 可以對 range 進行模式比對
 5 * 2  #=> 10
 10 / 2 #=> 5.0
 
-# 在 elixir 中， `/` 運算元永遠回傳浮點數。
+# 在 Elixir 中， `/` 運算元永遠回傳浮點數。
 
 # 若需要回傳整數的除法，用 `div`
 div(10, 2) #=> 5
@@ -290,7 +289,7 @@ Geometry.area({:circle, 3})       #=> 28.25999999999999801048
 # Geometry.area({:circle, "not_a_number"})
 #=> ** (FunctionClauseError) no function clause matching in Geometry.area/1
 
-# 由於不可變特性 (immutability)，遞迴在 elixir 中扮演重要的角色。
+# 由於不可變特性 (immutability)，遞迴在 Elixir 中扮演重要的角色。
 defmodule Recursion do
   def sum_list([head | tail], acc) do
     sum_list(tail, acc + head)
@@ -356,7 +355,7 @@ end
 ## -- 平行處理
 ## ---------------------------
 
-# Elixir 依靠 actor 模式來進行平行處理。在 elixir 中要寫出平行處理程式，
+# Elixir 依靠 actor 模式來進行平行處理。在 Elixir 中要寫出平行處理程式，
 # 只需要三個基本要素：建立行程，發送訊息及接收訊息。
 
 # 我們用 `spawn` 函式來建立行程，它接收一個函式當參數。

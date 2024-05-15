@@ -14,9 +14,9 @@ A JavaScript egy befoglaló halmazát képzi: minden JavaScript kód érvényes 
 
 Ez a dokumentum a TypeScript által hozzáadott új szintaxissal foglalkozik, nem pedig a [Javascripttel](../javascript/).
 
-Hogy kipróbáld a TypeScript fordítót, látogass el a [Játszótérre avagy Playground-ra](http://www.typescriptlang.org/Playground) ahol kódot írhatsz automatikus kódkiegészítéssel, és közvetlenül láthatod az előállított JavaScript kódot.
+Hogy kipróbáld a TypeScript fordítót, látogass el a [Játszótérre avagy Playground-ra](https://www.typescriptlang.org/Playground) ahol kódot írhatsz automatikus kódkiegészítéssel, és közvetlenül láthatod az előállított JavaScript kódot.
 
-```js
+```ts
 // 3 alapvető típus létezik TypeScriptben
 var isDone: boolean = false;
 var lines: number = 42;
@@ -53,11 +53,11 @@ var f2 = function(i: number) { return i * i; }
 var f3 = (i: number): number => { return i * i; }
 // Következtetett visszatérési értékkel
 var f4 = (i: number) => { return i * i; }
-// Következtetett visszatérési értékkel, 
+// Következtetett visszatérési értékkel,
 // ebben az egysoros formában nem szükséges a return kulcsszó
 var f5 = (i: number) =>  i * i;
 
-// Az interfészek szerkezeti alapon működnek, vagyis minden objektum, ahol 
+// Az interfészek szerkezeti alapon működnek, vagyis minden objektum, ahol
 // jelen vannak a megfelelő mezők kompatibilis az interfésszel
 interface Person {
   name: string;
@@ -92,7 +92,7 @@ class Point {
 
     // Konstruktor - a public/private kulcsszavak ebben a kontextusban
     // legenerálják a mezőkhöz szükséges kódot a konstruktorban.
-    // Ebben a példában az "y" ugyanúgy definiálva lesz, mint az "x", csak 
+    // Ebben a példában az "y" ugyanúgy definiálva lesz, mint az "x", csak
     // kevesebb kóddal.
     // Alapértelmezett (default) értékek is megadhatóak.
 
@@ -164,12 +164,9 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // definíciós fájl hivatkozása:
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## További források
- * [TypeScript hivatalos weboldala] (http://www.typescriptlang.org/)
- * [TypeScript nyelv specifikációja (pdf)] (http://go.microsoft.com/fwlink/?LinkId=267238)
- * [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [Forráskód GitHubon] (https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - típusdefiníciók gyűjteménye] (http://definitelytyped.org/)
+
+* [TypeScript hivatalos weboldala](https://www.typescriptlang.org/)
+* [Forráskód GitHubon](https://github.com/microsoft/TypeScript)

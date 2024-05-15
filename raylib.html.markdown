@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: raylib
+category: framework
+framework: raylib
 filename: learnraylib.c
 contributors:
     - ["Nikolas Wipper", "https://notnik.cc"]
@@ -36,11 +36,11 @@ int main(void)
     // raylib defines two types of cameras: Camera3D and Camera2D
     // Camera is a typedef for Camera3D
     Camera camera = {
-            .position = {0.0f, 0.0f, 0.0f},
-            .target   = {0.0f, 0.0f, 1.0f},
-            .up       = {0.0f, 1.0f, 0.0f},
-            .fovy     = 70.0f,
-            .type     = CAMERA_PERSPECTIVE
+            .position   = {0.0f, 0.0f, 0.0f},
+            .target     = {0.0f, 0.0f, 1.0f},
+            .up         = {0.0f, 1.0f, 0.0f},
+            .fovy       = 70.0f,
+            .projection = CAMERA_PERSPECTIVE
     };
 
     // raylib supports loading of models, animations, images and sounds
@@ -138,7 +138,6 @@ int main(void)
 
     return 0;
 }
-
 ```
 
 ## Further reading

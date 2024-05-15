@@ -515,7 +515,6 @@ __weak NSSet *weakSet; // Maintient une référence vers l'objet sans incrément
 // Lorsque l'objet sera supprimé, weakSet sera mis à nil automatiquement
 __unsafe_unretained NSArray *unsafeArray; // Comme __weak, mais la variable n'est pas mis à nil quand
 // l'objet est supprimé
-
 ```
 
 ##  Lectures Complémentaires

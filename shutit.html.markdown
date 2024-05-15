@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: ShutIt
+category: framework
+framework: ShutIt
 contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]
 filename: learnshutit.html
@@ -21,7 +21,6 @@ It is available as a pip install.
 Starting with the simplest example. Create a file called example.py:
 
 ```python
-
 import shutit
 session = shutit.create_session('bash')
 session.send('echo Hello World', echo=True)

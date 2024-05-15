@@ -13,10 +13,8 @@ filename: LearnVim-es.txt
 [Vim](http://www.vim.org)
 (Vi IMproved) es un clón del popular editor vi para UNIX. Es un editor de texto
 diseñado para ser veloz e incrementar la productividad, es ubicuo en la mayoría
-de los sistemas basados en UNIX. Cuenta con numerosas combinaciones de teclas 
+de los sistemas basados en UNIX. Cuenta con numerosas combinaciones de teclas
 para la navegación rápida a puntos especificos en un archivo y para rápida edición.
-
-
 
 ## Fundamentos de la navegación en Vim
 
@@ -37,7 +35,7 @@ para la navegación rápida a puntos especificos en un archivo y para rápida ed
     k                # Desplazarse una línea hacía arriba
     l                # Desplazarse un carácter hacía la derecha
 
-    # Desplazarse dentro de la línea 
+    # Desplazarse dentro de la línea
 
     0                # Desplazarse hacia el inicio de la línea
     $                # Desplazarse al final de la línea
@@ -61,7 +59,7 @@ para la navegación rápida a puntos especificos en un archivo y para rápida ed
     # Por ejemplo,
     f<               # Salta adelante y aterriza en <
     t<               # Salta adelante y aterriza justo antes de <
-    
+
     # Desplazarse por palabras
 
     w                # Desplazarse hacia adelante por una palabra
@@ -78,16 +76,14 @@ para la navegación rápida a puntos especificos en un archivo y para rápida ed
     L                # Desplazarse al final de la pantalla
 ```
 
-## Modos:
+## Modos
 
 Vim se basa en el concepto de **modos**.
 
-
-Modo Comando    - Vim se pone en marcha en éste modo, se usa para navegar y escribir comandos    
-Modo Inserción  - Utilizado para realizar cambios en el archivo    
-Modo Visual     - Utilizado para resaltar texto y operar en ellos    
+Modo Comando    - Vim se pone en marcha en éste modo, se usa para navegar y escribir comandos
+Modo Inserción  - Utilizado para realizar cambios en el archivo
+Modo Visual     - Utilizado para resaltar texto y operar en ellos
 Modo Ex         - Utilizado para ir hacia la parte inferior con ':' para introducir comandos
-
 
 ```
     i                # Pone a Vim en modo de inserción, antes de la posición del cursor
@@ -112,15 +108,15 @@ Modo Ex         - Utilizado para ir hacia la parte inferior con ':' para introdu
 Vim puede ser pensado como un conjunto de comandos en un
 formato "verbo-sustantivo-modificador ', donde:
 
-Verbo       - La acción a realizar    
-Modificador - Como vas hacer la acción    
+Verbo       - La acción a realizar
+Modificador - Como vas hacer la acción
 Sustantivo  - el objeto al que se le va a aplicar la acción
 
 Algunos ejemplos importantes de "Verbos", "Modificadores" y "Sustantivos":
 
 ```
     # 'Verbos'
- 
+
     d                # Eliminar
     c                # Cambiar
     y                # Copiar
@@ -142,7 +138,7 @@ Algunos ejemplos importantes de "Verbos", "Modificadores" y "Sustantivos":
     s                # Oración
     p                # Párrafo
     b                # Bloque
-    
+
     # "Frases" de ejemplo o comandos
 
     d2w              # Elimina 2 palabras
@@ -184,9 +180,9 @@ El archivo .vimrc puede ser usado para configurar Vim en el arranque.
 
 Aquí está un ejemplo de un archivo ~ / .vimrc:
 
-```
+```vim
 " Ejemplo ~/.vimrc
-" 2015.10 
+" 2015.10
 
 " Se requiere para que vim sea 'mejor'
 set nocompatible

@@ -110,7 +110,6 @@ composer update phpunit/phpunit
 # Si desea migrar la preferencia de un paquete a una versión más reciente, puede que tenga que quitar primero el paquete de más antiguo y sus dependencias.
 composer remove --dev phpunit/phpunit
 composer require --dev phpunit/phpunit:^5.0
-
 ```
 
 ## Autocargador
@@ -136,6 +135,7 @@ En `composer.json`, añadir el campo 'autoload':
   }
 }
 ```
+
 Esto le indicará al cargador automático que busque cualquier cosa en el espacio de nombres `\Acme\` dentro de la carpeta src`.
 
 También puedes usar [usar PSR-0, un mapa de clase o simplemente una lista de archivos para incluir (EN)](https://getcomposer.org/doc/04-schema.md#autoload). También está el campo `autoload-dev` para espacios de nombres de sólo desarrollo.

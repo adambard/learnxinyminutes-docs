@@ -89,7 +89,7 @@ func learnTypes() {
     g := 'Σ' // rúna(rune) típus, megegyezik az uint32-vel, egy UTF-8 karaktert
              // tárol
 
-    f := 3.14195 // float64, az IEEE-754 szabványnak megfelelő 64-bites
+    f := 3.14159 // float64, az IEEE-754 szabványnak megfelelő 64-bites
                  // lebegőpontos szám
     c := 3 + 4i  // complex128, belsőleg két float64-gyel tárolva
 
@@ -325,7 +325,7 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 ## További olvasmányok
 
-Minden Go-val kapcsolatos megtaláható a [hivatalos Go weboldalon](http://golang.org/).
+Minden Go-val kapcsolatos megtaláható a [hivatalos Go weboldalon](https://go.dev/).
 Ott követhetsz egy tutorialt, játszhatsz a nyelvvel az interneten, és sok érdekességet olvashatsz.
 
 A nyelv specifikációját kifejezetten érdemes olvasni, viszonylag rövid és sokat tanul belőle az ember.

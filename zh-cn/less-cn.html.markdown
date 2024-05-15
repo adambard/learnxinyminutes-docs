@@ -12,9 +12,7 @@ lang: zh-cn
 Less是一种CSS预处理器，它增加了诸如变量、嵌套、mixin等功能。
 Less(以及其它预处理器，如[Sass](http://sass-lang.com/))能帮助开发人员编写易维护，DRY (Don't Repeat Yourself) 的代码。
 
-```css
-
-
+```less
 //单行注释在编译成CSS后会被删除。
 
 /* 多行注释将保留. */
@@ -366,8 +364,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
-
 ```
 
 ## 实践Less

@@ -29,21 +29,21 @@ filename: learncss-fa.css
 
 <p dir='rtl'>در CSS همه توضیحات داخل ستاره-بروم نوشته میشوند زیرا CSS دستوری برای توضیحات تک خطی مثل C ندارد</p>
 
-```CSS
+```css
 /* comments appear inside slash-asterisk, just like this line!
    there are no "one-line comments"; this is the only comment style */
 ```
 
 <p dir='rtl'>به طور کلی دستورات CSS بسیار ساده هستند که در آن یک انتخابگر (selector) عنصری را در  روی صفحه هدف قرار میدهد.</p>
 
-```CSS
+```css
 selector { property: value; /* more properties...*/ }
 ```
 
 <p dir='rtl'>با استفاده از ستاره می توان برای همه عناصر روی صفحه استایل تعریف کرد</p>
 
 
-```CSS
+```css
 * { color:red; }
 ```
 
@@ -52,132 +52,134 @@ selector { property: value; /* more properties...*/ }
 ```html
 <div class='some-class class2' id='someId' attr='value' otherAttr='en-us foo bar' />
 ```
+
 <p dir='rtl'>شما میتوانید با استفاده از نام کلاس آنرا انتخاب کنید</p>
 
 
-```CSS
+```css
 .some-class { }
 ```
 
 <p dir='rtl'>یا با استفاده از نام دو کلاس</p>
 
-```CSS
+```css
 .some-class.class2 { }
 ```
 
 <p dir='rtl'>یا با استفاده از نام id</p>
 
-```CSS
+```css
 #someId { }
 ```
 
 <p dir='rtl'>یا با استفاده از نام خود عنصر</p>
 
-```CSS
+```css
 div { }
 ```
 
 <p dir='rtl'>یا با استفاده از `attr`</p>
 
-```CSS
+```css
 [attr] { font-size:smaller; }
 ```
 
 <p dir='rtl'>یا با استفاده از ارزشی که برای `attr` مشخص شده</p>
 
-```CSS
+```css
 [attr='value'] { font-size:smaller; }
 ```
 
 <p dir='rtl'>با استفاده از ارزشی که برای `attr` مشخص شده و آن ارزش با `val` شروع میشود در CSS3</p>
 
-```CSS
+```css
 [attr^='val'] { font-size:smaller; }
 ```
 
 <p dir='rtl'>با استفاده از ارزشی که برای `attr` مشخص شده و آن ارزش با `ue` به پایان میرسد در CSS3</p>
 
-```CSS
+```css
 [attr$='ue'] { font-size:smaller; }
 ```
 
 <p dir='rtl'>یا با انتخاب بوسیله یکی از ارزشهایی که در لیست `otherAttr` بوسیله فاصله از هم جدا شده اند در CSS3</p>
 
-```CSS
+```css
 [attr$='ue'] { font-size:smaller; }
 ```
 
 <p dir='rtl'>یا ارزش(`value`) دقیقاً خود ارزش(`value`) یا بوسیله `-` که یونیکد (U+002D) از حرف بعدی جدا شود</p>
 
-```CSS
+```css
 [otherAttr|='en'] { font-size:smaller; }
 ```
 
 <p dir='rtl'>و مهمتر از همه اینکه میتوان آنها را ترکیب کرد. نکته مهمی که در اینجا باید مد نظر داشته باشید این است که هنگام ترکیب نباید هیچگونه فاصله ای بین آنها قرار گیرد زیرا در این حالت معنای دستور تغییر میکند</p>
 
-```CSS
+```css
 div.some-class[attr$='ue'] { }
 ```
 
 <p dir='rtl'>CSS این امکان را به شما میدهد که یک عنصر را بوسیله والدین آن انتخاب کنید</p>
 <p dir='rtl'>برای مثال دستور زیر همه عناصری را که نام کلاس آنها <span dir="ltr">`.class-name`</span> و دارای پدر و مادری با این مشخصه <span dir="ltr">`div.some-parent`</span> هستند را انتخاب میکند.</p>
 
-```CSS
+```css
 div.some-parent > .class-name {}
 ```
 
 
 <p dir='rtl'>یا دستور زیر که همه عناصری را که نام کلاس آنها <span dir="ltr">`.class-name`</span> و داخل عنصری با مشخصه <span dir="ltr">`div.some-parent`</span> هستند را در هر عمقی که باشند (یعنی فرزندی از فرزندان <span dir="ltr">`div.some-parent`</span><span dir="ltr"> باشند) انتخاب میکند.</p>
 
-```CSS
+```css
 div.some-parent .class-name {}
 ```
 
 <p dir='rtl'>نکته ای که در اینجا باید به آن توجه کنید این است که این رستور با فاصله ای بین نام دو کلاس همراه است و با مثال زیر که در بالا هم ذکر شد تفاوت دارد.</p>
 
-```CSS
+```css
 div.some-parent.class-name {}
 ```
 
 <p dir='rtl'>دستور زیر همه عناصری را که نام کلاس آنها <span dir="ltr">`.this-element`</span> و بلافاصله بعد از عنصری با مشخصه <span dir="ltr">`.i-am-before`</span> قرار دارد را انتخاب میکند.</p>
 
-```CSS
+```css
 .i-am-before + .this-element { }
 ```
 
 <p dir='rtl'>هر خواهر یا برادری که بعد از <span dir="ltr">`.i-am-before`</span> بیاید در اینجا لازم نیست بلافاصله بعد از هم قرار بگیرند ولی باید دارای پدر و مادری یکسان باشند.</p>
 
-```CSS
+```css
 .i-am-any-before ~ .this-element {}
 ```
+
 <p dir='rtl'>در زیر چند نمونه از شبه کلاسها را معرفی میکنیم که به شما اجازه میدهد عناصر را بر اساس رفتار آنها در صفحه انتخاب کنید.</p>
 <p dir='rtl'>برای مثال زمانی که اشاره گر ماوس روی عنصری بر روی صفحه قرار دارد.</p>
 
-```CSS
+```css
 selector:hover {}
 ```
 
 <p dir='rtl'>یا زمانی از یک لینک بازید کردید.</p>
 
-```CSS
+```css
 selected:visited {}
 ```
 
 <p dir='rtl'>یا زمانی از لینکی بازید نشده است.</p>
 
-```CSS
+```css
 selected:link {}
 ```
 
 <p dir='rtl'>یا زمانی که روی یک عنصر ورودی متمرکز شده.</p>
 
-```CSS
+```css
 selected:focus {}
 ```
 
 <h3 dir='rtl'>واحدها</h3>
 
-```CSS
+```css
 selector {
 
     /* واحدها اندازه */
@@ -247,7 +249,7 @@ selector {
 
 <p dir='rtl'>به مثال زیر توجه کنید:</p>
 
-```CSS
+```css
 /*A*/
 p.class1[attr='value']
 
@@ -262,7 +264,6 @@ p {}
 
 /*E*/
 p { property: value !important; }
-
 ```
 
 <p dir='rtl'>و همچنین به کد زیر:</p>
@@ -270,8 +271,8 @@ p { property: value !important; }
 ```html
 <p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 </p>
-
 ```
+
 ‍‍
 <p dir='rtl'>حق تقدم یا اولویت برای مثال بالا به این صورت است:</p>
 <p dir='rtl'>توجه داشته باشید که حق تقدم برای هر کدام از ویژگیها است نه برای کل مجموعه.</p>

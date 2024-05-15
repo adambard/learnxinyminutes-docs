@@ -906,9 +906,9 @@ v.push_back(Foo());
 // Ceci nettoie toutes les valeurs de v. Voir la section à propos des objets
 // temporaires pour comprendre pourquoi cela fonctionne.
 v.swap(vector<Foo>());
-
 ```
-Lecture complémentaire :
+
+Lecture complémentaire:
 
 * Une référence à jour du langage est disponible à [CPP Reference](http://cppreference.com/w/cpp).
 * Des ressources supplémentaires sont disponibles à [CPlusPlus](http://cplusplus.com).

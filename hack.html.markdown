@@ -410,7 +410,6 @@ namespace LearnHackinYMinutes {
    * - ... and more!
    */
 }
-
 ```
 
 ## More Information

@@ -414,7 +414,6 @@ typedef void (*my_fnp_type)(char *);
 // Es usado para declarar la variable puntero actual:
 // ...
 // my_fnp_type f; 
-
 ```
 
 ## Otras lecturas
@@ -432,5 +431,3 @@ Es muy importante utilizar el espaciado y la sangría apropiados y ser coherente
 con su estilo de codificación en general. El código legible es mejor que el 
 código rápido. Para adoptar un buen estilo de codificación, vea el
 [Estilo de codificación del kernel Linux] (https://www.kernel.org/doc/Documentation/CodingStyle).
-
-Aparte de eso, Google es tu amigo.

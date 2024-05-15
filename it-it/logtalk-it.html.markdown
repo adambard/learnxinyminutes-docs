@@ -45,7 +45,7 @@ Un oggetto incapsula le dichiarazioni e le definizioni dei predicati. Gli oggett
 
 # Compilazione e il caricamento dei file sorgenti
 
-Supponendo che il codice di cui sopra per l'oggetto `list` venga salvato in un file` list.lgt`, esso può essere compilato e caricato utilizzando il predicato predefiniti `logtalk_load/1` o la sua abbreviazione `{}/1`, con il percorso del file come argomento (l'estensione può essere omessa):
+Supponendo che il codice di cui sopra per l'oggetto `list` venga salvato in un file `list.lgt`, esso può essere compilato e caricato utilizzando il predicato predefiniti `logtalk_load/1` o la sua abbreviazione `{}/1`, con il percorso del file come argomento (l'estensione può essere omessa):
 
 ```logtalk
 ?- {list}.
@@ -53,7 +53,7 @@ yes
 ```
 
 In generale, le entità potrebbero avere dipendenze sulle entità definite in altri file di origine (ad esempio le entità di biblioteca). Per caricare un file e tutte le sue dipendenze, la soluzione consigliata consiste nel definire un file _loader_ che carica tutti i file necessari per un'applicazione. Un file loader è semplicemente un file di origine, in genere denominato `loader.lgt`, che effettua chiamate ai predicati built-in `logtalk_load/1-2`, di solito
-da una direttiva `initialization/1` per la portabilità e conformità agli standard. Caricatore file vengono forniti per tutte le librerie, strumenti ed esempi. 
+da una direttiva `initialization/1` per la portabilità e conformità agli standard. Caricatore file vengono forniti per tutte le librerie, strumenti ed esempi.
 
 # Inviare un messaggio ad un oggetto
 
@@ -67,7 +67,7 @@ X = 3
 yes
 ```
 
-Analogamente alla programmazione object-oriented, logtalk consente anche l'Incapsulamento. 
+Analogamente alla programmazione object-oriented, logtalk consente anche l'Incapsulamento.
 Un predicato può essere dichiarata pubblico, protetto o privato. Può anche essere _local_ quando non esiste una direttiva specifica per esso all'interno dello scope. Per esempio:
 
 ```logtalk
@@ -114,7 +114,7 @@ Error = error(
 yes
 ```
 
-Un punto fondamentale da capire è che le direttive che specificano il predicato nello scope specificano la semantica di chiamata (_calling_) del predicato, e non la semantica di definizione (_definition_). Ad esempio, se un oggetto ha il ruolo di una classe e dichiara un predicato privato, tale predicato può essere definito nelle sue sottoclassi e nelle istanze * ma * può essere chiamato solo nelle sue istanza (_from_) dalla classe.
+Un punto fondamentale da capire è che le direttive che specificano il predicato nello scope specificano la semantica di chiamata (_calling_) del predicato, e non la semantica di definizione (_definition_). Ad esempio, se un oggetto ha il ruolo di una classe e dichiara un predicato privato, tale predicato può essere definito nelle sue sottoclassi e nelle istanze *ma* può essere chiamato solo nelle sue istanza (_from_) dalla classe.
 
 # Definizione e implementazione di un protocollo
 
@@ -379,6 +379,9 @@ Se il codice sorgente dell'oggetto non è disponibile e bisogna correggere l'app
 Dopo la compilazione e il caricamento della categoria nell'applicazione in esecuzione si ottiene:
 
 ```logtalk
+?- set_logtalk_flag(complements, allow).
+yes
+
 ?- {patch}.
 yes
 
@@ -387,7 +390,7 @@ bar
 yes
 ```
 
-Poiché l'hot-patching pregiudica forzatamente l'incapsulamento, un apposito flag di compilazione `complementary` può essere impostato (a livello globale o per un singolo oggetto) per consentire, limitare o prevenire l'hot-patching.
+Poiché l'hot-patching interrompe forzatamente l'incapsulamento, è possibile impostare il flag del compilatore `complementary` può essere impostato (a livello globale o per un singolo oggetto) per consentire, limitare o prevenire l'hot-patching.
 
 # Oggetti Parametrici e Categorie
 
@@ -463,6 +466,9 @@ Logtalk supporta l'_event-driven programming_ mediante la definizione di eventi 
 Supponendo che l'oggetto `tracer` e l'oggetto `list` definito in precedenza siano stati già compilati e caricati, si possono osservare i gestori di eventi in azione durante l'invio di un messaggio:
 
 ```logtalk
+?- set_logtalk_flag(events, allow).
+yes
+
 ?- list::member(X, [1,2,3]).
 
 call: list <-- member(X, [1,2,3]) from user
@@ -475,17 +481,17 @@ X = 3
 yes
 ```
 
-Gli eventi possono essere impostati e cancellati dinamicamente in fase di esecuzione chiamando i predicati predefiniti `define_events/5` e` abolish_events/5` .
+Gli eventi possono essere impostati e cancellati dinamicamente in fase di esecuzione chiamando i predicati predefiniti `define_events/5` e `abolish_events/5`.
 
 La programmazione event-driven può essere vista come una forma di _computational reflection_. Si noti però che gli eventi sono generati solo quando si utilizza il costrutto di controllo per l'invio di messaggi `::/2`.
 
 # Espressioni lambda
 
-Logtalk supporta anche le espressioni lambda. I parametri della espressioni lambda sono rappresentati mediante una lista con l'operatore infisso `(>>)/2` che collega i parametri alla relativa lambda espressione. Ecco alcuni semplici esempi di che usano i meta-predicati.
+Logtalk supporta anche le espressioni lambda. I parametri della espressioni lambda sono rappresentati mediante una lista con l'operatore infisso `(>>)/2` che collega i parametri alla relativa lambda espressione. Ecco alcuni semplici esempi che utilizzano la libreria `meta`.
 
 
 ```logtalk
-?- {library(metapredicates_loader)}.
+?- {meta(loader)}.
 yes
 
 ?- meta::map([X,Y]>>(Y is 2*X), [1,2,3], Ys).

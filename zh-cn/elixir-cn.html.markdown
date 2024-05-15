@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
 translators:
@@ -12,7 +12,6 @@ Elixir 是一门构建在Erlang VM 之上的函数式编程语言。Elixir 完�
 另外还提供了更标准的语法，特性。
 
 ```elixir
-
 # 这是单行注释, 注释以井号开头
 
 # 没有多行注释

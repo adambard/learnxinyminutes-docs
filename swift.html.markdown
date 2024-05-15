@@ -14,7 +14,7 @@ filename: learnswift.swift
 
 Swift is a programming language for iOS and macOS development created by Apple. Designed to coexist with Objective-C and to be more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It is built with the LLVM compiler included in Xcode 6+.
 
-The official _[Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329)_ book from Apple is now available via iBooks. It goes into much more detail than this guide, and if you have the time and patience to read it, it's recommended. Some of these examples are from that book.
+The official _[Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329)_ book from Apple is now available via Apple Books. It goes into much more detail than this guide, and if you have the time and patience to read it, it's recommended. Some of these examples are from that book.
 
 Another great reference is _About Swift_ on Swift's [website](https://docs.swift.org/swift-book/).
 
@@ -679,6 +679,9 @@ class Rect: Shape {
 
 // A simple class `Square` extends `Rect`
 class Square: Rect {
+    // Use a convenience initializer to make calling a designated initializer faster and more "convenient".
+    // Convenience initializers call other initializers in the same class and pass default values to one or more of their parameters.
+    // Convenience initializers can have parameters as well, which are useful to customize the called initializer parameters or choose a proper initializer based on the value passed.
     convenience init() {
         self.init(sideLength: 5)
     }
