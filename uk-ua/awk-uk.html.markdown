@@ -237,7 +237,7 @@ function string_functions(    localvar, arr) {
     toupper("foo"); # => "FOO"
 }
 
-# Функції введення виведення
+# Функції введення-виведення
 function io_functions(    localvar) {
 
     # Ви вже бачили print 
