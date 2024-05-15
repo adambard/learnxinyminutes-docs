@@ -219,7 +219,7 @@ function string_functions(    localvar, arr) {
     # Обидві вони повертають кількість замінених відповідностей.
     localvar = "fooooobar";
     sub("fo+", "Meet me at the ", localvar); # localvar => "Meet me at the bar"
-    gsub("e+", ".", localvar); # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar); # localvar => "m..t m. at th. bar"
 
     # Пошук підрядка, який збігається з регулярним виразом:
     # index() робить те ж саме, але не використовує регулярний вираз.
