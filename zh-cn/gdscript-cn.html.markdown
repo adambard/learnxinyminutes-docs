@@ -13,7 +13,7 @@ GDScript 是一种动态类型的脚本语言，专门为免费开源游戏引�
 
 ## 基础
 
-```nim
+```gdscript
 # 单行注释使用 # 号书写。
 """
   多行
@@ -204,7 +204,7 @@ func use_inner_class():
 
 ## 访问场景树中其他节点
 
-```nim
+```gdscript
 extends Node2D
 
 var sprite # 该变量将用来保存引用。
@@ -250,7 +250,7 @@ onready var reference = get_node(nodepath) as Node
 
 信号系统是 Godot 对观察者编程模式的实现。例子如下:
 
-```nim
+```gdscript
 class_name Player extends Node2D
 
 var hp = 10
@@ -277,7 +277,7 @@ func _on_death():
 
 GDScript 可以选择性地使用静态类型。
 
-```nim
+```gdscript
 extends Node
 
 var x: int # 定义带有类型的变量

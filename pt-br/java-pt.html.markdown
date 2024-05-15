@@ -621,7 +621,6 @@ public class EnumTeste {
 // Tipos Enum são muito mais poderosos do que nós mostramos acima.
 // O corpo de um enum pode incluir métodos e outros campos.
 // Você pode ver mais em https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
-
 ```
 
 ## Leitura Recomendada

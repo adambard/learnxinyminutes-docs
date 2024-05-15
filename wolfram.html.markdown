@@ -14,7 +14,7 @@ Wolfram Language has several interfaces:
 
 The code in this example can be typed in to any interface and edited with Wolfram Workbench. Loading directly into Mathematica may be awkward because the file contains no cell formatting information (which would make the file a huge mess to read as text) - it can be viewed/edited but may require some setting up.
 
-```
+```mathematica
 (* This is a comment *)
 
 (* In Mathematica instead of using these comments you can create a text cell

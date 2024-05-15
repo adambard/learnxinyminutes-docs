@@ -412,7 +412,6 @@ foo :: Integer
 Quel est ton nom ?
 Ami
 Salut, Ami !
-
 ```
 
 Et Haskell ne se limite pas à ça, on trouve encore par exemple les classes de types et les monades. Il y a beaucoup de raisons qui font que coder en Haskell est si *fun*. Je vous laisse avec un dernier exemple : une implémentation de quicksort :

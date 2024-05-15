@@ -33,7 +33,7 @@ Go tuo mukanaan loistavan oletuskirjaston sekä innokkaan yhteisön.
  rivin kommentti */
 
 // Package -lausekkeella aloitetaan jokainen lähdekooditiedosto.
-// Main on erityinen nimi joka ilmoittaa
+// main on erityinen nimi joka ilmoittaa
 // suoritettavan tiedoston kirjaston sijasta.
 package main
 
@@ -90,7 +90,7 @@ voi sisältää rivinvaihtoja.` // Sama merkkijonotyyppi.
     // Ei-ASCII todellisarvo. Go-lähdekoodi on UTF-8.
 	g := 'Σ' // riimutyyppi, lempinimi int32:lle, sisältää unicode-koodipisteen.
 
-	f := 3.14195 //float64, IEEE-754 64-bittinen liukuluku.
+	f := 3.14159 //float64, IEEE-754 64-bittinen liukuluku.
 	c := 3 + 4i  // complex128, sisäisesti ilmaistu kahdella float64:lla.
 
 	// var -syntaksi alkuarvoilla.
@@ -418,21 +418,21 @@ func requestServer() {
 
 ## Lisää luettavaa
 
-Go-tietämyksen alku ja juuri on sen [virallinen verkkosivu]()(http://golang.org/).
+Go-tietämyksen alku ja juuri on sen [virallinen verkkosivu](https://go.dev/).
 Siellä voit seurata oppitunteja, askarrella vuorovaikutteisesti sekä lukea paljon.
-Kierroksen lisäksi [dokumentaatio](https://golang.org/doc/) pitää sisällään tietoa
+Kierroksen lisäksi [dokumentaatio](https://go.dev/doc/) pitää sisällään tietoa
 siistin Go-koodin kirjoittamisesta, pakettien ja komentojen käytöstä sekä julkaisuhistoriasta.
 
 Kielen määritelmä itsessään on suuresti suositeltavissa. Se on helppolukuinen ja
 yllättävän lyhyt (niissä määrin kuin kielimääritelmät nykypäivänä ovat.)
 
-Voit askarrella parissa kanssa [Go playgroundissa](https://play.golang.org/p/tnWMjr16Mm).
-Muuttele sitä ja aja se selaimestasi! Huomaa, että voit käyttää [https://play.golang.org](https://play.golang.org)
+Voit askarrella parissa kanssa [Go playgroundissa](https://go.dev/play/p/tnWMjr16Mm).
+Muuttele sitä ja aja se selaimestasi! Huomaa, että voit käyttää [https://go.dev/play/](https://go.dev/play/)
 [REPL:na](https://en.wikipedia.org/wiki/Read-eval-print_loop) testataksesi ja koodataksesi selaimessasi, ilman Go:n asentamista.
 
-Go:n opiskelijoiden lukulistalla on [oletuskirjaston lähdekoodi](http://golang.org/src/pkg/).
+Go:n opiskelijoiden lukulistalla on [oletuskirjaston lähdekoodi](https://go.dev/src/).
 Kattavasti dokumentoituna se antaa parhaan kuvan helppolukuisesta ja ymmärrettävästä Go-koodista,
--tyylistä ja -tavoista. Voit klikata funktion nimeä [doukumentaatiossa](http://golang.org/pkg/) ja
+-tyylistä ja -tavoista. Voit klikata funktion nimeä [doukumentaatiossa](https://go.dev/pkg/) ja
 lähdekoodi tulee esille!
 
 Toinen loistava paikka oppia on [Go by example](https://gobyexample.com/).

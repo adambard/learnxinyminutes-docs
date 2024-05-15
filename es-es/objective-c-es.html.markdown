@@ -840,8 +840,8 @@ __weak NSSet *weakSet; // Referencia débil a un objeto existente. Cuando el
 __unsafe_unretained NSArray *unsafeArray; // Como __weak, pero unsafeArray no 
                                           // es asginado a nil cuando el objeto
                                           // existente es liberado.
-
 ```
+
 ## Lecturas sugeridas
 
 [Wikipedia Objective-C](http://es.wikipedia.org/wiki/Objective-C)

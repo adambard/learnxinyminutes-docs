@@ -79,12 +79,12 @@ lang: zh-cn
  
 ;; `C-j' 会在buffer中插入当前运算的结果
  
-;; 而`C-xC-e' 则会在emacs最底部显示结果，也就是被称作"minibuffer"的区域
+;; 而`C-xC-e' 则会在emacs最底部显示结果，也就是被称作"echo area"的区域
 ;; 为了避免把我们的buffer填满无用的结果，我们以后会一直用`C-xC-e'
  
 ;; `setq' 可以将一个值赋给一个变量
 (setq my-name "Bastien")
-;; `C-xC-e' 输出 "Bastien" (在 mini-buffer 中显示)
+;; `C-xC-e' 输出 "Bastien" (在 echo area 中显示)
  
 ;; `insert' 会在光标处插入字符串:
 (insert "Hello!")

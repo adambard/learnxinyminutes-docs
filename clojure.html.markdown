@@ -412,7 +412,7 @@ Clojuredocs.org has documentation with examples for most core functions:
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
 4Clojure is a great way to build your clojure/FP skills:
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org (yes, really) has a number of getting started articles:
 [http://clojure-doc.org/](http://clojure-doc.org/)

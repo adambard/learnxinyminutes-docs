@@ -17,8 +17,6 @@ This tutorial is written using SCSS.
 If you're already familiar with CSS3, you'll be able to pick up Sass relatively quickly. It does not provide any new styling properties but rather the tools to write your CSS more efficiently and make maintenance much easier.
 
 ```scss
-
-
 //Single line comments are removed when Sass is compiled to CSS.
 
 /* Multi line comments are preserved. */
@@ -563,7 +561,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
 ```
 
 ## SASS or Sass?

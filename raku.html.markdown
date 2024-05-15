@@ -122,7 +122,7 @@ say @array;               # OUTPUT: «a 6 b␤»
 # context, and any duplicated keys are deduplicated.
 my %hash = 'a' => 1, 'b' => 2;
 
-# Keys get auto-quoted when the fat comman (`=>`) is used. Trailing commas are
+# Keys get auto-quoted when the fat comma (`=>`) is used. Trailing commas are
 # okay.
 %hash = a => 1, b => 2, ;
 
@@ -688,7 +688,7 @@ say (0 or False); # OUTPUT: «False␤».
 my ($a, $b, $c, $d, $e) = 1, 0, False, True, 'pi';
 say $a && $b && $c; # OUTPUT: «0␤», the first falsey value
 say $a && $b && $c; # OUTPUT: «False␤», the first falsey value
-say $a && $d && $e; # OUTPUT: «pi␤», last operand since everthing before is truthy
+say $a && $d && $e; # OUTPUT: «pi␤», last operand since everything before is truthy
 
 # `||` returns the first argument that evaluates to `True`.
 say $b || $a || $d; # OUTPUT: «1␤»
@@ -1965,7 +1965,7 @@ say so 'abbbbc' ~~ / a  b*  c /; # OUTPUT: «True␤»
 say so 'aec' ~~ / a  b*  c /;    # OUTPUT: «False␤», "b"(s) are optional, not replaceable.
 
 # `**` - (Unbound) Quantifier
-# If you squint hard enough, you might understand why exponentation is used
+# If you squint hard enough, you might understand why exponentiation is used
 # for quantity.
 say so 'abc' ~~ / a  b**1  c /;         # OUTPUT: «True␤», exactly one time
 say so 'abc' ~~ / a  b**1..3  c /;      # OUTPUT: «True␤», one to three times

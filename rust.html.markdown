@@ -30,6 +30,9 @@ Rust not only fast, but also easy and efficient to code in.
 // This is a comment. Line comments look like this...
 // and extend multiple lines like this.
 
+/* Block comments
+  /* can be nested. */ */
+
 /// Documentation comments look like this and support markdown notation.
 /// # Examples
 ///
@@ -223,7 +226,7 @@ fn main() {
     type FunctionPointer = fn(u32) -> u32;
 
     let fib : FunctionPointer = fibonacci;
-    println!("Fib: {}", fib(4));
+    println!("Fib: {}", fib(4)); // 5
 
     /////////////////////////
     // 3. Pattern matching //
@@ -341,6 +344,10 @@ fn main() {
 
 ## Further reading
 
+For a deeper-yet-still-fast explanation into Rust and its symbols/keywords, the
+[half-hour to learn Rust](https://fasterthanli.me/articles/a-half-hour-to-learn-rust)
+article by Fasterthanlime explains (almost) everything in a clear and concise way!
+
 There’s a lot more to Rust—this is just the basics of Rust so you can understand
 the most important things. To learn more about Rust, read [The Rust Programming
 Language](http://doc.rust-lang.org/book/index.html) and check out the
@@ -348,5 +355,5 @@ Language](http://doc.rust-lang.org/book/index.html) and check out the
 irc.mozilla.org are also always keen to help newcomers.
 
 You can also try out features of Rust with an online compiler at the official
-[Rust playpen](http://play.rust-lang.org) or on the main
+[Rust Playground](https://play.rust-lang.org) or on the main
 [Rust website](http://rust-lang.org).

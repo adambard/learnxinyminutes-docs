@@ -92,9 +92,10 @@ $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
 // Enclose a variable in curly braces if needed
-$apples = "I have {$number} apples to eat.";
-$oranges = "I have ${number} oranges to eat.";
-$money = "I have $${number} in the bank.";
+$number = 23;
+$apples = "I have {$number} apples to eat.";   // => I have 23 apples to eat.
+$oranges = "I have ${number} oranges to eat."; // => I have 23 oranges to eat.
+$money = "I have $${number} in the bank.";     // => I have $23 in the bank.
 
 // Since PHP 5.3, nowdocs can be used for uninterpolated multi-liners
 $nowdoc = <<<'END'
@@ -109,7 +110,7 @@ $sgl_quotes
 END;
 
 // String concatenation is done with .
-echo 'This string ' . 'is concatenated';
+echo 'This string ' . 'is concatenated';  // Returns 'This string is concatenated'
 
 // Strings can be passed in as parameters to echo
 echo 'Multiple', 'Parameters', 'Valid';  // Returns 'MultipleParametersValid'
@@ -443,7 +444,7 @@ $bar('C'); // Prints "A - B - C"
 // You can call named functions using strings
 $function_name = 'add';
 echo $function_name(1, 2); // => 3
-// Useful for programatically determining which function to run.
+// Useful for programmatically determining which function to run.
 // Or, use call_user_func(callable $callback [, $parameter [, ... ]]);
 
 
@@ -873,7 +874,6 @@ try {
 } catch (MyException $e) {
     // Handle my exception
 }
-
 ```
 
 ## More Information

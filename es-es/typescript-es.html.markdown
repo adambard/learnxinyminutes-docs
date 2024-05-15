@@ -12,11 +12,11 @@ TypeScript es un lenguaje cuyo objetivo es facilitar el desarrollo de aplicacion
 TypeScript añade conceptos comunes como clases, módulos, interfaces, genéricos y (opcionalmente) tipeo estático a JavaScript.
 Es un superset de JavaScript: todo el código JavaScript es código válido en TypeScript de manera que se puede integrar fácilmente a cualquier proyecto . El compilador TypeScript emite JavaScript.
 
-Este artículo se enfocará solo en la sintáxis extra de TypeScript, y no en [JavaScript] (../javascript-es/).
+Este artículo se enfocará solo en la sintáxis extra de TypeScript, y no en [JavaScript](../javascript-es/).
 
-Para probar el compilador de TypeScript, diríjase al [Área de Pruebas] (http://www.typescriptlang.org/Playground) donde podrá tipear código, y ver como se auto-completa al tiempo que ve el código emitido JavaScript.
+Para probar el compilador de TypeScript, diríjase al [Área de Pruebas](https://www.typescriptlang.org/Playground) donde podrá tipear código, y ver como se auto-completa al tiempo que ve el código emitido JavaScript.
 
-```js
+```ts
 // Existen 3 tipos básicos en TypeScript
 var isDone: boolean = false;
 var lines: number = 42;
@@ -161,12 +161,9 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // Incluyendo referencias a un archivo de definición:
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## Para mayor información
- * [Sitio Oficial de TypeScript] (http://www.typescriptlang.org/)
- * [Especificaciones del lenguaje TypeScript (pdf)] (http://go.microsoft.com/fwlink/?LinkId=267238)
- * [Anders Hejlsberg - Introduciendo TypeScript en Canal 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [Código fuente en GitHub] (https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - repositorio para definiciones de tipo] (http://definitelytyped.org/)
+
+* [Sitio Oficial de TypeScript](https://www.typescriptlang.org/)
+* [Código fuente en GitHub](https://github.com/microsoft/TypeScript)

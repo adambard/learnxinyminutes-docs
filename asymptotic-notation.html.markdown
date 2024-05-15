@@ -135,7 +135,7 @@ Let's look at the definition of Big-O.
 3 * n^2 <= c * n
 ```
 
-Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > <sub>0</sub>?
+Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > n<sub>0</sub>?
 No, there isn't. `f(n)` is NOT O(g(n)).
 
 ### Big-Omega

@@ -9,16 +9,14 @@ lang: pt-br
 ---
 
 Hy é um dialeto de Lisp escrito sobre Python. Isto é possível convertendo
-código Hy em árvore sintática abstrata python (ast). Portanto, isto permite
-hy chamar código python nativo e vice-versa.
+código Hy em árvore sintática abstrata Python (ast). Portanto, isto permite
+Hy chamar código Python nativo e vice-versa.
 
-Este tutorial funciona para hy ≥ 0.9.12
-
-```clojure
-;; Isso dá uma introdução básica em hy, como uma preliminar para o link abaixo
-;; http://try-hy.appspot.com
+```hylang
+;; Isso dá uma introdução básica em Hy, como uma preliminar para o link abaixo
+;; https://hylang.org/try-hy
 ;;
-; Comentários em ponto-e-vírgula, como em outros LISPS
+; Comentários em ponto-e-vírgula, como em outros Lisps
 
 ;; s-noções básicas de expressão
 ; programas Lisp são feitos de expressões simbólicas ou sexps que se assemelham
@@ -27,8 +25,8 @@ Este tutorial funciona para hy ≥ 0.9.12
 (print "hello world")
 
 ;; Tipos de dados simples
-; Todos os tipos de dados simples são exatamente semelhantes aos seus homólogos 
-; em python que
+; Todos os tipos de dados simples são exatamente semelhantes aos seus homólogos
+; em Python que
 42 ; => 42
 3.14 ; => 3.14
 True ; => True
@@ -36,13 +34,13 @@ True ; => True
 
 ; Vamos começar com um pouco de aritmética muito simples
 (+ 4 1) ;=> 5
-; o operador é aplicado a todos os argumentos, como outros lisps
+; o operador é aplicado a todos os argumentos, como outros Lisps
 (+ 4 1 2 3) ;=> 10
 (- 2 1) ;=> 1
 (* 4 2) ;=> 8
 (/ 4 1) ;=> 4
 (% 4 2) ;=> 0 o operador módulo
-; exponenciação é representado pelo operador ** como python
+; exponenciação é representado pelo operador ** como Python
 (** 3 2) ;=> 9
 ; formas aninhadas vão fazer a coisa esperada
 (+ 2 (* 4 2)) ;=> 10
@@ -58,9 +56,9 @@ True ; => True
 (def *foo* 42)
 ;; outros tipos de dados de armazenamento
 ; strings, lists, tuples & dicts
-; estes são exatamente os mesmos tipos de armazenamento de python
+; estes são exatamente os mesmos tipos de armazenamento de Python
 "hello world" ;=> "hello world"
-; operações de string funcionam semelhante em python
+; operações de string funcionam semelhante em Python
 (+ "hello " "world") ;=> "hello world"
 ; Listas são criadas usando [], a indexação começa em 0
 (setv mylist [1 2 3 4])
@@ -68,7 +66,7 @@ True ; => True
 (setv mytuple (, 1 2))
 ; dicionários são pares de valores-chave
 (setv dict1 {"key1" 42 "key2" 21})
-; :nome pode ser utilizado para definir palavras-chave em hy que podem ser utilizados para as chaves
+; :nome pode ser utilizado para definir palavras-chave em Hy que podem ser utilizados para as chaves
 (setv dict2 {:key1 41 :key2 20})
 ; usar 'get' para obter o elemento em um índice/key
 (get mylist 1) ;=> 2
@@ -96,31 +94,31 @@ True ; => True
 (map (fn [x] (* x x)) [1 2 3 4]) ;=> [1 4 9 16]
 
 ;; operações de sequência
-; hy tem algumas utils embutidas para operações de sequência, etc.
+; Hy tem algumas utils embutidas para operações de sequência, etc.
 ; recuperar o primeiro elemento usando 'first' ou 'car'
 (setv mylist [1 2 3 4])
 (setv mydict {"a" 1 "b" 2})
 (first mylist) ;=> 1
 
-; corte listas usando 'slice'
-(slice mylist 1 3) ;=> [2 3]
+; corte listas usando 'cut'
+(cut mylist 1 3) ;=> [2 3]
 
 ; obter elementos de uma lista ou dict usando 'get'
 (get mylist 1) ;=> 2
 (get mydict "b") ;=> 2
-; lista de indexação começa a partir de 0, igual em python
+; lista de indexação começa a partir de 0, igual em Python
 ; assoc pode definir elementos em chaves/índices
 (assoc mylist 2 10) ; faz mylist [1 2 10 4]
 (assoc mydict "c" 3) ; faz mydict {"a" 1 "b" 2 "c" 3}
-; há toda uma série de outras funções essenciais que torna o trabalho com 
+; há toda uma série de outras funções essenciais que torna o trabalho com
 ; sequências uma diversão
 
 ;; Python interop
-;; importação funciona exatamente como em python
+;; importação funciona exatamente como em Python
 (import datetime)
-(import [functools [partial reduce]]) ; importa fun1 e fun2 do module1
-(import [matplotlib.pyplot :as plt]) ; fazendo uma importação em foo como em bar
-; todos os métodos de python embutidas etc. são acessíveis a partir hy
+(import functools [partial reduce]) ; importa fun1 e fun2 do module1
+(import matplotlib.pyplot :as plt) ; fazendo uma importação em foo como em bar
+; todos os métodos de Python embutidas etc. são acessíveis a partir Hy
 ; a.foo(arg) is called as (.foo a arg)
 (.split (.strip "hello world  ")) ;=> ["hello" "world"]
 
@@ -132,12 +130,9 @@ True ; => True
 
 ; aninhe múltiplas cláusulas 'if else if' com cond
 (cond
- [(= someval 42)
-  (print "Life, universe and everything else!")]
- [(> someval 42)
-  (print "val too large")]
- [(< someval 42)
-  (print "val too small")])
+ (= someval 42) (print "Life, universe and everything else!")
+ (> someval 42) (print "val too large")
+ (< someval 42) (print "val too small"))
 
 ; declarações de grupo com 'do', essas são executadas sequencialmente
 ; formas como defn tem um 'do' implícito
@@ -151,26 +146,24 @@ True ; => True
                 "sherlock" "moriarty"
                 "seinfeld" "newman"}]]
   (for [(, h v) (.items nemesis)]
-	(print (.format "{0}'s nemesis was {1}" h v))))
+    (print (.format "{0}'s nemesis was {1}" h v))))
 
 ;; classes
 ; classes são definidas da seguinte maneira
 (defclass Wizard [object]
-  [[--init-- (fn [self spell]
-             (setv self.spell spell) ; init a mágica attr
-             None)]
-   [get-spell (fn [self]
-              self.spell)]])
+  (defn __init__ [self spell]
+    (setv self.spell spell)) ; init a mágica attr
 
-;; acesse hylang.org
+  (defn get-spell [self]
+    self.spell))
 ```
 
 ### Outras Leituras
 
-Este tutorial é apenas uma introdução básica para hy/lisp/python.
+Este tutorial é apenas uma introdução básica para Hy/Lisp/Python.
 
-Docs Hy: [http://hy.readthedocs.org](http://hy.readthedocs.org)
+Docs Hy: [https://hylang.org/hy/doc](https://hylang.org/hy/doc)
 
-Repo Hy no GitHub: [http://github.com/hylang/hy](http://github.com/hylang/hy)
+Repo Hy no GitHub: [https://github.com/hylang/hy](https://github.com/hylang/hy)
 
 Acesso ao freenode irc com #hy, hashtag no twitter: #hylang

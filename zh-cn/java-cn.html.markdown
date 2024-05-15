@@ -190,7 +190,7 @@ public class LearnJava {
         {
             //System.out.println(fooWhile);
             //增加计数器
-            //遍历99次， fooWhile 0->99
+            //遍历100次， fooWhile 0->99
             fooWhile++;
         }
         System.out.println("fooWhile Value: " + fooWhile);
@@ -201,7 +201,7 @@ public class LearnJava {
         {
             //System.out.println(fooDoWhile);
             //增加计数器
-            //遍历99次, fooDoWhile 0->99
+            //遍历100次, fooDoWhile 0->99
             fooDoWhile++;
         }while(fooDoWhile < 100);
         System.out.println("fooDoWhile Value: " + fooDoWhile);
@@ -381,7 +381,6 @@ class PennyFarthing extends Bicycle {
     }
 
 }
-
 ```
 
 ## 更多阅读

@@ -19,7 +19,7 @@ YAML doesn't allow literal tab characters for indentation.
 ---  # document start
 
 # Comments in YAML look like this.
-# YAML support single-line comments.
+# YAML supports single-line comments.
 
 ################
 # SCALAR TYPES #
@@ -38,13 +38,14 @@ octal_notation: 0123 # evaluates to 83
 # If you want it to be interpreted as a boolean, use true.
 boolean: true
 null_value: null
+another_null_value: ~
 key with spaces: value
 
 # Yes and No (doesn't matter the case) will be evaluated to boolean 
 # true and false values respectively.
 # To use the actual value use single or double quotes.
-no: no            # evaluates to "false": false
-yes: No           # evaluates to "true": false
+no: no            # evaluates to "no": false
+yes: No           # evaluates to "yes": false
 not_enclosed: yes # evaluates to "not_enclosed": true
 enclosed: "yes"   # evaluates to "enclosed": yes
 
@@ -164,7 +165,7 @@ other_anchor: *anchor_name
 base: &base
   name: Everyone has same name
 
-# The regexp << is called 'Merge Key Language-Independent Type'. It is used to
+# The expression << is called 'Merge Key Language-Independent Type'. It is used to
 # indicate that all the keys of one or more specified maps should be inserted
 # into the current map.
 # NOTE: If key already exists alias will not be merged
@@ -176,7 +177,7 @@ bar:
   <<: *base # base anchor will be merged
   age: 20
 
-# foo and bar would also have name: Everyone has same name
+# foo name won't be changed and it will be: John. On the other hand, bar's name will be changed to the base one: Everyone has same name
 
 # YAML also has tags, which you can use to explicitly declare types.
 # Syntax: !![typeName] [value]
@@ -203,7 +204,7 @@ python_complex_number: !!python/complex 1+2j
 # Strings and numbers aren't the only scalars that YAML can understand.
 # ISO-formatted date and datetime literals are also parsed.
 datetime_canonical: 2001-12-15T02:59:43.1Z
-datetime_space_seperated_with_time_zone: 2001-12-14 21:59:43.10 -5
+datetime_space_separated_with_time_zone: 2001-12-14 21:59:43.10 -5
 date_implicit: 2002-12-14
 date_explicit: !!timestamp 2002-12-14
 

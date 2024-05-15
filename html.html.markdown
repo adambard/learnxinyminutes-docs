@@ -161,7 +161,6 @@ useful tips.
 		<td>second row, second column</td>
 	</tr>
 </table>
-
 ```
 
 ## Usage

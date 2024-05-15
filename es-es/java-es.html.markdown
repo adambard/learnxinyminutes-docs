@@ -395,7 +395,6 @@ class PennyFarthing extends Bicicleta {
     }
 
 }
-
 ```
 
 ## Más Lectura

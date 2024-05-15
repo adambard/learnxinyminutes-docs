@@ -202,7 +202,7 @@ function string_functions(    localvar, arr) {
     # Ambas retornam o número de instâncias substituídas
     localvar = "fooooobar"
     sub("fo+", "Meet me at the ", localvar) # localvar => "Meet me at the bar"
-    gsub("e", ".", localvar) # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar) # localvar => "M..t m. at th. bar"
 
     # Localiza um texto que casa com uma expressão regular
     # index() faz a mesma coisa, mas não permite uma expressão regular
@@ -368,10 +368,11 @@ END {
     if (nlines)
         print "A média da idade para " name " é " sum / nlines
 }
-
 ```
+
 Leituras adicionais (em inglês):
 
 * [Awk tutorial](http://www.grymoire.com/Unix/Awk.html)
 * [Awk man page](https://linux.die.net/man/1/awk)
-* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html) GNU AWK é encontrado na maioria dos sistemas GNU/Linux.
+* [The GNU Awk User's Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
+  GNU AWK é encontrado na maioria dos sistemas GNU/Linux.

@@ -16,12 +16,9 @@ Python a été créé par Guido Van Rossum au début des années 90. C'est maint
 langages les plus populaires. Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
 C'est tout simplement du pseudo-code exécutable.
 
-L'auteur original apprécierait les retours (en anglais): vous pouvez le contacter sur Twitter à [@louiedinh](http://twitter.com/louiedinh) ou par mail à l'adresse louiedinh [at] [google's email service]
-
 Note : Cet article s'applique spécifiquement à Python 3. Jettez un coup d'oeil [ici](http://learnxinyminutes.com/docs/fr-fr/python-fr/) pour apprendre le vieux Python 2.7
 
 ```python
-
 # Un commentaire d'une ligne commence par un dièse
 
 """ Les chaînes de caractères peuvent être écrites
@@ -716,8 +713,7 @@ print(say(say_please=True))  # affiche Can you buy me a beer? Please! I am poor 
 * [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](http://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Hitchhiker's Guide to Python](http://docs.python-guide.org/)
 * [Python Course](http://www.python-course.eu/index.php)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 

@@ -134,7 +134,6 @@ div.some-parent.class-name {}
     font-family: "Courier New", Trebuchet, Arial; /* 如果第一个
     						 字体没找到，浏览器会使用第二个字体，以此类推 */
 }
-
 ```
 
 ## 使用
@@ -154,7 +153,6 @@ CSS文件使用 `.css` 后缀。
 这是你最不该干的事情。 -->
 <div style='property:value;'>
 </div>
-
 ```
 
 ## 优先级
@@ -178,7 +176,6 @@ p {}
 
 /*E*/
 p { property: value !important; }
-
 ```
 
 然后标记语言为：

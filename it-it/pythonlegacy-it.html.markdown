@@ -15,8 +15,6 @@ Python è stato creato da Guido Van Rossum agli inizi degli anni 90. Oggi è uno
 linguaggi esistenti. Mi sono innamorato di Python per la sua chiarezza sintattica. E' sostanzialmente
 pseudocodice eseguibile.
 
-Feedback sono altamente apprezzati! Potete contattarmi su [@louiedinh](http://twitter.com/louiedinh) oppure [at] [google's email service]
-
 Nota: questo articolo è riferito a Python 2.7 in modo specifico, ma dovrebbe andar
 bene anche per Python 2.x. Python 2.7 sta raggiungendo il "fine vita", ovvero non sarà
 più supportato nel 2020. Quindi è consigliato imparare Python utilizzando Python 3.
@@ -28,7 +26,6 @@ Il modulo `__future__` permette di scrivere codice in Python 3, che può essere 
 utilizzando Python 2: cosa aspetti a vedere il tutorial di Python 3?
 
 ```python
-
 # I commenti su una sola linea iniziano con un cancelletto
 
 """ Più stringhe possono essere scritte

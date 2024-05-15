@@ -18,7 +18,6 @@ Another new site is being built to replace it.[LFE DEV.](http://docs.lfe.io/dev)
 
 
 ```lisp
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 0. Syntax
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

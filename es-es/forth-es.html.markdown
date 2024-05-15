@@ -13,7 +13,7 @@ Forth fue criado por Charles H. Moore en los 70s. Forth es un lenguaje imperativ
 Nota: Este articulo enfoca predominantemente en la Gforth implementación de Forth, pero casi todo 
 de lo que esta escrito aquí debe funcionar en otro sitio.
 
-```
+```forth
 \ Este es un comentario
 ( Este es un comentario también pero solo esta usado cuando definiendo palabras. )
 
@@ -216,7 +216,6 @@ page
 
 \ Terminando Gforth:
 \ bye
-
 ```
 
 ##Listo Para Mas?

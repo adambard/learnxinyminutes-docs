@@ -362,7 +362,7 @@ Clojuredocs.org有大多数核心函数的文档，还带了示例哦:
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
 
 4Clojure是个很赞的用来练习clojure/FP技能的地方:
-[http://www.4clojure.com/](http://www.4clojure.com/)
+[https://4clojure.oxal.org/](https://4clojure.oxal.org/)
 
 Clojure-doc.org (你没看错)有很多入门级的文章:
 [http://clojure-doc.org/](http://clojure-doc.org/)

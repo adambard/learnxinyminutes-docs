@@ -11,8 +11,6 @@ lang: de-de
 Anmerkungen des ursprünglichen Autors:
 Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist heute eine der beliebtesten Sprachen. Ich habe mich in Python wegen seiner syntaktischen Übersichtlichkeit verliebt. Eigentlich ist es ausführbarer Pseudocode.
 
-Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service]
-
 Hinweis: Dieser Beitrag bezieht sich besonders auf Python 2.7, er sollte aber auf Python 2.x anwendbar sein. Haltet Ausschau nach einem Rundgang durch Python 3, der bald erscheinen soll.
 
 ```python
@@ -745,7 +743,6 @@ def say(say_please=False):
 
 print(say())                 # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
-
 ```
 
 ## Lust auf mehr?

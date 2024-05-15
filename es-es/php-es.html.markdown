@@ -807,7 +807,6 @@ try {
 } catch (MiExcepcion $e) {
     // Manejar la excepción
 }
-
 ```
 
 ## Más información

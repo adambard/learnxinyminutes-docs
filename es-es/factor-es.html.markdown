@@ -191,8 +191,6 @@ name get-global .       ! "Bob"
 0 [ 2 + ] nth                              ! 2
 1 [ 2 + ] nth                              ! +
 [ 2 + ] \ - suffix                         ! Quotation [ 2 + - ]
-
-
 ```
 
 ##Listo para más?

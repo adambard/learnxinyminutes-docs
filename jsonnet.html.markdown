@@ -127,11 +127,10 @@ assert obj5 == {};
 # a jsonnet document has to evaluate to something
 # be it an object, list, number or just string literal
 "FIN"
-
 ```
 
 ## Further Reading
-There are a few but important concepts that are not touched in this exmaple, including:
+There are a few but important concepts that are not touched in this example, including:
 
 - Passing variables from command line: [Parameterize Entire Config](https://jsonnet.org/learning/tutorial.html#parameterize-entire-config)
 - Import other jsonnet libraries/files: [Imports](https://jsonnet.org/learning/tutorial.html#imports)
