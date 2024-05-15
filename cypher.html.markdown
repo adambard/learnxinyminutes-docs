@@ -34,7 +34,7 @@ The types allowed in properties:
 
 ## Relationships (or Edges) connect two nodes
 
-`[:KNOWS]` is a *relationship* with the *label* `KNOWS`. It's a *label* as the node's label. It begins with uppercase and use UPPER\_SNAKE\_CASE.
+`[:KNOWS]` is a *relationship* with the *label* `KNOWS`. It's a *label* as the node's label. It uses UPPER\_SNAKE\_CASE.
 
 `[k:KNOWS]` - the same *relationship*, referred by the variable `k`, reusable in the query, but it's not necessary.
 
