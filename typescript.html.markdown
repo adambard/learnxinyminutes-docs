@@ -72,6 +72,11 @@ let f4 = (i: number) => { return i * i; }
 // keyword needed
 let f5 = (i: number) => i * i;
 
+// Functions can accept more than one type
+function f6(i: string | number): void {
+  console.log("The value was " + i);
+}
+
 // Interfaces are structural, anything that has the properties is compliant with
 // the interface
 interface Person {
@@ -98,11 +103,6 @@ interface SearchFunc {
 let mySearch: SearchFunc;
 mySearch = function (src: string, sub: string) {
   return src.search(sub) != -1;
-}
-
-// pass option of `string | undefined` to a function
-function printConfigPath(cfgPath: string | undefined): void {
-  console.log("The config is at: ", cfgPath!); // use `!` to unwrap type
 }
 
 // Classes - members are public by default
