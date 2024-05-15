@@ -1,7 +1,7 @@
 ---
 category: tool
 tool: awk
-filename: learnawk.awk
+filename: learnawk-ua.awk
 contributors:
      - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:
