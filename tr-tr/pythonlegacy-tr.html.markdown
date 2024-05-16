@@ -12,12 +12,6 @@ varolanlar arasında en iyi dillerden birisidir. Ben (Louie Dinh) Python
 dilinin syntax'ının belirginliğine aşığım. O basit olarak çalıştırılabilir 
 pseudocode'dur.
 
-Geri bildirimlerden son derece mutluluk duyarım! Bana [@louiedinh](http://twitter.com/louiedinh)
-adresinden ya da louiedinh [at] [google's email service] adresinden ulaşabilirsiniz.
-
-Çeviri için geri bildirimleri de [@kulekci](http://twitter.com/kulekci) 
-adresine yapabilirsiniz. 
-
 Not: Bu yazıdaki özellikler Python 2.7 için geçerlidir, ama Python 2.x için de 
 uygulanabilir. Python 3 için başka bir zaman tekrar bakınız. 
 
@@ -480,9 +474,6 @@ math.sqrt(16) == m.sqrt(16) #=> True
 # Modüllerde tanımlanmış fonksiyon ve metodları öğrenebilirsiniz.
 import math
 dir(math)
-
-
-
 ```
 
 ## Daha fazlası için hazır mısınız?

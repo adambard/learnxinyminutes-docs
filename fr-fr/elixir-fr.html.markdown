@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -11,11 +11,9 @@ filename: learnelixir-fr.ex
 lang: fr-fr
 ---
 Elixir est un langage de programmation fonctionnel moderne reposant sur la machine virtuelle BEAM, qui héberge aussi Erlang.
-Il est totalement compatible avec Erlang mais dispose d'une syntaxe plus agréable et apporte de nouvelles fonctionnalités. 
-
+Il est totalement compatible avec Erlang mais dispose d'une syntaxe plus agréable et apporte de nouvelles fonctionnalités.
 
 ```elixir
-
 # Un commentaire simple sur une seule ligne commence par un dièse.
 
 # Il n'y a pas de commentaire multi-ligne,
@@ -31,21 +29,21 @@ Il est totalement compatible avec Erlang mais dispose d'une syntaxe plus agréab
 ## ---------------------------
 
 # Il y a les nombres
-3    # Integer 
+3    # Integer
 0x1F # Integer
 3.0  # Float
 
-# Les atomes, des littéraux, qui sont des constantes avec comme valeur leur nom. 
+# Les atomes, des littéraux, qui sont des constantes avec comme valeur leur nom.
 # Ils commencent par `:`.
 
 :hello # atom
 
-# Il existe également des n-uplets dont les valeurs sont stockés de manière contiguë 
+# Il existe également des n-uplets dont les valeurs sont stockés de manière contiguë
 # en mémoire.
 
 {1,2,3} # tuple
 
-# Il est possible d'accéder à un element d'un tuple avec la fonction 
+# Il est possible d'accéder à un element d'un tuple avec la fonction
 # `elem`:
 elem({1, 2, 3}, 0) #=> 1
 
@@ -57,10 +55,10 @@ elem({1, 2, 3}, 0) #=> 1
 head #=> 1
 tail #=> [2,3]
 
-# En Elixir, comme en Erlang, le `=` dénote un 'pattern matching' 
+# En Elixir, comme en Erlang, le `=` dénote un 'pattern matching'
 # (Filtrage par motif) et non une affectation.
-# Cela signifie que la partie de gauche (pattern) est comparé (match) à 
-# la partie de droite. 
+# Cela signifie que la partie de gauche (pattern) est comparé (match) à
+# la partie de droite.
 
 
 # Une erreur sera lancée si aucun model (match) est trouvé.
@@ -152,7 +150,7 @@ nil && 20  #=> nil
 1 != 1 #=> false
 1 < 2  #=> true
 
-# `===` et `!==` sont plus stricts en comparant les Integers (entiers) 
+# `===` et `!==` sont plus stricts en comparant les Integers (entiers)
 # et les Floats (nombres à virgules) :
 1 == 1.0  #=> true
 1 === 1.0 #=> false
@@ -178,7 +176,7 @@ else
 end
 
 # Condition avec `unless` (sauf).
-# Il correspond à la négation d'un `if` (si) 
+# Il correspond à la négation d'un `if` (si)
 unless true do
   "Cela ne sera pas vu"
 else
@@ -224,11 +222,11 @@ cond do
   2 * 5 == 12 ->
     "Moi non plus"
   true ->
-    "Mais moi oui (représente un else)" 
+    "Mais moi oui (représente un else)"
 end
 
-# `try/catch` est utilisé pour attraper les valeurs rejetées. 
-# Il supporte aussi un 
+# `try/catch` est utilisé pour attraper les valeurs rejetées.
+# Il supporte aussi un
 # `after` qui est appelé autant si une valeur est jetée ou non.
 try do
   throw(:hello)
@@ -300,8 +298,8 @@ end
 PrivateMath.sum(1, 2)    #=> 3
 # PrivateMath.do_sum(1, 2) #=> ** (UndefinedFunctionError)
 
-# La déclaration de fonction supporte également les guards (gardes) 
-# et les clauses. 
+# La déclaration de fonction supporte également les guards (gardes)
+# et les clauses.
 # Quand une fonction avec plusieurs clauses est appelée,
 # la première fonction dont la clause est satisfaite par les arguments sera appelée.
 # Exemple: le code `area({:circle, 3})` appelle la deuxième fonction definie plus bas,
@@ -347,7 +345,7 @@ defmodule MyMod do
 end
 
 # L'opérateur pipe (|>) permet de passer la sortie d'une expression
-# en premier paramètre d'une fonction. 
+# en premier paramètre d'une fonction.
 
 Range.new(1,10)
 |> Enum.map(fn x -> x * x end)
@@ -359,7 +357,7 @@ Range.new(1,10)
 ## ---------------------------
 
 # Les Structs sont des extensions des Maps.
-# Apportant en plus les valeurs par defaut, le polymorphisme et 
+# Apportant en plus les valeurs par defaut, le polymorphisme et
 # la vérification à la compilation dans Elixir.
 defmodule Person do
   defstruct name: nil, age: 0, height: 0
@@ -398,26 +396,26 @@ end
 ## ---------------------------
 
 # Elixir se repose sur le modèle d'acteur pour gérer la concurrence.
-# Pour écrire un programme concurrent en Elixir il faut trois 
-# primitives: spawning processes (création), sending messages (envoi) 
+# Pour écrire un programme concurrent en Elixir il faut trois
+# primitives: spawning processes (création), sending messages (envoi)
 # et receiving messages (réception).
 
-# Pour débuter un nouveau processus, il faut utiliser 
+# Pour débuter un nouveau processus, il faut utiliser
 # la fonction `spawn` qui prend en argument une fonction.
 f = fn -> 2 * 2 end #=> #Function<erl_eval.20.80484245>
 spawn(f) #=> #PID<0.40.0>
 
-# `spawn` retourn un pid (identifiant de processus), il est possible 
+# `spawn` retourn un pid (identifiant de processus), il est possible
 # d'utiliser ce pid pour envoyer un message au processus.
 # Pour faire parvenir le message il faut utiliser l'opérateur `send`.
-# Pour que cela soit utile il faut être capable de recevoir les 
+# Pour que cela soit utile il faut être capable de recevoir les
 # messages.
 # Cela est possible grâce au mechanisme de `receive`:
 
 # Le bloc `receive do` est utilisé pour écouter les messages et les traiter
 # au moment de la réception. Un bloc `receive do` pourra traiter un seul
 # message reçu.
-# Pour traiter plusieurs messages, une fonction avec un bloc `receive do` 
+# Pour traiter plusieurs messages, une fonction avec un bloc `receive do`
 # doit s'appeler elle-même récursivement.
 
 defmodule Geometry do
@@ -472,7 +470,7 @@ Agent.update(my_agent, fn colors -> ["blue" | colors] end)
 ## Références
 
 * [Guide de debut](http://elixir-lang.org/getting-started/introduction.html) depuis le site [Elixir](http://elixir-lang.org)
-* [Documentation Elixir ](https://elixir-lang.org/docs.html)
+* [Documentation Elixir](https://elixir-lang.org/docs.html)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) de Dave Thomas
 * [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)
 * ["Learn You Some Erlang for Great Good!"](http://learnyousomeerlang.com/) de Fred Hebert

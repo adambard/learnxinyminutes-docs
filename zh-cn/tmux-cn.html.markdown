@@ -16,7 +16,6 @@ lang: zh-cn
 当你需要时，可以随时重新连接到这个终端。
 
 ```
-
   tmux [command]     # 运行一条命令
                      # 如果单独使用 'tmux' 而不指定某个命令，将会建立一个新的会话
 
@@ -50,7 +49,6 @@ lang: zh-cn
      -t "#"          # 关闭指定的会话
      -a              # 关闭所有会话
      -a -t "#"       # 关闭除指定会话以外的所有会话
-
 ```
 
 
@@ -104,7 +102,6 @@ lang: zh-cn
 
   M-Up, M-Down       # 改变当前窗格的大小，每按一次增减五个单位
   M-Left, M-Right
-
 ```
 
 
@@ -232,7 +229,6 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # 需要用到 https://github.com/thewtex/tmux-mem-cpu-load
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
 
 

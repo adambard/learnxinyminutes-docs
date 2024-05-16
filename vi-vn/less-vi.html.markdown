@@ -10,9 +10,7 @@ lang: vi-vn
 
 Less là một CSS pre-processor (bộ tiền xử lí CSS), nó thêm các tính năng như biến (variable), lồng (nesting), mixin và nhiều thứ khác. Less cùng với các CSS pre-processor khác như [Sass](http://sass-lang.com/) giúp lập trình viên viết được các đoạn CSS bảo trì được và không bị lặp lại (DRY - Don't Repeat Yourself).
 
-```css
-
-
+```less
 // Comment (chú thích) một dòng sẽ bị xóa khi Less được biên dịch thành CSS
 
 /* Comment trên nhiều dòng sẽ được giữ lại */
@@ -374,8 +372,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
-
 ```
 
 ## Tập sử dụng Less

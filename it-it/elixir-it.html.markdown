@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Luca 'Kino' Maroni", "https://github.com/kino90"]
     - ["Joao Marques", "http://github.com/mrshankly"]
@@ -15,17 +15,16 @@ Elixir è un linguaggio funzionale moderno, costruito sulla VM Erlang.
 e molte altre funzionalità.
 
 ```elixir
-
 # I commenti su una riga iniziano con un cancelletto.
 
 # Non esistono commenti multilinea,
 # ma puoi concatenare più commenti.
 
-# Per usare la shell di elixir usa il comando `iex`.
+# Per usare la shell di Elixir usa il comando `iex`.
 # Compila i tuoi moduli con il comando `elixirc`.
 
 # Entrambi i comandi dovrebbero già essere nel tuo PATH se hai installato
-# elixir correttamente.
+# Elixir correttamente.
 
 ## ---------------------------
 ## -- Tipi di base
@@ -87,7 +86,7 @@ multi-linea.
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
 
-# `?a` in elixir restituisce il valore ASCII della lettera `a`
+# `?a` in Elixir restituisce il valore ASCII della lettera `a`
 ?a #=> 97
 
 # Per concatenare liste si usa `++`, per binari si usa `<>`
@@ -112,7 +111,7 @@ minore..maggiore = 1..10 # Puoi fare pattern matching anche sugli intervalli
 5 * 2  #=> 10
 10 / 2 #=> 5.0
 
-# In elixir l'operatore `/` restituisce sempre un decimale.
+# In Elixir l'operatore `/` restituisce sempre un decimale.
 
 # Per fare una divisione intera si usa `div`
 div(10, 2) #=> 5
@@ -173,7 +172,7 @@ else
 end
 
 # Ti ricordi il pattern matching?
-# Moltre strutture di controllo di flusso in elixir si basano su di esso.
+# Moltre strutture di controllo di flusso in Elixir si basano su di esso.
 
 # `case` ci permette di confrontare un valore a diversi pattern:
 case {:uno, :due} do
@@ -307,7 +306,7 @@ Geometria.area({:cerchio, 3})       #=> 28.25999999999999801048
 # Geometria.area({:cerchio, "non_un_numero"})
 #=> ** (FunctionClauseError) no function clause matching in Geometria.area/1
 
-# A causa dell'immutabilità dei dati, la ricorsione è molto frequente in elixir
+# A causa dell'immutabilità dei dati, la ricorsione è molto frequente in Elixir
 defmodule Ricorsione do
   def somma_lista([testa | coda], accumulatore) do
     somma_lista(coda, accumulatore + testa)
@@ -382,7 +381,7 @@ end
 ## ---------------------------
 
 # Elixir si basa sul modello degli attori per la concorrenza.
-# Tutto ciò di cui abbiamo bisogno per scrivere programmi concorrenti in elixir
+# Tutto ciò di cui abbiamo bisogno per scrivere programmi concorrenti in Elixir
 # sono tre primitive: creare processi, inviare messaggi e ricevere messaggi.
 
 # Per creare un nuovo processo si usa la funzione `spawn`, che riceve una
@@ -434,7 +433,7 @@ self() #=> #PID<0.27.0>
 
 ## Referenze
 
-* [Getting started guide](http://elixir-lang.org/getting_started/1.html) dalla [pagina web ufficiale di elixir](http://elixir-lang.org)
+* [Getting started guide](http://elixir-lang.org/getting_started/1.html) dalla [pagina web ufficiale di Elixir](http://elixir-lang.org)
 * [Documentazione Elixir](https://elixir-lang.org/docs.html)
 * ["Programming Elixir"](https://pragprog.com/book/elixir/programming-elixir) di Dave Thomas
 * [Elixir Cheat Sheet](http://media.pragprog.com/titles/elixir/ElixirCheat.pdf)

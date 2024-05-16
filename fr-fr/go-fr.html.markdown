@@ -87,7 +87,7 @@ sauts de ligne.` // Chaîne de caractère.
   g := 'Σ' // type rune, un alias pour le type int32, contenant un caractère
            // unicode.
 
-  f := 3.14195 // float64, un nombre flottant IEEE-754 de 64-bit.
+  f := 3.14159 // float64, un nombre flottant IEEE-754 de 64-bit.
   c := 3 + 4i  // complex128, considéré comme deux float64 par le compilateur.
 
   // Syntaxe "var" avec une valeur d'initialisation.
@@ -422,18 +422,18 @@ func requestServer() {
 
 ## En savoir plus
 
-La référence Go se trouve sur [le site officiel de Go](http://golang.org/).
+La référence Go se trouve sur [le site officiel de Go](https://go.dev/).
 Vous pourrez y suivre le tutoriel interactif et en apprendre beaucoup plus.
 
 Une lecture de la documentation du langage est grandement conseillée. C'est
 facile à lire et très court (comparé aux autres langages).
 
-Vous pouvez exécuter et modifier le code sur [Go playground](https://play.golang.org/p/tnWMjr16Mm). Essayez de le modifier et de l'exécuter à partir de votre navigateur! Prennez en note que vous pouvez utiliser [https://play.golang.org](https://play.golang.org) comme un [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) pour tester et coder dans votre navigateur, sans même avoir à installer Go.
+Vous pouvez exécuter et modifier le code sur [Go playground](https://go.dev/play/p/tnWMjr16Mm). Essayez de le modifier et de l'exécuter à partir de votre navigateur! Prennez en note que vous pouvez utiliser [https://go.dev/play/](https://go.dev/play/) comme un [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) pour tester et coder dans votre navigateur, sans même avoir à installer Go.
 
 Sur la liste de lecteur des étudiants de Go se trouve le [code source de la
-librairie standard](http://golang.org/src/pkg/). Bien documentée, elle démontre
+librairie standard](https://go.dev/src/). Bien documentée, elle démontre
 le meilleur de la clarté de Go, le style ainsi que ses expressions. Sinon, vous
 pouvez cliquer sur le nom d'une fonction dans [la
-documentation](http://golang.org/pkg/) et le code source apparaît!
+documentation](https://go.dev/pkg/) et le code source apparaît!
 
 Une autre excellente ressource pour apprendre est [Go par l'exemple](https://gobyexample.com/).

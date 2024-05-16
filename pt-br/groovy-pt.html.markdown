@@ -13,7 +13,6 @@ lang: pt-br
 Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http://www.groovy-lang.org/)
 
 ```groovy
-
 /*
   Prepare-se:
 
@@ -418,8 +417,6 @@ int soma(int x, int y) {
 }
 
 assert soma(2,5) == 7
-
-
 ```
 
 ## Referências

@@ -324,7 +324,7 @@ acompanhe [/r/rust](http://reddit.com/r/rust). A galera no canal #rust do
 irc.mozilla.org também estão sempre dispostos a ajudar os novatos.
 
 Você pode brincar com outras característica de Rust com um compilador online
-no portal oficial do projeto [Rust playpen](http://play.rust-lang.org), or ler 
+no portal oficial do projeto [Rust Playground](https://play.rust-lang.org), or ler 
 mais na página oficial [Rust website](http://rust-lang.org).
 
 No Brasil acompanhe os encontros do [Meetup Rust São Paulo]

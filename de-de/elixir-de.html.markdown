@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
 translators:
@@ -13,7 +13,6 @@ kompatibel mit Erlang, verfügt aber über eine freundlichere Syntax und bringt
 viele Features mit. 
 
 ```ruby
-
 # Einzeilige Kommentare werden mit der Raute gesetzt.
 
 # Es gibt keine mehrzeiligen Kommentare;
@@ -412,7 +411,6 @@ pid <- {:circle, 2}
 # Die Shell selbst ist ein Prozess und mit dem Schlüsselwort 'self' kann man
 # die aktuelle pid herausfinden.
 self() #=> #PID<0.27.0>
-
 ```
 
 ## Referenzen und weitere Lektüre

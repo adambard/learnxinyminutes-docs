@@ -41,8 +41,7 @@ for i=0 to n-1
             LS[i] = LS[j]+1
 for i=0 to n-1
     if (largest < LS[i])
-    
-```  
+```
 
 ### Bazı Ünlü Dinamik Programlama Problemleri
 

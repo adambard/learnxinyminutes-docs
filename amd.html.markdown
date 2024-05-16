@@ -15,6 +15,7 @@ synchronous loading of modules incurs performance, usability, debugging, and
 cross-domain access problems.
 
 ### Basic concept
+
 ```javascript
 // The basic AMD API consists of nothing but two methods: `define` and `require`
 // and is all about module definition and consumption:
@@ -117,6 +118,7 @@ define(['daos/things', 'modules/someHelpers'], function(thingsDao, helpers){
   return SomeClass;
 });
 ```
+
 To alter the default path mapping behavior use `requirejs.config(configObj)` in your `main.js`:
 
 ```javascript
@@ -135,6 +137,7 @@ require(['jquery', 'coolLibFromBower', 'modules/someHelpers'], function($, coolL
   coolLib.doFancyStuffWith(helpers.transform($('#foo')));
 });
 ```
+
 `require.js`-based apps will usually have a single entry point (`main.js`) that is passed to the `require.js` script tag as a data-attribute. It will be automatically loaded and executed on pageload:
 
 ```html
@@ -156,16 +159,19 @@ Many people prefer using AMD for sane code organization during development, but 
 `require.js` comes with a script called `r.js` (that you will probably run in node.js, although Rhino is supported too) that can analyse your project's dependency graph, and build a single file containing all your modules (properly named), minified and ready for consumption.
 
 Install it using `npm`:
+
 ```shell
 $ npm install requirejs -g
 ```
 
 Now you can feed it with a configuration file:
+
 ```shell
 $ r.js -o app.build.js
 ```
 
 For our above example the configuration might look like:
+
 ```javascript
 /* file : app.build.js */
 ({
@@ -182,6 +188,7 @@ For our above example the configuration might look like:
 ```
 
 To use the built file in production, simply swap `data-main`:
+
 ```html
 <script src="require.js" data-main="app/main-built"></script>
 ```

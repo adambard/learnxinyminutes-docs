@@ -690,7 +690,6 @@ use My\Namespace as SomeOtherNamespace;
 $cls = new SomeOtherNamespace\MyClass();
 
 */
-
 ```
 
 ## Daha fazla bilgi

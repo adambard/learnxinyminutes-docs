@@ -1066,9 +1066,8 @@ compl 4    // Bit seviyesinde değil işlemini gerçekleştirir
 4 bitor 3  // Bit seviyesinde veya işlemini gerçekleştiri
 4 bitand 3 // Bit seviyesinde ve işlemini gerçekleştirir
 4 xor 3    // Bit seviyesinde xor işlemini gerçekleştirir
-
-
 ```
+
 İleri okuma:
 
 * Güncel bir referans [CPP Reference](http://cppreference.com/w/cpp) adresinde bulunabilir.

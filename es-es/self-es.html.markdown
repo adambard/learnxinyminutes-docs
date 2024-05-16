@@ -116,6 +116,7 @@ Las expresiones múltiples son separadas por un punto. ^ retorna inmediatamente.
 ```
 
 Los bloques son ejecutados al enviales el mensaje 'value' y son inherentes (delegados a) sus contextos:
+
 ```
 "returns 0"
 [|x|

@@ -288,7 +288,7 @@ let false : Bool = Prelude.Bool.not True
 -- importiert und nicht als Dhall-Code interpretiert.
 let sourceCode : Text = https://prelude.dhall-lang.org/Bool/not as Text
 
--- Environment-Variablen können auch imortiert werden.
+-- Environment-Variablen können auch importiert werden.
 let presentWorkingDirectory = env:PWD as Text
 
 -- Mit `?` kann man eine “Fallback-Expression” angeben, für den Fall

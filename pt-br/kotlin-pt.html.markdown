@@ -374,7 +374,6 @@ fun usaObjeto() {
     ExemploObjeto.ola()
     val algumaReferencia: Any = ExemploObjeto // usa-se o nome diretamente
 }
-
 ```
 
 ### Leitura Adicional

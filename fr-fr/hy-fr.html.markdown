@@ -8,14 +8,12 @@ translators:
 lang: fr-fr
 ---
 
-Hy est un dialecte du lisp bâti par dessus python. Il fonctionne en
-convertissant le code hy en un arbre de syntaxe abstraite de python (ast).
-Ceci permet à hy d'appeler du code python et à python d'appeler du code hy.
+Hy est un dialecte du Lisp bâti par dessus Python. Il fonctionne en
+convertissant le code Hy en un arbre de syntaxe abstraite de Python (ast).
+Ceci permet à Hy d'appeler du code Python et à Python d'appeler du code Hy.
 
-Ce tutoriel fonctionne pour hy > 0.9.12
-
-```clojure
-;; Ceci est une introduction simple à hy, pour un tutoriel rapide aller à
+```hylang
+;; Ceci est une introduction simple à Hy, pour un tutoriel rapide aller à
 ;; http://try-hy.appspot.com
 ;;
 ; Les commentaires se font avec des points-virgules, comme les autres LISPS
@@ -29,7 +27,7 @@ Ce tutoriel fonctionne pour hy > 0.9.12
 
 ;; les types de données simples
 ; Tous les types de données simples sont exactement similaires à leurs
-; homologues de python
+; homologues de Python
 42 ; => 42
 3.14 ; => 3.14
 True ; => True
@@ -43,7 +41,7 @@ True ; => True
 (* 4 2) ;=> 8
 (/ 4 1) ;=> 4
 (% 4 2) ;=> 0 l'opérateur modulo
-; l'opérateur d'élévation à la puissance est représenté par ** comme en python
+; l'opérateur d'élévation à la puissance est représenté par ** comme en Python
 (** 3 2) ;=> 9
 ; les expressions imbriquées vont se comporter comme on s'y attend
 (+ 2 (* 4 2)) ;=> 10
@@ -60,9 +58,9 @@ True ; => True
 (def *foo* 42)
 ;; d'autres types de conteneurs
 ; les chaînes, les listes, les tuples et dicts
-; ce sont exactement les mêmes que les types de conteneurs de python
+; ce sont exactement les mêmes que les types de conteneurs de Python
 "hello world" ;=> "hello world"
-; les opérations sur les chaînes fonctionnent comme en python
+; les opérations sur les chaînes fonctionnent comme en Python
 (+ "hello " "world") ;=> "hello world"
 ; les listes sont créés en utilisant [], l'indexation commence à 0
 (setv mylist [1 2 3 4])
@@ -70,7 +68,7 @@ True ; => True
 (setv mytuple (, 1 2))
 ; les dictionnaires sont des paires clé-valeur
 (setv dict1 {"key1" 42 "key2" 21})
-; :nom peut être utilisé pour définir des mots clés dans hy qui peuvent être
+; :nom peut être utilisé pour définir des mots clés dans Hy qui peuvent être
 ;  utilisées comme clés
 (setv dict2 {:key1 41 :key2 20})
 ; utilisez `get' pour obtenir l'élément à l'index / clé
@@ -101,30 +99,30 @@ True ; => True
 (map (fn [x] (* x x)) [1 2 3 4]) ;=> [1 4 9 16]
 
 ;; Opérations sur les séquences
-; hy a des utilitaires natifs pour les opérations sur les séquences etc.
+; Hy a des utilitaires natifs pour les opérations sur les séquences etc.
 ; récupérez le premier élément en utilisant  `first' ou `car'
 (setv mylist [1 2 3 4])
 (setv mydict {"a" 1 "b" 2})
 (first mylist) ;=> 1
 
-; découpez les listes en utilisant slice
-(slice mylist 1 3) ;=> [2 3]
+; découpez les listes en utilisant cut
+(cut mylist 1 3) ;=> [2 3]
 
 ; obtenez les éléments d'une liste ou dict en utilisant `get'
 (get mylist 1) ;=> 2
 (get mydict "b") ;=> 2
-; l'indexation des listes commence à 0 comme en python
+; l'indexation des listes commence à 0 comme en Python
 ; assoc peut définir les éléments à clés/index
 (assoc mylist 2 10) ; makes mylist [1 2 10 4]
 (assoc mydict "c" 3) ; makes mydict {"a" 1 "b" 2 "c" 3}
 ; il ya tout un tas d'autres fonctions de base qui rend le travail avec
 ; les séquences amusant
 
-;; les importations fonctionnent comme en pyhtonn
+;; les importations fonctionnent comme en Python
 (import datetime)
-(import [functools [partial reduce]]) ; importe fun1 et fun2 de module1
-(import [matplotlib.pyplot :as plt]) ; faire une importation foo comme bar
-; toutes les méthodes natives de python sont accessibles à partir de hy
+(import functools [partial reduce]) ; importe fun1 et fun2 de module1
+(import matplotlib.pyplot :as plt) ; faire une importation foo comme bar
+; toutes les méthodes natives de Python sont accessibles à partir de Hy
 ; a.foo(arg) est appelé (.foo a arg)
 (.split (.strip "hello world  ")) ;=> ["hello" "world"]
 
@@ -136,12 +134,9 @@ True ; => True
 
 ; imbriquez plusieurs if else if avec le mot clé cond
 (cond
- [(= someval 42)
-  (print "Life, universe and everything else!")]
- [(> someval 42)
-  (print "val too large")]
- [(< someval 42)
-  (print "val too small")])
+ (= someval 42) (print "Life, universe and everything else!")
+ (> someval 42) (print "val too large")
+ (< someval 42) (print "val too small"))
 
 ; groupez les expressions avec do, ceux-ci seront executé séquentiellemnt
 ; les expressions comme defn ont un do implicite
@@ -155,26 +150,24 @@ True ; => True
                 "sherlock" "moriarty"
                 "seinfeld" "newman"}]]
   (for [(, h v) (.items nemesis)]
-	(print (.format "{0}'s nemesis was {1}" h v))))
+    (print (.format "{0}'s nemesis was {1}" h v))))
 
 ;; classes
 ; les classes sont définies comme ceci
 (defclass Wizard [object]
-  [[--init-- (fn [self spell]
-             (setv self.spell spell) ; init the spell attr
-             None)]
-   [get-spell (fn [self]
-              self.spell)]])
+  (defn __init__ [self spell]
+    (setv self.spell spell))
 
-;; allez voir hylang.org
+  (defn get-spell [self]
+    self.spell))
 ```
 
 ### Lectures complémentaires
 
-Ce tutoriel est juste une simple introduction à hy/lisp/python.
+Ce tutoriel est juste une simple introduction à Hy/Lisp/Python.
 
-La documentation de HY: [http://hy.readthedocs.org](http://hy.readthedocs.org)
+La documentation de Hy: [https://hylang.org/hy/doc](https://hylang.org/hy/doc)
 
-Le repo GitHub de HY: [http://github.com/hylang/hy](http://github.com/hylang/hy)
+Le repo GitHub de Hy: [https://github.com/hylang/hy](https://github.com/hylang/hy)
 
 Sur freenode irc #hy, twitter hashtag #hylang

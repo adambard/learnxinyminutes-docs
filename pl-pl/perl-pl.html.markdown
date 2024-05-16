@@ -20,7 +20,6 @@ pełni stacjonarnych) i nadaje się zarówno do szybkiego prototypowania jak
 i projektów deweloperskich prowadzonych na szeroką skalę.
 
 ```perl
-
 # Pojedyncza linia komentarza zaczyna się od znaku hasha (płotka) "#".
 
 #### Typy zmiennych w Perlu
@@ -148,7 +147,6 @@ sub logger {
 # Teraz można używać napisanej funkcji, tak jak każdej innej wbudowanej
 # funkcji perlowej:
 logger ("Mamy funkcję perlową");
-
 ```
 
 #### Używanie modułów perlowych

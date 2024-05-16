@@ -905,13 +905,11 @@ Node createLinkedList(int *vals, int len);
 /* a header file but instead put into separate headers or a C file.          */
 
 #endif /* End of the if precompiler directive. */
-
 ```
 
 ## Further Reading
 
-Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
-It is _the_ book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
+Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). It is _the_ book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
 inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
 
 Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/) (not free).
@@ -921,7 +919,5 @@ If you have a question, read the [compl.lang.c Frequently Asked Questions](http:
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
 [Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
-
-Other than that, Google is your friend.
 
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)

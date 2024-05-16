@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: jquery
+category: framework
+framework: jquery
 contributors:
     - ["Seçkin KÜKRER", "https://github.com/leavenha"]
 filename: jquery-tr-tr.js
@@ -23,7 +23,6 @@ Kütüphanenin kullanımı ile, jQueryUI gibi ek paketlerle gelişmiş ve modern
 Fakat, jQuery'ye giriş yapmadan önce elbetteki bu kütüphanenin üzerine kurulduğu teknoloji olan [JavaScript'i öğrenmelisiniz][javascript-learnxinyminutes-page].
 
 ```js
-
 // Bu belgedeki değişken isimleri Türkçe,
 // ve [Lower Camel Case] notasyonu uygulamaktadır.
 // Bu belgedeki kod parçalarının çıktıları,
@@ -316,7 +315,6 @@ Elementin,
 
 Diğer tüm manipülasyon fonksiyonları için resmi siteyi kontrol ediniz.
 */
-
 ```
 
 ## Notlar

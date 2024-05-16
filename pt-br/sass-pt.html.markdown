@@ -4,6 +4,7 @@ filename: learnsass-pt.scss
 contributors:
   - ["Laura Kyle", "https://github.com/LauraNK"]
   - ["Sean Corrales", "https://github.com/droidenator"]
+  - ["Thalles Augusto", "https://github.com/Theslladev"]
 translators:
   - ["Gabriel Gomes", "https://github.com/gabrielgomesferraz"]
   - ["Cássio Böck", "https://github.com/cassiobsilva"]
@@ -16,11 +17,9 @@ Sass (e outros pré-processadores, como [Less](http://lesscss.org/)) ajudam os d
 Sass tem duas opções de sintaxe diferentes para escolher. SCSS, que tem a mesma sintaxe de CSS, mas com os recursos adicionais de Sass. Ou Sass (a sintaxe original), que usa o recuo, em vez de chaves e ponto e vírgula.
 Este tutorial é escrito usando SCSS.
 
-Se você já está familiarizado com CSS3, você será capaz de pegar Sass de forma relativamente rápida. Ele não fornece quaisquer novas opções de estilo, mas sim as ferramentas para escrever sua CSS de forma mais eficiente e fazer a manutenção mais fácilmente.
+Se você já está familiarizado com CSS3, você será capaz de pegar Sass de forma relativamente rápida. Ele não fornece quaisquer novas opções de estilo, mas sim as ferramentas para escrever sua CSS de forma mais eficiente e fazer a manutenção mais facilmente.
 
 ```scss
-
-
 // Comentários de linha única são removidos quando Sass é compilado para CSS.
 
 /* Comentários multi-line são preservados. */
@@ -249,7 +248,7 @@ ul {
 /* '&' será substituído pelo selector pai (parent). */
 /* Você também pode aninhar pseudo-classes. */
 /* Tenha em mente que o excesso de nidificação vai fazer seu código menos sustentável.
-Essas práticas também recomendam não vai mais de 3 níveis de profundidade quando nidificação.
+Essas práticas também recomendam não mais de 3 níveis de profundidade quando nidificação.
 Por exemplo: */
 
 
@@ -379,7 +378,7 @@ body {
 
 /* Sass fornece os seguintes operadores: +, -, *, /, e %. estes podem
    ser úteis para calcular os valores diretamente no seu arquivos Sass em vez
-   de usar valores que você já calculados manualmente. O exemplo abaixo é
+   de usar valores que você já calcula manualmente. O exemplo abaixo é
    de um projeto simples de duas colunas. */
 
 $content-area: 960px;
@@ -423,8 +422,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
-
 ```
 
 

@@ -400,8 +400,8 @@ g = loadstring('print(343)')  -- Gibt eine Funktion zurück..
 g()  -- Ausgabe 343; Vorher kam keine Ausgabe.
 
 --]]
-
 ```
+
 ## Referenzen
 
 Ich war so begeistert Lua zu lernen, damit ich Spiele mit <a href="http://love2d.org/">Love 2D game engine</a> programmieren konnte.
@@ -423,4 +423,4 @@ Wichtige Themen die hier nicht angesprochen wurden; die Standard-Bibliotheken:
 Übrigends, die gesamte Datei ist gültiges Lua. Speichere sie als learn.lua und
 starte sie als "lua learn.lua" !
 
-Die Erstfassung ist von tylerneylon.com, und ist auch hier verfügbar: <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Viel Spaß mit Lua!
+Die Erstfassung ist von tylerneylon.com, und ist auch hier verfügbar: <a href="https://gist.github.com/tylerneylon/5853042">GitHub gist</a>. Viel Spaß mit Lua!

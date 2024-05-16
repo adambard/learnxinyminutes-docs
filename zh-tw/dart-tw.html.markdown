@@ -555,7 +555,6 @@ main() {
     example30 // 增加此註解可阻止dart formatter把所有項目都換行
   ].forEach((ef) => ef());
 }
-
 ```
 
 ## 延伸閱讀

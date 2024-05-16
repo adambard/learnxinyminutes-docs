@@ -480,6 +480,7 @@ Agora você irá conseguir realizar o pull!
 ```bash
 git pull
 ```
+
 `...changes apply...`
 
 Verifique se está tudo OK com o `git status`
@@ -583,6 +584,7 @@ Você pode fazer assim:
 ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
 2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
 ```
+
 2. Selecione para onde você quer resetar. No nosso exemplo, seria o commit
 `2e6c386`, ou `HEAD@{5}`
 3. 'git reset --hard HEAD@{5}' esse comando irá resetar o seu repositório para

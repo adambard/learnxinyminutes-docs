@@ -25,7 +25,7 @@ Vous pouvez contacter l'auteur du guide original en anglais ici :
 [@kurisuwhyte](https://twitter.com/kurisuwhyte)
 
 
-```coffeescript
+```livescript
 # Comme son cousin CoffeeScript, LiveScript utilise le symbole dièse pour les 
 # commentaires sur une ligne.
 
@@ -33,8 +33,7 @@ Vous pouvez contacter l'auteur du guide original en anglais ici :
  Les commentaires sur plusieurs lignes utilisent la syntaxe du C. Utilisez-les
  si vous voulez préserver les commentaires dans la sortie JavaScript.
  */
-```
-```coffeescript
+
 # LiveScript utilise l'indentation pour délimiter les blocs de code plutôt que 
 # les accolades, et les espaces pour appliquer les fonctions (bien que les 
 # parenthèses soient utilisables).

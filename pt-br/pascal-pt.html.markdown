@@ -249,6 +249,5 @@ BEGIN // programa principal
     // escrever valor de inutil (sempre 3, já que salvainteiro não a altera)
     WRITELN('inutil = ', inutil); 
 END.
-
 ```
 

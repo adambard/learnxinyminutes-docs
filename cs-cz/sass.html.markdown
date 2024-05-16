@@ -19,8 +19,6 @@ Tento tutoriál bude používat syntaxi CSS.
 Pokud jste již obeznámeni s CSS3, budete schopni používat Sass relativně rychle. Nezprostředkovává nějaké úplně nové stylové možnosti, spíše nátroje, jak psát Vás CSS kód více efektivně, udržitelně a jednoduše.
 
 ```scss
-
-
 //Jednořádkové komentáře jsou ze Sassu při kompilaci vymazány
 
 /*Víceřádkové komentáře jsou naopak zachovány */
@@ -411,8 +409,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
-
 ```
 
 

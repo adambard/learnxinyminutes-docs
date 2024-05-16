@@ -14,9 +14,9 @@ Typescript acrescenta conceitos comuns como classes, módulos, interfaces, gené
 
 Este artigo irá se concentrar apenas na sintaxe extra do TypeScript, ao contrário de [JavaScript](../javascript-pt/).
 
-Para testar o compilador TypeScript, vá para o [Playground](http://www.typescriptlang.org/Playground), onde você vai ser capaz de escrever código, ter auto conclusão e ver diretamente o JavaScript emitido.
+Para testar o compilador TypeScript, vá para o [Playground](https://www.typescriptlang.org/Playground), onde você vai ser capaz de escrever código, ter auto conclusão e ver diretamente o JavaScript emitido.
 
-```js
+```ts
 // Existem 3 tipos básicos no TypeScript
 var isDone: boolean = false;
 var lines: number = 42;
@@ -161,12 +161,9 @@ var tuple = pairToTuple({ item1:"hello", item2:"world"});
 
 // Incluindo referências a um arquivo de definição:
 /// <reference path="jquery.d.ts" />
-
 ```
 
 ## Leitura adicional
- * [TypeScript site oficial](http://www.typescriptlang.org/)
- * [TypeScript especificações de idioma (pdf)](http://go.microsoft.com/fwlink/?LinkId=267238)
- * [Anders Hejlsberg - Apresentando texto datilografado no Canal 9](http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [Código fonte no GitHub](https://github.com/Microsoft/TypeScript)
- * [Definitivamente datilografado - repositório de definições de tipo](http://definitelytyped.org/)
+
+* [TypeScript site oficial](https://www.typescriptlang.org/)
+* [Código fonte no GitHub](https://github.com/microsoft/TypeScript)
