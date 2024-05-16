@@ -1,9 +1,8 @@
 ---
-language: bqn
+language: BQN
 filename: learnbqn.bqn
 contributors:
     - ["Raghu Ranganathan", "https://github.com/razetime"]
-translators:
 ---
 
 BQN is a modern array language (similar to APL) that aims to eliminate burdensome aspects of the APL tradition.
