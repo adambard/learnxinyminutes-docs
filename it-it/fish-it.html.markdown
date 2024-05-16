@@ -52,7 +52,7 @@ Ora, sin dall'inizio, c'è una cosa fastidiosa in fish. Il messaggio di benvenut
 Se volessi eseguire un singolo comando in bash, senza passare a quella shell, puoi scrivere: 
 
 ```
-> bash -c 'echo "fish è meglio di bash"'
+> bash -c 'echo "Questo testo sarà stampato sul terminale"'
 ```
 
 Su fish, si possono usare sia le singole che le doppie virgolette.
@@ -113,7 +113,7 @@ Per esempio, il seguente comando restituirà (in questo caso):
 Ovviamente, puoi anche inviare l'output di un comando ad un'altro con una pipe
 
 ```
->echo Nadia. sei davvero terribile.        | grep [udense]
+>echo . Qui ci sarà un testo | grep [udense]
 ```
 
 scrivere su un file:
@@ -168,8 +168,8 @@ che inverte lo stato di output del comando.
 Per esempio:
 
 ```
-> if not echo È molto tardi non dovrei perdere tempo con sta roba   
-      echo Nessuno ti sta ascoltando  
+> if not echo Testo testo, bla bla bla
+      echo Altro testo, bla bla  
   end
 ```
 
@@ -285,9 +285,9 @@ switch $OS
 case Linux
     echo "Sei un grande"
 case Windows
-    echo "installa Gentoo"
-case Arch
-    echo "Io uso arch :D"
+    echo "Potresti provare fish su WSL"
+case MacOS
+    echo "Su MacOS c'è fish!"
 case '*'
     echo "quale OS è $OS, per favore?"
 end
