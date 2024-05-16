@@ -5,7 +5,9 @@ contributors:
   - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
   - ["Hiva Zarei", "https://github.com/hivazarei"]
+lang: fa-ir
 ---
+
 <p dir="rtl">HTML مخفف كلمه ی Hyper Text Markup Language می باشد.</p>
 
 <p dir="rtl">یك زبان نشانه گیری است كه با استفاده از كد نویسی می توانیم متن و داده های مختلف را با استفاده از آن نمایش دهیم.</p>
