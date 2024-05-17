@@ -1,8 +1,8 @@
 ---
 language: Lua
+filename: learnlua-es.lua
 contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
-filename: learnlua-es.lua
 translators:
     - ["Jorge Diaz", "https://github.com/jorgeldb"]
 lang: es-es
@@ -47,7 +47,7 @@ if num > 40 then
 elseif s ~= 'alternados' then  -- ~= significa "diferente de"
   -- == significa "igual a". Puede usarse en strings, igual que en Python
 
-  io.write('no mayor a 40\n')  -- Por defecto, escribe 
+  io.write('no mayor a 40\n')  -- Por defecto, escribe
                                -- a la salida estándar stdout
 else
   -- Las variables son globales por defecto
@@ -416,31 +416,27 @@ g()  -- Imprime '343', nada es impreso antes de esto.
 --]]
 ```
 
-
 ## Referencias
 
 Estaba emocionado por aprender lua para poder crear juegos
-con el <a href="http://love2d.org/">motor de juegos Love 2D</a>. Ese es el por qué.
+con el motor de juegos [Love 2D](http://love2d.org/). Ese es el por qué.
 
-Empecé con <a href="https://ebens.me/posts/lua-for-programmers-part-1/">BlackBulletIV para programadores Lua</a>.
-Luego, leí el libro oficial de <a href="http://www.lua.org/pil/contents.html">Programación en Lua</a>.
+Empecé con [BlackBulletIV para programadores Lua](https://ebens.me/posts/lua-for-programmers-part-1/).
+Luego, leí el libro oficial de [Programación en Lua](http://www.lua.org/pil/contents.html).
 Ese es el cómo.
 
-Podría serle útil darle un vistazo a 
-<a href="http://lua-users.org/wiki/LuaShortReference">Lua Short Reference</a> en lua-users.org.
+Podría serle útil darle un vistazo a
+[Lua Short Reference](http://lua-users.org/wiki/LuaShortReference) en lua-users.org.
 
 Los principales temas no cubiertos son las librerías estándar:
 
-* <a href="http://lua-users.org/wiki/StringLibraryTutorial">Librería de strings</a>
-* <a href="http://lua-users.org/wiki/TableLibraryTutorial">Librería de tablas</a>
-* <a href="http://lua-users.org/wiki/MathLibraryTutorial">Librería de matemáticas</a>
-* <a href="http://lua-users.org/wiki/IoLibraryTutorial">Librería de Entrada/Salida (io)</a>
-* <a href="http://lua-users.org/wiki/OsLibraryTutorial">Libreria de Sistema Operativo (os)</a>
+* [Librería de strings](http://lua-users.org/wiki/StringLibraryTutorial)
+* [Librería de tablas](http://lua-users.org/wiki/TableLibraryTutorial)
+* [Librería de matemáticas](http://lua-users.org/wiki/MathLibraryTutorial)
+* [Librería de Entrada/Salida (io)](http://lua-users.org/wiki/IoLibraryTutorial)
+* [Libreria de Sistema Operativo (os)](http://lua-users.org/wiki/OsLibraryTutorial)
 
 Por cierto, el archivo entero es código Lua válido. ¡Guárdelo como
 aprendiendo.lua y ejecútelo con el comando "lua aprendiendo.lua" !
-
-Esta guía fue escrita por primera vez por tylerneylon.com, y está disponible en
-<a href="https://gist.github.com/tylerneylon/5853042">Github gist</a>.
 
 ¡Que se divierta con lua!
