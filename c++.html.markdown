@@ -162,7 +162,7 @@ namespace Second {
     }
     void bar()
     {
-    	printf("This is Second::bar\n");
+        printf("This is Second::bar\n");
     }
 }
 
@@ -197,22 +197,22 @@ int main()
 
 int main()
 {
-   int myInt;
+    int myInt;
 
-   // Prints to stdout (or terminal/screen)
-   // std::cout referring the access to the std namespace
-   std::cout << "Enter your favorite number:\n";
-   // Takes in input
-   std::cin >> myInt;
+    // Prints to stdout (or terminal/screen)
+    // std::cout referring the access to the std namespace
+    std::cout << "Enter your favorite number:\n";
+    // Takes in input
+    std::cin >> myInt;
 
-   // cout can also be formatted
-   std::cout << "Your favorite number is " << myInt << '\n';
-   // prints "Your favorite number is <myInt>"
+    // cout can also be formatted
+    std::cout << "Your favorite number is " << myInt << '\n';
+    // prints "Your favorite number is <myInt>"
 
-   std::cerr << "Used for error messages";
+    std::cerr << "Used for error messages";
 
-   // flush string stream buffer with new line
-   std::cout << "I flushed it away" << std::endl;
+    // flush string stream buffer with new line
+    std::cout << "I flushed it away" << std::endl;
 }
 
 //////////
@@ -304,10 +304,10 @@ foo(bar(tempObjectFun()))
 // which case its life gets extended to the current scope:
 
 void constReferenceTempObjectFun() {
-  // constRef gets the temporary object, and it is valid until the end of this
-  // function.
-  const std::string& constRef = tempObjectFun();
-  ...
+    // constRef gets the temporary object, and it is valid until the end of this
+    // function.
+    const std::string& constRef = tempObjectFun();
+    ...
 }
 
 // Another kind of reference introduced in C++11 is specifically for temporary
@@ -339,15 +339,15 @@ std::basic_string(basic_string&& other);
 // easier visualization and reading of code
 enum ECarTypes
 {
-  Sedan,
-  Hatchback,
-  SUV,
-  Wagon
+    Sedan,
+    Hatchback,
+    SUV,
+    Wagon
 };
 
 ECarTypes GetPreferredCarType()
 {
-	return ECarTypes::Hatchback;
+    return ECarTypes::Hatchback;
 }
 
 // As of C++11 there is an easy way to assign a type to the enum which can be
@@ -355,21 +355,21 @@ ECarTypes GetPreferredCarType()
 // the desired type and their respective constants
 enum ECarTypes : uint8_t
 {
-  Sedan, // 0
-  Hatchback, // 1
-  SUV = 254, // 254
-  Hybrid // 255
+    Sedan, // 0
+    Hatchback, // 1
+    SUV = 254, // 254
+    Hybrid // 255
 };
 
 void WriteByteToFile(uint8_t InputValue)
 {
-	// Serialize the InputValue to a file
+    // Serialize the InputValue to a file
 }
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
-	// The enum is implicitly converted to a uint8_t due to its declared enum type
-	WriteByteToFile(InputCarType);
+    // The enum is implicitly converted to a uint8_t due to its declared enum type
+    WriteByteToFile(InputCarType);
 }
 
 // On the other hand you may not want enums to be accidentally cast to an integer
@@ -377,22 +377,22 @@ void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 // won't be implicitly converted
 enum class ECarTypes : uint8_t
 {
-  Sedan, // 0
-  Hatchback, // 1
-  SUV = 254, // 254
-  Hybrid // 255
+    Sedan, // 0
+    Hatchback, // 1
+    SUV = 254, // 254
+    Hybrid // 255
 };
 
 void WriteByteToFile(uint8_t InputValue)
 {
-	// Serialize the InputValue to a file
+    // Serialize the InputValue to a file
 }
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
-	// Won't compile even though ECarTypes is a uint8_t due to the enum
-	// being declared as an "enum class"!
-	WriteByteToFile(InputCarType);
+    // Won't compile even though ECarTypes is a uint8_t due to the enum
+    // being declared as an "enum class"!
+    WriteByteToFile(InputCarType);
 }
 
 //////////////////////////////////////////
@@ -573,7 +573,7 @@ Point& Point::operator+=(const Point& rhs)
 {
     x += rhs.x;
     y += rhs.y;
-    
+
     // `this` is a pointer to the object, on which a method is called.
     return *this;
 }
@@ -653,7 +653,7 @@ barkThreeTimes(fluffy); // Prints "Fluffy barks" three times.
 // Template parameters don't have to be classes:
 template<int Y>
 void printMessage() {
-  std::cout << "Learn C++ in " << Y << " minutes!\n";
+    std::cout << "Learn C++ in " << Y << " minutes!\n";
 }
 
 // And you can explicitly specialize templates for more efficient code. Of
@@ -662,7 +662,7 @@ void printMessage() {
 // even if you explicitly specified all parameters.
 template<>
 void printMessage<10>() {
-  std::cout << "Learn C++ faster in only 10 minutes!\n";
+    std::cout << "Learn C++ faster in only 10 minutes!\n";
 }
 
 printMessage<20>();  // Prints "Learn C++ in 20 minutes!"
@@ -715,9 +715,9 @@ void doSomethingWithAFile(const char* filename)
     // To begin with, assume nothing can fail.
 
     FILE* fh = fopen(filename, "r"); // Open the file in read mode.
-	if (fh == NULL) {
-		// Handle possible error
-	}
+    if (fh == NULL) {
+        // Handle possible error
+    }
 
     doSomethingWithTheFile(fh);
     doSomethingElseWithIt(fh);
@@ -837,7 +837,7 @@ void doSomethingWithAFile(const std::string& filename)
 
 // Generally a smart pointer is a class which wraps a "raw pointer" (usage of "new"
 // respectively malloc/calloc in C). The goal is to be able to
-// manage the lifetime of the object being pointed to without ever needing to explicitly delete 
+// manage the lifetime of the object being pointed to without ever needing to explicitly delete
 // the object. The term itself simply describes a set of pointers with the
 // mentioned abstraction.
 // Smart pointers should preferred over raw pointers, to prevent
@@ -857,9 +857,9 @@ delete ptr;
 // Usage of "std::shared_ptr":
 void foo()
 {
-	// It's no longer necessary to delete the Dog.
-	std::shared_ptr<Dog> doggo(new Dog());
-	doggo->bark();
+    // It's no longer necessary to delete the Dog.
+    std::shared_ptr<Dog> doggo(new Dog());
+    doggo->bark();
 }
 
 // Beware of possible circular references!!!
@@ -869,7 +869,7 @@ std::shared_ptr<Dog> doggo_two(new Dog());
 doggo_one = doggo_two; // p1 references p2
 doggo_two = doggo_one; // p2 references p1
 
-// There are several kinds of smart pointers. 
+// There are several kinds of smart pointers.
 // The way you have to use them is always the same.
 // This leads us to the question: when should we use each kind of smart pointer?
 // std::unique_ptr - use it when you just want to hold one reference to
@@ -905,13 +905,13 @@ my_vector.push_back(val); // will push the value into the vector again (now havi
 // To iterate through a vector we have 2 choices:
 // Either classic looping (iterating through the vector from index 0 to its last index):
 for (int i = 0; i < my_vector.size(); i++) {
-	std::cout << my_vector[i] << '\n'; // for accessing a vector's element we can use the operator []
+    std::cout << my_vector[i] << '\n'; // for accessing a vector's element we can use the operator []
 }
 
 // or using an iterator:
 vector<string>::iterator it; // initialize the iterator for vector
 for (it = my_vector.begin(); it != my_vector.end(); ++it) {
-	std::cout << *it  << '\n';
+    std::cout << *it  << '\n';
 }
 
 // Set
@@ -933,8 +933,8 @@ ST.erase(20);  // Will erase element with value 20
 // Set ST: 10 30
 // To iterate through Set we use iterators
 std::set<int>::iterator it;
-for(it = ST.begin(); it != ST.end(); it++) {
-	std::cout << *it << '\n';
+for (it = ST.begin(); it != ST.end(); it++) {
+    std::cout << *it << '\n';
 }
 // Output:
 // 10
@@ -963,7 +963,7 @@ mymap.insert(pair<char,int>('Z',26));
 
 // To iterate
 std::map<char,int>::iterator it;
-for (it=mymap.begin(); it!=mymap.end(); ++it)
+for (it = mymap.begin(); it != mymap.end(); ++it)
     std::cout << it->first << "->" << it->second << '\n';
 // Output:
 // A->1
@@ -1033,8 +1033,8 @@ std::sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair
 
 std::vector<int> dog_ids;
 // number_of_dogs = 3;
-for(int i = 0; i < 3; i++) {
-	dog_ids.push_back(i);
+for (int i = 0; i < 3; i++) {
+    dog_ids.push_back(i);
 }
 
 int weight[3] = {30, 50, 10};
@@ -1057,15 +1057,15 @@ sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
 // You can use a range for loop to iterate over a container
 int arr[] = {1, 10, 3};
 
-for(int elem: arr){
-	cout << elem << endl;
+for (int elem: arr) {
+    cout << elem << endl;
 }
 
 // You can use "auto" and not worry about the type of the elements of the container
 // For example:
 
-for(auto elem: arr) {
-	// Do something with each element of arr
+for (auto elem: arr) {
+    // Do something with each element of arr
 }
 
 /////////////////////
@@ -1078,10 +1078,10 @@ for(auto elem: arr) {
 
 // You can override private methods!
 class Foo {
-  virtual void bar();
+    virtual void bar();
 };
 class FooSub : public Foo {
-  virtual void bar();  // Overrides Foo::bar!
+    virtual void bar();  // Overrides Foo::bar!
 };
 
 
@@ -1212,7 +1212,7 @@ compl 4    // Performs a bitwise not
 
 ## Further Reading:
 
-* An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).
-* A tutorial  for beginners or experts, covering many modern features and good practices: [LearnCpp.com](https://www.learncpp.com/)
-* A tutorial covering basics of language and setting up coding environment is available at [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
-* Additional resources may be found at [CPlusPlus](http://cplusplus.com).
+- An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).
+- A tutorial for beginners or experts, covering many modern features and good practices: [LearnCpp.com](https://www.learncpp.com/)
+- A tutorial covering basics of language and setting up coding environment is available at [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
+- Additional resources may be found at [CPlusPlus](http://cplusplus.com).
