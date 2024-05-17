@@ -1,6 +1,4 @@
 ---
-name: Umka
-category: language
 language: Umka
 filename: learnumka.um
 contributors:
@@ -15,11 +13,11 @@ It draws inspiration from Pascal and Go.
 ```
 // Single line comment
 /* Multi line comments
- they cant't be nested */
+ they can't be nested */
 
 // The import statement can import other files
 import (
-	"std.um" // the standard library - included in the interpretor
+	"std.um" // the standard library - included in the interpreter
 	"map.um" // hashmaps
 	"utf8.um" // utf8 encoding and decoding
 )
@@ -39,7 +37,7 @@ fn main() {
 	var z = 5 // you can also ignore the type
 	a := 6 // umka also allows short declarations like in go
 
-	y = 4 // variable assignement
+	y = 4 // variable assignment
 
 	// there aren't doubles or floats in umka. They are called real and
 	// real32 instead.
@@ -85,7 +83,7 @@ fn main() {
 	// length. The length doesn't have to be a constant.
 	arr := make([]int, 23)
 
-	// Dynamic arrays can be appended. Be aware, that the array is allways newly
+	// Dynamic arrays can be appended. Be aware, that the array is always newly
 	// allocated, and the old elements are copied. This makes the process of
 	// appending very slow.
 	dynNames = append(dynNames, "Giorno")
@@ -176,5 +174,5 @@ fn println(args ...Representable) {
 
 ## Further reading
 
-You can learn more details in the [spec](https://github.com/vtereshkov/umka-lang/tree/master/spec.md).
-If you want to read real umka code, read some of the [examples](https://github.com/vtereshkov/umka-lang/tree/master/examples).
+You can learn more details in the [documentation](https://github.com/vtereshkov/umka-lang/tree/master/doc).
+If you want to read real Umka code, read some of the [examples](https://github.com/vtereshkov/umka-lang/tree/master/examples).
