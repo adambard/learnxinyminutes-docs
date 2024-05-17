@@ -139,7 +139,7 @@ type Vector2 = struct {
 	x, y: real
 }
 
-fn newVector2(x, y: read): Vector2 {
+fn newVector2(x, y: real): Vector2 {
 	// Structure literals
 	return Vector2{ x, y }
 }
