@@ -16,7 +16,7 @@ para versões anteriores, mas é recomendado que você busque outras referência
 para essas versões.
 
 
-```csharp
+```haxe
 /*
    Bem vindo ao Aprenda Haxe 3 em 15 minutos. http://www.haxe.org
    Este é um tutorial executável. Você pode compilar e rodar este tutorial
@@ -777,8 +777,8 @@ class UsingExample {
       }
 
 }
-
 ```
+
 Isso foi apenas o começo do que Haxe pode fazer. Para uma documentação de todos
 os recursos de Haxe, veja o [manual](https://haxe.org/manual) e a
 [documentação de API](https://api.haxe.org/). Para um diretório de bibliotecas de terceiros

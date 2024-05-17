@@ -12,7 +12,7 @@ the engine. It's a perfect fit for game development.
 
 ## Basics
 
-```nim
+```gdscript
 # Single-line comments are written using hash symbol.
 """
   Multi-line
@@ -209,7 +209,7 @@ func use_inner_class():
 
 ## Accessing other nodes in the scene tree
 
-```nim
+```gdscript
 extends Node2D
 
 var sprite # This variable will hold the reference.
@@ -258,7 +258,7 @@ onready var reference = get_node(nodepath) as Node
 Signal system is Godot's implementation of the observer programming
 pattern. Here's an example:
 
-```nim
+```gdscript
 class_name Player extends Node2D
 
 var hp = 10
@@ -285,7 +285,7 @@ func _on_death():
 
 GDScript can optionally use static typing.
 
-```nim
+```gdscript
 extends Node
 
 var x: int # define typed variable

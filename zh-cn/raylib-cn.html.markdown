@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: raylib
+category: framework
+framework: raylib
 lang: zh-cn
 filename: learnraylib-cn.c
 contributors:
@@ -139,7 +139,6 @@ int main(void)
 
     return 0;
 }
-
 ```
 
 ## 延伸阅读

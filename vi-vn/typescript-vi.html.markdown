@@ -14,7 +14,7 @@ Ngôn ngữ này là tập lớn hơn của JavaScript: tất cả code JavaScri
 
 Bài viết này sẽ chỉ tập trung tới các cú pháp bổ sung mà TypeScript thêm vào thay vì nói đến cả các cú pháp [JavaScript](javascript-vi.html.markdown).
 
-Để thử dùng TypeScript với trình biên dịch, đi đến [Sân chơi TypeScript](http://www.typescriptlang.org/play) nơi mà bạn có thể nhập code, sử dụng chức năng hỗ trợ tự hoàn thành code - autocompletion và trực tiếp quan sát mã JavaScript được sinh ra.
+Để thử dùng TypeScript với trình biên dịch, đi đến [Sân chơi TypeScript](https://www.typescriptlang.org/play) nơi mà bạn có thể nhập code, sử dụng chức năng hỗ trợ tự hoàn thành code - autocompletion và trực tiếp quan sát mã JavaScript được sinh ra.
 
 ```ts
 // Đây là 3 khai báo kiểu biến cơ bản trong TypeScript
@@ -181,13 +181,9 @@ let greeting = `Chào ${name}, bạn khỏe không?`
 // Chuỗi nhiều dòng với template string
 let multiline = `Đây là ví dụ
 cho chuỗi nhiều dòng`;
-
 ```
 
 ## Tìm hiểu thêm
 
-* [Website TypeScript chính thức](http://www.typescriptlang.org/)
-* [Đặc tả ngôn ngữ TypeScript] (https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md)
-* [Anders Hejlsberg - Introducing TypeScript on Channel 9] (http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
-* [Mã nguồn trên GitHub] (https://github.com/Microsoft/TypeScript)
-* [Definitely Typed - repository for type definitions] (http://definitelytyped.org/)
+* [Website TypeScript chính thức](https://www.typescriptlang.org/)
+* [Mã nguồn trên GitHub](https://github.com/microsoft/TypeScript)

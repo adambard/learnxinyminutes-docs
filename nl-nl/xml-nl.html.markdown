@@ -63,8 +63,6 @@ Het bevat de data slechts.
 
 <!-- Hieronder staat een element met twee attributen -->
 <bestand type="gif" id="4293">computer.gif</bestand>
-
-
 ```
 
 * Grammaticaal correcte documenten x Validatie
@@ -80,7 +78,6 @@ Met deze gereedschappen kan je de XML data buiten je applicatie logica
 controleren.
 
 ```xml
-
 <!-- Hieronder staat een versimpelde versie voor een boekenwinkel document,
   met een toevoeging van een DTD definitie. -->
 

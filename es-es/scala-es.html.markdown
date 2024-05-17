@@ -14,7 +14,6 @@ lang: es-es
 Scala - El lenguaje escalable
 
 ```scala
-
 /////////////////////////////////////////////////
 // 0. Básicos
 /////////////////////////////////////////////////
@@ -729,7 +728,6 @@ val writer = new PrintWriter("miarchivo.txt")
 writer.write("Escribiendo linea por linea" + util.Properties.lineSeparator)
 writer.write("Otra linea" + util.Properties.lineSeparator)
 writer.close()
-
 ```
 
 ## Más recursos

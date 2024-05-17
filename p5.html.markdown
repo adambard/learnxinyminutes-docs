@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: p5
+category: framework
+framework: p5
 contributors:
     - ['Amey Bhavsar', 'https://github.com/ameybhavsar24']
     - ['Claudio Busatto', 'https://github.com/cjcbusatto']
@@ -10,40 +10,142 @@ filename: p5.js
 p5.js is a JavaScript library that starts with the original goal of [Processing](https://processing.org), to make coding accessible for artists, designers, educators, and beginners, and reinterprets this for today's web.
 Since p5 is a JavaScript library, you should learn [Javascript](https://learnxinyminutes.com/docs/javascript/) first.
 
+To run p5.js code, you can go to [the online editor](https://editor.p5js.org/).
+
 ```js
 ///////////////////////////////////
 // p5.js has two important functions to work with.
 
 function setup() {
-    // the setup function gets executed just once when the window is loaded
+  // the setup function gets executed just once when the window is loaded
 }
 function draw() {
-    // the draw function gets called every single frame. This means that for a frameRate(30) it would get called 30 times per second.
+  // the draw function gets called every single frame
+  // if the framerate is set to 30, it would get called 30 times every second
 }
 
 // the following code explains all features
 
 function setup() {
-    createCanvas(640, 480); // creates a new canvas element with 640px as width as 480px as height
-    background(128); // changes the background color of the canvas, can accept rgb values like background(100,200,20) else grayscale values like background(0) = black or background(255) = white
+  createCanvas(640, 480); // creates a new canvas element with 640px as width as 480px as height
+  background(128); // sets the background color to rgb(128, 128, 128)
+  // background('#aaf') // you can use hex codes and color names too
 }
 
 function draw() {
-    ellipse(10, 10, 50, 50); // creates a ellipse at the 10px from the left and 10px from the top with width and height as 50 each, so its basically a circle.
-    //remember in p5.js the origin is at the top-left corner of the canvas
+  background('#f2f2fc'); // usually, you call `background` in draw to clear the screen
+  // creates an ellipse at 10px from the top and 10px from the left, with width and height 37
+  ellipse(10, 10, 37, 37);
+  // remember in p5.js the origin is at the top-left corner of the canvas
 
-    if (mouseIsPressed) {
-        // mouseIsPressed is a boolean variable that changes to true if the mouse button is pressed down at that instant
+  if (mouseIsPressed) {
+    // mouseIsPressed is a boolean variable that is true when the mouse is down, and false otherwise
 
-        fill(0); // fill refers to the innner color or filling color of whatever shape you are going to draw next
-    } else {
-        fill(255); // you can give in rgb values like fill(72, 240, 80) to get colors, else a single values determines the grayscale where fill(255) stands for #FFF(white) and fill(0) stands for #000(black)
+    fill(0); // fill sets the fill color, which will stay until it is changed
+  } else {
+    fill(255, 255, 255, 240); // fill(a, b, c, d) sets the fill color to rgba(a, b, c, d)
+  }
+
+  ellipse(mouseX, mouseY, 80, 80);
+  // mouseX and mouseY are the x and y position of the mouse, respectively
+  // the above code creates and ellipse under the mouse, and fills it with white or black
+
+
+  // some other 2d primitives (shapes) you can draw:
+  rect(9, 3, 23, 26); // x, y, width, height
+  noFill(); // sets the fill color to transparent
+  triangle(100, 400, 130, 200, 200, 300); // x1, y1, x2, y2, x3, y3
+  point(100, 300); // create a point at x, y
+  // there are more, but they are more complex.
+}
+
+/** Bouncing balls animation
+ * You can copy-paste this code into the online editor at
+ * https://editor.p5js.org/
+ */
+class Ball {
+  constructor(x, y, xvel, yvel, radius, col) {
+    this.position = createVector(x, y); // create a p5.Vector object which stores the x and y
+    this.velocity = createVector(xvel, yvel); // make a p5.Vector storing the velocity
+    this.radius = radius;
+    this.col = col; // p5 already uses the word color, so we use col instead
+  }
+
+  update() {
+    this.position.add(this.velocity); // you can add vectors with p5.Vector.add(p5.Vector)
+    if (this.position.x + this.radius > width) {
+      // flip the direction the ball is going in if it touches the edge
+      this.velocity.x *= -1;
     }
+    if (this.position.x - this.radius < 0) {
+      this.velocity.x *= -1;
+    }
+    if (this.position.y + this.radius > height) {
+      this.velocity.y *= -1;
+    }
+    if (this.position.y - this.radius < 0) {
+      this.velocity.y *= -1;
+    }
+  }
 
-    ellipse(mouseX, mouseY, 80, 80);
-    // mouseX is the x-coordinate of the mouse's current position and mouseY is the y-coordinate of the mouse's current position
+  render() {
+    // you can figure out what this does by now
+    fill(this.col);
+    ellipse(this.position.x, this.position.y, this.radius);
+  }
+}
 
-    // the above code creates a circle wherever mouse's current position and fills it either black or white based on the mouseIsPressed
+let numBalls = 23;
+let balls = [];
+
+function setup() {
+  createCanvas(400, 400); // width, height
+  for (let i = 0; i < numBalls; i++) {
+    let r = random(255); // random number between 0 and 255
+    let g = random(255);
+    let b = random(255);
+
+    balls.push(
+      new Ball(
+        random(30, width), // x position
+        random(height), // y position
+        random(-4, 4), // x velocity
+        random(-4, 4), // y velocity
+        random(4, 10), // radius
+        color(r, g, b) // fill color for the ball
+      )
+    );
+  }
+}
+
+function draw() {
+  background(255);
+  for (let ball of balls) {
+    ball.update();
+    ball.render();
+  }
+}
+
+// So far, we have only seen the default rendering mode.
+// This time, we will use the 'webgl' renderer
+
+function setup() {
+  createCanvas(400, 400, WEBGL); // width, height, rendering mode
+}
+
+function draw() {
+  background(0);
+
+  stroke('#000');
+  fill('#aaf');
+
+  // rotate around the x, y, and z axes by the frame count divided by 50
+  rotateX(frameCount / 50);
+  rotateY(frameCount / 50);
+  rotateZ(frameCount / 50);
+  // frameCount is a p5.js variable that stores the amount of frames that have passed
+ 
+  box(50, 50, 50); // width, height, depth
 }
 ```
 
@@ -51,3 +153,9 @@ function draw() {
 
 - [p5.js | get started](http://p5js.org/get-started/) The official documentation
 - [Code! Programming for Beginners with p5.js - YouTube](https://www.youtube.com/watch?v=yPWkPOfnGsw&vl=en) Introduction and Coding challenges using Processing and p5.js by Coding Train
+- [The Coding Train](https://codingtra.in/) A website with sketches made in p5 and processing
+
+## Source
+
+- [p5's source code](https://github.com/processing/p5.js)
+- [p5.sound.js source](https://github.com/processing/p5.js-sound)

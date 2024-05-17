@@ -4,20 +4,19 @@ contributors:
     - ["Hyphz", "http://github.com/hyphz/"]
 filename: LearnInform.Inform
 ---
+
 Inform 7 is a natural language based language created by Graham Nelson and Emily Short for writing text adventures, but also potentially usable for other text based applications, especially data backed ones.
 
-```
-"LearnInform" by Hyphz
-
+```inform7
 [This is a comment.]
 
 [Inform 7 is a language designed for building text adventures.
-It can be used for other purposes too, although the default 
+It can be used for other purposes too, although the default
 library builds a text adventure. Inform 7 is object oriented.]
 
 [This creates a class by subclassing. "Value" is the universal subclass,
 but "object" is the most basic that behaves like an OO object.]
-A datablock is a kind of object. 
+A datablock is a kind of object.
 
 [Classes can have properties.]
 A datablock can be broken. [This creates a boolean property.]
@@ -36,18 +35,18 @@ The name of Block1 is "Block One."
 [Functions and procedures are defined as "phrases".]
 To do the thing everyone does with their first program:
 	say "Hello World.". [Full stop indicates the end, indent indicates the scope.]
-	
+
 To dump (the block - a datablock): [That's how we create a parameter.]
 	say the sequence number of the block;
 	say the name of the block;
 	if the block is broken, say "(Broken)".
-		
+
 To toggle (the block - a datablock):
 	if the block is broken: [Conditional.]
 		now the block is not broken; [Updating a property.]
 	else:
 		now the block is broken.
-		
+
 [Multiple parameters.]
 To fix (the broken block - a datablock) using (the repair block - a datablock):
 	if the broken block is not broken, stop; [Comma for a non indented single command.]
@@ -56,8 +55,8 @@ To fix (the broken block - a datablock) using (the repair block - a datablock):
 	now the broken block is not broken.
 
 [Because of its text adventure origins, Inform 7 doesn't generally allow objects
-to be created dynamically, although there's a language extension that enables it.]	
-Block2 is a datablock. 
+to be created dynamically, although there's a language extension that enables it.]
+Block2 is a datablock.
 Block2 is broken.
 The sequence number of Block2 is 2.
 The name of Block2 is "Block two."
@@ -66,8 +65,8 @@ To demonstrate calling a phrase with two parameters:
 	Let the second block be block2; [Local pointer variable.]
 	fix the second block using Block1;
 	say the sequence number of the second block. [1.]
-	
-[Lists.]	
+
+[Lists.]
 To show how to use list types:
 	let the list be a list of datablocks;
 	add Block1 to the list;
@@ -84,7 +83,7 @@ To show how to use list types:
 	dump X; ["1 Block two."]
 	remove X from the list;
 	say the list. [Block1]
-		
+
 [Here's how we define a function and do arithmetic.]
 
 To decide which number is the sum of all numbers up to (X - a number) (this is summing up):
@@ -92,7 +91,7 @@ To decide which number is the sum of all numbers up to (X - a number) (this is s
 	repeat with the current number running from 1 to X:
 		now the total so far is the total so far + the current number;
 	decide on the total so far. [This is the return statement.]
-	
+
 [ We have higher order functions too. ]
 
 To demonstrate a higher order function:
@@ -102,7 +101,7 @@ To decide which number is the result of applying (phrase - phrase A -> A) twice 
 	let b1 be phrase applied to B;
 	let b2 be phrase applied to b1;
 	decide on b2.
-	
+
 To demonstrate defining a higher order function:
 	let X be 5;
 	say the result of applying summing up twice to X.
@@ -112,14 +111,14 @@ To demonstrate defining a higher order function:
 Datablock validation rules is a datablock based rulebook.
 
 A datablock validation rule for a broken datablock: rule fails.
-A datablock validation rule for a datablock (called the block): 
+A datablock validation rule for a datablock (called the block):
 	dump the block;
 	rule succeeds.
-		
+
 To demonstrate invoking a rulebook:
 	follow datablock validation rules for Block1;
 	follow datablock validation rules for Block2.
-	
+
 [ Objects can also have relations, which resemble those in a relational database. ]
 A dog is a kind of thing.
 Rover is a dog.
@@ -136,7 +135,7 @@ Friendship relates various people to various people.  [Many-to-many.]
 
 The verb to own means the property ownership relation.
 The verb to be the guide dog of means the guide dog ownership relation.
-The verb to be guided by means the reversed guide dog ownership relation. 
+The verb to be guided by means the reversed guide dog ownership relation.
 The verb to be friends with means the friendship relation.
 
 Edward is a person. A person can be blind. Edward is blind.
@@ -156,18 +155,18 @@ The verb to be helpful to means the helpfulness relation.
 To demonstrate using a procedural relation:
 	repeat with the helper running through people that are helpful to Edward:
 		say the helper.
-	
+
 
 [ Interface to the text adventure harness to allow the above code to be run. ]
-Tutorial room is a room. 
+Tutorial room is a room.
 "A rather strange room full of buttons. Push them to run the exercises, or turn on the robot to run them all."
-A button is a kind of thing. A button is fixed in place. 
+A button is a kind of thing. A button is fixed in place.
 
-The red button is a button in tutorial room. 
+The red button is a button in tutorial room.
 Instead of pushing the red button, do the thing everyone does with their first program.
-The green button is a button in tutorial room. 
+The green button is a button in tutorial room.
 Instead of pushing the green button, demonstrate calling a phrase with two parameters.
-The blue button is a button in tutorial room. 
+The blue button is a button in tutorial room.
 Instead of pushing the blue button, show how to use list types.
 The cyan button is a button in tutorial room.
 Instead of pushing the cyan button, say the sum of all numbers up to 5.
@@ -190,6 +189,6 @@ Instead of switching on the robot:
 		try pushing button.
 ```
 
-##Ready For More?
+## Ready For More?
 
 * [Inform 7](http://www.inform7.com/)

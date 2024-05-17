@@ -363,7 +363,7 @@ void OwnedDog::print() const
 {
     Dog::print(); // Chame a função de impressão na classe Dog base de
     std::cout << "Dog is owned by " << owner << "\n";
-    // Prints "Dog is <name> and weights <weight>"
+    // Imprime "Dog is <name> and weights <weight>"
     //        "Dog is owned by <owner>"
 }
 
@@ -607,6 +607,7 @@ h=sum<double>(f,g);
 
 // Deste modo, não precisamos fazer overload nas funções! (:
 ```
+
 Leitura Adicional:
 
 * Uma referência atualizada da linguagem pode ser encontrada em [CPP Reference](http://cppreference.com/w/cpp).

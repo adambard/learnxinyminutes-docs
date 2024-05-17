@@ -15,10 +15,6 @@ Obecnie jest jednym z najbardziej popularnych języków programowania.
 Zakochałem się w Pythonie dzięki porządkowi, jaki utrzymywany jest w kodzie.
 To po prostu wykonywalny pseudokod.
 
-Zapraszam do kontaktu. Złapiecie nas na:
-- kontakt polski: raymon92 [at] [google's email service]
-- kontakt angielski: [@louiedinh](http://twitter.com/louiedinh) lub louiedinh [at] [google's email service]
-
 Uwaga: Ten artykuł odnosi się do wersji Pythona 2.7, ale powinien
 działać w wersjach 2.x. Dla wersji 3.x znajdziesz odpowiedni artykuł na stronie głównej.
 

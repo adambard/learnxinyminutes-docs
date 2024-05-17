@@ -379,7 +379,6 @@ fun useObject() {
     ObjectExample.hello()
     val someRef: Any = ObjectExample // podem fer servir el nom de l'objecte
 }
-
 ```
 
 ### Per llegir més

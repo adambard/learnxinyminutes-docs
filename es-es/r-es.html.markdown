@@ -15,8 +15,7 @@ gráficas. También puedes ejecutar comandos `R` dentro de un documento de
 LaTeX.
 
 ```r
-
-# Los comentariso inician con símbolos numéricos.
+# Los comentarios inician con símbolos numéricos.
 
 # No puedes hacer comentarios de múltiples líneas
 # pero puedes agrupar múltiples comentarios de esta manera. 
@@ -706,9 +705,6 @@ pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()
 # ggplot2 tiene una excelente documentación 
 # (disponible en http://docs.ggplot2.org/current/)
-
-
-
 ```
 
 ## ¿Cómo obtengo R?

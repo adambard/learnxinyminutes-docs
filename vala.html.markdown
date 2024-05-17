@@ -12,7 +12,6 @@ Vala has aspects of Java and C#, so it'll be natural to those who know either.
 [Read more here.](https://wiki.gnome.org/Projects/Vala)
 
 ```vala
-
 // Single line comment
 
 /* Multiline
@@ -492,8 +491,8 @@ int indirection_demo = more_pointer*; // indirection
 // posix
 // dova
 // Use "--profile=whatever" when compiling.
-
 ```
+
 * More [Vala documentation](https://valadoc.org/).
 * [Alternate construction syntax](https://wiki.gnome.org/Projects/Vala/Tutorial#GObject-Style_Construction) similar to GObject
 * More on [contract programming](http://en.wikipedia.org/wiki/Contract_programming)

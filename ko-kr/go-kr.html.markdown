@@ -81,7 +81,7 @@ func learnTypes() {
     // non-ASCII 리터럴. Go 소스는 UTF-8로 작성해야 한다.
     g := 'Σ' // 유니코드 코드 포인트를 담고 있고, int32 타입의 가칭(alias)인 rune 타입
 
-    f := 3.14195 // float64, an IEEE-754 64-bit 부동소수 타입
+    f := 3.14159 // float64, an IEEE-754 64-bit 부동소수 타입
     c := 3 + 4i  // complex128, 내부적으로는 두 개의 float64 타입으로 표현됨
 
     // 초기값과 함께 사용하는 var 키워드.
@@ -332,15 +332,15 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 ## 더 읽어볼 것들
 
-Go에 대한 모든 것들은 [Go 공식 웹 사이트](http://golang.org/)를 참고하자.
+Go에 대한 모든 것들은 [Go 공식 웹 사이트](https://go.dev/)를 참고하자.
 여기에는 따라해볼 튜토리얼, 웹 기반의 인터랙티브 실행환경과 많은 읽을거리들이 있다.
 
 Go 언어 자체에 대한 스펙도 읽어보기를 적극 추천한다. 읽기 쉽게 되어있고
 그리 길지는 않다.
 
-Go 소스코드에 대해 좀더 알아보고 싶다면 [Go 표준 라이브러리](http://golang.org/src/pkg/)를
+Go 소스코드에 대해 좀더 알아보고 싶다면 [Go 표준 라이브러리](https://go.dev/src/)를
 분석해보기 바란다. 이해하기 쉽게 문서화되어 있고, Go 스타일 그리고 Go에서의
-관례 배우기에 가장 좋은 방법일 것이다. 또는 [문서](http://golang.org/pkg/) 안에서
+관례 배우기에 가장 좋은 방법일 것이다. 또는 [문서](https://go.dev/pkg/) 안에서
 함수 이름 하나를 클릭해보면 소스코드를 브라우저에서 살펴볼 수도 있다.
 
 Go를 배울수 있는 또하나의 좋은 방법은 [Go by example](https://gobyexample.com/).

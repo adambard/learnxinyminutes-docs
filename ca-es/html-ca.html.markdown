@@ -160,7 +160,6 @@ article tracta principalment la sintaxi de l'HTML i alguns consells útils.
 		<td>Segona fila, segona columna</td>
 	</tr>
 </table>
-
 ```
 
 ## Ús

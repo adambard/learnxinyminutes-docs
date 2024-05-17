@@ -301,7 +301,6 @@ class Samuel
 
 $gato = new Samuel();
 $gato instanceof InterfaceGatinho === true; // True
-
 ```
 
 ## Mais informações

@@ -9,14 +9,14 @@ lang: de-de
 ---
 
 Tcl wurde kreiert von [John Ousterhout](http://wiki.tcl.tk/John Ousterout) als
-eine wiederverwendbare Script-Sprache für Chip-Design Werkzeuge die er kreiert
+eine wiederverwendbare Scriptsprache für Chip-Design Werkzeuge die er kreiert
 hat. Im Jahre 1997 wurde er mit dem [ACM Software System
 Award](http://en.wikipedia.org/wiki/ACM_Software_System_Award) für Tcl
-ausgezeichnet. Tcl kann sowohl als eingebettete Scipt-Sprache als auch als
+ausgezeichnet. Tcl kann sowohl als eingebettete Scriptsprache als auch als
 allgemeine Programmier-Sprache verwendet werden. Tcl kann auch als portable
 C-Bibliothek verwendet werden. Sogar in Fällen in denen die Script-Fähigkeiten
 nicht nötig sind. Denn Tcl stellt Daten-Strukturen wie dynamische Zeichenketten,
-Listen und Hash-Tabellen bereit. Die C-Bilbiothek stellt auch portable
+Listen und Hash-Tabellen bereit. Die C-Bibliothek stellt auch portable
 Funktionen zur Verfügung: Laden von dynamischen Bibliotheken, Zeichenketten
 formatierung und Code Konversion, Dateisystem Operationen, Netzwerk Operationen
 und mehr.
@@ -45,17 +45,17 @@ Beispiel: Der "list" Befehl arbeitet mit diesen internen gepufferten
 Repräsentationen. Tcl kümmert sich selbständig darum die String-Repräsentationen
 zu aktualisieren, falls dies im Skript benötigt werden sollten. Das Kopieren-
 beim-Schreiben-Design von Tcl erlaubt es Skript-Authoren mit großen Daten-
-Strukturen zu arbeiten ohne zuätzlichen Speicher-Overhead. Prozeduren werden
-automatisch byte-kompiliert außer sie verwenden dynamsiche Befehle wie zum
+Strukturen zu arbeiten ohne zusätzlichen Speicher-Overhead. Prozeduren werden
+automatisch byte-kompiliert außer sie verwenden dynamische Befehle wie zum
 Beispiel "uplevel", "upvar und "trace".
 
-Es ist eine freude in Tcl zu programmieren. Hacker-Typen werden gefallen daran
+Es ist eine Freude in Tcl zu programmieren. Hacker-Typen werden gefallen daran
 finden, wenn sie Lisp, Forth oder Smalltalk interessant finden. Tcl wird auch
-Ingenieuren und Wissenshaftlern gefallen die nur den Job erledigen wollen,
+Ingenieuren und Wissenschaftlern gefallen die nur den Job erledigen wollen,
 und zwar mit Werkzeugen die sich ihrem Willen anpassen. Bei Tcl ist jegliche
-funktionalität in Befehlen ausgeführt, selbst Dinge wie Schleifen und
+Funktionalität in Befehlen ausgeführt, selbst Dinge wie Schleifen und
 Mathematische-Funktionen die bei anderen Sprachen normalerweise Teil der Syntax
-sind. Das erlaubt Tcl in den Hintergrund von Domänen spezischen Sprachen zu
+sind. Das erlaubt Tcl in den Hintergrund von Domänen spezifischen Sprachen zu
 treten die das jeweilige Projekt gerade benötigt. Die Tcl-Syntax ist sehr
 leichtgewichtig. Sie ist selbst leichtgewichtiger als die Syntax von Lisp.
 Tcl steht dir einfach nicht im Weg.
@@ -76,7 +76,7 @@ Tcl steht dir einfach nicht im Weg.
 # Eckige-Klammern sind nur Quoting-Mechanismen, keine Code-Block-Konstruktoren
 # und auch keine Listen-Konstruktoren. In Tcl gibt es diese beiden Dinge nicht.
 # Eckige-Klammern werden verwendet um Spezial-Zeichen in Prozeduren zu escapen
-# und in Zeichenketten die als Listen formattiert sind.
+# und in Zeichenketten die als Listen formatiert sind.
 
 ################################################################################
 ## 2. Syntax 
@@ -85,7 +85,7 @@ Tcl steht dir einfach nicht im Weg.
 # Jede Zeile ist ein Befehl. Das erste Wort ist der Name des Befehls, jedes
 # weitere Wort ist ein Argument des Befehls. Wörter sind begrenzt durch
 # Leerzeichen. Da jedes Wort auch ein String ist, sind keine speziellen
-# auszeichnungen wie Anführungs-Zeichen, Klammern oder Backslashes nötig.
+# Auszeichnungen wie Anführungs-Zeichen, Klammern oder Backslashes nötig.
 # Selbst wenn Anführungs-Zeichen verwendet werden, denn sie sind ja keine
 # String-Konstruktoren, sondern nur Escape-Zeichen.
 
@@ -462,8 +462,6 @@ puts [countdown 1] ;# -> 1
 puts [countdown 1] ;# -> 0 
 puts [coundown 1] ;# -> invalid command name "countdown1"
 puts [countdown 2] ;# -> 1 
-
-
 ```
 
 ## Referenzen

@@ -13,7 +13,6 @@ translations:
 Groovy - Un llenguatge dinàmic per la plataforma Java [Llegir-ne més.](http://www.groovy-lang.org/)
 
 ```groovy
-
 /*
   Posa'l en marxa tu mateix:
 
@@ -413,8 +412,6 @@ int sum(int x, int y) {
 }
 
 assert sum(2,5) == 7
-
-
 ```
 
 ## Per aprendre'n més

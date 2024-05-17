@@ -20,7 +20,6 @@ La syntaxe de F# est différente des langages héritant de C.
 Si vous voulez essayer le code ci-dessous, vous pouvez vous rendre sur [tryfsharp.org](http://www.tryfsharp.org/Create) et le coller dans le [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
 
 ```fsharp
-
 // Les commentaires d'une seule ligne commencent par un double slash
 (* Les commentaires multilignes utilise les paires (* . . . *)
 
@@ -622,7 +621,6 @@ module NetCompatibilityExamples =
             printfn "Click event with arg=%O" arg)
 
     myButton.TestEvent("Hello World!")
-
 ```
 
 ## Plus d'information

@@ -13,9 +13,6 @@ devenit astăzi unul din cele mai populare limbaje de programare.
 M-am indrăgostit de Python pentru claritatea sa sintactică. Python este aproape
 pseudocod executabil.
 
-Opinia dumneavoastră este binevenită! Puteţi sa imi scrieţi la [@ociule](http://twitter.com/ociule)
-sau ociule [at] [google's email service]
-
 Notă: Acest articol descrie Python 2.7, dar este util şi pentru Python 2.x.
 O versiune Python 3 va apărea în curând, în limba engleză mai întâi.
 
@@ -471,8 +468,6 @@ math.sqrt(16) == m.sqrt(16) #=> True
 # Cu "dir" inspectăm ce funcţii conţine un modul
 import math
 dir(math)
-
-
 ```
 
 ## Doriţi mai mult?

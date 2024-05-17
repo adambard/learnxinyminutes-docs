@@ -854,7 +854,6 @@ public class EnumTest {
 // Enum types are much more powerful than we show above. 
 // The enum body can include methods and other fields.
 // You can see more at https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
-
 ```
 
 ## مطالب بیشتر
@@ -895,7 +894,7 @@ public class EnumTest {
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
-* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
+* [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
 
 * [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 

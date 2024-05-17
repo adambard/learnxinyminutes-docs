@@ -168,12 +168,9 @@ let greeting = `Hi ${name}, how are you?`;
 // 有多行内容的模板字符串
 let multiline = `This is an example
 of a multiline string`;
-
 ```
 
 ## 参考资料
- * [TypeScript官网](http://www.typescriptlang.org/)
- * [TypeScript语言规范说明书(pdf)](http://go.microsoft.com/fwlink/?LinkId=267238)
- * [Anders Hejlsberg - TypeScript介绍](http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [GitHub源码](https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - 类型定义仓库](http://definitelytyped.org/)
+
+* [TypeScript官网](https://www.typescriptlang.org/)
+* [GitHub源码](https://github.com/microsoft/TypeScript)

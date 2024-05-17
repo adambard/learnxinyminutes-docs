@@ -101,7 +101,6 @@ composer update phpunit/phpunit
 # If you wish to migrate a package to a newer version preference, you may need to remove the older package and its dependencies first.
 composer remove --dev phpunit/phpunit
 composer require --dev phpunit/phpunit:^5.0
-
 ```
 
 ## Autoloader
@@ -127,6 +126,7 @@ In `composer.json`, add a 'autoload' field:
   }
 }
 ```
+
 This will tell the autoloader to look for anything in the `\Acme\` namespace within the `src` folder.
 
 You can also [use PSR-0, a Classmap or just a list of files to include](https://getcomposer.org/doc/04-schema.md#autoload). There is also the `autoload-dev` field for development-only namespaces.

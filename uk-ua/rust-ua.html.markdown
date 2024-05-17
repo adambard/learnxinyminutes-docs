@@ -327,5 +327,5 @@ fn main() {
 irc.mozilla.org також завжди раді допомогти новачкам.
 
 Ви можете спробувати можливості Rust за допомогою онлайн-компілятора на сторінці
-[Rust playpen](http://play.rust-lang.org) або 
+[Rust Playground](https://play.rust-lang.org) або 
 [Rust website](http://rust-lang.org).

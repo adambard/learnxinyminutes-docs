@@ -219,7 +219,7 @@ Die Datei .vimrc kann verwendet werden, um Vim beim Starten zu konfigurieren
 
 Hier ist eine Beispiel ~/.vimrc Datei:
 
-```
+```vim
 " Beispiel ~/.vimrc
 
 " Erforderlich für vim, dass es iMproved ist.

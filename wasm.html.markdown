@@ -308,5 +308,4 @@ contributors:
   )
   (export "sum_local" (func $sum_local))
 )
-
 ```

@@ -21,14 +21,13 @@ LiveScript 目前已释出稳定版本，开发中的新版本将会加入更多
 [@kurisuwhyte](https://twitter.com/kurisuwhyte) 与我连系 :)
 
 
-```coffeescript
+```livescript
 # 与 CoffeeScript 一样，LiveScript 使用 # 单行注解。
 
 /*
  多行注解与 C 相同。使用注解可以避免被当成 JavaScript 输出。
 */
-```
-```coffeescript
+
 # 语法的部份，LiveScript 使用缩进取代 {} 来定义区块，
 # 使用空白取代 () 来执行函数。
 
