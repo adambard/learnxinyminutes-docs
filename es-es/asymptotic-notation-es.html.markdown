@@ -117,6 +117,7 @@ Echemos un vistazo a la definición de O-grande.
 ```
 3log n + 100 <= c * log n  
 ```
+
 ¿Hay alguna constante c que satisface esto para todo n? 
 
 ```

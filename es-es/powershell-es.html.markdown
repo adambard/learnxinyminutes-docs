@@ -34,7 +34,7 @@ $PSVersionTable
 
 Para obtener ayuda:
 
-```
+```powershell
 # Si necesita encontrar algún comando
 Get-Command about_* # tiene por abreviación (o alias): gcm
 Get-Command -Verb Add # lista todos los comandos que tienen por verbo 'Add'
@@ -51,7 +51,7 @@ Update-Help # Actualiza la ayuda (debe ser ejecutado en una consola elevada como
 
 Acá inicia el tutorial:
 
-```
+```powershell
 # Como ya lo notó, los comentarios empiezan con #
 
 # Ejemplo de un simple hola mundo:
@@ -299,7 +299,7 @@ $Shortcut.Save()
 
 Configurando el shell
 
-```
+```powershell
 # $Profile es la ruta completa para su `Microsoft.PowerShell_profile.ps1`
 # Todo el código alojado allí será ejecutado cuando se ejecuta una nueva sesión de PS 
 if (-not (Test-Path $Profile)) {

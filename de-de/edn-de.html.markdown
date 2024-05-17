@@ -102,7 +102,6 @@ false
 (edn/read-string {:readers {'MyYelpClone/MenuItem map->menu-item}}
                  "#MyYelpClone/MenuItem {:name \"eggs-benedict\" :rating 10}")
 ; -> #user.MenuItem{:name "eggs-benedict", :rating 10}
-
 ```
 
 # Referenzen

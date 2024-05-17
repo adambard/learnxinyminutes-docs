@@ -63,8 +63,6 @@ informatia, ci doar o transporta.
   
 <!-- Dedesubt, un element cu doua atribute -->
 <file type="gif" id="4293">computer.gif</file>
-
-
 ```
 
 * Document bine formatat x Validare
@@ -79,7 +77,6 @@ contextul documentului.
 Cu acest tool poti verifica datele XML in afara codului aplicatiei.
 
 ```xml
-
 <!-- Dedesubt este o versiune simplificata a documentului librarie, 
   cu aditia definitiei DTD.-->
 

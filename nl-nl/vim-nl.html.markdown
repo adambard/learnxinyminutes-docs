@@ -19,7 +19,7 @@ navigatie en aanpassingen in het doelbestand.
 
 ## De Basis van het navigeren in Vim
 
-``` Vim
+```
     vim <bestandsnaam> # Open <bestandsnaam> in vim
     :help <onderwerp>  # Open ingebouwde documentatie over <onderwerp> als
     deze bestaat
@@ -106,7 +106,7 @@ gebruikt om opdrachten te geven en te navigeren
 tekst
 * Ex modus - Wordt gebruikt voor het uitvoeren van opdrachten met `:`
 
-``` Vim
+```
     i                # Zet vim in de Command modus voor de cursor positie
     a                # Zet vim in de Insert modus na de cursor positie (append)
     v                # Zet vim in de Visual modus
@@ -135,7 +135,7 @@ Noun - Het object waarop de actie uitgevoerd wordt
 
 Een paar belangrijke voorbeelden van 'Verbs', 'Modifiers', en 'Nouns' zijn:
 
-``` Vim
+```
     # 'Verbs'
 
     d       # Verwijder
@@ -173,7 +173,7 @@ Een paar belangrijke voorbeelden van 'Verbs', 'Modifiers', en 'Nouns' zijn:
 
 ## Een aantal afkortingen en trucs
 
-``` Vim
+```
     >               # Verspring de selectie met 1 blok
     <               # Verspring de selectie met 1 blok terug
     :earlier 15     # Zet het document terug naar de situatie van 15 minuten
@@ -206,7 +206,7 @@ macro dan worden **alle** acties opgenomen, totdat je stopt met opnemen. Als de
 macro uitgevoerd wordt, worden alle acties in de zelfde volgorde als tijdens het
 opnemen uitgevoerd.
 
-``` Vim
+```
     qa  # Start met het opnemen van de makro genaamd 'a'
     q   # Stop met opnemen
     @a  # Gebruik macro 'a'
@@ -217,7 +217,7 @@ opnemen uitgevoerd.
 Het .vimrc bestand kan gebruikt worden voor het opslaan van een
 standaardconfiguratie van Vim. Het bestand wordt opgeslagen in de home map van de gebruiker. Hieronder staat een voorbeeld van een .vimrc bestand.
 
-``` Vim
+```vim
 " Voorbeeld ~/.vimrc
 " 2015.10
 

@@ -17,7 +17,6 @@ will require "paste" mode (`:paste` followed by multiple lines, terminated by
 ^D).
 
 ```haskell
-
 --
 -- 1. Primitive datatypes that corresponds to their JavaScript
 -- equivalents at runtime.
@@ -207,5 +206,4 @@ product (1..10) -- 3628800
 -- Testing with predicate
 any even [1,2,3] -- true
 all even [1,2,3] -- false
-
 ```

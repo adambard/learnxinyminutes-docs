@@ -335,7 +335,6 @@ fib:test()
 % ```
 % rebar eunit
 % ```
-
 ```
 
 ## References

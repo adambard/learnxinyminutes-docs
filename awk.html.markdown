@@ -209,7 +209,7 @@ function string_functions(    localvar, arr) {
     # Both return number of matches replaced
     localvar = "fooooobar";
     sub("fo+", "Meet me at the ", localvar); # localvar => "Meet me at the bar"
-    gsub("e", ".", localvar); # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar); # localvar => "M..t m. at th. bar"
 
     # Search for a string that matches a regular expression
     # index() does the same thing, but doesn't allow a regular expression
@@ -375,7 +375,6 @@ END {
     if (nlines)
         print "The average age for " name " is " sum / nlines;
 }
-
 ```
 
 Further Reading:

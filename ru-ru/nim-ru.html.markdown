@@ -3,7 +3,7 @@ language: Nim
 filename: learnNim-ru.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
-    - ["Dennis Felsing", "http://felsin9.de/nnis/"]
+    - ["Dennis Felsing", "https://dennis.felsing.org"]
 translators:
     - ["Nomadic", "https://github.com/n0madic"]
     - ["dvska", "https://github.com/dvska"]

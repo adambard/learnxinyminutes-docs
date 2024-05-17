@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQT
+category: framework
+framework: PyQT
 filename: learnpyqt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
@@ -19,7 +19,7 @@ lang: zh-cn
 ```python
 import sys
 from PyQt4 import QtGui
-    
+
 def window():
     # 创建应用对象
     app = QtGui.QApplication(sys.argv)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
 为了运用 pyqt 中一些更高级的功能，我们需要开始学习使用其他控件。下文演示了如何弹出对话框，该对话框在用户确认操作或输入信息等情况下经常用到。
 
-```Python 
+```python
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -62,7 +62,7 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-    
+
 # 对话框窗口创建函数
 # 当窗口中的按钮被点击时退出本程序
 def showdialog():

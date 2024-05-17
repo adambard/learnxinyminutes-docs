@@ -41,11 +41,11 @@ package main
 // La instrucción `import` declara los paquetes de bibliotecas referidos
 // en este fichero.
 import (
-	"fmt"      // Un paquete en la biblioteca estándar de Go.
+	"fmt"       // Un paquete en la biblioteca estándar de Go.
 	"io/ioutil" // Implementa algunas útiles funciones de E/S.
-	m "math"   // Biblioteca de matemáticas con alias local m.
-	"net/http" // Sí, ¡un servidor web!
-	"strconv"  // Conversiones de cadenas.
+	m "math"    // Biblioteca de matemáticas con alias local m.
+	"net/http"  // Sí, ¡un servidor web!
+	"strconv"   // Conversiones de cadenas.
 )
 
 // Definición de una función. `main` es especial. Es el punto de entrada
@@ -63,7 +63,7 @@ func main() {
 // Si no hay parámetros, los paréntesis siguen siendo obligatorios.
 func másAlláDelHola() {
 	var x int // Declaración de una variable.
- 	          // Las variables se deben declarar antes de utilizarlas.
+	          // Las variables se deben declarar antes de utilizarlas.
 	x = 3     // Asignación de variable.
 	// Declaración "corta" con := para inferir el tipo, declarar y asignar.
 	y := 4
@@ -76,7 +76,7 @@ func másAlláDelHola() {
 // Las funciones pueden tener parámetros y (¡múltiples!) valores de
 // retorno.
 func aprendeMúltiple(x, y int) (suma, producto int) {
-    return x + y, x * y // Devuelve dos valores.
+	return x + y, x * y // Devuelve dos valores.
 }
 
 // Algunos tipos incorporados y literales.
@@ -88,7 +88,7 @@ saltos de línea.` // mismo tipo cadena
 
 	// Literal no ASCII. Los ficheros fuente de Go son UTF-8.
 	g := 'Σ' // Tipo rune, un alias de int32, alberga un carácter unicode.
-	f := 3.14195 // float64, el estándar IEEE-754 de coma flotante 64-bit.
+	f := 3.14159 // float64, el estándar IEEE-754 de coma flotante 64-bit.
 	c := 3 + 4i  // complex128, representado internamente por dos float64.
 	// Sintaxis var con iniciadores.
 	var u uint = 7 // Sin signo, pero la implementación depende del tamaño
@@ -113,7 +113,7 @@ saltos de línea.` // mismo tipo cadena
 	// Para añadir elementos a un sector, se utiliza la función incorporada
 	// append().
 	// El primer argumento es el sector al que se está anexando. Comúnmente,
-	// la variable del arreglo se actualiza en su lugar, como en el 
+	// la variable del arreglo se actualiza en su lugar, como en el
 	// siguiente ejemplo.
 	sec := []int{1, 2 , 3}      // El resultado es un sector de longitud 3.
 	sec = append(sec, 4, 5, 6)  // Añade 3 elementos. El sector ahora tiene una
@@ -222,7 +222,7 @@ func aprendeControlDeFlujo() {
 	// primero, luego comprobar y > x.
 	if y := cálculoCaro(); y > x {
 		x = y
-    }
+	}
 	// Las funciones literales son "cierres".
 	granX := func() bool {
 		return x > 100 // Referencia a x declarada encima de la instrucción
@@ -398,7 +398,7 @@ func aprendeConcurrencia() {
 
 // Una simple función del paquete http inicia un servidor web.
 func aprendeProgramaciónWeb() {
-// El primer parámetro es la direccinón TCP a la que escuchar.
+	// El primer parámetro es la direccinón TCP a la que escuchar.
 	// El segundo parámetro es una interfaz, concretamente http.Handler.
 	go func() {
 		err := http.ListenAndServe(":8080", par{})
@@ -425,26 +425,33 @@ func consultaAlServidor() {
 ## Más información
 
 La raíz de todas las cosas sobre Go es el
-[sitio web oficial de Go](http://golang.org/).
+[sitio web oficial de Go](https://go.dev/).
 Allí puedes seguir el tutorial, jugar interactivamente y leer mucho más.
+Aparte del recorrido, [la documentación](https://golang.org/doc/) tiene
+información sobre cómo escribir código efectivo y limpio en Go, documentación de
+paquetes y comandos, y el historial de versiones.
 
-La definición del lenguaje es altamente recomendada.  Es fácil de leer y
-sorprendentemente corta (como la definición del lenguaje Go en estos
-días).
+La [definición del lenguaje](https://golang.org/ref/spec) es altamente recomendada.
+Es fácil de leer y sorprendentemente corta
+(relativo a las definiciones de lenguajes en estos días).
 
 Puedes jugar con el código en el
-[parque de diversiones Go](https://play.golang.org/p/ncRC2Zevag).  ¡Trata
-de cambiarlo y ejecutarlo desde tu navegador!  Ten en cuenta que puedes
-utilizar [https://play.golang.org]( https://play.golang.org) como un
-[REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) para probar
-cosas y el código en el navegador, sin ni siquiera instalar Go.
+[parque de diversiones Go](https://go.dev/play/p/ncRC2Zevag). ¡Trata
+de cambiarlo y ejecutarlo desde tu navegador! Ten en cuenta que puedes
+utilizar [https://go.dev/play/](https://go.dev/play/) como un
+[REPL](https://es.wikipedia.org/wiki/REPL) para probar
+cosas y el código en el navegador, sin tener que instalar Go.
 
 En la lista de lecturas para estudiantes de Go está el
-[código fuente de la biblioteca estándar](http://golang.org/src/pkg/). 
-Ampliamente documentado, que demuestra lo mejor del legible y comprensible
-Go, con su característico estilo y modismos.  ¡O puedes hacer clic en un
-nombre de función en [la documentación](http://golang.org/pkg/) y
+[código fuente de la biblioteca estándar](https://go.dev/src/). 
+Ampliamente documentado, demuestra lo mejor del legible y comprensible
+Go, con su característico estilo y modismos. ¡O puedes hacer clic en un
+nombre de función en [la documentación](https://pkg.go.dev/std) y
 aparecerá el código fuente!
 
-Otro gran recurso para aprender Go está en
-[Go con ejemplos](http://goconejemplos.com/).
+Go Mobile provee soporte para plataformas móbiles (Android y iOS).
+Puedes escribir aplicaciones móbiles completamente en Go
+o escribir una biblioteca con bindings de un paquete de Go,
+que pueden invocarse en Java (en Android) y Objective-C (en iOS).
+Visita la [página de Go Mobile](https://go.dev/wiki/Mobile)
+para más información.

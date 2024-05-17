@@ -230,4 +230,4 @@ DEL 1 PRINT . /# [1, 3] #/
 ## Extra information
 
 - [MontiLang.ml](http://montilang.ml/)
-- [Github Page](https://github.com/lduck11007/MontiLang)
+- [GitHub Page](https://github.com/lduck11007/MontiLang)

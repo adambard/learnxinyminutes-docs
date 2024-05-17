@@ -6,6 +6,7 @@ contributors:
 filename: learnphp-id.php
 translators:
   - ["Ahmad Zafrullah", "https://github.com/23Pstars"]
+  - ["Cendy", "https://cendy.co"]
 lang: id-id
 ---
 
@@ -24,7 +25,7 @@ Dokumen ini menjelaskan tentang PHP5 keatas.
      membuat komentar untuk banyak-baris sekaligus.
 */
 
-// Gunakan "echo" or "print" untuk menampilkan sesuatu
+// Gunakan "echo" atau "print" untuk menampilkan sesuatu
 print('Halo '); // Menampilkan "Halo " tanpa baris baru
 
 // () boleh tidak digunakan dalam menggunakan "print" dan "echo"
@@ -41,9 +42,9 @@ Halo Dunia, lagi!
  * Tipe Data & Variabel
  */
 
-// Variabel diawali dengan simnbol $.
+// Variabel diawali dengan simbol $.
 // Nama variabel yang benar diawali dengan huruf atau garis-bawah,
-// diikuti dengan beberapa huruf, angka, dan garis-bawah lainnya.
+// diikuti dengan beberapa huruf, angka, ataupun garis bawah.
 
 // Nilai Boolean adalah case-insensitive
 $boolean = true;  // atau TRUE atau True
@@ -74,14 +75,14 @@ $pembagian      = 2 / 1; // 2
 // Aritmatika singkat
 $angka = 0;
 $angka += 1;        // Menjumlahkan $angka dengan 1
-echo $angka++;      // Menampilkan 1 (dijumlahkan dengan 1 setelah ditampilkan)
-echo ++$angka;      // Menampilkan 3 (dijumlahkan dengan 1 sebelum ditampilkan)
+echo $angka++;      // Menampilkan 1 (dijumlahkan dengan 1 setelah dievaluasi)
+echo ++$angka;      // Menampilkan 3 (dijumlahkan dengan 1 sebelum dievaluasi)
 $angka /= $float;   // Membagi dan menyimpan hasil pembagian pada $angka;
 
 // String biasanya diawali dan ditutup dengan petik satu.
 $sgl_quotes = '$String'; // => '$String'
 
-// Hindari menggunakan petik dua kecuali menyertakan variabel lain
+// Hindari menggunakan petik dua kecuali untuk menyertakan variabel lain
 $dbl_quotes = "Ini adalah $sgl_quotes."; // => 'Ini adalah $String.'
 
 // Karakter khusus hanya berlaku pada petik dua
@@ -103,10 +104,10 @@ Banyak baris
 $sgl_quotes
 END;
 
-// Menyambung string dapat dilakukan menggunakan .
+// Menyambungkan String dapat dilakukan dengan menggunakan .
 echo 'String ini ' . 'tersambung';
 
-// String dapat dijadikan parameter pada "echo"
+// Beberapa String dapat dijadikan sebagai parameter untuk "echo"
 echo 'Banyak', 'Parameter', 'String';  // Menampilkan 'BanyakParameterString'
 
 
@@ -118,7 +119,7 @@ echo 'Banyak', 'Parameter', 'String';  // Menampilkan 'BanyakParameterString'
 // dan tidak bisa diganti/rubah selama program berjalan!
 
 // Nama konstan yang benar diawali dengan huruf dan garis-bawah,
-// diikuti dengan beberapa huruf, angka, atau garis-bawah.
+// diikuti dengan beberapa huruf, angka, ataupun garis-bawah.
 define("FOO", "sesuatu");
 
 // Mengakses konstan memungkinkan untuk dapat dipanggil tanpa menggunakan simbol $
@@ -207,7 +208,7 @@ $b = '0';
 $c = '1';
 $d = '1';
 
-// menegaskan lemparan sebuah peringatan jika pernyataan tidak benar
+// assert akan melempar sebuah peringatan jika pernyataan tidak benar
 
 // Perbandingan berikut akan selalu benar, meskipun memiliki tipe yang berbeda.
 assert($a == $b); // kesamaan
@@ -520,8 +521,8 @@ class KelasSaya
     // Properti harus mendeklarasikan hak aksesnya
     public $properti    = 'publik';
     public $PropertiInstansi;
-    protected $variabel = 'terlindungi'; // Dapat diakses dari kelas itu sendiri dan kelas turunannya
-    private $variabel   = 'tersembunyi';   // Hanya dapat diakses dari kelas itu sendiri
+    protected $terlindungi = 'terlindungi'; // Dapat diakses dari kelas itu sendiri dan kelas turunannya
+    private $terprivat   = 'tersembunyi';   // Hanya dapat diakses dari kelas itu sendiri
 
     // Membuat konstruktor dengan perintah __construct
     public function __construct($PropertiInstansi) {
@@ -538,6 +539,21 @@ class KelasSaya
     // Perintah "final" membuat sebuah fungsi tidak dapat di-override oleh kelas turunannya
     final function tidakDapatDiOverride()
     {
+    }
+
+    // Metode ajaib
+
+    // apa yang dilakukan jika Objek diperlakukan sebagai String
+    public function __toString()
+    {
+        return $properti;
+    }
+
+    // Berlawanan dari __construct()
+    // Dipanggil saat objek tidak lagi di referensi
+    public function __destruct()
+    {
+        print "Destroying";
     }
 
 /*
@@ -567,12 +583,19 @@ echo $kelas_saya->properti;             // => "publik"
 echo $kelas_saya->propertiInstansi;     // => "Sebuah properti instansi"
 $kelas_saya->methodSaya();              // => "KelasSaya"
 
+// Operasi Nullsafe semenjak PHP 8
+// Kamu bisa menggunakan ini jika kamu tidak yakin apakah $kelas_saya memiliki sebuah properti/metode
+// Ini bisa digunakan bersamaan dengan operator nullish coalesce untuk memastikan value
+echo $kelas_saya->properti_invalid // Akan muncul sebuah error
+echo $kelas_saya?->properti_invalid // => NULL
+echo $kelas_saya?->properti_invalid ?? "publik" // => "publik"
+
 // Menurunkan kelas menggunakan kata kunci "extends"
 class KelasSayaLainnya extends KelasSaya
 {
     function tampilkanPropertiTerlindungi()
     {
-        echo $this->properti;
+        echo $this->terlindungi;
     }
 
     // "override" terhadap sebuah method
@@ -739,9 +762,9 @@ class KelasInduk {
     }
     public static function coba() {
         // kata kunci "self" merujuk pada method yang berada dalam satu kelas
-        self::who();
+        self::siapa();
         // kata kunci "static" merujuk pada method yang berada di kelas dimana method itu dijalankan
-        static::who();
+        static::siapa();
     }
 }
 
@@ -757,7 +780,7 @@ class KelasAnak extends KelasInduk {
     }
 }
 
-KelasAnak::tes();
+KelasAnak::coba();
 /*
 Ini adalah KelasInduk
 Tapi ini adalah KelasAnak
@@ -831,7 +854,6 @@ try {
 } catch (ExceptionSaya $e) {
     // Penanganan untuk exception khusus
 }
-
 ```
 
 ## Informasi lainnya

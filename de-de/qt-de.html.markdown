@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: Qt Framework
+category: framework
+framework: Qt Framework
 language: C++
 filename: learnqt-de.cpp
 contributors:
@@ -10,9 +10,9 @@ translators:
 lang: de-de    
 ---
 
-**Qt** ist ein weithin bekanntes Framework zum Entwickeln von cross-platform Software,
-die auf verschiedenen Hard- und Softwareplatformen mit wenig oder keinen Veränderungen im Code läuft.
-Dabei besitzt man die Power und Geschiwindigkeit von nativen Anwendungen.
+**Qt** ist ein weithin bekanntes Framework zum Entwickeln von Cross-Platform Software,
+die auf verschiedenen Hard- und Softwareplattformen mit wenig oder keinen Veränderungen im Code läuft.
+Dabei besitzt man die Power und Geschwindigkeit von nativen Anwendungen.
 Obwohl **Qt** ursprünglich in *C++* geschrieben wurde,
 gibt es verschiedene Ports für andere Sprachen: *[PyQt](https://learnxinyminutes.com/docs/pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
 
@@ -29,7 +29,7 @@ Dieses Tutorial zeigt, wie man das in *C++* macht.
 #include <QLineEdit>
 
 int main(int argc, char *argv[]) {
-    // Erstellt ein Objekt um applikationsweit die Resourcen zu managen.
+    // Erstellt ein Objekt um applikationsweit die Ressourcen zu managen.
     QApplication app(argc, argv);
 
     // Erstellt ein Line edit Widget und zeigt es auf dem Bildschirm
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-Die GUI bezogene Teile von **Qt** bestehen aus *Widgets* und den *Verbindungen*
+Die GUI-bezogene Teile von **Qt** bestehen aus *Widgets* und den *Verbindungen*
 dazwischen.
 
 [Lies mehr über Widgets](http://doc.qt.io/qt-5/qtwidgets-index.html)
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
     QDialog dialogWindow;
     dialogWindow.show();
     
-    // Füge ein vertikales Layout hinzu
+    // Füge ein vertikales Layout hinzu.
     QVBoxLayout layout;
     dialogWindow.setLayout(&layout);  
 
@@ -101,7 +101,7 @@ Als Nächstes lernen wir, dass wir nicht nur Standard Widgets verwenden können,
 sondern auch ihr Verhalten mithilfe von Vererbung verändern können.
 Lass uns einen Button erschaffen, der zählt, wie häufig er gedrückt wird.
 Dafür definieren wir unsere eigene Klasse *CounterLabel*.
-Diese muss wegen der speziellen Qt Architektur in einer seperaten Datei deklariert werden.
+Diese muss wegen der speziellen Qt Architektur in einer separaten Datei deklariert werden.
 
 ```c++
 // counterlabel.hpp
@@ -164,10 +164,10 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-Das wars! Natürlich ist das Qt Framework erheblich größer, als der der Teil der in diesem Tutorial behandelt wurde.
+Das wars! Natürlich ist das Qt Framework erheblich größer als der Teil, der in diesem Tutorial behandelt wurde.
 Das heißt, es gibt viel zu lesen und zu üben.
 
-## Further reading
+## Weitere Informationen
 
 - [Qt 4.8 tutorials](http://doc.qt.io/qt-4.8/tutorials.html)
 - [Qt 5 tutorials](http://doc.qt.io/qt-5/qtexamplesandtutorials.html)

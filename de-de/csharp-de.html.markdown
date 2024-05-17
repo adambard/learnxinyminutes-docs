@@ -306,7 +306,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
                 case 3:
                     monthString = "März";
                     break;
-                // Man kann für mehrere Fälle auch das selbe Verhalten
+                // Man kann für mehrere Fälle auch dasselbe Verhalten
                 // definieren. Jeder Block muss aber mit einem break-Statement
                 // abgeschlossen werden. Einzelne Fälle können über
                 // `goto case x` erreicht werden
@@ -327,7 +327,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             // Umwandlung
 
             // von String nach Integer
-            // bei einem Fehler wirft diese Code eine Exception
+            // bei einem Fehler wirft dieser Code eine Exception
             int.Parse("123"); //gibt die Ganzzahl 123 zurück
 
             // TryParse gibt bei einem Fehler den Default-Wert zurück
@@ -359,7 +359,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
             trek.SpeedUp(3); // Es empfiehlt sich immer Getter und Setter zu benutzen
             trek.Cadence = 100;
 
-            // ToString ist eine Konvention über die man üblicherweiser
+            // ToString ist eine Konvention über die man üblicherweise
             // Informationen über eine Instanz erhält
             Console.WriteLine("Infos zu trek: " + trek.ToString());
 
@@ -815,7 +815,7 @@ zur nächsten Zeile, ""Wahnsinn!"", die Massen waren kaum zu bändigen";
         }
     }
 
-    // Interfaces (auch Schnittstellen genant) definieren nur die Signaturen
+    // Interfaces (auch Schnittstellen genannt) definieren nur die Signaturen
     // ihrer Member, enthalten aber auf keinen Fall ihre Implementierung:
     interface IJumpable
     {

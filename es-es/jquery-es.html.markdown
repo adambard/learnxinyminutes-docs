@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: jquery
+category: framework
+framework: jquery
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:
@@ -14,8 +14,6 @@ jQuery es una librería de JavaScript que le ayuda a "hacer más y escribir meno
 Debido a que jQuery es una librería de JavaScript debes [aprender JavaScript primero](https://learnxinyminutes.com/docs/es-es/javascript-es/)
 
 ```js
-
-
 ///////////////////////////////////
 // 1. Selectores
 
@@ -136,6 +134,4 @@ var heights = [];
 $('p').each(function() {
   heights.push($(this).height()); // Añade todas las alturas "p" de la etiqueta a la matriz
 });
-
-
 ```

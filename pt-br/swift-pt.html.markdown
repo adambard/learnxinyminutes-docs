@@ -497,5 +497,4 @@ println(mySquare.sideLength) // 4
 // Troca o comprimento do lado usando um operador personalizado !!!, aumenta o lado por 3
 !!!mySquare
 println(mySquare.sideLength) // 12
-
 ```

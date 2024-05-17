@@ -156,7 +156,6 @@ selektor {
     							ditemukan, peramban menggunakan font berikutnya,
     							demikian secara berturut-turut */
 }
-
 ```
 
 ## Penggunaan
@@ -177,7 +176,6 @@ Namun, sebisa mungkin metode ini dihindari. -->
 Metode ini harus dihindari sebisa mungkin. -->
 <div style='properti:nilai;'>
 </div>
-
 ```
 
 ## Prioritas
@@ -190,7 +188,6 @@ pada elemen dengan prioritas tertentu.
 Dengan susunan CSS:
 
 ```css
-
 /*A*/
 p.class1[attr='nilai']
 
@@ -205,7 +202,6 @@ p {}
 
 /*E*/
 p { properti: nilai !important; }
-
 ```
 
 dan susunan markup:

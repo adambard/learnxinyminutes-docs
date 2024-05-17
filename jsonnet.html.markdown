@@ -127,7 +127,6 @@ assert obj5 == {};
 # a jsonnet document has to evaluate to something
 # be it an object, list, number or just string literal
 "FIN"
-
 ```
 
 ## Further Reading

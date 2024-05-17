@@ -184,12 +184,6 @@ organizations.
       *and then re-run the program. This time the output is:
 
       THE FULL NAME IS: BOB GIBBERISH COBB
-
-
-
-
-
-
 ```
 
 ##Ready For More?

@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: jquery
+category: framework
+framework: jquery
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:
@@ -14,8 +14,6 @@ jQuery是JavaScript的一个函数库，它可以帮你“写更少，做更多�
 正因为jQuery是JavaScript的一个函数库，所以你需要[首先学习JavaScript](https://learnxinyminutes.com/docs/javascript/)
 
 ```js
-
-
 ///////////////////////////////////
 // 1. 选择器
 
@@ -126,6 +124,4 @@ var heights = [];
 $('p').each(function() {
   heights.push($(this).height()); // 把所有p标签的高度加入数组
 });
-
-
 ```

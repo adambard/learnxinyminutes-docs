@@ -417,8 +417,8 @@ g = loadstring('print(343)')  -- Retourne une fonction.
 g()  -- Affiche 343; Rien n'est affiché avant cet appel.
 
 --]]
-
 ```
+
 ## Références
 
 *Les références qui suivent sont en Anglais.*
@@ -444,6 +444,6 @@ exécutez-le avec la commande `lua learn.lua` !
 
 Ce tutoriel a été originalement écrit pour <a href="tylerneylon.com">tylerneylon.com</a> et est aussi 
 disponible en tant que <a href="https://gist.github.com/tylerneylon/5853042">gist</a>.
-Il a été traduit en français par Roland Yonaba (voir son <a href="http://github.com/Yonaba">github</a>).
+Il a été traduit en français par Roland Yonaba (voir son <a href="http://github.com/Yonaba">GitHub</a>).
 
 Amusez-vous bien avec Lua!

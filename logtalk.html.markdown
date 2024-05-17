@@ -1,8 +1,8 @@
 ---
 language: Logtalk
+filename: learnlogtalk.lgt
 contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]
-filename: learnlogtalk.lgt
 ---
 
 Logtalk is an object-oriented logic programming language that extends and leverages Prolog with modern code encapsulation and code reuse mechanisms without compromising its declarative programming features. Logtalk is implemented in highly portable code and can use most modern and standards compliant Prolog implementations as a back-end compiler.
@@ -376,6 +376,9 @@ If the object source code is not available and we need to fix an application run
 After compiling and loading the category into the running application we will now get:
 
 ```logtalk
+?- set_logtalk_flag(complements, allow).
+yes
+
 ?- {patch}.
 yes
 
@@ -384,7 +387,7 @@ bar
 yes
 ```
 
-As hot-patching forcefully breaks encapsulation, there is a `complements` compiler flag that can be set (globally or on a per-object basis) to allow, restrict, or prevent it.
+As hot-patching forcefully breaks encapsulation, the `complements` compiler flag can be set (globally or on a per-object basis) to allow, restrict, or prevent it.
 
 # Parametric objects and categories
 
@@ -460,6 +463,9 @@ Logtalk supports _event-driven programming_ by allowing defining events and moni
 Assuming that the `tracer` object and the `list` object defined earlier are compiled and loaded, we can observe the event handlers in action by sending a message:
 
 ```logtalk
+?- set_logtalk_flag(events, allow).
+yes
+
 ?- list::member(X, [1,2,3]).
 
 call: list <-- member(X, [1,2,3]) from user
@@ -478,10 +484,10 @@ Event-driven programming can be seen as a form of _computational reflection_. Bu
 
 # Lambda expressions
 
-Logtalk supports lambda expressions. Lambda parameters are represented using a list with the `(>>)/2` infix operator connecting them to the lambda. Some simple examples using library meta-predicates:
+Logtalk supports lambda expressions. Lambda parameters are represented using a list with the `(>>)/2` infix operator connecting them to the lambda. Some simple examples using library `meta`:
 
 ```logtalk
-?- {library(metapredicates_loader)}.
+?- {meta(loader)}.
 yes
 
 ?- meta::map([X,Y]>>(Y is 2*X), [1,2,3], Ys).

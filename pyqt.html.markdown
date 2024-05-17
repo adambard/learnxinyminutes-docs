@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQT
+category: framework
+framework: PyQT
 filename: learnpyqt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
@@ -11,25 +11,25 @@ contributors:
 
 This is an adaption on the C++ intro to QT by [Aleksey Kholovchuk](https://github.com/vortexxx192
 ), some of the code examples should result in the same functionality
-this version just having been done using pyqt! 
+this version just having been done using pyqt!
 
 ```python
 import sys
 from PyQt4 import QtGui
-	
+
 def window():
-	# Create an application object 
+	# Create an application object
     app = QtGui.QApplication(sys.argv)
 	# Create a widget where our label will be placed in
     w = QtGui.QWidget()
-	# Add a label to the widget 
+	# Add a label to the widget
     b = QtGui.QLabel(w)
-	# Set some text for the label 
+	# Set some text for the label
     b.setText("Hello World!")
-	# Give some size and placement information 
+	# Give some size and placement information
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
-	# Give our window a nice title 
+	# Give our window a nice title
     w.setWindowTitle("PyQt")
 	# Have everything display
     w.show()
@@ -38,13 +38,12 @@ def window():
 
 if __name__ == '__main__':
     window()
-
 ```
 
-In order to get some of the more advanced features in **pyqt** we need to start looking at building additional elements. 
+In order to get some of the more advanced features in **pyqt** we need to start looking at building additional elements.
 Here we show how to introduce a dialog popup box, useful for asking the user to confirm a decision or to provide information.
 
-```Python 
+```python
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -63,7 +62,7 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-	
+
 # This function should create a dialog window with a button
 # that waits to be clicked and then exits the program
 def showdialog():

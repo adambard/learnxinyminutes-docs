@@ -147,7 +147,6 @@ $ haml input_file.haml output_file.html
 
 :javascript
   console.log('Dies ist ein <script>');
-
 ```
 
 ## Weitere Resourcen

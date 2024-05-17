@@ -48,7 +48,7 @@ echo 'Hello world!'  | " Displays a message
 echo " Hello
     \ world "
 
-echo [1, 
+echo [1,
     \ 2]
 
 echo {
@@ -145,7 +145,7 @@ echo  'Hello world\n'   | " The last two characters are literal
 echo  'Let''s go!'      | " Two single quotes become one quote character
 
 " Single-quote strings take all characters are literal, except two single
-" quotes, which are taken to be a single quote in the string itself. See 
+" quotes, which are taken to be a single quote in the string itself. See
 " |expr-quote| for all possible escape sequences.
 
 " String concatenation
@@ -264,7 +264,7 @@ echo "true" ? 1 : 0   | " This string is parsed to 0, which is false
 " ###########
 "  Variables
 " ###########
-" 
+"
 " Variables are bound within a scope; if no scope is provided a default is
 " chosen by Vim. Use `:let` and `:const` to bind a value and `:unlet` to unbind
 " it.
@@ -325,7 +325,7 @@ let [mother, father; children] = ['Alice', 'Bob', 'Carol', 'Dennis', 'Emily']
 
 " Conditional (|:if|, |:elseif|, |:else|, |:endif|)
 " ###########
-" 
+"
 " Conditions are set between `if` and `endif`. They can be nested.
 
 let condition = v:true

@@ -207,8 +207,6 @@ compares with the actual output of an HDL chip in the hardware simulator!
 |  in  | out  |
 | 0000 | 0001 |
 | 0110 | 0110 | // Error! The chip did not add 1 here, something went wrong.
-
-
 ```
 
 This is incredibly useful as it allows designers to simulate chip logic prior to

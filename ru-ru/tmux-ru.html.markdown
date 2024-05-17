@@ -17,7 +17,6 @@ lang: ru-ru
 
 
 ```
-
   tmux [command]     # Запуск команды 'tmux'
                      # без какой-либо команды создаст новую сессию
 
@@ -51,7 +50,6 @@ lang: ru-ru
      -t "#"          # Завершить конкретную сессию
      -a              # Завершить все сессии
      -a -t "#"       # Завершить все сессии, кроме конкретной
-
 ```
 
 
@@ -107,7 +105,6 @@ lang: ru-ru
 
   M-Up, M-Down         # Изменение размера текущей панели с шагом в пять
   M-Left, M-Right      # колонок
-
 ```
 
 
@@ -236,7 +233,6 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # Требует https://github.com/thewtex/tmux-mem-cpu-load/
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
 
 ### Ссылки
@@ -249,4 +245,4 @@ set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | 
 
 [Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux)
 
-[Отображение CPU/MEM % в статусбаре](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
+[Отображение CPU/MEM % в статус баре](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)
