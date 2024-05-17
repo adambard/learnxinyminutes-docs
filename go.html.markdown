@@ -149,11 +149,14 @@ can include line breaks.` // Same string type.
 	// hash or dictionary types of some other languages.
 	m := map[string]int{"three": 3, "four": 4}
 	m["one"] = 1
-	// if key does not exist in the map, value will be 0 in this case since its map[string]int
+	// Looking up a missing key returns the zero value,
+	// which is 0 in this case, since it's a map[string]int
 	m["key not present"] // 0
-	// quick check if key is present in the map:    
-	if val, ok := m["one"]; ok { // Do something
+	// Check if a key is present in the map like this:
+	if val, ok := m["one"]; ok {
+		// Do something
 	}
+
 	// Unused variables are an error in Go.
 	// The underscore lets you "use" a variable but discard its value.
 	_, _, _, _, _, _, _, _, _, _ = str, s2, g, f, u, pi, n, a5, s4, bs
