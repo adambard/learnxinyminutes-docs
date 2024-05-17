@@ -3,10 +3,9 @@ category: Algorithms & Data Structures
 name: Dynamic Programming
 contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
-filename: dynamic-programming-cn.html.markdown
-lang: zh-cn
 translators:
    - ["EtaoinWu", "https://github.com/EtaoinWu"]
+lang: zh-cn
 ---
 
 # 动态规划

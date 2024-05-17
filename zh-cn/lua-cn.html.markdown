@@ -419,6 +419,6 @@ lua-users.org上的[Lua简明参考](http://lua-users.org/files/wiki_insecure/us
 顺便说一下，整个文件是可运行的Lua; 
 保存为 learn-cn.lua 用命令 `lua learn-cn.lua` 启动吧！
 
-本文首次撰写于 [tylerneylon.com](http://tylerneylon.com) 同时也有 [github gist](https://gist.github.com/tylerneylon/5853042) 版.
+本文首次撰写于 [tylerneylon.com](http://tylerneylon.com) 同时也有 [GitHub gist](https://gist.github.com/tylerneylon/5853042) 版.
 
 使用Lua，欢乐常在！

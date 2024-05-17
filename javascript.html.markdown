@@ -105,6 +105,10 @@ false;
 "1, 2, " + 3; // = "1, 2, 3"
 "Hello " + ["world", "!"]; // = "Hello world,!"
 
+// ...which can result in some weird behaviour...
+13 + !0; // 14
+"13" + !0; // '13true'
+
 // and are compared with < and >
 "a" < "b"; // = true
 
@@ -115,10 +119,6 @@ null == undefined; // = true
 // ...unless you use ===
 "5" === 5; // = false
 null === undefined; // = false
-
-// ...which can result in some weird behaviour...
-13 + !0; // 14
-"13" + !0; // '13true'
 
 // You can access characters in a string with `charAt`
 "This is a string".charAt(0);  // = 'T'
@@ -405,7 +405,7 @@ myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
-// What this is set to has to do with how the function is called, not where
+// What `this` is set to has to do with how the function is called, not where
 // it's defined. So, our function doesn't work if it isn't called in the
 // context of the object.
 var myFunc = myObj.myFunc;
@@ -655,7 +655,7 @@ attached terminal
 [Javascript: The Right Way][10] is a guide intended to introduce new developers
 to JavaScript and help experienced developers learn more about its best practices.
 
-[Javascript:Info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
+[javascript.info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
 as well as advanced topics with concise explanations.
 
 

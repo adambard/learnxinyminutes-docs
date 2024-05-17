@@ -575,8 +575,6 @@ coroutine c apply {{} {
 
 # get things moving
 a
-
-
 ```
 
 ## Reference

@@ -8,7 +8,7 @@ lang: pt-br
 filename: learnvisualbasic-pt.vb
 ---
 
-```
+```vbnet
 Module Module1
 
 module Module1
@@ -273,7 +273,6 @@ module Module1
     End Sub
 
 End Module
-
 ```
 
 ##Referências

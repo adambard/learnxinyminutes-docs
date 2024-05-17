@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -16,13 +16,12 @@ E total compatibil cu Erlang, dar are o sintaxă mai prietenoasă și propune ma
 posibilități.
 
 ```elixir
-
 # Comentariile de o linie încep cu simbolul diez.
 
 # Pentru comentarii pe mai multe linii nu există sintaxă separată,
 # de aceea folosiți mai multe linii cu comentarii.
 
-# Pentru a folosi shell-ul elixir utilizați comanda `iex`.
+# Pentru a folosi shell-ul Elixir utilizați comanda `iex`.
 # Compilați modulele cu comanda `elixirc`.
 
 # Ambele comenzi vor lucra în terminal, dacă ați instalat Elixir corect.
@@ -158,7 +157,7 @@ nil && 20  #=> nil
 # număr < atom < referință < funcție < port < proces < tuple < listă < șir de caractere
 
 # Cităm pe Joe Armstrong în acest caz: "Ordinea actuală nu e importantă,
-dar că ordinea totală este bine definită este important."
+# dar că ordinea totală este bine definită este important."
 
 ## ---------------------------
 ## -- Ordinea execuției

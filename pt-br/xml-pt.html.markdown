@@ -63,8 +63,6 @@ Ao contrário de HTML, XML não especifica como exibir ou formatar os dados, ape
 	
 <!-- Abaixo, um elemento com dois atributos -->
 <arquivo type="gif" id="4293">computer.gif</arquivo>
-
-
 ```
 
 * Documento bem formatado x Validação
@@ -79,7 +77,6 @@ esse documento.
 Com esta ferramenta, você pode verificar os dados XML fora da lógica da aplicação.
 
 ```xml
-
 <!-- Abaixo, você pode ver uma versão simplificada do documento livraria,
 com a adição de definição DTD.-->
 

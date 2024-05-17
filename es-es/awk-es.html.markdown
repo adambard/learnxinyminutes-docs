@@ -196,7 +196,7 @@ function string_functions(    localvar, arr) {
     # Ambas regresan el número de matches remplazados.
     localvar = "fooooobar"
     sub("fo+", "Meet me at the ", localvar) # localvar => "Meet me at the bar"
-    gsub("e", ".", localvar) # localvar => "m..t m. at th. bar"
+    gsub("e", ".", localvar) # localvar => "M..t m. at th. bar"
 
     # Buscar una cadena que haga match con una expresión regular
     # index() hace lo mismo, pero no permite expresiones regulares
@@ -354,7 +354,6 @@ END {
     if (nlines)
         print "La edad promedio para " name " es " sum / nlines
 }
-
 ```
 
 Más información:

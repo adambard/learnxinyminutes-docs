@@ -552,6 +552,7 @@ if (Object.create === undefined){ // jangan ganti jika ia sudah wujud
     }
 }
 ```
+
 ## Bacaan Lanjut
 
 [Mozilla Developer Network][1] menyediakan dokumentasi yang sangat baik untuk

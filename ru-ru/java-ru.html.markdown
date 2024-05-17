@@ -487,7 +487,6 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne, In
 
     }
 }
-
 ```
 
 ## Почитать еще

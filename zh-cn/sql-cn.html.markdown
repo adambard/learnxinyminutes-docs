@@ -19,11 +19,10 @@ ions)](http://troels.arvin.dk/db/rdbms/)是一份很好的产品差
 就是就是SQL中尚未被标准化部分的一个典型例子，绝大多数SQL实
 现支持关键字QUIT、EXIT或者两者。)
 
-本文的实例命令假设你已经加载了[github](https://github.com/datacharmer/test_db)上的[MySQL示例员工数据库](https://dev.mysql.com/doc/employee/en/)。
+本文的实例命令假设你已经加载了[GitHub](https://github.com/datacharmer/test_db)上的[MySQL示例员工数据库](https://dev.mysql.com/doc/employee/en/)。
 运行脚本的语法取决于你使用的SQL实现。通常是一个命令行工具。
 
 ```sql
-
 -- 注释以两个连字符开始。命令以分号结束。
 
 -- SQL关键字大小写不敏感。在下文的示例命令中关键字大写，

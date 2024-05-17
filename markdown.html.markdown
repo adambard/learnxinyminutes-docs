@@ -16,25 +16,6 @@ Markdown also varies in implementation from one parser to a next. This
 guide will attempt to clarify when features are universal or when they are
 specific to a certain parser.
 
-- [HTML Elements](#html-elements)
-- [Headings](#headings)
-- [Simple text styles](#simple-text-styles)
-- [Paragraphs](#paragraphs)
-- [Lists](#lists)
-- [Code blocks](#code-blocks)
-- [Horizontal rule](#horizontal-rule)
-- [Links](#links)
-  - [Table of contents](#table-of-contents)
-- [Images](#images)
-- [Miscellany](#miscellany)
-  - [Auto-links](#auto-links)
-  - [Auto-links for emails](#auto-links-for-emails)
-  - [Escaping characters](#escaping-characters)
-  - [Keyboard keys](#keyboard-keys)
-  - [Tables](#tables)
-- [Markdownlint](#markdownlint)
-- [Further reading](#further-reading)
-
 ## HTML Elements
 
 Markdown is a superset of HTML, so any HTML file is valid Markdown.
@@ -207,7 +188,7 @@ inside your code.
 
 ```md
     my_array.each do |item|
-        puts item
+      puts item
     end
 ```
 
@@ -219,12 +200,13 @@ John didn't even know what the `go_to()` function did!
 
 In GitHub Flavored Markdown, you can use a special syntax for code.
 
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Hello world!"
 end
-&#x60;&#x60;&#x60;</code></pre>
+```
+````
 
 The above text doesn't require indenting, plus GitHub will use syntax
 highlighting of the language you specify after the opening <code>```</code>.
@@ -264,11 +246,13 @@ Relative paths work too.
 
 Markdown also supports reference style links.
 
-<pre><code class="highlight">&#x5b;<span class="nv">Click this link</span>][<span class="ss">link1</span>] for more info about it!
-&#x5b;<span class="nv">Also check out this link</span>][<span class="ss">foobar</span>] if you want to.
+```md
+[Click this link][link1] for more info about it!
+[Also check out this link][foobar] if you want to.
 
-&#x5b;<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Cool!"</span>
-&#x5b;<span class="nv">foobar</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Alright!"</span></code></pre>
+[link1]: http://test.com/ "Cool!"
+[foobar]: http://foobar.biz/ "Alright!"
+```
 
 The title can also be in single quotes or in parentheses, or omitted
 entirely. The references can be anywhere in your document and the reference IDs
@@ -276,9 +260,11 @@ can be anything so long as they are unique.
 
 There is also "implicit naming" which lets you use the link text as the id.
 
-<pre><code class="highlight">&#x5b;<span class="nv">This</span>][] is a link.
+```md
+[This][] is a link.
 
-&#x5b;<span class="nv">This</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
+[This]: http://thisisalink.com/
+```
 
 But it's not that commonly used.
 
@@ -311,9 +297,11 @@ Images are done the same way as links but with an exclamation point in front!
 
 And reference style works as expected.
 
-<pre><code class="highlight">!&#x5b;<span class="nv">This is the alt-attribute.</span>][<span class="ss">myimage</span>]
+```md
+![This is the alt-attribute.][myimage]
 
-&#x5b;<span class="nv">myimage</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"if you need a title, it's here"</span></code></pre>
+[myimage]: relative/urls/cool/image.jpg "if you need a title, it's here"
+```
 
 ## Miscellany
 
@@ -383,5 +371,5 @@ For more info, check out John Gruber's official post of syntax [here](http://dar
 
 If you want to learn more on some major Markdown flavors' features, see:
 
-- [GitHub flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-- [GitLab flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)
+- [GitHub Flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitLab Flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)

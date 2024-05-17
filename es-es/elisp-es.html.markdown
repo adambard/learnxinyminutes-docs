@@ -96,12 +96,12 @@ filename: learn-emacs-lisp-es.el
 ;; `C-j' añade el resultado de la evaluación al buffer.
 
 ;; `C-xC-e' muestra el mismo resultado pero en la linea inferior
-;; la cual se llama "minibuffer".  Este será el metodo que usaremos 
+;; la cual se llama "echo area".  Este será el metodo que usaremos 
 ;; normalmente para no llenar el buffer con texto inútil.
 
 ;; `setq' guarda un valor en una variable:
 (setq my-name "Bastien")
-;; `C-xC-e' => "Bastien" (aparece en el mini-buffer)
+;; `C-xC-e' => "Bastien" (aparece en el echo area)
 
 ;; `insert' añade "Hello!" en el punto donde esté tu cursor:
 (insert "Hello!")

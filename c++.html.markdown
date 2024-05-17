@@ -230,10 +230,19 @@ std::cout << myString + myOtherString; // "Hello World"
 
 std::cout << myString + " You"; // "Hello You"
 
+// C++ string length can be found from either string::length() or string::size()
+cout << myString.length() + myOtherString.size(); // Outputs 11 (= 5 + 6).
+
 // C++ strings are mutable.
 myString.append(" Dog");
 std::cout << myString; // "Hello Dog"
 
+// C++ can handle C-style strings with related functions using cstrings
+#include <cstring>
+
+char myOldString[10] = "Hello CPP";
+cout << myOldString;
+cout << "Length = " << strlen(myOldString); // Length = 9
 
 /////////////
 // References
@@ -1199,9 +1208,8 @@ compl 4    // Performs a bitwise not
 4 bitor 3  // Performs bitwise or
 4 bitand 3 // Performs bitwise and
 4 xor 3    // Performs bitwise xor
-
-
 ```
+
 ## Further Reading:
 
 * An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).

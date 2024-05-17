@@ -518,7 +518,6 @@ main() {
     example27, example28, example29, example30
     ].forEach((ef) => ef());
 }
-
 ```
 
 ## Lecturas adicionales

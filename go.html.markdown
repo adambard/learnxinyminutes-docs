@@ -32,11 +32,11 @@ Go comes with a good standard library and a sizeable community.
 /* Multi-
  line comment */
 
- /* A build tag is a line comment starting with // +build
+ /* A build tag is a line comment starting with //go:build
   and can be executed by go build -tags="foo bar" command.
   Build tags are placed before the package clause near or at the top of the file
   followed by a blank line or other line comments. */
-// +build prod, dev, test
+//go:build prod || dev || test
 
 // A package clause starts every source file.
 // main is a special name declaring an executable rather than a library.
@@ -44,12 +44,13 @@ package main
 
 // Import declaration declares library packages referenced in this file.
 import (
-	"fmt"       // A package in the Go standard library.
-	"io/ioutil" // Implements some I/O utility functions.
-	"math"    // Math library with local alias m.
-	"net/http"  // Yes, a web server!
-	"os"        // OS functions like working with the file system
-	"strconv"   // String conversions.
+	"fmt"              // A package in the Go standard library.
+	"io"               // Implements some I/O utility functions.
+	m "math"           // Math library with local alias m.
+	"net/http"         // Yes, a web server!
+	_ "net/http/pprof" // Profiling library imported only for side effects
+	"os"               // OS functions like working with the file system
+	"strconv"          // String conversions.
 )
 
 // A function definition. Main is special. It is the entry point for the
@@ -95,7 +96,7 @@ can include line breaks.` // Same string type.
 	// Non-ASCII literal. Go source is UTF-8.
 	g := 'Σ' // rune type, an alias for int32, holds a unicode code point.
 
-	f := 3.14195 // float64, an IEEE-754 64-bit floating point number.
+	f := 3.14159 // float64, an IEEE-754 64-bit floating point number.
 	c := 3 + 4i  // complex128, represented internally with two float64's.
 
 	// var syntax with initializers.
@@ -106,13 +107,13 @@ can include line breaks.` // Same string type.
 	n := byte('\n') // byte is an alias for uint8.
 
 	// Arrays have size fixed at compile time.
-	var a4 [4]int           // An array of 4 ints, initialized to all 0.
+	var a4 [4]int                    // An array of 4 ints, initialized to all 0.
 	a5 := [...]int{3, 1, 5, 10, 100} // An array initialized with a fixed size of five
 	// elements, with values 3, 1, 5, 10, and 100.
 
 	// Arrays have value semantics.
-	a4_cpy := a4            // a4_cpy is a copy of a4, two separate instances.
-	a4_cpy[0] = 25          // Only a4_cpy is changed, a4 stays the same.
+	a4_cpy := a4                    // a4_cpy is a copy of a4, two separate instances.
+	a4_cpy[0] = 25                  // Only a4_cpy is changed, a4 stays the same.
 	fmt.Println(a4_cpy[0] == a4[0]) // false
 
 	// Slices have dynamic size. Arrays and slices each have advantages
@@ -123,24 +124,24 @@ can include line breaks.` // Same string type.
 	bs := []byte("a slice") // Type conversion syntax.
 
 	// Slices (as well as maps and channels) have reference semantics.
-	s3_cpy := s3            // Both variables point to the same instance.
-	s3_cpy[0] = 0           // Which means both are updated.
-	fmt.Println(s3_cpy[0] == s3[0]) // true	
+	s3_cpy := s3                    // Both variables point to the same instance.
+	s3_cpy[0] = 0                   // Which means both are updated.
+	fmt.Println(s3_cpy[0] == s3[0]) // true
 
 	// Because they are dynamic, slices can be appended to on-demand.
 	// To append elements to a slice, the built-in append() function is used.
 	// First argument is a slice to which we are appending. Commonly,
-	// the array variable is updated in place, as in example below.
-	s := []int{1, 2, 3}		// Result is a slice of length 3.
-	s = append(s, 4, 5, 6)	// Added 3 elements. Slice now has length of 6.
-	fmt.Println(s) // Updated slice is now [1 2 3 4 5 6]
+	// the slice variable is updated in place, as in example below.
+	s := []int{1, 2, 3}    // Result is a slice of length 3.
+	s = append(s, 4, 5, 6) // Added 3 elements. Slice now has length of 6.
+	fmt.Println(s)         // Updated slice is now [1 2 3 4 5 6]
 
 	// To append another slice, instead of list of atomic elements we can
 	// pass a reference to a slice or a slice literal like this, with a
 	// trailing ellipsis, meaning take a slice and unpack its elements,
 	// appending them to slice s.
 	s = append(s, []int{7, 8, 9}...) // Second argument is a slice literal.
-	fmt.Println(s)	// Updated slice is now [1 2 3 4 5 6 7 8 9]
+	fmt.Println(s)                   // Updated slice is now [1 2 3 4 5 6 7 8 9]
 
 	p, q := learnMemory() // Declares p, q to be type pointer to int.
 	fmt.Println(*p, *q)   // * follows a pointer. This prints two ints.
@@ -149,6 +150,13 @@ can include line breaks.` // Same string type.
 	// hash or dictionary types of some other languages.
 	m := map[string]int{"three": 3, "four": 4}
 	m["one"] = 1
+	// Looking up a missing key returns the zero value,
+	// which is 0 in this case, since it's a map[string]int
+	m["key not present"] // 0
+	// Check if a key is present in the map like this:
+	if val, ok := m["one"]; ok {
+		// Do something
+	}
 
 	// Unused variables are an error in Go.
 	// The underscore lets you "use" a variable but discard its value.
@@ -160,7 +168,7 @@ can include line breaks.` // Same string type.
 	file, _ := os.Create("output.txt")
 	fmt.Fprint(file, "This is how you write to a file, by the way")
 	file.Close()
-	
+
 	// Output of course counts as using a variable.
 	fmt.Println(s, c, a4, s3, d2, m)
 
@@ -179,7 +187,7 @@ func learnNamedReturns(x, y int) (z int) {
 
 // Go is fully garbage collected. It has pointers but no pointer arithmetic.
 // You can make a mistake with a nil pointer, but not by incrementing a pointer.
-// Unlike in C/Cpp taking and returning an address of a local variable is also safe. 
+// Unlike in C/Cpp taking and returning an address of a local variable is also safe.
 func learnMemory() (p, q *int) {
 	// Named return values p and q have type pointer to int.
 	p = new(int) // Built-in function new allocates memory.
@@ -190,7 +198,7 @@ func learnMemory() (p, q *int) {
 	return &s[3], &r     // & takes the address of an object.
 }
 
-// Use the aliased math library (see imports, above) 
+// Use the aliased math library (see imports, above)
 func expensiveComputation() float64 {
 	return m.Exp(10)
 }
@@ -214,8 +222,8 @@ func learnFlowControl() {
 	case 42:
 		// Cases don't "fall through".
 		/*
-		There is a `fallthrough` keyword however, see:
-		  https://github.com/golang/go/wiki/Switch#fall-through
+			There is a `fallthrough` keyword however, see:
+			https://github.com/golang/go/wiki/Switch#fall-through
 		*/
 	case 43:
 		// Unreached.
@@ -355,9 +363,9 @@ func learnInterfaces() {
 }
 
 // Functions can have variadic parameters.
-func learnVariadicParams(myStrings ...interface{}) {
+func learnVariadicParams(myStrings ...any) { // any is an alias for interface{}
 	// Iterate each value of the variadic.
-	// The underbar here is ignoring the index argument of the array.
+	// The underscore here is ignoring the index argument of the array.
 	for _, param := range myStrings {
 		fmt.Println("param:", param)
 	}
@@ -428,7 +436,6 @@ func learnConcurrency() {
 
 // A single function from package http starts a web server.
 func learnWebProgramming() {
-
 	// First parameter of ListenAndServe is TCP address to listen to.
 	// Second parameter is an interface, specifically http.Handler.
 	go func() {
@@ -449,28 +456,31 @@ func requestServer() {
 	resp, err := http.Get("http://localhost:8080")
 	fmt.Println(err)
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	fmt.Printf("\nWebserver said: `%s`", string(body))
 }
 ```
 
 ## Further Reading
 
-The root of all things Go is the [official Go web site](http://golang.org/).
-There you can follow the tutorial, play interactively, and read lots.
-Aside from a tour, [the docs](https://golang.org/doc/) contain information on
+The root of all things Go is the [official Go web site](https://go.dev/).
+There you can follow the [tutorial](https://go.dev/tour/), play interactively, and read lots.
+Aside from a tour, [the docs](https://go.dev/doc/) contain information on
 how to write clean and effective Go code, package and command docs, and release history.
 
-The [Go language specification](https://golang.org/ref/spec) itself is highly recommended. It's easy to read
+The [Go language specification](https://go.dev/ref/spec) itself is highly recommended. It's easy to read
 and amazingly short (as language definitions go these days.)
 
-You can play around with the code on [Go playground](https://play.golang.org/p/tnWMjr16Mm). Try to change it and run it from your browser! Note that you can use [https://play.golang.org](https://play.golang.org) as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
+You can play around with the code on [Go playground](https://go.dev/play/p/Y96bRpJWzjr).
+Try to change it and run it from your browser!
+Note that you can use [https://go.dev/play/](https://go.dev/play/)
+as a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) to test things and code in your browser, without even installing Go.
 
 On the reading list for students of Go is the [source code to the standard
-library](http://golang.org/src/pkg/). Comprehensively documented, it
+library](https://go.dev/src/). Comprehensively documented, it
 demonstrates the best of readable and understandable Go, Go style, and Go
 idioms. Or you can click on a function name in [the
-documentation](http://golang.org/pkg/) and the source code comes up!
+documentation](https://pkg.go.dev/std) and the source code comes up!
 
 Another great resource to learn Go is [Go by example](https://gobyexample.com/).
 
@@ -480,4 +490,6 @@ There are many excellent conference talks and video tutorials on Go available on
 - [Golang University 201](https://www.youtube.com/playlist?list=PLEcwzBXTPUE_5m_JaMXmGEFgduH8EsuTs) steps it up a notch, explaining important techniques like testing, web services, and APIs
 - [Golang University 301](https://www.youtube.com/playlist?list=PLEcwzBXTPUE8KvXRFmmfPEUmKoy9LfmAf) dives into more advanced topics like the Go scheduler, implementation of maps and channels, and optimisation techniques
 
-Go Mobile adds support for mobile platforms (Android and iOS). You can write all-Go native mobile apps or write a library that contains bindings from a Go package, which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.
+Go Mobile adds support for mobile platforms (Android and iOS).
+You can write all-Go native mobile apps or write a library that contains bindings from a Go package,
+which can be invoked via Java (Android) and Objective-C (iOS). Check out the [Go Mobile page](https://github.com/golang/go/wiki/Mobile) for more information.

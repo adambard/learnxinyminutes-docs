@@ -5,7 +5,7 @@ contributors:
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
 translators:
     - ["Ryota Kayanuma", "https://github.com/PicoSushi"]
-filename: asciidoc-ja.md
+filename: asciidoc-ja.adoc
 lang: ja-jp
 ---
 
@@ -84,7 +84,6 @@ _アンダースコアで斜体になります。_
 ==== Level 3 <h4>
 
 ===== Level 4 <h5>
-
 ```
 
 リスト

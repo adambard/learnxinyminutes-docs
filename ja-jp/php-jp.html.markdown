@@ -758,7 +758,6 @@ try {
 } catch (MyException $e) {
     // Handle my exception
 }
-
 ```
 
 ## より詳しい情報

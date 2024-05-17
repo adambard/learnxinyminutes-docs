@@ -34,7 +34,7 @@ review them more effectively and/or individually.
 * **Use UTF-8**
    * For translations (or EN articles with non-ASCII characters) please ensure
      your file is UTF-8 encoded.
-   * Try to leave out the byte-order-mark at the start of the file (in Vim, use
+   * Leave out the byte-order-mark (BOM) at the start of the file (in Vim, use
      `:set nobomb`).
    * You can check if the file contains a BOM on Linux/Unix systems by running
     `file language.html.markdown`  You will see this if it uses a BOM:
@@ -58,7 +58,7 @@ Other fields:
   *tool* or *Algorithms & Data Structures*. Defaults to *language* if omitted.
 * **filename**: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
-   * For non-English articles, *filename* should   have a language-specific
+   * For non-English articles, *filename* should have a language-specific
      suffix.
 * **lang**: For translations, the human language this article is in. For
   categorization, mostly.
@@ -76,7 +76,12 @@ lang: ep-ep
 *--
 ```
 
-### Should I add myself as a Contributor?
+### Syntax highlighter
+
+[Pygments](https://pygments.org/languages/) is used for syntax highlighting through
+[pygments.rb](https://github.com/pygments/pygments.rb).
+
+### Should I add myself as a contributor?
 
 If you want to add yourself to contributors, keep in mind that contributors get
 equal billing, and the first contributor usually wrote the whole article. Please

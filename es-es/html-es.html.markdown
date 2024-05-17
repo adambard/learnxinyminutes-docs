@@ -108,7 +108,6 @@ Este artículo está centrado principalmente en la sintaxis HTML y algunos tips 
 		<td>Segunda fila, segunda columna</td>
 	</tr>
 </table>
-
 ```
 
 ## Uso

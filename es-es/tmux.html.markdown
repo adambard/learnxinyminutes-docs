@@ -16,7 +16,6 @@ más tarde.
 
 
 ```
-
   tmux [command]     # Correr un comando de tmux
                      # 'tmux' sin comando crea una nueva sesión.
 
@@ -50,7 +49,6 @@ más tarde.
      -t "#"          # Eliminar la sesión "#"
      -a              # Eliminar todas las sessiones
      -a -t "#"       # Eliminar todas las sessiones menos la "#"
-
 ```
 
 
@@ -100,7 +98,6 @@ Para controlar una sesión atada se usa la combinación llamada 'Prefijo' + ataj
 
   M-Up, M-Down       # Dimensionar el panel actual en pasos de cinco celdas
   M-Left, M-Right
-
 ```
 
 
@@ -225,7 +222,6 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # Requiere https://github.com/thewtex/tmux-mem-cpu-load/
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
 
 

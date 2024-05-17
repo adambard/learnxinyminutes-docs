@@ -88,15 +88,14 @@ ini :)
 
 Ada berbagai macam cara untuk membuat tautan:
 
-- Dengan menambahkan garis bawah setelah sebuah huruf : Github_ dan dengan
+- Dengan menambahkan garis bawah setelah sebuah huruf : GitHub_ dan dengan
 menambahkan URL target setelah teks (cara ini mempunyai kelebihan dengan tidak
 memasukkan URL yang tidak penting ke dalam teks yang bisa dibaca).
 - Dengan mengetik URL lengkap yang dapat dipahami : https://github.com (akan
 otomatis diubah menjadi sebuah link)
-- Dengan membuat link seperti di Markdown: `Github <https://github.com/>`_ .
+- Dengan membuat link seperti di Markdown: `GitHub <https://github.com/>`_ .
 
-.. _Github https://github.com/
-
+.. _GitHub https://github.com/
 ```
 
 

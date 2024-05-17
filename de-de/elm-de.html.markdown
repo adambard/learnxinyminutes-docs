@@ -343,7 +343,7 @@ $ elm reactor
 -- Starte das REPL (read-eval-print-loop).
 $ elm repl
 
--- Bibliotheken werden durch den Github-Nutzernamen und ein Repository identifiziert.
+-- Bibliotheken werden durch den GitHub-Nutzernamen und ein Repository identifiziert.
 -- Installieren einer neuen Bibliothek.
 $ elm package install elm-lang/html
 -- Diese wird der elm-package.json Datei hinzugefügt.

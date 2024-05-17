@@ -292,5 +292,5 @@ Rust 还有很多很多其他内容 - 这只是 Rust 最基本的功能，帮助
 或者上 reddit [/r/rust](http://reddit.com/r/rust) 订阅。
 同时 irc.mozilla.org 的 #rust 频道上的小伙伴们也非常欢迎新来的朋友。
 
-你可以在这个在线编译器 [Rust playpen](http://play.rust-lang.org) 上尝试 Rust 的一些特性
+你可以在这个在线编译器 [Rust Playground](https://play.rust-lang.org) 上尝试 Rust 的一些特性
 或者上[官方网站](http://rust-lang.org).

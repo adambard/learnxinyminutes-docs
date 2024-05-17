@@ -7,7 +7,6 @@ contributors:
 filename: LearnVim.txt
 ---
 
-
 [Vim](http://www.vim.org)
 (Vi IMproved) is a clone of the popular vi editor for Unix. It is a text
 editor designed for speed and increased productivity, and is ubiquitous in most
@@ -15,7 +14,6 @@ unix-based systems. It has numerous keybindings for speedy navigation to
 specific points in the file, and for fast editing.
 
 `vimtutor` is a an excellent application that teaches you how to use `Vim`. It comes with the vim package during installation. You should be able to just run "vimtutor" on the command line to open this tutor. It will guide you through all the major features in `vim`.
-
 
 ## Basics of navigating Vim
 
@@ -87,7 +85,7 @@ specific points in the file, and for fast editing.
     L                 # Move to the bottom of the screen
 ```
 
-## Help docs:
+## Help docs
 
 Vim has built in help documentation that can accessed with `:help <topic>`.
 For example `:help navigation` will pull up documentation about how to navigate
@@ -96,21 +94,21 @@ your workspace!
 `:help` can also be used without an option. This will bring up a default help dialog
 that aims to make getting started with vim more approachable!
 
-## Modes:
+## Modes
 
 Vim is based on the concept on **modes**.
 
-- Command Mode - vim starts up in this mode, used to navigate and write commands
-- Insert Mode  - used to make changes in your file
-- Visual Mode  - used to highlight text and do operations to them
-- Ex Mode      - used to drop down to the bottom with the ':' prompt to enter commands
+- Normal Mode - vim starts up in this mode, used to navigate and write commands
+- Insert Mode - used to make changes in your file
+- Visual Mode - used to highlight text and do operations to them
+- Ex Mode     - used to drop down to the bottom with the ':' prompt to enter commands
 
 ```
     i                 # Puts vim into insert mode, before the cursor position
     a                 # Puts vim into insert mode, after the cursor position
     v                 # Puts vim into visual mode
     :                 # Puts vim into ex mode
-    <esc>             # 'Escapes' from whichever mode you're in, into Command mode
+    <esc>             # 'Escapes' from whichever mode you're in, into Normal mode
 
     # Copying and pasting text
                       # Operations use the vim register by default
@@ -195,7 +193,7 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
     u                 # Selected text to lower case
     U                 # Selected text to upper case
     J                 # Join the current line with the next line
-    
+
     # Fold text
     zf                # Create fold from selected text
     zd                # Delete fold on the current line
@@ -234,7 +232,7 @@ The .vimrc file can be used to configure Vim on startup.
 
 Here's a sample ~/.vimrc file:
 
-```
+```vim
 " Example ~/.vimrc
 " 2015.10
 

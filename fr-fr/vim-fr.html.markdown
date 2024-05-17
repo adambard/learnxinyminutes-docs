@@ -13,7 +13,7 @@ lang: fr-fr
 [Vim](http://www.vim.org)
 (Vi IMproved) est le clone le plus populaire de l'éditeur de texte vi sous Unix.
 Vim est un éditeur de texte omniprésent sur les systèmes de type Unix, et a pour
-objectif la rapidité ainsi que l'augmentation de la productivité. Il a de 
+objectif la rapidité ainsi que l'augmentation de la productivité. Il a de
 nombreux raccourcis claviers pour une navigation et une édition plus rapide.
 
 ## Navigation basique avec Vim
@@ -24,7 +24,7 @@ nombreux raccourcis claviers pour une navigation et une édition plus rapide.
     :w               # Sauvegarde le fichier actuel
     :wq              # Sauvegarde le fichier actuel et quitte vim
     :q!              # Quitte vim sans sauvegarder
-                     # ! *force* l'exécution de :q, ce qui par conséquent 
+                     # ! *force* l'exécution de :q, ce qui par conséquent
                      # oblige vim à quitter sans sauvegarder
     :x               # Sauvegarde le fichier et quitte vim (raccourcis de :wq)
 
@@ -60,7 +60,7 @@ nombreux raccourcis claviers pour une navigation et une édition plus rapide.
     # Par exemple
     f<               # Se déplace en avant jusqu'à <
     t<               # Se déplace en avant juste avant <
-    
+
     # Se déplacer dans un mot
 
     w                # Avance d'un mot
@@ -117,7 +117,7 @@ Quelques exemples importants de 'Verbes', 'Modificateurs', et de 'Noms' :
 
 ```
     # 'Verbes'
- 
+
     d                # Supprime
     c                # Transforme
     y                # Copie
@@ -139,7 +139,7 @@ Quelques exemples importants de 'Verbes', 'Modificateurs', et de 'Noms' :
     s                # Phrase
     p                # Paragraphe
     b                # Bloc
-    
+
     # Exemple de 'phrases' ou commandes
 
     d2w              # Supprime 2 mots
@@ -165,7 +165,7 @@ Quelques exemples importants de 'Verbes', 'Modificateurs', et de 'Noms' :
 Les macros sont des actions enregistrables.
 Quand on commence à enregistrer une macro, Vim enregistre **toutes** les actions
 et les commandes que vous utilisez, jusqu'à ce que vous arrêtiez d'enregistrer.
-Lorsque vous appelez une macro, elle applique exactement les mêmes actions et 
+Lorsque vous appelez une macro, elle applique exactement les mêmes actions et
 commandes sur le texte sélectionné.
 
 ```
@@ -180,9 +180,9 @@ Le fichier .vimrc est utilisé pour configurer Vim lors du démarrage.
 
 Voici un exemple de fichier ~/.vimrc :
 
-```
+```vim
 " Exemple de ~/.vimrc
-" 2015.10 
+" 2015.10
 
 " Nécessaire à Vim pour être 'iMproved'
 set nocompatible

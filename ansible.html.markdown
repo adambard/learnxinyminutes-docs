@@ -632,7 +632,7 @@ fact_caching_timeout = 86400
 ```
 
 I like to use `jsonfile` as my backend. It allows to use another project
-`ansible-cmdb` [(project on github)](https://github.com/fboender/ansible-cmdb) that generates a HTML page of your inventory
+`ansible-cmdb` [(project on GitHub)](https://github.com/fboender/ansible-cmdb) that generates a HTML page of your inventory
 resources. A nice 'free' addition!
 
 ### Debugging ansible [chapter in progress]

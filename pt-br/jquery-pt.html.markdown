@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: jquery
+category: framework
+framework: jquery
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:
@@ -14,8 +14,6 @@ jQuery é uma biblioteca JavaScript que te ajuda a "fazer mais, escrevendo menos
 Pelo jQuery ser uma biblioteca JavaScript você deve [aprende-lo primeiro](https://learnxinyminutes.com/docs/pt-br/javascript-pt/)
 
 ```js
-
-
 ///////////////////////////////////
 // 1. Seletores
 
@@ -126,6 +124,4 @@ var heights = [];
 $('p').each(function() {
   heights.push($(this).height()); // Adiciona a altura das tags 'p' na array
 });
-
-
 ```

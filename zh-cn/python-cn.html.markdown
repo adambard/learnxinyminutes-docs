@@ -9,14 +9,10 @@ translators:
     - ["Maple", "https://github.com/mapleincode"]
 filename: learnpython-cn.py
 lang: zh-cn
-
 ---
 
 Python 是由吉多·范罗苏姆(Guido Van Rossum)在 90 年代早期设计。
 它是如今最常用的编程语言之一。它的语法简洁且优美，几乎就是可执行的伪代码。
-
-欢迎大家斧正。英文版原作 Louie Dinh [@louiedinh](http://twitter.com/louiedinh)
-邮箱 louiedinh [at] [谷歌的信箱服务]。中文翻译 Geoff Liu。
 
 注意：这篇教程是基于 Python 3 写的。如果你想学旧版 Python 2，我们特别有[另一篇教程](http://learnxinyminutes.com/docs/pythonlegacy/)。
 
@@ -1018,8 +1014,6 @@ print(say())  # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ```
 
-
-
 ## 想继续学吗？
 
 ### 在线免费材料（英文）
@@ -1027,16 +1021,13 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com/)
 * [The Official Docs](https://docs.python.org/3/)
-* [Hitchhiker’s Guide to Python](https://docs.python-guide.org/en/latest/)
+* [Hitchhiker’s Guide to Python](https://docs.python-guide.org/)
 * [Python Course](https://www.python-course.eu/)
-* [Free Interactive Python Course](http://www.kikodo.io/)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
-* [30 Python Language Features and Tricks You May Not Know About](https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
-* [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
+* [Official Style Guide for Python](https://peps.python.org/pep-0008/)
 * [Python 3 Computer Science Circles](https://cscircles.cemc.uwaterloo.ca/)
-* [Dive Into Python 3](https://www.diveintopython3.net/index.html)
-* [A Crash Course in Python for Scientists](https://nbviewer.jupyter.org/gist/anonymous/5924718)
+* [Dive Into Python 3](https://www.diveintopython3.net/)
 * [Python Tutorial for Intermediates](https://pythonbasics.org/)
 * [Build a Desktop App with Python](https://pythonpyqt.com/)
 

@@ -144,7 +144,6 @@ selector {
     font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart 
     nicht gefunden, wird die zweite benutzt, usw. */
 }
-
 ```
 
 ## Benutzung
@@ -164,7 +163,6 @@ empfohlen ist -->
 <!-- Oder direkt auf einem Element (sollte aber vermieden werden) -->
 <div style='property:value;'>
 </div>
-
 ```
 
 ## Spezifität
@@ -190,7 +188,6 @@ p {}
 
 /*E*/
 p { property: wert !important; }
-
 ```
 
 und das folgende Markup:
