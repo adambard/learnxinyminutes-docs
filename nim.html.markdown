@@ -61,7 +61,7 @@ var
 
 child = (name: "Rudiger", age: 2) # Assign all at once with literal ()
 today.sun = "Overcast"            # or individual fields.
-today[1] = 70.1                   # Tuple fields can also be indexed by order.
+today[1] = 70.1                   # or by order.
 
 let impostor = ("Rudiger", 2) # Two tuples are the same as long as they have
 assert child == impostor      # the same type and the same contents
