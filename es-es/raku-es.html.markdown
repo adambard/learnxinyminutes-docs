@@ -1,5 +1,5 @@
 ---
-name: perl6
+name: Raku
 category: language
 language: Raku
 filename: learnraku-es.raku
@@ -10,7 +10,6 @@ translators:
     - ["Luis F. Uceta", "https://github.com/uzluisf"]
 lang: es-es
 ---
-
 Raku es un lenguaje de programación altamente capaz y con características
 abundantes para hacerlo el lenguage ideal por los próximos 100 años.
 
@@ -58,7 +57,7 @@ my $nombre'de-variable_ = 5; # Esto funciona!
 my $booleano = True; # `True` y `False` son valores booleanos en Raku.
 my $inverso = !$booleano; # Puedes invertir un booleano con el operador prefijo `!`
 my $bool-forzado = so $str; # Y puedes usar el operador prefijo `so` que
-						   # convierte su operador en un Bool
+                            # convierte su operador en un Bool
 ```
 
 ### Arrays y Listas
@@ -74,7 +73,7 @@ my @letras = <a b c>;  # array de palabras, delimitado por espacios.
 my @array = 1, 2, 3;
 
 say @array[2]; # Los índices de un array empiezan por el 0 -- Este es
-			   # el tercer elemento.
+               # el tercer elemento.
 
 say "Interpola todos los elementos de un array usando [] : @array[]";
 #=> Interpola todos los elementos de un array usando [] : 1 2 3
@@ -84,7 +83,7 @@ say "Interpola todos los elementos de un array usando [] : @array[]";
 
 my @llaves = 0, 2;
 @array[@llaves] = @letras; # Asignación usando un array que contiene valores
-						   # índices
+                           # índices
 say @array; #=> a 6 b
 ```
 
@@ -99,8 +98,8 @@ say @array; #=> a 6 b
 ## cualquier llave duplicada es deduplicada.
 my %hash = 1 => 2,
            3 => 4;
-my %hash = foo => "bar", 			 # las llaves reciben sus comillas
-                                     # automáticamente.
+my %hash = foo => "bar",            # las llaves reciben sus comillas
+                                    # automáticamente.
            "some other" => "value", # las comas colgantes estań bien.
            ;
 
@@ -151,9 +150,9 @@ say devolver-vacio; # imprime Nil
 
 ## Algunas estructuras de control producen un valor. Por ejemplo if:
 sub devuelva-si {
-	if True {
-		"Truthy";
-	}
+    if True {
+        "Truthy";
+    }
 }
 say devuelva-si; # imprime Truthy
 
@@ -166,7 +165,7 @@ say return-for; # imprime Nil
 ## Una subrutina puede tener argumentos opcionales:
 sub con-opcional($arg?) { # el signo "?" marca el argumento opcional
   say "Podría returnar `(Any)` (valor de Perl parecido al 'null') si no me pasan
-		un argumento, o returnaré mi argumento";
+    un argumento, o returnaré mi argumento";
   $arg;
 }
 con-opcional;    # devuelve Any
@@ -178,9 +177,9 @@ con-opcional(1); # devuelve 1
 sub hola-a($nombre = "Mundo") {
   say "¡Hola, $nombre!";
 }
-hola-a; 		#=> ¡Hola, Mundo!
-hola-a(); 		#=> ¡Hola, Mundo!
-hola-a('Tú'); 	#=> ¡Hola, Tú!
+hola-a;       #=> ¡Hola, Mundo!
+hola-a();     #=> ¡Hola, Mundo!
+hola-a('Tú'); #=> ¡Hola, Tú!
 
 ## De igual manera, al usar la sintaxis parecida a la de los hashes
 ## (¡Hurra, sintaxis unificada!), puedes pasar argumentos *nombrados*
@@ -204,12 +203,12 @@ sub con-nombre-mandatorio(:$str!)  {
   say "$str!";
 }
 con-nombre-mandatorio(str => "Mi texto"); #=> Mi texto!
-con-nombre-mandatorio;   # error al tiempo de ejecución:
-						 # "Required named parameter not passed"
-						 # ("Parámetro nombrado requerido no proveído")
-con-nombre-mandatorio(3);# error al tiempo de ejecución:
-						 # "Too many positional parameters passed"
-						 # ("Demasiados argumentos posicionales proveídos")
+con-nombre-mandatorio;    # error al tiempo de ejecución:
+                          # "Required named parameter not passed"
+                          # ("Parámetro nombrado requerido no proveído")
+con-nombre-mandatorio(3); # error al tiempo de ejecución:
+                          # "Too many positional parameters passed"
+                          # ("Demasiados argumentos posicionales proveídos")
 
 ## Si una subrutina toma un argumento booleano nombrado ...
 sub toma-un-bool($nombre, :$bool) {
@@ -277,7 +276,7 @@ mutar $m; # ¡$n es ahora 43!
 ## por naturaleza:
 
 mutar 42; # Parámetro '$n' esperaba un contenedor mutable,
-		  # pero recibió un valor Int
+          # pero recibió un valor Int
 
 ## Si en cambio quieres una copia, debes usar `is copy`.
 
@@ -287,7 +286,7 @@ my $x = 42;
 sub x-almacena() is rw { $x }
 x-almacena() = 52; # En este caso, los paréntesis son mandatorios
                 # (porque de otra forma, Raku piensa que la función
-				# `x-almacena` es un identificador).
+                # `x-almacena` es un identificador).
 say $x; #=> 52
 ```
 
@@ -347,7 +346,7 @@ say $edad > 18 ?? "Eres un adulto" !! "Eres menor de 18";
 given "foo bar" {
   say $_; #=> foo bar
   when /foo/ { # No te preocupies acerca de la coincidencia inteligente –
-			   # solo ten presente que `when` la usa.
+               # solo ten presente que `when` la usa.
                # Esto es equivalente a `if $_ ~~ /foo/`.
     say "¡Yay!";
   }
@@ -379,9 +378,9 @@ loop {
 
 loop (my $i = 0; $i < 5; $i++) {
   next if $i == 3;  # `next` salta a la siguiente iteración, al igual
-					 # que `continue` en otros lenguajes. Ten en cuenta que
-					 # también puedes usar la condicionales postfix (sufijas)
-                     # bucles, etc.
+                    # que `continue` en otros lenguajes. Ten en cuenta que
+                    # también puedes usar la condicionales postfix (sufijas)
+                    # bucles, etc.
   say "¡Este es un bucle al estilo de C!";
 }
 
@@ -398,18 +397,18 @@ for @array {
 
   .say; # Esto es también permitido.
         # Una invocación con punto (dot call) sin "tópico" (recibidor) es
-		# enviada a `$_` por defecto.
+        # enviada a `$_` por defecto.
   $_.say; # lo mismo de arriba, lo cual es equivalente.
 }
 
 for @array {
   # Puedes...
   next if $_ == 3; # Saltar a la siguiente iteración (`continue` en
-				   # lenguages parecido a C)
+                   # lenguages parecido a C)
   redo if $_ == 4; # Re-hacer la iteración, manteniendo la
-				   # misma variable tópica (`$_`)
+                   # misma variable tópica (`$_`)
   last if $_ == 5; # Salir fuera del bucle (como `break`
-				   # en lenguages parecido a C)
+                   # en lenguages parecido a C)
 }
 
 ## La sintaxis de "bloque puntiagudo" no es específica al bucle for.
@@ -433,7 +432,7 @@ if computación-larga() -> $resultado {
 ## - "infix"   (infijo):  en medio de (como `*` en `4 * 3`).
 ## - "circumfix" (circunfijo): alrededor de (como `[`-`]` en `[1, 2]`).
 ## - "post-circumfix" (pos-circunfijo): alrededor de un término,
-##                     				   posterior a otro término.
+##                                      posterior a otro término.
 ##                     (como `{`-`}` en `%hash{'key'}`)
 
 ## La lista de asociatividad y precedencia se explica más abajo.
@@ -506,8 +505,8 @@ False ~~ True; # True
 ## ociosos/infinitos, usando la Whatever Star:
 my @array = 1..*; # 1 al Infinito! `1..Inf` es lo mismo.
 say @array[^10]; # puedes pasar arrays como subíndices y devolverá
-   				 # un array de resultados. Esto imprimirá
-				 # "1 2 3 4 5 6 7 8 9 10" (y no se quedaré sin memoria!)
+                 # un array de resultados. Esto imprimirá
+                 # "1 2 3 4 5 6 7 8 9 10" (y no se quedaré sin memoria!)
 ## Nota: Al leer una lista infinita, Raku "cosificará" los elementos que
 ## necesita y los mantendrá en la memoria. Ellos no serán calculados más de
 ## una vez. Tampoco calculará más elementos de los que necesita.
@@ -518,7 +517,7 @@ say join(' ', @array[15..*]); #=> 15 16 17 18 19
 ## lo que es equivalente a:
 say join(' ', @array[-> $n { 15..$n }]);
 ## Nota: Si tratas de hacer cualquiera de esos con un array infinito,
-##		  provocará un array infinito (tu programa nunca terminará)
+##       provocará un array infinito (tu programa nunca terminará)
 
 ## Puedes usar eso en los lugares que esperaría, como durante la asignación
 ## a un array
@@ -716,8 +715,7 @@ multi dilo(Str $s) { # un multi es una subrutina por defecto
 }
 dilo("azul"); # prints "Cadena de texto: azul"
 dilo(True); # falla al *tiempo de compilación* con
-            # "calling 'dilo' will never work with arguments of types ..."
-			# (invocar 'dilo' nunca funcionará con argumentos de tipos ...")
+            # (invocar 'dilo' nunca funcionará con argumentos de tipos ...")
 ## con precondición arbitraria (¿recuerdas los subconjuntos?):
 multi es-grande(Int $n where * > 50) { "¡Sí!" } # usando una clausura
 multi es-grande(Int $ where 10..50) { "Tal vez." } # Usando coincidencia inteligente
@@ -743,7 +741,7 @@ multi sin_ti-o-contigo {
 ## en muchos lugares.
 ##
 ## - `is`, por ejemplo, es actualmente un `multi sub` llamado
-##	`trait_mod:<is>`.
+## `trait_mod:<is>`.
 ## - `is rw`, es simplemente un despacho a una función con esta signatura:
 ## sub trait_mod:<is>(Routine $r, :$rw!) {}
 ##
@@ -847,7 +845,7 @@ class Clase-Atrib {
 
   method asignar-valor($param) { # Métodos pueden tomar parámetros.
     $!attrib = $param;   # Esto funciona porque `$!` es siempre mutable.
-	# $.attrib = $param; # Incorrecto: No puedes usar la versión inmutable `$.`.
+    # $.attrib = $param; # Incorrecto: No puedes usar la versión inmutable `$.`.
 
     $.otro-atrib = 5; # Esto funciona porque `$.otro-atrib` es `rw`.
   }
@@ -864,7 +862,7 @@ my $class-obj = Clase-Atrib.new(atrib => 5);
 say $class-obj.devolver-valor; #=> 5
 # $class-obj.atrib = 5; # Esto falla porque `has $.atrib` es inmutable
 $class-obj.otro-atrib = 10; # En cambio, esto funciona porque el atributo
-							# público es mutable (`rw`).
+                            # público es mutable (`rw`).
 ```
 
 ### Herencia de Objeto
@@ -900,7 +898,7 @@ $Richard.hablar; #=> "Hola, mi nombre es Richard"
 
 my Niño $Madison .= new(edad => 1, nombre => 'Madison');
 $Madison.hablar; # imprime "Goo goo ga ga" dado que el método fue cambiado
-				 # en la clase Niño.
+                 # en la clase Niño.
 # $Madison.color-favorito # no funciona porque no es heredado
 
 ## Cuando se usa `my T $var` (donde `T` es el nombre de la clase), `$var`
@@ -1022,11 +1020,11 @@ try {
     when X::AdHoc { say "Error: $_" }
      #=>Error: Failed to open file /dir/foo: no such file or directory
 
-	## Cualquier otra excepción será levantada de nuevo, dado que no
-	## tenemos un `default`.
-	## Básicamente, si un `when`
+    ## Cualquier otra excepción será levantada de nuevo, dado que no
+    ## tenemos un `default`.
+    ## Básicamente, si un `when`
     ## Basically, if a `when` matches (or there's a `default`) marks the
-	  ## exception as
+    ## exception as
     ## "handled" so that it doesn't get re-thrown from the `CATCH`.
     ## You still can re-throw the exception (see below) by hand.
   }
@@ -1084,7 +1082,7 @@ module Hello::World { # forma de llaves
 unit module Parse::Text; # forma de ámbito de archivo
 
 grammar Parse::Text::Grammar { # Una gramática (grammar en inglés) es un paquete,
-							   # en el cual puedes usar `use`
+                               # en el cual puedes usar `use`
 }                    # Aprenderás más acerca de gramáticas en la sección de regex
 
 ## Como se dijo anteriormente, cualquier parte del modelo seis es también un
@@ -1180,19 +1178,19 @@ for ^5 -> $a {
 
 ## * Phasers al tiempo de compilación
 BEGIN { say "[*] Se ejecuta al tiempo de compilación, " ~
-		    "tan pronto como sea posible, una sola vez" }
+            "tan pronto como sea posible, una sola vez" }
 CHECK { say "[*] Se ejecuta al tiempo de compilación, " ~
-			"tan tarde como sea posible, una sola vez" }
+            "tan tarde como sea posible, una sola vez" }
 
 ## * Phasers al tiempo de ejecución
 INIT { say "[*] Se ejecuta al tiempo de ejecución, " ~
-		   "tan pronto como sea posible, una sola vez" }
+           "tan pronto como sea posible, una sola vez" }
 END { say "Se ejecuta al tiempo de ejecución, " ~
           "tan tarde como sea posible, una sola vez" }
 
 ## * Phasers de bloques
 ENTER { say "[*] Se ejecuta cada vez que entra en un bloque, " ~
-		"se repite en bloques de bucle" }
+            "se repite en bloques de bucle" }
 LEAVE { say "Se ejecuta cada vez que abandona un bloque, incluyendo " ~
             "cuando una excepción ocurre. Se repite en bloques de bucle"}
 
@@ -1381,8 +1379,8 @@ say 5!; #=> 120
 sub infix:<veces>(Int $n, Block $r) { # infijo va en el medio
   for ^$n {
     $r(); # Necesitas los paréntesis explícitos para invocar la función
-		  # almacenada en la variable `$r`. De lo contrario, te estaría
-		  # refiriendo a la variable (no a la función), como con `&r`.
+          # almacenada en la variable `$r`. De lo contrario, te estaría
+          # refiriendo a la variable (no a la función), como con `&r`.
   }
 }
 3 veces -> { say "hola" }; #=> hola
@@ -1412,7 +1410,7 @@ say "abc"{1}; #=> b
 %h{$llave}:delete;
 ## es equivalente a:
 postcircumfix:<{ }>(%h, $llave, :delete); # (puedes invocar
-										  # operadores de esta forma)
+                                          # operadores de esta forma)
 ## ¡*Todos* usan los mismos bloques básicos!
 ## Categorías sintácticas (prefix, infix, ...), argumentos nombrados
 ## (adverbios), ... - usados para construir el lenguaje - están al alcance
@@ -1542,7 +1540,7 @@ say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
 ## para los parseos ambiguos es determinado por un examen multi-nivel de
 ## desempate:
 ##  - La coincidencia de token más larga. `foo\s+` le gana a `foo`
-## 	  (por 2 o más posiciones)
+##     (por 2 o más posiciones)
 ##  - El prefijo literal más largo. `food\w*` le gana a `foo\w*` (por 1)
 ##  - Declaración desde la gramática más derivada a la menos derivada
 ##     (las gramáticas son actualmente clases)
@@ -1688,7 +1686,7 @@ so 'fooABCABCbar' ~~ / foo ( 'A' <[A..Z]> 'C' ) + bar /; # `True`. (usando `so`
 ## Ok. Comenzando con las explicaciones de grupos. Como dijimos,
 ### nuestra objeto `Match` está disponible en la variable `$/`:
 say $/; # Imprimirá algo extraño (explicaremos luego) o
-		# "Nil" si nada coincidió
+        # "Nil" si nada coincidió
 
 ## Como dijimos anteriormente, un objeto Match tiene indexación de array:
 say $/[0]; #=> ｢ABC｣ ｢ABC｣
@@ -1733,9 +1731,9 @@ say $/[0][0].Str; #=> ~
 say $/[0].list.perl; #=> (Match.new(...),).list
                      # Podemos ver que es una lista de objetos Match.
                      # Estos contienen un montón de información: dónde la
-					 # coincidencia comenzó o terminó, el "ast"
-					 # (chequea las acciones más abajo), etc.
-					 # Verás capturas nombradas más abajo con las gramáticas.
+                     # coincidencia comenzó o terminó, el "ast"
+                     # (chequea las acciones más abajo), etc.
+                     # Verás capturas nombradas más abajo con las gramáticas.
 
 ## Alternativas - el `or` de regexes
 ## Advertencia: Es diferente a los regexes de PCRE.
@@ -1794,7 +1792,7 @@ sub MAIN($nombre) { say "¡Hola, $nombre!" }
 ## (usando un "Bool" por un argumento nombrado para que podamos hacer
 ## `--replace` a cambio de `--replace=1`)
 subset File of Str where *.IO.d; # convierte a un objeto IO para chequear si
-							     # un archivo existe
+                                 # un archivo existe
 
 multi MAIN('add', $key, $value, Bool :$replace) { ... }
 multi MAIN('remove', $key) { ... }
@@ -1910,8 +1908,8 @@ for <a b c> {
 ## en los objetos para compararlos.
 ## - `=:=` es la identidad de contenedor y usa `VAR()`
 ## en los objetos para compararlos.
-
 ```
+
 Si quieres ir más allá de lo que se muestra aquí, puedes:
 
  - Leer la [documentación de Raku](https://docs.raku.org/). Esto es un recurso
@@ -1926,8 +1924,7 @@ Si quieres ir más allá de lo que se muestra aquí, puedes:
  explicaciones. Las publicaciones fueron suspendidas al final del 2015 cuando
  el lenguaje fue declarado estable y Raku.c fue lanzado.
  - Unirte a `#raku` en `irc.freenode.net`. Las personas aquí son siempre serviciales.
- - Chequear la [fuente de las funciones y clases de Raku
- ](https://github.com/rakudo/rakudo/tree/master/src/core.c). Rakudo está principalmente
+ - Chequear la [fuente de las funciones y clases de Raku](https://github.com/rakudo/rakudo/tree/master/src/core.c). Rakudo está principalmente
  escrito en Raku (con mucho de NQP, "Not Quite Perl" ("No Perl Todavía"), un
  subconjunto de Raku que es más fácil de implementar y optimizar).
  - Leer [documentos acerca del diseño del lenguaje](http://design.raku.org).

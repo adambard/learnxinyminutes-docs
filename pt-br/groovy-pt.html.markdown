@@ -5,14 +5,14 @@ filename: learngroovy-pt.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
-    - ["João Farias", "https://github.com/JoaoGFarias"]
+    - ["João Farias", "https://github.com/joaogfarias"]
+    - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
 lang: pt-br
 ---
 
 Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http://www.groovy-lang.org/)
 
 ```groovy
-
 /*
   Prepare-se:
 
@@ -201,8 +201,16 @@ if(x==1) {
 
 //Groovy também suporta o operador ternário
 def y = 10
-def x = (y > 1) ? "functionou" : "falhou"
-assert x == "functionou"
+def x = (y > 1) ? "funcionou" : "falhou"
+assert x == "funcionou"
+
+//E suporta o 'The Elvis Operator' também!
+//Em vez de usar o operador ternário:
+
+displayName = nome.name ? nome.name : 'Anonimo'
+
+//Podemos escrever:
+displayName = nome.name ?: 'Anonimo'
 
 //Loop 'for'
 //Itera sobre um intervalo (range)
@@ -409,8 +417,6 @@ int soma(int x, int y) {
 }
 
 assert soma(2,5) == 7
-
-
 ```
 
 ## Referências

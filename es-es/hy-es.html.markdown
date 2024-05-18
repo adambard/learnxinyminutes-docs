@@ -10,15 +10,13 @@ lang: es-es
 
 Hy es un lenguaje de Lisp escrito sobre Python. Esto es posible convirtiendo
 código Hy en un árbol abstracto de Python (ast). Por lo que, esto permite a
-Hy llamar a código Pyhton nativo y viceversa.
+Hy llamar a código Python nativo y viceversa.
 
-Este tutorial funciona para hy >= 0.9.12
-
-```clojure
+```hylang
 ;; Esto es una intrucción muy básica a Hy, como la del siguiente enlace
-;; http://try-hy.appspot.com
+;; https://hylang.org/try-hy
 ;;
-; Comentarios usando punto y coma, como en otros LISPS
+; Comentarios usando punto y coma, como en otros Lisps
 
 ;; Nociones básicas de expresiones
 ; Los programas List están hechos de expresiones simbólicas como la siguiente
@@ -28,7 +26,7 @@ Este tutorial funciona para hy >= 0.9.12
 
 ;; Tipos de datos simples
 ; Todos los tipos de datos simples son exactamente semejantes a sus homólogos
-; en python
+; en Python
 42 ; => 42
 3.14 ; => 3.14
 True ; => True
@@ -36,13 +34,13 @@ True ; => True
 
 ; Vamos a comenzar con un poco de arimética simple
 (+ 4 1) ;=> 5
-; el operador es aplicado a todos los argumentos, como en otros lisps
+; el operador es aplicado a todos los argumentos, como en otros Lisps
 (+ 4 1 2 3) ;=> 10
 (- 2 1) ;=> 1
 (* 4 2) ;=> 8
 (/ 4 1) ;=> 4
 (% 4 2) ;=> 0 o operador módulo
-; la exponenciación es representada por el operador ** como python
+; la exponenciación es representada por el operador ** como Python
 (** 3 2) ;=> 9
 ; las funciones anidadas funcionan como lo esperado
 (+ 2 (* 4 2)) ;=> 10
@@ -58,9 +56,9 @@ True ; => True
 (def *foo* 42)
 ;; otros tipos de datos de almacenamiento
 ; strings, lists, tuples & dicts
-; estos son exactamente los mismos tipos de almacenamiento en python
+; estos son exactamente los mismos tipos de almacenamiento en Python
 "hello world" ;=> "hello world"
-; las operaciones de cadena funcionan de manera similar en python
+; las operaciones de cadena funcionan de manera similar en Python
 (+ "hello " "world") ;=> "hello world"
 ; Las listas se crean usando [], la indexación comienza en 0
 (setv mylist [1 2 3 4])
@@ -96,31 +94,31 @@ True ; => True
 (map (fn [x] (* x x)) [1 2 3 4]) ;=> [1 4 9 16]
 
 ;; operaciones de secuencia
-; hy tiene algunas utilidades incluidas para operaciones de secuencia, etc.
+; Hy tiene algunas utilidades incluidas para operaciones de secuencia, etc.
 ; recuperar el primer elemento usando 'first' o 'car'
 (setv mylist [1 2 3 4])
 (setv mydict {"a" 1 "b" 2})
 (first mylist) ;=> 1
 
-; corte listas usando 'slice'
-(slice mylist 1 3) ;=> [2 3]
+; corte listas usando 'cut'
+(cut mylist 1 3) ;=> [2 3]
 
 ; obtener elementos de una lista o dict usando 'get'
 (get mylist 1) ;=> 2
 (get mydict "b") ;=> 2
-; la lista de indexación comienza a partir de 0, igual que en python
+; la lista de indexación comienza a partir de 0, igual que en Python
 ; assoc puede definir elementos clave/índice
 (assoc mylist 2 10) ; crear mylist [1 2 10 4]
 (assoc mydict "c" 3) ; crear mydict {"a" 1 "b" 2 "c" 3}
-; hay muchas otras funciones que hacen que trabajar con secuencias sea 
+; hay muchas otras funciones que hacen que trabajar con secuencias sea
 ; entretenido
 
 ;; Python interop
-;; los import funcionan exactamente como en python
+;; los import funcionan exactamente como en Python
 (import datetime)
-(import [functools [partial reduce]]) ; importa fun1 e fun2 del module1
-(import [matplotlib.pyplot :as plt]) ; haciendo una importación en foo como en bar
-; todos los métodos de python incluídos etc. son accesibles desde hy
+(import functools [partial reduce]) ; importa fun1 e fun2 del module1
+(import matplotlib.pyplot :as plt) ; haciendo una importación en foo como en bar
+; todos los métodos de Python incluídos etc. son accesibles desde Hy
 ; a.foo(arg) is called as (.foo a arg)
 (.split (.strip "hello world  ")) ;=> ["hello" "world"]
 
@@ -132,12 +130,9 @@ True ; => True
 
 ; anidar múltiples cláusulas 'if else if' con condiciones
 (cond
- [(= someval 42)
-  (print "Life, universe and everything else!")]
- [(> someval 42)
-  (print "val too large")]
- [(< someval 42)
-  (print "val too small")])
+ (= someval 42) (print "Life, universe and everything else!")
+ (> someval 42) (print "val too large")
+ (< someval 42) (print "val too small"))
 
 ; declaraciones de grupo con 'do', son ejecutadas secuencialmente
 ; formas como defn tienen un 'do' implícito
@@ -155,22 +150,20 @@ True ; => True
 
 ;; clases
 ; las clases son definidas de la siguiente manera
-(defclass Wizard [object]
-  [[--init-- (fn [self spell]
-             (setv self.spell spell) ; init the attr magic
-             None)]
-   [get-spell (fn [self]
-              self.spell)]])
+(defclass Wizard [object]
+  (defn __init__ [self spell]
+    (setv self.spell spell))
 
-;; acesse hylang.org
+  (defn get-spell [self]
+    self.spell))
 ```
 
 ### Otras lecturas
 
-Este tutorial apenas es una introducción básica para hy/lisp/python.
+Este tutorial apenas es una introducción básica para Hy/Lisp/Python.
 
-Docs Hy: [http://hy.readthedocs.org](http://hy.readthedocs.org)
+Docs Hy: [https://hylang.org/hy/doc](https://hylang.org/hy/doc)
 
-Repo Hy en GitHub: [http://github.com/hylang/hy](http://github.com/hylang/hy)
+Repo Hy en GitHub: [https://github.com/hylang/hy](https://github.com/hylang/hy)
 
 Acceso a freenode irc con #hy, hashtag en twitter: #hylang

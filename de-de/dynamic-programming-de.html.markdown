@@ -40,13 +40,13 @@ Dies wird als Dynamische Programmierung bezeichnet.
 Das Problem mit der längsten ansteigenden Subsequenz besteht darin,
 die längste ansteigende Subsequenz einer gegebenen Sequenz zu finden.
 Gegeben die Sequenz `S= {a1, a2, a3, a3, a4,..............., an-1, an }`,
-müssen wir die größte Teilmenge finden, so daß für alle `j` und `i`, `j<i`
+müssen wir die größte Teilmenge finden, sodass für alle `j` und `i`, `j<i`
 in der Teilmenge `aj<ai` gilt.
 Zuerst müssen wir bei jedem Index i den Wert der längsten Subsequenzen (LSi)
 finden, wobei das letzte Element der Sequenz ai ist. Dann wäre die größte LSi
 die längste Subsequenz in der gegebenen Sequenz. Am Anfang wird der LSi mit
 eins belegt, da ai ein Element der Sequenz (Letztes Element) ist.
-Dann ist für alle `j` mit  `j<i` und `aj<ai`, so dass wir den größten LSj finden
+Dann ist für alle `j` mit  `j<i` und `aj<ai`, sodass wir den größten LSj finden
 und zum LSi hinzufügen. Der Algorithmus hat eine Laufzeit von *O(n2)*.
 
 Pseudocode zur Bestimmung der Länge der am längsten ansteigenden Subsequenz:
@@ -56,6 +56,7 @@ wie `largest_sequences_so_far` und dessen Index würde eine Menge Zeit sparen.
 
 Ein ähnliches Konzept könnte auch bei der Suche nach dem längsten Weg
 in gerichteten azyklischen Graphen angewandt werden.
+
 ```python
 for i=0 to n-1
     LS[i]=1

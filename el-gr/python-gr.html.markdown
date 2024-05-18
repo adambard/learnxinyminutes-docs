@@ -16,14 +16,9 @@ lang: el-gr
 δημοφιλείς γλώσσες. Ερωτευεται κανείς την python για τη συντακτική της απλότητα.
 Βασικά είναι εκτελέσιμος ψευδοκώδικας.
 
-Το Feedback είναι πάντα δεκτό! Μπορείτε να με βρείτε στο [@haritonaras](http://twitter.com/haritonaras)
-ή τον αρχικό συγγραφέα στο [@louiedinh](http://twitter.com/louiedinh) ή στο
-louiedinh [at] [google's email service]
-
 Σημείωση: Το παρόν άρθρο ασχολείται μόνο με την Python 3. Δείτε [εδώ](http://learnxinyminutes.com/docs/pythonlegacy/) αν θέλετε να μάθετε την παλιά Python 2.7
 
 ```python
-
 # Τα σχόλια μίας γραμμής ξεκινούν με #
 
 """ Τα σχόλια πολλαπλών γραμμών μπορούν
@@ -1020,12 +1015,10 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](http://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
+* [Hitchhiker's Guide to Python](http://docs.python-guide.org/)
 * [Python Course](http://www.python-course.eu/index.php)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 * [A curated list of awesome Python frameworks, libraries and software](https://github.com/vinta/awesome-python)
-* [30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
-* [Official Style Guide for Python](https://www.python.org/dev/peps/pep-0008/)
+* [Official Style Guide for Python](https://peps.python.org/pep-0008/)
 * [Python 3 Computer Science Circles](http://cscircles.cemc.uwaterloo.ca/)
 * [Dive Into Python 3](http://www.diveintopython3.net/index.html)
-* [A Crash Course in Python for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)

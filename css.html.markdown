@@ -69,6 +69,9 @@ div { }
 /* or ends with a value (CSS 3) */
 [attr$='ue'] { font-size:smaller; }
 
+/* or contains a value (CSS 3) */
+[attr*='foo'] { }
+
 /* or contains a value in a space-separated list */
 [otherAttr~='foo'] { }
 [otherAttr~='bar'] { }
@@ -102,23 +105,31 @@ div.some-parent.class-name { }
 /* There are some selectors called pseudo classes that can be used to select an
    element only when it is in a particular state */
 
-/* for example, when the cursor hovers over an element */
-selector:hover { }
+/* for example, when a link hasn't been visited */
+selected:link { }
 
 /* or a link has been visited */
 selector:visited { }
 
-/* or hasn't been visited */
-selected:link { }
-
 /* or an element is in focus */
 selected:focus { }
 
-/* any element that is the first child of its parent */
+/* or when the cursor hovers over an element */
+selector:hover { }
+
+/* or when a link is clicked on */
+selector:active { }
+
+/* These pseudo classes regarding links should always be written in the above order or the code might not work as expected */
+
+/* Any element that is the first child of its parent */
 selector:first-child {}
 
 /* any element that is the last child of its parent */
 selector:last-child {}
+
+/* Select the nth child of selector parent (CSS 3) */
+selector:nth-child(n) { }
 
 /* Just like pseudo classes, pseudo elements allow you to style certain parts of
     a document  */
@@ -138,6 +149,12 @@ selector::after {}
 /* Group any number of selectors to define styles that affect all selectors
    in the group */
 selector1, selector2 { }
+
+/* Select elements that do not have a certain state (CSS 3) */
+/* Here, we select div with no id attribute. */
+div:not([id]) {
+   background-color: red;
+}
 
 /* ####################
    ## PROPERTIES
@@ -190,6 +207,41 @@ selector {
     font-family: "Courier New";
     /* if the first one is not found, the browser uses the next, and so on */
     font-family: "Courier New", Trebuchet, Arial, sans-serif;
+}
+
+/* Custom CSS properties using variables (CSS 3) */
+:root {
+   --main-bg-color: whitesmoke;
+}
+body {
+   background-color: var(--main-bg-color)
+}
+
+/* Perfom a calculation (CSS 3) */
+body {
+   width: calc(100vw - 100px)
+}
+
+/* Nest style rule inside another (CSS 3) */
+.main {
+   .bgred { /* same as: .main .bgred { } */
+      background: red;
+   }
+   & .bggreen { /* same as: .main .bggreen { } */
+      background: green;
+   }
+   &.bgblue { /* (without space) same as: .main.bgblue { } */
+      background: blue;
+   }
+}
+
+/* Design responsive layout using flexbox (CSS 3) */
+.container {
+   display: flex;
+   flex-direction: row;      /* in which direction stack the flex items */
+   flex-wrap: wrap;          /* whether or not flex items should wrap */
+   justify-content: center;  /* how to align flex items horizontally */
+   align-items: center;      /* how to align flex items vertically */
 }
 ```
 

@@ -12,7 +12,7 @@ the engine. It's a perfect fit for game development.
 
 ## Basics
 
-```nim
+```gdscript
 # Single-line comments are written using hash symbol.
 """
   Multi-line
@@ -95,7 +95,7 @@ func doing_math():
 func control_flow():
   x = 8
   y = 2 # y was originally a float,
-        # but we can change it's type to int
+        # but we can change its type to int
         # using the power of dynamic typing!
   
   if x < y:
@@ -113,6 +113,9 @@ func control_flow():
 
   for i in range(20): # GDScript's range is similar to Python's
     print(i) # so this will print numbers from 0 to 19
+
+  for i in 20: # unlike Python, you can loop over an int directly
+    print(i) # so this will also print numbers from 0 to 19
 
   for i in ["two", 3, 1.0]: # iterating over an array
     print(i)
@@ -206,7 +209,7 @@ func use_inner_class():
 
 ## Accessing other nodes in the scene tree
 
-```nim
+```gdscript
 extends Node2D
 
 var sprite # This variable will hold the reference.
@@ -255,7 +258,7 @@ onready var reference = get_node(nodepath) as Node
 Signal system is Godot's implementation of the observer programming
 pattern. Here's an example:
 
-```nim
+```gdscript
 class_name Player extends Node2D
 
 var hp = 10
@@ -282,7 +285,7 @@ func _on_death():
 
 GDScript can optionally use static typing.
 
-```nim
+```gdscript
 extends Node
 
 var x: int # define typed variable

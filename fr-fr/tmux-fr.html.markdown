@@ -17,7 +17,6 @@ fond, puis rattaché de nouveau.
 
 
 ```
-
   tmux [command]     # Exécute une commande
                      # 'tmux' sans commande créé une nouvelle session
 
@@ -51,7 +50,6 @@ fond, puis rattaché de nouveau.
      -t "#"          # Tue la session cible
      -a              # Tue toutes les sessions
      -a -t "#"       # Tue toutes les sessions sauf la cible
-
 ```
 
 
@@ -111,7 +109,6 @@ raccourcis.
 
   M-Up, M-Down       # Redimensionne le panel courant par pas de cinq cellules
   M-Left, M-Right
-
 ```
 
 
@@ -242,7 +239,6 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # Recquiert https://github.com/thewtex/tmux-mem-cpu-load/
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
 
 

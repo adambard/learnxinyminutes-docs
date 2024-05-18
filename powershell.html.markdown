@@ -21,7 +21,6 @@ rather than plain text. After years of evolving, it resembles Python a bit.
 Powershell as a Language:
 
 ```powershell
-
 # Single line comments start with a number symbol.
 
 <#
@@ -118,14 +117,15 @@ $False - 5   # => -5
 2 -lt 3 -and 3 -lt 2  # => False
 
 # (-is vs. -eq) -is checks if two objects are the same type.
-# -eq checks if the objects have the same values.
+# -eq checks if the objects have the same values, but sometimes doesn't work
+# as expected.
 # Note: we called '[Math]' from .NET previously without the preceeding
 # namespaces. We can do the same with [Collections.ArrayList] if preferred.
 [System.Collections.ArrayList]$a = @()  # Point a at a new list
 $a = (1,2,3,4)
 $b = $a                                 # => Point b at what a is pointing to
 $b -is $a.GetType()                     # => True, a and b equal same type
-$b -eq $a                               # => True, a and b values are equal
+$b -eq $a                               # => None! See below
 [System.Collections.Hashtable]$b = @{}  # => Point a at a new hash table
 $b = @{'one' = 1 
        'two' = 2}
@@ -153,6 +153,13 @@ $age = 22
 # => "Steve said he is 22 years old"
 "$name's name is $($name.Length) characters long." 
 # => "Steve's name is 5 characters long."
+
+# Strings can be compared with -eq, but are case insensitive. We can
+# force with -ceq or -ieq.
+"ab" -eq "ab"  # => True
+"ab" -eq "AB"  # => True!
+"ab" -ceq "AB"  # => False
+"ab" -ieq "AB"  # => True
 
 # Escape Characters in Powershell
 # Many languages use the '\', but Windows uses this character for 
@@ -221,7 +228,7 @@ $defaultArray.Add("thing4") # => Exception "Collection was of a fixed size."
 # ArrayLists store sequences
 [System.Collections.ArrayList]$array = @()
 # You can start with a prefilled ArrayList
-[System.Collections.ArrayList]$otherArray = @(4, 5, 6)
+[System.Collections.ArrayList]$otherArray = @(5, 6, 7, 8)
 
 # Add to the end of a list with 'Add' (Note: produces output, append to $null)
 $array.Add(1) > $null    # $array is now [1]
@@ -237,25 +244,14 @@ $array.Add(3) > $null   # array is now [1, 2, 4, 3] again.
 $array[0]   # => 1
 # Look at the last element
 $array[-1]  # => 3
-
 # Looking out of bounds returns nothing
 $array[4]  # blank line returned
 
-# You can look at ranges with slice syntax.
-# The start index is included, the end index is not
-# (It's a closed/open range for you mathy types.)
-$array[1..3]   # Return array from index 1 to 3 => [2, 4]
-$array[2..-1]    # Return array starting from index 2 => [4, 3]
-$array[0..3]    # Return array from beginning until index 3  => [1, 2, 4]
-$array[0..2]   # Return array selecting every second entry => [1, 4]
-$array.Reverse()  # mutates array to reverse order => [3, 4, 2, 1]
-# Use any combination of these to make advanced slices
+# Remove elements from a array
+$array.Remove($array[3])  # $array is now [1, 2, 4]
 
-# Remove arbitrary elements from a array with "del"
-$array.Remove($array[2])  # $array is now [1, 2, 3]
-
-# Insert an element at a specific index
-$array.Insert(1, 2)  # $array is now [1, 2, 3] again
+# Insert at index an element 
+$array.Insert(2, 3)  # $array is now [1, 2, 3, 4]
 
 # Get the index of the first item found matching the argument
 $array.IndexOf(2)  # => 1
@@ -263,17 +259,29 @@ $array.IndexOf(6)  # Returns -1 as "outside array"
 
 # You can add arrays
 # Note: values for $array and for $otherArray are not modified.
-$array + $otherArray  # => [1, 2, 3, 4, 5, 6]
+$array + $otherArray  # => [1, 2, 3, 4, 5, 6, 7, 8]
 
 # Concatenate arrays with "AddRange()"
-$array.AddRange($otherArray)  # Now $array is [1, 2, 3, 4, 5, 6]
+$array.AddRange($otherArray)  # Now $array is [1, 2, 3, 4, 5, 6, 7, 8]
 
 # Check for existence in a array with "in"
 1 -in $array  # => True
 
 # Examine length with "Count" (Note: "Length" on arrayList = each items length)
-$array.Count  # => 6
+$array.Count  # => 8
 
+# You can look at ranges with slice syntax.
+$array[1,3,5]     # Return selected index  => [2, 4, 6]
+$array[1..3]      # Return from index 1 to 3 => [2, 3, 4]
+$array[-3..-1]    # Return from last 3 to last 1 => [6, 7, 8]
+$array[-1..-3]    # Return from last 1 to last 3 => [8, 7, 6]
+$array[2..-1]     # Return from index 2 to last (NOT as most expect) => [3, 2, 1, 8]
+$array[0,2+4..6]  # Return multiple ranges with the + => [1, 3, 5, 6, 7]
+
+# -eq doesn't compare array but extract the matching elements
+$array = 1,2,3,1,1
+$array -eq 1          # => 1,1,1
+($array -eq 1).Count  # => 3
 
 # Tuples are like arrays but are immutable.
 # To use Tuples in powershell, you must use the .NET tuple class.
@@ -284,13 +292,14 @@ $tuple.Item(0) = 3  # Raises a TypeError
 # You can do some of the array methods on tuples, but they are limited.
 $tuple.Length       # => 3
 $tuple + (4, 5, 6)  # => Exception
-$tuple[0..2]        # => $null
+$tuple[0..2]        # => $null (in powershell 5)    => [1, 2, 3] (in powershell 7)
 2 -in $tuple        # => False
 
 
-# Hashtables store mappings from keys to values, similar to Dictionaries.
+# Hashtables store mappings from keys to values, similar to (but distinct from) Dictionaries.
+# Hashtables do not hold entry order as arrays do. 
 $emptyHash = @{}
-# Here is a prefilled dictionary
+# Here is a prefilled hashtable
 $filledHash = @{"one"= 1 
                 "two"= 2 
                 "three"= 3}
@@ -299,7 +308,6 @@ $filledHash = @{"one"= 1
 $filledHash["one"]  # => 1
 
 # Get all keys as an iterable with ".Keys".
-# items maintain the order at which they are inserted into the dictionary.
 $filledHash.Keys  # => ["one", "two", "three"]
 
 # Get all values as an iterable with ".Values".
@@ -307,18 +315,18 @@ $filledHash.Values  # => [1, 2, 3]
 
 # Check for existence of keys or values in a hash with "-in"
 "one" -in $filledHash.Keys  # => True
-1 -in $filledHash.Values    # => False
+1 -in $filledHash.Values    # => False (in powershell 5)    => True (in powershell 7)
 
 # Looking up a non-existing key returns $null
 $filledHash["four"]  # $null
 
-# Adding to a dictionary
+# Adding to a hashtable
 $filledHash.Add("five",5)  # $filledHash["five"] is set to 5
 $filledHash.Add("five",6)  # exception "Item with key "five" has already been added"
-$filledHash["four"] = 4 # $filledHash["four"] is set to 4, running again does nothing
+$filledHash["four"] = 4    # $filledHash["four"] is set to 4, running again does nothing
 
-# Remove keys from a dictionary with del
-$filledHash.Remove("one") # Removes the key "one" from filled dict
+# Remove keys from a hashtable
+$filledHash.Remove("one") # Removes the key "one" from filled hashtable
 
 
 ####################################################
@@ -574,7 +582,7 @@ Get-Process | Foreach-Object ProcessName | Group-Object
 1..10 | ForEach-Object { "Loop number $PSITEM" }
 1..10 | Where-Object { $PSITEM -gt 5 } | ConvertTo-Json
 
-# A notable pitfall of the pipeline is it's performance when
+# A notable pitfall of the pipeline is its performance when
 # compared with other options.
 # Additionally, raw bytes are not passed through the pipeline,
 # so passing an image causes some issues.
@@ -661,11 +669,12 @@ function Format-Range ($start, $end) {
 
 Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m'
 ```
+
 Powershell as a Tool:
 
 Getting Help:
 
-```Powershell
+```powershell
 # Find commands
 Get-Command about_* # alias: gcm
 Get-Command -Verb Add
@@ -682,7 +691,7 @@ Update-Help # Run as admin
 
 If you are uncertain about your environment:
 
-```Powershell
+```powershell
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy AllSigned
 # Execution policies include:
@@ -696,7 +705,7 @@ help about_Execution_Policies # for more info
 $PSVersionTable
 ```
 
-```Powershell
+```powershell
 # Calling external commands, executables, 
 # and functions with the call operator.
 # Exe paths with arguments passed or containing spaces can create issues.
@@ -802,6 +811,6 @@ Interesting Projects
 * [Oh-My-Posh](https://github.com/JanDeDobbeleer/oh-my-posh) Shell customization similar to the popular Oh-My-Zsh on Mac
 * [PSake](https://github.com/psake/psake) Build automation tool
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
-* [Jump-Location](https://github.com/tkellogg/Jump-Location) Powershell `cd` that reads your mind
+* [ZLocation](https://github.com/vors/ZLocation) Powershell `cd` that reads your mind
 * [PowerShell Community Extensions](https://github.com/Pscx/Pscx)
 * [More on the Powershell Pipeline Issue](https://github.com/PowerShell/PowerShell/issues/1908)

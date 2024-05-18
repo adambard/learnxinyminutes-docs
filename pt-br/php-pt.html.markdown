@@ -7,7 +7,7 @@ translators:
     - ["Abdala Cerqueira", "http://abda.la"]
     - ["Raquel Diniz", "http://twitter.com/raquelrdiniz"]
 lang: pt-br
-filename: php-pt.html.markdown
+filename: learnphp-pt.php
 ---
 
 Este documento descreve PHP 5+.
@@ -686,7 +686,6 @@ use Meu\Espaconominal as OutroEspaconominal;
 $cls = new OutroEspaconominal\MinhaClasse();
 
 */
-
 ```
 
 ## Mais informações

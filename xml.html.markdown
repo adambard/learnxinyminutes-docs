@@ -165,7 +165,7 @@ Support for DTDs is ubiquitous because they are so old. Unfortunately, modern XM
 
 ## Further Reading
 
-* [XML Schema Definitions Tutorial](http://www.w3schools.com/schema/)
+* [XML Schema Definitions Tutorial](https://www.w3schools.com/xml/schema_intro.asp)
 * [DTD Tutorial](http://www.w3schools.com/xml/xml_dtd_intro.asp)
 * [XML Tutorial](http://www.w3schools.com/xml/default.asp)
 * [Using XPath queries to parse XML](http://www.w3schools.com/xml/xml_xpath.asp)

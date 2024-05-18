@@ -16,6 +16,7 @@ lang: es-es
 El API del **Módulo de Definición Asíncrono** especifica un mecanismo para definir módulos JavaScript de manera tal que tanto el módulo como sus dependencias puedan ser cargadas de manera asíncrona. Esto es particularmente adecuado para el entorno del navegador donde la carga sincronizada de los módulos genera problemas de rendimiento, usabilidad, depuración y acceso de multi-dominios.
 
 ### Conceptos básicos
+
 ```javascript
 // El API básico de AMD consiste en tan solo dos métodos: `define` y `require`
 // y se basa en la definición y consumo de los módulos:
@@ -137,6 +138,7 @@ require(['jquery', 'coolLibFromBower', 'modules/someHelpers'], function($, coolL
   coolLib.doFancyStuffWith(helpers.transform($('#foo')));
 });
 ```
+
 Las aplicaciones basadas en `require.js` usualmente tendrán un solo punto de entrada (`main.js`) que se pasa a la etiqueta del script `require.js` como un atributo de datos. Será cargado y ejecutado automáticamente al cargar la página:
 
 ```html
@@ -158,16 +160,19 @@ Muchas personas prefieren usar AMD para la organización del código durante el 
 `require.js` incluye un script llamado `r.js` (el que probablemente correrás en node.js, aunque Rhino también es soportado) que puede analizar el gráfico de dependencias de tu proyecto, y armar un solo fichero que contenga todos tus módulos (adecuadamente nombrados), minificado y listo para consumo.
 
 Instálalo usando `npm`:
+
 ```shell
 $ npm install requirejs -g
 ```
 
 Ahora puedes alimentarlo con un fichero de configuración:
+
 ```shell
 $ r.js -o app.build.js
 ```
 
 Para nuestro ejemplo anterior el archivo de configuración luciría así:
+
 ```javascript
 /* file : app.build.js */
 ({
@@ -184,6 +189,7 @@ Para nuestro ejemplo anterior el archivo de configuración luciría así:
 ```
 
 Para usar el fichero creado en producción, simplemente intercambia `data-main`:
+
 ```html
 <script src="require.js" data-main="app/main-built"></script>
 ```

@@ -23,7 +23,7 @@ desarrollo activo para traer aún más funciones.
 La retroalimentación siempre es bienvenida, así que sientete libre de
 contactarme en [@kurisuwhyte](https://twitter.com/kurisuwhyte) :)
 
-```coffeescript
+```livescript
 # Justo como su primo CoffeeScript, LiveScript usa símbolos de gato para
 # comentarios de una sola línea
 
@@ -31,8 +31,7 @@ contactarme en [@kurisuwhyte](https://twitter.com/kurisuwhyte) :)
  Comentarios multi-línea son escritos con estilo de C. Usa este estilo si quieres
  que los comentarios se preserven en el output de Javascript
  */
-```
-```coffeescript
+
 # En lo que a la sintaxis se refiere, LiveScript usa indentación para delimitar
 # bloques en lugar de llaves {} y espacios para aplicar funciones, en lugar de
 # paréntesis.

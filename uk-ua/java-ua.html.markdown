@@ -740,7 +740,6 @@ public class EnumTest {
 // Переліки набагато потужніші, ніж тут показано.
 // Тіло переліків може містити методи та інші змінні.
 // Дивіться більше тут: https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
-
 ```
 
 ## Додатково для читання
@@ -777,7 +776,7 @@ public class EnumTest {
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
-* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
+* [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
 
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 

@@ -14,7 +14,8 @@ Common Lisp - мультипарадигменный язык программи
 спектра задач.
 Его частенько называют программируемым языком программирования.
 
-Идеальная отправная точка - книга [Common Lisp на практике (перевод)](http://lisper.ru/pcl/).
+Идеальная отправная точка - книга
+[Common Lisp на практике (перевод)](https://github.com/pcl-ru/pcl-ru/releases/download/v1.1/pcl-ru.pdf).
 Ещё одна популярная книга [Land of Lisp](http://landoflisp.com/).
 И одна из последних книг [Common Lisp Recipes](http://weitz.de/cl-recipes/) вобрала в себя лучшие
 архитектурные решения на основе опыта коммерческой работки автора.
@@ -22,7 +23,6 @@ Common Lisp - мультипарадигменный язык программи
 
 
 ```common-lisp
-
 ;;;-----------------------------------------------------------------------------
 ;;; 0. Синтаксис
 ;;;-----------------------------------------------------------------------------
@@ -674,7 +674,7 @@ nil                    ; ложь; а ещё пустой список () тож
 ## Для чтения
 
 На русском
-- [Practical Common Lisp](http://www.gigamonkeys.com/book/)
+- [Practical Common Lisp](https://github.com/pcl-ru/pcl-ru/releases/download/v1.1/pcl-ru.pdf)
 
 На английском
 - [Practical Common Lisp](http://www.gigamonkeys.com/book/)
@@ -685,7 +685,7 @@ nil                    ; ложь; а ещё пустой список () тож
 
 На русском
 
-- [Lisper.ru](http://lisper.ru/)
+- [Сообщество в Telegram](https://t.me/lisp_forever)
 
 На английском
 

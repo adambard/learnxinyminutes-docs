@@ -22,13 +22,13 @@ and/or directorie(s) over time.
 
 * Distributed Architecture - Traditionally version control systems such as CVS
 and Subversion are a client server architecture with a central server to
-store the revsion history of a project. Mercurial however is a truly
-distributed architecture, giving each devloper a full local copy of the
+store the revision history of a project. Mercurial however is a truly
+distributed architecture, giving each developer a full local copy of the
 entire development history. It works independently of a central server.
 * Fast - Traditionally version control systems such as CVS and Subversion are a
-client server architecture with a central server to store the revsion history
+client server architecture with a central server to store the revision history
 of a project. Mercurial however is a truly distributed architecture, giving
-each devloper a full local copy of the entire development history. It works
+each developer a full local copy of the entire development history. It works
 independently of a central server.
 * Platform Independent - Mercurial was written to be highly platform
 independent. Much of Mercurial is written in Python, with small performance
@@ -56,7 +56,7 @@ any later version.
 | changeset | Set of changes saved as diffs |
 | diff | Changes between file(s) |
 | tag | A named named revision |
-| parent(s) | Immediate ancestor(s) of a revison |
+| parent(s) | Immediate ancestor(s) of a revision |
 | branch | A child of a revision |
 | head | A head is a changeset with no child changesets |
 | merge | The process of merging two HEADS |
@@ -184,7 +184,7 @@ Commit changes to the given files into the repository.
 # Commit with a message
 $ hg commit -m 'This is a commit message'
 
-# Commit all added / removed files in the currrent tree
+# Commit all added / removed files in the current tree
 $ hg commit -A 'Adding and removing all existing files in the tree'
 
 # amend the parent of the working directory with a new commit that contains the
@@ -341,7 +341,7 @@ $ hg revert -a
 Remove the specified files on the next commit.
 
 ```bash
-# Remove a spcific file
+# Remove a specific file
 $ hg remove go_away.txt
 
 # Remove a group of files by pattern

@@ -1,5 +1,5 @@
 ---
-language: c++
+language: C++
 filename: learncpp-de.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
@@ -1148,9 +1148,8 @@ compl 4    // Führt bitweises nicht aus.
 4 bitor 3  // Führt bitweises oder aus.
 4 bitand 3 // Führt bitweises und aus.
 4 xor 3    // Führt bitweises xor aus.
-
-
 ```
+
 Weiterführende Literatur:
 
 * Aktuelle Sprachen-Referenz [CPP Reference](http://cppreference.com/w/cpp).

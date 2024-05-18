@@ -18,7 +18,7 @@ As we only have a scant *y* minutes, we'll survey the basics here and
 leave the remaining details for the manual. So please, keep your arms and
 legs inside the vehicle at all times, and on with the scenic tour!
 
-```python
+```janet
 # A comment.
 
 # Some literal values.
@@ -29,9 +29,9 @@ nil
 # Typical style for symbols (identifiers-for / names-of things).
 do-stuff
 pants-on-fire!
-foo->bar  # Evidently for converting foos to bars.
+foo->bar        # Evidently for converting foos to bars.
 fully-charged?
-_  # Usually used as a dummy variable.
+_               # Usually used as a dummy variable.
 
 # Keywords are like symbols that start with a colon, are treated like
 # constants, and are typically used as map keys or pieces of syntax in
@@ -58,10 +58,11 @@ math/e   # => 2.71828
 "hello"
 "hey\tthere"  # contains a tab
 
-# For multi-line strings, use one or more backticks. No escapes allowed.
+# For multi-line strings, use one or more backticks. Backslash-escapes not
+# recognized in these (bytes will be parsed literally).
 ``a long
 multi-line
-string``  # => "a long\nmulti-line\nstring"
+string``    # => "a long\nmulti-line\nstring"
 
 # Strings and data structures in Janet come in two varieties: mutable and
 # immutable. The literal for the mutable variety is written with a `@` in
@@ -72,7 +73,7 @@ string``  # => "a long\nmulti-line\nstring"
 @`a multi-line
 one here`
 
-(string "con" "cat" "enate")  # => "concatenate"
+(string "con" "cat" "enate")   # => "concatenate"
 
 # To get a substring:
 (string/slice "abcdefgh" 2 5)  # => "cde"
@@ -81,7 +82,8 @@ one here`
 
 # See the string library for more (splitting, replacement, etc.)
 
-# Arrays and Tuples ###########################################################
+# Data Structures #############################################################
+# Arrays and Tuples
 # Arrays are mutable, tuples are immutable.
 
 # Arrays (mutable)
@@ -91,18 +93,19 @@ one here`
 # Tuples (immutable)
 # Note that an open paren usually indicates a function call, so if you want a
 # literal tuple with parens, you need to "quote" it (with a starting single
-# quote mark).
+# quote mark)...
 '(4 5 6)
 [4 5 6]  # ... or just use square brackets.
 
-# Tables and Structs (AKA: "maps", "hashmaps", "dictionaries")
+# Tables and Structs (associative data structures)
 @{:a 1 :b 2 :c 3}  # table  (mutable)
 {:a 1 :b 2 :c 3}   # struct (immutable)
 
+# To "pretty-print" these out, use `pp` instead of `print`.
 # More about how to work with arrays/tuples and tables/structs below.
 
 # Bindings ####################################################################
-# ... or "Name Some Things!" (that is, bind a value to a symbol)
+# Bind a value to a symbol.
 (def x 4.7)  # Define a constant, `x`.
 x            # => 4.7
 (quote x)    # => x (the symbol x)
@@ -113,7 +116,7 @@ x            # => 4.7
 (set x 5.6)  # Error, `x` is a constant.
 
 (var y 10)
-(set y 12)  # Works, since `y` was made var.
+(set y 12)  # Works, since `y` was defined using `var`.
 
 # Note that bindings are local to the scope they're called in. `let`
 # creates a local scope and makes some bindings all in one shot:
@@ -151,11 +154,13 @@ insect-friend  # => bee
 (% 5 3)  # =>  2 (remainder)
 (- 5)    # => -5 (or you can just write `-5`)
 
-(++ i)    # increments
+(++ i)    # increments (modifies `i`)
 (-- i)    # decrements
 (+= i 3)  # add 3 to `i`
 (*= i 3)  # triple `i`
 # ... and so on for the other operations on numbers.
+
+# If you don't want to mutate `i`, use `(inc i)` and `(dec i)`.
 
 # Comparison
 # =  <  >  not=  <=  >=
@@ -163,17 +168,15 @@ insect-friend  # => bee
 
 # Functions ###################################################################
 # Call them:
-(- 5 3)  # => 2 (Yes, operators and functions work the same.)
+(- 5 3)                   # => 2 (Operators and functions work the same way.)
 (math/sin (/ math/pi 2))  # => 1
-(range 5)  # => @[0 1 2 3 4]
+(range 5)                 # => @[0 1 2 3 4]
 
 # Create them:
 (defn mult-by-2
   ``First line of docstring.
 
-  Some more of the docstring.
-
-  Possibly more!``
+  Some more of the docstring.``
   [x]
   (print "Hi.")
   (print "Will compute using: " x)
@@ -206,7 +209,7 @@ n  # => 3
 # You might say that function bodies provide an "implicit do".
 
 # Operations on data structures ###############################################
-# (Making all these mutable so we can ... mutate them.)
+# (Making all of these mutable so we can ... mutate them.)
 (def s @"Hello, World!")
 (def a @[:a :b :c :d :e])
 (def t @{:a 1 :b 2})
@@ -216,9 +219,9 @@ n  # => 3
 (length t)  # =>  2
 
 # Getting values:
-(s 7)   # => 87 (which is the code point for "W")
-(a 1)   # => :b
-(t :a)  # => 1
+(s 7)       # => 87 (which is the code point for "W")
+(a 1)       # => :b
+(t :a)      # => 1
 (keys t)    # => @[:a :b]
 (values t)  # => @[1 2]
 
@@ -227,14 +230,14 @@ n  # => 3
 (put a 2 :x)   # @[:a :b :x :d :e]
 (put t :b 42)  # @{:a 1 :b 42}
 
-# Adding & removing values (again, for mutable data structures):
+# Adding and removing values (again, for mutable data structures):
 (buffer/push-string s "??")  # @"HeWlo, World!??"
 (array/push a :f)  # @[:a :b :x :d :e :f]
 (array/pop a)      # => :f, and it's also removed from `a`.
 (put t :x 88)      # @{:a 1 :b 42 :x 88}
 
 # See the manual for a wide variety of functions for working with
-# buffers/strings, arrays/tuples, and tables/struct.
+# buffers/strings, arrays/tuples, and tables/structs.
 
 # Flow control ################################################################
 (if some-condition
@@ -282,7 +285,7 @@ n  # => 3
   {:yar v} (print "matches key :yar! " v)
   {:moo v} (print "matches key :moo! " v)
   {:c   v} (print "matches key :c! "   v)
-  _ (print "no match"))  # => prints "matches key :c! 3"
+  _        (print "no match"))             # => prints "matches key :c! 3"
 
 # Iterating ###################################################################
 # Iterate over an integer range:
@@ -312,7 +315,7 @@ n  # => 3
                (* x x))
              (range 10)))  # => @[0 4 16 36 64]
 
-(reduce + 0 (range 5))  # => 10
+(reduce + 0 (range 5))     # => 10
 
 # ...and lots more (see the API docs).
 

@@ -1,5 +1,5 @@
 ---
-language: c++
+language: C++
 filename: learncpp-cn.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
@@ -565,6 +565,7 @@ void doSomethingWithAFile(const std::string& filename)
 //   当它们脱离作用域时，析构器会自动释放其中储存的内容。
 // - 用lock_guard和unique_lock实现的互斥
 ```
+
 扩展阅读：
 
 * [CPP Reference](http://cppreference.com/w/cpp) 提供了最新的语法参考。

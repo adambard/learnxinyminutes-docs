@@ -17,10 +17,7 @@ filename: learnlua.lua
 -- 1. Variables and flow control.
 ----------------------------------------------------
 
-num = 42  -- All numbers are doubles.
--- Don't freak out, 64-bit doubles have 52 bits for
--- storing exact int values; machine precision is
--- not a problem for ints that need < 52 bits.
+num = 42  -- Numbers can be integer or floating point.
 
 s = 'walternate'  -- Immutable strings like Python.
 t = "double-quotes are also fine"
@@ -58,7 +55,7 @@ foo = anUnknownVariable  -- Now foo = nil.
 aBoolValue = false
 
 -- Only nil and false are falsy; 0 and '' are true!
-if not aBoolValue then print('twas false') end
+if not aBoolValue then print('it was false') end
 
 -- 'or' and 'and' are short-circuited.
 -- This is similar to the a?b:c operator in C/js:
@@ -193,7 +190,7 @@ end
 
 -- A table can have a metatable that gives the table
 -- operator-overloadish behavior. Later we'll see
--- how metatables support js-prototypey behavior.
+-- how metatables support js-prototype behavior.
 
 f1 = {a = 1, b = 2}  -- Represents the fraction a/b.
 f2 = {a = 2, b = 3}
@@ -364,7 +361,7 @@ end)()
 -- locals inside mod.lua are invisible outside it.
 
 -- This works because mod here = M in mod.lua:
-mod.sayHello()  -- Says hello to Hrunkner.
+mod.sayHello() -- Prints: Why hello there Hrunkner
 
 -- This is wrong; sayMyName only exists in mod.lua:
 mod.sayMyName()  -- error
@@ -389,7 +386,6 @@ g = load('print(343)')  -- Returns a function.
 g()  -- Prints out 343; nothing printed before now.
 
 --]]
-
 ```
 
 ## Community
@@ -402,11 +398,11 @@ If you need support join the official Lua [mailing list](https://www.lua.org/lua
 I was excited to learn Lua so I could make games
 with the <a href="http://love2d.org/">Love 2D game engine</a>. That's the why.
 
-I started with <a href="https://ebens.me/post/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
+I started with <a href="https://ebens.me/posts/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
 Next I read the official <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> book.
 That's the how.
 
-It might be helpful to check out the <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
+It might be helpful to check out the <a href="http://lua-users.org/wiki/LuaShortReference">Lua short
 reference</a> on lua-users.org.
 
 The main topics not covered are standard libraries:
@@ -421,4 +417,4 @@ By the way, the entire file is valid Lua; save it
 as learn.lua and run it with "lua learn.lua" !
 
 This was first written for tylerneylon.com, and is
-also available as a <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Have fun with Lua!
+also available as a <a href="https://gist.github.com/tylerneylon/5853042">GitHub gist</a>. Have fun with Lua!

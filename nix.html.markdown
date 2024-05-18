@@ -15,7 +15,7 @@ You can evaluate Nix expressions using
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
 or [`nix repl`](https://nixos.org/nix/manual/#ssec-relnotes-2.0).
 
-```
+```nix
 with builtins; [
 
   #  Comments
@@ -305,6 +305,9 @@ with builtins; [
   ({x, y, ...}: x + "-" + y) { x = "a"; y = "b"; z = "c"; }
   #=> "a-b"
 
+  # The entire set can be bound to a variable using `@`
+  (args@{x, y}: args.x + "-" + args.y) { x = "a"; y = "b"; }
+  #=> "a-b"
 
   #  Errors
   #=========================================
@@ -355,7 +358,7 @@ with builtins; [
   # its contents. You can read files from anywhere. In this example,
   # we write a file into the store, and then read it back out.
   (let filename = toFile "foo.txt" "hello!"; in
-    [filename (builtins.readFile filename)])
+    [filename (readFile filename)])
   #=> [ "/nix/store/ayh05aay2anx135prqp0cy34h891247x-foo.txt" "hello!" ]
 
   # We can also download files into the Nix store.
@@ -367,14 +370,8 @@ with builtins; [
 
 ### Further Reading
 
-* [Nix Manual - Nix expression language]
-  (https://nixos.org/nix/manual/#ch-expression-language)
-
-* [James Fisher - Nix by example - Part 1: The Nix expression language]
-  (https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
-
-* [Susan Potter - Nix Cookbook - Nix By Example]
-  (https://ops.functionalalgebra.com/nix-by-example/)
-  
-* [Rommel Martinez - A Gentle Introduction to the Nix Family]
-  (https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)
+* [Nix Manual - Nix expression language](https://nixos.org/nix/manual/#ch-expression-language)
+* [James Fisher - Nix by example - Part 1: The Nix expression language](https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
+* [Susan Potter - Nix Cookbook - Nix By Example](https://ops.functionalalgebra.com/nix-by-example/)
+* [Zero to Nix - Nix Tutorial](https://zero-to-nix.com/)
+* [Rommel Martinez - A Gentle Introduction to the Nix Family](https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)

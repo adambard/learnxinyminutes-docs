@@ -17,12 +17,9 @@ filename: learnpython-ar.py
 لقد أُنشئت لغة البايثون بواسطة جايدو ڤان روسم في بداية التسعينات. هي الأن أحد أشهر اللغات الموجودة. 
 لقد أحببت لغة البايثون بسبب وضوحها. هي في الأساس عبارة عن سودوكود قابل للتنفيذ.
 
-ردود أفعالكم عن المقال مُقدرة بشدة. يمكنكم التواصل مع الكاتب الاساسي من خلال [@louiedinh](http://twitter.com/louiedinh) أو louiedinh [at] [google's email service]
-
 ملحوظة: هذا المقال يُطبق على بايثون 3 فقط. راجع المقال [هنا](http://learnxinyminutes.com/docs/pythonlegacy/) إذا أردت تعلم لغة البايثون نسخة 2.7 الأقدم
 
 ```python
-
 # تعليق من سطر واحد يبدأ برمز الرقم.
 
 """ يمكن كتابة تعليق يتكون من أكثر من سطر
@@ -1006,14 +1003,11 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 ### مجانا عبر الانترنت
 
 * [أتمتتة المهمات المُملة عبر بايثون](https://automatetheboringstuff.com)
-* [أفكار لمشروعات بلغة البايثون](http://pythonpracticeprojects.com)
 * [التوثيقات الرسمية](http://docs.python.org/3/)
 * [دليل المُسافر لبايثون](http://docs.python-guide.org/en/latest/)
 * [دورة بايثون](http://www.python-course.eu/index.php)
 * [أولى الخطوات مع بايثون](https://realpython.com/learn/python-first-steps/)
 * [قائمة مُختارة من إطارات عمل بايثون الرائعة, المكتبات والبرمجيات](https://github.com/vinta/awesome-python)
-* [ثلاثون خاصية وخدعة للغة البايثون ربما لم تعرف بها](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)
-* [الدليل الرسمي لنمط البايثون](https://www.python.org/dev/peps/pep-0008/)
+* [الدليل الرسمي لنمط البايثون](https://peps.python.org/pep-0008/)
 * [بايثون 3 دوائر علوم الحاسب](http://cscircles.cemc.uwaterloo.ca/)
 * [غُص في بايثون 3](http://www.diveintopython3.net/index.html)
-* [دورة سريعة في البايثون للعلماء](http://nbviewer.jupyter.org/gist/anonymous/5924718)

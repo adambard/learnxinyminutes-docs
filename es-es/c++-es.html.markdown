@@ -1,5 +1,5 @@
 ---
-language: c++
+language: C++
 filename: learncpp-es.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
@@ -818,8 +818,8 @@ v.push_back(Foo());  // Nuevo valor se copia en el primer Foo que insertamos
 // Consulta la sección acerca de los objetos temporales para la
 // explicación de por qué esto funciona.
 v.swap(vector<Foo>());
-
 ```
+
 Otras lecturas:
 
 * Una referencia del lenguaje hasta a la fecha se puede encontrar en [CPP Reference](http://cppreference.com/w/cpp).

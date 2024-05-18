@@ -35,6 +35,7 @@ val inc : int -> int = <fun>
 # let a = 99 ;;
 val a : int = 99
 ```
+
 Για ένα source αρχείο μπορούμε να χρησιμοποιούμε την εντολή
 "ocamlc -i /path/to/file.ml" στο terminal για να τυπώσει όλα τα ονόματα και
 τους τύπους.

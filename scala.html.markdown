@@ -11,7 +11,6 @@ contributors:
 Scala - the scalable language
 
 ```scala
-
 /////////////////////////////////////////////////
 // 0. Basics
 /////////////////////////////////////////////////
@@ -302,7 +301,7 @@ do {
 // Recursion is the idiomatic way of repeating an action in Scala (as in most
 // other functional languages).
 // Recursive functions need an explicit return type, the compiler can't infer it.
-// Here it's Unit, which is analagous to a `void` return type in Java
+// Here it's Unit, which is analogous to a `void` return type in Java
 def showNumbersInRange(a: Int, b: Int): Unit = {
   print(a)
   if (a < b)
@@ -742,7 +741,6 @@ val writer = new PrintWriter("myfile.txt")
 writer.write("Writing line for line" + util.Properties.lineSeparator)
 writer.write("Another line here" + util.Properties.lineSeparator)
 writer.close()
-
 ```
 
 ## Further resources

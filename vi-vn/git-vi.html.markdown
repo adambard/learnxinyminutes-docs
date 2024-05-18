@@ -396,8 +396,6 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 * [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
 
-* [GitGuys](http://www.gitguys.com/)
-
 * [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
 
 

@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQT
+category: framework
+framework: PyQT
 filename: learnpyqt-pt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
@@ -24,7 +24,7 @@ o pyqt!
 ```python
 import sys
 from PyQt4 import QtGui
-	
+
 def window():
 	# Cria um objeto para a aplicação
     app = QtGui.QApplication(sys.argv)
@@ -46,7 +46,6 @@ def window():
 
 if __name__ == '__main__':
     window()
-
 ```
 
 Para utilizar mais funcionalidades no **pyqt** veremos a construção de alguns
@@ -54,7 +53,7 @@ outros elementos.
 Aqui mostraremos como criar uma janela popup, muito útil para perguntar ao
 usuário qual decisão tomar ou exibir alguma informação.
 
-```Python 
+```python
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -73,7 +72,7 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-	
+
 # Essa função deve criar uma janela de diálogo com um botão,
 # aguarda ser clicado e encerra o programa
 def showdialog():

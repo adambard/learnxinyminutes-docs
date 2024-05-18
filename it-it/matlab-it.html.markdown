@@ -1,5 +1,5 @@
 ---
-language: Matlab
+language: MATLAB
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
@@ -114,7 +114,7 @@ A.d.e = false;
 
 % Vettori
 x = [4 32 53 7 1]
-x(2) % ans = 32, gli indici in Matlab iniziano da 1, non da 0
+x(2) % ans = 32, gli indici in MATLAB iniziano da 1, non da 0
 x(2:3) % ans = 32 53
 x(2:end) % ans = 32 53 7 1
 
@@ -466,7 +466,7 @@ perms(x) % lista tutte le permutazioni di elementi di x
 
 
 % Classi
-% Matlab supporta la programmazione orientata agli oggetti.
+% MATLAB supporta la programmazione orientata agli oggetti.
 % La classe deve essere messa in un file con lo stesso nome della classe e estensione .m
 % Per iniziare, creiamo una semplice classe per memorizzare waypoint GPS
 % Inizio WaypointClass.m
@@ -488,7 +488,7 @@ classdef WaypointClass % Il nome della classe.
     end
 
     % Se si vuole aggiungere due oggetti Waypoint insieme senza chiamare
-    % una funzione speciale si può sovradefinire una funzione aritmetica di Matlab come questa:
+    % una funzione speciale si può sovradefinire una funzione aritmetica di MATLAB come questa:
     function r = plus(o1,o2)
       r = WaypointClass([o1.latitude] +[o2.latitude], ...
                         [o1.longitude]+[o2.longitude]);
@@ -500,7 +500,7 @@ end
 % Si può creare un oggetto della classe usando un costruttore
 a = WaypointClass(45.0, 45.0)
 
-% Le proprietà della classe si comportano esattamente come una Struttura Matlab.
+% Le proprietà della classe si comportano esattamente come una Struttura MATLAB.
 a.latitude = 70.0
 a.longitude = 25.0
 
@@ -511,15 +511,14 @@ ans = multiplyLatBy(a,3)
 % non necessita di essere passato al metodo.
 ans = a.multiplyLatBy(a,1/3)
 
-% Le funzioni Matlab possono essere sovradefinite per gestire oggetti.
-% Nel metodo sopra, è stato sovradefinito come Matlab gestisce
+% Le funzioni MATLAB possono essere sovradefinite per gestire oggetti.
+% Nel metodo sopra, è stato sovradefinito come MATLAB gestisce
 % l'addizione di due oggetti Waypoint.
 b = WaypointClass(15.0, 32.0)
 c = a + b
-
 ```
 
-## Di più su Matlab
+## Di più su MATLAB
 
 * Sito ufficiale [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
 * Forum ufficiale di MATLAB: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)

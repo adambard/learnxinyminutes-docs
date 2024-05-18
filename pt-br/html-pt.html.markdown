@@ -111,7 +111,6 @@ Esse artigo tem seu foco principal na sintaxe do HTML e algumas dicas úteis.
 		<td>Segunda linha, segunda coluna</td>
 	</tr>
 </table>
-
 ```
 
 ## Uso

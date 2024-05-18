@@ -68,7 +68,7 @@ False not. # True
 ###########################################
 
 # You may assign values to the current scope:
-var name is value. # assignes `value` into `name`
+var name is value. # assigns `value` into `name`
 
 # You may also assign values into the current object's namespace
 my name is value. # assigns `value` into the current object's `name` property
@@ -146,7 +146,7 @@ add(3, 5). # 8
 
 3 `add` 5. # 8
 # This call binds as such: add[(3), 5]
-# because the default fixity is left, and the default precedance is 1
+# because the default fixity is left, and the default precedence is 1
 
 # You may change the precedence/fixity of this operator with a pragma
 #:declare infixr 1 add
