@@ -22,11 +22,11 @@ void main(string[] args) {
 
 Wenn du so wie ich bist und viel Zeit im Internet verbringst, stehen die Chancen
 gut, dass du schonmal über [D](http://dlang.org/) gehört hast.
-Die D-Sprache ist eine moderne, überall einsetzbare programmiersprache die von
+Die D-Sprache ist eine moderne, überall einsetzbare Programmiersprache die von
 Low bis High Level verwendet werden kann und dabei viele Stile anbietet.
 
 D wird aktiv von Walter Bright und Andrei Alexandrescu entwickelt, zwei super schlaue,
-richtig coole leute. Da das jetzt alles aus dem Weg ist - auf zu den Beispielen!
+richtig coole Leute. Da das jetzt alles aus dem Weg ist - auf zu den Beispielen!
 
 ```d
 import std.stdio;
@@ -39,8 +39,8 @@ void main() {
     }
 
     auto n = 1; // auto um den Typ vom Compiler bestimmen zu lassen
-    
-    // Zahlenliterale können _ verwenden für lesbarkeit
+
+    // Zahlenliterale können _ verwenden für Lesbarkeit
     while(n < 10_000) {
         n += n;
     }
@@ -69,9 +69,9 @@ void main() {
 ```
 
 Neue Typen können mit `struct`, `class`, `union`, und `enum` definiert werden.
-Structs und unions werden as-value (koppiert) an Methoden übergeben wogegen
+Structs und unions werden as-value (kopiert) an Methoden übergeben wogegen
 Klassen als Referenz übergeben werden. Templates können verwendet werden um
-alle Typen zu parameterisieren.
+alle Typen zu parametrisieren.
 
 ```d
 // Hier, T ist ein Type-Parameter, Er funktioniert wie Generics in C#/Java/C++
@@ -82,7 +82,7 @@ struct LinkedList(T) {
 
 class BinTree(T) {
     T data = null;
-    
+
     // Wenn es nur einen T Parameter gibt, können die Klammern um ihn weggelassen werden
     BinTree!T left;
     BinTree!T right;
@@ -121,7 +121,7 @@ void swap(T)(ref T a, ref T b) {
     b = temp;
 }
 
-// Templates können ebenso Werte parameterisieren.
+// Templates können ebenso Werte parametrisieren.
 class Matrix(uint m, uint n, T = int) {
     T[m] rows;
     T[n] columns;
@@ -147,13 +147,13 @@ class MyClass(T, U) {
 class MyClass(T, U) {
     T _data;
     U _other;
-    
+
     // Konstruktoren heißen immer `this`
     this(T t, U u) {
         data = t;
         other = u;
     }
-    
+
     // getters
     @property T data() {
         return _data;
@@ -163,8 +163,8 @@ class MyClass(T, U) {
         return _other;
     }
 
-    // setters    
-	// @property kann genauso gut am ende der Methodensignatur stehen
+    // setters
+    // @property kann genauso gut am ende der Methodensignatur stehen
     void data(T t) @property {
         _data = t;
     }
@@ -180,7 +180,7 @@ void main() {
 
     mc.data = 7;
     mc.other = "seven";
-    
+
     writeln(mc.data);
     writeln(mc.other);
 }
@@ -208,10 +208,10 @@ import std.range : iota; // builds an end-exclusive range
 void main() {
     // Wir wollen die Summe aller Quadratzahlen zwischen
     // 1 und 100 ausgeben. Nichts leichter als das!
- 
+
     // Einfach eine Lambda-Funktion als Template Parameter übergeben
     // Es ist genau so gut möglich eine normale Funktion hier zu übergeben
-	// Lambdas bieten sich hier aber an.
+    // Lambdas bieten sich hier aber an.
     auto num = iota(1, 101).filter!(x => x % 2 == 0)
                            .map!(y => y ^^ 2)
                            .reduce!((a, b) => a + b);
@@ -225,7 +225,7 @@ um num zu berechnen?
 Das war möglich durch die Uniform Function Call Syntax.
 Mit UFCS können wir auswählen, ob wir eine Funktion als Methode oder
 als freie Funktion aufrufen. Walters artikel dazu findet ihr
-[hier.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394) 
+[hier.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394)
 Kurzgesagt kann man Funktionen, deren erster Parameter vom typ A ist, als
 Methode auf A anwenden.
 

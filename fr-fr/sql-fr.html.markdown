@@ -17,6 +17,10 @@ Les exemples de commandes présentés ici utilisent la [base de données d'exemp
 ```sql
 -- Un commentaire commence par deux traits d'union. Chaque commande se termine par un point-virgule.
 
+/*
+Commentaires sur plusieurs lignes.
+*/
+
 -- Le langage SQL n'est pas sensible à la casse, pour les mots-clés.
 -- Les exemples de commandes présentés ici respectent la convention de nommage
 -- (mots-clé en majuscule, nom en minuscule) afin de permettre une meilleure lecture.
@@ -55,7 +59,22 @@ SELECT * FROM departments WHERE dept_name LIKE 'S____';
 SELECT DISTINCT title FROM titles;
 
 -- Identique qu'au-dessus, mais trie (sensible à la casse) selon les valeurs title.
+-- L'ordre peut être défini en ajoutant ASC (croissant) ou DESC (décroissant).
+-- Si non défini, le tri sera croissant par défaut.
 SELECT DISTINCT title FROM titles ORDER BY title;
+
+-- Utilise les opérateurs de comparaison (=, >, <, >=, <=, <>) et
+-- les mots-clés conditionnels (AND, OR) pour affiner votre requête.
+SELECT * FROM departments WHERE dept_no = 'd001' OR dept_no = 'd002';
+
+-- Identique qu'au-dessus.
+SELECT * FROM departments WHERE dept_no IN ('d001', 'd002');
+
+-- Le contraire d'au-dessus.
+SELECT * FROM departments WHERE dept_no NOT IN ('d001', 'd002');
+
+-- Sélectionne dans un intervalle donné.
+SELECT * from departments WHERE dept_no BETWEEN 'd001' AND 'd002';
 
 -- Indique le nombre de lignes dans la table departments.
 SELECT COUNT(*) FROM departments;
@@ -63,6 +82,26 @@ SELECT COUNT(*) FROM departments;
 -- Indique le nombre de lignes de la table departments
 -- qui ont 'en' comme sous-chaîne de la valeur dept_name.
 SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
+
+-- Les fonctions d'agrégation peuvent être utilisées, avec GROUP BY, pour calculer une valeur
+-- à partir d'un ensemble de valeur. Les fonctions les plus courantes sont :
+-- MIN(), MAX(), COUNT(), SUM(), AVG().
+-- Utilise HAVING pour filtrer les lignes en fonction des valeurs agrégées.
+
+-- Récupère le nombre total d'employés, par numéro de département (dept_no),
+-- à condition d'avoir plus de 100 employés.
+SELECT dept_no, COUNT(dept_no) FROM dept_emp GROUP BY dept_no
+HAVING COUNT(dept_no) > 100;
+
+-- Des alias peuvent être utilisés, en utilisant le mot-clé optionnel AS,
+-- pour les noms des colonnes et tables.
+SELECT COUNT(A.*) AS total_employees, COUNT(B.*) total_departments
+FROM employees AS A, departments B;
+
+-- En général, le format de la date est "aaaa-mm-jj".
+-- Cependant, cela peut varier en fonction de l'implémentation, du système d'exploitation,
+-- et des paramètres locaux de session.
+SELECT * FROM dept_manager WHERE from_date >= '1990-01-01';
 
 -- Une jointure (JOIN) permet de réunir des informations de plusieurs tables.
 -- La table titles contient l'intitulé de poste (title), le numéro d'employé (emp_no),
@@ -76,6 +115,15 @@ SELECT employees.first_name, employees.last_name,
 FROM titles INNER JOIN employees ON
        employees.emp_no = titles.emp_no
 LIMIT 10;
+
+-- Combine le résultat de plusieurs SELECT.
+-- UNION sélectionne des lignes distinctes, UNION ALL sélectionne toutes les lignes.
+SELECT * FROM departments WHERE dept_no = 'd001'
+UNION
+SELECT * FROM departments WHERE dept_no = 'd002';
+
+-- L'ordre de la syntaxe SQL, avec plusieurs mots-clés appris jusqu'à présent, est :
+-- SELECT _ FROM _ JOIN _ ON _ WHERE _ GROUP BY _ HAVING _ ORDER BY _ UNION
 
 -- Liste toutes les tables, de toutes les bases de données. 
 -- Les implémentations SQL fournissent généralement leur propre commande de raccourci

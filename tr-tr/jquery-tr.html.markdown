@@ -3,7 +3,7 @@ category: framework
 framework: jquery
 contributors:
     - ["Seçkin KÜKRER", "https://github.com/leavenha"]
-filename: jquery-tr-tr.js
+filename: jquery-tr.js
 lang: tr-tr
 ---
 

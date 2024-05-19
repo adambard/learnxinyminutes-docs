@@ -254,25 +254,29 @@ example10() {
 /// `int` and `double` are children of type `num`
 example11() {
   var i = 1 + 320, d = 3.2 + 0.01;
+  final num myFinalNumDouble = 2.2;
+  final num myFinalNumInt = 2;
+  final int myFinalInt = 1;
+  final double myFinalDouble = 0.1;
   num myNumDouble = 2.2;
   num myNumInt = 2;
   int myInt = 1;
   double myDouble = 0; // Dart will add decimal prefix, becomes 0.0;
-  myNumDouble = myInt; // valid
-  myNumDouble = myDouble; //valid
-  myNumDouble = myNumInt; //valid
+  myNumDouble = myFinalInt; // valid
+  myNumDouble = myFinalDouble; // valid
+  myNumDouble = myFinalNumInt; // valid
 
-  myNumInt = myInt; // valid
-  myNumInt = myDouble; // valid
-  myNumInt = myNumDouble; // valid
+  myNumInt = myFinalInt; // valid
+  myNumInt = myFinalDouble; // valid
+  myNumInt = myFinalNumDouble; // valid
 
-  myInt = myNumDouble; //Error
-  myInt = myDouble; //Error
-  myInt = myNumInt; //valid
+  myInt = myNumDouble; // error
+  myInt = myFinalDouble; // error
+  myInt = myFinalNumInt; // valid
 
-  myDouble = myInt; //error
-  myDouble = myNumInt; //valid
-  myDouble = myNumDouble; //valid
+  myDouble = myFinalInt; // error
+  myDouble = myFinalNumInt; // error
+  myDouble = myFinalNumDouble; // valid
 
   print("Example11 int ${i}");
   print("Example11 double ${d}");
@@ -308,15 +312,15 @@ example14() {
   if (a) {
     print("true, a is $a");
   }
-  a = null;
+  a = false;
   if (a) {
-    print("true, a is $a");
+    print("true, a is $a"); 
   } else {
     print("false, a is $a"); /// runs here
   }
 
-  /// dynamic typed null can be convert to bool
-  var b;/// b is dynamic type
+  /// dynamic typed null can not be convert to bool
+  var b; /// b is dynamic type
   b = "abc";
   try {
     if (b) {
@@ -327,17 +331,17 @@ example14() {
   } catch (e) {
     print("error, b is $b"); /// this could be run but got error
   }
-  b = null;
-  if (b) {
+  b = null; 
+  if (b) { /// Failed assertion: boolean expression must not be null)
     print("true, b is $b");
   } else {
-    print("false, b is $b"); /// runs here
+    print("false, b is $b"); 
   }
 
   /// statically typed null can not be convert to bool
   var c = "abc";
   c = null;
-  /// complie failed
+  /// compilation failed
   /// if (c) {
   ///   print("true, c is $c");
   /// } else {

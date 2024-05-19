@@ -61,7 +61,10 @@ var
 
 child = (name: "Rudiger", age: 2) # Assign all at once with literal ()
 today.sun = "Overcast"            # or individual fields.
-today.temp = 70.1
+today[1] = 70.1                   # or by index.
+
+let impostor = ("Rudiger", 2) # Two tuples are the same as long as they have
+assert child == impostor      # the same type and the same contents
 
 # Sequences
 
@@ -113,6 +116,21 @@ when compileBadCode:
 #
 # More Types and Data Structures
 #
+
+# Objects are similar to tuples, but they *require* names of the fields
+
+type
+  Room = ref object # reference to an object, useful for big objects or
+    windows: int    # objects inside objects
+    doors: int = 1  # Change the default value of a field (since Nim 2.0)
+  House = object
+    address: string  
+    rooms: seq[Room]
+
+var
+  defaultHouse = House() # initialize with default values
+  defaultRoom = new Room() # create new instance of ref object
+  sesameHouse = House(address: "123 Sesame St.", rooms: @[defaultRoom])
 
 # Enumerations allow a type to have one of a limited number of values
 
@@ -188,7 +206,7 @@ echo "I'm thinking of a number between 41 and 43. Guess which!"
 let number: int = 42
 var
   raw_guess: string
-  guess: int
+  guess: int # Variables in Nim are always initialized with a zero value
 while guess != number:
   raw_guess = readLine(stdin)
   if raw_guess == "": continue # Skip this iteration

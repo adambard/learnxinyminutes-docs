@@ -14,7 +14,7 @@ Dokument das vermutlich einfachste "Learn X in Y Minutes" werden.
 
 In seiner grundlegenden Form hat JSON keine eigentlichen Kommentare. Dennoch
 akzeptieren die meisten Parser Kommentare in C-Syntax (`//`, `/* */`). Dennoch
-soll für dieses Dokument nur 100% gültiges JSON verwendet werden, weshalbt keine
+soll für dieses Dokument nur 100 % gültiges JSON verwendet werden, weshalb keine
 Kommentare verwendet werden. Glücklicherweise ist das nachfolgende Dokument
 selbsterklärend.
 
