@@ -80,12 +80,12 @@ filename: learn-emacs-lisp-ms.el
 ;; `C-j' memasukkan jawapan pengiraan ke dalam buffer.
 
 ;; `C-xC-e' memaparkan jawapan yang sama di bahagian bawah Emacs,
-;; yang dipanggil "minibuffer".  Secara umumnya kita akan menggunakan `C-xC-e',
+;; yang dipanggil "echo area".  Secara umumnya kita akan menggunakan `C-xC-e',
 ;; sebab kita tidak mahu memenuhi buffer dengan teks yang tidak penting.
 
 ;; `setq' menyimpan value ke dalam variable:
 (setq my-name "Bastien")
-;; `C-xC-e' => "Bastien" (terpapar di mini-buffer)
+;; `C-xC-e' => "Bastien" (terpapar di echo area)
 
 ;; `insert' akan memasukkan "Hello!" di tempat di mana cursor berada:
 (insert "Hello!")

@@ -850,7 +850,7 @@ public class EnumTest {
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
-* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
+* [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
 
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 

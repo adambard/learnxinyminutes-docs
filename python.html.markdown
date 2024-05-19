@@ -39,7 +39,7 @@ syntactic clarity. It's basically executable pseudocode.
 10 * 2  # => 20
 35 / 5  # => 7.0
 
-# Integer division rounds down for both positive and negative numbers.
+# Integer division rounds towards zero for both positive and negative numbers.
 5 // 3       # => 1
 -5 // 3      # => -2
 5.0 // 3.0   # => 1.0  # works on floats too
@@ -826,8 +826,8 @@ if __name__ == "__main__":
 # variables from their parent class.
 
 # Using the Human class defined above as the base or parent class, we can
-# define a child class, Superhero, which inherits the class variables like
-# "species", "name", and "age", as well as methods, like "sing" and "grunt"
+# define a child class, Superhero, which inherits variables like "species",
+# "name", and "age", as well as methods, like "sing" and "grunt"
 # from the Human class, but can also have its own unique properties.
 
 # To take advantage of modularization by file you could place the classes above

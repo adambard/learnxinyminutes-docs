@@ -101,7 +101,7 @@ False or True #=> True
 # Strings können auch addiert werden! Vermeide dies aber lieber.
 "Hallo " + "Welt!" #=> "Hallo Welt!"
 # Strings können ohne "+" addiert werden
-"Hallo " "welt!"  # => "Hallo Welt!"
+"Hallo " "Welt!"  # => "Hallo Welt!"
 
 # Ein String kann wie eine Liste von Zeichen verwendet werden
 "Das ist ein String"[0] #=> 'D'
@@ -110,13 +110,13 @@ False or True #=> True
 "{} können {} werden".format("Strings", "formatiert")
 
 # Schneller geht das mit Wiederholungen
-"{0} mag Spagetthi, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
-#=> "Hans mag Spagetthi, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
+"{0} mag Spaghetti, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
+#=> "Hans mag Spaghetti, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
 
 # Die Formatierung kann auch mit `f-strings` oder formattierten Strings gemacht
 # werden (ab Python 3.6+)
 name = "Sandra"
-f"Sie hat gesagt, ihr name sei {name}." # => Sie hat gesagt, ihr Name sei Sandra."
+f"Sie hat gesagt, ihr Name sei {name}." # => Sie hat gesagt, ihr Name sei Sandra."
 # Es ist möglich, andere Anweisungen innerhalb der geschweiften Klammern zu 
 # setzen, welche dann im Output des Strings angezeigt werden.
 f"{name} ist {len(name)} Zeichen lang" # => Sandra ist 6 Zeichen lang.
@@ -221,7 +221,7 @@ d, e, f = 4, 5, 6
 # Es ist kinderleicht, zwei Werte zu tauschen
 e, d = d, e     # d ist nun 5 und e ist nun 4
 
-# Dictionarys (Wörterbucher) speichern Schlüssel-Werte-Paare
+# Dictionarys (Wörterbücher) speichern Schlüssel-Werte-Paare
 empty_dict = {}
 # Hier ein gefülltes Wörterbuch
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -261,7 +261,7 @@ filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
 #filled_dict["four"] = 4  # noch ein Weg, Werte hinzuzufügen
 
 # Schlüssel von einem Wörterbuch entfernen
-del filled_dict["one"]  # Entfert den Schlüssel "one"
+del filled_dict["one"]  # Entfernt den Schlüssel "one"
 
 # Sets speichern Mengen
 empty_set = set()

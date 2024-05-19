@@ -8,14 +8,10 @@ translators:
 lang: de-de
 ---
 
-## Erste Schritte mit Pug
-
 Pug ist eine kleine Sprache, die zu HTML kompiliert. Sie hat eine
 saubere Syntax mit zusätzlichen Funktionen wie if Anweisungen und Schleifen.
 Sie kann auch als serverseitige Templatingsprache für Serversprachen
 wie NodeJS verwendet werden.
-
-### Die Sprache
 
 ```pug
 //- Einzeilenkommentar
@@ -88,8 +84,8 @@ div(class=meineKlasse)
 
 //- JS Stil
 - const meineStile = {'color':'white', 'background-color':'blue'}
-div(styles=meineStile)
-//- <div styles="{&quot;color&quot;:&quot;white&quot;,&quot;background-color&quot;:&quot;blue&quot;}"></div>
+div(style=meineStile)
+//- <div style="color:white;background-color:blue;"></div>
 
 //- JS Attributte
 - const meineAttribute = {"src": "foto.png", "alt": "meine Bilder"}
@@ -200,8 +196,8 @@ mixin comment(name, kommentar)
 //- <div>Hallo</div>
 ```
 
-
 ### Zusätzliche Ressourcen
+
 - [The Site](https://pugjs.org/)
 - [The Docs](https://pugjs.org/api/getting-started.html)
 - [GitHub Repo](https://github.com/pugjs/pug)

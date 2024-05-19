@@ -3,10 +3,10 @@ category: tool
 tool: zfs
 contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
+    - ["81reap", "https://github.com/81reap"]
     - ["A1EF", "https://github.com/A1EF"]
 filename: LearnZfs.txt
 ---
-
 
 [ZFS](http://open-zfs.org/wiki/Main_Page)
 is a rethinking of the storage stack, combining traditional file systems as well as volume
@@ -14,28 +14,27 @@ managers into one cohesive tool.  ZFS has some specific terminology that sets it
 more traditional storage systems, however it has a great set of features with a focus on
 usability for systems administrators.
 
-
 ## ZFS Concepts
 
 ### Virtual Devices
 
-A VDEV is similar to a raid device presented by a RAID card, there are several different
-types of VDEV's that offer various advantages, including redundancy and speed.  In general
-VDEV's offer better reliability and safety than a RAID card.  It is discouraged to use a
-RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
+A VDEV (Virtual Device) in ZFS is analogous to a RAID device and simmilaly offers different
+benefits in terms of redundancy and performance. In general VDEV's offer better reliability
+and safety than a RAID card. It is discouraged to use a RAID setup with ZFS, as ZFS expects
+to directly manage the underlying disks.
 
-Types of VDEV's
+| VDEV Type | Similar RAID | Notes |
+|-----------|----------------|---------------------------------------|
+| Mirror | RAID 1 | Supports n-way mirroring for redundancy. |
+| raidz1 | RAID 5 | Single disk parity, offering fault tolerance of one disk failure. |
+| raidz2 | RAID 6 | Two-disk parity, can tolerate two disk failures. |
+| raidz3 | - | Three-disk parity, can tolerate three disk failures. |
+| Disk | - | Represents a single physical disk in a VDEV. |
+| File | - | File-based VDEV, not recommended for production as it adds complexity and reduces reliability. |
 
-* mirror (n-way mirrors supported)
-* raidz
-	* raidz1 (1-disk parity, similar to RAID 5)
-	* raidz2 (2-disk parity, similar to RAID 6)
-	* raidz3 (3-disk parity, no RAID analog)
-* disk
-* file (not recommended for production due to another filesystem adding unnecessary layering)
-
-Your data is striped across all the VDEV's present in your Storage Pool, so more VDEV's will
-increase your IOPS.
+Data in a ZFS storage pool is striped across all VDEVs. Adding more VDEVs, Logs, or Caches
+can increase IOPS (Input/Output Operations Per Second), enhancing performance. It's crucial
+to balance VDEVs for optimal performance and redundancy.
 
 ### Storage Pools
 
@@ -48,13 +47,11 @@ ZFS datasets are analogous to traditional filesystems but with many more feature
 provide many of ZFS's advantages.  Datasets support [Copy on Write](https://en.wikipedia.org/wiki/Copy-on-write)
 snapshots, quota's, compression and de-duplication.
 
-
 ### Limits
 
 One directory may contain up to 2^48 files, up to 16 exabytes each.  A single storage pool
 can contain up to 256 zettabytes (2^78) of space, and can be striped across 2^64 devices.  A
 single host can have 2^64 storage pools.  The limits are huge.
-
 
 ## Commands
 
@@ -143,7 +140,6 @@ Remove zpool
 ```bash
 $ zpool destroy test
 ```
-
 
 ### Datasets
 
@@ -258,6 +254,82 @@ zroot/var                                                           none    none
 ...
 ```
 
+### Write Log Pool
+
+The ZFS Intent Log (ZIL) is a write log designed to speed up syncronus writes. This is
+typically a faster drive or drive partition than the larger storage pools.
+
+```bash
+# Add a log pool
+$ zpool add mypool/lamb log /dev/sdX
+
+# Check the configureation
+$ zpool status mypool/lamb
+```
+
+### Read Cache Pool
+
+The Level 2 Adaptive Replacement Cache (L2ARC) extends the primary ARC (in-RAM cache) and is
+used for read caching. This is typically a faster drive or drive partition than the larger
+storage pools.
+
+```bash
+# Add a cache pool
+$ zpool add mypool/lamb cache /dev/sdY
+
+# Check the configureation
+$ zpool status mypool/lamb
+```
+
+### Data Compression
+
+Data compression reduces the amount of space data occupies on disk in excange for some extra
+CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It
+especially beneficial on systems with more CPU resources than disk bandwidth.
+
+```bash
+# Get compression options
+$ zfs get -help
+...
+compression     NO       YES   on | off | lzjb | gzip | gzip-[1-9] | zle | lz4 | zstd | zstd-[1-19] | zstd-fast | zstd-fast-[1-10,20,30,40,50,60,70,80,90,100,500,1000]
+...
+
+# Set compression
+$ zfs set compression=on mypool/lamb
+
+# Check the configureation
+$ zpool get compression mypool/lamb
+```
+
+### Encryption at Rest
+
+Encryption allows data to be encrypted on the device at the cost of extra CPU cycles. This
+propery can only be set when a dataset is being created.
+
+```bash
+# Enable encryption on the pool
+$ zpool set feature@encryption=enabled black_hole
+
+# Create an encrypted dataset with a prompt
+$ zfs create -o encryption=on -o keyformat=passphrase black_hole/enc
+
+# Check the configureation
+$ zfs get encryption black_hole/enc
+```
+
+It should be noted that there are parts of the system where the data is not encrypted. See
+the table below for a breakdown.
+
+| Component | Encrypted | Notes |
+|----------------------|-------------------------------------------|------------------------------------------------------|
+| Main Data Storage | Yes | Data in datasets/volumes is encrypted. |
+| ZFS Intent Log (ZIL) | Yes | Synchronous write requests are encrypted. |
+| L2ARC (Cache) | Yes | Cached data is stored in an encrypted form. |
+| RAM (ARC) | No | Data in the primary ARC, in RAM, is not encrypted. |
+| Swap Area | Conditional | Encrypted if the ZFS swap dataset is encrypted. |
+| ZFS Metadata | Yes | Metadata is encrypted for encrypted datasets. |
+| Snapshot Data | Yes | Snapshots of encrypted datasets are also encrypted. |
+| ZFS Send/Receive | Conditional | Encrypted during send/receive if datasets are encrypted and `-w` flag is used. |
 
 ### Snapshots
 
@@ -276,7 +348,6 @@ Actions:
 * Access snapshots
 * Send / Receive
 * Clone
-
 
 Create snapshots
 
@@ -391,7 +462,6 @@ echo "==== Makes the staging database not pull from the master ===="
 echo "STOP SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 echo "RESET SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 ```
-
 
 ### Additional Reading
 

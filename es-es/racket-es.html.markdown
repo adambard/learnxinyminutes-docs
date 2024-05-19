@@ -46,7 +46,7 @@ Racket es un lenguaje de propósito general, multiparadigma que hace parte de la
 1+2i                   ; numeros complejos
 
 ;; La aplicación de funciones es escrita de la siguiente forma: (f x y z ...)
-;; donde f es una función y “x, y, z” son sus operandos 
+;; donde f es una función y “x, y, z” son sus operandos
 ;; Si quieres crear una lista de literales debes agregar ' al inicio
 ;; para que no sean evaluados
 '(+ 1 2) ; => (+ 1 2)
@@ -283,7 +283,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no 'd'
 (= 3 3.0) ; => #t
 (= 2 1)   ; => #f
 
-;; 'eq?' retorna #t si 2 argumentos refieren al mismo objeto en memoria 
+;; 'eq?' retorna #t si 2 argumentos refieren al mismo objeto en memoria
 ;; #f de lo contrario.
 ;; En otras palabras, es una simple comparación de punteros.
 (eq? '() '()) ; => #t, Debido a que existe solo una lista vacia en memoria
@@ -318,7 +318,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no 'd'
 (eqv? (string-append "foo" "bar") (string-append "foo" "bar"))   ; => #f
 
 ;; 'equal?' permite comparar los siguientes tipos de datos:
-;; strings, byte strings, pairs, mutable pairs, vectors, boxes, 
+;; strings, byte strings, pairs, mutable pairs, vectors, boxes,
 ;; hash tables, and inspectable estructuras.
 ;; para otros tipos de datos, 'equal?' y 'eqv?' devuelven el mismo resultado.
 (equal? 3 3.0)                                                   ; => #f
@@ -515,7 +515,7 @@ vec ; => #(1 2 3 4)
     (show " | ~a | " n #\space)
     (show "---~a---" n #\-))
 
-  (define (show fmt n ch) ; función interna 
+  (define (show fmt n ch) ; función interna
     (printf fmt (make-string n ch))
     (newline)))
 
@@ -672,12 +672,62 @@ vec ; => #(1 2 3 4)
 (call-with-input-file "/tmp/tmp.txt"
   (λ (in-port)
     (displayln (read-line in-port))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 12. Parametros
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Racket tiene el concepto de "parameter"
+;; El cual es un tipo de funcion similar un variable global entre modulos
+
+;; Defino x y lo cambio localmente
+(define x 42)
+(set! x 43)
+x ; 43
+
+;; Ahora x es parte un modulo
+(module mod racket
+  (provide x-mod)
+  (define x-mod 42))
+;; incluyo x e intento cambiarlo
+(require 'mod)
+x-mod ; 42
+(set! x-mod 43) ; error: cannot mutate x
+;; Aca es donde tiene utilidad el uso de parametros
+(module mod-param racket
+  (provide my-param)
+  (define my-param (make-parameter 42))) ;; creo un parametro con (make-parameter <valor-por-defecto>)
+
+(require 'mod-param)
+(my-param) ; 42
+(my-param 43) ;; ahora el valor x es cambiado para todo el ambiente del modulo donde se esta ejecutando
+(my-param) ; 43
+;; Tambien puedo asignar un valor a un parametro en un ambiente local simil let
+;; devuelve el ultimo valor del BODY (parameterize ([ID EXPR] BODY ...  )
+(parameterize
+    ([ my-param "un valor de tipo distinto"])
+  (displayln (my-param)))
+"un valor de tipo distinto" ;; x cambio solo el ambiente local de parameterize
+(my-param) ;; 43
+;; mi modulo tiene un funcion con parametros que cambia su comportamiento según el parametro
+(module my-mod racket
+  (provide my-add verbose)
+  (define verbose (make-parameter #f)) ;; Parametro
+  (define (my-add a b ) ;; funcion
+    (define result (+ a b))
+    (when (verbose) (display (format "verbose: (my-add ~a ~a) => ~a~n" a b result)))
+    result)) ;; creo un parametro con (make-parameter <valor-por-defecto>)
+(require 'my-mod)
+(my-add 3 4)
+;; 7
+(verbose #f)
+(my-add 3 4)
+;; 7
+(+ 1 (parameterize ([ verbose #t])  (my-add 3 4 )))
+;; 8
 ```
 
 ## Mas información
 
 ¿Quieres saber mas? Prueba en [Empezando con Racket](http://docs.racket-lang.org/getting-started/)
-
-
-
-
