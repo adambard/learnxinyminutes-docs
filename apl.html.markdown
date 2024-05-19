@@ -61,3 +61,9 @@ A ← 10 60 55 23
 mean ← {(+/⍵)÷⍴⍵}
 mean A                   ⍝ 37
 ```
+
+## Further Reading
+
+- [APL Wiki](https://aplwiki.com/)
+- An older version of APL book by the creator: [Kenneth Iverson - A Programming Language](https://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE/view)
+- Additional Books: [APL Books](https://aplwiki.com/wiki/Books)
