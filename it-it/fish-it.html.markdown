@@ -76,7 +76,7 @@ Aggiungere qualcosa alla variabile PATH di fish è semplice:
 > fish_path_add ~/cowsay
 ```
 
-Questo puoi farlo con bash, eh? No, devi sempre cercarlo...  Così è facile!
+Questo puoi farlo con bash, eh? No, devi sempre cercarlo... Così è facile!
 
 Ma c'è di più. La maggior parte dei comandi specifici per fish iniziano, hai indovinato, con 'fish'. Basta scrivere `fish` e premere <kbd>TAB</kbd>. Ed ecco una delle tante funzioni interessanti di fish: L'autocompletamento che **funziona.**
 Ora puoi navigare con <kbd>TAB</kbd>, <kbd>Shift + TAB</kbd> e le frecce <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd>.
@@ -87,9 +87,9 @@ Per avere aiuto, chiama il tuo psichiatra di fiducia oppure scrivi `man`. Ti mos
 > man set
 ```
 
-Se finalmente hai provato fish, potrai vedere in questa shell qualcosa di diverso, il che è molto figo. Ogni cosa ha colori fantastici, se scrivi qualcosa di sbagliato viene segnato in rosso, senza nemmeno eseguirlo, se si mette qualcosa tra virgolette, si vede dove finisce e perchè quella citazione non funziona, perchè c'è un'altro segno di citazione nella citazione in posizione 26.
+Se finalmente hai provato fish, potrai vedere in questa shell qualcosa di diverso, il che è molto figo. Ogni cosa ha colori fantastici, se scrivi qualcosa di sbagliato viene segnato in rosso, senza nemmeno eseguirlo!, se si mette qualcosa tra virgolette, si vede dove finisce e perchè quella citazione non funziona.
 
-fish ha ancora altre cose interessanti, come le wildcards (o carattere jolly).
+fish ha varie altre cose interessanti, come le wildcards (o carattere jolly).
 Per esempio, scrivi:
 
 ```
@@ -222,10 +222,10 @@ count $PATH
 # Per fare una lista, basta dare al comando set più argomenti:
 set list argomento1 argomento2 argomento3
 
-# in questo modo puoi anche inserire qualcosa in una variabile pre-esistente::
+# in questo modo puoi anche inserire qualcosa in una variabile pre-esistente:
 set PATH $PATH ~/cowsay/
 
-# Ma, come precedentemente menzionato, abbiamo anche un'altro modo più semplice per farlo specialmente in fish.
+# Ma, come precedentemente menzionato, abbiamo anche un'altro modo più semplice per farlo, specialmente in fish.
 # Come per ogni Array/Lista, puoi anche accedergli con
 $listavar[2]
 
@@ -244,12 +244,12 @@ echo $a$1
 
 # Naturalmente, se li si separa, saranno visti come due argomenti separati e li stamperà uno dopo l'altro. QUESTO è il comportamento che ci si aspetta da @bash.
 
-# Ci sono anche altre cose utili, come la sotituzione di comandi. Per esempio, quando vuoi che ti sia restituito l'output di due comandi in una sola riga. In bash lo faresti in questo modo
+# Ci sono anche altre cose utili, come la sostituzione di comandi. Per esempio, quando vuoi che ti sia restituito l'output di due comandi in una sola riga. In bash lo faresti in questo modo
 echo "`ls` è in $PWD" 
 # oppure
 echo "$(ls) è in $PWD" 
 
-# secondo me, non è necessario. Scrivo sempre l'apostrogo sbagliato. Perchè non usare semplicemente le parentesi, come in fish?
+# secondo me, non è necessario. Scrivo sempre l'apostrofo sbagliato. Perchè non usare semplicemente le parentesi, come in fish?
 echo (ls) è in $PWD
 
 # Yep, è facile. E grazie all'highlighting di fish lo puoi vedere istantaneamente, se lo scrivi correttamente.
@@ -338,6 +338,6 @@ end
 # Bello!
 
 # L'equivalente di bashrc non è fishrc, ma il già citato file config.fish in ~/.config/fish/
-# Per aggiungere una funzione a fish, però, occorre creare un semplice file .fish in quell directory. Non incollare la funzione nel file config.fish. È brutto. 
+# Per aggiungere una funzione a fish, però, occorre creare un semplice file .fish in quella directory. Non incollare la funzione nel file config.fish. È brutto. 
 # Se avete altro da dire, aggiugete pure, ma queste sono le basi più importanti.
 ```
