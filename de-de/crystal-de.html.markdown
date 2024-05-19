@@ -170,7 +170,7 @@ set << 3
 {1 => 2, 3 => 4}.class      # => Hash(Int32, Int32)
 {1 => 2, 'a' => 3}.class    # => Hash (Int32 | Char, Int32)
 
-# Leere Hashes sollten einen Typen spezifieren
+# Leere Hashes sollten einen Typen spezifizieren
 {}                      # Syntaxfehler
 {} of Int32 => Int32    # {}
 Hash(Int32, Int32).new  # {}
