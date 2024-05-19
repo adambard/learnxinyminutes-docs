@@ -63,7 +63,7 @@ echo '$VARIABLE' # => $VARIABLE
 # l’expansion des variables !
 
 # Expansion des paramètres (Parameter expansion) ${ } :
-echo ${Variable} # => Du texte
+echo ${VARIABLE} # => Du texte
 # Ceci est une utilisation simple de l'expansion de paramètre.
 # L'expansion de paramètre récupère la valeur d'une variable.
 # Elle « déploie » ou imprime la valeur.
@@ -75,21 +75,21 @@ echo ${VARIABLE/Some/A}
 # Ceci va remplacer la première occurrence de « Some » par « A »
 
 # Sous-chaîne d’une variable
-Longeur=5
-echo ${VARIABLE:0:longeur} # => Du te
+LONGUEUR=5
+echo ${VARIABLE:0:LONGUEUR} # => Du te
 # Ceci va retourner les 5 premiers caractères de la valeur
-echo ${VARIABLE:longeur} # => xte
+echo ${VARIABLE:LONGUEUR} # => xte
 # Ceci va retourner la valeur sans les 5 premiers caractères
-echo ${Variable: -4} # => exte
+echo ${VARIABLE: -4} # => exte
 # Ceci va retourner les 4 derniers caractères de la valeur
 # (l'espace avant -4 est nécessaire)
 
-# Longeur d'une chaine
-echo ${#Variable} # => 8
+# Longueur d'une chaîne
+echo ${#VARIABLE} # => 8
 
-# Indirect expansion
-AutreVariable="Variable"
-echo ${!AutreVariable} # => Some String
+# Expansion indirecte
+AUTRE_VARIABLE="VARIABLE"
+echo ${!AUTRE_VARIABLE} # => Du texte
 # Cela va utiliser la valeur comme un nom de variable
 
 # Valeur par défaut d’une variable
@@ -118,7 +118,7 @@ echo ${#array0[@]} # => "6"
 echo ${#array0[2]} # => "5"
 # Affiche le nombre de caractères du troisième élément
 
-echo ${array0[@]:3:2} # => "four five"
+echo ${array0[@]:3:2} # => "quatre cinq"
 # Affiche 2 element en à partir du quatrième
 
 for i in "${array0[@]}"; do
@@ -169,7 +169,7 @@ else
     echo "Votre nom est votre pseudo"
 fi
 
-# Remarque : if $Name is vide, bash verra la condition précédente comme :
+# Remarque : si $Name est vide, bash verra la condition précédente comme :
 if [ != $USER ]
 # ce qui est syntaxiquement invalide
 # la bonne façon d'utiliser une variable potentiellement vide en bash est :
