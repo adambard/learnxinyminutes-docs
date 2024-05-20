@@ -169,7 +169,7 @@ else
     echo "Votre nom est votre pseudo"
 fi
 
-# Remarque : si $Name est vide, bash verra la condition précédente comme :
+# Remarque : si $NAME est vide, bash verra la condition précédente comme :
 if [ != $USER ]
 # ce qui est syntaxiquement invalide
 # la bonne façon d'utiliser une variable potentiellement vide en bash est :
