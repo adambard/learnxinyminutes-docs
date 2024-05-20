@@ -26,10 +26,10 @@ ou exécutés directement dans le terminal.
 
 ```bash
 #!/bin/bash
-# La première ligne du script s’appelle le « shebang, » qui indique au système
+# La première ligne du script s’appelle le « shebang », elle indique au système
 # comment exécuter le script : http://fr.wikipedia.org/wiki/Shebang
-# Comme vous pouvez le remarquer, les commentaires commencent par #. Le shebang
-# est aussi un commentaire
+# Comme vous pouvez le remarquer, les commentaires commencent par un « # ». 
+# Le shebang est donc aussi un commentaire
 
 # Un exemple simple qui affiche « Hello world! » :
 echo Hello world!
@@ -41,32 +41,96 @@ echo 'Ceci est la première ligne'; echo 'Ceci est la seconde ligne'
 VARIABLE="Du texte"
 
 # Mais pas comme ça :
-VARIABLE = "Du texte"
+VARIABLE = "Du texte" # => renvoie une erreur : "Variable: command not found"
 # Bash va penser que VARIABLE est une commande qu’il doit exécuter et va
 # afficher une erreur parce qu’elle est introuvable.
 
+# Ni comme ça :
+VARIABLE= 'Some string' # => renvoie une erreur : "Du texte: command not found"
+# Bash va penser que 'Di texte' est une commande qu’il doit exécuter et va
+# afficher une erreur parce qu’elle est introuvable. (Dans ce cas, la partie 
+# 'VARIABLE=' est considérée comme une affectation de variable valable uniquement
+# pour la portée de la commande 'Du texte').
+
 # Utiliser une variable :
-echo $VARIABLE
-echo "$VARIABLE"
-echo '$VARIABLE'
+echo $VARIABLE # => Du texte
+echo "$VARIABLE" # => Du texte
+echo '$VARIABLE' # => $VARIABLE
 # Quand vous utilisez la variable en elle-même – en lui assignant une valeur,
 # en l’exportant ou autre – vous écrivez son nom sans $. Si vous voulez
 # utiliser sa valeur, vous devez utiliser $.
 # Notez qu’entourer une variable de deux guillemets simples (') empêche
 # l’expansion des variables !
 
+# Expansion des paramètres (Parameter expansion) ${ } :
+echo ${VARIABLE} # => Du texte
+# Ceci est une utilisation simple de l'expansion de paramètre.
+# L'expansion de paramètre récupère la valeur d'une variable.
+# Elle « déploie » ou imprime la valeur.
+# Lors de l'expansion, la valeur ou le paramètre peut être modifié.
+# Voici d'autres modifications qui s'ajoutent à cette expansion.
+
 # Substitution de chaîne de caractères dans une variable
 echo ${VARIABLE/Some/A}
 # Ceci va remplacer la première occurrence de « Some » par « A »
 
 # Sous-chaîne d’une variable
-echo ${VARIABLE:0:7}
-# Ceci va retourner seulement les 7 premiers caractères de la valeur
+LONGUEUR=5
+echo ${VARIABLE:0:LONGUEUR} # => Du te
+# Ceci va retourner les 5 premiers caractères de la valeur
+echo ${VARIABLE:LONGUEUR} # => xte
+# Ceci va retourner la valeur sans les 5 premiers caractères
+echo ${VARIABLE: -4} # => exte
+# Ceci va retourner les 4 derniers caractères de la valeur
+# (l'espace avant -4 est nécessaire)
+
+# Longueur d'une chaîne
+echo ${#VARIABLE} # => 8
+
+# Expansion indirecte
+AUTRE_VARIABLE="VARIABLE"
+echo ${!AUTRE_VARIABLE} # => Du texte
+# Cela va utiliser la valeur comme un nom de variable
 
 # Valeur par défaut d’une variable
-echo ${FOO:-"ValeurParDefautSiFOOestVideOuInexistant"}
-# Ceci marche pour null (FOO=), la chaîne de caractères vide (FOO=""). Zéro
-# (FOO=0) retourne 0
+echo ${FOO:-"ValeurParDefaut"}
+# Retourne 'ValeurParDefaut' si FOO n'a pas été déclarée, si
+# FOO est null (FOO=) ou si FOO est une chaîne vide (FOO="").
+# En revanche Zéro (FOO=0) retourne 0
+
+# Les tableaux (array)
+
+array0=(un deux trois quatre cinq six)
+# Déclarer un tableau de 6 éléments  
+
+echo $array0 # => "un"
+# Affiche le premier élément
+
+echo ${array0[0]} # => "un"
+# Affiche le premier élément
+
+echo ${array0[@]} # => "un deux trois quatre cinq six"
+# Affiche tous les éléments
+
+echo ${#array0[@]} # => "6"
+# Attiche le nombre d'éléments
+
+echo ${#array0[2]} # => "5"
+# Affiche le nombre de caractères du troisième élément
+
+echo ${array0[@]:3:2} # => "quatre cinq"
+# Affiche 2 element en à partir du quatrième
+
+for i in "${array0[@]}"; do
+    echo "$i"
+done
+# Affiche tous éléments, chacun sur un nouvelle ligne
+
+# Brace Expansion { }
+# Permet de générer des tableau
+echo {1..12} # => 1 2 3 4 5 6 7 8 9 10 11 12
+echo {100..95} # => 100 99 98 97 96 95
+echo {a..z} # => a b c d e f g h i j k l m n o p q r s t u v w x y z
 
 # Variables pré-remplies :
 # Il y a quelques variables pré-remplies utiles, comme :
@@ -76,6 +140,21 @@ echo "Nombre d’arguments : $#"
 echo "Arguments du script : $@"
 echo "Arguments du script séparés en plusieurs variables : $1 $2..."
 
+# Maintenant que nous savons comment utiliser et afficher des variables,
+# apprenons d'autres fonctionnalités basiques de bash !
+
+# Notre répertoire courant est accessible par la commande `pwd`.
+# `pwd` signifie « imprimer le répertoire de travail ».
+# On peut aussi utiliser la variable intégrée `$PWD`.
+# Observez que les commandes suivantes sont équivalentes :
+echo "Je suis dans $(pwd)" # exécute `pwd` et interpole la sortie
+echo "Je suis dans $PWD" # interprète la variable
+
+# Si vous avez trop de données dans votre terminal, la commande
+# `clear` efface votre écran
+clear
+# Ctrl-L fonctionne aussi pour effacer la sortie.
+
 # Lire une valeur depuis l’entrée standard :
 echo "Quel est votre nom ?"
 read NAME # Notez que l’on n’a pas eu à déclarer une nouvelle variable
@@ -83,16 +162,27 @@ echo Bonjour, $NAME!
 
 # Nous avons l’habituelle structure « if » :
 # Utilisez 'man test' pour plus d’informations à propos des conditions
-if [ $NAME -ne $USER ]
+if [ $NAME != $USER ] # remarque : $USER est le nom l'utilisateur en cours.
 then
     echo "Votre nom n’est pas votre pseudo"
 else
     echo "Votre nom est votre pseudo"
 fi
 
+# Remarque : si $NAME est vide, bash verra la condition précédente comme :
+if [ != $USER ]
+# ce qui est syntaxiquement invalide
+# la bonne façon d'utiliser une variable potentiellement vide en bash est :
+if [ "$NAME" != $USER ]
+# ce qui sera interprété par bash si $NAME est vide comme :
+if [ "" != $USER ]
+
 # Il y a aussi l’exécution conditionnelle
 echo "Toujours exécuté" || echo "Exécuté si la première commande ne réussit pas"
+# Toujours exécuté
 echo "Toujours exécuté" && echo "Exécuté si la première commande réussit"
+# Toujours exécuté
+# Exécuté si la première commande réussit
 
 # Pour utiliser && et || avec des commandes « if, » vous devez utiliser
 # plusieurs paires de crochets :
