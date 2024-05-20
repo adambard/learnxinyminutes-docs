@@ -146,7 +146,7 @@ nil && 20  #=> nil
 1 == 1.0  #=> true
 1 === 1.0 #=> false
 
-# Elixir operators are strict in theiar arguments, with the exception
+# Elixir operators are strict in their arguments, with the exception
 # of comparison operators that work across different data types:
 1 < :hello #=> true
 
