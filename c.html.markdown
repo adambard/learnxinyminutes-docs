@@ -557,8 +557,8 @@ int main (int argc, char** argv)
   printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what? It may even crash
 
   // When you're done with a malloc'd block of memory, you need to free it,
-  // or else no one else can use it until your program terminates (this is
-  // called a "memory leak"):
+  // or else no one else can use it until your program terminates
+  // (this is called a "memory leak"):
   free(my_ptr);
 
   // Strings are arrays of char, but they are usually represented as a
