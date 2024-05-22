@@ -704,7 +704,7 @@ void testFunc2(void) {
 // declared with some other starting value.
 //**You may also declare functions as static to make them private**
 
-// NOTE that before C23, and unlike C++, functions taking no arguments without
+// Note that before C23, and unlike C++, functions taking no arguments without
 // an explicit `void` inside the parameter list will be treated as taking an
 // unknown number of arguments rather than no arguments.
 void testFunc3(void) {
