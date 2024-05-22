@@ -371,8 +371,8 @@ int main (int argc, char** argv)
   printf("\n");
 
   // *****NOTES*****:
-  // If the body of control expression is only one statement than parenthesises
-  // are optional, but often recommended:
+  // If the body of control expression is only one statement then parentheses
+  // are optional, but recommended:
   for (jj = 0; jj < 5; jj++)
       printf("%d\n", jj);
 
