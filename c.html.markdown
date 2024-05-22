@@ -129,8 +129,8 @@ int main (int argc, char** argv)
   short x_short = 0;
 
   // chars are defined as the smallest addressable unit for a processor.
-  // This is usually 1 byte, but for some systems it can be more (ex. for TMS320
-  // from TI it's 2 bytes).
+  // This is usually 1 byte, but for some systems it can be more
+  // (ex. for TMS320 from TI it's 2 bytes).
   char x_char = 0;
   char y_char = 'y'; // Char literals are quoted with ''
 
