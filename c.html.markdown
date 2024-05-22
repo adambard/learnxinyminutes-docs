@@ -899,11 +899,6 @@ as the C file.
 #ifndef EXAMPLE_H /* if EXAMPLE_H is not yet defined. */
 #define EXAMPLE_H /* Define the macro EXAMPLE_H. */
 
-/* This is a less verbose non-standard alternative to the include guards just */
-/* mentioned. While non-standard it avoids errors from the two header files   */
-/* accidentally defining the same macro. Place it at the top of the header.   */
-#pragma once
-
 /* Other headers can be included in headers and therefore transitively */
 /* included into files that include this header.                       */
 #include <string.h>
