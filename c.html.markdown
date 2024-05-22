@@ -381,7 +381,7 @@ int main (int argc, char** argv)
   for (i = 0; i <= 5; i++) {
   }
   // Or
-  for (i = 0; i <= 5; i++); // use semicolon to act as the body (null statement)
+  for (i = 0; i <= 5; i++); // semicolon acts as the body (null statement)
 
   // branching with multiple choices: switch()
   switch (a) {
