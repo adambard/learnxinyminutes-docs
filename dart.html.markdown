@@ -32,7 +32,7 @@ import "dart:math" as math;
 // Single line comment
 /**
 * Multi-line comment
-* Can comment more than 2 lines
+* Can comment more than 1 line
 */
 /// Code doc comment
 /// It uses markdown syntax to generate code docs when making an API.
