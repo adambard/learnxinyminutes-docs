@@ -385,13 +385,11 @@ local a = require('mod2')  -- 打印Hi!
 local b = require('mod2')  -- 不再打印; a=b. 
 
 -- dofile与require类似，但是不缓存： 
-dofile('./mod2.lua')  --> Hi! 
-dofile('./mod2.lua')  --> Hi! (再次运行，与require不同) 
--- 注意：这里与require的区别，这里需要指定文件路径及后缀
+dofile('mod2')  --> Hi! 
+dofile('mod2')  --> Hi! (再次运行，与require不同) 
 
 -- loadfile加载一个lua文件，但是并不运行它。 
-f = loadfile('./mod2.lua')  -- Calling f() runs mod2.lua. 
--- 注意：同dofile一样，需要相对路径和文件后缀
+f = loadfile('mod2')  -- Calling f() runs mod2.lua. 
 
 -- loadstring是loadfile的字符串版本。 
 -- (loadstring已弃用, 使用load代替)
