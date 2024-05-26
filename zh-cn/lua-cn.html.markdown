@@ -361,6 +361,7 @@ return M
 
 -- 另一个文件可以使用mod.lua的功能： 
 local mod = require('mod')  -- 运行文件mod.lua. 
+-- 注意：require 需要配合 LUA_PATH 一起使用 例如：export LUA_PATH="$HOME/workspace/projectName/?.lua;;"
 
 -- require是包含模块的标准做法。 
 -- require等价于:     (针对没有被缓存的情况；参见后面的内容) 
