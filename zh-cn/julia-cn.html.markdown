@@ -93,7 +93,7 @@ false
 # 字符串使用 UTF-8 编码
 # 可以像取数组取值一样用 index 取出对应字符
 ascii("This is a string")[1]
-# => 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase) 
+# => 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)
 # Julia 的 index 从 1 开始 :(
 # 但只有在字符串仅由 ASCII 字符构成时，字符串才能够被安全的引索
 # 因此建议使用遍历器 (map, for loops, 等)
@@ -186,7 +186,7 @@ a[1] # => 1 #  永远记住 Julia 的引索从 1 开始！而不是 0！
 a[end] # => 6
 
 # 数组还支持 popfirst! 和 pushfirst!
-popfirst!(a)  # => 1 
+popfirst!(a)  # => 1
 a # => [2,4,3,4,5,6]
 pushfirst!(a, 7)  # => [7,2,4,3,4,5,6]
 a # => [7,2,4,3,4,5,6]
@@ -200,16 +200,16 @@ arr         # => [4,5,6]
 
 # 数组越界会抛出 BoundsError
 try
-    a[0] 
-    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
+    a[0]
+    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at
     # index [0]
     # => Stacktrace:
     # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
     # =>  [2] top-level scope at none:0
     # =>  [3] ...
     # => in expression starting at ...\LearnJulia.jl:203
-    a[end + 1] 
-    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at 
+    a[end + 1]
+    # => ERROR: BoundsError: attempt to access 7-element Array{Int64,1} at
     # index [8]
     # => Stacktrace:
     # =>  [1] getindex(::Array{Int64,1}, ::Int64) at .\array.jl:731
@@ -234,7 +234,7 @@ a[2:end] # => [2, 3, 4, 5]
 
 # 用 splice! 切割原数组
 arr = [3,4,5]
-splice!(arr, 2) # => 4 
+splice!(arr, 2) # => 4
 arr # => [3,5]
 
 # 用 append! 连接数组
@@ -253,8 +253,8 @@ tup = (1, 2, 3)  # => (1,2,3)
 typeof(tup) # => Tuple{Int64,Int64,Int64}
 tup[1] # => 1
 try
-    tup[1] = 3  
-    # => ERROR: MethodError: no method matching 
+    tup[1] = 3
+    # => ERROR: MethodError: no method matching
     # setindex!(::Tuple{Int64,Int64,Int64}, ::Int64, ::Int64)
 catch e
     println(e)
@@ -266,7 +266,7 @@ tup[1:2]    # => (1,2)
 in(2, tup)  # => true
 
 # 可以将元组的元素解包赋给变量
-a, b, c = (1, 2, 3)  # => (1,2,3)  
+a, b, c = (1, 2, 3)  # => (1,2,3)
 a # => 1
 b # => 2
 c # => 3
@@ -282,7 +282,7 @@ f # => 6
 (1) == 1  # => true
 
 # 交换值
-e, d = d, e  # => (5,4) 
+e, d = d, e  # => (5,4)
 d # => 5
 e # => 4
 
@@ -306,7 +306,7 @@ keys(filled_dict)
 
 # 获得所有值
 values(filled_dict)
-# => Base.ValueIterator for a Dict{String,Int64} with 3 entries. Values: 
+# => Base.ValueIterator for a Dict{String,Int64} with 3 entries. Values:
 # =>  2, 1, 3
 # 注意，值的顺序也一样
 
@@ -368,7 +368,7 @@ end
 # 可迭代的类型包括：Range, Array, Set, Dict 和 AbstractString
 for animal = ["dog", "cat", "mouse"]
     println("$animal is a mammal")
-    # 你可以用 $ 将变量或表达式插入字符串中 
+    # 你可以用 $ 将变量或表达式插入字符串中
 end
 # => dog is a mammal
 # => cat is a mammal
@@ -528,7 +528,7 @@ function create_adder(x)
 end
 # => create_adder (generic function with 1 method)
 
-add_10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64}) 
+add_10 = create_adder(10) # => (::getfield(Main, Symbol("#adder#11")){Int64})
                           # (generic function with 1 method)
 add_10(3)  # => 13
 
@@ -707,7 +707,7 @@ fight(l::Lion, c::Cat) = println("The victorious cat says $(meow(c))")
 
 fight(Lion("balooga!"), Panther())  # => The victorious cat says grrr
 try
-    fight(Panther(), Lion("RAWR"))  
+    fight(Panther(), Lion("RAWR"))
     # => ERROR: MethodError: no method matching fight(::Panther, ::Lion)
     # => Closest candidates are:
     # =>   fight(::Tiger, ::Lion) at ...
@@ -736,7 +736,7 @@ catch e
 end
 # 在不同版本的 Julia 中错误信息可能有所不同
 
-fight(l::Lion, l2::Lion) = println("The lions come to a tie") 
+fight(l::Lion, l2::Lion) = println("The lions come to a tie")
 # => fight (generic function with 5 methods)
 fight(Lion("RAR"), Lion("brown", "rarrr"))  # => The lions come to a tie
 
@@ -749,20 +749,20 @@ square_area(5)  # => 25
 
 # 当我们喂给 square_area 一个整数时会发生什么？
 code_native(square_area, (Int32,), syntax = :intel)
-	#         .text
-	# ; Function square_area {
-	# ; Location: REPL[116]:1       # 函数序言 (Prologue)
-	#         push    rbp
-	#         mov     rbp, rsp
-	# ; Function *; {
-	# ; Location: int.jl:54
-	#         imul    ecx, ecx      # 求 l 的平方，并把结果放在 ECX 中
-	# ;}
-	#         mov     eax, ecx
-	#         pop     rbp           # 还原旧的基址指针(base pointer)
-	#         ret                   # 返回值放在 EAX 中
-	#         nop     dword ptr [rax + rax]
-	# ;}
+    #         .text
+    # ; Function square_area {
+    # ; Location: REPL[116]:1       # 函数序言 (Prologue)
+    #         push    rbp
+    #         mov     rbp, rsp
+    # ; Function *; {
+    # ; Location: int.jl:54
+    #         imul    ecx, ecx      # 求 l 的平方，并把结果放在 ECX 中
+    # ;}
+    #         mov     eax, ecx
+    #         pop     rbp           # 还原旧的基址指针(base pointer)
+    #         ret                   # 返回值放在 EAX 中
+    #         nop     dword ptr [rax + rax]
+    # ;}
 # 使用 syntax 参数指定输出语法。默认为 AT&T 格式，这里指定为 Intel 格式
 
 code_native(square_area, (Float32,), syntax = :intel)
