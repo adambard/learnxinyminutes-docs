@@ -1,6 +1,4 @@
 ---
-name: Gleam
-category: language
 language: Gleam
 contributors:
     - ["Antonio Ognio", "https://github.com/aognio/"]
