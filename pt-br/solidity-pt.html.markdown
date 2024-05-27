@@ -38,7 +38,7 @@ Como Solidity e Ethereum ainda estão sob desenvolvimento, funcionalidades beta
 e experimentais são tipicamente marcadas e sujeitas à mudanças. Pull requests
 são bem-vindos.
 
-```javascript
+```solidity
 // Primeiramente, um contrato de um Banco simples
 // Permite depósitos, retiradas e checagens de saldo
 

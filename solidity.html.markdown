@@ -93,7 +93,7 @@ This will use whatever network is currently selected in your metamask as the net
 For now, please continue to use the `Javascript VM` unless instructed otherwise. When you deploy to a testnet, metamask will pop up to ask you to "confirm" the transaction. Hit yes, and after a delay, you'll get the same contract interface at the bottom of your screen. 
 
 
-```javascript
+```solidity
 // First, a simple Bank contract
 // Allows deposits, withdrawals, and balance checks
 
@@ -720,7 +720,7 @@ contract SomeOracle {
 
 Work with the full example below using the [`Javascript VM` in remix here.](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
 
-```javascript
+```solidity
 // *** EXAMPLE: A crowdfunding example (broadly similar to Kickstarter) ***
 // ** START EXAMPLE **
 
@@ -860,7 +860,7 @@ contract CrowdFunder {
 
 Some more functions. 
 
-```javascript
+```solidity
 // 10. OTHER NATIVE FUNCTIONS
 
 // Currency units

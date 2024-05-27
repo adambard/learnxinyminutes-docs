@@ -5,7 +5,7 @@ contributors:
     - ["Dean Shaff", "http://dean-shaff.github.io"]
 ---
 
-```
+```wast
 ;; learn-wasm.wast
 
 (module

@@ -7,7 +7,7 @@ contributors:
 filename: learn-emacs-lisp.el
 ---
 
-```scheme
+```elisp
 ;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2d)
 ;;
 ;; First make sure you read this text by Peter Norvig:

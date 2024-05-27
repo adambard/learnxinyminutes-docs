@@ -19,7 +19,7 @@ F#'ın söz dizimi C-stili dillerden farklıdır:
 
 Aşağıdaki kodu denemek istiyorsanız, [tryfsharp.org](http://www.tryfsharp.org/Create)'a gidin be interaktif REPL'e kodu yapıştırın.
 
-```csharp
+```fsharp
 // tek satır yorumlar ikili bölme işareti ile başlar
 (* çok satırlı yorumlar ( * . . . * ) ikilisini kullanır
 

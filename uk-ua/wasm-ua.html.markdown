@@ -8,7 +8,7 @@ translators:
     - ["Oleh Hromiak", "https://github.com/ogroleg"]
 ---
 
-```
+```wast
 ;; learnwasm-ua.wast
 
 (module

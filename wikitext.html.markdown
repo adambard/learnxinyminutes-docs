@@ -26,9 +26,9 @@ Section headings are bracketed by `=`. They go from `= One equal sign =` to `===
 
 Note that the `= One equal sign =` heading actually corresponds to the title of the page, and so cannot actually be used within a page. Consequently, the least number of equal signs is `== Two equal signs ==`.
 
-Subscripts and superscripts can be written as `x<sub>1</sub>` and `x<sup>1</sup>`. Alternatively they can be written by the `<math>` tag (see below). `<small>Small</small>` and `<big>big</big>` texts are rarely used. 
+Subscripts and superscripts can be written as `x<sub>1</sub>` and `x<sup>1</sup>`. Alternatively they can be written by the `<math>` tag (see below). `<small>Small</small>` and `<big>big</big>` texts are rarely used.
 
-```
+```wikitext
 Colons allow indentation
    :Each colon creates an indentation three characters wide.
       ::and they can be nested.
@@ -42,21 +42,22 @@ The syntax for tables is [very complicated](https://en.wikipedia.org/wiki/Help:T
 
 ```wikitext
 {| class="wikitable"
-|+ 
-! column title A 
-! column title B 
+|+
+! column title A
+! column title B
 |-
-| cell A1 
-| cell B1 
+| cell A1
+| cell B1
 |-
-| cell A2 
-| cell B2 
+| cell A2
+| cell B2
 |-
-| ... 
-| ... 
+| ...
+| ...
 |}
 ```
-which renders to 
+
+which renders to
 | **column title A** | **column title B** |
 |---|---|
 | cell A1 | cell B1 |
@@ -67,13 +68,16 @@ Be warned that the newlines in a wikitext table are meaningful. Deleting a singl
 You can insert images, audios, videos, or other forms of media by `[[File:Image.png|thumb|right|Image caption]]`. All media files must be hosted on [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page).
 
 You can insert quotations either by HTML-like tag
+
 ```wikitext
 <blockquote>
 <p>Quotation text.</p>
 <p>Name, source, reference</p>
 </blockquote>
 ```
+
 or [template](#templates)
+
 ```wikitext
 {{Quote|text=Quotation text.|title=Title|author=Author|source=Location in the publication}}
 ```
@@ -82,7 +86,8 @@ A "[non-breaking space](https://en.wikipedia.org/wiki/Non-breaking_space)" is a 
 
 Extra whitespaces can be specified by `pad` tag. For example, `{{pad|4.0em}}` is a white space with length 4.0 [em-dashes](https://en.wikipedia.org/wiki/Dash#Em_dash).
 
-Longer code blocks can be done by 
+Longer code blocks can be done by
+
 ```wikitext
 <syntaxhighlight lang="cpp">
 #include <iostream>
@@ -91,7 +96,9 @@ int m2 (int ax, char *p_ax) {
   return 0;
 }</syntaxhighlight>
 ```
-which renders to 
+
+which renders to
+
 ```cpp
 #include <iostream>
 int m2 (int ax, char *p_ax) {
@@ -102,13 +109,13 @@ int m2 (int ax, char *p_ax) {
 
 ## Linking
 
-Basic `[[linking]]` is done by double brackets. 
+Basic `[[linking]]` is done by double brackets.
 
-The `|` symbol allows displaying a `[[Actual page title|different text]]`. 
+The `|` symbol allows displaying a `[[Actual page title|different text]]`.
 
 The `#` symbol allows linking to sections within a text, like `[[Frog#Locomotion]]` or `[[Frog#Locomotion|locomotion in frogs]]`.
 
-If a word is interrupted by a link, it is "blended" into the link. For example, `[[copy edit]]ors` renders to [copy editors](https://en.wikipedia.org/wiki/copy_edit). 
+If a word is interrupted by a link, it is "blended" into the link. For example, `[[copy edit]]ors` renders to [copy editors](https://en.wikipedia.org/wiki/copy_edit).
 
 To suppress this behavior, use `<nowiki>`. For example, `[[micro-]]<nowiki />second` renders to [micro-](https://en.wikipedia.org/wiki/micro-)second.
 
@@ -130,6 +137,7 @@ The most (in)famous one is the \[citation needed\]`{{cn}}` template. Note that `
 An `infobox` template is, as it says, a template for a box containing information. Usually, each page contains at most two infoboxes, one on top and one on bottom. For particularly detailed pages, there can be more than two.
 
 The infobox on the top is usually used to compactly display tabular information. They are common for biographies, geographical locations, and such. For example, the top infobox for [Euler](https://en.wikipedia.org/wiki/Leonhard_Euler) is:
+
 ```wikitext
 {{Infobox scientist
 | name              = Leonhard Euler
@@ -144,12 +152,11 @@ The infobox on the top is usually used to compactly display tabular information.
 
 The infobox at the bottom is usually used to display a curated table of related links. For example, the bottom infobox for [Euler–Lagrange equation](https://en.wikipedia.org/wiki/Euler%E2%80%93Lagrange_equation) is just `{{Leonhard Euler}}`, which displays a box containing links to many of the things named after Euler.
 
-
 `~~~~` is used to sign on talk pages, and expands to something like `Username (talk) 10:50, 12 June 2023 (UTC)`.
 
 ### Mathematics
 
-`<math>` tag renders $\LaTeX$ inline like `$`, while `<math display=block>` renders it on a separate line like `$$`. 
+`<math>` tag renders $\LaTeX$ inline like `$`, while `<math display=block>` renders it on a separate line like `$$`.
 
 `<math>E = mc^2</math>` renders to $E = mc^2$.
 
@@ -157,9 +164,9 @@ The infobox at the bottom is usually used to display a curated table of related 
 
 One can also include math using [HTML renders](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Mathematics#Using_HTML) or even by [plain Unicode](https://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode). These are less flexible but more compatible with older browsers. Further, parts of Wikipedia syntax themselves are incompatible with `<math>`, such as in section titles or some templates, forcing the use of HTML or Unicode in such cases.
 
-Theorems and proofs can be boxed and named: 
+Theorems and proofs can be boxed and named:
 
-```
+```wikitext
 {{Math theorem
 |name=Pythagorean theorem
 |note=Pythagoras, 500s BC
@@ -171,12 +178,11 @@ Theorems and proofs can be boxed and named:
 |title=Proof by similar triangles
 |proof=Drop a perpendicular from point C to side AB. Now argue by proportionality. <math>\blacksquare</math>
 }}
-
 ```
 
 ## References
 
-References are the backbone of Wikipedia `{{citation needed}}`. There are in general two ways to do citations. 
+References are the backbone of Wikipedia `{{citation needed}}`. There are in general two ways to do citations.
 
 | type | inline citation | expanded citation |
 | ---- | ---- | ---- |
@@ -187,10 +193,9 @@ References are the backbone of Wikipedia `{{citation needed}}`. There are in gen
 
 As expanded citations are just inline citations without the `<ref>` tag, we will describe just inline citations.
 
-The most basic form is a plaintext citation, like `<ref>Author, Title, date, [url](https://example.com/), etc</ref>`. 
+The most basic form is a plaintext citation, like `<ref>Author, Title, date, [url](https://example.com/), etc</ref>`.
 
 One should generally use a templated citation, like `<ref>{{cite web|url=https://example.com/|title=Example|date=2001|access-date=2023}}</ref>`. There are three forms of citation templates: [`cite web`](https://en.wikipedia.org/wiki/Template:Cite_web), [`cite journal`](https://en.wikipedia.org/wiki/Template:Cite_journal), [`cite book`](https://en.wikipedia.org/wiki/Template:Cite_book).
-
 
 A citation can be named as `<ref name="X">...</ref>`. It can then be invoked as `<ref name="X" />`. The instance `<ref name="X">...</ref>` can go before or after `<ref name="X" />`. Any ordering would render to the same page.
 
@@ -234,7 +239,7 @@ Something about the relation between X and Y.
 
 == References ==
 <!-- generates list of references from inline reference tags, with columns with a minimum width of 30 em-dashes. -->
-{{Reflist|30em}} 
+{{Reflist|30em}}
 
 <!-- extra, non-inlined references below -->
 {{Refbegin|30em}}
@@ -255,6 +260,6 @@ Something about the relation between X and Y.
 ## Further reading
 
 * [Wikipedia's manual of style](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style)
-* [Wikitext cheatsheet](https://en.wikipedia.org/wiki/Help:Cheatsheet) 
+* [Wikitext cheatsheet](https://en.wikipedia.org/wiki/Help:Cheatsheet)
 * [Wikitext, full reference](https://en.wikipedia.org/wiki/Help:Wikitext).
 * [Tables, full reference](https://en.wikipedia.org/wiki/Help:Table#Simple_straightforward_tables)

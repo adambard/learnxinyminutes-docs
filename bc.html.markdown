@@ -4,7 +4,7 @@ contributors:
     - ["Btup"]
 filename: learnbc.bc
 ---
-```c
+```bc
 /*This is a multi-
 line comment.*/
 # This is also a (one-line) comment! (in GNU bc).
@@ -29,12 +29,12 @@ hour = read() /*Input a number*/
 
 if(hour < 12) { /*Operators are exactly like C.*/
     print "Good morning\n" /*"print" outputs strings or variables
-	separated by commas.*/
+    separated by commas.*/
 } else if(hour == 12) {
     print "Hello\n"
     /*Escaping sequences start with a \ in a string.
     In order to make the escaping sequences clearer, here
-	is a simplified list of them that will work in bc:
+    is a simplified list of them that will work in bc:
     \b: backspace
     \c: carriage return
     \n: newline
