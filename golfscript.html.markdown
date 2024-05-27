@@ -31,7 +31,7 @@ of GolfScript, you can start running from "stdin". If you see a script starting 
 it was probably designed to be dropped in a file and run with `golfscript file.gs`.  You
 can pipe in or enter in your input at runtime.
 
-```golfscript
+```
 > anything undefined technically evaluates to nothing and so is also a comment
 # but commenting it out explicitly anyway is probably a good idea because if
 # you use a reserved keyword or any punctuation you'll run into trouble.
