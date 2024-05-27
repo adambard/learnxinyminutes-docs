@@ -26,7 +26,7 @@ code in browser or any other JS-enabled runtime. When using this feature,
 TypeScript definitions get created, so you can interact with your Gleam code
 confidently, even from the outside.
 
-```gleam
+```
 //// This comment with four slashes is a module-level.
 //// This kind of comments are used to describe the whole module.
 
