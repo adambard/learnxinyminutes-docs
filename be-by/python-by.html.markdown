@@ -12,7 +12,7 @@ contributors:
     - ["Stanislav Modrak", "https://stanislav.gq"]
     - ["John Paul Wohlscheid", "https://gitpi.us"]
 translators:
-    - ["lucii7vel", "https://https://github.com/lucii7vel"]
+    - ["lucii7vel", "https://github.com/lucii7vel"]
 filename: learnpython-by.py
 lang: be-by
 ---
