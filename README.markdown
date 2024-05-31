@@ -1,7 +1,5 @@
 # [Learn X in Y minutes][1]
 
-[![Build Status](https://travis-ci.org/adambard/learnxinyminutes-docs.svg?branch=master)](https://travis-ci.org/adambard/learnxinyminutes-docs)
-
 Whirlwind tours of (several, hopefully many someday) popular and
 ought-to-be-more-popular programming languages, presented as valid, commented
 code and explained as they go.
