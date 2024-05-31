@@ -8,14 +8,9 @@ translators:
     - ["Claudson Martins", "https://github.com/claudsonm"]
 lang: pt-br
 filename: learnmatlab-pt.mat
-
 ---
 
 MATLAB significa MATrix LABoratory. É uma poderosa linguagem de computação numérica geralmente utilizada em engenharia e matemática.
-
-Se você tem algum feedback, por favor fique a vontade para me contactar via
-[@the_ozzinator](https://twitter.com/the_ozzinator), ou
-[osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
 
 ```matlab
 % Comentários iniciam com um sinal de porcentagem
@@ -485,10 +480,10 @@ perms(x) % Lista todas as permutações de elementos de x
 % Início ClassePosicoesGPS.m
 classdef ClassePosicoesGPS % O nome da classe.
   properties % As propriedades da classe comportam-se como estruturas
-    latitude 
-    longitude 
+    latitude
+    longitude
   end
-  methods 
+  methods
     % Este método que tem o mesmo nome da classe é o construtor.
     function obj = ClassePosicoesGPS(lat, lon)
       obj.latitude = lat;
@@ -535,4 +530,3 @@ c = a + b
 
 * O site oficial [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
 * O fórum oficial de respostas: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
-

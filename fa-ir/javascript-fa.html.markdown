@@ -14,13 +14,6 @@ lang: fa-ir
 </p>
 
 <p dir='rtl'>
-قدر دان نظرات سازنده شما هستم! شما میتوانید از طریق زیر با من تماس بگیرید:
-</p>
-
-[@ExcitedLeigh](https://twitter.com/ExcitedLeigh), or
-[l@leigh.net.au](mailto:l@leigh.net.au).
-
-<p dir='rtl'>
 // توضیحات همانند C هستند. توضیحات یک خطی با دو خط مورب شروع میشوند.,
 </p>
 
