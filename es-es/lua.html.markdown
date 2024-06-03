@@ -419,7 +419,7 @@ g()  -- Imprime '343', nada es impreso antes de esto.
 ## Referencias
 
 Estaba emocionado por aprender lua para poder crear juegos
-con el motor de juegos [Love 2D](http://love2d.org/). Ese es el por qué.
+con el motor de juegos [LÖVE](http://love2d.org/). Ese es el por qué.
 
 Empecé con [BlackBulletIV para programadores Lua](https://ebens.me/posts/lua-for-programmers-part-1/).
 Luego, leí el libro oficial de [Programación en Lua](http://www.lua.org/pil/contents.html).
@@ -433,10 +433,10 @@ Los principales temas no cubiertos son las librerías estándar:
 * [Librería de strings](http://lua-users.org/wiki/StringLibraryTutorial)
 * [Librería de tablas](http://lua-users.org/wiki/TableLibraryTutorial)
 * [Librería de matemáticas](http://lua-users.org/wiki/MathLibraryTutorial)
-* [Librería de Entrada/Salida (io)](http://lua-users.org/wiki/IoLibraryTutorial)
-* [Libreria de Sistema Operativo (os)](http://lua-users.org/wiki/OsLibraryTutorial)
+* [Librería de Entrada/Salida (`io`)](http://lua-users.org/wiki/IoLibraryTutorial)
+* [Libreria de Sistema Operativo (`os`)](http://lua-users.org/wiki/OsLibraryTutorial)
 
 Por cierto, el archivo entero es código Lua válido. ¡Guárdelo como
-aprendiendo.lua y ejecútelo con el comando "lua aprendiendo.lua" !
+aprendiendo.lua y ejecútelo con el comando "`lua aprendiendo.lua`" !
 
 ¡Que se divierta con lua!

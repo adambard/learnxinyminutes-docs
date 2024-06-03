@@ -21,7 +21,7 @@ lang: de-de
 
 num = 42  -- Alle Nummern sind vom Typ: Double.
 -- Werd nicht nervös, 64-Bit Double haben 52 Bits zum Speichern von exakten
--- Ganzzahlen; Maschinen-Genauigkeit ist kein Problem für Ganzzahlen kleiner als 
+-- Ganzzahlen; Maschinen-Genauigkeit ist kein Problem für Ganzzahlen kleiner als
 -- 52 Bit.
 
 s = 'walternate'  -- Zeichenketten sind unveränderlich, wie bei Python.
@@ -404,23 +404,22 @@ g()  -- Ausgabe 343; Vorher kam keine Ausgabe.
 
 ## Referenzen
 
-Ich war so begeistert Lua zu lernen, damit ich Spiele mit <a href="http://love2d.org/">Love 2D game engine</a> programmieren konnte.
+Ich war so begeistert Lua zu lernen, damit ich Spiele mit [LÖVE game engine](http://love2d.org/) programmieren konnte.
 
-Ich habe angefangen mit <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
-Danach habe ich das offizielle Lua Buch gelesen: <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a>
+Ich habe angefangen mit [BlackBulletIV's Lua for programmers](http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/).
+Danach habe ich das offizielle Lua Buch gelesen: [Programming in Lua](http://www.lua.org/pil/contents.html)
 
-Es kann auch hilfreich sein hier vorbeizuschauen: <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Lua short
-reference</a>
+Es kann auch hilfreich sein hier vorbeizuschauen: [Lua short reference](http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf)
 
 Wichtige Themen die hier nicht angesprochen wurden; die Standard-Bibliotheken:
 
-* <a href="http://lua-users.org/wiki/StringLibraryTutorial">string library</a>
-* <a href="http://lua-users.org/wiki/TableLibraryTutorial">table library</a>
-* <a href="http://lua-users.org/wiki/MathLibraryTutorial">math library</a>
-* <a href="http://lua-users.org/wiki/IoLibraryTutorial">io library</a>
-* <a href="http://lua-users.org/wiki/OsLibraryTutorial">os library</a>
+* [`string` library](http://lua-users.org/wiki/StringLibraryTutorial)
+* [`table` library](http://lua-users.org/wiki/TableLibraryTutorial)
+* [`math` library](http://lua-users.org/wiki/MathLibraryTutorial)
+* [`io` library](http://lua-users.org/wiki/IoLibraryTutorial)
+* [`os` library](http://lua-users.org/wiki/OsLibraryTutorial)
 
 Übrigends, die gesamte Datei ist gültiges Lua. Speichere sie als learn.lua und
-starte sie als "lua learn.lua" !
+starte sie als "`lua learn.lua`" !
 
-Die Erstfassung ist von tylerneylon.com, und ist auch hier verfügbar: <a href="https://gist.github.com/tylerneylon/5853042">GitHub gist</a>. Viel Spaß mit Lua!
+Die Erstfassung ist von tylerneylon.com, und ist auch hier verfügbar: [GitHub gist](https://gist.github.com/tylerneylon/5853042). Viel Spaß mit Lua!
