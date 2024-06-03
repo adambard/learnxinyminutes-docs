@@ -26,8 +26,8 @@ http --offline https://api.example.com/posts
 
 ### URL shortcuts for `localhost`
 
-HTTPie supports a curl-like shorthand for localhost. For instance, ":3000"
-expands to "http://localhost:3000". If the port is omitted, it assumes port 80.
+HTTPie supports a curl-like shorthand for localhost. For instance, `:3000`
+expands to `http://localhost:3000`. If the port is omitted, it assumes port 80.
 
 ```bash
 http :/users    # http://localhost/users
@@ -47,7 +47,6 @@ http https://api.example.com/tags title="Tutorial" slug="tutorial" # POST a new 
 ```
 
 ## Querystring Parameters
-
 
 If you're manually adding query string parameters in the terminal, try the
 `param==value` syntax. It avoids shell escaping for & separators and
@@ -116,5 +115,5 @@ http --follow GET https://example.com  # Follow Redirects
 
 ## Further Reading
 
-- [Official Documentation](https://httpie.io/docs/cli).
-- [GitHub](https://github.com/httpie).
+- [Official Documentation](https://httpie.io/docs/cli)
+- [GitHub](https://github.com/httpie)

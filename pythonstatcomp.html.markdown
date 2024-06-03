@@ -13,7 +13,7 @@ This is a tutorial on how to do some typical statistical programming tasks using
 """ To get started, pip install the following: jupyter, numpy, scipy, pandas,
     matplotlib, seaborn, requests.
         Make sure to do this tutorial in a Jupyter notebook so that you get
-    the inline plots and easy documentation lookup. The shell command to open 
+    the inline plots and easy documentation lookup. The shell command to open
     one is simply `jupyter notebook`, then click New -> Python.
 """
 
@@ -227,8 +227,9 @@ sns.lmplot("BirthY", "EstAge", data=hre)
 
 If you want to learn more, get _Python for Data Analysis_ by Wes McKinney. It's a superb resource and I used it as a reference when writing this tutorial.
 
-You can also find plenty of interactive IPython tutorials on subjects specific to your interests, like Cam Davidson-Pilon's <a href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/" Title="Probabilistic Programming and Bayesian Methods for Hackers">Probabilistic Programming and Bayesian Methods for Hackers</a>.
+You can also find plenty of interactive IPython tutorials on subjects specific to your interests, like Cam Davidson-Pilon's [Probabilistic Programming and Bayesian Methods for Hackers](http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/).
 
 Some more modules to research:
-   - text analysis and natural language processing: nltk, http://www.nltk.org
-   - social network analysis: igraph, http://igraph.org/python/
+
+   - text analysis and natural language processing: [nltk](http://www.nltk.org)
+   - social network analysis: [igraph](http://igraph.org/python/)

@@ -29,6 +29,7 @@ filename: LearnVim-fa.txt
 ```
 vim <filename>   # Open <filename> in vim
 ```
+
 <p dir="rtl">
 باز کردن help docs های `<topic>` اگر وجود داشته باشد
 </p>

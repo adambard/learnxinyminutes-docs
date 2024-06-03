@@ -231,8 +231,9 @@ sns.lmplot("BirthY", "EstAge", data=hre);
 
 Si quieres aprender más, obtén _Python for Data Analysis_ por Wes McKinney. Es un extraordinario recurso usado como referencia para escribir este tutorial.
 
-También puedes encontrar gran cantidad de tutoriales interactivos de IPython en temas específicos a tus intereses, como Pilon de Cam Davidson <a href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/" Title="Probabilistic Programming and Bayesian Methods for Hackers">Probabilistic Programming and Bayesian Methods for Hackers</a>.
+También puedes encontrar gran cantidad de tutoriales interactivos de IPython en temas específicos a tus intereses, como Pilon de Cam Davidson [Probabilistic Programming and Bayesian Methods for Hackers](http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/).
 
 Ver más módulos para investigar:
-   - análisis de texto y procesamiento natural del lenguaje: nltk, http://www.nltk.org
-   - análisis de redes sociales: igraph, http://igraph.org/python/
+
+   - análisis de texto y procesamiento natural del lenguaje: [nltk](http://www.nltk.org)
+   - análisis de redes sociales: [igraph](http://igraph.org/python/)

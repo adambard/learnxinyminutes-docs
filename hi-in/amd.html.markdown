@@ -198,12 +198,12 @@ $ r.js -o app.build.js
 * [उन्नत विन्यास](http://requirejs.org/docs/api.html#config)
 * [शिम विन्यास (गैर एएमडी मॉड्यूल लोडिंग)](http://requirejs.org/docs/api.html#config-shim)
 * [सीएसएस लदान और require.js साथ अनुकूलन](http://requirejs.org/docs/optimization.html#onecss)
-* [बनाता है के लिए almond.js का प्रयोग](Https://github.com/jrburke/almond)
+* [बनाता है के लिए almond.js का प्रयोग](https://github.com/jrburke/almond)
 
 ### अग्रिम पठन:
 
 * [सरकारी कल्पना](https://github.com/amdjs/amdjs-api/wiki/AMD)
-* [क्यों एएमडी?](Http://requirejs.org/docs/whyamd.html)
+* [क्यों एएमडी?](http://requirejs.org/docs/whyamd.html)
 * [यूनिवर्सल मॉड्यूल परिभाषा](https://github.com/umdjs/umd)
 
 ### कार्यान्वयन:

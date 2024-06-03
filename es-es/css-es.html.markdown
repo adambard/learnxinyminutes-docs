@@ -23,7 +23,7 @@ codigo CSS esta hecho de *reglas* estaticas. Cada regla toma uno o mas *selector
 Esta guia ha sido escrita con CSS 2 en mente, la cual es extendida por una nueva caracterica de CSS 3.
 
 **NOTA:** Debido a que CSS produce resultados visuales, para aprenderlo, necesitas
-Probar todo en un patio de juegos CSS como [dabblet] (http://dabblet.com/).
+Probar todo en un patio de juegos CSS como [dabblet](http://dabblet.com/).
 El objetivo principal de este artículo es la sintaxis y algunos consejos generales.
 
 ## Sintaxis
@@ -31,7 +31,7 @@ El objetivo principal de este artículo es la sintaxis y algunos consejos genera
 ```css
 /* Los comentarios aparecen dentro  de un diagonal-asterisco, justo como esta linea
    no hay "comentarios en una linea"; este es el unico estilo de comentario.*/
- 
+
 
 /* ####################
    ## SELECTORS
@@ -176,7 +176,7 @@ selector {
     border-style:solid;
     border-color:red;      /* similar to how background-color is set */
     border: 5px solid red; /* this is a short hand approach for the same */
-    border-radius:20px;    /* this is a CSS3 property */    
+    border-radius:20px;    /* this is a CSS3 property */
 
     /* Images as backgrounds of elements */
     background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
@@ -323,5 +323,3 @@ a new feature.
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
 * [SASS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing
 * [CSS-Tricks](https://css-tricks.com)
-
-

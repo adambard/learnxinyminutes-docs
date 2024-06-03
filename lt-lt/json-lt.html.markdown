@@ -18,9 +18,10 @@ Failo plėtinys JSON failams yra „.json“, o MIME tipas yra „application/js
 
 Dauguma programavimo kalbų palaiko JSON duomenų serializaciją (kodavimą) ir deserializaciją (dekodavimą) į natyviasias duomenų struktūras. Javascript turi visišką JSON teksto kaip duomenų manipuliavimo palaikymą.
 
-Daugiau informacijos galima rasti http://www.json.org/
+Daugiau informacijos galima rasti [json.org](http://www.json.org/)
 
 JSON yra pastatytas iš dviejų struktūrų:
+
 * Vardų/reikšmių porų rinkinys. Daugomoje kalbų, tai yra realizuojama kaip objektas, įrašas, struktūra, žodynas, hash lentelė, sąrašas su raktais arba asociatyvusis masyvas.
 * Rūšiuotas reikšmių sąrašas. Daugumoje kalbų, toks sąrašas yra realizuojama kaip masyvas, vektorius, sąrašas arba seka.
 

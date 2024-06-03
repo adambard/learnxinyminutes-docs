@@ -24,8 +24,7 @@ php composer.phar about
 curl -sS https://getcomposer.org/installer | php -- --install-dir=~/bin --filename=composer
 ```
 
-Usuários Windows devem seguir as Instruções de instalação para Windows:
-https://getcomposer.org/doc/00-intro.md#installation-windows (EN)
+Usuários Windows devem seguir as [Instruções de instalação para Windows](https://getcomposer.org/doc/00-intro.md#installation-windows) (EN)
 
 ## Confirmando a instalação
 

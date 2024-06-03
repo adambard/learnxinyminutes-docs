@@ -29,8 +29,8 @@ http --offline https://api.example.com/posts
 
 ### Encurtando URLs `localhost`
 
-HTTPie fornece suporte a atalhos para o localhost, similares aos do `curl`. Por exemplo, ":3000"
-expande para "http://localhost:3000". Se a porta for omitida, o padrão será a porta 80.
+HTTPie fornece suporte a atalhos para o localhost, similares aos do `curl`. Por exemplo, `:3000`
+expande para `http://localhost:3000`. Se a porta for omitida, o padrão será a porta 80.
 
 ```bash
 http :/users    # http://localhost/users
@@ -118,5 +118,5 @@ http --follow GET https://example.com  # Segue redirecionamentos
 
 ## Leitura Adicional
 
-- [Documentação Oficial](https://httpie.io/docs/cli).
-- [GitHub](https://github.com/httpie).
+- [Documentação Oficial](https://httpie.io/docs/cli)
+- [GitHub](https://github.com/httpie)

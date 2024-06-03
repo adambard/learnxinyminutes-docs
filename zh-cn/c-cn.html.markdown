@@ -73,7 +73,7 @@ char y_char = 'y'; // 字符变量的字面值需要用单引号包住
 // long型（长整型）一般需要4个字节到8个字节; 而long long型则至少需要8个字节（64位）
 
 long x_long = 0;
-long long x_long_long = 0; 
+long long x_long_long = 0;
 
 // float一般是用32位表示的浮点数字
 float x_float = 0.0;
@@ -93,7 +93,7 @@ unsigned long long ux_long_long;
 'A' // => 在ASCII字符集中是65
 
 // char类型一定会占用1个字节，但是其他的类型却会因具体机器的不同而各异
-// sizeof(T) 可以返回T类型在运行的机器上占用多少个字节 
+// sizeof(T) 可以返回T类型在运行的机器上占用多少个字节
 // 这样你的代码就可以在各处正确运行了
 // sizeof(obj)返回表达式（变量、字面量等）的尺寸
 printf("%zu\n", sizeof(int)); // => 4 (大多数的机器字长为4)
@@ -144,7 +144,7 @@ char a_string[20] = "This is a string";
 printf("%s\n", a_string); // %s 可以对字符串进行格式化
 /*
 也许你会注意到 a_string 实际上只有16个字节长.
-第17个字节是一个空字符(NUL) 
+第17个字节是一个空字符(NUL)
 而第18, 19 和 20 个字符的值是未定义。
 */
 
@@ -365,7 +365,7 @@ for (xx=0; xx<20; xx++) {
 
 // 声明一个整型的指针，并初始化为指向x_array
 int* x_ptr = x_array;
-// x_ptr现在指向了数组的第一个元素(即整数20). 
+// x_ptr现在指向了数组的第一个元素(即整数20).
 // 这是因为数组通常衰减为指向它们的第一个元素的指针。
 // 例如，当一个数组被传递给一个函数或者绑定到一个指针时，
 //它衰减为(隐式转化为）一个指针。
@@ -533,7 +533,7 @@ int area(const rect *r)
 例子：通过指针调用str_reverse
 */
 void str_reverse_through_pointer(char *str_in) {
-    // 定义一个函数指针 f. 
+    // 定义一个函数指针 f.
     void (*f)(char *); // 签名一定要与目标函数相同
     f = &str_reverse; // 将函数的地址在运行时赋给指针
     (*f)(str_in); // 通过指针调用函数
@@ -549,7 +549,7 @@ typedef void (*my_fnp_type)(char *);
 
 // 实际声明函数指针会这么用:
 // ...
-// my_fnp_type f; 
+// my_fnp_type f;
 
 // 特殊字符
 '\a' // bell
@@ -610,13 +610,10 @@ typedef void (*my_fnp_type)(char *);
 
 最好找一本 [K&R, aka "The C Programming Language", “C程序设计语言”](https://en.wikipedia.org/wiki/The_C_Programming_Language)。它是关于C最重要的一本书，由C的创作者撰写。不过需要留意的是它比较古老了，因此有些不准确的地方。
 
-
-另一个比较好的资源是 [Learn C the hard way](http://learncodethehardway.org/c/)
-
 如果你有问题，请阅读[compl.lang.c Frequently Asked Questions](http://c-faq.com/)。
 
 使用合适的空格、缩进，保持一致的代码风格非常重要。可读性强的代码比聪明的代码、高速的代码更重要。可以参考下[Linux内核编码风格](https://www.kernel.org/doc/Documentation/process/coding-style.rst)
 。
 除了这些，多多Google吧
 
-[1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
+[1] [stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member](http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)

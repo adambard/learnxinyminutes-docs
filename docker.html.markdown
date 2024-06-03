@@ -12,7 +12,7 @@ contributors:
 Docker is a tool that helps you build, test, ship and run applications
 seamlessly across various machines. It replicates the environment our software
 needs on any machine. You can get Docker for your machine from
-https://docs.docker.com/get-docker/
+[docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 
 It has grown in popularity over the last decade due to being lightweight and
 fast as compared to virtual-machines that are bulky and slow. Unlike VMs, docker
@@ -65,7 +65,6 @@ in a limited capacity architecture.
 │             Hardware Infrastructure              │
 └──────────────────────────────────────────────────┘
             (Docker based architecture)
-
 </pre>
 
 Couple of terms we will encounter frequently are Docker Images and Docker
@@ -148,7 +147,7 @@ $ docker ps -a
 
 $ docker stop hello-world
 # or
-$ docker start hello-world 
+$ docker start hello-world
 # The stop command simply stops one or more containers, and the start command
 # starts the container(s) up again! `docker start -a ubuntu` will attach our
 # detached container back to the terminal i.e. runs in the foreground
@@ -174,7 +173,7 @@ $ docker images
 # alpine        latest    9c6f07244728   3 months ago    5.54MB
 # hello-world   latest    feb5d9fea6a5   13 months ago   13.3kB
 
-$ docker rmi 
+$ docker rmi
 # Removes one or more images from your system which do not have their instances
 # (or containers as we know them) running. If the image has an attached
 # container, either delete the container first or use the -f (or --force) flag
@@ -204,12 +203,13 @@ $ docker logs <container-id>
 
 ## The Dockerfile
 The Dockerfile is a blueprint of a Docker image. We can mention the artifacts
-from our application along with their configurations into this file in the 
+from our application along with their configurations into this file in the
 specific syntax to let anyone create a Docker image of our application.
 
 ### A few things to keep in mind:
+
 * It is always strictly named `Dockerfile` without any extensions
-* We have to build our custom image on top of some already available Docker base 
+* We have to build our custom image on top of some already available Docker base
 image. (there is an empty image called `scratch` which literally lets you build
 an image from scratch)
 * All capitalised commands are part of the syntax, they are not case-sensitive
@@ -236,7 +236,7 @@ ENTRYPOINT ["some-script.sh"]
 # executes an entire script as an entrypoint
 
 CMD [<args>,...]
-# always part of dockerfile, introduces entry point linux command e.g. 
+# always part of dockerfile, introduces entry point linux command e.g.
 # `CMD node server.js`
 # This executes after image creation only when the container from the image
 # is running.
@@ -263,7 +263,7 @@ password on Docker Hub.
 
 When pushing an image to Docker Hub, we must specify our Docker Hub username
 as part of the source image name. We need to create the target image with the
-tag name of username/image-name much like GitHub repositories. 
+tag name of username/image-name much like GitHub repositories.
 
 ```bash
 $ docker login

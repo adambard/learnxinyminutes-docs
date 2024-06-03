@@ -143,7 +143,7 @@ logger("Tenemos una subrutina logger!");
 
 #### Utilizando módulos Perl
 
-Los módulos en Perl proveen de una gama de funciones que le pueden ayudar a evitar reinventar la rueda. Éstas se pueden  descargar desde CPAN ( http://www.cpan.org/ ). Algunos de los módulos más populares ya están incluidos con la misma distribución de Perl.
+Los módulos en Perl proveen de una gama de funciones que le pueden ayudar a evitar reinventar la rueda. Éstas se pueden  descargar desde [CPAN](http://www.cpan.org/). Algunos de los módulos más populares ya están incluidos con la misma distribución de Perl.
 
 perlfaq contiene preguntas y respuestas relacionadas con muchas tareas comunes, y algunas veces provee sugerencias sobre buenos módulos de CPAN que puede usar.
 
