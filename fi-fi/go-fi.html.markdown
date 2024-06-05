@@ -438,4 +438,4 @@ lähdekoodi tulee esille!
 Toinen loistava paikka oppia on [Go by example](https://gobyexample.com/).
 
 Go Mobile lisää tuen mobiilialustoille (Android ja iOS). Voit kirjoittaa pelkällä Go:lla natiiveja applikaatioita tai tehdä kirjaston joka sisältää sidoksia
-Go-paketista, jotka puolestaan voidaan kutsua Javasta (Android) ja Objective-C:stä (iOS). Katso [lisätietoja](https://github.com/golang/go/wiki/Mobile).
+Go-paketista, jotka puolestaan voidaan kutsua Javasta (Android) ja Objective-C:stä (iOS). Katso [lisätietoja](https://go.dev/wiki/Mobile).
