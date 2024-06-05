@@ -11,328 +11,334 @@ contributors:
   - ["Joshua Li", "https://github.com/JoshuaRLi"]
   - ["Dragos B. Chirila", "https://github.com/dchirila"]
   - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
+translators:
+  - ["Kenryu Shibata", "https://github.com/kenryuS"]
 ---
 
-Ah, C. Still **the** language of modern high-performance computing.
+え、C？　あぁ、**未だに**モダンで高パフォーマンスを実現できるあの言語のことだな。
 
-C is the lowest-level language most programmers will ever use, but
-it more than makes up for it with raw speed. Just be aware of its manual
-memory management and C will take you as far as you need to go.
+Cはほとんどのプログラマが最低水準言語として使われているが、その特徴は実行速度の速さだけ
+ではないのだ。CはPythonなどの高水準言語とは異なり、メモリの自動管理機能がなく、
+プログラマーの手で管理する必要があり、これが初学者を苦しめる要素となるが、うまく使えば、
+ロボットなどで実行速度やメモリの使用率などを大幅に最適化できる。
 
-> **About compiler flags**
+> **コンパイラフラグについて**
 >
-> By default, gcc and clang are pretty quiet about compilation warnings and
-> errors, which can be very useful information. Explicitly using stricter
-> compiler flags is recommended. Here are some recommended defaults:
+> gccやclangなどのコンパイラではデフォルトでデバッグに有益なエラーや警告を表示しない
+> 設定になっています。なので、それらのエラーを詳細に、厳しく表示させるフラグと共に
+> 実行することをおすすめします。下記はそのフラグの例です：
 >
 > `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
 >
-> For information on what these flags do as well as other flags, consult the man page for your C compiler (e.g. `man 1 gcc`) or just search online.
+> このようなフラグの詳細については、オンライン検索にかけるか、
+> コンパイラのドキュメンテーションを読んでください。(Linuxなら`man 1 gcc`等)
 
 ```c
-// Single-line comments start with // - only available in C99 and later.
+// 行コメントは//で始まる (C99より前のC標準では使えない)
+
+// Cに限ったことではないが、ソースコードで日本語コメントを書くときにはファイルを
+// UTF-8で保存することをおすすめします。なぜならgccなど特定のコンパイラでは
+// 文字コード変換の影響で意図しないコメントアウトが引き起こされる可能性があります。
+
+// 例：
+// forループで似たコードの繰り返しを解消することが可能
+// このコメントを消すと何故か動かない
+for (int i = 0; i < 100; i++) {
+    printf("%d\n", i);
+}
+// 解説：shift-jisで「能」は 94 5c で、標準ASCIIでは 5c は"\"でLinux gccでは
+// 次の行もコメントアウトされる仕様で、この例ではforループの最初の定義が
+// コメントアウトされエラーとなります。
 
 /*
-Multi-line comments look like this. They work in C89 as well.
+複数行コメント、C89標準でも使える。
 */
 
 /*
-Multi-line comments don't nest /* Be careful */  // comment ends on this line...
-*/ // ...not this one!
+複数行コメントはネストできないので/*注意*/ // コメントはここで終わり、
+*/　// ここのコメント終了は扱われない。
 
-// Constants: #define <keyword>
-// Constants are written in all-caps out of convention, not requirement
+// 定数・マクロ：#define <定数名(英数字のみ)>
+// 定数はすべて大文字で定義することをおすすめします。
 #define DAYS_IN_YEAR 365
 
-// Enumeration constants are also ways to declare constants.
-// All statements must end with a semicolon
+// 列挙体も定数を定義する方法の一つです。
+// すべてのコード行は半角英数字で書き、セミコロン「;」で終わる必要があります。
 enum days {SUN, MON, TUE, WED, THU, FRI, SAT};
-// SUN gets 0, MON gets 1, TUE gets 2, etc.
+// SUNは0、MONは1、TUEは2、などと続く。
 
-// Enumeration values can also be specified
+// 列挙体の値は別の値にできますが、数字が大きくなるようにする必要があります。
 enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
-// MON gets 2 automatically, TUE gets 3, etc.
-// WED get 99, THU gets 100, FRI gets 101, etc.
+// MONは自動的に2、TUEは3、と続き、WEDで99、THUは100、FRIは101、などと続く。
 
-// Import headers with #include
+// #include でヘッダーファイルをインポートできる。
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-// File names between <angle brackets> tell the compiler to look in your system
-// libraries for the headers.
-// For your own headers, use double quotes instead of angle brackets, and
-// provide the path:
-#include "my_header.h" 		// local file
-#include "../my_lib/my_lib_header.h" //relative path
+// <アングルブラケット>で囲まれたファイル名はヘッダーファイルをシステムライブラリから
+// 探すことをコンパイラに伝え、自分で書いたヘッダーファイルを使うときには ”引用符” で
+//そのファイルのパスを囲みます。
+#include "my_header.h" 		// ローカルファイル
+#include "../my_lib/my_lib_header.h" // 相対パス
 
-// Declare function signatures in advance in a .h file, or at the top of
-// your .c file.
+// 予め関数を .h (ヘッダー)ファイルで宣言するか、
+// .c (ソースコード)ファイルの上方に書いて宣言してください。
 void function_1();
 int function_2(void);
 
-// At a minimum, you must declare a 'function prototype' before its use in any function.
-// Normally, prototypes are placed at the top of a file before any function definition.
-int add_two_ints(int x1, int x2); // function prototype
-// although `int add_two_ints(int, int);` is also valid (no need to name the args),
-// it is recommended to name arguments in the prototype as well for easier inspection
+// 関数を使用する前に、最低でも、関数プロトタイプを宣言しなければなりません。
+// プロトタイプは関数定義の前に書くのが一般的です。
+int add_two_ints(int x1, int x2); // 関数プロトタイプ
+// 上記の書き方でも問題ありませんが(引数の連番)、引数にはコード保守を
+// 容易にするためになるべくちゃんとした名前をつけてあげましょう。
 
-// Function prototypes are not necessary if the function definition comes before
-// any other function that calls that function. However, it's standard practice to
-// always add the function prototype to a header file (*.h) and then #include that
-// file at the top. This prevents any issues where a function might be called
-// before the compiler knows of its existence, while also giving the developer a
-// clean header file to share with the rest of the project.
+// 関数プロトタイプはその関数を使う前に定義を書いておけば必要ありません。
+// しかし、関数プロトタイプをヘッダーファイルに記述し、ソースコードの上方に#includeを
+// 使ってインポートすれば、コンパイラにまだ定義されていない関数を呼び出すことを防ぎ、
+// ヘッダーファイルにどんな関数が定義されるのかが分かるのでプログラムの保守性も上がります。
 
-// Your program's entry point is a function called "main". The return type can
-// be anything, however most operating systems expect a return type of `int` for
-// error code processing.
+// プログラムが最初に実行する関数はエントリーポイントといい、Cではmain()関数となります。
+// 返り値はどんな型でも良いですが、Windowsなどの大抵のOSはエラーコードを検知・処理するために
+// 関数はint型（整数型）を返すことが定められています。
 int main(void) {
-  // your program
+  // プログラムはここへ
 }
 
-// The command line arguments used to run your program are also passed to main
-// argc being the number of arguments - your program's name counts as 1
-// argv is an array of character arrays - containing the arguments themselves
-// argv[0] = name of your program, argv[1] = first argument, etc.
+// コマンドライン引数はプログラムの挙動やオプションを実行時に設定することができます。
+// argcは引数の数を表し、プログラム名もカウントされるので常に1以上の値が入ります。
+// argvは引数文字列の配列を表し、プログラム名含むすべての引数が入るます。
+// argv[0]はプログラム名を、argv[1]は最初の引数などです。
 int main (int argc, char** argv)
 {
-  // print output using printf, for "print formatted"
-  // %d is an integer, \n is a newline
-  printf("%d\n", 0); // => Prints 0
+  // コンソールに文字などを表示するときにはprintf関数を使います。
+  // printfは”print format”のことで、書式に沿って値を表示させます。
+  // %dには整数が入り、\nは新しい行("n"ew line)へ移動します。
+  printf("%d\n", 0); // => 0が表示される
 
-  // take input using scanf
-  // '&' is used to define the location
-  // where we want to store the input value
+  // scanf関数はコンソールからユーザの入力を受け付けます。
+  // 変数の前の'&'記号はメモリ上の変数の住所(address)を求める一種の演算子です。
+  // この例では整数型の値をinput変数の住所に値を代入します。
   int input;
   scanf("%d", &input);
 
   ///////////////////////////////////////
-  // Types
+  // 型
   ///////////////////////////////////////
 
-  // Compilers that are not C99-compliant require that variables MUST be
-  // declared at the top of the current block scope.
-  // Compilers that ARE C99-compliant allow declarations near the point where
-  // the value is used.
-  // For the sake of the tutorial, variables are declared dynamically under
-  // C99-compliant standards.
+  // C99標準の互換性がないコンパイラでは、そのスコープで使用するすべての変数は
+  // スコープの一番上に宣言する必要があります。C99標準互換のコンパイラは、使用する前なら
+  // スコープ内のどこでも宣言可能です。このチュートリアルでは、C99標準に統一して書いていきます。
 
-  // ints are usually 4 bytes (use the `sizeof` operator to check)
+  // int型は大抵の場合整数を4バイトのメモリで格納しますが、古いCPUでは2バイトで格納します。
+  // sizeof演算子を使えば、その型が何バイト使うか確認できます。
   int x_int = 0;
 
-  // shorts are usually 2 bytes (use the `sizeof` operator to check)
+  // short型は2バイトで整数を格納。
   short x_short = 0;
 
-  // chars are defined as the smallest addressable unit for a processor.
-  // This is usually 1 byte, but for some systems it can be more (ex. for TMS320 from TI it's 2 bytes).
+  // char型は大抵のプロセッサーでは、最小のサイズで、
+  // 1バイトのサイズで整数またはASCII文字一つを格納できます。
+  // この型のサイズはプロセッサーによって異なり、2バイト以上の物もあります。
+  // (例：TIからリリースされたTMS320は2バイトで格納される。)
   char x_char = 0;
-  char y_char = 'y'; // Char literals are quoted with ''
+  char y_char = 'y'; // ASCII文字リテラルは''で囲まれる。
 
-  // longs are often 4 to 8 bytes; long longs are guaranteed to be at least
-  // 8 bytes
+  // long型は4~8バイトで整数を格納します。long long型は常に8バイトであることが保証されます。
   long x_long = 0;
   long long x_long_long = 0;
 
-  // floats are usually 32-bit floating point numbers
-  float x_float = 0.0f; // 'f' suffix here denotes floating point literal
+  // float型は32ビットの単精度浮遊少数を格納します。
+  float x_float = 0.0f; // 'f'はその数字リテラルが単精度浮遊少数であることを示します。
 
-  // doubles are usually 64-bit floating-point numbers
-  double x_double = 0.0; // real numbers without any suffix are doubles
+  // double型は64ビットの倍精度浮遊少数を格納します。
+  double x_double = 0.0; // 実数のあとに何もつかない数字リテラルは倍精度浮遊少数として扱います。
 
-  // integer types may be unsigned (greater than or equal to zero)
+  // 整数型はunsignedをつけることで0以上の正の数のみを格納させることができます。
   unsigned short ux_short;
   unsigned int ux_int;
   unsigned long long ux_long_long;
 
-  // chars inside single quotes are integers in machine's character set.
-  '0'; // => 48 in the ASCII character set.
-  'A'; // => 65 in the ASCII character set.
+  // char型に格納されている文字はASCIIなどの文字コードに対応する整数でもあります。
+  '0'; // => ASCIIで48を表す。
+  'A'; // => ASCIIで65を表す。
 
-  // sizeof(T) gives you the size of a variable with type T in bytes
-  // sizeof(obj) yields the size of the expression (variable, literal, etc.).
+  // sizeof(T)でその型のサイズをバイトで返す(Tには型名が入る。)
+  // sizeof(obj)はその値の型のサイズを返す。(objには定数、変数、生の値が入る。)
   printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
 
-  // If the argument of the `sizeof` operator is an expression, then its argument
-  // is not evaluated (except VLAs (see below)).
-  // The value it yields in this case is a compile-time constant.
+  // もしsizeof演算子の引数が式だった場合、VLA(可変長配列、Variable Length Array)でない限り、
+  // その式は評価されません。この場合の引数の値はコンパイル時定数である。
   int a = 1;
-  // size_t is an unsigned integer type of at least 2 bytes used to represent
-  // the size of an object.
-  size_t size = sizeof(a++); // a++ is not evaluated
+  // size_t型は変数などの型サイズを表す2バイト以上の非負の整数を格納します。
+  size_t size = sizeof(a++); // a++ は評価されない。
   printf("sizeof(a++) = %zu where a = %d\n", size, a);
-  // prints "sizeof(a++) = 4 where a = 1" (on a 32-bit architecture)
+  // prints "sizeof(a++) = 4 where a = 1" (32ビット環境での場合)
 
-  // Arrays must be initialized with a concrete size.
-  char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
-  int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
-  // (assuming 4-byte words)
+  // 配列は定義時にサイズを決める必要があります。
+  char my_char_array[20]; // この配列は 1 * 20 = 20 バイト使います
+  int my_int_array[20]; // この配列は 4 * 20 = 80 バイト使います
+  // (4バイト整数環境であると仮定した場合)
 
-  // You can initialize an array of twenty ints that all equal 0 thusly:
+  // 次の定義では整数配列を20個の0で埋めた状態で初期値が与えられます。
   int my_array[20] = {0};
-  // where the "{0}" part is called an "array initializer".
-  // All elements (if any) past the ones in the initializer are initialized to 0:
+  // "{0}"は配列初期化子です。
+  // 初期化子に含まれる要素以外の要素は、（もしあれば）すべて0に初期化されます：
   int my_array[5] = {1, 2};
-  // So my_array now has five elements, all but the first two of which are 0:
+  // 上記の定義ではmy_arrayは5つの要素があり、最初の2つ以外は0に初期化されています：
   // [1, 2, 0, 0, 0]
-  // NOTE that you get away without explicitly declaring the size
-  // of the array IF you initialize the array on the same line:
+  // 配列定義のときに明示的に初期化を行えば、要素数を決める必要がなくなります：
   int my_array[] = {0};
-  // NOTE that, when not declaring the size, the size of the array is the number
-  // of elements in the initializer. With "{0}", my_array is now of size one: [0]
-  // To evaluate the size of the array at run-time, divide its byte size by the
-  // byte size of its element type:
+  // サイズを指定しないで定義すると配列初期化子の要素数がそのまま自動的に決めまれます。
+  // よって"{0}"で初期化した場合、配列のサイズは1となり、"[0]"が代入されます。
+  // 実行時に配列の要素数を調べるには、配列のサイズを1つの要素のサイズで割れば良いのです。
   size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
-  // WARNING You should evaluate the size *before* you begin passing the array
-  // to functions (see later discussion) because arrays get "downgraded" to
-  // raw pointers when they are passed to functions (so the statement above
-  // will produce the wrong result inside the function).
+  // 注意；この操作は配列ごとに、かつ関数に渡す前に実行することを勧めします。なぜなら
+  // 関数に配列を渡すと、ポインター（メモリ上の場所を表す単なる整数）に変換され、
+  // 関数内で同じ操作を行うと、間違った結果につながる恐れがあるからです。
 
-  // Indexing an array is like other languages -- or,
-  // rather, other languages are like C
+  // 要素へアクセスするときは他の言語と同じようにできます。
+  // 正しく言えば、Cに似た言語です。
   my_array[0]; // => 0
 
-  // Arrays are mutable; it's just memory!
+  // 配列は変更可能です。
   my_array[1] = 2;
   printf("%d\n", my_array[1]); // => 2
 
-  // In C99 (and as an optional feature in C11), variable-length arrays (VLAs)
-  // can be declared as well. The size of such an array need not be a compile
-  // time constant:
-  printf("Enter the array size: "); // ask the user for an array size
+  // C99標準以降（C11では任意選択）では、可変長配列(VLA)が使用可能で、コンパイル時に
+  // 定数による要素数指定をしなくても、変数などによる指定ができるようになります。
+  printf("Enter the array size: "); // ユーザーに要素数を入力してもらう。
   int array_size;
   fscanf(stdin, "%d", &array_size);
-  int var_length_array[array_size]; // declare the VLA
+  int var_length_array[array_size]; // VLAを宣言する。
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
-  // Example:
+  // 例:
   // > Enter the array size: 10
   // > sizeof array = 40
 
-  // Strings are just arrays of chars terminated by a NULL (0x00) byte,
-  // represented in strings as the special character '\0'.
-  // (We don't have to include the NULL byte in string literals; the compiler
-  //  inserts it at the end of the array for us.)
+  // 文字列はヌル文字(0x00, '\0')で終わる配列でもあります。
+  // 文字列リテラルを使用する場合はコンパイラが末尾に塗る文字を追加するので明示的に
+  // 入れなくても良いです。
   char a_string[20] = "This is a string";
-  printf("%s\n", a_string); // %s formats a string
+  printf("%s\n", a_string); // %s フォーマットで文字列を表示
 
   printf("%d\n", a_string[16]); // => 0
-  // i.e., byte #17 is 0 (as are 18, 19, and 20)
+  // 例, 17番目のバイトは0 (18, 19, 20番目も同様)
 
-  // If we have characters between single quotes, that's a character literal.
-  // It's of type `int`, and *not* `char` (for historical reasons).
-  int cha = 'a'; // fine
-  char chb = 'a'; // fine too (implicit conversion from int to char)
+  // シングルクォーテーションで囲まれた文字は文字リテラルです。これはchar型*ではなく*、
+  // int型です。(これには歴史的背景があります。)
+  int cha = 'a'; // OK
+  char chb = 'a'; // これもOK (intからcharへの暗黙的型変換)
 
-  // Multi-dimensional arrays:
+  // 多次元配列:
   int multi_array[2][5] = {
     {1, 2, 3, 4, 5},
     {6, 7, 8, 9, 0}
   };
-  // access elements:
+  // 要素の取得:
   int array_int = multi_array[0][2]; // => 3
 
   ///////////////////////////////////////
-  // Operators
+  // 演算子
   ///////////////////////////////////////
 
-  // Shorthands for multiple declarations:
+  // 複数の同一型変数の略記法:
   int i1 = 1, i2 = 2;
   float f1 = 1.0, f2 = 2.0;
 
   int b, c;
   b = c = 0;
 
-  // Arithmetic is straightforward
+  // 四則演算は直感的にかけます:
   i1 + i2; // => 3
   i2 - i1; // => 1
   i2 * i1; // => 2
-  i1 / i2; // => 0 (0.5, but truncated towards 0)
+  i1 / i2; // => 0 (0.5だが、0に繰り下げられている)
 
-  // You need to cast at least one integer to float to get a floating-point result
+  // 結果を少数にするにはどちらか一方の変数をfloat型へキャスティングする必要がある。
   (float)i1 / i2; // => 0.5f
-  i1 / (double)i2; // => 0.5 // Same with double
-  f1 / f2; // => 0.5, plus or minus epsilon
+  i1 / (double)i2; // => 0.5 // double型でも同様の操作ができる
+  f1 / f2; // => 0.5, プラスマイナス計算機イプシロン(その型が表せる最小の少数)
 
-  // Floating-point numbers are defined by IEEE 754, thus cannot store perfectly
-  // exact values. For instance, the following does not produce expected results
-  // because 0.1 might actually be 0.099999999999 inside the computer, and 0.3
-  // might be stored as 0.300000000001.
-  (0.1 + 0.1 + 0.1) != 0.3; // => 1 (true)
-  // and it is NOT associative due to reasons mentioned above.
-  1 + (1e123 - 1e123) != (1 + 1e123) - 1e123; // => 1 (true)
-  // this notation is scientific notations for numbers: 1e123 = 1*10^123
+  // 浮動小数点数はIEEE 754の仕様で定義されているので、コンピューターは正確な
+  // 数をメモリ上で保存できない。よって意図しない数になることがある。例えば、0.1は
+  // 0.099999999999、0.3は0.300000000001として保存されているかもしれません。
+  (0.1 + 0.1 + 0.1) != 0.3; // => 1 (真)
+  // なのでこれは上記の理由でこの真偽式は真になりません。
+  1 + (1e123 - 1e123) != (1 + 1e123) - 1e123; // => 1 (真)
+  // こちらは科学的表記法です : 1e123 = 1*10^123
 
-  // It is important to note that most all systems have used IEEE 754 to
-  // represent floating points. Even python, used for scientific computing,
-  // eventually calls C which uses IEEE 754. It is mentioned this way not to
-  // indicate that this is a poor implementation, but instead as a warning
-  // that when doing floating point comparisons, a little bit of error (epsilon)
-  // needs to be considered.
+  // ほとんどのシステムはIEEE 754に基づいて浮動小数点数を定義していることを
+  // 知っておくことが重要になってきます。科学演算で多用されるPythonでも最終的に
+  // IEEE 754を使うCを呼び出すことになります。この注意書きはCの浮動小数点数の
+  // 仕様が悪く使うべきではないということをほのめかすのではなく、こういった誤差
+  // (イプシロン)を考慮した上で比較するというのを頭に入れておくために書かれました。
 
-  // Modulo is there as well, but be careful if arguments are negative
-  11 % 3;    // => 2 as 11 = 2 + 3*x (x=3)
-  (-11) % 3; // => -2, as one would expect
-  11 % (-3); // => 2 and not -2, and it's quite counter intuitive
+  // 剰余演算もありますが、負の値を計算するときには注意してください：
+  11 % 3;    // => 2 (11 = 2 + 3*x (x=3))
+  (-11) % 3; // => -2 (-11 = -2 + 3*x (x=-3))
+  11 % (-3); // => 直感に反し被除数と同じ符号になる、2 (11 = 2 + (-3)*x (x=-3)) 
 
-  // Comparison operators are probably familiar, but
-  // there is no Boolean type in C. We use ints instead.
-  // (C99 introduced the _Bool type provided in stdbool.h)
-  // 0 is false, anything else is true. (The comparison
-  // operators always yield 0 or 1.)
-  3 == 2; // => 0 (false)
-  3 != 2; // => 1 (true)
-  3 > 2;  // => 1
-  3 < 2;  // => 0
-  2 <= 2; // => 1
-  2 >= 2; // => 1
+  // 比較演算は親しみがあるかもしれませんが、Cには真偽型がなく、
+  // 代わりに整数型が使われます。(C99以降は _Bool型がstdbool.hで
+  // 提供されました。) 0は偽を表し、それ以外はすべて真として扱います。
+  // 比較演算を使用する際は必ず0か1を返します。
+  3 == 2; // => 0 (偽)　等しい
+  3 != 2; // => 1 (真)　等しくない
+  3 > 2;  // => 1       より大きい
+  3 < 2;  // => 0       より小さい
+  2 <= 2; // => 1       以下
+  2 >= 2; // => 1       以上
 
-  // C is not Python - comparisons do NOT chain.
-  // Warning: The line below will compile, but it means `(0 < a) < 2`.
-  // This expression is always true, because (0 < a) could be either 1 or 0.
-  // In this case it's 1, because (0 < 1).
+  // CはPython出ないので、演算子の連鎖はできません。
+  // 下記の例では問題なくコンパイルしますが、`0 < a < 2`は`(0 < a) < 2`になり、
+  // `(0 < a)`の結果が真でも偽でも結局`0 < 2`または`1 < 2`となるので常に真となります。
   int between_0_and_2 = 0 < a < 2;
-  // Instead use:
+  // 代わりにこう書きます:
   int between_0_and_2 = 0 < a && a < 2;
 
-  // Logic works on ints
-  !3; // => 0 (Logical not)
+  // 整数に対する論理演算子:
+  !3; // => 0 (否定)
   !0; // => 1
-  1 && 1; // => 1 (Logical and)
+  1 && 1; // => 1 (論理積)
   0 && 1; // => 0
-  0 || 1; // => 1 (Logical or)
+  0 || 1; // => 1 (論理和)
   0 || 0; // => 0
 
-  // Conditional ternary expression ( ? : )
+  // 条件付き三元式 ( ? : )
   int e = 5;
   int f = 10;
   int z;
-  z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
+  z = (e > f) ? e : f; // => 10 "もし(e > f)が真ならばeを、偽ならばfを返す。"
 
-  // Increment and decrement operators:
+  // 加算・減算演算子:
   int j = 0;
-  int s = j++; // Return j THEN increase j. (s = 0, j = 1)
-  s = ++j; // Increase j THEN return j. (s = 2, j = 2)
-  // same with j-- and --j
+  int s = j++; // jを返してからjを1増やす (s = 0, j = 1)
+  s = ++j; // jを1増やしてからjを返す (s = 2, j = 2)
+  // 減算演算子 j-- と --j でも同様
 
-  // Bitwise operators!
-  ~0x0F; // => 0xFFFFFFF0 (bitwise negation, "1's complement", example result for 32-bit int)
-  0x0F & 0xF0; // => 0x00 (bitwise AND)
-  0x0F | 0xF0; // => 0xFF (bitwise OR)
-  0x04 ^ 0x0F; // => 0x0B (bitwise XOR)
-  0x01 << 1; // => 0x02 (bitwise left shift (by 1))
-  0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
+  // ビット演算子
+  // 整数などのデータは0と1の2進数で表されておりそれぞれをビットといいます。
+  // これらの演算子は各ビットに論理演算を適用します。
+  ~0x0F; // => 0xFFFFFFF0 (ビット単位NOT、補数、32ビット16進数整数での例)
+  0x0F & 0xF0; // => 0x00 (ビット単位AND)
+  0x0F | 0xF0; // => 0xFF (ビット単位OR)
+  0x04 ^ 0x0F; // => 0x0B (ビット単位XOR)
+  0x01 << 1; // => 0x02 (算術左シフト (1ビット幅))
+  0x02 >> 1; // => 0x01 (算術右シフト (1ビット幅))
 
-  // Be careful when shifting signed integers - the following are undefined:
-  // - shifting into the sign bit of a signed integer (int a = 1 << 31)
-  // - left-shifting a negative number (int a = -1 << 2)
-  // - shifting by an offset which is >= the width of the type of the LHS:
-  //   int a = 1 << 32; // UB if int is 32 bits wide
+  // 正負のついた整数に対するビットシフトには注意してください - これらの操作は未定義です:
+  // - 符号ビットへのビットシフト (int a = 1 << 31)
+  // - 負の整数を左シフトする (int a = -1 << 2)
+  // - 型のビットサイズ以上の幅でシフト:
+  //   int a = 1 << 32; // 32ビット幅の整数の場合では未定義の動作
 
   ///////////////////////////////////////
-  // Control Structures
+  // 制御構造
   ///////////////////////////////////////
 
+  // 条件文
   if (0) {
     printf("I am never run\n");
   } else if (0) {
@@ -341,64 +347,63 @@ int main (int argc, char** argv)
     printf("I print\n");
   }
 
-  // While loops exist
+  // whileループ文
   int ii = 0;
-  while (ii < 10) { //ANY value less than ten is true.
-    printf("%d, ", ii++); // ii++ increments ii AFTER using its current value.
-  } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+  while (ii < 10) { // 10以下の整数がこの条件を満たす
+    printf("%d, ", ii++); // ii++ が値を使用してから1加算される。
+  } // => "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "が出力される
 
   printf("\n");
 
+  // do-whileループ文
   int kk = 0;
   do {
     printf("%d, ", kk);
-  } while (++kk < 10); // ++kk increments kk BEFORE using its current value.
-  // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+  } while (++kk < 10); // ++kk が値を使用する*前*に1加算される.
+  // => "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "が出力される
 
   printf("\n");
 
-  // For loops too
+  // forループ文
   int jj;
   for (jj=0; jj < 10; jj++) {
     printf("%d, ", jj);
-  } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+  } // => "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "が出力される
 
   printf("\n");
 
-  // *****NOTES*****:
-  // Loops and Functions MUST have a body. If no body is needed:
+  // *****注*****:
+  // ループ文、関数には最低でも一つの命令・文が必要になります:
   int i;
   for (i = 0; i <= 5; i++) {
-    ; // use semicolon to act as the body (null statement)
+    ; // セミコロン単体で何もしないという命令を作れる(ヌル命令)
   }
-  // Or
+  // 別の表記法:
   for (i = 0; i <= 5; i++);
 
-  // branching with multiple choices: switch()
+  // switch文(if文より高速)
   switch (a) {
-  case 0: // labels need to be integral *constant* expressions (such as enums)
+  case 0: // caseレーベルにはint型や列挙型やchar型等の整数で表せるものに限定されます。
     printf("Hey, 'a' equals 0!\n");
-    break; // if you don't break, control flow falls over labels
+    break; // ブレイク文がなければ後続のcaseレーベルも実行されてしまいます。
   case 1:
     printf("Huh, 'a' equals 1!\n");
     break;
-    // Be careful - without a "break", execution continues until the
-    // next "break" is reached.
+    // break文がそのcaseレーベルになければ、break文があるレーベルまですべて実行されます。
   case 3:
   case 4:
     printf("Look at that.. 'a' is either 3, or 4\n");
     break;
   default:
-    // if `some_integral_expression` didn't match any of the labels
+    // 上記の条件がすべて合致しなければdefaultレーベル下の命令が実行されます。
     fputs("Error!\n", stderr);
     exit(-1);
     break;
   }
-  /*
-    Using "goto" in C
-  */
+  
+  // goto文
   typedef enum { false, true } bool;
-  // for C don't have bool as data type before C99 :(
+  // C99より前のC標準ではブール値が標準で定義されていません。
   bool disaster = false;
   int i, j;
   for(i=0; i<100; ++i)
@@ -407,122 +412,141 @@ int main (int argc, char** argv)
     if((i + j) >= 150)
         disaster = true;
     if(disaster)
-        goto error;  // exit both for loops
+        goto error;  // 両方のforループから抜ける
   }
-  error: // this is a label that you can "jump" to with "goto error;"
+  error: // goto error;"で"error"レーベルまで「ジャンプ」します。
   printf("Error occurred at i = %d & j = %d.\n", i, j);
   /*
-    https://ideone.com/GuPhd6
-    this will print out "Error occurred at i = 51 & j = 99."
+    この例の出所: https://ideone.com/GuPhd6
+    "Error occurred at i = 51 & j = 99."が出力されます。
   */
   /*
-    it is generally considered bad practice to do so, except if
-    you really know what you are doing. See
+    ほとんどの場合、goto文を使うのは、そのコードが何をするかわかっていない限り、
+    良くないとされています。詳細は
     https://en.wikipedia.org/wiki/Spaghetti_code#Meaning
+    を読んでください。
   */
 
   ///////////////////////////////////////
-  // Typecasting
+  // 型キャスティング(型変換)
   ///////////////////////////////////////
 
   // Every value in C has a type, but you can cast one value into another type
   // if you want (with some constraints).
+  // すべての値には型がありますが、これらは、互換性がある別の型にキャスティングすることができます。
 
-  int x_hex = 0x01; // You can assign vars with hex literals
-                    // binary is not in the standard, but allowed by some
-                    // compilers (x_bin = 0b0010010110)
+  int x_hex = 0x01; // 16進数リテラルで変数を定義できます。
+                    // 2進数リテラルにはコンパイラごとに差があります。
+                    // (GCCではx_bin = 0b0010010110)
 
   // Casting between types will attempt to preserve their numeric values
-  printf("%d\n", x_hex); // => Prints 1
-  printf("%d\n", (short) x_hex); // => Prints 1
-  printf("%d\n", (char) x_hex); // => Prints 1
+  // 型キャスティングを行うとその値を保持しようとします。
+  printf("%d\n", x_hex); // => 1
+  printf("%d\n", (short) x_hex); // => 1
+  printf("%d\n", (char) x_hex); // => 1
 
   // If you assign a value greater than a types max val, it will rollover
   // without warning.
-  printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 if char is 8 bits long)
+  // キャスティング先の型のサイズより大きい値をキャストすると警告なしに値が丸められます。
+  printf("%d\n", (unsigned char) 257); // => 1 (8ビット長のunsigned char型が保持できる最大値は255)
 
-  // For determining the max value of a `char`, a `signed char` and an `unsigned char`,
-  // respectively, use the CHAR_MAX, SCHAR_MAX and UCHAR_MAX macros from <limits.h>
+  // char, signed char, unsigned char型の最大値はそれぞれ、<limits.h>で提供される
+  // CHAR_MAX, SCHAR_MAX, UCHAR_MAXマクロを使用できます。
 
   // Integral types can be cast to floating-point types, and vice-versa.
-  printf("%f\n", (double) 100); // %f always formats a double...
-  printf("%f\n", (float)  100); // ...even with a float.
+  // 整数型と浮動小数点数型は双方向にキャスティング可能です。
+  printf("%f\n", (double) 100); // %f はdouble型と
+  printf("%f\n", (float)  100); // float型をフォーマットします。
   printf("%d\n", (char)100.0);
 
   ///////////////////////////////////////
-  // Pointers
+  // ポインター
   ///////////////////////////////////////
 
-  // A pointer is a variable declared to store a memory address. Its declaration will
-  // also tell you the type of data it points to. You can retrieve the memory address
-  // of your variables, then mess with them.
+  // ポインターはメモリ上のアドレスを保持する整数の変数であり、型と共に宣言・定義されます。
+  // 変数から直接アドレスを取得できることができます。
 
   int x = 0;
-  printf("%p\n", (void *)&x); // Use & to retrieve the address of a variable
-  // (%p formats an object pointer of type void *)
-  // => Prints some address in memory;
+  printf("%p\n", (void *)&x); // &を用いて変数のアドレスを取得します。
+  // (%p は void *型の値をフォーマットします。)
+  // => 結果: 変数が保持されているメモリーアドレスが表示される
 
-  // Pointers start with * in their declaration
-  int *px, not_a_pointer; // px is a pointer to an int
-  px = &x; // Stores the address of x in px
-  printf("%p\n", (void *)px); // => Prints some address in memory
+  // ポインターは型名の直後にまたは変数名の直前に * を書いて宣言・定義します。
+  int *px, not_a_pointer; // px はint型の値を指すポインター
+  px = &x; // pxにxのアドレスを代入する。
+  printf("%p\n", (void *)px); // => &xと同様の結果が出力されるはずです。
   printf("%zu, %zu\n", sizeof(px), sizeof(not_a_pointer));
-  // => Prints "8, 4" on a typical 64-bit system
+  // => 64ビット環境では"8, 4"が出力されます。
 
-  // To retrieve the value at the address a pointer is pointing to,
-  // put * in front to dereference it.
-  // Note: yes, it may be confusing that '*' is used for _both_ declaring a
-  // pointer and dereferencing it.
-  printf("%d\n", *px); // => Prints 0, the value of x
+  // ポインターから指示しているメモリー領域の値を取得(ディレファレンス)するには
+  // ポインター宣言と同じようにポインター名の前に * を書きます。
+  printf("%d\n", *px); // => xの値である0を出力
 
-  // You can also change the value the pointer is pointing to.
-  // We'll have to wrap the dereference in parenthesis because
-  // ++ has a higher precedence than *.
-  (*px)++; // Increment the value px is pointing to by 1
-  printf("%d\n", *px); // => Prints 1
-  printf("%d\n", x); // => Prints 1
+  // この機能を用いて、ポインターが指示している値を変更することができます。
+  // 加算演算子はディレファレンス演算子より優先順位が高いので数学同様ディレファレンス操作を
+  // 丸括弧で括ります。
+  (*px)++; // pxが指しているxの値を1加算する
+  printf("%d\n", *px); // => 1
+  printf("%d\n", x); // => 1
 
-  // Arrays are a good way to allocate a contiguous block of memory
-  int x_array[20]; //declares array of size 20 (cannot change size)
+  // 配列は連続したメモリー領域を確保するのに有効です。
+  int x_array[20]; // 長さ20の不可変長配列を宣言
   int xx;
   for (xx = 0; xx < 20; xx++) {
     x_array[xx] = 20 - xx;
-  } // Initialize x_array to 20, 19, 18,... 2, 1
+  } // x_arrayの値を 20, 19, 18,... 2, 1 と一括初期化する。
 
   // Declare a pointer of type int and initialize it to point to x_array
+  // int型の値を指し示すポインターを宣言し、x_arrayのアドレスで初期化する
   int* x_ptr = x_array;
   // x_ptr now points to the first element in the array (the integer 20).
   // This works because arrays often decay into pointers to their first element.
   // For example, when an array is passed to a function or is assigned to a pointer,
   // it decays into (implicitly converted to) a pointer.
   // Exceptions: when the array is the argument of the `&` (address-of) operator:
+  // x_ptrは整数20個の配列の最初の要素を指しています。
+  // この場合配列は代入時に最初の要素へのポインターへ変換されます。
+  // 関数に配列を渡す際にも暗黙的にポインターに変換されます。
+  // 例外：`&`を配列に適用した場合、その配列のアドレスが返り、要素の型ではなく、
+  // 配列型のポインターが使用されます：
   int arr[10];
-  int (*ptr_to_arr)[10] = &arr; // &arr is NOT of type `int *`!
+  int (*ptr_to_arr)[10] = &arr; // &arr は `int *`型ではない！
   // It's of type "pointer to array" (of ten `int`s).
   // or when the array is a string literal used for initializing a char array:
+  // これは「（10個の整数の）配列へのポインター」型です。
+  // もう一つの例外には文字列リテラルをchar型配列に代入する場合：
   char otherarr[] = "foobarbazquirk";
   // or when it's the argument of the `sizeof` or `alignof` operator:
+  // または、`sizeof`, `alignof`演算子を使用した場合：
   int arraythethird[10];
   int *ptr = arraythethird; // equivalent with int *ptr = &arr[0];
   printf("%zu, %zu\n", sizeof(arraythethird), sizeof(ptr));
-  // probably prints "40, 4" or "40, 8"
+  // "40, 4" または "40, 8" が出力されます。
 
   // Pointers are incremented and decremented based on their type
   // (this is called pointer arithmetic)
-  printf("%d\n", *(x_ptr + 1)); // => Prints 19
-  printf("%d\n", x_array[1]); // => Prints 19
+  // ポインター型の値を加算・減算するとその方に応じて操作できます。
+  // この操作のことをポインター演算といいます。
+  printf("%d\n", *(x_ptr + 1)); // => 19
+  printf("%d\n", x_array[1]); // => 19
 
   // You can also dynamically allocate contiguous blocks of memory with the
   // standard library function malloc, which takes one argument of type size_t
   // representing the number of bytes to allocate (usually from the heap, although this
   // may not be true on e.g. embedded systems - the C standard says nothing about it).
+  // 標準ライブラリ関数の一つであるmallocを使えば連続したメモリ領域を動的に確保できます。
+  // malloc関数は確保するバイト数を設定するsize_t型の引数が一つあります。
+  // （確保するのは大抵の場合ヒープ領域に確保されますが、組み込みデバイスなどでは
+  // 挙動が異なる場合があります。このことはC標準では説明されていません。）
   int *my_ptr = malloc(sizeof(*my_ptr) * 20);
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
-  } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
+  } // メモリー領域を整数型配列として初期化する [20, 19, 18 ... 1]
 
   // Be careful passing user-provided values to malloc! If you want
   // to be safe, you can use calloc instead (which, unlike malloc, also zeros out the memory)
+  // mallocで確保されたメモリー領域へのデータの書き込みには注意してください。
+  // 安全性を保証するには、確保すると同時にそのメモリー領域をすべて0で埋め尽くすcalloc関数を使用してください。
   int* my_other_ptr = calloc(20, sizeof(int));
 
   // Note that there is no standard way to get the length of a
@@ -530,52 +554,68 @@ int main (int argc, char** argv)
   // going to be passed around your program a lot, you need another variable
   // to keep track of the number of elements (size) of an array. See the
   // functions section for more info.
+  // Cには動的配列のサイズをその場で求める方法はほとんどなく、関数などに渡すときに要素数を記録する別の変数が
+  // 必要になることがよくあります。詳細は次の関数についてのセクションを読んでください。
   size_t size = 10;
   int *my_arr = calloc(size, sizeof(int));
-  // Add an element to the array
+  // 要素を追加する
   size++;
-  my_arr = realloc(my_arr, sizeof(int) * size);
+  my_arr = realloc(my_arr, sizeof(int) * size); // realloc関数で配列のサイズを更新する。
   if (my_arr == NULL) {
     //Remember to check for realloc failure!
+    // mallocやreallocなどを使う際には領域確保に異常がない確認するために
+    // ヌルチェックをすることをおすすめします。
     return
   }
   my_arr[10] = 5;
 
   // Dereferencing memory that you haven't allocated gives
   // "unpredictable results" - the program is said to invoke "undefined behavior"
-  printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what? It may even crash.
+  // 確保されていないメモリー領域へアクセスは予測不可能な結果を招く可能性があります。
+  printf("%d\n", *(my_ptr + 21)); // => who-knows-what? が出力される**かも**、クラッシュするかもしれない。
 
   // When you're done with a malloc'd block of memory, you need to free it,
   // or else no one else can use it until your program terminates
   // (this is called a "memory leak"):
-  free(my_ptr);
+  // メモリー領域の使用を終えたら必ずfree関数を使ってその領域を解放しなければなりません。
+  // 解放しなければ、プログラムが終了しても他のプログラムからそのメモリー領域を再利用できず、
+  // システム全体で使用できる容量が減ってしまいます。このことをメモリーリークと呼びます。
+  free(my_ptr); // my_ptrでポイントされてるメモリー領域を解放する。
 
   // Strings are arrays of char, but they are usually represented as a
   // pointer-to-char (which is a pointer to the first element of the array).
   // It's good practice to use `const char *' when referring to a string literal,
   // since string literals shall not be modified (i.e. "foo"[0] = 'a' is ILLEGAL.)
+  // 文字列はchar型の配列で表せますが、よく使用されるのは文字列の最初の文字を指すcharポインターです。
+  // もし、単に文字列リテラルを使用するだけならば"const char*"を使い、変更不能にしておくことが推奨されています。
+  // なぜならば、本来文字列リテラルのデータは変更すべきではないからです。
+  // なので、" foo[0] = 'a' "といった操作はできません。
   const char *my_str = "This is my very own string literal";
   printf("%c\n", *my_str); // => 'T'
 
   // This is not the case if the string is an array
   // (potentially initialized with a string literal)
   // that resides in writable memory, as in:
+  // char型の配列で定義されている場合は別で、文字列リテラルで初期化できますが、
+  // 各要素は変更可能です。例に：
   char foo[] = "foo";
-  foo[0] = 'a'; // this is legal, foo now contains "aoo"
+  foo[0] = 'a'; // この操作は許されており、"aoo" に変更される。
 
   function_1();
-} // end main function
+} // main 関数の終わり
 
 ///////////////////////////////////////
-// Functions
+// 関数
 ///////////////////////////////////////
 
 // Function declaration syntax:
 // <return type> <function name>(<args>)
+// 関数定義の構文：
+// <戻り値の型> <関数名>(<引数>)
 
 int add_two_ints(int x1, int x2)
 {
-  return x1 + x2; // Use return to return a value
+  return x1 + x2; // returnで値を返す。
 }
 
 /*
@@ -583,30 +623,36 @@ Functions are call by value. When a function is called, the arguments passed to
 the function are copies of the original arguments (except arrays). Anything you
 do to the arguments in the function do not change the value of the original
 argument where the function was called.
+関数は値によって呼び出されます。関数が呼ばれると、引数として渡した値はコピーされ、
+関数内で値を変更したとしても、渡した引数の値は変わりません。（配列はこれに従わない。）
 
 Use pointers if you need to edit the original argument values (arrays are always
 passed in as pointers).
+関数内で引数の値を変更したい場合はポインターとして渡す必要があり、配列も渡すときに自動的にポインターになります。
 
 Example: in-place string reversal
+例：即興文字列反転
 */
 
-// A void function returns no value
+// void型関数は値を返さない
 void str_reverse(char *str_in)
 {
   char tmp;
   size_t ii = 0;
-  size_t len = strlen(str_in); // `strlen()` is part of the c standard library
-                               // NOTE: length returned by `strlen` DOESN'T
-                               //       include the terminating NULL byte ('\0')
+  size_t len = strlen(str_in); // `strlen()` はC標準ライブラリ関数です。
+                               // NOTE: `strlen` で返される文字列の長さは終端文字の
+                               //       ヌルバイト('\0')を含んでいない状態です。
   // in C99 and newer versions, you can directly declare loop control variables
   // in the loop's parentheses. e.g., `for (size_t ii = 0; ...`
+  // C99標準以降では、ループ定義の中にループ制御変数が定義できます。
+  // 例：｀for (size_t ii = 0; ...｀
   for (ii = 0; ii < len / 2; ii++) {
     tmp = str_in[ii];
     str_in[ii] = str_in[len - ii - 1]; // ii-th char from end
     str_in[len - ii - 1] = tmp;
   }
 }
-//NOTE: string.h header file needs to be included to use strlen()
+//NOTE: string.h のヘッダーファイルを#includeしないとstrlen()関数が使用できません。
 
 /*
 char c[] = "This is a test.";
