@@ -18,7 +18,7 @@ usability for systems administrators.
 
 ### Virtual Devices
 
-A VDEV (Virtual Device) in ZFS is analogous to a RAID device and simmilaly offers different
+A VDEV (Virtual Device) in ZFS is analogous to a RAID device and similarly offers different
 benefits in terms of redundancy and performance. In general VDEV's offer better reliability
 and safety than a RAID card. It is discouraged to use a RAID setup with ZFS, as ZFS expects
 to directly manage the underlying disks.
@@ -256,14 +256,14 @@ zroot/var                                                           none    none
 
 ### Write Log Pool
 
-The ZFS Intent Log (ZIL) is a write log designed to speed up syncronus writes. This is
+The ZFS Intent Log (ZIL) is a write log designed to speed up synchronous writes. This is
 typically a faster drive or drive partition than the larger storage pools.
 
 ```bash
 # Add a log pool
 $ zpool add mypool/lamb log /dev/sdX
 
-# Check the configureation
+# Check the configuration
 $ zpool status mypool/lamb
 ```
 
@@ -277,13 +277,13 @@ storage pools.
 # Add a cache pool
 $ zpool add mypool/lamb cache /dev/sdY
 
-# Check the configureation
+# Check the configuration
 $ zpool status mypool/lamb
 ```
 
 ### Data Compression
 
-Data compression reduces the amount of space data occupies on disk in excange for some extra
+Data compression reduces the amount of space data occupies on disk in exchange for some extra
 CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It
 especially beneficial on systems with more CPU resources than disk bandwidth.
 
@@ -297,14 +297,14 @@ compression     NO       YES   on | off | lzjb | gzip | gzip-[1-9] | zle | lz4 |
 # Set compression
 $ zfs set compression=on mypool/lamb
 
-# Check the configureation
+# Check the configuration
 $ zpool get compression mypool/lamb
 ```
 
 ### Encryption at Rest
 
 Encryption allows data to be encrypted on the device at the cost of extra CPU cycles. This
-propery can only be set when a dataset is being created.
+property can only be set when a dataset is being created.
 
 ```bash
 # Enable encryption on the pool
@@ -313,7 +313,7 @@ $ zpool set feature@encryption=enabled black_hole
 # Create an encrypted dataset with a prompt
 $ zfs create -o encryption=on -o keyformat=passphrase black_hole/enc
 
-# Check the configureation
+# Check the configuration
 $ zfs get encryption black_hole/enc
 ```
 
@@ -422,7 +422,7 @@ $ zfs promote zroot/home/sarlalian_new
 ### Putting it all together
 
 This following a script utilizing FreeBSD, jails and ZFS to automate
-provisioning a clean copy of a mysql staging database from a live replication
+provisioning a clean copy of a MySQL staging database from a live replication
 slave.
 
 ```bash
