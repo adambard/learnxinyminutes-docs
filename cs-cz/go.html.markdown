@@ -427,5 +427,5 @@ tak se podíváte na dokumentaci.
 Dalším dobrým zdrojem informací je [Go v ukázkách](https://gobyexample.com/).
 
 Go mobile přidává podporu pro Android a iOS. Můžete s ním psát nativní mobilní aplikace nebo knihovny, které půjdou
-spustit přes Javu (pro Android), nebo Objective-C (pro iOS). Navštivte [web Go Mobile](https://github.com/golang/go/wiki/Mobile)
+spustit přes Javu (pro Android), nebo Objective-C (pro iOS). Navštivte [web Go Mobile](https://go.dev/wiki/Mobile)
 pro více informací.
