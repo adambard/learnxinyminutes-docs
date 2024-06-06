@@ -460,5 +460,5 @@ Un altre gran recurs per aprendre Go és
 Go Mobile afegeix suport per plataformes mòbils (Android i iOS). Es poden
 escriure aplicacions mòbils o escriure llibreries de paquets de Go, que es
 poden cridar des de Java (android) i Objective-C (iOS).
-Comproveu la [Go Mobile page](https://github.com/golang/go/wiki/Mobile) per
+Comproveu la [Go Mobile page](https://go.dev/wiki/Mobile) per
 més informació.
