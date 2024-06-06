@@ -14,11 +14,11 @@ Forth, but most of what is written here should work elsewhere.
 
 ```forth
 \ This is a comment
-( This is also a comment but it's only used when defining words )
+( This is also a comment but it's usually used when defining words )
 
 \ --------------------------------- Precursor ----------------------------------
 
-\ All programming in Forth is done by manipulating the parameter stack (more
+\ All programming in Forth is done by manipulating the data stack (more
 \ commonly just referred to as "the stack").
 5 2 3 56 76 23 65    \ ok
 
@@ -26,14 +26,15 @@ Forth, but most of what is written here should work elsewhere.
 .s    \ <7> 5 2 3 56 76 23 65 ok
 
 \ In Forth, everything is either a word or a number.
+\ A word is a named definition, that is something like a function/subprogram.
 
 \ ------------------------------ Basic Arithmetic ------------------------------
 
-\ Arithmetic (in fact most words requiring data) works by manipulating data on
-\ the stack.
+\ Arithmetic works by manipulating parameters on the stack.
+\ (in fact most words requiring parameters)
 5 4 +    \ ok
 
-\ `.` pops the top result from the stack:
+\ `.` pops the top parameter from the stack and prints it as a signed number:
 .    \ 9 ok
 
 \ More examples of arithmetic:
@@ -52,15 +53,15 @@ Forth, but most of what is written here should work elsewhere.
 \ Naturally, as we work with the stack, we'll want some useful methods:
 
 3 dup -          \ duplicate the top item (1st now equals 2nd): 3 - 3
-2 5 swap /       \ swap the top with the second element:        5 / 2
-6 4 5 rot .s     \ rotate the top 3 elements:                   4 5 6
-4 0 drop 2 /     \ remove the top item (don't print to screen):  4 / 2
+2 5 swap /       \ swap the top with the second item:           5 / 2
+6 4 5 rot .s     \ rotate the top 3 items:                      4 5 6
+4 0 drop 2 /     \ remove the top item (don't print to screen): 4 / 2
 1 2 3 nip .s     \ remove the second item (similar to drop):    1 3
 
 \ ---------------------- More Advanced Stack Manipulation ----------------------
 
-1 2 3 4 tuck   \ duplicate the top item below the second slot:      1 2 4 3 4 ok
-1 2 3 4 over   \ duplicate the second item to the top:             1 2 3 4 3 ok
+1 2 3 4 tuck   \ duplicate the top item below the second item:     1 2 4 3 4 ok
+1 2 3 4 over   \ duplicate the second to the top:                  1 2 3 4 3 ok
 1 2 3 4 2 roll \ *move* the item at that position to the top:      1 3 4 2 ok
 1 2 3 4 2 pick \ *duplicate* the item at that position to the top: 1 2 3 4 2 ok
 
@@ -71,6 +72,11 @@ Forth, but most of what is written here should work elsewhere.
 \ The `:` word sets Forth into compile mode until it sees the `;` word.
 : square ( n -- n ) dup * ;    \ ok
 5 square .                     \ 25 ok
+
+\ "( n -- n )" above is a stack diagram.
+\ A stack diagram shows the number and data types of the input and output stack parameters.
+\ Data types are referred by their data type symbols.
+\ The standard data type symbols are listed at https://forth-standard.org/standard/usage#table:datatypes
 
 \ We can view what a word does too:
 see square     \ : square dup * ; ok
@@ -85,6 +91,7 @@ see square     \ : square dup * ; ok
 \ `if` is a compile-only word. `if` <stuff to do> `then` <rest of program>.
 : ?>64 ( n -- n ) dup 64 > if ." Greater than 64!" then ; \ ok
 100 ?>64                                                  \ Greater than 64! ok
+\ Note: the input parameter 100 remains on the stack.
 
 \ Else:
 : ?>64 ( n -- n ) dup 64 > if ." Greater than 64!" else ." Less than 64!" then ;
@@ -106,8 +113,8 @@ myloop
 \ start number (inclusive).
 
 \ We can get the value of the index as we loop with `i`:
-: one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
-one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 ok
+: one-to-12 ( -- ) 13 1 do i . loop ;     \ ok
+one-to-12                                 \ 1 2 3 4 5 6 7 8 9 10 11 12 ok
 
 \ `do` works similarly, except if start and end are exactly the same it will
 \ loop forever (until arithmetic underflow).
@@ -129,7 +136,7 @@ variable age    \ ok
 \ Then we write 21 to age with the word `!`.
 21 age !    \ ok
 
-\ Finally we can print our variable using the "read" word `@`, which adds the
+\ Finally we can print our variable using the "read" word `@`, which puts the
 \ value to the stack, or use `?` that reads and prints it in one go.
 age @ .    \ 21 ok
 age ?      \ 21 ok
@@ -143,8 +150,8 @@ WATER-BOILING-POINT .               \ 100 ok
 \ Creating arrays is similar to variables, except we need to allocate more
 \ memory to them.
 
-\ You can use `2 cells allot` to create an array that's 3 cells long:
-variable mynumbers 2 cells allot    \ ok
+\ You can use `create` and `3 cells allot` to create an array that's 3 cells long:
+create mynumbers 3 cells allot    \ ok
 
 \ Initialize all the values to 0
 mynumbers 3 cells erase    \ ok
@@ -176,14 +183,17 @@ mynumbers 1 of-arr ?       \ 20 ok
 
 \ ------------------------------ The Return Stack ------------------------------
 
-\ The return stack is used to the hold pointers to things when words are
-\ executing other words, e.g. loops.
+\ The return stack may be used to temporary hold parameters while
+\ executing other words, e.g. in indefinite loops.
 
-\ We've already seen one use of it: `i`, which duplicates the top of the return
-\ stack. `i` is equivalent to `r@`.
-: myloop ( -- ) 5 0 do r@ . loop ;    \ ok
+\ `>r` ( x -- ) moves the top paramenter from the data stack to the return stack
+\ `r>` ( -- x ) moves the top paramenter from the return stack to the data stack
+\ `r@` ( -- x ) copies the top paramenter from the return stack to the data stack
 
-\ As well as reading, we can add to the return stack and remove from it:
+: myloop ( -- ) 5 >r 0  begin ( n ) dup r@ u< while  dup . 1+ repeat  drop r> drop ;    \ ok
+myloop \ 0 1 2 3 4 ok
+
+\ In some Forth systems the return stack can be used in interpretation state:
 5 6 4 >r swap r> .s    \ 6 5 4 ok
 
 \ NOTE: Because Forth uses the return stack for word pointers,  `>r` should
@@ -195,21 +205,26 @@ mynumbers 1 of-arr ?       \ 20 ok
 8.3e 0.8e f+ f.    \ 9.1 ok
 
 \ Usually we simply prepend words with 'f' when dealing with floats:
-variable myfloatingvar    \ ok
+fvariable myfloatingvar   \ ok
 4.4e myfloatingvar f!     \ ok
 myfloatingvar f@ f.       \ 4.4 ok
 
 \ --------------------------------- Final Notes --------------------------------
 
 \ Typing a non-existent word will empty the stack. However, there's also a word
-\ specifically for that:
+\ specifically for that (Gforth-specific):
 clearstack
+
+\ This word can be defined as
+: clearstack ( i*x -- ) depth 0 ?do drop loop ;
 
 \ Clear the screen:
 page
 
 \ Loading Forth files:
 \ s" forthfile.fs" included
+\ or:
+\ include forthfile.fs
 
 \ You can list every word that's in Forth's dictionary (but it's a huge list!):
 \ words
@@ -223,3 +238,4 @@ page
 * [Starting Forth](http://www.forth.com/starting-forth/)
 * [Simple Forth](http://www.murphywong.net/hello/simple.htm)
 * [Thinking Forth](http://thinking-forth.sourceforge.net/)
+* [Forth Standard](https://forth-standard.org/standard/words)
