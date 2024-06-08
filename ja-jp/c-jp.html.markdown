@@ -762,15 +762,17 @@ void testFunc2() {
 // **関数をstatic宣言することで変数と同じようにプライベートにすることができます。**
 
 ///////////////////////////////////////
-// User-defined types and structs
+// ユーザー定義の型と構造体
 ///////////////////////////////////////
 
 // Typedefs can be used to create type aliases
-typedef int my_type;
-my_type my_type_var = 0;
+// typedefキーワードを使えば型の別名をつけることができます
+typedef int my_type; // my_type は int型の別名になった。
+my_type my_type_var = 0; // int my_type_var = 0; と等しい
 
 // Structs are just collections of data, the members are allocated sequentially,
 // in the order they are written:
+// 構造体は複数のデータを一つにまとめたものであり、上から下の順で定義されたメンバーがメモリーに割り当てられる：
 struct rectangle {
   int width;
   int height;
@@ -781,44 +783,53 @@ struct rectangle {
 // due to potential padding between the structure members (this is for alignment
 // reasons). [1]
 
+// この構造体のサイズは必ずしも
+// sizeof(struct rectangle) == sizeof(int) + sizeof(int)
+// にならない、なぜならコンパイル時にシステムがメモリーを割り当てやすい位置にパッディングするからである。[1]
+
 void function_1()
 {
-  struct rectangle my_rec = { 1, 2 }; // Fields can be initialized immediately
+  struct rectangle my_rec = { 1, 2 }; // メンバーは定義時に初期化できる
 
-  // Access struct members with .
+  // "." で個別のメンバーへアクセスできる
   my_rec.width = 10;
   my_rec.height = 20;
 
-  // You can declare pointers to structs
+  // 構造体へのポインターも定義できる：
   struct rectangle *my_rec_ptr = &my_rec;
 
   // Use dereferencing to set struct pointer members...
+  // ディレファレンスしてからメンバーの値をセットするのも良いが...
   (*my_rec_ptr).width = 30;
 
   // ... or even better: prefer the -> shorthand for the sake of readability
-  my_rec_ptr->height = 10; // Same as (*my_rec_ptr).height = 10;
+  // 可読性を高めるために"->"を使ってポインターから直接メンバーへアクセスすることもできる。
+  my_rec_ptr->height = 10; // (*my_rec_ptr).height = 10; と同じ
 }
 
 // You can apply a typedef to a struct for convenience
-typedef struct rectangle rect;
+// 毎回structを打たなくてもいいように構造体に別名をつけることができます
+typedef struct rectangle rect; // rect = struct rectangle
 
 int area(rect r)
 {
   return r.width * r.height;
 }
 
-// Typedefs can also be defined right during struct definition
+// typedefは構造体定義と同時に使えます：
 typedef struct {
   int width;
   int height;
-} rect;
-// Like before, doing this means one can type
-rect r;
-// instead of having to type
+} rect; // 無名構造体にrectと名付けている。
+// これで
 struct rectangle r;
+// を打たなくても
+rect r;
+// と楽に宣言・定義できる
 
 // if you have large structs, you can pass them "by pointer" to avoid copying
 // the whole struct:
+// サイズが大きい構造体は値渡しの代わりにポインター渡しでコピー作成の時間・メモリー使用量増大を避けることができます：
 int areaptr(const rect *r)
 {
   return r->width * r->height;
