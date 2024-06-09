@@ -836,7 +836,7 @@ int areaptr(const rect *r)
 }
 
 ///////////////////////////////////////
-// Function pointers
+// 関数ポインター
 ///////////////////////////////////////
 /*
 At run time, functions are located at known memory addresses. Function pointers are
@@ -844,25 +844,33 @@ much like any other pointer (they just store a memory address), but can be used
 to invoke functions directly, and to pass handlers (or callback functions) around.
 However, definition syntax may be initially confusing.
 
+実行時には、関数はプログラムに決められたメモリーアドレスにあります。関数ポインターは他のポインターとほとんど変わりません。
+違うところは、ポインターを使って関数を呼び出せることです。これにより、関数の引数として他の関数をコールバックとしてわすことができます。
+難しいところは、他の変数へのポインターとは表記法が違ってくることです。
+
 Example: use str_reverse from a pointer
+例：str_reverse関数をポインターとして使う
 */
 void str_reverse_through_pointer(char *str_in) {
   // Define a function pointer variable, named f.
-  void (*f)(char *); // Signature should exactly match the target function.
-  f = &str_reverse; // Assign the address for the actual function (determined at run time)
-  // f = str_reverse; would work as well - functions decay into pointers, similar to arrays
-  (*f)(str_in); // Just calling the function through the pointer
-  // f(str_in); // That's an alternative but equally valid syntax for calling it.
+  // 戻り値がvoid型fの名前がついた関数ポインターを宣言する。
+  void (*f)(char *); // 引数も一緒に書きますが、指している関数と同じ戻り値と引数の型でなければなりません(引数名は入れずにただ型を列挙する)。
+  f = &str_reverse; // 関数のアドレスを代入する（アドレスは実行時に決定される）。
+  // f = str_reverse; これも正しくコンパイルできる - 配列同様ポインターに変換される
+  (*f)(str_in); // 関数ポインターから実行する
+  // f(str_in); // この表記法でも正しく実行できる
 }
 
 /*
 As long as function signatures match, you can assign any function to the same pointer.
 Function pointers are usually typedef'd for simplicity and readability, as follows:
+同じ戻り値型と引数である限り、どの関数でも使えます。
+可読性と単純性を実現するために、typedefが使われます。
 */
 
 typedef void (*my_fnp_type)(char *);
 
-// Then used when declaring the actual pointer variable:
+// 下記で直背ポインター変数を宣言できます:
 // ...
 // my_fnp_type f;
 
