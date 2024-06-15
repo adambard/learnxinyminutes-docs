@@ -875,140 +875,172 @@ typedef void (*my_fnp_type)(char *);
 // my_fnp_type f;
 
 
-/////////////////////////////
-// Printing characters with printf()
-/////////////////////////////
+/////////////////////////////////////
+// printf()を用いて文字などを出力する
+/////////////////////////////////////
 
 //Special characters:
 /*
-'\a'; // alert (bell) character
-'\n'; // newline character
-'\t'; // tab character (left justifies text)
-'\v'; // vertical tab
-'\f'; // new page (form feed)
-'\r'; // carriage return
-'\b'; // backspace character
-'\0'; // NULL character. Usually put at end of strings in C.
-//   hello\n\0. \0 used by convention to mark end of string.
-'\\'; // backslash
-'\?'; // question mark
-'\''; // single quote
-'\"'; // double quote
-'\xhh'; // hexadecimal number. Example: '\xb' = vertical tab character
-'\0oo'; // octal number. Example: '\013' = vertical tab character
+'\a'; // 警告 (ベル) 文字
+'\n'; // 改行文字
+'\t'; // タブ文字 (左揃えテキスト)
+'\v'; // 垂直タブ文字
+'\f'; // (フォームフィードの)新規ページ
+'\r'; // 復帰文字
+'\b'; // バックスペース文字
+'\0'; // ヌル文字 - Cでは文字列終端文字として使用される。
+//   hello\n\0. \0が明示的に文字列の終わりを表している。
+'\\'; // バックスラッシュ
+'\?'; // 疑問符
+'\''; // シングルクォーテーションマーク
+'\"'; // ダブルクォーテーションマーク
+'\xhh'; // 文字コード（16進数） 例: '\xb' = 垂直タブ文字
+'\0oo'; // 文字コード（8進数）  例: '\013' = 垂直タブ文字
 
-//print formatting:
-"%d";    // integer
-"%3d";   // integer with minimum of length 3 digits (right justifies text)
-"%s";    // string
-"%f";    // float
-"%ld";   // long
-"%3.2f"; // minimum 3 digits left and 2 digits right decimal float
-"%7.4s"; // (can do with strings too)
-"%c";    // char
-"%p";    // pointer. NOTE: need to (void *)-cast the pointer, before passing
-         //                it as an argument to `printf`.
-"%x";    // hexadecimal
-"%o";    // octal
-"%%";    // prints %
+// printf等で使われるフォーマティング:
+"%d";    // 整数
+"%3d";   // 整数最低3桁表示 (右揃え)
+"%s";    // 文字列
+"%f";    // 浮動小数点
+"%ld";   // 長整数
+"%3.2f"; // 小数点以下2桁、小数点以上最低3桁で表示される浮動小数点
+"%7.4s"; // (文字列としての浮動小数点でも同じことができる)
+"%c";    // 文字（単一）
+"%p";    // ポインター 注：ポインターを渡すときには (void*) 型へ
+         //                変換しなければならない。
+"%x";    // 整数16進数表示
+"%o";    // 整数8進数表示
+"%%";    // "%" を挿入する
 */
 
 ///////////////////////////////////////
-// Order of Evaluation
+// 評価順序
 ///////////////////////////////////////
 
-// From top to bottom, top has higher precedence
-//---------------------------------------------------//
-//        Operators                  | Associativity //
-//---------------------------------------------------//
-// () [] -> .                        | left to right //
-// ! ~ ++ -- + = *(type) sizeof      | right to left //
-// * / %                             | left to right //
-// + -                               | left to right //
-// << >>                             | left to right //
-// < <= > >=                         | left to right //
-// == !=                             | left to right //
-// &                                 | left to right //
-// ^                                 | left to right //
-// |                                 | left to right //
-// &&                                | left to right //
-// ||                                | left to right //
-// ?:                                | right to left //
-// = += -= *= /= %= &= ^= |= <<= >>= | right to left //
-// ,                                 | left to right //
-//---------------------------------------------------//
+// 順位は上から下へ、一番上は優先順位が最も高い
+//------------------------------------------------------//
+// 演算子                                    |  優先順位  //
+//------------------------------------------------------//
+//  () [] -> .                              |  左から右  //
+//  ! ~ ++ -- + = *(型) sizeof               |  右から左  //
+//  * %                                     |  左から右  //
+//  + -                                     |  左から右  //
+//  << >>                                   |  左から右  //
+//  < <= > >=                               |  左から右  //
+//  == !=                                   |  左から右  //
+//  &                                       |  左から右  //
+//  ^                                       |  左から右  //
+//  |                                       |  左から右  //
+//  &&                                      |  左から右  //
+//  ||                                      |  左から右  //
+//  ? :                                     |  右から左  //
+//  = += -= *= /= %= &= ^= |= <<= >>=       |  右から左  //
+//  ,                                       |  左から右  //
+//------------------------------------------------------//
 
-/******************************* Header Files **********************************
+/******************************* ヘッダーファイル **********************************
 
 Header files are an important part of C as they allow for the connection of C
 source files and can simplify code and definitions by separating them into
 separate files.
 
+ヘッダーファイルはC言語の重要な役割で、ソースファイル間の依存関係の管理を
+容易にすることや関数などの宣言を他のファイルに分けることができます。
+
 Header files are syntactically similar to C source files but reside in ".h"
 files. They can be included in your C source file by using the precompiler
 command #include "example.h", given that example.h exists in the same directory
 as the C file.
+
+ヘッダーファイル内は通常のC言語と変わりませんが、ファイル拡張子が ".h" になっており、
+同じディレクトリー（フォルダー）に存在するなら` #include "ファイル名.h" `で
+ヘッダーファイルで宣言した関数、定数などをソースファイルで使用できます。
 */
 
 /* A safe guard to prevent the header from being defined too many times. This */
 /* happens in the case of circle dependency, the contents of the header is    */
 /* already defined.                                                           */
-#ifndef EXAMPLE_H /* if EXAMPLE_H is not yet defined. */
-#define EXAMPLE_H /* Define the macro EXAMPLE_H. */
+/*
+セーフガードは#includeマクロを使用する際に、複数回宣言されるのを防ぎます。
+特に互いを参照しあってしまう相互依存の場合に有効です。
+*/
+#ifndef EXAMPLE_H /* もし EXAMPLE_H が定義されていないならば、*/
+#define EXAMPLE_H /* マクロ EXAMPLE_H を定義する。*/
 
 /* Other headers can be included in headers and therefore transitively */
 /* included into files that include this header.                       */
+// ヘッダーファイル内で他のヘッダーファイルを #include することができます。
 #include <string.h>
 
 /* Like for c source files, macros can be defined in headers */
 /* and used in files that include this header file.          */
+/* 通常と同じように、マクロを用いて定数を定義できます。これは
+ヘッダーファイルとそれを#includeしたソースファイルで使用できます。 */
 #define EXAMPLE_NAME "Dennis Ritchie"
 
 /* Function macros can also be defined.  */
+// 関数マクロも定義できます
 #define ADD(a, b) ((a) + (b))
 
 /* Notice the parenthesis surrounding the arguments -- this is important to   */
 /* ensure that a and b don't get expanded in an unexpected way (e.g. consider */
 /* MUL(x, y) (x * y); MUL(1 + 2, 3) would expand to (1 + 2 * 3), yielding an  */
 /* incorrect result)                                                          */
-
+/*
+引数である変数の周りに丸括弧がありますが、これはマクロの展開時に評価順序が
+意図しないものにならないようにするためです。(例：関数 MUL(x, y) (x * y); 
+があるとします。MUL(1 + 2, 3) は(1 + 2 * 3)と展開され、間違った答えが帰ってきます。)
+*/
 /* Structs and typedefs can be used for consistency between files. */
+// struct, typedefも同じように定義できます。
 typedef struct Node
 {
     int val;
     struct Node *next;
 } Node;
 
-/* So can enumerations. */
+// 列挙体も同じく、
 enum traffic_light_state {GREEN, YELLOW, RED};
 
 /* Function prototypes can also be defined here for use in multiple files,  */
 /* but it is bad practice to define the function in the header. Definitions */
 /* should instead be put in a C file.                                       */
+/*
+関数プロトタイプもヘッダーファイルで宣言できます。ヘッダーファイルで定義を
+書くのはよろしくないとされており、定義はソースファイルで記述することを
+強く勧めます。
+*/
 Node createLinkedList(int *vals, int len);
 
 /* Beyond the above elements, other definitions should be left to a C source */
 /* file. Excessive includes or definitions should also not be contained in   */
 /* a header file but instead put into separate headers or a C file.          */
+/*
+これ以外の要素はソースファイルに残します。過剰な#includeや定義は1つの
+ヘッダーファイルには入れず、別の複数のヘッダーファイルかソースファイルに
+分けてください。
+*/
 
-#endif /* End of the if precompiler directive. */
+#endif // if系列マクロの終わり
 
 ```
 
-## Further Reading
+## 関連記事、教材(ほとんど英語)
 
-Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language)
-It is _the_ book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
-inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
+[CS50 日本語版](https://cs50.jp/) はハーバード大学が無料で公開しているコンピューターサイエンスコースで
+字幕付きの動画と一緒にC, Python, SQL, HTML, CSS, Javascriptなどの言語を使った素晴らしいコースです。
+C言語を学ぶ者は第2-5週目を受けることをおすすめします。
 
-Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/) (not free).
+[Learn C The Hard Way](http://learncodethehardway.org/c/) は有料だが、良い英語での教材です。
 
-If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
+質問があるならば、[compl.lang.c Frequently Asked Questions](http://c-faq.com) を見るのが良い。
 
 It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
 Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
-[Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
+インデンテーションや空白の使い方はどこでも一定であることが望まれています。たとえそのコードが画期的で実行速度が速くとも、
+可読性が確保できなければ保守性に欠けます。良いコーディングスタイルの一つには[Linuxカーネル](https://www.kernel.org/doc/Documentation/process/coding-style.rst)のものがあります。
 
 Other than that, Google is your friend.
+それでも分からんことがあったら、GPTにかける前にググってこい。
 
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
