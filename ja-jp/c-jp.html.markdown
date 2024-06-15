@@ -431,29 +431,23 @@ int main (int argc, char** argv)
   // 型キャスティング(型変換)
   ///////////////////////////////////////
 
-  // Every value in C has a type, but you can cast one value into another type
-  // if you want (with some constraints).
   // すべての値には型がありますが、これらは、互換性がある別の型にキャスティングすることができます。
 
   int x_hex = 0x01; // 16進数リテラルで変数を定義できます。
                     // 2進数リテラルにはコンパイラごとに差があります。
                     // (GCCではx_bin = 0b0010010110)
 
-  // Casting between types will attempt to preserve their numeric values
   // 型キャスティングを行うとその値を保持しようとします。
   printf("%d\n", x_hex); // => 1
   printf("%d\n", (short) x_hex); // => 1
   printf("%d\n", (char) x_hex); // => 1
 
-  // If you assign a value greater than a types max val, it will rollover
-  // without warning.
   // キャスティング先の型のサイズより大きい値をキャストすると警告なしに値が丸められます。
   printf("%d\n", (unsigned char) 257); // => 1 (8ビット長のunsigned char型が保持できる最大値は255)
 
   // char, signed char, unsigned char型の最大値はそれぞれ、<limits.h>で提供される
   // CHAR_MAX, SCHAR_MAX, UCHAR_MAXマクロを使用できます。
 
-  // Integral types can be cast to floating-point types, and vice-versa.
   // 整数型と浮動小数点数型は双方向にキャスティング可能です。
   printf("%f\n", (double) 100); // %f はdouble型と
   printf("%f\n", (float)  100); // float型をフォーマットします。
@@ -496,14 +490,8 @@ int main (int argc, char** argv)
     x_array[xx] = 20 - xx;
   } // x_arrayの値を 20, 19, 18,... 2, 1 と一括初期化する。
 
-  // Declare a pointer of type int and initialize it to point to x_array
   // int型の値を指し示すポインターを宣言し、x_arrayのアドレスで初期化する
   int* x_ptr = x_array;
-  // x_ptr now points to the first element in the array (the integer 20).
-  // This works because arrays often decay into pointers to their first element.
-  // For example, when an array is passed to a function or is assigned to a pointer,
-  // it decays into (implicitly converted to) a pointer.
-  // Exceptions: when the array is the argument of the `&` (address-of) operator:
   // x_ptrは整数20個の配列の最初の要素を指しています。
   // この場合配列は代入時に最初の要素へのポインターへ変換されます。
   // 関数に配列を渡す際にも暗黙的にポインターに変換されます。
@@ -511,29 +499,20 @@ int main (int argc, char** argv)
   // 配列型のポインターが使用されます：
   int arr[10];
   int (*ptr_to_arr)[10] = &arr; // &arr は `int *`型ではない！
-  // It's of type "pointer to array" (of ten `int`s).
-  // or when the array is a string literal used for initializing a char array:
   // これは「（10個の整数の）配列へのポインター」型です。
   // もう一つの例外には文字列リテラルをchar型配列に代入する場合：
   char otherarr[] = "foobarbazquirk";
-  // or when it's the argument of the `sizeof` or `alignof` operator:
   // または、`sizeof`, `alignof`演算子を使用した場合：
   int arraythethird[10];
   int *ptr = arraythethird; // equivalent with int *ptr = &arr[0];
   printf("%zu, %zu\n", sizeof(arraythethird), sizeof(ptr));
   // "40, 4" または "40, 8" が出力されます。
 
-  // Pointers are incremented and decremented based on their type
-  // (this is called pointer arithmetic)
   // ポインター型の値を加算・減算するとその方に応じて操作できます。
   // この操作のことをポインター演算といいます。
   printf("%d\n", *(x_ptr + 1)); // => 19
   printf("%d\n", x_array[1]); // => 19
 
-  // You can also dynamically allocate contiguous blocks of memory with the
-  // standard library function malloc, which takes one argument of type size_t
-  // representing the number of bytes to allocate (usually from the heap, although this
-  // may not be true on e.g. embedded systems - the C standard says nothing about it).
   // 標準ライブラリ関数の一つであるmallocを使えば連続したメモリ領域を動的に確保できます。
   // malloc関数は確保するバイト数を設定するsize_t型の引数が一つあります。
   // （確保するのは大抵の場合ヒープ領域に確保されますが、組み込みデバイスなどでは
@@ -543,17 +522,10 @@ int main (int argc, char** argv)
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
   } // メモリー領域を整数型配列として初期化する [20, 19, 18 ... 1]
 
-  // Be careful passing user-provided values to malloc! If you want
-  // to be safe, you can use calloc instead (which, unlike malloc, also zeros out the memory)
   // mallocで確保されたメモリー領域へのデータの書き込みには注意してください。
   // 安全性を保証するには、確保すると同時にそのメモリー領域をすべて0で埋め尽くすcalloc関数を使用してください。
   int* my_other_ptr = calloc(20, sizeof(int));
 
-  // Note that there is no standard way to get the length of a
-  // dynamically allocated array in C. Because of this, if your arrays are
-  // going to be passed around your program a lot, you need another variable
-  // to keep track of the number of elements (size) of an array. See the
-  // functions section for more info.
   // Cには動的配列のサイズをその場で求める方法はほとんどなく、関数などに渡すときに要素数を記録する別の変数が
   // 必要になることがよくあります。詳細は次の関数についてのセクションを読んでください。
   size_t size = 10;
@@ -562,30 +534,20 @@ int main (int argc, char** argv)
   size++;
   my_arr = realloc(my_arr, sizeof(int) * size); // realloc関数で配列のサイズを更新する。
   if (my_arr == NULL) {
-    //Remember to check for realloc failure!
     // mallocやreallocなどを使う際には領域確保に異常がない確認するために
     // ヌルチェックをすることをおすすめします。
     return
   }
   my_arr[10] = 5;
 
-  // Dereferencing memory that you haven't allocated gives
-  // "unpredictable results" - the program is said to invoke "undefined behavior"
   // 確保されていないメモリー領域へアクセスは予測不可能な結果を招く可能性があります。
   printf("%d\n", *(my_ptr + 21)); // => who-knows-what? が出力される**かも**、クラッシュするかもしれない。
 
-  // When you're done with a malloc'd block of memory, you need to free it,
-  // or else no one else can use it until your program terminates
-  // (this is called a "memory leak"):
   // メモリー領域の使用を終えたら必ずfree関数を使ってその領域を解放しなければなりません。
   // 解放しなければ、プログラムが終了しても他のプログラムからそのメモリー領域を再利用できず、
   // システム全体で使用できる容量が減ってしまいます。このことをメモリーリークと呼びます。
   free(my_ptr); // my_ptrでポイントされてるメモリー領域を解放する。
 
-  // Strings are arrays of char, but they are usually represented as a
-  // pointer-to-char (which is a pointer to the first element of the array).
-  // It's good practice to use `const char *' when referring to a string literal,
-  // since string literals shall not be modified (i.e. "foo"[0] = 'a' is ILLEGAL.)
   // 文字列はchar型の配列で表せますが、よく使用されるのは文字列の最初の文字を指すcharポインターです。
   // もし、単に文字列リテラルを使用するだけならば"const char*"を使い、変更不能にしておくことが推奨されています。
   // なぜならば、本来文字列リテラルのデータは変更すべきではないからです。
@@ -593,9 +555,6 @@ int main (int argc, char** argv)
   const char *my_str = "This is my very own string literal";
   printf("%c\n", *my_str); // => 'T'
 
-  // This is not the case if the string is an array
-  // (potentially initialized with a string literal)
-  // that resides in writable memory, as in:
   // char型の配列で定義されている場合は別で、文字列リテラルで初期化できますが、
   // 各要素は変更可能です。例に：
   char foo[] = "foo";
@@ -608,8 +567,6 @@ int main (int argc, char** argv)
 // 関数
 ///////////////////////////////////////
 
-// Function declaration syntax:
-// <return type> <function name>(<args>)
 // 関数定義の構文：
 // <戻り値の型> <関数名>(<引数>)
 
@@ -619,18 +576,11 @@ int add_two_ints(int x1, int x2)
 }
 
 /*
-Functions are call by value. When a function is called, the arguments passed to
-the function are copies of the original arguments (except arrays). Anything you
-do to the arguments in the function do not change the value of the original
-argument where the function was called.
 関数は値によって呼び出されます。関数が呼ばれると、引数として渡した値はコピーされ、
 関数内で値を変更したとしても、渡した引数の値は変わりません。（配列はこれに従わない。）
 
-Use pointers if you need to edit the original argument values (arrays are always
-passed in as pointers).
 関数内で引数の値を変更したい場合はポインターとして渡す必要があり、配列も渡すときに自動的にポインターになります。
 
-Example: in-place string reversal
 例：即興文字列反転
 */
 
@@ -642,8 +592,6 @@ void str_reverse(char *str_in)
   size_t len = strlen(str_in); // `strlen()` はC標準ライブラリ関数です。
                                // NOTE: `strlen` で返される文字列の長さは終端文字の
                                //       ヌルバイト('\0')を含んでいない状態です。
-  // in C99 and newer versions, you can directly declare loop control variables
-  // in the loop's parentheses. e.g., `for (size_t ii = 0; ...`
   // C99標準以降では、ループ定義の中にループ制御変数が定義できます。
   // 例：｀for (size_t ii = 0; ...｀
   for (ii = 0; ii < len / 2; ii++) {
@@ -660,8 +608,6 @@ str_reverse(c);
 printf("%s\n", c); // => ".tset a si sihT"
 */
 /*
-as we can return only one variable
-to change values of more than one variables we use call by reference
 一つの変数を変更することができるように、
 ポインター渡しで複数の変数を変更できます。
 */
@@ -680,11 +626,6 @@ printf("first: %d\nsecond: %d\n", first, second);
 // 変数の値が交換される
 */
 
-// Return multiple values.
-// C does not allow for returning multiple values with the return statement. If
-// you would like to return multiple values, then the caller must pass in the
-// variables where they would like the returned values to go. These variables must
-// be passed in as pointers such that the function can modify them.
 // 一度に複数の値を返す
 // Cではreturn文を使って複数の値を返すことができません。一度に複数の値を返すには、
 // 引数にそれぞれの戻り値を格納する変数へのポインターを設定しなければなりません。
@@ -693,7 +634,6 @@ int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
     if(array_of_3 == NULL)
         return 0; //エラーコードを返す (偽)
 
-    //de-reference the pointer so we modify its value
     //値を変更するためにポインターをディレファレンスする。
    *ret1 = array_of_3[0];
    *ret2 = array_of_3[1];
@@ -703,17 +643,10 @@ int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
 }
 
 /*
-With regards to arrays, they will always be passed to functions
-as pointers. Even if you statically allocate an array like `arr[10]`,
-it still gets passed as a pointer to the first element in any function calls.
-Again, there is no standard way to get the size of a dynamically allocated
-array in C.
 引数に配列型を使用するときは、配列は必ずポインターに変換されることに注意してください。これは
 malloc関数で動的に確保したものでも、静的に定義した配列でも同じことが起きます。繰り返しになるが、
 Cでは引数として渡された動的配列の長さを標準仕様で知ることができません。
 */
-// Size must be passed!
-// Otherwise, this function has no way of knowing how big the array is.
 // 引数として配列のサイズを渡してください。
 // でなければ、渡された配列の長さを知る術がありません。
 void printIntArray(int *arr, size_t size) {
@@ -729,28 +662,17 @@ printIntArray(my_arr, size);
 // "arr[0] is: 1" などが出力される。
 */
 
-// if referring to external variables outside function, you should use the extern keyword.
 // 関数外で定義されている変数へアクセスするにはexternキーワードを使用します。
 int i = 0;
 void testFunc() {
   extern int i; //この変数iは外部変数iとして使用できる
 }
 
-// make external variables private to source file with static:
 // 外部変数を他のソースファイルから見えないようにする：
 static int j = 0; // testFunc2()を使用する他のファイルは変数jに直接アクセスできない。
 void testFunc2() {
   extern int j;
 }
-// The static keyword makes a variable inaccessible to code outside the
-// compilation unit. (On almost all systems, a "compilation unit" is a .c
-// file.) static can apply both to global (to the compilation unit) variables,
-// functions, and function-local variables. When using static with
-// function-local variables, the variable is effectively global and retains its
-// value across function calls, but is only accessible within the function it
-// is declared in. Additionally, static variables are initialized to 0 if not
-// declared with some other starting value.
-//**You may also declare functions as static to make them private**
 
 // staticキーワードはコンパイルユニット外での変数のアクセスを禁じ、プライベートにします。
 // （大抵のシステムでのコンパイルユニットとは .c ソースコードのことを指す。）
@@ -765,23 +687,15 @@ void testFunc2() {
 // ユーザー定義の型と構造体
 ///////////////////////////////////////
 
-// Typedefs can be used to create type aliases
 // typedefキーワードを使えば型の別名をつけることができます
 typedef int my_type; // my_type は int型の別名になった。
 my_type my_type_var = 0; // int my_type_var = 0; と等しい
 
-// Structs are just collections of data, the members are allocated sequentially,
-// in the order they are written:
 // 構造体は複数のデータを一つにまとめたものであり、上から下の順で定義されたメンバーがメモリーに割り当てられる：
 struct rectangle {
   int width;
   int height;
 };
-
-// It's not generally true that
-// sizeof(struct rectangle) == sizeof(int) + sizeof(int)
-// due to potential padding between the structure members (this is for alignment
-// reasons). [1]
 
 // この構造体のサイズは必ずしも
 // sizeof(struct rectangle) == sizeof(int) + sizeof(int)
@@ -798,16 +712,13 @@ void function_1()
   // 構造体へのポインターも定義できる：
   struct rectangle *my_rec_ptr = &my_rec;
 
-  // Use dereferencing to set struct pointer members...
   // ディレファレンスしてからメンバーの値をセットするのも良いが...
   (*my_rec_ptr).width = 30;
 
-  // ... or even better: prefer the -> shorthand for the sake of readability
   // 可読性を高めるために"->"を使ってポインターから直接メンバーへアクセスすることもできる。
   my_rec_ptr->height = 10; // (*my_rec_ptr).height = 10; と同じ
 }
 
-// You can apply a typedef to a struct for convenience
 // 毎回structを打たなくてもいいように構造体に別名をつけることができます
 typedef struct rectangle rect; // rect = struct rectangle
 
@@ -827,8 +738,6 @@ struct rectangle r;
 rect r;
 // と楽に宣言・定義できる
 
-// if you have large structs, you can pass them "by pointer" to avoid copying
-// the whole struct:
 // サイズが大きい構造体は値渡しの代わりにポインター渡しでコピー作成の時間・メモリー使用量増大を避けることができます：
 int areaptr(const rect *r)
 {
@@ -839,20 +748,13 @@ int areaptr(const rect *r)
 // 関数ポインター
 ///////////////////////////////////////
 /*
-At run time, functions are located at known memory addresses. Function pointers are
-much like any other pointer (they just store a memory address), but can be used
-to invoke functions directly, and to pass handlers (or callback functions) around.
-However, definition syntax may be initially confusing.
-
 実行時には、関数はプログラムに決められたメモリーアドレスにあります。関数ポインターは他のポインターとほとんど変わりません。
 違うところは、ポインターを使って関数を呼び出せることです。これにより、関数の引数として他の関数をコールバックとしてわすことができます。
 難しいところは、他の変数へのポインターとは表記法が違ってくることです。
 
-Example: use str_reverse from a pointer
 例：str_reverse関数をポインターとして使う
 */
 void str_reverse_through_pointer(char *str_in) {
-  // Define a function pointer variable, named f.
   // 戻り値がvoid型fの名前がついた関数ポインターを宣言する。
   void (*f)(char *); // 引数も一緒に書きますが、指している関数と同じ戻り値と引数の型でなければなりません(引数名は入れずにただ型を列挙する)。
   f = &str_reverse; // 関数のアドレスを代入する（アドレスは実行時に決定される）。
@@ -862,8 +764,6 @@ void str_reverse_through_pointer(char *str_in) {
 }
 
 /*
-As long as function signatures match, you can assign any function to the same pointer.
-Function pointers are usually typedef'd for simplicity and readability, as follows:
 同じ戻り値型と引数である限り、どの関数でも使えます。
 可読性と単純性を実現するために、typedefが使われます。
 */
@@ -879,7 +779,7 @@ typedef void (*my_fnp_type)(char *);
 // printf()を用いて文字などを出力する
 /////////////////////////////////////
 
-//Special characters:
+//特殊文字:
 /*
 '\a'; // 警告 (ベル) 文字
 '\n'; // 改行文字
@@ -940,26 +840,14 @@ typedef void (*my_fnp_type)(char *);
 
 /******************************* ヘッダーファイル **********************************
 
-Header files are an important part of C as they allow for the connection of C
-source files and can simplify code and definitions by separating them into
-separate files.
-
 ヘッダーファイルはC言語の重要な役割で、ソースファイル間の依存関係の管理を
 容易にすることや関数などの宣言を他のファイルに分けることができます。
-
-Header files are syntactically similar to C source files but reside in ".h"
-files. They can be included in your C source file by using the precompiler
-command #include "example.h", given that example.h exists in the same directory
-as the C file.
 
 ヘッダーファイル内は通常のC言語と変わりませんが、ファイル拡張子が ".h" になっており、
 同じディレクトリー（フォルダー）に存在するなら` #include "ファイル名.h" `で
 ヘッダーファイルで宣言した関数、定数などをソースファイルで使用できます。
 */
 
-/* A safe guard to prevent the header from being defined too many times. This */
-/* happens in the case of circle dependency, the contents of the header is    */
-/* already defined.                                                           */
 /*
 セーフガードは#includeマクロを使用する際に、複数回宣言されるのを防ぎます。
 特に互いを参照しあってしまう相互依存の場合に有効です。
@@ -967,31 +855,21 @@ as the C file.
 #ifndef EXAMPLE_H /* もし EXAMPLE_H が定義されていないならば、*/
 #define EXAMPLE_H /* マクロ EXAMPLE_H を定義する。*/
 
-/* Other headers can be included in headers and therefore transitively */
-/* included into files that include this header.                       */
 // ヘッダーファイル内で他のヘッダーファイルを #include することができます。
 #include <string.h>
 
-/* Like for c source files, macros can be defined in headers */
-/* and used in files that include this header file.          */
 /* 通常と同じように、マクロを用いて定数を定義できます。これは
 ヘッダーファイルとそれを#includeしたソースファイルで使用できます。 */
 #define EXAMPLE_NAME "Dennis Ritchie"
 
-/* Function macros can also be defined.  */
 // 関数マクロも定義できます
 #define ADD(a, b) ((a) + (b))
 
-/* Notice the parenthesis surrounding the arguments -- this is important to   */
-/* ensure that a and b don't get expanded in an unexpected way (e.g. consider */
-/* MUL(x, y) (x * y); MUL(1 + 2, 3) would expand to (1 + 2 * 3), yielding an  */
-/* incorrect result)                                                          */
 /*
 引数である変数の周りに丸括弧がありますが、これはマクロの展開時に評価順序が
 意図しないものにならないようにするためです。(例：関数 MUL(x, y) (x * y); 
 があるとします。MUL(1 + 2, 3) は(1 + 2 * 3)と展開され、間違った答えが帰ってきます。)
 */
-/* Structs and typedefs can be used for consistency between files. */
 // struct, typedefも同じように定義できます。
 typedef struct Node
 {
@@ -1002,9 +880,6 @@ typedef struct Node
 // 列挙体も同じく、
 enum traffic_light_state {GREEN, YELLOW, RED};
 
-/* Function prototypes can also be defined here for use in multiple files,  */
-/* but it is bad practice to define the function in the header. Definitions */
-/* should instead be put in a C file.                                       */
 /*
 関数プロトタイプもヘッダーファイルで宣言できます。ヘッダーファイルで定義を
 書くのはよろしくないとされており、定義はソースファイルで記述することを
@@ -1012,9 +887,6 @@ enum traffic_light_state {GREEN, YELLOW, RED};
 */
 Node createLinkedList(int *vals, int len);
 
-/* Beyond the above elements, other definitions should be left to a C source */
-/* file. Excessive includes or definitions should also not be contained in   */
-/* a header file but instead put into separate headers or a C file.          */
 /*
 これ以外の要素はソースファイルに残します。過剰な#includeや定義は1つの
 ヘッダーファイルには入れず、別の複数のヘッダーファイルかソースファイルに
@@ -1035,12 +907,10 @@ C言語を学ぶ者は第2-5週目を受けることをおすすめします。
 
 質問があるならば、[compl.lang.c Frequently Asked Questions](http://c-faq.com) を見るのが良い。
 
-It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
-Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
 インデンテーションや空白の使い方はどこでも一定であることが望まれています。たとえそのコードが画期的で実行速度が速くとも、
 可読性が確保できなければ保守性に欠けます。良いコーディングスタイルの一つには[Linuxカーネル](https://www.kernel.org/doc/Documentation/process/coding-style.rst)のものがあります。
 
-Other than that, Google is your friend.
 それでも分からんことがあったら、GPTにかける前にググってこい。
+Googleは友達だからな。
 
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
