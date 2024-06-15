@@ -291,7 +291,7 @@ int main (int argc, char** argv)
   2 <= 2; // => 1       以下
   2 >= 2; // => 1       以上
 
-  // CはPython出ないので、演算子の連鎖はできません。
+  // CはPythonではないので、演算子の連鎖はできません。
   // 下記の例では問題なくコンパイルしますが、`0 < a < 2`は`(0 < a) < 2`になり、
   // `(0 < a)`の結果が真でも偽でも結局`0 < 2`または`1 < 2`となるので常に真となります。
   int between_0_and_2 = 0 < a < 2;
@@ -901,7 +901,7 @@ Node createLinkedList(int *vals, int len);
 
 [CS50 日本語版](https://cs50.jp/) はハーバード大学が無料で公開しているコンピューターサイエンスコースで
 字幕付きの動画と一緒にC, Python, SQL, HTML, CSS, Javascriptなどの言語を使った素晴らしいコースです。
-C言語を学ぶ者は第2-5週目を受けることをおすすめします。
+C言語を学ぶ者は第1-5週目を受けることをおすすめします。
 
 [Learn C The Hard Way](http://learncodethehardway.org/c/) は有料だが、良い英語での教材です。
 
