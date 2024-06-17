@@ -423,7 +423,7 @@ int main (int argc, char** argv)
   /*
     ほとんどの場合、goto文を使うのは、そのコードが何をするかわかっていない限り、
     良くないとされています。詳細は
-    https://en.wikipedia.org/wiki/Spaghetti_code#Meaning
+    https://ja.wikipedia.org/wiki/スパゲッティプログラム#goto文の濫用
     を読んでください。
   */
 
@@ -897,7 +897,7 @@ Node createLinkedList(int *vals, int len);
 
 ```
 
-## 関連記事、教材(ほとんど英語)
+## 関連記事、教材(一部英語)
 
 [CS50 日本語版](https://cs50.jp/) はハーバード大学が無料で公開しているコンピューターサイエンスコースで
 字幕付きの動画と一緒にC, Python, SQL, HTML, CSS, Javascriptなどの言語を使った素晴らしいコースです。
@@ -913,4 +913,4 @@ C言語を学ぶ者は第1-5週目を受けることをおすすめします。
 それでも分からんことがあったら、GPTにかける前にググってこい。
 Googleは友達だからな。
 
-[1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
+[1] [【C言語】構造体を作る上でのアライメントのお話。そもそもアライメントとは...](https://creepfablic.site/2019/09/16/clangu-alignment-padding/)
