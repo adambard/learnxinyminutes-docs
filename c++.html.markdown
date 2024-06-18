@@ -263,10 +263,10 @@ std::string& fooRef = foo; // This creates a reference to foo.
 fooRef += ". Hi!"; // Modifies foo through the reference
 std::cout << fooRef; // Prints "I am foo. Hi!"
 
+std::cout << &fooRef << '\n'; // Prints the address of foo
 // Doesn't reassign "fooRef". This is the same as "foo = bar", and
 //   foo == "I am bar"
 // after this line.
-std::cout << &fooRef << '\n'; // Prints the address of foo
 fooRef = bar;
 std::cout << &fooRef << '\n'; // Still prints the address of foo
 std::cout << fooRef << '\n';  // Prints "I am bar"
