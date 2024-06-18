@@ -840,7 +840,7 @@ void doSomethingWithAFile(const std::string& filename)
 // manage the lifetime of the object being pointed to without ever needing to explicitly delete
 // the object. The term itself simply describes a set of pointers with the
 // mentioned abstraction.
-// Smart pointers should preferred over raw pointers, to prevent
+// Smart pointers should be preferred over raw pointers, to prevent
 // risky memory leaks, which happen if you forget to delete an object.
 
 // Usage of a raw pointer:
