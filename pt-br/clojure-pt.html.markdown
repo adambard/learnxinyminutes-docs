@@ -9,12 +9,11 @@ translators:
 lang: pt-br
 ---
 
-Clojure é uma linguagem da família do Lisp desenvolvida para a JVM (máquina virtual Java). Possui uma ênfase muito mais forte em [programação funcional] (https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_funcional) pura do que Common Lisp, mas inclui diversos recursos [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) para lidar com estado e mutabilidade, caso isso seja necessário.
+Clojure é uma linguagem da família do Lisp desenvolvida para a JVM (máquina virtual Java). Possui uma ênfase muito mais forte em [programação funcional](https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_funcional) pura do que Common Lisp, mas inclui diversos recursos [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) para lidar com estado e mutabilidade, caso isso seja necessário.
 
 Essa combinação permite gerenciar processamento concorrente de maneira muito simples - frequentemente, de modo automático.
 
 (Sua versão de clojure precisa ser pelo menos 1.2)
-
 
 ```clojure
 ; Comentários começam por ponto e vírgula
@@ -239,7 +238,7 @@ xis ; => :x
 
 ; É possível, inclusive, criar apelidos a nomes que já existem:
 (def somar! soma)
-(somar! 41 1) ; => 42 
+(somar! 41 1) ; => 42
 
 ; Uma forma rápida de criar funções é por meio de funções anônimas. Elas são ótimas
 ; para manipulação de coleções e seqs, já que podem ser passadas para map, filter
@@ -280,7 +279,7 @@ mapa-keywords ; => {:a 1, :c 3, :b 2}
 (mapa-strings "a") ; => 1
 (mapa-keywords :a) ; => 1
 
-; Se a chave buscada for uma keyword, ela também pode ser usada como função para recuperar 
+; Se a chave buscada for uma keyword, ela também pode ser usada como função para recuperar
 ; valores. Note que isso não funciona com strings.
 (:b mapa-keywords) ; => 2
 ("b" mapa-strings) ; => java.lang.String cannot be cast to clojure.lang.IFn
@@ -357,7 +356,7 @@ meu-conjunto ; => #{1 3 2}
 (if false "a" "b") ; => "b"
 
 ; Opcionalmente você pode não passar o último argumento, mas se a condição for falsa
-; o if vai retornar nil. 
+; o if vai retornar nil.
 (if false "a") ; => nil
 
 ; A forma if somente aceita um comando para ser executado em cada caso. Se você
@@ -506,13 +505,13 @@ meu-conjunto ; => #{1 3 2}
 ; e ele criará um objeto que é seguro de atualizar:
 (def atom-mapa (atom {}))
 
-; Para acessar o valor de um atom, você pode usar a função deref ou o operador @: 
+; Para acessar o valor de um atom, você pode usar a função deref ou o operador @:
 @atom-mapa ; => {}
 (deref atom-mapa) ; => {}
 
 ; Para mudar o valor de um atom, você deve usar a função swap!
 ; O que ela faz é chamar a função passada usando o atom como seu primeiro argumento. Com
-; isso, ela altera o valor do atom de maneira segura. 
+; isso, ela altera o valor do atom de maneira segura.
 (swap! atom-mapa assoc :a 1) ; Atribui a atom-mapa o resultado de (assoc {} :a 1)
 (swap! atom-mapa assoc :b 2) ; Atribui a atom-mapa o resultado de (assoc {:a 1} :b 2)
 
@@ -553,16 +552,12 @@ Caso queira aprender mais:
 
 * clojure.org tem vários artigos:
 [http://clojure.org/](http://clojure.org/)
-
 * Brave Clojure possui um e-book que explora em profundidade diversos recursos de clojure, incluindo ótimos exemplos:
 [https://www.braveclojure.com/](https://www.braveclojure.com/)
-
 * clojuredocs.org tem documentação com exemplos para quase todas as funções principais (pertecentes ao core):
 [http://clojuredocs.org/quickref/Clojure%20Core](http://clojuredocs.org/quickref/Clojure%20Core)
-
 * 4clojure possui alguns problemas e desafios interessantes para quem quiser treinar clojure ou programação funcional:
 [https://4clojure.oxal.org/](https://4clojure.oxal.org/)
-
 * clojure-doc.org tem um bom número de artigos para iniciantes:
 [http://clojure-doc.org/](http://clojure-doc.org/)
 

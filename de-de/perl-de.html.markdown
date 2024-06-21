@@ -157,7 +157,7 @@ logger("We have a logger subroutine!");
 
 #### Verwenden von Perl Modulen
 
-Perl Module liefern eine Menge an Funktionen die dabei Helfen das Rad nicht neu erfinden zu müssen. Perl Module können von CPAN (http://www.cpan.org/) heruntergeladen werden. Einige populäre Module sind in der Perl Distribution selbst bereits enthalten.
+Perl Module liefern eine Menge an Funktionen die dabei Helfen das Rad nicht neu erfinden zu müssen. Perl Module können von [CPAN](http://www.cpan.org/) heruntergeladen werden. Einige populäre Module sind in der Perl Distribution selbst bereits enthalten.
 
 Perlfaq enthält Fragen und Antworten zu häufig vorkommenden Aufgaben. Sehr oft sind auch Vorschläge enthalten welches CPAN module am besten geeignet ist.
 

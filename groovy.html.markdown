@@ -6,7 +6,7 @@ contributors:
 filename: learngroovy.groovy
 ---
 
-Groovy - A dynamic language for the Java platform [Read more here.](http://www.groovy-lang.org/)
+[Groovy](http://www.groovy-lang.org/) is a dynamic language for the Java platform
 
 ```groovy
 /*
@@ -299,7 +299,7 @@ def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy can memoize closure results [1][2][3]
+  Groovy can memoize closure results
 */
 def cl = {a, b ->
     sleep(3000) // simulate some time consuming processing
@@ -438,12 +438,6 @@ Join a [Groovy user group](http://www.groovy-lang.org/usergroups.html)
 
 ## Books
 
-* [Groovy Goodness] (https://leanpub.com/groovy-goodness-notebook)
-
-* [Groovy in Action] (http://manning.com/koenig2/)
-
-* [Programming Groovy 2: Dynamic Productivity for the Java Developer] (http://shop.oreilly.com/product/9781937785307.do)
-
-[1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
-[2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
-[3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
+* [Groovy Goodness](https://leanpub.com/groovy-goodness-notebook)
+* [Groovy in Action](http://manning.com/koenig2/)
+* [Programming Groovy 2: Dynamic Productivity for the Java Developer](http://shop.oreilly.com/product/9781937785307.do)

@@ -1,8 +1,8 @@
---- 
+---
 language: M (MUMPS)
-contributors: 
-    - ["Fred Turkington", "http://z3ugma.github.io"] 
-filename: LEARNM.m 
+contributors:
+    - ["Fred Turkington", "http://z3ugma.github.io"]
+filename: LEARNM.m
 ---
 
 M, or MUMPS (Massachusetts General Hospital Utility Multi-Programming System) is
@@ -22,7 +22,7 @@ to modern formats like JSON.
 
 Originally designed in 1966 for the healthcare applications, M continues to be
 used widely by healthcare systems and financial institutions for high-throughput
-real-time applications. 
+real-time applications.
 
 ### Example
 
@@ -72,12 +72,12 @@ Commands are case insensitive, and have full form, and a shortened abbreviation,
 
 #### Common Commands from all National and International Standards of M
 
-#### Write (abbreviated as W) 
+#### Write (abbreviated as W)
 
 Print data to the current device.
 
-``` 
-WRITE !,"hello world" 
+```
+WRITE !,"hello world"
 ```
 
 Output Formatting characters:
@@ -89,7 +89,7 @@ Output Formatting characters:
 Multiple statements can be provided as additional arguments before the space separators to the next command:
 
 ```
-w !,"foo bar"," ","baz" 
+w !,"foo bar"," ","baz"
 ```
 
 #### Read (abbreviated as R)
@@ -124,7 +124,7 @@ w !,centi,!,micro
 
 Remove a variable from memory or remove a database entry from disk.
 A database node (global variable) is killed depending on the variable name being prefixed by the caret character (^).
-If it is not, then the local variable is removed from memory. 
+If it is not, then the local variable is removed from memory.
 If KILLed, automatic garbage collection occurs.
 
 ```
@@ -134,9 +134,9 @@ k micro
 
 ### Globals and Arrays
 
-In addition to local variables, M has persistent, shared variables that are the built-in database of M.  They are stored to disk and called _globals_. Global names must start with a __caret__ (__^__). 
+In addition to local variables, M has persistent, shared variables that are the built-in database of M.  They are stored to disk and called _globals_. Global names must start with a __caret__ (__^__).
 
-Any variable (local or global) can be an array with the assignment of a _subscript_. Arrays are sparse and do not have a predefined size. Only if data is stored will a value use memory. Arrays should be visualized like trees, where subscripts are branches and assigned values are leaves. Not all nodes in an array need to have a value. 
+Any variable (local or global) can be an array with the assignment of a _subscript_. Arrays are sparse and do not have a predefined size. Only if data is stored will a value use memory. Arrays should be visualized like trees, where subscripts are branches and assigned values are leaves. Not all nodes in an array need to have a value.
 
 ```
 s ^cars=20
@@ -144,7 +144,7 @@ s ^cars("Tesla",1,"Name")="Model 3"
 s ^cars("Tesla",2,"Name")="Model X"
 s ^cars("Tesla",2,"Doors")=5
 
-w !,^cars 
+w !,^cars
 ; 20
 w !,^cars("Tesla")
 ; null value - there's no value assigned to this node but it has children
@@ -164,23 +164,23 @@ s ^TEMPS("11/12","1700",43)=""
 
 ### Operators
 
-```jinja
+```
 ; Assignment:       =
 ; Unary:            +   Convert a string value into a numeric value.
 ; Arthmetic:
 ;                   +   addition
-­;                   -   subtraction
+;                   -   subtraction
 ;                   *   multiplication
 ;                   /   floating-point division
 ;                   \   integer division
 ;                   #   modulo
 ;                   **  exponentiation
-; Logical:  
+; Logical:
 ;                   &   and
 ;                   !   or
 ;                   '   not
 ; Comparison:
-;                   =   equal 
+;                   =   equal
 ;                   '=  not equal
 ;                   >   greater than
 ;                   <   less than
@@ -188,7 +188,7 @@ s ^TEMPS("11/12","1700",43)=""
 ;                   '<  not less / greater than or equal to
 ; String operators:
 ;                   _   concatenate
-;                   [   contains ­          a contains b 
+;                   [   contains ­          a contains b
 ;                   ]]  sorts after  ­      a comes after b
 ;                   '[  does not contain
 ;                   ']] does not sort after
@@ -204,7 +204,7 @@ To change this order, just use parentheses to group expressions to be evaluated 
 w 5+3*20
 ;160
 ;You probably wanted 65
-write 5+(3*20) 
+write 5+(3*20)
 ```
 
 ### Flow Control, Blocks, & Code Structure
@@ -215,17 +215,17 @@ A tag can accept parameters and return a value, this is a function. A function i
 
 ```
 ; Execute the 'tag' function, which has two parameters, and write the result.
-w !,$$tag^routine(a,b) 
+w !,$$tag^routine(a,b)
 ```
 
 M has an execution stack. When all levels of the stack have returned, the program ends. Levels are added to the stack with _do_ commands and removed with _quit_ commands.
 
 #### Do (abbreviated as D)
 
-With an argument: execute a block of code & add a level to the stack. 
+With an argument: execute a block of code & add a level to the stack.
 
 ```
-d ^routine    ;run a routine from the beginning. 
+d ^routine    ;run a routine from the beginning.
 ;             ;routines are identified by a caret.
 d tag         ;run a tag in the current routine
 d tag^routine ;run a tag in different routine
@@ -235,11 +235,11 @@ Argumentless do: used to create blocks of code. The block is indented with a per
 
 ```
 set a=1
-if a=1 do  
+if a=1 do
 . write !,a
 . read b
 . if b > 10 d
-. . w !, b 
+. . w !, b
 w "hello"
 ```
 
@@ -258,7 +258,7 @@ Putting all this together, we can create a full example of an M routine:
 ; RECTANGLE - a routine to deal with rectangle math
     q ; quit if a specific tag is not called
 
-main 
+main
     n length,width ; New length and width so any previous value doesn't persist
     w !,"Welcome to RECTANGLE. Enter the dimensions of your rectangle."
     r !,"Length? ",length,!,"Width? ",width
@@ -267,7 +267,7 @@ main
     w !,"Perimeter: ",per
     quit
 
-area(length,width)  ; This is a tag that accepts parameters. 
+area(length,width)  ; This is a tag that accepts parameters.
                     ; It's not a function since it quits with no value.
     w !, "Area: ",length*width
     q  ; Quit: return to the previous level of the stack.
@@ -287,11 +287,11 @@ F(or) loops can follow a few different patterns:
 ;f var=start:increment:stop
 
 f i=0:5:25 w i," "
-;0 5 10 15 20 25 
+;0 5 10 15 20 25
 
 ; Infinite loop with counter
 ; The counter will keep incrementing forever. Use a conditional with Quit to get out of the loop.
-;f var=start:increment 
+;f var=start:increment
 
 f j=1:1 w j," " i j>1E3 q
 ; Print 1-1000 separated by a space
@@ -299,7 +299,7 @@ f j=1:1 w j," " i j>1E3 q
 ;Argumentless for - infinite loop. Use a conditional with Quit.
 ;   Also read as "forever" - f or for followed by two spaces.
 s var=""
-f  s var=var_"%" w !,var i var="%%%%%%%%%%" q  
+f  s var=var_"%" w !,var i var="%%%%%%%%%%" q
 ; %
 ; %%
 ; %%%
@@ -371,7 +371,7 @@ f  s date=$ORDER(^TEMPS(date)) q:date=""  d
 . f  s time=$O(^TEMPS(date,time)) q:time=""  d
 . . w !,"Time: ",time
 
-; Build an index that sorts first by temperature - 
+; Build an index that sorts first by temperature -
 ; what dates and times had a given temperature?
 n date,time,temp
 f  s date=$ORDER(^TEMPS(date)) q:date=""  d
@@ -387,20 +387,21 @@ f  s date=$ORDER(^TEMPS(date)) q:date=""  d
 
 ## Further Reading
 
-There's lots more to learn about M. A great short tutorial comes from the University of Northern Iowa and  Professor Kevin O'Kane's [Introduction to the MUMPS Language][1] presentation.  More about M using VistA is at 
+There's lots more to learn about M. A great short tutorial comes from the University of Northern Iowa and  Professor Kevin O'Kane's [Introduction to the MUMPS Language][1] presentation.  More about M using VistA is at
 
 Intersystems has some products which are a super-set of the M programming language.
+
 * [Iris Description Page][5]
 * [Cache Description Page][6]
 
-To install an M interpreter / database on your computer, try a [YottaDB Docker image][2]. 
+To install an M interpreter / database on your computer, try a [YottaDB Docker image][2].
 
 YottaDB and its precursor, GT.M, have thorough documentation on all the language features including database transactions, locking, and replication:
 
 * [YottaDB Programmer's Guide][3]
 * [GT.M Programmer's Guide][4]
 
-[1]: https://www.cs.uni.edu/~okane/source/MUMPS-MDH/MumpsTutorial.pdf 
+[1]: https://www.cs.uni.edu/~okane/source/MUMPS-MDH/MumpsTutorial.pdf
 [2]: https://yottadb.com/product/get-started/
 [3]: https://docs.yottadb.com/ProgrammersGuide/langfeat.html
 [4]: http://tinco.pair.com/bhaskar/gtm/doc/books/pg/UNIX_manual/index.html

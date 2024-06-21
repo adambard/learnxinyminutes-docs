@@ -153,7 +153,7 @@ logger("Nós temos uma subrotina de log!");
 #### Usando módulos Perl
 
 Módulos Perl provê uma lista de recursos para lhe ajudar a evitar redesenhar
-a roda, e tudo isso pode ser baixado do CPAN (http://www.cpan.org/). Um número
+a roda, e tudo isso pode ser baixado do [CPAN](http://www.cpan.org/). Um número
 de módulos populares podem ser incluídos com a própria distribuição do Perl.
 
 perlfaq contém questões e respostas relacionadas a muitas tarefas comuns, e frequentemente provê sugestões para um bom números de módulos CPAN.

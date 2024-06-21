@@ -48,8 +48,8 @@ my %fruit_couleur = ("pomme", "rouge", "banane", "jaune");
 # Vous pouvez utiliser des espaces et l'opérateur "=>" pour les disposer plus joliment :
 
 my %fruit_couleur = (
-	pomme  => "rouge",
-	banane => "jaune"
+  pomme  => "rouge",
+  banane => "jaune"
 );
 
 # Les scalaires, tableaux et hashes sont plus amplement documentés dans le perldata
@@ -105,7 +105,7 @@ for my $element (@elements) {
 # de la plupart des fonctions pour en simplifier l'écriture.
 
 # Dans l'exemple suivant, $_ prends successivement la valeur de
-# chaque élément de la liste.  
+# chaque élément de la liste.
 
 for (@elements) {
   print; # affiche le contenu de $_
@@ -163,11 +163,12 @@ logger("On a une fonction de logging!!");
 
 #### Utiliser des modules Perl
 
-Les modules Perl fournissent une palette de fonctionnalités vous évitant de réinventer la roue et peuvent être téléchargés depuis CPAN (http://www.cpan.org/). Un certain nombre de modules populaires sont inclus dans la distribution même de Perl.
+Les modules Perl fournissent une palette de fonctionnalités vous évitant de réinventer la roue et peuvent être téléchargés depuis [CPAN](http://www.cpan.org/). Un certain nombre de modules populaires sont inclus dans la distribution même de Perl.
 
 Perlfaq contiens des questions et réponses liées aux tâches habituelles et propose souvent des suggestions quant aux bons modules à utiliser.
 
 #### Pour en savoir plus
+
  - [perl-tutorial](http://perl-tutorial.org/)
  - [Learn at www.perl.com](http://www.perl.org/learn.html)
  - [perldoc](http://perldoc.perl.org/)

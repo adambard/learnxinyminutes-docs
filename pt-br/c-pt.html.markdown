@@ -639,12 +639,10 @@ typedef void (*minha_função_type)(char *);
 Este é *o* livro sobre C, escrito pelos criadores da linguagem. Mas cuidado - ele é antigo e contém alguns erros (bem,
 ideias que não são mais consideradas boas) ou práticas ultrapassadas.
 
-Outra boa referência é [Learn C the hard way](http://learncodethehardway.org/c/).
-
 Se você tem uma pergunta, leia [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
 É importante usar espaços e indentação adequadamente e ser consistente com seu estilo de código em geral.
 Código legível é melhor que código 'esperto' e rápido. Para adotar um estilo de código bom e sensato, veja
 [Linux kernel coding style](https://www.kernel.org/doc/Documentation/CodingStyle).
 
-[1] http://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member
+[1] [stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)

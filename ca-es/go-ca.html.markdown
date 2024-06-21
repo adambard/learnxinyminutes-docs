@@ -432,8 +432,8 @@ func requestServer() {
 
 ## Més informació
 
-L'arrel de tot en Go és la web oficial [official Go web site]
-(https://go.dev/). Allà es pot seguir el tutorial, jugar interactivament
+L'arrel de tot en Go és la web oficial [official Go web site](https://go.dev/).
+Allà es pot seguir el tutorial, jugar interactivament
 i llegir molt més del que hem vist aquí.En el "tour",
 [the docs](https://go.dev/doc/) conté informació sobre com escriure codi
 net i efectiu en Go, comandes per empaquetar i generar documentació, i

@@ -36,9 +36,10 @@ Banyak bahasa aturcara mempunyai fungsi untuk menyirikan (mengekod) dan
 menyah-sirikan (men-dekod) data JSON kepada struktur data asal. Javascript
 mempunyai sokongon tersirat untuk memanipulasi teks JSON sebagai data.
 
-Maklumat lebih lanjut boleh dijumpai di http://www.json.org/
+Maklumat lebih lanjut boleh dijumpai di [json.org](http://www.json.org/)
 
 JSON dibina pada dua struktur:
+
 * Sebuah koleksi pasangan nama/nilai. Di dalam pelbagai bahasa aturcara, ini
 direalisasikan sebagai objek, rekod, "struct", "dictionary", "hash table",
 senarai berkunci, atau "associative array".

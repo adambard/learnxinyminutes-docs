@@ -74,9 +74,9 @@ False or True   # => True
 0 and 2     # => 0
 -5 or 0     # => -5
 
-# Při porovnání s boolean hodnotou nepoužívejte operátor rovnosti "==". 
+# Při porovnání s boolean hodnotou nepoužívejte operátor rovnosti "==".
 # Stejně jako u hodnoty None.
-# Viz PEP8: https://www.python.org/dev/peps/pep-0008/ 
+# Viz PEP8: https://www.python.org/dev/peps/pep-0008/
 0 is False  # => True
 2 is True   # => False
 1 is True   # => True
@@ -156,7 +156,7 @@ print("Jsem 3. Python 3.")
 nazev_promenne = 5
 nazev_promenne  # => 5
 # Názvy proměnných mohou obsahovat i unicode znaky, ale nedělejte to.
-# Viz PEP 3131 -- Supporting Non-ASCII Identifiers: 
+# Viz PEP 3131 -- Supporting Non-ASCII Identifiers:
 # https://www.python.org/dev/peps/pep-3131/
 název_proměnné = 5
 
@@ -640,5 +640,6 @@ pozdrav("Pepo")  # Vypíše 3x: "Měj se Pepo!"
 
 ## Co dál?
 
-Spoustu odkazů na české i anglické materiály najdete na [webu české Python komunity]
-(http://python.cz/). Můžete také přijít na Pyvo, kde to společně probereme.
+Spoustu odkazů na české i anglické materiály najdete na
+[webu české Python komunity](http://python.cz/). Můžete
+také přijít na Pyvo, kde to společně probereme.

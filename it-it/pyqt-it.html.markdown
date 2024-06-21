@@ -11,32 +11,32 @@ lang: it-it
 
 **Qt** è un framework ampiamente conosciuto per lo sviluppo di software multipiattaforma che può essere eseguito su varie piattaforme software e hardware con modifiche minime o nulle nel codice, pur avendo la potenza e la velocità delle applicazioni native. Sebbene **Qt** sia stato originariamente scritto in *C++*.
 
-
-Questo è un adattamento sull'introduzione di C ++ a QT di [Aleksey Kholovchuk] (https://github.com/vortexxx192
-), alcuni degli esempi di codice dovrebbero avere la stessa funzionalità
-che avrebbero se fossero fatte usando pyqt!
+Questo è un adattamento sull'introduzione di C ++ a QT di
+[Aleksey Kholovchuk](https://github.com/vortexxx192), alcuni
+degli esempi di codice dovrebbero avere la stessa
+funzionalità che avrebbero se fossero fatte usando pyqt!
 
 ```python
 import sys
 from PyQt4 import QtGui
 
 def window():
-	# Crea un oggetto applicazione
+    # Crea un oggetto applicazione
     app = QtGui.QApplication(sys.argv)
-	# Crea un widget in cui verrà inserita la nostra etichetta
+    # Crea un widget in cui verrà inserita la nostra etichetta
     w = QtGui.QWidget()
-	# Aggiungi un'etichetta al widget
+    # Aggiungi un'etichetta al widget
     b = QtGui.QLabel(w)
-	# Imposta del testo per l'etichetta
+    # Imposta del testo per l'etichetta
     b.setText("Ciao Mondo!")
-	# Fornisce informazioni su dimensioni e posizionamento
+    # Fornisce informazioni su dimensioni e posizionamento
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
-	# Dai alla nostra finestra un bel titolo
+    # Dai alla nostra finestra un bel titolo
     w.setWindowTitle("PyQt")
-	# Visualizza tutto
+    # Visualizza tutto
     w.show()
-	# Esegui ciò che abbiamo chiesto, una volta che tutto è stato configurato
+    # Esegui ciò che abbiamo chiesto, una volta che tutto è stato configurato
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
@@ -60,7 +60,7 @@ def window():
     b.setText("Premimi")
     b.move(50, 50)
     # Indica a b di chiamare questa funzione quando si fa clic
-    # notare la mancanza di "()" sulla chiamata di funzione
+    # notare la mancanza di "()" sulla chiamata di funzione
     b.clicked.connect(showdialog)
     w.setWindowTitle("PyQt Dialog")
     w.show()
