@@ -18,9 +18,9 @@ Dart 最有争议的特性必然是它的可选类型。
 import "dart:collection";
 import "dart:math" as DM;
 
-// 欢迎进入15分钟的 Dart 学习。 http://www.dartlang.org/
+// 欢迎进入15分钟的 Dart 学习。 https://dart.dev/
 // 这是一个可实际执行的向导。你可以用 Dart 运行它
-// 或者在线执行! 可以把代码复制/粘贴到这个网站。 http://try.dartlang.org/
+// 或者在线执行! 可以把代码复制/粘贴到这个网站。 https://dart.dev/#try-dart
 
 // 函数声明和方法声明看起来一样。
 // 函数声明可以嵌套。声明使用这种 name() {} 的形式，

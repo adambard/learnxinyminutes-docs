@@ -18,9 +18,9 @@ As variáveis em Dart tem tipos, mas não é obrigatório declarar devido à fun
 import "dart:collection";
 import "dart:math" as DM;
 
-// Bem vindo ao Aprenda Dart em 15 minutos. http://www.dartlang.org/
+// Bem vindo ao Aprenda Dart em 15 minutos. https://dart.dev/
 // Este é um tutorial executável. Você pode rodar esse tutorial com Dart ou no
-// site Try Dart!, é só copiar e colar este código lá. http://try.dartlang.org/
+// site Try Dart!, é só copiar e colar este código lá. https://dart.dev/#try-dart
 
 // Declarações de funções e métodos são iguais. Declarações de funções 
 // podem ser aninhadas. A declaração é feita das seguintes formas

@@ -18,9 +18,9 @@ Dart 最有爭議的特性必然是它的可選類型。
 import "dart:collection";
 import "dart:math" as DM;
 
-// 歡迎進入15分鐘的 Dart 學習。 http://www.dartlang.org/
+// 歡迎進入15分鐘的 Dart 學習。 https://dart.dev/
 // 這是一個可實際執行的範例。你可以用 Dart 執行它
-// 或者線上執行! 可以把程式碼複製/貼上到這個網站。 http://try.dartlang.org/
+// 或者線上執行! 可以把程式碼複製/貼上到這個網站。 https://dart.dev/#try-dart
 
 // 函數宣告和方法宣告看起來一樣。
 // 函數宣告可以是巢狀的。宣告使用這種 name() {} 的形式，

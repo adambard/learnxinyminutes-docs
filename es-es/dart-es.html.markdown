@@ -18,9 +18,9 @@ La característica más controvertida de Dart debe ser su escritura opcional.
 import "dart:collection";
 import "dart:math" as DM;
 
-// Bienvenido a Aprende Dart en 15 minutos. http://www.dartlang.org/
+// Bienvenido a Aprende Dart en 15 minutos. https://dart.dev/
 // Este es un tutorial ejecutable. Puedes ejecutarlo con Dart o en
-// el sitio de ¡Try Dart! solo copiando y pegando en http://try.dartlang.org/
+// el sitio de ¡Try Dart! solo copiando y pegando en https://dart.dev/#try-dart
 
 // La declaración de función y de método tienen el mismo aspecto. 
 // Las funciones pueden estar anidadas. 
