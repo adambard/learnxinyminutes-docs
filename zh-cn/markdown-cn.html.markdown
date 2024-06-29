@@ -6,6 +6,7 @@ translators:
     - ["Fangzhou Chen","https://github.com/FZSS"]
     - ["Luffy Zhong", "https://github.com/mengzhongshi"]
     - ["Yuchen Liu", "https://github.com/smallg0at"]
+    - ["Coldle", "https://github.com/yocoldle"]
 filename: learnmarkdown-cn.md
 lang: zh-cn
 ---
@@ -273,7 +274,22 @@ Markdown同样支持引用形式的链接
 [This]: http://thisisalink.com/
 ```
 
-但这并不常用
+但这种用法并不常用。
+
+### 目录
+
+部分 Markdown 方言样式通过列表、链接以及标题的组合来创建文章的目录。
+在这种情况下，可使用填充了 hash(`#`) 的小写标题名称作为链接 id。
+如果标题由多个单词组成的，可通过连字符（`-`）连接在一起。（原标题中的部分特殊字符可能被省略）
+
+```md
+- [Heading](#heading)
+- [Another heading](#another-heading)
+- [Chapter](#chapter)
+  - [Subchapter <h3 />](#subchapter-h3-)
+```
+
+注意，这一特性未必在所有的 Markdown 解析器中以相同的方式实现。
 
 ## 图片
 
@@ -352,6 +368,16 @@ Markdown同样支持引用形式的链接
 这真的太丑了 | 药不能 | 停！！！！
 ```
 
-真的是*看着令人头晕*
+## Markdownlint（Markdown 的静态分析工具）
+
+`Markdownlint` 被创建用于简化 Markdown 的工作流程并统一编码样式。
+其作为[独立工具](https://github.com/markdownlint/markdownlint)以及某些 IDE 的插件使用，可确保 Markdown 文档的有效性和可读性。
+
+---
 
 更多信息, 请于[此处](http://daringfireball.net/projects/Markdown/syntax)参见 John Gruber 关于语法的官方帖子，及于[此处](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) 参见 Adam Pritchard 的摘要笔记。
+
+如果您想了解更多主流 Markdown 方言样式的特性，请参阅：
+
+- [GitHub Flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitLab Flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)
