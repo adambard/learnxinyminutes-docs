@@ -230,7 +230,7 @@ set2:
   item3: null
 
 ...  # document end
-```
+```.
 
 ### More Resources
 
