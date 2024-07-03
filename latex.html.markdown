@@ -97,7 +97,7 @@ Separate paragraphs by empty lines.
 
 You need to add a tilde after abbreviations (if not followed by a comma) for a
 non-breaking space, because otherwise the spacing after the dot is too large:
-E.g., i.e., etc.~are are such abbreviations.
+E.g., i.e., etc.~are such abbreviations.
 
 \section{Lists}
 Lists are one of the easiest things to create in \LaTeX! I need to go shopping
