@@ -232,8 +232,8 @@ eatenBy = myFavs.animal  -- works! thanks, metatable
 -- An __index value can also be a function(tbl, key)
 -- for more customized lookups.
 
--- Values of __index,add, .. are called metamethods.
--- Full list. Here a is a table with the metamethod.
+-- The values of __index, __add, etc. are called
+-- metamethods. Here are some commonly used ones:
 
 -- __add(a, b)                     for a + b
 -- __sub(a, b)                     for a - b
