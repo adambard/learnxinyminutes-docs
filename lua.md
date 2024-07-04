@@ -366,7 +366,13 @@ mod.sayMyName()  -- error
 -- require's return values are cached so a file is
 -- run at most once, even when require'd many times.
 
--- Suppose mod2.lua contains "print('Hi!')".
+-- Suppose another file, mod2.lua, containing this:
+print('Hi!')
+return function ()
+  return 'foo'
+end
+
+--
 local a = require('mod2')  -- Prints Hi!
 local b = require('mod2')  -- Doesn't print; a=b.
 
