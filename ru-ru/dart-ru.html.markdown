@@ -44,32 +44,31 @@ import "dart:math" as math;
 /// 4 типа объявления переменных.
 /// Константы — это переменные, которые являются неизменяемыми и не могут быть изменены.
 /// `const` в Dart должен использовать объявление имени SCREAMING_SNAKE_CASE.
-const CONSTANT_VALUE = "I CANNOT CHANGE";
-CONSTANT_VALUE = "DID I?"; //Error
-/// Final is another variable declaration that cannot be change once it has been instantiated. Commonly used in classes and functions
-/// `final` can be declared in pascalCase.
-final finalValue = "value cannot be changed once instantiated";
-finalValue = "Seems not"; //Error
+const CONSTANT_VALUE = "Я НЕ МОГУ ПОМЕНЯТЬ";
+CONSTANT_VALUE = "Я сделал?"; // Ошибка
+/// Final — это еще одно объявление переменной, которое нельзя изменить после создания экземпляра. Обычно используется в классах и функциях.
+/// `final` может быть объявлен в pascalCase.
+final finalValue = "значение не может быть изменено после создания экземпляра";
+finalValue = "Кажется, нет"; // Ошибка
 
-/// `var` is another variable declaration that is mutable and can change its value. Dart will infer types and will not change its data type
-var mutableValue = "Variable string";
-mutableValue = "this is valid";
-mutableValue = false; // Error.
+/// `var` — это еще одно объявление переменной, которая является изменяемой и может изменять свое значение. Dart выведет типы и не изменит тип данных.
+var mutableValue = "Переменная строка";
+mutableValue = "Так работает";
+mutableValue = false; // Ошибка.
 
-/// `dynamic` is another variable declaration in which the type is not evaluated by the dart static type checking.
-/// It can change its value and data type.
-/// Some dartisans uses dynamic cautiously as it cannot keep track of its data type. so use it at your own risk
-dynamic dynamicValue = "I'm a string";
+/// `dynamic` — это еще одно объявление переменной, в котором тип не оценивается при проверке статического типа Dart.
+/// Он может изменить свое значение и тип данных.
+/// Некоторые дартисты используют динамический подход с осторожностью, поскольку он не может отслеживать тип данных. так что используйте его на свой страх и риск
+dynamic dynamicValue = "Я строка";
 dynamicValue = false; // false
 
 
-/// Functions can be declared in a global space
-/// Function declaration and method declaration look the same. Function
-/// declarations can be nested. The declaration takes the form of
-/// name() {} or name() => singleLineExpression;
-/// The fat arrow function declaration can be an implicit or
-/// explicit return for the result of the expression.
-/// Dart will execute a function called `main()` anywhere in the dart project.
+/// Функции могут быть объявлены в глобальном пространстве.
+/// Объявление функции и объявление метода выглядят одинаково.
+/// Объявления функции могут быть вложенными.
+/// Декларация имеет форму name() {} или name() => singleLineExpression;
+/// Объявление функции большой стрелкой может быть неявным или явным возвратом результата выражения.
+/// Dart выполнит функцию `main()` в любом месте проекта dart.
 ///
 example1() {
   nested1() {
@@ -80,24 +79,23 @@ example1() {
   nested1();
 }
 
-/// Anonymous functions don't include a name
+/// Анонимные функции не включают имя
 example2() {
-  //// Explicit return type.
+  //// Явный тип возвращаемого значения.
   nested1(void Function() fn) {
     fn();
   }
   nested1(() => print("Example2 nested 1"));
 }
 
-/// When a function parameter is declared, the declaration can include the
-/// number of parameters the function takes by explicitly specifying the names of the
-/// parameters it takes.
+/// Когда объявлен параметр функции, объявление может включать количество параметров,
+/// которые принимает функция, путем явного указания имен принимаемых ею параметров.
 example3() {
   planA(fn(String informSomething)) {
     fn("Example3 plan A");
   }
   planB(fn) {
-    // Or don't declare number of parameters.
+    // Или не объявляйте количество параметров.
     fn("Example3 plan B");
   }
 
@@ -105,9 +103,9 @@ example3() {
   planB((s) => print(s));
 }
 
-/// Functions have closure access to outer variables.
-/// Dart will infer types when the variable has a value of something.
-/// In this example dart knows that this variable is a String.
+/// Функции имеют замыкающий доступ к внешним переменным.
+/// Dart выводит типы, когда переменная имеет какое-либо значение.
+/// В этом примере Dart знает, что эта переменная является строкой.
 var example4Something = "Example4 nested 1";
 example4() {
   nested1(fn(informSomething)) {
@@ -117,8 +115,8 @@ example4() {
   nested1((s) => print(s));
 }
 
-/// Class declaration with a sayIt method, which also has closure access
-/// to the outer variable as though it were a function as seen before.
+/// Объявление класса с методом sayIt, который также имеет закрывающий доступ
+/// к внешней переменной, как если бы это была функция, как было показано ранее.
 var example5method = "Example5 sayIt";
 
 class Example5Class {
@@ -128,17 +126,16 @@ class Example5Class {
 }
 
 example5() {
-  /// Create an anonymous instance of the Example5Class and call the sayIt
-  /// method on it.
-  /// the `new` keyword is optional in Dart.
+  /// Создайте анонимный экземпляр класса Example5Class и вызовите для него метод sayIt
+  /// Ключевое слово `new` в Dart не является обязательным..
   new Example5Class().sayIt();
 }
 
-/// Class declaration takes the form of class name { [classBody] }.
-/// Where classBody can include instance methods and variables, but also
-/// class methods and variables.
+/// Объявление класса принимает форму имени класса. { [classBody] }.
+/// Где classBody может включать методы и переменные экземпляра, 
+/// а также методы и переменные класса.
 class Example6Class {
-  var instanceVariable = "Example6 instance variable";
+  var instanceVariable = "Example6 переменная экземпляра";
   sayIt() {
     print(instanceVariable);
   }
@@ -148,9 +145,9 @@ example6() {
    Example6Class().sayIt();
 }
 
-/// Class methods and variables are declared with "static" terms.
+/// Методы и переменные класса объявляются с помощью «статических» терминов.
 class Example7Class {
-  static var classVariable = "Example7 class variable";
+  static var classVariable = "Example7 переменная класса";
   static sayItFromClass() {
     print(classVariable);
   }
@@ -165,96 +162,98 @@ example7() {
   new Example7Class().sayItFromInstance();
 }
 
-/// Dart supports Generics.
-/// Generics refers to the technique of writing the code for a class
-/// without specifying the data type(s) that the class works on.
-/// Source: https://stackoverflow.com/questions/4560890/what-are-generics-in-c
+/// Dart поддерживает дженерики.
+/// Дженерики относятся к технике написания кода для класса.
+/// без указания типов данных, с которыми работает класс.
+/// Источник: https://stackoverflow.com/questions/4560890/what-are-generics-in-c
 
-/// Type `T` refers to any type that has been instantiated
-/// you can call whatever you want
-/// Programmers uses the convention in the following
-/// T - Type(used for class and primitype types)
-/// E - Element(used for List, Set, or Iterable)
-/// K,V - Key Value(used for Map)
+/// Тип `T` относится к любому типу, экземпляр которого был создан.
+/// вы можете вызывать все, что захотите.
+/// Программисты используют это соглашение в следующих случаях:
+/// T - Тип (используется для типов классов и примитивов)
+/// E - Элемент (используется для списка, набора или итерации)
+/// K,V - Ключевое значение (используется для Map)
 class GenericExample<T>{
   void printType(){
     print("$T")
   }
-  // methods can also have generics
+  // методы также могут иметь дженерики
   genericMethod<M>(){
     print("class:$T, method: $M");
   }
 }
 
 
-/// List are similar to arrays but list is a child of Iterable<E>
-/// Therefore Maps, List, LinkedList are all child of Iterable<E> to be able to loop using the keyword `for`
-/// Important things to remember:
+/// Список похож на массивы, но список является дочерним элементом Iterable<E>.
+/// Поэтому Maps, List, LinkedList являются дочерними элементами Iterable<E>, 
+/// чтобы иметь возможность зацикливаться с использованием ключевого слова `for`
+/// Важные вещи, которые следует помнить:
 /// () - Iterable<E>
 /// [] - List<E>
 /// {} - Map<K,V>
 
 
-/// List are great, but there's a restriction for what List can be
+/// Список — это здорово, но есть ограничение на то, каким может быть список.
 /// outside of function/method bodies. List on the outer scope of class
-/// or outside of class have to be constant. Strings and numbers are constant
-/// by default. But arrays and maps are not. They can be made constant by
-/// declaring them "const". Kind of similar to Javascript's Object.freeze()
+/// вне тела функции/метода. Список во внешней области класса или
+/// вне класса должен быть постоянным. Строки и числа используются по умолчанию.
+/// А вот массивы и карты — нет. Их можно сделать постоянными,
+/// объявив их "const". Что-то похожее на Object.freeze() в Javascript.
 const example8List = ["Example8 const array"];
 const  example8Map = {"someKey": "Example8 const map"};
-/// Declare List or Maps as Objects.
+/// Объявите List или Map как объекты.
  List<String> explicitList = new List<String>();
  Map<String,dynamic> explicitMaps = new Map<String,dynamic>();
 
- explicitList.add("SomeArray");
+ explicitList.add("НекоторыйМассив");
 example8() {
-  print(example8Map["someKey"]);
+  print(example8Map["какой-тоКлюч"]);
   print(explicitList[0]);
 }
 
-/// Assigning a list from one variable to another will not be the same result.
-/// Because dart is pass-reference-by-value.
-/// So when you assign an existing list to a new variable.
-/// Instead of List, it becomes an Iterable
+/// Присвоение списка одной переменной другой не будет тем же результатом.
+/// Потому что dart передает ссылку по значению.
+/// Поэтому, когда вы назначаете существующий список новой переменной.
+/// Вместо списка он становится итерируемым
 var iterableExplicitList = explicitList;
-print(iterableExplicitList) // ("SomeArray"); "[]" becomes "()"
-var newExplicitLists = explicitList.toList() // Converts Iterable<E> to List<E>
+print(iterableExplicitList) // ("НекоторыйМассив"); "[]" становится "()"
+var newExplicitLists = explicitList.toList() // Преобразует Iterable<E> в List<E>
 
-/// Loops in Dart take the form of standard for () {} or while () {} loops,
-/// slightly more modern for (.. in ..) {}, or functional callbacks with many
-/// supported features, starting with forEach,map and where.
+/// Циклы в Dart имеют форму стандартных циклов for () {} или while () {},
+/// немного более современный for (.. in ..) {} или функциональные обратные вызовы 
+/// со многими поддерживаемыми функциями, начиная с forEach,map иwhere.
 var example9Array = const ["a", "b"];
 example9() {
   for (int i = 0; i < example9Array.length; i++) {
-    print("Example9 for loop '${example9Array[i]}'");
+    print("Example9 цикл цикл '${example9Array[i]}'");
   }
   var i = 0;
   while (i < example9Array.length) {
-    print("Example9 while loop '${example9Array[i]}'");
+    print("Example9 цикл while '${example9Array[i]}'");
     i++;
   }
   for (final e in example9Array) {
-    print("Example9 for-in loop '${e}'");
+    print("Example9 цикл for-in '${e}'");
   }
 
-  example9Array.forEach((e) => print("Example9 forEach loop '${e}'"));
+  example9Array.forEach((e) => print("Example9 цикл forEach '${e}'"));
 
 }
 
-/// To loop over the characters of a string or to extract a substring.
+/// Чтобы перебрать символы строки или извлечь подстроку.
 var example10String = "ab";
 example10() {
   for (var i = 0; i < example10String.length; i++) {
-    print("Example10 String character loop '${example10String[i]}'");
+    print("Example10 цикл строковых символов '${example10String[i]}'");
   }
   for (var i = 0; i < example10String.length; i++) {
-    print("Example10 substring loop '${example10String.substring(i, i + 1)}'");
+    print("Example10 цикл извлечения '${example10String.substring(i, i + 1)}'");
   }
 }
 
-/// `int`, `double`  and `num` are the three supported number formats.
-/// `num` can be either `int` or `double`.
-/// `int` and `double` are children of type `num`
+/// `int`, `double` и `num` — три поддерживаемых числовых формата.
+/// `num` может быть либо `int`, либо `double`.
+/// `int` и `double` являются дочерними элементами типа `num`
 example11() {
   var i = 1 + 320, d = 3.2 + 0.01;
   final num myFinalNumDouble = 2.2;
@@ -264,44 +263,44 @@ example11() {
   num myNumDouble = 2.2;
   num myNumInt = 2;
   int myInt = 1;
-  double myDouble = 0; // Dart will add decimal prefix, becomes 0.0;
-  myNumDouble = myFinalInt; // valid
-  myNumDouble = myFinalDouble; // valid
-  myNumDouble = myFinalNumInt; // valid
+  double myDouble = 0; // Dart добавит десятичный префикс и станет 0.0;
+  myNumDouble = myFinalInt; // действительный
+  myNumDouble = myFinalDouble; // действительный
+  myNumDouble = myFinalNumInt; // действительный
 
-  myNumInt = myFinalInt; // valid
-  myNumInt = myFinalDouble; // valid
-  myNumInt = myFinalNumDouble; // valid
+  myNumInt = myFinalInt; // действительный
+  myNumInt = myFinalDouble; // действительный
+  myNumInt = myFinalNumDouble; // действительный
 
-  myInt = myNumDouble; // error
-  myInt = myFinalDouble; // error
-  myInt = myFinalNumInt; // valid
+  myInt = myNumDouble; // ошибка
+  myInt = myFinalDouble; // ошибка
+  myInt = myFinalNumInt; // действительный
 
-  myDouble = myFinalInt; // error
-  myDouble = myFinalNumInt; // error
-  myDouble = myFinalNumDouble; // valid
+  myDouble = myFinalInt; // ошибка
+  myDouble = myFinalNumInt; // ошибка
+  myDouble = myFinalNumDouble; // действительный
 
   print("Example11 int ${i}");
   print("Example11 double ${d}");
 
 }
 
-/// DateTime provides date/time arithmetic.
+/// DateTime обеспечивает арифметику даты и времени.
 example12() {
   var now = new DateTime.now();
-  print("Example12 now '${now}'");
+  print("Example12 сейчас '${now}'");
   now = now.add(new Duration(days: 1));
-  print("Example12 tomorrow '${now}'");
+  print("Example12 завтра '${now}'");
 }
 
-/// Regular expressions are supported.
+/// Поддерживаются регулярные выражения.
 example13() {
   var s1 = "some string", s2 = "some", re = new RegExp("^s.+?g\$");
   match(s) {
     if (re.hasMatch(s)) {
-      print("Example13 regexp matches '${s}'");
+      print("Example13 совпадения с регулярными выражениями '${s}'");
     } else {
-      print("Example13 regexp doesn't match '${s}'");
+      print("Example13 регулярное выражение не соответствует '${s}'");
     }
   }
 
@@ -309,57 +308,57 @@ example13() {
   match(s2);
 }
 
-/// Boolean expressions support implicit conversions and dynamic type
+/// Логические выражения поддерживают неявные преобразования и динамический тип.
 example14() {
   var a = true;
   if (a) {
-    print("true, a is $a");
+    print("true, a равно $a");
   }
   a = false;
   if (a) {
-    print("true, a is $a"); 
+    print("true, a равно $a"); 
   } else {
-    print("false, a is $a"); /// runs here
+    print("false, a равно $a"); /// сработает здесь
   }
 
-  /// dynamic typed null can not be convert to bool
-  var b; /// b is dynamic type
+  /// динамический типизированный null не может быть преобразован в bool
+  var b; /// b — динамический тип
   b = "abc";
   try {
     if (b) {
-      print("true, b is $b");
+      print("true, b равно $b");
     } else {
-      print("false, b is $b");
+      print("false, b равно $b");
     }
   } catch (e) {
-    print("error, b is $b"); /// this could be run but got error
+    print("error, b равно $b"); /// это можно было запустить, но возникает ошибка
   }
   b = null; 
-  if (b) { /// Failed assertion: boolean expression must not be null)
-    print("true, b is $b");
+  if (b) { /// Неудачное утверждение: логическое выражение не должно быть нулевым)
+    print("true, b равно $b");
   } else {
-    print("false, b is $b"); 
+    print("false, b равно $b"); 
   }
 
-  /// statically typed null can not be convert to bool
+  /// статически типизированный null не может быть преобразован в bool
   var c = "abc";
   c = null;
-  /// compilation failed
+  /// компиляция не удалась
   /// if (c) {
-  ///   print("true, c is $c");
+  ///   print("true, c равно $c");
   /// } else {
-  ///   print("false, c is $c");
+  ///   print("false, c равно $c");
   /// }
 }
 
-/// try/catch/finally and throw are used for exception handling.
-/// throw takes any object as parameter;
+/// try/catch/finally и throw используются для обработки исключений.
+/// throw принимает любой объект в качестве параметра;
 example15() {
   try {
     try {
-      throw "Some unexpected error.";
+      throw "Какая-то неожиданная ошибка.";
     } catch (e) {
-      print("Example15 an exception: '${e}'");
+      print("Example15 исключение: '${e}'");
       throw e; /// Re-throw
     }
   } catch (e) {
@@ -369,20 +368,20 @@ example15() {
   }
 }
 
-/// To be efficient when creating a long string dynamically, use
-/// StringBuffer. Or you could join a string array.
+/// Чтобы быть эффективным при динамическом создании длинной строки, 
+/// используйте StringBuffer. Или вы можете присоединиться к массиву строк.
 example16() {
   var sb = new StringBuffer(), a = ["a", "b", "c", "d"], e;
   for (e in a) {
     sb.write(e);
   }
-  print("Example16 dynamic string created with "
+  print("Example16 динамическая строка, созданная с помощью "
       "StringBuffer '${sb.toString()}'");
-  print("Example16 join string array '${a.join()}'");
+  print("Example16 объединить массив строк '${a.join()}'");
 }
 
-/// Strings can be concatenated by just having string List next to
-/// one another with no further operator needed.
+/// Строки можно объединить, просто разместив список строк рядом друг с другом
+/// без необходимости использования дополнительных операторов.
 
 example17() {
   print("Example17 "
@@ -391,44 +390,43 @@ example17() {
       "just like that");
 }
 
-/// Strings have single-quote or double-quote for delimiters with no
-/// actual difference between the two. The given flexibility can be good
-/// to avoid the need to escape content that matches the delimiter being
-/// used. For example, double-quotes of HTML attributes if the string
-/// contains HTML content.
+/// Строки имеют одинарные или двойные кавычки для разделителей, 
+/// между которыми нет фактической разницы. Данная гибкость может быть полезной,
+/// чтобы избежать необходимости экранировать содержимое, соответствующее используемому разделителю.
+/// Например, двойные кавычки атрибутов HTML, если строка содержит содержимое HTML.
 example18() {
   print('Example18 <a href="etc">'
       "Don't can't I'm Etc"
       '</a>');
 }
 
-/// Strings with triple single-quotes or triple double-quotes span
-/// multiple lines and include line delimiters.
+/// Строки с тройными одинарными или тройными двойными кавычками занимают несколько строк
+/// и включают разделители строк.
 example19() {
   print('''Example19 <a href="etc">
 Example19 Don't can't I'm Etc
 Example19 </a>''');
 }
 
-/// Strings have the nice interpolation feature with the $ character.
-/// With $ { [expression] }, the return of the expression is interpolated.
-/// $ followed by a variable name interpolates the content of that variable.
-/// $ can be escaped like so \$ to just add it to the string instead.
+/// Строки имеют удобную функцию интерполяции с помощью символа $.
+/// При использовании $ {[expression] } возврат выражения интерполируется.
+/// $ за которым следует имя переменной, интерполирует содержимое этой переменной.
+/// $ можно экранировать следующим образом: \$, чтобы вместо этого просто добавить его в строку.
 example20() {
   var s1 = "'\${s}'", s2 = "'\$s'";
-  print("Example20 \$ interpolation ${s1} or $s2 works.");
+  print("Example20 \$ интерполяция ${s1} или $s2 работает.");
 }
 
-/// Optional types allow for the annotation of APIs and come to the aid of
-/// IDEs so the IDEs can better refactor, auto-complete and check for
-/// errors. So far we haven't declared any types and the programs have
-/// worked just fine. In fact, types are disregarded during runtime.
-/// Types can even be wrong and the program will still be given the
-/// benefit of the doubt and be run as though the types didn't matter.
-/// There's a runtime parameter that checks for type errors which is
-/// the checked mode, which is said to be useful during development time,
-/// but which is also slower because of the extra checking and is thus
-/// avoided during deployment runtime.
+/// Необязательные типы позволяют аннотировать API и приходят на помощь IDE,
+/// чтобы IDE могли лучше выполнять рефакторинг, автозаполнение и проверку на наличие ошибок.
+/// До сих пор мы не объявляли никаких типов, и программы работали нормально.
+/// Фактически, типы игнорируются во время выполнения. Типы могут даже быть неправильными,
+/// но программа все равно будет иметь преимущество сомнения и будет работать так,
+/// как будто типы не имеют значения.
+/// Существует параметр времени выполнения, который проверяет наличие ошибок типа.
+/// Это проверенный режим, который считается полезным во время разработки,
+/// но который также медленнее из-за дополнительной проверки и, 
+/// следовательно, его избегают во время выполнения развертывания.
 class Example21 {
   List<String> _names;
   Example21() {
@@ -448,12 +446,12 @@ class Example21 {
 void example21() {
   Example21 o = new Example21();
   o.add("c");
-  print("Example21 names '${o.names}' and length '${o.length}'");
+  print("Example21 имена '${o.names}' и длина '${o.length}'");
   o.names = ["d", "e"];
-  print("Example21 names '${o.names}' and length '${o.length}'");
+  print("Example21 имена '${o.names}' и длина '${o.length}'");
 }
 
-/// Class inheritance takes the form of class name extends AnotherClassName {}.
+/// Наследование классов принимает форму имени класса расширяет AnotherClassName {}.
 class Example22A {
   var _name = "Some Name!";
   get name => _name;
@@ -463,16 +461,16 @@ class Example22B extends Example22A {}
 
 example22() {
   var o = new Example22B();
-  print("Example22 class inheritance '${o.name}'");
+  print("Example22 наследование класса '${o.name}'");
 }
 
-/// Class mixin is also available, and takes the form of
-/// class name extends SomeClass with AnotherClassName {}.
-/// It's necessary to extend some class to be able to mixin another one.
-/// The template class of mixin cannot at the moment have a constructor.
-/// Mixin is mostly used to share methods with distant classes, so the
-/// single inheritance doesn't get in the way of reusable code.
-/// Mixins follow the "with" statement during the class declaration.
+/// Миксин классов также доступен и принимает форму имени класса,
+/// расширяющего SomeClass с AnotherClassName {}. 
+/// Необходимо расширить какой-то класс, чтобы можно было добавить другой.
+/// Класс шаблона миксина на данный момент не может иметь конструктор.
+/// Миксин в основном используется для совместного использования методов с удаленными классами,
+/// поэтому единое наследование не мешает повторному использованию кода.
+/// Миксины следуют за оператором «with» во время объявления класса.
 class Example23A {}
 
 class Example23Utils {
@@ -489,35 +487,33 @@ class Example23B extends Example23A with Example23Utils {
 
 example23() {
   var o = new Example23B(), r1 = o.addThree(1, 2, 3), r2 = o.addTwo(1, 2);
-  print("Example23 addThree(1, 2, 3) results in '${r1}'");
-  print("Example23 addTwo(1, 2) results in '${r2}'");
+  print("Example23 addThree(1, 2, 3) приводит к результату '${r1}'");
+  print("Example23 addTwo(1, 2) приводит к результату '${r2}'");
 }
 
-/// The Class constructor method uses the same name of the class and
-/// takes the form of SomeClass() : super() {}, where the ": super()"
-/// part is optional and it's used to delegate constant parameters to the
-/// super-parent's constructor.
+/// Метод конструктора класса использует то же имя класса и
+/// принимает форму SomeClass() : super() {}, где часть ": super()" является необязательной и
+/// используется для делегирования константных параметров суперуправлению-родительский конструктор.
 class Example24A {
   var _value;
-  Example24A({value: "someValue"}) {
+  Example24A({value: "некотороеЗначение"}) {
     _value = value;
   }
   get value => _value;
 }
 
 class Example24B extends Example24A {
-  Example24B({value: "someOtherValue"}) : super(value: value);
+  Example24B({value: "некотороеДругоеЗначение"}) : super(value: value);
 }
 
 example24() {
   var o1 = new Example24B(), o2 = new Example24B(value: "evenMore");
-  print("Example24 calling super during constructor '${o1.value}'");
-  print("Example24 calling super during constructor '${o2.value}'");
+  print("Example24 вызов super во время конструктора '${o1.value}'");
+  print("Example24 вызов super во время конструктора '${o2.value}'");
 }
 
-/// There's a shortcut to set constructor parameters in case of simpler classes.
-/// Just use the this.parameterName prefix and it will set the parameter on
-/// an instance variable of same name.
+/// Существует ярлык для установки параметров конструктора в случае более простых классов.
+/// Просто используйте префикс this.parameterName, и он установит параметр в переменную экземпляра с тем же именем.
 class Example25 {
   var value, anotherValue;
   Example25({this.value, this.anotherValue});
@@ -525,13 +521,13 @@ class Example25 {
 
 example25() {
   var o = new Example25(value: "a", anotherValue: "b");
-  print("Example25 shortcut for constructor '${o.value}' and "
+  print("Example25 ярлык для конструктора '${o.value}' и "
       "'${o.anotherValue}'");
 }
 
-/// Named parameters are available when declared between {}.
-/// Parameter order can be optional when declared between {}.
-/// Parameters can be made optional when declared between [].
+/// Именованные параметры доступны, если они объявлены между {}.
+/// Порядок параметров может быть необязательным, если они объявлены между {}.
+/// Параметры можно сделать необязательными, если они объявлены между [].
 example26() {
   var _name, _surname, _email;
   setConfig1({name, surname}) {
@@ -546,34 +542,33 @@ example26() {
   }
 
   setConfig1(surname: "Doe", name: "John");
-  print("Example26 name '${_name}', surname '${_surname}', "
+  print("Example26 имя '${_name}', фамилия '${_surname}', "
       "email '${_email}'");
   setConfig2("Mary", "Jane");
-  print("Example26 name '${_name}', surname '${_surname}', "
+  print("Example26 имя '${_name}', фамилия '${_surname}', "
       "email '${_email}'");
 }
 
-/// Variables declared with final can only be set once.
-/// In case of classes, final instance variables can be set via constant
-/// constructor parameter.
+/// Переменные, объявленные с помощью Final, можно установить только один раз.
+/// В случае классов конечные переменные экземпляра могут быть установлены через постоянный параметр конструктора.
 class Example27 {
   final color1, color2;
-  /// A little flexibility to set final instance variables with syntax
-  /// that follows the :
+  /// Немного гибкости для установки конечных переменных экземпляра с синтаксисом,
+  /// следующим за:
   Example27({this.color1, color2}) : color2 = color2;
 }
 
 example27() {
-  final color = "orange", o = new Example27(color1: "lilac", color2: "white");
-  print("Example27 color is '${color}'");
-  print("Example27 color is '${o.color1}' and '${o.color2}'");
+  final color = "оранжевый", o = new Example27(color1: "сиреневый", color2: "белый");
+  print("Example27 цвет '${color}'");
+  print("Example27 цвет '${o.color1}' и '${o.color2}'");
 }
 
-/// To import a library, use import "libraryPath" or if it's a core library,
-/// import "dart:libraryName". There's also the "pub" package management with
-/// its own convention of import "package:packageName".
-/// See import "dart:collection"; at the top. Imports must come before
-/// other code declarations. IterableBase comes from dart:collection.
+/// Чтобы импортировать библиотеку, используйте import "libraryPath" или,
+/// если это основная библиотека, импортируйте "dart:libraryName".
+/// Существует также управление пакетами «pub» со своим собственным соглашением
+/// об импорте «package:packageName». См. импорт «dart:collection»; в начале.
+/// Импорт должен предшествовать другим объявлениям кода. IterableBase происходит из dart:collection.
 class Example28 extends IterableBase {
   var names;
   Example28() {
@@ -587,22 +582,22 @@ example28() {
   o.forEach((name) => print("Example28 '${name}'"));
 }
 
-/// For control flow we have:
-/// * standard switch with must break statements
-/// * if-else if-else and ternary ..?..:.. operator
-/// * closures and anonymous functions
-/// * break, continue and return statements
+/// Для потока управления у нас есть:
+/// * стандартный переключатель с операторами must Break
+/// * if-else if-else и тернарный оператор ..?..:..
+/// * замыкания и анонимные функции
+/// * операторы break, continue и return
 example29() {
   var v = true ? 30 : 60;
   switch (v) {
     case 30:
-      print("Example29 switch statement");
+      print("Example29 оператор switch");
       break;
   }
   if (v < 30) {
   } else if (v > 30) {
   } else {
-    print("Example29 if-else statement");
+    print("Example29 оператор if-else");
   }
   callItForMe(fn()) {
     return fn();
@@ -620,12 +615,12 @@ example29() {
     } else {
       continue;
     }
-    /// Never gets here.
+    /// Никогда сюда не попадет.
   }
 }
 
-/// Parse int, convert double to int, or just keep int when dividing numbers
-/// by using the ~/ operation. Let's play a guess game too.
+/// Парсим int, преобразуем double в int или просто сохраняем целое число при
+/// делении чисел с помощью операции ~/. Давайте тоже поиграем в угадайку.
 example30() {
   var gn,
       tooHigh = false,
@@ -634,15 +629,15 @@ example30() {
       top = int.parse("123") ~/ n2,
       bottom = 0;
   top = top ~/ 6;
-  gn = new DM.Random().nextInt(top + 1); /// +1 because nextInt top is exclusive
-  print("Example30 Guess a number between 0 and ${top}");
+  gn = new DM.Random().nextInt(top + 1); /// +1, потому что nextInt top является эксклюзивным
+  print("Example30 Угадайте число от 0 до ${top}");
   guessNumber(i) {
     if (n == gn) {
-      print("Example30 Guessed right! The number is ${gn}");
+      print("Example30 Угадал! Число ${gn}");
     } else {
       tooHigh = n > gn;
-      print("Example30 Number ${n} is too "
-          "${tooHigh ? 'high' : 'low'}. Try again");
+      print("Example30 Число ${n} слишком "
+          "${tooHigh ? 'большое' : 'маленькое'}. Попробуйте еще раз");
     }
     return n == gn;
   }
@@ -658,55 +653,56 @@ example30() {
   }
 }
 
-/// Optional Positional Parameter:
-/// parameter will be disclosed with square bracket [ ] & square bracketed parameter are optional.
+/// Необязательный позиционный параметр:
+/// параметр будет указан в квадратных скобках [ ] & параметр в квадратных скобках является необязательным.
 example31() {
     findVolume31(int length, int breath, [int height]) {
       print('length = $length, breath = $breath, height = $height');
     }
 
-    findVolume31(10,20,30); //valid
-    findVolume31(10,20); //also valid
+    findVolume31(10,20,30); //действительный
+    findVolume31(10,20); //также действителен
 }
 
-/// Optional Named Parameter:
-/// parameter will be disclosed with curly bracket { }
-/// curly bracketed parameter are optional.
-/// have to use parameter name to assign a value which separated with colan :
-/// in curly bracketed parameter order does not matter
-/// these type parameter help us to avoid confusion while passing value for a function which has many parameter.
+/// Необязательный именованный параметр: 
+/// параметр будет указан в фигурных скобках { } 
+/// Параметр в фигурных скобках не является обязательным. 
+/// необходимо использовать имя параметра, чтобы присвоить значение, 
+/// которое разделено двоеточием: в фигурных скобках порядок параметров не имеет значения,
+/// эти параметры типа помогают нам избежать путаницы при передаче значения для функции,
+/// которая имеет много параметров.
 example32() {
     findVolume32(int length, int breath, {int height}) {
     print('length = $length, breath = $breath, height = $height');
     }
 
-    findVolume32(10,20,height:30);//valid & we can see the parameter name is mentioned here.
-    findVolume32(10,20);//also valid
+    findVolume32(10,20,height:30);//действительно, и мы видим, что здесь упоминается имя параметра.
+    findVolume32(10,20);//также действителен
 }
 
-/// Optional Default Parameter:
-/// same like optional named parameter in addition we can assign default value for this parameter.
-/// which means no value is passed this default value will be taken.
+/// Необязательный параметр по умолчанию: 
+/// то же, что и необязательный именованный параметр, кроме того,
+/// мы можем назначить этому параметру значение по умолчанию. 
+/// это означает, что значение не передается, будет принято значение по умолчанию.
 example33() {
     findVolume33(int length, int breath, {int height=10}) {
      print('length = $length, breath = $breath, height = $height');
     }
 
-    findVolume33(10,20,height:30);//valid
-    findVolume33(10,20);//valid
+    findVolume33(10,20,height:30);//действительный
+    findVolume33(10,20);//действительный
 }
 
-/// Dart has also added feature such as Null aware operators
+/// В Dart также добавлена ​​такая функция, как операторы, поддерживающие Null.
 var isBool = true;
 var hasString = isBool ?? "default String";
 
-/// Programs have only one entry point in the main function.
-/// Nothing is expected to be executed on the outer scope before a program
-/// starts running with what's in its main function.
-/// This helps with faster loading and even lazily loading of just what
-/// the program needs to startup with.
+/// Программы имеют только одну точку входа в главную функцию.
+/// Ожидается, что во внешней области ничего не будет выполнено до того,
+/// как программа начнет работать с тем, что находится в ее основной функции.
+/// Это помогает ускорить загрузку и даже ленивую загрузку именно того, с чем программа должна запускаться.
 main() {
-  print("Learn Dart in 15 minutes!");
+  print("Изучите Dart за 15 минут!");
   [
     example1, example2, example3, example4, example5,
     example6, example7, example8, example9, example10,
@@ -714,14 +710,14 @@ main() {
     example16, example17, example18, example19, example20,
     example21, example22, example23, example24, example25,
     example26, example27, example28, example29,
-    example30 // Adding this comment stops the dart formatter from putting all items on a new line
+    example30 // Добавление этого комментария не позволяет средству форматирования dart помещать все элементы на новую строку.
   ].forEach((ef) => ef());
 }
 ```
 
-## Further Reading
+## Дальнейшее чтение
 
-Dart has a comprehensive web-site. It covers API reference, tutorials, articles and more, including a
-useful DartPad (a cloud-based Dart coding playground).
+У Dart есть обширный веб-сайт. Он охватывает справочник по API, учебные пособия, статьи и многое другое, включая
+полезный DartPad (облачная площадка для программирования Dart).
 [https://dart.dev/](https://dart.dev)
 [https://dartpad.dev/](https://dartpad.dev)
