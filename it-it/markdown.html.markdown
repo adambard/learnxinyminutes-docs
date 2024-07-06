@@ -195,7 +195,7 @@ end
 ```
 ````
 
-Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre GitHub userà l'evidenziazione della sintassi del linguaggio specificato dopo i \`\`\` iniziali
+Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre GitHub userà l'evidenziazione della sintassi del linguaggio specificato dopo i <code>```</code> iniziali
 
 ## Linea orizzontale
 Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asterischi o trattini, con o senza spazi.
