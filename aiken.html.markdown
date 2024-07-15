@@ -16,25 +16,97 @@ Aiken accomodates to developer experience with innovations like CIP-57 (Blueprin
 As a relatively new language, Aiken is evolving to meet the needs of the Cardano ecosystem. Its development is guided by the requirements of smart contract creation on the Cardano Blockchain.
 
 ```aiken
-//// Basic Syntax and Structure
-
-// Comments in Aiken start with '//'
-// Module-level comments use '////'
-// Documentation comments use '///'
-//// This is a module-level comment
-/// This is a documentation comment
+//// Variables & Constants
 
 // Constants are defined using 'const'
+// Constants may be used at the top level of a module
 const my_constant: Int = 42
 
+// Values assigned to let-bindings are immutable
+// New bindings can shadow previous bindings
+let x = 1
+let y = x
+let x = 2
+
+// y + x == 3
+
+//// Functions
+
 // Functions are defined using 'fn'
+
+// Functions can be named
 fn add(a: Int, b: Int) -> Int {
   a + b
 }
 
-// Public functions are marked with 'pub'
+// Annotations are often optional (albeit recommended), as they can be inferred.
+fn add_inferred(a, b) {
+  a + b
+}
+
+// Functions are private by default. They can be exported with the 'pub' keyword.
 pub fn public_function(x: Int) -> Int {
   x * 2
+}
+
+// Functions can accept functions as arguments
+fn apply_function_twice(f: fn(t) -> t, x) {
+  f(f(x))
+}
+
+// We can achieve the same outcome as above with pipelining using '|>'
+fn apply_function_with_pipe_twice(f: fn(t) -> t, x) {
+  x
+  |> f
+  |> f
+}
+
+// Function capturing is demonstrated here using add to create add_one
+// We choose where the argument to be passed later with '_'.
+fn capture_demonstration() {
+  let add_one = add(_, 1)
+
+  apply_function_twice(add_one, 2) // Evaluates to 4
+}
+
+// Backpassing
+
+// The simplest example provided by the documentation is as follows
+let x <- foo()
+ 
+// which is equivalent to writing:
+foo(fn(x) { })
+
+// A more in depth example follows.
+
+// We define the following set of functions over 'Fuzzer'.
+fn constant(a) -> Fuzzer<a>
+fn bool() -> Fuzzer<Bool>
+fn map(Fuzzer<a>, fn(a) -> b) -> Fuzzer<b>
+fn and_then(Fuzzer<a>, fn(a) -> Fuzzer<b>) -> Fuzzer<b>
+
+// To leverage them without backpassing is quite a syntactic mess
+pub fn option(fuzz_a: Fuzzer<a>) -> Fuzzer<Option<a>> {
+  bool()
+    |> and_then(
+         fn(predicate) {
+           if predicate {
+             fuzz_a |> map(Some)
+           } else {
+             constant(None)
+           }
+         },
+       )
+}
+
+// Whereas with backpassing the same logic may be expressed more cleanly.
+pub fn option(fuzz_a: Fuzzer<a>) -> Fuzzer<Option<a>> {
+  let predicate <- and_then(bool())
+  if predicate {
+   fuzz_a |> map(Some)
+  } else {
+    constant(None)
+  }
 }
 
 //// Data Types
@@ -50,18 +122,26 @@ const my_list: List<Int> = [1, 2, 3, 4, 5]
 // Tuples
 const my_tuple: (Int, String) = (1, @"one")
 
-// Custom types can be defined using 'type'
+// Records can be defined using 'type', a constructor and typed fields. 
 type RGB {
   red: Int,
   green: Int,
   blue: Int,
 }
 
+// Updating some of the fields of a custom type record.
+fn set_red_255(rgb: RGB) {
+  RGB {..rgb, red: 255}
+}
+
 // Enums are also supported
+// As well as full algebraic data-types, with (or without) generic arguments. 
 pub type Option<a> {
   Some(a)
   None
 }
+
+
 
 // Validators are special functions in Aiken for smart contracts
 validator {
@@ -70,6 +150,16 @@ validator {
     True
   }
 }
+
+// 'Data' can be casted to an extracted from using custom types.
+fn to_datum(datum: Data) -> Datum {
+    expect d: Datum = datum
+    // The line above will fail if datum is not a valid representation of Datum.
+    d
+}
+
+// Custom data types may be used in contexts that require 'Data'
+// The custom data type will be implicitly converted to 'Data'
 
 //// Control Flow
 
@@ -88,6 +178,50 @@ fn describe_list(list: List<Int>) -> String {
     [] -> @"The list is empty"
     [x] -> @"The list has one element"
     [x, y, ..] -> @"The list has multiple elements"
+  }
+}
+
+// This syntax can be used instead of when to check a single case and fail otherwise.
+expect Some(foo) = my_optional_value
+
+// Using 'expect' to check conditions
+fn positive_add(a, b) {
+  // Error if the sum is negative, return it otherwise
+  let sum = add(abs(a), abs(b))
+  expect sum >= 0
+  sum
+}
+
+// 'and' and 'or' boolean operators come with their own syntactic sugar
+fn my_validation_logic() -> Bool {
+  (should_satisfy_condition_1 && should_satisfy_condition_2) || should_satisfy_condition_3 || should_satisfy_condition_4 
+}
+
+fn my_more_readable_validation_logic() -> Bool {
+  or {
+    and {
+      should_satisfy_condition_1,
+      should_satisfy_condition_2,   
+    },
+    should_satisfy_condition_3,
+    should_satisfy_condition_4,
+  }
+}
+
+// Sometimes it is useful to have an unfinished function which still allows compilation
+// The 'todo' key word will always fail, and provide a warning upon compilation.
+fn favourite_number() -> Int {
+  // The type annotations says this returns an Int, but we don't need
+  // to implement it yet.
+  todo @"An optional message to the user"
+}
+
+// The fail keyword works similarly, but without any warning on compilation. 
+fn expect_some_value(opt: Option<a>) -> a {
+  when opt is {
+    Some(a) -> a
+    None -> fail @"An optional message to the user"
+    // We want this to fail when we encounter 'None'.
   }
 }
 
@@ -111,18 +245,9 @@ fn use_imports() {
 //// Testing
 
 // Tests are defined using the 'test' keyword
-test positive_add() {
+test test_add() {
   let result = add(2, 3)
   result == 5
-}
-
-// Byte arrays
-const my_bytes: ByteArray = #[01, 02, 03, 04]
-const my_bytes_2: ByteArray = #"1234"
-
-// Todo for unfinished code
-fn unfinished_function() {
-  todo
 }
 ```
 
