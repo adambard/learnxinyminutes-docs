@@ -1,6 +1,6 @@
 ---
-language: clojure
-filename: learnclojure-pt.clj
+language: "clojure macros"
+filename: learnclojuremacros-pt.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:

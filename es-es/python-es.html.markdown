@@ -551,7 +551,7 @@ def decir(decir_por_favor=False):
 
 
 print(decir())  # ¿Puedes comprarme una cerveza?
-print(decir(decir_por_favor=True))  # ¿Puedes comprarme una cerveza? ¡Por favor! Soy pobre :()
+print(decir(decir_por_favor=True))  # ¿Puedes comprarme una cerveza? ¡Por favor! Soy pobre :(
 ```
 
 ## ¿Listo para más?

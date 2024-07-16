@@ -201,9 +201,7 @@ end
 ```
 ````
 
-The above text doesn't require indenting, plus GitHub will use syntax
-highlighting of the language you specify after the \`\`\`
-Đoạn trên không cần sử dụng thụt đầu dòng, và GitHub sẽ tô sáng cú pháp sử dụng ngôn ngữ mà ta cung cấp sau đoạn kí tự \`\`\`
+Đoạn trên không cần sử dụng thụt đầu dòng, và GitHub sẽ tô sáng cú pháp sử dụng ngôn ngữ mà ta cung cấp sau đoạn kí tự <code>```</code>
 
 ## Kẻ ngang
 
