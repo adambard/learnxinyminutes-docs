@@ -1,7 +1,8 @@
 ---
 language: Aiken
 contributors:
-    - ["Riley-Kilgore", "http://github.com/Riley-Kilgore"]
+    - ["Riley Kilgore", "http://github.com/Riley-Kilgore"]
+    - ["Matthias Benkort", "https://github.com/KtorZ"]
 filename: learnaiken.ak
 ---
 
@@ -50,63 +51,36 @@ pub fn public_function(x: Int) -> Int {
 }
 
 // Functions can accept functions as arguments
-fn apply_function_twice(f: fn(t) -> t, x) {
+fn apply_function_twice(x, f: fn(t) -> t) {
   f(f(x))
 }
 
 // We can achieve the same outcome as above with pipelining using '|>'
-fn apply_function_with_pipe_twice(f: fn(t) -> t, x) {
+fn apply_function_with_pipe_twice(x, f: fn(t) -> t) {
   x
   |> f
   |> f
 }
 
-// Function capturing is demonstrated here using add to create add_one
-// We choose where the argument to be passed later with '_'.
+// Function can be partially applied to create new functions. This behavior is also referred to as 'function captures'.
 fn capture_demonstration() {
   let add_one = add(_, 1)
-
-  apply_function_twice(add_one, 2) // Evaluates to 4
+  apply_function_twice(2, add_one) // Evaluates to 4
 }
 
 // Backpassing
 
-// The simplest example provided by the documentation is as follows
-let x <- foo()
- 
+// Functions that take callbacks can leverage backpassing using `<-`
+fn cubed_backpassing(n) {
+  let total <- apply_function_twice(n)
+  total * n
+} 
+    
 // which is equivalent to writing:
-foo(fn(x) { })
-
-// A more in depth example follows.
-
-// We define the following set of functions over 'Fuzzer'.
-fn constant(a) -> Fuzzer<a>
-fn bool() -> Fuzzer<Bool>
-fn map(Fuzzer<a>, fn(a) -> b) -> Fuzzer<b>
-fn and_then(Fuzzer<a>, fn(a) -> Fuzzer<b>) -> Fuzzer<b>
-
-// To leverage them without backpassing is quite a syntactic mess
-pub fn option(fuzz_a: Fuzzer<a>) -> Fuzzer<Option<a>> {
-  bool()
-    |> and_then(
-         fn(predicate) {
-           if predicate {
-             fuzz_a |> map(Some)
-           } else {
-             constant(None)
-           }
-         },
-       )
-}
-
-// Whereas with backpassing the same logic may be expressed more cleanly.
-pub fn option(fuzz_a: Fuzzer<a>) -> Fuzzer<Option<a>> {
-  let predicate <- and_then(bool())
-  if predicate {
-   fuzz_a |> map(Some)
-  } else {
-    constant(None)
-  }
+fn cubed_callback(n) {
+  apply_function_twice(n, fn(total) {
+    total * n
+  })
 }
 
 //// Data Types
@@ -141,7 +115,8 @@ pub type Option<a> {
   None
 }
 
-
+// Types can also be aliased
+type CartesianCoordinates = (Int, Int)
 
 // Validators are special functions in Aiken for smart contracts
 validator {
@@ -184,7 +159,7 @@ fn describe_list(list: List<Int>) -> String {
 // This syntax can be used instead of when to check a single case and fail otherwise.
 expect Some(foo) = my_optional_value
 
-// Using 'expect' to check conditions
+// When the left-hand side pattern is `True`, it can be omitted for conciseness. 
 fn positive_add(a, b) {
   // Error if the sum is negative, return it otherwise
   let sum = add(abs(a), abs(b))
