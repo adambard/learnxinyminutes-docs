@@ -444,7 +444,7 @@ canProceedThrough t = t /= Red
 -- rather than types, assuming that the function only relies on 
 -- features of the typeclass
 
-isEqual (Eq a) => a -> a -> Bool
+isEqual :: (Eq a) => a -> a -> Bool
 isEqual x y = x == y
 
 -- Note that x and y MUST be the same type, as they are both defined
