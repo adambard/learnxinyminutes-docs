@@ -92,12 +92,12 @@ fn main() {
     println!("{} {}", f, x); // 1.3 hello world
 
     // A `String` – a heap-allocated string
-    // It is stored as a `Vec<u8>` and always holds a valid UTF-8 sequence, 
+    // Stored as a `Vec<u8>` and always holds a valid UTF-8 sequence, 
     // which is not null terminated.
     let s: String = "hello world".to_string();
 
     // A string slice – an immutable view into another string
-    // This is basically just an immutable pointer and length of a string – it
+    // This is basically an immutable pointer and length of a string – it
     // doesn’t actually contain the contents of a string, just a pointer to
     // the beginning and a length of a string buffer,
     // statically allocated or contained in another object (in this case, `s`).
