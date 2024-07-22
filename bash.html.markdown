@@ -519,4 +519,22 @@ info bash
 info bash 'Bash Features'
 info bash 6
 info --apropos bash
+
+# Using `curl` to retrieve your external IP address
+# `ifconfig.me` or `checkip.amazonaws.com` is a service that returns your public IP address.
+curl ifconfig.me
+# => 123.123.123.123(example)
+# Fetching detailed information about your IP address
+curl ipinfo.io
+# => {
+#      "ip": "123.123.123.123",
+#      "city": "City",
+#      "region": "Region",
+#      "country": "Country",
+#      "loc": "12.3456,78.9012",
+#      "org": "Organization",
+#      "postal": "12345",
+#      "timezone": "Region/City",
+#      "readme": "https://ipinfo.io/missingauth"
+#    }
 ```
