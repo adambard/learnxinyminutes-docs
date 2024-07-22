@@ -281,6 +281,8 @@ pwd # still in first directory
 
 # Use `mkdir` to create new directories.
 mkdir myNewDir
+# Create a new directory named "myNewDir" and change the current working directory to it.
+mkdir myNewDir && cd $_
 # The `-p` flag causes new intermediate directories to be created as necessary.
 mkdir -p myNewDir/with/intermediate/directories
 # if the intermediate directories didn't already exist, running the above
