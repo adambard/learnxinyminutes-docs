@@ -124,7 +124,7 @@ fun helloWorld(val name : String) {
     You can also use lambda functions, with the '->' operator seperating
     the parameters from the function body.
     */
-    fun fooLambda: (Int) -> Int = {n -> n + 1}
+    val fooLambda: (Int) -> Int = {n -> n + 1}
     println(fooLambda(1)) // => 2
 
     // Functions can take functions as arguments and return functions.
