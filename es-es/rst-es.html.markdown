@@ -5,7 +5,7 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
 translators:
     - ["Oscar Maestre", "http://www.github.com/OscarMaestre"]
-filename: restructuredtext.rst
+filename: restructuredtext-es.rst
 lang: es-es
 ---
 
