@@ -232,8 +232,8 @@ eatenBy = myFavs.animal  -- works! thanks, metatable
 -- An __index value can also be a function(tbl, key)
 -- for more customized lookups.
 
--- Values of __index,add, .. are called metamethods.
--- Full list. Here a is a table with the metamethod.
+-- The values of __index, __add, etc are called
+-- metamethods. Here's their full list:
 
 -- __add(a, b)                     for a + b
 -- __sub(a, b)                     for a - b
@@ -258,7 +258,7 @@ eatenBy = myFavs.animal  -- works! thanks, metatable
 -- Classes aren't built in; there are different ways
 -- to make them using tables and metatables.
 
--- Explanation for this example is below it.
+-- The explanation for this example follows it.
 
 Dog = {}                                   -- 1.
 
@@ -332,9 +332,6 @@ end
 
 --[[ I'm commenting out this section so the rest of
 --   this script remains runnable.
-```
-
-```lua
 -- Suppose the file mod.lua looks like this:
 local M = {}
 
@@ -369,7 +366,13 @@ mod.sayMyName()  -- error
 -- require's return values are cached so a file is
 -- run at most once, even when require'd many times.
 
--- Suppose mod2.lua contains "print('Hi!')".
+-- Suppose another file, mod2.lua, containing this:
+print('Hi!')
+return function ()
+  return 'foo'
+end
+
+--
 local a = require('mod2')  -- Prints Hi!
 local b = require('mod2')  -- Doesn't print; a=b.
 
