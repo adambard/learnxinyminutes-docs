@@ -137,8 +137,8 @@ filename: learnphix.exw
 // Operators are always consistant; never overloaded.
 
     -- the + operator ''always adds''
-        ? 2+7
-        ? 'A' + 32
+        ? 2+7      --> 9
+        ? 'A' + 32 --> 97
 
     -- the & operator ''always concatenates''
         ? 2 & 7                --> {2,7}
