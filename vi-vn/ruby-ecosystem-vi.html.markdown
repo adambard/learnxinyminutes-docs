@@ -70,7 +70,7 @@ Một số ứng dụng nổi tiếng/tương thích cao:
 
 * [MRI](https://github.com/ruby/ruby) - Được viết bằng C, đây là ứng dụng
   tham chiếu của Ruby. Nó tương thích 100%. Tất cả các phiên bản Ruby có khả
-  năng duy trì với MRI(xem [RubySpec](#rubyspec) bên dưới).
+  năng duy trì với MRI(xem [Ruby Spec](#ruby-spec) bên dưới).
 * [JRuby](http://jruby.org/) - Được viết bằng Java và Ruby, ứng dụng này khá
   nhanh. Điểm mạnh quan trọng nhất của JRuby là JVM/Java interop, tận dụng
   các công cụ, dự án và ngôn ngữ hiện có của JVM.
@@ -97,9 +97,9 @@ hướng đến sự một phiên bản đặc biệt của MRI cho sự tương
 dụng có khả năng đến các chế độ khác nhau (ví dụ, 1.8 hoặc 1.9) để hướng đến
 phiên bản MRI.
 
-## RubySpec
+## Ruby Spec
 
-Hầu hết các ứng dụng Ruby dựa vào [RubySpec](http://rubyspec.org/). Ruby không
+Hầu hết các ứng dụng Ruby dựa vào [Ruby Spec](https://github.com/ruby/spec). Ruby không
 có thông báo chính thức, nhưng cộng đồng đã viết những specs thực thi trong
 Ruby để kiểm tra sự tương thích với MRI.
 

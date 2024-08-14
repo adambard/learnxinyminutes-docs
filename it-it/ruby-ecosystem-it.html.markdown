@@ -68,7 +68,7 @@ Implementazioni mature e compatibili:
 * [MRI](https://github.com/ruby/ruby) - Scritto in C, Questa è l'implementazione
   standard di Ruby, per definizione è 100% compatibile (con se stessa). Tutte le
   altre implemetazioni mantengono la compatibilità con MRI
-  (vedere [RubySpec](#rubyspec) sotto).
+  (vedere [Ruby Spec](#ruby-spec) sotto).
 * [JRuby](http://jruby.org/) - Scritto in Java e Ruby, Questa implementazione è
   molto veloce e robusta, la forza di JRuby consiste nell'interoperabilità
   tra JVM/Java, permettendo l'utilizzo di struemnti Java già esistenti, progetti
@@ -96,10 +96,10 @@ Le implementazioni Ruby possono avere una propria versione, ma hanno sempre come
 target una specifica versione di MRI. Molte implementazioni hanno l'abilità di
 selezionare una versione specifica di MRI.
 
-##RubySpec
+##Ruby Spec
 
 La maggior parte delle implementazioni Ruby dipendono pesantemente su
-[RubySpec](http://rubyspec.org/). Ruby non ha una specifica ufficiale, quindi la
+[Ruby Spec](https://github.com/ruby/spec). Ruby non ha una specifica ufficiale, quindi la
 community ha scritto una specifica eseguibile in Ruby per testare la compatibilità
 con MRI.
 
