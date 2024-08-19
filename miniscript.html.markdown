@@ -133,7 +133,7 @@ print a[1:-1]   // same as above, but using a negative index
 print a[1:]     // get slice from 1 to the end ("ello")
 print a[:2]     // get slice from beginning up to 2 ("He")
 
-// Note that strings in MiniScript are immutable. You can't reache
+// Note that strings in MiniScript are immutable. You can't reach
 // into a string and change what characters it contains (but you can
 // always create a new string with different characters).
 ```
@@ -250,7 +250,7 @@ print roll(2,20)  // roll two 20-sided dice
 // (parameter values) to the function, and (2) you're using the
 // result as part of some larger statement. Notice how the first
 // example above, rollDie did not need any parentheses because we
-// weren't passing an arguments. Here's an example of a function
+// weren't passing any arguments. Here's an example of a function
 // that, like the built-in print function, is used as a statement
 // by itself, and so does not need parentheses.
 doRoll = function(numberOfDice, sides=6)
