@@ -36,7 +36,7 @@ if(hour < 12) { /*Operatoren sind genau wie in C*/
     print "Hallo\n"
     /* Escape-Sequenzen starten mit einem \ in einem String.
     Um Escape-Sequenzen klarer zu machen, ist hier eine vereinfachte
-    Liste, welche in bc funktioneren:
+    Liste, welche in bc funktionieren:
     \b: Backspace
     \c: carriage return
     \n: Zeilenumbruch
@@ -79,7 +79,7 @@ define fac(n) { /*Definiere eine Funktion mit define*/
 
 num = fac(4) /*24*/
 
-/*Dies ist ein Beispiel von lokalen Variabeln.*/
+/*Dies ist ein Beispiel von lokalen Variablen.*/
 define x(n) {
     auto x
     x = 1
