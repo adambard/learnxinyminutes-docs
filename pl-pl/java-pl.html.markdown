@@ -13,7 +13,6 @@ contributors:
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
     - ["Sean Nam", "https://github.com/seannam"]
     - ["Shawn M. Hanes", "https://github.com/smhanes15"]
-filename: LearnJava.java
 translators:
     - ["Jacek Wachowiak", "https://github.com/jacekwachowiak"]
 lang: pl-pl
