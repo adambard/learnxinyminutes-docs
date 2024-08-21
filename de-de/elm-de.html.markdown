@@ -238,7 +238,7 @@ append [1,1,2] [3,5,8] -- [1,1,2,3,5,8]
 
 {-- Eigene Datentypen erstellen --}
 
--- Ein "Record" ist ähnlich wie ein Tupel, nur das jedes Feld einen Namne hat.
+-- Ein "Record" ist ähnlich wie ein Tupel, nur das jedes Feld einen Namen hat.
 -- Dabei spielt die Reihenfolge keine Rolle.
 { x = 3, y = 7 }
 
@@ -253,7 +253,7 @@ append [1,1,2] [3,5,8] -- [1,1,2,3,5,8]
 { person |
   name = "George" }
 
--- Mehrere Felder aufeinmal ändern unter Verwendung des alten Wertes.
+-- Mehrere Felder auf einmal ändern unter Verwendung des alten Wertes.
 { particle |
   position = particle.position + particle.velocity,
   velocity = particle.velocity + particle.acceleration }
@@ -309,7 +309,7 @@ leftmostElement tree =
 -- Die Kernbibliotheken und andere Bibliotheken sind in Module aufgeteilt.
 -- Für große Projekte können auch eigene Module erstellt werden.
 
--- Eine Modul beginnt mit ganz oben. Ohne diese Angabe befindet man sich
+-- Eine Modul beginnt ganz oben. Ohne diese Angabe befindet man sich
 -- automatisch im Modul "Main".
 module Name where
 
@@ -337,7 +337,7 @@ $ elm make MyFile.elm
 -- "elm-package.json"-Datei anlegen, die alle Informationen des Projektes
 -- speichert.
 
--- Der Reactor ist ein Server, welche alle Dateinen kompiliert und ausführt.
+-- Der Reactor ist ein Server, welcher alle Dateien kompiliert und ausführt.
 $ elm reactor
 
 -- Starte das REPL (read-eval-print-loop).
@@ -360,7 +360,7 @@ Noch ein paar weitere hilfreiche Ressourcen (in Englisch):
 
 - Die [Elm Homepage](http://elm-lang.org/). Dort findest du:
 
-  - [Anleitung zur Installierung von Elm](http://elm-lang.org/install)
+  - [Anleitung zur Installation von Elm](http://elm-lang.org/install)
   - [Dokumentation](http://elm-lang.org/docs), sowie eine [Referenz zur Syntax](http://elm-lang.org/docs/syntax)
   - Viele hilfreiche [Beispiele](http://elm-lang.org/examples)
 
