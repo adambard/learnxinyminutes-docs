@@ -148,7 +148,7 @@ SECTIONS
     _sdata = .;
 
 	# We indicate that in this section the .data areas of all
-	# объектных файлов
+	# object files
     *(.data)
     *(.data*)
 
