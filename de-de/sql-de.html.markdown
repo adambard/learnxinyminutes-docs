@@ -8,10 +8,10 @@ translators:
 lang: de-de
 ---
 
-Die Structured Query Language (SQL) ist eine ISO Standardsprache zum Erstellen und Arbeiten mit Datenbanken, die in einem Set von Tabellen gespeichert sind. Implementiereungen fügen in der Regel eigene Erweiterungen zur Sprache hinzu; [Der Vergleich von verschiedenen SQL Implementierungen](http://troels.arvin.dk/db/rdbms/) ist eine gute Referenz für Produktunterschiede.
+Die Structured Query Language (SQL) ist eine ISO Standardsprache zum Erstellen und Arbeiten mit Datenbanken, die in einem Set von Tabellen gespeichert sind. Implementierungen fügen in der Regel eigene Erweiterungen zur Sprache hinzu; [Der Vergleich von verschiedenen SQL Implementierungen](http://troels.arvin.dk/db/rdbms/) ist eine gute Referenz für Produktunterschiede.
 
 Implementierungen bieten typischerweise eine Eingabeaufforderung, in den du die hier gezeigten Befehle interaktiv eingeben kannst. Sie bieten auch einen Weg, um Serien von Befehlen in einer Skript auszuführen. (Die Anzeige, dass du fertig mit der interaktiven Eingabeaufforderung bist, ist ein gutes Beispiel für etwas, was nicht standardisiert ist. Die meisten SQL Implementierungen unterstützen die Schlüsselwörter QUIT, EXIT oder beides.
-Einige dieser Beispielbefehle gehen davon aus, dass sie die [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/), verfügbar auf [GitHub](https://github.com/datacharmer/test_db), schon geladen wurde. Die GitHub Dateien sind Skripte von Befehlen, ähnlich wie die entsprechenden Befehle unten, die Tabellen mit Daten über die Mitarbeiter einer fiktionale Firma erstellen und füllen. Die Syntax für die Ausführung dieser Skripte hängt von der verwendeten SQL-Implementierung ab. Ein Dienstprogramm, das man über die Betriebssystemeingabeaufforderung ausführen kann, ist typisch.
+Einige dieser Beispielbefehle gehen davon aus, dass sie die [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/), verfügbar auf [GitHub](https://github.com/datacharmer/test_db), schon geladen wurde. Die GitHub Dateien sind Skripte von Befehlen, ähnlich wie die entsprechenden Befehle unten, die Tabellen mit Daten über die Mitarbeiter einer fiktiven Firma erstellen und füllen. Die Syntax für die Ausführung dieser Skripte hängt von der verwendeten SQL-Implementierung ab. Ein Dienstprogramm, das man über die Betriebssystemeingabeaufforderung ausführen kann, ist typisch.
 
 
 ```sql
@@ -19,7 +19,7 @@ Einige dieser Beispielbefehle gehen davon aus, dass sie die [MySQL employee samp
 
 -- SQL unterscheidet nicht zwischen Groß- und Kleinschreibung bei
 -- Schlüsselwörtern. Die Beispielbefehle folgen der Konvention der
--- Schreibweise in Großbuchstaben, damit sie leichter von Datebank-,
+-- Schreibweise in Großbuchstaben, damit sie leichter von Datenbank-,
 -- Tabellen- und Spaltennamen zu unterscheiden sind.
 
 -- Erstellen und Löschen einer Datenbank. Bei Datenbank- und Tabellennamen
@@ -70,11 +70,11 @@ SELECT COUNT(*) FROM departments;
 -- Teilezeichenkette des Wertes dept_name haben.
 SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 
--- Eine Vereinigung von Informatione von mehreren Tabellen:
+-- Eine Vereinigung von Informationen von mehreren Tabellen:
 -- Die titles Tabelle zeigt, wer welche Jobtitel hatte, wer welche Mitarbeiter-
 -- nummer hat, von welchen Startdatum und zu welchen Enddatum
 -- Wir rufen diese Information ab, aber anstelle der Mitarbeiternummer,
--- verwenden wir die Mitarbeiternummer als Querverweis auf die empoyees Tabelle
+-- verwenden wir die Mitarbeiternummer als Querverweis auf die employees Tabelle
 -- um die die Vor- und Nachnamen jedes Mitarbeiters zu erhalten.
 -- (und nur 10 Reihen)
 SELECT employees.first_name, employees.last_name,
