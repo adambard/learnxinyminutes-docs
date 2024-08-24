@@ -126,7 +126,7 @@ $a = (1,2,3,4)
 $b = $a                                 # => Point b at what a is pointing to
 $b -is $a.GetType()                     # => True, a and b equal same type
 $b -eq $a                               # => None! See below
-[System.Collections.Hashtable]$b = @{}  # => Point a at a new hash table
+[System.Collections.Hashtable]$b = @{}  # => Point b at a new hash table
 $b = @{'one' = 1 
        'two' = 2}
 $b -is $a.GetType()                     # => False, a and b types not equal
