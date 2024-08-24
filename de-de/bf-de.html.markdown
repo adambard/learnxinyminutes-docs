@@ -29,10 +29,10 @@ Es gibt acht Befehle:
 < : Bewegt den Zeiger um eine Stelle zurück.
 . : Gibt den Wert der aktuellen Zelle als ASCII Wert aus (z.B. 65 = 'A').
 , : Liest ein einzelnes Zeichen von der Standardeingabe und speichert dessen ASCII Wert in der aktuellen Zelle.
-[ : Wenn der Wert des aktuellen Elements Null ist, bewege des Zeiger hinter den
+[ : Wenn der Wert des aktuellen Elements Null ist, bewege den Zeiger hinter den
     zugehörigen ]-Befehl.
     Ansonsten, bewege den Zeiger ein Element weiter.
-] : Wenn der Wert des aktuellen Elements Null ist, bewege des Zeiger um eine Stelle
+] : Wenn der Wert des aktuellen Elements Null ist, bewege den Zeiger um eine Stelle
     weiter.
     Ansonsten, bewege den Zeiger hinter den zugehörigen [-Befehl.
 
@@ -51,7 +51,7 @@ und das Programm hinter dem korrespondierenden ] fortgesetzt).
 
 An dieser Stelle befinden wir uns an Zelle #1, die jetzt den Wert 0 hat, während Zelle #2
 den Wert 60 hat. Wir gehen vor zu Zelle #2, inkrementieren 5 Mal, bis zum Wert 65,
-und geben dann den Wert der Zelle #2 aus. 65 ist ein 'A' im ASCII Zeichensatz,
+und geben dann den Wert der Zelle #2 aus. 65 ist ein 'A' im ASCII-Zeichensatz,
 daher wird 'A' am Terminal ausgegeben..
 
 
@@ -61,7 +61,7 @@ Dieses Programm liest ein Zeichen von der Benutzereingabe und schreibt dessen We
 in Zelle #1. Danach beginnt eine Schleife. Rücke vor auf Zelle #2, erhöhe den Wert der Zelle #2,
 gehe zurück auf Zelle #1, verringere den Wert der Zelle #1. Dies geht so lange bis
 Zelle #1 den Wert 0 und Zelle #2 den alten Wert aus #1 hat. Da wir am Ende der Schleife
-bie Zelle #1 sind, gehe vor zu Zelle #2 und gibt den Wert als ASCII Zeichen aus.
+bei Zelle #1 sind, gehe vor zu Zelle #2 und gibt den Wert als ASCII Zeichen aus.
 
 Beachte bitte, dass die Leerzeichen nur aus Gründen der Lesbarkeit geschrieben werden.
 Man könnte genauso schreiben:
