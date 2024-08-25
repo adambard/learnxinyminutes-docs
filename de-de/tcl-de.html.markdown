@@ -40,7 +40,7 @@ Verschiedenste herausragende Fähigkeiten von Tcl:
 Wenn Lisp ein Listen-Prozessor ist, dann ist TCl ein Zeichenketten-Prozessor.
 Alle Werte sind Zeichenketten. Eine Liste ist ein Zeichenketten-Format. Eine
 Prozedur-Definition ist ein Zeichenketten-Format. Um leistungsfähig zu sein,
-werden Tcl-intern diese Zeichenketten in Strukutierter-Form gepuffert. Ein
+werden Tcl-intern diese Zeichenketten in Strukturierter-Form gepuffert. Ein
 Beispiel: Der "list" Befehl arbeitet mit diesen internen gepufferten 
 Repräsentationen. Tcl kümmert sich selbständig darum die String-Repräsentationen
 zu aktualisieren, falls dies im Skript benötigt werden sollten. Das Kopieren-
@@ -318,7 +318,7 @@ set amount [lindex $amounts 1]
 # Werte in einer Liste zu formatieren. Eine Liste sieht aus wie ein Skript,
 # allerdings verlieren verlieren Zeilenumbrüche und Doppelüunkte ihre 
 # besondere Bedeutung. Diese Funktionalität macht Tcl homoikonisch. Die
-# folgende Liste enhtält drei Elemente.
+# folgende Liste enthält drei Elemente.
 set values {
 
     one\ two
