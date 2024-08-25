@@ -322,7 +322,7 @@ Um mehr zu erfahren, siehe:
 [ShutIt](https://ianmiell.github.io/shutit/)
 [GitHub](https://github.com/ianmiell/shutit/blob/master/README.md)
 
-Es handelt sich um ein breiteres Automatiesierungsframework, und das oben
+Es handelt sich um ein breiteres Automatisierungsframework, und das oben
 sogenannte ist der sogennante 'standalone Modus'.
 
 Feedback, feature requests, 'Wie mache ich es' sind herzlich willkommen! Erreiche mit unter
