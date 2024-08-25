@@ -222,7 +222,7 @@ with builtins; [
   ({ a = 1; b = 2; } // { a = 3; c = 4; })
   #=> { a = 3; b = 2; c = 4; }
 
-  # Das Schlüsselwort rec bezeichenet ein "rekursives Set", in dem sich Attribute
+  # Das Schlüsselwort rec bezeichnet ein "rekursives Set", in dem sich Attribute
   # aufeinander beziehen können.
   (let a = 1; in     { a = 2; b = a; }.b)
   #=> 1
