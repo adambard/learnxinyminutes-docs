@@ -189,7 +189,7 @@ func learnFlowControl() {
 		// Tapaukset eivät "tipu läpi".
 		/*
 		Kuitenkin meillä on erikseen `fallthrough` -avainsana. Katso:
-		  https://github.com/golang/go/wiki/Switch#fall-through
+		  https://go.dev/wiki/Switch#fall-through
 		*/
 	case 43:
 		// Saavuttamaton.
