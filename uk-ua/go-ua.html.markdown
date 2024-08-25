@@ -193,7 +193,7 @@ func learnFlowControl() {
 	case 1:
 	case 42:
 		// Кейси не "провалюються". Натомість, є ключове слово `fallthrough`:
-		// https://github.com/golang/go/wiki/Switch#fall-through (англ)
+		// https://go.dev/wiki/Switch#fall-through (англ)
 	case 43:
 		// Недоступний.
 	default:
@@ -446,4 +446,4 @@ func requestServer() {
 
 Іншим прекрасним посиланням для вивчення Go є [Go by example](https://gobyexample.com/).
 
-Go Mobile додає підтримку мобільних платформ (Android та iOS). Можна написати нативний код на Go  для мобільних застосунків або написати бібліотеку, що міститиме прив'язки (bindings) з пакету Go, які можуть бути викликані з Java (Android) та Objective-C (iOS). Деталі можна дізнатись на [веб-сторінці Go Mobile](https://github.com/golang/go/wiki/Mobile).
+Go Mobile додає підтримку мобільних платформ (Android та iOS). Можна написати нативний код на Go  для мобільних застосунків або написати бібліотеку, що міститиме прив'язки (bindings) з пакету Go, які можуть бути викликані з Java (Android) та Objective-C (iOS). Деталі можна дізнатись на [веб-сторінці Go Mobile](https://go.dev/wiki/Mobile).

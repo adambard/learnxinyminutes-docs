@@ -406,4 +406,4 @@ func requestServer() {
 
 
 
-Go Mobile添加了对移动平台的支持（Android and iOS）。你可以完全用go语言来创造一个app或编写一个可以从Java或Obj-C调用的函数库，敬请参考[Go Mobile page](https://github.com/golang/go/wiki/Mobile)。
+Go Mobile添加了对移动平台的支持（Android and iOS）。你可以完全用go语言来创造一个app或编写一个可以从Java或Obj-C调用的函数库，敬请参考[Go Mobile page](https://go.dev/wiki/Mobile)。

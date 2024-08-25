@@ -451,4 +451,4 @@ Go Mobile aggiunge il supporto per lo sviluppo mobile (Android e iOS).
 In questo modo è possibile scrivere un'app mobile nativa in Go, oppure
 una libreria che contiene binding da un package scritto in Go, e che può
 essere richiamata da Java(Android) e Objective-C(iOS). Visita la pagina di
-[Go Mobile](https://github.com/golang/go/wiki/Mobile) per maggiori informazioni.
+[Go Mobile](https://go.dev/wiki/Mobile) per maggiori informazioni.
