@@ -1,3 +1,4 @@
+![repository-open-graph-template](https://github.com/user-attachments/assets/e362000e-3913-4f20-a830-f6ddf92a7661)
 ---
 language: yaml
 filename: learnyaml.yaml
