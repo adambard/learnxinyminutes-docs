@@ -269,10 +269,10 @@ eatenBy = myFavs.animal  -- Funktioniert dank Metatabelle!
 -- 3.2 Klassen-Artige Tabellen und Vererbung.
 --------------------------------------------------------------------------------
 
--- Klassen sind in Lua nicht eingebaut. Es gibt verschieden Wege sie mithilfe
+-- Klassen sind in Lua nicht eingebaut. Es gibt verschiedene Wege sie mithilfe
 -- von Tabellen und Metatabellen zu erzeugen.
 
--- Die Erklärund des Beispiels erfolgt unterhalb.
+-- Die Erklärung des Beispiels erfolgt unterhalb.
 
 Dog = {}                                   -- 1.
 
@@ -419,7 +419,7 @@ Wichtige Themen die hier nicht angesprochen wurden; die Standard-Bibliotheken:
 * [`io` library](http://lua-users.org/wiki/IoLibraryTutorial)
 * [`os` library](http://lua-users.org/wiki/OsLibraryTutorial)
 
-Übrigends, die gesamte Datei ist gültiges Lua. Speichere sie als learn.lua und
+Übrigens, die gesamte Datei ist gültiges Lua. Speichere sie als learn.lua und
 starte sie als "`lua learn.lua`" !
 
 Die Erstfassung ist von tylerneylon.com, und ist auch hier verfügbar: [GitHub gist](https://gist.github.com/tylerneylon/5853042). Viel Spaß mit Lua!
