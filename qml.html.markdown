@@ -167,7 +167,7 @@ Window {
 
     Rectangle {
         // Since this rectangle is not created by the ListView, the attached
-        // type is not avaiable.
+        // type is not available.
         color: ListView.isCurrentItem ? "green" : "red"
     }
 
