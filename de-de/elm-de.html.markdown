@@ -189,7 +189,7 @@ listLength aList =
 -- Klammern bietet die Möglichkeit der Bevorrangung.
 cos (degrees 30) ^ 2 + sin (degrees 30) ^ 2 -- 1
 -- Als erstes wird die Funktion "degrees" mit dem Wert 30 aufgerufen.
--- Danach wird das Ergenis davon den Funktionen "cos", bzw. "sin" übergeben.
+-- Danach wird das Ergebnis davon den Funktionen "cos", bzw. "sin" übergeben.
 -- Dann wird das Ergebnis davon mit 2 quadriert und als letztes werden diese
 -- beiden Werte dann addiert.
 
