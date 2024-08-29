@@ -588,6 +588,7 @@ const x = switch (direction) {
     .South => true,
 };
 
+// This compiles without errors, since it exhaustively lists all possible values
 const x = switch (direction) {
     .North => true,
     .South => true,
