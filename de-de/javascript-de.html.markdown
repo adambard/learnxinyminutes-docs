@@ -200,7 +200,7 @@ while (true) {
     // Eine unendliche Schleife!
 }
 
-// Do-while-Scheifen arbeiten wie while-Schleifen, abgesehen davon, dass sie
+// Do-while-Schleifen arbeiten wie while-Schleifen, abgesehen davon, dass sie
 // immer mindestens einmal ausgeführt werden.
 var input;
 do {
@@ -370,7 +370,7 @@ var anotherFunc = function(s){
 }
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
-// 'apply' funktioniert beiahe identisch, erwartet die übergebenen Argumente
+// 'apply' funktioniert beinahe identisch, erwartet die übergebenen Argumente
 // aber in einem Array
 
 anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
