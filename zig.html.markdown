@@ -588,9 +588,6 @@ const x = switch (direction) {
     .South => true,
 };
 
-
-// Switch statements need exhaustiveness.
-// Won't compile: East and West are missing.
 const x = switch (direction) {
     .North => true,
     .South => true,
