@@ -50,7 +50,7 @@ not False -- True
 1 /= 1 -- False
 1 < 10 -- True
 
--- `not` ist eine Funktion die ein Argument entgegenimmt.
+-- `not` ist eine Funktion die ein Argument entgegennimmt.
 -- Haskell benötigt keine Klammern um Argumente.
 -- Sie werden einfach aufgelistet: func arg1 arg2 arg3...
 -- Wie man Funktionen definiert kommt weiter unten.
@@ -282,7 +282,7 @@ for [0..5] $ \i -> show i
 -- wir hätten sie auch so benutzen können:
 for [0..5] show
 
--- foldl oder foldr reduziren Listen auf einen Wert.
+-- foldl oder foldr reduzieren Listen auf einen Wert.
 -- foldl <Funktion> <initialer Wert> <Liste>
 foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
 
@@ -345,7 +345,7 @@ main' = interact countLines
 
 -- Man kann den Typ `IO ()` als Repräsentation einer Sequenz von
 -- Aktionen sehen, die der Computer abarbeiten muss.
--- Wie bei einem Programm das in einer Imperativen Sprache geschreiben wurde.
+-- Wie bei einem Programm das in einer Imperativen Sprache geschrieben wurde.
 -- Mit der `do` Notation können Aktionen verbunden werden.
 
 sayHello :: IO ()
