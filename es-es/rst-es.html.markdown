@@ -16,8 +16,6 @@ RST es un lenguaje de marcas similar a HTML pero mucho más ligero y fácil de l
 
 ## Instalación.
 
-To use Restructured Text, you will have to install [Python](http://www.python.org) and the `docutils` package.
-
 Para utilizar Restructured Text, tendrás que instalar [Python](http://www.python.org) y el paquete `docutils`.
 
 `docutils` puede instalarse con el siguiente comando.
