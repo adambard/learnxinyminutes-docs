@@ -93,7 +93,7 @@ $ haml input_file.haml output_file.html
 / andere Attribute können über den Hash angegeben werden:
 %a{:href => '#', :class => 'bar', :title => 'Bar'}
 
-/ Booleesche Attribute können mit 'true' gesetzt werden:
+/ Boolesche Attribute können mit 'true' gesetzt werden:
 %input{:selected => true}
 
 / data-Attribute können in einem eigenen Hash im :data key angegeben werden:
