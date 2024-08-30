@@ -422,7 +422,7 @@ MDN의 ['자바스크립트 재입문'](https://developer.mozilla.org/ko/docs/A_
 [문서 객체 모델(Document Object Model)](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)에
 관해 배우는 것으로 시작하길 바랍니다.
 
-[자바스크립트 가든](http://bonsaiden.github.io/JavaScript-Garden/)에서는 자바스크립트 언어에서
+[자바스크립트 가든](https://shamansir.github.io/JavaScript-Garden/)에서는 자바스크립트 언어에서
 직관에 어긋나는 모든 부분들을 심도 있게 다룹니다.
 
 더불어 이 글에 직접적으로 기여한 분들로, 내용 중 일부는 이 사이트에 있는

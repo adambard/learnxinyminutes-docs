@@ -515,7 +515,7 @@ MDN's [A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs
 
 Dieses Tutorial hat nur die Sprache JavaScript vorgestellt; um mehr über den  Einsatz in Websites zu lernen, ist es ein guter Start etwas über das [Document Object Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core) zu lernen.
 
-[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) ist eine tiefgehende Einführung in die kontra-intuitiven Parts der Sprache.
+[JavaScript Garden](https://shamansir.github.io/JavaScript-Garden/) ist eine tiefgehende Einführung in die kontra-intuitiven Parts der Sprache.
 
 [JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) ist ein Klassiker unter den Referenzen.
 

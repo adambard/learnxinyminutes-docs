@@ -487,7 +487,7 @@ if (Object.create === undefined) { // не перезаписуємо метод
 * [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 * [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
 * [4]: http://www.learneroo.com/modules/64/nodes/350
-* [5]: http://bonsaiden.github.io/JavaScript-Garden/
+* [5]: https://shamansir.github.io/JavaScript-Garden/
 * [6]: http://www.amazon.com/gp/product/0596805527/
 * [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 * [8]: http://eloquentjavascript.net/
