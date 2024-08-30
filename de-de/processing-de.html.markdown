@@ -34,7 +34,7 @@ offiziellen IDE, damit die Programme kompiliert und ausgeführt werden können.
 /*
    Da Processing von Java abstammt, ist die Syntax für Kommentare gleich
    wie bei Java (wie du vielleicht oben bemerkt hast)!
-   Mehrzeilige Kommentare werden wie hier umschloßen.
+   Mehrzeilige Kommentare werden wie hier umschlossen.
 */
 
 /* -------------------------------------------------
@@ -107,7 +107,7 @@ double doubleValue = 1.12345D // Double (64-Bit Gleitkommazahl)
 // lediglich die wichtigsten durch.
 
 // String
-// Während der Datentyp `char` einfache Anzührungszeichen (' ') braucht, haben
+// Während der Datentyp `char` einfache Anführungszeichen (' ') braucht, haben
 // Strings doppelte Anführungszeichen (" ").
 String sampleString = "Hallo, Processing!";
 // Strings können auch durch ein Array von `char`s erstellt werden.
@@ -405,7 +405,7 @@ Wenn du weitere Dinge mit Processing kennenlernen willst, dann gibt es unzählig
 Dinge, welche du mit Processing machen kannst. Das Rendern von Modellen,
 Schattierungen und viele mehr. Für ein kurzes Tutorial bietet Processing zu viel,
 daher verweise ich dich, falls du interessiert bist, auf die offizielle
-Dokumentaion.
+Dokumentation.
 
 ```
 // Bevor wir weiterfahren, werde ich einige Aspekte zum Importieren von 
@@ -431,7 +431,7 @@ was man in Processing mit nur wenigen Zeilen Code machen kann.
 Kopiere den nachfolgenden Code in deine Processing IDE.
 
 ```
-// Disclaimer: Ich habe das Porgramm nicht selbst geschriben. Diese Skizze
+// Disclaimer: Ich habe das Programm nicht selbst geschrieben. Diese Skizze
 // stammt aus openprocessing, allerdings soll dieses Programm zeigen, wie wenig
 // Zeilen Code notwendig sind, um etwas Cooles zu machen.
 // Abgerufen von: (https://www.openprocessing.org/sketch/559769)
