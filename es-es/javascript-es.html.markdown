@@ -518,7 +518,7 @@ sobre el [DOM](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_
 [Aprende JavaScript con ejemplos y retos](http://www.learneroo.com/modules/64/nodes/350) es una
 variante de esta guía pero con retos.
 
-[Jardín JavaScript](http://bonsaiden.github.io/JavaScript-Garden/) es una guía para todas las
+[Jardín JavaScript](https://shamansir.github.io/JavaScript-Garden/) es una guía para todas las
 funciones y características contra-intuitivas del lenguaje.
 
 [JavaScript: La guía definitiva](http://www.amazon.com/gp/product/0596805527/) es una guía clásica / libro de referencia.

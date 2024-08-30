@@ -619,7 +619,7 @@ JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introdu
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Javascript Garden](http://bonsaiden.github.io/JavaScript-Garden/) 
+[Javascript Garden](https://shamansir.github.io/JavaScript-Garden/) 
 <p dir='rtl'>راهنمای دقیقی از قسمت های غیر ملموس زبان.</p>
 
 <p dir='rtl'>اضافه بر این در ویرایش این مقاله، قسمت هایی از سایت زیر مورد استفاده قرار گرفته است.</p>

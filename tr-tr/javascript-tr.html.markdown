@@ -601,6 +601,6 @@ MDN'nin [A re-introduction to JavaScript(JavaScript'e Yeniden Giriş)][2] başl�
 [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
 [4]: https://academy.patika.dev/courses/javascript
 [5]: http://www.learneroo.com/modules/64/nodes/350
-[6]: http://bonsaiden.github.io/JavaScript-Garden/
+[6]: https://shamansir.github.io/JavaScript-Garden/
 [7]: https://www.yusufsezer.com.tr/javascript-dersleri/
 [8]: https://www.btkakademi.gov.tr/portal/course/javascript-8099
