@@ -124,7 +124,7 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
 // keine Zeiger-Rechnungen. Fehler können sich durch "nil" einschleichen, jedoch
 // nicht durch erhöhen eines Zeigers.
 func learnMemory() (p, q *int) {
-    // Die bennanten Rückgabewerte p & q sind vom Typ *int
+    // Die benannten Rückgabewerte p & q sind vom Typ *int
     p = new(int) // Eingebaute Funktion "new" weist neuen Speicherplatz zu
     // Der zugewiesene Speicher ist mit 0 initialisiert, p ist nicht länger nil
     s := make([]int, 20) // So weist man 20 ints nebeneinander (im Speicher) zu
