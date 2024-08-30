@@ -115,7 +115,7 @@ oder
 3. Punkt drei
 
 <!-- Auch wenn es keine gute Idee sein mag: du müsstest die einzelnen Punkte
-nicht mal korrekt numerieren -->
+nicht mal korrekt nummerieren -->
 
 1. Punkt eins
 1. Punkt zwei
@@ -148,7 +148,7 @@ indem du eine Zeile mit vier Leerzeichen oder einem Tabulator einrückst -->
 
 Hermann hatte nicht die leiseste Ahnung, was dieses `go_to()` bedeuten könnte!
 
-<!-- In "GitHub Flavored Markdown" gibt es für Code nocheinmal eine
+<!-- In "GitHub Flavored Markdown" gibt es für Code noch einmal eine
 besondere Syntax -->
 
 \`\`\`ruby <!-- in "echt" musst du die Backslashes entfernen: ```ruby ! -->
@@ -223,7 +223,7 @@ voranstellt! -->
 <http://testwebseite.de/> ist das selbe wie
 [http://testwebseite.de/](http://testwebseite.de/)
 
-<!-- Automatische Links für E-Mail-Addressen -->
+<!-- Automatische Links für E-Mail-Adressen -->
 
 <foo@bar.com>
 
