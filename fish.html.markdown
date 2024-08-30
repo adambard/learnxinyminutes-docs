@@ -71,7 +71,7 @@ or by opening the aforementioned web settings:
 Adding something to your fish PATH Variable is easy:
 
 ```
-> fish_path_add ~/cowsay
+> fish_add_path ~/cowsay
 ```
 
 Can you do that with bash, huh? No, you always have to look it up... It's just that easy!
@@ -85,7 +85,7 @@ To get help, contact your local psychiatrist or type `man`. That will bring up t
 > man set
 ```
 
-If you finally tried fish, you can see something other in fish that's really cool. Everything has cool colors, if you type in something wrong, it is red, without even executing, if you put something in quotes, you see where it ends and why that quote doesn't work, because there's another qoutation mark in the quote at position 26. 
+If you finally tried fish, you can see something other in fish that's really cool. Everything has cool colors, if you type in something wrong, it is red, without even executing, if you put something in quotes, you see where it ends and why that quote doesn't work, because there's another quotation mark in the quote at position 26. 
 
 fish has even more cool things, like wildcards.
 For example, type
@@ -195,7 +195,7 @@ As with every shell, you can not only execute commands in the shell, but also as
 
 # Let's start with variables.
 # for use inside a program, you can use the syntax
-set name = 'My Variable'
+set name 'My Variable'
 
 # Use...
 set -x name value

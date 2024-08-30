@@ -73,7 +73,7 @@ o aprendo l'interfaccia web:
 Aggiungere qualcosa alla variabile PATH di fish è semplice:
 
 ```
-> fish_path_add ~/cowsay
+> fish_add_path ~/cowsay
 ```
 
 Questo puoi farlo con bash, eh? No, devi sempre cercarlo... Così è facile!
@@ -197,7 +197,7 @@ Come per ogni shell, puoi non solo eseguire comandi nella shell, ma anche da fil
 
 # Cominciamo con le variabili.
 # per l'uso interno a un programma, puoi usare la sintassi
-set nome = 'La mia variabile'
+set nome 'La mia variabile'
 
 # Utilizzo...
 set -x nome valore
