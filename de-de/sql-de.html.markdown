@@ -88,7 +88,7 @@ FROM titles INNER JOIN employees ON
 SELECT * FROM INFORMATION_SCHEMA.TABLES
 WHERE TABLE_TYPE='BASE TABLE';
 
--- Erstelle eine Tabelle in der aktuell verwedeten Datenbank
+-- Erstelle eine Tabelle in der aktuell verwendeten Datenbank
 -- mit dem Namen tablename1, in der die beiden Spalten angezeigt werden
 -- Es gibt viele weiteren Optionen, wie man die Spalten spezifizieren kann,
 -- wie z.B. deren Datentyp.
