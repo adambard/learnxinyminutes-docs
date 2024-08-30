@@ -8,8 +8,8 @@ filename: asciidoc-de.adoc
 lang: de-de
 ---
 
-AsciiDoc ist eine Auszeichnungssprache, ähnlich zu Markdown. Sie kann für alles
-verwendet werden von Büchern zu Blogs. Erfunden wurde sie 2002 von Stuart
+AsciiDoc ist eine Auszeichnungssprache, ähnlich wie Markdown. Sie kann für alles
+verwendet werden von Büchern bis zu Blogs. Erfunden wurde sie 2002 von Stuart
 Rackham. Die Sprache ist simpel, aber sie ermöglicht eine große Anzahl an
 Anpassungen.
 
