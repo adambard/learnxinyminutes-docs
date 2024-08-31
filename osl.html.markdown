@@ -2,7 +2,7 @@
 language: osl
 filename: learnosl.osl
 contributors:
-  - ["Preetham Pemmasani", "https://github.com/Preetham-ai"]
+  - ["Preetham Pemmasani", "https://github.com/ppmpreetham"]
 ---
 
 OSL (Open Shading Language) is a programming language designed by Sony for Arnold Renderer used for creating shaders.
@@ -311,6 +311,7 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	   0.0, 0.0, 7.0, 0.0,
 	   0.0, 0.0, 0.0, 7.0 */
 	
+	// Multi-Dimensional Arrays can be accessed like this
 	float x = m[1][1]; // 7
 	
 	// matrices can be constructed using floats in row-major order
@@ -433,7 +434,7 @@ vector dPdtime // change of P with respect to time
 
 // Conditionals in OSL are just like in C or C++.
 
-// If/Else
+// If / Else
 if (5>2){
 	int x = s;
 	int l = x;
@@ -674,6 +675,7 @@ for (int i = 0; i < 5; i += 1) {
 	// curve4 is a linear spline evaluated at u = 0.4
 	
 	// InverseSplines also exist
+	// Parameter to Point Mapping and Texture Mapping and Sampling
 	
 	// Inverse spline with control values
 	float y0 = 0, y1 = 1, y2 = 2, y3 = 3;
