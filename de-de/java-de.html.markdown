@@ -125,9 +125,9 @@ public class LearnJavaDe {
 
         // Weitere nennenswerte Typen
         // ArrayLists - Ähnlich Arrays, allerdings werden mehr Funktionen geboten,
-        //            ebenso ist die Arraygröße verwänderbar
+        //            ebenso ist die Arraygröße veränderbar
         // LinkedLists - Implementierung einer doppelt verlinkten Liste.
-        //            Alle Operationen funktioneren so, wie es von einer doppelt verlinkten Liste erwartet wird.
+        //            Alle Operationen funktionieren so, wie es von einer doppelt verlinkten Liste erwartet wird.
         //            Weitere Informationen: https://de.wikipedia.org/wiki/Liste_(Datenstruktur)#Doppelt_.28mehrfach.29_verkettete_Liste
         // Maps - Eine Sammlung von Objekten, welche eine Verknüpfung von Schlüsseln zu Werten (key => value) vornimmt.
         //            Eine Map kann keine Duplikate enthalten; Jeder Schlüssel kann genau einen Wert beinhalten.
@@ -173,7 +173,7 @@ public class LearnJavaDe {
         // Inkrementierungen
         int i = 0;
         System.out.println("\n->Inc/Dec-rementierung");
-        // Die ++ und -- operatoren inkrementieren und dekrementieren jeweils um 1.
+        // Die ++ und -- Operatoren inkrementieren und dekrementieren jeweils um 1.
         // Werden sie vor die Variable gesetzt, ink-/dekrementieren sie und geben anschließend ihren Wert zurück.
         // Hinter der Variable geben sie ihren Wert zurück und ändern ihn anschließend.
         System.out.println(i++); // i = 1, schreibt 0 (post-increment)
@@ -284,7 +284,7 @@ public class LearnJavaDe {
         // String
 
         // Tpe-Casting
-        // Java Objekte können benfalls konvertiert werden, hierbei gibt es vielfältige Konzepte.
+        // Java Objekte können ebenfalls konvertiert werden, hierbei gibt es vielfältige Konzepte.
         // Weitere Informationen finden sich hier (englisch):
         // http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
 
