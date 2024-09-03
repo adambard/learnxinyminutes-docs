@@ -156,6 +156,6 @@ Wenn du mit Clojure vertraut sein möchtest, stelle sicher, dass du alles in [Cl
 
 [Macros schreiben](http://www.braveclojure.com/writing-macros/)
 
-[Offiziele Docs](http://clojure.org/macros)
+[Offizielle Docs](http://clojure.org/macros)
 
 [Wann verwendet man Macros?](https://lispcast.com/when-to-use-a-macro/)
