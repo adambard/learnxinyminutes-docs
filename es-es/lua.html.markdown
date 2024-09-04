@@ -426,7 +426,7 @@ Luego, leí el libro oficial de [Programación en Lua](http://www.lua.org/pil/co
 Ese es el cómo.
 
 Podría serle útil darle un vistazo a
-[Lua Short Reference](http://lua-users.org/wiki/LuaShortReference) en lua-users.org.
+[Lua Short Reference](http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf) en lua-users.org.
 
 Los principales temas no cubiertos son las librerías estándar:
 
