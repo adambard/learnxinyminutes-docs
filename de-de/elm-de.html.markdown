@@ -33,7 +33,7 @@ Hauptmerkmal von Elm sind die ausführlichen und gut erklärten Fehlermeldungen.
 -- Exponenten
 5 ^ 2 -- 25
 
--- Boolsche Werte
+-- Boolesche Werte
 not True -- False
 not False -- True
 1 == 1 -- True
@@ -274,7 +274,7 @@ otherOrigin : Point3D
 otherOrigin =
   Point3D 0 0 0
 
--- Aber es ist immernoch der selbe Typ, da es nur ein Alias ist!
+-- Aber es ist immer noch derselbe Typ, da es nur ein Alias ist!
 origin == otherOrigin -- True
 
 -- Neben den Records gibt es auch noch so genannte Summentypen.
