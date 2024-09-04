@@ -291,7 +291,7 @@ keymap ; => {:a 1, :b 2, :c 3}
                  ; Result: [1 3 5 7 9]
 
 ; Wenn du in einer Situation bist, in der du mehr Freiheit willst,
-; wohin du das Ergebnis vorheriger Datentransformationen in einem Ausruck
+; wohin du das Ergebnis vorheriger Datentransformationen in einem Ausdruck
 ; platzieren möchtest, kannst du das as-> Macro verwenden. Mit diesem Macro
 ; kannst du einen speziellen Namen auf die Ausgabe einer Transformationen geben.
 ; Du kannst es als Platzhalter in verketteten Ausdrücken verwenden:
@@ -323,7 +323,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Hier verwenden wir das Modul clojure.string und die Funktion blank?
 (clojure.string/blank? "") ; => true
 
-; Du kannst auch einem Modul einem kürzerern Namen beim Import geben
+; Du kannst auch einem Modul einen kürzeren Namen beim Import geben
 (require '[clojure.string :as str])
 (str/replace "Das ist ein Test." #"[a-o]" str/upper-case) ; => "DAs IsT EIN TEsT."
 ; (#"" bezeichnet einen regulären literalen Ausdruck)
