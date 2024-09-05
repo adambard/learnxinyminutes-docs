@@ -74,7 +74,7 @@ false ; for Falsch
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 2. Variablen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Du kannst Variablen setzen indem du (set) verwedest
+;; Du kannst Variablen setzen indem du (set) verwendest
 ;; eine Variable kann alle Zeichen besitzen außer: ();#"
 (set some-var 5) ; => 5
 some-var ; => 5
