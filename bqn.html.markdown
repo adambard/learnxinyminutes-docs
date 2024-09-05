@@ -134,7 +134,7 @@ array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
 'a'-'d'       #≡ ¯3
 
 ## Logic Functions
-∧, ∨, ¬       # For Booleans, retrun 1 or 0
+∧, ∨, ¬       # For Booleans, return 1 or 0
 ≤, <, >, ≥, = # Vectorizing comparisons
 ≡, ≢          # Nonvectorizing comparisons
 
