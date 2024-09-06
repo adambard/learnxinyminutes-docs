@@ -59,7 +59,7 @@ size(width, height, [renderer]); // bestimme die Canvasgröße mit dem optionale
                                  // Parameter `renderer`.
 // Du wirst innerhalb dieses Dokuments noch weitere Parameter sehen.
 
-// Wenn du möchstest, dass Code unendlich oft ausgeführt wird, so muss dieser
+// Wenn du möchtest, dass der Code unendlich oft ausgeführt wird, so muss dieser
 // Code innerhalb der `draw()`-Methode stehen.
 // `draw()` muss existieren, wenn du möchtest, dass das Programm durchgehend
 // läuft. Die `draw()`-Methode darf nur einmal vorkommen.
@@ -137,11 +137,11 @@ ArrayList<Integer> intArrayList = new ArrayList<Integer>();
 // Da Processing auf Java basiert, unterstützt Processing die Objektorientierte
 // Programmierung. Dies bedeutet, dass du grundsätzlich jegliche Datentypen
 // selber erstellen kannst und diese nach deinen Bedürfnissen manipulieren kannst.
-// Selbstverständlich muss eine Klasse definiert werden bevor du ein Objekt
-// davon instanzieren kannst.
+// Selbstverständlich muss eine Klasse definiert werden, bevor du ein Objekt
+// davon instanziieren kannst.
 // Format: ClassName InstanceName
-SomeRandomClass myObject // hier musst du das Objekt später instazieren
-// Hier wird das Objekt direkt instanziert:
+SomeRandomClass myObject // hier musst du das Objekt später instanziieren
+// Hier wird das Objekt direkt instanziiert:
 SomeRandomClass myObjectInstantiated = new SomeRandomClass(); 
 
 // Processing hat noch weitere Collections (wie zum Beispiel Dictionaries und 
@@ -348,7 +348,7 @@ sphere(radius); // Die Größe wird definiert durch den Parameter `radius`
    -------------------------------------------------
 */
 
-// Tranformationen sind nützlich, um ständig zu wissen, wo die Koordinaten und
+// Transformationen sind nützlich, um ständig zu wissen, wo die Koordinaten und
 // die Ecken einer Form sind, welche du gezeichnet hast. Grundsätzlich sind dies
 // Matrizenoperationen. `pushMatrix()`, `popMatrix()` und `translate()`.
 pushMatrix(); // Speichert das aktuelle Koordinatensystem auf dem Stack
@@ -362,7 +362,7 @@ translate(x,y); // Setzt den Ursprung zu diesem Punkt.
 translate(x, y, z); // Pendant zu der oberen Funktion im dreidimensionalen Raum
 
 // Rotationen
-rotate(angle); // Rotiere, um den Betrag, welcher spezifiert wurde.
+rotate(angle); // Rotiere, um den Betrag, welcher spezifiziert wurde.
 // Es gibt drei Pendants im dreidimensionalen Raum. 
 // Namentlich sind dies: `rotateX(angle)`, `rotateY(angle)` und `rotateZ(angle)`
 
@@ -482,7 +482,7 @@ void branch(float len) {
 }
 ```
 
-Processing ist einfach zu erlernen und ist vorallem nützlich, um Multimedia-
+Processing ist einfach zu erlernen und ist vor allem nützlich, um Multimedia-
 Inhalte (auch in 3D) zu erstellen ohne viel Code zu schreiben. Es ist so einfach
 gehalten, dass man den Code durchlesen kann und man versteht den Programmablauf
 bereits.
