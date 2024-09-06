@@ -85,7 +85,7 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
     f := 3.14159 // float64, eine IEEE-754 64-bit Dezimalzahl
     c := 3 + 4i  // complex128, besteht intern aus zwei float64-er
 
-    // "var"-Syntax mit Initalwert
+    // "var"-Syntax mit Initialwert
     var u uint = 7 // Vorzeichenlos, aber die Größe ist implementationsabhängig
     var pi float32 = 22. / 7
 
@@ -130,7 +130,7 @@ func learnMemory() (p, q *int) {
     s := make([]int, 20) // So weist man 20 ints nebeneinander (im Speicher) zu
     s[3] = 7             // Einer von ihnen wird ein Wert zugewiesen
     r := -2              // Deklaration einer weiteren lokalen Variable
-    return &s[3], &r     // & gibt die Addresse einer Variable
+    return &s[3], &r     // & gibt die Adresse einer Variable
 }
 
 func expensiveComputation() int {
@@ -292,7 +292,7 @@ func learnConcurrency() {
 
 // Eine einzige Funktion aus dem http-Paket kann einen Webserver starten.
 func learnWebProgramming() {
-    // Der erste Parameter von "ListenAndServe" ist eine TCP Addresse, an die
+    // Der erste Parameter von "ListenAndServe" ist eine TCP Adresse, an die
     // sich angeschlossen werden soll.
     // Der zweite Parameter ist ein Interface, speziell: ein http.Handler
     err := http.ListenAndServe(":8080", pair{})
