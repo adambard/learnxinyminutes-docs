@@ -56,7 +56,7 @@ folded_style: >
 # COLLECTION TYPEN #
 ####################
 
-# Verschachtelung wird duch Einrückung erzielt.
+# Verschachtelung wird durch Einrückung erzielt.
 eine_verschachtelte_map:
     schlüssel: wert
     nochn_Schlüssel: Noch ein Wert.
