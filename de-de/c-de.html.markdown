@@ -8,7 +8,7 @@ lang: de-de
 
 Ach, C. Immer noch **die** Sprache für modernes High-Performance Computing.
 
-C ist wahrscheinlich die Programmiersprache mit dem niedrigsten Abstraktionsnvieau,
+C ist wahrscheinlich die Programmiersprache mit dem niedrigsten Abstraktionsniveau,
 welche die meisten Programmierer je brauchen werden.
 Die Geschwindigkeit von C ist enorm, allerdings muss man sich stets der
 manuellen Speicherverwaltung bewusst sein.
@@ -227,7 +227,7 @@ int main (int argc, char** argv) {
     // Wenn das Argument des `sizeof`-Operator ein Ausdruck ist, dann wird das
     // Argument nicht ausgewertet (außer Arrays mit variabler Länge)
     // Der Wert, der in diesem Fall zurückgegeben wird, ist eine Konstante zur 
-    // Kompillierzeit.
+    // Kompilierzeit.
 
     int a = 1;
     //size_t ist ein vorzeichenloser Integer Typ mit mindestens 2 Byte um die 
@@ -283,7 +283,7 @@ int main (int argc, char** argv) {
     // repräsentiert. Wir müssen das Null-Byte nicht angeben in String-Literalen;
     // der Compiler fügt es am Ende des Array automatisch hinzu.
     char a_string[20] = "Das ist ein String";
-    printf("%s\n", a_string); // %s formattiert einen String
+    printf("%s\n", a_string); // %s formatiert einen String
 
     printf("%d\n", a_string[18]); // => 0
     // Hier ist das Byte #19 0 (wie auch Byte #20)
@@ -394,7 +394,7 @@ int main (int argc, char** argv) {
     // aus der Header-Datei `<limits.h>` verwendet werden.
 
     // Integer-Typen können zu Gleitkommazahlen und umgekehrt umgewandelt werden.
-    printf("%f\n", (double) 100); // %f formattiert immer zu einem `double`...
+    printf("%f\n", (double) 100); // %f formatiert immer zu einem `double`...
     printf("%f\n", (flaot) 100); // ... auch mit einem `float`
     printf("%d\n", (char)100.0); 
 
@@ -414,7 +414,7 @@ int main (int argc, char** argv) {
     int x = 0; 
     printf("%p\n", (void *)&x); // verwende & um die Adresse der Variable
     // zu erhalten
-    // %p  formattiert einen Objektpointer des Typen void*)
+    // %p  formatiert einen Objektpointer des Typen void*)
     // => Gibt eine Adresse im Speicher aus
 
     // Pointer starten mit einem * zu Beginn der Deklaration.
@@ -446,7 +446,7 @@ int main (int argc, char** argv) {
         x_array[xx]  20 -xx;
     } // Initialisiere x_array zu 20, 19, 18, ... 2, 1
 
-    // Deklariere ein Pointer des Typs int und initalisiere ihn, um auf `x_array`
+    // Deklariere ein Pointer des Typs int und initialisiere ihn, um auf `x_array`
     // zu zeigen.
     int *x_ptr = x_array;
     // x_ptr zeigt jetzt auf den ersten Wert innerhalb des Arrays (int 20)
@@ -457,7 +457,7 @@ int main (int argc, char** argv) {
     // Ausnahme: Wenn das Array das Argument des Operators `&` ist.
     int arr[10];
     int (*ptr_to_arr)[10] = &arr; //`&arr` ist nicht vom Typ `int *`!
-    // Es ist vom Typem "Pointer auf Array" (aus zehn `int`s)
+    // Es ist vom Typen "Pointer auf Array" (aus zehn `int`s)
     // oder wenn das Array ein Stringliteral ist, welches gebraucht wird um ein
     // `char`-Array zu initialisieren.
     char other_arr[] = "foobarbazquirk";
@@ -707,7 +707,7 @@ void str_reverse_through_pointer(char *str_in) {
     // reduziert werden (ähnlich wie Arrays)
     (*f)(str_in); // Die Funktion einfach mit dem Pointer aufrufen
     // f(str_in); // Dies ist eine weitere gültige Alternative um eine Funktion
-                  // auzurufen.
+                  // aufzurufen.
 }
 
 /*
