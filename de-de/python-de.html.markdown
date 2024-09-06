@@ -113,7 +113,7 @@ False or True #=> True
 "{0} mag Spaghetti, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
 #=> "Hans mag Spaghetti, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
 
-# Die Formatierung kann auch mit `f-strings` oder formattierten Strings gemacht
+# Die Formatierung kann auch mit `f-strings` oder formatierten Strings gemacht
 # werden (ab Python 3.6+)
 name = "Sandra"
 f"Sie hat gesagt, ihr Name sei {name}." # => Sie hat gesagt, ihr Name sei Sandra."
@@ -242,7 +242,7 @@ list(filled_dict.values()) #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Einen nicht vorhandenenen Schlüssel zu suchen, löst einen KeyError aus
+# Einen nicht vorhandenen Schlüssel zu suchen, löst einen KeyError aus
 filled_dict["four"] # KeyError
 
 # Mit der get-Methode verhindern wir das
