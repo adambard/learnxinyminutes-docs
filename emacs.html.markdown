@@ -258,7 +258,7 @@ powerful and popular and may interest you in and of themselves.
 
 ## Org
 
-Technnically, `org-mode`, a major mode for buffer editing that provides
+Technically, `org-mode`, a major mode for buffer editing that provides
 organizational tools. It is very difficult to succinctly describe what
 Org can do because it's a behemoth of a tool that has many diverse uses
 to different people. I will attempt to describe the main features I use
