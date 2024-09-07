@@ -44,7 +44,7 @@ werden Tcl-intern diese Zeichenketten in Strukturierter-Form gepuffert. Ein
 Beispiel: Der "list" Befehl arbeitet mit diesen internen gepufferten 
 Repräsentationen. Tcl kümmert sich selbständig darum die String-Repräsentationen
 zu aktualisieren, falls dies im Skript benötigt werden sollten. Das Kopieren-
-beim-Schreiben-Design von Tcl erlaubt es Skript-Authoren mit großen Daten-
+beim-Schreiben-Design von Tcl erlaubt es Skript-Autoren mit großen Daten-
 Strukturen zu arbeiten ohne zusätzlichen Speicher-Overhead. Prozeduren werden
 automatisch byte-kompiliert außer sie verwenden dynamische Befehle wie zum
 Beispiel "uplevel", "upvar und "trace".
@@ -164,7 +164,7 @@ set {*}{name Neo}
 set name Neo
 
 
-# Ein Array ist eine spezielle Varible die also Kontainer für andere Variablen
+# Ein Array ist eine spezielle Variable die also Container für andere Variablen
 # dient.
 set person(name) Neo
 set person(gender) male
@@ -344,7 +344,7 @@ set values [list one \{ three four]
 lappend values { } ;# Ein Leerzeichen als Element der Liste hinzufügen
 
 
-# Mit "eval" können Werte als Skripts evaluiert weden.
+# Mit "eval" können Werte als Skripts evaluiert werden.
 eval {
     set name Neo
     set greeting "Hello, $name"
@@ -352,7 +352,7 @@ eval {
 
 
 # Eine Liste kann immer an "eval" übergeben werden, solange die Liste einen
-# einzigen Befehl entält.
+# einzigen Befehl enthält.
 eval {set name Neo}
 eval [list set greeting "Hello, $name"]
 
