@@ -311,7 +311,7 @@ public class LearnJavaDe {
 } // Ende der LearnJavaDe Klasse
 
 
-// In einer .java-Datei können zusätzliche nicht öffentliche (non-public) äüßere Klassen vorhanden sein.
+// In einer .java-Datei können zusätzliche nicht öffentliche (non-public) äußere Klassen vorhanden sein.
 
 
 // Syntax der Klassendeklaration:
