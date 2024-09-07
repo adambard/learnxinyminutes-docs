@@ -796,7 +796,7 @@ import scala.collection.immutable.{List, Map}
 import scala.collection.immutable.{List => ImmutableList}
 
 
-// Importiere alle Klasses, mit Ausnahem von....
+// Importiere alle Klassen, mit Ausnahme von....
 // Hier ohne: Map and Set:
 
 import scala.collection.immutable.{Map => _, Set => _, _}
