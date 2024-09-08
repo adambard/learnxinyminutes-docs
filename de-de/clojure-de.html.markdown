@@ -51,7 +51,7 @@ Diese Verknüpfung erlaubt es, parallele Verarbeitung sehr einfach und häufig a
 ;;;;;;;;;;;;;
 
 ; Clojure verwendet Javas Objekt Typen für Booleans, Strings und Zahlen.
-; Verwende `class` um sie zu inszipieren.
+; Verwende `class` um sie zu inspizieren.
 (class 1) ; Integer-Literale sind standardmäßig java.lang.Long
 (class 1.); Float-Literale sind java.lang.Double
 (class ""); Strings sind immer in doppelten Anführungszeichen notiert und sind java.lang.String
@@ -78,8 +78,8 @@ Diese Verknüpfung erlaubt es, parallele Verarbeitung sehr einfach und häufig a
 ; damit der Leser aufhört zu denken, es sei eine Funktion.
 ; Außerdem ist (list 1 2 3) dasselbe, wie '(1 2 3)
 
-; "Kollektioen" sind nur Gruppen von Daten
-; Listen und Vektoren sind Kolllektionen:
+; "Kollektionen" sind nur Gruppen von Daten
+; Listen und Vektoren sind Kollektionen:
 (coll? '(1 2 3)) ; => true
 (coll? [1 2 3]) ; => true
 
@@ -115,7 +115,7 @@ Diese Verknüpfung erlaubt es, parallele Verarbeitung sehr einfach und häufig a
 ; = (+ (+ (+ 1 2) 3) 4)
 ; => 10
 
-; Reduce kann auch einen Initalwert als Argument verwenden
+; Reduce kann auch einen Initialwert als Argument verwenden
 (reduce conj [] '(3 2 1))
 ; = (conj (conj (conj [] 3) 2) 1)
 ; => [3 2 1]
@@ -374,7 +374,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; um mit persistenten Zuständen umzugehen. Es gibt ein Paar Konstrukte in
 ; Clojure die es verwenden.
 
-; Ein Atom ist das Einfachste. Gebe es einen Initalwert
+; Ein Atom ist das Einfachste. Gebe es einen Initialwert
 (def my-atom (atom {}))
 
 ; Update ein Atom mit swap!.
