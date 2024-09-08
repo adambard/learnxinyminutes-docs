@@ -533,7 +533,7 @@ puts [countdown2] ;# -> 4
 puts [countdown1] ;# -> 1 
 puts [countdown1] ;# -> 0 
 catch {
-    puts [coundown1] ;# -> invalid command name "countdown1"
+    puts [countdown1] ;# -> invalid command name "countdown1"
 } cres copts 
 puts $cres
 puts [countdown2] ;# -> 3 
