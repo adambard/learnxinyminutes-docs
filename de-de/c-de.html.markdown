@@ -631,7 +631,7 @@ void test_function() {
 // Variablen mit 0 initialisiert, wenn sie nicht mit einem anderen Startwert 
 // initialisiert werden.
 // Es ist auch möglich, Funktionen als statisch zu deklarieren, damit diese
-// `private` sind. Privat heißt, dass sie nur in diesem Kontekt sichtbar sind.
+// `private` sind. Privat heißt, dass sie nur in diesem Kontext sichtbar sind.
 
 
 ////////////////////////////////////////////////
