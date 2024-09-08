@@ -445,7 +445,7 @@ class Human
 end
 
 
-# Eine Klasse instanzieren
+# Eine Klasse instanziieren
 jim = Human.new("Jim Halpert")
 
 dwight = Human.new("Dwight K. Schrute")
