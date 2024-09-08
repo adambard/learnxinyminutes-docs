@@ -323,7 +323,7 @@ Um mehr zu erfahren, siehe:
 [GitHub](https://github.com/ianmiell/shutit/blob/master/README.md)
 
 Es handelt sich um ein breiteres Automatisierungsframework, und das oben
-sogenannte ist der sogennante 'standalone Modus'.
+genannte ist der sogenannte 'standalone Modus'.
 
 Feedback, feature requests, 'Wie mache ich es' sind herzlich willkommen! Erreiche mit unter
 [@ianmiell](https://twitter.com/ianmiell)
