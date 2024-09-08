@@ -230,7 +230,7 @@ s = f1 + f2  -- Rufe __add(f1, f2) vom der Metatabelle von f1 auf.
 
 -- Die nächste Zeile schlägt fehl weil s keine Metatabelle hat:
 -- t = s + s
--- Mihilfe von Klassen ähnlichen Mustern kann das gelöst werden.
+-- Mithilfe von Klassen ähnlichen Mustern kann das gelöst werden.
 -- Siehe weiter unten.
 
 -- Ein __index einer Metatabelle überlädt Punkt-Lookups:
@@ -294,7 +294,7 @@ mrDog:makeSound()  -- 'I say woof'         -- 8.
 --    "function tablename.fn(self, ...)", Der : fügt nur ein Argument namens
 --    self hinzu. Siehe 7 & 8 um zu sehen wie self seinen Wert bekommt.
 -- 3. newObj wird eine Instanz von Dog.
--- 4. "self" ist die zu Instanzierende Klasse. Meistern ist self = Dog, aber
+-- 4. "self" ist die zu instanziierende Klasse. Meistern ist self = Dog, aber
 --    dies kann durch Vererbung geändert werden. newObj bekommt die Funktionen
 --    von self wenn wir die Metatabelle von newObj und __index von self auf
 --    self setzen.
