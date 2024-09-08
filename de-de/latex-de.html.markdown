@@ -57,7 +57,7 @@ filename: latex-de.tex
 % LaTeX für uns eine Titelseite generieren
 \maketitle
 
-% Die meisten Paper haben ein Abstract. LaTeX bietet dafür einen vorgefertigen Befehl an.
+% Die meisten Paper haben ein Abstract. LaTeX bietet dafür einen vorgefertigten Befehl an.
 % Das Abstract sollte in der logischen Reihenfolge, also nach dem Titel, aber vor dem
 % Inhalt erscheinen.
 % Dieser Befehl ist in den Dokumentenklassen article und report verfügbar.
