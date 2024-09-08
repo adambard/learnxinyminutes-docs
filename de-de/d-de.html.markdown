@@ -14,7 +14,7 @@ module hello;
 
 import std.stdio;
 
-// argumente sind optional
+// Argumente sind optional
 void main(string[] args) {
     writeln("Hello, World!");
 }
@@ -135,7 +135,7 @@ ist eine Funktion, die wie ein Wert agiert. Das gibt uns viel klarere Syntax
 im Stil von `structure.x = 7` was gleichgültig wäre zu `structure.setX(7)`
 
 ```d
-// Diese Klasse ist parameterisiert mit T, U
+// Diese Klasse ist parametrisiert mit T, U
 
 class MyClass(T, U) {
     T _data;
@@ -186,7 +186,7 @@ void main() {
 }
 ```
 
-Mit properties können wir sehr viel logik hinter unseren gettern
+Mit properties können wir sehr viel Logik hinter unseren gettern
 und settern hinter einer schönen Syntax verstecken
 
 Andere Objektorientierte features sind beispielsweise
@@ -224,12 +224,12 @@ Ist dir aufgefallen, wie wir eine Haskell-Style Pipeline gebaut haben
 um num zu berechnen?
 Das war möglich durch die Uniform Function Call Syntax.
 Mit UFCS können wir auswählen, ob wir eine Funktion als Methode oder
-als freie Funktion aufrufen. Walters artikel dazu findet ihr
+als freie Funktion aufrufen. Walters Artikel dazu findet ihr
 [hier.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394)
 Kurzgesagt kann man Funktionen, deren erster Parameter vom typ A ist, als
 Methode auf A anwenden.
 
-Parrallel Computing ist eine Tolle sache, findest du nicht auch?
+Parallel Computing ist eine tolle Sache, findest du nicht auch?
 
 ```d
 import std.stdio;
@@ -238,7 +238,7 @@ import std.math : sqrt;
 
 void main() {
     // Wir wollen die Wurzel von jeder Zahl in unserem Array berechnen
-    // und dabei alle Kerne verwenden, die wir zur verfügung haben
+    // und dabei alle Kerne verwenden, die wir zur Verfügung haben
     auto arr = new double[1_000_000];
 
     // Wir verwenden den Index und das Element als Referenz
