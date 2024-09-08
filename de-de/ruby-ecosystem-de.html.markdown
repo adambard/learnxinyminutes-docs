@@ -91,7 +91,7 @@ Weniger ausgereift/kompatibel:
 * [Topaz](http://topazruby.com/) - Geschrieben in RPython (via PyPy)
   Topaz ist noch ziemlich jung und versucht die schnellste Implementierung  
   zu werden.
-* [IronRuby](http://ironruby.net/) - Geschrieben in C# für die .NET Plaftform  
+* [IronRuby](http://ironruby.net/) - Geschrieben in C# für die .NET Plattform  
   Das letzte Release von IronRuby ist mittlerweile 5 Jahre her. 
 
 Die Ruby Implementierungen haben ihre eigenen Versionsnummern, sind aber  
