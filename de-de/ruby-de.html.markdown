@@ -75,7 +75,7 @@ nil.class #=> NilClass
 true.class #=> TrueClass
 false.class #=> FalseClass
 
-# Gleicheit
+# Gleichheit
 1 == 1 #=> true
 2 == 1 #=> false
 
@@ -190,7 +190,7 @@ array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 # Array können verschiedene Typen beinhalten
 [1, 'hello', false] #=> [1, "hello", false]
 
-## Arrays könnenindiziert werden.
+## Arrays können indiziert werden.
 
 # Von vorne...
 array[0] #=> 1
@@ -207,8 +207,8 @@ array[2, 3] #=> [3, 4, 5]
 # ...oder mit einem Range...
 array[1..3] #=> [2, 3, 4]
 
-# Du kanns ein Array umkehren.
-# Gib ein neues Array mit umgkehrten Werten zurück
+# Du kannst ein Array umkehren.
+# Gib ein neues Array mit umgekehrten Werten zurück
 [1,2,3].reverse #=> [3,2,1]
 
 # Kehre ein Array an Ort und Stelle um, um die Variable mit den 
@@ -257,7 +257,7 @@ hash.value?(3) #=> true
 # Tipp: Arrays und Hashes sind Enumerables!
 # Sie haben viele nützliche Methoden gemein, wie each, map, count, und andere.
 
-# Kontrolstrukturen
+# Kontrollstrukturen
 
 # Bedingungen
 if true
@@ -427,7 +427,7 @@ surround { puts 'hallo Welt' }
 
 # Blocks können in ein 'Proc' Objekt umgewandelt werden. 
 # Dieses ist eine Art Container um den Block und erlaubt ihn an eine 
-# andere Methode zu übergeben, ihn in einen anderen Gültigkeitsbereicht 
+# andere Methode zu übergeben, ihn in einen anderen Gültigkeitsbereich 
 # einzubinden oder ihn andersweitig zu verändern.
 # Am häufigsten findet man dies bei Parameterlisten von Methoden, in Form 
 # eines letzten '&block' Parameters, der den Block – wenn es einen gibt – 
@@ -487,7 +487,7 @@ best *ranked_competitors
 # Wenn ein Methodenname mit einem Ausrufezeichen endet, dann tut diese Methode 
 # per Konvention etwas Destruktives, wie z.B. das aufrufende Objekt zu 
 # verändern.
-# Viele Mehtoden haben eine !-Version um eine direkte Änderung zu machen und 
+# Viele Methoden haben eine !-Version um eine direkte Änderung zu machen und 
 # eine Nicht-!-Version, die ein neues Objekt mit den Veränderungen zurück gibt.
 company_name = "Dunder Mifflin"
 company_name.upcase #=> "DUNDER MIFFLIN"
