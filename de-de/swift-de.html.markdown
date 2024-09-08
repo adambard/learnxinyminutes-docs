@@ -210,7 +210,7 @@ default: // notwendig (um alle möglichen Eingaben zu verarbeiten)
 
     :param: name Ein Name
     :param: day Ein Tag
-    :returns: Ein String, der Name und Tag beinhält.
+    :returns: Ein String, der Name und Tag enthält.
 */
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
@@ -585,7 +585,7 @@ prefix func !!! (inout shape: Square) -> Square {
 // Aktueller Wert
 print(mySquare.sideLength) // 4
 
-// Wert nach verwendung des eigenen Operators
+// Wert nach Verwendung des eigenen Operators
 !!!mySquare
 print(mySquare.sideLength) // 12
 ```
