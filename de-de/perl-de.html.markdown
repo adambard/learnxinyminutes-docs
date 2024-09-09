@@ -10,7 +10,7 @@ lang: de-de
 
 Perl ist eine sehr mächtige, funktionsreiche Programmiersprache mit über 25 Jahren Entwicklungsgeschichte.
 
-Perl läuft auf über 100 Platformen von portablen Geräten bis hin zu Mainframes. Perl ist geeignet für Rapid-Prototyping und auch groß angelegte Entwicklungs-Projekte.
+Perl läuft auf über 100 Plattformen von portablen Geräten bis hin zu Mainframes. Perl ist geeignet für Rapid-Prototyping und auch groß angelegte Entwicklungs-Projekte.
 
 ```perl
 # Einzeilige Kommentare beginnen mit dem # Symbol.
@@ -30,8 +30,8 @@ Perl läuft auf über 100 Platformen von portablen Geräten bis hin zu Mainframe
 my $animal = "camel";
 my $answer = 42;
 
-# Scalare Werte könnne Zeichenketten, Ganzzahlen und Gleitkomma-Zahlen sein.
-# Perl convertiert automatisch zwischen diesen Werten wenn nötig.
+# Scalare Werte können Zeichenketten, Ganzzahlen und Gleitkomma-Zahlen sein.
+# Perl konvertiert automatisch zwischen diesen Werten wenn nötig.
 
 ## Arrays
 #  Ein Array repräsentiert eine Liste von Werten:
@@ -42,7 +42,7 @@ my @mixed   = ("camel", 42, 1.23);
 
 
 ## Hashes
-#   Ein Hash representiert ein Set von Schlüssel/Wert Paaren:
+#   Ein Hash repräsentiert ein Set von Schlüssel/Wert Paaren:
 
 my %fruit_color = ("apple", "red", "banana", "yellow");
 
@@ -55,7 +55,7 @@ my %fruit_color = (
 # Scalare, Arrays und Hashes sind in perldata sehr genau dokumentiert.
 # (perldoc perldata)
 
-# Komplexere Daten-Typen können mit hilfe von Referenzen konstruiert werden.
+# Komplexere Daten-Typen können mithilfe von Referenzen konstruiert werden.
 # Dies erlaubt das erstellen von Listen und Hashes in Listen und Hashes.
 
 #### Bedingte Ausführungs- und Schleifen-Konstrukte.
