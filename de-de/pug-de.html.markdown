@@ -87,7 +87,7 @@ div(class=meineKlasse)
 div(style=meineStile)
 //- <div style="color:white;background-color:blue;"></div>
 
-//- JS Attributte
+//- JS Attribute
 - const meineAttribute = {"src": "foto.png", "alt": "meine Bilder"}
 img&attributes(meineAttribute)
 //- <img src="foto.png" alt="meine Bilder">
