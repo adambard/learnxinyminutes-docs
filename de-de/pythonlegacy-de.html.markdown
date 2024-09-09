@@ -192,7 +192,7 @@ d, e, f = 4, 5, 6
 e, d = d, e     # d is now 5 and e is now 4
 
 
-# Dictionarys (Wörterbucher) speichern Key-Value-Paare
+# Dictionarys (Wörterbücher) speichern Key-Value-Paare
 empty_dict = {}
 # Hier ein gefülltes Wörterbuch
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -213,7 +213,7 @@ filled_dict.values() #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Einen nicht vorhandenenen Schlüssel zu suchen, löst einen KeyError aus
+# Einen nicht vorhandenen Schlüssel zu suchen, löst einen KeyError aus
 filled_dict["four"] # KeyError
 
 # Mit der get-Methode verhindern wir das
