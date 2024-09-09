@@ -132,7 +132,7 @@ small/%.png: %.svg
 %.png: %.ps
 	@echo this rule is not chosen if *.svg and *.ps are both present
 
-# Make hat bereits ein paar eingebaute Muster-Vergleichs-Regelen. Zum Beispiel
+# Make hat bereits ein paar eingebaute Muster-Vergleichs-Regeln. Zum Beispiel
 # weiß Make wie man aus *.c Dateien *.o Dateien erzeugt.
 
 # Ältere Versionen von Make verwenden möglicherweise Suffix-Regeln anstatt
@@ -236,7 +236,7 @@ ls:	* src/*
 include foo.mk
 
 sport = tennis
-# Konditionale kompiliereung
+# Konditionale Kompilierung
 report:
 ifeq ($(sport),tennis)
 	@echo 'game, set, match'
