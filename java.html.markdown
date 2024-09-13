@@ -1037,7 +1037,7 @@ The links provided here below are just to get an understanding of the topic, fee
 
 ### Books
 
-* [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
+* [Head First Java](https://www.oreilly.com/library/view/head-first-java/9781492091646/)
 * [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
-* [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-* [Java The Complete Reference](https://www.amazon.com/gp/product/0071606300)
+* [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/1292159049/)
+* [Java The Complete Reference](https://www.amazon.com/Java-Complete-Reference-Thirteenth-dp-1265058431/dp/1265058431)
