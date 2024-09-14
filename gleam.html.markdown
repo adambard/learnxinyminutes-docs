@@ -11,12 +11,12 @@ and the highly concurrent fault-tolerant Erlang runtime using familiar and
 modern syntax inspired by languages like OCaml, Rust and Elixir.
 
 Being a pretty modern development, Gleam comes with a compiler, a build tool,
-a code formatter, several editor integrations, and package manager.
+a code formatter, several editor integrations, and a package manager.
 
 Being part of the larger BEAM ecosystem, the programs created with Gleam can
 also make use of thousands of published packages written in Erlang or Elixir.
 
-The design of the language is very concise so it feature no null values,
+The design of the language is very concise so it features no null values,
 no exceptions, clear error messages, and a practical type system.
 
 JavaScript is additionally supported as a compile target, so you can run Gleam
@@ -53,7 +53,7 @@ pub fn main() {
   // io.println("This statement got commented out by a two slashes comment.!")
 
   // Modules are the units in which all Gleam code gets organized.
-  // In a module full will find a bunch of definitions of types, functions, etc.
+  // In a module you will find a bunch of definitions of types, functions, etc.
   // that seem to belong together.
   // For example, the gleam/io module contains a variety of functions for
   // printing, like println.
@@ -125,7 +125,7 @@ pub fn main() {
   io.debug(0o17)
   io.debug(0xF)
 
-  // Use underscores to enhance integer readibility
+  // Use underscores to enhance integer readability
   io.debug(1_000_000)
 
   // Gleam's numerical operators are not overloaded, so there are dedicated
@@ -143,7 +143,7 @@ pub fn main() {
   io.debug(2.2 >=. 1.3)
   io.debug(2.2 <=. 1.3)
 
-  // Floats are represented as 64 bit floating point numbers on both the Erlang
+  // Floats are represented as 64-bit floating point numbers on both the Erlang
   // and JavaScript runtimes.
   // The floating point behaviour is native to their respective runtimes, so
   // their exact behaviour will be slightly different on the two runtimes.
@@ -169,7 +169,7 @@ pub fn main() {
   // Underscores for floats are also supported
   io.debug(10_000.01)
 
-  // Division by zero will not overflow, but is instead defined to be zero.
+  // Division by zero will not overflow but is instead defined to be zero.
 
   // Working with strings
   io.debug("⭐ Gleam ⭐ - 별")
@@ -382,7 +382,7 @@ fn more_examples() {
   // True
 }
 
-// Gleam supports higher order functions:
+// Gleam supports higher-order functions:
 // They can be assigned to variables, passed as arguments to other functions
 // or even be returned as values from blocks or other functions
 fn call_func_on_int(func: fn(Int) -> Int, value: Int) -> Int {
@@ -397,7 +397,7 @@ fn more_function_examples() -> Int {
   io.debug(square(3))
   // 9
 
-  // Calling an anonymous function inmediately after defining it
+  // Calling an anonymous function immediately after defining it
   io.debug(fn(x: Int) { x + 1 }(1))
 
   // Closure example
@@ -425,7 +425,7 @@ fn more_function_examples() -> Int {
   // 8
 
   // A function capture is a shorthand syntax for creating anonymous functions
-  // that take one argument and immediately call another function with that
+  // that takes one argument and immediately calls another function with that
   // argument
   let quadruple_3 = multiply(4, _)
   io.debug(quadruple_3(4))
@@ -583,7 +583,7 @@ fn from_one_to_ten(n: Int) {
   }
 }
 
-// In order to avoid memory exhaustion due to creating excesive
+// In order to avoid memory exhaustion due to creating excessive
 // stack frames when calling functions recursively, Gleam supports
 // "tail call optimisation" which means that the compiler can reuse
 // the stack frame for the current function if a function call is
@@ -623,11 +623,11 @@ fn more_on_pattern_matching() {
   // When pattern-matching on strings the <> operator match on strings
   // with a specific prefix and assigns the reminder to a variable
   io.debug(case "Hello, Lucy" {
-    "Hello, " <> name -> "Grettings for " <> name
+    "Hello, " <> name -> "Greetings for " <> name
     _ -> "Potentially no greetings"
   })
 
-  // Alternative patters are supported so the same clause is used
+  // Alternative patterns are supported so the same clause is used
   // for multiple values
   let month = 2
   let year = 2024
@@ -717,7 +717,7 @@ fn showcase_types() {
   let point_2 = Point(..point_1, y: 5.7)
   io.debug(point_2)
 
-  // In Gleam, values ar not nullable.
+  // In Gleam, values are not nullable.
   // Nil is the only value of its type.
   let some_var = Nil
   let result = io.println("Hello!")
@@ -821,7 +821,7 @@ fn roll_two_dices_without_use() {
   })
 }
 
-// The use expression still let us write code that uses callbacks
+// The use expression still lets us write code that uses callbacks
 // but cleans up excessive indentation:
 // - A call to higher order function go the right side of the <- operator
 // - The argument names for the callback function go on the left hand side of
@@ -832,7 +832,7 @@ fn roll_two_dices_with_use() {
   use first_dice <- result.try(throw_dice_as_result())
   use second_dice <- result.try(throw_dice_as_result())
   use sum <- result.map(sum_dice_values(first_dice, second_dice))
-  // this is the remaing code in innermost callback function
+  // This is the remaining code in innermost callback function
   sum
 }
 
@@ -876,7 +876,7 @@ pub fn homework() {
 * [Gleam's awesome list](https://github.com/gleam-lang/awesome-gleam)
 * [Exercism track for Gleam](https://exercism.org/tracks/gleam)
 
-There official docs have cheatsheets for people familiar with:
+The official docs have cheatsheets for people familiar with:
 
 * [Elixir](https://gleam.run/cheatsheets/gleam-for-elixir-users)
 * [Elm](https://gleam.run/cheatsheets/gleam-for-elm-users)
