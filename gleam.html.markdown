@@ -832,7 +832,7 @@ fn roll_two_dices_with_use() {
   use first_dice <- result.try(throw_dice_as_result())
   use second_dice <- result.try(throw_dice_as_result())
   use sum <- result.map(sum_dice_values(first_dice, second_dice))
-  //This is the remaining code in innermost callback function
+  // This is the remaining code in innermost callback function
   sum
 }
 
