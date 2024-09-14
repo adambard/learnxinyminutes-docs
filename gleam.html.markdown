@@ -876,7 +876,7 @@ pub fn homework() {
 * [Gleam's awesome list](https://github.com/gleam-lang/awesome-gleam)
 * [Exercism track for Gleam](https://exercism.org/tracks/gleam)
 
-Their official docs have cheatsheets for people familiar with:
+The official docs have cheatsheets for people familiar with:
 
 * [Elixir](https://gleam.run/cheatsheets/gleam-for-elixir-users)
 * [Elm](https://gleam.run/cheatsheets/gleam-for-elm-users)
