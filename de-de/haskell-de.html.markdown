@@ -66,6 +66,8 @@ not False -- True
 
 -- Ein String ist eine Liste von Zeichen.
 ['H', 'a', 'l', 'l', 'o', '!'] -- "Hallo!"
+
+-- Der "!!"-Operator extrahiert das Element an einem bestimmten Index
 "Das ist eine String" !! 0 -- 'D'
 
 
@@ -87,7 +89,7 @@ not False -- True
 [5..1] -- [], da Haskell standardmässig inkrementiert.
 [5,4..1] -- [5,4,3,2,1]
 
--- Der "!!"-Operator extrahiert das Element an einem bestimmten Index:
+-- Ein Element per Index extrahieren:
 [1..10] !! 3 -- 4
 
 -- Haskell unterstützt unendliche Listen!
