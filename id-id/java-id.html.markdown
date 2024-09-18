@@ -763,38 +763,30 @@ public class CobaEnum {
 Link-link berikut hanya menyediakan pemahaman lebih lanjut mengenai topik diatas. 
 Tip, trik, dan contoh lainnya dapat melakukan pencarian melalui Google atau mesin pencari yang lain. 
 
-**Panduan resmi Oracle**
+### Panduan resmi Oracle:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
+* Fitur baru di Java 8:
+    * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-**Tutorial dan Praktik Online**
+### Tutorial dan Praktik Online:
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
-
-**Buku**:
+### Buku:
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
-
 * [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
-
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-
 * [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
