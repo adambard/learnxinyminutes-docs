@@ -402,21 +402,18 @@ class PennyFarthing extends Bicicleta {
 Estos links son sólo para tener un entendimiento del tema, no dudes en
 usar Google y encontrar ejemplos más específicos
 
-Otros temas a investigar:
+### Guías oficiales de Oracle:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* Nuevas características en Java 8:
+  * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+  * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
