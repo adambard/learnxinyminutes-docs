@@ -820,38 +820,30 @@ public class EnumTest {
 Οι σύνδεσμοι που παρέχονται εδώ είναι απλά για να κατανοήσεις περισσότερο το θέμα.
 Σε προτρύνουμε να ψάξεις στο Google και να βρεις συγκεκριμένα παραδείγματα.
 
-**Eπίσημοι Οδηγοί της Oracle**:
+### Eπίσημοι Οδηγοί της Oracle:
 
 * [Φροντιστήριο εκμάθησης Java από τη Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Τροποποιητές επιπέδου πρόσβασης(Access level modifiers) Java](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Έννοιες αντικειμενοστραφούς (Object-Oriented) προγραμματισμού](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Κληρονομικότητα (Inheritance)](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Πολυμορφισμός (Polymorphism)](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Αφαιρετικότητα (Abstraction)](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Εξαιρέσεις (Exceptions)](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Διεπαφές (Interfaces)](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Συμβάσεις κώδικα Java (Code Conventions)](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
+* Νέες δυνατότητες στην Java 8:
+    * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-**Πρακτικές και Φροντιστήρια Online**
+### Πρακτικές και Φροντιστήρια Online:
 
 * [Learneroo.com - Μάθε Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
-
-**Βιβλία**:
+### Βιβλία:
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
-
 * [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
-
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-
 * [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
