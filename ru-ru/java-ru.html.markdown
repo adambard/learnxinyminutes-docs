@@ -493,38 +493,29 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne, In
 
 Здесь приведены ссылки только для того, чтобы получить общее представление о Java. Гуглите, чтобы найти какие-либо конкретные примеры.
 
-**Официальные руководства Oracle**:
+### Официальные руководства Oracle:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Модификаторы доступа в Java](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Концепции объектно-ориентированного программирования](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Наследование](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Полиморфизм](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Абстракция](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Исключения](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Интерфейсы](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* Новые возможности Java 8
+  * [Лямбда-выражения (функциональное программирование)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+  * [API даты и времени (пакет java.time)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-**Уроки онлайн**
+### Уроки онлайн
 
 * [Learneroo.com - Изучение Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
-
-**Книги**:
+### Книги
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
-
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-
 * [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
-
-
