@@ -30,7 +30,8 @@ program example         ! declare a program called example.
 
     ! All declarations must come before statements and expressions.
 
-    implicit none       ! prevents dynamic declaration of variables (recommended!)
+    implicit none       ! prevents dynamic declaration of variables
+    ! Recommended!
     ! Implicit none must be redeclared in every function/program/module...
 
     ! IMPORTANT - Fortran is case insensitive.
@@ -45,10 +46,14 @@ program example         ! declare a program called example.
     complex :: w = (0, 1)                         ! sqrt(-1)
     character(len=3) :: month                     ! string of 3 characters.
 
-    real :: array(6)                              ! declare an array of 6 reals.
-    real, dimension(4) :: arrayb                  ! another way to declare an array.
-    integer :: arrayc(-10:10)                     ! an array with a custom index.
-    real :: array2d(3, 2)                         ! multidimensional array.
+    ! declare an array of 6 reals.
+    real :: array(6)                                    
+    ! another way to declare an array. 
+    real, dimension(4) :: arrayb                 
+    ! an array with a custom index -10 to 10 (inclusive)
+    integer :: arrayc(-10:10)                     
+    ! A multidimensional array.
+    real :: array2d(3, 2)                         
 
     ! The '::' separators are not always necessary but are recommended.
 
@@ -76,8 +81,8 @@ program example         ! declare a program called example.
 
     ! Assignment & Arithmetic
     ! =======================
-
-    Z = 1                           ! assign to variable z declared above (case insensitive).
+    
+    Z = 1                           ! assign to variable z declared above 
     j = 10 + 2 - 3
     a = 11.54/(2.3*3.1)
     b = 2**3                        ! exponentiation
@@ -86,7 +91,7 @@ program example         ! declare a program called example.
     ! ===================================
 
     ! Single-line if statement
-    if (z == a) b = 4               ! condition always need surrounding parentheses.
+    if (z == a) b = 4               ! conditions always need parentheses.
 
     if (z /= a) then                ! z not equal to a
         ! Other symbolic comparisons are < > <= >= == /=
@@ -98,13 +103,13 @@ program example         ! declare a program called example.
         b = 5                       ! execution block must be on a new line.
     else
         b = 10
-    end if                          ! end statement needs the 'if' (or can use 'endif').
+    end if                          ! end statement needs the 'if'
 
     if (.NOT. (x < c .AND. v >= a .OR. z == z)) then    ! boolean operators.
         inner: if (.TRUE.) then     ! can name if-construct.
             b = 1
         end if inner                ! then must name endif statement.
-    end if
+    endif                           ! 'endif' is equivalent to 'end if'  
 
     i = 20
     select case (i)
@@ -128,16 +133,16 @@ program example         ! declare a program called example.
         j = -1
     end select monthly
 
-    do i = 2, 10, 2             ! loops from 2 to 10 (inclusive) in increments of 2.
+    do i = 2, 10, 2             ! loops from 2 to 10 (inclusive) in steps of 2.
         innerloop: do j = 1, 3  ! loops can be named too.
             exit                ! quits the loop.
         end do innerloop
         cycle                   ! jump to next loop iteration.
     end do
 
-    ! Goto statement exists but it is heavily discouraged though.
+    ! Goto statement exists but it is heavily discouraged.
     goto 10
-    stop 1                      ! stops code immediately (returning specified condition code).
+    stop 1                      ! stops the program, returns condition code 1.
 10  j = 201                     ! this line is labeled as line 10
 
     ! Arrays
@@ -209,8 +214,12 @@ program example         ! declare a program called example.
 
     ! we can have multiple format specifications.
     print "(I5,F6.2,E6.2)", 120, 43.41, 43.41
-    print "(3I5)", 10, 20, 30                       ! 3 repeats of integers (field width = 5).
-    print "(2(I5,F6.2))", 120, 43.42, 340, 65.3     ! repeated grouping of formats.
+    
+    ! 3 repeats of integers (field width = 5).
+    print "(3I5)", 10, 20, 30                       
+
+    ! repeated grouping of formats.
+    print "(2(I5,F6.2))", 120, 43.42, 340, 65.3     
 
     ! We can also read input from the terminal.
     read (*, *) v
@@ -225,8 +234,9 @@ program example         ! declare a program called example.
 
     ! To read a file.
     open (newunit=m, file="records.txt", status="old")
-    ! The file is referred to by a 'new unit number', an integer that the compiler
-    ! picks for you.
+    ! The file is referred to by a 'new unit number', 
+    ! an integer that the compiler picks for you.
+
     read (unit=m, fmt="(3F10.2)") a, b, c
     close (m)
 
@@ -241,7 +251,7 @@ program example         ! declare a program called example.
     call cpu_time(v)        ! sets 'v' to a time in seconds.
     k = ior(i, j)           ! bitwise OR of 2 integers.
     v = log10(x)            ! log base 10.
-    i = floor(b)            ! returns the closest integer less than or equal to x.
+    i = floor(b)            ! converts b to integer by rounding down.
     v = aimag(w)            ! imaginary part of a complex number.
 
     ! Functions & Subroutines
@@ -252,7 +262,7 @@ program example         ! declare a program called example.
 
     call routine(a, c, v)   ! subroutine call.
 
-    ! A function takes a list of input parameters and returns a single value.
+    ! A function takes several input parameters and returns a single value.
     ! However the input parameters may still be modified and side effects
     ! executed.
 
@@ -261,21 +271,22 @@ program example         ! declare a program called example.
     ! Function calls can also be evoked within expressions.
     print *, func2(3, 2, k)
 
-    ! A pure function is a function that doesn't modify its input parameters
-    ! or cause any side-effects.
+    ! A pure function is a function that doesn't modify its input 
+    ! parameters or cause any side-effects.
     m = func3(3, 2, k)
 
-contains                    ! Zone for defining sub-programs internal to the program.
+contains                    ! Start defining the program's internal procedures:
 
     ! Fortran has a couple of slightly different ways to define functions.
 
     integer function func(a, b, c)      ! a function returning an integer value.
-        ! implicit none                 ! subvariable fields can no longer declare implicit none
-        integer, intent(in) :: a, b, c  ! type of input parameters defined inside the function.
+        ! implicit none                 ! - no longer used in subvariable fields
+        integer, intent(in) :: a, b, c  ! type of input parameters
+        ! the return variable defaults to the function name.
 
         if (a >= 2) then
-            func = a + b + c            ! the return variable defaults to the function name.
-            return                      ! can return the current value from the function at any time.
+            func = a + b + c            
+            return                      ! returns the current value at 'func'
         end if
         func = a + c
 
@@ -286,24 +297,29 @@ contains                    ! Zone for defining sub-programs internal to the pro
         integer, intent(in) :: a, b     ! can declare and enforce that variables
         !are not modified by the function.
         integer, intent(inout) :: c
-        integer :: f                    ! function return type declared inside the function.
-        integer :: cnt = 0              ! GOTCHA - initialisation implies variable is
-        !saved between function calls.
+        integer :: f                    
+        ! function return type declared inside the function.
+        integer :: cnt = 0               ! GOTCHA -         
+        ! assigning a value at initalization 
+        ! implies that the variable is
+        ! saved between function calls.
 
         f = a + b - c
-        c = 4                           ! altering the value of an input variable.
+        c = 4                           ! changing value of input variable c.
         cnt = cnt + 1                   ! count number of function calls.
 
     end function func2
 
-    pure function func3(a, b, c)        ! a pure function can have no side-effects.
+    pure function func3(a, b, c)        ! a pure function has no side-effects.
         integer, intent(in) :: a, b, c
         integer :: func3
 
         func3 = a*b*c
 
     end function func3
-
+    
+    ! a subroutine does not return anything, 
+    ! but can change the value of arguments.
     subroutine routine(d, e, f)
         real, intent(inout) :: f
         real, intent(in) :: d, e
@@ -312,7 +328,8 @@ contains                    ! Zone for defining sub-programs internal to the pro
 
     end subroutine routine
 
-end program example                     ! End of Program Definition -----------------------
+end program example                     
+! End of Program Definition -----------------------
 
 ! Functions and Subroutines declared externally to the program listing need
 ! to be declared to the program using an Interface declaration (even if they
@@ -350,7 +367,8 @@ module fruity
     use fruit, only: apple, pear    ! use apple and pear from fruit module.
     implicit none                   ! comes after module imports.
 
-    private                         ! make things private to the module (default is public).
+    ! By default all module data and functions will be public
+    private                         ! Instead set default to private 
     ! Declare some variables/functions explicitly public.
     public :: apple, mycar, create_mycar
     ! Declare some variables/functions private to the module (redundant here).
