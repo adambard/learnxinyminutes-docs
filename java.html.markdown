@@ -44,6 +44,9 @@ Multi-line comments look like this.
 import java.util.ArrayList;
 // Import all classes inside of java.security package
 import java.security.*;
+// Java to illustrate calling of static members and methods without calling classname
+import static java.lang.Math.*;
+import static java.lang.System.*;
 
 public class LearnJava {
 
@@ -211,8 +214,21 @@ public class LearnJava {
         // Prefer the String constructor when you need an exact value.
         BigDecimal tenCents = new BigDecimal("0.1");
 
+        // Type inference with 'var'
+        var x = 100; // int
+        var y = 1.90; // double
+        var z = 'a'; // char
+        var p = "tanu"; //String
+        var q = false; // boolean
+
         // Strings
         String fooString = "My String Is Here!";
+
+        // Java 14 onwards - Text Blocks
+        vat textBlock = """
+                        This is a <Text Block> in Java 
+                        """;
+
 
         // \n is an escaped character that starts a new line
         String barString = "Printing on a new line?\nNo Problem!";
@@ -459,6 +475,8 @@ public class LearnJava {
             System.out.println(br.readLine());
             // In Java 7, the resource will always be closed, even if it throws
             // an Exception.
+        } catch (IOException | SQLException ex) {
+            // Java 7+ Multi catch block handle both exceptions
         } catch (Exception ex) {
             //The resource will be closed before the catch statement executes.
             System.out.println("readLine() failed.");
@@ -851,6 +869,12 @@ public abstract class Mammal()
         return true;
     }
 }
+
+//Java Records (introduced in Java 14, finalized in Java 16) are a concise way to define immutable data carrier classes,
+//automatically generating boilerplate code like constructors, equals(), hashCode(), and toString().
+//This automatically creates an immutable class Person with fields name and age.
+public record Person(String name, int age) {}
+Person p = new Person("Alice", 30);
 
 // Enum Type
 //
