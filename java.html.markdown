@@ -218,17 +218,16 @@ public class LearnJava {
         var x = 100; // int
         var y = 1.90; // double
         var z = 'a'; // char
-        var p = "tanu"; //String
+        var p = "tanu"; // String
         var q = false; // boolean
 
         // Strings
         String fooString = "My String Is Here!";
 
-        // Java 14 onwards - Text Blocks
+        // Text blocks
         vat textBlock = """
                         This is a <Text Block> in Java 
                         """;
-
 
         // \n is an escaped character that starts a new line
         String barString = "Printing on a new line?\nNo Problem!";
@@ -870,9 +869,9 @@ public abstract class Mammal()
     }
 }
 
-//Java Records (introduced in Java 14, finalized in Java 16) are a concise way to define immutable data carrier classes,
-//automatically generating boilerplate code like constructors, equals(), hashCode(), and toString().
-//This automatically creates an immutable class Person with fields name and age.
+// Java Records are a concise way to define immutable data carrier classes, automatically
+// generating boilerplate code like constructors, equals(), hashCode()and toString().
+// This automatically creates an immutable class Person with fields name and age.
 public record Person(String name, int age) {}
 Person p = new Person("Alice", 30);
 
