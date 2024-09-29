@@ -11,6 +11,7 @@ Jinja is a fast, expressive, and extensible templating engine for Python
 applications.
 
 Jinja includes a lot of functionalities, such as:
+
 - Template inheritance and inclusion;
 - Defining and importing macros within templates;
 - Security mechanisms to prevent XSS attacks;
