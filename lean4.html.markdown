@@ -256,7 +256,7 @@ We now state Collatz conjecture. The proof is left as an exercise to the reader.
 def collatz_next (n : Nat) : Nat :=
   if n % 2 = 0 then n / 2 else 3 * n + 1
 
-def iter (k : Nat) (f: Nat → Nat) :=
+def iter (k : Nat) (f : Nat → Nat) :=
   match k with
   | Nat.zero => fun x => x
   | Nat.succ k' => fun x => f (iter k' f x)
