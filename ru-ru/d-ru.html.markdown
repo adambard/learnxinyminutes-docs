@@ -2,9 +2,9 @@
 language: D
 filename: learnd-ru.d
 contributors:
-    - ["Anton Pastukhov", "http://dprogramming.ru/"]
-    - ["Robert Brights-Gray", "http://lhs-blog.info/"]
-    - ["Andre Polykanine", "http://oire.me/"]
+    - ["Anton Pastukhov", "https://anton9.com/"]
+    - ["Robert Brights-Gray", "https://lhs.su/"]
+    - ["Andre Polykanine", "https://oire.me/"]
 lang: ru-ru
 ---
 
