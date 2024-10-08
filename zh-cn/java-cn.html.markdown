@@ -387,21 +387,18 @@ class PennyFarthing extends Bicycle {
 
 下面的链接只是为了便于大家理解这些主题而给出的，对于具体的例子请大家自行Google
 
-其他主题：
+### 其他主题：
 
 * [Java 官方教程](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Java 访问修饰符](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [面向对象程序设计概念](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [继承](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [多态](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [抽象](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [异常](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [接口](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [泛型](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Java代码规范](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
+* Java 8 中的新特性：
+    * [Lambda 表达式（函数式编程）](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [日期和时间 API（java.time 包）](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)

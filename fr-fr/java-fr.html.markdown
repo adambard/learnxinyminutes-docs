@@ -898,41 +898,30 @@ public class EnumTest {
 Les liens ci-dessous sont données si vous souhaitez approfondir sur le sujet,
 n'hésitez pas à consulter Google pour trouver des exemples spécifiques.
 
-**Guides officiels d'Oracle** :
+### Guides officiels d'Oracle:
 
 * [Java Tutorial Trail from Sun / Oracle](https://docs.oracle.com/javase/tutorial/index.html)
-
 * [Java Access level modifiers](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Object-Oriented Programming Concepts](https://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polymorphism](https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstraction](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Exceptions](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Interfaces](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
-
 * Nouvelles fonctionnalités Java 8 :
     * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
     * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-**Pratiquer en ligne et tutoriels**
+### Pratiquer en ligne et tutoriels:
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
-**Livres** :
+### Livres :
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
-
 * [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
-
 * [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-
 * [Java The Complete Reference](https://www.amazon.com/gp/product/0071606300)
