@@ -435,7 +435,7 @@ les librairies standard:
 Autres références complémentaires:
 
 * [Lua pour programmeurs](http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/)
-* [Référence condensée de Lua](lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf)
+* [Référence condensée de Lua](http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf)
 * [Programmer en Lua](http://www.lua.org/pil/contents.html)
 * [Les manuels de référence Lua](http://www.lua.org/manual/)
 
