@@ -13,42 +13,60 @@ as well as multi-kilocore supercomputers.
 
 More information and support can be found at the bottom of this document.
 
+You can refer to the official site for [latest version](https://chapel-lang.org/docs/master/primers/learnChapelInYMinutes.html) of this document.
+
 ```chapel
+/*
+   Learn Chapel in Y Minutes
+   
+   This primer will go over basic syntax and concepts in Chapel.
+   Last sync with official page: Sun, 08 Mar 2020 08:05:53 +0000
+*/
+
 // Comments are C-family style
 
 // one line comment
 /*
- multi-line comment
+    multi-line comment
 */
 
-// Basic printing
+/*
+Basic printing
+*/
 
 write("Hello, ");
 writeln("World!");
 
-// write and writeln can take a list of things to print.
+// ``write`` and ``writeln`` can take a list of things to print.
 // Each thing is printed right next to the others, so include your spacing!
 writeln("There are ", 3, " commas (\",\") in this line of code");
 
 // Different output channels:
+use IO; // Required for accessing the alternative output channels
+
 stdout.writeln("This goes to standard output, just like plain writeln() does");
 stderr.writeln("This goes to standard error");
 
+/*
+Variables
+*/
 
 // Variables don't have to be explicitly typed as long as
 // the compiler can figure out the type that it will hold.
-// 10 is an int, so myVar is implicitly an int
+// 10 is an ``int``, so ``myVar`` is implicitly an ``int``
 var myVar = 10;
 myVar = -10;
 var mySecondVar = myVar;
-// var anError; would be a compile-time error.
+// ``var anError;`` would be a compile-time error.
 
 // We can (and should) explicitly type things.
 var myThirdVar: real;
 var myFourthVar: real = -1.234;
 myThirdVar = myFourthVar;
 
-// Types
+/*
+Types
+*/
 
 // There are a number of basic types.
 var myInt: int = -1000; // Signed ints
@@ -75,39 +93,45 @@ type RGBColor = 3*chroma; // Type representing a full color
 var black: RGBColor = (0,0,0);
 var white: RGBColor = (255, 255, 255);
 
-// Constants and Parameters
+/*
+Constants and Parameters
+*/
 
-// A const is a constant, and cannot be changed after set in runtime.
+// A ``const`` is a constant, and cannot be changed after set in runtime.
 const almostPi: real = 22.0/7.0;
 
-// A param is a constant whose value must be known statically at
+// A ``param`` is a constant whose value must be known statically at
 // compile-time.
 param compileTimeConst: int = 16;
 
-// The config modifier allows values to be set at the command line.
-// Set with --varCmdLineArg=Value or --varCmdLineArg Value at runtime.
+// The ``config`` modifier allows values to be set at the command line.
+// Set with ``--varCmdLineArg=Value`` or ``--varCmdLineArg Value`` at runtime.
 config var varCmdLineArg: int = -123;
 config const constCmdLineArg: int = 777;
 
-// config param can be set at compile-time.
-// Set with --set paramCmdLineArg=value at compile-time.
+// ``config param`` can be set at compile-time.
+// Set with ``--set paramCmdLineArg=value`` at compile-time.
 config param paramCmdLineArg: bool = false;
 writeln(varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg);
 
-// References
+/*
+References
+*/
 
-// ref operates much like a reference in C++. In Chapel, a ref cannot
+// ``ref`` operates much like a reference in C++. In Chapel, a ``ref`` cannot
 // be made to alias a variable other than the variable it is initialized with.
-// Here, refToActual refers to actual.
+// Here, ``refToActual`` refers to ``actual``.
 var actual = 10;
-ref refToActual = actual;
+ref refToActual = actual; 
 writeln(actual, " == ", refToActual); // prints the same value
 actual = -123; // modify actual (which refToActual refers to)
 writeln(actual, " == ", refToActual); // prints the same value
 refToActual = 99999999; // modify what refToActual refers to (which is actual)
 writeln(actual, " == ", refToActual); // prints the same value
 
-// Operators
+/*
+Operators
+*/
 
 // Math operators:
 var a: int, thisInt = 1234, thatInt = 5678;
@@ -146,7 +170,7 @@ a <<= 3;               // Left-bit-shift-equals (a = a << 10;)
 // Unlike other C family languages, there are no
 // pre/post-increment/decrement operators, such as:
 //
-// ++j, --j, j++, j--
+// ``++j``, ``--j``, ``j++``, ``j--``
 
 // Swap operator:
 var old_this = thisInt;
@@ -156,7 +180,9 @@ writeln((old_this == thatInt) && (old_that == thisInt));
 
 // Operator overloads can also be defined, as we'll see with procedures.
 
-// Tuples
+/*
+Tuples
+*/
 
 // Tuples can be of the same type or different types.
 var sameTup: 2*int = (10, -1);
@@ -179,16 +205,18 @@ writeln(diffTup == (tupInt, tupReal, tupCplx));
 // They are also useful for writing a list of variables, as is common in debugging.
 writeln((a,b,thisInt,thatInt,thisBool,thatBool));
 
-// Control Flow
+/*
+Control Flow
+*/
 
-// if - then - else works just like any other C-family language.
+// ``if`` - ``then`` - ``else`` works just like any other C-family language.
 if 10 < 100 then
   writeln("All is well");
 
 if -1 < 1 then
   writeln("Continuing to believe reality");
 else
-  writeln("Send mathematician, something is wrong");
+  writeln("Send mathematician, something's wrong");
 
 // You can use parentheses if you prefer.
 if (10 > 100) {
@@ -209,11 +237,11 @@ if a % 3 == 0 {
   writeln(b, " is divided by 3 with a remainder of 2.");
 }
 
-// Ternary: if - then - else in a statement.
+// Ternary: ``if`` - ``then`` - ``else`` in a statement.
 var maximum = if thisInt < thatInt then thatInt else thisInt;
 
-// select statements are much like switch statements in other languages.
-// However, select statements do not cascade like in C or Java.
+// ``select`` statements are much like switch statements in other languages.
+// However, ``select`` statements don't cascade like in C or Java.
 var inputOption = "anOption";
 select inputOption {
   when "anOption" do writeln("Chose 'anOption'");
@@ -223,11 +251,11 @@ select inputOption {
   }
   otherwise {
     writeln("Any other Input");
-    writeln("the otherwise case does not need a do if the body is one line");
+    writeln("the otherwise case doesn't need a do if the body is one line");
   }
 }
 
-// while and do-while loops also behave like their C counterparts.
+// ``while`` and ``do``-``while`` loops also behave like their C counterparts.
 var j: int = 1;
 var jSum: int = 0;
 while (j <= 1000) {
@@ -242,8 +270,8 @@ do {
 } while (j <= 10000);
 writeln(jSum);
 
-// for loops are much like those in Python in that they iterate over a
-// range. Ranges (like the 1..10 expression below) are a first-class object
+// ``for`` loops are much like those in python in that they iterate over a
+// range. Ranges (like the ``1..10`` expression below) are a first-class object
 // in Chapel, and as such can be stored in variables.
 for i in 1..10 do write(i, ", ");
 writeln();
@@ -261,7 +289,9 @@ for x in 1..10 {
   writeln();
 }
 
-// Ranges and Domains
+/*
+Ranges and Domains
+*/
 
 // For-loops and arrays both use ranges and domains to define an index set that
 // can be iterated over. Ranges are single dimensional integer indices, while
@@ -277,17 +307,18 @@ var rangeEmpty: range = 100..-100; // this is valid but contains no indices
 var range1toInf: range(boundedType=BoundedRangeType.boundedLow) = 1.. ; // 1, 2, 3, 4, 5, ...
 var rangeNegInfTo1 = ..1; // ..., -4, -3, -2, -1, 0, 1
 
-// Ranges can be strided (and reversed) using the by operator.
+// Ranges can be strided (and reversed) using the ``by`` operator.
 var range2to10by2: range(stridable=true) = 2..10 by 2; // 2, 4, 6, 8, 10
 var reverse2to10by2 = 2..10 by -2; // 10, 8, 6, 4, 2
 
 var trapRange = 10..1 by -1; // Do not be fooled, this is still an empty range
-writeln("Size of range ", trapRange, " = ", trapRange.length);
+writeln("Size of range '", trapRange, "' = ", trapRange.size);
 
-// Note: range(boundedType= ...) and range(stridable= ...) are only
+// Note: ``range(boundedType= ...)`` and ``range(stridable= ...)`` are only
 // necessary if we explicitly type the variable.
 
-// The end point of a range can be determined using the count (#) operator.
+// The end point of a range can be computed by specifying the total size
+// of the range using the count (``#``) operator.
 var rangeCount: range = -5..#12; // range from -5 to 6
 
 // Operators can be mixed.
@@ -297,8 +328,8 @@ writeln(rangeCountBy);
 // Properties of the range can be queried.
 // In this example, printing the first index, last index, number of indices,
 // stride, and if 2 is include in the range.
-writeln((rangeCountBy.first, rangeCountBy.last, rangeCountBy.length,
-           rangeCountBy.stride, rangeCountBy.member(2)));
+writeln((rangeCountBy.first, rangeCountBy.last, rangeCountBy.size,
+           rangeCountBy.stride, rangeCountBy.contains(2)));
 
 for i in rangeCountBy {
   write(i, if i == rangeCountBy.last then "\n" else ", ");
@@ -322,7 +353,7 @@ for idx in twoDimensions do
   write(idx, ", ");
 writeln();
 
-// These tuples can also be deconstructed.
+// These tuples can also be destructured.
 for (x,y) in twoDimensions {
   write("(", x, ", ", y, ")", ", ");
 }
@@ -352,7 +383,9 @@ var domainB = {-5..5, 1..10};
 var domainC = domainA[domainB];
 writeln((domainA, domainB, domainC));
 
-// Arrays
+/*
+Arrays
+*/
 
 // Arrays are similar to those of other languages.
 // Their sizes are defined using domains that represent their indices.
@@ -364,9 +397,9 @@ for i in 1..10 do
   intArray[i] = -i;
 writeln(intArray);
 
-// We cannot access intArray[0] because it exists outside
-// of the index set, {1..10}, we defined it to have.
-// intArray[11] is illegal for the same reason.
+// We cannot access ``intArray[0]`` because it exists outside
+// of the index set, ``{1..10}``, we defined it to have.
+// ``intArray[11]`` is illegal for the same reason.
 var realDomain: domain(2) = {1..5,1..7};
 var realArray: [realDomain] real;
 var realArray2: [1..5,1..7] real;   // equivalent
@@ -396,9 +429,9 @@ for value in realArray {
 writeln(rSum, "\n", realArray);
 
 // Associative arrays (dictionaries) can be created using associative domains.
-var dictDomain: domain(string) = { "one", "two" };
-var dict: [dictDomain] int = ["one" => 1, "two" => 2];
-dict["three"] = 3; // Adds 'three' to 'dictDomain' implicitly
+var dictDomain: domain(string) = { "one", "two", "three"};
+var dict: [dictDomain] int = ["one" => 1, "two" => 2, "three" => 3];
+
 for key in dictDomain.sorted() do
   writeln(dict[key]);
 
@@ -407,9 +440,9 @@ for key in dictDomain.sorted() do
 var thisArray : [0..5] int = [0,1,2,3,4,5];
 var thatArray : [0..5] int;
 
-// First, simply assign one to the other. This copies thisArray into
-// thatArray, instead of just creating a reference. Therefore, modifying
-// thisArray does not also modify thatArray.
+// First, simply assign one to the other. This copies ``thisArray`` into
+// ``thatArray``, instead of just creating a reference. Therefore, modifying
+// ``thisArray`` does not also modify ``thatArray``.
 
 thatArray = thisArray;
 thatArray[1] = -1;
@@ -425,7 +458,7 @@ var thisPlusThat = thisArray + thatArray;
 writeln(thisPlusThat);
 
 // Moving on, arrays and loops can also be expressions, where the loop
-// body expression is the result of each iteration.
+// body's expression is the result of each iteration.
 var arrayFromLoop = for i in 1..10 do i;
 writeln(arrayFromLoop);
 
@@ -435,16 +468,18 @@ var evensOrFives = for i in 1..10 do if (i % 2 == 0 || i % 5 == 0) then i;
 writeln(arrayFromLoop);
 
 // Array expressions can also be written with a bracket notation.
-// Note: this syntax uses the forall parallel concept discussed later.
+// Note: this syntax uses the ``forall`` parallel concept discussed later.
 var evensOrFivesAgain = [i in 1..10] if (i % 2 == 0 || i % 5 == 0) then i;
 
 // They can also be written over the values of the array.
 arrayFromLoop = [value in arrayFromLoop] value + 1;
 
 
-// Procedures
+/*
+Procedures
+*/
 
-// Chapel procedures have similar syntax functions in other languages.
+// Chapel procedures have similar syntax functions in other languages. 
 proc fibonacci(n : int) : int {
   if n <= 1 then return n;
   return fibonacci(n-1) + fibonacci(n-2);
@@ -482,10 +517,10 @@ writeln(defaultsProc(x=11));
 writeln(defaultsProc(x=12, y=5.432));
 writeln(defaultsProc(y=9.876, x=13));
 
-// The ? operator is called the query operator, and is used to take
+// The ``?`` operator is called the query operator, and is used to take
 // undetermined values like tuple or array sizes and generic types.
 // For example, taking arrays as parameters. The query operator is used to
-// determine the domain of A. This is uesful for defining the return type,
+// determine the domain of ``A``. This is useful for defining the return type,
 // though it's not required.
 proc invertArray(A: [?D] int): [D] int{
   for a in A do a = -a;
@@ -509,7 +544,7 @@ genericProc(1, 2);
 genericProc(1.2, 2.3);
 genericProc(1.0+2.0i, 3.0+4.0i);
 
-// We can also enforce a form of polymorphism with the where clause
+// We can also enforce a form of polymorphism with the ``where`` clause
 // This allows the compiler to decide which function to use.
 // Note: That means that all information needs to be known at compile-time.
 // The param modifier on the arg is used to enforce this constraint.
@@ -526,13 +561,13 @@ proc whereProc(param N : int): void
 whereProc(10);
 whereProc(-1);
 
-// whereProc(0) would result in a compiler error because there
-// are no functions that satisfy the where clause's condition.
-// We could have defined a whereProc without a where clause
+// ``whereProc(0)`` would result in a compiler error because there
+// are no functions that satisfy the ``where`` clause's condition.
+// We could have defined a ``whereProc`` without a ``where`` clause
 // that would then have served as a catch all for all the other cases
 // (of which there is only one).
 
-// where clauses can also be used to constrain based on argument type.
+// ``where`` clauses can also be used to constrain based on argument type.
 proc whereType(x: ?t) where t == int {
   writeln("Inside 'int' version of 'whereType': ", x);
 }
@@ -544,7 +579,9 @@ proc whereType(x: ?t) {
 whereType(42);
 whereType("hello");
 
-// Intents
+/*
+Intents
+*/
 
 /* Intent modifiers on the arguments convey how those arguments are passed to the procedure.
 
@@ -571,7 +608,7 @@ intentsProc(inVar, outVar, inoutVar, refVar);
 writeln("Outside After: ", (inVar, outVar, inoutVar, refVar));
 
 // Similarly, we can define intents on the return type.
-// refElement returns a reference to an element of array.
+// ``refElement`` returns a reference to an element of array.
 // This makes more practical sense for class methods where references to
 // elements in a data-structure are returned via a method or iterator.
 proc refElement(array : [?D] ?T, idx) ref : T {
@@ -586,14 +623,16 @@ refToElem = -2; // modify reference which modifies actual value in array
 writeln(refToElem);
 writeln(myChangingArray);
 
-// Operator Definitions
+/*
+Operator Definitions
+*/
 
 // Chapel allows for operators to be overloaded.
 // We can define the unary operators:
-// + - ! ~
+// ``+ - ! ~``
 // and the binary operators:
-// + - * / % ** == <= >= < > << >> & | ˆ by
-// += -= *= /= %= **= &= |= ˆ= <<= >>= <=>
+// ``+ - * / % ** == <= >= < > << >> & | ˆ by``
+// ``+= -= *= /= %= **= &= |= ˆ= <<= >>= <=>``
 
 // Boolean exclusive or operator.
 proc ^(left : bool, right : bool): bool {
@@ -605,25 +644,28 @@ writeln(false ^ true);
 writeln(true  ^ false);
 writeln(false ^ false);
 
-// Define a * operator on any two types that returns a tuple of those types.
+// Define a ``*`` operator on any two types that returns a tuple of those types.
 proc *(left : ?ltype, right : ?rtype): (ltype, rtype) {
   writeln("\tIn our '*' overload!");
   return (left, right);
 }
 
-writeln(1 * "a"); // Uses our * operator.
-writeln(1 * 2);   // Uses the default * operator.
+writeln(1 * "a"); // Uses our ``*`` operator.
+writeln(1 * 2);   // Uses the default ``*`` operator.
 
 //  Note: You could break everything if you get careless with your overloads.
 //  This here will break everything. Don't do it.
 
-/*
-    proc +(left: int, right: int): int {
-      return left - right;
-    }
+/* 
+
+      proc +(left: int, right: int): int {
+        return left - right;
+      }
 */
 
-// Iterators
+/*
+Iterators
+*/
 
 // Iterators are sisters to the procedure, and almost everything about
 // procedures also applies to iterators. However, instead of returning a single
@@ -656,7 +698,7 @@ for i in absolutelyNothing(10) {
 }
 
 // We can zipper together two or more iterators (who have the same number
-// of iterations) using zip() to create a single zipped iterator, where each
+// of iterations) using ``zip()`` to create a single zipped iterator, where each
 // iteration of the zipped iterator yields a tuple of one value yielded
 // from each iterator.
 for (positive, negative) in zip(1..5, -5..-1) do
@@ -683,11 +725,10 @@ for (i, j) in zip(toThisArray.domain, -100..#5) {
 }
 writeln(toThisArray);
 
-// This is very important in understanding why this statement exhibits a
-// runtime error.
+// This is very important in understanding why this statement exhibits a runtime error.
 
-/*
-  var iterArray : [1..10] int = [i in 1..10] if (i % 2 == 1) then i;
+/* 
+      var iterArray : [1..10] int = [i in 1..10] if (i % 2 == 1) then i;
 */
 
 // Even though the domain of the array and the loop-expression are
@@ -695,8 +736,9 @@ writeln(toThisArray);
 // Because iterators can yield nothing, that iterator yields a different number
 // of things than the domain of the array or loop, which is not allowed.
 
-// Classes
-
+/*
+Classes
+*/
 // Classes are similar to those in C++ and Java, allocated on the heap.
 class MyClass {
 
@@ -704,13 +746,16 @@ class MyClass {
   var memberInt : int;
   var memberBool : bool = true;
 
-// Explicitly defined initializer.
-// We also get the compiler-generated initializer, with one argument per field.
-// Note that soon there will be no compiler-generated initializer when we
-// define any initializer(s) explicitly.
-  proc init(val : real) {
-    this.memberInt = ceil(val): int;
-  }
+// By default, any class that doesn't define an initializer gets a
+// compiler-generated initializer, with one argument per field and
+// the field's initial value as the argument's default value.
+// Alternatively, the user can define initializers manually as shown
+// in the following commented-out routine:
+//
+/*       // proc init(val : real) {
+      //   this.memberInt = ceil(val): int;
+      // }
+*/
 
 // Explicitly defined deinitializer.
 // If we did not write one, we would get the compiler-generated deinitializer,
@@ -738,36 +783,44 @@ class MyClass {
 } // end MyClass
 
 // Call compiler-generated initializer, using default value for memberBool.
-var myObject = new MyClass(10);
-    myObject = new MyClass(memberInt = 10); // Equivalent
-writeln(myObject.getMemberInt());
+{
+  var myObject = new owned MyClass(10);
+      myObject = new owned MyClass(memberInt = 10); // Equivalent
+  writeln(myObject.getMemberInt());
 
-// Same, but provide a memberBool value explicitly.
-var myDiffObject = new MyClass(-1, true);
-    myDiffObject = new MyClass(memberInt = -1,
-                                memberBool = true); // Equivalent
-writeln(myDiffObject);
+  // Same, but provide a memberBool value explicitly.
+  var myDiffObject = new owned MyClass(-1, true);
+      myDiffObject = new owned MyClass(memberInt = -1,
+                                       memberBool = true); // Equivalent
+  writeln(myDiffObject);
 
-// Call the initializer we wrote.
-var myOtherObject = new MyClass(1.95);
-    myOtherObject = new MyClass(val = 1.95); // Equivalent
-writeln(myOtherObject.getMemberInt());
+  // Similar, but rely on the default value of memberInt, passing in memberBool.
+  var myThirdObject = new owned MyClass(memberBool = true);
+  writeln(myThirdObject);
 
-// We can define an operator on our class as well, but
-// the definition has to be outside the class definition.
-proc +(A : MyClass, B : MyClass) : MyClass {
-  return new MyClass(memberInt = A.getMemberInt() + B.getMemberInt(),
-                      memberBool = A.getMemberBool() || B.getMemberBool());
+  // If the user-defined initializer above had been uncommented, we could
+  // make the following calls:
+  //
+  /*         // var myOtherObject = new MyClass(1.95);
+        //     myOtherObject = new MyClass(val = 1.95);
+        // writeln(myOtherObject.getMemberInt());
+  */
+
+  // We can define an operator on our class as well, but
+  // the definition has to be outside the class definition.
+  proc +(A : MyClass, B : MyClass) : owned MyClass {
+    return
+      new owned MyClass(memberInt = A.getMemberInt() + B.getMemberInt(),
+                        memberBool = A.getMemberBool() || B.getMemberBool());
+  }
+
+  var plusObject = myObject + myDiffObject;
+  writeln(plusObject);
+
+  // Destruction of an object: calls the deinit() routine and frees its memory.
+  // ``unmanaged`` variables should have ``delete`` called on them.
+  // ``owned`` variables are destroyed when they go out of scope.
 }
-
-var plusObject = myObject + myDiffObject;
-writeln(plusObject);
-
-// Destruction.
-delete myObject;
-delete myDiffObject;
-delete myOtherObject;
-delete plusObject;
 
 // Classes can inherit from one or more parent classes
 class MyChildClass : MyClass {
@@ -780,42 +833,46 @@ class GenericClass {
   var classDomain: domain(1);
   var classArray: [classDomain] classType;
 
-// Explicit constructor.
-  proc GenericClass(type classType, elements : int) {
-    this.classDomain = {1..#elements};
+// Explicit initializer.
+  proc init(type classType, elements : int) {
+    this.classType = classType;
+    this.classDomain = {1..elements};
+    // all generic and const fields must be initialized in "phase 1" prior
+    // to a call to the superclass initializer.
   }
 
-// Copy constructor.
-// Note: We still have to put the type as an argument, but we can
-// default to the type of the other object using the query (?) operator.
-// Further, we can take advantage of this to allow our copy constructor
-// to copy classes of different types and cast on the fly.
-  proc GenericClass(other : GenericClass(?otherType),
-                     type classType = otherType) {
+// Copy-style initializer.
+// Note: We include a type argument whose default is the type of the first
+// argument.  This lets our initializer copy classes of different
+// types and cast on the fly.
+  proc init(other : GenericClass(?),
+            type classType = other.classType) {
+    this.classType = classType;
     this.classDomain = other.classDomain;
-    // Copy and cast
-    for idx in this.classDomain do this[idx] = other[idx] : classType;
+    this.classArray = for o in other do o: classType;  // copy and cast
   }
 
 // Define bracket notation on a GenericClass
 // object so it can behave like a normal array
-// i.e. objVar[i] or objVar(i)
+// i.e. ``objVar[i]`` or ``objVar(i)``
   proc this(i : int) ref : classType {
     return this.classArray[i];
   }
 
 // Define an implicit iterator for the class
 // to yield values from the array to a loop
-// i.e. for i in objVar do ...
+// i.e. ``for i in objVar do ...``
   iter these() ref : classType {
     for i in this.classDomain do
       yield this[i];
   }
 } // end GenericClass
 
+// Allocate an owned instance of our class
+var realList = new owned GenericClass(real, 10);
+
 // We can assign to the member array of the object using the bracket
 // notation that we defined.
-var realList = new GenericClass(real, 10);
 for i in realList.classDomain do realList[i] = i + 1.0;
 
 // We can iterate over the values in our list with the iterator
@@ -823,23 +880,25 @@ for i in realList.classDomain do realList[i] = i + 1.0;
 for value in realList do write(value, ", ");
 writeln();
 
-// Make a copy of realList using the copy constructor.
-var copyList = new GenericClass(realList);
+// Make a copy of realList using the copy initializer.
+var copyList = new owned GenericClass(realList);
 for value in copyList do write(value, ", ");
 writeln();
 
-// Make a copy of realList and change the type, also using the copy constructor.
-var copyNewTypeList = new GenericClass(realList, int);
+// Make a copy of realList and change the type, also using the copy initializer.
+var copyNewTypeList = new owned GenericClass(realList, int);
 for value in copyNewTypeList do write(value, ", ");
 writeln();
 
 
-// Modules
+/*
+Modules
+*/
 
 // Modules are Chapel's way of managing name spaces.
 // The files containing these modules do not need to be named after the modules
 // (as in Java), but files implicitly name modules.
-// For example, this file implicitly names the learnChapelInYMinutes module
+// For example, this file implicitly names the ``learnChapelInYMinutes`` module
 
 module OurModule {
 
@@ -870,21 +929,23 @@ module OurModule {
   }
 } // end OurModule
 
-// Using OurModule also uses all the modules it uses.
-// Since OurModule uses Time, we also use Time.
+// Using ``OurModule`` also uses all the modules it uses.
+// Since ``OurModule`` uses ``Time``, we also use ``Time``.
 use OurModule;
 
-// At this point we have not used ChildModule or SiblingModule so
-// their symbols (i.e. foo) are not available to us. However, the module
-// names are available, and we can explicitly call foo() through them.
+// At this point we have not used ``ChildModule`` or ``SiblingModule`` so
+// their symbols (i.e. ``foo``) are not available to us. However, the module
+// names are available, and we can explicitly call ``foo()`` through them.
 SiblingModule.foo();
 OurModule.ChildModule.foo();
 
-// Now we use ChildModule, enabling unqualified calls.
+// Now we use ``ChildModule``, enabling unqualified calls.
 use ChildModule;
 foo();
 
-// Parallelism
+/*
+Parallelism
+*/
 
 // In other languages, parallelism is typically done with
 // complicated libraries and strange class structure hierarchies.
@@ -894,9 +955,9 @@ foo();
 // executed.
 proc main() {
 
-// A begin statement will spin the body of that statement off
+// A ``begin`` statement will spin the body of that statement off
 // into one new task.
-// A sync statement will ensure that the progress of the main
+// A ``sync`` statement will ensure that the progress of the main
 // task will not progress until the children have synced back up.
 
   sync {
@@ -913,7 +974,7 @@ proc main() {
     writeln("fibonacci(",n,") = ", fibonacci(n));
   }
 
-// A cobegin statement will spin each statement of the body into one new
+// A ``cobegin`` statement will spin each statement of the body into one new
 // task. Notice here that the prints from each statement may happen in any
 // order.
   cobegin {
@@ -929,17 +990,17 @@ proc main() {
     }
   }
 
-// A coforall loop will create a new task for EACH iteration.
+// A ``coforall`` loop will create a new task for EACH iteration.
 // Again we see that prints happen in any order.
-// NOTE: coforall should be used only for creating tasks!
+// NOTE: ``coforall`` should be used only for creating tasks!
 // Using it to iterating over a structure is very a bad idea!
   var num_tasks = 10; // Number of tasks we want
-  coforall taskID in 1..#num_tasks {
+  coforall taskID in 1..num_tasks {
     writeln("Hello from task# ", taskID);
   }
 
-// forall loops are another parallel loop, but only create a smaller number
-// of tasks, specifically --dataParTasksPerLocale= number of tasks.
+// ``forall`` loops are another parallel loop, but only create a smaller number
+// of tasks, specifically ``--dataParTasksPerLocale=`` number of tasks.
   forall i in 1..100 {
     write(i, ", ");
   }
@@ -951,10 +1012,10 @@ proc main() {
 // (1..3, 4..6, or 7..9) doing that chunk serially, but each task happens
 // in parallel. Your results may depend on your machine and configuration
 
-// For both the forall and coforall loops, the execution of the
+// For both the ``forall`` and ``coforall`` loops, the execution of the
 // parent task will not continue until all the children sync up.
 
-// forall loops are particularly useful for parallel iteration over arrays.
+// ``forall`` loops are particularly useful for parallel iteration over arrays.
 // Lets run an experiment to see how much faster a parallel loop is
   use Time; // Import the Time module to use Timer objects
   var timer: Timer;
@@ -982,14 +1043,14 @@ proc main() {
 // the parallel loop went faster than the serial loop.
 
 // The bracket style loop-expression described
-// much earlier implicitly uses a forall loop.
+// much earlier implicitly uses a ``forall`` loop.
   [val in myBigArray] val = 1 / val; // Parallel operation
 
 // Atomic variables, common to many languages, are ones whose operations
 // occur uninterrupted. Multiple threads can therefore modify atomic
 // variables and can know that their values are safe.
-// Chapel atomic variables can be of type bool, int,
-// uint, and real.
+// Chapel atomic variables can be of type ``bool``, ``int``,
+// ``uint``, and ``real``.
   var uranium: atomic int;
   uranium.write(238);      // atomically write a variable
   writeln(uranium.read()); // atomically read a variable
@@ -1003,7 +1064,7 @@ proc main() {
   writeln("uranium was ", was, " but is now ", replaceWith);
 
   var isEqualTo = 235;
-  if uranium.compareExchange(isEqualTo, replaceWith) {
+  if uranium.compareAndSwap(isEqualTo, replaceWith) {
     writeln("uranium was equal to ", isEqualTo,
              " so replaced value with ", replaceWith);
   } else {
@@ -1025,7 +1086,7 @@ proc main() {
     }
   }
 
-// sync variables have two states: empty and full.
+// ``sync`` variables have two states: empty and full.
 // If you read an empty variable or write a full variable, you are waited
 // until the variable is full or empty again.
   var someSyncVar$: sync int; // varName$ is a convention not a law.
@@ -1043,9 +1104,8 @@ proc main() {
     }
   }
 
-// single vars can only be written once. A read on an unwritten single
-// results in a wait, but when the variable has a value it can be read
-// indefinitely.
+// ``single`` vars can only be written once. A read on an unwritten ``single``
+// results in a wait, but when the variable has a value it can be read indefinitely.
   var someSingleVar$: single int; // varName$ is a convention not a law.
   sync {
     begin { // Reader task
@@ -1063,7 +1123,7 @@ proc main() {
     }
   }
 
-// Here's an example using atomics and a sync variable to create a
+// Here's an example using atomics and a ``sync`` variable to create a
 // count-down mutex (also known as a multiplexer).
   var count: atomic int; // our counter
   var lock$: sync bool;   // the mutex lock
@@ -1074,7 +1134,7 @@ proc main() {
   // (full:unlocked / empty:locked)
   // Also, writeXF() fills (F) the sync var regardless of its state (X)
 
-  coforall task in 1..#5 { // Generate tasks
+  coforall task in 1..5 { // Generate tasks
     // Create a barrier
     do {
       lock$;                 // Read lock$ (wait)
@@ -1091,7 +1151,7 @@ proc main() {
     lock$.writeXF(true); // Set lock$ to full (signal)
   }
 
-// We can define the operations + * & | ^ && || min max minloc maxloc
+// We can define the operations ``+ * & | ^ && || min max minloc maxloc``
 // over an entire array using scans and reductions.
 // Reductions apply the operation over the entire array and
 // result in a scalar value.
@@ -1099,7 +1159,7 @@ proc main() {
   var sumOfValues = + reduce listOfValues;
   var maxValue = max reduce listOfValues; // 'max' give just max value
 
-// maxloc gives max value and index of the max value.
+// ``maxloc`` gives max value and index of the max value.
 // Note: We have to zip the array and domain together with the zip iterator.
   var (theMaxValue, idxOfMax) = maxloc reduce zip(listOfValues,
                                                   listOfValues.domain);
@@ -1108,7 +1168,7 @@ proc main() {
 
 // Scans apply the operation incrementally and return an array with the
 // values of the operation at that index as it progressed through the
-// array from array.domain.low to array.domain.high.
+// array from ``array.domain.low`` to ``array.domain.high``.
   var runningSumOfValues = + scan listOfValues;
   var maxScan = max scan listOfValues;
   writeln(runningSumOfValues);
@@ -1116,8 +1176,7 @@ proc main() {
 } // end main()
 ```
 
-Who is this tutorial for?
--------------------------
+## Who is this tutorial for?
 
 This tutorial is for people who want to learn the ropes of chapel without
 having to hear about what fiber mixture the ropes are, or how they were
@@ -1132,28 +1191,27 @@ to see if more topics have been added or more tutorials created.
 
 ### What this tutorial is lacking:
 
- * Exposition of the [standard modules](https://chapel-lang.org/docs/latest/modules/standard.html)
- * Multiple Locales (distributed memory system)
- * Records
- * Parallel iterators
+* Exposition of the [standard modules](https://chapel-lang.org/docs/latest/modules/standard.html)
+* Multiple Locales (distributed memory system)
+* Records
+* Parallel iterators
 
-Your input, questions, and discoveries are important to the developers!
------------------------------------------------------------------------
+## Your input, questions, and discoveries are important to the developers!
 
 The Chapel language is still in active development, so there are
 occasional hiccups with performance and language features. The more information
 you give the Chapel development team about issues you encounter or features you
 would like to see, the better the language becomes.
 There are several ways to interact with the developers:
-+ [Gitter chat](https://gitter.im/chapel-lang/chapel)
-+ [sourceforge email lists](https://sourceforge.net/p/chapel/mailman)
+
+* [Gitter chat](https://gitter.im/chapel-lang/chapel)
+* [sourceforge email lists](https://sourceforge.net/p/chapel/mailman)
 
 If you're really interested in the development of the compiler or contributing
 to the project, [check out the master GitHub repository](https://github.com/chapel-lang/chapel).
 It is under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
 
-Installing the Compiler
------------------------
+## Installing the Compiler
 
 [The Official Chapel documentation details how to download and compile the Chapel compiler.](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html)
 
@@ -1161,23 +1219,22 @@ Chapel can be built and installed on your average 'nix machine (and cygwin).
 [Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
 and it's as easy as
 
- 1. `tar -xvf chapel-<VERSION>.tar.gz`
- 2. `cd chapel-<VERSION>`
- 3. `source util/setchplenv.bash # or .sh or .csh or .fish`
- 4. `make`
- 5. `make check # optional`
+1. `tar -xvf chapel-<VERSION>.tar.gz`
+2. `cd chapel-<VERSION>`
+3. `source util/setchplenv.bash # or .sh or .csh or .fish`
+4. `make`
+5. `make check # optional`
 
 You will need to `source util/setchplenv.EXT` from within the Chapel directory
 (`$CHPL_HOME`) every time your terminal starts so it's suggested that you drop
 that command in a script that will get executed on startup (like .bashrc).
 
-Chapel is easily installed with Brew for macOS
+Chapel is easily installed on macOS with Homebrew
 
- 1. `brew update`
- 2. `brew install chapel`
+1. `brew update`
+2. `brew install chapel`
 
-Compiling Code
---------------
+## Compiling Code
 
 Builds like other compilers:
 
@@ -1185,10 +1242,10 @@ Builds like other compilers:
 
 Notable arguments:
 
- * `--fast`: enables a number of optimizations and disables array bounds
-   checks. Should only enable when application is stable.
- * `--set <Symbol Name>=<Value>`: set config param `<Symbol Name>` to `<Value>`
-   at compile-time.
- * `--main-module <Module Name>`: use the main() procedure found in the module
-   `<Module Name>` as the executable's main.
- * `--module-dir <Directory>`: includes `<Directory>` in the module search path.
+* `--fast`: enables a number of optimizations and disables array bounds
+  checks. Should only enable when application is stable.
+* `--set <Symbol Name>=<Value>`: set config param `<Symbol Name>` to `<Value>`
+  at compile-time.
+* `--main-module <Module Name>`: use the main() procedure found in the module
+  `<Module Name>` as the executable's main.
+* `--module-dir <Directory>`: includes `<Directory>` in the module search path.

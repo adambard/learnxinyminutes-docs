@@ -2,17 +2,18 @@
 language: GDScript
 contributors:
     - ["Wichamir", "https://github.com/Wichamir/"]
+    - ["zacryol", "https://github.com/zacryol"]
 filename: learngdscript.gd
 ---
 
-GDScript is a dynamically typed scripting language made specifically for
-free and open source game engine Godot. GDScript's syntax is similar to
-Python's. Its main advantages are ease of use and tight integration with
-the engine. It's a perfect fit for game development.
+GDScript is a dynamically and statically typed scripting language
+for the free and open source game engine Godot. Its syntax is vaguely
+similar to Python's. Its main advantages are ease of use and tight
+integration with the engine. It's a perfect fit for game development.
 
 ## Basics
 
-```nim
+```gdscript
 # Single-line comments are written using hash symbol.
 """
   Multi-line
@@ -20,8 +21,15 @@ the engine. It's a perfect fit for game development.
   are
   written
   using
-  docstrings.
+  triple
+  quoted
+  strings
 """
+
+# Doc Comments can add a description to classes and fields
+# which can be viewed in the in-engine docs.
+
+## This class is a demonstration of GDScript
 
 # Script file is a class in itself and you can optionally define a name for it.
 class_name MyClass
@@ -41,8 +49,13 @@ var d = {
   "key" : "value",
   42 : true
 } # Dictionary holds key-value pairs.
-var p_arr = PoolStringArray(["Hi", "there", "!"]) # Pool arrays can
-                                                  # only hold a certain type.
+var p_arr = PackedStringArray(["Hi", "there", "!"]) # Packed Arrays can
+                                                    # only hold a certain type.
+
+# Doc comments can apply to properties
+
+## How many times this object has jumped
+var jump_count = 0
 
 # Built-in vector types:
 var v2 = Vector2(1, 2)
@@ -57,10 +70,15 @@ enum { ZERO, ONE , TWO, THREE }
 enum NamedEnum { ONE = 1, TWO, THREE }
 
 # Exported variables are visible in the inspector.
-export(int) var age
-export(float) var height
-export var person_name = "Bob" # Export type hints are unnecessary
-                        # if you set a default value.
+#
+# Either a type hint (explained later) or a default value are needed in order
+# for the editor to know what options to give
+@export var age: int
+@export var height: float
+@export var person_name = "Bob"
+# But both is also acceptable
+@export var favorite_color: String = "Green"
+@export var favorite_food := "Pizza"
 
 # Functions
 func foo():
@@ -69,12 +87,23 @@ func foo():
 func add(first, second):
   return first + second
 
+# Doc Comments on functions
+
+## Increases the Jump Count
+func jump():
+  jump_count += 1
+
 # Printing values
 func printing():
   print("GDScript ", "is ", " awesome.")
   prints("These", "words", "are", "divided", "by", "spaces.")
   printt("These", "words", "are", "divided", "by", "tabs.")
   printraw("This gets printed to system console.")
+
+  # Lambdas
+  var my_lambda = func(): print("hello from lambda!")
+
+  my_lambda.call()
 
 # Math
 func doing_math():
@@ -97,14 +126,14 @@ func control_flow():
   y = 2 # y was originally a float,
         # but we can change its type to int
         # using the power of dynamic typing!
-  
+
   if x < y:
     print("x is smaller than y")
   elif x > y:
     print("x is bigger than y")
   else:
     print("x and y are equal")
-  
+
   var a = true
   var b = false
   var c = false
@@ -119,7 +148,7 @@ func control_flow():
 
   for i in ["two", 3, 1.0]: # iterating over an array
     print(i)
-  
+
   while x > y:
     printt(x, y)
     y += 1
@@ -147,7 +176,7 @@ func control_flow():
       continue
     _:
       print("Underscore is a default case.")
-  
+
   # ternary operator (one line if-else statement)
   prints("x is", "positive" if x >= 0 else "negative")
 
@@ -191,7 +220,7 @@ func _physics_process(delta):
 # like here:
 func get_children():
   # Do some additional things here.
-  var r = .get_children() # call parent's implementation
+  var r = super() # call parent's implementation
   return r
 
 # Inner class
@@ -209,7 +238,7 @@ func use_inner_class():
 
 ## Accessing other nodes in the scene tree
 
-```nim
+```gdscript
 extends Node2D
 
 var sprite # This variable will hold the reference.
@@ -220,19 +249,19 @@ func _ready() -> void:
   # Create NodePath by passing String to its constructor:
   var path1 = NodePath("path/to/something")
   # Or by using NodePath literal:
-  var path2 = @"path/to/something"
+  var path2 = ^"path/to/something"
   # NodePath examples:
-  var path3 = @"Sprite" # relative path, immediate child of the current node
-  var path4 = @"Timers/Firerate" # relative path, child of the child
-  var path5 = @".." # current node's parent
-  var path6 = @"../Enemy" # current node's sibling
-  var path7 = @"/root" # absolute path, equivalent to get_tree().get_root()
-  var path8 = @"/root/Main/Player/Sprite" # absolute path to Player's Sprite
-  var path9 = @"Timers/Firerate:wait_time" # accessing properties
-  var path10 = @"Player:position:x" # accessing subproperties
+  var path3 = ^"Sprite" # relative path, immediate child of the current node
+  var path4 = ^"Timers/Firerate" # relative path, child of the child
+  var path5 = ^".." # current node's parent
+  var path6 = ^"../Enemy" # current node's sibling
+  var path7 = ^"/root" # absolute path, equivalent to get_tree().get_root()
+  var path8 = ^"/root/Main/Player/Sprite" # absolute path to Player's Sprite
+  var path9 = ^"Timers/Firerate:wait_time" # accessing properties
+  var path10 = ^"Player:position:x" # accessing subproperties
 
   # Finally, to get a reference use one of these:
-  sprite = get_node(@"Sprite") as Sprite # always cast to the type you expect
+  sprite = get_node(^"Sprite") as Sprite # always cast to the type you expect
   sprite = get_node("Sprite") as Sprite # here String gets
                                         # implicitly casted to NodePath
   sprite = get_node(path3) as Sprite
@@ -243,14 +272,17 @@ func _process(delta):
   # Now we can reuse the reference in other places.
   prints("Sprite has global_position of", sprite.global_position)
 
-# Use onready keyword to assign a value to
+# Use @onready annotation to assign a value to
 # a variable just before _ready executes.
 # This is a commonly used syntax sugar.
-onready var tween = $Tween as Tween
+@onready var other_sprite = $Sprite as Sprite
 
 # You can export NodePath, so you can assign it within the inspector.
-export var nodepath = @""
-onready var reference = get_node(nodepath) as Node
+@export var nodepath = ^""
+@onready var reference = get_node(nodepath) as Node
+
+# Or export Node directly
+@export var other_reference: Node
 ```
 
 ## Signals
@@ -258,49 +290,64 @@ onready var reference = get_node(nodepath) as Node
 Signal system is Godot's implementation of the observer programming
 pattern. Here's an example:
 
-```nim
+```gdscript
 class_name Player extends Node2D
 
 var hp = 10
 
+# Doc comments can go on signals too
+
+## Emitted when the player dies
 signal died() # define signal
 signal hurt(hp_old, hp_new) # signals can take arguments
 
 func apply_damage(dmg):
   var hp_old = hp
   hp -= dmg
-  emit_signal("hurt", hp_old, hp) # emit signal and pass arguments
+  hurt.emit(hp_old, hp) # emit signal and pass arguments
   if hp <= 0:
-    emit_signal("died")
+    died.emit()
 
 func _ready():
   # connect signal "died" to function "_on_death" defined in self
-  self.connect("died", self, "_on_death")
+  died.connect(_on_death)
+  # Alternate way
+  # needed if the target object is not self
+  # died.connect(Callable(self, &"_on_death"))
 
 func _on_death():
-  self.queue_free() # destroy Player on death
+  queue_free() # destroy Player on death
 ```
 
 ## Type hints
 
-GDScript can optionally use static typing.
+GDScript can optionally use static typing, for both code clarity and
+performance benefits.
 
-```nim
+```gdscript
 extends Node
 
 var x: int # define typed variable
 var y: float = 4.2
 var z := 1.0 # infer type based on default value using := operator
 
-onready var node_ref_typed := $Child as Node
+var a: Array[int] = [1, 2, 3] # Array can also have its type content specified
 
-export var speed := 50.0
+enum NamedEnum { ONE = 1, TWO, THREE }
+var n: NamedEnum = NamedEnum.ONE # Enums can be used as types as well
+
+@onready var node_ref_typed := $Child as Node
+
+@export var speed := 50.0
 
 const CONSTANT := "Typed constant."
+
+signal example(arg: int)
 
 func _ready() -> void:
   # function returns nothing
   x = "string" # ERROR! Type can't be changed!
+  a.append("q") # ERROR! Array[int] can't hold strings!
   return
 
 func join(arg1: String, arg2: String) -> String:
@@ -310,8 +357,6 @@ func join(arg1: String, arg2: String) -> String:
 func get_child_at(index: int) -> Node:
   # function takes an int and returns a Node
   return get_children()[index]
-
-signal example(arg: int) # ERROR! Signals can't take typed arguments!
 ```
 
 ## Further Reading

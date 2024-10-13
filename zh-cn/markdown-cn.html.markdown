@@ -6,6 +6,7 @@ translators:
     - ["Fangzhou Chen","https://github.com/FZSS"]
     - ["Luffy Zhong", "https://github.com/mengzhongshi"]
     - ["Yuchen Liu", "https://github.com/smallg0at"]
+    - ["Coldle", "https://github.com/yocoldle"]
 filename: learnmarkdown-cn.md
 lang: zh-cn
 ---
@@ -15,18 +16,8 @@ Markdown 由 John Gruber 于 2004年创立. 它旨在成为一门容易读写的
 在不同的解析器中，Markdown 的实现方法有所不同。
 此教程会指出哪些特征是通用，哪一些只对某一解析器有效。
 
-- [HTML标签](#HTML标签)
-- [标题](#标题)
-- [文本样式](#文本样式)
-- [段落](#段落)
-- [列表](#列表)
-- [代码块](#代码块)
-- [水平线分隔](#水平线分隔)
-- [链接](#链接)
-- [图片](#图片)
-- [杂项](#杂项)
-
 ## HTML标签
+
 Markdown 是 HTML 的父集，所以任何 HTML 文件都是有效的 Markdown。
 
 ```md
@@ -49,13 +40,13 @@ Markdown 是 HTML 的父集，所以任何 HTML 文件都是有效的 Markdown�
 ```
 
 实际效果（最终显示时会因设置而看起来不同）：
+
 # 这是一个
 ## 这也是一个
 ### 这还是一个
 #### 这依旧是一个
 ##### 这真的是一个
 ###### 这...是一个
-
 
 对于 `<h1>` 和 `<h2>` 元素，Markdown 额外提供了两种添加方式。
 
@@ -88,6 +79,7 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 ```md
 ~~此文本为删除线效果。~~
 ```
+
 ## 段落
 
 段落由一个句子或是多个中间没有空行的句子组成，每个段落由一个或是多个空行分隔开来。
@@ -129,6 +121,7 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 ```
 
 ## 列表
+
 - 无序列表可由星号，加号或者减号来创建
 
 ```md
@@ -142,12 +135,11 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 + 项目
 + 另一个项目
 
-或者 
+或者
 
 - 项目
 - 项目
 - 最后一个项目
-
 ```
 
 有序序列可由数字加上点 `.` 来实现
@@ -166,6 +158,7 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 1. 项目二
 1. 项目三
 ```
+
 (此段与上面效果一模一样)
 
 你也可以使用子列表
@@ -188,6 +181,7 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 下面这个选择框将会是选中状态
 - [x] 这个任务已经完成
 ```
+
 - [ ] 你看完了这个任务（注：此选择框是无法直接更改的，即禁用状态。）
 
 ## 代码块
@@ -197,14 +191,14 @@ GitHub 也支持 Markdown，在 GitHub 的 Markdown 解析器中，我们可以�
 
 ```md
     This is code
-	So is this
+    So is this
 ```
 
 在你的代码中，你仍然使用tab（或者四个空格）可以进行缩进操作
 
 ```md
     my_array.each do |item|
-        puts item
+      puts item
     end
 ```
 
@@ -216,14 +210,15 @@ John 甚至不知道 `go_to()` 函数是干嘛的!
 
 在GitHub的 Markdown（GitHub Flavored Markdown）解析器中，你可以使用特殊的语法表示代码块
 
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Hello world!"
 end
-&#x60;&#x60;&#x60;</code></pre>
+```
+````
 
-以上代码不需要缩进，而且 GitHub 会根据\`\`\`后指定的语言来进行语法高亮显示
+以上代码不需要缩进，而且 GitHub 会根据<code>```</code>后指定的语言来进行语法高亮显示
 
 ## 水平线分隔
 
@@ -232,11 +227,12 @@ end
 ```md
 ***
 ---
-- - - 
+- - -
 ****************
 
 下面这个就是示例
 ```
+
 ---
 
 ## 链接
@@ -246,7 +242,6 @@ Markdown 最棒的地方就是便捷的书写链接。把链接文字放在中�
 
 ```md
 [点我点我!](http://test.com/)
-
 ```
 
 你也可以在小括号内使用引号，为链接加上一个标题（title）
@@ -254,7 +249,8 @@ Markdown 最棒的地方就是便捷的书写链接。把链接文字放在中�
 ```md
 [点我点我!](http://test.com/ "连接到Test.com")
 ```
-相对路径也可以有 
+
+相对路径也可以有
 
 ```md
 [去 music](/music/).
@@ -278,9 +274,25 @@ Markdown同样支持引用形式的链接
 [This]: http://thisisalink.com/
 ```
 
-但这并不常用
+但这种用法并不常用。
+
+### 目录
+
+部分 Markdown 方言样式通过列表、链接以及标题的组合来创建文章的目录。
+在这种情况下，可使用填充了 hash(`#`) 的小写标题名称作为链接 id。
+如果标题由多个单词组成的，可通过连字符（`-`）连接在一起。（原标题中的部分特殊字符可能被省略）
+
+```md
+- [Heading](#heading)
+- [Another heading](#another-heading)
+- [Chapter](#chapter)
+  - [Subchapter <h3 />](#subchapter-h3-)
+```
+
+注意，这一特性未必在所有的 Markdown 解析器中以相同的方式实现。
 
 ## 图片
+
 图片与链接相似，只需在前添加一个感叹号
 
 ```md
@@ -314,6 +326,7 @@ Markdown同样支持引用形式的链接
 我希望 *将这段文字置于星号之间* 但是我不希望它被
 斜体化, 这么做: \*这段置文字于星号之间\*。
 ```
+
 对比一下：*将这段文字置于星号之间* 和 \*将这段文字置于星号之间\*
 
 ### 键盘上的功能键
@@ -324,6 +337,7 @@ Markdown同样支持引用形式的链接
 你的电脑死机了？试试
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 ```
+
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 
 （译注：可能由于网站本身样式问题，效果不明显）
@@ -345,6 +359,7 @@ Markdown同样支持引用形式的链接
 | 我是左对齐    | 居个中    | 右对齐       |
 | 注意          | 冒       | 号           |
 ```
+
 好吧，强行对齐字符是很难的。但是，至少比下面这种写法好一点——
 
 ```md
@@ -352,7 +367,17 @@ Markdown同样支持引用形式的链接
 :-- | :-: | --:
 这真的太丑了 | 药不能 | 停！！！！
 ```
-真的是*看着令人头晕*
 
+## Markdownlint（Markdown 的静态分析工具）
+
+`Markdownlint` 被创建用于简化 Markdown 的工作流程并统一编码样式。
+其作为[独立工具](https://github.com/markdownlint/markdownlint)以及某些 IDE 的插件使用，可确保 Markdown 文档的有效性和可读性。
+
+---
 
 更多信息, 请于[此处](http://daringfireball.net/projects/Markdown/syntax)参见 John Gruber 关于语法的官方帖子，及于[此处](https://github.com/adam-p/Markdown-here/wiki/Markdown-Cheatsheet) 参见 Adam Pritchard 的摘要笔记。
+
+如果您想了解更多主流 Markdown 方言样式的特性，请参阅：
+
+- [GitHub Flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitLab Flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)

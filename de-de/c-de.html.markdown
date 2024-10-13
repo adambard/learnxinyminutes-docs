@@ -8,7 +8,7 @@ lang: de-de
 
 Ach, C. Immer noch **die** Sprache für modernes High-Performance Computing.
 
-C ist wahrscheinlich die Programmiersprache mit dem niedrigsten Abstraktionsnvieau,
+C ist wahrscheinlich die Programmiersprache mit dem niedrigsten Abstraktionsniveau,
 welche die meisten Programmierer je brauchen werden.
 Die Geschwindigkeit von C ist enorm, allerdings muss man sich stets der
 manuellen Speicherverwaltung bewusst sein.
@@ -22,7 +22,7 @@ manuellen Speicherverwaltung bewusst sein.
 > Standards:
 > `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
 >
-> Da gewisse Optionen (inbesondere der C-Standard) sehr stark vom Projekt
+> Da gewisse Optionen (insbesondere der C-Standard) sehr stark vom Projekt
 > abhängen, lohnt es sich, wenn die unterschiedlichen Optionen genauer
 > angeschaut werden. Eine Übersicht über die Compiler-Optionen findet man unter
 > [diesem](https://stackoverflow.com/questions/3375697/useful-gcc-flags-for-c) Stackoverflow-Beitrag.
@@ -64,12 +64,12 @@ enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
 // Funktionssignaturen werden entweder vorher in einer .h-Datei deklariert oder
 // am Anfang der .c-Datei.
 void function_1();
-int funkcion_2(void);
+int function_2(void);
 
 // Es muss ein Funktionsprototyp deklariert werden vor der `main()` Funktion,
 // wenn die Funktion nach der `main()` Funktion gebraucht wird.
 int add_two_ints(int x1, int x2); // Funktionsprototyp
-// Auch wenn der Ausdrck `int add_two_ints(int, int)` auch valid wäre, 
+// Auch wenn der Ausdruck `int add_two_ints(int, int)` auch valid wäre, 
 // ist es empfohlen, dass man die Namen der Argumente hinschreibt für eine
 // einfachere Analyse.
 
@@ -227,7 +227,7 @@ int main (int argc, char** argv) {
     // Wenn das Argument des `sizeof`-Operator ein Ausdruck ist, dann wird das
     // Argument nicht ausgewertet (außer Arrays mit variabler Länge)
     // Der Wert, der in diesem Fall zurückgegeben wird, ist eine Konstante zur 
-    // Kompillierzeit.
+    // Kompilierzeit.
 
     int a = 1;
     //size_t ist ein vorzeichenloser Integer Typ mit mindestens 2 Byte um die 
@@ -283,7 +283,7 @@ int main (int argc, char** argv) {
     // repräsentiert. Wir müssen das Null-Byte nicht angeben in String-Literalen;
     // der Compiler fügt es am Ende des Array automatisch hinzu.
     char a_string[20] = "Das ist ein String";
-    printf("%s\n", a_string); // %s formattiert einen String
+    printf("%s\n", a_string); // %s formatiert einen String
 
     printf("%d\n", a_string[18]); // => 0
     // Hier ist das Byte #19 0 (wie auch Byte #20)
@@ -394,7 +394,7 @@ int main (int argc, char** argv) {
     // aus der Header-Datei `<limits.h>` verwendet werden.
 
     // Integer-Typen können zu Gleitkommazahlen und umgekehrt umgewandelt werden.
-    printf("%f\n", (double) 100); // %f formattiert immer zu einem `double`...
+    printf("%f\n", (double) 100); // %f formatiert immer zu einem `double`...
     printf("%f\n", (flaot) 100); // ... auch mit einem `float`
     printf("%d\n", (char)100.0); 
 
@@ -414,7 +414,7 @@ int main (int argc, char** argv) {
     int x = 0; 
     printf("%p\n", (void *)&x); // verwende & um die Adresse der Variable
     // zu erhalten
-    // %p  formattiert einen Objektpointer des Typen void*)
+    // %p  formatiert einen Objektpointer des Typen void*)
     // => Gibt eine Adresse im Speicher aus
 
     // Pointer starten mit einem * zu Beginn der Deklaration.
@@ -437,7 +437,7 @@ int main (int argc, char** argv) {
     printf("%d\n", *px); // => 1
     printf("%d\n", x); // => 1
 
-    // Arrays sind eine gute Möglichekit, einen zusammenhängenden Block von
+    // Arrays sind eine gute Möglichkeit, einen zusammenhängenden Block von
     // Speicher zu allozieren.
     int x_array[20]; // deklariert einen Array der Größe 20 (Größe kann
     // nicht geändert werden.)
@@ -446,7 +446,7 @@ int main (int argc, char** argv) {
         x_array[xx]  20 -xx;
     } // Initialisiere x_array zu 20, 19, 18, ... 2, 1
 
-    // Deklariere ein Pointer des Typs int und initalisiere ihn, um auf `x_array`
+    // Deklariere ein Pointer des Typs int und initialisiere ihn, um auf `x_array`
     // zu zeigen.
     int *x_ptr = x_array;
     // x_ptr zeigt jetzt auf den ersten Wert innerhalb des Arrays (int 20)
@@ -457,7 +457,7 @@ int main (int argc, char** argv) {
     // Ausnahme: Wenn das Array das Argument des Operators `&` ist.
     int arr[10];
     int (*ptr_to_arr)[10] = &arr; //`&arr` ist nicht vom Typ `int *`!
-    // Es ist vom Typem "Pointer auf Array" (aus zehn `int`s)
+    // Es ist vom Typen "Pointer auf Array" (aus zehn `int`s)
     // oder wenn das Array ein Stringliteral ist, welches gebraucht wird um ein
     // `char`-Array zu initialisieren.
     char other_arr[] = "foobarbazquirk";
@@ -631,7 +631,7 @@ void test_function() {
 // Variablen mit 0 initialisiert, wenn sie nicht mit einem anderen Startwert 
 // initialisiert werden.
 // Es ist auch möglich, Funktionen als statisch zu deklarieren, damit diese
-// `private` sind. Privat heißt, dass sie nur in diesem Kontekt sichtbar sind.
+// `private` sind. Privat heißt, dass sie nur in diesem Kontext sichtbar sind.
 
 
 ////////////////////////////////////////////////
@@ -707,12 +707,12 @@ void str_reverse_through_pointer(char *str_in) {
     // reduziert werden (ähnlich wie Arrays)
     (*f)(str_in); // Die Funktion einfach mit dem Pointer aufrufen
     // f(str_in); // Dies ist eine weitere gültige Alternative um eine Funktion
-                  // auzurufen.
+                  // aufzurufen.
 }
 
 /*
 Solange die Signaturen der Funktionen übereinstimmen, kann man sämtliche Funktionen
-demselben Pointer zuweisen. Funktionspointer sind auf Grund der Einfacheit und
+demselben Pointer zuweisen. Funktionspointer sind auf Grund der Einfachheit und
 Leserlichkeit normalerweise wie folgt `typedef`d 
 */
 typedef void (*my_fnp_type)(char *);
@@ -722,7 +722,7 @@ typedef void (*my_fnp_type)(char *);
 
 // Spezialzeichen
 // Im folgenden sin die englischen Begriffe jeweils in Klammern geschrieben,
-// da diese Begriffe auch im deutschten Sprachgebrauch verwendet werden.
+// da diese Begriffe auch im deutschen Sprachgebrauch verwendet werden.
 '\a'; // Alarmzeichen (alert (bell) character)
 '\n'; // Zeichen für neue Linie (newline character)
 '\t'; // Tab (tab character (left justifies text))
@@ -804,7 +804,7 @@ befindet wie die C-Quelldatei.
 #ifndef EXAMPLE_H /* Wenn EXAMPLE_H noch nicht definiert wurde */
 #define EXAMPLE_H /* definiere das Makro EXAMPLE_H */
 
-// Es könenn weitere Header innerhalb eines Headers eingebunden werden, was dazu
+// Es können weitere Header innerhalb eines Headers eingebunden werden, was dazu
 // führt, dass diese bereits in anderen Dateien eingebunden wurden. So kann eine
 // Header-Datei in mehreren Dateien eingebunden werden. zum Beispiel:
 #include <string.h>
@@ -832,7 +832,7 @@ typedef struct Node {
 // Dies kann auch mit Aufzählungen gemacht werden.
 enum traffic_light_state {GREEN, YELLOW, RED};
 
-// Funktionsprototypen könenn auch in Header-Dateien definiert werden, um die
+// Funktionsprototypen können auch in Header-Dateien definiert werden, um die
 // Funktion in unterschiedlichen Dateien zu verwenden, aber dies wird als schlechte
 // Praxis angesehen. Definitionen sollten in einer C-Datei erstellt werden.
 Node create_linked_list(int *value, int length);
@@ -844,6 +844,7 @@ Node create_linked_list(int *value, int length);
 
 #endif /* Ende der Präprozessordirektive */
 ```
+
 ## Weiterführende Literatur
 
 Das Beste wird es sein, wenn man sich ein Exemplar des Buches

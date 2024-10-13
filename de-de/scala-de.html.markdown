@@ -307,7 +307,7 @@ do {
 
 
 // Endrekursionen sind idiomatisch um sich wiederholende
-// Aufgaben in Scala zu lösen. Rekursive Funtionen benötigen explizit einen
+// Aufgaben in Scala zu lösen. Rekursive Funktionen benötigen explizit einen
 // Rückgabe-Typ, der Compiler kann ihn nicht erraten.
 // Der Rückgabe-Typ in diesem Beispiel ist Unit:
 
@@ -457,7 +457,7 @@ class Dackel extends Hund {
 }
 
 // Object
-// Wird ein Objekt ohne das Schlüsselwort "new" instanziert, wird das sog.
+// Wird ein Objekt ohne das Schlüsselwort "new" instanziiert, wird das sog.
 // "companion object" aufgerufen. Mit dem "object" Schlüsselwort wird so
 // ein Objekt (Typ UND Singleton) erstellt. Damit kann man dann eine Klasse
 // verwenden, ohne ein Objekt instanziieren zu müssen.
@@ -634,10 +634,10 @@ val patternFunc: Person => String = {
 // 7. "Higher-order"-Funktionen
 /////////////////////////////////////////////////
 
-// Scala erlaubt, dass Methoden und Funktionen wiederum Funtionen und Methoden
+// Scala erlaubt, dass Methoden und Funktionen wiederum Funktionen und Methoden
 // als Aufrufparameter oder Rückgabewert verwenden. Diese Methoden heißen
 // higher-order functions.
-// Es gibt zahlreiche higher-order-Funtionen nicht nur für Listen, auch für
+// Es gibt zahlreiche higher-order-Funktionen nicht nur für Listen, auch für
 // die meisten anderen Collection-Typen, sowie andere Klassen in Scala.
 // Nennenswerte sind:
 // "filter", "map", "reduce", "foldLeft"/"foldRight", "exists", "forall"
@@ -796,7 +796,7 @@ import scala.collection.immutable.{List, Map}
 import scala.collection.immutable.{List => ImmutableList}
 
 
-// Importiere alle Klasses, mit Ausnahem von....
+// Importiere alle Klassen, mit Ausnahme von....
 // Hier ohne: Map and Set:
 
 import scala.collection.immutable.{Map => _, Set => _, _}
@@ -824,7 +824,6 @@ val writer = new PrintWriter("myfile.txt")
 writer.write("Schreibe Zeile" + util.Properties.lineSeparator)
 writer.write("Und noch eine Zeile" + util.Properties.lineSeparator)
 writer.close()
-
 ```
 
 ## Weiterführende Hinweise

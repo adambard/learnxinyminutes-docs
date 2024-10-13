@@ -1,6 +1,5 @@
 ---
 language: Dynamic Programming
-filename: dynamic-tr.txt
 contributors:
     - ["Akashdeep Goel", "https://github.com/akashdeepgoel"]
 translators:
@@ -18,11 +17,8 @@ Her zaman hatırla! "Geçmiş hatırlayamayanlar, aynı şeyleri tekrar yaşamay
 
 ## Bu tür sorunların çözüm yolları
 
-1. Yukarıdan aşağıya:
-Verilen problemi çözerek çözmeye başlayın. Sorunun zaten çözüldüğünü görürseniz, kaydedilen cevabı döndürmeniz yeterlidir. Çözülmemişse, çözünüz ve cevabı saklayınız. Bu genellikle düşünmek kolaydır ve çok sezgiseldir. Buna Ezberleştirme denir.
-
-2. Aşağıdan yukarıya:
-Sorunu analiz edin ve alt problemlerin çözülme sırasını görün ve önemsiz alt sorundan verilen soruna doğru başlayın. Bu süreçte, problemi çözmeden önce alt problemlerin çözülmesi gerekmektedir. Buna Dinamik Programlama denir.
+1. Yukarıdan aşağıya: Verilen problemi çözerek çözmeye başlayın. Sorunun zaten çözüldüğünü görürseniz, kaydedilen cevabı döndürmeniz yeterlidir. Çözülmemişse, çözünüz ve cevabı saklayınız. Bu genellikle düşünmek kolaydır ve çok sezgiseldir. Buna Ezberleştirme denir.
+2. Aşağıdan yukarıya: Sorunu analiz edin ve alt problemlerin çözülme sırasını görün ve önemsiz alt sorundan verilen soruna doğru başlayın. Bu süreçte, problemi çözmeden önce alt problemlerin çözülmesi gerekmektedir. Buna Dinamik Programlama denir.
 
 ## Örnek
 
@@ -41,14 +37,13 @@ for i=0 to n-1
             LS[i] = LS[j]+1
 for i=0 to n-1
     if (largest < LS[i])
-    
-```  
+```
 
 ### Bazı Ünlü Dinamik Programlama Problemleri
 
-- Floyd Warshall Algorithm - Tutorial and C Program source code: [http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code]()
-- Integer Knapsack Problem - Tutorial and C Program source code: [http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem]()
-- Longest Common Subsequence - Tutorial and C Program source code : [http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence]()
+- Floyd Warshall Algorithm - Tutorial and C Program source code: [http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code](http://www.thelearningpoint.net/computer-science/algorithms-all-to-all-shortest-paths-in-graphs---floyd-warshall-algorithm-with-c-program-source-code)
+- Integer Knapsack Problem - Tutorial and C Program source code: [http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---the-integer-knapsack-problem)
+- Longest Common Subsequence - Tutorial and C Program source code : [http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence](http://www.thelearningpoint.net/computer-science/algorithms-dynamic-programming---longest-common-subsequence)
 
 ## Online Kaynaklar
 

@@ -9,16 +9,16 @@ lang: de-de
 ---
 
 Tcl wurde kreiert von [John Ousterhout](http://wiki.tcl.tk/John Ousterout) als
-eine wiederverwendbare Script-Sprache für Chip-Design Werkzeuge die er kreiert
+eine wiederverwendbare Scriptsprache für Chip-Design Werkzeuge die er kreiert
 hat. Im Jahre 1997 wurde er mit dem [ACM Software System
 Award](http://en.wikipedia.org/wiki/ACM_Software_System_Award) für Tcl
-ausgezeichnet. Tcl kann sowohl als eingebettete Scipt-Sprache als auch als
+ausgezeichnet. Tcl kann sowohl als eingebettete Scriptsprache als auch als
 allgemeine Programmier-Sprache verwendet werden. Tcl kann auch als portable
 C-Bibliothek verwendet werden. Sogar in Fällen in denen die Script-Fähigkeiten
 nicht nötig sind. Denn Tcl stellt Daten-Strukturen wie dynamische Zeichenketten,
-Listen und Hash-Tabellen bereit. Die C-Bilbiothek stellt auch portable
+Listen und Hash-Tabellen bereit. Die C-Bibliothek stellt auch portable
 Funktionen zur Verfügung: Laden von dynamischen Bibliotheken, Zeichenketten
-formatierung und Code Konversion, Dateisystem Operationen, Netzwerk Operationen
+Formatierung und Codekonvertierung, Dateisystemoperationen, Netzwerkoperationen
 und mehr.
 
 
@@ -40,22 +40,22 @@ Verschiedenste herausragende Fähigkeiten von Tcl:
 Wenn Lisp ein Listen-Prozessor ist, dann ist TCl ein Zeichenketten-Prozessor.
 Alle Werte sind Zeichenketten. Eine Liste ist ein Zeichenketten-Format. Eine
 Prozedur-Definition ist ein Zeichenketten-Format. Um leistungsfähig zu sein,
-werden Tcl-intern diese Zeichenketten in Strukutierter-Form gepuffert. Ein
+werden Tcl-intern diese Zeichenketten in Strukturierter-Form gepuffert. Ein
 Beispiel: Der "list" Befehl arbeitet mit diesen internen gepufferten 
 Repräsentationen. Tcl kümmert sich selbständig darum die String-Repräsentationen
 zu aktualisieren, falls dies im Skript benötigt werden sollten. Das Kopieren-
-beim-Schreiben-Design von Tcl erlaubt es Skript-Authoren mit großen Daten-
-Strukturen zu arbeiten ohne zuätzlichen Speicher-Overhead. Prozeduren werden
-automatisch byte-kompiliert außer sie verwenden dynamsiche Befehle wie zum
+beim-Schreiben-Design von Tcl erlaubt es Skript-Autoren mit großen Daten-
+Strukturen zu arbeiten ohne zusätzlichen Speicher-Overhead. Prozeduren werden
+automatisch byte-kompiliert außer sie verwenden dynamische Befehle wie zum
 Beispiel "uplevel", "upvar und "trace".
 
-Es ist eine freude in Tcl zu programmieren. Hacker-Typen werden gefallen daran
+Es ist eine Freude in Tcl zu programmieren. Hacker-Typen werden gefallen daran
 finden, wenn sie Lisp, Forth oder Smalltalk interessant finden. Tcl wird auch
-Ingenieuren und Wissenshaftlern gefallen die nur den Job erledigen wollen,
+Ingenieuren und Wissenschaftlern gefallen die nur den Job erledigen wollen,
 und zwar mit Werkzeugen die sich ihrem Willen anpassen. Bei Tcl ist jegliche
-funktionalität in Befehlen ausgeführt, selbst Dinge wie Schleifen und
+Funktionalität in Befehlen ausgeführt, selbst Dinge wie Schleifen und
 Mathematische-Funktionen die bei anderen Sprachen normalerweise Teil der Syntax
-sind. Das erlaubt Tcl in den Hintergrund von Domänen spezischen Sprachen zu
+sind. Das erlaubt Tcl in den Hintergrund von Domänen spezifischen Sprachen zu
 treten die das jeweilige Projekt gerade benötigt. Die Tcl-Syntax ist sehr
 leichtgewichtig. Sie ist selbst leichtgewichtiger als die Syntax von Lisp.
 Tcl steht dir einfach nicht im Weg.
@@ -76,7 +76,7 @@ Tcl steht dir einfach nicht im Weg.
 # Eckige-Klammern sind nur Quoting-Mechanismen, keine Code-Block-Konstruktoren
 # und auch keine Listen-Konstruktoren. In Tcl gibt es diese beiden Dinge nicht.
 # Eckige-Klammern werden verwendet um Spezial-Zeichen in Prozeduren zu escapen
-# und in Zeichenketten die als Listen formattiert sind.
+# und in Zeichenketten die als Listen formatiert sind.
 
 ################################################################################
 ## 2. Syntax 
@@ -85,7 +85,7 @@ Tcl steht dir einfach nicht im Weg.
 # Jede Zeile ist ein Befehl. Das erste Wort ist der Name des Befehls, jedes
 # weitere Wort ist ein Argument des Befehls. Wörter sind begrenzt durch
 # Leerzeichen. Da jedes Wort auch ein String ist, sind keine speziellen
-# auszeichnungen wie Anführungs-Zeichen, Klammern oder Backslashes nötig.
+# Auszeichnungen wie Anführungs-Zeichen, Klammern oder Backslashes nötig.
 # Selbst wenn Anführungs-Zeichen verwendet werden, denn sie sind ja keine
 # String-Konstruktoren, sondern nur Escape-Zeichen.
 
@@ -98,11 +98,11 @@ set greeting3 ations
 set greeting1 Sal; set greeting2 ut; set greeting3 ations 
 
 
-# Das Dollar-Zeichen zeigt eine Variablen-Substitution an.
+# Das Dollar-Zeichen zeigt eine Variablen-Substitutionen an.
 set greeting $greeting1$greeting2$greeting3
 
 
-# Eckige-Klammern zeigen Befehls-Substitionen an. Das Ergebnis des Befehls wird an
+# Eckige-Klammern zeigen Befehls-Substitutionen an. Das Ergebnis des Befehls wird an
 # Stelle des Klammern-Ausdrucks eingefügt. Wenn man dem "set" Befehl nur den
 # Namen einer Variablen übergibt, gibt er den Wert der Variablen zurück.
 set greeting $greeting1$greeting2[set greeting3]
@@ -119,7 +119,7 @@ set greeting $greeting[
 ]
 
 
-# Der Backslash unterdrück die Bedeutung von Sonderzeichen
+# Der Backslash unterdrückt die Bedeutung von Sonderzeichen
 set amount \$16.42
 
 
@@ -164,7 +164,7 @@ set {*}{name Neo}
 set name Neo
 
 
-# Ein Array ist eine spezielle Varible die also Kontainer für andere Variablen
+# Ein Array ist eine spezielle Variable die also Container für andere Variablen
 # dient.
 set person(name) Neo
 set person(gender) male
@@ -202,7 +202,7 @@ namespace delete ::
 
 # Wegen des Verhaltens der Namens-Auflösung ist es sicherer den "variable"
 # Befehl zu verwenden um in einem Namensraum einen Wert zu deklarieren oder
-# zuzuweisen. Wenn eine Variable mit dem namen "name" bereits im globalen
+# zuzuweisen. Wenn eine Variable mit dem Namen "name" bereits im globalen
 # Namensraum existiert, bewirkt der "set" Befehl das der globalen Variable ein
 # Wert zugewiesen wird, anstatt eine Variable im lokalen Namensraum zu erzeugen
 namespace eval people {
@@ -316,9 +316,9 @@ set amount [lindex $amounts 1]
 
 # Geschwungene Klammern und Backslashes können verwendet werden um komplexe
 # Werte in einer Liste zu formatieren. Eine Liste sieht aus wie ein Skript,
-# allerdings verlieren verlieren Zeilenumbrüche und Doppelüunkte ihre 
+# allerdings verlieren Zeilenumbrüche und Doppelpunkte ihre 
 # besondere Bedeutung. Diese Funktionalität macht Tcl homoikonisch. Die
-# folgende Liste enhtält drei Elemente.
+# folgende Liste enthält drei Elemente.
 set values {
 
     one\ two
@@ -344,7 +344,7 @@ set values [list one \{ three four]
 lappend values { } ;# Ein Leerzeichen als Element der Liste hinzufügen
 
 
-# Mit "eval" können Werte als Skripts evaluiert weden.
+# Mit "eval" können Werte als Skripts evaluiert werden.
 eval {
     set name Neo
     set greeting "Hello, $name"
@@ -352,7 +352,7 @@ eval {
 
 
 # Eine Liste kann immer an "eval" übergeben werden, solange die Liste einen
-# einzigen Befehl entält.
+# einzigen Befehl enthält.
 eval {set name Neo}
 eval [list set greeting "Hello, $name"]
 
@@ -364,7 +364,7 @@ lappend command {Archibald Sorbisol}
 eval $command
 
 
-# Es ist ein häufiger Fehler die Listen funktionen beim Aufbauen von Listen
+# Es ist ein häufiger Fehler die Listenfunktionen beim Aufbauen von Listen
 # nicht zu verwenden.
 set command {set name}
 append command { Archibald Sorbisol}
@@ -431,7 +431,7 @@ proc set_double {varname value} {
 rename ::while {}
 
 
-# Definieren einen neuen "while" Befehl mit hilfe des "proc" Befehls.
+# Definieren einen neuen "while" Befehl mithilfe des "proc" Befehls.
 # Ausführlichere Fehler-Behandlung wird dem Leser als Übung überlassen.
 proc while {condition script} {
     if {[uplevel 1 [list expr $condition]]} {
@@ -460,10 +460,8 @@ puts [countdown 1] ;# -> 2
 puts [countdown 2] ;# -> 2 
 puts [countdown 1] ;# -> 1 
 puts [countdown 1] ;# -> 0 
-puts [coundown 1] ;# -> invalid command name "countdown1"
+puts [countdown 1] ;# -> invalid command name "countdown1"
 puts [countdown 2] ;# -> 1 
-
-
 ```
 
 ## Referenzen

@@ -7,15 +7,10 @@ contributors:
 translators:
     - ["sunxb10", "https://github.com/sunxb10"]
 lang: zh-cn
-
 ---
 
 MATLAB 是 MATrix LABoratory（矩阵实验室）的缩写。
 它是一种功能强大的数值计算语言，在工程和数学领域中应用广泛。
-
-如果您有任何需要反馈或交流的内容，请联系本教程作者：
-[@the_ozzinator](https://twitter.com/the_ozzinator) 
-或 [osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com)。
 
 ```matlab
 % 以百分号作为注释符
@@ -68,10 +63,10 @@ disp('text')    % 在命令窗口中显示 "text"
 % 变量与表达式
 myVariable = 4  % 命令窗口中将新创建的变量
 myVariable = 4; % 加上分号可使命令窗口中不显示当前语句执行结果
-4 + 6       % ans = 10 
-8 * myVariable  % ans = 32 
-2 ^ 3       % ans = 8 
-a = 2; b = 3; 
+4 + 6       % ans = 10
+8 * myVariable  % ans = 32
+2 ^ 3       % ans = 8
+a = 2; b = 3;
 c = exp(a)*sin(pi/2) % c = 7.3891
 
 
@@ -114,7 +109,7 @@ b(2)  % ans = 符
 
 
 % 元组（cell 数组）
-a = {'one', 'two', 'three'} 
+a = {'one', 'two', 'three'}
 a(1)  % ans = 'one' - 返回一个元组
 a{1}  % ans = one - 返回一个字符串
 
@@ -126,7 +121,7 @@ A.d.e = false;
 
 
 % 向量
-x = [4 32 53 7 1] 
+x = [4 32 53 7 1]
 x(2)  % ans = 32，MATLAB中向量的下标索引从1开始，不是0
 x(2:3)  % ans = 32 53
 x(2:end)  % ans = 32 53 7 1
@@ -137,7 +132,7 @@ x = [1:10]  % x = 1 2 3 4 5 6 7 8 9 10
 
 
 % 矩阵
-A = [1 2 3; 4 5 6; 7 8 9] 
+A = [1 2 3; 4 5 6; 7 8 9]
 % 以分号分隔不同的行，以空格或逗号分隔同一行中的不同元素
 % A =
 
@@ -146,7 +141,7 @@ A = [1 2 3; 4 5 6; 7 8 9]
 %     7     8     9
 
 A(2,3) % ans = 6，A(row, column)
-A(6) % ans = 8 
+A(6) % ans = 8
 % （隐式地将 A 的三列首尾相接组成一个列向量，然后取其下标为 6 的元素）
 
 
@@ -185,7 +180,7 @@ A(1,:)  % 第 1 行的所有元素
 %     4     5    42
 %     7     8     9
 
-% 等价于 
+% 等价于
 vertcat(A, A);
 
 
@@ -226,7 +221,7 @@ A .* B  % 元素乘法，要求 A 和 B 形状一致，即两矩阵行列数完�
         % 元素乘法的结果是与 A 和 B 形状一致的矩阵
         % 其每个元素等于 A 对应位置的元素乘 B 对应位置的元素
 
-% 以下函数中，函数名以 m 结尾的执行矩阵运算，其余执行元素运算： 
+% 以下函数中，函数名以 m 结尾的执行矩阵运算，其余执行元素运算：
 exp(A)  % 对矩阵中每个元素做指数运算
 expm(A)  % 对矩阵整体做指数运算
 sqrt(A)  % 对矩阵中每个元素做开方运算
@@ -290,7 +285,7 @@ clf clear  % 清除图形窗口中的图像，并重置图像属性
 
 % 图像属性可以通过图像句柄进行设定
 % 在创建图像时可以保存图像句柄以便于设置
-% 也可以用 gcf 函数返回当前图像的句柄 
+% 也可以用 gcf 函数返回当前图像的句柄
 h = plot(x, y);  % 在创建图像时显式地保存图像句柄
 set(h, 'Color', 'r')
 % 颜色代码：
@@ -323,8 +318,8 @@ cd /path/to/move/into  % 以制定路径作为当前工作目录
 
 
 % 变量可保存到 .mat 格式的本地文件
-save('myFileName.mat')  % 保存当前工作空间中的所有变量 
-load('myFileName.mat')  % 将指定文件中的变量载入到当前工作空间 
+save('myFileName.mat')  % 保存当前工作空间中的所有变量
+load('myFileName.mat')  % 将指定文件中的变量载入到当前工作空间
 
 
 % .m 脚本文件
@@ -339,11 +334,11 @@ load('myFileName.mat')  % 将指定文件中的变量载入到当前工作空间
 % 函数文件的名称应当与其所定义的函数的名称一致
 % 比如下面例子中函数文件就应命名为 double_input.m
 % 使用 'help double_input.m' 可返回函数定义中第一行注释信息
-function output = double_input(x) 
+function output = double_input(x)
     % double_input(x) 返回 x 的 2 倍
     output = 2*x;
 end
-double_input(6)  % ans = 12 
+double_input(6)  % ans = 12
 
 
 % 同样还可以定义子函数和内嵌函数
@@ -389,8 +384,8 @@ end
 for k = 1:5
     disp(k)
 end
-    
-k = 0;  
+
+k = 0;
 while (k < 5)
     k = k + 1;
 end
@@ -411,7 +406,7 @@ driver = 'com.mysql.jdbc.Driver';
 dburl = ['jdbc:mysql://localhost:8889/' dbname];
 javaclasspath('mysql-connector-java-5.1.xx-bin.jar');  % 此处 xx 代表具体版本号
 % 这里的 mysql-connector-java-5.1.xx-bin.jar 可从 http://dev.mysql.com/downloads/connector/j/ 下载
-conn = database(dbname, username, password, driver, dburl); 
+conn = database(dbname, username, password, driver, dburl);
 sql = ['SELECT * from table_name where id = 22']  % SQL 语句
 a = fetch(conn, sql)  % a 即包含所需数据
 
@@ -423,7 +418,7 @@ tan(x)
 asin(x)
 acos(x)
 atan(x)
-exp(x) 
+exp(x)
 sqrt(x)
 log(x)
 log10(x)
@@ -456,7 +451,7 @@ pinv(A)  % 伪逆矩阵
 zeros(m, n)  % m x n 阶矩阵，元素全为 0
 ones(m, n)  % m x n 阶矩阵，元素全为 1
 diag(A)  % 返回矩阵 A 的对角线元素
-diag(x)  % 构造一个对角阵，对角线元素就是向量 x 的各元素 
+diag(x)  % 构造一个对角阵，对角线元素就是向量 x 的各元素
 eye(m, n)  % m x n 阶单位矩阵
 linspace(x1, x2, n)  % 返回介于 x1 和 x2 之间的 n 个等距节点
 inv(A)  % 矩阵 A 的逆矩阵
@@ -485,17 +480,16 @@ flipud(A)  % 将一个矩阵上下翻转
 
 % 常用向量函数
 max     % 最大值
-min     % 最小值 
+min     % 最小值
 length  % 元素个数
-sort    % 按升序排列 
-sum     % 各元素之和 
+sort    % 按升序排列
+sum     % 各元素之和
 prod    % 各元素之积
 mode    % 众数
-median  % 中位数 
-mean    % 平均值 
+median  % 中位数
+mean    % 平均值
 std     % 标准差
 perms(x) % x 元素的全排列
-
 ```
 
 ## 相关资料

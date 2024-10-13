@@ -10,7 +10,7 @@ lang: de-de
 
 YAML ist eine Sprache zur Datenserialisierung, die sofort von Menschenhand geschrieben und gelesen werden kann.
 
-YAML ist ein Erweiterung von JSON mit der Erweiterung um syntaktisch wichtige Zeilenumbrüche und Einrückungen, ähnlich wie auch in Python geschrieben werden können. Anders als in Python allerdings erlaubt YAML keine Tabulator-Zeichen.
+YAML ist eine Erweiterung von JSON mit der Erweiterung um syntaktisch wichtige Zeilenumbrüche und Einrückungen, ähnlich wie auch in Python geschrieben werden können. Anders als in Python allerdings erlaubt YAML keine Tabulator-Zeichen.
 
 ```yaml
 # Kommentare in YAML schauen so aus.
@@ -20,7 +20,7 @@ YAML ist ein Erweiterung von JSON mit der Erweiterung um syntaktisch wichtige Ze
 #################
 
 # Unser Kernobjekt (für das ganze Dokument) wird das Assoziative Datenfeld (Map) sein,
-# welches equivalent zu einem Hash oder einem Objekt einer anderen Sprache ist.
+# welches äquivalent zu einem Hash oder einem Objekt einer anderen Sprache ist.
 Schlüssel: Wert
 nochn_Schlüssel: Hier kommt noch ein Wert hin.
 eine_Zahl: 100
@@ -29,7 +29,7 @@ boolean: true
 null_Wert: null
 Schlüssel mit Leerzeichen: value
 # Strings müssen nicht immer mit Anführungszeichen umgeben sein, können aber:
-jedoch: "Ein String in Anführungzeichen"
+jedoch: "Ein String in Anführungszeichen"
 "Ein Schlüssel in Anführungszeichen": "Nützlich, wenn du einen Doppelpunkt im Schlüssel haben willst."
 
 # Mehrzeilige Strings schreibst du am besten als 'literal block' (| gefolgt vom Text)
@@ -38,7 +38,7 @@ literal_block: |
     Dieser ganze Block an Text ist der Wert vom Schlüssel literal_block,
     mit Erhaltung der Zeilenumbrüche.
 
-    Das Literal fährt solange fort bis dieses unverbeult ist und die vorherschende Einrückung wird 
+    Das Literal fährt solange fort bis dieses unverbeult ist und die vorherrschende Einrückung wird 
     gekürzt.
 
         Zeilen, die weiter eingerückt sind, behalten den Rest ihrer Einrückung -
@@ -56,7 +56,7 @@ folded_style: >
 # COLLECTION TYPEN #
 ####################
 
-# Verschachtelung wird duch Einrückung erzielt.
+# Verschachtelung wird durch Einrückung erzielt.
 eine_verschachtelte_map:
     schlüssel: wert
     nochn_Schlüssel: Noch ein Wert.
@@ -112,7 +112,7 @@ python_komplexe_Zahlen: !!python/komplex 1+2j
 ####################
 
 # Strings und Zahlen sind nicht die einzigen Skalare, welche YAML versteht.
-# ISO-formatierte Datumsangaben and Zeitangaben können ebenso geparsed werden.
+# ISO-formatierte Datumsangaben und Zeitangaben können ebenso geparsed werden.
 DatumZeit: 2001-12-15T02:59:43.1Z
 DatumZeit_mit_Leerzeichen: 2001-12-14 21:59:43.10 -5
 Datum: 2002-12-14

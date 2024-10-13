@@ -1,31 +1,24 @@
 ---
-
-language: "Lisp Flavoured Erlang(LFE)"
+language: "Lisp Flavoured Erlang (LFE)"
 filename: lispflavourederlang.lfe
 contributors:
   - ["Pratik Karki", "https://github.com/prertik"]
 ---
 
-Lisp Flavoured Erlang(LFE) is a functional, concurrent, general-purpose programming 
-language and Lisp dialect(Lisp-2) built on top of Core Erlang and the Erlang Virtual Machine(BEAM). 
+Lisp Flavoured Erlang (LFE) is a functional, concurrent, general-purpose programming
+language and Lisp dialect (Lisp-2) built on top of Core Erlang and the Erlang Virtual Machine (BEAM).
 
-LFE can be obtained from [LFE](https://github.com/rvirding/lfe)
-
-The classic starting point is [LFE DOCS.](http://docs.lfe.io)
-
-Another new site is being built to replace it.[LFE DEV.](http://docs.lfe.io/dev)
-
-
+LFE can be obtained from [LFE](https://github.com/rvirding/lfe).
+The classic starting point is the [LFE docs](http://docs.lfe.io).
 
 ```lisp
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 0. Syntax
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; General form.
 
-;; Lisp comprises of two syntax called: the ATOM and the S-expression.
+;; Lisp is comprised of two syntaxes, the ATOM and the S-expression.
 ;; `forms` are known as grouped S-expressions.
 
 8  ; an atom; it evaluates to itself
@@ -56,7 +49,7 @@ t  ; another atom which denotes true.
 ;; Libraries can be used directly from the Erlang ecosystem. Rebar3 is the build tool.
 
 ;; LFE is usually developed with a text editor(preferably Emacs) and a REPL
-;; (Read Evaluate Print Loop) running at the same time. The REPL 
+;; (Read Evaluate Print Loop) running at the same time. The REPL
 ;; allows for interactive exploration of the program as it is "live"
 ;; in the system.
 
@@ -66,18 +59,18 @@ t  ; another atom which denotes true.
 
 ;;; Integers
 
-1234 -123	        ; Regular decimal notation
-#b0 #b10101	        ; Binary notation
-#0 #10101	        ; Binary notation (alternative form)
-#o377 #o-111	    ; Octal notation
-#d123456789 #d+123	; Explicitly decimal notation
-#xc0ffe 0x-01	    ; Hexadecimal notation
-#2r1010 #8r377 	    ;Notation with explicit base (up to 36)
+1234 -123           ; Regular decimal notation
+#b0 #b10101         ; Binary notation
+#0 #10101           ; Binary notation (alternative form)
+#o377 #o-111        ; Octal notation
+#d123456789 #d+123  ; Explicitly decimal notation
+#xc0ffe 0x-01       ; Hexadecimal notation
+#2r1010 #8r377      ;Notation with explicit base (up to 36)
 #\a #$ #\ä #\🐭     ;Character notation (the value is the Unicode code point of the character)
-#\x1f42d;	        ;Character notation with the value in hexadecimal
+#\x1f42d;           ;Character notation with the value in hexadecimal
 
 ;;; Floating point numbers
-1.0 +2.0 -1.5 1.0e10 1.111e-10     
+1.0 +2.0 -1.5 1.0e10 1.111e-10
 
 ;;; Strings
 
@@ -86,25 +79,25 @@ t  ; another atom which denotes true.
 "Cat: \x1f639;" ; writing unicode in string for regular font ending with semicolon.
 
 #"This is a binary string \n with some \"escaped\" and quoted (\x1f639;) characters"
-; Binary strings are just strings but function different in the VM. 
+; Binary strings are just strings but function different in the VM.
 ; Other ways of writing it are:  #B("a"), #"a", and #B(97).
 
 
 ;;; Character escaping
 
-\b	; => Backspace
-\t	; => Tab
-\n	; => Newline
-\v	; => Vertical tab
-\f	; => Form Feed
-\r	; => Carriage Return
-\e	; => Escape
-\s	; => Space
-\d	; => Delete
+\b  ; => Backspace
+\t  ; => Tab
+\n  ; => Newline
+\v  ; => Vertical tab
+\f  ; => Form Feed
+\r  ; => Carriage Return
+\e  ; => Escape
+\s  ; => Space
+\d  ; => Delete
 
 ;;; Binaries
 ;; It is used to create binaries with any contents.
-#B((#"a" binary) (#"b" binary))	               ; #"ab" (Evaluated form)
+#B((#"a" binary) (#"b" binary))                 ; #"ab" (Evaluated form)
 
 ;;; Lists are: () or (foo bar baz)
 
@@ -115,7 +108,7 @@ t  ; another atom which denotes true.
 ;;; Symbols: Things that cannot be parsed. Eg: foo, Foo, foo-bar, :foo
 | foo | ; explicit construction of symbol by wrapping vertical bars.
 
-;;; Evaluation 
+;;; Evaluation
 
 ;; #.(... some expression ...). E.g. '#.(+ 1 1) will evaluate the (+ 1 1) while it            ;; reads the expression and then be effectively '2.
 
@@ -131,7 +124,7 @@ lfe> (list-comp
 ;; 2. Core forms
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; These forms are same as those found at Common Lisp and Scheme.
+;; These forms are the same as those found in Common Lisp and Scheme.
 
 (quote e)
 (cons head tail)
@@ -190,8 +183,8 @@ lfe> (list-comp
 ;; 3. Macros
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Macros are part of the language to allow you to create abstractions 
-;; on top of the core language and standard library that move you closer 
+;; Macros are part of the language and allow you to create abstractions
+;; on top of the core language and standard library that move you closer
 ;; toward being able to directly express the things you want to express.
 
 ;; Top-level function
@@ -216,7 +209,7 @@ lfe> (list-comp
   ((argpat ...) ...)
   ...)
 
-;; Top-level macro using Scheme inspired syntax-rules format 
+;; Top-level macro using Scheme inspired syntax-rules format
 
 (defsyntax name
   (pat exp)
@@ -227,7 +220,7 @@ lfe> (list-comp
 (macrolet ((name (arg ... ) ... )
             ... )
     ... )
-    
+
 (syntaxlet ((name (pat exp) ...)
              ...)
  ...)
@@ -259,12 +252,12 @@ lfe> (list-comp
 ;; [P|Ps]=All                    (= (cons p ps) all)
 
   _    ; => is don't care while pattern matching
-  
+
   (= pattern1 pattern2)     ; => easier, better version of pattern matching
-  
+
 ;; Guards
 
-;; Whenever pattern occurs(let, case, receive, lc, etc) it can be followed by an optional
+;; Whenever pattern occurs (let, case, receive, lc, etc) it can be followed by an optional
 ;; guard which has the form (when test ...).
 
 (progn gtest ...)             ;; => Sequence of guard tests
@@ -317,19 +310,19 @@ lfe>msg
 ;; Functions are bound by top-level defun, flet and fletrec.
 ;; Macros are bound by top-level defmacro/defsyntax and by macrolet/syntaxlet.
 
-;; (funcall func arg ...) like CL to call lambdas/match-lambdas 
+;; (funcall func arg ...) like CL to call lambdas/match-lambdas
 ;; (funs) bound to variables are used.
 
 ;; separate bindings and special for apply.
-apply _F (...), 
+apply _F (...),
 apply _F/3 ( a1, a2, a3 )
-    
+
 ;; Cons'ing in function heads
 (defun sum (l) (sum l 0))
   (defun sum
     (('() total) total)
     (((cons h t) total) (sum t (+ h total))))
-    
+
 ;; ``cons`` literal instead of constructor form
       (defun sum (l) (sum l 0))
       (defun sum
@@ -350,7 +343,7 @@ apply _F/3 ( a1, a2, a3 )
         (receive
           ((tuple 'become func)
            (funcall func))))
-           
+
 ;; another way for receiving messages
 
  (defun universal-server ()
@@ -393,7 +386,7 @@ apply _F/3 ( a1, a2, a3 )
 (defun send-message (calling-pid msg)
   (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
     (! spawned-pid (tuple calling-pid msg))))
-    
+
 ;; Multiple simultaneous HTTP Requests:
 
 (defun parse-args (flag)
@@ -438,22 +431,15 @@ apply _F/3 ( a1, a2, a3 )
        (io:format "Error: ~p~n" `(,reason)))
       (`#(http #(,request-id ,result))
        (io:format "Result: ~p~n" `(,result))))))
-
-
-;; Check out Erlang's documentation for more concurrency and OTP docs.
 ```
 
 ## Further Reading
 
-*    [LFE DOCS](http://docs.lfe.io)
-*    [LFE GitBook](https://lfe.gitbooks.io/reference-guide/index.html)
-*    [LFE Wiki](https://en.wikipedia.org/wiki/LFE_(programming_language))
+* [LFE DOCS](http://docs.lfe.io)
+* [LFE GitBook](https://lfe.gitbooks.io/reference-guide/index.html)
+* [LFE Wiki](https://en.wikipedia.org/wiki/LFE_(programming_language))
 
 ## Extra Info
-*    [LFE PDF](http://www.erlang-factory.com/upload/presentations/61/Robertvirding-LispFlavouredErlang.pdf)
-*    [LFE mail](https://groups.google.com/d/msg/lisp-flavoured-erlang/XA5HeLbQQDk/TUHabZCHXB0J)
 
-## Credits
-
-Lots of thanks to Robert Virding for creating LFE, Duncan McGreggor for documenting it and other LFE contributors who made LFE awesome.
-
+* [LFE PDF](http://www.erlang-factory.com/upload/presentations/61/Robertvirding-LispFlavouredErlang.pdf)
+* [LFE mail](https://groups.google.com/d/msg/lisp-flavoured-erlang/XA5HeLbQQDk/TUHabZCHXB0J)

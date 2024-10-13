@@ -34,7 +34,7 @@ Manche Beispiele sind von <http://learnxinyminutes.com/docs/racket/>.
 
 ;; Funktionsapplikationen werden so geschrieben: (f x y z ...)
 ;; Dabei ist f eine Funktion und x, y, z sind die Operatoren.
-;; Wenn du eine Literalliste von Daten erstelllen möchtest,
+;; Wenn du eine Literalliste von Daten erstellen möchtest,
 ;; verwende (quote) um zu verhindern, dass sie ausgewertet zu werden.
 (quote (+ 1 2)) ; => (+ 1 2)
 ;; Nun einige arithmetische Operationen
@@ -74,7 +74,7 @@ false ; for Falsch
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 2. Variablen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Du kannst Variablen setzen indem du (set) verwedest
+;; Du kannst Variablen setzen indem du (set) verwendest
 ;; eine Variable kann alle Zeichen besitzen außer: ();#"
 (set some-var 5) ; => 5
 some-var ; => 5
@@ -92,7 +92,7 @@ some-var ; => 5
 
 ;;; Listen
 
-;; Listen sind Vektrorartige Datenstrukturen. (Zufälliger Zugriff ist O(1).
+;; Listen sind Vektorartige Datenstrukturen. (Zufälliger Zugriff ist O(1).
 (cons 1 (cons 2 (cons 3 (list)))) ; => (1 2 3)
 ;; 'list' ist ein komfortabler variadischer Konstruktor für Listen
 (list 1 2 3) ; => (1 2 3)
@@ -196,5 +196,5 @@ a ; => (3 2)
 (infix 1 + 2 (infix 3 * 4)) ; => 15
 
 ;; Makros sind nicht hygenisch, Du kannst bestehende Variablen überschreiben!
-;; Sie sind Codetransformationenen.
+;; Sie sind Codetransformationen.
 ```

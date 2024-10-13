@@ -12,7 +12,7 @@ Julia é uma linguagem homoicônica funcional focada na computação técnica. A
 
 Este tutorial é baseado no Julia 0.3.
 
-```ruby
+```julia
 # Linhas únicas de comentários começam com o simbolo hash(jogo da velha).
 #= Comentários de multiplas linhas podem ser escritos
    colocando '#=' antes do texto e '=#'
@@ -88,7 +88,7 @@ false
 # Uma string pode ser indexada como um vetor de caracteres
 "Isso é uma string"[1] # => 'I' # Julia começa a indexar a partir do 1
 # Porém isso não funcionará direito com strings em UTF8,
-# portanto é recomendado usar iterações sobre uma string (map, loops com for, etc). 
+# portanto é recomendado usar iterações sobre uma string (map, loops com for, etc).
 
 # $ pode ser usado para interpolação de string:
 "2 + 2 = $(2 + 2)" # => "2 + 2 = 4"
@@ -110,7 +110,7 @@ some_var # => 5
 
 # Acessando a variável anterior não iniciada é um erro
 try
-    some_other_var # => ERROR: some_other_var não definida 
+    some_other_var # => ERROR: some_other_var não definida
 catch e
     println(e)
 end
@@ -130,7 +130,7 @@ SomeOtherVar123! = 6 # => 6
 #   de underscore é desencorajado a menos que o nome da variável seja dificil
 #   de ler.
 #
-# * Os nomes de tipos começam com letra maiúscula e a separação de letras é 
+# * Os nomes de tipos começam com letra maiúscula e a separação de letras é
 #   feita a partir de CamelCase no lugar de underscores.
 #
 # * Nomes de funções e macros são em minúsculo, sem underscore.
@@ -186,8 +186,8 @@ catch e
     println(e)
 end
 
-# Erros listam a linha e o nome do arquivo que ele está, mesmo se for uma 
-# biblioteca padrão. Se você construiu Julia pelo source, você pode olhar na 
+# Erros listam a linha e o nome do arquivo que ele está, mesmo se for uma
+# biblioteca padrão. Se você construiu Julia pelo source, você pode olhar na
 # pasta base dentro da pasta do Julia para encontrar esses arquivos.
 
 # Você pode inicializar vetores com limites
@@ -315,7 +315,7 @@ end
 # Tipos iterativos incluem Range, Array, set Dict e String.
 for animal=["dog", "cat", "mouse"]
     println("$animal is a mammal")
-	# Você pode interpolar variáveis usando $ ou expressões em strings
+    # Você pode interpolar variáveis usando $ ou expressões em strings
 end
 # exibe:
 #    dog is a mammal
@@ -379,14 +379,14 @@ end
 function add(x, y)
     println("x is $x and y is $y")
 
-	# Funções retornam o valor da sua ultima declaração
+    # Funções retornam o valor da sua ultima declaração
 t    x + y
 end
 
 add(5, 6) # => 11 after printing out "x is 5 and y is 6"
 
 # Você pode definir funções que tomam um numero incerto de
-# argumentos 
+# argumentos
 function varargs(args...)
     return args
     # use a palavra chave return para retornar um valor em qualquer parte da função
@@ -471,7 +471,7 @@ add_10 = create_adder(10)
 add_10(3) # => 13
 
 
-# Há 
+# Há
 # There are built-in higher order functions
 map(add_10, [1,2,3]) # => [11, 12, 13]
 filter(x -> x > 5, [3, 4, 5, 6, 7]) # => [6, 7]
@@ -672,7 +672,7 @@ square_area(5) #25
 
 # O que acontece quando alimentamos square_area com um inteiro?
 # What happens when we feed square_area an integer?
-code_native(square_area, (Int32,))  
+code_native(square_area, (Int32,))
     #       .section    __TEXT,__text,regular,pure_instructions
     #   Filename: none
     #   Source line: 1              # Prólogo
@@ -705,7 +705,7 @@ code_native(square_area, (Float64,))
     #       vmulsd  XMM0, XMM0, XMM0 # Duplicação ecalar de precisão multipla(AVX)
     #       pop RBP
     #       ret
-    #   
+    #
 # Note que Julia usará instruções de ponto flutuante se quaser um dos
 # argumentos forem float
 # Vamos calcular a área de um circulo
@@ -739,10 +739,10 @@ code_native(circle_area, (Float64,))
     #       vmulsd  XMM0, XMM1, XMM0
     #       pop RBP
     #       ret
-    #   
+    #
 ```
 
 ## Extras
 
-Você pode ver mais um monte de detalhes no [manual de Julia] (http://docs.julialang.org/en/latest/manual/)
+Você pode ver mais um monte de detalhes no [manual de Julia](http://docs.julialang.org/en/latest/manual/)
 O melhor lugar pra pedir ajuda em Julia é a (muito amigável) [mailing list](https://groups.google.com/forum/#!forum/julia-users).

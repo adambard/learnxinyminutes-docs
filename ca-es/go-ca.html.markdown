@@ -95,7 +95,7 @@ salts de línia.` // El mateix tipus
 	// literals Non-ASCII literal. El tipus de Go és UTF-8.
 	g := 'Σ' // El tipus rune, és un àlies de int32 conté un caràcter unicode.
 
-	f := 3.14195 // float64, un número de 64 bits amb coma flotant IEEE-754.
+	f := 3.14159 // float64, un número de 64 bits amb coma flotant IEEE-754.
 	c := 3 + 4i  // complex128, representat internament amb dos float64.
 
 	// Sintaxi amb var i inicialitzadors.
@@ -432,26 +432,26 @@ func requestServer() {
 
 ## Més informació
 
-L'arrel de tot en Go és la web oficial [official Go web site]
-(http://golang.org/). Allà es pot seguir el tutorial, jugar interactivament
+L'arrel de tot en Go és la web oficial [official Go web site](https://go.dev/).
+Allà es pot seguir el tutorial, jugar interactivament
 i llegir molt més del que hem vist aquí.En el "tour",
-[the docs](https://golang.org/doc/) conté informació sobre com escriure codi
+[the docs](https://go.dev/doc/) conté informació sobre com escriure codi
 net i efectiu en Go, comandes per empaquetar i generar documentació, i
 història de les versions.
 
 És altament recomanable llegir La definició del llenguatge. És fàcil de llegir
 i sorprenentment curta (com la definició del llenguatge en aquests dies).
 
-Es pot jugar amb codi a [Go playground](https://play.golang.org/p/tnWMjr16Mm).
+Es pot jugar amb codi a [Go playground](https://go.dev/play/p/tnWMjr16Mm).
 Prova de fer canvis en el codi i executar-lo des del navegador! Es pot fer
-servir [https://play.golang.org](https://play.golang.org) com a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) per provar coses i codi
+servir [https://go.dev/play/](https://go.dev/play/) com a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) per provar coses i codi
 en el navegador sense haver d'instal·lar Go.
 
 En la llista de lectures pels estudiants de Go hi ha
-[el codi font de la llibreria estàndard](http://golang.org/src/pkg/).
+[el codi font de la llibreria estàndard](https://go.dev/src/).
 Ampliament comentada, que demostra el fàcil que és de llegir i entendre els
 programes en Go, l'estil de programació, i les formes de treballar-hi. O es
-pot clicar en un nom de funció en [la documentació](http://golang.org/pkg/)
+pot clicar en un nom de funció en [la documentació](https://go.dev/pkg/)
 i veure'n el codi!
 
 Un altre gran recurs per aprendre Go és
@@ -460,5 +460,5 @@ Un altre gran recurs per aprendre Go és
 Go Mobile afegeix suport per plataformes mòbils (Android i iOS). Es poden
 escriure aplicacions mòbils o escriure llibreries de paquets de Go, que es
 poden cridar des de Java (android) i Objective-C (iOS).
-Comproveu la [Go Mobile page](https://github.com/golang/go/wiki/Mobile) per
+Comproveu la [Go Mobile page](https://go.dev/wiki/Mobile) per
 més informació.

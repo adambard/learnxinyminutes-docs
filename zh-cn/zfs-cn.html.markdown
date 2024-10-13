@@ -23,7 +23,6 @@ ZFS不但有把它和传统存储系统分开来的特有术语，也有很多�
 建议使用阵列卡。让ZFS直接管理磁盘。
 
 VDEV的类型
-* stripe (条带。单个磁盘，没有冗余)
 * mirror (镜像。支持n-way镜像)
 * raidz
 	* raidz1 (一个奇偶校验磁盘, 类似于RAID 5)
@@ -57,7 +56,7 @@ ZFS 数据集类似于传统的文件系统（译者注：或者说是目录）�
 
 ### 存储池
 
-Actions: （存储池操作） 
+Actions: （存储池操作）
 * List   （列举）
 * Status （查看状态）
 * Destroy （删除）
@@ -67,7 +66,7 @@ List zpools （列举存储池（也叫zpool））
 
 ```bash
 # 创建一个raidz类型的存储池(名称为bucket）
-$ zpool create bucket raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
+$ zpool create zroot raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
 
 # 列出所有存储池
 $ zpool list
@@ -117,7 +116,6 @@ errors: No known data errors
 Properties of zpools （存储池属性）
 
 ```bash
-
 # 获取某一存储池的全部属性。属性可能是系统提供，也可能是用户设置
 $ zpool get all zroot
 NAME   PROPERTY                       VALUE                          SOURCE
@@ -155,22 +153,22 @@ Create datasets
 
 ```bash
 # 创建数据集
-$ zfs create tank/root/data
+$ zfs create zroot/root/data
 $ mount | grep data
-tank/root/data on /data (zfs, local, nfsv4acls)
+zroot/root/data on /data (zfs, local, nfsv4acls)
 
 # 创建子数据集
-$ zfs create tank/root/data/stuff
+$ zfs create zroot/root/data/stuff
 $ mount | grep data
-tank/root/data on /data (zfs, local, nfsv4acls)
-tank/root/data/stuff on /data/stuff (zfs, local, nfsv4acls)
+zroot/root/data on /data (zfs, local, nfsv4acls)
+zroot/root/data/stuff on /data/stuff (zfs, local, nfsv4acls)
 
 
 # 创建卷
 $ zfs create -V zroot/win_vm
 $ zfs list zroot/win_vm
 NAME                 USED  AVAIL  REFER  MOUNTPOINT
-tank/win_vm         4.13G  17.9G    64K  -
+zroot/win_vm         4.13G  17.9G    64K  -
 ```
 
 List datasets （列举数据集）
@@ -208,28 +206,28 @@ zroot/var/tmp@daily-2015-10-15                                                  
 Rename datasets （重命名数据集）
 
 ```bash
-$ zfs rename tank/root/home tank/root/old_home
-$ zfs rename tank/root/new_home tank/root/home
+$ zfs rename zroot/root/home zroot/root/old_home
+$ zfs rename zroot/root/new_home zroot/root/home
 ```
 
 Delete dataset （删除数据集）
 
 ```bash
 # 数据集如果有快照则无法删除
-zfs destroy tank/root/home
+$ zfs destroy zroot/root/home
 ```
 
 Get / set properties of a dataset （获取/设置数据集属性）
 
 ```bash
 # 获取数据集全部属性
-$ zfs get all  zroot/usr/home                                                                                              │157 # Create Volume
-NAME            PROPERTY              VALUE                  SOURCE                                                                          │158 $ zfs create -V zroot/win_vm
-zroot/home      type                  filesystem             -                                                                               │159 $ zfs list zroot/win_vm
-zroot/home      creation              Mon Oct 20 14:44 2014  -                                                                               │160 NAME                 USED  AVAIL  REFER  MOUNTPOINT
-zroot/home      used                  11.9G                  -                                                                               │161 tank/win_vm         4.13G  17.9G    64K  -
-zroot/home      available             94.1G                  -                                                                               │162 ```
-zroot/home      referenced            11.9G                  -                                                                               │163
+$ zfs get all zroot/usr/home
+NAME            PROPERTY              VALUE                  SOURCE
+zroot/home      type                  filesystem             -
+zroot/home      creation              Mon Oct 20 14:44 2014  -
+zroot/home      used                  11.9G                  -
+zroot/home      available             94.1G                  -
+zroot/home      referenced            11.9G                  -
 zroot/home      mounted               yes                    -
 ...
 
@@ -277,37 +275,37 @@ Create snapshots （创建快照）
 
 ```bash
 # 为单一数据集创建快照
-zfs snapshot tank/home/sarlalian@now
+zfs snapshot zroot/home/sarlalian@now
 
 # 为数据集及其子集创建快照
-$ zfs snapshot -r tank/home@now
+$ zfs snapshot -r zroot/home@now
 $ zfs list -t snapshot
 NAME                       USED  AVAIL  REFER  MOUNTPOINT
-tank/home@now                 0      -    26K  -
-tank/home/sarlalian@now       0      -   259M  -
-tank/home/alice@now           0      -   156M  -
-tank/home/bob@now             0      -   156M  -
+zroot/home@now                 0      -    26K  -
+zroot/home/sarlalian@now       0      -   259M  -
+zroot/home/alice@now           0      -   156M  -
+zroot/home/bob@now             0      -   156M  -
 ...
+```
 
 Destroy snapshots （删除快照）
 
 ```bash
 # 如何删除快照
-$ zfs destroy tank/home/sarlalian@now
+$ zfs destroy zroot/home/sarlalian@now
 
 # 删除某一数据集及其子集的快照
-$ zfs destroy -r tank/home/sarlalian@now
-
+$ zfs destroy -r zroot/home/sarlalian@now
 ```
 
 Renaming Snapshots （重命名）
 
 ```bash
 # 重命名快照
-$ zfs rename tank/home/sarlalian@now tank/home/sarlalian@today
-$ zfs rename tank/home/sarlalian@now today
+$ zfs rename zroot/home/sarlalian@now zroot/home/sarlalian@today
+$ zfs rename zroot/home/sarlalian@now today
 
-# zfs rename -r tank/home@now @yesterday
+$ zfs rename -r zroot/home@now @yesterday
 ```
 
 Accessing snapshots  （访问快照）
@@ -321,26 +319,26 @@ Sending and Receiving
 
 ```bash
 # 备份快照到一个文件
-$ zfs send tank/home/sarlalian@now | gzip > backup_file.gz
+$ zfs send zroot/home/sarlalian@now | gzip > backup_file.gz
 
 # 发送快照到另一个数据集
-$ zfs send tank/home/sarlalian@now | zfs recv backups/home/sarlalian
+$ zfs send zroot/home/sarlalian@now | zfs recv backups/home/sarlalian
 
 # 发送快照到一个远程主机
-$ zfs send tank/home/sarlalian@now | ssh root@backup_server 'zfs recv tank/home/sarlalian'
+$ zfs send zroot/home/sarlalian@now | ssh root@backup_server 'zfs recv zroot/home/sarlalian'
 
 # 发送完整数据集及其快照到一个新主机
-$ zfs send -v -R tank/home@now | ssh root@backup_server 'zfs recv tank/home'
+$ zfs send -v -R zroot/home@now | ssh root@backup_server 'zfs recv zroot/home'
 ```
 
 Cloneing Snapshots  （克隆快照）
 
 ```bash
 # 克隆一个快照
-$ zfs clone tank/home/sarlalian@now tank/home/sarlalian_new
+$ zfs clone zroot/home/sarlalian@now zroot/home/sarlalian_new
 
 # 提升克隆，让它不再依赖原始快照
-$ zfs promote tank/home/sarlalian_new
+$ zfs promote zroot/home/sarlalian_new
 ```
 
 ### 汇总

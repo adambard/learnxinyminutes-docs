@@ -118,7 +118,7 @@ di tempo, ti apparirà la stessa interfaccia per il contratto nella parte
 inferiore dello schermo.
 
 
-```javascript
+```solidity
 // Iniziamo con un semplice contratto su una Banca
 // Permette di depositare, prelevare e fare l'estratto conto
 
@@ -800,7 +800,7 @@ contract SomeOracle {
 
 Prova l'esempio completo qui sotto [usando remix e la `Javascript VM`](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
 
-```javascript
+```solidity
 // *** ESEMPIO: Un esempio di crowdfunding (molto simile a Kickstarter) ***
 // ** START EXAMPLE **
 
@@ -940,12 +940,11 @@ contract CrowdFunder {
     }
 }
 // ** END EXAMPLE **
-
 ```
 
 Qualche altra funzionalità.
 
-```javascript
+```solidity
 // 10. ATRE FUNZIONALITA' NATIVE
 
 // Unità di valuta

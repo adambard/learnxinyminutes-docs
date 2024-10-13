@@ -10,7 +10,6 @@ lang: de-de
 ---
 
 ```crystal
-
 # Das ist ein Kommentar
 
 # Alles ist ein Objekt
@@ -83,7 +82,7 @@ true.class # => Bool
 "s".class   # => String
 
 # Strings sind unveränderlich
-s = 'hello, "   # => "hello, "          : String
+s = "hello, "   # => "hello, "          : String
 s.object_id     # => 1234667712         : UInt64
 s += "Crystal"  # => "hello, Crystal"   : String
 s.object_id     # => 142528472          : UInt64
@@ -171,7 +170,7 @@ set << 3
 {1 => 2, 3 => 4}.class      # => Hash(Int32, Int32)
 {1 => 2, 'a' => 3}.class    # => Hash (Int32 | Char, Int32)
 
-# Leere Hashes sollten einen Typen spezifieren
+# Leere Hashes sollten einen Typen spezifizieren
 {}                      # Syntaxfehler
 {} of Int32 => Int32    # {}
 Hash(Int32, Int32).new  # {}
@@ -446,7 +445,7 @@ class Human
 end
 
 
-# Eine Klasse instanzieren
+# Eine Klasse instanziieren
 jim = Human.new("Jim Halpert")
 
 dwight = Human.new("Dwight K. Schrute")

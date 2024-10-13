@@ -78,7 +78,7 @@ func learnTypes() {
     // 非ascii字符。Go使用UTF-8编码。
     g := 'Σ' // rune类型，int32的别名，使用UTF-8编码
 
-    f := 3.14195 // float64类型，IEEE-754 64位浮点数
+    f := 3.14159 // float64类型，IEEE-754 64位浮点数
     c := 3 + 4i  // complex128类型，内部使用两个float64表示
 
     // var变量可以直接初始化。
@@ -392,18 +392,18 @@ func requestServer() {
 
 ## 更进一步
 
-关于Go的一切你都可以在[Go官方网站](http://golang.org/)找到。
+关于Go的一切你都可以在[Go官方网站](https://go.dev/)找到。
 在那里你可以获得教程参考，在线试用，和更多的资料。
-在简单的尝试过后，在[官方文档](https://golang.org/doc/)那里你会得到你所需要的所有资料、关于编写代码的规范、库和命令行工具的文档与Go的版本历史。
+在简单的尝试过后，在[官方文档](https://go.dev/doc/)那里你会得到你所需要的所有资料、关于编写代码的规范、库和命令行工具的文档与Go的版本历史。
 
 强烈推荐阅读语言定义部分，很简单而且很简洁！（赶时髦！）
 
-你还可以前往[Go在线体验中心](https://play.golang.org/p/tnWMjr16Mm)进，在浏览器里修改并运行这些代码，一定要试一试哦！你可以将[https://play.golang.org](https://play.golang.org)当作一个[REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop)，在那里体验语言特性或运行自己的代码，连环境都不用配！
+你还可以前往[Go在线体验中心](https://go.dev/play/p/tnWMjr16Mm)进，在浏览器里修改并运行这些代码，一定要试一试哦！你可以将[https://go.dev/play/](https://go.dev/play/)当作一个[REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop)，在那里体验语言特性或运行自己的代码，连环境都不用配！
 
-学习Go还要阅读Go[标准库的源代码](http://golang.org/src/)，全部文档化了，可读性非常好，可以学到go，go style和go idioms。在[文档](http://golang.org/pkg/)中点击函数名，源代码就出来了！
+学习Go还要阅读Go[标准库的源代码](https://go.dev/src/)，全部文档化了，可读性非常好，可以学到go，go style和go idioms。在[文档](https://go.dev/pkg/)中点击函数名，源代码就出来了！
 
 [Go by example](https://gobyexample.com/)也是一个学习的好地方。
 
 
 
-Go Mobile添加了对移动平台的支持（Android and iOS）。你可以完全用go语言来创造一个app或编写一个可以从Java或Obj-C调用的函数库，敬请参考[Go Mobile page](https://github.com/golang/go/wiki/Mobile)。
+Go Mobile添加了对移动平台的支持（Android and iOS）。你可以完全用go语言来创造一个app或编写一个可以从Java或Obj-C调用的函数库，敬请参考[Go Mobile page](https://go.dev/wiki/Mobile)。

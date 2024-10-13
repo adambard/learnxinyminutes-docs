@@ -12,7 +12,7 @@ lang: fr-fr
 -- Les commentaires unilignes commencent par un double tiret.
 
 --[[
-     Les doubles crochets à la suite du double tiret 
+     Les doubles crochets à la suite du double tiret
      permettent d'insérer des commentaires multilignes.
 --]]
 
@@ -123,7 +123,7 @@ end
 x, y = bar('zaphod')  --> affiche "zaphod nil nil"
 -- x = 4, y = 8, les valeurs 15 à 42 sont ignorées.
 
--- Les fonctions sont des valeurs de première classe 
+-- Les fonctions sont des valeurs de première classe
 -- et peuvent être locales/globales.
 -- Les déclarations suivantes sont identiques:
 function f(x) return x * x end
@@ -139,7 +139,7 @@ local g = function(x) return math.sin(x) end
 -- À moins de déclarer la fonction auparavant:
 local g; g  = function (x) return math.sin(x) end
 
--- À propos, les fonctions trigonométriques interprètent 
+-- À propos, les fonctions trigonométriques interprètent
 -- leurs arguments en radians.
 print(math.cos(math.pi)) -- affiche "-1"
 print(math.sin(math.pi)) -- affiche "0"
@@ -250,7 +250,7 @@ myFavs = {food = 'pizza'}
 setmetatable(myFavs, {__index = defaultFavs})
 eatenBy = myFavs.animal  -- Affiche "gru"! merci à la métatable!
 
--- Ainsi donc, un accès direct à une valeur dans une table via une clé 
+-- Ainsi donc, un accès direct à une valeur dans une table via une clé
 -- inexistante (ce qui normalement retourne "nil") conduira à exploiter
 -- le champ __index de la métatable. Cela peut être récursif.
 
@@ -281,7 +281,7 @@ eatenBy = myFavs.animal  -- Affiche "gru"! merci à la métatable!
 ----------------------------------------------------
 
 -- Lua n'implémente pas d'orienté objet par défaut.
--- Mais il reste possible d'imiter de plusieurs manières 
+-- Mais il reste possible d'imiter de plusieurs manières
 -- le concept de "classe" grâce aux tables et aux métatables.
 
 -- L'explication pour l'exemple qui suit vient juste après.
@@ -302,9 +302,9 @@ mrDog = Dog:new()                          -- 7.
 mrDog:makeSound()  -- 'Je dis: woof!       -- 8.
 
 -- 1. Dog agit comme une classe; c'est une simple table.
--- 2. L'expression tbl:fn(...) est identique à 
+-- 2. L'expression tbl:fn(...) est identique à
 --    tbl.fn(self, ...)
---    La notation : permet de passer par défaut un premier 
+--    La notation : permet de passer par défaut un premier
 --    argument appelé "self" à la fonction tbl.fn
 --    Voir 7 & 8 ci-après pour comprendre comment self prend
 --    sa valeur.
@@ -388,7 +388,7 @@ local mod = (function ()
   <contenu de mod.lua>
 end)()
 -- Comme si le contenu de mod.lua était enveloppé dans le corps d'une fonction,
--- si bien que les variables locales contenues dans mod.lua sont 
+-- si bien que les variables locales contenues dans mod.lua sont
 -- inaccessibles en dehors de ce module.
 
 -- Le code suivant fonctionne car mod = M (dans mod.lua):
@@ -417,33 +417,33 @@ g = loadstring('print(343)')  -- Retourne une fonction.
 g()  -- Affiche 343; Rien n'est affiché avant cet appel.
 
 --]]
-
 ```
+
 ## Références
 
 *Les références qui suivent sont en Anglais.*
 
-Les sujets non abordés dans ce tutoriel sont couverts en intégralité par 
+Les sujets non abordés dans ce tutoriel sont couverts en intégralité par
 les librairies standard:
 
-* La librairie <a href="http://lua-users.org/wiki/StringLibraryTutorial">string</a>
-* La librairie <a href="http://lua-users.org/wiki/TableLibraryTutorial">table</a>
-* La librairie <a href="http://lua-users.org/wiki/MathLibraryTutorial">math</a>
-* La librairie <a href="http://lua-users.org/wiki/IoLibraryTutorial">io</a>
-* La librairie <a href="http://lua-users.org/wiki/OsLibraryTutorial">os</a>
+* La librairie [`string`](http://lua-users.org/wiki/StringLibraryTutorial)
+* La librairie [`table`](http://lua-users.org/wiki/TableLibraryTutorial)
+* La librairie [`math`](http://lua-users.org/wiki/MathLibraryTutorial)
+* La librairie [`io`](http://lua-users.org/wiki/IoLibraryTutorial)
+* La librairie [`os`](http://lua-users.org/wiki/OsLibraryTutorial)
 
 Autres références complémentaires:
 
-* <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">Lua pour programmeurs</a>
-* <a href="lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Référence condensée de Lua</a>
-* <a href="http://www.lua.org/pil/contents.html">Programmer en Lua</a>
-* <a href="http://www.lua.org/manual/">Les manuels de référence Lua</a>
+* [Lua pour programmeurs](http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/)
+* [Référence condensée de Lua](lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf)
+* [Programmer en Lua](http://www.lua.org/pil/contents.html)
+* [Les manuels de référence Lua](http://www.lua.org/manual/)
 
 A propos, ce fichier est exécutable. Sauvegardez-le sous le nom *learn.lua* et
-exécutez-le avec la commande `lua learn.lua` !
+exécutez-le avec la commande "`lua learn.lua`" !
 
-Ce tutoriel a été originalement écrit pour <a href="tylerneylon.com">tylerneylon.com</a> et est aussi 
-disponible en tant que <a href="https://gist.github.com/tylerneylon/5853042">gist</a>.
-Il a été traduit en français par Roland Yonaba (voir son <a href="http://github.com/Yonaba">github</a>).
+Ce tutoriel a été originalement écrit pour [tylerneylon.com](tylerneylon.com) et est aussi
+disponible en tant que [gist](https://gist.github.com/tylerneylon/5853042).
+Il a été traduit en français par Roland Yonaba (voir son [GitHub](http://github.com/Yonaba)).
 
 Amusez-vous bien avec Lua!

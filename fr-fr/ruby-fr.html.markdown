@@ -420,5 +420,4 @@ end
 
 Humain.bar # 0
 Docteur.bar # nil
-
 ```

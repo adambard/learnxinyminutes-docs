@@ -1,6 +1,6 @@
 ---
-language: D 
-filename: learnd-de.d 
+language: D
+filename: learnd-de.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 translators:
@@ -8,13 +8,13 @@ translators:
 lang: de-de
 ---
 
-```c
+```d
 // Es war klar, dass das kommt...
 module hello;
 
 import std.stdio;
 
-// argumente sind optional
+// Argumente sind optional
 void main(string[] args) {
     writeln("Hello, World!");
 }
@@ -22,13 +22,13 @@ void main(string[] args) {
 
 Wenn du so wie ich bist und viel Zeit im Internet verbringst, stehen die Chancen
 gut, dass du schonmal über [D](http://dlang.org/) gehört hast.
-Die D-Sprache ist eine moderne, überall einsetzbare programmiersprache die von
+Die D-Sprache ist eine moderne, überall einsetzbare Programmiersprache die von
 Low bis High Level verwendet werden kann und dabei viele Stile anbietet.
 
 D wird aktiv von Walter Bright und Andrei Alexandrescu entwickelt, zwei super schlaue,
-richtig coole leute. Da das jetzt alles aus dem Weg ist - auf zu den Beispielen!
+richtig coole Leute. Da das jetzt alles aus dem Weg ist - auf zu den Beispielen!
 
-```c
+```d
 import std.stdio;
 
 void main() {
@@ -39,8 +39,8 @@ void main() {
     }
 
     auto n = 1; // auto um den Typ vom Compiler bestimmen zu lassen
-    
-    // Zahlenliterale können _ verwenden für lesbarkeit
+
+    // Zahlenliterale können _ verwenden für Lesbarkeit
     while(n < 10_000) {
         n += n;
     }
@@ -69,11 +69,11 @@ void main() {
 ```
 
 Neue Typen können mit `struct`, `class`, `union`, und `enum` definiert werden.
-Structs und unions werden as-value (koppiert) an Methoden übergeben wogegen
+Structs und unions werden as-value (kopiert) an Methoden übergeben wogegen
 Klassen als Referenz übergeben werden. Templates können verwendet werden um
-alle Typen zu parameterisieren.
+alle Typen zu parametrisieren.
 
-```c
+```d
 // Hier, T ist ein Type-Parameter, Er funktioniert wie Generics in C#/Java/C++
 struct LinkedList(T) {
     T data = null;
@@ -82,7 +82,7 @@ struct LinkedList(T) {
 
 class BinTree(T) {
     T data = null;
-    
+
     // Wenn es nur einen T Parameter gibt, können die Klammern um ihn weggelassen werden
     BinTree!T left;
     BinTree!T right;
@@ -121,22 +121,21 @@ void swap(T)(ref T a, ref T b) {
     b = temp;
 }
 
-// Templates können ebenso Werte parameterisieren.
+// Templates können ebenso Werte parametrisieren.
 class Matrix(uint m, uint n, T = int) {
     T[m] rows;
     T[n] columns;
 }
 
 auto mat = new Matrix!(3, 3); // Standardmäßig ist T vom Typ Integer
-
 ```
 
 Wo wir schon bei Klassen sind - Wie wäre es mit Properties! Eine Property
 ist eine Funktion, die wie ein Wert agiert. Das gibt uns viel klarere Syntax
 im Stil von `structure.x = 7` was gleichgültig wäre zu `structure.setX(7)`
 
-```c
-// Diese Klasse ist parameterisiert mit T, U
+```d
+// Diese Klasse ist parametrisiert mit T, U
 
 class MyClass(T, U) {
     T _data;
@@ -148,13 +147,13 @@ class MyClass(T, U) {
 class MyClass(T, U) {
     T _data;
     U _other;
-    
+
     // Konstruktoren heißen immer `this`
     this(T t, U u) {
         data = t;
         other = u;
     }
-    
+
     // getters
     @property T data() {
         return _data;
@@ -164,8 +163,8 @@ class MyClass(T, U) {
         return _other;
     }
 
-    // setters    
-	// @property kann genauso gut am ende der Methodensignatur stehen
+    // setters
+    // @property kann genauso gut am ende der Methodensignatur stehen
     void data(T t) @property {
         _data = t;
     }
@@ -181,13 +180,13 @@ void main() {
 
     mc.data = 7;
     mc.other = "seven";
-    
+
     writeln(mc.data);
     writeln(mc.other);
 }
 ```
 
-Mit properties können wir sehr viel logik hinter unseren gettern
+Mit properties können wir sehr viel Logik hinter unseren gettern
 und settern hinter einer schönen Syntax verstecken
 
 Andere Objektorientierte features sind beispielsweise
@@ -202,17 +201,17 @@ puren Funktionen und unveränderbaren Daten.
 Zusätzlich können viele funktionale Algorithmen wie z.B
 map, filter, reduce und friends im `std.algorithm` Modul gefunden werden!
 
-```c
+```d
 import std.algorithm : map, filter, reduce;
 import std.range : iota; // builds an end-exclusive range
 
 void main() {
     // Wir wollen die Summe aller Quadratzahlen zwischen
     // 1 und 100 ausgeben. Nichts leichter als das!
- 
+
     // Einfach eine Lambda-Funktion als Template Parameter übergeben
     // Es ist genau so gut möglich eine normale Funktion hier zu übergeben
-	// Lambdas bieten sich hier aber an.
+    // Lambdas bieten sich hier aber an.
     auto num = iota(1, 101).filter!(x => x % 2 == 0)
                            .map!(y => y ^^ 2)
                            .reduce!((a, b) => a + b);
@@ -225,21 +224,21 @@ Ist dir aufgefallen, wie wir eine Haskell-Style Pipeline gebaut haben
 um num zu berechnen?
 Das war möglich durch die Uniform Function Call Syntax.
 Mit UFCS können wir auswählen, ob wir eine Funktion als Methode oder
-als freie Funktion aufrufen. Walters artikel dazu findet ihr
-[hier.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394) 
+als freie Funktion aufrufen. Walters Artikel dazu findet ihr
+[hier.](http://www.drdobbs.com/cpp/uniform-function-call-syntax/232700394)
 Kurzgesagt kann man Funktionen, deren erster Parameter vom typ A ist, als
 Methode auf A anwenden.
 
-Parrallel Computing ist eine Tolle sache, findest du nicht auch?
+Parallel Computing ist eine tolle Sache, findest du nicht auch?
 
-```c
+```d
 import std.stdio;
 import std.parallelism : parallel;
 import std.math : sqrt;
 
 void main() {
     // Wir wollen die Wurzel von jeder Zahl in unserem Array berechnen
-    // und dabei alle Kerne verwenden, die wir zur verfügung haben
+    // und dabei alle Kerne verwenden, die wir zur Verfügung haben
     auto arr = new double[1_000_000];
 
     // Wir verwenden den Index und das Element als Referenz
@@ -248,5 +247,4 @@ void main() {
         ref = sqrt(i + 1.0);
     }
 }
-
 ```

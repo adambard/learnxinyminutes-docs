@@ -759,12 +759,6 @@ ll <- as.data.table(list1)
 pp <- ggplot(ll, aes(x=time,price))
 pp + geom_point()
 # ggplot2 には、素晴らしい関連ドキュメントがそろっています (http://docs.ggplot2.org/current/)
-
-
-
-
-
-
 ```
 
 

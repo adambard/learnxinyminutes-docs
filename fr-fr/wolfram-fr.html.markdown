@@ -12,7 +12,7 @@ Le langage Wolfram est utilisé dans les programmes suivants :
 * La ligne de commandes interactive noyau du Raspberry Pi, mais elle ne peut pas
 gérer des éléments graphiques.
 * _Mathematica_, un éditeur de texte riche spécialisé pour les mathématiques :
-appuyer sur `Shift + Entrée` dans une cellule de code crée un nouvelle cellule 
+appuyer sur `Shift + Entrée` dans une cellule de code crée un nouvelle cellule
 contenant le résultat.
 * _Wolfram Wokbench_, une variante d'Eclipse spécialisée pour le langage
 Wolfram.
@@ -21,7 +21,7 @@ Ce code d'exemple peut être utilisé et modifié dans ces logiciels. Cependant,
 copier-coller directement dans Mathematica peut causer des problèmes de
 formatage, car il ne contient aucune information de mise en page.
 
-```
+```mathematica
 (* Ceci est un commentaire *)
 
 (* Dans Mathematica, au lieu d'utiliser ces commentaires, vous pouvez créer des
@@ -138,7 +138,7 @@ FoldList[Plus, 0, liste] (* {0, 1, 3, 6, 10}, variante de la fonction
                              précédente qui donne aussi les résultats
                              intermédiaires *)
 Append[liste, 5]         (* {1, 2, 3, 4, 5}, liste n'est pas modifiée... *)
-Prepend[liste, 5]        (* {5, 1, 2, 3, 4}, ... mais elle peut l'être en 
+Prepend[liste, 5]        (* {5, 1, 2, 3, 4}, ... mais elle peut l'être en
                              écrivant "liste = " *)
 Join[liste, {3, 4}]      (* {1, 2, 3, 4, 3, 4} *)
 liste[[2]] = 5           (* {1, 5, 3, 4}, ceci modifie bien la liste *)
@@ -163,5 +163,4 @@ Manipulate[y^2, {y, 0, 20}] (* Crée une interface graphique interactive qui
 
 ## Envie d'aller plus loin ?
 
-* [Documentation du langage Wolfram (en anglais)]
-(http://reference.wolfram.com/language/)
+* [Documentation du langage Wolfram (en anglais)](http://reference.wolfram.com/language/)

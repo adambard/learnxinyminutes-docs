@@ -8,27 +8,24 @@ filename: learnjavascript-de.js
 lang: de-de
 ---
 
-(Anmerkungen des Original-Autors:)
 JavaScript wurde im Jahr 1995 von Brendan Eich bei Netscape entwickelt. Ursprünglich war es als einfachere Skriptsprache für Websites gedacht, ergänzend zu Java, das für komplexere Webanwendungen verwendet wird. Die enge Integration in Websites und der in Browser eingebaute Support der Sprache haben dafür gesorgt, dass JavaScript weit häufiger für Web-Frontends verwendet wird als Java.
 
 Dabei ist JavaScript inzwischen nicht mehr auf Browser beschränkt: Node.js, ein Projekt, das eine eigene Laufzeitumgebung auf Grundlage von Google Chromes V8 mitbringt, wird derzeit immer populärer.
 
-Feedback ist herzlich Willkommen! Der ursprüngliche Autor ist unter [@excitedleigh](https://twitter.com/excitedleigh) oder [l@leigh.net.au](mailto:l@leigh.net.au) zu erreichen. Der Übersetzer unter [gregorbg@web.de](mailto:gregorbg@web.de).
-
 ```js
-// Kommentare werden wie in C gesetzt: Einzeilige Kommentare starten mit zwei 
+// Kommentare werden wie in C gesetzt: Einzeilige Kommentare starten mit zwei
 // Slashes
-/* während mehrzeilige Kommentare mit einem 
+/* während mehrzeilige Kommentare mit einem
 Slash und einem Stern anfangen und enden */
 
 // Statements können mit einem Semikolon beendet werden
 machWas();
 
-// ...müssen sie aber nicht, weil Semikola automatisch eingefügt werden, wenn 
+// ...müssen sie aber nicht, weil Semikola automatisch eingefügt werden, wenn
 // eine neue Zeile beginnt, abgesehen von einigen Ausnahmen.
 machWas()
 
-// Obwohl wir uns für den Anfang nicht um diese Ausnahmen kümmern müssen ist 
+// Obwohl wir uns für den Anfang nicht um diese Ausnahmen kümmern müssen ist
 // es besser die Semikola immer zu setzen.
 
 ///////////////////////////////////
@@ -47,8 +44,8 @@ machWas()
 // Division funktioniert auch mit einem Ergebnis nach dem Komma.
 5 / 2; // = 2.5
 
-// Bit-weise Operationen sind auch möglich; wenn eine Bit-weise Operation 
-// ausgeführt wird, wird die Fließkomma-Zahl in einen 32-bit Integer (mit 
+// Bit-weise Operationen sind auch möglich; wenn eine Bit-weise Operation
+// ausgeführt wird, wird die Fließkomma-Zahl in einen 32-bit Integer (mit
 // Vorzeichen) umgewandelt.
 1 << 2; // = 4
 
@@ -86,7 +83,7 @@ false;
 2 <= 2; // = true
 2 >= 2; // = true
 
-// Strings können mit + verbunden 
+// Strings können mit + verbunden
 "Hello " + "world!"; // = "Hello world!"
 
 // und mit < und > verglichen werden.
@@ -98,7 +95,7 @@ false;
 // ...solange man nicht === verwendet.
 "5" === 5; // = false
 
-// Auf einzelne Buchstaben innerhalb eines Strings kann mit der Methode 
+// Auf einzelne Buchstaben innerhalb eines Strings kann mit der Methode
 // 'charAt' zugegriffen werden
 "This is a string".charAt(0);  // = "T"
 
@@ -110,17 +107,17 @@ false;
 
 // Es gibt außerdem die Werte 'null' und 'undefined'
 null; // wird verwendet um einen vorsätzlich gewählten 'Nicht'-Wert anzuzeigen
-undefined; // wird verwendet um anzuzeigen, dass der Wert (aktuell) nicht 
-           // verfügbar ist (obwohl genau genommen undefined selbst einen Wert 
+undefined; // wird verwendet um anzuzeigen, dass der Wert (aktuell) nicht
+           // verfügbar ist (obwohl genau genommen undefined selbst einen Wert
            // darstellt)
 
-// false, null, undefined, NaN, 0 und "" sind 'falsy', d. h. alles andere ist 
+// false, null, undefined, NaN, 0 und "" sind 'falsy', d. h. alles andere ist
 // wahr. Man beachte, dass 0 falsch und "0" wahr ist, obwohl 0 == "0".
 
 ///////////////////////////////////
 // 2. Variablen, Arrays und Objekte
 
-// Variablen werden mit dem Schlüsselwort 'var' und einem frei wählbaren 
+// Variablen werden mit dem Schlüsselwort 'var' und einem frei wählbaren
 // Bezeichner deklariert. JavaScript ist dynamisch typisiert, so dass man einer
 // Variable keinen Typ zuweisen muss. Die Zuweisung verwendet ein einfaches =.
 var einWert = 5;
@@ -135,12 +132,12 @@ einAndererWert = 10;
 // Wert 'undefined'.
 var einDritterWert; // = undefined
 
-// Es existiert eine Kurzform, um mathematische Operationen mit Variablen 
+// Es existiert eine Kurzform, um mathematische Operationen mit Variablen
 // auszuführen:
 einWert += 5; // äquivalent zu einWert = einWert + 5; einWert ist nun also 10
 einWert *= 10; // einWert ist nach dieser Operation 100
 
-// Und es existiert eine weitere, sogar noch kürzere Form, um 1 zu addieren 
+// Und es existiert eine weitere, sogar noch kürzere Form, um 1 zu addieren
 // oder zu subtrahieren
 einWert++; // nun ist einWert 101
 einWert--; // wieder 100
@@ -149,7 +146,7 @@ einWert--; // wieder 100
 var myArray = ["Hello", 45, true];
 
 // Auf einzelne Elemente eines Arrays kann zugegriffen werden, in dem der Index
-// in eckigen Klammern hinter das Array geschrieben werden. Die Indexierung 
+// in eckigen Klammern hinter das Array geschrieben werden. Die Indexierung
 // beginnt bei 0.
 myArray[1]; // = 45
 
@@ -160,11 +157,11 @@ myArray.length; // = 4
 // und sind veränderlich
 myArray[3] = "Hello";
 
-// Die Objekte in JavaScript entsprechen 'dictionaries' oder 'maps' in anderen 
+// Die Objekte in JavaScript entsprechen 'dictionaries' oder 'maps' in anderen
 // Sprachen: es handelt sich um ungeordnete Schlüssel-Wert-Paare.
 var myObj = { key1: "Hello", key2: "World" };
 
-// Schlüssel sind Strings, aber es werden keine Anführungszeichen benötigt, 
+// Schlüssel sind Strings, aber es werden keine Anführungszeichen benötigt,
 // sofern es sich um reguläre JavaScript-Bezeichner handelt. Werte können von
 // jedem Typ sein.
 var myObj = { myKey: "myValue", "my other key": 4 };
@@ -173,15 +170,15 @@ var myObj = { myKey: "myValue", "my other key": 4 };
 // werden,
 myObj["my other key"]; // = 4
 
-// ... oder in dem man die Punkt-Notation verwendet, vorausgesetzt es handelt 
+// ... oder in dem man die Punkt-Notation verwendet, vorausgesetzt es handelt
 // sich bei dem Schlüssel um einen validen Bezeichner.
 myObj.myKey; // = "myValue"
 
-// Objekte sind veränderlich, Werte können verändert und neue Schlüssel 
+// Objekte sind veränderlich, Werte können verändert und neue Schlüssel
 // hinzugefügt werden.
 myObj.myThirdKey = true;
 
-// Der Zugriff auf einen noch nicht definierten Schlüssel, liefert ein 
+// Der Zugriff auf einen noch nicht definierten Schlüssel, liefert ein
 // undefined.
 myObj.myFourthKey; // = undefined
 
@@ -203,7 +200,7 @@ while (true) {
     // Eine unendliche Schleife!
 }
 
-// Do-while-Scheifen arbeiten wie while-Schleifen, abgesehen davon, dass sie 
+// Do-while-Schleifen arbeiten wie while-Schleifen, abgesehen davon, dass sie
 // immer mindestens einmal ausgeführt werden.
 var input;
 do {
@@ -211,7 +208,7 @@ do {
 } while ( !isValid( input ) )
 
 // Die for-Schleife arbeitet genau wie in C und Java:
-// Initialisierung; Bedingung, unter der die Ausführung fortgesetzt wird; 
+// Initialisierung; Bedingung, unter der die Ausführung fortgesetzt wird;
 // Iteration.
 for ( var i = 0; i < 5; i++ ) {
     // wird 5-mal ausgeführt
@@ -227,7 +224,7 @@ if (colour == "red" || colour == "blue"){
 }
 
 // Die Auswertung von '&&' und '||' erfolgt so, dass abgebrochen wird, wenn die
-// Bedingung erfüllt ist (bei oder) oder nicht-erfüllt ist (bei und). Das ist 
+// Bedingung erfüllt ist (bei oder) oder nicht-erfüllt ist (bei und). Das ist
 // nützlich, um einen Default-Wert zu setzen.
 var name = otherName || "default";
 
@@ -272,8 +269,8 @@ function myFunction()
 }
 myFunction(); // = undefined
 
-// In JavaScript sind Funktionen 'Bürger erster Klasse', also können sie wie 
-// Variablen verwendet und als Parameter anderen Funktionen übergeben werden 
+// In JavaScript sind Funktionen 'Bürger erster Klasse', also können sie wie
+// Variablen verwendet und als Parameter anderen Funktionen übergeben werden
 // - zum Beispiel, um einen 'event handler' zu 'beliefern'.
 function myFunction() {
     // wird ausgeführt, nachdem 5 Sekunden vergangen sind
@@ -281,36 +278,36 @@ function myFunction() {
 setTimeout(myFunction, 5000);
 
 // Funktionen können auch deklariert werden, ohne ihnen einen Namen zuzuweisen.
-// Es ist möglich diese anonymen Funktionen direkt als (oder im) Argument 
+// Es ist möglich diese anonymen Funktionen direkt als (oder im) Argument
 // einer anderen Funktion zu definieren.
 setTimeout(function(){
     // wird ausgeführt, nachdem 5 Sekunden vergangen sind
 }, 5000);
 
-// JavaScript hat einen Geltungsbereich, der sich auf Funktionen erstreckt: 
+// JavaScript hat einen Geltungsbereich, der sich auf Funktionen erstreckt:
 // Funktionen haben ihren eigenen Geltungsbereich, andere Blöcke nicht.
 if(true) {
     var i = 5;
 }
-i; // = 5 - nicht undefined, wie man es von einer Sprache erwarten würde, die 
+i; // = 5 - nicht undefined, wie man es von einer Sprache erwarten würde, die
    // ihren Geltungsbereich nach Blöcken richtet
 
-// Daraus ergibt sich ein bestimmtes Muster für sofort-ausführbare, anonyme 
+// Daraus ergibt sich ein bestimmtes Muster für sofort-ausführbare, anonyme
 // Funktionen, die es vermeiden, dass der globale Geltungsbereich von Variablen
 // 'verschmutzt' wird.
 (function(){
     var temporary = 5;
-    // Auf eine Variable im globalen Geltungsbereich kann zugegriffen werden, 
-    // sofern sie im globalen Objekt definiert ist (in einem Webbrowser ist 
-    // dies immer das 'window'-Objekt, in anderen Umgebungen, bspw. Node.js, 
-    // kann das anders aussehen). 
+    // Auf eine Variable im globalen Geltungsbereich kann zugegriffen werden,
+    // sofern sie im globalen Objekt definiert ist (in einem Webbrowser ist
+    // dies immer das 'window'-Objekt, in anderen Umgebungen, bspw. Node.js,
+    // kann das anders aussehen).
     window.permanent = 10;
 })();
 temporary; // wirft einen ReferenceError
 permanent; // = 10
 
-// Eines der mächtigsten Charakteristika von JavaScript sind Closures. Wird 
-// eine Funktion innerhalb einer anderen Funktion definiert, dann hat die 
+// Eines der mächtigsten Charakteristika von JavaScript sind Closures. Wird
+// eine Funktion innerhalb einer anderen Funktion definiert, dann hat die
 // innere Funktion Zugriff auf alle Variablen der äußeren Funktion, sogar dann,
 // wenn die äußere Funktion beendet wurde.
 function sayHelloInFiveSeconds(name){
@@ -319,13 +316,13 @@ function sayHelloInFiveSeconds(name){
         alert(prompt);
     }
     setTimeout(inner, 5000);
-    // setTimeout wird asynchron ausgeführt. Also wird sayHelloInFiveSeconds 
-    // sofort verlassen und setTimeout wird die innere Funktion 'im nachhinein' 
-    // aufrufen. Dennoch: Weil sayHelloInFiveSeconds eine Hülle um die innere 
-    // Funktion bildet, hat die innere Funktion immer noch Zugriff auf die 
+    // setTimeout wird asynchron ausgeführt. Also wird sayHelloInFiveSeconds
+    // sofort verlassen und setTimeout wird die innere Funktion 'im nachhinein'
+    // aufrufen. Dennoch: Weil sayHelloInFiveSeconds eine Hülle um die innere
+    // Funktion bildet, hat die innere Funktion immer noch Zugriff auf die
     // Variable prompt.
 }
-sayHelloInFiveSeconds("Adam");  // wird nach 5 Sekunden ein Popup mit der 
+sayHelloInFiveSeconds("Adam");  // wird nach 5 Sekunden ein Popup mit der
                                 // Nachricht "Hello, Adam!" öffnen.
 
 ///////////////////////////////////
@@ -339,7 +336,7 @@ var myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
-// Wenn Funktionen aufgerufen werden, die zu einem Objekt gehören, können sie 
+// Wenn Funktionen aufgerufen werden, die zu einem Objekt gehören, können sie
 // auf das eigene Objekt mit dem Schlüsselwort 'this' zugreifen.
 myObj = {
     myString: "Hello world!",
@@ -349,14 +346,14 @@ myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
-// Worauf 'this' gesetzt wird, ist davon abhängig, wie die Funktion aufgerufen 
-// wird, nicht wo sie definiert wurde. Unsere Funktion wird daher nicht 
-// funktionieren, sofern sie außerhalb des Kontextes des Objekts aufgerufen 
+// Worauf 'this' gesetzt wird, ist davon abhängig, wie die Funktion aufgerufen
+// wird, nicht wo sie definiert wurde. Unsere Funktion wird daher nicht
+// funktionieren, sofern sie außerhalb des Kontextes des Objekts aufgerufen
 // wird.
 var myFunc = myObj.myFunc;
 myFunc(); // = undefined
 
-// Umgekehrt ist es möglich eine Funktion einem Objekt zuzuweisen und dadurch 
+// Umgekehrt ist es möglich eine Funktion einem Objekt zuzuweisen und dadurch
 // Zugriff auf den this-Kontext zu erhalten, sogar dann, wenn die Funktion dem
 // Objekt nach dessen Definition zugewiesen wird.
 var myOtherFunc = function(){
@@ -373,7 +370,7 @@ var anotherFunc = function(s){
 }
 anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
 
-// 'apply' funktioniert beiahe identisch, erwartet die übergebenen Argumente
+// 'apply' funktioniert beinahe identisch, erwartet die übergebenen Argumente
 // aber in einem Array
 
 anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
@@ -396,8 +393,8 @@ var product = function(a, b){ return a * b; }
 var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
-// Wenn eine Funktion mit dem Schlüsselwort 'new' aufgerufen wird, dann wird 
-// ein neues Objekt erzeugt. Funktionen, die darauf ausgelegt sind in dieser 
+// Wenn eine Funktion mit dem Schlüsselwort 'new' aufgerufen wird, dann wird
+// ein neues Objekt erzeugt. Funktionen, die darauf ausgelegt sind in dieser
 // Art aufgerufen zu werden, werden Konstruktoren genannt.
 var MyConstructor = function(){
     this.myNumber = 5;
@@ -405,14 +402,14 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
-// Jedes JavaScript-Objekt hat einen Prototyp. Wenn man versucht auf eine 
+// Jedes JavaScript-Objekt hat einen Prototyp. Wenn man versucht auf eine
 // Eigenschaft des Objekts zuzugreifen, das nicht im Objekt selbst existiert,
 // schaut der Interpreter in dessen Prototyp nach.
 
-// Einige JavaScript-Implementierungen erlauben den direkten Zugriff auf den 
+// Einige JavaScript-Implementierungen erlauben den direkten Zugriff auf den
 // Prototyp eines Objekts durch die magische Eigenschaft __proto__. Obwohl das
 // nützlich ist, um  Prototypen im Allgemeinen zu erklären, ist das nicht Teil
-// des Standards; zum Standard-Weg der Nutzung von Prototypen kommen wir 
+// des Standards; zum Standard-Weg der Nutzung von Prototypen kommen wir
 // später.
 var myObj = {
     myString: "Hello world!",
@@ -437,26 +434,26 @@ myPrototype.__proto__ = {
 myObj.myBoolean; // = true
 
 // Dafür wird nichts hin und her kopiert; jedes Objekt speichert eine Referenz
-// auf seinen Prototypen. Das heißt wenn der Prototyp geändert wird, dann 
+// auf seinen Prototypen. Das heißt wenn der Prototyp geändert wird, dann
 // werden die Änderungen überall sichtbar.
 myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
-// Es wurde bereits erwähnt, dass __proto__ nicht zum Standard gehört und es 
+// Es wurde bereits erwähnt, dass __proto__ nicht zum Standard gehört und es
 // gibt ebenso keinen Standard-Weg, um den Prototyp eines existierenden Objekts
-// zu ändern. Es gibt dennoch zwei Wege, wie man ein neues Objekt mit einem 
+// zu ändern. Es gibt dennoch zwei Wege, wie man ein neues Objekt mit einem
 // gegebenen Prototypen erzeugt.
 
 // Der erste Weg ist die Methode Object.create, die eine jüngere Ergänzung des
-// JavaScript-Standards ist und daher noch nicht in allen Implementierungen 
+// JavaScript-Standards ist und daher noch nicht in allen Implementierungen
 // verfügbar.
 var myObj = Object.create(myPrototype);
 myObj.meaningOfLife; // = 43
 
-// Der zweite Weg, der immer funktioniert, hat mit den Konstruktoren zu tun. 
+// Der zweite Weg, der immer funktioniert, hat mit den Konstruktoren zu tun.
 // Konstruktoren haben eine Eigenschaft, die Prototyp heißt.  Dabei handelt es
 // sich *nicht* um den Prototypen der Konstruktor-Funktion; stattdessen handelt
-// es sich um den Prototypen, der einem neuen Objekt mitgegeben wird, wenn es 
+// es sich um den Prototypen, der einem neuen Objekt mitgegeben wird, wenn es
 // mit dem Konstruktor und dem Schlüsselwort 'new' erzeugt wird.
 MyConstructor.prototype = {
     getMyNumber: function(){
@@ -466,8 +463,8 @@ MyConstructor.prototype = {
 var myNewObj2 = new MyConstructor();
 myNewObj2.getMyNumber(); // = 5
 
-// Alle primitiven Typen, also strings und numbers, haben auch Konstruktoren, 
-// die zu dem Typ äquivalente Wrapper-Objekte erzeugen. 
+// Alle primitiven Typen, also strings und numbers, haben auch Konstruktoren,
+// die zu dem Typ äquivalente Wrapper-Objekte erzeugen.
 var myNumber = 12;
 var myNumberObj = new Number(12);
 myNumber == myNumberObj; // = true
@@ -480,8 +477,8 @@ if (0){
     // Dieser Teil wird nicht ausgeführt, weil 0 'falsy' ist.
 }
 
-// Das Wrapper-Objekt und die regulären, eingebauten Typen, teilen sich einen 
-// Prototyp; so ist es möglich zum Beispiel einem String weitere Funktionen 
+// Das Wrapper-Objekt und die regulären, eingebauten Typen, teilen sich einen
+// Prototyp; so ist es möglich zum Beispiel einem String weitere Funktionen
 // hinzuzufügen.
 String.prototype.firstCharacter = function(){
     return this.charAt(0);
@@ -489,11 +486,11 @@ String.prototype.firstCharacter = function(){
 "abc".firstCharacter(); // = "a"
 
 // Diese Tatsache wird häufig bei einer Methode mit dem Namen 'polyfilling'
-// verwendet: Dabei wird ein neues Feature von JavaScript in einer älteren 
-// Untermenge der Sprache integriert, so dass bestimmte Funktionen auch in 
+// verwendet: Dabei wird ein neues Feature von JavaScript in einer älteren
+// Untermenge der Sprache integriert, so dass bestimmte Funktionen auch in
 // älteren Umgebungen und Browsern verwendet werden können.
 
-// Ein Beispiel: Es wurde erwähnt, dass die Methode Object.create nicht in 
+// Ein Beispiel: Es wurde erwähnt, dass die Methode Object.create nicht in
 // allen Umgebungen verfügbar ist - wir können sie dennoch verwenden, mit einem
 // 'polyfill':
 if (Object.create === undefined){ // überschreib nichts, was eventuell bereits
@@ -503,7 +500,7 @@ if (Object.create === undefined){ // überschreib nichts, was eventuell bereits
         // Prototypen
         var Constructor = function(){};
         Constructor.prototype = proto;
-        // verwende es dann, um ein neues Objekt mit einem passenden 
+        // verwende es dann, um ein neues Objekt mit einem passenden
         // Prototypen zurückzugeben
         return new Constructor();
     }
@@ -514,11 +511,11 @@ if (Object.create === undefined){ // überschreib nichts, was eventuell bereits
 
 Das [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) bietet eine ausgezeichnete Dokumentation für die Verwendung von JavaScript im Browser. Es ist außerdem ein Wiki und ermöglicht es damit anderen zu helfen, wenn man selbst ein wenig Wissen angesammelt hat.
 
-MDN's [A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) führt sehr viele der hier vorgestellten Konzepte im Detail aus. 
+MDN's [A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) führt sehr viele der hier vorgestellten Konzepte im Detail aus.
 
 Dieses Tutorial hat nur die Sprache JavaScript vorgestellt; um mehr über den  Einsatz in Websites zu lernen, ist es ein guter Start etwas über das [Document Object Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core) zu lernen.
 
-[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) ist eine tiefgehende Einführung in die kontra-intuitiven Parts der Sprache.
+[JavaScript Garden](https://shamansir.github.io/JavaScript-Garden/) ist eine tiefgehende Einführung in die kontra-intuitiven Parts der Sprache.
 
 [JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) ist ein Klassiker unter den Referenzen.
 

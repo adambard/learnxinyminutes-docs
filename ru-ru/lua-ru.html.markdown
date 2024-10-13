@@ -400,26 +400,26 @@ g = loadstring('print(343)')  -- Вернет функцию.
 g()  -- Напишет 343.
 
 --]]
-
 ```
+
 ## Примечание (от автора)
 
-Мне было интересно изучить Lua, чтобы делать игры при помощи <a href="http://love2d.org/">игрового движка LÖVE</a>.
+Мне было интересно изучить Lua, чтобы делать игры при помощи [игрового движка LÖVE](http://love2d.org/).
 
-Я начинал с <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
-Затем я прочитал официальную <a href="http://www.lua.org/pil/contents.html">Документацию по Lua</a>.
+Я начинал с [BlackBulletIV's Lua for programmers](http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/).
+Затем я прочитал официальную [Документацию по Lua](http://www.lua.org/pil/contents.html).
 
-Также может быть полезной <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Краткая справка по Lua</a> на lua-users.org.
+Также может быть полезной [Краткая справка по Lua](http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf) на lua-users.org.
 
 Ещё из основных тем не охвачены стандартные библиотеки:
 
-* <a href="http://lua-users.org/wiki/StringLibraryTutorial">библиотека string</a>
-* <a href="http://lua-users.org/wiki/TableLibraryTutorial">библиотека table</a>
-* <a href="http://lua-users.org/wiki/MathLibraryTutorial">библиотека math</a>
-* <a href="http://lua-users.org/wiki/IoLibraryTutorial">библиотека io</a>
-* <a href="http://lua-users.org/wiki/OsLibraryTutorial">библиотека os</a>
+* [библиотека `string`](http://lua-users.org/wiki/StringLibraryTutorial)
+* [библиотека `table`](http://lua-users.org/wiki/TableLibraryTutorial)
+* [библиотека `math`](http://lua-users.org/wiki/MathLibraryTutorial)
+* [библиотека `io`](http://lua-users.org/wiki/IoLibraryTutorial)
+* [библиотека `os`](http://lua-users.org/wiki/OsLibraryTutorial)
 
-Кстати, весь файл написан на Lua; сохраните его как learn.lua и запустите при помощи "lua learn.lua" !
+Кстати, весь файл написан на Lua; сохраните его как learn.lua и запустите при помощи `lua learn.lua`
 
 Изначально эта статья была написана для tylerneylon.com.
-Также она доступна как <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Удачи с Lua!
+Также она доступна как [GitHub gist](https://gist.github.com/tylerneylon/5853042). Удачи с Lua!

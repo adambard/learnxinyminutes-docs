@@ -1,5 +1,5 @@
 ---
-language: elixir
+language: Elixir
 contributors:
     - ["Joao Marques", "https://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
@@ -13,16 +13,15 @@ It's fully compatible with Erlang, but features a more standard syntax
 and many more features.
 
 ```elixir
-
 # Single line comments start with a number symbol.
 
 # There's no multi-line comment,
 # but you can stack multiple comments.
 
-# To use the elixir shell use the `iex` command.
+# To use the Elixir shell use the `iex` command.
 # Compile your modules with the `elixirc` command.
 
-# Both should be in your path if you installed elixir correctly.
+# Both should be in your path if you installed Elixir correctly.
 
 ## ---------------------------
 ## -- Basic types
@@ -50,7 +49,7 @@ elem({1, 2, 3}, 0) #=> 1
 head #=> 1
 tail #=> [2,3]
 
-# In elixir, just like in Erlang, the `=` denotes pattern matching and
+# In Elixir, just like in Erlang, the `=` denotes pattern matching and
 # not an assignment.
 #
 # This means that the left-hand side (pattern) is matched against a
@@ -83,7 +82,7 @@ string.
 <<?a, ?b, ?c>> #=> "abc"
 [?a, ?b, ?c]   #=> 'abc'
 
-# `?a` in elixir returns the ASCII integer for the letter `a`
+# `?a` in Elixir returns the ASCII integer for the letter `a`
 ?a #=> 97
 
 # To concatenate lists use `++`, for binaries use `<>`
@@ -116,7 +115,7 @@ genders.gillian #=> "female"
 5 * 2  #=> 10
 10 / 2 #=> 5.0
 
-# In elixir the operator `/` always returns a float.
+# In Elixir the operator `/` always returns a float.
 
 # To do integer division use `div`
 div(10, 2) #=> 5
@@ -147,13 +146,15 @@ nil && 20  #=> nil
 1 == 1.0  #=> true
 1 === 1.0 #=> false
 
-# We can also compare two different data types:
+# Elixir operators are strict in their arguments, with the exception
+# of comparison operators that work across different data types:
 1 < :hello #=> true
 
-# The overall sorting order is defined below:
-# number < atom < reference < functions < port < pid < tuple < list < bit string
+# This enables building collections of mixed types:
+["string", 123, :atom]
 
-# To quote Joe Armstrong on this: "The actual order is not important,
+# While there is an overall order of all data types,
+# to quote Joe Armstrong on this: "The actual order is not important,
 # but that a total ordering is well defined is important."
 
 ## ---------------------------
@@ -174,7 +175,7 @@ else
   "This will"
 end
 
-# Remember pattern matching? Many control-flow structures in elixir rely on it.
+# Remember pattern matching? Many control-flow structures in Elixir rely on it.
 
 # `case` allows us to compare a value against many patterns:
 case {:one, :two} do
@@ -307,7 +308,7 @@ Geometry.area({:circle, 3})       #=> 28.25999999999999801048
 # Geometry.area({:circle, "not_a_number"})
 #=> ** (FunctionClauseError) no function clause matching in Geometry.area/1
 
-# Due to immutability, recursion is a big part of elixir
+# Due to immutability, recursion is a big part of Elixir
 defmodule Recursion do
   def sum_list([head | tail], acc) do
     sum_list(tail, acc + head)
@@ -382,7 +383,7 @@ end
 ## ---------------------------
 
 # Elixir relies on the actor model for concurrency. All we need to write
-# concurrent programs in elixir are three primitives: spawning processes,
+# concurrent programs in Elixir are three primitives: spawning processes,
 # sending messages and receiving messages.
 
 # To start a new process we use the `spawn` function, which takes a function

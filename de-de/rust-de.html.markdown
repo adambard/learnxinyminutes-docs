@@ -11,7 +11,7 @@ filename: lernerust-de.rs
 Rust ist eine Programmiersprache von Mozilla Research.  
 Rust vereint Sicherheit, Nebenläufigkeit und eine hohe Praxistauglichkeit.  
   
-Sicherheit bedeuted, dass Programmierfehler ausgeschlossen werden, die zu  
+Sicherheit bedeutet, dass Programmierfehler ausgeschlossen werden, die zu  
 Speicherzugriffsfehlern führen könnten. Das funktioniert u.a. dadurch, dass  
 es keinen Garbage Collector gibt, sondern ein besonderes Typsystem.  
   
@@ -21,8 +21,8 @@ entwickelt, dass es einfach keine stabile gab und geraten wurde den
 nightly build zu nutzen.  
   
 Am 15. Mai 2015 wurde Rust 1.0 freigegeben, und zwar mit der Garantie einer  
-Abwärtskompatabilität. Verbesserungen der Kompilierzeit und andere Compiler  
-verbesserungen finden im Moment im nightly build statt. Von Rust gibt es im  
+Abwärtskompatibilität. Verbesserungen der Kompilierzeit und andere Compiler  
+Verbesserungen finden im Moment im nightly build statt. Von Rust gibt es im  
 Moment ungefähr alle sechs Wochen ein Release. Rust 1.1 beta wurde zusammen  
 mit dem 1.0 Release zur Verfügung gestellt.  
   

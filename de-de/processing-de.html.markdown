@@ -34,7 +34,7 @@ offiziellen IDE, damit die Programme kompiliert und ausgeführt werden können.
 /*
    Da Processing von Java abstammt, ist die Syntax für Kommentare gleich
    wie bei Java (wie du vielleicht oben bemerkt hast)!
-   Mehrzeilige Kommentare werden wie hier umschloßen.
+   Mehrzeilige Kommentare werden wie hier umschlossen.
 */
 
 /* -------------------------------------------------
@@ -59,7 +59,7 @@ size(width, height, [renderer]); // bestimme die Canvasgröße mit dem optionale
                                  // Parameter `renderer`.
 // Du wirst innerhalb dieses Dokuments noch weitere Parameter sehen.
 
-// Wenn du möchstest, dass Code unendlich oft ausgeführt wird, so muss dieser
+// Wenn du möchtest, dass der Code unendlich oft ausgeführt wird, so muss dieser
 // Code innerhalb der `draw()`-Methode stehen.
 // `draw()` muss existieren, wenn du möchtest, dass das Programm durchgehend
 // läuft. Die `draw()`-Methode darf nur einmal vorkommen.
@@ -107,7 +107,7 @@ double doubleValue = 1.12345D // Double (64-Bit Gleitkommazahl)
 // lediglich die wichtigsten durch.
 
 // String
-// Während der Datentyp `char` einfache Anzührungszeichen (' ') braucht, haben
+// Während der Datentyp `char` einfache Anführungszeichen (' ') braucht, haben
 // Strings doppelte Anführungszeichen (" ").
 String sampleString = "Hallo, Processing!";
 // Strings können auch durch ein Array von `char`s erstellt werden.
@@ -137,11 +137,11 @@ ArrayList<Integer> intArrayList = new ArrayList<Integer>();
 // Da Processing auf Java basiert, unterstützt Processing die Objektorientierte
 // Programmierung. Dies bedeutet, dass du grundsätzlich jegliche Datentypen
 // selber erstellen kannst und diese nach deinen Bedürfnissen manipulieren kannst.
-// Selbstverständlich muss eine Klasse definiert werden bevor du ein Objekt
-// davon instanzieren kannst.
+// Selbstverständlich muss eine Klasse definiert werden, bevor du ein Objekt
+// davon instanziieren kannst.
 // Format: ClassName InstanceName
-SomeRandomClass myObject // hier musst du das Objekt später instazieren
-// Hier wird das Objekt direkt instanziert:
+SomeRandomClass myObject // hier musst du das Objekt später instanziieren
+// Hier wird das Objekt direkt instanziiert:
 SomeRandomClass myObjectInstantiated = new SomeRandomClass(); 
 
 // Processing hat noch weitere Collections (wie zum Beispiel Dictionaries und 
@@ -255,7 +255,6 @@ Da du nun die Grundsätze der Programmiersprache verstanden hast, schauen wir
 uns nun das Beste an Processing an - Das Zeichnen!
 
 ```
-
 /* -------------------------------------------------
    Figuren
    -------------------------------------------------
@@ -349,7 +348,7 @@ sphere(radius); // Die Größe wird definiert durch den Parameter `radius`
    -------------------------------------------------
 */
 
-// Tranformationen sind nützlich, um ständig zu wissen, wo die Koordinaten und
+// Transformationen sind nützlich, um ständig zu wissen, wo die Koordinaten und
 // die Ecken einer Form sind, welche du gezeichnet hast. Grundsätzlich sind dies
 // Matrizenoperationen. `pushMatrix()`, `popMatrix()` und `translate()`.
 pushMatrix(); // Speichert das aktuelle Koordinatensystem auf dem Stack
@@ -363,7 +362,7 @@ translate(x,y); // Setzt den Ursprung zu diesem Punkt.
 translate(x, y, z); // Pendant zu der oberen Funktion im dreidimensionalen Raum
 
 // Rotationen
-rotate(angle); // Rotiere, um den Betrag, welcher spezifiert wurde.
+rotate(angle); // Rotiere, um den Betrag, welcher spezifiziert wurde.
 // Es gibt drei Pendants im dreidimensionalen Raum. 
 // Namentlich sind dies: `rotateX(angle)`, `rotateY(angle)` und `rotateZ(angle)`
 
@@ -406,7 +405,7 @@ Wenn du weitere Dinge mit Processing kennenlernen willst, dann gibt es unzählig
 Dinge, welche du mit Processing machen kannst. Das Rendern von Modellen,
 Schattierungen und viele mehr. Für ein kurzes Tutorial bietet Processing zu viel,
 daher verweise ich dich, falls du interessiert bist, auf die offizielle
-Dokumentaion.
+Dokumentation.
 
 ```
 // Bevor wir weiterfahren, werde ich einige Aspekte zum Importieren von 
@@ -432,7 +431,7 @@ was man in Processing mit nur wenigen Zeilen Code machen kann.
 Kopiere den nachfolgenden Code in deine Processing IDE.
 
 ```
-// Disclaimer: Ich habe das Porgramm nicht selbst geschriben. Diese Skizze
+// Disclaimer: Ich habe das Programm nicht selbst geschrieben. Diese Skizze
 // stammt aus openprocessing, allerdings soll dieses Programm zeigen, wie wenig
 // Zeilen Code notwendig sind, um etwas Cooles zu machen.
 // Abgerufen von: (https://www.openprocessing.org/sketch/559769)
@@ -483,7 +482,7 @@ void branch(float len) {
 }
 ```
 
-Processing ist einfach zu erlernen und ist vorallem nützlich, um Multimedia-
+Processing ist einfach zu erlernen und ist vor allem nützlich, um Multimedia-
 Inhalte (auch in 3D) zu erstellen ohne viel Code zu schreiben. Es ist so einfach
 gehalten, dass man den Code durchlesen kann und man versteht den Programmablauf
 bereits.

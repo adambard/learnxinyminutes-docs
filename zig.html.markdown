@@ -5,28 +5,21 @@ contributors:
     - ["Philippe Pittoli", "https://karchnu.fr/"]
 ---
 
-
 [Zig][ziglang] aims to be a replacement for the C programming language.
 
-**WARNING**: this document expects you to understand a few basic concepts in computer science, such as pointers, stack and heap memory, etc.
-
-**WARNING**: Zig isn't considered as ready for production. Bugs are expected.
-DO NOT TRY ZIG AS YOUR FIRST PROGRAMMING EXPERIENCE.
-The compiler, even the language and its libraries aren't ready, yet.
-You've been warned.
-
-Prior knowledge of C is recommended.
-
+**WARNING**: this document expects you to understand a few basic concepts in computer
+science, such as pointers, stack and heap memory, etc. Prior knowledge of C is
+recommended.
 
 ## Quick overview: Zig compared to C
 
 - Syntax is mostly the same, with some improvements (less ambiguity).
 - Zig introduces namespaces.
-- Try and catch mechanism, which is both convenient, efficient and optional.
+- `try` and `catch` mechanism, which is both convenient, efficient and optional.
 - Most of the C undefined behaviors (UBs) are fixed.
 - Compared to C, raw pointers are safer to use and less likely to be needed.
-  * The type system distinguishes between a pointer to a single value, or multiple values, etc.
-  * Slices are preferred, which is a structure with a pointer and a runtime known size, which characterizes most uses of pointers in the first place.
+  - The type system distinguishes between a pointer to a single value, or multiple values, etc.
+  - Slices are preferred, which is a structure with a pointer and a runtime known size, which characterizes most uses of pointers in the first place.
 - Some arbitrary language limitations are removed. For example, enumerations, structures and unions can have functions.
 - Simple access to SIMD operations (basic maths on vectors).
 - Zig provides both low-level features of C and the one provided through compiler extensions.
@@ -38,8 +31,7 @@ Prior knowledge of C is recommended.
 
 ## Zig language
 
-
-```
+```zig
 //! Top-level documentation.
 
 /// Documentation comment.
@@ -47,9 +39,9 @@ Prior knowledge of C is recommended.
 // Simple comment.
 ```
 
-
 ### Hello world.
-```
+
+```zig
 // Import standard library, reachable through the "std" constant.
 const std = @import("std");
 
@@ -67,7 +59,8 @@ pub fn main() void {
 ```
 
 ### Booleans, integers and float.
-```
+
+```zig
 // Booleans.
 // Keywords are preferred to operators for boolean operations.
 print("{}\n{}\n{}\n", .{
@@ -109,7 +102,8 @@ i <<| 8   == 255   // u8: won't go higher than 255
 ```
 
 ### Arrays.
-```
+
+```zig
 // An array is a well-defined structure with a length attribute (len).
 
 // 5-byte array with undefined content (stack garbage).
@@ -156,8 +150,8 @@ try some_integers[i]; // Runtime error 'index out of bounds'.
 ```
 
 ### Multidimensional arrays.
-```
 
+```zig
 const mat4x4 = [4][4]f32{
     [_]f32{ 1.0, 0.0, 0.0, 0.0 },
     [_]f32{ 0.0, 1.0, 0.0, 1.0 },
@@ -177,8 +171,8 @@ for (mat4x4) |row, row_index| {
 ```
 
 ### Strings.
-```
 
+```zig
 // Simple string constant.
 const greetings = "hello";
 // ... which is equivalent to:
@@ -195,8 +189,8 @@ print("string: {s}\n", .{greetings});
 ```
 
 ### Slices.
-```
 
+```zig
 // A slice is a pointer and a size, an array without compile-time known size.
 // Slices have runtime out-of-band verifications.
 
@@ -206,8 +200,8 @@ const slice = array[0..array.len];  // "slice" represents the whole array.
 ```
 
 ### Pointers.
-```
 
+```zig
 // Pointer on a value can be created with "&".
 const x: i32 = 1;
 const pointer: *i32 = &x;  // "pointer" is a pointer on the i32 var "x".
@@ -222,8 +216,9 @@ if (pointer.* == 1) {
 const foo = pointer.?; // Get the pointed value, otherwise crash.
 ```
 
-### Optional values (?<type>).
-```
+### Optional values (?\<type\>).
+
+```zig
 // An optional is a value than can be of any type or null.
 
 // Example: "optional_value" can either be "null" or an unsigned 32-bit integer.
@@ -239,7 +234,8 @@ if (x) |value| {
 ```
 
 ### Errors.
-```
+
+```zig
 // Zig provides an unified way to express errors.
 
 // Errors are defined in error enumerations, example:
@@ -299,7 +295,7 @@ var value = try some_function();
 
 ### Control flow.
 
-```
+```zig
 // Conditional branching.
 
 if (condition) {
@@ -384,8 +380,8 @@ const result = for (items) |value| {
 ```
 
 ### Labels.
-```
 
+```zig
 // Labels are a way to name an instruction, a location in the code.
 // Labels can be used to "continue" or "break" in a nested loop.
 outer: for ([_]i32{ 1, 2, 3, 4, 5, 6, 7, 8 }) |_| {
@@ -434,8 +430,8 @@ const result = for (items) |value| { // First: loop.
 ```
 
 ### Switch.
-```
 
+```zig
 // As a switch in C, but slightly more advanced.
 // Syntax:
 //   switch (value) {
@@ -454,15 +450,15 @@ var x = switch(value) {
 // A slightly more advanced switch, accepting a range of values:
 const foo: i32 = 0;
 const bar = switch (foo) {
-  0                        => "zero",
-  1...std.math.maxInt(i32) => "positive",
-  else                     => "negative",
+    0                        => "zero",
+    1...std.math.maxInt(i32) => "positive",
+    else                     => "negative",
 };
 ```
 
 ### Structures.
-```
 
+```zig
 // Structure containing a single value.
 const Full = struct {
     number: u16,
@@ -564,7 +560,8 @@ print("p.y: {}\n", .{p.y}); // 30
 ```
 
 ### Tuples.
-```
+
+```zig
 // A tuple is a list of elements, possibly of different types.
 
 const foo = .{ "hello", true, 42 };
@@ -572,33 +569,31 @@ const foo = .{ "hello", true, 42 };
 ```
 
 ### Enumerations.
-```
 
+```zig
 const Type = enum { ok, not_ok };
 
 const CardinalDirections = enum { North, South, East, West };
 const direction: CardinalDirections = .North;
 const x = switch (direction) {
-  // shorthand for CardinalDirections.North
-  .North => true,
-  else => false
+    // shorthand for CardinalDirections.North
+    .North => true,
+    else => false
 };
 
 // Switch statements need exhaustiveness.
 // WARNING: won't compile. East and West are missing.
 const x = switch (direction) {
-  .North => true,
-  .South => true,
+    .North => true,
+    .South => true,
 };
 
-
-// Switch statements need exhaustiveness.
-// Won't compile: East and West are missing.
+// This compiles without errors, since it exhaustively lists all possible values
 const x = switch (direction) {
-  .North => true,
-  .South => true,
-  .East,          // Its value is the same as the following pattern: false.
-  .West => false,
+    .North => true,
+    .South => true,
+    .East,          // Its value is the same as the following pattern: false.
+    .West => false,
 };
 
 
@@ -606,12 +601,12 @@ const x = switch (direction) {
 ```
 
 ### Unions.
-```
 
+```zig
 const Bar = union {
-  boolean: bool,
-  int: i16,
-  float: f32,
+    boolean: bool,
+    int: i16,
+    float: f32,
 };
 
 // Both syntaxes are equivalent.
@@ -622,8 +617,8 @@ const foo: Bar = .{ .int = 42 };
 ```
 
 ### Tagged unions.
-```
 
+```zig
 // Unions can be declared with an enum tag type, allowing them to be used in
 // switch expressions.
 
@@ -653,8 +648,8 @@ switch (nay) {
 ```
 
 ### Defer and errdefer.
-```
 
+```zig
 // Make sure that an action (single instruction or block of code) is executed
 // before the end of the scope (function, block of code).
 // Even on error, that action will be executed.
@@ -695,24 +690,26 @@ Thus, the standard library lets developers handle memory as they need, through s
 **NOTE**: the choice of the allocator isn't in the scope of this document.
 A whole book could be written about it.
 However, here are some examples, to get an idea of what you can expect:
-- page_allocator.
+
+- `page_allocator`.
   Allocate a whole page of memory each time we ask for some memory.
   Very simple, very dumb, very wasteful.
-- GeneralPurposeAllocator.
+- `GeneralPurposeAllocator`.
   Get some memory first and manage some buckets of memory in order to
   reduce the number of allocations.
   A bit complex. Can be combined with other allocators.
   Can detect leaks and provide useful information to find them.
-- FixedBufferAllocator.
+- `FixedBufferAllocator`.
   Use a fixed buffer to get its memory, don't ask memory to the kernel.
   Very simple, limited and wasteful (can't deallocate), but very fast.
-- ArenaAllocator.
+- `ArenaAllocator`.
   Allow to free all allocated memory at once.
   To use in combinations with another allocator.
   Very simple way of avoiding leaks.
 
 A first example.
-```
+
+```zig
 // "!void" means the function doesn't return any value except for errors.
 // In this case we try to allocate memory, and this may fail.
 fn foo() !void {
@@ -735,8 +732,8 @@ fn foo() !void {
 ```
 
 ### Memory allocation combined with error management and defer.
-```
 
+```zig
 fn some_memory_allocation_example() !void {
     // Memory allocation may fail, so we "try" to allocate the memory and
     // in case there is an error, the current function returns it.
@@ -759,8 +756,8 @@ fn some_memory_allocation_example() !void {
 ```
 
 ### Memory allocators: a taste of the standard library.
-```
 
+```zig
 // Allocators: 4 main functions to know
 //   single_value = create (type)
 //   destroy (single_value)
@@ -846,8 +843,8 @@ fn gpa_arena_allocator_fn() !void {
 ```
 
 ### Comptime.
-```
 
+```zig
 // Comptime is a way to avoid the pre-processor.
 // The idea is simple: run code at compilation.
 
@@ -883,7 +880,8 @@ list.items[0] = 10;
 ```
 
 ### Conditional compilation.
-```
+
+```zig
 const available_os = enum { OpenBSD, Linux };
 const myos = available_os.OpenBSD;
 
@@ -905,7 +903,8 @@ const myprint = switch(myos) {
 ```
 
 ### Testing our functions.
-```
+
+```zig
 const std = @import("std");
 const expect = std.testing.expect;
 
@@ -922,8 +921,10 @@ test "returns true" {
 ```
 
 ### Compiler built-ins.
+
 The compiler has special functions called "built-ins", starting with an "@".
 There are more than a hundred built-ins, allowing very low-level stuff:
+
 - compile-time errors, logging, verifications
 - type coercion and conversion, even in an unsafe way
 - alignment management
@@ -936,45 +937,43 @@ There are more than a hundred built-ins, allowing very low-level stuff:
 - etc.
 
 Example: enums aren't integers, they have to be converted with a built-in.
-```
+
+```zig
 const Value = enum { zero, stuff, blah };
 if (@enumToInt(Value.zero)  == 0) { ... }
 if (@enumToInt(Value.stuff) == 1) { ... }
 if (@enumToInt(Value.blah)  == 2) { ... }
 ```
 
-
 ### A few "not yourself in the foot" measures in the Zig language.
 
-- Namespaces: names conflicts are easily avoided.
-  In practice, that means an unified API between different structures (data types).
+- Namespaces: name conflicts are easily avoided.
+  In practice, that means a unified API between different structures (data types).
 - Enumerations aren't integers. Comparing an enumeration to an integer requires a conversion.
 - Explicit casts, coercion exists but is limited.
   Types are slightly more enforced than in C, just a taste:
     Pointers aren't integers, explicit conversion is necessary.
-    You won't lose precision by accident, implicit coercions are only authorized in case no precision can be lost.
-    Unions cannot be reinterpreted (in an union with an integer and a float, one cannot take a value for another by accident).
+    You won't lose precision by accident, implicit coercions are only authorized in cases where no precision can be lost.
+    Unions cannot be reinterpreted (in a union with an integer and a float, one cannot take a value for another by accident).
     Etc.
 - Removing most of the C undefined behaviors (UBs), and when the compiler encounters one, it stops.
 - Slice and Array structures are preferred to pointers.
   Types enforced by the compiler are less prone to errors than pointer manipulations.
 - Numerical overflows produce an error, unless explicitly accepted using wrapping operators.
-- Try and catch mechanism.
+- `try` and `catch` mechanism.
   It's both handy, trivially implemented (simple error enumeration), and it takes almost no space nor computation time.
-- Unused variables are considered as errors by the compiler.
-- Many pointer types exist in order to represent what is pointed.
+- Unused variables are considered to be errors by the compiler.
+- Many pointer types exist in order to represent what is pointed to.
   Example: is this a single value or an array, is the length known, etc.
-- Structures need a value for their attributes, and it still is possible to give an undefined value (stack garbage), but at least it is explicitly undefined.
-
+- Structures need a value for their attributes, and it is still possible to give an undefined value (stack garbage), but at least it is explicitly undefined.
 
 ## Further Reading
 
-For a start, some concepts are presented on the [Zig learn website][ziglearn].
+For a start, some concepts are presented on [zig.guide][zigguide].
 
-The [official website][zigdoc] provides a reference documentation to the language.
-
-For now, documentation for standard library is WIP.
+The [official website][zigdoc] provides the reference documentation of the language. The standard library [has its own documentation][zigstd].
 
 [ziglang]: https://ziglang.org
-[ziglearn]: https://ziglearn.org/
+[zigguide]: https://zig.guide/
 [zigdoc]: https://ziglang.org/documentation/
+[zigstd]: https://ziglang.org/documentation/master/std/

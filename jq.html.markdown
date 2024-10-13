@@ -902,9 +902,9 @@ jq -n '
 # - `def f($a; $b): ...;` is a shorthand for: `def f(a; b): a as $a | b as $b | ...`
 ```
 
-
 ## Further Reading
-- https://stedolan.github.io/jq/manual/
-- https://github.com/stedolan/jq/wiki/jq-Language-Description
-- https://github.com/stedolan/jq/wiki/Cookbook
-- https://github.com/stedolan/jq/blob/master/src/builtin.jq
+
+- [jq Manual](https://jqlang.github.io/jq/manual/)
+- [Language Description](https://github.com/jqlang/jq/wiki/jq-Language-Description)
+- [Cookbook](https://github.com/jqlang/jq/wiki/Cookbook)
+- [builtin.jq](https://github.com/jqlang/jq/blob/master/src/builtin.jq)

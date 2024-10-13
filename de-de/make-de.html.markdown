@@ -21,7 +21,6 @@ Es gibt eine Vielzahl an Varianten von Make, dieser Artikel beschäftigt sich
 mit der Version GNU Make. Diese Version ist Standard auf Linux.
 
 ```make
-
 # Kommentare können so geschrieben werden.
 
 # Dateien sollten Makefile heißen, denn dann können sie als `make <ziel>`
@@ -35,7 +34,7 @@ mit der Version GNU Make. Diese Version ist Standard auf Linux.
 # Grundlagen
 #-----------------------------------------------------------------------
 
-# Eine Regel - Diese Regel wird nur abgearbeitet wenn die Datei file0.txt
+# Eine Regel - Diese Regel wird nur abgearbeitet, wenn die Datei file0.txt
 # nicht existiert.
 file0.txt:
 	echo "foo" > file0.txt
@@ -51,7 +50,7 @@ file1.txt: file0.txt
 	@cat file0.txt >> file1.txt
 	# @ unterdrückt die Ausgabe des Befehls an stdout.
 	-@echo 'hello'
-	# - bedeutet, dass Make die Abarbeitung fortsetzt auch wenn Fehler
+	# - bedeutet, dass Make die Abarbeitung fortsetzt, auch wenn Fehler
     # passieren.
 	# Versuche `make file1.txt` auf der Kommandozeile.
 
@@ -72,12 +71,12 @@ file2.txt file3.txt: file0.txt file1.txt
 # Es wird nie aktuell sein, daher wird Make immer versuchen, es abzuarbeiten
 all: maker process
 
-# Es ist erlaubt Dinge ausserhalb der Reihenfolge zu deklarieren.
+# Es ist erlaubt Dinge außerhalb der Reihenfolge zu deklarieren.
 maker:
 	touch ex0.txt ex1.txt
 
 # Um das Fehlschlagen von Phony-Regeln zu vermeiden wenn eine echte Datei den
-# selben namen wie ein Phony-Ziel hat:
+# selben Namen wie ein Phony-Ziel hat:
 .PHONY: all maker process
 # Das ist ein spezielles Ziel. Es gibt noch ein paar mehr davon.
 
@@ -98,7 +97,7 @@ process: file*.txt	# Eine Wildcard um Dateinamen zu vergleichen
 	#der Regel.)
 	@echo $<	# Die erste Voraussetzung aus der Liste
 	@echo $?	# Nur die Voraussetzungen, die nicht aktuell sind.
-	@echo $+	# Alle Voraussetzungen inklusive Duplikate (nicht wie Üblich)
+	@echo $+	# Alle Voraussetzungen inklusive Duplikate (nicht wie üblich)
 	#@echo $|	# Alle 'order only' Voraussetzungen
 
 # Selbst wenn wir die Voraussetzungen der Regel aufteilen, $^ wird sie finden.
@@ -119,7 +118,7 @@ process: ex1.txt file0.txt
 # Ziel zu erzeugen
 
 # Verzeichnis-Pfade werden normalerweise bei Muster-Vergleichs-Regeln ignoriert.
-# Aber make wird versuchen die am besten passende Regel zu verwenden.
+# Aber make wird versuchen, die am besten passende Regel zu verwenden.
 small/%.png: %.svg
 	inkscape --export-png --export-dpi 30 $^
 
@@ -133,7 +132,7 @@ small/%.png: %.svg
 %.png: %.ps
 	@echo this rule is not chosen if *.svg and *.ps are both present
 
-# Make hat bereits ein paar eingebaute Muster-Vergleichs-Regelen. Zum Beispiel
+# Make hat bereits ein paar eingebaute Muster-Vergleichs-Regeln. Zum Beispiel
 # weiß Make wie man aus *.c Dateien *.o Dateien erzeugt.
 
 # Ältere Versionen von Make verwenden möglicherweise Suffix-Regeln anstatt
@@ -160,12 +159,12 @@ echo:
 	@echo $name    # Das funktioniert nicht, wird als $(n)ame behandelt.
 	@echo $(name3) # Unbekannte Variablen werden als leere Zeichenketten behandelt.
 
-# Es git 4 Stellen um Variablen zu setzen.
+# Es gibt 4 Stellen um Variablen zu setzen.
 # In Reihenfolge der Priorität von höchster zu niedrigster:
 # 1: Befehls-Zeilen Argumente
 # 2: Makefile
-# 3: Shell Umbebungs-Variablen - Make importiert diese automatisch.
-# 3: MAke hat einige vordefinierte Variablen.
+# 3: Shell Umgebungs-Variablen - Make importiert diese automatisch.
+# 3: Make hat einige vordefinierte Variablen.
 
 name4 ?= Jean
 # Setze die Variable nur wenn es eine gleichnamige Umgebungs-Variable noch
@@ -179,8 +178,8 @@ name4 +=grey
 
 # Muster-Spezifische Variablen Werte (GNU Erweiterung).
 echo: name2 = Sara # Wahr innerhalb der passenden Regel und auch innerhalb
-	# rekursiver Voraussetzungen (ausser wenn es den Graphen zerstören
-	# kann, wenn es zu kompilizert wird!)
+	# rekursiver Voraussetzungen (außer wenn es den Graphen zerstören
+	# kann, wenn es zu kompliziert wird!)
 
 # Ein paar Variablen, die von Make automatisch definiert werden.
 echo_inbuilt:
@@ -198,15 +197,15 @@ echo_inbuilt:
 #-----------------------------------------------------------------------
 
 # Der erste Typ von Variablen wird bei jeder Verwendung ausgewertet.
-# Das kann aufwendig sein, daher exisitert ein zweiter Typ von Variablen.
+# Das kann aufwendig sein, daher existiert ein zweiter Typ von Variablen.
 # Diese werden nur einmal ausgewertet. (Das ist eine GNU make Erweiterung)
 
 var := hello
 var2 ::=  $(var) hello
 #:= und ::= sind äquivalent.
 
-# Diese Variablen werden prozedural ausgwertet (in der Reihenfolge in der sie
-# auftauchen), die stehen daher im wiederspruch zum Rest der Sprache!
+# Diese Variablen werden prozedural ausgewertet (in der Reihenfolge, in der sie
+# auftauchen), die stehen daher im Widerspruch zum Rest der Sprache!
 
 # Das funktioniert nicht
 var3 ::= $(var4) and good luck
@@ -233,11 +232,11 @@ ls:	* src/*
 # Direktiven
 #-----------------------------------------------------------------------
 
-# Inkludiere andere Makefile, sehr praktisch für platformspezifischen Code
+# Inkludiere andere Makefile, sehr praktisch für plattformspezifischen Code
 include foo.mk
 
 sport = tennis
-# Konditionale kompiliereung
+# Konditionale Kompilierung
 report:
 ifeq ($(sport),tennis)
 	@echo 'game, set, match'
@@ -255,7 +254,7 @@ endif
 ```
 
 
-### Mehr Resourcen
+### Mehr Ressourcen
 
 + [gnu make documentation](https://www.gnu.org/software/make/manual/)
 + [software carpentry tutorial](http://swcarpentry.github.io/make-novice/)

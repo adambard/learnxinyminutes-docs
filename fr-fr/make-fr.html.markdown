@@ -21,7 +21,6 @@ Le programme make a plusieurs variantes. Dans ce tutoriel, nous utiliserons
 l'implémentation standard : GNU make.
 
 ```make
-
 # Ceci est un commentaire.
 
 # Un makefile devrait être nommé "Makefile" (avec ou sans la
@@ -256,14 +255,11 @@ endif
 
 ### En français
 
-+ [Introduction à Makefile (developpez.com)]
-(http://gl.developpez.com/tutoriel/outil/makefile/),
-+ [Compilez sous GNU/Linux ! (openclassrooms)]
-(https://openclassrooms.com/courses/compilez-sous-gnu-linux).
++ [Introduction à Makefile (developpez.com)](http://gl.developpez.com/tutoriel/outil/makefile/),
++ [Compilez sous GNU/Linux ! (openclassrooms)](https://openclassrooms.com/courses/compilez-sous-gnu-linux).
 
 ### En anglais
 
 + [Documentation de GNU make](https://www.gnu.org/software/make/manual/),
 + [Software carpentry tutorial](http://swcarpentry.github.io/make-novice/),
-+ Learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html)
-[ex28](http://c.learncodethehardway.org/book/ex28.html).
++ Learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html) [ex28](http://c.learncodethehardway.org/book/ex28.html).

@@ -9,17 +9,15 @@ Human-Optimized Configuration Object Notation, or HOCON, is a configuration and
 data serialization format designed to be easily editable by humans.
 
 It's a superset of JSON, meaning that any valid JSON is valid HOCON, but it
-differs in being much less pedantic and opinionated. With its flexible yet
-easily determinable syntax, resulting configuration files are often much less
-noisy than some other formats.
+differs in being less opinionated. With its flexible yet determinable syntax,
+resulting configuration files are often less noisy than with other formats.
 
-Additionally, its support for comments makes it much better suited for
-user-facing configurations than JSON.
+Additionally, its support for comments makes it better-suited for user-facing
+configuration than JSON.
 
-```hocon
-// Comments can either look like this,
-# or they can look like this.
-// Anything after // or # is a comment.
+```
+// Anything after // or # is a comment. This is a comment.
+# This is also a comment.
 
 ##################
 ### THE BASICS ###
@@ -37,24 +35,29 @@ colon3 : value
 equals1=value
 equals2= value
 equals3 = value
-# As you'll see, HOCON is very nonrestrictive regarding its syntax style.
+# As you'll see, HOCON has a very nonrestrictive syntax.
 
-# HOCON also isn't opinionated on how keys look.
+# HOCON isn't opinionated on how keys look.
 THIS_IS_A_VALID_KEY: value
 this-is-also-a-valid-key: value
-keys can have spaces too: value
+keys can have spaces: value
 or even numbers like 12345: value
 "you can even quote keys if you'd like!": value
 
-# A key, followed by any separator, and then finally a value, is called a field.
+# Keys are case sensitive.
+unique: value 1
+UnIqUe: value 3
+UNIQUE: value 2
+
+# A key, followed by any separator, followed by a value, is called a field.
 this_entire_line_is: a field
 
 ###################
 ### VALUE TYPES ###
 ###################
 
-# The types that a value can be are string, number, object, array, boolean, and
-# null. Every value type except for array and object are called simple values.
+# A value can be of type: string, number, object, array, boolean, null.
+# Simple values are values of any type except array and object.
 
 ## SIMPLE VALUES ##
 
@@ -62,18 +65,16 @@ quoted_string: "I like quoting my strings."
 unquoted_string: I don't like quoting my strings.
 # Special characters that cannot be used in unquoted strings are:
 # $ " { } [ ] : = , + # ` ^ ? ! @ * &
-# Unquoted strings do not support any kind of escaping. If using one of those
-# special characters is desired, use a quoted string.
-multi-line_string: """
-  This entire thing is a string!
-  One giant, multi-line string.
-  You can put 'single' and "double" quotes without it being invalid.
-"""
+# Unquoted strings do not support any kind of escaping.
+# To use one of those special characters in a string, use a quoted string.
+multiline_string: """This entire thing is a string!
+One giant, multiline string.
+You can put 'single' and "double" quotes without it being invalid."""
 
 number: 123
 negative: -123
 fraction: 3.1415926536
-scientific_notation: 1.2e6 // same as 1.2 * (10^6)
+scientific_notation: 1.2e6 // 1.2 * 10^6
 
 boolean: true # or false
 empty: null
@@ -81,10 +82,11 @@ empty: null
 ## ARRAYS ##
 
 # Arrays hold lists of values.
+
 # Values in arrays can be separated with commas..
 array: [ 1, 2, 3, 4, 5 ]
 fibonacci: [1,1,2,3,5,8,13]
-multiples_of_5: [5, 10, 15, 20,] # Notice the trailing comma. That's okay here.
+multiples_of_5: [5, 10, 15, 20,] # Notice the trailing comma. That's allowed.
 # or newlines..
 friends: [
   "Brian"
@@ -97,25 +99,27 @@ ingredients: [
   "Egg",
   "Sugar",
   "Oil",
-  "Flour", # Notice the trailing comma. That's okay here too.
+  "Flour", # Trailing comma. That's allowed here too.
 ]
-# Once again, HOCON has a very loose syntax. Use whichever style you prefer.
+# Once again, HOCON has a very liberal syntax. Use whichever style you prefer.
+
 no newline before or after bracket: ["This"
   "is"
   "an"
   "array!"]
 
-# Just like any other value, arrays can hold other arrays.
+# Arrays can hold other arrays.
 array in array: [ [1, 2, 3], ["a", "b", "c"] ]
 array in array in array: [ [ [1, 2], [8, 9] ], [ ["a", "b" ], ["y", "z"] ] ]
 
 ## OBJECTS ##
 
 # Objects hold fields.
+
 # Just like arrays, fields in objects can be separated with commas..
 object: { key: value, another_key: another_value }
 server_connection: {ip: "127.0.0.1", port: 80}
-first: {letter: a, number: 1,} # Notice the trailing comma.
+first: {letter: a, number: 1,} # Trailing comma.
 # or newlines..
 power_grid: {
   max_capacity: 15000
@@ -127,10 +131,10 @@ food_colors: {
   pear: green,
   apple: red,
   plum: purple,
-  banana: yellow, # Trailing commas are okay here too!
+  banana: yellow, # Trailing comma. These pesky things show up everywhere!
 }
 
-# Arrays can hold objects just like any other value type.
+# Arrays can hold objects.
 coworkers: [
   {
     name: Jeff
@@ -152,7 +156,7 @@ no_separator {
   speed_of_light: very fast
   ten: 10
 
-  # Objects can go inside other objects just like any other value.
+  # Objects can hold other objects.
   another_object {
     twenty: 20
     speed_of_sound: also pretty fast
@@ -224,10 +228,10 @@ my_car: {
 # and then back to an object value, the new object will completely override any
 # previous value.
 
-// Null, a non-object value, completely overrides the object value.
+// Null, a non-object value, overrides the object.
 my_car: null
 
-// Then, this object completely overrides null.
+// Then, this object overrides null.
 my_car: {
   nickname: "My New Car"
   type: 4-door minivan
@@ -242,49 +246,49 @@ my_car: {
 
 ## SIMPLE VALUE CONCATENATION ##
 
-# Simple values (all value types except objects and arrays) separated by
+# Simple values (all value types except array and object) separated by
 # whitespace are concatenated into a single string. The whitespace between
 # values is preserved.
-number_concatenation: 1 2 3 12.5 -3 2e5 // same as: "1 2 3 12.5 -3 2e5"
+number_concat: 1 2 3 12.5 -3 2e5 // "1 2 3 12.5 -3 2e5"
 boolean_concat: true false true // "true false true"
 null_concat: null null null // "null null null"
 mixed_concat: 1 true null // "1 true null"
 
 # String value concatenation can appear anywhere that a quoted string can.
-number_concat_in_array: [1 2, 3 4, 5 6] // same as: ["1 2", "3 4", "5 6"]
+number_concat_in_array: [1 2, 3 4, 5 6] // ["1 2", "3 4", "5 6"]
 
 # In fact, unquoted strings are actually just string value concatenations.
-unquoted_string_concat: his name is jeff // same as: "his name is jeff"
+unquoted_string_concat: his name is jeff // "his name is jeff"
 
 # Going further, even keys that are unquoted strings are actually just string
 # value concatenations.
-this is a key: value // the KEY is the same as: "this is a key"
+this is a key: value // the KEY is: "this is a key"
 # The following field is identical to the field above.
 "this is a key": value
 
-# Quoted strings can also be concatenated. This will be useful later,
-# when we cover substitutions.
-quoted_string_concat: "her"" name" "is ""jenna" // same as: "her name is jenna"
+# Quoted strings can also be concatenated.
+# This will be useful later, when we cover substitutions.
+quoted_string_concat: "her"" name" "is ""jenna" // "her name is jenna"
 # Notice that the whitespace (or lack thereof) between values is preserved.
 
 ## ARRAY CONCATENATION ##
 
 # Arrays separated by whitespace are merged into a single array.
-array_concat: [1, 2, 3] [4, 5, 6] // same as: [1, 2, 3, 4, 5, 6]
+array_concat: [1, 2, 3] [4, 5, 6] // [1, 2, 3, 4, 5, 6]
 
 # Arrays cannot be concatenated with a non-array value.
-//array_concat: true [false] results in an error
-//array_concat: 1 [2] results in an error
+//array_concat: true [false] // error!
+//array_concat: 1 [2] // error!
 
 ## OBJECT CONCATENATION ##
 
 # Objects separated by whitespace are merged into a single object.
 # The merge functionality is identical to that of duplicate key object merging.
-lamp: {on: true} {color: tan} // same as: {on: true, color: tan}
+lamp: {on: true} {color: tan} // {on: true, color: tan}
 
 # Similarly to arrays, objects cannot be concatenated with a non-object value.
-//object_concat: true {on: false} results in an error
-//object_concat: 1 {number: 2} results in an error
+//object_concat: true {on: false} // error!
+//object_concat: 1 {number: 2} // error!
 
 ########################
 ### PATH EXPRESSIONS ###
@@ -305,13 +309,12 @@ country: {
     }
   }
 }
-# For example, the path to the address of the house could be written as:
+# The path to the address could be written as:
 # country.city.neighborhood.house.address
 # Country, city, neighborhood, house, and address are all elements.
 
-# Path expressions are used in two places: substitutions (which will be
-# covered in a moment), and as keys.
-# That's right: keys themselves can also be path expressions.
+# Path expressions are used in two places: substitutions (which we'll get to
+# in just a moment), and as keys. That's right: keys can be path expressions.
 foo: {
   bar: {
     baz: {
@@ -319,8 +322,8 @@ foo: {
     }
   }
 }
-# Rather than tediously specifying each object, a path expression can be used.
-# The following field represents the same object found above.
+# Rather than tediously specifying each object, a path expression could be used.
+# The following field represents the same object.
 foo.bar.baz.number: 12
 
 # Fields and objects specified with path expressions are merged in the same way
@@ -333,41 +336,42 @@ foo.bar.baz.bool: true
 #####################
 
 # Substitutions refer to a specific value from some path expression.
-# They're only allowed in values, not keys or nested inside other substitutions.
+# They're only allowed in values, not in keys or nested in other substitutions.
 
 me: {
   favorite_animal: parrots
   favorite_food: cookies
 }
-# The syntax for a substitution is either ${path_expression} or
-# ${?path_expression}. The latter syntax will be discussed in a moment.
+# There are two syntaxes for substitutions:
+# ${path_expression} and ${?path_expression}.
+# The latter syntax will be covered in a moment.
 my_fav_animal: ${me.favorite_animal}
 my_fav_food: ${me.favorite_food}
 
 # Substitutions are not parsed inside quoted strings. To get around this,
 # either use an unquoted string or value concatenation.
 animal_announcement: My favorite animal is ${my_fav_animal}
-// the value is: My favorite animal is parrots
+// "My favorite animal is parrots"
 food_announcement: "My favorite food is "${my_fav_food}"!"
-// the value is: "My favorite food is cookies!"
+// "My favorite food is cookies!"
 
 # Substitutions are parsed last in the document. Because of this, you can
 # reference a key that hasn't been defined yet.
 color_announcement: "My favorite color is" ${my_fav_color}"!"
-// the value is: "My favorite color is blue!"
+// "My favorite color is blue!"
 my_fav_color: blue
 
 # Another effect of substitutions being parsed last is that substitutions will
-# always use the latest, as in last, value assigned in the entire document,
-# which includes merged objects.
+# always use the latest, as in last, value assigned in the entire document.
 color: green
-their_favorite_color: ${color} // the value is: orange
+their_favorite_color: ${color} // orange
 color: orange
 
+# This includes merged objects.
 random_object: {
   number: 12
 }
-the_number: ${random_object.number} // the value is: 15
+the_number: ${random_object.number} // 15
 random_object: {
   number: 15
 }
@@ -379,13 +383,13 @@ random_object: {
 # A substitution using the ${path_expression} syntax with an undefined path
 # expression, meaning a path expression that does not point to a defined value,
 # is invalid and will therefore generate an error.
-//${does.not.exist} will throw an error
+//${does.not.exist} // error!
 
 # However, an undefined substitution using the ${?path_expression} syntax
 # has different behavior depending on what it is the value of.
 request: {
-  # If it is the value of a field, then the field will not be created.
-  response: ${?does.not.exist} // this field won't be created and does not exist
+  # If it is the value of a field, then the field won't be created.
+  response: ${?does.not.exist} // this field does not exist
   type: HTTP
 }
 
@@ -397,19 +401,19 @@ request: {
 
 # If it is a value in an array, then it is simply not added.
 values: [ 172, "Brian", ${?does.not.exist}, null, true, ]
-// the value is: [ 172, "Brian", null, true ]
+// [ 172, "Brian", null, true ]
 
 # If it is part of simple value concatenation, it acts as an empty string.
 final_string: "String One"${?does.not.exist}"String Two"
-// the value is: "String OneString Two"
+// "String OneString Two"
 
 # If it is part of array concatenation, it acts as an empty array.
 final_array: [ 1, 2, 3 ] ${?does.not.exist} [ 7, 8, 9 ]
-// the value is: [ 1, 2, 3, 7, 8, 9 ]
+// [ 1, 2, 3, 7, 8, 9 ]
 
 # If it is part of object concatenation, it acts as an empty object.
-final_array: { a: 1 } ${?does.not.exist} { c: 3 }
-// the value is: { a: 1, c: 3 }
+final_object: { a: 1 } ${?does.not.exist} { c: 3 }
+// { a: 1, c: 3 }
 
 ######################################
 ### SELF-REFERENTIAL SUBSTITUTIONS ###
@@ -419,18 +423,18 @@ final_array: { a: 1 } ${?does.not.exist} { c: 3 }
 # document. However, in cases when this would create a cycle, the substitution
 # looks only backwards.
 
-# A field which contains a substitution that points to itself or points to
+# A field that contains a substitution that points to itself or points to
 # other fields that eventually point back to itself is called a
 # self-referential field.
-letters: "a b c" // the value is: "a b c"
+letters: "a b c" // "a b c"
 letters: ${letters}" d" // "a b c d"
 letters: ${letters}" e" // "a b c d e"
 
-PATH: [/bin] // the value is: [/bin]
+PATH: [/bin] // [/bin]
 PATH: ${PATH} [/usr/bin] // [/bin, /usr/bin]
 PATH: ${PATH} [/usr/local/bin] // [/bin, /usr/bin, /usr/local/bin]
 
-x: "x" // the value is: "x"
+x: "x" // "x"
 y: ${x}"y" // "xy"
 x: ${y}"z" // "xyz"
 
@@ -439,34 +443,33 @@ x: ${y}"z" // "xyz"
 ##########################
 
 # In addition to : and =, there actually exists another separator: +=
-# A field separated with += acts as a self-referential array concatenation.
-# In short, it appends an element to a previously defined array.
+# A field separated with += implies self-referential array concatenation.
+# Essentially, it appends an element to a previously defined array.
 
 a: [1]
 b: [1]
-# This field:
-a += 2 // the value is: [1, 2]
-# functions the same as:
-b: ${?b} [2] // the value is: [1, 2]
+# These two fields are equivalent.
+a += 2 // [1, 2]
+b: ${?b} [2] // [1, 2]
 
-USERS: [/usr/luke] // the value is: [/usr/luke]
+USERS: [/usr/luke] // [/usr/luke]
 USERS += /usr/devon // [/usr/luke, /usr/devon]
 USERS += /usr/michael // [/usr/luke, /usr/devon, /usr/michael]
 
 # Since += only appends elements to a previously existing array, if the previous
 # value was not an array, an error will be generated.
 OTHER_USERS: /usr/luke
-//OTHER_USERS += /usr/devon results in an error
+//OTHER_USERS += /usr/devon // error!
 
-# Notice that the underlying substitution syntax used is ${?path}, not ${path}.
+# The underlying substitution syntax used is ${?path}, not ${path}.
 # Recall that, using the ${?} syntax, an undefined substitution in array
 # concatenation acts as an empty array. Because of this, it is perfectly
 # acceptable if the field that is being set is initially undefined.
-//z: [] not necessary
-z += 3 // the value is: [3]
-z += 4 // the value is: [3, 4]
+//z: [] // not necessary
+z += 3 // [3]
+z += 4 // [3, 4]
 
-NEW_USERS += /usr/sandra // the value is: [/usr/sandra]
+NEW_USERS += /usr/sandra // [/usr/sandra]
 NEW_USERS += /usr/kennedy // [/usr/sandra, /usr/kennedy]
 NEW_USERS += /usr/robin // [/usr/sandra, /usr/kennedy, /usr/robin]
 
@@ -494,13 +497,13 @@ include classpath("config.conf")
 # If the included file does not exist, it will be silently ignored and act as if
 # it were an empty object. However, if it is wrapped around required(), then
 # parsing will explicitly error if the file cannot be resolved.
-//include required("doesnt_exist.conf") will error
-//include required(url("https://example.com/doesnt_exist.conf")) will error
-//include required(file("doesnt_exist.conf")) will error
-//include required(classpath("doesnt_exist.conf")) will error
+//include required("doesnt_exist.conf") // error!
+//include required(url("https://example.com/doesnt_exist.conf")) // error!
+//include required(file("doesnt_exist.conf")) // error!
+//include required(classpath("doesnt_exist.conf")) // error!
 
-# The file specified by the include statement is called the included file, and
-# the file which contains the include statement is called the including file.
+# The file specified by the include statement is called the included file.
+# The file containing the include statement is called the including file.
 
 # Including a file functions as if you directly replaced the include statement,
 # wherever it may be, with the contents of the included file's root object.
@@ -518,19 +521,19 @@ screensaver: {
   turn_on_after: 1m
 }
 
-# And then we include that file.
+# Then, we include that file.
 include file("user_config.conf")
 
 # We can now reference values from that file!
-path_to_user_screensaver: ${screensaver.image} //
-greeting: "Welcome, "${username}"!" // the value is: "Welcome, RandomUser1337!"
+path_to_user_screensaver: ${screensaver.image} // "usr/images/screensaver.jpg"
+greeting: "Welcome, "${username}"!" // "Welcome, RandomUser1337!"
 
 # Duplicate keys override as they normally do.
-status: "Auto Login: "${auto_login} // the value is: "Auto Login: true"
+status: "Auto Login: "${auto_login} // "Auto Login: true"
 auto_login: false
-status: "Auto Login: "${auto_login} // the value is: "Auto Login: false"
+status: "Auto Login: "${auto_login} // "Auto Login: false"
 
-# Object merging is also the same as usual.
+# Object merging is the same as usual.
 screensaver: {
   // This gets added to the screensaver object.
   enable_during_day: false
@@ -550,7 +553,7 @@ admin_page: {
   password: pass12345
 }
 
-# And then we include that file nested inside another object.
+# Then, we include that file nested inside an object.
 websites: {
   my_epic_website: {
     include file("server_settings.conf")
@@ -562,13 +565,13 @@ websites: {
 server_port: ${websites.my_epic_website.port}
 
 the_password: "The password is: "${websites.my_epic_website.admin_page.password}
-// the value is: The password is: pass12345
+// "The password is: pass12345"
 
 max_conn: "Max Connections: "${websites.my_epic_website.max_connections}
-// the value is: Max Connections: 10
+// "Max Connections: 10"
 ```
 
 ### More Resources
 
 + [Official HOCON Specification](https://github.com/lightbend/config/blob/master/HOCON.md)
-+ [HOCON Playground](https://hocon-playground.herokuapp.com)
++ [HOCON Playground](https://hocon-playground.tehbrian.dev)

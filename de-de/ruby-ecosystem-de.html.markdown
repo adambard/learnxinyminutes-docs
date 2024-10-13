@@ -72,7 +72,7 @@ Am ausgereiftesten und stabilsten:
 
 * [MRI](https://github.com/ruby/ruby) - Geschrieben in C, das ist die Referenz Implementierung.
   Sie ist 100% kompatibel (mit sich selbst ;-). Alle anderen rubies 
-  bleiben kompatibel mit MRI (siehe [RubySpec](#rubyspec) weiter unten).
+  bleiben kompatibel mit MRI (siehe [Ruby Spec](#ruby-spec) weiter unten).
 * [JRuby](http://jruby.org/) - Geschrieben in Java and Ruby, Robust und ziemlich schnell.
   Der größte Vorteil von JRuby ist die Interoperabilität mit JVM/Java und damit die  
   Benutzung von Ruby im Java Ecosystem.
@@ -91,16 +91,16 @@ Weniger ausgereift/kompatibel:
 * [Topaz](http://topazruby.com/) - Geschrieben in RPython (via PyPy)
   Topaz ist noch ziemlich jung und versucht die schnellste Implementierung  
   zu werden.
-* [IronRuby](http://ironruby.net/) - Geschrieben in C# für die .NET Plaftform  
+* [IronRuby](http://ironruby.net/) - Geschrieben in C# für die .NET Plattform  
   Das letzte Release von IronRuby ist mittlerweile 5 Jahre her. 
 
 Die Ruby Implementierungen haben ihre eigenen Versionsnummern, sind aber  
 trotzdem immer zu einer MRI Version kompatibel.  
 Viele können sogar zwischen verschiedenen Modi wechseln (1.8 mode -> 1.9 mode)
 
-## RubySpec
+## Ruby Spec
 
-Die meisten Ruby Implementierungen vertrauen der [RubySpec](http://rubyspec.org/).  
+Die meisten Ruby Implementierungen vertrauen der [Ruby Spec](https://github.com/ruby/spec).
 sehr stark. Da Ruby keine offizielle Spezifikation hat, hat die  
 Community ausführbare Specs (in Ruby) geschrieben, um so die Kompatibilität  
 zur MRI testen zu können.

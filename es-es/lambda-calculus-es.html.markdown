@@ -141,6 +141,7 @@ Tome el número 2 de Church por ejemplo:
 `2 = λf.λx.f(f x)`
 
 Para la parte interior `λx.f(f x)`:
+
 ```
   λx.f(f x)
 = S (λx.f) (λx.(f x))          (case 3)
@@ -149,6 +150,7 @@ Para la parte interior `λx.f(f x)`:
 ```
 
 Así que:
+
 ```
   2
 = λf.λx.f(f x)
@@ -158,6 +160,7 @@ Así que:
 ```
 
 Para el primer argumento `λf.(S (K f))`:
+
 ```
   λf.(S (K f))
 = S (λf.S) (λf.(K f))       (case 3)
@@ -166,6 +169,7 @@ Para el primer argumento `λf.(S (K f))`:
 ```
 
 Para el segundo argumento `λf.(S (K f) I)`:
+
 ```
   λf.(S (K f) I)
 = λf.((S (K f)) I)
@@ -176,6 +180,7 @@ Para el segundo argumento `λf.(S (K f) I)`:
 ```
 
 Uniéndolos:
+
 ```
   2
 = S (λf.(S (K f))) (λf.(S (K f) I))

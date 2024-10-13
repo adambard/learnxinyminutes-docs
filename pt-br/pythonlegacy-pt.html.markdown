@@ -12,10 +12,6 @@ Python foi criado por Guido Van Rossum no começo dos anos 90. Atualmente é uma
 das linguagens de programação mais populares. Eu me apaixonei por Python, por
 sua clareza de sintaxe. É basicamente pseudocódigo executável.
 
-Comentários serão muito apreciados! Você pode me contactar em
-[@louiedinh](http://twitter.com/louiedinh) ou louiedinh [arroba]
-[serviço de email do google]
-
 Nota: Este artigo usa Python 2.7 especificamente, mas deveria ser aplicável a
 qualquer Python 2.x. Logo haverá uma versão abordando Python 3!
 
@@ -487,8 +483,6 @@ math.sqrt(16) == m.sqrt(16) #=> True
 # estão definidos em um módulo qualquer.
 import math
 dir(math)
-
-
 ```
 
 ## Pronto para mais?

@@ -17,7 +17,6 @@ There are many varieties of make in existence, however this article
 assumes that we are using GNU make which is the standard on Linux.
 
 ```make
-
 # Comments can be written like this.
 
 # File should be named Makefile and then can be run as `make <target>`.
@@ -187,7 +186,7 @@ echo_inbuilt:
 # only evaluated once. (This is a GNU make extension)
 
 var := hello
-var2 ::=  $(var) hello
+var2 ::= $(var) hello
 #:= and ::= are equivalent.
 
 # These variables are evaluated procedurally (in the order that they
@@ -241,6 +240,6 @@ endif
 
 ### More Resources
 
-+ [gnu make documentation](https://www.gnu.org/software/make/manual/)
-+ [software carpentry tutorial](http://swcarpentry.github.io/make-novice/)
-+ learn C the hard way [ex2](http://c.learncodethehardway.org/book/ex2.html) [ex28](http://c.learncodethehardway.org/book/ex28.html)
+- [GNU Make documentation](https://www.gnu.org/software/make/manual/make.html)
+- [Software Carpentry tutorial](https://swcarpentry.github.io/make-novice/)
+- [Makefile Tutorial By Example](https://makefiletutorial.com/#makefile-cookbook)

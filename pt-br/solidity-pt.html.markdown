@@ -9,8 +9,8 @@ translators:
 lang: pt-br
 ---
 
-Solidity permite você programar para a [Ethereum]
-(https://www.ethereum.org/), uma máquina virtual baseada na tecnologia blockhain
+Solidity permite você programar para a [Ethereum](https://www.ethereum.org/),
+uma máquina virtual baseada na tecnologia blockhain
 para criação e execução de contratos inteligentes, sem necessidade de partes
 centralizadas ou de confiança.
 
@@ -19,7 +19,6 @@ Javascript e C. Como objetos em programação orientada a objetos, cada contrato
 possue variáveis de estado, funções e tipos de dados comuns. Funcionalidades
 particulares de contratados incluem cláusuras modificadoras (guarda), notifica
 dores de eventos para listerners e variáveis globais customizadas.
-
 
 Exemplos de contratos Ethereum incluem crowdfunding, votações e audições cegas.
 
@@ -38,7 +37,7 @@ Como Solidity e Ethereum ainda estão sob desenvolvimento, funcionalidades beta
 e experimentais são tipicamente marcadas e sujeitas à mudanças. Pull requests
 são bem-vindos.
 
-```javascript
+```solidity
 // Primeiramente, um contrato de um Banco simples
 // Permite depósitos, retiradas e checagens de saldo
 
@@ -875,6 +874,7 @@ algumEnderecoDeContrato.callcode('nome_da_funcao');
 ```
 
 ## Recursos adicionais
+
 - [Documetanção Solidity](https://solidity.readthedocs.org/en/latest/)
 - [Guia de Estilo do Solidity](https://ethereum.github.io/solidity//docs/style-guide/):
  O guia de estilo Ethereum é derivado do guia de estilo do Python [pep8](https://www.python.org/dev/peps/pep-0008/).
@@ -883,32 +883,24 @@ algumEnderecoDeContrato.callcode('nome_da_funcao');
 - [Estratégias de projeto modular para contratos Ethereum](https://docs.erisindustries.com/tutorials/solidity/)
 
 ## Contratos de Exemplo
+
 - [Dapp Bin](https://github.com/ethereum/dapp-bin)
 - [Solidity Baby Step Contracts](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
 - [ConsenSys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
 - [State of Dapps](http://dapps.ethercasts.com/)
 
 ## Segurança
+
 - [Thinking About Smart Contract Security](https://blog.ethereum.org/2016/06/19/thinking-smart-contract-security/)
 - [Smart Contract Security](https://blog.ethereum.org/2016/06/10/smart-contract-security/)
 - [Hacking Distributed Blog](http://hackingdistributed.com/)
 
-## Informação excluída intencionalmente
-- Libraries
-
 ## Estilo
+
 - [PEP8](https://www.python.org/dev/peps/pep-0008/) é usado como guia de estilo,
  incluindo sua filosofia geral
 
 ## Editores
+
 - [Vim Solidity](https://github.com/tomlion/vim-solidity)
 - Snippets de Editores ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
-
-## Trabalhos Futuros
-- Novas palavras-chave: protected, inheritable
-- Lista de padrões de design comuns (throttling, RNG, atualização de versão)
-- Padrões anti-segurança comuns
-
-
-Sinta-se a vontade para enviar um pull request com quaisquer edições - ou email
-para nemild - / at- / gmail

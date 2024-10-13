@@ -13,8 +13,6 @@ Python fue creado por Guido Van Rossum en el principio de los 90. Ahora es uno
 de los lenguajes más populares que existen. Me enamoré de Python por su claridad sintáctica.
 Es básicamente pseudocódigo ejecutable.
 
-¡Comentarios serán muy apreciados! Pueden contactarme en [@louiedinh](http://twitter.com/louiedinh) o louiedinh [at] [servicio de email de google]
-
 Nota: Este artículo aplica a Python 2.7 específicamente, pero debería ser aplicable a Python 2.x. ¡Pronto un recorrido por Python 3!
 
 ```python

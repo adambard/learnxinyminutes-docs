@@ -381,7 +381,6 @@ class PennyFarthing extends Bicycle {
     }
 
 }
-
 ```
 
 ## 更多阅读

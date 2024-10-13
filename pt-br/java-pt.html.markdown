@@ -621,7 +621,6 @@ public class EnumTeste {
 // Tipos Enum são muito mais poderosos do que nós mostramos acima.
 // O corpo de um enum pode incluir métodos e outros campos.
 // Você pode ver mais em https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
-
 ```
 
 ## Leitura Recomendada
@@ -631,28 +630,21 @@ Os links fornecidos aqui abaixo são apenas para ter uma compreensão do tema, u
 Outros tópicos para pesquisar:
 
 * [Tutorial Java para Sun Trail / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Modificadores de acesso do Java](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Coceitos de Programação Orientada à Objetos](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Herança](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polimorfismo](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstração](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Exceções](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Tipos Genéricos](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Conversões de código Java](http://www.oracle.com/technetwork/java/codeconv-138413.html)
 
 Livros:
 
-* [Use a cabeça, Java] (http://www.headfirstlabs.com/books/hfjava/)
+* [Use a cabeça, Java](http://www.headfirstlabs.com/books/hfjava/)
 
 Apostila:
 
-* [Java e Orientação a Objetos] (http://www.caelum.com.br/apostila-java-orientacao-objetos/)
-
-* [Java para Desenvolvimento Web] (https://www.caelum.com.br/apostila-java-web/)
+* [Java e Orientação a Objetos](http://www.caelum.com.br/apostila-java-orientacao-objetos/)
+* [Java para Desenvolvimento Web](https://www.caelum.com.br/apostila-java-web/)

@@ -21,9 +21,9 @@ filename: learnlua-kr.lua
 ----------------------------------------------------
 
 num = 42  -- 모든 숫자는 double입니다.
--- 놀랄 필요는 없습니다. 64비트 double은 
--- 정확한 int 값을 저장하기 위해 52비트로 구성돼 
--- 있습니다. 52비트 이하의 int 값에 대해서는 
+-- 놀랄 필요는 없습니다. 64비트 double은
+-- 정확한 int 값을 저장하기 위해 52비트로 구성돼
+-- 있습니다. 52비트 이하의 int 값에 대해서는
 -- 장비 정밀도와 관련된 문제가 생기지 않습니다.
 
 s = 'walternate'  -- 파이썬과 같은 불변 문자열
@@ -42,7 +42,7 @@ end
 if num > 40 then
   print('40 이상')
 elseif s ~= 'walternate' then  -- ~=은 '같지 않다'입니다.
-  -- 동일성 검사는 파이썬과 마찬가지로 ==입니다. 
+  -- 동일성 검사는 파이썬과 마찬가지로 ==입니다.
   -- 문자열에도 쓸 수 있습니다.
   io.write('not over 40\n')  -- 기본적으로 stdout에 씁니다.
 else
@@ -198,7 +198,7 @@ end
 ----------------------------------------------------
 
 -- 테이블은 테이블에 연산자 오버로딩을 가능하게 하는 메타테이블을
--- 가질 수 있습니다. 나중에 메타테이블이 어떻게 자바스크립트 
+-- 가질 수 있습니다. 나중에 메타테이블이 어떻게 자바스크립트
 -- 프로토타입과 같은 행위를 지원하는지 살펴보겠습니다.
 
 f1 = {a = 1, b = 2}  -- 분수 a/b를 표현
@@ -220,7 +220,7 @@ setmetatable(f2, metafraction)
 
 s = f1 + f2  -- f1의 메타테이블을 대상으로 __add(f1, f2)를 호출
 
--- f1과 f2는 자바스크립트의 프로토타입과 달리 각 메타테이블에 대한 
+-- f1과 f2는 자바스크립트의 프로토타입과 달리 각 메타테이블에 대한
 -- 키가 없어서 getmetatable(f1)과 같이 받아와야 합니다.
 -- 메타테이블은 __add 같은 루아가 알고 있는 키가 지정된 일반 테이블입니다.
 
@@ -290,11 +290,11 @@ mrDog:makeSound()  -- 'I say woof'         -- 8.
 --    self가 값을 어떻게 얻는지 궁금하다면 아래의 7과 8을 읽어보세요.
 -- 3. newObj는 Dog 클래스의 인스턴스가 됩니다.
 -- 4. self = 인스턴스화되는 클래스.
---    주로 self = Dog이지만 상속을 이용하면 이것을 바꿀 수 있습니다. 
+--    주로 self = Dog이지만 상속을 이용하면 이것을 바꿀 수 있습니다.
 --    newObj의 메타테이블과 self의 __index를 모두 self에 설정하면
 --    newObj가 self의 함수를 갖게 됩니다.
 -- 5. 참고: setmetatable은 첫 번째 인자를 반환합니다.
--- 6. :는 2에서 설명한 것과 같이 동작하지만 이번에는 self가 
+-- 6. :는 2에서 설명한 것과 같이 동작하지만 이번에는 self가
 --    클래스가 아닌 인스턴스라고 예상할 수 있습니다.
 -- 7. Dog.new(Dog)과 같으므로 new()에서는 self = Dog입니다.
 -- 8. mrDog.makeSound(mrDog)과 같으므로 self = mrDog입니다.
@@ -319,10 +319,10 @@ seymour:makeSound()  -- 'woof woof woof'      -- 4.
 --    메타테이블에서 __index = Dog이기 때문에 Dog.new(LoudDog)으로
 --    변환됩니다.
 --    결과: seymour의 메타테이블은 LoudDog이고 LoudDog.__index는
---    LoudDog입니다. 따라서 seymour.key는 seymour.key, 
+--    LoudDog입니다. 따라서 seymour.key는 seymour.key,
 --    LoudDog.key, Dog.key와 같을 것이며, 지정한 키에 어떤 테이블이
 --    오든 상관없을 것입니다.
--- 4. 'makeSound' 키는 LoudDog에서 발견할 수 있습니다. 
+-- 4. 'makeSound' 키는 LoudDog에서 발견할 수 있습니다.
 --    이것은 LoudDog.makeSound(seymour)와 같습니다.
 
 -- 필요할 경우, 하위 클래스의 new()는 기반 클래스의 new()와 유사합니다.
@@ -338,7 +338,7 @@ end
 ----------------------------------------------------
 
 
---[[ 여기서 주석을 제거하면 이 스크립트의 나머지 부분은 
+--[[ 여기서 주석을 제거하면 이 스크립트의 나머지 부분은
 --   실행 가능한 상태가 됩니다.
 ```
 
@@ -391,32 +391,31 @@ g = loadstring('print(343)')  -- 함수를 반환합니다.
 g()  -- 343이 출력됩니다. 그전까지는 아무것도 출력되지 않습니다.
 
 --]]
-
 ```
 
 ## 참고자료
 
-루아를 배우는 일이 흥미진진했던 이유는 <a href="http://love2d.org/">Love 2D 게임 엔진</a>을 이용해 
+루아를 배우는 일이 흥미진진했던 이유는 [LÖVE 게임 엔진](http://love2d.org/)을 이용해
 게임을 만들 수 있었기 때문입니다. 이것이 제가 루아를 배운 이유입니다.
 
-저는 <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV의 "프로그래머를 위한 루아"</a>로
-시작했습니다. 그다음으로 공식 <a href="http://www.lua.org/pil/contents.html">"프로그래밍 루아"</a> 책을 읽었습니다.
+저는 [BlackBulletIV의 "프로그래머를 위한 루아"](http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/)로
+시작했습니다. 그다음으로 공식 ["프로그래밍 루아"](http://www.lua.org/pil/contents.html) 책을 읽었습니다.
 그렇게 루아를 배웠습니다.
 
-lua-users.org에 있는 <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">짧은 루아 레퍼런스</a>를
+lua-users.org에 있는 [짧은 루아 레퍼런스](http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf)를
 읽어두면 도움될지도 모르겠습니다.
 
 여기서는 표준 라이브러리에 관해서는 다루지 않았습니다.
 
-* <a href="http://lua-users.org/wiki/StringLibraryTutorial">string 라이브러리</a>
-* <a href="http://lua-users.org/wiki/TableLibraryTutorial">table 라이브러리</a>
-* <a href="http://lua-users.org/wiki/MathLibraryTutorial">math 라이브러리</a>
-* <a href="http://lua-users.org/wiki/IoLibraryTutorial">io 라이브러리</a>
-* <a href="http://lua-users.org/wiki/OsLibraryTutorial">os 라이브러리</a>
+* [`string` 라이브러리](http://lua-users.org/wiki/StringLibraryTutorial)
+* [`table` 라이브러리](http://lua-users.org/wiki/TableLibraryTutorial)
+* [`math` 라이브러리](http://lua-users.org/wiki/MathLibraryTutorial)
+* [`io` 라이브러리](http://lua-users.org/wiki/IoLibraryTutorial)
+* [`os` 라이브러리](http://lua-users.org/wiki/OsLibraryTutorial)
 
 그나저나 이 파일 전체는 유효한 루아 프로그램입니다. 이 파일을
-learn.lua로 저장한 후 "lua learn.lua"를 실행해 보세요!
+learn.lua로 저장한 후 "`lua learn.lua`"를 실행해 보세요!
 
-이 글은 tylerneylon.com에 처음으로 써본 글이며, 
-<a href="https://gist.github.com/tylerneylon/5853042">GitHub의 Gist</a>에서도 확인할 수 있습니다.
+이 글은 tylerneylon.com에 처음으로 써본 글이며,
+[GitHub의 Gist](https://gist.github.com/tylerneylon/5853042)에서도 확인할 수 있습니다.
 루아로 즐거운 시간을 보내세요!

@@ -13,10 +13,6 @@ lang: es-es
 
 MATLAB significa 'MATrix LABoratory'. Es un poderoso lenguaje de computación numérica comúnmente usado en ingeniería y matemáticas.
 
-Si tiene algún comentario, no dude en ponerse en contacto el autor en
-[@the_ozzinator](https://twitter.com/the_ozzinator), o
-[osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
-
 ```matlab
 %% Una sección de código comienza con dos símbolos de porcentaje. Los títulos de la sección van en la misma líneas.
 % Los comentarios comienzan con un símbolo de porcentaje.
@@ -24,7 +20,7 @@ Si tiene algún comentario, no dude en ponerse en contacto el autor en
 %{
 Los Comentarios de multiples líneas se
 ven
-como 
+como
 esto
 %}
 
@@ -38,7 +34,7 @@ esto
 load learnmatlab.mat y
 
 %% Esta es otra sección de código
-% Esta sección puede ser editada y ejecutada de manera repetida por sí misma, 
+% Esta sección puede ser editada y ejecutada de manera repetida por sí misma,
 % y es útil para la programación exploratoria y demostraciones.
 A = A * 2;
 plot(A);
@@ -97,7 +93,7 @@ c = exp(a)*sin(pi/2) % c = 7.3891
 load('myFile.mat', 'y') % argumentos entre paréntesis, separados por comas
 % Sintaxis del comando:
 load myFile.mat y 	% sin paréntesis, y espacios en lugar de comas
-% Tenga en cuenta la falta de comillas en el formulario de comandos: 
+% Tenga en cuenta la falta de comillas en el formulario de comandos:
 % las entradas siempre se pasan como texto literal; no pueden pasar valores de variables.
 % Además, no puede recibir salida:
 [V,D] = eig(A);  % esto no tiene equivalente en forma de comando
@@ -241,7 +237,7 @@ A.' % Versión concisa de transposición (sin tomar complejo conjugado)
 A * B % Multiplicación de matrices
 A .* B % Multiplica cada elemento en A por su elemento correspondiente en B
 
-% Hay varios pares de funciones, donde una actúa sobre cada elemento y 
+% Hay varios pares de funciones, donde una actúa sobre cada elemento y
 % la otra (cuyo nombre termina en m) actúa sobre la matriz completa.
 exp(A) % exponencializar cada elemento
 expm(A) % calcular la matriz exponencial
@@ -443,7 +439,7 @@ abs(x) 	 % Magnitud de la variable compleja x
 phase(x) % Fase (o ángulo) de la variable compleja x
 real(x)  % Retorna la parte real de x (es decir, devuelve a si x = a + jb)
 imag(x)  % Retorna la parte imaginaria de x (es decir, devuelve b si x = a + jb)
-conj(x)  % Retorna el complejo conjugado 
+conj(x)  % Retorna el complejo conjugado
 
 
 % Constantes comunes
@@ -507,15 +503,15 @@ find(x) % Encuentra todos los elementos distintos de cero de x y devuelve sus í
 
 % Clases
 % MATLAB puede soportar programación orientada a objetos.
-% Las clases deben colocarse en un archivo del nombre de la clase con la extensión .m. 
+% Las clases deben colocarse en un archivo del nombre de la clase con la extensión .m.
 % Para comenzar, creamos una clase simple para almacenar puntos de referencia de GPS.
 % Comience WaypointClass.m
 classdef WaypointClass % El nombre de la clase.
   properties % Las propiedades de la clase se comportan como Estructuras
-    latitude 
-    longitude 
+    latitude
+    longitude
   end
-  methods 
+  methods
     % Este método que tiene el mismo nombre de la clase es el constructor.
     function obj = WaypointClass(lat, lon)
       obj.latitude = lat;
@@ -556,7 +552,6 @@ ans = a.multiplyLatBy(a,1/3)
 % la adición de dos objetos Waypoint.
 b = WaypointClass(15.0, 32.0)
 c = a + b
-
 ```
 
 ## Más sobre MATLAB
@@ -565,4 +560,3 @@ c = a + b
 * [The official MATLAB Answers forum (EN)](http://www.mathworks.com/matlabcentral/answers/)
 * [Loren on the Art of MATLAB (EN)](http://blogs.mathworks.com/loren/)
 * [Cleve's Corner (EN)](http://blogs.mathworks.com/cleve/)
-

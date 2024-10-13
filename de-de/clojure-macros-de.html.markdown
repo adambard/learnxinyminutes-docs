@@ -11,11 +11,11 @@ lang: de-de
 Wie mit allen Lisps besitzt auch Clojure die inhärente [Homoikonizität](https://en.wikipedia.org/wiki/Homoiconic),
 die dir den vollen Zugang der Sprache gibt, um
  Code-Generierungsroutinen zu schreiben. Diese werden "Macros" genannt.
-Macros geben dir eine leistungsarke Möglichkeit, die Sprache
+Macros geben dir eine leistungsstarke Möglichkeit, die Sprache
 an deine Bedürfnisse anzupassen.
 
 Sei aber vorsichtig, es wird als schlechter Stil angesehen, wenn du
-ein Macro schreibst, obwohl eine Funktion genausogut funktionieren würde.
+ein Macro schreibst, obwohl eine Funktion genauso gut funktionieren würde.
 Verwende nur dann ein Macro, wenn du Kontrolle darüber brauchst, wann oder ob Argumente in einer Form evaluiert werden.
 
 Wenn du mit Clojure vertraut sein möchtest, stelle sicher, dass du alles in [Clojure in Y Minutes](/docs/clojure/) verstehst.
@@ -59,7 +59,7 @@ Wenn du mit Clojure vertraut sein möchtest, stelle sicher, dass du alles in [Cl
 
 ;; Aber wenn du versuchst das mit einer zitierten Liste zu machen wirst du
 ;; einen Fehler bekommen, weil das Argument auch zitiert sein wird.
-;; Um dies zu umgehen, bietet Clojure einee Art und Weise Macros zu zitieren: `
+;; Um dies zu umgehen, bietet Clojure eine Art und Weise Macros zu zitieren: `
 ;; In ` kannst du ~ verwenden um in den äußeren Bereich zu kommen.
 (defmacro inc2-quoted [arg]
   `(+ 2 ~arg))
@@ -156,6 +156,6 @@ Wenn du mit Clojure vertraut sein möchtest, stelle sicher, dass du alles in [Cl
 
 [Macros schreiben](http://www.braveclojure.com/writing-macros/)
 
-[Offiziele Docs](http://clojure.org/macros)
+[Offizielle Docs](http://clojure.org/macros)
 
 [Wann verwendet man Macros?](https://lispcast.com/when-to-use-a-macro/)

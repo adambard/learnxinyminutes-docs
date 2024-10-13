@@ -8,10 +8,9 @@ lang: es-es
 filename: groovy-es.html
 ---
 
-Groovy - Un lenguaje dinámico para la plataforma Java [Leer más aquí.](http://www.groovy-lang.org/)
+Groovy - Un lenguaje dinámico para la plataforma Java. [Leer más aquí](http://www.groovy-lang.org/).
 
 ```groovy
-
 /*
   Hora de configurar:
 
@@ -284,7 +283,7 @@ def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy puede memorizar los resultados de un Closure [1][2][3]
+  Groovy puede memorizar los resultados de un Closure
 */
 def cl = {a, b ->
     sleep(3000) // simula algún proceso que consume tiempo
@@ -411,8 +410,6 @@ int sum(int x, int y) {
 }
 
 assert sum(2,5) == 7
-
-
 ```
 
 ## Más recursos
@@ -425,12 +422,6 @@ assert sum(2,5) == 7
 
 ## Libros
 
-* [Groovy Goodness] (https://leanpub.com/groovy-goodness-notebook)
-
-* [Groovy in Action] (http://manning.com/koenig2/)
-
-* [Programming Groovy 2: Dynamic Productivity for the Java Developer] (http://shop.oreilly.com/product/9781937785307.do)
-
-[1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
-[2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
-[3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
+* [Groovy Goodness](https://leanpub.com/groovy-goodness-notebook)
+* [Groovy in Action](http://manning.com/koenig2/)
+* [Programming Groovy 2: Dynamic Productivity for the Java Developer](http://shop.oreilly.com/product/9781937785307.do)

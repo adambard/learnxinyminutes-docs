@@ -12,13 +12,10 @@ lang: de-de
 Anmerkungen des ursprünglichen Autors:
 Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist heute eine der beliebtesten Sprachen. Ich habe mich in Python wegen seiner syntaktischen Übersichtlichkeit verliebt. Eigentlich ist es ausführbarer Pseudocode.
 
-Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service].
-
 Hinweis: Dieser Beitrag bezieht sich implizit auf Python 3. Falls du lieber Python 2.7 lernen möchtest, schau [hier](http://learnxinyminutes.com/docs/pythonlegacy/) weiter. Beachte hierbei,
 dass Python 2 als veraltet gilt und für neue Projekte nicht mehr verwendet werden sollte.
 
 ```python
-
 # Einzeilige Kommentare beginnen mit einer Raute (Doppelkreuz)
 
 """ Mehrzeilige Strings werden mit
@@ -104,7 +101,7 @@ False or True #=> True
 # Strings können auch addiert werden! Vermeide dies aber lieber.
 "Hallo " + "Welt!" #=> "Hallo Welt!"
 # Strings können ohne "+" addiert werden
-"Hallo " "welt!"  # => "Hallo Welt!"
+"Hallo " "Welt!"  # => "Hallo Welt!"
 
 # Ein String kann wie eine Liste von Zeichen verwendet werden
 "Das ist ein String"[0] #=> 'D'
@@ -113,13 +110,13 @@ False or True #=> True
 "{} können {} werden".format("Strings", "formatiert")
 
 # Schneller geht das mit Wiederholungen
-"{0} mag Spagetthi, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
-#=> "Hans mag Spagetthi, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
+"{0} mag Spaghetti, {0} liebt es zu Schwimmen und ganz besonders mag {0} {1}".format("Hans", "Blattsalat")
+#=> "Hans mag Spaghetti, Hans liebt es zu Schwimmen und ganz besonders mag Hans Blattsalat"
 
-# Die Formatierung kann auch mit `f-strings` oder formattierten Strings gemacht
+# Die Formatierung kann auch mit `f-strings` oder formatierten Strings gemacht
 # werden (ab Python 3.6+)
 name = "Sandra"
-f"Sie hat gesagt, ihr name sei {name}." # => Sie hat gesagt, ihr Name sei Sandra."
+f"Sie hat gesagt, ihr Name sei {name}." # => Sie hat gesagt, ihr Name sei Sandra."
 # Es ist möglich, andere Anweisungen innerhalb der geschweiften Klammern zu 
 # setzen, welche dann im Output des Strings angezeigt werden.
 f"{name} ist {len(name)} Zeichen lang" # => Sandra ist 6 Zeichen lang.
@@ -224,7 +221,7 @@ d, e, f = 4, 5, 6
 # Es ist kinderleicht, zwei Werte zu tauschen
 e, d = d, e     # d ist nun 5 und e ist nun 4
 
-# Dictionarys (Wörterbucher) speichern Schlüssel-Werte-Paare
+# Dictionarys (Wörterbücher) speichern Schlüssel-Werte-Paare
 empty_dict = {}
 # Hier ein gefülltes Wörterbuch
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -245,7 +242,7 @@ list(filled_dict.values()) #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Einen nicht vorhandenenen Schlüssel zu suchen, löst einen KeyError aus
+# Einen nicht vorhandenen Schlüssel zu suchen, löst einen KeyError aus
 filled_dict["four"] # KeyError
 
 # Mit der get-Methode verhindern wir das
@@ -264,7 +261,7 @@ filled_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
 #filled_dict["four"] = 4  # noch ein Weg, Werte hinzuzufügen
 
 # Schlüssel von einem Wörterbuch entfernen
-del filled_dict["one"]  # Entfert den Schlüssel "one"
+del filled_dict["one"]  # Entfernt den Schlüssel "one"
 
 # Sets speichern Mengen
 empty_set = set()
@@ -623,7 +620,6 @@ def say(say_please=False):
 
 print(say())  # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
-
 ```
 
 ## Lust auf mehr?
@@ -635,8 +631,7 @@ print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
 * [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](http://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
-* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
+* [Hitchhiker's Guide to Python](http://docs.python-guide.org/)
 * [Python Course](http://www.python-course.eu/index.php)
 * [First Steps With Python](https://realpython.com/learn/python-first-steps/)
 

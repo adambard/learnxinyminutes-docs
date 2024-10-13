@@ -120,6 +120,13 @@ fun helloWorld(val name : String) {
     println(even(6)) // => true
     println(even(7)) // => false
 
+    /*
+    You can also use lambda functions, with the '->' operator seperating
+    the parameters from the function body.
+    */
+    val fooLambda: (Int) -> Int = {n -> n + 1}
+    println(fooLambda(1)) // => 2
+
     // Functions can take functions as arguments and return functions.
     fun not(f: (Int) -> Boolean): (Int) -> Boolean {
         return {n -> !f.invoke(n)}
@@ -127,7 +134,10 @@ fun helloWorld(val name : String) {
     // Named functions can be specified as arguments using the :: operator.
     val notOdd = not(::odd)
     val notEven = not(::even)
-    // Lambda expressions can be specified as arguments.
+    /*
+    Lambda expressions can be specified as arguments.
+    If it's the only argument parentheses can be omitted.
+    */
     val notZero = not {n -> n == 0}
     /*
     If a lambda has only one parameter

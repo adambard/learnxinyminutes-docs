@@ -392,32 +392,31 @@ g = loadstring('print(343)')  -- Retorna uma função.
 g()  -- Imprime 343; nada foi impresso antes disso.
 
 --]]
-
 ```
 
 ## Referências
 
 Fiquei bastante animado para aprender Lua pois consegui fazer jogos
-com a <a href="http://love2d.org/">Love 2D engine de jogos</a>.
+com a [LÖVE engine de jogos](http://love2d.org/).
 
-Eu comecei com <a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">BlackBulletIV's para programadores LUA</a>.
-Em seguida, eu li a documentação oficial <a href="https://www.lua.org/manual/5.1/pt/index.html#contents">Programando em Lua</a>.
+Eu comecei com [BlackBulletIV's para programadores LUA](http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/).
+Em seguida, eu li a documentação oficial [Programando em Lua](https://www.lua.org/manual/5.1/pt/index.html#contents).
 É assim que se começa.
 
-Pode ser útil conferir <a href="http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf">Uma pequena referencia sobre LUA</a> em lua-users.org.
+Pode ser útil conferir [Uma pequena referencia sobre LUA](http://lua-users.org/files/wiki_insecure/users/thomasl/luarefv51.pdf) em lua-users.org.
 
 Os principais tópicos não cobertos, são as bibliotecas padrões:
 
-- <a href="http://lua-users.org/wiki/StringLibraryTutorial">Biblioteca de strings</a>
-- <a href="http://lua-users.org/wiki/TableLibraryTutorial">Biblioteca de tabelas</a>
-- <a href="http://lua-users.org/wiki/MathLibraryTutorial">Biblioteca de matemática</a>
-- <a href="http://lua-users.org/wiki/IoLibraryTutorial">Biblioteca de entrada/saída</a>
-- <a href="http://lua-users.org/wiki/OsLibraryTutorial">Biblioteca do sistema operacional</a>
+- [Biblioteca de strings](http://lua-users.org/wiki/StringLibraryTutorial)
+- [Biblioteca de tabelas](http://lua-users.org/wiki/TableLibraryTutorial)
+- [Biblioteca de matemática](http://lua-users.org/wiki/MathLibraryTutorial)
+- [Biblioteca de entrada/saída](http://lua-users.org/wiki/IoLibraryTutorial)
+- [Biblioteca do sistema operacional](http://lua-users.org/wiki/OsLibraryTutorial)
 
 A propósito, todo este arquivo é um código LUA válido, salve-o como
-aprenda.lua e rode-o com "lua aprenda.lua" !
+aprenda.lua e rode-o com "`lua aprenda.lua`" !
 
 Este guia foi escrito pela primeira vez por tylerneylon.com, e agora
-também disponível em <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. E também em português.
+também disponível em [GitHub gist](https://gist.github.com/tylerneylon/5853042). E também em português.
 
 Se divirta com lua

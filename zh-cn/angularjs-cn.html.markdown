@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: AngularJS
+category: framework
+framework: AngularJS
 contributors:
     - ["Walter Cordero", "http://waltercordero.com"]
 filename: learnangular-cn.html
@@ -313,7 +313,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 <p>Total = {{ (quantity * price) | currency }}</p>
 
-</div> 
+</div>
 
 //一个过滤器可以通过一个管道符 (|) 及一个过滤器表达式添加到一个指令上。
 //orderBy 过滤器根据一个表达式排序一个数组：
@@ -327,7 +327,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 <div>
 
-//一个输入框过滤器可以通过一个管道符 (|) 
+//一个输入框过滤器可以通过一个管道符 (|)
 //以及后跟一个冒号和模式名的 filter 添加到一个指令上。
 //该过滤器从一个数组中选择一个子集：
 
@@ -354,7 +354,7 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 // AngularJS $http 是一个从 web 服务器上读取数据的核心服务。
 // $http.get(url) 这个函数用来读取服务器数据。
-<div ng-app="myApp" ng-controller="customersCtrl"> 
+<div ng-app="myApp" ng-controller="customersCtrl">
 
 <ul>
   <li ng-repeat="x in names">
@@ -395,7 +395,7 @@ header("Access-Control-Allow-Origin: *");
 // AngularJS 表格
 
 // 使用 angular 显示表格非常简单：
-<div ng-app="myApp" ng-controller="customersCtrl"> 
+<div ng-app="myApp" ng-controller="customersCtrl">
 
 <table>
   <tr ng-repeat="x in names">
@@ -626,7 +626,7 @@ app.controller("myCtrl", function($scope) {
 </html>
 
 //myApp.js
-var app = angular.module("myApp", []); 
+var app = angular.module("myApp", []);
 
 // 模块定义中的 [] 参数可用来定义依赖的模块。
 
@@ -697,14 +697,3 @@ app.controller('myCtrl', function($scope) {
     $scope.lastName= "Doe";
 });
 ```
-
-## 来源 & 参考
-
-**例子**
-
-- http://www.w3schools.com/angular/angular_examples.asp
-
-**参考**
-
-- http://www.w3schools.com/angular/angular_ref_directives.asp
-- http://www.w3schools.com/angular/default.asp

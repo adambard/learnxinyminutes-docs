@@ -300,7 +300,7 @@ fn main() {
     *ref_var2 += 2;         // '*' serve a puntare al binding var2, preso in presto mutevolmente
 
     println!("{}", *ref_var2); // 6
-    // var2 non compilerebbe. ref_var2 è di tipo &mut i32, e quindi 
+    // var2 non compilerebbe. ref_var2 è di tipo &mut i32, e quindi
     // immagazzina un riferimento a un i32, e non il valore stesso.
     // var2 = 2; // questo non compilerebbe, perché `var2` è stato preso in prestito
 }
@@ -312,11 +312,11 @@ C'è molto di più in Rust — questi sono solo i fondamenti di Rust, che servon
 le cose più importanti.
 
 Purtroppo c'è pochissima documentazione in italiano, tra cui:
-(https://www.mozillaitalia.org/home/2015/05/30/primi-passi-con-rust/)
+[mozillaitalia.org/home/2015/05/30/primi-passi-con-rust/](https://www.mozillaitalia.org/home/2015/05/30/primi-passi-con-rust/)
 
 Però ce n'è parecchia in inglese. Per saperne di più, leggi [The Rust Programming
 Language](http://doc.rust-lang.org/book/index.html) e tieni d'occhio l'area di interesse di Reddit (subreddit)
 [/r/rust](http://reddit.com/r/rust).
 
 Puoi anche provare a programmare in varie versioni di Rust usando il compilatore online al sito ufficiale
-[Rust playpen](http://play.rust-lang.org).
+[Rust Playground](https://play.rust-lang.org).

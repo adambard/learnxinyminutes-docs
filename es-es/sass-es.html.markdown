@@ -18,8 +18,6 @@ Sass tiene dos sintaxis para elegir: SCSS, que usa la misma que CSS pero con las
 Si ya estás familiarizado con CSS3, vas a entender Sass relativamente rápido. Sass no ofrece nuevas propiedades de estilo, si no que añade herramientas para escribir tus CSS de manera más eficiente, haciendo su mantenimiento mucho más sencillo.
 
 ```scss
-
-
 //Los comentarios en una sola línea son eliminados cuando Sass es compilado a CSS.
 
 /* Los comentarios multi-línea se mantienen. */
@@ -562,7 +560,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
 ```
 
 ## ¿SASS o Sass?

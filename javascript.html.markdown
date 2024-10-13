@@ -405,7 +405,7 @@ myObj = {
 };
 myObj.myFunc(); // = "Hello world!"
 
-// What this is set to has to do with how the function is called, not where
+// What `this` is set to has to do with how the function is called, not where
 // it's defined. So, our function doesn't work if it isn't called in the
 // context of the object.
 var myFunc = myObj.myFunc;
@@ -655,7 +655,7 @@ attached terminal
 [Javascript: The Right Way][10] is a guide intended to introduce new developers
 to JavaScript and help experienced developers learn more about its best practices.
 
-[Javascript:Info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
+[javascript.info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
 as well as advanced topics with concise explanations.
 
 
@@ -668,7 +668,7 @@ Mozilla Developer Network.
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
 [4]: http://www.learneroo.com/modules/64/nodes/350
-[5]: http://bonsaiden.github.io/JavaScript-Garden/
+[5]: https://shamansir.github.io/JavaScript-Garden/
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [8]: https://www.javascripttutorial.net/

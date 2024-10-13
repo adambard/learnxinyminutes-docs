@@ -565,8 +565,9 @@ void doSomethingWithAFile(const std::string& filename)
 //   当它们脱离作用域时，析构器会自动释放其中储存的内容。
 // - 用lock_guard和unique_lock实现的互斥
 ```
+
 扩展阅读：
 
-* [CPP Reference](http://cppreference.com/w/cpp) 提供了最新的语法参考。
-* 可以在 [CPlusPlus](http://cplusplus.com) 找到一些补充资料。
-* 可以在 [TheChernoProject - C ++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb）上找到涵盖语言基础和设置编码环境的教程。
+- [CPP Reference](http://cppreference.com/w/cpp) 提供了最新的语法参考。
+- 可以在 [CPlusPlus](http://cplusplus.com) 找到一些补充资料。
+- 可以在 [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb) 上找到涵盖语言基础和设置编码环境的教程。

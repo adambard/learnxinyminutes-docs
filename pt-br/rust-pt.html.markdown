@@ -12,7 +12,7 @@ combina controle de baixo nível sobre o desempenho com facilidades de alto
 nível e garantias de segurança.
 
 Ele atinge esse objetivo sem necessitar de um coletor de lixo ou um processo
-*runtime*, permitindo que se use bibliotecas Rust em substituição a bibliotecas 
+*runtime*, permitindo que se use bibliotecas Rust em substituição a bibliotecas
 em C.
 
 A primeira versão de Rust, 0.1, apareceu em janeiro de 2012, e por três anos o
@@ -65,10 +65,10 @@ fn main() {
     let f: f64 = 1.3f64;
 
     // Inferência de tipos
-    // Em geral, o compilador Rust consegue inferir qual o tipo de uma 
+    // Em geral, o compilador Rust consegue inferir qual o tipo de uma
     // variável, então você não tem que escrever uma anotação explícita de tipo.
-    // Ao longo desse tutorial, os tipos serão explicitamente anotados em 
-    // muitos lugares, mas apenas com propósito demonstrativo. A inferência de 
+    // Ao longo desse tutorial, os tipos serão explicitamente anotados em
+    // muitos lugares, mas apenas com propósito demonstrativo. A inferência de
     // tipos pode gerenciar isso na maioria das vezes.
     let implicit_x = 1;
     let implicit_f = 1.3;
@@ -94,7 +94,7 @@ fn main() {
 
     // Uma String slice - uma visão imutável em outra string.
     // Basicamente, isso é um par imutável de ponteiros para uma string - ele
-    // não contém o conteúdo de uma strinf, apenas um ponteiro para o começo e 
+    // não contém o conteúdo de uma strinf, apenas um ponteiro para o começo e
     // um ponteiro para o fim da área de memória para a string, estaticamente
     // alocada ou contida em outro objeto (nesse caso, `s`)
     let s_slice: &str = &s;
@@ -279,7 +279,7 @@ fn main() {
     // automaticamente desalocado com segurança.
     let mut mine: Box<i32> = Box::new(3);
     *mine = 5; // dereference
-    // Aqui, `now_its_mine` possui o controle exclusivo de `mine`. Em outras 
+    // Aqui, `now_its_mine` possui o controle exclusivo de `mine`. Em outras
     // palavras, `mine` tem o controle transferido.
     let mut now_its_mine = mine;
     *now_its_mine += 2;
@@ -317,15 +317,15 @@ fn main() {
 
 ## Outras leituras
 
-Existe muita coisa sobre Rust - isto aqui é apenas o básico para que você possa 
-entender as coisas mais importantes. Para aprender mais sobre Rust, leia [The 
-Rust Programming Language](http://doc.rust-lang.org/book/index.html) e 
+Existe muita coisa sobre Rust - isto aqui é apenas o básico para que você possa
+entender as coisas mais importantes. Para aprender mais sobre Rust, leia [The
+Rust Programming Language](http://doc.rust-lang.org/book/index.html) e
 acompanhe [/r/rust](http://reddit.com/r/rust). A galera no canal #rust do
 irc.mozilla.org também estão sempre dispostos a ajudar os novatos.
 
 Você pode brincar com outras característica de Rust com um compilador online
-no portal oficial do projeto [Rust playpen](http://play.rust-lang.org), or ler 
+no portal oficial do projeto [Rust Playground](https://play.rust-lang.org), or ler
 mais na página oficial [Rust website](http://rust-lang.org).
 
-No Brasil acompanhe os encontros do [Meetup Rust São Paulo]
-(http://www.meetup.com/pt-BR/Rust-Sao-Paulo-Meetup/).
+No Brasil acompanhe os encontros do
+[Meetup Rust São Paulo](http://www.meetup.com/pt-BR/Rust-Sao-Paulo-Meetup/).

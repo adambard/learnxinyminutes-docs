@@ -13,7 +13,7 @@ lang: de-de
 
 Swift ist eine Programmiersprache von Apple für die Entwicklung von iOS und macOS Applikationen. Swift wurde 2014 zu Apples WWDC Entwicklerkonferenz vorgestellt und wurde mit dem Ziel entwickelt, fehlerträchtigen Code zu vermeiden sowie mit Objective-C zu koexistieren. Es wird mit dem LLVM Compiler gebaut und ist ab Xcode 6+ verfügbar.
 
-Das offizielle [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) Buch von Apple ist kostenlos via iBooks verfügbar.
+Das offizielle [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) Buch von Apple ist kostenlos via Apple Books verfügbar.
 
 Außerdem hilfreich ist Apples [Getting Started Guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), ein guter Einstiegspunkt mit komplettem Swift-Tutorial.
 
@@ -210,7 +210,7 @@ default: // notwendig (um alle möglichen Eingaben zu verarbeiten)
 
     :param: name Ein Name
     :param: day Ein Tag
-    :returns: Ein String, der Name und Tag beinhält.
+    :returns: Ein String, der Name und Tag enthält.
 */
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
@@ -585,7 +585,7 @@ prefix func !!! (inout shape: Square) -> Square {
 // Aktueller Wert
 print(mySquare.sideLength) // 4
 
-// Wert nach verwendung des eigenen Operators
+// Wert nach Verwendung des eigenen Operators
 !!!mySquare
 print(mySquare.sideLength) // 12
 ```

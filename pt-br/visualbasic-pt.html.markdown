@@ -8,16 +8,16 @@ lang: pt-br
 filename: learnvisualbasic-pt.vb
 ---
 
-```
+```vbnet
 Module Module1
 
 module Module1
 
     Sub Main ()
-        ' Uma visão geral de console de aplicativos do Visual Basic antes de 
+        ' Uma visão geral de console de aplicativos do Visual Basic antes de
         ' mergulharmos mais profundamente na linguagem.
         ' Aspas simples começam comentários.
-        ' Para navegar neste tutorial dentro do compilador do Visual Basic, 
+        ' Para navegar neste tutorial dentro do compilador do Visual Basic,
         ' eu criei um sistema de navegação.
         ' Este sistema de navegação vai ser explicado conforme avançarmos no
         ' tutorial, e você vai entender o que isso significa.
@@ -273,13 +273,12 @@ module Module1
     End Sub
 
 End Module
-
 ```
 
-##Referências
+## Referências
 
 Aprendi Visual Basic no aplicativo de console. Isso me permitiu entender os princípios da programação de computador para continuar a aprender outras linguagens de programação facilmente.
 
-Eu criei um tutorial mais aprofundado do <a href="http://www.vbbootcamp.co.uk/" Title="Visual Basic Tutorial">Visual Basic</a> para aqueles que gostariam de saber mais.
+Eu criei um tutorial mais aprofundado do [Visual Basic](http://www.vbbootcamp.co.uk/) para aqueles que gostariam de saber mais.
 
 Toda a sintaxe deste tutorial é válida. Copie e cole o código no compilador do Visual Basic e execute (com o F5) o programa.

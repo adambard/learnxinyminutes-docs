@@ -14,24 +14,13 @@ Markdown è stato creato da John Gruber nel 2004. Il suo scopo è quello di esse
 
 Markdown varia nelle sue implementazioni da un parser all'altro. Questa guida cercherà di chiarire quali caratteristiche esistono a livello globale o quando sono disponibili solo per un determinato parser.
 
-- [Elementi HTML](#elementi-html)
-- [Titoli](#titoli)
-- [Stili di testo semplici](#stili-di-testo-semplici)
-- [Paragrafi](#paragrafi)
-- [Liste](#liste)
-- [Estratti di codice](#estratti-di-codice)
-- [Linea orizzontale](#linea-orizzontale)
-- [Links](#links)
-- [Immagini](#immagini)
-- [Miscellanea](#miscellanea)
-
 ## Elementi HTML
 Markdown è un superset di HTML, quindi ogni file HTML è a sua volta un file Markdown valido.
 
 ```md
 <!-- Questo significa che possiamo usare elementi di HTML in Markdown, come per esempio i commenti,
-e questi non saranno modificati dal parser di Markdown. State attenti però, 
-se inserite un elemento HTML nel vostro file Markdown, non potrete usare la sua sintassi 
+e questi non saranno modificati dal parser di Markdown. State attenti però,
+se inserite un elemento HTML nel vostro file Markdown, non potrete usare la sua sintassi
 all'interno del contenuto dell'elemento. -->
 ```
 
@@ -47,6 +36,7 @@ Potete creare gli elementi HTML da `<h1>` a `<h6>` facilmente, basta che inseria
 ##### Questo è un <h5>
 ###### Questo è un <h6>
 ```
+
 Markdown inoltre fornisce due alternative per indicare gli elementi h1 e h2
 
 ```md
@@ -72,11 +62,12 @@ __Come pure questo.__
 *__E questo!__*
 ```
 
-In Github Flavored Markdown, che è utilizzato per renderizzare i file markdown su Github, è presente anche lo stile barrato:
+In GitHub Flavored Markdown, che è utilizzato per renderizzare i file markdown su GitHub, è presente anche lo stile barrato:
 
 ```md
 ~~Questo testo è barrato.~~
 ```
+
 ## Paragrafi
 
 ```md
@@ -109,7 +100,6 @@ Le citazioni sono semplici da inserire, basta usare il carattere >.
 > Potete utilizzare anche più di un livello
 >>  di indentazione!
 > Quanto è comodo?
-
 ```
 
 ## Liste
@@ -148,6 +138,7 @@ Non dovete nemmeno mettere i numeri nell'ordine giusto, markdown li visualizzer�
 1. Secondo oggetto
 1. Terzo oggetto
 ```
+
 (Questa lista verrà visualizzata esattamente come quella dell'esempio prima)
 
 Potete inserire anche sotto liste
@@ -170,6 +161,7 @@ I box senza la 'x' sono checkbox HTML ancora da completare.
 Il box subito sotto è una checkbox HTML spuntata.
 - [x] Questo task è stato completato.
 ```
+
 ## Estratti di codice
 
 Potete inserire un estratto di codice (che utilizza l'elemento `<code>`) indentando una linea con quattro spazi oppure con un carattere tab.
@@ -183,7 +175,7 @@ Potete inoltre inserire un altro tab (o altri quattro spazi) per indentare il vo
 
 ```md
     my_array.each do |item|
-        puts item
+      puts item
     end
 ```
 
@@ -193,17 +185,20 @@ Codice inline può essere inserito usando il carattere backtick `
 Giovanni non sapeva neppure a cosa servisse la funzione `go_to()`!
 ```
 
-In Github Flavored Markdown, potete inoltre usare una sintassi speciale per il codice
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+In GitHub Flavored Markdown, potete inoltre usare una sintassi speciale per il codice
+
+````md
+```ruby
 def foobar
-    puts "Hello world!"
+  puts "Hello world!"
 end
-&#x60;&#x60;&#x60;</code></pre>
-Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre Github userà l'evidenziazione della sintassi del linguaggio specificato dopo i \`\`\` iniziali
+```
+````
+
+Se usate questa sintassi, il testo non richiederà di essere indentato, inoltre GitHub userà l'evidenziazione della sintassi del linguaggio specificato dopo i <code>```</code> iniziali
 
 ## Linea orizzontale
-Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asterischi o trattini, con o senza spazi. 
+Le linee orizzontali (`<hr/>`) sono inserite facilmente usanto tre o più asterischi o trattini, con o senza spazi.
 
 ```md
 ***
@@ -232,6 +227,7 @@ La sintassi funziona anche con i path relativi.
 ```
 
 Markdown supporta inoltre anche la possibilità di aggiungere i link facendo riferimento ad altri punti del testo.
+
 ```md
 [Apri questo link][link1] per più informazioni!
 [Guarda anche questo link][foobar] se ti va.
@@ -239,17 +235,21 @@ Markdown supporta inoltre anche la possibilità di aggiungere i link facendo rif
 [link1]: http://test.com/ "Bello!"
 [foobar]: http://foobar.biz/ "Va bene!"
 ```
+
 l titolo può anche essere inserito in apici singoli o in parentesi, oppure omesso interamente. Il riferimento può essere inserito in un punto qualsiasi del vostro documento e l'identificativo del riferimento può essere lungo a piacere a patto che sia univoco.
 
 Esiste anche un "identificativo implicito" che vi permette di usare il testo del link come id.
+
 ```md
 [Questo][] è un link.
 
 [Questo]: http://thisisalink.com/
 ```
+
 Ma non è comunemente usato.
 
 ## Immagini
+
 Le immagini sono inserite come i link ma con un punto esclamativo inserito prima delle parentesi quadre!
 
 ```md
@@ -263,18 +263,21 @@ E la modalità a riferimento funziona esattamente come ci si aspetta
 
 [myimage]: relative/urls/cool/image.jpg "Se vi serve un titolo, lo mettete qui"
 ```
-## Miscellanea 
+
+## Miscellanea
 ### Auto link
 
 ```md
 <http://testwebsite.com/> è equivalente ad
 [http://testwebsite.com/](http://testwebsite.com/)
 ```
+
 ### Auto link per le email
 
 ```md
 <foo@bar.com>
 ```
+
 ### Caratteri di escaping
 
 ```md
@@ -282,7 +285,8 @@ Voglio inserire *questo testo circondato da asterischi* ma non voglio che venga 
 ```
 
 ### Combinazioni di tasti
-In Github Flavored Markdown, potete utilizzare il tag `<kbd>` per raffigurare i tasti della tastiera.
+
+In GitHub Flavored Markdown, potete utilizzare il tag `<kbd>` per raffigurare i tasti della tastiera.
 
 ```md
 Il tuo computer è crashato? Prova a premere
@@ -290,7 +294,8 @@ Il tuo computer è crashato? Prova a premere
 ```
 
 ### Tabelle
-Le tabelle sono disponibili solo in Github Flavored Markdown e sono leggeremente complesse, ma se proprio volete inserirle fate come segue:
+
+Le tabelle sono disponibili solo in GitHub Flavored Markdown e sono leggeremente complesse, ma se proprio volete inserirle fate come segue:
 
 ```md
 | Col1                 | Col2     | Col3               |
@@ -298,6 +303,7 @@ Le tabelle sono disponibili solo in Github Flavored Markdown e sono leggeremente
 | Allineato a sinistra | Centrato | Allineato a destra |
 | blah                 | blah     | blah               |
 ```
+
 oppure, per lo stesso risultato
 
 ```md

@@ -8,7 +8,7 @@ translators:
     - ["Oleh Hromiak", "https://github.com/ogroleg"]
 ---
 
-```
+```wast
 ;; learnwasm-ua.wast
 
 (module
@@ -222,5 +222,4 @@ translators:
   )
   (export "apply_cos64" (func $apply_cos64))
 )
-
 ```

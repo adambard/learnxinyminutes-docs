@@ -19,8 +19,6 @@ Wenn du bereits mit CSS3 vertraut bist, wirst du dir Sass relativ schnell aneign
 
 
 ```scss
-
-
 //Einzeilige Kommentare werden entfernt, wenn Sass zu CSS kompiliert wird.
 
 /* Mehrzeilige Kommentare bleiben bestehen. */
@@ -427,7 +425,6 @@ body {
 .gutter {
   width: 6.25%;
 }
-
 ```
 
 ## SASS oder Sass?
@@ -442,7 +439,7 @@ Du kannst beide Syntax-Optionen benutzen, gehe einfach in die Einstellungen und 
 Sass kann in jedem Projekt verwendet werden, solange du ein Programm hast, um es in CSS zu kompilieren.
 Du solltest verifizieren, dass das CSS, was du verwendest, mit deinen Ziel-Browsern kompatibel ist.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) und [CanIUse](http://caniuse.com) sind gute Resourcen um die Kompatibilät zu überpüfen.
+[QuirksMode CSS](http://www.quirksmode.org/css/) und [CanIUse](http://caniuse.com) sind gute Resourcen um die Kompatibilität zu überprüfen.
 
 
 ## Literaturhinweise

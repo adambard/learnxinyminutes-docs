@@ -16,12 +16,8 @@ integração com páginas web e seu suporte nativo nos browsers fez com que
 ela se tornasse mais comum que Java no frontend web.
 
 Javascript não é somente limitada a browsers web, existindo o Node.js,
-que é um projeto que fornece um interpretador baseado no motor V8 do Google 
+que é um projeto que fornece um interpretador baseado no motor V8 do Google
 Chrome e está se tornando cada vez mais famoso.
-
-Feedback são muito apreciados! Você me encontrar em
-[@ExcitedLeigh](https://twitter.com/ExcitedLeigh), ou
-[l@leigh.net.au](mailto:l@leigh.net.au).
 
 ```js
 // Comentários são como em C. Comentários de uma linha começam com duas barras,
@@ -35,7 +31,7 @@ facaAlgo();
 // inserido quando há uma nova linha, exceto alguns casos.
 facaAlgo()
 
-// Como esses casos podem causar resultados inesperados, vamos continuar 
+// Como esses casos podem causar resultados inesperados, vamos continuar
 // a usar ponto-e-vírgula neste guia.
 
 ///////////////////////////////////
@@ -107,7 +103,7 @@ null == undefined; // = true
 
 // ...a menos que use ===
 "5" === 5; // = false
-null === undefined; // = false 
+null === undefined; // = false
 
 // ...isso pode resultar em comportamentos estranhos...
 13 + !0; // 14
@@ -134,7 +130,7 @@ undefined; // usado para indicar um valor que não é a atualmente definido
 ///////////////////////////////////
 // 2. Variáveis, Arrays e Objetos
 
-// Variáveis são declaradas com a palavra-chave `var`. O Javascript é 
+// Variáveis são declaradas com a palavra-chave `var`. O Javascript é
 // dinâmicamente tipado, portanto você não precisa especificar o tipo.
 // Atribuições usam um simples caracter de `=`.
 var someVar = 5;
@@ -185,7 +181,7 @@ myObj["my other key"]; // = 4
 // válido.
 myObj.myKey; // = "myValue"
 
-// Objetos são mutáveis, valores podem ser modificados e novas chaves 
+// Objetos são mutáveis, valores podem ser modificados e novas chaves
 // adicionadas.
 myObj.myThirdKey = true;
 
@@ -265,8 +261,8 @@ function myFunction(thing){
 myFunction("foo"); // = "FOO"
 
 // Repare que o valor a ser retornado deve começar na mesma linha que
-// a palavra-chave `return`, senão você sempre irá retornar `undefined` 
-// visto que o ponto-e-vírgula é inserido automáticamente nas quebras de 
+// a palavra-chave `return`, senão você sempre irá retornar `undefined`
+// visto que o ponto-e-vírgula é inserido automáticamente nas quebras de
 // linha. Preste atenção quando usar o estilo Allman.
 function myFunction()
 {
@@ -287,21 +283,21 @@ setTimeout(myFunction, 5000);
 // Nota: `setTimeout` não é parte da linguagem Javascript, mas é provido pelos
 // browsers e o Node.js.
 
-// Objetos de funções não precisam nem serem declarados com nome - você pode 
-// escrever a definição de uma função anônima diretamente nos argumentos de 
+// Objetos de funções não precisam nem serem declarados com nome - você pode
+// escrever a definição de uma função anônima diretamente nos argumentos de
 // outra função.
 setTimeout(function(){
     // este código será chamado em 5 segundos
 }, 5000);
 
-// O Javascript tem escopo de função; as funções tem seu próprio escopo, 
+// O Javascript tem escopo de função; as funções tem seu próprio escopo,
 // mas outros blocos não.
 if (true){
     var i = 5;
 }
 i; // = 5 - não `undefined` como você esperaria numa linguagem de blogo-escopo
 
-// Isso levou a padrão comum chamado de IIFE (Imediately Invoked Function 
+// Isso levou a padrão comum chamado de IIFE (Imediately Invoked Function
 // Expression) ou (Expressão de Função Invocada Imediatamente), que previne
 // que variáveis temporárias vazem para o escopo global.
 (function(){
@@ -322,7 +318,7 @@ function sayHelloInFiveSeconds(name){
     var prompt = "Hello, " + name + "!";
 
     // Funções internas são colocadas no escopo local por padrão, assim como
-    // se fossem declaradas com `var`. 
+    // se fossem declaradas com `var`.
     function inner(){
         alert(prompt);
     }
@@ -347,7 +343,7 @@ var myObj = {
 myObj.myFunc(); // = "Olá mundo!"
 
 // Quando uma função ligada a um objeto é chamada, ela pode acessar o objeto
-// da qual foi ligada usando a palavra-chave `this`. 
+// da qual foi ligada usando a palavra-chave `this`.
 myObj = {
     myString: "Olá mundo!",
     myFunc: function(){
@@ -356,7 +352,7 @@ myObj = {
 };
 myObj.myFunc(); // = "Olá mundo!"
 
-// O `this` só funciona para dentro do escopo do objeto, portanto, se chamarmos 
+// O `this` só funciona para dentro do escopo do objeto, portanto, se chamarmos
 // um método do objeto fora de seu escopo, este não irá funcionar.
 var myFunc = myObj.myFunc;
 myFunc(); // = undefined
@@ -369,7 +365,7 @@ var myOtherFunc = function(){
 myObj.myOtherFunc = myOtherFunc;
 myObj.myOtherFunc(); // = "OLÁ MUNDO!"
 
-// Nós podemos também especificar um contexto onde a função irá executar, 
+// Nós podemos também especificar um contexto onde a função irá executar,
 // usando o `call` ou `apply`.
 
 var anotherFunc = function(s){
@@ -389,7 +385,7 @@ Math.min(42, 6, 27); // = 6
 Math.min([42, 6, 27]); // = NaN (uh-oh!)
 Math.min.apply(Math, [42, 6, 27]); // = 6
 
-// Mas, o `call` e `apply` são somente temporários. Quando você quiser que 
+// Mas, o `call` e `apply` são somente temporários. Quando você quiser que
 // permaneça sempre no escopo, use `bind`.
 
 var boundFunc = anotherFunc.bind(myObj);
@@ -402,7 +398,7 @@ var doubler = product.bind(this, 2);
 doubler(8); // = 16
 
 // Quando você invoca uma função com a palavra-chave `new`, um novo objeto
-// é criado, e fica disponível para a função pela palavra-chave `this`. 
+// é criado, e fica disponível para a função pela palavra-chave `this`.
 // Funções são desenhadas para serem invocadas como se invocam os construtores.
 
 var MyConstructor = function(){
@@ -411,13 +407,13 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
-// Todo objeto JavaScript possui um `prototype`. Quando você tenta acessar 
+// Todo objeto JavaScript possui um `prototype`. Quando você tenta acessar
 // uma propriedade de um objeto que não existe no objeto atual, o interpretador
 // vai olhar imediatamente para o seu prototype.
 
-// Algumas implementações em JS deixam você acessar o objeto prototype com a 
-// propriedade mágica `__proto__`. Enquanto isso é útil para explicar 
-// prototypes, não é parte de um padrão; nós vamos falar de algumas formas de 
+// Algumas implementações em JS deixam você acessar o objeto prototype com a
+// propriedade mágica `__proto__`. Enquanto isso é útil para explicar
+// prototypes, não é parte de um padrão; nós vamos falar de algumas formas de
 // usar prototypes depois.
 
 var myObj = {
@@ -436,7 +432,7 @@ myObj.meaningOfLife; // = 42
 // Isto funciona para funções, também.
 myObj.myFunc(); // = "olá mundo!"
 
-// É claro, se sua propriedade não está em seu prototype, 
+// É claro, se sua propriedade não está em seu prototype,
 // o prototype do prototype será procurado e por aí vai.
 myPrototype.__proto__ = {
     myBoolean: true
@@ -450,8 +446,8 @@ myPrototype.meaningOfLife = 43;
 myObj.meaningOfLife; // = 43
 
 
-// Nós mencionamos que o `__proto__` não é uma forma padrão, e não há uma 
-// forma padrão de mudar o prototype de um objeto já existente. Entretanto, 
+// Nós mencionamos que o `__proto__` não é uma forma padrão, e não há uma
+// forma padrão de mudar o prototype de um objeto já existente. Entretanto,
 // existem duas formas de se criar um objeto com um dado prototype.
 
 // A primeira forma é `Object.create`, que é uma adição recente do JS,
@@ -475,7 +471,7 @@ myNewObj2.myNumber = 6
 myNewObj2.getMyNumber(); // = 6
 
 // Tipos originais da linguagem como strings e números também possuem
-// construtores equivalentes. 
+// construtores equivalentes.
 var myNumber = 12;
 var myNumberObj = new Number(12);
 myNumber == myNumberObj; // = true
@@ -500,7 +496,7 @@ String.prototype.firstCharacter = function(){
 // uma nova característica do Javascript em uma versão mais velha, para que
 // assim funcionem em ambientes mais velhos como browsers ultrapassados.
 
-// Havíamos mencionado que `Object.create` não estava ainda disponível em 
+// Havíamos mencionado que `Object.create` não estava ainda disponível em
 // todos as implementações, mas nós podemos usá-lo com esse polyfill:
 if (Object.create === undefined){ // Não o sobrescreve se já existir
     Object.create = function(proto){
@@ -517,12 +513,11 @@ if (Object.create === undefined){ // Não o sobrescreve se já existir
 
 O [Mozilla Developer
 Network](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) dispõe de uma
-excelente documentação sobre Javascript e seu uso nos browsers. E mais, 
+excelente documentação sobre Javascript e seu uso nos browsers. E mais,
 é uma wiki, portanto conforme você vai aprendendo, mais você pode ir ajudando
 os outros compartilhando do seu conhecimento.
 
-[Uma re-introdução do JavaScript pela MDN]
-(https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+[Uma re-introdução do JavaScript pela MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 cobre muito dos conceitos abordados aqui em mais detalhes. Este guia fala
 somente sobre a linguagem JavaScript em si; se você quiser aprender mais
 sobre e como usar o JavaScript em páginas na web, comece aprendendo sobre
@@ -532,11 +527,11 @@ Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 [Aprenda Javascript por Exemplos e com Desafios](http://www.learneroo.com/modules/64/nodes/350) é uma
 variação desse guia com desafios.
 
-[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) é um guia 
+[JavaScript Garden](https://shamansir.github.io/JavaScript-Garden/) é um guia
 profundo de todas as partes do JavaScript.
 
 [JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) é o guia clássico
-/ livro de referência. 
+/ livro de referência.
 
 Parte desse artigo foi adaptado do tutorial de Python do Louie Dinh que está
 nesse site e do [Tutorial de JS](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/A_re-introduction_to_JavaScript)

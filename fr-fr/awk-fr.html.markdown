@@ -391,7 +391,6 @@ END {
     if (nlines)
         print "L'age moyen pour le prénom " name " est " sum / nlines;
 }
-
 ```
 
 Pour plus d'informations :

@@ -8,7 +8,7 @@ translators:
     - ["Monique Baptista", "https://github.com/bfmonique"]
     - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
 
-lang: pt-br    
+lang: pt-br
 filename: learnmarkdown-pt.md
 ---
 
@@ -20,27 +20,8 @@ O Markdown varia em termos de implementação de um parser para outro. Esse guia
 irá tentar deixar explícito quando os recursos são universais ou quando são
 específicos para um parser em específico.
 
-- [Elementos HTML](#elementos-html)
-- [Cabeçalhos](#cabeçalhos)
-- [Estilos de texto simples](#estilos-de-texto-simples)
-- [Parágrafos](#parágrafos)
-- [Listas](#listas)
-- [Blocos de código](#blocos-de-código)
-- [Linha Horizontal](#linha-horizontal)
-- [Links](#links)
-  - [Tabela de conteúdo](#tabela-de-conteúdo)
-- [Imagens](#imagens)
-- [Miscelânea](#miscelânea)
-  - [Auto-links](#auto-links)
-  - [Auto-links para e-mails](#auto-links-com-e-mails)
-  - [Escapando caracteres](#escapando-caracteres)
-  - [Teclas do teclado](#teclas-do-teclado)
-  - [Tabelas](#tabelas)
-- [Markdownlint](#markdownlint)
-- [Leitura complementar](#leitura-complementar)
-
 ## Elementos HTML
-O Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é 
+O Markdown é um superconjunto do HTML, de modo que qualquer arvquivo HTML é
 um arquivo Markdown válido.
 
 ```md
@@ -98,7 +79,7 @@ GitHub, nós também temos:
 ```
 
 ## Parágrafos
-Os parágrafos estão em uma ou várias linhas adjacentes de texto separadas por 
+Os parágrafos estão em uma ou várias linhas adjacentes de texto separadas por
 uma ou múltiplas linhas em branco.
 
 ```md
@@ -111,11 +92,11 @@ Ainda continuo no parágrafo 2!
 Eu estou no parágrafo três!
 ```
 
-Se você quiser inserir uma tag HTML `<br />`, você pode acabar com um parágrafo 
+Se você quiser inserir uma tag HTML `<br />`, você pode acabar com um parágrafo
 com dois ou mais espaços e, em seguida, começar um novo parágrafo.
 
 ```md
-Termino com dois espaços (selecione essa linha para vê-los). 
+Termino com dois espaços (selecione essa linha para vê-los).  
 
 Há um <br /> acima de mim!
 ```
@@ -123,12 +104,12 @@ Há um <br /> acima de mim!
 Blocos de citações são fáceis e feitos com o caractere >.
 
 ```md
-> Este é um bloco de citação. Você pode 
+> Este é um bloco de citação. Você pode
 > Quebrar manualmente suas linhas e colocar um `>` antes de cada linha ou você
 > pode deixar suas linhas ficarem muito longas e quebrarem por conta própria.
 > Não faz diferença, desde que elas comecem com um `>`.
 
-> Você também pode usar mais de um nível 
+> Você também pode usar mais de um nível
 >> De recuo?
 > O quão legal é isso?
 
@@ -187,7 +168,7 @@ Você também pode usar sublistas.
 4. Item quatro
 ```
 
-Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) do 
+Existem também listas de tarefas. Isso cria checkboxes (caixas de seleção) do
 HTML.
 
 ```md
@@ -213,8 +194,8 @@ adicionais) para indentação no seu código.
 
 ```md
     my_array.each do |item|
-        puts item
-    end	
+      puts item
+    end
 ```
 
 Código embutido pode ser criado usando o caractere de crase `` ` ``.
@@ -225,13 +206,13 @@ John não sabia nem o que a função `go_to()` fazia!
 
 No GitHub Flavored Markdown, você pode usar uma sintaxe especial para código.
 
-<pre>
-<code class="highlight">&#x60;&#x60;&#x60;ruby
+````md
+```ruby
 def foobar
-    puts "Olá mundo!"
+  puts "Olá mundo!"
 end
-&#x60;&#x60;&#x60;</code></pre>
-
+```
+````
 
 O texto acima não requer indentação, além disso o GitHub vai usar o destaque
 de sintaxe da linguagem qeu você especificar após a tag <code>```</code>.
@@ -244,7 +225,7 @@ hífens, com ou sem espaços.
 ```md
 ***
 ---
-- - - 
+- - -
 ****************
 ```
 
@@ -272,23 +253,26 @@ Caminhos relativos funcionam também.
 
 O Markdown também suporta links para referências no texto.
 
-<pre><code class="highlight">&#x5b;<span class="nv">Clique nesse link</span>][<span class="ss">link1</span>] para mais informações!
-&#x5b;<span class="nv">Também cheque esse link</span>][<span class="ss">foobar</span>] se você quiser.
+```md
+[Clique nesse link][link1] para mais informações!
+[Também cheque esse link][foobar] se você quiser.
 
-&#x5b;<span class="nv">link1</span>]: <span class="sx">http://test.com/</span> <span class="nn">"Legal!"</span>
-&#x5b;<span class="nv">link2r</span>]: <span class="sx">http://foobar.biz/</span> <span class="nn">"Certo!"</span></code></pre>
+[link1]: http://test.com/ "Legal!"
+[link2r]: http://foobar.biz/ "Certo!"
+```
 
-O título também pode estar entre aspas simples ou entre parênteses, ou omitido 
+O título também pode estar entre aspas simples ou entre parênteses, ou omitido
 inteiramente. As referências podem estar em qualquer lugar no documento e os
 IDs de referência podem ser qualquer um, desde que eles sejam únicos.
 
 Existe também a "nomeação implícita", que permite que você use o texto do link
 como o id:
 
-<pre><code class="highlight">&#x5b;<span class="nv">Isso</span>][] é um link.
+```md
+[Isso][] é um link.
 
-&#x5b;<span class="nv">Isso</span>]: <span class="sx">http://thisisalink.com/</span></code></pre>
-
+[Isso]: http://thisisalink.com/
+```
 
 Mas geralmente não são usados.
 
@@ -317,33 +301,35 @@ As imagens são feitas da mesma forma que os links, mas com um ponto de
 exclamação na frente!
 
 ```md
-![Este é alt-text (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional") 
+![Este é alt-text (texto alternativo) para minha imagem](http://imgur.com/myimage.jpg "Um título opcional")
 ```
 
 E estilo de referência funciona como esperado
 
-<pre><code class="highlight">!&#x5b;<span class="nv">Esse é o alt-attribute.</span>][<span class="ss">myimage</span>]
+```md
+![Esse é o alt-attribute.][myimage]
 
-&#x5b;<span class="nv">Minha imagem</span>]: <span class="sx">relative/urls/cool/image.jpg</span> <span class="nn">"se precisar de um título, está aqui"</span></code></pre>
+[Minha imagem]: relative/urls/cool/image.jpg "se precisar de um título, está aqui"
+```
 
-## Miscelânea 
+## Miscelânea
 
-### Auto-links 
+### Auto-links
 
 ```md
-<http://testwebsite.com/> é equivalente a 
-[http://testwebsite.com/](http://testwebsite.com/) 
+<http://testwebsite.com/> é equivalente a
+[http://testwebsite.com/](http://testwebsite.com/)
 ```
 
 ### Auto-links para e-mails
 
 ```md
-<foo@bar.com> 
+<foo@bar.com>
 ```
 
 ### Escapando caracteres
 
-Quero digitar *Este texto entre asteriscos*, mas eu não quero que ele seja 
+Quero digitar *Este texto entre asteriscos*, mas eu não quero que ele seja
 em itálico, então eu faço o seguinte: \*Este texto entre asteriscos \*.
 
 ### Teclas do teclado
@@ -356,9 +342,9 @@ Seu computador travou? Tente apertar
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 ```
 
-### Tabelas 
+### Tabelas
 
-Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente 
+Tabelas estão disponíveis apenas no GitHub Flavored Markdown e são ligeiramente
 complicadas, mas se você realmente quer:
 
 ```md
@@ -368,7 +354,7 @@ complicadas, mas se você realmente quer:
 | blah         | blah     | blah          |
 ```
 
-Ou, para os mesmos resultados 
+Ou, para os mesmos resultados
 
 ```md
 Col 1 | Col2 | Col3
@@ -393,5 +379,5 @@ e o do cheatsheet do Adam Pritchard [aqui](https://github.com/adam-p/markdown-he
 Se você quiser aprender mais sobre recursos de alguns sabores específicos de
 Markdown, veja:
 
-- [GitHub flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-- [GitLab flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)
+- [GitHub Flavored Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [GitLab Flavored Markdown](https://docs.gitlab.com/ee/user/markdown.html)

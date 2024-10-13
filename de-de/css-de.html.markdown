@@ -139,12 +139,11 @@ selector {
 
     /* Schriften */
     font-family: Arial;
-    font-family: "Courier New"; /* wenn der Name ein Leerzeichen beinhält, kommt er in
+    font-family: "Courier New"; /* wenn der Name ein Leerzeichen enthält, kommt er in
     Anführungszeichen */
     font-family: "Courier New", Trebuchet, Arial; /* wird die erste Schriftart 
     nicht gefunden, wird die zweite benutzt, usw. */
 }
-
 ```
 
 ## Benutzung
@@ -164,7 +163,6 @@ empfohlen ist -->
 <!-- Oder direkt auf einem Element (sollte aber vermieden werden) -->
 <div style='property:value;'>
 </div>
-
 ```
 
 ## Spezifität
@@ -190,7 +188,6 @@ p {}
 
 /*E*/
 p { property: wert !important; }
-
 ```
 
 und das folgende Markup:

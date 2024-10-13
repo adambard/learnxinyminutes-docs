@@ -10,10 +10,6 @@ contributors:
 
 MATLAB stands for MATrix LABoratory. It is a powerful numerical computing language commonly used in engineering and mathematics.
 
-If you have any feedback please feel free to reach me at
-[@the_ozzinator](https://twitter.com/the_ozzinator), or
-[osvaldo.t.mendoza@gmail.com](mailto:osvaldo.t.mendoza@gmail.com).
-
 ```matlab
 %% Code sections start with two percent signs. Section titles go on the same line.
 % Comments start with a percent sign.
@@ -49,42 +45,42 @@ plot(A);
 % commands can be passed to the operating system
 !ping google.com
 
-who % Displays all variables in memory
-whos % Displays all variables in memory, with their types
-clear % Erases all your variables from memory
-clear('A') % Erases a particular variable
+who          % Displays all variables in memory
+whos         % Displays all variables in memory, with their types
+clear        % Erases all your variables from memory
+clear('A')   % Erases a particular variable
 openvar('A') % Open variable in variable editor
 
-clc % Erases the writing on your Command Window
-diary % Toggle writing Command Window text to file
+clc    % Erases the writing on your Command Window
+diary  % Toggle writing Command Window text to file
 ctrl-c % Abort current computation
 
 edit('myfunction.m') % Open function/script in editor
 type('myfunction.m') % Print the source of function/script to Command Window
 
-profile on 	% turns on the code profiler
-profile off 	% turns off the code profiler
-profile viewer 	% Open profiler
+profile on     % turns on the code profiler
+profile off    % turns off the code profiler
+profile viewer % Open profiler
 
-help command 	% Displays documentation for command in Command Window
-doc command 	% Displays documentation for command in Help Window
-lookfor command % Searches for command in the first commented line of all functions
+help command         % Displays documentation for command in Command Window
+doc command          % Displays documentation for command in Help Window
+lookfor command      % Searches for command in the first commented line of all functions
 lookfor command -all % searches for command in all functions
 
 
 % Output formatting
-format short 	% 4 decimals in a floating number
-format long 	% 15 decimals
-format bank 	% only two digits after decimal point - for financial calculations
+format short    % 4 decimals in a floating number
+format long     % 15 decimals
+format bank     % only two digits after decimal point - for financial calculations
 fprintf('text') % print "text" to the screen
-disp('text') 	% print "text" to the screen
+disp('text')    % print "text" to the screen
 
 % Variables & Expressions
-myVariable = 4 	% Notice Workspace pane shows newly created variable
+myVariable = 4  % Notice Workspace pane shows newly created variable
 myVariable = 4; % Semi colon suppresses output to the Command Window
-4 + 6  		% ans = 10
-8 * myVariable 	% ans = 32
-2 ^ 3 		% ans = 8
+4 + 6           % ans = 10
+8 * myVariable  % ans = 32
+2 ^ 3           % ans = 8
 a = 2; b = 3;
 c = exp(a)*sin(pi/2) % c = 7.3891
 
@@ -92,7 +88,7 @@ c = exp(a)*sin(pi/2) % c = 7.3891
 % Standard function syntax:
 load('myFile.mat', 'y') % arguments within parentheses, separated by commas
 % Command syntax:
-load myFile.mat y 	% no parentheses, and spaces instead of commas
+load myFile.mat y       % no parentheses, and spaces instead of commas
 % Note the lack of quote marks in command form: inputs are always passed as
 % literal text - cannot pass variable values. Also, can't receive output:
 [V,D] = eig(A);  % this has no equivalent in command form
@@ -338,8 +334,8 @@ load('myFileName.mat') % Load saved variables into Workspace
 % Function name should match file name (so save this example as double_input.m).
 % 'help double_input.m' returns the comments under line beginning function
 function output = double_input(x)
-	%double_input(x) returns twice the value of x
-	output = 2*x;
+  %double_input(x) returns twice the value of x
+  output = 2*x;
 end
 double_input(6) % ans = 12
 
@@ -375,23 +371,23 @@ fprintf % Print to Command Window with more control
 
 % Conditional statements (the parentheses are optional, but good style)
 if (a > 23)
-	disp('Greater than 23')
+  disp('Greater than 23')
 elseif (a == 23)
-	disp('a is 23')
+  disp('a is 23')
 else
-	disp('neither condition met')
+  disp('neither condition met')
 end
 
 % Looping
 % NB. looping over elements of a vector/matrix is slow!
 % Where possible, use functions that act on whole vector/matrix at once
 for k = 1:5
-	disp(k)
+  disp(k)
 end
 
 k = 0;
 while (k < 5)
-	k = k + 1;
+  k = k + 1;
 end
 
 % Timing code execution: 'toc' prints the time since 'tic' was called
@@ -435,11 +431,11 @@ randi % Uniformly distributed pseudorandom integers
 randn % Normally distributed pseudorandom numbers
 
 %Complex math operations
-abs(x) 	 % Magnitude of complex variable x
+abs(x)   % Magnitude of complex variable x
 phase(x) % Phase (or angle) of complex variable x
 real(x)  % Returns the real part of x (i.e returns a if x = a +jb)
 imag(x)  % Returns the imaginary part of x (i.e returns b if x = a+jb)
-conj(x)  % Returns the complex conjugate 
+conj(x)  % Returns the complex conjugate
 
 
 % Common constants
@@ -496,23 +492,23 @@ median  % median value
 mean    % mean value
 std     % standard deviation
 perms(x) % list all permutations of elements of x
-find(x) % Finds all non-zero elements of x and returns their indexes, can use comparison operators, 
+find(x) % Finds all non-zero elements of x and returns their indexes, can use comparison operators,
         % i.e. find( x == 3 ) returns indexes of elements that are equal to 3
         % i.e. find( x >= 3 ) returns indexes of elements greater than or equal to 3
 
 
 % Classes
-% MATLAB can support object-oriented programming. 
-% Classes must be put in a file of the class name with a .m extension. 
+% MATLAB can support object-oriented programming.
+% Classes must be put in a file of the class name with a .m extension.
 % To begin, we create a simple class to store GPS waypoints.
 % Begin WaypointClass.m
 classdef WaypointClass % The class name.
   properties % The properties of the class behave like Structures
-    latitude 
-    longitude 
+    latitude
+    longitude
   end
-  methods 
-    % This method that has the same name of the class is the constructor. 
+  methods
+    % This method that has the same name of the class is the constructor.
     function obj = WaypointClass(lat, lon)
       obj.latitude = lat;
       obj.longitude = lon;
@@ -543,16 +539,15 @@ a.longitude = 25.0
 % Methods can be called in the same way as functions
 ans = multiplyLatBy(a,3)
 
-% The method can also be called using dot notation. In this case, the object 
+% The method can also be called using dot notation. In this case, the object
 % does not need to be passed to the method.
 ans = a.multiplyLatBy(1/3)
 
-% MATLAB functions can be overloaded to handle objects. 
-% In the method above, we have overloaded how MATLAB handles 
+% MATLAB functions can be overloaded to handle objects.
+% In the method above, we have overloaded how MATLAB handles
 % the addition of two Waypoint objects.
 b = WaypointClass(15.0, 32.0)
 c = a + b
-
 ```
 
 ## More on MATLAB
@@ -561,4 +556,3 @@ c = a + b
 * [The official MATLAB Answers forum](http://www.mathworks.com/matlabcentral/answers/)
 * [Loren on the Art of MATLAB](http://blogs.mathworks.com/loren/)
 * [Cleve's Corner](http://blogs.mathworks.com/cleve/)
-

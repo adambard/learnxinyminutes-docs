@@ -8,7 +8,7 @@ lang: zh-cn
 filename: learnvisualbasic-cn.vb
 ---
 
-```
+```vbnet
 Module Module1
 
     Sub Main()
@@ -74,14 +74,14 @@ Module Module1
 
     ' 一、对应程序目录1，下同
 
-    ' 使用 private subs 声明函数。 
+    ' 使用 private subs 声明函数。
     Private Sub HelloWorldOutput()
         ' 程序名
         Console.Title = "Hello World Output | Learn X in Y Minutes"
         ' 使用 Console.Write("") 或者 Console.WriteLine("") 来输出文本到屏幕上
         ' 对应的 Console.Read() 或 Console.Readline() 用来读取键盘输入
         Console.WriteLine("Hello World")
-        Console.ReadLine() 
+        Console.ReadLine()
         ' Console.WriteLine()后加Console.ReadLine()是为了防止屏幕输出信息一闪而过
         ' 类似平时常见的“单击任意键继续”的意思。
     End Sub
@@ -188,7 +188,7 @@ Module Module1
             Console.Write(a.ToString() + " / " + b.ToString())
             Console.WriteLine(" = " + e.ToString.PadLeft(3))
             Console.ReadLine()
-            ' 询问用户是否继续，注意大小写。 
+            ' 询问用户是否继续，注意大小写。
             Console.Write("Would you like to continue? (yes / no)")
             ' 程序读入用户输入
             answer = Console.ReadLine() ' added a bracket here
@@ -203,12 +203,12 @@ Module Module1
         ' 这个程序我们将实现从10倒数计数.
 
         Console.Title = "Using For Loops | Learn X in Y Minutes"
-        ' 声明变量和Step (步长,即递减的速度，如-1，-2，-3等）。 
-        For i As Integer = 10 To 0 Step -1 
+        ' 声明变量和Step (步长,即递减的速度，如-1，-2，-3等）。
+        For i As Integer = 10 To 0 Step -1
             Console.WriteLine(i.ToString) ' 将计数结果输出的屏幕
         Next i ' 计算新的i值
-        Console.WriteLine("Start") 
-        Console.ReadLine() 
+        Console.WriteLine("Start")
+        Console.ReadLine()
     End Sub
 
     ' 八
@@ -262,13 +262,12 @@ Module Module1
     End Sub
 
 End Module
-
 ```
 
 ## 参考
 
-我（译注：原作者）在命令行下学习的VB。命令行编程使我能够更好的了解程序编译运行机制，并使学习其它语言变得容易。 
+我（译注：原作者）在命令行下学习的VB。命令行编程使我能够更好的了解程序编译运行机制，并使学习其它语言变得容易。
 
-如果希望进一步学习VB，这里还有更深层次的 <a href="http://www.vbbootcamp.co.uk/" Title="VB教学">VB教学（英文）</a>。 
+如果希望进一步学习VB，这里还有更深层次的 [VB教学（英文）](http://www.vbbootcamp.co.uk/)。
 
-所有代码均通过测试。只需复制粘帖到Visual Basic中，并按F5运行即可。 
+所有代码均通过测试。只需复制粘帖到Visual Basic中，并按F5运行即可。

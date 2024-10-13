@@ -133,6 +133,10 @@ undefined; // utilisé pour une valeur actuellement non présente (cependant,
 // est 'presque-vrai' (truthy)
 // Notez que 0 est falsy mais '0' est truthy, alors même que 0 == '0' (mais 0 !== '0')
 
+// Les expressions régulières peuvent être utilisées
+let re = /\d+/g // re = new RegExp("\\d+","g")
+re.test("123") // vrai
+
 // *ES6:* Introduction d'un nouveau type primitif : Symbol
 var symbol_one = Symbol();
 var symbol_two = Symbol('This is optional description, for debugging');
@@ -355,6 +359,10 @@ if (!name){
   name = 'default';
 }
 
+// Opérateur ternaire :
+// Si la condition est vérifiée, retourne la valeur 1, sinon la valeur 2.
+name = otherName === 'test' ? 'value1' : 'value2';
+
 // Le switch vérifie les égalités avec ===
 // utilisez un "break" à la fin de chaque cas
 // ou les cas suivants seront eux aussi exécutés
@@ -456,18 +464,55 @@ function sayHelloInFiveSeconds(name){
 }
 sayHelloInFiveSeconds('Adam'); // ouvre un popup avec 'Hello, Adam!' dans 5sec
 
-// *ES6:* Les paramètres des fonctions appelées avec un tableau en entré
-// préfixé par `...` vont se peupler avec les éléments du tableau
-function spread(x, y, z) {
-    return x + y + z;
+// Gestion des erreurs
+// Essaye d'exécuter les instructions du bloc try. En cas d'erreur, plutôt que d'arrêter l'éxécution,
+// capture l'erreur et continue avec les instructions du bloc catch.
+try {
+    let json = 'bad JSON';
+    if (!json) throw 'empty string';
+    json = JSON.parse(json);
+} catch (e) {
+    console.log(e)
 }
-spread(...[1,2,3]); // == 6
 
 // *ES6:* Les fonctions peuvent recevoir les paramètres dans un tableau en utilisant l'opérateur `...`
 function spread(x, y, z) {
     return x + y + z;
 }
 spread(...[1,2,3]); // == 6
+
+// *ES6:* Paramètre du reste
+// Permet d'avoir un nombre indéfini d'arguments.
+function restParam(...z) {
+    return z;
+}
+restParam(1, 2, 3, 4); // [1, 2, 3, 4]
+
+// *ES6:* Promesse
+function sleep(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('sleep end');
+        }, ms)
+    })
+}
+
+// *ES6:* Exécute entièrement fnThen. Une fois la Promesse résolue, exécute la fonction de rappel.
+// Affiche "function end", puis "sleep end".
+(function fnThen() {
+    sleep(1000).then(x => {
+        console.log(x)
+    })
+    console.log('function end')
+})()
+
+// *ES2017:* Fonction asynchrone. Attend la fin de la Promesse, puis continue l'exécution de fnAsync.
+// Affiche "sleep end", puis "function end".
+(async function fnAsync() {
+    console.log(await sleep(1000))
+    console.log('function end')
+})()
+
 
 ///////////////////////////////////
 // 5. Encore plus à propos des Objets; Constructeurs and Prototypes
@@ -643,6 +688,18 @@ if (Object.create === undefined){ // pour ne pas reécrire si la fonction existe
     }
 }
 
+// *ES2020:* Opérateur de chaînage optionnel ?.
+// Permet d'accéder aux propriétés dans une chaine d'objets.
+// Retourne undefined si un objet intermédiaire n'est pas défini.
+let optChainObj = {}
+let optChainVal
+optChainVal = optChainObj.obj2?.obj3?.val
+
+// Equivalent à :
+if (("obj2" in optChainObj) && ("obj3" in optChainObj.obj2)) {
+    optChainVal = optChainObj.obj2.obj3.val
+}
+
 // *ES6:* Les objets peuvent être équipés de proxies qui permettent d'intercepter
 // les actions sur leurs propriétés. Voici comment créer un proxy sur un objet :
 var proxyObject = new Proxy(object, handler);
@@ -694,6 +751,7 @@ import {foo as moo, baz} from "api"; // = importe les attributs `foo` (en le ren
 import _, {map} from "api"; // = importe les exports par défaut ET `map`
 import * as coolapi from "api"; // = importe le namespace global du module
 
+let coolapi = await import("api") // = importe le module dans la variable `coolapi`
 ```
 
 ## Pour aller plus loin (en anglais)
@@ -713,7 +771,7 @@ Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
 [Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) quelques challenges.
 
-[JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/) is an in-depth
+[JavaScript Garden](https://shamansir.github.io/JavaScript-Garden/) is an in-depth
 un guide pour vous éviter les faux-amis dans le JavaScript.
 
 [JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) un classique. A lire.

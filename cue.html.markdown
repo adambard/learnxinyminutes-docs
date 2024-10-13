@@ -1,7 +1,7 @@
 ---
 name: CUE
 category: language
-language: cue
+language: CUE
 filename: learncue.cue
 contributors:
     - ["Daniel Cox", "https://github.com/danielpcox"]
@@ -23,8 +23,9 @@ disposition: "oblivious"
 ```
 
 Now we can unify and export to JSON:
+
 ```bash
-% cue export name.cue disposition.cue 
+% cue export name.cue disposition.cue
 {
     "name": "Daniel",
     "disposition": "oblivious"
@@ -32,8 +33,9 @@ Now we can unify and export to JSON:
 ```
 
 Or YAML:
+
 ```bash
-% cue export --out yaml name.cue disposition.cue 
+% cue export --out yaml name.cue disposition.cue
 name: Daniel
 disposition: oblivious
 ```
@@ -58,7 +60,7 @@ foo: 100
 ```
 
 ```bash
-% cue export string_value.cue integer_value.cue 
+% cue export string_value.cue integer_value.cue
 foo: conflicting values "baz" and 100 (mismatched types string and int):
     integer_value.cue:1:6
     string_value.cue:1:6
@@ -220,7 +222,7 @@ vatican_city: #Country & {
 }
 ```
 
-CUE may save you quite a bit of time with all the sugar it provides on top of mere JSON. Here we're defining, "modifying", and validating a nested structure in three lines: (Notice the `[]` syntax used around `string` to signal to the engine that `string` is a constraint, not a string in this case.) 
+CUE may save you quite a bit of time with all the sugar it provides on top of mere JSON. Here we're defining, "modifying", and validating a nested structure in three lines: (Notice the `[]` syntax used around `string` to signal to the engine that `string` is a constraint, not a string in this case.)
 
 ```yaml
 //paths.cue
@@ -386,7 +388,7 @@ j: 8 < 10        // and supports boolean ops
 price: number
 // Require a justification if price is too high
 if price > 100 {
-	justification: string
+    justification: string
 }
 price:         200
 justification: "impulse buy"
@@ -398,11 +400,11 @@ comp: [ for x in #items if x rem 2 == 0 {x*x}]
 // and... well you can do this too
 #a: [ "Apple", "Google", "SpaceX"]
 for k, v in #a {
-	"\( strings.ToLower(v) )": {
-		pos:     k + 1
-		name:    v
-		nameLen: len(v)
-	}
+    "\( strings.ToLower(v) )": {
+        pos:     k + 1
+        name:    v
+        nameLen: len(v)
+    }
 }
 ```
 
@@ -479,7 +481,7 @@ This creates a `cue.mod/` subdirectory within that `mymodule` directory, and `cu
 - gen/
 - usr/
 
-For a different perspective on this and details about what's in there, see https://cuelang.org/docs/concepts/packages/. For my purposes here, I'll say you don't need to think about the contents of this directory *at all*, except that your module name will be the prefix for all imports within your module.
+For a different perspective on this and details about what's in there, see [cuelang.org/docs/concepts/packages/](https://cuelang.org/docs/concepts/packages/). For my purposes here, I'll say you don't need to think about the contents of this directory *at all*, except that your module name will be the prefix for all imports within your module.
 
 Where will your module file hierarchy go? All files and directories for your module are rooted in `mymodule/`, the directory that also contains `cue.mod/`. If you want to import a package, you'll prefix it with `example.com/mymodule`, followed by a relative path rooted in `mymodule/`.
 
@@ -546,6 +548,6 @@ configuredBar: conflicting values string and 200 (mismatched types string and in
 
 That's it for now. I understand there are more package management features coming in the future and the design decisions around `cue.mod` are looking ahead to that.
 
-Finally, CUE has built-in modules with powerful functionality. We saw one of these earlier, when we imported "strings" and used `strings.ToLower`. Imports without fully-qualified module names are assumed to be built-ins. The full list and documentation for each is here: https://pkg.go.dev/cuelang.org/go/pkg
+Finally, CUE has built-in modules with powerful functionality. We saw one of these earlier, when we imported "strings" and used `strings.ToLower`. Imports without fully-qualified module names are assumed to be built-ins. The full list and documentation for each is here: [pkg.go.dev/cuelang.org/go/pkg](https://pkg.go.dev/cuelang.org/go/pkg)
 
-This has been a condensation of the official docs and tutorials, so go give the source material some love: https://cuelang.org/docs/tutorials/
+This has been a condensation of the official docs and tutorials, so go give the source material some love: [cuelang.org/docs/tutorials/](https://cuelang.org/docs/tutorials/)

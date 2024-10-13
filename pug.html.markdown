@@ -5,15 +5,11 @@ contributors:
 filename: index.pug
 ---
 
-## Getting Started with Pug
+Pug is a language that compiles to HTML. It has a cleaner syntax
+with additional features like if statements and loops. It can also be used
+as a server-side templating language for server languages like Node.js.
 
-Pug is a little language that compiles into the HTML. It has cleaner syntax 
-with additional features like if statements and loops. It can also be used 
-as a server side templating language for server languages like NodeJS.
-
-### The Language
 ```pug
-
 //- Single Line Comment
 
 //- Multi Line
@@ -84,8 +80,8 @@ div(class=myClass)
 
 //- JS Styles
 - const myStyles = {'color':'white', 'background-color':'blue'}
-div(styles=myStyles)
-//- <div styles="{&quot;color&quot;:&quot;white&quot;,&quot;background-color&quot;:&quot;blue&quot;}"></div>
+div(style=myStyles)
+//- <div style="color:white;background-color:blue;"></div>
 
 //- JS Attributes
 - const myAttributes = {"src": "photo.png", "alt": "My Photo"}
@@ -125,7 +121,7 @@ each value, index in [1,2,3]
 
 each value in []
   p=value
-//- 
+//-
 
 each value in []
   p=value
@@ -158,13 +154,13 @@ case orderStatus
 //- <p class="warn">Your order is pending</p>
 
 //- --INCLUDE--
-//- File path -> "includes/nav.png"
+//- File path -> "includes/nav.pug"
 h1 Company Name
 nav
   a(href="index.html") Home
   a(href="about.html") About Us
 
-//- File path -> "index.png"
+//- File path -> "index.pug"
 html
   body
     include includes/nav.pug
@@ -193,16 +189,15 @@ mixin comment(name, comment)
     span.comment-name= name
     div.comment-text= comment
 +comment("Bob", "This is Awesome")
-//- 
+//-
   <div>
     <span class="comment-name">Bob</span>
     <div class="comment-text">This is Awesome</div>
   </div>
-
 ```
 
-
 ### Additional Resources
-- [The Site](https://pugjs.org/)
-- [The Docs](https://pugjs.org/api/getting-started.html)
-- [Github Repo](https://github.com/pugjs/pug)
+
+- [The site](https://pugjs.org/)
+- [The docs](https://pugjs.org/api/getting-started.html)
+- [GitHub repo](https://github.com/pugjs/pug)

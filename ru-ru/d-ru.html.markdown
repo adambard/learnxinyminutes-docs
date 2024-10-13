@@ -2,9 +2,9 @@
 language: D
 filename: learnd-ru.d
 contributors:
-    - ["Anton Pastukhov", "http://dprogramming.ru/"]
-    - ["Robert Brights-Gray", "http://lhs-blog.info/"]
-    - ["Andre Polykanine", "http://oire.me/"]
+    - ["Anton Pastukhov", "https://anton9.com/"]
+    - ["Robert Brights-Gray", "https://lhs.su/"]
+    - ["Andre Polykanine", "https://oire.me/"]
 lang: ru-ru
 ---
 
@@ -12,7 +12,7 @@ D - современный компилируемый язык общего на
 который сочетает удобство, продуманный дизайн и высокую производительность.
 D - это С++, сделанный правильно.
 
-```c
+```d
 // Welcome to D! Это однострочный комментарий
 
 /* многострочный
@@ -747,6 +747,7 @@ void main(){
    Диапазоны - это важная часть D, они используются в нем повсеместно.
 */
 ```
+
 ## Что дальше?
 
 - [Официальный сайт](http://dlang.org/)

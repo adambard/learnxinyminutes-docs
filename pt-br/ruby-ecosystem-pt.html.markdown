@@ -69,7 +69,7 @@ Muito maduras/compatíveis:
 
 * [MRI](https://github.com/ruby/ruby) - Escrita em C, esta é a implementação de
   referência do Ruby. Por definição, é 100% compatível (consigo mesma). Todos os
-  outros rubies mantêm compatibilidade com a MRI (veja [RubySpec](#rubyspec) abaixo).
+  outros rubies mantêm compatibilidade com a MRI (veja [Ruby Spec](#ruby-spec) abaixo).
 * [JRuby](http://jruby.org/) - Escrita em Java e Ruby, esta implementação
   robusta é um tanto rápida. Mais importante ainda, o ponto forte do JRuby é a
   interoperabilidade com JVM/Java, aproveitando ferramentas JVM, projetos, e
@@ -98,9 +98,9 @@ sempre focam em uma versão específica da MRI para compatibilidade. Diversas
 implementações têm a capacidade de entrar em diferentes modos (1.8 ou 1.9, por
 exemplo) para especificar qual versão da MRI focar.
 
-## RubySpec
+## Ruby Spec
 
-A maioria das implementações Ruby dependem fortemente da [RubySpec](http://rubyspec.org/).
+A maioria das implementações Ruby dependem fortemente da [Ruby Spec](https://github.com/ruby/spec).
 Ruby não tem uma especificação oficial, então a comunidade tem escrito
 especificações executáveis em Ruby para testar a compatibilidade de suas
 implementações com a MRI.

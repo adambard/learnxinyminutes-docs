@@ -9,23 +9,20 @@ translators:
 lang: es-es
 ---
 
-
-[tmux](http://tmux.sourceforge.net)
+[tmux](https://github.com/tmux/tmux)
 es un terminal multiplexor: habilita la creación, acceso y control
 de múltiples terminales controlados desde una sola pantalla. tmux
 puede ser separado de una pantalla y continuar corriendo en el fondo
 y luego ser insertado nuevamente.
 
-
 ```
-
   tmux [command]     # Corre un comando
                      # 'tmux' sin comandos creará una nueva sesión
 
     new              # Crea una nueva sesión
      -s "Session"    # Crea sesión con nombre
      -n "Window"     # Crea ventana con nombre
-     -c "/dir"       # Comienza en el directorio destino 
+     -c "/dir"       # Comienza en el directorio destino
 
     attach           # Adjunta sesión última/disponible
      -t "#"          # Adjunta sesión destino
@@ -52,9 +49,7 @@ y luego ser insertado nuevamente.
      -t "#"          # Cierra la sesión destino
      -a              # Cierra todas las sesiones
      -a -t "#"       # Cierra todas las sesiones menos el destino
-
 ```
-
 
 ### Atajos de Teclado
 
@@ -108,9 +103,7 @@ combinaciones de teclas llamadas teclas 'Prefijo'.
 
   M-Up, M-Down       # Redimensiona el panel actual en pasos de cinco celdas
   M-Left, M-Right
-
 ```
-
 
 ### Configurando ~/.tmux.conf
 
@@ -236,18 +229,12 @@ set -g status-left "#[fg=red] #H#[fg=green]:#[fg=white]#S#[fg=green] |#[default]
 # Requiere https://github.com/thewtex/tmux-mem-cpu-load/
 set -g status-interval 4
 set -g status-right "#[fg=green] | #[fg=white]#(tmux-mem-cpu-load)#[fg=green] | #[fg=cyan]%H:%M #[default]"
-
 ```
-
 
 ### Referencias
 
 [Tmux | Inicio](http://tmux.sourceforge.net)
-
 [Tmux Manual](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux)
-
 [Gentoo Wiki](http://wiki.gentoo.org/wiki/Tmux)
-
 [Archlinux Wiki](https://wiki.archlinux.org/index.php/Tmux)
-
 [Mostrar CPU/MEM % en barra de estado](https://stackoverflow.com/questions/11558907/is-there-a-better-way-to-display-cpu-usage-in-tmux)

@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: jquery
+category: framework
+framework: jquery
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:
@@ -14,8 +14,6 @@ jQuery — это библиотека JavaScript, которая помогае
 Поскольку jQuery является библиотекой JavaScript, вам следует начать с [изучения JavaScript](https://learnxinyminutes.com/docs/ru-ru/javascript-ru/).
 
 ```js
-
-
 ///////////////////////////////////
 // 1. Селекторы
 
@@ -122,6 +120,4 @@ var heights = [];
 $('p').each(function() {
   heights.push($(this).height()); // Добавить высоту всех <p> элементов в массив
 });
-
-
 ```

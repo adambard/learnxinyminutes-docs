@@ -35,7 +35,6 @@ Prvi stavek dokumenta.
 ### Naslov in več avtorjev
 
 ```
-
 = Naslov dokumenta
 Ime Priimek <ime.priimek@learnxinyminutes.com>; Janez Novak <janez.novak@pirate.com>
 
@@ -85,7 +84,6 @@ _podčrtaj za pošvno_
 ==== Stopnja 3 <h4>
 
 ===== Stopnja 4 <h5>
-
 ```
 
 ## Seznami

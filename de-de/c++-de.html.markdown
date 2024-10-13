@@ -278,7 +278,7 @@ string retVal = tempObjectFun();
 //  - ein String Objekt wird von "tempObjectFun" zurückgegeben
 //  - ein neuer String wird mit dem zurückgegebenen Objekt als Argument für den Konstruktor erzeugt.
 //  - das zurückgegebene Objekt wird zerstört
-// Das zurückgegbene Objekt wird temporäres Objekt genannt. Temporäre Objekte werden erzeugt
+// Das zurückgegebene Objekt wird temporäres Objekt genannt. Temporäre Objekte werden erzeugt
 // wann immer eine Funktion ein Objekt zurückgibt. Zerstört werden diese am Ende der Auswertung des Ausdrucks
 // (dies schreibt der Standard vor, aber Compiler sind berechtigt dieses Verhalten zu ändern. Siehe "return value optimization"
 // für Details). Wie in diesem Code:
@@ -530,7 +530,7 @@ public:
     Point (double a, double b) :
         x(a),
         y(b)
-    { /* Außschließliche Initialisierung der Werte */ }
+    { /* Ausschließliche Initialisierung der Werte */ }
 
     // Überladung des "+" Operator.
     Point operator+(const Point& rhs) const;
@@ -842,7 +842,7 @@ for (int i = 0; i < my_vector.size(); i++)
 }
 
 // Oder die Verwendung von Iteratoren:
-vector<string>::iterator it; // Initialisierng des Iterators.
+vector<string>::iterator it; // Initialisierung des Iterators.
 for (it = my_vector.begin(); it != my_vector.end(); ++it)
 {
 	cout << *it  << endl;
@@ -913,7 +913,7 @@ for (it=mymap.begin(); it!=mymap.end(); ++it)
 it = mymap.find('Z');
 cout << it->second;
 
-// Ausabe: 26
+// Ausgabe: 26
 
 // Bemerkung: für "hash maps" sollten die "unordered_map´s" verwendet werden. Diese
 // sind effizienter und benötigen keine Reihenfolge. "unordered_maps" sind ab
@@ -1148,9 +1148,8 @@ compl 4    // Führt bitweises nicht aus.
 4 bitor 3  // Führt bitweises oder aus.
 4 bitand 3 // Führt bitweises und aus.
 4 xor 3    // Führt bitweises xor aus.
-
-
 ```
+
 Weiterführende Literatur:
 
 * Aktuelle Sprachen-Referenz [CPP Reference](http://cppreference.com/w/cpp).

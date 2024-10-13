@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: Statistical Computing with Python
+category: framework
+framework: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 filename: pythonstatcomp-es.py
@@ -12,7 +12,6 @@ lang: es-es
 Este es un tutorial de como realizar tareas típicas de programación estadística usando Python. Está destinado a personas con cierta familiaridad con Python y con experiencia en programación estadística en lenguajes como R, Stata, SAS, SPSS, or MATLAB.
 
 ```python
-
 # 0. Cómo configurar ====
 
 """ Configurar con IPython y pip install lo siguiente: numpy, scipy, pandas,
@@ -232,8 +231,9 @@ sns.lmplot("BirthY", "EstAge", data=hre);
 
 Si quieres aprender más, obtén _Python for Data Analysis_ por Wes McKinney. Es un extraordinario recurso usado como referencia para escribir este tutorial.
 
-También puedes encontrar gran cantidad de tutoriales interactivos de IPython en temas específicos a tus intereses, como Pilon de Cam Davidson <a href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/" Title="Probabilistic Programming and Bayesian Methods for Hackers">Probabilistic Programming and Bayesian Methods for Hackers</a>.
+También puedes encontrar gran cantidad de tutoriales interactivos de IPython en temas específicos a tus intereses, como Pilon de Cam Davidson [Probabilistic Programming and Bayesian Methods for Hackers](http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/).
 
 Ver más módulos para investigar:
-   - análisis de texto y procesamiento natural del lenguaje: nltk, http://www.nltk.org
-   - análisis de redes sociales: igraph, http://igraph.org/python/
+
+   - análisis de texto y procesamiento natural del lenguaje: [nltk](http://www.nltk.org)
+   - análisis de redes sociales: [igraph](http://igraph.org/python/)

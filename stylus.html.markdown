@@ -15,8 +15,7 @@ Stylus syntax is very flexible. You can use standard CSS syntax and leave the se
 
 Stylus does not provide new style options, but gives functionality that lets you make your CSS much more dynamic.
 
-```scss
-
+```sass
 /* Code style
 ==============================*/
 
@@ -94,15 +93,15 @@ $body-font = 'Roboto', sans-serif
 Now, if you want to change the color, you only have to make the change once. */
 
 body
-	background-color $primary-color
-	color $secondary-color
-	font-family $body-font
+  background-color $primary-color
+  color $secondary-color
+  font-family $body-font
 
 /* After compilation: */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
 / *
@@ -119,10 +118,10 @@ element, you may want to store that code in a mixin.
 
 center()
   display block
-	margin-left auto
-	margin-right auto
-	left 0
-	right 0
+  margin-left auto
+  margin-right auto
+  left 0
+  right 0
 
 /* Using the mixin */
 body {
@@ -132,12 +131,12 @@ body {
 
 /* After compilation: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 /* You can use mixins to create a shorthand property. */
@@ -150,7 +149,7 @@ size($width, $height)
   size(100px, 60px)
 
 .square
-	size(40px, 40px)
+  size(40px, 40px)
 
 /* You can use a mixin as a CSS property. */
 circle($ratio)
@@ -225,4 +224,4 @@ for $item in (1..2) /* Repeat block 12 times */
     width ($item / 12) * 100% /* Calculate row by column number */
 ```
 
-Now that you know a little about this powerful CSS preprocessor, you're ready to create more dynamic style sheets. To learn more, visit the official stylus documentation at http://stylus-lang.com.
+Now that you know a little about this powerful CSS preprocessor, you're ready to create more dynamic style sheets. To learn more, visit the official stylus documentation at [stylus-lang.com](https://stylus-lang.com).

@@ -139,18 +139,17 @@ sub logger {
 
 # Ahora podemos utilizar la subrutina al igual que cualquier otra función incorporada:
 logger("Tenemos una subrutina logger!");
-
 ```
 
 #### Utilizando módulos Perl
 
-Los módulos en Perl proveen de una gama de funciones que le pueden ayudar a evitar reinventar la rueda. Éstas se pueden  descargar desde CPAN ( http://www.cpan.org/ ). Algunos de los módulos más populares ya están incluidos con la misma distribución de Perl.
+Los módulos en Perl proveen de una gama de funciones que le pueden ayudar a evitar reinventar la rueda. Éstas se pueden  descargar desde [CPAN](http://www.cpan.org/). Algunos de los módulos más populares ya están incluidos con la misma distribución de Perl.
 
 perlfaq contiene preguntas y respuestas relacionadas con muchas tareas comunes, y algunas veces provee sugerencias sobre buenos módulos de CPAN que puede usar.
 
 #### Material de Lectura
 
-     - [perl-tutorial](http://perl-tutorial.org/)
-     - [Learn Perl](http://www.perl.org/learn.html)
-     - [perldoc](http://perldoc.perl.org/)
-     - y en su propio perl: `perldoc perlintro`
+- [perl-tutorial](http://perl-tutorial.org/)
+- [Learn Perl](http://www.perl.org/learn.html)
+- [perldoc](http://perldoc.perl.org/)
+- y en su propio perl: `perldoc perlintro`

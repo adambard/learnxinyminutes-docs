@@ -11,8 +11,6 @@ lang: de-de
 Anmerkungen des ursprünglichen Autors:
 Python wurde in den frühen Neunzigern von Guido van Rossum entworfen. Es ist heute eine der beliebtesten Sprachen. Ich habe mich in Python wegen seiner syntaktischen Übersichtlichkeit verliebt. Eigentlich ist es ausführbarer Pseudocode.
 
-Feedback ist herzlich willkommen! Ihr erreicht mich unter [@louiedinh](http://twitter.com/louiedinh) oder louiedinh [at] [google's email service]
-
 Hinweis: Dieser Beitrag bezieht sich besonders auf Python 2.7, er sollte aber auf Python 2.x anwendbar sein. Haltet Ausschau nach einem Rundgang durch Python 3, der bald erscheinen soll.
 
 ```python
@@ -194,7 +192,7 @@ d, e, f = 4, 5, 6
 e, d = d, e     # d is now 5 and e is now 4
 
 
-# Dictionarys (Wörterbucher) speichern Key-Value-Paare
+# Dictionarys (Wörterbücher) speichern Key-Value-Paare
 empty_dict = {}
 # Hier ein gefülltes Wörterbuch
 filled_dict = {"one": 1, "two": 2, "three": 3}
@@ -215,7 +213,7 @@ filled_dict.values() #=> [3, 2, 1]
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Einen nicht vorhandenenen Schlüssel zu suchen, löst einen KeyError aus
+# Einen nicht vorhandenen Schlüssel zu suchen, löst einen KeyError aus
 filled_dict["four"] # KeyError
 
 # Mit der get-Methode verhindern wir das
@@ -745,7 +743,6 @@ def say(say_please=False):
 
 print(say())                 # Can you buy me a beer?
 print(say(say_please=True))  # Can you buy me a beer? Please! I am poor :(
-
 ```
 
 ## Lust auf mehr?

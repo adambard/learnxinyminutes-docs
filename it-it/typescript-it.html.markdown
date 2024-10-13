@@ -18,7 +18,7 @@ valido in TypeScript. Il compilatore di TypeScript genera codice JavaScript.
 Questo articolo si concentrerà solo sulle funzionalità aggiuntive di TypeScript.
 
 Per testare il compilatore, puoi utilizzare il
-[Playground](http://www.typescriptlang.org/Playground), dove potrai scrivere
+[Playground](https://www.typescriptlang.org/Playground), dove potrai scrivere
 codice TypeScript e visualizzare l'output in JavaScript.
 
 ```ts
@@ -118,7 +118,7 @@ class Punto {
 }
 
 // Le classi possono anche implementare esplicitamente delle interfacce.
-// Il compilatore restituirà un errore nel caso in cui manchino delle proprietà. 
+// Il compilatore restituirà un errore nel caso in cui manchino delle proprietà.
 class PersonaDiRiferimento implements Persona {
     nome: string
     saluta() {}
@@ -220,8 +220,6 @@ numeri = altriNumeri; // Errore, i metodi di modifica non esistono
 ```
 
 ## Altre risorse
- * [Sito ufficiale di TypeScript](http://www.typescriptlang.org/)
- * [Specifica di TypeScript](https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md)
- * [Anders Hejlsberg - Introducing TypeScript su Channel 9](http://channel9.msdn.com/posts/Anders-Hejlsberg-Introducing-TypeScript)
- * [TypeScript su GitHub](https://github.com/Microsoft/TypeScript)
- * [Definitely Typed - definizioni per le librerie](http://definitelytyped.org/)
+
+* [Sito ufficiale di TypeScript](https://www.typescriptlang.org/)
+* [TypeScript su GitHub](https://github.com/microsoft/TypeScript)

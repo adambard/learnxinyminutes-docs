@@ -8,9 +8,9 @@ filename: asciidoc-de.adoc
 lang: de-de
 ---
 
-AsciiDoc ist eine Auszeichnungssprache ähnlich zu Markdown. Sie kann für alles
-verwendet werden von Büchern zu Blogs. Erfunden wurde sie 2002 von Stuart
-Rackham. Die Sprache ist simpel aber sie ermöglicht eine große Anzahl an
+AsciiDoc ist eine Auszeichnungssprache, ähnlich wie Markdown. Sie kann für alles
+verwendet werden von Büchern bis zu Blogs. Erfunden wurde sie 2002 von Stuart
+Rackham. Die Sprache ist simpel, aber sie ermöglicht eine große Anzahl an
 Anpassungen.
 
 Kopfzeile des Dokuments
@@ -57,12 +57,12 @@ Dieser Artikel über Chips wird Spaß machen.
 Absätze
 
 ```
-Du musst nichts besonderes machen für Absätze.
+Du musst nichts Besonderes machen für Absätze.
 
 Füge eine Leerzeile zwischen zwei Absätze, um sie zu trennen.
 
 Um eine Leerzeile zu erhalten musst du ein +
-ergänzen und du erhälst einen Umbruch!
+ergänzen und du erhältst einen Umbruch!
 ```
 
 Textformatierung
@@ -87,7 +87,6 @@ Abteilungstitel
 ==== Level 3 <h4>
 
 ===== Level 4 <h5>
-
 ```
 
 Listen

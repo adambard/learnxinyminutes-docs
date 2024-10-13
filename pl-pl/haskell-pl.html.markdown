@@ -426,7 +426,6 @@ infixl 6 +
 What is your name?
 Friend!
 Hello, Friend!
-
 ```
 
 Pominęliśmy wiele aspektów Haskella, wliczając w to monady. To właśnie one 

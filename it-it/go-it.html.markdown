@@ -91,7 +91,7 @@ può includere andata a capo.` // Sempre di tipo stringa.
     // Stringa letterale non ASCII. I sorgenti Go sono in UTF-8.
 	g := 'Σ' // Il tipo runa, alias per int32, è costituito da un code point unicode.
 
-	f := 3.14195 // float64, un numero in virgola mobile a 64-bit (IEEE-754)
+	f := 3.14159 // float64, un numero in virgola mobile a 64-bit (IEEE-754)
 
 	c := 3 + 4i  // complex128, rappresentato internamente con due float64.
 
@@ -422,9 +422,9 @@ func richiediServer() {
 
 ## Letture consigliate
 
-La risorsa più importante per imparare il Go è il [sito ufficiale di Go](http://golang.org/).
+La risorsa più importante per imparare il Go è il [sito ufficiale di Go](https://go.dev/).
 Qui puoi seguire i tutorial, scrivere codice in modo interattivo, e leggere tutti i dettagli.
-Oltre al tour, [la documentazione](https://golang.org/doc/) contiene informazioni su
+Oltre al tour, [la documentazione](https://go.dev/doc/) contiene informazioni su
 come scrivere ottimo codice in Go, documentazione sui package e sui comandi, e
 la cronologia delle release.
 
@@ -432,17 +432,17 @@ Anche il documento che definisce il linguaggio è un'ottima lettura. E' semplice
 da leggere e incredibilmente corto (rispetto ad altri documenti riguardanti
 la creazione di linguaggi).
 
-Puoi giocare con il codice visto finora nel [Go playground](https://play.golang.org/p/Am120Xe7qf).
+Puoi giocare con il codice visto finora nel [Go playground](https://go.dev/play/p/Am120Xe7qf).
 Prova a cambiarlo e ad eseguirlo dal browser!
-Osserva che puoi usare [https://play.golang.org](https://play.golang.org) come
+Osserva che puoi usare [https://go.dev/play/](https://go.dev/play/) come
 una [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) per scrivere
 codice all'interno del browser, senza neanche installare Go!
 
 Una lettura importante per capire Go in modo più profondo è il [codice 
-sorgente della libreria standard](http://golang.org/src/pkg/). Infatti è
+sorgente della libreria standard](https://go.dev/src/). Infatti è
 molto ben documentato e costituisce quanto più chiaro e conciso ci sia riguardo
 gli idiomi e le buone pratiche del Go. Inoltre, clickando sul nome di una
-funzione [nella documentazione](http://golang.org/pkg/) compare il relativo
+funzione [nella documentazione](https://go.dev/pkg/) compare il relativo
 codice sorgente!
 
 Un'altra ottima risorsa per imparare è [Go by example](https://gobyexample.com/).
@@ -451,4 +451,4 @@ Go Mobile aggiunge il supporto per lo sviluppo mobile (Android e iOS).
 In questo modo è possibile scrivere un'app mobile nativa in Go, oppure
 una libreria che contiene binding da un package scritto in Go, e che può
 essere richiamata da Java(Android) e Objective-C(iOS). Visita la pagina di
-[Go Mobile](https://github.com/golang/go/wiki/Mobile) per maggiori informazioni.
+[Go Mobile](https://go.dev/wiki/Mobile) per maggiori informazioni.

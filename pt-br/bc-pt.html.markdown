@@ -7,7 +7,7 @@ translators:
 lang: pt-br
 filename: learnbc-pt.bc
 ---
-```c
+```bc
 /*Este é um comentário
 multi-linhas*/
 # Este é um comentário de uma única linha! (em bc GNU).
@@ -33,7 +33,7 @@ hora = read() /*Lê a entrada de um número*/
 
 if(hora < 12) { /*Os operadores são idênticos ao C.*/
     print "Bom dia\n" /*"print" imprime strings ou variáveis
-	separados por vírgula (,).*/
+    separados por vírgula (,).*/
 } else if(hora == 12) {
     print "Olá\n"
     /*Para escapar strings, inicie a string com \.
@@ -97,8 +97,9 @@ for(i = 0; i <= 3; i++) {
 /*Para acessar um array, faça assim:*/
 print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
 quit /*Adicione essa linha no final do código
-para garantir que o programa encerre. Essa linha é opcional.*/ 
+para garantir que o programa encerre. Essa linha é opcional.*/
 ```
+
 Aproveite bem essa simples calculadora! (Ou essa linguagem de programação, para ser exato.)
 
 Este programa inteiro foi escrito em GNU bc. Para rodá-lo, use ```bc learnbc-pt.bc```

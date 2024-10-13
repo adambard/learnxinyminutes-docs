@@ -188,18 +188,17 @@ print twice b      ; 输出 6
 ; 使用 #include 和 %文件名 来导入外部文件
 #include %includefile.red
 ; 现在就可以使用 includefile.red 中的函数了。
-
 ```
 
 ## 更进一步
 
 Red 相关的源码信息在 [Red 语言主页](https://www.red-lang.org)。
 
-源代码的 [github 库](https://github.com/red/red)。
+源代码的 [GitHub 库](https://github.com/red/red)。
 
 Red/System 特性在 [这里](https://static.red-lang.org/red-system-specs-light.html)。
 
-想要了解更多关于 Rebol 和 Red 的信息，加入 [Gitter 聊天室](https://gitter.im/red/red)。如果你无法加入，也可以给我们发[邮件](mailto:red-langNO_SPAM@googlegroups.com)。
+想要了解更多关于 Rebol 和 Red 的信息，加入 [Gitter 聊天室](https://gitter.im/red/red)。
 
 也可以在 [Stack Overflow](https://stackoverflow.com/questions/tagged/red) 上查阅、提交问题。
 

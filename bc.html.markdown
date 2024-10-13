@@ -4,7 +4,7 @@ contributors:
     - ["Btup"]
 filename: learnbc.bc
 ---
-```c
+```bc
 /*This is a multi-
 line comment.*/
 # This is also a (one-line) comment! (in GNU bc).
@@ -29,27 +29,23 @@ hour = read() /*Input a number*/
 
 if(hour < 12) { /*Operators are exactly like C.*/
     print "Good morning\n" /*"print" outputs strings or variables
-	separated by commas.*/
+    separated by commas.*/
 } else if(hour == 12) {
     print "Hello\n"
     /*Escaping sequences start with a \ in a string.
     In order to make the escaping sequences clearer, here
-	is a simplified list of them that will work in bc:
+    is a simplified list of them that will work in bc:
     \b: backspace
     \c: carriage return
     \n: newline
     \t: tab
     \\: backslash*/
 } else {
-    /*Variables are global by default.*/
-    thisIsGlobal = 5
-    /*You can make a variable local. Use the "auto" keyword in a function.*/
+    print "Good afternoon\n"
 }
 
-/*Every variable is pre-set to 0.*/
-num = blankVariable /*num is set to 0.*/
-
 /*Like C, only 0 is falsy.*/
+num = 0
 if(!num) {print "false\n"}
 
 /*Unlike C, bc does not have the ?: operators. For example,
@@ -93,6 +89,7 @@ print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
 quit /*Add this line of code to make sure
 that your program exits. This line of code is optional.*/
 ```
+
 Enjoy this simple calculator! (Or this programming language, to be exact.)
 
 This whole program is written in GNU bc. To run it, use ```bc learnbc.bc```.

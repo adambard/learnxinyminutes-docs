@@ -82,7 +82,7 @@ false
 ;;; markierte Elemente ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; EDN kann erweitert werden, indem Elemente mit # Symbolen makiert werden.
+; EDN kann erweitert werden, indem Elemente mit # Symbolen markiert werden.
 
 #MyYelpClone/MenuItem {:name "eggs-benedict" :rating 10}
 
@@ -102,11 +102,10 @@ false
 (edn/read-string {:readers {'MyYelpClone/MenuItem map->menu-item}}
                  "#MyYelpClone/MenuItem {:name \"eggs-benedict\" :rating 10}")
 ; -> #user.MenuItem{:name "eggs-benedict", :rating 10}
-
 ```
 
 # Referenzen
 
 - [EDN spec](https://github.com/edn-format/edn)
 - [Implementationen](https://github.com/edn-format/edn/wiki/Implementations)
-- [makierte Elemente](http://www.compoundtheory.com/clojure-edn-walkthrough/)
+- [markierte Elemente](http://www.compoundtheory.com/clojure-edn-walkthrough/)

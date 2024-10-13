@@ -10,13 +10,13 @@ lang: id-id
 ---
 
 CoffeeScript adalah bahasa sederhana yang diterjemahkan saat kompilasi ke dalam JavaScript,
-dan bukan diterjemahkan pada saat *runtime*.  
+dan bukan diterjemahkan pada saat *runtime*.
 CoffeeScript mencoba agar kode JavaScript yang dihasilkan tetap mudah dibaca
 dan kompatibel dengan semua *runtime* JavaScript.
 
 Lihat juga [website CoffeeScript](http://coffeescript.org/) yang memiliki tutorial lengkap tentang CoffeeScript.
 
-```CoffeeScript
+```coffeescript
 # CoffeeScript adalah bahasa hipster.
 # Mengikuti tren bahasa modern lainnya.
 # Sehingga, seperti Ruby dan Python, untuk komentar digunakan tanda pagar.
@@ -102,5 +102,5 @@ makan sayuran for sayuran in sayur_sayuran when sayuran isnt 'kemangi'
 
 ## Referensi Tambahan
 
-- [Smooth CoffeeScript (EN)] (http://autotelicum.github.io/Smooth-CoffeeScript/)
-- [CoffeeScript Ristretto (EN)] (https://leanpub.com/coffeescript-ristretto/read)
+- [Smooth CoffeeScript (EN)](http://autotelicum.github.io/Smooth-CoffeeScript/)
+- [CoffeeScript Ristretto (EN)](https://leanpub.com/coffeescript-ristretto/read)

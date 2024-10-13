@@ -75,7 +75,7 @@ Très mature/compatible:
 * [MRI](https://github.com/ruby/ruby) - Ecrite en C, c'est l'implémentation de
   référence de Ruby. Elle est par définition 100% compatible (avec elle-même).
   Tous les autres rubies maintiennent la compatibilité avec MRI
-  (voir [RubySpec](#rubyspec) à la suite).
+  (voir [Ruby Spec](#ruby-spec) à la suite).
 * [JRuby](http://jruby.org/) - Écrite en Java et Ruby, cette robuste
   implémentation est assez rapide.
   La force de JRuby réside surtout sur l'interopérabilité JVM/Java, faisant
@@ -102,9 +102,9 @@ cibler.
 
 Une liste non exhaustive d'implémentations peut être trouvée [ici (EN)](https://github.com/cogitator/ruby-implementations/wiki/List-of-Ruby-implementations).
 
-## RubySpec
+## Ruby Spec
 
-La plupart des implémentations Ruby s'appuient fortement sur [RubySpec](http://rubyspec.org/).
+La plupart des implémentations Ruby s'appuient fortement sur [Ruby Spec](https://github.com/ruby/spec).
 Ruby n'a pas de spécification officielle, c'est pourquoi la commaunité a écrit
 des spécifications exécutables en Ruby pour tester la compatibilité de leur
 implémentation avec MRI.

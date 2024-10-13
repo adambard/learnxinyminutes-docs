@@ -12,10 +12,7 @@ Python fue creado por Guido Van Rossum en el principio de los 90'. Ahora es uno
 de los lenguajes más populares en existencia. Me enamoré de Python por su claridad sintáctica.
 Es básicamente pseudocódigo ejecutable.
 
-¡Comentarios serán muy apreciados! Pueden contactarme en [@louiedinh](http://twitter.com/louiedinh) o louiedinh [at] [servicio de email de google]
-
 ```python
-
 # Comentarios de una línea comienzan con una almohadilla (o signo gato)
 
 """ Strings multilinea pueden escribirse
@@ -421,7 +418,7 @@ map(sumar_10, [1,2,3]) #=> [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
 # Podemos usar listas por comprensión para mapeos y filtros agradables
-[add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
+[sumar_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 # también hay diccionarios
 {k:k**2 for k in range(3)} #=> {0: 0, 1: 1, 2: 4}
@@ -554,7 +551,7 @@ def decir(decir_por_favor=False):
 
 
 print(decir())  # ¿Puedes comprarme una cerveza?
-print(decir(decir_por_favor=True))  # ¿Puedes comprarme una cerveza? ¡Por favor! Soy pobre :()
+print(decir(decir_por_favor=True))  # ¿Puedes comprarme una cerveza? ¡Por favor! Soy pobre :(
 ```
 
 ## ¿Listo para más?
@@ -565,9 +562,8 @@ print(decir(decir_por_favor=True))  # ¿Puedes comprarme una cerveza? ¡Por favo
 * [Dive Into Python](http://www.diveintopython.net/)
 * [Ideas for Python Projects](http://pythonpracticeprojects.com)
 * [The Official Docs](http://docs.python.org/3/)
-* [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/)
+* [Hitchhiker's Guide to Python](http://docs.python-guide.org/)
 * [Python Module of the Week](http://pymotw.com/3/)
-* [A Crash Course in Python for Scientists](http://nbviewer.ipython.org/5920182)
 
 ### Encuadernados
 

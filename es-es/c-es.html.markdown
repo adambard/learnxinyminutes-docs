@@ -9,7 +9,7 @@ translators:
 lang: es-es
 ---
 
-¡Ah!, C. Aun hoy en día sigue siendo el lenguaje por excelencia de la 
+¡Ah!, C. Aun hoy en día sigue siendo el lenguaje por excelencia de la
 computación moderna de alto rendimiento.
 
 C es el lenguaje de más bajo nivel que la mayoría de los programadores
@@ -64,7 +64,7 @@ char y_char = 'y'; // Los caracteres literales se entrecomillan con ''
 // 'longs' son a menudo de 4 a 8 bytes; 'long longs' son fijo de por lo
 // menos 64 bits
 long x_long = 0;
-long long x_long_long = 0; 
+long long x_long_long = 0;
 
 // 'floats' son normalmente números de coma flotante de 32 bits
 float x_float = 0.0;
@@ -80,7 +80,7 @@ unsigned short ux_short;
 unsigned int ux_int;
 unsigned long long ux_long_long;
 
-// Todos menos 'char', que es siempre de 1 byte, varían el tamaño 
+// Todos menos 'char', que es siempre de 1 byte, varían el tamaño
 // dependiendo de tu máquina. sizeof(T) te dice el tamaño de una variable
 // de tipo T en bytes por lo que podemos expresar el tamaño de estos tipos
 // portatilmente.
@@ -114,7 +114,7 @@ printf("%s\n", a_string); // %s se sutituye por una cadena.
 
 /*
 Te habrás dado cuenta de que a_string es solo de 18 caracteres.
-El 'char' #19 es el byte nulo. 
+El 'char' #19 es el byte nulo.
 El 'char' #20 es de valor indefinido.
 */
 
@@ -139,7 +139,7 @@ f1 / f2; // => 0.5, más o menos épsilon
 
 // Los operadores de comparación te resultaran familiares, pero no hay
 // booleanos en C. Usamos enteros (ints) en su lugar. 0 es falso,
-// cualquier otra cosa es verdadero. (Los operadores de comparación 
+// cualquier otra cosa es verdadero. (Los operadores de comparación
 // siempre devuelven 0 o 1)
 3 == 2; // => 0 (Falso)
 3 != 2; // => 1 (Verdadero)
@@ -226,8 +226,8 @@ printf("%d\n", (char)100.0);
 // Punteros
 ///////////////////////////////////////
 
-// Un puntero es una variable declarada para almacenar una dirección de 
-// memoria. Su declaración además nos dirá el tipo de dato al que apunta. 
+// Un puntero es una variable declarada para almacenar una dirección de
+// memoria. Su declaración además nos dirá el tipo de dato al que apunta.
 // Puedes obtener la dirección de memoria de tus variables, y después
 // enlazarlas con ellos.
 
@@ -242,7 +242,7 @@ px = &x; // Almacena la dirección de x en px
 printf("%p\n", px); // => Muestra alguna dirección de memoria
 
 // Para obtener el valor de la dirección a la que apunta un puntero, pon
-// * delante para desreferenciarle. 
+// * delante para desreferenciarle.
 printf("%d\n", *px); // => Muestra 0, el valor de x y de la dirección a la
                      //    que apunta px
 
@@ -285,7 +285,7 @@ for (xx=0; xx<20; xx++) {
 // impredecibles
 printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what?
 
-// Cuando hayas acabado con el bloque de memoría malloc, necesitas 
+// Cuando hayas acabado con el bloque de memoría malloc, necesitas
 // liberarlo o sino nadie más podrá usarlo hasta que tu programa se cierre
 free(my_ptr);
 
@@ -310,8 +310,8 @@ int add_two_ints(int x1, int x2){
 }
 
 /*
-Las funciones son de paso por valor, pero puedes hacer tus propias 
-referencias con punteros de manera que las funciones puedan cambiar sus 
+Las funciones son de paso por valor, pero puedes hacer tus propias
+referencias con punteros de manera que las funciones puedan cambiar sus
 valores.
 
 Ejemplo: invertidor de cadenas in-situ
@@ -320,7 +320,7 @@ Ejemplo: invertidor de cadenas in-situ
 // Una función 'void' no retorna valor
 void str_reverse(char* str_in){
     char tmp;
-    int ii=0, len = strlen(str_in); // Strlen es parte de la librería 
+    int ii=0, len = strlen(str_in); // Strlen es parte de la librería
     for(ii=0; ii<len/2; ii++){      // estándard
         tmp = str_in[ii];
         str_in[ii] = str_in[len - ii - 1]; // ii-th último 'char'
@@ -379,9 +379,9 @@ int area(rect r){
 ///////////////////////////////////////
 /*
 En tiempo de ejecución,  las funciones se localizan en unas direcciones de
-memoria concretas. Los punteros a funciones son como cualquier otro 
-puntero (almacenan una dirección de memoria), pero pueden ser usados para 
-utilizar funciones directamente, o para pasar 'handlers' (o funciones 
+memoria concretas. Los punteros a funciones son como cualquier otro
+puntero (almacenan una dirección de memoria), pero pueden ser usados para
+utilizar funciones directamente, o para pasar 'handlers' (o funciones
 'callback') por todos lados.
 Sin embargo, la sintaxis de definición parecera confusa al principio.
 
@@ -413,24 +413,19 @@ typedef void (*my_fnp_type)(char *);
 
 // Es usado para declarar la variable puntero actual:
 // ...
-// my_fnp_type f; 
-
+// my_fnp_type f;
 ```
 
 ## Otras lecturas
 
 Lo mejor que puedes encontrar es una copia de [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). Es *el*
 libro de C, escrito por Dennis Ritchie, creador de C y Brian Kernighan. Aún así,
-se cuidadoso, es antiguo, contiene algunas inexactitudes, y algunas prácticas 
+se cuidadoso, es antiguo, contiene algunas inexactitudes, y algunas prácticas
 han cambiado.
-
-Otro buen recurso es [Learn C the hard way](http://learncodethehardway.org/c/).
 
 Si tienes una pregunta, lee [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
-Es muy importante utilizar el espaciado y la sangría apropiados y ser coherente 
-con su estilo de codificación en general. El código legible es mejor que el 
+Es muy importante utilizar el espaciado y la sangría apropiados y ser coherente
+con su estilo de codificación en general. El código legible es mejor que el
 código rápido. Para adoptar un buen estilo de codificación, vea el
-[Estilo de codificación del kernel Linux] (https://www.kernel.org/doc/Documentation/CodingStyle).
-
-Aparte de eso, Google es tu amigo.
+[estilo de codificación del kernel Linux](https://www.kernel.org/doc/Documentation/CodingStyle).

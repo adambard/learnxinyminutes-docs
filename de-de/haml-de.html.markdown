@@ -93,7 +93,7 @@ $ haml input_file.haml output_file.html
 / andere Attribute können über den Hash angegeben werden:
 %a{:href => '#', :class => 'bar', :title => 'Bar'}
 
-/ Booleesche Attribute können mit 'true' gesetzt werden:
+/ Boolesche Attribute können mit 'true' gesetzt werden:
 %input{:selected => true}
 
 / data-Attribute können in einem eigenen Hash im :data key angegeben werden:
@@ -141,13 +141,12 @@ $ haml input_file.haml output_file.html
 / -------------------------------------------
 
 /
-  Mit dem Doppelpinkt können Haml Filter benutzt werden.
+  Mit dem Doppelpunkt können Haml Filter benutzt werden.
   Zum Beispiel gibt es den :javascript Filter, mit dem inline JS
   geschrieben werden kann:
 
 :javascript
   console.log('Dies ist ein <script>');
-
 ```
 
 ## Weitere Resourcen

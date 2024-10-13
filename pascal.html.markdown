@@ -201,6 +201,5 @@ Begin // main program block
     // outputs i!
     writeln('dummy = ', dummy); // always outputs '3' since dummy is unchanged.
 End.
-
 ```
 

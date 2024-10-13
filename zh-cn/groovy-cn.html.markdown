@@ -8,10 +8,9 @@ translators:
 lang: zh-cn
 ---
 
-Groovy - Java平台的动态语言。[了解更多。](http://www.groovy-lang.org/)
+Groovy - Java平台的动态语言。[了解更多](http://www.groovy-lang.org/)。
 
 ```groovy
-
 /*
   安装：
 
@@ -269,7 +268,7 @@ def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy可以记忆闭包结果 [1][2][3]
+  Groovy可以记忆闭包结果
 */
 def cl = {a, b ->
     sleep(3000) // 模拟费时操作
@@ -394,8 +393,6 @@ int sum(int x, int y) {
 }
 
 assert sum(2,5) == 7
-
-
 ```
 
 ## 进阶资源
@@ -408,15 +405,6 @@ assert sum(2,5) == 7
 
 ## 图书
 
-* [Groovy Goodness] (https://leanpub.com/groovy-goodness-notebook)
-
-* [Groovy in Action] (http://manning.com/koenig2/)
-
-* [Programming Groovy 2: Dynamic Productivity for the Java Developer] (http://shop.oreilly.com/product/9781937785307.do)
-
-[1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
-[2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
-[3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
-
-
-
+* [Groovy Goodness](https://leanpub.com/groovy-goodness-notebook)
+* [Groovy in Action](http://manning.com/koenig2/)
+* [Programming Groovy 2: Dynamic Productivity for the Java Developer](http://shop.oreilly.com/product/9781937785307.do)

@@ -84,20 +84,20 @@ folded_style: >
 
 # |- and >- removes the trailing blank lines (also called literal/block "strip")
 literal_strip: |-
-  This entire block of text will be the value of the 'literal_block' key,
+  This entire block of text will be the value of the 'literal_strip' key,
   with trailing blank line being stripped.
 block_strip: >-
-  This entire block of text will be the value of 'folded_style', but this
+  This entire block of text will be the value of 'block_strip', but this
   time, all newlines will be replaced with a single space and 
   trailing blank line being stripped.
 
 # |+ and >+ keeps trailing blank lines (also called literal/block "keep")
 literal_keep: |+
-  This entire block of text will be the value of the 'literal_block' key,
+  This entire block of text will be the value of the 'literal_keep' key,
   with trailing blank line being kept.
 
 block_keep: >+
-  This entire block of text will be the value of 'folded_style', but this
+  This entire block of text will be the value of 'block_keep', but this
   time, all newlines will be replaced with a single space and 
   trailing blank line being kept.
 
@@ -165,7 +165,7 @@ other_anchor: *anchor_name
 base: &base
   name: Everyone has same name
 
-# The regexp << is called 'Merge Key Language-Independent Type'. It is used to
+# The expression << is called 'Merge Key Language-Independent Type'. It is used to
 # indicate that all the keys of one or more specified maps should be inserted
 # into the current map.
 # NOTE: If key already exists alias will not be merged
@@ -177,7 +177,7 @@ bar:
   <<: *base # base anchor will be merged
   age: 20
 
-# foo and bar would also have name: Everyone has same name
+# foo name won't be changed and it will be: John. On the other hand, bar's name will be changed to the base one: Everyone has same name
 
 # YAML also has tags, which you can use to explicitly declare types.
 # Syntax: !![typeName] [value]

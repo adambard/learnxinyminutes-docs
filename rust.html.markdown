@@ -92,14 +92,14 @@ fn main() {
     println!("{} {}", f, x); // 1.3 hello world
 
     // A `String` – a heap-allocated string
-    // Stored as a `Vec<u8>` and always hold a valid UTF-8 sequence, 
+    // Stored as a `Vec<u8>` and always holds a valid UTF-8 sequence, 
     // which is not null terminated.
     let s: String = "hello world".to_string();
 
     // A string slice – an immutable view into another string
-    // This is basically an immutable pair of pointers to a string – it doesn’t
-    // actually contain the contents of a string, just a pointer to
-    // the begin and a pointer to the end of a string buffer,
+    // This is basically an immutable pointer and length of a string – it
+    // doesn’t actually contain the contents of a string, just a pointer to
+    // the beginning and a length of a string buffer,
     // statically allocated or contained in another object (in this case, `s`).
     // The string slice is like a view `&[u8]` into `Vec<T>`.
     let s_slice: &str = &s;
@@ -162,6 +162,8 @@ fn main() {
     let up = Direction::Up;
 
     // Enum with fields
+    // If you want to make something optional, the standard
+    // library has `Option`
     enum OptionalI32 {
         AnI32(i32),
         Nothing,
@@ -175,6 +177,8 @@ fn main() {
     struct Foo<T> { bar: T }
 
     // This is defined in the standard library as `Option`
+    // `Option` is used in place of where a null pointer
+    // would normally be used.
     enum Optional<T> {
         SomeVal(T),
         NoVal,
@@ -304,7 +308,7 @@ fn main() {
     /////////////////////////////////
 
     // Owned pointer – only one thing can ‘own’ this pointer at a time
-    // This means that when the `Box` leaves its scope, it can be automatically deallocated safely.
+    // This means that when the `Box` leaves its scope, it will be automatically deallocated safely.
     let mut mine: Box<i32> = Box::new(3);
     *mine = 5; // dereference
     // Here, `now_its_mine` takes ownership of `mine`. In other words, `mine` is moved.
@@ -344,6 +348,10 @@ fn main() {
 
 ## Further reading
 
+For a deeper-yet-still-fast explanation into Rust and its symbols/keywords, the
+[half-hour to learn Rust](https://fasterthanli.me/articles/a-half-hour-to-learn-rust)
+article by Fasterthanlime explains (almost) everything in a clear and concise way!
+
 There’s a lot more to Rust—this is just the basics of Rust so you can understand
 the most important things. To learn more about Rust, read [The Rust Programming
 Language](http://doc.rust-lang.org/book/index.html) and check out the
@@ -351,5 +359,5 @@ Language](http://doc.rust-lang.org/book/index.html) and check out the
 irc.mozilla.org are also always keen to help newcomers.
 
 You can also try out features of Rust with an online compiler at the official
-[Rust playpen](http://play.rust-lang.org) or on the main
+[Rust Playground](https://play.rust-lang.org) or on the main
 [Rust website](http://rust-lang.org).

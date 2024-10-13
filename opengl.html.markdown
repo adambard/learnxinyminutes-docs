@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: OpenGL
+category: framework
+framework: OpenGL
 filename: learnopengl.cpp
 contributors:
     - ["Simon Deitermann", "s.f.deitermann@t-online.de"]
@@ -161,7 +161,7 @@ sf::Event event{ };
 // ...
 ```
 
-Ofcourse we have to create the vertex and fragment shader before we can load them,
+Of course we have to create the vertex and fragment shader before we can load them,
 so lets create two basic shaders.
 
 **Vertex Shader**
@@ -342,7 +342,7 @@ void main() {
 We define a new input variable ```color``` which represents our color data, this data
 is passed on to ```fColor```, which is an output variable of our vertex shader and
 becomes an input variable for our fragment shader.
-It is imporatant that variables passed between shaders have the exact same name
+It is important that variables passed between shaders have the exact same name
 and type.
 
 ## Handling VBO's
@@ -501,7 +501,7 @@ glBindTexture(GL_TEXTURE_2D, 0);
 glDeleteTextures(1, &texture);
 ```
 
-Ofcourse there are more texture formats than only 2D textures,
+Of course there are more texture formats than only 2D textures,
 You can find further information on parameters here:
 [glBindTexture - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindTexture.xhtml)<br>
 [glTexImage2D - OpenGL Refpage](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexImage2D.xhtml)<br>
@@ -574,7 +574,7 @@ in vec2 fTexCoords;
 out vec4 outColor;
 
 void main() {
-    // texture() loads the current texure data at the specified texture coords,
+    // texture() loads the current texture data at the specified texture coords,
     // then we can simply multiply them by our color.
     outColor = texture(tex, fTexCoords) * vec4(fColor, 1.0);
 }
@@ -685,7 +685,7 @@ Geometry shaders are inbetween the vertex and the fragment shader.
 
 layout(location = 0) in vec3 position;
 layout(location = 1) in vec3 color;
-// Create an output interface block passed to the next shadaer stage.
+// Create an output interface block passed to the next shader stage.
 // Interface blocks can be used to structure data passed between shaders.
 out VS_OUT {
     vec3 color;

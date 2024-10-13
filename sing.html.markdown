@@ -243,8 +243,8 @@ private:
 // How to declare a member function
 fn AClass.is_ready() bool
 {
-    // inside a member function, members can be accessed thrugh the 
-    // this keyword and the field selector '.'
+    // inside a member function, members can be accessed through the 
+    // 'this' keyword and the field selector '.'
     return(this.public_var > 10);
 }
 

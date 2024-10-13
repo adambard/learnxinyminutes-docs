@@ -386,36 +386,33 @@ g = load('print(343)')  -- Returns a function.
 g()  -- Prints out 343; nothing printed before now.
 
 --]]
-
 ```
 
 ## Community
 
-If you need support join the official Lua [mailing list](https://www.lua.org/lua-l.html), [irc channel](http://lua-users.org/wiki/IrcChannel), or [forum](https://luaforum.com).
-
+If you need support join the official Lua [mailing list](https://www.lua.org/lua-l.html), [IRC channel](http://lua-users.org/wiki/IrcChannel), or [forum](https://luaforum.com).
 
 ## References
 
 I was excited to learn Lua so I could make games
-with the <a href="http://love2d.org/">Love 2D game engine</a>. That's the why.
+with the [LÖVE game engine](http://love2d.org/). That's the why.
 
-I started with <a href="https://ebens.me/posts/lua-for-programmers-part-1/">BlackBulletIV's Lua for programmers</a>.
-Next I read the official <a href="http://www.lua.org/pil/contents.html">Programming in Lua</a> book.
+I started with [BlackBulletIV's Lua for programmers](https://ebens.me/posts/lua-for-programmers-part-1/).
+Next I read the official [Programming in Lua](http://www.lua.org/pil/contents.html) book.
 That's the how.
 
-It might be helpful to check out the <a href="http://lua-users.org/wiki/LuaShortReference">Lua short
-reference</a> on lua-users.org.
+It might be helpful to check out the [Lua short reference](http://lua-users.org/wiki/LuaShortReference) on lua-users.org.
 
 The main topics not covered are standard libraries:
 
-* <a href="http://lua-users.org/wiki/StringLibraryTutorial">string library</a>
-* <a href="http://lua-users.org/wiki/TableLibraryTutorial">table library</a>
-* <a href="http://lua-users.org/wiki/MathLibraryTutorial">math library</a>
-* <a href="http://lua-users.org/wiki/IoLibraryTutorial">io library</a>
-* <a href="http://lua-users.org/wiki/OsLibraryTutorial">os library</a>
+* [`string` library](http://lua-users.org/wiki/StringLibraryTutorial)
+* [`table` library](http://lua-users.org/wiki/TableLibraryTutorial)
+* [`math` library](http://lua-users.org/wiki/MathLibraryTutorial)
+* [`io` library](http://lua-users.org/wiki/IoLibraryTutorial)
+* [`os` library](http://lua-users.org/wiki/OsLibraryTutorial)
 
 By the way, the entire file is valid Lua; save it
-as learn.lua and run it with "lua learn.lua" !
+as learn.lua and run it with "`lua learn.lua`" !
 
 This was first written for tylerneylon.com, and is
-also available as a <a href="https://gist.github.com/tylerneylon/5853042">github gist</a>. Have fun with Lua!
+also available as a [GitHub gist](https://gist.github.com/tylerneylon/5853042). Have fun with Lua!

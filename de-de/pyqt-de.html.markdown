@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQT
+category: framework
+framework: PyQT
 filename: learnpyqt-de.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
@@ -9,19 +9,19 @@ translators:
 lang: de-de
 ---
 
-**Qt** ist eine weit bekanntes Framework mit den man plattformunabhängige Programme schreiben kann,
-die auf verschiedenen Sotfware und Hardware Plattformen laufen mit kleinen oder keinen Änderungen im Code.
-Dabei besitzen sie trozdem die Power und Geschwindigkeit von nativen Anwendungen.
+**Qt** ist ein weit bekanntes Framework, mit dem man plattformunabhängige Programme schreiben kann,
+die auf verschiedenen Software- und Hardwareplattformen laufen, mit kleinen oder keinen Änderungen im Code.
+Dabei besitzen sie trotzdem die Power und Geschwindigkeit von nativen Anwendungen.
 **Qt** wurde ursprünglich in *C++** geschrieben.
 
 Das ist eine Adaption von dem C++ Intro für QT von [Aleksey Kholovchuk](https://github.com/vortexxx192),
-manche der Codebeispiele sollte in der selben Funktionalität resultieren.
+manche der Codebeispiele sollten in derselben Funktionalität resultieren.
 Diese Version wurde in pyqt erstellt.
 
 ```python
 import sys
 from PyQt4 import QtGui
-	
+
 def window():
 	# Erschafft ein Anwendungsobjekt.
     app = QtGui.QApplication(sys.argv)
@@ -31,7 +31,7 @@ def window():
     b = QtGui.QLabel(w)
 	# Setzt einen Text für das Label.
     b.setText("Hello World!")
-	# Setzt die Größe und die Platzierungsinfomationen.
+	# Setzt die Größe und die Platzierungsinformationen.
     w.setGeometry(100, 100, 200, 50)
     b.move(50, 20)
 	# Setzt unserem Fenster einen schönen Titel.
@@ -43,15 +43,14 @@ def window():
 
 if __name__ == '__main__':
     window()
-
 ```
 
 Damit wir weitere fortgeschrittene Funktionen in **pyqt** verwenden können,
 müssen wir anfangen zusätzliche Elemente zu bauen.
-Hier zeigen wir wie man eine Dialog Popup Box einführt. 
-Diese ist nützlich, um den Benutzer eine Entscheidung zu bestätigen oder um Informationen anzuzeigen.
+Hier zeigen wir wie man eine Dialog Popup Box einführt.
+Diese ist nützlich, um dem Benutzer eine Entscheidung zu bestätigen oder Informationen anzuzeigen.
 
-```Python 
+```python
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -70,9 +69,9 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-	
+
 # Diese Funktion soll ein Dialogfenster mit einem Knopf erschaffen.
-# Der Knopf wartet bis er geklickt wird und beendet das Programm
+# Der Knopf wartet, bis er geklickt wird, und beendet das Programm.
 def showdialog():
     d = QDialog()
     b1 = QPushButton("ok", d)
@@ -80,7 +79,7 @@ def showdialog():
     d.setWindowTitle("Dialog")
     # Diese Modalität sagt dem Popup, dass es den Parent blocken soll, solange es aktiv ist.
     d.setWindowModality(Qt.ApplicationModal)
-    # Beim klicken möchte ich, dass der gesamte Prozess beendet wird.
+    # Beim Klicken möchte ich, dass der gesamte Prozess beendet wird.
     b1.clicked.connect(sys.exit)
     d.exec_()
 

@@ -11,11 +11,11 @@ translators:
     - ["Nuno Antunes", "https://github.com/ntns"]
 ---
 
-A linguagem Go foi criada a partir da necessidade de ver trabalho feito. Não 
+A linguagem Go foi criada a partir da necessidade de ver trabalho feito. Não
 é a última moda em ciências da computação, mas é a mais recente e mais rápida
 forma de resolver os problemas do mundo real.
 
-Tem conceitos familiares de linguagens imperativas com tipagem estática. É 
+Tem conceitos familiares de linguagens imperativas com tipagem estática. É
 rápida para compilar e rápida para executar, acrescentando mecanismos de concorrência
 fáceis de entender para tirar partido dos CPUs multi-core de hoje em dia, e tem
 recursos para ajudar com a programação em larga escala.
@@ -57,7 +57,7 @@ func beyondHello() {
     // Declarações "curtas" usam := para inferir o tipo, declarar e atribuir.
     y := 4
     sum, prod := learnMultiple(x, y)        // a função retorna dois valores
-    fmt.Println("soma:", sum, "produto:", prod) 
+    fmt.Println("soma:", sum, "produto:", prod)
     learnTypes()                            // continuar a aprender!
 }
 
@@ -69,15 +69,15 @@ func learnMultiple(x, y int) (sum, prod int) {
 // Alguns tipos e literais básicos.
 func learnTypes() {
     // Declarações "curtas" geralmente servem para o que pretendemos.
-    s := "Aprender Go!" // tipo string 
+    s := "Aprender Go!" // tipo string
 
-    s2 := `Uma string em "bruto" 
+    s2 := `Uma string em "bruto"
 pode incluir quebras de linha.` // mesmo tipo string
 
     // literal não-ASCII. A linguagem Go utiliza de raiz a codificação UTF-8.
     g := 'Σ' // tipo rune, um alias para int32, que contém um código unicode
 
-    f := 3.14195 // float64, número de vírgula flutuante de 64bit (IEEE-754)
+    f := 3.14159 // float64, número de vírgula flutuante de 64bit (IEEE-754)
     c := 3 + 4i  // complex128, representado internamente com dois float64s
 
     // Declaração de variáveis, com inicialização.
@@ -87,7 +87,7 @@ pode incluir quebras de linha.` // mesmo tipo string
     // Sintaxe de conversão de tipo, com declaração "curta".
     n := byte('\n') // byte é um alias para uint8
 
-    // Os arrays têm tamanho fixo e definido antes da compilação. 
+    // Os arrays têm tamanho fixo e definido antes da compilação.
     var a4 [4]int           // um array de 4 ints, inicializado com ZEROS
     a3 := [...]int{3, 1, 5} // um array de 3 ints, inicializado como mostrado
 
@@ -112,10 +112,10 @@ pode incluir quebras de linha.` // mesmo tipo string
     // Enviar para o stdout conta como utilização de uma variável.
     fmt.Println(s, c, a4, s3, d2, m)
 
-    learnFlowControl() 
+    learnFlowControl()
 }
 
-// A linguagem Go é totalmente garbage collected. Tem apontadores mas não 
+// A linguagem Go é totalmente garbage collected. Tem apontadores mas não
 // permite que os apontadores sejam manipulados com aritmética. Pode-se cometer
 // um erro com um apontador nulo, mas não por incrementar um apontador.
 func learnMemory() (p, q *int) {
@@ -174,7 +174,7 @@ func learnFlowControl() {
         return x > 100 // referencia x, declarado acima da instrução switch.
     }
     fmt.Println("xBig:", xBig()) // true (1e6 é o último valor de x)
-    x /= 1e5                     // agora temos x == 10 
+    x /= 1e5                     // agora temos x == 10
     fmt.Println("xBig:", xBig()) // false
 
     // Quando for mesmo necessário, pode usar o velho goto.
@@ -194,7 +194,7 @@ type pair struct {
     x, y int
 }
 
-// Define um método para o tipo pair. O tipo pair implementa agora a 
+// Define um método para o tipo pair. O tipo pair implementa agora a
 // interface Stringer.
 func (p pair) String() string { // p é chamado de "receptor"
     // Sprintf é outra função pública no pacote fmt.
@@ -262,7 +262,7 @@ func learnConcurrency() {
     go func() { c <- 84 }()       // inicia uma goroutine para enviar um valor
     go func() { cs <- "palavroso" }() // outra vez, para o channel cs desta vez
     // A instrução select tem uma sintaxe semelhante à instrução switch mas
-    // cada caso envolve uma operação com channels. Esta instrução seleciona, 
+    // cada caso envolve uma operação com channels. Esta instrução seleciona,
     // de forma aleatória, um caso que esteja pronto para comunicar.
     select {
     case i := <-c: // o valor recebido pode ser atribuído a uma variável
@@ -295,17 +295,17 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 ## Leitura Recomendada
 
-A principal fonte de informação é o [web site oficial Go](http://golang.org/).
+A principal fonte de informação é o [web site oficial Go](https://go.dev/).
 Lá é possível seguir o tutorial, experimentar de forma iterativa, e ler muito.
 
 A própria especificação da linguagem é altamente recomendada. É fácil de ler e
 incrivelmente curta (em relação ao que é habitual hoje em dia).
 
-Na lista de leitura para os aprendizes de Go deve constar o [código fonte da 
-biblioteca padrão](http://golang.org/src/pkg/). Exaustivamente documentado, é
+Na lista de leitura para os aprendizes de Go deve constar o [código fonte da
+biblioteca padrão](https://go.dev/src/). Exaustivamente documentado, é
 a melhor demonstração de código fácil de ler e de perceber, do estilo Go, e da
-sua escrita idiomática. Ou então clique no nome de uma função na [documentação]
-(http://golang.org/pkg/) e veja o código fonte aparecer!
+sua escrita idiomática. Ou então clique no nome de uma função na
+[documentação](https://go.dev/pkg/) e veja o código fonte aparecer!
 
 Outra ótima fonte para aprender Go é o [Go by example](https://gobyexample.com/).
 Apesar de ser em inglês, é possível recodificar os exemplos para aprender sobre

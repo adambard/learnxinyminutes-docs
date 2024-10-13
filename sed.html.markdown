@@ -26,7 +26,7 @@ on its standard output.
 You can suppress the default output by specifying the `-n` command-line
 argument.
 
-```perl
+```sed
 #!/usr/bin/sed -f
 # Files that begin with the above line and are given execute permission
 # can be run as regular scripts.
@@ -253,8 +253,8 @@ b
 # recent reading of an input line or execution of a "t" (test) function.
 t my_label
 
-# Here is a complete example of branching
-# Join lines that end with a backspace into a single space-separated one
+# Here is a complete example of branching:
+# Join lines that end with a backslash into a single space-separated one.
 
 # Name this position "loop"
 : loop

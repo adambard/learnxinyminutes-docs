@@ -82,10 +82,10 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
     // nicht-ASCII Literal.  Go Quelltext ist UTF-8 kompatibel.
     g := 'Σ' // Ein Runen-Typ, alias int32, gebraucht für unicode code points.
 
-    f := 3.14195 // float64, eine IEEE-754 64-bit Dezimalzahl
+    f := 3.14159 // float64, eine IEEE-754 64-bit Dezimalzahl
     c := 3 + 4i  // complex128, besteht intern aus zwei float64-er
 
-    // "var"-Syntax mit Initalwert
+    // "var"-Syntax mit Initialwert
     var u uint = 7 // Vorzeichenlos, aber die Größe ist implementationsabhängig
     var pi float32 = 22. / 7
 
@@ -124,13 +124,13 @@ Zeilenumbrüche beinhalten.` // Selber Zeichenketten-Typ
 // keine Zeiger-Rechnungen. Fehler können sich durch "nil" einschleichen, jedoch
 // nicht durch erhöhen eines Zeigers.
 func learnMemory() (p, q *int) {
-    // Die bennanten Rückgabewerte p & q sind vom Typ *int
+    // Die benannten Rückgabewerte p & q sind vom Typ *int
     p = new(int) // Eingebaute Funktion "new" weist neuen Speicherplatz zu
     // Der zugewiesene Speicher ist mit 0 initialisiert, p ist nicht länger nil
     s := make([]int, 20) // So weist man 20 ints nebeneinander (im Speicher) zu
     s[3] = 7             // Einer von ihnen wird ein Wert zugewiesen
     r := -2              // Deklaration einer weiteren lokalen Variable
-    return &s[3], &r     // & gibt die Addresse einer Variable
+    return &s[3], &r     // & gibt die Adresse einer Variable
 }
 
 func expensiveComputation() int {
@@ -292,7 +292,7 @@ func learnConcurrency() {
 
 // Eine einzige Funktion aus dem http-Paket kann einen Webserver starten.
 func learnWebProgramming() {
-    // Der erste Parameter von "ListenAndServe" ist eine TCP Addresse, an die
+    // Der erste Parameter von "ListenAndServe" ist eine TCP Adresse, an die
     // sich angeschlossen werden soll.
     // Der zweite Parameter ist ein Interface, speziell: ein http.Handler
     err := http.ListenAndServe(":8080", pair{})
@@ -308,13 +308,13 @@ func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 ```
 
 ## Weitere Resourcen
-Informationen zu Go findet man auf der [offiziellen Go Webseite](http://golang.org/).
+Informationen zu Go findet man auf der [offiziellen Go Webseite](https://go.dev/).
 Dort gibt es unter anderem ein Tutorial und interaktive Quelltext-Beispiele, vor
 allem aber Dokumentation zur Sprache und den Paketen.
 
 Auch zu empfehlen ist die Spezifikation von Go, die nach heutigen Standards sehr
 kurz und gut verständlich formuliert ist. Auf der Leseliste von Go-Neulingen
-ist außerdem der Quelltext der [Go standard Bibliothek](http://golang.org/src/pkg/)
+ist außerdem der Quelltext der [Go standard Bibliothek](https://go.dev/src/)
 einzusehen. Dieser kann als Referenz für leicht zu verstehendes und im idiomatischen Stil
 verfasstes Go dienen. Erreichbar ist der Quelltext auch durch das Klicken der Funktionsnamen
-in der [offiziellen Dokumentation von Go](http://golang.org/pkg/).
+in der [offiziellen Dokumentation von Go](https://go.dev/pkg/).

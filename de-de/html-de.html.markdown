@@ -10,7 +10,7 @@ lang: de-de
 
 HTML steht für HyperText Markup Language (Hypertext-Auszeichnungssprache).
 Sie ist eine Sprache, um Seiten für das World Wide Web zu schreiben.
-Es ist eine Auszeichnugssprache, die es uns ermöglicht Webseiten mithilfe des Codes zu schreiben, der kennzeichnet  wie Text und Daten angezeigt werden sollen. Eigentlich sind HTML Dateien nur einfache Textdateien.
+Es ist eine Auszeichnungssprache, die es uns ermöglicht Webseiten mithilfe des Codes zu schreiben, der kennzeichnet  wie Text und Daten angezeigt werden sollen. Eigentlich sind HTML Dateien nur einfache Textdateien.
 Was sind das für Auszeichnungen? Es ist eine Methode, um die Daten der Website zu organisieren mithilfe von Start- und Endtags.
 Diese Auszeichnung dient dazu dem Text Bedeutung zu geben, welchen sie umschließt.
 Wie viele andere Computersprachen auch, besitzt HTML viele Versionen. Wir werden hier über HTML5 reden.
@@ -65,7 +65,7 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 </head>
 
 <!-- Nach dem <head> Bereich findet sich der <body> Tag -->
-<!-- Bis zu diesem Punkt wird nichts im Browerfenster angezeigt. -->
+<!-- Bis zu diesem Punkt wird nichts im Browserfenster angezeigt. -->
 <!-- Wir müssen den Body mit dem Inhalt füllen, der angezeigt werden soll. -->
 
 <body>
@@ -95,7 +95,7 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 <table> <!-- Wir öffnen ein <table> Element. -->
 	<tr> <!-- <tr> erlaubt es uns, Reihen zu erstellen. -->
 		<th>Erster Tabellenkopf</th> <!-- <th> erlaubt es uns, der Tabelle einen Titel zu geben. -->
-		<th>Zweiter Tabllenkopf</th>
+		<th>Zweiter Tabellenkopf</th>
 	</tr>
 	<tr>
 		<td>Erste Zeile, erste Spalte</td> <!-- <td> erlaubt es, eine Tabellenzelle zu erstellen. -->
@@ -106,7 +106,6 @@ Dieser Artikel ist bedacht darauf, nur HTML Syntax und nützliche Tipps zu geben
 		<td>Zweite Zeile, zweite Spalte</td>
 	</tr>
 </table>
-
 ```
 
 ## Verwendung

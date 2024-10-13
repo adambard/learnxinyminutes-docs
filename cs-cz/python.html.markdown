@@ -14,13 +14,9 @@ lang: cs-cz
 Python byl vytvořen Guidem Van Rossum v raných 90. letech. Nyní je jedním z nejpopulárnějších jazyků.
 Zamiloval jsem si Python pro jeho syntaktickou čistotu - je to vlastně spustitelný pseudokód.
 
-Vaše zpětná vazba je vítána! Můžete mě zastihnout na [@louiedinh](http://twitter.com/louiedinh) nebo louiedinh [at] [email od googlu] anglicky,
-autora českého překladu pak na [@tbedrich](http://twitter.com/tbedrich) nebo ja [at] tbedrich.cz
-
 Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit starší Python 2.7](http://learnxinyminutes.com/docs/pythonlegacy/).
 
 ```python
-
 # Jednořádkový komentář začíná křížkem
 
 """ Víceřádkové komentáře používají tři uvozovky nebo apostrofy
@@ -78,9 +74,9 @@ False or True   # => True
 0 and 2     # => 0
 -5 or 0     # => -5
 
-# Při porovnání s boolean hodnotou nepoužívejte operátor rovnosti "==". 
+# Při porovnání s boolean hodnotou nepoužívejte operátor rovnosti "==".
 # Stejně jako u hodnoty None.
-# Viz PEP8: https://www.python.org/dev/peps/pep-0008/ 
+# Viz PEP8: https://www.python.org/dev/peps/pep-0008/
 0 is False  # => True
 2 is True   # => False
 1 is True   # => True
@@ -160,7 +156,7 @@ print("Jsem 3. Python 3.")
 nazev_promenne = 5
 nazev_promenne  # => 5
 # Názvy proměnných mohou obsahovat i unicode znaky, ale nedělejte to.
-# Viz PEP 3131 -- Supporting Non-ASCII Identifiers: 
+# Viz PEP 3131 -- Supporting Non-ASCII Identifiers:
 # https://www.python.org/dev/peps/pep-3131/
 název_proměnné = 5
 
@@ -644,5 +640,6 @@ pozdrav("Pepo")  # Vypíše 3x: "Měj se Pepo!"
 
 ## Co dál?
 
-Spoustu odkazů na české i anglické materiály najdete na [webu české Python komunity]
-(http://python.cz/). Můžete také přijít na Pyvo, kde to společně probereme.
+Spoustu odkazů na české i anglické materiály najdete na
+[webu české Python komunity](http://python.cz/). Můžete
+také přijít na Pyvo, kde to společně probereme.

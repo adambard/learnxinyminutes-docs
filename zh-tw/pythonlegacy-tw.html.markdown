@@ -13,8 +13,6 @@ lang: zh-tw
 
 Python是在1990年代早期由Guido Van Rossum創建的。它是現在最流行的程式語言之一。我愛上Python是因為他極為清晰的語法，甚至可以說它就是可執行的虛擬碼。
 
-非常歡迎各位給我們任何回饋！ 你可以在[@louiedinh](http://twitter.com/louiedinh) 或 louiedinh [at] [google's email service]聯絡到我。
-
 註： 本篇文章適用的版本為Python 2.7，但大部分的Python 2.X版本應該都適用。 Python 2.7將會在2020年停止維護，因此建議您可以從Python 3開始學Python。
 Python 3.X可以看這篇[Python 3 教學 (英文)](http://learnxinyminutes.com/docs/python/).
 
@@ -23,7 +21,6 @@ Python 3.X可以看這篇[Python 3 教學 (英文)](http://learnxinyminutes.com/
  `__future__` 模組允許你撰寫可以在Python 2上執行的Python 3程式碼，詳細訊息請參考Python 3 教學。
 
 ```python
-
 # 單行註解從井字號開始
 
 """ 多行字串可以用三個雙引號

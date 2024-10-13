@@ -13,7 +13,6 @@ contributors:
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
     - ["Sean Nam", "https://github.com/seannam"]
     - ["Shawn M. Hanes", "https://github.com/smhanes15"]
-filename: LearnJava.java
 translators:
     - ["Jacek Wachowiak", "https://github.com/jacekwachowiak"]
 lang: pl-pl
@@ -21,8 +20,7 @@ lang: pl-pl
 
 Java jest współbieżnym, opartym na klasach, obiektowym językiem programowania
 ogólnego zastosowania.
-[Tu znajdziesz więcej informacji po angielsku.]
-(https://docs.oracle.com/javase/tutorial/java/)
+[Tu znajdziesz więcej informacji po angielsku](https://docs.oracle.com/javase/tutorial/java/).
 
 ```java
 // Pojedyncze komentarze oznaczamy //
@@ -893,7 +891,7 @@ import java.security.SecureRandom;
 public class Lambdas {
     public static void main(String[] args) {
         // Składnia deklaracji lambdy:
-	    // <zero lub więcej parametrów> -> <ciało wyrażenia lub blok instrukcji>
+        // <zero lub więcej parametrów> -> <ciało wyrażenia lub blok instrukcji>
 
         // Poniżej w przykładzie użyjemy tablicy z hashowaniem.
         Map<String, String> planety = new HashMap<>();
@@ -978,49 +976,36 @@ public class Lambdas {
 
 Linki zamieszczone poniżej służą pomocą w zrozumieniu wybranego tematu, w razie braku rozwiązania wyszukanie w Google zwykle służy pomocą
 
-**Oficjalne poradniki Oracle po angielsku**:
+### Oficjalne poradniki Oracle po angielsku
 
 * [Tutorial w Javie od Sun / Oracle](https://docs.oracle.com/javase/tutorial/index.html)
-
 * [Modyfikacje poziomu dostępu w Java](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Koncepty programowania obiektowego](https://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Dziedziczenie](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polimorfizm](https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstrakcja](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Wyjątki](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Interfejsy](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Uogólnianie](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Konwencja kodu Java](https://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
-
 * Nowości z Java 8:
     * [Funkcje Lambda (programowanie funkcyjne)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
     * [Data y czas API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-**Kursy po polsku**
+### Kursy po polsku
 
 * [PJWSTK - Podstawy programowania w języku Java](http://edu.pjwstk.edu.pl/wyklady/ppj/scb/)
-
 * [PJWSTK - Programowanie obiektowe w języku Java](http://edu.pjwstk.edu.pl/wyklady/poj/scb/)
 
-**Tutoriale i ćwiczenia online po angielsku**
+### Tutoriale i ćwiczenia online po angielsku
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
-
 * [Codewars - Java Katas](https://www.codewars.com/?language=java)
 
-**Książki po angielsku**:
+### Książki po angielsku
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
-
-* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
-
+* [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
 * [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-
 * [Java The Complete Reference](https://www.amazon.com/gp/product/0071606300)

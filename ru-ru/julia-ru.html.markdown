@@ -13,8 +13,7 @@ Julia — гомоиконный функциональный язык прог�
 
 Документ описывает текущую dev-версию Julia от 18-о октября 2013 года.
 
-```ruby
-
+```julia
 # Однострочные комментарии начинаются со знака решётки.
 
 ####################################################
@@ -114,7 +113,7 @@ catch e
 end
 
 # Имена переменных начинаются с букв.
-# После первого символа можно использовать буквы, цифры, 
+# После первого символа можно использовать буквы, цифры,
 # символы подчёркивания и восклицательные знаки.
 SomeOtherVar123! = 6 # => 6
 
@@ -124,7 +123,7 @@ SomeOtherVar123! = 6 # => 6
 2 * π # => 6.283185307179586
 
 # Рекомендации по именованию:
-# * имена переменных в нижнем регистре, слова разделяются символом 
+# * имена переменных в нижнем регистре, слова разделяются символом
 #   подчёркивания ('\_');
 #
 # * для имён типов используется CamelCase;
@@ -185,7 +184,7 @@ end
 
 # Вывод ошибок содержит строку и файл, где произошла ошибка,
 # даже если это случилось в стандартной библиотеке.
-# Если вы собрали Julia из исходных кодов, 
+# Если вы собрали Julia из исходных кодов,
 # то найти эти файлы можно в директории base.
 
 # Создавать массивы можно из последовательности
@@ -446,7 +445,7 @@ all_the_args(1, 3, keyword_arg=4)
 #   optional arg: 3
 #   keyword arg: 4
 
-# Функции в Julia первого класса 
+# Функции в Julia первого класса
 function create_adder(x)
     adder = function (y)
         return x + y
@@ -527,7 +526,7 @@ sherekhan = typeof(tigger)(5.6,"fire") # => Tiger(5.6,"fire")
 # abstract Name
 abstract Cat # просто имя и точка в иерархии типов
 
-# Объекты абстрактных типов создавать нельзя, 
+# Объекты абстрактных типов создавать нельзя,
 # но зато от них можно наследовать подтипы.
 # Например, Number — это абстрактный тип.
 subtypes(Number) # => 6 элементов в массиве Array{Any,1}:
@@ -673,40 +672,40 @@ square_area(l) = l * l      # square_area (generic function with 1 method)
 square_area(5) #25
 
 # Что происходит, когда мы передаём функции square_area целое число?
-code_native(square_area, (Int32,))  
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1              # Вводная часть
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	Source line: 1
-	#	    movsxd  RAX, EDI        # 
-	#	    imul    RAX, RAX        # 
-	#	    pop RBP                 #
-	#	    ret                     #
+code_native(square_area, (Int32,))
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1              # Вводная часть
+    #        push    RBP
+    #        mov RBP, RSP
+    #    Source line: 1
+    #        movsxd  RAX, EDI        #
+    #        imul    RAX, RAX        #
+    #        pop RBP                 #
+    #        ret                     #
 
 code_native(square_area, (Float32,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	Source line: 1
-	#	    vmulss  XMM0, XMM0, XMM0  # Произведение чисел одинарной точности (AVX)
-	#	    pop RBP
-	#	    ret
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1
+    #        push    RBP
+    #        mov RBP, RSP
+    #    Source line: 1
+    #        vmulss  XMM0, XMM0, XMM0  # Произведение чисел одинарной точности (AVX)
+    #        pop RBP
+    #        ret
 
 code_native(square_area, (Float64,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	Source line: 1
-	#	    vmulsd  XMM0, XMM0, XMM0 # Произведение чисел двойной точности (AVX)
-	#	    pop RBP
-	#	    ret
-	#	
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1
+    #        push    RBP
+    #        mov RBP, RSP
+    #    Source line: 1
+    #        vmulsd  XMM0, XMM0, XMM0 # Произведение чисел двойной точности (AVX)
+    #        pop RBP
+    #        ret
+    #
 # Если хотя бы один из аргументов является числом с плавающей запятой,
 # то Julia будет использовать соответствующие инструкции.
 # Вычислим площать круга
@@ -714,33 +713,33 @@ circle_area(r) = pi * r * r     # circle_area (generic function with 1 method)
 circle_area(5)                  # 78.53981633974483
 
 code_native(circle_area, (Int32,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	Source line: 1
-	#	    vcvtsi2sd   XMM0, XMM0, EDI          # Загрузить целое число (r)
-	#	    movabs  RAX, 4593140240              # Загрузить pi
-	#	    vmulsd  XMM1, XMM0, QWORD PTR [RAX]  # pi * r
-	#	    vmulsd  XMM0, XMM0, XMM1             # (pi * r) * r
-	#	    pop RBP
-	#	    ret
-	#
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1
+    #        push    RBP
+    #        mov RBP, RSP
+    #    Source line: 1
+    #        vcvtsi2sd   XMM0, XMM0, EDI          # Загрузить целое число (r)
+    #        movabs  RAX, 4593140240              # Загрузить pi
+    #        vmulsd  XMM1, XMM0, QWORD PTR [RAX]  # pi * r
+    #        vmulsd  XMM0, XMM0, XMM1             # (pi * r) * r
+    #        pop RBP
+    #        ret
+    #
 
 code_native(circle_area, (Float64,))
-	#	    .section    __TEXT,__text,regular,pure_instructions
-	#	Filename: none
-	#	Source line: 1
-	#	    push    RBP
-	#	    mov RBP, RSP
-	#	    movabs  RAX, 4593140496
-	#	Source line: 1
-	#	    vmulsd  XMM1, XMM0, QWORD PTR [RAX]
-	#	    vmulsd  XMM0, XMM1, XMM0
-	#	    pop RBP
-	#	    ret
-	#
+    #        .section    __TEXT,__text,regular,pure_instructions
+    #    Filename: none
+    #    Source line: 1
+    #        push    RBP
+    #        mov RBP, RSP
+    #        movabs  RAX, 4593140496
+    #    Source line: 1
+    #        vmulsd  XMM1, XMM0, QWORD PTR [RAX]
+    #        vmulsd  XMM0, XMM1, XMM0
+    #        pop RBP
+    #        ret
+    #
 ```
 
 ## Что дальше?

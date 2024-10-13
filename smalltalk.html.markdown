@@ -5,7 +5,6 @@ contributors:
     - ["Jigyasa Grover", "https://jigyasa-grover.github.io"]
     - ["tim Rowledge", "tim@rowledge.org"]
 ---
-<blockquote>Every effort has been made in the preparation of this material to ensure the accuracy and completeness of the information presented. However, no guarantee is given nor responsibility taken for errors or omissions. In case of any error, questions or suggestions on reach out to me at <a href="https://jigyasa-grover.github.io" target="_blank">jigyasa-grover.github.io</a> or drop me an e-mail at <a href="mailto:grover.jigyasa1@gmail.com" target="_blank">grover[dot]jigyasa1[at]gmail.com</a>.</blockquote>
 
 - Smalltalk is a fully object-oriented, dynamically typed, reflective programming language with no 'non-object' types.
 - Smalltalk was created as the language to underpin the "new world" of computing exemplified by "human–computer symbiosis."
@@ -441,8 +440,9 @@ Fixed length collection
 - WordArray:     Array limited to word elements (0-2^32)
 
 ```smalltalk
-| b x y sum max |
+| b x y z sum max |
 x := #(4 3 2 1).                                 "constant array"
+z := #(1 2 3 'hi').                              "mixed type array"
 x := Array with: 5 with: 4 with: 3 with: 2.      "create array with up to 4 elements"
 x := Array new: 4.                               "allocate an array with specified size"
 x                                                "set array elements"

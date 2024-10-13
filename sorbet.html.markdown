@@ -913,7 +913,7 @@ module ValueSet
   # options. Especially when starting out with Sorbet, it may not be practical
   # to refactor the code to use `T::Enum`. In this case, you can use `T.enum`.
   #
-  # Note: Sorbet can't check this statically becuase it doesn't track the
+  # Note: Sorbet can't check this statically because it doesn't track the
   # values themselves.
   sig do
     params(

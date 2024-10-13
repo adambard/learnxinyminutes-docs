@@ -10,10 +10,9 @@ translators:
 lang: pt-br
 ---
 
-Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui.](http://www.groovy-lang.org/)
+Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui](http://www.groovy-lang.org/).
 
 ```groovy
-
 /*
   Prepare-se:
 
@@ -290,7 +289,7 @@ def clos = { print it }
 clos( "oi" )
 
 /*
-  Groovy pode memorizar resultados de closures [1][2][3]
+  Groovy pode memorizar resultados de closures
 */
 def cl = {a, b ->
     sleep(3000) //  simula processamento
@@ -318,7 +317,7 @@ chamaClosure(3, 4)
 /*
   Expando
 
-  A classe Expando é um bean dinâmico que permite adicionar propriedades e 
+  A classe Expando é um bean dinâmico que permite adicionar propriedades e
   closures como métodos a uma instância desta classe
 
   http://mrhaki.blogspot.mx/2009/10/groovy-goodness-expando-as-dynamic-bean.html
@@ -418,8 +417,6 @@ int soma(int x, int y) {
 }
 
 assert soma(2,5) == 7
-
-
 ```
 
 ## Referências
@@ -432,15 +429,6 @@ Junte-se a um [grupo de usuários Groovy](http://www.groovy-lang.org/usergroups.
 
 ## Livro
 
-* [Groovy Goodness] (https://leanpub.com/groovy-goodness-notebook)
-
-* [Groovy in Action] (http://manning.com/koenig2/)
-
-* [Programming Groovy 2: Dynamic Productivity for the Java Developer] (http://shop.oreilly.com/product/9781937785307.do)
-
-[1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
-[2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
-[3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
-
-
-
+* [Groovy Goodness](https://leanpub.com/groovy-goodness-notebook)
+* [Groovy in Action](http://manning.com/koenig2/)
+* [Programming Groovy 2: Dynamic Productivity for the Java Developer](http://shop.oreilly.com/product/9781937785307.do)

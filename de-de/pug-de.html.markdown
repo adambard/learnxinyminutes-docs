@@ -8,16 +8,12 @@ translators:
 lang: de-de
 ---
 
-## Erste Schritte mit Pug
-
 Pug ist eine kleine Sprache, die zu HTML kompiliert. Sie hat eine
 saubere Syntax mit zusätzlichen Funktionen wie if Anweisungen und Schleifen.
 Sie kann auch als serverseitige Templatingsprache für Serversprachen
 wie NodeJS verwendet werden.
 
-### Die Sprache
 ```pug
-
 //- Einzeilenkommentar
 
 //- Mehrzeiliger
@@ -88,10 +84,10 @@ div(class=meineKlasse)
 
 //- JS Stil
 - const meineStile = {'color':'white', 'background-color':'blue'}
-div(styles=meineStile)
-//- <div styles="{&quot;color&quot;:&quot;white&quot;,&quot;background-color&quot;:&quot;blue&quot;}"></div>
+div(style=meineStile)
+//- <div style="color:white;background-color:blue;"></div>
 
-//- JS Attributte
+//- JS Attribute
 - const meineAttribute = {"src": "foto.png", "alt": "meine Bilder"}
 img&attributes(meineAttribute)
 //- <img src="foto.png" alt="meine Bilder">
@@ -162,13 +158,13 @@ case bestellungsStatus
 //- <p class="warn">Deine Bestellung steht noch aus</p>
 
 //- --INCLUDE--
-//- File path -> "includes/nav.png"
+//- File path -> "includes/nav.pug"
 h1 Firmenname
 nav
   a(href="index.html") Home
   a(href="about.html") Über uns
 
-//- Dateipfad -> "index.png"
+//- Dateipfad -> "index.pug"
 html
   body
     include includes/nav.pug
@@ -198,11 +194,10 @@ mixin comment(name, kommentar)
     div.comment-text= kommentar
 +comment("Bob", "Das ist super")
 //- <div>Hallo</div>
-
 ```
 
-
 ### Zusätzliche Ressourcen
+
 - [The Site](https://pugjs.org/)
 - [The Docs](https://pugjs.org/api/getting-started.html)
-- [Github Repo](https://github.com/pugjs/pug)
+- [GitHub Repo](https://github.com/pugjs/pug)

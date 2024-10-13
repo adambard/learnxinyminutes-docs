@@ -93,7 +93,7 @@ the string is used as an input prompt #/
 
 /# FOR loops have the syntax 'FOR [condition] [commands] ENDFOR' At the moment, [condition] can
 only have the value of an integer. Either by using an integer, or a variable call to an integer.
-[commands] will be interpereted the amount of time specified in [condition] #/
+[commands] will be interpreted the amount of time specified in [condition] #/
 /# E.G: this prints out 1 to 10 #/
 
 1 VAR a .
@@ -153,7 +153,7 @@ DEF printseven
     ENDFOR
 ENDDEF
 
-/# to run the defined statement, simply type it and it will be run by the interpereter #/
+/# to run the defined statement, simply type it and it will be run by the interpreter #/
 
 printseven
 
@@ -230,4 +230,4 @@ DEL 1 PRINT . /# [1, 3] #/
 ## Extra information
 
 - [MontiLang.ml](http://montilang.ml/)
-- [Github Page](https://github.com/lduck11007/MontiLang)
+- [GitHub Page](https://github.com/lduck11007/MontiLang)

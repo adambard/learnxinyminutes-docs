@@ -305,7 +305,6 @@ class Samuel
 
 $cat = new Samuel();
 $cat instanceof KittenInterface === true; // True
-
 ```
 
 ## Weitere Informationen
@@ -318,5 +317,5 @@ besuchen.
 Die offizielle Webseite [hhvm.com](http://hhvm.com/) bietet Infos zum Download
 und zur Installation der HHVM.
 
-Hack's [nicht-untersützte PHP Syntax-Elemente](http://docs.hhvm.com/manual/en/hack.unsupported.php)
+Hack's [nicht-unterstützte PHP Syntax-Elemente](http://docs.hhvm.com/manual/en/hack.unsupported.php)
 werden im offiziellen Handbuch beschrieben.

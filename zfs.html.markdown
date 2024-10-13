@@ -3,9 +3,10 @@ category: tool
 tool: zfs
 contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
+    - ["81reap", "https://github.com/81reap"]
+    - ["A1EF", "https://github.com/A1EF"]
 filename: LearnZfs.txt
 ---
-
 
 [ZFS](http://open-zfs.org/wiki/Main_Page)
 is a rethinking of the storage stack, combining traditional file systems as well as volume
@@ -13,29 +14,27 @@ managers into one cohesive tool.  ZFS has some specific terminology that sets it
 more traditional storage systems, however it has a great set of features with a focus on
 usability for systems administrators.
 
-
 ## ZFS Concepts
 
 ### Virtual Devices
 
-A VDEV is similar to a raid device presented by a RAID card, there are several different
-types of VDEV's that offer various advantages, including redundancy and speed.  In general
-VDEV's offer better reliability and safety than a RAID card.  It is discouraged to use a
-RAID setup with ZFS, as ZFS expects to directly manage the underlying disks.
+A VDEV (Virtual Device) in ZFS is analogous to a RAID device and similarly offers different
+benefits in terms of redundancy and performance. In general VDEV's offer better reliability
+and safety than a RAID card. It is discouraged to use a RAID setup with ZFS, as ZFS expects
+to directly manage the underlying disks.
 
-Types of VDEV's
+| VDEV Type | Similar RAID | Notes |
+|-----------|----------------|---------------------------------------|
+| Mirror | RAID 1 | Supports n-way mirroring for redundancy. |
+| raidz1 | RAID 5 | Single disk parity, offering fault tolerance of one disk failure. |
+| raidz2 | RAID 6 | Two-disk parity, can tolerate two disk failures. |
+| raidz3 | - | Three-disk parity, can tolerate three disk failures. |
+| Disk | - | Represents a single physical disk in a VDEV. |
+| File | - | File-based VDEV, not recommended for production as it adds complexity and reduces reliability. |
 
-* stripe (a single disk, no redundancy)
-* mirror (n-way mirrors supported)
-* raidz
-	* raidz1 (1-disk parity, similar to RAID 5)
-	* raidz2 (2-disk parity, similar to RAID 6)
-	* raidz3 (3-disk parity, no RAID analog)
-* disk
-* file (not recommended for production due to another filesystem adding unnecessary layering)
-
-Your data is striped across all the VDEV's present in your Storage Pool, so more VDEV's will
-increase your IOPS.
+Data in a ZFS storage pool is striped across all VDEVs. Adding more VDEVs, Logs, or Caches
+can increase IOPS (Input/Output Operations Per Second), enhancing performance. It's crucial
+to balance VDEVs for optimal performance and redundancy.
 
 ### Storage Pools
 
@@ -48,13 +47,11 @@ ZFS datasets are analogous to traditional filesystems but with many more feature
 provide many of ZFS's advantages.  Datasets support [Copy on Write](https://en.wikipedia.org/wiki/Copy-on-write)
 snapshots, quota's, compression and de-duplication.
 
-
 ### Limits
 
 One directory may contain up to 2^48 files, up to 16 exabytes each.  A single storage pool
 can contain up to 256 zettabytes (2^78) of space, and can be striped across 2^64 devices.  A
 single host can have 2^64 storage pools.  The limits are huge.
-
 
 ## Commands
 
@@ -71,7 +68,7 @@ List zpools
 
 ```bash
 # Create a raidz zpool
-$ zpool create bucket raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
+$ zpool create zroot raidz1 gpt/zfs0 gpt/zfs1 gpt/zfs2
 
 # List ZPools
 $ zpool list
@@ -121,7 +118,6 @@ errors: No known data errors
 Properties of zpools
 
 ```bash
-
 # Getting properties from the pool properties can be user set or system provided.
 $ zpool get all zroot
 NAME   PROPERTY                       VALUE                          SOURCE
@@ -145,7 +141,6 @@ Remove zpool
 $ zpool destroy test
 ```
 
-
 ### Datasets
 
 Actions:
@@ -160,22 +155,22 @@ Create datasets
 
 ```bash
 # Create dataset
-$ zfs create tank/root/data
+$ zfs create zroot/root/data
 $ mount | grep data
-tank/root/data on /data (zfs, local, nfsv4acls)
+zroot/root/data on /data (zfs, local, nfsv4acls)
 
 # Create child dataset
-$ zfs create tank/root/data/stuff
+$ zfs create zroot/root/data/stuff
 $ mount | grep data
-tank/root/data on /data (zfs, local, nfsv4acls)
-tank/root/data/stuff on /data/stuff (zfs, local, nfsv4acls)
+zroot/root/data on /data (zfs, local, nfsv4acls)
+zroot/root/data/stuff on /data/stuff (zfs, local, nfsv4acls)
 
 
 # Create Volume
 $ zfs create -V zroot/win_vm
 $ zfs list zroot/win_vm
 NAME                 USED  AVAIL  REFER  MOUNTPOINT
-tank/win_vm         4.13G  17.9G    64K  -
+zroot/win_vm         4.13G  17.9G    64K  -
 ```
 
 List datasets
@@ -213,28 +208,28 @@ zroot/var/tmp@daily-2015-10-15                                                  
 Rename datasets
 
 ```bash
-$ zfs rename tank/root/home tank/root/old_home
-$ zfs rename tank/root/new_home tank/root/home
+$ zfs rename zroot/root/home zroot/root/old_home
+$ zfs rename zroot/root/new_home zroot/root/home
 ```
 
 Delete dataset
 
 ```bash
 # Datasets cannot be deleted if they have any snapshots
-$ zfs destroy tank/root/home
+$ zfs destroy zroot/root/home
 ```
 
 Get / set properties of a dataset
 
 ```bash
 # Get all properties
-$ zfs get all  zroot/usr/home                                                                                              │157 # Create Volume
-NAME            PROPERTY              VALUE                  SOURCE                                                                          │158 $ zfs create -V zroot/win_vm
-zroot/home      type                  filesystem             -                                                                               │159 $ zfs list zroot/win_vm
-zroot/home      creation              Mon Oct 20 14:44 2014  -                                                                               │160 NAME                 USED  AVAIL  REFER  MOUNTPOINT
-zroot/home      used                  11.9G                  -                                                                               │161 tank/win_vm         4.13G  17.9G    64K  -
-zroot/home      available             94.1G                  -                                                                               │162 ```
-zroot/home      referenced            11.9G                  -                                                                               │163
+$ zfs get all zroot/usr/home
+NAME            PROPERTY              VALUE                  SOURCE
+zroot/home      type                  filesystem             -
+zroot/home      creation              Mon Oct 20 14:44 2014  -
+zroot/home      used                  11.9G                  -
+zroot/home      available             94.1G                  -
+zroot/home      referenced            11.9G                  -
 zroot/home      mounted               yes                    -
 ...
 
@@ -244,7 +239,7 @@ NAME            PROPERTY     VALUE     SOURCE
 zroot/home      compression  off       default
 
 # Set property on dataset
-$ zfs set compression=gzip-9 mypool/lamb
+$ zfs set compression=lz4 zroot/lamb
 
 # Get a set of properties from all datasets
 $ zfs list -o name,quota,reservation
@@ -259,6 +254,82 @@ zroot/var                                                           none    none
 ...
 ```
 
+### Write Log Pool
+
+The ZFS Intent Log (ZIL) is a write log designed to speed up synchronous writes. This is
+typically a faster drive or drive partition than the larger storage pools.
+
+```bash
+# Add a log pool
+$ zpool add mypool/lamb log /dev/sdX
+
+# Check the configuration
+$ zpool status mypool/lamb
+```
+
+### Read Cache Pool
+
+The Level 2 Adaptive Replacement Cache (L2ARC) extends the primary ARC (in-RAM cache) and is
+used for read caching. This is typically a faster drive or drive partition than the larger
+storage pools.
+
+```bash
+# Add a cache pool
+$ zpool add mypool/lamb cache /dev/sdY
+
+# Check the configuration
+$ zpool status mypool/lamb
+```
+
+### Data Compression
+
+Data compression reduces the amount of space data occupies on disk in exchange for some extra
+CPU usage. When enabled, it can enhance performance by reducing the amount of disk I/O. It
+especially beneficial on systems with more CPU resources than disk bandwidth.
+
+```bash
+# Get compression options
+$ zfs get -help
+...
+compression     NO       YES   on | off | lzjb | gzip | gzip-[1-9] | zle | lz4 | zstd | zstd-[1-19] | zstd-fast | zstd-fast-[1-10,20,30,40,50,60,70,80,90,100,500,1000]
+...
+
+# Set compression
+$ zfs set compression=on mypool/lamb
+
+# Check the configuration
+$ zpool get compression mypool/lamb
+```
+
+### Encryption at Rest
+
+Encryption allows data to be encrypted on the device at the cost of extra CPU cycles. This
+property can only be set when a dataset is being created.
+
+```bash
+# Enable encryption on the pool
+$ zpool set feature@encryption=enabled black_hole
+
+# Create an encrypted dataset with a prompt
+$ zfs create -o encryption=on -o keyformat=passphrase black_hole/enc
+
+# Check the configuration
+$ zfs get encryption black_hole/enc
+```
+
+It should be noted that there are parts of the system where the data is not encrypted. See
+the table below for a breakdown.
+
+| Component | Encrypted | Notes |
+|----------------------|-------------------------------------------|------------------------------------------------------|
+| Main Data Storage | Yes | Data in datasets/volumes is encrypted. |
+| ZFS Intent Log (ZIL) | Yes | Synchronous write requests are encrypted. |
+| L2ARC (Cache) | Yes | Cached data is stored in an encrypted form. |
+| RAM (ARC) | No | Data in the primary ARC, in RAM, is not encrypted. |
+| Swap Area | Conditional | Encrypted if the ZFS swap dataset is encrypted. |
+| ZFS Metadata | Yes | Metadata is encrypted for encrypted datasets. |
+| Snapshot Data | Yes | Snapshots of encrypted datasets are also encrypted. |
+| ZFS Send/Receive | Conditional | Encrypted during send/receive if datasets are encrypted and `-w` flag is used. |
 
 ### Snapshots
 
@@ -278,21 +349,20 @@ Actions:
 * Send / Receive
 * Clone
 
-
 Create snapshots
 
 ```bash
 # Create a snapshot of a single dataset
-zfs snapshot tank/home/sarlalian@now
+zfs snapshot zroot/home/sarlalian@now
 
 # Create a snapshot of a dataset and its children
-$ zfs snapshot -r tank/home@now
+$ zfs snapshot -r zroot/home@now
 $ zfs list -t snapshot
 NAME                       USED  AVAIL  REFER  MOUNTPOINT
-tank/home@now                 0      -    26K  -
-tank/home/sarlalian@now       0      -   259M  -
-tank/home/alice@now           0      -   156M  -
-tank/home/bob@now             0      -   156M  -
+zroot/home@now                 0      -    26K  -
+zroot/home/sarlalian@now       0      -   259M  -
+zroot/home/alice@now           0      -   156M  -
+zroot/home/bob@now             0      -   156M  -
 ...
 ```
 
@@ -300,21 +370,20 @@ Destroy snapshots
 
 ```bash
 # How to destroy a snapshot
-$ zfs destroy tank/home/sarlalian@now
+$ zfs destroy zroot/home/sarlalian@now
 
 # Delete a snapshot on a parent dataset and its children
-$ zfs destroy -r tank/home/sarlalian@now
-
+$ zfs destroy -r zroot/home/sarlalian@now
 ```
 
 Renaming Snapshots
 
 ```bash
 # Rename a snapshot
-$ zfs rename tank/home/sarlalian@now tank/home/sarlalian@today
-$ zfs rename tank/home/sarlalian@now today
+$ zfs rename zroot/home/sarlalian@now zroot/home/sarlalian@today
+$ zfs rename zroot/home/sarlalian@now today
 
-$ zfs rename -r tank/home@now @yesterday
+$ zfs rename -r zroot/home@now @yesterday
 ```
 
 Accessing snapshots
@@ -328,32 +397,32 @@ Sending and Receiving
 
 ```bash
 # Backup a snapshot to a file
-$ zfs send tank/home/sarlalian@now | gzip > backup_file.gz
+$ zfs send zroot/home/sarlalian@now | gzip > backup_file.gz
 
 # Send a snapshot to another dataset
-$ zfs send tank/home/sarlalian@now | zfs recv backups/home/sarlalian
+$ zfs send zroot/home/sarlalian@now | zfs recv backups/home/sarlalian
 
 # Send a snapshot to a remote host
-$ zfs send tank/home/sarlalian@now | ssh root@backup_server 'zfs recv tank/home/sarlalian'
+$ zfs send zroot/home/sarlalian@now | ssh root@backup_server 'zfs recv zroot/home/sarlalian'
 
 # Send full dataset with snapshots to new host
-$ zfs send -v -R tank/home@now | ssh root@backup_server 'zfs recv tank/home'
+$ zfs send -v -R zroot/home@now | ssh root@backup_server 'zfs recv zroot/home'
 ```
 
 Cloning Snapshots
 
 ```bash
 # Clone a snapshot
-$ zfs clone tank/home/sarlalian@now tank/home/sarlalian_new
+$ zfs clone zroot/home/sarlalian@now zroot/home/sarlalian_new
 
 # Promoting the clone so it is no longer dependent on the snapshot
-$ zfs promote tank/home/sarlalian_new
+$ zfs promote zroot/home/sarlalian_new
 ```
 
 ### Putting it all together
 
 This following a script utilizing FreeBSD, jails and ZFS to automate
-provisioning a clean copy of a mysql staging database from a live replication
+provisioning a clean copy of a MySQL staging database from a live replication
 slave.
 
 ```bash
@@ -393,7 +462,6 @@ echo "==== Makes the staging database not pull from the master ===="
 echo "STOP SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 echo "RESET SLAVE;" | /usr/local/bin/mysql -u root -pmyrootpassword -h staging
 ```
-
 
 ### Additional Reading
 

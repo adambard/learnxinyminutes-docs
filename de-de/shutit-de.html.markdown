@@ -1,7 +1,7 @@
 ---
-category: tool
+category: framework
 filename: learnshutit-de.html
-tool: ShutIt
+framework: ShutIt
 contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]
 translators:
@@ -22,10 +22,9 @@ Es ist verfügbar als pip install.
 
 ## Hello World
 
-Starten wir mit dem einfachsten Beispiel. Erstelle eine Datei names example.py
+Starten wir mit dem einfachsten Beispiel. Erstelle eine Datei namens example.py
 
 ```python
-
 import shutit
 session = shutit.create_session('bash')
 session.send('echo Hello World', echo=True)
@@ -50,7 +49,7 @@ Ians-MacBook-Air.local:ORIGIN_ENV:RhuebR2T#
 Das erste Argument zu 'send' ist der Befehl, den du ausführen möchtest.
 Das 'echo' Argument gibt die Terminalinteraktion aus. ShuIt ist standardmäßig leise.
 
-'Send' kümmert sich um die nervige Arbeiten mit den Prompts und macht 
+'Send' kümmert sich um die nervigen Arbeiten mit den Prompts und macht 
 alles was du von 'expect' erwarten würdest.
 
 
@@ -79,7 +78,7 @@ example.com:cgoIsdVv:heDa77HB#
 ```
 
 
-Es ist klar das das nicht sicher ist. Stattdessen kann man Folgendes machen:
+Es ist klar, dass das nicht sicher ist. Stattdessen kann man Folgendes machen:
 
 ```python
 import shutit
@@ -149,8 +148,8 @@ two.example.com:Gl2lldEo:D3FavQjA#
 
 ## Beispiel: Überwachen mehrerer Server
 
-Wir können das obige Programm in ein einfaches Überwachungstool bringen indem 
-wir Logik hinzufügen um die Ausgabe von einem Befehl zu betrachten.
+Wir können das obige Programm in ein einfaches Überwachungstool bringen, indem 
+wir Logik hinzufügen, um die Ausgabe von einem Befehl zu betrachten.
 
 ```python
 import shutit
@@ -171,11 +170,11 @@ session1.logout()
 session2.logout()
 ```
 
-Hier kannst du die 'send\_and\_get\_output' Methode verwenden um die Ausgabe von dem 
+Hier kannst du die 'send\_and\_get\_output' Methode verwenden, um die Ausgabe von dem 
 Kapazitätsbefehl (df) zu erhalten.
 
-Es gibt elegantere Wege als oben (z.B. kannst du ein Dictionary verwenden um über 
-die Server zu iterieren), aber es hängt and dir wie clever das Python sein muss.
+Es gibt elegantere Wege als oben (z.B. kannst du ein Dictionary verwenden, um über 
+die Server zu iterieren), aber es hängt an dir wie clever das Python sein muss.
 
 
 ## kompliziertere IO - Expecting
@@ -232,7 +231,7 @@ der Ausgabecode dich nicht interessiert.
 
 Wenn du das Argument nicht mitgegeben hättest, dann hätte dir ShutIt 
 ein interaktives Terminal zurückgegeben, falls es ein Terminal zum
-kommunizieren gibt. Dies nennt sich ein 'Pause point'.
+Kommunizieren gibt. Dies nennt sich ein 'Pause point'.
 
 
 ## Pause Points
@@ -247,7 +246,7 @@ session.pause_point('Das ist ein pause point')
 
 Danach kannst du das Skript fortführen, wenn du CTRL und ']' zur selben Zeit drückst.
 Dies ist gut für Debugging: Füge ein Pause Point hinzu und schaue dich um.
-Danach kannst du das Programm weiter ausführen. Probiere folgendes aus:
+Danach kannst du das Programm weiter ausführen. Probiere Folgendes aus:
 
 ```python
 import shutit
@@ -276,10 +275,10 @@ Ians-Air.home:ORIGIN_ENV:I00LA1Mq#
 
 ## noch kompliziertere IO - Hintergrund
 
-Kehren wir zu unseren Beispiel mit dem Überwachen von mehreren Servern zurück.
+Kehren wir zu unserem Beispiel mit dem Überwachen von mehreren Servern zurück.
 Stellen wir uns vor, dass wir eine langlaufende Aufgabe auf jedem Server durchführen möchten.
 Standardmäßig arbeitet ShutIt seriell, was sehr lange dauern würde.
-Wir können jedoch die Aufgaben im Hintergrund laufen lassen um sie zu beschleunigen.
+Wir können jedoch die Aufgaben im Hintergrund laufen lassen, um sie zu beschleunigen.
 
 Hier ist ein Beispiel, welches du ausprobieren kannst.
 Es verwendet den trivialen Befehl: 'sleep'.
@@ -323,8 +322,8 @@ Um mehr zu erfahren, siehe:
 [ShutIt](https://ianmiell.github.io/shutit/)
 [GitHub](https://github.com/ianmiell/shutit/blob/master/README.md)
 
-Es handelt sich um ein breiteres Automatiesierungsframework, und das oben
-genannte ist der sogennante 'standalone Modus'.
+Es handelt sich um ein breiteres Automatisierungsframework, und das oben
+genannte ist der sogenannte 'standalone Modus'.
 
 Feedback, feature requests, 'Wie mache ich es' sind herzlich willkommen! Erreiche mit unter
 [@ianmiell](https://twitter.com/ianmiell)

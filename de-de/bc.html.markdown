@@ -5,8 +5,9 @@ contributors:
 filename: learnbc-de.bc
 lang: de-de
 ---
-```c
-/* Das is ein mehr-
+
+```bc
+/* Das ist ein mehr-
 zeiliger Kommentar */
 # Das ist ein (einzeiliger) Kommentar (in GNU bc).
 
@@ -14,11 +15,11 @@ zeiliger Kommentar */
 num = 45 /* Alle Variablen speichern nur Doubles und es ist
     nicht möglich String-Konstanten direkt zu speichern */
 num = 45; /* Es kann nach jedem Statement ein optionales Semikolon
-	hinzugefügt werden */
+    hinzugefügt werden */
 /* Blöcke werden mit den Operatoren {} (ähnlich wie in C) bezeichnet */
 while(num < 50) {
-	num += 1 /* äquivalent zu num=num+1.
-	a = a Op b ist äquivalent zu a Op= b*/
+    num += 1 /* äquivalent zu num=num+1.
+    a = a Op b ist äquivalent zu a Op= b*/
 }
 /* Ausserdem gibt es ++ (Inkrement) und -- (Dekrement) Operatoren */
 /* Es gibt 3 spezielle Variablen:
@@ -30,21 +31,21 @@ hour = read() /*Eingabe einer Zahl*/
 
 if(hour < 12) { /*Operatoren sind genau wie in C*/
     print "Guten Morgen\n" /*"print" Gibt Strings oder Variablen
-	mit einem Komma separiert aus.*/
+    mit einem Komma separiert aus.*/
 } else if(hour == 12) {
     print "Hallo\n"
-	/* Escape-Sequenzen starten mite einem \ in einem String.
-	Um Escape-Sequenzen klarer zu machen, ist hier eine vereinfachte
-	Liste, welche in bc funktioneren.:
+    /* Escape-Sequenzen starten mit einem \ in einem String.
+    Um Escape-Sequenzen klarer zu machen, ist hier eine vereinfachte
+    Liste, welche in bc funktionieren:
     \b: Backspace
     \c: carriage return
     \n: Zeilenumbruch
     \t: Tab
     \\: Backslash*/
 } else {
-	/* Standardmässig sind Variablen global. */
+    /* Standardmässig sind Variablen global. */
     thisIsGlobal = 5
-	/*Variablen können lokal gemacht werden. Benutze das Schlüsselwort "auto"
+    /*Variablen können lokal gemacht werden. Benutze das Schlüsselwort "auto"
       in einer Funktion.*/
 }
 
@@ -55,7 +56,7 @@ num = blankVariable /*num wurde auf 0 gesetzt.*/
 if(!num) {print "false\n"}
 
 /*Im Gegensatz zu C hat bc den Ternäroperator ?: nicht. Zum Beispiel
-führt dieser Codeblok zu einem Fehler:
+führt dieser Codeblock zu einem Fehler:
 a = (num) ? 1 : 0
 Jedoch kann dies simuliert werden:*/
 a = (num) && (1) || (0) /*&& ist das UND, || ist das ODER*/
@@ -78,7 +79,7 @@ define fac(n) { /*Definiere eine Funktion mit define*/
 
 num = fac(4) /*24*/
 
-/*Dies ist ein Beispiel von lokalen Variabeln.*/
+/*Dies ist ein Beispiel von lokalen Variablen.*/
 define x(n) {
     auto x
     x = 1
@@ -96,7 +97,7 @@ print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
 quit /* Füge diese Codezeile hinzu, um sicherzustellen, dass
 das Programm beendet. Diese Codezeile ist optional.*/
 ```
+
 Viel Spass mit diesem einfachen Rechner! (Oder dieser Programmiersprache, um exakt zu sein.)
 
 Das ganze Programm wurde in GNU bc geschrieben. Um es auszuführen, benutze ```bc learnbc.bc```.
-

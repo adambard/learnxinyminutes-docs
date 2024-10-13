@@ -1,253 +1,325 @@
 ---
 language: css
-filename: learncss-es.css
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
     - ["Marco Scannadinari", "https://github.com/marcoms"]
+    - ["Geoffrey Liu", "https://github.com/g-liu"]
+    - ["Connor Shea", "https://github.com/connorshea"]
+    - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
+    - ["Brett Taylor", "https://github.com/glutnix"]
+    - ["Tyler Mumford", "https://tylermumford.com"]
 translators:
-    - ["Daniel Zendejas","https://github.com/DanielZendejas"]
+    - ["miky ackerman", "https://github.com/mikyackerman"]
 lang: es-es
+filename: learncss-es.css
 ---
 
-Tutorial de CSS en español
+Paginas web estan contruidas en HTML, lo cual especifica el contenido de una pagina
+CSS(Hoja de Estilos en Cascada) es un lenguaje separado el cual especifica
+la **apariencia** de una pagina.
 
-En los primeros días de la web no había elementos visuales, todo
-era texto plano. Pero después, con el desarrollo de los navegadores,
-las páginas con contenido visual empezaron a ser más comunes.
-CSS es el lenguaje estándar que existe para separar el contenido
-(HTML) y el aspecto visual de las páginas web.
+codigo CSS esta hecho de *reglas* estaticas. Cada regla toma uno o mas *selectores* y da *valores* especificos a un numero de *propiedades* visuales. Esas propiedades estan entonces aplicadas a los elementos indicados en una pagina por los selectores
 
-Lo que CSS hace es proveer con una sintaxis que te permite apuntar a distintos 
-elementos HTML y asignarles diferentes propiedades visuales.
+Esta guia ha sido escrita con CSS 2 en mente, la cual es extendida por una nueva caracterica de CSS 3.
 
-CSS, como cualquier otro lenguaje, tiene múltiples versiones. Aquí nos enfocamos
-en CSS 2.0. No es la versión más reciente pero sí la más soportada y compatible.
+**NOTA:** Debido a que CSS produce resultados visuales, para aprenderlo, necesitas
+Probar todo en un patio de juegos CSS como [dabblet](http://dabblet.com/).
+El objetivo principal de este artículo es la sintaxis y algunos consejos generales.
 
-**NOTA:** Como los resultados de CSS son efectos visuales, para aprenderlo, 
-necesitarás probar todo tipo de cosas en ambientes como 
-[dabblet](http://dabblet.com/). Este artículo se enfoca, principalmente, en
-la sintaxis y consejos generales.
+## Sintaxis
 
 ```css
-/* ¡Los comentarios aparecen dentro de diagonal-asterisco, justo como esta línea! */
+/* Los comentarios aparecen dentro  de un diagonal-asterisco, justo como esta linea
+   no hay "comentarios en una linea"; este es el unico estilo de comentario.*/
+
 
 /* ####################
-   ## SELECTORES
-   ####################*/
+   ## SELECTORS
+   #################### */
 
-/* Generalmente, la sentencia principal en CSS es muy simple. */
-selector { propiedad: valor; /* más propiedades separados por punto y coma...*/ }
-
-/* El selector es usado para apuntar a (seleccionar) un elemento en la página.
-
-¡Puedes apuntar a todos los elementos en la página con el asterisco! */
-* { color:red; }
+/* el selector es usado para apuntar a un elemento de la pagina. */
+selector { property: value; /* more properties...*/ }
 
 /*
-Dado un elemento como este en la página:
+Here is an example element:
 
-<div class='una-clase clase2' id='unaId' attr='valor' />
+<div class='class1 class2' id='anID' attr='value' otherAttr='en-us foo bar' />
 */
 
-/* puedes seleccionar el <div> por el nombre de su clase */
-.una-clase { }
+/* You can target it using one of its CSS classes */
+.class1 { }
 
-/*¡O por sus dos clases! */
-.una-clase.clase2 { }
+/* or both classes! */
+.class1.class2 { }
 
-/* O por el nombre de su elemento */
+/* or its name */
 div { }
 
-/* O por su Id */
-#unaId { }
+/* or its id */
+#anID { }
 
-/* ¡O por el hecho de que tiene un atributo! */
+/* or using the fact that it has an attribute! */
 [attr] { font-size:smaller; }
 
-/* O por el hecho de que el atributo tiene un valor determinado */
-[attr='valor'] { font-size:smaller; }
+/* or that the attribute has a specific value */
+[attr='value'] { font-size:smaller; }
 
-/* Empieza con un valor ('val' en este caso)*/
+/* starts with a value (CSS 3) */
 [attr^='val'] { font-size:smaller; }
 
-/* O termina con un valor ('or' en este caso) */
-[attr$='or'] { font-size:smaller; }
+/* or ends with a value (CSS 3) */
+[attr$='ue'] { font-size:smaller; }
 
-/* O incluso contiene un valor ('lo' en este caso) */
-[attr~='lo'] { font-size:smaller; }
+/* or contains a value in a space-separated list */
+[otherAttr~='foo'] { }
+[otherAttr~='bar'] { }
 
-/*Más importante, puedes combinar estos criterios de búsqueda entre sí.
-No debe existir ningún espacio entre estas partes porque hace que el 
-significado cambie.*/
-div.una-clase[attr$='or'] { }
+/* or contains a value in a dash-separated list, e.g., "-" (U+002D) */
+[otherAttr|='en'] { font-size:smaller; }
 
-/* También puedes seleccionar un elemento HTML basándote en sus padres*/
 
-/* Un elemento que es hijo directo de otro elemento (Seleccionado de la forma que
-vimos anteriormente) */
+/* You can combine different selectors to create a more focused selector. Don't
+   put spaces between them. */
+div.some-class[attr$='ue'] { }
 
-div.un-padre > .nombre-clase {}
+/* You can select an element which is a child of another element */
+div.some-parent > .class-name { }
 
-/* O cualquiera de sus ancestros en la jerarquía*/
-/* La siguiente sentencia selecciona a cualquier elemento que tenga una clase
-"nombre-clase" y sea hijo de un div con clase "un-padre" EN CUALQUIER PROFUNDIDAD*/
-div.un-padre .nombre-clase {}
+/* or a descendant of another element. Children are the direct descendants of
+   their parent element, only one level down the tree. Descendants can be any
+   level down the tree. */
+div.some-parent .class-name { }
 
-/* advertencia: el mismo selector sin espacio tiene otro significado. ¿Puedes
-identificar la diferencia?*/
+/* Warning: the same selector without a space has another meaning.
+   Can you guess what? */
+div.some-parent.class-name { }
 
-/* También puedes seleccionar un elemento basado en su hermano inmediato previo*/
-.yo-estoy-antes + .este-elemento { }
+/* You may also select an element based on its adjacent sibling */
+.i-am-just-before + .this-element { }
 
-/*o cualquier hermano previo */
-.yo-soy-cualquiera-antes ~ .estes-elemento {}
+/* or any sibling preceding it */
+.i-am-any-element-before ~ .this-element { }
 
-/* Existen algunas pseudo-clases que permiten seleccionar un elemento
-basado en el comportamiendo de la página (a diferencia de la estructura de
-la página) */
+/* There are some selectors called pseudo classes that can be used to select an
+   element only when it is in a particular state */
 
-/* Por ejemplo, para cuando pasas el mouse por encima de un elemento */
-:hover {}
+/* for example, when the cursor hovers over an element */
+selector:hover { }
 
-/* o una liga visitada*/
-:visited {}
+/* or a link has been visited */
+selector:visited { }
 
-/* o una liga no visitada aún*/
-:link {}
+/* or hasn't been visited */
+selected:link { }
 
-/* o un elemento de un formulario que esté seleccionado */
-:focus {}
+/* or an element is in focus */
+selected:focus { }
 
+/* any element that is the first child of its parent */
+selector:first-child {}
+
+/* any element that is the last child of its parent */
+selector:last-child {}
+
+/* Just like pseudo classes, pseudo elements allow you to style certain parts of
+    a document  */
+
+/* matches a virtual first child of the selected element */
+selector::before {}
+
+/* matches a virtual last child of the selected element */
+selector::after {}
+
+/* At appropriate places, an asterisk may be used as a wildcard to select every
+   element */
+* { } /* all elements */
+.parent * { } /* all descendants */
+.parent > * { } /* all children */
 
 /* ####################
-   ## PROPIEDADES
-   ####################*/
+   ## PROPERTIES
+   #################### */
 
 selector {
-    
-    /* Unidades */
-    width: 50%; /* en porcentaje */
-    font-size: 2em; /* dos veces el tamaño de la fuente actual */
-    width: 200px; /* en pixeles */
-    font-size: 20pt; /* en puntos */
-    width: 5cm; /* en centimetros */
-    width: 50mm; /* en milimetros */
-    width: 5in; /* en pulgadas */
-    
-    /* Colores */
-    background-color: #F6E;  /* en hexadecimal corto */
-    background-color: #F262E2; /* en hexadecimal largo */
-    background-color: tomato; /* puede ser un color con nombre */
-    background-color: rgb(255, 255, 255); /* en rgb */
-    background-color: rgb(10%, 20%, 50%); /* en rgb percent */
-    background-color: rgba(255, 0, 0, 0.3); /* en rgb semi-transparente (con valor alfa)*/
-    
-    /* Imagenes */
-    background-image: url(/ruta-a-la-imagen/imagen.jpg);
-    
-    /* Fuentes */
-    font-family: Arial;
-    font-family: "Courier New"; /* si el nombre contiene espacios, debe ir entre comillas */
-    font-family: "Courier New", Trebuchet, Arial; /* si la primera fuente no se encontró 
-    entonces se busca la seguna, o la tercera, así recursivamente*/
-}
 
+    /* Units of length can be absolute or relative. */
+
+    /* Relative units */
+    width: 50%;       /* percentage of parent element width */
+    font-size: 2em;   /* multiples of element's original font-size */
+    font-size: 2rem;  /* or the root element's font-size */
+    font-size: 2vw;   /* multiples of 1% of the viewport's width (CSS 3) */
+    font-size: 2vh;   /* or its height */
+    font-size: 2vmin; /* whichever of a vh or a vw is smaller */
+    font-size: 2vmax; /* or greater */
+
+    /* Absolute units */
+    width: 200px;     /* pixels */
+    font-size: 20pt;  /* points */
+    width: 5cm;       /* centimeters */
+    min-width: 50mm;  /* millimeters */
+    max-width: 5in;   /* inches */
+
+    /* Colors */
+    color: #F6E;                 /* short hex format */
+    color: #FF66EE;              /* long hex format */
+    color: tomato;               /* a named color */
+    color: rgb(255, 255, 255);   /* as rgb values */
+    color: rgb(10%, 20%, 50%);   /* as rgb percentages */
+    color: rgba(255, 0, 0, 0.3); /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
+    color: transparent;          /* equivalent to setting the alpha to 0 */
+    color: hsl(0, 100%, 50%);    /* as hsl percentages (CSS 3) */
+    color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
+
+    /* Borders */
+    border-width:5px;
+    border-style:solid;
+    border-color:red;      /* similar to how background-color is set */
+    border: 5px solid red; /* this is a short hand approach for the same */
+    border-radius:20px;    /* this is a CSS3 property */
+
+    /* Images as backgrounds of elements */
+    background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
+
+    /* Fonts */
+    font-family: Arial;
+    /* if the font family name has a space, it must be quoted */
+    font-family: "Courier New";
+    /* if the first one is not found, the browser uses the next, and so on */
+    font-family: "Courier New", Trebuchet, Arial, sans-serif;
+}
 ```
 
-## Uso
+## Usage
 
-Guarda cualquier CSS que quieras en un archivo con extensión `.css`.
+Save a CSS stylesheet with the extension `.css`.
 
-```xml
-<!-- Necesitas incluir tu archivo CSS en el elemento <head> de tu HTML: -->
-<link rel='stylesheet' type='text/css' href='ruta/archivoDeEstilos.css' />
+```html
+<!-- You need to include the css file in your page's <head>. This is the
+     recommended method. Refer to http://stackoverflow.com/questions/8284365 -->
+<link rel='stylesheet' type='text/css' href='path/to/style.css'>
 
-<!--
-también puedes incluir CSS dentro del archivo HTML. Esta no es una buena práctica
-y debe ser evitada.
--->
+<!-- You can also include some CSS inline in your markup. -->
 <style>
-   selector { propiedad:valor; }
+   a { color: purple; }
 </style>
 
-<!--
-También se pueden aplicar propiedades al elemento directamente.
-Esta práctica también debe ser evitada a toda costa
--->
-<div style='propiedad:valor;'>
+<!-- Or directly set CSS properties on the element. -->
+<div style="border: 1px solid red;">
 </div>
-
 ```
 
-## Preferencia y orden
+## Precedence or Cascade
 
-Como te habrás dado cuenta un elemento puede ser seleccionado por más
-de un selector. En este caso alguna de las reglas cobra preferencia
-sobre las otras:
+An element may be targeted by multiple selectors and may have a property set on
+it in more than once. In these cases, one of the rules takes precedence over
+others. Rules with a more specific selector take precedence over a less specific
+one, and a rule occurring later in the stylesheet overwrites a previous one
+(which also means that if two different linked stylesheets contain rules for an
+element and if the rules are of the same specificity, then order of linking
+would take precedence and the sheet linked latest would govern styling) .
 
-Dado el siguiente CSS:
+This process is called cascading, hence the name Cascading Style Sheets.
+
+Given the following CSS:
 
 ```css
-/*A*/
-p.clase1[attr='valor']
+/* A */
+p.class1[attr='value']
 
-/*B*/
-p.clase1 {}
+/* B */
+p.class1 { }
 
-/*C*/
-p.clase2 {}
+/* C */
+p.class2 { }
 
-/*D*/
-p {}
+/* D */
+p { }
 
-/*E*/
-p { propiedad: valor !important; }
-
+/* E */
+p { property: value !important; }
 ```
 
-Y el siguiente HTML:
+and the following markup:
 
-```xml
-<p style='/*F*/ propiedad:valor;' class='clase1 clase2' attr='valor'>
-</p>
+```html
+<p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 ```
 
-El orden respetado es el siguiente:  
-Recuerda, la preferencia es por cada **property**, no para el bloque completo.
+The precedence of style is as follows. Remember, the precedence is for each
+**property**, not for the entire block.
 
-* `E` tiene la preferencia más elevada gracias a la palabra `!important`.  
-	Es recomendado evitar esto a menos que sea estrictamente necesario incluirlo.
-* `F` le sigue, porque es estilo incrustado directamente en el HTML.
-* `A` le sigue, porque es más específico que cualquier otra opción.  
-	más específico = más especificadores. Aquí hay tres especificadores: elemento `p` +   
-	nombre de la clase `clase1` + un atributo `attr='valor'`
-* `C` le sigue. Aunque tiene el mismo número de especificadores como `B`  
-	pero aparece después.
-* Luego va `B`
-* y al final  `D`.
+* `E` has the highest precedence because of the keyword `!important`. It is
+recommended that you avoid its usage.
+* `F` is next, because it is an inline style.
+* `A` is next, because it is more "specific" than anything else. It has 3
+    specifiers: The name of the element `p`, its class `class1`, an attribute
+    `attr='value'`.
+* `C` is next, even though it has the same specificity as `B`.
+    This is because it appears after `B`.
+* `B` is next.
+* `D` is the last one.
 
-## Compatibilidad
+## Media Queries
 
-La mayoría de las funcionalidades de CSS2 (y gradualmente de CSS3) son compatibles 
-en todos los navegadores y dispositivos. Pero siempre es vital tener en mente la
-compatibilidad y disponibilidad del CSS que uses con respecto a los navegadores
-y dispositivos para los que desarrolles.
+CSS Media Queries are a feature in CSS 3 which allows you to specify when certain CSS rules should be applied, such as when printed, or when on a screen with certain dimensions or pixel density. They do not add to the selector's specificity.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) es una excelente referencia para esto.
+```css
+/* A rule that will be used on all devices */
+h1 {
+  font-size: 2em;
+  color: white;
+  background-color: black;
+}
 
-## Recursos
+/* change the h1 to use less ink on a printer */
+@media print {
+  h1 {
+    color: black;
+    background-color: white;
+  }
+}
 
-* Para ejecutar un test de compatibilidad, revisa [CanIUse](http://caniuse.com).
-* CSS Playground [Dabblet](http://dabblet.com/).
-* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS).
-* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/).
+/* make the font bigger when shown on a screen at least 480px wide */
+@media screen and (min-width: 480px) {
+  h1 {
+    font-size: 3em;
+    font-weight: normal;
+  }
+}
+```
 
-## Otras lecturas
+Media queries can include these features:
+`width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. Most of these features can be prefixed with `min-` or `max-`.
 
-* [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/).
-* [Selecting elements using attributes](https://css-tricks.com/almanac/selectors/a/attribute/).
-* [QuirksMode CSS](http://www.quirksmode.org/css/).
+The `resolution` feature is not supported by older devices, instead use `device-pixel-ratio`.
+
+Many smartphones and tablets will attempt to render the page as if it were on a desktop unless you provide a `viewport` meta-tag.
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+</head>
+```
+
+## Compatibility
+
+Most of the features in CSS 2 (and many in CSS 3) are available across all
+browsers and devices. But it's always good practice to check before using
+a new feature.
+
+## Resources
+
+* [CanIUse](http://caniuse.com) (Detailed compatibility info)
+* [Dabblet](http://dabblet.com/) (CSS playground)
+* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS) (Tutorials and reference)
+* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/) (Reference)
+
+## Further Reading
+
+* [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
+* [Selecting elements using attributes](https://css-tricks.com/almanac/selectors/a/attribute/)
+* [QuirksMode CSS](http://www.quirksmode.org/css/)
 * [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
-* [SASS](http://sass-lang.com/) y [LESS](http://lesscss.org/) para preprocesamiento CSS.
-* [CSS-Tricks](https://css-tricks.com).
-
+* [SASS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing
+* [CSS-Tricks](https://css-tricks.com)

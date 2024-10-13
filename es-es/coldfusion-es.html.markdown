@@ -10,7 +10,7 @@ lang: es-es
 ---
 
 ColdFusion es un lenguaje de scripting para desarrollo web.
-[Lea más aquí](Http://www.adobe.com/products/coldfusion-family.html)
+[Lea más aquí](http://www.adobe.com/products/coldfusion-family.html)
 
 ### CFML
 _**C**old**F**usion **M**arkup **L**anguage_  
@@ -234,6 +234,7 @@ ColdFusion comenzó como un lenguaje basado en etiquetas. Casi toda la funcional
 
 <em>Código de referencia (las funciones deben devolver algo para admitir IE)</em>
 ```
+
 ```cfs
 <cfcomponent>
 	<cfset this.hola = "Hola" />

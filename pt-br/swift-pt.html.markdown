@@ -14,7 +14,7 @@ Swift é uma linguagem de programação para desenvolvimento de aplicações no 
 coexistir com Objective-C e para ser mais resiliente a código com erros, Swift foi apresentada em 2014 na Apple's
 developer conference WWDC. Foi construída com o compilador LLVM já incluído no Xcode 6 beta.
 
-O livro oficial [Swift Programming Language] (https://itunes.apple.com/us/book/swift-programming-language/id881256329) da
+O livro oficial [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) da
 Apple já está disponível via IBooks (apenas em inglês).
 
 Confira também o tutorial completo de Swift da Apple [getting started guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), também disponível apenas em inglês.
@@ -497,5 +497,4 @@ println(mySquare.sideLength) // 4
 // Troca o comprimento do lado usando um operador personalizado !!!, aumenta o lado por 3
 !!!mySquare
 println(mySquare.sideLength) // 12
-
 ```

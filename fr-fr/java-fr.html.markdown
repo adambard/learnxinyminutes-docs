@@ -891,7 +891,6 @@ public class EnumTest {
 // limite pas à une liste de constante mais peut inclure des champs et méthodes.
 // Vous pouvez en savoir plus ici (en anglais) :
 //https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
-
 ```
 
 ## Pour aller plus loin (en anglais)
@@ -932,7 +931,7 @@ n'hésitez pas à consulter Google pour trouver des exemples spécifiques.
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
 
-* [Thinking in Java](http://www.mindview.net/Books/TIJ/)
+* [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
 
 * [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 

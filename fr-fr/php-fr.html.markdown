@@ -722,7 +722,6 @@ use My\Namespace as SomeOtherNamespace;
 $cls = new SomeOtherNamespace\MyClass();
 
 */
-
 ```
 
 ## Pour plus d'informations

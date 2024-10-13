@@ -5,7 +5,7 @@ contributors:
     - ["Dean Shaff", "http://dean-shaff.github.io"]
 ---
 
-```
+```wast
 ;; learn-wasm.wast
 
 (module
@@ -308,5 +308,4 @@ contributors:
   )
   (export "sum_local" (func $sum_local))
 )
-
 ```

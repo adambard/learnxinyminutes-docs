@@ -10,10 +10,9 @@ translations:
     - ["Xavier Sala Pujolar", "http://github.com/utrescu"]
 ---
 
-Groovy - Un llenguatge dinàmic per la plataforma Java [Llegir-ne més.](http://www.groovy-lang.org/)
+Groovy - Un llenguatge dinàmic per la plataforma Java [Llegir-ne més](http://www.groovy-lang.org/).
 
 ```groovy
-
 /*
   Posa'l en marxa tu mateix:
 
@@ -286,7 +285,7 @@ def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy pot recordar els resultats dels Closures [1][2][3]
+  Groovy pot recordar els resultats dels Closures
 */
 def cl = {a, b ->
     sleep(3000) // simula un procés llarg
@@ -413,8 +412,6 @@ int sum(int x, int y) {
 }
 
 assert sum(2,5) == 7
-
-
 ```
 
 ## Per aprendre'n més
@@ -423,17 +420,10 @@ assert sum(2,5) == 7
 
 [Cònsola de Groovy](http://groovyconsole.appspot.com/)
 
-Uneix-te a un [grup d'usuaris Groovy]
-(http://www.groovy-lang.org/usergroups.html)
+Uneix-te a un [grup d'usuaris Groovy](http://www.groovy-lang.org/usergroups.html)
 
 ## Llibres
 
-* [Groovy Goodness] (https://leanpub.com/groovy-goodness-notebook)
-
-* [Groovy in Action] (http://manning.com/koenig2/)
-
-* [Programming Groovy 2: Dynamic Productivity for the Java Developer] (http://shop.oreilly.com/product/9781937785307.do)
-
-[1] http://roshandawrani.wordpress.com/2010/10/18/groovy-new-feature-closures-can-now-memorize-their-results/
-[2] http://www.solutionsiq.com/resources/agileiq-blog/bid/72880/Programming-with-Groovy-Trampoline-and-Memoize
-[3] http://mrhaki.blogspot.mx/2011/05/groovy-goodness-cache-closure-results.html
+* [Groovy Goodness](https://leanpub.com/groovy-goodness-notebook)
+* [Groovy in Action](http://manning.com/koenig2/)
+* [Programming Groovy 2: Dynamic Productivity for the Java Developer](http://shop.oreilly.com/product/9781937785307.do)

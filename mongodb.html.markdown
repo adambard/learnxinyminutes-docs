@@ -228,7 +228,7 @@ db.engineers.update({ name: 'Foo Baz' },
 )
 
 /////////////////////// Delete /////////////////////////
-// Queries are in the form of db.collectionName.find(<filter>)
+// Queries are in the form of db.collectionName.delete(<filter>)
 
 // Delete first document matching query, always returns deletedCount
 db.engineers.deleteOne({ name: 'Foo Baz' })

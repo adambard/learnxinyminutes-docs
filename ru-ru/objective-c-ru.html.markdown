@@ -805,8 +805,8 @@ __weak NSSet *weakSet; // Слабая ссылка на существующи�
 // объект освобождается, weakSet принимает nil
 __unsafe_unretained NSArray *unsafeArray; // Похож на __weak, но unsafeArray
 // не принимает nil, когда существующий объект освобождается
-
 ```
+
 ## На почитать
 
 [Wikipedia Objective-C](http://en.wikipedia.org/wiki/Objective-C)

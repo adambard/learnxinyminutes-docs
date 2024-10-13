@@ -26,7 +26,7 @@ yourself.
 
 # Key Notation
 
-``` text
+```text
 The Emacs manual and the community in general uses a convention to refer to different key combinations used within Emacs. Specifically, Emacs has the notion of a "modifier key" that is pressed along with another key to modify its action.
 
 An example of this notation is "C-c". In this key combination "C" is the modifier and stands for the "Ctrl" key and "c" is the key whose action is being modified (the literal character "c").
@@ -83,7 +83,7 @@ buffer.
 
 # Navigation Basics
 
-``` text
+```text
 The GUI version of Emacs can be navigated with the mouse like you would expect from a conventional GUI text editor.
 
 The aim here is to focus on navigation solely using the keyboard as this enhances productivity immensely.
@@ -157,7 +157,7 @@ character).
 
 # File editing basics
 
-``` text
+```text
 * Quitting Emacs [ Now you can't say you don't know how to quit Emacs :-) ]
 
 C-x C-c --> Quit Emacs and get prompted to save any unsaved files (buffers not visiting a file will simply be discarded unless you're running in client-server mode)
@@ -183,7 +183,7 @@ C-u 3 C-_ --> Undo the last 3 changes.
 
 # Executing Elisp Functions
 
-``` text
+```text
 You can execute any currently loaded Elisp functions (including ones you have written yourself) via "M-x"
 
 M-x RET  --> Prompts you for name of function to execute (Tab completion is available).
@@ -227,7 +227,7 @@ Emacs features a pretty powerful help system that allows you to discover
 new functionality all the
 time.
 
-``` text
+```text
 Obtaining help on specific topics. Tab completion is available for function and variable names.
 
 C-h f RET --> Prompts you for the name of an elisp function and
@@ -258,7 +258,7 @@ powerful and popular and may interest you in and of themselves.
 
 ## Org
 
-Technnically, `org-mode`, a major mode for buffer editing that provides
+Technically, `org-mode`, a major mode for buffer editing that provides
 organizational tools. It is very difficult to succinctly describe what
 Org can do because it's a behemoth of a tool that has many diverse uses
 to different people. I will attempt to describe the main features I use

@@ -31,7 +31,7 @@ one of the most widely-used programming languages.
 // Comparison to C
 //////////////////
 
-// C++ is _almost_ a superset of C and shares its basic syntax for
+// C++ is almost a superset of C and shares its basic syntax for
 // variable declarations, primitive types, and functions.
 
 // Just like in C, your program's entry point is a function called
@@ -55,24 +55,26 @@ int main(int argc, char** argv)
 
 // However, C++ varies in some of the following ways:
 
-// In C++, character literals are chars
-sizeof('c') == sizeof(char) == 1
+// In C++, character literals are chars, therefore the size is 1
+sizeof('c') == sizeof(char)
 
-// In C, character literals are ints
+// In C, character literals are ints, therefore the size is 4
 sizeof('c') == sizeof(int)
 
 
 // C++ has strict prototyping
 void func(); // function which accepts no arguments
+void func(void); // same as earlier
 
 // In C
-void func(); // function which may accept any number of arguments
+void func(); // function which may accept any number of arguments with unknown type
+void func(void); // function which accepts no arguments
 
 // Use nullptr instead of NULL in C++
 int* ip = nullptr;
 
-// C standard headers are available in C++.
-// C headers end in .h, while
+// Most C standard headers are available in C++.
+// C headers generally end with .h, while
 // C++ headers are prefixed with "c" and have no ".h" suffix.
 
 // The C++ standard version:
@@ -101,7 +103,7 @@ void print(char const* myString)
 
 void print(int myInt)
 {
-    printf("My int is %d", myInt);
+    printf("My int is %d\n", myInt);
 }
 
 int main()
@@ -160,7 +162,7 @@ namespace Second {
     }
     void bar()
     {
-    	printf("This is Second::bar\n");
+        printf("This is Second::bar\n");
     }
 }
 
@@ -193,22 +195,24 @@ int main()
 
 #include <iostream> // Include for I/O streams
 
-using namespace std; // Streams are in the std namespace (standard library)
-
 int main()
 {
-   int myInt;
+    int myInt;
 
-   // Prints to stdout (or terminal/screen)
-   cout << "Enter your favorite number:\n";
-   // Takes in input
-   cin >> myInt;
+    // Prints to stdout (or terminal/screen)
+    // std::cout referring the access to the std namespace
+    std::cout << "Enter your favorite number:\n";
+    // Takes in input
+    std::cin >> myInt;
 
-   // cout can also be formatted
-   cout << "Your favorite number is " << myInt << '\n';
-   // prints "Your favorite number is <myInt>"
+    // cout can also be formatted
+    std::cout << "Your favorite number is " << myInt << '\n';
+    // prints "Your favorite number is <myInt>"
 
-   cerr << "Used for error messages";
+    std::cerr << "Used for error messages";
+
+    // flush string stream buffer with new line
+    std::cout << "I flushed it away" << std::endl;
 }
 
 //////////
@@ -218,20 +222,27 @@ int main()
 // Strings in C++ are objects and have many member functions
 #include <string>
 
-using namespace std; // Strings are also in the namespace std (standard library)
-
-string myString = "Hello";
-string myOtherString = " World";
+std::string myString = "Hello";
+std::string myOtherString = " World";
 
 // + is used for concatenation.
-cout << myString + myOtherString; // "Hello World"
+std::cout << myString + myOtherString; // "Hello World"
 
-cout << myString + " You"; // "Hello You"
+std::cout << myString + " You"; // "Hello You"
+
+// C++ string length can be found from either string::length() or string::size()
+cout << myString.length() + myOtherString.size(); // Outputs 11 (= 5 + 6).
 
 // C++ strings are mutable.
 myString.append(" Dog");
-cout << myString; // "Hello Dog"
+std::cout << myString; // "Hello Dog"
 
+// C++ can handle C-style strings with related functions using cstrings
+#include <cstring>
+
+char myOldString[10] = "Hello CPP";
+cout << myOldString;
+cout << "Length = " << strlen(myOldString); // Length = 9
 
 /////////////
 // References
@@ -245,35 +256,32 @@ cout << myString; // "Hello Dog"
 // No * is needed for dereferencing and
 // & (address of) is not used for assignment.
 
-using namespace std;
+std::string foo = "I am foo";
+std::string bar = "I am bar";
 
-string foo = "I am foo";
-string bar = "I am bar";
-
-
-string& fooRef = foo; // This creates a reference to foo.
+std::string& fooRef = foo; // This creates a reference to foo.
 fooRef += ". Hi!"; // Modifies foo through the reference
-cout << fooRef; // Prints "I am foo. Hi!"
+std::cout << fooRef; // Prints "I am foo. Hi!"
 
+std::cout << &fooRef << '\n'; // Prints the address of foo
 // Doesn't reassign "fooRef". This is the same as "foo = bar", and
 //   foo == "I am bar"
 // after this line.
-cout << &fooRef << endl; //Prints the address of foo
 fooRef = bar;
-cout << &fooRef << endl; //Still prints the address of foo
-cout << fooRef;  // Prints "I am bar"
+std::cout << &fooRef << '\n'; // Still prints the address of foo
+std::cout << fooRef << '\n';  // Prints "I am bar"
 
 // The address of fooRef remains the same, i.e. it is still referring to foo.
 
 
-const string& barRef = bar; // Create a const reference to bar.
+const std::string& barRef = bar; // Create a const reference to bar.
 // Like C, const values (and pointers and references) cannot be modified.
 barRef += ". Hi!"; // Error, const references cannot be modified.
 
 // Sidetrack: Before we talk more about references, we must introduce a concept
 // called a temporary object. Suppose we have the following code:
-string tempObjectFun() { ... }
-string retVal = tempObjectFun();
+std::string tempObjectFun() { ... }
+std::string retVal = tempObjectFun();
 
 // What happens in the second line is actually:
 //   - a string object is returned from tempObjectFun
@@ -296,27 +304,27 @@ foo(bar(tempObjectFun()))
 // which case its life gets extended to the current scope:
 
 void constReferenceTempObjectFun() {
-  // constRef gets the temporary object, and it is valid until the end of this
-  // function.
-  const string& constRef = tempObjectFun();
-  ...
+    // constRef gets the temporary object, and it is valid until the end of this
+    // function.
+    const std::string& constRef = tempObjectFun();
+    ...
 }
 
 // Another kind of reference introduced in C++11 is specifically for temporary
 // objects. You cannot have a variable of its type, but it takes precedence in
 // overload resolution:
 
-void someFun(string& s) { ... }  // Regular reference
-void someFun(string&& s) { ... }  // Reference to temporary object
+void someFun(std::string& s) { ... }  // Regular reference
+void someFun(std::string&& s) { ... }  // Reference to temporary object
 
-string foo;
+std::string foo;
 someFun(foo);  // Calls the version with regular reference
 someFun(tempObjectFun());  // Calls the version with temporary reference
 
 // For example, you will see these two versions of constructors for
 // std::basic_string:
-basic_string(const basic_string& other);
-basic_string(basic_string&& other);
+std::basic_string(const basic_string& other);
+std::basic_string(basic_string&& other);
 
 // Idea being if we are constructing a new string from a temporary object (which
 // is going to be destroyed soon anyway), we can have a more efficient
@@ -331,15 +339,15 @@ basic_string(basic_string&& other);
 // easier visualization and reading of code
 enum ECarTypes
 {
-  Sedan,
-  Hatchback,
-  SUV,
-  Wagon
+    Sedan,
+    Hatchback,
+    SUV,
+    Wagon
 };
 
 ECarTypes GetPreferredCarType()
 {
-	return ECarTypes::Hatchback;
+    return ECarTypes::Hatchback;
 }
 
 // As of C++11 there is an easy way to assign a type to the enum which can be
@@ -347,21 +355,21 @@ ECarTypes GetPreferredCarType()
 // the desired type and their respective constants
 enum ECarTypes : uint8_t
 {
-  Sedan, // 0
-  Hatchback, // 1
-  SUV = 254, // 254
-  Hybrid // 255
+    Sedan, // 0
+    Hatchback, // 1
+    SUV = 254, // 254
+    Hybrid // 255
 };
 
 void WriteByteToFile(uint8_t InputValue)
 {
-	// Serialize the InputValue to a file
+    // Serialize the InputValue to a file
 }
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
-	// The enum is implicitly converted to a uint8_t due to its declared enum type
-	WriteByteToFile(InputCarType);
+    // The enum is implicitly converted to a uint8_t due to its declared enum type
+    WriteByteToFile(InputCarType);
 }
 
 // On the other hand you may not want enums to be accidentally cast to an integer
@@ -369,22 +377,22 @@ void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 // won't be implicitly converted
 enum class ECarTypes : uint8_t
 {
-  Sedan, // 0
-  Hatchback, // 1
-  SUV = 254, // 254
-  Hybrid // 255
+    Sedan, // 0
+    Hatchback, // 1
+    SUV = 254, // 254
+    Hybrid // 255
 };
 
 void WriteByteToFile(uint8_t InputValue)
 {
-	// Serialize the InputValue to a file
+    // Serialize the InputValue to a file
 }
 
 void WritePreferredCarTypeToFile(ECarTypes InputCarType)
 {
-	// Won't compile even though ECarTypes is a uint8_t due to the enum
-	// being declared as an "enum class"!
-	WriteByteToFile(InputCarType);
+    // Won't compile even though ECarTypes is a uint8_t due to the enum
+    // being declared as an "enum class"!
+    WriteByteToFile(InputCarType);
 }
 
 //////////////////////////////////////////
@@ -565,7 +573,7 @@ Point& Point::operator+=(const Point& rhs)
 {
     x += rhs.x;
     y += rhs.y;
-    
+
     // `this` is a pointer to the object, on which a method is called.
     return *this;
 }
@@ -577,7 +585,7 @@ int main () {
     // Point up calls the + (function) with right as its parameter
     Point result = up + right;
     // Prints "Result is upright (1,1)"
-    cout << "Result is upright (" << result.x << ',' << result.y << ")\n";
+    std::cout << "Result is upright (" << result.x << ',' << result.y << ")\n";
     return 0;
 }
 
@@ -645,7 +653,7 @@ barkThreeTimes(fluffy); // Prints "Fluffy barks" three times.
 // Template parameters don't have to be classes:
 template<int Y>
 void printMessage() {
-  cout << "Learn C++ in " << Y << " minutes!" << endl;
+    std::cout << "Learn C++ in " << Y << " minutes!\n";
 }
 
 // And you can explicitly specialize templates for more efficient code. Of
@@ -654,7 +662,7 @@ void printMessage() {
 // even if you explicitly specified all parameters.
 template<>
 void printMessage<10>() {
-  cout << "Learn C++ faster in only 10 minutes!" << endl;
+    std::cout << "Learn C++ faster in only 10 minutes!\n";
 }
 
 printMessage<20>();  // Prints "Learn C++ in 20 minutes!"
@@ -707,6 +715,9 @@ void doSomethingWithAFile(const char* filename)
     // To begin with, assume nothing can fail.
 
     FILE* fh = fopen(filename, "r"); // Open the file in read mode.
+    if (fh == NULL) {
+        // Handle possible error
+    }
 
     doSomethingWithTheFile(fh);
     doSomethingElseWithIt(fh);
@@ -826,10 +837,10 @@ void doSomethingWithAFile(const std::string& filename)
 
 // Generally a smart pointer is a class which wraps a "raw pointer" (usage of "new"
 // respectively malloc/calloc in C). The goal is to be able to
-// manage the lifetime of the object being pointed to without ever needing to explicitly delete 
+// manage the lifetime of the object being pointed to without ever needing to explicitly delete
 // the object. The term itself simply describes a set of pointers with the
 // mentioned abstraction.
-// Smart pointers should preferred over raw pointers, to prevent
+// Smart pointers should be preferred over raw pointers, to prevent
 // risky memory leaks, which happen if you forget to delete an object.
 
 // Usage of a raw pointer:
@@ -846,9 +857,9 @@ delete ptr;
 // Usage of "std::shared_ptr":
 void foo()
 {
-// It's no longer necessary to delete the Dog.
-std::shared_ptr<Dog> doggo(new Dog());
-doggo->bark();
+    // It's no longer necessary to delete the Dog.
+    std::shared_ptr<Dog> doggo(new Dog());
+    doggo->bark();
 }
 
 // Beware of possible circular references!!!
@@ -858,7 +869,7 @@ std::shared_ptr<Dog> doggo_two(new Dog());
 doggo_one = doggo_two; // p1 references p2
 doggo_two = doggo_one; // p2 references p1
 
-// There are several kinds of smart pointers. 
+// There are several kinds of smart pointers.
 // The way you have to use them is always the same.
 // This leads us to the question: when should we use each kind of smart pointer?
 // std::unique_ptr - use it when you just want to hold one reference to
@@ -884,22 +895,23 @@ doggo_two = doggo_one; // p2 references p1
 // Vector (Dynamic array)
 // Allow us to Define the Array or list of objects at run time
 #include <vector>
-string val;
-vector<string> my_vector; // initialize the vector
-cin >> val;
+std::string val;
+std::vector<string> my_vector; // initialize the vector
+std::cin >> val;
+
 my_vector.push_back(val); // will push the value of 'val' into vector ("array") my_vector
 my_vector.push_back(val); // will push the value into the vector again (now having two elements)
 
 // To iterate through a vector we have 2 choices:
 // Either classic looping (iterating through the vector from index 0 to its last index):
 for (int i = 0; i < my_vector.size(); i++) {
-	cout << my_vector[i] << endl; // for accessing a vector's element we can use the operator []
+    std::cout << my_vector[i] << '\n'; // for accessing a vector's element we can use the operator []
 }
 
 // or using an iterator:
 vector<string>::iterator it; // initialize the iterator for vector
 for (it = my_vector.begin(); it != my_vector.end(); ++it) {
-	cout << *it  << endl;
+    std::cout << *it  << '\n';
 }
 
 // Set
@@ -908,7 +920,7 @@ for (it = my_vector.begin(); it != my_vector.end(); ++it) {
 // without any other functions or code.
 
 #include<set>
-set<int> ST;    // Will initialize the set of int data type
+std::set<int> ST;    // Will initialize the set of int data type
 ST.insert(30);  // Will insert the value 30 in set ST
 ST.insert(10);  // Will insert the value 10 in set ST
 ST.insert(20);  // Will insert the value 20 in set ST
@@ -920,9 +932,9 @@ ST.insert(30);  // Will insert the value 30 in set ST
 ST.erase(20);  // Will erase element with value 20
 // Set ST: 10 30
 // To iterate through Set we use iterators
-set<int>::iterator it;
-for(it=ST.begin();it!=ST.end();it++) {
-	cout << *it << endl;
+std::set<int>::iterator it;
+for (it = ST.begin(); it != ST.end(); it++) {
+    std::cout << *it << '\n';
 }
 // Output:
 // 10
@@ -930,7 +942,7 @@ for(it=ST.begin();it!=ST.end();it++) {
 
 // To clear the complete container we use Container_name.clear()
 ST.clear();
-cout << ST.size();  // will print the size of set ST
+std::cout << ST.size();  // will print the size of set ST
 // Output: 0
 
 // NOTE: for duplicate elements we can use multiset
@@ -942,7 +954,7 @@ cout << ST.size();  // will print the size of set ST
 // and a mapped value, following a specific order.
 
 #include<map>
-map<char, int> mymap;  // Will initialize the map with key as char and value as int
+std::map<char, int> mymap;  // Will initialize the map with key as char and value as int
 
 mymap.insert(pair<char,int>('A',1));
 // Will insert value 1 for key A
@@ -950,16 +962,16 @@ mymap.insert(pair<char,int>('Z',26));
 // Will insert value 26 for key Z
 
 // To iterate
-map<char,int>::iterator it;
-for (it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << "->" << it->second << std::endl;
+std::map<char,int>::iterator it;
+for (it = mymap.begin(); it != mymap.end(); ++it)
+    std::cout << it->first << "->" << it->second << '\n';
 // Output:
 // A->1
 // Z->26
 
 // To find the value corresponding to a key
 it = mymap.find('Z');
-cout << it->second;
+std::cout << it->second;
 
 // Output: 26
 
@@ -997,7 +1009,7 @@ fooMap.find(Foo(1)); //true
 // For example, consider sorting a vector of pairs using the second
 // value of the pair
 
-vector<pair<int, int> > tester;
+std::vector<pair<int, int> > tester;
 tester.push_back(make_pair(3, 6));
 tester.push_back(make_pair(1, 9));
 tester.push_back(make_pair(5, 0));
@@ -1005,7 +1017,7 @@ tester.push_back(make_pair(5, 0));
 // Pass a lambda expression as third argument to the sort function
 // sort is from the <algorithm> header
 
-sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int, int>& rhs) {
+std::sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int, int>& rhs) {
         return lhs.second < rhs.second;
     });
 
@@ -1019,10 +1031,10 @@ sort(tester.begin(), tester.end(), [](const pair<int, int>& lhs, const pair<int,
 //     4. same as 3, but by value [=]
 // Example:
 
-vector<int> dog_ids;
+std::vector<int> dog_ids;
 // number_of_dogs = 3;
-for(int i = 0; i < 3; i++) {
-	dog_ids.push_back(i);
+for (int i = 0; i < 3; i++) {
+    dog_ids.push_back(i);
 }
 
 int weight[3] = {30, 50, 10};
@@ -1045,15 +1057,15 @@ sort(dog_ids.begin(), dog_ids.end(), [&weight](const int &lhs, const int &rhs) {
 // You can use a range for loop to iterate over a container
 int arr[] = {1, 10, 3};
 
-for(int elem: arr){
-	cout << elem << endl;
+for (int elem: arr) {
+    cout << elem << endl;
 }
 
 // You can use "auto" and not worry about the type of the elements of the container
 // For example:
 
-for(auto elem: arr) {
-	// Do something with each element of arr
+for (auto elem: arr) {
+    // Do something with each element of arr
 }
 
 /////////////////////
@@ -1066,10 +1078,10 @@ for(auto elem: arr) {
 
 // You can override private methods!
 class Foo {
-  virtual void bar();
+    virtual void bar();
 };
 class FooSub : public Foo {
-  virtual void bar();  // Overrides Foo::bar!
+    virtual void bar();  // Overrides Foo::bar!
 };
 
 
@@ -1124,33 +1136,33 @@ const int maxL = 15;
 auto second = make_tuple(maxN, maxL);
 
 // Printing elements of 'first' tuple
-cout << get<0>(first) << " " << get<1>(first) << '\n'; //prints : 10 A
+std::cout << get<0>(first) << " " << get<1>(first) << '\n'; //prints : 10 A
 
 // Printing elements of 'second' tuple
-cout << get<0>(second) << " " << get<1>(second) << '\n'; // prints: 1000000000 15
+std::cout << get<0>(second) << " " << get<1>(second) << '\n'; // prints: 1000000000 15
 
 // Unpacking tuple into variables
 
 int first_int;
 char first_char;
 tie(first_int, first_char) = first;
-cout << first_int << " " << first_char << '\n';  // prints : 10 A
+std::cout << first_int << " " << first_char << '\n';  // prints : 10 A
 
 // We can also create tuple like this.
 
 tuple<int, char, double> third(11, 'A', 3.14141);
 // tuple_size returns number of elements in a tuple (as a constexpr)
 
-cout << tuple_size<decltype(third)>::value << '\n'; // prints: 3
+std::cout << tuple_size<decltype(third)>::value << '\n'; // prints: 3
 
 // tuple_cat concatenates the elements of all the tuples in the same order.
 
 auto concatenated_tuple = tuple_cat(first, second, third);
 // concatenated_tuple becomes = (10, 'A', 1e9, 15, 11, 'A', 3.14141)
 
-cout << get<0>(concatenated_tuple) << '\n'; // prints: 10
-cout << get<3>(concatenated_tuple) << '\n'; // prints: 15
-cout << get<5>(concatenated_tuple) << '\n'; // prints: 'A'
+std::cout << get<0>(concatenated_tuple) << '\n'; // prints: 10
+std::cout << get<3>(concatenated_tuple) << '\n'; // prints: 15
+std::cout << get<5>(concatenated_tuple) << '\n'; // prints: 'A'
 
 
 ///////////////////////////////////
@@ -1196,12 +1208,11 @@ compl 4    // Performs a bitwise not
 4 bitor 3  // Performs bitwise or
 4 bitand 3 // Performs bitwise and
 4 xor 3    // Performs bitwise xor
-
-
 ```
-Further Reading:
 
-* An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).
-* A tutorial  for beginners or experts, covering many modern features and good practices: [LearnCpp.com](https://www.learncpp.com/)
-* A tutorial covering basics of language and setting up coding environment is available at [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
-* Additional resources may be found at [CPlusPlus](http://cplusplus.com).
+## Further Reading:
+
+- An up-to-date language reference can be found at [CPP Reference](http://cppreference.com/w/cpp).
+- A tutorial for beginners or experts, covering many modern features and good practices: [LearnCpp.com](https://www.learncpp.com/)
+- A tutorial covering basics of language and setting up coding environment is available at [TheChernoProject - C++](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
+- Additional resources may be found at [CPlusPlus](http://cplusplus.com).

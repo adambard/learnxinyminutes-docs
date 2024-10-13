@@ -14,9 +14,7 @@ A sintaxe do Stylus é muito flexivel podendo utilizar a sintaxe padrão do CSS 
 
 Stylus não fornece novas opções de estilos, mas dá funcionalidades que permitem deixar seu CSS muito mais dinâmico.
 
-
-```scss
-
+```sass
 /* Estilo de código
 ==============================*/
 
@@ -81,9 +79,9 @@ a {
 ==============================*/
 
 
-/* 
+/*
   É possível armazenar um valor CSS (tais como a cor) de uma variável.
-  Embora seja opcional, é recomendado adicionar $ antes de um nome de variável 
+  Embora seja opcional, é recomendado adicionar $ antes de um nome de variável
   para que você possa distinguir uma variável de outro valor CSS.
 */
 
@@ -95,20 +93,20 @@ $body-font = 'Roboto', sans-serif
 Agora, se você quer mudar a cor, você só tem que fazer a mudança uma vez. */
 
 body
-	background-color $primary-color
-	color $secondary-color
-	font-family $body-font
+  background-color $primary-color
+  color $secondary-color
+  font-family $body-font
 
 /* Quando compilar ficaria assim: */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
-/ * 
+/ *
 Este é muito mais fácil de manter do que ter de mudar a cor
-cada vez que aparece em toda a sua folha de estilo. 
+cada vez que aparece em toda a sua folha de estilo.
 * /
 
 
@@ -121,10 +119,10 @@ elemento, você pode querer armazenar esse código em um mixin.
 
 center()
   display block
-	margin-left auto
-	margin-right auto
-	left 0
-	right 0
+  margin-left auto
+  margin-right auto
+  left 0
+  right 0
 
 /* Utilizando um mixin */
 body {
@@ -134,12 +132,12 @@ body {
 
 /* Após compilar ficaria assim: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 /* Você pode usar mixins para criar uma propriedade estenográfica. */
@@ -152,7 +150,7 @@ size($width, $height)
   size(100px, 60px)
 
 .square
-	size(40px, 40px)
+  size(40px, 40px)
 
 /* Você pode usar um mixin como uma propriedade CSS. */
 circle($ratio)
@@ -222,7 +220,6 @@ for <val-name> [, <key-name>] in <expression>
 for $item in (1..2) /* Repete o bloco 12 vezes */
   .col-{$item}
     width ($item / 12) * 100% /* Calcula a largura pelo número da coluna*
-
 ```
 
-Agora que você conhece um pouco sobre esse poderoso pré-processador de CSS, você está pronto para criar folhas de estilos mais dinâmicas. Para aprofundar seus conhecimentos visite a documentação oficial do stylus em http://stylus-lang.com.
+Agora que você conhece um pouco sobre esse poderoso pré-processador de CSS, você está pronto para criar folhas de estilos mais dinâmicas. Para aprofundar seus conhecimentos visite a documentação oficial do stylus em [stylus-lang.com](http://stylus-lang.com).

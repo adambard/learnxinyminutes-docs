@@ -16,7 +16,7 @@ Du kannst Nix Ausdrücke evaluieren mithilfe von
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
 oder [`nix-repl`](https://github.com/edolstra/nix-repl).
 
-```
+```nix
 with builtins; [
 
   #  Kommentare
@@ -222,7 +222,7 @@ with builtins; [
   ({ a = 1; b = 2; } // { a = 3; c = 4; })
   #=> { a = 3; b = 2; c = 4; }
 
-  # Das Schlüsselwort rec bezeichenet ein "rekursives Set", in dem sich Attribute
+  # Das Schlüsselwort rec bezeichnet ein "rekursives Set", in dem sich Attribute
   # aufeinander beziehen können.
   (let a = 1; in     { a = 2; b = a; }.b)
   #=> 1
@@ -348,14 +348,8 @@ with builtins; [
 
 ### Weitere Ressourcen
 
-* [Nix Manual - Nix expression language]
-  (https://nixos.org/nix/manual/#ch-expression-language)
-
-* [James Fisher - Nix by example - Part 1: The Nix expression language]
-  (https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
-
-* [Susan Potter - Nix Cookbook - Nix By Example]
-  (https://ops.functionalalgebra.com/nix-by-example/)
-  
-* [Rommel Martinez - A Gentle Introduction to the Nix Family]
-  (https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)
+* [Nix Manual - Nix expression language](https://nixos.org/nix/manual/#ch-expression-language)
+* [James Fisher - Nix by example - Part 1: The Nix expression language](https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
+* [Susan Potter - Nix Cookbook - Nix By Example](https://ops.functionalalgebra.com/nix-by-example/)
+* [Zero to Nix - Nix Tutorial](https://zero-to-nix.com/)
+* [Rommel Martinez - A Gentle Introduction to the Nix Family](https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)

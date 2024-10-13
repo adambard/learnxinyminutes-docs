@@ -16,8 +16,7 @@ The syntax of F# is different from C-style languages:
 
 If you want to try out the code below, you can go to [https://try.fsharp.org](https://try.fsharp.org) and paste it into an interactive REPL.
 
-```csharp
-
+```fsharp
 // single line comments use a double slash
 (* multi line comments use (* . . . *) pair
 
@@ -32,6 +31,21 @@ If you want to try out the code below, you can go to [https://try.fsharp.org](ht
 let myInt = 5
 let myFloat = 3.14
 let myString = "hello"           // note that no types needed
+
+// Mutable variables
+let mutable a=3
+a <- 4 // a is now 4.
+
+// Somewhat mutable variables
+// Reference cells are storage locations that enable you to create mutable values with reference semantics.
+// See https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/reference-cells
+let xRef = ref 10
+printfn "%d" xRef.Value // 10
+xRef.Value <- 11
+printfn "%d" xRef.Value // 11
+
+let a=[ref 0; ref 1] // somewhat mutable list
+a[0].Value <- 2
 
 // ------ Lists ------
 let twoToFive = [2; 3; 4; 5]     // Square brackets create a list with
@@ -628,7 +642,6 @@ module NetCompatibilityExamples =
             printfn "Click event with arg=%O" arg)
 
     myButton.TestEvent("Hello World!")
-
 ```
 
 ## More Information

@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: PyQT
+category: framework
+framework: PyQT
 filename: learnpyqt-fr.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
@@ -14,14 +14,14 @@ lang: fr-fr
 
 Ceci est une adaptation de l'intro C++ à QT par [Aleksey Kholovchuk](https://github.com/vortexxx192
 ), certains exemples du code doivent avoir la même fonctionnalité,
-cette version ayant juste été faite en utilisant pyqt! 
+cette version ayant juste été faite en utilisant pyqt!
 
 ```python
 import sys
 from PyQt4 import QtGui
-	
+
 def window():
-	# Création de l'objet application 
+	# Création de l'objet application
     app = QtGui.QApplication(sys.argv)
 	# Création d'un widget où notre label sera placé
     w = QtGui.QWidget()
@@ -41,13 +41,12 @@ def window():
 
 if __name__ == '__main__':
     window()
-
 ```
 
 Pour obtenir certaines des fonctionnalités les plus avancées de **pyqt** nous devons commencer par chercher à construire des éléments supplémentaires.
 Ici nous voyons comment introduire une boîte de dialogue popup, utile pour demander une confirmation à un utilisateur ou fournir des informations.
 
-```Python 
+```python
 import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
@@ -66,7 +65,7 @@ def window():
     w.setWindowTitle("PyQt Dialog")
     w.show()
     sys.exit(app.exec_())
-	
+
 # Cette fonction devrait créer une fenêtre de dialogue avec un bouton
 # qui attend d'être cliqué puis quitte le programme
 def showdialog():

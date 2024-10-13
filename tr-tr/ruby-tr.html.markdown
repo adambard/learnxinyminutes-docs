@@ -7,22 +7,15 @@ contributors:
 lang: tr-tr
 ---
 
-# Dile nazik bir giriş.
-
-## Ruby Nedir ?
-
 Ruby, doğrudan bir Google aramasıyla aklınızdakini bulmanız zor olabilir. İngilizce bu kelime, `Ruby` (IPA: ˈruːbi) "kırmızı taş" anlamına gelen Fransızca kökenli bir kelime olan `rubi`'den gelmektedir.
 
-Yaratıcısı tarafından, yine esinlenilen bir dil olarak ortaya çıkan `Ruby`, Perl, Smalltalk, Eiffel, Ada, Lisp programlama dillerinin en iyi özelliklerini almıştır. ! [İmperativ]() programlama mentalitesi üzerine kurmayı seçtiği bu teknoloji, günümüzde sektöründe öncü.
-
+Yaratıcısı tarafından, yine esinlenilen bir dil olarak ortaya çıkan `Ruby`, Perl, Smalltalk, Eiffel, Ada, Lisp programlama dillerinin en iyi özelliklerini almıştır. ! İmperativ programlama mentalitesi üzerine kurmayı seçtiği bu teknoloji, günümüzde sektöründe öncü.
 
 ## Tarihçe
 
 Ruby 1995’te halka duyurulduğundan beri, dünya çapında programcıların dikkatini çekmeye başlamıştır. 2006 Ruby’nin altın yılı olmuştur. Dünyanın en büyük şehirlerinde aktif kullanıcı grupları ve Ruby ile ilgili konferanslar gerçekleştirilmiştir.
 
 Daha sonraları `Ruby`, dünya çapında programlama dillerinin büyümesini ve popülaritesini ölçen dizinlerin (TIOBE dizini gibi) çoğunda ilk 10 içinde yer almıştır. Büyümenin çoğu, Ruby ile yazılmış yazılımların popülaritesiyle ilgilidir, özellikle de Ruby on Rails web çatısıyla.
-
-! [kaynak]()
 
 ## Sektördeki Konumu ve Geleceği ?
 
@@ -69,7 +62,7 @@ Diğer gerçeklemeler için, lütfen ileri okumaya danışınız.
 ### bu veri yapısıdır.
 
 # Tam sayı örneği.
-1453 #=> 1453 
+1453 #=> 1453
 
 ## Okunabilirlik için, binlik ya da ondalık kısmını `_` ile
 ## ayırmak mümkündür ve bu karakter tümüyle görmezden gelinir.
@@ -119,7 +112,7 @@ false #=> false
 ## Metin sabitleri
 'Bu, bir metin ifadesi.'
 
-## Kaçışlar için 
+## Kaçışlar için
 'Kaçışlar için "\\"' #=> "Kaçışlar için \"\\\""
 
 ## Alternatif ise çift tırnaklı ifadeler.
@@ -138,7 +131,7 @@ false #=> false
 "\s" #=> "\s"
 
 ## --
-# Karakterler 
+# Karakterler
 ## --
 
 ## Basitçe önlerine soru işareti getirilmiş
@@ -149,7 +142,7 @@ false #=> false
 ## --
 # Semboller
 ## --
-## Ruby'de semboller, temsilleri bakımından 
+## Ruby'de semboller, temsilleri bakımından
 ## Clojure'daki semboller ile benzerlerdir.
 :sembol #=> :sembol
 
@@ -452,7 +445,7 @@ Range.new(0, 10) #=> 0..10
 #=> [1, 2, 3, 4]
 ## | operatörü bizi, nihai sonuçtaki tekrarlı veriden koruyor.
 
-## Peki ya bir diziyi, eleman bazında diğeriyle 
+## Peki ya bir diziyi, eleman bazında diğeriyle
 ## süzmek istersek ?
 [1,2] - [2,3,4]
 #=> [1]
@@ -481,7 +474,7 @@ Range.new(0, 10) #=> 0..10
 ## eğer vermeseydik, dizinin ilk elemanı olacaktı.
 
 ## Tabi, daha kolay bir yolu var;
-["<label>Kontak İsmi</label>", 
+["<label>Kontak İsmi</label>",
  "<label>Kontak Telefon Numarası</label>"].reduce(:+)
 #=> "<label>Kontak İsmi</label><label>Kontak Telefon Numarası</label>"
 ## reduce metodu, ikili bir operasyonu (akümülatör için metot!)
@@ -504,7 +497,7 @@ Range.new(0, 10) #=> 0..10
 # --------------------------------
 
 ## --
-# Rakamlar 
+# Rakamlar
 ## --
 
 ## Sayısal değerlerin diğer tiplere dönüşümü;
@@ -541,7 +534,7 @@ Range.new(0, 10) #=> 0..10
 
 
 ## --
-# Mantıksal 
+# Mantıksal
 ## --
 
 ## Mantıksal -> Metinsel
@@ -573,7 +566,7 @@ false.to_s #=> "false"
 
 
 ## --
-# Metinsel 
+# Metinsel
 ## --
 
 ## Metinsel -> Sayısal
@@ -626,7 +619,7 @@ false.to_s #=> "false"
 
 
 ## --
-# Sembol 
+# Sembol
 ## --
 
 ## Sembol -> Metinsel
@@ -634,7 +627,7 @@ false.to_s #=> "false"
 ## Başka bir dönüşüm için dilin bir teşviki yoktur.
 
 ## --
-# Diziler 
+# Diziler
 ## --
 
 ## Dizi -> Metinsel
@@ -642,7 +635,7 @@ false.to_s #=> "false"
 
 
 ## --
-# Eşlemeler 
+# Eşlemeler
 ## --
 
 ## Eşleme -> Dizi
@@ -703,7 +696,7 @@ class Varlık
     def initialize()
         @varlık_değişkeni = 101
     end
-    
+
     def göster()
         puts "Varlık değişkeni: #@varlık_değişkeni"
     end
@@ -739,7 +732,7 @@ class Sınıf
     def initialize()
         @@sınıf_nesne_sayısı += 1
     end
-    
+
     def göster()
         puts "Sınıf sayısı: #@@sınıf_nesne_sayısı"
     end
@@ -929,7 +922,7 @@ end
 ## Şimdi tanımı çağıralım
 selamla_sonra_çağır {puts 'Çağrı, gerçekleşti!'}
 #= Selamlar!
-#= Çağrı, gerçekleşti! 
+#= Çağrı, gerçekleşti!
 #=> nil
 ## Çağırım, kendini çağıran kaynağa nil döndürmekte.
 ## Değerlendirmenin sonucunda, Ruby yorumlayıcısı,
@@ -1084,7 +1077,7 @@ end
 
 ## --
 ## Sonlandırıcı ( break ) kontrol ifadesi:
-## Bu kontrol ifadesi yürütüldüğünde, çalışma zamanını 
+## Bu kontrol ifadesi yürütüldüğünde, çalışma zamanını
 ## en iç tekrarlı bloktan çıkarır.
 
 ## Örnek:
@@ -1112,7 +1105,7 @@ end
 # --------------------------------
 
 ## --
-## __ENCODING__: 
+## __ENCODING__:
 ## Bu anahtar kelime size yorumlayıcı kodlama türünü verecektir.
 
 __ENCODING__
@@ -1299,13 +1292,13 @@ b = B.new 1, 2
     - Klavyeden bastığınız herhangi bir tuş.
     - Fare hareketleriniz ya da tıklamalarınız.
     - Mikrofonunuzun aldığı sesler.
-  
+
   Çıktı örnekleri:
     - Herhangi bir dil ifadesinin sonucu.
     - Dijital bir ses dosyasının sese dönüşmesi.
     - Ekranda gördükleriniz.
-  
-  Fakat endişelenmeyin, G/Ç derken, şu anda 
+
+  Fakat endişelenmeyin, G/Ç derken, şu anda
   biz sadece Ruby'de,
     - Dosya okuma/yazma.
     - Ekrana metin yazdırma / Bilgi okuma.
@@ -1441,7 +1434,7 @@ soket.recv 80
 ## tekerlekleri, direksiyonu, kasası, ve diğer parçalarıyla.
 ## Ama bu, tam tanım değildir. NYP'de, Nesneler,
 ## Bilgilere ( evet, varlık olarak başka nesneler de sayılabilir )
-## ve bu bilgileri yönetecek ( hesaplamalar gerçekleştirecek 
+## ve bu bilgileri yönetecek ( hesaplamalar gerçekleştirecek
 ## ya da aksiyonlar alacak -- G/Ç -- gibi ) metotlara sahiptir.
 
 ## Bir nesnenin en net tanımı böyle yapılabilirken,
@@ -1495,7 +1488,7 @@ class Araba
   def initialize(hız)
     @hız = hız
   end
-  
+
   def git!
     puts 'Hınn, hınn!'
   end
@@ -1583,7 +1576,7 @@ araba = Araba.new 100
 ## Lütfen detaylı bilgi için ileri okumaya başvurunuz.
 ```
 
-# İleri okumalar.
+## İleri okumalar.
 
 Tümüyle İngilizce olan bu ileri okumalara inat, bu detaylı özgün Türkçe içeriği üretmek istedim.
 Dilerim, benden sonra katkıda bulunanlar olur.
@@ -1595,4 +1588,3 @@ Dilerim, benden sonra katkıda bulunanlar olur.
 - [Ruby Gerçeklemeleri Listesi](https://github.com/codicoscepticos/ruby-implementations) Ruby'nin farklı platformlardaki gerçeklemeleri. Opal ve Topaz dikkat çekenleridir.
 - [The Object-Oriented Thought Process](https://www.amazon.com/Object-Oriented-Thought-Process-Developers-Library/dp/0321861272) kitap, bir paradigma olarak NYP ve düşünce yapısından bahsediyor. Bir paradigma olarak, NYP, türetildiği temel paradigmadan ne almış, başka paradigmalara ne kadar imkan sağlıyor ve paralel paradigma uyumu konusunda tüm sorularınıza cevap bulabilirsiniz. Yazar, belli etmese de, pragmatik bir yaklaşımda.
 - [Block Argument](https://docs.ruby-lang.org/en/2.4.0/syntax/methods_rdoc.html#label-Block+Argument) Ruby Blokları ve yield hakkındaki Ruby resmi döküman sayfası ve alt başlığı.
-- [A Theory of Objects]() Class-Based Languages başlığında inceleniyorlar.

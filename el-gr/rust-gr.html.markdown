@@ -336,5 +336,5 @@ Language](http://doc.rust-lang.org/book/index.html) και επισκεφθεί�
 
 Μπορείτε επίσης να παίξετε με τη Rust χρησιμοποιώντας τους εξής online μεταγλωττιστές:
 
-- [Rust playpen](http://play.rust-lang.org)
+- [Rust Playground](https://play.rust-lang.org)
 - [Rust website](http://rust-lang.org)

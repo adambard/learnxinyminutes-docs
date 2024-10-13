@@ -15,7 +15,7 @@ El lenguaje de Wolfram tiene varias interfaces:
 
 El código de este ejemplo se puede escribir en cualquier interfaz y editarlo con Wolfram Workbench. Cargar directamente en Matematica puede resultar incómodo porque el archivo no contiene información de formato de celda (lo que haría que el archivo sea un desastre enorme para ser leído como texto) - puede ser visto / editado pero tal vez requerira algún ajuste.
 
-```
+```mathematica
 (* Esto es un comentario *)
 
 (* En Mathematica en lugar de utilizar estos comentarios, puede crear una celda de texto

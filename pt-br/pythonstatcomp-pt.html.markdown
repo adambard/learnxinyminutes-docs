@@ -1,6 +1,6 @@
 ---
-category: tool
-tool: Statistical Computing with Python
+category: framework
+framework: Statistical Computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 translators:
@@ -14,15 +14,12 @@ Este é um tutorial sobre como fazer algumas tarefas típicas de programação e
 Stata, SAS, SPSS ou MATLAB.
 
 ```python
-
-
-
 # 0. Preparando-se ====
 
-"""  Para começar, instale o seguinte : jupyther, numpy, scipy, pandas, 
+"""  Para começar, instale o seguinte : jupyther, numpy, scipy, pandas,
     matplotlib, seaborn, requests.
     Certifique-se de executar este tutorial utilizando o Jupyther notebook para
-    que você utilize os gráficos embarcados e ter uma fácil consulta à 
+    que você utilize os gráficos embarcados e ter uma fácil consulta à
     documentação.
     O comando para abrir é simplesmente '`jupyter notebook`, quando abrir então
     clique em 'New -> Python'.
@@ -32,7 +29,7 @@ Stata, SAS, SPSS ou MATLAB.
 
 """ A única razão das pessoas optarem por Python no lugar de R é que pretendem
     interagir com o ambiente web, copiando páginas diretamente ou solicitando
-    dados utilizando uma API. Você pode fazer estas coisas em R, mas no 
+    dados utilizando uma API. Você pode fazer estas coisas em R, mas no
     contexto de um projeto já usando Python, há uma vantagem em se ater uma
     linguágem única.
 """
@@ -78,7 +75,7 @@ pets
 # 1  vesuvius    6      23    fish
 # 2       rex    5      34     dog
 
-""" Usuários R: observe que o Python, como a maioria das linguagens de programação 
+""" Usuários R: observe que o Python, como a maioria das linguagens de programação
     influenciada pelo C, a indexação começa de 0. Em R, começa a indexar em 1
     devido à influência do Fortran.
 """
@@ -102,7 +99,7 @@ pets.age[0:2]
 sum(pets.age) * 2  # 28
 max(pets.weight) - min(pets.weight)  # 20
 
-""" Se você está fazendo alguma álgebra linear séria e processamento de 
+""" Se você está fazendo alguma álgebra linear séria e processamento de
     números você pode desejar apenas arrays, não DataFrames. DataFrames são
     ideais para combinar colunas de diferentes tipos de dados.
 """
@@ -237,13 +234,13 @@ sns.lmplot("BirthY", "EstAge", data=hre)
     Para ver uma versão da análise dos sagrados imperadores romanos usando R, consulte
       - http://github.com/e99n09/R-notes/blob/master/holy_roman_emperors_dates.R
 """
-
 ```
 
 Se você quiser saber mais, obtenha o Python para análise de dados de Wes McKinney. É um excelente recurso e usei-o como referência ao escrever este tutorial.
 
-Você também pode encontrar muitos tutoriais interativos de IPython sobre assuntos específicos de seus interesses, como Cam Davidson-Pilon's <a href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/" Title="Programação Probabilística e Métodos Bayesianos para Hackers">Programação Probabilística e Métodos Bayesianos para Hackers</a>.
+Você também pode encontrar muitos tutoriais interativos de IPython sobre assuntos específicos de seus interesses, como Cam Davidson-Pilon's [Programação Probabilística e Métodos Bayesianos para Hackers](http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/).
 
 Mais alguns módulos para pesquisar:
-   - análise de texto e processamento de linguagem natural: nltk, http://www.nltk.org
-   - análise de rede social: igraph, http://igraph.org/python/
+
+   - análise de texto e processamento de linguagem natural: [nltk](http://www.nltk.org)
+   - análise de rede social: [igraph](http://igraph.org/python/)

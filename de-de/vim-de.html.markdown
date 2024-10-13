@@ -219,7 +219,7 @@ Die Datei .vimrc kann verwendet werden, um Vim beim Starten zu konfigurieren
 
 Hier ist eine Beispiel ~/.vimrc Datei:
 
-```
+```vim
 " Beispiel ~/.vimrc
 
 " Erforderlich für vim, dass es iMproved ist.
@@ -240,7 +240,7 @@ set wildmenu
 set ignorecase
 set smartcase
 
-" Wenn eine neue Zeile erstellt wird und kein Dateispezifisches Einrücken
+" Wenn eine neue Zeile erstellt wird und kein dateispezifisches Einrücken
 " aktiviert ist, behält die neue Zeile die gleiche Einrückung wie die aktuelle
 " Zeile
 set autoindent
