@@ -9,11 +9,11 @@ filename: learntypescript-zh-tw.ts
 lang: zh-tw
 ---
 
-TypeScript 是為開發大型 JavaScript 應用程式而設計的語言。TypeScript 為 JavaScript 導入某些程式語言常見的一些概念，諸如：類別、模組、介面、泛型和（可選的）靜態型別。它是 JavaScript 的超集：因此所有 JavaScript 語法都可以使用。TypeScript 程式碼可以無縫導入到任何 JavaScript 專案中。TypeScript 編譯器最終會編譯成 JavaScript 程式碼。
+TypeScript 是為開發大型 JavaScript 應用程式而設計的語言。它為 JavaScript 導入某些程式語言常見的一些概念，諸如：類別（class）、模組（module）、介面（interface）、泛型（generic type）和靜態型別（static type）。TypeScript 是 JavaScript 的「超集」（superset）：意即建立在 JavaScript 的基礎上，所有 JavaScript 語法皆可在 TypeScript 中使用。因此，TypeScript 可以無縫導入到任何 JavaScript 專案中。TypeScript 編譯器最終會編譯成 JavaScript 程式碼。
 
 本文將只專注於 TypeScript 的額外語法，其他請參考 [JavaScript 的指南](/docs/javascript-tw)
 
-要測試 TypeScript 的編譯器，請前往 [Playground](https://www.typescriptlang.org/play)，在那裡你可以輸入程式碼，獲得自動完成功能，並直接查看生成的 JavaScript 程式碼。
+要測試 TypeScript 的編譯器，請前往 [Playground](https://www.typescriptlang.org/play)，在那裡你可以輸入程式碼，獲得自動完成（autocomplete）功能，並查看編譯過的 JavaScript 程式碼。
 
 ```ts
 // TS 基本型別有三種
@@ -37,39 +37,39 @@ numLivesForCat = 1; // 報錯，常數初始化之後，無法指定新值
 
 // 關於集合類型的資料，有型別化陣列（typed array）和泛型陣列（generic array）
 let list: number[] = [1, 2, 3];
-// 或者使用泛型陣列類型
+// 或使用泛型陣列類型
 let list: Array<number> = [1, 2, 3];
 
-// 關於列舉型別：
+// 列舉型別：
 enum Color { Red, Green, Blue };
 let c: Color = Color.Green;
 console.log(Color[c]); // "Green"
 
-// 最後，`void` 用於函式不回傳任何值的特殊情況
+// `void` 用於函式不回傳任何值的特殊情況
 function bigHorribleAlert(): void {
   alert("I'm a little annoying box!");
 }
 
-// 函式是一等公民，支援 lambda「胖箭頭」語法，並使用型別推斷
+// 函式是一等公民，支援 lambda「胖箭頭」 `=>` 語法，並使用型別推斷
 
-// 以下幾種函式寫法是等效的，編譯器會生成相同的 JavaScript
+// 以下幾種函式寫法是等效的，編譯器會生成相同的 JavaScript 程式碼
 // 一般的函式
 let f1 = function (i: number): number { return i * i; }
 // 自動推斷回傳型別
 let f2 = function (i: number) { return i * i; }
-// 胖箭頭語法
+// 使用胖箭頭語法
 let f3 = (i: number): number => { return i * i; }
 // 胖箭頭語法（自動推斷回傳型別）
 let f4 = (i: number) => { return i * i; }
 // 胖箭頭語法（自動推斷回傳型別、省略函式的括號與 `return` 關鍵字）
 let f5 = (i: number) => i * i;
 
-// 函式的參數也可以接受同時多種型別的定義
+// 函式的參數也可以同時定義多種型別的連集
 function f6(i: string | number): void {
   console.log("The value was " + i);
 }
 
-// 介面是結構化的，任何擁有這些屬性的物件都符合該介面的定義
+// 介面是結構化的，任何擁有這些屬性的物件都要符合該介面的定義
 interface Person {
   name: string;
   // 以問號（`?`）來表示選填的屬性
@@ -90,7 +90,7 @@ let invalidPerson: Person = { name: "Bobby", age: true };
 interface SearchFunc {
   (source: string, subString: string): boolean;
 }
-// 函式的型別定義著重於各個參數以及回傳值的型別，而函式名稱並不重要。
+// 函式的型別定義著重於各個參數以及回傳值的型別，而函式名稱並不重要
 let mySearch: SearchFunc;
 mySearch = function (src: string, sub: string) {
   return src.search(sub) != -1;
@@ -107,7 +107,7 @@ class Point {
     this.x = x;
   }
 
-  // 函式（在類別中，又稱為方法）
+  // 函式，在類別中，又稱為方法（method）
   dist(): number {
     return Math.sqrt(this.x * this.x + this.y * this.y);
   }
@@ -124,12 +124,12 @@ class PointPerson implements Person {
 }
 
 let p1 = new Point(10, 20);
-let p2 = new Point(25); //y will be 0
+let p2 = new Point(25); // y 值將預設為 0
 
 // 類別的繼承
 class Point3D extends Point {
   constructor(x: number, y: number, public z: number = 0) {
-    super(x, y); // 必須明確呼叫父類別的建構函式
+    super(x, y); // 必須明確呼叫父類別的建構函式，使用 `super` 關鍵字
   }
 
   // 複寫父類別的方法
@@ -139,7 +139,7 @@ class Point3D extends Point {
   }
 }
 
-// 模組，以 `.` 語法作為子模組的分隔符
+// 模組，以 `.` 語法存取子模組
 module Geometry {
   export class Square {
     constructor(public sideLength: number = 0) {
@@ -157,7 +157,7 @@ import G = Geometry;
 
 let s2 = new G.Square(10);
 
-// 泛用型別（泛型）
+// 泛用型別，泛型（generic type）
 // 在類別使用泛型
 class Tuple<T1, T2> {
   constructor(public item1: T1, public item2: T2) {
@@ -170,7 +170,7 @@ interface Pair<T> {
   item2: T;
 }
 
-// 以及在函式使用泛型
+// 在函式使用泛型
 let pairToTuple = function <T>(p: Pair<T>) {
   return new Tuple(p.item1, p.item2);
 };
