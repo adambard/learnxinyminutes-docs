@@ -257,7 +257,14 @@ set smartcase
 set autoindent
 
 " Display line numbers on the left
+" Display absolute line numbers
 set number
+" Hide absolute line numbers
+set nonumber
+" Display relative line numbers
+set relativenumber
+" Hide relative line numbers
+set norelativenumber
 
 " Indentation options, change according to personal preference
 
