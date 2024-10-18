@@ -266,7 +266,6 @@ set relativenumber
 " Hide relative line numbers
 set norelativenumber
 
-
 " Indentation options, change according to personal preference
 
 " Number of visual spaces per TAB
