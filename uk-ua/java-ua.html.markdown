@@ -746,38 +746,30 @@ public class EnumTest {
 
 Посилання, наведені нижче, дозволяють тільки зрозуміти тему. Щоб знайти конкретні приклади, використовуйте Ґуґл.
 
-**Офіційні посібники Oracle**:
+### Офіційні посібники Oracle:
 
 * [Посібник Java від Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Java — модифікатори доступу](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [ООП-концепції](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Наслідування](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Поліморфізм](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Абстракція](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Виключення](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Інтерфейси](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [параметризація](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Стиль коду у Java](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
+* Нові функції в Java 8:
+    * [Лямбда-вирази (функціональне програмування)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [API дати та часу (пакет java.time)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-**Online-практика та посібники**
+### Online-практика та посібники: 
 
 * [Learneroo.com — Вивчаємо Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
-
-**Книжки**:
+### Книжки:
 
 * [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
-
 * [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
-
 * [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-
 * [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)

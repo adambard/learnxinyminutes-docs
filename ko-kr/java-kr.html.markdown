@@ -387,21 +387,18 @@ class PennyFarthing extends Bicycle {
 
 다음 링크를 통해 다양한 주제를 이해하고 구글을 통해 구체적인 예제들을 찾아보세요.
 
-공부할 만한 기타 주제:
+### 공부할 만한 기타 주제
 
 * [썬/오라클의 자바 자습서](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [자바 접근 제한자](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [객체 지향 프로그래밍 개념](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [상속(Inheritance)](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [다형성(Polymorphism)](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [추상화(Abstraction)](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [예외(Exceptions)](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [인터페이스(Interfaces)](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [제네릭(Generics)](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [자바 코딩 관례(Java Code Conventions)](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* Java 8의 새로운 기능
+    * [람다 표현식 (Lambda expressions (functional programming))](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [날짜 및 시간 API (Date and time API (java.time package))](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
