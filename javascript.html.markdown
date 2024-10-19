@@ -60,6 +60,9 @@ doStuff()
 30 % 4; // = 2
 18.5 % 7; // = 4.5
 
+// Exponentiation (x**y, x to the yth power)
+2**3;  // => 8
+
 // Bitwise operations also work; when you perform a bitwise operation your float
 // is converted to a signed int *up to* 32 bits.
 1 << 2; // = 4
