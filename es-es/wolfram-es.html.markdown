@@ -1,5 +1,5 @@
 ---
-language: wolfram
+language: Wolfram
 lang: es-es
 contributors:
     - ["Daniel Caballero", "http://github.com/danielcaballero796/"]

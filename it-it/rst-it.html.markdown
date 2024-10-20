@@ -1,5 +1,5 @@
 ---
-language: restructured text (RST)
+language: reStructuredText (RST)
 filename: restructuredtext-it.rst
 contributors:
     - ["DamienVGN", "https://github.com/martin-damien"]

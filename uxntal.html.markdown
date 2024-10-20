@@ -1,5 +1,5 @@
 ---
-language: uxntal
+language: Uxntal
 contributors:
     - ["Devine Lu Linvega", "https://wiki.xxiivv.com"]
 filename: learnuxn.tal

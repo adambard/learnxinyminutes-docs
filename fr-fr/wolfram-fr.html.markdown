@@ -1,5 +1,5 @@
 ---
-language: wolfram
+language: Wolfram
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
 translators:

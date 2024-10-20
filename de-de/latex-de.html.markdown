@@ -1,5 +1,5 @@
 ---
-language: latex
+language: LaTeX
 contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
@@ -8,7 +8,7 @@ translators:
   - ["Moritz Kammerer", "https://github.com/phxql"]
   - ["Jerome Meinke", "https://github.com/jmeinke"]
 lang: de-de
-filename: latex-de.tex
+filename: LaTeX-de.tex
 ---
 ```
 % Alle Kommentare starten mit einem Prozentzeichen %
