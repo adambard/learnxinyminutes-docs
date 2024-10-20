@@ -1,6 +1,6 @@
 ---
 category: framework
-framework: Statistical Computing with Python
+framework: Statistical computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 translators:
