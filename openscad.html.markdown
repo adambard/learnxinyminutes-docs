@@ -7,7 +7,7 @@ contributors:
 
 Draw 3D models with code using [OpenSCAD](https://openscad.org/).
 
-```
+```openscad
 // Comments look like this
 
 // 3D Primitives
