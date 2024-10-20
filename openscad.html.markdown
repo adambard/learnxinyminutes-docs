@@ -1,5 +1,5 @@
 ---
-language: openscad
+language: OpenSCAD
 filename: learnopenscad.scad
 contributors:
     - ["Tom Preston", "https://github.com/tompreston/"]

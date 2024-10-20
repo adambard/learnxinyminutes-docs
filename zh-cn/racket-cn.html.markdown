@@ -1,6 +1,6 @@
 ---
 
-language: racket
+language: Racket
 lang: zh-cn
 filename: learnracket-zh.rkt
 contributors:

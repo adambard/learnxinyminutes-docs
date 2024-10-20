@@ -1,5 +1,5 @@
 ---
-language: html
+language: HTML
 lang: ar-ar
 filename: learnhtml-tf.html
 contributors:

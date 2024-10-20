@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: vim
+tool: Vim
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
     - ["kaymmm", "https://github.com/kaymmm"]

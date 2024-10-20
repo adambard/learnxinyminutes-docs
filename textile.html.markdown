@@ -1,5 +1,5 @@
 ---
-language: textile
+language: Textile
 contributors:
     - ["Keith Miyake", "https://github.com/kaymmm"]
 filename: learn-textile.textile

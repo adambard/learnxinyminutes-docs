@@ -1,5 +1,5 @@
 ---
-language: coldfusion
+language: ColdFusion
 filename: learncoldfusion-es.cfm
 contributors:
     - ["Wayne Boka", "http://wboka.github.io"]

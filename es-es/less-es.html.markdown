@@ -1,5 +1,5 @@
 ---
-language: less
+language: Less
 filename: learnless-es.less
 lang: es-es
 contributors:

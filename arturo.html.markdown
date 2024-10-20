@@ -1,5 +1,5 @@
 ---
-language: arturo
+language: Arturo
 filename: learnarturo.art
 contributors:
   - ["Dr.Kameleon", "https://github.com/drkameleon"]

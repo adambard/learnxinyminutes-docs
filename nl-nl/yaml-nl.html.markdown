@@ -1,5 +1,5 @@
 ---
-language: yaml
+language: YAML
 filename: learnyaml-nl.yaml
 contributors:
   - ["Leigh Brenecki", "https://github.com/adambrenecki"]

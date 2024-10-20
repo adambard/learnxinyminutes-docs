@@ -1,5 +1,5 @@
 ---
-language: css
+language: CSS
 filename: learncss-pt.css
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]

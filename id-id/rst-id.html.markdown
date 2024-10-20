@@ -1,5 +1,5 @@
 ---
-language: restructured text (RST)
+language: reStructuredText (RST)
 filename: rst-id.html
 contributors:
     - ["DamienVGN", "https://github.com/martin-damien"]

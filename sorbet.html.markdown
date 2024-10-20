@@ -1,5 +1,5 @@
 ---
-language: sorbet
+language: Sorbet
 filename: learnsorbet.rb
 contributors:
   - ["Jeremy Kaplan", "https://jdkaplan.dev"]

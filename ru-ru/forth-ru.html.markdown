@@ -1,5 +1,5 @@
 ---
-language: forth
+language: Forth
 contributors:
     - ["Horse M.D.", "http://github.com/HorseMD/"]
 translators:

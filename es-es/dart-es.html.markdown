@@ -1,5 +1,5 @@
 ---
-language: dart
+language: Dart
 contributors:
     - ["Joao Pedrosa", "https://github.com/jpedrosa/"]
 translators:

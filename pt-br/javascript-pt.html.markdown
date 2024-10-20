@@ -1,5 +1,5 @@
 ---
-language: javascript
+language: JavaScript
 filename: javascript-pt.js
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]

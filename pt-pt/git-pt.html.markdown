@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: git
+tool: Git
 lang: pt-pt
 filename: LearnGit-pt.txt
 contributors:

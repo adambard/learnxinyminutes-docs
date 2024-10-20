@@ -1,5 +1,5 @@
 ---
-language: haxe
+language: Haxe
 filename: LearnHaxe3.hx
 contributors:
     - ["Justin Donaldson", "https://github.com/jdonaldson/"]

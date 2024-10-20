@@ -1,6 +1,6 @@
 ---
 category: framework
-framework: messagepack
+framework: MessagePack
 filename: learnmessagepack.mpac
 contributors:
   - ["Gabriel Chuan", "https://github.com/gczh"]

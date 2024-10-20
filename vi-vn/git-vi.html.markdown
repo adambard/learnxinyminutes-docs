@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: git
+tool: Git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Vinh Nguyen", "https://twitter.com/vinhnx"]

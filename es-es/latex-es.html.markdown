@@ -1,5 +1,5 @@
 ---
-language: latex
+language: LaTeX
 lang: es-es
 contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]

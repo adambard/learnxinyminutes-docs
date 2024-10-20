@@ -1,5 +1,5 @@
 ---
-language: json
+language: JSON
 filename: learnjson-ms.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]

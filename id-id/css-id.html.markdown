@@ -1,5 +1,5 @@
 ---
-language: css
+language: CSS
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 translators:

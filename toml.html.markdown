@@ -1,5 +1,5 @@
 ---
-language: toml
+language: TOML
 filename: learntoml.toml
 contributors:
   - ["Alois de Gouvello", "https://github.com/aloisdg"]

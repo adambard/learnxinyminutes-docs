@@ -1,5 +1,5 @@
 ---
-language: html
+language: HTML
 filename: html-ca.md
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]

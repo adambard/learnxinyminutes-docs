@@ -1,5 +1,5 @@
 ---
-language: kotlin
+language: Kotlin
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators: 

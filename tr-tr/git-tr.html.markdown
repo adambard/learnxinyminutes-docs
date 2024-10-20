@@ -1,7 +1,7 @@
 ---
 category: tool
 lang: tr-tr
-tool: git
+tool: Git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]

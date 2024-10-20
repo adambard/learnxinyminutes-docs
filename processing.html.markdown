@@ -1,5 +1,5 @@
 ---
-language: processing
+language: Processing
 filename: learnprocessing.pde
 contributors:
     - ["Phone Than Ko", "http://github.com/phonethantko"]

@@ -1,5 +1,5 @@
 ---
-language: self
+language: Self
 contributors:
     - ["Russell Allen", "http://github.com/russellallen"]
 translators:

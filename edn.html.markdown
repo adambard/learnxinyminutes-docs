@@ -1,5 +1,5 @@
 ---
-language: edn
+language: EDN
 filename: learnedn.edn
 contributors:
   - ["Jason Yeo", "https://github.com/jsyeo"]

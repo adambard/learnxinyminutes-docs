@@ -1,5 +1,5 @@
 ---
-language: prolog
+language: Prolog
 filename: learnprolog.pl
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]

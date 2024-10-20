@@ -1,5 +1,5 @@
 ---
-language: protocol-buffers
+language: Protocol Buffers
 filename: protocol-buffers.proto
 contributors:
     - ["Shankar Shastri", "https://github.com/shankarshastri"]

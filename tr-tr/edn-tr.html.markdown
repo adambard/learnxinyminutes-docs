@@ -1,5 +1,5 @@
 ---
-language: edn
+language: EDN
 filename: learnedn-tr.edn
 lang: tr-tr
 contributors:

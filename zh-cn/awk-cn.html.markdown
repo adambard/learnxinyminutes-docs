@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: awk
+tool: AWK
 contributors:
      - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:

@@ -1,5 +1,5 @@
 ---
-language: json
+language: JSON
 filename: learnjson-no.json
 lang: no-nb
 contributors:

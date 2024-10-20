@@ -1,5 +1,5 @@
 ---
-language: zig
+language: Zig
 filename: learnzig.zig
 contributors:
     - ["Philippe Pittoli", "https://karchnu.fr/"]

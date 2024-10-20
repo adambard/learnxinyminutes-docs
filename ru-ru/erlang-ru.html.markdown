@@ -1,5 +1,5 @@
 ---
-language: erlang
+language: Erlang
 contributors:
     - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
 translators:

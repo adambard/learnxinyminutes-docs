@@ -1,5 +1,5 @@
 ---
-language: reason
+language: Reason
 filename: reason.re
 contributors:
   - ["Seth Corker", "https://sethcorker.com"]

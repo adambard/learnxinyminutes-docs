@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: ansible
+tool: Ansible
 contributors:
     - ["Jakub Muszynski" , "http://github.com/sirkubax"]
     - ["Pat Myron" , "https://github.com/patmyron"]

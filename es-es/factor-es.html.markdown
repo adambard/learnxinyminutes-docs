@@ -1,5 +1,5 @@
 ---
-language: factor
+language: Factor
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
 translators:

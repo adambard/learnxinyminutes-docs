@@ -1,5 +1,5 @@
 ---
-language: pogoscript
+language: PogoScript
 contributors:
     - ["Tim Macfarlane", "http://github.com/refractalize"]
 filename: learnPogo.pogo

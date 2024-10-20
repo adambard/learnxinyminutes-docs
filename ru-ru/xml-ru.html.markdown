@@ -1,5 +1,5 @@
 ---
-language: xml
+language: XML
 filename: learnxml-ru.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]

@@ -1,5 +1,5 @@
 ---
-language: javascript
+language: JavaScript
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
 translators:

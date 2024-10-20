@@ -1,7 +1,7 @@
 ---
 name: java
 category: language
-language: java
+language: Java
 lang: zh-cn
 filename: LearnJava-zh.java
 contributors:

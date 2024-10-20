@@ -1,5 +1,5 @@
 ---
-language: xml
+language: XML
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
