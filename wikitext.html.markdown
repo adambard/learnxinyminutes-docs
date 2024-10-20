@@ -1,5 +1,5 @@
 ---
-language: wikitext
+language: Wikitext
 contributors:
     - ["Yuxi Liu", "https://github.com/yuxiliu1995/"]
 filename: wikitext.md

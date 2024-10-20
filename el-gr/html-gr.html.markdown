@@ -1,5 +1,5 @@
 ---
-language: html
+language: HTML
 filename: learnhtml-gr.html
 contributors:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]

@@ -1,5 +1,5 @@
 ---
-language: yaml
+language: YAML
 filename: learnyaml.yaml
 contributors:
 

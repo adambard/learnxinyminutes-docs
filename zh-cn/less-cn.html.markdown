@@ -1,5 +1,5 @@
 ---
-language: less
+language: Less
 filename: learnless-cn.less
 contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]

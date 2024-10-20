@@ -1,5 +1,5 @@
 ---
-language: asciidoc
+language: AsciiDoc
 filename: asciidoc-cn.adoc
 contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]

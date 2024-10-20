@@ -1,5 +1,5 @@
 ---
-language: perl
+language: Perl
 filename: learnperl-de.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]

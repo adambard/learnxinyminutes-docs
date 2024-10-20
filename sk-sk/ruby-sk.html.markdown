@@ -1,5 +1,5 @@
 ---
-language: ruby
+language: Ruby
 filename: learnruby-sk.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]

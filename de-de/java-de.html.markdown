@@ -1,5 +1,5 @@
 ---
-language: java
+language: Java
 filename: LearnJavaDe-de.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]

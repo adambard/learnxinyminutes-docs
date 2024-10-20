@@ -1,5 +1,5 @@
 ---
-language: html
+language: HTML
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:

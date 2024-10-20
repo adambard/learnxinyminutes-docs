@@ -1,5 +1,5 @@
 ---
-language: coffeescript
+language: CoffeeScript
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
 translators:

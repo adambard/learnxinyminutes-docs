@@ -1,5 +1,5 @@
 ---
-language: crystal
+language: Crystal
 contributors:
     - ["Vitalii Elenhaupt", "http://veelenga.com"]
     - ["Arnaud Fernandés", "https://github.com/TechMagister/"] 

@@ -1,5 +1,5 @@
 ---
-language: yaml
+language: YAML
 lang: es-es
 filename: learnyaml-es.yaml
 contributors:

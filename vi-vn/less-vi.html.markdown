@@ -1,5 +1,5 @@
 ---
-language: less
+language: Less
 contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
 translators:

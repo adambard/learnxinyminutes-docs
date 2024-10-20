@@ -1,5 +1,5 @@
 ---
-language: kotlin
+language: Kotlin
 filename: LearnKotlin-pt.kt
 lang: pt-pt
 contributors:

@@ -1,5 +1,5 @@
 ---
-language: javascript
+language: JavaScript
 category: language
 name: javascript
 filename: javascript-zh.js

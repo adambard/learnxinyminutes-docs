@@ -1,5 +1,5 @@
 ---
-language: ruby
+language: Ruby
 filename: learnruby-zh.rb
 lang: zh-cn
 contributors:

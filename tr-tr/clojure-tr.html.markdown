@@ -1,5 +1,5 @@
 ---
-language: clojure
+language: Clojure
 lang: tr-tr
 filename: learnclojure-tr.clj
 contributors:

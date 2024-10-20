@@ -67,7 +67,7 @@ Here's an example header for an Esperanto translation of Ruby:
 
 ```yaml
 *--
-language: ruby
+language: Ruby
 filename: learnruby-epo.ruby
 contributors:
     - ["Doktor Esperanto", "http://example.com/"]

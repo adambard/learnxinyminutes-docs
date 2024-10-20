@@ -1,5 +1,5 @@
 ---
-language: ruby
+language: Ruby
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]

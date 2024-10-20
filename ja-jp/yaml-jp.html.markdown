@@ -1,5 +1,5 @@
 ---
-language: yaml
+language: YAML
 filename: learnyaml-jp.yaml
 contributors:
 - [Leigh Brenecki, 'https://leigh.net.au']

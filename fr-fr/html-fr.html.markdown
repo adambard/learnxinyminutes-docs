@@ -1,5 +1,5 @@
 ---
-language: html
+language: HTML
 filename: learnhtml-fr.html
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]

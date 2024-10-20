@@ -1,5 +1,5 @@
 ---
-language: json
+language: JSON
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]

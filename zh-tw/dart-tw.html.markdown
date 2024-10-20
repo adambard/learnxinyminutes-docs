@@ -1,5 +1,5 @@
 ---
-language: dart
+language: Dart
 lang: zh-tw
 filename: learndart-tw.dart
 contributors:

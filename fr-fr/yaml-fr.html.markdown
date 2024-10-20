@@ -1,5 +1,5 @@
 ---
-language: yaml
+language: YAML
 filename: learnyaml-fr.yaml
 contributors:
   - ["Andrei Curelaru", "http://www.infinidad.fr"]

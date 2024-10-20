@@ -1,5 +1,5 @@
 ---
-language: java
+language: Java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Jakukyo Friel", "http://weakish.github.io"]

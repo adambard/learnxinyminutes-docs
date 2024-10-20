@@ -1,5 +1,5 @@
 ---
-language: clojure
+language: Clojure
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:

@@ -1,5 +1,5 @@
 ---
-language: ruby
+language: Ruby
 lang: hu-hu
 filename: learnruby-hu.rb
 contributors:

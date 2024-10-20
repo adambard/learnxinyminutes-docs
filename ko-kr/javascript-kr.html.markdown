@@ -1,5 +1,5 @@
 ---
-language: javascript
+language: JavaScript
 category: language
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]

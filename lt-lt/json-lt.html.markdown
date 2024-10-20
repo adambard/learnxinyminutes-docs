@@ -1,5 +1,5 @@
 ---
-language: json
+language: JSON
 filename: learnjson-lt.json
 lang: lt-lt
 contributors:
