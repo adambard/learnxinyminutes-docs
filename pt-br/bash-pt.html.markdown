@@ -1,6 +1,5 @@
 ---
-category: tool
-tool: Bash
+language: Bash
 contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Darren Lin", "https://github.com/CogBear"]
