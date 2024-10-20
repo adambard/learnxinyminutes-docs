@@ -1,6 +1,6 @@
 ---
 category: framework
-framework: Qt Framework
+framework: Qt
 language: C++
 filename: learnqt.cpp
 contributors:
