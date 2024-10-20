@@ -1,5 +1,5 @@
 ---
-language: bf
+language: BF
 filename: bf-fa.bf
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]

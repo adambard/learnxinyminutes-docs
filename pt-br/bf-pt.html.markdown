@@ -1,5 +1,5 @@
 ---
-language: bf
+language: BF
 filename: learnbf-pt.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]

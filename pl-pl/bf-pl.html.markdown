@@ -1,6 +1,6 @@
 ---
 category: language
-language: bf
+language: BF
 filename: learnbf-pl.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]

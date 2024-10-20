@@ -1,5 +1,5 @@
 ---
-language: bf
+language: BF
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
