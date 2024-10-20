@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: git
+tool: Git
 lang: pt-br
 filename: LearnGit-br.txt
 contributors:

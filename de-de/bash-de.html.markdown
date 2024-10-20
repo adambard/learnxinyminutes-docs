@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: bash
+tool: Bash
 lang: de-de
 contributors:
     - ["Max Yankov", "https://github.com/golergka"]

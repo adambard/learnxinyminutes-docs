@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: docker
+tool: Docker
 filename: docker.bat
 contributors:
     - ["Ruslan López", "http://javapro.org/"]

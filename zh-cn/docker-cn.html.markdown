@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: docker
+tool: Docker
 lang: zh-cn
 filename: docker-cn.bat
 contributors:

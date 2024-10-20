@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: linker
+tool: Linker
 contributors:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
 translators:

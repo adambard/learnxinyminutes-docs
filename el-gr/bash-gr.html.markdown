@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: bash
+tool: Bash
 contributors:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 filename: LearnBash-gr.sh

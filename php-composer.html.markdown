@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: composer
+tool: Composer
 contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 filename: LearnComposer.sh

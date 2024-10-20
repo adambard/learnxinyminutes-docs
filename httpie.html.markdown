@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: httpie
+tool: HTTPie
 contributors:
   - ["Adaías Magdiel", "https://github.com/AdaiasMagdiel"]
 filename: learn-httpie.sh

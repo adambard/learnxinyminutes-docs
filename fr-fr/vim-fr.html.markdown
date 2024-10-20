@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: vim
+tool: Vim
 filename: LearnVim-fr.txt
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]

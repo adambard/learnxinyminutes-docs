@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: zfs
+tool: ZFS
 contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
     - ["A1EF", "https://github.com/A1EF"]

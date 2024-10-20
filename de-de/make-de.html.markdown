@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: make
+tool: Make
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
