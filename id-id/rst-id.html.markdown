@@ -15,7 +15,6 @@ dokumentasi (dan menjadi bagian dari Docutils).
 File-file RST adalah sebuah file-file teks simpel dengan sintaks yang ringan
 (dibandingkan dengan HTML).
 
-
 ## Pemasangan
 
 Untuk menggunakan RST, anda harus memasang [Python](http://www.python.org) dan
@@ -33,12 +32,11 @@ Jika sistem anda sudah mempunyai `pip`, anda bisa menggunakannya juga:
 $ pip install docutils
 ```
 
-
 ## Sintaks file
 
 Sebuah contoh sederhana dari sintaks file:
 
-```
+```rst
 .. Baris yang dimulai dengan dua titik adalah perintah spesial. Tetapi jika
 perintah tidak ditemukan, maka baris tersebut akan dianggap sebagai komentar
 
@@ -98,7 +96,6 @@ otomatis diubah menjadi sebuah link)
 .. _GitHub https://github.com/
 ```
 
-
 ## Bagaimana Cara Menggunakannya
 
 RST hadir dengan docutils di mana anda mempunyai `rst2html`, sebagai contoh:
@@ -114,7 +111,6 @@ Tetapi ada beberapa aplikasi kompleks yang menggunakan format RST:
 - [Pelican](http://blog.getpelican.com/), Generator web statik
 - [Sphinx](http://sphinx-doc.org/), Generator dokumnetasi
 - dan masih banyak lainnya
-
 
 ## Bacaan
 

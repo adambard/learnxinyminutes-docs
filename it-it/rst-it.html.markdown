@@ -31,12 +31,11 @@ Oppure, se hai `pip` installato sul tuo sistema:
 $ pip install docutils
 ```
 
-
 ## Sintassi del file
 
 Ecco un semplice esempio della sintassi RST:
 
-```
+```rst
 .. Le righe che iniziano con due punti sono comandi speciali. Ma se non è possibile trovare alcun comando, la riga viene considerata come un commento
 
 ===============================================================================
@@ -103,7 +102,6 @@ Ma ci sono applicazioni più complesse che utilizzano il formato RST:
 - [Pelican](http://blog.getpelican.com/), un generatore di siti statici
 - [Sphinx](http://sphinx-doc.org/), un generatore di documentazione
 - e molti altri
-
 
 ## Letture
 

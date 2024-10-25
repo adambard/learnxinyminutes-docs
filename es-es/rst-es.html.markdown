@@ -9,7 +9,6 @@ filename: restructuredtext-es.rst
 lang: es-es
 ---
 
-
 RST, de Restructured Text, es un formato de fichero creado por la comunidad Python para escribir documentación. Es parte del paquete [Docutils](https://docutils.sourceforge.io/rst.html).
 
 RST es un lenguaje de marcas similar a HTML pero mucho más ligero y fácil de leer.
@@ -30,12 +29,11 @@ Si tu sistema tiene `pip`, también puedes utilizarlo para instalar `docutils`.
 $ pip install docutils
 ```
 
-
 ## Sintaxis.
 
 Un ejemplo simple de sintaxis:
 
-```
+```rst
 .. Las líneas que empiezan por un punto seguido de otro punto son comandos especiales. Si no se encuentra ningún comando, se considerará que esa línea es un comentario.
 
 ========================================================================
@@ -65,14 +63,14 @@ Recuerda alinear los símbolos de lista (como - o \*) al margen izquierdo del an
 - Segundo elemento
 
   - Subelemento
-    
+
 - Tercer elemento
 
 o
 
 * Primer elemento
 * Segundo elemento
-    
+
   * Subelemento
 
 * Tercer elemento
@@ -97,7 +95,6 @@ Hay varias formas de construir enlaces:
 .. _GitHub: https://github.com/
 ```
 
-
 ## Como utilizarlo
 
 RST viene con el paquete `docutils` dentro del cual está el comando `rst2html`, por ejemplo:
@@ -113,7 +110,6 @@ Hay aplicaciones más complejas que usan el formato RST:
 - [Pelican](http://blog.getpelican.com/), un generador de sitios web estáticos.
 - [Sphinx](http://sphinx-doc.org/), un generador de documentación.
 - y muchos otros.
-
 
 ## Otras lecturas
 

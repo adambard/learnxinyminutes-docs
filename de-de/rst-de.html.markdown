@@ -36,7 +36,7 @@ initiiert werden.
 
 Ein einfaches Beispiel für die Dateisyntax:
 
-```
+```rst
 .. Zeilen, die mit zwei Punkten starten sind spezielle Befehle.
 
 .. Wenn kein Befehl gefunden wird, wird die Zeile als Kommentar gewertet.

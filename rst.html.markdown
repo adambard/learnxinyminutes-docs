@@ -32,7 +32,7 @@ $ pip install docutils
 
 A simple example of the file syntax:
 
-```
+```rst
 .. Lines starting with two dots are special commands. But if no command can be found, the line is considered as a comment.
 
 =========================================================
