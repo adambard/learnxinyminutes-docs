@@ -38,8 +38,8 @@ notSure = "maybe a string instead";
 notSure = false; // okay, definitely a boolean
 
 // When we are not sure about the type, and don't want to use "any", we can use "unknown" type
-let unknownVariable: unknown = 'Abc'; // we don't fully know yet the type
-unknownVariable = 1234; // possible
+let unknownVariable: unknown = 'Some string'; // we don't fully know yet the type
+unknownVariable = 2; // possible
 const someVariable: string = unknownVariable; // Invalid; we can't assign unknownVariable to any other type (without an explicit assertion), unlike any
 
 // Use const keyword for constants
