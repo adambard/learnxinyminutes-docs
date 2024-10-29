@@ -103,11 +103,11 @@ You can build the site locally to test your changes. Follow the steps below.
    * `cd learnxinyminutes-site/`
    * `bundle install`
 * Get the source in place
-   * Copy the contents of your clone of the fork of learnxinyminutes-docs repo
+   * A) Copy the contents of your clone of the fork of learnxinyminutes-docs repo
      into the `source/docs` folder. There shouldn't be a `learnxinyminutes-docs`
      folder inside the `docs` folder, it should just contain all the repo
      contents.
-   * Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
+   * B) Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
       * `cd source/docs/`
       * `git clone https://github.com/YOUR-USERNAME/learnxinyminutes-docs ./source/docs/`
 * Build the site or run a development server to test your changes (NOTE: run
