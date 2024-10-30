@@ -1,5 +1,4 @@
 ---
-name: Go
 language: Go
 filename: learngo-it.go
 contributors:

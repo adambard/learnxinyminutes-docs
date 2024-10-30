@@ -1,5 +1,4 @@
 ---
-name: Go
 category: language
 language: Go
 lang: es-es

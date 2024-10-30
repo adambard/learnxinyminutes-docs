@@ -1,5 +1,4 @@
 ---
-name: ruby
 language: Ruby
 filename: learnruby-tr.rb
 contributors:

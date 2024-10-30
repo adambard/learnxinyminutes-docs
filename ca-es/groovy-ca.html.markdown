@@ -1,5 +1,4 @@
 ---
-name: Groovy
 category: language
 language: Groovy
 lang: ca-es

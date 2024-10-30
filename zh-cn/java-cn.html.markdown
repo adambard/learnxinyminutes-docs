@@ -1,5 +1,4 @@
 ---
-name: java
 category: language
 language: Java
 lang: zh-cn

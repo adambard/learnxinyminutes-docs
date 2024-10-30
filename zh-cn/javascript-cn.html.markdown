@@ -1,7 +1,6 @@
 ---
 language: JavaScript
 category: language
-name: javascript
 filename: javascript-zh.js
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]

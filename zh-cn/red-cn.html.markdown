@@ -1,5 +1,4 @@
 ---
-name: Red
 category: language
 language: Red
 filename: LearnRed-zh.red

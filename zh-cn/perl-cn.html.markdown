@@ -1,5 +1,4 @@
 ---
-name: perl
 category: language
 language: Perl
 filename: learnperl-cn.pl

@@ -1,5 +1,4 @@
 ---
-name: Go
 category: language
 language: Go
 filename: learngo.go

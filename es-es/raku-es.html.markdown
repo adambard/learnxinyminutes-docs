@@ -1,5 +1,4 @@
 ---
-name: Raku
 category: language
 language: Raku
 filename: learnraku-es.raku
