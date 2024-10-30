@@ -90,26 +90,26 @@ addition or not.
 
 ## Building the site locally
 
-Install Ruby, on macOS you can do it by installing [Homebrew](https://brew.sh/) then
+Install Ruby. On macOS this can be done with [Homebrew](https://brew.sh/).
 
 ```sh
 brew install ruby
+# Install Ruby package manager
+gem install bundler
 ```
 
-then
+Then clone two repos, install dependencies and run.
 
 ```sh
-# Install Ruby bundler
-gem install bundler
-
-# Clone the repo for the website
+# Clone website
 git clone https://github.com/adambard/learnxinyminutes-site
-# and clone the repo with all the content (this repo) into it
+# Clone docs (this repo) nested in website
 git clone https://github.com/<YOUR-USERNAME>/learnxinyminutes-docs ./learnxinyminutes-site/source/docs/
 
-# Install the dependencies and run the site
+# Install dependencies
 cd learnxinyminutes-site
 bundle install
 
+# Run
 bundle exec middleman serve
 ```
