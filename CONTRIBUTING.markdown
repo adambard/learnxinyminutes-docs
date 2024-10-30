@@ -90,27 +90,26 @@ addition or not.
 
 ## Building the site locally
 
-You can build the site locally to test your changes. Follow the steps below.
+Install Ruby, on macOS you can do it by installing [Homebrew](https://brew.sh/) then
 
-* Install Ruby language runtime and RubyGems. See
-  [here](https://middlemanapp.com/basics/install/)
-  for more details.
-* Clone or zip download the
-  [learnxinyminutes-site](https://github.com/adambard/learnxinyminutes-site)
-  repository.
-   * `git clone https://github.com/adambard/learnxinyminutes-site`
-* Install Middleman and other required dependencies using Bundler.
-   * `cd learnxinyminutes-site/`
-   * `bundle install`
-* Get the source in place
-   * Copy the contents of your clone of the fork of learnxinyminutes-docs repo
-     into the `source/docs` folder. There shouldn't be a `learnxinyminutes-docs`
-     folder inside the `docs` folder, it should just contain all the repo
-     contents.
-   * Checkout your fork of the learnxinyminutes-docs repo as `source/docs`.
-      * `cd source/docs/`
-      * `git clone https://github.com/YOUR-USERNAME/learnxinyminutes-docs ./source/docs/`
-* Build the site or run a development server to test your changes (NOTE: run
-  these commands at `learnxinyminutes-site/`).
-   * Build - `bundle exec middleman build`
-   * Dev server - `bundle exec middleman --force-polling --verbose`
+```sh
+brew install ruby
+```
+
+then
+
+```sh
+# Install Ruby bundler
+gem install bundler
+
+# Clone the repo for the website
+git clone https://github.com/adambard/learnxinyminutes-site
+# and clone the repo with all the content (this repo) into it
+git clone https://github.com/<YOUR-USERNAME>/learnxinyminutes-docs ./learnxinyminutes-site/source/docs/
+
+# Install the dependencies and run the site
+cd learnxinyminutes-site
+bundle install
+
+bundle exec middleman serve
+```
