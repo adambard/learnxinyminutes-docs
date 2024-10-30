@@ -1,5 +1,4 @@
 ---
-name: Sing
 category: language
 language: Sing
 filename: learnsing.sing

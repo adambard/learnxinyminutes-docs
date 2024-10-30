@@ -1,5 +1,4 @@
 ---
-name: CUE
 category: language
 language: CUE
 filename: learncue.cue
