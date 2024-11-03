@@ -129,8 +129,9 @@ public class LearnJavaDe {
         // Maps - Eine Sammlung von Objekten, welche eine Verknüpfung von Schlüsseln zu Werten (key => value) vornimmt.
         //            Eine Map kann keine Duplikate enthalten; Jeder Schlüssel kann genau einen Wert beinhalten.
         // HashMaps - Diese Klasse nutzt eine Hashtabelle zur Implementierung eines Map Interfaces.
-        //            Dies erlaubt es zur Laufzeit Standardoperationen wie gib (get) und einfügen (insert)
-        //            selbst für große Mengen in einer konstanten Zeit auszuführen (Laufzeitverhalten O(n)).
+        //            Dies erlaubt es zur Laufzeit Standardoperationen wie gib (get) und einfügen (insert).
+        //            Dies dauert im Mittel nur "konstante" Zeit, auch genannt O(1). Für Details siehe
+        //            https://de.wikipedia.org/wiki/Landau-Symbole und https://de.wikipedia.org/wiki/Hashtabelle
 
         ///////////////////////////////////////
         // Operatoren
