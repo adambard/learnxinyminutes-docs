@@ -461,10 +461,10 @@ end module fruity
 ! to express loop-level parallelism
 
 integer :: i
-real :: array(100)
+real :: array(10)
 
 DO CONCURRENT (i = 1:size(array))
-    array(i) = sqrt(i**i)
+    array(i) = sqrt(real(i)**i)
 END DO
 
 
