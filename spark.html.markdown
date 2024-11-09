@@ -4,7 +4,7 @@ category: tool
 tool: Spark
 filename: learnspark.spark
 contributors:
-    - ["YourName", "https://github.com/Scronge"]
+    - ["Scronge", "https://github.com/Scronge"]
 ---
 
 [Spark](https://spark.apache.org/) is an open-source distributed data processing framework that enables large-scale data processing across clusters. This guide covers the basics of **Apache Spark** using PySpark, the Python API.
