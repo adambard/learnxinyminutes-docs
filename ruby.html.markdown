@@ -233,11 +233,14 @@ hash['number'] #=> 5
 # Asking a hash for a key that doesn't exist returns nil.
 hash['nothing here'] #=> nil
 
-# When using symbols for keys in a hash, you can use an alternate syntax.
+# When using symbols for keys in a hash, you can use an alternate syntax similar
+# to JavaScript.
 
+# key => value
 hash = { :defcon => 3, :action => true }
 hash.keys #=> [:defcon, :action]
 
+# key: value
 hash = { defcon: 3, action: true }
 hash.keys #=> [:defcon, :action]
 
