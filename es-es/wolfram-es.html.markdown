@@ -3,7 +3,7 @@ language: Wolfram
 lang: es-es
 contributors:
     - ["Daniel Caballero", "http://github.com/danielcaballero796/"]
-filename: learnwolfram-es.md
+filename: learnwolfram-es.nb
 ---
 
 Wolfram es un lenguaje subyacente originalmente utilizado en Mathematica, pero ahora esta disponible para su uso en múltiples contextos.
