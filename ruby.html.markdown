@@ -259,8 +259,8 @@ else
   'else, also optional'
 end
 
-# If a condition controls invocation of a single statement rather than a block of code
-# you can use postfix-if notation
+# If a condition controls invocation of a single statement rather than a block
+# of code you can use postfix-if notation
 warnings = ['Patronimic is missing', 'Address too short']
 puts("Some warnings occurred:\n" + warnings.join("\n"))  if !warnings.empty?
 
@@ -279,9 +279,10 @@ for counter in 1..5
   puts "iteration #{counter}"
 end
 
-# The `do |variable| ... end` construct above is called a 'block'. Blocks are similar
-# to lambdas, anonymous functions or closures in other programming languages. They can
-# be passed around as objects, called, or attached as methods.
+# The `do |variable| ... end` construct above is called a 'block'. Blocks are
+# similar to lambdas, anonymous functions or closures in other programming
+# languages. They can be passed around as objects, called, or attached as
+# methods.
 #
 # The 'each' method of a range runs the block once for each element of the range.
 # The block is passed a counter as a parameter.
@@ -415,19 +416,20 @@ surround { puts 'hello world' }
 #=> hello world
 #=> }
 
-# Blocks can be converted into a 'proc' object, which wraps the block
-# and allows it to be passed to another method, bound to a different scope,
-# or manipulated otherwise. This is most common in method parameter lists,
-# where you frequently see a trailing '&block' parameter that will accept
-# the block, if one is given, and convert it to a 'Proc'. The naming here is
-# convention; it would work just as well with '&pineapple'.
+# Blocks can be converted into a 'proc' object, which wraps the block and allows
+# it to be passed to another method, bound to a different scope, or manipulated
+# otherwise. This is most common in method parameter lists, where you frequently
+# see a trailing '&block' parameter that will accept the block, if one is given,
+# and convert it to a 'Proc'. The naming here is convention; it would work just
+# as well with '&pineapple'.
 def guests(&block)
   block.class #=> Proc
   block.call(4)
 end
 
 # The 'call' method on the Proc is similar to calling 'yield' when a block is
-# present. The arguments passed to 'call' will be forwarded to the block as arguments.
+# present. The arguments passed to 'call' will be forwarded to the block as
+# arguments.
 
 guests { |n| "You have #{n} guests." }
 # => "You have 4 guests."
@@ -480,9 +482,9 @@ best *ranked_competitors
 5.even? #=> false
 5.odd? #=> true
 
-# By convention, if a method name ends with an exclamation mark, it does something destructive
-# like mutate the receiver. Many methods have a ! version to make a change, and
-# a non-! version to just return a new changed version.
+# By convention, if a method name ends with an exclamation mark, it does
+# something destructive like mutate the receiver. Many methods have a ! version
+# to make a change, and a non-! version to just return a new changed version.
 company_name = "Dunder Mifflin"
 company_name.upcase #=> "DUNDER MIFFLIN"
 company_name #=> "Dunder Mifflin"
@@ -516,7 +518,8 @@ class Human
     @name
   end
 
-  # The above functionality can be encapsulated using the attr_accessor method as follows.
+  # The above functionality can be encapsulated using the attr_accessor method
+  # as follows.
   attr_accessor :name
 
   # Getter/setter methods can also be created individually like this.
