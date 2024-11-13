@@ -58,6 +58,7 @@ The syntax for tables is [very complicated](https://en.wikipedia.org/wiki/Help:T
 ```
 
 which renders to
+
 | **column title A** | **column title B** |
 |---|---|
 | cell A1 | cell B1 |
@@ -120,6 +121,7 @@ If a word is interrupted by a link, it is "blended" into the link. For example, 
 To suppress this behavior, use `<nowiki>`. For example, `[[micro-]]<nowiki />second` renders to [micro-](https://en.wikipedia.org/wiki/micro-)second.
 
 There are three kinds of external linking. The third kind is preferred:
+
 | wikitext | renders to |
 |----|----|
 | `https://www.wikipedia.org` | [https://www.wikipedia.org](https://www.wikipedia.org) |
