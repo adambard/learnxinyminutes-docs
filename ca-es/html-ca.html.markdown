@@ -1,6 +1,6 @@
 ---
 language: HTML
-filename: html-ca.md
+filename: html-ca.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:

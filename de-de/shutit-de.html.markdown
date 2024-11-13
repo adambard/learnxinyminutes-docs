@@ -1,6 +1,6 @@
 ---
 category: framework
-filename: learnshutit-de.html
+filename: learnshutit-de.py
 framework: ShutIt
 contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]

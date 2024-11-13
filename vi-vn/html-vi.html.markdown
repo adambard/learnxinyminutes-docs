@@ -1,6 +1,6 @@
 ---
 language: HTML
-filename: learnhtml-vi.html
+filename: learnhtml-vi.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:

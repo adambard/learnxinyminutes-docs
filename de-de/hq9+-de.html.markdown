@@ -1,6 +1,6 @@
 ---
 language: HQ9+
-filename: hq9+-de.html
+filename: hq9+-de.txt
 contributors:
     - ["Alexey Nazaroff", "https://github.com/rogaven"]
 translators:

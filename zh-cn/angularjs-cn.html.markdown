@@ -3,7 +3,7 @@ category: framework
 framework: AngularJS
 contributors:
     - ["Walter Cordero", "http://waltercordero.com"]
-filename: learnangular-cn.html
+filename: learnangular-cn.txt
 translators:
    - ["Jiang Haiyun", "http://www.atjiang.com"]
 lang: zh-cn

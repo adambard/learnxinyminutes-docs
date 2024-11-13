@@ -6,7 +6,6 @@ contributors:
     - ["Divay Prakash", "https://github.com/divayprakash"]
 translators:
   - ["caminsha", "https://github.com/caminsha"]
-filename: processing-de.md
 lang: de-de
 ---
 

@@ -5,7 +5,7 @@ contributors:
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
 lang: ro-ro
-filename: haskell-ro.html
+filename: haskell-ro.hs
 ---
 
 Haskell este un limbaj de programare practic, pur funcțional.

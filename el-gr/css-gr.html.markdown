@@ -2,7 +2,7 @@
 language: CSS
 contributors:
     - ["Kostas Bariotis", "http://kostasbariotis.com"]
-filename: css-gr.html.markdown
+filename: css-gr.css
 lang: el-gr
 ---
 

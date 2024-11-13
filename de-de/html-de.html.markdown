@@ -4,7 +4,7 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-filename: learnhtml-de.html
+filename: learnhtml-de.txt
 lang: de-de
 ---
 

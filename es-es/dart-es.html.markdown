@@ -4,7 +4,7 @@ contributors:
     - ["Joao Pedrosa", "https://github.com/jpedrosa/"]
 translators:
     - ["Jorge Antonio Atempa", "http://www.twitter.com/atempa09"]
-filename: dart-es.md
+filename: dart-es.dart
 lang: es-es
 ---
 

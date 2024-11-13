@@ -1,6 +1,6 @@
 ---
 language: HTML
-filename: learnhtml-gr.html
+filename: learnhtml-gr.txt
 contributors:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 lang: el-gr

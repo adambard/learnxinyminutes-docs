@@ -5,7 +5,7 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
-filename: bf-ro.html
+filename: bf-ro.bf
 lang: ro-ro
 ---
 

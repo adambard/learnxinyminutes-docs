@@ -3,7 +3,7 @@ category: framework
 framework: ShutIt
 contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]
-filename: learnshutit.html
+filename: learnshutit.py
 ---
 
 ## ShutIt

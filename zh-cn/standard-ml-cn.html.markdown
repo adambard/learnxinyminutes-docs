@@ -5,7 +5,7 @@ contributors:
     - ["David Pedersen", "http://lonelyproton.com/"]
     - ["James Baker", "http://www.jbaker.io/"]
     - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
-filename: standard-ml-cn.html
+filename: standard-ml-cn.sml
 translators:
    - ["Buqian Zheng", "https://github.com/zhengbuqian"]
 lang: zh-cn
