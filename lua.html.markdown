@@ -13,70 +13,168 @@ filename: learnlua.lua
      multi-line comment.
 --]]
 
+print("Hello, Lua")
+
 ----------------------------------------------------
--- 1. Variables and flow control.
+---- Variables, Data Types, and some operations ----
 ----------------------------------------------------
 
-num = 42  -- Numbers can be integer or floating point.
+-- integer and float values --
+num1 = 42
+num2 = 10.5
 
-s = 'walternate'  -- Immutable strings like Python.
-t = "double-quotes are also fine"
-u = [[ Double brackets
-       start and end
-       multi-line strings.]]
+-- Mathematical Operations :
+print(num1 + num2)  -- Addition
+print(num1 - num2)  -- Subtraction
+print(num1 * num2)  -- Multiplication
+print(num1 / num2)  -- Division
+print(num1 // num2) -- floor Division (round down to the closest integer)
+print(num1 % num2)  -- Modulus (gives the remainder of num1/num2)
+print(num1 ^ num2)  -- Exponentiation
+
+
+-- string values --
+str1 = 'single quotes string'
+str2 = "double quotes string"
+str3 = [[ multi
+          line
+          string]]
+
+-- string concatenation is done using two dots :
+print(str1 .. str2)
+
+
+-- nil values (the absence of a value) -- 
+-- an undefined variable returns nil
+print(undefined_variable)
+-- a previously defined variable can be undefined with nil :
+t = 4
 t = nil  -- Undefines t; Lua has garbage collection.
 
--- Blocks are denoted with keywords like do/end:
+
+-- Boolean values --
+a = true
+b = false
+
+-- note : other than writing false, you can write nil to represent a false value, you can't however write 0 or '' like in other languages.
+
+-- boolean operations :
+print(not a)
+print(a and b)
+print(a or b)
+
+
+-- Variables are global by default
+-- to make them local you write :
+local variable_name = variable_value
+
+
+----------------------------------------------------
+------------ Standard Input and Output -------------
+----------------------------------------------------
+
+-- Input :
+io.read() -- allow the user to input data through the console
+
+-- example :
+print("write your name :")
+name = io.read() -- takes the user input and stores it in a variable named "name"
+print("Your name is " .. name)
+
+-- Output :
+--[[
+The io.write() function is used to print text or data to the standard output (usually the console) without automatically adding a newline at the end. Unlike print()
+]]
+
+io.write("Hello, Lua")
+
+-- you can add a new line with \n if you want
+io.write("Hello, Lua\n")
+-- or a tab with -t, or a backslash (\) with \\
+
+
+----------------------------------------------------
+------------------ If Statements -------------------
+----------------------------------------------------
+-- Blocks of code are enclosed between key words like
+-- then/end or do/end
+
+-- syntax :
+-- if (condition is true) then (do this) end
+
+-- if (condition is true) then (do this)
+-- elseif (this condition is true) then (do this instead)
+-- else (if no condition is true, do this) end
+
+--example :
+if true then
+  print('something')
+end
+
+if false then
+    print('nothing')
+end
+
+-- comparison operations :
+a == b -- Equality
+a ~= b -- Inequality
+a > b -- greater than
+a >= -- greater or equal to
+a < b -- less than
+a >= -- less or equal to
+-- alongside the (not, and, or) operations we learned earlier
+
+----------------------------------------------------
+------------------- while loops --------------------
+----------------------------------------------------
+num = 0
+
 while num < 50 do
-  num = num + 1  -- No ++ or += type operators.
+    print(num)
+    num = num + 1
 end
 
--- If clauses:
-if num > 40 then
-  print('over 40')
-elseif s ~= 'walternate' then  -- ~= is not equals.
-  -- Equality check is == like Python; ok for strs.
-  io.write('not over 40\n')  -- Defaults to stdout.
-else
-  -- Variables are global by default.
-  thisIsGlobal = 5  -- Camel case is common.
+-- note : this language doesn't have ++ or -- or += or -= operations like in some other languages.
 
-  -- How to make a variable local:
-  local line = io.read()  -- Reads next stdin line.
+----------------------------------------------------
+-------------------- for loops ---------------------
+----------------------------------------------------
+-- syntax :
+-- for (variable_name) = (start_value , end_value , step) do (something) end
+-- note : both the start_value and end_value are included in the range.
+-- note : the step value is optional, and it's default value is +1
 
-  -- String concatenation uses the .. operator:
-  print('Winter is coming, ' .. line)
+-- examples :
+for i = 1, 10 do
+  print(i)
 end
 
--- Undefined variables return nil.
--- This is not an error:
-foo = anUnknownVariable  -- Now foo = nil.
-
-aBoolValue = false
-
--- Only nil and false are falsy; 0 and '' are true!
-if not aBoolValue then print('it was false') end
-
--- 'or' and 'and' are short-circuited.
--- This is similar to the a?b:c operator in C/js:
-ans = aBoolValue and 'yes' or 'no'  --> 'no'
-
-karlSum = 0
-for i = 1, 100 do  -- The range includes both ends.
-  karlSum = karlSum + i
+for j = 10, 1, -1 do
+    print(j)
 end
 
--- Use "100, 1, -1" as the range to count down:
-fredSum = 0
-for j = 100, 1, -1 do fredSum = fredSum + j end
+for j = 10, 1, -2 do
+    print(j)
+end
 
--- In general, the range is begin, end[, step].
+----------------------------------------------------
+---------------- repeat until loops ----------------
+----------------------------------------------------
 
--- Another loop construct:
+--[[The repeat, until loop in Lua is similar to the do, while loop in other languages. It repeatedly executes a block of code until a specified condition becomes true. Unlike the while loop, the repeat ... until loop will always execute at least once, since the condition is checked after each iteration.]]
+
+-- syntax :
 repeat
-  print('the way of the future')
-  num = num - 1
-until num == 0
+    -- code to execute
+until condition
+
+-- example
+k = 10
+
+repeat
+  print(k)
+  k = k - 1
+until k == 0
 
 
 ----------------------------------------------------
