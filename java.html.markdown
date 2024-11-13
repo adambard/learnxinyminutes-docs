@@ -225,7 +225,7 @@ public class LearnJava {
         String fooString = "My String Is Here!";
 
         // Text blocks
-        vat textBlock = """
+        var textBlock = """
                         This is a <Text Block> in Java 
                         """;
 
