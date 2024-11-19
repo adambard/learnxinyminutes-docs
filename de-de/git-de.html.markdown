@@ -26,7 +26,7 @@ Eine Versionsverwaltung erfasst die Änderungen einer Datei oder eines Verzeichn
 * Verteilte Versionsverwaltung konzentriert sich auf das Teilen der Änderungen. Jede Änderung hat eine eindeutige ID.
 * Verteilte Systeme haben keine vorbestimmte Struktur. Ein SVN-ähnliches, zentrales System wäre mit Git ebenso umsetzbar.
 
-[Weiterführende Informationen](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Weiterführende Informationen](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
 ### Warum Git?
 
@@ -50,7 +50,7 @@ Ein Repository besteht in Git aus dem .git-Verzeichnis und dem Arbeitsverzeichni
 ### .git-Verzeichnis (Teil des Repositorys)
 
 Das .git-Verzeichnis enthält alle Einstellungen, Logs, Branches, den HEAD und mehr.
-[Ausführliche Übersicht](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Ausführliche Übersicht](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Arbeitsverzeichnis (Teil des Repositorys)
 
@@ -73,12 +73,6 @@ Ein Branch, ein Ast oder Zweig, ist im Kern ein Pointer auf den letzten Commit, 
 HEAD ist ein Pointer auf den aktuellen Branch. Ein Repository hat nur einen *aktiven* HEAD. 
 
 Ein *head* ist ein Pointer, der auf einen beliebigen Commit zeigt.  Ein Repository kann eine beliebige Zahl von *heads* enthalten.
-
-### Konzeptionelle Hintergründe
-
-* [Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git For Designers](http://hoth.entp.com/output/git_for_designers.html)
-
 
 ## Befehle
 
@@ -104,7 +98,7 @@ $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
 
-[Mehr über git config](http://git-scm.com/docs/git-config)
+[Mehr über git config](https://git-scm.com/docs/git-config)
 
 ### help
 
@@ -255,7 +249,7 @@ $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 Google ist dein Freund; für mehr Beispiele:
-[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+[Git Grep Ninja](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -338,7 +332,7 @@ Nimm alle Änderungen, die in einem Branch durch Commits vorgenommen wurden, und
 $ git rebase master experimentBranch
 ```
 
-[Weiterführende Informationen](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Weiterführende Informationen](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 ### reset (mit Vorsicht einsetzen)
 
@@ -375,14 +369,12 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 ## Weiterführende Informationen
 
-* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
+* [git-scm - Video Tutorials](https://git-scm.com/videos)
 
-* [git-scm - Video Tutorials](http://git-scm.com/videos)
-
-* [git-scm - Documentation](http://git-scm.com/docs)
+* [git-scm - Documentation](https://git-scm.com/docs)
 
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [gitflow - Ein Modell um mit Branches zu arbeiten](https://nvie.com/posts/a-successful-git-branching-model/)
 
-* [gitflow - Ein Modell um mit Branches zu arbeiten](http://nvie.com/posts/a-successful-git-branching-model/)
+* [Git For Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/)

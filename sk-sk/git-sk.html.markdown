@@ -29,7 +29,7 @@ Riadenie revízií je systém, ktorý postupom času zaznamenáva zmeny súboru 
 * Distribuované riadenie revízií sa zameriava na zdieľanie zmien. Kaťdá zmena má jedinečný identifikátor (id).
 * Distribuované systémy nemajú definovanú štruktúru. S gitom môžeš mať centralizovaný systém v subversion (SVN) štýle.
 
-[Ďalšie informácie](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Ďalšie informácie](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
 ### Prečo Používať Git? 
 
@@ -52,7 +52,7 @@ Git repozitár sa skladá z .git adresára a pracovného stromu
 ### .git Adresár (časť repozitára)
 
 .git  adresár obsahuje všetky konfigurácie, logy, vetvy, odkaz na aktuálnu vetvu (HEAD) a ostatné.
-[Detailný zoznam.](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Detailný zoznam.](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Pracovný Strom (Working Tree - časť repozitára)
 
@@ -84,12 +84,6 @@ head je ukazateľ, ktorý môže ukazovať na akýkoľvek commit. Repozitár mô
 * Staged - Zmenený súbor, ktorý pôjde do najbližšieho commit snímku.
 * Committed - Súbory boli commitnuté do Git Databázy.
 
-### Koncepčné zdroje
-
-* [Git Pre Informatikov](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git Pre Designerov](http://hoth.entp.com/output/git_for_designers.html)
-
-
 ## Príkazy
 
 
@@ -112,7 +106,7 @@ $ git config --global user.email "MôjEmail@Zoho.com"
 $ git config --global user.name  "Moje Meno	"
 ```
 
-[Prečítaj si viac o git configu.](http://git-scm.com/docs/git-config)
+[Prečítaj si viac o git configu.](https://git-scm.com/docs/git-config)
 
 ### pomoc
 
@@ -302,7 +296,7 @@ $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 Google je tvoj kamarát; pre viac príkladov skoč na
-[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+[Git Grep Ninja](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -444,7 +438,7 @@ $ git stash pop
 
 Hotovo, môžeš pokračovať v práci!
 
-[Čítaj viac.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
+[Čítaj viac.](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning)
 
 ### rebase (pozor)
 
@@ -457,7 +451,7 @@ Zober všetky zmeny commitnuté do vetvy a aplikuj ich na inú vetvu.
 $ git rebase master experimentBranch
 ```
 
-[Čítaj viac.](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Čítaj viac.](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 ### reset (pozor)
 
@@ -503,22 +497,20 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 ## Ďalšie informácie
 
-* [tryGit - Zábavný interaktívny spôsob, ako sa naučiť Git.](http://try.github.io/levels/1/challenges/1)
-
 * [Udemy Git Tutoriál: Kompletný návod](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
-* [Git Immersion - Návod, ktorý Ťa prevedie základmi Gitu](http://gitimmersion.com/)
+* [Git Immersion - Návod, ktorý Ťa prevedie základmi Gitu](https://gitimmersion.com/)
 
-* [git-scm - Video Tutoriály](http://git-scm.com/videos)
+* [git-scm - Video Tutoriály](https://git-scm.com/videos)
 
-* [git-scm - Dokumentácia](http://git-scm.com/docs)
+* [git-scm - Dokumentácia](https://git-scm.com/docs)
 
 * [Atlassian Git - Tutoriály & Postupy](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [Git - jednoducho](https://rogerdudler.github.io/git-guide/index.html)
 
-* [Git - jednoducho](http://rogerdudler.github.io/git-guide/index.html)
+* [Pro Git](https://git-scm.com/book/en/v2)
 
-* [Pro Git](http://www.git-scm.com/book/en/v2)
+* [Úvod do Gitu a GitHubu pre začiatočníkov (Tutoriál)](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
-* [Úvod do Gitu a GitHubu pre začiatočníkov (Tutoriál)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Git Pre Informatikov](https://eagain.net/articles/git-for-computer-scientists/)

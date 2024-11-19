@@ -31,7 +31,7 @@ uno o varios archivos, a lo largo del tiempo.
 + El versionamiento distribuido no tiene una estructura definida, incluso se
   puede mantener el estilo de los repositorios SVN con git.
 
-[Información adicional](http://git-scm.com/book/es/Empezando-Acerca-del-control-de-versiones)
+[Información adicional](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Acerca-del-Control-de-Versiones)
 
 ### ¿Por qué usar Git?
 
@@ -58,7 +58,7 @@ Un repositorio esta compuesto por la carpeta .git y un "árbol de trabajo".
 El directorio .git contiene todas las configuraciones, registros, branches, HEAD
 y mas.
 
-[Lista detallada.](http://es.gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Lista detallada.](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Directorio de trabajo (componentes del repositorio)
 
@@ -91,14 +91,7 @@ repositorio solo puede tener un HEAD activo. En cambio "head", es un apuntador a
 cualquier commit realizado, un repositorio puede tener cualquier número de
 "heads".
 
-### conceptos - recursos.
-
-* [Git para informáticos](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git para diseñadores](http://hoth.entp.com/output/git_for_designers.html)
-
-
 ## Comandos.
-
 
 ### init
 
@@ -123,7 +116,7 @@ $ git config --global user.email "corre@gmail.com"
 $ git config --global user.name "nombre"
 ```
 
-[Más sobre git config.](http://git-scm.com/book/es/Personalizando-Git-Configuración-de-Git)
+[Más sobre git config.](https://git-scm.com/book/es/v2/Personalizaci%c3%b3n-de-Git-Configuraci%c3%b3n-de-Git)
 
 ### help
 
@@ -275,7 +268,7 @@ $ git grep -e 'nombreArreglo' --and \( -e agregar -e remover \)
 
 Más ejemplos:
 
-- [Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+- [Git Grep Ninja](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -354,7 +347,7 @@ de otra rama. *No reescribe los commits que se han empujado antes a un repositor
 $ git rebase master experimentBranch
 ```
 
-[Información adicional.](http://git-scm.com/book/es/Ramificaciones-en-Git-Procedimientos-básicos-para-ramificar-y-fusionar)
+[Información adicional.](https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Reorganizar-el-Trabajo-Realizado)
 
 ### reset (precaución)
 
@@ -396,22 +389,18 @@ $ git rm /directorio/del/archivo/FooBar.c
 
 ## Información Adicional
 
-* [tryGit - Una forma entretenida y rapida de aprender Git.](http://try.github.io/levels/1/challenges/1)
-
 * [Udemy tutorial de Git: Una guía completa](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
-* [Inmersión Git - Una visita guiada caminando a través de los fundamentos de git](http://gitimmersion.com/)
+* [Inmersión Git - Una visita guiada caminando a través de los fundamentos de git](https://gitimmersion.com/)
 
-* [git-scm - Video-tutoriales](http://git-scm.com/videos)
-
-* [git-scm - Documentacion](http://git-scm.com/book/es)
+* [git-scm - Video-tutoriales](https://git-scm.com/videos)
 
 * [Atlassian Git - Tutoriales y Flujos de trabajo](https://www.atlassian.com/git/)
 
-* [SalesForce Chuleta](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [git - la guía sencilla](https://rogerdudler.github.io/git-guide/index.es.html)
 
-* [Git - La guía simple](http://rogerdudler.github.io/git-guide/index.html)
+* [Pro Git](https://git-scm.com/book/es/v2)
 
-* [Pro Git](http://www.git-scm.com/book/en/v2)
+* [Una introducción a Git y GitHub para principiantes (Tutorial)](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
-* [Una introducción a Git y GitHub para principiantes (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Git para informáticos](https://eagain.net/articles/git-for-computer-scientists/)

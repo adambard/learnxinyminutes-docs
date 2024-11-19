@@ -31,7 +31,7 @@ alteração é associada a um *id* único.
 * Sistemas distribuidos não têm estrutura definida. É possivel ter um sistema
 centralizado ao estilo SVN usando git.
 
-[Informação adicional (EN)](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Informação adicional (EN)](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
 ### Porquê usar git?
 
@@ -59,7 +59,7 @@ Um repositório git é constituido pelo directório .git e a *working tree*
 O repositório .git contém todas as configurações, *logs*, *branches*,
 referências e outros.
 
-[Lista detalhada (EN)](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Lista detalhada (EN)](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### *Working Tree* (componente do repositório)
 
@@ -92,11 +92,6 @@ uma *HEAD* activa.
 *head* é uma referência que aponta para qualquer *commit*. Um repositório pode
 ter um número indefinido de *heads*
 
-### Recursos conceptuais (EN)
-
-* [Git para Cientistas de Computação](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git para Designers](http://hoth.entp.com/output/git_for_designers.html)
-
 ## Comandos
 
 ### *init*
@@ -122,7 +117,7 @@ $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
 
-[Aprenda mais sobre git config. (EN)](http://git-scm.com/docs/git-config)
+[Aprenda mais sobre git config. (EN)](https://git-scm.com/docs/git-config)
 
 ### help
 
@@ -274,7 +269,7 @@ $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 Google é teu amigo; para mais exemplos:
-[Git Grep Ninja (EN)](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+[Git Grep Ninja (EN)](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -361,7 +356,7 @@ público*
 $ git rebase master experimentBranch
 ```
 
-[Additional Reading (EN).](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Additional Reading (EN).](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 ### reset (cautela!)
 
@@ -402,12 +397,10 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 ## Informação complementar (EN)
 
-* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
+* [git-scm - Video Tutorials](https://git-scm.com/videos)
 
-* [git-scm - Video Tutorials](http://git-scm.com/videos)
-
-* [git-scm - Documentation](http://git-scm.com/docs)
+* [git-scm - Documentation](https://git-scm.com/docs)
 
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [Git para Cientistas de Computação](https://eagain.net/articles/git-for-computer-scientists/)

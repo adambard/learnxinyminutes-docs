@@ -36,7 +36,7 @@ alteração é associada a um *id* único.
 * Sistemas distribuídos não têm estrutura definida. É possivel ter um sistema
 centralizado ao estilo SVN usando git.
 
-[Informação adicional (EN)](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Informação adicional (EN)](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
 ### Por que usar git?
 
@@ -64,7 +64,7 @@ Um repositório git é constituído pelo diretório .git e a *working tree*
 O repositório .git contém todas as configurações, *logs*, *branches*,
 referências e outros.
 
-[Lista detalhada (EN)](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Lista detalhada (EN)](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### *Working Tree* (componente do repositório)
 
@@ -111,11 +111,6 @@ próximo commit
 * Consolidado (Committed): As mudanças foram registradas na base de dados do
 Git
 
-### Recursos conceituais (EN)
-
-* [Git para Cientistas de Computação](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git para Designers](http://hoth.entp.com/output/git_for_designers.html)
-
 ## Comandos
 
 ### *init*
@@ -141,7 +136,7 @@ $ git config --global user.email
 $ git config --global user.name
 ```
 
-[Aprenda mais sobre git config. (EN)](http://git-scm.com/docs/git-config)
+[Aprenda mais sobre git config. (EN)](https://git-scm.com/docs/git-config)
 
 ### help
 
@@ -363,7 +358,7 @@ $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 O Google é seu amigo; para mais exemplos:
-[Git Grep Ninja (EN)](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+[Git Grep Ninja (EN)](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -520,7 +515,7 @@ $ git stash pop
 
 Agora podemos voltar a trabalhar no que havíamos deixado de lado!
 
-[Additional Reading.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
+[Additional Reading.](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning)
 
 ### rebase (cautela!)
 
@@ -535,7 +530,7 @@ público*
 $ git rebase master experimentBranch
 ```
 
-[Leitura adicional (EN).](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Leitura adicional (EN).](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 ### reset (cuidado!)
 
@@ -619,26 +614,26 @@ $ git rm /caminho/para/o/arquivo/OlaMundo.c
 
 ## Leitura complementar
 
-* [Configurar o Git (GitHub Docs)](https://docs.github.com/pt/get-started/quickstart/set-up-git)
+* [Configurar o Git (GitHub Docs)](https://docs.github.com/pt/get-started/getting-started-with-git/set-up-git)
 
-* [Learn Git Branching - the most visual and interactive way to learn Git on the web](http://learngitbranching.js.org/)
+* [Learn Git Branching - the most visual and interactive way to learn Git on the web](https://learngitbranching.js.org/)
 
 * [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
-* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
+* [Git Immersion - A Guided tour that walks through the fundamentals of git](https://gitimmersion.com/)
 
-* [git-scm - Video Tutorials](http://git-scm.com/videos)
+* [git-scm - Video Tutorials](https://git-scm.com/videos)
 
-* [git-scm - Documentation](http://git-scm.com/docs)
+* [git-scm - Documentation](https://git-scm.com/docs)
 
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [git - guia prático](https://rogerdudler.github.io/git-guide/index.pt_BR.html)
 
-* [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
+* [Pro Git (em Português)](https://git-scm.com/book/pt-br/v2)
 
-* [Pro Git (em Português)](https://www.git-scm.com/book/pt-br/v2)
-
-* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [An introduction to Git and GitHub for Beginners (Tutorial)](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
 * [The New Boston tutorial to Git covering basic commands and workflow](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx)
+
+* [Git para Cientistas de Computação](https://eagain.net/articles/git-for-computer-scientists/)

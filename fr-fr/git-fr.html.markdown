@@ -35,7 +35,7 @@ Chaque changement a un identifiant unique.
 * Les systèmes distribués n'ont pas de structure définie. Vous pouvez aisément
 avoir un système centralisé de type SVN, avec Git.
 
-[Informations additionnelles](http://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-%C3%80-propos-de-la-gestion-de-version)
+[Informations additionnelles](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-%C3%80-propos-de-la-gestion-de-version)
 
 ### Pourquoi utiliser Git ?
 
@@ -63,7 +63,7 @@ Un dépôt Git comprend un répertoire .git et "l'arbre de travail" (working tre
 
 Le répertoire .git contient toutes les configurations, logs (journaux),
 branches, HEAD et plus.
-[Liste détaillée (EN)](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Liste détaillée (EN)](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Arbre de travail (composant du dépôt)
 
@@ -110,12 +110,6 @@ encore été rajouté à l'ensemble des fichiers Git
 * Validé ("committed") - Les fichiers ont été validés dans l'ensemble de
 fichiers
 
-### Ressources conceptuelles
-
-* [Git pour les informaticiens (EN)](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git pour les designers (EN)](http://hoth.entp.com/output/git_for_designers.html)
-
-
 ## Commandes
 
 
@@ -141,7 +135,7 @@ $ git config --global user.email "monEmail@foo.com"
 $ git config --global user.name "Mon nom"
 ```
 
-[Apprenez-en plus à propos de git config.](https://git-scm.com/book/fr/v1/Personnalisation-de-Git-Configuration-de-Git)
+[Apprenez-en plus à propos de git config.](https://git-scm.com/book/fr/v2/Personnalisation-de-Git-Configuration-de-Git)
 
 ### help
 
@@ -355,7 +349,7 @@ $ git grep -e 'nomDeTableau' --and \( -e rajouter -e enlever \)
 ```
 
 Google est votre ami; pour plus d'exemples :
-[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+[Git Grep Ninja](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -507,7 +501,7 @@ $ git stash pop
 
 Vous êtes maintenant prêt à retourner sur vos tâches de travail !
 
-[Lecture additionelle.](https://git-scm.com/book/fr/v1/Utilitaires-Git-Le-remisage)
+[Lecture additionelle.](https://git-scm.com/book/fr/v2/Utilitaires-Git-Remisage-et-nettoyage)
 
 ### rebase (attention)
 
@@ -521,7 +515,7 @@ ré-applique sur une autre branche.
 $ git rebase master brancheExperience
 ```
 
-[Lecture additionelle.](https://git-scm.com/book/fr/v1/Les-branches-avec-Git-Rebaser)
+[Lecture additionelle.](https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Rebaser-Rebasing)
 
 ### reset (attention)
 
@@ -564,20 +558,18 @@ $ git rm /chemin/vers/le/fichier/HelloWorld.c
 
 ## Informations complémentaires
 
-* [tryGit - A fun interactive way to learn Git (EN)](http://try.github.io/levels/1/challenges/1)
-
 * [Udemy Git Tutorial: A Comprehensive Guide (EN)](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
-* [git-scm - Tutoriaux vidéos](http://git-scm.com/videos)
+* [git-scm - Tutoriaux vidéos](https://git-scm.com/videos)
 
-* [git-scm - Documentation](http://git-scm.com/docs)
+* [git-scm - Documentation](https://git-scm.com/docs)
 
 * [Atlassian Git - Tutoriaux et Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet (EN)](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [git - petit guide](https://rogerdudler.github.io/git-guide/index.fr.html)
 
-* [Git - the simple guide (EN)](http://rogerdudler.github.io/git-guide/index.html)
+* [Livre Pro Git](https://git-scm.com/book/fr/v2)
 
-* [Livre Pro Git](http://www.git-scm.com/book/fr/v1)
+* [Une introduction à Git et GitHub pour les débutants (tutoriel) (EN)](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
-* [Une introduction à Git et GitHub pour les débutants (tutoriel) (EN)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Git pour les informaticiens (EN)](https://eagain.net/articles/git-for-computer-scientists/)
