@@ -536,38 +536,29 @@ class ClasseEsempio extends AltraClasse implements PrimaInterfaccia, SecondaInte
 
 I link di seguito sono solo per capire l'argomento, cerca pure su Google degli esempi specifici
 
-
-**Guida ufficiale di Oracle [solo in inglese]**:
+### Guida ufficiale di Oracle [solo in inglese]:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* Nuove funzionalità in Java 8:
+    * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-
-**Tutorial Online [in inglese]**
+### Tutorial Online [in inglese]:
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
+### Libri [in italiano]:
 
-**Libri [in italiano]** :
-
-* [Java la guida completa](http://www.amazon.it/Java-guida-completa-Herbert-Schildt/dp/8838667667/ref=sr_1_1?ie=UTF8&qid=1393422296&sr=8-1&keywords=java)
-
-* [Thinking in java](http://www.amazon.it/Thinking-Java-1-Bruce-Eckel/dp/8871923030/ref=sr_1_8?ie=UTF8&qid=1393422296&sr=8-8&keywords=java)
-
-* [Manuale di Java 7](http://www.amazon.com/gp/product/0071606300)
+* [Java la guida completa](http://www.amazon.it/Java-guida-completa-Herbert-Schildt/dp/8838667667)
+* [Thinking in java](http://www.amazon.it/Thinking-Java-1-Bruce-Eckel/dp/8871923030)
+* [Java: The Complete Reference, 13a edizione](https://www.amazon.it/Java-Reference-Thirteenth-Herbert-Schildt/dp/1265058431)

@@ -627,7 +627,7 @@ public class EnumTeste {
 
 Os links fornecidos aqui abaixo são apenas para ter uma compreensão do tema, use o Google e encontre exemplos específicos.
 
-Outros tópicos para pesquisar:
+### Outros tópicos para pesquisar:
 
 * [Tutorial Java para Sun Trail / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
 * [Modificadores de acesso do Java](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
@@ -639,12 +639,15 @@ Outros tópicos para pesquisar:
 * [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
 * [Tipos Genéricos](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 * [Conversões de código Java](http://www.oracle.com/technetwork/java/codeconv-138413.html)
+* Novos recursos no Java 8:
+    * [Expressões lambda (programação funcional)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [API de data e hora (pacote java.time)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-Livros:
+### Livros:
 
 * [Use a cabeça, Java](http://www.headfirstlabs.com/books/hfjava/)
 
-Apostila:
+### Apostila:
 
 * [Java e Orientação a Objetos](http://www.caelum.com.br/apostila-java-orientacao-objetos/)
 * [Java para Desenvolvimento Web](https://www.caelum.com.br/apostila-java-web/)

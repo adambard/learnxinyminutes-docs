@@ -460,38 +460,30 @@ public class BeispielKlasse extends ParentBeispielKlasse implements InterfaceEin
 Die folgenden Links dienen lediglich dazu Verständnis für die Kapitel aufzubauen.
 Für tiefergreifende Fragen ist Google der beste Startpunkt.
 
-**Offizielle Oracle Guides**:
+### Offizielle Oracle Guides:
 
 * [Java Tutorial Trail from Sun / Oracle](http://docs.oracle.com/javase/tutorial/index.html)
-
 * [Java Access level modifiers](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
-
 * [Object-Oriented Programming Concepts](http://docs.oracle.com/javase/tutorial/java/concepts/index.html):
     * [Inheritance](http://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
     * [Polymorphism](http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html)
     * [Abstraction](http://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)
-
 * [Exceptions](http://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
-
 * [Interfaces](http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
-
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
-
 * [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconventions-150003.pdf)
+* Neue Features in Java 8:
+    * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
 
-**Online Tutorials**
+### Online Tutorials:
 
 * [Learneroo.com - Learn Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
+### Bücher:
 
-**Bücher**:
-
-* [Head First Java](http://www.headfirstlabs.com/books/hfjava/)
-
+* [Head First Java](https://www.oreilly.com/library/view/head-first-java/9781492091646/)
 * [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
-
-* [Objects First with Java](http://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
-
-* [Java The Complete Reference](http://www.amazon.com/gp/product/0071606300)
+* [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/1292159049/)
+* [Java The Complete Reference](https://www.amazon.com/Java-Complete-Reference-Thirteenth-dp-1265058431/dp/1265058431)
