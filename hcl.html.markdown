@@ -281,9 +281,9 @@ locals {
 
   map = {for x in local.list : x => upper(x) } // "one":"ONE", "two":"TWO", "three":"THREE"
 
-  filtered_list = [for k, v in local.map : substr(v, 0, 2) if k != "two" } // "ON", "TH"
+  filtered_list = [for k, v in local.map : substr(v, 0, 2) if k != "two" ] // "ON", "TH"
 
-  prefixed_list = [for v in local.filtered_list : "pre-${k}" } // "pre-ON", "pre-TH"
+  prefixed_list = [for v in local.filtered_list : "pre-${v}" ] // "pre-ON", "pre-TH"
 
   joined_list = join(local.upper_list,local. filtered_list) // "ONE", "TWO", "THREE", "pre-ON", "pre-TH"
 
