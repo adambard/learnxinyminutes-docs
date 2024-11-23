@@ -277,7 +277,7 @@ miFuncion(); // = undefined al mandar a llamar la función
 // Las funciones en JavaScript son de primera clase, así que pueden ser asignadas
 // a variables y pasadas a otras funciones como argumentos - por ejemplo:
 function miFuncion(){
-    // este código será llamado cada cinco segundos
+    // este código será llamado después de cinco segundos
 }
 setTimeout(miFuncion, 5000);
 // Note: setTimeout no es parte de JS, pero lo puedes obtener de los browsers
@@ -286,7 +286,7 @@ setTimeout(miFuncion, 5000);
 // Es posible declarar funciones sin nombre - se llaman funciones anónimas
 // y se definen como argumentos de otras funciones.
 setTimeout(function(){
-    // este código se ejecuta cada cinco segundos
+    // este código se ejecuta después de cinco segundos
 }, 5000);
 
 // JavaScript tiene ámbitos de funciones; las funciones tienen su propio ámbito pero
