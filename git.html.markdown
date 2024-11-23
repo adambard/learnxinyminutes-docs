@@ -33,7 +33,7 @@ unique id.
 * Distributed systems have no defined structure. You could easily have a SVN
 style, centralized system, with git.
 
-[Additional Information](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Additional Information](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
 ### Why Use Git?
 
@@ -59,7 +59,7 @@ A git repository is comprised of the .git directory & working tree.
 
 The .git directory contains all the configurations, logs, branches, HEAD, and
 more.
-[Detailed List.](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Detailed List.](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Working Tree (component of repository)
 
@@ -102,11 +102,6 @@ to Git Database yet
 * Staged - Marks a modified file to go into your next commit snapshot
 * Committed - Files have been committed to the Git Database
 
-### Conceptual Resources
-
-* [Git For Computer Scientists](http://eagain.net/articles/git-for-computer-scientists/)
-* [Git For Designers](http://hoth.entp.com/output/git_for_designers.html)
-
 ## Commands
 
 ### init
@@ -132,7 +127,7 @@ $ git config --global user.email
 $ git config --global user.name
 ```
 
-[Learn More About git config.](http://git-scm.com/docs/git-config)
+[Learn More About git config.](https://git-scm.com/docs/git-config)
 
 ### help
 
@@ -345,7 +340,7 @@ $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 Google is your friend; for more examples
-[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+[Git Grep Ninja](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -495,7 +490,7 @@ $ git stash pop
 
 Now you're ready to get back to work on your stuff!
 
-[Additional Reading.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
+[Additional Reading.](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning)
 
 ### rebase (caution)
 
@@ -509,7 +504,7 @@ another branch.
 $ git rebase master experimentBranch
 ```
 
-[Additional Reading.](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Additional Reading.](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 ### reset (caution)
 
@@ -600,26 +595,26 @@ b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 14)
 
 ## Further Information
 
-* [tryGit - A fun interactive way to learn Git.](http://try.github.io/levels/1/challenges/1)
-
-* [Learn Git Branching - the most visual and interactive way to learn Git on the web](http://learngitbranching.js.org/)
+* [Learn Git Branching - the most visual and interactive way to learn Git on the web](https://learngitbranching.js.org/)
 
 * [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
-* [Git Immersion - A Guided tour that walks through the fundamentals of git](http://gitimmersion.com/)
+* [Git Immersion - A Guided tour that walks through the fundamentals of git](https://gitimmersion.com/)
 
-* [git-scm - Video Tutorials](http://git-scm.com/videos)
+* [git-scm - Video Tutorials](https://git-scm.com/videos)
 
-* [git-scm - Documentation](http://git-scm.com/docs)
+* [git-scm - Documentation](https://git-scm.com/docs)
 
 * [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](http://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
+* [SalesForce Cheat Sheet](https://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
 
-* [Git - the simple guide](http://rogerdudler.github.io/git-guide/index.html)
+* [git - the simple guide](https://rogerdudler.github.io/git-guide/index.html)
 
-* [Pro Git](http://www.git-scm.com/book/en/v2)
+* [Pro Git](https://git-scm.com/book/en/v2)
 
-* [An introduction to Git and GitHub for Beginners (Tutorial)](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [An introduction to Git and GitHub for Beginners (Tutorial)](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
 * [The New Boston tutorial to Git covering basic commands and workflow](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx)
+
+* [Git For Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/)

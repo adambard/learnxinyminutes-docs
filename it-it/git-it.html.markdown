@@ -36,7 +36,7 @@ registra le modifiche apportate a uno o più file nel tempo.
 * I sistemi distribuiti non hanno una struttura definita. Si potrebbe creare
   ad esempio un sistema centralizzato simile a SVN utilizzando Git.
 
-[Ulteriori informazioni](http://git-scm.com/book/it/v1/Per-Iniziare-Il-Controllo-di-Versione)
+[Ulteriori informazioni](https://git-scm.com/book/it/v2/Per-Iniziare-Il-Controllo-di-Versione)
 
 ### Perchè usare Git?
 
@@ -60,7 +60,7 @@ Un repository comprende la cartella .git e il working tree.
 ### Cartella .git (componente del repository)
 
 La cartella .git contiene tutte le configurazioni, i log, i rami e altro.
-[Lista dettagliata](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[Lista dettagliata](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Working Tree (componente del repository)
 
@@ -128,7 +128,7 @@ $ git config --global user.email "email@example.com"
 $ git config --global user.name "Nome utente"
 ```
 
-[Ulteriori informazioni su git config](http://git-scm.com/docs/git-config)
+[Ulteriori informazioni su git config](https://git-scm.com/docs/git-config)
 
 ### help
 
@@ -456,7 +456,7 @@ Applica le modifiche effettuate su un branch su un altro branch.
 $ git rebase master experimentBranch
 ```
 
-[Ulteriori informazioni](https://git-scm.com/book/it/v1/Diramazioni-in-Git-Rifondazione)
+[Ulteriori informazioni](https://git-scm.com/book/it/v2/Git-Branching-Rebasing)
 
 ### reset (attenzione)
 

@@ -24,7 +24,7 @@ Git可以为你的项目保存若干快照，以此来对整个项目进行版�
 * 分布式版本控制则更注重共享更改。每一次更改都有唯一的标识
 * 分布式系统没有预定的结构。你也可以用git很轻松的实现SVN风格的集中式系统控制
 
-[更多信息](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[更多信息](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
 ### 为什么要使用Git
 
@@ -47,7 +47,7 @@ Git可以为你的项目保存若干快照，以此来对整个项目进行版�
 ### .git 目录(版本库的一部分)
 
 .git 目录包含所有的配置、日志、分支信息、头指针等
-[详细列表](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[详细列表](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### 工作目录 (版本库的一部分)
 
@@ -74,12 +74,6 @@ Git可以为你的项目保存若干快照，以此来对整个项目进行版�
 头指针是一个指向当前分支的指针，一个版本库只有一个当前活动的头指针
 而头则可以指向版本库中任意一个提交，每个版本库也可以有多个头
 
-### 其他形象化解释
-
-* [给计算机科学家的解释](http://eagain.net/articles/git-for-computer-scientists/)
-* [给设计师的解释](http://hoth.entp.com/output/git_for_designers.html)
-
-
 ## 命令
 
 
@@ -105,7 +99,7 @@ $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
 
-[关于git的更多设置](http://git-scm.com/docs/git-config)
+[关于git的更多设置](https://git-scm.com/docs/git-config)
 
 ### 帮助
 
@@ -247,7 +241,7 @@ $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 更多的例子可以查看：
-[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+[Git Grep Ninja](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -324,7 +318,7 @@ $ git push origin master
 $ git rebase master experimentBranch
 ```
 
-[更多阅读](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[更多阅读](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 ### reset (谨慎使用)
 
@@ -361,12 +355,10 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 ## 更多阅读
 
-* [tryGit - 学习Git的有趣方式](http://try.github.io/levels/1/challenges/1)
+* [git-scm - 视频教程](https://git-scm.com/videos)
 
-* [git-scm - 视频教程](http://git-scm.com/videos)
-
-* [git-scm - 文档](http://git-scm.com/docs)
+* [git-scm - 文档](https://git-scm.com/docs)
 
 * [Atlassian Git - 教程与工作流程](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://na1.salesforce.com/help/doc/en/salesforce_git_developer_cheatsheet.pdf)
+* [给计算机科学家的解释](https://eagain.net/articles/git-for-computer-scientists/)

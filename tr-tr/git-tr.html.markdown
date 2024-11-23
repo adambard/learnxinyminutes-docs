@@ -32,7 +32,7 @@ Versiyon kontrol, zaman içerisinde dosya(lar)daki değişikliği kaydeden siste
 * Dağınık versiyon kontrolü değişimin paylaşılmasına odaklanır. Her değişiminin benzersiz bir adı vardır.
 * Dağınık sistemlerin belirlenmiş bir yapısı yoktur. Git ile kolayca SVN'deki gibi merkezi bir sistem elde edebilirsin. 
 
-[Daha fazla bilgi](http://git-scm.com/book/en/Getting-Started-About-Version-Control)
+[Daha fazla bilgi](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
 ### Neden Git?
 
@@ -56,7 +56,7 @@ Bir git repo'su .git dizini ve çalışma ağacından oluşur.
 ### .git Dizini (repository bileşeni)
 
 .git dizini bütün konfigrasyon, log, dallanma, HEAD ve daha fazlasını tutar.
-[detaylı liste](http://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+[detaylı liste](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
 ### Çalışma Ağacı (repository bileşeni)
 
@@ -95,11 +95,6 @@ head, commit'e bir göstericidir. Bir repository herhangi bir sayıda head'e sah
 * Staged - Modified edilmiş bir dosyayı, sonraki commit'e gitmek üzere işaretler.
 * Committed - Dosyalar Git Veritabanına commit'lendi.  
 
-### Kavramsal Kaynaklar 
-
-* [Bilgisayar Bilimciler için Git](http://eagain.net/articles/git-for-computer-scientists/)
-* [Tasarımcılar için Git](http://hoth.entp.com/output/git_for_designers.html)
-
 ## Komutlar
 
 ### init
@@ -122,7 +117,7 @@ $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 ```
 
-[git config hakkında daha fazla bilgi için.](http://git-scm.com/docs/git-config)
+[git config hakkında daha fazla bilgi için.](https://git-scm.com/docs/git-config)
 
 ### help
 
@@ -332,7 +327,7 @@ $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 ```
 
 Daha fazla örnek için
-[Git Grep Ninja](http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
+[Git Grep Ninja](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
@@ -483,7 +478,7 @@ $ git stash pop
 
 Şimdi kendi işine dönmeye hazırsın!
 
-[Ek Okuma.](http://git-scm.com/book/en/v1/Git-Tools-Stashing)
+[Ek Okuma.](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning)
 
 ### rebase (dikkat)
 
@@ -496,7 +491,7 @@ Branch'ta commit'lenen tüm değişimleri al ve onları başka bir branch'ta tek
 $ git rebase master experimentBranch
 ```
 
-[Ek Okuma.](http://git-scm.com/book/en/Git-Branching-Rebasing)
+[Ek Okuma.](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
 ### reset (dikkat)
 
@@ -576,24 +571,24 @@ $ git rm /pather/to/the/file/HelloWorld.c
 
 ## Daha Fazla Bilgi
 
-* [tryGit - Git'i öğrenmek için eğlenceli interaktif bir yol](http://try.github.io/levels/1/challenges/1)
-
-* [Git Dallanmayı Öğren -  Git'i web üzerinde öğrenmek için en görsel ve interaktif yol](http://learngitbranching.js.org/)
+* [Git Dallanmayı Öğren -  Git'i web üzerinde öğrenmek için en görsel ve interaktif yol](https://learngitbranching.js.org/)
 
 * [Udemy Git Tutorial: Kapsayıcı bir kılavuz](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
-* [Git Immersion - Git'in temelinden başlayan bir tur](http://gitimmersion.com/)
+* [Git Immersion - Git'in temelinden başlayan bir tur](https://gitimmersion.com/)
 
-* [git-scm - Video Tutorial](http://git-scm.com/videos)
+* [git-scm - Video Tutorial](https://git-scm.com/videos)
 
-* [git-scm - Dökümantasyon](http://git-scm.com/docs)
+* [git-scm - Dökümantasyon](https://git-scm.com/docs)
 
 * [Atlassian Git - Tutorial & Workflow](https://www.atlassian.com/git/)
 
-* [SalesForce Kopya Kağıdı](http://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
+* [SalesForce Kopya Kağıdı](https://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
 
-* [Git - Basit bir kılavuz](http://rogerdudler.github.io/git-guide/index.html)
+* [git - basit rehber](https://rogerdudler.github.io/git-guide/index.tr.html)
 
-* [Pro Git](http://www.git-scm.com/book/en/v2)
+* [Pro Git](https://git-scm.com/book/tr/v2)
 
-* [Yeni başlayanlar için Git ve GitHub](http://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [Yeni başlayanlar için Git ve GitHub](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
+* [Bilgisayar Bilimciler için Git](https://eagain.net/articles/git-for-computer-scientists/)
