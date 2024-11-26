@@ -3,7 +3,6 @@ langauge: roff
 contributors:
     - ["Jeff Parent", "https://github.com/jecxjo"]
 filename: learnroff.ms
-lang: en-us
 ---
 
 ```groff
