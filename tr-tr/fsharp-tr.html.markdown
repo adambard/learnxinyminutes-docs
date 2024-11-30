@@ -3,7 +3,7 @@ language: F#
 contributors:
     - ["Scott Wlaschin", "http://fsharpforfunandprofit.com/"]
 translators:
-    - ["Mustafa Zengin", "http://zengin.github.com/"]
+    - ["Mustafa Zengin", "http://zengin.github.io/"]
 filename: learnfsharp-tr.fs
 lang: tr-tr
 ---

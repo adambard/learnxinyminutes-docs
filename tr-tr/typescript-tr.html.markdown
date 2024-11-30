@@ -3,7 +3,7 @@ language: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
 translators:
-    - ["Mustafa Zengin", "http://zengin.github.com"]
+    - ["Mustafa Zengin", "http://zengin.github.io"]
 filename: learntypescript-tr.ts
 lang: tr-tr
 ---
