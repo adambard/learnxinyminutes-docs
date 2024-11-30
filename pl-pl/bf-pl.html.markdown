@@ -19,7 +19,7 @@ Zawiera zaledwie 8 poleceń.
 Możesz przetesotwać brainfucka w swojej przeglądarce, korzystając z narzędzia 
 [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
-```
+```bf
 Wszystkie znaki oprócz "><+-.,[]" (wyłączając znaki zapytania) są ignorowane.
 
 Pamięć w brainfucku jest reprezentowana przez tablicę 30.000 komórek

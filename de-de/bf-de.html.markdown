@@ -16,7 +16,7 @@ mit lediglich 8 Befehlen.
 Mit dem [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/) kann
 Brainfuck im Browser ausprobiert werden.
 
-```
+```bf
 Alle Zeichen außer "><+-.,[]" (ohne die Klammern) werden ignoriert.
 
 Brainfuck besteht aus einem Array mit unendlich vielen Elementen, die alle mit Null initialisiert

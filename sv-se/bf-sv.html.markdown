@@ -14,7 +14,7 @@ minimalistiskt Turing-komplett programmeringsspråk med endast 8 kommandon.
 
 Du kan testa brainfuck i din webbläsare via [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
-```
+```bf
 Alla karaktärer förutom "><+-.,[]" (inte inkluderat citattecken) ignoreras.
 
 Brainfuck är representerat av ett fält med 30 000 celler initialiserade till

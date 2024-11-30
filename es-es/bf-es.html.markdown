@@ -15,7 +15,7 @@ lenguaje de programación extremadamente pequeño, Turing completo con sólo 8 c
 Puedes probar brainfuck en tu navegador con [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
 
-```
+```bf
 Cualquier caracter que no sea "><+-.,[]" (sin incluir las comillas)
 será ignorado.
 

@@ -13,7 +13,7 @@ Brainfuck (schrijf je niet met een hoofdletter behalve aan het begin van een
 zin) is een extreem
 minimalistische Turing-complete programmeertaal met maar acht commando's.
 
-```
+```bf
 Elk karakter behalve "><+-.,[]" (en de quotes) wordt genegeerd.
 
 Brainfuck wordt gerepresenteerd door een array met 30.000 cellen die initieel

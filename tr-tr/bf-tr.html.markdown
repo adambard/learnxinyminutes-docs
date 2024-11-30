@@ -12,7 +12,7 @@ Brainfuck (normalde brainfuck olarak bütün harfleri küçük olarak yazılır.
 son derece minimal bir programlama dilidir. (Sadece 8 komut) ve tamamen 
 Turing'dir.
 
-```
+```bf
 "><+-.,[]" (tırnak işaretleri hariç) karakterleri dışındaki her karakter
 gözardı edilir.
 

@@ -12,7 +12,7 @@ lang: pt-pt
 Brainfuck (não capitalizado excepto no início de uma frase) é uma linguagem de
 programação Turing-completa extremamente simples com apenas 8 comandos.
 
-```
+```bf
 Qualquer caractere excepto "><+-.,[]" (não contar com as aspas) é ignorado.
 
 Brainfuck é representado por um vector com 30 000 células inicializadas a zero

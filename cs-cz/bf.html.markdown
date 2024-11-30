@@ -14,7 +14,7 @@ Turingovsky kompletní (ekvivalentní) programovací jazyk a má pouze 8 příka
 
 Můžete si ho vyzkoušet přímo v prohlížeči s [brainfuck-visualizer](http://fatiherikli.github.io/brainfuck-visualizer/).
 
-```
+```bf
 Jakýkoliv znak mimo "><+-.,[]" (bez uvozovek) je ignorován.
 
 Brainfuck je reprezentován jako pole, které má 30.000 buněk s počátkem v nule 
