@@ -9,7 +9,7 @@ Jsonnet is a powerful templating language for JSON. Any valid JSON
 document is a valid Jsonnet object. For an interactive demo/tutorial,
 click [here](https://jsonnet.org/learning/tutorial.html)
 
-```python
+```jsonnet
 // single line comment
 
 /*
