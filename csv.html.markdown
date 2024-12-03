@@ -24,7 +24,7 @@ Charlie, 35, 1988-03-21
 
 **Delimiters for Rows and Columns**
 
-Rows are typically separated by line breaks (\n or \r\n), while columns (fields) are separated by a specific delimiter. Although commas are the most common delimiter for fields, other characters, such as semicolons (;), are commonly used in regions where commas are decimal separators (e.g., Germany). Tabs (\t) are also used as delimiters in some cases, with such files often referred to as "TSV" (Tab-Separated Values).
+Rows are typically separated by line breaks (`\n` or `\r\n`), while columns (fields) are separated by a specific delimiter. Although commas are the most common delimiter for fields, other characters, such as semicolons (`;`), are commonly used in regions where commas are decimal separators (e.g., Germany). Tabs (`\t`) are also used as delimiters in some cases, with such files often referred to as "TSV" (Tab-Separated Values).
 
 Example using semicolons as delimiter and comma for decimal separator:
 
@@ -33,7 +33,7 @@ Name; Age; Grade
 Alice; 30; 50,50
 Bob; 25; 45,75
 Charlie; 35; 60,00
-```csv
+```
 
 **Data Types**
 
@@ -46,7 +46,7 @@ Data, Comment
 2024-12-03, Interpreted as a date or a string (depending on the parser)
 Hello World, Interpreted as text (string)
 "1234", Interpreted as text instead of a number
-```csv
+```
 
 **Quoting Strings and Special Characters**
 
@@ -64,9 +64,9 @@ Unquoted string,
 
 However, make sure that for one document, the quoting method is consistent. For example, the last two examples of quoting with either "" or \" would not be consistent and could cause problems.
 
-** Encoding **
+**Encoding**
 
-Most modern CSV files use UTF-8 encoding, but older systems might use others like ASCII or ISO-8859.
+Different encodings are used. Most modern CSV files use UTF-8 encoding, but older systems might use others like ASCII or ISO-8859.
 
 If the file is transferred or shared between different systems, it is a good practice to explicitly define the encoding used, to avoid issues with character misinterpretation.
 
