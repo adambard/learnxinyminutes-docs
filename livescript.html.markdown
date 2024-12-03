@@ -7,20 +7,12 @@ contributors:
 
 LiveScript is a functional compile-to-JavaScript language which shares
 most of the underlying semantics with its host language. Nice additions
-comes with currying, function composition, pattern matching and lots of
+come with currying, function composition, pattern matching and lots of
 other goodies heavily borrowed from languages like Haskell, F# and
 Scala.
 
-LiveScript is a fork of [Coco][], which is itself a fork of
-[CoffeeScript][]. The language is stable, and a new version is in active
-development to bring a plethora of new niceties!
-
-[Coco]: http://satyr.github.io/coco/
-[CoffeeScript]: http://coffeescript.org/
-
-Feedback is always welcome, so feel free to reach me over at
-[@kurisuwhyte](https://twitter.com/kurisuwhyte) :)
-
+LiveScript is a fork of [Coco](https://github.com/satyr/coco), which is
+itself a fork of [CoffeeScript](https://coffeescript.org/).
 
 ```livescript
 # Just like its CoffeeScript cousin, LiveScript uses number symbols for

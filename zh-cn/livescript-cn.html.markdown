@@ -17,10 +17,6 @@ LiveScript 目前已释出稳定版本，开发中的新版本将会加入更多
 [Coco]: http://satyr.github.io/coco/
 [CoffeeScript]: http://coffeescript.org/
 
-非常期待您的反馈，你可以通过
-[@kurisuwhyte](https://twitter.com/kurisuwhyte) 与我连系 :)
-
-
 ```livescript
 # 与 CoffeeScript 一样，LiveScript 使用 # 单行注解。
 

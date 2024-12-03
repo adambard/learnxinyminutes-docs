@@ -20,9 +20,6 @@ desarrollo activo para traer aún más funciones.
 [Coco]: http://satyr.github.io/coco/
 [CoffeeScript]: http://coffeescript.org/
 
-La retroalimentación siempre es bienvenida, así que sientete libre de
-contactarme en [@kurisuwhyte](https://twitter.com/kurisuwhyte) :)
-
 ```livescript
 # Justo como su primo CoffeeScript, LiveScript usa símbolos de gato para
 # comentarios de una sola línea

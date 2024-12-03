@@ -21,10 +21,6 @@ avec lequel il a beaucoup plus de compatibilité.
 [Coco]: http://satyr.github.io/coco/
 [CoffeeScript]: http://coffeescript.org/
 
-Vous pouvez contacter l'auteur du guide original en anglais ici :
-[@kurisuwhyte](https://twitter.com/kurisuwhyte)
-
-
 ```livescript
 # Comme son cousin CoffeeScript, LiveScript utilise le symbole dièse pour les 
 # commentaires sur une ligne.
