@@ -589,8 +589,6 @@ Il [Mozilla Developer Networ][1] fornisce una documentazione eccellente su come 
 
 MDN's [A re-introduction to JavaScript][2] copre molti dei concetti qui trattati in maggiore dettaglio. Questa guida ha deliberatamente coperto solamente il linguaggio JavaScript; se volete sapere di più su come usare JavaScript in una pagina web, iniziate leggendo il [Document Object Model][3].
 
-[Learn Javascript by Example and with Challenges][4] è una variante di questo referenziario con integrate delle sfide.
-
 [Javascript Garden][5] è una guida approfondita di tutte le parti controintuitive del linguaggio.
 
 [JavaScript: The Definitive Guide][6] è una guida classica e referenziario.
@@ -608,7 +606,6 @@ In aggiunta ai contributori di questo articolo, alcuni contenuti sono adattati d
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
-[4]: http://www.learneroo.com/modules/64/nodes/350
 [5]: https://shamansir.github.io/JavaScript-Garden/
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript

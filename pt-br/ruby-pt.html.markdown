@@ -440,7 +440,6 @@ Algo.new.qux # => 'qux'
 
 ## Recursos adicionais
 
-- [Aprenda Ruby com desafios](http://www.learneroo.com/modules/61/nodes/338) - Uma coleção de desafios para testar a linguagem.
 - [Documentação oficial](http://www.ruby-doc.org/core-2.1.1/)
 - [Ruby a partir de outras linguagens](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/)- Um mais antigo [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) e tambem uma versão online disponível.

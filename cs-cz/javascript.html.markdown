@@ -595,9 +595,6 @@ pojednává o konceptech vysvětlených zde v mnohem větší hloubce. Tento ná
 pokrývá hlavně JavaScript sám o sobě. Pokud se chcete naučit, jak se používá
 na webových stránkách, začněte tím, že se podíváte na [DOM][3]
 
-[Learn Javascript by Example and with Challenges][4]
-je varianta tohoto návodu i s úkoly.
-
 [JavaScript Garden][5] je sbírka příkladů těch nejnepředvídatelnějších částí
 tohoto jazyka.
 
@@ -619,7 +616,6 @@ na stránkách Mozilla Developer Network.
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
-[4]: http://www.learneroo.com/modules/64/nodes/350
 [5]: https://shamansir.github.io/JavaScript-Garden/
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript

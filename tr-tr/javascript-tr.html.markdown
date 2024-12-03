@@ -588,8 +588,6 @@ MDN'nin [A re-introduction to JavaScript(JavaScript'e Yeniden Giriş)][2] başl�
 
 [Patika - Javascript][4]Hakan Yalçınkaya'nın eğitmen olduğu bu kaynak, Javascript'i baştan sonra öğrenmenizi ve öğrendiklerinizi çeşitli test, proje ve coding challenge'lar ile pekiştirmenizi sağlar.
 
-[Learn Javascript by Example and with Challenges][5] Bu da öğrendiklerinizi çeşitli challenge'lar ile pekiştirmenize olanak sağlar.
-
 [JavaScript Garden][6] tüm detaylarının derinlemesine incelendiği bir rehberdir.
 
 [Yusuf Sezer][7] Hem Türkçe hem yazılı olsun diyenler için kapsamlı bir kaynak.
@@ -600,7 +598,6 @@ MDN'nin [A re-introduction to JavaScript(JavaScript'e Yeniden Giriş)][2] başl�
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
 [4]: https://academy.patika.dev/courses/javascript
-[5]: http://www.learneroo.com/modules/64/nodes/350
 [6]: https://shamansir.github.io/JavaScript-Garden/
 [7]: https://www.yusufsezer.com.tr/javascript-dersleri/
 [8]: https://www.btkakademi.gov.tr/portal/course/javascript-8099

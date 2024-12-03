@@ -641,9 +641,6 @@ here in more detail. This guide has quite deliberately only covered the
 JavaScript language itself; if you want to learn more about how to use
 JavaScript in web pages, start by learning about the [Document Object Model][3].
 
-[Learn Javascript by Example and with Challenges][4] is a variant of this
-reference with built-in challenges.
-
 [JavaScript Garden][5] is an in-depth guide of all the counter-intuitive parts
 of the language.
 
@@ -667,7 +664,6 @@ Mozilla Developer Network.
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
-[4]: http://www.learneroo.com/modules/64/nodes/350
 [5]: https://shamansir.github.io/JavaScript-Garden/
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript

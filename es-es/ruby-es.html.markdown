@@ -565,8 +565,6 @@ Algo.new.qux # => 'qux'
 ```
 
 ## Recursos adicionales
-- [Aprende Ruby Mediante Ejemplo con Ejercicios](http://www.learneroo.com/modules/61/nodes/338) - Una variante de
-esta referencia con ejercicios en navegador.
 - [Documentación Oficial](http://www.ruby-doc.org/core-2.1.1/)
 - [Ruby desde otros lenguajes](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programando Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Una

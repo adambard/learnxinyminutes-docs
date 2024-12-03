@@ -599,7 +599,6 @@ Something.new.qux # => 'qux'
 
 ## Lisämateriaalia englanniksi
 
-- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - Selaimessa tehtäviä harjoituksia tämän dokumentin hengessä
 - [An Interactive Tutorial for Ruby](https://rubymonk.com/)
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/) - Virallinen dokumentaatio
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)

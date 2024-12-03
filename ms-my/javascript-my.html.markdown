@@ -566,9 +566,6 @@ aturcara JavaScript dengan agak mudah; jika anda mahu belajar lebih lanjut
 tentang menggunakan JavaScript didalam laman web, mulakan dengan mempelajari
 tentang [Document Object Model][3].
 
-[Learn Javascript by Example and with Challenges][4] adalah variasi panduan ini
-dengan cabaran yang tersedia pakai.
-
 [JavaScript Garden][5] pula adalah panduan yang lebih terperinci mengenai
 semua bahagian bahasa aturcara ini yang bertentangan dengan naluri atau
 kebiasaan.
@@ -583,7 +580,6 @@ dan [JS Tutorial][7] di Mozilla Developer Network.
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [3]: https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core
-[4]: http://www.learneroo.com/modules/64/nodes/350
 [5]: https://shamansir.github.io/JavaScript-Garden/
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript

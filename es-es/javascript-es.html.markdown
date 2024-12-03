@@ -515,9 +515,6 @@ cubre muchos de los conceptos que vimos aquí pero a mayor detalle. Esta guía c
 el lenguaje JavaScript solo. Si quieres aprender a cómo usarlo en un ambiente web empieza aprendiendo
 sobre el [DOM](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Aprende JavaScript con ejemplos y retos](http://www.learneroo.com/modules/64/nodes/350) es una
-variante de esta guía pero con retos.
-
 [Jardín JavaScript](https://shamansir.github.io/JavaScript-Garden/) es una guía para todas las
 funciones y características contra-intuitivas del lenguaje.
 

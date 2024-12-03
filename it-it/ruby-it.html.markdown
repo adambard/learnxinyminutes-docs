@@ -644,7 +644,6 @@ Something.new.qux #=> 'qux'
 
 ## Ulteriori risorse
 
-- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - Una variante di questa guida con esercizi nel browser.
 - [An Interactive Tutorial for Ruby](https://rubymonk.com/) - Imparare Ruby attraverso una serie di tutorial interattivi.
 - [Official Documentation](http://ruby-doc.org/core)
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)

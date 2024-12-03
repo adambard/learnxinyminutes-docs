@@ -613,7 +613,6 @@ Sesuatu.new.qux # => 'qux'
 
 ## Sumber tambahan
 
-- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - Varian dari referensi ini dengan tantangan dalam browser.
 - [An Interactive Tutorial for Ruby](https://rubymonk.com/) - Belajar Ruby melalui serangkaian tutorial interaktif.
 - [Dokumentasi resmi](http://www.ruby-doc.org/core-2.1.1/)
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)

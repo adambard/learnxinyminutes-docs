@@ -476,8 +476,6 @@ JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introdu
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) 是本参考的另一个版本，并包含了挑战习题。
-
 [Javascript Garden](https://shamansir.github.io/JavaScript-Garden/) 是一个深入
 讲解所有Javascript反直觉部分的导引。
 
