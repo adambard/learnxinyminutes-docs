@@ -2259,8 +2259,7 @@ term (Much better than using Google to find Raku documents!).
 is a great source of Raku snippets and explanations. If the docs don't
 describe something well enough, you may find more detailed information here.
 This information may be a bit older but there are many great examples and
-explanations. Posts stopped at the end of 2015 when the language was declared
-stable and `Raku v6.c` was released.
+explanations.
 
 - Come along on `#raku` at [`irc.libera.chat`](https://web.libera.chat/?channel=#raku). The folks here are
 always helpful.

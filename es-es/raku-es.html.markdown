@@ -1920,8 +1920,7 @@ Si quieres ir más allá de lo que se muestra aquí, puedes:
  un gran recurso de fragmentos de código de Raku y explicaciones. Si la documentación
  no describe algo lo suficientemente bien, puedes encontrar información más detallada
  aquí. Esta información puede ser un poquito más antigua pero hay muchos ejemplos y
- explicaciones. Las publicaciones fueron suspendidas al final del 2015 cuando
- el lenguaje fue declarado estable y Raku.c fue lanzado.
+ explicaciones.
  - Unirte a `#raku` en `irc.freenode.net`. Las personas aquí son siempre serviciales.
  - Chequear la [fuente de las funciones y clases de Raku](https://github.com/rakudo/rakudo/tree/master/src/core.c). Rakudo está principalmente
  escrito en Raku (con mucho de NQP, "Not Quite Perl" ("No Perl Todavía"), un
