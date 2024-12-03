@@ -548,7 +548,6 @@ Valami.new.qux # => 'qux'
 
 ## Egyéb források
 
-- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338)
 - [Official Documentation](http://www.ruby-doc.org/core-2.1.1/)
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - A régebbi [ingyenes változat](http://ruby-doc.com/docs/ProgrammingRuby/) elérhető online.

@@ -514,10 +514,11 @@ public class ExampleClass extends ExampleClassParent implements InterfaceOne, In
 
 **Уроки онлайн**
 
-* [Learneroo.com - Изучение Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
+* [Codewars - Java Katas](https://www.codewars.com/?language=java)
+
+* [Университет Хельсинки - Объектно-ориентированное программирование на Java](http://moocfi.github.io/courses/2013/programming-part-1/)
 
 **Книги**:
 

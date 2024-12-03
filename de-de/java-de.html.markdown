@@ -481,10 +481,9 @@ Für tiefergreifende Fragen ist Google der beste Startpunkt.
 
 **Online Tutorials**
 
-* [Learneroo.com - Learn Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
-
+* [Codewars - Java Katas](https://www.codewars.com/?language=java)
+* [University of Helsinki - Object-Oriented programming with Java](http://moocfi.github.io/courses/2013/programming-part-1/)
 
 **Bücher**:
 

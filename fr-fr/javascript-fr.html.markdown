@@ -769,8 +769,6 @@ plutôt ici :
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Learn Javascript by Example and with Challenges](http://www.learneroo.com/modules/64/nodes/350) quelques challenges.
-
 [JavaScript Garden](https://shamansir.github.io/JavaScript-Garden/) is an in-depth
 un guide pour vous éviter les faux-amis dans le JavaScript.
 

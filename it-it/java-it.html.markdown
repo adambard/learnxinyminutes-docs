@@ -559,15 +559,16 @@ I link di seguito sono solo per capire l'argomento, cerca pure su Google degli e
 
 **Tutorial Online [in inglese]**
 
-* [Learneroo.com - Learn Java](http://www.learneroo.com)
-
 * [Codingbat.com](http://codingbat.com/java)
 
+* [Codewars - Java Katas](https://www.codewars.com/?language=java)
+
+* [University of Helsinki - Object-Oriented programming with Java](http://moocfi.github.io/courses/2013/programming-part-1/)
 
 **Libri [in italiano]** :
 
 * [Java la guida completa](http://www.amazon.it/Java-guida-completa-Herbert-Schildt/dp/8838667667/ref=sr_1_1?ie=UTF8&qid=1393422296&sr=8-1&keywords=java)
 
-* [Thinking in java](http://www.amazon.it/Thinking-Java-1-Bruce-Eckel/dp/8871923030/ref=sr_1_8?ie=UTF8&qid=1393422296&sr=8-8&keywords=java)
+* [Thinking in Java](http://www.amazon.it/Thinking-Java-1-Bruce-Eckel/dp/8871923030/ref=sr_1_8?ie=UTF8&qid=1393422296&sr=8-8&keywords=java)
 
 * [Manuale di Java 7](http://www.amazon.com/gp/product/0071606300)

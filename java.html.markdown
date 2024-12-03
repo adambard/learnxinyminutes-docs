@@ -1053,7 +1053,6 @@ The links provided here below are just to get an understanding of the topic, fee
 
 ### Online Practice and Tutorials
 
-* [Learneroo.com - Learn Java](http://www.learneroo.com)
 * [Codingbat.com](http://codingbat.com/java)
 * [Codewars - Java Katas](https://www.codewars.com/?language=java)
 * [University of Helsinki - Object-Oriented programming with Java](http://moocfi.github.io/courses/2013/programming-part-1/)

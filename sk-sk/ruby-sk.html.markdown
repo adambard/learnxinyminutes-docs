@@ -546,7 +546,6 @@ Nieco.new.qux # => 'qux'
 
 ## Ďalšie zdroje
 
-- [Nauč sa ruby v príkladoch s úlohami](http://www.learneroo.com/modules/61/nodes/338) - Variácia tejto referencie s úlohami v prehliadači.
 - [Oficiálna dokumentácia](http://www.ruby-doc.org/core-2.1.1/)
 - [Ruby z iných jazykov](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
 - [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - Staršia [bezplatná edícia](http://ruby-doc.com/docs/ProgrammingRuby/) je dostupná online.

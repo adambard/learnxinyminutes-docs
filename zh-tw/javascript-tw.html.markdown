@@ -585,8 +585,6 @@ const add = (firstNumber, secondNumber) => {
 
 MDN 的 [重新介紹 JavaScript][2] 一文中，提到關於本文之外的更多細節。本文聚焦於 JavaScript 語言本身；若您想學習更多關於如何在網頁中使用 JavaScript，可以從閱讀 [文件物件模型][3] 開始。
 
-[Learn Javascript by Example and with Challenges][4] 是另一個參考網站，其包含線上的實戰練習。
-
 [JavaScript Garden][5] 是一份深入探討這門語言所有反直覺部分的指南。
 
 [JavaScript 大全][6] 是一本經典的指南和參考書。
@@ -602,7 +600,6 @@ MDN 的 [重新介紹 JavaScript][2] 一文中，提到關於本文之外的更�
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [2]: https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Language_overview
 [3]: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Using_the_Document_Object_Model
-[4]: http://www.learneroo.com/modules/64/nodes/350
 [5]: https://shamansir.github.io/JavaScript-Garden/zhtw/
 [6]: https://www.tenlong.com.tw/products/9789865027322
 [8]: https://www.tenlong.com.tw/products/9789865029890?list_name=srh

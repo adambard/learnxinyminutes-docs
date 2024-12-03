@@ -524,9 +524,6 @@ sobre e como usar o JavaScript em páginas na web, comece aprendendo sobre
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Aprenda Javascript por Exemplos e com Desafios](http://www.learneroo.com/modules/64/nodes/350) é uma
-variação desse guia com desafios.
-
 [JavaScript Garden](https://shamansir.github.io/JavaScript-Garden/) é um guia
 profundo de todas as partes do JavaScript.
 

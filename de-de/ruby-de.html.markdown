@@ -679,7 +679,6 @@ Something.new.qux #=> "qux"
 _(z.T. auf Englisch)_
 
 - [Offizielle Ruby Website](https://www.ruby-lang.org/de/)
-- [Learn Ruby by Example with Challenges](http://www.learneroo.com/modules/61/nodes/338) - Eine Variante dieses Dokuments mit in-Browser Challenges.
 - [RubyMonk](https://rubymonk.com/) - Lerne Ruby mit einer Reihe interaktiver Tutorials.
 - [Offizielle Dokumentation](http://ruby-doc.org/core)
 - [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
