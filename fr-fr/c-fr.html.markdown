@@ -19,19 +19,6 @@ lang: fr-fr
 Le C est le langage de plus bas niveau que la plupart des programmeurs seront
 amenés à utiliser, mais ceci est largement conpensé par sa vitesse brute.
 
-> **À propos des options de compilation**
->
-> Par défaut, gcc et clang sont assez silencieux sur les avertissements et
-> les erreurs de compilation, qui peuvent être des informations très utiles.
-> L'utilisation explicite d'options de compilation plus strictes est recommandée.
-> Voici quelques valeurs par défaut recommandées:
->
-> `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
->
-> Pour plus d'informations sur ce que font ces options ainsi que sur d'autres,
-> vous pouvez consulter la page du manuel de votre compilateur C (par exemple `man 1 gcc`)
-> ou recherchez simplement en ligne.
-
 ```c
 // Les commentaires sur une ligne commencent par // - valable seulement pour C99 et plus tard.
 

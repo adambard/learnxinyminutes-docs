@@ -14,23 +14,6 @@ Die Geschwindigkeit von C ist enorm, allerdings muss man sich stets der
 manuellen Speicherverwaltung bewusst sein.
 
 
-> **Über Compiler Optionen**
-> 
-> Standardmäßig sind `gcc` und `clang` ziemlich ruhig bezüglich Warnungen und 
-> Fehlern, obwohl dies sehr nützliche Informationen sein können. Es wird
-> empfohlen, strengere Compiler Optionen zu verwenden. Hier sind einige empfohlene
-> Standards:
-> `-Wall -Wextra -Werror -O2 -std=c99 -pedantic`
->
-> Da gewisse Optionen (insbesondere der C-Standard) sehr stark vom Projekt
-> abhängen, lohnt es sich, wenn die unterschiedlichen Optionen genauer
-> angeschaut werden. Eine Übersicht über die Compiler-Optionen findet man unter
-> [diesem](https://stackoverflow.com/questions/3375697/useful-gcc-flags-for-c) Stackoverflow-Beitrag.
->
-> Für weitere Informationen, was diese und weitere Optionen genau machen,
-> sollte die Man-Page des C-Compilers aufgerufen werden (z.B. `man 1 gcc`).
-> Alternativ kann auch online nach den unterschiedlichen Optionen gesucht werden.
-
 ```c
 // einzeilige Kommentare starten mit // - nur in C99 und später vorhanden.
 
