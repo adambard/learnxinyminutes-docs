@@ -611,4 +611,4 @@ In aggiunta ai contributori di questo articolo, alcuni contenuti sono adattati d
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [8]: http://eloquentjavascript.net/
 [10]: http://jstherightway.org/
-[11]: https://javascript.info/
+[11]: https://it.javascript.info/
