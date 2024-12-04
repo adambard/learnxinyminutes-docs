@@ -21,7 +21,7 @@ Solidity 是一种与 JavaScript 和 C 的相似的、静态类型的合约编�
 以太坊合约的例子包括众筹、投票以及盲拍（私密拍卖）。
 
 Solidity 代码中存在高风险和高成本的错误，因此你必须非常小心地进行测试并慢慢地发布。**随着
-以太坊的快速变化，本文档不可能是最新的，所以你应该关注最新的的 solidity 聊天室和以太网博客。
+以太坊的快速变化，本文档不可能是最新的，所以你应该关注最新的的 Solidity 聊天室和以太网博客。
 照搬这里的代码，会存在重大错误或弃用代码模式的风险。（说人话--别照抄例子中的代码）**
 
 与其他代码不同，可能还需要添加如暂停、弃用和限制使用的设计模式，来降低风险。本文档主要讨论语法，
@@ -61,7 +61,7 @@ contract SimpleBank { // 单词首字母大写
     // Events（事件） - 向外部监听器发布动作
     event LogDepositMade(address accountAddress, uint amount);
 
-    // Constructor（构造函数）（译者注：solidity 从0.4.22开始使用 constructor() 作为构造函数）
+    // Constructor（构造函数）（译者注：Solidity 从0.4.22开始使用 constructor() 作为构造函数）
     function SimpleBank() public {
         // msg 提供了发送给合约的消息详情
         // msg.sender 是合约的调用者（这里是合约创建者的地址）
@@ -112,7 +112,7 @@ contract SimpleBank { // 单词首字母大写
 // ** 例子结束 **
 
 
-// 下面， solidity 基础
+// 下面， Solidity 基础
 
 // 1. 数据类型与关联的方法
 // uint 类型用作现金数量（没有双浮点型或单浮点型）及日期（用 unix 时间）
@@ -266,7 +266,7 @@ uint createdState = uint(State.Created); //  0
 
 
 // 3. 简单操作符
-// solidity 提供了比较、位运算及数学运算的功能
+// Solidity 提供了比较、位运算及数学运算的功能
 // 指数运算: **
 // 异或运算: ^
 // 按位取反: ~
@@ -376,7 +376,7 @@ LogSent(from, to, amount);
 
 /*
     // 对于外部方（合约或外部实体），使用 Web3 JavaScript 库来监听
-    // 以下是javascript代码,不是solidity代码
+    // 以下是JavaScript代码,不是Solidity代码
     Coin.LogSent().watch({}, '', function(error, result) {
         if (!error) {
             console.log("Coin transfer: " + result.args.amount +
@@ -425,7 +425,7 @@ modifier checkValue(uint amount) {
 // 所有基本的逻辑判断都有效 - 包括 if else, for, while, break, continue
 // return - 但不跳转
 
-// 语法同 javascript, 但没有从非布尔值到布尔值的类型转换
+// 语法同 JavaScript, 但没有从非布尔值到布尔值的类型转换
 // (必须使用比较操作符获得布尔变量值)
 
 // 请注意由用户行为决定的循环 - 因为合约对于代码块具有最大量的 gas 限制 -
@@ -744,7 +744,7 @@ sha256("def");
 
 // 11. 安全
 
-// 以太坊的合约中，错误可能是灾难性的 - 即使在 solidity 中是流行的模式，也可能发现是反模式的
+// 以太坊的合约中，错误可能是灾难性的 - 即使在 Solidity 中是流行的模式，也可能发现是反模式的
 
 // 参见文档底部的安全链接
 

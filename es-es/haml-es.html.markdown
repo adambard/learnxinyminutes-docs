@@ -146,7 +146,7 @@ $ haml archivo_entrada.haml archivo_salida.html
 
 /
   Usa un signo dos puntos para definir filtros Haml, un ejemplo de filtro que
-  puedes usar es :javascript, el cual puede ser usado para escribir javascript en línea.
+  puedes usar es :javascript, el cual puede ser usado para escribir JavaScript en línea.
 
 :javascript
   console.log('Este es un <script> en linea');

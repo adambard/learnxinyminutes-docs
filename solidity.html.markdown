@@ -523,7 +523,7 @@ modifier checkValue(uint amount) {
 // All basic logic blocks work - including if/else, for, while, break, continue
 // return - but no switch
 
-// Syntax same as javascript, but no type conversion from non-boolean
+// Syntax same as JavaScript, but no type conversion from non-boolean
 // to boolean (comparison operators must be used to get the boolean val)
 
 // For loops that are determined by user behavior, be careful - as contracts have a maximal

@@ -177,13 +177,13 @@ myArray.length; // = 4
 // Tambah/Ubah di index yang spesifik
 myArray[3] = "Hello";
 
-// Objek javascript adalah sama dengan "dictionaries" atau "maps" dalam bahasa
+// Objek JavaScript adalah sama dengan "dictionaries" atau "maps" dalam bahasa
 // aturcara yang lain: koleksi pasangan kunci-nilai yang tidak mempunyai
 // sebarang susunan.
 var myObj = {key1: "Hello", key2: "World"};
 
 // Kunci adalah string, tetapi 'quote' tidak diperlukan jika ia adalah pengecam
-// javascript yang sah. Nilai boleh mempunyai sebarang jenis.
+// JavaScript yang sah. Nilai boleh mempunyai sebarang jenis.
 var myObj = {myKey: "myValue", "my other key": 4};
 
 // Ciri - ciri objek boleh juga diakses menggunakan syntax subskrip (kurungan-
@@ -293,7 +293,7 @@ switch (grade) {
 ///////////////////////////////////
 // 4. Functions, Skop dan Closures
 
-// Function javascript dideklarasikan dengan kata kunci `function`.
+// Function JavaScript dideklarasikan dengan kata kunci `function`.
 function myFunction(thing){
     return thing.toUpperCase();
 }
@@ -309,7 +309,7 @@ function myFunction(){
 }
 myFunction(); // = undefined
 
-// Function javascript adalah objek kelas pertama, maka ia boleh diberikan
+// Function JavaScript adalah objek kelas pertama, maka ia boleh diberikan
 // nama pembolehubah yang lain dan diberikan kepada function yang lain sebagai
 // input - sebagai contoh, apabila membekalkan pengendali event:
 function myFunction(){

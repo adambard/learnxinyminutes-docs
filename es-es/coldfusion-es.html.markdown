@@ -29,7 +29,7 @@ ColdFusion comenzó como un lenguaje basado en etiquetas. Casi toda la funcional
 
 <!--- Las etiquetas CFML tienen un formato similar a las etiquetas HTML. --->
 <h1>Variables simples</h1>
-<!--- Declaración de variables: las variables son débilmente tipadas, similar a javascript --->
+<!--- Declaración de variables: las variables son débilmente tipadas, similar a JavaScript --->
 <p>Set <b>miVariable</b> to "miValor"</p>
 <cfset miVariable = "miValor" />
 <p>Set <b>miNumero</b> to 3.14</p>

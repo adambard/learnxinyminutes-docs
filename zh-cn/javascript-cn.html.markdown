@@ -155,7 +155,7 @@ myArray.length; // = 4
 // 在指定下标添加/修改
 myArray[3] = "Hello";
 
-// javascript中的对象相当于其他语言中的“字典”或“映射”：是键-值对的无序集合。
+// JavaScript中的对象相当于其他语言中的“字典”或“映射”：是键-值对的无序集合。
 var myObj = {key1: "Hello", key2: "World"};
 
 // 键是字符串，但如果键本身是合法的js标识符，则引号并非是必须的。
@@ -257,7 +257,7 @@ function myFunction()
 }
 myFunction(); // = undefined
 
-// javascript中函数是一等对象，所以函数也能够赋给一个变量，
+// JavaScript中函数是一等对象，所以函数也能够赋给一个变量，
 // 并且被作为参数传递 —— 比如一个事件处理函数：
 function myFunction(){
     // 这段代码将在5秒钟后被调用
@@ -288,7 +288,7 @@ i; // = 5 - 并非我们在其他语言中所期望得到的undefined
 temporary; // 抛出引用异常ReferenceError
 permanent; // = 10
 
-// javascript最强大的功能之一就是闭包。
+// JavaScript最强大的功能之一就是闭包。
 // 如果一个函数在另一个函数中定义，那么这个内部函数就拥有外部函数的所有变量的访问权，
 // 即使在外部函数结束之后。
 function sayHelloInFiveSeconds(name){
@@ -447,7 +447,7 @@ String.prototype.firstCharacter = function(){
 }
 "abc".firstCharacter(); // = "a"
 
-// 这个技巧经常用在“代码填充”中，来为老版本的javascript子集增加新版本js的特性，
+// 这个技巧经常用在“代码填充”中，来为老版本的JavaScript子集增加新版本js的特性，
 // 这样就可以在老的浏览器中使用新功能了。
 
 // 比如，我们知道Object.create并没有在所有的版本中都实现，

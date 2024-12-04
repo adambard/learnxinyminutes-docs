@@ -652,7 +652,7 @@ attached terminal
 [JavaScript: The Right Way][10] is a guide intended to introduce new developers
 to JavaScript and help experienced developers learn more about its best practices.
 
-[javascript.info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)
+[javascript.info][11] is a modern JavaScript tutorial covering the basics (core language and working with a browser)
 as well as advanced topics with concise explanations.
 
 

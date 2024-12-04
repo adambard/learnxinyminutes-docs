@@ -585,7 +585,7 @@ modifier checkValue(uint amount) {
 // Troviamo tutte le istruzioni condizionali di base - incluse if/else, for,
 // while, break, continue e return - ma non c'è lo switch
 
-// La sintassi è la stessa di javascript, ma non esiste la conversione di tipo
+// La sintassi è la stessa di JavaScript, ma non esiste la conversione di tipo
 // in booleano dai non booleani (bisogna usare gli operatori logici per
 // ottenere il valore boolean)
 

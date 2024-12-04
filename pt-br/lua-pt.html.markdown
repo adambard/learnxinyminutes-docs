@@ -143,7 +143,7 @@ print 'hello'  -- Funciona perfeitamente.
 
 -- Tabelas = A unica estrutura de dados composta em Lua;
 --          elas são matrizes associativas.
--- Semelhantes aos arrays de PHP ou objetos de javascript, eles são:
+-- Semelhantes aos arrays de PHP ou objetos de JavaScript, eles são:
 -- hash-lookup(chave:valor) que também podem ser usados como listas.
 
 -- Usando tabelas como dicionário / mapas:
@@ -151,7 +151,7 @@ print 'hello'  -- Funciona perfeitamente.
 -- Dicionários literais tem strings como chaves por padrão:
 t = {key1 = 'value1', key2 = false}
 
--- As chaves do tipo string podem usar notação de ponto,semelhante a javascript:
+-- As chaves do tipo string podem usar notação de ponto, semelhante a JavaScript:
 print(t.key1)  -- Imprime 'value1'.
 t.newKey = {}  -- Adiciona um novo par chave/valor.
 t.key2 = nil   -- Remove key2 da tabela.
@@ -219,7 +219,7 @@ setmetatable(f2, metafraction)
 s = f1 + f2  -- chama __add(f1, f2) na metatabela de f1
 
 -- f1, f2 não tem chave para sua metatabela, ao contrário de
--- prototypes em javascript, então você deve recuperá-lo com
+-- prototypes em JavaScript, então você deve recuperá-lo com
 -- getmetatable(f1). A metatabela é uma tabela normal
 -- com chaves que Lua reconhece, como __add.
 
