@@ -71,22 +71,22 @@ div#meu-id.minha-class
 //- ---JAVASCRIPT---
 - const lang = "pug";
 
-//- Javascript em várias linhas
+//- JavaScript em várias linhas
 -
   const lang = "pug";
   const awesome = true;
 
-//- Classes com Javascript
+//- Classes com JavaScript
 - const myClass = ['class1', 'class2', 'class3']
 div(class=myClass)
 //- <div class="class1 class2 class3"></div>
 
-//- Estilos com Javascript
+//- Estilos com JavaScript
 - const myStyles = {'color':'white', 'background-color':'blue'}
 div(styles=myStyles)
 //- <div styles="{&quot;color&quot;:&quot;white&quot;,&quot;background-color&quot;:&quot;blue&quot;}"></div>
 
-//- Atributos com Javascript
+//- Atributos com JavaScript
 - const myAttributes = {"src": "photo.png", "alt": "My Photo"}
 img&attributes(myAttributes)
 //- <img src="photo.png" alt="My Photo">
@@ -97,7 +97,7 @@ input(type="text" disabled=disabled)
 input(type="text" disabled=disabled)
 //- <input type="text" disabled>
 
-//- Templates com Javascript
+//- Templates com JavaScript
 - const name = "Bob";
 h1 Olá, #{name}
 h1= name
@@ -175,7 +175,7 @@ html
     </body>
   </html>
 
-//- Importando Javascript e CSS
+//- Importando JavaScript e CSS
 script
   include scripts/index.js
 style

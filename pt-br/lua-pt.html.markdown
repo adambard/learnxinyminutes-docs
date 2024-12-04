@@ -197,7 +197,7 @@ end
 
 -- Uma tabela pode ter uma metatabela que fornece à tabela
 -- um compotamento de sobrecarga de operador. Depois veremos
--- como metatabelas suportam o comportamento do Javascript-prototype.
+-- como metatabelas suportam o comportamento do JavaScript-prototype.
 
 f1 = {a = 1, b = 2}  -- Representa uma fração de a/b.
 f2 = {a = 2, b = 3}

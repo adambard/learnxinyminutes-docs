@@ -9,13 +9,13 @@ translators:
 lang: ms-my
 ---
 
-Javascript dicipta oleh Brendan Eich dari Netscape pada 1995. Pada awalnya, ia
+JavaScript dicipta oleh Brendan Eich dari Netscape pada 1995. Pada awalnya, ia
 dicipta sebagai bahasa skrip yang ringkas untuk laman web, melengkapi penggunaan
 Java untuk aplikasi web yang lebih rumit, namun begitu, integrasi rapat pada
 halaman web dan sokongan tersedia dalam pelayar web telah menyebabkan ia menjadi
 lebih kerap digunakan berbanding Java pada bahagian hadapan laman web.
 
-Namun begitu, Javascript tidak terhad pada pelayar web; Node.js, sebuah projek
+Namun begitu, JavaScript tidak terhad pada pelayar web; Node.js, sebuah projek
 yang menyediakan 'runtime' berdiri sendiri untuk enjin V8 Google Chrome sedang
 kian mendapat sambutan yang hangat.
 
@@ -38,7 +38,7 @@ doStuff()
 ///////////////////////////////////
 // 1. Nombor, String dan Operator
 
-// Javascript mempunyai satu jenis nombor (iaitu 64-bit IEEE 754 double).
+// JavaScript mempunyai satu jenis nombor (iaitu 64-bit IEEE 754 double).
 // Double mempunyai 52-bit mantissa, iaitu ia cukup untuk menyimpan integer
 //    sehingga 9✕10¹⁵ secara tepatnya.
 3; // = 3
@@ -134,7 +134,7 @@ undefined; // digunakan untuk menandakan nilai yang tidak wujud pada waktu ini (
 ///////////////////////////////////
 // 2. Pembolehubah, Array dan Objek
 
-// Pembolehubah digunakan dengan kata kunci 'var'. Javascript ialah sebuah
+// Pembolehubah digunakan dengan kata kunci 'var'. JavaScript ialah sebuah
 // bahasa aturcara yang jenisnya dinamik, maka anda tidak perlu spesifikasikan
 // jenis pembolehubah. Penetapan menggunakan satu '=' karakter.
 var someVar = 5;
@@ -331,7 +331,7 @@ setTimeout(function(){
     // kod ini akan dijalankan dalam 5 saat
 }, 5000);
 
-// Javascript mempunyai skop function; function mempunyai skop mereka
+// JavaScript mempunyai skop function; function mempunyai skop mereka
 // tersendiri tetapi blok tidak.
 if (true){
     var i = 5;
@@ -351,7 +351,7 @@ i; // = 5 - bukan undefined seperti yang anda jangkakan di dalam bahasa blok-sko
 temporary; // akan menghasilkan ralat ReferenceError
 permanent; // = 10
 
-// Salah satu ciri terhebat Javascript ialah closure. Jika sebuah function
+// Salah satu ciri terhebat JavaScript ialah closure. Jika sebuah function
 // didefinisikan di dalam sebuah function lain, function yang di dalam akan
 // mempunyai akses kepada semua pembolehubah function yang di luar, mahupun
 // selepas function yang di luar tersebut selesai.

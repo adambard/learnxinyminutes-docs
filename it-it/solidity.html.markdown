@@ -18,7 +18,7 @@ l'esecuzione degli smart contract senza che sia richiesta centralizzazione o
 fiducia negli attori coinvolti.
 
 Solidity è un linguaggio di programmazione di contratti tipizzato staticamente e
-ha molte cose in comune con Javascript e C. Come per gli oggetti nella
+ha molte cose in comune con JavaScript e C. Come per gli oggetti nella
 programmazione ad oggetti, ogni contratto contiene variabili di stato, funzioni
 e tipi di dato semplici. Tra le funzionalità specifiche dei contratti troviamo
 le clausole (guardie) dei modifier, gli event notifier per i listener, e le
@@ -111,7 +111,7 @@ Metamask.
 
 ![Solidity-in-remix](../images/solidity/remix-testnet.png)
 
-Per ora continua a usare la `Javascript VM` a meno che non ti sia detto di
+Per ora continua a usare la `JavaScript VM` a meno che non ti sia detto di
 cambiarla. Quando distribuisci su una testnet, Metamask aprirà un pop up che
 ti chiederà di "confermare" la transazione. Premi `yes` e dopo un certo lasso
 di tempo, ti apparirà la stessa interfaccia per il contratto nella parte
@@ -529,9 +529,9 @@ LogSent(from, to, amount);
 /**
 
 Una terza parte esterna (entità o contratto), può osservare usando
-la libreria Javascript Web3:
+la libreria JavaScript Web3:
 
-// Quel che se segue è codice Javascript, non Solidity
+// Quel che se segue è codice JavaScript, non Solidity
 Coin.LogSent().watch({}, '', function(error, result) {
     if (!error) {
         console.log("Trasferimento valuta: " + result.args.amount +
@@ -798,7 +798,7 @@ contract SomeOracle {
 // vedi l'esempio sotto che usa enum per lo stato e il modifier inState
 ```
 
-Prova l'esempio completo qui sotto [usando remix e la `Javascript VM`](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
+Prova l'esempio completo qui sotto [usando remix e la `JavaScript VM`](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
 
 ```solidity
 // *** ESEMPIO: Un esempio di crowdfunding (molto simile a Kickstarter) ***

@@ -14,7 +14,7 @@ translators:
 Solidity 使你在[以太坊](https://www.ethereum.org/)上编程，一个基于区块链的虚拟机，
 允许创建和执行智能合约，无需中心化的或可信的一方。
 
-Solidity 是一种与 Javascript 和 C 的相似的、静态类型的合约编程语言。与OOP（面向对象）中
+Solidity 是一种与 JavaScript 和 C 的相似的、静态类型的合约编程语言。与OOP（面向对象）中
 的对象一样，每个合约都包含状态变量、函数和公共数据类型。合约特定功能包括修饰符（guard）子句，
 事件通知的侦听器及自定义的全局变量。
 
@@ -375,7 +375,7 @@ event LogSent(address indexed from, address indexed to, uint amount); // 注意 
 LogSent(from, to, amount);
 
 /*
-    // 对于外部方（合约或外部实体），使用 Web3 Javascript 库来监听
+    // 对于外部方（合约或外部实体），使用 Web3 JavaScript 库来监听
     // 以下是javascript代码,不是solidity代码
     Coin.LogSent().watch({}, '', function(error, result) {
         if (!error) {

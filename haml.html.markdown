@@ -201,7 +201,7 @@ $ haml input_file.haml output_file.html
 
 <p>Text <strong>inside</strong> the <em>block</em></p>
 
-/ Javascript filter
+/ JavaScript filter
 :javascript
   console.log('This is inline <script>');
 

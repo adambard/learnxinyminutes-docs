@@ -11,9 +11,9 @@ translators:
 lang: zh-cn
 ---
 
-Javascript 于 1995 年由网景公司的 Brendan Eich 发明。最初它作为一种简单的，用于开发网站的脚本语言而被发明出来，是用于开发复杂网站的 Java 的补充。但由于它与网页结合度很高并且在浏览器中得到内置的支持，所以在网页前端领域 Javascript 变得比 Java 更流行了。
+JavaScript 于 1995 年由网景公司的 Brendan Eich 发明。最初它作为一种简单的，用于开发网站的脚本语言而被发明出来，是用于开发复杂网站的 Java 的补充。但由于它与网页结合度很高并且在浏览器中得到内置的支持，所以在网页前端领域 JavaScript 变得比 Java 更流行了。
 
-不过，Javascript 不仅用于网页浏览器，一个名为 Node.js 的项目提供了面向 Google Chrome V8 引擎的独立运行时环境，它正在变得越来越流行。
+不过，JavaScript 不仅用于网页浏览器，一个名为 Node.js 的项目提供了面向 Google Chrome V8 引擎的独立运行时环境，它正在变得越来越流行。
 
 ```js
 // 注释方式和C很像，这是单行注释
@@ -31,7 +31,7 @@ doStuff()
 ///////////////////////////////////
 // 1. 数字、字符串与操作符
 
-// Javascript 只有一种数字类型(即 64位 IEEE 754 双精度浮点 double)。
+// JavaScript 只有一种数字类型(即 64位 IEEE 754 双精度浮点 double)。
 // double 有 52 位表示尾数，足以精确存储大到 9✕10¹⁵ 的整数。
 3; // = 3
 1.5; // = 1.5
@@ -121,7 +121,7 @@ undefined; // 用来表示还没有设置的值(尽管`undefined`自身实际是
 ///////////////////////////////////
 // 2. 变量、数组和对象
 
-// 变量需要用`var`关键字声明。Javascript是动态类型语言，
+// 变量需要用`var`关键字声明。JavaScript是动态类型语言，
 // 所以你无需指定类型。 赋值需要用 `=`
 var someVar = 5;
 
@@ -467,17 +467,17 @@ if (Object.create === undefined){ // 如果存在则不覆盖
 
 [Mozilla 开发者
 网络](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 提供了优秀的介绍
-Javascript如何在浏览器中使用的文档。而且它是wiki，所以你也可以自行编辑来分享你的知识。
+JavaScript如何在浏览器中使用的文档。而且它是wiki，所以你也可以自行编辑来分享你的知识。
 
 MDN的 [A re-introduction to
 JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
-覆盖了这里提到的绝大多数话题的细节。该导引的大多数内容被限定在只是Javascript这个语言本身；
-如果你想了解Javascript是如何在网页中被应用的，那么可以查看
+覆盖了这里提到的绝大多数话题的细节。该导引的大多数内容被限定在只是JavaScript这个语言本身；
+如果你想了解JavaScript是如何在网页中被应用的，那么可以查看
 [Document Object
 Model](https://developer.mozilla.org/en-US/docs/Using_the_W3C_DOM_Level_1_Core)
 
-[Javascript Garden](https://shamansir.github.io/JavaScript-Garden/) 是一个深入
-讲解所有Javascript反直觉部分的导引。
+[JavaScript Garden](https://shamansir.github.io/JavaScript-Garden/) 是一个深入
+讲解所有JavaScript反直觉部分的导引。
 
 [JavaScript: The Definitive Guide](http://www.amazon.com/gp/product/0596805527/) 是一个经典的指导参考书。
 

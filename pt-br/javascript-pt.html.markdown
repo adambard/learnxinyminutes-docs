@@ -15,7 +15,7 @@ complementando o uso de Java para aplicações web mais complexas, mas a sua
 integração com páginas web e seu suporte nativo nos browsers fez com que
 ela se tornasse mais comum que Java no frontend web.
 
-Javascript não é somente limitada a browsers web, existindo o Node.js,
+JavaScript não é somente limitada a browsers web, existindo o Node.js,
 que é um projeto que fornece um interpretador baseado no motor V8 do Google
 Chrome e está se tornando cada vez mais famoso.
 
@@ -37,7 +37,7 @@ facaAlgo()
 ///////////////////////////////////
 // 1. Números, Strings e Operadores
 
-// Javascript tem um tipo de número (que é o 64-bit IEEE 754 double).
+// JavaScript tem um tipo de número (que é o 64-bit IEEE 754 double).
 // Doubles tem uma mantissa 52-bit, que é suficiente para guardar inteiros
 // acima de 9✕10¹⁵ precisamente.
 3; // = 3
@@ -130,7 +130,7 @@ undefined; // usado para indicar um valor que não é a atualmente definido
 ///////////////////////////////////
 // 2. Variáveis, Arrays e Objetos
 
-// Variáveis são declaradas com a palavra-chave `var`. O Javascript é
+// Variáveis são declaradas com a palavra-chave `var`. O JavaScript é
 // dinâmicamente tipado, portanto você não precisa especificar o tipo.
 // Atribuições usam um simples caracter de `=`.
 var someVar = 5;
@@ -166,12 +166,12 @@ myArray.length; // = 4
 // Adicionar/modificar em um índice específico
 myArray[3] = "Hello";
 
-// Objetos de Javascript são equivalentes aos dicionários ou maps de outras
+// Objetos de JavaScript são equivalentes aos dicionários ou maps de outras
 // linguagens: uma coleção não ordenada de pares chave-valor.
 var myObj = {chave1: "Olá", chave2: "Mundo"};
 
 // Chaves são strings, mas as aspas não são necessárias se elas são
-// identificadores válidos no Javascript. Valores podem ser de qualquer tipo.
+// identificadores válidos no JavaScript. Valores podem ser de qualquer tipo.
 var myObj = {myKey: "myValue", "my other key": 4};
 
 // Atributos de objetos também podem ser acessados com a sintaxe de colchetes.
@@ -254,7 +254,7 @@ switch (grade) {
 ///////////////////////////////////
 // 4. Funções, Escopos e Closures
 
-// Funções Javascript são declaradas com a palavra-chave `function`.
+// Funções JavaScript são declaradas com a palavra-chave `function`.
 function myFunction(thing){
     return thing.toUpperCase();
 }
@@ -273,14 +273,14 @@ function myFunction()
 }
 myFunction(); // = undefined
 
-// Funções Javascript são objetos de primeira classe, portanto elas podem
+// Funções JavaScript são objetos de primeira classe, portanto elas podem
 // ser atribuídas a nomes de variáveis e serem passadas para outras funções
 // como argumentos - por exemplo, quando criamos um manipulador de eventos:
 function myFunction(){
     // este código será chamado em 5 segundos
 }
 setTimeout(myFunction, 5000);
-// Nota: `setTimeout` não é parte da linguagem Javascript, mas é provido pelos
+// Nota: `setTimeout` não é parte da linguagem JavaScript, mas é provido pelos
 // browsers e o Node.js.
 
 // Objetos de funções não precisam nem serem declarados com nome - você pode
@@ -290,7 +290,7 @@ setTimeout(function(){
     // este código será chamado em 5 segundos
 }, 5000);
 
-// O Javascript tem escopo de função; as funções tem seu próprio escopo,
+// O JavaScript tem escopo de função; as funções tem seu próprio escopo,
 // mas outros blocos não.
 if (true){
     var i = 5;
@@ -310,7 +310,7 @@ i; // = 5 - não `undefined` como você esperaria numa linguagem de blogo-escopo
 temporary; // levanta um erro de referência inexiste
 permanent; // = 10
 
-// Uma das principais características do Javascript é a closure. Que é
+// Uma das principais características do JavaScript é a closure. Que é
 // uma função definida dentro de outra função, a função interna pode acessar
 // todas as variáveis da função externa, mesmo depois da função de fora
 // finalizar sua execução.
@@ -493,7 +493,7 @@ String.prototype.firstCharacter = function(){
 "abc".firstCharacter(); // = "a"
 
 // Esse fato é usado para criar os chamados `polyfills`, que implementam
-// uma nova característica do Javascript em uma versão mais velha, para que
+// uma nova característica do JavaScript em uma versão mais velha, para que
 // assim funcionem em ambientes mais velhos como browsers ultrapassados.
 
 // Havíamos mencionado que `Object.create` não estava ainda disponível em
@@ -513,7 +513,7 @@ if (Object.create === undefined){ // Não o sobrescreve se já existir
 
 O [Mozilla Developer
 Network](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) dispõe de uma
-excelente documentação sobre Javascript e seu uso nos browsers. E mais,
+excelente documentação sobre JavaScript e seu uso nos browsers. E mais,
 é uma wiki, portanto conforme você vai aprendendo, mais você pode ir ajudando
 os outros compartilhando do seu conhecimento.
 

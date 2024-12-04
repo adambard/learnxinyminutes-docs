@@ -459,7 +459,7 @@ mujObjekt = new MujKonstruktor(); // = {mojeCislo: 5}
 mujObjekt.mojeCislo; // = 5
 
 // Na rozdíl od nejznámějších objektově orientovaných jazyků, JavaScript nezná
-// koncept instancí vytvořených z tříd. Místo toho Javascript kombinuje
+// koncept instancí vytvořených z tříd. Místo toho JavaScript kombinuje
 // vytváření instancí a dědění do konceptu zvaného 'prototyp'.
 
 // Každý JavaScriptový objekt má prototyp. Když budete přistupovat k vlastnosti
@@ -600,13 +600,13 @@ tohoto jazyka.
 
 [JavaScript: The Definitive Guide][6] je klasická výuková kniha.
 
-[Eloquent Javascript][8] od Marijn Haverbeke je výbornou JS knihou/e-knihou.
+[Eloquent JavaScript][8] od Marijn Haverbeke je výbornou JS knihou/e-knihou.
 
-[Javascript: The Right Way][10] je průvodcem JavaScriptem pro začínající
+[JavaScript: The Right Way][10] je průvodcem JavaScriptem pro začínající
 vývojáře i pomocníkem pro zkušené vývojáře, kteří si chtějí prohloubit své
 znalosti.
 
-[Javascript:Info][11] je moderním JavaScriptovým průvodcem, který pokrývá
+[javascript.info][11] je moderním JavaScriptovým průvodcem, který pokrývá
 základní i pokročilé témata velice výstižným výkladem.
 
 Jako dodatek k přímým autorům tohoto článku byly na těchto stránkách části

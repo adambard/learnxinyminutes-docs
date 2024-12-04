@@ -33,7 +33,7 @@ Sambungan fail untuk fail - fail JSON adalah ".json" dan jenis MIME untuk teks
 JSON adalah "application/json".
 
 Banyak bahasa aturcara mempunyai fungsi untuk menyirikan (mengekod) dan
-menyah-sirikan (men-dekod) data JSON kepada struktur data asal. Javascript
+menyah-sirikan (men-dekod) data JSON kepada struktur data asal. JavaScript
 mempunyai sokongon tersirat untuk memanipulasi teks JSON sebagai data.
 
 Maklumat lebih lanjut boleh dijumpai di [json.org](http://www.json.org/)

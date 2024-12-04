@@ -160,7 +160,7 @@ let points : List { x : Double, y : Double } =
 
        lambda n : [ n, n + 1 ]
 
-   ... und diesem Javascript Code:
+   ... und diesem JavaScript Code:
 
        function (n) { return [ n, n + 1 ]; }
 -}

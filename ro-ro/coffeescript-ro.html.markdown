@@ -9,7 +9,7 @@ filename: coffeescript-ro.coffee
 lang: ro-ro
 ---
 
-CoffeeScript este un limbaj de programare care este compilat in Javascript. Nu exista un interpretator la runtime-ul aplicatiei. Fiind unul din successorii Javascript, CoffeeScript incearca sa compileze Javascript usor de citit si performant.
+CoffeeScript este un limbaj de programare care este compilat in JavaScript. Nu exista un interpretator la runtime-ul aplicatiei. Fiind unul din successorii JavaScript, CoffeeScript incearca sa compileze JavaScript usor de citit si performant.
 
 Mai cititi si [website-ul CoffeeScript](http://coffeescript.org/), care contine un tutorial complet Coffeescript.
 
@@ -19,9 +19,9 @@ Mai cititi si [website-ul CoffeeScript](http://coffeescript.org/), care contine 
 # Comentarii sunt ca in Ruby sau Python.
 
 ###
-Comentariile in bloc sunt create cu `###`, iar acestea sunt transformate in `/*` si `*/` pentru Javascript
+Comentariile in bloc sunt create cu `###`, iar acestea sunt transformate in `/*` si `*/` pentru JavaScript
 
-Ar trebuie sa intelegeti Javascript pentru a continua cu acest ghid.
+Ar trebuie sa intelegeti JavaScript pentru a continua cu acest ghid.
 ###
 
 # Atribuirea valorilor:

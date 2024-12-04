@@ -91,7 +91,7 @@ Mpyennement mature/compatible:
   Smalltalk possède quelques outils impressionnants, et ce projet tente
   de les apporter dans le développement Ruby.
 * [RubyMotion](http://www.rubymotion.com/) - Ruby pour développement iOS et Android.
-* [Opal](http://opalrb.org/) - Compile le Ruby en Javascript
+* [Opal](http://opalrb.org/) - Compile le Ruby en JavaScript
 
 Les implémentations de Ruby peuvent avoir leurs propres numéros de versions,
 mais elles ciblent toujours une versions spéficique de MRI pour la

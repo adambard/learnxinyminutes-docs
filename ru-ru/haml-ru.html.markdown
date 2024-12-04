@@ -211,7 +211,7 @@ $ haml input_file.haml output_file.html
 
 <p>Текст <strong>внутри</strong> <em>блока</em></p>
 
-/ Javascript - фильтр
+/ JavaScript - фильтр
 :javascript
   console.log('This is inline <script>');
 

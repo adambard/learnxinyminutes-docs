@@ -11,7 +11,7 @@ lang: pt-br
 ---
 
 p5.js é biblioteca JavaScript que carrega o princípio original do [Processing](https://processing.org), tornar a programação acessível à artistas, designers, professores e alunos e traz esse lema para os dias atuais.
-Como o p5.js é uma biblioteca JavaScript, você precisa aprender [Javascript](https://learnxinyminutes.com/docs/pt-br/javascript-pt/) primeiro.
+Como o p5.js é uma biblioteca JavaScript, você precisa aprender [JavaScript](https://learnxinyminutes.com/docs/pt-br/javascript-pt/) primeiro.
 
 Para rodar códigos com p5.js online, você pode acessar o [editor online](https://editor.p5js.org/).
 

@@ -15,7 +15,7 @@ para criação e execução de contratos inteligentes, sem necessidade de partes
 centralizadas ou de confiança.
 
 Solidity é uma linguagem de contratos estaticamente tipaada com similaridade com
-Javascript e C. Como objetos em programação orientada a objetos, cada contrato
+JavaScript e C. Como objetos em programação orientada a objetos, cada contrato
 possue variáveis de estado, funções e tipos de dados comuns. Funcionalidades
 particulares de contratados incluem cláusuras modificadoras (guarda), notifica
 dores de eventos para listerners e variáveis globais customizadas.
@@ -463,7 +463,7 @@ modifier chequeValor(uint quantidade) {
 // Todas as lógicas básicas de bloco funcionam - incluindo if/else,
 // while, break, continue, return - mas não há switch
 
-// A sintaxe é semelhante a Javascript, mas sem conversão de tipos
+// A sintaxe é semelhante a JavaScript, mas sem conversão de tipos
 // de não-booleanos para booleanos (operadores de comparação precisam
 // utilizar valores booleanos)
 

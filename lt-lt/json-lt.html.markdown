@@ -16,7 +16,7 @@ Palaikančios naršyklės yra: Firefox 3.5+, Internet Explorer 8.0+, Chrome 1.0+
 
 Failo plėtinys JSON failams yra „.json“, o MIME tipas yra „application/json“.
 
-Dauguma programavimo kalbų palaiko JSON duomenų serializaciją (kodavimą) ir deserializaciją (dekodavimą) į natyviasias duomenų struktūras. Javascript turi visišką JSON teksto kaip duomenų manipuliavimo palaikymą.
+Dauguma programavimo kalbų palaiko JSON duomenų serializaciją (kodavimą) ir deserializaciją (dekodavimą) į natyviasias duomenų struktūras. JavaScript turi visišką JSON teksto kaip duomenų manipuliavimo palaikymą.
 
 Daugiau informacijos galima rasti [json.org](http://www.json.org/)
 

@@ -89,7 +89,7 @@ class LearnHaxe3 {
            Trace is the default method of printing haxe expressions to the
            screen.  Different targets will have different methods of
            accomplishing this.  E.g., java, c++, c#, etc. will print to std
-           out.  Javascript will print to console.log, and flash will print to
+           out.  JavaScript will print to console.log, and flash will print to
            an embedded TextField.  All traces come with a default newline.
            Finally, It's possible to prevent traces from showing by using the
            "--no-traces" argument on the compiler.

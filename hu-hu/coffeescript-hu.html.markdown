@@ -9,7 +9,7 @@ lang: hu-hu
 filename: coffeescript-hu.coffee
 ---
 
-A CoffeeScript egy apró nyelv ami egy-az-egyben egyenértékű Javascript kódra fordul, és így futásidőben már nem szükséges interpretálni.
+A CoffeeScript egy apró nyelv ami egy-az-egyben egyenértékű JavaScript kódra fordul, és így futásidőben már nem szükséges interpretálni.
 Mint a JavaScript egyik követője, a CoffeeScript mindent megtesz azért, hogy olvasható, jól formázott és jól futó JavaScript kódot állítson elő, ami minden JavaScript futtatókörnyezetben jól működik.
 
 Rézletekért lásd még a [CoffeeScript weboldalát](http://coffeescript.org/), ahol egy teljes CoffeScript tutorial is található.

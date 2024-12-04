@@ -646,10 +646,10 @@ of the language.
 
 [JavaScript: The Definitive Guide][6] is a classic guide and reference book.
 
-[Eloquent Javascript][8] by Marijn Haverbeke is an excellent JS book/ebook with
+[Eloquent JavaScript][8] by Marijn Haverbeke is an excellent JS book/ebook with
 attached terminal
 
-[Javascript: The Right Way][10] is a guide intended to introduce new developers
+[JavaScript: The Right Way][10] is a guide intended to introduce new developers
 to JavaScript and help experienced developers learn more about its best practices.
 
 [javascript.info][11] is a modern javascript tutorial covering the basics (core language and working with a browser)

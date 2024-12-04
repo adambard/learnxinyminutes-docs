@@ -900,7 +900,7 @@ Node createLinkedList(int *vals, int len);
 ## 関連記事、教材(一部英語)
 
 [CS50 日本語版](https://cs50.jp/) はハーバード大学が無料で公開しているコンピューターサイエンスコースで
-字幕付きの動画と一緒にC, Python, SQL, HTML, CSS, Javascriptなどの言語を使った素晴らしいコースです。
+字幕付きの動画と一緒にC, Python, SQL, HTML, CSS, JavaScriptなどの言語を使った素晴らしいコースです。
 C言語を学ぶ者は第1-5週目を受けることをおすすめします。
 
 [Learn C The Hard Way](http://learncodethehardway.org/c/) は有料だが、良い英語での教材です。

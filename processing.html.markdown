@@ -13,7 +13,7 @@ multimedia content, allowing non-programmers to learn fundamentals of computer
 programming in a visual context.
 
 While the language is based on Java language, its syntax has been largely
-influenced by both Java and Javascript syntaxes. [See more here](https://processing.org/reference/)
+influenced by both Java and JavaScript syntaxes. [See more here](https://processing.org/reference/)
 
 The language is statically typed, and also comes with its official IDE to
 compile and run the scripts.

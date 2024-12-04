@@ -586,13 +586,13 @@ const add = (firstNumber, secondNumber) => {
 
 MDN'nin [A re-introduction to JavaScript(JavaScript'e Yeniden Giriş)][2] başlıklı kaynağı, burada ele alınan kavramların daha detaylı bir şekilde ele alınmış halini içerir. Bu rehber, bilinçli bir şekilde sadece JavaScript dilini ele almıştır. Eğer JavaScript'i web sayfalarında nasıl kullanacağınız hakkında daha fazla bilgi edinmek isterseniz, [Belge Nesne Modeli (Document Object Model)][3] hakkında öğrenmeye başlayabilirsiniz.
 
-[Patika - Javascript][4]Hakan Yalçınkaya'nın eğitmen olduğu bu kaynak, Javascript'i baştan sonra öğrenmenizi ve öğrendiklerinizi çeşitli test, proje ve coding challenge'lar ile pekiştirmenizi sağlar.
+[Patika - JavaScript][4]Hakan Yalçınkaya'nın eğitmen olduğu bu kaynak, JavaScript'i baştan sonra öğrenmenizi ve öğrendiklerinizi çeşitli test, proje ve coding challenge'lar ile pekiştirmenizi sağlar.
 
 [JavaScript Garden][6] tüm detaylarının derinlemesine incelendiği bir rehberdir.
 
 [Yusuf Sezer][7] Hem Türkçe hem yazılı olsun diyenler için kapsamlı bir kaynak.
 
-[BTK Akademi][8] BTK Akademi Javascript kursu
+[BTK Akademi][8] BTK Akademi JavaScript kursu
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript

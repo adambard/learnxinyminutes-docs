@@ -104,7 +104,7 @@ class LearnHaxe3{
            Trace é o método padrão para imprimir expressões haxe na tela.
            Temos diferentes métodos para conseguir isso em diferentes destinos.
            Por exemplo: Java, C++, C#, etc. irão imprimir para stdout.
-           Javascript irá imprimir no console.log, e Flash irá imprimir para um
+           JavaScript irá imprimir no console.log, e Flash irá imprimir para um
            TextField anexado. Todos os "traces" imprimem também uma linha em branco
            por padrão. Por fim, é possível prevenir um trace de ser exibido usando
            o argumento "--no-traces" no compilador.

@@ -456,11 +456,11 @@ var MyConstructor = function(){
 myNewObj = new MyConstructor(); // = {myNumber: 5}
 myNewObj.myNumber; // = 5
 
-// Diversamente dalla molti degli altri linguaggi orientati agli oggetti, Javascript non ha
-// il concetto di 'istanze' create sull'impronta di una 'classe'; invece Javascript
+// Diversamente dalla molti degli altri linguaggi orientati agli oggetti, JavaScript non ha
+// il concetto di 'istanze' create sull'impronta di una 'classe'; invece JavaScript
 // combina l'instanziamento e l'ereditarietà in un singolo concetto: il 'prototipo'.
 
-// Ogni oggetto Javascript ha un 'prototipo'. Quando si cerca di accedere a una proprietà
+// Ogni oggetto JavaScript ha un 'prototipo'. Quando si cerca di accedere a una proprietà
 // su un oggetto che non la contiene, l'interprete
 // guarderà i suoi prototipi.
 
@@ -585,19 +585,19 @@ if (Object.create === undefined){ // non lo sovrascrive se esiste già
 
 ## Approfondimenti
 
-Il [Mozilla Developer Networ][1] fornisce una documentazione eccellente su come Javascript è utilizzato nei browsers. In più è un wiki, quindi si può imparare di più aiutando gli altri condividendo la propria conoscenza.
+Il [Mozilla Developer Networ][1] fornisce una documentazione eccellente su come JavaScript è utilizzato nei browsers. In più è un wiki, quindi si può imparare di più aiutando gli altri condividendo la propria conoscenza.
 
 MDN's [A re-introduction to JavaScript][2] copre molti dei concetti qui trattati in maggiore dettaglio. Questa guida ha deliberatamente coperto solamente il linguaggio JavaScript; se volete sapere di più su come usare JavaScript in una pagina web, iniziate leggendo il [Document Object Model][3].
 
-[Javascript Garden][5] è una guida approfondita di tutte le parti controintuitive del linguaggio.
+[JavaScript Garden][5] è una guida approfondita di tutte le parti controintuitive del linguaggio.
 
 [JavaScript: The Definitive Guide][6] è una guida classica e referenziario.
 
-[Eloqunt Javascript][8] di Marijn Haverbeke è un ottimo libro/ebook JS con terminale annesso
+[Eloqunt JavaScript][8] di Marijn Haverbeke è un ottimo libro/ebook JS con terminale annesso
 
-[Javascript: The Right Way][10] è una guida dedicata all'introduzione dei nuovi sviluppatori a JavaScript e come aiuto agli sviluppatori esperti per imparare di più sulle best practice.
+[JavaScript: The Right Way][10] è una guida dedicata all'introduzione dei nuovi sviluppatori a JavaScript e come aiuto agli sviluppatori esperti per imparare di più sulle best practice.
 
-[Javascript:info][11] è un moderno tutorial su javascript che copre le basi (linguaggio principale e lavorazione con un browser) come anche argomenti avanzati con spiegazioni concise.
+[javascript.info][11] è un moderno tutorial su javascript che copre le basi (linguaggio principale e lavorazione con un browser) come anche argomenti avanzati con spiegazioni concise.
 
 
 In aggiunta ai contributori di questo articolo, alcuni contenuti sono adattati dal Louie Dinh's Python tutorial su questo sito, e da [JS Tutorial][7] sul Mozilla Developer Network.

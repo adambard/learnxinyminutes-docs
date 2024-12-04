@@ -17,7 +17,7 @@ Programmiererfahrung die Grundlagen der Computerprogrammierung in einem
 visuellen Kontext erlernen.
 
 Obwohl Processing von Java beeinflusst wurde und auf Java basiert, ist die Syntax
-sowohl von Java als auch Javascript beeinflusst worden. Weitere Informationen
+sowohl von Java als auch JavaScript beeinflusst worden. Weitere Informationen
 sind [hier](https://processing.org/reference/) zu finden.
 
 Die Programmiersprache wird statisch programmiert und kommt mit einer eigenen

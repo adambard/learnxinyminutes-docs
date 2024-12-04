@@ -314,7 +314,7 @@ jq -n '1, 2, 3 | ., 4 | .'
 #     [dot, 4].each { |dot| puts dot }
 #   end
 #
-# In Javascript:
+# In JavaScript:
 #
 #   [1, 2, 3].forEach(dot => {
 #       [dot, 4].forEach(dot => console.log(dot))

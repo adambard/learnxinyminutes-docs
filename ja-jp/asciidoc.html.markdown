@@ -125,7 +125,7 @@ _アンダースコアで斜体になります。_
 AsciiDocの文書を処理するツールは2種類あります。
 
 1. [AsciiDoc](http://asciidoc.org/): オリジナルのPython実装で、Linuxで利用可能です。現在は開発されておらず、メンテナンスのみの状態です。
-2. [Asciidoctor](http://asciidoctor.org/): Rubyによる別実装で、JavaやJavascriptでも利用可能です。AsciiDocに新しい機能や出力形式を追加するため、現在活発に開発されています。
+2. [Asciidoctor](http://asciidoctor.org/): Rubyによる別実装で、JavaやJavaScriptでも利用可能です。AsciiDocに新しい機能や出力形式を追加するため、現在活発に開発されています。
 
 以下のリンクは `AsciiDoctor` 実装関連のものです。
 

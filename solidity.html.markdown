@@ -14,7 +14,7 @@ blockchain-based virtual machine that allows the creation and
 execution of smart contracts, without requiring centralized or trusted parties.
 
 Solidity is a statically typed, contract programming language that has
-similarities to Javascript and C. Like objects in OOP, each contract contains
+similarities to JavaScript and C. Like objects in OOP, each contract contains
 state variables, functions, and common data types. Contract-specific features
 include modifier (guard) clauses, event notifiers for listeners, and custom
 global variables.
@@ -90,7 +90,7 @@ This will use whatever network is currently selected in your metamask as the net
 
 ![Solidity-in-remix](images/solidity/remix-testnet.png)
 
-For now, please continue to use the `Javascript VM` unless instructed otherwise. When you deploy to a testnet, metamask will pop up to ask you to "confirm" the transaction. Hit yes, and after a delay, you'll get the same contract interface at the bottom of your screen. 
+For now, please continue to use the `JavaScript VM` unless instructed otherwise. When you deploy to a testnet, metamask will pop up to ask you to "confirm" the transaction. Hit yes, and after a delay, you'll get the same contract interface at the bottom of your screen. 
 
 
 ```solidity
@@ -469,9 +469,9 @@ LogSent(from, to, amount);
 /**
 
 For an external party (a contract or external entity), to watch using
-the Web3 Javascript library:
+the Web3 JavaScript library:
 
-// The following is Javascript code, not Solidity code
+// The following is JavaScript code, not Solidity code
 Coin.LogSent().watch({}, '', function(error, result) {
     if (!error) {
         console.log("Coin transfer: " + result.args.amount +
@@ -718,7 +718,7 @@ contract SomeOracle {
 // see example below for State enum and inState modifier
 ```
 
-Work with the full example below using the [`Javascript VM` in remix here.](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
+Work with the full example below using the [`JavaScript VM` in remix here.](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
 
 ```solidity
 // *** EXAMPLE: A crowdfunding example (broadly similar to Kickstarter) ***

@@ -16,7 +16,7 @@ conteúdo multimídia, permitindo que não programadores aprendam os fundamentos
 da programação computacional em um contexto visual.
 
 Embora a linguagem seja baseada na linguagem Java, sua sintaxe foi amplamente
-influenciado por ambas as sintaxes Java e Javascript.
+influenciado por ambas as sintaxes Java e JavaScript.
 [Veja mais aqui](https://processing.org/reference/)
 
 A linguagem é tipada estaticamente e também vem com o seu Ambiente de Desenvolvimento

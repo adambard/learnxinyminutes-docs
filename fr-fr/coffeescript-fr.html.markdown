@@ -9,14 +9,14 @@ filename: coffeescript-fr.coffee
 ---
 
 ``` coffeescript
-# CoffeeScript est un langage préprocesseur, il permet de générer du Javascript.
+# CoffeeScript est un langage préprocesseur, il permet de générer du JavaScript.
 # Il suit les tendances de certains langages récents.
 # Par exemple, les commentaires se définissent comme en Ruby ou en Python.
 
 ###
 Ceci est un bloc de commentaires
 il est converti directement avec '/ *' et '* /'
-pour correspondre aux commentaires Javascript
+pour correspondre aux commentaires JavaScript
 
 Vous devez comprendre la syntaxe du langage JavaScript pour continuer.
 ###

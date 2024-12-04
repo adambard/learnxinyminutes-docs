@@ -8,7 +8,7 @@ translators:
 lang: es-es
 ---
 
-LiveScript es un lenguaje funcional compilado sobre Javascript. Comparte
+LiveScript es un lenguaje funcional compilado sobre JavaScript. Comparte
 la mayoría de la semántica con este mismo lenguaje. Composición de funciones,
 comparación de patrones y muchas otras cosas son las adiciones que hace
 LiveScript. Está inspirado en lenguajes como Haskell, F# y Scala.
@@ -26,7 +26,7 @@ desarrollo activo para traer aún más funciones.
 
 /*
  Comentarios multi-línea son escritos con estilo de C. Usa este estilo si quieres
- que los comentarios se preserven en el output de Javascript
+ que los comentarios se preserven en el output de JavaScript
  */
 
 # En lo que a la sintaxis se refiere, LiveScript usa indentación para delimitar

@@ -589,9 +589,9 @@ MDN 的 [重新介紹 JavaScript][2] 一文中，提到關於本文之外的更�
 
 [JavaScript 大全][6] 是一本經典的指南和參考書。
 
-[精通 Javascript][8] 由 Marijn Haverbeke 所著，是一本優秀的 JS 書籍/電子書，附帶終端機指令
+[精通 JavaScript][8] 由 Marijn Haverbeke 所著，是一本優秀的 JS 書籍/電子書，附帶終端機指令
 
-[Javascript: The Right Way][10] 是一本指南，旨在向新入門的開發者介紹 JavaScript，並幫助有經驗的開發者學習更多關於其最佳實踐的知識。
+[JavaScript: The Right Way][10] 是一本指南，旨在向新入門的開發者介紹 JavaScript，並幫助有經驗的開發者學習更多關於其最佳實踐的知識。
 
 [現代 JavaScript 教學][11] 為現代的 JavaScript 教學網站，涵蓋了基礎知識（核心語言和瀏覽器操作）以及進階主題，並提供簡明扼要的解釋。
 

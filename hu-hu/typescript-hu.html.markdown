@@ -12,7 +12,7 @@ A TypeScript nyelv a JavaScript nyelven írt nagy méretű alkalmazások fejlesz
 A TypeScript olyan, más nyelvekből ismert gyakori fogalmakat ad hozzá a JavaScripthez, mint például osztályok, interfészek, generikusság, és (opcionális) statikus típusosság.
 A JavaScript egy befoglaló halmazát képzi: minden JavaScript kód érvényes TypeScript kód, így könnyen hozzáadható meglévő projektekhez. A TypeScript fordító kimenetként JavaScript kódot állít elő.
 
-Ez a dokumentum a TypeScript által hozzáadott új szintaxissal foglalkozik, nem pedig a [Javascripttel](../javascript/).
+Ez a dokumentum a TypeScript által hozzáadott új szintaxissal foglalkozik, nem pedig a [JavaScripttel](../javascript/).
 
 Hogy kipróbáld a TypeScript fordítót, látogass el a [Játszótérre avagy Playground-ra](https://www.typescriptlang.org/Playground) ahol kódot írhatsz automatikus kódkiegészítéssel, és közvetlenül láthatod az előállított JavaScript kódot.
 
