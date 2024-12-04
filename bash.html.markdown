@@ -64,8 +64,9 @@ echo "$variable" # => Some string
 echo '$variable' # => $variable
 # When you use a variable itself — assign it, export it, or else — you write
 # its name without $. If you want to use the variable's value, you should use $.
-# Note that ' (single quote) won't expand the variables!
-# You can write variable without surrounding quotes but it's not recommended.
+# Note that ' (single quote) won't expand variables!
+# You can write variables without surrounding double quotes but it's not
+# recommended due to how Bash handles variables with spaces in them.
 
 # Parameter expansion ${...}:
 echo "${variable}" # => Some string
