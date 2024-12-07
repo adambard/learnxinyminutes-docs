@@ -341,9 +341,9 @@ type animal =
 ;;
 
 let cow = 
-   {  name: "cow";
-      color: "black and white";
-      legs: 4; 
+   {  name = "cow";
+      color = "black and white";
+      legs = 4; 
    }
 ;;
 val cow : animal
@@ -488,7 +488,7 @@ filter (fun x -> x < 4) [3; 1; 4; 1; 5] ;; (* Gives [3; 1; 1]) *)
 (* However, you can create mutable polymorphic fields *)
 type counter = { mutable num : int } ;;
 
-let c = { num: 0 } ;;
+let c = { num = 0 } ;;
 c.num ;; (* Gives 0 *)
 c.num <- 1 ;; (* <- operator can set mutable record fields *)
 c.num ;; (* Gives 1 *)
