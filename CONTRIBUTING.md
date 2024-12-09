@@ -17,11 +17,10 @@ review them more effectively and/or individually.
 ## Style Guidelines
 
 * **Keep lines under 80 chars**
-   * Try to keep **line length in code blocks to 80 characters or fewer**.
+   * Try to keep line length in code blocks to 80 characters or fewer.
    * Otherwise, the text will overflow and look odd.
    * This and other potential pitfalls to format the content consistently are
-     identified by the freely available
-     [markdownlint](https://github.com/markdownlint/markdownlint).
+     identified by [markdownlint](https://github.com/markdownlint/markdownlint).
 * **Prefer example to exposition**
    * Try to use as few words as possible.
    * Code examples are preferred over exposition in all cases.
@@ -58,17 +57,15 @@ Other fields:
   *tool* or *Algorithms & Data Structures*. Defaults to *language* if omitted.
 * **filename**: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
-   * For non-English articles, *filename* should have a language-specific
-     suffix.
-* **lang**: For translations, the human language this article is in. For
-  categorization, mostly.
+   * For non-English articles, *filename* will be used from the English article,
+   unless you want to overwrite it for some reason.
 
-Here's an example header for an Esperanto translation of Ruby:
+Here's an example header for Ruby:
 
 ```yaml
 *--
 language: Ruby
-filename: learnruby-epo.ruby
+filename: learnruby.rb
 contributors:
     - ["Doktor Esperanto", "http://example.com/"]
     - ["Someone else", "http://someoneelseswebsite.com/"]
@@ -77,8 +74,7 @@ contributors:
 
 ### Syntax highlighter
 
-[Pygments](https://pygments.org/languages/) is used for syntax highlighting through
-[pygments.rb](https://github.com/pygments/pygments.rb).
+[Pygments](https://pygments.org/languages/) is used for syntax highlighting.
 
 ### Should I add myself as a contributor?
 
@@ -89,12 +85,10 @@ addition or not.
 
 ## Building the site locally
 
-Install Ruby. On macOS this can be done with [Homebrew](https://brew.sh/).
+Install Python. On macOS this can be done with [Homebrew](https://brew.sh/).
 
 ```sh
-brew install ruby
-# Install Ruby package manager
-gem install bundler
+brew install python
 ```
 
 Then clone two repos, install dependencies and run.
@@ -107,8 +101,12 @@ git clone https://github.com/<YOUR-USERNAME>/learnxinyminutes-docs ./learnxinymi
 
 # Install dependencies
 cd learnxinyminutes-site
-bundle install
+pip install -r requirements.txt
 
 # Run
-bundle exec middleman serve
+python build.py
+cd build
+python -m http.server
+
+# open http://localhost:8000/ in your browser of choice
 ```
