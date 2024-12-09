@@ -1,5 +1,4 @@
 ---
-language: "Common Lisp"
 category: language
 filename: commonlisp-kr.lisp
 contributors:

@@ -1,5 +1,4 @@
 ---
-language: Swift
 filename: learnswift-cn.swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]

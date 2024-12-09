@@ -1,5 +1,4 @@
 ---
-language: Haskell
 contributors:
     - ["Miltiadis Stouras", "https://github.com/mstou"]
 filename: learnhaskell-gr.hs

@@ -1,5 +1,4 @@
 ---
-language: Rust
 contributors:
     - ["Carlo Milanesi", "http://github.com/carlomilanesi"]
 filename: rust-it.rs

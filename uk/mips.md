@@ -1,5 +1,4 @@
 ---
-language: "MIPS Assembly"
 filename: MIPS.asm
 contributors:
   - ["Stanley Lim", "https://github.com/Spiderpig86"]

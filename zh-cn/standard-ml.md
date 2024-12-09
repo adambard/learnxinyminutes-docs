@@ -1,5 +1,4 @@
 ---
-language: "Standard ML"
 contributors:
     - ["Simon Shine", "http://shine.eu.org/"]
     - ["David Pedersen", "http://lonelyproton.com/"]

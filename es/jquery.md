@@ -1,6 +1,5 @@
 ---
 category: framework
-framework: jQuery
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:

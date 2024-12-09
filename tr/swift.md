@@ -1,5 +1,4 @@
 ---
-language: Swift
 contributors:
   - ["Özgür Şahin", "https://github.com/ozgurshn/"]
 filename: learnswift-tr.swift

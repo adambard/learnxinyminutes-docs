@@ -1,5 +1,4 @@
 ---
-language: MATLAB
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]

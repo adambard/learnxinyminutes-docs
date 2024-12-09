@@ -1,5 +1,4 @@
 ---
-language: Visual Basic
 contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:

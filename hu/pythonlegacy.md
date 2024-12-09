@@ -1,5 +1,4 @@
 ---
-language: Python 2 (legacy)
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "https://aminb.org"]

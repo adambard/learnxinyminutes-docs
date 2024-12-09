@@ -1,5 +1,4 @@
 ---
-language: Crystal
 filename: learncrystal-cn.cr
 contributors:
     - ["Vitalii Elenhaupt", "http://veelenga.com"]

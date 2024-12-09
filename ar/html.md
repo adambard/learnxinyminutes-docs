@@ -1,5 +1,4 @@
 ---
-language: HTML
 filename: learnhtml-tf.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]

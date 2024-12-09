@@ -1,7 +1,5 @@
 ---
 category: framework
-framework: PyQt
-language: Python
 filename: learnqt-id.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]

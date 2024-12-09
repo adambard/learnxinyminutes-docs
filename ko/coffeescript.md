@@ -1,5 +1,4 @@
 ---
-language: CoffeeScript
 category: language
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]

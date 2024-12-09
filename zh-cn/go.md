@@ -1,5 +1,4 @@
 ---
-language: Go
 filename: learngo-cn.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]

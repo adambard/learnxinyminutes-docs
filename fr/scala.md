@@ -1,5 +1,4 @@
 ---
-language: Scala
 contributors:
     - ["George Petrov", "http://github.com/petrovg"]
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]

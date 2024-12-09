@@ -1,5 +1,4 @@
 ---
-language: Kotlin
 filename: kotlin-tr.kt
 contributors:
         - ["Baha Can Aydın", "https://github.com/bahacan19"]

@@ -1,5 +1,4 @@
 ---
-language: Groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:

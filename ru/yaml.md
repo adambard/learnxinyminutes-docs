@@ -1,5 +1,4 @@
 ---
-language: YAML
 filename: learnyaml-ru.yaml
 contributors:
 - [Leigh Brenecki, 'https://github.com/adambrenecki']

@@ -1,5 +1,4 @@
 ---
-language: CoffeeScript
 contributors:
   - ["Luca 'Kino' Maroni", "http://github.com/kino90"]
   - ["Tenor Biel", "http://github.com/L8D"]

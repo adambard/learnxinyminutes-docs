@@ -1,5 +1,4 @@
 ---
-language: Objective-C
 filename: LearnObjectiveC-ru.m
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]

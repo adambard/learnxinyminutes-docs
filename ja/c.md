@@ -1,5 +1,4 @@
 ---
-language: C
 filename: learnc-jp.c
 contributors:
   - ["Adam Bard", "http://adambard.com/"]

@@ -1,5 +1,4 @@
 ---
-language: Haskell
 filename: haskell-ru.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]

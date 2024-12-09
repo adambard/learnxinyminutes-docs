@@ -1,6 +1,5 @@
 ---
 category: tool
-tool: tmux
 filename: tmux-lt.json
 contributors:
     - ["mdln", "https://github.com/mdln"]

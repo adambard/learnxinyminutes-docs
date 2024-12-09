@@ -1,5 +1,4 @@
 ---
-language: Clojure
 filename: learnclojure-cn.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]

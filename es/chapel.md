@@ -1,5 +1,4 @@
 ---
-language: Chapel
 filename: learnchapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "https://www.cs.arizona.edu/~ianbertolacci/"]

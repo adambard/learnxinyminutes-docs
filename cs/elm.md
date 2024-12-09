@@ -1,5 +1,4 @@
 ---
-language: Elm
 contributors:
     - ["Max Goldstein", "http://maxgoldste.in/"]
 translators:

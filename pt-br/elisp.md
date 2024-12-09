@@ -1,5 +1,4 @@
 ---
-language: Emacs Lisp
 contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
 translators:

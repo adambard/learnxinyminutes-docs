@@ -1,5 +1,4 @@
 ---
-language: GDScript
 contributors:
     - ["Wichamir", "https://github.com/Wichamir/"]
     - ["zacryol", "https://github.com/zacryol"]

@@ -1,5 +1,4 @@
 ---
-language: Scala
 filename: learnscala-zh.scala
 contributors:
     - ["George Petrov", "http://github.com/petrovg"]

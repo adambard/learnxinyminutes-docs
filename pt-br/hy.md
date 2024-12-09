@@ -1,5 +1,4 @@
 ---
-language: Hy
 filename: learnhy-pt.hy
 contributors:
     - ["Abhishek L", "http://twitter.com/abhishekl"]

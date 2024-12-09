@@ -1,5 +1,4 @@
 ---
-language: XML
 filename: learnxml-kr.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]

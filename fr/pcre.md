@@ -1,5 +1,4 @@
 ---
-language: PCRE
 filename: pcre-fr.txt
 contributors:
     - ["Sachin Divekar", "http://github.com/ssd532"]

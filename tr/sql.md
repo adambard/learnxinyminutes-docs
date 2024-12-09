@@ -1,5 +1,4 @@
 ---
-language: SQL
 contributors:
   - ["Metin Yalçınkaya", "https://github.com/mtnylnky"]
 filename: learnsql-tr.sql

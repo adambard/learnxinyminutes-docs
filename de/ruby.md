@@ -1,5 +1,4 @@
 ---
-language: Ruby
 filename: ruby-de.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]

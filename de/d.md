@@ -1,5 +1,4 @@
 ---
-language: D
 filename: learnd-de.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]

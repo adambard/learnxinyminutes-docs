@@ -1,6 +1,5 @@
 ---
 category: tool
-tool: Git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:

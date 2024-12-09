@@ -1,5 +1,4 @@
 ---
-language: PHP
 category: language
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]

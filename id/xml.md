@@ -1,5 +1,4 @@
 ---
-language: XML
 filename: learnxml-id.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]

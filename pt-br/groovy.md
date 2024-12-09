@@ -1,5 +1,4 @@
 ---
-language: Groovy
 category: language
 filename: learngroovy-pt.groovy
 contributors:

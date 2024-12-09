@@ -1,5 +1,4 @@
 ---
-language: C++
 filename: learncpp-fr.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]

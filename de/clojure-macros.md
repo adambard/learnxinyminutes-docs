@@ -1,5 +1,4 @@
 ---
-language: Clojure macros
 filename: learnclojuremacros-de.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]

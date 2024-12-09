@@ -1,6 +1,5 @@
 ---
 category: language
-language: Groovy
 filename: learngroovy-ca.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]

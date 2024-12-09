@@ -1,5 +1,4 @@
 ---
-language: Python
 filename: learnpython-vi.py
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]

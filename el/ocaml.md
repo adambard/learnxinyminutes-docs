@@ -1,5 +1,4 @@
 ---
-language: OCaml
 filename: learnocaml-gr.ml
 contributors:
     - ["Daniil Baturin", "http://baturin.org/"]

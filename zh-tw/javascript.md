@@ -1,5 +1,4 @@
 ---
-language: JavaScript
 category: language
 filename: javascript-zh-tw.js
 contributors:

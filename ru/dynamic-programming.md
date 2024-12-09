@@ -1,6 +1,5 @@
 ---
 category: Algorithms & Data Structures
-name: Dynamic Programming
 contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
     - ["Miltiadis Stouras", "https://github.com/mstou"]

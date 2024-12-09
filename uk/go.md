@@ -1,6 +1,5 @@
 ---
 category: language
-language: Go
 filename: learngo-ua.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]

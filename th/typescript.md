@@ -1,5 +1,4 @@
 ---
-language: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Worajedt Sitthidumrong", "https://bitbucket.org/wrj"]

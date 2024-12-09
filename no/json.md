@@ -1,5 +1,4 @@
 ---
-language: JSON
 filename: learnjson-no.json
 contributors:
   - ["Ole Mathias Heggem", "https://github.com/msbone"]

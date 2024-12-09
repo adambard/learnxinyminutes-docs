@@ -1,5 +1,4 @@
 ---
-language: Markdown
 filename: markdown-es.md
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]

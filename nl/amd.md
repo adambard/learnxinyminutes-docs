@@ -1,6 +1,5 @@
 ---
 category: tool
-tool: AMD
 contributors:
     - ["Frederik Ring", "https://github.com/m90"]
 translators:

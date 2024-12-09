@@ -1,5 +1,4 @@
 ---
-language: bc
 contributors:
     - ["Btup"]
 translators:

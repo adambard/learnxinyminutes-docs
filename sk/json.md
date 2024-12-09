@@ -1,5 +1,4 @@
 ---
-language: JSON
 filename: learnjson-sk.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]

@@ -1,6 +1,5 @@
 ---
 category: Algorithms & Data Structures
-name: Set theory
 contributors: 
   - ["kieutrang", "https://github.com/kieutrang1729"]
 ---

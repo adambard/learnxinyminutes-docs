@@ -1,5 +1,4 @@
 ---
-language: Rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]

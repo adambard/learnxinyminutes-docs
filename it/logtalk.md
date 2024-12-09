@@ -1,5 +1,4 @@
 ---
-language: Logtalk
 filename: learnlogtalk-it.lgt
 contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]

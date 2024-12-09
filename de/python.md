@@ -1,5 +1,4 @@
 ---
-language: Python
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:

@@ -1,5 +1,4 @@
 ---
-language: Ruby
 filename: learnruby-tr.rb
 contributors:
   - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]

@@ -1,5 +1,4 @@
 ---
-language: Pug
 contributors:
   - ["Michael Warner", "https://github.com/MichaelJGW"]
 filename: index-pt.pug

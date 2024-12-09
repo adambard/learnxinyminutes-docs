@@ -1,6 +1,5 @@
 ---
 category: language
-language: Perl
 filename: learnperl-ru.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]

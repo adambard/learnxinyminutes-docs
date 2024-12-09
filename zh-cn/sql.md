@@ -1,5 +1,4 @@
 ---
-language: SQL
 filename: learnsql.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]

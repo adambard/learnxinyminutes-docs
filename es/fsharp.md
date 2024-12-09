@@ -1,5 +1,4 @@
 ---
-language: F#
 contributors:
   - ['Scott Wlaschin', 'http://fsharpforfunandprofit.com/']
 translators:

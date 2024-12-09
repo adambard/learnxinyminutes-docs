@@ -1,5 +1,4 @@
 ---
-language: Sass
 filename: learnsass-de.scss
 contributors:
   - ["Laura Kyle", "https://github.com/LauraNK"]

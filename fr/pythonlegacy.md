@@ -1,5 +1,4 @@
 ---
-language: Python 2 (legacy)
 filename: learnpythonlegacy-fr.py
 contributors:
   - ["Louie Dinh", "http://ldinh.ca"]

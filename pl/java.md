@@ -1,5 +1,4 @@
 ---
-language: Java
 filename: LearnJavaPl.java
 contributors:
     - ["Jake Prather", "https://github.com/JakeHP"]

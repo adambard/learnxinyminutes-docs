@@ -1,5 +1,4 @@
 ---
-language: Java
 filename: LearnJava-it.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]

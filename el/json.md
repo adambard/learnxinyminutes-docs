@@ -1,5 +1,4 @@
 ---
-language: JSON
 filename: json-gr.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]

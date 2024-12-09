@@ -1,5 +1,4 @@
 ---
-language: Lua
 contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
     - ["Rob Hoelz", "http://hoelz.ro"]

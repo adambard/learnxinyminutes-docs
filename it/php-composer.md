@@ -1,6 +1,5 @@
 ---
 category: tool
-tool: Composer
 contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 translator:

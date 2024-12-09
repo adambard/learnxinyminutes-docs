@@ -1,5 +1,4 @@
 ---
-language: AsciiDoc
 contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 translators:

@@ -1,5 +1,4 @@
 ---
-language: "Common Lisp"
 filename: commonlisp-cn.lisp
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]

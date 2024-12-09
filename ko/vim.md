@@ -1,6 +1,5 @@
 ---
 category: tool
-tool: Vim
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:

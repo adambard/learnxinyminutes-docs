@@ -1,6 +1,5 @@
 ---
 category: Algorithms & Data Structures
-name: Lambda Calculus
 contributors:
     - ["Max Sun", "http://github.com/maxsun"]
 translators:

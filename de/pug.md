@@ -1,5 +1,4 @@
 ---
-language: Pug
 contributors:
   - ["Michael Warner", "https://github.com/MichaelJGW"]
 filename: lernepug-de.pug

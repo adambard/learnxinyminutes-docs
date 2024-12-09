@@ -1,5 +1,4 @@
 ---
-language: Haskell
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:

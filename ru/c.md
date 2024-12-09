@@ -1,5 +1,4 @@
 ---
-language: C
 filename: learnc-ru.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]

@@ -1,5 +1,4 @@
 ---
-language: Nix
 filename: learn-sv.nix
 contributors:
     - ["Chris Martin", "http://chris-martin.org/"]

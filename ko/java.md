@@ -1,5 +1,4 @@
 ---
-language: Java
 filename: java-kr.java
 category: language
 contributors:

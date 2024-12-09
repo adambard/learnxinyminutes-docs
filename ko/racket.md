@@ -1,6 +1,5 @@
 ---
 
-language: Racket
 filename: learnracket-kr.rkt
 contributors:
   - ["th3rac25", "https://github.com/voila"]

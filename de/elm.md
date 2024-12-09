@@ -1,5 +1,4 @@
 ---
-language: Elm
 filename: learnelm.elm
 contributors:
   - ["Max Goldstein", "http://maxgoldste.in/"]

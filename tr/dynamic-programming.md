@@ -1,5 +1,4 @@
 ---
-language: Dynamic Programming
 contributors:
     - ["Akashdeep Goel", "https://github.com/akashdeepgoel"]
 translators:

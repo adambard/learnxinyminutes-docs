@@ -1,6 +1,5 @@
 ---
 category: framework
-framework: AngularJS
 contributors:
     - ["Walter Cordero", "http://waltercordero.com"]
 filename: learnangular-cn.txt

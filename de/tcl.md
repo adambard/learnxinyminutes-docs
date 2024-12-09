@@ -1,5 +1,4 @@
 ---
-language: Tcl
 contributors:
     - ["Poor Yorick", "http://pooryorick.com/"]
 translators:

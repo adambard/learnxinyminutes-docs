@@ -1,6 +1,5 @@
 ---
 category: Algorithms & Data Structures
-name: Asymptotic Notation
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Divay Prakash", "http://github.com/divayprakash"]

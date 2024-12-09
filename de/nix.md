@@ -1,5 +1,4 @@
 ---
-language: Nix
 filename: learnnix-de.nix
 contributors:
     - ["Chris Martin", "http://chris-martin.org/"]

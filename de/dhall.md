@@ -1,5 +1,4 @@
 ---
-language: Dhall
 contributors:
     - ["Gabriel Gonzalez", "http://www.haskellforall.com/"]
 translators:

@@ -1,5 +1,4 @@
 ---
-language: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
 filename: learntypescript-nl.ts

@@ -1,5 +1,4 @@
 ---
-language: Elixir
 contributors:
     - ["Luca 'Kino' Maroni", "https://github.com/kino90"]
     - ["Joao Marques", "http://github.com/mrshankly"]

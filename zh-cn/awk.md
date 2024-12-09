@@ -1,6 +1,5 @@
 ---
 category: tool
-tool: AWK
 contributors:
      - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:

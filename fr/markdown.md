@@ -1,5 +1,4 @@
 ---
-language: Markdown
 contributors:
 - ["Andrei Curelaru", "http://www.infinidad.fr"]
 filename: markdown-fr.md
