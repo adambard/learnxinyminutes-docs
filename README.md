@@ -41,5 +41,5 @@ you wish, I guess.
 
 
 [1]: http://learnxinyminutes.com
-[2]: /CONTRIBUTING.markdown
+[2]: /CONTRIBUTING.md
 [3]: http://creativecommons.org/licenses/by-sa/3.0/deed.en_US
