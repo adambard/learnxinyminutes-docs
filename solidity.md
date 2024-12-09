@@ -46,23 +46,23 @@ Once installed, we will be working with Remix. The below code will be pre-loaded
 
 1. Choose the Solidity compiler
 
-![Solidity-in-remix](images/solidity/remix-solidity.png)
+![Solidity-in-remix](/images/solidity/remix-solidity.png)
 
 2. Open the file loaded by that link
 
-![Solidity-choose-file](images/solidity/remix-choose-file.png)
+![Solidity-choose-file](/images/solidity/remix-choose-file.png)
 
 3. Compile the file
 
-![Solidity-compile](images/solidity/remix-compile.png)
+![Solidity-compile](/images/solidity/remix-compile.png)
 
 4. Deploy 
 
-![Solidity-deploy](images/solidity/remix-deploy.png)
+![Solidity-deploy](/images/solidity/remix-deploy.png)
 
 5. Play with contracts
 
-![Solidity-deploy](images/solidity/remix-interact.png)
+![Solidity-deploy](/images/solidity/remix-interact.png)
 
 You've deployed your first contract! Congrats!
 
@@ -78,7 +78,7 @@ To do this let's first get some testnet ETH from the Kovan testnet.
 
 In your metamask, you'll want to change to the `Kovan` testnet. 
 
-![Solidity-in-remix](images/solidity/metamask-kovan.png)
+![Solidity-in-remix](/images/solidity/metamask-kovan.png)
 
 You'll be given some free test Ethereum. Ethereum is needed to deploy smart contracts when working with a testnet. 
 
@@ -88,7 +88,7 @@ When working with a testnet, we can actually see and interact with our contracts
 To deploy to a testnet, on the `#4 Deploy` step, change your `environment` to `injected web3`.
 This will use whatever network is currently selected in your metamask as the network to deploy to. 
 
-![Solidity-in-remix](images/solidity/remix-testnet.png)
+![Solidity-in-remix](/images/solidity/remix-testnet.png)
 
 For now, please continue to use the `JavaScript VM` unless instructed otherwise. When you deploy to a testnet, metamask will pop up to ask you to "confirm" the transaction. Hit yes, and after a delay, you'll get the same contract interface at the bottom of your screen. 
 

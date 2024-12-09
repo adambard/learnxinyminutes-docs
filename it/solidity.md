@@ -59,23 +59,23 @@ trucchetto per iniziare ad usare Remix. Carica tutto il necessario [clickando su
 
 1. Scegli il compilatore per Solidity
 
-![Solidity-in-remix](../images/solidity/remix-solidity.png)
+![Solidity-in-remix](/images/solidity/remix-solidity.png)
 
 2. Apri il file che si caricherà su quel link
 
-![Solidity-choose-file](../images/solidity/remix-choose-file.png)
+![Solidity-choose-file](/images/solidity/remix-choose-file.png)
 
 3. Compila il file
 
-![Solidity-compile](../images/solidity/remix-compile.png)
+![Solidity-compile](/images/solidity/remix-compile.png)
 
 4. Fai il deploy
 
-![Solidity-deploy](../images/solidity/remix-deploy.png)
+![Solidity-deploy](/images/solidity/remix-deploy.png)
 
 5. Smanetta con i contratti
 
-![Solidity-deploy](../images/solidity/remix-interact.png)
+![Solidity-deploy](/images/solidity/remix-interact.png)
 
 Hai distribuito il tuo primo contratto! Congratulazioni!
 
@@ -94,7 +94,7 @@ scrivici l'indirizzo del tuo wallet Metamask.
 
 Sul tuo Metamask, dovrai cambiare la testnet in `Kovan`.
 
-![Solidity-in-remix](../images/solidity/metamask-kovan.png)
+![Solidity-in-remix](/images/solidity/metamask-kovan.png)
 
 Riceverai degli Ethereum di test gratuiti. Abbiamo bisogno di Ethereum per
 distribuire degli smart contract su una testnet.
@@ -108,7 +108,7 @@ l'`environment` selezionato in `injected web3`. In questo modo verrà usato
 come network su cui fare il deploy qualsiasi network selezionato sul tuo
 Metamask.
 
-![Solidity-in-remix](../images/solidity/remix-testnet.png)
+![Solidity-in-remix](/images/solidity/remix-testnet.png)
 
 Per ora continua a usare la `JavaScript VM` a meno che non ti sia detto di
 cambiarla. Quando distribuisci su una testnet, Metamask aprirà un pop up che
