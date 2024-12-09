@@ -282,6 +282,9 @@ for [0..5] $ \i -> show i
 -- we could've written that like this too:
 for [0..5] show
 
+-- filter keeps only the elements in a list that satisfy a condition
+filter even [1..10] -- [2, 4, 8, 10]
+
 -- You can use foldl or foldr to reduce a list
 -- foldl <fn> <initial value> <list>
 foldl (\x y -> 2*x + y) 4 [1,2,3] -- 43
