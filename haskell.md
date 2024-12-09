@@ -66,6 +66,7 @@ True || False -- True
 ['H', 'e', 'l', 'l', 'o'] -- "Hello"
 
 -- Lists can be indexed with the `!!` operator followed by an index
+-- but this is an O(n) operation because lists are linked lists
 "This is a string" !! 0 -- 'T'
 
 
@@ -273,13 +274,16 @@ case args of
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
 
 -- you can make a for function using map
-for array func = map func array
+for list func = map func list
 
 -- and then use it
 for [0..5] $ \i -> show i
 
 -- we could've written that like this too:
 for [0..5] show
+
+-- filter keeps only the elements in a list that satisfy a condition
+filter even [1..10] -- [2, 4, 8, 10]
 
 -- You can use foldl or foldr to reduce a list
 -- foldl <fn> <initial value> <list>
