@@ -5,7 +5,6 @@ contributors:
 filename: learntypescript-es.ts
 translators:
     - ["Damaso Sanoja", "https://github.com/damasosanoja"]
-lang: es-es
 ---
 
 TypeScript es un lenguaje cuyo objetivo es facilitar el desarrollo de aplicaciones a gran escala escritas en JavaScript.

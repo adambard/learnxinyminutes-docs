@@ -5,7 +5,6 @@ contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 translator:
     - ["Agostino Fiscale", "https://github.com/agostinofiscale"]
-lang: it-it
 filename: LearnComposer-it.sh
 ---
 

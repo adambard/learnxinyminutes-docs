@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Anne-Catherine Dehier", "https://github.com/spellart"]
 filename: learnr-fr.r
-lang: fr-fr
 ---
 
 R est un langage de programmation statistique. Il dispose de nombreuses

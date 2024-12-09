@@ -6,7 +6,6 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
   - ["Alois de Gouvello","https://github.com/aloisdg"]
-lang: fr-fr
 ---
 
 Comme JSON est un format d'échange de données extrêmement simple, ce Apprendre X en Y minutes

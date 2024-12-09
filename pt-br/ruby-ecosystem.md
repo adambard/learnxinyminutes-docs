@@ -6,7 +6,6 @@ contributors:
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
 translators:
     - ["Claudson Martins", "http://github.com/claudsonm"]
-lang: pt-br
 
 ---
 

@@ -5,7 +5,6 @@ contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
     - ["Todd Gao", "http://github.com/7c00"]
-lang: zh-cn
 ---
 
 Groovy - Java平台的动态语言。[了解更多](http://www.groovy-lang.org/)。

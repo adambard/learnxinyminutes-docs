@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Abdala Cerqueira", "http://abda.la"]
     - ["Raquel Diniz", "http://twitter.com/raquelrdiniz"]
-lang: pt-br
 filename: learnphp-pt.php
 ---
 

@@ -6,7 +6,6 @@ contributors:
     - ["Miltiadis Stouras", "https://github.com/mstou"]
 translators:
     - ["Albina Gimaletdinova", "https://github.com/albina-astr"]
-lang: ru-ru
 ---
 
 # Динамическое программирование

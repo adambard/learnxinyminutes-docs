@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
     - ["Christian Grasso", "http://chris54721.net"]
-lang: it-it
 ---
 
 JSON è un formato per l'interscambio di dati estremamente semplice, per cui questo sarà

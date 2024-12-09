@@ -4,7 +4,6 @@ contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
     - ["Jhoon Saravia", "https://github.com/jhoon"]
-lang: es-es
 filename: groovy-es.groovy
 ---
 

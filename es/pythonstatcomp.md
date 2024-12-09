@@ -6,7 +6,6 @@ contributors:
 filename: pythonstatcomp-es.py
 translators:
     - ["Damaso Sanoja", "https://github.com/damasosanoja"]
-lang: es-es
 ---
 
 Este es un tutorial de como realizar tareas típicas de programación estadística usando Python. Está destinado a personas con cierta familiaridad con Python y con experiencia en programación estadística en lenguajes como R, Stata, SAS, SPSS, or MATLAB.

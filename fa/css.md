@@ -9,7 +9,6 @@ contributors:
     - ["Tyler Mumford", "https://tylermumford.com"]
 translators:
     - ["Arashk", "https://github.com/Arashk-A"]
-lang: fa-ir
 filename: learncss-fa.css
 ---
 

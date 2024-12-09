@@ -5,7 +5,6 @@ contributors:
     - ["Chris Martin", "http://chris-martin.org/"]
 translators:
     - ["Edward Tjörnhammar", "http://edwtjo.me"]
-lang: sv-se
 ---
 
 Nix är ett enkelt funktionelt språk utvecklat för

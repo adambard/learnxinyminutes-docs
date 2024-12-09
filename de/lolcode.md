@@ -5,7 +5,6 @@ contributors:
     - ["abactel", "https://github.com/abactel"]
 translators:
     - ["Henrik Jürges", "http://github.com/santifa"]
-lang: de-de
 ---
 
 LOLCODE ist eine esoterische Programmiersprache die die Sprache der [lolcats](https://upload.wikimedia.org/wikipedia/commons/a/ab/Lolcat_in_folder.jpg?1493656347257) nachahmt.

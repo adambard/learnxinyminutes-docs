@@ -3,7 +3,6 @@ language: YAML
 filename: learnyaml-fr.yaml
 contributors:
   - ["Andrei Curelaru", "http://www.infinidad.fr"]
-lang: fr-fr
 ---
 
 Proposé à l'origine par Clark Evans en Mai 2001, YAML est un un format de 

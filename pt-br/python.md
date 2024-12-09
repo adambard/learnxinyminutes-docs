@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Paulo Henrique Rodrigues Pinheiro", "http://www.sysincloud.it"]
     - ["Monique Baptista", "https://github.com/bfmonique"]
-lang: pt-br
 filename: learnpython-pt.py
 ---
 

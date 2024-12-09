@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Jakub Młokosiewicz", "https://github.com/hckr"]
     - ["Mateusz Burniak", "https://github.com/matbur"]
-lang: pl-pl
 
 ---
 

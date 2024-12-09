@@ -5,7 +5,6 @@ contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-lang: es-es
 filename: jquery-es.js
 ---
 

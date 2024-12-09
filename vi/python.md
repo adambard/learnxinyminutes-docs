@@ -9,7 +9,6 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
 translators:
     - ["Xuan (Sean) Luong, https://github.com/xuanluong"]
-lang: vi-vn
 
 ---
 

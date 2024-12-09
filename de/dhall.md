@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Profpatsch", "http://profpatsch.de"]
 filename: learndhall-de.py
-lang: de-de
 ---
 
 Dhall ist eine programmierbare Konfigurationssprache und bietet eine

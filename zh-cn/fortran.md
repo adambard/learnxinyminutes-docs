@@ -5,7 +5,6 @@ contributors:
     - ["Robert Steed", "https://github.com/robochat"]
 translators:
     - ["Corvusnest", "https://github.com/Corvusnest"]
-lang: zh-cn
 ---
 
 Fortran 是最古老的计算机语言之一。它由 IBM 开发于 1950 年用于数值运算（Fortran 为 "Formula

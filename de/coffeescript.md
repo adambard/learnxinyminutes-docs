@@ -7,7 +7,6 @@ translators:
   - ["Frederik Ring", "https://github.com/m90"]
   - ["Philipp Fischbeck", "https://github.com/PFischbeck"]
 filename: coffeescript-de.coffee
-lang: de-de
 ---
 
 CoffeeScript ist eine kleine Sprache, die eins zu eins nach JavaScript übersetzt wird - es findet keine Interpretation zur Laufzeit statt.

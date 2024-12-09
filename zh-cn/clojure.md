@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Bill Zhang", "http://jingege.github.io/"]
-lang: zh-cn
 ---
 
 Clojure是运行在JVM上的Lisp家族中的一员。她比Common Lisp更强调纯[函数式编程](https://en.wikipedia.org/wiki/Functional_programming)，且自发布时便包含了一组工具来处理状态。

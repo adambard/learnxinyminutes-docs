@@ -1,6 +1,5 @@
 ---
 language: Wolfram
-lang: es-es
 contributors:
     - ["Daniel Caballero", "http://github.com/danielcaballero796/"]
 filename: learnwolfram-es.nb

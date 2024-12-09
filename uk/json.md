@@ -7,7 +7,6 @@ contributors:
 translators:
   - ["Ehreshi Ivan", "https://github.com/IvanEh"]
   - ["Serhii Maksymchuk", "https://github.com/Serg-Maximchuk"]
-lang: uk-ua
 ---
 
 JSON - це надзвичайно простий формат обміну даними. Згідно з [json.org](http://json.org), для людей він легкий в написанні і читанні, а для комп’ютерів в розборі та генерації.

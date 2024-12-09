@@ -12,7 +12,6 @@ contributors:
     - ["Etan Reisner", "https://github.com/deryni"]
 translators:
     - ["Jeroen Deviaene", "https://www.github.com/jerodev"]
-lang: nl-nl
 filename: LearnBash-nl.sh
 ---
 

@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
 filename: learnphp-zh.php
-lang: zh-cn
 ---
 
 这份教程所使用的版本是 PHP 5+.

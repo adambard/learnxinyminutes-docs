@@ -6,7 +6,6 @@ contributors:
 filename: LearnObjectiveC-tr.m
 translators:
     - ["Haydar KULEKCI", "http://scanf.info/"]
-lang: tr-tr
 ---
 
 Objective-C Apple tarafından, OSX ve iOS işletim sistemleri ve onların

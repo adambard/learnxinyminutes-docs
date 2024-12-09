@@ -5,7 +5,6 @@ contributors:
 translators:
   - ["Ruben M.", "https://github.com/switchhax"]
 filename: learnyaml-de.yaml
-lang: de-de
 ---
 
 YAML ist eine Sprache zur Datenserialisierung, die sofort von Menschenhand geschrieben und gelesen werden kann.

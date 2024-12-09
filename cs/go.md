@@ -2,7 +2,6 @@
 category: language
 language: Go
 filename: learngo-cs.go
-lang: cs-cz
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]

@@ -9,7 +9,6 @@ contributors:
   - ["Keyan Zhang", "https://github.com/keyanzhang"]
 translators:
   - ["Vasilis Panagiotopoulos" , "https://github.com/billpcs/"]
-lang: el-gr
 ---
 
 H Racket είναι μια γενικού σκοπού, πολυ-υποδειγματική γλώσσα προγραμματισμού που ανήκει 

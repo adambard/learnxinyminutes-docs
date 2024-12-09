@@ -7,7 +7,6 @@ contributors:
 translators:
   - ["Moritz Kammerer", "https://github.com/phxql"]
   - ["Jerome Meinke", "https://github.com/jmeinke"]
-lang: de-de
 filename: latex-de.tex
 ---
 ```

@@ -5,7 +5,6 @@ contributors:
     - ["Alexey Nazaroff", "https://github.com/rogaven"]
 translators:
   - ["Haydar Ali Ismail", "http://github.com/haydarai"]
-lang: id-id
 ---
 
 HQ9+ adalah bahasa pemrograman gurauan yang dibuat oleh Cliff Biffle. Bahasa

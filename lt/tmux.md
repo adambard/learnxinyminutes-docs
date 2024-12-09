@@ -6,7 +6,6 @@ contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
     - ["Zygimantus", "https://github.com/zygimantus"]
-lang: lt-lt
 
 ---
 

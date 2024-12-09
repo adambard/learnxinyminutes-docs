@@ -7,7 +7,6 @@ contributors:
   - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
   - ["Michael Filonenko", "https://github.com/filonenko-mikhail"]
-lang: ru-ru
 ---
 
 Common Lisp - мультипарадигменный язык программирования общего назначения, подходящий для широкого

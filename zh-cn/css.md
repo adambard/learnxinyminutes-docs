@@ -5,7 +5,6 @@ contributors:
     - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
     - ["Jakukyo Friel", "https://weakish.github.io"]
-lang: zh-cn
 filename: learncss-cn.css
 ---
 

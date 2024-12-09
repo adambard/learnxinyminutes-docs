@@ -7,7 +7,6 @@ contributors:
   - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
   - ["Eunpyoung Kim", "https://github.com/netpyoung"]
-lang: ko-kr
 ---
 
 커먼 리스프(Common Lisp, CL)는 다양한 산업 어플리케이션에 적합한 범용적인 멀티페러다임 언어입니다.

@@ -5,7 +5,6 @@ contributors:
 filename: lernepug-de.pug
 translators:
     - ["denniskeller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 Pug ist eine kleine Sprache, die zu HTML kompiliert. Sie hat eine

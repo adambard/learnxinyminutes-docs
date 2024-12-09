@@ -6,7 +6,6 @@ contributors:
     - ["Divay Prakash", "http://github.com/divayprakash"]
 translators:
     - ["Agathe Begault", "https://github.com/begault"]
-lang: fr-fr    
 ---
 
 # Notations Asymptotiques

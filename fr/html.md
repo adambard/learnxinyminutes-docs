@@ -3,7 +3,6 @@ language: HTML
 filename: learnhtml-fr.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
-lang: fr-fr
 ---
 
 HTML signifie HyperText Markup Language. 

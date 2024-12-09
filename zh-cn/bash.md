@@ -14,7 +14,6 @@ translators:
     - ["Jinchang Ye", "https://github.com/Alwayswithme"]
     - ["Chunyang Xu", "https://github.com/XuChunyang"]
 filename: LearnBash-cn.sh
-lang: zh-cn
 ---
 
 Bash 是一个为 GNU 计划编写的 Unix shell，是 Linux 和 macOS 下的默认 shell。

@@ -6,7 +6,6 @@ contributors:
   - ["Francisco Marques", "https://github.com/ToFran"]
 translators:
   - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-lang: pt-br
 filename: learnjson-pt.json
 ---
 

@@ -6,7 +6,6 @@ contributors:
     - ["Dennis Felsing", "https://dennis.felsing.org"]
 translators:
     - ["Seiichi Ariga", "https://github.com/s-ariga"]
-lang: ja-jp
 ---
 
 Nim (元 Nimrod)は、静的型付けの命令型言語です。ランタイムの効率を損なうこと

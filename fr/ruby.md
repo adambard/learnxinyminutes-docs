@@ -12,7 +12,6 @@ translators:
   - ["Geoffrey Roguelon", "https://github.com/GRoguelon"]
   - ["Nami-Doc", "https://github.com/Nami-Doc"]
   - ["Sylvain Abélard", "http://github.com/abelards"]
-lang: fr-fr
 ---
 
 ```ruby

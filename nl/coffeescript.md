@@ -8,7 +8,6 @@ translators:
   - ["D.A.W. de Waal", "http://github.com/diodewaal"]
   - ["Sam van Kampen", "http://tehsvk.net"]
 filename: coffeescript-nl.coffee
-lang: nl-nl
 ---
 
 CoffeeScript is een kleine programmeertaal die direct compileert naar

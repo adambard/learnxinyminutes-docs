@@ -7,7 +7,6 @@ contributors:
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
 translators:
     - ["Melih Mucuk", "http://melihmucuk.com"]
-lang: tr-tr
 filename: LearnCSharp-tr.cs
 ---
 

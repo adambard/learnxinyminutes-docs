@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Oscar Maestre", "http://www.github.com/OscarMaestre"]
 filename: restructuredtext-es.rst
-lang: es-es
 ---
 
 RST, de Restructured Text, es un formato de fichero creado por la comunidad Python para escribir documentación. Es parte del paquete [Docutils](https://docutils.sourceforge.io/rst.html).

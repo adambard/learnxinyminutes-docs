@@ -5,7 +5,6 @@ contributors:
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
 translators:
     - ["Rodrigo Muniz", "http://github.com/muniz95"]
-lang: pt-br
 filename: learnelixir-pt.ex
 ---
 

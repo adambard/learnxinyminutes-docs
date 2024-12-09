@@ -10,7 +10,6 @@ contributors:
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
 translators:
     - ["Jishan Shaikh", "https://github.com/jishanshaikh4"]
-lang: hi-in
 ---
 
 C++ एक सिस्टम प्रोग्रामिंग लैंग्वेज है जो,

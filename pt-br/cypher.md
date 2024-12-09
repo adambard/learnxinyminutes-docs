@@ -4,7 +4,6 @@ filename: LearnCypher-br.cql
 contributors:
     - ["Théo Gauchoux", "https://github.com/TheoGauchoux"]
 
-lang: pt-br
 ---
 O Cypher é a linguagem de consulta do Neo4j para manipular gráficos facilmente. Ela reutiliza a sintaxe do SQL e a mistura com o tipo de ascii-art para representar gráficos. Este tutorial pressupõe que você já conheça conceitos de gráficos como nós e relacionamentos.
 

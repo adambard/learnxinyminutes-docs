@@ -17,7 +17,6 @@ contributors:
   - ["Jake Faris", "https://github.com/farisj"]
 translators:
   - ["Ukaza Perdana", "https://github.com/ukazap"]
-lang: id-id
 ---
 
 ```ruby

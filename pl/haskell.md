@@ -6,7 +6,6 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Remigiusz Suwalski", "https://github.com/remigiusz-suwalski"]
-lang: pl-pl
 
 ---
 

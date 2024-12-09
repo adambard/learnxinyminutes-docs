@@ -7,7 +7,6 @@ contributors:
   - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
   - ["Burhanuddin Baharuddin", "https://github.com/burhanloey"]
-lang: ms-my
 ---
 
 Common Lisp ialah programming language yang general-purpose (boleh digunakan untuk semua benda) dan multi-paradigm (konsep yang pelbagai) sesuai untuk pelbagai kegunaan di dalam

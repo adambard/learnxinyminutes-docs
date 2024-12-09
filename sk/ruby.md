@@ -14,7 +14,6 @@ contributors:
   - ["Rahil Momin", "https://github.com/iamrahil"]
 translators:
   - ["Juraj Kostolanský", "http://www.kostolansky.sk"]
-lang: sk-sk
 ---
 
 ```ruby

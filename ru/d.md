@@ -5,7 +5,6 @@ contributors:
     - ["Anton Pastukhov", "https://anton9.com/"]
     - ["Robert Brights-Gray", "https://lhs.su/"]
     - ["Andre Polykanine", "https://oire.me/"]
-lang: ru-ru
 ---
 
 D - современный компилируемый язык общего назначения с Си-подобным синтаксисом,

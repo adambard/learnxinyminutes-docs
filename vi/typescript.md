@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Thanh Duy Phan", "https://github.com/thanhpd"]
 filename: learntypescript-vi.ts
-lang: vi-vn
 ---
 
 TypeScript là ngôn ngữ được viết nhằm tinh giản quá trình phát triển ứng dụng quy mô lớn được viết bằng JavaScript.

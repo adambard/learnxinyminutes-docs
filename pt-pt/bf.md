@@ -6,7 +6,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Joao Marques", "http://github.com/mrshankly"]
-lang: pt-pt
 ---
 
 Brainfuck (não capitalizado excepto no início de uma frase) é uma linguagem de

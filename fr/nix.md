@@ -7,7 +7,6 @@ contributors:
     - ["Javier Candeira", "https://candeira.com/"]
 translators:
     - ["Loïc Reynier", "https://github.com/loicreynier"]
-lang: fr-fr
 ---
 
 Nix est un langage fonctionnel développé pour

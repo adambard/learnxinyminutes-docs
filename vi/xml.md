@@ -7,7 +7,6 @@ contributors:
   - ['Deepanshu Utkarsh', 'https://github.com/duci9y']
 translators:
   - ['Thanh Duy Phan', 'https://github.com/thanhpd']
-lang: vi-vn
 ---
 
 XML là ngôn ngữ đánh dấu được thiết kế để lưu trữ và truyền tải dữ liệu. Nó có thể được đọc hiểu bởi cả người và máy.

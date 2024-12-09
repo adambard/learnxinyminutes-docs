@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
 filename: bf-ro.bf
-lang: ro-ro
 ---
 
 Brainfuck (un nume propriu care nu primește majusculă inițială decât la începutul

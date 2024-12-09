@@ -6,7 +6,6 @@ contributors:
     - ["Arnaud Fernandés", "https://github.com/TechMagister/"]
 translators:
     - ["Den Patin", "https://github.com/denpatin"]
-lang: ru-ru
 ---
 
 ```crystal

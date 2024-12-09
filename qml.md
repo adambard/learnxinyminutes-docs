@@ -3,7 +3,6 @@ language: QML
 contributors:
     - ["Furkan Uzumcu", "https://zmc.space/"]
 filename: learnqml.qml
-lang: en-us
 ---
 
 ```qml

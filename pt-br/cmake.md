@@ -6,7 +6,6 @@ contributors:
 filename: CMake-br
 translators:
     - ["Lucas Pugliesi", "https://github.com/fplucas"]
-lang: pt-br
 ---
 
 CMake é um programa de compilação open-source e multiplataforma. Essa ferramenta

@@ -8,7 +8,6 @@ translators:
     - ["Yuchen Liu", "https://github.com/smallg0at"]
     - ["Coldle", "https://github.com/yocoldle"]
 filename: learnmarkdown-cn.md
-lang: zh-cn
 ---
 
 Markdown 由 John Gruber 于 2004年创立. 它旨在成为一门容易读写的语法结构，并可以便利地转换成 HTML（以及其他很多）格式。

@@ -5,7 +5,6 @@ contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao", "http://github.com/xavieryao"]
 filename: coffeescript-it.coffee
-lang: it-it
 ---
 
 CoffeeScript è un piccolo linguaggio che compila direttamente nell'equivalente

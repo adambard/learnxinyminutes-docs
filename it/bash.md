@@ -18,7 +18,6 @@ filename: LearnBash-it.sh
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
     - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]
-lang: it-it
 ---
 
 Bash è il nome della shell di unix, la quale è stata distribuita anche come shell del sistema oprativo GNU e la shell di default su Linux e macOS.

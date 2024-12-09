@@ -5,7 +5,6 @@ contributors:
   - ["Stanley Lim", "https://github.com/Spiderpig86"]
 translators:
   - ["AstiaSun", "https://github.com/AstiaSun"]
-lang: uk-ua
 ---
 
 Мова ассемблера MIPS (англ. Microprocessor without Interlocked Pipeline Stages) була написана для роботи з мікропроцесорами MIPS, парадигма яких була описана в 1981 році [Джоном Геннессі](https://uk.wikipedia.org/wiki/Джон_Лерой_Геннессі). Ці RISC процесори використовуються у таких вбудованих системах, як маршрутизатори та мережеві шлюзи.

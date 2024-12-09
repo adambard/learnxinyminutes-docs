@@ -7,7 +7,6 @@ contributors:
     - ["Batuhan Osman T.", "https://github.com/BTaskaya"]
 translators:
     - ["Eray AYDIN", "http://erayaydin.me/"]
-lang: tr-tr
 filename: learnpython-tr.py
 ---
 

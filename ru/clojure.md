@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Alexey Pirogov", "http://twitter.com/alex_pir"]
-lang: ru-ru
 ---
 
 Clojure — это представитель семейства Lisp-подобных языков, разработанный

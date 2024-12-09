@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["altaris", "https://github.com/altaris"]
 filename: Makefile-fr
-lang: fr-fr
 ---
 
 Un makefile est un fichier qui définit un ensemble de règles liées entre elles

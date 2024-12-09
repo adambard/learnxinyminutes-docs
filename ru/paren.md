@@ -5,7 +5,6 @@ contributors:
   - ["KIM Taegyoon", "https://github.com/kimtg"]
 translators:
   - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
-lang: ru-ru
 ---
 
 [Paren](https://bitbucket.org/ktg/paren) - это диалект языка Лисп. Он спроектирован как встроенный язык.

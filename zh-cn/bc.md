@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["CloneWith", "https://github.com/CloneWith"]
 filename: learnbc.bc
-lang: zh-cn
 ---
 ```bc
 /*这是一条

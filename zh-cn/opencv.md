@@ -6,7 +6,6 @@ contributors:
     - ["Yogesh Ojha", "http://github.com/yogeshojha"]
 translators:
     - ["GengchenXU", "https://github.com/GengchenXU"]
-lang: zh-cn
 ---
 
 OpenCV（开源计算机视觉）是一个编程功能库，主要面向实时计算机视觉。最初由英特尔开发，后来由Willow Garage，然后Itseez（后来被英特尔收购）支持。OpenCV 目前支持多种语言，如C++、Python、Java 等

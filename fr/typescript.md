@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Alois de Gouvello", "https://github.com/aloisdg"]
 filename: learntypescript-fr.ts
-lang: fr-fr
 ---
 
 TypeScript est un langage visant à faciliter le développement d'applications larges et scalables, écrites en JavaScript.

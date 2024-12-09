@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Anton Slukovskiy", "https://github.com/slukovskiy"]
 filename: LearnVim-ru.txt
-lang: ru-ru
 ---
 
 [Vim](http://www.vim.org)

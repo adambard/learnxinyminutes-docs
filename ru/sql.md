@@ -6,7 +6,6 @@ contributors:
 translators:
   - ["Shaltaev", "https://github.com/shaltaev"]
   - ["Andre Polykanine", "https://github.com/Menelion"]
-lang: ru-ru
 ---
 
 Язык структурированных запросов (SQL) — это стандартный язык ISO для создания

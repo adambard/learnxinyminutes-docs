@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Kang-min Liu", "https://gugod.org"]
     - ["Shih-Kai Chiu", "https://twitter.com/zard1989"]
-lang: zh-tw
 ---
 
 Perl 5 是一款強大且功能豐富的程式語言，已經持續發展超過 25 年。

@@ -5,7 +5,6 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Daniel Zendejas", "https://github.com/DanielZendejas"]
-lang: es-es
 ---
 
 Markdown fue creado por John Gruber en 2004. Su propósito es ser una sintaxis fácil de leer y escribir que se convierta

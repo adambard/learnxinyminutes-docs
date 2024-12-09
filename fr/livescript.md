@@ -5,7 +5,6 @@ contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
 translators:
     - ["Morgan Bohn", "https://github.com/dotmobo"]
-lang: fr-fr
 ---
 
 LiveScript est un langage qui compile en JavaScript. Il a un rapport direct 

@@ -5,7 +5,6 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Lana Tim", "https://github.com/LanaTim"]
-lang: ru-ru
 ---
 
 HTML расшифровывается как Hypertext Markup Language (гипертекстовый язык разметки).

@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
     - ["Sylvain Abélard", "http://github.com/abelards"]
-lang: fr-fr
 
 ---
 

@@ -5,7 +5,6 @@ contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
     - ["Ahmed Omar Eissa", "https://twitter.com/AhmedOmarEissa"]
-lang: ar-ar
 ---
 <div dir="rtl">
 

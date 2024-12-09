@@ -6,7 +6,6 @@ contributors:
     - ["Keith Miyake", "https://github.com/kaymmm"]
 translators:
     - ["Anton 'Dart' Nikolaev", "https://github.com/dartfnm"]
-lang: ru-ru
 ---
 
 

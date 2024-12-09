@@ -8,7 +8,6 @@ filename: javascript-uk.js
 translators:
   - ["Ivan", "https://github.com/IvanEh"]
   - ["Serhii Maksymchuk", "https://github.com/Serg-Maximchuk"]
-lang: uk-ua
 ---
 
 JavaScript було створено в 1995 році Бренданом Айком, який працював у компанії Netscape.

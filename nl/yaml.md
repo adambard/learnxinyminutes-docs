@@ -6,7 +6,6 @@ contributors:
 translators:
   - ["Niels van Velzen", "https://nielsvanvelzen.me"]
   - ["Sam van Kampen", "http://tehsvk.net"]
-lang: nl-nl
 ---
 
 YAML is een dataserialisatietaal ontworpen om snel te kunnen worden begrepen door mensen.

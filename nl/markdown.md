@@ -5,7 +5,6 @@ contributors:
   - ["Dan Turkel", "http://danturkel.com/"]
 translators:
   - ["Jeroen Deviaene", "https://www.github.com/jerodev"]
-lang: nl-nl
 ---
 
 Markdown is gecreëerd door John Gruber in 2004. Het is bedoeld om met een gemakkelijke te lezen en 

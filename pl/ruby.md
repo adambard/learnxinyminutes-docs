@@ -16,7 +16,6 @@ contributors:
   - ["Persa Zula", "http://persazula.com"]
 translators:
     - ["Marcin Klocek", "https://github.com/mklocek"]
-lang: pl-pl
 ---
 
 ```ruby

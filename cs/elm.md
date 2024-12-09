@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Robin Pokorný", "http://robinpokorny.com/"]
 filename: learnelm-cz.elm
-lang: cs-cz
 ---
 
 Elm je funkcionální reaktivní jazyk, který se kompiluje do (klientského) JavaScriptu.

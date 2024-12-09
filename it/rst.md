@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Ale46", "https://github.com/Ale46"]
     - ["Chris54721", "https://chris54721.net"]
-lang: it-it
 ---
 
 RST (Restructured Text) è un formato di file inizialmente creato dalla comunità Python

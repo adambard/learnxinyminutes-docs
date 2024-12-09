@@ -5,7 +5,6 @@ contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:
     - ["Ev Bogdanov", "https://github.com/evbogdanov"]
-lang: ru-ru
 filename: jquery-ru.js
 ---
 

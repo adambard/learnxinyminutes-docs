@@ -6,7 +6,6 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["Thibault", "https://github.com/napnac"]
-lang: fr-fr
 ---
 
 

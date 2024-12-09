@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Yannick Loriot", "https://github.com/YannickL"]
 filename: LearnObjectiveC-fr.m
-lang: fr-fr
 ---
 
 L'Objective-C est un langage de programmation orienté objet réflexif principalement utilisé par Apple pour les systèmes d'exploitations macOS et iOS et leurs frameworks respectifs, Cocoa et Cocoa Touch.

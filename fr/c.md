@@ -13,7 +13,6 @@ contributors:
     - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
 translators:
     - ["Cyril Jovet", "https://twitter.com/CyrilJovet"]
-lang: fr-fr
 ---
 
 Le C est le langage de plus bas niveau que la plupart des programmeurs seront

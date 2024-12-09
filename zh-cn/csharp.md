@@ -13,7 +13,6 @@ translators:
     - ["Jakukyo Friel", "http://weakish.github.io"]
     - ["CatfishWen", "http://catfishwen.github.io"]
 filename: LearnCSharp-cn.cs
-lang: zh-cn
 ---
 
 C#是一种优雅且类型安全的面向对象的语言，使开发人员能够构建运行在跨平台的.NET框架上，安全且健壮的应用程序。

@@ -5,7 +5,6 @@ contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:
     - ["zxyqwe", "https://github.com/zxyqwe"]
-lang: zh-cn
 filename: jquery-cn.js
 ---
 

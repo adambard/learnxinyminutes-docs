@@ -5,7 +5,6 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["Adam Bobowski", "https://github.com/Bobowski"]
-lang: pl-pl
 filename: LearnVim-pl.txt
 ---
 

@@ -5,7 +5,6 @@ contributors:
     - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-lang: pt-br
 ---
 
 XML é uma linguagem de marcação projetada para armazenar e transportar dados.

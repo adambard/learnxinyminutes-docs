@@ -5,7 +5,6 @@ contributors:
 translators:
   - ["wuyudi", "http://github.com/wuyudi/"]
 filename: learnwolfram-cn.nb
-lang: zh-cn
 ---
 
 Wolfram 语言是最初在 Mathematica 中使用的底层语言，但现在可用于多种场合。

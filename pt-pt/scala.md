@@ -8,7 +8,6 @@ contributors:
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
 translators:
     - ["João Costa", "http://joaocosta.eu"]
-lang: pt-pt
 ---
 
 Scala - a linguagem escalável

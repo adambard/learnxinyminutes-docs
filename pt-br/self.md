@@ -4,7 +4,6 @@ contributors:
     - ["Russell Allen", "http://github.com/russellallen"]
 translators:
     - ["Ricardo de Almeida Gonzaga", "http://github.com/ricardotk"]
-lang: pt-br
 filename: learnself-br.self
 ---
 

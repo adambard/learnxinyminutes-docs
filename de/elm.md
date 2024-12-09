@@ -5,7 +5,6 @@ contributors:
   - ["Max Goldstein", "http://maxgoldste.in/"]
 translators:
   - ["waynee95", "https://waynee95.me"]
-lang: de-de
 ---
 
 Elm ist eine pure funktionale Programmiersprache. Mit Elm werden GUIs

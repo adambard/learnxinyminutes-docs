@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Ryan Rembert", "http://jrrembert.github.io"]
 filename: learnrust-fr.rs
-lang: fr-fr
 ---
 
 Rust est un langage de programmation développé par Mozilla Research. Rust combine le contrôle de bas niveau sur la performance avec la commodité et la sécurité garanties de haut niveau.

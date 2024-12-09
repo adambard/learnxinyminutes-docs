@@ -7,7 +7,6 @@ contributors:
   - ["himanshu", "https://github.com/himanshu81494"]
 translators:
   - ["Rasendran Kirushan", "https://github.com/kirushanr"]
-lang: ta-in
 ---
 
 ஜேசன் ஒரு ஒரு மிக எளிய தரவு உள்மாற்றீட்டு வடிவம் ஆகும்.

@@ -5,7 +5,6 @@ contributors:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
 translators:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
-lang: ru-ru
 ---
 
 # Основные понятия и определения

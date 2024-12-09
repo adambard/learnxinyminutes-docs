@@ -4,7 +4,6 @@ filename: learnfsharp-pt.fs
 contributors:
     - ["Scott Wlaschin", "http://fsharpforfunandprofit.com"]
     - ["Adelar da Silva Queiróz", "https://adelarsq.github.io"]
-lang: pt-br
 ---
 
 F# é uma linguagem de propósito geral funcional e orientada a objetos. É livre, de código aberto e executa em Linux, Mac, Windows e outros.

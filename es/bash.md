@@ -10,7 +10,6 @@ contributors:
 translators:
     - ["Daniel Zendejas", "https://github.com/danielzendejas"]
 filename: LearnBash-es.sh
-lang: es-es
 ---
 
 Tutorial de Shell en español.

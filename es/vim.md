@@ -5,7 +5,6 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-lang: es-es
 filename: LearnVim-es.txt
 ---
 

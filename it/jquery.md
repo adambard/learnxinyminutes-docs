@@ -6,7 +6,6 @@ contributors:
 filename: jquery-it.js
 translators:
     - ["Ale46", "https://github.com/ale46"]
-lang: it-it
 ---
 
 jQuery è una libreria JavaScript che ti aiuta a "fare di più, scrivendo meno". Rende molte attività comuni di JavaScript più facili da scrivere. jQuery è utilizzato da molte grandi aziende e sviluppatori in tutto il mondo. Rende AJAX, gestione degli eventi, manipolazione dei documenti e molto altro, più facile e veloce.

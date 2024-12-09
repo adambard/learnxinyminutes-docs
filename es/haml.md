@@ -5,7 +5,6 @@ contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
 translators:
     - ["Camilo Garrido", "http://www.twitter.com/hirohope"]
-lang: es-es
 ---
 
 Haml es un lenguage de marcas principalmente usado con Ruby, que de forma simple y limpia describe el HTML de cualquier documento web sin el uso de código en linea. Es una alternativa popular respecto a usar el lenguage de plantilla de Rails (.erb) y te permite embeber código Ruby en tus anotaciones.

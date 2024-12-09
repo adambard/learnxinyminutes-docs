@@ -1,6 +1,5 @@
 ---
 language: Python 2 (legacy)
-lang: ru-ru
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:

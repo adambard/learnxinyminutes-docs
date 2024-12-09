@@ -6,7 +6,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Daniel Zendejas", "https://github.com/DanielZendejas"]
-lang: es-es
 ---
 
 Brainfuck (con mayúscula sólo al inicio de una oración) es un

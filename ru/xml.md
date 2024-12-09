@@ -5,7 +5,6 @@ contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
   - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
-lang: ru-ru
 ---
 
 XML - это язык разметки, предназначенный для хранения и передачи данных.

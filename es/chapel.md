@@ -6,7 +6,6 @@ contributors:
     - ["Ben Harshbarger", "https://github.com/benharsh/"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-lang: es-es
 ---
 
 Puede leer todo sobre Chapel en [el sitio web oficial de Chapel de Cray](https://chapel-lang.org).

@@ -9,7 +9,6 @@ contributors:
 translators:
   - ["Lari Kovanen", "https://github.com/larkov"]
   - ["Joakim Lahtinen", "https://github.com/VibyJocke"]
-lang: sv-se
 ---
 
 JSON är ett extremt enkelt datautbytesformat. Som [json.org](http://json.org) beskriver så är det lätt för människor att läsa och skriva, och för datorer att tolka och generera.

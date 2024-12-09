@@ -5,7 +5,6 @@ contributors:
 filename: learnlua-pt.lua
 translators:
     - ["Iaan Mesquita", "https://github.com/ianitow"]
-lang: pt-br
 ---
 
 ```lua

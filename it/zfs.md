@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Christian Grasso","https://grasso.io"]
 filename: LearnZfs-it.txt
-lang: it-it
 ---
 
 

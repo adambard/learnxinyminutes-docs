@@ -1,6 +1,5 @@
 ---
 language: C++
-lang: tr-tr
 filename: learncpp-tr.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]

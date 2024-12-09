@@ -6,7 +6,6 @@ contributors:
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
 translators:
     - ["sunxb10", "https://github.com/sunxb10"]
-lang: zh-cn
 ---
 
 MATLAB 是 MATrix LABoratory（矩阵实验室）的缩写。

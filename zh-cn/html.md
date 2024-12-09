@@ -5,7 +5,6 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["zxyqwe", "https://github.com/zxyqwe"]
-lang: zh-cn
 ---
 
 HTML是超文本标记语言的缩写。

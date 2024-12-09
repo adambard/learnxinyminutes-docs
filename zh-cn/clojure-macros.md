@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Jakukyo Friel", "http://weakish.github.io"]
-lang: zh-cn
 ---
 
 和所有Lisp一样，Clojure内在的[同构性](https://en.wikipedia.org/wiki/Homoiconic)使得你可以穷尽语言的特性，编写生成代码的子过程——“宏”。宏是一种按需调制语言的强大方式。

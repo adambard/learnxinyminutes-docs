@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["altaris", "http://github.com/altaris/"]
 filename: learnwolfram-fr.nb
-lang: fr-fr
 ---
 
 Le langage Wolfram est utilisé dans les programmes suivants :

@@ -6,7 +6,6 @@ contributors:
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Willian Justen", "http://willianjusten.com.br"]
-lang: pt-br
 ---
 
 JavaScript foi criada por Brendan Eich, funcionário da Netscape na época, em 1995. Ela

@@ -5,7 +5,6 @@ contributors:
     - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
 translators:
     - ["Burhanuddin Baharuddin", "https://github.com/burhanloey"]
-lang: ms-my
 filename: learn-emacs-lisp-ms.el
 ---
 

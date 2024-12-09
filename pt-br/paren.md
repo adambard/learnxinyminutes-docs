@@ -5,7 +5,6 @@ contributors:
   - ["KIM Taegyoon", "https://github.com/kimtg"]
 translators:
     - ["Claudson Martins", "https://github.com/claudsonm"]
-lang: pt-br
 ---
 
 [Paren](https://bitbucket.org/ktg/paren) é um dialeto do Lisp. É projetado para ser uma linguagem embutida.

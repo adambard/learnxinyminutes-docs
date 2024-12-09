@@ -7,7 +7,6 @@ contributors:
     - ["Dan Book", "http://github.com/Grinnz"]
 translators:
     - ["Красимир Беров", "https://github.com/kberov"]
-lang: bg-bg
 ---
 
 Perl е изключително мощен език за програмиране с широка област на приложение

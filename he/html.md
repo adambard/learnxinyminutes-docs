@@ -5,7 +5,6 @@ contributors:
     - ['Christophe THOMAS', 'https://github.com/WinChris']
 translators:
     - ['Menachem Zeivald', 'https://github.com/MenachemZeivald']
-lang: he-he
 ---
 
 HTML קיצור של Hypertext Markup Language כלומר זוהי שפה שמשתמשת בתגיות.

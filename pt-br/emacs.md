@@ -6,7 +6,6 @@ contributors:
     - ["Joseph Riad", "https://github.com/Joseph-Riad"]
 translators:
     - ["André de Santa Gabriel", "https://github.com/andredesanta"]
-lang: pt-br
 ---
 
 O Emacs começou sua vida como [gnu.org/software/emacs/emacs-paper.html](https://www.gnu.org/software/emacs/emacs-paper.html) e cresceu

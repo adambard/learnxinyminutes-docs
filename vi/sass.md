@@ -8,7 +8,6 @@ contributors:
   - ["Keith Miyake", "https://github.com/kaymmm"]
 translators:
     - ["Thanh Duy Phan", "https://github.com/thanhpd"]
-lang: vi-vn
 ---
 
 Less là một ngôn ngữ mở rộng CSS/ CSS pre-processor, thêm các tính năng như biến (variable), lồng (nesting), mixin và nhiều thứ khác. Sass cùng với các CSS pre-processor khác như [Less](http://lesscss.org/) giúp lập trình viên viết được các đoạn CSS bảo trì được và không bị lặp lại (DRY - Don't Repeat Yourself).

@@ -6,7 +6,6 @@ contributors:
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
     - ["Haydar KULEKCI", "http://scanf.info/"]
-lang: tr-tr
 ---
 
 PHP 5+ versiyonu için geçerlidir.

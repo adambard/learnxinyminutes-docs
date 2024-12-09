@@ -4,7 +4,6 @@ contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
 translators:
     - ["Camilo Garrido", "http://twitter.com/hirohope"]
-lang: es-es
 filename: learnpython-es.py
 ---
 

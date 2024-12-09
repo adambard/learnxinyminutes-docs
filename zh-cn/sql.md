@@ -5,7 +5,6 @@ contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
   - ["Shuxin Shu", "https://github.com/NamelessAshone"]
-lang: zh-cn
 ---
 
 结构化查询语言(SQL)是一个ISO标准语言，用于创建和管理数据库，

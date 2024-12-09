@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["ShiftWatchOut", "https://github.com/ShiftWatchOut"]
 filename: learngdscript-cn.gd
-lang: zh-cn
 ---
 
 GDScript 是一种动态类型的脚本语言，专门为免费开源游戏引擎 Godot 制作。 GDScript 的语法类似 Python。

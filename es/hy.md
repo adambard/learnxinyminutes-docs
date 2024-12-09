@@ -5,7 +5,6 @@ contributors:
     - ["Abhishek L", "http://twitter.com/abhishekl"]
 translators:
     - ["Roberto R", "https://github.com/rrodriguze"]
-lang: es-es
 ---
 
 Hy es un lenguaje de Lisp escrito sobre Python. Esto es posible convirtiendo

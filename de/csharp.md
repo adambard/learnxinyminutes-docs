@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Frederik Ring", "https://github.com/m90"]
 filename: LearnCSharp-de.cs
-lang: de-de
 ---
 C# ist eine elegante, typsichere und objektorientierte Sprache, mit der Entwickler eine Vielzahl sicherer und robuster Anwendungen erstellen können, die im .NET Framework ausgeführt werden.
 

@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Raphael Bezerra do Nascimento"]
-lang: pt-br
 ---
 
 Como todas as Lisps, a inerente [homoiconicity](https://en.wikipedia.org/wiki/Homoiconic)

@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Guangming Mao", "http://maogm.com"]
 filename: learnrust-cn.rs
-lang: zh-cn
 ---
 
 Rust 是由 Mozilla 研究院开发的编程语言。Rust 将底层的性能控制与高级语言的便利性和安全保障结合在了一起。

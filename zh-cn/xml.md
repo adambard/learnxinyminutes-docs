@@ -5,7 +5,6 @@ contributors:
 translators:
   - ["Zach Zhang", "https://github.com/checkcheckzz"]
 filename: learnxml-cn.xml
-lang: zh-cn
 ---
 
 XML是一种标记语言，被设计用来存储数据和传输数据。

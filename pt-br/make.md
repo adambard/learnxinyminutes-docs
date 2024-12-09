@@ -8,7 +8,6 @@ translators:
     - ["Rogério Gomes Rio", "https://github.com/rogerlista"]
 filename: Makefile-pt
 
-lang: pt-br
 ---
 
 Um Makefile define um gráfico de regras para criar um alvo (ou alvos). Sua finalidade é fazer o mínimo de trabalho necessário para atualizar um alvo para a versão mais recente da fonte. Famosamente escrito ao longo de um fim de semana por Stuart Feldman em 1976, ainda é amplamente usada (particularmente no Unix e no Linux) apesar de muitos concorrentes e críticas.

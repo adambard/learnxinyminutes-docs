@@ -8,7 +8,6 @@ contributors:
 translators:
   - ["Gabriel Gomes", "https://github.com/gabrielgomesferraz"]
   - ["Cássio Böck", "https://github.com/cassiobsilva"]
-lang: pt-br
 ---
 
 Sass é uma linguagem de extensão CSS que adiciona recursos, como variáveis, aninhamento, mixins e muito mais.

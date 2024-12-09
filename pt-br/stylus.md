@@ -4,7 +4,6 @@ filename: learnStylus-pt.styl
 contributors:
   - ["Salomão Neto", "https://github.com/salomaosnff"]
   - ["Isaac Henrique", "https://github.com/Isaachi1"]
-lang: pt-br
 ---
 
 Stylus tem como propósito, adicionar funcionalidades às suas folhas de estilos CSS que te ajudam no desenvolvimento, sem que haja a quebra de compartibilidade entre os navegadores Web.

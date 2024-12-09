@@ -4,7 +4,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["Camilo Garrido", "http://www.twitter.com/hirohope"]
-lang: es-es
 filename: LearnJava-es.java
 ---
 

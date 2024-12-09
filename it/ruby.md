@@ -18,7 +18,6 @@ contributors:
   - ["Corey Ward", "https://github.com/coreyward"]
 translators:
   - ["abonte", "https://github.com/abonte"]
-lang: it-it   
 ---
 
 ```ruby

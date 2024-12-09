@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Chenbo Li", "http://binarythink.net/"]
     - ["Jakukyo Friel", "http://weakish.github.io"]
-lang: zh-cn
 ---
 
 C语言在今天仍然是高性能计算的主要选择。

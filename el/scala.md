@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Vasilis Panagiotopoulos" , "https://github.com/billpcs/"]
 filename: learnscala-gr.scala
-lang: el-gr
 ---
 
 Scala - Η επεκτάσιμη γλώσσα

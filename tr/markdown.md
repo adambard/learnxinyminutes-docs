@@ -4,7 +4,6 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Eray AYDIN", "http://erayaydin.me/"]
-lang: tr-tr
 filename: markdown-tr.md
 ---
 

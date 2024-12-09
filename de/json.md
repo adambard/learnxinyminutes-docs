@@ -6,7 +6,6 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
   - ["Timm Albers", "https://github.com/nunull"]
-lang: de-de
 ---
 
 Da JSON ein äußerst einfaches Format für den Austausch von Daten ist, wird dieses

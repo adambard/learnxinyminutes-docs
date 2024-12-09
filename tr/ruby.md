@@ -3,7 +3,6 @@ language: Ruby
 filename: learnruby-tr.rb
 contributors:
   - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]
-lang: tr-tr
 ---
 
 Ruby, doğrudan bir Google aramasıyla aklınızdakini bulmanız zor olabilir. İngilizce bu kelime, `Ruby` (IPA: ˈruːbi) "kırmızı taş" anlamına gelen Fransızca kökenli bir kelime olan `rubi`'den gelmektedir.

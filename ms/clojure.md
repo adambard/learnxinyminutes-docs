@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Burhanuddin Baharuddin", "https://github.com/burhanloey"]
-lang: ms-my
 ---
 
 Clojure ialah salah satu bahasa pengaturcaraan dalam keluarga Lisp yang dibangunkan untuk Java Virtual Machine. Ia lebih

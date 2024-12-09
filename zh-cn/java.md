@@ -1,7 +1,6 @@
 ---
 category: language
 language: Java
-lang: zh-cn
 filename: LearnJava-zh.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]

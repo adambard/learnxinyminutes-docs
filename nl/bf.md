@@ -6,7 +6,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Jelle Besseling", "https://github.com/Jell-E"]
-lang: nl-nl
 ---
 
 Brainfuck (schrijf je niet met een hoofdletter behalve aan het begin van een

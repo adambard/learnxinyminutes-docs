@@ -7,7 +7,6 @@ contributors:
     - ["Denis Arh", "https://github.com/darh"]
 translators:
     - ["Adrian Bordinc", "https://github.com/ellimist"]
-lang: ro-ro
 filename: LearnBash-ro.sh
 ---
 

@@ -1,6 +1,5 @@
 ---
 language: Erlang
-lang: zh-cn
 contributors:
     - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
 translators:

@@ -6,7 +6,6 @@ contributors:
     - ["Dennis Felsing", "https://dennis.felsing.org"]
 translators:
     - ["lzw-723", "https://github.com/lzw-723"]
-lang: zh-cn
 ---
 
 Nim(原名Nimrod)是一种静态类型的命令式编程语言，

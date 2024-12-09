@@ -2,7 +2,6 @@
 language: curto
 contributors:
     - ["Maleza", "https://maleza.srht.site/"]
-lang: es-es
 filename: learncurto-es.fs
 ---
 

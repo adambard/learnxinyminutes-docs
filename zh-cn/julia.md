@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Jichao Ouyang", "http://oyanglul.us"]
     - ["woclass", "https://github.com/inkydragon"]
-lang: zh-cn
 ---
 
 Julia 是一种新的同像函数式编程语言(homoiconic functional language)，它专注于科学计算领域。

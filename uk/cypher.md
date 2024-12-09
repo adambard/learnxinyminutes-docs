@@ -5,7 +5,6 @@ contributors:
     - ["Théo Gauchoux", "https://github.com/TheoGauchoux"]
 translators:
     - ["AstiaSun", "https://github.com/AstiaSun"]
-lang: uk-ua
 ---
 
 Cypher - це мова запитів Neo4j для спрощення роботи з графами. Вона повторює синтаксис SQL та перемішує його з таким собі ascii стилем для відображення структури графа.

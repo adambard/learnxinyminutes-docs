@@ -8,7 +8,6 @@ contributors:
   - ["Keith Miyake", "https://github.com/kaymmm"]
 translators:
    - ["Jiang Haiyun", "http://www.atjiang.com"]
-lang: zh-cn
 ---
 
 Sass是一种CSS扩展语言，它增加了诸如变量、嵌套、mixin等功能。

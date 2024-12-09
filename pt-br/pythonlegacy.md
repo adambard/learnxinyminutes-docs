@@ -4,7 +4,6 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Vilson Vieira", "http://automata.cc"]
-lang: pt-br
 filename: learnpythonlegacy-pt.py
 ---
 

@@ -10,7 +10,6 @@ contributors:
 translators:
     - ["Jongmin Kim", "http://github.com/atomaths"]
     - ["Peter Lee", "http://github.com/ins429"]
-lang: ko-kr
 ---
 
 Go는 어떤 일을 잘 끝낼 수 있도록 하기위해 만들어졌다. Go가 잘 알려진 최신의

@@ -5,7 +5,6 @@ contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
-lang: ko-kr
 filename: learnlua-kr.lua
 ---
 

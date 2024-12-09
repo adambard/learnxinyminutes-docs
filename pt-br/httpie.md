@@ -6,7 +6,6 @@ contributors:
   - ["Adaías Magdiel", "https://github.com/AdaiasMagdiel"]
 translators:
   - ["Adaías Magdiel", "https://adaiasmagdiel.com/"]
-lang: pt-br
 ---
 
 HTTPie é um poderoso cliente HTTP para linha de comando, projetado para uma

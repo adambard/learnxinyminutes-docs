@@ -5,7 +5,6 @@ contributors:
 translators:
   - ["Volodymyr Korniichuk", "https://github.com/ezhikus"]
 filename: learnrust-uk.rs
-lang: uk-ua
 ---
 
 Rust - це мова програмування, що розрабляється спільнотою Mozilla Research

@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["JongChan Choi", "http://0xABCDEF.com/"]
     - ["Peter Lee", "http://peterjlee.com/"]
-lang: ko-kr
 ---
 
 Brainfuck(문장을 시작하는 단어가 아닌이상 첫글자는 대문자를 사용하지 않습니다)은

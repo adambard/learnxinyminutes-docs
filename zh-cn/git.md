@@ -5,7 +5,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
-lang: zh-cn
 ---
 
 Git是一个分布式版本控制及源代码管理工具 

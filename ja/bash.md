@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["akirahirose", "https://twitter.com/akirahirose"]
 filename: LearnBash-jp.sh
-lang: ja-jp
 ---
 
 Bash はunixシェルの1つです。GNUオペレーションシステムのシェルとして配布されています。

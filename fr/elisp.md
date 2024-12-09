@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Bastien Guerry", "https://bzg.fr"]
 filename: learn-emacs-lisp-fr.el
-lang: fr-fr
 ---
 
 ```scheme

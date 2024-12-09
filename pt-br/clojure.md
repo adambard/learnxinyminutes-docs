@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Mariane Siqueira Machado", "https://twitter.com/mariane_sm"]
     - ["Ygor Sad", "https://github.com/ysads"]
-lang: pt-br
 ---
 
 Clojure é uma linguagem da família do Lisp desenvolvida para a JVM (máquina virtual Java). Possui uma ênfase muito mais forte em [programação funcional](https://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_funcional) pura do que Common Lisp, mas inclui diversos recursos [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) para lidar com estado e mutabilidade, caso isso seja necessário.

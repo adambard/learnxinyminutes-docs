@@ -20,7 +20,6 @@ translators:
     - ["Andrey Samsonov", "https://github.com/kryzhovnik"]
     - ["Andre Polykanine", "https://github.com/Menelion"]
 filename: LearnBash-ru.sh
-lang: ru-ru
 ---
 
 Bash — это командная оболочка unix, которая распространялась как оболочка

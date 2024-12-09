@@ -5,7 +5,6 @@ contributors:
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
-lang: cs-cz
 filename: javascript-cz.js
 ---
 

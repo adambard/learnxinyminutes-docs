@@ -4,7 +4,6 @@ contributors:
     - ["Poor Yorick", "https://pooryorick.com/"]
 translators:
     - ["Héctor Romojaro", "https://github.com/hromojaro"]
-lang: es-es
 filename: learntcl-es.tcl
 ---
 

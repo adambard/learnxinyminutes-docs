@@ -8,7 +8,6 @@ translators:
     - ["Monique Baptista", "https://github.com/bfmonique"]
     - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
 
-lang: pt-br
 filename: learnmarkdown-pt.md
 ---
 

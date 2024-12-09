@@ -6,7 +6,6 @@ contributors:
 translators:
   - ["Rick Haan", "https://github.com/RickHaan"]
 filename: learnvim-nl.yaml
-lang: nl-nl
 ---
 
 # Vim in het Nederlands

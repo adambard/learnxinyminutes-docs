@@ -6,7 +6,6 @@ contributors:
   - ["Sean Corrales", "https://github.com/droidenator"]
 translators:
   - ["Michal Martinek", "https://github.com/MichalMartinek"]
-lang: cs-cz
 ---
 
 Sass je rozšíření jazyka CSS, který přidává nové vlastnosti jako proměnné, zanořování, mixiny a další.

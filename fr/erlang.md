@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Julien Cretel", "https://github.com/Jubobs"]
 filename: learnerlang-fr.erl
-lang: fr-fr
 ---
 
 ```erlang

@@ -6,7 +6,6 @@ contributors:
 filename: learngdscript.gd
 translators:
     - ["R1cHero", "https://github.com/R1cHero"]
-lang: tr-tr
 ---
 
 GDScript, özgür ve açık kaynaklı oyun motoru olan Godot için dinamik ve statik olarak 

@@ -7,7 +7,6 @@ translators:
     - ["小柒", "http://weibo.com/u/2328126220"]
     - ["alswl", "https://github.com/alswl"]
 filename: learnr-zh.r
-lang: zh-cn
 ---
 
 R 是一门统计语言。它有很多数据分析和挖掘程序包。可以用来统计、分析和制图。

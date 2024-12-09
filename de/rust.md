@@ -4,7 +4,6 @@ contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
     - ["Christian Albrecht", "https://github.com/coastalchief"]
-lang: de-de
 filename: lernerust-de.rs
 ---
 

@@ -6,7 +6,6 @@ contributors:
 filename: coffeescript-id.coffee
 translators:
   - ["Rizky Luthfianto", "http://github.com/rilut"]
-lang: id-id
 ---
 
 CoffeeScript adalah bahasa sederhana yang diterjemahkan saat kompilasi ke dalam JavaScript,

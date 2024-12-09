@@ -5,7 +5,6 @@ contributors:
     - ["Stephen Holdaway", "https://github.com/stecman"]
 translators:
     - ["Vojta Svoboda", "https://github.com/vojtasvoboda/"]
-lang: cs-cz
 ---
 
 Hack je nadmnožinou PHP a běží v rámci virtuálního stroje zvaného HHVM. Hack 

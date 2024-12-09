@@ -5,7 +5,6 @@ contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 translators:
     - ["David Lima", "https://github.com/davelima"]
-lang: pt-br
 filename: LearnComposer-pt.sh
 ---
 

@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Olivier Hoarau", "https://github.com/Olwaro"]
 filename: LearnCSharp-fr.cs
-lang: fr-fr
 ---
 
 C# est un langage de programmation orienté objet à typage fort qui permet aux développeurs de créer une grande variété d'applications fiables et robustes s'appuyant sur le framework .NET.

@@ -5,7 +5,6 @@ contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
 translators:
     - ["Davidson Mizael", "https://github.com/davidsonmizael"]
-lang: pt-br
 ---
 
 Julia é uma linguagem homoicônica funcional focada na computação técnica. Ao mesmo tempo que ela tem todo o poder dos macros homoicônicos, funções de primeira classe, e controle de baixo nível, Julia é tão fácil para aprender e usar quanto Python.

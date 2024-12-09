@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["urfuchs", "https://github.com/urfuchs"]
 filename: brainfuck-de.bf
-lang: de-de
 
 ---
 

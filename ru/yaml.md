@@ -6,7 +6,6 @@ contributors:
 - [Suhas SG, 'https://github.com/jargnar']
 translators:
 - [Sergei Babin, 'https://github.com/serzn1']
-lang: ru-ru
 ---
 
 YAML как язык сериализации данных предназначен прежде всего для использования людьми.

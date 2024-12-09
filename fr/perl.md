@@ -7,7 +7,6 @@ contributors:
     - ["Matteo Taroli", "http://www.matteotaroli.be"]
 translators:
     - ["Matteo Taroli", "http://www.matteotaroli.be"]
-lang: fr-fr
 ---
 Perl est un langage de programmation riche en fonctionnalité, avec plus de 25 ans de développement.
 

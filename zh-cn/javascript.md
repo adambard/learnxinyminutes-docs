@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
     - ["Guodong Qu", "https://github.com/jasonqu"]
-lang: zh-cn
 ---
 
 JavaScript 于 1995 年由网景公司的 Brendan Eich 发明。最初它作为一种简单的，用于开发网站的脚本语言而被发明出来，是用于开发复杂网站的 Java 的补充。但由于它与网页结合度很高并且在浏览器中得到内置的支持，所以在网页前端领域 JavaScript 变得比 Java 更流行了。

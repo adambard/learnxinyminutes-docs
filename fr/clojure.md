@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Bastien Guerry", "https://github.com/bzg"]
-lang: fr-fr
 ---
 
 Clojure est un langage de la famille des Lisp développé pour la machine

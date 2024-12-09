@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
 filename: learnhtml-de.txt
-lang: de-de
 ---
 
 HTML steht für HyperText Markup Language (Hypertext-Auszeichnungssprache).

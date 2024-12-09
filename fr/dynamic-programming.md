@@ -5,7 +5,6 @@ contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
 translators:
     - ["Hughes Perreault", "https://github.com/hperreault"]
-lang: fr-fr
 ---
 
 # Programmation dynamique

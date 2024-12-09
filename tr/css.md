@@ -11,7 +11,6 @@ contributors:
 filename: learncss-tr.css
 translators:
     - ["Fatih Turan", "http://fatihturan.com"]
-lang: tr-tr
 ---
 
 Web sayfaları bir sayfanın içeriğini belirleyen HTML ile inşa edilirler. CSS (Basamaklı Biçim Sayfaları) ise bir sayfanın **görünümünü** belirleyen ayrı bir dildir.

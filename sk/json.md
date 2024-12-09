@@ -6,7 +6,6 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
   - ["Juraj Kostolanský", "http://www.kostolansky.sk"]
-lang: sk-sk
 ---
 
 Nakoľko je JSON extrémne jednoduchý formát na výmenu dát, toto bude

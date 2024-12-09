@@ -11,7 +11,6 @@ contributors:
 filename: LearnJava-gr.java
 translators:
   - ["Andreas Loizou" , "https://github.com/lack3r/"]
-lang: el-gr
 ---
 
 H Java είναι μία γενικού-σκοπού, συντρέχων (concurrent), βασισμένη σε κλάσεις, 

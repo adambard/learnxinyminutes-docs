@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["Dp Leo", "https://github.com/minoriwww"]
 filename: learn-latex-cn.tex
-lang: zh-cn
 ---
 
 ```tex

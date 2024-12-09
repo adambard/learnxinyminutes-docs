@@ -8,7 +8,6 @@ contributors:
   - ["Michael Neth", "https://github.com/infernocloud"]
 translators:
     - ["abdalim", "https://github.com/abdalim"]
-lang: ms-my
 ---
 
 Disebabkan JSON adalah format pertukaran-data yang sangat ringkas, panduan ini

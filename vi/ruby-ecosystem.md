@@ -5,7 +5,6 @@ contributors:
     - ["Jon Smock", "http://github.com/jonsmock"]
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
     - ["Vinh Nguyen", "http://rubydaily.net"]
-lang: vi-vn
 ---
 
 Nhìn chung các lập trình viên Ruby luôn có cách để cài đặt các phiên bản

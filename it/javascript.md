@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["vinniec", "https://github.com/vinniec"]
 filename: javascript-it.js
-lang: it-it
 ---
 
 JavaScript è stato creato da Netscape di Brendan Eich nel 1995. È stato originariamente pensato come un semplice linguaggio di scripting per i siti web, complementare all'uso di java per applicazioni più complesse ma la sua stretta integrazione con le pagine Web e il supporto integrato con esse ha causato il suo divenire più comune di Java per i frontend web.

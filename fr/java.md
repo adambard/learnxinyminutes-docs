@@ -14,7 +14,6 @@ contributors:
 filename: java-fr.java
 translators:
     - ['Mathieu Gemard', 'https://github.com/mgemard']
-lang: fr-fr
 ---
 Java est un langage orienté objet, concurrent et très facilement portable. Java
 est inspiré du C++ mais ne reprend pas tous les concepts comme par exemple les

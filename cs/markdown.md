@@ -1,13 +1,11 @@
 ---
 language: Markdown
-lang: cs-cz
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
     - ["Tomáš Hartman", "https://github.com/tomas-hartman"]
 filename: markdown-cz.md
-lang: cs-cz
 ---
 
 Markdown byl vytvořen Johnem Gruberem v roce 2004 jako značkovací jazyk, který

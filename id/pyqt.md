@@ -7,7 +7,6 @@ contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:
     - ["Rizky Luthfianto", "http://github.com/rilut"]
-lang: id-id
 ---
 
 **Qt** adalah framework terkenal untuk pengembangan perangkat lunak *cross-platform* yang dapat dijalankan pada berbagai platform perangkat lunak dan perangkat keras dengan sedikit atau tanpa perubahan dalam kode, dengan tetap memiliki kekuatan dan kecepatan aplikasi *native*. **Qt** ditulis dalam bahasa C++.

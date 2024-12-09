@@ -5,7 +5,6 @@ contributors:
 filename: learnerlang-kr.erl
 translators:
     - ["Taesung Jung", "https://github.com/tsj"]
-lang: ko-kr
 ---
 
 ```erlang

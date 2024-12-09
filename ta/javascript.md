@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Rasendran Kirushan", "https://github.com/kirushanr"]
 filename: javascript-ta.js
-lang: ta-in
 ---
 
 JavaScript 1995 ஆம்  ஆண்டு Netscape இல் பணிபுரிந்த Brendan Eich

@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Vojta Svoboda", "https://github.com/vojtasvoboda/"]
 filename: learnbrainfuck-cz.bf
-lang: cs-cz
 ---
 
 Brainfuck (psaný bez kapitálek s vyjímkou začátku věty) je extrémně minimální 

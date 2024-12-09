@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Peiyong Lin", ""]
     - ["chad luo", "http://yuki.rocks"]
-lang: zh-cn
 ---
 
 Haskell 是一门实用的函数式编程语言，因其 Monads 与类型系统而闻名。而我使用它则是因为它异常优雅。用 Haskell 编程令我感到非常快乐。

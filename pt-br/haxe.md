@@ -6,7 +6,6 @@ contributors:
     - ["Dan Korostelev", "https://github.com/nadako/"]
 translators:
     - ["David Lima", "https://github.com/davelima/"]
-lang: pt-br
 ---
 
 Haxe é uma linguagem baseada na web que provê suporte a C++, C#, SWF/ActionScript,

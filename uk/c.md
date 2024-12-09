@@ -12,7 +12,6 @@ contributors:
     - ["Dragos B. Chirila", "https://github.com/dchirila"]
 translators:
     - ["AstiaSun", "https://github.com/AstiaSun"]
-lang: uk-ua
 ---
 
 О, C! Досі мова для сучасних обчислень у високопродуктивних продуктах.

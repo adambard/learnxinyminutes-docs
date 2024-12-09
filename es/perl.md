@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Francisco Gomez", "http://github.com/frncscgmz"]
     - ["Joaquín Ferrero", "http://github.com/joaquinferrero"]
-lang: es-es
 ---
 
 Perl es un lenguaje de programación altamente capaz, rico en características, con más de 25 años de desarrollo.

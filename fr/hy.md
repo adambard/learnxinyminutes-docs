@@ -5,7 +5,6 @@ contributors:
     - ["Abhishek L", "http://twitter.com/abhishekl"]
 translators:
   - ["Hughes Perreault", "https://github.com/hperreault"]
-lang: fr-fr
 ---
 
 Hy est un dialecte du Lisp bâti par dessus Python. Il fonctionne en

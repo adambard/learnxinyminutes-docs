@@ -5,7 +5,6 @@ contributors:
   - ["Leigh Brenecki", "https://github.com/adambrenecki"]
 translators:
   - ["Tamás Diószegi", "https://github.com/ditam"]
-lang: hu-hu
 ---
 
 A YAML egy adat sorosító nyelv, amit úgy terveztek, hogy közvetlenül is 

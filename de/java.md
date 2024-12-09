@@ -8,7 +8,6 @@ contributors:
     - ["Simon Morgan", "http://sjm.io/"]
 translators:
     - ["Michael Dähnert", "http://github.com/JaXt0r"]
-lang: de-de
 ---
 
 Java ist eine Programmiersprache für vielfältige Aufgaben. Sie ist imperative und objektorientiert.

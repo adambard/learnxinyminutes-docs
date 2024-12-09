@@ -7,7 +7,6 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
 translators:
     - ["Dominik Krzemiński", "https://github.com/dokato"]
-lang: pl-pl
 ---
 
 Python został opracowany przez Guido Van Rossuma na początku lat 90-tych.

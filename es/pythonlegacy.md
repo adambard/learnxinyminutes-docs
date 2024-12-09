@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Camilo Garrido", "http://www.twitter.com/hirohope"]
     - ["Fabio Souto", "http://fabiosouto.me"]
-lang: es-es
 filename: learnpythonlegacy-es.py
 ---
 

@@ -22,7 +22,6 @@ translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
   - ["Dennis Keller", "https://github.com/denniskeller"]
   - ["Paul Götze", "https://gitub.com/paulgoetze"]
-lang: de-de
 ---
 
 ```ruby

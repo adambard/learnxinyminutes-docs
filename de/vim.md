@@ -1,7 +1,6 @@
 ---
 category: tool
 tool: Vim
-lang: de-de
 contributors:
 - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:

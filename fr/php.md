@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Pascal Boutin", "http://pboutin.net/"]
     - ["Julien M'Poy", "https://github.com/groovytron"]
-lang: fr-fr
 ---
 
 Ce document décrit PHP 5+.

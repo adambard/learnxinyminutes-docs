@@ -5,7 +5,6 @@ contributors:
     - ["Marco Scannadinari", "https://github.com/marcoms"]
     - ["Geoffrey Liu", "https://github.com/g-liu"]
 filename: learncss-ru.css
-lang: ru-ru
 ---
 
 В свои ранние дни веб состоял в основном из чистого текста. С развитием браузеров

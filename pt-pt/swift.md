@@ -9,7 +9,6 @@ contributors:
   - ["Clayton Walker", "https://github.com/cwalk"]
 translators:
   - ["João Costa", "https://github.com/joaofcosta"]
-lang: pt-pt
 ---
 
 Swift é uma linguagem de programação criada pela Apple para o desenvolvimento em iOS e macOS.

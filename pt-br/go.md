@@ -2,7 +2,6 @@
 category: language
 language: Go
 filename: learngo-pt.go
-lang: pt-br
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Jose Donizetti", "https://github.com/josedonizetti"]

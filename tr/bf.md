@@ -5,7 +5,6 @@ contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io"]
 translators:
     - ["Haydar KULEKCI", "http://scanf.info/"]
-lang: tr-tr
 ---
 
 Brainfuck (normalde brainfuck olarak bütün harfleri küçük olarak yazılır.) 

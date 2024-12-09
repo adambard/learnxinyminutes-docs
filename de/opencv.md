@@ -6,7 +6,6 @@ contributors:
     - ["Yogesh Ojha", "http://github.com/yogeshojha"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 OpenCV (Open Source Computer Vision) ist eine Bibliothek von Programmierfunktionen,

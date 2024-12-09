@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Evlogy Sutormin", "http://evlogii.com"]
     - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
-lang: ru-ru
 ---
 
 Objective-C — основной язык программирования, используемый корпорацией Apple

@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Shawn Zhang", "https://github.com/shawnzhang009"]
 filename: learntypescript-cn.ts
-lang: zh-cn
 ---
 
 TypeScript 是一门为开发大型 JavaScript 应用而设计的语言。TypeScript 在 JavaScript 的基础上增加了类、模块、接口、泛型和静态类型（可选）等常见的概念。它是 JavaScript 的超集：所有 JavaScript 代码都是有效的 TypeScript 代码，因此任何 JavaScript 项目都可以无缝引入 TypeScript，TypeScript 编译器最终会把 TypeScript 代码编译成 JavaScript 代码。

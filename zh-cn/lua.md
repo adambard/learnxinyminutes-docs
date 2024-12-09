@@ -1,6 +1,5 @@
 ---
 language: Lua
-lang: zh-cn
 contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
     - ["Rob Hoelz", "http://hoelz.ro"]

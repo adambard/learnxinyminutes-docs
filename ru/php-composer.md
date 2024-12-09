@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Aleksey Lysenko", "https://github.com/nasgul"]
 filename: LearnComposer-ru.sh
-lang: ru-ru
 ---
 
 [Composer](https://getcomposer.org/) — это инструмент управления зависимостями в PHP.

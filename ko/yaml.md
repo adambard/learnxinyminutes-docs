@@ -7,7 +7,6 @@ contributors:
 translators:
 - ["Wooseop Kim", "https://github.com/linterpreteur"]
 - ["Justin Yang", "https://github.com/justin-themedium"]
-lang: ko-kr
 ---
 
 YAML은 인간이 직접 쓰고 읽을 수 있도록 설계된 데이터 직렬화 언어입니다.

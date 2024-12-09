@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Mario Stabile", "https://github.com/mariostabile1"]
 filename: learnfish-it.fish
-lang: it-it
 ---
 
 Fish (**f**riendly **i**nteractive **sh**ell) è il nome di una shell esotica. Si tratta di una shell la cui sintassi non deriva né dalla Bourne-Shell né dalla C-Shell.

@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 Clojure ist ein Lispdialekt, der für die Java Virtual Maschine entwickelt worden ist. Sie hat eine stärkere Betonung auf reine [funktionale Programmierung](https://en.wikipedia.org/wiki/Functional_programming) als Common Lisp. Jedoch besitzt sie je nach Bedarf mehrere [STM](https://en.wikipedia.org/wiki/Software_transactional_memory) Werkzeuge zur Handhabung von Zustand.

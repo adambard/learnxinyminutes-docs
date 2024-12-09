@@ -1,6 +1,5 @@
 ---
 language: Tcl
-lang: ru-ru
 contributors:
     - ["Poor Yorick", "https://pooryorick.com/"]
 translators:

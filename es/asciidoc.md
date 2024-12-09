@@ -4,7 +4,6 @@ contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 translators:
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
-lang: es-es
 filename: asciidoc-es.adoc
 ---
 

@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Sylvain Vaure", "https://github.com/Gnomino"]
 filename: jquery-fr.js
-lang: fr-fr
 ---
 
 jQuery est une bibliothèque JavaScript dont le but est de permettre de "faire plus en écrivant moins" (do more, write less). Elle facilite l'écriture de nombreuses fonctions, notamment au niveau d'AJAX, de la gestion d'événements, ou encore de la manipulation de documents. 

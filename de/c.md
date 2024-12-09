@@ -3,7 +3,6 @@ language: C
 filename: learnc-de.c
 contributors:
     - ["caminsha", "https://github.com/caminsha"]
-lang: de-de
 ---
 
 Ach, C. Immer noch **die** Sprache für modernes High-Performance Computing.

@@ -2,7 +2,6 @@
 language: SQL
 contributors:
   - ["Metin Yalçınkaya", "https://github.com/mtnylnky"]
-lang: tr-tr
 filename: learnsql-tr.sql
 ---
 

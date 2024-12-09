@@ -7,7 +7,6 @@ contributors:
   - ["Gustavo Schmidt", "https://github.com/gustavoschmidt"]
 translators:
   - ["Xavier Nayrac", "https://github.com/lkdjiin"]
-lang: fr-fr
 ---
 
 Racket est un langage de programmation généraliste, multi-paradigme,

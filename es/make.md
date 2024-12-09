@@ -7,7 +7,6 @@ contributors:
     - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
 translators:
     - ["Andrés Perdomo", "https://github.com/andres7293"]
-lang: es-es
 ---
 
 Un archivo Makefile define un conjunto de reglas para crear un objetivo (o

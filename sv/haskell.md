@@ -5,7 +5,6 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Edward Tjörnhammar", "http://edwtjo.me"]
-lang: sv-se
 ---
 
 Haskell skapades för att vara ett praktiskt, rent, funktionellt

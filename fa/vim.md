@@ -5,7 +5,6 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["Moein Halvaei", "https://github.com/mo1ein"]
-lang: fa-ir
 filename: LearnVim-fa.txt
 ---
 

@@ -6,7 +6,6 @@ contributors:
     - ["Christopher Bess", "http://github.com/cbess"]
 translators:
     - ["Mariane Siqueira Machado", "https://twitter.com/mariane_sm"]
-lang: pt-br
 
 ---
 

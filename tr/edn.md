@@ -1,7 +1,6 @@
 ---
 language: EDN
 filename: learnedn-tr.edn
-lang: tr-tr
 contributors:
   - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]
 ---

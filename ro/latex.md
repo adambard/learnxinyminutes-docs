@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
 filename: learn-latex-ro.tex
-lang: ro-ro
 ---
 
 ```tex

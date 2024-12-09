@@ -5,7 +5,6 @@ contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
   - ["FedeHC", "https://github.com/FedeHC"]
-lang: es-es
 ---
 
 El lenguaje de consulta estructurada (SQL en inglés) es un lenguaje estándar ISO para crear y trabajar con bases de datos almacenados en un conjunto de tablas. Las implementaciones generalmente añaden sus propias extensiones al lenguaje; [Comparación entre diferentes implementaciones de SQL](http://troels.arvin.dk/db/rdbms/) es una buena referencia sobre las diferencias entre distintos productos.

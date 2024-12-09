@@ -13,7 +13,6 @@ contributors:
 translators:
     - ["Ehreshi Ivan", "https://github.com/IvanEh"]
     - ["Serhii Maksymchuk", "https://github.com/Serg-Maximchuk"]
-lang: uk-ua
 ---
 
 Bash - командна оболонка unix (unix shell), що також розповсюджувалась як оболонка для

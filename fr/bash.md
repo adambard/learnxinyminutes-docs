@@ -12,7 +12,6 @@ contributors:
 translators:
     - ["Baptiste Fontaine", "http://bfontaine.net"]
 filename: LearnBash-fr.sh
-lang: fr-fr
 ---
 
 Bash est le nom du shell UNIX, qui était aussi distribué avec le système

@@ -1,6 +1,5 @@
 ---
 language: HTML
-lang: ar-ar
 filename: learnhtml-tf.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]

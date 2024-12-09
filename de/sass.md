@@ -7,7 +7,6 @@ contributors:
   - ["Kyle Mendes", "https://github.com/pink401k"]
 translators:
     - ["Philipp Bochmann", "https://github.com/phbo85"]  
-lang: de-de
 ---
 Sass ist eine CSS-erweiternde Sprache, welche Features wie Variablen, Verschachtelung, Mixins und mehr hinzufügt.
 Sass (und andere Präprozessoren wie [Less](http://lesscss.org/)) helfen Entwicklern dabei ihren Code wartbar und DRY (Don't Repeat Yourself - wiederhole dich nicht) zu schreiben.

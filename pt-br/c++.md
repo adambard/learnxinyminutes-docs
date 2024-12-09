@@ -6,7 +6,6 @@ contributors:
     - ["Matt Kline", "https://github.com/mrkline"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-lang: pt-br
 ---
 
 C++ é uma linguagem de programação de sistemas que,

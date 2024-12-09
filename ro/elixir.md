@@ -7,7 +7,6 @@ contributors:
     - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 translators:
     - ["Vitalie Lazu", "https://github.com/vitaliel"]
-lang: ro-ro
 filename: learnelixir-ro.ex
 ---
 

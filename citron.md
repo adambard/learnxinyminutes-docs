@@ -3,7 +3,6 @@ language: citron
 filename: learncitron.ctr
 contributors:
     - ["AnotherTest", ""]
-lang: en-us
 ---
 ```ruby
 # Comments start with a '#'

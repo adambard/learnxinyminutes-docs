@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
     - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]
-lang: it-it
 ---
 
 Il C++ è un linguaggio di programmazione il quale,

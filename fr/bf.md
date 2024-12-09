@@ -6,7 +6,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Baptiste Fontaine", "http://bfontaine.net"]
-lang: fr-fr
 ---
 
 Brainfuck (sans majuscule à part au début d’une phrase) est un langage

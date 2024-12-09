@@ -5,7 +5,6 @@ contributors:
 filename: index-pt.pug
 translators:
   - ["Adaías Magdiel", "https://adaiasmagdiel.com/"]
-lang: pt-br
 ---
 
 Pug é uma pequena linguagem que compila para HTML. Possui uma sintaxe limpa

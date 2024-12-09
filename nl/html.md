@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Jeroen Deviaene", "https://github.com/jerodev"]
-lang: nl-nl
 ---
 
 HTML staat voor HyperText Markup Language.

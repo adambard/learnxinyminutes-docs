@@ -5,7 +5,6 @@ contributors:
     - ["isomorphismes", "http://twitter.com/isomorphisms"]
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
-lang: es-es    
 filename: learnr-es.r
 ---
 

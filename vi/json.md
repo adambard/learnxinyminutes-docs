@@ -7,7 +7,6 @@ contributors:
   - ["himanshu", "https://github.com/himanshu81494"]
 translators:
   - ["Thanh Phan", "https://github.com/thanhpd"]
-lang: vi-vn
 ---
 
 Do JSON là một ngôn ngữ trao đổi dữ liệu hết sức đơn giản, đây có thể sẽ là bài

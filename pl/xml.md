@@ -5,7 +5,6 @@ contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:  
   - ["Tomasz Janiszewski", "https://github.com/janisz"]  
-lang: pl-pl
 ---
 
 XML (_Extensible Markup Language_) to rozszerzalny język znaczników, stworzony

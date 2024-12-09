@@ -1,6 +1,5 @@
 ---
 language: Ruby
-lang: pt-br
 filename: learnruby-pt.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]

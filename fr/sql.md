@@ -5,7 +5,6 @@ contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
   - ["Th3G33k", "https://github.com/Th3G33k"]
-lang: fr-fr
 ---
 
 Le Structured Query Language (SQL) est un langage standard [ISO/IEC 9075](https://www.iso.org/standard/63555.html) permettant de créer et d'utiliser des bases de données. Les implémentations (MySQL, PostgreSQL, Oracle etc.) ajoutent généralement leurs propres extensions au langage ([Comparaison des différentes implémentations SQL](http://troels.arvin.dk/db/rdbms/)).

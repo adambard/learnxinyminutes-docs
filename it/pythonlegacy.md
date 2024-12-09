@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["Ale46", "http://github.com/Ale46/"]
     - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]
-lang: it-it
 ---
 Python è stato creato da Guido Van Rossum agli inizi degli anni 90. Oggi è uno dei più popolari
 linguaggi esistenti. Mi sono innamorato di Python per la sua chiarezza sintattica. E' sostanzialmente

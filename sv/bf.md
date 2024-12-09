@@ -6,7 +6,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Richard Lindberg", "https://github.com/Lidenburg"]
-lang: sv-se
 ---
 
 Brainfuck (ej versaliserat förutom vid ny mening) är ett extremt

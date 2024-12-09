@@ -6,7 +6,6 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
   - ["Daniel Zendejas","https://github.com/DanielZendejas"]
-lang: es-es
 ---
 
 Siendo JSON un formato de intercambio de infomación tan sencillo, probablemente este será el Learn X in Y más sencillo jamás.

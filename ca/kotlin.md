@@ -4,7 +4,6 @@ contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators:
     - ["Xavier Sala", "https://github.com/utrescu"] 
-lang: ca-es
 filename: LearnKotlin-ca.kt
 ---
 

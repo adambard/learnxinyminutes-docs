@@ -5,7 +5,6 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Haydar KULEKCI", "http://scanf.info/"]
-lang: tr-tr
 ---
 Python Guido Van Rossum tarafından 90'ların başında yaratılmıştır. Şu anda 
 varolanlar arasında en iyi dillerden birisidir. Ben (Louie Dinh) Python

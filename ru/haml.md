@@ -6,7 +6,6 @@ contributors:
     - ["Vasiliy Petrov", "https://github.com/Saugardas"]
 translators:
     - ["Vasiliy Petrov", "https://github.com/Saugardas"]
-lang: ru-ru
 ---
 
 Haml - язык разметки (в основном используемый с Ruby), с помощью которого могут быть легко описаны HTML-документы.

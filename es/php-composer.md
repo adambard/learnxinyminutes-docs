@@ -5,7 +5,6 @@ contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-lang: es-es
 filename: LearnComposer-es.sh
 ---
 

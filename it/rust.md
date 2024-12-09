@@ -2,7 +2,6 @@
 language: Rust
 contributors:
     - ["Carlo Milanesi", "http://github.com/carlomilanesi"]
-lang: it-it
 filename: rust-it.rs
 ---
 

@@ -4,7 +4,6 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["David Baumgartner", "http://davidbaumgartner.ch"]    
-lang: fr-fr
 filename: learnhaskell-fr.hs
 ---
 

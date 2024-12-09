@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Bogdan Lazar", "http://twitter.com/tricinel"]
 filename: coffeescript-ro.coffee
-lang: ro-ro
 ---
 
 CoffeeScript este un limbaj de programare care este compilat in JavaScript. Nu exista un interpretator la runtime-ul aplicatiei. Fiind unul din successorii JavaScript, CoffeeScript incearca sa compileze JavaScript usor de citit si performant.

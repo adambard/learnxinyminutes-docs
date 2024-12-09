@@ -7,7 +7,6 @@ contributors:
 translator:
     - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 filename: learnelixir-ru.ex
-lang: ru-ru
 ---
 
 Elixir — современный функциональный язык программирования, который работает на

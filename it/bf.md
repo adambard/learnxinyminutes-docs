@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Ivan Sala", "http://slavni96.github.io/"]
     - ["Christian Grasso", "http://chris54721.net"]
-lang: it-it
 ---
 
 Brainfuck è un linguaggio di programmazione

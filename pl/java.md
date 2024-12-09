@@ -15,7 +15,6 @@ contributors:
     - ["Shawn M. Hanes", "https://github.com/smhanes15"]
 translators:
     - ["Jacek Wachowiak", "https://github.com/jacekwachowiak"]
-lang: pl-pl
 ---
 
 Java jest współbieżnym, opartym na klasach, obiektowym językiem programowania

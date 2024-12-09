@@ -9,7 +9,6 @@ translators:
     - ["Gnomino", "https://github.com/Gnomino"]
     - ["Julien M'Poy", "http://github.com/groovytron"]
 filename: learnpython-fr.py
-lang: fr-fr
 ---
 
 Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des 

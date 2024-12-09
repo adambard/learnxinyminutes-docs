@@ -6,7 +6,6 @@ contributors:
      - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:
      - ["Ihor Sokorchuk", "https://github.com/IhorSokorchuk"]
-lang: uk-ua
 ---
 
 AWK є стандартним інструментом у кожній POSIX-сумісній системі UNIX.

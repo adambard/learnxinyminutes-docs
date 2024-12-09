@@ -6,7 +6,6 @@ contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:
     - ["Ale46", "https://github.com/ale46"]
-lang: it-it
 ---
 
 **Qt** è un framework ampiamente conosciuto per lo sviluppo di software multipiattaforma che può essere eseguito su varie piattaforme software e hardware con modifiche minime o nulle nel codice, pur avendo la potenza e la velocità delle applicazioni native. Sebbene **Qt** sia stato originariamente scritto in *C++*.

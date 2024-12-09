@@ -6,7 +6,6 @@ contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:
     - ["DevHugo", "http://twitter.com/devhugo"]
-lang: fr-fr
 ---
 
 **Qt** est un framework très connu pour le développement de logiciel cross-platform qui peuvent être lancé sur différents systèmes avec de petit ou aucun changement dans le code, tout en ayant la puissance et la vitesse des applications natives. Bien que **Qt** ait été écrit à l'origine en *C++*.

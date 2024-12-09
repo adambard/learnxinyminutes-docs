@@ -10,7 +10,6 @@ contributors:
     - ["Jatin Dhankhar", "https://github.com/jatindhankhar"]
     - ["Maximilian Sonnenburg", "https://github.com/LamdaLamdaLamda"]
     - ["caminsha", "https://github.com/caminsha"]
-lang: de-de
 ---
 
 C++ ist eine Systemprogrammiersprache die, 

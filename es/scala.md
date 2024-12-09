@@ -8,7 +8,6 @@ contributors:
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
 translators:
     - ["Pablo Arranz Ropero", "http://arranzropablo.com"]
-lang: es-es
 ---
 
 Scala - El lenguaje escalable

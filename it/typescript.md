@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Christian Grasso", "https://grasso.io"]
 filename: learntypescript-it.ts
-lang: it-it
 ---
 
 TypeScript è un linguaggio basato su JavaScript che punta a rendere il codice

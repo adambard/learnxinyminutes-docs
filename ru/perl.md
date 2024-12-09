@@ -6,7 +6,6 @@ contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
 translators:
     - ["Elena Bolshakova", "http://github.com/liruoko"]
-lang: ru-ru
 ---
 
 Perl -- высокоуровневый мощный язык с 25-летней историей.

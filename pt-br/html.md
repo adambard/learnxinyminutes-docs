@@ -5,7 +5,6 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Robert Steed", "https://github.com/robochat"]
-lang: pt-br
 ---
 
 HTML é um acrônimo de HyperText Markup Language(Linguagem de Marcação de HiperTexto).

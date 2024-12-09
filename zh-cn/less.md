@@ -5,7 +5,6 @@ contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
 translators:
    - ["Jiang Haiyun", "http://www.atjiang.com"]
-lang: zh-cn
 ---
 
 

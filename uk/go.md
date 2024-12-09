@@ -13,7 +13,6 @@ contributors:
     - ["Leonid Shevtsov", "https://github.com/leonid-shevtsov"]
 translators:
     - ["AstiaSun", "https://github.com/AstiaSun"]
-lang: uk-ua
 ---
 
 Go був створений для того, щоб виконати задачу. Це не останній тренд в теорії мов програмування, а спосіб вирішення реальних проблем.

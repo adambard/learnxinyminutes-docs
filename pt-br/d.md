@@ -5,7 +5,6 @@ contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 translators:
     - ["Julio Vanzelli", "https://github.com/JulioVanzelli"]
-lang: pt-br
 ---
 
 ```d

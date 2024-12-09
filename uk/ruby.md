@@ -17,7 +17,6 @@ contributors:
   - ["Jake Faris", "https://github.com/farisj"]
 translators:
   - ["Serhii Maksymchuk", "https://github.com/Serg-Maximchuk"]
-lang: uk-ua
 ---
 
 Rubi — це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією.

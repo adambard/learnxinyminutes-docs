@@ -6,7 +6,6 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
 translators:
     - ["Haydar Ali Ismail", "https://github.com/haydarai"]
-lang: id-id
 ---
 
 RST adalah sebual format file yang dibuat oleh komunitas Python untuk menulis

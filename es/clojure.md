@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Antonio Hernández Blas", "https://twitter.com/nihilipster"]
     - ["Guillermo Vayá Pérez", "http://willyfrog.es"]
-lang: es-es
 ---
 
 Clojure es un lenguaje de la familia Lisp desarrollado para la Máquina Virtual

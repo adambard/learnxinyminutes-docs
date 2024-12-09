@@ -7,7 +7,6 @@ filename: javascript-ru.js
 translators:
   - ["Alexey Gonchar", "http://github.com/finico"]
   - ["Andre Polykanine", "https://github.com/Oire"]
-lang: ru-ru
 ---
 
 JavaScript был создан в 1995 году Бренданом Айком, работавшим в компании Netscape.

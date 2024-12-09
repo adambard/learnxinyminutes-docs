@@ -5,7 +5,6 @@ contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 translators:
     - ["Quentin Ladeveze", "aceawan.eu"]
-lang: fr-fr
 ---
 
 ```d

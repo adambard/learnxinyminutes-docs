@@ -4,7 +4,6 @@ filename: learnhaml-de.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
   - ["Sol Bekic", "https://github.com/S0lll0s"]
-lang: de-de
 ---
 
 Haml ist eine Markup- und Templatingsprache, aufgesetzt auf Ruby, mit der HTML Dokumente einfach beschrieben werden können.

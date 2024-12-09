@@ -5,7 +5,6 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Marc Auledas", "https://github.com/Auledas"]
-lang: ca-es
 ---
 
 HTML significa llenguatge de marques d'hipertext (HyperText Markup Language).

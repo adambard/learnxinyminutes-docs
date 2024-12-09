@@ -4,7 +4,6 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Lucas Tonussi", "http://www.inf.ufsc.br/~tonussi/"]
-lang: pt-br
 filename: learnhaskell-pt.hs
 ---
 

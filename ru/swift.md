@@ -9,7 +9,6 @@ filename: learnswift-ru.swift
 translators:
   - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
   - ["Alexey Nazaroff", "https://github.com/rogaven"]
-lang: ru-ru
 ---
 
 Swift - это язык программирования, созданный компанией Apple, для приложений

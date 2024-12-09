@@ -5,7 +5,6 @@ contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
 translators:
     - ["Henrik Jürges", "http://github.com/santifa"]
-lang: de-de
 ---
 
 # Dynamische Programmierung

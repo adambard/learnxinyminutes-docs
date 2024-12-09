@@ -4,7 +4,6 @@ contributors:
     - ["hyphz", "http://github.com/hyphz/"]
 filename: learnfactor-br.factor
 
-lang: pt-br
 ---
 
 Factor é uma linguagem moderna baseada em pilha, baseado em Forth, criada por Slava Pestov.

@@ -7,7 +7,6 @@ contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]
 translators:
     - ["Lucas Pugliesi", "https://github.com/fplucas"]
-lang: pt-br
 ---
 
 **Qt** é amplamente conhecido como um framework para desenvolvimento de

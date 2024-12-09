@@ -4,7 +4,6 @@ contributors:
     - ["Max Goldstein", "http://maxgoldste.in/"]
 translators:
     - ["Marcel dos Santos", "https://twitter.com/marcelgsantos"]
-lang: pt-br
 filename: learnelm-pt.elm
 ---
 

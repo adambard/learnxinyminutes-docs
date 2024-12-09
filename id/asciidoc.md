@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Rizky Luthfianto", "http://github.com/rilut"]
 filename: asciidoc-id.adoc
-lang: id-id
 ---
 
 AsciiDoc adalah bahasa markup yang mirip dengan Markdown dan dapat digunakan untuk apa saja, untuk menulis buku maupun blog. Dibuat pada tahun 2002 oleh Stuart Rackham, bahasa ini sederhana tetapi memungkinkan sejumlah besar kustomisasi.

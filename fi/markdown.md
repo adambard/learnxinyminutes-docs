@@ -5,7 +5,6 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Timo Virkkunen", "https://github.com/ComSecNinja"]
-lang: fi-fi
 ---
 
 John Gruber loi Markdownin vuona 2004. Sen tarkoitus on olla helposti luettava ja kirjoitettava syntaksi joka muuntuu helposti HTML:ksi (ja nyt myös moneksi muuksi formaatiksi).

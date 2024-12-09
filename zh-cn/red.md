@@ -6,7 +6,6 @@ contributors:
     - ["Arnold van Hofwegen", "https://github.com/iArnold"]
 translators:
     - ["Limo Saplf", "https://github.com/saplf"]
-lang: zh-cn
 ---
 
 Red 的编写是出于工作需要，该语言的作者想要使用 REBOL，但它有许多缺陷。

@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Eunpyoung Kim", "https://github.com/netpyoung"]
-lang: ko-kr
 ---
 
 다른 모든 Lisp와 마찬가지로, Clojure가 가진 [동형성(homoiconicity)](https://en.wikipedia.org/wiki/Homoiconic)은

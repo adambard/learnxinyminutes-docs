@@ -4,7 +4,6 @@ contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
     - ["AdrianoJP", "https://github.com/AdrianoJP"]
-lang: pt-br
 filename: learnvisualbasic-pt.vb
 ---
 

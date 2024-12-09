@@ -6,7 +6,6 @@ contributors:
     - ["Kevin Morris", "https://twitter.com/kevinmorris"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-lang: es-es
 ---
 
 ColdFusion es un lenguaje de scripting para desarrollo web.

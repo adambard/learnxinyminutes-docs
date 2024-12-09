@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 filename: javascript-fa.js
-lang: fa-ir
 ---
 
 <p dir='rtl'>

@@ -5,7 +5,6 @@ contributors:
     - ["Chris Martin", "http://chris-martin.org/"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 Nix ist eine simple funktionale Programmiersprache, die für den

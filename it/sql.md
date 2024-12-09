@@ -5,7 +5,6 @@ contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
   - ["Christian Grasso", "https://grasso.io"]
-lang: it-it
 ---
 
 Structured Query Language (SQL) è un linguaggio standard ISO per la creazione e la gestione

@@ -5,7 +5,6 @@ contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
     - ["denniskeller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 Die Structured Query Language (SQL) ist eine ISO Standardsprache zum Erstellen und Arbeiten mit Datenbanken, die in einem Set von Tabellen gespeichert sind. Implementierungen fügen in der Regel eigene Erweiterungen zur Sprache hinzu; [Der Vergleich von verschiedenen SQL Implementierungen](http://troels.arvin.dk/db/rdbms/) ist eine gute Referenz für Produktunterschiede.

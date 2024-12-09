@@ -5,7 +5,6 @@ contributors:
 translators:
   - ["Dennis Keller", "https://github.com/denniskeller"]
 filename: asciidoc-de.adoc
-lang: de-de
 ---
 
 AsciiDoc ist eine Auszeichnungssprache, ähnlich wie Markdown. Sie kann für alles

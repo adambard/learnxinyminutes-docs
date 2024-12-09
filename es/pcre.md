@@ -5,7 +5,6 @@ contributors:
     - ["Sachin Divekar", "http://github.com/ssd532"]
 translators:
     - ["Roberto R", "https://github.com/rrodriguze"]
-lang: es-es
 ---
 
 Una expresión regular (regex o regexp para abreviar) es una cadena especial

@@ -8,7 +8,6 @@ contributors:
     - ["Connor Waters", "http://github.com/connorwaters"]
 translators:
     - ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
-lang: fr-fr
 ---
 
 C++ est un langage de programmation système qui,

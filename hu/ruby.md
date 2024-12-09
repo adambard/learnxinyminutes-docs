@@ -1,6 +1,5 @@
 ---
 language: Ruby
-lang: hu-hu
 filename: learnruby-hu.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]

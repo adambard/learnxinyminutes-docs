@@ -5,7 +5,6 @@ contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
 translators:
     - ["Claudson Martins", "https://github.com/claudsonm"]
-lang: pt-br
 ---
 
 # Programação Dinâmica

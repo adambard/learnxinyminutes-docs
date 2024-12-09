@@ -3,7 +3,6 @@ language: Bash
 contributors:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 filename: LearnBash-gr.sh
-lang: el-gr
 ---
 
 Η λέξη «bash» είναι ένα από τα ονόματα του unix shell (τερματικός), το οποίο

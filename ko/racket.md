@@ -9,7 +9,6 @@ contributors:
   - ["Duong H. Nguyen", "https://github.com/cmpitg"]
 translators:
   - ["KIM Taegyoon", "https://github.com/kimtg"]
-lang: ko-kr
 ---
 
 Racket 은 Lisp/Scheme 계열의 일반 목적의, 다중 패러다임 프로그래밍 언어이다.

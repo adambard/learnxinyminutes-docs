@@ -6,7 +6,6 @@ contributors:
     - ["Keith Miyake", "https://github.com/kaymmm"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-lang: es-es
 ---
 
 

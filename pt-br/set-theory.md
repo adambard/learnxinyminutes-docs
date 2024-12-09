@@ -1,7 +1,6 @@
 ---
 category: Algorithms & Data Structures
 name: Set theory
-lang: pt-br
 contributors:
     - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
 translators:

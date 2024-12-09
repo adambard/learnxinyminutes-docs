@@ -4,7 +4,6 @@ contributors:
     - ["Akashdeep Goel", "https://github.com/akashdeepgoel"]
 translators:
     - ["Mehmet Cem Yaraş", "https://www.linkedin.com/in/yarascem/"]
-lang: tr-tr
 ---
 
 # Dinamik Programlama

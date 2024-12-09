@@ -8,7 +8,6 @@ contributors:
 translators:
   - ["ivanchoff", "https://github.com/ivanchoff"]
   - ["Andre Polykanine", "https://github.com/Menelion"]
-lang: es-es
 ---
 
 Common Lisp es un lenguaje de proposito general y multiparadigma adecuado para una amplia variedad

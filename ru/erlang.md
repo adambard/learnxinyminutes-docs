@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Nikita Kalashnikov", "https://root.yuuzukiyo.net/"]
 filename: learnerlang-ru.erl
-lang: ru-ru
 ---
 
 ```erlang

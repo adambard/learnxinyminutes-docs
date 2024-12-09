@@ -6,7 +6,6 @@ contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
     - ["Arnie97", "https://github.com/Arnie97"]
-lang: zh-cn
 ---
 
 

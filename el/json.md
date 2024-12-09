@@ -9,7 +9,6 @@ contributors:
   - ["Athanasios Emmanouilidis", "https://github.com/athanasiosem"]
 translators:
   - ["Athanasios Emmanouilidis", "https://github.com/athanasiosem"]
-lang: el-gr
 ---
 
 Το JSON (JavaScript Object Notation) είναι ένα πολύ απλό και ελαφρύ μορφότυπο ανταλλαγής δεδομένων. Όπως αναφέρεται και στην ιστοσελίδα [json.org](http://json.org), το JSON διαβάζεται και γράφεται εύκολα από τους ανθρώπους όπως επίσης αναλύεται και παράγεται εύκολα από τις μηχανές.

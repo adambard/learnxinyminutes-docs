@@ -6,7 +6,6 @@ translators:
     - ["kultprok", "http:/www.kulturproktologie.de"]
     - ["matthiaskern", "https://github.com/matthiaskern"]
 filename: learnpython-de.py
-lang: de-de
 ---
 
 Anmerkungen des ursprünglichen Autors:

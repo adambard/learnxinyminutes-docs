@@ -7,7 +7,6 @@ translators:
   - ["Jiang Haiyun", "https://github.com/haiiiiiyun"]
   - ["Wen Sun", "https://github.com/HermitSun"]
 filename: learnyaml-cn.yaml
-lang: zh-cn
 ---
 
 YAML 是一种数据序列化语言，旨在让人类直接可写可读。

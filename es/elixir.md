@@ -7,7 +7,6 @@ contributors:
 translator:
     - ["Adrian Carrascal", "https://github.com/acarrascalgarcia"]
 filename: learnelixir-es.ex
-lang: es-es
 
 ---
 

@@ -6,7 +6,6 @@ contributors:
 translators:
   - ["Davydov Anton", "https://github.com/davydovanton"]
 filename: LearnTmux-ru.txt
-lang: ru-ru
 ---
 
 [tmux](http://tmux.sourceforge.net) - терминальный мультиплексор.

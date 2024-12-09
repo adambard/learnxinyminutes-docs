@@ -5,7 +5,6 @@ contributors:
     - ["Max Sun", "http://github.com/maxsun"]
 translators:
     - ["Yvan Sraka", "https://github.com/yvan-sraka"]
-lang: fr-fr
 ---
 
 # Lambda-calcul

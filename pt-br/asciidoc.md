@@ -4,7 +4,6 @@ contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 translators:
     - ["David Lima", "https://github.com/davelima"]
-lang: pt-br
 filename: asciidoc-pt.adoc
 ---
 

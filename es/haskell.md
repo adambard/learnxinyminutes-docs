@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Jorge Antonio Atempa", "http://www.twitter.com/atempa09"]
 filename: haskell-es.hs
-lang: es-es
 ---
 
 Haskell fue diseñado como lenguaje de programación funcional práctico y puro. Es famoso por sus mónadas y su sistema de tipos, pero siempre regreso a él debido a su elegancia. Haskell hace la codificación una verdadera alegría para mí.

@@ -17,7 +17,6 @@ contributors:
 translators:
     - ["Camilo Garrido", "http://www.twitter.com/hirohope"]
     - ["Erick Bernal", "http://www.twitter.com/billowkib"]
-lang: es-es
 ---
 
 ```ruby

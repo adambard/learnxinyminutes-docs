@@ -8,7 +8,6 @@ contributors:
     - ["Claudson Martins", "http://github.com/claudsonm"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-lang: es-es
 ---
 
 MATLAB significa 'MATrix LABoratory'. Es un poderoso lenguaje de computación numérica comúnmente usado en ingeniería y matemáticas.

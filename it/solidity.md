@@ -9,7 +9,6 @@ contributors:
   - ["Patrick Collins", "https://gist.github.com/PatrickAlphaC"]
 translators:
     - ["Al", "http://github.com/al-ias"]
-lang: it-it
 ---
 
 Solidity permette di programmare su [Ethereum](https://www.ethereum.org/), una

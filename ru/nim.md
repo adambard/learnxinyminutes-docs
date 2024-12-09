@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Nomadic", "https://github.com/n0madic"]
     - ["dvska", "https://github.com/dvska"]
-lang: ru-ru
 ---
 
 Nim (ранее известный, как Nimrod) — язык программирования со статической

@@ -10,7 +10,6 @@ contributors:
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
 translators:
     - ["Ahmad Hegazy", "https://github.com/ahegazy"]
-lang: ar-ar
 filename: learnpython-ar.py
 ---
 

@@ -17,7 +17,6 @@ contributors:
   - ["Jake Faris", "https://github.com/farisj"]
 translators:
   - ["Oliver Vartiainen", "https://github.com/firoxer"]
-lang: fi-fi
 ---
 
 ```ruby

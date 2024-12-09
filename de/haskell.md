@@ -1,6 +1,5 @@
 ---
 language: Haskell
-lang: de-de
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:

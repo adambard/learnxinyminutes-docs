@@ -1,7 +1,6 @@
 ---
 language: JSON
 filename: learnjson-no.json
-lang: no-nb
 contributors:
   - ["Ole Mathias Heggem", "https://github.com/msbone"]
   - ["Anna Harren", "https://github.com/iirelu"]

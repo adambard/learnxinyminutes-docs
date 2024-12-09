@@ -6,7 +6,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
-lang: ru-ru
 ---
 
 Brainfuck (пишется маленькими буквами, кроме начала предложения) - это очень

@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Ivan Sala","http://github.com/slavni96"]
     - ["Tommaso Pifferi","http://github.com/neslinesli93"]
-lang: it-it
 ---
 
 Java è un linguaggio di programmazione orientato ad oggetti,

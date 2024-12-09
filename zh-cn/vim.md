@@ -6,7 +6,6 @@ contributors:
    - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
    - ["Jiang Haiyun", "https://github.com/haiiiiiyun"]
-lang: zh-cn
 ---
 
 

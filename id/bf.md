@@ -6,7 +6,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Muhammad Rifqi Fatchurrahman", "http://muhrifqii.github.io/"]
-lang: id-id
 ---
 
 Brainfuck (tidak dalam huruf kapital kecuali pada awal kalimat) adalah sebuah

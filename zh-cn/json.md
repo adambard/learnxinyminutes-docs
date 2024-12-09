@@ -5,7 +5,6 @@ contributors:
 translators:
   - ["Zach Zhang", "https://github.com/checkcheckzz"]
 filename: learnjson-cn.json
-lang: zh-cn
 ---
 
 JSON是一个极其简单的数据交换格式。按[json.org](https://json.org)说的，它对人类易读易写，对机器易解析易生成。

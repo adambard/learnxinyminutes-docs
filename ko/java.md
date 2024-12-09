@@ -6,7 +6,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
-lang: ko-kr
 ---
 
 자바는 일반 목적으로 사용할 수 있고 동시성을 지원하며, 클래스 기반의 객체지향 컴퓨터 프로그래밍 언어입니다.

@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Xuan (Sean) Luong", "https://github.com/xuanluong"]
-lang: vi-vn
 ---
 
 HTML là viết tắt của HyperText Markup Language (Ngôn ngữ đánh dấu siêu văn bản).

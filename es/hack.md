@@ -5,7 +5,6 @@ contributors:
     - ["David Lima", "https://github.com/davelima"]
 translators:
     - ["César Suárez", "https://github.com/csuarez"]
-lang: es-es
 filename: learnhack-es.hh
 ---
 

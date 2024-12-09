@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Tommaso Pifferi","http://github.com/neslinesli93"]
 filename: learnelixir-it.ex
-lang: it-it
 ---
 
 Elixir è un linguaggio funzionale moderno, costruito sulla VM Erlang.

@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Burhanuddin Baharuddin", "https://github.com/burhanloey"]
-lang: ms-my
 ---
 
 Sama seperti Lisp yang lain, sifat Clojure yang mempunyai [homoiconicity](https://en.wikipedia.org/wiki/Homoiconic)

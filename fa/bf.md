@@ -3,7 +3,6 @@ language: BF
 filename: bf-fa.bf
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
-lang: fa-ir
 ---
 
 <p dir='rtl'>برین فاک زبان برنامه نویسی تورینگ کامل بی نهایت ساده ایست که دارای فقط هشت</p>

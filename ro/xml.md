@@ -5,7 +5,6 @@ contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
     - ["Serban Constantin", "https://github.com/fuzzmz"]
-lang: ro-ro
 ---
 
 XML este un limbaj de markup ce are ca scop stocarea si transportul de date.

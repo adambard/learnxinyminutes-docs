@@ -5,7 +5,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["Gerson Lázaro", "https://gersonlazaro.com"]
-lang: es-es
 ---
 
 # Notaciones asintóticas

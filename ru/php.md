@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["SlaF", "https://github.com/SlaF"]
     - ["Corpsee", "https://github.com/corpsee"]
-lang: ru-ru
 filename: learnphp-ru.php
 ---
 

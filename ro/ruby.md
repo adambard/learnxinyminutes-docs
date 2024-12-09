@@ -10,7 +10,6 @@ contributors:
 translators:
   - ["Adrian Bordinc", "https://github.com/ellimist"]
 filename: learnruby-ro.rb
-lang: ro-ro
 ---
 
 ```ruby

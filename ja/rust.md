@@ -5,7 +5,6 @@ contributors:
 filename: learnrust-jp.rs
 translators:
     - ["Takashi Takeda", "https://github.com/Takashicc"]
-lang: ja-jp
 ---
 
 RustはMozilla Researchによって開発されたプログラミング言語です。

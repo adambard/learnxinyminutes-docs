@@ -4,7 +4,6 @@ contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
 translators:
     - ["Lucas Tadeu Teixeira", "http://ltt.me"]
-lang: pt-br
 filename: learn-emacs-lisp-pt.el
 ---
 

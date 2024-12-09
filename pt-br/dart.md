@@ -6,7 +6,6 @@ contributors:
     - ["Hélio Oliveira", "https://github.com/insign/"]
 translators:
     - ["Junior Damacena", "https://github.com/jdamacena/"]
-lang: pt-br
 ---
 
 Dart é uma novata no reino das linguagens de programação.

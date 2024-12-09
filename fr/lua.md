@@ -5,7 +5,6 @@ contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
 translators:
     - ["Roland Yonaba", "http://github.com/Yonaba"]
-lang: fr-fr
 ---
 
 ```lua

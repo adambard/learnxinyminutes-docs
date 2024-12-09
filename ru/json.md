@@ -6,7 +6,6 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
   - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
-lang: ru-ru
 ---
 
 JSON - это очень простой формат обмена данными, и это будет самый легкий

@@ -6,7 +6,6 @@ contributors:
     - ["Matt Kline", "https://github.com/mrkline"]
 translators:
     - ["Arnie97", "https://github.com/Arnie97"]
-lang: zh-cn
 ---
 
 C++是一种系统编程语言。用它的发明者，

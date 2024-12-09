@@ -6,7 +6,6 @@ translators:
     - ["Roberto R", "https://github.com/rrodriguze"]
 filename: learnfactor-es.factor
 
-lang: es-es
 ---
 Factor es un lenguaje moderno basado en la pila, basado en Forth, creado por
 Slava Pestov.

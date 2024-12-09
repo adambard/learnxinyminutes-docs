@@ -4,7 +4,6 @@ contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
     - ["Abner Chou", "http://cn.abnerchou.me"]
-lang: zh-cn
 filename: learnvisualbasic-cn.vb
 ---
 

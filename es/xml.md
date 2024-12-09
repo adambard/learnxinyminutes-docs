@@ -5,7 +5,6 @@ contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
   - ["Daniel Zendejas", "https://github.com/DanielZendejas"]
-lang: es-es
 ---
 XML es un lenguaje diseñado para guardar y transportar datos
 

@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["tx23", "https://github.com/tx23"]
 filename: CMake-cn
-lang: zh-cn
 ---
 
 CMake 是一个跨平台且开源的自动化构建系统工具。通过该工具你可以对你的源代码进行测试、编译或创建安装包。

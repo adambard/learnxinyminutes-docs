@@ -1,6 +1,5 @@
 ---
 language: Hack
-lang: de-de
 contributors:
     - ["Stephen Holdaway", "https://github.com/stecman"]
     - ["David Lima", "https://github.com/davelima"]

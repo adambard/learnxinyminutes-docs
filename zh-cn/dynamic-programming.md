@@ -5,7 +5,6 @@ contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
 translators:
    - ["EtaoinWu", "https://github.com/EtaoinWu"]
-lang: zh-cn
 ---
 
 # 动态规划

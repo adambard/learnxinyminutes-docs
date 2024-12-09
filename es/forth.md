@@ -4,7 +4,6 @@ contributors:
     - ["Horse M.D.", "http://github.com/HorseMD/"]
 translators:
     - ["Zach Larsen", "http://zachariahlarsen.com/"]
-lang: es-es
 filename: learnforth-es.fs
 ---
 

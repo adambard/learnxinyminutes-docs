@@ -1,6 +1,5 @@
 ---
 language: YAML
-lang: es-es
 filename: learnyaml-es.yaml
 contributors:
   - ["Leigh Brenecki", "https://github.com/adambrenecki"]

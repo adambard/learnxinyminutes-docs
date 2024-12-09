@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Razican", "https://www.razican.com/"]
 filename: learnrust-es.rs
-lang: es-es
 ---
 
 Rust es un lenguaje de programación desarrollado por Mozzilla Research. Rust

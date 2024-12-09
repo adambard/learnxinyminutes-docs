@@ -5,7 +5,6 @@ contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]
 translators:
     - ["Ugo Chirico", "https://github.com/ugochirico"]
-lang: it-it
 ---
 
 Logtalk è un linguaggio di programmazione logica orientata agli oggetti che estende il linguaggio Prolog con le moderne tecniche di Object-Oriented Programming quali incapsulamento, ereditarietà e riutilizzo del codice, senza compromettere le caratteristiche di programmazione dichiarativa del Prolog. Logtalk è implementato in codice altamente portabile e utilizza i più moderni standard di conformità del Prolog rispetto al compilatore backend.

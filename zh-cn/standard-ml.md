@@ -8,7 +8,6 @@ contributors:
 filename: standard-ml-cn.sml
 translators:
    - ["Buqian Zheng", "https://github.com/zhengbuqian"]
-lang: zh-cn
 ---
 
 Standard ML是一门拥有类型推断和一些副作用的函数式编程语言。学习Standard ML的一些

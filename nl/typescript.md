@@ -5,7 +5,6 @@ contributors:
 filename: learntypescript-nl.ts
 translators:
   - ["Niels van Velzen", "https://nielsvanvelzen.me"]
-lang: nl-nl
 ---
 
 TypeScript is een taal gericht op het versoepelen van de ontwikkeling van

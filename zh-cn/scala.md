@@ -9,7 +9,6 @@ translators:
     - ["Peiyong Lin", ""]
     - ["Jinchang Ye", "http://github.com/alwayswithme"]
     - ["Guodong Qu", "https://github.com/jasonqu"]
-lang: zh-cn
 ---
 
 Scala - 一门可拓展的语言

@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Enno Nagel", "https://github.com/konfekt"]
 filename: learnvisualbasic-de.vb
-lang: de-de
 ---
 
 ```vbnet

@@ -6,7 +6,6 @@ contributors:
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
 translators:
     - ["Ale Mohamad", "http://twitter.com/alemohamad"]
-lang: es-es
 ---
 
 Las personas que usan Ruby en general tienen una tendencia a instalar diferentes

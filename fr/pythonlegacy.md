@@ -6,7 +6,6 @@ contributors:
 translators:
   - ["Sylvain Zyssman", "https://github.com/sylzys"]
   - ["Nami-Doc", "https://github.com/Nami-Doc"]
-lang: fr-fr
 ---
 
 Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des langages de programmation les plus populaires.

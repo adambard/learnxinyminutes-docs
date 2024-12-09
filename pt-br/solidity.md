@@ -6,7 +6,6 @@ contributors:
   - ["Joseph Chow", ""]
 translators:
     - ["João Farias", "http://thatsabug.com/"]
-lang: pt-br
 ---
 
 Solidity permite você programar para a [Ethereum](https://www.ethereum.org/),

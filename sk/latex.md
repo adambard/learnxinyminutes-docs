@@ -6,7 +6,6 @@ contributors:
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
 translators:
     - ["Terka Slanináková", "http://github.com/TerkaSlan"]
-lang: sk-sk
 filename: learn-latex-sk.tex
 ---
 

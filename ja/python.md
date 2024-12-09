@@ -13,7 +13,6 @@ translators:
     - ["Ryota Kayanuma", "https://github.com/PicoSushi"]
     - ["Kenryu Shibata", "https://github.com/kenryuS"]
 filename: learnpython-jp.py
-lang: ja-jp
 ---
 
 90年代の初め、Guido van RossumによってPythonは作成されました。現在となっては、最も有名な言語の1つです。

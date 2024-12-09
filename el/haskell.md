@@ -2,7 +2,6 @@
 language: Haskell
 contributors:
     - ["Miltiadis Stouras", "https://github.com/mstou"]
-lang: el-gr
 filename: learnhaskell-gr.hs
 ---
 

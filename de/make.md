@@ -7,7 +7,6 @@ contributors:
 translators:
   - ["Martin Schimandl", "https://github.com/Git-Jiro"]
 filename: Makefile-de
-lang: de-de
 ---
 
 Eine Makefile definiert einen Graphen von Regeln um ein Ziel (oder Ziele)

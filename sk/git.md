@@ -9,7 +9,6 @@ contributors:
     - ["Andrew Taylor", "http://github.com/andrewjt71"]
 translators:
     - ["Terka Slanináková", "http://github.com/TerkaSlan"]
-lang: sk-sk
 filename: LearnGit-sk.txt
 ---
 

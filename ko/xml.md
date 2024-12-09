@@ -7,7 +7,6 @@ contributors:
   - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
 translators:
   - ["Wooseop Kim", "https://github.com/linterpreteur"]
-lang: ko-kr
 ---
 
 XML은 데이터를 저장하고 전송하기 위해 설계된 마크업 언어입니다. 인간과 기계 모두가 읽을 수 있도록 만들어졌습니다.

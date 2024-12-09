@@ -8,7 +8,6 @@ translators:
     - ["Max Truhonin", "https://vk.com/maximmax42"]
     - ["Konstantin Gromyko", "https://vk.com/id0x1765d79"]
     - ["Stanislav Gromov", "https://vk.com/id156354391"]
-lang: ru-ru
 ---
 
 ```lua

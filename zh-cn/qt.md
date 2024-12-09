@@ -7,7 +7,6 @@ contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]
 translators:
     - ["GengchenXU", "https://github.com/GengchenXU"]
-lang: zh-cn
     
 ---
 

@@ -6,7 +6,6 @@ contributors:
 - [Suhas SG, 'https://github.com/jargnar']
 translators:
 - [haru, 'https://haru52.com/']
-lang: ja-jp
 ---
 
 YAMLはデータのシリアライズ用言語で、

@@ -13,7 +13,6 @@ contributors:
 filename: LearnBash-ms.sh
 translators:
     - ["hack1m", "https://github.com/hack1m"]
-lang: ms-my   
 ---
 
 Bash adalah nama daripada unix shell, yang mana telah diagihkan sebagai shell untuk sistem operasi GNU dan sebagai shell lalai pada Linux dan macOS. Hampir semua contoh di bawah boleh menjadi sebahagian daripada skrip shell atau dijalankan terus dalam shell.

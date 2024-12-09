@@ -7,7 +7,6 @@ filename: javascript-fr.js
 translators:
     - ["@nbrugneaux", "https://nicolasbrugneaux.me"]
     - ["Michel Antoine", "https://github.com/antoin-m"]
-lang: fr-fr
 ---
 
 JavaScript a été créé par Brendan Eich, travaillant alors a Netscape, en 1995.

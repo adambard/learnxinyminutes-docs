@@ -6,7 +6,6 @@ contributors:
      - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:
     - ["GannonTdW", "https://github.com/GannonTdW"]
-lang: fr-fr
 
 ---
 

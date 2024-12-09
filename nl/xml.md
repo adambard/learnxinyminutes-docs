@@ -5,7 +5,6 @@ contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
   - ["Frank van Gemeren", "https://github.com/frvge"]
-lang: nl-nl
 ---
 
 XML is een markuptaal die ontwikkeld is om data in te bewaren en data mee te 

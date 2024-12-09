@@ -5,7 +5,6 @@ contributors:
   - ["Jason Yeo", "https://github.com/jsyeo"]
 translators:
     - ["Gino Amaury", "https://github.com/ginoamaury"]
-lang: es-es 
 ---
 
 La notación de datos extensible (Extensible Data Notation (EDN)) es un formato para serializar los datos.

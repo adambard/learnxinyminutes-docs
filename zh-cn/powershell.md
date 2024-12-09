@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Feng Gao", "https://github.com/gaufung"]
 filename: LearnPowershell-cn.ps1
-lang: zh-cn
 ---
 
 PowerShell 是 Windows 平台下的脚本语言同时也是配置管理框架，它是建立在微软 .Net Framework 之上，Windows 7 以及之后版本都内置 Poweshell。下面的示例中都是 PoweShell 脚本的一部分或者直接能够在 Shell 交互窗口中执行。

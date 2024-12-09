@@ -5,7 +5,6 @@ contributors:
 filename: learnself-es.self
 translators:
     - ["Damaso Sanoja", "https://github.com/damasosanoja"]
-lang: es-es
 ---
 
 Self es un lenguaje OO basado en prototipo rápido que corre en su propio vm JIT. La mayoría del desarrollo se hace a través de la interacción con objetos vivos en un entorno de desarrollo visual llamado *morphic* que tiene integrado navegador y depurador.

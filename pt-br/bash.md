@@ -10,7 +10,6 @@ contributors:
 translators:
     - ["Davidson Mizael", "https://github.com/davidsonmizael"]
 filename: LearnBash-pt_br.sh
-lang: pt-br
 ---
 
 Tutorial de shell em português

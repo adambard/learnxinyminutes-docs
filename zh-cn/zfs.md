@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Alan Cheng", "https://github.com/kedaio"]
 filename: LearnZfs-cn.txt
-lang: zh-cn
 ---
 
 [ZFS](http://open-zfs.org/wiki/Main_Page)

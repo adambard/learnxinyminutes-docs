@@ -11,7 +11,6 @@ contributors:
 filename: LearnJava-id.java
 translators:
   - ["Ahmad Zafrullah", "https://github.com/23Pstars"]
-lang: id-id
 ---
 
 Java adalah bahasa pemrograman yang memiliki tujuan umum dan berorientasi kelas dan objek.

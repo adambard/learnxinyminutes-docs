@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["satory-ra", "https://github.com/satory-ra"]
 filename: learnvisualbasic-ru.vb
-lang: ru-ru
 ---
 
 ```vbnet

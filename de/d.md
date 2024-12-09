@@ -5,7 +5,6 @@ contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 translators:
     - ["Dominik Süß", "www.thesuess.me"]
-lang: de-de
 ---
 
 ```d

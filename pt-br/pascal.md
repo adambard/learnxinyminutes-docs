@@ -7,7 +7,6 @@ contributors:
     - ["Raul Almeida", "https://github.com/almeidaraul"]
 translators:
     - ["Raul Almeida", "https://github.com/almeidaraul"]
-lang: pt-br
 ---
 
 

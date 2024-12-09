@@ -5,7 +5,6 @@ contributors:
     - ["Sachin Divekar", "http://github.com/ssd532"]
 translators:
     - ["Th3G33k", "https://github.com/Th3G33k"]
-lang: fr-fr
 
 ---
 

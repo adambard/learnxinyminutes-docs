@@ -6,7 +6,6 @@ contributors:
     - ["kalinn", "http://github.com/kalinn"]
 translators:
     - ["Marcel Ribeiro-Dantas", "http://github.com/mribeirodantas"]
-lang: pt-br    
 filename: learnr-pt.r
 ---
 

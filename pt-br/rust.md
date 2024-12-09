@@ -3,7 +3,6 @@ language: Rust
 filename: rust-pt.rs
 contributors:
     - ["Paulo Henrique Rodrigues Pinheiro", "https://about.me/paulohrpinheiro"]
-lang: pt-br
 
 ---
 

@@ -5,7 +5,6 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Gino Amaury", "https://github.com/ginoamaury"]
-lang: es-es
 ---
 
 HTML significa Lenguaje de marcado de hipertexto (HyperText Markup Language).

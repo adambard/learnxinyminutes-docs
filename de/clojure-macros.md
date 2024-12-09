@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 Wie mit allen Lisps besitzt auch Clojure die inhärente [Homoikonizität](https://en.wikipedia.org/wiki/Homoiconic),

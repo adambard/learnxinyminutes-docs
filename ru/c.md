@@ -6,7 +6,6 @@ contributors:
     - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
 translators:
     - ["Evlogy Sutormin", "http://evlogii.com"]
-lang: ru-ru
 ---
 
 Что ж, Си всё ещё является лидером среди современных высокопроизводительных языков.

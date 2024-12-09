@@ -4,7 +4,6 @@ contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators: 
     - ["Alan Jeon", "https://github.com/skyisle"]
-lang: ko-kr
 filename: LearnKotlin-kr.kt
 ---
 

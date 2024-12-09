@@ -5,7 +5,6 @@ contributors:
   - ["Alois de Gouvello", "https://github.com/aloisdg"]
 translators:
   - ["Christian Grasso", "https://grasso.io"]
-lang: it-it
 ---
 
 TOML è l'acronimo di _Tom's Obvious, Minimal Language_. È un linguaggio per la

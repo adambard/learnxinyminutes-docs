@@ -5,7 +5,6 @@ contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]
 translators:
     - ["vsraptor", "https://github.com/vsraptor"]
-lang: bg-bg
 
 ---
 

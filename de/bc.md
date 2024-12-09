@@ -3,7 +3,6 @@ language: bc
 contributors:
     - ["caminsha", "https://github.com/caminsha"]
 filename: learnbc-de.bc
-lang: de-de
 ---
 
 ```bc

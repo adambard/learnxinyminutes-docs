@@ -5,7 +5,6 @@ contributors:
     - ["Sachin Divekar", "http://github.com/ssd532"]
 translators:
     - ["Christian Grasso", "https://grasso.io"]
-lang: it-it
 ---
 
 Un'espressione regolare (regex o regexp in breve) è una speciale stringa

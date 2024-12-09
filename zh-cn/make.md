@@ -7,7 +7,6 @@ contributors:
 translators:
 - ["Jichao Ouyang", "https://github.com/jcouyang"]
 filename: Makefile-cn
-lang: zh-cn
 ---
 
 Makefile 用于定义如何创建目标文件, 比如如何从源码到可执行文件. 创建这一工具的目标是

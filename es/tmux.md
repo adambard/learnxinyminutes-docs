@@ -6,7 +6,6 @@ contributors:
 filename: LearnTmux-es.txt
 translators:
     - ["Damaso Sanoja", "https://github.com/damasosanoja"]
-lang: es-es
 ---
 
 [tmux](https://github.com/tmux/tmux)

@@ -5,7 +5,6 @@ contributors:
 - ["Aitor Escolar", "https://github.com/aiescola"]
 translators:
 - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-lang: es-es
 filename: LearnKotlin-es.kt
 ---
 

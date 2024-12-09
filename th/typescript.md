@@ -4,7 +4,6 @@ contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Worajedt Sitthidumrong", "https://bitbucket.org/wrj"]
 filename: learntypescript-th.ts
-lang: th-th
 ---
 
 TypeScript เป็นภาษาที่มีเป้าหมายเพื่อทำให้การพัฒนาซอฟต์แวร์ขนาดใหญ่ด้วย JavaScript ทำได้ง่ายขึ้น โดยที่ TypeScript ได้เพิ่มแนวคิดที่พบทั่วไป อาทิ classes, modules, interfaces, generics และ static typing (ไม่บังคับ) เข้าไปในภาษา JavaScript ดังนั้น TypeScript ก็เลยเป็น Super Set ของ JavaScript อีกที โค้ด JavaScript ทุกส่วน ก็คือโค้ดที่ทำงานได้ถูกต้องใน TypeScript ทำให้เราเพิ่ม TypeScript เข้าไปใช้ในโปรเจคการพัฒนาของเราได้ไม่ยากเลย เพราะ TypeScript คอมไพล์ผลลัพธ์ออกมาเป็น JavaScript ในท้ายสุดอยู่ดี

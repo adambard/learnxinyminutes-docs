@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["kultprok", "http:/www.kulturproktologie.de"]
 filename: learnpythonlegacy-de.py
-lang: de-de
 ---
 
 Anmerkungen des ursprünglichen Autors:

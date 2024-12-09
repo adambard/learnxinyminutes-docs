@@ -5,7 +5,6 @@ contributors:
   - ["Alois de Gouvello", "https://github.com/aloisdg"]
 translators:
   - ["Adaías Magdiel", "https://adaiasmagdiel.com/"]
-lang: pt-br
 ---
 
 TOML significa Tom's Obvious, Minimal Language. É uma linguagem de serialização de dados projetada para ser um formato de arquivo de configuração mínimo que é fácil de ler devido à semântica óbvia.

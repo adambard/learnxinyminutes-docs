@@ -6,7 +6,6 @@ contributors:
   - ["Claudio Busatto", "http://github.com/cjcbusatto"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-lang: pt-br
 filename: learncoffeescript-pt.coffee
 ---
 

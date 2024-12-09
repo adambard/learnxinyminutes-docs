@@ -1,7 +1,6 @@
 ---
 language: Kotlin
 filename: LearnKotlin-ru.kt
-lang: ru-ru
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators:

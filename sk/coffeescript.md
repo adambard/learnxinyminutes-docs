@@ -5,7 +5,6 @@ contributors:
   - ["Xavier Yao", "http://github.com/xavieryao"]
 translators:
   - ["Juraj Kostolanský", "http://www.kostolansky.sk"]
-lang: sk-sk
 filename: coffeescript-sk.coffee
 ---
 

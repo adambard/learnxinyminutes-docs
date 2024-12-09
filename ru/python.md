@@ -1,6 +1,5 @@
 ---
 language: Python
-lang: ru-ru
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Steven Basart", "http://github.com/xksteven"]

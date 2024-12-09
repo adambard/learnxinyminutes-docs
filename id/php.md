@@ -7,7 +7,6 @@ filename: learnphp-id.php
 translators:
   - ["Ahmad Zafrullah", "https://github.com/23Pstars"]
   - ["Cendy", "https://cendy.co"]
-lang: id-id
 ---
 
 Dokumen ini menjelaskan tentang PHP5 keatas.

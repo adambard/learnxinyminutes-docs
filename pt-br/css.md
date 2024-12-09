@@ -11,7 +11,6 @@ translators:
     - ["Adaías Magdiel", "https://adaiasmagdiel.com/"]
     - ["Gabriel Gomes", "https://github.com/gabrielgomesferraz"]
     - ["Gabriele Luz", "https://github.com/gabrieleluz"]
-lang: pt-br
 ---
 
 Páginas web são feitas utilizando HTML para demarcar o conteúdo.

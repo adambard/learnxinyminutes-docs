@@ -4,7 +4,6 @@ contributors:
     - ["Btup"]
 translators:
     - ["David Lima", "https://github.com/davelima"]
-lang: pt-br
 filename: learnbc-pt.bc
 ---
 ```bc

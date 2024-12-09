@@ -7,7 +7,6 @@ translators:
     - ["Wooseop Kim", "https://github.com/linterpreteur"]
     - ["Yeongjae Jang", "https://github.com/Liberatedwinner"]
 filename: LearnVim-kr.txt
-lang: ko-kr
 ---
 
 [Vim](http://www.vim.org)

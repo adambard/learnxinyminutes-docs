@@ -1,7 +1,6 @@
 ---
 
 language: Racket
-lang: zh-cn
 filename: learnracket-zh.rkt
 contributors:
   - ["th3rac25", "https://github.com/voila"]

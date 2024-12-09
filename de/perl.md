@@ -5,7 +5,6 @@ contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
 translators:
     - ["Martin Schimandl", "http://github.com/Git-Jiro"]
-lang: de-de
 ---
 
 Perl ist eine sehr mächtige, funktionsreiche Programmiersprache mit über 25 Jahren Entwicklungsgeschichte.

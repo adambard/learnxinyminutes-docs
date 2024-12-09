@@ -7,7 +7,6 @@ contributors:
   - ["Claudson Martins", "https://github.com/claudsonm"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 [Paren](https://bitbucket.org/ktg/paren) ist ein Dialekt von Lisp.

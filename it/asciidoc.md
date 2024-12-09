@@ -5,7 +5,6 @@ contributors:
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
 translators:
     - ["Ale46", "https://github.com/ale46"]
-lang: it-it
 filename: asciidoc-it.adoc
 ---
 

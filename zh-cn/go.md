@@ -1,6 +1,5 @@
 ---
 language: Go
-lang: zh-cn
 filename: learngo-cn.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]

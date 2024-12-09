@@ -6,7 +6,6 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["lyuehh", "https://github.com/lyuehh"]
-lang: zh-cn
 
 ---
 

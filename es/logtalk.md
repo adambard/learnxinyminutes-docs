@@ -4,7 +4,6 @@ filename: learnlogtalk.lgt
 contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]
     - ["Adrián Arroyo Calle", "https://adrianistan.eu"]
-lang: es-es
 ---
 
 Logtalk nació en 1998 debido a los problemas de Prolog al escribir aplicaciones grandes. Diseñado por Paulo Moura, se trata de acercar Smalltalk y Prolog. De este modo el elemento fundamental de Logtalk serán los objetos, no las clases. A través de objetos podremos hacer clases si es lo que deseamos, o podemos usarlos como prototipos. Logtalk se ejecuta por encima de un sistema Prolog, sobre todo aquellos que implementen el estándar ISO Prolog. Actualmente Logtalk soporta: B-Prolog, Ciao Prolog, CxProlog, ECLiPSe, GNU Prolog, JIProlog, LVM, Quintus Prolog, Scryer Prolog, SICStus Prolog, SWI Prolog, Tau Prolog, Trealla Prolog, XSB y YAP. El código 100% Logtalk debería ser portable entre estos sistemas.

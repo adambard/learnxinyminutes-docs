@@ -5,7 +5,6 @@ contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
     - ["Luis Custodio", "http://luiscustodio.com"]
-lang: pt-br
 filename: LearnTmux-pt.txt
 ---
 

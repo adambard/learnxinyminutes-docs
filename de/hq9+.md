@@ -5,7 +5,6 @@ contributors:
     - ["Alexey Nazaroff", "https://github.com/rogaven"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 HQ9+ ist eine Parodie auf esoterische Programmiersprachen und wurde von Cliff Biffle kreiert.

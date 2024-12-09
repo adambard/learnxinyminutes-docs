@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Anne-Catherine Dehier", "https://github.com/spellart"]
 filename: learnscala-fr.scala
-lang: fr-fr
 ---
 
 ### Scala - le langage évolutif

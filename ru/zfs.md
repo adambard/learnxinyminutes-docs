@@ -7,7 +7,6 @@ contributors:
 filename: LearnZfs-ru.txt
 translators:
     - ["A1EF", "https://github.com/A1EF"]
-lang: ru-ru
 ---
 
 

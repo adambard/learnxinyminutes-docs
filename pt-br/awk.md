@@ -6,7 +6,6 @@ contributors:
     - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:
     - ["Paulo Henrique Rodrigues Pinheiro", "https://github.com/paulohrpinheiro"]
-lang: pt-br
 
 ---
 

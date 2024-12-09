@@ -7,7 +7,6 @@ contributors:
     - ["Dan Book", "http://github.com/Grinnz"]
 translators:
     - ["Michał Kupczyński", "http://github.com/ukoms"]
-lang: pl-pl
 
 ---
 

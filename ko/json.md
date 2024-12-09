@@ -8,7 +8,6 @@ contributors:
   - ["Michael Neth", "https://github.com/infernocloud"]
 translators:
   - ["Wooseop Kim", "https://github.com/linterpreteur"]
-lang: ko-kr
 ---
 
 JSON은 아주 간단한 데이터 교환 포맷입니다. [json.org](http://json.org/json-ko.html)에 의하면, 사람이 읽고 쓰기 쉬우며 기계가 분석하고 생성하기 쉽습니다.

@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["Rasendran Kirushan", "https://github.com/kirushanr"]
 filename: learncss-ta.css
-lang: ta-in
 ---
 
 

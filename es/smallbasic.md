@@ -5,7 +5,6 @@ contributors:
     - ["Chris Warren-Smith", "http://smallbasic.sourceforge.net"]
 translators:
     - ["José Juan Hernández García", "http://jjuanhdez.es"]
-lang: es-es
 ---
 
 ## Acerca de

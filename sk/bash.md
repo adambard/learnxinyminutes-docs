@@ -12,7 +12,6 @@ contributors:
     - ["Etan Reisner", "https://github.com/deryni"]
 translators:
     - ["Juraj Kostolanský", "http://www.kostolansky.sk"]
-lang: sk-sk
 filename: LearnBash-sk.sh
 ---
 

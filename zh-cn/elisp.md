@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
 filename: learn-emacs-lisp-zh.el
-lang: zh-cn
 ---
 
 ```scheme

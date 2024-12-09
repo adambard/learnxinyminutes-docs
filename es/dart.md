@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Jorge Antonio Atempa", "http://www.twitter.com/atempa09"]
 filename: dart-es.dart
-lang: es-es
 ---
 
 Dart es un recién llegado al ámbito de los lenguajes de programación.

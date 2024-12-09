@@ -6,7 +6,6 @@ contributors:
 filename: learnpythonlegacy-ko.py
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
-lang: ko-kr
 ---
 
 파이썬은 귀도 반 로섬이 90년대에 만들었습니다. 파이썬은 현존하는 널리 사용되는 언어 중 하나입니다.

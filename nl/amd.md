@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Reinoud Kruithof", "https://github.com/reinoudk"]
 filename: learnamd-nl.js
-lang: nl-nl
 ---
 
 ## Aan de slag met AMD

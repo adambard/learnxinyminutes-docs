@@ -6,7 +6,6 @@ contributors:
 filename: coffeescript-ms.coffee
 translators:
     - ["hack1m", "https://github.com/hack1m"]
-lang: ms-my
 ---
 
 CoffeeScript adalah bahasa kecil yang menyusun/kompil satu-per-satu menjadi setara JavaScript, dan tidak ada interpretasi di runtime.

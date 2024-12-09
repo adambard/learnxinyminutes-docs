@@ -6,7 +6,6 @@ contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:
     - ["Adrian Rocamora", "https://github.com/adrianrocamora"]
-lang: es-es
 ---
 
 **Qt** es un sistema altamente reconocido que permite desarrollar software multiplataforma que puede correr en diferentes entornos de software y hardware con pocos o ningún cambio. Aun así conserva la velocidad y poder de una aplicación nativa. **Qt** fue originalmente escrito en *C++*.

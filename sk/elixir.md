@@ -6,7 +6,6 @@ contributors:
     - ["Ryan Plant", "https://github.com/ryanplant-au"]
 translators:
   - ["Peter Szatmary", "https://github.com/peterszatmary"]
-lang: sk-sk
 filename: learnelixir-sk.ex
 ---
 

@@ -3,7 +3,6 @@ language: Hjson
 filename: learnhjson.hjson
 contributors:
   - ["MrTeferi", "https://github.com/MrTeferi"]
-lang: en-us
 ---
 
 Hjson is an attempt to make [JSON](https://learnxinyminutes.com/docs/json/) more human readable.

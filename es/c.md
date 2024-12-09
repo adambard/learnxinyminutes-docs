@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Francisco García", "http://flaskbreaker.tumblr.com/"]
     - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
-lang: es-es
 ---
 
 ¡Ah!, C. Aun hoy en día sigue siendo el lenguaje por excelencia de la

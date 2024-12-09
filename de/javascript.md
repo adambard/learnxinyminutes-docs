@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["ggb", "http://www.ideen-und-soehne.de"]
 filename: learnjavascript-de.js
-lang: de-de
 ---
 
 JavaScript wurde im Jahr 1995 von Brendan Eich bei Netscape entwickelt. Ursprünglich war es als einfachere Skriptsprache für Websites gedacht, ergänzend zu Java, das für komplexere Webanwendungen verwendet wird. Die enge Integration in Websites und der in Browser eingebaute Support der Sprache haben dafür gesorgt, dass JavaScript weit häufiger für Web-Frontends verwendet wird als Java.

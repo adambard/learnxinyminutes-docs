@@ -6,7 +6,6 @@ contributors:
     - ["Divay Prakash", "http://github.com/divayprakash"]
 translators:
     - ["pru-mike", "http://github.com/pru-mike"]
-lang: ru-ru
 ---
 
 # О-символика

@@ -9,7 +9,6 @@ contributors:
   - ["Keyan Zhang", "https://github.com/keyanzhang"]
 translators:
     - ["Carlos Roman", "https://github.com/carlochess"]
-lang: es-es
 ---
 Racket es un lenguaje de propósito general, multiparadigma que hace parte de la familia Lisp/Scheme.
 

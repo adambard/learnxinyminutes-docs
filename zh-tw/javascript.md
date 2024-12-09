@@ -7,7 +7,6 @@ contributors:
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Woody Chang", "https://github.com/kazettique"]
-lang: zh-tw
 ---
 
 JavaScript 是由網景公司（Netscape）的布蘭登·艾克（Brendan Eich）於 1995 年創建的。它最初被設計為一種更簡單的網站腳本語言，用於補足 Java 在更複雜的網路應用程式中使用，但由於它與網頁的高度整合，以及瀏覽器對 JavaScript 的原生支援，使得它在網頁前端的應用遠比 Java 更加普及。

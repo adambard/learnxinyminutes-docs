@@ -6,7 +6,6 @@ contributors:
     - ["Andre Polykanine", "https://github.com/Oire"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 RST ist ein Dateiformat, das von der Python Community entwickelt wurde,

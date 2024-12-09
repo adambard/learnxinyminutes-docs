@@ -6,7 +6,6 @@ contributors:
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
 translators:
     - ["Cristian Achille", "http://github.com/blackdev1l/"]
-lang: it-it
 ---
 
 Generalmente chi usa ruby ha l'esigenza di avere differenti versioni di Ruby

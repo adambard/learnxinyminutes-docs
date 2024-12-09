@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["Artem Medeusheyev", "https://github.com/armed"]
     - ["Valery Cherepanov", "https://github.com/qumeric"]
-lang: ru-ru
 ---
 
 Go - это язык общего назначения, целью которого является удобство, простота,

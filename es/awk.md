@@ -6,7 +6,6 @@ contributors:
     - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:
     - ["Hugo Guillén-Ramírez", "http://github.com/HugoGuillen"]
-lang: es-es
 ---
 
 AWK es una herramienta estándar en cada sistema UNIX compatible con POSIX.

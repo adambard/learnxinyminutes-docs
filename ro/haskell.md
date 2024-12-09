@@ -4,7 +4,6 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
-lang: ro-ro
 filename: haskell-ro.hs
 ---
 

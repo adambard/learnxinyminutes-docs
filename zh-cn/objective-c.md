@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["Gaoang Chen", "https://github.com/chengaoang"]
 filename: LearnObjectiveC-cn.m
-lang: zh-cn
 ---
 Objective-C（Objective-C 2.0）是苹果公司用于 macOS 和 iOS 操作系统以及相应的框架 Cocoa 和 Cocoa Touch 的主要编程语言。
 它是一种面向对象的通用编程语言，为 C 语言添加了 Smalltalk 风格的消息传递机制。

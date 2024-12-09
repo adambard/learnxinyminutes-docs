@@ -5,7 +5,6 @@ contributors:
     - ["Chris Warren-Smith", "http://smallbasic.sourceforge.net"]
 translators:
     - ["Rizky Luthfianto", "http://github.com/rilut"]
-lang: id-id
 ---
 
 ## Tentang

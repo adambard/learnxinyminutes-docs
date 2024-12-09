@@ -7,7 +7,6 @@ contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de    
 ---
 
 **Qt** ist ein weithin bekanntes Framework zum Entwickeln von Cross-Platform Software,

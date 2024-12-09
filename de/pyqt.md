@@ -6,7 +6,6 @@ contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 **Qt** ist ein weit bekanntes Framework, mit dem man plattformunabhängige Programme schreiben kann,

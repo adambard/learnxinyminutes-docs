@@ -11,7 +11,6 @@ contributors:
 translators:
     - ["Kenryu Shibata", "https://github.com/kenryuS"]
 filename: learncss-jp.css
-lang: ja-jp
 ---
 
 ウェブサイトはHTMLでページの構造を指定します。

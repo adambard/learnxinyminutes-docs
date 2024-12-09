@@ -5,7 +5,6 @@ contributors:
     - ["Bruno Alano", "https://github.com/brunoalano"]
 translators:
     - ["Mario Stabile", "https://github.com/mariostabile1"]
-lang: it-it
 ---
 
 CMake è un build tool multi-piattaforma e open-source. Questo tool ti permette di testare, compilare e creare pacchetti del tuo codice sorgente.

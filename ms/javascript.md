@@ -6,7 +6,6 @@ contributors:
 filename: javascript-ms.js
 translators:
     - ["abdalim", "https://github.com/abdalim"]
-lang: ms-my
 ---
 
 JavaScript dicipta oleh Brendan Eich dari Netscape pada 1995. Pada awalnya, ia

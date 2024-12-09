@@ -7,7 +7,6 @@ contributors:
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
-lang: es-es
 filename: learnswift-es.swift
 ---
 

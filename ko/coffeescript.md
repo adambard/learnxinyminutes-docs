@@ -6,7 +6,6 @@ contributors:
 filename: coffeescript-kr.coffee
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
-lang: ko-kr
 ---
 
 ``` coffeescript

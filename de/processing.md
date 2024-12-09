@@ -6,7 +6,6 @@ contributors:
     - ["Divay Prakash", "https://github.com/divayprakash"]
 translators:
   - ["caminsha", "https://github.com/caminsha"]
-lang: de-de
 ---
 
 ## Einführung

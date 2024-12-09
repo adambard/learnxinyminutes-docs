@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Suzane Sant Ana", "http://github.com/suuuzi"]
     - ["Rodrigo Muniz", "http://github.com/muniz95"]
-lang: pt-br
 ---
 
 Brainfuck (em letras minúsculas, exceto no início de frases) é uma linguagem de

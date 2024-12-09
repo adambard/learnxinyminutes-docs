@@ -8,7 +8,6 @@ contributors:
   - ["Michael Neth", "https://github.com/infernocloud"]
 translators:
   - ["Michał Mitrosz", "https://github.com/Voltinus"]
-lang: pl-pl
 filename: learnjson-pl.json
 ---
 

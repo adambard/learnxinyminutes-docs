@@ -9,7 +9,6 @@ translators:
     - ["Elton Viana", "https://github.com/eltonvs"]
     - ["Cássio Böck", "https://github.com/cassiobsilva"]
     - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
-lang: pt-br
 ---
 
 Ah, C. Ainda é **a** linguagem de computação de alta performance.

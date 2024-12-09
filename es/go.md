@@ -1,7 +1,6 @@
 ---
 category: language
 language: Go
-lang: es-es
 filename: learngo-es.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]

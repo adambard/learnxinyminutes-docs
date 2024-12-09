@@ -6,7 +6,6 @@ contributors:
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
 translators:
     - ["Liu Yihua", "https://github.com/yihuajack"]
-lang: zh-cn
 ---
 
 AsciiDoc 是一种类似于 Markdown 的标记语言，它可以用来写从书到博客的任何东西。它由 Stuart Rackham 在 2002 年发明，它的语言很简单，但同时也可以有丰富的定制。

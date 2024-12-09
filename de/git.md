@@ -5,7 +5,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["kultprok", "http://www.kulturproktologie.de"]
-lang: de-de
 ---
 
 Git ist eine verteilte Versions- und Quellcodeverwaltung. 

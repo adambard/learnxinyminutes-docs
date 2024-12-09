@@ -5,7 +5,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["netpyoung", "http://netpyoung.github.io/"]
-lang: ko-kr
 ---
 
 Clojure는 Java 가상머신을 위해 개발된 Lisp 계통의 언어입니다

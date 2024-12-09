@@ -5,7 +5,6 @@ contributors:
   - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
   - ["Hiva Zarei", "https://github.com/hivazarei"]
-lang: fa-ir
 ---
 
 <p dir="rtl">HTML مخفف كلمه ی Hyper Text Markup Language می باشد.</p>

@@ -5,7 +5,6 @@ contributors:
     - ["Alexey Nazaroff", "https://github.com/rogaven"]
 translators:
     - ["Roberto R", "https://github.com/rrodriguze"]
-lang: es-es
 ---
 
 HQ9+ es una parodia de los lenguajes de programación esotéricos y fue creado 

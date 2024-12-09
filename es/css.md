@@ -10,7 +10,6 @@ contributors:
     - ["Tyler Mumford", "https://tylermumford.com"]
 translators:
     - ["miky ackerman", "https://github.com/mikyackerman"]
-lang: es-es
 filename: learncss-es.css
 ---
 

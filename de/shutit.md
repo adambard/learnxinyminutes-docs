@@ -6,7 +6,6 @@ contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-lang: de-de
 ---
 
 ## ShutIt

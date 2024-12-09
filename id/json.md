@@ -7,7 +7,6 @@ filename: learnjson-id.json
 translators:
   - ["Rizky Luthfianto", "https://github.com/rilut"]
   - ["Ahmad Zafrullah", "https://github.com/23Pstars"]
-lang: id-id
 ---
 
 JSON adalah format pertukaran data yang sangat sederhana. Sebagaimana dikutip dari [json.org](http://json.org), JSON mudah untuk dibaca atau ditulis oleh manusia, dan mudah diuraikan dan diproses oleh mesin.

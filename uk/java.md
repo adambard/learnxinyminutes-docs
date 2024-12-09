@@ -12,7 +12,6 @@ contributors:
 translators:
     - ["Oleksandr Tatarchuk", "https://github.com/tatarchuk"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-lang: uk-ua
 
 ---
 

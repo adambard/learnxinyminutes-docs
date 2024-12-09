@@ -6,7 +6,6 @@ contributors:
     - ["Yan Hui Hang", "http://github.com/yanhh0"]
 translators:
     - ["Gustavo Tramontin", "https://github.com/gustatramontin"]
-lang: pt-br
 ---
 
 # Cálculo Lambda

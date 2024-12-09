@@ -5,7 +5,6 @@ contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
 translators:
     - ["Ale46", "https://github.com/ale46"]
-lang: it-it
 ---
 
 # Programmazione dinamica

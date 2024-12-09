@@ -5,7 +5,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["João Farias", "https://github.com/JoaoGFarias"]
-lang: pt-br
 ---
 
 # Notação Assintótica

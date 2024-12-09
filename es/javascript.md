@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Daniel Zendejas","https://github.com/DanielZendejas"]
 filename: javascript-es.js
-lang: es-es
 ---
 
 Tutorial de JavaScript en español.

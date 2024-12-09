@@ -5,7 +5,6 @@ contributors:
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
     - ["Mario Pérez", "https://github.com/MarioPerezEsteso"]
-lang: es-es
 filename: learnphp-es.php
 ---
 

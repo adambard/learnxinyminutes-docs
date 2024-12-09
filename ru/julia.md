@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Sergey Skovorodkin", "https://github.com/skovorodkin"]
 filename: learnjulia-ru.jl
-lang: ru-ru
 ---
 
 Julia — гомоиконный функциональный язык программирования для технических расчётов.

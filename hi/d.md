@@ -3,7 +3,6 @@ language: D
 filename: learnd-hd.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
-lang: hi-in
 ---
 
 ```d

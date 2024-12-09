@@ -4,7 +4,6 @@ filename: learnless-br.less
 contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
 
-lang: pt-br
 ---
 
 Less é um pré-processador de CSS, que adiciona recursos como variáveis, aninhamento, mixins e muito mais.

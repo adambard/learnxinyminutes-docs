@@ -6,7 +6,6 @@ contributors:
 translators:
   - ["Mac David", "http://macdavid313.com"]
   - ["mut0u", "http://github.com/mut0u"]
-lang: zh-cn
 ---
 
 ANSI Common Lisp 是一个广泛通用于各个工业领域的、支持多种范式的编程语言。

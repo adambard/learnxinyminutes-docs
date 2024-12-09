@@ -6,7 +6,6 @@ contributors:
     - ["Madison Dickson", "http://github.com/mix3d"]
 translators:
     - ["Sergey Gaykov", "https://github.com/gaykov"]
-lang: ru-ru
 
 ---
 

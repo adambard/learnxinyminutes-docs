@@ -5,7 +5,6 @@ contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
 translators:
   - ["Gabriel Gomes", "https://github.com/gabrielgomesferraz"]
-lang: pt-br
 ---
 
 Typescript é uma linguagem que visa facilitar o desenvolvimento de aplicações em grande escala escritos em JavaScript.

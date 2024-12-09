@@ -5,7 +5,6 @@ contributors:
   - ["Laura Kyle", "https://github.com/LauraNK"]
 translators:
   - ["hack1m", "https://github.com/hack1m"]
-lang: ms-my
 ---
 
 Sass ialah bahasa sambungan CSS yang menambah ciri-ciri seperti pembolehubah, bersarang, mixins dan banyak lagi.

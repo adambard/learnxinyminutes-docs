@@ -6,7 +6,6 @@ contributors:
 filename: learnangular-cn.txt
 translators:
    - ["Jiang Haiyun", "http://www.atjiang.com"]
-lang: zh-cn
 ---
 
 ## AngularJS 教程。

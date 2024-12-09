@@ -6,7 +6,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translator:
     - ["Raúl Ascencio", "http://rscnt.github.io"]
-lang: es-es
 
 ---
 

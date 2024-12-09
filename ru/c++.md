@@ -8,7 +8,6 @@ contributors:
     - ["Connor Waters", "http://github.com/connorwaters"]
 translators:
     - ["Bohdan Shtepan", "http://modern-dev.com"]
-lang: ru-ru
 ---
 
 C++ - компилируемый, статически типизированный язык программирования общего назначения, который,

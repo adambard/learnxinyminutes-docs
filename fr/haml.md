@@ -4,7 +4,6 @@ filename: learnhaml-fr.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
   - ["Thibault", "https://github.com/iTech-"]
-lang: fr-fr
 ---
 
 Haml est un langage de balisage utilisé majoritairement avec Ruby, qui décrit de manière simple et propre le HTML de n'importe quelle page web sans l'utilisation des traditionnelles lignes de code. Le langage est une alternative très populaire au langage de templates Rails (.erb) et permet d'intégrer du code en Ruby dans votre balisage.

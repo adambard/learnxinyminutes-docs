@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["akirahirose", "https://twitter.com/akirahirose"]
 filename: learnr-jp.r
-lang: ja-jp
 ---
 
 

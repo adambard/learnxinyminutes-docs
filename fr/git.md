@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
 filename: LearnGit-fr.txt
-lang: fr-fr
 ---
 
 Git est un logiciel de contrôle de versions distribué et un système de gestion

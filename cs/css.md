@@ -8,7 +8,6 @@ contributors:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
-lang: cs-cz
 filename: learncss-cz.css
 ---
 

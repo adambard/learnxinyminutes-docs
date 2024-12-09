@@ -5,7 +5,6 @@ contributors:
     - ["Stanley Lim", "https://github.com/Spiderpig86"]
 translators:
     - ["Liu Yihua", "https://github.com/yihuajack"]
-lang: zh-cn
 ---
 
 MIPS（Microprocessor without Interlocked Pipeline Stages）汇编语言是为了配合约翰·雷洛伊·亨尼西于1981年设计的 MIPS 微处理器范式而设计的，这些 RISC 处理器用于嵌入式系统，例如网关和路由器。

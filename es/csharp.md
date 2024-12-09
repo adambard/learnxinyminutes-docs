@@ -6,7 +6,6 @@ contributors:
     - ["Max Yankov", "https://github.com/golergka"]
 translators:
     - ["Olfran Jiménez", "https://twitter.com/neslux"]
-lang: es-es
 
 ---
 

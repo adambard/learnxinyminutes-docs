@@ -4,7 +4,6 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 translators:
     - ["Kyr", "http://github.com/kyrami"]
-lang: de-de
 filename: learncss-de.css
 ---
 

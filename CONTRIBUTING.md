@@ -72,7 +72,6 @@ filename: learnruby-epo.ruby
 contributors:
     - ["Doktor Esperanto", "http://example.com/"]
     - ["Someone else", "http://someoneelseswebsite.com/"]
-lang: ep-ep
 *--
 ```
 

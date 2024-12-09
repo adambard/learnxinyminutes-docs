@@ -6,7 +6,6 @@ contributors:
     - ["Divay Prakash", "https://github.com/divayprakash"]
 translators:
     - ["Kemel Zaidan", "https://github.com/kemelzaidan"]
-lang: pt-br
 ---
 
 ## Introdução

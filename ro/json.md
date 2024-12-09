@@ -6,7 +6,6 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
     - ["Serban Constantin", "https://github.com/fuzzmz"]
-lang: ro-ro
 ---
 
 Deoarece JSON este un fromat foarte simplu de schimb de date acesta va fi

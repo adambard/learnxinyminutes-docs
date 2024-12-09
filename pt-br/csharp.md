@@ -3,7 +3,6 @@ language: C#
 filename: csharp-pt.cs
 contributors:
     - ["Robson Alves", "http://robsonalves.net/"]    
-lang: pt-br
 ---
 
 C# é uma linguagem elegante, altamente tipada e orientada a objetos que permite aos desenvolvedores criar uma variedade de aplicações seguras e robustas que são executadas no .NET Framework.

@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Kota Kato", "https://github.com/kato-k"]
 filename: LearnVim-jp.txt
-lang: ja-jp
 ---
 
 

@@ -7,7 +7,6 @@ contributors:
 filename: learnphp-kr.php
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
-lang: ko-kr
 ---
 
 이 문서에서는 PHP 5+를 설명합니다.

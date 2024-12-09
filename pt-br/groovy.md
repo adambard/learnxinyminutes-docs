@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["João Farias", "https://github.com/joaogfarias"]
     - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
-lang: pt-br
 ---
 
 Groovy - Uma linguagem dinâmica para a plataforma Java. [Leia mais aqui](http://www.groovy-lang.org/).

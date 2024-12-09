@@ -9,7 +9,6 @@ contributors:
 translators:
     - ["Gerson Lázaro", "https://gersonlazaro.com"]
     - ["Diego Ramirez", "https://DiddiLeija.github.io"]
-lang: es-es
 ---
 
 C++ es un lenguaje de programación de sistemas que,

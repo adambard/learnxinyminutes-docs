@@ -6,7 +6,6 @@ contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-lang: pt-br
 ---
 
 Perl é, uma linguagem de programação altamente capaz, rica em recursos, com mais de 25 anos de desenvolvimento.

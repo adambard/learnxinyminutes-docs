@@ -6,7 +6,6 @@ contributors:
     - ["Dennis Keller", "https://github.com/denniskeller"]
 translators:
     - ["Jerome Meinke", "https://github.com/jmeinke"]
-lang: de-de
 ---
 Die Sprache Go (auch golang) wurde von Google entwickelt und wird seit 2007
 benutzt. Go ähnelt in der Syntax der Sprache C, bietet darüber hinaus aber viele

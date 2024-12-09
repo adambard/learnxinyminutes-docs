@@ -8,7 +8,6 @@ contributors:
   - ["Maarten Jacobs", "https://github.com/maartenJacobs"]
 translators:
   - ["Niels van Velzen", "https://nielsvanvelzen.me"]
-lang: nl-nl
 ---
 
 Gezien JSON een zeer eenvouding formaat heeft zal dit één van de simpelste

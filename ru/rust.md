@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Anatolii Kosorukov", "https://github.com/java1cprog"]
     - ["Vasily Starostin", "https://github.com/Basil22"]
-lang: ru-ru
 
 ---
 

@@ -6,7 +6,6 @@ contributors:
     - ["Colton Kohnke", "http://github.com/voltnor"]
 translators:
     - ["Claudson Martins", "https://github.com/claudsonm"]
-lang: pt-br
 filename: learnmatlab-pt.mat
 ---
 

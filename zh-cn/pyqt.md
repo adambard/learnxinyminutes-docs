@@ -8,7 +8,6 @@ translators:
     - ["kdxcxs", "https://github.com/kdxcxs"]
     - ["lsvih", "https://github.com/lsvih"]
     - ["imlonghao", "https://github.com/imlonghao"]
-lang: zh-cn
 ---
 
 **Qt** 是一个用 C++ 实现的著名跨平台软件开发框架。只需少量更改有时候甚至不需要更改代码就能在多个软硬件平台上运行，同时拥有原生应用程序的功能和速度。

@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Vojta Svoboda", "https://github.com/vojtasvoboda/"]
 filename: learnjson-cz.json
-lang: cs-cz
 ---
 
 JSON je exterémně jednoduchý datově nezávislý formát a bude asi jeden z 

@@ -6,7 +6,6 @@ contributors:
     - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
     - ["@prrrnd", "https://github.com/prrrnd"]
-lang: fr-fr
 ---
 
 Au début du web, il n'y avait pas d'élements visuels, simplement du texte pur. Mais avec le dévelopement des navigateurs,

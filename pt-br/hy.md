@@ -5,7 +5,6 @@ contributors:
     - ["Abhishek L", "http://twitter.com/abhishekl"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-lang: pt-br
 ---
 
 Hy é um dialeto de Lisp escrito sobre Python. Isto é possível convertendo

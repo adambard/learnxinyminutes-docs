@@ -5,7 +5,6 @@ contributors:
     - ["David Lima", "https://github.com/davelima"]
 translators:
     - ["David Lima", "https://github.com/davelima"]
-lang: pt-br
 filename: learnhack-pt.hh
 ---
 

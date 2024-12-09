@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Martin Schimandl", "https://github.com/Git-Jiro"]
 filename: learntcl-de.tcl
-lang: de-de
 ---
 
 Tcl wurde kreiert von [John Ousterhout](http://wiki.tcl.tk/John Ousterout) als

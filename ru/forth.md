@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Dmitrii Kuznetsov", "https://github.com/torgeek"]
 filename: learnforth-ru.fs
-lang: ru-ru
 ---
 
 Форт создан Чарлзом Муром в 70-е годы. Это императивный, стековый язык

@@ -5,7 +5,6 @@ contributors:
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
 translators:
     - ["Filip Štamcar", "https://github.com/filips123"]
-lang: sl-si
 filename: asciidoc-sl.adoc
 ---
 

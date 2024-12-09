@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Xuan-thi Nguyen", "https://github.com/mellenguyen"]
 filename: LearnTmux-fr.txt
-lang: fr-fr
 ---
 
 

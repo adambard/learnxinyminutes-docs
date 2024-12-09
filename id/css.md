@@ -4,7 +4,6 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 translators:
     - ["Eka Y Saputra", "http://github.com/ekajogja"]
-lang: id-id
 filename: learncss-id.css
 ---
 

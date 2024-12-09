@@ -5,7 +5,6 @@ contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
 translators:
   - ["Jasper Haasdijk", "https://github.com/jhaasdijk"]
-lang: nl-nl
 ---
 
 # Dynamisch Programmeren

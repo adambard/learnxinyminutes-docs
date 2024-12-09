@@ -6,7 +6,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Haydar KULEKCI", "http://scanf.info/"]
-lang: tr-tr
 ---
 
 C halen modern yüksek performans bilgisayarların dili.

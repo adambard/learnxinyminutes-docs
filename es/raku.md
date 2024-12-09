@@ -7,7 +7,6 @@ contributors:
     - ["Samantha McVey", "https://cry.nu"]
 translators:
     - ["Luis F. Uceta", "https://github.com/uzluisf"]
-lang: es-es
 ---
 Raku es un lenguaje de programación altamente capaz y con características
 abundantes para hacerlo el lenguage ideal por los próximos 100 años.

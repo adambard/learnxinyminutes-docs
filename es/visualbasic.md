@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Adolfo Jayme Barrientos", "https://github.com/fitojb"]
 filename: learnvisualbasic-es.vb
-lang: es-es
 ---
 
 ```vbnet

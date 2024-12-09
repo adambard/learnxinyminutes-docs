@@ -11,7 +11,6 @@ contributors:
     - ["Clayton Walker", "https://github.com/cwalk"]
 translators:
     - ["Tommaso Pifferi","http://github.com/neslinesli93"]
-lang: it-it
 ---
 
 Go è stato creato per avere tra le mani uno strumento in grado di arrivare

@@ -6,7 +6,6 @@ contributors:
     - ["Colton Kohnke", "http://github.com/voltnor"]
 translators:
     - ["Samuele Gallerani", "http://github.com/fontealpina"]
-lang: it-it
 filename: matlab-it.md
 ---
 

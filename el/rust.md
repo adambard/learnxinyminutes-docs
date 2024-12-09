@@ -4,7 +4,6 @@ contributors:
     - ["P1start", "http://p1start.github.io/"]
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 filename: learnrust-gr.rs
-lang: el-gr
 ---
 
 _[ΣτΜ.: οι όροι "χαμηλό/υψηλό επίπεδο" αναφέρονται στην εγγύτητα μιας γλώσσας προγραμματισμού ή γενικότερα ενός

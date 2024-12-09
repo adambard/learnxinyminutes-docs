@@ -5,7 +5,6 @@ contributors:
     - ["Sachin Divekar", "http://github.com/ssd532"]
 translators:
     - ["Michael Yeh", "https://hinet60613.github.io/"]
-lang: zh-tw
 ---
 
 正規表達式(regular expression，或縮寫為regex, regexp)是一種用來表示搜尋模式的特殊字串。例如，你可以用`/^[a-z]+:/`來從網址`http://github.com`中擷取出`http:`這段http協定名稱。
