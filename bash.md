@@ -1,5 +1,5 @@
 ---
-language: Bash
+name: Bash
 contributors:
     - ["Max Yankov", "https://github.com/golergka"]
     - ["Darren Lin", "https://github.com/CogBear"]

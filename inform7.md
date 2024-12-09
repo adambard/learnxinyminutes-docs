@@ -1,5 +1,5 @@
 ---
-language: Inform7
+name: Inform7
 contributors:
     - ["Hyphz", "http://github.com/hyphz/"]
 filename: LearnInform.Inform

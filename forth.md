@@ -1,5 +1,5 @@
 ---
-language: Forth
+name: Forth
 contributors:
     - ["Horse M.D.", "http://github.com/HorseMD/"]
 filename: learnforth.fs

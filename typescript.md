@@ -1,5 +1,5 @@
 ---
-language: TypeScript
+name: TypeScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Kiwimoe", "https://github.com/kiwimoe"]

@@ -1,6 +1,6 @@
 ---
 category: language
-language: CUE
+name: CUE
 filename: learncue.cue
 contributors:
     - ["Daniel Cox", "https://github.com/danielpcox"]

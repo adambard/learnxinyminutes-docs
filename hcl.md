@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: HCL
+name: HCL
 contributors:
     - ["Romans Malinovskis" , "http://github.com/romaninsh"]
 filename: terraform.txt

@@ -1,5 +1,5 @@
 ---
-language: Tcl
+name: Tcl
 contributors:
     - ["Poor Yorick", "https://pooryorick.com/"]
 filename: learntcl.tcl

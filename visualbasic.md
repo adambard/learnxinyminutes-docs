@@ -1,5 +1,5 @@
 ---
-language: Visual Basic
+name: Visual Basic
 contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 filename: learnvisualbasic.vb

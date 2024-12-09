@@ -1,5 +1,5 @@
 ---
-language: Vala
+name: Vala
 contributors:
     - ["Milo Gilad", "https://github.com/Myl0g"]
 filename: LearnVala.vala

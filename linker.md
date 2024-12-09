@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: GNU linker (ld)
+name: GNU linker (ld)
 contributors:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
 translators:

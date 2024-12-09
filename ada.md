@@ -1,5 +1,5 @@
 ---
-language: Ada
+name: Ada
 filename: learn.ada
 contributors:
     - ["Luke A. Guest", "https://github.com/Lucretia"]

@@ -1,5 +1,5 @@
 ---
-language: LOLCODE
+name: LOLCODE
 filename: learnLOLCODE.lol
 contributors:
     - ["abactel", "https://github.com/abactel"]

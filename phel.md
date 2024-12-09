@@ -1,5 +1,5 @@
 ---
-language: Phel
+name: Phel
 filename: learnphel.phel
 contributors:
     - ["Chemaclass", "https://github.com/Chemaclass"]

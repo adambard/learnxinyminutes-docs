@@ -1,5 +1,5 @@
 ---
-language: Coq
+name: Coq
 filename: learncoq.v
 contributors:
     - ["Philip Zucker", "http://www.philipzucker.com/"]

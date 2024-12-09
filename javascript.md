@@ -1,5 +1,5 @@
 ---
-language: JavaScript
+name: JavaScript
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]

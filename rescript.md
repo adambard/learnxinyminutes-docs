@@ -1,5 +1,5 @@
 ---
-language: ReScript
+name: ReScript
 filename: rescript.res
 contributors:
   - ["Seth Corker", "https://sethcorker.com"]

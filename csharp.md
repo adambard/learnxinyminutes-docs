@@ -1,5 +1,5 @@
 ---
-language: C#
+name: C#
 contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
     - ["Max Yankov", "https://github.com/golergka"]

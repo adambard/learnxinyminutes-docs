@@ -1,6 +1,6 @@
 ---
 category: framework
-framework: DirectX 9
+name: DirectX 9
 filename: learndirectx9.cpp
 contributors:
     - ["Simon Deitermann", "s.f.deitermann@t-online.de"]

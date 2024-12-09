@@ -1,5 +1,5 @@
 ---
-language: APL
+name: APL
 contributors:
     - ["nooodl", "https://github.com/nooodl"]
 filename: learnapl.apl

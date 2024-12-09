@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: OpenMP
+name: OpenMP
 filename: learnopenMP.cpp
 contributors:
     - ["Cillian Smith", "https://github.com/smithc36-tcd"]

@@ -1,5 +1,5 @@
 ---
-language: AsciiDoc
+name: AsciiDoc
 contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]

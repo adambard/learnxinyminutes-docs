@@ -1,5 +1,5 @@
 ---
-language: Ballerina
+name: Ballerina
 contributors:
     - ["Anjana Fernando", "https://github.com/lafernando"]
 filename: learn_ballerina.bal

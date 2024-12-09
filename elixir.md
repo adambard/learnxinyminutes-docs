@@ -1,5 +1,5 @@
 ---
-language: Elixir
+name: Elixir
 contributors:
     - ["Joao Marques", "https://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]

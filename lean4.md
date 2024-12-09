@@ -1,5 +1,5 @@
 ---
-language: "Lean 4"
+name: "Lean 4"
 filename: learnlean4.lean
 contributors:
     - ["Balagopal Komarath", "https://bkomarath.rbgo.in/"]

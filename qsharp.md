@@ -1,5 +1,5 @@
 ---
-language: Q#
+name: Q#
 contributors:
     - ["Vincent van Wingerden", "https://github.com/vivanwin"]
     - ["Mariia Mykhailova", "https://github.com/tcNickolas"]

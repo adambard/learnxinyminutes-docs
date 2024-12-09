@@ -1,5 +1,5 @@
 ---
-language: Markdown
+name: Markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
     - ["Jacob Ward", "http://github.com/JacobCWard/"]

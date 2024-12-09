@@ -1,5 +1,5 @@
 ---
-language: HQ9+
+name: HQ9+
 filename: hq9+.txt
 contributors:
     - ["Alexey Nazaroff", "https://github.com/rogaven"]

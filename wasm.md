@@ -1,5 +1,5 @@
 ---
-language: WebAssembly
+name: WebAssembly
 filename: learn-wasm.wast
 contributors:
     - ["Dean Shaff", "http://dean-shaff.github.io"]

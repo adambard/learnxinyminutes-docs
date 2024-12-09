@@ -1,5 +1,5 @@
 ---
-language: Texinfo
+name: Texinfo
 contributors:
     - ["Julien Lepiller", "https://github.com/roptat"]
 filename: learntexinfo.texi

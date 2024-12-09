@@ -1,5 +1,5 @@
 ---
-language: Smalltalk
+name: Smalltalk
 filename: smalltalk.st
 contributors:
     - ["Jigyasa Grover", "https://jigyasa-grover.github.io"]

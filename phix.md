@@ -1,5 +1,5 @@
 ---
-language: Phix
+name: Phix
 contributors:
     - ["pxtom", "https://gitgub.com/pxtom"]
 filename: learnphix.exw

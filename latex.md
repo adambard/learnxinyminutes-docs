@@ -1,5 +1,5 @@
 ---
-language: LaTeX
+name: LaTeX
 contributors:
     - ["Chaitanya Krishna Ande", "http://icymist.github.io"]
     - ["Colton Kohnke", "https://github.com/voltnor"]

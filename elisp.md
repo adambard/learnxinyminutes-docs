@@ -1,5 +1,5 @@
 ---
-language: Emacs Lisp
+name: Emacs Lisp
 contributors:
     - ["Bastien Guerry", "https://bzg.fr"]
     - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]

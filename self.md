@@ -1,5 +1,5 @@
 ---
-language: Self
+name: Self
 contributors:
     - ["Russell Allen", "http://github.com/russellallen"]
 filename: learnself.self

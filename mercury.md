@@ -1,5 +1,5 @@
 ---
-language: Mercury
+name: Mercury
 contributors:
     - ["Julian Fondren", "https://mercury-in.space/"]
 ---

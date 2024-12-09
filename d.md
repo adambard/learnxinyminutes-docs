@@ -1,5 +1,5 @@
 ---
-language: D
+name: D
 filename: learnd.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]

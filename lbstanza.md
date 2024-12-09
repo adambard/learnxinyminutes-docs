@@ -1,5 +1,5 @@
 ---
-language: LB Stanza
+name: LB Stanza
 filename: learn-stanza.stanza
 contributors: 
   - ["Mike Hilgendorf", "https://github.com/m-hilgendorf"]

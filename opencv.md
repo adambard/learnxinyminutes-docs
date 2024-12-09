@@ -1,6 +1,6 @@
 ---
 category: framework
-framework: OpenCV
+name: OpenCV
 filename: learnopencv.py
 contributors:
     - ["Yogesh Ojha", "http://github.com/yogeshojha"]

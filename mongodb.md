@@ -1,5 +1,5 @@
 ---
-language: MongoDB 
+name: MongoDB 
 filename: mongo.js 
 contributors:
   - ["Raj Piskala", "https://www.rajpiskala.ml/"]

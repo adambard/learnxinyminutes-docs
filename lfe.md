@@ -1,5 +1,5 @@
 ---
-language: "Lisp Flavoured Erlang (LFE)"
+name: "Lisp Flavoured Erlang (LFE)"
 filename: lispflavourederlang.lfe
 contributors:
   - ["Pratik Karki", "https://github.com/prertik"]

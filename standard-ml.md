@@ -1,5 +1,5 @@
 ---
-language: "Standard ML"
+name: "Standard ML"
 filename: standardml.sml
 contributors:
     - ["Simon Shine", "https://simonshine.dk/"]

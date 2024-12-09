@@ -1,5 +1,5 @@
 ---
-language: Ruby
+name: Ruby
 filename: learnruby.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]

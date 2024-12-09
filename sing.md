@@ -1,6 +1,6 @@
 ---
 category: language
-language: Sing
+name: Sing
 filename: learnsing.sing
 contributors:
     - ["Maurizio De Girolami", "https://github.com/mdegirolami"]

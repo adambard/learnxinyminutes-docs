@@ -1,5 +1,5 @@
 ---
-language: fish
+name: fish
 contributors:
     - ["MySurmise", "https://github.com/MySurmise"]
     - ["Geo Maciolek", "https://github.com/GeoffMaciolek"]

@@ -1,5 +1,5 @@
 ---
-language: OCaml
+name: OCaml
 filename: learnocaml.ml
 contributors:
     - ["Daniil Baturin", "http://baturin.org/"]

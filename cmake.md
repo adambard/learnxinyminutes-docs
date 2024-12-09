@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: CMake
+name: CMake
 contributors:
     - ["Bruno Alano", "https://github.com/brunoalano"]
 filename: CMake

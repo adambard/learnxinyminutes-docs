@@ -1,5 +1,5 @@
 ---
-language: citron
+name: citron
 filename: learncitron.ctr
 contributors:
     - ["AnotherTest", ""]

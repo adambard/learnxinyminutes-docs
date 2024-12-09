@@ -1,5 +1,5 @@
 ---
-language: Haml
+name: Haml
 filename: learnhaml.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]

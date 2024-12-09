@@ -1,5 +1,5 @@
 ---
-language: COBOL
+name: COBOL
 contributors:
     - ["Hyphz", "http://github.com/hyphz/"]
 filename: learn.COB

@@ -64,7 +64,7 @@ Here's an example header for Ruby:
 
 ```yaml
 *--
-language: Ruby
+name: Ruby
 filename: learnruby.rb
 contributors:
     - ["Doktor Esperanto", "http://example.com/"]

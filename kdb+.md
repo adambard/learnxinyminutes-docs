@@ -1,5 +1,5 @@
 ---
-language: kdb+
+name: kdb+
 contributors:
     - ["Matt Doherty", "https://github.com/picodoc"]
     - ["Jonny Press", "https://github.com/jonnypress"]

@@ -1,5 +1,5 @@
 ---
-language: OSL
+name: OSL
 filename: learnosl.osl
 contributors:
   - ["Preetham Pemmasani", "https://github.com/Preetham-ai"]

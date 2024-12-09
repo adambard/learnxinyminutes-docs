@@ -1,5 +1,5 @@
 ---
-language: QML
+name: QML
 contributors:
     - ["Furkan Uzumcu", "https://zmc.space/"]
 filename: learnqml.qml

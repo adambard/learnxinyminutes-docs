@@ -1,5 +1,5 @@
 ---
-language: F#
+name: F#
 contributors:
     - ["Scott Wlaschin", "http://fsharpforfunandprofit.com/"]
 filename: learnfsharp.fs

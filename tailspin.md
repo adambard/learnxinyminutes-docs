@@ -1,5 +1,5 @@
 ---
-language: Tailspin
+name: Tailspin
 filename: learntailspin.tt
 contributors:
     - ["Torbjörn Gannholm", "https://github.com/tobega/"]

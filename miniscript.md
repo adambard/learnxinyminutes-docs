@@ -1,5 +1,5 @@
 ---
-language: MiniScript
+name: MiniScript
 contributors:
     - ["Joe Strout", "https://github.com/JoeStrout"]
 filename: miniscript.ms

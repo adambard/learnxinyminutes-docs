@@ -1,5 +1,5 @@
 ---
-language: Cypher
+name: Cypher
 filename: LearnCypher.cql
 contributors:
     - ["Théo Gauchoux", "https://github.com/TheoGauchoux"]

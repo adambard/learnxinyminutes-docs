@@ -1,6 +1,6 @@
 ---
 category: framework
-framework: jQuery
+name: jQuery
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
     - ["Devansh Patil", "https://github.com/subtra3t"]

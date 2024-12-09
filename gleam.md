@@ -1,5 +1,5 @@
 ---
-language: Gleam
+name: Gleam
 contributors:
     - ["Antonio Ognio", "https://github.com/aognio/"]
 filename: learngleam.gleam

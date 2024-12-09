@@ -1,5 +1,5 @@
 ---
-language: Vimscript
+name: Vimscript
 filename: learnvimscript.vim
 contributors:
     - ["HiPhish", "http://hiphish.github.io/"]

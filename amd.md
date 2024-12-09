@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: AMD
+name: AMD
 contributors:
     - ["Frederik Ring", "https://github.com/m90"]
 filename: learnamd.js

@@ -1,5 +1,5 @@
 ---
-language: "CHICKEN"
+name: "CHICKEN"
 filename: CHICKEN.scm
 contributors:
   - ["Diwakar Wagle", "https://github.com/deewakar"]

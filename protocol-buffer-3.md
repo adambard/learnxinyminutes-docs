@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: Protocol Buffers
+name: Protocol Buffers
 filename: protocol-buffers.proto
 contributors:
     - ["Shankar Shastri", "https://github.com/shankarshastri"]

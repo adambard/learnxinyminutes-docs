@@ -1,5 +1,5 @@
 ---
-language: Rust
+name: Rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
 filename: learnrust.rs

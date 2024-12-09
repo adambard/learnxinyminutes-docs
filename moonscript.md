@@ -1,5 +1,5 @@
 ---
-language: MoonScript
+name: MoonScript
 contributors:
   - ["RyanSquared", "https://ryansquared.github.io/"]
   - ["Job van der Zwan", "https://github.com/JobLeonard"]

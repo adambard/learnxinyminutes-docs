@@ -1,5 +1,5 @@
 ---
-language: Pug
+name: Pug
 contributors:
   - ["Michael Warner", "https://github.com/MichaelJGW"]
 filename: index.pug

@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: sed
+name: sed
 filename: learnsed.sed
 contributors:
      - ["Diomidis Spinellis", "https://www.spinellis.gr"]

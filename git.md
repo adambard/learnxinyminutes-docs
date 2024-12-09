@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: Git
+name: Git
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]

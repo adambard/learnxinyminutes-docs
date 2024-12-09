@@ -1,5 +1,5 @@
 ---
-language: Swift
+name: Swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]

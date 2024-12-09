@@ -1,5 +1,5 @@
 ---
-language: Pod
+name: Pod
 contributors:
     - ["Luis F. Uceta", "https://uzluisf.gitlab.io/"]
 filename: learnpod.pod6

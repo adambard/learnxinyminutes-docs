@@ -1,5 +1,5 @@
 ---
-language: Wolfram
+name: Wolfram
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
 filename: learnwolfram.nb

@@ -1,5 +1,5 @@
 ---
-language: Fortran
+name: Fortran
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
 filename: learnfortran.f90

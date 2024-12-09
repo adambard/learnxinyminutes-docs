@@ -1,5 +1,5 @@
 ---
-language: curto
+name: curto
 contributors:
     - ["Maleza", "https://maleza.srht.site/"]
 filename: learncurto-es.fs

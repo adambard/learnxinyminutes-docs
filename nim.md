@@ -1,5 +1,5 @@
 ---
-language: Nim
+name: Nim
 filename: learnNim.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]

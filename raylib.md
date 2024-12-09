@@ -1,6 +1,6 @@
 ---
 category: framework
-framework: raylib
+name: raylib
 filename: learnraylib.c
 contributors:
     - ["Nikolas Wipper", "https://notnik.cc"]

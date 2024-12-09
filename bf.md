@@ -1,5 +1,5 @@
 ---
-language: BF
+name: BF
 filename: bf.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]

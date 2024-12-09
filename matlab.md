@@ -1,5 +1,5 @@
 ---
-language: MATLAB
+name: MATLAB
 filename: learnmatlab.mat
 contributors:
     - ["mendozao", "http://github.com/mendozao"]

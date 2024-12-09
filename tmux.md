@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: tmux
+name: tmux
 contributors:
     - ["mdln", "https://github.com/mdln"]
 filename: LearnTmux.txt

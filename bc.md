@@ -1,5 +1,5 @@
 ---
-language: bc
+name: bc
 contributors:
     - ["Btup"]
 filename: learnbc.bc

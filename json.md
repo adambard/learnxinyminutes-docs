@@ -1,5 +1,5 @@
 ---
-language: JSON
+name: JSON
 filename: learnjson.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]

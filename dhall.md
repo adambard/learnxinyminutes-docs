@@ -1,5 +1,5 @@
 ---
-language: Dhall
+name: Dhall
 filename: learndhall.dhall
 contributors:
     - ["Gabriel Gonzalez", "http://www.haskellforall.com/"]

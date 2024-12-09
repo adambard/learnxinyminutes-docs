@@ -1,5 +1,5 @@
 ---
-language: M (MUMPS)
+name: M (MUMPS)
 contributors:
     - ["Fred Turkington", "http://z3ugma.github.io"]
 filename: LEARNM.m

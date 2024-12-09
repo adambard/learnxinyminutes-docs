@@ -1,5 +1,5 @@
 ---
-language: Factor
+name: Factor
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
 filename: learnfactor.factor

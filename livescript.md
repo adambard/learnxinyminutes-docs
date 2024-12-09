@@ -1,5 +1,5 @@
 ---
-language: LiveScript
+name: LiveScript
 filename: learnLivescript.ls
 contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]

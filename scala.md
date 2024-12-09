@@ -1,5 +1,5 @@
 ---
-language: Scala
+name: Scala
 filename: learnscala.scala
 contributors:
     - ["George Petrov", "http://github.com/petrovg"]

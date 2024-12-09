@@ -1,5 +1,5 @@
 ---
-language: Jinja
+name: Jinja
 contributors:
   - ["Adaías Magdiel", "https://github.com/AdaiasMagdiel"]
 filename: learn-jinja.j2

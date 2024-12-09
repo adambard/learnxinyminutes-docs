@@ -1,5 +1,5 @@
 ---
-language: Stylus
+name: Stylus
 filename: learnStylus.styl
 contributors:
   - ["Salomão Neto", "https://github.com/salomaosnff"]

@@ -1,5 +1,5 @@
 ---
-language: SmallBASIC
+name: SmallBASIC
 filename: learnsmallbasic.bas
 contributors:
     - ["Chris Warren-Smith", "http://smallbasic.sourceforge.net"]

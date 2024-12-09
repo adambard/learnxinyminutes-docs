@@ -1,5 +1,5 @@
 ---
-language: LDPL
+name: LDPL
 filename: learnLDPL.ldpl
 contributors:
     - ["Martín del Río", "https://github.com/lartu"]

@@ -1,5 +1,5 @@
 ---
-language: GolfScript
+name: GolfScript
 filename: golfscript.gs
 contributors:
     - ["Nicholas S Georgescu", "http://github.com/ngeorgescu"]

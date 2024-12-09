@@ -1,5 +1,5 @@
 ---
-language: Pascal
+name: Pascal
 filename: learnpascal.pas
 contributors:
     - ["Ganesha Danu", "http://github.com/blinfoldking"]

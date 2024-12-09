@@ -1,5 +1,5 @@
 ---
-language: BQN
+name: BQN
 filename: learnbqn.bqn
 contributors:
     - ["Raghu Ranganathan", "https://github.com/razetime"]

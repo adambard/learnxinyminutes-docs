@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: AWK
+name: AWK
 filename: learnawk.awk
 contributors:
      - ["Marshall Mason", "http://github.com/marshallmason"]

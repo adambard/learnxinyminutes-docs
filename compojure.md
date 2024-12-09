@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: Compojure
+name: Compojure
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 filename: learncompojure.clj

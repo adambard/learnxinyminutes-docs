@@ -1,5 +1,5 @@
 ---
-language: Julia
+name: Julia
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
     - ["Pranit Bauva", "https://github.com/pranitbauva1997"]

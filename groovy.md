@@ -1,5 +1,5 @@
 ---
-language: Groovy
+name: Groovy
 filename: learngroovy.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]

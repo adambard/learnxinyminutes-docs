@@ -1,5 +1,5 @@
 ---
-language: Jsonnet
+name: Jsonnet
 filename: learnjsonnet.jsonnet
 contributors:
   - ["Huan Wang", "https://github.com/fredwangwang"]

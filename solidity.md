@@ -1,5 +1,5 @@
 ---
-language: Solidity
+name: Solidity
 filename: learnSolidity.sol
 contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]

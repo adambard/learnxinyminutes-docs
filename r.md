@@ -1,5 +1,5 @@
 ---
-language: R
+name: R
 contributors:
     - ["e99n09", "http://github.com/e99n09"]
     - ["isomorphismes", "http://twitter.com/isomorphisms"]

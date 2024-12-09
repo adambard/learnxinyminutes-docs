@@ -1,5 +1,5 @@
 ---
-language: Kotlin
+name: Kotlin
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
 filename: LearnKotlin.kt

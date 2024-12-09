@@ -1,5 +1,5 @@
 ---
-language: HDL
+name: HDL
 filename: learnhdl.hdl
 contributors:
   - ["Jack Smith", "https://github.com/JSmithTech2019"]

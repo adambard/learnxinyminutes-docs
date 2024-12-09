@@ -1,5 +1,5 @@
 ---
-language: Hack
+name: Hack
 contributors:
     - ["Andrew DiMola", "https://github.com/AndrewDiMola"]
     - ["Stephen Holdaway", "https://github.com/stecman"]

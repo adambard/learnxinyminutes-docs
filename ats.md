@@ -1,5 +1,5 @@
 ---
-language: ATS
+name: ATS
 contributors:
   - ["Mark Barbone", "https://github.com/mb64"]
 filename: learnats.dats

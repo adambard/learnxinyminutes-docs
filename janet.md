@@ -1,5 +1,5 @@
 ---
-language: Janet
+name: Janet
 filename: learnJanet.janet
 contributors:
     - ["John Gabriele", "http://www.unexpected-vortices.com/"]

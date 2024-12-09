@@ -1,5 +1,5 @@
 ---
-language: AssemblyScript
+name: AssemblyScript
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Steve Huguenin-Elie", "https://github.com/StEvUgnIn"]

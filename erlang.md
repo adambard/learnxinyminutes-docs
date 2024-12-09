@@ -1,5 +1,5 @@
 ---
-language: Erlang
+name: Erlang
 contributors:
     - ["Giovanni Cappellotto", "http://giovanni.curlybrackets.it/"]
 filename: learnerlang.erl

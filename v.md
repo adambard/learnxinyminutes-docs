@@ -1,5 +1,5 @@
 ---
-language: V
+name: V
 filename: vlang.v
 contributors:
     - ["Maou Shimazu", "https://github.com/Maou-Shimazu"]

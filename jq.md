@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: jq
+name: jq
 contributors:
     - ["Jack Kuan", "https://github.com/kjkuan"]
 filename: learnjq.sh

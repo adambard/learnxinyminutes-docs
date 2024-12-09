@@ -1,5 +1,5 @@
 ---
-language: RDF
+name: RDF
 filename: learnrdf.ttl
 contributors:
 - ["Bob DuCharme", "http://bobdc.com/"]

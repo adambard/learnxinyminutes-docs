@@ -1,5 +1,5 @@
 ---
-language: HOCON
+name: HOCON
 filename: learnhocon.conf
 contributors:
 - [TehBrian, 'https://tehbrian.xyz']

@@ -1,6 +1,6 @@
 ---
 category: language
-language: Red
+name: Red
 filename: learnred.red
 contributors:
     - ["Arnold van Hofwegen", "https://github.com/iArnold"]

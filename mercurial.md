@@ -1,6 +1,6 @@
 ---
 category: tool
-tool: Mercurial
+name: Mercurial
 contributors:
   - ["Will L. Fife", "http://github.com/sarlalian"]
 filename: LearnMercurial.txt

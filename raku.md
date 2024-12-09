@@ -1,6 +1,6 @@
 ---
 category: language
-language: Raku
+name: Raku
 filename: learnraku.raku
 contributors:
     - ["vendethiel", "http://github.com/vendethiel"]

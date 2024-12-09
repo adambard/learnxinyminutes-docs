@@ -1,5 +1,5 @@
 ---
-language: Easylang
+name: Easylang
 contributors:
     - ["chkas", "https://github.com/chkas"]
 filename: easylang.el
