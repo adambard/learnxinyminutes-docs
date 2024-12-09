@@ -1,5 +1,4 @@
 ---
-category: tool
 contributors:
     - ["Jon Smock", "http://github.com/jonsmock"]
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]

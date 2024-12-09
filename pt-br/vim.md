@@ -1,5 +1,4 @@
 ---
-category: tool
 contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:

@@ -1,5 +1,4 @@
 ---
-category: Algorithms & Data Structures
 contributors: 
   - ["kieutrang", "https://github.com/kieutrang1729"]
 ---

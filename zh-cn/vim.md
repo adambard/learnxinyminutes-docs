@@ -1,5 +1,4 @@
 ---
-category: tool
 filename: LearnVim-cn.txt
 contributors:
    - ["RadhikaG", "https://github.com/RadhikaG"]

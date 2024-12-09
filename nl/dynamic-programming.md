@@ -1,5 +1,4 @@
 ---
-category: Algorithms & Data Structures
 contributors:
     - ["Akashdeep Goel", "http://github.com/akashdeepgoel"]
 translators:

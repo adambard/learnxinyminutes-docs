@@ -1,5 +1,4 @@
 ---
-category: tool
 contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
 translators:

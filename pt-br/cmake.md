@@ -1,5 +1,4 @@
 ---
-category: tool
 contributors:
     - ["Bruno Alano", "https://github.com/brunoalano"]
 filename: CMake-br

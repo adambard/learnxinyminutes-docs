@@ -1,5 +1,4 @@
 ---
-category: language
 filename: javascript-zh-tw.js
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]

@@ -1,5 +1,4 @@
 ---
-category: tool
 contributors:
      - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:

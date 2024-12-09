@@ -1,5 +1,4 @@
 ---
-category: framework
 contributors:
     - ["Seçkin KÜKRER", "https://github.com/leavenha"]
 filename: jquery-tr.js

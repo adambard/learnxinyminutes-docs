@@ -1,5 +1,4 @@
 ---
-category: tool
 filename: LearnGit-pt.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]

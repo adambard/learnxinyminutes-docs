@@ -1,5 +1,4 @@
 ---
-category: language
 contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
 translators:

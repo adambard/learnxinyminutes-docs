@@ -1,5 +1,4 @@
 ---
-category: Algorithms & Data Structures
 contributors:
     - ["Max Sun", "http://github.com/maxsun"]
 translators:

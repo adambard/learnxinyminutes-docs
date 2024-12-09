@@ -1,5 +1,4 @@
 ---
-category: framework
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 translators:

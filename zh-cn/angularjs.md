@@ -1,5 +1,4 @@
 ---
-category: framework
 contributors:
     - ["Walter Cordero", "http://waltercordero.com"]
 filename: learnangular-cn.txt

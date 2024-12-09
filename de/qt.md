@@ -1,5 +1,4 @@
 ---
-category: framework
 filename: learnqt-de.cpp
 contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]

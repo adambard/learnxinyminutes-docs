@@ -1,5 +1,4 @@
 ---
-category: language
 filename: learngo-ca.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]

@@ -1,5 +1,4 @@
 ---
-category: tool
 contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
     - ["A1EF", "https://github.com/A1EF"]

@@ -1,5 +1,4 @@
 ---
-category: tool
 filename: Makefile
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]

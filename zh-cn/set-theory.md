@@ -1,5 +1,4 @@
 ---
-category: Algorithms & Data Structures
 contributors:
     - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
 translators:

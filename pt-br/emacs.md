@@ -1,5 +1,4 @@
 ---
-category: tool
 filename: emacs.txt
 contributors:
     - ["Joseph Riad", "https://github.com/Joseph-Riad"]

@@ -1,5 +1,4 @@
 ---
-category: framework
 filename: learnpyqt-pt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]

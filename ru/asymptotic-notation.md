@@ -1,5 +1,4 @@
 ---
-category: Algorithms & Data Structures
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Divay Prakash", "http://github.com/divayprakash"]

@@ -1,5 +1,4 @@
 ---
-category: language
 filename: learngo-pt.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]

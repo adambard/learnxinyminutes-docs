@@ -1,5 +1,4 @@
 ---
-category: tool
 contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 translators:

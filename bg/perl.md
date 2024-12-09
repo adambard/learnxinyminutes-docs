@@ -1,5 +1,4 @@
 ---
-category: language
 filename: learnperl-bg.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]

@@ -1,5 +1,4 @@
 ---
-category: language
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
 translators:

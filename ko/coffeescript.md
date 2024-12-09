@@ -1,5 +1,4 @@
 ---
-category: language
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
 filename: coffeescript-kr.coffee

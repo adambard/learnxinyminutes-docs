@@ -1,5 +1,4 @@
 ---
-category: framework
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:

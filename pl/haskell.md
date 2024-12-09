@@ -1,5 +1,4 @@
 ---
-category: language
 filename: haskell-pl.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]

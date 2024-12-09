@@ -1,5 +1,4 @@
 ---
-category: language
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 filename: learnpythonlegacy-ko.py

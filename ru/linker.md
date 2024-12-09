@@ -1,5 +1,4 @@
 ---
-category: tool
 contributors:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
 translators:

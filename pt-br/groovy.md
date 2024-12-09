@@ -1,5 +1,4 @@
 ---
-category: language
 filename: learngroovy-pt.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
