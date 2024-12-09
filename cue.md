@@ -1,5 +1,4 @@
 ---
-category: language
 name: CUE
 filename: learncue.cue
 contributors:

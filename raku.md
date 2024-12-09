@@ -1,5 +1,4 @@
 ---
-category: language
 name: Raku
 filename: learnraku.raku
 contributors:

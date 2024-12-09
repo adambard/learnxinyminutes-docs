@@ -1,5 +1,4 @@
 ---
-category: language
 name: Sing
 filename: learnsing.sing
 contributors:

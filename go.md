@@ -1,5 +1,4 @@
 ---
-category: language
 name: Go
 filename: learngo.go
 contributors:

@@ -1,5 +1,4 @@
 ---
-category: language
 name: Red
 filename: learnred.red
 contributors:
