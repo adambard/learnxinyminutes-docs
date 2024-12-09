@@ -66,6 +66,7 @@ True || False -- True
 ['H', 'e', 'l', 'l', 'o'] -- "Hello"
 
 -- Lists can be indexed with the `!!` operator followed by an index
+-- Be aware that since lists are linked lists, this is an O(n) operation
 "This is a string" !! 0 -- 'T'
 
 
@@ -273,7 +274,7 @@ case args of
 map (*2) [1..5] -- [2, 4, 6, 8, 10]
 
 -- you can make a for function using map
-for array func = map func array
+for list func = map func list
 
 -- and then use it
 for [0..5] $ \i -> show i
