@@ -66,7 +66,7 @@ True || False -- True
 ['H', 'e', 'l', 'l', 'o'] -- "Hello"
 
 -- Lists can be indexed with the `!!` operator followed by an index
--- Be aware that since lists are linked lists, this is an O(n) operation
+-- but this is an O(n) operation because lists are linked lists
 "This is a string" !! 0 -- 'T'
 
 
