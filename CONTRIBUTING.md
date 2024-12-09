@@ -41,14 +41,14 @@ review them more effectively and/or individually.
 
 ### Header configuration
 
-The actual site uses Middleman to generate HTML files from these Markdown ones.
-Middleman, or at least the custom scripts underpinning the site, requires that
-some key information be defined in the header.
+The actual site generates HTML files from these Markdown ones.
+The markdown files can contain extra metadata before the actual markdown,
+called frontmatter.
 
 The following fields are necessary for English articles about programming
 languages:
 
-* **language** The *programming language* in question
+* **name** The human-readable name of the programming language
 * **contributors** A list of [author, URL] lists to credit
 
 Other fields:
@@ -57,8 +57,9 @@ Other fields:
   *tool* or *Algorithms & Data Structures*. Defaults to *language* if omitted.
 * **filename**: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
-   * For non-English articles, *filename* will be used from the English article,
-   unless you want to overwrite it for some reason.
+
+Non-English articles inherit frontmatter values from the English article (if it exists)
+but you can overwrite them.
 
 Here's an example header for Ruby:
 
