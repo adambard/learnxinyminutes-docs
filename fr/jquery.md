@@ -9,7 +9,7 @@ filename: jquery-fr.js
 jQuery est une bibliothèque JavaScript dont le but est de permettre de "faire plus en écrivant moins" (do more, write less). Elle facilite l'écriture de nombreuses fonctions, notamment au niveau d'AJAX, de la gestion d'événements, ou encore de la manipulation de documents. 
 C'est pourquoi aujourd'hui, jQuery est utilisée par de nombreuses grandes entreprises et par des développeurs du monde entier.
 
-Étant donné que jQuery est une bibliothèque JavaScript, vous devriez d'abord [apprendre le JavaScript](https://learnxinyminutes.com/docs/fr-fr/javascript-fr/)
+Étant donné que jQuery est une bibliothèque JavaScript, vous devriez d'abord [apprendre le JavaScript](./javascript/)
 
 ```js
 ///////////////////////////////////

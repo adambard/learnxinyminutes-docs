@@ -649,7 +649,7 @@ require(plyr)
 # "pets.csv" é um arquivo hospedado na internet
 # (mas também poderia tranquilamente ser um arquivo no seu computador)
 require(RCurl)
-pets <- read.csv(textConnection(getURL("https://learnxinyminutes.com/docs/pets.csv")))
+pets <- read.csv(textConnection(getURL("https://learnxinyminutes.com/pets.csv")))
 pets
 head(pets, 2) # primeiras duas linhas
 tail(pets, 1) # última linha

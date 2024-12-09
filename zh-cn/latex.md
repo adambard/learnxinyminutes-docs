@@ -244,8 +244,8 @@ figures, equations, sections, etc.
 \end{verbatim}
 
 有两种主要的超链接方式 \\
-\url{https://learnxinyminutes.com/docs/latex/}， 或  
-\href{https://learnxinyminutes.com/docs/latex/}{shadowed by text}
+\url{https://learnxinyminutes.com/latex/}， 或  
+\href{https://learnxinyminutes.com/latex/}{shadowed by text}
 % 你不可以增加特殊空格和符号，因为这将会造成编译错误
 
 这个库同样在输出PDF文档时制造略缩的列表，或在目录中激活链接

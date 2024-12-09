@@ -12,7 +12,7 @@ filename: learnpython-cn.py
 Python 是由吉多·范罗苏姆(Guido Van Rossum)在 90 年代早期设计。
 它是如今最常用的编程语言之一。它的语法简洁且优美，几乎就是可执行的伪代码。
 
-注意：这篇教程是基于 Python 3 写的。如果你想学旧版 Python 2，我们特别有[另一篇教程](http://learnxinyminutes.com/docs/pythonlegacy/)。
+注意：这篇教程是基于 Python 3 写的。如果你想学旧版 Python 2，我们特别有[另一篇教程](../pythonlegacy/)。
 
 ```python
 # 用井字符开头的是单行注释

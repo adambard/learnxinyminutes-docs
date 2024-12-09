@@ -18,7 +18,7 @@ filename: learnpython-jp.py
 私は構文の明快さによって、Pythonと恋に落ちました。
 以下は基本的に実行可能な疑似コードです。
 
-Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](http://learnxinyminutes.com/docs/pythonlegacy/) をご確認下さい。
+Note: この記事はPython 3に内容を絞っています。もし古いPython 2.7を学習したいなら、 [こちら](/pythonlegacy/) をご確認下さい。
 
 ```python
 # 1行のコメントは番号記号(#)から始まります。

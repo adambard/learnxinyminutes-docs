@@ -8,7 +8,7 @@ translators:
 
 [Paren](https://bitbucket.org/ktg/paren) é um dialeto do Lisp. É projetado para ser uma linguagem embutida.
 
-Alguns exemplos foram retirados de <http://learnxinyminutes.com/docs/racket/>.
+Alguns exemplos foram retirados de [Racket](/racket/).
 
 ```scheme
 ;;; Comentários

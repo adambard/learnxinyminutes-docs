@@ -329,5 +329,5 @@ Diğer tüm manipülasyon fonksiyonları için resmi siteyi kontrol ediniz.
 
 [jquery-official-website]: https://jquery.com
 [ajax-wikipedia-page]: https://en.wikipedia.org/wiki/Ajax_(programming)
-[javascript-learnxinyminutes-page]: https://learnxinyminutes.com/docs/javascript/
+[javascript-learnxinyminutes-page]: https://learnxinyminutes.com/javascript/
 [lower-camel-case-notasyonu]: https://en.wikipedia.org/wiki/Camel_case#Programming_and_coding

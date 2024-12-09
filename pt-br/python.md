@@ -15,7 +15,7 @@ das linguagens mais populares existentes. Eu me apaixonei por
 Python por sua clareza sintática. É praticamente pseudocódigo executável.
 
 Observação: Este artigo trata de Python 3 especificamente. Verifique
-[aqui](http://learnxinyminutes.com/docs/pt-br/python-pt/) se você pretende
+[aqui](../pythonlegacy/) se você pretende
 aprender o velho Python 2.7.
 
 ```python

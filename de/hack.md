@@ -15,7 +15,7 @@ Typisierung der Sprache, die eine wesentlich höhere Performance erlaubt.
 
 
 Hier werden nur Hack-spezifische Eigenschaften beschrieben. Details über PHP's
-Syntax findet man im [PHP Artikel](http://learnxinyminutes.com/docs/php/) dieser
+Syntax findet man im [PHP Artikel](/php/) dieser
 Seite.
 
 ```php

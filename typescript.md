@@ -14,7 +14,7 @@ TypeScript code so it can be added seamlessly to any project. The TypeScript
 compiler emits JavaScript.
 
 This article will focus only on TypeScript extra syntax, as opposed to
-[JavaScript](/docs/javascript).
+[JavaScript](../javascript/).
 
 To test TypeScript's compiler, head to the
 [Playground](https://www.typescriptlang.org/play) where you will be able

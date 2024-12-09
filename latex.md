@@ -269,8 +269,8 @@ package hyperref into preamble with the command:
 \end{verbatim}
 
 There exists two main types of links: visible URL \\
-\url{https://learnxinyminutes.com/docs/latex/}, or
-\href{https://learnxinyminutes.com/docs/latex/}{shadowed by text}
+\url{https://learnxinyminutes.com/latex/}, or
+\href{https://learnxinyminutes.com/latex/}{shadowed by text}
 % You can not add extra-spaces or special symbols into shadowing text since it
 % will cause mistakes during the compilation
 

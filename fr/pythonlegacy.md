@@ -10,7 +10,7 @@ translators:
 Python a été créé par Guido Van Rossum au début des années 90. C'est maintenant un des langages de programmation les plus populaires.
 Je suis tombé amoureux de Python de par la clarté de sa syntaxe. C'est pratiquement du pseudo-code exécutable.
 
-N.B. : Cet article s'applique spécifiquement à Python 2.7, mais devrait s'appliquer pour toute version Python 2.x. Python 2.7 est en fin de vie et ne sera plus maintenu à partir de 2020, il est donc recommandé d'apprendre Python avec Python 3. Pour Python 3.x, il existe un autre [tutoriel pour Python 3](http://learnxinyminutes.com/docs/fr-fr/python3-fr/).
+N.B. : Cet article s'applique spécifiquement à Python 2.7, mais devrait s'appliquer pour toute version Python 2.x. Python 2.7 est en fin de vie et ne sera plus maintenu à partir de 2020, il est donc recommandé d'apprendre Python avec Python 3. Pour Python 3.x, il existe un autre [tutoriel pour Python 3](../python/).
 
 ```python
 # Une ligne simple de commentaire commence par un dièse

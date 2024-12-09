@@ -15,7 +15,7 @@ Pórem, tenha cuidado. É considerado má pratica escrever uma macro quando uma 
 quando você precisar de controle sobre quando ou se os argumentos de um formulário serão avaliados.
 
 Você vai querer estar familiarizado com Clojure. Certifique-se de entender tudo em 
-[Aprenda Clojure em Y Minutos](/docs/clojure/).
+[Aprenda Clojure em Y Minutos](/clojure/).
 
 ```clojure
 ;; Defina uma macro utilizando defmacro. Sua macro deve ter como saída uma lista que possa

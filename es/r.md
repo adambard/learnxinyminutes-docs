@@ -659,7 +659,7 @@ require(plyr)
 
 # "pets.csv" es un archivo en internet
 # (pero puede ser tan fácil como tener el archivo en tu computadora)
-pets <- read.csv("http://learnxinyminutes.com/docs/pets.csv")
+pets <- read.csv("https://learnxinyminutes.com/pets.csv")
 pets
 head(pets, 2) # primeras dos filas
 tail(pets, 1) # última fila

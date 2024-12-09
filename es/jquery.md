@@ -8,7 +8,7 @@ filename: jquery-es.js
 
 jQuery es una librería de JavaScript que le ayuda a "hacer más y escribir menos". Esto hace que muchas de las tareas comunes de JavaScript sean más fáciles de escribir. jQuery es utilizado por muchas de las grandes empresas y desarrolladores de todo el mundo. Hace que AJAX, la gestión de eventos, la manipulación de documentos, y mucho más, sea más fácil y rápido.
 
-Debido a que jQuery es una librería de JavaScript debes [aprender JavaScript primero](https://learnxinyminutes.com/docs/es-es/javascript-es/)
+Debido a que jQuery es una librería de JavaScript debes [aprender JavaScript primero](../javascript/)
 
 ```js
 ///////////////////////////////////

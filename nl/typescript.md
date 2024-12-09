@@ -13,7 +13,7 @@ generieken en statische typen toe aan JavaScript.
 TypeScript is een superset van JavaScript: alle JavaScript code is geldige
 TypeScript code waardoor de overgang van JavaScript naar TypeScript wordt versoepeld.
 
-Dit artikel focust zich alleen op de extra's van TypeScript tegenover [JavaScript](../javascript-nl/).
+Dit artikel focust zich alleen op de extra's van TypeScript tegenover [JavaScript](../javascript/).
 
 Om de compiler van TypeScript te kunnen proberen kun je naar de [Playground](https://www.typescriptlang.org/Playground) gaan.
 Hier kun je automatisch aangevulde code typen in TypeScript en de JavaScript variant bekijken.

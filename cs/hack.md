@@ -12,7 +12,7 @@ které známe ze staticky typovaných jazyků.
 
 Níže jsou popsané pouze vlastnosti jazyka Hack. Detaily ohledně jazyka PHP a jeho
 syntaxe pak najdete na těchto stránkách v samostatném 
-[článku o PHP](http://learnxinyminutes.com/docs/php/).
+[článku o PHP](/php/).
 
 ```php
 <?hh

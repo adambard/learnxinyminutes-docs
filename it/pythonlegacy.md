@@ -16,7 +16,7 @@ pseudocodice eseguibile.
 Nota: questo articolo è riferito a Python 2.7 in modo specifico, ma dovrebbe andar
 bene anche per Python 2.x. Python 2.7 sta raggiungendo il "fine vita", ovvero non sarà
 più supportato nel 2020. Quindi è consigliato imparare Python utilizzando Python 3.
-Per maggiori informazioni su Python 3.x, dai un'occhiata al [tutorial di Python 3](http://learnxinyminutes.com/docs/python/).
+Per maggiori informazioni su Python 3.x, dai un'occhiata al [tutorial di Python 3](../python/).
 
 E' possibile anche scrivere codice compatibile sia con Python 2.7 che con Python 3.x,
 utilizzando [il modulo `__future__`](https://docs.python.org/2/library/__future__.html) di Python.

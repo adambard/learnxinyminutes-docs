@@ -12,7 +12,7 @@ filename: learnpythonlegacy-tw.py
 Python是在1990年代早期由Guido Van Rossum創建的。它是現在最流行的程式語言之一。我愛上Python是因為他極為清晰的語法，甚至可以說它就是可執行的虛擬碼。
 
 註： 本篇文章適用的版本為Python 2.7，但大部分的Python 2.X版本應該都適用。 Python 2.7將會在2020年停止維護，因此建議您可以從Python 3開始學Python。
-Python 3.X可以看這篇[Python 3 教學 (英文)](http://learnxinyminutes.com/docs/python/).
+Python 3.X可以看這篇[Python 3 教學 (英文)](/python/).
 
 讓程式碼同時支援Python 2.7和3.X是可以做到的，只要引入
  [`__future__` imports](https://docs.python.org/2/library/__future__.html) 模組.

@@ -10,7 +10,7 @@ translators:
 die auf verschiedenen Hard- und Softwareplattformen mit wenig oder keinen Veränderungen im Code läuft.
 Dabei besitzt man die Power und Geschwindigkeit von nativen Anwendungen.
 Obwohl **Qt** ursprünglich in *C++* geschrieben wurde,
-gibt es verschiedene Ports für andere Sprachen: *[PyQt](https://learnxinyminutes.com/docs/pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
+gibt es verschiedene Ports für andere Sprachen: *[PyQt](../pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
 
 **Qt** eignet sich hervorragend zum Erstellen von Anwendungen mit grafischer Benutzeroberfläche (GUI).
 Dieses Tutorial zeigt, wie man das in *C++* macht.

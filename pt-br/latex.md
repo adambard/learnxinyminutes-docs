@@ -272,8 +272,8 @@ o pacote hyperref no preâmbulo com o comando:
 \end{verbatim}
 
 Existem dois tipos principais de links: URL visíveis \\
-\url{https://learnxinyminutes.com/docs/latex/}, ou
-\href{https://learnxinyminutes.com/docs/latex/}{um texto alternativo}
+\url{https://learnxinyminutes.com/latex/}, ou
+\href{https://learnxinyminutes.com/latex/}{um texto alternativo}
 % Você não pode adicionar espaços extras ou símbolos especiais no texto
 % alternativo, pois isso causará problemas na compilação.
 

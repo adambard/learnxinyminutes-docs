@@ -10,7 +10,7 @@ translators:
 
 小心！可以用函数完成的事用宏去实现可不是什么好事。你应该仅在需要控制参数是否或者何时eval的时候使用宏。
 
-你应该熟悉Clojure.确保你了解[Y分钟学Clojure](http://learnxinyminutes.com/docs/zh-cn/clojure-cn/)中的所有内容。
+你应该熟悉Clojure.确保你了解[Y分钟学Clojure](../clojure/)中的所有内容。
 
 ```clojure
 ;; 使用defmacro定义宏。宏应该输出一个可以作为clojure代码演算的列表。

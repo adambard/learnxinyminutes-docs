@@ -494,7 +494,7 @@ require(plyr)
 #########################
 
 # "pets.csv" 是网上的一个文本
-pets <- read.csv("http://learnxinyminutes.com/docs/pets.csv")
+pets <- read.csv("https://learnxinyminutes.com/pets.csv")
 pets
 head(pets, 2) # 前两行
 tail(pets, 1) # 最后一行

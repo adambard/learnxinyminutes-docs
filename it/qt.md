@@ -6,7 +6,7 @@ translators:
     - ["Ale46", "https://gihub.com/ale46"]
 ---
 
-**Qt** è un framework ampiamente conosciuto per lo sviluppo di software multipiattaforma che può essere eseguito su varie piattaforme software e hardware con modifiche minime o nulle nel codice, pur avendo la potenza e la velocità delle applicazioni native. Sebbene **Qt** sia stato originariamente scritto in *C++*, ci sono diversi porting in altri linguaggi: *[PyQt](https://learnxinyminutes.com/docs/pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
+**Qt** è un framework ampiamente conosciuto per lo sviluppo di software multipiattaforma che può essere eseguito su varie piattaforme software e hardware con modifiche minime o nulle nel codice, pur avendo la potenza e la velocità delle applicazioni native. Sebbene **Qt** sia stato originariamente scritto in *C++*, ci sono diversi porting in altri linguaggi: *[PyQt](../pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
 
 **Qt** è ottimo per la creazione di applicazioni con interfaccia utente grafica (GUI). Questo tutorial descrive come farlo in *C++*.
 

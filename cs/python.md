@@ -12,7 +12,7 @@ filename: learnpython-cz.py
 Python byl vytvořen Guidem Van Rossum v raných 90. letech. Nyní je jedním z nejpopulárnějších jazyků.
 Zamiloval jsem si Python pro jeho syntaktickou čistotu - je to vlastně spustitelný pseudokód.
 
-Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit starší Python 2.7](http://learnxinyminutes.com/docs/pythonlegacy/).
+Poznámka: Tento článek je zaměřen na Python 3. Zde se můžete [naučit starší Python 2.7](/pythonlegacy/).
 
 ```python
 # Jednořádkový komentář začíná křížkem

@@ -13,7 +13,7 @@ alguns recursos úteis de linguagens estaticamente tipadas.
 
 Somente recursos específicos da linguagem Hack serão abordados aqui. Detalhes
 sobre a sintaxe do PHP estão disponíveis no
-[artigo PHP](http://learnxinyminutes.com/docs/php/) neste site.
+[artigo PHP](../php/) neste site.
 
 ```php
 <?hh

@@ -11,7 +11,7 @@ software multi-plataforma que pode rodar em vários outras plataformas de
 softwares e hardwares com pouca ou nenhuma alteração no código, enquanto mantém
 o poder e a velocidade de uma aplicação nativa. Embora o **Qt** tenha sido
 originalmente escrito em *C++*, é possível utilizá-lo em outras linguagens:
-*[PyQt](https://learnxinyminutes.com/docs/pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
+*[PyQt](../pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
 
 **Qt** é ótimo para criar aplicações com interface gráfica (GUI). Esse tutorial
 será feito em *C++*.

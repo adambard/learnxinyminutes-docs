@@ -11,7 +11,7 @@ translators:
 [Paren](https://bitbucket.org/ktg/paren) ist ein Dialekt von Lisp.
 Es ist als eingebettete Sprache konzipiert.
 
-Manche Beispiele sind von <http://learnxinyminutes.com/docs/racket/>.
+Manche Beispiele sind von [Racket](/racket/).
 
 ```scheme
 ;;; Kommentare

@@ -9,7 +9,7 @@ filename: learntypescript-zh-tw.ts
 
 TypeScript 是為開發大型 JavaScript 應用程式而設計的語言。它為 JavaScript 導入某些程式語言常見的一些概念，諸如：類別（class）、模組（module）、介面（interface）、泛型（generic type）和靜態型別（static type）。TypeScript 是 JavaScript 的「超集」（superset）：意即建立在 JavaScript 的基礎上，所有 JavaScript 語法皆可在 TypeScript 中使用。因此，TypeScript 可以無縫導入到任何 JavaScript 專案中。TypeScript 編譯器最終會編譯成 JavaScript 程式碼。
 
-本文將只專注於 TypeScript 的額外語法，其他請參考 [JavaScript 的指南](/docs/javascript-tw)
+本文將只專注於 TypeScript 的額外語法，其他請參考 [JavaScript 的指南](../javascript/)
 
 要測試 TypeScript 的編譯器，請前往 [Playground](https://www.typescriptlang.org/play)，在那裡你可以輸入程式碼，獲得自動完成（autocomplete）功能，並查看編譯過的 JavaScript 程式碼。
 

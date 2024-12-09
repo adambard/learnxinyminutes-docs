@@ -108,7 +108,7 @@ laminat
 
 ;; EDN (Genişletilebilir Veri Notasyonu), # sembolü ile genişletilebilir.
 
-#benimuygulamam/bağlantı {:içerik "Y dakikada EDN Öğren" :url "https://learnxinyminutes.com/docs/tr-tr/edn-tr" :tıhlama-aksiyonu yırrttılll!}
+#benimuygulamam/bağlantı {:içerik "Y dakikada EDN Öğren" :url "https://learnxinyminutes.com/tr/edn" :tıhlama-aksiyonu yırrttılll!}
 
 ;; Ve bu yapıyı yorumlayacak bir de yapı gerekiyor.
 (defn ->bağlantı [props]
@@ -122,8 +122,8 @@ laminat
 
 (clojure.edn/read-string
   {:readers {'benimuygulamam/bağlantı ->bağlantı}}
-  "#benimuygulamam/bağlantı {:içerik \"Y dakikada EDN Öğren\" :url \"https://learnxinyminutes.com/docs/tr-tr/edn-tr\" :tıhlama-aksiyonu yırrttılll!}")
-;=> "<a href='https://learnxinyminutes.com/docs/tr-tr/edn-tr'>Y dakikada EDN Öğren</a>"
+  "#benimuygulamam/bağlantı {:içerik \"Y dakikada EDN Öğren\" :url \"https://learnxinyminutes.com/tr/edn\" :tıhlama-aksiyonu yırrttılll!}")
+;=> "<a href='https://learnxinyminutes.com/tr/edn'>Y dakikada EDN Öğren</a>"
 
 ;; |--------------------------------|
 ;  |--- Ön Tanımlı Genişletmeler ---|

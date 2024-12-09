@@ -14,7 +14,7 @@ Python a été créé par Guido Van Rossum au début des années 90. C'est maint
 langages les plus populaires. Je suis tombé amoureux de Python pour la clarté de sa syntaxe.
 C'est tout simplement du pseudo-code exécutable.
 
-Note : Cet article s'applique spécifiquement à Python 3. Jettez un coup d'oeil [ici](http://learnxinyminutes.com/docs/fr-fr/python-fr/) pour apprendre le vieux Python 2.7
+Note : Cet article s'applique spécifiquement à Python 3. Jettez un coup d'oeil [ici](../pythonlegacy/) pour apprendre le vieux Python 2.7
 
 ```python
 # Un commentaire d'une ligne commence par un dièse

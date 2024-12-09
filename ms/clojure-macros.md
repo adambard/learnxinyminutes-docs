@@ -14,7 +14,7 @@ Jaga-jaga. Penggunaan macro boleh dikatakan tidak elok jika digunakan secara ber
 Gunakan macro hanya apabila anda mahu lebih kawalan terhadap sesuatu form.
 
 Biasakan diri dengan Clojure terlebih dahulu. Pastikan anda memahami semuanya di 
-[Clojure in Y Minutes](/docs/ms-my/clojure-my/).
+[Clojure in Y Minutes](../clojure/).
 
 ```clojure
 ;; Define macro menggunakan defmacro. Macro anda akan output list yang boleh

@@ -9,7 +9,7 @@ filename: jquery.js
 
 jQuery is a JavaScript library that helps you "do more, write less". It makes many common JavaScript tasks and makes them easier to write. jQuery is used by many big companies and developers everywhere. It makes AJAX, event handling, document manipulation, and much more, easier and faster.
 
-Because jQuery is a JavaScript library you should [learn JavaScript first](https://learnxinyminutes.com/docs/javascript/)
+Because jQuery is a JavaScript library you should [learn JavaScript first](../javascript/)
 
 **NOTE**: jQuery has fallen out of the limelight in recent years, since you can achieve the same thing with the vanilla DOM (Document Object Model) API. So the only thing it is used for is a couple of handy features, such as the [jQuery date picker](https://api.jqueryui.com/datepicker) (which actually has a standard, unlike the `<input type="date">` HTML element), and the obvious decrease in the code length.
 

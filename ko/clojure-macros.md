@@ -13,7 +13,7 @@ translators:
 주의하시기 바랍니다. 함수로도 충분히 해결할 수 있는 문제를 매크로로 작성하게 된다면, 좋은 코드라고 할 수 없습니다.
 인자가 평가되는 시점을 제어해야 할 때만 매크로를 사용하는게 좋습니다.
 
-Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes](/docs/ko-kr/clojure-kr/)를 한번 읽어보세요.
+Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes](../clojure/)를 한번 읽어보세요.
 
 ```clojure
 ;; defmacro로 매크로를 정의합니다.

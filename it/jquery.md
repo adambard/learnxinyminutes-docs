@@ -8,7 +8,7 @@ translators:
 
 jQuery è una libreria JavaScript che ti aiuta a "fare di più, scrivendo meno". Rende molte attività comuni di JavaScript più facili da scrivere. jQuery è utilizzato da molte grandi aziende e sviluppatori in tutto il mondo. Rende AJAX, gestione degli eventi, manipolazione dei documenti e molto altro, più facile e veloce.
 
-Visto che jQuery è una libreria JavaScript dovresti prima [imparare JavaScript](https://learnxinyminutes.com/docs/javascript/)
+Visto che jQuery è una libreria JavaScript dovresti prima [imparare JavaScript](../javascript/)
 
 ```js
 ///////////////////////////////////

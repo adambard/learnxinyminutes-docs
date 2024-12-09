@@ -9,7 +9,7 @@ contributors:
 
 [Paren](https://bitbucket.org/ktg/paren) is a dialect of Lisp. It is designed to be an embedded language.
 
-Some examples are from <http://learnxinyminutes.com/docs/racket/>.
+Some examples are from [Racket](../racket/).
 
 ```scheme
 ;;; Comments

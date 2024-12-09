@@ -16,7 +16,7 @@ Sei aber vorsichtig, es wird als schlechter Stil angesehen, wenn du
 ein Macro schreibst, obwohl eine Funktion genauso gut funktionieren würde.
 Verwende nur dann ein Macro, wenn du Kontrolle darüber brauchst, wann oder ob Argumente in einer Form evaluiert werden.
 
-Wenn du mit Clojure vertraut sein möchtest, stelle sicher, dass du alles in [Clojure in Y Minutes](/docs/clojure/) verstehst.
+Wenn du mit Clojure vertraut sein möchtest, stelle sicher, dass du alles in [Clojure in Y Minutes](../clojure/) verstehst.
 
 ```clojure
 ;; Definiere ein Macro mit defmacro. Dein Macro sollte eine Liste zurückgeben,

@@ -8,8 +8,6 @@ translators:
 
 [Paren](https://bitbucket.org/ktg/paren) - это диалект языка Лисп. Он спроектирован как встроенный язык.
 
-Примеры взяты <http://learnxinyminutes.com/docs/racket/>.
-
 ```scheme
 ;;; Комментарии
 # комментарии

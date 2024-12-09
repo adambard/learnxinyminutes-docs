@@ -15,7 +15,7 @@ Python được tạo ra bởi Guido van Rossum vào đầu những năm 90s. Ng
 nhất còn tồn tại. Tôi thích Python vì sự rõ ràng, trong sáng về mặt cú pháp. Về cơ bản, Python có thể coi
 như một loại mã giả (pseudocode) có thể thực thi được.
 
-Lưu ý: Bài viết này áp dụng riêng cho Python 3. Truy cập [vào đây](http://learnxinyminutes.com/docs/pythonlegacy/) nếu bạn muốn học phiên bản cũ Python 2.7
+Lưu ý: Bài viết này áp dụng riêng cho Python 3. Truy cập [vào đây](/pythonlegacy/) nếu bạn muốn học phiên bản cũ Python 2.7
 
 ```python
 # Dòng bình luận (comment) bắt đầu bằng dấu thăng (#)

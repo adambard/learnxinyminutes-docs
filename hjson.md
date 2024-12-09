@@ -5,7 +5,7 @@ contributors:
   - ["MrTeferi", "https://github.com/MrTeferi"]
 ---
 
-Hjson is an attempt to make [JSON](https://learnxinyminutes.com/docs/json/) more human readable.
+Hjson is an attempt to make [JSON](../json/) more human readable.
 
 Hjson is a syntax extension to JSON. 
 It's NOT a proposal to replace JSON or to incorporate it into the JSON spec itself. 

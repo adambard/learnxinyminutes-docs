@@ -9,7 +9,7 @@ filename: learnhack-es.hh
 
 Hack es un superconjunto de PHP que se ejecuta en una máquina virtual llamada HHVM. Hack es casi totalmente compatible con código PHP ya existente y añade varias características típicas de los lenguajes de programación estáticamente tipados.
 
-En este artículo sólo se cubren las características específicas de Hack. Los detalles sobre la sintaxis de PHP están en el [artículo sobre PHP](http://learnxinyminutes.com/docs/php/) de esta misma web.
+En este artículo sólo se cubren las características específicas de Hack. Los detalles sobre la sintaxis de PHP están en el [artículo sobre PHP](../php/) de esta misma web.
 
 ```php
 <?hh

@@ -8,7 +8,7 @@ contributors:
     
 ---
 
-**Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*, there are its ports to other languages: *[PyQt](https://learnxinyminutes.com/docs/pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
+**Qt** is a widely-known framework for developing cross-platform software that can be run on various software and hardware platforms with little or no change in the code, while having the power and speed of native applications. Though **Qt** was originally written in *C++*, there are its ports to other languages: *[PyQt](../pyqt/)*, *QtRuby*, *PHP-Qt*, etc.
 
 **Qt** is great for creating applications with graphical user interface (GUI). This tutorial is how to do it in *C++*.
 

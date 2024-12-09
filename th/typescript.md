@@ -7,7 +7,7 @@ filename: learntypescript-th.ts
 
 TypeScript เป็นภาษาที่มีเป้าหมายเพื่อทำให้การพัฒนาซอฟต์แวร์ขนาดใหญ่ด้วย JavaScript ทำได้ง่ายขึ้น โดยที่ TypeScript ได้เพิ่มแนวคิดที่พบทั่วไป อาทิ classes, modules, interfaces, generics และ static typing (ไม่บังคับ) เข้าไปในภาษา JavaScript ดังนั้น TypeScript ก็เลยเป็น Super Set ของ JavaScript อีกที โค้ด JavaScript ทุกส่วน ก็คือโค้ดที่ทำงานได้ถูกต้องใน TypeScript ทำให้เราเพิ่ม TypeScript เข้าไปใช้ในโปรเจคการพัฒนาของเราได้ไม่ยากเลย เพราะ TypeScript คอมไพล์ผลลัพธ์ออกมาเป็น JavaScript ในท้ายสุดอยู่ดี
 
-บทความนี้จะเน้นเฉพาะ syntax ส่วนขยายของ TypeScript ซึ่งจะไม่รวมกับที่มีใน  [JavaScript](/docs/javascript)
+บทความนี้จะเน้นเฉพาะ syntax ส่วนขยายของ TypeScript ซึ่งจะไม่รวมกับที่มีใน  [JavaScript](/javascript/)
 
 การทดสอบเขียน TypeScript เริ่มได้ง่าย ๆ โดยเข้าไปที่
 [Playground](https://www.typescriptlang.org/Playground) ซึ่งคุณจะเขียนโค้ดพร้อม autocomplete และเห็นเลยว่ามันจะแปลงมาเป็นผลลัพธ์แบบ JavaScript อย่างไร

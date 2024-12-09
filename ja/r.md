@@ -706,7 +706,7 @@ require(plyr)
 
 # "pets.csv"は、インターネット上に置いてあるファイルです
 # (しかし、自分のPCにあるのと同じぐらい簡単に扱う事ができます)
-pets <- read.csv("http://learnxinyminutes.com/docs/pets.csv")
+pets <- read.csv("https://learnxinyminutes.com/pets.csv")
 pets
 head(pets, 2) # 最初の2行
 tail(pets, 1) # 最後の行

@@ -14,7 +14,7 @@ Use a macro only when you need control over when or if the arguments to a form w
 be evaluated.
 
 You'll want to be familiar with Clojure. Make sure you understand everything in
-[Clojure in Y Minutes](/docs/clojure/).
+[Clojure in Y Minutes](../clojure/).
 
 ```clojure
 ;; Define a macro using defmacro. Your macro should output a list that can
