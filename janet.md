@@ -3,6 +3,7 @@ name: Janet
 filename: learnJanet.janet
 contributors:
     - ["John Gabriele", "http://www.unexpected-vortices.com/"]
+    - ["Nathaniel Kaiser", "http://nathanielkaiser.xyz/"]
 ---
 
 [Janet](https://janet-lang.org/) is a Lisp-like (Clojure-like),
@@ -329,3 +330,6 @@ This tour didn't cover a number of other features such as modules, fibers,
 PEGs, macros, etc., but should give you a taste of what Janet is like. See
 the [Janet manual](https://janet-lang.org/docs/index.html) and the [Janet API
 docs](https://janet-lang.org/api/index.html) for more info.
+
+Also check out [Janet for Mortals](https://janet.guide/) for an in-depth ebook
+on Janet.
