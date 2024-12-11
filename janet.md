@@ -3,7 +3,6 @@ name: Janet
 filename: learnJanet.janet
 contributors:
     - ["John Gabriele", "http://www.unexpected-vortices.com/"]
-    - ["Nathaniel Kaiser", "http://nathanielkaiser.xyz/"]
 ---
 
 [Janet](https://janet-lang.org/) is a Lisp-like (Clojure-like),
