@@ -1,9 +1,8 @@
 ---
+name: Nmap
 category: tool
-tool: Nmap
 contributors:
   - [ "Sebastian Oberdorfer" , "https://github.com/SOberdorfer" ]
-filename: LearnNmap.txt
 ---
 
 ### Learn Nmap in Y Minutes
