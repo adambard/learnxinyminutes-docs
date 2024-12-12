@@ -558,6 +558,9 @@ dwight.name #=> "Dwight K. Schrute"
 # Calling of a class method
 Human.say('Hi') #=> "Hi"
 
+# Tip: Use .inspect to see instance with instance variables
+puts jim.inspect #=> #<Human:0x000058b3c7f0c7a0 @name="Jim Halpert", @age=0>
+
 # Variable's scopes are defined by the way we name them.
 # Variables that start with $ have global scope.
 $var = "I'm a global var"
