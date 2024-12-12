@@ -55,6 +55,12 @@ a multi-line comment with the # character.
 3 | 5 #=> 7
 3 ^ 5 #=> 6
 
+# Overload bitwise operators to perform
+# set operations
+[1,2] & [2,3,4] #=> [2]
+[1,2] | [2,3,4] #=> [1,2,3,4]
+[1,2] ^ [2,3,4] #=> [1,3,4]
+
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
 1.+(3) #=> 4
