@@ -1,6 +1,5 @@
 ---
-language: CSV
-filename: learncsv.csv
+category: Algorithms & Data Structures
 contributors:
 - [Timon Erhart, 'https://github.com/turbotimon/']
 ---
@@ -26,7 +25,7 @@ Bob, 25, 1998-11-02
 Charlie, 35, 1988-03-21
 ```
 
-**Delimiters for Rows and Columns**
+## Delimiters for Rows and Columns
 
 Rows are typically separated by line breaks (`\n` or `\r\n`), while columns
  (fields) are separated by a specific delimiter. Although commas are the most
@@ -44,7 +43,7 @@ Bob; 25; 45,75
 Charlie; 35; 60,00
 ```
 
-**Data Types**
+## Data Types
 
 CSV files do not inherently define data types. Numbers and dates are stored as
  plain text, and their interpretation depends on the software importing the
@@ -59,7 +58,7 @@ Hello World, Interpreted as text (string)
 "1234", Interpreted as text instead of a number
 ```
 
-**Quoting Strings and Special Characters**
+## Quoting Strings and Special Characters
 
 Quoting strings is only required if the string contains the delimiter, special
  characters, or otherwise could be interpreted as a number. However, it is
@@ -80,7 +79,7 @@ However, make sure that for one document, the quoting method is consistent.
  For example, the last two examples of quoting with either "" or \" would
  not be consistent and could cause problems.
 
-**Encoding**
+## Encoding
 
 Different encodings are used. Most modern CSV files use UTF-8 encoding, but
  older systems might use others like ASCII or ISO-8859.
@@ -89,7 +88,7 @@ If the file is transferred or shared between different systems, it is a good
  practice to explicitly define the encoding used, to avoid issues with
  character misinterpretation.
 
-### More Resources
+## More Resources
 
 + [Wikipedia](https://en.wikipedia.org/wiki/Comma-separated_values)
 + [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180)
