@@ -194,32 +194,23 @@ echo "0xA" + 1       # Number
 #  Variables
 # ###########
 
-var b_my_var = 1        # Local to current buffer
-var w_my_var = 1        # Local to current window
-var t_my_var = 1        # Local to current tab page
-var g_my_var = 1        # Global variable
-var l_my_var = 1        # Local to current function
-var s_my_var = 1        # Local to current script file
-var a_my_arg = 1        # Function argument
-
-# The Vim scope is read-only
-echo true            # Special built-in Vim variables
+var b:my_var = 1        # Local to current buffer
+var w:my_var = 1        # Local to current window
+var t:my_var = 1        # Local to current tab page
+var g:my_var = 1        # Global variable
 
 # Access special Vim memory like variables
 var @a = 'Hello'        # Register
 var $PATH=''            # Environment variable
 var &textwidth = 79     # Option
-var &l_textwidth = 79   # Local option
-var &g_textwidth = 79   # Global option
+var &l:textwidth = 79   # Local option
+var &g:textwidth = 79   # Global option
 
 # Access scopes as dictionaries
 echo b:                # All buffer variables
 echo w:                # All window variables
 echo t:                # All tab page variables
 echo g:                # All global variables
-echo l:                # All local variables
-echo s:                # All script variables
-echo a:                # All function arguments
 echo v:                # All Vim variables
 
 # Constant variables
@@ -227,7 +218,7 @@ const x = 10            # Constant
 
 # Function reference variables
 var IsString = {x -> type(x) == type('')}    # Global
-var s_isNumber = {x -> type(x) == type(0)}   # Local
+var isNumber = {x -> type(x) == type(0)}   # Local
 
 # Multiple value binding
 var [x, y] = [1, 2]
@@ -448,5 +439,5 @@ endif
 var g_loaded_my_plugin = true
 
 # Default values
-var s_greeting = get(g:, 'my_plugin_greeting', 'Hello')
+var greeting = get(g:, 'my_plugin_greeting', 'Hello')
 ```
