@@ -23,6 +23,6 @@ jobs:
       - name: Files are UTF-8
         run: ./lint/encoding.sh .
       - name: Lint Markdown
-        run: mdl . --ignore-front-matter -r MD003,MD011,MD019,MD023,MD027,MD028,MD035,MD037,MD038,MD039,MD047
+        run: mdl . --ignore-front-matter -r MD003,MD005,MD011,MD019,MD023,MD027,MD028,MD035,MD037,MD038,MD039,MD047
       - name: Lint frontmatter
         run: ./lint/frontmatter.py .

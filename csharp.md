@@ -1314,20 +1314,21 @@ namespace Csharp7
 ```
 
 ## Topics Not Covered
+
 ✨ New, 👍 Old, 🎈 LTS, 🔥 Cross-platform, 🎁 Windows-only
 
- * Attributes
+* Attributes
 
- * Asynchronous Programming
+* Asynchronous Programming
 
- * Web Development
+* Web Development
     * ASP.NET Core ✨
 
- * Desktop Development
- 	* Windows Presentation Foundation 👍 🎈 🎁
+* Desktop Development
+    * Windows Presentation Foundation 👍 🎈 🎁
     * Universal Windows Platform ✨ 🎁
     * Uno Platform 🔥 ✨
- 	* WinForms 👍 🎈 🎁
+    * WinForms 👍 🎈 🎁
     * Avalonia 🔥 ✨
     * WinUI ✨ 🎁
 
@@ -1335,16 +1336,14 @@ namespace Csharp7
     * Xamarin.Forms 👍
     * MAUI ✨
 
-
 ## Further Reading
 
- * [C# language reference](https://docs.microsoft.com/dotnet/csharp/language-reference/)
- * [Learn .NET](https://dotnet.microsoft.com/learn)
- * [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
- * [DotNetPerls](http://www.dotnetperls.com)
- * [C# in Depth](http://manning.com/skeet2)
- * [Programming C# 5.0](http://shop.oreilly.com/product/0636920024064.do)
- * [LINQ Pocket Reference](http://shop.oreilly.com/product/9780596519254.do)
- * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
- * [freeCodeCamp - C# Tutorial for Beginners](https://www.youtube.com/watch?v=GhQdlIFylQ8)
- 
+* [C# language reference](https://docs.microsoft.com/dotnet/csharp/language-reference/)
+* [Learn .NET](https://dotnet.microsoft.com/learn)
+* [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+* [DotNetPerls](http://www.dotnetperls.com)
+* [C# in Depth](http://manning.com/skeet2)
+* [Programming C# 5.0](http://shop.oreilly.com/product/0636920024064.do)
+* [LINQ Pocket Reference](http://shop.oreilly.com/product/9780596519254.do)
+* [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
+* [freeCodeCamp - C# Tutorial for Beginners](https://www.youtube.com/watch?v=GhQdlIFylQ8)
