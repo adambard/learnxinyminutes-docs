@@ -3,10 +3,9 @@ contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
     - ["Ryan Plant", "https://github.com/ryanplant-au"]
-translator:
+translators:
     - ["Adrian Carrascal", "https://github.com/acarrascalgarcia"]
 filename: learnelixir-es.ex
-
 ---
 
 Elixir es un lenguaje funcional moderno construido sobre la máquina virtual de Erlang.

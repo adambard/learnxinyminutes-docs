@@ -2,9 +2,8 @@
 filename: LearnGit-es.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
-translator:
+translators:
     - ["Raúl Ascencio", "http://rscnt.github.io"]
-
 ---
 
 Git es un sistema de control de versiones distribuido diseñado para manejar
