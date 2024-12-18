@@ -515,7 +515,7 @@ __unsafe_unretained NSArray *unsafeArray; // Comme __weak, mais la variable n'es
 // l'objet est supprimé
 ```
 
-##  Lectures Complémentaires
+## Lectures Complémentaires
 
 [La Page Wikipedia de l'Objective-C](http://fr.wikipedia.org/wiki/Objective-C)
 

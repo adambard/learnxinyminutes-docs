@@ -142,7 +142,7 @@ Ces ressources apportent plus de détails avec des exemples et des définitions.
 * [Algorithmes](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
 * [Conception algorithmique](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
 
-##  Ressources en ligne
+## Ressources en ligne
 
 * [MIT](http://web.mit.edu/16.070/www/lecture/big_o.pdf)
 * [KhanAcademy](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation)
