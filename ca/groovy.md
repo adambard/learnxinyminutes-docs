@@ -2,7 +2,7 @@
 filename: learngroovy-ca.groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
-translations:
+translators:
     - ["Xavier Sala Pujolar", "http://github.com/utrescu"]
 ---
 

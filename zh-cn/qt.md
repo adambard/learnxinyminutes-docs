@@ -4,7 +4,6 @@ contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]
 translators:
     - ["GengchenXU", "https://github.com/GengchenXU"]
-    
 ---
 
 **Qt** Qt是一个广为人知的框架，用于开发跨平台软件，该软件可以在各种软件和硬件平台上运行，代码几乎没有变化，同时具有本机应用程序的能力和速度。虽然**Qt**最初是用*C*++，但也有其他语言的端口: *[PyQt](../pyqt/)*, *QtRuby*, *PHP-Qt*, 等等.

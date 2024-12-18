@@ -1,7 +1,7 @@
 ---
 contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
-translator:
+translators:
     - ["Agostino Fiscale", "https://github.com/agostinofiscale"]
 filename: LearnComposer-it.sh
 ---

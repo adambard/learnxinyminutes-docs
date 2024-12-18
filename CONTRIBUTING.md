@@ -31,13 +31,6 @@ review them more effectively and/or individually.
      language in question.
    * Keep articles succinct and scannable. We all know how to use Google here.
 * **Use UTF-8**
-   * For translations (or EN articles with non-ASCII characters) please ensure
-     your file is UTF-8 encoded.
-   * Leave out the byte-order-mark (BOM) at the start of the file (in Vim, use
-     `:set nobomb`).
-   * You can check if the file contains a BOM on Linux/Unix systems by running
-    `file language.html.markdown`  You will see this if it uses a BOM:
-    `UTF-8 Unicode (with BOM) text`.
 
 ### Header configuration
 
@@ -48,15 +41,18 @@ called frontmatter.
 The following fields are necessary for English articles about programming
 languages:
 
-* **name** The human-readable name of the programming language
-* **contributors** A list of [author, URL] lists to credit
+* `name`: The human-readable name of the programming language
+* `contributors`: A list of [*author*, *URL*] lists to credit, *URL* is optional
 
 Other fields:
 
-* **category**: The category of the article. So far, can be one of *language*,
+* `category`: The category of the article. So far, can be one of *language*,
   *tool* or *Algorithms & Data Structures*. Defaults to *language* if omitted.
-* **filename**: The filename for this article's code. It will be fetched, mashed
+* `filename`: The filename for this article's code. It will be fetched, mashed
   together, and made downloadable.
+
+Translations should also include:
+* `translators`: A list of [*translator*, *URL*] lists to credit, *URL* is optional
 
 Non-English articles inherit frontmatter values from the English article (if it exists)
 but you can overwrite them.
@@ -64,13 +60,13 @@ but you can overwrite them.
 Here's an example header for Ruby:
 
 ```yaml
-*--
+---
 name: Ruby
 filename: learnruby.rb
 contributors:
     - ["Doktor Esperanto", "http://example.com/"]
     - ["Someone else", "http://someoneelseswebsite.com/"]
-*--
+---
 ```
 
 ### Syntax highlighter

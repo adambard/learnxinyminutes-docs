@@ -11,8 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install -r lint/requirements.txt
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
       - run: gem install mdl
-      - run: mdl . --ignore-front-matter -r MD003,MD011,MD023,MD027,MD028,MD035,MD037,MD038,MD039,MD047
+
+      - name: Files are UTF-8
+        run: ./lint/encoding.sh .
+      - name: Lint Markdown
+        run: mdl . --ignore-front-matter -r MD003,MD011,MD023,MD027,MD028,MD035,MD037,MD038,MD039,MD047
+      - name: Lint frontmatter
+        run: ./lint/frontmatter.py .

@@ -8,7 +8,6 @@ contributors:
     - ["Jason Stathopulos", "http://github.com/SpiritBreaker226"]
     - ["Milo Gilad", "http://github.com/Myl0g"]
     - ["Adem Budak", "https://github.com/p1v0t"]
-    
 filename: LearnGit-tr.txt
 ---
 
