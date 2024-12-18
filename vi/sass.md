@@ -16,7 +16,7 @@ Bài hướng dẫn này sử dụng SCSS.
 
 Nếu bạn đọc đã quen thuộc với CSS3 thì sẽ tương đối nhanh chóng để nắm được Sass. Nó không cung cấp thuộc tính để style CSS mới nhưng đưa ra những công cụ để có thể viết CSS hiệu quả hơn và có thể bảo trì dễ dàng hơn.
 
-```sass
+```scss
 // Comment (chú thích) một dòng sẽ bị xóa khi Less được biên dịch thành CSS
 
 /* Comment trên nhiều dòng sẽ được giữ lại */
