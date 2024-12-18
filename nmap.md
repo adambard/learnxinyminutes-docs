@@ -2,7 +2,7 @@
 name: Nmap
 category: tool
 contributors:
-  - [ "Sebastian Oberdorfer" , "https://github.com/SOberdorfer" ]
+    - ["Sebastian Oberdorfer", "https://github.com/SOberdorfer"]
 ---
 
 ### Learn Nmap in Y Minutes

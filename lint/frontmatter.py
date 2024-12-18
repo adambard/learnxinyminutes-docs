@@ -19,14 +19,14 @@ def extract_yaml_frontmatter(file_path):
 
 yaml_config = yamllint.config.YamlLintConfig(
     """{
-        extends: relaxed, 
+        extends: default,
         rules: {
             commas: disable,
             trailing-spaces: disable,
             indentation: disable,
             line-length: disable,
             empty-lines: disable
-        } 
+        }
     }"""
 )
 
