@@ -4,8 +4,6 @@ contributors:
   - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]
 ---
 
-# Y = 20 Dakika.
-
 ### Genişletilebilir Veri Notasyonu (EDN, Extensible Data Notation).
 
 ### Okunuşu: (Türkçe: ey-di-en), (English: eed-n)
