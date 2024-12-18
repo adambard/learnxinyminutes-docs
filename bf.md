@@ -1,6 +1,6 @@
 ---
 name: BF
-learn_x_in_y_name: brainfuck
+where_x_eq_name: brainfuck
 filename: bf.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
