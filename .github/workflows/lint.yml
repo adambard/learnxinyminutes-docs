@@ -22,6 +22,16 @@ jobs:
 
       - name: Files are UTF-8
         run: ./lint/encoding.sh .
+      - name: No non-breaking spaces
+        run: |
+          if grep -rI --include='*.md' $'\u00A0' .; then
+            exit 1
+          fi
+      - name: No zero-width spaces
+        run: |
+          if grep -rI --include='*.md' $'\u200B' .; then
+            exit 1
+          fi
       - name: Lint Markdown
         run: mdl . --ignore-front-matter -r MD003,MD005,MD011,MD018,MD019,MD023,MD025,MD027,MD028,MD030,MD035,MD037,MD038,MD039,MD047
       - name: Lint frontmatter
