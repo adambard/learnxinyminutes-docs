@@ -22,14 +22,19 @@ jobs:
 
       - name: Files are UTF-8
         run: ./lint/encoding.sh .
-      - name: No non-breaking spaces
+      - name: "No non-breaking spaces"
         run: |
           if grep -rI --include='*.md' $'\u00A0' .; then
             exit 1
           fi
-      - name: No zero-width spaces
+      - name: "No zero-width spaces"
         run: |
           if grep -rI --include='*.md' $'\u200B' .; then
+            exit 1
+          fi
+      - name: "No carriage return"
+        run: |
+          if grep -rI --include='*.md' $'\u000D' .; then
             exit 1
           fi
       - name: Lint Markdown
