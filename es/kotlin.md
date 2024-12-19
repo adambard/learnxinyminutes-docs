@@ -36,7 +36,7 @@ fun main(args: Array<String>) {
     /*
     En la mayoría de los casos, Kotlin puede determinar cuál es el tipo de una variable,
     de tal manera que no tenemos que especificarlo explícitamente cada vez.
-    Podemos declarar explícitamente el tipo de una variable así:
+    Podemos declarar explícitamente el tipo de una variable así:
     */
     val foo: Int = 7
     
@@ -59,7 +59,7 @@ fun main(args: Array<String>) {
 
     /*
     Una cadena está delimitada por comillas triple (""").
-    Estas cadenas pueden contener saltos de línea y otros caracteres.
+    Estas cadenas pueden contener saltos de línea y otros caracteres.
     */
     val fooRawString = """
     fun helloWorld(val name : String) {
@@ -70,7 +70,7 @@ fun main(args: Array<String>) {
 
     /*
     Las cadenas pueden contener interpolación de cadenas.
-    La interpolación de cadenas comienza con un signo de dólar ($).
+    La interpolación de cadenas comienza con un signo de dólar ($).
     */
     val fooTemplateString = "$fooString tiene ${fooString.length} caracteres"
     println(fooTemplateString)
@@ -78,8 +78,8 @@ fun main(args: Array<String>) {
     /*
     Para que una variable pueda aceptar valor nulo se debe especificar
     explícitamente como anulable añadiendole ? a su tipo.
-    Podemos acceder a una variable anulable mediante el uso del operador ?.
-    Podemos utilizar el operador ?: para especificar un valor alternativo
+    Podemos acceder a una variable anulable mediante el uso del operador ?.
+    Podemos utilizar el operador ?: para especificar un valor alternativo
     a usar si una variable es nula.
     */
     var fooNullable: String? = "abc"

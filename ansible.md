@@ -352,7 +352,7 @@ Get familiar with how you can use roles in the simple_apache_role example
 ```
 playbooks/roles/simple_apache_role/
 ├── tasks
-│   └── main.yml
+│   └── main.yml
 └── templates
     └── main.yml
 ```

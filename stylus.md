@@ -81,8 +81,8 @@ a {
 
 /*
   You can store a CSS value (such as the color) of a variable.
-  Although it is optional, it is recommended to add $ before a variable name
-  so you can distinguish a variable from another CSS value.
+  Although it is optional, it is recommended to add $ before a variable name
+  so you can distinguish a variable from another CSS value.
 */
 
 $primary-color = #A3A4FF

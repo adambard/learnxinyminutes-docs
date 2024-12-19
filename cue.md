@@ -488,12 +488,12 @@ To make it concrete, consider the following:
 ```
 mymodule
 ├── config
-│   ├── a.cue
-│   └── b.cue
+│   ├── a.cue
+│   └── b.cue
 ├── cue.mod
-│   ├── module.cue
-│   ├── pkg
-│   └── usr
+│   ├── module.cue
+│   ├── pkg
+│   └── usr
 └── main.cue
 ```
 

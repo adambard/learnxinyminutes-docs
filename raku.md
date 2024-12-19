@@ -6,7 +6,7 @@ contributors:
     - ["Samantha McVey", "https://cry.nu"]
 ---
 
-Raku (formerly Perl 6) is a highly capable, feature-rich programming language
+Raku (formerly Perl 6) is a highly capable, feature-rich programming language
 made for at least the next hundred years.
 
 The primary Raku compiler is called [Rakudo](http://rakudo.org), which runs on

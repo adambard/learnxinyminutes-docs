@@ -244,7 +244,7 @@ gateways and routers.
 ## FUNCTIONS ##
   _functions:
     # Functions are callable procedures that can accept arguments and return 
-    # values all denoted with labels, like above
+    # values all denoted with labels, like above
 
     main:                                 # Programs begin with main func
       jal return_1                        # jal will store the current PC in $ra

@@ -248,7 +248,7 @@ module EjemploDeSecuencia =
     let secuencia1 = seq { yield "a"; yield "b" }
 
     // Las secuencias pueden usar yield y
-    // puede contener subsecuencias
+    // puede contener subsecuencias
     let extranio = seq {
         // "yield" agrega un elemento
         yield 1; yield 2;
@@ -262,7 +262,7 @@ module EjemploDeSecuencia =
     extranio |> Seq.toList
 
     // Las secuencias se pueden crear usando "unfold"
-    // Esta es la secuencia de fibonacci
+    // Esta es la secuencia de fibonacci
     let fib = Seq.unfold (fun (fst,snd) ->
         Some(fst + snd, (snd, fst + snd))) (0,1)
 
@@ -278,8 +278,8 @@ module EejemploDeTipoDeDatos =
 
     // Todos los datos son inmutables por defecto
 
-     // las tuplas son tipos anónimos simples y rápidos
-     // - Usamos una coma para crear una tupla
+     // las tuplas son tipos anónimos simples y rápidos
+     // - Usamos una coma para crear una tupla
     let dosTuplas = 1,2
     let tresTuplas = "a",2,true
 
@@ -301,7 +301,7 @@ module EejemploDeTipoDeDatos =
 
     // ------------------------------------
     // Los tipos de unión (o variantes) tienen un conjunto de elección
-     // Solo un caso puede ser válido a la vez.
+     // Solo un caso puede ser válido a la vez.
     // ------------------------------------
 
     // Usamos "type" con barra/pipe para definir una unión estándar
@@ -326,7 +326,7 @@ module EejemploDeTipoDeDatos =
     // ------------------------------------
 
     // Los tipos se pueden combinar recursivamente de formas complejas
-    // sin tener que crear subclases
+    // sin tener que crear subclases
     type Empleado =
       | Trabajador of Persona
       | Gerente of Empleado lista
@@ -349,9 +349,9 @@ module EejemploDeTipoDeDatos =
         | DireccionDeCorreoInvalido direccion -> () // no enviar
 
     // Combinar juntos, los tipos de unión y tipos de registro
-     // ofrece una base excelente para el diseño impulsado por el dominio.
-     // Puedes crear cientos de pequeños tipos que reflejarán fielmente
-     // el dominio.
+     // ofrece una base excelente para el diseño impulsado por el dominio.
+     // Puedes crear cientos de pequeños tipos que reflejarán fielmente
+     // el dominio.
 
     type ArticuloDelCarrito = { CodigoDelProducto: string; Cantidad: int }
     type Pago = Pago of float
@@ -368,17 +368,17 @@ module EejemploDeTipoDeDatos =
     // ------------------------------------
 
     // Los tipos nativos tienen el comportamiento más útil "listo para usar", sin ningún código para agregar.
-     // * Inmutabilidad
-     // * Bonita depuración de impresión
-     // * Igualdad y comparación
-     // * Serialización
+     // * Inmutabilidad
+     // * Bonita depuración de impresión
+     // * Igualdad y comparación
+     // * Serialización
 
-     // La impresión bonita se usa con %A
+     // La impresión bonita se usa con %A
     printfn "dosTuplas=%A,\nPersona=%A,\nTemp=%A,\nEmpleado=%A"
              dosTuplas persona1 temp1 trabajador
 
     // La igualdad y la comparación son innatas
-     // Aquí hay un ejemplo con tarjetas.
+     // Aquí hay un ejemplo con tarjetas.
     type JuegoDeCartas = Trebol | Diamante | Espada | Corazon
     type Rango = Dos | Tres | Cuatro | Cinco | Seis | Siete | Ocho
                 | Nueve | Diez | Jack | Reina | Rey | As
@@ -398,11 +398,11 @@ module EejemploDeTipoDeDatos =
 module EjemplosDePatronesActivos =
 
     // F# tiene un tipo particular de coincidencia de patrón llamado "patrones activos"
-    // donde el patrón puede ser analizado o detectado dinámicamente.
+    // donde el patrón puede ser analizado o detectado dinámicamente.
 
-    // "clips de banana" es la sintaxis de los patrones activos
+    // "clips de banana" es la sintaxis de los patrones activos
 
-    // por ejemplo, definimos un patrón "activo" para que coincida con los tipos de "caracteres" ...
+    // por ejemplo, definimos un patrón "activo" para que coincida con los tipos de "caracteres" ...
     let (|Digito|Latra|EspacioEnBlanco|Otros|) ch =
        if System.Char.IsDigit(ch) then Digito
        else if System.Char.IsLetter(ch) then Letra
@@ -425,7 +425,7 @@ module EjemplosDePatronesActivos =
     // -----------------------------------------
 
     // Puede crear un patrón de coincidencia parcial también
-    // Solo usamos un guión bajo en la definición y devolvemos Some si coincide.
+    // Solo usamos un guión bajo en la definición y devolvemos Some si coincide.
     let (|MultDe3|_|) i = if i % 3 = 0 then Some MultDe3 else None
     let (|MultDe5|_|) i = if i % 5 = 0 then Some MultDe5 else None
 
@@ -447,7 +447,7 @@ module EjemplosDePatronesActivos =
 module EjemploDeAlgoritmo =
 
     // F# tiene una alta relación señal / ruido, lo que permite leer el código
-    // casi como un algoritmo real
+    // casi como un algoritmo real
 
     // ------ Ejemplo: definir una función sumaDeCuadrados ------
     let sumaDeCuadrados n =
@@ -464,7 +464,7 @@ module EjemploDeAlgoritmo =
        // Si la lista está vacía
        | [] ->
             []                              // devolvemos una lista vacía
-       // si la lista no está vacía
+       // si la lista no está vacía
        | primerElemento::otrosElementos ->  // tomamos el primer elemento
             let elementosMasPequenios =     // extraemos los elementos más pequeños
                 otrosElementos              // tomamos el resto
@@ -487,9 +487,9 @@ module EjemploDeAlgoritmo =
 module AsyncExample =
 
     // F# incluye características para ayudar con el código asíncrono
-    // sin conocer la "pirámide del destino"
-    //
-    // El siguiente ejemplo descarga una secuencia de página web en paralelo.
+    // sin conocer la "pirámide del destino"
+    //
+    // El siguiente ejemplo descarga una secuencia de página web en paralelo.
 
     open System.Net
     open System
@@ -531,9 +531,9 @@ module AsyncExample =
 module EjemploCompatibilidadNet =
 
     // F# puede hacer casi cualquier cosa que C# pueda hacer, y se ajusta
-    // perfectamente con bibliotecas .NET o Mono.
+    // perfectamente con bibliotecas .NET o Mono.
 
-    // ------- Trabaja con las funciones de las bibliotecas existentes  -------
+    // ------- Trabaja con las funciones de las bibliotecas existentes  -------
 
     let (i1success,i1) = System.Int32.TryParse("123");
     if i1success then printfn "convertido como %i" i1 else printfn "conversion fallida"
@@ -559,7 +559,7 @@ module EjemploCompatibilidadNet =
     // ------- Código orientado a objetos -------
 
     // F# es también un verdadero lenguaje OO.
-    // Admite clases, herencia, métodos virtuales, etc.
+    // Admite clases, herencia, métodos virtuales, etc.
 
     // interfaz de tipo genérico
     type IEnumerator<'a> =

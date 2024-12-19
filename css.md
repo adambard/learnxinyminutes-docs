@@ -224,13 +224,13 @@ body {
 
 /* Nest style rule inside another (CSS 3) */
 .main {
-   .bgred { /* same as: .main .bgred { } */
+   .bgred { /* same as: .main .bgred { } */
       background: red;
    }
    & .bggreen { /* same as: .main .bggreen { } */
       background: green;
    }
-   &.bgblue { /* (without space) same as: .main.bgblue { } */
+   &.bgblue { /* (without space) same as: .main.bgblue { } */
       background: blue;
    }
 }

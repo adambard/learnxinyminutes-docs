@@ -461,18 +461,18 @@ class Human(object):
         return "*grunt*"
 
     # Eine Eigenschaft (Property) ist wie ein Getter.
-    # Es verwandelt die Methode age() in ein schreibgeschütztes Attribut mit demselben Namen.
-    # Es ist jedoch nicht nötig, triviale Getter und Setter in Python zu schreiben.
+    # Es verwandelt die Methode age() in ein schreibgeschütztes Attribut mit demselben Namen.
+    # Es ist jedoch nicht nötig, triviale Getter und Setter in Python zu schreiben.
     @property
     def age(self):
         return self._age
 
-    # Damit kann die Eigenschaft festgelegt werden
+    # Damit kann die Eigenschaft festgelegt werden
     @age.setter
     def age(self, age):
         self._age = age
 
-    # Damit kann die Eigenschaft gelöscht werden
+    # Damit kann die Eigenschaft gelöscht werden
     @age.deleter
     def age(self):
         del self._age
@@ -561,7 +561,7 @@ class Superhero(Human):
         # Mit der Funktion "super" können Sie auf die Methoden der übergeordneten Klasse 
         # zugreifen, die vom untergeordneten Objekt überschrieben werden, 
         # in diesem Fall die Methode __init__.
-        # Dies ruft den Konstruktor der übergeordneten Klasse auf:
+        # Dies ruft den Konstruktor der übergeordneten Klasse auf:
         super().__init__(name)
         
     # überschreiben der "sing" Methode
@@ -583,7 +583,7 @@ if __name__ == '__main__':
         print('I am a superhero')
         
     # Die Reihenfolge der Methodenauflösung (MRO = Method Resolution Order) anzeigen, die sowohl von getattr() als auch von super() verwendet wird.
-    # Dieses Attribut ist dynamisch und kann aktualisiert werden.
+    # Dieses Attribut ist dynamisch und kann aktualisiert werden.
     print(Superhero.__mro__)    # => (<class '__main__.Superhero'>,
                                 # => <class 'human.Human'>, <class 'object'>)
                                 

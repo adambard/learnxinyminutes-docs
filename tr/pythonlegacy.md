@@ -35,8 +35,8 @@ uygulanabilir. Python 3 için başka bir zaman tekrar bakınız.
 10 * 2 #=> 20
 35 / 5 #=> 7
 
-# Bölünme biraz ilginç. EĞer tam sayılar üzerinde bölünme işlemi yapıyorsanız
-# sonuç otomatik olarak kırpılır. 
+# Bölünme biraz ilginç. EĞer tam sayılar üzerinde bölünme işlemi yapıyorsanız
+# sonuç otomatik olarak kırpılır. 
 5 / 2 #=> 2
 
 # Bölünme işlemini düzenlemek için kayan noktalı sayıları bilmeniz gerekir.
@@ -80,30 +80,30 @@ not False #=> True
 "Hello " + "world!" #=> "Hello world!"
 
 # A string can be treated like a list of characters
-# Bir string'e karakter listesi gibi davranabilirsiniz. 
+# Bir string'e karakter listesi gibi davranabilirsiniz. 
 "This is a string"[0] #=> 'T'
 
 # % karakter dizisini(string) formatlamak için kullanılır, bunun gibi:
 "%s can be %s" % ("strings", "interpolated")
 
 # String'leri formatlamanın yeni bir yöntem ise format metodudur. 
-# Bu metod tercih edilen yöntemdir.
+# Bu metod tercih edilen yöntemdir.
 "{0} can be {1}".format("strings", "formatted")
-# Eğer saymak istemiyorsanız anahtar kelime kullanabilirsiniz.
+# Eğer saymak istemiyorsanız anahtar kelime kullanabilirsiniz.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna")
 
 # None bir objedir
 None #=> None
 
-# "==" eşitliğini non objesi ile karşılaştırmak için kullanmayın.
-# Onun yerine "is" kullanın.
+# "==" eşitliğini non objesi ile karşılaştırmak için kullanmayın.
+# Onun yerine "is" kullanın.
 "etc" is None #=> False
 None is None  #=> True
 
 # 'is' operatörü obje kimliği için test etmektedir. Bu ilkel değerler
-# için kullanışlı değildir, ama objeleri karşılaştırmak için kullanışlıdır.
+# için kullanışlı değildir, ama objeleri karşılaştırmak için kullanışlıdır.
 
-# None, 0 ve boş string/list'ler False olarak değerlendirilir.
+# None, 0 ve boş string/list'ler False olarak değerlendirilir.
 # Tüm eşitlikler True döner
 0 == False  #=> True
 "" == False #=> True
@@ -122,12 +122,12 @@ some_var = 5    # Değişken isimlerinde gelenek küçük karakter ve alt çizgi
                 # kullanmaktır.
 some_var #=> 5
 
-# Daha önceden tanımlanmamış ya da assign edilmemeiş bir değişkene erişmeye 
-# çalıştığınızda bir hata fırlatılacaktır. Hata ayıklama hakkında daha fazla 
-# bilgi için kontrol akışı kısmına göz atınız.
+# Daha önceden tanımlanmamış ya da assign edilmemeiş bir değişkene erişmeye 
+# çalıştığınızda bir hata fırlatılacaktır. Hata ayıklama hakkında daha fazla 
+# bilgi için kontrol akışı kısmına göz atınız.
 some_other_var  # isim hatası fırlatılır
 
-# isterseniz "if"i bir ifade gibi kullanabilirsiniz.
+# isterseniz "if"i bir ifade gibi kullanabilirsiniz.
 "yahoo!" if 3 > 2 else 2 #=> "yahoo!"
 
 # Listeler
@@ -151,7 +151,7 @@ li[0] #=> 1
 li[-1] #=> 3
 
 # Listede bulunmayan bir index'teki elemana erişirken "IndexError" hatası 
-# fırlatılır 
+# fırlatılır 
 li[4] # IndexError fırlatılır
 
 # slice syntax'ı ile belli aralıktakı değerlere bakabilirsiniz.
@@ -177,7 +177,7 @@ li.extend(other_li) # Now li is [1, 2, 3, 4, 5, 6]
 # "len" ile listenin uzunluğunu bulmak
 len(li) #=> 6
 
-# Tüpler listeler gibidir sadece değişmezler(immutable)
+# Tüpler listeler gibidir sadece değişmezler(immutable)
 tup = (1, 2, 3)
 tup[0] #=> 1
 tup[0] = 3  # TypeError fırlatılır.
@@ -188,12 +188,12 @@ tup + (4, 5, 6) #=> (1, 2, 3, 4, 5, 6)
 tup[:2] #=> (1, 2)
 2 in tup #=> True
 
-# Tüplerin(veya listelerin) içerisindeki değerleri değişkenelere
+# Tüplerin(veya listelerin) içerisindeki değerleri değişkenelere
 # atanabilir
 a, b, c = (1, 2, 3)     # a şu anda 1, b şu anda 2 ve c şu anda 3
 # Eğer parantez kullanmaz iseniz tüpler varsayılan olarak oluşturulur
 d, e, f = 4, 5, 6
-# şimdi iki değeri değiş tokuş etmek çok kolaydır.
+# şimdi iki değeri değiş tokuş etmek çok kolaydır.
 e, d = d, e     # d şimdi 5 ve e şimdi 4
 
 
@@ -207,24 +207,24 @@ filled_dict["one"] #=> 1
 
 # Tüm anahtarlara(key) "keys()" metodu ile ulaşılır
 filled_dict.keys() #=> ["three", "two", "one"]
-# Not - Sözlüklerin anahtarlarının sıralı geleceği garanti değildir
-# Sonuçlarınız değer listesini aldığınızda tamamen eşleşmeyebilir 
+# Not - Sözlüklerin anahtarlarının sıralı geleceği garanti değildir
+# Sonuçlarınız değer listesini aldığınızda tamamen eşleşmeyebilir 
 
 # Tüm değerleri almak için "values()" kullanabilirsiniz.
 filled_dict.values() #=> [3, 2, 1]
 # Not - Sıralama ile ilgili anahtarlar ile aynı durum geçerlidir.
 
-# Bir anahtarın sözlükte oluş olmadığını "in" ile kontrol edilebilir
+# Bir anahtarın sözlükte oluş olmadığını "in" ile kontrol edilebilir
 "one" in filled_dict #=> True
 1 in filled_dict #=> False
 
-# Olmayan bir anahtar çağrıldığında KeyError fırlatılır.
+# Olmayan bir anahtar çağrıldığında KeyError fırlatılır.
 filled_dict["four"] # KeyError
 
-# "get()" metodu KeyError fırlatılmasını önler
+# "get()" metodu KeyError fırlatılmasını önler
 filled_dict.get("one") #=> 1
 filled_dict.get("four") #=> None
-# get() metodu eğer anahtar mevcut değilse varsayılan bir değer atama
+# get() metodu eğer anahtar mevcut değilse varsayılan bir değer atama
 # imknaı sağlar.
 filled_dict.get("one", 4) #=> 1
 filled_dict.get("four", 4) #=> 4
@@ -237,10 +237,10 @@ filled_dict.setdefault("five", 6) #filled_dict["five"] is still 5
 
 # Sets store ... well sets
 empty_set = set()
-# Bir demek değer ile bir "set" oluşturmak
+# Bir demek değer ile bir "set" oluşturmak
 some_set = set([1,2,2,3,4]) # some_set is now set([1, 2, 3, 4])
 
-# Python 2.7'den beri {}'ler bir "set" tanımlaman için kullanılabilir
+# Python 2.7'den beri {}'ler bir "set" tanımlaman için kullanılabilir
 filled_set = {1, 2, 2, 3, 4} # => {1 2 3 4}
 
 # Bir set'e daha fazla eleman eklemek
@@ -253,10 +253,10 @@ filled_set & other_set #=> {3, 4, 5}
 # | işareti ile 
 filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 
-# "-" işareti ile iki set'in farkları alınabilir
+# "-" işareti ile iki set'in farkları alınabilir
 {1,2,3,4} - {2,3,5} #=> {1, 4}
 
-# "in" ile değerin set içerisinde olup olmadığını kontrol edebilirsiniz
+# "in" ile değerin set içerisinde olup olmadığını kontrol edebilirsiniz
 2 in filled_set #=> True
 10 in filled_set #=> False
 
@@ -268,7 +268,7 @@ filled_set | other_set #=> {1, 2, 3, 4, 5, 6}
 # Bir değişken oluşturmak
 some_var = 5
 
-# Buradaki bir if ifadesi. Girintiler(Intentation) Python'da önemlidir!
+# Buradaki bir if ifadesi. Girintiler(Intentation) Python'da önemlidir!
 # "some_var is smaller than 10" yazdırılır.
 if some_var > 10:
     print "some_var is totally bigger than 10."
@@ -286,7 +286,7 @@ Ekrana yazdırılan:
     mouse is a mammal
 """
 for animal in ["dog", "cat", "mouse"]:
-    # Biçimlendirmeleri string'e katmak için % kullanabilirsiniz
+    # Biçimlendirmeleri string'e katmak için % kullanabilirsiniz
     print "%s is a mammal" % animal
     
 """
@@ -315,7 +315,7 @@ while x < 4:
 
 # try/except bloğu ile hatalar ayıklanabilir
 
-# Python 2.6 ve üstü için çalışacaktır:
+# Python 2.6 ve üstü için çalışacaktır:
 try:
     # "raise" bir hata fırlatmak için kullanılabilir
     raise IndexError("This is an index error")
@@ -339,18 +339,18 @@ add(5, 6) #=> prints out "x is 5 and y is 6" and returns 11
 # Diğer bir yol fonksiyonları anahtar argümanları ile çağırmak
 add(y=6, x=5)   # Anahtar argümanlarının sırası farklı da olabilir
 
-# Değişken sayıda parametresi olan bir fonksiyon tanımlayabilirsiniz
+# Değişken sayıda parametresi olan bir fonksiyon tanımlayabilirsiniz
 def varargs(*args):
     return args
 
 varargs(1, 2, 3) #=> (1,2,3)
 
-# Değişken sayıda anahtar argümanlı parametre alan fonksiyonlar da 
+# Değişken sayıda anahtar argümanlı parametre alan fonksiyonlar da 
 # tanımlayabilirsiniz.
 def keyword_args(**kwargs):
     return kwargs
 
-# Şu şekilde kullanılacaktır
+# Şu şekilde kullanılacaktır
 keyword_args(big="foot", loch="ness") #=> {"big": "foot", "loch": "ness"}
 
 # Eğer isterseniz ikisini aynı anda da yapabilirsiniz
@@ -363,15 +363,15 @@ all_the_args(1, 2, a=3, b=4) prints:
     {"a": 3, "b": 4}
 """
 
-# Fonksiyonu çağırırken, args/kwargs'ın tam tersini de yapabilirsiniz!
-# Tüpü yaymak için * ve kwargs'ı yaymak için ** kullanın.
+# Fonksiyonu çağırırken, args/kwargs'ın tam tersini de yapabilirsiniz!
+# Tüpü yaymak için * ve kwargs'ı yaymak için ** kullanın.
 args = (1, 2, 3, 4)
 kwargs = {"a": 3, "b": 4}
 all_the_args(*args) # foo(1, 2, 3, 4) ile eşit
 all_the_args(**kwargs) # foo(a=3, b=4) ile eşit
 all_the_args(*args, **kwargs) # foo(1, 2, 3, 4, a=3, b=4) ile eşit
 
-# Python first-class fonksiyonlara sahiptir
+# Python first-class fonksiyonlara sahiptir
 def create_adder(x):
     def adder(y):
         return x + y
@@ -387,7 +387,7 @@ add_10(3) #=> 13
 map(add_10, [1,2,3]) #=> [11, 12, 13]
 filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 
-# Map etme(maps) ve filtreleme(filtres) için liste kullanabiliriz. 
+# Map etme(maps) ve filtreleme(filtres) için liste kullanabiliriz. 
 [add_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
 [x for x in [3, 4, 5, 6, 7] if x > 5] #=> [6, 7]
 
@@ -399,7 +399,7 @@ filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
 # We subclass from object to get a class.
 class Human(object):
     
-    # Bir sınıf özelliği. Bu sınıfın tüm "instance"larına paylaşılmıştır.
+    # Bir sınıf özelliği. Bu sınıfın tüm "instance"larına paylaşılmıştır.
     species = "H. sapiens"
 
     # Basic initializer
@@ -408,18 +408,18 @@ class Human(object):
         # değişkenine atama
         self.name = name
 
-    # Bir instance metodu. Tüm metodlar ilk argüman olarak "self" 
+    # Bir instance metodu. Tüm metodlar ilk argüman olarak "self" 
     # parametresini alır
     def say(self, msg):
        return "%s: %s" % (self.name, msg)
 
     # Bir sınıf metodu tüm "instance"lar arasında paylaşılır
-    # İlk argüman olarak sınıfı çağırarak çağrılırlar
+    # İlk argüman olarak sınıfı çağırarak çağrılırlar
     @classmethod
     def get_species(cls):
         return cls.species
 
-    # Bir statik metod bir sınıf ya da instance referansı olmadan çağrılır
+    # Bir statik metod bir sınıf ya da instance referansı olmadan çağrılır
     @staticmethod
     def grunt():
         return "*grunt*"
@@ -452,24 +452,24 @@ Human.grunt() #=> "*grunt*"
 import math
 print math.sqrt(16) #=> 4.0
 
-# Modül içerisinden spesifik bir fonksiyonu getirebilirsiniz
+# Modül içerisinden spesifik bir fonksiyonu getirebilirsiniz
 from math import ceil, floor
 print ceil(3.7)  #=> 4.0
 print floor(3.7) #=> 3.0
 
 # Modüldeki tüm fonksiyonları dahil edebilirsiniz
-# Uyarı: bu önerilmez
+# Uyarı: bu önerilmez
 from math import *
 
-# Modülün adını kısaltabilirsiniz
+# Modülün adını kısaltabilirsiniz
 import math as m
 math.sqrt(16) == m.sqrt(16) #=> True
 
-# Python modülleri sıradan python dosyalarıdır. Kendinize bir modül 
-# yazabilirsiniz, ve dahil edebilirsiniz. Modülün adı ile dosya adı
-# aynı olmalıdır.
+# Python modülleri sıradan python dosyalarıdır. Kendinize bir modül 
+# yazabilirsiniz, ve dahil edebilirsiniz. Modülün adı ile dosya adı
+# aynı olmalıdır.
 
-# Modüllerde tanımlanmış fonksiyon ve metodları öğrenebilirsiniz.
+# Modüllerde tanımlanmış fonksiyon ve metodları öğrenebilirsiniz.
 import math
 dir(math)
 ```

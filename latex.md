@@ -202,7 +202,7 @@ We can also insert Tables in the same way as figures.
   % the {} arguments below describe how each row of the table is drawn.
   % The basics are simple: one letter for each column, to control alignment:
   % basic options are: c, l, r and p for centered, left, right and paragraph
-  % optionally, you can add a | for a vertical line
+  % optionally, you can add a | for a vertical line
   % See https://en.wikibooks.org/wiki/LaTeX/Tables for more details
   \begin{tabular}{c|cc}  % here it means "centered | vertical line, centered centered"
     Number &  First Name & Last Name \\ % Column rows are separated by &

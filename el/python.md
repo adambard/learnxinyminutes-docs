@@ -523,7 +523,7 @@ next(our_iterator)  # => "one"
 next(our_iterator)  # => "two"
 next(our_iterator)  # => "three"
 
-# Όταν ο iterator έχει επιστρέψει όλα τα δεδομένα του, προκαλεί ένα μια εξαίρεση StopIteration.
+# Όταν ο iterator έχει επιστρέψει όλα τα δεδομένα του, προκαλεί ένα μια εξαίρεση StopIteration.
 next(our_iterator)  # προκαλεί StopIteration
 
 # Μπορείς να πάρεις όλα τα αντικείμενα ενός iteratior καλώντας list() πάνω του.

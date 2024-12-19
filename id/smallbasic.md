@@ -28,7 +28,7 @@ print "halo"
 
 REM Struktur kontrol
 FOR index = 0 TO 10 STEP 2
-  ? "Ini adalah nomor baris"; indeks
+  ? "Ini adalah nomor baris"; indeks
 NEXT
 J=0
 REPEAT
@@ -57,10 +57,10 @@ End Try
 
 REM Fungsi dan subrutin buatan pengguna
 func add2(x, y)
-  'Variabel dapat dinyatakan sebagai lokal dalam lingkup/scope dari SUB atau FUNC
-  local k
-  k = "k akan lenyap ketika FUNC ini mengembalikan nilai"
-  add2 = x + y
+  'Variabel dapat dinyatakan sebagai lokal dalam lingkup/scope dari SUB atau FUNC
+  local k
+  k = "k akan lenyap ketika FUNC ini mengembalikan nilai"
+  add2 = x + y
 akhir
 Print add2(5,5)
 sub cetak_ini(ini)

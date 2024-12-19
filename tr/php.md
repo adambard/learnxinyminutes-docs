@@ -17,7 +17,7 @@ PHP 5+ versiyonu için geçerlidir.
 
 // // işareti ile tek satırlık yorum satırı başlar.
 
-# # işareti de aynı görevi görür ancak // daha genel kullanımdadır.
+# # işareti de aynı görevi görür ancak // daha genel kullanımdadır.
 
 
 
@@ -45,7 +45,7 @@ Hello World Again!
 *   Tipler ve Değişkenler
 *************************************/
 
-// Değişkenler $ sembolü ile başlar.
+// Değişkenler $ sembolü ile başlar.
 // Geçerli bir değişken bir harf veya alt çizgi ile başlar,
 // devamında da bir sayı, harf veya alt çizgi ile devam eder. 
 

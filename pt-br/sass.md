@@ -131,10 +131,10 @@ div {
 
 
 /* Sass fornece funções que podem ser utilizados para realizar uma variedade de
-    tarefas. Considere o seguinte */
+    tarefas. Considere o seguinte */
 
 /* Funções pode ser chamado usando seu nome e passando o
-    argumentos necessários */
+    argumentos necessários */
     
 body {
   width: round(10.25px);
@@ -162,7 +162,7 @@ body {
    reutilizável. */
 
 /* Esta função terá um tamanho de destino e o tamanho do pai (parent), calcular
-   e voltar a percentagem */
+   e voltar a percentagem */
 
 @function calculate-percentage($target-size, $parent-size) {
   @return $target-size / $parent-size * 100%;
@@ -219,11 +219,11 @@ $main-content: calculate-percentage(600px, 960px);
 }
 
 /* Ao ampliar uma declaração CSS é preferível a criação de um mixin,
-   por causa da maneira em que agrupa as classes com todos que compartilham
-   o mesmo estilo base. Se isso for feito com um mixin, a largura,
-   altura, e a borda seria duplicado para cada instrução que
-   o chamado mixin. Enquanto isso não irá afetar o seu fluxo de trabalho, será
-   adicionado inchaço desnecessário para os arquivos criados pelo compilador Sass. */
+   por causa da maneira em que agrupa as classes com todos que compartilham
+   o mesmo estilo base. Se isso for feito com um mixin, a largura,
+   altura, e a borda seria duplicado para cada instrução que
+   o chamado mixin. Enquanto isso não irá afetar o seu fluxo de trabalho, será
+   adicionado inchaço desnecessário para os arquivos criados pelo compilador Sass. */
 
 
 
@@ -293,8 +293,8 @@ ul li a {
 
 
 /* Sass permite criar arquivos parciais. Isso pode ajudar a manter seu Sass
-   código modularizado. Arquivos parciais deve começar com um '_', por exemplo, _reset.css.
-   Parciais não são geradas em CSS. */
+   código modularizado. Arquivos parciais deve começar com um '_', por exemplo, _reset.css.
+   Parciais não são geradas em CSS. */
 
 
 
@@ -309,9 +309,9 @@ ol {
 }
 
 /* Sass oferece @import que pode ser usado para importar parciais em um arquivo.
-   Isso difere da declaração CSS @import tradicional, que faz
-   outra solicitação HTTP para buscar o arquivo importado. Sass converte os
-   arquivo importados e combina com o código compilado. */
+   Isso difere da declaração CSS @import tradicional, que faz
+   outra solicitação HTTP para buscar o arquivo importado. Sass converte os
+   arquivo importados e combina com o código compilado. */
 
 @import 'reset';
 
@@ -339,9 +339,9 @@ body {
 
 
 /* Os Placeholders são úteis na criação de uma declaração CSS para ampliar. Se você
-   deseja criar uma instrução CSS que foi usado exclusivamente com @extend,
-   você pode fazer isso usando um Placeholder. Placeholder começar com um '%' em vez
-   de '.' ou '#'. Placeholder não aparece no CSS compilado. */
+   deseja criar uma instrução CSS que foi usado exclusivamente com @extend,
+   você pode fazer isso usando um Placeholder. Placeholder começar com um '%' em vez
+   de '.' ou '#'. Placeholder não aparece no CSS compilado. */
 
 %content-window {
   font-size: 14px;
@@ -375,7 +375,7 @@ body {
 
 
 /* Sass fornece os seguintes operadores: +, -, *, /, e %. estes podem
-   ser úteis para calcular os valores diretamente no seu arquivos Sass em vez
+   ser úteis para calcular os valores diretamente no seu arquivos Sass em vez
    de usar valores que você já calcula manualmente. O exemplo abaixo é
    de um projeto simples de duas colunas. */
 

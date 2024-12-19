@@ -41,10 +41,10 @@ Contrairement à HTML, XML ne spécifie pas comment afficher ou formater les inf
   Il commence par une déclaration, qui informe certaines métadonnées (en option).
 
 XML utilise une structure arborescente. Ci-dessus, le nœud racine est «librairie», qui a 
-   trois nœuds enfants, qui sont appelés «livres». Ces nœuds ont plus de nœuds enfants, et ainsi de suite ...
+   trois nœuds enfants, qui sont appelés «livres». Ces nœuds ont plus de nœuds enfants, et ainsi de suite ...
 
 On crée les nœuds avec des balises d'ouverture / fermeture, et les enfants sont les nœuds juste entre 
-   les balises d'ouverture et de fermeture. -->
+   les balises d'ouverture et de fermeture. -->
 
 
 <!-- XML porte deux types d'informations:
@@ -72,7 +72,7 @@ Avec cet outil, vous pouvez vérifier les données XML en dehors de la logique d
 
 ```xml
 <!-- Ci-dessous, vous pouvez voir une version simplifiée du document de librairie, 
-   avec l'addition de définition DTD. -->
+   avec l'addition de définition DTD. -->
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE note SYSTEM "Librairie.dtd">
@@ -95,10 +95,10 @@ Avec cet outil, vous pouvez vérifier les données XML en dehors de la logique d
 ]>
 
 <!-- La DTD commence par une déclaration.
-   Après, le nœud racine est déclaré, qui exige un ou plusieurs nœuds enfants. 
-   Chaque «livre» doit contenir exactement un «titre» et «prix» et un attribut 
-   appelé «catégorie», avec «littérature» comme valeur par défaut. 
-   Les nœuds de «titre» et «prix» contiennent des informations de caractère analysés
+   Après, le nœud racine est déclaré, qui exige un ou plusieurs nœuds enfants. 
+   Chaque «livre» doit contenir exactement un «titre» et «prix» et un attribut 
+   appelé «catégorie», avec «littérature» comme valeur par défaut. 
+   Les nœuds de «titre» et «prix» contiennent des informations de caractère analysés
    (Anglais: «parsed character data») -->
 
 <!-- La DTD pourrait être déclarée dans le fichier XML lui-même -->

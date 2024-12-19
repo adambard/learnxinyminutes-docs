@@ -95,23 +95,23 @@ Pengurai XML dirancang menjadi sangat ketat, dan akan berhenti melakukan pengura
 </tokobuku>
 
 <!-- Di atas adalah contoh file XML biasa.
-   Dimulai dengan deklarasi, menginformasikan beberapa metadata (opsional).
-  
-   XML menggunakan struktur pohon. Di atas, simpul akar adalah 'tokobuku',
+   Dimulai dengan deklarasi, menginformasikan beberapa metadata (opsional).
+  
+   XML menggunakan struktur pohon. Di atas, simpul akar adalah 'tokobuku',
    yang memiliki tiga node anak, para 'buku'. Node-node tersebut dapat memiliki
    node-node anak, dan seterusnya ...
-  
-   Node dibuat menggunakan tag buka/tutup, dan node-node anak hanya
+  
+   Node dibuat menggunakan tag buka/tutup, dan node-node anak hanya
    berada di antara tag buka dan tutup .-->
 
 
 <!-- XML membawa dua jenis data:
-   1 - Atribut -> Itu metadata tentang sebuah node.
-       Biasanya, parser XML menggunakan informasi ini untuk menyimpan data dengan
+   1 - Atribut -> Itu metadata tentang sebuah node.
+       Biasanya, parser XML menggunakan informasi ini untuk menyimpan data dengan
        benar. Hal ini ditandai dengan muncul dengan format nama = "nilai" dalam pembukaan tag.
-   2 - Elemen -> Itu data yang murni.
-       Itulah yang parser akan mengambil dari file XML.
-       Elemen muncul antara tag membuka dan menutup.-->
+   2 - Elemen -> Itu data yang murni.
+       Itulah yang parser akan mengambil dari file XML.
+       Elemen muncul antara tag membuka dan menutup.-->
       
   
 <!-- Di bawah ini, unsur dengan dua atribut-->
@@ -131,7 +131,7 @@ Dengan alat ini, Anda dapat memeriksa data XML di luar logika aplikasi.
 
 ```xml
 <!-- Di bawah, Anda dapat melihat versi sederhana dari dokumen tokobuku,
-  dengan penambahan definisi DTD .-->
+  dengan penambahan definisi DTD .-->
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE catatan SYSTEM "tokobuku.dtd">
@@ -155,10 +155,10 @@ Dengan alat ini, Anda dapat memeriksa data XML di luar logika aplikasi.
 
 
 <!-- DTD dimulai dengan deklarasi.
-  Berikut, node akar dinyatakan, membutuhkan 1 atau lebih anak node 'buku'.
-  Setiap 'buku' harus berisi tepat satu 'judul' dan 'harga' dan atribut
-  disebut 'kategori', dengan "Sastra" sebagai nilai default.
-  Node yang 'judul' dan 'harga' mengandung karakter data diurai .-->
+  Berikut, node akar dinyatakan, membutuhkan 1 atau lebih anak node 'buku'.
+  Setiap 'buku' harus berisi tepat satu 'judul' dan 'harga' dan atribut
+  disebut 'kategori', dengan "Sastra" sebagai nilai default.
+  Node yang 'judul' dan 'harga' mengandung karakter data diurai .-->
 
 <!-- DTD dapat dideklarasikan di dalam file XML itu sendiri .-->
 

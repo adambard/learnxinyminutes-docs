@@ -94,8 +94,8 @@ false
 'a'
 
 # Strings are UTF8 encoded, so strings like "π" or "☃" are not directly equivalent
-# to an array of single characters.
-# Only if they contain only ASCII characters can they be safely indexed.
+# to an array of single characters.
+# Only if they contain only ASCII characters can they be safely indexed.
 ascii("This is a string")[1]    # => 'T'
 # => 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)
 # Beware, Julia indexes everything from 1 (like MATLAB), not 0 (like most languages).
@@ -114,7 +114,7 @@ ascii("This is a string")[1]    # => 'T'
 println("I'm Julia. Nice to meet you!")  # => I'm Julia. Nice to meet you!
 
 # Another way to format strings is the printf macro from the stdlib Printf.
-using Printf   # this is how you load (or import) a module
+using Printf   # this is how you load (or import) a module
 @printf "%d is less than %f\n" 4.5 5.3   # => 5 is less than 5.300000
 
 
@@ -392,7 +392,7 @@ end
 for animal = ["dog", "cat", "mouse"]
     println("$animal is a mammal")
     # You can use $ to interpolate variables or expression into strings.
-    # In this special case, no need for parenthesis: $animal and $(animal) give the same
+    # In this special case, no need for parenthesis: $animal and $(animal) give the same
 end
 # => dog is a mammal
 # => cat is a mammal

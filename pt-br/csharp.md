@@ -106,7 +106,7 @@ namespace Learning.CSharp
             char fooChar = 'A';
 
             // Strings - ao contrário dos anteriores tipos base, que são todos os tipos de valor,
-            // Uma string é um tipo de referência. Ou seja, você pode configurá-lo como nulo
+            // Uma string é um tipo de referência. Ou seja, você pode configurá-lo como nulo
             string fooString = "\"escape\" quotes and add \n (new lines) and \t (tabs)";
             Console.WriteLine(fooString);
 
@@ -732,9 +732,9 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // Você também pode definir uma propriedade automática em uma linha
-        // Esta sintaxe criará um campo de apoio automaticamente.
-        // Você pode definir um modificador de acesso no getter ou no setter (ou ambos)
-        // para restringir seu acesso:
+        // Esta sintaxe criará um campo de apoio automaticamente.
+        // Você pode definir um modificador de acesso no getter ou no setter (ou ambos)
+        // para restringir seu acesso:
         public bool IsBroken { get; private set; }
 
         // Properties can be auto-implemented
@@ -856,7 +856,7 @@ on a new line! ""Wow!"", the masses cried";
 
     /// <summary>
     /// Exemplo de como conectar-se ao DB via LinqToSql.
-    /// EntityFramework First Code é impressionante (semelhante ao ActiveRecord de Ruby, mas bidirecional)
+    /// EntityFramework First Code é impressionante (semelhante ao ActiveRecord de Ruby, mas bidirecional)
     /// http://msdn.microsoft.com/en-us/data/jj193542.aspx
     /// </summary>
     public class BikeRepository : DbContext

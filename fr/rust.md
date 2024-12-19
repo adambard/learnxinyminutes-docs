@@ -35,271 +35,271 @@ Bien que Rust soit un langage relativement bas niveau, Rust a quelques concepts 
 // Les fonctions
 // `I32` est le type 32 bits entiers signés
 fn add2(x: i32, y: i32) -> i32 {
-    // Retour implicite (pas de point virgule)
-    x + y
+    // Retour implicite (pas de point virgule)
+    x + y
 }
 
 // Fonction principale
 fn main() {
-    // Nombres //
+    // Nombres //
 
-    // Liaison immutable
-    let x: i32 = 1;
+    // Liaison immutable
+    let x: i32 = 1;
 
-    // Suffixes entiers et flottants
-    let y: I32 = 13i32;
-    let f: f64 = 1.3f64;
+    // Suffixes entiers et flottants
+    let y: I32 = 13i32;
+    let f: f64 = 1.3f64;
 
-    // Inférence de type
-    // La plupart du temps, le compilateur Rust peut déduire quel est le type 
+    // Inférence de type
+    // La plupart du temps, le compilateur Rust peut déduire quel est le type 
     // de variable, donc vous n'avez pas à écrire une annotation de type explicite.
-    // Tout au long de ce tutoriel, les types sont explicitement annotées dans
+    // Tout au long de ce tutoriel, les types sont explicitement annotées dans
     // de nombreux endroits, mais seulement à des fins de démonstration.
     // L'inférence de type peut les générer pour vous la plupart du temps.
-    let implicit_x = 1;
-    let implicit_f = 1,3;
+    let implicit_x = 1;
+    let implicit_f = 1,3;
 
-    // Arithmétique
-    let somme = x + y + 13;
+    // Arithmétique
+    let somme = x + y + 13;
 
-    // Variable Mutable
-    let mut mutable = 1;
-    let mutable = 4;
-    let mutable += 2;
+    // Variable Mutable
+    let mut mutable = 1;
+    let mutable = 4;
+    let mutable += 2;
 
-    // Chaînes //
+    // Chaînes //
 
-    // Chaîne littérales
-    let x: &str = "Bonjour tout le monde !";
+    // Chaîne littérales
+    let x: &str = "Bonjour tout le monde !";
 
-    // Affichage
-    println!("{} {}", f, x); // 1.3 Bonjour tout le monde
+    // Affichage
+    println!("{} {}", f, x); // 1.3 Bonjour tout le monde
 
-    // Une `Chaîne` - une chaîne de tas alloué
-    let s: String = "Bonjour tout le monde".to_string();
+    // Une `Chaîne` - une chaîne de tas alloué
+    let s: String = "Bonjour tout le monde".to_string();
 
-    // Un morceau de chaîne - une vue immutable sur une autre chaîne.
-    // C'est essentiellement un pointeur immutable sur une chaîne - ça ne
-    // contient effectivement pas le contenu d'une chaîne, juste un pointeur vers
-    // le début et la fin de la chaîne.
-    let s_slice: &str = &s;
+    // Un morceau de chaîne - une vue immutable sur une autre chaîne.
+    // C'est essentiellement un pointeur immutable sur une chaîne - ça ne
+    // contient effectivement pas le contenu d'une chaîne, juste un pointeur vers
+    // le début et la fin de la chaîne.
+    let s_slice: &str = &s;
 
-    println!("{} {}", s, s_slice); // Bonjour tout le monde Bonjour tout le monde
+    println!("{} {}", s, s_slice); // Bonjour tout le monde Bonjour tout le monde
 
-    // Vecteurs/tableau //
+    // Vecteurs/tableau //
 
-    // Un tableau de taille fixe
-    let four_ints: [i32; 4] = [1, 2, 3, 4];
+    // Un tableau de taille fixe
+    let four_ints: [i32; 4] = [1, 2, 3, 4];
 
-    // Un tableau dynamique(vecteur)
-    let mut vecteur: Vec<i32> = vec![1, 2, 3, 4];
-    vecteur.push(5);
+    // Un tableau dynamique(vecteur)
+    let mut vecteur: Vec<i32> = vec![1, 2, 3, 4];
+    vecteur.push(5);
 
-    // Une tranche - une vue immutable sur un vecteur ou un tableau.
-    // Ceci est un peu comme un morceau de chaîne, mais pour les vecteurs.
-    let tranche: &[i32] = &vecteur;
+    // Une tranche - une vue immutable sur un vecteur ou un tableau.
+    // Ceci est un peu comme un morceau de chaîne, mais pour les vecteurs.
+    let tranche: &[i32] = &vecteur;
 
-    // Utiliser `{:?}` pour afficher quelque chose en mode debug
-    println!("{:?} {:?}", vecteur, tranche); // [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
+    // Utiliser `{:?}` pour afficher quelque chose en mode debug
+    println!("{:?} {:?}", vecteur, tranche); // [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
 
-    // Tuples //
+    // Tuples //
 
-    // Un tuple est un ensemble de valeurs qui peuvent être de différents types.
-    let x:(i32, &str, f64) = (1, "bonjour", 3.4);
+    // Un tuple est un ensemble de valeurs qui peuvent être de différents types.
+    let x:(i32, &str, f64) = (1, "bonjour", 3.4);
 
-    // Déstructurer `let`
-    let (a, b, c) = x;
-    println!("{} {} {}", a, b, c); // 1 bonjour 3.4
+    // Déstructurer `let`
+    let (a, b, c) = x;
+    println!("{} {} {}", a, b, c); // 1 bonjour 3.4
 
-    // indexation
-    println!("{}", x.1); // Bonjour
+    // indexation
+    println!("{}", x.1); // Bonjour
 
-    //////////////
-    // 2. Types //
-    //////////////
+    //////////////
+    // 2. Types //
+    //////////////
 
-    // Struct
-    struct Point {
-        x: i32,
-        y: i32,
-    }
+    // Struct
+    struct Point {
+        x: i32,
+        y: i32,
+    }
 
-    let origine: Point = Point { x: 0, y: 0 };
+    let origine: Point = Point { x: 0, y: 0 };
 
-    // Un struct avec des champs sans nom, appelé 'tuple struct'.
-    struct Point2(i32, i32);
+    // Un struct avec des champs sans nom, appelé 'tuple struct'.
+    struct Point2(i32, i32);
 
-    let origine2 = Point2(0, 0);
+    let origine2 = Point2(0, 0);
 
-    // Basic C-like enum
-    enum Direction {
-        Àgauche,
-        Droite,
-        En_Haut,
-        Vers_Le_Bas,
-    }
+    // Basic C-like enum
+    enum Direction {
+        Àgauche,
+        Droite,
+        En_Haut,
+        Vers_Le_Bas,
+    }
 
-    let en_haut = Direction::En_Haut;
+    let en_haut = Direction::En_Haut;
 
-    // Enum avec des champs
-    enum OptionnelI32 {
-        AnI32(I32),
-        Rien,
-    }
+    // Enum avec des champs
+    enum OptionnelI32 {
+        AnI32(I32),
+        Rien,
+    }
 
-    let deux: OptionnelI32 = OptionnelI32::AnI32(2);
-    let rien = OptionnelI32::Rien;
+    let deux: OptionnelI32 = OptionnelI32::AnI32(2);
+    let rien = OptionnelI32::Rien;
 
-    // Generics //
+    // Generics //
 
-    struct Foo<T> { bar: T }
+    struct Foo<T> { bar: T }
 
-    // Ceci est défini dans la bibliothèque standard comme `Option`.
-    enum Optionnel<T> {
-        SomeVal(T),
-        NoVal,
-    }
+    // Ceci est défini dans la bibliothèque standard comme `Option`.
+    enum Optionnel<T> {
+        SomeVal(T),
+        NoVal,
+    }
 
-    // Méthodes //
+    // Méthodes //
 
-    impl<T> Foo<T> {
-        // Méthodes prennent un paramètre explicite `de self`.
-        fn get_bar(self) -> T {
-            self.bar
-        }
-    }
+    impl<T> Foo<T> {
+        // Méthodes prennent un paramètre explicite `de self`.
+        fn get_bar(self) -> T {
+            self.bar
+        }
+    }
 
-    let a_foo = Foo { bar: 1 };
-    println!("{}", a_foo.get_bar()); // 1
+    let a_foo = Foo { bar: 1 };
+    println!("{}", a_foo.get_bar()); // 1
 
-    // Traits (connu sous le nom des interfaces ou des classes de types dans
+    // Traits (connu sous le nom des interfaces ou des classes de types dans
     // d'autres langues).
 
-    trait Frobnicate<T> {
-        fn frobnicate(self) -> Option<T>;
-    }
+    trait Frobnicate<T> {
+        fn frobnicate(self) -> Option<T>;
+    }
 
-    impl<T> Frobnicate<T> for Foo<T> {
-        fn frobnicate(self) -> Option<T> {
-            Some(self.bar)
-        }
-    }
+    impl<T> Frobnicate<T> for Foo<T> {
+        fn frobnicate(self) -> Option<T> {
+            Some(self.bar)
+        }
+    }
 
-    let another_foo = Foo { bar: 1 };
-    println!("{:?}", another_foo.frobnicate()); // Some(1)
+    let another_foo = Foo { bar: 1 };
+    println!("{:?}", another_foo.frobnicate()); // Some(1)
 
-    /////////////////////////
-    // 3. Motif correspondant //
-    /////////////////////////
+    /////////////////////////
+    // 3. Motif correspondant //
+    /////////////////////////
 
-    let foo = OptionnelI32::AnI32(1);
-    match foo {
-        OptionnelI32::AnI32(n) => println!("Il est un i32: {}", n),
-        OptionnelI32::Rien     => println!("Il n'y a rien!"),
-    }
+    let foo = OptionnelI32::AnI32(1);
+    match foo {
+        OptionnelI32::AnI32(n) => println!("Il est un i32: {}", n),
+        OptionnelI32::Rien     => println!("Il n'y a rien!"),
+    }
 
-    // Motif avancé correspondant
-    struct FooBar { x: i32, y: OptionnelI32 }
-    let bar = FooBar { x: 15, y: OptionnelI32::AnI32(32) };
+    // Motif avancé correspondant
+    struct FooBar { x: i32, y: OptionnelI32 }
+    let bar = FooBar { x: 15, y: OptionnelI32::AnI32(32) };
 
-    match bar {
-        FooBar { x: 0, y: OptionnelI32 :: AnI32(0)} =>
-            println!("Les chiffres sont nuls!"),
-        FooBar { x: n, y: OptionnelI32 :: AnI32(m)} if n == m =>
-            println!("Les chiffres sont les mêmes"),
-        FooBar { x: n, y: OptionnelI32 :: AnI32(m)} =>
-            println!("Différents numéros: {} {}", n, m)!,
-        FooBar { x: _, y: OptionnelI32 :: Rien} =>
-            println!("Le deuxième numéro est rien!"),
-    }
+    match bar {
+        FooBar { x: 0, y: OptionnelI32 :: AnI32(0)} =>
+            println!("Les chiffres sont nuls!"),
+        FooBar { x: n, y: OptionnelI32 :: AnI32(m)} if n == m =>
+            println!("Les chiffres sont les mêmes"),
+        FooBar { x: n, y: OptionnelI32 :: AnI32(m)} =>
+            println!("Différents numéros: {} {}", n, m)!,
+        FooBar { x: _, y: OptionnelI32 :: Rien} =>
+            println!("Le deuxième numéro est rien!"),
+    }
 
-    /////////////////////
-    // 4. Flux de contrôle //
-    /////////////////////
+    /////////////////////
+    // 4. Flux de contrôle //
+    /////////////////////
 
-    // `for` boucles / itération
-    let array = [1, 2, 3];
-    for i in array {
-        println!("{}", i);
-    }
+    // `for` boucles / itération
+    let array = [1, 2, 3];
+    for i in array {
+        println!("{}", i);
+    }
 
-    // Ranges
-    for i in 0u32..10 {
-        print!("{}", i);
-    }
-    println!("");
-    // imprime `0 1 2 3 4 5 6 7 8 9`
+    // Ranges
+    for i in 0u32..10 {
+        print!("{}", i);
+    }
+    println!("");
+    // imprime `0 1 2 3 4 5 6 7 8 9`
 
-    // `if`
-    if 1 == 1 {
-        println!("Maths est travaille!");
-    } else {
-        println!("Oh non ...!");
-    }
+    // `if`
+    if 1 == 1 {
+        println!("Maths est travaille!");
+    } else {
+        println!("Oh non ...!");
+    }
 
-    // `if` comme expression
-    let valeur = if true {
-        "bien"
-    } else {
-        "mal"
-    };
+    // `if` comme expression
+    let valeur = if true {
+        "bien"
+    } else {
+        "mal"
+    };
 
-    // `while` boucle
-    while 1 == 1 {
-        println!("L'univers fonctionne normalement.");
-    }
+    // `while` boucle
+    while 1 == 1 {
+        println!("L'univers fonctionne normalement.");
+    }
 
-    // Boucle infinie
-    loop {
-        println!("Bonjour!");
-    }
+    // Boucle infinie
+    loop {
+        println!("Bonjour!");
+    }
 
-    /////////////////////////////////
-    // 5. Sécurité & pointeurs mémoire //
-    /////////////////////////////////
+    /////////////////////////////////
+    // 5. Sécurité & pointeurs mémoire //
+    /////////////////////////////////
 
     // Pointeur occasion - une seule chose peut "posséder" pointeur à un moment.
-    // Cela signifie que lorsque le `Box` laisse son champ d'application, il
+    // Cela signifie que lorsque le `Box` laisse son champ d'application, il
     // peut être automatiquement libérée en toute sécurité.
-    let mut mine: Box<i32> = Box::new(3);
-    *mine = 5; // déréférencer
-    // Ici, `now_its_mine` prend possession de `mine`. En d'autres termes,
+    let mut mine: Box<i32> = Box::new(3);
+    *mine = 5; // déréférencer
+    // Ici, `now_its_mine` prend possession de `mine`. En d'autres termes,
     // `mine` est déplacé.
-    let mut now_its_mine = mine;
-    *now_its_mine += 2;
+    let mut now_its_mine = mine;
+    *now_its_mine += 2;
 
-    println!("{}", now_its_mine); // 7
-    // println!("{}", now_its_mine); // Cela ne compile pas parce
+    println!("{}", now_its_mine); // 7
+    // println!("{}", now_its_mine); // Cela ne compile pas parce
     // que `now_its_mine` possède maintenant le pointeur
 
-    // Référence - un pointeur immutable qui fait référence à d'autres données.
-    // Quand une référence est prise à une valeur, nous disons que la valeur
+    // Référence - un pointeur immutable qui fait référence à d'autres données.
+    // Quand une référence est prise à une valeur, nous disons que la valeur
     // a été "emprunté".
-    // Même si une valeur est emprunté immutablement, il ne peut pas être
+    // Même si une valeur est emprunté immutablement, il ne peut pas être
     // muté ou déplacé.
-    // Un emprunt dure jusqu'à la fin de la portée, il a été créé.
-    let mut var = 4;
-    var = 3;
-    let ref_var: &i32 = &var;
+    // Un emprunt dure jusqu'à la fin de la portée, il a été créé.
+    let mut var = 4;
+    var = 3;
+    let ref_var: &i32 = &var;
 
-    println!("{}", var); // Contrairement à `mine`, `var` peut encore être utilisé
-    println!("{}", *ref_var);
-    // Var = 5; // Cela ne compile pas parce que `var` est emprunté.
-    // *ref_var = 6; // Ce ne serait pas correct non plus, parce que `ref_var` est une
+    println!("{}", var); // Contrairement à `mine`, `var` peut encore être utilisé
+    println!("{}", *ref_var);
+    // Var = 5; // Cela ne compile pas parce que `var` est emprunté.
+    // *ref_var = 6; // Ce ne serait pas correct non plus, parce que `ref_var` est une
     // référence immutable.
 
-    // Référence Mutable
-    // Même si une valeur est empruntée de façon mutable, elle ne peut pas être
+    // Référence Mutable
+    // Même si une valeur est empruntée de façon mutable, elle ne peut pas être
     // accessible à tous.
-    let mut var2 = 4;
-    let ref_var2: &mut i32 = &mut var2;
+    let mut var2 = 4;
+    let ref_var2: &mut i32 = &mut var2;
     // '*' est utilisé pour pointer vers le var2 mutably emprunté.
     *ref_var2 += 2;
 
     println!("{}", * ref_var2); // 6, // var2 ne compilerait pas.
-    // ref_var2 est de type &mut i32 donc stocke la référence à i32,
+    // ref_var2 est de type &mut i32 donc stocke la référence à i32,
     // pas la valeur.
-    // var2 = 2; // Cela ne compile pas parce que `var2` est emprunté.
+    // var2 = 2; // Cela ne compile pas parce que `var2` est emprunté.
 }
 ```
 

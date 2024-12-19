@@ -413,7 +413,7 @@ class Velocipede extends Bicicleta {
 // Exemplo - Comida:
 public interface Comestivel {
     public void comer(); // Qualquer classe que implementa essa interface, deve
-                         // implementar este método.
+                         // implementar este método.
 }
 
 public interface Digestivel {
@@ -483,8 +483,8 @@ public abstract class Animal
     }
 
     // Não há necessidade de inicializar, no entanto, em uma interface
-    // a variável é implicitamente final e, portanto, tem
-    // de ser inicializada.
+    // a variável é implicitamente final e, portanto, tem
+    // de ser inicializada.
     protected int idade;
 
     public void mostrarIdade()
@@ -503,7 +503,7 @@ class Cachorro extends Animal
 {
 
     // Nota: ainda precisamos substituir os métodos abstratos na
-    // classe abstrata.
+    // classe abstrata.
     @Override
     public void fazerSom()
     {
@@ -512,10 +512,10 @@ class Cachorro extends Animal
     }
 
     // NOTA: Você receberá um erro se usou a
-    // anotação Override aqui, uma vez que java não permite
-    // sobrescrita de métodos estáticos.
-    // O que está acontecendo aqui é chamado de "esconder o método".
-    // Vejá também este impressionante SO post: http://stackoverflow.com/questions/16313649/
+    // anotação Override aqui, uma vez que java não permite
+    // sobrescrita de métodos estáticos.
+    // O que está acontecendo aqui é chamado de "esconder o método".
+    // Vejá também este impressionante SO post: http://stackoverflow.com/questions/16313649/
     public static void main(String[] args)
     {
         Cachorro pluto = new Cachorro();
@@ -540,7 +540,7 @@ class Cachorro extends Animal
 public final class TigreDenteDeSabre extends Animal
 {
     // Nota: Ainda precisamos substituir os métodos abstratos na
-    // classe abstrata.
+    // classe abstrata.
     @Override
     public void fazerSom();
     {
@@ -555,7 +555,7 @@ public abstract class Mamifero()
     // <modificador-de-acesso> final <tipo-de-retorno> <nome-do-método>(<argumentos>)
 
     // Métodos finais, como classes finais, não podem ser substituídos por uma classe filha,
-    // e são, portanto, a implementação final do método.
+    // e são, portanto, a implementação final do método.
     public final boolean EImpulsivo()
     {
         return true;

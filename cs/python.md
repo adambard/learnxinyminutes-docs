@@ -610,7 +610,7 @@ for nasobek in nasobicka_2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]):
         break
 
 # Funkce range() je také generátor - vytváření seznamu 900000000 prvků by zabralo
-# hodně času i paměti, proto se místo toho čísla generují postupně.
+# hodně času i paměti, proto se místo toho čísla generují postupně.
 for nasobek in nasobicka_2(range(900000000)):
     # Vypíše postupně: "Zpracovávám číslo 1",  ...,  "Zpracovávám číslo 5"
     if nasobek >= 10:

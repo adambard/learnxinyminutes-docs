@@ -416,7 +416,7 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
   (values i (number->string i)))
 ; => '#hash((1 . "1") (2 . "2") (3 . "3"))
 
-;; Il y a plein d'autres fonctions natives pour collecter des données à
+;; Il y a plein d'autres fonctions natives pour collecter des données à
 ;; l'aide de boucles
 (for/sum ([i 10]) (* i i)) ; => 285
 (for/product ([i (in-range 1 11)]) (* i i)) ; => 13168189440000

@@ -119,7 +119,7 @@ public class LearnJava {
 
         // Zmienną inicjalizuje się poprzez <rodzaj> <nazwa> = <wartość>
         int barInt = 1;
-        // Możliwe jest zainicjalizowanie wielu zmiennych tego samego typu tą samą wartością
+        // Możliwe jest zainicjalizowanie wielu zmiennych tego samego typu tą samą wartością
         // rodzaj <nazwa1>, <nazwa2>, <nazwa3>
         // <nazwa1> = <nazwa2> = <nazwa3> = <wartość>
         int barInt1, barInt2, barInt3;

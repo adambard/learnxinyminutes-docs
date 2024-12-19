@@ -57,13 +57,13 @@ Le liste sono semplici come in Markdown:
 
 - primo articolo
 - Secondo elemento
-     - Sottoelemento
+     - Sottoelemento
 
 oppure
 
 * Primo elemento
 * Secondo elemento
-     * Sottoelemento
+     * Sottoelemento
 
 Le tabelle sono molto semplici da inserire:
 

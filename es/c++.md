@@ -280,7 +280,7 @@ foo(bar(tempObjectFun()))
 
 void constReferenceTempObjectFun() {
   // ConstRef obtiene el objeto temporal, y es válido hasta el final de esta
-  // función.
+  // función.
   const string& constRef = tempObjectFun();
   ...
 }
@@ -328,10 +328,10 @@ public:
     Dog();
 
 	// Declaraciones de funciones de la clase (implementaciones a seguir)
-    // Nota que usamos std::string aquí en lugar de colocar
-    // using namespace std;
-    // arriba.
-    // Nunca ponga una declaración "using namespace" en un encabezado.
+    // Nota que usamos std::string aquí en lugar de colocar
+    // using namespace std;
+    // arriba.
+    // Nunca ponga una declaración "using namespace" en un encabezado.
     void setName(const std::string& dogsName);
 
     void setWeight(int dogsWeight);
@@ -471,7 +471,7 @@ public:
     Point& operator+=(const Point& rhs);
 
     // También tendría sentido añadir los operadores - y -=,
-   	// pero vamos a omitirlos por razones de brevedad.
+   	// pero vamos a omitirlos por razones de brevedad.
 };
 
 Point Point::operator+(const Point& rhs) const
