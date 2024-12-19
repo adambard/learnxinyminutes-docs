@@ -56,7 +56,7 @@ PCRE fournit des types de caractères génériques, également appelés classes 
   \V     tout sauf un caractère d'espace vertical blanc
   \w     tout caractère pouvant former un mot (lettre, chiffre, underscore)
   \W     tout sauf un caractère pouvant former un mot (lettre, chiffre, underscore)
-``
+```
 
 ## Exemples
 
@@ -78,4 +78,5 @@ Il s'agit d'un log d'accès Apache standard.
 | `\+[0-9]+` | +1000 | `\+` correspond au caractère `+` littéralement. `[0-9]` classe de caractère, faisant correspondre un seul chiffre. La même chose peut être obtenu en utilisant `\+\d+` |
 
 ## Lectures complémentaires
+
 [Regex101](https://regex101.com/) - Regular Expression tester et debugger
