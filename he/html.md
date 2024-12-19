@@ -151,14 +151,8 @@ HTML קיצור של Hypertext Markup Language כלומר זוהי שפה שמש
 </table>
 ```
 
-## שימוש
-
-HTML נכתב בקבצים המסתיימים ב-`.html` או `.htm`.
-
-**HTML אינה שפת תכנות**
-
 ## לקריאה נוספת
 
--   [Wikipedia](https://he.wikipedia.org/wiki/HTML)
--   [HTML Tutorial (EN)](https://developer.mozilla.org/en-US/docs/Web/HTML)
--   [W3Schools (EN)](http://www.w3schools.com/html/html_intro.asp)
+- [Wikipedia](https://he.wikipedia.org/wiki/HTML)
+- [HTML Tutorial (EN)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [W3Schools (EN)](http://www.w3schools.com/html/html_intro.asp)

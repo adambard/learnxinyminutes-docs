@@ -181,5 +181,5 @@ KTHXBYE
 
 ## Further reading:
 
--   [LCI compiler](https://github.com/justinmeza/lci)
--   [Official spec](https://github.com/justinmeza/lolcode-spec/blob/master/v1.2/lolcode-spec-v1.2.md)
+- [LCI compiler](https://github.com/justinmeza/lci)
+- [Official spec](https://github.com/justinmeza/lolcode-spec/blob/master/v1.2/lolcode-spec-v1.2.md)
