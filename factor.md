@@ -175,6 +175,6 @@ name get-global .       ! "Bob"
 [ 2 + ] \ - suffix                         ! Quotation [ 2 + - ]
 ```
 
-##Ready For More?
+## Further reading
 
 * [Factor Documentation](http://docs.factorcode.org/content/article-help.home.html)

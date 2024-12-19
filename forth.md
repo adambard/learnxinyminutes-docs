@@ -218,7 +218,7 @@ page
 \ bye
 ```
 
-##Ready For More?
+## Further reading
 
 * [Starting Forth](http://www.forth.com/starting-forth/)
 * [Simple Forth](http://www.murphywong.net/hello/simple.htm)

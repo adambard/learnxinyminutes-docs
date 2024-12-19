@@ -15,7 +15,7 @@ The idea turned out very well, and the project is now officially supported by Go
 AngularJS is a JavaScript framework. It can be added to an HTML page with a "script" tag.
 AngularJS extends HTML attributes with Directives, and binds data to HTML with Expressions.
 
-##What You Should Already Know
+## What You Should Already Know
 
 Before you study AngularJS, you should have a basic understanding of:
 

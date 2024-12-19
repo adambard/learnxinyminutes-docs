@@ -334,6 +334,6 @@ safe(Group) :- memberchk(joker, Group) -> memberchk(batman, Group) ; true.
 ?- maplist(plus(1), [2,3,4], Output).   % Output = [3, 4, 5].
 ```
 
-##Ready For More?
+## Further reading
 
 * [SWI-Prolog](http://www.swi-prolog.org/)

@@ -131,6 +131,6 @@ Manipular[y^2, {y, 0, 20}] (* Devuelve una interfaz de usuario reactiva que mues
                                Sólo funciona en interfaces gráficas *)
 ```
 
-##Listo para mas?
+## Listo para mas?
 
 * [Centro de Documentación](http://reference.wolfram.com/language/)

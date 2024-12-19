@@ -93,7 +93,7 @@ Le implementazioni Ruby possono avere una propria versione, ma hanno sempre come
 target una specifica versione di MRI. Molte implementazioni hanno l'abilità di
 selezionare una versione specifica di MRI.
 
-##Ruby Spec
+## Ruby Spec
 
 La maggior parte delle implementazioni Ruby dipendono pesantemente su
 [Ruby Spec](https://github.com/ruby/spec). Ruby non ha una specifica ufficiale, quindi la

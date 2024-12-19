@@ -202,7 +202,7 @@ chau
 
 ```
 
-##Listo Para Mas?
+## Listo Para Mas?
 
 * [README](https://git.sr.ht/~maleza/curto/tree/curto/item/README)
 * [GLOSARIO](https://git.sr.ht/~maleza/curto/tree/curto/item/GLOSARIO)

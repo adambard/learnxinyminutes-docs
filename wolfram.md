@@ -139,6 +139,6 @@ Manipulate[y^2, {y, 0, 20}] (* Return a reactive user interface that displays y^
                                Only works on graphical frontends *)
 ```
 
-##Ready For More?
+## Further reading
 
 * [Wolfram Language Documentation Center](http://reference.wolfram.com/language/)

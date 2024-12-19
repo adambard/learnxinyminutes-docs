@@ -186,7 +186,7 @@ organizations.
       THE FULL NAME IS: BOB GIBBERISH COBB
 ```
 
-##Ready For More?
+## Further reading
 
 * [GnuCOBOL](https://sourceforge.net/projects/open-cobol/)
 

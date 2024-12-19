@@ -233,7 +233,7 @@ words
 bye
 ```
 
-##Готовы к большему?
+## Готовы к большему?
 
 * [Начала Форта (англ.)](http://www.forth.com/starting-forth/)
 * [Простой Форт (англ.)](http://www.murphywong.net/hello/simple.htm)
