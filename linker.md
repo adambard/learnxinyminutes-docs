@@ -1,34 +1,31 @@
 ---
 category: tool
-name: GNU linker (ld)
+name: Linker script
 contributors:
     - ["Alexander Kovalchuk", "https://github.com/Zamuhrishka"]
 translators:
     - ["Anuj Shah", "https://github.com/ShahAnuj2610"]
+filename: learn.ld
 ---
 
-## Basic concepts and definitions
-
 **Position counter** - the linker has a special variable
-"." (dot) always contains the current output position.
+"`.`" (dot) always contains the current output position.
 
-## Functions
-
-**ADDR (section)** - returns the absolute address of the specified section. However
+`ADDR (section)` - returns the absolute address of the specified section. However
 this section must be defined before using the ADDR function.
 
-**ALIGN (exp)** - returns the value of the position counter aligned to the border
+`ALIGN (exp)` - returns the value of the position counter aligned to the border
 following the exp expression.
 
-**SIZEOF (section)** - returns the size of the section in bytes.
+`SIZEOF (section)` - returns the size of the section in bytes.
 
-**FILL (param)** - defines the fill pattern for the current section. All
+`FILL (param)` - defines the fill pattern for the current section. All
 other unspecified regions within the section are filled with the value indicated
 in function argument.
 
-**KEEP (param)** - used to mark param as fatal.
+`KEEP (param)` - used to mark param as fatal.
 
-**ENTRY (func)** - defines the function that will be the entry point
+`ENTRY (func)` - defines the function that will be the entry point
 into the program.
 
 ```bash
@@ -45,7 +42,7 @@ _Min_Stack_Size = 0x400;
 # Description of the memory card available for this processor
 # MEMORY
 # {
-#MEMORY_DOMAIN_NAME (access rights): ORIGIN = START_ADDRESS, LENGTH = SIZE
+#   MEMORY_DOMAIN_NAME (access rights) : ORIGIN = START_ADDRESS, LENGTH = SIZE
 # }
 # In our example, the controller contains three memory areas:
 # RAM - starts with the address 0x20000000 and takes 128 KB;
@@ -56,33 +53,33 @@ _Min_Stack_Size = 0x400;
 # FLASH memory is available for reading and execution.
 MEMORY
 {
-	RAM 		(xrw)     : 	ORIGIN = 0x20000000, 	LENGTH = 128K
-	CCMRAM 		(rw)      : 	ORIGIN = 0x10000000, 	LENGTH = 64K
-	FLASH 		(rx)      : 	ORIGIN = 0x8000000, 	LENGTH = 1024K
+    RAM    (xrw) : ORIGIN = 0x20000000,  LENGTH = 128K
+    CCMRAM (rw)  : ORIGIN = 0x10000000,  LENGTH = 64K
+    FLASH  (rx)  : ORIGIN = 0x8000000,   LENGTH = 1024K
 }
 
 # We describe output sections
 SECTIONS
 {
-	# The first section contains a table of interrupt vectors
+  # The first section contains a table of interrupt vectors
   .isr_vector :
   {
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
-	# There is an option --gc-sections, which allows you to collect garbage from unused
-	# input sections. And if there are sections that the garbage collector should not touch,
-	# you need to specify them as an argument to the KEEP () function (analogue of the keyword
-	# volatile).
-	# The entry (* (. Isr_vector)) means the .isr_vector sections in all object files. Because
-	# appeal to the section in general terms looks like this: (FILE_NAME (SECTION_NAME))
+    # There is an option --gc-sections, which allows you to collect garbage from unused
+    # input sections. And if there are sections that the garbage collector should not touch,
+    # you need to specify them as an argument to the KEEP () function (analogue of the keyword
+    # volatile).
+    # The entry (* (. Isr_vector)) means the .isr_vector sections in all object files. Because
+    # appeal to the section in general terms looks like this: (FILE_NAME (SECTION_NAME))
     KEEP(*(.isr_vector))
 
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
-	# The expression "> MEMORY AREA" indicates which area of ​​memory will be placed
-	# this section. In our section, the .isr_vector section will be located in FLASH memory.
+    # The expression "> MEMORY AREA" indicates which area of ​​memory will be placed
+    # this section. In our section, the .isr_vector section will be located in FLASH memory.
   } >FLASH
 
 # TOTAL: The .isr_vector section that contains the table of interrupt vectors is aligned
@@ -92,24 +89,24 @@ SECTIONS
   # The second section contains the program code.
   .text :
   {
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
     # We indicate that in this section the .text areas of all
-	# object files
+    # object files
     *(.text)
     *(.text*)
 
-	# Protect the .init and .fini sections from the garbage collector
+    # Protect the .init and .fini sections from the garbage collector
     KEEP (*(.init))
     KEEP (*(.fini))
 
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
-	# The variable _etext is defined, which stores the address of the end of the .text section and which
-	# may be available in the source code of the program through the announcement
-	# volaile unsigned int extern _etext;
+    # The variable _etext is defined, which stores the address of the end of the .text section and which
+    # may be available in the source code of the program through the announcement
+    # volaile unsigned int extern _etext;
     _etext = .;
   } >FLASH
 
@@ -123,15 +120,15 @@ SECTIONS
   # The third section contains constant data.
   .rodata :
   {
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
-	# We indicate that in this section areas .rodata will be stored
-	# object files
+    # We indicate that in this section areas .rodata will be stored
+    # object files
     *(.rodata)
     *(.rodata*)
 
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
   } >FLASH
 
@@ -141,47 +138,47 @@ SECTIONS
   # The fourth section contains initialized variables.
   .data :
   {
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
-	# Save the address of the current position (beginning of the section) in the variable _sdata
+    # Save the address of the current position (beginning of the section) in the variable _sdata
     _sdata = .;
 
-	# We indicate that in this section the .data areas of all
-	# object files
+    # We indicate that in this section the .data areas of all
+    # object files
     *(.data)
     *(.data*)
 
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
     # Save the address of the current position (end of section) in the variable _sdata
     _edata = .;
 
-	# AT function indicates that this sector is stored in one memory area
-	# (in our case, FLASH), and it will be executed from another area of ​​memory (in our case, RAM).
-	# There are two types of addresses:
-	# * VMA (Virtual memory address) - this is the run-time address at which the compiler expects
-	# see data.
-	# * LMA (Load memory address) is the address at which the linker stores data.
+    # AT function indicates that this sector is stored in one memory area
+    # (in our case, FLASH), and it will be executed from another area of ​​memory (in our case, RAM).
+    # There are two types of addresses:
+    # * VMA (Virtual memory address) - this is the run-time address at which the compiler expects
+    # see data.
+    # * LMA (Load memory address) is the address at which the linker stores data.
 
-	#Startup must code to copy the .data section from the LMA addresses to the VMA addresses.
+    #Startup must code to copy the .data section from the LMA addresses to the VMA addresses.
 
   } >RAM AT> FLASH
 
   # The fifth section contains zero-initialized variables.
   .bss :
   {
-	# Save the address of the current position (beginning of the section) in the variable _sbss and __bss_start__
+    # Save the address of the current position (beginning of the section) in the variable _sbss and __bss_start__
     _sbss = .;
     __bss_start__ = _sbss;
 
-	# We indicate that in this section the .bss areas of all
-	# object files
+    # We indicate that in this section the .bss areas of all
+    # object files
     *(.bss)
     *(.bss*)
 
-	# Align the current position to the border of 4 bytes.
+    # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
     # Save the address of the current position (beginning of the section) in the variable _ebss and __bss_end__
