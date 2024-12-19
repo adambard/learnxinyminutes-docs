@@ -92,7 +92,7 @@ module Module1
         Console.Title = " Olá Mundo YourName | Saiba X em Y Minutes"
         ' Variáveis
         'Os dados inseridos por um usuário precisam ser armazenados.
-        ' As variáveis ​​também começar com um Dim e terminar com um Como VariableType.
+        ' As variáveis também começar com um Dim e terminar com um Como VariableType.
 
         ' Neste tutorial, nós queremos saber qual é o seu nome, e faça o programa
         ' Responder ao que é dito.
@@ -103,7 +103,7 @@ module Module1
         Console.WriteLine (" Olá " + username) ' A saída é "Olá < seu nome >".
         Console.ReadLine () ' Outsputs acima.
         ' O código acima irá lhe fazer uma pergunta seguiu imprimindo sua resposta.
-        " Outras variáveis ​​incluem Integer e usamos inteiro para números inteiros.
+        " Outras variáveis incluem Integer e usamos inteiro para números inteiros.
     End Sub
 
     "Três

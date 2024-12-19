@@ -125,14 +125,14 @@ f [ . ] when*      ! Nenhuma saída, pilha vazia, f é consumida porque é falsa
 
 ! Variáveis
 ! Normalmente, espera-se que os programas Factor mantenham todos os dados na pilha.
-! Usar variáveis ​​nomeadas torna a refatoração mais difícil (e é chamada de Factor por um motivo)
-! Variáveis ​​globais, se você precisar:
+! Usar variáveis nomeadas torna a refatoração mais difícil (e é chamada de Factor por um motivo)
+! Variáveis globais, se você precisar:
 
 SYMBOL: name            ! Cria o nome como uma palavra identificadora
 "Bob" name set-global   ! Sem saída
 name get-global .       ! "Bob"
 
-! Variáveis ​​locais nomeadas são consideradas uma extensão, mas estão disponíveis
+! Variáveis locais nomeadas são consideradas uma extensão, mas estão disponíveis
 ! Em uma citação ..
 [| m n                  ! A citação captura os dois principais valores da pilha em m e n
  | m n + ]              ! Leia-os
@@ -143,10 +143,10 @@ name get-global .       ! "Bob"
    c . ;                  ! Imprima isso
 
 ! Em uma palavra declarada dessa maneira, o lado de entrada da declaração de pilha
-! torna-se significativo e fornece os valores das variáveis ​​em que os valores da pilha são capturados
+! torna-se significativo e fornece os valores das variáveis em que os valores da pilha são capturados
 :: double ( a -- result ) a 2 * ;
 
-! Variáveis ​​são declaradas mutáveis ​​ao terminar seu nome com um ponto de exclamação
+! Variáveis são declaradas mutáveis ao terminar seu nome com um ponto de exclamação
 :: mword2 ( a! -- x y )   ! Capture o topo da pilha na variável mutável a
    a                      ! Empurrar a
    a 2 * a!               ! Multiplique por 2 e armazene o resultado em a

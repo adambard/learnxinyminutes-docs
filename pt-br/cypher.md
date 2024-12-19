@@ -71,7 +71,7 @@ Você pode encadear vários relacionamentos. Este path descreve o amigo de um am
 `(a:Person)-[:MANAGES]->(b:Person)-[:MANAGES]->(c:Person)`
 Uma encadeamento também pode ser direcionada. Este path descreve que **a** é o chefe de **b** e o grande chefe de **c**.
 
-Padrões frequentemente usados ​​(do Neo4j doc):
+Padrões frequentemente usados (do Neo4j doc):
 
 ```cypher
 // Amigo de um amigo

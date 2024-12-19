@@ -78,7 +78,7 @@ SECTIONS
     # Align the current position to the border of 4 bytes.
     . = ALIGN(4);
 
-    # The expression "> MEMORY AREA" indicates which area of ​​memory will be placed
+    # The expression "> MEMORY AREA" indicates which area of memory will be placed
     # this section. In our section, the .isr_vector section will be located in FLASH memory.
   } >FLASH
 
@@ -156,7 +156,7 @@ SECTIONS
     _edata = .;
 
     # AT function indicates that this sector is stored in one memory area
-    # (in our case, FLASH), and it will be executed from another area of ​​memory (in our case, RAM).
+    # (in our case, FLASH), and it will be executed from another area of memory (in our case, RAM).
     # There are two types of addresses:
     # * VMA (Virtual memory address) - this is the run-time address at which the compiler expects
     # see data.

@@ -31,7 +31,7 @@ Existem muitas variedades de make na existência, no entanto, este artigo pressu
 # Uma regra - esta regra só será executada se o arquivo0.txt não existir.
 arquivo0.txt:
 	echo "foo" > arquivo0.txt
-	# Mesmo os comentários nestas seções da 'receita' são passados ​​para o shell.
+	# Mesmo os comentários nestas seções da 'receita' são passados para o shell.
 	# Experimentar `make arquivo0.txt` or simplyou simplesmente `make` - primeira regra é o padrão.
 
 # Esta regra só será executada se arquivo0.txt for mais recente que arquivo1.txt.
@@ -74,7 +74,7 @@ ex0.txt ex1.txt: maker
 # Alvos falsos comuns são: todos fazem instalação limpa ...
 
 #-----------------------------------------------------------------------
-# Variáveis ​​Automáticas e Curingas
+# Variáveis Automáticas e Curingas
 #-----------------------------------------------------------------------
 
 process: Arquivo*.txt	# Usando um curinga para corresponder nomes de arquivos
@@ -130,7 +130,7 @@ small/%.png: %.svg
 #-----------------------------------------------------------------------
 # aka. macros
 
-# As variáveis ​​são basicamente todos os tipos de string
+# As variáveis são basicamente todos os tipos de string
 
 name = Ted
 name2="Sarah"
@@ -139,14 +139,14 @@ echo:
 	@echo $(name)
 	@echo ${name2}
 	@echo $name    # Isso não funcionará, tratado como $ (n)ame.
-	@echo $(name3) # Variáveis ​​desconhecidas são tratadas como strings vazias.
+	@echo $(name3) # Variáveis desconhecidas são tratadas como strings vazias.
 
 # Existem 4 lugares para definir variáveis.
 # Em ordem de prioridade, do maior para o menor:
 # 1: argumentos de linha de comando
 # 2: Makefile
-# 3: variáveis ​​de ambiente do shell - faça importações automaticamente.
-# 4: make tem algumas variáveis ​​predefinidas
+# 3: variáveis de ambiente do shell - faça importações automaticamente.
+# 4: make tem algumas variáveis predefinidas
 
 name4 ?= Jean
 # Somente defina a variável se a variável de ambiente ainda não estiver definida.
@@ -157,12 +157,12 @@ override name5 = David
 name4 +=grey
 # Anexar valores à variável (inclui um espaço).
 
-# Valores variáveis ​​específicos de padrões (extensão GNU).
+# Valores variáveis específicos de padrões (extensão GNU).
 echo: name2 = Sara # Verdadeiro dentro da regra de correspondência
 	# e também dentro de suas recursivas dependências
 	# (exceto que ele pode quebrar quando seu gráfico ficar muito complicado!)
 
-# Algumas variáveis ​​definidas automaticamente pelo make
+# Algumas variáveis definidas automaticamente pelo make
 echo_inbuilt:
 	echo $(CC)
 	echo ${CXX}
@@ -177,7 +177,7 @@ echo_inbuilt:
 # Variáveis 2
 #-----------------------------------------------------------------------
 
-# O primeiro tipo de variáveis ​​é avaliado a cada vez que elas são usadas.
+# O primeiro tipo de variáveis é avaliado a cada vez que elas são usadas.
 # TIsso pode ser caro, então existe um segundo tipo de variável que é
 # avaliado apenas uma vez. (Esta é uma extensão do GNU make)
 
@@ -185,7 +185,7 @@ var := hello
 var2 ::=  $(var) hello
 #:= e ::= são equivalentes.
 
-# Essas variáveis ​​são avaliadas procedimentalmente (na ordem em que
+# Essas variáveis são avaliadas procedimentalmente (na ordem em que
 # aparecem), quebrando assim o resto da línguagem!
 
 # Isso não funciona

@@ -26,7 +26,7 @@ Less (e outros pré-processadores, como o [Sass](http://sass-lang.com/)) ajudam 
 @secondary-color: #51527f;
 @body-font: 'Roboto', sans-serif;
 
-/* Você pode usar as variáveis ​​em toda a sua folha de estilo.
+/* Você pode usar as variáveis em toda a sua folha de estilo.
    Agora, se você quiser alterar uma cor, só precisa fazer a alteração uma vez. */
 
 body {

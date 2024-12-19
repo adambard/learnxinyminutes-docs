@@ -100,7 +100,7 @@ double valorDouble = 1,12345D; // Double (números de ponto flutuante de 64 bits
 
 // Existem vários tipos de dados compostos que estão disponíveis por padrão para 
 // uso no Processing.
-// Primeiramente, farei um resumo dos mais usados ​​para economizar tempo.
+// Primeiramente, farei um resumo dos mais usados para economizar tempo.
 
 // String
 // Enquanto o tipo de dados char usa '', o tipo de dados String usa "" - aspas 
@@ -118,7 +118,7 @@ print("Olá " + "Mundo!"); // Olá Mundo!
 // próprios objetos. Como os arrays são semelhantes aos objetos, eles devem 
 // ser criados com a palavra-chave "new".
 int[] arrayInt = new int[5];
-int[] arrayIntComValores ​​= {1, 2, 3}; // Você também pode preencher com dados.
+int[] arrayIntComValores = {1, 2, 3}; // Você também pode preencher com dados.
 
 // Lista de Arrays
 // As funções são semelhantes às do array; arraylists podem conter qualquer 
@@ -192,7 +192,7 @@ if (author.getAppearance().equals("quente")) {
   // Você pode verificar outras condições aqui.
   print("Algo está realmente errado aqui!");
 }
-// Um ​​atalho para instruções if-else também pode ser usado.
+// Um atalho para instruções if-else também pode ser usado.
 int = 3;
 String valor = (i > 5) ? "Grande" : "Pequena"; // "Pequena"
 
