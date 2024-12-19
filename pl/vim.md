@@ -147,7 +147,6 @@ Kilka ważnych przykładów Akcji, Modyfikatorów i Obiektów:
 
 ## Pewne skróty i triki
 
-        <!--TODO: Dodać więcej!-->
 ```
     >                # Zrób wcięcie zaznaczonego bloku
     <                # Usuń wcięcie zaznaczonego bloku

@@ -150,7 +150,6 @@ Alguns exemplos importantes de 'Verbos', 'Modificadores' e 'Nomes':
 
 ## Alguns atalhos e dicas
 
-        <!--TODO: Adicionar mais!-->
 ```
     >                # Adiciona um bloco de indentação
     <                # Remove um bloco de indentação

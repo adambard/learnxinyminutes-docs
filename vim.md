@@ -176,7 +176,6 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
 
 ## Some shortcuts and tricks
 
-        <!--TODO: Add more!-->
 ```
     >                 # Indent selection by one block
     <                 # Dedent selection by one block
