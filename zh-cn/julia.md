@@ -1,5 +1,5 @@
 ---
-filename: learn-julia-zh.jl
+filename: learn-julia.jl
 contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
     - ["Pranit Bauva", "https://github.com/pranitbauva1997"]

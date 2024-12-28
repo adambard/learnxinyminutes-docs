@@ -1,5 +1,5 @@
 ---
-filename: learn-haskell-zh.hs
+filename: learn-haskell.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
