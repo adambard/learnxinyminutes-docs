@@ -1,5 +1,5 @@
 ---
-filename: learnbf-pt.bf
+filename: learnbf.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]

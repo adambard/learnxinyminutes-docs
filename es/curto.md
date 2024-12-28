@@ -2,7 +2,7 @@
 name: curto
 contributors:
     - ["Maleza", "https://maleza.srht.site/"]
-filename: learncurto-es.fs
+filename: learncurto.fs
 ---
 
 Curto es una traducción completa al español de [UF Forth](http://www.call-with-current-continuation.org/uf/uf.html) (de Felix Winkelmann), un Forth para la [Máquina Virtual UXN](https://wiki.xxiivv.com/site/uxn.html).

@@ -1,5 +1,5 @@
 ---
-filename: rust-pt.rs
+filename: rust.rs
 contributors:
     - ["Paulo Henrique Rodrigues Pinheiro", "https://about.me/paulohrpinheiro"]
 

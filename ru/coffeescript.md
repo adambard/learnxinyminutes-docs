@@ -4,7 +4,7 @@ contributors:
   - ["Xavier Yao", "http://github.com/xavieryao"]
 translators:
   - ["asaskevich", "http://github.com/asaskevich"]
-filename: learncoffee-ru.coffee
+filename: learncoffee.coffee
 ---
 
 CoffeeScript - это небольшой язык, который компилируется один-в-один в эквивалентный код на языке JavaScript, а потому он не интерпретируется во время исполнения JavaScript кода.

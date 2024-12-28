@@ -1,5 +1,5 @@
 ---
-filename: learnbrainfuck-fr.bf
+filename: learnbrainfuck.bf
 contributors:
     - ["Prajit Ramachandran", "http://prajitr.github.io/"]
     - ["Mathias Bynens", "http://mathiasbynens.be/"]

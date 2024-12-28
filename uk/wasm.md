@@ -1,5 +1,5 @@
 ---
-filename: learnwasm-ua.wast
+filename: learnwasm.wast
 contributors:
     - ["Dean Shaff", "http://dean-shaff.github.io"]
 translators:

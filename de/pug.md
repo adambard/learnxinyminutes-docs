@@ -1,7 +1,7 @@
 ---
 contributors:
   - ["Michael Warner", "https://github.com/MichaelJGW"]
-filename: lernepug-de.pug
+filename: lernepug.pug
 translators:
     - ["denniskeller", "https://github.com/denniskeller"]
 ---

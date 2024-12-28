@@ -1,5 +1,5 @@
 ---
-filename: php-fr.php
+filename: php.php
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]

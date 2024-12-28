@@ -3,7 +3,7 @@ contributors:
     - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
 translators:
     - ["Jakukyo Friel", "http://weakish.github.io"]
-filename: erlang-cn.erl
+filename: erlang.erl
 ---
 
 ```erlang

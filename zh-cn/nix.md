@@ -1,6 +1,6 @@
 ---
 name: Nix
-filename: learnnix-cn.nix
+filename: learnnix.nix
 contributors:
     - ["Chris Martin", "http://chris-martin.org/"]
     - ["Rommel Martinez", "https://ebzzry.io"]

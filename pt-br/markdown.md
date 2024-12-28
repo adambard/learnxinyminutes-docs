@@ -7,7 +7,7 @@ translators:
     - ["Monique Baptista", "https://github.com/bfmonique"]
     - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
 
-filename: learnmarkdown-pt.md
+filename: learnmarkdown.md
 ---
 
 O Markdown foi lançado por John Gruber em 2004. Criado para ser uma sintaxe

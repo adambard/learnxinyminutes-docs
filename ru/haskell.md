@@ -1,5 +1,5 @@
 ---
-filename: haskell-ru.hs
+filename: haskell.hs
 contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:

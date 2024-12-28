@@ -4,7 +4,7 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["urfuchs", "https://github.com/urfuchs"]
-filename: brainfuck-de.bf
+filename: brainfuck.bf
 
 ---
 

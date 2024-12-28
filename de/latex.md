@@ -6,7 +6,7 @@ contributors:
 translators:
   - ["Moritz Kammerer", "https://github.com/phxql"]
   - ["Jerome Meinke", "https://github.com/jmeinke"]
-filename: latex-de.tex
+filename: latex.tex
 ---
 ```
 % Alle Kommentare starten mit einem Prozentzeichen %

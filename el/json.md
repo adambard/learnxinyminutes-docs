@@ -1,5 +1,5 @@
 ---
-filename: json-gr.json
+filename: json.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]

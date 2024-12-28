@@ -3,7 +3,7 @@ contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 translators:
     - ["Jhoon Saravia", "https://github.com/jhoon"]
-filename: groovy-es.groovy
+filename: groovy.groovy
 ---
 
 Groovy - Un lenguaje dinámico para la plataforma Java. [Leer más aquí](http://www.groovy-lang.org/).

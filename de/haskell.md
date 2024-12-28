@@ -4,7 +4,7 @@ contributors:
 translators:
     - ["Henrik Jürges", "https://github.com/santifa"]
     - ["Nikolai Weh", "http://weh.hamburg"]
-filename: haskell-de.hs
+filename: haskell.hs
 
 ---
 

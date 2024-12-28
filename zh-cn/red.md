@@ -1,5 +1,5 @@
 ---
-filename: LearnRed-zh.red
+filename: LearnRed.red
 contributors:
     - ["Arnold van Hofwegen", "https://github.com/iArnold"]
 translators:

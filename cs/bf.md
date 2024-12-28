@@ -4,7 +4,7 @@ contributors:
     - ["Mathias Bynens", "http://mathiasbynens.be/"]
 translators:
     - ["Vojta Svoboda", "https://github.com/vojtasvoboda/"]
-filename: learnbrainfuck-cz.bf
+filename: learnbrainfuck.bf
 ---
 
 Brainfuck (psaný bez kapitálek s vyjímkou začátku věty) je extrémně minimální 

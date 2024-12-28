@@ -3,7 +3,7 @@ contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
     - ["Christian Albrecht", "https://github.com/coastalchief"]
-filename: lernerust-de.rs
+filename: lernerust.rs
 ---
 
 Rust ist eine Programmiersprache von Mozilla Research.  

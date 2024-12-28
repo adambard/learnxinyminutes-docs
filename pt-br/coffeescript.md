@@ -5,7 +5,7 @@ contributors:
   - ["Claudio Busatto", "http://github.com/cjcbusatto"]
 translators:
     - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-filename: learncoffeescript-pt.coffee
+filename: learncoffeescript.coffee
 ---
 
 CoffeeScript é uma pequena linguagem que compila um-para-um para o JavaScript

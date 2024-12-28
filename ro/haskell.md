@@ -3,7 +3,7 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
-filename: haskell-ro.hs
+filename: haskell.hs
 ---
 
 Haskell este un limbaj de programare practic, pur funcțional.

@@ -1,7 +1,7 @@
 ---
 contributors:
     - ["Carlo Milanesi", "http://github.com/carlomilanesi"]
-filename: rust-it.rs
+filename: rust.rs
 ---
 
 Rust è un linguaggio di programmazione sviluppato da Mozilla Research.

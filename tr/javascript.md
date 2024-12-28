@@ -4,7 +4,7 @@ contributors:
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Kaan Kaçar", "https://github.com/kaankacar"]
-filename: learnjavascript-tr.js
+filename: learnjavascript.js
 ---
 
 JavaScript, Brendan Eich tarafından 1995 yılında oluşturuldu. Başlangıçta, daha karmaşık web uygulamaları için Java'nın kullanıldığı siteler için daha basit bir betik dili olarak tasarlandı, ancak Web sayfalarıyla sıkı entegrasyonu ve tarayıcılardaki yerleşik desteği nedeniyle Java'dan daha yaygın hale geldi.
