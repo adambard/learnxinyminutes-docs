@@ -216,7 +216,7 @@ an image from scratch)
 but used like a convention
 * Below is a sample Dockerfile but you can read in depth from the [official docs](https://docs.docker.com/engine/reference/builder/).
 
-```Dockerfile
+```dockerfile
 FROM <base-image>
 # define base image
 
