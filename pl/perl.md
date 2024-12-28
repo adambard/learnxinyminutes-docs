@@ -1,11 +1,9 @@
 ---
-filename: learnperl-pl.pm
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
     - ["Dan Book", "http://github.com/Grinnz"]
 translators:
     - ["Michał Kupczyński", "http://github.com/ukoms"]
-
 ---
 
 Perl jest wysoce użytecznym, bogatym w wiele opcji językiem programowania

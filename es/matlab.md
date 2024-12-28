@@ -1,5 +1,4 @@
 ---
-filename: learnmatlab-es.mat
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]

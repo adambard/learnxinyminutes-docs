@@ -1,5 +1,4 @@
 ---
-filename: cascading-fr.css
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
     - ["Marco Scannadinari", "https://github.com/marcoms"]

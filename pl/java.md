@@ -1,5 +1,4 @@
 ---
-filename: LearnJavaPl.java
 contributors:
     - ["Jake Prather", "https://github.com/JakeHP"]
     - ["Jakukyo Friel", "https://weakish.github.io"]

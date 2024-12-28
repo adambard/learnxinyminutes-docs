@@ -4,7 +4,6 @@ contributors:
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
-filename: ruby-ecosystem-de.txt
 ---
 
 Hier gibt es einen Überblick über die gängigsten Tools zur Verwaltung  

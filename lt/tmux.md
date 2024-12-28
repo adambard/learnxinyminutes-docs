@@ -1,18 +1,14 @@
 ---
-filename: tmux-lt.json
 contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
     - ["Zygimantus", "https://github.com/zygimantus"]
-
 ---
-
 
 [tmux](http://tmux.sourceforge.net)
 yra terminalo daugintuvas: jis leidžia vienu metu sukurti, turėti
 ir valdyti kelis terminalus viename ekrane. tmux gali būti atjungtas
 nuo ekrano ir veikti fone, o vėliau gali būti vėl prijungtas.
-
 
 ```
   tmux [komanda]     # Vykdyti komandą

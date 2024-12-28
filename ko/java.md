@@ -1,5 +1,4 @@
 ---
-filename: java-kr.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:

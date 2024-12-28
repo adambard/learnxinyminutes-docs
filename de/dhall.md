@@ -3,7 +3,6 @@ contributors:
     - ["Gabriel Gonzalez", "http://www.haskellforall.com/"]
 translators:
     - ["Profpatsch", "http://profpatsch.de"]
-filename: learndhall-de.py
 ---
 
 Dhall ist eine programmierbare Konfigurationssprache und bietet eine

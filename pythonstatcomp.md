@@ -3,6 +3,7 @@ category: framework
 name: Statistical computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
+filename: pythonstatcomp.py
 ---
 
 This is a tutorial on how to do some typical statistical programming tasks using Python. It's intended for people basically familiar with Python and experienced at statistical programming in a language like R, Stata, SAS, SPSS, or MATLAB.

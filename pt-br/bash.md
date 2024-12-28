@@ -8,7 +8,6 @@ contributors:
     - ["Anton Strömkvist", "http://lutic.org/"]
 translators:
     - ["Davidson Mizael", "https://github.com/davidsonmizael"]
-filename: LearnBash-pt_br.sh
 ---
 
 Tutorial de shell em português

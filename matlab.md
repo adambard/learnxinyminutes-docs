@@ -1,6 +1,6 @@
 ---
 name: MATLAB
-filename: learnmatlab.mat
+filename: learnmatlab.m
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]

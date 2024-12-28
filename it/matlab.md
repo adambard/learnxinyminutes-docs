@@ -5,7 +5,6 @@ contributors:
     - ["Colton Kohnke", "http://github.com/voltnor"]
 translators:
     - ["Samuele Gallerani", "http://github.com/fontealpina"]
-filename: matlab-it.md
 ---
 
 MATLAB sta per MATrix LABoratory ed è un potente linguaggio per il calcolo numerico comunemente usato in ingegneria e matematica.

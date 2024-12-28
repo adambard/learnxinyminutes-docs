@@ -3,7 +3,6 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
   - ["Rick Haan", "https://github.com/RickHaan"]
-filename: learnvim-nl.yaml
 ---
 
 # Vim in het Nederlands

@@ -7,7 +7,6 @@ contributors:
     - ["Amr Tamimi", "https://amrtamimi.com"]
 translators:
     - ["Jakukyo Friel", "http://weakish.github.io"]
-filename: lua-cn.lua
 ---
 
 ```lua

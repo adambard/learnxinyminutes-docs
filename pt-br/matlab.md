@@ -5,7 +5,6 @@ contributors:
     - ["Colton Kohnke", "http://github.com/voltnor"]
 translators:
     - ["Claudson Martins", "https://github.com/claudsonm"]
-filename: learnmatlab-pt.mat
 ---
 
 MATLAB significa MATrix LABoratory. É uma poderosa linguagem de computação numérica geralmente utilizada em engenharia e matemática.

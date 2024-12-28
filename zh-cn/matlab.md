@@ -1,5 +1,4 @@
 ---
-filename: matlab-cn.m
 contributors:
     - ["mendozao", "http://github.com/mendozao"]
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
