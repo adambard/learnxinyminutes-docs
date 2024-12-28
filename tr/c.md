@@ -1,5 +1,4 @@
 ---
-filename: learnc-tr.c
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:

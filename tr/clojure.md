@@ -1,5 +1,4 @@
 ---
-filename: learnclojure-tr.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
     - ["Seçkin KÜKRER", "https://leavenha.github.io"]

@@ -1,5 +1,4 @@
 ---
-filename: learnfsharp-pt.fs
 contributors:
     - ["Scott Wlaschin", "http://fsharpforfunandprofit.com"]
     - ["Adelar da Silva Queiróz", "https://adelarsq.github.io"]

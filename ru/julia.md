@@ -3,7 +3,6 @@ contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
 translators:
     - ["Sergey Skovorodkin", "https://github.com/skovorodkin"]
-filename: learnjulia-ru.jl
 ---
 
 Julia — гомоиконный функциональный язык программирования для технических расчётов.

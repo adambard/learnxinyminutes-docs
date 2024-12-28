@@ -3,7 +3,6 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Eray AYDIN", "http://erayaydin.me/"]
-filename: markdown-tr.md
 ---
 
 Markdown, 2004 yılında John Gruber tarafından oluşturuldu. Asıl amacı kolay okuma ve yazmayı sağlamakla beraber kolayca HTML (artık bir çok diğer formatlara) dönüşüm sağlamaktır.

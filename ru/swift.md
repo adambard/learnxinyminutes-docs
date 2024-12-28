@@ -4,7 +4,6 @@ contributors:
   - ["Christopher Bess", "http://github.com/cbess"]
   - ["Joey Huang", "http://github.com/kamidox"]
   - ["Alexey Nazaroff", "http://github.com/rogaven"]
-filename: learnswift-ru.swift
 translators:
   - ["Dmitry Bessonov", "https://github.com/TheDmitry"]
   - ["Alexey Nazaroff", "https://github.com/rogaven"]

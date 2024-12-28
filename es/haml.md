@@ -1,5 +1,4 @@
 ---
-filename: learnhaml-es.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
 translators:

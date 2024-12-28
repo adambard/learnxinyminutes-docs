@@ -3,7 +3,6 @@ contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
 translators:
     - ["Camilo Garrido", "http://twitter.com/hirohope"]
-filename: learnpython-es.py
 ---
 
 Python fue creado por Guido Van Rossum en el principio de los 90'. Ahora es uno

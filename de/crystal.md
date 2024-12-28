@@ -4,7 +4,6 @@ contributors:
     - ["Arnaud Fernandés", "https://github.com/TechMagister/"] 
 translators:
     - ["caminsha", "https://github.com/caminsha"]
-filename: learncrystal-de.cr
 ---
 
 ```crystal

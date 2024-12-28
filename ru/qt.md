@@ -1,5 +1,4 @@
 ---
-filename: learnqt-ru.cpp
 contributors:
     - ["Aleksey Kholovchuk", "https://github.com/vortexxx192"]
 translators:

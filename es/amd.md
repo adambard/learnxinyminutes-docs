@@ -5,7 +5,6 @@ contributors:
 
 translators:
     - ["Damaso Sanoja", "https://github.com/damasosanoja"]
-filename: learnamd-es.js
 ---
 
 ## Iniciando con AMD

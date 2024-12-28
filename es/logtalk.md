@@ -1,5 +1,4 @@
 ---
-filename: learnlogtalk.lgt
 contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]
     - ["Adrián Arroyo Calle", "https://adrianistan.eu"]

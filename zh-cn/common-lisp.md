@@ -1,5 +1,4 @@
 ---
-filename: commonlisp-cn.lisp
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
 translators:

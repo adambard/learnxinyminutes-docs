@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Jacopo Andrea Giola", "http://geekpanda.net"]
     - ["Ale46", "https://github.com/Ale46"]
-filename: markdown-it.md
 ---
 
 Markdown è stato creato da John Gruber nel 2004. Il suo scopo è quello di essere una sintassi facile da leggere e scrivere, e che può essere convertita in HTML (ad oggi anche in molti altri formati).

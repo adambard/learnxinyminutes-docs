@@ -8,7 +8,6 @@ contributors:
 translators:
   - ["Christian Albrecht", "https://github.com/coastalchief"]
   - ["Jonas Grote", "https://github.com/exic"]
-filename: learnscala-de.scala
 ---
 
 Scala ist eine funktionale und objektorientierte Programmiersprache

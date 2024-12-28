@@ -5,7 +5,6 @@ contributors:
   - ["Francisco Marques", "https://github.com/ToFran"]
 translators:
   - ["Miguel Araújo", "https://github.com/miguelarauj1o"]
-filename: learnjson-pt.json
 ---
 
 Como JSON é um formato de intercâmbio de dados, este será, muito provavelmente, o

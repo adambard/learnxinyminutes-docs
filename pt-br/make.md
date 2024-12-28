@@ -4,7 +4,6 @@ contributors:
     - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
 translators:
     - ["Rogério Gomes Rio", "https://github.com/rogerlista"]
-filename: Makefile-pt
 
 ---
 

@@ -1,5 +1,4 @@
 ---
-filename: LearnCypher-ua.cql
 contributors:
     - ["Théo Gauchoux", "https://github.com/TheoGauchoux"]
 translators:

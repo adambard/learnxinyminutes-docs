@@ -1,5 +1,4 @@
 ---
-filename: learngo-pt.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Jose Donizetti", "https://github.com/josedonizetti"]

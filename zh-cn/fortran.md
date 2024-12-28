@@ -1,5 +1,4 @@
 ---
-filename: learnfortran-cn.f90
 contributors:
     - ["Robert Steed", "https://github.com/robochat"]
 translators:

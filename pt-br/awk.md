@@ -1,5 +1,4 @@
 ---
-filename: learnawk-pt.awk
 contributors:
     - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:

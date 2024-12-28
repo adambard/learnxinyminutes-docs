@@ -3,7 +3,6 @@ contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:
     - ["Camilo Garrido", "http://www.twitter.com/hirohope"]
-filename: LearnJava-es.java
 ---
 
 Java es un lenguage de programación de propósito general, concurrente, basado en clases y

@@ -1,5 +1,4 @@
 ---
-filename: markdown-fi.md
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:

@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Walter Cordero", "http://waltercordero.com"]
-filename: learnangular-cn.txt
 translators:
    - ["Jiang Haiyun", "http://www.atjiang.com"]
 ---

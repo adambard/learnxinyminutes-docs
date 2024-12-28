@@ -1,5 +1,4 @@
 ---
-filename: restructuredtext-it.rst
 contributors:
     - ["DamienVGN", "https://github.com/martin-damien"]
     - ["Andre Polykanine", "https://github.com/Oire"]

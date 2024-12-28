@@ -1,5 +1,4 @@
 ---
-filename: learnlogtalk-it.lgt
 contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]
 translators:

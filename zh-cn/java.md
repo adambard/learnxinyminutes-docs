@@ -1,5 +1,4 @@
 ---
-filename: LearnJava-zh.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:

@@ -3,7 +3,6 @@ contributors:
   - ["Luca 'Kino' Maroni", "http://github.com/kino90"]
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao", "http://github.com/xavieryao"]
-filename: coffeescript-it.coffee
 ---
 
 CoffeeScript è un piccolo linguaggio che compila direttamente nell'equivalente

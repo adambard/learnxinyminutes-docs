@@ -3,7 +3,6 @@ contributors:
     - ["Leah Hanson", "http://leahhanson.us"]
 translators:
     - ["Yuichi Motoyama", "https://github.com/yomichi"]
-filename: learnjulia-jp.jl
 ---
 
 Julia は科学技術計算向けに作られた、同図像性を持った(homoiconic) プログラミング言語です。

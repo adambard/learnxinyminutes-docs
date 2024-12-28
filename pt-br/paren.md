@@ -1,5 +1,4 @@
 ---
-filename: learnparen-pt.paren
 contributors:
   - ["KIM Taegyoon", "https://github.com/kimtg"]
 translators:

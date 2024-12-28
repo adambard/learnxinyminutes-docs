@@ -1,5 +1,4 @@
 ---
-filename: learnxml.xml
 contributors:
   - ['João Farias', 'https://github.com/JoaoGFarias']
   - ['Rachel Stiyer', 'https://github.com/rstiyer']

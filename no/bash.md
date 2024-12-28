@@ -8,7 +8,6 @@ contributors:
     - ["Anton Strömkvist", "http://lutic.org/"]
     - ["Rahil Momin", "https://github.com/iamrahil"]
     - ["Gregrory Kielian", "https://github.com/gskielian"]
-filename: LearnBash-no.sh
 translators:
     - ["Andreas Lindahl Flåten", "https://github.com/anlif"]
 ---

@@ -3,7 +3,6 @@ contributors:
     - ["Frederik Ring", "https://github.com/m90"]
 translators:
     - ["Reinoud Kruithof", "https://github.com/reinoudk"]
-filename: learnamd-nl.js
 ---
 
 ## Aan de slag met AMD

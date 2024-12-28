@@ -1,5 +1,4 @@
 ---
-filename: docker-cn.bat
 contributors:
     - ["Ruslan López", "http://javapro.org/"]
 translators:

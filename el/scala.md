@@ -5,7 +5,6 @@ contributors:
     - ["Geoff Liu", "http://geoffliu.me"]
 translators:
     - ["Vasilis Panagiotopoulos" , "https://github.com/billpcs/"]
-filename: learnscala-gr.scala
 ---
 
 Scala - Η επεκτάσιμη γλώσσα

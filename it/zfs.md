@@ -3,7 +3,6 @@ contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
 translators:
     - ["Christian Grasso","https://grasso.io"]
-filename: LearnZfs-it.txt
 ---
 
 

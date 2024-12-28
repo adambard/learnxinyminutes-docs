@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Miltiadis Stouras", "https://github.com/mstou"]
-filename: learnhaskell-gr.hs
 ---
 
 Η Haskell σχεδιάστηκε για να είναι μια πρακτική, αγνή συναρτησιακή γλώσσα προγραμματισμού.

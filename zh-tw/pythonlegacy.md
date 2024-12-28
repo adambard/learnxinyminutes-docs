@@ -6,7 +6,6 @@ contributors:
     - ["evuez", "http://github.com/evuez"]
 translators:
     - ["Michael Yeh", "https://hinet60613.github.io/"]
-filename: learnpythonlegacy-tw.py
 ---
 
 Python是在1990年代早期由Guido Van Rossum創建的。它是現在最流行的程式語言之一。我愛上Python是因為他極為清晰的語法，甚至可以說它就是可執行的虛擬碼。

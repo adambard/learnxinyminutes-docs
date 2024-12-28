@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
-filename: pythonstatcomp-es.py
 translators:
     - ["Damaso Sanoja", "https://github.com/damasosanoja"]
 ---

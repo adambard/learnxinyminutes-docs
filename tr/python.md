@@ -6,7 +6,6 @@ contributors:
     - ["Batuhan Osman T.", "https://github.com/BTaskaya"]
 translators:
     - ["Eray AYDIN", "http://erayaydin.me/"]
-filename: learnpython-tr.py
 ---
 
 Python,90ların başlarında Guido Van Rossum tarafından oluşturulmuştur. En popüler olan dillerden biridir. Beni Python'a aşık eden sebep onun syntax beraklığı. Çok basit bir çalıştırılabilir söz koddur.

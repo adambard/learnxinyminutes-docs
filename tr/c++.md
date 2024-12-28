@@ -1,5 +1,4 @@
 ---
-filename: learncpp-tr.cpp
 contributors:
     - ["Steven Basart", "http://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]

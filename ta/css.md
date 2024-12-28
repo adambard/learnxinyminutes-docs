@@ -7,7 +7,6 @@ contributors:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
 translators:
     - ["Rasendran Kirushan", "https://github.com/kirushanr"]
-filename: learncss-ta.css
 ---
 
 

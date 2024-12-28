@@ -1,5 +1,4 @@
 ---
-filename: learnless-cn.less
 contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
 translators:

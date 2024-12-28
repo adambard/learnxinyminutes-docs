@@ -4,7 +4,6 @@ contributors:
 translators:
     - ["Wooseop Kim", "https://github.com/linterpreteur"]
     - ["Yeongjae Jang", "https://github.com/Liberatedwinner"]
-filename: LearnVim-kr.txt
 ---
 
 [Vim](http://www.vim.org)

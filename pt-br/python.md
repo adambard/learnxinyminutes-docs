@@ -7,7 +7,6 @@ contributors:
 translators:
     - ["Paulo Henrique Rodrigues Pinheiro", "http://www.sysincloud.it"]
     - ["Monique Baptista", "https://github.com/bfmonique"]
-filename: learnpython-pt.py
 ---
 
 Python foi criada por Guido Van Rossum nos anos 1990. Ela é atualmente uma

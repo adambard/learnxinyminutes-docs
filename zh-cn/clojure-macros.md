@@ -1,5 +1,4 @@
 ---
-filename: learnclojuremacros-zh.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:

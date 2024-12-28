@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["SlaF", "https://github.com/SlaF"]
     - ["Corpsee", "https://github.com/corpsee"]
-filename: learnphp-ru.php
 ---
 
 Этот документ описывает версию PHP 5 и выше.

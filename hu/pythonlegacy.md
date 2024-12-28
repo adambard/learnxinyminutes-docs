@@ -8,7 +8,6 @@ contributors:
     - ["habi", "http://github.com/habi"]
 translators:
     - ["Tamás Diószegi", "https://github.com/ditam"]
-filename: learnpythonlegacy-hu.py
 ---
 
 A Python nyelvet Guido Van Rossum alkotta meg a 90-es évek elején. Manapság az

@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Russell Allen", "http://github.com/russellallen"]
-filename: learnself-es.self
 translators:
     - ["Damaso Sanoja", "https://github.com/damasosanoja"]
 ---

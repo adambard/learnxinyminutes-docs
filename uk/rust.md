@@ -3,7 +3,6 @@ contributors:
     - ["P1start", "http://p1start.github.io/"]
 translators:
   - ["Volodymyr Korniichuk", "https://github.com/ezhikus"]
-filename: learnrust-uk.rs
 ---
 
 Rust - це мова програмування, що розрабляється спільнотою Mozilla Research

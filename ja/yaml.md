@@ -1,5 +1,4 @@
 ---
-filename: learnyaml-jp.yaml
 contributors:
 - [Leigh Brenecki, 'https://leigh.net.au']
 - [Suhas SG, 'https://github.com/jargnar']

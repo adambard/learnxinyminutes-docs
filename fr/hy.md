@@ -1,5 +1,4 @@
 ---
-filename: learnhy-fr.hy
 contributors:
     - ["Abhishek L", "http://twitter.com/abhishekl"]
 translators:

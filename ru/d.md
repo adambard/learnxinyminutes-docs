@@ -1,5 +1,4 @@
 ---
-filename: learnd-ru.d
 contributors:
     - ["Anton Pastukhov", "https://anton9.com/"]
     - ["Robert Brights-Gray", "https://lhs.su/"]

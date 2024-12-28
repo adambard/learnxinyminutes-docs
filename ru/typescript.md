@@ -4,7 +4,6 @@ contributors:
 translators:
     - ["Fadil Mamedov", "https://github.com/fadilmamedov"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-filename: learntypescript-ru.ts
 ---
 
 TypeScript — это язык программирования, целью которого является лёгкая разработка широко масштабируемых JavaScript-приложений.

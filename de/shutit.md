@@ -1,5 +1,4 @@
 ---
-filename: learnshutit-de.py
 contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]
 translators:

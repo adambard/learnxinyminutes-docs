@@ -3,7 +3,6 @@ contributors:
     - ["Bastien Guerry", "http://bzg.fr"]
 translators:
     - ["Lucas Tadeu Teixeira", "http://ltt.me"]
-filename: learn-emacs-lisp-pt.el
 ---
 
 ```scheme

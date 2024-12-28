@@ -7,7 +7,6 @@ contributors:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
     - ["Brett Taylor", "https://github.com/glutnix"]
     - ["Tyler Mumford", "https://tylermumford.com"]
-filename: learncss-tr.css
 translators:
     - ["Fatih Turan", "http://fatihturan.com"]
 ---

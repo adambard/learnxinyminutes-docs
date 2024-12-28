@@ -1,5 +1,4 @@
 ---
-filename: LearnJava-ru.java
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Madison Dickson", "http://github.com/mix3d"]

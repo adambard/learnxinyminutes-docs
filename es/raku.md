@@ -1,5 +1,4 @@
 ---
-filename: learnraku-es.raku
 contributors:
     - ["vendethiel", "http://github.com/vendethiel"]
     - ["Samantha McVey", "https://cry.nu"]

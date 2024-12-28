@@ -8,7 +8,6 @@ contributors:
     - ["habi", "http://github.com/habi"]
 translators:
     - ["Oleh Hromiak", "https://github.com/ogroleg"]
-filename: learnpythonlegacy-ua.py
 ---
 
 Мову Python створив Гвідо ван Россум на початку 90-х. Наразі це одна з 

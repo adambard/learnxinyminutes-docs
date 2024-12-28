@@ -3,7 +3,6 @@ contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
-filename: learnlua-kr.lua
 ---
 
 ```lua

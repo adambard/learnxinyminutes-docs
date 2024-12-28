@@ -1,5 +1,4 @@
 ---
-filename: learnhaml-de.haml
 contributors:
   - ["Simon Neveu", "https://github.com/sneveu"]
   - ["Sol Bekic", "https://github.com/S0lll0s"]

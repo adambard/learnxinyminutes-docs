@@ -2,7 +2,6 @@
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
     - ["Jacob Ward", "http://github.com/JacobCWard/"]
-filename: markdown-kr.md
 ---
 
 마크다운은 2004년에 존 그루버가 창시했습니다. HTML으로 (그리고 이제는 다른 다양한 형식으로도) 쉽게 변환되는 읽고 쓰기 쉬운 문법입니다.

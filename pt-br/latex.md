@@ -8,7 +8,6 @@ contributors:
 translators:
     - ["Paulo Henrique Rodrigues Pinheiro", "https://github.com/paulohrpinheiro"]
     - ["Marcel Ribeiro-Dantas", "https://github.com/mribeirodantas"]
-filename: learn-latex-pt.tex
 ---
 
 ```tex

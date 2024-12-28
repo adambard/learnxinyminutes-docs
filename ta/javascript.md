@@ -4,7 +4,6 @@ contributors:
     - ['Ariel Krakowski', 'http://www.learneroo.com']
 translators:
     - ["Rasendran Kirushan", "https://github.com/kirushanr"]
-filename: javascript-ta.js
 ---
 
 JavaScript 1995 ஆம்  ஆண்டு Netscape இல் பணிபுரிந்த Brendan Eich

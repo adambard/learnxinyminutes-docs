@@ -2,7 +2,6 @@
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
-filename: javascript-fr.js
 translators:
     - ["@nbrugneaux", "https://nicolasbrugneaux.me"]
     - ["Michel Antoine", "https://github.com/antoin-m"]

@@ -3,7 +3,6 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["Anton Slukovskiy", "https://github.com/slukovskiy"]
-filename: LearnVim-ru.txt
 ---
 
 [Vim](http://www.vim.org)

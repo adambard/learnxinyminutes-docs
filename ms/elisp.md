@@ -4,7 +4,6 @@ contributors:
     - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
 translators:
     - ["Burhanuddin Baharuddin", "https://github.com/burhanloey"]
-filename: learn-emacs-lisp-ms.el
 ---
 
 ```scheme

@@ -2,7 +2,6 @@
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
-filename: javascript-ms.js
 translators:
     - ["abdalim", "https://github.com/abdalim"]
 ---

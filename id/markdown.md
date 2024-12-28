@@ -3,7 +3,6 @@ contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
 translators:
     - ["Tasya Aditya Rukmana", "http://github.com/tadityar"]
-filename: markdown-id.md
 ---
 
 Markdown dibuat oleh John Gruber pada tahun 2004. Tujuannya untuk menjadi syntax yang mudah dibaca dan ditulis yang dapat berubah menjadi HTML (dan sekarang berbagai format lainnya) dengan mudah.

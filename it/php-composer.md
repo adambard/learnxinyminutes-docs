@@ -3,7 +3,6 @@ contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 translators:
     - ["Agostino Fiscale", "https://github.com/agostinofiscale"]
-filename: LearnComposer-it.sh
 ---
 
 [Composer](https://getcomposer.org/) è uno strumento che ti aiuta a gestire le 

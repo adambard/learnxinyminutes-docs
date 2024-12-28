@@ -6,7 +6,6 @@ contributors:
     - ["Shaun McCarthy", "http://www.shaunmccarthy.com"]
 translators:
     - ["Melih Mucuk", "http://melihmucuk.com"]
-filename: LearnCSharp-tr.cs
 ---
 
 C# zarif ve tip güvenli nesne yönelimli bir dil olup geliştiricilerin .NET framework üzerinde çalışan güçlü ve güvenli uygulamalar geliştirmesini sağlar.

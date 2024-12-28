@@ -2,7 +2,6 @@
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
     - ["Yannick Loriot", "https://github.com/YannickL"]
-filename: LearnObjectiveC-tr.m
 translators:
     - ["Haydar KULEKCI", "http://scanf.info/"]
 ---

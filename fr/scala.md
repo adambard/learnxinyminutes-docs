@@ -4,7 +4,6 @@ contributors:
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
 translators:
     - ["Anne-Catherine Dehier", "https://github.com/spellart"]
-filename: learnscala-fr.scala
 ---
 
 ### Scala - le langage évolutif

@@ -2,7 +2,6 @@
 contributors:
     - ["Wichamir", "https://github.com/Wichamir/"]
     - ["zacryol", "https://github.com/zacryol"]
-filename: learngdscript.gd
 translators:
     - ["R1cHero", "https://github.com/R1cHero"]
 ---

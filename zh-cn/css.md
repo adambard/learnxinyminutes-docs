@@ -4,7 +4,6 @@ contributors:
     - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
     - ["Jakukyo Friel", "https://weakish.github.io"]
-filename: learncss-cn.css
 ---
 
 早期的web没有样式，只是单纯的文本。通过CSS，可以实现网页样式和内容的分离。

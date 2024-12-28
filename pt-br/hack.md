@@ -4,7 +4,6 @@ contributors:
     - ["David Lima", "https://github.com/davelima"]
 translators:
     - ["David Lima", "https://github.com/davelima"]
-filename: learnhack-pt.hh
 ---
 
 Hack é uma linguagem baseada no PHP e roda numa máquina virtual chamada HHVM.

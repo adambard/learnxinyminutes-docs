@@ -1,7 +1,6 @@
 ---
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
-filename: coffeescript-kr.coffee
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 ---

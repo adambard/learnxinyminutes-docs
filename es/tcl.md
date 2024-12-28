@@ -3,7 +3,6 @@ contributors:
     - ["Poor Yorick", "https://pooryorick.com/"]
 translators:
     - ["Héctor Romojaro", "https://github.com/hromojaro"]
-filename: learntcl-es.tcl
 ---
 
 Tcl fue creado por [John Ousterhout](https://wiki.tcl.tk/John%20Ousterout) como

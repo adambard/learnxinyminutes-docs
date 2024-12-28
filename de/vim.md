@@ -3,7 +3,6 @@ contributors:
 - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
 - ["caminsha", "https://github.com/caminsha"]
-filename: LearnVim-de.txt
 ---
 
 [Vim](http://www.vim.org)

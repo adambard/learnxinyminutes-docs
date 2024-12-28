@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Pirogov Alexey", "http://twitter.com/alex_pir"]
     - ["Andre Polykanine", "https://github.com/Oire"]
-filename: markdown-ru.md
 ---
 
 Язык разметки Markdown создан Джоном Грубером (англ. John Gruber)

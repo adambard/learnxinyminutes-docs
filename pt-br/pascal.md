@@ -1,5 +1,4 @@
 ---
-filename: learnpascal-pt.pas
 contributors:
     - ["Ganesha Danu", "https://github.com/blinfoldking"]
     - ["Keith Miyake", "https//github.com/kaymmm"]

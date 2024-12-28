@@ -11,7 +11,6 @@ contributors:
     - ["Etan Reisner", "https://github.com/deryni"]
 translators:
     - ["Jeroen Deviaene", "https://www.github.com/jerodev"]
-filename: LearnBash-nl.sh
 ---
 
 Bash is de naam van de unix shell, deze wordt gebruikt voor het GNU operating system en is de standaard shell op Linux en macOS.

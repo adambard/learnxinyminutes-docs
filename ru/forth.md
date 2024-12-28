@@ -3,7 +3,6 @@ contributors:
     - ["Horse M.D.", "http://github.com/HorseMD/"]
 translators:
     - ["Dmitrii Kuznetsov", "https://github.com/torgeek"]
-filename: learnforth-ru.fs
 ---
 
 Форт создан Чарлзом Муром в 70-е годы. Это императивный, стековый язык

@@ -1,5 +1,4 @@
 ---
-filename: learnjson-ta.json
 contributors:
   - ["Anna Harren", "https://github.com/iirelu"]
   - ["Marco Scannadinari", "https://github.com/marcoms"]

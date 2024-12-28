@@ -3,7 +3,6 @@ contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
 translators:
     - ["Mustafa Zengin", "http://zengin.github.io"]
-filename: learntypescript-tr.ts
 ---
 
 TypeScript, JavaScript'le yazılmış büyük ölçekli uygulamaların geliştirilmesini kolaylaştırmayı hedefleyen bir dildir.

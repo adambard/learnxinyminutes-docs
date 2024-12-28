@@ -3,7 +3,6 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 translators:
     - ["Kyr", "http://github.com/kyrami"]
-filename: learncss-de.css
 ---
 
 In den frühen Tagen des Internets gab es keine visuellen Elemente, alles war nur reiner Text. Aber mit der Weiterentwicklung von Browsern wurden auch vollständig visuelle Webseiten zu einem Standard.

@@ -1,5 +1,4 @@
 ---
-filename: learnpyqt-it.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:

@@ -6,7 +6,6 @@ contributors:
   - ["Michael Neth", "https://github.com/infernocloud"]
 translators:
   - ["Michał Mitrosz", "https://github.com/Voltinus"]
-filename: learnjson-pl.json
 ---
 
 JSON to bardzo prosty format wymiany danych. Jak jest napisane na [json.org](http://json.org), jest łatwy do pisania i czytania dla ludzi i do parsowania i generowania dla maszyn.

@@ -3,7 +3,6 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Ovidiu Ciule", "https://github.com/ociule"]
-filename: learnpythonlegacy-ro.py
 ---
 
 Python a fost creat de Guido Van Rossum la începutul anilor '90. Python a

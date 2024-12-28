@@ -3,7 +3,6 @@ contributors:
     - ["Horse M.D.", "http://github.com/HorseMD/"]
 translators:
     - ["Zach Larsen", "http://zachariahlarsen.com/"]
-filename: learnforth-es.fs
 ---
 
 Forth fue criado por Charles H. Moore en los 70s. Forth es un lenguaje imperativo, basado en pila y entorno de programación, siendo usado en proyectos como Open Firmware. También esta usado por NASA.

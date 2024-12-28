@@ -1,5 +1,4 @@
 ---
-filename: learnperl-tw.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
     - ["Dan Book", "http://github.com/Grinnz"]

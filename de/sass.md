@@ -1,5 +1,4 @@
 ---
-filename: learnsass-de.scss
 contributors:
   - ["Laura Kyle", "https://github.com/LauraNK"]
   - ["Sean Corrales", "https://github.com/droidenator"]

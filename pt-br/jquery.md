@@ -3,7 +3,6 @@ contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
 translators:
     - ["Nikolas Silva", "https://github.com/nikolassilva"]
-filename: jquery-pt.js
 ---
 
 jQuery é uma biblioteca JavaScript que te ajuda a "fazer mais, escrevendo menos". Ela faz com que muitas tarefas comuns em JavaScript sejam mais simples de escrever. jQuery é usado por grandes empresas e desenvolvedores do mundo todo. Ela torna o AJAX, manipulação de eventos, manipulação do DOM, entre outros, mais fácil e rápido.

@@ -1,5 +1,4 @@
 ---
-filename: learnchapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "https://www.cs.arizona.edu/~ianbertolacci/"]
     - ["Ben Harshbarger", "https://github.com/benharsh/"]

@@ -3,7 +3,6 @@ contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 translators:
     - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-filename: LearnComposer-es.sh
 ---
 
 [Composer](https://getcomposer.org/) es una herramienta para manejar las dependencias en PHP. Nos permite declarar las librerías de las cuales el proyecto depende y las maneja automáticamente (instala/actualiza) por ti.

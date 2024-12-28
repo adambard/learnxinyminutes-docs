@@ -4,7 +4,6 @@ contributors:
   - [Suhas SG, 'https://github.com/jargnar']
 translators:
   - ["Rodrigo Russo", "https://github.com/rodrigozrusso"]
-filename: learnyaml-pt.yaml
 ---
 
 YAML é uma linguagem de serialização de dados projetado para ser diretamente gravável e

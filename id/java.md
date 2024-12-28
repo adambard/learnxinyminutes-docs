@@ -7,7 +7,6 @@ contributors:
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["Cameron Schermerhorn", "http://github.com/cschermerhorn"]
     - ["Rachel Stiyer", "https://github.com/rstiyer"]
-filename: LearnJava-id.java
 translators:
   - ["Ahmad Zafrullah", "https://github.com/23Pstars"]
 ---

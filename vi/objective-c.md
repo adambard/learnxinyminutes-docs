@@ -2,7 +2,6 @@
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
     - ["Yannick Loriot", "https://github.com/YannickL"]
-filename: LearnObjectiveC-vi.m
 ---
 
 Objective-C là ngôn ngữ lập trình chính được sử dụng bởi Apple cho các hệ điều hành macOS, iOS và các framework tương ứng của họ, Cocoa và Cocoa Touch.

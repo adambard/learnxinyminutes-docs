@@ -1,5 +1,4 @@
 ---
-filename: LearnObjectiveC-ru.m
 contributors:
     - ["Eugene Yagrushkin", "www.about.me/yagrushkin"]
     - ["Yannick Loriot", "https://github.com/YannickL"]

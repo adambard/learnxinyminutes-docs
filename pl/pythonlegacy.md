@@ -1,5 +1,4 @@
 ---
-filename: learnpythonlegacy-pl.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
     - ["Amin Bandali", "http://aminbandali.com"]

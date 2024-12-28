@@ -1,5 +1,4 @@
 ---
-filename: learnpyqt-ru.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
 translators:

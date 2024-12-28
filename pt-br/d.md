@@ -1,5 +1,4 @@
 ---
-filename: learnd-pt.d
 contributors:
     - ["Nick Papanastasiou", "www.nickpapanastasiou.github.io"]
 translators:

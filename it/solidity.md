@@ -1,5 +1,4 @@
 ---
-filename: learnSolidity-it.sol
 contributors:
   - ["Nemil Dalal", "https://www.nemil.com"]
   - ["Joseph Chow", ""]

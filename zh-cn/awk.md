@@ -3,7 +3,6 @@ contributors:
      - ["Marshall Mason", "http://github.com/marshallmason"]
 translators:
     - ["Tian Zhipeng", "https://github.com/tianzhipeng-git"]
-filename: learnawk-cn.awk
 ---
 
 AWK是POSIX兼容的UNIX系统中的标准工具. 它像简化版的Perl, 非常适用于文本处理任务和其他脚本类需求.

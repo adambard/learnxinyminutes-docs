@@ -3,7 +3,6 @@ contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
-filename: javascript-kr.js
 ---
 
 자바스크립트는 넷스케이프의 브렌던 아이크(Brendan Eich)가 1995년에 만들었습니다.

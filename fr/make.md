@@ -3,7 +3,6 @@ contributors:
     - ["Robert Steed", "https://github.com/robochat"]
 translators:
     - ["altaris", "https://github.com/altaris"]
-filename: Makefile-fr
 ---
 
 Un makefile est un fichier qui définit un ensemble de règles liées entre elles

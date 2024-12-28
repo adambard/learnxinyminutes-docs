@@ -3,7 +3,6 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Vilson Vieira", "http://automata.cc"]
-filename: learnpythonlegacy-pt.py
 ---
 
 Python foi criado por Guido Van Rossum no começo dos anos 90. Atualmente é uma

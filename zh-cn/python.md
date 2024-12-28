@@ -6,7 +6,6 @@ contributors:
 translators:
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Maple", "https://github.com/mapleincode"]
-filename: learnpython-cn.py
 ---
 
 Python 是由吉多·范罗苏姆(Guido Van Rossum)在 90 年代早期设计。

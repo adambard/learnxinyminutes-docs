@@ -6,7 +6,6 @@ contributors:
     - ["Bruno Volcov", "http://github.com/volcov"]
 translators:
     - ["Xuan-thi Nguyen", "http://github.com/mellenguyen"]
-filename: LearnGit-fr.txt
 ---
 
 Git est un logiciel de contrôle de versions distribué et un système de gestion

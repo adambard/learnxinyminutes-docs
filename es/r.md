@@ -4,7 +4,6 @@ contributors:
     - ["isomorphismes", "http://twitter.com/isomorphisms"]
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
-filename: learnr-es.r
 ---
 
 R es un lenguaje de computación estadística. Tiene muchas librerías para cargar

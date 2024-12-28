@@ -1,5 +1,4 @@
 ---
-filename: learnyaml-kr.yaml
 contributors:
 - ["Leigh Brenecki", "https://github.com/adambrenecki"]
 - ["Suhas SG", "https://github.com/jargnar"]

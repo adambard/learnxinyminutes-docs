@@ -4,7 +4,6 @@ contributors:
   - ["Xavier Yao", "http://github.com/xavieryao"]
 translators:
   - ["Xavier Yao", "http://github.com/xavieryao"]
-filename: coffeescript-cn.coffee
 ---
 
 CoffeeScript是逐句编译为JavaScript的一种小型语言，且没有运行时的解释器。

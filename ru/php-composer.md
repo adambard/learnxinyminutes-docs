@@ -3,7 +3,6 @@ contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 translators:
     - ["Aleksey Lysenko", "https://github.com/nasgul"]
-filename: LearnComposer-ru.sh
 ---
 
 [Composer](https://getcomposer.org/) — это инструмент управления зависимостями в PHP.

@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Sawyer Charles", "https://github.com/xssc"]
-filename: jquery-it.js
 translators:
     - ["Ale46", "https://github.com/ale46"]
 ---

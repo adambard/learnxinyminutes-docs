@@ -1,5 +1,4 @@
 ---
-filename: learngo-cn.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["pantaovay", "https://github.com/pantaovay"]

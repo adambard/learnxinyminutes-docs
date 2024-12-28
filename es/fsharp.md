@@ -3,7 +3,6 @@ contributors:
   - ['Scott Wlaschin', 'http://fsharpforfunandprofit.com/']
 translators:
   - ['Angel Arciniega', 'https://github.com/AngelsProjects']
-filename: learnfsharp-es.fs
 ---
 
 F# es un lenguaje de programación funcional y orientado a objetos. Es gratis y su código fuente está abierto. Se ejecuta en Linux, Mac, Windows y más.

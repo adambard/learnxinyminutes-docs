@@ -1,5 +1,4 @@
 ---
-filename: learntypescript-pt.ts
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
 translators:

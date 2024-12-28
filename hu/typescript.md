@@ -3,7 +3,6 @@ contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
 translators:
     - ["Tamás Diószegi", "https://github.com/ditam"]
-filename: learntypescript-hu.ts
 ---
 
 A TypeScript nyelv a JavaScript nyelven írt nagy méretű alkalmazások fejlesztését kívánja megkönnyíteni.

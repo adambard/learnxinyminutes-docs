@@ -4,7 +4,6 @@ contributors:
 translators:
     - ["Frederik Ring", "https://github.com/m90"]
     - ["Philipp Fischbeck", "https://github.com/PFischbeck"]
-filename: markdown-de.md
 ---
 
 Markdown wurde im Jahr 2004 von John Gruber kreiert. Ziel ist und war eine

@@ -6,7 +6,6 @@ contributors:
     - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 translators:
     - ["Timothé Pardieu", "https://github.com/timprd"]
-filename: learnelixir-fr.ex
 ---
 
 Elixir est un langage de programmation fonctionnel moderne reposant sur la machine virtuelle BEAM, qui héberge aussi Erlang.

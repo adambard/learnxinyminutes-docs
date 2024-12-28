@@ -13,7 +13,6 @@ contributors:
     - ["Leo Rudberg", "https://github.com/LOZORD"]
     - ["Betsy Lorton", "https://github.com/schbetsy"]
     - ["John Detter", "https://github.com/jdetter"]
-filename: LearnBash-it.sh
 translators:
     - ["Robert Margelli", "http://github.com/sinkswim/"]
     - ["Tommaso Pifferi", "http://github.com/neslinesli93/"]

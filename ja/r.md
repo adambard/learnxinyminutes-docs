@@ -4,7 +4,6 @@ contributors:
     - ["isomorphismes", "http://twitter.com/isomorphisms"]
 translators:
     - ["akirahirose", "https://twitter.com/akirahirose"]
-filename: learnr-jp.r
 ---
 
 

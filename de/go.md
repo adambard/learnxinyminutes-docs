@@ -1,5 +1,4 @@
 ---
-filename: learngo-de.go
 contributors:
     - ["Joseph Adams", "https://github.com/jcla1"]
     - ["Dennis Keller", "https://github.com/denniskeller"]

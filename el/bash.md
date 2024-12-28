@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
-filename: LearnBash-gr.sh
 ---
 
 Η λέξη «bash» είναι ένα από τα ονόματα του unix shell (τερματικός), το οποίο

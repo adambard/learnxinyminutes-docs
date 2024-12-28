@@ -3,7 +3,6 @@ contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
 translators:
     - ["Gregor Große-Bölting", "http://www.ideen-und-soehne.de"]
-filename: learnelixir-de.ex
 ---
 
 Elixir ist eine moderne, funktionale Sprache für die Erlang VM. Sie ist voll 

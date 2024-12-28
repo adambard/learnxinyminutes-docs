@@ -4,7 +4,6 @@ contributors:
 translators:
     - ["kultprok", "http:/www.kulturproktologie.de"]
     - ["matthiaskern", "https://github.com/matthiaskern"]
-filename: learnpython-de.py
 ---
 
 Anmerkungen des ursprünglichen Autors:

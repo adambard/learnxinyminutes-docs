@@ -3,7 +3,6 @@ contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
-filename: learnhtml-de.txt
 ---
 
 HTML steht für HyperText Markup Language (Hypertext-Auszeichnungssprache).

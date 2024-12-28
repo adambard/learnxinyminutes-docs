@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
-filename: learnerlang-kr.erl
 translators:
     - ["Taesung Jung", "https://github.com/tsj"]
 ---

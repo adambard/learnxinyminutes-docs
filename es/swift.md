@@ -6,7 +6,6 @@ contributors:
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
 translators:
     - ["David Hsieh", "http://github.com/deivuh"]
-filename: learnswift-es.swift
 ---
 
 Swift es un lenguaje de programación para el desarrollo en iOS y macOS creado

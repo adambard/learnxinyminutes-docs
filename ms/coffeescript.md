@@ -2,7 +2,6 @@
 contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
   - ["Xavier Yao", "http://github.com/xavieryao"]
-filename: coffeescript-ms.coffee
 translators:
     - ["hack1m", "https://github.com/hack1m"]
 ---

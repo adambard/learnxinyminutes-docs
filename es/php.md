@@ -4,7 +4,6 @@ contributors:
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
     - ["Mario Pérez", "https://github.com/MarioPerezEsteso"]
-filename: learnphp-es.php
 ---
 
 Este documento explica el funcionamiento de PHP 5+.

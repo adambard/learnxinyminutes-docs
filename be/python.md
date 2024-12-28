@@ -12,7 +12,6 @@ contributors:
     - ["John Paul Wohlscheid", "https://gitpi.us"]
 translators:
     - ["lucii7vel", "https://github.com/lucii7vel"]
-filename: learnpython-by.py
 ---
 Python быў створаны Гвіда ван Росумам у пачатку 90-х. Цяпер гэта адна з 
 самыя папулярных моў праграмавання. Я закахаўся ў Python за яго 

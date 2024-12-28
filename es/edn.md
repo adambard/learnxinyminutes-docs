@@ -1,5 +1,4 @@
 ---
-filename: learnedn-es.edn
 contributors:
   - ["Jason Yeo", "https://github.com/jsyeo"]
 translators:

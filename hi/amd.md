@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Frederik Ring", "https://github.com/m90"]
-filename: learnamd-hd.js
 ---
 ## एएमडी के साथ प्रारंभ करना
 

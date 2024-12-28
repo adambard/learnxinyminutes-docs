@@ -6,7 +6,6 @@ contributors:
     - ["Denis Arh", "https://github.com/darh"]
 translators:
     - ["Adrian Bordinc", "https://github.com/ellimist"]
-filename: LearnBash-ro.sh
 ---
 
 Bash este numele shell-ului UNIX, care a fost de asemenea distribuit drept shell pentru sistemul de operare GNU și ca shell implicit pentru Linux si macOS.

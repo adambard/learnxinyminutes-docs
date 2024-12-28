@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
-filename: learnlua-pt.lua
 translators:
     - ["Iaan Mesquita", "https://github.com/ianitow"]
 ---

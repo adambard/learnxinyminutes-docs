@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
-filename: learntypescript-es.ts
 translators:
     - ["Damaso Sanoja", "https://github.com/damasosanoja"]
 ---

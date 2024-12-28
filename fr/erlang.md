@@ -3,7 +3,6 @@ contributors:
     - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
 translators:
     - ["Julien Cretel", "https://github.com/Jubobs"]
-filename: learnerlang-fr.erl
 ---
 
 ```erlang

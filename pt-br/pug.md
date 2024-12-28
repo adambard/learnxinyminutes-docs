@@ -1,7 +1,6 @@
 ---
 contributors:
   - ["Michael Warner", "https://github.com/MichaelJGW"]
-filename: index-pt.pug
 translators:
   - ["Adaías Magdiel", "https://adaiasmagdiel.com/"]
 ---

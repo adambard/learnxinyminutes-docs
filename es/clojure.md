@@ -1,5 +1,4 @@
 ---
-filename: learnclojure-es.clj
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:

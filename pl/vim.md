@@ -3,7 +3,6 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["Adam Bobowski", "https://github.com/Bobowski"]
-filename: LearnVim-pl.txt
 ---
 
 

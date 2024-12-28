@@ -1,5 +1,4 @@
 ---
-filename: learnedn-de.edn
 contributors:
   - ["Jason Yeo", "https://github.com/jsyeo"]
   - ["Jonathan D Johnston", "https://github.com/jdjohnston"]

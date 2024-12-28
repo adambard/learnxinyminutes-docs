@@ -1,5 +1,4 @@
 ---
-filename: learn.nix
 contributors:
     - ["Chris Martin", "http://chris-martin.org/"]
     - ["Rommel Martinez", "https://ebzzry.io"]

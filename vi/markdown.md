@@ -4,7 +4,6 @@ contributors:
     - ["Jacob Ward", "http://github.com/JacobCWard/"]
 translators:
     - ["Thanh Duy Phan", "https://github.com/thanhpd"]
-filename: markdown-vi.md
 ---
 
 Ngôn ngữ Markdown được sáng lập bởi John Gruber vào năm 2004. Nó được tạo ra với mục đích dễ đọc với cú pháp có thể được dễ dàng chuyển đổi qua HTML và các ngôn ngữ khác

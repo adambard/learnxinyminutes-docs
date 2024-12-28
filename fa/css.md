@@ -8,7 +8,6 @@ contributors:
     - ["Tyler Mumford", "https://tylermumford.com"]
 translators:
     - ["Arashk", "https://github.com/Arashk-A"]
-filename: learncss-fa.css
 ---
 
 <p dir='rtl'>در روزهای آغازین وب هیچگونه عنصر بصری مشاهده نمیشد و محتوا به صورت متن خالی بود. </p>

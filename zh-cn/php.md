@@ -4,7 +4,6 @@ contributors:
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
-filename: learnphp-zh.php
 ---
 
 这份教程所使用的版本是 PHP 5+.

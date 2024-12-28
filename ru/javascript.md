@@ -2,7 +2,6 @@
 contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
-filename: javascript-ru.js
 translators:
   - ["Alexey Gonchar", "http://github.com/finico"]
   - ["Andre Polykanine", "https://github.com/Oire"]

@@ -3,7 +3,6 @@ contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
     - ["Enno Nagel", "https://github.com/konfekt"]
-filename: learnvisualbasic-de.vb
 ---
 
 ```vbnet

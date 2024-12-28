@@ -3,7 +3,6 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["kultprok", "http:/www.kulturproktologie.de"]
-filename: learnpythonlegacy-de.py
 ---
 
 Anmerkungen des ursprünglichen Autors:

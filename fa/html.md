@@ -1,5 +1,4 @@
 ---
-filename: learnhtml-fa.txt
 contributors:
   - ["Christophe THOMAS", "https://github.com/WinChris"]
 translators:

@@ -3,7 +3,6 @@ contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
 translators:
     - ["Alan Cheng", "https://github.com/kedaio"]
-filename: LearnZfs-cn.txt
 ---
 
 [ZFS](http://open-zfs.org/wiki/Main_Page)

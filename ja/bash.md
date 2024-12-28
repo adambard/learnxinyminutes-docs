@@ -6,7 +6,6 @@ contributors:
     - ["Denis Arh", "https://github.com/darh"]
 translators:
     - ["akirahirose", "https://twitter.com/akirahirose"]
-filename: LearnBash-jp.sh
 ---
 
 Bash はunixシェルの1つです。GNUオペレーションシステムのシェルとして配布されています。

@@ -1,5 +1,4 @@
 ---
-filename: learnelm.elm
 contributors:
   - ["Max Goldstein", "http://maxgoldste.in/"]
 translators:

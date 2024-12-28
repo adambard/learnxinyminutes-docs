@@ -1,5 +1,4 @@
 ---
-filename: learnruby-pt.rb
 contributors:
   - ["Bruno Henrique - Garu", "http://garulab.com"]
   - ["Jean Matheus Souto", "http://jeanmatheussouto.github.io"]

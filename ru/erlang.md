@@ -3,7 +3,6 @@ contributors:
     - ["Giovanni Cappellotto", "http://www.focustheweb.com/"]
 translators:
     - ["Nikita Kalashnikov", "https://root.yuuzukiyo.net/"]
-filename: learnerlang-ru.erl
 ---
 
 ```erlang

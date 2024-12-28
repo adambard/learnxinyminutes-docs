@@ -1,5 +1,4 @@
 ---
-filename: learncrystal-fr.cr
 contributors:
     - ["Vitalii Elenhaupt", "http://veelenga.com"]
     - ["Arnaud Fernandés", "https://github.com/TechMagister/"]

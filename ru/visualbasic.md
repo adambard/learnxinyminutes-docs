@@ -3,7 +3,6 @@ contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
     - ["satory-ra", "https://github.com/satory-ra"]
-filename: learnvisualbasic-ru.vb
 ---
 
 ```vbnet

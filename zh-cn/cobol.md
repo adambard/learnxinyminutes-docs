@@ -1,5 +1,4 @@
 ---
-filename: learn-cn.COB
 contributors:
     - ["Hyphz", "http://github.com/hyphz/"]
 translators:

@@ -4,7 +4,6 @@ contributors:
     - ["Ariel Krakowski", "http://www.learneroo.com"]
 translators:
     - ["Daniel Zendejas","https://github.com/DanielZendejas"]
-filename: javascript-es.js
 ---
 
 Tutorial de JavaScript en español.

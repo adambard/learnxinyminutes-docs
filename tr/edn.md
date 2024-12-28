@@ -1,5 +1,4 @@
 ---
-filename: learnedn-tr.edn
 contributors:
   - ["Seçkin KÜKRER", "https://github.com/LeaveNhA"]
 ---

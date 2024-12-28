@@ -1,5 +1,4 @@
 ---
-filename: learnc-de.c
 contributors:
     - ["caminsha", "https://github.com/caminsha"]
 ---

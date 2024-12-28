@@ -1,5 +1,4 @@
 ---
-filename: learnraylib-cn.c
 contributors:
     - ["Nikolas Wipper", "https://notnik.cc"]
 translators:

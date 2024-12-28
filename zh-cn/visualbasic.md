@@ -3,7 +3,6 @@ contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 translators:
     - ["Abner Chou", "http://cn.abnerchou.me"]
-filename: learnvisualbasic-cn.vb
 ---
 
 ```vbnet

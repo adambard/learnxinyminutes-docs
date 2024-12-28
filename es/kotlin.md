@@ -4,7 +4,6 @@ contributors:
 - ["Aitor Escolar", "https://github.com/aiescola"]
 translators:
 - ["Ivan Alburquerque", "https://github.com/AlburIvan"]
-filename: LearnKotlin-es.kt
 ---
 
 Kotlin es un lenguaje estático tipado para la JVM, Android y el navegador. Es

@@ -5,7 +5,6 @@ contributors:
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
 translators:
     - ["Terka Slanináková", "http://github.com/TerkaSlan"]
-filename: learn-latex-sk.tex
 ---
 
 ```tex

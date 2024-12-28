@@ -1,5 +1,4 @@
 ---
-filename: learnpython-it.py
 contributors:
     - ["Louie Dinh", "http://pythonpracticeprojects.com"]
     - ["Steven Basart", "http://github.com/xksteven"]

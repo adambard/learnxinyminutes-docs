@@ -3,7 +3,6 @@ contributors:
     - ["Tyler Neylon", "http://tylerneylon.com/"]
 translators:
     - ["Martin Schimandl", "https://github.com/Git-Jiro"]
-filename: learnlua-de.lua
 ---
 
 ```lua

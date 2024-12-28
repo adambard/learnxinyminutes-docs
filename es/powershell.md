@@ -3,7 +3,6 @@ contributors:
     - ["Wouter Van Schandevijl", "https://github.com/laoujin"]
 translators:
     - ["Alexander Salamanca", "https://github.com/alexitosrv"]
-filename: LearnPowershell-es.ps1
 ---
 
 PowerShell es el lenguaje de automatización y gestión de configuraciones de Windows hecho por Microsoft basado en .NET Framework. Desde Windows 7 en adelante, esos sistemas operativos incluyen un intérprete de PowerShell.

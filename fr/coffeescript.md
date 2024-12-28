@@ -3,7 +3,6 @@ contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
 translators:
   - ["Geoffrey Roguelon", "https://github.com/GRoguelon"]
-filename: coffeescript-fr.coffee
 ---
 
 ``` coffeescript

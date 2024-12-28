@@ -2,7 +2,6 @@
 contributors:
     - ["sarlalian", "http://github.com/sarlalian"]
     - ["A1EF", "https://github.com/A1EF"]
-filename: LearnZfs-ru.txt
 translators:
     - ["A1EF", "https://github.com/A1EF"]
 ---

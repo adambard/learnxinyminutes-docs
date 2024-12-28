@@ -1,5 +1,4 @@
 ---
-filename: docker-es.bat
 contributors:
     - ["Ruslan López", "http://javapro.org/"]
     - ["Michael Chen", "https://github.com/ML-Chen"]

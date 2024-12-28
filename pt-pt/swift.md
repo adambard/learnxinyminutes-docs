@@ -1,5 +1,4 @@
 ---
-filename: learnswift-pt.swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]

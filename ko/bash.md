@@ -15,7 +15,6 @@ contributors:
     - ["John Detter", "https://github.com/jdetter"]
 translators:
     - ["Wooseop Kim", "https://github.com/linterpreteur"]
-filename: LearnBash-kr.sh
 ---
 
 Bash는 유닉스 셸의 이름이며, 리눅스와 맥 OS X의 기본 셸로 그리고 GNU 운영체제를 위한 셸로서 배포되었습니다.

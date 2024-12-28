@@ -1,5 +1,4 @@
 ---
-filename: learnhack-cs.hh
 contributors:
     - ["Stephen Holdaway", "https://github.com/stecman"]
 translators:

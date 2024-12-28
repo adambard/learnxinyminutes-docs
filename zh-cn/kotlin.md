@@ -3,7 +3,6 @@ contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators:
     - ["Jimin Lu", "https://github.com/lujimin"]
-filename: LearnKotlin-cn.kt
 ---
 
 Kotlin是一门适用于JVM、Android和浏览器的静态类型编程语言。它100%兼容Java。

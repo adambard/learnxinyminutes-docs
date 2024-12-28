@@ -9,7 +9,6 @@ contributors:
     - ["Tyler Mumford", "https://tylermumford.com"]
 translators:
     - ["Kenryu Shibata", "https://github.com/kenryuS"]
-filename: learncss-jp.css
 ---
 
 ウェブサイトはHTMLでページの構造を指定します。

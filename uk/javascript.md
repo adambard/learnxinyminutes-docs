@@ -3,7 +3,6 @@ contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
     - ["Ariel Krakowski", "http://www.learneroo.com"]
     - ["clearsense", "https://github.com/clearsense"]
-filename: javascript-uk.js
 translators:
   - ["Ivan", "https://github.com/IvanEh"]
   - ["Serhii Maksymchuk", "https://github.com/Serg-Maximchuk"]

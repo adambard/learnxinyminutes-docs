@@ -1,5 +1,4 @@
 ---
-filename: learnracket-fr.rkt
 contributors:
   - ["th3rac25", "https://github.com/voila"]
   - ["Eli Barzilay", "https://github.com/elibarzilay"]

@@ -1,5 +1,4 @@
 ---
-filename: learncoldfusion-es.cfm
 contributors:
     - ["Wayne Boka", "http://wboka.github.io"]
     - ["Kevin Morris", "https://twitter.com/kevinmorris"]

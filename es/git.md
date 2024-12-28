@@ -1,5 +1,4 @@
 ---
-filename: LearnGit-es.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
 translators:

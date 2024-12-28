@@ -3,7 +3,6 @@ contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
     - ["Xuan-thi Nguyen", "https://github.com/mellenguyen"]
-filename: LearnTmux-fr.txt
 ---
 
 

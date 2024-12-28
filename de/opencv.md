@@ -1,5 +1,4 @@
 ---
-filename: learnopencv-de.py
 contributors:
     - ["Yogesh Ojha", "http://github.com/yogeshojha"]
 translators:

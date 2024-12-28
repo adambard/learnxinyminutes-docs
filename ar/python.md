@@ -9,7 +9,6 @@ contributors:
     - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
 translators:
     - ["Ahmad Hegazy", "https://github.com/ahegazy"]
-filename: learnpython-ar.py
 ---
 
 لقد أُنشئت لغة البايثون بواسطة جايدو ڤان روسم في بداية التسعينات. هي الأن أحد أشهر اللغات الموجودة. 

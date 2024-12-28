@@ -7,7 +7,6 @@ contributors:
     - ["Deepanshu Utkarsh", "https://github.com/duci9y"]
 translators:
     - ["Michal Martinek", "https://github.com/MichalMartinek"]
-filename: learncss-cz.css
 ---
 
 V ranných dobách webu se nevyskytovaly žádné vizuální elementy, pouze čistý text, ale s vývojem webových browserů se staly stránky plné grafických prvků běžné.

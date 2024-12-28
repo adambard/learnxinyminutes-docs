@@ -11,7 +11,6 @@ contributors:
     - ["Etan Reisner", "https://github.com/deryni"]
 translators:
     - ["Juraj Kostolanský", "http://www.kostolansky.sk"]
-filename: LearnBash-sk.sh
 ---
 
 Bash je pomenovanie pre unix shell (príkazový interpreter), ktorý bol

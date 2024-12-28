@@ -2,7 +2,6 @@
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
-filename: learnphp-id.php
 translators:
   - ["Ahmad Zafrullah", "https://github.com/23Pstars"]
   - ["Cendy", "https://cendy.co"]

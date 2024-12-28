@@ -1,5 +1,4 @@
 ---
-filename: learnyaml-ru.yaml
 contributors:
 - [Leigh Brenecki, 'https://github.com/adambrenecki']
 - [Suhas SG, 'https://github.com/jargnar']

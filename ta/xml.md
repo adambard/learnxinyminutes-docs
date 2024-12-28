@@ -1,5 +1,4 @@
 ---
-filename: learnxml-ta.xml
 contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:

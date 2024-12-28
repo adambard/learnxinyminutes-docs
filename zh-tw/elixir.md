@@ -4,7 +4,6 @@ contributors:
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
 translators:
     - ["Tai An Su", "https://github.com/taiansu"]
-filename: learnelixir-tw.ex
 ---
 
 Elixir 是一門建構在 Erlang 虛擬機上的現代函數式語言。它完全與 Erlang 相容，但

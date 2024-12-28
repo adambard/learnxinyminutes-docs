@@ -4,7 +4,6 @@ contributors:
     - ["Dzianis Dashkevich", "https://github.com/dskecse"]
 translators:
     - ["Rodrigo Muniz", "http://github.com/muniz95"]
-filename: learnelixir-pt.ex
 ---
 
 Elixir é uma linguagem funcional moderna construída no topo da Erlang VM.

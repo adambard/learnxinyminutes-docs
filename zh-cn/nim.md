@@ -1,5 +1,4 @@
 ---
-filename: learnNim-cn.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
     - ["Dennis Felsing", "https://dennis.felsing.org"]

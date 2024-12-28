@@ -1,7 +1,6 @@
 ---
 contributors:
 - ["Andrei Curelaru", "http://www.infinidad.fr"]
-filename: markdown-fr.md
 ---
 
 Markdown a été créé par John Gruber en 2004. Il se veut être d'une syntaxe

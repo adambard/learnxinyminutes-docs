@@ -5,7 +5,6 @@ contributors:
 translators:
     - ["Abdala Cerqueira", "http://abda.la"]
     - ["Raquel Diniz", "http://twitter.com/raquelrdiniz"]
-filename: learnphp-pt.php
 ---
 
 Este documento descreve PHP 5+.

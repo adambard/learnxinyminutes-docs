@@ -3,7 +3,6 @@ contributors:
   - ["mdln", "https://github.com/mdln"]
 translators:
   - ["Davydov Anton", "https://github.com/davydovanton"]
-filename: LearnTmux-ru.txt
 ---
 
 [tmux](http://tmux.sourceforge.net) - терминальный мультиплексор.

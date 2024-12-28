@@ -3,7 +3,6 @@ contributors:
     - ["Btup"]
 translators:
     - ["David Lima", "https://github.com/davelima"]
-filename: learnbc-pt.bc
 ---
 ```bc
 /*Este é um comentário

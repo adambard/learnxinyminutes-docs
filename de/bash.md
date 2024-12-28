@@ -4,7 +4,6 @@ contributors:
     - ["Darren Lin", "https://github.com/CogBear"]
 translators:
     - ["kultprok", "http://www.kulturproktologie.de"]
-filename: LearnBash-de.sh
 ---
 
 Bash ist der Name der Unix-Shell, die als Shell des GNU-Betriebssystems und auch als Standard-Shell von Linux und macOS ausgeliefert wurde.

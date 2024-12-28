@@ -6,7 +6,6 @@ contributors:
     - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 translators:
     - ["Vitalie Lazu", "https://github.com/vitaliel"]
-filename: learnelixir-ro.ex
 ---
 
 Elixir este un limbaj funcțional modern construit pe baza mașinii virtuale Erlang.

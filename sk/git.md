@@ -7,7 +7,6 @@ contributors:
     - ["Andrew Taylor", "http://github.com/andrewjt71"]
 translators:
     - ["Terka Slanináková", "http://github.com/TerkaSlan"]
-filename: LearnGit-sk.txt
 ---
 
 Git je distribuovaný systém riadenia revízií a správy zdrojového kódu.

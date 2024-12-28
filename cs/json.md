@@ -4,7 +4,6 @@ contributors:
   - ["Marco Scannadinari", "https://github.com/marcoms"]
 translators:
     - ["Vojta Svoboda", "https://github.com/vojtasvoboda/"]
-filename: learnjson-cz.json
 ---
 
 JSON je exterémně jednoduchý datově nezávislý formát a bude asi jeden z 

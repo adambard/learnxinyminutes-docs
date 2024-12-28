@@ -3,7 +3,6 @@ contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 translators:
     - ["Abel Salgado Romero", "https://twitter.com/abelsromero"]
-filename: asciidoc-ca.adoc
 ---
 
 AsciiDoc és un llenguatge de marques similar a Markdown i que pot ser usat per qualsevol ús, des de llibres fins a blogs.

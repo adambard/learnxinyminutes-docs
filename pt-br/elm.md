@@ -3,7 +3,6 @@ contributors:
     - ["Max Goldstein", "http://maxgoldste.in/"]
 translators:
     - ["Marcel dos Santos", "https://twitter.com/marcelgsantos"]
-filename: learnelm-pt.elm
 ---
 
 Elm é uma linguagem de programação funcional reativa que compila para (client-side)

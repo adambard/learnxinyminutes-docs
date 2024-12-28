@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
-filename: learnfactor-br.factor
 
 ---
 

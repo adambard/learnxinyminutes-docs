@@ -1,5 +1,4 @@
 ---
-filename: learnsass-ms.scss
 contributors:
   - ["Laura Kyle", "https://github.com/LauraNK"]
 translators:

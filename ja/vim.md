@@ -3,7 +3,6 @@ contributors:
     - ["RadhikaG", "https://github.com/RadhikaG"]
 translators:
     - ["Kota Kato", "https://github.com/kato-k"]
-filename: LearnVim-jp.txt
 ---
 
 

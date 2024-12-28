@@ -1,5 +1,4 @@
 ---
-filename: learnhtml-fr.txt
 contributors:
     - ["Christophe THOMAS", "https://github.com/WinChris"]
 ---

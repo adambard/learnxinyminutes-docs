@@ -3,7 +3,6 @@ contributors:
     - ["hyphz", "http://github.com/hyphz/"]
 translators:
     - ["Roberto R", "https://github.com/rrodriguze"]
-filename: learnfactor-es.factor
 
 ---
 Factor es un lenguaje moderno basado en la pila, basado en Forth, creado por

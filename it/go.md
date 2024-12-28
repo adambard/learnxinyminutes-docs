@@ -1,5 +1,4 @@
 ---
-filename: learngo-it.go
 contributors:
     - ["Sonia Keys", "https://github.com/soniakeys"]
     - ["Christopher Bess", "https://github.com/cbess"]

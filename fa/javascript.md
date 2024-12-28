@@ -3,7 +3,6 @@ contributors:
     - ["Leigh Brenecki", "https://leigh.net.au"]
 translators:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
-filename: javascript-fa.js
 ---
 
 <p dir='rtl'>

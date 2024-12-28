@@ -1,5 +1,4 @@
 ---
-filename: markdown-nl.md
 contributors:
   - ["Dan Turkel", "http://danturkel.com/"]
 translators:

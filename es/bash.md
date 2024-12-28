@@ -8,7 +8,6 @@ contributors:
     - ["Anton Strömkvist", "http://lutic.org/"]
 translators:
     - ["Daniel Zendejas", "https://github.com/danielzendejas"]
-filename: LearnBash-es.sh
 ---
 
 Tutorial de Shell en español.

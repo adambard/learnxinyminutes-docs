@@ -3,7 +3,6 @@ contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators: 
     - ["Alan Jeon", "https://github.com/skyisle"]
-filename: LearnKotlin-kr.kt
 ---
 
 Kotlin 은 정적 타입 프로그래밍 언어로 JVM, 안드로이드, 브라우져를 지원하며 Java 와 100% 상호 운용이 가능합니다.

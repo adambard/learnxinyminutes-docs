@@ -6,7 +6,6 @@ contributors:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
 translators:
     - ["Tomáš Bedřich", "http://tbedrich.cz"]
-filename: learnpython-cz.py
 ---
 
 Python byl vytvořen Guidem Van Rossum v raných 90. letech. Nyní je jedním z nejpopulárnějších jazyků.

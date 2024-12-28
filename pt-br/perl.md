@@ -1,5 +1,4 @@
 ---
-filename: learnperl-pt.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
 translators:

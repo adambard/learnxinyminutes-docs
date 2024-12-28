@@ -1,5 +1,4 @@
 ---
-filename: learnruby-pl.rb
 contributors:
   - ["David Underwood", "http://theflyingdeveloper.com"]
   - ["Joel Walden", "http://joelwalden.net"]

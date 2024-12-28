@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Bruno Alano", "https://github.com/brunoalano"]
-filename: CMake-br
 translators:
     - ["Lucas Pugliesi", "https://github.com/fplucas"]
 ---

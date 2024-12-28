@@ -7,7 +7,6 @@ contributors:
     - ["Svetlana Golubeva", "https://attillax.github.io/"]
 translators:
     - ["Dp Leo", "https://github.com/minoriwww"]
-filename: learn-latex-cn.tex
 ---
 
 ```tex

@@ -3,7 +3,6 @@ contributors:
     - ["Btup"]
 translators:
     - ["CloneWith", "https://github.com/CloneWith"]
-filename: learnbc.bc
 ---
 ```bc
 /*这是一条

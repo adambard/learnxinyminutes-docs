@@ -1,5 +1,4 @@
 ---
-filename: learnpythonlegacy-tr.py
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:

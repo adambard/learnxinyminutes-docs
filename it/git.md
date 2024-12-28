@@ -6,7 +6,6 @@ contributors:
     - ["Bruno Volcov", "http://github.com/volcov"]
 translators:
     - ["Christian Grasso", "http://chris54721.net"]
-filename: LearnGit-it.txt
 ---
 
 Git è un sistema di

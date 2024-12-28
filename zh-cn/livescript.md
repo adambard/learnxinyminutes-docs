@@ -1,5 +1,4 @@
 ---
-filename: learnLivescript-cn.ls
 contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
 translators:

@@ -3,7 +3,6 @@ contributors:
     - ["Ryan Mavilia", "http://unoriginality.rocks/"]
 translators:
     - ["David Lima", "https://github.com/davelima"]
-filename: asciidoc-pt.adoc
 ---
 
 AsciiDoc é uma linguagem de marcação similar ao Markdown e pode ser

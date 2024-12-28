@@ -1,7 +1,6 @@
 ---
 contributors:
   - ["Özgür Şahin", "https://github.com/ozgurshn/"]
-filename: learnswift-tr.swift
 ---
 
 Swift iOS ve OSX platformlarında geliştirme yapmak için Apple tarafından oluşturulan yeni bir programlama dilidir.  Objective - C ile beraber kullanılabilecek ve de hatalı kodlara karşı daha esnek bir yapı sunacak bir şekilde tasarlanmıştır. Swift 2014 yılında Apple'ın geliştirici konferansı WWDC de tanıtıldı. Xcode 6+'a dahil edilen LLVM derleyici ile geliştirildi.

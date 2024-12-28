@@ -3,7 +3,6 @@ contributors:
     - ["mdln", "https://github.com/mdln"]
 translators:
     - ["Luis Custodio", "http://luiscustodio.com"]
-filename: LearnTmux-pt.txt
 ---
 
 O [tmux](http://tmux.sourceforge.net) é um multiplexador de terminal,

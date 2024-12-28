@@ -8,7 +8,6 @@ contributors:
   - ["Marcos Brizeno", "http://www.about.me/marcosbrizeno"]
 translators:
   - ["Adrian Bordinc", "https://github.com/ellimist"]
-filename: learnruby-ro.rb
 ---
 
 ```ruby

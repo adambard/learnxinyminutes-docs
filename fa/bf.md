@@ -1,5 +1,4 @@
 ---
-filename: bf-fa.bf
 contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 ---

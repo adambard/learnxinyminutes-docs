@@ -9,7 +9,6 @@ contributors:
     - ["Tyler Mumford", "https://tylermumford.com"]
 translators:
     - ["miky ackerman", "https://github.com/mikyackerman"]
-filename: learncss-es.css
 ---
 
 Paginas web estan contruidas en HTML, lo cual especifica el contenido de una pagina

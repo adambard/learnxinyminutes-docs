@@ -4,7 +4,6 @@ contributors:
   - ["Xavier Yao", "http://github.com/xavieryao"]
 translators:
   - ["Juraj Kostolanský", "http://www.kostolansky.sk"]
-filename: coffeescript-sk.coffee
 ---
 
 CoffeeScript je jazyk, ktorý sa kompiluje do ekvivalentného JavaScriptu,

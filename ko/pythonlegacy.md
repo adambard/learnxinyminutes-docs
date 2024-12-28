@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
-filename: learnpythonlegacy-ko.py
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 ---

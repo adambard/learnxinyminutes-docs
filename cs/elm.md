@@ -3,7 +3,6 @@ contributors:
     - ["Max Goldstein", "http://maxgoldste.in/"]
 translators:
     - ["Robin Pokorný", "http://robinpokorny.com/"]
-filename: learnelm-cz.elm
 ---
 
 Elm je funkcionální reaktivní jazyk, který se kompiluje do (klientského) JavaScriptu.

@@ -1,5 +1,4 @@
 ---
-filename: LearnHaxe3-br.hx
 contributors:
     - ["Justin Donaldson", "https://github.com/jdonaldson/"]
     - ["Dan Korostelev", "https://github.com/nadako/"]

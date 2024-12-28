@@ -6,7 +6,6 @@ contributors:
     - ["Ramanan Balakrishnan", "https://github.com/ramananbalakrishnan"]
 translators:
     - ["Petru Dimitriu", "http://petru-dimitriu.github.io"]
-filename: learn-latex-ro.tex
 ---
 
 ```tex

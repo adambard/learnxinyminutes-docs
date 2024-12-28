@@ -3,7 +3,6 @@ contributors:
     - ["Poor Yorick", "http://pooryorick.com/"]
 translators:
     - ["Martin Schimandl", "https://github.com/Git-Jiro"]
-filename: learntcl-de.tcl
 ---
 
 Tcl wurde kreiert von [John Ousterhout](http://wiki.tcl.tk/John Ousterout) als

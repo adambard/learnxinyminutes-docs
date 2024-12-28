@@ -4,7 +4,6 @@ contributors:
   - ["Xavier Yao", "http://github.com/xavieryao"]
 translators:
   - ["Tamás Diószegi", "http://github.com/ditam"]
-filename: coffeescript-hu.coffee
 ---
 
 A CoffeeScript egy apró nyelv ami egy-az-egyben egyenértékű JavaScript kódra fordul, és így futásidőben már nem szükséges interpretálni.

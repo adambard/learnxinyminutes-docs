@@ -3,7 +3,6 @@ contributors:
   - ["João Farias", "https://github.com/JoaoGFarias"]
 translators:
   - ["Geoffrey Liu", "https://github.com/g-liu"]
-filename: learnxml-fr.xml
 ---
 
 XML est un langage de balisage conçu pour stocker et transporter les informations.

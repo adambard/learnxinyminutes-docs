@@ -2,7 +2,6 @@
 contributors:
     - ["Malcolm Fell", "http://emarref.net/"]
     - ["Trismegiste", "https://github.com/Trismegiste"]
-filename: learnphp-kr.php
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
 ---

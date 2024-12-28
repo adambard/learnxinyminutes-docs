@@ -1,5 +1,4 @@
 ---
-filename: learnjson-lt.json
 contributors:
   - ["Zygimantus", "https://github.com/zygimantus"]
 ---

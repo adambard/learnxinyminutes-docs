@@ -1,5 +1,4 @@
 ---
-filename: LearnKotlin-ru.kt
 contributors:
     - ["S Webber", "https://github.com/s-webber"]
 translators:

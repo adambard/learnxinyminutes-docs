@@ -1,5 +1,4 @@
 ---
-filename: learndart-pt.dart
 contributors:
     - ["Joao Pedrosa", "https://github.com/jpedrosa/"]
     - ["Hélio Oliveira", "https://github.com/insign/"]

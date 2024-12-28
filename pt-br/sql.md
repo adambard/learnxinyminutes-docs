@@ -1,5 +1,4 @@
 ---
-filename: learnsql-pt.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:

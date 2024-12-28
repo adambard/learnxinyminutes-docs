@@ -3,7 +3,6 @@ contributors:
     - ["Louie Dinh", "http://ldinh.ca"]
 translators:
     - ["Chenbo Li", "http://binarythink.net"]
-filename: learnpythonlegacy-zh.py
 ---
 
 Python 由 Guido Van Rossum 在90年代初创建。 它现在是最流行的语言之一

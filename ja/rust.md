@@ -1,7 +1,6 @@
 ---
 contributors:
     - ["P1start", "http://p1start.github.io/"]
-filename: learnrust-jp.rs
 translators:
     - ["Takashi Takeda", "https://github.com/Takashicc"]
 ---

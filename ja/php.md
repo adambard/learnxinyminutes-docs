@@ -4,7 +4,6 @@ contributors:
     - ["Trismegiste", "https://github.com/Trismegiste"]
 translators:
     - ["Kazushige Tominaga", "https://github.com/kazu9su"]
-filename: learnphp-jp.php
 ---
 
 このドキュメントでは、 PHP 5+ について説明します。

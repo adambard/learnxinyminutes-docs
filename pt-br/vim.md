@@ -4,7 +4,6 @@ contributors:
 translators:
     - ["David Lima", "https://github.com/davelima"]
     - ["Raul Almeida", "https://github.com/almeidaraul"]
-filename: LearnVim-pt.txt
 ---
 
 

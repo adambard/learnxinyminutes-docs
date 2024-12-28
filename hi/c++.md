@@ -1,5 +1,4 @@
 ---
-filename: learncpp-hi.cpp
 contributors:
     - ["Steven Basart", "https://github.com/xksteven"]
     - ["Matt Kline", "https://github.com/mrkline"]

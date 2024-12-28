@@ -3,7 +3,6 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Bogdan Paun", "http://twitter.com/bgdnpn"]
-filename: learnclojure-ro.clj
 ---
 
 Clojure este un limbaj din familia Lisp dezvoltat pentru Masina Virtuala Java

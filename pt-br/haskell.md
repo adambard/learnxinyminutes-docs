@@ -3,7 +3,6 @@ contributors:
     - ["Adit Bhargava", "http://adit.io"]
 translators:
     - ["Lucas Tonussi", "http://www.inf.ufsc.br/~tonussi/"]
-filename: learnhaskell-pt.hs
 ---
 
 As linguagens funcionais são linguagens de programação com base em avaliação

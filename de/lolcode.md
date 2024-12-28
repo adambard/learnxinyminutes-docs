@@ -1,5 +1,4 @@
 ---
-filename: learnLOLCODE-de.lol
 contributors:
     - ["abactel", "https://github.com/abactel"]
 translators:

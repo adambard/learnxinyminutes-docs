@@ -6,7 +6,6 @@ translators:
   - ["Jelle Besseling", "https://github.com/Jell-E"]
   - ["D.A.W. de Waal", "http://github.com/diodewaal"]
   - ["Sam van Kampen", "http://tehsvk.net"]
-filename: coffeescript-nl.coffee
 ---
 
 CoffeeScript is een kleine programmeertaal die direct compileert naar

@@ -5,7 +5,6 @@ contributors:
     - ["Sricharan Chiruvolu", "http://sricharan.xyz"]
 translators:
     - ["Mario Pérez", "https://github.com/MarioPerezEsteso"]
-filename: learn-latex-es.tex
 ---
 
 ```tex

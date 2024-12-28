@@ -1,6 +1,5 @@
 ---
 
-filename: commonlisp.lisp
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
   - ["Rommel Martinez", "https://ebzzry.io"]

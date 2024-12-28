@@ -3,7 +3,6 @@ contributors:
     - ["e99n09", "https://github.com/e99n09"]
 translators:
     - ["waltercjunior", "https://github.com/waltercjunior"]
-filename: pythonstatcomp-pt.py
 ---
 
 Este é um tutorial sobre como fazer algumas tarefas típicas de programação estatística usando Python.

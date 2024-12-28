@@ -1,5 +1,4 @@
 ---
-filename: learnyaml-nl.yaml
 contributors:
   - ["Leigh Brenecki", "https://github.com/adambrenecki"]
 translators:

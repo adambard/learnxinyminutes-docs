@@ -3,7 +3,6 @@ contributors:
     - ["Poor Yorick", "https://pooryorick.com/"]
 translators:
     - ["Viktor Sokhranov", "https://github.com/weirdvic"]
-filename: learntcl-ru.tcl
 ---
 
 Tcl был создан [Джоном Оустерхаутом](https://ru.wikipedia.org/wiki/Оустерхаут,_Джон)

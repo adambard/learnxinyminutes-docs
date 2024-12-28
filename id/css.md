@@ -3,7 +3,6 @@ contributors:
     - ["Mohammad Valipour", "https://github.com/mvalipour"]
 translators:
     - ["Eka Y Saputra", "http://github.com/ekajogja"]
-filename: learncss-id.css
 ---
 
 Pada mulanya, web tidak memiliki elemen visual, murni teks saja.
