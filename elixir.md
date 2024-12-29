@@ -325,7 +325,7 @@ Recursion.sum_list([1,2,3], 0) #=> 6
 # may also add custom ones.
 defmodule MyMod do
   @moduledoc """
-  This is a built-in attribute on a example module.
+  This is a built-in attribute on an example module.
   """
 
   @my_data 100 # This is a custom attribute.
