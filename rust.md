@@ -89,7 +89,7 @@ fn main() {
     let x: &str = "hello world!";
 
     // Printing
-    println!("{} {}", f, x); // 1.3 hello world
+    println!("{} {}", f, x); // 1.3 hello world!
 
     // A `String` – a heap-allocated string
     // Stored as a `Vec<u8>` and always holds a valid UTF-8 sequence, 
