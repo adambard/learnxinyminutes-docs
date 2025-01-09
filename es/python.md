@@ -34,12 +34,17 @@ Es básicamente pseudocódigo ejecutable.
 # Sin embargo también tienes disponible división entera
 34 // 5 # => 6
 
+% El operador módulo
+34 % 5  # => 4  # es el residuo de la división: 34 - (5 * 6) = 4 
+
 # Cuando usas un float, los resultados son floats
 3 * 2.0 # => 6.0
 
+# Exponenciación
+4 ** 3 = 64  # 4^3 => 4*4*4 => 64
+
 # Refuerza la precedencia con paréntesis
 (1 + 3) * 2  # => 8
-
 
 # Valores 'boolean' (booleanos) son primitivos
 True
@@ -48,7 +53,6 @@ False
 # Niega con 'not'
 not True  # => False
 not False  # => True
-
 
 # Igualdad es ==
 1 == 1  # => True
