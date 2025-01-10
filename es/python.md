@@ -41,7 +41,7 @@ Es básicamente pseudocódigo ejecutable.
 3 * 2.0 # => 6.0
 
 # Exponenciación
-4 ** 3 = 64  # 4^3 => 4*4*4 => 64
+4 ** 3  # => 64
 
 # Refuerza la precedencia con paréntesis
 (1 + 3) * 2  # => 8
