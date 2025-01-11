@@ -1,12 +1,10 @@
 ---
-language: markdown
 contributors:
     - ["Dan Turkel", "http://danturkel.com/"]
     - ["Jacob Ward", "http://github.com/JacobCWard/"]
     - ["Tomáš Hartman", "https://github.com/tomas-hartman"]
 translators:
     - ["Kenryu Shibata", "https://github.com/kenryuS"]
-filename: markdown-jp.md
 ---
 
 
