@@ -1,12 +1,9 @@
 ---
-language: TypeScript
-lang: uk-ua
 contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Kiwimoe", "https://github.com/kiwimoe"]
 translators:
     - ["Illia Piskurov", "https://github.com/illia-piskurov"]
-filename: learntypescript-ua.ts
 ---
 
 TypeScript - це мова, яка має на меті полегшити розробку великомасштабних додатків, написаних на JavaScript.
