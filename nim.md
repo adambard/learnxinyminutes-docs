@@ -129,8 +129,11 @@ type
 
 var
   defaultHouse = House() # initialize with default values
-  defaultRoom = new Room() # create new instance of ref object
-  sesameHouse = House(address: "123 Sesame St.", rooms: @[defaultRoom])
+  defaultRoom = Room() # create new instance of ref object with default values
+
+  # Create and initialize instances with given values
+  sesameRoom = Room(windows: 4, doors: 2)
+  sesameHouse = House(address: "123 Sesame St.", rooms: @[sesameRoom])
 
 # Enumerations allow a type to have one of a limited number of values
 
