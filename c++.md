@@ -292,8 +292,8 @@ std::string retVal = tempObjectFun();
 // created whenever a function returns an object, and they are destroyed at the
 // end of the evaluation of the enclosing expression (Well, this is what the
 // standard says, but compilers are allowed to change this behavior. Look up
-// "return value optimization" if you're into this kind of details). So in this
-// code:
+// "return value optimization" if you're into these kinds of details). So in
+// this code:
 foo(bar(tempObjectFun()))
 
 // assuming foo and bar exist, the object returned from tempObjectFun is
