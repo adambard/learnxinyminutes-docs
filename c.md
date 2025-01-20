@@ -11,6 +11,7 @@ contributors:
   - ["Joshua Li", "https://github.com/JoshuaRLi"]
   - ["Dragos B. Chirila", "https://github.com/dchirila"]
   - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
+  - ["Azeem Sajid", "https://github.com/iamazeem"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -53,7 +54,7 @@ enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 // libraries for the headers.
 // For your own headers, use double quotes instead of angle brackets, and
 // provide the path:
-#include "my_header.h" 		// local file
+#include "my_header.h" // local file
 #include "../my_lib/my_lib_header.h" //relative path
 
 // Declare function signatures in advance in a .h file, or at the top of
@@ -85,8 +86,7 @@ int main(void) {
 // argc being the number of arguments - your program's name counts as 1
 // argv is an array of character arrays - containing the arguments themselves
 // argv[0] = name of your program, argv[1] = first argument, etc.
-int main (int argc, char** argv)
-{
+int main (int argc, char** argv) {
   // print output using printf, for "print formatted"
   // %d is an integer, \n is a newline
   printf("%d\n", 0); // => Prints 0
@@ -563,8 +563,7 @@ int main (int argc, char** argv)
 // Function declaration syntax:
 // <return type> <function name>(<args>)
 
-int add_two_ints(int x1, int x2)
-{
+int add_two_ints(int x1, int x2) {
   return x1 + x2; // Use return to return a value
 }
 
@@ -581,8 +580,7 @@ Example: in-place string reversal
 */
 
 // A void function returns no value
-void str_reverse(char *str_in)
-{
+void str_reverse(char *str_in) {
   char tmp;
   size_t ii = 0;
   size_t len = strlen(str_in); // `strlen()` is part of the c standard library
@@ -607,11 +605,10 @@ printf("%s\n", c); // => ".tset a si sihT"
 as we can return only one variable
 to change values of more than one variables we use call by reference
 */
-void swapTwoNumbers(int *a, int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+void swapTwoNumbers(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
 }
 /*
 int first = 10;
@@ -627,17 +624,16 @@ printf("first: %d\nsecond: %d\n", first, second);
 // you would like to return multiple values, then the caller must pass in the
 // variables where they would like the returned values to go. These variables must
 // be passed in as pointers such that the function can modify them.
-int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
-{
-    if(array_of_3 == NULL)
-        return 0; //return error code (false)
+int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3) {
+  if (array_of_3 == NULL)
+    return 0; //return error code (false)
 
-    //de-reference the pointer so we modify its value
-   *ret1 = array_of_3[0];
-   *ret2 = array_of_3[1];
-   *ret3 = array_of_3[2];
+  //de-reference the pointer so we modify its value
+  *ret1 = array_of_3[0];
+  *ret2 = array_of_3[1];
+  *ret3 = array_of_3[2];
 
-   return 1; //return error code (true)
+  return 1; //return error code (true)
 }
 
 /*
@@ -650,10 +646,10 @@ array in C.
 // Size must be passed!
 // Otherwise, this function has no way of knowing how big the array is.
 void printIntArray(int *arr, size_t size) {
-    int i;
-    for (i = 0; i < size; i++) {
-        printf("arr[%d] is: %d\n", i, arr[i]);
-    }
+  int i;
+  for (i = 0; i < size; i++) {
+    printf("arr[%d] is: %d\n", i, arr[i]);
+  }
 }
 /*
 int my_arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -703,8 +699,7 @@ struct rectangle {
 // due to potential padding between the structure members (this is for alignment
 // reasons). [1]
 
-void function_1()
-{
+void function_1() {
   struct rectangle my_rec = { 1, 2 }; // Fields can be initialized immediately
 
   // Access struct members with .
@@ -724,8 +719,7 @@ void function_1()
 // You can apply a typedef to a struct for convenience
 typedef struct rectangle rect;
 
-int area(rect r)
-{
+int area(rect r) {
   return r.width * r.height;
 }
 
@@ -741,8 +735,7 @@ struct rectangle r;
 
 // if you have large structs, you can pass them "by pointer" to avoid copying
 // the whole struct:
-int areaptr(const rect *r)
-{
+int areaptr(const rect *r) {
   return r->width * r->height;
 }
 
@@ -848,8 +841,8 @@ source files and can simplify code and definitions by separating them into
 separate files.
 
 Header files are syntactically similar to C source files but reside in ".h"
-files. They can be included in your C source file by using the precompiler
-command #include "example.h", given that example.h exists in the same directory
+files. They can be included in your C source file by using the preprocessor
+directive #include "example.h", given that example.h exists in the same directory
 as the C file.
 */
 
@@ -867,7 +860,7 @@ as the C file.
 /* and used in files that include this header file.          */
 #define EXAMPLE_NAME "Dennis Ritchie"
 
-/* Function macros can also be defined.  */
+/* Function macros can also be defined. */
 #define ADD(a, b) ((a) + (b))
 
 /* Notice the parenthesis surrounding the arguments -- this is important to   */
@@ -876,8 +869,7 @@ as the C file.
 /* incorrect result)                                                          */
 
 /* Structs and typedefs can be used for consistency between files. */
-typedef struct Node
-{
+typedef struct Node {
     int val;
     struct Node *next;
 } Node;
@@ -894,20 +886,24 @@ Node createLinkedList(int *vals, int len);
 /* file. Excessive includes or definitions should also not be contained in   */
 /* a header file but instead put into separate headers or a C file.          */
 
-#endif /* End of the if precompiler directive. */
+#endif /* End of the if preprocessor directive. */
 ```
 
 ## Further Reading
 
-Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). It is _the_ book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
-inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
+Best to find yourself a copy of
+[K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language).
+It is _the_ book about C, written by Dennis Ritchie, the creator of C, and Brian
+Kernighan. Be careful, though - it's ancient and it contains some inaccuracies
+(well, ideas that are not considered good anymore) or now-changed practices.
 
 Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/) (not free).
 
 If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
 
-It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
-Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
+It's very important to use proper spacing, indentation and to be consistent with
+your coding style in general. Readable code is better than clever code and fast
+code. For a good, sane coding style to adopt, see the
 [Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
 
 [1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
