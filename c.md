@@ -848,8 +848,8 @@ source files and can simplify code and definitions by separating them into
 separate files.
 
 Header files are syntactically similar to C source files but reside in ".h"
-files. They can be included in your C source file by using the precompiler
-command #include "example.h", given that example.h exists in the same directory
+files. They can be included in your C source file by using the preprocessor
+directive #include "example.h", given that example.h exists in the same directory
 as the C file.
 */
 
@@ -894,7 +894,7 @@ Node createLinkedList(int *vals, int len);
 /* file. Excessive includes or definitions should also not be contained in   */
 /* a header file but instead put into separate headers or a C file.          */
 
-#endif /* End of the if precompiler directive. */
+#endif /* End of the if preprocessor directive. */
 ```
 
 ## Further Reading
