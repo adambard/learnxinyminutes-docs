@@ -6,15 +6,35 @@ contributors:
     - ["Fernando Oleo Blanco", "https://github.com/Irvise"]
     - ["Fabien Chouteau", "https://github.com/Fabien-Chouteau"]
     - ["Manuel", "https://github.com/mgrojo"]
+    - ["Azeem Sajid", "https://github.com/iamazeem"]
 ---
 
-Ada is a strong statically typed imperative, [object-oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9), [real-time](https://ada-lang.io/docs/arm/AA-D), [parallel](https://ada-lang.io/docs/arm/AA-9) and [distributed](https://ada-lang.io/docs/arm/AA-9) programming language from the Pascal/Algol family of languages, but nowadays, it only has a passing resemblance to Pascal, with the only remnants left being the ```begin/end``` keyword pair, the ```:=``` assignment symbol, records and ```if/case``` control statement structures.
+Ada is a strong statically typed imperative,
+[object-oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9),
+[real-time](https://ada-lang.io/docs/arm/AA-D),
+[parallel](https://ada-lang.io/docs/arm/AA-9) and
+[distributed](https://ada-lang.io/docs/arm/AA-9) programming language from the
+Pascal/Algol family of languages, but nowadays, it only has a passing
+resemblance to Pascal, with the only remnants left being the `begin/end` keyword
+pair, the `:=` assignment symbol, records and `if/case` control statement
+structures.
 
-Ada was originally designed to be an [object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace 100's of languages in use by the US government. This means that all entities are objects, not in the object-oriented sense. The language became [Object-Oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9) in 1995, and added [interfaces](https://ada-lang.io/docs/arm/AA-3/AA-3.9#Subclause_3.9.4) derived from Java in 2005. [Contract based](https://ada-lang.io/docs/arm/AA-13/AA-13.1#Subclause_13.1.1) programming was introduced with Ada 2012.
+Ada was originally designed to be an
+[object-based](https://ada-lang.io/docs/arm/AA-3/AA-3.3) language and to replace
+100's of languages in use by the US government. This means that all entities are
+objects, not in the object-oriented sense. The language became
+[Object-Oriented](https://ada-lang.io/docs/arm/AA-3/AA-3.9) in 1995, and added
+[interfaces](https://ada-lang.io/docs/arm/AA-3/AA-3.9#Subclause_3.9.4) derived
+from Java in 2005. [Contract
+based](https://ada-lang.io/docs/arm/AA-13/AA-13.1#Subclause_13.1.1) programming
+was introduced with Ada 2012.
 
-Ada was designed to be easy to read and learn, even for non-programmers, e.g. management within an organisation, therefore programs written in the language tend to be a bit more verbose.
+Ada was designed to be easy to read and learn, even for non-programmers, e.g.
+management within an organization, therefore programs written in the language
+tend to be a bit more verbose.
 
-Ada is a modern programming language, and now has a package manager like other modern languages, Alire, see below.
+Ada is a modern programming language, and now has a package manager like other
+modern languages, Alire, see below.
 
 ```ada
 --  Comments are written with a double hyphen and exist until the end of
@@ -111,7 +131,7 @@ package body Stuff is
       Right := Temp;
    end Swap;
 begin
-   --  If we need to initialise something within the package, we can do it
+   --  If we need to initialize something within the package, we can do it
    --  here.
    Do_Something;
 end Stuff;
@@ -133,7 +153,7 @@ procedure LearnAdaInY is
    --  gradual typing.
 
    --  The standard types would only really be a good starting point for binding
-   --  to other languages, like C. Ada is the only language with a standardised
+   --  to other languages, like C. Ada is the only language with a standardized
    --  way to bind with C, Fortran and COBOL! See the links in the References
    --  section with more information on binding to these languages.
 
@@ -168,8 +188,8 @@ procedure LearnAdaInY is
    Blue_Hue   :          Primaries := Blue;  --  A variable.
    Red_Hue    : constant Primaries := Red;   --  A constant.
    Yellow_Hue : constant Hues      := Yellow;
-   Colour_1   : constant Hues      := Red_Hue;
-   --  Colour_2   : constant Primaries := Yellow_Hue;  --  uncomment to compile.
+   Color_1    : constant Hues      := Red_Hue;
+   --  Color_2   : constant Primaries := Yellow_Hue;  --  uncomment to compile.
 
    --  You can force conversions, but then you are warned by the name of the
    --  package that you may be doing something unsafe.
@@ -196,7 +216,7 @@ procedure LearnAdaInY is
 
    --  You can have normal Latin 1 based strings by default.
    Str  : constant String    := "This is a constant string";
-   --  When initialising from a string literal, the compiler knows the bounds,
+   --  When initializing from a string literal, the compiler knows the bounds,
    --  so we don't have to define them.
 
    --  Strings are arrays. Note how parentheses are used to access elements of
@@ -208,7 +228,7 @@ procedure LearnAdaInY is
    Char : constant Character := Str (Str'First);  --  "'First" is a type
                                                   --  attribute.
 
-   --  Ada 2022 includes the use of [] for array initialisation when using
+   --  Ada 2022 includes the use of [] for array initialization when using
    --  containers, which were added in Ada 2012.
 
    --  Arrays are usually always defined as a type.
@@ -246,7 +266,7 @@ procedure LearnAdaInY is
    --  There are dynamic length strings (see references section) available in
    --  the standard library.
 
-   --  We can make an object be initialised to its default values with the box
+   --  We can make an object be initialized to its default values with the box
    --  notation, "<>". "others" is used to indicate anything else that has not
    --  been explicitly initialized.
    Null_Entity : constant Entities := (others => <>);
@@ -361,34 +381,45 @@ exception
 end LearnAdaInY;
 ```
 
-Now, that's a lot of information for a basic intro to Ada, and I've only touched the surface, there's much more to look at in the references section below. I haven't even touched on dynamic memory allocation which includes [pools](https://ada-lang.io/docs/arm/AA-13/AA-13.11), this is because for the most part, Ada programs don't need it, you can do a lot without it.
+Now, that's a lot of information for a basic intro to Ada, and I've only touched
+the surface, there's much more to look at in the references section below. I
+haven't even touched on dynamic memory allocation which includes
+[pools](https://ada-lang.io/docs/arm/AA-13/AA-13.11), this is because for the
+most part, Ada programs don't need it, you can do a lot without it.
 
-As I stated above, Ada barely looks like Pascal and if you look at the original [Green specification](https://apps.dtic.mil/sti/trecms/pdf/ADB950587.pdf) (Warning: Huge 4575 page scanned PDF - starting on page 460), it looks nothing like it at all (page 505 of that PDF).
+As I stated above, Ada barely looks like Pascal and if you look at the original
+[Green specification](https://apps.dtic.mil/sti/trecms/pdf/ADB950587.pdf)
+(Warning: Huge 4575 page scanned PDF - starting on page 460), it looks nothing
+like it at all (page 505 of that PDF).
 
-The above source code will compile, but also will give warnings showing the power of the strong static type system.
+The above source code will compile, but also will give warnings showing the
+power of the strong static type system.
 
 ## Download this source
 
-If you already have the GNAT toolchain installed, you can cut and paste the above into a new file, e.g. ```learn-ada-in-y.ada``` and then run the following:
+If you already have the GNAT toolchain installed, you can cut and paste the
+above into a new file, e.g. `learn-ada-in-y.ada` and then run the following:
 
 ```bash
-$ gnatchop learn-ada-in-y.ada # This breaks the program into its specification ".ads" and body ".adb".
-$ gnatmake empty.adb # gnatmake takes care of compilation of all units and linking.
-$ gnatmake hello.adb
-$ gnatmake learnadainy.adb
+gnatchop learn-ada-in-y.ada # This breaks the program into its specification ".ads" and body ".adb".
+gnatmake empty.adb # gnatmake takes care of compilation of all units and linking.
+gnatmake hello.adb
+gnatmake learnadainy.adb
 ```
 
-Or, download [Alire](https://alire.ada.dev), copy it to somewhere in your PATH and then do the following:
+Or, download [Alire](https://alire.ada.dev), copy it to somewhere in your PATH
+and then do the following:
 
-**N.B.** Alire will automatically install the toolchain for you if you don't have one installed and will ask you to select which you want to use.
+**N.B.** Alire will automatically install the toolchain for you if you don't
+have one installed and will ask you to select which you want to use.
 
 ```bash
-$ alr search learnadainy
-$ alr get learnadainy
-$ cd learnadainy
-$ alr run empty
-$ alr run hello
-$ alr run learnadainy
+alr search learnadainy
+alr get learnadainy
+cd learnadainy
+alr run empty
+alr run hello
+alr run learnadainy
 ```
 
 ## Further Reading
@@ -410,7 +441,9 @@ $ alr run learnadainy
 
 Multi-line comments are not allowed as they are error prone.
 
-> Such comments would require a closing comment delimiter and this would again raise the dangers associated with the (unintentional) omission of the closing delimiter: entire sections of a program could be ignored by the compiler without the programmer realizing it
+> Such comments would require a closing comment delimiter and this would again
+> raise the dangers associated with the (unintentional) omission of the closing
+> delimiter: entire sections of a program could be ignored by the compiler
+> without the programmer realizing it
 >
 > [Ada 83 Rationale](http://archive.adaic.com/standards/83rat/html/ratl-02-01.html#2.1)
-
