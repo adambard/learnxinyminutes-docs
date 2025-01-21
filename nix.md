@@ -86,7 +86,7 @@ with builtins; [
   ("ab" + "cd")   # String concatenation
   #=> "abcd"
 
-  # String Interpolation (formly known as "Antiquotation") lets you embed values into strings.
+  # String Interpolation (formerly known as "Antiquotation") lets you embed values into strings.
   ("Your home directory is ${getEnv "HOME"}")
   #=> "Your home directory is /home/alice"
 
