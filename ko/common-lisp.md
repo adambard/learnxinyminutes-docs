@@ -1,6 +1,7 @@
 ---
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
+  - ["Paul Khuong", "https://github.com/pkhuong"]
   - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
   - ["Eunpyoung Kim", "https://github.com/netpyoung"]
@@ -672,9 +673,3 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
 - [common-lisp.net](https://common-lisp.net/)
 - [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 - [Lisp Lang](http://lisp-lang.org/)
-
-## 크레딧
-
-Scheme 사용자들의 노고에 큰 감사를 드립니다. 좋은 시작점을 만들어 주신 덕분에 쉽게 Common Lisp로 옮길 수 있었습니다.
-
-- 훌륭한 리뷰를 해주신 [Paul Khuong](https://github.com/pkhuong)

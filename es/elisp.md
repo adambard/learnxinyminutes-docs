@@ -363,13 +363,4 @@ translators:
 ;;
 ;; Para leer una introducción en linea de Emacs Lisp:
 ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
-
-;; Me gustaría agradecer a las siguientes personas su feedback y sugerencias:
-;; - Wes Hardaker
-;; - notbob
-;; - Kevin Montuori
-;; - Arne Babenhauserheide
-;; - Alan Schmitt
-;; - LinXitoW
-;; - Aaron Meurer
 ```

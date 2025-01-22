@@ -330,13 +330,5 @@ translators:
 ;;
 ;; 在线阅读Emacs Lisp文档:
 ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
- 
-;; 感谢以下同学的建议和反馈:
-;; - Wes Hardaker
-;; - notbob
-;; - Kevin Montuori
-;; - Arne Babenhauserheide
-;; - Alan Schmitt
-;; - spacegoing
 ```
 

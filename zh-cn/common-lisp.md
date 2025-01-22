@@ -1,6 +1,7 @@
 ---
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
+  - ["Paul Khuong", "https://github.com/pkhuong"]
 translators:
   - ["Mac David", "http://macdavid313.com"]
   - ["mut0u", "http://github.com/mut0u"]
@@ -607,17 +608,6 @@ nil                  ; 逻辑假，或者空列表
 ;; 可以去《实用 Common Lisp 编程》中阅读更多有关宏的内容。
 ```
 
-
 ## 拓展阅读
 
 [继续阅读《实用 Common Lisp 编程》一书](http://www.gigamonkeys.com/book/)
-
-
-## 致谢
-
-非常感谢Scheme社区的人们，我基于他们的成果得以迅速的写出这篇有关Common Lisp的快速入门
-同时也感谢
-- [Paul Khuong](https://github.com/pkhuong) ，他提出了很多有用的点评。
-
-## 译者寄语
-“祝福那些将思想镶嵌在重重括号之内的人们。”

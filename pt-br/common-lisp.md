@@ -1,6 +1,7 @@
 ---
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
+  - ["Paul Khuong", "https://github.com/pkhuong"]
 translators:
   - ["Édipo Luis Féderle", "https://github.com/edipofederle"]
 ---
@@ -9,12 +10,10 @@ ANSI Common Lisp é uma linguagem de uso geral, multi-paradigma, designada
 para uma variedade de aplicações na indústria. É frequentemente citada
 como uma linguagem de programação programável.
 
-
 O ponto inicial clássico é [Practical Common Lisp e livremente disponível](http://www.gigamonkeys.com/book/)
 
 Outro livro recente e popular é o
 [Land of Lisp](http://landoflisp.com/).
-
 
 ```lisp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -604,15 +603,6 @@ nil                  ; para false - e para lista vazia
 ;; Veja Practical Common Lisp para maiores informações sobre macros.
 ```
 
-
 ## Leitura Adicional
 
 [Continua em frente com  Practical Common Lisp book.](http://www.gigamonkeys.com/book/)
-
-
-## Créditos
-
-Muitos  agradecimentos ao pessoal de Schema por fornecer um grande ponto de partida
-o que facilitou muito a migração para Common Lisp.
-
-- [Paul Khuong](https://github.com/pkhuong) pelas grandes revisões.

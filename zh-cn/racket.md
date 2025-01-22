@@ -9,7 +9,6 @@ translators:
 ---
 
 Racket是Lisp/Scheme家族中的一个通用的，多范式的编程语言。
-非常期待您的反馈！你可以通过[@th3rac25](http://twitter.com/th3rac25)或以用户名为 th3rac25 的Google邮箱服务和我取得联系
 
 ```racket
 #lang racket ; 声明我们使用的语言

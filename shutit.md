@@ -6,8 +6,6 @@ contributors:
 filename: learnshutit.py
 ---
 
-## ShutIt
-
 ShutIt is an shell automation framework designed to be easy to use.
 
 It is a wrapper around a Python-based expect clone (pexpect).
@@ -47,7 +45,6 @@ argument outputs the terminal interactions. By default ShutIt is silent.
 
 'send' takes care of all the messing around with prompts and 'expects' that
 you might be familiar with from expect.
-
 
 ## Log Into a Server
 
@@ -170,7 +167,6 @@ There are much more elegant ways to do the above (e.g. have a dictionary of the
 servers to iterate over), but it's up to you how clever you need the Python to
 be.
 
-
 ## More Intricate IO - Expecting
 
 Let's say you have an interaction with an interactive command line application
@@ -225,7 +221,6 @@ let ShutIt know you don't care about the exit code.
 If you didn't pass that argument in, ShutIt gives you an interactive terminal
 if there is a terminal to communicate with. This is called a 'pause point'.
 
-
 ## Pause Points
 
 You can trigger a 'pause point' at any point by calling
@@ -264,7 +259,6 @@ Did you enjoy your pause point?
 Ians-Air.home:ORIGIN_ENV:I00LA1Mq#
 ```
 
-
 ## More Intricate IO - Backgrounding
 
 Returning to our 'monitoring multiple servers' example, let's imagine we
@@ -273,7 +267,6 @@ works serially which would take a long time. But we can run tasks in the
 background to speed things up.
 
 Here you can try an example with the trivial command: 'sleep 60'.
-
 
 ```python
 import shutit
@@ -301,7 +294,6 @@ Again, this is trivial, but imagine you have hundreds of servers to manage like
 this and you can see the power it can bring in a few lines of code and one
 Python import.
 
-
 ## Learn More
 
 There's a lot more that can be done with ShutIt.
@@ -312,6 +304,3 @@ To learn more, see:
 [GitHub](https://github.com/ianmiell/shutit/blob/master/README.md)
 
 It's a broader automation framework, and the above is its 'standalone mode'.
-
-Feedback, feature requests, 'how do I?'s highly appreciated! Reach me at
-[@ianmiell](https://twitter.com/ianmiell)

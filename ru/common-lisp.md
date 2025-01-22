@@ -1,7 +1,7 @@
 ---
-
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
+  - ["Paul Khuong", "https://github.com/pkhuong"]
   - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
   - ["Michael Filonenko", "https://github.com/filonenko-mikhail"]
@@ -16,8 +16,6 @@ Common Lisp - мультипарадигменный язык программи
 Ещё одна популярная книга [Land of Lisp](http://landoflisp.com/).
 И одна из последних книг [Common Lisp Recipes](http://weitz.de/cl-recipes/) вобрала в себя лучшие
 архитектурные решения на основе опыта коммерческой работки автора.
-
-
 
 ```common-lisp
 ;;;-----------------------------------------------------------------------------
@@ -671,12 +669,13 @@ nil                    ; ложь; а ещё пустой список () тож
 ## Для чтения
 
 На русском
+
 - [Practical Common Lisp](https://github.com/pcl-ru/pcl-ru/releases/download/v1.1/pcl-ru.pdf)
 
 На английском
+
 - [Practical Common Lisp](http://www.gigamonkeys.com/book/)
 - [Common Lisp: A Gentle Introduction to Symbolic Computation](https://www.cs.cmu.edu/~dst/LispBook/book.pdf)
-
 
 ## Дополнительная информация
 
@@ -690,12 +689,3 @@ nil                    ; ложь; а ещё пустой список () тож
 - [common-lisp.net](https://common-lisp.net/)
 - [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 - [Lisp Lang](http://lisp-lang.org/)
-
-
-## Благодарности в английской версии
-
-Спасибо людям из Scheme за отличную статью, взятую за основу для
-Common Lisp.
-
-
-- [Paul Khuong](https://github.com/pkhuong) за хорошую вычитку.

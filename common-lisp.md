@@ -4,6 +4,7 @@ name: "Common Lisp"
 filename: commonlisp.lisp
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
+  - ["Paul Khuong", "https://github.com/pkhuong"]
   - ["Rommel Martinez", "https://ebzzry.io"]
 ---
 
@@ -13,8 +14,6 @@ industry applications. It is frequently referred to as a programmable programmin
 The classic starting point is [Practical Common Lisp](http://www.gigamonkeys.com/book/). Another
 popular and recent book is [Land of Lisp](http://landoflisp.com/). A new book about best practices,
 [Common Lisp Recipes](http://weitz.de/cl-recipes/), was recently published.
-
-
 
 ```lisp
 ;;;-----------------------------------------------------------------------------
@@ -667,12 +666,10 @@ nil                    ; false; also, the empty list: ()
 ;;; See Practical Common Lisp and On Lisp for more information on macros.
 ```
 
-
 ## Further reading
 
 - [Practical Common Lisp](http://www.gigamonkeys.com/book/)
 - [Common Lisp: A Gentle Introduction to Symbolic Computation](https://www.cs.cmu.edu/~dst/LispBook/book.pdf)
-
 
 ## Extra information
 
@@ -680,11 +677,3 @@ nil                    ; false; also, the empty list: ()
 - [common-lisp.net](https://common-lisp.net/)
 - [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 - [Lisp Lang](http://lisp-lang.org/)
-
-
-## Credits
-
-Lots of thanks to the Scheme people for rolling up a great starting
-point which could be easily moved to Common Lisp.
-
-- [Paul Khuong](https://github.com/pkhuong) for some great reviewing.

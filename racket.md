@@ -12,9 +12,6 @@ contributors:
 
 Racket is a general purpose, multi-paradigm programming language in the Lisp/Scheme family.
 
-Feedback is appreciated! You can reach me at [@th3rac25](http://twitter.com/th3rac25) or th3rac25 [at] [google's email service]
-
-
 ```racket
 #lang racket ; defines the language we are using
 

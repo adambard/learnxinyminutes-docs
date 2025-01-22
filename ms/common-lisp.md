@@ -1,7 +1,7 @@
 ---
-
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
+  - ["Paul Khuong", "https://github.com/pkhuong"]
   - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
   - ["Burhanuddin Baharuddin", "https://github.com/burhanloey"]
@@ -13,8 +13,6 @@ industri aplikasi. Common Lisp biasa digelar sebagai programmable programming la
 Sumber bacaan yang klasik ialah [Practical Common Lisp](http://www.gigamonkeys.com/book/). Sumber bacaan yang lain dan
 yang terbaru ialah [Land of Lisp](http://landoflisp.com/). Buku baru mengenai best practices (amalan terbaik),
 [Common Lisp Recipes](http://weitz.de/cl-recipes/), baru sahaja diterbitkan.
-
-
 
 ```common-lisp
 ;;;-----------------------------------------------------------------------------
@@ -665,12 +663,10 @@ nil                    ; false; termasuklah list yang kosong: ()
 ;;; Baca Practical Common Lisp dan On Lisp untuk maklumat lebih lanjut mengenai macro.
 ```
 
-
 ## Bacaan lanjut
 
 - [Practical Common Lisp](http://www.gigamonkeys.com/book/)
 - [Common Lisp: A Gentle Introduction to Symbolic Computation](https://www.cs.cmu.edu/~dst/LispBook/book.pdf)
-
 
 ## Maklumat tambahan
 
@@ -678,11 +674,3 @@ nil                    ; false; termasuklah list yang kosong: ()
 - [common-lisp.net](https://common-lisp.net/)
 - [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 - [Lisp Lang](http://lisp-lang.org/)
-
-
-## Kredit
-
-Terima kasih banyak diucapkan kepada ahli Scheme yang membuat permulaan yang sangat
-bagus dan mudah untuk diguna pakai untuk Common Lisp.
-
-- [Paul Khuong](https://github.com/pkhuong) untuk review yang bagus.

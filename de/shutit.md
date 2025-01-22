@@ -5,8 +5,6 @@ translators:
     - ["Dennis Keller", "https://github.com/denniskeller"]
 ---
 
-## ShutIt
-
 ShuIt ist eine Shellautomationsframework, welches für eine einfache 
 Handhabung entwickelt wurde.
 
@@ -48,7 +46,6 @@ Das 'echo' Argument gibt die Terminalinteraktion aus. ShuIt ist standardmäßig 
 'Send' kümmert sich um die nervigen Arbeiten mit den Prompts und macht 
 alles was du von 'expect' erwarten würdest.
 
-
 ## Logge dich auf einen Server ein
 
 Sagen wir du möchtest dich auf einen Server einloggen und einen Befehl ausführen.
@@ -73,7 +70,6 @@ example.com
 example.com:cgoIsdVv:heDa77HB#
 ```
 
-
 Es ist klar, dass das nicht sicher ist. Stattdessen kann man Folgendes machen:
 
 ```python
@@ -95,7 +91,6 @@ hostname
 example.com
 example.com:cgoIsdVv:heDa77HB#
 ```
-
 
 Die 'login' Methode übernimmt wieder das veränderte Prompt für den Login.
 Du übergibst ShutIt den User und das Passwort, falls es benötigt wird,
@@ -172,7 +167,6 @@ Kapazitätsbefehl (df) zu erhalten.
 Es gibt elegantere Wege als oben (z.B. kannst du ein Dictionary verwenden, um über 
 die Server zu iterieren), aber es hängt an dir wie clever das Python sein muss.
 
-
 ## kompliziertere IO - Expecting
 
 Sagen wir du hast eine Interaktion mit einer interaktiven Kommandozeilenprogramm, 
@@ -229,7 +223,6 @@ Wenn du das Argument nicht mitgegeben hättest, dann hätte dir ShutIt
 ein interaktives Terminal zurückgegeben, falls es ein Terminal zum
 Kommunizieren gibt. Dies nennt sich ein 'Pause point'.
 
-
 ## Pause Points
 
 Du kannst jederzeit 'pause point' auslösen, wenn du Folgendes in deinem Skript aufrufst:
@@ -268,7 +261,6 @@ Hat dir der Pause point gefallen?
 Ians-Air.home:ORIGIN_ENV:I00LA1Mq#
 ```
 
-
 ## noch kompliziertere IO - Hintergrund
 
 Kehren wir zu unserem Beispiel mit dem Überwachen von mehreren Servern zurück.
@@ -278,7 +270,6 @@ Wir können jedoch die Aufgaben im Hintergrund laufen lassen, um sie zu beschleu
 
 Hier ist ein Beispiel, welches du ausprobieren kannst.
 Es verwendet den trivialen Befehl: 'sleep'.
-
 
 ```python
 import shutit
@@ -303,11 +294,9 @@ Mein Computer meint, dass er 0.5 Sekunden gebraucht hat um die Befehle zu starte
 und dann nur etwas über eine Minute gebraucht um sie zu beenden
 (mit Verwendung der 'wait' Methode).
 
-
 Das alles ist trivial, aber stelle dir vor das du hunderte an Servern so managen
 kannst und man kann nun das Potential sehen, die in ein paar Zeilen Code und ein Python 
 import liegen können.
-
 
 ## Lerne mehr
 
@@ -320,6 +309,3 @@ Um mehr zu erfahren, siehe:
 
 Es handelt sich um ein breiteres Automatisierungsframework, und das oben
 genannte ist der sogenannte 'standalone Modus'.
-
-Feedback, feature requests, 'Wie mache ich es' sind herzlich willkommen! Erreiche mit unter
-[@ianmiell](https://twitter.com/ianmiell)

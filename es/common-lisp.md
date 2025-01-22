@@ -1,7 +1,7 @@
 ---
-
 contributors:
   - ["Paul Nathan", "https://github.com/pnathan"]
+  - ["Paul Khuong", "https://github.com/pkhuong"]
   - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
   - ["ivanchoff", "https://github.com/ivanchoff"]
@@ -665,12 +665,10 @@ nil                    ; false; también, la lista vacia: ()
 ;;; Consulte Practical Common Lisp y On Lisp para obtener más información sobre macros.
 ```
 
-
 ## Otras Lecturas
 
 - [Practical Common Lisp](http://www.gigamonkeys.com/book/)
 - [Common Lisp: A Gentle Introduction to Symbolic Computation](https://www.cs.cmu.edu/~dst/LispBook/book.pdf)
-
 
 ## Información extra
 
@@ -678,11 +676,3 @@ nil                    ; false; también, la lista vacia: ()
 - [common-lisp.net](https://common-lisp.net/)
 - [Awesome Common Lisp](https://github.com/CodyReichert/awesome-cl)
 - [Lisp Lang](http://lisp-lang.org/)
-
-
-## Creditos
-
-Muchas Gracias a la gente de Scheme por proveer un gran punto de inicio
-el cual puede ser movido fácilmente a Common Lisp
-
-- [Paul Khuong](https://github.com/pkhuong) para un buen repaso.
