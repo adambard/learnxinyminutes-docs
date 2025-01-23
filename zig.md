@@ -3,6 +3,7 @@ name: Zig
 filename: learnzig.zig
 contributors:
     - ["Philippe Pittoli", "https://karchnu.fr/"]
+    - ["Kenneth Brooks", "https://github.com/zendril"]
 ---
 
 [Zig][ziglang] aims to be a replacement for the C programming language.
