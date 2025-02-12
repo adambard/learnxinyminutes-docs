@@ -6,14 +6,14 @@ translators:
 ---
 
 ```lua
--- Zwei Gedankenstriche starten ein einzeiliges Kommentar.
+-- Zwei Gedankenstriche starten einen einzeiligen Kommentar.
 
 --[[
      Fügt man zwei '[' und ']' hinzu,
      erzeugt man einen mehrzeiligen Kommentar.
 --]]
 --------------------------------------------------------------------------------
--- 1. Variablen und Fluß-Kontrolle.
+-- 1. Variablen und Fluss-Kontrolle.
 --------------------------------------------------------------------------------
 
 num = 42  -- Alle Nummern sind vom Typ: Double.
@@ -26,7 +26,7 @@ t = "Doppelte Anführungszeichen sind auch OK"
 u = [[ Doppelte eckige Klammern
        beginnen und beenden
        mehrzeilige Zeichenketten.]]
-t = nil  -- Undefinieren von t; Lua hat einen Garbage Collection.
+t = nil  -- Entdefinieren von t; Lua hat einen Garbage Collection.
 
 -- Blöcke werden durch Schlüsselwörter wie do/end markiert:
 while num < 50 do
@@ -92,7 +92,7 @@ end
 
 -- Closures und anonyme Funktionen sind ok:
 function adder(x)
-  -- Die zurückgegebene Funktion wird erzeugt wenn addr aufgerufen wird und merkt
+  -- Die zurückgegebene Funktion wird erzeugt, wenn adder aufgerufen wird und merkt
   -- sich den Wert von x:
   return function (y) return x + y end
 end
@@ -102,7 +102,7 @@ print(a1(16))  --> 25
 print(a2(64))  --> 100
 
 -- Rückgabewerte, Funktions-Aufrufe und Zuweisungen funktionieren alle mit
--- Listen die nicht immer gleich lang sein müssen. Überzählige Empfänger
+-- Listen, die nicht immer gleich lang sein müssen. Überzählige Empfänger
 -- bekommen nil; überzählige Sender werden ignoriert.
 
 x, y, z = 1, 2, 3, 4
@@ -153,7 +153,7 @@ print {} -- Funktioniert auch wunderbar.
 -- Dict-Literale haben standardmäßig Zeichenketten als Schlüssel:
 t = {key1 = 'value1', key2 = false}
 
--- Zeichenketten-Schlüssel verwenden eine JavaScript ähnliche Punkt-Notation.
+-- Zeichenketten-Schlüssel verwenden eine JavaScript-ähnliche Punkt-Notation.
 print(t.key1)  -- Ausgabe 'value1'.
 t.newKey = {}  -- Neues Schlüssel/Wert-Paar hinzufügen.
 t.key2 = nil   -- key2 aus der Tabelle entfernen.
@@ -166,9 +166,9 @@ print(u[6.28])  -- Ausgabe "tau"
 -- aber über die Identität bei Tabellen.
 a = u['@!#']  -- Nun ist a = 'qbert'.
 b = u[{}]     -- Wir würden 1729 erwarten, aber es ist nil:
--- b = nil weil der Lookup fehlschlägt. Er schlägt Fehl, weil der Schlüssel
+-- b = nil weil der Lookup fehlschlägt. Er schlägt fehl, weil der Schlüssel,
 -- den wir verwendet haben nicht das gleiche Objekt ist das wir verwendet
--- haben um den original Wert zu speichern. Zahlen und Zeichenkette sind daher
+-- haben, um den original Wert zu speichern. Zahlen und Zeichenkette sind daher
 -- die praktischeren Schlüssel.
 
 -- Eine Funktion mit nur einem Tabellen-Parameter benötigt keine Klammern.
@@ -179,7 +179,7 @@ for key, val in pairs(u) do  -- Tabellen-Iteration.
   print(key, val)
 end
 
--- _G ist eine spezielle Tabelle die alles Globale enthält.
+-- _G ist eine spezielle Tabelle, die alles Globale enthält.
 print(_G['_G'] == _G)  -- Ausgabe 'true'.
 
 -- Verwenden von Tabellen als Listen/Arrays:
@@ -197,8 +197,8 @@ end
 --------------------------------------------------------------------------------
 
 -- Eine Tabelle kann eine Metatabelle haben. Diese verleiht ihr so etwas wie
--- Tabellen-Operator-Überladungs-Verhalten. Später sehen wir wie
--- Metatabellen js-prototypen artiges Verhalten unterstützen.
+-- Tabellen-Operator-Überladungsverhalten. Später sehen wir wie
+-- Metatabellen js-prototypen-artiges Verhalten unterstützen.
 
 f1 = {a = 1, b = 2}  -- Repräsentiert den Bruch a/b.
 f2 = {a = 2, b = 3}
@@ -217,7 +217,7 @@ end
 setmetatable(f1, metafraction)
 setmetatable(f2, metafraction)
 
-s = f1 + f2  -- Rufe __add(f1, f2) vom der Metatabelle von f1 auf.
+s = f1 + f2  -- Rufe __add(f1, f2) von der Metatabelle von f1 auf.
 
 -- f1 und f2 haben keine Schlüssel für ihre Metatabellen, anders als bei js
 -- Prototypen. Daher muss mithilfe von getmetatable(f1) darauf zugegriffen
@@ -225,7 +225,7 @@ s = f1 + f2  -- Rufe __add(f1, f2) vom der Metatabelle von f1 auf.
 -- Lua bekannt sind, so wie __add.
 
 
--- Die nächste Zeile schlägt fehl weil s keine Metatabelle hat:
+-- Die nächste Zeile schlägt fehl, weil s keine Metatabelle hat:
 -- t = s + s
 -- Mithilfe von Klassen ähnlichen Mustern kann das gelöst werden.
 -- Siehe weiter unten.
@@ -293,13 +293,13 @@ mrDog:makeSound()  -- 'I say woof'         -- 8.
 -- 3. newObj wird eine Instanz von Dog.
 -- 4. "self" ist die zu instanziierende Klasse. Meistern ist self = Dog, aber
 --    dies kann durch Vererbung geändert werden. newObj bekommt die Funktionen
---    von self wenn wir die Metatabelle von newObj und __index von self auf
+--    von self, wenn wir die Metatabelle von newObj und __index von self auf
 --    self setzen.
 -- 5. Zur Erinnerung: setmetatable gibt sein erstes Argument zurück.
 -- 6. Der Doppelpunkt funktioniert wie bei 2, aber dieses Mal erwarten wir das
 --    self eine Instanz ist und keine Klasse.
--- 7. Das Selbe wie Dog.new(Dog), also self = Dog in new().
--- 8. Das Selbe wie mrDog.makeSound(mrDog); self = mrDog.
+-- 7. Dasselbe wie Dog.new(Dog), also self = Dog in new().
+-- 8. Dasselbe wie mrDog.makeSound(mrDog); self = mrDog.
 
 --------------------------------------------------------------------------------
 
@@ -323,7 +323,7 @@ seymour:makeSound()  -- 'woof woof woof'      -- 4.
 --    Metatabelle.
 --    Ergebnis: Die Metatabelle von seymour ist LoudDog und "LoudDog.__index = Dog".
 --    Daher ist seymour.key gleich seymour.key, LoudDog.key, Dog.key, je nachdem
---    welche Tabelle als erstes einen passenden Schlüssel hat.
+--    welche Tabelle als Erstes einen passenden Schlüssel hat.
 -- 4. Der 'makeSound' Schlüssel wird in LoudDog gefunden: Das ist das Gleiche
 --    wie "LoudDog.makeSound(seymour)".
 
@@ -371,10 +371,10 @@ end)()
 -- Es ist als ob mod.lua eine Funktion wäre, sodass lokale Variablen in
 -- mod.lua ausserhalb unsichtbar sind.
 
--- Das funktioniert weil mod hier das Gleiche wie M in mod.lua ist:
+-- Das funktioniert, weil mod hier das Gleiche wie M in mod.lua ist:
 mod.sayHello()  -- Says hello to Hrunkner.
 
--- Das ist Falsch: sayMyName existiert nur in mod.lua:
+-- Das ist falsch: sayMyName existiert nur in mod.lua:
 mod.sayMyName()  -- Fehler
 
 -- Der Rückgabe-Wert von require wird zwischengespeichert. Sodass Module nur
@@ -390,7 +390,7 @@ dofile('mod2')  --> Hi!
 dofile('mod2')  --> Hi! (läuft nochmal, nicht wie require)
 
 -- loadfile ladet eine lua Datei aber die Datei wird noch nicht abgearbeitet.
-f = loadfile('mod2')  -- Sobald f() aufgerufen wird läuft mod2.lua.
+f = loadfile('mod2')  -- Sobald f() aufgerufen wird, läuft mod2.lua.
 
 -- loadstring ist loadfile für Zeichenketten
 g = loadstring('print(343)')  -- Gibt eine Funktion zurück..
