@@ -284,9 +284,9 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; operations in particular:
 (->>
    (range 10)
-   (map inc)     ;=> (map inc (range 10)
-   (filter odd?) ;=> (filter odd? (map inc (range 10))
-   (into []))    ;=> (into [] (filter odd? (map inc (range 10)))
+   (map inc)     ;=> (map inc (range 10))
+   (filter odd?) ;=> (filter odd? (map inc (range 10)))
+   (into []))    ;=> (into [] (filter odd? (map inc (range 10))))
                  ; Result: [1 3 5 7 9]
 
 ; When you are in a situation where you want more freedom as where to
