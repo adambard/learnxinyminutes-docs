@@ -294,9 +294,9 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; operaciones de colecciones en particular:
 (->>
    (range 10)
-   (map inc)     ;=> (map inc (range 10)
-   (filter odd?) ;=> (filter odd? (map inc (range 10))
-   (into []))    ;=> (into [] (filter odd? (map inc (range 10)))
+   (map inc)     ;=> (map inc (range 10))
+   (filter odd?) ;=> (filter odd? (map inc (range 10)))
+   (into []))    ;=> (into [] (filter odd? (map inc (range 10))))
                  ; Result: [1 3 5 7 9]
 
 ; Cuando estés en una situación donde quieras tener más libertad en donde
