@@ -11,6 +11,7 @@ contributors:
   - ["Joshua Li", "https://github.com/JoshuaRLi"]
   - ["Dragos B. Chirila", "https://github.com/dchirila"]
   - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
+  - ["Mykolas Bamberg", "https://github.com/MykBamberg"]
 ---
 
 Ah, C. Still **the** language of modern high-performance computing.
@@ -33,6 +34,9 @@ Multi-line comments don't nest /* Be careful */  // comment ends on this line...
 // Constants: #define <keyword>
 // Constants are written in all-caps out of convention, not requirement
 #define DAYS_IN_YEAR 365
+// Since C23 it is also possible to define constants using the constexpr keyword
+// which gives you the ability to easily specify the type of the constant
+constexpr int DAYS_IN_YEAR = 365;
 
 // Enumeration constants are also ways to declare constants.
 // All statements must end with a semicolon
@@ -119,8 +123,8 @@ int main (int argc, char** argv)
   char x_char = 0;
   char y_char = 'y'; // Char literals are quoted with ''
 
-  // longs are often 4 to 8 bytes; long longs are guaranteed to be at least
-  // 8 bytes
+  // longs are often 4 to 8 bytes; long longs (added in C99) are guaranteed to
+  // be at least 8 bytes
   long x_long = 0;
   long long x_long_long = 0;
 
@@ -191,7 +195,7 @@ int main (int argc, char** argv)
   // time constant:
   printf("Enter the array size: "); // ask the user for an array size
   int array_size;
-  fscanf(stdin, "%d", &array_size);
+  scanf("%d", &array_size);
   int var_length_array[array_size]; // declare the VLA
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
@@ -265,11 +269,10 @@ int main (int argc, char** argv)
   (-11) % 3; // => -2, as one would expect
   11 % (-3); // => 2 and not -2, and it's quite counter intuitive
 
-  // Comparison operators are probably familiar, but
-  // there is no Boolean type in C. We use ints instead.
-  // (C99 introduced the _Bool type provided in stdbool.h)
-  // 0 is false, anything else is true. (The comparison
-  // operators always yield 0 or 1.)
+  // Comparison operators are probably familiar. However, instead of the
+  // result being of a Boolean type (introduced as _Bool in the C99 standard
+  // and called bool since C23) it is represented by an int, 0 is the value
+  // of a false statement and 1 is the value of a true statement.
   3 == 2; // => 0 (false)
   3 != 2; // => 1 (true)
   3 > 2;  // => 1
@@ -358,11 +361,9 @@ int main (int argc, char** argv)
   // *****NOTES*****:
   // Loops and Functions MUST have a body. If no body is needed:
   int i;
-  for (i = 0; i <= 5; i++) {
-    ; // use semicolon to act as the body (null statement)
-  }
+  for (i = 0; i <= 5; i++) {} // use an empty compound statement
   // Or
-  for (i = 0; i <= 5; i++);
+  for (i = 0; i <= 5; i++); // use semicolon to act as the body (null statement)
 
   // branching with multiple choices: switch()
   switch (a) {
@@ -387,15 +388,15 @@ int main (int argc, char** argv)
   /*
     Using "goto" in C
   */
-  typedef enum { false, true } bool;
+  typedef enum { FALSE, TRUE } boolean;
   // for C don't have bool as data type before C99 :(
-  bool disaster = false;
+  boolean disaster = FALSE;
   int i, j;
   for(i=0; i<100; ++i)
   for(j=0; j<100; ++j)
   {
     if((i + j) >= 150)
-        disaster = true;
+        disaster = TRUE;
     if(disaster)
         goto error;  // exit both for loops
   }
@@ -418,9 +419,11 @@ int main (int argc, char** argv)
   // Every value in C has a type, but you can cast one value into another type
   // if you want (with some constraints).
 
-  int x_hex = 0x01; // You can assign vars with hex literals
-                    // binary is not in the standard, but allowed by some
-                    // compilers (x_bin = 0b0010010110)
+  // You can assign variables with hex literals.
+  int x_hex = 0x01;
+  // Binary literals were introduced in the C23 standard, however most
+  // compilers already supported them beforehand
+  int x_bin = 0b0010010110;
 
   // Casting between types will attempt to preserve their numeric values
   printf("%d\n", x_hex); // => Prints 1
@@ -813,6 +816,7 @@ typedef void (*my_fnp_type)(char *);
          //                it as an argument to `printf`.
 "%x";    // hexadecimal
 "%o";    // octal
+"%b";    // binary (only supported since C23)
 "%%";    // prints %
 */
 
