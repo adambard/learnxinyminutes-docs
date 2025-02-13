@@ -282,9 +282,9 @@ keymap ; => {:a 1, :b 2, :c 3}
 ; Kollektionen nützlich:
 (->>
    (range 10)
-   (map inc)     ;=> (map inc (range 10)
-   (filter odd?) ;=> (filter odd? (map inc (range 10))
-   (into []))    ;=> (into [] (filter odd? (map inc (range 10)))
+   (map inc)     ;=> (map inc (range 10))
+   (filter odd?) ;=> (filter odd? (map inc (range 10)))
+   (into []))    ;=> (into [] (filter odd? (map inc (range 10))))
                  ; Result: [1 3 5 7 9]
 
 ; Wenn du in einer Situation bist, in der du mehr Freiheit willst,
