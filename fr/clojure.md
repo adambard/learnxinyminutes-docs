@@ -294,9 +294,9 @@ ressemblent à toutes les autres formes:
 ; étage en dernière position. Par exemple:
 (->>
    (range 10)
-   (map inc)     ;=> Génère ici (map inc (range 10)
-   (filter odd?) ;=> Génère ici (filter odd? (map inc (range 10))
-   (into []))    ;=> Génère ici (into [] (filter odd? (map inc (range 10))), ce qui est évalué au final à;
+   (map inc)     ;=> Génère ici (map inc (range 10))
+   (filter odd?) ;=> Génère ici (filter odd? (map inc (range 10)))
+   (into []))    ;=> Génère ici (into [] (filter odd? (map inc (range 10)))), ce qui est évalué au final à;
                  ; [1 3 5 7 9]
 
 ; Quand vous êtes dans une situation où vous voulez plus de liberté pour choisir 
