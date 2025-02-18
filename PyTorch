@@ -1,0 +1,210 @@
+---
+name: PyTorch
+filename: PyTorch.md
+contributors:
+    - ["Shrijak Kumar", "https://github.com/shrijacked"]
+
+category: Frameworks and Libraries
+---
+
+# Learn PyTorch in Y Minutes
+
+**PyTorch Cheat Sheet**  
+- **Created By**: Shrijak Kumar  
+- **Date of Creation**: December 30, 2024  
+
+## Introduction  
+
+PyTorch is a dynamic and flexible deep learning framework widely used for tasks such as computer vision, NLP, and reinforcement learning. It supports tensor computations, neural network modules, GPU acceleration, and advanced workflows like ONNX export and distributed training.  
+
+This cheat sheet provides a concise yet comprehensive overview of PyTorch's essential features and workflows, serving as a quick reference for beginners and advanced users alike.  
+
+## Installation  
+
+To install PyTorch, refer to the official [installation guide](https://pytorch.org/get-started/locally/).  
+
+```bash
+# Example for CPU installation
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+```
+
+Verify installation:  
+
+```python
+import torch
+print(f"PyTorch version: {torch.__version__}")
+```
+
+## PyTorch Ecosystem  
+
+### Core Libraries  
+
+```python
+import torch  # root package
+from torch.utils.data import Dataset, DataLoader  # dataset representation and loading
+import torch.nn as nn  # neural networks
+import torch.nn.functional as F  # activations, layers, and utilities
+import torch.optim as optim  # optimizers
+import torch.autograd as autograd  # automatic differentiation
+```
+
+### Vision  
+
+```python
+from torchvision import datasets, models, transforms  # vision tools
+import torchvision.transforms as transforms  # image transforms
+```
+
+### ONNX (Open Neural Network Exchange)  
+
+```python
+import torch.onnx as onnx
+onnx.export(model, dummy_input, "model.onnx")  # export a model
+```
+
+### Distributed Training  
+
+```python
+import torch.distributed as dist  # distributed communication
+from torch.multiprocessing import Process  # multiprocessing tools
+```
+
+## Tensors: The Foundation  
+
+### Creation  
+
+```python
+x = torch.randn(3, 3)  # tensor with random values
+x = torch.zeros(3, 3)  # tensor of zeros
+x = torch.ones(3, 3)  # tensor of ones
+x = torch.tensor([[1, 2], [3, 4]])  # from nested list
+y = x.clone()  # deep copy of x
+```
+
+### Tensor Properties  
+
+```python
+x.size()  # shape of tensor
+x.requires_grad_(True)  # enable gradient tracking
+with torch.no_grad():  # stop autograd tracking
+    x = x + 1
+```
+
+### Dimensionality Operations  
+
+```python
+x = x.view(3, 2)  # reshape tensor
+x = x.unsqueeze(0)  # add a dimension
+x = x.squeeze()  # remove dimensions of size 1
+x = x.transpose(0, 1)  # swap two dimensions
+x = x.permute(1, 0, 2)  # permute dimensions
+```
+
+### GPU Usage  
+
+```python
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+x = x.to(device)  # send tensor to device
+```
+
+## Neural Networks  
+
+### Layers  
+
+```python
+linear_layer = nn.Linear(4, 2)  # fully connected layer
+conv_layer = nn.Conv2d(3, 16, kernel_size=3)  # convolutional layer
+lstm_layer = nn.LSTM(input_size=10, hidden_size=20, num_layers=2)  # recurrent layer
+```
+
+### Activation Functions  
+
+```python
+relu = nn.ReLU()  # Rectified Linear Unit
+softmax = nn.Softmax(dim=1)  # softmax for multi-class outputs
+sigmoid = nn.Sigmoid()  # sigmoid for binary classification
+```
+
+### Loss Functions  
+
+```python
+loss_fn = nn.CrossEntropyLoss()  # classification
+loss_fn = nn.MSELoss()  # regression
+loss_fn = nn.BCEWithLogitsLoss()  # binary classification
+```
+
+### Optimizers  
+
+```python
+optimizer = optim.Adam(model.parameters(), lr=0.001)  # Adam optimizer
+```
+
+### Learning Rate Schedulers  
+
+```python
+scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
+scheduler.step()  # adjust learning rate
+```
+
+## Training Workflow  
+
+### Data Preparation  
+
+```python
+X = torch.arange(0, 1, 0.02).unsqueeze(1)
+y = 0.7 * X + 0.3
+train_split = int(0.8 * len(X))
+X_train, X_test = X[:train_split], X[train_split:]
+y_train, y_test = y[:train_split], y[train_split:]
+```
+
+### Model Definition  
+
+```python
+class LinearRegressionModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layer = nn.Linear(1, 1)
+
+    def forward(self, x):
+        return self.layer(x)
+
+model = LinearRegressionModel()
+```
+
+### Training Loop  
+
+```python
+loss_fn = nn.MSELoss()
+optimizer = optim.SGD(model.parameters(), lr=0.01)
+
+for epoch in range(100):
+    model.train()
+    y_pred = model(X_train)
+    loss = loss_fn(y_pred, y_train)
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+    print(f"Epoch {epoch}, Loss: {loss.item()}")
+```
+
+## Advanced PyTorch  
+
+### Distributed Training  
+
+```python
+dist.init_process_group(backend="nccl", init_method="env://")
+```
+
+### ONNX Export  
+
+```python
+torch.onnx.export(model, X, "model.onnx")  # export a model to ONNX format
+```
+
+### Model Deployment  
+
+```python
+scripted_model = torch.jit.script(model)  # convert model to TorchScript
+scripted_model.save("model.pt")  # save for deployment
+```
