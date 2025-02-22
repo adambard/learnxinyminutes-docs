@@ -171,4 +171,4 @@ while triedNumber != numberToGuess:
 
 * [Tutorials](https://github.com/cl4cnam/funcSug/wiki/Tutorials)
 
-* [Github repository](https://github.com/cl4cnam/funcSug)
+* [GitHub repository](https://github.com/cl4cnam/funcSug)
