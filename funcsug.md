@@ -5,9 +5,11 @@ contributors:
 filename: learnfuncsug.fg
 ---
 
-FuncSug is a programming language designed (as a complement of JavaScript) to simplify GUI programming. It enables a more linear code in line with async/await and structured concurrency. It replaces event-driven syntaxes with easy-to-use concurrent syntaxes.
+FuncSug is a programming language designed (as a complement of JavaScript) to simplify GUI programming.
+It enables a more linear code in line with async/await and structured concurrency.
+It replaces event-driven syntaxes with easy-to-use concurrent syntaxes.
 
-```
+```gdscript
 # Boolean, Numbers, Strings, Compound assignment
 var a := true
 a := 3.5
@@ -41,7 +43,8 @@ result := parallel ||
 ||
 	doThat()
 
-# Parallel block that ends when N branches are ended (the others branches are automatically and definitively interrupted)
+# Parallel block that ends when N branches are ended
+# (the others branches are automatically and definitively interrupted)
 parallel exitAfter N finished ||
 	doThis1()
 ||
@@ -49,7 +52,8 @@ parallel exitAfter N finished ||
 ||
 	doThisM()
 
-# Parallel block that selects the N branches that reached a certain point (the others branches are automatically and definitively interrupted)
+# Parallel block that selects the N branches that reached a certain point
+# (the others branches are automatically and definitively interrupted)
 # "...-------" is to be written to indicate the point to be reached
 parallel(select N) ||
 ||===========
@@ -68,10 +72,12 @@ awaitClickBeep(myButton)
 awaitClickBeep('#myButtonId')
 waitSeconds(numberOfSeconds)
 
-# Await a text by the user (like "input()" in Python, but in the browser, not in the console)
+# Await a text by the user
+# (like "input()" in Python, but in the browser, not in the console)
 var text := awaitHumanText()
 
-# Include JavaScript snippets with 'js' block (var1,...,varN) are 
+# Include JavaScript snippets with a 'js' block;
+# var1,...,varN are the variables transmitted from FuncSug to JavaScript
 var result := js (var1,...,varN):
 	// JavaScript/DOM code
 	document.getElementById('myLabel').style.color = var6
@@ -85,7 +91,7 @@ displayNewMessage('sqrt(' + a + ') = ' + b)
 
 Simple examples
 
-```
+```gdscript
 # Play multiple sounds at the same time
 parallel ||
 	playSoundFile('sound1.mp3')
