@@ -646,13 +646,13 @@ of the language.
 
 [JavaScript: The Definitive Guide][6] is a classic guide and reference book.
 
-[Eloquent JavaScript][8] by Marijn Haverbeke is an excellent JS book/ebook with
+[Eloquent JavaScript][http://eloquentjavascript.net/] by Marijn Haverbeke is an excellent JS book/ebook with
 attached terminal
 
-[JavaScript: The Right Way][10] is a guide intended to introduce new developers
+[JavaScript: The Right Way][http://jstherightway.org/] is a guide intended to introduce new developers
 to JavaScript and help experienced developers learn more about its best practices.
 
-[javascript.info][11] is a modern JavaScript tutorial covering the basics (core language and working with a browser)
+[javascript.info][https://javascript.info/] is a modern JavaScript tutorial covering the basics (core language and working with a browser)
 as well as advanced topics with concise explanations.
 
 
@@ -668,6 +668,3 @@ Mozilla Developer Network.
 [6]: http://www.amazon.com/gp/product/0596805527/
 [7]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 [8]: https://www.javascripttutorial.net/
-[8]: http://eloquentjavascript.net/
-[10]: http://jstherightway.org/
-[11]: https://javascript.info/
