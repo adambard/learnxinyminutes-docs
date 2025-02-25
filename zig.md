@@ -153,10 +153,10 @@ try some_integers[i]; // Runtime error 'index out of bounds'.
 
 ```zig
 const mat4x4 = [4][4]f32{
-    [_]f32{ 1.0, 0.0, 0.0, 0.0 },
-    [_]f32{ 0.0, 1.0, 0.0, 1.0 },
-    [_]f32{ 0.0, 0.0, 1.0, 0.0 },
-    [_]f32{ 0.0, 0.0, 0.0, 1.0 },
+    .{ 1, 0, 0, 0 },
+    .{ 0, 1, 0, 1 },
+    .{ 0, 0, 1, 0 },
+    .{ 0, 0, 0, 1 },
 };
 
 // Access the 2D array then the inner array through indexes.
