@@ -42,8 +42,8 @@ VARIABLE = "Du texte" # => renvoie une erreur : "Variable: command not found"
 # afficher une erreur parce qu’elle est introuvable.
 
 # Ni comme ça :
-VARIABLE= 'Some string' # => renvoie une erreur : "Du texte: command not found"
-# Bash va penser que 'Di texte' est une commande qu’il doit exécuter et va
+VARIABLE= 'Du texte' # => renvoie une erreur : "Du texte: command not found"
+# Bash va penser que 'Du texte' est une commande qu’il doit exécuter et va
 # afficher une erreur parce qu’elle est introuvable. (Dans ce cas, la partie 
 # 'VARIABLE=' est considérée comme une affectation de variable valable uniquement
 # pour la portée de la commande 'Du texte').
