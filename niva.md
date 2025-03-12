@@ -6,9 +6,12 @@ contributors:
 ---
 
 ## Intro
-Niva is a simple language that takes a lot of inspiration from Smalltalk. But leaning towards the functional side. Everything is still an object but instead of classes, interfaces, and abstract classes, we have tagged unions, which is the only way to achieve polymorphism.
+Niva is a simple language that takes a lot of inspiration from Smalltalk.
+But leaning towards the functional side.
+Everything is still an object, but instead of classes, interfaces, and abstract classes, we have tagged unions,
+which is the only way to achieve polymorphism.
 
-So basically niva is types, unions and methods for them. 
+So basically niva is types, unions, and methods for them. There are no functions.
 
 On an imaginary graph of complexity, I would put it here:
 Go < Niva < Java < Kotlin < Scala
@@ -23,7 +26,7 @@ Links:
 
 #### Variable
 Variables are immutable by default.
-There is no keyword for declarating a variable.
+There is no keyword for declaring a variable.
 
 ```Scala
 // this is a comment
@@ -33,7 +36,7 @@ boolean = true
 char = 'a'
 float = 3.14f
 double = 3.14
-mutltilineStr = """
+mutltiLineStr = """
 qwf ars zxc \n \t "qwf"
 """
 explicit_type::Int = 5
@@ -42,17 +45,56 @@ mut x = 5
 x <- 6 // mutate
 ```
 
-
-#### Type
-
+#### Messages
 ```Scala
-type Square side: Int
-type Person
-    name: String
-    age: Int
+// hello world is one liner
+"Hello world" echo // echo is a message for String obj
+
+
+// There are 3 types of messages
+1 inc // 2         unary 
+1 + 2 // 3         binary
+"abc" at: 0 // 'a' keyword
+
+
+// they can be chained
+1 inc inc inc dec // 3
+1 + 1 + 2 - 3 // 1
+1 to: 3 do: [it echo] // 1 2 3
+// the last one here to:do: is a single message
+// to chain 2 keyword message you need comma `,`
+"123456" drop: 1, dropLast: 2 // "234" 
+
+// or mixed
+1 inc + 3 dec - "abc" count // 2 + 2 - 3 -> 1
+"123" + "456" drop: 1 + 1   // "123456" drop: 2 -> "3456"
+
+// everything except type and msg declarations are message sends in niva
+// for example `if` is a message for Boolean object that takes lambda
+1 > 2 ifTrue: ["wow" echo]
+// expression
+base = 1 > 2 ifTrue: ["heh"] ifFalse: ["qwf"]
+// same for while
+mut q = 0
+[q > 10] whileTrue: [q <- q inc]
+// all of this is zero cost because of inlining at compile time
 ```
 
+#### Type
+New lines are not significant in niva  
+Type declaration looks like keyword message for type
+```Scala
+type Square side: Int
+
+type Person
+  name: String
+  age: Int
+```
+
+
+
 #### Create instance
+Object creation is just a keyword message with all fields
 ```Scala
 square = Square side: 42
 alice = Person name: "Alice" age: 24
@@ -62,9 +104,9 @@ alice = Person name: "Alice" age: 24
 ```
 
 #### Access fields
-Getting fields is the same as sending message with its name to object 
+Getting fields is the same as sending a unary message with its name to the object 
 ```Scala
-// get age, add 1 to it and print
+// get age, add 1 and print it
 alice age inc echo // 25
 ```
 
@@ -105,7 +147,6 @@ p2 = Point atStart
 // constructor is just a usual message, so it can have params
 constructor Point y::Int = Point x: 0 y: y
 p3 = Point y: 20 // x: 0 y: 20
-
 ```
 
 
@@ -159,15 +200,15 @@ y echo // 2
 
 ```Scala
 union Shape =
-    | Rectangle width: Int height: Int
-    | Circle    radius: Int
+  | Rectangle width: Int height: Int
+  | Circle    radius: Int
     
 constructor Float pi = 3.14
 
 // match on this(Shape)
 Shape getArea -> Float = | this 
-    | Rectangle => width * height |> toFloat
-    | Circle => Float pi * radius * radius
+  | Rectangle => width * height |> toFloat
+  | Circle => Float pi * radius * radius
     
 // its exhaustive, so when u add new branch 
 // all the matches will become errors until all cases processed
@@ -197,14 +238,13 @@ e = x unpackOrValue: -1
 
 #### Handling the error
 ```Scala
+// exit the program with stack trace
 x = file read orPANIC
 x = file read orValue: "no file"
 ```
-Look for more in [Error handling](https://gavr123456789.github.io/niva-site/error-handling.html)
+Errors works like effects, look for more in [Error handling](https://gavr123456789.github.io/niva-site/error-handling.html)
 
 ## Misc
-
-
 
 #### Local arg names
 ```Scala
@@ -215,11 +255,12 @@ Int from: x::Int to: y::Int = this + x + y
 ```Scala
 Person foo = [
     .bar
-    this bar // same thign
+    this bar // same thing
 ]
 ```
 
 #### Compile time reflection
+You can get string representation of any argument from call site.
 ```Scala
 Foo bar::Int baz::String = [
     // getting string representation from call side
