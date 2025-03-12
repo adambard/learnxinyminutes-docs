@@ -41,6 +41,11 @@ qwf ars zxc \n \t "qwf"
 """
 explicit_type::Int = 5
 
+
+list = {1 2 3}  
+set = #(1 2 3) 
+map = #{1 'a' 2 'b'} 
+
 mut x = 5
 x <- 6 // mutate
 ```
@@ -82,7 +87,7 @@ mut q = 0
 
 #### Type
 New lines are not significant in niva  
-Type declaration looks like keyword message for type
+Type declaration looks like a keyword message for type
 ```Scala
 type Square side: Int
 
@@ -112,7 +117,7 @@ alice age inc echo // 25
 
 #### Method for type:  
 Everything is an object, just like in Smalltalk, so everything can have a method declared.   
-Here, we add a `double` method to `Int` and then use it inside the `perimeter` method of `Square`.
+Here, we add a `double` method to `Int` and then use it inside the `perimeter` method of `Square`.  
 
 ```Scala
 Int double = this + this
@@ -120,18 +125,29 @@ Square perimeter = side double
 
 square = Square side: 42
 square perimeter // call
+
+
+// explicit return type
+Int double2 -> Int = this * 2
+
+// with body
+Int double3 -> Int = [
+    result = this * 2
+    ^ result // ^ is return
+]
 ```
 
 
-#### Messages with many args
+#### Keyword message declaration
 ```Scala
 type Range from: Int to: Int
+// keyword message with one arg `to`
 Int to::Int = Range from: this to: to
 
 1 to: 2 // Range
 ```
 #### Type constructor
-Its like a message for type itself instead of instance
+It's like a message for type itself instead of instance
 ```Scala
 constructor Float pi = 3.14
 x = Float pi // 3.14
@@ -151,15 +167,9 @@ p3 = Point y: 20 // x: 0 y: 20
 
 
 #### Conditions
-=> is syntax sugar for ifTrue message, since conditions is pretty common
+=> is syntax sugar for ifTrue message, since conditions are pretty common
 ```Scala
-// syntax sugar
-1 < 2 => "yay" echo
-// everything is message send(this is free because of lambda-inlining)
 1 < 2 ifTrue: ["yay" echo]
-
-// with else branch
-1 > 2 => "yay" echo |=> "oh no" echo
 
 1 > 2 ifTrue: ["yay" echo] ifFalse: ["oh no" echo]
 ```
@@ -196,9 +206,12 @@ y = | "b"
 y echo // 2
 ```
 
-#### Unions
+#### Tagged unions
 
 ```Scala
+union Color = Red | Blue | Green
+
+// branches can have fields
 union Shape =
   | Rectangle width: Int height: Int
   | Circle    radius: Int
@@ -217,21 +230,36 @@ Shape getArea -> Float = | this
 #### Collections 
 ```Scala
 // commas are optional
-list = {1 2 3}
+list = {1 2 3} 
 map = #{'a' 1 'b' 2}
 map2 = #{'a' 1, 'b' 2, 'c' 3}
 set = #(1 2 3)
 
+// default actions
+{1 2 3 4 5} 
+  map: [it inc], 
+  filter: [it % 2 == 0],
+  forEach: [it echo] // 2 4 6
+
+// iteration on map
+map forEach: [key, value -> 
+  key echo 
+  value echo
+]
 ```
 
 #### Nullability
+Same as in Kotlin or Swift
 ```Scala
 x::Int? = null
 q = x unpackOrPANIC
+
 // do something if its not null
 x unpack: [it echo]
+
 // same but expression with backup value
 w = x unpack: [it inc] or: -1
+
 // just unpack or backup value
 e = x unpackOrValue: -1
 ```
