@@ -1,12 +1,10 @@
 ---
-language: GDScript
 contributors:
     - ["Wichamir", "https://github.com/Wichamir/"]
     - ["zacryol", "https://github.com/zacryol"]
 translators:
     - ["lele25811", "https://github.com/lele25811"]
-filename: learngdscript-it.gdscript
-lang: it-it
+filename: learngdscript-it.gd
 ---
 
 GDScript un linguaggio di scripting dinamicamente e staticamente
