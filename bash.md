@@ -231,7 +231,7 @@ ls -t # Sorts the directory contents by last-modified date (descending)
 ls -R # Recursively `ls` this directory and all of its subdirectories
 
 # Results (stdout) of the previous command can be passed as input (stdin) to the next command
-# using a pipe |. Commands chained in this way are called a "pipeline", and are run concurrently.
+# using a pipe |. Commands chained in this way are called a "pipeline", and are run sequentially.
 # The `grep` command filters the input with provided patterns.
 # That's how we can list .txt files in the current directory:
 ls -l | grep "\.txt"
