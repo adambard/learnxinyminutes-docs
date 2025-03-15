@@ -134,7 +134,7 @@ POP2 ( pop a short )
 
 #3a #30
 @loop
-	DUP EMIT ( print "123456789" to console )
+	DUP EMIT ( print "0123456789" to console )
 	INC GTHk ,loop JCN
 POP2
 
