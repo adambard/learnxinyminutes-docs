@@ -55,6 +55,7 @@ list = {1 2 3}
 set = #(1 2 3) 
 map = #{1 'a' 2 'b'} 
 
+// declare a mutable variable
 mut x = 5
 x <- 6 // mutate
 ```
