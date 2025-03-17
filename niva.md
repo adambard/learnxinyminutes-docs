@@ -1,6 +1,6 @@
 ---
 name: niva
-filename: learnniva.niva
+filename: main.niva
 contributors:
     - ["gavr", "https://github.com/gavr123456789"]
 ---
@@ -21,6 +21,14 @@ Links:
 - [GitHub](https://github.com/gavr123456789/Niva)
 - [LSP](https://github.com/gavr123456789/vaLSe)
 - [VSC plugin](https://github.com/gavr123456789/niva-vscode-bundle)
+
+Install:
+```bash
+git clone https://github.com/gavr123456789/Niva.git
+cd Niva
+./gradlew buildJvmNiva
+# LSP here https://github.com/gavr123456789/niva-vscode-bundle
+```
 
 ## The Basics
 
@@ -175,8 +183,9 @@ p3 = Point y: 20 // x: 0 y: 20
 ```
 
 #### Cycles
-There is no special syntax for cycles, its just keyword messages that takes codeblocs as parameters.  
-(its zero cost thanks for inlining)
+There is no special syntax for cycles.
+It's just keyword messages that take codeblocks as parameters.  
+(it's zero cost thanks for inlining)
 ```Scala
 {1 2 3} forEach: [ it echo ]
 1..10 forEach: [ it echo ]
@@ -270,7 +279,7 @@ e = x unpackOrValue: -1
 x = file read orPANIC
 x = file read orValue: "no file"
 ```
-Errors works like effects, look for more in [Error handling](https://gavr123456789.github.io/niva-site/error-handling.html)
+Errors work like effects, look for more in [Error handling](https://gavr123456789.github.io/niva-site/error-handling.html)
 
 ## Misc
 
@@ -288,7 +297,7 @@ Person foo = [
 ```
 
 #### Compile time reflection
-You can get string representation of any argument from call site.
+You can get string representation of any argument from a call site.
 ```Scala
 Foo bar::Int baz::String = [
     // getting string representation from call side
