@@ -55,6 +55,12 @@ a multi-line comment with the # character.
 3 | 5 #=> 7
 3 ^ 5 #=> 6
 
+# Overload bitwise operators to perform
+# set operations
+[1,2] & [2,3,4] #=> [2]
+[1,2] | [2,3,4] #=> [1,2,3,4]
+[1,2] ^ [2,3,4] #=> [1,3,4]
+
 # Arithmetic is just syntactic sugar
 # for calling a method on an object
 1.+(3) #=> 4
@@ -551,6 +557,9 @@ dwight.name #=> "Dwight K. Schrute"
 
 # Calling of a class method
 Human.say('Hi') #=> "Hi"
+
+# Tip: Use .inspect to see instance with instance variables
+puts jim.inspect #=> #<Human:0x000058b3c7f0c7a0 @name="Jim Halpert", @age=0>
 
 # Variable's scopes are defined by the way we name them.
 # Variables that start with $ have global scope.
