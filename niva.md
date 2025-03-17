@@ -6,16 +6,24 @@ contributors:
 ---
 
 ## Intro
-Niva is a simple language that takes a lot of inspiration from Smalltalk.
-But leaning towards the functional side.
-Everything is still an object, but instead of classes, interfaces, and abstract classes, we have tagged unions,
-which is the only way to achieve polymorphism.
+Niva is a simple language that takes a lot of inspiration from Smalltalk.  
+But leaning towards the functional side and static typed.
+Everything is still an object, but instead of classes, interfaces, inheritance, and abstract classes,  
+we have tagged unions, which is the only way to achieve polymorphism.
 
-So basically niva is types, unions, and methods for them. There are no functions.
 
-On an imaginary graph of complexity, I would put it here:
-Go < Niva < Java < Kotlin < Scala
+For example, everything except the declaration is sending messages to objects.  
+`1 + 2` is not a + operator, but a `... + Int` message for `Int` object.
+(ofc there are no extra costs for that)   
 
+C-like: `1.inc()`  
+Niva: `1 inc`  
+
+So basically niva is types, unions, and methods for them. 
+There are no functions.  
+On an imaginary graph of complexity, I would put it here:  
+Go < Niva < Java < Kotlin < Scala  
+  
 Links:
 - [Site](https://gavr123456789.github.io/niva-site/reference.html)
 - [GitHub](https://github.com/gavr123456789/Niva)
@@ -34,7 +42,7 @@ cd Niva
 
 #### Variable
 Variables are immutable by default.
-There is no keyword for declaring a variable.
+There is no special keyword for declaring a variable.
 
 ```Scala
 // this is a comment
