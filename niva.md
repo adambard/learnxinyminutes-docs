@@ -208,7 +208,7 @@ c <- 3 // reset c
     c echo // 3 2 1
 ]
 ```
-`whileTrue:` is a message for codeblock of the type: 
+`whileTrue:` is a message for lambda object of the type: 
 `[ -> Boolean] whileTrue::[ -> Unit]`
 
 #### Matching
@@ -322,15 +322,21 @@ Person foo = [
 #### Compile time reflection
 You can get string representation of any argument from a call site.
 ```Scala
-Foo bar::Int baz::String = [
+Int bar::Int baz::String = [
     // getting string representation from call side
     a = Compiler getName: 0
     b = Compiler getName: 1
     c = Compiler getName: 2
-    a echo
-    b echo
-    c echo
+    a echo // 1 + 1
+    b echo // variable
+    c echo // "str"
 ]
+
+variable = 42
+// call side
+1 + 1 
+    bar: variable 
+    baz: "str"
 ```
 
 Links:
