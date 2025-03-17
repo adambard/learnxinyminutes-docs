@@ -14,21 +14,14 @@ we have tagged unions, which is the only way to achieve polymorphism.
 
 For example, everything except the declaration is sending messages to objects.  
 `1 + 2` is not a + operator, but a `... + Int` message for `Int` object.
-(ofc there are no extra costs for that)   
+(there are no extra costs for that)   
 
 C-like: `1.inc()`  
 Niva: `1 inc`  
 
-So basically niva is types, unions, and methods for them. 
-There are no functions.  
-On an imaginary graph of complexity, I would put it here:  
-Go < Niva < Java < Kotlin < Scala  
-  
-Links:
-- [Site](https://gavr123456789.github.io/niva-site/reference.html)
-- [GitHub](https://github.com/gavr123456789/Niva)
-- [LSP](https://github.com/gavr123456789/vaLSe)
-- [VSC plugin](https://github.com/gavr123456789/niva-vscode-bundle)
+In essence, niva is highly minimalistic, like its ancestor Smalltalk.  
+It introduces types, unions, and associated methods. 
+There are no functions.
 
 Install:
 ```bash
@@ -68,7 +61,7 @@ x <- 6 // mutate
 
 #### Messages
 ```Scala
-// hello world is one liner
+// hello world is a one liner
 "Hello world" echo // echo is a message for String obj
 
 
@@ -83,15 +76,17 @@ x <- 6 // mutate
 1 + 1 + 2 - 3 // 1
 1 to: 3 do: [it echo] // 1 2 3
 // the last one here to:do: is a single message
-// to chain 2 keyword message you need comma `,`
+// to chain 2 keyword messages you need to wrap it in parentheses
+("123456" drop: 1) dropLast: 2 // "234" 
+the comma `,` is syntactic sugar for the same effect
 "123456" drop: 1, dropLast: 2 // "234" 
 
-// or mixed
+// you can mix them
 1 inc + 3 dec - "abc" count // 2 + 2 - 3 -> 1
 "123" + "456" drop: 1 + 1   // "123456" drop: 2 -> "3456"
 
-// everything except type and msg declarations are message sends in niva
-// for example `if` is a message for Boolean object that takes lambda
+// everything except type and message declarations are message sends in niva
+// for example `if` is a message for Boolean object that takes a lambda
 1 > 2 ifTrue: ["wow" echo]
 // expression
 base = 1 > 2 ifTrue: ["heh"] ifFalse: ["qwf"]
@@ -103,7 +98,7 @@ mut q = 0
 
 #### Type
 New lines are not significant in niva  
-Type declaration looks like a keyword message for type
+Type declarations look like keyword messages consisting of fields and types
 ```Scala
 type Square side: Int
 
@@ -112,10 +107,8 @@ type Person
   age: Int
 ```
 
-
-
 #### Create instance
-Object creation is just a keyword message with all fields
+Creating an object is the same keyword message as when declaring it, but with values in place of types.
 ```Scala
 square = Square side: 42
 alice = Person name: "Alice" age: 24
@@ -163,7 +156,7 @@ Int to::Int = Range from: this to: to
 1 to: 2 // Range
 ```
 #### Type constructor
-It's like a message for type itself instead of instance
+A type constructor functions as a message for the type itself rather than to a specific instance.
 ```Scala
 constructor Float pi = 3.14
 x = Float pi // 3.14
@@ -183,25 +176,38 @@ p3 = Point y: 20 // x: 0 y: 20
 
 
 #### Conditions
-=> is syntax sugar for ifTrue message, since conditions are pretty common
+If, like everything else, is the usual sending of a message to a Boolean object.  
+It takes one or two lambda arguments. 
 ```Scala
+false ifTrue: ["yay" echo]
 1 < 2 ifTrue: ["yay" echo]
-
 1 > 2 ifTrue: ["yay" echo] ifFalse: ["oh no" echo]
+
+// `ifTrue:ifFalse:` message can be used as expression
+str = 42 % 2 == 0 
+    ifTrue: ["even"]
+    ifFalse: ["odd"]
+// str == "even"
 ```
 
 #### Cycles
-There is no special syntax for cycles.
+There is no special syntax for cycles.  
 It's just keyword messages that take codeblocks as parameters.  
 (it's zero cost thanks for inlining)
 ```Scala
-{1 2 3} forEach: [ it echo ]
+{1 2 3} forEach: [ it echo ] // 1 2 3
 1..10 forEach: [ it echo ]
 
 mut c = 10
 [c > 0] whileTrue: [ c <- c dec ]
+
+c <- 3 // reset c
+[c > 0] whileTrue: [ 
+    c <- c dec 
+    c echo // 3 2 1
+]
 ```
-`whileTrue` is a message for codeblock of type: 
+`whileTrue:` is a message for codeblock of the type: 
 `[ -> Boolean] whileTrue::[ -> Unit]`
 
 #### Matching
@@ -230,18 +236,24 @@ union Color = Red | Blue | Green
 
 // branches can have fields
 union Shape =
-  | Rectangle width: Int height: Int
-  | Circle    radius: Int
+    | Rectangle width: Int height: Int
+    | Circle    radius: Double
     
-constructor Float pi = 3.14
+constructor Double pi = 3.14
+Double square = this * this
 
 // match on this(Shape)
-Shape getArea -> Float = | this 
-  | Rectangle => width * height |> toFloat
-  | Circle => Float pi * radius * radius
+Shape getArea -> Double = 
+    | this 
+    | Rectangle => width * height, toDouble
+    | Circle => Double pi * radius square
     
-// its exhaustive, so when u add new branch 
+// There is exhaustiveness checking, so when you add a new branch 
 // all the matches will become errors until all cases processed
+
+Shape getArea -> Double = | this 
+    | Rectangle => width * height, toDouble 
+// ERROR: Not all possible variants have been checked (Circle)
 ```
 
 #### Collections 
@@ -252,7 +264,7 @@ map = #{'a' 1 'b' 2}
 map2 = #{'a' 1, 'b' 2, 'c' 3}
 set = #(1 2 3)
 
-// default actions
+// common collection operations
 {1 2 3 4 5} 
   map: [it inc], 
   filter: [it % 2 == 0],
@@ -266,15 +278,17 @@ map forEach: [key, value ->
 ```
 
 #### Nullability
-Same as in Kotlin or Swift
+By default, variables cannot be assigned a null value.  
+To allow this, nullable types are used, indicated by a question mark at the end of the type.  
+You may already be familiar with this concept from TypeScript, Kotlin, or Swift.
 ```Scala
 x::Int? = null
 q = x unpackOrPANIC
 
-// do something if its not null
+// do something if it's not null
 x unpack: [it echo]
 
-// same but expression with backup value
+// same but provide a backup value
 w = x unpack: [it inc] or: -1
 
 // just unpack or backup value
@@ -317,3 +331,9 @@ Foo bar::Int baz::String = [
     c echo
 ]
 ```
+
+Links:
+- [Site](https://gavr123456789.github.io/niva-site/reference.html)
+- [GitHub](https://github.com/gavr123456789/Niva)
+- [LSP](https://github.com/gavr123456789/vaLSe)
+- [VSC plugin](https://github.com/gavr123456789/niva-vscode-bundle)
