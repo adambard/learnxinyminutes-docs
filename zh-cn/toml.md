@@ -141,11 +141,11 @@ array5 = [
 # 在它下方，直至下一个表头或文件结束，都是这个表的键值对。
 # 表不保证保持键值对的指定顺序。
 [table-1]
-key1 = "some string"
+key1 = "一些字符串"
 key2 = 123
 
 [table-2]
-key1 = "another string"
+key1 = "另一些字符串"
 key2 = 456
 
 # 裸键中禁止使用点，因为点用于表示嵌套表。
@@ -164,10 +164,10 @@ type = "pug"
 
 # 你不必层层完整地写出你不想写的所有途径的父表。
 # TOML 知道该怎么办。 
-# [x] you
-# [x.y] don't
-# [x.y.z] need these
-[x.y.z.w] # for this to work
+# [x] 你
+# [x.y] 不需要
+# [x.y.z] 这么做
+[x.y.z.w] # 来让这行得通
 
 # 只要父表还没有被直接定义，你依然可以
 # 定义父表及其未定义的键值对。
@@ -230,9 +230,9 @@ emptyTableAreAllowed = true
 [[products]]
 
 [[products]]
-name = "Nail"
+name = "奈尔"
 sku = 284758393
-color = "gray"
+color = "灰色"
 ```
 
 等价于 JSON:
@@ -241,15 +241,15 @@ color = "gray"
 { 
   "products": [
     {
-      "name": "array of table",
+      "name": "表数组",
       "sku": 7385594937,
       "emptyTableAreAllowed": true
     },
     {},
     {
-      "name": "Nail",
+      "name": "奈尔",
       "sku": 284758393,
-      "color": "gray"
+      "color": "灰色"
     }
   ]
 }
@@ -260,26 +260,26 @@ color = "gray"
 # 子表会从属于在其上最近的表。
 
 [[fruit]]
-  name = "apple" # I am a property in fruit table/map
+  name = "苹果" # 我是 fruit 表数组中第一个元素的属性
 
   [fruit.geometry]
-    shape = "round"
-    note = "I am a property in geometry table/map"
+    shape = "圆"
+    note = "我是子表 geometry 中的一个属性"
 
   [[fruit.color]]
-    name = "red"
-    note = "I am an array item in apple fruit's table/map"
+    name = "红"
+    note = "我是苹果水果表下颜色数组元素的属性"
 
   [[fruit.color]]
-    name = "green"
-    note = "I am in the same array as red"
+    name = "绿"
+    note = "我和红在同一个表数组中"
 
 [[fruit]]
-  name = "banana"
+  name = "香蕉"
 
   [[fruit.color]]
-    name = "yellow"
-    note = "I am an array item in banana fruit's table/map"
+    name = "黄"
+    note = "我是香蕉水果表下颜色数组元素的属性
 ```
 
 等价于 JSON:
@@ -288,17 +288,17 @@ color = "gray"
 {
   "fruit": [
     {
-      "name": "apple",
-      "geometry": { "shape": "round", "note": "..."},
+      "name": "苹果",
+      "geometry": { "shape": "圆", "note": "..."},
       "color": [
-        { "name": "red", "note": "..." },
-        { "name": "green", "note": "..." }
+        { "name": "红", "note": "..." },
+        { "name": "绿", "note": "..." }
       ]
     },
     {
-      "name": "banana",
+      "name": "香蕉",
       "color": [
-        { "name": "yellow", "note": "..." }
+        { "name": "黄", "note": "..." }
       ]
     }
   ]
