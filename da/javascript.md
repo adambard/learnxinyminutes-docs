@@ -19,15 +19,15 @@ uafhængigt kørselsmiljø til Googles Chrome V8-motor, bliver mere og mere popu
 
 ```javascript
 // Enkeltlinje kommentarer starter med to skråstreger.
-/_ Flerlinje kommentarer starter med skråstreg-stjerne,
-og slutter med stjerne-skråstreg _/
+/* Flerlinje kommentarer starter med skråstreg-stjerne,
+   og slutter med stjerne-skråstreg */
 
 // Udsagn kan afsluttes med ;
-doStuff();
+gørNoget();
 
-// ... men de behøver ikke at være der, da semikoloner automatisk indsættes
+// ... men de behøver ikke at være det, da semikoloner automatisk indsættes
 // hvor der er en ny linje, undtagen i visse tilfælde.
-doStuff()
+gørNoget();
 
 // Da disse tilfælde kan forårsage uventede resultater, vil vi fortsætte med at bruge
 // semikoloner i denne guide.
@@ -45,7 +45,7 @@ doStuff()
 1 + 1; // = 2
 0.1 + 0.2; // = 0.30000000000000004
 8 - 1; // = 7
-10 \* 2; // = 20
+10 * 2; // = 20
 35 / 5; // = 7
 
 // Inklusiv ujævn division.
@@ -57,11 +57,11 @@ doStuff()
 18.5 % 7; // = 4.5
 
 // Bitvise operationer virker også; når du udfører en bitvis operation, konverteres din float
-// til et signeret heltal _op til_ 32 bits.
+// til et signeret heltal *op til* 32 bits.
 1 << 2; // = 4
 
 // Præcedens håndhæves med parenteser.
-(1 + 3) \* 2; // = 8
+(1 + 3) * 2; // = 8
 
 // Der er tre specielle ikke-et-rigtigt-tal værdier:
 Infinity; // resultat af f.eks. 1/0
@@ -73,8 +73,8 @@ true;
 false;
 
 // Strenge oprettes med ' eller ".
-'abc';
-"Hello, world";
+("abc");
+("Hej, verden!");
 
 // Negation bruger ! symbolet
 !true; // = false
@@ -95,11 +95,11 @@ false;
 2 >= 2; // = true
 
 // Strenge sammenkædes med +
-"Hello " + "world!"; // = "Hello world!"
+"Hej " + "verden!"; // = "Hej verden!"
 
 // ... hvilket virker med mere end bare strenge
 "1, 2, " + 3; // = "1, 2, 3"
-"Hello " + ["world", "!"]; // = "Hello world,!"
+"Hej " + ["verden", "!"]; // = "Hej verden,!"
 
 // ... hvilket kan resultere i nogle underlige adfærd...
 13 + !0; // 14
@@ -117,13 +117,13 @@ null == undefined; // = true
 null === undefined; // = false
 
 // Du kan tilgå tegn i en streng med `charAt`
-"This is a string".charAt(0); // = 'T'
+"Denne streng er god".charAt(0); // = 'D'
 
-// ... eller bruge `substring` til for at få større dele.
-"Hello world".substring(0, 5); // = "Hello"
+// ... eller bruge `substring` for at få større dele.
+"Hej verden".substring(0, 3); // = "Hej"
 
 // `length` er en egenskab, så brug ikke ().
-"Hello".length; // = 5
+"Hej".length; // = 3
 
 // Der er også `null` og `undefined`.
 null; // bruges til at angive en bevidst ikke-værdi
@@ -139,290 +139,292 @@ undefined; // bruges til at angive at en værdi ikke er til stede i øjeblikket 
 // Variable deklareres med `var` nøgleordet. JavaScript er dynamisk
 // typet, så du behøver ikke at angive typen. Tildeling bruger et enkelt `=`
 // tegn.
-var someVar = 5;
+var nogleVar = 5;
 
 // Hvis du udelader var nøgleordet, får du ikke en fejl...
-someOtherVar = 10;
+andenVar = 10;
 
 // ... men din variabel vil blive oprettet i det globale scope, ikke i det scope
 // du definerede den i.
 
 // Variable deklareret uden at blive tildelt er sat til undefined.
-var someThirdVar; // = undefined
+var tredjeVar; // = undefined
 
 // Hvis du vil deklarere et par variable, kan du bruge et komma
 // separator
-var someFourthVar = 2, someFifthVar = 4;
+var fjerdeVar = 2,
+  femteVar = 4;
 
 // Der er en kortform for at udføre matematiske operationer på variable:
-someVar += 5; // tilsvarende someVar = someVar + 5; someVar er nu 10
-someVar \*= 10; // nu er someVar 100
+nogleVar += 5; // tilsvarende nogleVar = nogleVar + 5; nogleVar er nu 10
+nogleVar *= 10; // nu er nogleVar 100
 
 // og en endnu kortere form for at tilføje eller trække 1
-someVar++; // nu er someVar 101
-someVar--; // tilbage til 100
+nogleVar++; // nu er nogleVar 101
+nogleVar--; // tilbage til 100
 
 // Arrays er ordnede lister af værdier, af enhver type.
-var myArray = ["Hello", 45, true];
+var mitArray = ["Hej", 45, true];
 
 // Deres medlemmer kan tilgås ved hjælp af firkantede parenteser subscript syntaks.
 // Array indekser starter ved nul.
-myArray[1]; // = 45
+mitArray[1]; // = 45
 
 // Arrays er mutable og af variabel længde.
-myArray.push("World");
-myArray.length; // = 4
+mitArray.push("Verden");
+mitArray.length; // = 4
 
 // Tilføj/Ændr ved specifik indeks
-myArray[3] = "Hello";
+mitArray[3] = "Hej";
 
 // Tilføj og fjern element fra fronten eller bagsiden af et array
-myArray.unshift(3); // Tilføj som det første element
-someVar = myArray.shift(); // Fjern første element og returner det
-myArray.push(3); // Tilføj som det sidste element
-someVar = myArray.pop(); // Fjern sidste element og returner det
+mitArray.unshift(3); // Tilføj som det første element
+nogleVar = mitArray.shift(); // Fjern første element og returner det
+mitArray.push(3); // Tilføj som det sidste element
+nogleVar = mitArray.pop(); // Fjern sidste element og returner det
 
 // Sammenføj alle elementer i et array med semikolon
-var myArray0 = [32,false,"js",12,56,90];
-myArray0.join(";"); // = "32;false;js;12;56;90"
+var mitArray0 = [32, false, "js", 12, 56, 90];
+mitArray0.join(";"); // = "32;false;js;12;56;90"
 
 // Få subarray af elementer fra indeks 1 (inkluderet) til 4 (ekskluderet)
-myArray0.slice(1,4); // = [false,"js",12]
+mitArray0.slice(1, 4); // = [false, "js", 12]
 
 // Fjern 4 elementer startende fra indeks 2, og indsæt der strenge
-// "hi","wr" og "ld"; returner fjernet subarray
-myArray0.splice(2,4,"hi","wr","ld"); // = ["js",12,56,90]
-// myArray0 === [32,false,"hi","wr","ld"]
+// "hej", "ver" og "den"; returner fjernet subarray
+mitArray0.splice(2, 4, "hej", "ver", "den"); // = ["js", 12, 56, 90]
+// mitArray0 === [32, false, "hej", "ver", "den"]
 
 // JavaScripts objekter svarer til "ordbøger" eller "maps" i andre
 // sprog: en uordnet samling af nøgle-værdi par.
-var myObj = {key1: "Hello", key2: "World"};
+var mitObj = { nøgle1: "Hej", nøgle2: "Verden" };
 
 // Nøgler er strenge, men citationstegn er ikke påkrævet, hvis de er et gyldigt
 // JavaScript identifikator. Værdier kan være af enhver type.
-var myObj = {myKey: "myValue", "my other key": 4};
+var mitObj = { minNøgle: "minVærdi", "min anden nøgle": 4 };
 
 // Objektattributter kan også tilgås ved hjælp af subscript syntaks,
-myObj["my other key"]; // = 4
+mitObj["min anden nøgle"]; // = 4
 
 // ... eller ved hjælp af punkt syntaks, forudsat at nøglen er et gyldigt identifikator.
-myObj.myKey; // = "myValue"
+mitObj.minNøgle; // = "minVærdi"
 
 // Objekter er mutable; værdier kan ændres og nye nøgler tilføjes.
-myObj.myThirdKey = true;
+mitObj.minTredjeNøgle = true;
 
 // Hvis du prøver at tilgå en værdi, der endnu ikke er sat, får du undefined.
-myObj.myFourthKey; // = undefined
+mitObj.minFjerdeNøgle; // = undefined
 
 ///////////////////////////////////
 // 3. Logik og Kontrolstrukturer
 
 // `if` strukturen virker som du ville forvente.
-var count = 1;
-if (count == 3){
-// evalueres hvis count er 3
-} else if (count == 4){
-// evalueres hvis count er 4
+var tæller = 1;
+if (tæller == 3) {
+  // evalueres hvis tæller er 3
+} else if (tæller == 4) {
+  // evalueres hvis tæller er 4
 } else {
-// evalueres hvis det ikke er enten 3 eller 4
+  // evalueres hvis det ikke er enten 3 eller 4
 }
 
 // Det samme gør `while`.
-while (true){
-// En uendelig løkke!
+while (true) {
+  // En uendelig løkke!
 }
 
 // Do-while løkker er som while løkker, undtagen at de altid kører mindst én gang.
-var input;
+var inddata;
 do {
-input = getInput();
-} while (!isValid(input));
+  inddata = hentInddata();
+} while (!erGyldig(inddata));
 
 // `for` løkken er den samme som i C og Java:
 // initialisering; fortsættelsesbetingelse; iteration.
-for (var i = 0; i < 5; i++){
-// vil køre 5 gange
+for (var i = 0; i < 5; i++) {
+  // vil køre 5 gange
 }
 
-// At bryde ud af navngivne løkker ligner Java
-outer:
-for (var i = 0; i < 10; i++) {
-for (var j = 0; j < 10; j++) {
-if (i == 5 && j ==5) {
-break outer;
-// bryder ud af den ydre løkke i stedet for kun den indre
-}
-}
+// Breaking out of labeled loops is similar to Java
+ydre: for (var i = 0; i < 10; i++) {
+  for (var j = 0; j < 10; j++) {
+    if (i == 5 && j == 5) {
+      break ydre;
+      // bryder ud af den ydre løkke i stedet for kun den indre
+    }
+  }
 }
 
 // for/in udsagnet tillader iteration over egenskaber i et objekt.
-var description = "";
-var person = {fname:"Paul", lname:"Ken", age:18};
-for (var x in person){
-description += person[x] + " ";
-} // description = 'Paul Ken 18 '
+var beskrivelse = "";
+var person = { fornavn: "Paul", efternavn: "Ken", alder: 18 };
+for (var x in person) {
+  beskrivelse += person[x] + " ";
+} // beskrivelse = 'Paul Ken 18 '
 
 // for/of udsagnet tillader iteration over iterable objekter (inklusive de indbyggede String,
 // Array, f.eks. de Array-lignende arguments eller NodeList objekter, TypedArray, Map og Set,
 // og brugerdefinerede iterables).
-var myPets = "";
-var pets = ["cat", "dog", "hamster", "hedgehog"];
-for (var pet of pets){
-myPets += pet + " ";
-} // myPets = 'cat dog hamster hedgehog '
+var mineKæledyr = "";
+var kæledyr = ["kat", "hund", "hamster", "pindsvin"];
+for (var kæledyrItem of kæledyr) {
+  mineKæledyr += kæledyrItem + " ";
+} // mineKæledyr = 'kat hund hamster pindsvin '
 
 // && er logisk og, || er logisk eller
-if (house.size == "big" && house.colour == "blue"){
-house.contains = "bear";
+if (hus.størrelse == "stor" && hus.farve == "blå") {
+  hus.indeholder = "bjørn";
 }
-if (colour == "red" || colour == "blue"){
-// colour er enten rød eller blå
+if (farve == "rød" || farve == "blå") {
+  // farve er enten rød eller blå
 }
 
 // && og || "kortslutter", hvilket er nyttigt til at sætte standardværdier.
-var name = otherName || "default";
+var navn = andetNavn || "standard";
 
 // `switch` udsagnet checker for lighed med `===`.
 // Brug 'break' efter hver case
 // ellers vil cases efter den korrekte også blive udført.
-grade = 'B';
-switch (grade) {
-case 'A':
-console.log("Great job");
-break;
-case 'B':
-console.log("OK job");
-break;
-case 'C':
-console.log("You can do better");
-break;
-default:
-console.log("Oy vey");
-break;
+karakter = "B";
+switch (karakter) {
+  case "A":
+    console.log("Godt arbejde");
+    break;
+  case "B":
+    console.log("OK arbejde");
+    break;
+  case "C":
+    console.log("Du kan gøre det bedre");
+    break;
+  default:
+    console.log("Åh nej");
+    break;
 }
 
 ///////////////////////////////////
 // 4. Funktioner, Scope og Closures
 
 // JavaScript funktioner deklareres med `function` nøgleordet.
-function myFunction(thing){
-return thing.toUpperCase();
+function minFunktion(ting) {
+  return ting.toUpperCase();
 }
-myFunction("foo"); // = "FOO"
+minFunktion("hej"); // = "HEJ"
 
 // Bemærk at værdien, der skal returneres, skal starte på samme linje som
 // `return` nøgleordet, ellers vil du altid returnere `undefined` på grund af
 // automatisk semikolonindsættelse. Vær opmærksom på dette ved brug af Allman stil.
-function myFunction(){
-return // <- semikolon indsættes automatisk her
-{thisIsAn: 'object literal'};
+function andenFunktion() {
+  return; // <- semikolon indsættes automatisk her
+  {
+    detteErEn: "objekt literal";
+  }
 }
-myFunction(); // = undefined
+andenFunktion(); // = undefined
 
 // JavaScript funktioner er første klasses objekter, så de kan tildeles til
 // forskellige variabelnavne og sendes til andre funktioner som argumenter - for
 // eksempel, når man leverer en event handler:
-function myFunction(){
-// denne kode vil blive kaldt om 5 sekunder
+function tidFunktion() {
+  // denne kode vil blive kaldt om 5 sekunder
 }
-setTimeout(myFunction, 5000);
+setTimeout(tidFunktion, 5000);
 // Bemærk: setTimeout er ikke en del af JS sproget, men leveres af browsere
 // og Node.js.
 
 // En anden funktion leveret af browsere er setInterval
-function myFunction(){
-// denne kode vil blive kaldt hvert 5. sekund
+function intervalFunktion() {
+  // denne kode vil blive kaldt hvert 5. sekund
 }
-setInterval(myFunction, 5000);
+setInterval(intervalFunktion, 5000);
 
 // Funktionsobjekter behøver ikke engang at blive deklareret med et navn - du kan skrive
 // en anonym funktionsdefinition direkte i argumenterne til en anden.
-setTimeout(function(){
-// denne kode vil blive kaldt om 5 sekunder
+setTimeout(function () {
+  // denne kode vil blive kaldt om 5 sekunder
 }, 5000);
 
 // JavaScript har funktionsscope; funktioner får deres eget scope, men andre blokke
 // gør ikke.
-if (true){
-var i = 5;
+if (true) {
+  var i = 5;
 }
 i; // = 5 - ikke undefined som du ville forvente i et blok-scopet sprog
 
 // Dette har ført til et almindeligt mønster af "umiddelbart-udførende anonyme
 // funktioner", som forhindrer midlertidige variable i at lække ind i det globale
 // scope.
-(function(){
-var temporary = 5;
-// Vi kan tilgå det globale scope ved at tildele til "det globale objekt", som
-// i en webbrowser altid er `window`. Det globale objekt kan have et
-// andet navn i ikke-browser miljøer som Node.js.
-window.permanent = 10;
+(function () {
+  var midlertidig = 5;
+  // Vi kan tilgå det globale scope ved at tildele til "det globale objekt", som
+  // i en webbrowser altid er `window`. Det globale objekt kan have et
+  // andet navn i ikke-browser miljøer som Node.js.
+  window.permanent = 10;
 })();
-temporary; // rejser ReferenceError
+midlertidig; // rejser ReferenceError
 permanent; // = 10
 
 // En af JavaScripts mest kraftfulde funktioner er closures. Hvis en funktion er
 // defineret inde i en anden funktion, har den indre funktion adgang til alle
 // den ydre funktions variable, selv efter den ydre funktion er afsluttet.
-function sayHelloInFiveSeconds(name){
-var prompt = "Hello, " + name + "!";
-// Indre funktioner placeres i det lokale scope som standard, som om de var
-// deklareret med `var`.
-function inner(){
-alert(prompt);
+function sigHejOmFemSekunder(navn) {
+  var besked = "Hej, " + navn + "!";
+  // Indre funktioner placeres i det lokale scope som standard, som om de var
+  // deklareret med `var`.
+  function indre() {
+    alert(besked);
+  }
+  setTimeout(indre, 5000);
+  // setTimeout er asynkron, så sigHejOmFemSekunder funktionen vil
+  // afslutte øjeblikkeligt, og setTimeout vil kalde indre bagefter. Men
+  // fordi indre er "closed over" sigHejOmFemSekunder, har indre stadig
+  // adgang til `besked` variablen, når den endelig kaldes.
 }
-setTimeout(inner, 5000);
-// setTimeout er asynkron, så sayHelloInFiveSeconds funktionen vil
-// afslutte øjeblikkeligt, og setTimeout vil kalde inner bagefter. Men
-// fordi inner er "closed over" sayHelloInFiveSeconds, har inner stadig
-// adgang til `prompt` variablen, når den endelig kaldes.
-}
-sayHelloInFiveSeconds("Adam"); // vil åbne en popup med "Hello, Adam!" om 5 sekunder
+sigHejOmFemSekunder("Adam"); // vil åbne en popup med "Hej, Adam!" om 5 sekunder
 
 ///////////////////////////////////
 // 5. Mere om Objekter; Konstruktører og Prototyper
 
 // Objekter kan indeholde funktioner.
-var myObj = {
-myFunc: function(){
-return "Hello world!";
-}
+var mitObj = {
+  minFunc: function () {
+    return "Hej verden!";
+  },
 };
-myObj.myFunc(); // = "Hello world!"
+mitObj.minFunc(); // = "Hej verden!"
 
 // Når funktioner tilknyttet et objekt kaldes, kan de tilgå objektet
 // de er tilknyttet ved hjælp af `this` nøgleordet.
-myObj = {
-myString: "Hello world!",
-myFunc: function(){
-return this.myString;
-}
+mitObj = {
+  minStreng: "Hej verden!",
+  minFunc: function () {
+    return this.minStreng;
+  },
 };
-myObj.myFunc(); // = "Hello world!"
+mitObj.minFunc(); // = "Hej verden!"
 
 // Hvad `this` er sat til har at gøre med, hvordan funktionen kaldes, ikke hvor
 // den er defineret. Så vores funktion virker ikke, hvis den ikke kaldes i
 // konteksten af objektet.
-var myFunc = myObj.myFunc;
-myFunc(); // = undefined
+var minFunc = mitObj.minFunc;
+minFunc(); // = undefined
 
 // Omvendt kan en funktion tildeles til objektet og få adgang til det
 // gennem `this`, selvom den ikke var tilknyttet, da den blev defineret.
-var myOtherFunc = function(){
-return this.myString.toUpperCase();
+var minAndenFunc = function () {
+  return this.minStreng.toUpperCase();
 };
-myObj.myOtherFunc = myOtherFunc;
-myObj.myOtherFunc(); // = "HELLO WORLD!"
+mitObj.minAndenFunc = minAndenFunc;
+mitObj.minAndenFunc(); // = "HEJ VERDEN!"
 
 // Vi kan også specificere en kontekst for en funktion at udføre i, når vi kalder den
 // ved hjælp af `call` eller `apply`.
-var anotherFunc = function(s){
-return this.myString + s;
+var endnuEnFunc = function (s) {
+  return this.minStreng + s;
 };
-anotherFunc.call(myObj, " And Hello Moon!"); // = "Hello World! And Hello Moon!"
+endnuEnFunc.call(mitObj, " Og hej måne!"); // = "Hej verden! Og hej måne!"
 
 // `apply` funktionen er næsten identisk, men tager et array som argumentliste.
-anotherFunc.apply(myObj, [" And Hello Sun!"]); // = "Hello World! And Hello Sun!"
+endnuEnFunc.apply(mitObj, [" Og hej sol!"]); // = "Hej verden! Og hej sol!"
 
 // Dette er nyttigt, når man arbejder med en funktion, der accepterer en sekvens af
 // argumenter, og du vil sende et array.
@@ -432,22 +434,17 @@ Math.min.apply(Math, [42, 6, 27]); // = 6
 
 // Men `call` og `apply` er kun midlertidige. Når vi vil have det til at blive ved, kan vi
 // bruge `bind`.
-var boundFunc = anotherFunc.bind(myObj);
-boundFunc(" And Hello Saturn!"); // = "Hello World! And Hello Saturn!"
-
-// `bind` kan også bruges til delvist at anvende (curry) en funktion.
-var product = function(a, b){ return a \* b; };
-var doubler = product.bind(this, 2);
-doubler(8); // = 16
+var bundetFunc = endnuEnFunc.bind(mitObj);
+bundetFunc(" Og hej Saturn!"); // = "Hej verden! Og hej Saturn!"
 
 // Når du kalder en funktion med `new` nøgleordet, oprettes et nyt objekt, og
 // gøres tilgængeligt for funktionen via `this` nøgleordet. Funktioner designet til at blive
 // kaldt sådan kaldes konstruktører.
-var MyConstructor = function(){
-this.myNumber = 5;
+var MinKonstruktør = function () {
+  this.mitTal = 5;
 };
-myNewObj = new MyConstructor(); // = {myNumber: 5}
-myNewObj.myNumber; // = 5
+mitNyeObj = new MinKonstruktør(); // = {mitTal: 5}
+mitNyeObj.mitTal; // = 5
 
 // I modsætning til de fleste andre populære objektorienterede sprog har JavaScript ingen
 // begreb om 'instanser' oprettet fra 'klasse' blueprints; i stedet kombinerer JavaScript
@@ -460,54 +457,54 @@ myNewObj.myNumber; // = 5
 // Nogle JS implementeringer lader dig tilgå et objekts prototype på den magiske
 // egenskab `__proto__`. Selvom dette er nyttigt til at forklare prototyper, er det ikke
 // en del af standarden; vi vil komme til standard måder at bruge prototyper på senere.
-var myObj = {
-myString: "Hello world!"
+var mitObj = {
+  minStreng: "Hej verden!",
 };
-var myPrototype = {
-meaningOfLife: 42,
-myFunc: function(){
-return this.myString.toLowerCase();
-}
+var minPrototype = {
+  livetsBetydning: 42,
+  minFunc: function () {
+    return this.minStreng.toLowerCase();
+  },
 };
-myObj.**proto** = myPrototype;
-myObj.meaningOfLife; // = 42
+mitObj.__proto__ = minPrototype;
+mitObj.livetsBetydning; // = 42
 
 // Dette virker også for funktioner.
-myObj.myFunc(); // = "hello world!"
+mitObj.minFunc(); // = "hej verden!"
 
 // Selvfølgelig, hvis din egenskab ikke er på din prototype, søges prototypens
 // prototype, og så videre.
-myPrototype.**proto** = {
-myBoolean: true
+minPrototype.__proto__ = {
+  minBool: true,
 };
-myObj.myBoolean; // = true
+mitObj.minBool; // = true
 
 // Der er ingen kopiering involveret her; hvert objekt gemmer en reference til sin
 // prototype. Dette betyder, at vi kan ændre prototypen, og vores ændringer vil blive
 // afspejlet overalt.
-myPrototype.meaningOfLife = 43;
-myObj.meaningOfLife; // = 43
+minPrototype.livetsBetydning = 43;
+mitObj.livetsBetydning; // = 43
 
 // for/in udsagnet tillader iteration over egenskaber i et objekt,
 // går op ad prototypekæden, indtil det ser en null prototype.
-for (var x in myObj){
-console.log(myObj[x]);
+for (var x in mitObj) {
+  console.log(mitObj[x]);
 }
-/// udskriver:
-// Hello world!
+// udskriver:
+// Hej verden!
 // 43
-// [Function: myFunc]
+// [Function: minFunc]
 // true
 
 // For kun at overveje egenskaber tilknyttet selve objektet
 // og ikke dets prototyper, brug `hasOwnProperty()` check.
-for (var x in myObj){
-if (myObj.hasOwnProperty(x)){
-console.log(myObj[x]);
+for (var x in mitObj) {
+  if (mitObj.hasOwnProperty(x)) {
+    console.log(mitObj[x]);
+  }
 }
-}
-/// udskriver:
-// Hello world!
+// udskriver:
+// Hej verden!
 
 // Vi nævnte at `__proto__` var ikke-standard, og der er ingen standard måde at
 // ændre prototypen på et eksisterende objekt. Der er dog to måder at
@@ -515,48 +512,48 @@ console.log(myObj[x]);
 
 // Den første er Object.create, som er en nylig tilføjelse til JS, og derfor
 // ikke tilgængelig i alle implementeringer endnu.
-var myObj = Object.create(myPrototype);
-myObj.meaningOfLife; // = 43
+var mitObj = Object.create(minPrototype);
+mitObj.livetsBetydning; // = 43
 
 // Den anden måde, som virker overalt, har at gøre med konstruktører.
-// Konstruktører har en egenskab kaldet prototype. Dette er _ikke_ prototypen af
+// Konstruktører har en egenskab kaldet prototype. Dette er *ikke* prototypen af
 // selve konstruktørfunktionen; i stedet er det prototypen, som nye objekter
 // får, når de oprettes med den konstruktør og new nøgleordet.
-MyConstructor.prototype = {
-myNumber: 5,
-getMyNumber: function(){
-return this.myNumber;
-}
+MinKonstruktør.prototype = {
+  mitTal: 5,
+  hentMitTal: function () {
+    return this.mitTal;
+  },
 };
-var myNewObj2 = new MyConstructor();
-myNewObj2.getMyNumber(); // = 5
-myNewObj2.myNumber = 6;
-myNewObj2.getMyNumber(); // = 6
+var mitNyeObj2 = new MinKonstruktør();
+mitNyeObj2.hentMitTal(); // = 5
+mitNyeObj2.mitTal = 6;
+mitNyeObj2.hentMitTal(); // = 6
 
 // Indbyggede typer som strenge og tal har også konstruktører, der opretter
 // tilsvarende wrapper objekter.
-var myNumber = 12;
-var myNumberObj = new Number(12);
-myNumber == myNumberObj; // = true
+var mitTal = 12;
+var mitTalObj = new Number(12);
+mitTal == mitTalObj; // = true
 
 // Bortset fra at de ikke er præcist tilsvarende.
-typeof myNumber; // = 'number'
-typeof myNumberObj; // = 'object'
-myNumber === myNumberObj; // = false
-if (0){
-// Denne kode vil ikke blive udført, fordi 0 er falsy.
+typeof mitTal; // = 'number'
+typeof mitTalObj; // = 'object'
+mitTal === mitTalObj; // = false
+if (0) {
+  // Denne kode vil ikke blive udført, fordi 0 er falsy.
 }
-if (new Number(0)){
-// Denne kode vil blive udført, fordi wrapped numbers er objekter, og objekter
-// er altid truthy.
+if (new Number(0)) {
+  // Denne kode vil blive udført, fordi wrapped numbers er objekter, og objekter
+  // er altid truthy.
 }
 
 // Dog deler wrapper objekterne og de almindelige indbyggede en prototype, så
 // du kan faktisk tilføje funktionalitet til en streng, for eksempel.
-String.prototype.firstCharacter = function(){
-return this.charAt(0);
+String.prototype.førsteTegn = function () {
+  return this.charAt(0);
 };
-"abc".firstCharacter(); // = "a"
+"abc".førsteTegn(); // = "a"
 
 // Dette faktum bruges ofte i "polyfilling", som er implementering af nyere
 // funktioner i JavaScript i en ældre undergruppe af JavaScript, så de kan
@@ -564,24 +561,25 @@ return this.charAt(0);
 
 // For eksempel nævnte vi, at Object.create ikke er tilgængelig i alle
 // implementeringer endnu, men vi kan stadig bruge det med denne polyfill:
-if (Object.create === undefined){ // overskriv det ikke, hvis det eksisterer
-Object.create = function(proto){
-// lav en midlertidig konstruktør med den rigtige prototype
-var Constructor = function(){};
-Constructor.prototype = proto;
-// brug den derefter til at oprette et nyt, passende prototyperet objekt
-return new Constructor();
-};
+if (Object.create === undefined) {
+  // overskriv det ikke, hvis det eksisterer
+  Object.create = function (proto) {
+    // lav en midlertidig konstruktør med den rigtige prototype
+    var Konstruktør = function () {};
+    Konstruktør.prototype = proto;
+    // brug den derefter til at oprette et nyt, passende prototyperet objekt
+    return new Konstruktør();
+  };
 }
 
 // ES6 Tilføjelser
 
 // "let" nøgleordet tillader dig at definere variable i et leksikalsk scope,
 // i modsætning til et funktionsscope som var nøgleordet gør.
-let name = "Billy";
+let navn = "Billy";
 
 // Variable defineret med let kan tildeles nye værdier.
-name = "William";
+navn = "William";
 
 // "const" nøgleordet tillader dig at definere en variabel i et leksikalsk scope
 // som med let, men du kan ikke tildele værdien igen, når den først er tildelt.
@@ -591,21 +589,21 @@ pi = 4.13; // Du kan ikke gøre dette.
 // Der er en ny syntaks for funktioner i ES6 kendt som "lambda syntaks".
 // Dette tillader funktioner at blive defineret i et leksikalsk scope som med variable
 // defineret af const og let.
-const isEven = (number) => {
-return number % 2 === 0;
+const erLige = (tal) => {
+  return tal % 2 === 0;
 };
-isEven(7); // false
+erLige(7); // false
 
 // Den "tilsvarende" funktion i den traditionelle syntaks ville se sådan ud:
-function isEven(number) {
-return number % 2 === 0;
-};
+function erLigeTraditionel(tal) {
+  return tal % 2 === 0;
+}
 
 // Jeg satte ordet "tilsvarende" i citationstegn, fordi en funktion defineret
 // ved hjælp af lambda syntaksen ikke kan kaldes før definitionen.
 // Følgende er et eksempel på ugyldig brug:
-add(1, 8);
-const add = (firstNumber, secondNumber) => {
-return firstNumber + secondNumber;
+tilføj(1, 8);
+const tilføj = (førsteTal, andetTal) => {
+  return førsteTal + andetTal;
 };
 ```
