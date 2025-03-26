@@ -42,7 +42,7 @@ enum days {SUN, MON, TUE, WED, THU, FRI, SAT};
 // Enumeration values can also be specified
 enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
 // MON gets 2 automatically, TUE gets 3, etc.
-// WED get 99, THU gets 100, FRI gets 101, etc.
+// WED gets 99, THU gets 100, FRI gets 101, etc.
 
 // Import headers with #include
 #include <stdlib.h>
