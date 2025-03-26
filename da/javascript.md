@@ -22,10 +22,10 @@ uafhængigt kørselsmiljø til Googles Chrome V8-motor, bliver mere og mere popu
 /* Flerlinje kommentarer starter med skråstreg-stjerne,
    og slutter med stjerne-skråstreg */
 
-// Udsagn kan afsluttes med ;
+// Udsagn kan afsluttes med ; (semikolon)
 gørNoget();
 
-// ... men de behøver ikke at være det, da semikoloner automatisk indsættes
+// ... men semikoloner behøver ikke at være der, da semikoloner automatisk indsættes
 // hvor der er en ny linje, undtagen i visse tilfælde.
 gørNoget();
 
