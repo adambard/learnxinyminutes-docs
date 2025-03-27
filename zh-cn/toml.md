@@ -1,6 +1,6 @@
 ---
 name: TOML
-filename: learntoml.toml
+filename: learntoml-zh_cn.toml
 contributors:
   - ["Alois de Gouvello", "https://github.com/aloisdg"]
 translators:
