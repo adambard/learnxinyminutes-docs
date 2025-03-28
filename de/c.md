@@ -745,7 +745,7 @@ typedef void (*my_fnp_type)(char *);
 //        Operatoren                 | Assoziativität    //
 //-------------------------------------------------------//
 // () [] -> .                        | linksassoziativ   //
-// ! ~ ++ -- + = *(type)sizeof       | rechtsassoziativ  //
+// ! ~ ++ -- + - *(type)sizeof       | rechtsassoziativ  //
 // * / %                             | linksassoziativ   //
 // + -                               | linksassoziativ   //
 // << >>                             | linksassoziativ   //

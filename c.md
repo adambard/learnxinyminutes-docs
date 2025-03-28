@@ -825,7 +825,7 @@ typedef void (*my_fnp_type)(char *);
 //        Operators                  | Associativity //
 //---------------------------------------------------//
 // () [] -> .                        | left to right //
-// ! ~ ++ -- + = *(type) sizeof      | right to left //
+// ! ~ ++ -- + - *(type) sizeof      | right to left //
 // * / %                             | left to right //
 // + -                               | left to right //
 // << >>                             | left to right //
