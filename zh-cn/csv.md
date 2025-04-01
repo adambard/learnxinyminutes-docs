@@ -1,20 +1,20 @@
 ---
 language: CSV
 contributors:
-  - [Timon Erhart, "https://github.com/turbotimon/"]
+  - [Timon Erhart, 'https://github.com/turbotimon/']
 translators:
-  - [Luca Yu, "https://github.com/AlightSoulmate/"]
+  - [Luca Yu, 'https://github.com/AlightSoulmate/']
 ---
 
 CSV（逗号分隔值）是一种轻量级纯文本表格数据格式，十分适合表格与数据库传输，常用于程序间数据交换。
 
-它具有以下显著特点：
+它具有以下特点：
 
 - 结构简单
 - 直观易读
 - 跨系统兼容性强
 
-"CSV" 这一术语可以指代任何符合以下条件的文本文件：
+在实际应用中，"CSV" 这一术语可以指代任何符合以下条件的文本文件：
 
 - 可被解析为表格数据
 - 使用分隔符分隔字段（列）
@@ -45,9 +45,9 @@ Charlie; 35; 60,00
 
 ## 数据类型
 
-CSV 文件本身不定义数据类型。数字和日期均以纯文本存储。
+CSV 文件本身不定义数据类型，数字和日期均以纯文本存储，具体的解析方式取决于导入该文件的软件。
 
-具体的解析方式取决于导入该文件的软件。通常情况下，数据的解析方式如下：
+通常，数据的解析方式如下：
 
 ```csv
 数据, 解析方式
