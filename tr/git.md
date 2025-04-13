@@ -171,7 +171,7 @@ $ git add HelloWorld.java
 # add a file in a nested dir
 $ git add /path/to/file/HelloWorld.c
 
-# Regular Expression support!
+# Shell glob patterns make it easy to specify multiple files:
 $ git add ./*.java
 
 # You can also add everything in your working directory to the staging area.
