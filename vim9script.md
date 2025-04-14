@@ -7,7 +7,7 @@ contributors:
   - ["LacyGoill", "https://github.com/lacygoill"]
 ---
 
-Vim9Script is a modernized scripting language introduced in Vim 9.0.
+Vim9Script is a modern scripting language introduced in Vim 9.0.
 It improves performance, readability, and structure over legacy Vimscript. 
 Try [vim9-conversion-aid](https://github.com/ubaldot/vim9-conversion-aid) as a starting point to convert legacy Vimscript to Vim9Script.
 
@@ -305,10 +305,24 @@ var result = system('ls')
 echo result
 
 # Run and split into lines
-var lines = systemlist('ls')
+silent var lines = systemlist('ls')
 for line in lines
   echo line
 endfor
+
+# Using :!ls
+:!ls
+
+# Using job_start() callback
+var shell_job: job
+def GotOutput(channel: channel, msg: string)
+  echo msg
+enddef
+# Start a shell in the background.
+shell_job = job_start(["/bin/sh", "-c", "ls"], {
+				out_cb: GotOutput,
+				err_cb: GotOutput
+				})
 
 # Check exit status
 echo v:shell_error
@@ -367,7 +381,7 @@ def DoSomething()
   echo 'Action triggered'
 enddef
 
-nnoremap <silent> <Plug>(MyPluginAction) :<c-u>call <SID>DoSomething()<CR>
+nnoremap <silent> <Plug>(MyPluginAction) <ScriptCmd>DoSomething()<CR>
 nmap <silent> <Leader>a <Plug>(MyPluginAction)
 
 # You can run normal commands from Vim9Script:
@@ -397,7 +411,7 @@ def ToggleFeature()
   g:myplugin_enabled = !get(g:, 'myplugin_enabled', false)
   echo g:myplugin_enabled ? 'Enabled' : 'Disabled'
 enddef
-command! ToggleMyPlugin call ToggleFeature()
+command! ToggleMyPlugin ToggleFeature()
 
 # Create a quickfix list from Git diff
 def GitDiffQuickfix()
