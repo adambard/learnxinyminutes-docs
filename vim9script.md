@@ -49,17 +49,6 @@ echo 'foo' != 'bar'     # true
 echo 'foobar' =~ 'foo'  # true (matches pattern)
 echo 'foobar' !~ 'baz'  # true (does not match pattern)
 
-# Regex Basics:
-# - `.` any char, `*` zero+ times, `\+` one+ times  
-# - `\d` digit, `\w` word char, `^` start, `$` end, `\|` OR
-# Case Sensitivity & Magic Modes
-# - `\c` / `\C`: case-insensitive / case-sensitive  
-# - `\v`: very magic, most chars are special, closer to extended regexes
-# - `\V`: very nomagic, all but \ are literal
-echo 'Foobar' =~ '\cfoo'   # true
-echo 'abc123' =~ '\v\d+'   # true
-echo 'a|b' =~ '\Va|b'      # true
-
 # Logical
 echo true && false  # false
 echo true || false  # true
@@ -89,12 +78,14 @@ l->remove(1)
 var t: tuple<number, string, number> = (1, 'a', 3)
 echo t[1]
 
-# Vim help on scopes: https://vimhelp.org/eval.txt.html#variable-scope
 # Use `g:` for global variables, `b:` for buffer-local, `w:` for window-local, and so on.  
+# Vim help on scopes: https://vimhelp.org/eval.txt.html#variable-scope
+g:global_var = 'I am global'
+
 # - @a accesses the contents of register "a"
 # - $PATH references the environment variable PATH
 # - &l:textwidth gets the buffer‐local value of the textwidth option
-g:global_var = 'I am global'
+echo expand($PATH)
 
 # Dictionaries
 var d: dict<number> = {a: 1, b: 2}
@@ -103,6 +94,14 @@ d.c = 3
 
 # Sets (via dict keys)
 var set = {1: true, 2: true}
+
+# JSON encode/decode
+var data = {'name': 'Vim', 'version': 9}
+var json = json_encode(data)
+echo json
+
+var parsed = json_decode(json)
+echo parsed.name
 
 ####################################################
 ## 3. Control Flow
@@ -161,6 +160,10 @@ def Sum(...args: list<number>): number
   return reduce(args, (x, y) => x + y)
 enddef
 
+# Lambda
+var Square = (x) => x * x
+echo Square(4)
+
 # Define a function that returns a closure capturing a local variable
 def MakeAdder(x: number): func
   # Return a reference to the inner function
@@ -172,6 +175,25 @@ var Add5 = MakeAdder(5)
 
 # Call the closure with 3; result is 8
 echo Add5(3)
+
+# Partial
+def Log(level: string, msg: string)
+  echo $"[{level}] {msg}"
+enddef
+
+var Warn = function('Log', ['WARN'])
+Warn('Disk low')
+
+# Decorator-like
+def LogWrap(F: func): func
+  def wrapper(...args: list<any>): any
+    echo 'Calling'
+    var result = call(F, args)
+    echo 'Done'
+    return result
+  enddef
+  return funcref('wrapper')
+enddef
 
 ####################################################
 ## 5. Classes
@@ -250,33 +272,6 @@ endtry
 throw 'MyError'
 
 ####################################################
-## 9. Advanced Features
-####################################################
-
-# Lambda
-var Square = (x) => x * x
-echo Square(4)
-
-# Partial
-def Log(level: string, msg: string)
-  echo $"[{level}] {msg}"
-enddef
-
-var Warn = function('Log', ['WARN'])
-Warn('Disk low')
-
-# Decorator-like
-def LogWrap(F: func): func
-  def wrapper(...args: list<any>): any
-    echo 'Calling'
-    var result = call(F, args)
-    echo 'Done'
-    return result
-  enddef
-  return funcref('wrapper')
-enddef
-
-####################################################
 ## 10. Testing
 ####################################################
 
@@ -328,22 +323,29 @@ shell_job = job_start(["/bin/sh", "-c", "ls"], {
 echo v:shell_error
 
 ####################################################
-## 12. JSON and Regex
+## 12. Regex
 ####################################################
-
-# JSON encode/decode
-var data = {'name': 'Vim', 'version': 9}
-var json = json_encode(data)
-echo json
-
-var parsed = json_decode(json)
-echo parsed.name
 
 # Regex match
 var s = 'abc123'
 if s =~ '\d\+'
   echo 'Contains digits'
 endif
+
+# Regex Basics:
+#
+# - `.` any char, `*` zero+ times, `\+` one+ times  
+# - `\d` digit, `\w` word char, `^` start, `$` end, `\|` OR
+
+# Case Sensitivity & Magic Modes:
+#
+# - `\c` / `\C`: case-insensitive / case-sensitive  
+# - `\v`: very magic, most chars are special, closer to extended regexes
+# - `\V`: very nomagic, all but \ are literal
+
+echo 'Foobar' =~ '\cfoo'   # true
+echo 'abc123' =~ '\v\d+'   # true
+echo 'a|b' =~ '\Va|b'      # true
 
 # Replace
 var new = substitute('foo bar', 'bar', 'baz', '')
