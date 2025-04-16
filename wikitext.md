@@ -272,7 +272,7 @@ The following lists the differences for each of the 5 main citation templates fr
 `{{cite conference}}`:
 
 * `book-title=` (required) - the name of the proceedings or conference. For example:`book-title=American Astronomical Society 207th Meeting`.
-* `publisher=` - the organisation releasing the proceedings (ACM, IEEE, Springer …).
+* `publisher=` - the organisation releasing the proceedings. For example, `publisher=IEEE`.
 * `location=` - the geographical location of the conference, usually the name of a city.
 * `page=` or `pages=` - See previous list.
 
