@@ -1,7 +1,7 @@
 ---
 name: Wikitext
 contributors:
-    - ["Yuxi Liu", "https://github.com/yuxiliu1995/"]
+    - ["Yuxi Liu", "https://github.com/yuxi-liu-wired"]
 filename: wikitext.md
 ---
 
@@ -200,6 +200,83 @@ The most basic form is a plaintext citation, like `<ref>Author, Title, date, [ur
 One should generally use a templated citation, like `<ref>{{cite web|url=https://example.com/|title=Example|date=2001|access-date=2023}}</ref>`. There are three forms of citation templates: [`cite web`](https://en.wikipedia.org/wiki/Template:Cite_web), [`cite journal`](https://en.wikipedia.org/wiki/Template:Cite_journal), [`cite book`](https://en.wikipedia.org/wiki/Template:Cite_book).
 
 A citation can be named as `<ref name="X">...</ref>`. It can then be invoked as `<ref name="X" />`. The instance `<ref name="X">...</ref>` can go before or after `<ref name="X" />`. Any ordering would render to the same page.
+
+### Detailed information
+
+Some parameters are required, meaning that every templated citation must fill those parameters. Some parameters are "grouped", meaning that if one parameter is filled, then all must be filled. For example, if one of `archive-url=`, `archive-date=` and `url-status=` were filled, then the other two must also be.
+
+The following parameters are required in all citation templates:
+
+* `title=` – Name of the cited item.
+
+If the work is in a foreign language, then the following are strongly recommended:
+
+* `language=` - THe 2-character ISO639-1 language code in which the work is in.
+* `trans-title=` - Title translated to the local language.
+* `script-title` - If the title is in a writing system that is not based on the Latin alphabet. Must be preceded by a 2-character ISO639-1 language code. For example, `script-title=ja:ディープラーニング`.
+
+There are 5 major citation templates: `cite news`, `cite web`, `cite book`, `cite journal`, `cite conference`. For each of these, the following parameters are not necessary to be filled, but strongly recommended:
+
+* `last=` / `first=` (plus `last2=`, `first2=`, etc) – author(s). If the author(s) has a Wikipedia page, then it can be specified via `author-link=`, `author-link2=`, etc. If one wishes to include the middle name, then it should be entered as part of the first name.
+* `date=` – publication or last-update date, in the format of `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`.
+
+If the source is web-accessible currently or in the past, the following are strongly recommended:
+
+* `url=` – direct link.
+* `access-date=` – date you retrieved the `url`.
+* `archive-url=`, `archive-date=`, `url-status=` – web-archive backup and status flag (`live`/`dead`).
+
+Unique identifiers: Many publications, especially academic ones, have specialized unique identifiers. These should be filled if they exist. The most common ones are:
+
+| name | stands for | commonly used by | example |
+|----|----|----|----|
+| `isbn=` | International Standard Book Number (either ISBN-10 or ISBN-13)  | Books published after 1970 | `isbn=9783161484100`  |
+| `oclc=`  | OCLC Control Number  | Books appearing in WorldCat database | `oclc=9355469`  |
+| `asin=`  | Amazon Standard Identification Number | Amazon's catalog. Should only be used when standard identifiers like ISBN are unavailable | `asin=B00005N5PF` |
+| `doi=` | Digital Object Identifier | Academic publications | `doi=10.1038/news070508-7` |
+| `citeseerx=` | CiteSeerX id | papers | Academic papers | `citeseerx=10.1.1.176.341` |
+| `zbl=` | Zentralblatt MATH  | Mathematical publications   | `zbl=0472.53010`  |
+| `pmc=` | PubMed Central | Biomedical papers | `pmc=345678`  |
+| `pmid=`  | PubMed Identifier  | Biomedical papers  | `pmid=17322060` |
+| `arxiv=` | arXiv  | Preprints in physics, mathematics, and computer science | `arxiv=0706.0001` |
+| `biorxiv=` | bioRxiv  | Preprints in biology  | `biorxiv=10.1101/078733`  |
+
+More examples are listed on the Wikipedia page [`Template:Cite book`](https://en.wikipedia.org/wiki/Template:Cite_book).
+
+The following lists the differences for each of the 5 main citation templates from the common parameters above.
+
+`{{cite news}}`: Suited to time-stamped, journalistic sources; usually includes an author and headline.
+
+* `newspaper=` – names the periodical (e.g., *Time*).
+* `pages =`, `location=` – If the news has been physically printed. Should not be filled for web-only news sources.
+
+`{{cite web}}`:
+
+* `website=` - name of the parent site.
+* `publisher=` - the organisation behind the site, if different from `website=`. For example, citing <https://data.giss.nasa.gov/gistemp/news/> would have `website=NASA.gov | publisher=[[Goddard Institute for Space Studies]]`.
+
+`{{cite book}}`:
+
+* `isbn=` - either ISBN-10 or ISBN-13. Hyphens in the ISBN are optional. There is a Wikipedia bot that automatically adds the hyphens once in a while.
+* `edition=` - when the publication has more than one edition. For example: `edition=2nd Revised`.
+* `location=` - the city of publication.  
+* `chapter=` (with optional `chapter-url=`) isolates a chapter in a multi-author volume.  
+* `page=` or `pages=` - Location in the book. For example, `page=53` or `pages=50,53–55`. If a book is cited multiple times throughout the Wikipedia page, then it is recommended that you do not use `pages=`. Instead, use the [`{{Pg}}`](https://en.wikipedia.org/wiki/Template:Reference_page) macro. For example: `{{rp|pages=143,233–237}}`. Note that, for a range of pages, the dash is the en-dash, literally as `–` or `&ndash;`.
+
+`{{cite journal}}`:
+
+* `journal=` (Required) - Aliases: work, newspaper, magazine, periodical, website.
+* `volume=` and `issue=` - If both are entered, then `issue=` is displayed in parentheses following `volume=`.
+* `page=` or `pages=` - See previous list.
+
+`{{cite conference}}`:
+
+* `book-title=` (required) - the name of the proceedings or conference. For example:`book-title=American Astronomical Society 207th Meeting`.
+* `publisher=` - the organisation releasing the proceedings (ACM, IEEE, Springer …).
+* `location=` - the geographical location of the conference, usually the name of a city.
+* `page=` or `pages=` - See previous list.
+
+For `arXiv` preprints, there is a special macro `{{cite arxiv}}`, somewhat different from `{{cite journal}}`. It is of the form `{{cite arXiv |last= |first= |date= |title= |arxiv= |class=}}`.
 
 ## Typical Wikipedia page
 
