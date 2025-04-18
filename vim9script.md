@@ -13,95 +13,191 @@ Try [vim9-conversion-aid](https://github.com/ubaldot/vim9-conversion-aid) as a s
 
 ```vim
 vim9script
-# Above line is necessary to distinguish code in a *.vim file from legacy vimscript.
+# The vim9script namespace, above, is required to distinguish a Vim9 script
+# *.vim file from a legacy vimscript file.  In Vim's command-line mode,
+# or in a legacy script, using the command `:vim9cmd` (or just `:vim9`) before
+# a command also evaluates and executes code as Vim9 script.
+#
+# There is no distinction between single and multi-line comments.
+# Use # inside a line at any position to comment out all following characters.
 
-####################################################
-## 1. Primitive Datatypes and Operators
-####################################################
+##################################################################
+## 1. Primitive types, collection types, operators, and regex
+##################################################################
 
-# Numbers
-var i: number = 42
-var f: float = 3.14
+# The builtin function typename() may be used to reveal the type.
+# Primitive data types are number (integer), float, and bool(ean)
+echo typename(1)  # number
+echo typename(1.1)  # float
+echo typename(true)  # bool
 
-# Booleans
-var done: bool = true
+# Collection data types are string, blob, list, tuple, and dict(ionary)
+echo typename("Hello world")  # string
+# Blob is a binary object
+echo typename(0zFE0F)  # blob
+echo typename([1, 2])  # list<number>
+# echo typename((1, 2))  # tuple (Yet commented as it's a recent addition)
+echo typename({1: 'one', 2: 'two'})  # dict<string>
 
-# Strings
-var s: string = 'hello'
+# Arithmetic with the number (integer) type.
+echo 1 + 1  # 2
+echo 2 - 1  # 1
+echo 3 * 2  # 6
+echo 8 / 2  # 4
+# If the result is not an integer, the remainder is not returned.
+echo 9 / 2  # 4
+# But modulo returns the remainder.
+echo 9 % 2  # 1
 
-# Arithmetic
-var sum = 1 + 2
-var div = 10 / 3
-var mod = 10 % 3
-var pow = float2nr(pow(2, 3))
+# Similarly, for the float type.
+echo 3.14 + 0.0015  # 3.1415
+echo 3.0 * 2.0  # 6.0
+# An integer and float will return a float.
+echo 9 / 2.0  # 4.5
 
-# Numeric comparisons
-echo 1 == 1      # true
-echo 2 != 3      # true
-echo 2 > 1       # true
-echo 2 >= 2      # true
+# Logical OR (||), AND (&&), and NOT (!).
+echo true || false  # true
+echo true && false  # false
+echo !true  # false
 
-# String equality
-echo 'foo' == 'foo'     # true
-echo 'foo' != 'bar'     # true
+# Equality (==) and inequality (!=) work on all three primitive types and
+# comparisons (>, >=, <=, and <) on numbers and floats.
+echo [1, 2] == [1, 2]  # true
+echo 'apples' != 'pears'  # true
+echo 9 > 8  # true
+echo 8 >= 8  # true
+echo 8 <= 9  # true
+echo 8 < 9  # true
 
-# Pattern matching
+# Ternary operator.
+echo 9 > 8 ? true : false  # true
+
+# Falsy ("null coalescing operator").
+echo 9 > 8 ?? 1 + 1  # true
+echo 8 > 9 ?? 1 + 1  # 2
+
+# Bitwise operators (>> and <<).
+echo 1 << 2  # 4
+echo 9 >> 1  # 5
+
+# String concatenation.
+echo "Hello" .. " " .. 'world'  # Hello world
+# String indexing is at the character level (not byte level like vimscript)
+echo 'fenêtre'[-4 : -1]  # être
+# There are dozens of builtin string functions.  Examples.
+echo reverse("moor")  # room
+echo toupper("summer")  # SUMMER
+echo str2list('yes')  # [121, 101, 115]
+echo strcharlen('length')  # 6
+
+# Type casting may be used to give an error for a type mismatch.
+# (This example could use `try`, but that's covered later.)
+echo <number>3  # 3
+# echo <number>'3'  # This errors, but could be caught with try/catch
+
+# Not-a-real-number values may be tested with isinf() and isnan() builtin
+# functions.  These examples also illustrate method chaining.
+echo 1.0 / 0.0 ->isinf()  # inf
+echo -1.0 / 0.0 ->isinf()  # -inf
+echo 0.0 / 0.0 ->isnan()  # nan
+
+# The maximum number is either a 32 or 64 bit signed number, which may
+# be checked using:
+echo v:numbersize  # echos either 32 or 64
+# The implication is that any arithmatic where the number exceeds the
+# permitted value, for 64-bit 9,223,372,036,854,775,807, will fail:
+echo 9223372036854775807 + 1  # -9223372036854775808
+
+# Numbers may be expressed as decimal, hexadecimal (prefixed with 0x), 
+# octal (0o or 0O), or binary (0b).  These are all decimal 15:
+echo 15 + 0b1111 + 0xF + 0o17  # 60
+
+# Pattern matching on strings.
 echo 'foobar' =~ 'foo'  # true (matches pattern)
 echo 'foobar' !~ 'baz'  # true (does not match pattern)
 
-# Logical
-echo true && false  # false
-echo true || false  # true
-echo !true          # false
+# Vim uses distinct regular expressions.  The basics are the same as many
+# other languages.  The basics:
+# `.` any character, `*` zero+ times, `\+` one+ times
+# `\c` case-insensitive, `\C` case-sensitive
+# `\d` digit, `\w` word char, `\s` whitespace, `^` start, `$` end, `\|` OR
+# Character classes may also be used.  Examples.
+# [:blank:] is the same as \s, [:digit:] is the same as \d
+# Some things like the "very nomagic" and "very magic" are unique.
+# `\v` very magic, most chars are special, closer to extended regexes
+# `\V`: very nomagic, all but \ are literal
+echo 'Foobar' =~ '\c^foo'  # true
+echo "The year is 2025" =~ '[[:digit:]]\+$'  # true
+echo 'abc123' =~ '\v\d+'  # true
+echo 'a|b' =~ '\Va|b'  # true
 
-# Ternary
-echo true ? 'yes' : 'no'
 
 ####################################################
-## 2. Variables and Collections
+## 2. Variables
 ####################################################
 
-# Variable declaration
-var name: string = 'Vim'
-var count = 10  # type inferred
+# `var` is used to declare a variable, which may have a type
+var name: string = 'Vim'  # type declared
+var count = 10  # type inferred (number)
+# When the type is declared as a list or dict, its type(s) must be also, but
+# may be "<any>".
+var Alist: list<list<number>> = [[1, 2], [3, 4]]
+var Adict: dict<any> = {a: 1, b: 'two'}
 
 # Constants
-const pi = 3.1415
+# `const` may be used to make both the variable and values constant.
+const PI: dict<float> = {2: 3.14, 4: 3.1415}  # Cannot add items to this dict
+echo PI[4]  # 3.1415
+# `final` may be used to make the variable a constant and the values mutable.
+final pi: dict<float> = {2: 3.14, 4: 3.1415}
+# Adding a key-value pair to pi.
+pi[3] = 3.142
+echo pi  # {2: 3.14, 3: 3.142, 4: 3.1415}
+# Dictionary key-value pairs may also be accessed using dict.key
+echo pi.4  # 3.1415
 
-# Lists
-var l: list<number> = [1, 2, 3]
-echo l[0]
-l->add(4)
-l->remove(1)
+# There are many builtin functions for variable manipulation.  Some have been
+# illustrated, above.  A selection of some more related to lists.
+var MyList: list<number> = [0, 1, 2, 3]
+echo MyList[0]  # 0
+MyList->add(4)
+MyList->remove(0)
+echo join(MyList, ', ')  # 1, 2, 3, 4
+# String interpolation with $.
+echo $"The first and last items in MyList are {MyList[0]} and {MyList[-1]}"
 
-# Tuples
-var t: tuple<number, string, number> = (1, 'a', 3)
-echo t[1]
-
-# Use `g:` for global variables, `b:` for buffer-local, `w:` for window-local, and so on.  
+# Variables exist within scopes.  When unprefixed, as the examples are, above,
+# the scope is script-local (which differs from vimscript, which uses `s:`).
+# Other scopes are global (prefixed with `g:`), window-local (`w:`),
+# buffer-local (`b:`), and tab-local (`t:`).
 # Vim help on scopes: https://vimhelp.org/eval.txt.html#variable-scope
+# Use `g:` for global variables, `b:` for buffer-local, `w:` for window-local,
+# and so on.  Vim also has many Vim-defined `v:` prefixed global variables.
 g:global_var = 'I am global'
+echo g:global_var  # I am global
+echo v:version  # 901 (or whatever version you are running; 901 means 9.1)
+echo b:current_syntax  # vim (if the buffer's filetype is vim with 'syntax' on)
 
-# - @a accesses the contents of register "a"
-# - $PATH references the environment variable PATH
-# - &l:textwidth gets the buffer‐local value of the textwidth option
-echo expand($PATH)
+# Registers are a form of variable used to store string values of many
+# pre-defined or user-defined items.  When used in a Vim9 script, they are
+# prefixed with `@`.
+echo @:  # (echos the last command entered by the user)
+echo @/  # (echos the last search performed by the user)
+echo @1  # (echos the penultimate yanked or deleted text)
+echo @%  # (echos the current file path)
+@z = 'There are 26 named registers, a to z'
+echo @z
 
-# Dictionaries
-var d: dict<number> = {a: 1, b: 2}
-echo d.a
-d.c = 3
+# Other builtin variables.
+echo $MYVIMRC  # (location of your .vimrc, or _vimrc using Windows, file)
+echo $VIMRUNTIME  # (the Vim directory of the current Vim executable)
+echo $PATH  # (references the environment variable, PATH)
 
-# Sets (via dict keys)
-var set = {1: true, 2: true}
+# Vim has many settings, which are also variables.  They may be local or
+# global scoped.
+echo &textwidth # (echos the buffer‐local value of the textwidth option)
+echo &wildmenu # (echos the boolean value of command-line wildcard expansion)
 
-# JSON encode/decode
-var data = {'name': 'Vim', 'version': 9}
-var json = json_encode(data)
-echo json
-
-var parsed = json_decode(json)
-echo parsed.name
 
 ####################################################
 ## 3. Control Flow
@@ -139,6 +235,38 @@ for x in [1, 2, 3]
   echo x
 endfor
 
+# Exceptions
+try
+  DoesNotExist()  # This fails
+catch
+  echo 'Function DoesNotExist() does not exist!'
+endtry
+
+try
+  var lines = readfile('nofile.txt')
+catch /E484:/
+  echo 'File not found'
+finally
+  echo 'Done'
+endtry
+
+try
+  if !filereadable('file.txt')
+    throw 'MyError'
+  else
+    # Read
+    var lines = readfile('file.txt')
+    # Append
+    writefile(['line3'], 'file.txt', 'a')
+  endif
+echo lines
+
+  endif
+catch /MyError/
+  echo 'File not found'
+endtry
+
+
 ####################################################
 ## 4. Functions
 ####################################################
@@ -160,10 +288,6 @@ def Sum(...args: list<number>): number
   return reduce(args, (x, y) => x + y)
 enddef
 
-# Lambda
-var Square = (x) => x * x
-echo Square(4)
-
 # Define a function that returns a closure capturing a local variable
 def MakeAdder(x: number): func
   # Return a reference to the inner function
@@ -176,29 +300,15 @@ var Add5 = MakeAdder(5)
 # Call the closure with 3; result is 8
 echo Add5(3)
 
-# Partial
-def Log(level: string, msg: string)
-  echo $"[{level}] {msg}"
-enddef
-
-var Warn = function('Log', ['WARN'])
-Warn('Disk low')
-
-# Decorator-like
-def LogWrap(F: func): func
-  def wrapper(...args: list<any>): any
-    echo 'Calling'
-    var result = call(F, args)
-    echo 'Done'
-    return result
-  enddef
-  return funcref('wrapper')
-enddef
+# A lambda function.
+var Divide = (val: number, by: number): number => val / by
+echo Divide(420, 10)  # 42
 
 ####################################################
-## 5. Classes
+## 5. Classes and enums
 ####################################################
 
+# Class
 class Point
   var x: number
   var y: number
@@ -222,137 +332,58 @@ var p = Point.new(1, 2)
 p.Move(3, 4)
 echo p.ToString()  # => (4, 6)
 
+# Enum
+enum Quad
+  Square('four', true),
+  Rectangle('opposite', true),
+  Rhombus('opposite', false)
+  var es: string
+  var ra: bool
+  def QuadProps(): list<any>
+    return [this.es, this.ra]
+  enddef
+endenum
+var q: Quad = Quad.Square
+# result using string interpolation and showing multiple lines without `\`,
+# which is required in vimscript but not in Vim9 script.
+var result = $"A {tolower(q.name)} has {q.QuadProps()[0]} sides of equal " ..
+  "length and " .. 
+  (q.QuadProps()[1] ? 'has only right angles' : 'has no right angle')
+echo result
+
+
 ####################################################
 ## 6. Modules and Imports
 ####################################################
 
-# Source another script file
-source mylib.vim
+# Sourcing another script file.
+# In this case, sourcing the optional matchit plugin, distributed with Vim.
+source $VIMRUNTIME/pack/dist/opt/matchit/plugin/matchit.vim
+# That's not an ideal way though.  It's better to use `packadd`.
+packadd helptoc
+# Using `runtime` is another way (which can be used with wildcards)
+runtime pack/**/**/**/comment.vim
 
-# Runtime path
-runtime plugin/myplugin.vim
-
-# Vim loads `.vimrc`, then plugin files in `plugin/` directories.  
-# Vim9Script can coexist with older scripts.  
-# Place Vim9 files in separate `.vim` files with `vim9script` at the top.  
-# Use `autoload/` or `ftplugin/` for specialized features.
-
-# Define script-local functions
-def Helper()
-  echo 'internal'
-enddef
-
-####################################################
-## 7. File I/O
-####################################################
-
-# Write
-writefile(['line1', 'line2'], 'file.txt')
-
-# Append
-writefile(['line3'], 'file.txt', 'a')
-
-# Read
-var lines = readfile('file.txt')
-echo lines
-
-####################################################
-## 8. Exceptions
-####################################################
-
+# Importing functions from other files is achieved with `export` in the script
+# file exporting the function/constant/variable and `import` in the
+# script using the exported function/constant/variable.
+# If this is in file, `MyFile.vim` in the same directory as the script file.
+export const THEEND: string = 'The end.'
+# The script importing THEEND would include (try used here to prevent error)
 try
-  var lines = readfile('nofile.txt')
-catch /E484:/
-  echo 'File not found'
-finally
-  echo 'Done'
+  import "MyFile.vim"
+catch
+  # Do something if the import fails
+endtry
+# And using the constant would be (try again used to prevent error)
+try
+  echo MyFile.THEEND
+catch
+  echo "THE END"
 endtry
 
-# Throw
-throw 'MyError'
-
 ####################################################
-## 10. Testing
-####################################################
-
-v:errors = []
-
-assert_equal(4, 2 + 2)
-assert_notequal(1, 2)
-assert_true(1 < 2)
-assert_false(2 < 1)
-assert_match('\d\+', 'abc123')
-assert_notmatch('\d\+', 'abc')
-
-if len(v:errors) == 0
-  echo 'All tests passed'
-else
-  echo 'Test failures:'
-  echo v:errors
-endif
-
-####################################################
-## 11. External Commands
-####################################################
-
-# Run a shell command and capture output
-var result = system('ls')
-echo result
-
-# Run and split into lines
-silent var lines = systemlist('ls')
-for line in lines
-  echo line
-endfor
-
-# Using :!ls
-:!ls
-
-# Using job_start() callback
-var shell_job: job
-def GotOutput(channel: channel, msg: string)
-  echo msg
-enddef
-# Start a shell in the background.
-shell_job = job_start(["/bin/sh", "-c", "ls"], {
-				out_cb: GotOutput,
-				err_cb: GotOutput
-				})
-
-# Check exit status
-echo v:shell_error
-
-####################################################
-## 12. Regex
-####################################################
-
-# Regex match
-var s = 'abc123'
-if s =~ '\d\+'
-  echo 'Contains digits'
-endif
-
-# Regex Basics:
-#
-# - `.` any char, `*` zero+ times, `\+` one+ times  
-# - `\d` digit, `\w` word char, `^` start, `$` end, `\|` OR
-
-# Case Sensitivity & Magic Modes:
-#
-# - `\c` / `\C`: case-insensitive / case-sensitive  
-# - `\v`: very magic, most chars are special, closer to extended regexes
-# - `\V`: very nomagic, all but \ are literal
-
-echo 'Foobar' =~ '\cfoo'   # true
-echo 'abc123' =~ '\v\d+'   # true
-echo 'a|b' =~ '\Va|b'      # true
-
-# Replace
-var new = substitute('foo bar', 'bar', 'baz', '')
-echo new
-
-####################################################
-## 13. Vim Idioms
+## 7. Vim Idioms
 ####################################################
 
 # Source guard (plugin pattern)
@@ -369,14 +400,12 @@ command! Hello echo 'Hello Vim9'
 # You can specify attributes like `-nargs`, `-range`, `-complete`;
 # see https://vimhelp.org/usr_40.txt.html#40.2
 command! -nargs=1 -complete=file MyCmd edit <args>
-
-# Group autocommands to manage them systematically
-# to prevent duplicate autocommands on re-sourcing.
-augroup AutoReload
-  autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
-  autocmd BufReadPost *.txt echo 'Hello text file'
-augroup END
+# Toggle a boolean setting
+def ToggleFeature()
+  g:myplugin_enabled = !get(g:, 'myplugin_enabled', false)
+  echo g:myplugin_enabled ? 'Enabled' : 'Disabled'
+enddef
+command! ToggleMyPlugin ToggleFeature()
 
 # Define a script-local function and map it via <Plug>
 def DoSomething()
@@ -385,6 +414,14 @@ enddef
 
 nnoremap <silent> <Plug>(MyPluginAction) <ScriptCmd>DoSomething()<CR>
 nmap <silent> <Leader>a <Plug>(MyPluginAction)
+
+# Group autocommands to manage them systematically
+# to prevent duplicate autocommands on re-sourcing.
+augroup AutoReload
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd BufReadPost *.txt echo 'Hello text file'
+augroup END
 
 # You can run normal commands from Vim9Script:
 # This executes like pressing `ggddGp` in normal mode.
@@ -404,16 +441,42 @@ echo printf('Hello, %s!', 'world')
 # `type()`, along with `v:t_*` constants, indicates object types.
 echo type(123) == v:t_number
 
-if v:version >= 900
-  echo 'Vim 9+ detected'
-endif
 
-# Toggle a boolean setting
-def ToggleFeature()
-  g:myplugin_enabled = !get(g:, 'myplugin_enabled', false)
-  echo g:myplugin_enabled ? 'Enabled' : 'Disabled'
+####################################################
+## 8. External Commands
+####################################################
+
+# Run a shell command and capture output
+var result = system('ls')
+echo result
+
+# Run and split into lines
+silent var lines = systemlist('ls')
+for line in lines
+  echo line
+endfor
+
+# output files in folder of current file
+# ... to non-interactive shell
+:!ls %:h:S
+# ... to current buffer, replacing its contents
+:%!ls %:h:S
+# ... to current buffer, appending at cursor position
+:.read!ls %:h:S
+
+# Using job_start() callback
+var shell_job: job
+def GotOutput(channel: channel, msg: string)
+  echo msg
 enddef
-command! ToggleMyPlugin ToggleFeature()
+# Start a shell in the background.
+shell_job = job_start(["/bin/sh", "-c", "ls"], {
+				out_cb: GotOutput,
+				err_cb: GotOutput
+				})
+
+# Check exit status
+echo v:shell_error
 
 # Create a quickfix list from Git diff
 def GitDiffQuickfix()
