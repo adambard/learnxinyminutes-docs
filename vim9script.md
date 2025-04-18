@@ -131,6 +131,12 @@ echo "The year is 2025" =~ '[[:digit:]]\+$'  # true
 echo 'abc123' =~ '\v\d+'  # true
 echo 'a|b' =~ '\Va|b'  # true
 
+# `\zs`: Sets the start of the match.
+# `\ze`: Sets the end of the match.
+# Match only the domain from an email:
+var email = 'user@example.com'
+echo matchstr(email, '@\zs[^ ]\+\ze')  # Output: 'example.com'
+
 
 ####################################################
 ## 2. Variables
@@ -258,9 +264,7 @@ try
     var lines = readfile('file.txt')
     # Append
     writefile(['line3'], 'file.txt', 'a')
-  endif
-echo lines
-
+    echo lines
   endif
 catch /MyError/
   echo 'File not found'
@@ -268,7 +272,7 @@ endtry
 
 
 ####################################################
-## 4. Functions
+## 4. Functions and Lambdas
 ####################################################
 
 # Basic function
@@ -300,9 +304,29 @@ var Add5 = MakeAdder(5)
 # Call the closure with 3; result is 8
 echo Add5(3)
 
-# A lambda function.
+# Lambdas in Vim9Script use `(args) => expr` syntax:
 var Divide = (val: number, by: number): number => val / by
 echo Divide(420, 10)  # 42
+
+# Sample list
+var nums = [1, 2, 3, 4, 5, 6]
+
+# map(): Square each number
+var squares = map(copy(nums), (i, v) => v * v)
+echo squares  # [1, 4, 9, 16, 25, 36]
+
+# filter(): Keep even numbers
+var evens = filter(copy(nums), (i, v) => v % 2 == 0)
+echo evens  # [2, 4, 6]
+
+# reduce(): Sum all numbers
+var sum = reduce(copy(nums), (acc, v) => acc + v, 0)
+echo sum  # 21
+
+# sort(): Sort descending using lambda
+# Use `copy()` to avoid mutating the original list.
+var sorted = sort(copy(nums), (a, b) => b - a)
+echo sorted  # [6, 5, 4, 3, 2, 1]
 
 ####################################################
 ## 5. Classes and enums
@@ -387,10 +411,9 @@ endtry
 ####################################################
 
 # Source guard (plugin pattern)
-if exists('g:loaded_myplugin')
-  finish
-endif
-var g:loaded_myplugin = true
+if exists('g:loaded_myplugin') | finish | endif
+# Set to true to avoid sourcing the following code multiple times.
+# g:loaded_myplugin = true
 
 # Default value
 var greeting = get(g:, 'myplugin_greeting', 'Hello')
@@ -427,8 +450,8 @@ augroup END
 # This executes like pressing `ggddGp` in normal mode.
 normal! ggddGp
 
-# `exist({name})` checks if a variable, function, or command is defined.
-echo exist(':myVariable') == 2
+# `exists({name})` checks if a variable, function, or command is defined.
+echo exists(':myVariable') == 2
 # `has({feature})` checks if Vim has a specific feature (e.g. `has('unix')`).
 echo has('unix')
 if has('nvim')
@@ -447,7 +470,7 @@ echo type(123) == v:t_number
 ####################################################
 
 # Run a shell command and capture output
-var result = system('ls')
+silent result = system('ls')
 echo result
 
 # Run and split into lines
@@ -458,11 +481,11 @@ endfor
 
 # output files in folder of current file
 # ... to non-interactive shell
-:!ls %:h:S
+!ls %:h:S
 # ... to current buffer, replacing its contents
 :%!ls %:h:S
-# ... to current buffer, appending at cursor position
-:.read!ls %:h:S
+# ... to the same buffer, appending at cursor position
+:.read! ls %:h:S
 
 # Using job_start() callback
 var shell_job: job
@@ -474,7 +497,6 @@ shell_job = job_start(["/bin/sh", "-c", "ls"], {
 				out_cb: GotOutput,
 				err_cb: GotOutput
 				})
-
 # Check exit status
 echo v:shell_error
 
@@ -495,6 +517,51 @@ def GitDiffQuickfix()
   copen
 enddef
 command! GitDiffQF call GitDiffQuickfix()
+
+####################################################
+## 9. Debugging, Compiling and Inspecting Bytecode
+####################################################
+
+def MyFunc()
+  var x = 10
+  var y = x * 2
+  echo y
+enddef
+
+# To debug this function:
+# Add a breakpoint at line 3 of the function (line numbers are relative to the function)
+# :breakadd func MyFunc 3
+
+# Then run the function in debug mode
+# :debug call MyFunc()
+
+# While debugging, use commands like:
+# - :step to step into
+# - :next to step over
+# - :finish to run to end
+# - :cont to continue
+# - :echo to inspect variables
+
+## Listing Bytecode of a Function,
+## Useful to understand how Vim optimizes Vim9Script functions
+
+def MyMultiply(a: number, b: number): number
+  return a * b
+enddef
+
+# To compile and check for syntax/type errors:
+# Use :func MyMultiply to view the function definition
+
+# To inspect the compiled bytecode:
+disassemble MyMultiply
+
+# Example output:
+# <SNR>757_MyMultiply
+#   return a * b
+#    0 LOAD arg[-2]
+#    1 LOAD arg[-1]
+#    2 OPNR *
+#    3 RETURN
 ```
 
 ### Additional Resources
