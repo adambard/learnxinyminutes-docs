@@ -8,16 +8,20 @@ contributors:
 ---
 
 Vim9Script is a modern scripting language introduced in Vim 9.0.
-It improves performance, readability, and structure over legacy Vimscript. 
+It is designed to replace legacy Vimscript (also called VimL), which is a sequence of ex-commands enhanced with scripting constructs like variables, functions, and control flow.
+
+Unlike legacy Vimscript, Vim9Script enforces stricter syntax, improves performance, and supports modern programming features such as strong typing, classes, lambdas, and modules.
+
 Try [vim9-conversion-aid](https://github.com/ubaldot/vim9-conversion-aid) as a starting point to convert legacy Vimscript to Vim9Script.
 
 ```vim
 vim9script
+
 # The vim9script namespace, above, is required to distinguish a Vim9 script
 # *.vim file from a legacy vimscript file.  In Vim's command-line mode,
 # or in a legacy script, using the command `:vim9cmd` (or just `:vim9`) before
 # a command also evaluates and executes code as Vim9 script.
-#
+
 # There is no distinction between single and multi-line comments.
 # Use # inside a line at any position to comment out all following characters.
 
