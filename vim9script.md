@@ -8,9 +8,35 @@ contributors:
 ---
 
 Vim9Script is a modern scripting language introduced in Vim 9.0.
-It is designed to replace legacy Vimscript (also called VimL), which is a sequence of ex-commands enhanced with scripting constructs like variables, functions, and control flow.
 
-Unlike legacy Vimscript, Vim9Script enforces stricter syntax, improves performance, and supports modern programming features such as strong typing, classes, lambdas, and modules.
+Vim9script, which is exclusive to Vim version 9+, improves on its predecessor, legacy Vimscript, also called VimL, which is a sequence of Ex commands enhanced with scripting constructs like variables, functions, and control flow.
+(Ex commands, such as `:echo`, `:write`, `:substitute`, `:quit`, ... are commands that are part of the legacy Ex editor to execute a single action, one-liners without return values.)
+Legacy Vimscript is interpreted line by line, requiring backslashes to continue lines, and commands like `let` and `call` are used to make them resemble ex-commands.
+
+In contrast, Vim9script supports multi-line syntax natively, without needing line continuation.
+This makes it less suited for command-line usage, unlike traditional ex-commands, so that Vim9Script complements these for scripting.
+
+Vim9Script enforces stricter syntax, improves performance, and supports modern programming features such as strong typing, classes, lambdas, and modules.
+Differences (see https://vimhelp.org/vim9.txt.html#vim9-differences) include:
+
+1. New syntax basics
+   - Comments start with `#` instead of `"`.
+   - Line-continuation backslashes are rarely needed --- just concatenate with `..`.
+   - Whitespace is significant in many places to keep things readable.
+
+2. Variables and constants
+   - Declare regular variables with `:var`, e.g. `var count = 0`
+   - Change them with standard operators (`count += 3`) --- no more `:let`.
+   - Declare immutable names with `:const` or `:final`.
+
+3. Typed, script-local functions
+   - All functions (and variables) are script-local by default.
+   - Use `:def` with typed params and a return type, e.g.
+     `def foo(x: number, y: string): bool`
+   - Call them like normal functions (no `:call`).
+
+All Ex commands can still be used inside functions and, vice-versa, you can call a function by an Ex command with `:vim9` (respectively `:call` in legacy vimscript) on the command line.
+You can also define your own commands that call functions.
 
 Try [vim9-conversion-aid](https://github.com/ubaldot/vim9-conversion-aid) as a starting point to convert legacy Vimscript to Vim9Script.
 
@@ -24,6 +50,10 @@ vim9script
 
 # There is no distinction between single and multi-line comments.
 # Use # inside a line at any position to comment out all following characters.
+
+# You can run this Vim9 script directly in Vim.  After pasting the content
+# into a Vim buffer, enter the command `so` in command-line mode (press `:`
+# first to enter command-line mode).
 
 ##################################################################
 ## 1. Primitive types, collection types, operators, and regex
@@ -112,7 +142,7 @@ echo v:numbersize  # echos either 32 or 64
 # permitted value, for 64-bit 9,223,372,036,854,775,807, will fail:
 echo 9223372036854775807 + 1  # -9223372036854775808
 
-# Numbers may be expressed as decimal, hexadecimal (prefixed with 0x), 
+# Numbers may be expressed as decimal, hexadecimal (prefixed with 0x),
 # octal (0o or 0O), or binary (0b).  These are all decimal 15:
 echo 15 + 0b1111 + 0xF + 0o17  # 60
 
@@ -205,7 +235,7 @@ echo $PATH  # (references the environment variable, PATH)
 
 # Vim has many settings, which are also variables.  They may be local or
 # global scoped.
-echo &textwidth # (echos the buffer‐local value of the textwidth option)
+echo &textwidth # (echos the buffer-local value of the textwidth option)
 echo &wildmenu # (echos the boolean value of command-line wildcard expansion)
 
 
@@ -375,7 +405,7 @@ var q: Quad = Quad.Square
 # result using string interpolation and showing multiple lines without `\`,
 # which is required in vimscript but not in Vim9 script.
 var result = $"A {tolower(q.name)} has {q.QuadProps()[0]} sides of equal " ..
-  "length and " .. 
+  "length and " ..
   (q.QuadProps()[1] ? 'has only right angles' : 'has no right angle')
 echo result
 
