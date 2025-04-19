@@ -552,9 +552,19 @@ def GitDiffQuickfix()
 enddef
 command! GitDiffQF call GitDiffQuickfix()
 
-####################################################
-## 9. Debugging, Compiling and Inspecting Bytecode
-####################################################
+############################################################
+## 9. Testing, Debugging, Compiling and Inspecting Bytecode
+############################################################
+
+v:errors = []
+
+assert_equal(4, 2 + 2)
+assert_false(2 < 1)
+assert_notmatch('\d\+', 'abc')
+
+if !empty(v:errors)
+  echo $"Test failures: {v:errors}"
+endif
 
 def MyFunc()
   var x = 10
