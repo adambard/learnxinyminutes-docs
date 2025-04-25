@@ -337,6 +337,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 
 ; Records, Protocols, Multimethods
 ;;;;;;;;;;;;;;;
+
 (defprotocol Greeter (greet [this]))
 
 (defrecord Person [name]
