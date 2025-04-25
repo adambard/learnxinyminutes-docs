@@ -301,6 +301,53 @@ keymap ; => {:a 1, :b 2, :c 3}
   (conj [4 5 6] input 8 9 10)) ;=> or in the middle !
                                ; Result: [4 5 6 4 8 9 10]
 
+; Destructuring
+;;;;;;;;;;;;;;;
+
+(let [[x y & more] [1 2 3 4]
+      {:keys [a b] :or {b 99}} {:a 42}]
+  [x y more a b])
+; => [1 2 (3 4) 42 99]
+
+; Loops
+;;;;;;;;;;;;;;;
+
+(loop [n 10 acc 0]
+  (if (zero? n)
+    acc
+    (recur (dec n) (+ acc n))))
+; => 55
+
+(for [x (range 5) :when (even? x)] (* x x))
+; => (0 4 16)
+
+(doseq [x (range 3)]
+  (println "side effect" x))
+
+; Exception Handling
+;;;;;;;;;;;;;;;
+
+(try
+  (/ 1 0)
+  (catch ArithmeticException e
+    :division-by-zero)
+  (finally
+    (println "always runs")))
+; prints "always runs" -> returns :division-by-zero
+
+; Records, Protocols, Multimethods
+;;;;;;;;;;;;;;;
+(defprotocol Greeter (greet [this]))
+
+(defrecord Person [name]
+  Greeter
+  (greet [_] (str "Hi " name)))
+
+(greet (->Person "Ada")) ; => "Hi Ada"
+
+(defmulti area :shape)
+(defmethod area :circle [{:keys [r]}] (* Math/PI r r))
+(area {:shape :circle :r 3}) ; => 28.27…
 
 ; Modules
 ;;;;;;;;;;;;;;;
