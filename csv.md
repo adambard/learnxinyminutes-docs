@@ -1,5 +1,5 @@
 ---
-language: CSV
+name: CSV
 contributors:
 - [Timon Erhart, 'https://github.com/turbotimon/']
 ---
