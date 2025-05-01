@@ -7,9 +7,10 @@ contributors:
   - ["LacyGoill", "https://github.com/lacygoill"]
 ---
 
-Vim9Script is a modern scripting language introduced in Vim 9.0.
+Vim9script is a modernized, TypeScript-like language to script the Vim text editor.
+(See however [Yegappan's Vim9 for Python Developers](https://github.com/yegappan/Vim9ScriptForPythonDevelopers)).
 
-Vim9script, which is exclusive to Vim version 9+, improves on its predecessor, legacy Vimscript, also called VimL, which is a sequence of Ex commands enhanced with scripting constructs like variables, functions, and control flow.
+It improves on its predecessor, legacy Vimscript, also called VimL, which is a sequence of Ex commands enhanced with scripting constructs like variables, functions, and control flow.
 (Ex commands, such as `:echo`, `:write`, `:substitute`, `:quit`, ... are commands that are part of the legacy Ex editor to execute a single action, one-liners without return values.)
 Legacy Vimscript is interpreted line by line, requiring backslashes to continue lines, and commands like `let` and `call` are used to make them resemble ex-commands.
 
@@ -47,6 +48,8 @@ vim9script
 # *.vim file from a legacy vimscript file.  In Vim's command-line mode,
 # or in a legacy script, using the command `:vim9cmd` (or just `:vim9`) before
 # a command also evaluates and executes code as Vim9 script.
+
+# See https://vimhelp.org/vim9.txt.html#vim9-mix for mixing these.
 
 # There is no distinction between single and multi-line comments.
 # Use # inside a line at any position to comment out all following characters.
