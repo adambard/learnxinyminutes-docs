@@ -321,8 +321,13 @@ keymap ; => {:a 1, :b 2, :c 3}
 (for [x (range 5) :when (even? x)] (* x x))
 ; => (0 4 16)
 
+; Does not retain the head of the sequence. Returns nil.
 (doseq [x (range 3)]
   (println "side effect" x))
+; "side effect 0"
+; "side effect 1"
+; "side effect 2"
+; => nil
 
 ; Exception Handling
 ;;;;;;;;;;;;;;;
