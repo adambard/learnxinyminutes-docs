@@ -175,6 +175,12 @@ fi
 if [[ "$name" == "Daniya" ]] || [[ "$name" == "Zach" ]]; then
     echo "This will run if $name is Daniya OR Zach."
 fi
+
+# To check if string is empty or not set use -z and -n to check if it is NOT empty
+if [[ -z "$name" ]]; then
+    echo "Name is unset"
+fi
+
 # There are other comparison operators for numbers listed below:
 # -ne - not equal
 # -lt - less than
