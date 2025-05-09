@@ -176,7 +176,7 @@ if [[ "$name" == "Daniya" ]] || [[ "$name" == "Zach" ]]; then
     echo "This will run if $name is Daniya OR Zach."
 fi
 
-# To check if string is empty or not set use -z and -n to check if it is NOT empty
+# To check if a string is empty or not set use -z and -n to check if it is NOT empty
 if [[ -z "$name" ]]; then
     echo "Name is unset"
 fi
