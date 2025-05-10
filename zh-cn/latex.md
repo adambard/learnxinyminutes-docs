@@ -7,6 +7,7 @@ contributors:
     - ["Svetlana Golubeva", "https://attillax.github.io/"]
 translators:
     - ["Dp Leo", "https://github.com/minoriwww"]
+    - ["Hugo", "https://github.com/TaoHuaLiu"]
 ---
 
 ```tex
@@ -29,9 +30,11 @@ translators:
 % 您需要增强 LaTeX 的功能。这将通过添加库来实现
 % 下例中将要为展示数据引入 float 和 caption 库
 % 为超链接引入 hyperref 库
+% 为了现实汉字，我们需要用 xeCJK 库
 \usepackage{caption}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{xeCJK}
 
 % 我们还可以定义其他文档属性！
 \author{Chaitanya Krishna Ande, Colton Kohnke, Sricharan Chiruvolu \& \\
@@ -220,8 +223,9 @@ figures, equations, sections, etc.
     \item Write the document in plain text (the ``source code'').
     \item Compile source code to produce a pdf. 
      The compilation step looks like this (in Linux): \\
+     % 用xelatex必用pdflatex方便应为XeLatex可以支持Unicode字母
      \begin{verbatim} 
-        > pdflatex learn-latex.tex
+        > xelatex learn-latex.tex
      \end{verbatim}
   \end{enumerate}
 
@@ -272,3 +276,4 @@ https://en.wikibooks.org/wiki/LaTeX}
 
 * The amazing LaTeX wikibook: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX)
 * An actual tutorial: [http://www.latex-tutorial.com/](http://www.latex-tutorial.com/)
+* `XeCJK` 证明文件 : [http://mirrors.ctan.org/macros/xetex/latex/xecjk/xeCJK.pdf](http://mirrors.ctan.org/macros/xetex/latex/xecjk/xeCJK.pdf)
