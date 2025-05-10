@@ -883,4 +883,4 @@ The official docs have cheatsheets for people familiar with:
 * [Erlang](https://gleam.run/cheatsheets/gleam-for-erlang-users)
 * [PHP](https://gleam.run/cheatsheets/gleam-for-php-users)
 * [Python](https://gleam.run/cheatsheets/gleam-for-python-users)
-* [Rust](https://gleam.run/cheatsheets/gleam-for-python-users)
+* [Rust](https://gleam.run/cheatsheets/gleam-for-rust-users)
