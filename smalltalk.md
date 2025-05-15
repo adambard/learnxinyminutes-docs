@@ -1030,7 +1030,7 @@ Most Smalltalks are either free as in OSS or have a free downloadable version wi
 * [VisualWorks Smalltalk](http://www.cincomsmalltalk.com/)
 
 ### Online Smalltalk books and articles
-* [Smalltalk Programming Resources](http://www.whoishostingthis.com/resources/smalltalk/)
+* [Smalltalk Programming Resources](https://cybernewsguide.com/resources/smalltalk/)
 * [Smalltalk Cheatsheet](http://www.angelfire.com/tx4/cus/notes/smalltalk.html)
 * [Smalltalk-72 Manual](http://www.bitsavers.org/pdf/xerox/parc/techReports/Smalltalk-72_Instruction_Manual_Mar76.pdf)
 * [GNU Smalltalk User's Guide](https://www.gnu.org/software/smalltalk/manual/html_node/Tutorial.html)
