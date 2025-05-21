@@ -173,14 +173,6 @@ else
   "Cela le sera"
 end
 
-# Condition avec `unless` (sauf).
-# Il correspond à la négation d'un `if` (si)
-unless true do
-  "Cela ne sera pas vu"
-else
-  "Cela le sera"
-end
-
 # Beaucoup de structures en Elixir se basent sur le pattern matching.
 # `case` permet de comparer une valeur à plusieurs modèles:
 case {:one, :two} do

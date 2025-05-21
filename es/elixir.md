@@ -162,13 +162,6 @@ else
   "This will"
 end
 
-# También está la expresión `unless`
-unless true do
-  "This will never be seen"
-else
-  "This will"
-end
-
 # Se acuerda de la coincidencia de patrones?
 # Muchas estructuras de control de flujo en Elixir confían en ella.
 

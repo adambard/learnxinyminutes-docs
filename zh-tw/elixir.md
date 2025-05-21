@@ -151,13 +151,6 @@ else
   "This will"
 end
 
-# 也有 `unless`
-unless true do
-  "This will never be seen"
-else
-  "This will"
-end
-
 # 還記得模式比對嗎？Elixir 中許多控制流程的結構都依賴模式比對來運作。
 
 # `case` 讓我們可以將一個值與許多模式進行比對：
