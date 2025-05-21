@@ -168,13 +168,6 @@ else
   "This will"
 end
 
-# There's also `unless`
-unless true do
-  "This will never be seen"
-else
-  "This will"
-end
-
 # Remember pattern matching? Many control-flow structures in Elixir rely on it.
 
 # `case` allows us to compare a value against many patterns:
