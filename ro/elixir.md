@@ -167,13 +167,6 @@ else
   "Aceasta veți vedea"
 end
 
-# expresia opusă `unless`
-unless true do
-  "Aceasta nu veți vedea niciodată"
-else
-  "Aceasta veți vedea"
-end
-
 # Țineți minte potrivirea șabloanelor? Multe structuri în Elixir se bazează pe ea.
 
 # `case` ne permite să comparăm o valoare cu multe șabloane:

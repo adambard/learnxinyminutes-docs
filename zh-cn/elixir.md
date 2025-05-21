@@ -148,13 +148,6 @@ else
   "This will"
 end
 
-# 还有 `unless`
-unless true do
-  "This will never be seen"
-else
-  "This will"
-end
-
 # 在Elixir中，很多控制结构都依赖于模式匹配
 
 # `case` 允许我们把一个值与多种模式进行比较:
