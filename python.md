@@ -404,6 +404,20 @@ elif some_var < 10:    # This elif clause is optional.
 else:                  # This is optional too.
     print("some_var is indeed 10.")
 
+# Match/Case — Introduced in Python 3.10
+# It compares a value against multiple patterns and executes the matching case block.
+
+command = "run"
+
+match command:
+    case "run":
+        print("the robot started to run 🏃‍♂️")
+    case "speak":
+        print("the robot said hi 🗣️")
+    case _:  # Default case (like else)
+        print("invalid command ❌")
+
+# Output: "the robot started to run 🏃‍♂️"
 
 """
 For loops iterate over lists
