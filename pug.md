@@ -134,9 +134,9 @@ else
 
 - const number = 5
 if number < 5
-  p number is less then 5
+  p number is less than 5
 else if number > 5
-  p number is greater then 5
+  p number is greater than 5
 else
   p number is 5
 //- <p>number is 5</p>
