@@ -118,7 +118,7 @@ placeholder = 'use string interpolation'
 
 # You can combine strings using `+`, but not with other types
 'hello ' + 'world'  #=> "hello world"
-'hello ' + 3 #=> TypeError: can't convert Fixnum into String
+'hello ' + 3 #=> TypeError: no implicit conversion of Integer into String
 'hello ' + 3.to_s #=> "hello 3"
 "hello #{3}" #=> "hello 3"
 
