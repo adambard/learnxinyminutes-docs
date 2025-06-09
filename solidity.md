@@ -42,7 +42,7 @@ One of the easiest ways to build, deploy, and test solidity code is by using the
 
 To get started, [download the Metamask Browser Extension](https://metamask.io/). 
 
-Once installed, we will be working with Remix. The below code will be pre-loaded, but before we head over there, let's look at a few tips to get started with remix. Load it all by [hitting this link](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=f490c0d51141dd0515244db40bbd0c17&runs=200).
+Once installed, we will be working with Remix. The below code will be pre-loaded, but before we head over there, let's look at a few tips to get started with remix. Load it all by [hitting this link](https://remix.ethereum.org/#version=soljson-v0.8.19+commit.7dd6d404.js&optimize=false&evmVersion=null&gist=2acb47a0286fe45d2464fa937f00fef3&runs=200).
 
 1. Choose the Solidity compiler
 
@@ -68,29 +68,7 @@ You've deployed your first contract! Congrats!
 
 You can test out and play with the functions defined. Check out the comments to learn about what each does. 
 
-
-## Working on a testnet
-
-Deploying and testing on a testnet is the most accurate way to test your smart contracts in solidity. 
-To do this let's first get some testnet ETH from the Kovan testnet. 
-
-[Pop into this Gitter Channel](https://gitter.im/kovan-testnet/faucet) and drop your metamask address in.
-
-In your metamask, you'll want to change to the `Kovan` testnet. 
-
-![Solidity-in-remix](/images/solidity/metamask-kovan.png)
-
-You'll be given some free test Ethereum. Ethereum is needed to deploy smart contracts when working with a testnet. 
-
-In the previous example, we didn't use a testnet, we deployed to a fake virtual environment. 
-When working with a testnet, we can actually see and interact with our contracts in a persistent manner. 
-
-To deploy to a testnet, on the `#4 Deploy` step, change your `environment` to `injected web3`.
-This will use whatever network is currently selected in your metamask as the network to deploy to. 
-
-![Solidity-in-remix](/images/solidity/remix-testnet.png)
-
-For now, please continue to use the `JavaScript VM` unless instructed otherwise. When you deploy to a testnet, metamask will pop up to ask you to "confirm" the transaction. Hit yes, and after a delay, you'll get the same contract interface at the bottom of your screen. 
+For now, please continue to use the `Remix VM` unless instructed otherwise.
 
 
 ```solidity
@@ -99,9 +77,12 @@ For now, please continue to use the `JavaScript VM` unless instructed otherwise.
 
 // simple_bank.sol (note .sol extension)
 /* **** START EXAMPLE **** */
+// A special comment is used at the top of the file to indicate
+// the license for the code, and the version of Solidity used
+// SPDX-License-Identifier: MIT
 
 // Declare the source file compiler version
-pragma solidity ^0.6.6;
+pragma solidity ^0.8.19;
 
 // Start with Natspec comment (the three slashes)
 // used for documentation - and as descriptive data for UI elements/actions
@@ -115,7 +96,6 @@ contract SimpleBank { // CapWords
     // Declare state variables outside function, persist through life of contract
 
     // dictionary that maps addresses to balances
-    // always be careful about overflow attacks with numbers
     mapping (address => uint) private balances;
 
     // "private" means that other contracts can't directly query balances
@@ -128,7 +108,7 @@ contract SimpleBank { // CapWords
     event LogDepositMade(address accountAddress, uint amount);
 
     // Constructor, can receive one or many variables here; only one allowed
-    constructor() public {
+    constructor() {
         // msg provides details about the message that's sent to the contract
         // msg.sender is contract caller (address of contract creator)
         owner = msg.sender;
@@ -139,6 +119,7 @@ contract SimpleBank { // CapWords
     function deposit() public payable returns (uint) {
         // Use 'require' to test user inputs, 'assert' for internal invariants
         // Here we are making sure that there isn't an overflow issue
+        // In modern versions of Solidity, this is automatically checked
         require((balances[msg.sender] + msg.value) >= balances[msg.sender]);
 
         balances[msg.sender] += msg.value;
@@ -165,7 +146,7 @@ contract SimpleBank { // CapWords
         balances[msg.sender] -= withdrawAmount;
 
         // this automatically throws on a failure, which means the updated balance is reverted
-        msg.sender.transfer(withdrawAmount);
+        payable(msg.sender).transfer(withdrawAmount);
 
         return balances[msg.sender];
     }
@@ -206,12 +187,11 @@ uint8 b;
 int64 c;
 uint248 e;
 
-// Be careful that you don't overflow, and protect against attacks that do
+// In older versions of solidity, doing addition could cause "overflow"
 // For example, for an addition, you'd do:
 uint256 c = a + b;
-assert(c >= a); // assert tests for internal invariants; require is used for user inputs
-// For more examples of common arithmetic issues, see Zeppelin's SafeMath library
-// https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
+assert(c >= a); 
+// But modern versions of Solidity automatically check for overflow/underflow of integer math
 
 
 // No random functions built in, you can get a pseduo-random number by hashing the current blockhash, or get a truly random number using something like Chainlink VRF. 
@@ -220,7 +200,7 @@ assert(c >= a); // assert tests for internal invariants; require is used for use
 // Type casting
 int x = int(b);
 
-bool b = true; // or do 'var b = true;' for inferred typing
+bool b = true;
 
 // Addresses - holds 20 byte/160 bit Ethereum addresses
 // No arithmetic allowed
@@ -237,7 +217,7 @@ address public owner;
 owner.transfer(SOME_BALANCE); // fails and reverts on failure
 
 // Can also do a lower level .send call, which returns a false if it failed
-if (owner.send) {} // REMEMBER: wrap send in 'if', as contract addresses have
+if (owner.send(amount)) {} // REMEMBER: wrap send in 'if', as contract addresses have
 // functions executed on send and these can fail
 // Also, make sure to deduct balances BEFORE attempting a send, as there is a risk of a recursive
 // call that can drain the contract
@@ -247,7 +227,7 @@ owner.balance; // the balance of the owner (user or contract)
 
 
 // Bytes available from 1 to 32
-byte a; // byte is same as bytes1
+bytes1 a; // bytes1 is the explicit form
 bytes2 b;
 bytes32 c;
 
@@ -259,20 +239,6 @@ bytes m; // A special array, same as byte[] array (but packed tightly)
 string n = "hello"; // stored in UTF8, note double quotes, not single
 // string utility functions to be added in future
 // prefer bytes32/bytes, as UTF8 uses more storage
-
-// Type inference
-// var does inferred typing based on first assignment,
-// can't be used in functions parameters
-var a = true;
-// use carefully, inference may provide wrong type
-// e.g., an int8, when a counter needs to be int16
-
-// var can be used to assign function to variable
-function a(uint x) returns (uint) {
-    return x * 2;
-}
-var f = a;
-f(22); // call
 
 // by default, all values are set to 0 on instantiation
 
@@ -289,10 +255,10 @@ delete x;
 // Arrays
 bytes32[5] nicknames; // static array
 bytes32[] names; // dynamic array
-uint newLength = names.push("John"); // adding returns new length of the array
+names.push("John"); // adding an element (no longer returns length)
 // Length
 names.length; // get length
-names.length = 1; // lengths can be set (for dynamic arrays in storage only)
+// Note: Direct length assignment has been removed in newer Solidity versions
 
 // multidimensional array
 uint[][5] x; // arr with 5 dynamic array elements (opp order of most languages)
@@ -304,7 +270,7 @@ balances["charles"] = 1;
 // 'public' allows following from another contract
 contractName.balances("charles"); // returns 1
 // 'public' created a getter (but not setter) like the following:
-function balances(string _account) returns (uint balance) {
+function balances(string memory _account) public view returns (uint balance) {
     return balances[_account];
 }
 
@@ -345,6 +311,7 @@ uint createdState = uint(State.Created); //  0
 // Data locations: Memory vs. storage vs. calldata - all complex types (arrays,
 // structs) have a data location
 // 'memory' does not persist, 'storage' does
+// 'calldata' also does not persist, and is exclusively "read-only" meaning it cannot be modified
 // Default is 'storage' for local and state variables; 'memory' for func params
 // stack holds small local variables
 
@@ -369,14 +336,13 @@ this.someFunction(); // calls func externally via call, not via internal jump
 msg.sender; // address of sender
 msg.value; // amount of ether provided to this contract in wei, the function should be marked "payable"
 msg.data; // bytes, complete call data
-msg.gas; // remaining gas
 
 // ** tx - This transaction **
 tx.origin; // address of sender of the transaction
 tx.gasprice; // gas price of the transaction
 
 // ** block - Information about current block **
-now; // current time (approximately), alias for block.timestamp (uses Unix time)
+block.timestamp; // current time (approximately) (uses Unix time)
 // Note that this can be manipulated by miners, so use carefully
 
 block.number; // current block number
@@ -403,7 +369,7 @@ function increment(uint x, uint y) returns (uint x, uint y) {
     y += 1;
 }
 // Call previous function
-uint (a,b) = increment(1,1);
+(uint a, uint b) = increment(1,1);
 
 // 'view' (alias for 'constant')
 // indicates that function does not/cannot change persistent vars
@@ -434,7 +400,7 @@ function increment(uint x) view returns (uint x) {
 
 // Functions hoisted - and can assign a function to a variable
 function a() {
-    var z = b;
+    function() internal z = b;
     z();
 }
 
@@ -464,7 +430,7 @@ function depositEther() public payable {
 event LogSent(address indexed from, address indexed to, uint amount); // note capital first letter
 
 // Call
-LogSent(from, to, amount);
+emit LogSent(from, to, amount);
 
 /**
 
@@ -493,7 +459,7 @@ Coin.LogSent().watch({}, '', function(error, result) {
 
 // '_' (underscore) often included as last line in body, and indicates
 // function being called should be placed there
-modifier onlyAfter(uint _time) { require (now >= _time); _; }
+modifier onlyAfter(uint _time) { require (block.timestamp >= _time); _; }
 modifier onlyOwner { require(msg.sender == owner); _; }
 // commonly used with state machines
 modifier onlyIfStateA (State currState) { require(currState == State.A); _; }
@@ -565,7 +531,7 @@ contract Consumer {
     function callFeed() {
         // final parentheses call contract, can optionally add
         // custom ether value or gas
-        feed.info.value(10).gas(800)();
+        feed.info{value: 10, gas: 800}();
     }
 }
 
@@ -718,14 +684,15 @@ contract SomeOracle {
 // see example below for State enum and inState modifier
 ```
 
-Work with the full example below using the [`JavaScript VM` in remix here.](https://remix.ethereum.org/#version=soljson-v0.6.6+commit.6c089d02.js&optimize=false&evmVersion=null&gist=3d12cd503dcedfcdd715ef61f786be0b&runs=200)
+Work with the full example below using the [`Remix VM` in remix here.](https://remix.ethereum.org/#version=soljson-v0.8.19+commit7dd6d404.js&optimize=false&evmVersion=null&gist=2acb47a0286fe45d2464fa937f00fef3&runs=200)
 
 ```solidity
 // *** EXAMPLE: A crowdfunding example (broadly similar to Kickstarter) ***
 // ** START EXAMPLE **
 
 // CrowdFunder.sol
-pragma solidity ^0.6.6;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
 
 /// @title CrowdFunder
 /// @author nemild
@@ -735,7 +702,7 @@ contract CrowdFunder {
     address payable public fundRecipient; // creator may be different than recipient, and must be payable
     uint public minimumToRaise; // required to tip, else everyone gets refund
     string campaignUrl;
-    byte version = "1";
+    uint256 version = 1;
 
     // Data structures
     enum State {
@@ -771,7 +738,7 @@ contract CrowdFunder {
     // Wait 24 weeks after final contract state before allowing contract destruction
     modifier atEndOfLifecycle() {
     require(((state == State.ExpiredRefund || state == State.Successful) &&
-        completeAt + 24 weeks < now));
+        completeAt + 24 weeks < block.timestamp));
         _;
     }
 
@@ -786,7 +753,7 @@ contract CrowdFunder {
         fundRecipient = _fundRecipient;
         campaignUrl = _campaignUrl;
         minimumToRaise = _minimumToRaise;
-        raiseBy = now + (timeInHoursForFundraising * 1 hours);
+        raiseBy = block.timestamp + (timeInHoursForFundraising * 1 hours);
     }
 
     function contribute()
@@ -798,7 +765,7 @@ contract CrowdFunder {
         contributions.push(
             Contribution({
                 amount: msg.value,
-                contributor: msg.sender
+                contributor: payable(msg.sender)
             }) // use array, so can iterate
         );
         totalRaised += msg.value;
@@ -817,10 +784,10 @@ contract CrowdFunder {
             payOut();
 
             // could incentivize sender who initiated state change here
-        } else if ( now > raiseBy )  {
+        } else if ( block.timestamp > raiseBy )  {
             state = State.ExpiredRefund; // backers can now collect refunds by calling getRefund(id)
         }
-        completeAt = now;
+        completeAt = block.timestamp;
     }
 
     function payOut()
@@ -828,7 +795,7 @@ contract CrowdFunder {
     inState(State.Successful)
     {
         fundRecipient.transfer(address(this).balance);
-        LogWinnerPaid(fundRecipient);
+        emit LogWinnerPaid(fundRecipient);
     }
 
     function getRefund(uint256 id)
@@ -846,14 +813,21 @@ contract CrowdFunder {
         return true;
     }
 
-    function removeContract()
-    public
-    isCreator()
-    atEndOfLifecycle()
-    {
-        selfdestruct(msg.sender);
-        // creator gets all money that hasn't be claimed
-    }
+    // Warning: "selfdestruct" has been deprecated. 
+    // Note that, starting from the Cancun hard fork, the underlying opcode no longer deletes the code 
+    // and data associated with an account and only transfers its Ether to the beneficiary, unless executed 
+    // in the same transaction in which the contract was created (see EIP-6780). 
+    
+    // Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. 
+    // Future changes to the EVM might further reduce the functionality of the opcode.
+    // function removeContract()
+    // public
+    // isCreator()
+    // atEndOfLifecycle()
+    // {
+    //     selfdestruct(msg.sender);
+    //     // creator gets all money that hasn't be claimed
+    // }
 }
 // ** END EXAMPLE **
 ```
@@ -882,7 +856,7 @@ uint x = 5;
 
 // Cryptography
 // All strings passed are concatenated before hash action
-sha3("ab", "cd");
+keccak256("ab", "cd");
 ripemd160("abc");
 sha256("def");
 
@@ -895,11 +869,15 @@ sha256("def");
 
 // 12. LOW LEVEL FUNCTIONS
 // call - low level, not often used, does not provide type safety
-successBoolean = someContractAddress.call('function_name', 'arg1', 'arg2');
+(bool success, bytes memory data) = someContractAddress.call(
+    abi.encodeWithSignature("function_name(string,string)", "arg1", "arg2")
+);
 
-// callcode - Code at target address executed in *context* of calling contract
+// delegatecall - Code at target address executed in *context* of calling contract
 // provides library functionality
-someContractAddress.callcode('function_name');
+(bool success, bytes memory data) = someContractAddress.delegatecall(
+    abi.encodeWithSignature("function_name()")
+);
 
 
 // 13. STYLE NOTES
@@ -932,22 +910,20 @@ someContractAddress.callcode('function_name');
 
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
+- [Cyfrin Updraft (Learn solidity development)](https://updraft.cyfrin.io/)
 - [Chainlink Beginner Tutorials](https://docs.chain.link/docs/beginners-tutorial)
 - [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
-- [Superblocks Lab - Browser based IDE for Solidity](https://lab.superblocks.com/)
-- [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
-- [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)
 - [Chainlink Documentation](https://docs.chain.link/docs/getting-started)
 
 ## Smart Contract Development Frameworks
+- [Foundry](https://getfoundry.sh/)
 - [Hardhat](https://hardhat.org/)
 - [Brownie](https://github.com/eth-brownie/brownie)
-- [Truffle](https://www.trufflesuite.com/)
 
 ## Important libraries
-- [Zeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
+- [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts): Libraries that provide common contract patterns (crowdfuding, safemath, etc)
 - [Chainlink](https://github.com/smartcontractkit/chainlink): Code that allows you to interact with external data
 
 ## Sample contracts
@@ -956,8 +932,11 @@ someContractAddress.callcode('function_name');
 - [Solidity Baby Step Contracts](https://github.com/fivedogit/solidity-baby-steps/tree/master/contracts)
 - [ConsenSys Contracts](https://github.com/ConsenSys/dapp-store-contracts)
 - [State of Dapps](http://dapps.ethercasts.com/)
+- [Security Codebase Examples](https://github.com/Cyfrin/sc-exploits-minimized/)
 
 ## Security
+- [Smart Contract Security Curriculum](https://updraft.cyfrin.io/courses/security)
+- [Smart Contract Security Reports Database](https://solodit.xyz/)
 - [Thinking About Smart Contract Security](https://blog.ethereum.org/2016/06/19/thinking-smart-contract-security/)
 - [Smart Contract Security](https://blog.ethereum.org/2016/06/10/smart-contract-security/)
 - [Hacking Distributed Blog](http://hackingdistributed.com/)
@@ -972,7 +951,6 @@ someContractAddress.callcode('function_name');
 - Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
 
 ## Future To Dos
-- New keywords: protected, inheritable
 - List of common design patterns (throttling, RNG, version upgrade)
 - Common security anti patterns
 
