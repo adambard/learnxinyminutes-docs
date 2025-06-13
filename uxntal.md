@@ -1,6 +1,8 @@
 ---
+name: Uxntal
 contributors:
     - ["Devine Lu Linvega", "https://wiki.xxiivv.com"]
+filename: learnuxn.tal
 ---
 
 Uxntal is a stack-machine assembly language targeting the [Uxn virtual machine](https://wiki.xxiivv.com/site/uxn.html).
