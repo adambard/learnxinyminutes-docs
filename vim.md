@@ -23,11 +23,11 @@ specific points in the file, and for fast editing.
     :q                # Quit vim
     :w                # Save current file
     :wq               # Save file and quit vim
-    ZZ                # Save file and quit vim
     :q!               # Quit vim without saving file
                       # ! *forces* :q to execute, hence quitting vim without saving
     ZQ                # Quit vim without saving file
-    :x                # Save file(only when the file is modified) and quit vim
+    :x                # Save file (only if file was modified) and quit vim
+    ZZ                # Save file (only if file was modified) and quit vim
 
     u                 # Undo
     CTRL+R            # Redo
