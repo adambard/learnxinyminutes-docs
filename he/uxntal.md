@@ -1,10 +1,8 @@
 ---
-name: Uxntal
 contributors:
     - ["Devine Lu Linvega", "https://wiki.xxiivv.com"]
 translators:
     - ["Maja Abramski-Kronenberg", "https://me.digitalwords.net"]
-filename: learnuxn.tal
 ---
 
 <p dir="rtl">
