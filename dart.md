@@ -175,7 +175,7 @@ example7() {
 /// K,V - Key Value(used for Map)
 class GenericExample<T>{
   void printType(){
-    print("$T")
+    print("$T");
   }
   // methods can also have generics
   genericMethod<M>(){
@@ -200,22 +200,22 @@ class GenericExample<T>{
 const example8List = ["Example8 const array"];
 const  example8Map = {"someKey": "Example8 const map"};
 /// Declare List or Maps as Objects.
- List<String> explicitList = new List<String>();
+ List<String> explicitList = new List<String>.empty();
  Map<String,dynamic> explicitMaps = new Map<String,dynamic>();
 
- explicitList.add("SomeArray");
 example8() {
+  explicitList.add("SomeArray");
   print(example8Map["someKey"]);
   print(explicitList[0]);
-}
 
-/// Assigning a list from one variable to another will not be the same result.
-/// Because dart is pass-reference-by-value.
-/// So when you assign an existing list to a new variable.
-/// Instead of List, it becomes an Iterable
-var iterableExplicitList = explicitList;
-print(iterableExplicitList) // ("SomeArray"); "[]" becomes "()"
-var newExplicitLists = explicitList.toList() // Converts Iterable<E> to List<E>
+  /// Assigning a list from one variable to another will not be the same result.
+  /// Because dart is pass-reference-by-value.
+  /// So when you assign an existing list to a new variable.
+  /// Instead of List, it becomes an Iterable
+  var iterableExplicitList = explicitList;
+  print(iterableExplicitList); // ("SomeArray"); "[]" becomes "()"
+  var newExplicitLists = explicitList.toList(); // Converts Iterable<E> to List<E>
+}
 
 /// Loops in Dart take the form of standard for () {} or while () {} loops,
 /// slightly more modern for (.. in ..) {}, or functional callbacks with many
@@ -266,17 +266,15 @@ example11() {
   myNumDouble = myFinalDouble; // valid
   myNumDouble = myFinalNumInt; // valid
 
-  myNumInt = myFinalInt; // valid
-  myNumInt = myFinalDouble; // valid
-  myNumInt = myFinalNumDouble; // valid
-
   myInt = myNumDouble; // error
   myInt = myFinalDouble; // error
-  myInt = myFinalNumInt; // valid
+  myInt = myFinalNumInt; // error (implicit downcasts removed in Dart 2.9)
+  myInt = myFinalNumInt as int; // valid
 
   myDouble = myFinalInt; // error
   myDouble = myFinalNumInt; // error
-  myDouble = myFinalNumDouble; // valid
+  myDouble = myFinalNumDouble; // error (implicit downcasts removed in Dart 2.9)
+  myDouble = myFinalNumDouble as double; // valid
 
   print("Example11 int ${i}");
   print("Example11 double ${d}");
@@ -427,7 +425,7 @@ example20() {
 /// but which is also slower because of the extra checking and is thus
 /// avoided during deployment runtime.
 class Example21 {
-  List<String> _names;
+  List<String> _names = [];
   Example21() {
     _names = ["a", "b"];
   }
@@ -472,7 +470,8 @@ example22() {
 /// Mixins follow the "with" statement during the class declaration.
 class Example23A {}
 
-class Example23Utils {
+/// Since Dart 3 the 'mixin' keyword is required instead of 'class'.
+mixin Example23Utils {
   addTwo(n1, n2) {
     return n1 + n2;
   }
@@ -496,14 +495,14 @@ example23() {
 /// super-parent's constructor.
 class Example24A {
   var _value;
-  Example24A({value: "someValue"}) {
+  Example24A({value = "someValue"}) {
     _value = value;
   }
   get value => _value;
 }
 
 class Example24B extends Example24A {
-  Example24B({value: "someOtherValue"}) : super(value: value);
+  Example24B({value = "someOtherValue"}) : super(value: value);
 }
 
 example24() {
@@ -606,7 +605,7 @@ example29() {
   }
 
   rand() {
-    v = new DM.Random().nextInt(50);
+    v = new math.Random().nextInt(50);
     return v;
   }
 
@@ -631,7 +630,7 @@ example30() {
       top = int.parse("123") ~/ n2,
       bottom = 0;
   top = top ~/ 6;
-  gn = new DM.Random().nextInt(top + 1); /// +1 because nextInt top is exclusive
+  gn = new math.Random().nextInt(top + 1); /// +1 because nextInt top is exclusive
   print("Example30 Guess a number between 0 and ${top}");
   guessNumber(i) {
     if (n == gn) {
@@ -658,7 +657,7 @@ example30() {
 /// Optional Positional Parameter:
 /// parameter will be disclosed with square bracket [ ] & square bracketed parameter are optional.
 example31() {
-    findVolume31(int length, int breath, [int height]) {
+    findVolume31(int length, int breath, [int? height]) {
       print('length = $length, breath = $breath, height = $height');
     }
 
@@ -673,7 +672,7 @@ example31() {
 /// in curly bracketed parameter order does not matter
 /// these type parameter help us to avoid confusion while passing value for a function which has many parameter.
 example32() {
-    findVolume32(int length, int breath, {int height}) {
+    findVolume32(int length, int breath, {int? height}) {
     print('length = $length, breath = $breath, height = $height');
     }
 
