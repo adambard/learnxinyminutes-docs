@@ -92,5 +92,5 @@ malinterpretación de caracteres.
 
 ## Más recursos
 
-+ [Wikipedia](https://es.wikipedia.org/wiki/Valores_separados_por_comas)
-+ [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180) 
+- [Wikipedia](https://es.wikipedia.org/wiki/Valores_separados_por_comas)
+- [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180)
