@@ -557,6 +557,6 @@ The [GitHub examples repository](https://github.com/odin-lang/examples)
 contains idiomatic Odin code examples.
 
 For learning resources:
-- "Understanding the Odin Programming Language" by Karl Zylinski
+- ["Understanding the Odin Programming Language" by Karl Zylinski](https://odinbook.com)
 - [Odin Discord](https://discord.gg/sVBPHEv) for community support
 - [FAQ](https://odin-lang.org/docs/faq/) for common questions
