@@ -522,11 +522,6 @@ transformed := transform * point      // Matrix multiplication
 identity_rot := quaternion128{0, 0, 0, 1}  // No rotation
 rotation_90_z := quaternion128{0, 0, 0.707, 0.707}  // 90° around Z
 
-// SIMD vectors for performance
-vec_a := [4]f32{1, 2, 3, 4}
-vec_b := [4]f32{5, 6, 7, 8}
-dot_product := simd.dot(vec_a, vec_b) // Vectorized operations
-
 ////////////////////////////////////////////////////
 ## 14. Context System and Defer
 ////////////////////////////////////////////////////
@@ -552,7 +547,7 @@ example_with_context :: proc() {
 
 // defer ensures cleanup happens when scope exits
 resource_management_example :: proc() {
-    file_handle := os.open("example.txt", os.O_RDONLY) or_return
+    file_handle := os.open("example.txt", os.O_RDONLY, 0) or_return
     defer os.close(file_handle)  // Always closed when function exits
     
     buffer := make([]u8, 1024)
