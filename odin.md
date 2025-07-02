@@ -490,24 +490,42 @@ max_float := max(3.14, 2.71) // T becomes f64
 ////////////////////////////////////////////////////
 
 // Bit sets for flags
-Flags :: enum {
+File_Mode :: enum {
     READ,
     WRITE,
     EXECUTE,
 }
 
-permissions: bit_set[Flags]
-permissions |= {.READ, .WRITE}  // Set flags
-has_read := .READ in permissions // Check flag
-
-// Quaternions (for 3D rotations)
-rotation := quaternion128{0, 0, 0, 1}
-
-// Matrices
-identity_matrix := matrix[4, 4]f32(1)  // 4x4 identity matrix
+permissions: bit_set[File_Mode]
+permissions |= {.READ, .WRITE}        // Set multiple flags
+permissions &~= {.WRITE}              // Remove flag
+has_read := .READ in permissions      // Check flag
+is_readonly := permissions == {.READ} // Compare sets
 
 // Complex numbers
-complex_num := complex128(3 + 4i)
+z1 := complex64(3 + 4i)
+z2 := complex64(1 - 2i)
+sum := z1 + z2                        // (4 + 2i)
+magnitude := abs(z1)                  // 5.0
+
+// Matrices for linear algebra
+transform := matrix[3, 3]f32{
+    1, 0, 5,  // Translation X = 5
+    0, 1, 3,  // Translation Y = 3  
+    0, 0, 1,  // Homogeneous coordinate
+}
+
+point := [3]f32{10, 20, 1}
+transformed := transform * point      // Matrix multiplication
+
+// Quaternions for 3D rotations
+identity_rot := quaternion128{0, 0, 0, 1}  // No rotation
+rotation_90_z := quaternion128{0, 0, 0.707, 0.707}  // 90° around Z
+
+// SIMD vectors for performance
+vec_a := [4]f32{1, 2, 3, 4}
+vec_b := [4]f32{5, 6, 7, 8}
+dot_product := simd.dot(vec_a, vec_b) // Vectorized operations
 
 ////////////////////////////////////////////////////
 ## 14. Context System and Defer
