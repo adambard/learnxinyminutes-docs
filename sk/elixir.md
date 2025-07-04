@@ -170,13 +170,6 @@ else
   "Toto bude"
 end
 
-# Existuje aj `unless`
-unless true do
-  "Toto nebude nikdy videné"
-else
-  "Toto bude"
-end
-
 # Pamätáte sa na pattern matching? Mnoho štruktúr pre riadenie toku v
 # Elixir sa spoliehajú práve na pattern matching.
 

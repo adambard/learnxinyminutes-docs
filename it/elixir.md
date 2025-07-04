@@ -161,13 +161,6 @@ else
   "Questo sì"
 end
 
-# c'è anche un `se non` (`unless`)
-unless true do
-  "Questo non si vedrà mai"
-else
-  "Questo sì"
-end
-
 # Ti ricordi il pattern matching?
 # Moltre strutture di controllo di flusso in Elixir si basano su di esso.
 
