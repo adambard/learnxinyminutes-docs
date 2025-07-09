@@ -414,7 +414,7 @@ func learnConcurrency() {
 	cs := make(chan string)       // Another channel, this one handles strings.
 	ccs := make(chan chan string) // A channel of string channels.
 	go func() { c <- 84 }()       // Start a new goroutine just to send a value.
-	go func() { cs <- "wordy" }() // Again, for cs this time.
+	go func() { ccs <- "wordy" }() // Again, for cs this time.
 	// Select has syntax like a switch statement but each case involves
 	// a channel operation. It selects a case at random out of the cases
 	// that are ready to communicate.
