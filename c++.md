@@ -908,10 +908,15 @@ for (int i = 0; i < my_vector.size(); i++) {
     std::cout << my_vector[i] << '\n'; // for accessing a vector's element we can use the operator []
 }
 
-// or using an iterator:
+// or using an iterator (old fashion):
 vector<string>::iterator it; // initialize the iterator for vector
 for (it = my_vector.begin(); it != my_vector.end(); ++it) {
     std::cout << *it  << '\n';
+}
+
+// modern way of using an iterator
+for (auto it = my_vector.begin(); it != my_vector.end(); ++it) {
+    std::cout << *it << '\n';
 }
 
 // Set
