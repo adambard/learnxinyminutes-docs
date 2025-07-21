@@ -918,7 +918,10 @@ for (it = my_vector.begin(); it != my_vector.end(); ++it) {
 for (auto it = my_vector.begin(); it != my_vector.end(); ++it) {
     std::cout << *it << '\n';
 }
-
+// (elegantly) or using the reference of the original object + using `auto` syntax 
+    for (auto& it : vec) {
+        std::cout << it << std::endl;
+    }
 // Set
 // Sets are containers that store unique elements following a specific order.
 // Set is a very useful container to store unique values in sorted order
