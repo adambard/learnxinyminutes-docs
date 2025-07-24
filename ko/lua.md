@@ -228,7 +228,7 @@ myFavs = {food = 'pizza'}
 setmetatable(myFavs, {__index = defaultFavs})
 eatenBy = myFavs.animal  -- 동작합니다! 고마워요, 메타테이블!
 
--- 직접적인 메타테이블 탐색이 실패할 경우 메타테이블의 __index 값을 이용해
+-- 직접적인 테이블 탐색이 실패할 경우 메타테이블의 __index 값을 이용해
 -- 재시도하고, 이런 과정이 반복됩니다.
 
 -- __index 값은 좀 더 세분화된 탐색을 위해 function(tbl, key)가
