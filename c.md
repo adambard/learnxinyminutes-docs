@@ -394,15 +394,20 @@ int main (int argc, char** argv)
   for(i=0; i<100; ++i)
   for(j=0; j<100; ++j)
   {
-    if((i + j) >= 150)
+    if((i + j) >= 150) {
         disaster = true;
-    if(disaster)
-        goto error;  // exit both for loops
+        goto error;  // exit both for loops immediately
+    }
   }
+  printf("No error found. Completed normally.\n");
+  goto end;
+  
   error: // this is a label that you can "jump" to with "goto error;"
   printf("Error occurred at i = %d & j = %d.\n", i, j);
+  end:
+    return 0
   /*
-    https://ideone.com/GuPhd6
+    https://ideone.com/gmLOPg
     this will print out "Error occurred at i = 51 & j = 99."
   */
   /*
