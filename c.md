@@ -387,15 +387,11 @@ int main (int argc, char** argv)
   /*
     Using "goto" in C
   */
-  typedef enum { false, true } bool;
-  // for C don't have bool as data type before C99 :(
-  bool disaster = false;
   int i, j;
   for(i=0; i<100; ++i)
   for(j=0; j<100; ++j)
   {
     if((i + j) >= 150) {
-        disaster = true;
         goto error;  // exit both for loops immediately
     }
   }
@@ -407,7 +403,7 @@ int main (int argc, char** argv)
   end:
     return 0
   /*
-    https://ideone.com/gmLOPg
+    https://ideone.com/z7nzKJ
     this will print out "Error occurred at i = 51 & j = 99."
   */
   /*
