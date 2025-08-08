@@ -12,7 +12,7 @@ contributors:
 filename: learnswift.swift
 ---
 
-Swift is a programming language created by Apple for development across all Apple operating systems. Designed to coexist with Objective-C while being more resilient against erroneous code, Swift was introduced in 2014 at Apple’s developer conference WWDC. It features automatic memory management, type safety, and modern syntax that makes code more readable and less error-prone.
+Swift is a programming language created by Apple for development across all Apple operating systems. Designed to coexist with Objective-C while being more resilient against erroneous code, Swift was introduced in 2014 at Apple's developer conference WWDC. It features automatic memory management, type safety, and modern syntax that makes code more readable and less error-prone.
 
 Swift is open source and also runs on Linux and Windows. The language is built with the LLVM compiler and is included in Xcode.
 
