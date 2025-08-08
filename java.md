@@ -373,6 +373,25 @@ public class LearnJava {
         System.out.println(--i); // i = 0, prints 0 (pre-decrement)
 
         ///////////////////////////////////////
+        // Math Functions
+        ///////////////////////////////////////
+        // Basic math operations
+        int maxVal = Math.max(5, 10); // => 10
+        int minVal = Math.min(5, 10); // => 5
+        int absVal = Math.abs(-15); // => 15
+        double power = Math.pow(2, 3); // => 8.0
+        double squareRoot = Math.sqrt(16); // => 4.0
+        
+        // Rounding functions
+        double ceiling = Math.ceil(4.3); // => 5.0
+        double flooring = Math.floor(4.7); // => 4.0
+        long rounded = Math.round(4.6); // => 5
+        
+        // Constants
+        double pi = Math.PI; // => 3.141592653589793
+        double e = Math.E; // => 2.718281828459045
+
+        ///////////////////////////////////////
         // Control Structures
         ///////////////////////////////////////
         System.out.println("\n->Control Structures");
