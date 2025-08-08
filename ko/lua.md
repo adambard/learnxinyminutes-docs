@@ -160,8 +160,6 @@ print(u[6.28])  -- "tau"가 출력
 
 -- 키 매칭은 기본적으로 숫자와 문자열에 대해서는 값으로 하지만
 -- 테이블에 대해서는 식별자로 합니다.
-a = u['@!#']  -- Now a = 'qbert'.
-b = u[{}]     -- We might expect 1729, but it's nil:
 a = u['@!#']  -- 이제 a는 'qbert'입니다.
 b = u[{}]     -- 1729를 예상했겠지만 nil입니다:
 -- 탐색이 실패하기 때문에 b는 nil입니다. 탐색이 실패하는 이유는
@@ -230,7 +228,7 @@ myFavs = {food = 'pizza'}
 setmetatable(myFavs, {__index = defaultFavs})
 eatenBy = myFavs.animal  -- 동작합니다! 고마워요, 메타테이블!
 
--- 직접적인 메타테이블 탐색이 실패할 경우 메타테이블의 __index 값을 이용해
+-- 직접적인 테이블 탐색이 실패할 경우 메타테이블의 __index 값을 이용해
 -- 재시도하고, 이런 과정이 반복됩니다.
 
 -- __index 값은 좀 더 세분화된 탐색을 위해 function(tbl, key)가
