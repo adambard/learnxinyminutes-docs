@@ -156,13 +156,6 @@ else
   "Isso será"
 end
 
-# Também há `unless`
-unless true do
-  "Isso nunca será visto"
-else
-  "Isso será"
-end
-
 # Lembra do pattern matching? Muitas estruturas de fluxo de controle em Elixir contam com ela.
 
 # `case` nos permite comparar um valor com muitos patterns:
