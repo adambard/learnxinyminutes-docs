@@ -14,7 +14,7 @@ Es básicamente pseudocódigo ejecutable.
 
 """ Strings multilinea pueden escribirse
     usando tres "'s, y comunmente son usados
-    como comentarios.
+    como documentación.
 """
 
 ####################################################
