@@ -411,7 +411,7 @@ do
 done
 
 # while loop:
-while [ true ]
+while [[ true ]]
 do
     echo "loop body here..."
     break
