@@ -10,7 +10,7 @@ programming language that emphasizes simplicity, readability, and performance
 without garbage collection. Odin bills itself as "the C alternative for the
 joy of programming."
 
-```odin
+```
 // Single line comments start with two slashes.
 
 /*
