@@ -166,13 +166,13 @@ else
     echo "Your name is your username"
 fi
 
-# To use && and || with if statements, you need multiple pairs of square brackets:
+# You can use && and || with if statements:
 read age
-if [[ "$name" == "Steve" ]] && [[ "$age" -eq 15 ]]; then
+if [[ "$name" == "Steve" && "$age" -eq 15 ]]; then
     echo "This will run if $name is Steve AND $age is 15."
 fi
 
-if [[ "$name" == "Daniya" ]] || [[ "$name" == "Zach" ]]; then
+if [[ "$name" == "Daniya" || "$name" == "Zach" ]]; then
     echo "This will run if $name is Daniya OR Zach."
 fi
 
