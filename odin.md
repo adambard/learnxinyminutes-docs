@@ -538,7 +538,8 @@ process_files :: proc(filenames: []string) {
     for filename in filenames {
         // Each iteration allocates temporary data
         data := make([]u8, 1024)  // No defer is needed here
-        // no individual cleanup needed
+        fmt.printf("Processing %s with %d bytes\n", filename, len(data))
+        // No individual cleanup needed
     }
 }
     
