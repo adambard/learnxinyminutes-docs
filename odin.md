@@ -123,7 +123,7 @@ numbers: [5]int = {1, 2, 3, 4, 5}
 chars: [3]rune = {'A', 'B', 'C'}
 
 // Array with inferred size
-inferred := [..]int{10, 20, 30, 40}
+inferred := [?]int{10, 20, 30, 40}
 
 // Zero-initialized array
 zeros: [10]int  // All elements are 0
@@ -233,13 +233,18 @@ sum := add(5, 3)                    // 8
 quotient, ok := divide(10, 2)       // 5, true
 quotient_bad, ok_bad := divide(10, 0) // 0, false
 
-// Procedure with default parameters (using overloading)
-greet :: proc(name: string) {
+// Something akin to overloading can be mimicked using producure groups 
+greet_string :: proc(name: string) {
     fmt.printf("Hello, %s!\n", name)
 }
 
-greet :: proc() {
-    greet("World")
+greet_nothing :: proc() {
+    greet_string("World") // or greet("World") will work with the following procedure group
+}
+
+greet :: proc{
+    greet_string,
+    greet_nothing,
 }
 
 // Variadic procedures (variable number of arguments)
@@ -312,24 +317,16 @@ Status :: enum u8 {
     WARNING = 2,
 }
 
-// Unions (tagged unions)
-Shape :: union {
-    Circle: struct { radius: f32 },
-    Rectangle: struct { width, height: f32 },
-    Triangle: struct { base, height: f32 },
-}
+// Unions
+IntOrBool :: union {int, bool}
 
-my_shape := Shape(Circle{{radius = 5.0}})
+f: IntOrBool = 123
 
 // Pattern matching with unions
-switch shape in my_shape {
-case Circle:
-    fmt.printf("Circle with radius %.2f\n", shape.radius)
-case Rectangle:
-    fmt.printf("Rectangle %.2f x %.2f\n", shape.width, shape.height)
-case Triangle:
-    fmt.printf("Triangle base %.2f, height %.2f\n", shape.base, 
-               shape.height)
+switch _ in f {
+case int:  fmt.println("int")
+case bool: fmt.println("bool")
+case:
 }
 ```
 
@@ -361,14 +358,6 @@ if exists {
 for name, score in scores {
     fmt.printf("%s: %d\n", name, score)
 }
-
-// Map literal
-ages := map[string]int{
-    "Alice" = 30,
-    "Bob" = 25,
-    "Charlie" = 35,
-}
-defer delete(ages)
 ```
 
 ## 9. Pointers and Memory Management
@@ -432,8 +421,8 @@ example_with_error_handling :: proc() -> bool {
 ## 11. Packages and Imports
 
 ```
+package main
 // Every .odin file starts with a package declaration
-// package main  // (Already declared at the top)
 
 // Import from core library
 import "core:fmt"
@@ -443,10 +432,12 @@ import "core:os"
 // Import with alias
 import str "core:strings"
 
-// Using imported procedures
-text := "Hello, World!"
-upper_text := strings.to_upper(text)
-fmt.println(upper_text)
+main :: proc() {
+    // Using imported procedures
+    text := "Hello, World!"
+    upper_text := strings.to_upper(text)
+    fmt.println(upper_text)
+}
 
 // Import from vendor packages (external libraries)
 // import "vendor:raylib"
@@ -520,8 +511,8 @@ point := [3]f32{10, 20, 1}
 transformed := transform * point      // Matrix multiplication
 
 // Quaternions for 3D rotations
-identity_rot := quaternion128{0, 0, 0, 1}  // No rotation
-rotation_90_z := quaternion128{0, 0, 0.707, 0.707}  // 90° around Z
+identity_rot := quaternion(w = 1, x = 0, y = 0, z = 0)  // No rotation
+rotation_90_z := quaternion(w = 0.707, x = 0, y = 0, z = 0.707)  // 90° around Z
 ```
 
 ## 14. Context System and Defer
@@ -548,13 +539,15 @@ example_with_context :: proc() {
 
 // defer ensures cleanup happens when scope exits
 resource_management_example :: proc() {
-    file_handle := os.open("example.txt", os.O_RDONLY, 0) or_return
-    defer os.close(file_handle)  // Always closed when function exits
-    
+    // Allocate some memory
     buffer := make([]u8, 1024)
     defer delete(buffer)  // Always freed when function exits
     
-    // Use file_handle and buffer...
+    // Allocate a map
+    data := make(map[string]int)
+    defer delete(data)    // Always cleaned up when function exits
+    
+    // Use buffer and data...
     // They're automatically cleaned up even if we return early
 }
 ```
