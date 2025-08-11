@@ -174,18 +174,13 @@ for {
 }
 
 // Range-based loops
-counter := 0
-for i in 0..<5 {
-    fmt.println(counter)
-    counter += 1
-}
-// This range-based loop does the same as the above
-counter = 0
-for i in 0..=4 {
-    fmt.println(counter)
-    counter += 1
+for i in 0..<5 {  // 0 to 4 (exclusive upper bound)
+    fmt.println(i)
 }
 
+for i in 0..=4 {  // 0 to 4 (inclusive upper bound)  
+    fmt.println(i)
+}
 
 // Iterating over arrays/slices with index
 numbers_array := [3]int{10, 20, 30}
@@ -241,7 +236,7 @@ sum := add(5, 3)                    // 8
 quotient, ok := divide(10, 2)       // 5, true
 quotient_bad, ok_bad := divide(10, 0) // 0, false
 
-// Something akin to overloading can be mimicked using producure groups 
+// Something akin to overloading can be mimicked using procedure groups 
 greet_string :: proc(name: string) {
     fmt.printf("Hello, %s!\n", name)
 }
