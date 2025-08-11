@@ -29,11 +29,11 @@ import "core:fmt"
 main :: proc() {
     fmt.println("Hellope!")
 }
+```
 
-////////////////////////////////////////////////////
 ## 1. Basic Data Types and Operators
-////////////////////////////////////////////////////
 
+```
 // Integers - Odin has explicit sized integer types
 x: i32 = 42          // 32-bit signed integer
 y: u64 = 100         // 64-bit unsigned integer
@@ -83,12 +83,13 @@ not_result := !true          // false
 bit_and := 0b1010 & 0b1100   // 0b1000
 bit_or := 0b1010 | 0b1100    // 0b1110
 bit_xor := 0b1010 ~ 0b1100   // 0b0110 (note: ~ is XOR in Odin)
-bit_not := ~0b1010           // bitwise NOT
+bit_not := ~u8(0b1010)           // bitwise NOT
 
-////////////////////////////////////////////////////
+```
+
 ## 2. Variables and Constants
-////////////////////////////////////////////////////
 
+```
 // Variable declaration with type inference
 some_number := 42            // Type inferred as int
 some_text := "Hello"         // Type inferred as string
@@ -112,11 +113,11 @@ TYPED_CONSTANT : f32 : 2.71828
 // Multiple assignment
 a, b := 10, 20
 a, b = b, a  // Swap values
+```
 
-////////////////////////////////////////////////////
 ## 3. Arrays and Slices
-////////////////////////////////////////////////////
 
+```
 // Fixed-size arrays
 numbers: [5]int = {1, 2, 3, 4, 5}
 chars: [3]rune = {'A', 'B', 'C'}
@@ -144,11 +145,11 @@ append(&dynamic_array, 2, 3, 4)  // Append multiple elements
 
 // Remember to clean up dynamic arrays
 defer delete(dynamic_array)
+```
 
-////////////////////////////////////////////////////
 ## 4. Control Flow
-////////////////////////////////////////////////////
 
+```
 // If statements
 age := 25
 if age >= 18 {
@@ -209,11 +210,11 @@ case age < 20:
 case:
     fmt.println("Adult")
 }
+```
 
-////////////////////////////////////////////////////
 ## 5. Procedures (Functions)
-////////////////////////////////////////////////////
 
+```
 // Basic procedure definition
 add :: proc(a: int, b: int) -> int {
     return a + b
@@ -251,11 +252,11 @@ sum_all :: proc(numbers: ..int) -> int {
 }
 
 result_sum := sum_all(1, 2, 3, 4, 5)  // 15
+```
 
-////////////////////////////////////////////////////
 ## 6. Structs
-////////////////////////////////////////////////////
 
+```
 // Struct definition
 Person :: struct {
     name: string,
@@ -289,11 +290,11 @@ celebrate_birthday :: proc(person: ^Person) {  // ^ means pointer
 }
 
 celebrate_birthday(&person1)  // Pass address with &
+```
 
-////////////////////////////////////////////////////
 ## 7. Enums and Unions
-////////////////////////////////////////////////////
 
+```
 // Enums
 Color :: enum {
     RED,
@@ -330,11 +331,11 @@ case Triangle:
     fmt.printf("Triangle base %.2f, height %.2f\n", shape.base, 
                shape.height)
 }
+```
 
-////////////////////////////////////////////////////
 ## 8. Maps
-////////////////////////////////////////////////////
 
+```
 // Map declaration
 scores: map[string]int
 
@@ -368,11 +369,11 @@ ages := map[string]int{
     "Charlie" = 35,
 }
 defer delete(ages)
+```
 
-////////////////////////////////////////////////////
 ## 9. Pointers and Memory Management
-////////////////////////////////////////////////////
 
+```
 // Pointers
 number := 42
 number_ptr := &number        // Get address of number
@@ -389,11 +390,11 @@ defer free(int_ptr)  // Clean up memory
 // make() for complex types
 my_slice := make([]int, 5)    // Slice with length 5
 defer delete(my_slice)
+```
 
-////////////////////////////////////////////////////
 ## 10. Error Handling
-////////////////////////////////////////////////////
 
+```
 // Odin uses multiple return values for error handling
 read_file :: proc(filename: string) -> (string, bool) {
     // Simulate file reading
@@ -426,11 +427,11 @@ example_with_error_handling :: proc() -> bool {
     fmt.printf("Parsed number: %d\n", num)
     return true
 }
+```
 
-////////////////////////////////////////////////////
 ## 11. Packages and Imports
-////////////////////////////////////////////////////
 
+```
 // Every .odin file starts with a package declaration
 // package main  // (Already declared at the top)
 
@@ -449,11 +450,11 @@ fmt.println(upper_text)
 
 // Import from vendor packages (external libraries)
 // import "vendor:raylib"
+```
 
-////////////////////////////////////////////////////
 ## 12. Compile-time Features
-////////////////////////////////////////////////////
 
+```
 // Compile-time conditionals
 when ODIN_OS == .Windows {
     // Windows-specific code
@@ -484,11 +485,11 @@ max :: proc(a: $T, b: T) -> T {
 
 max_int := max(10, 20)      // T becomes int
 max_float := max(3.14, 2.71) // T becomes f64
+```
 
-////////////////////////////////////////////////////
 ## 13. Built-in Data Structures
-////////////////////////////////////////////////////
 
+```
 // Bit sets for flags
 File_Mode :: enum {
     READ,
@@ -521,11 +522,11 @@ transformed := transform * point      // Matrix multiplication
 // Quaternions for 3D rotations
 identity_rot := quaternion128{0, 0, 0, 1}  // No rotation
 rotation_90_z := quaternion128{0, 0, 0.707, 0.707}  // 90° around Z
+```
 
-////////////////////////////////////////////////////
 ## 14. Context System and Defer
-////////////////////////////////////////////////////
 
+```
 // Odin has an implicit context system for threading allocators,
 // loggers, and other utilities through your program
 
