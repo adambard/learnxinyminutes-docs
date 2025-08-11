@@ -83,7 +83,7 @@ not_result := !true          // false
 bit_and := 0b1010 & 0b1100   // 0b1000
 bit_or := 0b1010 | 0b1100    // 0b1110
 bit_xor := 0b1010 ~ 0b1100   // 0b0110 (note: ~ is XOR in Odin)
-bit_not := ~u8(0b1010)           // bitwise NOT
+bit_not := ~u8(0b1010)       // bitwise NOT, Cast needed for untyped constants
 
 ```
 
@@ -135,8 +135,11 @@ array_length := len(numbers)  // 5
 
 // Slices - dynamic views into arrays
 slice: []int = {1, 2, 3, 4, 5}  // Slice literal
-array_slice := numbers[1:4]     // Slice of array from index 1 to 3
-full_slice := numbers[:]        // Slice of entire array
+// Slice indices are optional. The following slice is the entire numbers array
+full_slice := numbers[:]
+// Slice indices are formatted like a[lower_bound : upper_bound]
+// The lower bound is inclusive and the upper bound is exclusive
+array_slice := numbers[1:4]     // Slice of array elements 1 - 3
 
 // Dynamic arrays - can grow and shrink
 dynamic_array: [dynamic]int
@@ -165,19 +168,24 @@ if age >= 18 {
 for i := 0; i < 10; i += 1 {
     fmt.println(i)
 }
+// Note that conditions are optional.
+for {
+    fmt.println("This will loop forever.")
+}
 
-// While-style loop
+// Range-based loops
 counter := 0
-for counter < 5 {
+for i in 0..<5 {
+    fmt.println(counter)
+    counter += 1
+}
+// This range-based loop does the same as the above
+counter = 0
+for i in 0..=4 {
     fmt.println(counter)
     counter += 1
 }
 
-// Infinite loop
-for {
-    // This runs forever (until break)
-    break  // Exit the loop
-}
 
 // Iterating over arrays/slices with index
 numbers_array := [3]int{10, 20, 30}
@@ -459,10 +467,10 @@ when ODIN_OS == .Windows {
 }
 
 // Compile-time constants
-ODIN_DEBUG :: #config(DEBUG, false)
+ENABLE_LOGGING :: #config(ENABLE_LOGGING, false)
 
-when ODIN_DEBUG {
-    fmt.println("Debug mode enabled")
+when ENABLE_LOGGING {
+    fmt.println("Logging enabled")
 }
 
 // Generics (Parametric polymorphism)
@@ -470,12 +478,13 @@ Generic_Array :: struct($T: typeid) {
     data: []T,
 }
 
-max :: proc(a: $T, b: T) -> T {
-    return a if a > b else b
+// Generics (Parametric polymorphism)
+add :: proc(a: $T, b: T) -> T {
+    return a + b
 }
 
-max_int := max(10, 20)      // T becomes int
-max_float := max(3.14, 2.71) // T becomes f64
+sum_int := add(10, 20)        // T becomes int
+sum_float := add(3.14, 2.71)  // T becomes f64
 ```
 
 ## 13. Built-in Data Structures
@@ -489,8 +498,8 @@ File_Mode :: enum {
 }
 
 permissions: bit_set[File_Mode]
-permissions |= {.READ, .WRITE}        // Set multiple flags
-permissions &~= {.WRITE}              // Remove flag
+permissions += {.READ, .WRITE}        // Set multiple flags
+permissions -= {.WRITE}              // Remove flag
 has_read := .READ in permissions      // Check flag
 is_readonly := permissions == {.READ} // Compare sets
 
@@ -518,37 +527,25 @@ rotation_90_z := quaternion(w = 0.707, x = 0, y = 0, z = 0.707)  // 90° around 
 ## 14. Context System and Defer
 
 ```
-// Odin has an implicit context system for threading allocators,
-// loggers, and other utilities through your program
+// Odin has an implicit context system that makes it easy to use
+// temporary allocations in loops without manual cleanup
 
-example_with_context :: proc() {
-    // Save current context
-    old_allocator := context.allocator
+process_files :: proc(filenames: []string) {
+    // Use temp allocator for temporary data in this scope
+    context.allocator = context.temp_allocator
+    defer free_all(context.temp_allocator)  // Clear the arena when done 
     
-    // Use a different allocator temporarily
-    temp_allocator := context.temp_allocator
-    context.allocator = temp_allocator
-    
-    // All allocations in this scope use temp_allocator
-    temp_data := make([]int, 100)
-    // No need to delete temp_data - it's automatically cleaned up
-    
-    // Restore original allocator
-    context.allocator = old_allocator
+    for filename in filenames {
+        // Each iteration allocates temporary data
+        data := make([]u8, 1024)  // No defer is needed here
+        // no individual cleanup needed
+    }
 }
-
-// defer ensures cleanup happens when scope exits
-resource_management_example :: proc() {
-    // Allocate some memory
+    
+// defer ensures cleanup on scope exit
+resource_example :: proc() {
     buffer := make([]u8, 1024)
-    defer delete(buffer)  // Always freed when function exits
-    
-    // Allocate a map
-    data := make(map[string]int)
-    defer delete(data)    // Always cleaned up when function exits
-    
-    // Use buffer and data...
-    // They're automatically cleaned up even if we return early
+    defer delete(buffer)  // Free the buffer 
 }
 ```
 
