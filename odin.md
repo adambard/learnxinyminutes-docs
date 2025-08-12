@@ -321,15 +321,15 @@ Status :: enum u8 {
 }
 
 // Unions
-IntOrBool :: union {int, bool}
+Value :: union {int, bool}
 
-f: IntOrBool = 123
+v: Value// in Odin, unions have a default state of `nil`
 
 // Pattern matching with unions
-switch _ in f {
+switch _ in v {
 case int:  fmt.println("int")
 case bool: fmt.println("bool")
-case:
+case:      fmt.println("This default case will execute in this example")
 }
 ```
 
@@ -527,17 +527,16 @@ rotation_90_z := quaternion(w = 0.707, x = 0, y = 0, z = 0.707)  // 90° around 
 
 process_files :: proc(filenames: []string) {
     // Use temp allocator for temporary data in this scope
-    context.allocator = context.temp_allocator
     defer free_all(context.temp_allocator)  // Clear the arena when done 
     
     for filename in filenames {
         // Each iteration allocates temporary data
-        data := make([]u8, 1024)  // No defer is needed here
+        data := make([]u8, 1024, context.temp_allocator)  // No defer is needed here
         fmt.printf("Processing %s with %d bytes\n", filename, len(data))
         // No individual cleanup needed
     }
 }
-    
+
 // defer ensures cleanup on scope exit
 resource_example :: proc() {
     buffer := make([]u8, 1024)
