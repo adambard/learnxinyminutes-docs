@@ -229,7 +229,7 @@ assert($c >= $d);
 // The following will only be true if the values match and are the same type.
 assert($c === $d);
 assert($a !== $d);
-assert(1 === '1');
+assert(1 === 1);
 assert(1 !== '1');
 
 // 'Spaceship' operator (since PHP 7)
