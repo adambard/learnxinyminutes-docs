@@ -1,16 +1,16 @@
-# cue.md (번역)
-
 ---
 name: CUE
 filename: learncue.cue
 contributors:
     - ["Daniel Cox", "https://github.com/danielpcox"]
     - ["Coleman McFarland", "https://github.com/dontlaugh"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-CUE is an expressive (but not Turing-complete) JSON superset, exportable to JSON or YAML. It supports optional types and many other conveniences for working with large configuration sets. The unification engine has roots in logic programming, and as such it provides a ready solution to modern configuration management problems.
+CUE는 표현력이 풍부한(하지만 튜링 완전하지는 않은) JSON 상위 집합으로, JSON 또는 YAML로 내보낼 수 있습니다. 선택적 유형과 대규모 구성 집합 작업에 대한 기타 여러 편의 기능을 지원합니다. 통합 엔진은 논리 프로그래밍에 뿌리를 두고 있으며, 따라서 현대 구성 관리 문제에 대한 즉각적인 솔루션을 제공합니다.
 
-When CUE is exported to JSON, values from every processed file are unified into one giant object. Consider these two files:
+CUE가 JSON으로 내보내질 때, 처리된 모든 파일의 값은 하나의 거대한 객체로 통합됩니다. 다음 두 파일을 고려하십시오:
 
 ```yaml
 //name.cue
@@ -22,7 +22,7 @@ name: "Daniel"
 disposition: "oblivious"
 ```
 
-Now we can unify and export to JSON:
+이제 JSON으로 통합하고 내보낼 수 있습니다:
 
 ```bash
 % cue export name.cue disposition.cue
@@ -32,7 +32,7 @@ Now we can unify and export to JSON:
 }
 ```
 
-Or YAML:
+또는 YAML:
 
 ```bash
 % cue export --out yaml name.cue disposition.cue
@@ -40,14 +40,14 @@ name: Daniel
 disposition: oblivious
 ```
 
-Notice the C-style comments are not in the output. Also notice that the keys in CUE syntax did not require quotes. Some special characters do require quotes:
+C 스타일 주석은 출력에 포함되지 않습니다. 또한 CUE 구문의 키는 따옴표가 필요하지 않습니다. 일부 특수 문자는 따옴표가 필요합니다:
 
 ```yaml
 works_fine: true
 "needs-quotes": true
 ```
 
-Unification doesn't just unify across files, it is also a *global merge* of all types and values. The following fails, because the *types* are different.
+통합은 파일 간에만 통합되는 것이 아니라 모든 유형과 값의 *전역 병합*입니다. 다음은 *유형*이 다르기 때문에 실패합니다.
 
 ```yaml
 //string_value.cue
@@ -61,12 +61,12 @@ foo: 100
 
 ```bash
 % cue export string_value.cue integer_value.cue
-foo: conflicting values "baz" and 100 (mismatched types string and int):
+foo: "baz"와 100의 충돌 값(문자열과 int 유형 불일치):
     integer_value.cue:1:6
     string_value.cue:1:6
 ```
 
-But even if we quote the integer, it still fails, because the *values* conflict and there is no way to unify everything into a top-level object.
+하지만 정수를 인용하더라도 *값*이 충돌하고 모든 것을 최상위 객체로 통합할 방법이 없기 때문에 여전히 실패합니다.
 
 ```yaml
 //string_value.cue
@@ -75,24 +75,24 @@ foo: "baz"
 
 ```yaml
 //integer_value.cue
-foo: "100"  // a string now
+foo: "100"  // 이제 문자열
 ```
 
 ```bash
 % cue export string_value.cue integer_value.cue
-foo: conflicting values "100" and "baz":
+foo: "100"과 "baz"의 충돌 값:
     integer_value.cue:1:6
     string_value.cue:1:6
 ```
 
-Types in CUE *are* values; special ones that the unification engine knows have certain behavior relative to other values. During unification it requires that values match the specified types, and when concrete values are required, you will get an error if there's only a type. So this is fine:
+CUE의 유형은 값입니다. 통합 엔진이 특정 동작을 가진다고 아는 특수 값입니다. 통합 중에 값은 지정된 유형과 일치해야 하며, 구체적인 값이 필요한 경우 유형만 있으면 오류가 발생합니다. 따라서 다음은 괜찮습니다:
 
 ```yaml
 street: "1 Infinite Loop"
 street: string
 ```
 
-While `cue export` produces YAML or JSON, `cue eval` produces CUE. This is useful for converting YAML or JSON to CUE, or for inspecting the unified output in CUE itself. It's fine to be missing concrete values in CUE (though it prefers concrete values when emitting CUE when both are available and match),
+`cue export`는 YAML 또는 JSON을 생성하는 반면, `cue eval`은 CUE를 생성합니다. 이는 YAML 또는 JSON을 CUE로 변환하거나 CUE 자체에서 통합된 출력을 검사하는 데 유용합니다. CUE에서 구체적인 값이 누락되어도 괜찮습니다(둘 다 사용 가능하고 일치하는 경우 CUE를 내보낼 때 구체적인 값을 선호하지만).
 
 ```yaml
 //type-only.cue
@@ -104,14 +104,14 @@ amount: float
 amount: float
 ```
 
-but you *need* concrete values if you want to export (or if you tell `eval` to require them with `-c`):
+그러나 내보내려면(또는 `eval`에 `-c`로 요구하도록 지시하려면) 구체적인 값이 *필요합니다*:
 
 ```bash
 % cue export type-only.cue
-amount: incomplete value float
+amount: 불완전한 값 float
 ```
 
-Give it a value that unifies with the type, and all is well.
+유형과 통합되는 값을 제공하면 모든 것이 잘 작동합니다.
 
 ```yaml
 //concrete-value.cue
@@ -125,9 +125,9 @@ amount: 3.14
 }
 ```
 
-The method of unifying concrete values with types that share a common syntax is very powerful, and much more compact than, e.g., JSON Schema. This way, schema, defaults, and data are all expressible in CUE.
+구체적인 값을 유형과 통합하는 방법은 공통 구문을 공유하는 것보다 훨씬 강력하며, 예를 들어 JSON 스키마보다 훨씬 간결합니다. 이런 식으로 스키마, 기본값 및 데이터는 모두 CUE로 표현할 수 있습니다.
 
-Default values may be supplied with a type using an asterisk:
+기본값은 별표를 사용하여 유형과 함께 제공될 수 있습니다:
 
 ```yaml
 // default-port.cue
@@ -139,7 +139,7 @@ port: int | *8080
 port: 8080
 ```
 
-Enum-style options ("disjunctions" in CUE) may be specified with an `|` separator:
+열거형 스타일 옵션(CUE의 "분리")은 `|` 구분 기호로 지정할 수 있습니다:
 
 ```yaml
 //severity-enum.cue
@@ -149,21 +149,21 @@ severity: "unknown"
 
 ```bash
 % cue eval severity-enum.cue
-severity: 3 errors in empty disjunction:
-severity: conflicting values "high" and "unknown":
+severity: 빈 분리에서 3개의 오류:
+severity: "high"와 "unknown"의 충돌 값:
     ./severity-enum.cue:1:11
     ./severity-enum.cue:1:48
-severity: conflicting values "low" and "unknown":
+severity: "low"와 "unknown"의 충돌 값:
     ./severity-enum.cue:1:31
     ./severity-enum.cue:1:48
-severity: conflicting values "medium" and "unknown":
+severity: "medium"과 "unknown"의 충돌 값:
     ./severity-enum.cue:1:20
     ./severity-enum.cue:1:48
 ```
 
-You can even have disjunctions of structs (not shown, but it works like you'd expect).
+구조체 분리도 가능합니다(표시되지 않았지만 예상대로 작동합니다).
 
-CUE has "definitions", and you can use them like you would variable declarations in other languages. They are also for defining struct types. You can apply a struct of type definitions to some concrete value(s) with `&`. Also notice you can say "a list with type #Whatever" using `[...#Whatever]`.
+CUE에는 "정의"가 있으며, 다른 언어의 변수 선언처럼 사용할 수 있습니다. 또한 구조체 유형을 정의하는 데에도 사용됩니다. 정의 유형의 구조체를 `&`를 사용하여 일부 구체적인 값에 적용할 수 있습니다. 또한 `[...#Whatever]`를 사용하여 "#Whatever 유형의 목록"이라고 말할 수 있습니다.
 
 ```yaml
 // definitions.cue
@@ -178,7 +178,7 @@ configs: {
 #Address: {
     street: string
     city: string
-    zip?: int  // ? makes zip optional
+    zip?: int  // ?는 zip을 선택 사항으로 만듭니다.
 }
 
 some_address: #Address & {
@@ -208,30 +208,16 @@ more_addresses:
     city: Menlo Park
 ```
 
-CUE supports more complex values and validation:
-
-```yaml
-#Country: {
-  name: =~"^\\p{Lu}" // Must start with an upper-case letter
-  pop: >800 & <9_000_000_000 // More than 800, fewer than 9 billion
-}
-
-vatican_city: #Country & {
-  name: "Vatican City"
-  pop: 825
-}
-```
-
-CUE may save you quite a bit of time with all the sugar it provides on top of mere JSON. Here we're defining, "modifying", and validating a nested structure in three lines: (Notice the `[]` syntax used around `string` to signal to the engine that `string` is a constraint, not a string in this case.)
+CUE는 단순한 JSON 위에 제공하는 모든 설탕으로 상당한 시간을 절약할 수 있습니다. 여기서는 세 줄로 중첩된 구조를 정의, "수정" 및 유효성 검사합니다: (엔진에 `string`이 제약 조건임을 알리기 위해 `string` 주위에 사용된 `[]` 구문을 주목하십시오. 이 경우 `string`은 문자열이 아닙니다.)
 
 ```yaml
 //paths.cue
 
-// path-value pairs
+// 경로-값 쌍
 outer: middle1: inner: 3
 outer: middle2: inner: 7
 
-// collection-constraint pair
+// 컬렉션-제약 조건 쌍
 outer: [string]: inner: int
 ```
 
@@ -249,7 +235,7 @@ outer: [string]: inner: int
 }
 ```
 
-In the same vein, CUE supports "templates", which are a bit like functions of a single argument. Here `Name` is bound to each string key immediately under `container` while the struct underneath *that* is evaluated.
+같은 맥락에서 CUE는 단일 인수의 함수와 유사한 "템플릿"을 지원합니다. 여기서 `Name`은 `container` 바로 아래의 각 문자열 키에 바인딩되는 반면, 그 아래의 구조체는 평가됩니다.
 
 ```yaml
 //templates.cue
@@ -284,23 +270,23 @@ container: {
 }
 ```
 
-And while we're talking about references like that, CUE supports scoped references.
+그리고 그러한 참조에 대해 이야기하는 동안 CUE는 범위 지정 참조를 지원합니다.
 
 ```yaml
 //scopes-and-references.cue
 v: "top-level v"
-b: v // a reference
+b: v // 참조
 a: {
-    b: v // matches the top-level v
+    b: v // 최상위 v와 일치
 }
 
 let V = v
 a: {
     v: "a's inner v"
-    c: v // matches the inner v
-    d: V // matches the top-level v now shadowed by a.v
+    c: v // 내부 v와 일치
+    d: V // a.v에 의해 가려진 최상위 v와 일치
 }
-av: a.v // matches a's v
+av: a.v // a의 v와 일치
 ```
 
 ```bash
@@ -318,9 +304,9 @@ a:
 av: a's inner v
 ```
 
-I changed the order of the keys in the output for clarity. Order doesn't actually matter, and notice that duplicate keys at a given level are *all* unified.
+명확성을 위해 출력에서 키 순서를 변경했습니다. 순서는 실제로 중요하지 않으며, 주어진 수준의 중복 키는 *모두* 통합됩니다.
 
-You can hide fields be prefixing them with `_` (quote the field if you need a `_` prefix in an emitted field)
+필드를 `_`로 접두사로 붙여 숨길 수 있습니다(내보낸 필드에 `_` 접두사가 필요한 경우 필드를 인용하십시오).
 
 ```yaml
 //hiddens.cue
@@ -344,9 +330,9 @@ foo:    4
 }
 ```
 
-Notice the difference between `eval` and `export` with respect to definitions. If you want to hide a definition in CUE, you can prefix *that* with `_`.
+정의와 관련하여 `eval`과 `export`의 차이점을 주목하십시오. CUE에서 정의를 숨기려면 `_`를 접두사로 붙일 수 있습니다.
 
-Interpolation of values and fields:
+값 및 필드 보간:
 
 ```yaml
 //interpolation.cue
@@ -372,32 +358,32 @@ cat: {
 }
 ```
 
-Operators, list comprehensions, conditionals, imports...:
+연산자, 목록 이해, 조건문, 가져오기...
 
 ```yaml
 //getting-out-of-hand-now.cue
-import "strings"  // we'll come back to this
+import "strings"  // 나중에 다시 다루겠습니다.
 
-// operators are nice
-g: 5 / 3         // CUE can do math
-h: 3 * "blah"    // and Python-like string repetition
-i: 3 * [1, 2, 3] // with lists too
-j: 8 < 10        // and supports boolean ops
+// 연산자는 좋습니다.
+g: 5 / 3         // CUE는 수학을 할 수 있습니다.
+h: 3 * "blah"    // 그리고 파이썬과 같은 문자열 반복
+i: 3 * [1, 2, 3] // 목록도 마찬가지입니다.
+j: 8 < 10        // 그리고 부울 연산도 지원합니다.
 
-// conditionals are also nice
+// 조건문도 좋습니다.
 price: number
-// Require a justification if price is too high
+// 가격이 너무 높으면 정당화가 필요합니다.
 if price > 100 {
     justification: string
 }
 price:         200
 justification: "impulse buy"
 
-// list comprehensions are powerful and compact
+// 목록 이해는 강력하고 간결합니다.
 #items: [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
 comp: [ for x in #items if x rem 2 == 0 {x*x}]
 
-// and... well you can do this too
+// 그리고... 음, 이것도 할 수 있습니다.
 #a: [ "Apple", "Google", "SpaceX"]
 for k, v in #a {
     "\( strings.ToLower(v) )": {
@@ -444,9 +430,9 @@ for k, v in #a {
 }
 ```
 
-At this point it's worth mentioning that CUE may not be Turing-complete, but it *is* powerful enough for you to shoot yourself in the foot, so do try to keep it clear. It's easy to go off the deep end and make your config *harder* to work with if you're not careful. Make use of those comments, at least, and/or...
+이 시점에서 CUE는 튜링 완전하지 않을 수 있지만, 발등을 찍을 만큼 강력하므로 명확하게 유지하도록 노력해야 합니다. 조심하지 않으면 구성 작업을 *더 어렵게* 만들 수 있습니다. 적어도 주석을 활용하거나...
 
-To that end, CUE supports packages and modules. CUE files are standalone by default, but if you put a package clause at the top, you're saying that file is unifiable with other files "in" the same package.
+이를 위해 CUE는 패키지와 모듈을 지원합니다. CUE 파일은 기본적으로 독립 실행형이지만, 상단에 패키지 절을 넣으면 해당 파일이 동일한 패키지 내의 다른 파일과 통합될 수 있음을 의미합니다.
 
 ```yaml
 //a.cue
@@ -463,29 +449,29 @@ package config
 bar: 200
 ```
 
-If you create these two files in a new directory and run `cue eval` (no arguments), it will unify them like you'd expect. It searches the current directory for .cue files, and if they all have the same package, they will be unified.
+새 디렉토리에 이 두 파일을 만들고 `cue eval`을 실행하면(인수 없음) 예상대로 통합됩니다. 현재 디렉토리에서 .cue 파일을 검색하고, 모두 동일한 패키지를 가지고 있으면 통합됩니다.
 
-Packages are more clear in the context of "modules". Modules are the *largest* unit of organization. Basically every time you have a project that spans multiple files, you should create a module and name it with something that looks like the domain and path of a URL, e.g., `example.com/something`. When you import anything from this module, even from *within* the module, you must do so using the fully-qualified module path which will be prefixed with this module name.
+패키지는 "모듈"의 맥락에서 더 명확합니다. 모듈은 조직의 *가장 큰* 단위입니다. 기본적으로 여러 파일에 걸쳐 있는 프로젝트가 있을 때마다 모듈을 만들고 URL의 도메인 및 경로와 유사한 이름(예: `example.com/something`)으로 이름을 지정해야 합니다. 이 모듈에서 무엇이든 가져올 때, 모듈 *내부*에서 가져오더라도 이 모듈 이름이 접두사로 붙는 완전한 모듈 경로를 사용해야 합니다.
 
-You can create a new module like so:
+새 모듈을 다음과 같이 만들 수 있습니다:
 
 ```bash
 mkdir mymodule && cd mymodule
 cue mod init example.com/mymodule
 ```
 
-This creates a `cue.mod/` subdirectory within that `mymodule` directory, and `cue.mod/` contains the following file and subdirectories:
+이렇게 하면 `mymodule` 디렉토리 내에 `cue.mod/` 하위 디렉토리가 생성되며, `cue.mod/`에는 다음 파일과 하위 디렉토리가 포함됩니다:
 
-- `module.cue`  (which defines your module name, in this case with `module: "example.com/mymodule"`)
+- `module.cue`  (이 경우 `module: "example.com/mymodule"`로 모듈 이름을 정의합니다)
 - pkg/
 - gen/
 - usr/
 
-For a different perspective on this and details about what's in there, see [cuelang.org/docs/concepts/packages/](https://cuelang.org/docs/concepts/packages/). For my purposes here, I'll say you don't need to think about the contents of this directory *at all*, except that your module name will be the prefix for all imports within your module.
+이에 대한 다른 관점과 내용에 대한 자세한 내용은 [cuelang.org/docs/concepts/packages/](https://cuelang.org/docs/concepts/packages/)를 참조하십시오. 여기서는 이 디렉토리의 내용에 대해 *전혀* 생각할 필요가 없다고 말하겠습니다. 단, 모듈 이름은 모듈 내의 모든 가져오기에 대한 접두사가 됩니다.
 
-Where will your module file hierarchy go? All files and directories for your module are rooted in `mymodule/`, the directory that also contains `cue.mod/`. If you want to import a package, you'll prefix it with `example.com/mymodule`, followed by a relative path rooted in `mymodule/`.
+모듈 파일 계층 구조는 어디로 갈까요? 모듈의 모든 파일과 디렉토리는 `mymodule/`에 루트를 둡니다. 이 디렉토리에는 `cue.mod/`도 포함됩니다. 패키지를 가져오려면 `example.com/mymodule`을 접두사로 붙이고 `mymodule/`에 루트를 둔 상대 경로를 사용해야 합니다.
 
-To make it concrete, consider the following:
+구체적으로 설명하자면, 다음을 고려하십시오:
 
 ```
 mymodule
@@ -499,27 +485,11 @@ mymodule
 └── main.cue
 ```
 
-`cue.mod/` and the files underneath it were created by `cue mod init example.com/mymodule`. I then created the `config/` subdirectory with `a.cue` and `b.cue` inside. Then I created `main.cue` to act as my top-level file to rule them all.
+`cue.mod/` 및 그 아래 파일은 `cue mod init example.com/mymodule`에 의해 생성되었습니다. 그런 다음 `a.cue` 및 `b.cue`가 포함된 `config/` 하위 디렉토리를 만들었습니다. 그런 다음 모든 것을 제어하는 최상위 파일 역할을 하는 `main.cue`를 만들었습니다.
 
-Running `eval` (no arguments) checks to see if there's only one package in all .cue files in the current directory, and if so, it unifies them and outputs the result. In this case, there's only main.cue with package `main` (nothing special about "main" there, it just seemed appropriate), so that's the one.
+`eval`을 실행하면(인수 없음) 현재 디렉토리의 모든 .cue 파일에 패키지가 하나만 있는지 확인하고, 그렇다면 통합하여 결과를 출력합니다. 이 경우 main.cue에만 패키지 `main`이 있으므로(여기서 "main"에 특별한 것은 없지만 적절해 보였습니다) 그것이 하나입니다.
 
-```bash
-% cue eval
-configuredBar: 200
-```
-
-The contents of `main.cue` is:
-
-```yaml
-//main.cue
-
-package main
-import "example.com/mymodule/config"
-
-configuredBar: config.bar
-```
-
-`config/a.cue` and `config/b.cue` are files from earlier, except now they've both got `package config` at the top:
+`config/a.cue` 및 `config/b.cue`는 이전 파일이지만, 이제 둘 다 상단에 `package config`가 있습니다:
 
 ```yaml
 //a.cue
@@ -536,18 +506,18 @@ package config
 bar: 200
 ```
 
-So there you go. If you want to verify that it's actually unifying both files under `config/`, you can change `bar: int` to `bar: string` in `a.cue` and re-run `cue eval` to get a nice type error:
+따라서 그렇습니다. `config/` 아래의 두 파일이 실제로 통합되는지 확인하려면 `a.cue`에서 `bar: int`를 `bar: string`으로 변경하고 `cue eval`을 다시 실행하여 멋진 유형 오류를 얻을 수 있습니다:
 
 ```
 cue eval                                                                     2022-01-06 17:51:24
-configuredBar: conflicting values string and 200 (mismatched types string and int):
+configuredBar: "string"과 200의 충돌 값(문자열과 int 유형 불일치):
     ./config/a.cue:4:6
     ./config/b.cue:3:6
     ./main.cue:5:16
 ```
 
-That's it for now. I understand there are more package management features coming in the future and the design decisions around `cue.mod` are looking ahead to that.
+지금은 여기까지입니다. 앞으로 더 많은 패키지 관리 기능이 추가될 것이며 `cue.mod`에 대한 설계 결정은 이를 미리 내다보고 있다는 것을 이해합니다.
 
-Finally, CUE has built-in modules with powerful functionality. We saw one of these earlier, when we imported "strings" and used `strings.ToLower`. Imports without fully-qualified module names are assumed to be built-ins. The full list and documentation for each is here: [pkg.go.dev/cuelang.org/go/pkg](https://pkg.go.dev/cuelang.org/go/pkg)
+마지막으로, CUE에는 강력한 기능을 가진 내장 모듈이 있습니다. 이전에 "strings"를 가져와 `strings.ToLower`를 사용했을 때 그 중 하나를 보았습니다. 완전한 모듈 이름이 없는 가져오기는 내장 기능으로 간주됩니다. 전체 목록과 각 기능에 대한 문서는 여기에서 찾을 수 있습니다: [pkg.go.dev/cuelang.org/go/pkg](https://pkg.go.dev/cuelang.org/go/pkg)
 
-This has been a condensation of the official docs and tutorials, so go give the source material some love: [cuelang.org/docs/tutorials/](https://cuelang.org/docs/tutorials/)
+이것은 공식 문서 및 튜토리얼을 요약한 것이므로 원본 자료에 관심을 가져주십시오: [cuelang.org/docs/tutorials/](https://cuelang.org/docs/tutorials/)

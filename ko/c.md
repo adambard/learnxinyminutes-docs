@@ -1,5 +1,3 @@
-# c.md (번역)
-
 ---
 name: C
 filename: learnc.c
@@ -8,321 +6,288 @@ contributors:
   - ["Árpád Goretity", "http://twitter.com/H2CO3_iOS"]
   - ["Jakub Trzebiatowski", "http://cbs.stgn.pl"]
   - ["Marco Scannadinari", "https://marcoms.github.io"]
-  - ["Zachary Ferguson", "https://github.io/zfergus2"]
+  - ["Zachary Ferguson", "https://github.com/zfergus2"]
   - ["himanshu", "https://github.com/himanshu81494"]
   - ["Joshua Li", "https://github.com/JoshuaRLi"]
   - ["Dragos B. Chirila", "https://github.com/dchirila"]
   - ["Heitor P. de Bittencourt", "https://github.com/heitorPB/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-Ah, C. Still **the** language of modern high-performance computing.
+아, C. 여전히 현대 고성능 컴퓨팅의 **언어**입니다.
 
-C is the lowest-level language most programmers will ever use, but
-it more than makes up for it with raw speed. Just be aware of its manual
-memory management and C will take you as far as you need to go.
+C는 대부분의 프로그래머가 사용할 가장 낮은 수준의 언어이지만,
+원시 속도로 그것을 보완합니다. 수동 메모리 관리에 유의하면 C는 필요한 만큼 멀리 데려다 줄 것입니다.
 
 ```c
-// Single-line comments start with // - only available in C99 and later.
+// 한 줄 주석은 //로 시작합니다 - C99 이상에서만 사용 가능합니다.
 
 /*
-Multi-line comments look like this. They work in C89 as well.
+여러 줄 주석은 이렇습니다. C89에서도 작동합니다.
 */
 
 /*
-Multi-line comments don't nest /* Be careful */  // comment ends on this line...
-*/ // ...not this one!
+여러 줄 주석은 중첩되지 않습니다 /* 조심하세요 */  // 주석은 이 줄에서 끝납니다...
+*/ // ...이 줄이 아닙니다!
 
-// Constants: #define <keyword>
-// Constants are written in all-caps out of convention, not requirement
+// 상수: #define <키워드>
+// 상수는 요구 사항이 아닌 관례상 대문자로 작성됩니다.
 #define DAYS_IN_YEAR 365
 
-// Enumeration constants are also ways to declare constants.
-// All statements must end with a semicolon
+// 열거형 상수는 상수를 선언하는 또 다른 방법입니다.
+// 모든 문장은 세미콜론으로 끝나야 합니다.
 enum days {SUN, MON, TUE, WED, THU, FRI, SAT};
-// SUN gets 0, MON gets 1, TUE gets 2, etc.
+// SUN은 0, MON은 1, TUE는 2 등을 얻습니다.
 
-// Enumeration values can also be specified
+// 열거형 값도 지정할 수 있습니다.
 enum days {SUN = 1, MON, TUE, WED = 99, THU, FRI, SAT};
-// MON gets 2 automatically, TUE gets 3, etc.
-// WED gets 99, THU gets 100, FRI gets 101, etc.
+// MON은 자동으로 2, TUE는 3 등을 얻습니다.
+// WED는 99, THU는 100, FRI는 101 등을 얻습니다.
 
-// Import headers with #include
+// #include로 헤더 가져오기
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-// File names between <angle brackets> tell the compiler to look in your system
-// libraries for the headers.
-// For your own headers, use double quotes instead of angle brackets, and
-// provide the path:
-#include "my_header.h" 		// local file
-#include "../my_lib/my_lib_header.h" // relative path
+// <꺾쇠 괄호> 사이의 파일 이름은 컴파일러에게 시스템 라이브러리에서
+// 헤더를 찾도록 지시합니다.
+// 자신의 헤더의 경우 꺾쇠 괄호 대신 큰따옴표를 사용하고
+// 경로를 제공하십시오:
+#include "my_header.h" 	// 로컬 파일
+#include "../my_lib/my_lib_header.h" // 상대 경로
 
-// Declare function signatures in advance in a .h file, or at the top of
-// your .c file.
+// .h 파일이나 .c 파일 상단에 미리 함수 시그니처를 선언하십시오.
 void function_1();
 int function_2(void);
 
-// At a minimum, you must declare a 'function prototype' before its use in any function.
-// Normally, prototypes are placed at the top of a file before any function definition.
-int add_two_ints(int x1, int x2); // function prototype
-// although `int add_two_ints(int, int);` is also valid (no need to name the args),
-// it is recommended to name arguments in the prototype as well for easier inspection
+// 최소한 함수에서 사용하기 전에 '함수 프로토타입'을 선언해야 합니다.
+// 일반적으로 프로토타입은 함수 정의 전에 파일 상단에 배치됩니다.
+int add_two_ints(int x1, int x2); // 함수 프로토타입
+// `int add_two_ints(int, int);`도 유효하지만(인수 이름을 지정할 필요 없음), 
+// 더 쉬운 검사를 위해 프로토타입에도 인수 이름을 지정하는 것이 좋습니다.
 
-// Function prototypes are not necessary if the function definition comes before
-// any other function that calls that function. However, it's standard practice to
-// always add the function prototype to a header file (*.h) and then #include that
-// file at the top. This prevents any issues where a function might be called
-// before the compiler knows of its existence, while also giving the developer a
-// clean header file to share with the rest of the project.
+// 함수 정의가 해당 함수를 호출하는 다른 함수보다 먼저 나오면 함수 프로토타입은 필요하지 않습니다. 그러나 표준 관행은 항상 함수 프로토타입을 헤더 파일(*.h)에 추가한 다음 해당 파일을 파일 상단에 #include하는 것입니다. 이렇게 하면 함수가 컴파일러가 존재를 알기 전에 호출될 수 있는 문제를 방지하는 동시에 개발자에게 프로젝트의 나머지 부분과 공유할 깨끗한 헤더 파일을 제공합니다.
 
-// Your program's entry point is a function called "main". The return type can
-// be anything, however most operating systems expect a return type of `int` for
-// error code processing.
+// 프로그램의 진입점은 "main"이라는 함수입니다. 반환 유형은 무엇이든 될 수 있지만 대부분의 운영 체제는 오류 코드 처리를 위해 `int`의 반환 유형을 예상합니다.
 int main(void) {
-  // your program
+  // 프로그램
 }
 
-// The command line arguments used to run your program are also passed to main
-// argc being the number of arguments - your program's name counts as 1
-// argv is an array of character arrays - containing the arguments themselves
-// argv[0] = name of your program, argv[1] = first argument, etc.
+// 프로그램을 실행하는 데 사용되는 명령줄 인수는 main에도 전달됩니다.
+// argc는 인수 수입니다 - 프로그램 이름은 1로 계산됩니다.
+// argv는 문자 배열의 배열입니다 - 인수 자체를 포함합니다.
+// argv[0] = 프로그램 이름, argv[1] = 첫 번째 인수 등
 int main (int argc, char** argv)
 {
-  // print output using printf, for "print formatted"
-  // %d is an integer, \n is a newline
-  printf("%d\n", 0); // => Prints 0
+  // printf를 사용하여 출력 인쇄, "print formatted"의 경우
+  // %d는 정수, \n는 줄 바꿈입니다.
+  printf("%d\n", 0); // => 0 인쇄
 
-  // take input using scanf
-  // '&' is used to define the location
-  // where we want to store the input value
+  // scanf를 사용하여 입력 받기
+  // '&'는 입력 값을 저장할 위치를 정의하는 데 사용됩니다.
   int input;
   scanf("%d", &input);
 
   ///////////////////////////////////////
-  // Types
+  // 유형
   ///////////////////////////////////////
 
-  // Compilers that are not C99-compliant require that variables MUST be
-  // declared at the top of the current block scope.
-  // Compilers that ARE C99-compliant allow declarations near the point where
-  // the value is used.
-  // For the sake of the tutorial, variables are declared dynamically under
-  // C99-compliant standards.
+  // C99를 준수하지 않는 컴파일러는 변수가 현재 블록 범위의 맨 위에 선언되어야 합니다.
+  // C99를 준수하는 컴파일러는 값이 사용되는 지점 근처에 선언할 수 있습니다.
+  // 튜토리얼을 위해 변수는 C99 준수 표준에 따라 동적으로 선언됩니다.
 
-  // ints are usually 4 bytes (use the `sizeof` operator to check)
+  // int는 일반적으로 4바이트입니다(`sizeof` 연산자를 사용하여 확인).
   int x_int = 0;
 
-  // shorts are usually 2 bytes (use the `sizeof` operator to check)
+  // short는 일반적으로 2바이트입니다(`sizeof` 연산자를 사용하여 확인).
   short x_short = 0;
 
-  // chars are defined as the smallest addressable unit for a processor.
-  // This is usually 1 byte, but for some systems it can be more (ex. for TMS320 from TI it's 2 bytes).
+  // char는 프로세서에 대해 가장 작은 주소 지정 가능 단위로 정의됩니다.
+  // 이것은 일반적으로 1바이트이지만 일부 시스템에서는 더 많을 수 있습니다(예: TI의 TMS320의 경우 2바이트).
   char x_char = 0;
-  char y_char = 'y'; // Char literals are quoted with ''
+  char y_char = 'y'; // Char 리터럴은 ''로 인용됩니다.
 
-  // longs are often 4 to 8 bytes; long longs are guaranteed to be at least
-  // 8 bytes
+  // long은 종종 4~8바이트입니다. long long은 최소 8바이트가 보장됩니다.
   long x_long = 0;
   long long x_long_long = 0;
 
-  // floats are usually 32-bit floating point numbers
-  float x_float = 0.0f; // 'f' suffix here denotes floating point literal
+  // float는 일반적으로 32비트 부동 소수점 숫자입니다.
+  float x_float = 0.0f; // 'f' 접미사는 부동 소수점 리터럴을 나타냅니다.
 
-  // doubles are usually 64-bit floating-point numbers
-  double x_double = 0.0; // real numbers without any suffix are doubles
+  // double은 일반적으로 64비트 부동 소수점 숫자입니다.
+  double x_double = 0.0; // 접미사가 없는 실수 숫자는 double입니다.
 
-  // integer types may be unsigned (greater than or equal to zero)
+  // 정수 유형은 부호가 없을 수 있습니다(0보다 크거나 같음).
   unsigned short ux_short;
   unsigned int ux_int;
   unsigned long long ux_long_long;
 
-  // chars inside single quotes are integers in machine's character set.
-  '0'; // => 48 in the ASCII character set.
-  'A'; // => 65 in the ASCII character set.
+  // 작은따옴표 안의 문자는 기계의 문자 집합에 있는 정수입니다.
+  '0'; // => ASCII 문자 집합에서 48.
+  'A'; // => ASCII 문자 집합에서 65.
 
-  // sizeof(T) gives you the size of a variable with type T in bytes
-  // sizeof(obj) yields the size of the expression (variable, literal, etc.).
-  printf("%zu\n", sizeof(int)); // => 4 (on most machines with 4-byte words)
+  // sizeof(T)는 유형 T를 가진 변수의 크기를 바이트 단위로 제공합니다.
+  // sizeof(obj)는 표현식(변수, 리터럴 등)의 크기를 산출합니다.
+  printf("%zu\n", sizeof(int)); // => 4 (4바이트 워드가 있는 대부분의 컴퓨터에서)
 
-  // If the argument of the `sizeof` operator is an expression, then its argument
-  // is not evaluated (except VLAs (see below)).
-  // The value it yields in this case is a compile-time constant.
+  // `sizeof` 연산자의 인수가 표현식인 경우 해당 인수는 평가되지 않습니다(VLA(아래 참조) 제외).
+  // 이 경우 산출하는 값은 컴파일 타임 상수입니다.
   int a = 1;
-  // size_t is an unsigned integer type of at least 2 bytes used to represent
-  // the size of an object.
-  size_t size = sizeof(a++); // a++ is not evaluated
+  // size_t는 객체의 크기를 나타내는 데 사용되는 최소 2바이트의 부호 없는 정수 유형입니다.
+  size_t size = sizeof(a++); // a++는 평가되지 않습니다.
   printf("sizeof(a++) = %zu where a = %d\n", size, a);
-  // prints "sizeof(a++) = 4 where a = 1" (on a 32-bit architecture)
+  // "sizeof(a++) = 4 where a = 1" 인쇄 (32비트 아키텍처에서)
 
-  // Arrays must be initialized with a concrete size.
-  char my_char_array[20]; // This array occupies 1 * 20 = 20 bytes
-  int my_int_array[20]; // This array occupies 4 * 20 = 80 bytes
-  // (assuming 4-byte words)
+  // 배열은 구체적인 크기로 초기화해야 합니다.
+  char my_char_array[20]; // 이 배열은 1 * 20 = 20바이트를 차지합니다.
+  int my_int_array[20]; // 이 배열은 4 * 20 = 80바이트를 차지합니다.
+  // (4바이트 워드 가정)
 
-  // You can initialize an array of twenty ints that all equal 0 thusly:
+  // 모두 0과 같은 20개의 int 배열을 다음과 같이 초기화할 수 있습니다:
   int my_array[20] = {0};
-  // where the "{0}" part is called an "array initializer".
-  // All elements (if any) past the ones in the initializer are initialized to 0:
+  // 여기서 "{0}" 부분은 "배열 초기화자"라고 합니다.
+  // 초기화자에 있는 것 이후의 모든 요소(있는 경우)는 0으로 초기화됩니다:
   int my_array[5] = {1, 2};
-  // So my_array now has five elements, all but the first two of which are 0:
+  // 따라서 my_array는 이제 5개의 요소를 가지며, 처음 두 개를 제외한 모든 요소는 0입니다:
   // [1, 2, 0, 0, 0]
-  // NOTE that you get away without explicitly declaring the size
-  // of the array IF you initialize the array on the same line:
+  // 참고: 동일한 줄에서 배열을 초기화하는 경우 배열의 크기를 명시적으로 선언하지 않아도 됩니다:
   int my_array[] = {0};
-  // NOTE that, when not declaring the size, the size of the array is the number
-  // of elements in the initializer. With "{0}", my_array is now of size one: [0]
-  // To evaluate the size of the array at run-time, divide its byte size by the
-  // byte size of its element type:
+  // 참고: 크기를 선언하지 않을 때 배열의 크기는 초기화자의 요소 수입니다. "{0}"을 사용하면 my_array는 이제 크기가 1입니다: [0]
+  // 런타임에 배열의 크기를 평가하려면 바이트 크기를 요소 유형의 바이트 크기로 나눕니다:
   size_t my_array_size = sizeof(my_array) / sizeof(my_array[0]);
-  // WARNING You should evaluate the size *before* you begin passing the array
-  // to functions (see later discussion) because arrays get "downgraded" to
-  // raw pointers when they are passed to functions (so the statement above
-  // will produce the wrong result inside the function).
+  // 경고: 배열이 함수에 전달될 때 원시 포인터로 "다운그레이드"되므로 함수 내에서 잘못된 결과를 생성합니다. 따라서 위의 문은 함수 내에서 잘못된 결과를 생성합니다.
 
-  // Indexing an array is like other languages -- or,
-  // rather, other languages are like C
+  // 배열 인덱싱은 다른 언어와 같습니다 -- 또는
+  // 다른 언어는 C와 같습니다.
   my_array[0]; // => 0
 
-  // Arrays are mutable; it's just memory!
+  // 배열은 변경 가능합니다. 그냥 메모리입니다!
   my_array[1] = 2;
   printf("%d\n", my_array[1]); // => 2
 
-  // In C99 (and as an optional feature in C11), variable-length arrays (VLAs)
-  // can be declared as well. The size of such an array need not be a compile
-  // time constant:
-  printf("Enter the array size: "); // ask the user for an array size
+  // C99(및 C11의 선택적 기능)에서는 가변 길이 배열(VLA)도 선언할 수 있습니다. 이러한 배열의 크기는 컴파일 타임 상수가 아니어도 됩니다:
+  printf("Enter the array size: "); // 사용자에게 배열 크기 요청
   int array_size;
   fscanf(stdin, "%d", &array_size);
-  int var_length_array[array_size]; // declare the VLA
+  int var_length_array[array_size]; // VLA 선언
   printf("sizeof array = %zu\n", sizeof var_length_array);
 
-  // Example:
+  // 예:
   // > Enter the array size: 10
   // > sizeof array = 40
 
-  // Strings are just arrays of chars terminated by a NULL (0x00) byte,
-  // represented in strings as the special character '\0'.
-  // (We don't have to include the NULL byte in string literals; the compiler
-  //  inserts it at the end of the array for us.)
+  // 문자열은 NULL(0x00) 바이트로 끝나는 문자 배열일 뿐이며, 문자열에서는 특수 문자 '\0'으로 표현됩니다.
+  // (문자열 리터럴에 NULL 바이트를 포함할 필요는 없습니다. 컴파일러가 배열 끝에 자동으로 삽입합니다.)
   char a_string[20] = "This is a string";
-  printf("%s\n", a_string); // %s formats a string
+  printf("%s\n", a_string); // %s는 문자열 형식을 지정합니다.
 
   printf("%d\n", a_string[16]); // => 0
-  // i.e., byte #17 is 0 (as are 18, 19, and 20)
+  // 즉, 17번째 바이트는 0입니다(18, 19, 20도 마찬가지).
 
-  // If we have characters between single quotes, that's a character literal.
-  // It's of type `int`, and *not* `char` (for historical reasons).
-  int cha = 'a'; // fine
-  char chb = 'a'; // fine too (implicit conversion from int to char)
+  // 작은따옴표 안의 문자는 문자 리터럴입니다.
+  // `int` 유형이며 `char`가 아닙니다(역사적인 이유로).
+  int cha = 'a'; // 괜찮음
+  char chb = 'a'; // 괜찮음(int에서 char로의 암시적 변환)
 
-  // Multi-dimensional arrays:
+  // 다차원 배열:
   int multi_array[2][5] = {
     {1, 2, 3, 4, 5},
     {6, 7, 8, 9, 0}
   };
-  // access elements:
+  // 요소에 접근:
   int array_int = multi_array[0][2]; // => 3
 
   ///////////////////////////////////////
-  // Operators
+  // 연산자
   ///////////////////////////////////////
 
-  // Shorthands for multiple declarations:
+  // 여러 선언에 대한 약어:
   int i1 = 1, i2 = 2;
   float f1 = 1.0, f2 = 2.0;
 
   int b, c;
   b = c = 0;
 
-  // Arithmetic is straightforward
+  // 산술은 간단합니다.
   i1 + i2; // => 3
   i2 - i1; // => 1
   i2 * i1; // => 2
-  i1 / i2; // => 0 (0.5, but truncated towards 0)
+  i1 / i2; // => 0 (0.5이지만 0으로 잘림)
 
-  // You need to cast at least one integer to float to get a floating-point result
+  // 부동 소수점 결과를 얻으려면 최소한 하나의 정수를 float로 캐스팅해야 합니다.
   (float)i1 / i2; // => 0.5f
-  i1 / (double)i2; // => 0.5 // Same with double
-  f1 / f2; // => 0.5, plus or minus epsilon
+  i1 / (double)i2; // => 0.5 // double도 마찬가지
+  f1 / f2; // => 0.5, 플러스 또는 마이너스 엡실론
 
-  // Floating-point numbers are defined by IEEE 754, thus cannot store perfectly
-  // exact values. For instance, the following does not produce expected results
-  // because 0.1 might actually be 0.099999999999 inside the computer, and 0.3
-  // might be stored as 0.300000000001.
-  (0.1 + 0.1 + 0.1) != 0.3; // => 1 (true)
-  // and it is NOT associative due to reasons mentioned above.
-  1 + (1e123 - 1e123) != (1 + 1e123) - 1e123; // => 1 (true)
-  // this notation is scientific notations for numbers: 1e123 = 1*10^123
+  // 부동 소수점 숫자는 IEEE 754로 정의되므로 완벽하게 정확한 값을 저장할 수 없습니다. 예를 들어, 다음은 예상 결과를 생성하지 않습니다. 0.1은 실제로 컴퓨터 내부에서 0.099999999999일 수 있고 0.3은 0.300000000001로 저장될 수 있기 때문입니다.
+  (0.1 + 0.1 + 0.1) != 0.3; // => 1 (참)
+  // 그리고 위에서 언급한 이유로 결합 법칙이 성립하지 않습니다.
+  1 + (1e123 - 1e123) != (1 + 1e123) - 1e123; // => 1 (참)
+  // 이 표기법은 숫자에 대한 과학적 표기법입니다: 1e123 = 1*10^123
 
-  // It is important to note that most all systems have used IEEE 754 to
-  // represent floating points. Even python, used for scientific computing,
-  // eventually calls C which uses IEEE 754. It is mentioned this way not to
-  // indicate that this is a poor implementation, but instead as a warning
-  // that when doing floating point comparisons, a little bit of error (epsilon)
-  // needs to be considered.
+  // 대부분의 시스템이 부동 소수점을 나타내기 위해 IEEE 754를 사용했다는 점은 주목할 가치가 있습니다. 과학 컴퓨팅에 사용되는 파이썬조차도 결국 IEEE 754를 사용하는 C를 호출합니다. 이것은 이것이 잘못된 구현임을 나타내는 것이 아니라 부동 소수점 비교를 수행할 때 약간의 오류(엡실론)를 고려해야 한다는 경고로 언급됩니다.
 
-  // Modulo is there as well, but be careful if arguments are negative
+  // 모듈로도 있지만 인수가 음수이면 조심하십시오.
   11 % 3;    // => 2 as 11 = 2 + 3*x (x=3)
-  (-11) % 3; // => -2, as one would expect
-  11 % (-3); // => 2 and not -2, and it's quite counter intuitive
+  (-11) % 3; // => -2, 예상대로
+  11 % (-3); // => 2이고 -2가 아니며, 상당히 직관적이지 않습니다.
 
-  // Comparison operators are probably familiar, but
-  // there is no Boolean type in C. We use ints instead.
-  // (C99 introduced the _Bool type provided in stdbool.h)
-  // 0 is false, anything else is true. (The comparison
-  // operators always yield 0 or 1.)
-  3 == 2; // => 0 (false)
-  3 != 2; // => 1 (true)
+  // 비교 연산자는 아마도 익숙할 것이지만,
+  // C에는 부울 유형이 없습니다. 대신 int를 사용합니다.
+  // (C99는 stdbool.h에 제공된 _Bool 유형을 도입했습니다.)
+  // 0은 거짓이고, 다른 모든 것은 참입니다. (비교 연산자는 항상 0 또는 1을 산출합니다.)
+  3 == 2; // => 0 (거짓)
+  3 != 2; // => 1 (참)
   3 > 2;  // => 1
   3 < 2;  // => 0
   2 <= 2; // => 1
   2 >= 2; // => 1
 
-  // C is not Python - comparisons do NOT chain.
-  // Warning: The line below will compile, but it means `(0 < a) < 2`.
-  // This expression is always true, because (0 < a) could be either 1 or 0.
-  // In this case it's 1, because (0 < 1).
+  // C는 파이썬이 아닙니다 - 비교는 연결되지 않습니다.
+  // 경고: 아래 줄은 컴파일되지만 `(0 < a) < 2`를 의미합니다.
+  // 이 표현식은 항상 참입니다. 왜냐하면 (0 < a)는 1 또는 0일 수 있기 때문입니다.
+  // 이 경우 (0 < 1)이므로 1입니다.
   int between_0_and_2 = 0 < a < 2;
-  // Instead use:
+  // 대신 다음을 사용하십시오:
   int between_0_and_2 = 0 < a && a < 2;
 
-  // Logic works on ints
-  !3; // => 0 (Logical not)
+  // 논리는 int에서 작동합니다.
+  !3; // => 0 (논리 부정)
   !0; // => 1
-  1 && 1; // => 1 (Logical and)
+  1 && 1; // => 1 (논리곱)
   0 && 1; // => 0
-  0 || 1; // => 1 (Logical or)
+  0 || 1; // => 1 (논리합)
   0 || 0; // => 0
 
-  // Conditional ternary expression ( ? : )
+  // 조건부 삼항 표현식 ( ? : )
   int e = 5;
   int f = 10;
   int z;
   z = (e > f) ? e : f; // => 10 "if e > f return e, else return f."
 
-  // Increment and decrement operators:
+  // 증가 및 감소 연산자:
   int j = 0;
-  int s = j++; // Return j THEN increase j. (s = 0, j = 1)
-  s = ++j; // Increase j THEN return j. (s = 2, j = 2)
-  // same with j-- and --j
+  int s = j++; // j를 반환한 다음 j를 증가시킵니다. (s = 0, j = 1)
+  s = ++j; // j를 증가시킨 다음 j를 반환합니다. (s = 2, j = 2)
+  // j-- 및 --j도 마찬가지입니다.
 
-  // Bitwise operators!
-  ~0x0F; // => 0xFFFFFFF0 (bitwise negation, "1's complement", example result for 32-bit int)
-  0x0F & 0xF0; // => 0x00 (bitwise AND)
-  0x0F | 0xF0; // => 0xFF (bitwise OR)
-  0x04 ^ 0x0F; // => 0x0B (bitwise XOR)
-  0x01 << 1; // => 0x02 (bitwise left shift (by 1))
-  0x02 >> 1; // => 0x01 (bitwise right shift (by 1))
+  // 비트 연산자!
+  ~0x0F; // => 0xFFFFFFF0 (비트 부정, "1의 보수", 32비트 int에 대한 예제 결과)
+  0x0F & 0xF0; // => 0x00 (비트 AND)
+  0x0F | 0xF0; // => 0xFF (비트 OR)
+  0x04 ^ 0x0F; // => 0x0B (비트 XOR)
+  0x01 << 1; // => 0x02 (비트 왼쪽 시프트 (1만큼))
+  0x02 >> 1; // => 0x01 (비트 오른쪽 시프트 (1만큼))
 
-  // Be careful when shifting signed integers - the following are undefined:
-  // - shifting into the sign bit of a signed integer (int a = 1 << 31)
-  // - left-shifting a negative number (int a = -1 << 2)
-  // - shifting by an offset which is >= the width of the type of the LHS:
-  //   int a = 1 << 32; // UB if int is 32 bits wide
+  // 부호 있는 정수를 시프트할 때 조심하십시오 - 다음은 정의되지 않았습니다:
+  // - 부호 있는 정수의 부호 비트로 시프트 (int a = 1 << 31)
+  // - 음수를 왼쪽으로 시프트 (int a = -1 << 2)
+  // - LHS의 유형 너비보다 크거나 같은 오프셋으로 시프트:
+  //   int a = 1 << 32; // int가 32비트 너비인 경우 UB
 
   ///////////////////////////////////////
-  // Control Structures
+  // 제어 구조
   ///////////////////////////////////////
 
   if (0) {
@@ -333,273 +298,243 @@ int main (int argc, char** argv)
     printf("I print\n");
   }
 
-  // While loops exist
+  // While 루프가 있습니다.
   int ii = 0;
-  while (ii < 10) { // ANY value less than ten is true.
-    printf("%d, ", ii++); // ii++ increments ii AFTER using its current value.
-  } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+  while (ii < 10) { // 10보다 작은 모든 값은 참입니다.
+    printf("%d, ", ii++); // ii++는 현재 값을 사용한 후 ii를 증가시킵니다.
+  } // => "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, " 인쇄
 
   printf("\n");
 
   int kk = 0;
   do {
     printf("%d, ", kk);
-  } while (++kk < 10); // ++kk increments kk BEFORE using its current value.
-  // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+  } while (++kk < 10); // ++kk는 현재 값을 사용하기 전에 kk를 증가시킵니다.
+  // => "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, " 인쇄
 
   printf("\n");
 
-  // For loops too
+  // For 루프도 있습니다.
   int jj;
   for (jj=0; jj < 10; jj++) {
     printf("%d, ", jj);
-  } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
+  } // => "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, " 인쇄
 
   printf("\n");
 
-  // *****NOTES*****:
-  // Loops and Functions MUST have a body. If no body is needed:
+  // *****참고*****:
+  // 루프와 함수는 반드시 본문을 가져야 합니다. 본문이 필요하지 않은 경우:
   int i;
   for (i = 0; i <= 5; i++) {
-    ; // use semicolon to act as the body (null statement)
+    ; // 세미콜론을 사용하여 본문 역할을 합니다(null 문).
   }
-  // Or
+  // 또는
   for (i = 0; i <= 5; i++);
 
-  // branching with multiple choices: switch()
+  // 여러 선택肢가 있는 분기: switch()
   switch (a) {
-  case 0: // labels need to be integral *constant* expressions (such as enums)
+  case 0: // 레이블은 정수 *상수* 표현식이어야 합니다(예: 열거형).
     printf("Hey, 'a' equals 0!\n");
-    break; // if you don't break, control flow falls over labels
+    break; // break하지 않으면 제어 흐름이 레이블을 넘어갑니다.
   case 1:
     printf("Huh, 'a' equals 1!\n");
     break;
-    // Be careful - without a "break", execution continues until the
-    // next "break" is reached.
+    // 조심하세요 - "break"가 없으면 다음 "break"에 도달할 때까지 실행이 계속됩니다.
   case 3:
   case 4:
     printf("Look at that.. 'a' is either 3, or 4\n");
     break;
   default:
-    // if `some_integral_expression` didn't match any of the labels
+    // `some_integral_expression`이 레이블과 일치하지 않는 경우
     fputs("Error!\n", stderr);
     exit(-1);
     break;
   }
   /*
-    Using "goto" in C
+    C에서 "goto" 사용
   */
   int i, j;
   for(i=0; i<100; ++i)
   for(j=0; j<100; ++j)
   {
     if((i + j) >= 150) {
-        goto error;  // exit both for loops immediately
+        goto error;  // 두 for 루프를 즉시 종료합니다.
     }
   }
   printf("No error found. Completed normally.\n");
   goto end;
 
-  error: // this is a label that you can "jump" to with "goto error;"
+  error: // 이것은 "goto error;"로 "점프"할 수 있는 레이블입니다.
   printf("Error occurred at i = %d & j = %d.\n", i, j);
   end:
     return 0
   /*
     https://ideone.com/z7nzKJ
-    this will print out "Error occurred at i = 51 & j = 99."
+    이것은 "Error occurred at i = 51 & j = 99."를 인쇄합니다.
   */
   /*
-    it is generally considered bad practice to do so, except if
-    you really know what you are doing. See
+    일반적으로 무엇을 하는지 정말로 알지 못하는 한 그렇게 하는 것은 나쁜 관행으로 간주됩니다. 참조
     https://en.wikipedia.org/wiki/Spaghetti_code#Meaning
   */
 
   ///////////////////////////////////////
-  // Typecasting
+  // 타입캐스팅
   ///////////////////////////////////////
 
-  // Every value in C has a type, but you can cast one value into another type
-  // if you want (with some constraints).
+  // C의 모든 값에는 유형이 있지만, 원하는 경우 한 값을 다른 유형으로 캐스팅할 수 있습니다(일부 제약 조건 있음).
 
-  int x_hex = 0x01; // You can assign vars with hex literals
-                    // binary is not in the standard, but allowed by some
-                    // compilers (x_bin = 0b0010010110)
+  int x_hex = 0x01; // 16진수 리터럴로 변수를 할당할 수 있습니다.
+                    // 이진수는 표준에 없지만 일부 컴파일러에서 허용됩니다(x_bin = 0b0010010110).
 
-  // Casting between types will attempt to preserve their numeric values
-  printf("%d\n", x_hex); // => Prints 1
-  printf("%d\n", (short) x_hex); // => Prints 1
-  printf("%d\n", (char) x_hex); // => Prints 1
+  // 유형 간 캐스팅은 숫자 값을 보존하려고 시도합니다.
+  printf("%d\n", x_hex); // => 1 인쇄
+  printf("%d\n", (short) x_hex); // => 1 인쇄
+  printf("%d\n", (char) x_hex); // => 1 인쇄
 
-  // If you assign a value greater than a types max val, it will rollover
-  // without warning.
-  printf("%d\n", (unsigned char) 257); // => 1 (Max char = 255 if char is 8 bits long)
+  // 유형의 최대값보다 큰 값을 할당하면 경고 없이 롤오버됩니다.
+  printf("%d\n", (unsigned char) 257); // => 1 (char가 8비트 길이인 경우 최대 char = 255)
 
-  // For determining the max value of a `char`, a `signed char` and an `unsigned char`,
-  // respectively, use the CHAR_MAX, SCHAR_MAX and UCHAR_MAX macros from <limits.h>
+  // `char`, `signed char` 및 `unsigned char`의 최대값을 결정하려면 각각 <limits.h>의 CHAR_MAX, SCHAR_MAX 및 UCHAR_MAX 매크로를 사용하십시오.
 
-  // Integral types can be cast to floating-point types, and vice-versa.
-  printf("%f\n", (double) 100); // %f always formats a double...
-  printf("%f\n", (float)  100); // ...even with a float.
+  // 정수 유형은 부동 소수점 유형으로 캐스팅할 수 있으며 그 반대도 마찬가지입니다.
+  printf("%f\n", (double) 100); // %f는 항상 double 형식을 지정합니다...
+  printf("%f\n", (float)  100); // ...float도 마찬가지입니다.
   printf("%d\n", (char)100.0);
 
   ///////////////////////////////////////
-  // Pointers
+  // 포인터
   ///////////////////////////////////////
 
-  // A pointer is a variable declared to store a memory address. Its declaration will
-  // also tell you the type of data it points to. You can retrieve the memory address
-  // of your variables, then mess with them.
+  // 포인터는 메모리 주소를 저장하도록 선언된 변수입니다. 해당 선언은 가리키는 데이터 유형도 알려줍니다. 변수의 메모리 주소를 검색한 다음 조작할 수 있습니다.
 
   int x = 0;
-  printf("%p\n", (void *)&x); // Use & to retrieve the address of a variable
-  // (%p formats an object pointer of type void *)
-  // => Prints some address in memory;
+  printf("%p\n", (void *)&x); // &를 사용하여 변수의 주소를 검색합니다.
+  // (%p는 void * 유형의 객체 포인터 형식을 지정합니다.)
+  // => 메모리의 일부 주소를 인쇄합니다.
 
-  // Pointers start with * in their declaration
-  int *px, not_a_pointer; // px is a pointer to an int
-  px = &x; // Stores the address of x in px
-  printf("%p\n", (void *)px); // => Prints some address in memory
+  // 포인터는 선언에서 *로 시작합니다.
+  int *px, not_a_pointer; // px는 int에 대한 포인터입니다.
+  px = &x; // x의 주소를 px에 저장합니다.
+  printf("%p\n", (void *)px); // => 메모리의 일부 주소를 인쇄합니다.
   printf("%zu, %zu\n", sizeof(px), sizeof(not_a_pointer));
-  // => Prints "8, 4" on a typical 64-bit system
+  // => 일반적인 64비트 시스템에서 "8, 4"를 인쇄합니다.
 
-  // To retrieve the value at the address a pointer is pointing to,
-  // put * in front to dereference it.
-  // Note: yes, it may be confusing that '*' is used for _both_ declaring a
-  // pointer and dereferencing it.
-  printf("%d\n", *px); // => Prints 0, the value of x
+  // 포인터가 가리키는 주소의 값을 검색하려면 앞에 *를 붙여 역참조합니다.
+  // 참고: 예, *가 포인터를 선언하고 역참조하는 데 모두 사용되어 혼란스러울 수 있습니다.
+  printf("%d\n", *px); // => x의 값인 0을 인쇄합니다.
 
-  // You can also change the value the pointer is pointing to.
-  // We'll have to wrap the dereference in parenthesis because
-  // ++ has a higher precedence than *.
-  (*px)++; // Increment the value px is pointing to by 1
-  printf("%d\n", *px); // => Prints 1
-  printf("%d\n", x); // => Prints 1
+  // 포인터가 가리키는 값을 변경할 수도 있습니다.
+  // ++가 *보다 우선 순위가 높기 때문에 역참조를 괄호로 묶어야 합니다.
+  (*px)++; // px가 가리키는 값을 1만큼 증가시킵니다.
+  printf("%d\n", *px); // => 1을 인쇄합니다.
+  printf("%d\n", x); // => 1을 인쇄합니다.
 
-  // Arrays are a good way to allocate a contiguous block of memory
-  int x_array[20]; // declares array of size 20 (cannot change size)
+  // 배열은 연속적인 메모리 블록을 할당하는 좋은 방법입니다.
+  int x_array[20]; // 크기 20의 배열을 선언합니다(크기 변경 불가).
   int xx;
   for (xx = 0; xx < 20; xx++) {
     x_array[xx] = 20 - xx;
-  } // Initialize x_array to 20, 19, 18,... 2, 1
+  } // x_array를 20, 19, 18,... 2, 1로 초기화합니다.
 
-  // Declare a pointer of type int and initialize it to point to x_array
+  // int 유형의 포인터를 선언하고 x_array를 가리키도록 초기화합니다.
   int* x_ptr = x_array;
-  // x_ptr now points to the first element in the array (the integer 20).
-  // This works because arrays often decay into pointers to their first element.
-  // For example, when an array is passed to a function or is assigned to a pointer,
-  // it decays into (implicitly converted to) a pointer.
-  // Exceptions: when the array is the argument of the `&` (address-of) operator:
+  // x_ptr은 이제 배열의 첫 번째 요소(정수 20)를 가리킵니다.
+  // 이것은 배열이 종종 첫 번째 요소에 대한 포인터로 붕괴되기 때문에 작동합니다.
+  // 예를 들어, 배열이 함수에 전달되거나 포인터에 할당될 때 포인터로 붕괴(암시적으로 변환)됩니다.
+  // 예외: 배열이 `&` (주소) 연산자의 인수인 경우:
   int arr[10];
-  int (*ptr_to_arr)[10] = &arr; // &arr is NOT of type `int *`!
-  // It's of type "pointer to array" (of ten `int`s).
-  // or when the array is a string literal used for initializing a char array:
+  int (*ptr_to_arr)[10] = &arr; // &arr은 `int *` 유형이 아닙니다!
+  // "포인터 대 배열"(10개의 `int`로 구성) 유형입니다.
+  // 또는 배열이 char 배열을 초기화하는 데 사용되는 문자열 리터럴인 경우:
   char otherarr[] = "foobarbazquirk";
-  // or when it's the argument of the `sizeof` or `alignof` operator:
+  // 또는 `sizeof` 또는 `alignof` 연산자의 인수인 경우:
   int arraythethird[10];
-  int *ptr = arraythethird; // equivalent with int *ptr = &arr[0];
+  int *ptr = arraythethird; // int *ptr = &arr[0]과 동일합니다.
   printf("%zu, %zu\n", sizeof(arraythethird), sizeof(ptr));
-  // probably prints "40, 4" or "40, 8"
+  // 아마도 "40, 4" 또는 "40, 8"을 인쇄합니다.
 
-  // Pointers are incremented and decremented based on their type
-  // (this is called pointer arithmetic)
-  printf("%d\n", *(x_ptr + 1)); // => Prints 19
-  printf("%d\n", x_array[1]); // => Prints 19
+  // 포인터는 유형에 따라 증가 및 감소됩니다.
+  // (이것을 포인터 산술이라고 합니다.)
+  printf("%d\n", *(x_ptr + 1)); // => 19 인쇄
+  printf("%d\n", x_array[1]); // => 19 인쇄
 
-  // You can also dynamically allocate contiguous blocks of memory with the
-  // standard library function malloc, which takes one argument of type size_t
-  // representing the number of bytes to allocate (usually from the heap, although this
-  // may not be true on e.g. embedded systems - the C standard says nothing about it).
+  // 표준 라이브러리 함수 malloc을 사용하여 연속적인 메모리 블록을 동적으로 할당할 수도 있습니다. 이 함수는 할당할 바이트 수를 나타내는 size_t 유형의 인수 하나를 사용합니다(일반적으로 힙에서, 그러나 예를 들어 임베디드 시스템에서는 그렇지 않을 수 있습니다 - C 표준은 이에 대해 아무것도 말하지 않습니다).
   int *my_ptr = malloc(sizeof(*my_ptr) * 20);
   for (xx = 0; xx < 20; xx++) {
     *(my_ptr + xx) = 20 - xx; // my_ptr[xx] = 20-xx
-  } // Initialize memory to 20, 19, 18, 17... 2, 1 (as ints)
+  } // 메모리를 20, 19, 18, 17... 2, 1(int로)로 초기화합니다.
 
-  // Be careful passing user-provided values to malloc! If you want
-  // to be safe, you can use calloc instead (which, unlike malloc, also zeros out the memory)
+  // 사용자 제공 값을 malloc에 전달할 때 조심하십시오! 안전을 원한다면 대신 calloc을 사용할 수 있습니다(malloc과 달리 메모리를 0으로 채웁니다).
   int* my_other_ptr = calloc(20, sizeof(int));
 
-  // Note that there is no standard way to get the length of a
-  // dynamically allocated array in C. Because of this, if your arrays are
-  // going to be passed around your program a lot, you need another variable
-  // to keep track of the number of elements (size) of an array. See the
-  // functions section for more info.
+  // C에서 동적으로 할당된 배열의 길이를 얻는 표준적인 방법은 없습니다. 이 때문에 배열이 프로그램 전체에서 많이 전달되는 경우 배열의 요소 수(크기)를 추적하기 위해 다른 변수가 필요합니다. 자세한 내용은 함수 섹션을 참조하십시오.
   size_t size = 10;
   int *my_arr = calloc(size, sizeof(int));
-  // Add an element to the array
+  // 배열에 요소 추가
   size++;
   my_arr = realloc(my_arr, sizeof(int) * size);
   if (my_arr == NULL) {
-    // Remember to check for realloc failure!
+    // realloc 실패를 확인하는 것을 잊지 마십시오!
     return
   }
   my_arr[10] = 5;
 
-  // Dereferencing memory that you haven't allocated gives
-  // "unpredictable results" - the program is said to invoke "undefined behavior"
-  printf("%d\n", *(my_ptr + 21)); // => Prints who-knows-what? It may even crash.
+  // 할당하지 않은 메모리를 역참조하면
+  // "예측할 수 없는 결과"가 발생합니다 - 프로그램이 "정의되지 않은 동작"을 호출한다고 합니다.
+  printf("%d\n", *(my_ptr + 21)); // => 누가 알겠습니까? 충돌할 수도 있습니다.
 
-  // When you're done with a malloc'd block of memory, you need to free it,
-  // or else no one else can use it until your program terminates
-  // (this is called a "memory leak"):
+  // malloc으로 할당된 메모리 블록을 다 사용하면 해제해야 합니다.
+  // 그렇지 않으면 프로그램이 종료될 때까지 다른 누구도 사용할 수 없습니다.
+  // (이것을 "메모리 누수"라고 합니다):
   free(my_ptr);
 
-  // Strings are arrays of char, but they are usually represented as a
-  // pointer-to-char (which is a pointer to the first element of the array).
-  // It's good practice to use `const char *' when referring to a string literal,
-  // since string literals shall not be modified (i.e. "foo"[0] = 'a' is ILLEGAL.)
+  // 문자열은 문자 배열이지만 일반적으로 문자 포인터(배열의 첫 번째 요소에 대한 포인터)로 표현됩니다.
+  // 문자열 리터럴은 수정해서는 안 되므로 문자열 리터럴을 참조할 때 `const char *`를 사용하는 것이 좋습니다(즉, "foo"[0] = 'a'는 불법입니다).
   const char *my_str = "This is my very own string literal";
   printf("%c\n", *my_str); // => 'T'
 
-  // This is not the case if the string is an array
-  // (potentially initialized with a string literal)
-  // that resides in writable memory, as in:
+  // 문자열이 쓰기 가능한 메모리에 있는 배열인 경우(문자열 리터럴로 초기화될 수 있음)는 그렇지 않습니다. 예:
   char foo[] = "foo";
-  foo[0] = 'a'; // this is legal, foo now contains "aoo"
+  foo[0] = 'a'; // 이것은 합법적이며, foo는 이제 "aoo"를 포함합니다.
 
   function_1();
-} // end main function
+} // 주 함수 끝
 
 ///////////////////////////////////////
-// Functions
+// 함수
 ///////////////////////////////////////
 
-// Function declaration syntax:
-// <return type> <function name>(<args>)
+// 함수 선언 구문:
+// <반환 유형> <함수 이름>(<인수>)
 
 int add_two_ints(int x1, int x2)
 {
-  return x1 + x2; // Use return to return a value
+  return x1 + x2; // return을 사용하여 값을 반환합니다.
 }
 
 /*
-Functions are call by value. When a function is called, the arguments passed to
-the function are copies of the original arguments (except arrays). Anything you
-do to the arguments in the function does not change the value of the original
-argument where the function was called.
+함수는 값에 의한 호출입니다. 함수가 호출될 때 함수에 전달된 인수는 원래 인수의 복사본입니다(배열 제외). 함수에서 인수에 대해 수행하는 모든 작업은 함수가 호출된 원래 인수의 값을 변경하지 않습니다.
 
-Use pointers if you need to edit the original argument values (arrays are always
-passed in as pointers).
+원래 인수 값을 편집해야 하는 경우 포인터를 사용하십시오(배열은 항상 포인터로 전달됩니다).
 
-Example: in-place string reversal
+예: 제자리 문자열 반전
 */
 
-// A void function returns no value
+// void 함수는 값을 반환하지 않습니다.
 void str_reverse(char *str_in)
 {
   char tmp;
   size_t ii = 0;
-  size_t len = strlen(str_in); // `strlen()` is part of the c standard library
-                               // NOTE: length returned by `strlen` DOESN'T
-                               //       include the terminating NULL byte ('\0')
-  // in C99 and newer versions, you can directly declare loop control variables
-  // in the loop's parentheses. e.g., `for (size_t ii = 0; ...`
+  size_t len = strlen(str_in); // `strlen()`은 c 표준 라이브러리의 일부입니다.
+                               // 참고: `strlen`에서 반환된 길이는 종료 NULL 바이트('\0')를 포함하지 않습니다.
+  // c99 및 최신 버전에서는 루프의 괄호 안에 루프 제어 변수를 직접 선언할 수 있습니다. 예: `for (size_t ii = 0; ...`
   for (ii = 0; ii < len / 2; ii++) {
     tmp = str_in[ii];
-    str_in[ii] = str_in[len - ii - 1]; // ii-th char from end
+    str_in[ii] = str_in[len - ii - 1]; // 끝에서 ii번째 문자
     str_in[len - ii - 1] = tmp;
   }
 }
-// NOTE: string.h header file needs to be included to use strlen()
+// 참고: strlen()을 사용하려면 string.h 헤더 파일을 포함해야 합니다.
 
 /*
 char c[] = "This is a test.";
@@ -607,8 +542,8 @@ str_reverse(c);
 printf("%s\n", c); // => ".tset a si sihT"
 */
 /*
-as we can return only one variable
-to change values of more than one variables we use call by reference
+하나의 변수만 반환할 수 있으므로
+둘 이상의 변수 값을 변경하려면 참조에 의한 호출을 사용합니다.
 */
 void swapTwoNumbers(int *a, int *b)
 {
@@ -622,36 +557,30 @@ int second = 20;
 printf("first: %d\nsecond: %d\n", first, second);
 swapTwoNumbers(&first, &second);
 printf("first: %d\nsecond: %d\n", first, second);
-// values will be swapped
+// 값이 교환됩니다.
 */
 
-// Return multiple values.
-// C does not allow for returning multiple values with the return statement. If
-// you would like to return multiple values, then the caller must pass in the
-// variables where they would like the returned values to go. These variables must
-// be passed in as pointers such that the function can modify them.
+// 여러 값 반환.
+// C는 return 문으로 여러 값을 반환하는 것을 허용하지 않습니다. 여러 값을 반환하려면 호출자가 반환된 값을 원하는 변수를 전달해야 합니다. 이러한 변수는 함수가 수정할 수 있도록 포인터로 전달해야 합니다.
 int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
 {
     if(array_of_3 == NULL)
-        return 0; // return error code (false)
+        return 0; // 오류 코드 반환 (거짓)
 
-    // de-reference the pointer so we modify its value
+    // 포인터를 역참조하여 값을 수정합니다.
    *ret1 = array_of_3[0];
    *ret2 = array_of_3[1];
    *ret3 = array_of_3[2];
 
-   return 1; // return error code (true)
+   return 1; // 오류 코드 반환 (참)
 }
 
 /*
-With regards to arrays, they will always be passed to functions
-as pointers. Even if you statically allocate an array like `arr[10]`,
-it still gets passed as a pointer to the first element in any function calls.
-Again, there is no standard way to get the size of a dynamically allocated
-array in C.
+배열과 관련하여, 배열은 항상 포인터로 함수에 전달됩니다. `arr[10]`과 같이 정적으로 배열을 할당하더라도 함수 호출에서 첫 번째 요소에 대한 포인터로 전달됩니다.
+다시 말하지만, C에서 동적으로 할당된 배열의 크기를 얻는 표준적인 방법은 없습니다.
 */
-// Size must be passed!
-// Otherwise, this function has no way of knowing how big the array is.
+// 크기를 전달해야 합니다!
+// 그렇지 않으면 이 함수는 배열이 얼마나 큰지 알 수 없습니다.
 void printIntArray(int *arr, size_t size) {
     int i;
     for (i = 0; i < size; i++) {
@@ -662,69 +591,60 @@ void printIntArray(int *arr, size_t size) {
 int my_arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 int size = 10;
 printIntArray(my_arr, size);
-// will print "arr[0] is: 1" etc
+// "arr[0] is: 1" 등을 인쇄합니다.
 */
 
-// if referring to external variables outside function, you should use the extern keyword.
+// 함수 외부의 외부 변수를 참조하는 경우 extern 키워드를 사용해야 합니다.
 int i = 0;
 void testFunc() {
-  extern int i; // i here is now using external variable i
+  extern int i; // 여기서 i는 이제 외부 변수 i를 사용합니다.
 }
 
-// make external variables private to source file with static:
-static int j = 0; // other files using testFunc2() cannot access variable j
+// static을 사용하여 외부 변수를 소스 파일에 비공개로 만듭니다:
+static int j = 0; // testFunc2()를 사용하는 다른 파일은 변수 j에 액세스할 수 없습니다.
 void testFunc2() {
   extern int j;
 }
-// The static keyword makes a variable inaccessible to code outside the
-// compilation unit. (On almost all systems, a "compilation unit" is a .c
-// file.) static can apply both to global (to the compilation unit) variables,
-// functions, and function-local variables. When using static with
-// function-local variables, the variable is effectively global and retains its
-// value across function calls, but is only accessible within the function it
-// is declared in. Additionally, static variables are initialized to 0 if not
-// declared with some other starting value.
-// **You may also declare functions as static to make them private**
+// static 키워드는 변수를 컴파일 단위 외부의 코드에서 액세스할 수 없게 만듭니다. (거의 모든 시스템에서 "컴파일 단위"는 .c 파일입니다.) static은 전역(컴파일 단위에 대한) 변수, 함수 및 함수 로컬 변수 모두에 적용할 수 있습니다.
+// **함수를 static으로 선언하여 비공개로 만들 수도 있습니다.**
 
 ///////////////////////////////////////
-// User-defined types and structs
+// 사용자 정의 유형 및 구조체
 ///////////////////////////////////////
 
-// Typedefs can be used to create type aliases
+// Typedef를 사용하여 유형 별칭을 만들 수 있습니다.
 typedef int my_type;
 my_type my_type_var = 0;
 
-// Structs are just collections of data, the members are allocated sequentially,
-// in the order they are written:
+// 구조체는 데이터 모음일 뿐이며, 멤버는 작성된 순서대로 순차적으로 할당됩니다:
 struct rectangle {
   int width;
   int height;
 };
 
-// It's not generally true that
-// sizeof(struct rectangle) == sizeof(int) + sizeof(int)
-// due to potential padding between the structure members (this is for alignment
-// reasons). [1]
+// 일반적으로
+// sizeof(struct rectangle) == sizeof(int) + sizeof(int)는 아닙니다.
+// 구조체 멤버 간의 잠재적인 패딩 때문입니다(정렬 이유로). [1]
 
 void function_1()
 {
-  struct rectangle my_rec = { 1, 2 }; // Fields can be initialized immediately
+  struct rectangle my_rec = { 1, 2 }; // 필드는 즉시 초기화할 수 있습니다.
 
-  // Access struct members with .
+  // .으로 구조체 멤버에 액세스합니다.
   my_rec.width = 10;
   my_rec.height = 20;
 
-  // You can declare pointers to structs
+  // 구조체에 대한 포인터를 선언할 수 있습니다.
   struct rectangle *my_rec_ptr = &my_rec;
 
-  // Use dereferencing to set struct pointer members...
+  // 역참조를 사용하여 구조체 포인터 멤버를 설정합니다...
   (*my_rec_ptr).width = 30;
 
-  // ... or even better: prefer the -> shorthand for the sake of readability
-  my_rec_ptr->height = 10; // Same as (*my_rec_ptr).height = 10;
+  // ... 또는 가독성을 위해 -> 약어를 선호합니다.
+  my_rec_ptr->height = 10; // (*my_rec_ptr).height = 10;과 동일합니다.
 }
 
-// You can apply a typedef to a struct for convenience
+// 편의를 위해 구조체에 typedef를 적용할 수 있습니다.
 typedef struct rectangle rect;
 
 int area(rect r)
@@ -732,185 +652,170 @@ int area(rect r)
   return r.width * r.height;
 }
 
-// Typedefs can also be defined right during struct definition
+// Typedef는 구조체 정의 중에 바로 정의할 수도 있습니다.
 typedef struct {
   int width;
   int height;
 } rect;
-// Like before, doing this means one can type
+// 이전과 마찬가지로 이렇게 하면
 rect r;
-// instead of having to type
+// 다음과 같이 입력하는 대신
 struct rectangle r;
 
-// if you have large structs, you can pass them "by pointer" to avoid copying
-// the whole struct:
+// 큰 구조체가 있는 경우 복사를 피하기 위해 "포인터로" 전달할 수 있습니다.
+// 전체 구조체:
 int areaptr(const rect *r)
 {
   return r->width * r->height;
 }
 
 ///////////////////////////////////////
-// Function pointers
+// 함수 포인터
 ///////////////////////////////////////
 /*
-At run time, functions are located at known memory addresses. Function pointers are
-much like any other pointer (they just store a memory address), but can be used
-to invoke functions directly, and to pass handlers (or callback functions) around.
-However, definition syntax may be initially confusing.
+런타임에 함수는 알려진 메모리 주소에 있습니다. 함수 포인터는 다른 포인터와 매우 유사하지만(메모리 주소만 저장함) 함수를 직접 호출하고 핸들러(또는 콜백 함수)를 전달하는 데 사용할 수 있습니다. 그러나 정의 구문은 처음에는 혼란스러울 수 있습니다.
 
-Example: use str_reverse from a pointer
+예: 포인터에서 str_reverse 사용
 */
 void str_reverse_through_pointer(char *str_in) {
-  // Define a function pointer variable, named f.
-  void (*f)(char *); // Signature should exactly match the target function.
-  f = &str_reverse; // Assign the address for the actual function (determined at run time)
-  // f = str_reverse; would work as well - functions decay into pointers, similar to arrays
-  (*f)(str_in); // Just calling the function through the pointer
-  // f(str_in); // That's an alternative but equally valid syntax for calling it.
+  // f라는 이름의 함수 포인터 변수를 정의합니다.
+  void (*f)(char *); // 시그니처는 대상 함수와 정확히 일치해야 합니다.
+  f = &str_reverse; // 실제 함수에 대한 주소를 할당합니다(런타임에 결정됨).
+  // f = str_reverse;도 작동합니다 - 함수는 배열과 유사하게 포인터로 붕괴됩니다.
+  (*f)(str_in); // 포인터를 통해 함수를 호출하기만 하면 됩니다.
+  // f(str_in); // 이것은 호출하기 위한 대안이지만 똑같이 유효한 구문입니다.
 }
 
 /*
-As long as function signatures match, you can assign any function to the same pointer.
-Function pointers are usually typedef'd for simplicity and readability, as follows:
+함수 시그니처가 일치하는 한 동일한 포인터에 모든 함수를 할당할 수 있습니다. 
+함수 포인터는 일반적으로 다음과 같이 단순성과 가독성을 위해 typedef됩니다:
 */
 
 typedef void (*my_fnp_type)(char *);
 
-// Then used when declaring the actual pointer variable:
+// 그런 다음 실제 포인터 변수를 선언할 때 사용됩니다:
 // ...
 // my_fnp_type f;
 
 
-/////////////////////////////
-// Printing characters with printf()
+///////////////////////////// 
+// printf()로 문자 인쇄
 /////////////////////////////
 
-// Special characters:
+// 특수 문자:
 /*
-'\a'; // alert (bell) character
-'\n'; // newline character
-'\t'; // tab character (left justifies text)
-'\v'; // vertical tab
-'\f'; // new page (form feed)
-'\r'; // carriage return
-'\b'; // backspace character
-'\0'; // NULL character. Usually put at end of strings in C.
-//   hello\n\0. \0 used by convention to mark end of string.
-'\\'; // backslash
-'\?'; // question mark
-'\''; // single quote
-'\"'; // double quote
-'\xhh'; // hexadecimal number. Example: '\xb' = vertical tab character
-'\0oo'; // octal number. Example: '\013' = vertical tab character
+'\a'; // 경고(벨) 문자
+'\n'; // 줄 바꿈 문자
+'\t'; // 탭 문자(텍스트 왼쪽 정렬)
+'\v'; // 수직 탭
+'\f'; // 새 페이지(폼 피드)
+'\r'; // 캐리지 리턴
+'\b'; // 백스페이스 문자
+'\0'; // NULL 문자. 일반적으로 C의 문자열 끝에 넣습니다.
+//   hello\n\0. \0은 문자열 끝을 표시하는 관례로 사용됩니다.
+'\\' ; // 백슬래시
+'\?'; // 물음표
+'\''; // 작은따옴표
+'\"'; // 큰따옴표
+'\xhh'; // 16진수. 예: '\xb' = 수직 탭 문자
+'\0oo'; // 8진수. 예: '\013' = 수직 탭 문자
 
-// print formatting:
-"%d";    // integer
-"%3d";   // integer with minimum of length 3 digits (right justifies text)
-"%s";    // string
+// 인쇄 형식:
+"%d";    // 정수
+"%3d";   // 최소 길이 3자리 정수(텍스트 오른쪽 정렬)
+"%s";    // 문자열
 "%f";    // float
 "%ld";   // long
-"%3.2f"; // minimum 3 digits left and 2 digits right decimal float
-"%7.4s"; // (can do with strings too)
+"%3.2f"; // 최소 3자리 왼쪽 및 2자리 오른쪽 소수 float
+"%7.4s"; // (문자열로도 가능)
 "%c";    // char
-"%p";    // pointer. NOTE: need to (void *)-cast the pointer, before passing
-         //                it as an argument to `printf`.
-"%x";    // hexadecimal
-"%o";    // octal
-"%%";    // prints %
+"%p";    // 포인터. 참고: `printf`에 인수로 전달하기 전에 포인터를 (void *)로 캐스팅해야 합니다.
+"%x";    // 16진수
+"%o";    // 8진수
+"%%";    // % 인쇄
 */
 
 ///////////////////////////////////////
-// Order of Evaluation
+// 평가 순서
 ///////////////////////////////////////
 
-// From top to bottom, top has higher precedence
+// 위에서 아래로, 위가 우선 순위가 높습니다.
 //---------------------------------------------------//
-//        Operators                  | Associativity //
+//        연산자                  | 결합성 //
 //---------------------------------------------------//
-// () [] -> .                        | left to right //
-// ! ~ ++ -- + - *(type) sizeof      | right to left //
-// * / %                             | left to right //
-// + -                               | left to right //
-// << >>                             | left to right //
-// < <= > >=                         | left to right //
-// == !=                             | left to right //
-// &                                 | left to right //
-// ^                                 | left to right //
-// |                                 | left to right //
-// &&                                | left to right //
-// ||                                | left to right //
-// ?:                                | right to left //
-// = += -= *= /= %= &= ^= |= <<= >>= | right to left //
-// ,                                 | left to right //
+// () [] -> .                        | 왼쪽에서 오른쪽으로 //
+// ! ~ ++ -- + - *(type) sizeof      | 오른쪽에서 왼쪽으로 //
+// * / %                             | 왼쪽에서 오른쪽으로 //
+// + -                               | 왼쪽에서 오른쪽으로 //
+// << >>                             | 왼쪽에서 오른쪽으로 //
+// < <= > >=                         | 왼쪽에서 오른쪽으로 //
+// == !=                             | 왼쪽에서 오른쪽으로 //
+// &
+                                 | 왼쪽에서 오른쪽으로 //
+// ^                                 | 왼쪽에서 오른쪽으로 //
+// |
+                                 | 왼쪽에서 오른쪽으로 //
+// &&                                | 왼쪽에서 오른쪽으로 //
+// ||                                | 왼쪽에서 오른쪽으로 //
+// ?:                                | 오른쪽에서 왼쪽으로 //
+// = += -= *= /= %= &= ^= |= <<= >>= | 오른쪽에서 왼쪽으로 //
+// ,
+                                 | 왼쪽에서 오른쪽으로 //
 //---------------------------------------------------//
 
-/******************************* Header Files **********************************
+/******************************* 헤더 파일 **********************************
 
-Header files are an important part of C as they allow for the connection of C
-source files and can simplify code and definitions by separating them into
-separate files.
+헤더 파일은 C 소스 파일을 연결하고 코드를 단순화하고 정의를 별도의 파일로 분리할 수 있으므로 C의 중요한 부분입니다.
 
-Header files are syntactically similar to C source files but reside in ".h"
-files. They can be included in your C source file by using the preprocessor
-directive #include "example.h", given that example.h exists in the same directory
-as the C file.
+헤더 파일은 구문적으로 C 소스 파일과 유사하지만 ".h" 파일에 있습니다. C 소스 파일에 #include "example.h"를 사용하여 포함할 수 있습니다. 단, example.h가 C 파일과 동일한 디렉토리에 있어야 합니다.
 */
 
-/* A safe guard to prevent the header from being defined too many times. This */
-/* happens in the case of circle dependency, the contents of the header is    */
-/* already defined.                                                           */
-#ifndef EXAMPLE_H /* if EXAMPLE_H is not yet defined. */
-#define EXAMPLE_H /* Define the macro EXAMPLE_H. */
+/* 헤더가 너무 많이 정의되는 것을 방지하기 위한 안전 장치입니다. 이것은    */
+/* 원형 종속성의 경우에 발생하며, 헤더의 내용은    */
+/* 이미 정의되어 있습니다.                                                           */
+#ifndef EXAMPLE_H /*EXAMPLE_H가 아직 정의되지 않은 경우. */
+#define EXAMPLE_H /*매크로 EXAMPLE_H를 정의합니다. */
 
-/* Other headers can be included in headers and therefore transitively */
-/* included into files that include this header.                       */
+/* 다른 헤더는 헤더에 포함될 수 있으므로 이 헤더를 포함하는 파일에 */
+/* 전이적으로 포함될 수 있습니다.                       */
 #include <string.h>
 
-/* Like for c source files, macros can be defined in headers */
-/* and used in files that include this header file.          */
+/* c 소스 파일과 마찬가지로 매크로는 헤더에 정의할 수 있습니다. */
+/* 이 헤더 파일을 포함하는 파일에서 사용됩니다.          */
 #define EXAMPLE_NAME "Dennis Ritchie"
 
-/* Function macros can also be defined.  */
+/* 함수 매크로도 정의할 수 있습니다.  */
 #define ADD(a, b) ((a) + (b))
 
-/* Notice the parenthesis surrounding the arguments -- this is important to   */
-/* ensure that a and b don't get expanded in an unexpected way (e.g. consider */
-/* MUL(x, y) (x * y); MUL(1 + 2, 3) would expand to (1 + 2 * 3), yielding an  */
-/* incorrect result)                                                          */
+/* 인수를 둘러싼 괄호에 유의하십시오 -- 이것은 a와 b가 예기치 않은 방식으로 확장되지 않도록 하는 데 중요합니다(예: MUL(x, y) (x * y)를 고려하십시오. MUL(1 + 2, 3)은 (1 + 2 * 3)으로 확장되어 잘못된 결과를 산출합니다).                                                          */
 
-/* Structs and typedefs can be used for consistency between files. */
+/* 구조체 및 typedef는 파일 간의 일관성을 위해 사용할 수 있습니다. */
 typedef struct Node
 {
     int val;
     struct Node *next;
 } Node;
 
-/* So can enumerations. */
+/* 열거형도 마찬가지입니다. */
 enum traffic_light_state {GREEN, YELLOW, RED};
 
-/* Function prototypes can also be defined here for use in multiple files,  */
-/* but it is bad practice to define the function in the header. Definitions */
-/* should instead be put in a C file.                                       */
+/* 함수 프로토타입은 여러 파일에서 사용하기 위해 여기에서 정의할 수도 있지만, 헤더에서 함수를 정의하는 것은 나쁜 관행입니다. 정의는 대신 C 파일에 넣어야 합니다.                                       */
 Node createLinkedList(int *vals, int len);
 
-/* Beyond the above elements, other definitions should be left to a C source */
-/* file. Excessive includes or definitions should also not be contained in   */
-/* a header file but instead put into separate headers or a C file.          */
+/* 위의 요소 외에 다른 정의는 C 소스 파일에 남겨두어야 합니다. 과도한 포함 또는 정의도 헤더 파일에 포함되어서는 안 되며 대신 별도의 헤더 또는 C 파일에 넣어야 합니다.          */
 
-#endif /* End of the if preprocessor directive. */
+#endif /* if 전처리기 지시문의 끝입니다. */
 ```
 
-## Further Reading
+## 더 읽을거리
 
-Best to find yourself a copy of [K&R, aka "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language). It is _the_ book about C, written by Dennis Ritchie, the creator of C, and Brian Kernighan. Be careful, though - it's ancient and it contains some
-inaccuracies (well, ideas that are not considered good anymore) or now-changed practices.
+[K&R, 일명 "The C Programming Language"](https://en.wikipedia.org/wiki/The_C_Programming_Language) 사본을 찾는 것이 가장 좋습니다. C의 창시자인 Dennis Ritchie와 Brian Kernighan이 쓴 C에 대한 _책_입니다. 그러나 조심하십시오 - 오래되었고 일부 부정확한 내용(음, 더 이상 좋다고 생각되지 않는 아이디어) 또는 현재 변경된 관행이 포함되어 있습니다.
 
-Another good resource is [Learn C The Hard Way](http://learncodethehardway.org/c/) (not free).
+또 다른 좋은 자료는 [Learn C The Hard Way](http://learncodethehardway.org/c/)입니다(무료 아님).
 
-If you have a question, read the [compl.lang.c Frequently Asked Questions](http://c-faq.com).
+질문이 있는 경우 [compl.lang.c 자주 묻는 질문](http://c-faq.com)을 읽어보십시오.
 
-It's very important to use proper spacing, indentation and to be consistent with your coding style in general.
-Readable code is better than clever code and fast code. For a good, sane coding style to adopt, see the
-[Linux kernel coding style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
+일반적으로 적절한 간격, 들여쓰기를 사용하고 코딩 스타일을 일관되게 유지하는 것이 매우 중요합니다.
+읽기 쉬운 코드는 영리한 코드와 빠른 코드보다 낫습니다. 채택할 좋은, 건전한 코딩 스타일에 대해서는 [Linux 커널 코딩 스타일](https://www.kernel.org/doc/Documentation/process/coding-style.rst)을 참조하십시오.
 
-[1] [Why isn't sizeof for a struct equal to the sum of sizeof of each member?](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)
+[1] [구조체의 sizeof가 각 멤버의 sizeof의 합과 같지 않은 이유는 무엇입니까?](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member)

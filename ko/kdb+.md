@@ -1,334 +1,318 @@
-# kdb+.md (번역)
-
 ---
 name: kdb+
 contributors:
     - ["Matt Doherty", "https://github.com/picodoc"]
     - ["Jonny Press", "https://github.com/jonnypress"]
 filename: learnkdb.q
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-The q language and its database component kdb+ were developed by Arthur Whitney
-and released by Kx systems in 2003. q is a descendant of APL and as such is
-very terse and a little strange looking for anyone from a "C heritage" language
-background. Its expressiveness and vector oriented nature make it well suited
-to performing complex calculations on large amounts of data (while also
-encouraging some amount of [code golf](https://en.wikipedia.org/wiki/Code_golf)).
-The fundamental structure in the language is not the object but instead the list,
-and tables are built as collections of lists. This means - unlike most traditional
-RDBMS systems - tables are column oriented.  The language has both an in-memory
-and on-disk database built in, giving a large amount of flexibility. kdb+ is most
-widely used in the world of finance to store, analyze, process and retrieve large
-time-series data sets.
+q 언어와 그 데이터베이스 구성 요소인 kdb+는 Arthur Whitney가 개발하여 2003년에 Kx 시스템에서 출시했습니다. q는 APL의 후손으로, "C 계열" 언어 배경을 가진 사람에게는 매우 간결하고 약간 이상하게 보입니다. 표현력이 풍부하고 벡터 지향적인 특성 덕분에 대량의 데이터에 대한 복잡한 계산을 수행하는 데 적합합니다(동시에 [코드 골프](https://en.wikipedia.org/wiki/Code_golf)를 어느 정도 장려하기도 합니다). 언어의 기본 구조는 객체가 아니라 목록이며, 테이블은 목록의 컬렉션으로 구축됩니다. 이는 대부분의 전통적인 RDBMS 시스템과 달리 테이블이 열 지향적임을 의미합니다. 이 언어에는 인메모리 및 디스크 데이터베이스가 내장되어 있어 상당한 유연성을 제공합니다. kdb+는 대규모 시계열 데이터 세트를 저장, 분석, 처리 및 검색하기 위해 금융계에서 가장 널리 사용됩니다.
 
-The terms *q* and *kdb+* are usually used interchangeably, as the two are not
-separable so this distinction is not really useful.
+*q*와 *kdb+*라는 용어는 일반적으로 서로 바꿔 사용할 수 있습니다. 둘은 분리할 수 없으므로 이 구분은 실제로 유용하지 않습니다.
 
-To learn more about kdb+ you can join the
-[KX Community forums](https://learninghub.kx.com/forums/) or
-the [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) group.
+kdb+에 대해 더 자세히 알아보려면 [KX 커뮤니티 포럼](https://learninghub.kx.com/forums/) 또는 [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) 그룹에 가입할 수 있습니다.
 
 ```q
-/ Single line comments start with a forward-slash
-/ These can also be used in-line, so long as at least one whitespace character
-/ separates it from text to the left
+/ 한 줄 주석은 슬래시로 시작합니다.
+/ 이것들은 공백 문자가 하나 이상 있는 경우 텍스트 왼쪽에 있는 한 인라인으로도 사용할 수 있습니다.
 /
-  A forward-slash on a line by itself starts a multiline comment
-  and a backward-slash on a line by itself terminates it
+  한 줄에 슬래시가 있으면 여러 줄 주석이 시작됩니다.
+  그리고 한 줄에 백슬래시가 있으면 종료됩니다.
 \
 
-/ Run this file in an empty directory
+/ 빈 디렉토리에서 이 파일을 실행하십시오.
 
 
 ////////////////////////////////////
-// Basic Operators and Datatypes  //
+// 기본 연산자 및 데이터 유형  //
 ////////////////////////////////////
 
-/ We have integers, which are 8 byte by default
+/ 정수가 있으며, 기본적으로 8바이트입니다.
 3 / => 3
 
-/ And floats, also 8 byte as standard. Trailing f distinguishes from int
+/ 그리고 부동 소수점, 표준으로 8바이트입니다. 후행 f는 int와 구별됩니다.
 3.0 / => 3f
 
-/ 4 byte numerical types can also be specified with trailing chars
+/ 4바이트 숫자 유형은 후행 문자로도 지정할 수 있습니다.
 3i / => 3i
 3.0e / => 3e
 
-/ Math is mostly what you would expect
+/ 수학은 대부분 예상대로입니다.
 1+1 / => 2
 8-1 / => 7
 10*2 / => 20
-/ Except division, which uses percent (%) instead of forward-slash (/)
-35%5 / => 7f  (the result of division is always a float)
+/ 나눗셈은 슬래시(/) 대신 백분율(%)을 사용합니다.
+35%5 / => 7f  (나눗셈 결과는 항상 부동 소수점입니다)
 
-/ For integer division we have the keyword div
+/ 정수 나눗셈에는 div 키워드가 있습니다.
 4 div 3 / => 1
 
-/ Modulo also uses a keyword, since percent (%) is taken
+/ 모듈로도 키워드를 사용합니다. 백분율(%)이 사용되었기 때문입니다.
 4 mod 3 / => 1
 
-/ And exponentiation...
+/ 그리고 거듭제곱...
 2 xexp 4 / => 16
 
-/ ...and truncating...
+/ ...그리고 잘라내기...
 floor 3.14159 / => 3
 
-/ ...getting the absolute value...
+/ ...절대값 구하기...
 abs -3.14159 / => 3.14159
-/ ...and many other things
-/ see http://code.kx.com/q/ref/ for more
+/ ...그리고 다른 많은 것들
+/ 자세한 내용은 http://code.kx.com/q/ref/를 참조하십시오.
 
-/ q has no operator precedence, everything is evaluated right to left
-/ so results like this might take some getting used to
-2*1+1 / => 4 / (no operator precedence tables to remember!)
+/ q에는 연산자 우선 순위가 없으며, 모든 것이 오른쪽에서 왼쪽으로 평가됩니다.
+/ 따라서 이러한 결과는 익숙해지는 데 시간이 걸릴 수 있습니다.
+2*1+1 / => 4 / (기억해야 할 연산자 우선 순위 테이블 없음!)
 
-/ Precedence can be modified with parentheses (restoring the 'normal' result)
+/ 괄호로 우선 순위를 수정할 수 있습니다('정상' 결과 복원).
 (2*1)+1 / => 3
 
-/ Assignment uses colon (:) instead of equals (=)
-/ No need to declare variables before assignment
+/ 할당은 등호(=) 대신 콜론(:)을 사용합니다.
+/ 할당 전에 변수를 선언할 필요가 없습니다.
 a:3
 a / => 3
 
-/ Variables can also be assigned in-line
-/ this does not affect the value passed on
-c:3+b:2+a:1 / (data "flows" from right to left)
+/ 변수는 인라인으로도 할당할 수 있습니다.
+/ 이것은 전달되는 값에 영향을 주지 않습니다.
+c:3+b:2+a:1 / (데이터는 오른쪽에서 왼쪽으로 "흐릅니다")
 a / => 1
 b / => 3
 c / => 6
 
-/ In-place operations are also as you might expect
+/ 제자리 연산도 예상대로입니다.
 a+:2
 a / => 3
 
-/ There are no "true" or "false" keywords in q
-/ boolean values are indicated by the bit value followed by b
-1b / => true value
-0b / => false value
+/ q에는 "true" 또는 "false" 키워드가 없습니다.
+/ 부울 값은 비트 값 뒤에 b가 오는 것으로 표시됩니다.
+1b / => true 값
+0b / => false 값
 
-/ Equality comparisons use equals (=) (since we don't need it for assignment)
+/ 같음 비교는 등호(=)를 사용합니다(할당에 필요하지 않으므로).
 1=1 / => 1b
 2=1 / => 0b
 
-/ Inequality uses <>
+/ 부등호는 <>를 사용합니다.
 1<>1 / => 0b
 2<>1 / => 1b
 
-/ The other comparisons are as you might expect
+/ 다른 비교는 예상대로입니다.
 1<2 / => 1b
 1>2 / => 0b
 2<=2 / => 1b
 2>=2 / => 1b
 
-/ Comparison is not strict with regard to types...
+/ 비교는 유형에 대해 엄격하지 않습니다...
 42=42.0 / => 1b
 
-/ ...unless we use the match operator (~)
-/ which only returns true if entities are identical
+/ ...일치 연산자(~)를 사용하지 않는 한
+/ 엔티티가 동일한 경우에만 true를 반환합니다.
 42~42.0 / => 0b
 
-/ The not operator returns true if the underlying value is zero
+/ not 연산자는 기본 값이 0이면 true를 반환합니다.
 not 0b / => 1b
 not 1b / => 0b
 not 42 / => 0b
 not 0.0 / => 1b
 
-/ The max operator (|) reduces to logical "or" for bools
+/ max 연산자(|)는 부울에 대해 논리적 "or"로 축소됩니다.
 42|2.0 / => 42f
 1b|0b / => 1b
 
-/ The min operator (&) reduces to logical "and" for bools
+/ min 연산자(&)는 부울에 대해 논리적 "and"로 축소됩니다.
 42&2.0 / => 2f
 1b&0b / => 0b
 
-/ q provides two ways to store character data
-/ Chars in q are stored in a single byte and use double-quotes (")
+/ q는 문자 데이터를 저장하는 두 가지 방법을 제공합니다.
+/ q의 문자는 단일 바이트에 저장되며 큰따옴표(")를 사용합니다.
 ch:"a"
-/ Strings are simply lists of char (more on lists later)
+/ 문자열은 단순히 문자 목록입니다(나중에 목록에 대해 자세히 설명).
 str:"This is a string"
-/ Escape characters work as normal
+/ 이스케이프 문자는 정상적으로 작동합니다.
 str:"This is a string with \"quotes\""
 
-/ Char data can also be stored as symbols using backtick (`)
+/ 문자 데이터는 백틱(`)을 사용하여 기호로도 저장할 수 있습니다.
 symbol:`sym
-/ Symbols are NOT LISTS, they are an enumeration
-/ the q process stores internally a vector of strings
-/ symbols are enumerated against this vector
-/ this can be more space and speed efficient as these are constant width
+/ 기호는 목록이 아니며, 열거형입니다.
+/ q 프로세스는 내부적으로 문자열 벡터를 저장합니다.
+/ 기호는 이 벡터에 대해 열거됩니다.
+/ 이것은 상수 너비이므로 공간 및 속도 효율이 더 높을 수 있습니다.
 
-/ The string function converts to strings
+/ string 함수는 문자열로 변환합니다.
 string `symbol / => "symbol"
 string 1.2345 / => "1.2345"
 
-/ q has a time type...
+/ q에는 시간 유형이 있습니다...
 t:01:00:00.000
-/ date type...
+/ 날짜 유형...
 d:2015.12.25
-/ and a datetime type (among other time types)
+/ 그리고 datetime 유형(다른 시간 유형 중)
 dt:2015.12.25D12:00:00.000000000
 
-/ These support some arithmetic for easy manipulation
+/ 이것들은 쉬운 조작을 위해 일부 산술을 지원합니다.
 dt + t / => 2015.12.25D13:00:00.000000000
 t - 00:10:00.000 / => 00:50:00.000
-/ and can be decomposed using dot notation
+/ 그리고 점 표기법을 사용하여 분해할 수 있습니다.
 d.year / => 2015i
 d.mm / => 12i
 d.dd / => 25i
-/ see http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#25-temporal-data for more
+/ 자세한 내용은 http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#25-temporal-data를 참조하십시오.
 
-/ q also has an infinity value so div by zero will not throw an error
+/ q에는 무한대 값도 있으므로 0으로 나누어도 오류가 발생하지 않습니다.
 1%0 / => 0w
 -1%0 / => -0w
 
-/ And null types for representing missing values
+/ 그리고 누락된 값을 나타내는 null 유형
 0N / => null int
 0n / => null float
-/ see http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#27-nulls for more
+/ 자세한 내용은 http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#27-nulls를 참조하십시오.
 
-/ q has standard control structures
-/ if is as you might expect (; separates the condition and instructions)
+/ q에는 표준 제어 구조가 있습니다.
+/ if는 예상대로입니다(;는 조건과 지침을 구분합니다).
 if[1=1;a:"hi"]
 a / => "hi"
-/ if-else uses $ (and unlike if, returns a value)
+/ if-else는 $(그리고 if와 달리 값을 반환함)를 사용합니다.
 $[1=0;a:"hi";a:"bye"] / => "bye"
 a / => "bye"
-/ if-else can be extended to multiple clauses by adding args separated by ;
+/ if-else는 ;로 구분된 인수를 추가하여 여러 절로 확장할 수 있습니다.
 $[1=0;a:"hi";0=1;a:"bye";a:"hello again"]
 a / => "hello again"
 
 
 ////////////////////////////////////
-////      Data Structures       ////
+////      데이터 구조       ////
 ////////////////////////////////////
 
-/ q is not an object oriented language
-/ instead complexity is built through ordered lists
-/ and mapping them into higher order structures: dictionaries and tables
+/ q는 객체 지향 언어가 아닙니다.
+/ 대신 복잡성은 정렬된 목록을 통해 구축됩니다.
+/ 그리고 이를 상위 순서 구조인 사전 및 테이블에 매핑합니다.
 
-/ Lists (or arrays if you prefer) are simple ordered collections
-/ they are defined using parentheses () and semi-colons (;)
+/ 목록(또는 원하는 경우 배열)은 간단한 정렬된 컬렉션입니다.
+/ 괄호()와 세미콜론(;)으로 정의됩니다.
 (1;2;3) / => 1 2 3
 (-10.0;3.14159e;1b;`abc;"c")
 / => -10f
 / => 3.14159e
 / => 1b
 / => `abc
-/ => "c"  (mixed type lists are displayed on multiple lines)
+/ => "c"  (혼합 유형 목록은 여러 줄에 표시됩니다)
 ((1;2;3);(4;5;6);(7;8;9))
 / => 1 2 3
 / => 4 5 6
 / => 7 8 9
 
-/ Lists of uniform type can also be defined more concisely
+/ 균일한 유형의 목록은 더 간결하게 정의할 수도 있습니다.
 1 2 3 / => 1 2 3
 `list`of`syms / => `list`of`syms
 `list`of`syms ~ (`list;`of;`syms) / => 1b
 
-/ List length
+/ 목록 길이
 count (1;2;3) / => 3
-count "I am a string" / => 13 (string are lists of char)
+count "I am a string" / => 13 (문자열은 문자 목록입니다)
 
-/ Empty lists are defined with parentheses
+/ 빈 목록은 괄호로 정의됩니다.
 l:()
 count l / => 0
 
-/ Simple variables and single item lists are not equivalent
-/ parentheses syntax cannot create a single item list (they indicate precedence)
+/ 단순 변수와 단일 항목 목록은 동일하지 않습니다.
+/ 괄호 구문은 단일 항목 목록을 만들 수 없습니다(우선 순위를 나타냄).
 (1)~1 / => 1b
-/ single item lists can be created using enlist
+/ 단일 항목 목록은 enlist를 사용하여 만들 수 있습니다.
 singleton:enlist 1
-/ or appending to an empty list
+/ 또는 빈 목록에 추가
 singleton:(),1
 1~(),1 / => 0b
 
-/ Speaking of appending, comma (,) is used for this, not plus (+)
+/ 추가에 대해 말하자면, 쉼표(,)가 사용되며 더하기(+)가 아닙니다.
 1 2 3,4 5 6 / => 1 2 3 4 5 6
 "hello ","there" / => "hello there"
 
-/ Indexing uses square brackets []
+/ 인덱싱은 대괄호 []를 사용합니다.
 l:1 2 3 4
 l[0] / => 1
 l[1] / => 2
-/ indexing out of bounds returns a null value rather than an error
+/ 범위를 벗어난 인덱싱은 오류 대신 null 값을 반환합니다.
 l[5] / => 0N
-/ and indexed assignment
+/ 그리고 인덱싱된 할당
 l[0]:5
 l / => 5 2 3 4
 
-/ Lists can also be used for indexing and indexed assignment
+/ 목록은 인덱싱 및 인덱싱된 할당에도 사용할 수 있습니다.
 l[1 3] / => 2 4
 l[1 3]: 1 3
 l / => 5 1 3 3
 
-/ Lists can be untyped/mixed type
+/ 목록은 유형이 없거나 혼합 유형일 수 있습니다.
 l:(1;2;`hi)
-/ but once they are uniformly typed, q will enforce this
+/ 하지만 균일하게 유형이 지정되면 q는 이를 강제합니다.
 l[2]:3
 l / => 1 2 3
-l[2]:`hi / throws a type error
-/ this makes sense in the context of lists as table columns (more later)
+l[2]:`hi / 유형 오류 발생
+/ 이것은 목록을 테이블 열로 사용하는 맥락에서 의미가 있습니다(나중에 자세히 설명).
 
-/ For a nested list we can index at depth
+/ 중첩된 목록의 경우 깊이에서 인덱싱할 수 있습니다.
 l:((1;2;3);(4;5;6);(7;8;9))
 l[1;1] / => 5
 
-/ We can elide the indexes to return entire rows or columns
+/ 인덱스를 생략하여 전체 행 또는 열을 반환할 수 있습니다.
 l[;1] / => 2 5 8
 l[1;] / => 4 5 6
 
-/ All the functions mentioned in the previous section work on lists natively
-1+(1;2;3) / => 2 3 4 (single variable and list)
-(1;2;3) - (3;2;1) / => -2 0 2 (list and list)
+/ 이전 섹션에서 언급한 모든 함수는 목록에서 기본적으로 작동합니다.
+1+(1;2;3) / => 2 3 4 (단일 변수 및 목록)
+(1;2;3) - (3;2;1) / => -2 0 2 (목록 및 목록)
 
-/ And there are many more that are designed specifically for lists
+/ 그리고 목록을 위해 특별히 설계된 더 많은 것들이 있습니다.
 avg 1 2 3 / => 2f
 sum 1 2 3 / => 6
-sums 1 2 3 / => 1 3 6 (running sum)
+sums 1 2 3 / => 1 3 6 (누적 합계)
 last 1 2 3 / => 3
 1 rotate 1 2 3 / => 2 3 1
-/ etc.
-/ Using and combining these functions to manipulate lists is where much of the
-/ power and expressiveness of the language comes from
+/ 등
+/ 이러한 함수를 사용하여 목록을 조작하는 것은 언어의 힘과 표현력의 많은 부분을 차지합니다.
 
-/ Take (#), drop (_) and find (?) are also useful working with lists
+/ Take (#), drop (_) 및 find (?)도 목록 작업에 유용합니다.
 l:1 2 3 4 5 6 7 8 9
-l:1+til 9 / til is a useful shortcut for generating ranges
-/ take the first 5 elements
+l:1+til 9 / til은 범위를 생성하는 데 유용한 바로 가기입니다.
+/ 처음 5개 요소 가져오기
 5#l / => 1 2 3 4 5
-/ drop the first 5
+/ 처음 5개 삭제
 5_l / => 6 7 8 9
-/ take the last 5
+/ 마지막 5개 가져오기
 -5#l / => 5 6 7 8 9
-/ drop the last 5
+/ 마지막 5개 삭제
 -5_l / => 1 2 3 4
-/ find the first occurrence of 4
+/ 4의 첫 번째 발생 찾기
 l?4 / => 3
 l[3] / => 4
 
-/ Dictionaries in q are a generalization of lists
-/ they map a list to another list (of equal length)
-/ the bang (!) symbol is used for defining a dictionary
+/ q의 사전은 목록의 일반화입니다.
+/ 목록을 다른 목록(동일한 길이)에 매핑합니다.
+/ 느낌표(!) 기호는 사전을 정의하는 데 사용됩니다.
 d:(`a;`b;`c)!(1;2;3)
-/ or more simply with concise list syntax
+/ 또는 간결한 목록 구문으로 더 간단하게
 d:`a`b`c!1 2 3
-/ the keyword key returns the first list
+/ 키워드 키는 첫 번째 목록을 반환합니다.
 key d / => `a`b`c
-/ and value the second
+/ 그리고 값은 두 번째
 value d / => 1 2 3
 
-/ Indexing is identical to lists
-/ with the first list as a key instead of the position
+/ 인덱싱은 목록과 동일합니다.
+/ 첫 번째 목록을 위치 대신 키로 사용
 d[`a] / => 1
 d[`b] / => 2
 
-/ As is assignment
+/ 할당과 마찬가지로
 d[`c]:4
 d
 / => a| 1
 / => b| 2
 / => c| 4
 
-/ Arithmetic and comparison work natively, just like lists
+/ 산술 및 비교는 목록과 마찬가지로 기본적으로 작동합니다.
 e:(`a;`b;`c)!(2;3;4)
 d+e
 / => a| 3
@@ -343,7 +327,7 @@ d > (1;1;1)
 / => b| 1
 / => c| 1
 
-/ And the take, drop and find operators are remarkably similar too
+/ 그리고 take, drop 및 find 연산자는 놀랍게도 유사합니다.
 `a`b#d
 / => a| 1
 / => b| 2
@@ -352,18 +336,18 @@ d > (1;1;1)
 d?2
 / => `b
 
-/ Tables in q are basically a subset of dictionaries
-/ a table is a dictionary where all values must be lists of the same length
-/ as such tables in q are column oriented (unlike most RDBMS)
-/ the flip keyword is used to convert a dictionary to a table
-/ i.e. flip the indices
+/ q의 테이블은 기본적으로 사전의 하위 집합입니다.
+/ 테이블은 모든 값이 동일한 길이의 목록이어야 하는 사전입니다.
+/ 따라서 q의 테이블은 열 지향적입니다(대부분의 RDBMS와 달리).
+/ flip 키워드는 사전을 테이블로 변환하는 데 사용됩니다.
+/ 즉, 인덱스를 뒤집습니다.
 flip `c1`c2`c3!(1 2 3;4 5 6;7 8 9)
 / => c1 c2 c3
 / => --------
 / => 1  4  7
 / => 2  5  8
 / => 3  6  9
-/ we can also define tables using this syntax
+/ 이 구문을 사용하여 테이블을 정의할 수도 있습니다.
 t:([]c1:1 2 3;c2:4 5 6;c3:7 8 9)
 t
 / => c1 c2 c3
@@ -372,29 +356,28 @@ t
 / => 2  5  8
 / => 3  6  9
 
-/ Tables can be indexed and manipulated in a similar way to dicts and lists
+/ 테이블은 사전 및 목록과 유사한 방식으로 인덱싱하고 조작할 수 있습니다.
 t[`c1]
 / => 1 2 3
-/ table rows are returned as dictionaries
+/ 테이블 행은 사전으로 반환됩니다.
 t[1]
 / => c1| 2
 / => c2| 5
 / => c3| 8
 
-/ meta returns table type information
+/ meta는 테이블 유형 정보를 반환합니다.
 meta t
 / => c | t f a
 / => --| -----
 / => c1| j
 / => c2| j
 / => c3| j
-/ now we see why type is enforced in lists (to protect column types)
+/ 이제 목록에서 유형이 강제되는 이유를 알 수 있습니다(열 유형을 보호하기 위해).
 t[1;`c1]:3
-t[1;`c1]:3.0 / throws a type error
+t[1;`c1]:3.0 / 유형 오류 발생
 
-/ Most traditional databases have primary key columns
-/ in q we have keyed tables, where one table containing key columns
-/ is mapped to another table using bang (!)
+/ 대부분의 기존 데이터베이스에는 기본 키 열이 있습니다.
+/ q에는 키 테이블이 있으며, 키 열을 포함하는 한 테이블이 느낌표(!)를 사용하여 다른 테이블에 매핑됩니다.
 k:([]id:1 2 3)
 k!t
 / => id| c1 c2 c3
@@ -403,10 +386,10 @@ k!t
 / => 2 | 3  5  8
 / => 3 | 3  6  9
 
-/ We can also use this shortcut for defining keyed tables
+/ 키 테이블을 정의하기 위해 이 바로 가기를 사용할 수도 있습니다.
 kt:([id:1 2 3]c1:1 2 3;c2:4 5 6;c3:7 8 9)
 
-/ Records can then be retrieved based on this key
+/ 그런 다음 이 키를 기반으로 레코드를 검색할 수 있습니다.
 kt[1]
 / => c1| 1
 / => c2| 4
@@ -418,61 +401,61 @@ kt[`id!1]
 
 
 ////////////////////////////////////
-////////     Functions      ////////
+////////     함수      ////////
 ////////////////////////////////////
 
-/ In q the function is similar to a mathematical map, mapping inputs to outputs
-/ curly braces {} are used for function definition
-/ and square brackets [] for calling functions (just like list indexing)
-/ a very minimal function
+/ q에서 함수는 입력을 출력에 매핑하는 수학적 맵과 유사합니다.
+/ 중괄호 {}는 함수 정의에 사용됩니다.
+/ 그리고 대괄호 []는 호출에 사용됩니다(목록 인덱싱과 마찬가지로).
+/ 매우 최소한의 함수
 f:{x+x}
 f[2] / => 4
 
-/ Functions can be anonymous and called at point of definition
+/ 함수는 익명일 수 있으며 정의 지점에서 호출될 수 있습니다.
 {x+x}[2] / => 4
 
-/ By default the last expression is returned
-/ colon (:) can be used to specify return
+/ 기본적으로 마지막 표현식이 반환됩니다.
+/ 콜론(:)을 사용하여 반환을 지정할 수 있습니다.
 {x+x}[2] / => 4
 {:x+x}[2] / => 4
-/ semi-colon (;) separates expressions
+/ 세미콜론(;)은 표현식을 구분합니다.
 {r:x+x;:r}[2] / => 4
 
-/ Function arguments can be specified explicitly (separated by ;)
+/ 함수 인수는 명시적으로 지정할 수 있습니다(세미콜론으로 구분).
 {[arg1;arg2] arg1+arg2}[1;2] / => 3
-/ or if omitted will default to x, y and z
+/ 또는 생략하면 x, y 및 z로 기본 설정됩니다.
 {x+y+z}[1;2;3] / => 6
 
-/ Built in functions are no different, and can be called the same way (with [])
+/ 내장 함수는 다르지 않으며 동일한 방식으로 호출할 수 있습니다([] 사용).
 +[1;2] / => 3
 <[1;2] / => 1b
 
-/ Functions are first class in q, so can be returned, stored in lists etc.
+/ 함수는 q에서 일급이므로 반환하거나 목록에 저장하는 등의 작업을 할 수 있습니다.
 {:{x+y}}[] / => {x+y}
 (1;"hi";{x+y})
 / => 1
 / => "hi"
 / => {x+y}
 
-/ There is no overloading and no keyword arguments for custom q functions
-/ however using a dictionary as a single argument can overcome this
-/ allows for optional arguments or differing functionality
+/ 사용자 지정 q 함수에는 오버로딩 및 키워드 인수가 없습니다.
+/ 그러나 단일 인수로 사전을 사용하면 이를 극복할 수 있습니다.
+/ 선택적 인수 또는 다른 기능을 허용합니다.
 d:`arg1`arg2`arg3!(1.0;2;"my function argument")
 {x[`arg1]+x[`arg2]}[d] / => 3f
 
-/ Functions in q see the global scope
+/ q의 함수는 전역 범위를 봅니다.
 a:1
 {:a}[] / => 1
 
-/ However local scope obscures this
+/ 그러나 로컬 범위는 이를 가립니다.
 a:1
 {a:2;:a}[] / => 2
 a / => 1
 
-/ Functions cannot see nested scopes (only local and global)
-{local:1;{:local}[]}[] / throws error as local is not defined in inner function
+/ 함수는 중첩된 범위를 볼 수 없습니다(로컬 및 전역만).
+{local:1;{:local}[]}[] / 로컬이 내부 함수에 정의되지 않았으므로 오류 발생
 
-/ A function can have one or more of its arguments fixed (projection)
+/ 함수는 하나 이상의 인수를 고정할 수 있습니다(프로젝션).
 f:+[4]
 f[4] / => 8
 f[5] / => 9
@@ -483,28 +466,28 @@ f[6] / => 10
 //////////     q-sql      //////////
 ////////////////////////////////////
 
-/ q has its own syntax for manipulating tables, similar to standard SQL
-/ This contains the usual suspects of select, insert, update etc.
-/ and some new functionality not typically available
-/ q-sql has two significant differences (other than syntax) to normal SQL:
-/ - q tables have well defined record orders
-/ - tables are stored as a collection of columns
-/   (so vectorized column operations are fast)
-/ a full description of q-sql is a little beyond the scope of this intro
-/ so we will just cover enough of the basics to get you going
+/ q에는 표준 SQL과 유사한 테이블 조작을 위한 자체 구문이 있습니다.
+/ 여기에는 select, insert, update 등과 같은 일반적인 용의자가 포함됩니다.
+/ 그리고 일반적으로 사용할 수 없는 몇 가지 새로운 기능
+/ q-sql에는 두 가지 중요한 차이점이 있습니다(구문 제외):
+/ - q 테이블에는 잘 정의된 레코드 순서가 있습니다.
+/ - 테이블은 열 컬렉션으로 저장됩니다.
+/   (따라서 벡터화된 열 작업이 빠릅니다)
+/ q-sql에 대한 전체 설명은 이 소개 범위를 약간 벗어납니다.
+/ 따라서 시작하는 데 충분한 기본 사항만 다룰 것입니다.
 
-/ First define ourselves a table
+/ 먼저 테이블을 정의합니다.
 t:([]name:`Arthur`Thomas`Polly;age:35 32 52;height:180 175 160;sex:`m`m`f)
 
-/ equivalent of SELECT * FROM t
-select from t / (must be lower case, and the wildcard is not necessary)
+/ SELECT * FROM t와 동일
+select from t / (소문자여야 하며 와일드카드는 필요하지 않음)
 / => name   age height sex
 / => ---------------------
 / => Arthur 35  180    m
 / => Thomas 32  175    m
 / => Polly  52  160    f
 
-/ Select specific columns
+/ 특정 열 선택
 select name,age from t
 / => name   age
 / => ----------
@@ -512,7 +495,7 @@ select name,age from t
 / => Thomas 32
 / => Polly  52
 
-/ And name them (equivalent of using AS in standard SQL)
+/ 그리고 이름을 지정합니다(표준 SQL에서 AS를 사용하는 것과 동일).
 select charactername:name, currentage:age from t
 / => charactername currentage
 / => ------------------------
@@ -520,8 +503,8 @@ select charactername:name, currentage:age from t
 / => Thomas        32
 / => Polly         52
 
-/ This SQL syntax is integrated with the q language
-/ so q can be used seamlessly in SQL statements
+/ 이 SQL 구문은 q 언어와 통합됩니다.
+/ 따라서 q는 SQL 문에서 원활하게 사용할 수 있습니다.
 select name, feet:floor height*0.032, inches:12*(height*0.032) mod 1 from t
 / => name   feet inches
 / => ------------------
@@ -529,7 +512,7 @@ select name, feet:floor height*0.032, inches:12*(height*0.032) mod 1 from t
 / => Thomas 5    7.2
 / => Polly  5    1.44
 
-/ Including custom functions
+/ 사용자 지정 함수 포함
 select name, growth:{[h;a]h%a}[height;age] from t
 / => name   growth
 / => ---------------
@@ -537,13 +520,13 @@ select name, growth:{[h;a]h%a}[height;age] from t
 / => Thomas 5.46875
 / => Polly  3.076923
 
-/ The where clause can contain multiple statements separated by commas
+/ where 절에는 쉼표로 구분된 여러 문이 포함될 수 있습니다.
 select from t where age>33,height>175
 / => name   age height sex
 / => ---------------------
 / => Arthur 35  180    m
 
-/ The where statements are executed sequentially (not the same as logical AND)
+/ where 문은 순차적으로 실행됩니다(논리적 AND와 동일하지 않음).
 select from t where age<40,height=min height
 / => name   age height sex
 / => ---------------------
@@ -552,22 +535,22 @@ select from t where (age<40)&(height=min height)
 / => name age height sex
 / => -------------------
 
-/ The by clause falls between select and from
-/ and is equivalent to SQL's GROUP BY
+/ by 절은 select와 from 사이에 있으며
+/ SQL의 GROUP BY와 동일합니다.
 select avg height by sex from t
 / => sex| height
 / => ---| ------
 / => f  | 160
 / => m  | 177.5
 
-/ If no aggregation function is specified, last is assumed
+/ 집계 함수가 지정되지 않은 경우 last가 가정됩니다.
 select by sex from t
 / => sex| name   age height
 / => ---| -----------------
 / => f  | Polly  52  160
 / => m  | Thomas 32  175
 
-/ Update has the same basic form as select
+/ Update는 select와 동일한 기본 형식을 가집니다.
 update sex:`male from t where sex=`m
 / => name   age height sex
 / => ----------------------
@@ -575,13 +558,13 @@ update sex:`male from t where sex=`m
 / => Thomas 32  175    male
 / => Polly  52  160    f
 
-/ As does delete
+/ 삭제와 마찬가지로
 delete from t where sex=`m
 / => name  age height sex
 / => --------------------
 / => Polly 52  160    f
 
-/ None of these sql operations are carried out in place
+/ 이러한 sql 작업은 제자리에서 수행되지 않습니다.
 t
 / => name   age height sex
 / => ---------------------
@@ -589,7 +572,7 @@ t
 / => Thomas 32  175    m
 / => Polly  52  160    f
 
-/ Insert however is in place, it takes a table name, and new data
+/ 그러나 Insert는 제자리에서 수행되며, 테이블 이름과 새 데이터를 사용합니다.
 `t insert (`John;25;178;`m) / => ,3
 t
 / => name   age height sex
@@ -599,7 +582,7 @@ t
 / => Polly  52  160    f
 / => John   25  178    m
 
-/ Upsert is similar (but doesn't have to be in-place)
+/ Upsert는 유사합니다(하지만 제자리일 필요는 없음).
 t upsert (`Chester;58;179;`m)
 / => name    age height sex
 / => ----------------------
@@ -609,7 +592,7 @@ t upsert (`Chester;58;179;`m)
 / => John    25  178    m
 / => Chester 58  179    m
 
-/ it will also upsert dicts or tables
+/ 사전이나 테이블도 upsert합니다.
 t upsert `name`age`height`sex!(`Chester;58;179;`m)
 t upsert (`Chester;58;179;`m)
 / => name    age height sex
@@ -620,9 +603,9 @@ t upsert (`Chester;58;179;`m)
 / => John    25  178    m
 / => Chester 58  179    m
 
-/ And if our table is keyed
+/ 그리고 테이블이 키가 지정된 경우
 kt:`name xkey t
-/ upsert will replace records where required
+/ upsert는 필요한 경우 레코드를 교체합니다.
 kt upsert ([]name:`Thomas`Chester;age:33 58;height:175 179;sex:`f`m)
 / => name   | age height sex
 / => -------| --------------
@@ -632,7 +615,7 @@ kt upsert ([]name:`Thomas`Chester;age:33 58;height:175 179;sex:`f`m)
 / => John   | 25  178    m
 / => Chester| 58  179    m
 
-/ There is no ORDER BY clause in q-sql, instead use xasc/xdesc
+/ q-sql에는 ORDER BY 절이 없으며, 대신 xasc/xdesc를 사용합니다.
 `name xasc t
 / => name   age height sex
 / => ---------------------
@@ -641,12 +624,12 @@ kt upsert ([]name:`Thomas`Chester;age:33 58;height:175 179;sex:`f`m)
 / => Polly  52  160    f
 / => Thomas 32  175    m
 
-/ Most of the standard SQL joins are present in q-sql, plus a few new friends
-/ see http://code.kx.com/q4m3/9_Queries_q-sql/#99-joins
-/ the two most important (commonly used) are lj and aj
+/ 대부분의 표준 SQL 조인은 q-sql에 있으며, 몇 가지 새로운 친구도 있습니다.
+/ http://code.kx.com/q4m3/9_Queries_q-sql/#99-joins 참조
+/ 가장 중요하고(일반적으로 사용되는) 두 가지는 lj와 aj입니다.
 
-/ lj is basically the same as SQL LEFT JOIN
-/ where the join is carried out on the key columns of the left table
+/ lj는 기본적으로 SQL LEFT JOIN과 동일합니다.
+/ 조인은 왼쪽 테이블의 키 열에서 수행됩니다.
 le:([sex:`m`f]lifeexpectancy:78 85)
 t lj le
 / => name   age height sex lifeexpectancy
@@ -656,8 +639,8 @@ t lj le
 / => Polly  52  160    f   85
 / => John   25  178    m   78
 
-/ aj is an asof join. This is not a standard SQL join, and can be very powerful
-/ The canonical example of this is joining financial trades and quotes tables
+/ aj는 asof 조인입니다. 이것은 표준 SQL 조인이 아니며 매우 강력할 수 있습니다.
+/ 정식 예는 금융 거래 및 시세 테이블을 조인하는 것입니다.
 trades:([]time:10:01:01 10:01:03 10:01:04;sym:`msft`ibm`ge;qty:100 200 150)
 quotes:([]time:10:01:00 10:01:01 10:01:01 10:01:03;
           sym:`ibm`msft`msft`ibm; px:100 99 101 98)
@@ -667,28 +650,26 @@ aj[`time`sym;trades;quotes]
 / => 10:01:01 msft 100 101
 / => 10:01:03 ibm  200 98
 / => 10:01:04 ge   150
-/ for each row in the trade table, the last (prevailing) quote (px) for that sym
-/ is joined on.
-/ see http://code.kx.com/q4m3/9_Queries_q-sql/#998-as-of-joins
+/ 거래 테이블의 각 행에 대해 해당 sym에 대한 마지막(우세한) 시세(px)가 조인됩니다.
+/ http://code.kx.com/q4m3/9_Queries_q-sql/#998-as-of-joins 참조
 
 ////////////////////////////////////
-/////     Extra/Advanced      //////
+/////     추가/고급      //////
 ////////////////////////////////////
 
-////// Adverbs //////
-/ You may have noticed the total lack of loops to this point
-/ This is not a mistake!
-/ q is a vector language so explicit loops (for, while etc.) are not encouraged
-/ where possible functionality should be vectorized (i.e. operations on lists)
-/ adverbs supplement this, modifying the behaviour of functions
-/ and providing loop type functionality when required
-/ (in q functions are sometimes referred to as verbs, hence adverbs)
-/ the "each" adverb modifies a function to treat a list as individual variables
+////// 부사 //////
+/ 지금까지 루프가 전혀 없다는 것을 눈치채셨을 것입니다.
+/ 이것은 실수가 아닙니다!
+/ q는 벡터 언어이므로 명시적인 루프(for, while 등)는 권장되지 않습니다.
+/ 가능한 경우 기능은 벡터화되어야 합니다(즉, 목록에 대한 연산).
+/ 부사는 이를 보완하고, 필요할 때 루프 유형 기능을 제공하면서 함수의 동작을 수정합니다.
+/ (q에서 함수는 때때로 동사라고 하므로 부사입니다)
+/ "each" 부사는 함수를 수정하여 목록을 개별 변수로 처리합니다.
 first each (1 2 3;4 5 6;7 8 9)
 / => 1 4 7
 
-/ each-left (\:) and each-right (/:) modify a two-argument function
-/ to treat one of the arguments and individual variables instead of a list
+/ each-left (\:) 및 each-right (/:)는 두 인수 함수를 수정하여
+/ 인수 중 하나를 목록 대신 개별 변수로 처리합니다.
 1 2 3 +\: 11 22 33
 / => 12 23 34
 / => 13 24 35
@@ -698,78 +679,74 @@ first each (1 2 3;4 5 6;7 8 9)
 / => 23 24 25
 / => 34 35 36
 
-/ The true alternatives to loops in q are the adverbs scan (\) and over (/)
-/ their behaviour differs based on the number of arguments the function they
-/ are modifying receives. Here I'll summarise some of the most useful cases
-/ a single argument function modified by scan given 2 args behaves like "do"
-{x * 2}\[5;1] / => 1 2 4 8 16 32 (i.e. multiply by 2, 5 times)
-{x * 2}/[5;1] / => 32 (using over only the final result is shown)
+/ q의 루프에 대한 진정한 대안은 부사 scan (\) 및 over (/)입니다.
+/ 동작은 수정하는 함수의 인수 수에 따라 다릅니다. 여기서는 가장 유용한 몇 가지 경우를 요약하겠습니다.
+/ scan으로 수정된 단일 인수 함수는 "do"와 같이 작동합니다.
+{x * 2}\[5;1] / => 1 2 4 8 16 32 (즉, 2를 5번 곱함)
+{x * 2}/[5;1] / => 32 (over를 사용하면 최종 결과만 표시됨)
 
-/ If the first argument is a function, we have the equivalent of "while"
-{x * 2}\[{x<100};1] / => 1 2 4 8 16 32 64 128 (iterates until returns 0b)
-{x * 2}/[{x<100};1] / => 128 (again returns only the final result)
+/ 첫 번째 인수가 함수인 경우 "while"과 동일합니다.
+{x * 2}\[{x<100};1] / => 1 2 4 8 16 32 64 128 (0b를 반환할 때까지 반복)
+{x * 2}/[{x<100};1] / => 128 (다시 최종 결과만 반환)
 
-/ If the function takes two arguments, and we pass a list, we have "for"
-/ where the result of the previous execution is passed back into the next loop
-/ along with the next member of the list
-{x + y}\[1 2 3 4 5] / => 1 3 6 10 15 (i.e. the running sum)
-{x + y}/[1 2 3 4 5] / => 15 (only the final result)
+/ 함수가 두 개의 인수를 사용하고 목록을 전달하면 "for"가 있습니다.
+/ 이전 실행 결과가 목록의 다음 멤버와 함께 다음 루프로 다시 전달됩니다.
+{x + y}\[1 2 3 4 5] / => 1 3 6 10 15 (즉, 누적 합계)
+{x + y}/[1 2 3 4 5] / => 15 (최종 결과만)
 
-/ There are other iterators and uses, this is only intended as quick overview
+/ 다른 반복기 및 용도가 있으며, 이것은 빠른 개요일 뿐입니다.
 / http://code.kx.com/q4m3/6_Functions/#67-iterators
 
-////// Scripts //////
-/ q scripts can be loaded from a q session using the "\l" command
-/ for example "\l learnkdb.q" will load this script
-/ or from the command prompt passing the script as an argument
-/ for example "q learnkdb.q"
+////// 스크립트 //////
+/ q 스크립트는 "\l" 명령을 사용하여 q 세션에서 로드할 수 있습니다.
+/ 예를 들어 "\l learnkdb.q"는 이 스크립트를 로드합니다.
+/ 또는 스크립트를 인수로 전달하는 명령 프롬프트에서
+/ 예를 들어 "q learnkdb.q"
 
-////// On-disk data //////
-/ Tables can be persisted to disk in several formats
-/ the two most fundamental are serialized and splayed
+////// 디스크 데이터 //////
+/ 테이블은 여러 형식으로 디스크에 유지될 수 있습니다.
+/ 가장 기본적인 두 가지는 직렬화 및 스플레이입니다.
 t:([]a:1 2 3;b:1 2 3f)
-`:serialized set t / saves the table as a single serialized file
-`:splayed/ set t / saves the table splayed into a directory
+`:serialized set t / 테이블을 단일 직렬화된 파일로 저장
+`:splayed/ set t / 테이블을 디렉토리에 스플레이하여 저장
 
-/ the dir structure will now look something like:
+/ 디렉토리 구조는 다음과 같습니다:
 / db/
 / ├── serialized
 / └── splayed
 /     ├── a
 /     └── b
 
-/ Loading this directory (as if it was as script, see above)
-/ loads these tables into the q session
+/ 이 디렉토리를 로드하면(스크립트처럼, 위 참조)
+/ 이러한 테이블을 q 세션에 로드합니다.
 \l .
-/ the serialized table will be loaded into memory
-/ however the splayed table will only be mapped, not loaded
-/ both tables can be queried using q-sql
+/ 직렬화된 테이블은 메모리에 로드됩니다.
+/ 그러나 스플레이된 테이블은 매핑만 되고 로드되지는 않습니다.
+/ 두 테이블 모두 q-sql을 사용하여 쿼리할 수 있습니다.
 select from serialized
 / => a b
 / => ---
 / => 1 1
 / => 2 2
 / => 3 3
-select from splayed / (the columns are read from disk on request)
+select from splayed / (열은 요청 시 디스크에서 읽음)
 / => a b
 / => ---
 / => 1 1
 / => 2 2
 / => 3 3
-/ see http://code.kx.com/q4m3/14_Introduction_to_Kdb+/ for more
+/ 자세한 내용은 http://code.kx.com/q4m3/14_Introduction_to_Kdb+/를 참조하십시오.
 
-////// Frameworks //////
-/ kdb+ is typically used for data capture and analysis.
-/ This involves using an architecture with multiple processes
-/ working together. kdb+ frameworks are available to streamline the setup
-/ and configuration of this architecture and add additional functionality
-/ such as disaster recovery, logging, access, load balancing etc.
+////// 프레임워크 //////
+/ kdb+는 일반적으로 데이터 캡처 및 분석에 사용됩니다.
+/ 여기에는 여러 프로세스가 함께 작동하는 아키텍처를 사용하는 것이 포함됩니다.
+/ kdb+ 프레임워크는 이 아키텍처의 설정 및 구성을 간소화하고 재해 복구, 로깅, 액세스, 로드 밸런싱 등과 같은 추가 기능을 추가하는 데 사용할 수 있습니다.
 / https://github.com/DataIntellectTech/TorQ
-```
 
-## Want to know more?
 
-* [*q for mortals* q language tutorial](http://code.kx.com/q4m3/)
-* [*Introduction to Kdb+* on disk data tutorial](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/)
-* [q language reference](https://code.kx.com/q/ref/)
-* [TorQ production framework](https://github.com/DataIntellectTech/TorQ)
+## 더 알고 싶으십니까?
+
+* [*q for mortals* q 언어 튜토리얼](http://code.kx.com/q4m3/)
+* [*Introduction to Kdb+* 디스크 데이터 튜토리얼](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/)
+* [q 언어 참조](https://code.kx.com/q/ref/)
+* [TorQ 프로덕션 프레임워크](https://github.com/DataIntellectTech/TorQ)

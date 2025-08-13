@@ -1,22 +1,21 @@
-# compojure.md (번역)
-
 ---
 category: tool
 name: Compojure
 contributors:
     - ["Adam Bard", "http://adambard.com/"]
 filename: learncompojure.clj
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-## Getting Started with Compojure
+## Compojure 시작하기
 
-Compojure is a DSL for *quickly* creating *performant* web applications
-in Clojure with minimal effort:
+Compojure는 최소한의 노력으로 Clojure에서 *빠르고* *성능이 뛰어난* 웹 애플리케이션을 만들기 위한 DSL입니다:
 
 ```clojure
 (ns myapp.core
   (:require [compojure.core :refer :all]
-            [org.httpkit.server :refer [run-server]])) ; httpkit is a server
+            [org.httpkit.server :refer [run-server]])) ; httpkit은 서버입니다.
 
 (defroutes myapp
   (GET "/" [] "Hello World"))
@@ -25,37 +24,34 @@ in Clojure with minimal effort:
   (run-server myapp {:port 5000}))
 ```
 
-**Step 1:** Create a project with [Leiningen](http://leiningen.org/):
+**1단계:** [Leiningen](http://leiningen.org/)으로 프로젝트를 생성합니다:
 
 ```
 lein new myapp
 ```
 
-**Step 2:** Put the above code in `src/myapp/core.clj`
+**2단계:** 위 코드를 `src/myapp/core.clj`에 넣습니다.
 
-**Step 3:** Add some dependencies to `project.clj`:
+**3단계:** `project.clj`에 의존성을 추가합니다:
 
 ```
 [compojure "1.1.8"]
 [http-kit "2.1.16"]
 ```
 
-**Step 4:** Run:
+**4단계:** 실행:
 
 ```
 lein run -m myapp.core
 ```
 
-View at: <http://localhost:5000/>
+다음에서 확인: <http://localhost:5000/>
 
-Compojure apps will run on any ring-compatible server, but we recommend
-[http-kit](http://http-kit.org/) for its performance and
-[massive concurrency](http://http-kit.org/600k-concurrent-connection-http-kit.html).
+Compojure 앱은 모든 ring 호환 서버에서 실행되지만, 성능과 [대규모 동시성](http://http-kit.org/600k-concurrent-connection-http-kit.html)을 위해 [http-kit](http://http-kit.org/)을 권장합니다.
 
-### Routes
+### 라우트
 
-In compojure, each route is an HTTP method paired with a URL-matching pattern,
-an argument list, and a body.
+Compojure에서 각 라우트는 HTTP 메서드와 URL 일치 패턴, 인수 목록 및 본문으로 구성됩니다.
 
 ```clojure
 (defroutes myapp
@@ -68,8 +64,7 @@ an argument list, and a body.
   (HEAD "/" [] "Preview something"))
 ```
 
-Compojure route definitions are just functions which
-[accept request maps and return response maps](https://github.com/mmcgrana/ring/blob/master/SPEC):
+Compojure 라우트 정의는 단순히 [요청 맵을 받아 응답 맵을 반환하는](https://github.com/mmcgrana/ring/blob/master/SPEC) 함수입니다:
 
 ```clojure
 (myapp {:uri "/" :request-method :post})
@@ -78,28 +73,28 @@ Compojure route definitions are just functions which
 ;     :body "Create Something"}
 ```
 
-The body may be a function, which must accept the request as a parameter:
+본문은 함수일 수 있으며, 요청을 매개변수로 받아야 합니다:
 
 ```clojure
 (defroutes myapp
   (GET "/" [] (fn [req] "Do something with req")))
 ```
 
-Or, you can just use the request directly:
+또는 요청을 직접 사용할 수도 있습니다:
 
 ```clojure
 (defroutes myapp
   (GET "/" req "Do something with req"))
 ```
 
-Route patterns may include named parameters:
+라우트 패턴에는 명명된 매개변수가 포함될 수 있습니다:
 
 ```clojure
 (defroutes myapp
   (GET "/hello/:name" [name] (str "Hello " name)))
 ```
 
-You can adjust what each parameter matches by supplying a regex:
+정규식을 제공하여 각 매개변수가 일치하는 것을 조정할 수 있습니다:
 
 ```clojure
 (defroutes myapp
@@ -107,14 +102,12 @@ You can adjust what each parameter matches by supplying a regex:
     (str "File: " name ext)))
 ```
 
-### Middleware
+### 미들웨어
 
-Clojure uses [Ring](https://github.com/ring-clojure/ring) for routing.
-Handlers are just functions that accept a request map and return a
-response map (Compojure will turn strings into 200 responses for you).
+Clojure는 라우팅에 [Ring](https://github.com/ring-clojure/ring)을 사용합니다.
+핸들러는 단순히 요청 맵을 받아 응답 맵을 반환하는 함수입니다(Compojure는 문자열을 200 응답으로 변환합니다).
 
-You can easily write middleware that wraps all or part of your
-application to modify requests or responses:
+요청 또는 응답을 수정하기 위해 애플리케이션의 전체 또는 일부를 래핑하는 미들웨어를 쉽게 작성할 수 있습니다:
 
 ```clojure
 (defroutes myapp
@@ -128,14 +121,13 @@ application to modify requests or responses:
   (run-server (wrap-version myapp) {:port 5000}))
 ```
 
-[Ring-Defaults](https://github.com/ring-clojure/ring-defaults) provides some handy
-middlewares for sites and apis, so add it to your dependencies:
+[Ring-Defaults](https://github.com/ring-clojure/ring-defaults)는 사이트 및 API에 유용한 미들웨어를 제공하므로 의존성에 추가하십시오:
 
 ```
 [ring/ring-defaults "0.1.1"]
 ```
 
-Then, you can import it in your ns:
+그런 다음 ns에서 가져올 수 있습니다:
 
 ```
 (ns myapp.core
@@ -144,15 +136,14 @@ Then, you can import it in your ns:
             [org.httpkit.server :refer [run-server]]))
 ```
 
-And use `wrap-defaults` to add the `site-defaults` middleware to your
-app:
+그리고 `wrap-defaults`를 사용하여 `site-defaults` 미들웨어를 앱에 추가합니다:
 
 ```
 (defn -main []
   (run-server (wrap-defaults myapp site-defaults) {:port 5000}))
 ```
 
-Now, your handlers may utilize query parameters:
+이제 핸들러는 쿼리 매개변수를 사용할 수 있습니다:
 
 ```clojure
 (defroutes myapp
@@ -162,7 +153,7 @@ Now, your handlers may utilize query parameters:
       (str "Title: " title ", Author: " author))))
 ```
 
-Or, for POST and PUT requests, form parameters as well
+또는 POST 및 PUT 요청의 경우 폼 매개변수도 사용할 수 있습니다.
 
 ```clojure
 (defroutes myapp
@@ -173,12 +164,10 @@ Or, for POST and PUT requests, form parameters as well
 ```
 
 
-### Return values
+### 반환 값
 
-The return value of a route block determines the response body
-passed on to the HTTP client, or at least the next middleware in the
-ring stack. Most commonly, this is a string, as in the above examples.
-But, you may also return a [response map](https://github.com/mmcgrana/ring/blob/master/SPEC):
+라우트 블록의 반환 값은 HTTP 클라이언트에 전달되거나 Ring 스택의 다음 미들웨어에 전달되는 응답 본문을 결정합니다. 가장 일반적으로 이는 위 예제에서와 같이 문자열입니다.
+그러나 [응답 맵](https://github.com/mmcgrana/ring/blob/master/SPEC)을 반환할 수도 있습니다:
 
 ```clojure
 (defroutes myapp
@@ -190,29 +179,29 @@ But, you may also return a [response map](https://github.com/mmcgrana/ring/blob/
     {:status 200 :headers {"Content-Type" "application/json"} :body "{}"}))
 ```
 
-### Static Files
+### 정적 파일
 
-To serve up static files, use `compojure.route.resources`.
-Resources will be served from your project's `resources/` folder.
+정적 파일을 제공하려면 `compojure.route.resources`를 사용하십시오.
+리소스는 프로젝트의 `resources/` 폴더에서 제공됩니다.
 
 ```clojure
 (require '[compojure.route :as route])
 
 (defroutes myapp
   (GET "/")
-  (route/resources "/")) ; Serve static resources at the root path
+  (route/resources "/")) ; 루트 경로에서 정적 리소스 제공
 
 (myapp {:uri "/js/script.js" :request-method :get})
-; => Contents of resources/public/js/script.js
+; => resources/public/js/script.js의 내용
 ```
 
-### Views / Templates
+### 뷰 / 템플릿
 
-To use templating with Compojure, you'll need a template library. Here are a few:
+Compojure에서 템플릿을 사용하려면 템플릿 라이브러리가 필요합니다. 몇 가지는 다음과 같습니다:
 
 #### [Stencil](https://github.com/davidsantiago/stencil)
 
-[Stencil](https://github.com/davidsantiago/stencil) is a [Mustache](http://mustache.github.com/) template library:
+[Stencil](https://github.com/davidsantiago/stencil)은 [Mustache](http://mustache.github.com/) 템플릿 라이브러리입니다:
 
 ```clojure
 (require '[stencil.core :refer [render-string]])
@@ -222,7 +211,7 @@ To use templating with Compojure, you'll need a template library. Here are a few
     (render-string "Hello {{name}}" {:name name})))
 ```
 
-You can easily read in templates from your resources directory. Here's a helper function
+리소스 디렉토리에서 템플릿을 쉽게 읽을 수 있습니다. 다음은 도우미 함수입니다.
 
 ```clojure
 (require 'clojure.java.io)
@@ -237,7 +226,7 @@ You can easily read in templates from your resources directory. Here's a helper 
 
 #### [Selmer](https://github.com/yogthos/Selmer)
 
-[Selmer](https://github.com/yogthos/Selmer) is a Django and Jinja2-inspired templating language:
+[Selmer](https://github.com/yogthos/Selmer)는 Django 및 Jinja2에서 영감을 받은 템플릿 언어입니다:
 
 ```clojure
 (require '[selmer.parser :refer [render-file]])
@@ -249,7 +238,7 @@ You can easily read in templates from your resources directory. Here's a helper 
 
 #### [Hiccup](https://github.com/weavejester/hiccup)
 
-[Hiccup](https://github.com/weavejester/hiccup) is a library for representing HTML as Clojure code
+[Hiccup](https://github.com/weavejester/hiccup)은 HTML을 Clojure 코드로 표현하기 위한 라이브러리입니다.
 
 ```clojure
 (require '[hiccup.core :as hiccup])
@@ -260,12 +249,12 @@ You can easily read in templates from your resources directory. Here's a helper 
       [:html
         [:body
           [:h1 {:class "title"}
-            (str "Hello " name)]]])))
+            (str "Hello " name)]]]))
 ```
 
 #### [Markdown](https://github.com/yogthos/markdown-clj)
 
-[Markdown-clj](https://github.com/yogthos/markdown-clj) is a Markdown implementation.
+[Markdown-clj](https://github.com/yogthos/markdown-clj)는 Markdown 구현입니다.
 
 ```clojure
 (require '[markdown.core :refer [md-to-html-string]])
@@ -275,8 +264,8 @@ You can easily read in templates from your resources directory. Here's a helper 
     (md-to-html-string "## Hello, world")))
 ```
 
-Further reading:
+더 읽을거리:
 
-* [Official Compojure Documentation](https://github.com/weavejester/compojure/wiki)
+* [공식 Compojure 문서](https://github.com/weavejester/compojure/wiki)
 
-* [Clojure for the Brave and True](http://www.braveclojure.com/)
+* [용감하고 진실한 Clojure](http://www.braveclojure.com/)

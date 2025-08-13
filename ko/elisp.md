@@ -1,5 +1,3 @@
-# elisp.md (번역)
-
 ---
 name: Emacs Lisp
 contributors:
@@ -7,210 +5,206 @@ contributors:
     - ["Saurabh Sandav", "http://github.com/SaurabhSandav"]
     - ["rilysh", "https://github.com/rilysh"]
 filename: learn-emacs-lisp.el
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ```elisp
-;; This gives an introduction to Emacs Lisp in 15 minutes (v0.2d)
+;; 이 문서는 15분 만에 Emacs Lisp에 대한 소개를 제공합니다 (v0.2d)
 ;;
-;; First make sure you read this text by Peter Norvig:
+;; 먼저 Peter Norvig의 이 글을 읽으십시오:
 ;; http://norvig.com/21-days.html
 ;;
-;; Then install latest version of GNU Emacs:
+;; 그런 다음 최신 버전의 GNU Emacs를 설치하십시오:
 ;;
-;; Debian: apt-get install emacs (or see your distro instructions)
+;; Debian: apt-get install emacs (또는 배포판 지침 참조)
 ;; OSX: https://emacsformacosx.com/
 ;; Windows: https://ftp.gnu.org/gnu/emacs/windows/
 ;;
-;; More general information can be found at:
+;; 더 일반적인 정보는 다음에서 찾을 수 있습니다:
 ;; http://www.gnu.org/software/emacs/#Obtaining
 
-;; Important warning:
+;; 중요한 경고:
 ;;
-;; Going through this tutorial won't damage your computer unless
-;; you get so angry that you throw it on the floor.  In that case,
-;; I hereby decline any responsibility.  Have fun!
+;; 이 튜토리얼을 진행해도 컴퓨터가 손상되지 않습니다.
+;; 화가 나서 바닥에 던지지 않는 한 말이죠. 그 경우,
+;; 저는 어떠한 책임도 지지 않습니다. 즐거운 시간 보내세요!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Fire up Emacs.
+;; Emacs를 실행하십시오.
 ;;
-;; Hit the `q' key to dismiss the welcome message.
+;; 환영 메시지를 닫으려면 `q` 키를 누르십시오.
 ;;
-;; Now look at the gray line at the bottom of the window:
+;; 이제 창 하단의 회색 줄을 보십시오:
 ;;
-;; "*scratch*" is the name of the editing space you are now in.
-;; This editing space is called a "buffer".
+;; "*scratch*"는 현재 있는 편집 공간의 이름입니다.
+;; 이 편집 공간을 "버퍼"라고 합니다.
 ;;
-;; The scratch buffer is the default buffer when opening Emacs.
-;; You are never editing files: you are editing buffers that you
-;; can save to a file.
+;; 스크래치 버퍼는 Emacs를 열 때 기본 버퍼입니다.
+;; 파일을 편집하는 것이 아니라, 파일에 저장할 수 있는 버퍼를 편집하는 것입니다.
 ;;
-;; "Lisp interaction" refers to a set of commands available here.
+;; "Lisp interaction"은 여기에서 사용할 수 있는 명령 집합을 나타냅니다.
 ;;
-;; Emacs has a built-in set of commands available in every buffer,
-;; and several subsets of commands available when you activate a
-;; specific mode.  Here we use the `lisp-interaction-mode', which
-;; comes with commands to evaluate and navigate within Elisp code.
+;; Emacs에는 모든 버퍼에서 사용할 수 있는 내장 명령 집합이 있으며,
+;; 특정 모드를 활성화할 때 사용할 수 있는 여러 하위 집합의 명령이 있습니다.
+;; 여기서는 Elisp 코드를 평가하고 탐색하는 명령이 포함된 `lisp-interaction-mode`를 사용합니다.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Semi-colons start comments anywhere on a line.
+;; 세미콜론은 줄의 어느 곳에서나 주석을 시작합니다.
 ;;
-;; Elisp programs are made of symbolic expressions ("sexps"):
+;; Elisp 프로그램은 기호 표현식("sexps")으로 구성됩니다:
 (+ 2 2)
 
-;; This symbolic expression reads as "Add 2 to 2".
+;; 이 기호 표현식은 "2에 2를 더하라"고 읽습니다.
 
-;; Sexps are enclosed into parentheses, possibly nested:
+;; Sexps는 괄호로 묶여 있으며, 중첩될 수 있습니다:
 (+ 2 (+ 1 1))
 
-;; A symbolic expression contains atoms or other symbolic
-;; expressions.  In the above examples, 1 and 2 are atoms,
-;; (+ 2 (+ 1 1)) and (+ 1 1) are symbolic expressions.
+;; 기호 표현식에는 원자 또는 다른 기호 표현식이 포함됩니다.
+;; 위 예제에서 1과 2는 원자이고,
+;; (+ 2 (+ 1 1))과 (+ 1 1)은 기호 표현식입니다.
 
-;; From `lisp-interaction-mode' you can evaluate sexps.
-;; Put the cursor right after the closing parenthesis then
-;; hold down the control and hit the j keys ("C-j" for short).
+;; `lisp-interaction-mode`에서 sexps를 평가할 수 있습니다.
+;; 닫는 괄호 바로 뒤에 커서를 놓고
+;; 컨트롤을 누른 상태에서 j 키를 누르십시오(줄여서 "C-j").
 
 (+ 3 (+ 1 2))
-;;           ^ cursor here
-;; `C-j' => 6
+;;           ^ 커서 여기
+;; `C-j` => 6
 
-;; `C-j' inserts the result of the evaluation in the buffer.
+;; `C-j`는 평가 결과를 버퍼에 삽입합니다.
 
-;; `C-xC-e' displays the same result in Emacs bottom line,
-;; called the "echo area". We will generally use `C-xC-e',
-;; as we don't want to clutter the buffer with useless text.
+;; `C-xC-e`는 Emacs 하단 줄에 동일한 결과를 표시합니다.
+;; 이를 "에코 영역"이라고 합니다. 우리는 일반적으로 `C-xC-e`를 사용할 것입니다.
+;; 버퍼를 불필요한 텍스트로 어지럽히고 싶지 않기 때문입니다.
 
-;; `setq' stores a value into a variable:
+;; `setq`는 변수에 값을 저장합니다:
 (setq my-name "Bastien")
-;; `C-xC-e' => "Bastien" (displayed in the echo area)
+;; `C-xC-e` => "Bastien" (에코 영역에 표시됨)
 
-;; `insert' will insert "Hello!" where the cursor is:
+;; `insert`는 커서가 있는 곳에 "Hello!"를 삽입합니다:
 (insert "Hello!")
-;; `C-xC-e' => "Hello!"
+;; `C-xC-e` => "Hello!"
 
-;; We used `insert' with only one argument "Hello!", but
-;; we can pass more arguments -- here we use two:
+;; 우리는 "Hello!"라는 단일 인수로 `insert`를 사용했지만,
+;; 더 많은 인수를 전달할 수 있습니다 -- 여기서는 두 개를 사용합니다:
 
 (insert "Hello" " world!")
-;; `C-xC-e' => "Hello world!"
+;; `C-xC-e` => "Hello world!"
 
-;; You can use variables instead of strings:
+;; 문자열 대신 변수를 사용할 수 있습니다:
 (insert "Hello, I am " my-name)
-;; `C-xC-e' => "Hello, I am Bastien"
+;; `C-xC-e` => "Hello, I am Bastien"
 
-;; You can combine sexps into functions:
+;; sexps를 함수로 결합할 수 있습니다:
 (defun hello () (insert "Hello, I am " my-name))
-;; `C-xC-e' => hello
+;; `C-xC-e` => hello
 
-;; You can evaluate functions:
+;; 함수를 평가할 수 있습니다:
 (hello)
-;; `C-xC-e' => Hello, I am Bastien
+;; `C-xC-e` => Hello, I am Bastien
 
-;; The empty parentheses in the function's definition means that
-;; it does not accept arguments.  But always using `my-name' is
-;; boring, let's tell the function to accept one argument (here
-;; the argument is called "name"):
+;; 함수의 정의에 있는 빈 괄호는
+;; 인수를 받지 않음을 의미합니다. 하지만 항상 `my-name`을 사용하는 것은
+;; 지루하므로, 함수가 하나의 인수를 받도록 알려줍시다(여기서
+;; 인수는 "name"이라고 합니다):
 
 (defun hello (name) (insert "Hello " name))
-;; `C-xC-e' => hello
+;; `C-xC-e` => hello
 
-;; Now let's call the function with the string "you" as the value
-;; for its unique argument:
+;; 이제 고유한 인수에 대한 값으로 문자열 "you"를 사용하여 함수를 호출해 보겠습니다:
 (hello "you")
-;; `C-xC-e' => "Hello you"
+;; `C-xC-e` => "Hello you"
 
-;; Yeah!
+;; 네!
 
-;; Take a breath.
+;; 숨을 고르십시오.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Now switch to a new buffer named "*test*" in another window:
+;; 이제 다른 창에서 "*test*"라는 새 버퍼로 전환하십시오:
 
 (switch-to-buffer-other-window "*test*")
-;; `C-xC-e'
-;; => [screen has two windows and cursor is in the *test* buffer]
+;; `C-xC-e`
+;; => [화면에 두 개의 창이 있고 커서는 *test* 버퍼에 있습니다]
 
-;; Mouse over the top window and left-click to go back.  Or you can
-;; use `C-xo' (i.e. hold down control-x and hit o) to go to the other
-;; window interactively.
+;; 마우스를 위쪽 창 위로 가져가 왼쪽 클릭하여 돌아갑니다. 또는 `C-xo`를 사용할 수 있습니다.
+;; (즉, 컨트롤-x를 누른 상태에서 o를 누름)를 사용하여 대화식으로 다른 창으로 이동합니다.
 
-;; You can combine several sexps with `progn':
+;; `progn`을 사용하여 여러 sexps를 결합할 수 있습니다:
 (progn
   (switch-to-buffer-other-window "*test*")
   (hello "you"))
-;; `C-xC-e'
-;; => [The screen has two windows and cursor is in the *test* buffer]
+;; `C-xC-e`
+;; => [화면에 두 개의 창이 있고 커서는 *test* 버퍼에 있습니다]
 
-;; Now if you don't mind, I'll stop asking you to hit `C-xC-e': do it
-;; for every sexp that follows.
+;; 이제 괜찮으시다면, `C-xC-e`를 누르라고 요청하는 것을 멈추겠습니다: 다음 모든 sexp에 대해 그렇게 하십시오.
 
-;; Always go back to the *scratch* buffer with the mouse or `C-xo'.
+;; 항상 마우스 또는 `C-xo`를 사용하여 *scratch* 버퍼로 돌아갑니다.
 
-;; It's often useful to erase the buffer:
+;; 버퍼를 지우는 것이 종종 유용합니다:
 (progn
   (switch-to-buffer-other-window "*test*")
   (erase-buffer)
   (hello "there"))
 
-;; Or to go back to the other window:
+;; 또는 다른 창으로 돌아가기:
 (progn
   (switch-to-buffer-other-window "*test*")
   (erase-buffer)
   (hello "you")
   (other-window 1))
 
-;; You can bind a value to a local variable with `let':
+;; `let`을 사용하여 지역 변수에 값을 바인딩할 수 있습니다:
 (let ((local-name "you"))
   (switch-to-buffer-other-window "*test*")
   (erase-buffer)
   (hello local-name)
   (other-window 1))
 
-;; No need to use `progn' in that case, since `let' also combines
-;; several sexps.
+;; 이 경우 `progn`을 사용할 필요가 없습니다. `let`도 여러 sexps를 결합하기 때문입니다.
 
-;; Let's format a string:
+;; 문자열 서식 지정:
 (format "Hello %s!\n" "visitor")
 
-;; %s is a place-holder for a string, replaced by "visitor".
-;; \n is the newline character.
+;; %s는 "visitor"로 대체되는 문자열의 자리 표시자입니다.
+;; \n은 줄 바꿈 문자입니다.
 
-;; Let's refine our function by using format:
+;; format을 사용하여 함수를 구체화해 보겠습니다:
 (defun hello (name)
   (insert (format "Hello %s!\n" name)))
 
 (hello "you")
 
-;; Let's create another function which uses `let':
+;; `let`을 사용하는 다른 함수를 만들어 보겠습니다:
 (defun greeting (name)
   (let ((your-name "Bastien"))
     (insert (format "Hello %s!\n\nI am %s."
-                    name       ; the argument of the function
-                    your-name  ; the let-bound variable "Bastien"
+                    name       ; 함수의 인수
+                    your-name  ; let으로 바인딩된 변수 "Bastien"
                     ))))
 
-;; And evaluate it:
+;; 그리고 평가합니다:
 (greeting "you")
 
-;; Some functions are interactive:
+;; 일부 함수는 대화식입니다:
 (read-from-minibuffer "Enter your name: ")
 
-;; Evaluating this function returns what you entered at the prompt.
+;; 이 함수를 평가하면 프롬프트에 입력한 내용이 반환됩니다.
 
-;; Let's make our `greeting' function prompt for your name:
+;; `greeting` 함수가 이름을 묻도록 만들어 보겠습니다:
 (defun greeting (from-name)
   (let ((your-name (read-from-minibuffer "Enter your name: ")))
     (insert (format "Hello!\n\nI am %s and you are %s."
-                    from-name ; the argument of the function
-                    your-name ; the let-bound var, entered at prompt
+                    from-name ; 함수의 인수
+                    your-name ; let으로 바인딩된 변수, 프롬프트에서 입력됨
                     ))))
 
 (greeting "Bastien")
 
-;; Let's complete it by displaying the results in the other window:
+;; 다른 창에 결과를 표시하여 완성해 보겠습니다:
 (defun greeting (from-name)
   (let ((your-name (read-from-minibuffer "Enter your name: ")))
     (switch-to-buffer-other-window "*test*")
@@ -218,35 +212,33 @@ filename: learn-emacs-lisp.el
     (insert (format "Hello %s!\n\nI am %s." your-name from-name))
     (other-window 1)))
 
-;; Now test it:
+;; 이제 테스트합니다:
 (greeting "Bastien")
 
-;; Take a breath.
+;; 숨을 고르십시오.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Let's store a list of names:
-;; If you want to create a literal list of data, use ' to stop it from
-;; being evaluated - literally, "quote" the data.
+;; 이름 목록 저장:
+;; 데이터의 리터럴 목록을 만들려면 '를 사용하여 평가되지 않도록 하십시오 - 말 그대로 데이터를 "인용"하십시오.
 (setq list-of-names '("Sarah" "Chloe" "Mathilde"))
 
-;; Get the first element of this list with `car':
+;; `car`를 사용하여 이 목록의 첫 번째 요소를 가져옵니다:
 (car list-of-names)
 
-;; Get a list of all but the first element with `cdr':
+;; `cdr`을 사용하여 첫 번째 요소를 제외한 모든 요소의 목록을 가져옵니다:
 (cdr list-of-names)
 
-;; Add an element to the beginning of a list with `push':
+;; `push`를 사용하여 목록의 시작 부분에 요소를 추가합니다:
 (push "Stephanie" list-of-names)
 
-;; NOTE: `car' and `cdr' don't modify the list, but `push' does.
-;; This is an important difference: some functions don't have any
-;; side-effects (like `car') while others have (like `push').
+;; 참고: `car`와 `cdr`은 목록을 수정하지 않지만 `push`는 수정합니다.
+;; 이것은 중요한 차이점입니다: 일부 함수는 부작용이 없지만(`car`와 같이) 다른 함수는 있습니다(`push`와 같이).
 
-;; Let's call `hello' for each element in `list-of-names':
+;; `list-of-names`의 각 요소에 대해 `hello`를 호출해 보겠습니다:
 (mapcar 'hello list-of-names)
 
-;; Refine `greeting' to say hello to everyone in `list-of-names':
+;; `list-of-names`의 모든 사람에게 인사하도록 `greeting`을 구체화합니다:
 (defun greeting ()
     (switch-to-buffer-other-window "*test*")
     (erase-buffer)
@@ -255,11 +247,10 @@ filename: learn-emacs-lisp.el
 
 (greeting)
 
-;; Remember the `hello' function we defined above?  It takes one
-;; argument, a name.  `mapcar' calls `hello', successively using each
-;; element of `list-of-names' as the argument for `hello'.
+;; 위에서 정의한 `hello` 함수를 기억하십니까? 이름이라는 하나의 인수를 받습니다.
+;; `mapcar`는 `hello`를 호출하고, `list-of-names`의 각 요소를 `hello`의 인수로 순차적으로 사용합니다.
 
-;; Now let's arrange a bit what we have in the displayed buffer:
+;; 이제 표시된 버퍼에 있는 것을 약간 정리해 보겠습니다:
 
 (defun replace-hello-by-bonjour ()
     (switch-to-buffer-other-window "*test*")
@@ -268,87 +259,85 @@ filename: learn-emacs-lisp.el
       (replace-match "Bonjour"))
     (other-window 1))
 
-;; (goto-char (point-min)) goes to the beginning of the buffer.
-;; (search-forward "Hello") searches for the string "Hello".
-;; (while x y) evaluates the y sexp(s) while x returns something.
-;; If x returns `nil' (nothing), we exit the while loop.
+;; (goto-char (point-min))은 버퍼의 시작으로 이동합니다.
+;; (search-forward "Hello")는 문자열 "Hello"를 검색합니다.
+;; (while x y)는 x가 무언가를 반환하는 동안 y sexp를 평가합니다.
+;; x가 `nil`(아무것도 없음)을 반환하면 while 루프를 종료합니다.
 
 (replace-hello-by-bonjour)
 
-;; You should see all occurrences of "Hello" in the *test* buffer
-;; replaced by "Bonjour".
+;; *test* 버퍼에서 "Hello"의 모든 발생이
+;; "Bonjour"로 대체된 것을 볼 수 있습니다.
 
-;; You should also get an error: "Search failed: Hello".
-;;
-;; To avoid this error, you need to tell `search-forward' whether it
-;; should stop searching at some point in the buffer, and whether it
-;; should silently fail when nothing is found:
+;; 또한 "Search failed: Hello"라는 오류가 발생해야 합니다.
+;; 
+;; 이 오류를 피하려면 `search-forward`에 버퍼의 특정 지점에서 검색을 중지해야 하는지 여부와
+;; 아무것도 찾지 못했을 때 자동으로 실패해야 하는지 여부를 알려야 합니다:
 
-;; (search-forward "Hello" nil t) does the trick:
+;; (search-forward "Hello" nil t)가 그 역할을 합니다:
 
-;; The `nil' argument says: the search is not bound to a position.
-;; The `'t' argument says: silently fail when nothing is found.
+;; `nil` 인수는 검색이 위치에 바인딩되지 않음을 의미합니다.
+;; `'t'` 인수는 아무것도 찾지 못했을 때 자동으로 실패함을 의미합니다.
 
-;; We use this sexp in the function below, which doesn't throw an error:
+;; 오류를 발생시키지 않는 아래 함수에서 이 sexp를 사용합니다:
 
 (defun hello-to-bonjour ()
     (switch-to-buffer-other-window "*test*")
     (erase-buffer)
-    ;; Say hello to names in `list-of-names'
+    ;; `list-of-names`의 이름에 인사
     (mapcar 'hello list-of-names)
     (goto-char (point-min))
-    ;; Replace "Hello" by "Bonjour"
+    ;; "Hello"를 "Bonjour"로 바꾸기
     (while (search-forward "Hello" nil t)
       (replace-match "Bonjour"))
     (other-window 1))
 
 (hello-to-bonjour)
 
-;; Let's boldify the names:
+;; 이름을 굵게 만들어 보겠습니다:
 
 (defun boldify-names ()
     (switch-to-buffer-other-window "*test*")
     (goto-char (point-min))
-    (while (re-search-forward "Bonjour \\(.+\\)!" nil t)
+    (while (re-search-forward "Bonjour \(.+\)!")
       (add-text-properties (match-beginning 1)
                            (match-end 1)
                            (list 'face 'bold)))
     (other-window 1))
 
-;; This functions introduces `re-search-forward': instead of
-;; searching for the string "Bonjour", you search for a pattern,
-;; using a "regular expression" (abbreviated in the prefix "re-").
+;; 이 함수는 `re-search-forward`를 도입합니다: 문자열 "Bonjour"를 검색하는 대신
+;; "정규 표현식"(접두사 "re-"로 축약됨)을 사용하여 패턴을 검색합니다.
 
-;; The regular expression is "Bonjour \\(.+\\)!" and it reads:
-;; the string "Bonjour ", and
-;; a group of            | this is the \\( ... \\) construct
-;;   any character       | this is the .
-;;   possibly repeated   | this is the +
-;; and the "!" string.
+;; 정규 표현식은 "Bonjour \(.+\)!")이며 다음과 같이 읽습니다:
+;; 문자열 "Bonjour "와
+;; 그룹 | 이것은 \( ... \) 구문입니다.
+;;   모든 문자       | 이것은 .입니다.
+;;   반복될 수 있음   | 이것은 +입니다.
+;; 그리고 "!" 문자열.
 
-;; Ready?  Test it!
+;; 준비되셨습니까? 테스트하십시오!
 
 (boldify-names)
 
-;; `add-text-properties' adds... text properties, like a face.
+;; `add-text-properties`는 얼굴과 같은 텍스트 속성을 추가합니다.
 
-;; OK, we are done.  Happy hacking!
+;; 좋습니다, 끝났습니다. 즐거운 해킹 되세요!
 
-;; If you want to know more about a variable or a function:
-;;
+;; 변수나 함수에 대해 더 알고 싶다면:
+;; 
 ;; C-h v a-variable RET
 ;; C-h f a-function RET
-;;
-;; To read the Emacs Lisp manual with Emacs:
-;;
+;; 
+;; Emacs로 Emacs Lisp 설명서를 읽으려면:
+;; 
 ;; C-h i m elisp RET
-;;
-;; To read an online introduction to Emacs Lisp:
+;; 
+;; Emacs Lisp에 대한 온라인 소개를 읽으려면:
 ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html
 ```
 
-### Further Reading
-- [GNU Elisp Manual](https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html)
-- [Emacs Wiki](https://www.emacswiki.org/emacs/LearningEmacs)
-- [Emacs Docs](https://emacsdocs.org/docs/elisp/Emacs-Lisp)
-- [Mpre Elisp Docs](https://www.math.utah.edu/docs/info/elisp_22.html)
+### 추가 자료
+- [GNU Elisp 설명서](https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html)
+- [Emacs 위키](https://www.emacswiki.org/emacs/LearningEmacs)
+- [Emacs 문서](https://emacsdocs.org/docs/elisp/Emacs-Lisp)
+- [Mpre Elisp 문서](https://www.math.utah.edu/docs/info/elisp_22.html)

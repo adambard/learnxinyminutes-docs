@@ -1,231 +1,193 @@
-# hdl.md (번역)
-
 ---
 name: HDL
 filename: learnhdl.hdl
 contributors:
   - ["Jack Smith", "https://github.com/JSmithTech2019"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-HDL (hardware description language) is a specialized language used to describe the structure/behavior of real world circuits.
+HDL(하드웨어 기술 언어)은 실제 회로의 구조/동작을 설명하는 데 사용되는 특수 언어입니다.
 
-It is used by circuit designers to simulate circuits and logic prior to wiring and fabricating a hardware circuit.
+회로 설계자가 하드웨어 회로를 배선하고 제작하기 전에 회로와 논리를 시뮬레이션하는 데 사용됩니다.
 
-HDL allows circuit designers to simulate circuits at a high level without being connected to specific components.
+HDL을 사용하면 회로 설계자가 특정 구성 요소에 연결되지 않고도 높은 수준에서 회로를 시뮬레이션할 수 있습니다.
 
-## Basic building blocks & introduction to the language---
-This programming language is built by simulating hardware chips and wiring. Normal programming functions are replaced with specialized chips that are added to the current wiring design. Every base chip must be written as it's own file and imported to be used in the current chip, though they may be reused as often as desired.
+## 기본 구성 요소 및 언어 소개---
+이 프로그래밍 언어는 하드웨어 칩과 배선을 시뮬레이션하여 구축됩니다. 일반적인 프로그래밍 기능은 현재 배선 설계에 추가되는 특수 칩으로 대체됩니다. 모든 기본 칩은 자체 파일로 작성하고 현재 칩에서 사용하려면 가져와야 하지만, 원하는 만큼 자주 재사용할 수 있습니다.
 
 ```verilog
-// Single line comments start with two forward slashes.
+// 한 줄 주석은 두 개의 슬래시로 시작합니다.
 
 /*
- * Multiline comments can be written using '/*' and 'star/'.
- * These are often used as comments.
+ * 여러 줄 주석은 '/*'와 'star/'를 사용하여 작성할 수 있습니다.
+ * 이것들은 종종 주석으로 사용됩니다.
  *
- * Note that they cannot be nested and will end at the first 'star/'.
+ * 중첩될 수 없으며 첫 번째 'star/'에서 끝납니다.
  */
 
 ////////////////////////////////////////////////////
-// 1. Chips & Components
+// 1. 칩 및 구성 요소
 ////////////////////////////////////////////////////
 /*
- * Unlike other languages HDL creates an individual chip (function) per file
- * These are defined with a name, input arguments, output arguments
- * and finally the parts/logic of that specific chip.
+ * 다른 언어와 달리 HDL은 파일당 개별 칩(함수)을 만듭니다.
+ * 이것들은 이름, 입력 인수, 출력 인수 및 마지막으로 해당 특정 칩의 부품/논리로 정의됩니다.
  */
 
-// Note CHIP is capitalized, the chip name does not need to be.
+// 참고 CHIP은 대문자이며, 칩 이름은 대문자일 필요가 없습니다.
 CHIP Ex {
-    IN  a,  // Single bit (0 or 1) variable.
-        c[16];  // 16 bit variable bus of single bit values.
+    IN  a,  // 단일 비트(0 또는 1) 변수입니다.
+        c[16];  // 단일 비트 값의 16비트 변수 버스입니다.
 
-    OUT out[16],  // 16 bit variable bus output.
-        carry;  // Single bit output variable
+    OUT out[16],  // 16비트 변수 버스 출력입니다.
+        carry;  // 단일 비트 출력 변수입니다.
 
     PARTS:
-    // The functional components of the chip.
+    // 칩의 기능적 구성 요소입니다.
 }
 
-// Lines are ended with semicolons but can be continued using commas. The
-// whitespace is ignored.
+// 줄은 세미콜론으로 끝나지만 쉼표를 사용하여 계속할 수 있습니다. 공백은 무시됩니다.
 
 
 
 ////////////////////////////////////////////////////
-// 2. Inputs, Outputs, & Variables
+// 2. 입력, 출력 및 변수
 ////////////////////////////////////////////////////
 /*
- * Variables and IO are treated as pins/wires and can carry a single bit
- * of data (0 or 1).
+ * 변수 및 IO는 핀/와이어로 처리되며 단일 비트의 데이터(0 또는 1)를 전달할 수 있습니다.
  */
 
-// Hardware works on low level 0's and 1's, in order to use a constant
-// high or low we use the terms true and false.
-a=false; // This is a 0 value.
-b=true; // This is a 1 value.
+// 하드웨어는 저수준 0과 1에서 작동하며, 상수 높음 또는 낮음을 사용하려면 true 및 false라는 용어를 사용합니다.
+a=false; // 이것은 0 값입니다.
+b=true; // 이것은 1 값입니다.
 
-// Inputs and outputs can be defined as single bits
-IN a, b; // Creates two single bit inputs
+// 입력 및 출력은 단일 비트로 정의할 수 있습니다.
+IN a, b; // 두 개의 단일 비트 입력을 만듭니다.
 
-// They can also be defined as busses act as arrays where each
-// index can contain a single bit value.
-OUT c[16]; // Creates a 16 bit output array.
+// 각 인덱스에 단일 비트 값을 포함할 수 있는 배열 역할을 하는 버스로도 정의할 수 있습니다.
+OUT c[16]; // 16비트 출력 배열을 만듭니다.
 
-// Bussed values can be accessed using brackets
-a[0] // The first indexed value in the bus a.
-a[0..3] // The first 4 values in the a bus.
-// Values can also be passed in entirety. For example if the function
-// foo() takes an 8 bit input bus and outputs a 2 bit bus:
-foo(in=a[0..7], out=c); // C is now a 2 bit internal bus
+// 버스 값은 대괄호를 사용하여 액세스할 수 있습니다.
+a[0] // 버스 a의 첫 번째 인덱스 값입니다.
+a[0..3] // a 버스의 처음 4개 값입니다.
+// 값은 전체적으로 전달될 수도 있습니다. 예를 들어 함수 foo()가 8비트 입력 버스를 사용하고 2비트 버스를 출력하는 경우:
+foo(in=a[0..7], out=c); // C는 이제 2비트 내부 버스입니다.
 
 
-// Note that internally defined busses cannot be subbussed!
-// To access these elements, output or input them separately:
+// 참고: 내부적으로 정의된 버스는 하위 버스화할 수 없습니다!
+// 이러한 요소에 액세스하려면 개별적으로 출력하거나 입력하십시오:
 foo(in[0]=false, in[1..7]=a[0..6], out[0]=out1, out[1]=out2);
-// out1 and out2 can then be passed into other circuits within the design.
+// 그런 다음 out1 및 out2를 설계 내의 다른 회로에 전달할 수 있습니다.
 
 
 
 ////////////////////////////////////////////////////
-// Combining Subsystems
+// 하위 시스템 결합
 ////////////////////////////////////////////////////
 /*
- * HDL relies heavily on using smaller "building block" chips to then be
- * added into larger and more complex designs. Creating the smaller components
- * and then adding them to the larger circuit allows for fewer lines of code
- * as well as reduction in total rewriting of code.
+ * HDL은 더 크고 복잡한 설계에 추가될 작은 "구성 요소" 칩을 사용하는 데 크게 의존합니다. 작은 구성 요소를 만든 다음 더 큰 회로에 추가하면 코드 줄 수를 줄이고 코드 재작성을 줄일 수 있습니다.
  */
 
-// We are writing the function AND that checks if inputs I and K are both one.
-// To implement this chip we will use the built in NAND gate as well as design
-// a custom NOT gate to invert a single input.
+// 입력 I와 K가 모두 1인지 확인하는 함수 AND를 작성하고 있습니다.
+// 이 칩을 구현하기 위해 내장된 NAND 게이트를 사용하고 단일 입력을 반전시키기 위해 사용자 지정 NOT 게이트를 설계합니다.
 
-// First we construct the Negation (not) chip. We will use the logically
-// complete gate NAND that is built in for this task.
+// 먼저 부정(not) 칩을 구성합니다. 이 작업에는 내장된 논리적으로 완전한 게이트 NAND를 사용합니다.
 CHIP Not {
-    IN i; // Not gates only take one single bit input.
-    OUT o; // The negated value of a.
+    IN i; // Not 게이트는 단일 비트 입력만 받습니다.
+    OUT o; // a의 부정 값입니다.
 
     PARTS:
-    // Add the input to the built in chip, which then sends output to the NOT
-    // output. This effectively negates the given value.
+    // 내장 칩에 입력을 추가하면 NOT 출력으로 출력을 보냅니다. 이것은 주어진 값을 효과적으로 부정합니다.
     Nand(a=i, b=i, out=o);
 }
 
-// By using the built in NAND gate we were able to construct a NOT gate
-// that works like a real world hardware logic chip. Now we must construct
-// the AND gate using these two gate primitives.
+// 내장된 NAND 게이트를 사용하여 실제 하드웨어 논리 칩처럼 작동하는 NOT 게이트를 구성했습니다. 이제 이 두 게이트 기본 요소를 사용하여 AND 게이트를 구성해야 합니다.
 
-// We define a two input, single output AND gate:
+// 두 개의 입력, 단일 출력 AND 게이트를 정의합니다:
 CHIP And {
-    IN i, k; // Two single bit inputs.
-    OUT o; // One single bit output.
+    IN i, k; // 두 개의 단일 비트 입력입니다.
+    OUT o; // 하나의 단일 비트 출력입니다.
 
     PARTS:
-    // Insert I and K into the nand gate and store the output in an internal
-    // wire called notOut.
+    // I와 K를 nand 게이트에 삽입하고 출력을 notOut이라는 내부 와이어에 저장합니다.
     Nand(a=i,b=k,out=notOut);
 
-    // Use the not gate we constructed to invert notOut and send to the AND
-    // output.
+    // 구성한 not 게이트를 사용하여 notOut을 반전시키고 AND 출력으로 보냅니다.
     Not(in=notOut,out=o);
 }
 
-// Easy! Now we can use Nand, And, and Not gates in higher level circuits.
-// Many of these low level components are built in to HDL but any chip can
-// be written as a submodule and used in larger designs.
+// 쉽습니다! 이제 상위 수준 회로에서 Nand, And 및 Not 게이트를 사용할 수 있습니다.
+// 이러한 저수준 구성 요소 중 다수는 HDL에 내장되어 있지만 모든 칩은 하위 모듈로 작성하여 더 큰 설계에 사용할 수 있습니다.
 ```
 
-## Test Files
-When working with the nand2tetris hardware simulator chips written using HDL will
-then be processed against test and comparison files to test functionality of the
-simulated chip versus the expected output. To do this a test file will be loaded
-into the hardware simulator and run against the simulated hardware.
+## 테스트 파일
+nand2tetris 하드웨어 시뮬레이터로 작업할 때 HDL을 사용하여 작성된 칩은 테스트 및 비교 파일에 대해 처리되어 시뮬레이션된 칩의 기능을 예상 출력과 비교하여 테스트합니다. 이를 위해 테스트 파일이 하드웨어 시뮬레이터에 로드되고 시뮬레이션된 하드웨어에 대해 실행됩니다.
 
 ```verilog
-// First the chip the test file is written for is loaded
+// 먼저 테스트 파일이 작성된 칩이 로드됩니다.
 load <chip name>.hdl
 
-// We set the output file for the simulated chip output as well as the comparison
-// file that it will be tested against. We also specify what the output is
-// expected to look like. In this case there will be two output columns, each
-// will be buffered by a single space on either side and 4 binary values in
-// the center of each column.
+// 시뮬레이션된 칩 출력에 대한 출력 파일과 테스트할 비교 파일을 설정합니다. 또한 출력이 어떻게 보일지 지정합니다. 이 경우 두 개의 출력 열이 있으며, 각 열은 양쪽에 단일 공백으로 버퍼링되고 각 열의 중앙에 4개의 이진 값이 있습니다.
 output-file <chip name>.out,
 compare-to <chip name>.cmp,
 output-list in%B1.4.1 out%B1.4.1;
 
-// Then we set initial values for inputs to the chip. For example
-set enable1 1, // set input enable1 to 1
-set enable2 0, // set input enable2 to 0
+// 그런 다음 칩에 대한 입력의 초기 값을 설정합니다. 예를 들어
+set enable1 1, // 입력 enable1을 1로 설정
+set enable2 0, // 입력 enable2를 0으로 설정
 
-// The clock is also controlled in the test file using tick and tock. Tick is a
-// positive pulse and tock takes the clock back to 0. Clock cycles can be run
-// multiple times in a row with no other changes to inputs or outputs.
+// 클럭은 tick 및 tock을 사용하여 테스트 파일에서도 제어됩니다. Tick은 양의 펄스이고 tock은 클럭을 0으로 되돌립니다. 클럭 사이클은 입력이나 출력에 다른 변경 없이 연속으로 여러 번 실행할 수 있습니다.
 tick,
 tock,
 
-// Finally we output the first expected value (from the test file) which is then
-// compared with the first line of real output from our HDL circuit. This output
-// can be viewed in the <chip name>.out file.
+// 마지막으로 (테스트 파일에서) 첫 번째 예상 값을 출력한 다음 HDL 회로의 실제 출력의 첫 번째 줄과 비교합니다. 이 출력은 <chip name>.out 파일에서 볼 수 있습니다.
 output;
 
-// An example of <chip name>, a chip that takes in a 4 bit value as input and
-// adds 1 to that value could have the following as test code:
+// <chip name>의 예, 4비트 값을 입력으로 사용하고 해당 값에 1을 더하는 칩은 다음과 같은 테스트 코드를 가질 수 있습니다:
 
-// Set the input value to 0000, clock pulse, compare output from cmp file to actual out.
+// 입력 값을 0000으로 설정하고, 클럭 펄스를 보내고, cmp 파일의 출력을 실제 출력과 비교합니다.
 set in %B0000,
 tick,
 tock,
 output;
 
-// Set the input value to 0110, clock pulse, compare output from cmp file to actual out.
+// 입력 값을 0110으로 설정하고, 클럭 펄스를 보내고, cmp 파일의 출력을 실제 출력과 비교합니다.
 set in %B0110,
 tick,
 tock,
 output;
 
-// The expected output for case 1 should be 0001 and case 2 expects 0111, lets
-// learn a little more about comparison files before finalizing our lesson.
+// 사례 1의 예상 출력은 0001이어야 하고 사례 2는 0111을 예상합니다. 수업을 마무리하기 전에 비교 파일에 대해 조금 더 알아보겠습니다.
 ```
 
-## Comparison Files
-Now lets take a look at comparison files, the files that hold what the test file
-compares with the actual output of an HDL chip in the hardware simulator!
+## 비교 파일
+이제 비교 파일을 살펴보겠습니다. 테스트 파일이 하드웨어 시뮬레이터에서 HDL 칩의 실제 출력과 비교하는 파일입니다!
 
 ```verilog
-// Like the <chip name> example above, the structure of the comparison file
-// would look something like this
+// 위의 <chip name> 예제와 같이 비교 파일의 구조는 다음과 같습니다.
 |  in  | out  |
 | 0000 | 0001 |
 | 0110 | 0111 |
 
-// Notice how the input values specified in the test case are equivalent to the
-// `in` column of the comparison file, and that the space buffer is 1 on either side.
+// 테스트 사례에 지정된 입력 값이 비교 파일의 `in` 열과 동일하고 공백 버퍼가 양쪽에 1인지 확인하십시오.
 
-// If the output from the HDL code we not this, such as the output below, then the
-// test will fail and the user will know that the simulated chip is not correctly designed.
+// HDL 코드의 출력이 아래 출력과 같지 않으면 테스트가 실패하고 사용자는 시뮬레이션된 칩이 올바르게 설계되지 않았음을 알게 됩니다.
 |  in  | out  |
 | 0000 | 0001 |
-| 0110 | 0110 | // Error! The chip did not add 1 here, something went wrong.
+| 0110 | 0110 | // 오류! 칩이 여기에 1을 추가하지 않았습니다. 뭔가 잘못되었습니다.
 ```
 
-This is incredibly useful as it allows designers to simulate chip logic prior to
-fabricating real life hardware and identify problems in their designs. Be warned that
-errors in the test or comparison files can lead to both false positives and also
-the more damaging false negatives so ensure that the logic is sound behind the test
-creation.
+이것은 설계자가 실제 하드웨어를 제작하기 전에 칩 논리를 시뮬레이션하고 설계의 문제를 식별할 수 있으므로 매우 유용합니다. 테스트 또는 비교 파일의 오류는 거짓 양성과 더 해로운 거짓 음성을 모두 유발할 수 있으므로 테스트 생성 뒤에 있는 논리가 건전한지 확인하십시오.
 
 
-Good luck and happy coding!
+행운을 빕니다. 즐거운 코딩 되세요!
 
-## Resources
+## 자료
 
-* [From Nand To Tetris](https://www.nand2tetris.org)
+* [Nand에서 Tetris까지](https://www.nand2tetris.org)
 
-## Further Reading
+## 추가 자료
 
-* [Hardware Description Language](https://en.wikipedia.org/wiki/Hardware_description_language)
+* [하드웨어 기술 언어](https://en.wikipedia.org/wiki/Hardware_description_language)
 
-* [HDL Programming Fundamentals](https://www.electronicdesign.com/products/hdl-programming-fundamentals)
+* [HDL 프로그래밍 기초](https://www.electronicdesign.com/products/hdl-programming-fundamentals)

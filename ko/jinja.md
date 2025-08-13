@@ -1,69 +1,66 @@
-# jinja.md (번역)
-
 ---
 name: Jinja
 contributors:
   - ["Adaías Magdiel", "https://github.com/AdaiasMagdiel"]
 filename: learn-jinja.j2
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-## Getting Started with Jinja
 
-Jinja is a fast, expressive, and extensible templating engine for Python
-applications.
+## Jinja 시작하기
 
-Jinja includes a lot of functionalities, such as:
+Jinja는 Python 애플리케이션을 위한 빠르고 표현력이 풍부하며 확장 가능한 템플릿 엔진입니다.
 
-- Template inheritance and inclusion;
-- Defining and importing macros within templates;
-- Security mechanisms to prevent XSS attacks;
-- A sandboxed environment that can safely render untrusted templates;
-- Extensible filters, tests, functions, and even syntax.
+Jinja에는 다음과 같은 많은 기능이 포함되어 있습니다:
 
-A Jinja template is simply a text file. Jinja doesn't require a specific
-extension, but it's common to use `.j2` or `.jinja` to make it easier for
-some IDEs.
+- 템플릿 상속 및 포함;
+- 템플릿 내에서 매크로 정의 및 가져오기;
+- XSS 공격을 방지하기 위한 보안 메커니즘;
+- 신뢰할 수 없는 템플릿을 안전하게 렌더링할 수 있는 샌드박스 환경;
+- 확장 가능한 필터, 테스트, 함수 및 구문까지.
 
-There are a few kinds of delimiters. The default Jinja delimiters are configured
-as follows:
+Jinja 템플릿은 단순히 텍스트 파일입니다. Jinja는 특정 확장자가 필요하지 않지만, 일부 IDE에서 더 쉽게 사용할 수 있도록 `.j2` 또는 `.jinja`를 사용하는 것이 일반적입니다.
 
-- `{% ... %}` for Statements
-- `{{ ... }}` for Expressions to print to the template output
-- `{# ... #}` for Comments not included in the template output
+몇 가지 종류의 구분 기호가 있습니다. 기본 Jinja 구분 기호는 다음과 같이 구성됩니다:
+
+- `{% ... %}` 문
+- `{{ ... }}` 템플릿 출력에 인쇄할 표현식
+- `{# ... #}` 템플릿 출력에 포함되지 않는 주석
 
 ```jinja
-{# This is an example of a comment. #}
+{# 이것은 주석의 예입니다. #}
 
 {#
-  You can use this syntax
-  to write multiline comments
-  as well.
+  이 구문을 사용하여
+  여러 줄 주석을
+  작성할 수도 있습니다.
 #}
 ```
 
 
-## VARIABLES
+## 변수
 
 ```jinja
-{# You have the option to access variables from the context passed to the template #}
+{# 템플릿에 전달된 컨텍스트에서 변수에 액세스할 수 있습니다. #}
 
 {{ foo }}
 
 {#
-  Additionally, you can use a dot (.) to access attributes of a variable or
-  use Python syntax, using []
+  또한 점(.)을 사용하여 변수의 속성에 액세스하거나
+  Python 구문을 사용하여 []를 사용할 수 있습니다.
 #}
 
 {{ foo.bar }}
 {{ foo['bar'] }}
 
-{# Within the template, you can define variables as well #}
+{# 템플릿 내에서 변수를 정의할 수도 있습니다. #}
 
 {% set name = "Magdiel" %}
 {{ name }}
 ```
 
-## Loops
+## 루프
 
 ```html
 <h1>Members</h1>
@@ -88,11 +85,9 @@ as follows:
 </div>
 ```
 
-## Conditionals
+## 조건문
 
-The if statement in Jinja is similar to the if statement in Python. It is
-commonly used to check if a variable is defined, not empty, and not false in
-its most basic form.
+Jinja의 if 문은 Python의 if 문과 유사합니다. 가장 기본적인 형태에서는 변수가 정의되어 있고, 비어 있지 않으며, 거짓이 아닌지 확인하는 데 일반적으로 사용됩니다.
 
 ```html
 {% if users %}
@@ -104,7 +99,7 @@ its most basic form.
 {% endif %}
 
 
-{# For multiple branches, elif and else can be used like in Python. #}
+{# 여러 분기의 경우 Python과 같이 elif 및 else를 사용할 수 있습니다. #}
 
 
 {% if message.status == "error" %}
@@ -116,11 +111,9 @@ its most basic form.
 {% endif %}
 ```
 
-## Template Inheritance
+## 템플릿 상속
 
-One of the most powerful features of Jinja is template inheritance. You can
-create a base layout with predefined blocks that you can extend in another file
-and override with your own content.
+Jinja의 가장 강력한 기능 중 하나는 템플릿 상속입니다. 다른 파일에서 확장하고 자신의 내용으로 재정의할 수 있는 미리 정의된 블록이 있는 기본 레이아웃을 만들 수 있습니다.
 
 ```html
 {# file: base.html.j2 #}
@@ -137,7 +130,7 @@ and override with your own content.
 <body>
     <main>
         {% block content %}{% endblock %}
-        {# the endblock tag doesn't need the name of the block #}
+        {# endblock 태그에는 블록 이름이 필요하지 않습니다. #}
     </main>
 </body>
 </html>
@@ -185,10 +178,9 @@ and override with your own content.
 </html>
 ```
 
-### Including Content
+### 내용 포함
 
-You can include content from another template on your current template using
-the `{% include "template/path" %}` tag.
+`{% include "template/path" %}` 태그를 사용하여 현재 템플릿에 다른 템플릿의 내용을 포함할 수 있습니다.
 
 ```html
 {# file: footer.html.j2 #}
@@ -225,8 +217,7 @@ the `{% include "template/path" %}` tag.
 ...
 ```
 
-Variables passed to the main template can also be used in the include, as the
-included template has access to the context of the main template.
+기본 템플릿에 전달된 변수는 포함된 템플릿이 기본 템플릿의 컨텍스트에 액세스할 수 있으므로 포함된 템플릿에서도 사용할 수 있습니다.
 
 ```html
 {# file: greetings.html.j2 #}
@@ -253,9 +244,9 @@ included template has access to the context of the main template.
 </div>
 ```
 
-## Macros
+## 매크로
 
-Macros are basically like functions in another languages. You can define macros with or without arguments and reuse them in various parts of your template.
+매크로는 기본적으로 다른 언어의 함수와 같습니다. 인수가 있거나 없는 매크로를 정의하고 템플릿의 다양한 부분에서 재사용할 수 있습니다.
 
 ```html
 {% macro input(value="", type="text", placeholder="") -%}
@@ -266,6 +257,6 @@ Macros are basically like functions in another languages. You can define macros 
 <p>{{ input(type="password") }}</p>
 ```
 
-## Official Documentation
+## 공식 문서
 
-To learn more, access the [official documentation](https://jinja.palletsprojects.com/en/).
+더 자세히 알아보려면 [공식 문서](https://jinja.palletsprojects.com/en/)에 액세스하십시오.

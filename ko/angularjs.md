@@ -1,144 +1,144 @@
-# angularjs.md (번역)
-
 ---
 category: framework
 name: AngularJS
 contributors:
     - ["Walter Cordero", "http://waltercordero.com"]
 filename: learnangular.txt
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-## AngularJS Tutorial.
+## AngularJS 튜토리얼.
 
-AngularJS version 1.0 was released in 2012.
-Miško Hevery, a Google employee, started to work with AngularJS in 2009.
-The idea turned out very well, and the project is now officially supported by Google.
+AngularJS 버전 1.0은 2012년에 출시되었습니다.
+Google 직원인 Miško Hevery는 2009년에 AngularJS 작업을 시작했습니다.
+이 아이디어는 매우 성공적이었고, 현재 이 프로젝트는 Google에서 공식적으로 지원합니다.
 
-AngularJS is a JavaScript framework. It can be added to an HTML page with a "script" tag.
-AngularJS extends HTML attributes with Directives, and binds data to HTML with Expressions.
+AngularJS는 자바스크립트 프레임워크입니다. "script" 태그를 사용하여 HTML 페이지에 추가할 수 있습니다.
+AngularJS는 지시문(Directives)으로 HTML 속성을 확장하고, 표현식(Expressions)으로 데이터를 HTML에 바인딩합니다.
 
-## What You Should Already Know
+## 이미 알고 있어야 할 사항
 
-Before you study AngularJS, you should have a basic understanding of:
+AngularJS를 공부하기 전에 다음에 대한 기본적인 이해가 있어야 합니다:
 
 - HTML
 - CSS
-- JavaScript
+- 자바스크립트
 
 ```html
-// AngularJS is a JavaScript framework. It is a library written in JavaScript.
-// AngularJS is distributed as a JavaScript file, and can be added to a web page with a script tag:
+// AngularJS는 자바스크립트 프레임워크입니다. 자바스크립트로 작성된 라이브러리입니다.
+// AngularJS는 자바스크립트 파일로 배포되며, 스크립트 태그를 사용하여 웹 페이지에 추가할 수 있습니다:
 // <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 
 ///////////////////////////////////
-// AngularJS Extends HTML
+// AngularJS는 HTML을 확장합니다
 
-//AngularJS extends HTML with ng-directives.
-//The ng-app directive defines an AngularJS application.
-//The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.
-//The ng-bind directive binds application data to the HTML view.
+//AngularJS는 ng-지시문으로 HTML을 확장합니다.
+//ng-app 지시문은 AngularJS 애플리케이션을 정의합니다.
+//ng-model 지시문은 HTML 컨트롤(input, select, textarea)의 값을 애플리케이션 데이터에 바인딩합니다.
+//ng-bind 지시문은 애플리케이션 데이터를 HTML 뷰에 바인딩합니다.
 <!DOCTYPE html>
 <html>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <body>
     <div ng-app="">
-      <p>Name: <input type="text" ng-model="name"></p>
+      <p>이름: <input type="text" ng-model="name"></p>
       <p ng-bind="name"></p>
     </div>
   </body>
 </html>
 
 /*
-  * Example explained:
-  * AngularJS starts automatically when the web page has loaded.
-  * The ng-app directive tells AngularJS that the <div> element is the "owner" of an AngularJS application.
-  * The ng-model directive binds the value of the input field to the application variable name.
-  * The ng-bind directive binds the innerHTML of the <p> element to the application variable name.
+  * 예제 설명:
+  * 웹 페이지가 로드되면 AngularJS가 자동으로 시작됩니다.
+  * ng-app 지시문은 <div> 요소가 AngularJS 애플리케이션의 "소유자"임을 AngularJS에 알립니다.
+  * ng-model 지시문은 입력 필드의 값을 애플리케이션 변수 이름에 바인딩합니다.
+  * ng-bind 지시문은 <p> 요소의 innerHTML을 애플리케이션 변수 이름에 바인딩합니다.
 */
-<tag> Here are content to be interpreted </tag>
+<tag> 여기에 해석될 내용이 있습니다 </tag>
 
 ///////////////////////////////////
-// AngularJS Expressions
+// AngularJS 표현식
 
-// AngularJS expressions are written inside double braces: {{ expression }}.
-// AngularJS expressions binds data to HTML the same way as the ng-bind directive.
-// AngularJS will "output" data exactly where the expression is written.
-// AngularJS expressions are much like JavaScript expressions: They can contain literals, operators, and variables.
-// Example {{ 5 + 5 }} or {{ firstName + " " + lastName }}
+// AngularJS 표현식은 이중 중괄호 안에 작성됩니다: {{ expression }}.
+// AngularJS 표현식은 ng-bind 지시문과 동일한 방식으로 데이터를 HTML에 바인딩합니다.
+// AngularJS는 표현식이 작성된 곳에 정확히 데이터를 "출력"합니다.
+// AngularJS 표현식은 자바스크립트 표현식과 매우 유사합니다: 리터럴, 연산자 및 변수를 포함할 수 있습니다.
+// 예제 {{ 5 + 5 }} 또는 {{ firstName + " " + lastName }}
 <!DOCTYPE html>
 <html>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <body>
     <div ng-app="">
-      <p>My first expression: {{ 5 + 5 }}</p>
+      <p>나의 첫 표현식: {{ 5 + 5 }}</p>
     </div>
   </body>
 </html>
 
-//If you remove the ng-app directive, HTML will display the expression as it is, without solving it:
+//ng-app 지시문을 제거하면 HTML은 표현식을 해결하지 않고 그대로 표시합니다:
 <!DOCTYPE html>
 <html>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <body>
     <div>
-      <p>My first expression: {{ 5 + 5 }}</p>
+      <p>나의 첫 표현식: {{ 5 + 5 }}</p>
     </div>
   </body>
 </html>
 
-// AngularJS expressions bind AngularJS data to HTML the same way as the ng-bind directive.
+// AngularJS 표현식은 ng-bind 지시문과 동일한 방식으로 AngularJS 데이터를 HTML에 바인딩합니다.
 <!DOCTYPE html>
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <body>
     <div ng-app="">
-      <p>Name: <input type="text" ng-model="name"></p>
+      <p>이름: <input type="text" ng-model="name"></p>
       <p>{{name}}</p>
     </div>
   </body>
 </html>
 
-// AngularJS numbers are like JavaScript numbers:
+// AngularJS 숫자는 자바스크립트 숫자와 같습니다:
 <div ng-app="" ng-init="quantity=1;cost=5">
-  <p>Total in dollar: {{ quantity * cost }}</p>
+  <p>달러 총액: {{ quantity * cost }}</p>
 </div>
 
-//AngularJS strings are like JavaScript strings:
+//AngularJS 문자열은 자바스크립트 문자열과 같습니다:
 <div ng-app="" ng-init="firstName='John';lastName='Doe'">
-  <p>The name is <span ng-bind="firstName + ' ' + lastName"></span></p>
+  <p>이름은 <span ng-bind="firstName + ' ' + lastName"></span></p>
 </div>
 
-//AngularJS objects are like JavaScript objects:
+//AngularJS 객체는 자바스크립트 객체와 같습니다:
 <div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
-  <p>The name is {{ person.lastName }}</p>
+  <p>이름은 {{ person.lastName }}</p>
 </div>
 
-//AngularJS arrays are like JavaScript arrays:
+//AngularJS 배열은 자바스크립트 배열과 같습니다:
 <div ng-app="" ng-init="points=[1,15,19,2,40]">
-  <p>The third result is {{ points[2] }}</p>
+  <p>세 번째 결과는 {{ points[2] }}</p>
 </div>
 
-// Like JavaScript expressions, AngularJS expressions can contain literals, operators, and variables.
-// Unlike JavaScript expressions, AngularJS expressions can be written inside HTML.
-// AngularJS expressions do not support conditionals, loops, and exceptions, while JavaScript expressions do.
-// AngularJS expressions support filters, while JavaScript expressions do not.
+// 자바스크립트 표현식과 마찬가지로 AngularJS 표현식은 리터럴, 연산자 및 변수를 포함할 수 있습니다.
+// 자바스크립트 표현식과 달리 AngularJS 표현식은 HTML 내부에 작성할 수 있습니다.
+// AngularJS 표현식은 조건문, 루프 및 예외를 지원하지 않지만 자바스크립트 표현식은 지원합니다.
+// AngularJS 표현식은 필터를 지원하지만 자바스크립트 표현식은 지원하지 않습니다.
 
 ///////////////////////////////////
-// AngularJS Directives
+// AngularJS 지시문
 
 
-//AngularJS directives are extended HTML attributes with the prefix ng-.
-//The ng-app directive initializes an AngularJS application.
-//The ng-init directive initializes application data.
-//The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.
+//AngularJS 지시문은 ng- 접두사가 붙은 확장된 HTML 속성입니다.
+//ng-app 지시문은 AngularJS 애플리케이션을 초기화합니다.
+//ng-init 지시문은 애플리케이션 데이터를 초기화합니다.
+//ng-model 지시문은 HTML 컨트롤(input, select, textarea)의 값을 애플리케이션 데이터에 바인딩합니다.
 <div ng-app="" ng-init="firstName='John'">
-  <p>Name: <input type="text" ng-model="firstName"></p>
-  <p>You wrote: {{ firstName }}</p>
+  <p>이름: <input type="text" ng-model="firstName"></p>
+  <p>작성한 내용: {{ firstName }}</p>
 </div>
 
-//Using ng-init is not very common. You will learn how to initialize data in the chapter about controllers.
+//ng-init 사용은 그다지 일반적이지 않습니다. 컨트롤러에 대한 장에서 데이터를 초기화하는 방법을 배우게 됩니다.
 
-//The ng-repeat directive repeats an HTML element:
+//ng-repeat 지시문은 HTML 요소를 반복합니다:
 <div ng-app="" ng-init="names=['Jani','Hege','Kai']">
   <ul>
     <li ng-repeat="x in names">
@@ -147,7 +147,7 @@ Before you study AngularJS, you should have a basic understanding of:
   </ul>
 </div>
 
-//The ng-repeat directive used on an array of objects:
+//객체 배열에 사용된 ng-repeat 지시문:
 <div ng-app="" ng-init="names=[
 {name:'Jani',country:'Norway'},
 {name:'Hege',country:'Sweden'},
@@ -159,42 +159,42 @@ Before you study AngularJS, you should have a basic understanding of:
   </ul>
 </div>
 
-// AngularJS is perfect for database CRUD (Create Read Update Delete) applications.
-// Just imagine if these objects were records from a database.
+// AngularJS는 데이터베이스 CRUD(생성 읽기 업데이트 삭제) 애플리케이션에 적합합니다.
+// 이러한 객체가 데이터베이스의 레코드라고 상상해 보십시오.
 
-// The ng-app directive defines the root element of an AngularJS application.
-// The ng-app directive will auto-bootstrap (automatically initialize) the application when a web page is loaded.
-// Later you will learn how ng-app can have a value (like ng-app="myModule"), to connect code modules.
+// ng-app 지시문은 AngularJS 애플리케이션의 루트 요소를 정의합니다.
+// ng-app 지시문은 웹 페이지가 로드될 때 애플리케이션을 자동 부트스트랩(자동으로 초기화)합니다.
+// 나중에 ng-app이 코드 모듈을 연결하기 위해 값(예: ng-app="myModule")을 가질 수 있는 방법을 배우게 됩니다.
 
-// The ng-init directive defines initial values for an AngularJS application.
-// Normally, you will not use ng-init. You will use a controller or module instead.
-// You will learn more about controllers and modules later.
+// ng-init 지시문은 AngularJS 애플리케이션의 초기 값을 정의합니다.
+// 일반적으로 ng-init을 사용하지 않습니다. 대신 컨트롤러나 모듈을 사용합니다.
+// 나중에 컨트롤러와 모듈에 대해 더 자세히 배우게 됩니다.
 
-//The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.
-//The ng-model directive can also:
-//Provide type validation for application data (number, email, required).
-//Provide status for application data (invalid, dirty, touched, error).
-//Provide CSS classes for HTML elements.
-//Bind HTML elements to HTML forms.
+//ng-model 지시문은 HTML 컨트롤(input, select, textarea)의 값을 애플리케이션 데이터에 바인딩합니다.
+//ng-model 지시문은 다음을 수행할 수도 있습니다:
+//애플리케이션 데이터에 대한 유형 유효성 검사 제공(숫자, 이메일, 필수).
+//애플리케이션 데이터에 대한 상태 제공(유효하지 않음, 더티, 터치됨, 오류).
+//HTML 요소에 대한 CSS 클래스 제공.
+//HTML 요소를 HTML 양식에 바인딩.
 
-//The ng-repeat directive clones HTML elements once for each item in a collection (in an array).
+//ng-repeat 지시문은 컬렉션(배열)의 각 항목에 대해 한 번씩 HTML 요소를 복제합니다.
 
 ///////////////////////////////////
-// AngularJS Controllers
+// AngularJS 컨트롤러
 
-// AngularJS controllers control the data of AngularJS applications.
-// AngularJS controllers are regular JavaScript Objects.
+// AngularJS 컨트롤러는 AngularJS 애플리케이션의 데이터를 제어합니다.
+// AngularJS 컨트롤러는 일반 자바스크립트 객체입니다.
 
-// AngularJS applications are controlled by controllers.
-// The ng-controller directive defines the application controller.
-// A controller is a JavaScript Object, created by a standard JavaScript object constructor.
+// AngularJS 애플리케이션은 컨트롤러에 의해 제어됩니다.
+// ng-controller 지시문은 애플리케이션 컨트롤러를 정의합니다.
+// 컨트롤러는 표준 자바스크립트 객체 생성자로 생성된 자바스크립트 객체입니다.
 
 <div ng-app="myApp" ng-controller="myCtrl">
 
-First Name: <input type="text" ng-model="firstName"><br>
-Last Name: <input type="text" ng-model="lastName"><br>
+이름: <input type="text" ng-model="firstName"><br>
+성: <input type="text" ng-model="lastName"><br>
 <br>
-Full Name: {{firstName + " " + lastName}}
+전체 이름: {{firstName + " " + lastName}}
 
 </div>
 
@@ -206,24 +206,24 @@ app.controller('myCtrl', function($scope) {
 });
 </script>
 
-//Application explained:
+//애플리케이션 설명:
 
-//The AngularJS application is defined by  ng-app="myApp". The application runs inside the <div>.
-//The ng-controller="myCtrl" attribute is an AngularJS directive. It defines a controller.
-//The myCtrl function is a JavaScript function.
-//AngularJS will invoke the controller with a $scope object.
-//In AngularJS, $scope is the application object (the owner of application variables and functions).
-//The controller creates two properties (variables) in the scope (firstName and lastName).
-//The ng-model directives bind the input fields to the controller properties (firstName and lastName).
+//AngularJS 애플리케이션은 ng-app="myApp"으로 정의됩니다. 애플리케이션은 <div> 내에서 실행됩니다.
+//ng-controller="myCtrl" 속성은 AngularJS 지시문입니다. 컨트롤러를 정의합니다.
+//myCtrl 함수는 자바스크립트 함수입니다.
+//AngularJS는 $scope 객체로 컨트롤러를 호출합니다.
+//AngularJS에서 $scope는 애플리케이션 객체(애플리케이션 변수 및 함수의 소유자)입니다.
+//컨트롤러는 스코프에 두 개의 속성(변수)(firstName 및 lastName)을 생성합니다.
+//ng-model 지시문은 입력 필드를 컨트롤러 속성(firstName 및 lastName)에 바인딩합니다.
 
-//The example above demonstrated a controller object with two properties: lastName and firstName.
-//A controller can also have methods (variables as functions):
+//위의 예는 두 개의 속성(lastName 및 firstName)을 가진 컨트롤러 객체를 보여주었습니다.
+//컨트롤러는 메서드(함수로서의 변수)를 가질 수도 있습니다:
 <div ng-app="myApp" ng-controller="personCtrl">
 
-First Name: <input type="text" ng-model="firstName"><br>
-Last Name: <input type="text" ng-model="lastName"><br>
+이름: <input type="text" ng-model="firstName"><br>
+성: <input type="text" ng-model="lastName"><br>
 <br>
-Full Name: {{fullName()}}
+전체 이름: {{fullName()}}
 
 </div>
 
@@ -238,21 +238,21 @@ app.controller('personCtrl', function($scope) {
 });
 </script>
 
-//In larger applications, it is common to store controllers in external files.
-//Just copy the code between the <script> </script> tags into an external file named personController.js:
+//더 큰 애플리케이션에서는 컨트롤러를 외부 파일에 저장하는 것이 일반적입니다.
+//<script> </script> 태그 사이의 코드를 personController.js라는 외부 파일에 복사하기만 하면 됩니다:
 
 <div ng-app="myApp" ng-controller="personCtrl">
 
-First Name: <input type="text" ng-model="firstName"><br>
-Last Name: <input type="text" ng-model="lastName"><br>
+이름: <input type="text" ng-model="firstName"><br>
+성: <input type="text" ng-model="lastName"><br>
 <br>
-Full Name: {{firstName + " " + lastName}}
+전체 이름: {{firstName + " " + lastName}}
 
 </div>
 
 <script src="personController.js"></script>
 
-// For the next example we will create a new controller file:
+// 다음 예제를 위해 새 컨트롤러 파일을 만들겠습니다:
 angular.module('myApp', []).controller('namesCtrl', function($scope) {
     $scope.names = [
         {name:'Jani',country:'Norway'},
@@ -261,8 +261,8 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
     ];
 });
 
-//Save the file as  namesController.js:
-//And then use the controller file in an application:
+//파일을 namesController.js로 저장합니다:
+//그런 다음 애플리케이션에서 컨트롤러 파일을 사용합니다:
 
 <div ng-app="myApp" ng-controller="namesCtrl">
 
@@ -277,45 +277,45 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 <script src="namesController.js"></script>
 
 ///////////////////////////////////
-// AngularJS Filters
+// AngularJS 필터
 
-// Filters can be added to expressions and directives using a pipe character.
-// AngularJS filters can be used to transform data:
+// 필터는 파이프 문자를 사용하여 표현식 및 지시문에 추가할 수 있습니다.
+// AngularJS 필터는 데이터를 변환하는 데 사용할 수 있습니다:
 
-- **currency**:  Format a number to a currency format.
-- **filter**:  Select a subset of items from an array.
-- **lowercase**: Format a string to lower case.
-- **orderBy**: Orders an array by an expression.
-- **uppercase**: Format a string to upper case.
+- **currency**:  숫자를 통화 형식으로 지정합니다.
+- **filter**:  배열에서 항목의 하위 집합을 선택합니다.
+- **lowercase**: 문자열을 소문자로 지정합니다.
+- **orderBy**: 표현식으로 배열을 정렬합니다.
+- **uppercase**: 문자열을 대문자로 지정합니다.
 
-//A filter can be added to an expression with a pipe character (|) and a filter.
-//(For the next two examples we will use the person controller from the previous chapter)
-//The uppercase filter format strings to upper case:
+//필터는 파이프 문자(|)와 필터를 사용하여 표현식에 추가할 수 있습니다.
+//(다음 두 예제에서는 이전 장의 person 컨트롤러를 사용합니다)
+//대문자 필터는 문자열을 대문자로 지정합니다:
 <div ng-app="myApp" ng-controller="personCtrl">
 
-<p>The name is {{ lastName | uppercase }}</p>
+<p>이름은 {{ lastName | uppercase }}</p>
 
 </div>
 
-//The lowercase filter format strings to lower case:
+//소문자 필터는 문자열을 소문자로 지정합니다:
 <div ng-app="myApp" ng-controller="personCtrl">
 
-<p>The name is {{ lastName | lowercase }}</p>
+<p>이름은 {{ lastName | lowercase }}</p>
 
 </div>
 
-//The currency filter formats a number as currency:
+//통화 필터는 숫자를 통화로 지정합니다:
 <div ng-app="myApp" ng-controller="costCtrl">
 
 <input type="number" ng-model="quantity">
 <input type="number" ng-model="price">
 
-<p>Total = {{ (quantity * price) | currency }}</p>
+<p>총액 = {{ (quantity * price) | currency }}</p>
 
 </div>
 
-//A filter can be added to a directive with a pipe character (|) and a filter.
-//The orderBy filter orders an array by an expression:
+//필터는 파이프 문자(|)와 필터를 사용하여 지시문에 추가할 수 있습니다.
+//orderBy 필터는 표현식으로 배열을 정렬합니다:
 <div ng-app="myApp" ng-controller="namesCtrl">
 
 <ul>
@@ -326,9 +326,8 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 
 <div>
 
-//An input filter can be added to a directive with a pipe character (|)
-//and filter followed by a colon and a model name.
-//The filter selects a subset of an array:
+//입력 필터는 파이프 문자(|)와 필터, 콜론 및 모델 이름을 사용하여 지시문에 추가할 수 있습니다.
+//필터는 배열의 하위 집합을 선택합니다:
 
 <div ng-app="myApp" ng-controller="namesCtrl">
 
@@ -345,14 +344,14 @@ angular.module('myApp', []).controller('namesCtrl', function($scope) {
 ///////////////////////////////////
 // AngularJS AJAX - $http
 
-//$http is an AngularJS service for reading data from remote servers.
+//$http는 원격 서버에서 데이터를 읽기 위한 AngularJS 서비스입니다.
 
-// The following data can be provided by a web server:
+// 다음 데이터는 웹 서버에서 제공할 수 있습니다:
 // http://www.w3schools.com/angular/customers.php
-// **Check the URL to see the data format**
+// **데이터 형식을 보려면 URL을 확인하십시오**
 
-// AngularJS $http is a core service for reading data from web servers.
-// $http.get(url) is the function to use for reading server data.
+// AngularJS $http는 웹 서버에서 데이터를 읽기 위한 핵심 서비스입니다.
+// $http.get(url)은 서버 데이터를 읽는 데 사용할 함수입니다.
 <div ng-app="myApp" ng-controller="customersCtrl">
 
 <ul>
@@ -371,29 +370,29 @@ app.controller('customersCtrl', function($scope, $http) {
 });
 </script>
 
-Application explained:
+애플리케이션 설명:
 
-// The AngularJS application is defined by ng-app. The application runs inside a <div>.
-// The ng-controller directive names the controller object.
-// The customersCtrl function is a standard JavaScript object constructor.
-// AngularJS will invoke customersCtrl with a $scope and $http object.
-// $scope is the application object (the owner of application variables and functions).
-// $http is an XMLHttpRequest object for requesting external data.
-// $http.get() reads JSON data from http://www.w3schools.com/angular/customers.php.
-// If success, the controller creates a property (names) in the scope, with JSON data from the server.
+// AngularJS 애플리케이션은 ng-app으로 정의됩니다. 애플리케이션은 <div> 내에서 실행됩니다.
+// ng-controller 지시문은 컨트롤러 객체의 이름을 지정합니다.
+// customersCtrl 함수는 표준 자바스크립트 객체 생성자입니다.
+// AngularJS는 $scope 및 $http 객체로 customersCtrl을 호출합니다.
+// $scope는 애플리케이션 객체(애플리케이션 변수 및 함수의 소유자)입니다.
+// $http는 외부 데이터를 요청하기 위한 XMLHttpRequest 객체입니다.
+// $http.get()은 http://www.w3schools.com/angular/customers.php에서 JSON 데이터를 읽습니다.
+// 성공하면 컨트롤러는 서버의 JSON 데이터로 스코프에 속성(이름)을 생성합니다.
 
 
-// Requests for data from a different server (than the requesting page), are called cross-site HTTP requests.
-// Cross-site requests are common on the web. Many pages load CSS, images, and scripts from different servers.
-// In modern browsers, cross-site HTTP requests from scripts are restricted to same site for security reasons.
-// The following line, in our PHP examples, has been added to allow cross-site access.
+// 다른 서버(요청 페이지와 다른)의 데이터 요청은 교차 사이트 HTTP 요청이라고 합니다.
+// 교차 사이트 요청은 웹에서 일반적입니다. 많은 페이지가 다른 서버에서 CSS, 이미지 및 스크립트를 로드합니다.
+// 최신 브라우저에서는 스크립트의 교차 사이트 HTTP 요청이 보안상의 이유로 동일한 사이트로 제한됩니다.
+// PHP 예제의 다음 줄은 교차 사이트 액세스를 허용하기 위해 추가되었습니다.
 header("Access-Control-Allow-Origin: *");
 
 
 ///////////////////////////////////
-// AngularJS Tables
+// AngularJS 테이블
 
-// Displaying tables with angular is very simple:
+// angular로 테이블을 표시하는 것은 매우 간단합니다:
 <div ng-app="myApp" ng-controller="customersCtrl">
 
 <table>
@@ -413,7 +412,7 @@ app.controller('customersCtrl', function($scope, $http) {
 });
 </script>
 
-// To sort the table, add an orderBy filter:
+// 테이블을 정렬하려면 orderBy 필터를 추가하십시오:
 <table>
   <tr ng-repeat="x in names | orderBy : 'Country'">
     <td>{{ x.Name }}</td>
@@ -421,7 +420,7 @@ app.controller('customersCtrl', function($scope, $http) {
   </tr>
 </table>
 
-// To display the table index, add a <td> with $index:
+// 테이블 인덱스를 표시하려면 $index가 있는 <td>를 추가하십시오:
 <table>
   <tr ng-repeat="x in names">
     <td>{{ $index + 1 }}</td>
@@ -430,7 +429,7 @@ app.controller('customersCtrl', function($scope, $http) {
   </tr>
 </table>
 
-// Using $even and $odd
+// $even 및 $odd 사용
 <table>
   <tr ng-repeat="x in names">
     <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
@@ -443,61 +442,61 @@ app.controller('customersCtrl', function($scope, $http) {
 ///////////////////////////////////
 // AngularJS HTML DOM
 
-//AngularJS has directives for binding application data to the attributes of HTML DOM elements.
+//AngularJS에는 애플리케이션 데이터를 HTML DOM 요소의 속성에 바인딩하는 지시문이 있습니다.
 
-// The ng-disabled directive binds AngularJS application data to the disabled attribute of HTML elements.
+// ng-disabled 지시문은 AngularJS 애플리케이션 데이터를 HTML 요소의 disabled 속성에 바인딩합니다.
 
 <div ng-app="" ng-init="mySwitch=true">
 
 <p>
-<button ng-disabled="mySwitch">Click Me!</button>
+<button ng-disabled="mySwitch">나를 클릭하세요!</button>
 </p>
 
 <p>
-<input type="checkbox" ng-model="mySwitch">Button
+<input type="checkbox" ng-model="mySwitch">버튼
 </p>
 
 </div>
 
-//Application explained:
+//애플리케이션 설명:
 
-// The ng-disabled directive binds the application data mySwitch to the HTML button's disabled attribute.
-// The ng-model directive binds the value of the HTML checkbox element to the value of mySwitch.
-// If the value of mySwitch evaluates to true, the button will be disabled:
+// ng-disabled 지시문은 애플리케이션 데이터 mySwitch를 HTML 버튼의 disabled 속성에 바인딩합니다.
+// ng-model 지시문은 HTML 체크박스 요소의 값을 mySwitch의 값에 바인딩합니다.
+// mySwitch의 값이 true로 평가되면 버튼이 비활성화됩니다:
 <p>
-<button disabled>Click Me!</button>
+<button disabled>나를 클릭하세요!</button>
 </p>
 
-// If the value of mySwitch evaluates to false, the button will not be disabled:
+// mySwitch의 값이 false로 평가되면 버튼이 비활성화되지 않습니다:
 <p>
-  <button>Click Me!</button>
+  <button>나를 클릭하세요!</button>
 </p>
 
-// The ng-show directive shows or hides an HTML element.
+// ng-show 지시문은 HTML 요소를 표시하거나 숨깁니다.
 
 <div ng-app="">
 
-<p ng-show="true">I am visible.</p>
+<p ng-show="true">나는 보입니다.</p>
 
-<p ng-show="false">I am not visible.</p>
+<p ng-show="false">나는 보이지 않습니다.</p>
 
 </div>
 
-// The ng-show directive shows (or hides) an HTML element based on the value of ng-show.
-// You can use any expression that evaluates to true or false:
+// ng-show 지시문은 ng-show의 값에 따라 HTML 요소를 표시(또는 숨김)합니다.
+// true 또는 false로 평가되는 모든 표현식을 사용할 수 있습니다:
 <div ng-app="">
-<p ng-show="hour > 12">I am visible.</p>
+<p ng-show="hour > 12">나는 보입니다.</p>
 </div>
 
 ///////////////////////////////////
-// AngularJS Events
+// AngularJS 이벤트
 
-// AngularJS has its own HTML events directives.
+// AngularJS에는 자체 HTML 이벤트 지시문이 있습니다.
 
-// The ng-click directive defines an AngularJS click event.
+// ng-click 지시문은 AngularJS 클릭 이벤트를 정의합니다.
 <div ng-app="myApp" ng-controller="myCtrl">
 
-<button ng-click="count = count + 1">Click me!</button>
+<button ng-click="count = count + 1">나를 클릭하세요!</button>
 
 <p>{{ count }}</p>
 
@@ -509,18 +508,18 @@ app.controller('myCtrl', function($scope) {
 });
 </script>
 
-// The ng-hide directive can be used to set the visibility of a part of an application.
-// The value ng-hide="true" makes an HTML element invisible.
-// The value ng-hide="false" makes the element visible.
+// ng-hide 지시문은 애플리케이션 일부의 가시성을 설정하는 데 사용할 수 있습니다.
+// ng-hide="true" 값은 HTML 요소를 보이지 않게 만듭니다.
+// ng-hide="false" 값은 요소를 보이게 만듭니다.
 <div ng-app="myApp" ng-controller="personCtrl">
 
-<button ng-click="toggle()">Toggle</button>
+<button ng-click="toggle()">토글</button>
 
 <p ng-hide="myVar">
-First Name: <input type="text" ng-model="firstName"><br>
-Last Name: <input type="text" ng-model="lastName"><br>
+이름: <input type="text" ng-model="firstName"><br>
+성: <input type="text" ng-model="lastName"><br>
 <br>
-Full Name: {{firstName + " " + lastName}}
+전체 이름: {{firstName + " " + lastName}}
 </p>
 
 </div>
@@ -537,29 +536,28 @@ app.controller('personCtrl', function($scope) {
 });
 </script>
 
-//Application explained:
+//애플리케이션 설명:
 
-// The first part of the personController is the same as in the chapter about controllers.
-// The application has a default property (a variable): $scope.myVar = false;
-// The ng-hide directive sets the visibility, of a <p> element with two input fields,
-// according to the value (true or false) of myVar.
-// The function toggle() toggles myVar between true and false.
-// The value ng-hide="true" makes the element invisible.
+// personController의 첫 번째 부분은 컨트롤러에 대한 장과 동일합니다.
+// 애플리케이션에는 기본 속성(변수)이 있습니다: $scope.myVar = false;
+// ng-hide 지시문은 myVar의 값(true 또는 false)에 따라 두 개의 입력 필드가 있는 <p> 요소의 가시성을 설정합니다.
+// toggle() 함수는 myVar를 true와 false 사이에서 토글합니다.
+// ng-hide="true" 값은 요소를 보이지 않게 만듭니다.
 
 
-// The ng-show directive can also be used to set the visibility of a part of an application.
-// The value ng-show="false" makes an HTML element invisible.
-// The value ng-show="true" makes the element visible.
-// Here is the same example as above, using ng-show instead of ng-hide:
+// ng-show 지시문은 애플리케이션 일부의 가시성을 설정하는 데에도 사용할 수 있습니다.
+// ng-show="false" 값은 HTML 요소를 보이지 않게 만듭니다.
+// ng-show="true" 값은 요소를 보이게 만듭니다.
+// 다음은 ng-hide 대신 ng-show를 사용하는 위와 동일한 예입니다:
 <div ng-app="myApp" ng-controller="personCtrl">
 
-<button ng-click="toggle()">Toggle</button>
+<button ng-click="toggle()">토글</button>
 
 <p ng-show="myVar">
-First Name: <input type="text" ng-model="firstName"><br>
-Last Name: <input type="text" ng-model="lastName"><br>
+이름: <input type="text" ng-model="firstName"><br>
+성: <input type="text" ng-model="lastName"><br>
 <br>
-Full Name: {{firstName + " " + lastName}}
+전체 이름: {{firstName + " " + lastName}}
 </p>
 
 </div>
@@ -577,14 +575,14 @@ app.controller('personCtrl', function($scope) {
 </script>
 
 ///////////////////////////////////
-// AngularJS Modules
+// AngularJS 모듈
 
-// An AngularJS module defines an application.
-// The module is a container for the different parts of an application.
-// The module is a container for the application controllers.
-// Controllers always belong to a module.
+// AngularJS 모듈은 애플리케이션을 정의합니다.
+// 모듈은 애플리케이션의 다른 부분을 위한 컨테이너입니다.
+// 모듈은 애플리케이션 컨트롤러를 위한 컨테이너입니다.
+// 컨트롤러는 항상 모듈에 속합니다.
 
-// This application ("myApp") has one controller ("myCtrl"):
+// 이 애플리케이션("myApp")에는 하나의 컨트롤러("myCtrl")가 있습니다:
 
 <!DOCTYPE html>
 <html>
@@ -606,8 +604,8 @@ app.controller("myCtrl", function($scope) {
 </body>
 </html>
 
-// It is common in AngularJS applications to put the module and the controllers in JavaScript files.
-// In this example, "myApp.js" contains an application module definition, while "myCtrl.js" contains the controller:
+// AngularJS 애플리케이션에서는 모듈과 컨트롤러를 자바스크립트 파일에 넣는 것이 일반적입니다.
+// 이 예제에서 "myApp.js"는 애플리케이션 모듈 정의를 포함하고 "myCtrl.js"는 컨트롤러를 포함합니다:
 
 <!DOCTYPE html>
 <html>
@@ -627,7 +625,7 @@ app.controller("myCtrl", function($scope) {
 //myApp.js
 var app = angular.module("myApp", []);
 
-// The [] parameter in the module definition can be used to define dependent modules.
+// 모듈 정의의 [] 매개변수는 종속 모듈을 정의하는 데 사용할 수 있습니다.
 
 // myCtrl.js
 app.controller("myCtrl", function($scope) {
@@ -635,16 +633,14 @@ app.controller("myCtrl", function($scope) {
     $scope.lastName= "Doe";
 });
 
-// Global functions should be avoided in JavaScript. They can easily be overwritten
-// or destroyed by other scripts.
+// 전역 함수는 자바스크립트에서 피해야 합니다. 다른 스크립트에 의해 쉽게 덮어쓰이거나 파괴될 수 있습니다.
 
-// AngularJS modules reduces this problem, by keeping all functions local to the module.
+// AngularJS 모듈은 모든 함수를 모듈에 로컬로 유지하여 이 문제를 줄입니다.
 
-// While it is common in HTML applications to place scripts at the end of the
-// <body> element, it is recommended that you load the AngularJS library either
-// in the <head> or at the start of the <body>.
+// HTML 애플리케이션에서는 스크립트를 <body> 요소의 끝에 배치하는 것이 일반적이지만
+// AngularJS 라이브러리를 <head> 또는 <body>의 시작 부분에 로드하는 것이 좋습니다.
 
-// This is because calls to angular.module can only be compiled after the library has been loaded.
+// 이는 angular.module에 대한 호출이 라이브러리가 로드된 후에만 컴파일될 수 있기 때문입니다.
 
 <!DOCTYPE html>
 <html>
@@ -668,16 +664,16 @@ app.controller("myCtrl", function($scope) {
 
 
 ///////////////////////////////////
-// AngularJS Applications
+// AngularJS 애플리케이션
 
-// AngularJS modules define AngularJS applications.
-// AngularJS controllers control AngularJS applications.
-// The ng-app directive defines the application, the ng-controller directive defines the controller.
+// AngularJS 모듈은 AngularJS 애플리케이션을 정의합니다.
+// AngularJS 컨트롤러는 AngularJS 애플리케이션을 제어합니다.
+// ng-app 지시문은 애플리케이션을 정의하고, ng-controller 지시문은 컨트롤러를 정의합니다.
 <div ng-app="myApp" ng-controller="myCtrl">
-  First Name: <input type="text" ng-model="firstName"><br>
-  Last Name: <input type="text" ng-model="lastName"><br>
+  이름: <input type="text" ng-model="firstName"><br>
+  성: <input type="text" ng-model="lastName"><br>
   <br>
-  Full Name: {{firstName + " " + lastName}}
+  전체 이름: {{firstName + " " + lastName}}
 </div>
 <script>
   var app = angular.module('myApp', []);
@@ -687,23 +683,23 @@ app.controller("myCtrl", function($scope) {
   });
 </script>
 
-// AngularJS modules define applications:
+// AngularJS 모듈은 애플리케이션을 정의합니다:
 var app = angular.module('myApp', []);
 
-// AngularJS controllers control applications:
+// AngularJS 컨트롤러는 애플리케이션을 제어합니다:
 app.controller('myCtrl', function($scope) {
     $scope.firstName= "John";
     $scope.lastName= "Doe";
 });
 ```
 
-## Source & References
+## 소스 및 참고 자료
 
-**Examples**
+**예제**
 
 - [http://www.w3schools.com/angular/angular_examples.asp](http://www.w3schools.com/angular/angular_examples.asp)
 
-**References**
+**참고 자료**
 
 - [http://www.w3schools.com/angular/angular_ref_directives.asp](http://www.w3schools.com/angular/angular_ref_directives.asp)
 - [http://www.w3schools.com/angular/default.asp](http://www.w3schools.com/angular/default.asp)

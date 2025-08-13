@@ -1,222 +1,218 @@
-# bqn.md (번역)
-
 ---
 name: BQN
 filename: learnbqn.bqn
 contributors:
     - ["Raghu Ranganathan", "https://github.com/razetime"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+BQN은 APL 전통의 번거로운 측면을 제거하는 것을 목표로 하는 현대적인 배열 언어(APL과 유사)입니다.
 
-BQN is a modern array language (similar to APL) that aims to eliminate burdensome aspects of the APL tradition.
-
-It is recommended to try these code examples out in a REPL. The [online REPL](https://mlochbaum.github.io/BQN/try.html) is
-recommended for quick start, since it comes with keyboard and easy to access help. You can try building
-[CBQN](https://github.com/dzaima/CBQN) for a local install, but it will need keyboard setup.
+이러한 코드 예제는 REPL에서 시도해 보는 것이 좋습니다. [온라인 REPL](https://mlochbaum.github.io/BQN/try.html)은 키보드와 쉽게 접근할 수 있는 도움말이 함께 제공되므로 빠른 시작에 권장됩니다. 로컬 설치를 위해 [CBQN](https://github.com/dzaima/CBQN)을 빌드해 볼 수 있지만 키보드 설정이 필요합니다.
 
 ```bqn
-# This is a comment.
-# The characters ',' and `⋄` are statement separators.
+# 이것은 주석입니다.
+# 문자 ','와 `⋄`는 문장 구분 기호입니다.
 
 ##################
-# Main datatypes #
+# 주요 데이터 타입 #
 ##################
 
-# Numbers
+# 숫자
 1,2,3,4
-¯1,¯2,¯3  # Negative numbers are written with a high minus
-π,∞,¯π,¯∞ # Pi and Infinity are defined constants
-1_234_456 # You can add underscores in between numbers
-          # This does not change their value
-1.3E4     # Scientific notation is supported
+¯1,¯2,¯3  # 음수는 높은 빼기 기호로 작성됩니다.
+π,∞,¯π,¯∞ # 파이와 무한대는 정의된 상수입니다.
+1_234_456 # 숫자 사이에 밑줄을 추가할 수 있습니다.
+          # 이것은 값을 변경하지 않습니다.
+1.3E4     # 과학적 표기법이 지원됩니다.
 
-# Characters
+# 문자
 'a','⥊'
 '
-'         # Yes, you can put *any* character in a character literal
-@         # Null character ('\0' in C)
-# Arrays
-1‿2‿3       # Stranding, good for simple lists
-⟨1,2,3⟩     # General list notation
-⟨1‿2,2‿3⟩   # Both can be mixed
-[1‿2,2‿3]   # Array notation
-            # An array is multidimensional, as opposed to containing sublists.
-            # It must be rectangular in shape (a grid structure rather than a tree structure)
-[1‿2‿3,4‿5] # This is hence invalid
-            # May be familiar coming from Numpy, MATLAB and similar languages.
-"asdf"      # Character array (String)
+'         # 예, 문자 리터럴에 *어떤* 문자든 넣을 수 있습니다.
+@         # 널 문자('\0' in C)
+# 배열
+1‿2‿3       # 스트랜딩, 간단한 목록에 좋습니다.
+⟨1,2,3⟩     # 일반 목록 표기법
+⟨1‿2,2‿3⟩   # 둘 다 혼합 가능
+[1‿2,2‿3]   # 배열 표기법
+            # 배열은 하위 목록을 포함하는 것과 달리 다차원입니다.
+            # 직사각형 모양이어야 합니다(트리 구조가 아닌 그리드 구조).
+[1‿2‿3,4‿5] # 따라서 이것은 유효하지 않습니다.
+            # Numpy, MATLAB 및 유사한 언어에서 익숙할 수 있습니다.
+"asdf"      # 문자 배열(문자열)
 "newline
-separated"  # Allows newlines
-"quo""tes"  # Escape a double quote by typing it twice
-# Functions
-1{𝕨+𝕩}3       # All functions are infix
-              # 𝕨 is left argument, 𝕩 is right argument
-{-𝕩}5         # 𝕨 can be omitted
-1+3           # Same as the above
-{𝕊𝕩}          # 𝕊 is a recursive call
-              # (this function will loop forever)
-{𝕨 𝕊 𝕩: 𝕨+𝕩}  # Functions can have headers (too many cases to discuss here)
-              # Headers can define arity
-{𝕊 a‿b: a}1‿2 # and also do basic pattern matching
-              # (returns 1)
+separated"  # 줄 바꿈 허용
+"quo""tes"  # 큰따옴표를 두 번 입력하여 이스케이프
+# 함수
+1{𝕨+𝕩}3       # 모든 함수는 중위입니다.
+              # 𝕨은 왼쪽 인수, 𝕩는 오른쪽 인수입니다.
+{-𝕩}5         # 𝕨은 생략할 수 있습니다.
+1+3           # 위와 동일
+{𝕊𝕩}          # 𝕊는 재귀 호출입니다.
+              # (이 함수는 영원히 반복됩니다)
+{𝕨 𝕊 𝕩: 𝕨+𝕩}  # 함수는 헤더를 가질 수 있습니다(여기서 논의하기에는 너무 많은 경우가 있습니다).
+              # 헤더는 arity를 정의할 수 있습니다.
+{𝕊 a‿b: a}1‿2 # 그리고 기본 패턴 매칭도 수행합니다.
+              # (1을 반환)
 
-# Modifiers (higher order functions)
-{𝕗,𝔽,𝕘,𝔾}      # 𝔽 and 𝔾 are the operands as callable functions
-               # 𝕗 and 𝕘 are the operands as values
-{𝔽𝕩}           # 1-modifiers use 𝔽/𝕗 ONLY
-˜,˘,¨,⁼,⌜      # primitive 1-modifiers are superscripts
-{𝕨𝔽𝔾𝕩}         # 2-modifiers MUST use both 𝔽/𝕗 and 𝔾/𝕘 in body or header
-⊸,∘,○,⟜        # primitive 2-modifiers all have circles
-+{⟨𝕗⟩}         # returns ⟨ + ⟩
-1-{𝔽 𝕨 𝔾 𝕩 }×2 # returns ¯2 (operators are *also* infix)
-               # (same as 1 -○× 2)
+# 수정자(고차 함수)
+{𝕗,𝔽,𝕘,𝔾}      # 𝔽와 𝔾는 호출 가능한 함수로서의 피연산자입니다.
+               # 𝕗와 𝕘는 값으로서의 피연산자입니다.
+{𝔽𝕩}           # 1-수정자는 𝔽/𝕗만 사용합니다.
+˜,˘,¨,⁼,⌜      # 기본 1-수정자는 위첨자입니다.
+{𝕨𝔽𝔾𝕩}         # 2-수정자는 본문이나 헤더에서 𝔽/𝕗와 𝔾/𝕘를 모두 사용해야 합니다.
+⊸,∘,○,⟜        # 기본 2-수정자는 모두 원을 가지고 있습니다.
++{⟨𝕗⟩}         # ⟨ + ⟩를 반환합니다.
+1-{𝔽 𝕨 𝔾 𝕩 }×2 # ¯2를 반환합니다(연산자도 *중위*입니다).
+               # (1 -○× 2와 동일)
 
-# Trains (Special form of function composition)
-(+´÷≠) # Average (but how?)
-# The above train is an F G H train, where
+# 트레인(특수 형태의 함수 구성)
+(+´÷≠) # 평균(하지만 어떻게?)
+# 위의 트레인은 F G H 트레인이며,
 # (F G H) 𝕩 → (F 𝕩) G (H 𝕩)
 # F ← +´, G ← ÷, H ← ≠
-# In explicit form, this is
+# 명시적 형식에서는 다음과 같습니다.
 {(+´𝕩)÷≠𝕩}
-# The second pattern is (f g) 𝕩 → f g 𝕩.
-# longer trains are complex arrangements of these patterns, involving constants and Nothing (·).
-# Read more about trains at https://mlochbaum.github.io/BQN/doc/train.html
+# 두 번째 패턴은 (f g) 𝕩 → f g 𝕩입니다.
+# 더 긴 트레인은 상수와 Nothing(·)을 포함하는 이러한 패턴의 복잡한 배열입니다.
+# 트레인에 대한 자세한 내용은 https://mlochbaum.github.io/BQN/doc/train.html에서 읽어보십시오.
 
-# Evaluation order:
-#  BQN evaluates functions right to left with no precedence rules governing *functions*. Functions are what
-#  one would call operators in a mainstream language.
+# 평가 순서:
+#  BQN은 *함수*를 지배하는 우선 순위 규칙 없이 오른쪽에서 왼쪽으로 함수를 평가합니다. 함수는
+#  주류 언어에서 연산자라고 부르는 것입니다.
 1÷2+3       # 1÷(2+3)   = 0.2
 (1÷2)+3     # ((1÷2)+3) = 1.5
 
-# Modifiers:
-#  Modifiers are higher order functions, and bind tighter than functions. Modifiers execute left to right.
-#  Modifiers can take non-function arguments e.g. Constant (`˙`)
+# 수정자:
+#  수정자는 고차 함수이며 함수보다 더 강하게 바인딩됩니다. 수정자는 왼쪽에서 오른쪽으로 실행됩니다.
+#  수정자는 비함수 인수를 사용할 수 있습니다. 예: 상수(`˙`)
 +
 1+˜2+○-∘×3  # 1(+˜)(2((+○-)∘×)3)
 
-# Variables
-#  Since the case of a variable matters to determine what it means, BQN variables are *case insensitive*
-#  The case that a variable is written in can change the way it is interpreted by BQN.
-#  Eg. `F` refers to a value as a callable function, whereas `f` refers to the same variable as just a value.
-#  Variable assignment is done with `←`. Variables have naming conventions based on their value:
-subject ← 1‿2‿3        # Arrays, single values, namespaces come under this
-                       # name must start with with a lowercase letter
-Function      ← {𝕨+𝕩}  # Primitive and user defined functions come under this, both monadic and dyadic
-                       # Starts with an uppercase letter
-_1modifier    ← {𝕨𝔽𝕩}  # Starts with an underscore
-_2modifier_   ← {𝔽𝕨𝔾𝕩} # Starts and ends with an underscore
-# Variable modification is done with `↩`. An existing name cannot be reassigned with `←`.
+# 변수
+#  변수의 대소문자는 BQN이 의미를 결정하는 데 중요하므로 BQN 변수는 *대소문자를 구분하지 않습니다*.
+#  변수가 작성된 대소문자는 BQN이 해석하는 방식을 변경할 수 있습니다.
+#  예: `F`는 호출 가능한 함수로서의 값을 참조하는 반면, `f`는 값으로서의 동일한 변수를 참조합니다.
+#  변수 할당은 `←`로 수행됩니다. 변수는 값에 따라 명명 규칙을 가집ed니다:
+subject ← 1‿2‿3        # 배열, 단일 값, 네임스페이스가 여기에 속합니다.
+                       # 이름은 소문자로 시작해야 합니다.
+Function      ← {𝕨+𝕩}  # 기본 및 사용자 정의 함수가 여기에 속하며, 단항 및 이항 모두입니다.
+                       # 대문자로 시작합니다.
+_1modifier    ← {𝕨𝔽𝕩}  # 밑줄로 시작합니다.
+_2modifier_   ← {𝔽𝕨𝔾𝕩} # 밑줄로 시작하고 끝납니다.
+# 변수 수정은 `↩`로 수행됩니다. 기존 이름은 `←`로 재할당할 수 없습니다.
 Func ↩ {"Hello"∾𝕩}
-array_or_atom +↩ 2    # You can use a dyadic function for modification
+array_or_atom +↩ 2    # 수정에 이항 함수를 사용할 수 있습니다.
                       #≡ 3‿4‿5
-array_or_atom -↩      # Or a monadic function.
+array_or_atom -↩      # 또는 단항 함수.
                       #≡ ¯3‿¯4‿¯5
-#  Due to all functions being infix, you can use your own functions for modification as well:
+#  모든 함수가 중위이므로 수정에 자신의 함수를 사용할 수 있습니다:
 array_or_atom {2⋆𝕩}↩  #≡ ⟨ 0.125, 0.0625, 0.03125 ⟩
 
 ##################
-# BQN Primitives #
+# BQN 기본 요소 #
 ##################
-# All of BQN's base primitives are a single character long. Refer to https://mlochbaum.github.io/BQN/help/index.html for
-# examples.
-# Here we will look at a few primitives from each section. You will want to consult the docs for detailed explanations.
+# BQN의 모든 기본 기본 요소는 단일 문자 길이입니다. 예제는 https://mlochbaum.github.io/BQN/help/index.html을 참조하십시오.
+# 여기서는 각 섹션에서 몇 가지 기본 요소를 살펴보겠습니다. 자세한 설명은 문서를 참조하십시오.
 
-# Primitive Functions
-#  All BQN functions are variadic, and can take one or two arguments. The base functions have both monadic and dyadic overloads.
-#  Usually the two overloads for a function are related.
+# 기본 함수
+#  모든 BQN 함수는 가변적이며 하나 또는 두 개의 인수를 사용할 수 있습니다. 기본 함수에는 단항 및 이항 오버로드가 모두 있습니다.
+#  일반적으로 함수의 두 오버로드는 관련이 있습니다.
 
-## Arithmetic Functions
-+, -, ×, ÷ # Add, Subtract, Signum/Multiply, Reciprocal/Divide , '*' does NOT do multiplication
-           # ⌊∘÷ does floor division
-√, ⋆       # Square root/Nth root, e^x/Power
-#   All Arithmetic functions vectorize:
+## 산술 함수
++, -, ×, ÷ # 더하기, 빼기, 부호/곱하기, 역수/나누기, '*'는 곱셈을 수행하지 않습니다.
+           # ⌊∘÷는 바닥 나눗셈을 수행합니다.
+√, ⋆       # 제곱근/N제곱근, e^x/거듭제곱
+#   모든 산술 함수는 벡터화됩니다:
 1 + 2‿3‿4     #≡ 3‿4‿5
 1‿2‿3 + 2‿3‿4 #≡ 3‿5‿7
-#   Character arithmetic(+ and - only):
+#   문자 산술(+ 및 -만):
 "abc"+3       #≡ "def"
 'a'-'d'       #≡ ¯3
 
-## Logic Functions
-∧, ∨, ¬       # For Booleans, return 1 or 0
-≤, <, >, ≥, = # Vectorizing comparisons
-≡, ≢          # Nonvectorizing comparisons
+## 논리 함수
+∧, ∨, ¬       # 부울의 경우 1 또는 0을 반환합니다.
+≤, <, >, ≥, = # 벡터화 비교
+≡, ≢          # 비벡터화 비교
 
-## Array manipulation Functions
-↕             # Make a range
-∾, ≍, ⋈       # Joining arrays together
-a←1‿2‿3,b←4‿5 # Let us take a and b.
+## 배열 조작 함수
+↕             # 범위 만들기
+∾, ≍, ⋈       # 배열을 함께 결합
+a←1‿2‿3,b←4‿5 # a와 b를 가져옵니다.
 a∾b           #≡ 1‿2‿3‿4‿5
-a≍b           #  Same as previous, since a and b are not multidimensional
-              #  Adds an extra dimension, similar to a ⋈ for multidimensional arrays.
+a≍b           #  a와 b가 다차원이 아니므로 이전과 동일합니다.
+              #  다차원 배열에 대한 a ⋈와 유사하게 추가 차원을 추가합니다.
 a⋈b           #≡ ⟨1‿2‿3, 4‿5⟩
-⊑, ⊏          # Indexing
-1⊑1‿2‿3       #≡ 2 (BQN is 0-indexed)
-1‿2⊏1‿2‿3     #≡ 2‿3 (for multiple indices)
-↑, ↓          # Getting a prefix, suffix of an array.
-              # together they can be used for slicing
-⥊             # Reshape/repeat items to create a new array
+⊑, ⊏          # 인덱싱
+1⊑1‿2‿3       #≡ 2 (BQN은 0-인덱싱됨)
+1‿2⊏1‿2‿3     #≡ 2‿3 (여러 인덱스의 경우)
+↑, ↓          # 배열의 접두사, 접미사 가져오기.
+              # 함께 슬라이싱에 사용할 수 있습니다.
+⥊             # 새 배열을 만들기 위해 항목을 재구성/반복
 
-# Primitive 1-Modifiers
-## Looping combinators
-¨, ˘, ⌜ # Mapping/Zipping
-´, ˝    # Fold from right
-`       # Scan from left
+# 기본 1-수정자
+## 반복 조합기
+¨, ˘, ⌜ # 매핑/지핑
+´, ˝    # 오른쪽에서 접기
+`       # 왼쪽에서 스캔
 
-## General combinators
-˜       # duplicate argument/swap args - Very useful!
-˙       # Create constant function
+## 일반 조합기
+˜       # 인수 복제/인수 교환 - 매우 유용합니다!
+˙       # 상수 함수 만들기
 1 -˜ 2  #≡ 2 - 1
 +˜ 2    #≡ 2 + 2
 
-# Primitive 2-modifiers
-## Control Flow
-◶       # Choose from a list of funcs
-⍟       # Repeat n times
+# 기본 2-수정자
+## 제어 흐름
+◶       # 함수 목록에서 선택
+⍟       # n번 반복
 
-## General Combinators
-⊸, ⟜    # hook, hookf
-∘, ○    # simple function composition
+## 일반 조합기
+⊸, ⟜    # 후크, 후크프
+∘, ○    # 간단한 함수 구성
 
 ##########
-# Blocks #
+# 블록 #
 ##########
-# Code delimited by {}
-# Lexically scoped
-# For more info: https://mlochbaum.github.io/BQN/doc/block.html
-# Can have headers, which are ways to explicitly define what a block should be.
-# A block without headers is automatically inferred from its special variables (𝕨, 𝕩, ...).
+# {}로 구분된 코드
+# 어휘적으로 범위 지정됨
+# 자세한 내용은 https://mlochbaum.github.io/BQN/doc/block.html을 참조하십시오.
+# 헤더를 가질 수 있으며, 이는 블록이 무엇이어야 하는지를 명시적으로 정의하는 방법입니다.
+# 헤더가 없는 블록은 특수 변수(𝕨, 𝕩, ...)에서 자동으로 추론됩니다.
 
-# Function blocks
-# Implicit variables(Capitals are functions):
-#  - 𝕨, 𝕎 left argument
-#  - 𝕩, 𝕏 right argument
-#  - 𝕤, 𝕊 represent the block itself
-#   Optional: one or more headers that trigger based on
-#   - pattern match (':') o
-#   - condition ('?') (similar to if-then-else)
+# 함수 블록
+# 암시적 변수(대문자는 함수):
+#  - 𝕨, 𝕎 왼쪽 인수
+#  - 𝕩, 𝕏 오른쪽 인수
+#  - 𝕤, 𝕊 블록 자체를 나타냅니다.
+#   선택 사항: 다음에 따라 트리거되는 하나 이상의 헤더
+#   - 패턴 일치(':') o
+#   - 조건('?') (if-then-else와 유사)
 
-{ # A factorial using headers:
+{ # 헤더를 사용하는 팩토리얼:
   𝕊 0: 1;
   𝕊 𝕩: 𝕩×𝕊 𝕩-1
 }
-{ # Factorial with predicates
-  𝕩<2 ? 1; # Similar to an if-else pattern.
+{ # 술어를 사용하는 팩토리얼
+  𝕩<2 ? 1; # if-else 패턴과 유사합니다.
   𝕩×𝕊 𝕩-1
 }
 
-# Modifier blocks
-# create 1-modifiers and 2-modifiers, which have separate types
-# Implicit variables(Capitals are functions):
-#  - has 𝕨 and 𝕩 if needed
-#  - 𝕗, 𝔽 left operand
-#  - 𝕘, 𝔾 right operand (only in 2-modifiers)
-#  - 𝕣 represents the block itself* (requires underscores as per convention)
-# Same header rules as functions.
-{ 𝕨=0 ? 𝔽 𝕩; 𝔾 𝕩 } # execute 𝔽 or 𝔾 based on whether left argument is 0.
+# 수정자 블록
+# 1-수정자 및 2-수정자를 생성하며, 별도의 유형을 가집니다.
+# 암시적 변수(대문자는 함수):
+#  - 필요한 경우 𝕨 및 𝕩를 가집니다.
+#  - 𝕗, 𝔽 왼쪽 피연산자
+#  - 𝕘, 𝔾 오른쪽 피연산자(2-수정자에서만)
+#  - 𝕣 블록 자체를 나타냅니다* (규칙에 따라 밑줄 필요)
+# 함수와 동일한 헤더 규칙.
+{ 𝕨=0 ? 𝔽 𝕩; 𝔾 𝕩 } # 왼쪽 인수가 0인지 여부에 따라 𝔽 또는 𝔾를 실행합니다.
 
-# Namespace blocks
-# Create immutable namespaces with fields
-# Require exports (`⇐`) for accessible fields.
-# Use '.' for field access
+# 네임스페이스 블록
+# 필드가 있는 불변 네임스페이스 생성
+# 접근 가능한 필드에 대해 내보내기(`⇐`) 필요
+# 필드 접근에 '.' 사용
 n←{
   A←+
   b⇐4
@@ -224,67 +220,67 @@ n←{
 n.b #≡ 4
 n.a # ERROR
 
-# Immediate Blocks
-#  No arguments taken
-#  Run the code inside and return the last statement
-#  Often responsible for strange errors.
-#  Can be mistaken for other blocks easily
-#  Good for avoiding scoping issues
+# 즉시 블록
+#  인수 없음
+#  내부 코드를 실행하고 마지막 문을 반환합니다.
+#  종종 이상한 오류의 원인이 됩니다.
+#  다른 블록과 쉽게 혼동될 수 있습니다.
+#  범위 지정 문제를 피하는 데 좋습니다.
 {
   1‿2‿3
 }
-{+} # Trick for returning a function as a value
+{+} # 값을 함수로 반환하는 트릭
 ####################
-# Basic constructs #
+# 기본 구성 #
 ####################
-# Functional programming
-# `¨` is used for mapping, as discussed before:
+# 함수형 프로그래밍
+# `¨`는 이전에 논의한 바와 같이 매핑에 사용됩니다:
 {𝕩∾2}¨1‿2‿3 #≡ ⟨1‿2,2‿2,3‿2⟩
-# ⋈¨ is a plain zip, which produces pairs.
-# `¨` acts as a zipWith when used with two arguments:
+# ⋈¨는 쌍을 생성하는 일반 zip입니다.
+# `¨`는 두 개의 인수가 있는 경우 zipWith로 작동합니다:
 1‿2‿3 {⟨𝕩+2,2⥊𝕨⟩} 4‿5‿6 #≡ ⟨⟨6,1‿1⟩,⟨7,2‿2⟩,⟨8,3‿3⟩⟩
-# `/` is replicate, which serves several purposes *including* filtering.
-# elements in 𝕩 are repeated by the corresponding number in 𝕨.
+# `/`는 복제이며, 필터링을 *포함*하여 여러 목적으로 사용됩니다.
+# 𝕩의 요소는 𝕨의 해당 숫자로 반복됩니다.
 1‿2‿3‿0/4‿5‿6‿7 #≡ 4‿5‿5‿6‿6‿6
-# a simple filter idiom is F⊸/:
-{2|𝕩}⊸/67‿42‿83 # keep the odd elements
+# 간단한 필터 관용구는 F⊸/입니다:
+{2|𝕩}⊸/67‿42‿83 # 홀수 요소 유지
                 #≡ 67‿83
 
-# Conditionals
-# There are two main ways to define a conditional.
-## Predicate headers
+# 조건문
+# 조건문을 정의하는 두 가지 주요 방법이 있습니다.
+## 술어 헤더
 {
-  𝕩 > 2:  "greater than 2";
-  𝕩 < 2: "lesser than 2";
-  "equal to 2"
+  𝕩 > 2:  "2보다 큼";
+  𝕩 < 2: "2보다 작음";
+  "2와 같음"
 }
 
-## Choose (function-based)
-#  - 2-modifier
-#  - 𝔾: list of functions that serve as bodies
-#  - 𝔽: condition function that specifies which function from 𝔾 to select
-#  The same conditional as above would be:
+## 선택(함수 기반)
+#  - 2-수정자
+#  - 𝔾: 본문 역할을 하는 함수 목록
+#  - 𝔽: 𝔾에서 선택할 함수를 지정하는 조건 함수
+#  위와 동일한 조건문은 다음과 같습니다:
 {⊑/⟨𝕩>2, 𝕩<2, 𝕩=2⟩}◶⟨
-  {𝕊: "greater than 2"}
-  {𝕊: "lesser than 2"}
-  {𝕊: "equal to 2"}
+  {𝕊: "2보다 큼"}
+  {𝕊: "2보다 작음"}
+  {𝕊: "2와 같음"}
 ⟩
 
-## Some helpers for conditionals
-If      ← {𝕏⍟𝕎@}´                 # Used as If ⟨Condition, Block⟩
-IfElse  ← {c‿T‿F: c◶F‿T@}         # Used as IfElse ⟨Condition, Block, ElseBlock⟩
+## 조건문에 대한 일부 도우미
+If      ← {𝕏⍟𝕎@}´                 # If ⟨조건, 블록⟩으로 사용됨
+IfElse  ← {c‿T‿F: c◶F‿T@}         # IfElse ⟨조건, 블록, Else블록⟩으로 사용됨
 
-# Looping
-# The primary form of unbounded looping is recursion (performed with 𝕊).
-# BQN does not eliminate tail calls, but the while idiom can be used to work around this:
-While ← {𝕩{𝔽⍟𝔾∘𝔽_𝕣_𝔾∘𝔽⍟𝔾𝕩}𝕨@}´  # While 1‿{... to run forever
+# 반복
+# 무한 반복의 기본 형태는 재귀입니다(𝕊로 수행됨).
+# BQN은 꼬리 호출을 제거하지 않지만, while 관용구를 사용하여 이 문제를 해결할 수 있습니다:
+While ← {𝕩{𝔽⍟𝔾∘𝔽_𝕣_𝔾∘𝔽⍟𝔾𝕩}𝕨@}´  # While 1‿{... 영원히 실행}
 DoWhile ← {𝕏@ ⋄ While 𝕨‿𝕩}´
-# A For loop can be done with ¨, functions need not be pure.
+# For 루프는 ¨로 수행할 수 있으며, 함수는 순수할 필요가 없습니다.
 ```
 
-## Ready for more?
+## 더 배울 준비가 되셨습니까?
 
-- [Quickstart guide](https://mlochbaum.github.io/BQN/doc/quick.html)
-- [Full length, explained documentation](https://mlochbaum.github.io/BQN/doc/index.html)
-- [Short docs](https://mlochbaum.github.io/BQN/help/index.html)
-- [BQN community!](https://mlochbaum.github.io/BQN/community/index.html)
+- [빠른 시작 가이드](https://mlochbaum.github.io/BQN/doc/quick.html)
+- [전체 길이, 설명된 문서](https://mlochbaum.github.io/BQN/doc/index.html)
+- [짧은 문서](https://mlochbaum.github.io/BQN/help/index.html)
+- [BQN 커뮤니티!](https://mlochbaum.github.io/BQN/community/index.html)

@@ -1,5 +1,3 @@
-# html.md (번역)
-
 ---
 name: HTML
 filename: learnhtml.txt
@@ -8,41 +6,31 @@ contributors:
 translators:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+HTML은 하이퍼텍스트 마크업 언어의 약자입니다.
 
-HTML stands for Hypertext Markup Language.
+월드 와이드 웹을 위한 페이지를 작성할 수 있는 언어입니다.
+마크업 언어로, 텍스트와 데이터가 어떻게 표시되어야 하는지를 나타내는 코드를 사용하여 웹 페이지를 작성할 수 있습니다. 사실, HTML 파일은 간단한 텍스트 파일입니다.
 
-It is a language which allows us to write pages for the World Wide Web.
-It is a markup language, it enables us to write webpages using code to indicate
-how text and data should be displayed.  In fact, HTML files are simple text
-files.
+이 마크업은 무엇입니까? 여는 태그와 닫는 태그로 둘러싸서 페이지의 데이터를 구성하는 방법입니다. 이 마크업은 둘러싸는 텍스트에 의미를 부여하는 역할을 합니다. 다른 컴퓨터 언어와 마찬가지로 HTML에는 여러 버전이 있습니다. 여기서는 HTML5에 대해 이야기하겠습니다.
 
-What is this markup? It is a method of organising the page's data by
-surrounding it with opening tags and closing tags.  This markup serves to give
-significance to the text that it encloses.  Like other computer languages, HTML
-has many versions. Here we will talk about HTML5.
-
-**NOTE :**  You can test the different tags and elements as you progress through
-the tutorial on a site like [codepen](http://codepen.io/pen/) in order to see
-their effects, understand how they work and familiarise yourself with the
-language.  This article is concerned principally with HTML syntax and some
-useful tips.
+**참고:** [codepen](http://codepen.io/pen/)과 같은 사이트에서 튜토리얼을 진행하면서 다양한 태그와 요소를 테스트하여 효과를 확인하고 언어에 익숙해질 수 있습니다. 이 문서는 주로 HTML 구문과 몇 가지 유용한 팁에 중점을 둡니다.
 
 
 ```html
-<!-- Comments are enclosed like this line! -->
+<!-- 주석은 이 줄처럼 묶습니다! -->
 
 <!--
-	Comments
-	can
-	span
-	multiple
-	lines!
+	주석은
+	여러 줄에
+	걸쳐
+	있을 수 있습니다!
 -->
 
-<!-- #################### The Tags #################### -->
+<!-- #################### 태그 #################### -->
 
-<!-- Here is an example HTML file that we are going to analyse. -->
+<!-- 다음은 분석할 예제 HTML 파일입니다. -->
 
 
 <!doctype html>
@@ -66,59 +54,55 @@ useful tips.
 	</html>
 
 <!--
-	An HTML file always starts by indicating to the browser that the page is HTML.
+	HTML 파일은 항상 브라우저에 페이지가 HTML임을 나타내는 것으로 시작합니다.
 -->
 <!doctype html>
 
-<!-- After this, it starts by opening an <html> tag. -->
+<!-- 그런 다음 <html> 태그를 여는 것으로 시작합니다. -->
 <html>
 
-<!-- that will be closed at the end of the file with </html>. -->
+<!-- 파일 끝에서 </html>로 닫힙니다. -->
 </html>
 
-<!-- Nothing should appear after this final tag. -->
+<!-- 이 마지막 태그 뒤에는 아무것도 나타나서는 안 됩니다. -->
 
-<!-- Inside (between the opening and closing tags <html></html>), we find: -->
+<!-- 내부(여는 태그와 닫는 태그 <html></html> 사이)에는 다음이 있습니다: -->
 
-<!-- A header defined by <head> (it must be closed with </head>). -->
+<!-- <head>로 정의된 헤더 (</head>로 닫아야 함). -->
 <!--
-	The header contains some description and additional information which are not
-	displayed; this is metadata.
+	헤더에는 표시되지 않는 일부 설명 및 추가 정보가 포함되어 있습니다. 이것은 메타데이터입니다.
 -->
 
 <head>
 	<!--
-		The tag <title> indicates to the browser the title to show in browser
-		window's title bar and tab name.
+		<title> 태그는 브라우저 창의 제목 표시줄과 탭 이름에 표시할 제목을 브라우저에 나타냅니다.
 	-->
 	<title>My Site</title>
 </head>
 
-<!-- After the <head> section, we find the tag - <body> -->
-<!-- Until this point, nothing described will show up in the browser window. -->
-<!-- We must fill the body with the content to be displayed. -->
+<!-- <head> 섹션 뒤에는 <body> 태그가 있습니다. -->
+<!-- 이 지점까지 설명된 내용은 브라우저 창에 표시되지 않습니다. -->
+<!-- 표시할 내용으로 본문을 채워야 합니다. -->
 
 <body>
-	<!-- The h1 tag creates a title. -->
+	<!-- h1 태그는 제목을 만듭니다. -->
 	<h1>Hello, world!</h1>
 	<!--
-		There are also subtitles to <h1> from the most important (h2) to the most
-		precise (h6).
+		가장 중요한(h2) 것부터 가장 정확한(h6) 것까지 <h1>에 대한 부제목도 있습니다.
 	-->
 
-	<!-- a hyperlink to the url given by the attribute href="" -->
+	<!-- href="" 속성으로 지정된 URL에 대한 하이퍼링크 -->
 	<a href="http://codepen.io/anon/pen/xwjLbZ">
 		Come look at what this shows
 	</a>
 
-	<!-- The tag <p> lets us include text in the html page. -->
+	<!-- <p> 태그를 사용하면 html 페이지에 텍스트를 포함할 수 있습니다. -->
 	<p>This is a paragraph.</p>
 	<p>This is another paragraph.</p>
 
-	<!-- The tag <ul> creates a bullet list. -->
+	<!-- <ul> 태그는 글머리 기호 목록을 만듭니다. -->
 	<!--
-		To have a numbered list instead we would use <ol> giving 1. for the first
-		element, 2. for the second, etc.
+		대신 번호가 매겨진 목록을 사용하려면 <ol>을 사용하여 첫 번째 요소에 1., 두 번째 요소에 2. 등을 제공합니다.
 	-->
 	<ul>
 		<li>This is an item in a non-enumerated list (bullet list)</li>
@@ -127,33 +111,33 @@ useful tips.
 	</ul>
 </body>
 
-<!-- And that's it, creating an HTML file can be simple. -->
+<!-- 그리고 그게 다입니다. HTML 파일을 만드는 것은 간단할 수 있습니다. -->
 
-<!-- But it is possible to add many additional types of HTML tags. -->
+<!-- 하지만 많은 추가 유형의 HTML 태그를 추가할 수 있습니다. -->
 
-<!-- The <img /> tag is used to insert an image. -->
+<!-- <img /> 태그는 이미지를 삽입하는 데 사용됩니다. -->
 <!--
-	The source of the image is indicated using the attribute src=""
-	The source can be an URL or even path to a file on your computer.
+	이미지 소스는 src="" 속성을 사용하여 나타냅니다.
+	소스는 URL이거나 컴퓨터의 파일 경로일 수 있습니다.
 -->
 <img src="http://i.imgur.com/XWG0O.gif"/>
 
-<!-- It is also possible to create a table. -->
+<!-- 테이블을 만들 수도 있습니다. -->
 
-<!-- We open a <table> element. -->
+<!-- <table> 요소를 엽니다. -->
 <table>
 
-	<!-- <tr> allows us to create a row. -->
+	<!-- <tr>을 사용하면 행을 만들 수 있습니다. -->
 	<tr>
 
-		<!-- <th> allows us to give a title to a table column. -->
+		<!-- <th>를 사용하면 테이블 열에 제목을 지정할 수 있습니다. -->
 		<th>First Header</th>
 		<th>Second Header</th>
 	</tr>
 
 	<tr>
 
-		<!-- <td> allows us to create a table cell. -->
+		<!-- <td>를 사용하면 테이블 셀을 만들 수 있습니다. -->
 		<td>first row, first column</td>
 		<td>first row, second column</td>
 	</tr>
@@ -165,13 +149,12 @@ useful tips.
 </table>
 ```
 
-## Usage
+## 사용법
 
-HTML is written in files ending with `.html` or `.htm`. The mime type is
-`text/html`.
-**HTML is NOT a programming language**
-## To Learn More
+HTML은 `.html` 또는 `.htm` 확장자로 끝나는 파일에 작성됩니다. 마임 유형은 `text/html`입니다.
+**HTML은 프로그래밍 언어가 아닙니다.**
+## 더 배우기
 
-* [Wikipedia](https://en.wikipedia.org/wiki/HTML)
-* [HTML Tutorial](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [위키백과](https://en.wikipedia.org/wiki/HTML)
+* [HTML 튜토리얼](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [W3Schools](http://www.w3schools.com/html/html_intro.asp)

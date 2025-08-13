@@ -1,97 +1,99 @@
-# bc.md (번역)
-
 ---
 name: bc
 contributors:
     - ["Btup"]
 filename: learnbc.bc
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 ```bc
-/*This is a multi-
-line comment.*/
-# This is also a (one-line) comment! (in GNU bc).
+/*이것은 여러 줄
+주석입니다.*/
+# 이것은 또한 (한 줄) 주석입니다! (GNU bc에서).
 
-    /*1. Variables and control structures*/
-num = 45 /*All variables save only doubles, and you cannot save
-    string constants directly.*/
-num = 45; /*You can choose to add a semicolon after
-    every statement. This is optional.*/
-/*Blocks are denoted using the {} operators(similar to C):*/
+    /*1. 변수 및 제어 구조*/
+num = 45 /*모든 변수는 더블만 저장하며,
+    문자열 상수를 직접 저장할 수 없습니다.*/
+num = 45; /*모든 문장 뒤에 세미콜론을 추가할 수 있습니다.
+    이것은 선택 사항입니다.*/
+/*블록은 {} 연산자로 표시됩니다(C와 유사):*/
 while(num < 50) {
-    num += 1 /*equivalent to num=num+1.
-    a = a op b is equivalent to a op= b.*/
+    num += 1 /*num=num+1과 동일합니다.
+    a = a op b는 a op= b와 동일합니다.*/
 }
-/*And there are ++(increment) and --(decrement) operators.*/
-/*There are 3 special variables:
-scale: defines the scale of the double numbers.
-ibase: defines the base of input.
-obase: defines the base of output.*/
-/*If clauses:*/
-hour = read() /*Input a number*/
+/*그리고 ++(증가) 및 --(감소) 연산자가 있습니다.*/
+/*세 가지 특수 변수가 있습니다:
+scale: 더블 숫자의 스케일을 정의합니다.
+ibase: 입력의 밑을 정의합니다.
+obase: 출력의 밑을 정의합니다.*/
+/*If 절:*/
+hour = read() /*숫자 입력*/
 
-if(hour < 12) { /*Operators are exactly like C.*/
-    print "Good morning\n" /*"print" outputs strings or variables
-    separated by commas.*/
+if(hour < 12) { /*연산자는 C와 정확히 같습니다.*/
+    print "Good morning\n" /*"print"는 쉼표로 구분된 문자열 또는 변수를 출력합니다.*/
 } else if(hour == 12) {
     print "Hello\n"
-    /*Escaping sequences start with a \ in a string.
-    In order to make the escaping sequences clearer, here
-    is a simplified list of them that will work in bc:
-    \b: backspace
-    \c: carriage return
-    \n: newline
-    \t: tab
-    \\: backslash*/
+    /*이스케이프 시퀀스는 문자열에서 \로 시작합니다.
+    이스케이프 시퀀스를 더 명확하게 하기 위해, 여기에
+    bc에서 작동하는 간단한 목록이 있습니다:
+    \b: 백스페이스
+    \c: 캐리지 리턴
+    \n: 줄 바꿈
+    \t: 탭
+    \\: 백슬래시*/
 } else {
     print "Good afternoon\n"
 }
 
-/*Like C, only 0 is falsy.*/
+/*C와 마찬가지로 0만 거짓입니다.*/
 num = 0
 if(!num) {print "false\n"}
 
-/*Unlike C, bc does not have the ?: operators. For example,
- this block of code will cause an error:
+/*C와 달리 bc에는 ?: 연산자가 없습니다. 예를 들어,
+ 이 코드 블록은 오류를 발생시킵니다:
 a = (num) ? 1 : 0
-However, you can simulate one:*/
-a = (num) && (1) || (0) /*&& is and, || is or*/
+그러나 하나를 시뮬레이션할 수 있습니다:*/
+a = (num) && (1) || (0) /*&&는 and, ||는 or입니다*/
 
-/*For loops*/
+/*For 루프*/
 num = 0
-for(i = 1; i <= 100; i++) {/*Similar to the C for loop.*/
+for(i = 1; i <= 100; i++) {/*C for 루프와 유사합니다.*/
     num += i
 }
 
-    /*2.Functions and Arrays*/
-define fac(n) { /*define a function using define.*/
+    /*2.함수 및 배열*/
+define fac(n) { /*define을 사용하여 함수를 정의합니다.*/
     if(n == 1 || n == 0) {
-        return 1 /*return a value*/
+        return 1 /*값을 반환합니다*/
     }
-    return n * fac(n - 1) /*recursion is possible*/
+    return n * fac(n - 1) /*재귀가 가능합니다*/
 }
 
-/*Closures and anonymous functions are impossible.*/
+/*클로저 및 익명 함수는 불가능합니다.*/
 
 num = fac(4) /*24*/
 
-/*This is an example of local variables:*/
+/*다음은 지역 변수의 예입니다:*/
 define x(n) {
     auto x
     x = 1
     return n + x
 }
 x(3) /*4*/
-print x /*It turns out that x is not accessible out of the function.*/
-/*Arrays are equivalent to the C array.*/
+print x /*함수 밖에서는 x에 접근할 수 없습니다.*/
+/*배열은 C 배열과 동일합니다.*/
 for(i = 0; i <= 3; i++) {
     a[i] = 1
 }
-/*Access it like this:*/
+/*이렇게 접근합니다:*/
 print a[0], " ", a[1], " ", a[2], " ", a[3], "\n"
-quit /*Add this line of code to make sure
-that your program exits. This line of code is optional.*/
+quit /*프로그램이 종료되도록 이 줄을 추가합니다.
+이 줄은 선택 사항입니다.*/
 ```
 
-Enjoy this simple calculator! (Or this programming language, to be exact.)
+이 간단한 계산기를 즐기십시오! (또는 이 프로그래밍 언어를 정확히 말하면.)
 
-This whole program is written in GNU bc. To run it, use ```bc learnbc.bc```.
+이 전체 프로그램은 GNU bc로 작성되었습니다. 실행하려면 ```bc learnbc.bc```를 사용하십시오.
+
+```

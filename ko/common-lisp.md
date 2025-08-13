@@ -5,8 +5,8 @@ contributors:
   - ["Rommel Martinez", "https://ebzzry.io"]
 translators:
   - ["Eunpyoung Kim", "https://github.com/netpyoung"]
+  - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
-
 커먼 리스프(Common Lisp, CL)는 다양한 산업 어플리케이션에 적합한 범용적인 멀티페러다임 언어입니다.
  프로그래밍할 수 있는 프로그래밍 언어로서 자주 언급되곤 합니다.
 
@@ -98,7 +98,7 @@ t             ; atom, 참을 나타냅니다
 #C(1 2)                ; 복소수
 
 ;;; 함수 적용
-;;; (f x y z ...)에서 f는 함수이며, x, y, z, ... 인자입니다.
+;;; (f x y z ...)에서 f는 함수이며, x, y, z, ...는 인자입니다.
 
 (+ 1 2)                ; => 3
 
@@ -166,7 +166,7 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
 ;;;-----------------------------------------------------------------------------
 
 ;;; DEFVAR와 DEFPARAMETER를 이용하여 전역 (동적 스코프) 변수를 만들 수 있습니다.
-;;; 변수 이름은 다음을 제외한 모든 문자를 사용할 수 있습니다: ()",'`;#|\
+;;; 변수 이름은 다음을 제외한 모든 문자를 사용할 수 있습니다: ()`,'`;#|\
 
 ;;; DEFVAR와 DEFPARAMETER의 차이점으로는, DEFVAR 표현식을 다시 평가하더라도 변수의 값이 변경되지 않는다는 것입니다.
 ;;; 반면 DEFPARAMETER는 변경됩니다.
@@ -189,7 +189,7 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
 (let ((me "dance with you")) me) ; => "dance with you"
 
 
-;;;-----------------------------------------------------------------------------;
+;;;------------------------------------------------------------------------------;
 ;;; 3. 구조체와 컬렉션
 ;;;-----------------------------------------------------------------------------;
 
@@ -352,7 +352,7 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
 ;;; 반환된 값들을 처리해보겠습니다.
 
 (multiple-value-bind (a b)
-    (gethash 'd *m*)
+    (gethash 'd *m*) 
   (list a b))
 ; => (NIL NIL)
 
@@ -392,7 +392,7 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
 (defun hello-world () "Hello World")
 (hello-world) ; => "Hello World"
 
-;;; 위 정의에서 ()는 인자 리스트입니다.
+;;; 위 정의에서 ()는 함수의 인자 리스트입니다.
 
 (defun hello (name) (format nil "Hello, ~A" name))
 (hello "Steve") ; => "Hello, Steve"
@@ -647,9 +647,6 @@ nil                    ; 거짓; 빈 리스트: () 역시 거짓.
          do
          (progn
             ,@body)))
-
-;;; 하지만, 현대의 컴파일러에서는 이것이 필요하지 않습니다;
-;;; LOOP 폼은 동일하게 잘 컴파일되며 읽기 쉽습니다.
 
 ;;; Note that ``` is used, as well as `,` and `@`. ``` is a quote-type operator
 ;;; known as quasiquote; it allows the use of `,` . `,` allows "unquoting"

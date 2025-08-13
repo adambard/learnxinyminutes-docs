@@ -1,5 +1,3 @@
-# css.md (번역)
-
 ---
 name: CSS
 contributors:
@@ -11,207 +9,199 @@ contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
     - ["Tyler Mumford", "https://tylermumford.com"]
 filename: learncss.css
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-Web pages are built with HTML, which specifies the content of a page.
-CSS (Cascading Style Sheets) is a separate language which specifies
-a page's **appearance**.
+웹 페이지는 HTML로 구축되며, HTML은 페이지의 내용을 지정합니다.
+CSS(Cascading Style Sheets)는 페이지의 **모양**을 지정하는 별도의 언어입니다.
 
-CSS code is made of static *rules*. Each rule takes one or more *selectors* and
-gives specific *values* to a number of visual *properties*. Those properties are
-then applied to the page elements indicated by the selectors.
+CSS 코드는 정적 *규칙*으로 구성됩니다. 각 규칙은 하나 이상의 *선택자*를 사용하고
+여러 시각적 *속성*에 특정 *값*을 부여합니다. 이러한 속성은
+선택자가 나타내는 페이지 요소에 적용됩니다.
 
-This guide has been written with CSS 2 in mind, which is extended by the new
-features of CSS 3.
+이 가이드는 CSS2를 염두에 두고 작성되었으며, CSS3의 새로운 기능으로 확장되었습니다.
 
-**NOTE:** Because CSS produces visual results, in order to learn it, you need to
-try everything in a CSS playground like [dabblet](http://dabblet.com/).
-The main focus of this article is on the syntax and some general tips.
+**참고:** CSS는 시각적 결과를 생성하므로, 배우려면 [dabblet](http://dabblet.com/)과 같은 CSS 플레이그라운드에서 모든 것을 시도해야 합니다.
+이 문서의 주요 초점은 구문과 몇 가지 일반적인 팁에 있습니다.
 
-## Syntax
+## 구문
 
 ```css
-/* comments appear inside slash-asterisk, just like this line!
-   there are no "one-line comments"; this is the only comment style */
+/* 주석은 슬래시-별표 안에 나타납니다. 이 줄처럼요!
+   "한 줄 주석"은 없습니다. 이것이 유일한 주석 스타일입니다. */
 
 /* ####################
-   ## SELECTORS
+   ## 선택자
    #################### */
 
-/* the selector is used to target an element on a page. */
-selector { property: value; /* more properties...*/ }
+/* 선택자는 페이지의 요소를 대상으로 하는 데 사용됩니다. */
+selector { property: value; /* 더 많은 속성... */ }
 
 /*
-Here is an example element:
+다음은 예제 요소입니다:
 
 <div class='class1 class2' id='anID' attr='value' otherAttr='en-us foo bar' />
 */
 
-/* You can target it using one of its CSS classes */
+/* CSS 클래스 중 하나를 사용하여 대상을 지정할 수 있습니다. */
 .class1 { }
 
-/* or both classes! */
+/* 또는 두 클래스 모두! */
 .class1.class2 { }
 
-/* or its name */
+/* 또는 이름 */
 div { }
 
-/* or its id */
+/* 또는 ID */
 #anID { }
 
-/* or using the fact that it has an attribute! */
+/* 또는 속성이 있다는 사실을 사용하여! */
 [attr] { font-size:smaller; }
 
-/* or that the attribute has a specific value */
+/* 또는 속성이 특정 값을 가집니다. */
 [attr='value'] { font-size:smaller; }
 
-/* starts with a value (CSS 3) */
+/* 값으로 시작합니다 (CSS 3) */
 [attr^='val'] { font-size:smaller; }
 
-/* or ends with a value (CSS 3) */
+/* 또는 값으로 끝납니다 (CSS 3) */
 [attr$='ue'] { font-size:smaller; }
 
-/* or contains a value (CSS 3) */
+/* 또는 값을 포함합니다 (CSS 3) */
 [attr*='foo'] { }
 
-/* or contains a value in a space-separated list */
+/* 또는 공백으로 구분된 목록에 값을 포함합니다. */
 [otherAttr~='foo'] { }
 [otherAttr~='bar'] { }
 
-/* or contains a value in a dash-separated list, e.g., "-" (U+002D) */
+/* 또는 대시로 구분된 목록에 값을 포함합니다. 예: "-" (U+002D) */
 [otherAttr|='en'] { font-size:smaller; }
 
 
-/* You can combine different selectors to create a more focused selector. Don't
-   put spaces between them. */
+/* 다른 선택자를 결합하여 더 집중된 선택자를 만들 수 있습니다. 그 사이에 공백을 두지 마십시오. */
 div.some-class[attr$='ue'] { }
 
-/* You can select an element which is a child of another element */
+/* 다른 요소의 자식인 요소를 선택할 수 있습니다. */
 div.some-parent > .class-name { }
 
-/* or a descendant of another element. Children are the direct descendants of
-   their parent element, only one level down the tree. Descendants can be any
-   level down the tree. */
+/* 또는 다른 요소의 후손. 자식은 부모 요소의 직접적인 후손이며, 트리에서 한 레벨만 아래에 있습니다. 후손은 트리에서 어떤 레벨이든 될 수 있습니다. */
 div.some-parent .class-name { }
 
-/* Warning: the same selector without a space has another meaning.
-   Can you guess what? */
+/* 경고: 공백이 없는 동일한 선택자는 다른 의미를 가집니다.
+   무엇인지 추측할 수 있습니까? */
 div.some-parent.class-name { }
 
-/* You may also select an element based on its adjacent sibling */
+/* 인접 형제를 기반으로 요소를 선택할 수도 있습니다. */
 .i-am-just-before + .this-element { }
 
-/* or any sibling preceding it */
+/* 또는 그 앞에 오는 모든 형제 */
 .i-am-any-element-before ~ .this-element { }
 
-/* There are some selectors called pseudo classes that can be used to select an
-   element only when it is in a particular state */
+/* 특정 상태에 있을 때만 요소를 선택하는 데 사용할 수 있는 의사 클래스라는 선택자가 있습니다. */
 
-/* for example, when a link hasn't been visited */
+/* 예를 들어, 링크가 방문되지 않았을 때 */
 selected:link { }
 
-/* or a link has been visited */
+/* 또는 링크가 방문되었을 때 */
 selector:visited { }
 
-/* or an element is in focus */
+/* 또는 요소가 포커스에 있을 때 */
 selected:focus { }
 
-/* or when the cursor hovers over an element */
+/* 또는 커서가 요소 위에 있을 때 */
 selector:hover { }
 
-/* or when a link is clicked on */
+/* 또는 링크를 클릭했을 때 */
 selector:active { }
 
-/* These pseudo classes regarding links should always be written in the above order or the code might not work as expected */
+/* 링크에 관한 이러한 의사 클래스는 항상 위 순서대로 작성해야 합니다. 그렇지 않으면 코드가 예상대로 작동하지 않을 수 있습니다. */
 
-/* Any element that is the first child of its parent */
+/* 부모의 첫 번째 자식인 모든 요소 */
 selector:first-child {}
 
-/* any element that is the last child of its parent */
+/* 부모의 마지막 자식인 모든 요소 */
 selector:last-child {}
 
-/* Select the nth child of selector parent (CSS 3) */
+/* 선택자 부모의 n번째 자식 선택 (CSS 3) */
 selector:nth-child(n) { }
 
-/* Just like pseudo classes, pseudo elements allow you to style certain parts of
-    a document  */
+/* 의사 클래스와 마찬가지로 의사 요소는 문서의 특정 부분을 스타일링할 수 있도록 합니다. */
 
-/* matches a virtual first child of the selected element */
+/* 선택한 요소의 가상 첫 번째 자식과 일치 */
 selector::before {}
 
-/* matches a virtual last child of the selected element */
+/* 선택한 요소의 가상 마지막 자식과 일치 */
 selector::after {}
 
-/* At appropriate places, an asterisk may be used as a wildcard to select every
-   element */
-* { } /* all elements */
-.parent * { } /* all descendants */
-.parent > * { } /* all children */
+/* 적절한 위치에서 별표는 모든 요소를 선택하는 와일드카드로 사용될 수 있습니다. */
+* { } /* 모든 요소 */
+.parent * { } /* 모든 후손 */
+.parent > * { } /* 모든 자식 */
 
-/* Group any number of selectors to define styles that affect all selectors
-   in the group */
+/* 그룹의 모든 선택자에 영향을 미치는 스타일을 정의하기 위해 여러 선택자를 그룹화합니다. */
 selector1, selector2 { }
 
-/* Select elements that do not have a certain state (CSS 3) */
-/* Here, we select div with no id attribute. */
+/* 특정 상태가 없는 요소를 선택합니다 (CSS 3) */
+/* 여기서는 id 속성이 없는 div를 선택합니다. */
 div:not([id]) {
    background-color: red;
 }
 
 /* ####################
-   ## PROPERTIES
+   ## 속성
    #################### */
 
 selector {
 
-    /* Units of length can be absolute or relative. */
+    /* 길이 단위는 절대 또는 상대일 수 있습니다. */
 
-    /* Relative units */
-    width: 50%;       /* percentage of parent element width */
-    font-size: 2em;   /* multiples of element's original font-size */
-    font-size: 2rem;  /* or the root element's font-size */
-    font-size: 2vw;   /* multiples of 1% of the viewport's width (CSS 3) */
-    font-size: 2vh;   /* or its height */
-    font-size: 2vmin; /* whichever of a vh or a vw is smaller */
-    font-size: 2vmax; /* or greater */
+    /* 상대 단위 */
+    width: 50%;       /* 부모 요소 너비의 백분율 */
+    font-size: 2em;   /* 요소의 원래 글꼴 크기의 배수 */
+    font-size: 2rem;  /* 또는 루트 요소의 글꼴 크기 */
+    font-size: 2vw;   /* 뷰포트 너비의 1%의 배수 (CSS 3) */
+    font-size: 2vh;   /* 또는 높이 */
+    font-size: 2vmin; /* vh 또는 vw 중 더 작은 것 */
+    font-size: 2vmax; /* 또는 더 큰 것 */
 
-    /* Absolute units */
-    width: 200px;     /* pixels */
-    font-size: 20pt;  /* points */
-    width: 5cm;       /* centimeters */
-    min-width: 50mm;  /* millimeters */
-    max-width: 5in;   /* inches */
+    /* 절대 단위 */
+    width: 200px;     /* 픽셀 */
+    font-size: 20pt;  /* 포인트 */
+    width: 5cm;       /* 센티미터 */
+    min-width: 50mm;  /* 밀리미터 */
+    max-width: 5in;   /* 인치 */
 
-    /* Colors */
-    color: #F6E;                    /* short hex format */
-    color: #FF66EE;                 /* long hex format */
-    color: tomato;                  /* a named color */
-    color: rgb(255, 255, 255);      /* as rgb values */
-    color: rgb(10%, 20%, 50%);      /* as rgb percentages */
-    color: rgba(255, 0, 0, 0.3);    /* as rgba values (CSS 3) Note: 0 <= a <= 1 */
-    color: transparent;             /* equivalent to setting the alpha to 0 */
-    color: hsl(0, 100%, 50%);       /* as hsl percentages (CSS 3) */
-    color: hsla(0, 100%, 50%, 0.3); /* as hsl percentages with alpha */
+    /* 색상 */
+    color: #F6E;                    /* 짧은 16진수 형식 */
+    color: #FF66EE;                 /* 긴 16진수 형식 */
+    color: tomato;                  /* 명명된 색상 */
+    color: rgb(255, 255, 255);      /* rgb 값으로 */
+    color: rgb(10%, 20%, 50%);      /* rgb 백분율로 */
+    color: rgba(255, 0, 0, 0.3);    /* rgba 값으로 (CSS 3) 참고: 0 <= a <= 1 */
+    color: transparent;             /* 알파를 0으로 설정하는 것과 동일 */
+    color: hsl(0, 100%, 50%);       /* hsl 백분율로 (CSS 3) */
+    color: hsla(0, 100%, 50%, 0.3); /* 알파가 있는 hsl 백분율로 */
 
-    /* Borders */
+    /* 테두리 */
     border-width:5px;
     border-style:solid;
-    border-color:red;      /* similar to how background-color is set */
-    border: 5px solid red; /* this is a short hand approach for the same */
-    border-radius:20px;    /* this is a CSS3 property */
+    border-color:red;      /* background-color 설정과 유사 */
+    border: 5px solid red; /* 동일한 약어 접근 방식 */
+    border-radius:20px;    /* CSS3 속성 */
 
-    /* Images as backgrounds of elements */
-    background-image: url(/img-path/img.jpg); /* quotes inside url() optional */
+    /* 요소의 배경 이미지 */
+    background-image: url(/img-path/img.jpg); /* url() 내부의 따옴표는 선택 사항 */
 
-    /* Fonts */
+    /* 글꼴 */
     font-family: Arial;
-    /* if the font family name has a space, it must be quoted */
+    /* 글꼴 패밀리 이름에 공백이 있으면 따옴표로 묶어야 합니다. */
     font-family: "Courier New";
-    /* if the first one is not found, the browser uses the next, and so on */
+    /* 첫 번째 글꼴을 찾을 수 없으면 브라우저는 다음 글꼴을 사용합니다. */
     font-family: "Courier New", Trebuchet, Arial, sans-serif;
 }
 
-/* Custom CSS properties using variables (CSS 3) */
+/* 변수를 사용한 사용자 정의 CSS 속성 (CSS 3) */
 :root {
    --main-bg-color: whitesmoke;
 }
@@ -219,66 +209,59 @@ body {
    background-color: var(--main-bg-color)
 }
 
-/* Perfom a calculation (CSS 3) */
+/* 계산 수행 (CSS 3) */
 body {
    width: calc(100vw - 100px)
 }
 
-/* Nest style rule inside another (CSS 3) */
+/* 다른 스타일 규칙 내부에 중첩 (CSS 3) */
 .main {
-   .bgred { /* same as: .main .bgred { } */
+   .bgred { /* .main .bgred { }와 동일 */
       background: red;
    }
-   & .bggreen { /* same as: .main .bggreen { } */
+   & .bggreen { /* .main .bggreen { }와 동일 */
       background: green;
    }
-   &.bgblue { /* (without space) same as: .main.bgblue { } */
+   &.bgblue { /* (공백 없음) .main.bgblue { }와 동일 */
       background: blue;
    }
 }
 
-/* Design responsive layout using flexbox (CSS 3) */
+/* flexbox를 사용한 반응형 레이아웃 디자인 (CSS 3) */
 .container {
    display: flex;
-   flex-direction: row;      /* in which direction stack the flex items */
-   flex-wrap: wrap;          /* whether or not flex items should wrap */
-   justify-content: center;  /* how to align flex items horizontally */
-   align-items: center;      /* how to align flex items vertically */
+   flex-direction: row;      /* flex 항목을 쌓는 방향 */
+   flex-wrap: wrap;          /* flex 항목이 줄 바꿈될지 여부 */
+   justify-content: center;  /* flex 항목을 가로로 정렬하는 방법 */
+   align-items: center;      /* flex 항목을 세로로 정렬하는 방법 */
 }
 ```
 
-## Usage
+## 사용법
 
-Save a CSS stylesheet with the extension `.css`.
+CSS 스타일시트를 `.css` 확장자로 저장하십시오.
 
 ```html
-<!-- You need to include the css file in your page's <head>. This is the
-     recommended method. Refer to http://stackoverflow.com/questions/8284365 -->
+<!-- CSS 파일을 페이지의 <head>에 포함해야 합니다. 이것이 권장되는 방법입니다. -->
 <link rel='stylesheet' type='text/css' href='path/to/style.css'>
 
-<!-- You can also include some CSS inline in your markup. -->
+<!-- 일부 CSS를 마크업에 인라인으로 포함할 수도 있습니다. -->
 <style>
    a { color: purple; }
 </style>
 
-<!-- Or directly set CSS properties on the element. -->
+<!-- 또는 요소에 직접 CSS 속성을 설정합니다. -->
 <div style="border: 1px solid red;">
 </div>
 ```
 
-## Precedence or Cascade
+## 우선 순위 또는 캐스케이드
 
-An element may be targeted by multiple selectors and may have a property set on
-it in more than once. In these cases, one of the rules takes precedence over
-others. Rules with a more specific selector take precedence over a less specific
-one, and a rule occurring later in the stylesheet overwrites a previous one
-(which also means that if two different linked stylesheets contain rules for an
-element and if the rules are of the same specificity, then order of linking
-would take precedence and the sheet linked latest would govern styling) .
+요소는 여러 선택자에 의해 대상으로 지정될 수 있으며, 한 번 이상 속성이 설정될 수 있습니다. 이러한 경우 규칙 중 하나가 다른 규칙보다 우선합니다. 더 구체적인 선택자를 가진 규칙이 덜 구체적인 선택자보다 우선하며, 스타일시트에 나중에 나타나는 규칙이 이전 규칙을 덮어씁니다(이는 두 개의 다른 연결된 스타일시트에 요소에 대한 규칙이 있고 규칙의 특이성이 동일한 경우 연결 순서가 우선하며 가장 나중에 연결된 시트가 스타일링을 제어한다는 의미이기도 합니다).
 
-This process is called cascading, hence the name Cascading Style Sheets.
+이 프로세스를 캐스케이딩이라고 하며, 캐스케이딩 스타일 시트라는 이름이 붙었습니다.
 
-Given the following CSS:
+다음 CSS가 주어졌을 때:
 
 ```css
 /* A */
@@ -297,39 +280,35 @@ p { }
 p { property: value !important; }
 ```
 
-and the following markup:
+그리고 다음 마크업:
 
 ```html
 <p style='/*F*/ property:value;' class='class1 class2' attr='value'>
 ```
 
-The precedence of style is as follows. Remember, the precedence is for each
-**property**, not for the entire block.
+스타일의 우선 순위는 다음과 같습니다. 각 **속성**에 대한 우선 순위이며 전체 블록에 대한 우선 순위가 아님을 기억하십시오.
 
-* `E` has the highest precedence because of the keyword `!important`. It is
-recommended that you avoid its usage.
-* `F` is next, because it is an inline style.
-* `A` is next, because it is more "specific" than anything else. It has 3
-    specifiers: The name of the element `p`, its class `class1`, an attribute
-    `attr='value'`.
-* `C` is next, even though it has the same specificity as `B`.
-    This is because it appears after `B`.
-* `B` is next.
-* `D` is the last one.
+* `E`는 `!important` 키워드 때문에 가장 높은 우선 순위를 가집니다. 사용을 피하는 것이 좋습니다.
+* `F`는 인라인 스타일이기 때문에 다음입니다.
+* `A`는 다른 어떤 것보다 더 "구체적"이기 때문에 다음입니다. 3개의 지정자를 가집니다: 요소 이름 `p`, 클래스 `class1`, 속성 `attr='value'`.
+* `C`는 `B`와 동일한 특이성을 가짐에도 불구하고 다음입니다.
+    `B` 다음에 나타나기 때문입니다.
+* `B`는 다음입니다.
+* `D`는 마지막입니다.
 
-## Media Queries
+## 미디어 쿼리
 
-CSS Media Queries are a feature in CSS 3 which allows you to specify when certain CSS rules should be applied, such as when printed, or when on a screen with certain dimensions or pixel density. They do not add to the selector's specificity.
+CSS 미디어 쿼리는 CSS 3의 기능으로, 특정 CSS 규칙을 적용해야 하는 시기(예: 인쇄 시 또는 특정 크기나 픽셀 밀도를 가진 화면에서)를 지정할 수 있습니다. 선택자의 특이성을 추가하지 않습니다.
 
 ```css
-/* A rule that will be used on all devices */
+/* 모든 장치에서 사용될 규칙 */
 h1 {
   font-size: 2em;
   color: white;
   background-color: black;
 }
 
-/* change the h1 to use less ink on a printer */
+/* 프린터에서 h1이 잉크를 덜 사용하도록 변경 */
 @media print {
   h1 {
     color: black;
@@ -337,7 +316,7 @@ h1 {
   }
 }
 
-/* make the font bigger when shown on a screen at least 480px wide */
+/* 너비가 480px 이상인 화면에 표시될 때 글꼴을 더 크게 만듭니다. */
 @media screen and (min-width: 480px) {
   h1 {
     font-size: 3em;
@@ -346,12 +325,12 @@ h1 {
 }
 ```
 
-Media queries can include these features:
-`width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. Most of these features can be prefixed with `min-` or `max-`.
+미디어 쿼리에는 다음 기능이 포함될 수 있습니다:
+`width`, `height`, `device-width`, `device-height`, `orientation`, `aspect-ratio`, `device-aspect-ratio`, `color`, `color-index`, `monochrome`, `resolution`, `scan`, `grid`. 이러한 기능 대부분은 `min-` 또는 `max-` 접두사를 가질 수 있습니다.
 
-The `resolution` feature is not supported by older devices, instead use `device-pixel-ratio`.
+`resolution` 기능은 이전 장치에서 지원되지 않으며, 대신 `device-pixel-ratio`를 사용하십시오.
 
-Many smartphones and tablets will attempt to render the page as if it were on a desktop unless you provide a `viewport` meta-tag.
+많은 스마트폰과 태블릿은 `viewport` 메타 태그를 제공하지 않으면 페이지를 데스크톱에서처럼 렌더링하려고 시도합니다.
 
 ```html
 <head>
@@ -359,25 +338,23 @@ Many smartphones and tablets will attempt to render the page as if it were on a 
 </head>
 ```
 
-## Compatibility
+## 호환성
 
-Most of the features in CSS 2 (and many in CSS 3) are available across all
-browsers and devices. But it's always good practice to check before using
-a new feature.
+CSS2의 대부분의 기능 및 CSS3의 많은 기능은은모든 브라우저 및 장치에서 사용할 수 있습니다. 그러나 항상 새 기능을 사용하기 전에 확인하는 것이 좋습니다.
 
-## Resources
+## 자료
 
-* [CanIUse](http://caniuse.com) (Detailed compatibility info)
-* [Dabblet](http://dabblet.com/) (CSS playground)
-* [Mozilla Developer Network's CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS) (Tutorials and reference)
-* [Codrops' CSS Reference](http://tympanus.net/codrops/css_reference/) (Reference)
-* [DevTips' CSS Basics](https://www.youtube.com/playlist?list=PLqGj3iMvMa4IOmy04kDxh_hqODMqoeeCy) (Tutorials)
+* [CanIUse](http://caniuse.com) (자세한 호환성 정보)
+* [Dabblet](http://dabblet.com/) (CSS 플레이그라운드)
+* [Mozilla 개발자 네트워크의 CSS 문서](https://developer.mozilla.org/en-US/docs/Web/CSS) (튜토리얼 및 참조)
+* [Codrops의 CSS 참조](http://tympanus.net/codrops/css_reference/) (참조)
+* [DevTips의 CSS 기본 사항](https://www.youtube.com/playlist?list=PLqGj3iMvMa4IOmy04kDxh_hqODMqoeeCy) (튜토리얼)
 
-## Further Reading
+## 더 읽을거리
 
-* [Understanding Style Precedence in CSS: Specificity, Inheritance, and the Cascade](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
-* [Selecting elements using attributes](https://css-tricks.com/almanac/selectors/a/attribute/)
+* [CSS의 스타일 우선 순위 이해: 특이성, 상속 및 캐스케이드](http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/)
+* [속성을 사용하여 요소 선택](https://css-tricks.com/almanac/selectors/a/attribute/)
 * [QuirksMode CSS](http://www.quirksmode.org/css/)
-* [Z-Index - The stacking context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
-* [SASS](http://sass-lang.com/) and [LESS](http://lesscss.org/) for CSS pre-processing
+* [Z-Index - 스택 컨텍스트](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
+* [SASS](http://sass-lang.com/) 및 [LESS](http://lesscss.org/) CSS 전처리용
 * [CSS-Tricks](https://css-tricks.com)

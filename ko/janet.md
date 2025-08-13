@@ -1,143 +1,128 @@
-# janet.md (번역)
-
 ---
 name: Janet
 filename: learnJanet.janet
 contributors:
     - ["John Gabriele", "http://www.unexpected-vortices.com/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-[Janet](https://janet-lang.org/) is a Lisp-like (Clojure-like),
-lexically-scoped, dynamically-typed, garbage-collected, C-based, high-level
-language. The entire language (core library, interpreter, compiler, assembler,
-PEG) is about 300-500 kB and should run on many constrained systems.
+[Janet](https://janet-lang.org/)은 Lisp와 유사한(Clojure와 유사한), 어휘적으로 범위가 지정되고, 동적으로 유형이 지정되며, 가비지 수집되고, C 기반의 고급 언어입니다. 전체 언어(핵심 라이브러리, 인터프리터, 컴파일러, 어셈블러, PEG)는 약 300-500kB이며 많은 제한된 시스템에서 실행되어야 합니다.
 
-I encourage you to try out the code snippets below in the Janet
-repl (either by [installing Janet](https://janet-lang.org/docs/index.html),
-or else by using the repl embedded in the Janet homepage).
+아래 코드 조각을 Janet repl에서 시도해 보시기 바랍니다([Janet 설치](https://janet-lang.org/docs/index.html) 또는 Janet 홈페이지에 내장된 repl 사용).
 
-As we only have a scant *y* minutes, we'll survey the basics here and
-leave the remaining details for the manual. So please, keep your arms and
-legs inside the vehicle at all times, and on with the scenic tour!
+시간이 부족하므로 여기서는 기본 사항을 살펴보고 나머지 세부 정보는 설명서에 맡기겠습니다. 그러니 항상 차량 안에 팔과 다리를 두시고, 경치 좋은 여행을 계속합시다!
 
 ```clojure
-# A comment.
+# 주석입니다.
 
-# Some literal values.
+# 일부 리터럴 값입니다.
 true
 false
 nil
 
-# Typical style for symbols (identifiers-for / names-of things).
+# 심볼(식별자/사물의 이름)에 대한 일반적인 스타일입니다.
 do-stuff
 pants-on-fire!
-foo->bar        # Evidently for converting foos to bars.
+foo->bar        # 분명히 foo를 bar로 변환하기 위한 것입니다.
 fully-charged?
-_               # Usually used as a dummy variable.
+_               # 일반적으로 더미 변수로 사용됩니다.
 
-# Keywords are like symbols that start with a colon, are treated like
-# constants, and are typically used as map keys or pieces of syntax in
-# macros.
+# 키워드는 콜론으로 시작하는 심볼과 같으며, 상수로 처리되고 일반적으로 맵 키 또는 매크로의 구문 조각으로 사용됩니다.
 :a
 :some-val
 
-# Numbers #####################################################################
+# 숫자 #####################################################################
 5
 1e3    # => 1000
 1_000  # => 1000
 2e-03  # => 0.002
 0xff   # => 255
 
-# You can specify a radix (base) like so:
-16rff   # => 255 (same as 0xff)
+# 다음과 같이 기수(밑)를 지정할 수 있습니다:
+16rff   # => 255 (0xff와 동일)
 2r1101  # =>  13
 
-# Some numbers in the math library:
+# 수학 라이브러리의 일부 숫자:
 math/pi  # => 3.14159
 math/e   # => 2.71828
 
-# Strings #####################################################################
+# 문자열 #####################################################################
 "hello"
-"hey\tthere"  # contains a tab
+"hey\tthere"  # 탭 포함
 
-# For multi-line strings, use one or more backticks. Backslash-escapes not
-# recognized in these (bytes will be parsed literally).
+# 여러 줄 문자열의 경우 하나 이상의 백틱을 사용하십시오. 이러한 문자열에서는 백슬래시 이스케이프가 인식되지 않습니다(바이트는 문자 그대로 구문 분석됨).
 ``a long
 multi-line
 string``    # => "a long\nmulti-line\nstring"
 
-# Strings and data structures in Janet come in two varieties: mutable and
-# immutable. The literal for the mutable variety is written with a `@` in
-# front of it.
+# Janet의 문자열 및 데이터 구조는 변경 가능 및 불변의 두 가지 종류가 있습니다. 변경 가능한 종류의 리터럴은 앞에 `@`가 붙습니다.
 
-# A mutable string (aka "buffer").
+# 변경 가능한 문자열(일명 "버퍼").
 @"this"
 @`a multi-line
 one here`
 
 (string "con" "cat" "enate")   # => "concatenate"
 
-# To get a substring:
+# 하위 문자열을 얻으려면:
 (string/slice "abcdefgh" 2 5)  # => "cde"
-# To find a substring:
+# 하위 문자열을 찾으려면:
 (string/find "de" "abcdefgh")  # => 3
 
-# See the string library for more (splitting, replacement, etc.)
+# 자세한 내용은 문자열 라이브러리를 참조하십시오(분할, 교체 등).
 
-# Data Structures #############################################################
-# Arrays and Tuples
-# Arrays are mutable, tuples are immutable.
+# 데이터 구조 #############################################################
+# 배열 및 튜플
+# 배열은 변경 가능하고, 튜플은 불변입니다.
 
-# Arrays (mutable)
+# 배열 (변경 가능)
 @(4 5 6)
 @[4 5 6]
 
-# Tuples (immutable)
-# Note that an open paren usually indicates a function call, so if you want a
-# literal tuple with parens, you need to "quote" it (with a starting single
-# quote mark)...
+# 튜플 (불변)
+# 참고: 여는 괄호는 일반적으로 함수 호출을 나타내므로 괄호가 있는 리터럴 튜플을 원하면 "인용"해야 합니다(시작 작은따옴표 사용)...
 '(4 5 6)
-[4 5 6]  # ... or just use square brackets.
+[4 5 6]  # ... 또는 대괄호를 사용하십시오.
 
-# Tables and Structs (associative data structures)
-@{:a 1 :b 2 :c 3}  # table  (mutable)
-{:a 1 :b 2 :c 3}   # struct (immutable)
+# 테이블 및 구조체 (연관 데이터 구조)
+@{:a 1 :b 2 :c 3}  # 테이블  (변경 가능)
+{:a 1 :b 2 :c 3}   # 구조체 (불변)
 
-# To "pretty-print" these out, use `pp` instead of `print`.
-# More about how to work with arrays/tuples and tables/structs below.
+# 이것들을 "예쁘게 인쇄"하려면 `print` 대신 `pp`를 사용하십시오.
+# 배열/튜플 및 테이블/구조체 작업 방법에 대한 자세한 내용은 아래를 참조하십시오.
 
-# Bindings ####################################################################
-# Bind a value to a symbol.
-(def x 4.7)  # Define a constant, `x`.
+# 바인딩 ####################################################################
+# 값을 심볼에 바인딩합니다.
+(def x 4.7)  # 상수 `x`를 정의합니다.
 x            # => 4.7
-(quote x)    # => x (the symbol x)
-'x           # => x (the symbol x (shorthand))
-(print x)    # prints 4.7
+(quote x)    # => x (심볼 x)
+'x           # => x (심볼 x (약어))
+(print x)    # 4.7 인쇄
 
-# Since we used `def`, can't change to what `x` refers:
-(set x 5.6)  # Error, `x` is a constant.
+# `def`를 사용했으므로 `x`가 참조하는 것을 변경할 수 없습니다:
+(set x 5.6)  # 오류, `x`는 상수입니다.
 
 (var y 10)
-(set y 12)  # Works, since `y` was defined using `var`.
+(set y 12)  # `y`가 `var`를 사용하여 정의되었으므로 작동합니다.
 
-# Note that bindings are local to the scope they're called in. `let`
-# creates a local scope and makes some bindings all in one shot:
+# 참고: 바인딩은 호출된 범위에 로컬입니다. `let`은 로컬 범위를 만들고 한 번에 일부 바인딩을 만듭니다:
 (let [a 2
       b 3]
   (print "Hello from inside this local scope.")
   (* a b))  # => 6
 
-# Destructuring is supported, both for arrays/tuples ...
+# 구조 분해는 배열/튜플 모두에 대해 지원됩니다...
 (def a ["foos" "bars" "moos"])
 (let [[s1 _ s2] a]
   (print s1 s2))  # foosmoos
 
-# ... and for tables/structs.
+# ... 및 테이블/구조체.
 (def t {:a "ayy" :b "bee" :c "sea"})
 (let [{:a a :b b} t]
   (print a b))  # ayybee
 
-# You can even destructure right in a `def`:
+# `def`에서 바로 구조 분해할 수도 있습니다:
 (def [aa1 aa2] a)
 aa1  # => foos
 aa2  # => bars
@@ -146,72 +131,67 @@ aa2  # => bars
 body-of-water  # => sea
 insect-friend  # => bee
 
-# Note that keywords evaluate to themselves, whereas symbols evaluate
-# to whatever value they're bound to (unless you quote them).
+# 참고: 키워드는 자신으로 평가되는 반면, 심볼은 바인딩된 값으로 평가됩니다(인용하지 않는 한).
 
-# Operators ###################################################################
-# Janet supports the usual ensemble of operators.
-# +, -, *, /, and so on. Note:
+# 연산자 ###################################################################
+# Janet은 일반적인 연산자 앙상블을 지원합니다.
+# +, -, *, / 등. 참고:
 (/ 5 3)  # =>  1.66667
-(% 5 3)  # =>  2 (remainder)
-(- 5)    # => -5 (or you can just write `-5`)
+(% 5 3)  # =>  2 (나머지)
+(- 5)    # => -5 (또는 `-5`라고 쓸 수 있습니다)
 
-(++ i)    # increments (modifies `i`)
-(-- i)    # decrements
-(+= i 3)  # add 3 to `i`
-(*= i 3)  # triple `i`
-# ... and so on for the other operations on numbers.
+(++ i)    # 증가 ( `i` 수정)
+(-- i)    # 감소
+(+= i 3)  # `i`에 3 추가
+(*= i 3)  # `i`를 3배
+# ... 그리고 숫자에 대한 다른 연산도 마찬가지입니다.
 
-# If you don't want to mutate `i`, use `(inc i)` and `(dec i)`.
+# `i`를 변경하고 싶지 않으면 `(inc i)` 및 `(dec i)`를 사용하십시오.
 
-# Comparison
+# 비교
 # =  <  >  not=  <=  >=
 (< 2 7 12)  # => true
 
-# Functions ###################################################################
-# Call them:
-(- 5 3)                   # => 2 (Operators and functions work the same way.)
+# 함수 ###################################################################
+# 호출:
+(- 5 3)                   # => 2 (연산자와 함수는 동일하게 작동합니다.)
 (math/sin (/ math/pi 2))  # => 1
 (range 5)                 # => @[0 1 2 3 4]
 
-# Create them:
+# 만들기:
 (defn mult-by-2
-  ``First line of docstring.
+  ``첫 번째 줄 문서 문자열.
 
-  Some more of the docstring.``
+  문서 문자열의 일부 더.``
   [x]
   (print "Hi.")
   (print "Will compute using: " x)
   (* 2 x))
 
-(print (mult-by-2 6))  # => 12 (after printing "Hi" and so forth)
+(print (mult-by-2 6))  # => 12 ("Hi" 등을 인쇄한 후)
 
-# If you have a function named "main" in your file, `janet` will automatically
-# call it for you when you run the file.
+# 파일에 "main"이라는 함수가 있으면 `janet`은 파일을 실행할 때 자동으로 호출합니다.
 
-# Interactively read a function's docs from within the repl:
+# repl 내에서 함수의 문서를 대화식으로 읽습니다:
 (doc mult-by-2)
 
-# Note, functions have to be defined before they can be used in a function,
-# so if you design top-down, you'll need to write your functions from the
-# bottom of the file up.
+# 참고: 함수는 함수에서 사용되기 전에 정의되어야 하므로, 하향식으로 설계하는 경우 파일 맨 아래에서 위로 함수를 작성해야 합니다.
 
-# You can make anonymous functions as well:
+# 익명 함수도 만들 수 있습니다:
 (fn [x] (+ x x))
-(fn my-func [x] (+ x x))  # This one's less anonymous.
+(fn my-func [x] (+ x x))  # 이것은 덜 익명입니다.
 
-# Use `do` to make some side-effecting calls and then evaluate to
-# the last form in the `do`:
+# `do`를 사용하여 일부 부작용 호출을 수행한 다음 `do`의 마지막 형식으로 평가합니다:
 (def n (do
          (print "hi")
          (do-some-side-effecting 42)
          3))
 n  # => 3
 
-# You might say that function bodies provide an "implicit do".
+# 함수 본문은 "암시적 do"를 제공한다고 말할 수 있습니다.
 
-# Operations on data structures ###############################################
-# (Making all of these mutable so we can ... mutate them.)
+# 데이터 구조에 대한 연산 ###############################################
+# (이 모든 것을 변경 가능하게 만들어 ... 변경할 수 있도록 합니다.)
 (def s @"Hello, World!")
 (def a @[:a :b :c :d :e])
 (def t @{:a 1 :b 2})
@@ -220,44 +200,43 @@ n  # => 3
 (length a)  # =>  5
 (length t)  # =>  2
 
-# Getting values:
-(s 7)       # => 87 (which is the code point for "W")
+# 값 가져오기:
+(s 7)       # => 87 ("W"의 코드 포인트)
 (a 1)       # => :b
 (t :a)      # => 1
 (keys t)    # => @[:a :b]
 (values t)  # => @[1 2]
 
-# Changing values (for mutable data structures):
+# 값 변경 (변경 가능한 데이터 구조의 경우):
 (put s 2 87)   # @"HeWlo, World!"
 (put a 2 :x)   # @[:a :b :x :d :e]
 (put t :b 42)  # @{:a 1 :b 42}
 
-# Adding and removing values (again, for mutable data structures):
-(buffer/push-string s "??")  # @"HeWlo, World!??"
+# 값 추가 및 제거 (다시, 변경 가능한 데이터 구조의 경우):
+(buffer/push-string s "??")  # @"HeWlo, World!?"
 (array/push a :f)  # @[:a :b :x :d :e :f]
-(array/pop a)      # => :f, and it's also removed from `a`.
+(array/pop a)      # => :f, 그리고 `a`에서도 제거됩니다.
 (put t :x 88)      # @{:a 1 :b 42 :x 88}
 
-# See the manual for a wide variety of functions for working with
-# buffers/strings, arrays/tuples, and tables/structs.
+# 버퍼/문자열, 배열/튜플 및 테이블/구조체 작업을 위한 다양한 함수에 대한 설명서를 참조하십시오.
 
-# Flow control ################################################################
+# 제어 흐름 ################################################################
 (if some-condition
   42
   38)
 
-# Only `nil` and `false` are falsey. Everything else is truthy.
+# `nil`과 `false`만 거짓입니다. 다른 모든 것은 참입니다.
 
 (if got-it?
-  71)  # No false-branch value. Returns `nil` if `got-it?` is falsey.
+  71)  # 거짓 분기 값이 없습니다. `got-it?`이 거짓이면 `nil`을 반환합니다.
 
 (var i 10)
 (while (pos? i)
   (print "... " i)
   (-- i))
-# Now `i` is 0.
+# 이제 `i`는 0입니다.
 
-# `case` compares the dispatch value to each of the options.
+# `case`는 디스패치 값을 각 옵션과 비교합니다.
 (var x 2)
 (case x
   1 "won"
@@ -265,7 +244,7 @@ n  # => 3
   3 "tree"
   "unknown")  # => "too"
 
-# `cond` evaluates conditions until it gets a `true`.
+# `cond`는 `true`를 얻을 때까지 조건을 평가합니다.
 (set x 8)
 (cond
   (= x 1) "won"
@@ -278,40 +257,38 @@ n  # => 3
   (smell-the-roses)
   (paint-fencepost-error))
 
-# Pattern matching.
-# `match` is like a high-powered switch expression. If you switch on a data
-# structure, it can look inside to try and match on its contents. For example,
-# matching on a table or struct:
+# 패턴 매칭.
+# `match`는 고성능 스위치 표현식과 같습니다. 데이터 구조를 전환하면 내부를 살펴보고 내용과 일치시키려고 할 수 있습니다. 예를 들어, 테이블 또는 구조체와 일치:
 (def t {:a 1 :b 2 :c 3})
 (match t
   {:yar v} (print "matches key :yar! " v)
   {:moo v} (print "matches key :moo! " v)
   {:c   v} (print "matches key :c! "   v)
-  _        (print "no match"))             # => prints "matches key :c! 3"
+  _        (print "no match"))             # => "matches key :c! 3" 인쇄
 
-# Iterating ###################################################################
-# Iterate over an integer range:
+# 반복 ###################################################################
+# 정수 범위 반복:
 (for i 0 5
-  (print i))  # prints 0, 1, 2, 3, 4
+  (print i))  # 0, 1, 2, 3, 4 인쇄
 
-# There's also the more general `loop`:
+# 더 일반적인 `loop`도 있습니다:
 (loop [i :range [0 10] :when (even? i)]
   (print i))
 
-# Loop over an array/tuple:
+# 배열/튜플 반복:
 (def words ["foo" "bar" "baz"])
 (each word words
   (print word))
 
-# Loop over a table/struct:
+# 테이블/구조체 반복:
 (def t {:a 1 :b 2})
-(eachp [k v] t  # Loop over each pair in `t`.
+(eachp [k v] t  # `t`의 각 쌍 반복.
   (print k " --> " v))
 
-# Can also use `eachk` to loop over keys in a table or struct.
+# `eachk`를 사용하여 테이블 또는 구조체의 키를 반복할 수도 있습니다.
 
-# Functional programming ######################################################
-# You'll find many familiar old friends here.
+# 함수형 프로그래밍 ######################################################
+# 여기에서 많은 익숙한 옛 친구를 찾을 수 있습니다.
 (filter even?
         (map (fn [x]
                (* x x))
@@ -319,18 +296,14 @@ n  # => 3
 
 (reduce + 0 (range 5))     # => 10
 
-# ...and lots more (see the API docs).
+# ... 그리고 더 많습니다 (API 문서 참조).
 
-# Errata ######################################################################
-(type a)                # => the type of `a` (as a keyword)
-(describe a)            # => a human-readable description of `a`
-(string/format "%j" a)  # => Janet values, nicely-formatted
+# 정오표 ######################################################################
+(type a)                # `a`의 유형 (키워드로)
+(describe a)            # `a`에 대한 사람이 읽을 수 있는 설명
+(string/format "%j" a)  # => Janet 값, 멋지게 서식 지정됨
 ```
 
-This tour didn't cover a number of other features such as modules, fibers,
-PEGs, macros, etc., but should give you a taste of what Janet is like. See
-the [Janet manual](https://janet-lang.org/docs/index.html) and the [Janet API
-docs](https://janet-lang.org/api/index.html) for more info.
+이 둘러보기는 모듈, 파이버, PEG, 매크로 등과 같은 다른 여러 기능을 다루지 않았지만, Janet이 어떤 것인지 맛볼 수 있을 것입니다. 자세한 내용은 [Janet 설명서](https://janet-lang.org/docs/index.html) 및 [Janet API 문서](https://janet-lang.org/api/index.html)를 참조하십시오.
 
-Also check out [Janet for Mortals](https://janet.guide/) for an in-depth ebook
-on Janet.
+또한 Janet에 대한 심층적인 전자책인 [Janet for Mortals](https://janet.guide/)를 확인하십시오.

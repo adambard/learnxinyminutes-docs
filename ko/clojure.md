@@ -3,6 +3,7 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["netpyoung", "http://netpyoung.github.io/"]
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Clojure는 Java 가상머신을 위해 개발된 Lisp 계통의 언어입니다
@@ -218,7 +219,7 @@ keymap ; => {:a 1, :b 2, :c 3}
 (dissoc keymap :a :b) ; => {:c 3}
 
 ; 쎗(Set:집합)
-;;;;;;
+;;;;;;;;
 
 (class #{1 2 3}) ; => clojure.lang.PersistentHashSet
 (set [1 2 3 1 2 3 3 2 1 3 2 1]) ; => #{1 2 3}

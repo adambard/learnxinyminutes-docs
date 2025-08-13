@@ -1,100 +1,100 @@
-# citron.md (번역)
-
 ---
 name: citron
 filename: learncitron.ctr
 contributors:
     - ["AnotherTest", ""]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 ```ruby
-# Comments start with a '#'
-# All comments encompass a single line
+# 주석은 '#'로 시작합니다.
+# 모든 주석은 한 줄을 포함합니다.
 
 ###########################################
-## 1. Primitive Data types and Operators
+## 1. 기본 데이터 유형 및 연산자
 ###########################################
 
-# You have numbers
+# 숫자가 있습니다.
 3. # 3
 
-# Numbers are all doubles in interpreted mode
+# 숫자는 해석 모드에서 모두 double입니다.
 
-# Mathematical operator precedence is not respected.
-# binary 'operators' are evaluated in ltr order
+# 수학 연산자 우선 순위는 존중되지 않습니다.
+# 이진 '연산자'는 ltr 순서로 평가됩니다.
 1 + 1. # 2
 8 - 4. # 4
 10 + 2 * 3. # 36
 
-# Division is always floating division
+# 나눗셈은 항상 부동 소수점 나눗셈입니다.
 35 / 2 # 17.5.
 
-# Integer division is non-trivial, you may use floor
+# 정수 나눗셈은 간단하지 않으며, floor를 사용할 수 있습니다.
 (35 / 2) floor # 17.
 
-# Booleans are primitives
+# 부울은 기본 유형입니다.
 True.
 False.
 
-# Boolean messages
+# 부울 메시지
 True not. # False
 False not. # True
 1 = 1. # True
 1 !=: 1. # False
 1 < 10. # True
 
-# Here, `not` is a unary message to the object `Boolean`
-# Messages are comparable to instance method calls
-# And they have three different forms:
-#   1. Unary messages: Length > 1, and they take no arguments:
+# 여기서 `not`은 `Boolean` 객체에 대한 단항 메시지입니다.
+# 메시지는 인스턴스 메서드 호출과 유사합니다.
+# 그리고 세 가지 다른 형식이 있습니다:
+#   1. 단항 메시지: 길이 > 1이며 인수를 받지 않습니다:
         False not.
-#   2. Binary Messages: Length = 1, and they take a single argument:
+#   2. 이진 메시지: 길이 = 1이며 단일 인수를 받습니다:
         False & True.
-#   3. Keyword messages: must have at least one ':', they take as many arguments
-#      as they have `:` s
+#   3. 키워드 메시지: 적어도 하나의 ':'가 있어야 하며, ':' 수만큼 인수를 받습니다.
         False either: 1 or: 2. # 2
 
-# Strings
+# 문자열
 'This is a string'.
 'There are no character types exposed to the user'.
-# "You cannot use double quotes for strings" <- Error
+# "You cannot use double quotes for strings" <- 오류
 
-# Strins can be summed
+# 문자열을 더할 수 있습니다.
 'Hello, ' + 'World!'. # 'Hello, World!'
 
-# Strings allow access to their characters
+# 문자열은 문자에 액세스할 수 있습니다.
 'This is a beautiful string' at: 0. # 'T'
 
 ###########################################
-## intermission: Basic Assignment
+## 막간: 기본 할당
 ###########################################
 
-# You may assign values to the current scope:
-var name is value. # assigns `value` into `name`
+# 현재 범위에 값을 할당할 수 있습니다:
+var name is value. # `name`에 `value`를 할당합니다.
 
-# You may also assign values into the current object's namespace
-my name is value. # assigns `value` into the current object's `name` property
+# 현재 객체의 네임스페이스에 값을 할당할 수도 있습니다.
+my name is value. # 현재 객체의 `name` 속성에 `value`를 할당합니다.
 
-# Please note that these names are checked at compile (read parse if in interpreted mode) time
-# but you may treat them as dynamic assignments anyway
+# 이러한 이름은 컴파일(해석 모드인 경우 구문 분석 읽기) 시 확인되지만
+# 동적 할당으로 처리할 수 있습니다.
 
 ###########################################
-## 2. Lists(Arrays?) and Tuples
+## 2. 목록(배열?) 및 튜플
 ###########################################
 
-# Arrays are allowed to have multiple types
+# 배열은 여러 유형을 가질 수 있습니다.
 Array new < 1 ; 2 ; 'string' ; Nil. # Array new < 1 ; 2 ; 'string' ; Nil
 
-# Tuples act like arrays, but are immutable.
-# Any shenanigans degrade them to arrays, however
+# 튜플은 배열처럼 작동하지만 변경할 수 없습니다.
+# 그러나 모든 장난은 배열로 저하시킵니다.
 [1, 2, 'string']. # [1, 2, 'string']
 
-# They can interoperate with arrays
+# 배열과 상호 운용할 수 있습니다.
 [1, 'string'] + (Array new < 'wat'). # Array new < 1 ; 'string' ; 'wat'
 
-# Indexing into them
+# 인덱싱
 [1, 2, 3] at: 1. # 2
 
-# Some array operations
+# 일부 배열 작업
 var arr is Array new < 1 ; 2 ; 3.
 
 arr head. # 1
@@ -103,111 +103,111 @@ arr init. # Array new < 1 ; 2.
 arr last. # 3
 arr push: 4. # Array new < 1 ; 2 ; 3 ; 4.
 arr pop. # 4
-arr pop: 1. # 2, `arr` is rebound to Array new < 1 ; 3.
+arr pop: 1. # 2, `arr`는 Array new < 1 ; 3.으로 다시 바인딩됩니다.
 
-# List comprehensions
+# 목록 이해
 [x * 2 + y,, arr, arr + [4, 5],, x > 1]. # Array ← 7 ; 9 ; 10 ; 11
-# fresh variable names are bound as they are encountered,
-# so `x` is bound to the values in `arr`
-# and `y` is bound to the values in `arr + [4, 5]`
+# 새 변수 이름은 마주칠 때 바인딩되므로
+# `x`는 `arr`의 값에 바인딩되고
+# `y`는 `arr + [4, 5]`의 값에 바인딩됩니다.
 #
-# The general format is: [expr,, bindings*,, predicates*]
+# 일반적인 형식은 다음과 같습니다: [expr,, bindings*,, predicates*]
 
 
 ####################################
-## 3. Functions
+## 3. 함수
 ####################################
 
-# A simple function that takes two variables
+# 두 변수를 사용하는 간단한 함수
 var add is {:a:b ^a + b.}.
 
-# this function will resolve all its names except the formal arguments
-# in the context it is called in.
+# 이 함수는 형식 인수를 제외한 모든 이름을
+# 호출되는 컨텍스트에서 확인합니다.
 
-# Using the function
+# 함수 사용
 add applyTo: 3 and: 5. # 8
 add applyAll: [3, 5]. # 8
 
-# Also a (customizable -- more on this later) pseudo-operator allows for a shorthand
-# of function calls
-# By default it is REF[args]
+# 또한 (사용자 정의 가능한 -- 나중에 자세히 설명) 의사 연산자는
+# 함수 호출에 대한 약어를 허용합니다.
+# 기본적으로 REF[args]입니다.
 
 add[3, 5]. # 8
 
-# To customize this behaviour, you may simply use a compiler pragma:
+# 이 동작을 사용자 정의하려면 컴파일러 프라그마를 사용하면 됩니다:
 #:callShorthand ()
 
-# And then you may use the specified operator.
-# Note that the allowed 'operator' can only be made of any of these: []{}()
-# And you may mix-and-match (why would anyone do that?)
+# 그런 다음 지정된 연산자를 사용할 수 있습니다.
+# 허용되는 '연산자'는 []{}() 중 하나로만 구성될 수 있습니다.
+# 그리고 혼합하여 사용할 수 있습니다(누가 그렇게 하겠습니까?).
 
 add(3, 5). # 8
 
-# You may also use functions as operators in the following way:
+# 다음과 같은 방식으로 함수를 연산자로 사용할 수도 있습니다:
 
 3 `add` 5. # 8
-# This call binds as such: add[(3), 5]
-# because the default fixity is left, and the default precedence is 1
+# 이 호출은 다음과 같이 바인딩됩니다: add[(3), 5]
+# 기본 고정성은 왼쪽이고 기본 우선 순위는 1이기 때문입니다.
 
-# You may change the precedence/fixity of this operator with a pragma
+# 프라그마를 사용하여 이 연산자의 우선 순위/고정성을 변경할 수 있습니다.
 #:declare infixr 1 add
 
 3 `add` 5. # 8
-# now this binds as such: add[3, (5)].
+# 이제 다음과 같이 바인딩됩니다: add[3, (5)].
 
-# There is another form of functions too
-# So far, the functions were resolved in a dynamic fashion
-# But a lexically scoped block is also possible
+# 또 다른 형태의 함수도 있습니다.
+# 지금까지 함수는 동적 방식으로 확인되었습니다.
+# 그러나 어휘적으로 범위가 지정된 블록도 가능합니다.
 var sillyAdd is {\:x:y add[x,y].}.
 
-# In these blocks, you are not allowed to declare new variables
-# Except with the use of Object::'letEqual:in:`
-# And the last expression is implicitly returned.
+# 이러한 블록에서는 새 변수를 선언할 수 없습니다.
+# Object::'letEqual:in:`을 사용하는 경우를 제외하고
+# 그리고 마지막 표현식은 암시적으로 반환됩니다.
 
-# You may also use a shorthand for lambda expressions
+# 람다 표현식에 대한 약어를 사용할 수도 있습니다.
 var mul is \:x:y x * y.
 
-# These capture the named bindings that are not present in their
-# formal parameters, and retain them. (by ref)
+# 이들은 형식 매개변수에 없는 명명된 바인딩을 캡처하고
+# 유지합니다. (참조로)
 
 ###########################################
-## 5. Control Flow
+## 5. 제어 흐름
 ###########################################
 
-# inline conditional-expressions
+# 인라인 조건 표현식
 var citron is 1 = 1 either: 'awesome' or: 'awful'. # citron is 'awesome'
 
-# multiple lines is fine too
+# 여러 줄도 괜찮습니다.
 var citron is 1 = 1
     either: 'awesome'
     or:     'awful'.
 
-# looping
+# 반복
 10 times: {:x
     Pen writeln: x.
-}. # 10. -- side effect: 10 lines in stdout, with numbers 0 through 9 in them
+}. # 10. -- 부작용: stdout에 10줄, 0부터 9까지의 숫자 포함
 
-# Citron properly supports tail-call recursion in lexically scoped blocks
-# So use those to your heart's desire
+# Citron은 어휘적으로 범위가 지정된 블록에서 꼬리 호출 재귀를 제대로 지원합니다.
+# 따라서 마음껏 사용하십시오.
 
-# mapping most data structures is as simple as `fmap:`
+# 대부분의 데이터 구조를 매핑하는 것은 `fmap:`만큼 간단합니다.
 [1, 2, 3, 4] fmap: \:x x + 1. # [2, 3, 4, 5]
 
-# You can use `foldl:accumulator:` to fold a list/tuple
+# `foldl:accumulator:`를 사용하여 목록/튜플을 접을 수 있습니다.
 [1, 2, 3, 4] foldl: (\:acc:x acc * 2 + x) accumulator: 4. # 90
 
-# That expression is the same as
+# 해당 표현식은 다음과 같습니다.
 (2 * (2 * (2 * (2 * 4 + 1) + 2) + 3) + 4)
 
 ###################################
 ## 6. IO
 ###################################
 
-# IO is quite simple
-# With `Pen` being used for console output
-# and Program::'input' and Program::'waitForInput' being used for console input
+# IO는 매우 간단합니다.
+# `Pen`은 콘솔 출력에 사용됩니다.
+# 그리고 Program::'input' 및 Program::'waitForInput'은 콘솔 입력에 사용됩니다.
 
-Pen writeln: 'Hello, ocean!' # prints 'Hello, ocean!\n' to the terminal
+Pen writeln: 'Hello, ocean!' # 터미널에 'Hello, ocean!\n'을 인쇄합니다.
 
-Pen writeln: Program waitForInput. # reads a line and prints it back
+Pen writeln: Program waitForInput. # 한 줄을 읽고 다시 인쇄합니다.
 ```

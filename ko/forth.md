@@ -1,44 +1,39 @@
-# forth.md (번역)
-
 ---
 name: Forth
 contributors:
     - ["Horse M.D.", "http://github.com/HorseMD/"]
 filename: learnforth.fs
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-Forth was created by Charles H. Moore in the 70s. It is an imperative,
-stack-based language and programming environment, being used in projects
-such as Open Firmware. It's also used by NASA.
+Forth는 1970년대에 Charles H. Moore가 만들었습니다. 명령형, 스택 기반 언어 및 프로그래밍 환경으로, Open Firmware와 같은 프로젝트에서 사용됩니다. NASA에서도 사용됩니다.
 
-Note: This article focuses predominantly on the Gforth implementation of
-Forth, but most of what is written here should work elsewhere.
+참고: 이 문서는 주로 Forth의 Gforth 구현에 중점을 두지만, 여기에 작성된 대부분의 내용은 다른 곳에서도 작동해야 합니다.
 
 ```forth
-\ This is a comment
-( This is also a comment but it's only used when defining words )
+\ 이것은 주석입니다.
+( 이것도 주석이지만 단어를 정의할 때만 사용됩니다. )
 
-\ --------------------------------- Precursor ----------------------------------
+\ --------------------------------- 전제 조건 ----------------------------------
 
-\ All programming in Forth is done by manipulating the parameter stack (more
-\ commonly just referred to as "the stack").
+\ Forth의 모든 프로그래밍은 매개변수 스택(더 일반적으로는 "스택"이라고 함)을 조작하여 수행됩니다.
 5 2 3 56 76 23 65    \ ok
 
-\ Those numbers get added to the stack, from left to right.
+\ 이러한 숫자는 왼쪽에서 오른쪽으로 스택에 추가됩니다.
 .s    \ <7> 5 2 3 56 76 23 65 ok
 
-\ In Forth, everything is either a word or a number.
+\ Forth에서 모든 것은 단어 또는 숫자입니다.
 
-\ ------------------------------ Basic Arithmetic ------------------------------
+\ ------------------------------ 기본 산술 ------------------------------
 
-\ Arithmetic (in fact most words requiring data) works by manipulating data on
-\ the stack.
+\ 산술(실제로 데이터를 필요로 하는 대부분의 단어)은 스택의 데이터를 조작하여 작동합니다.
 5 4 +    \ ok
 
-\ `.` pops the top result from the stack:
+\ `.`는 스택에서 최상위 결과를 팝합니다:
 .    \ 9 ok
 
-\ More examples of arithmetic:
+\ 산술의 추가 예:
 6 7 * .        \ 42 ok
 1360 23 - .    \ 1337 ok
 12 12 / .      \ 1 ok
@@ -49,42 +44,41 @@ Forth, but most of what is written here should work elsewhere.
 52 23 max .    \ 52 ok
 52 23 min .    \ 23 ok
 
-\ ----------------------------- Stack Manipulation -----------------------------
+\ ----------------------------- 스택 조작 -----------------------------
 
-\ Naturally, as we work with the stack, we'll want some useful methods:
+\ 당연히 스택으로 작업할 때 유용한 몇 가지 메서드가 필요합니다:
 
-3 dup -          \ duplicate the top item (1st now equals 2nd): 3 - 3
-2 5 swap /       \ swap the top with the second element:        5 / 2
-6 4 5 rot .s     \ rotate the top 3 elements:                   4 5 6
-4 0 drop 2 /     \ remove the top item (don't print to screen):  4 / 2
-1 2 3 nip .s     \ remove the second item (similar to drop):    1 3
+3 dup -          \ 최상위 항목 복제 (1번째가 이제 2번째와 같음): 3 - 3
+2 5 swap /       \ 최상위 항목을 두 번째 요소와 교환:        5 / 2
+6 4 5 rot .s     \ 최상위 3개 요소 회전:                   4 5 6
+4 0 drop 2 /     \ 최상위 항목 제거 (화면에 인쇄하지 않음):  4 / 2
+1 2 3 nip .s     \ 두 번째 항목 제거 (drop과 유사):    1 3
 
-\ ---------------------- More Advanced Stack Manipulation ----------------------
+\ ---------------------- 더 고급 스택 조작 ----------------------
 
-1 2 3 4 tuck   \ duplicate the top item below the second slot:      1 2 4 3 4 ok
-1 2 3 4 over   \ duplicate the second item to the top:             1 2 3 4 3 ok
-1 2 3 4 2 roll \ *move* the item at that position to the top:      1 3 4 2 ok
-1 2 3 4 2 pick \ *duplicate* the item at that position to the top: 1 2 3 4 2 ok
+1 2 3 4 tuck   \ 최상위 항목을 두 번째 슬롯 아래에 복제:      1 2 4 3 4 ok
+1 2 3 4 over   \ 두 번째 항목을 맨 위로 복제:             1 2 3 4 3 ok
+1 2 3 4 2 roll \ 해당 위치의 항목을 맨 위로 *이동*:      1 3 4 2 ok
+1 2 3 4 2 pick \ 해당 위치의 항목을 맨 위로 *복제*: 1 2 3 4 2 ok
 
-\ When referring to stack indexes, they are zero-based.
+\ 스택 인덱스를 참조할 때 0부터 시작합니다.
 
-\ ------------------------------ Creating Words --------------------------------
+\ ------------------------------ 단어 만들기 --------------------------------
 
-\ The `:` word sets Forth into compile mode until it sees the `;` word.
+\ `:` 단어는 Forth를 `;` 단어를 볼 때까지 컴파일 모드로 설정합니다.
 : square ( n -- n ) dup * ;    \ ok
 5 square .                     \ 25 ok
 
-\ We can view what a word does too:
+\ 단어가 무엇을 하는지 볼 수도 있습니다:
 see square     \ : square dup * ; ok
 
-\ -------------------------------- Conditionals --------------------------------
+\ -------------------------------- 조건문 --------------------------------
 
-\ -1 == true, 0 == false. However, any non-zero value is usually treated as
-\ being true:
+\ -1 == true, 0 == false. 그러나 0이 아닌 값은 일반적으로 참으로 처리됩니다:
 42 42 =    \ -1 ok
 12 53 =    \ 0 ok
 
-\ `if` is a compile-only word. `if` <stuff to do> `then` <rest of program>.
+\ `if`는 컴파일 전용 단어입니다. `if` <할 일> `then` <나머지 프로그램>.
 : ?>64 ( n -- n ) dup 64 > if ." Greater than 64!" then ; \ ok
 100 ?>64                                                  \ Greater than 64! ok
 
@@ -93,9 +87,9 @@ see square     \ : square dup * ; ok
 100 ?>64    \ Greater than 64! ok
 20 ?>64     \ Less than 64! ok
 
-\ ------------------------------------ Loops -----------------------------------
+\ ------------------------------------ 루프 -----------------------------------
 
-\ `?do` is also a compile-only word.
+\ `?do`도 컴파일 전용 단어입니다.
 : myloop ( -- ) 5 0 ?do cr ." Hello!" loop ; \ ok
 myloop
 \ Hello!
@@ -104,123 +98,115 @@ myloop
 \ Hello!
 \ Hello! ok
 
-\ `?do` expects two numbers on the stack: the end number (exclusive) and the
-\ start number (inclusive).
+\ `?do`는 스택에 두 개의 숫자를 예상합니다: 끝 숫자(제외)와 시작 숫자(포함).
 
-\ We can get the value of the index as we loop with `i`:
+\ `i`를 사용하여 루프를 돌면서 인덱스 값을 얻을 수 있습니다:
 : one-to-12 ( -- ) 12 0 do i . loop ;     \ ok
 one-to-12                                 \ 0 1 2 3 4 5 6 7 8 9 10 11 ok
 
-\ `do` works similarly, except if start and end are exactly the same it will
-\ loop forever (until arithmetic underflow).
+\ `do`는 비슷하게 작동하지만, 시작과 끝이 정확히 같으면 산술 언더플로가 발생할 때까지 영원히 반복됩니다.
 : loop-forever 1 1 do i square . loop ;     \ ok
 loop-forever                                \ 1 4 9 16 25 36 49 64 81 100 ...
 
-\ Change the "step" with `+loop`:
+\ `+loop`로 "단계"를 변경합니다:
 : threes ( n n -- ) ?do i . 3 +loop ;    \ ok
 15 0 threes                             \ 0 3 6 9 12 ok
 
-\ Indefinite loops with `begin` <stuff to do> <flag> `until`:
+\ `begin` <할 일> <플래그> `until`을 사용한 무한 루프:
 : death ( -- ) begin ." Are we there yet?" 0 until ;    \ ok
 
-\ ---------------------------- Variables and Memory ----------------------------
+\ ---------------------------- 변수 및 메모리 ----------------------------
 
-\ Use `variable` to declare `age` to be a variable.
+\ `variable`을 사용하여 `age`를 변수로 선언합니다.
 variable age    \ ok
 
-\ Then we write 21 to age with the word `!`.
+\ 그런 다음 `!` 단어로 age에 21을 씁니다.
 21 age !    \ ok
 
-\ Finally we can print our variable using the "read" word `@`, which adds the
-\ value to the stack, or use `?` that reads and prints it in one go.
+\ 마지막으로 `@` "읽기" 단어를 사용하여 변수를 인쇄할 수 있습니다. 이 단어는 값을 스택에 추가하거나, 한 번에 읽고 인쇄하는 `?`를 사용할 수 있습니다.
 age @ .    \ 21 ok
 age ?      \ 21 ok
 
-\ Constants are quite similar, except we don't bother with memory addresses:
+\ 상수는 매우 유사하지만 메모리 주소를 신경 쓰지 않습니다:
 100 constant WATER-BOILING-POINT    \ ok
 WATER-BOILING-POINT .               \ 100 ok
 
-\ ----------------------------------- Arrays -----------------------------------
+\ ----------------------------------- 배열 -----------------------------------
 
-\ Creating arrays is similar to variables, except we need to allocate more
-\ memory to them.
+\ 배열을 만드는 것은 변수와 유사하지만 더 많은 메모리를 할당해야 합니다.
 
-\ You can use `2 cells allot` to create an array that's 3 cells long:
+\ `2 cells allot`을 사용하여 길이가 3인 배열을 만들 수 있습니다:
 variable mynumbers 2 cells allot    \ ok
 
-\ Initialize all the values to 0
+\ 모든 값을 0으로 초기화합니다.
 mynumbers 3 cells erase    \ ok
 
-\ Alternatively we could use `fill`:
+\ 또는 `fill`을 사용할 수 있습니다:
 mynumbers 3 cells 0 fill
 
-\ or we can just skip all the above and initialize with specific values:
-create mynumbers 64 , 9001 , 1337 , \ ok (the last `,` is important!)
+\ 또는 위의 모든 것을 건너뛰고 특정 값으로 초기화할 수 있습니다:
+create mynumbers 64 , 9001 , 1337 , \ ok (마지막 `,`가 중요합니다!)
 
-\ ...which is equivalent to:
+\ ...와 동일합니다:
 
-\ Manually writing values to each index:
+\ 각 인덱스에 수동으로 값 쓰기:
 64 mynumbers 0 cells + !      \ ok
 9001 mynumbers 1 cells + !    \ ok
 1337 mynumbers 2 cells + !    \ ok
 
-\ Reading values at certain array indexes:
+\ 특정 배열 인덱스에서 값 읽기:
 0 cells mynumbers + ?    \ 64 ok
 1 cells mynumbers + ?    \ 9001 ok
 
-\ We can simplify it a little by making a helper word for manipulating arrays:
+\ 배열 조작을 위한 도우미 단어를 만들어 약간 단순화할 수 있습니다:
 : of-arr ( n n -- n ) cells + ;    \ ok
 mynumbers 2 of-arr ?               \ 1337 ok
 
-\ Which we can use for writing too:
+\ 쓰기에도 사용할 수 있습니다:
 20 mynumbers 1 of-arr !    \ ok
 mynumbers 1 of-arr ?       \ 20 ok
 
-\ ------------------------------ The Return Stack ------------------------------
+\ ------------------------------ 반환 스택 ------------------------------
 
-\ The return stack is used to the hold pointers to things when words are
-\ executing other words, e.g. loops.
+\ 반환 스택은 단어가 다른 단어(예: 루프)를 실행할 때 포인터를 보유하는 데 사용됩니다.
 
-\ We've already seen one use of it: `i`, which duplicates the top of the return
-\ stack. `i` is equivalent to `r@`.
+\ 이미 반환 스택의 맨 위를 복제하는 `i`를 보았습니다. `i`는 `r@`와 동일합니다.
 : myloop ( -- ) 5 0 do r@ . loop ;    \ ok
 
-\ As well as reading, we can add to the return stack and remove from it:
+\ 읽기뿐만 아니라 반환 스택에 추가하고 제거할 수도 있습니다:
 5 6 4 >r swap r> .s    \ 6 5 4 ok
 
-\ NOTE: Because Forth uses the return stack for word pointers,  `>r` should
-\ always be followed by `r>`.
+\ 참고: Forth는 단어 포인터에 반환 스택을 사용하므로 `>r` 뒤에는 항상 `r>`가 와야 합니다.
 
-\ ------------------------- Floating Point Operations --------------------------
+\ ------------------------- 부동 소수점 연산 --------------------------
 
-\ Most Forths tend to eschew the use of floating point operations.
+\ 대부분의 Forth는 부동 소수점 연산 사용을 피하는 경향이 있습니다.
 8.3e 0.8e f+ f.    \ 9.1 ok
 
-\ Usually we simply prepend words with 'f' when dealing with floats:
+\ 일반적으로 부동 소수점을 다룰 때 단어 앞에 'f'를 붙입니다:
 variable myfloatingvar    \ ok
 4.4e myfloatingvar f!     \ ok
 myfloatingvar f@ f.       \ 4.4 ok
 
-\ --------------------------------- Final Notes --------------------------------
+\ --------------------------------- 최종 참고 사항 --------------------------------
 
-\ Typing a non-existent word will empty the stack. However, there's also a word
-\ specifically for that:
+\ 존재하지 않는 단어를 입력하면 스택이 비워집니다. 그러나 특별히 이를 위한 단어도 있습니다:
 clearstack
 
-\ Clear the screen:
+\ 화면 지우기:
 page
 
-\ Loading Forth files:
+\ Forth 파일 로드:
 \ s" forthfile.fs" included
 
-\ You can list every word that's in Forth's dictionary (but it's a huge list!):
+\ Forth의 사전에 있는 모든 단어를 나열할 수 있습니다(하지만 목록이 매우 큽니다!):
 \ words
 
-\ Exiting Gforth:
+\ Gforth 종료:
 \ bye
 ```
 
-## Further reading
+## 추가 자료
 
 * [Starting Forth](http://www.forth.com/starting-forth/)
 * [Simple Forth](http://www.murphywong.net/hello/simple.htm)

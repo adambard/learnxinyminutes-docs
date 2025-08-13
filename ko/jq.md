@@ -1,5 +1,3 @@
-# jq.md (번역)
-
 ---
 category: tool
 name: jq
@@ -7,37 +5,26 @@ contributors:
     - ["Jack Kuan", "https://github.com/kjkuan"]
     - ["Azeem Sajid", "https://github.com/iamazeem"]
 filename: learnjq.sh
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-`jq` is a tool for transforming JSON inputs and generating JSON outputs. As a
-programming language, jq supports boolean and arithmetic expressions, object
-and array indexing; it has conditionals, functions, and even exception
-handling... etc.  Knowing jq enables you to easily write small programs that
-can perform complex queries on JSON documents to find answers, make reports, or
-to produce another JSON document for further processing by other programs.
+`jq`는 JSON 입력을 변환하고 JSON 출력을 생성하는 도구입니다. 프로그래밍 언어로서 jq는 부울 및 산술 표현식, 개체 및 배열 인덱싱을 지원합니다. 조건문, 함수 및 예외 처리까지 있습니다... 등. jq를 알면 JSON 문서에서 복잡한 쿼리를 수행하여 답을 찾거나, 보고서를 만들거나, 다른 프로그램에서 추가 처리를 위해 다른 JSON 문서를 생성하는 작은 프로그램을 쉽게 작성할 수 있습니다.
 
-> **NOTE**: This guide demonstrates the use of jq from the command line,
-> specifically, under an environment running the Bash shell.
+> **참고**: 이 가이드는 명령줄에서 jq를 사용하는 방법을 보여주며, 특히 Bash 셸을 실행하는 환경에서 사용합니다.
 
 ```bash
-# When running jq from the command line, jq program code can be specified as the
-# first argument after any options to `jq`. We often quote such jq program with
-# single quotes (`'`) to prevent any special interpretation from the command line
-# shell.
+# 명령줄에서 jq를 실행할 때 jq 프로그램 코드는 `jq`에 대한 옵션 뒤에 첫 번째 인수로 지정할 수 있습니다. 우리는 종종 명령줄 셸에서 특별한 해석을 방지하기 위해 이러한 jq 프로그램을 작은따옴표(`'`)로 묶습니다.
 #
-jq -n '# Comments start with # until the end of line.
-       # The -n option sets the input to the value, `null`, and prevents `jq`
-       # from reading inputs from external sources.
+jq -n '# 주석은 #으로 시작하여 줄 끝까지 이어집니다.
+       # -n 옵션은 입력을 `null` 값으로 설정하고 `jq`가 외부 소스에서 입력을 읽는 것을 방지합니다.
 '
 
-# Output:
+# 출력:
 # null
 
 
-# By default jq reads from *STDIN* a stream of JSON inputs (values). It
-# processes each input with the jq program (filters) specified at the command
-# line, and prints the outputs of processing each input with the program to
-# *STDOUT*.
+# 기본적으로 jq는 *STDIN*에서 JSON 입력(값) 스트림을 읽습니다. 명령줄에 지정된 jq 프로그램(필터)으로 각 입력을 처리하고, 프로그램을 사용하여 각 입력을 처리한 출력을 *STDOUT*으로 인쇄합니다.
 #
 echo '
   "hello" 123 [
@@ -47,11 +34,10 @@ echo '
   ]
   { "name": "jq" }
 ' |
- jq '.  # <-- the jq program here is the single dot (.), called the identity
-        # operator, which stands for the current input.
+ jq '.  # <-- 여기서 jq 프로그램은 단일 점(.)이며, 현재 입력을 나타내는 ID 연산자라고 합니다.
 '
 
-# Output:
+# 출력:
 # "hello"
 # 123
 # [
@@ -64,17 +50,14 @@ echo '
 # }
 
 
-# Notice that jq pretty-prints the outputs by default, therefore, piping
-# to `jq` is a simple way to format a response from some REST API endpoint
-# that returns JSON. E.g., `curl -s https://freegeoip.app/json/ | jq`
+# jq는 기본적으로 출력을 예쁘게 인쇄하므로, `jq`로 파이핑하는 것은 JSON을 반환하는 일부 REST API 엔드포인트의 응답을 서식 지정하는 간단한 방법입니다. 예: `curl -s https://freegeoip.app/json/ | jq`
 
 
-# Instead of processing each JSON input with a jq program, you can also
-# ask jq to slurp them up as an array.
+# 각 JSON 입력을 jq 프로그램으로 처리하는 대신, jq에 배열로 한 번에 읽도록 요청할 수도 있습니다.
 #
 echo '1 "two" 3' | jq -s .
 
-# Output:
+# 출력:
 # [
 #   1,
 #   "two",
@@ -82,68 +65,63 @@ echo '1 "two" 3' | jq -s .
 # ]
 
 
-# Or, treat each line as a string.
+# 또는 각 줄을 문자열로 처리합니다.
 #
 (echo line 1; echo line 2) | jq -R .
 
-# Output:
+# 출력:
 # "line 1"
 # "line 2"
 
 
-# Or, combine -s and -R to slurp the input lines into a single string.
+# 또는 -s와 -R을 결합하여 입력 줄을 단일 문자열로 한 번에 읽습니다.
 #
 (echo line 1; echo line 2) | jq -sR .
 
-# Output:
+# 출력:
 # "line 1\nline2\n"
 
 
-# Inputs can also come from a JSON file specified at the command line:
+# 입력은 명령줄에 지정된 JSON 파일에서도 가져올 수 있습니다:
 #
 echo '"hello"' > hello.json
 jq . hello.json
 
-# Output:
+# 출력:
 # "hello"
 
 
-# Passing a value into a jq program can be done with the `--arg` option.
-# Below, `val` is the variable name to bind the value, `123`, to.
-# The variable is then referenced as `$val`.
+# `--arg` 옵션을 사용하여 jq 프로그램에 값을 전달할 수 있습니다. 아래에서 `val`은 값 `123`을 바인딩할 변수 이름입니다. 그런 다음 변수는 `$val`로 참조됩니다.
 #
-jq -n --arg val 123 '$val'  # $val is the string "123" here
+jq -n --arg val 123 '$val'  # $val은 여기서 문자열 "123"입니다.
 
-# Output:
+# 출력:
 # "123"
 
 
-# If you need to pass a JSON value, use `--argjson`
+# JSON 값을 전달해야 하는 경우 `--argjson`을 사용하십시오.
 #
-jq -n --argjson val 123 '$val'  # $val is a number
+jq -n --argjson val 123 '$val'  # $val은 숫자입니다.
 
-# Output:
+# 출력:
 # 123
 
 
-# Using `--arg` or `--argjson` is an useful way of building JSON output from
-# existing input.
+# `--arg` 또는 `--argjson`을 사용하는 것은 기존 입력에서 JSON 출력을 빌드하는 데 유용한 방법입니다.
 #
 jq --arg text "$(date; echo "Have a nice day!")" -n '{ "today": $text }'
 
-# Output:
+# 출력:
 # {
 #   "today": "Sun Apr 10 09:53:07 PM EDT 2022\nHave a nice day!"
 # }
 
 
-# Instead of outputting values as JSON, you can use the `-r` option to print
-# string values unquoted / unescaped. Non-string values are still printed as
-# JSON.
+# 값을 JSON으로 출력하는 대신 `-r` 옵션을 사용하여 문자열 값을 따옴표 없이/이스케이프 없이 인쇄할 수 있습니다. 문자열이 아닌 값은 여전히 JSON으로 인쇄됩니다.
 #
 echo '"hello" 2 [1, "two", null] {}' | jq -r .
 
-# Output:
+# 출력:
 # hello
 # 2
 # [
@@ -154,25 +132,19 @@ echo '"hello" 2 [1, "two", null] {}' | jq -r .
 # {}
 
 
-# Inside a string in jq, `\(expr)` can be used to substitute the output of
-# `expr` into the surrounding string context.
+# jq의 문자열 내에서 `\(expr)`을 사용하여 `expr`의 출력을 주변 문자열 컨텍스트에 대체할 수 있습니다.
 #
 jq -rn '"1 + 2 = \(1+2)"'
 
-# Output:
+# 출력:
 # 1 + 2 = 3
 
 
-# The `-r` option is most useful for generating text outputs to be processed
-# down in a shell pipeline, especially when combined with an interpolated
-# string that is prefixed the `@sh` prefix operator.
+# `-r` 옵션은 셸 파이프라인에서 아래로 처리될 텍스트 출력을 생성하는 데 가장 유용하며, 특히 `@sh` 접두사 연산자가 접두사로 붙은 보간된 문자열과 결합될 때 유용합니다.
 #
-# The `@sh` operator escapes the outputs of `\(...)` inside a string with
-# single quotes so that each resulting string of `\(...)` can be evaluated
-# by the shell as a single word / token / argument without special
-# interpretations.
+# `@sh` 연산자는 문자열 내의 `\( ... )` 출력을 작은따옴표로 이스케이프하여 `\( ... )`의 각 결과 문자열이 특별한 해석 없이 셸에서 단일 단어/토큰/인수로 평가될 수 있도록 합니다.
 #
-env_vars=$(
+env_vars=(
     echo '{"var1": "value one", "var2": "value\ntwo"}' \
      |
     jq -r '
@@ -180,30 +152,28 @@ env_vars=$(
       #                     ^^^^^^^^      ^^^^^^^^
       #                  "'value one'"  "'value\ntwo'"
       #
-      # NOTE: The + (plus) operator here concatenates strings.
+      # 참고: 여기서 + (더하기) 연산자는 문자열을 연결합니다.
     '
 )
 echo "$env_vars"
 eval "$env_vars"
 declare -p var1 var2
 
-# Output:
+# 출력:
 # export var1='value one' var2='value
-# two'
+two'
 # declare -- var1="value one"
 # declare -- var2="value
-# two"
+two"
 
-# There are other string `@prefix` operators (e.g., @base64, @uri, @csv, ...)
-# that might be useful to you. See `man jq` for details.
+# `@base64`, `@uri`, `@csv` 등과 같이 유용할 수 있는 다른 문자열 `@prefix` 연산자가 있습니다. 자세한 내용은 `man jq`를 참조하십시오.
 
 
-# The comma (`,`) operator in jq evaluates each operand and generates multiple
-# outputs:
+# jq의 쉼표(`,`) 연산자는 각 피연산자를 평가하고 여러 출력을 생성합니다:
 #
 jq -n '"one", 2, ["three"], {"four": 4}'
 
-# Output:
+# 출력:
 # "one"
 # 2
 # [
@@ -214,12 +184,11 @@ jq -n '"one", 2, ["three"], {"four": 4}'
 # }
 
 
-# Any JSON value is a valid jq expression that evaluates to the JSON value
-# itself.
+# 모든 JSON 값은 JSON 값 자체로 평가되는 유효한 jq 표현식입니다.
 #
 jq -n '1, "one", [1, 2], {"one": 1}, null, true, false'
 
-# Output:
+# 출력:
 # 1
 # "one"
 # [
@@ -234,12 +203,11 @@ jq -n '1, "one", [1, 2], {"one": 1}, null, true, false'
 # false
 
 
-# Any jq expression can be used where a JSON value is expected, even as object
-# keys. (though parenthesis might be required for object keys or values)
+# 모든 jq 표현식은 JSON 값이 예상되는 모든 곳에서 사용할 수 있으며, 개체 키로도 사용할 수 있습니다. (개체 키 또는 값에 괄호가 필요할 수 있음)
 #
 jq -n '[2*3, 8-1, 16/2], {("tw" + "o"): (1 + 1)}'
 
-# Output:
+# 출력:
 # [
 #   6,
 #   7,
@@ -250,17 +218,15 @@ jq -n '[2*3, 8-1, 16/2], {("tw" + "o"): (1 + 1)}'
 # }
 
 
-# As a shortcut, if a JSON object key looks like a valid identifier (matching
-# the regex `^[a-zA-Z_][a-zA-Z_0-9]*$`), quotes can be omitted.
+# 바로 가기로, JSON 개체 키가 유효한 식별자(정규식 `^[a-zA-Z_][a-zA-Z_0-9]*$`와 일치)처럼 보이면 따옴표를 생략할 수 있습니다.
 #
 jq -n '{ key_1: "value1" }'
 
-# If a JSON object's key's value is omitted, it is looked up in the current
-# input using the key: (see next example for the meaning of `... | ...`)
+# JSON 개체의 키 값이 생략되면 현재 입력에서 키를 사용하여 조회됩니다: (다음 예제에서 `... | ...`의 의미 참조)
 #
 jq -n '{c: 3} | {a: 1, "b", c}'
 
-# Output:
+# 출력:
 # {
 #   "a": 1,
 #   "b": null,
@@ -268,22 +234,18 @@ jq -n '{c: 3} | {a: 1, "b", c}'
 # }
 
 
-# jq programs are more commonly written as a series of expressions (filters)
-# connected by the pipe (`|`) operator, which makes the output of its left
-# filter the input to its right filter.
+# jq 프로그램은 일반적으로 파이프(`|`) 연산자로 연결된 일련의 표현식(필터)으로 작성되며, 왼쪽 필터의 출력을 오른쪽 필터의 입력으로 만듭니다.
 #
-jq -n '1 | . + 2 | . + 3'  # first dot is 1; second dot is 3
+jq -n '1 | . + 2 | . + 3'  # 첫 번째 점은 1이고, 두 번째 점은 3입니다.
 
-# Output:
+# 출력:
 # 6
 
-# If an expression evaluates to multiple outputs, then jq will iterate through
-# them and propagate each output down the pipeline, and generate multiple
-# outputs in the end.
+# 표현식이 여러 출력으로 평가되면 jq는 이를 반복하고 각 출력을 파이프라인 아래로 전파하여 결국 여러 출력을 생성합니다.
 #
 jq -n '1, 2, 3 | ., 4 | .'
 
-# Output:
+# 출력:
 # 1
 # 4
 # 2
@@ -291,8 +253,8 @@ jq -n '1, 2, 3 | ., 4 | .'
 # 3
 # 4
 
-# The flows of the data in the last example can be visualized like this:
-# (number prefixed with `*` indicates the current output)
+# 마지막 예제의 데이터 흐름은 다음과 같이 시각화할 수 있습니다:
+# (`*` 접두사가 붙은 숫자는 현재 출력을 나타냅니다.)
 #
 # *1,  2,  3 | *1,  4 | *1
 #  1,  2,  3 |  1, *4 | *4
@@ -302,22 +264,21 @@ jq -n '1, 2, 3 | ., 4 | .'
 #  1,  2,  3 |  3, *4 | *4
 #
 #
-# To put it another way, the evaluation of the above example is very similar
-# to the following pieces of code in other programming languages:
+# 다른 말로 하면, 위 예제의 평가는 다른 프로그래밍 언어의 다음 코드 조각과 매우 유사합니다:
 #
-# In Python:
+# Python:
 #
 #   for first_dot in 1, 2, 3:
 #       for second_dot in first_dot, 4:
 #           print(second_dot)
 #
-# In Ruby:
+# Ruby:
 #
 #   [1, 2, 3].each do |dot|
 #     [dot, 4].each { |dot| puts dot }
 #   end
 #
-# In JavaScript:
+# JavaScript:
 #
 #   [1, 2, 3].forEach(dot => {
 #       [dot, 4].forEach(dot => console.log(dot))
@@ -325,73 +286,64 @@ jq -n '1, 2, 3 | ., 4 | .'
 #
 
 
-# Below are some examples of array index and object attribute lookups using
-# the `[expr]` operator after an expression. If `expr` is a number then it's
-# an array index lookup; otherwise, it should be a string, in which case it's
-# an object attribute lookup:
+# 다음은 표현식 뒤에 `[expr]` 연산자를 사용하는 배열 인덱스 및 개체 속성 조회 예제입니다. `expr`이 숫자이면 배열 인덱스 조회이고, 그렇지 않으면 문자열이어야 하며, 이 경우 개체 속성 조회입니다:
 
-# Array index lookup
+# 배열 인덱스 조회
 #
 jq -n '[2, {"four": 4}, 6][1 - 1]' # => 2
 jq -n '[2, {"four": 4}, 6][0]'     # => 2
 jq -n '[2, {"four": 4}, 6] | .[0]' # => 2
 
-# You can chain the lookups since they are just expressions.
+# 조회를 연결할 수 있습니다. 표현식일 뿐이기 때문입니다.
 #
 jq -n '[2, {"four": 4}, 6][1]["fo" + "ur"]' # => 4
 
-# For object attributes, you can also use the `.key` shortcut.
+# 개체 속성의 경우 `.key` 바로 가기를 사용할 수도 있습니다.
 #
 jq -n '[2, {"four": 4}, 6][1].four'  # => 4
 
-# Use `."key"` if the key is not a valid identifier.
+# 키가 유효한 식별자가 아닌 경우 `."key"`를 사용하십시오.
 #
 jq -n '[2, {"f o u r": 4}, 6][1]."f o u r"' # => 4
 
-# Array index lookup returns null if the index is not found.
+# 배열 인덱스 조회는 인덱스를 찾을 수 없는 경우 null을 반환합니다.
 #
 jq -n '[2, {"four": 4}, 6][99]' # => null
 
-# Object attribute lookup returns null if the key is not found.
+# 개체 속성 조회는 키를 찾을 수 없는 경우 null을 반환합니다.
 #
 jq -n '[2, {"four": 4}, 6][1].whatever' # => null
 
-# The alternative operator `//` can be used to provide a default
-# value when the result of the left operand is either `null` or `false`.
+# 대체 연산자 `//`는 왼쪽 피연산자의 결과가 `null` 또는 `false`일 때 기본값을 제공하는 데 사용할 수 있습니다.
 #
 jq -n '.unknown_key // 7' # => 7
 
-# If the thing before the lookup operator (`[expr]`) is neither an array
-# or an object, then you will get an error:
+# 조회 연산자(`[expr]`) 앞의 것이 배열이나 개체가 아닌 경우 오류가 발생합니다:
 #
 jq -n '123 | .[0]'     # => jq: error (at <unknown>): Cannot index number with number
 jq -n '"abc" | .name'  # => jq: error (at <unknown>): Cannot index string with string "name"
 jq -n '{"a": 97} | .[0]'    # => jq: error (at <unknown>): Cannot index object with number
 jq -n '[89, 64] | .["key"]' # => jq: error (at <unknown>): Cannot index array with string "key"
 
-# You can, however, append a `?` to a lookup to make jq return `empty`
-# instead when such error happens.
+# 그러나 조회에 `?`를 추가하여 jq가 이러한 오류가 발생할 때 `empty`를 반환하도록 할 수 있습니다.
 #
-jq -n '123 | .[0]?'    # no output since it's empty.
-jq -n '"abc" | .name?' # no output since it's empty.
+jq -n '123 | .[0]?'    # 출력이 없으므로 비어 있습니다.
+jq -n '"abc" | .name?' # 출력이 없으므로 비어 있습니다.
 
-# The alternative operator (`//`) also works with `empty`:
+# 대체 연산자(`//`)는 `empty`에서도 작동합니다:
 #
 jq -n '123 | .[0]? // 99'           # => 99
 jq -n '"abc" | .name? // "unknown"' # => "unknown"
 
-# NOTE: `empty` is actually a built-in function in jq.
-# With the nested loop explanation we illustrated earlier before,
-# `empty` is like the `continue` or the `next` keyword that skips
-# the current iteration of the loop in some programming languages.
+# 참고: `empty`는 실제로 jq의 내장 함수입니다.
+# 이전에 설명한 중첩 루프 설명에서 `empty`는 일부 프로그래밍 언어에서 루프의 현재 반복을 건너뛰는 `continue` 또는 `next` 키워드와 같습니다.
 
 
-# Strings and arrays can be sliced with the same syntax (`[i:j]`, but no
-# stepping) and semantic as found in the Python programming language:
+# 문자열과 배열은 Python 프로그래밍 언어에서와 동일한 구문(`[i:j]`, 단 단계 없음) 및 의미 체계로 슬라이스할 수 있습니다:
 #
-#                0   1    2    3    4   5 ... infinite
+#                0   1    2    3    4   5 ... 무한
 #        array = ["a", "b", "c", "d"]
-# -infinite ... -4  -3   -2   -1
+# -무한 ... -4  -3   -2   -1
 #
 jq -n '["Peter", "Jerry"][1]'            # => "Jerry"
 jq -n '["Peter", "Jerry"][-1]'           # => "Jerry"
@@ -400,27 +352,26 @@ jq -n '["Peter", "Jerry", "Tom"][:1+1]'  # => ["Peter", "Jerry"]
 jq -n '["Peter", "Jerry", "Tom"][1:99]'  # => ["Jerry", "Tom"]
 
 
-# If the lookup index or key is omitted then jq iterates through
-# the collection, generating one output value from each iteration.
+# 조회 인덱스 또는 키가 생략되면 jq는 컬렉션을 반복하여 각 반복에서 하나의 출력 값을 생성합니다.
 #
-# These examples produce the same outputs.
+# 이러한 예제는 동일한 출력을 생성합니다.
 #
 echo 1 2 3 | jq .
 jq -n '1, 2, 3'
 jq -n '[1, 2, 3][]'
 jq -n '{a: 1, b: 2, c: 3}[]'
 
-# Output:
+# 출력:
 # 1
 # 2
 # 3
 
 
-# You can build an array out of multiple outputs.
+# 여러 출력으로 배열을 만들 수 있습니다.
 #
 jq -n '{values: [{a: 1, b: 2, c: 3}[] | . * 2]}'
 
-# Output:
+# 출력:
 # {
 #   "values": [
 #     2,
@@ -430,12 +381,11 @@ jq -n '{values: [{a: 1, b: 2, c: 3}[] | . * 2]}'
 # }
 
 
-# If multiple outputs are not contained, then we'd get multiple outputs
-# in the end.
+# 여러 출력이 포함되지 않은 경우 결국 여러 출력을 얻게 됩니다.
 #
 jq -n '{values: ({a: 1, b: 2, c: 3}[] | . * 2)}'
 
-# Output:
+# 출력:
 # {
 #   "values": 2
 # }
@@ -447,103 +397,83 @@ jq -n '{values: ({a: 1, b: 2, c: 3}[] | . * 2)}'
 # }
 
 
-# Conditional `if ... then ... else ... end` in jq is an expression, so
-# both the `then` part and the `else` part are required. In jq, only
-# two values, `null` and `false`, are false; all other values are true.
+# jq의 조건부 `if ... then ... else ... end`는 표현식이므로 `then` 부분과 `else` 부분이 모두 필요합니다. jq에서는 `null`과 `false`라는 두 값만 거짓이고 다른 모든 값은 참입니다.
 #
 jq -n 'if 1 > 2 | not and 1 <= 2 then "Makes sense" else "WAT?!" end'
 
-# Output
+# 출력
 # "Makes sense"
 
-# Notice that `not` is a built-in function that takes zero arguments,
-# that's why it's used as a filter to negate its input value.
-# We'll talk about functions soon.
+# `not`은 0개의 인수를 사용하는 내장 함수이므로 입력 값을 부정하는 필터로 사용됩니다. 함수에 대해서는 곧 이야기하겠습니다.
 
-# Another example using a conditional:
+# 조건부를 사용하는 또 다른 예:
 #
 jq -n '1, 2, 3, 4, 5 | if . % 2 != 0 then . else empty end'
 
-# Output
-# 1
-# 3
-# 5
-
-# The `empty` above is a built-in function that takes 0 arguments and
-# generates no outputs. Let's see more examples of built-in functions.
-
-# The above conditional example can be written using the `select/1` built-in
-# function (`/1` indicates the number of arguments expected by the function).
-#
-jq -n '1, 2, 3, 4, 5 | select(. % 2 != 0)'  # NOTE: % gives the remainder.
-
-# Output
+# 출력
 # 1
 # 3
 # 5
 
 
-# Function arguments in jq are passed with call-by-name semantic, which
-# means, an argument is not evaluated at call site, but instead, is
-# treated as a lambda expression with the calling context of the call
-# site as its scope for variable and function references used in the
-# expression.
+# 위의 `empty`는 0개의 인수를 사용하고 출력을 생성하지 않는 내장 함수입니다. 내장 함수의 더 많은 예를 살펴보겠습니다.
+
+# 위 조건부 예제는 `select/1` 내장 함수(`/1`은 함수가 예상하는 인수 수를 나타냄)를 사용하여 작성할 수 있습니다.
 #
-# In the above example, the expression `. % 2 != 0` is what's passed to
-# `select/1` as the argument, not `true` or `false`, which is what would
-# have been the case had the (boolean) expression was evaluated before it's
-# passed to the function.
+jq -n '1, 2, 3, 4, 5 | select(. % 2 != 0)'  # 참고: %는 나머지를 제공합니다.
+
+# 출력
+# 1
+# 3
+# 5
 
 
-# The `range/1`, `range/2`, and `range/3` built-in functions generate
-# integers within a given range.
+# jq의 함수 인수는 이름으로 호출 의미 체계로 전달됩니다. 즉, 인수는 호출 사이트에서 평가되지 않고 대신 호출 사이트의 호출 컨텍스트를 변수 및 함수 참조에 대한 범위로 사용하는 람다 표현식으로 처리됩니다.
+#
+# 위 예제에서 `. % 2 != 0` 표현식은 함수에 전달되기 전에 (부울) 표현식이 평가되었을 경우 `true` 또는 `false`가 되었을 것과 달리 `select/1`에 인수로 전달되는 것입니다.
+
+
+# `range/1`, `range/2` 및 `range/3` 내장 함수는 지정된 범위 내의 정수를 생성합니다.
 #
 jq -n '[range(3)]'         # => [0, 1, 2]
 jq -n '[range(0; 4)]'      # => [0, 1, 2, 3]
 jq -n '[range(2; 10; 2)]'  # => [2, 4, 6, 8]
 
-# Notice that `;` (semicolon) is used to separate function arguments.
+# 함수 인수를 구분하는 데 `;`(세미콜론)가 사용됩니다.
 
 
-# The `map/1` function applies a given expression to each element of
-# the current input (array) and outputs a new array.
+# `map/1` 함수는 현재 입력(배열)의 각 요소에 지정된 표현식을 적용하고 새 배열을 출력합니다.
 #
 jq -n '[range(1; 6) | select(. % 2 != 0)] | map(. * 2)'
 
-# Output:
+# 출력:
 # [
 #   2,
 #   6,
 #   10
 # ]
 
-# Without using `select/1` and `map/1`, we could have also written the
-# above example like this:
+# `select/1` 및 `map/1`을 사용하지 않고 위 예제를 다음과 같이 작성할 수도 있습니다:
 #
 jq -n '[range(1; 6) | if . % 2 != 0 then . else empty end | . * 2]'
 
 
-# `keys/0` returns an array of keys of the current input. For an object,
-# these are the object's attribute names; for an array, these are the
-# array indices.
+# `keys/0`은 현재 입력의 키 배열을 반환합니다. 개체의 경우 개체의 속성 이름이고, 배열의 경우 배열 인덱스입니다.
 #
 jq -n '[range(2; 10; 2)] | keys'   # => [0, 1, 2, 3]
 jq -n '{a: 1, b: 2, c: 3} | keys'  # => ["a", "b", "c"]
 
-# `values/0` returns an array of values of the current input. For an object,
-# these are the object's attribute values; for an array, these are the
-# elements of the array.
+# `values/0`은 현재 입력의 값 배열을 반환합니다. 개체의 경우 개체의 속성 값이고, 배열의 경우 배열의 요소입니다.
 #
 jq -n '[range(2; 10; 2)] | values'   # => [2, 4, 6, 8]
 jq -n '{a: 1, b: 2, c: 3} | values'  # => [1, 2, 3]
 
 
-# `to_entries/0` returns an array of key-value objects of the current input
-# object.
+# `to_entries/0`은 현재 입력 개체의 키-값 개체 배열을 반환합니다.
 #
 jq -n '{a: 1, b: 2, c: 3} | to_entries'
 
-# Output:
+# 출력:
 # [
 #   {
 #     "key": "a",
@@ -560,11 +490,10 @@ jq -n '{a: 1, b: 2, c: 3} | to_entries'
 # ]
 
 
-# Here's how you can turn an object's attribute into environment variables
-# using what we have learned so far.
+# 다음은 지금까지 배운 내용을 사용하여 개체의 속성을 환경 변수로 바꾸는 방법입니다.
 #
-env_vars=$(
-    jq -rn '{var1: "1 2  3   4", var2: "line1\nline2\n"}
+env_vars=(
+    jq -rn '{"var1": "1 2  3   4", "var2": "line1\nline2\n"}
             | to_entries[]
             | "export " + @sh "\(.key)=\(.value)"
            '
@@ -572,23 +501,20 @@ env_vars=$(
 eval "$env_vars"
 declare -p var1 var2
 
-# Output:
+# 출력:
 # declare -x var1="1 2  3   4"
 # declare -x var2="line1
 # line2
 # "
 
 
-# `from_entries/0` is the opposite of `to_entries/0` in that it takes an
-# an array of key-value objects and turn that into an object with keys
-# and values from the `key` and `value` attributes of the objects.
+# `from_entries/0`은 키-값 개체 배열을 가져와 개체의 `key` 및 `value` 속성에서 키와 값이 있는 개체로 바꾸는 `to_entries/0`의 반대입니다.
 #
-# It's useful together with `to_entries/0` when you need to iterate and
-# do something to each attribute of an object.
+# 개체의 각 속성을 반복하고 무언가를 수행해야 할 때 `to_entries/0`과 함께 사용하는 것이 유용합니다.
 #
 jq -n '{a: 1, b: 2, c: 3} | to_entries | map(.value *= 2) | from_entries'
 
-# Output:
+# 출력:
 # {
 #   "a": 2,
 #   "b": 4,
@@ -596,48 +522,43 @@ jq -n '{a: 1, b: 2, c: 3} | to_entries | map(.value *= 2) | from_entries'
 # }
 
 
-# The example above can be further shortened with the  `with_entries/1` built-in:
+# 위 예제는 `with_entries/1` 내장 기능으로 더 단축할 수 있습니다:
 #
 jq -n '{a: 1, b: 2, c: 3} | with_entries(.value *= 2)'
 
 
-# The `group_by/1` generates an array of groups (arrays) from the current
-# input (array). The classification is done by applying the expression argument
-# to each member of the input array.
+# `group_by/1`은 현재 입력(배열)에서 그룹(배열) 배열을 생성합니다. 분류는 입력 배열의 각 멤버에 표현식 인수를 적용하여 수행됩니다.
 #
-# Let's look at a contrived example (Note that `tostring`, `tonumber`,
-# `length` and `max` are all built-in jq functions. Feel free to look
-# them up in the jq manual):
+# 다음은 인위적인 예제입니다(참고: `tostring`, `tonumber`, `length` 및 `max`는 모두 내장 jq 함수입니다. jq 설명서에서 자유롭게 찾아보십시오):
 #
-# Generate some random numbers.
+# 일부 난수 생성.
 numbers=$(echo $RANDOM{,,,,,,,,,,,,,,,,,,,,})
 #
-# Feed the numbers to jq, classifying them into groups and calculating their
-# averages, and finally generate a report.
+# 숫자를 jq에 공급하고, 그룹으로 분류하고, 평균을 계산하고, 마지막으로 보고서를 생성합니다.
 #
-echo $numbers | jq -rs '  # Slurp the numbers into an array.
-[
-  [ map(tostring)          # Turn it into an array of strings.
-    | group_by(.[0:1])     # Group the numbers by their first digits.
-    | .[]                  # Iterate through the array of arrays (groups).
-    | map(tonumber)        # Turn each group back to an array of numbers.
-  ] # Finally, contain all groups in an array.
+echo $numbers | jq -rs '  # 숫자를 배열로 한 번에 읽습니다.
+# [
+#   [
+#     map(tostring)          # 문자열 배열로 변환합니다.
+#     | group_by(.[0:1])     # 첫 번째 숫자로 숫자를 그룹화합니다.
+#     | .[]                  # 배열의 배열(그룹)을 반복합니다.
+#     | map(tonumber)        # 각 그룹을 다시 숫자 배열로 변환합니다.
+#   ] # 마지막으로 모든 그룹을 배열에 포함합니다.
 
-  | sort_by([length, max]) # Sort the groups by their sizes.
-    # If two groups have the same size then the one with the largest
-    # number wins (is bigger).
+#   | sort_by([length, max]) # 그룹을 크기별로 정렬합니다.
+#     # 두 그룹의 크기가 같으면 가장 큰 숫자가 있는 그룹이 이깁니다(더 큽니다).
 
-  | to_entries[]           # Enumerate the array, generating key-value objects.
-  |                        # For each object, generate two lines:
-  "Group \(.key): \(.value | sort | join(" "))"   + "\n" +
-  "Average: \(      .value | (add / length)  )"
+#   | to_entries[]           # 배열을 열거하여 키-값 개체를 생성합니다.
+#   |                        # 각 개체에 대해 두 줄을 생성합니다:
+#   "Group \(.key): \(.value | sort | join(" "))"   + "\n" +
+#   "Average: \(      .value | (add / length)  )"
 
-] # Contain the group+average lines in an array.
-  # Join the array elements by separator lines (dashes) to produce the report.
-| join("\n" + "-"*78 + "\n")
-'
+# ] # 그룹+평균 줄을 배열에 포함합니다.
+#   # 배열 요소를 구분선(대시)으로 결합하여 보고서를 생성합니다.
+# | join("\n" + "-"*78 + "\n")
+# '
 
-# Output:
+# 출력:
 #
 # Group 0: 3267
 # Average: 3267
@@ -658,27 +579,25 @@ echo $numbers | jq -rs '  # Slurp the numbers into an array.
 # Average: 15430.875
 
 
-# The `add/1` built-in "reduces" an array of values to a single value.
-# You can think of it as sticking the `+` operator in between each value of
-# the collection. Here are some examples:
+# `add/1` 내장 기능은 값 배열을 단일 값으로 "축소"합니다. 컬렉션의 각 값 사이에 `+` 연산자를 붙이는 것으로 생각할 수 있습니다. 다음은 몇 가지 예입니다:
 #
 jq -n '[1, 2, 3, 4, 5] | add'  # => 15
 jq -n '["a", "b", "c"] | add'  # => "abc"
 
-# `+` concatenates arrays
+# `+`는 배열을 연결합니다.
 jq -n '[["a"], ["b"], ["c"]] | add'
 
-# Output:
+# 출력:
 # [
 #   "a",
 #   "b",
 #   "c"
 # ]
 
-# `+` merges objects non-recursively.
-jq -n '[{a: 1, b: {c: 3}}, {b: 2, c: 4}] | add'
+# `+`는 개체를 재귀적으로 병합하지 않습니다.
+jq -n '[{"a": 1, "b": {"c": 3}}, {"b": 2, "c": 4}] | add'
 
-# Output:
+# 출력:
 # {
 #   "a": 1,
 #   "b": 2,
@@ -686,34 +605,27 @@ jq -n '[{a: 1, b: {c: 3}}, {b: 2, c: 4}] | add'
 # }
 
 
-# jq provides a special syntax for writing an expression that reduces
-# the outputs generated by a given expression to a single value.
-# It has this form:
+# jq는 지정된 표현식에서 생성된 출력을 단일 값으로 축소하는 표현식을 작성하기 위한 특수 구문을 제공합니다. 이 형식은 다음과 같습니다:
 #
 #   reduce outputs_expr as $var (initial_value; reduction_expr)
 #
-# Examples:
+# 예:
 #
 jq -n 'reduce range(1; 6) as $i (0; . + $i)'             # => 15
 jq -n 'reduce (1, 2, 3, 4, 5) as $i (0; . + $i)'         # => 15
 jq -n '[1, 2, 3, 4, 5] | reduce .[] as $i (0; . + $i)'   # => 15
-jq -n '["a", "b", "c"] | reduce .[] as $i (""; . + $i)'  # => "abc"
+jq -n '["a", "b", "c"] | reduce .[] as $i ("", . + $i)'  # => "abc"
 
-# Notice the `.` in the `reduction_expr` is the `initial_value` at first,
-# and then it becomes the result of applying the `reduction_expr` as
-# we iterate through the values of `outputs_expr`. The expression:
+# `reduction_expr`의 `.`는 처음에는 `initial_value`이고, `outputs_expr`의 값을 반복하면서 `reduction_expr`을 적용한 결과가 됩니다. 표현식:
 #
 #    reduce (1, 2, 3, 4, 5) as $i (0; . + $i)
 #
-# can be thought of as doing:
+# 다음과 같이 생각할 수 있습니다:
 #
 #    0 + 1 | . + 2 | . + 3 | . + 4 | . + 5
-#
 
 
-# The `*` operator when used on two objects, merges both recursively.
-# Therefore, to merge JSON objects recursively, you can use `reduce`
-# with the `*` operator. For example:
+# `*` 연산자는 두 개체에 사용될 때 둘 다 재귀적으로 병합합니다. 따라서 JSON 개체를 재귀적으로 병합하려면 `reduce`와 `*` 연산자를 사용할 수 있습니다. 예를 들어:
 #
 echo '
   {"a": 1,  "b": {"c": 3}}
@@ -721,7 +633,7 @@ echo '
   {"a": 99, "e": 5       }
 ' | jq -s 'reduce .[] as $m ({}; . * $m)'
 
-# Output:
+# 출력:
 # {
 #   "a": 99,
 #   "b": {
@@ -732,34 +644,25 @@ echo '
 # }
 
 
-# jq has variable assignment in the form of `expr as $var`, which binds
-# the value of `expr` to `$var`, and `$var` is immutable. Further more,
-# `... as ...` doesn't change the input of the next filter; its introduction
-# in a filter pipeline is only for establishing the binding of a value to a
-# variable, and its scope extends to the filters following its definition.
-# (i.e., to look up a variable's definition, scan to the left of the filter
-# chain from the expression using it until you find the definition)
+# jq에는 `expr as $var` 형식의 변수 할당이 있으며, `expr`의 값을 `$var`에 바인딩하고 `$var`는 불변입니다. 또한 `... as ...`는 다음 필터의 입력을 변경하지 않습니다. 필터 파이프라인에 도입되는 것은 값을 변수에 바인딩하기 위한 것이며, 해당 범위는 정의를 따르는 필터로 확장됩니다. (즉, 변수의 정의를 찾으려면 사용하는 표현식에서 필터 체인의 왼쪽으로 스캔하여 정의를 찾을 때까지)
 #
 jq -rn '[1, 2, 3, 4, 5]
-        | (.[0] + .[-1])      as $sum     # Always put ( ) around the binding `expr` to avoid surprises.
-        | ($sum * length / 2) as $result  # The current input at this step is still the initial array.
-        | "The result is: \($result)"     # Same.
+        | (.[0] + .[-1])      as $sum     # 놀라움을 피하기 위해 항상 바인딩 `expr` 주위에 ( )를 넣으십시오.
+        | ($sum * length / 2) as $result  # 이 단계의 현재 입력은 여전히 초기 배열입니다.
+        | "The result is: \($result)"     # 동일.
 '
 
-# Output:
+# 출력:
 # The result is: 15
 
 
-# With the `expr as $var` form, if multiple values are generated by `expr`
-# then jq will iterate through them and bind each value to `$var` in turn
-# for the rest of the pipeline.
+# `expr as $var` 형식을 사용하면 `expr`에서 여러 값이 생성되는 경우 jq는 이를 반복하고 각 값을 차례로 `$var`에 바인딩하여 나머지 파이프라인을 실행합니다.
 #
 jq -rn 'range(2; 4) as $i
         | range(1; 6) as $j
-          | "\($i) * \($j) = \($i * $j)"
-'
+          | "\($i) * \($j) = \($i * $j)"'
 
-# Output:
+# 출력:
 # 2 * 1 = 2
 # 2 * 2 = 4
 # 2 * 3 = 6
@@ -772,8 +675,7 @@ jq -rn 'range(2; 4) as $i
 # 3 * 5 = 15
 
 
-# It's sometimes useful to bind the initial input to a variable at the
-# start of a program, so that you can refer to it later down the pipeline.
+# 프로그램 시작 시 초기 입력을 변수에 바인딩하여 나중에 파이프라인 아래에서 참조할 수 있도록 하는 것이 때때로 유용합니다.
 #
 jq -rn "$(cat <<'EOF'
     {lookup:  {a: 1, b: 2, c: 3},
@@ -786,75 +688,60 @@ jq -rn "$(cat <<'EOF'
 EOF
 )"
 
-# Output:
+# 출력:
 # a's total is 6
 # b's total is 4
 # c's total is 12
 
 
-# jq supports destructing during variable binding. This lets you extract values
-# from an array or an object and bind them to variables.
+# jq는 변수 바인딩 중에 구조 분해를 지원합니다. 이를 통해 배열 또는 개체에서 값을 추출하고 변수에 바인딩할 수 있습니다.
 #
 jq -n '[range(5)] | . as [$first, $second] | $second'
 
-# Output:
+# 출력:
 # 1
 
 jq -n '{ name: "Tom", numbers: [1, 2, 3], age: 32}
        | . as {
-            name: $who,                  # bind .name to $who
-            $name,                       # shorthand for `name: $name`
+            name: $who,                  # .name을 $who에 바인딩
+            $name,                       # `name: $name`의 약어
             numbers: [$first, $second],
          }
        | $name, $second, $first, $who
 '
 
-# Output:
+# 출력:
 # "Tom"
 # 2
 # 1
 # "Tom"
 
 
-# In jq, values can be assigned to an array index or object key via the
-# assignment operator, `=`. The same current input is given to both sides
-# of the assignment operator, and the assignment itself evaluates to the
-# current input. In other words, the assignment expression is evaluated
-# for its side effect, and doesn't generate a new output.
+# jq에서 값은 할당 연산자 `=`를 통해 배열 인덱스 또는 개체 키에 할당될 수 있습니다. 동일한 현재 입력이 할당 연산자의 양쪽에 제공되며, 할당 자체는 현재 입력으로 평가됩니다. 즉, 할당 표현식은 부작용으로 평가되며 새 출력을 생성하지 않습니다.
 #
 jq -n '.a = 1 | .b = .a + 1'  # => {"a": 1, "b": 2}
 
-# Note that input is `null` due to `jq -n`, so `.` is `null` in the first
-# filter, and assigning to a key under `null` turns it into an object with
-# the key. The same input (now an object) then gets piped to the next filter,
-# which then sets the `b` key to the value of the `a` key plus `1`, which is `2`.
+# 참고: `jq -n`으로 인해 입력이 `null`이므로 첫 번째 필터에서 `.`는 `null`이며, `null` 아래의 키에 할당하면 키가 있는 개체로 바뀝니다. 그런 다음 동일한 입력(이제 개체)이 다음 필터로 파이핑되어 `b` 키를 `a` 키 값에 `1`을 더한 값인 `2`로 설정합니다.
 #
 
-# Another example:
+# 또 다른 예:
 #
 jq -n '.a=1, .a.b=2'   # => {"a": 1} {"a": {"b": 2}}
 
-# In the above example, two objects are generated because both assignments
-# received `null` as their inputs, and each operand of the comma operator
-# is evaluated independently. Notice also how you can easily generate
-# nested objects.
+# 위 예제에서 두 개체는 두 할당 모두 입력으로 `null`을 받았고 쉼표 연산자의 각 피연산자가 독립적으로 평가되기 때문에 생성됩니다. 중첩된 개체를 쉽게 생성할 수 있는 방법도 확인하십시오.
 
 
-# In addition to the assignment operator, jq also has operators like:
-# `+=`, `-=`, `*=`, and '/=', ... etc. Basically, `a op= b` is a shorthand
-# for `a = a op b`, and they are handy for updating an object attribute or
-# an item in an array based on its current value. Examples:
+# 할당 연산자 외에도 jq에는 `+=`, `-=`, `*=`, `/=` 등과 같은 연산자도 있습니다. 기본적으로 `a op= b`는 `a = a op b`의 약어이며, 현재 값을 기반으로 개체 속성 또는 배열의 항목을 업데이트하는 데 편리합니다. 예:
 #
 jq -n '.a.b.c = 3 | .a.b.c = .a.b.c + 1' # => {"a": {"b": {"c": 4}}}
 jq -n '.a.b.c = 3 | .a.b.c += 1'         # => {"a": {"b": {"c": 4}}}
 
 
-# To delete a value, use `del/1`, which takes a path expression that specifies
-# the locations of the things to be deleted. Example:
+# 값을 삭제하려면 삭제할 항목의 위치를 지정하는 경로 표현식을 사용하는 `del/1`을 사용하십시오. 예:
 #
 jq -n '{a: 1, b: {c: 2}, d: [3, 4, 5]} | del(.b.c, .d[1]) | .b.x = 6'
 
-# Output:
+# 출력:
 # {
 #   "a": 1,
 #   "b": {
@@ -867,9 +754,7 @@ jq -n '{a: 1, b: {c: 2}, d: [3, 4, 5]} | del(.b.c, .d[1]) | .b.x = 6'
 # }
 
 
-# Other than using jq's built-in functions, you can define your own.
-# In fact, many built-in functions are defined using jq (see the link
-# to jq's built-in functions at the end of the doc).
+# jq의 내장 함수를 사용하는 것 외에도 자신만의 함수를 정의할 수 있습니다. 실제로 많은 내장 함수는 jq를 사용하여 정의됩니다(문서 끝에 있는 jq의 내장 함수 링크 참조).
 #
 jq -n '
     def my_select(expr): if expr then . else empty end;
@@ -885,29 +770,19 @@ jq -n '
     [my_range(1; 6)] | my_map(my_select(. % 2 != 0)) | sum
 '
 
-# Output:
+# 출력:
 # 9
 
-# Some notes about function definitions:
+# 함수 정의에 대한 몇 가지 참고 사항:
 #
-# - Functions are usually defined at the beginning, so that they are available
-#   to the rest of the jq program.
+# - 함수는 일반적으로 jq 프로그램의 나머지 부분에서 사용할 수 있도록 처음에 정의됩니다.
 #
-# - Each function definition should end with a `;` (semicolon).
+# - 각 함수 정의는 `;`(세미콜론)로 끝나야 합니다.
 #
-# - It's also possible to define a function within another, though it's not shown here.
+# - 다른 함수 내에서 함수를 정의할 수도 있지만 여기서는 보여주지 않습니다.
 #
-# - Function parameters are separated by `;` (semicolon). This is consistent with
-#   passing multiple arguments when calling a function.
+# - 함수 매개변수는 `;`(세미콜론)로 구분됩니다. 이것은 함수를 호출할 때 여러 인수를 전달하는 것과 일치합니다.
 #
-# - A function can call itself; in fact, jq has TCO (Tail Call Optimization).
+# - 함수는 자신을 호출할 수 있습니다. 실제로 jq에는 TCO(꼬리 호출 최적화)가 있습니다.
 #
-# - `def f($a; $b): ...;` is a shorthand for: `def f(a; b): a as $a | b as $b | ...`
-```
-
-## Further Reading
-
-- [jq Manual](https://jqlang.github.io/jq/manual/)
-- [Language Description](https://github.com/jqlang/jq/wiki/jq-Language-Description)
-- [Cookbook](https://github.com/jqlang/jq/wiki/Cookbook)
-- [builtin.jq](https://github.com/jqlang/jq/blob/master/src/builtin.jq)
+# - `def f($a; $b): ...;`는 `def f(a; b): a as $a | b as $b | ...`의 약어입니다.

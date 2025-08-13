@@ -1,210 +1,140 @@
-# asymptotic-notation.md (번역)
-
 ---
 category: Algorithms & Data Structures
 name: Asymptotic Notation
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Divay Prakash", "http://github.com/divayprakash"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+# 점근 표기법
 
-# Asymptotic Notations
+## 점근 표기법이란?
 
-## What are they?
+점근 표기법은 알고리즘의 입력 크기가 증가함에 따라 동작을 식별하여 알고리즘의 실행 시간을 분석할 수 있는 언어입니다. 이를 알고리즘의 성장률이라고도 합니다. 입력 크기가 커지면 알고리즘이 갑자기 엄청나게 느려지나요? 입력 크기가 증가해도 빠른 실행 시간을 대부분 유지하나요? 점근 표기법은 이러한 질문에 답할 수 있는 능력을 제공합니다.
 
-Asymptotic Notations are languages that allow us to analyze an algorithm's
-running time by identifying its behavior as the input size for the algorithm
-increases. This is also known as an algorithm's growth rate. Does the
-algorithm suddenly become incredibly slow when the input size grows? Does it
-mostly maintain its quick run time as the input size increases? Asymptotic
-Notation gives us the ability to answer these questions.
+## 이러한 질문에 답할 수 있는 대안이 있나요?
 
-## Are there alternatives to answering these questions?
+한 가지 방법은 다양한 입력 크기에서 기본 연산의 수를 세는 것입니다. 이것이 유효한 해결책이기는 하지만, 간단한 알고리즘에 대해서도 이 작업에 드는 노력이 그 사용을 정당화하지 못합니다.
 
-One way would be to count the number of primitive operations at different
-input sizes. Though this is a valid solution, the amount of work this takes
-for even simple algorithms does not justify its use.
+또 다른 방법은 다양한 입력 크기가 주어졌을 때 알고리즘이 완료되는 데 걸리는 시간을 물리적으로 측정하는 것입니다. 그러나 이 방법의 정확성과 상대성(얻은 시간은 계산된 컴퓨터에만 상대적임)은 컴퓨터 하드웨어 사양, 처리 능력 등과 같은 환경 변수에 의해 제한됩니다.
 
-Another way is to physically measure the amount of time an algorithm takes to
-complete given different input sizes. However, the accuracy and relativity
-(times obtained would only be relative to the machine they were computed on)
-of this method is bound to environmental variables such as computer hardware
-specifications, processing power, etc.
+## 점근 표기법의 종류
 
-## Types of Asymptotic Notation
+이 문서의 첫 번째 섹션에서는 점근 표기법이 입력 크기가 변경될 때 알고리즘의 동작을 식별하는 방법을 설명했습니다. 알고리즘을 함수 f, 입력 크기를 n, f(n)을 실행 시간이라고 상상해 봅시다. 따라서 주어진 알고리즘 f에 대해 입력 크기 n이 주어지면 결과 실행 시간 f(n)을 얻습니다. 이로 인해 Y축이 실행 시간, X축이 입력 크기, 플롯 포인트가 주어진 입력 크기에 대한 시간의 결과인 그래프가 생성됩니다.
 
-In the first section of this doc, we described how an Asymptotic Notation
-identifies the behavior of an algorithm as the input size changes. Let us
-imagine an algorithm as a function f, n as the input size, and f(n) being
-the running time. So for a given algorithm f, with input size n you get
-some resultant run time f(n). This results in a graph where the Y-axis is
-the runtime, the X-axis is the input size, and plot points are the resultants
-of the amount of time for a given input size.
+다양한 방법으로 함수 또는 알고리즘에 점근 표기법으로 레이블을 지정할 수 있습니다. 몇 가지 예로, 최상의 경우, 최악의 경우 또는 평균적인 경우로 알고리즘을 설명할 수 있습니다. 가장 일반적인 것은 최악의 경우로 알고리즘을 분석하는 것입니다. 일반적으로 최상의 경우로 평가하지는 않습니다. 왜냐하면 그러한 조건은 계획하는 것이 아니기 때문입니다. 이에 대한 훌륭한 예는 정렬 알고리즘입니다. 특히 트리 구조에 요소를 추가하는 것입니다. 대부분의 알고리즘에 대한 최상의 경우는 단일 연산만큼 낮을 수 있습니다. 그러나 대부분의 경우 추가하는 요소는 트리를 통해 적절하게 정렬되어야 하며, 이는 전체 분기를 검사해야 함을 의미할 수 있습니다. 이것이 최악의 경우이며, 이것이 우리가 계획하는 것입니다.
 
-You can label a function, or algorithm, with an Asymptotic Notation in many
-different ways. Some examples are, you can describe an algorithm by its best
-case, worst case, or average case. The most common is to analyze an algorithm
-by its worst case. You typically don’t evaluate by best case because those
-conditions aren’t what you’re planning for. An excellent example of this is
-sorting algorithms; particularly, adding elements to a tree structure. The
-best case for most algorithms could be as low as a single operation. However,
-in most cases, the element you’re adding needs to be sorted appropriately
-through the tree, which could mean examining an entire branch. This is
-the worst case, and this is what we plan for.
-
-### Types of functions, limits, and simplification
+### 함수, 한계 및 단순화의 종류
 
 ```
-Logarithmic Function - log n
-Linear Function - an + b
-Quadratic Function - an^2 + bn + c
-Polynomial Function - an^z + . . . + an^2 + a*n^1 + a*n^0, where z is some
-constant
-Exponential Function - a^n, where a is some constant
+로그 함수 - log n
+선형 함수 - an + b
+이차 함수 - an^2 + bn + c
+다항 함수 - an^z + . . . + an^2 + a*n^1 + a*n^0, 여기서 z는 상수입니다.
+지수 함수 - a^n, 여기서 a는 상수입니다.
 ```
 
-These are some fundamental function growth classifications used in
-various notations. The list starts at the slowest growing function
-(logarithmic, fastest execution time) and goes on to the fastest
-growing (exponential, slowest execution time). Notice that as ‘n’
-or the input, increases in each of those functions, the result
-increases much quicker in quadratic, polynomial, and exponential,
-compared to logarithmic and linear.
+이들은 다양한 표기법에서 사용되는 몇 가지 기본적인 함수 성장 분류입니다. 목록은 가장 느리게 성장하는 함수(로그, 가장 빠른 실행 시간)에서 시작하여 가장 빠르게 성장하는 함수(지수, 가장 느린 실행 시간)로 이어집니다. 'n' 또는 입력이 각 함수에서 증가함에 따라 결과가 로그 및 선형에 비해 이차, 다항 및 지수에서 훨씬 빠르게 증가한다는 점에 유의하십시오.
 
-It is worth noting that for the notations about to be discussed,
-you should do your best to use the simplest terms. This means to
-disregard constants, and lower order terms, because as the input
-size (or n in our f(n) example) increases to infinity (mathematical
-limits), the lower order terms and constants are of little to no
-importance. That being said, if you have constants that are 2^9001,
-or some other ridiculous, unimaginable amount, realize that
-simplifying skew your notation accuracy.
+논의될 표기법에 대해 가능한 한 가장 간단한 용어를 사용하는 것이 가장 좋습니다. 이는 상수 및 낮은 차수의 항을 무시한다는 것을 의미합니다. 왜냐하면 입력 크기(또는 f(n) 예제의 n)가 무한대로 증가함에 따라(수학적 한계), 낮은 차수의 항과 상수는 거의 또는 전혀 중요하지 않기 때문입니다. 즉, 2^9001 또는 상상할 수 없는 다른 엄청난 양의 상수가 있는 경우 단순화하면 표기법 정확도가 왜곡될 수 있다는 것을 깨달으십시오.
 
-Since we want simplest form, lets modify our table a bit...
+가장 간단한 형태를 원하므로 표를 약간 수정해 보겠습니다...
 
 ```
-Logarithmic - log n
-Linear - n
-Quadratic - n^2
-Polynomial - n^z, where z is some constant
-Exponential - a^n, where a is some constant
+로그 - log n
+선형 - n
+이차 - n^2
+다항 - n^z, 여기서 z는 상수입니다.
+지수 - a^n, 여기서 a는 상수입니다.
 ```
 
-### Big-O
-Big-O, commonly written as **O**, is an Asymptotic Notation for the worst
-case, or ceiling of growth for a given function. It provides us with an
-_**asymptotic upper bound**_ for the growth rate of the runtime of an algorithm.
-Say `f(n)` is your algorithm runtime, and `g(n)` is an arbitrary time
-complexity you are trying to relate to your algorithm. `f(n)` is O(g(n)), if
-for some real constants c (c > 0) and n<sub>0</sub>, `f(n)` <= `c g(n)` for every input size
-n (n > n<sub>0</sub>).
+### 빅오
+빅오는 일반적으로 **O**로 표기되며, 주어진 함수에 대한 최악의 경우 또는 성장 상한에 대한 점근 표기법입니다. 알고리즘의 실행 시간 성장률에 대한 _**점근적 상한**_을 제공합니다. `f(n)`이 알고리즘 실행 시간이고 `g(n)`이 알고리즘과 관련시키려는 임의의 시간 복잡도라고 가정합니다. `f(n)`은 O(g(n))이며, 일부 실수 상수 c(c > 0) 및 n<sub>0</sub>에 대해 모든 입력 크기 n(n > n<sub>0</sub>)에 대해 `f(n)` <= `c g(n)`입니다.
 
-*Example 1*
+*예제 1*
 
 ```
 f(n) = 3log n + 100
 g(n) = log n
 ```
 
-Is `f(n)` O(g(n))?
-Is `3 log n + 100` O(log n)?
-Let's look to the definition of Big-O.
+`f(n)`은 O(g(n))인가요?
+`3 log n + 100`은 O(log n)인가요?
+빅오의 정의를 살펴보겠습니다.
 
 ```
 3log n + 100 <= c * log n
 ```
 
-Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > n<sub>0</sub>?
+모든 n > n<sub>0</sub>에 대해 이를 만족하는 상수 c, n<sub>0</sub> 쌍이 있나요?
 
 ```
-3log n + 100 <= 150 * log n, n > 2 (undefined at n = 1)
+3log n + 100 <= 150 * log n, n > 2 (n = 1에서 정의되지 않음)
 ```
 
-Yes! The definition of Big-O has been met therefore `f(n)` is O(g(n)).
+예! 빅오의 정의가 충족되었으므로 `f(n)`은 O(g(n))입니다.
 
-*Example 2*
+*예제 2*
 
 ```
 f(n) = 3*n^2
 g(n) = n
 ```
 
-Is `f(n)` O(g(n))?
-Is `3 * n^2` O(n)?
-Let's look at the definition of Big-O.
+`f(n)`은 O(g(n))인가요?
+`3 * n^2`은 O(n)인가요?
+빅오의 정의를 살펴보겠습니다.
 
 ```
 3 * n^2 <= c * n
 ```
 
-Is there some pair of constants c, n<sub>0</sub> that satisfies this for all n > n<sub>0</sub>?
-No, there isn't. `f(n)` is NOT O(g(n)).
+모든 n > n<sub>0</sub>에 대해 이를 만족하는 상수 c, n<sub>0</sub> 쌍이 있나요?
+아니요, 없습니다. `f(n)`은 O(g(n))이 아닙니다.
 
-### Big-Omega
-Big-Omega, commonly written as **Ω**, is an Asymptotic Notation for the best
-case, or a floor growth rate for a given function. It provides us with an
-_**asymptotic lower bound**_ for the growth rate of the runtime of an algorithm.
+### 빅오메가
+빅오메가는 일반적으로 **Ω**로 표기되며, 주어진 함수에 대한 최상의 경우 또는 성장률 하한에 대한 점근 표기법입니다. 알고리즘의 실행 시간 성장률에 대한 _**점근적 하한**_을 제공합니다.
 
-`f(n)` is Ω(g(n)), if for some real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is >= `c g(n)`
-for every input size n (n > n<sub>0</sub>).
+`f(n)`은 Ω(g(n))이며, 일부 실수 상수 c(c > 0) 및 n<sub>0</sub>(n<sub>0</sub> > 0)에 대해 모든 입력 크기 n(n > n<sub>0</sub>)에 대해 `f(n)` >= `c g(n)`입니다.
 
-### Note
+### 참고
 
-The asymptotic growth rates provided by big-O and big-omega notation may or
-may not be asymptotically tight. Thus we use small-o and small-omega notation
-to denote bounds that are not asymptotically tight.
+빅오 및 빅오메가 표기법으로 제공되는 점근적 성장률은 점근적으로 엄격할 수도 있고 그렇지 않을 수도 있습니다. 따라서 점근적으로 엄격하지 않은 경계를 나타내기 위해 스몰오 및 스몰오메가 표기법을 사용합니다.
 
-### Small-o
-Small-o, commonly written as **o**, is an Asymptotic Notation to denote the
-upper bound (that is not asymptotically tight) on the growth rate of runtime
-of an algorithm.
+### 스몰오
+스몰오는 일반적으로 **o**로 표기되며, 알고리즘의 실행 시간 성장률에 대한 상한(점근적으로 엄격하지 않음)을 나타내는 점근 표기법입니다.
 
-`f(n)` is o(g(n)), if for all real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is < `c g(n)`
-for every input size n (n > n<sub>0</sub>).
+`f(n)`은 o(g(n))이며, 모든 실수 상수 c(c > 0) 및 n<sub>0</sub>(n<sub>0</sub> > 0)에 대해 모든 입력 크기 n(n > n<sub>0</sub>)에 대해 `f(n)` < `c g(n)`입니다.
 
-The definitions of O-notation and o-notation are similar. The main difference
-is that in f(n) = O(g(n)), the bound f(n) <= g(n) holds for _**some**_
-constant c > 0, but in f(n) = o(g(n)), the bound f(n) < c g(n) holds for
-_**all**_ constants c > 0.
+O-표기법과 o-표기법의 정의는 유사합니다. 주요 차이점은 f(n) = O(g(n))에서 경계 f(n) <= g(n)은 _**일부**_ 상수 c > 0에 대해 유지되지만, f(n) = o(g(n))에서 경계 f(n) < c g(n)은 _**모든**_ 상수 c > 0에 대해 유지된다는 것입니다.
 
-### Small-omega
-Small-omega, commonly written as **ω**, is an Asymptotic Notation to denote
-the lower bound (that is not asymptotically tight) on the growth rate of
-runtime of an algorithm.
+### 스몰오메가
+스몰오메가는 일반적으로 **ω**로 표기되며, 알고리즘의 실행 시간 성장률에 대한 하한(점근적으로 엄격하지 않음)을 나타내는 점근 표기법입니다.
 
-`f(n)` is ω(g(n)), if for all real constants c (c > 0) and n<sub>0</sub> (n<sub>0</sub> > 0), `f(n)` is > `c g(n)`
-for every input size n (n > n<sub>0</sub>).
+`f(n)`은 ω(g(n))이며, 모든 실수 상수 c(c > 0) 및 n<sub>0</sub>(n<sub>0</sub> > 0)에 대해 모든 입력 크기 n(n > n<sub>0</sub>)에 대해 `f(n)` > `c g(n)`입니다.
 
-The definitions of Ω-notation and ω-notation are similar. The main difference
-is that in f(n) = Ω(g(n)), the bound f(n) >= g(n) holds for _**some**_
-constant c > 0, but in f(n) = ω(g(n)), the bound f(n) > c g(n) holds for
-_**all**_ constants c > 0.
+Ω-표기법과 ω-표기법의 정의는 유사합니다. 주요 차이점은 f(n) = Ω(g(n))에서 경계 f(n) >= g(n)은 _**일부**_ 상수 c > 0에 대해 유지되지만, f(n) = ω(g(n))에서 경계 f(n) > c g(n)은 _**모든**_ 상수 c > 0에 대해 유지된다는 것입니다.
 
-### Theta
-Theta, commonly written as **Θ**, is an Asymptotic Notation to denote the
-_**asymptotically tight bound**_ on the growth rate of runtime of an algorithm.
+### 세타
+세타는 일반적으로 **Θ**로 표기되며, 알고리즘의 실행 시간 성장률에 대한 _**점근적으로 엄격한 경계**_를 나타내는 점근 표기법입니다.
 
-`f(n)` is Θ(g(n)), if for some real constants c1, c2 and n<sub>0</sub> (c1 > 0, c2 > 0, n<sub>0</sub> > 0),
-`c1 g(n)` is < `f(n)` is < `c2 g(n)` for every input size n (n > n<sub>0</sub>).
+`f(n)`은 Θ(g(n))이며, 일부 실수 상수 c1, c2 및 n<sub>0</sub>(c1 > 0, c2 > 0, n<sub>0</sub> > 0)에 대해 모든 입력 크기 n(n > n<sub>0</sub>)에 대해 `c1 g(n)` < `f(n)` < `c2 g(n)`입니다.
 
-∴ `f(n)` is Θ(g(n)) implies `f(n)` is O(g(n)) as well as `f(n)` is Ω(g(n)).
+∴ `f(n)`이 Θ(g(n))이면 `f(n)`은 O(g(n))이고 `f(n)`은 Ω(g(n))입니다.
 
-Feel free to head over to additional resources for examples on this. Big-O
-is the primary notation use for general algorithm time complexity.
+이에 대한 예는 추가 자료를 참조하십시오. 빅오는 일반적인 알고리즘 시간 복잡도에 사용되는 기본 표기법입니다.
 
-### Endnotes
-It's hard to keep this kind of topic short, and you should go
-through the books and online resources listed. They go into much greater depth
-with definitions and examples. More where x='Algorithms & Data Structures' is
-on its way; we'll have a doc up on analyzing actual code examples soon.
+### 끝맺음
+이러한 종류의 주제를 짧게 유지하기는 어렵습니다. 나열된 책과 온라인 자료를 통해 정의와 예제에 대해 훨씬 더 깊이 있게 다루고 있습니다. x='알고리즘 및 데이터 구조'인 곳에 더 많은 내용이 있습니다. 곧 실제 코드 예제를 분석하는 문서가 올라올 것입니다.
 
-## Books
+## 도서
 
-* [Algorithms](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
-* [Algorithm Design](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
+* [알고리즘](http://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X)
+* [알고리즘 설계](http://www.amazon.com/Algorithm-Design-Foundations-Analysis-Internet/dp/0471383651)
 
-## Online Resources
+## 온라인 자료
 
 * [MIT](http://web.mit.edu/16.070/www/lecture/big_o.pdf)
-* [KhanAcademy](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation)
-* [Big-O Cheatsheet](http://bigocheatsheet.com/) - common structures, operations, and algorithms, ranked by complexity.
+* [칸아카데미](https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation)
+* [빅오 치트시트](http://bigocheatsheet.com/) - 복잡도별로 순위가 매겨진 일반적인 구조, 연산 및 알고리즘.

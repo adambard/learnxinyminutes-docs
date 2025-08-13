@@ -1,5 +1,3 @@
-# lbstanza.md (번역)
-
 ---
 name: LB Stanza
 filename: learn-stanza.stanza

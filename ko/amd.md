@@ -1,51 +1,45 @@
-# amd.md (번역)
-
 ---
 category: tool
 name: AMD
 contributors:
     - ["Frederik Ring", "https://github.com/m90"]
 filename: learnamd.js
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-## Getting Started with AMD
+## AMD 시작하기
 
-The **Asynchronous Module Definition** API specifies a mechanism for defining
-JavaScript modules such that the module and its dependencies can be asynchronously
-loaded. This is particularly well suited for the browser environment where
-synchronous loading of modules incurs performance, usability, debugging, and
-cross-domain access problems.
+**비동기 모듈 정의(Asynchronous Module Definition)** API는 모듈과 그 의존성을 비동기적으로 로드할 수 있도록 자바스크립트 모듈을 정의하는 메커니즘을 지정합니다. 이는 모듈의 동기적 로딩이 성능, 사용성, 디버깅 및 교차 도메인 접근 문제를 야기하는 브라우저 환경에 특히 적합합니다.
 
-### Basic concept
+### 기본 개념
 
 ```javascript
-// The basic AMD API consists of nothing but two methods: `define` and `require`
-// and is all about module definition and consumption:
-// `define(id?, dependencies?, factory)` defines a module
-// `require(dependencies, callback)` imports a set of dependencies and
-// consumes them in the passed callback
+// 기본 AMD API는 `define`과 `require`라는 두 가지 메서드로만 구성되며
+// 모듈 정의와 소비에 관한 것입니다:
+// `define(id?, dependencies?, factory)`은 모듈을 정의합니다.
+// `require(dependencies, callback)`은 의존성 집합을 가져와
+// 전달된 콜백에서 소비합니다.
 
-// Let's start by using define to define a new named module
-// that has no dependencies. We'll do so by passing a name
-// and a factory function to define:
+// 먼저 define을 사용하여 의존성이 없는 새로운 명명된 모듈을 정의해 보겠습니다.
+// 이를 위해 define에 이름과 팩토리 함수를 전달합니다:
 define('awesomeAMD', function(){
   var isAMDAwesome = function(){
     return true;
   };
-  // The return value of a module's factory function is
-  // what other modules or require calls will receive when
-  // requiring our `awesomeAMD` module.
-  // The exported value can be anything, (constructor) functions,
-  // objects, primitives, even undefined (although that won't help too much).
+  // 모듈의 팩토리 함수 반환 값은
+  // 다른 모듈이나 require 호출이 `awesomeAMD` 모듈을
+  // 요구할 때 받게 되는 것입니다.
+  // 내보낸 값은 무엇이든 될 수 있습니다. (생성자) 함수,
+  // 객체, 원시 타입, 심지어 undefined도 가능합니다(별로 도움이 되지는 않지만).
   return isAMDAwesome;
 });
 
-// Now, let's define another module that depends upon our `awesomeAMD` module.
-// Notice that there's an additional argument defining our
-// module's dependencies now:
+// 이제 `awesomeAMD` 모듈에 의존하는 다른 모듈을 정의해 보겠습니다.
+// 이제 모듈의 의존성을 정의하는 추가 인수가 있음을 주목하십시오:
 define('loudmouth', ['awesomeAMD'], function(awesomeAMD){
-  // dependencies will be passed to the factory's arguments
-  // in the order they are specified
+  // 의존성은 지정된 순서대로 팩토리의 인수에
+  // 전달됩니다.
   var tellEveryone = function(){
     if (awesomeAMD()){
       alert('This is sOoOo rad!');
@@ -56,46 +50,46 @@ define('loudmouth', ['awesomeAMD'], function(awesomeAMD){
   return tellEveryone;
 });
 
-// As we do know how to use define now, let's use `require` to
-// kick off our program. `require`'s signature is `(arrayOfDependencies, callback)`.
+// 이제 define 사용법을 알았으니 `require`를 사용하여
+// 프로그램을 시작해 보겠습니다. `require`의 시그니처는 `(arrayOfDependencies, callback)`입니다.
 require(['loudmouth'], function(loudmouth){
   loudmouth();
 });
 
-// To make this tutorial run code, let's implement a very basic
-// (non-asynchronous) version of AMD right here on the spot:
+// 이 튜토리얼에서 코드를 실행하기 위해, 바로 여기서 매우 기본적인
+// (비동기적이지 않은) AMD 버전을 구현해 보겠습니다:
 function define(name, deps, factory){
-  // notice how modules without dependencies are handled
+  // 의존성이 없는 모듈이 어떻게 처리되는지 주목하십시오.
   define[name] = require(factory ? deps : [], factory || deps);
 }
 
 function require(deps, callback){
   var args = [];
-  // first let's retrieve all the dependencies needed
-  // by the require call
+  // 먼저 require 호출에 필요한 모든 의존성을
+  // 검색해 보겠습니다.
   for (var i = 0; i < deps.length; i++){
     args[i] = define[deps[i]];
   }
-  // satisfy all the callback's dependencies
+  // 콜백의 모든 의존성을 충족시킵니다.
   return callback.apply(null, args);
 }
-// you can see this code in action here: http://jsfiddle.net/qap949pd/
+// 이 코드가 작동하는 것을 여기에서 볼 수 있습니다: http://jsfiddle.net/qap949pd/
 ```
 
-### Real-world usage with require.js
+### require.js를 사용한 실제 사용법
 
-In contrast to the introductory example, `require.js` (the most popular AMD library) actually implements the **A** in **AMD**, enabling you to load modules and their dependencies asynchronously via XHR:
+소개 예제와 달리 `require.js`(가장 인기 있는 AMD 라이브러리)는 실제로 **AMD**의 **A**를 구현하여 XHR을 통해 모듈과 그 의존성을 비동기적으로 로드할 수 있습니다:
 
 ```javascript
 /* file: app/main.js */
 require(['modules/someClass'], function(SomeClass){
-  // the callback is deferred until the dependency is loaded
+  // 콜백은 의존성이 로드될 때까지 지연됩니다.
   var thing = new SomeClass();
 });
-console.log('So here we are, waiting!'); // this will run first
+console.log('So here we are, waiting!'); // 이것이 먼저 실행됩니다.
 ```
 
-By convention, you usually store one module in one file. `require.js` can resolve module names based on file paths, so you don't have to name your modules, but can simply reference them using their location. In the example `someClass` is assumed to be in the `modules` folder, relative to your configuration's `baseUrl`:
+관례적으로, 보통 하나의 모듈을 하나의 파일에 저장합니다. `require.js`는 파일 경로를 기반으로 모듈 이름을 확인할 수 있으므로 모듈에 이름을 지정할 필요 없이 위치를 사용하여 참조할 수 있습니다. 예제에서 `someClass`는 구성의 `baseUrl`에 상대적인 `modules` 폴더에 있다고 가정합니다:
 
 * app/
   * main.js
@@ -107,12 +101,12 @@ By convention, you usually store one module in one file. `require.js` can resolv
     * things.js
     * ...
 
-This means we can define `someClass` without specifying a module id:
+이는 모듈 ID를 지정하지 않고 `someClass`를 정의할 수 있음을 의미합니다:
 
 ```javascript
 /* file: app/modules/someClass.js */
 define(['daos/things', 'modules/someHelpers'], function(thingsDao, helpers){
-  // module definition, of course, will also happen asynchronously
+  // 모듈 정의도 물론 비동기적으로 발생합니다.
   function SomeClass(){
     this.method = function(){/**/};
     // ...
@@ -121,26 +115,26 @@ define(['daos/things', 'modules/someHelpers'], function(thingsDao, helpers){
 });
 ```
 
-To alter the default path mapping behavior use `requirejs.config(configObj)` in your `main.js`:
+기본 경로 매핑 동작을 변경하려면 `main.js`에서 `requirejs.config(configObj)`를 사용하십시오:
 
 ```javascript
 /* file: main.js */
 requirejs.config({
   baseUrl : 'app',
   paths : {
-    // you can also load modules from other locations
+    // 다른 위치에서 모듈을 로드할 수도 있습니다.
     jquery : '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min',
     coolLibFromBower : '../bower_components/cool-lib/coollib'
   }
 });
 require(['jquery', 'coolLibFromBower', 'modules/someHelpers'], function($, coolLib, helpers){
-  // a `main` file needs to call require at least once,
-  // otherwise no code will ever run
+  // `main` 파일은 적어도 한 번 require를 호출해야 합니다.
+  // 그렇지 않으면 코드가 실행되지 않습니다.
   coolLib.doFancyStuffWith(helpers.transform($('#foo')));
 });
 ```
 
-`require.js`-based apps will usually have a single entry point (`main.js`) that is passed to the `require.js` script tag as a data-attribute. It will be automatically loaded and executed on pageload:
+`require.js` 기반 앱은 일반적으로 `require.js` 스크립트 태그에 데이터 속성으로 전달되는 단일 진입점(`main.js`)을 가집니다. 페이지 로드 시 자동으로 로드되고 실행됩니다:
 
 ```html
 <!DOCTYPE html>
@@ -154,64 +148,64 @@ require(['jquery', 'coolLibFromBower', 'modules/someHelpers'], function($, coolL
 </html>
 ```
 
-### Optimizing a whole project using r.js
+### r.js를 사용하여 전체 프로젝트 최적화
 
-Many people prefer using AMD for sane code organization during development, but still want to ship a single script file in production instead of performing hundreds of XHRs on page load.
+많은 사람들이 개발 중에는 합리적인 코드 구성을 위해 AMD를 사용하지만, 프로덕션에서는 페이지 로드 시 수백 개의 XHR을 수행하는 대신 단일 스크립트 파일을 제공하기를 원합니다.
 
-`require.js` comes with a script called `r.js` (that you will probably run in node.js, although Rhino is supported too) that can analyse your project's dependency graph, and build a single file containing all your modules (properly named), minified and ready for consumption.
+`require.js`에는 `r.js`라는 스크립트가 함께 제공됩니다(node.js에서 실행할 가능성이 높지만 Rhino도 지원됨). 이 스크립트는 프로젝트의 의존성 그래프를 분석하고, 모든 모듈(적절하게 명명됨), 축소되고 소비 준비가 된 단일 파일을 빌드할 수 있습니다.
 
-Install it using `npm`:
+`npm`을 사용하여 설치하십시오:
 
 ```shell
 $ npm install requirejs -g
 ```
 
-Now you can feed it with a configuration file:
+이제 구성 파일을 제공할 수 있습니다:
 
 ```shell
 $ r.js -o app.build.js
 ```
 
-For our above example the configuration might look like:
+위의 예제에 대한 구성은 다음과 같을 수 있습니다:
 
 ```javascript
 /* file : app.build.js */
 ({
-  name : 'main', // name of the entry point
-  out : 'main-built.js', // name of the file to write the output to
+  name : 'main', // 진입점 이름
+  out : 'main-built.js', // 출력을 쓸 파일 이름
   baseUrl : 'app',
   paths : {
-    // `empty:` tells r.js that this should still be loaded from the CDN, using
-    // the location specified in `main.js`
+    // `empty:`는 r.js에게 이것이 `main.js`에 지정된 위치를 사용하여
+    // CDN에서 여전히 로드되어야 함을 알려줍니다.
     jquery : 'empty:',
     coolLibFromBower : '../bower_components/cool-lib/coollib'
   }
 })
 ```
 
-To use the built file in production, simply swap `data-main`:
+프로덕션에서 빌드된 파일을 사용하려면 `data-main`을 간단히 바꾸십시오:
 
 ```html
 <script src="require.js" data-main="app/main-built"></script>
 ```
 
-An incredibly detailed [overview of build options](https://github.com/jrburke/r.js/blob/master/build/example.build.js) is available in the GitHub repo.
+GitHub 리포지토리에서 빌드 옵션에 대한 매우 상세한 [개요](https://github.com/jrburke/r.js/blob/master/build/example.build.js)를 볼 수 있습니다.
 
-### Topics not covered in this tutorial
-* [Loader plugins / transforms](http://requirejs.org/docs/plugins.html)
-* [CommonJS style loading and exporting](http://requirejs.org/docs/commonjs.html)
-* [Advanced configuration](http://requirejs.org/docs/api.html#config)
-* [Shim configuration (loading non-AMD modules)](http://requirejs.org/docs/api.html#config-shim)
-* [CSS loading and optimizing with require.js](http://requirejs.org/docs/optimization.html#onecss)
-* [Using almond.js for builds](https://github.com/jrburke/almond)
+### 이 튜토리얼에서 다루지 않은 주제
+* [로더 플러그인 / 변환](http://requirejs.org/docs/plugins.html)
+* [CommonJS 스타일 로딩 및 내보내기](http://requirejs.org/docs/commonjs.html)
+* [고급 구성](http://requirejs.org/docs/api.html#config)
+* [Shim 구성 (비 AMD 모듈 로딩)](http://requirejs.org/docs/api.html#config-shim)
+* [require.js를 사용한 CSS 로딩 및 최적화](http://requirejs.org/docs/optimization.html#onecss)
+* [빌드에 almond.js 사용](https://github.com/jrburke/almond)
 
-### Further reading:
+### 더 읽을거리:
 
-* [Official Spec](https://github.com/amdjs/amdjs-api/wiki/AMD)
-* [Why AMD?](http://requirejs.org/docs/whyamd.html)
-* [Universal Module Definition](https://github.com/umdjs/umd)
+* [공식 사양](https://github.com/amdjs/amdjs-api/wiki/AMD)
+* [왜 AMD인가?](http://requirejs.org/docs/whyamd.html)
+* [범용 모듈 정의](https://github.com/umdjs/umd)
 
-### Implementations:
+### 구현:
 
 * [require.js](http://requirejs.org)
 * [dojo toolkit](http://dojotoolkit.org/documentation/tutorials/1.9/modules/)

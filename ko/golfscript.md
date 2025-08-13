@@ -1,147 +1,117 @@
-# golfscript.md (번역)
-
 ---
 name: GolfScript
 filename: golfscript.gs
 contributors:
     - ["Nicholas S Georgescu", "http://github.com/ngeorgescu"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-GolfScript is an esoteric language that was developed in 2007 by Darren
-Smith. It is a scripting language with an interpreter written in Ruby. It lets
-you write very dense code in very few characters. The main goal of the language
-is, as the name suggests, to solve problems in as few keystrokes as possible.
-The examples page on the GolfScript website even has an entire Sudoku solver
-written in just 77 characters.
+GolfScript는 2007년 Darren Smith가 개발한 난해한 언어입니다. Ruby로 작성된 인터프리터가 있는 스크립팅 언어입니다. 매우 적은 문자로 매우 밀도 높은 코드를 작성할 수 있습니다. 언어의 주요 목표는 이름에서 알 수 있듯이 가능한 한 적은 키 입력으로 문제를 해결하는 것입니다. GolfScript 웹사이트의 예제 페이지에는 단 77자로 작성된 전체 스도쿠 해결 프로그램도 있습니다.
 
-If you get really good at GolfScript you can easily find yourself using it as a
-go-to language for solving some (even somewhat hard) coding problems. It's never
-going to be faster than Ruby, but it can be very fast to write, since a single
-character of GolfScript can replace an entire line of code in some other languages.
+GolfScript에 정말 능숙해지면 일부 (다소 어려운) 코딩 문제를 해결하기 위한 기본 언어로 쉽게 사용할 수 있습니다. Ruby보다 빠르지는 않지만, 다른 언어에서 전체 코드 줄을 대체할 수 있는 단일 GolfScript 문자로 인해 작성 속도가 매우 빠를 수 있습니다.
 
-GolfScript is based on the use of the stack. This tutorial therefore will
-read as a sequence of stack operations on an actual stack, as opposed to some
-standalone code and individual results. The stack starts as an empty list, and
-everything either adds to the stack, or it pops some items off, transforms them,
-and puts them back onto the stack.
+GolfScript는 스택 사용을 기반으로 합니다. 따라서 이 튜토리얼은 일부 독립 실행형 코드 및 개별 결과와 달리 실제 스택에 대한 일련의 스택 작업으로 읽힙니다. 스택은 빈 목록으로 시작하며, 모든 것은 스택에 추가되거나 일부 항목을 팝하고 변환한 다음 다시 스택에 넣습니다.
 
-To get started running GolfScript, you can get the golfscript.rb file from the
-[GitHub repo](https://github.com/darrenks/golfscript).  Copy it into your `$PATH`,
-(dropping the .rb and chmodding as necessary). You can run GolfScript from either
-the interactive interpreter (which mirrors the tutorial below). Once you get the hang
-of GolfScript, you can start running from "stdin". If you see a script starting with `~`,
-it was probably designed to be dropped in a file and run with `golfscript file.gs`.  You
-can pipe in or enter in your input at runtime.
+GolfScript 실행을 시작하려면 [GitHub 리포지토리](https://github.com/darrenks/golfscript)에서 golfscript.rb 파일을 가져올 수 있습니다. `$PATH`에 복사하십시오(필요에 따라 .rb를 삭제하고 chmod). 대화형 인터프리터(아래 튜토리얼 미러링)에서 GolfScript를 실행할 수 있습니다. GolfScript에 익숙해지면 "stdin"에서 실행을 시작할 수 있습니다. `~`로 시작하는 스크립트를 보면 파일에 드롭하고 `golfscript file.gs`로 실행하도록 설계되었을 가능성이 높습니다. 런타임에 입력을 파이프하거나 입력할 수 있습니다.
 
 ```
-> anything undefined technically evaluates to nothing and so is also a comment
-# but commenting it out explicitly anyway is probably a good idea because if
-# you use a reserved keyword or any punctuation you'll run into trouble.
+> 정의되지 않은 모든 것은 기술적으로 아무것도 평가되지 않으므로 주석이기도 합니다.
+# 하지만 예약된 키워드나 구두점을 사용하면 문제가 발생할 수 있으므로 명시적으로 주석 처리하는 것이 좋습니다.
 []
 > ######################################################################
-#       datatypes
+#       데이터 유형
 ########################################################################
-> 1 # Here we add 1 to the stack.  Any object entry adds things to the stack
+> 1 # 여기서 스택에 1을 추가합니다. 모든 개체 항목은 스택에 항목을 추가합니다.
 [1]
-> 'abc' # here we are adding a string. The only difference between single and
-# double quotes is that double lets you escape more things other than \' and \n
-# it won't matter for the sake of this tutorial.
+> 'abc' # 여기서 문자열을 추가합니다. 작은따옴표와 큰따옴표의 유일한 차이점은 큰따옴표를 사용하면 \' 및 \n 이외의 더 많은 것을 이스케이프할 수 있다는 것입니다.
+# 이 튜토리얼에서는 중요하지 않습니다.
 [1 "abc"]
-> {+} # the third type of object you can put on the stack is a block
+> {+} # 스택에 넣을 수 있는 세 번째 유형의 개체는 블록입니다.
 [1 "abc" {+}]
-> ] # this takes everything prior and puts it into an array, the fourth type
-# of object. (besides bug exploits like [2-1?] those are the only four types)
+> ] # 이것은 이전의 모든 것을 가져와 네 번째 유형의 개체인 배열에 넣습니다.
+# (버그 악용 제외 [2-1?] 이 네 가지 유형만 있습니다.)
 [[1 "abc" {+}]]
-> ; # let's clear the stack by executing the discard function on this array.
-# if you type the characters  ]; it always clears the stack.
+> ; # 이 배열에서 discard 함수를 실행하여 스택을 지웁시다.
+# ]; 문자를 입력하면 항상 스택이 지워집니다.
 []
-> 1"abc"{+}]; # newlines are whitespaces. Everything we did up to this point
-# can be put into one line and it all works the exact same.
+> 1"abc"{+}]; # 줄 바꿈은 공백입니다. 지금까지 한 모든 것을 한 줄에 넣을 수 있으며 모두 똑같이 작동합니다.
 ########################################################################
-#       operators and math
+#       연산자 및 수학
 ########################################################################
 []
-> 1 1 # we add two 1s to the stack.  We could also duplicate the first with .
+> 1 1 # 스택에 두 개의 1을 추가합니다. 첫 번째를 .으로 복제할 수도 있습니다.
 [1 1]
-> + # math is done by executing an operation on the top of the stack. This
-# can be a standalone character. The way to read this is that we put a 1 on
-# the stack, another one one the stack, and then executed a + operation which
-# takes the top two elements off of the stack, sums them up, and returns them
-# to the stack.  This is typically referred to as postfix notation.  It can be
-# a bit jarring, but this is the way to think about things.  You're adding to
-# the stack with objects and modifying the top of the stack with operators.
+> + # 수학은 스택의 맨 위에서 연산을 실행하여 수행됩니다. 이것은 독립 실행형 문자일 수 있습니다. 이것을 읽는 방법은 스택에 1을 넣고 스택에 다른 1을 넣은 다음 스택에서 상위 두 요소를 가져와 합산하고 스택으로 반환하는 + 연산을 실행하는 것입니다. 이것은 일반적으로 후위 표기법이라고 합니다. 약간 거슬릴 수 있지만 이것이 생각하는 방식입니다. 개체로 스택에 추가하고 연산자로 스택의 맨 위를 수정합니다.
 [2]
-> 8 1- # minus works the same way. N.B. that we still have that 2 on the stack
-# from earlier
+> 8 1- # 빼기도 동일하게 작동합니다. N.B. 스택에 여전히 2가 있습니다.
+# 이전부터
 [2 7]
-> 10 2* # multiplication works the same way. The product is added to the stack
+> 10 2* # 곱셈도 동일하게 작동합니다. 곱은 스택에 추가됩니다.
 [2 7 20]
-> 35 4/ # all division is integer division
+> 35 4/ # 모든 나눗셈은 정수 나눗셈입니다.
 [2 7 20 8]
-> 35 4%  # modulo operation
+> 35 4%  # 모듈로 연산
 [2 7 20 8 3]
-> 2 3? # exponentiation
+> 2 3? # 거듭제곱
 [2 7 20 8 3 8]
-> 8~ # bitwise "not" function on signed integers
+> 8~ # 부호 있는 정수에 대한 비트 "not" 함수
 [2 7 20 8 3 8 -9]
-> -1~ # this yields 0, which is useful to know for the ? operator
+> -1~ # 이것은 0을 산출하며, ? 연산자에 유용합니다.
 [2 7 20 8 3 8 -9 0]
-> 5 3| # or: yields 7, since [1 0 1] | [0 1 1] => [1 1 1]
+> 5 3| # 또는: 7을 산출합니다. [1 0 1] | [0 1 1] => [1 1 1]
 [2 7 20 8 3 8 -9 0 7]
-> 5 3^ # xor: yields 6, since the parity differs at [1 1 0]
+> 5 3^ # xor: 6을 산출합니다. 패리티가 [1 1 0]에서 다르기 때문입니다.
 [2 7 20 8 3 8 -9 0 7 6]
-> 5 3& # and: yields 1, since it's the only bit active in both: [0 0 1]
+> 5 3& # 및: 1을 산출합니다. 두 비트에서 모두 활성 상태인 유일한 비트이기 때문입니다: [0 0 1]
 [2 7 20 8 3 8 -9 0 7 6 1]
 > ]; ###################################################################
-#       booleans
+#       부울
 ########################################################################
 []
 > 5 3
 [5 3]
-> < #add two numbers to the stack, and then perform a lessthan operation
-# booleans are False if 0, [], {}, '', and true if anything else.
+> < #스택에 두 개의 숫자를 추가한 다음 lessthan 연산을 수행합니다.
+# 부울은 0, [], {}, ''인 경우 False이고 다른 모든 경우 True입니다.
 [0]
-> 5 3> # greater than operation.
+> 5 3> # 보다 큼 연산.
 [0 1]
-> 5 3= #single equal is the operator. Again, before the equals is executed,
-# the stack reads [0 1 5 3], and then the equals operator checks the top 2
-# values and yields:
+> 5 3= #단일 등호는 연산자입니다. 다시 말하지만, 등호가 실행되기 전에 스택은 [0 1 5 3]을 읽고 등호 연산자는 상위 2개 값을 확인하고 다음을 산출합니다:
 [0 1 0]
-> ! #not, returns 1 if 0 else 0.
+> ! #not, 0이면 1을 반환하고 그렇지 않으면 0을 반환합니다.
 [0 1 1]
-> ) #increments the last number
+> ) #마지막 숫자를 증가시킵니다.
 [0 1 2]
-> ( #decrements the last number
+> ( #마지막 숫자를 감소시킵니다.
 [0 1 1]
 > ]; ###################################################################
-#       stack control
+#       스택 제어
 ########################################################################
 []
-> 1 # put a number on the stack
+> 1 # 스택에 숫자를 넣습니다.
 [1]
-> . # duplicate the number
+> . # 숫자를 복제합니다.
 [1 1]
-> ) # increment
+> ) # 증가
 [1 2]
-> \ # flip the top two items
+> \ # 상위 두 항목을 뒤집습니다.
 [2 1]
-> 1$ # $ copies the nth-to-last item on the stack at the index preceding.
-# Here we get the 1-indexed item.
+> 1$ # $는 스택의 n번째 항목을 이전 인덱스에 복사합니다.
+# 여기서 1-인덱스 항목을 가져옵니다.
 [2 1 2]
-> 0$ # to copy the 0-indexed item we use the appropriate index.
-# This is identical to . operation
+> 0$ # 0-인덱스 항목을 복사하려면 적절한 인덱스를 사용합니다.
+# 이것은 . 연산과 동일합니다.
 [2 1 2 2]
-> ) # increment
+> ) # 증가
 [2 1 2 3]
-> @ # pulls the third item up to the top
+> @ # 세 번째 항목을 맨 위로 가져옵니다.
 [2 2 3 1]
-> [@] # use this trick to flip the top 3 items and put them into an array
-# if you wrap any operation in brackets it flips the results into an array.
-# even math operations like, [+] and [-]
+> [@] # 이 트릭을 사용하여 상위 3개 항목을 뒤집고 배열에 넣습니다.
+# 연산을 대괄호로 묶으면 결과가 배열로 뒤집힙니다.
+# [+] 및 [-]와 같은 수학 연산도 마찬가지입니다.
 [2 [3 1 2]]
-> ]; # also, using at most two strokes you can orient the top three items
-# in any permutation. Below are shown the results on 3,~
-  #      => 0 1 2    (i.e. doing nothing)
+> ]; # 또한 최대 두 번의 스트로크로 상위 세 항목을 모든 순열로 정렬할 수 있습니다. 아래는 3,~에 대한 결과입니다.
+  #      => 0 1 2    (즉, 아무것도 하지 않음)
   #   \  => 0 2 1
   #   @\ => 1 0 2
   #   @  => 1 2 0
@@ -149,276 +119,229 @@ can pipe in or enter in your input at runtime.
   #   \@ => 2 1 0
 []
 > ######################################################################
-#       using arrays
+#       배열 사용
 ########################################################################
 []
-> 2, # comma is the range() function
+> 2, # 쉼표는 range() 함수입니다.
 [[0 1]]
-> , # and also the length() function
+> , # 그리고 length() 함수이기도 합니다.
 [2]
-> ;4, # let's get an array of four items together
+> ;4, # 네 개의 항목이 있는 배열을 함께 가져옵시다.
 [[0 1 2 3]]
-> ) # we can pop off the last value
+> ) # 마지막 값을 팝할 수 있습니다.
 [[0 1 2] 3]
-> + # and put it back
+> + # 그리고 다시 넣습니다.
 [[0 1 2 3]]
-> ( # we can pop off the first value
+> ( # 첫 번째 값을 팝할 수 있습니다.
 [[1 2 3] 0]
-> \+ # and put it back
+> \+ # 그리고 다시 넣습니다.
 [[0 1 2 3]]
-> 2- # we can subtract a particular value
+> 2- # 특정 값을 뺄 수 있습니다.
 [[0 1 3]]
-> [1 3] # or a list of values
+> [1 3] # 또는 값 목록
 [[0 1 3] [1 3]]
 > -
 [[0]]
-> ! # boolean operations also work on lists, strings, and blocks. If it's
-# empty it's a 1, otherwise 0. Here, the list has a zero, but it's not zero-
-# length, so the array as a whole is still True... and hence "not" is False
+> ! # 부울 연산은 목록, 문자열 및 블록에서도 작동합니다. 비어 있으면 1이고 그렇지 않으면 0입니다. 여기서 목록에는 0이 있지만 길이가 0이 아니므로 배열 전체는 여전히 True입니다... 따라서 "not"은 False입니다.
 [0]
-> ;4,(+ # let's make a range, pop the first value, and tack it on the end
+> ;4,(+ # 범위를 만들고 첫 번째 값을 팝하고 끝에 붙입니다.
 [[1 2 3 0]]
-> $ # we can also restore order by sorting the array
+> $ # 배열을 정렬하여 순서를 복원할 수도 있습니다.
 [[0 1 2 3]]
-> 1 >  # we can also use < > and = to get the indeces that match. Note this
-# is not a filter! This is an index match. Filtering items greater than one
-# is done with {1>},
+> 1 >  # < > 및 =을 사용하여 일치하는 인덱스를 가져올 수도 있습니다. 이것은 필터가 아닙니다! 이것은 인덱스 일치입니다. 1보다 큰 항목을 필터링하는 것은 {1>}로 수행됩니다.
 [[1 2 3]]
-> 2 < # remember it's zero-indexed, so everything in this array is at an index
-# less than 2, the indeces are 0 and 1.
+> 2 < # 0-인덱스이므로 이 배열의 모든 것은 인덱스가 2보다 작습니다. 인덱스는 0과 1입니다.
 [[1 2]]
-> 1= # < and > return an array, even if it's one item.  Equals always drops
-# it out of the array
+> 1= # < 및 >는 한 항목이더라도 배열을 반환합니다. 등호는 항상 배열에서 드롭합니다.
 [2]
-> ;6,2% # the modulo operator works on lists as the step.
+> ;6,2% # 모듈로 연산자는 목록에서 단계로 작동합니다.
 [[0 2 4]]
-> ;4,2,-:a 3,2+:b # booleans also work on lists. lets define two lists
+> ;4,2,-:a 3,2+:b # 부울도 목록에서 작동합니다. 두 개의 목록을 정의해 봅시다.
 [[2 3] [0 1 2 2]]
-> | # "or" - returns set of items that appear in either list i.e. "union set"
+> | # "또는" - 두 목록 중 하나에 나타나는 항목 집합을 반환합니다. 즉, "합집합"
 [[2 3 0 1]]
-> ;a b& # returns set of items that appear in 1 AND 2, e.g. "intersection set"
+> ;a b& # 1과 2 모두에 나타나는 항목 집합을 반환합니다. 예: "교집합"
 [[2]]
-> ;a b^ # returns the symmetric difference set between two lists,
+> ;a b^ # 두 목록 간의 대칭 차집합을 반환합니다.
 [[3 0 1]]
-> ~ # tilde unpacks the items from a list
+> ~ # 물결표는 목록에서 항목을 풉니다.
 [3 0 1]
 > ]; a
 [2 3]
-> 2? # finds the index of an item
+> 2? # 항목의 인덱스를 찾습니다.
 [0]
 > ;3a?
 [1]
-> 4a? # returns -1 if the item doesn't exist. Note: Order of element and array
-# doesn't matter for searching. it can be [item list?] or [list item?].
+> 4a? # 항목이 없으면 -1을 반환합니다. 참고: 검색을 위해 요소와 배열의 순서는 중요하지 않습니다. [항목 목록?] 또는 [목록 항목?]일 수 있습니다.
 [1 -1]
-> ]; # clear
+> ]; # 지우기
 []
-> 3,[4]* # join or intersperse: puts items in between the items
+> 3,[4]* # 결합 또는 산재: 항목 사이에 항목을 넣습니다.
 [[0 4 1 4 2]]
-> ; 3,4* # multiplication of lists
+> ; 3,4* # 목록 곱셈
 [[0 1 2 0 1 2 0 1 2 0 1 2]]
-> ;[1 2 3 2 3 5][2 3]/ # "split at"
+> ;[1 2 3 2 3 5][2 3]/ # "분할"
 [[[1] [] [5]]]
-> ;[1 2 3 2 3 5][2 3]% # modulo is "split at... and drop empty"
+> ;[1 2 3 2 3 5][2 3]% # 모듈로는 "분할... 및 빈 항목 삭제"입니다.
 [[[1] [5]]]
 > ];####################################################################
-#       strings
+#       문자열
 ########################################################################
-# strings work just like arrays
+# 문자열은 배열처럼 작동합니다.
 []
-> "use arch, am vegan, drive a stick" ', '/ # split
+> "use arch, am vegan, drive a stick" ', '/ # 분할
 [["use arch" "am vegan" "drive a stick"]]
-> {'I '\+', BTW.'+}% # map
+> {'I '\+', BTW.'+}% # 맵
 [["I use arch, BTW." "I am vegan, BTW." "I drive a stick, BTW."]]
-> n* # join.  Note the variable n is defined as a newline char by default
+> n* # 결합. 변수 n은 기본적으로 줄 바꿈 문자로 정의됩니다.
 ["I use arch, BTW.\nI am vegan, BTW.\nI drive a stick, BTW."]
-> n/ # to replace, use split, and join with the replacement string.
-[n "Also, not sure if I mentioned this, but" n]{+}* # fold sum 3-item array
-* # and use join to get the result
-n+ print # and then pop/print the results prettily
+> n/ # 바꾸려면 분할하고 대체 문자열로 결합합니다.
+[n "Also, not sure if I mentioned this, but" n]{+}* # 3개 항목 배열 합계 접기
+* # 그리고 결합을 사용하여 결과를 얻습니다.
+n+ print # 그런 다음 결과를 예쁘게 팝/인쇄합니다.
 I use arch, BTW.
 Also, not sure if I mentioned this, but
 I am vegan, BTW.
 Also, not sure if I mentioned this, but
 I drive a stick, BTW.
 []
-> '22222'{+}* # note that if you fold-sum a string not in an array, you'll
-# get the sum of the ascii values. '2' is 50, so five times that is:
+> '22222'{+}* # 배열이 아닌 문자열을 접기 합산하면 ascii 값의 합계를 얻습니다. '2'는 50이므로 5배는 다음과 같습니다:
 [250]
-> ]; # this actually is a clever trick to get ascii values into an array.
+> ]; # 이것은 실제로 ascii 값을 배열에 넣는 영리한 트릭입니다.
 []
-> "aabc" [{""+~}*] # if you fold over addition and drop it into a string:
+> "aabc" [{ ""+~}*] # 덧셈을 접고 문자열에 넣으면:
 [[97 97 98 99]]
-> {[.]""^}%""+ # which can be returned to a string as such using a ""^ map.
-# and an empty string join.
+> {[.]""^}%""+ # ""^ 맵을 사용하여 문자열로 반환할 수 있습니다.
+# 그리고 빈 문자열 결합.
 ["aabc"]
-> {32-}% # note that most mapping operations work on the ascii values as
-# you would expect, for instance with the difference between A and a being
-# 32, you can just subtract that from the ascii value to get:
+> {32-}% # 대부분의 매핑 연산은 예상대로 ascii 값에서 작동합니다. 예를 들어 A와 a의 차이가 32이므로 ascii 값에서 빼면 다음을 얻습니다:
 ["AABC"]
-> ]; ###################################################################
-#       blocks
+> ];###################################################################
+#       블록
 ########################################################################
 []
-> 3,~ # start with an unpacked array
+> 3,~ # 압축되지 않은 배열로 시작
 [0 1 2]
-> {+-} # brackets define a block which can comprise multiple functions
+> {+-} # 대괄호는 여러 함수를 포함할 수 있는 블록을 정의합니다.
 [0 1 2 {+-}]
-> ~ # blocks are functions waiting for execution. tilde does a single
-# execution of the block in this case, we added the top two values, 1 and 2,
-# and subtracted from 0
+> ~ # 블록은 실행을 기다리는 함수입니다. 물결표는 이 경우 블록을 한 번 실행합니다. 상위 두 값인 1과 2를 더하고 0에서 뺐습니다.
 [-3]
-> ;10,~{+}5* # multiplication works on executing blocks multiple times
-# in this case we added the last 6 values together by running "add" 5 times
+> ;10,~{+}5* # 곱셈은 블록을 여러 번 실행하는 데 작동합니다.
+# 이 경우 마지막 6개 값을 5번 "더하기"를 실행하여 더했습니다.
 [0 1 2 3 39]
-> ];10,4> # we can achieve the same result by just grabbing the last 6 items
+> ];10,4> # 마지막 6개 항목을 가져와서 동일한 결과를 얻을 수 있습니다.
 [[4 5 6 7 8 9]]
-> {+}* # and using the "fold" function for addition.
+> {+}* # 그리고 덧셈에 대한 "접기" 함수를 사용합니다.
 [39]
-> # "fold" sequentially applies the operation pairwise from the left
-# and then dumps the results.  Watch what happens when we use the duplicate
-# operator to fold. it's clear what happens when we duplicate and then negate
-# the duplicated item:
+> # "접기"는 왼쪽에서 쌍으로 연산을 순차적으로 적용한 다음 결과를 덤프합니다. 복제 연산자를 사용하여 접을 때 어떤 일이 발생하는지 봅시다. 복제한 다음 복제된 항목을 부정하면 어떤 일이 발생하는지 명확합니다:
 > ;4,{.-1*}*
 [0 1 -1 2 -2 3 -3]
-> ]{3%}, # we can filter a list based on applying the block to each element
-# in this case we get the numbers that do NOT give 0 mod 3
+> ]{3%}, # 각 요소에 블록을 적용하여 목록을 필터링할 수 있습니다.
+# 이 경우 3으로 나눈 나머지가 0이 아닌 숫자를 얻습니다.
 [[1 -1 2 -2]]
-> ;10,{3%0}, # note that only the last element matters for retaining in the
-# array.  Here we take 0..9, calculate x mod 3, and then return a 0. The
-# intermediate generated values are dumped out sequentially.
+> ;10,{3%0}, # 필터링을 위해 마지막 요소만 중요합니다. 여기서 0..9를 가져와 x mod 3을 계산한 다음 0을 반환합니다. 중간에 생성된 값은 순차적으로 덤프됩니다.
 [0 1 2 0 1 2 0 1 2 0 []]
-> ]; # clear
+> ]; # 지우기
 []
-> 5,{5*}% # map performs each operation on the array and returns the result
-# to an array
+> 5,{5*}% # 맵은 배열의 각 연산을 수행하고 결과를 배열로 반환합니다.
 [[0 5 10 15 20]]
-> {.}% # watch what happens when you map duplicate on each item
+> {.}% # 각 항목에 대해 중복을 매핑할 때 어떤 일이 발생하는지 봅시다.
 [[0 0 5 5 10 10 15 15 20 20]]
-> ]; ###################################################################
-#       Control Flow!
+> ];###################################################################
+#       제어 흐름!
 ########################################################################
-# This is the most important part of scripting. Most languages have
-# two main types of loops, for loops and while loops. Even though golfscript
-# has many possible loops, only a few are generally useful and terse. For loops
-# are implemented using mapping, filtering, folding, and sorting over lists.
-# For instance, we can take the factorial of 6 by:
-6, # get 0..5
-{)}% # increment the list, i.e. "i++ for i in list" to get 1..6
-{*}* # fold by multiplication , 9 characters for the operator itself.
+# 이것은 스크립팅에서 가장 중요한 부분입니다. 대부분의 언어에는 for 루프와 while 루프라는 두 가지 주요 유형의 루프가 있습니다. 골프스크립트에는 많은 가능한 루프가 있지만 일반적으로 유용한 것은 몇 가지뿐입니다. for 루프는 목록에 대한 매핑, 필터링, 접기 및 정렬을 사용하여 구현됩니다. 예를 들어, 6의 계승을 다음과 같이 취할 수 있습니다:
+6, # 0..5 가져오기
+{)}% # 목록 증가, 즉 "i++ for i in list"를 사용하여 1..6 가져오기
+{*}* # 곱셈으로 접기, 연산자 자체에 9자.
 [720]
-> 6),(;{*}* # but can we get shorter? We can save some space by incrementing
-# the 6, dropping the zero, and folding. 8 characters.
-> # we can also use fold to do the same thing with unfold
-1 6        # accumlator and multiplicand, we'll call A and M
-{}{        # while M
-  .        # copy M, so now the stack is A M M
-    @      # bring A to the top, so now M M A
-     *     # apply M to the accumulator, so M A
-       \(  # flip the order, so it's A M, and M--
-}/;        # "end", drop the list of multiplicands
-# this is effectively a while-loop factorial
+> 6),(;{*}* # 하지만 더 짧게 할 수 있을까요? 6을 증가시키고 0을 버리고 접어서 공간을 절약할 수 있습니다. 8자.
+> # unfold를 사용하여 동일한 작업을 수행할 수도 있습니다.
+1 6        # 누산기와 피승수, A와 M이라고 부르겠습니다.
+{}{        # M인 동안
+  .        # M 복사, 이제 스택은 A M M입니다.
+    @      # A를 맨 위로 가져오기, 이제 M M A입니다.
+     *     # 누산기에 M 적용, 이제 M A입니다.
+       \(  # 순서 뒤집기, 이제 A M이고 M--입니다.
+}/;        # "끝", 피승수 목록 버리기
+# 이것은 사실상 while 루프 계승입니다.
 [720 720]
-> 1.{6>!}{.@*\)}/; # we can also do the same thing with M++ while M not > 6
-> 1 6{.@*\(.}do; # works the same way as the decrementing fold.
+> 1.{6>!}{.@*\)}/; # M++를 사용하여 M이 6보다 크지 않을 때까지 동일한 작업을 수행할 수도 있습니다.
+> 1 6{.@*\(.}do; # 감소 접기와 동일하게 작동합니다.
 [720 720 720]
-> ]; #obviously a for loop is ideal for factorials, since it naturally lends
-# itself to running over a finite set of items.
+> ]; #분명히 for 루프는 유한한 항목 집합에 대해 자연스럽게 실행되므로 계승에 이상적입니다.
 ########################################################################
-#       Writing code
+#       코드 작성
 ########################################################################
-# Let's go through the process for writing a script. There are some tricks and
-# ways to think about things. Let's take a simple example: a prime sieve.
-# There are a few strategies for sieving. First, there's a strategy that
-# uses two lists, candidates and primes. We pop a value from candidates,
-# remove all the candidates divisible by it, and then add it to the primes.
-# Second, there's just a filtering operation on numbers. I think it's
-# probably shorter to write a program that just checks if a number has no
-# numbers mod zero besides 0, 1, and itself. Slower, but shorter is king.
-# Let's try this second strategy first.
+# 스크립트 작성 과정을 살펴보겠습니다. 몇 가지 트릭과 생각하는 방법이 있습니다. 간단한 예로 소수 체를 들어보겠습니다. 체질에는 몇 가지 전략이 있습니다. 첫째, 후보와 소수라는 두 개의 목록을 사용하는 전략이 있습니다. 후보에서 값을 팝하고, 그것으로 나눌 수 있는 모든 후보를 제거한 다음 소수에 추가합니다. 둘째, 숫자에 대한 필터링 작업만 있습니다. 0, 1 및 자신을 제외하고 0으로 나눈 나머지가 없는 숫자를 확인하는 프로그램을 작성하는 것이 더 짧을 것이라고 생각합니다. 느리지만 짧은 것이 왕입니다. 먼저 이 두 번째 전략을 시도해 보겠습니다.
 []
-> 10 # we're probably going to filter a list using this strategy. It's easiest
-# to start working with one element of the list. So let's take some example
-# where we know the answer that we want to get.
+> 10 # 이 전략을 사용하여 목록을 필터링할 가능성이 높습니다. 목록의 한 요소로 작업하는 것이 가장 쉽습니다. 따라서 원하는 답을 알고 있는 몇 가지 예를 들어보겠습니다.
 [10]
-> .,2> # let's duplicate it and take a list of values, and drop the first two
+> .,2> # 복제하고 값 목록을 가져와 처음 두 개를 버립니다.
 [10 [2 3 4 5 6 7 8 9]]
-> {1$\%!}, # duplicate the ten, and scoot it behind the element, and then run
-# 10 element %, and then ! the answer, so we are left with even multiples
+> {1$\%!}, # 10을 복제하고 요소 뒤로 이동한 다음 10 요소 %를 실행하고 답을 !하여 짝수 배수만 남깁니다.
 [10 [2 5]]
-> \; # we want to get rid of the intermediate so it doesn't show up in our
-# solution.
+> \; # 중간 결과가 솔루션에 나타나지 않도록 제거하고 싶습니다.
 [[2 5]]
-> 10.,2,-{1$\%!},\; # Okay, let's put our little function together on one line
+> 10.,2,-{1$\%!},\; # 좋습니다, 작은 함수를 한 줄에 모아보겠습니다.
 [[2 5] [2 5]]
-> ;; # now we just filter the list using this strategy. We need to negate the
-# result with ! so when we get a number with a factor, ! evaluates to 0, and
-# the number is filtered out.
+> ;; # 이제 이 전략을 사용하여 목록을 필터링합니다. !를 사용하여 결과를 부정해야 합니다. 따라서 인수가 있는 숫자를 얻으면 !가 0으로 평가되고 숫자가 필터링됩니다.
 []
-> 10,{.,2,-{1$\%!},\;!}, # let's try filtering on the first 10 numbers
+> 10,{.,2,-{1$\%!},\;!}, # 처음 10개 숫자에 대해 필터링해 보겠습니다.
 [[0 1 2 3 5 7]]
-> 2> # now we can just drop 0 and 1.
+> 2> # 이제 0과 1을 버릴 수 있습니다.
 [[2 3 5 7]]
-> 4.?,{.,2,-{1$\%!},\;!},2> # trick: an easy way to generate large numbers in
-# a few bytes is duplicate and exponentiate. 4.? is 256, and 9.? is 387420489
+> 4.?,{.,2,-{1$\%!},\;!},2> # 트릭: 몇 바이트로 큰 숫자를 생성하는 쉬운 방법은 복제하고 거듭제곱하는 것입니다. 4.?는 256이고 9.?는 387420489입니다.
 [[2 3 5 7] [2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89
 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193
 197 199 211 223 227 229 233 239 241 251]]
-> ];'4.?,{.,2,-{1$\%!},\;!},2>', # how long is our code for p<256 ?
+> ];'4.?,{.,2,-{1$\%!},\;!},2>', # p<256에 대한 코드 길이는 얼마입니까?
 [25]
-> ; # this is 25 characters. Can we do better?!
+> ; # 이것은 25자입니다. 더 잘할 수 있을까요?! 
 []
-> []99,2> # let's go with the first strategy.  We'll start with an empty list
-# of primes and a list of candidates
+> []99,2> # 첫 번째 전략으로 가겠습니다. 빈 소수 목록과 후보 목록으로 시작하겠습니다.
 [[] [2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54
 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80
 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98]]
-> (\ # pop left and leave left, we're going to copy this value with the filter
+> (\ # 왼쪽 팝하고 왼쪽 남기기, 필터로 이 값을 복사할 것입니다.
 [[] 2 [3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54
 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80
 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98]]
-> {1$%}, # filter out anything that is 0 mod by the popped item one back on the
-# stack
+> {1$\%%}, # 팝된 항목으로 0 mod인 모든 것을 필터링합니다. 스택에 하나 뒤로
 [[] 2 [3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51
 53 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91 93 95 97]]
-> @@+ # great, all the 2-divisible values are off the list! now we need to add
-# it to the running list of primes
+> @@+ # 좋습니다, 2로 나눌 수 있는 모든 값이 목록에서 제거되었습니다! 이제 실행 중인 소수 목록에 추가해야 합니다.
 [[3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53 55
 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91 93 95 97] [2]]
-> \ # swap back. Now it seems pretty clear when our candidates list is empty
-# we're done. So let's try it with a do loop. Remember we need to duplicate
-# the final value for the pop check. So we add a dot
+> \ # 다시 교환합니다. 이제 후보 목록이 비어 있으면 끝났다는 것이 분명합니다. do 루프로 시도해 보겠습니다. 팝 확인을 위해 최종 값을 복제해야 합니다. 따라서 점을 추가합니다.
 [[2] [3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53
 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91 93 95 97]]
-> {(\{1$%},@@+\.}do;
+> {(\{1$\%%},@@+\}.}do;
 [[2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97]]
-> ; # ok that worked. So let's start with our initialization as well.
-[]4.?,2>{(\{1$%},@@+\.}do; # and let's check our work
+> ; # 좋습니다, 작동했습니다. 초기화부터 시작해 보겠습니다.
+[]4.?,2>{(\{1$\%%},@@+\}.}do; # 그리고 작업을 확인합니다.
 [[2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101
 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199
 211 223 227 229 233 239 241 251]]
-> ,'[]99,2>{(\{1$%},@@+\.}do;', # how long is this?
+> ,'[]99,2>{(\{1$\%%},@@+\}.}do;', # 이것은 얼마나 깁니까?
 [26]
-> ]; # wow this solution is only 26 long, and much more effective. I don't see
-# a way to get any smaller here. I wonder if with unfold we can do better?  The
-# strategy here is to use unfold and then at the end grab the first value from
-# each table.
+> ]; # 와, 이 솔루션은 26자밖에 안 되고 훨씬 더 효과적입니다. 여기서 더 짧게 할 방법이 보이지 않습니다. unfold를 사용하면 더 잘할 수 있을까요? 여기서 전략은 unfold를 사용한 다음 각 테이블에서 첫 번째 값을 가져오는 것입니다.
 []
-> 99,2> # start with the candidates list
+> 99,2> # 후보 목록으로 시작
 [[2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55
 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81
 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98]]
-> (\{1$%}, # pop left and filter
+> (\ {1$\%%}, # 팝하고 필터링
 [2 [3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53
 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91 93 95 97]]
-> (\{1$%}, # again
+> (\ {1$\%%}, # 다시!
 [2 3 [5 7 11 13 17 19 23 25 29 31 35 37 41 43 47 49 53 55 59 61 65 67 71 73 77
 79 83 85 89 91 95 97]]
 89 91 95 97]]
-> {}{(\{1$%},}/ # ok I think it'll work. let's try to put it into an unfold.
+> {}{(\{1$\%%},}/ # 좋습니다, 작동할 것 같습니다. unfold에 넣어보겠습니다.
 [2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 [[5 7
 11 13 17 19 23 25 29 31 35 37 41 43 47 49 53 55 59 61 65 67 71 73 77 79 83 85
 89 91 95 97] [7 11 13 17 19 23 29 31 37 41 43 47 49 53 59 61 67 71 73 77 79 83
@@ -432,160 +355,112 @@ I drive a stick, BTW.
 97] [53 59 61 67 71 73 79 83 89 97] [59 61 67 71 73 79 83 89 97] [61 67 71 73
 79 83 89 97] [67 71 73 79 83 89 97] [71 73 79 83 89 97] [73 79 83 89 97] [79 83
 89 97] [83 89 97] [89 97] [97]]]
-> ;] # drop that list of candidates generated at each step and put the items
-# left behind by the unfold at each step (which is the primes) into a list
+> ]; # 각 단계에서 생성된 후보 목록을 버리고 각 단계에서 unfold가 남긴 항목(소수)을 목록에 넣습니다.
 [[2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97]]
-> ]; # clear and let's try with larger numbers
+> ]; # 지우고 더 큰 숫자로 시도해 보겠습니다.
 []
-> 4.?,2>{}{(\{1$%},}/;]
+> 4.?,2>{}{(\{1$\%%},}/;]
 [[2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101
 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199
 211 223 227 229 233 239 241 251]]
->;'4.?,2>{}{(\{1$%},}/;]', # find the length of our solution.
+>;'4.?,2>{}{(\{1$\%%},}/;]', # 솔루션의 길이를 찾습니다.
 [21]
-> ]; # only 21 characters for the primes! Let's see if we actually can use this
-# strategy of leaving items behind, now using the do loop to get even shorter!
-> 3.?,2> # candidates
+> ]; # 소수에 대해 21자밖에 안 됩니다. 이제 do 루프를 사용하여 항목을 남기는 이 전략을 실제로 사용할 수 있는지 봅시다. 훨씬 더 짧아집니다! 
+> 3.?,2> # 후보
 [[2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26]]
-> (\{1$%}, # pop and filter
+> (\ {1$\%%}, # 팝하고 필터링
 [2 [3 5 7 9 11 13 15 17 19 21 23 25]]
-> (\{1$%}, # again!
+> (\ {1$\%%}, # 다시!
 [2 3 [5 7 11 13 17 19 23 25]]
-> {(\{1$%},.}do;] # try in a do loop and drop the empty list of candidates at
-# the end of the do loop.  Don't forget the dot before the closing brace!
+> {(\{1$\%%},.}do;] # do 루프에서 시도하고 do 루프 끝에 있는 빈 후보 목록을 버립니다. 닫는 중괄호 앞에 점을 잊지 마십시오!
 [[2 3 5 7 11 13 17 19 23]]
-> ;4.?,2>{(\{1$%},.}do;] # check our work
+> ;4.?,2>{(\{1$\%%},.}do;] # 작업을 확인합니다.
 [[2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101
 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199
 211 223 227 229 233 239 241 251]]
-> ;'4.?,2>{(\{1$%},.}do;]',
+> ;'4.?,2>{(\{1$\%%},.}do;]',
 [21]
->]; # Still 21 characters. there's one other thing to try, which is the prime
-# test known as Wilson's theorem. We can try filtering the items down using
-# this test.
+>]; # 여전히 21자입니다. 윌슨의 정리로 알려진 소수 테스트를 시도해 볼 수 있는 또 다른 것이 있습니다. 이 테스트를 사용하여 항목을 필터링해 볼 수 있습니다.
 []
-> '4.?,2>{.,(;{*}*.*\%},'.~\, # let's run it and take the length
+> '4.?,2>{.,(;{*}*.*\%},'.~\, # 실행하고 길이를 가져옵니다.
 [[2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101
 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199
 211 223 227 229 233 239 241 251] 21]
-> ; # Still 21 characters! I think this number is quite good and it's not
-# obvious how to beat it. The problem with GolfScript is there's always someone
-# out there who thinks of some trick you didn't. For instance, you might think
-# you're doing well with a Collatz seq generator of {(}{.2%{3*)}{2/}if}/ until
-# you find that someone figured out {(}{3*).2%6\?/}/ which is so much shorter
-# and cleaner - the unfold operation is nearly half the length!
+> ; # 여전히 21자입니다! 이 숫자는 꽤 좋고 이길 방법이 명확하지 않다고 생각합니다. GolfScript의 문제는 항상 당신이 생각하지 못한 트릭을 생각하는 사람이 있다는 것입니다. 예를 들어, {(}{.2%{3*)}{2/}if}/의 Collatz 시퀀스 생성기로 잘하고 있다고 생각할 수 있습니다. {(}{3*).2%6\?/}/가 훨씬 짧고 깨끗하다는 것을 알게 될 때까지 - unfold 연산은 길이가 거의 절반입니다!
 ########################################################################
-#       How to read GolfScript
+#       GolfScript 읽는 방법
 ########################################################################
-# let's take the gcd from the GolfScript banner. It starts with:
+# GolfScript 배너에서 gcd를 가져오겠습니다. 다음과 같이 시작합니다:
 []
-> '2706 410'~ # so that's pretty straightforward, that it just evals the list
-# and dumps the results on the stack. It's common to read from stdin which
-# necessitates unpacking with ~
+> '2706 410'~ # 목록을 평가하고 결과를 스택에 덤프하는 것은 매우 간단합니다. stdin에서 읽는 것이 일반적이므로 ~로 압축을 풀어야 합니다.
 [2706 410]
-> . # we want to know what that do loop does. the best way to do that is to
-# drop the braces and run the loop one command at a time. We duplicate
+> . # do 루프가 무엇을 하는지 알고 싶습니다. 가장 좋은 방법은 중괄호를 버리고 루프를 한 번에 한 명령씩 실행하는 것입니다. 복제합니다.
 [2706 410 410]
-> @\ # We rearrange
+> @\ # 재정렬합니다.
 [410 2706 410]
-> % # we take the modulo
+> % # 모듈로를 취합니다.
 [410 246]
-> .@\% # repeat. Note we don't need to run the final dot before the closing
-# brace since this is just a value that is popped to check the loop condition
-# you can also replicate the loop end with a semicolon to pop it yourself.
+> .@\% # 반복합니다. 닫는 중괄호 앞에 있는 마지막 점을 실행할 필요가 없습니다. 이것은 루프 조건을 확인하기 위해 팝되는 값이므로. 세미콜론으로 팝하여 직접 루프 끝을 복제할 수도 있습니다.
 [246 164]
-> .@\% # again!
+> .@\% # 다시!
 [164 82]
-> .@\% # and finally we hit zero. The loop would exit and ; would pop the zero,
-# leaving you with the gcd of 82.
+> .@\% # 그리고 마침내 0에 도달합니다. 루프가 종료되고 ;가 0을 팝하여 82의 gcd를 남깁니다.
 [82 0]
-> ;; 2706 410{1$1$%.}do # Clearly this involves knowing about Euclid's method.
-# you can also try a more obvious method like this one here which shows the
-# numbers in sequence.
+> ]; 2706 410{1$1$%.}do # 이것은 유클리드 방법에 대해 알아야 합니다. 여기에서 숫자를 순서대로 보여주는 더 명확한 방법을 시도할 수도 있습니다.
 [2706 410 246 164 82 0]
->]; # so sometimes it pays dividends to know the math and you can write short
-# algorithms that rely on easy tricks that aren't immediately obvious.
+>]; # 따라서 때로는 수학을 아는 것이 도움이 되며 즉시 명확하지 않은 쉬운 트릭에 의존하는 짧은 알고리즘을 작성할 수 있습니다.
 []
-> # let's try looking at the sudoku solver that is on the examples page. I'll
-# skip the unpack step.
+> # 예제 페이지에 있는 스도쿠 해결 프로그램을 살펴보겠습니다. 압축 해제 단계는 건너뛰겠습니다.
 [2 8 4 3 7 5 1 6 9 0 0 9 2 0 0 0 0 7 0 0 1 0 0 4 0 0 2 0 5 0 0 0 0 8 0 0 0 0 8
 0 0 0 9 0 0 0 0 6 0 0 0 0 4 0 9 0 0 1 0 0 5 0 0 8 0 0 0 0 7 6 0 4 4 2 5 6 8 9 7
-3 1]:a 0?:b # again the grid is put into an array. Now, the next step
-# is to define the "@" symbol as the working grid. This is because "@9" is
-# interpreted as two symbols, whereas if you used something like "a" as the
-# variable "a9" is interpreted as a single symbol, and this is not defined,
-# so it will not get run at execution time. You would need a space which is an
-# additional char. On the other hand, redefining built-ins is confusing so I
-# will use "a" and "b" for the "@" and "^" definitions respectively. So the
-# grid is "a" and the zero-index location of the first zero is "b", at index 9.
+3 1]:a 0?:b # 다시 그리드는 배열에 넣습니다. 이제 다음 단계는 "@" 기호를 작업 그리드로 정의하는 것입니다. 이것은 "@9"가 두 개의 기호로 해석되는 반면, 변수로 "a"와 같은 것을 사용하면 "a9"가 단일 기호로 해석되고 이것이 정의되지 않았기 때문에 실행 시간에 실행되지 않기 때문입니다. 추가 문자인 공백이 필요합니다. 반면에 내장 기능을 재정의하는 것은 혼란스러우므로 "@" 및 "^" 정의에 "a"와 "b"를 사용하겠습니다. 따라서 그리드는 "a"이고 첫 번째 0의 0-인덱스 위치는 9인 "b"입니다.
 [9]
-> ~! # this makes sure that the value is not -1 for find, i.e. -1~ evaluates to
-# 0 so a ! makes it nonzero.  ?~! is a great trick for "isn't in the list"
+> ~! # 이것은 find에 대한 값이 -1이 아님을 확인합니다. 즉, -1~은 0으로 평가되므로 !는 0이 아닌 값을 만듭니다. ?~!는 "목록에 없음"에 대한 훌륭한 트릭입니다.
 [0]
-> {@p}* # this prints out the grid the number of times as the previous value,
-# which is how this thing "finishes". So if 0 isn't in the grid, it prints.
-> 10, # let's get the digits 0-9. Zero will be eliminated because our original
-# value is zero so when we look in any row or column, zero is guaranteed to be
-# there.
+> {@p}* # 이것은 이전 값만큼 그리드를 인쇄하며, 이것이 이 것이 "완료"되는 방식입니다. 따라서 그리드에 0이 없으면 인쇄됩니다.
+> 10, # 0-9 숫자를 가져옵니다. 원래 값이 0이므로 행이나 열을 볼 때 0이 보장되므로 0이 제거됩니다.
 [[0 1 2 3 4 5 6 7 8 9]]
-> a 9/  # split the original grid row-wise
-b 9/    # get the row of our checked value, in this case the second row
-=       # and we get that row and
--       # take those numbers off the candidates
+> a 9/  # 원래 그리드를 행 단위로 분할합니다.
+b 9/    # 확인된 값의 행을 가져옵니다. 이 경우 두 번째 행입니다.
+=       # 그리고 해당 행을 가져와
+-       # 후보에서 해당 숫자를 제거합니다.
 [[1 3 4 5 6 8]]
-> a     # put the grid on the stack
-b 9%    # get the column of the zero
->       # drop the first x values of the grid
-9%      # take every ninth digit. We now have the column the zero is in
-> -     # pull those items off the candidates list
+> a     # 스택에 그리드를 넣습니다.
+b 9%    # 0의 열을 가져옵니다.
+>       # 그리드의 첫 번째 x 값을 버립니다.
+9%      # 9번째 숫자마다 가져옵니다. 이제 0이 있는 열이 있습니다.
+> -     # 후보 목록에서 해당 항목을 가져옵니다.
 [[1 3 5 6]]
-> a 3/  # split the grid into three-long arrays
-b 9%    # get the column of the zero
-3/      # is the column in the left (0), middle (1), or right (2) triad?
- >      # pull that many three-groups off
-3%      # get every third. Now we have 9 groups - the left side of the grid
-3/      # divide those 9 groups it into thirds
-b 27/   # was the zero on top (0), middle (1), or bottom (2) third of the grid?
-=       # since it's the top, grab the top group of triads. You now have the
-        # 1/9th of The sudoku grid where the zero sits
+> a 3/  # 그리드를 3개 길이의 배열로 분할합니다.
+b 9%    # 0의 열을 가져옵니다.
+3/      # 열이 왼쪽(0), 중간(1) 또는 오른쪽(2) 삼중항에 있습니까?
+ >      # 해당 3개 그룹을 가져옵니다.
+3%      # 3번째마다 가져옵니다. 이제 9개 그룹이 있습니다 - 그리드의 왼쪽입니다.
+3/      # 해당 9개 그룹을 3분의 1로 나눕니다.
+b 27/   # 0이 그리드의 상단(0), 중간(1) 또는 하단(2) 3분의 1에 있었습니까?
+=       # 상단이므로 상단 삼중항 그룹을 가져옵니다. 이제 0이 있는 스도쿠 그리드의 1/9이 있습니다.
 [[1 3 5 6] [[2 8 4] [0 0 9] [0 0 1]]]
-> {+}*- # flatten those lists and remove those items from the candidates
-# We now have the possible values for the position in question that work given
-# the current state of the grid! if this list is empty then we've hit a
-# contradiction given our previous values.
+> {+}*- # 해당 목록을 평탄화하고 후보에서 해당 항목을 제거합니다.
+# 이제 문제의 위치에 대해 그리드의 현재 상태를 고려할 때 가능한 값이 있습니다! 이 목록이 비어 있으면 이전 값과 모순됩니다.
 [[3 5 6]]
-> 0= # {a b<\+a 1 b+>+}/ # now we've hit this unfold operation. If you run it
-# you'll find we get the grids back. How does that work?! Let's take the first
-# value in the "each" []{}/ operation. This is the best way to figure out what
-# is happening in a mapping situation.
+> 0= # {a b<\+a 1 b+>+}/ # 이제 이 unfold 연산을 수행했습니다. 실행하면 그리드가 다시 나타납니다. 어떻게 작동합니까?! "each" []{}/ 연산에서 첫 번째 값을 가져오겠습니다. 이것이 매핑 상황에서 어떤 일이 일어나고 있는지 파악하는 가장 좋은 방법입니다.
 [3]
-> a     # get the grid
-b<      # get the grid up to the zero
-\+      # and tack on our value of 3.
+> a     # 그리드를 가져옵니다.
+b<      # 0까지 그리드를 가져옵니다.
+\+      # 그리고 3 값을 붙입니다.
 [[2 8 4 3 7 5 1 6 9 3]]
-> a 1b+>+ # and we add on the rest of the grid. Note: we could do 1 char better
-# because 1b+ is equivalent to but, longer than, just b)
+> a 1b+>+ # 그리고 나머지 그리드를 추가합니다. 참고: 1b+는 b)보다 길지만 동일하므로 1자 더 잘할 수 있습니다.
 [[2 8 4 3 7 5 1 6 9 3 0 9 2 0 0 0 0 7 0 0 1 0 0 4 0 0 2 0 5 0 0 0 0 8 0 0 0 0 8
 0 0 0 9 0 0 0 0 6 0 0 0 0 4 0 9 0 0 1 0 0 5 0 0 8 0 0 0 0 7 6 0 4 4 2 5 6 8 9 7
 3 1]]
-> 1;; # and the do block runs again no matter what. So it's now clear why this
-# thing exists with an error: if you solve the last digit, then this loop just
-# keeps on rolling! You could add some bytes for some control flow but if it
-# works it works and short is king.
+> 1;; # 그리고 do 블록은 상관없이 다시 실행됩니다. 따라서 마지막 숫자를 해결하면 이 루프가 계속 실행되는 이유가 분명합니다! 일부 제어 흐름에 대해 몇 바이트를 추가할 수 있지만 작동하면 작동하고 짧은 것이 왕입니다.
 []
 
-# Closing Tips for getting to the next level:
-# 0. using lookback might be more effective than swapping around the values.
-#    for instance, 1$1$ and \.@.@.\ do the same thing: duplicate last two items
-#    but the former is more obvious and shorter.
-# 1. golfscript can be fun to use for messing around with integer sequences or
-#    do other cool math. So, don't be afraid to define your own functions to
-#    make your life easier, like
-> {$0=}:min; {$-1=}:max; {.,(;{*}*.*\%}:isprime; {.|}:set; # etc.
-# 2. write pseudocode in another language or port a script over to figure out
-#    what's going on. Especially useful when you combine this strategy with
-#    algebra engines. For instance, you can port the examples-page 1000 digits
-#    of pi to python and get:
+# 다음 단계로 나아가기 위한 마무리 팁:
+# 0. 값을 교환하는 것보다 lookback을 사용하는 것이 더 효과적일 수 있습니다. 예를 들어, 1$1$과 \.@.@.\는 동일한 작업을 수행합니다: 마지막 두 항목을 복제하지만 전자가 더 명확하고 짧습니다.
+# 1. 골프스크립트는 정수 시퀀스를 가지고 놀거나 다른 멋진 수학을 하는 데 재미있을 수 있습니다. 따라서 인생을 더 쉽게 만들기 위해 자신만의 함수를 정의하는 것을 두려워하지 마십시오.
+> { $0= }:min; { $-1= }:max; { .,(;{*}*.*\% }:isprime; { .| }:set; # 등
+# 2. 다른 언어로 의사 코드를 작성하거나 스크립트를 포팅하여 어떤 일이 일어나고 있는지 파악하십시오. 특히 이 전략을 대수 엔진과 결합할 때 유용합니다. 예를 들어, 예제 페이지 1000자리 파이를 파이썬으로 포팅하고 다음을 얻을 수 있습니다:
 #        import sympy as sp
 #        a, k = sp.var('a'), list(range(20))[1::2]
 #        for _ in range(len(k)-1):
@@ -593,40 +468,22 @@ b<      # get the grid up to the zero
 #            l = k.pop()
 #            k.append(((l+1)//2*m)//(l+2)+2*a)
 #        print(str(k[0]))
-#    which gives "2*a + floor(2*a/3 + floor(4*a/5 + 2*floor(6*a/7 + 3*floor(
-#    8*a/9 + 4*floor(10*a/11 + 5*floor(12*a/13 + 6*floor(14*a/15 + 7*floor(16*
-#    a/17 + 72/17)/15)/13)/11)/9)/7)/5)/3)"... which makes it much more obvious
-#    what's going on than 10.3??:a;20,-2%{2+.2/@*\/a 2*+}* especially when
-#    you're new to the language
-# 3. a little math goes a long way. The above prime test uses Wilson's theorem
-#    a comparable program testing for factors {:i,(;{i\%!},(;!}:isprime is
-#    longer and slower. Also, as discussed above, Collatz is much shorter if
-#    you recognize that you can do (3x+1) and then divide by 6 to the power
-#    ((3x+1) mod 2).  (If x was even, (3x+1) is now odd, so 3x+1 div 6 is x/2.)
-#    avoiding conditionals and redundancy can sometimes require such insight.
-#    And of course, unless you know this continued fraction of pi it's hard to
-#    calculate it in a terse block of code.
-# 4. don't be afraid to define variables and use arrays! particularly if you
-#    have 4 or more items to shuffle.
-# 5. don't be afraid to use [some_long_script] to pack a bunch of items in an
-#    array after the fact, rather than gathering or adding them later or
-#    forcing yourself to use a datastructure that keeps the items in an array
-# 6. sometimes you might get in a jam with - followed by an int that can be
-#    solved with ^ to do a symmetric set difference without adding a space
-# 7. "#{require 'net/http';Net::HTTP.get_response(URI.parse(address)).body}"
-#    can get any page source from the internet, substituting 'address' for your
-#    URL. Try it with an OEIS b-file or wordlists, etc. You can also use the
-#    shorter "#{File.open('filename.txt').read}" to read in a file. GolfScript
-#    can run "#{any_ruby_code_here}" and add the results to the stack.
-# 8. you can set anything to mean anything, which can be useful for golf:
-#       3:^;^2?  => 9 because this set ^ to 3, and 3 2 ? => 9
-#       3:a;a2?  => Warning: pop on empty stack - because a2 doesn't exist
-#       3:a;a 2? => 9 - it works again, but takes an extra character over ^2
-#    usually you will only want to do this once you're trying to squeeze the
-#    last few chars out of your code because it ruins your environment.
-```
+#    "2*a + floor(2*a/3 + floor(4*a/5 + 2*floor(6*a/7 + 3*floor(8*a/9 + 4*floor(10*a/11 + 5*floor(12*a/13 + 6*floor(14*a/15 + 7*floor(16*
+#    a/17 + 72/17)/15)/13)/11)/9)/7)/5)/3)"을 제공합니다... 10.3??:a;20,-2%{2+.2/@*\/a 2*+}*보다 훨씬 더 명확하게 어떤 일이 일어나고 있는지 알 수 있습니다. 특히 언어에 익숙하지 않은 경우
+# 3. 약간의 수학은 큰 도움이 됩니다. 위의 소수 테스트는 윌슨의 정리를 사용합니다. 인수를 테스트하는 비슷한 프로그램 {:i,(;{i\%!},(;!}:isprime은 더 길고 느립니다. 또한 위에서 논의했듯이 Collatz는 (3x+1)을 수행한 다음 6의 거듭제곱으로 나눌 수 있다는 것을 인식하면 훨씬 짧습니다. ((3x+1) mod 2). (x가 짝수이면 (3x+1)은 이제 홀수이므로 3x+1 div 6은 x/2입니다.) 조건부 및 중복을 피하려면 때로는 그러한 통찰력이 필요합니다. 그리고 물론, 이 파이의 연분수를 모르면 간결한 코드 블록으로 계산하기 어렵습니다.
+# 4. 변수를 정의하고 배열을 사용하는 것을 두려워하지 마십시오! 특히 4개 이상의 항목을 섞어야 하는 경우.
+# 5. 나중에 항목을 수집하거나 추가하거나 항목을 배열에 유지하는 데이터 구조를 강제로 사용하는 대신, 나중에 [some_long_script]를 사용하여 많은 항목을 배열에 묶는 것을 두려워하지 마십시오.
+# 6. 때로는 공백을 추가하지 않고 대칭 집합 차이를 수행하기 위해 ^를 사용하여 해결할 수 있는 - 다음에 int가 오는 곤경에 처할 수 있습니다.
+# 7. "#{require 'net/http';Net::HTTP.get_response(URI.parse(address)).body}"는 인터넷에서 모든 페이지 소스를 가져올 수 있으며, 'address'를 URL로 대체합니다. OEIS b-파일 또는 단어 목록 등으로 시도해 보십시오. 파일을 읽으려면 더 짧은 "#{File.open('filename.txt').read}"를 사용할 수도 있습니다. GolfScript는 "#{any_ruby_code_here}"를 실행하고 결과를 스택에 추가할 수 있습니다.
+# 8. 무엇이든 무엇이든 설정할 수 있으며, 골프에 유용할 수 있습니다:
+#       3:^;^2?  => 9, 이것은 ^를 3으로 설정하고 3 2 ? => 9이기 때문입니다.
+#       3:a;a2?  => 경고: 빈 스택에서 팝 - a2가 없기 때문입니다.
+#       3:a;a 2? => 9 - 다시 작동하지만 ^2보다 한 자 더 걸립니다.
+#    일반적으로 코드에서 마지막 몇 자를 짜내려고 할 때만 이 작업을 수행하고 싶을 것입니다. 왜냐하면 환경을 망치기 때문입니다.
 
-* [Run GolfScript online](https://tio.run/#golfscript)
-* [GolfScript's documentation](http://www.golfscript.com/golfscript/builtin.html)
-* [Useful StackExchange thread](https://codegolf.stackexchange.com/questions/5264/tips-for-golfing-in-golfscript)
-* [GolfScript on GitHub](https://github.com/darrenks/golfscript)
+* [온라인에서 GolfScript 실행](https://tio.run/#golfscript)
+* [GolfScript 문서](http://www.golfscript.com/golfscript/builtin.html)
+* [유용한 StackExchange 스레드](https://codegolf.stackexchange.com/questions/5264/tips-for-golfing-in-golfscript)
+* [GitHub의 GolfScript](https://github.com/darrenks/golfscript)
+
+```

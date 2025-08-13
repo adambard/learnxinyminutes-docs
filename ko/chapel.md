@@ -1,217 +1,212 @@
-# chapel.md (번역)
-
 ---
 name: Chapel
 filename: learnchapel.chpl
 contributors:
     - ["Ian J. Bertolacci", "https://www.cs.arizona.edu/~ianbertolacci/"]
     - ["Ben Harshbarger", "https://github.com/benharsh/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-You can read all about Chapel at [Cray's official Chapel website](https://chapel-lang.org).
-In short, Chapel is an open-source, high-productivity, parallel-programming
-language in development at Cray Inc., and is designed to run on multi-core PCs
-as well as multi-kilocore supercomputers.
+[Cray의 공식 Chapel 웹사이트](https://chapel-lang.org)에서 Chapel에 대한 모든 것을 읽을 수 있습니다.
+간단히 말해, Chapel은 Cray Inc.에서 개발 중인 오픈 소스, 고생산성, 병렬 프로그래밍
+언어이며, 다중 코어 PC뿐만 아니라 다중 킬로코어 슈퍼컴퓨터에서도 실행되도록 설계되었습니다.
 
-More information and support can be found at the bottom of this document.
+더 많은 정보와 지원은 이 문서 하단에서 찾을 수 있습니다.
 
-You can refer to the official site for [latest version](https://chapel-lang.org/docs/master/primers/learnChapelInYMinutes.html) of this document.
+이 문서의 [최신 버전](https://chapel-lang.org/docs/master/primers/learnChapelInYMinutes.html)은 공식 사이트를 참조할 수 있습니다.
 
 ```chapel
 /*
-   Learn Chapel in Y Minutes
+   Y분 만에 Chapel 배우기
 
-   This primer will go over basic syntax and concepts in Chapel.
-   Last sync with official page: Sun, 08 Mar 2020 08:05:53 +0000
+   이 입문서는 Chapel의 기본 구문과 개념을 다룹니다.
+   공식 페이지와 마지막 동기화: 2020년 3월 8일 일요일 08:05:53 +0000
 */
 
-// Comments are C-family style
+// 주석은 C 계열 스타일입니다.
 
-// one line comment
+// 한 줄 주석
 /*
-    multi-line comment
+    여러 줄 주석
 */
 
 /*
-Basic printing
+기본 인쇄
 */
 
 write("Hello, ");
 writeln("World!");
 
-// ``write`` and ``writeln`` can take a list of things to print.
-// Each thing is printed right next to the others, so include your spacing!
-writeln("There are ", 3, " commas (\",\") in this line of code");
+// ``write``와 ``writeln``은 인쇄할 항목 목록을 사용할 수 있습니다.
+// 각 항목은 다른 항목 바로 옆에 인쇄되므로 간격을 포함하십시오!
+writeln("There are ", 3, " commas (",") in this line of code");
 
-// Different output channels:
-use IO; // Required for accessing the alternative output channels
+// 다른 출력 채널:
+use IO; // 다른 출력 채널에 액세스하려면 필요합니다.
 
 stdout.writeln("This goes to standard output, just like plain writeln() does");
 stderr.writeln("This goes to standard error");
 
 /*
-Variables
+변수
 */
 
-// Variables don't have to be explicitly typed as long as
-// the compiler can figure out the type that it will hold.
-// 10 is an ``int``, so ``myVar`` is implicitly an ``int``
+// 변수는 컴파일러가 보유할 유형을 파악할 수 있는 한
+// 명시적으로 유형을 지정할 필요가 없습니다.
+// 10은 ``int``이므로 ``myVar``는 암시적으로 ``int``입니다.
 var myVar = 10;
 myVar = -10;
 var mySecondVar = myVar;
-// ``var anError;`` would be a compile-time error.
+// ``var anError;``는 컴파일 타임 오류입니다.
 
-// We can (and should) explicitly type things.
+// 명시적으로 유형을 지정할 수 있습니다(그리고 그래야 합니다).
 var myThirdVar: real;
 var myFourthVar: real = -1.234;
 myThirdVar = myFourthVar;
 
 /*
-Types
+유형
 */
 
-// There are a number of basic types.
-var myInt: int = -1000; // Signed ints
-var myUint: uint = 1234; // Unsigned ints
-var myReal: real = 9.876; // Floating point numbers
-var myImag: imag = 5.0i; // Imaginary numbers
-var myCplx: complex = 10 + 9i; // Complex numbers
-myCplx = myInt + myImag; // Another way to form complex numbers
-var myBool: bool = false; // Booleans
-var myStr: string = "Some string..."; // Strings
-var singleQuoteStr = 'Another string...'; // String literal with single quotes
+// 여러 가지 기본 유형이 있습니다.
+var myInt: int = -1000; // 부호 있는 정수
+var myUint: uint = 1234; // 부호 없는 정수
+var myReal: real = 9.876; // 부동 소수점 숫자
+var myImag: imag = 5.0i; // 허수
+var myCplx: complex = 10 + 9i; // 복소수
+myCplx = myInt + myImag; // 복소수를 형성하는 또 다른 방법
+var myBool: bool = false; // 부울
+var myStr: string = "Some string..."; // 문자열
+var singleQuoteStr = 'Another string...'; // 작은따옴표가 있는 문자열 리터럴
 
-// Some types can have sizes.
-var my8Int: int(8) = 10; // 8 bit (one byte) sized int;
-var my64Real: real(64) = 1.516; // 64 bit (8 bytes) sized real
+// 일부 유형은 크기를 가질 수 있습니다.
+var my8Int: int(8) = 10; // 8비트(1바이트) 크기 정수;
+var my64Real: real(64) = 1.516; // 64비트(8바이트) 크기 실수
 
-// Typecasting.
+// 유형 변환.
 var intFromReal = myReal : int;
 var intFromReal2: int = myReal : int;
 
-// Type aliasing.
-type chroma = int;        // Type of a single hue
-type RGBColor = 3*chroma; // Type representing a full color
+// 유형 별칭.
+type chroma = int;        // 단일 색조의 유형
+type RGBColor = 3*chroma; // 전체 색상을 나타내는 유형
 var black: RGBColor = (0,0,0);
 var white: RGBColor = (255, 255, 255);
 
 /*
-Constants and Parameters
+상수 및 매개변수
 */
 
-// A ``const`` is a constant, and cannot be changed after set in runtime.
+// ``const``는 상수이며 런타임에 설정된 후에는 변경할 수 없습니다.
 const almostPi: real = 22.0/7.0;
 
-// A ``param`` is a constant whose value must be known statically at
-// compile-time.
+// ``param``은 컴파일 타임에 값을 알아야 하는 상수입니다.
 param compileTimeConst: int = 16;
 
-// The ``config`` modifier allows values to be set at the command line.
-// Set with ``--varCmdLineArg=Value`` or ``--varCmdLineArg Value`` at runtime.
+// ``config`` 수정자는 명령줄에서 값을 설정할 수 있도록 합니다.
+// 런타임에 ``--varCmdLineArg=Value`` 또는 ``--varCmdLineArg Value``로 설정합니다.
 config var varCmdLineArg: int = -123;
 config const constCmdLineArg: int = 777;
 
-// ``config param`` can be set at compile-time.
-// Set with ``--set paramCmdLineArg=value`` at compile-time.
+// ``config param``은 컴파일 타임에 설정할 수 있습니다.
+// 컴파일 타임에 ``--set paramCmdLineArg=value``로 설정합니다.
 config param paramCmdLineArg: bool = false;
 writeln(varCmdLineArg, ", ", constCmdLineArg, ", ", paramCmdLineArg);
 
 /*
-References
+참조
 */
 
-// ``ref`` operates much like a reference in C++. In Chapel, a ``ref`` cannot
-// be made to alias a variable other than the variable it is initialized with.
-// Here, ``refToActual`` refers to ``actual``.
+// ``ref``는 C++의 참조와 매우 유사하게 작동합니다. Chapel에서 ``ref``는 초기화된 변수 이외의 변수를 별칭으로 만들 수 없습니다.
+// 여기서 ``refToActual``은 ``actual``을 참조합니다.
 var actual = 10;
 ref refToActual = actual;
-writeln(actual, " == ", refToActual); // prints the same value
-actual = -123; // modify actual (which refToActual refers to)
-writeln(actual, " == ", refToActual); // prints the same value
-refToActual = 99999999; // modify what refToActual refers to (which is actual)
-writeln(actual, " == ", refToActual); // prints the same value
+writeln(actual, " == ", refToActual); // 동일한 값 인쇄
+actual = -123; // actual 수정(refToActual이 참조하는)
+writeln(actual, " == ", refToActual); // 동일한 값 인쇄
+refToActual = 99999999; // refToActual이 참조하는 것 수정(actual임)
+writeln(actual, " == ", refToActual); // 동일한 값 인쇄
 
 /*
-Operators
+연산자
 */
 
-// Math operators:
+// 수학 연산자:
 var a: int, thisInt = 1234, thatInt = 5678;
-a = thisInt + thatInt;  // Addition
-a = thisInt * thatInt;  // Multiplication
-a = thisInt - thatInt;  // Subtraction
-a = thisInt / thatInt;  // Division
-a = thisInt ** thatInt; // Exponentiation
-a = thisInt % thatInt;  // Remainder (modulo)
+a = thisInt + thatInt;  // 덧셈
+a = thisInt * thatInt;  // 곱셈
+a = thisInt - thatInt;  // 뺄셈
+a = thisInt / thatInt;  // 나눗셈
+a = thisInt ** thatInt; // 거듭제곱
+a = thisInt % thatInt;  // 나머지 (모듈로)
 
-// Logical operators:
+// 논리 연산자:
 var b: bool, thisBool = false, thatBool = true;
-b = thisBool && thatBool; // Logical and
-b = thisBool || thatBool; // Logical or
-b = !thisBool;            // Logical negation
+b = thisBool && thatBool; // 논리곱
+b = thisBool || thatBool; // 논리합
+b = !thisBool;            // 논리 부정
 
-// Relational operators:
-b = thisInt > thatInt;           // Greater-than
-b = thisInt >= thatInt;          // Greater-than-or-equal-to
-b = thisInt < a && a <= thatInt; // Less-than, and, less-than-or-equal-to
-b = thisInt != thatInt;          // Not-equal-to
-b = thisInt == thatInt;          // Equal-to
+// 관계 연산자:
+b = thisInt > thatInt;           // 보다 큼
+b = thisInt >= thatInt;          // 보다 크거나 같음
+b = thisInt < a && a <= thatInt; // 보다 작음, 그리고, 보다 작거나 같음
+b = thisInt != thatInt;          // 같지 않음
+b = thisInt == thatInt;          // 같음
 
-// Bitwise operators:
-a = thisInt << 10;     // Left-bit-shift by 10 bits;
-a = thatInt >> 5;      // Right-bit-shift by 5 bits;
-a = ~thisInt;          // Bitwise-negation
-a = thisInt ^ thatInt; // Bitwise exclusive-or
+// 비트 연산자:
+a = thisInt << 10;     // 왼쪽으로 10비트 시프트;
+a = thatInt >> 5;      // 오른쪽으로 5비트 시프트;
+a = ~thisInt;          // 비트 부정
+a = thisInt ^ thatInt; // 비트 배타적 논리합
 
-// Compound assignment operators:
-a += thisInt;          // Addition-equals (a = a + thisInt;)
-a *= thatInt;          // Times-equals (a = a * thatInt;)
-b &&= thatBool;        // Logical-and-equals (b = b && thatBool;)
-a <<= 3;               // Left-bit-shift-equals (a = a << 10;)
+// 복합 할당 연산자:
+a += thisInt;          // 덧셈-등호 (a = a + thisInt;)
+a *= thatInt;          // 곱셈-등호 (a = a * thatInt;)
+b &&= thatBool;        // 논리곱-등호 (b = b && thatBool;)
+a <<= 3;               // 왼쪽 비트 시프트-등호 (a = a << 10;)
 
-// Unlike other C family languages, there are no
-// pre/post-increment/decrement operators, such as:
+// 다른 C 계열 언어와 달리 다음과 같은 전/후 증감 연산자는 없습니다:
 //
 // ``++j``, ``--j``, ``j++``, ``j--``
 
-// Swap operator:
+// 교환 연산자:
 var old_this = thisInt;
 var old_that = thatInt;
-thisInt <=> thatInt; // Swap the values of thisInt and thatInt
+thisInt <=> thatInt; // thisInt와 thatInt의 값을 교환합니다.
 writeln((old_this == thatInt) && (old_that == thisInt));
 
-// Operator overloads can also be defined, as we'll see with procedures.
+// 연산자 오버로드는 프로시저에서 볼 수 있듯이 정의할 수도 있습니다.
 
 /*
-Tuples
+튜플
 */
 
-// Tuples can be of the same type or different types.
+// 튜플은 동일한 유형이거나 다른 유형일 수 있습니다.
 var sameTup: 2*int = (10, -1);
 var sameTup2 = (11, -6);
 var diffTup: (int,real,complex) = (5, 1.928, myCplx);
 var diffTupe2 = (7, 5.64, 6.0+1.5i);
 
-// Tuples can be accessed using square brackets or parentheses, and are
-// 1-indexed.
+// 튜플은 대괄호나 괄호를 사용하여 액세스할 수 있으며 1-인덱싱됩니다.
 writeln("(", sameTup[1], ",", sameTup(2), ")");
 writeln(diffTup);
 
-// Tuples can also be written into.
+// 튜플에 쓸 수도 있습니다.
 diffTup(1) = -1;
 
-// Tuple values can be expanded into their own variables.
+// 튜플 값은 자체 변수로 확장될 수 있습니다.
 var (tupInt, tupReal, tupCplx) = diffTup;
 writeln(diffTup == (tupInt, tupReal, tupCplx));
 
-// They are also useful for writing a list of variables, as is common in debugging.
+// 디버깅에 일반적인 변수 목록을 작성하는 데에도 유용합니다.
 writeln((a,b,thisInt,thatInt,thisBool,thatBool));
 
 /*
-Control Flow
+제어 흐름
 */
 
-// ``if`` - ``then`` - ``else`` works just like any other C-family language.
+// ``if`` - ``then`` - ``else``는 다른 C 계열 언어와 마찬가지로 작동합니다.
 if 10 < 100 then
   writeln("All is well");
 
@@ -220,7 +215,7 @@ if -1 < 1 then
 else
   writeln("Send mathematician, something's wrong");
 
-// You can use parentheses if you prefer.
+// 원한다면 괄호를 사용할 수 있습니다.
 if (10 > 100) {
   writeln("Universe broken. Please reboot universe.");
 }
@@ -239,11 +234,11 @@ if a % 3 == 0 {
   writeln(b, " is divided by 3 with a remainder of 2.");
 }
 
-// Ternary: ``if`` - ``then`` - ``else`` in a statement.
+// 삼항: 문에서 ``if`` - ``then`` - ``else``.
 var maximum = if thisInt < thatInt then thatInt else thisInt;
 
-// ``select`` statements are much like switch statements in other languages.
-// However, ``select`` statements don't cascade like in C or Java.
+// ``select`` 문은 다른 언어의 switch 문과 매우 유사합니다.
+// 그러나 ``select`` 문은 C나 Java처럼 계단식으로 작동하지 않습니다.
 var inputOption = "anOption";
 select inputOption {
   when "anOption" do writeln("Chose 'anOption'");
@@ -257,7 +252,7 @@ select inputOption {
   }
 }
 
-// ``while`` and ``do``-``while`` loops also behave like their C counterparts.
+// ``while`` 및 ``do``-``while`` 루프도 C 대응 항목처럼 동작합니다.
 var j: int = 1;
 var jSum: int = 0;
 while (j <= 1000) {
@@ -272,9 +267,7 @@ do {
 } while (j <= 10000);
 writeln(jSum);
 
-// ``for`` loops are much like those in python in that they iterate over a
-// range. Ranges (like the ``1..10`` expression below) are a first-class object
-// in Chapel, and as such can be stored in variables.
+// ``for`` 루프는 파이썬의 루프와 매우 유사하며 범위를 반복합니다. 아래의 ``1..10`` 표현식과 같은 범위는 Chapel에서 일급 객체이며 변수에 저장할 수 있습니다.
 for i in 1..10 do write(i, ", ");
 writeln();
 
@@ -292,44 +285,39 @@ for x in 1..10 {
 }
 
 /*
-Ranges and Domains
+범위 및 도메인
 */
 
-// For-loops and arrays both use ranges and domains to define an index set that
-// can be iterated over. Ranges are single dimensional integer indices, while
-// domains can be multi-dimensional and represent indices of different types.
+// For-루프와 배열은 모두 반복할 수 있는 인덱스 집합을 정의하기 위해 범위와 도메인을 사용합니다. 범위는 단일 차원 정수 인덱스이고, 도메인은 다차원일 수 있으며 다른 유형의 인덱스를 나타낼 수 있습니다.
 
-// They are first-class citizen types, and can be assigned into variables.
+// 이들은 일급 시민 유형이며 변수에 할당할 수 있습니다.
 var range1to10: range = 1..10;  // 1, 2, 3, ..., 10
 var range2to11 = 2..11; // 2, 3, 4, ..., 11
-var rangeThisToThat: range = thisInt..thatInt; // using variables
-var rangeEmpty: range = 100..-100; // this is valid but contains no indices
+var rangeThisToThat: range = thisInt..thatInt; // 변수 사용
+var rangeEmpty: range = 100..-100; // 이것은 유효하지만 인덱스를 포함하지 않습니다.
 
-// Ranges can be unbounded.
+// 범위는 무한할 수 있습니다.
 var range1toInf: range(boundedType=BoundedRangeType.boundedLow) = 1.. ; // 1, 2, 3, 4, 5, ...
 var rangeNegInfTo1 = ..1; // ..., -4, -3, -2, -1, 0, 1
 
-// Ranges can be strided (and reversed) using the ``by`` operator.
+// 범위는 ``by`` 연산자를 사용하여 보폭을 지정(및 반전)할 수 있습니다.
 var range2to10by2: range(stridable=true) = 2..10 by 2; // 2, 4, 6, 8, 10
 var reverse2to10by2 = 2..10 by -2; // 10, 8, 6, 4, 2
 
-var trapRange = 10..1 by -1; // Do not be fooled, this is still an empty range
-writeln("Size of range '", trapRange, "' = ", trapRange.size);
+var trapRange = 10..1 by -1; // 속지 마십시오. 이것은 여전히 빈 범위입니다.
+writeln("Size of range ", trapRange, " = ", trapRange.size);
 
-// Note: ``range(boundedType= ...)`` and ``range(stridable= ...)`` are only
-// necessary if we explicitly type the variable.
+// 참고: ``range(boundedType= ...)`` 및 ``range(stridable= ...)``는 변수를 명시적으로 입력하는 경우에만 필요합니다.
 
-// The end point of a range can be computed by specifying the total size
-// of the range using the count (``#``) operator.
-var rangeCount: range = -5..#12; // range from -5 to 6
+// 범위의 끝점은 카운트(``#``) 연산자를 사용하여 범위의 총 크기를 지정하여 계산할 수 있습니다.
+var rangeCount: range = -5..#12; // -5에서 6까지의 범위
 
-// Operators can be mixed.
+// 연산자를 혼합할 수 있습니다.
 var rangeCountBy: range(stridable=true) = -5..#12 by 2; // -5, -3, -1, 1, 3, 5
 writeln(rangeCountBy);
 
-// Properties of the range can be queried.
-// In this example, printing the first index, last index, number of indices,
-// stride, and if 2 is include in the range.
+// 범위의 속성을 쿼리할 수 있습니다.
+// 이 예에서는 첫 번째 인덱스, 마지막 인덱스, 인덱스 수, 보폭 및 2가 범위에 포함되어 있는지 여부를 인쇄합니다.
 writeln((rangeCountBy.first, rangeCountBy.last, rangeCountBy.size,
            rangeCountBy.stride, rangeCountBy.contains(2)));
 
@@ -337,47 +325,45 @@ for i in rangeCountBy {
   write(i, if i == rangeCountBy.last then "\n" else ", ");
 }
 
-// Rectangular domains are defined using the same range syntax,
-// but they are required to be bounded (unlike ranges).
-var domain1to10: domain(1) = {1..10};        // 1D domain from 1..10;
-var twoDimensions: domain(2) = {-2..2,0..2}; // 2D domain over product of ranges
+// 직사각형 도메인은 동일한 범위 구문을 사용하여 정의되지만 범위와 달리 경계가 있어야 합니다.
+var domain1to10: domain(1) = {1..10};        // 1..10의 1D 도메인;
+var twoDimensions: domain(2) = {-2..2,0..2}; // 범위의 곱에 대한 2D 도메인
 var thirdDim: range = 1..16;
-var threeDims: domain(3) = {thirdDim, 1..10, 5..10}; // using a range variable
+var threeDims: domain(3) = {thirdDim, 1..10, 5..10}; // 범위 변수 사용
 
-// Domains can also be resized
+// 도메인 크기도 조정할 수 있습니다.
 var resizedDom = {1..10};
 writeln("before, resizedDom = ", resizedDom);
 resizedDom = {-10..#10};
 writeln("after, resizedDom = ", resizedDom);
 
-// Indices can be iterated over as tuples.
+// 인덱스는 튜플로 반복할 수 있습니다.
 for idx in twoDimensions do
   write(idx, ", ");
 writeln();
 
-// These tuples can also be destructured.
+// 이러한 튜플은 구조를 해제할 수도 있습니다.
 for (x,y) in twoDimensions {
   write("(", x, ", ", y, ")", ", ");
 }
 writeln();
 
-// Associative domains act like sets.
-var stringSet: domain(string); // empty set of strings
+// 연관 도메인은 집합처럼 작동합니다.
+var stringSet: domain(string); // 빈 문자열 집합
 stringSet += "a";
 stringSet += "b";
 stringSet += "c";
-stringSet += "a"; // Redundant add "a"
-stringSet -= "c"; // Remove "c"
+stringSet += "a"; // 중복 추가 "a"
+stringSet -= "c"; // "c" 제거
 writeln(stringSet.sorted());
 
-// Associative domains can also have a literal syntax
+// 연관 도메인은 리터럴 구문을 가질 수도 있습니다.
 var intSet = {1, 2, 4, 5, 100};
 
-// Both ranges and domains can be sliced to produce a range or domain with the
-// intersection of indices.
-var rangeA = 1.. ; // range from 1 to infinity
-var rangeB =  ..5; // range from negative infinity to 5
-var rangeC = rangeA[rangeB]; // resulting range is 1..5
+// 범위와 도메인은 모두 슬라이스하여 인덱스의 교집합이 있는 범위나 도메인을 생성할 수 있습니다.
+var rangeA = 1.. ; // 1에서 무한대까지의 범위
+var rangeB =  ..5; // 음의 무한대에서 5까지의 범위
+var rangeC = rangeA[rangeB]; // 결과 범위는 1..5입니다.
 writeln((rangeA, rangeB, rangeC));
 
 var domainA = {1..10, 5..20};
@@ -386,130 +372,125 @@ var domainC = domainA[domainB];
 writeln((domainA, domainB, domainC));
 
 /*
-Arrays
+배열
 */
 
-// Arrays are similar to those of other languages.
-// Their sizes are defined using domains that represent their indices.
+// 배열은 다른 언어의 배열과 유사합니다.
+// 크기는 인덱스를 나타내는 도메인을 사용하여 정의됩니다.
 var intArray: [1..10] int;
-var intArray2: [{1..10}] int; // equivalent
+var intArray2: [{1..10}] int; // 동일
 
-// They can be accessed using either brackets or parentheses
+// 대괄호나 괄호를 사용하여 액세스할 수 있습니다.
 for i in 1..10 do
   intArray[i] = -i;
 writeln(intArray);
 
-// We cannot access ``intArray[0]`` because it exists outside
-// of the index set, ``{1..10}``, we defined it to have.
-// ``intArray[11]`` is illegal for the same reason.
+// ``intArray[0]``에 액세스할 수 없습니다. 왜냐하면 정의한 인덱스 집합 ``{1..10}`` 외부에 존재하기 때문입니다.
+// ``intArray[11]``도 같은 이유로 불법입니다.
 var realDomain: domain(2) = {1..5,1..7};
 var realArray: [realDomain] real;
-var realArray2: [1..5,1..7] real;   // equivalent
-var realArray3: [{1..5,1..7}] real; // equivalent
+var realArray2: [1..5,1..7] real;   // 동일
+var realArray3: [{1..5,1..7}] real; // 동일
 
 for i in 1..5 {
-  for j in realDomain.dim(2) {   // Only use the 2nd dimension of the domain
-    realArray[i,j] = -1.61803 * i + 0.5 * j;  // Access using index list
-    var idx: 2*int = (i,j);                   // Note: 'index' is a keyword
-    realArray[idx] = - realArray[(i,j)];      // Index using tuples
+  for j in realDomain.dim(2) {   // 도메인의 2차원만 사용
+    realArray[i,j] = -1.61803 * i + 0.5 * j;  // 인덱스 목록을 사용하여 액세스
+    var idx: 2*int = (i,j);                   // 참고: 'index'는 키워드입니다.
+    realArray[idx] = - realArray[(i,j)];      // 튜플을 사용하여 인덱싱
   }
 }
 
-// Arrays have domains as members, and can be iterated over as normal.
-for idx in realArray.domain {  // Again, idx is a 2*int tuple
-  realArray[idx] = 1 / realArray[idx[1], idx[2]]; // Access by tuple and list
+// 배열에는 멤버로 도메인이 있으며 일반적인 방식으로 반복할 수 있습니다.
+for idx in realArray.domain {  // 다시 말하지만, idx는 2*int 튜플입니다.
+  realArray[idx] = 1 / realArray[idx[1], idx[2]]; // 튜플 및 목록으로 액세스
 }
 
 writeln(realArray);
 
-// The values of an array can also be iterated directly.
+// 배열의 값은 직접 반복할 수도 있습니다.
 var rSum: real = 0;
 for value in realArray {
-  rSum += value; // Read a value
-  value = rSum;  // Write a value
+  rSum += value; // 값 읽기
+  value = rSum;  // 값 쓰기
 }
 writeln(rSum, "\n", realArray);
 
-// Associative arrays (dictionaries) can be created using associative domains.
+// 연관 배열(사전)은 연관 도메인을 사용하여 만들 수 있습니다.
 var dictDomain: domain(string) = { "one", "two", "three"};
 var dict: [dictDomain] int = ["one" => 1, "two" => 2, "three" => 3];
 
 for key in dictDomain.sorted() do
   writeln(dict[key]);
 
-// Arrays can be assigned to each other in a few different ways.
-// These arrays will be used in the example.
+// 배열은 몇 가지 다른 방식으로 서로 할당할 수 있습니다.
+// 이 배열은 예제에서 사용됩니다.
 var thisArray : [0..5] int = [0,1,2,3,4,5];
 var thatArray : [0..5] int;
 
-// First, simply assign one to the other. This copies ``thisArray`` into
-// ``thatArray``, instead of just creating a reference. Therefore, modifying
-// ``thisArray`` does not also modify ``thatArray``.
+// 첫째, 하나를 다른 하나에 간단히 할당합니다. 이것은 ``thisArray``를 ``thatArray``에 복사하는 것이지 참조를 만드는 것이 아닙니다. 따라서 ``thisArray``를 수정해도 ``thatArray``는 수정되지 않습니다.
 
 thatArray = thisArray;
 thatArray[1] = -1;
 writeln((thisArray, thatArray));
 
-// Assign a slice from one array to a slice (of the same size) in the other.
+// 한 배열의 슬라이스를 다른 배열의 슬라이스(동일한 크기)에 할당합니다.
 thatArray[4..5] = thisArray[1..2];
 writeln((thisArray, thatArray));
 
-// Operations can also be promoted to work on arrays. 'thisPlusThat' is also
-// an array.
+// 연산은 배열에 대해 승격될 수도 있습니다. 'thisPlusThat'도 배열입니다.
 var thisPlusThat = thisArray + thatArray;
 writeln(thisPlusThat);
 
-// Moving on, arrays and loops can also be expressions, where the loop
-// body's expression is the result of each iteration.
+// 계속해서, 배열과 루프는 표현식일 수도 있으며, 여기서 루프 본문의 표현식은 각 반복의 결과입니다.
 var arrayFromLoop = for i in 1..10 do i;
-writeln(arrayFromLoop);
+Writeln(arrayFromLoop);
 
-// An expression can result in nothing, such as when filtering with an if-expression.
+// 표현식은 if-표현식으로 필터링할 때와 같이 아무것도 반환하지 않을 수 있습니다.
 var evensOrFives = for i in 1..10 do if (i % 2 == 0 || i % 5 == 0) then i;
 
-writeln(arrayFromLoop);
+Writeln(arrayFromLoop);
 
-// Array expressions can also be written with a bracket notation.
-// Note: this syntax uses the ``forall`` parallel concept discussed later.
+// 배열 표현식은 대괄호 표기법으로도 작성할 수 있습니다.
+// 참고: 이 구문은 나중에 논의될 ``forall`` 병렬 개념을 사용합니다.
 var evensOrFivesAgain = [i in 1..10] if (i % 2 == 0 || i % 5 == 0) then i;
 
-// They can also be written over the values of the array.
+// 배열의 값에 대해서도 작성할 수 있습니다.
 arrayFromLoop = [value in arrayFromLoop] value + 1;
 
 
 /*
-Procedures
+프로시저
 */
 
-// Chapel procedures have similar syntax functions in other languages.
+// Chapel 프로시저는 다른 언어의 함수와 유사한 구문을 가집니다.
 proc fibonacci(n : int) : int {
   if n <= 1 then return n;
   return fibonacci(n-1) + fibonacci(n-2);
 }
 
-// Input parameters can be untyped to create a generic procedure.
+// 입력 매개변수는 제네릭 프로시저를 만들기 위해 유형이 지정되지 않을 수 있습니다.
 proc doublePrint(thing): void {
   write(thing, " ", thing, "\n");
 }
 
-// The return type can be inferred, as long as the compiler can figure it out.
+// 반환 유형은 컴파일러가 파악할 수 있는 한 추론될 수 있습니다.
 proc addThree(n) {
   return n + 3;
 }
 
 doublePrint(addThree(fibonacci(20)));
 
-// It is also possible to take a variable number of parameters.
+// 가변 개수의 매개변수를 사용하는 것도 가능합니다.
 proc maxOf(x ...?k) {
-  // x refers to a tuple of one type, with k elements
+  // x는 k개의 요소를 가진 한 가지 유형의 튜플을 참조합니다.
   var maximum = x[1];
   for i in 2..k do maximum = if maximum < x[i] then x[i] else maximum;
   return maximum;
 }
 writeln(maxOf(1, -10, 189, -9071982, 5, 17, 20001, 42));
 
-// Procedures can have default parameter values, and
-// the parameters can be named in the call, even out of order.
+// 프로시저는 기본 매개변수 값을 가질 수 있으며,
+// 매개변수는 순서에 상관없이 호출에서 이름으로 지정할 수 있습니다.
 proc defaultsProc(x: int, y: real = 1.2634): (int,real) {
   return (x,y);
 }
@@ -519,11 +500,8 @@ writeln(defaultsProc(x=11));
 writeln(defaultsProc(x=12, y=5.432));
 writeln(defaultsProc(y=9.876, x=13));
 
-// The ``?`` operator is called the query operator, and is used to take
-// undetermined values like tuple or array sizes and generic types.
-// For example, taking arrays as parameters. The query operator is used to
-// determine the domain of ``A``. This is useful for defining the return type,
-// though it's not required.
+// ``?`` 연산자는 쿼리 연산자라고 하며, 튜플이나 배열 크기 및 제네릭 유형과 같은 미정 값을 사용하는 데 사용됩니다.
+// 예를 들어, 매개변수로 배열을 사용하는 경우입니다. 쿼리 연산자는 ``A``의 도메인을 결정하는 데 사용됩니다. 이것은 반환 유형을 정의하는 데 유용하지만 필수는 아닙니다.
 proc invertArray(A: [?D] int): [D] int{
   for a in A do a = -a;
   return A;
@@ -531,9 +509,8 @@ proc invertArray(A: [?D] int): [D] int{
 
 writeln(invertArray(intArray));
 
-// We can query the type of arguments to generic procedures.
-// Here we define a procedure that takes two arguments of
-// the same type, yet we don't define what that type is.
+// 제네릭 프로시저에 대한 인수의 유형을 쿼리할 수 있습니다.
+// 여기서 우리는 동일한 유형의 두 인수를 사용하는 프로시저를 정의하지만 해당 유형이 무엇인지는 정의하지 않습니다.
 proc genericProc(arg1 : ?valueType, arg2 : valueType): void {
   select(valueType) {
     when int do writeln(arg1, " and ", arg2, " are ints");
@@ -546,10 +523,10 @@ genericProc(1, 2);
 genericProc(1.2, 2.3);
 genericProc(1.0+2.0i, 3.0+4.0i);
 
-// We can also enforce a form of polymorphism with the ``where`` clause
-// This allows the compiler to decide which function to use.
-// Note: That means that all information needs to be known at compile-time.
-// The param modifier on the arg is used to enforce this constraint.
+// ``where`` 절을 사용하여 다형성의 한 형태를 적용할 수도 있습니다.
+// 이렇게 하면 컴파일러가 사용할 함수를 결정할 수 있습니다.
+// 참고: 즉, 모든 정보는 컴파일 타임에 알려져야 합니다.
+// arg의 param 수정자는 이 제약 조건을 적용하는 데 사용됩니다.
 proc whereProc(param N : int): void
  where (N > 0) {
   writeln("N is greater than 0");
@@ -563,13 +540,10 @@ proc whereProc(param N : int): void
 whereProc(10);
 whereProc(-1);
 
-// ``whereProc(0)`` would result in a compiler error because there
-// are no functions that satisfy the ``where`` clause's condition.
-// We could have defined a ``whereProc`` without a ``where`` clause
-// that would then have served as a catch all for all the other cases
-// (of which there is only one).
+// ``whereProc(0)``은 ``where`` 절의 조건을 만족하는 함수가 없기 때문에 컴파일러 오류가 발생합니다.
+// ``where`` 절이 없는 ``whereProc``를 정의하여 다른 모든 경우(이 경우 하나만 있음)를 포괄하는 캐치올로 사용할 수 있습니다.
 
-// ``where`` clauses can also be used to constrain based on argument type.
+// ``where`` 절은 인수 유형에 따라 제약 조건을 지정하는 데에도 사용할 수 있습니다.
 proc whereType(x: ?t) where t == int {
   writeln("Inside 'int' version of 'whereType': ", x);
 }
@@ -582,15 +556,15 @@ whereType(42);
 whereType("hello");
 
 /*
-Intents
+의도
 */
 
-/* Intent modifiers on the arguments convey how those arguments are passed to the procedure.
+/* 인수에 대한 의도 수정자는 해당 인수가 프로시저에 전달되는 방식을 전달합니다.
 
-     * in: copy arg in, but not out
-     * out: copy arg out, but not in
-     * inout: copy arg in, copy arg out
-     * ref: pass arg by reference
+     * in: 인수를 복사하지만 출력하지 않음
+     * out: 인수를 출력하지만 복사하지 않음
+     * inout: 인수를 복사하고 출력함
+     * ref: 참조로 인수 전달
 */
 proc intentsProc(in inarg, out outarg, inout inoutarg, ref refarg) {
   writeln("Inside Before: ", (inarg, outarg, inoutarg, refarg));
@@ -607,36 +581,35 @@ var inoutVar: int = 3;
 var refVar: int = 4;
 writeln("Outside Before: ", (inVar, outVar, inoutVar, refVar));
 intentsProc(inVar, outVar, inoutVar, refVar);
-writeln("Outside After: ", (inVar, outVar, inoutVar, refVar));
+Writeln("Outside After: ", (inVar, outVar, inoutVar, refVar));
 
-// Similarly, we can define intents on the return type.
-// ``refElement`` returns a reference to an element of array.
-// This makes more practical sense for class methods where references to
-// elements in a data-structure are returned via a method or iterator.
+// 마찬가지로 반환 유형에 대한 의도를 정의할 수 있습니다.
+// ``refElement``는 배열의 요소에 대한 참조를 반환합니다.
+// 이것은 데이터 구조의 요소에 대한 참조가 메서드나 반복기를 통해 반환되는 클래스 메서드에 더 실용적입니다.
 proc refElement(array : [?D] ?T, idx) ref : T {
   return array[idx];
 }
 
 var myChangingArray : [1..5] int = [1,2,3,4,5];
 writeln(myChangingArray);
-ref refToElem = refElement(myChangingArray, 5); // store reference to element in ref variable
+ref refToElem = refElement(myChangingArray, 5); // ref 변수에 요소에 대한 참조 저장
 writeln(refToElem);
-refToElem = -2; // modify reference which modifies actual value in array
+refToElem = -2; // 배열의 실제 값을 수정하는 참조 수정
 writeln(refToElem);
-writeln(myChangingArray);
+Writeln(myChangingArray);
 
 /*
-Operator Definitions
+연산자 정의
 */
 
-// Chapel allows for operators to be overloaded.
-// We can define the unary operators:
+// Chapel은 연산자를 오버로드할 수 있습니다.
+// 단항 연산자를 정의할 수 있습니다:
 // ``+ - ! ~``
-// and the binary operators:
+// 이항 연산자:
 // ``+ - * / % ** == <= >= < > << >> & | ˆ by``
-// ``+= -= *= /= %= **= &= |= ˆ= <<= >>= <=>``
+// ``+= -= *= /= %= **= &= |= ˆ= <<= >>= <=>`
 
-// Boolean exclusive or operator.
+// 부울 배타적 논리합 연산자.
 proc ^(left : bool, right : bool): bool {
   return (left || right) && !(left && right);
 }
@@ -646,17 +619,17 @@ writeln(false ^ true);
 writeln(true  ^ false);
 writeln(false ^ false);
 
-// Define a ``*`` operator on any two types that returns a tuple of those types.
+// 해당 유형의 튜플을 반환하는 모든 두 유형에 대해 ``*`` 연산자를 정의합니다.
 proc *(left : ?ltype, right : ?rtype): (ltype, rtype) {
-  writeln("\tIn our '*' overload!");
+  writeln("	In our '*' overload!");
   return (left, right);
 }
 
-writeln(1 * "a"); // Uses our ``*`` operator.
-writeln(1 * 2);   // Uses the default ``*`` operator.
+writeln(1 * "a"); // ``*`` 연산자를 사용합니다.
+writeln(1 * 2);   // 기본 ``*`` 연산자를 사용합니다.
 
-//  Note: You could break everything if you get careless with your overloads.
-//  This here will break everything. Don't do it.
+//  참고: 오버로드에 부주의하면 모든 것을 망칠 수 있습니다.
+//  이것은 모든 것을 망칠 것입니다. 하지 마십시오.
 
 /*
 
@@ -666,31 +639,27 @@ writeln(1 * 2);   // Uses the default ``*`` operator.
 */
 
 /*
-Iterators
+반복기
 */
 
-// Iterators are sisters to the procedure, and almost everything about
-// procedures also applies to iterators. However, instead of returning a single
-// value, iterators may yield multiple values to a loop.
+// 반복기는 프로시저의 자매이며, 프로시저에 대한 거의 모든 것이 반복기에도 적용됩니다. 그러나 단일 값을 반환하는 대신 반복기는 루프에 여러 값을 생성할 수 있습니다.
 //
-// This is useful when a complicated set or order of iterations is needed, as
-// it allows the code defining the iterations to be separate from the loop
-// body.
+// 이것은 반복을 정의하는 코드를 루프 본문과 분리할 수 있으므로 복잡한 반복 집합이나 순서가 필요할 때 유용합니다.
 iter oddsThenEvens(N: int): int {
   for i in 1..N by 2 do
-    yield i; // yield values instead of returning.
+    yield i; // 반환하는 대신 값을 생성합니다.
   for i in 2..N by 2 do
     yield i;
 }
 
 for i in oddsThenEvens(10) do write(i, ", ");
-writeln();
+Writeln();
 
-// Iterators can also yield conditionally, the result of which can be nothing
+// 반복기는 조건부로 생성할 수도 있으며, 그 결과는 아무것도 아닐 수 있습니다.
 iter absolutelyNothing(N): int {
   for i in 1..N {
-    if N < i { // Always false
-      yield i;     // Yield statement never happens
+    if N < i { // 항상 거짓
+      yield i;     // Yield 문은 절대 발생하지 않습니다.
     }
   }
 }
@@ -699,74 +668,64 @@ for i in absolutelyNothing(10) {
   writeln("Woa there! absolutelyNothing yielded ", i);
 }
 
-// We can zipper together two or more iterators (who have the same number
-// of iterations) using ``zip()`` to create a single zipped iterator, where each
-// iteration of the zipped iterator yields a tuple of one value yielded
-// from each iterator.
+// ``zip()``을 사용하여 두 개 이상의 반복기(반복 횟수가 동일한)를 함께 묶어 단일 압축 반복기를 만들 수 있습니다. 여기서 압축 반복기의 각 반복은 각 반복기에서 생성된 하나의 값의 튜플을 생성합니다.
 for (positive, negative) in zip(1..5, -5..-1) do
   writeln((positive, negative));
 
-// Zipper iteration is quite important in the assignment of arrays,
-// slices of arrays, and array/loop expressions.
+// 지퍼 반복은 배열, 배열 슬라이스 및 배열/루프 표현식의 할당에 매우 중요합니다.
 var fromThatArray : [1..#5] int = [1,2,3,4,5];
 var toThisArray : [100..#5] int;
 
-// Some zipper operations implement other operations.
-// The first statement and the loop are equivalent.
+// 일부 지퍼 작업은 다른 작업을 구현합니다.
+// 첫 번째 문과 루프는 동일합니다.
 toThisArray = fromThatArray;
 for (i,j) in zip(toThisArray.domain, fromThatArray.domain) {
   toThisArray[i] = fromThatArray[j];
 }
 
-// These two chunks are also equivalent.
+// 이 두 덩어리도 동일합니다.
 toThisArray = [j in -100..#5] j;
-writeln(toThisArray);
+Writeln(toThisArray);
 
 for (i, j) in zip(toThisArray.domain, -100..#5) {
   toThisArray[i] = j;
 }
-writeln(toThisArray);
+Writeln(toThisArray);
 
-// This is very important in understanding why this statement exhibits a runtime error.
+// 이 문이 런타임 오류를 나타내는 이유를 이해하는 데 매우 중요합니다.
 
 /*
       var iterArray : [1..10] int = [i in 1..10] if (i % 2 == 1) then i;
 */
 
-// Even though the domain of the array and the loop-expression are
-// the same size, the body of the expression can be thought of as an iterator.
-// Because iterators can yield nothing, that iterator yields a different number
-// of things than the domain of the array or loop, which is not allowed.
+// 배열의 도메인과 루프 표현식의 크기가 같더라도 표현식의 본문은 반복기로 생각할 수 있습니다.
+// 반복기는 아무것도 생성하지 않을 수 있으므로 해당 반복기는 배열이나 루프의 도메인과 다른 수의 항목을 생성하며 이는 허용되지 않습니다.
 
 /*
-Classes
+클래스
 */
-// Classes are similar to those in C++ and Java, allocated on the heap.
+// 클래스는 C++ 및 Java의 클래스와 유사하며 힙에 할당됩니다.
 class MyClass {
 
-// Member variables
+// 멤버 변수
   var memberInt : int;
   var memberBool : bool = true;
 
-// By default, any class that doesn't define an initializer gets a
-// compiler-generated initializer, with one argument per field and
-// the field's initial value as the argument's default value.
-// Alternatively, the user can define initializers manually as shown
-// in the following commented-out routine:
+// 기본적으로 이니셜라이저를 정의하지 않는 모든 클래스는 컴파일러에서 생성된 이니셜라이저를 가져옵니다. 이 이니셜라이저는 필드당 하나의 인수를 가지며 필드의 초기 값을 인수의 기본값으로 사용합니다.
+// 또는 사용자는 다음 주석 처리된 루틴에 표시된 대로 이니셜라이저를 수동으로 정의할 수 있습니다.
 //
 /*       // proc init(val : real) {
       //   this.memberInt = ceil(val): int;
       // }
 */
 
-// Explicitly defined deinitializer.
-// If we did not write one, we would get the compiler-generated deinitializer,
-// which has an empty body.
+// 명시적으로 정의된 디이니셜라이저.
+// 우리가 작성하지 않았다면 컴파일러에서 생성된 디이니셜라이저를 얻었을 것입니다. 이 디이니셜라이저는 빈 본문을 가집니다.
   proc deinit() {
     writeln("MyClass deinitializer called ", (this.memberInt, this.memberBool));
   }
 
-// Class methods.
+// 클래스 메서드.
   proc setMemberInt(val: int) {
     this.memberInt = val;
   }
@@ -782,34 +741,33 @@ class MyClass {
   proc getMemberBool(): bool {
     return this.memberBool;
   }
-} // end MyClass
+} // MyClass 끝
 
-// Call compiler-generated initializer, using default value for memberBool.
+// 컴파일러에서 생성된 이니셜라이저를 호출하고 memberBool에 기본값을 사용합니다.
 {
   var myObject = new owned MyClass(10);
-      myObject = new owned MyClass(memberInt = 10); // Equivalent
+      myObject = new owned MyClass(memberInt = 10); // 동일
   writeln(myObject.getMemberInt());
 
-  // Same, but provide a memberBool value explicitly.
+  // 동일하지만 memberBool 값을 명시적으로 제공합니다.
   var myDiffObject = new owned MyClass(-1, true);
       myDiffObject = new owned MyClass(memberInt = -1,
-                                       memberBool = true); // Equivalent
+                                       memberBool = true); // 동일
   writeln(myDiffObject);
 
-  // Similar, but rely on the default value of memberInt, passing in memberBool.
+  // 유사하지만 memberInt의 기본값에 의존하고 memberBool을 전달합니다.
   var myThirdObject = new owned MyClass(memberBool = true);
   writeln(myThirdObject);
 
-  // If the user-defined initializer above had been uncommented, we could
-  // make the following calls:
+  // 위의 사용자 정의 이니셜라이저가 주석 처리되지 않았다면 다음 호출을 할 수 있습니다:
   //
   /*         // var myOtherObject = new MyClass(1.95);
         //     myOtherObject = new MyClass(val = 1.95);
         // writeln(myOtherObject.getMemberInt());
   */
 
-  // We can define an operator on our class as well, but
-  // the definition has to be outside the class definition.
+  // 클래스에 대한 연산자를 정의할 수도 있지만
+  // 정의는 클래스 정의 외부에 있어야 합니다.
   proc +(A : MyClass, B : MyClass) : owned MyClass {
     return
       new owned MyClass(memberInt = A.getMemberInt() + B.getMemberInt(),
@@ -819,96 +777,91 @@ class MyClass {
   var plusObject = myObject + myDiffObject;
   writeln(plusObject);
 
-  // Destruction of an object: calls the deinit() routine and frees its memory.
-  // ``unmanaged`` variables should have ``delete`` called on them.
-  // ``owned`` variables are destroyed when they go out of scope.
+  // 객체 소멸: deinit() 루틴을 호출하고 메모리를 해제합니다.
+  // ``unmanaged`` 변수는 ``delete``를 호출해야 합니다.
+  // ``owned`` 변수는 범위를 벗어날 때 소멸됩니다.
 }
 
-// Classes can inherit from one or more parent classes
+// 클래스는 하나 이상의 부모 클래스에서 상속할 수 있습니다.
 class MyChildClass : MyClass {
   var memberComplex: complex;
 }
 
-// Here's an example of generic classes.
+// 제네릭 클래스의 예입니다.
 class GenericClass {
   type classType;
   var classDomain: domain(1);
   var classArray: [classDomain] classType;
 
-// Explicit initializer.
+// 명시적 초기화 프로그램.
   proc init(type classType, elements : int) {
     this.classType = classType;
     this.classDomain = {1..elements};
-    // all generic and const fields must be initialized in "phase 1" prior
-    // to a call to the superclass initializer.
+    // 모든 제네릭 및 const 필드는 슈퍼클래스 초기화 프로그램 호출 전에 "1단계"에서 초기화해야 합니다.
   }
 
-// Copy-style initializer.
-// Note: We include a type argument whose default is the type of the first
-// argument.  This lets our initializer copy classes of different
-// types and cast on the fly.
+// 복사 스타일 초기화 프로그램.
+// 참고: 첫 번째 인수의 유형인 기본값을 가진 유형 인수를 포함합니다.
+// 이렇게 하면 초기화 프로그램이 다른 유형의 클래스를 복사하고 즉시 캐스팅할 수 있습니다.
   proc init(other : GenericClass(?),
             type classType = other.classType) {
     this.classType = classType;
     this.classDomain = other.classDomain;
-    this.classArray = for o in other do o: classType;  // copy and cast
+    this.classArray = for o in other do o: classType;  // 복사 및 캐스팅
   }
 
-// Define bracket notation on a GenericClass
-// object so it can behave like a normal array
-// i.e. ``objVar[i]`` or ``objVar(i)``
+// GenericClass에 대괄호 표기법을 정의합니다.
+// 객체가 일반 배열처럼 동작할 수 있도록 합니다.
+// 즉, ``objVar[i]`` 또는 ``objVar(i)``
   proc this(i : int) ref : classType {
     return this.classArray[i];
   }
 
-// Define an implicit iterator for the class
-// to yield values from the array to a loop
-// i.e. ``for i in objVar do ...``
+// 클래스에 대한 암시적 반복기를 정의합니다.
+// 배열에서 루프에 값을 생성합니다.
+// 즉, ``for i in objVar do ...``
   iter these() ref : classType {
     for i in this.classDomain do
       yield this[i];
   }
-} // end GenericClass
+} // GenericClass 끝
 
-// Allocate an owned instance of our class
+// 클래스의 소유 인스턴스 할당
 var realList = new owned GenericClass(real, 10);
 
-// We can assign to the member array of the object using the bracket
-// notation that we defined.
+// 정의한 대괄호 표기법을 사용하여 객체의 멤버 배열에 할당할 수 있습니다.
 for i in realList.classDomain do realList[i] = i + 1.0;
 
-// We can iterate over the values in our list with the iterator
-// we defined.
+// 정의한 반복기를 사용하여 목록의 값을 반복할 수 있습니다.
 for value in realList do write(value, ", ");
-writeln();
+Writeln();
 
-// Make a copy of realList using the copy initializer.
+// 복사 초기화 프로그램을 사용하여 realList의 복사본을 만듭니다.
 var copyList = new owned GenericClass(realList);
 for value in copyList do write(value, ", ");
-writeln();
+Writeln();
 
-// Make a copy of realList and change the type, also using the copy initializer.
+// realList의 복사본을 만들고 복사 초기화 프로그램을 사용하여 유형을 변경합니다.
 var copyNewTypeList = new owned GenericClass(realList, int);
 for value in copyNewTypeList do write(value, ", ");
-writeln();
+Writeln();
 
 
 /*
-Modules
+모듈
 */
 
-// Modules are Chapel's way of managing name spaces.
-// The files containing these modules do not need to be named after the modules
-// (as in Java), but files implicitly name modules.
-// For example, this file implicitly names the ``learnChapelInYMinutes`` module
+// 모듈은 Chapel이 네임스페이스를 관리하는 방법입니다.
+// 이러한 모듈을 포함하는 파일은 모듈 이름 뒤에 이름을 지정할 필요가 없습니다(Java에서와 같이). 그러나 파일은 암시적으로 모듈 이름을 지정합니다.
+// 예를 들어, 이 파일은 암시적으로 ``learnChapelInYMinutes`` 모듈의 이름을 지정합니다.
 
 module OurModule {
 
-// We can use modules inside of other modules.
-// Time is one of the standard modules.
+// 다른 모듈 내에서 모듈을 사용할 수 있습니다.
+// Time은 표준 모듈 중 하나입니다.
   use Time;
 
-// We'll use this procedure in the parallelism section.
+// 병렬 처리 섹션에서 이 프로시저를 사용합니다.
   proc countdown(seconds: int) {
     for i in 1..seconds by -1 {
       writeln(i);
@@ -916,58 +869,52 @@ module OurModule {
     }
   }
 
-// It is possible to create arbitrarily deep module nests.
-// i.e. submodules of OurModule
+// 임의로 깊은 모듈 중첩을 만들 수 있습니다.
+// 즉, OurModule의 하위 모듈
   module ChildModule {
     proc foo() {
-      writeln("ChildModule.foo()");
+      writeln("ChildModule.foo()")
     }
   }
 
   module SiblingModule {
     proc foo() {
-      writeln("SiblingModule.foo()");
+      writeln("SiblingModule.foo()")
     }
   }
-} // end OurModule
+} // OurModule 끝
 
-// Using ``OurModule`` also uses all the modules it uses.
-// Since ``OurModule`` uses ``Time``, we also use ``Time``.
+// ``OurModule``을 사용하면 사용하는 모든 모듈도 사용됩니다.
+// ``OurModule``이 ``Time``을 사용하므로 우리도 ``Time``을 사용합니다.
 use OurModule;
 
-// At this point we have not used ``ChildModule`` or ``SiblingModule`` so
-// their symbols (i.e. ``foo``) are not available to us. However, the module
-// names are available, and we can explicitly call ``foo()`` through them.
+// 이 시점에서 ``ChildModule`` 또는 ``SiblingModule``을 사용하지 않았으므로 해당 기호(즉, ``foo``)를 사용할 수 없습니다. 그러나 모듈 이름은 사용할 수 있으며 이를 통해 ``foo()``를 명시적으로 호출할 수 있습니다.
 SiblingModule.foo();
 OurModule.ChildModule.foo();
 
-// Now we use ``ChildModule``, enabling unqualified calls.
+// 이제 ``ChildModule``을 사용하여 정규화되지 않은 호출을 활성화합니다.
 use ChildModule;
 foo();
 
 /*
-Parallelism
+병렬성
 */
 
-// In other languages, parallelism is typically done with
-// complicated libraries and strange class structure hierarchies.
-// Chapel has it baked right into the language.
+// 다른 언어에서는 병렬 처리가 일반적으로 복잡한 라이브러리와 이상한 클래스 구조 계층으로 수행됩니다.
+// Chapel은 언어에 내장되어 있습니다.
 
-// We can declare a main procedure, but all the code above main still gets
-// executed.
+// 주 프로시저를 선언할 수 있지만 주 프로시저 위의 모든 코드는 여전히 실행됩니다.
 proc main() {
 
-// A ``begin`` statement will spin the body of that statement off
-// into one new task.
-// A ``sync`` statement will ensure that the progress of the main
-// task will not progress until the children have synced back up.
+// ``begin`` 문은 해당 문의 본문을 하나의 새 작업으로 분리합니다.
+// ``sync`` 문은 주 작업의 진행이 자식이 다시 동기화될 때까지 진행되지 않도록 합니다.
 
   sync {
-    begin { // Start of new task's body
+    begin { // 새 작업 본문의 시작
       var a = 0;
       for i in 1..1000 do a += 1;
       writeln("Done: ", a);
-    } // End of new tasks body
+    } // 새 작업 본문의 끝
     writeln("spun off a task!");
   }
   writeln("Back together");
@@ -976,89 +923,342 @@ proc main() {
     writeln("fibonacci(",n,") = ", fibonacci(n));
   }
 
-// A ``cobegin`` statement will spin each statement of the body into one new
-// task. Notice here that the prints from each statement may happen in any
-// order.
+// ``cobegin`` 문은 본문의 각 문을 하나의 새 작업으로 분리합니다. 여기서 각 문의 인쇄가 어떤 순서로든 발생할 수 있음을 주목하십시오.
   cobegin {
-    printFibb(20); // new task
-    printFibb(10); // new task
-    printFibb(5);  // new task
+    printFibb(20); // 새 작업
+    printFibb(10); // 새 작업
+    printFibb(5);  // 새 작업
     {
-      // This is a nested statement body and thus is a single statement
-      // to the parent statement, executed by a single task.
+      // 이것은 중첩된 문 본문이므로 부모 문에 대한 단일 문이며 단일 작업으로 실행됩니다.
       writeln("this gets");
       writeln("executed as");
       writeln("a whole");
     }
   }
 
-// A ``coforall`` loop will create a new task for EACH iteration.
-// Again we see that prints happen in any order.
-// NOTE: ``coforall`` should be used only for creating tasks!
-// Using it to iterating over a structure is very a bad idea!
-  var num_tasks = 10; // Number of tasks we want
+// ``coforall`` 루프는 각 반복에 대해 새 작업을 생성합니다.
+// 다시 말하지만, 인쇄가 어떤 순서로든 발생한다는 것을 알 수 있습니다.
+// 참고: ``coforall``은 작업을 생성하는 데만 사용해야 합니다!
+// 구조를 반복하는 데 사용하는 것은 매우 나쁜 생각입니다!
+  var num_tasks = 10; // 원하는 작업 수
   coforall taskID in 1..num_tasks {
     writeln("Hello from task# ", taskID);
   }
 
-// ``forall`` loops are another parallel loop, but only create a smaller number
-// of tasks, specifically ``--dataParTasksPerLocale=`` number of tasks.
+// ``forall`` 루프는 또 다른 병렬 루프이지만, 더 적은 수의 작업, 특히 ``--dataParTasksPerLocale=`` 수의 작업만 생성합니다.
   forall i in 1..100 {
     write(i, ", ");
   }
   writeln();
 
-// Here we see that there are sections that are in order, followed by
-// a section that would not follow (e.g. 1, 2, 3, 7, 8, 9, 4, 5, 6,).
-// This is because each task is taking on a chunk of the range 1..10
-// (1..3, 4..6, or 7..9) doing that chunk serially, but each task happens
-// in parallel. Your results may depend on your machine and configuration
+// 여기서 순서대로 된 섹션이 있고 그 뒤에 따르지 않는 섹션이 있음을 알 수 있습니다(예: 1, 2, 3, 7, 8, 9, 4, 5, 6,). 
+// 이것은 각 작업이 1..10 범위의 청크(1..3, 4..6 또는 7..9)를 직렬로 수행하지만 각 작업은 병렬로 발생하기 때문입니다. 결과는 컴퓨터 및 구성에 따라 다를 수 있습니다.
 
-// For both the ``forall`` and ``coforall`` loops, the execution of the
-// parent task will not continue until all the children sync up.
+// ``forall`` 및 ``coforall`` 루프 모두에 대해 부모 작업의 실행은 모든 자식이 동기화될 때까지 계속되지 않습니다.
 
-// ``forall`` loops are particularly useful for parallel iteration over arrays.
-// Lets run an experiment to see how much faster a parallel loop is
-  use Time; // Import the Time module to use Timer objects
+// ``forall`` 루프는 배열에 대한 병렬 반복에 특히 유용합니다.
+// (가지고 있는 코어 수에 따라) 병렬 루프가 직렬 루프보다 더 빨리 진행되었음을 알 수 있습니다.
+// 이 문이 런타임 오류를 나타내는 이유를 이해하는 데 매우 중요합니다.
+
+/*
+      var iterArray : [1..10] int = [i in 1..10] if (i % 2 == 1) then i;
+*/
+
+// 배열의 도메인과 루프 표현식의 크기가 같더라도 표현식의 본문은 반복기로 생각할 수 있습니다.
+// 반복기는 아무것도 생성하지 않을 수 있으므로 해당 반복기는 배열이나 루프의 도메인과 다른 수의 항목을 생성하며 이는 허용되지 않습니다.
+
+/*
+클래스
+*/
+// 클래스는 C++ 및 Java의 클래스와 유사하며 힙에 할당됩니다.
+class MyClass {
+
+// 멤버 변수
+  var memberInt : int;
+  var memberBool : bool = true;
+
+// 기본적으로 이니셜라이저를 정의하지 않는 모든 클래스는 컴파일러에서 생성된 이니셜라이저를 가져옵니다. 이 이니셜라이저는 필드당 하나의 인수를 가지며 필드의 초기 값을 인수의 기본값으로 사용합니다.
+// 또는 사용자는 다음 주석 처리된 루틴에 표시된 대로 이니셜라이저를 수동으로 정의할 수 있습니다.
+//
+/*       // proc init(val : real) {
+      //   this.memberInt = ceil(val): int;
+      // }
+*/
+
+// 명시적으로 정의된 디이니셜라이저.
+// 우리가 작성하지 않았다면 컴파일러에서 생성된 디이니셜라이저를 얻었을 것입니다. 이 디이니셜라이저는 빈 본문을 가집니다.
+  proc deinit() {
+    writeln("MyClass deinitializer called ", (this.memberInt, this.memberBool));
+  }
+
+// 클래스 메서드.
+  proc setMemberInt(val: int) {
+    this.memberInt = val;
+  }
+
+  proc setMemberBool(val: bool) {
+    this.memberBool = val;
+  }
+
+  proc getMemberInt(): int{
+    return this.memberInt;
+  }
+
+  proc getMemberBool(): bool {
+    return this.memberBool;
+  }
+} // MyClass 끝
+
+// 컴파일러에서 생성된 이니셜라이저를 호출하고 memberBool에 기본값을 사용합니다.
+{
+  var myObject = new owned MyClass(10);
+      myObject = new owned MyClass(memberInt = 10); // 동일
+  writeln(myObject.getMemberInt());
+
+  // 동일하지만 memberBool 값을 명시적으로 제공합니다.
+  var myDiffObject = new owned MyClass(-1, true);
+      myDiffObject = new owned MyClass(memberInt = -1,
+                                       memberBool = true); // 동일
+  writeln(myDiffObject);
+
+  // 유사하지만 memberInt의 기본값에 의존하고 memberBool을 전달합니다.
+  var myThirdObject = new owned MyClass(memberBool = true);
+  writeln(myThirdObject);
+
+  // 위의 사용자 정의 이니셜라이저가 주석 처리되지 않았다면 다음 호출을 할 수 있습니다:
+  //
+  /*         // var myOtherObject = new MyClass(1.95);
+        //     myOtherObject = new MyClass(val = 1.95);
+        // writeln(myOtherObject.getMemberInt());
+  */
+
+  // 클래스에 대한 연산자를 정의할 수도 있지만
+  // 정의는 클래스 정의 외부에 있어야 합니다.
+  proc +(A : MyClass, B : MyClass) : owned MyClass {
+    return
+      new owned MyClass(memberInt = A.getMemberInt() + B.getMemberInt(),
+                        memberBool = A.getMemberBool() || B.getMemberBool());
+  }
+
+  var plusObject = myObject + myDiffObject;
+  writeln(plusObject);
+
+  // 객체 소멸: deinit() 루틴을 호출하고 메모리를 해제합니다.
+  // ``unmanaged`` 변수는 ``delete``를 호출해야 합니다.
+  // ``owned`` 변수는 범위를 벗어날 때 소멸됩니다.
+}
+
+// 클래스는 하나 이상의 부모 클래스에서 상속할 수 있습니다.
+class MyChildClass : MyClass {
+  var memberComplex: complex;
+}
+
+// 제네릭 클래스의 예입니다.
+class GenericClass {
+  type classType;
+  var classDomain: domain(1);
+  var classArray: [classDomain] classType;
+
+// 명시적 초기화 프로그램.
+  proc init(type classType, elements : int) {
+    this.classType = classType;
+    this.classDomain = {1..elements};
+    // 모든 제네릭 및 const 필드는 슈퍼클래스 초기화 프로그램 호출 전에 "1단계"에서 초기화해야 합니다.
+  }
+
+// 복사 스타일 초기화 프로그램.
+// 참고: 첫 번째 인수의 유형인 기본값을 가진 유형 인수를 포함합니다.
+// 이렇게 하면 초기화 프로그램이 다른 유형의 클래스를 복사하고 즉시 캐스팅할 수 있습니다.
+  proc init(other : GenericClass(?),
+            type classType = other.classType) {
+    this.classType = classType;
+    this.classDomain = other.classDomain;
+    this.classArray = for o in other do o: classType;  // 복사 및 캐스팅
+  }
+
+// GenericClass에 대괄호 표기법을 정의합니다.
+// 객체가 일반 배열처럼 동작할 수 있도록 합니다.
+// 즉, ``objVar[i]`` 또는 ``objVar(i)``
+  proc this(i : int) ref : classType {
+    return this.classArray[i];
+  }
+
+// 클래스에 대한 암시적 반복기를 정의합니다.
+// 배열에서 루프에 값을 생성합니다.
+// 즉, ``for i in objVar do ...``
+  iter these() ref : classType {
+    for i in this.classDomain do
+      yield this[i];
+  }
+} // GenericClass 끝
+
+// 클래스의 소유 인스턴스 할당
+var realList = new owned GenericClass(real, 10);
+
+// 정의한 대괄호 표기법을 사용하여 객체의 멤버 배열에 할당할 수 있습니다.
+for i in realList.classDomain do realList[i] = i + 1.0;
+
+// 정의한 반복기를 사용하여 목록의 값을 반복할 수 있습니다.
+for value in realList do write(value, ", ");
+Writeln();
+
+// 복사 초기화 프로그램을 사용하여 realList의 복사본을 만듭니다.
+var copyList = new owned GenericClass(realList);
+for value in copyList do write(value, ", ");
+Writeln();
+
+// realList의 복사본을 만들고 복사 초기화 프로그램을 사용하여 유형을 변경합니다.
+var copyNewTypeList = new owned GenericClass(realList, int);
+for value in copyNewTypeList do write(value, ", ");
+Writeln();
+
+
+/*
+모듈
+*/
+
+// 모듈은 Chapel이 네임스페이스를 관리하는 방법입니다.
+// 이러한 모듈을 포함하는 파일은 모듈 이름 뒤에 이름을 지정할 필요가 없습니다(Java에서와 같이). 그러나 파일은 암시적으로 모듈 이름을 지정합니다.
+// 예를 들어, 이 파일은 암시적으로 ``learnChapelInYMinutes`` 모듈의 이름을 지정합니다.
+
+module OurModule {
+
+// 다른 모듈 내에서 모듈을 사용할 수 있습니다.
+// Time은 표준 모듈 중 하나입니다.
+  use Time;
+
+// 병렬 처리 섹션에서 이 프로시저를 사용합니다.
+  proc countdown(seconds: int) {
+    for i in 1..seconds by -1 {
+      writeln(i);
+      sleep(1);
+    }
+  }
+
+// 임의로 깊은 모듈 중첩을 만들 수 있습니다.
+// 즉, OurModule의 하위 모듈
+  module ChildModule {
+    proc foo() {
+      writeln("ChildModule.foo()")
+    }
+  }
+
+  module SiblingModule {
+    proc foo() {
+      writeln("SiblingModule.foo()")
+    }
+  }
+} // OurModule 끝
+
+// ``OurModule``을 사용하면 사용하는 모든 모듈도 사용됩니다.
+// ``OurModule``이 ``Time``을 사용하므로 우리도 ``Time``을 사용합니다.
+use OurModule;
+
+// 이 시점에서 ``ChildModule`` 또는 ``SiblingModule``을 사용하지 않았으므로 해당 기호(즉, ``foo``)를 사용할 수 없습니다. 그러나 모듈 이름은 사용할 수 있으며 이를 통해 ``foo()``를 명시적으로 호출할 수 있습니다.
+SiblingModule.foo();
+OurModule.ChildModule.foo();
+
+// 이제 ``ChildModule``을 사용하여 정규화되지 않은 호출을 활성화합니다.
+use ChildModule;
+foo();
+
+/*
+병렬성
+*/
+
+// 다른 언어에서는 병렬 처리가 일반적으로 복잡한 라이브러리와 이상한 클래스 구조 계층으로 수행됩니다.
+// Chapel은 언어에 내장되어 있습니다.
+
+// 주 프로시저를 선언할 수 있지만 주 프로시저 위의 모든 코드는 여전히 실행됩니다.
+proc main() {
+
+// ``begin`` 문은 해당 문의 본문을 하나의 새 작업으로 분리합니다.
+// ``sync`` 문은 주 작업의 진행이 자식이 다시 동기화될 때까지 진행되지 않도록 합니다.
+
+  sync {
+    begin { // 새 작업 본문의 시작
+      var a = 0;
+      for i in 1..1000 do a += 1;
+      writeln("Done: ", a);
+    } // 새 작업 본문의 끝
+    writeln("spun off a task!");
+  }
+  writeln("Back together");
+
+  proc printFibb(n: int) {
+    writeln("fibonacci(",n,") = ", fibonacci(n));
+  }
+
+// ``cobegin`` 문은 본문의 각 문을 하나의 새 작업으로 분리합니다. 여기서 각 문의 인쇄가 어떤 순서로든 발생할 수 있음을 주목하십시오.
+  cobegin {
+    printFibb(20); // 새 작업
+    printFibb(10); // 새 작업
+    printFibb(5);  // 새 작업
+    {
+      // 이것은 중첩된 문 본문이므로 부모 문에 대한 단일 문이며 단일 작업으로 실행됩니다.
+      writeln("this gets");
+      writeln("executed as");
+      writeln("a whole");
+    }
+  }
+
+// ``coforall`` 루프는 각 반복에 대해 새 작업을 생성합니다.
+// 다시 말하지만, 인쇄가 어떤 순서로든 발생한다는 것을 알 수 있습니다.
+// 참고: ``coforall``은 작업을 생성하는 데만 사용해야 합니다!
+// 구조를 반복하는 데 사용하는 것은 매우 나쁜 생각입니다!
+  var num_tasks = 10; // 원하는 작업 수
+  coforall taskID in 1..num_tasks {
+    writeln("Hello from task# ", taskID);
+  }
+
+// ``forall`` 루프는 또 다른 병렬 루프이지만, 더 적은 수의 작업, 특히 ``--dataParTasksPerLocale=`` 수의 작업만 생성합니다.
+  forall i in 1..100 {
+    write(i, ", ");
+  }
+  writeln();
+
+// 여기서 순서대로 된 섹션이 있고 그 뒤에 따르지 않는 섹션이 있음을 알 수 있습니다(예: 1, 2, 3, 7, 8, 9, 4, 5, 6,). 
+// 이것은 각 작업이 1..10 범위의 청크(1..3, 4..6 또는 7..9)를 직렬로 수행하지만 각 작업은 병렬로 발생하기 때문입니다. 결과는 컴퓨터 및 구성에 따라 다를 수 있습니다.
+
+// ``forall`` 및 ``coforall`` 루프 모두에 대해 부모 작업의 실행은 모든 자식이 동기화될 때까지 계속되지 않습니다.
+
+// ``forall`` 루프는 배열에 대한 병렬 반복에 특히 유용합니다.
+// 병렬 루프가 직렬 루프보다 얼마나 빠른지 확인하기 위해 실험을 실행해 보겠습니다.
+  use Time; // Timer 객체를 사용하려면 Time 모듈을 가져옵니다.
   var timer: Timer;
-  var myBigArray: [{1..4000,1..4000}] real; // Large array we will write into
+  var myBigArray: [{1..4000,1..4000}] real; // 쓸 큰 배열
 
-// Serial Experiment:
-  timer.start(); // Start timer
-  for (x,y) in myBigArray.domain { // Serial iteration
+// 직렬 실험:
+  timer.start(); // 타이머 시작
+  for (x,y) in myBigArray.domain { // 직렬 반복
     myBigArray[x,y] = (x:real) / (y:real);
   }
-  timer.stop(); // Stop timer
-  writeln("Serial: ", timer.elapsed()); // Print elapsed time
-  timer.clear(); // Clear timer for parallel loop
+  timer.stop(); // 타이머 중지
+  writeln("Serial: ", timer.elapsed()); // 경과 시간 인쇄
+  timer.clear(); // 병렬 루프를 위해 타이머 지우기
 
-// Parallel Experiment:
-  timer.start(); // start timer
-  forall (x,y) in myBigArray.domain { // Parallel iteration
+// 병렬 실험:
+  timer.start(); // 타이머 시작
+  forall (x,y) in myBigArray.domain { // 병렬 반복
     myBigArray[x,y] = (x:real) / (y:real);
   }
-  timer.stop(); // Stop timer
-  writeln("Parallel: ", timer.elapsed()); // Print elapsed time
+  timer.stop(); // 타이머 중지
+  writeln("Parallel: ", timer.elapsed()); // 경과 시간 인쇄
   timer.clear();
 
-// You may have noticed that (depending on how many cores you have)
-// the parallel loop went faster than the serial loop.
+// (가지고 있는 코어 수에 따라) 병렬 루프가 직렬 루프보다 더 빨리 진행되었음을 알 수 있습니다.
 
-// The bracket style loop-expression described
-// much earlier implicitly uses a ``forall`` loop.
-  [val in myBigArray] val = 1 / val; // Parallel operation
+// 이전에 설명한 대괄호 스타일 루프 표현식은 암시적으로 ``forall`` 루프를 사용합니다.
+  [val in myBigArray] val = 1 / val; // 병렬 연산
 
-// Atomic variables, common to many languages, are ones whose operations
-// occur uninterrupted. Multiple threads can therefore modify atomic
-// variables and can know that their values are safe.
-// Chapel atomic variables can be of type ``bool``, ``int``,
-// ``uint``, and ``real``.
+// 많은 언어에서 일반적인 원자 변수는 작업이 중단되지 않는 변수입니다. 따라서 여러 스레드가 원자 변수를 수정할 수 있으며 해당 값이 안전하다는 것을 알 수 있습니다.
+// Chapel 원자 변수는 ``bool``, ``int``, ``uint`` 및 ``real`` 유형일 수 있습니다.
   var uranium: atomic int;
-  uranium.write(238);      // atomically write a variable
-  writeln(uranium.read()); // atomically read a variable
+  uranium.write(238);      // 변수를 원자적으로 씁니다.
+  writeln(uranium.read()); // 변수를 원자적으로 읽습니다.
 
-// Atomic operations are described as functions, so you can define your own.
-  uranium.sub(3); // atomically subtract a variable
+// 원자 연산은 함수로 설명되므로 자신만의 함수를 정의할 수 있습니다.
+  uranium.sub(3); // 변수를 원자적으로 뺍니다.
   writeln(uranium.read());
 
   var replaceWith = 239;
@@ -1075,42 +1275,40 @@ proc main() {
   }
 
   sync {
-    begin { // Reader task
+    begin { // 리더 작업
       writeln("Reader: waiting for uranium to be ", isEqualTo);
       uranium.waitFor(isEqualTo);
       writeln("Reader: uranium was set (by someone) to ", isEqualTo);
     }
 
-    begin { // Writer task
+    begin { // 라이터 작업
       writeln("Writer: will set uranium to the value ", isEqualTo, " in...");
       countdown(3);
       uranium.write(isEqualTo);
     }
   }
 
-// ``sync`` variables have two states: empty and full.
-// If you read an empty variable or write a full variable, you are waited
-// until the variable is full or empty again.
-  var someSyncVar$: sync int; // varName$ is a convention not a law.
+// ``sync`` 변수에는 두 가지 상태가 있습니다: 비어 있음과 가득 참.
+// 비어 있는 변수를 읽거나 가득 찬 변수를 쓰면 변수가 다시 가득 차거나 비워질 때까지 기다립니다.
+  var someSyncVar$: sync int; // varName$는 법이 아닌 관례입니다.
   sync {
-    begin { // Reader task
+    begin { // 리더 작업
       writeln("Reader: waiting to read.");
       var read_sync = someSyncVar$;
       writeln("Reader: value is ", read_sync);
     }
 
-    begin { // Writer task
+    begin { // 라이터 작업
       writeln("Writer: will write in...");
       countdown(3);
       someSyncVar$ = 123;
     }
   }
 
-// ``single`` vars can only be written once. A read on an unwritten ``single``
-// results in a wait, but when the variable has a value it can be read indefinitely.
-  var someSingleVar$: single int; // varName$ is a convention not a law.
+// ``single`` 변수는 한 번만 쓸 수 있습니다. 쓰지 않은 ``single``을 읽으면 대기하지만 변수에 값이 있으면 무기한 읽을 수 있습니다.
+  var someSingleVar$: single int; // varName$는 법이 아닌 관례입니다.
   sync {
-    begin { // Reader task
+    begin { // 리더 작업
       writeln("Reader: waiting to read.");
       for i in 1..5 {
         var read_single = someSingleVar$;
@@ -1118,136 +1316,115 @@ proc main() {
       }
     }
 
-    begin { // Writer task
+    begin { // 라이터 작업
       writeln("Writer: will write in...");
       countdown(3);
-      someSingleVar$ = 5; // first and only write ever.
+      someSingleVar$ = 5; // 처음이자 마지막 쓰기.
     }
   }
 
-// Here's an example using atomics and a ``sync`` variable to create a
-// count-down mutex (also known as a multiplexer).
-  var count: atomic int; // our counter
-  var lock$: sync bool;   // the mutex lock
+// 다음은 원자 및 ``sync`` 변수를 사용하여 카운트다운 뮤텍스(멀티플렉서라고도 함)를 만드는 예입니다.
+  var count: atomic int; // 카운터
+  var lock$: sync bool;   // 뮤텍스 잠금
 
-  count.write(2);       // Only let two tasks in at a time.
-  lock$.writeXF(true);  // Set lock$ to full (unlocked)
-  // Note: The value doesn't actually matter, just the state
-  // (full:unlocked / empty:locked)
-  // Also, writeXF() fills (F) the sync var regardless of its state (X)
+  count.write(2);       // 한 번에 두 개의 작업만 허용합니다.
+  lock$.writeXF(true);  // lock$을 가득 참(잠금 해제)으로 설정합니다.
+  // 참고: 값은 실제로 중요하지 않고 상태만 중요합니다.
+  // (가득 참:잠금 해제 / 비어 있음:잠김)
+  // 또한 writeXF()는 상태(X)에 관계없이 동기화 변수를 채웁니다(F).
 
-  coforall task in 1..5 { // Generate tasks
-    // Create a barrier
+  coforall task in 1..5 { // 작업 생성
+    // 장벽 생성
     do {
-      lock$;                 // Read lock$ (wait)
-    } while (count.read() < 1); // Keep waiting until a spot opens up
+      lock$;                 // lock$ 읽기(대기)
+    } while (count.read() < 1); // 자리가 생길 때까지 계속 대기
 
-    count.sub(1);          // decrement the counter
-    lock$.writeXF(true); // Set lock$ to full (signal)
+    count.sub(1);          // 카운터 감소
+    lock$.writeXF(true); // lock$을 가득 참(신호)으로 설정
 
-    // Actual 'work'
+    // 실제 '작업'
     writeln("Task #", task, " doing work.");
     sleep(2);
 
-    count.add(1);        // Increment the counter
-    lock$.writeXF(true); // Set lock$ to full (signal)
+    count.add(1);        // 카운터 증가
+    lock$.writeXF(true); // lock$을 가득 참(신호)으로 설정
   }
 
-// We can define the operations ``+ * & | ^ && || min max minloc maxloc``
-// over an entire array using scans and reductions.
-// Reductions apply the operation over the entire array and
-// result in a scalar value.
+// 스캔 및 축소를 사용하여 전체 배열에 대해 ``+ * & | ^ && || min max minloc maxloc`` 연산을 정의할 수 있습니다.
+// 축소는 전체 배열에 대해 연산을 적용하고 스칼라 값을 반환합니다.
   var listOfValues: [1..10] int = [15,57,354,36,45,15,456,8,678,2];
   var sumOfValues = + reduce listOfValues;
-  var maxValue = max reduce listOfValues; // 'max' give just max value
+  var maxValue = max reduce listOfValues; // 'max'는 최대값만 제공합니다.
 
-// ``maxloc`` gives max value and index of the max value.
-// Note: We have to zip the array and domain together with the zip iterator.
+// ``maxloc``은 최대값과 최대값의 인덱스를 제공합니다.
+// 참고: zip 반복기를 사용하여 배열과 도메인을 함께 압축해야 합니다.
   var (theMaxValue, idxOfMax) = maxloc reduce zip(listOfValues,
                                                   listOfValues.domain);
 
   writeln((sumOfValues, maxValue, idxOfMax, listOfValues[idxOfMax]));
 
-// Scans apply the operation incrementally and return an array with the
-// values of the operation at that index as it progressed through the
-// array from ``array.domain.low`` to ``array.domain.high``.
+// 스캔은 연산을 점진적으로 적용하고 해당 인덱스에서 연산의 값이 있는 배열을 반환합니다. 이 연산은 배열을 ``array.domain.low``에서 ``array.domain.high``로 진행하면서 수행됩니다.
   var runningSumOfValues = + scan listOfValues;
   var maxScan = max scan listOfValues;
   writeln(runningSumOfValues);
   writeln(maxScan);
-} // end main()
-```
+} // main() 끝
 
-## Who is this tutorial for?
+## 이 튜토리얼은 누구를 위한 것입니까?
 
-This tutorial is for people who want to learn the ropes of chapel without
-having to hear about what fiber mixture the ropes are, or how they were
-braided, or how the braid configurations differ between one another. It won't
-teach you how to develop amazingly performant code, and it's not exhaustive.
-Refer to the [language specification](https://chapel-lang.org/docs/latest/language/spec.html) and
-the [module documentation](https://chapel-lang.org/docs/latest/) for more
-details.
+이 튜토리얼은 밧줄이 어떤 섬유 혼합물로 만들어졌는지, 어떻게 땋았는지, 또는 땋기 구성이 서로 어떻게 다른지에 대해 듣지 않고 채플의 요령을 배우고 싶은 사람들을 위한 것입니다. 놀랍도록 성능이 좋은 코드를 개발하는 방법을 가르쳐주지는 않으며, 완전하지도 않습니다. 자세한 내용은 [언어 사양](https://chapel-lang.org/docs/latest/language/spec.html) 및 [모듈 문서](https://chapel-lang.org/docs/latest/)를 참조하십시오.
 
-Occasionally check back here and on the [Chapel site](https://chapel-lang.org)
-to see if more topics have been added or more tutorials created.
+때때로 여기와 [Chapel 사이트](https://chapel-lang.org)를 다시 확인하여 더 많은 주제가 추가되었는지 또는 더 많은 튜토리얼이 만들어졌는지 확인하십시오.
 
-### What this tutorial is lacking:
+### 이 튜토리얼에 부족한 점:
 
-* Exposition of the [standard modules](https://chapel-lang.org/docs/latest/modules/standard.html)
-* Multiple Locales (distributed memory system)
-* Records
-* Parallel iterators
+* [표준 모듈](https://chapel-lang.org/docs/latest/modules/standard.html) 설명
+* 다중 로케일(분산 메모리 시스템)
+* 레코드
+* 병렬 반복기
 
-## Your input, questions, and discoveries are important to the developers!
+## 귀하의 의견, 질문 및 발견은 개발자에게 중요합니다!
 
-The Chapel language is still in active development, so there are
-occasional hiccups with performance and language features. The more information
-you give the Chapel development team about issues you encounter or features you
-would like to see, the better the language becomes.
-There are several ways to interact with the developers:
+Chapel 언어는 아직 활발하게 개발 중이므로 성능 및 언어 기능에 가끔 문제가 발생합니다. Chapel 개발팀에 발생하는 문제나 보고 싶은 기능에 대한 정보를 많이 제공할수록 언어가 더 좋아집니다.
+개발자와 상호 작용하는 방법에는 여러 가지가 있습니다:
 
-* [Gitter chat](https://gitter.im/chapel-lang/chapel)
-* [sourceforge email lists](https://sourceforge.net/p/chapel/mailman)
+* [Gitter 채팅](https://gitter.im/chapel-lang/chapel)
+* [sourceforge 이메일 목록](https://sourceforge.net/p/chapel/mailman)
 
-If you're really interested in the development of the compiler or contributing
-to the project, [check out the master GitHub repository](https://github.com/chapel-lang/chapel).
-It is under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
+컴파일러 개발에 정말 관심이 있거나 프로젝트에 기여하고 싶다면 [마스터 GitHub 리포지토리](https://github.com/chapel-lang/chapel)를 확인하십시오.
+[Apache 2.0 라이선스](http://www.apache.org/licenses/LICENSE-2.0)에 따라 제공됩니다.
 
-## Installing the Compiler
+## 컴파일러 설치
 
-[The Official Chapel documentation details how to download and compile the Chapel compiler.](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html)
+[공식 Chapel 문서에는 Chapel 컴파일러를 다운로드하고 컴파일하는 방법이 자세히 설명되어 있습니다.](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html)
 
-Chapel can be built and installed on your average 'nix machine (and cygwin).
-[Download the latest release version](https://github.com/chapel-lang/chapel/releases/)
-and it's as easy as
+Chapel은 일반적인 'nix 머신(및 cygwin)에 빌드하고 설치할 수 있습니다.
+[최신 릴리스 버전 다운로드](https://github.com/chapel-lang/chapel/releases/)하고 다음과 같이 간단합니다.
 
 1. `tar -xvf chapel-<VERSION>.tar.gz`
 2. `cd chapel-<VERSION>`
-3. `source util/setchplenv.bash # or .sh or .csh or .fish`
+3. `source util/setchplenv.bash # 또는 .sh 또는 .csh 또는 .fish`
 4. `make`
-5. `make check # optional`
+5. `make check # 선택 사항`
 
-You will need to `source util/setchplenv.EXT` from within the Chapel directory
-(`$CHPL_HOME`) every time your terminal starts so it's suggested that you drop
-that command in a script that will get executed on startup (like .bashrc).
+터미널이 시작될 때마다 Chapel 디렉토리(`$CHPL_HOME`) 내에서 `source util/setchplenv.EXT`를 실행해야 하므로 시작 시 실행될 스크립트(.bashrc 등)에 해당 명령을 넣는 것이 좋습니다.
 
-Chapel is easily installed on macOS with Homebrew
+Chapel은 Homebrew를 사용하여 macOS에 쉽게 설치할 수 있습니다.
 
 1. `brew update`
 2. `brew install chapel`
 
-## Compiling Code
+## 코드 컴파일
 
-Builds like other compilers:
+다른 컴파일러와 같이 빌드합니다:
 
 `chpl myFile.chpl -o myExe`
 
-Notable arguments:
+주목할 만한 인수:
 
-* `--fast`: enables a number of optimizations and disables array bounds
-  checks. Should only enable when application is stable.
-* `--set <Symbol Name>=<Value>`: set config param `<Symbol Name>` to `<Value>`
-  at compile-time.
-* `--main-module <Module Name>`: use the main() procedure found in the module
-  `<Module Name>` as the executable's main.
-* `--module-dir <Directory>`: includes `<Directory>` in the module search path.
+* `--fast`: 여러 최적화를 활성화하고 배열 경계 검사를 비활성화합니다. 애플리케이션이 안정적일 때만 활성화해야 합니다.
+* `--set <Symbol Name>=<Value>`: 컴파일 타임에 config param `<Symbol Name>`을 `<Value>`로 설정합니다.
+* `--main-module <Module Name>`: 모듈 `<Module Name>`에 있는 main() 프로시저를 실행 파일의 main으로 사용합니다.
+* `--module-dir <Directory>`: 모듈 검색 경로에 `<Directory>`를 포함합니다.
+
+```

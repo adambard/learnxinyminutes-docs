@@ -1,71 +1,71 @@
-# apl.md (번역)
-
 ---
 name: APL
 contributors:
     - ["nooodl", "https://github.com/nooodl"]
 filename: learnapl.apl
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ```apl
-⍝ Comments in APL are prefixed by ⍝.
+⍝ APL의 주석은 ⍝로 시작합니다.
 
-⍝ A list of numbers. (¯ is negative)
+⍝ 숫자 목록. (¯는 음수입니다)
 2 3e7 ¯4 50.3
 
-⍝ An expression, showing some functions. In APL, there's
-⍝ no order of operations: everything is parsed right-to-
-⍝ left. This is equal to 5 + (4 × (2 ÷ (5 - 3))) = 9:
+⍝ 표현식, 몇 가지 함수를 보여줍니다. APL에는
+⍝ 연산 순서가 없습니다: 모든 것이 오른쪽에서 왼쪽으로
+⍝ 구문 분석됩니다. 이것은 5 + (4 × (2 ÷ (5 - 3))) = 9와 같습니다:
 5 + 4 × 2 ÷ 5 - 3        ⍝ 9
 
-⍝ These functions work on lists, too:
+⍝ 이 함수들은 목록에서도 작동합니다:
 1 2 3 4 × 5              ⍝ 5 10 15 20
 1 2 3 4 × 5 6 7 8        ⍝ 5 12 21 32
 
-⍝ All functions have single-argument and dual-argument
-⍝ meanings. For example, "×" applied to two arguments
-⍝ means multiply, but when applied to only a right-hand
-⍝ side, it returns the sign:
+⍝ 모든 함수는 단일 인수와 이중 인수
+⍝ 의미를 가집니다. 예를 들어, 두 인수에 적용된 "×"는
+⍝ 곱셈을 의미하지만, 오른쪽
+⍝ 면에만 적용될 때는 부호를 반환합니다:
 
 × ¯4 ¯2 0 2 4            ⍝ ¯1 ¯1 0 1 1
 
-⍝ Values can be compared using these operators (1 means
-⍝ "true", 0 means "false"):
+⍝ 값은 다음 연산자를 사용하여 비교할 수 있습니다 (1은
+⍝ "참", 0은 "거짓"을 의미합니다):
 
 10 20 30 = 10 20 99      ⍝ 1 1 0
 
 10 20 30 < 10 20 99      ⍝ 0 0 1
 
-⍝ "⍳n" returns a vector containing the first n naturals.
-⍝ Matrices can be constructed using ⍴ (reshape):
+⍝ "⍳n"은 처음 n개의 자연수를 포함하는 벡터를 반환합니다.
+⍝ 행렬은 ⍴ (재구성)을 사용하여 구성할 수 있습니다:
 4 3 ⍴ ⍳5                 ⍝ 0 1 2
                          ⍝ 3 4 0
                          ⍝ 1 2 3
                          ⍝ 4 0 1
 
-⍝ Single-argument ⍴ gives you the dimensions back:
+⍝ 단일 인수 ⍴는 차원을 다시 제공합니다:
 ⍴ 4 3 ⍴ ⍳5               ⍝ 4 3
 
-⍝ Values can be stored using ←. Let's calculate the mean
-⍝ value of a vector of numbers:
+⍝ 값은 ←를 사용하여 저장할 수 있습니다. 숫자 벡터의 평균값을
+⍝ 계산해 보겠습니다:
 A ← 10 60 55 23
 
-⍝ Sum of elements of A (/ is reduce):
+⍝ A의 요소 합계 (/는 축소입니다):
 +/A                      ⍝ 148
 
-⍝ Length of A:
+⍝ A의 길이:
 ⍴A                       ⍝ 4
 
-⍝ Mean:
+⍝ 평균:
 (+/A) ÷ (⍴A)             ⍝ 37
 
-⍝ We can define this as a function using {} and ⍵:
+⍝ 이것을 {}와 ⍵를 사용하여 함수로 정의할 수 있습니다:
 mean ← {(+/⍵)÷⍴⍵}
 mean A                   ⍝ 37
 ```
 
-## Further Reading
+## 더 읽을거리
 
-- [APL Wiki](https://aplwiki.com/)
-- An older version of APL book by the creator: [Kenneth Iverson - A Programming Language](https://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE/view)
-- Additional Books: [APL Books](https://aplwiki.com/wiki/Books)
+- [APL 위키](https://aplwiki.com/)
+- 제작자가 쓴 APL 책의 이전 버전: [Kenneth Iverson - A Programming Language](https://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE/view)
+- 추가 도서: [APL Books](https://aplwiki.com/wiki/Books)

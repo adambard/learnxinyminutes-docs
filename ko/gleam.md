@@ -1,34 +1,25 @@
-# gleam.md (번역)
-
 ---
 name: Gleam
 contributors:
     - ["Antonio Ognio", "https://github.com/aognio/"]
 filename: learngleam.gleam
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-Gleam is a new language for Erlang's BEAM virtual machine that relies on the
-power of a robust type system, the expressiveness of functional programming,
-and the highly concurrent fault-tolerant Erlang runtime using familiar and
-modern syntax inspired by languages like OCaml, Rust and Elixir.
+Gleam은 Erlang의 BEAM 가상 머신을 위한 새로운 언어로, 강력한 타입 시스템, 함수형 프로그래밍의 표현력, 그리고 OCaml, Rust, Elixir와 같은 언어에서 영감을 받은 친숙하고 현대적인 구문을 사용하여 고도로 동시적이고 내결함성이 있는 Erlang 런타임의 힘을 활용합니다.
 
-Being a pretty modern development, Gleam comes with a compiler, a build tool,
-a code formatter, several editor integrations, and a package manager.
+매우 현대적인 개발인 Gleam은 컴파일러, 빌드 도구, 코드 포맷터, 여러 편집기 통합 및 패키지 관리자와 함께 제공됩니다.
 
-Being part of the larger BEAM ecosystem, the programs created with Gleam can
-also make use of thousands of published packages written in Erlang or Elixir.
+더 큰 BEAM 생태계의 일부인 Gleam으로 만든 프로그램은 Erlang 또는 Elixir로 작성된 수천 개의 게시된 패키지를 사용할 수도 있습니다.
 
-The design of the language is very concise so it features no null values,
-no exceptions, clear error messages, and a practical type system.
+언어의 디자인은 매우 간결하여 null 값, 예외, 명확한 오류 메시지 및 실용적인 타입 시스템이 없습니다.
 
-JavaScript is additionally supported as a compile target, so you can run Gleam
-code in browser or any other JS-enabled runtime. When using this feature,
-TypeScript definitions get created, so you can interact with your Gleam code
-confidently, even from the outside.
+JavaScript는 추가로 컴파일 대상으로 지원되므로 브라우저 또는 다른 JS 지원 런타임에서 Gleam 코드를 실행할 수 있습니다. 이 기능을 사용하면 TypeScript 정의가 생성되므로 외부에서도 자신 있게 Gleam 코드와 상호 작용할 수 있습니다.
 
 ```gleam
-//// This comment with four slashes is a module-level.
-//// This kind of comments are used to describe the whole module.
+//// 이 네 개의 슬래시가 있는 주석은 모듈 수준입니다.
+//// 이러한 종류의 주석은 전체 모듈을 설명하는 데 사용됩니다.
 
 import gleam/bool
 import gleam/io
@@ -41,11 +32,9 @@ import gleam/result
 import gleam/string
 import gleam/string as text
 
-// A type's name always starts with a capital letter, contrasting to variables
-// and functions, which start with a lowercase letter.
+// 타입의 이름은 항상 대문자로 시작하며, 변수와 함수는 소문자로 시작하는 것과 대조됩니다.
 
-// When the pub keyword is used the type alias is public and can be referred to
-// by other modules.
+// pub 키워드를 사용하면 타입 별칭이 공개되어 다른 모듈에서 참조할 수 있습니다.
 
 pub type UserId =
   Int
@@ -54,24 +43,18 @@ pub fn main() {
   io.println("Hello from learnxinmyminutes.com!")
   // io.println("This statement got commented out by a two slashes comment.!")
 
-  // Modules are the units in which all Gleam code gets organized.
-  // In a module you will find a bunch of definitions of types, functions, etc.
-  // that seem to belong together.
-  // For example, the gleam/io module contains a variety of functions for
-  // printing, like println.
+  // 모듈은 모든 Gleam 코드가 구성되는 단위입니다.
+  // 모듈에는 함께 속하는 것처럼 보이는 타입, 함수 등의 정의가 많이 있습니다.
+  // 예를 들어, gleam/io 모듈에는 println과 같은 다양한 인쇄 함수가 포함되어 있습니다.
 
-  // All gleam code is in some module or other, whose name comes from the name
-  // of the file it's in.
-  // For example, gleam/io is in a file called io.gleam in a directory called
-  // gleam.
+  // 모든 gleam 코드는 어떤 모듈에 있으며, 그 이름은 해당 파일의 이름에서 따옵니다.
+  // 예를 들어, gleam/io는 gleam이라는 디렉토리의 io.gleam이라는 파일에 있습니다.
 
-  // Gleam has a robust static type system that helps you as you write and edit
-  // code, catching mistakes and showing you where to make changes.
+  // Gleam에는 코드를 작성하고 편집할 때 도움이 되는 강력한 정적 타입 시스템이 있어 실수를 포착하고 변경할 위치를 보여줍니다.
   // io.println(10)
-  // If you uncomment the previous line you'll get a compile time error reported
-  // as the io.println function only works with strings, not ints.
+  // 이전 줄의 주석을 해제하면 io.println 함수는 정수가 아닌 문자열에서만 작동하므로 컴파일 타임 오류가 발생합니다.
 
-  // The compile will output an error that looks like this:
+  // 컴파일러는 다음과 같은 오류를 출력합니다:
   // error: Type mismatch
   //  ┌─ /home/contributor/learnxinmyminutes/src/learnxinmyminutes.gleam:21:14
   //  │
@@ -86,35 +69,31 @@ pub fn main() {
   //
   //     Int
 
-  // Working with numbers
+  // 숫자 작업
 
-  // When running on the Erlang virtual machine ints have no maximum and minimum
-  // size.
-  // When running on JavaScript runtimes ints are represented using JavaScript's
-  // 64 bit floating point numbers.
+  // Erlang 가상 머신에서 실행할 때 정수는 최대 및 최소 크기가 없습니다.
+  // JavaScript 런타임에서 실행할 때 정수는 JavaScript의 64비트 부동 소수점 숫자를 사용하여 표시됩니다.
 
-  // Int arithmetic
+  // 정수 산술
   io.debug(1 + 1)
   io.debug(5 - 1)
   io.debug(5 / 2)
   io.debug(3 * 3)
   io.debug(5 % 2)
 
-  // Int comparisons
+  // 정수 비교
   io.debug(2 > 1)
   io.debug(2 < 1)
   io.debug(2 >= 1)
   io.debug(2 <= 1)
 
-  // Equality works for any type and is checked structurally, meaning that two
-  // values are equal if they have the same structure rather than if they are at
-  // the same memory location.
+  // 같음은 모든 유형에 대해 작동하며 구조적으로 확인됩니다. 즉, 두 값이 동일한 메모리 위치에 있는지 여부가 아니라 동일한 구조를 갖는 경우 동일합니다.
   io.debug(1 == 1)
   // True
   io.debug(2 != 2)
   // False
 
-  // Standard library int functions
+  // 표준 라이브러리 정수 함수
   io.debug(int.min(142, 137))
   // 137
   io.debug(int.clamp(-80, min: 0, max: 100))
@@ -122,58 +101,51 @@ pub fn main() {
   io.debug(int.base_parse("10", 2))
   // Ok(2)
 
-  // Binary, octal, and hex Int literals
+  // 2진수, 8진수 및 16진수 정수 리터럴
   io.debug(0b00001111)
   io.debug(0o17)
   io.debug(0xF)
 
-  // Use underscores to enhance integer readability
+  // 정수 가독성을 높이기 위해 밑줄 사용
   io.debug(1_000_000)
 
-  // Gleam's numerical operators are not overloaded, so there are dedicated
-  // operators for working with floats.
+  // Gleam의 숫자 연산자는 오버로드되지 않으므로 부동 소수점 작업을 위한 전용 연산자가 있습니다.
 
-  // Float arithmetic
+  // 부동 소수점 산술
   io.debug(1.0 +. 1.5)
   io.debug(5.0 -. 1.5)
   io.debug(5.0 /. 2.5)
   io.debug(3.0 *. 3.5)
 
-  // Float comparisons
+  // 부동 소수점 비교
   io.debug(2.2 >. 1.3)
   io.debug(2.2 <. 1.3)
   io.debug(2.2 >=. 1.3)
   io.debug(2.2 <=. 1.3)
 
-  // Floats are represented as 64-bit floating point numbers on both the Erlang
-  // and JavaScript runtimes.
-  // The floating point behaviour is native to their respective runtimes, so
-  // their exact behaviour will be slightly different on the two runtimes.
+  // 부동 소수점은 Erlang 및 JavaScript 런타임 모두에서 64비트 부동 소수점 숫자로 표시됩니다.
+  // 부동 소수점 동작은 해당 런타임에 따라 다르므로 두 런타임에서 약간 다르게 작동합니다.
 
-  // Under the JavaScript runtime, exceeding the maximum (or minimum)
-  // representable value for a floating point value will result in Infinity
-  // (or -Infinity). Should you try to divide two infinities you will get NaN
-  // as a result.
+  // JavaScript 런타임에서 부동 소수점 값에 대해 표현 가능한 최대(또는 최소) 값을 초과하면 Infinity(또는 -Infinity)가 됩니다. 두 무한대를 나누려고 하면 결과로 NaN이 됩니다.
 
-  // When running on the BEAM any overflow will raise an error. So there is no
-  // NaN or Infinity float value in the Erlang runtime.
+  // BEAM에서 실행할 때 오버플로가 발생하면 오류가 발생합니다. 따라서 Erlang 런타임에는 NaN 또는 Infinity 부동 소수점 값이 없습니다.
 
-  // Division by zero is not an error
+  // 0으로 나누는 것은 오류가 아닙니다.
   io.debug(3.14 /. 0.0)
   // 0.0
 
-  // Standard library float functions
+  // 표준 라이브러리 부동 소수점 함수
   io.debug(float.max(2.0, 9.5))
   // 9.5
   io.debug(float.ceiling(5.4))
   // 6.0
 
-  // Underscores for floats are also supported
+  // 부동 소수점에 대한 밑줄도 지원됩니다.
   io.debug(10_000.01)
 
-  // Division by zero will not overflow but is instead defined to be zero.
+  // 0으로 나누면 오버플로가 발생하지 않고 대신 0으로 정의됩니다.
 
-  // Working with strings
+  // 문자열 작업
   io.debug("⭐ Gleam ⭐ - 별")
   io.debug(
     "this
@@ -184,32 +156,32 @@ pub fn main() {
     string",
   )
   io.debug("\u{1F600}")
-  // Outputs a smiley 😀
+  // 웃는 얼굴 😀 출력
 
-  // Double quote can be escaped
+  // 큰따옴표는 이스케이프할 수 있습니다.
   io.println("\"X\" marks the spot")
 
-  // String concatenation
+  // 문자열 연결
   io.debug("One " <> "Two")
 
-  // String functions
+  // 문자열 함수
   io.debug(text.reverse("1 2 3 4 5"))
   io.debug(text.append("abc", "def"))
 
   io.println(text.reverse("!desrever tog gnirts sihT"))
-  // Outputs "This string got reversed!"
+  // "This string got reversed!" 출력
 
-  // Several escape sequences are supported:
+  // 여러 이스케이프 시퀀스가 지원됩니다:
 
-  // \" - double quote
-  // \\ - backslash
-  // \f - form feed
-  // \n - newline
-  // \r - carriage return
-  // \t - tab
+  // \" - 큰따옴표
+  // \\ - 백슬래시
+  // \f - 폼 피드
+  // \n - 줄 바꿈
+  // \r - 캐리지 리턴
+  // \t - 탭
 
-  // Bool operators
-  // The || and && operators work by short-circuiting
+  // 부울 연산자
+  // || 및 && 연산자는 단락 평가로 작동합니다.
 
   io.debug(True && False)
   // False
@@ -223,34 +195,34 @@ pub fn main() {
   io.debug(False || True)
   // True
 
-  // Bool functions
+  // 부울 함수
   io.debug(bool.to_string(True))
   // "True"
 
   io.debug(bool.to_int(False))
   // 0
 
-  // Assignments
+  // 할당
   let x = "Original value"
   io.debug(x)
 
-  // Assign `y` to the value of `x`
+  // `y`를 `x`의 값에 할당
   let y = x
   io.debug(y)
 
-  // Assign `x` to a new value
+  // `x`를 새 값에 할당
   let x = "New value"
   io.debug(x)
 
-  // The `y` still refers to the original value
+  // `y`는 여전히 원래 값을 참조합니다.
   io.debug(y)
 
-  // In Gleam variable and function names are written in snake_case.
+  // Gleam에서 변수 및 함수 이름은 snake_case로 작성됩니다.
   let answer_to_the_universe = 42
   io.debug(answer_to_the_universe)
 
   let and_everything = answer_to_the_universe
-  // Now using a variable produces a warning
+  // 이제 변수를 사용하면 경고가 발생합니다.
 
   // warning: Unused variable
   //     ┌─ /home/contributor/learnxinmyminutes/src/learnxinmyminutes.gleam:199:7
@@ -259,16 +231,14 @@ pub fn main() {
   //     │       ^^^^^^^^^^^^^^ This variable is never used
   // Hint: You can ignore it with an underscore: `_and_everything`.
 
-  // Type annotations
+  // 타입 주석
 
   let _name: String = "Gleam"
 
   let _is_cool: Bool = True
 
   let _version: Int = 1
-  // Useful for documentation purposes but they do not change how the compiler
-  // type checks the code beyond making sure the annotation matches the type,
-  // otherwise you get an error.
+  // 문서화 목적으로 유용하지만 컴파일러가 코드를 타입 검사하는 방식은 변경하지 않습니다. 주석이 타입과 일치하는지 확인하는 것 외에는 오류가 발생합니다.
 
   // let _has_wrong_type_annotation: Int = True
 
@@ -286,47 +256,45 @@ pub fn main() {
   //
   //      Bool
 
-  // Type aliases
+  // 타입 별칭
   let one: UserId = 1
-  // Refer to the beginning of the file for the definition of the UserId type
+  // 파일 시작 부분에서 UserId 타입 정의 참조
 
   let two: Int = 2
 
-  // Aliases are just for creating more readable code and more precise
-  // documentation.
-  // Under the hood they are still values of the same type so operations
-  // still work
+  // 별칭은 더 읽기 쉬운 코드와 더 정확한 문서를 만들기 위한 것입니다.
+  // 내부적으로는 여전히 동일한 유형의 값이므로 연산이 여전히 작동합니다.
   io.debug(one + two)
   // 3
 
-  // Blocks: scoping and value
+  // 블록: 범위 및 값
   let radius = {
     let value = 100.0
     value
   }
-  // io.debug(value) // <- This will not compile because "value" is out of scope
+  // io.debug(value) // <- "value"가 범위를 벗어났기 때문에 컴파일되지 않습니다.
 
   let area = 3.14159 *. radius *. radius
   io.debug(area)
 
-  // Use blocks to group operations instead of parenthesis
+  // 괄호 대신 블록을 사용하여 연산을 그룹화합니다.
   let n1 = { 3 + 2 } * 5
   let n2 = 3 + { 2 * 5 }
   io.debug(n1 != n2)
   // True
 
-  // Lists
+  // 목록
 
-  // Nephews of Scrooge McDuck
+  // Scrooge McDuck의 조카
   let nephews = ["Huey", "Dewey", "Louie"]
   io.debug(nephews)
   // ["Huey", "Dewey", "Louie"]
 
-  // Immutably prepend so the original list is not changed
+  // 불변하게 앞에 추가하여 원래 목록이 변경되지 않도록 합니다.
   io.debug(["Donald", ..nephews])
   // ["Donald", "Huey", "Dewey", "Louie"]
 
-  // Some standard library functions for lists
+  // 목록에 대한 일부 표준 라이브러리 함수
 
   list.each(nephews, io.println)
   // Huey
@@ -351,42 +319,38 @@ pub fn main() {
   showcase_panic()
 }
 
-// The fn keyword is used to define new functions.
+// fn 키워드는 새 함수를 정의하는 데 사용됩니다.
 fn multiply(a: Int, b: Int) -> Int {
-  // No explicit return
-  // The last expression gets returned
+  // 명시적인 반환 없음
+  // 마지막 표현식이 반환됩니다.
   a * b
 }
 
-// The double and multiply functions are defined without the pub keyword.
-// This makes them private functions, they can only be used within this module.
-// If another module attempted to use them it would result in a compiler error.
+// double 및 multiply 함수는 pub 키워드 없이 정의됩니다.
+// 이것은 비공개 함수로 만들며, 이 모듈 내에서만 사용할 수 있습니다.
+// 다른 모듈에서 사용하려고 하면 컴파일러 오류가 발생합니다.
 fn double(a: Int) -> Int {
   multiply(a, 2)
 }
 
-// Only public functions are exported and can be called from outside the module.
+// 공개 함수만 내보내지고 모듈 외부에서 호출할 수 있습니다.
 
-// Type annotations are optional for function arguments and return values
-// but are considered good practice for clarity and in order to encourage
-// intentional and thoughtful design.
+// 함수 인수 및 반환 값에 대한 타입 주석은 선택 사항이지만 명확성을 위해 좋은 관행으로 간주되며 의도적이고 사려 깊은 설계를 장려합니다.
 
 pub fn is_leap_year(year: Int) -> Bool {
   { year % 4 == 0 } && { { year % 100 != 0 } || { year % 400 == 0 } }
 }
 
 fn more_examples() {
-  // Debug also returns a value so its output is the return value of
-  // this function
+  // Debug는 또한 값을 반환하므로 해당 출력은 이 함수의 반환 값입니다.
   io.debug(double(10))
   // 20
   io.debug(is_leap_year(2000))
   // True
 }
 
-// Gleam supports higher-order functions:
-// They can be assigned to variables, passed as arguments to other functions
-// or even be returned as values from blocks or other functions
+// Gleam은 고차 함수를 지원합니다:
+// 변수에 할당하거나, 다른 함수에 인수로 전달하거나, 블록이나 다른 함수에서 값으로 반환할 수도 있습니다.
 fn call_func_on_int(func: fn(Int) -> Int, value: Int) -> Int {
   func(value)
 }
@@ -399,10 +363,10 @@ fn more_function_examples() -> Int {
   io.debug(square(3))
   // 9
 
-  // Calling an anonymous function immediately after defining it
+  // 정의 직후 익명 함수 호출
   io.debug(fn(x: Int) { x + 1 }(1))
 
-  // Closure example
+  // 클로저 예제
   let make_adder = fn(n: Int) -> fn(Int) -> Int {
     fn(argument: Int) -> Int { argument + n }
   }
@@ -411,11 +375,11 @@ fn more_function_examples() -> Int {
   io.debug(adder_of_fives(10))
   // 15
 
-  // Anonymous functions can be used interchangeably with named functions.
+  // 익명 함수는 명명된 함수와 상호 교환하여 사용할 수 있습니다.
   io.debug(call_func_on_int(fn(x: Int) -> Int { x + 100 }, 900))
   // 1000
 
-  // Let's create a function decorator
+  // 함수 데코레이터를 만들어 보겠습니다.
   let twice = fn(wrapped_func: fn(Int) -> Int) -> fn(Int) -> Int {
     fn(argument: Int) -> Int { wrapped_func(wrapped_func(argument)) }
   }
@@ -426,22 +390,20 @@ fn more_function_examples() -> Int {
   io.debug(quadruple_2(2))
   // 8
 
-  // A function capture is a shorthand syntax for creating anonymous functions
-  // that takes one argument and immediately calls another function with that
-  // argument
+  // 함수 캡처는 한 인수를 사용하고 즉시 다른 함수를 해당 인수로 호출하는 익명 함수를 만드는 약식 구문입니다.
   let quadruple_3 = multiply(4, _)
   io.debug(quadruple_3(4))
   // 16
 }
 
-// Generic functions are supported using type variables.
+// 제네릭 함수는 타입 변수를 사용하여 지원됩니다.
 fn generic_twice(func: fn(value) -> value, argument: value) -> value {
   func(func(argument))
 }
 
-// In generic_twice value was the type variable.
-// In generic_twice_decorator the_type is the type variable.
-// As in any other variable you get to choose the name.
+// generic_twice에서 value는 타입 변수였습니다.
+// generic_twice_decorator에서 the_type은 타입 변수입니다.
+// 다른 변수와 마찬가지로 이름을 선택할 수 있습니다.
 fn generic_twice_decorator(
   func: fn(the_type) -> the_type,
 ) -> fn(the_type) -> the_type {
@@ -462,10 +424,9 @@ fn generic_typing_examples() {
   // 4.0
 }
 
-// Gleam's pipe operator |> takes the result of the expression on its left
-// and passes it as an argument to the function on its right.
+// Gleam의 파이프 연산자 |>는 왼쪽 표현식의 결과를 가져와 오른쪽 함수의 인수로 전달합니다.
 fn beloved_pipelines_demo() {
-  // Let's be honest: you want to use Gleam just for this cool operator, right?
+  // 솔직히 말해서, 이 멋진 연산자 때문에 Gleam을 사용하고 싶으시죠?
   ["hello", "world"]
   |> list.intersperse(" ")
   |> list.append(["!"])
@@ -473,7 +434,7 @@ fn beloved_pipelines_demo() {
   |> string.capitalise
   |> io.debug
 
-  // Match cleaner than this right?
+  // 이것보다 더 깔끔하게 일치시키세요, 그렇죠?
   io.debug(
     string.capitalise(
       string.concat(
@@ -482,9 +443,9 @@ fn beloved_pipelines_demo() {
     ),
   )
 
-  // Solution to the first problem of Project Euler:
+  // Project Euler의 첫 번째 문제에 대한 해결책:
   // URL: https://projecteuler.net/problem=1
-  // Description: Find the sum of all the multiples of 3 and 5 below 1000.
+  // 설명: 1000 미만의 3과 5의 모든 배수의 합을 찾으십시오.
   iterator.iterate(1, fn(n) { n + 1 })
   |> iterator.take(1000 - 1)
   |> iterator.filter(fn(n) { { n % 3 == 0 } || { n % 5 == 0 } })
@@ -494,10 +455,10 @@ fn beloved_pipelines_demo() {
     "Solution to Project Euler's problem #1: " <> sum_as_text
   }
   |> io.debug
-  // Solution to Project Euler's problem #1: 233168
+  // Project Euler의 문제 #1에 대한 해결책: 233168
 }
 
-// Labels can be added before each argument
+// 각 인수 앞에 레이블을 추가할 수 있습니다.
 fn call_func_on_int_with_labels(
   func passed_func: fn(Int) -> Int,
   value n: Int,
@@ -505,7 +466,7 @@ fn call_func_on_int_with_labels(
   passed_func(n)
 }
 
-// The label and the argument can have the same name
+// 레이블과 인수는 동일한 이름을 가질 수 있습니다.
 fn add_one(number number: Int) -> Int {
   number + 1
 }
@@ -515,31 +476,28 @@ fn add_two_integers(first n: Int, second m: Int) -> Int {
 }
 
 fn labels_in_function_calls() -> Int {
-  // Since we are labelling the arguments we can switch the order
-  // if we want to
+  // 인수에 레이블을 지정하므로 원하는 경우 순서를 바꿀 수 있습니다.
   io.debug(call_func_on_int_with_labels(value: 8, func: double))
   io.debug(add_one(number: 1))
   // 2
   io.debug(string.contains(does: "theme", contain: "the"))
   // True
-  // Unlabeled arguments must go first
+  // 레이블이 없는 인수는 먼저 와야 합니다.
   io.debug(add_two_integers(2, second: 2))
   // 4
 }
 
 fn showcase_flow_control() {
-  // Use case if you want to use pattern-matching in order to
-  // select which code to execute.
-  // Gleam will make sure all possible values are covered
-  // by performing exhaustiveness checks.
-  // Otherwise you get compilation errors.
+  // 패턴 매칭을 사용하여 실행할 코드를 선택하려는 경우 case를 사용하십시오.
+  // Gleam은 완전성 검사를 수행하여 모든 가능한 값이 포함되었는지 확인합니다.
+  // 그렇지 않으면 컴파일 오류가 발생합니다.
   let puppies = ["Bear", "Frisco", "Ranger"]
   let count = list.length(of: puppies)
   {
     "We have "
     <> int.to_string(count)
     <> " "
-    <> // The underscore matches with any other value
+    <> // 밑줄은 다른 모든 값과 일치합니다.
     case count {
       1 -> "puppy"
       _ -> "puppies"
@@ -547,7 +505,7 @@ fn showcase_flow_control() {
   }
   |> io.debug
 
-  // Gleam allows patterns in case expressions to also assign variables.
+  // Gleam은 case 표현식의 패턴이 변수를 할당할 수 있도록 합니다.
   {
     "Puppy count: "
     <> case list.length(puppies) {
@@ -558,10 +516,9 @@ fn showcase_flow_control() {
   }
   |> io.debug
 
-  // Consider BEAM languages are functional in design and Gleam is no exception
-  // so there are no if, for or while constructs available.
+  // BEAM 언어는 설계상 함수형이며 Gleam도 예외는 아니므로 if, for 또는 while 구문이 없습니다.
 
-  // Use pattern-matching for conditionals
+  // 조건문에 대한 패턴 매칭 사용
   let answer = 42
   case answer == 42 {
     True -> {
@@ -572,11 +529,11 @@ fn showcase_flow_control() {
     }
   }
 
-  // Use recursion instead of looping
+  // 반복 대신 재귀 사용
   from_one_to_ten(1)
 }
 
-// Recursive function
+// 재귀 함수
 fn from_one_to_ten(n: Int) {
   io.debug(n)
   case n {
@@ -585,14 +542,10 @@ fn from_one_to_ten(n: Int) {
   }
 }
 
-// In order to avoid memory exhaustion due to creating excessive
-// stack frames when calling functions recursively, Gleam supports
-// "tail call optimisation" which means that the compiler can reuse
-// the stack frame for the current function if a function call is
-// the last thing the function does.
+// 재귀적으로 함수를 호출할 때 과도한 스택 프레임을 만들어 메모리 고갈을 피하기 위해 Gleam은 "꼬리 호출 최적화"를 지원합니다. 즉, 함수 호출이 함수가 하는 마지막 일인 경우 컴파일러가 현재 함수에 대한 스택 프레임을 재사용할 수 있습니다.
 
 pub fn fib(x: Int) -> Int {
-  // The public function calls the private tail recursive function
+  // 공개 함수는 비공개 꼬리 재귀 함수를 호출합니다.
   fib_loop(x, 1)
 }
 
@@ -600,14 +553,13 @@ fn fib_loop(x: Int, accumulator: Int) -> Int {
   case x {
     1 -> accumulator
 
-    // The last thing this function does is call itself
-    // In the previous lesson the last thing it did was multiply two ints
+    // 이 함수가 하는 마지막 일은 자신을 호출하는 것입니다.
+    // 이전 수업에서 마지막으로 한 일은 두 정수를 곱하는 것이었습니다.
     _ -> fib_loop(x - 1, accumulator + x)
   }
 }
 
-// Gleam supports pattern-matching the first element and the remainder
-// of a list with the [x, ..y] pattern inside a case expression.
+// Gleam은 case 표현식 내에서 [x, ..y] 패턴으로 목록의 첫 번째 요소와 나머지 부분을 패턴 매칭하는 것을 지원합니다.
 fn reverse_list(the_list: List(value)) -> List(value) {
   case the_list {
     [head, ..tail] -> list.concat([reverse_list(tail), [head]])
@@ -622,15 +574,13 @@ fn more_on_recursion() {
 }
 
 fn more_on_pattern_matching() {
-  // When pattern-matching on strings the <> operator match on strings
-  // with a specific prefix and assigns the reminder to a variable
+  // 문자열에서 패턴 매칭할 때 <> 연산자는 특정 접두사가 있는 문자열과 일치하고 나머지를 변수에 할당합니다.
   io.debug(case "Hello, Lucy" {
     "Hello, " <> name -> "Greetings for " <> name
     _ -> "Potentially no greetings"
   })
 
-  // Alternative patterns are supported so the same clause is used
-  // for multiple values
+  // 대체 패턴이 지원되므로 여러 값에 대해 동일한 절이 사용됩니다.
   let month = 2
   let year = 2024
   let number_of_days = case month {
@@ -646,9 +596,8 @@ fn more_on_pattern_matching() {
   io.debug("Number of days: " <> int.to_string(number_of_days))
   // 29
 
-  // Guards in pattern-matching:
-  // When using the if keyword an expression must evaluate to True
-  // for the pattern to match.
+  // 패턴 매칭의 가드:
+  // if 키워드를 사용할 때 표현식은 패턴이 일치하려면 True로 평가되어야 합니다.
   let list_starts_with = fn(the_list: List(value), the_value: value) -> Bool {
     case the_list {
       [head, ..] if head == the_value -> True
@@ -665,24 +614,24 @@ pub type Gender {
   Other
 }
 
-// Records:
-// - Support variants
-// - Each variant is similar to a struct with fields
+// 레코드:
+// - 변형 지원
+// - 각 변형은 필드가 있는 구조체와 유사합니다.
 pub type Shape {
   Rectangle(base: Float, height: Float)
   Triangle(base: Float, height: Float)
 }
 
-// Records with one variant resemble structs
+// 하나의 변형이 있는 레코드는 구조체와 유사합니다.
 pub type Point {
   Point(x: Float, y: Float)
 }
 
 fn showcase_types() {
-  // Tuples:
-  // - Can mix together elements of different types
-  // - Their type is implicit e.g. #{1, "Hello"} is of type #{Int, String}
-  // - Their elements can be accessed by numeric indexes
+  // 튜플:
+  // - 다른 유형의 요소를 함께 혼합할 수 있습니다.
+  // - 해당 유형은 암시적입니다. 예: #{1, "Hello"}는 #{Int, String} 유형입니다.
+  // - 해당 요소는 숫자 인덱스로 액세스할 수 있습니다.
   let tuple_01 = #(1, "Ferris", "rustacean", True)
   let tuple_02 = #(1, "Lucy", "starfish", True)
   io.debug(tuple_01)
@@ -693,13 +642,13 @@ fn showcase_types() {
   let #(_, name, species, _) = tuple_01
   io.debug(name <> " the " <> species)
 
-  // Pattern-matching with tuples including variable assignment
+  // 변수 할당을 포함한 튜플과의 패턴 매칭
   case tuple_02 {
     #(_, name, _, True) -> io.debug(name <> " is a mascot.")
     #(_, name, _, False) -> io.debug(name <> " is not a mascot.")
   }
 
-  // Using a custom type with pattern-matching
+  // 패턴 매칭과 함께 사용자 지정 유형 사용
   let gender = Other
   io.debug(case gender {
     Male -> "Boy"
@@ -707,7 +656,7 @@ fn showcase_types() {
     _ -> "Undetermined"
   })
 
-  // Using records
+  // 레코드 사용
   let rectangle_1 = Rectangle(base: 10.0, height: 20.0)
   io.debug(rectangle_1.height)
   // 10.3
@@ -715,12 +664,12 @@ fn showcase_types() {
   let point_1 = Point(x: 3.2, y: 4.3)
   io.debug(point_1)
 
-  // Updating a record
+  // 레코드 업데이트
   let point_2 = Point(..point_1, y: 5.7)
   io.debug(point_2)
 
-  // In Gleam, values are not nullable.
-  // Nil is the only value of its type.
+  // Gleam에서 값은 null일 수 없습니다.
+  // Nil은 해당 유형의 유일한 값입니다.
   let some_var = Nil
   let result = io.println("Hello!")
   io.debug(some_var == result)
@@ -733,7 +682,7 @@ pub type Mineral {
   Copper
 }
 
-// Generic custom types with contained types as parameters
+// 포함된 유형을 매개변수로 사용하는 제네릭 사용자 지정 유형
 pub type Purity(inner_type) {
   Pure(inner_type)
   Impure(inner_type)
@@ -744,8 +693,7 @@ pub type Beverage {
   Juice
 }
 
-// Existing custom types from the gleam/option and gleam/result modules
-// facilitate working with nullable values and handling potential errors
+// gleam/option 및 gleam/result 모듈의 기존 사용자 지정 유형은 null 가능 값 작업 및 잠재적 오류 처리를 용이하게 합니다.
 pub type Person {
   Person(name: String, nickname: Option(String))
 }
@@ -774,19 +722,19 @@ fn more_on_types() {
   io.debug(mineral_sample_01)
   io.debug(mineral_sample_02)
 
-  // A glass can be empty or not
+  // 유리는 비어 있거나 비어 있지 않을 수 있습니다.
   let glass_01: Option(Beverage) = Some(Water)
   let glass_02 = None
   io.debug(glass_01)
   io.debug(glass_02)
 
-  // A person can have a nickname or not
+  // 사람은 별명이 있거나 없을 수 있습니다.
   let person_01 = Person(name: "John", nickname: Some("The Ripper"))
   let person_02 = Person(name: "Martin", nickname: None)
   io.debug(person_01)
   io.debug(person_02)
 
-  // Working with functions that return values of type Result
+  // Result 유형의 값을 반환하는 함수 작업
   let dice_01 = 5
   case checked_dice_value(dice_01) {
     Ok(checked_value) ->
@@ -795,9 +743,8 @@ fn more_on_types() {
       io.debug("The value of the dice is out of range")
   }
 
-  // Let's attempt to double the value if the resulting value is still
-  // a number in any of the sides of the dice.
-  // Otherwise, let's put the max value.
+  // 결과 값이 여전히 주사위의 면에 있는 숫자인 경우 값을 두 배로 늘리려고 합니다.
+  // 그렇지 않으면 최대값을 넣습니다.
   2
   |> checked_dice_value
   |> result.try(double_dice_value)
@@ -813,8 +760,7 @@ pub fn sum_dice_values(a: Int, b: Int) {
   Ok(a + b)
 }
 
-// Betting on first-class functions and pattern-matching
-// can easily lead to tons of indentation
+// 일급 함수 및 패턴 매칭에 베팅하면 쉽게 많은 들여쓰기가 발생할 수 있습니다.
 fn roll_two_dices_without_use() {
   result.try(throw_dice_as_result(), fn(first_dice) {
     result.try(throw_dice_as_result(), fn(second_dice) {
@@ -823,18 +769,15 @@ fn roll_two_dices_without_use() {
   })
 }
 
-// The use expression still lets us write code that uses callbacks
-// but cleans up excessive indentation:
-// - A call to higher order function go the right side of the <- operator
-// - The argument names for the callback function go on the left hand side of
-//   the <- operator
-// - All the remaining code in the enclosing {} block becomes the body of the
-//   callback function.
+// use 표현식은 여전히 콜백을 사용하는 코드를 작성할 수 있지만 과도한 들여쓰기를 정리합니다:
+// - 고차 함수에 대한 호출은 <- 연산자의 오른쪽에 있습니다.
+// - 콜백 함수에 대한 인수 이름은 <- 연산자의 왼쪽에 있습니다.
+// - 묶는 {} 블록의 나머지 모든 코드는 콜백 함수의 본문이 됩니다.
 fn roll_two_dices_with_use() {
   use first_dice <- result.try(throw_dice_as_result())
   use second_dice <- result.try(throw_dice_as_result())
   use sum <- result.map(sum_dice_values(first_dice, second_dice))
-  // This is the remaining code in innermost callback function
+  // 이것은 가장 안쪽 콜백 함수의 나머지 코드입니다.
   sum
 }
 
@@ -845,7 +788,7 @@ fn more_on_callbacks() {
 
 pub type DateTime
 
-// External functions must annotate a return type
+// 외부 함수는 반환 유형을 주석으로 달아야 합니다.
 @external(erlang, "calendar", "local_time")
 pub fn now() -> DateTime
 
@@ -855,30 +798,28 @@ fn showcase_externals() {
 }
 
 fn showcase_panic() {
-  // We can deliberately abort execution by using the panic keyword
-  // in order to make our program crash immediately
+  // panic 키워드를 사용하여 의도적으로 실행을 중단하여 프로그램을 즉시 충돌시킬 수 있습니다.
   case 3 == 2 {
     True -> panic as "The equality operator is broken!"
     False -> "Equality operator works for integers"
   }
-  // Calling a function that uses the todo keyword also crashes
+  // todo 키워드를 사용하는 함수를 호출하면 충돌이 발생합니다.
   // homework()
 }
 
 pub fn homework() {
   todo
 }
-```
 
-## Further reading
+## 추가 자료
 
-* [Gleam's official website](https://gleam.run/)
-* [Language tour](https://tour.gleam.run/) - Includes live code editor
-* [Official documentation](https://gleam.run/documentation/)
-* [Gleam's awesome list](https://github.com/gleam-lang/awesome-gleam)
-* [Exercism track for Gleam](https://exercism.org/tracks/gleam)
+* [Gleam 공식 웹사이트](https://gleam.run/)
+* [언어 둘러보기](https://tour.gleam.run/) - 라이브 코드 편집기 포함
+* [공식 문서](https://gleam.run/documentation/)
+* [Gleam의 멋진 목록](https://github.com/gleam-lang/awesome-gleam)
+* [Gleam을 위한 Exercism 트랙](https://exercism.org/tracks/gleam)
 
-The official docs have cheatsheets for people familiar with:
+공식 문서에는 다음에 익숙한 사람들을 위한 치트 시트가 있습니다:
 
 * [Elixir](https://gleam.run/cheatsheets/gleam-for-elixir-users)
 * [Elm](https://gleam.run/cheatsheets/gleam-for-elm-users)

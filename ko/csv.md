@@ -1,24 +1,20 @@
-# csv.md (번역)
-
 ---
 name: CSV
 contributors:
-- [Timon Erhart, 'https://github.com/turbotimon/']
+- ["Timon Erhart", 'https://github.com/turbotimon/']
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-CSV (Comma-Separated Values) is a lightweight file format used to store tabular
-data in plain text, designed for easy data exchange between programs,
-particularly spreadsheets and databases. Its simplicity and human readability
-have made it a cornerstone of data interoperability. It is often used for
-moving data between programs with incompatible or proprietary formats.
+CSV(쉼표로 구분된 값)는 표 형식 데이터를 일반 텍스트로 저장하는 경량 파일 형식으로, 프로그램 간, 특히 스프레드시트와 데이터베이스 간의 쉬운 데이터 교환을 위해 설계되었습니다. 단순성과 인간이 읽을 수 있는 가독성 덕분에 데이터 상호 운용성의 초석이 되었습니다.
+호환되지 않거나 독점적인 형식을 가진 프로그램 간에 데이터를 이동하는 데 자주 사용됩니다.
 
-While RFC 4180 provides a standard for the format, in practice, the term "CSV"
- is often used more broadly to refer to any text file that:
+RFC 4180은 형식에 대한 표준을 제공하지만, 실제로는 "CSV"라는 용어가 다음을 나타내는 모든 텍스트 파일을 더 광범위하게 지칭하는 데 사용됩니다.
 
-- Can be interpreted as tabular data
-- Uses a delimiter to separate fields (columns)
-- Uses line breaks to separate records (rows)
-- Optionally includes a header in the first row
+- 표 형식 데이터로 해석될 수 있습니다.
+- 필드(열)를 구분하는 구분 기호를 사용합니다.
+- 레코드(행)를 구분하는 줄 바꿈을 사용합니다.
+- 선택적으로 첫 번째 행에 헤더를 포함합니다.
 
 ```csv
 Name, Age, DateOfBirth
@@ -27,16 +23,11 @@ Bob, 25, 1998-11-02
 Charlie, 35, 1988-03-21
 ```
 
-## Delimiters for Rows and Columns
+## 행 및 열 구분 기호
 
-Rows are typically separated by line breaks (`\n` or `\r\n`), while columns
- (fields) are separated by a specific delimiter. Although commas are the most
- common delimiter for fields, other characters, such as semicolons (`;`), are
- commonly used in regions where commas are decimal separators (e.g., Germany).
- Tabs (`\t`) are also used as delimiters in some cases, with such files often
- referred to as "TSV" (Tab-Separated Values).
+행은 일반적으로 줄 바꿈(`\n` 또는 `\r\n`)으로 구분되며, 열(필드)은 특정 구분 기호로 구분됩니다. 쉼표가 필드에 가장 일반적인 구분 기호이지만, 세미콜론(`;`)과 같은 다른 문자는 쉼표가 소수점 구분 기호로 사용되는 지역(예: 독일)에서 일반적으로 사용됩니다. 탭(`\t`)도 경우에 따라 구분 기호로 사용되며, 이러한 파일은 종종 "TSV"(탭으로 구분된 값)라고 불립니다.
 
-Example using semicolons as delimiter and comma for decimal separator:
+구분 기호로 세미콜론과 소수점 구분 기호로 쉼표를 사용하는 예:
 
 ```csv
 Name; Age; Grade
@@ -45,52 +36,42 @@ Bob; 25; 45,75
 Charlie; 35; 60,00
 ```
 
-## Data Types
+## 데이터 유형
 
-CSV files do not inherently define data types. Numbers and dates are stored as
- plain text, and their interpretation depends on the software importing the
- file. Typically, data is interpreted as follows:
+CSV 파일은 본질적으로 데이터 유형을 정의하지 않습니다. 숫자와 날짜는 일반 텍스트로 저장되며, 해석은 파일을 가져오는 소프트웨어에 따라 달라집니다. 일반적으로 데이터는 다음과 같이 해석됩니다.
 
 ```csv
 Data, Comment
-100, Interpreted as a number (integer)
-100.00, Interpreted as a number (floating-point)
-2024-12-03, Interpreted as a date or a string (depending on the parser)
-Hello World, Interpreted as text (string)
-"1234", Interpreted as text instead of a number
+100, 정수(integer)로 해석됩니다.
+100.00, 숫자(floating-point)로 해석됩니다.
+2024-12-03, 날짜 또는 문자열로 해석됩니다(파서에 따라 다름).
+Hello World, 텍스트(문자열)로 해석됩니다.
+"1234", 숫자가 아닌 텍스트로 해석됩니다.
 ```
 
-## Quoting Strings and Special Characters
+## 문자열 및 특수 문자 인용
 
-Quoting strings is only required if the string contains the delimiter, special
- characters, or otherwise could be interpreted as a number. However, it is
- often considered good practice to quote all strings to enhance readability and
- robustness.
+문자열에 구분 기호, 특수 문자 또는 숫자로 해석될 수 있는 내용이 포함된 경우에만 문자열을 인용해야 합니다. 그러나 가독성과 견고성을 높이기 위해 모든 문자열을 인용하는 것이 좋은 관행으로 간주됩니다.
 
 ```csv
-Quoting strings examples,
-Unquoted string,
-"Optionally quoted string (good practice)",
-"If it contains the delimiter, it needs to be quoted",
-"Also, if it contains special characters like \n newlines or \t tabs",
-"The quoting "" character itself typically is escaped by doubling the quote ("")",
-"or in some systems with a backslash \" (like other escapes)",
+문자열 인용 예제,
+인용되지 않은 문자열,
+"선택적으로 인용된 문자열(좋은 관행)",
+"구분 기호가 포함된 경우 인용해야 합니다.",
+"또한 \n 줄 바꿈 또는 \t 탭과 같은 특수 문자가 포함된 경우",
+"인용 "" 문자 자체는 일반적으로 따옴표를 두 번 사용하여 이스케이프됩니다("")",
+"또는 일부 시스템에서는 백슬래시 \" (다른 이스케이프와 같이)",
 ```
 
-However, make sure that for one document, the quoting method is consistent.
- For example, the last two examples of quoting with either "" or \" would
- not be consistent and could cause problems.
+그러나 한 문서에 대해 인용 방법이 일관적인지 확인하십시오. 예를 들어, "" 또는 \"로 인용하는 마지막 두 예제는 일관적이지 않으며 문제를 일으킬 수 있습니다.
 
-## Encoding
+## 인코딩
 
-Different encodings are used. Most modern CSV files use UTF-8 encoding, but
- older systems might use others like ASCII or ISO-8859.
+다양한 인코딩이 사용됩니다. 대부분의 최신 CSV 파일은 UTF-8 인코딩을 사용하지만, 이전 시스템은 ASCII 또는 ISO-8859와 같은 다른 인코딩을 사용할 수 있습니다.
 
-If the file is transferred or shared between different systems, it is a good
- practice to explicitly define the encoding used, to avoid issues with
- character misinterpretation.
+파일이 다른 시스템 간에 전송되거나 공유되는 경우, 문자 오해 문제를 피하기 위해 사용된 인코딩을 명시적으로 정의하는 것이 좋습니다.
 
-## More Resources
+## 더 많은 자료
 
-+ [Wikipedia](https://en.wikipedia.org/wiki/Comma-separated_values)
++ [위키백과](https://en.wikipedia.org/wiki/Comma-separated_values)
 + [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180)

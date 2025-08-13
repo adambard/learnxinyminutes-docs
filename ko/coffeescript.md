@@ -3,6 +3,7 @@ contributors:
   - ["Tenor Biel", "http://github.com/L8D"]
 translators:
     - ["wikibook", "http://wikibook.co.kr"]
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ``` coffeescript
@@ -46,8 +47,7 @@ race = (winner, runners...) ->
   print winner, runners
 
 # 존재 여부 확인:
-alert "I knew it!" if elvis?
-#=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
+alert "I knew it!" if elvis? #=> if(typeof elvis !== "undefined" && elvis !== null) { alert("I knew it!"); }
 
 # 배열 조건 제시법(comprehensions):
 cubes = (math.cube num for num in list) #=> ...

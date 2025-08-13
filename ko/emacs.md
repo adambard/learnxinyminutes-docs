@@ -1,322 +1,235 @@
-# emacs.md (번역)
-
 ---
 category: tool
 name: Emacs
 filename: emacs.txt
 contributors:
     - ["Joseph Riad", "https://github.com/Joseph-Riad"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+Emacs는 "확장 가능하고 사용자 정의 가능한 디스플레이 편집기"로 시작하여 수년에 걸쳐 완전한 생태계로 성장했습니다. 일반적으로 다양한 도구에 위임되는 많은 작업을 Emacs 내에서 일관되고 친숙한 인터페이스로 수행할 수 있습니다. 예로는 디렉토리 관리, PDF 문서 보기, SSH를 통한 파일 편집, git 리포지토리 관리 등이 있습니다(목록은 상당히 깁니다). 간단히 말해, Emacs는 여러분이 원하는 대로 만들 수 있습니다. 사용자의 스펙트럼은 텍스트 파일을 편집하는 데 사용하는 사람부터 운영 체제를 거의 대체하는 데 사용하는 극단적인 순수주의자까지 다양합니다.
 
-Emacs started its life as ["the extensible, customizable display
-editor"](https://www.gnu.org/software/emacs/emacs-paper.html) and grew
-over the years into a full-blown ecosystem. Many tasks, usually
-relegated to a diverse set of tools can be accomplished from within
-Emacs in a consistent, familiar interface. Examples include directory
-management, viewing PDF documents, editing files over SSH, managing git
-repos,… (the list is quite long). In short, Emacs is yours to make of it
-what you will: the spectrum of users varies from those who use it to
-edit text files to extreme purists who use it to virtually replace their
-operating system.
+Emacs는 텍스트 편집 및 텍스트 버퍼 관리에 맞춰진 많은 매크로가 있는 Lisp의 특수 방언인 Emacs Lisp(Elisp)를 통해 확장 가능합니다. Emacs에서 사용하는 모든 키(조합)는 Emacs Lisp 함수에 바인딩되며, 직접 작성한 함수를 포함하여 다른 함수로 다시 매핑할 수 있습니다.
 
-Emacs is extensible via a specialized dialect of Lisp known as Emacs
-Lisp (Elisp) which has a lot of macros geared towards editing text and
-managing text buffers. Any key (combination) you use in Emacs is bound
-to an Emacs Lisp function and may be remapped to any other function,
-including ones you write
-yourself.
-
-# Key Notation
+# 키 표기법
 
 ```text
-The Emacs manual and the community in general uses a convention to refer to different key combinations used within Emacs. Specifically, Emacs has the notion of a "modifier key" that is pressed along with another key to modify its action.
+Emacs 설명서와 커뮤니티는 일반적으로 Emacs 내에서 사용되는 다양한 키 조합을 참조하는 규칙을 사용합니다. 특히 Emacs에는 다른 키와 함께 눌러 동작을 수정하는 "수정자 키" 개념이 있습니다.
 
-An example of this notation is "C-c". In this key combination "C" is the modifier and stands for the "Ctrl" key and "c" is the key whose action is being modified (the literal character "c").
+이 표기법의 예는 "C-c"입니다. 이 키 조합에서 "C"는 수정자이며 "Ctrl" 키를 나타내고 "c"는 동작이 수정되는 키(리터럴 문자 "c")입니다.
 
-The modifier shorthand:
-"C-" --> The "CTRL" key
-"M-" --> The "Meta" key (usually, the "Alt" key)
-"s-" --> The "Super" key (the "Cmd" key on Macs and the "Windows" key on PCs)
+수정자 약어:
+"C-" --> "CTRL" 키
+"M-" --> "메타" 키 (보통 "Alt" 키)
+"s-" --> "슈퍼" 키 (Mac의 "Cmd" 키 및 PC의 "Windows" 키)
 
-There are other, less commonly used modifiers that I will not get into here.
+여기서는 다루지 않을 덜 일반적으로 사용되는 다른 수정자가 있습니다.
 
-The key combination "C-x C-s" means you press "Ctrl+x" followed by "Ctrl+s"
+키 조합 "C-x C-s"는 "Ctrl+x"를 누른 다음 "Ctrl+s"를 누르는 것을 의미합니다.
 
-In addition to the above modifiers, the special keys "Esc", "Return (Enter)" and "Shift" are denoted by "ESC", "RET" and "S", respectively.
+위의 수정자 외에도 특수 키 "Esc", "Return (Enter)" 및 "Shift"는 각각 "ESC", "RET" 및 "S"로 표시됩니다.
 ```
 
-# Basic Emacs Concepts
+# 기본 Emacs 개념
 
-Here, I discuss some basic Emacs concepts and terminology that may be
-confusing to newcomers (especially to people used to Vim terminology)
+여기서는 초보자에게 혼란스러울 수 있는 몇 가지 기본 Emacs 개념과 용어를 설명합니다(특히 Vim 용어에 익숙한 사람들에게).
 
-  - A bunch of text that Emacs is editing is known as a **buffer**
-  - A buffer does not necessarily correspond to an actual file on disk.
-    It may be just a bunch of text in memory.
-  - When a buffer corresponds to a file on disk, we say that the buffer
-    is **visiting** that file.
-  - Emacs typically has many buffers open at once.
-  - The display of Emacs may be split into different **windows** (not to
-    be confused with your operating system's windows: the operating
-    system window for Emacs can have multiple Emacs windows inside it).
-  - An operating system window for Emacs is called an Emacs **frame**.
-    Thus, when the Emacs manual talks about opening a new frame, this
-    essentially means opening a new OS *window* containing an(other)
-    instance of Emacs.
-  - The concepts conventionally known as cutting and pasting are
-    referred to as **killing** and **yanking**, respectively in Emacs
-    parlance.
-  - The current position of the cursor is called the **point** in Emacs.
-    Technically, **point** is defined as the position right before the
-    character where the cursor currently is.
-  - Finally, each buffer may have several **modes** associated with it:
-    a **major mode** and possibly several **minor modes**.
-  - The **major mode** defines the main behavior of Emacs in the
-    currently selected buffer. This can be roughly thought of as the
-    file type. For example, if you're editing a Python file, the major
-    mode is (by default) `python-mode` which causes Emacs to highlight
-    Python syntax and automatically indent and outdent your code blocks
-    as syntactically required by your Python code.
-  - **Minor modes** define subtle changes in behavior and several minor
-    modes may be active at once in the same buffer. An example minor
-    mode is `flyspell-mode` which automatically highlights spelling
-    errors in your
-buffer.
+  - Emacs가 편집하는 텍스트 덩어리를 **버퍼**라고 합니다.
+  - 버퍼는 반드시 디스크의 실제 파일에 해당하지는 않습니다. 메모리의 텍스트 덩어리일 수 있습니다.
+  - 버퍼가 디스크의 파일에 해당할 때, 우리는 버퍼가 해당 파일을 **방문**한다고 말합니다.
+  - Emacs는 일반적으로 한 번에 많은 버퍼를 엽니다.
+  - Emacs의 디스플레이는 다른 **창**으로 분할될 수 있습니다(운영 체제의 창과 혼동하지 마십시오. Emacs의 운영 체제 창에는 여러 Emacs 창이 있을 수 있습니다).
+  - Emacs의 운영 체제 창을 Emacs **프레임**이라고 합니다. 따라서 Emacs 설명서에서 새 프레임을 여는 것에 대해 이야기할 때, 이는 본질적으로 Emacs의 (다른) 인스턴스를 포함하는 새 OS *창*을 여는 것을 의미합니다.
+  - 일반적으로 잘라내기 및 붙여넣기로 알려진 개념은 Emacs 용어에서 각각 **죽이기** 및 **당기기**라고 합니다.
+  - 커서의 현재 위치를 Emacs에서 **포인트**라고 합니다. 기술적으로 **포인트**는 커서가 현재 있는 문자 바로 앞의 위치로 정의됩니다.
+  - 마지막으로, 각 버퍼에는 여러 **모드**가 연결될 수 있습니다: **주 모드** 및 여러 **부 모드**.
+  - **주 모드**는 현재 선택된 버퍼에서 Emacs의 주요 동작을 정의합니다. 이것은 대략 파일 유형으로 생각할 수 있습니다. 예를 들어, Python 파일을 편집하는 경우 주 모드는 (기본적으로) `python-mode`이며, 이로 인해 Emacs는 Python 구문을 강조 표시하고 Python 코드에서 구문적으로 필요한 대로 코드 블록을 자동으로 들여쓰기 및 내어쓰기합니다.
+  - **부 모드**는 동작의 미묘한 변경을 정의하며, 여러 부 모드가 동일한 버퍼에서 동시에 활성화될 수 있습니다. 예제 부 모드는 버퍼에서 철자 오류를 자동으로 강조 표시하는 `flyspell-mode`입니다.
 
-# Navigation Basics
+# 탐색 기본 사항
 
 ```text
-The GUI version of Emacs can be navigated with the mouse like you would expect from a conventional GUI text editor.
+Emacs의 GUI 버전은 기존 GUI 텍스트 편집기에서 예상하는 것처럼 마우스를 사용하여 탐색할 수 있습니다.
 
-The aim here is to focus on navigation solely using the keyboard as this enhances productivity immensely.
+여기서의 목표는 생산성을 엄청나게 향상시키는 키보드만 사용하여 탐색하는 데 초점을 맞추는 것입니다.
 
 
-* Line movement
+* 줄 이동
 
-C-n --> Next line
-C-p --> Previous line
+C-n --> 다음 줄
+C-p --> 이전 줄
 
-* Character movement
+* 문자 이동
 
-C-f --> Go forward one character
-C-b --> Go backward one character
+C-f --> 한 문자 앞으로 이동
+C-b --> 한 문자 뒤로 이동
 
-* Word movement
+* 단어 이동
 
-M-f --> Go forward one word
-M-b --> Go backward one word
+M-f --> 한 단어 앞으로 이동
+M-b --> 한 단어 뒤로 이동
 
-* Sentence movement
+* 문장 이동
 
-M-a --> Move to the beginning of the sentence
-M-e --> Move to the end of the sentence
+M-a --> 문장 시작으로 이동
+M-e --> 문장 끝으로 이동
 
-* Beginning and end of line
+* 줄 시작 및 끝
 
-C-a --> Move to the beginning of the line
-C-e --> Move to the end of the line
+C-a --> 줄 시작으로 이동
+C-e --> 줄 끝으로 이동
 
-* Beginning and end of buffer
+* 버퍼 시작 및 끝
 
-M-< ("Meta+Shift+,") --> Go to the beginning of the buffer
-M-> ("Meta+Shift+.") --> Go to the end of the buffer
+M-< ("Meta+Shift+,") --> 버퍼 시작으로 이동
+M-> ("Meta+Shift+.") --> 버퍼 끝으로 이동
 
-* Screen movement
+* 화면 이동
 
-C-v --> Scroll down by one screen-full (the last two lines of the previous screen are kept as overlap for a smoother transition)
-M-v --> Scroll up by one screen-full (same as above but with the first two lines)
+C-v --> 한 화면 아래로 스크롤 (이전 화면의 마지막 두 줄은 부드러운 전환을 위해 겹침으로 유지됨)
+M-v --> 한 화면 위로 스크롤 (위와 동일하지만 첫 두 줄 포함)
 
-* Centering the screen
+* 화면 중앙 정렬
 
-C-l --> Move current line to the screen's center
+C-l --> 현재 줄을 화면 중앙으로 이동
 
-The above key combination actually cycles through different states depending on how many times it's been pressed.
+위의 키 조합은 실제로 누른 횟수에 따라 다른 상태를 순환합니다.
 
-C-l --> Move current line to the screen's center
-C-l C-l --> Move current line to the top of the screen
-C-l C-l C-l --> Restore the position of the current line to where it was before the first C-l was pressed
+C-l --> 현재 줄을 화면 중앙으로 이동
+C-l C-l --> 현재 줄을 화면 상단으로 이동
+C-l C-l C-l --> 첫 번째 C-l을 누르기 전의 위치로 현재 줄의 위치 복원
 
-If you press "C-l" a 4th time, it cycles back to centering the current line.
+"C-l"을 4번째 누르면 현재 줄을 중앙에 맞추는 것으로 다시 순환합니다.
 
-* Repeating movement commands
+* 이동 명령 반복
 
-Most movement commands take a numerical prefix argument that says "repeat the following command that many times".
+대부분의 이동 명령은 "다음 명령을 여러 번 반복"하라는 숫자 접두사 인수를 사용합니다.
 
-Example:
+예:
 
-C-u 3 C-p  --> Go up 3 lines
-C-u 5 C-f  --> Go forward 5 characters
+C-u 3 C-p  --> 3줄 위로 이동
+C-u 5 C-f  --> 5자 앞으로 이동
 
-One notable exception are the screen scrolling commands:
+한 가지 주목할 만한 예외는 화면 스크롤 명령입니다:
 
-C-u 3 C-v  --> Scroll downward 3 lines (maintaining the position of the cursor)
+C-u 3 C-v  --> 3줄 아래로 스크롤 (커서 위치 유지)
 ```
 
-Bonus: many of the above navigation commands are the default navigation
-commands in Bash (e.g. pressing "C-b" while entering a Bash command
-takes you back one
-character).
+보너스: 위의 많은 탐색 명령은 Bash의 기본 탐색 명령입니다(예: Bash 명령을 입력하는 동안 "C-b"를 누르면 한 문자 뒤로 이동합니다).
 
-# File editing basics
+# 파일 편집 기본 사항
 
 ```text
-* Quitting Emacs [ Now you can't say you don't know how to quit Emacs :-) ]
+* Emacs 종료 [ 이제 Emacs를 종료하는 방법을 모른다고 말할 수 없습니다 :-) ]
 
-C-x C-c --> Quit Emacs and get prompted to save any unsaved files (buffers not visiting a file will simply be discarded unless you're running in client-server mode)
+C-x C-c --> Emacs를 종료하고 저장되지 않은 파일을 저장하라는 메시지가 표시됩니다(파일을 방문하지 않는 버퍼는 클라이언트-서버 모드에서 실행 중이 아닌 한 단순히 삭제됩니다).
 
-* Saving a buffer
+* 버퍼 저장
 
-C-x C-s --> Save the current buffer. If not visiting a file, it will prompt you for a file name to use to save the buffer.
+C-x C-s --> 현재 버퍼를 저장합니다. 파일을 방문하지 않는 경우 버퍼를 저장하는 데 사용할 파일 이름을 묻는 메시지가 표시됩니다.
 
-* Searching within a buffer
+* 버퍼 내에서 검색
 
-C-s --> Search forwards within the buffer. Search is incremental and case-insensitive by default.
-        Press C-s to move to the next match.
-        If you press "RET", point is moved to the currently highlighted word and the search ends.
-C-r --> Same as C-s except it searches backward
+C-s --> 버퍼 내에서 앞으로 검색합니다. 검색은 기본적으로 증분 및 대소문자를 구분하지 않습니다.
+        C-s를 눌러 다음 일치 항목으로 이동합니다.
+        "RET"을 누르면 포인트가 현재 강조 표시된 단어로 이동하고 검색이 종료됩니다.
+C-r --> C-s와 동일하지만 뒤로 검색합니다.
 
-C-_ or C-/ --> Undo the last action. Keep pressing it to move up the undo tree.
-C-? or M-_ --> Redo the previous change
+C-_ 또는 C-/ --> 마지막 작업을 취소합니다. 실행 취소 트리를 위로 이동하려면 계속 누르십시오.
+M-? 또는 M-_ --> 이전 변경 사항을 다시 실행합니다.
 
-The "undo" and "redo" commands can take prefix numerical arguments to undo or redo that many actions:
+"실행 취소" 및 "다시 실행" 명령은 해당 작업을 여러 번 실행 취소하거나 다시 실행하기 위해 접두사 숫자 인수를 사용할 수 있습니다:
 
-C-u 3 C-_ --> Undo the last 3 changes.
+C-u 3 C-_ --> 마지막 3가지 변경 사항을 실행 취소합니다.
 ```
 
-# Executing Elisp Functions
+# Elisp 함수 실행
 
 ```text
-You can execute any currently loaded Elisp functions (including ones you have written yourself) via "M-x"
+"M-x"를 통해 현재 로드된 Elisp 함수(직접 작성한 함수 포함)를 실행할 수 있습니다.
 
-M-x RET  --> Prompts you for name of function to execute (Tab completion is available).
+M-x RET  --> 실행할 함수 이름을 묻는 메시지가 표시됩니다(탭 완성이 가능합니다).
 
-Example:
+예:
 
-M-x RET search-forward-regexp RET --> Prompts you for a regular expression and searches forward in the buffer for it
+M-x RET search-forward-regexp RET --> 정규 표현식을 묻는 메시지가 표시되고 버퍼에서 앞으로 검색합니다.
 ```
 
-# Emacs Configuration
+# Emacs 구성
 
-Emacs is configured using Elisp. On startup, it looks for a
-configuration file either in `~/.emacs` or `~/.emacs.d/init.el` where
-`~` refers to your home directory. If you're on Windows, consult [this
-article](https://www.gnu.org/software/emacs/manual/html_node/efaq-w32/Location-of-init-file.html)
-for the appropriate location of your configuration file.
+Emacs는 Elisp를 사용하여 구성됩니다. 시작 시 `~/.emacs` 또는 `~/.emacs.d/init.el`에서 구성 파일을 찾습니다. 여기서 `~`는 홈 디렉토리를 나타냅니다. Windows를 사용하는 경우 구성 파일의 적절한 위치에 대해서는 [이 문서](https://www.gnu.org/software/emacs/manual/html_node/efaq-w32/Location-of-init-file.html)를 참조하십시오.
 
-# Vim inside Emacs
+# Emacs 내의 Vim
 
-If you are considering the transition from Vim to Emacs and you're put
-off by the non-modal nature of Emacs editing, there is an Emacs
-extension known as `evil-mode` which lets you have many Vim concepts
-inside Emacs. Here are some things added to Emacs by `evil-mode`:
+Vim에서 Emacs로 전환을 고려하고 있고 Emacs의 비모달 특성에 거부감이 있다면, Emacs 내에서 많은 Vim 개념을 가질 수 있는 `evil-mode`라는 Emacs 확장이 있습니다. 다음은 `evil-mode`에 의해 Emacs에 추가된 몇 가지 사항입니다:
 
-  - Modal editing: you get normal, insert, visual and block visual modes
-    like Vim. In addition, you get an "Emacs" mode where movement and
-    navigation follow the Emacs bindings.
-  - Same movement keys as Vim in normal mode
-  - Leader key combinations
-  - Pressing ":" in normal mode allows you to execute commands
-    (including system commands)
+  - 모달 편집: Vim과 같이 일반, 삽입, 비주얼 및 블록 비주얼 모드를 사용할 수 있습니다. 또한 이동 및 탐색이 Emacs 바인딩을 따르는 "Emacs" 모드가 있습니다.
+  - 일반 모드에서 Vim과 동일한 이동 키
+  - 리더 키 조합
+  - 일반 모드에서 ":"를 누르면 명령(시스템 명령 포함)을 실행할 수 있습니다.
 
-In my own experience, `evil-mode` helps make the transition seamless and
-allows you to blend the arguably more intuitive and ergonomic
-keybindings of Vim with the unbridled power of Emacs for a truly
-superior editing experience.
+제 경험상 `evil-mode`는 전환을 원활하게 하고 Vim의 더 직관적이고 인체공학적인 키 바인딩과 Emacs의 무한한 힘을 혼합하여 진정으로 우수한 편집 경험을 제공하는 데 도움이 됩니다.
 
-# Discoverable Help
+# 검색 가능한 도움말
 
-Emacs features a pretty powerful help system that allows you to discover
-new functionality all the
-time.
+Emacs에는 항상 새로운 기능을 발견할 수 있는 매우 강력한 도움말 시스템이 있습니다.
 
 ```text
-Obtaining help on specific topics. Tab completion is available for function and variable names.
+특정 주제에 대한 도움말 얻기. 함수 및 변수 이름에 대해 탭 완성이 가능합니다.
 
-C-h f RET --> Prompts you for the name of an elisp function and
-              displays help text on it along with a clickable link
-              to its source code.
-C-h v RET --> Same as above with variables
+C-h f RET --> elisp 함수 이름을 묻는 메시지가 표시되고
+              소스 코드에 대한 클릭 가능한 링크와 함께 도움말 텍스트를 표시합니다.
+C-h v RET --> 변수에 대해 위와 동일
 
-C-h k RET --> Allows you to enter a key combination and displays the
-              name of the elisp function bound to it.
+C-h k RET --> 키 조합을 입력할 수 있으며
+              바인딩된 elisp 함수의 이름을 표시합니다.
 
-Searching for help:
+도움말 검색:
 
-C-h a --> Prompts you for a string to search for a command in the
-          help system. Similar to the 'apropos' or 'man -k'
-          commands in Unix systems.
+C-h a --> 도움말 시스템에서 명령을 검색할 문자열을 묻는 메시지가 표시됩니다.
+          Unix 시스템의 'apropos' 또는 'man -k' 명령과 유사합니다.
 
-Starting a tutorial:
+튜토리얼 시작:
 
-C-h C-t --> Starts a tutorial designed to familiarize you with
-            basic Emacs functionality.
+C-h C-t --> 기본 Emacs 기능에 익숙해지도록 설계된 튜토리얼을 시작합니다.
 ```
 
-# Emacs "Killer Apps"
+# Emacs "킬러 앱"
 
-As I hinted above, Emacs functionality goes way beyond being a mere text
-editor. I will list here a couple of Emacs "apps" that are fairly
-powerful and popular and may interest you in and of themselves.
+위에서 암시했듯이 Emacs 기능은 단순한 텍스트 편집기를 훨씬 뛰어넘습니다. 여기서는 매우 강력하고 인기가 있으며 그 자체로 흥미로울 수 있는 몇 가지 Emacs "앱"을 나열하겠습니다.
 
 ## Org
 
-Technically, `org-mode`, a major mode for buffer editing that provides
-organizational tools. It is very difficult to succinctly describe what
-Org can do because it's a behemoth of a tool that has many diverse uses
-to different people. I will attempt to describe the main features I use
-briefly.
+기술적으로 `org-mode`는 조직 도구를 제공하는 버퍼 편집을 위한 주 모드입니다. Org가 할 수 있는 일을 간결하게 설명하기는 매우 어렵습니다. 왜냐하면 그것은 다양한 사람들에게 다양한 용도로 사용되는 거대한 도구이기 때문입니다. 제가 사용하는 주요 기능을 간략하게 설명하겠습니다.
 
-  - Divide your file into sections and sub-sections for easy outlining
-    and organizing of concepts.
-  - Different headings in the outline are foldable/expandable so that
-    you can focus on what you need to focus on and eliminate
-    distractions.
-  - You can maintain a TODO list within Org
-  - You can compile TODO lists from many files into an agenda
-  - Track the time you spend on each TODO task
-  - Manage tables in plain text (including spreadsheet-like
-    capabilities)
-  - Using the extension `org-babel`, write and execute code blocks in
-    your file. The results are captured and are re-usable within the
-    file itself. Think Jupyter notebook for any language.
-  - Display inline images and LaTeX formulas as images within your file
-    (makes for a great note-taking system and/or personal wiki)
-  - Export your file into many different formats (LaTeX, PDF, html,…)
+  - 개념을 쉽게 개요화하고 구성하기 위해 파일을 섹션 및 하위 섹션으로 나눕니다.
+  - 개요의 다른 제목은 접거나 확장할 수 있으므로 집중해야 할 것에 집중하고 산만함을 제거할 수 있습니다.
+  - Org 내에서 TODO 목록을 유지할 수 있습니다.
+  - 여러 파일의 TODO 목록을 의제로 컴파일할 수 있습니다.
+  - 각 TODO 작업에 소요된 시간을 추적합니다.
+  - 일반 텍스트로 테이블 관리(스프레드시트와 유사한 기능 포함)
+  - `org-babel` 확장을 사용하여 파일에서 코드 블록을 작성하고 실행합니다. 결과는 캡처되어 파일 자체 내에서 재사용할 수 있습니다. 모든 언어에 대한 Jupyter 노트북을 생각하십시오.
+  - 파일 내에서 인라인 이미지 및 LaTeX 수식을 이미지로 표시합니다(훌륭한 메모 작성 시스템 및/또는 개인 위키에 적합).
+  - 파일을 다양한 형식(LaTeX, PDF, html 등)으로 내보냅니다.
 
-Org mode is a very powerful tool to add to your productivity arsenal
-and, on a personal note, was the reason that caused me to start using
-Emacs after years of using Vim.
+Org 모드는 생산성 무기고에 추가할 수 있는 매우 강력한 도구이며, 개인적으로는 Vim을 수년간 사용한 후 Emacs를 사용하기 시작한 이유였습니다.
 
 ## Magit
 
-This is a frontend to `git` from within Emacs. It features a very
-intuitive and discoverable interface, yet exposes very powerful
-functionality that allows you to manage commits at the chunk level,
-inspect diffs, rebase, cherry-pick, … all from within the comfort of
-your own editor.
+이것은 Emacs 내에서 `git`에 대한 프런트엔드입니다. 매우 직관적이고 검색 가능한 인터페이스를 특징으로 하면서도 청크 수준에서 커밋을 관리하고, 차이점을 검사하고, 리베이스하고, 체리픽하는 등 매우 강력한 기능을 노출합니다. 이 모든 것을 편집기 내에서 편안하게 할 수 있습니다.
 
-# A Word of Advice
+# 조언 한마디
 
-If you are considering using Emacs, a common trap that beginning users
-fall into is to copy someone else's configuration file and use it as is.
-I highly recommend against doing this for several reasons:
+Emacs 사용을 고려하고 있다면, 초보 사용자가 빠지는 일반적인 함정은 다른 사람의 구성 파일을 복사하여 그대로 사용하는 것입니다. 몇 가지 이유로 이 방법을 강력히 권장하지 않습니다:
 
-  - It will discourage you from learning and finding things out for
-    yourself
-  - Someone else's configuration will probably contain many things
-    relevant to them that you won't need or ever use.
-  - It defeats the purpose of having a customizable text editor that can
-    fit your own needs.
+  - 스스로 배우고 알아내는 것을 방해합니다.
+  - 다른 사람의 구성에는 아마도 그들에게 관련이 있지만 여러분에게는 필요하지 않거나 절대 사용하지 않을 많은 것들이 포함되어 있을 것입니다.
+  - 자신의 필요에 맞게 사용자 정의할 수 있는 텍스트 편집기를 갖는 목적을 무시합니다.
 
-What I encourage you to do is to look at other people's configurations
-and seek to understand them and adapt only what makes sense to you. You
-can find out about new features of Emacs through many YouTube videos,
-screencasts or blog posts and then learn for yourself how to add them to
-your configuration and workflow. This way, you grow your configuration
-incrementally while increasing your knowledge of Emacs along the way.
+제가 권장하는 것은 다른 사람의 구성을 보고 이해하고 자신에게 의미 있는 것만 적용하는 것입니다. 많은 YouTube 동영상, 스크린캐스트 또는 블로그 게시물을 통해 Emacs의 새로운 기능에 대해 알아볼 수 있으며, 그런 다음 구성 및 워크플로에 추가하는 방법을 직접 배울 수 있습니다. 이렇게 하면 Emacs에 대한 지식을 늘리면서 구성을 점진적으로 성장시킬 수 있습니다.
 
-# Additional Resources
+# 추가 자료
 
-  - [The GNU Emacs Manual](https://www.gnu.org/software/emacs/manual/emacs.html)
+  - [GNU Emacs 설명서](https://www.gnu.org/software/emacs/manual/emacs.html)
   - [Emacs Stack Exchange](https://emacs.stackexchange.com/)
-  - [Emacs Wiki](https://www.emacswiki.org/emacs/EmacsWiki)
+  - [Emacs 위키](https://www.emacswiki.org/emacs/EmacsWiki)

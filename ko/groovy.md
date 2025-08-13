@@ -1,36 +1,36 @@
-# groovy.md (번역)
-
 ---
 name: Groovy
 contributors:
     - ["Roberto Pérez Alcolea", "http://github.com/rpalcolea"]
 filename: learngroovy.groovy
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-[Groovy](http://www.groovy-lang.org/) is a dynamic language for the Java platform
+[Groovy](http://www.groovy-lang.org/)는 Java 플랫폼을 위한 동적 언어입니다.
 
 ```groovy
 /*
-  Set yourself up:
+  설정:
 
-  1) Install SDKMAN - http://sdkman.io/
-  2) Install Groovy: sdk install groovy
-  3) Start the groovy console by typing: groovyConsole
+  1) SDKMAN 설치 - http://sdkman.io/
+  2) Groovy 설치: sdk install groovy
+  3) groovyConsole을 입력하여 groovy 콘솔 시작
 
 */
 
-//  Single line comments start with two forward slashes
+//  한 줄 주석은 두 개의 슬래시로 시작합니다.
 /*
-Multi line comments look like this.
+여러 줄 주석은 이렇습니다.
 */
 
 // Hello World
 println "Hello world!"
 
 /*
-  Variables:
+  변수:
 
-  You can assign values to variables for later use
+  나중에 사용하기 위해 변수에 값을 할당할 수 있습니다.
 */
 
 def x = 1
@@ -49,160 +49,150 @@ x = "Groovy!"
 println x
 
 /*
-  Collections and maps
+  컬렉션 및 맵
 */
 
-//Creating an empty list
+//빈 목록 만들기
 def technologies = []
 
-// or create a list with data
+// 또는 데이터로 목록 만들기
 technologies = ["Kotlin", "Swift"]
 
-/*** Adding a elements to the list ***/
+/*** 목록에 요소 추가 ***/
 
-// As with Java
+// Java와 마찬가지로
 technologies.add("Grails")
 
-// Left shift adds, and returns the list
+// 왼쪽 시프트는 추가하고 목록을 반환합니다.
 technologies << "Groovy"
 
-// Add multiple elements
+// 여러 요소 추가
 technologies.addAll(["Gradle","Griffon"])
 
-/*** Removing elements from the list ***/
+/*** 목록에서 요소 제거 ***/
 
-// As with Java
+// Java와 마찬가지로
 technologies.remove("Griffon")
 
-// Subtraction works also
+// 빼기도 작동합니다.
 technologies = technologies - 'Grails'
 
-/*** Iterating Lists ***/
+/*** 목록 반복 ***/
 
-// Iterate over elements of a list
+// 목록의 요소를 반복합니다.
 technologies.each { println "Technology: $it"}
 technologies.eachWithIndex { it, i -> println "$i: $it"}
 
-/*** Checking List contents ***/
+/*** 목록 내용 확인 ***/
 
-//Evaluate if a list contains element(s) (boolean)
+//목록에 요소가 포함되어 있는지 평가합니다(부울).
 contained = technologies.contains( 'Groovy' )
 
-// Or
+// 또는
 contained = 'Groovy' in technologies
 
-// Check for multiple contents
+// 여러 내용 확인
 technologies.containsAll(['Groovy','Grails'])
 
-/*** Sorting Lists ***/
+/*** 목록 정렬 ***/
 
-// Sort a list (mutates original list)
+// 목록 정렬 (원본 목록 변경)
 technologies.sort()
 
-// To sort without mutating original, you can do:
+// 원본을 변경하지 않고 정렬하려면 다음을 수행할 수 있습니다:
 sortedTechnologies = technologies.sort( false )
 
-/*** Manipulating Lists ***/
+/*** 목록 조작 ***/
 
-//Replace all elements in the list
+//목록의 모든 요소 바꾸기
 Collections.replaceAll(technologies, 'Gradle', 'gradle')
 
-//Shuffle a list
+//목록 섞기
 Collections.shuffle(technologies, new Random())
 
-//Clear a list
+//목록 지우기
 technologies.clear()
 
-//Creating an empty map
+//빈 맵 만들기
 def devMap = [:]
 
-//Add values
+//값 추가
 devMap = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
 devMap.put('lastName','Perez')
 
-//Iterate over elements of a map
+//맵의 요소를 반복합니다.
 devMap.each { println "$it.key: $it.value" }
 devMap.eachWithIndex { it, i -> println "$i: $it"}
 
-//Evaluate if a map contains a key
+//맵에 키가 포함되어 있는지 평가합니다.
 assert devMap.containsKey('name')
 
-//Evaluate if a map contains a value
+//맵에 값이 포함되어 있는지 평가합니다.
 assert devMap.containsValue('Roberto')
 
-//Get the keys of a map
+//맵의 키 가져오기
 println devMap.keySet()
 
-//Get the values of a map
+//맵의 값 가져오기
 println devMap.values()
 
 /*
   Groovy Beans
 
-  GroovyBeans are JavaBeans but using a much simpler syntax
+  GroovyBeans는 JavaBeans이지만 훨씬 간단한 구문을 사용합니다.
 
-  When Groovy is compiled to bytecode, the following rules are used.
+  Groovy가 바이트코드로 컴파일될 때 다음 규칙이 사용됩니다.
 
-    * If the name is declared with an access modifier (public, private or
-      protected) then a field is generated.
+    * 이름이 액세스 수정자(public, private 또는 protected)로 선언되면 필드가 생성됩니다.
 
-    * A name declared with no access modifier generates a private field with
-      public getter and setter (i.e. a property).
+    * 액세스 수정자 없이 선언된 이름은 public getter 및 setter가 있는 private 필드를 생성합니다(즉, 속성).
 
-    * If a property is declared final the private field is created final and no
-      setter is generated.
+    * 속성이 final로 선언되면 private 필드가 final로 생성되고 setter가 생성되지 않습니다.
 
-    * You can declare a property and also declare your own getter or setter.
+    * 속성을 선언하고 자신의 getter 또는 setter를 선언할 수도 있습니다.
 
-    * You can declare a property and a field of the same name, the property will
-      use that field then.
+    * 속성과 동일한 이름의 필드를 선언할 수 있으며, 속성은 해당 필드를 사용합니다.
 
-    * If you want a private or protected property you have to provide your own
-      getter and setter which must be declared private or protected.
+    * private 또는 protected 속성을 원하면 자신의 getter 또는 setter를 제공해야 하며, 이는 private 또는 protected로 선언되어야 합니다.
 
-    * If you access a property from within the class the property is defined in
-      at compile time with implicit or explicit this (for example this.foo, or
-      simply foo), Groovy will access the field directly instead of going though
-      the getter and setter.
+    * 클래스 내에서 속성에 액세스하면 속성이 정의된 클래스 내에서 컴파일 타임에 암시적 또는 명시적 this(예: this.foo 또는 단순히 foo)로 액세스하면 Groovy는 getter 및 setter를 거치지 않고 필드에 직접 액세스합니다.
 
-    * If you access a property that does not exist using the explicit or
-      implicit foo, then Groovy will access the property through the meta class,
-      which may fail at runtime.
+    * 명시적 또는 암시적 foo를 사용하여 존재하지 않는 속성에 액세스하면 Groovy는 메타 클래스를 통해 속성에 액세스하며, 이는 런타임에 실패할 수 있습니다.
 
 */
 
 class Foo {
-    // read only property
+    // 읽기 전용 속성
     final String name = "Roberto"
 
-    // read only property with public getter and protected setter
+    // public getter 및 protected setter가 있는 읽기 전용 속성
     String language
     protected void setLanguage(String language) { this.language = language }
 
-    // dynamically typed property
+    // 동적으로 유형이 지정된 속성
     def lastName
 }
 
 /*
-  Methods with optional parameters
+  선택적 매개변수가 있는 메서드
 */
 
-// A method can have default values for parameters
+// 메서드는 매개변수에 대한 기본값을 가질 수 있습니다.
 def say(msg = 'Hello', name = 'world') {
     "$msg $name!"
 }
 
-// It can be called in 3 different ways
+// 3가지 다른 방식으로 호출할 수 있습니다.
 assert 'Hello world!' == say()
-// Right most parameter with default value is eliminated first.
+// 기본값이 있는 가장 오른쪽 매개변수가 먼저 제거됩니다.
 assert 'Hi world!' == say('Hi')
 assert 'learn groovy!' == say('learn', 'groovy')
 
 /*
-  Logical Branching and Looping
+  논리적 분기 및 반복
 */
 
-//Groovy supports the usual if - else syntax
+//Groovy는 일반적인 if - else 구문을 지원합니다.
 def x = 3
 
 if(x==1) {
@@ -213,40 +203,40 @@ if(x==1) {
     println "X greater than Two"
 }
 
-//Groovy also supports the ternary operator:
+//Groovy는 삼항 연산자도 지원합니다:
 def y = 10
 def x = (y > 1) ? "worked" : "failed"
 assert x == "worked"
 
-//Groovy supports 'The Elvis Operator' too!
-//Instead of using the ternary operator:
+//Groovy는 'Elvis 연산자'도 지원합니다!
+//삼항 연산자를 사용하는 대신:
 
 displayName = user.name ? user.name : 'Anonymous'
 
-//We can write it:
+//다음과 같이 작성할 수 있습니다:
 displayName = user.name ?: 'Anonymous'
 
-//For loop
-//Iterate over a range
+//For 루프
+//범위를 반복합니다.
 def x = 0
 for (i in 0 .. 30) {
     x += i
 }
 
-//Iterate over a list
+//목록을 반복합니다.
 x = 0
 for( i in [5,3,2,1] ) {
     x += i
 }
 
-//Iterate over an array
+//배열을 반복합니다.
 array = (0..20).toArray()
 x = 0
 for (i in array) {
     x += i
 }
 
-//Iterate over a map
+//맵을 반복합니다.
 def map = ['name':'Roberto', 'framework':'Grails', 'language':'Groovy']
 x = ""
 for ( e in map ) {
@@ -256,54 +246,52 @@ for ( e in map ) {
 assert x.equals("Roberto Grails Groovy ")
 
 /*
-  Operators
+  연산자
 
-  Operator Overloading for a list of the common operators that Groovy supports:
+  Groovy가 지원하는 일반적인 연산자 목록에 대한 연산자 오버로딩:
   http://www.groovy-lang.org/operators.html#Operator-Overloading
 
-  Helpful groovy operators
+  유용한 groovy 연산자
 */
-//Spread operator:  invoke an action on all items of an aggregate object.
+//확산 연산자:  집계 개체의 모든 항목에 대해 작업을 호출합니다.
 def technologies = ['Groovy','Grails','Gradle']
 technologies*.toUpperCase() // = to technologies.collect { it?.toUpperCase() }
 
-//Safe navigation operator: used to avoid a NullPointerException.
+//안전 탐색 연산자: NullPointerException을 피하는 데 사용됩니다.
 def user = User.get(1)
 def username = user?.username
 
 
 /*
-  Closures
-  A Groovy Closure is like a "code block" or a method pointer. It is a piece of
-  code that is defined and then executed at a later point.
+  클로저
+  Groovy 클로저는 "코드 블록" 또는 메서드 포인터와 같습니다. 정의된 다음 나중에 실행되는 코드 조각입니다.
 
-  More info at: http://www.groovy-lang.org/closures.html
+  자세한 정보: http://www.groovy-lang.org/closures.html
 */
-//Example:
+//예:
 def clos = { println "Hello World!" }
 
 println "Executing the Closure:"
 clos()
 
-//Passing parameters to a closure
+//클로저에 매개변수 전달
 def sum = { a, b -> println a+b }
 sum(2,4)
 
-//Closures may refer to variables not listed in their parameter list.
+//클로저는 매개변수 목록에 나열되지 않은 변수를 참조할 수 있습니다.
 def x = 5
 def multiplyBy = { num -> num * x }
 println multiplyBy(10)
 
-// If you have a Closure that takes a single argument, you may omit the
-// parameter definition of the Closure
+// 단일 인수를 사용하는 클로저가 있는 경우 클로저의 매개변수 정의를 생략할 수 있습니다.
 def clos = { print it }
 clos( "hi" )
 
 /*
-  Groovy can memoize closure results
+  Groovy는 클로저 결과를 메모할 수 있습니다.
 */
 def cl = {a, b ->
-    sleep(3000) // simulate some time consuming processing
+    sleep(3000) // 시간 소모적인 처리 시뮬레이션
     a + b
 }
 
@@ -328,8 +316,7 @@ callClosure(3, 4)
 /*
   Expando
 
-  The Expando class is a dynamic bean so we can add properties and we can add
-  closures as methods to an instance of this class
+  Expando 클래스는 동적 빈이므로 속성을 추가하고 이 클래스의 인스턴스에 클로저를 메서드로 추가할 수 있습니다.
 
   http://mrhaki.blogspot.mx/2009/10/groovy-goodness-expando-as-dynamic-bean.html
 */
@@ -349,10 +336,10 @@ callClosure(3, 4)
 
 
 /*
-  Metaprogramming (MOP)
+  메타프로그래밍 (MOP)
 */
 
-//Using ExpandoMetaClass to add behaviour
+//ExpandoMetaClass를 사용하여 동작 추가
 String.metaClass.testAdd = {
     println "we added this"
 }
@@ -360,7 +347,7 @@ String.metaClass.testAdd = {
 String x = "test"
 x?.testAdd()
 
-//Intercepting method calls
+//메서드 호출 가로채기
 class Test implements GroovyInterceptable {
     def sum(Integer x, Integer y) { x + y }
 
@@ -373,7 +360,7 @@ def test = new Test()
 test?.sum(2,3)
 test?.multiply(2,3)
 
-//Groovy supports propertyMissing for dealing with property resolution attempts.
+//Groovy는 속성 해결 시도를 처리하기 위해 propertyMissing을 지원합니다.
 class Foo {
    def propertyMissing(String name) { name }
 }
@@ -382,11 +369,10 @@ def f = new Foo()
 assertEquals "boo", f.boo
 
 /*
-  TypeChecked and CompileStatic
-  Groovy, by nature, is and will always be a dynamic language but it supports
-  typechecked and compilestatic
+  TypeChecked 및 CompileStatic
+  Groovy는 본질적으로 동적 언어이며 항상 그럴 것이지만 TypeChecked 및 CompileStatic을 지원합니다.
 
-  More info: http://www.infoq.com/articles/new-groovy-20
+  자세한 정보: http://www.infoq.com/articles/new-groovy-20
 */
 //TypeChecked
 import groovy.transform.TypeChecked
@@ -403,7 +389,7 @@ void test() {
 
 }
 
-//Another example:
+//또 다른 예:
 import groovy.transform.TypeChecked
 
 @TypeChecked
@@ -418,7 +404,7 @@ Integer test() {
 
 }
 
-//CompileStatic example:
+//CompileStatic 예:
 import groovy.transform.CompileStatic
 
 @CompileStatic
@@ -429,15 +415,15 @@ int sum(int x, int y) {
 assert sum(2,5) == 7
 ```
 
-## Further resources
+## 추가 자료
 
-[Groovy documentation](http://www.groovy-lang.org/documentation.html)
+[Groovy 문서](http://www.groovy-lang.org/documentation.html)
 
-[Groovy web console](http://groovyconsole.appspot.com/)
+[Groovy 웹 콘솔](http://groovyconsole.appspot.com/)
 
-Join a [Groovy user group](http://www.groovy-lang.org/usergroups.html)
+[Groovy 사용자 그룹 가입](http://www.groovy-lang.org/usergroups.html)
 
-## Books
+## 도서
 
 * [Groovy Goodness](https://leanpub.com/groovy-goodness-notebook)
 * [Groovy in Action](http://manning.com/koenig2/)

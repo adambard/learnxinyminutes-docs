@@ -1,131 +1,131 @@
-# cypher.md (번역)
-
 ---
 name: Cypher
 filename: LearnCypher.cql
 contributors:
     - ["Théo Gauchoux", "https://github.com/TheoGauchoux"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-Cypher is Neo4j's query language for easily manipulating graphs.
-It reuses syntax from SQL and mixes it with kind of an ASCII-art to represent graphs.
-This tutorial assumes that you already know graph concepts like nodes and relationships.
+Cypher는 그래프를 쉽게 조작하기 위한 Neo4j의 쿼리 언어입니다.
+SQL의 구문을 재사용하고 그래프를 나타내기 위해 ASCII 아트와 같은 것을 혼합합니다.
+이 튜토리얼은 노드 및 관계와 같은 그래프 개념을 이미 알고 있다고 가정합니다.
 
-## Nodes represent a record in a graph
+## 노드는 그래프의 레코드를 나타냅니다.
 
-`()` is an empty *node*, to indicate that there is a *node*, but it's not relevant for the query.
+`()`는 *노드*를 나타내는 빈 *노드*이지만, 쿼리와는 관련이 없습니다.
 
-`(n)` is a *node* referred by the variable `n`, reusable in the query. It begins with lowercase and uses camelCase.
+`(n)`은 변수 `n`으로 참조되는 *노드*이며, 쿼리에서 재사용할 수 있습니다. 소문자로 시작하고 camelCase를 사용합니다.
 
-`(p:Person)` - you can add a *label* to your node, here `Person`. It's like a type/class/category. It begins with uppercase and uses camelCase.
+`(p:Person)` - 노드에 *레이블*을 추가할 수 있습니다. 여기서는 `Person`입니다. 유형/클래스/범주와 같습니다. 대문자로 시작하고 camelCase를 사용합니다.
 
-`(p:Person:Manager)` - a node can have many *labels*.
+`(p:Person:Manager)` - 노드는 여러 *레이블*을 가질 수 있습니다.
 
-`(p:Person {name : 'Théo Gauchoux', age : 22})` - a node can have some *properties*, here `name` and `age`. It begins with lowercase and uses camelCase.
+`(p:Person {name : 'Théo Gauchoux', age : 22})` - 노드는 일부 *속성*을 가질 수 있습니다. 여기서는 `name`과 `age`입니다. 소문자로 시작하고 camelCase를 사용합니다.
 
-The types allowed in properties:
+속성에서 허용되는 유형:
 
-- Numeric
-- Boolean
-- String
-- List of previous primitive types
+- 숫자
+- 부울
+- 문자열
+- 이전 기본 유형 목록
 
-*Warning: there's no datetime properties in Cypher! You can use a String with a specific pattern or a Numeric from a specific date.*
+*경고: Cypher에는 날짜/시간 속성이 없습니다! 특정 패턴의 문자열 또는 특정 날짜의 숫자를 사용할 수 있습니다.*
 
-`p.name` - you can access a property with the dot style.
+`p.name` - 점 스타일로 속성에 액세스할 수 있습니다.
 
-## Relationships (or Edges) connect two nodes
+## 관계(또는 에지)는 두 노드를 연결합니다.
 
-`[:KNOWS]` is a *relationship* with the *label* `KNOWS`. It's a *label* as the node's label. It uses UPPER\_SNAKE\_CASE.
+`[:KNOWS]`는 *레이블* `KNOWS`가 있는 *관계*입니다. 노드의 레이블과 같은 *레이블*입니다. UPPER_SNAKE_CASE를 사용합니다.
 
-`[k:KNOWS]` - the same *relationship*, referred by the variable `k`, reusable in the query, but it's not necessary.
+`[k:KNOWS]` - 변수 `k`로 참조되는 동일한 *관계*이지만, 쿼리에서 재사용할 필요는 없습니다.
 
-`[k:KNOWS {since:2017}]` - the same *relationship*, with *properties* (like *node*), here `since`.
+`[k:KNOWS {since:2017}]` - *속성*(`노드`와 유사)이 있는 동일한 *관계*입니다. 여기서는 `since`입니다.
 
-`[k:KNOWS*..4]` is structural information to use in a *path* (seen later). Here, `\*..4` says "Match the pattern, with the relationship `k` which can be repeated between 1 and 4 times.
+`[k:KNOWS*..4]`는 *경로*(나중에 설명)에서 사용할 구조 정보입니다. 여기서 `*..4`는 "`k` 관계가 1에서 4번 반복될 수 있는 패턴과 일치"를 의미합니다.
 
-## Paths - the way to mix nodes and relationships.
+## 경로 - 노드와 관계를 혼합하는 방법.
 
-`(a:Person)-[:KNOWS]-(b:Person)` - a path describing that `a` and `b` know each other.
+`(a:Person)-[:KNOWS]-(b:Person)` - `a`와 `b`가 서로 아는 관계를 설명하는 경로입니다.
 
-`(a:Person)-[:MANAGES]->(b:Person)` - a path can be directed. This path describes that `a` is the manager of `b`.
+`(a:Person)-[:MANAGES]->(b:Person)` - 경로는 방향을 가질 수 있습니다. 이 경로는 `a`가 `b`의 관리자임을 설명합니다.
 
-`(a:Person)-[:KNOWS]-(b:Person)-[:KNOWS]-(c:Person)` - you can chain multiple relationships. This path describes the friend of a friend.
+`(a:Person)-[:KNOWS]-(b:Person)-[:KNOWS]-(c:Person)` - 여러 관계를 연결할 수 있습니다. 이 경로는 친구의 친구를 설명합니다.
 
-`(a:Person)-[:MANAGES]->(b:Person)-[:MANAGES]->(c:Person)` - a chain can also be directed. This path describes that `a` is the boss of `b` and the big boss of `c`.
+`(a:Person)-[:MANAGES]->(b:Person)-[:MANAGES]->(c:Person)` - 체인도 방향을 가질 수 있습니다. 이 경로는 `a`가 `b`의 상사이고 `c`의 대리인임을 설명합니다.
 
-Commonly used patterns (from Neo4j documentation):
+일반적으로 사용되는 패턴(Neo4j 문서에서):
 
 ```cypher
-// Friend-of-a-friend
+// 친구의 친구
 (user)-[:KNOWS]-(friend)-[:KNOWS]-(foaf)
 
-// Shortest path
+// 최단 경로
 path = shortestPath( (user)-[:KNOWS*..5]-(other) )
 
-// Collaborative filtering
+// 협업 필터링
 (user)-[:PURCHASED]->(product)<-[:PURCHASED]-()-[:PURCHASED]->(otherProduct)
 
-// Tree navigation
+// 트리 탐색
 (root)<-[:PARENT*]-(leaf:Category)-[:ITEM]->(data:Product)
 ```
 
-## Create queries
+## 쿼리 생성
 
-Create a new node
+새 노드 생성
 
 ```cypher
 CREATE (a:Person {name:"Théo Gauchoux"})
 RETURN a
 ```
 
-*`RETURN` allows to have a result after the query. It can be multiple, as `RETURN a, b`.*
+*`RETURN`은 쿼리 후 결과를 얻을 수 있도록 합니다. `RETURN a, b`와 같이 여러 개일 수 있습니다.*
 
-Create a new relationship (with 2 new nodes)
+새 관계 생성 (2개의 새 노드 포함)
 
 ```cypher
 CREATE (a:Person)-[k:KNOWS]-(b:Person)
 RETURN a,k,b
 ```
 
-## Match queries
+## 쿼리 일치
 
-Match all nodes
+모든 노드 일치
 
 ```cypher
 MATCH (n)
 RETURN n
 ```
 
-Match nodes by label
+레이블별 노드 일치
 
 ```cypher
 MATCH (a:Person)
 RETURN a
 ```
 
-Match nodes by label and property
+레이블 및 속성별 노드 일치
 
 ```cypher
 MATCH (a:Person {name:"Théo Gauchoux"})
 RETURN a
 ```
 
-Match nodes according to relationships (undirected)
+관계에 따라 노드 일치 (방향 없음)
 
 ```cypher
 MATCH (a)-[:KNOWS]-(b)
 RETURN a,b
 ```
 
-Match nodes according to relationships (directed)
+관계에 따라 노드 일치 (방향 있음)
 
 ```cypher
 MATCH (a)-[:MANAGES]->(b)
 RETURN a,b
 ```
 
-Match nodes with a `WHERE` clause
+`WHERE` 절이 있는 노드 일치
 
 ```cypher
 MATCH (p:Person {name:"Théo Gauchoux"})-[s:LIVES_IN]->(city:City)
@@ -133,7 +133,7 @@ WHERE s.since = 2015
 RETURN p,state
 ```
 
-You can use `MATCH WHERE` clause with `CREATE` clause
+`MATCH WHERE` 절을 `CREATE` 절과 함께 사용할 수 있습니다.
 
 ```cypher
 MATCH (a), (b)
@@ -141,9 +141,9 @@ WHERE a.name = "Jacquie" AND b.name = "Michel"
 CREATE (a)-[:KNOWS]-(b)
 ```
 
-## Update queries
+## 쿼리 업데이트
 
-Update a specific property of a node
+노드의 특정 속성 업데이트
 
 ```cypher
 MATCH (p:Person)
@@ -151,7 +151,7 @@ WHERE p.name = "Théo Gauchoux"
 SET p.age = 23
 ```
 
-Replace all properties of a node
+노드의 모든 속성 교체
 
 ```cypher
 MATCH (p:Person)
@@ -159,7 +159,7 @@ WHERE p.name = "Théo Gauchoux"
 SET p = {name: "Michel", age: 23}
 ```
 
-Add new property to a node
+노드에 새 속성 추가
 
 ```cypher
 MATCH (p:Person)
@@ -167,7 +167,7 @@ WHERE p.name = "Théo Gauchoux"
 SET p += {studies: "IT Engineering"}
 ```
 
-Add a label to a node
+노드에 레이블 추가
 
 ```cypher
 MATCH (p:Person)
@@ -175,9 +175,9 @@ WHERE p.name = "Théo Gauchoux"
 SET p:Internship
 ```
 
-## Delete queries
+## 쿼리 삭제
 
-Delete a specific node (linked relationships must be deleted before)
+특정 노드 삭제 (연결된 관계는 먼저 삭제해야 함)
 
 ```cypher
 MATCH (p:Person)-[relationship]-()
@@ -185,7 +185,7 @@ WHERE p.name = "Théo Gauchoux"
 DELETE relationship, p
 ```
 
-Remove a property in a specific node
+특정 노드에서 속성 제거
 
 ```cypher
 MATCH (p:Person)
@@ -193,9 +193,9 @@ WHERE p.name = "Théo Gauchoux"
 REMOVE p.age
 ```
 
-*Pay attention to the `REMOVE` keyword, it's not `DELETE`!*
+*`REMOVE` 키워드에 주의하십시오. `DELETE`가 아닙니다!*
 
-Remove a label from a specific node
+특정 노드에서 레이블 제거
 
 ```cypher
 MATCH (p:Person)
@@ -203,7 +203,7 @@ WHERE p.name = "Théo Gauchoux"
 DELETE p:Person
 ```
 
-Delete entire database
+전체 데이터베이스 삭제
 
 ```cypher
 MATCH (n)
@@ -211,21 +211,21 @@ OPTIONAL MATCH (n)-[r]-()
 DELETE n, r
 ```
 
-*Seriously, it's the `rm -rf /` of Cypher!*
+*정말, Cypher의 `rm -rf /`입니다!*
 
-## Other useful clauses
+## 기타 유용한 절
 
-`PROFILE` - before a query, show its execution plan.
+`PROFILE` - 쿼리 전에 실행 계획을 표시합니다.
 
-`COUNT(e)` - count entities (nodes or relationships) matching `e`.
+`COUNT(e)` - `e`와 일치하는 엔티티(노드 또는 관계) 수를 계산합니다.
 
-`LIMIT x` - limit the result to the first `x` results.
+`LIMIT x` - 결과를 처음 `x`개로 제한합니다.
 
-## Special hints
+## 특별 힌트
 
-- Cypher only has single-line comments, using double-slashes: `// comment`
-- You can execute a Cypher script stored in a .cql file directly in Neo4j (it's an import). However, you can't have multiple statements in this file (separated by `;`).
-- Use the Neo4j shell to write Cypher, it's really awesome.
-- Cypher will be the standard query language for all graph databases (known as [openCypher](https://opencypher.org/)).
+- Cypher는 이중 슬래시를 사용하는 한 줄 주석만 있습니다: `// comment`
+- .cql 파일에 저장된 Cypher 스크립트를 Neo4j에서 직접 실행할 수 있습니다(가져오기입니다). 그러나 이 파일에는 여러 문(세미콜론으로 구분)을 가질 수 없습니다.
+- Cypher를 작성하려면 Neo4j 셸을 사용하십시오. 정말 훌륭합니다.
+- Cypher는 모든 그래프 데이터베이스의 표준 쿼리 언어가 될 것입니다([openCypher](https://opencypher.org/)로 알려짐).
 
-Read more [here](https://neo4j.com/developer/cypher-query-language/).
+[여기](https://neo4j.com/developer/cypher-query-language/)에서 더 읽어보십시오.

@@ -1,46 +1,46 @@
-# arturo.md (번역)
-
 ---
 name: Arturo
 filename: learnarturo.art
 contributors:
   - ["Dr.Kameleon", "https://github.com/drkameleon"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ```red
-; this is a comment
-; this is another comment
+; 이것은 주석입니다
+; 이것은 또 다른 주석입니다
 
 ;---------------------------------
-; VARIABLES & VALUES
+; 변수 및 값
 ;---------------------------------
 
-; numbers
+; 숫자
 a1: 2
 a2: 3.14
 a3: to :complex [1 2.0]     ; 1.0+2.0i
 
-; strings
-c1: "this is a string"
+; 문자열
+c1: "이것은 문자열입니다"
 c2: {
-    this is a multiline string
-    that is indentation-agnostic
+    이것은 여러 줄 문자열입니다
+    들여쓰기에 구애받지 않습니다
 }
 c3: {:
-    this is
-        a verbatim
-            multiline string
-                which will remain exactly
-                    as the original
+    이것은
+        있는 그대로의
+            여러 줄 문자열입니다
+                정확히
+                    원본과 같이 유지됩니다
 :}
 
-; characters
+; 문자
 ch: `c`
 
-; blocks/arrays
+; 블록/배열
 d: [1 2 3]
 
-; dictionaries
+; 사전
 e: #[
     name: "John"
     surname: "Doe"
@@ -48,23 +48,23 @@ e: #[
     likes: [pizza spaghetti]
 ]
 
-; yes, functions are values too
+; 예, 함수도 값입니다
 f: function [x][
     2 * x
 ]
 
-; dates
+; 날짜
 g: now              ; 2021-05-03T17:10:48+02:00
 
-; booleans
+; 부울
 h1: true
 h2: false
 
 ;---------------------------------
-; BASIC OPERATORS
+; 기본 연산자
 ;---------------------------------
 
-; simple arithmetic
+; 간단한 산술
 1 + 1       ; => 2
 8 - 1       ; => 7
 4.2 - 1.1   ; => 3.1
@@ -74,12 +74,12 @@ h2: false
 2 ^ 5       ; => 32
 5 % 3       ; => 2
 
-; bitwise operators
+; 비트 연산자
 and 3 5     ; => 1
 or 3 5      ; => 7
 xor 3 5     ; => 6
 
-; pre-defined constants
+; 미리 정의된 상수
 pi          ; => 3.141592653589793
 epsilon     ; => 2.718281828459045
 null        ; => null
@@ -87,18 +87,18 @@ true        ; => true
 false       ; => false
 
 ;---------------------------------
-; COMPARISON OPERATORS
+; 비교 연산자
 ;---------------------------------
 
-; equality
+; 같음
 1 = 1       ; => true
 2 = 1       ; => false
 
-; inequality
+; 같지 않음
 1 <> 1      ; => false
 2 <> 1      ; => true
 
-; more comparisons
+; 더 많은 비교
 1 < 10      ; => true
 1 =< 10     ; => true
 10 =< 10    ; => true
@@ -107,44 +107,44 @@ false       ; => false
 11 >= 10    ; => true
 
 ;---------------------------------
-; CONDITIONALS
+; 조건문
 ;---------------------------------
 
-; logical operators
+; 논리 연산자
 and? true true      ; => true
 and? true false     ; => false
 or? true false      ; => true
 or? false false     ; => false
 
 and? [1=2][2<3]     ; => false
-                    ; (the second block will not be evaluated)
+                    ; (두 번째 블록은 평가되지 않습니다)
 
-; simple if statements
+; 간단한 if 문
 if 2 > 1 [ print "yes!"]    ; yes!
 if 3 <> 2 -> print "true!"  ; true!
 
-; if/else statements
+; if/else 문
 if? 2 > 3 -> print "2 is greater than 3"
 else -> print "2 is not greater than 3"         ; 2 is not greater than 3
 
-; switch statements
+; switch 문
 switch 2 > 3 -> print "2 is greater than 3"
              -> print "2 is not greater than 3" ; 2 is not greater than 3
 
 a: (2 > 3)["yes"]["no"]         ; a: "no"
-a: (2 > 3)? -> "yes" -> "no"    ; a: "no" (exactly the same as above)
+a: (2 > 3)? -> "yes" -> "no"    ; a: "no" (위와 정확히 동일)
 
-; case/when statements
+; case/when 문
 case [1]
     when? [>2] -> print "1 is greater than 2. what?!"
     when? [<0] -> print "1 is less than 0. nope..."
     else -> print "here we are!"                ; here we are!
 
 ;---------------------------------
-; LOOPS
+; 루프
 ;---------------------------------
 
-; with `loop`
+; `loop` 사용
 arr: [1 4 5 3]
 loop arr 'x [
     print ["x =" x]
@@ -154,7 +154,7 @@ loop arr 'x [
 ; x = 5
 ; x = 3
 
-; with loop and custom index
+; loop와 사용자 정의 인덱스 사용
 loop.with:'i arr 'x [
     print ["item at position" i "=>" x]
 ]
@@ -163,10 +163,10 @@ loop.with:'i arr 'x [
 ; item at position 2 => 5
 ; item at position 3 => 3
 
-; using ranges
-loop 1..3 'x ->         ; since it's a single statement
-    print x             ; there's no need for [block] notation
-                        ; we can wrap it up using the `->` syntactic sugar
+; 범위 사용
+loop 1..3 'x ->         ; 단일 문장이므로
+    print x             ; [block] 표기법이 필요 없습니다
+                        ; `->` 구문 설탕을 사용하여 묶을 수 있습니다
 
 loop `a`..`c` 'ch ->
     print ch
@@ -174,7 +174,7 @@ loop `a`..`c` 'ch ->
 ; b
 ; c
 
-; picking multiple items
+; 여러 항목 선택
 loop 1..10 [x y] ->
     print ["x =" x ", y =" y]
 ; x = 1 , y = 2
@@ -183,8 +183,12 @@ loop 1..10 [x y] ->
 ; x = 7 , y = 8
 ; x = 9 , y = 10
 
-; looping through a dictionary
-dict: #[name: "John", surname: "Doe", age: 34]
+; 사전을 통한 루핑
+dict: #[
+    name: "John"
+    surname: "Doe"
+    age: 34
+]
 loop dict [key value][
     print [key "->" value]
 ]
@@ -192,7 +196,7 @@ loop dict [key value][
 ; surname -> Doe
 ; age -> 34
 
-; while loops
+; while 루프
 i: new 0
 while [i<3][
     print ["i =" i]
@@ -203,44 +207,44 @@ while [i<3][
 ; i = 2
 
 ;---------------------------------
-; STRINGS
+; 문자열
 ;---------------------------------
 
-; case
+; 대소문자
 a: "tHis Is a stRinG"
 print upper a               ; THIS IS A STRING
 print lower a               ; this is a string
 print capitalize a          ; tHis Is a stRinG
 
-; concatenation
+; 연결
 a: "Hello " ++ "World!"     ; a: "Hello World!"
 
-; strings as an array
+; 배열로서의 문자열
 split "hello"               ; => [h e l l o]
 split.words "hello world"   ; => [hello world]
 
 print first "hello"         ; h
 print last "hello"          ; o
 
-; conversion
+; 변환
 to :string 123              ; => "123"
 to :integer "123"           ; => 123
 
-; joining strings together
+; 문자열 결합
 join ["hello" "world"]              ; => "helloworld"
 join.with:"-" ["hello" "world"]     ; => "hello-world"
 
-; string interpolation
+; 문자열 보간
 x: 2
 print ~"x = |x|"            ; x = 2
 
-; interpolation with `print`
+; `print`를 사용한 보간
 print ["x =" x]             ; x = 2
-                            ; (`print` works by calculating the given block
-                            ;  and joining the different values as strings
-                            ;  with a single space between them)
+                            ; (`print`는 주어진 블록을 계산하고
+                            ;  다른 값들을 문자열로 결합하여
+                            ;  사이에 단일 공백을 둡니다)
 
-; templates
+; 템플릿
 print render.template {
     <||= switch x=2 [ ||>
         Yes, x = 2
@@ -249,7 +253,7 @@ print render.template {
     <||]||>
 } ; Yes, x = 2
 
-; matching
+; 일치
 prefix? "hello" "he"        ; => true
 suffix? "hello" "he"        ; => false
 
@@ -261,22 +265,22 @@ in? "ll" "hello"            ; => true
 in? "x" "hello"             ; => false
 
 ;---------------------------------
-; BLOCKS
+; 블록
 ;---------------------------------
 
-; calculate a block
+; 블록 계산
 arr: [1 1+1 1+1+1]
 @arr                        ; => [1 2 3]
 
-; execute a block
-sth: [print "Hello world"]  ; this is perfectly valid,
-                            ; could contain *anything*
-                            ; and will not be executed...
+; 블록 실행
+sth: [print "Hello world"]  ; 이것은 완벽하게 유효하며,
+                            ; *무엇이든* 포함할 수 있습니다
+                            ; 그리고 실행되지 않습니다...
 
 do sth                      ; Hello world
-                            ; (...until we tell it to)
+                            ; (...우리가 그렇게 하라고 말할 때까지)
 
-; array indexing
+; 배열 인덱싱
 arr: ["zero" "one" "two" "three"]
 print first arr             ; zero
 print arr\0                 ; zero
@@ -286,57 +290,57 @@ print arr\3                 ; three
 x: 2
 print get arr x             ; two
 print arr \ 2               ; two
-                            ; (using the `\` infix alias for get -
-                            ;  notice space between the operands!
-                            ;  otherwise, it'll be parsed as a path)
+                            ; (`get`에 대한 `\` 중위 별칭 사용 -
+                            ;  피연산자 사이에 공백을 주목하십시오!
+                            ;  그렇지 않으면 경로로 구문 분석됩니다)
 
-; setting an array element
+; 배열 요소 설정
 arr\0: "nada"
 set arr 2 "dos"
 print arr                   ; nada one dos three
 
-; adding elements to an array
+; 배열에 요소 추가
 arr: new []
 'arr ++ "one"
 'arr ++ "two"
 print arr                   ; one two
 
-; remove elements from an array
+; 배열에서 요소 제거
 arr: new ["one" "two" "three" "four"]
 'arr -- "two"               ; arr: ["one" "three" "four"]
 remove 'arr .index 0        ; arr: ["three" "four"]
 
-; getting the size of an array
+; 배열 크기 가져오기
 arr: ["one" 2 "three" 4]
 print size arr              ; 4
 
-; getting a slice of an array
+; 배열의 일부 가져오기
 print slice ["one" "two" "three" "four"] 0 1        ; one two
 
-; check if array contains a specific element
+; 배열에 특정 요소가 포함되어 있는지 확인
 print contains? arr "one"   ; true
 print contains? arr "five"  ; false
 
-; sorting array
+; 배열 정렬
 arr: [1 5 3 2 4]
 sort arr                    ; => [1 2 3 4 5]
 sort.descending arr         ; => [5 4 3 2 1]
 
-; mapping values
+; 값 매핑
 map 1..10 [x][2*x]          ; => [2 4 6 8 10 12 14 16 18 20]
-map 1..10 'x -> 2*x         ; same as above
-map 1..10 => [2*&]          ; same as above
-map 1..10 => [2*]           ; same as above
+map 1..10 'x -> 2*x         ; 위와 동일
+map 1..10 => [2*&]          ; 위와 동일
+map 1..10 => [2*]           ; 위와 동일
 
-; selecting/filtering array values
+; 배열 값 선택/필터링
 select 1..10 [x][odd? x]    ; => [1 3 5 7 9]
-select 1..10 => odd?        ; same as above
+select 1..10 => odd?        ; 위와 동일
 
 filter 1..10 => odd?        ; => [2 4 6 8 10]
-                            ; (now, we leave out all odd numbers -
-                            ;  while select keeps them)
+                            ; (이제 모든 홀수를 제외합니다 -
+                            ;  select는 유지하는 반면)
 
-; misc operations
+; 기타 작업
 arr: ["one" 2 "three" 4]
 reverse arr                 ; => [4 "three" 2 "one"]
 shuffle arr                 ; => [2 4 "three" "one"]
@@ -346,19 +350,19 @@ take 1..10 3                ; => [1 2 3]
 repeat [1 2] 3              ; => [1 2 1 2 1 2]
 
 ;---------------------------------
-; FUNCTIONS
+; 함수
 ;---------------------------------
 
-; declaring a function
+; 함수 선언
 f: function [x][ 2*x ]
-f: function [x]-> 2*x       ; same as above
-f: $[x]->2*x                ; same as above (only using the `$` alias
-                            ;  for the `function`... function)
+f: function [x]-> 2*x       ; 위와 동일
+f: $[x]->2*x                ; 위와 동일 (단지 `function`에 대한 `$` 별칭 사용
+                            ;  ... 함수)
 
-; calling a function
+; 함수 호출
 f 10                        ; => 20
 
-; returning a value
+; 값 반환
 g: function [x][
     if x < 2 -> return 0
 
@@ -370,65 +374,65 @@ g: function [x][
 ]
 
 ;---------------------------------
-; CUSTOM TYPES
+; 사용자 정의 유형
 ;---------------------------------
 
-; defining a custom type
-define :person [                            ; define a new custom type "Person"
-    name                                    ; with fields: name, surname, age
+; 사용자 정의 유형 정의
+define :person [
+    name                                    ; 필드 포함: name, surname, age
     surname
     age
 ][
-    ; with custom post-construction initializer
+    ; 사용자 정의 사후 생성 초기화 프로그램 포함
     init: [
         this\name: capitalize this\name
     ]
 
-    ; custom print function
+    ; 사용자 정의 인쇄 함수
     print: [
         render "NAME: |this\name|, SURNAME: |this\surname|, AGE: |this\age|"
     ]
 
-    ; custom comparison operator
+    ; 사용자 정의 비교 연산자
     compare: 'age
 ]
 
-; create a method for our custom type
+; 사용자 정의 유형에 대한 메서드 생성
 sayHello: function [this][
     ensure -> is? :person this
 
     print ["Hello" this\name]
 ]
 
-; create new objects of our custom type
-a: to :person ["John" "Doe" 34]                 ; let's create 2 "Person"s
-b: to :person ["jane" "Doe" 33]                 ; and another one
+; 사용자 정의 유형의 새 객체 생성
+a: to :person ["John" "Doe" 34]                 ; 2개의 "Person"을 생성해 보겠습니다
+b: to :person ["jane" "Doe" 33]                 ; 그리고 또 하나
 
-; call pseudo-inner method
+; 의사 내부 메서드 호출
 sayHello a                                      ; Hello John
 sayHello b                                      ; Hello Jane
 
-; access object fields
+; 객체 필드 접근
 print ["The first person's name is:" a\name]    ; The first person's name is: John
 print ["The second person's name is:" b\name]   ; The second person's name is: Jane
 
-; changing object fields
+; 객체 필드 변경
 a\name: "Bob"
 sayHello a                                      ; Hello Bob
 
-; verifying object type
+; 객체 유형 확인
 print type a                                    ; :person
 print is? :person a                             ; true
 
-; printing objects
+; 객체 인쇄
 print a                                         ; NAME: John, SURNAME: Doe, AGE: 34
 
-; sorting user objects (using custom comparator)
+; 사용자 객체 정렬 (사용자 정의 비교기 사용)
 sort @[a b]                                     ; Jane..., John...
 sort.descending @[a b]                          ; John..., Jane...
 ```
 
-## Additional resources
+## 추가 자료
 
-- [Official documentation](https://arturo-lang.io/documentation/) - Arturo official documentation & reference.
-- [Online playground](https://arturo-lang.io/playground/) - Online REPL for the Arturo programming language.
+- [공식 문서](https://arturo-lang.io/documentation/) - Arturo 공식 문서 및 참조.
+- [온라인 놀이터](https://arturo-lang.io/playground/) - Arturo 프로그래밍 언어를 위한 온라인 REPL.

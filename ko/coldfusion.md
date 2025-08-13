@@ -1,65 +1,65 @@
-# coldfusion.md (번역)
-
 ---
 name: ColdFusion
 filename: learncoldfusion.cfm
 contributors:
     - ["Wayne Boka", "http://wboka.github.io"]
     - ["Kevin Morris", "https://twitter.com/kevinmorris"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-ColdFusion is a scripting language for web development.
-[Read more here.](http://www.adobe.com/products/coldfusion-family.html)
+ColdFusion은 웹 개발을 위한 스크립팅 언어입니다.
+[여기에서 더 읽어보십시오.](http://www.adobe.com/products/coldfusion-family.html)
 
 ### CFML
 _**C**old**F**usion **M**arkup **L**anguage_
-ColdFusion started as a tag-based language. Almost all functionality is available using tags.
+ColdFusion은 태그 기반 언어로 시작했습니다. 거의 모든 기능은 태그를 사용하여 사용할 수 있습니다.
 
 ```cfm
-<em>HTML tags have been provided for output readability</em>
+<em>HTML 태그는 출력 가독성을 위해 제공되었습니다.</em>
 
-<!--- Comments start with "<!---" and end with "--->" --->
-<!---
-    Comments can
-    also
-    span
-    multiple lines
+<!--- 주석은 "<!---"로 시작하고 "--->"로 끝납니다. --->
+<!--- 
+    주석은
+    여러 줄에
+    걸쳐
+    작성할 수 있습니다.
 --->
 
-<!--- CFML tags have a similar format to HTML tags. --->
-<h1>Simple Variables</h1>
-<!--- Variable Declaration: Variables are loosely typed, similar to JavaScript --->
-<p>Set <b>myVariable</b> to "myValue"</p>
+<!--- CFML 태그는 HTML 태그와 유사한 형식을 가집니다. --->
+<h1>단순 변수</h1>
+<!--- 변수 선언: 변수는 JavaScript와 유사하게 느슨하게 타입이 지정됩니다. --->
+<p><b>myVariable</b>을 "myValue"로 설정</p>
 <cfset myVariable = "myValue" />
-<p>Set <b>myNumber</b> to 3.14</p>
+<p><b>myNumber</b>를 3.14로 설정</p>
 <cfset myNumber = 3.14 />
 
-<!--- Displaying simple data --->
-<!--- Use <cfoutput> for simple values such as strings, numbers, and expressions --->
-<p>Display <b>myVariable</b>: <cfoutput>#myVariable#</cfoutput></p><!--- myValue --->
-<p>Display <b>myNumber</b>: <cfoutput>#myNumber#</cfoutput></p><!--- 3.14 --->
+<!--- 단순 데이터 표시 --->
+<!--- 문자열, 숫자 및 표현식과 같은 단순 값에는 <cfoutput>을 사용합니다. --->
+<p><b>myVariable</b> 표시: <cfoutput>#myVariable#</cfoutput></p><!--- myValue --->
+<p><b>myNumber</b> 표시: <cfoutput>#myNumber#</cfoutput></p><!--- 3.14 --->
 
 <hr />
 
-<h1>Complex Variables</h1>
-<!--- Declaring complex variables --->
-<!--- Declaring an array of 1 dimension: literal or bracket notation --->
-<p>Set <b>myArray1</b> to an array of 1 dimension using literal or bracket notation</p>
+<h1>복합 변수</h1>
+<!--- 복합 변수 선언 --->
+<!--- 1차원 배열 선언: 리터럴 또는 대괄호 표기법 --->
+<p>리터럴 또는 대괄호 표기법을 사용하여 <b>myArray1</b>을 1차원 배열로 설정</p>
 <cfset myArray1 = [] />
-<!--- Declaring an array of 1 dimension: function notation --->
-<p>Set <b>myArray2</b> to an array of 1 dimension using function notation</p>
+<!--- 1차원 배열 선언: 함수 표기법 --->
+<p>함수 표기법을 사용하여 <b>myArray2</b>를 1차원 배열로 설정</p>
 <cfset myArray2 = ArrayNew(1) />
 
-<!--- Outputting complex variables --->
-<p>Contents of <b>myArray1</b></p>
-<cfdump var="#myArray1#" /> <!--- An empty array object --->
-<p>Contents of <b>myArray2</b></p>
-<cfdump var="#myArray2#" /> <!--- An empty array object --->
+<!--- 복합 변수 출력 --->
+<p><b>myArray1</b> 내용</p>
+<cfdump var="#myArray1#" /> <!--- 빈 배열 객체 --->
+<p><b>myArray2</b> 내용</p>
+<cfdump var="#myArray2#" /> <!--- 빈 배열 객체 --->
 
-<!--- Operators --->
-<!--- Arithmetic --->
-<h1>Operators</h1>
-<h2>Arithmetic</h2>
+<!--- 연산자 --->
+<!--- 산술 --->
+<h1>연산자</h1>
+<h2>산술</h2>
 <p>1 + 1 = <cfoutput>#1 + 1#</cfoutput></p>
 <p>10 - 7 = <cfoutput>#10 - 7#<br /></cfoutput></p>
 <p>15 * 10 = <cfoutput>#15 * 10#<br /></cfoutput></p>
@@ -69,91 +69,91 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 
 <hr />
 
-<!--- Comparison --->
-<h2>Comparison</h2>
-<h3>Standard Notation</h3>
-<p>Is 1 eq 1? <cfoutput>#1 eq 1#</cfoutput></p>
-<p>Is 15 neq 1? <cfoutput>#15 neq 1#</cfoutput></p>
-<p>Is 10 gt 8? <cfoutput>#10 gt 8#</cfoutput></p>
-<p>Is 1 lt 2? <cfoutput>#1 lt 2#</cfoutput></p>
-<p>Is 10 gte 5? <cfoutput>#10 gte 5#</cfoutput></p>
-<p>Is 1 lte 5? <cfoutput>#1 lte 5#</cfoutput></p>
+<!--- 비교 --->
+<h2>비교</h2>
+<h3>표준 표기법</h3>
+<p>1은 1과 같습니까? <cfoutput>#1 eq 1#</cfoutput></p>
+<p>15는 1과 같지 않습니까? <cfoutput>#15 neq 1#</cfoutput></p>
+<p>10은 8보다 큽니까? <cfoutput>#10 gt 8#</cfoutput></p>
+<p>1은 2보다 작습니까? <cfoutput>#1 lt 2#</cfoutput></p>
+<p>10은 5보다 크거나 같습니까? <cfoutput>#10 gte 5#</cfoutput></p>
+<p>1은 5보다 작거나 같습니까? <cfoutput>#1 lte 5#</cfoutput></p>
 
-<h3>Alternative Notation</h3>
-<p>Is 1 == 1? <cfoutput>#1 eq 1#</cfoutput></p>
-<p>Is 15 != 1? <cfoutput>#15 neq 1#</cfoutput></p>
-<p>Is 10 > 8? <cfoutput>#10 gt 8#</cfoutput></p>
-<p>Is 1 < 2? <cfoutput>#1 lt 2#</cfoutput></p>
-<p>Is 10 >= 5? <cfoutput>#10 gte 5#</cfoutput></p>
-<p>Is 1 <= 5? <cfoutput>#1 lte 5#</cfoutput></p>
+<h3>대체 표기법</h3>
+<p>1은 1과 같습니까? <cfoutput>#1 eq 1#</cfoutput></p>
+<p>15는 1과 같지 않습니까? <cfoutput>#15 neq 1#</cfoutput></p>
+<p>10은 8보다 큽니까? <cfoutput>#10 gt 8#</cfoutput></p>
+<p>1은 2보다 작습니까? <cfoutput>#1 lt 2#</cfoutput></p>
+<p>10은 5보다 크거나 같습니까? <cfoutput>#10 gte 5#</cfoutput></p>
+<p>1은 5보다 작거나 같습니까? <cfoutput>#1 lte 5#</cfoutput></p>
 
 <hr />
 
-<!--- Control Structures --->
-<h1>Control Structures</h1>
+<!--- 제어 구조 --->
+<h1>제어 구조</h1>
 
 <cfset myCondition = "Test" />
 
-<p>Condition to test for: "<cfoutput>#myCondition#</cfoutput>"</p>
+<p>테스트할 조건: "<cfoutput>#myCondition#</cfoutput>"</p>
 
 <cfif myCondition eq "Test">
-    <cfoutput>#myCondition#. We're testing.</cfoutput>
+    <cfoutput>#myCondition#. 테스트 중입니다.</cfoutput>
 <cfelseif myCondition eq "Production">
-    <cfoutput>#myCondition#. Proceed Carefully!!!</cfoutput>
+    <cfoutput>#myCondition#. 조심해서 진행하십시오!!!</cfoutput>
 <cfelse>
-    myCondition is unknown
+    myCondition을 알 수 없습니다.
 </cfif>
 
 <hr />
 
-<!--- Loops --->
-<h1>Loops</h1>
-<h2>For Loop</h2>
+<!--- 루프 --->
+<h1>루프</h1>
+<h2>For 루프</h2>
 <cfloop from="0" to="10" index="i">
-	<p>Index equals <cfoutput>#i#</cfoutput></p>
+	<p>인덱스는 <cfoutput>#i#</cfoutput></p>
 </cfloop>
 
-<h2>For Each Loop (Complex Variables)</h2>
+<h2>For Each 루프 (복합 변수)</h2>
 
-<p>Set <b>myArray3</b> to [5, 15, 99, 45, 100]</p>
+<p><b>myArray5</b>를 [5, 15, 99, 45, 100]으로 설정</p>
 
-<cfset myArray3 = [5, 15, 99, 45, 100] />
+<cfset myArray5 = [5, 15, 99, 45, 100] />
 
-<cfloop array="#myArray3#" index="i">
-	<p>Index equals <cfoutput>#i#</cfoutput></p>
+<cfloop array="#myArray5#" index="i">
+	<p>인덱스는 <cfoutput>#i#</cfoutput></p>
 </cfloop>
 
-<p>Set <b>myArray4</b> to ["Alpha", "Bravo", "Charlie", "Delta", "Echo"]</p>
+<p><b>myArray4</b>를 ["Alpha", "Bravo", "Charlie", "Delta", "Echo"]로 설정</p>
 
 <cfset myArray4 = ["Alpha", "Bravo", "Charlie", "Delta", "Echo"] />
 
 <cfloop array="#myArray4#" index="s">
-	<p>Index equals <cfoutput>#s#</cfoutput></p>
+	<p>인덱스는 <cfoutput>#s#</cfoutput></p>
 </cfloop>
 
-<h2>Switch Statement</h2>
+<h2>Switch 문</h2>
 
-<p>Set <b>myArray5</b> to [5, 15, 99, 45, 100]</p>
+<p><b>myArray5</b>를 [5, 15, 99, 45, 100]으로 설정</p>
 
 <cfset myArray5 = [5, 15, 99, 45, 100] />
 
 <cfloop array="#myArray5#" index="i">
 	<cfswitch expression="#i#">
 		<cfcase value="5,15,45" delimiters=",">
-			<p><cfoutput>#i#</cfoutput> is a multiple of 5.</p>
+			<p><cfoutput>#i#</cfoutput>는 5의 배수입니다.</p>
 		</cfcase>
 		<cfcase value="99">
-			<p><cfoutput>#i#</cfoutput> is ninety-nine.</p>
+			<p><cfoutput>#i#</cfoutput>는 99입니다.</p>
 		</cfcase>
 		<cfdefaultcase>
-			<p><cfoutput>#i#</cfoutput> is not 5, 15, 45, or 99.</p>
+			<p><cfoutput>#i#</cfoutput>는 5, 15, 45 또는 99가 아닙니다.</p>
 		</cfdefaultcase>
 	</cfswitch>
 </cfloop>
 
 <hr />
 
-<h1>Converting types</h1>
+<h1>유형 변환</h1>
 
 <style>
 	table.table th, table.table td {
@@ -169,11 +169,11 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 <table class="table" cellspacing="0">
 	<thead>
 		<tr>
-			<th>Value</th>
-			<th>As Boolean</th>
-			<th>As number</th>
-			<th>As date-time</th>
-			<th>As string</th>
+			<th>값</th>
+			<th>부울로</th>
+			<th>숫자로</th>
+			<th>날짜-시간으로</th>
+			<th>문자열로</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -181,59 +181,59 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 			<th>"Yes"</th>
 			<td>TRUE</td>
 			<td>1</td>
-			<td>Error</td>
+			<td>오류</td>
 			<td>"Yes"</td>
 		</tr>
 		<tr>
 			<th>"No"</th>
 			<td>FALSE</td>
 			<td>0</td>
-			<td>Error</td>
+			<td>오류</td>
 			<td>"No"</td>
 		</tr>
 		<tr>
 			<th>TRUE</th>
 			<td>TRUE</td>
 			<td>1</td>
-			<td>Error</td>
+			<td>오류</td>
 			<td>"Yes"</td>
 		</tr>
 		<tr>
 			<th>FALSE</th>
 			<td>FALSE</td>
 			<td>0</td>
-			<td>Error</td>
+			<td>오류</td>
 			<td>"No"</td>
 		</tr>
 		<tr>
-			<th>Number</th>
-			<td>True if Number is not 0; False otherwise.</td>
-			<td>Number</td>
-			<td>See &#34;Date-time values&#34; earlier in this chapter.</td>
-			<td>String representation of the number (for example, &#34;8&#34;).</td>
+			<th>숫자</th>
+			<td>숫자가 0이 아니면 True; 그렇지 않으면 False.</td>
+			<td>숫자</td>
+			<td>이 장의 앞부분에 있는 "날짜-시간 값"을 참조하십시오.</td>
+			<td>숫자의 문자열 표현(예: "8").</td>
 		</tr>
 		<tr>
-			<th>String</th>
-			<td>If "Yes", True <br>If "No", False <br>If it can be converted to 0, False <br>If it can be converted to any other number, True</td>
-			<td>If it represents a number (for example, &#34;1,000&#34; or &#34;12.36E-12&#34;), it is converted to the corresponding number.</td>
-			<td>If it represents a date-time (see next column), it is converted to the numeric value of the corresponding date-time object. <br>If it is an ODBC date, time, or timestamp (for example &#34;{ts &#39;2001-06-14 11:30:13&#39;}&#34;, or if it is expressed in a standard U.S. date or time format, including the use of full or abbreviated month names, it is converted to the corresponding date-time value. <br>Days of the week or unusual punctuation result in an error. <br>Dashes, forward-slashes, and spaces are generally allowed.</td>
-			<td>String</td>
+			<th>문자열</th>
+			<td>"Yes"이면 True <br>"No"이면 False <br>0으로 변환할 수 있으면 False <br>다른 숫자로 변환할 수 있으면 True</td>
+			<td>숫자를 나타내는 경우(예: "1,000" 또는 "12.36E-12") 해당 숫자로 변환됩니다.</td>
+			<td>날짜-시간을 나타내는 경우(다음 열 참조) 해당 날짜-시간 객체의 숫자 값으로 변환됩니다. <br>ODBC 날짜, 시간 또는 타임스탬프(예: "{ts '2001-06-14 11:30:13'}")이거나 전체 또는 약어 월 이름을 포함한 표준 미국 날짜 또는 시간 형식으로 표현된 경우 해당 날짜-시간 값으로 변환됩니다. <br>요일 또는 비정상적인 구두점은 오류를 발생시킵니다. <br>대시, 슬래시 및 공백은 일반적으로 허용됩니다.</td>
+			<td>문자열</td>
 		</tr>
 		<tr>
-			<th>Date</th>
-			<td>Error</td>
-			<td>The numeric value of the date-time object.</td>
-			<td>Date</td>
-			<td>An ODBC timestamp.</td>
+			<th>날짜</th>
+			<td>오류</td>
+			<td>날짜-시간 객체의 숫자 값.</td>
+			<td>날짜</td>
+			<td>ODBC 타임스탬프.</td>
 		</tr>
 	</tbody>
 </table>
 
 <hr />
 
-<h1>Components</h1>
+<h1>구성 요소</h1>
 
-<em>Code for reference (Functions must return something to support IE)</em>
+<em>참조용 코드 (함수는 IE를 지원하기 위해 무언가를 반환해야 합니다)</em>
 ```
 
 ```cfs
@@ -322,11 +322,11 @@ ColdFusion started as a tag-based language. Almost all functionality is availabl
 
 ### CFScript
 _**C**old**F**usion **S**cript_
-In recent years, the ColdFusion language has added script syntax to mirror tag functionality. When using an up-to-date CF server, almost all functionality is available using scrypt syntax.
+최근 몇 년 동안 ColdFusion 언어는 태그 기능을 반영하는 스크립트 구문을 추가했습니다. 최신 CF 서버를 사용하는 경우 거의 모든 기능을 스크립트 구문을 사용하여 사용할 수 있습니다.
 
-## Further Reading
+## 더 읽을거리
 
-The links provided here below are just to get an understanding of the topic, feel free to Google and find specific examples.
+아래 제공된 링크는 주제를 이해하기 위한 것이므로, Google에서 특정 예제를 자유롭게 검색하십시오.
 
-1. [Coldfusion Reference From Adobe](https://helpx.adobe.com/coldfusion/cfml-reference/topics.html)
-2. [Open Source Documentation](http://cfdocs.org/)
+1. [Adobe의 Coldfusion 참조](https://helpx.adobe.com/coldfusion/cfml-reference/topics.html)
+2. [오픈 소스 문서](http://cfdocs.org/)

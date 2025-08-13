@@ -1,8 +1,7 @@
-# git.md (번역)
-
 ---
 category: tool
 name: Git
+filename: LearnGit.txt
 contributors:
     - ["Jake Prather", "http://github.com/JakeHP"]
     - ["Leo Rudberg" , "http://github.com/LOZORD"]
@@ -11,105 +10,86 @@ contributors:
     - ["Andrew Taylor", "http://github.com/andrewjt71"]
     - ["Jason Stathopulos", "http://github.com/SpiritBreaker226"]
     - ["Milo Gilad", "http://github.com/Myl0g"]
-filename: LearnGit.txt
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-Git is a distributed version control and source code management system.
+Git은 분산 버전 제어 및 소스 코드 관리 시스템입니다.
 
-It does this through a series of snapshots of your project, and it works
-with those snapshots to provide you with functionality to version and
-manage your source code.
+프로젝트의 일련의 스냅샷을 통해 이를 수행하며, 해당 스냅샷과 함께 작동하여 소스 코드의 버전을 관리하고 관리하는 기능을 제공합니다.
 
-## Versioning Concepts
+## 버전 관리 개념
 
-### What is version control?
+### 버전 관리란 무엇입니까?
 
-Version control is a system that records changes to a file(s), over time.
+버전 관리는 시간이 지남에 따라 파일의 변경 사항을 기록하는 시스템입니다.
 
-### Centralized Versioning vs. Distributed Versioning
+### 중앙 집중식 버전 관리 대 분산 버전 관리
 
-* Centralized version control focuses on synchronizing, tracking, and backing
-up files.
-* Distributed version control focuses on sharing changes. Every change has a
-unique id.
-* Distributed systems have no defined structure. You could easily have a SVN
-style, centralized system, with git.
+* 중앙 집중식 버전 관리는 파일 동기화, 추적 및 백업에 중점을 둡니다.
+* 분산 버전 관리는 변경 사항 공유에 중점을 둡니다. 모든 변경 사항에는 고유한 ID가 있습니다.
+* 분산 시스템에는 정의된 구조가 없습니다. git을 사용하여 SVN 스타일의 중앙 집중식 시스템을 쉽게 가질 수 있습니다.
 
-[Additional Information](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+[추가 정보](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 
-### Why Use Git?
+### Git을 사용하는 이유
 
-* Can work offline.
-* Collaborating with others is easy!
-* Branching is easy!
-* Branching is fast!
-* Merging is easy!
-* Git is fast.
-* Git is flexible.
+* 오프라인으로 작업할 수 있습니다.
+* 다른 사람과 협업하기 쉽습니다!
+* 브랜칭이 쉽습니다!
+* 브랜칭이 빠릅니다!
+* 병합이 쉽습니다!
+* Git은 빠릅니다.
+* Git은 유연합니다.
 
-## Git Architecture
+## Git 아키텍처
 
-### Repository
+### 리포지토리
 
-A set of files, directories, historical records, commits, and heads. Imagine it
-as a source code data structure, with the attribute that each source code
-"element" gives you access to its revision history, among other things.
+파일, 디렉토리, 기록 기록, 커밋 및 헤드의 집합입니다. 소스 코드 데이터 구조로 상상해보십시오. 각 소스 코드 "요소"는 다른 것들 중에서 수정 기록에 대한 액세스를 제공하는 속성을 가집니다.
 
-A git repository is comprised of the .git directory & working tree.
+Git 리포지토리는 .git 디렉토리 및 작업 트리로 구성됩니다.
 
-### .git Directory (component of repository)
+### .git 디렉토리 (리포지토리 구성 요소)
 
-The .git directory contains all the configurations, logs, branches, HEAD, and
-more.
-[Detailed List.](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
+.git 디렉토리에는 모든 구성, 로그, 브랜치, HEAD 등이 포함됩니다.
+[자세한 목록.](https://gitready.com/advanced/2009/03/23/whats-inside-your-git-directory.html)
 
-### Working Tree (component of repository)
+### 작업 트리 (리포지토리 구성 요소)
 
-This is basically the directories and files in your repository. It is often
-referred to as your working directory.
+이것은 기본적으로 리포지토리의 디렉토리 및 파일입니다. 종종 작업 디렉토리라고 합니다.
 
-### Index (component of .git dir)
+### 인덱스 (.git 디렉토리 구성 요소)
 
-The Index is the staging area in git. It's basically a layer that separates
-your working tree from the Git repository. This gives developers more power
-over what gets sent to the Git repository.
+인덱스는 git의 스테이징 영역입니다. 기본적으로 작업 트리를 Git 리포지토리와 분리하는 계층입니다. 이를 통해 개발자는 Git 리포지토리로 전송되는 내용에 대해 더 많은 권한을 가질 수 있습니다.
 
-### Commit
+### 커밋
 
-A git commit is a snapshot of a set of changes, or manipulations to your
-Working Tree. For example, if you added 5 files, and removed 2 others, these
-changes will be contained in a commit (or snapshot). This commit can then be
-pushed to other repositories, or not!
+Git 커밋은 작업 트리에 대한 일련의 변경 또는 조작의 스냅샷입니다. 예를 들어, 5개의 파일을 추가하고 2개의 다른 파일을 제거한 경우 이러한 변경 사항은 커밋(또는 스냅샷)에 포함됩니다. 그런 다음 이 커밋을 다른 리포지토리로 푸시하거나 푸시하지 않을 수 있습니다!
 
-### Branch
+### 브랜치
 
-A branch is essentially a pointer to the last commit you made. As you go on
-committing, this pointer will automatically update to point to the latest commit.
+브랜치는 본질적으로 마지막으로 만든 커밋에 대한 포인터입니다. 커밋을 계속하면 이 포인터는 자동으로 최신 커밋을 가리키도록 업데이트됩니다.
 
-### Tag
+### 태그
 
-A tag is a mark on specific point in history. Typically people use this
-functionality to mark release points (v1.0, and so on).
+태그는 기록의 특정 지점에 대한 표시입니다. 일반적으로 사람들은 이 기능을 사용하여 릴리스 지점(v1.0 등)을 표시합니다.
 
-### HEAD and head (component of .git dir)
+### HEAD 및 head (.git 디렉토리 구성 요소)
 
-HEAD is a pointer that points to the current branch. A repository only has 1
-*active* HEAD.
-head is a pointer that points to any commit. A repository can have any number
-of heads.
+HEAD는 현재 브랜치를 가리키는 포인터입니다. 리포지토리에는 *활성* HEAD가 하나만 있습니다.
+head는 모든 커밋을 가리키는 포인터입니다. 리포지토리에는 여러 개의 head가 있을 수 있습니다.
 
-### Stages of Git
-* Modified - Changes have been made to a file but file has not been committed
-to Git Database yet
-* Staged - Marks a modified file to go into your next commit snapshot
-* Committed - Files have been committed to the Git Database
+### Git의 단계
+* 수정됨 - 파일이 변경되었지만 파일이 아직 Git 데이터베이스에 커밋되지 않았습니다.
+* 스테이징됨 - 수정된 파일을 다음 커밋 스냅샷에 포함하도록 표시합니다.
+* 커밋됨 - 파일이 Git 데이터베이스에 커밋되었습니다.
 
-## Commands
+## 명령어
 
 ### init
 
-Create an empty Git repository. The Git repository's settings, stored
-information, and more is stored in a directory (a folder) named ".git".
+빈 Git 리포지토리를 만듭니다. Git 리포지토리의 설정, 저장된 정보 등은 ".git"이라는 디렉토리(폴더)에 저장됩니다.
 
 ```bash
 $ git init
@@ -117,11 +97,10 @@ $ git init
 
 ### config
 
-To configure settings. Whether it be for the repository, the system itself,
-or global configurations ( global config file is `~/.gitconfig` ).
+설정을 구성합니다. 리포지토리, 시스템 자체 또는 전역 구성(전역 구성 파일은 `~/.gitconfig`)에 대한 설정입니다.
 
 ```bash
-# Set & Print Some Basic Config Variables (Global)
+# 일부 기본 구성 변수 설정 및 인쇄 (전역)
 $ git config --global user.email "MyEmail@Zoho.com"
 $ git config --global user.name "My Name"
 
@@ -129,26 +108,25 @@ $ git config --global user.email
 $ git config --global user.name
 ```
 
-[Learn More About git config.](https://git-scm.com/docs/git-config)
+[git config에 대해 자세히 알아보기.](https://git-scm.com/docs/git-config)
 
 ### help
 
-To give you quick access to an extremely detailed guide of each command. Or to
-just give you a quick reminder of some semantics.
+각 명령에 대한 매우 자세한 가이드에 빠르게 액세스하거나 일부 의미 체계를 빠르게 상기시켜줍니다.
 
 ```bash
-# Quickly check available commands
+# 사용 가능한 명령을 빠르게 확인
 $ git help
 
-# Check all available commands
+# 사용 가능한 모든 명령 확인
 $ git help -a
 
-# Command specific help - user manual
+# 명령별 도움말 - 사용자 설명서
 # git help <command_here>
 $ git help add
 $ git help commit
 $ git help init
-# or git <command_here> --help
+# 또는 git <command_here> --help
 $ git add --help
 $ git commit --help
 $ git init --help
@@ -156,8 +134,7 @@ $ git init --help
 
 ### ignore files
 
-To intentionally untrack file(s) & folder(s) from git. Typically meant for
-private & temp files which would otherwise be shared in the repository.
+git에서 의도적으로 파일 및 폴더를 추적하지 않도록 합니다. 일반적으로 리포지토리에서 공유될 개인 및 임시 파일을 위한 것입니다.
 
 ```bash
 $ echo "temp/" >> .gitignore
@@ -166,279 +143,258 @@ $ echo "private_key" >> .gitignore
 
 ### status
 
-To show differences between the index file (basically your working copy/repo)
-and the current HEAD commit.
+인덱스 파일(기본적으로 작업 복사본/리포지토리)과 현재 HEAD 커밋 간의 차이점을 표시합니다.
 
 ```bash
-# Will display the branch, untracked files, changes and other differences
+# 브랜치, 추적되지 않은 파일, 변경 사항 및 기타 차이점을 표시합니다.
 $ git status
 
-# To learn other "tid bits" about git status
+# git status에 대한 다른 "팁"을 알아보려면
 $ git help status
 ```
 
 ### add
 
-To add files to the staging area/index. If you do not `git add` new files to
-the staging area/index, they will not be included in commits!
+스테이징 영역/인덱스에 파일을 추가합니다. 새 파일을 스테이징 영역/인덱스에 `git add`하지 않으면 커밋에 포함되지 않습니다!
 
 ```bash
-# add a file in your current working directory
+# 현재 작업 디렉토리에 파일 추가
 $ git add HelloWorld.java
 
-# add a file in a nested dir
+# 중첩된 디렉토리에 파일 추가
 $ git add /path/to/file/HelloWorld.c
 
-# Regular Expression support!
+# 정규 표현식 지원!
 $ git add ./*.java
 
-# You can also add everything in your working directory to the staging area.
+# 작업 디렉토리의 모든 것을 스테이징 영역에 추가할 수도 있습니다.
 $ git add -A
 ```
 
-This only adds a file to the staging area/index, it doesn't commit it to the
-working directory/repo.
+이것은 파일을 스테이징 영역/인덱스에만 추가하며, 작업 디렉토리/리포지토리에 커밋하지는 않습니다.
 
 ### branch
 
-Manage your branches. You can view, edit, create, delete branches using this
-command.
+브랜치를 관리합니다. 이 명령을 사용하여 브랜치를 보고, 편집하고, 만들고, 삭제할 수 있습니다.
 
 ```bash
-# list existing branches & remotes
+# 기존 브랜치 및 원격 나열
 $ git branch -a
 
-# create a new branch
+# 새 브랜치 만들기
 $ git branch myNewBranch
 
-# delete a branch
+# 브랜치 삭제
 $ git branch -d myBranch
 
-# rename a branch
+# 브랜치 이름 바꾸기
 # git branch -m <oldname> <newname>
 $ git branch -m myBranchName myNewBranchName
 
-# edit a branch's description
+# 브랜치 설명 편집
 $ git branch myBranchName --edit-description
 ```
 
 ### tag
 
-Manage your tags
+태그를 관리합니다.
 
 ```bash
-# List tags
+# 태그 나열
 $ git tag
 
-# Create a annotated tag
-# The -m specifies a tagging message, which is stored with the tag.
-# If you don’t specify a message for an annotated tag,
-# Git launches your editor so you can type it in.
+# 주석이 달린 태그 만들기
+# -m은 태그와 함께 저장되는 태그 지정 메시지를 지정합니다.
+# 주석이 달린 태그에 대한 메시지를 지정하지 않으면 Git은 편집기를 실행하여 입력할 수 있도록 합니다.
 $ git tag -a v2.0 -m 'my version 2.0'
 
-# Show info about tag
-# That shows the tagger information, the date the commit was tagged,
-# and the annotation message before showing the commit information.
+# 태그 정보 표시
+# 태그 지정자 정보, 커밋이 태그 지정된 날짜 및 커밋 정보를 표시하기 전에 주석 메시지를 표시합니다.
 $ git show v2.0
 
-# Push a single tag to remote
+# 원격에 단일 태그 푸시
 $ git push origin v2.0
 
-# Push a lot of tags to remote
+# 원격에 많은 태그 푸시
 $ git push origin --tags
 ```
 
 ### checkout
 
-Updates all files in the working tree to match the version in the index, or
-specified tree.
+작업 트리의 모든 파일을 인덱스 또는 지정된 트리의 버전과 일치하도록 업데이트합니다.
 
 ```bash
-# Checkout a repo - defaults to master branch
+# 리포지토리 체크아웃 - 기본적으로 마스터 브랜치
 $ git checkout
 
-# Checkout a specified branch
+# 지정된 브랜치 체크아웃
 $ git checkout branchName
 
-# Create a new branch & switch to it
-# equivalent to "git branch <name>; git checkout <name>"
+# 새 브랜치를 만들고 전환
+# "git branch <name>; git checkout <name>"과 동일
 
 $ git checkout -b newBranch
 ```
 
 ### clone
 
-Clones, or copies, an existing repository into a new directory. It also adds
-remote-tracking branches for each branch in the cloned repo, which allows you
-to push to a remote branch.
+기존 리포지토리를 새 디렉토리에 복제하거나 복사합니다. 또한 복제된 리포지토리의 각 브랜치에 대한 원격 추적 브랜치를 추가하여 원격 브랜치에 푸시할 수 있습니다.
 
 ```bash
-# Clone learnxinyminutes-docs
+# learnxinyminutes-docs 복제
 $ git clone https://github.com/adambard/learnxinyminutes-docs.git
 
-# shallow clone - faster cloning that pulls only latest snapshot
+# 얕은 복제 - 최신 스냅샷만 가져오는 더 빠른 복제
 $ git clone --depth 1 https://github.com/adambard/learnxinyminutes-docs.git
 
-# clone only a specific branch
+# 특정 브랜치만 복제
 $ git clone -b master-cn https://github.com/adambard/learnxinyminutes-docs.git --single-branch
 ```
 
 ### commit
 
-Stores the current contents of the index in a new "commit." This commit
-contains the changes made and a message created by the user.
+인덱스의 현재 내용을 새 "커밋"에 저장합니다. 이 커밋에는 사용자가 만든 변경 사항과 메시지가 포함됩니다.
 
 ```bash
-# commit with a message
+# 메시지와 함께 커밋
 $ git commit -m "Added multiplyNumbers() function to HelloWorld.c"
 
-# signed commit with a message (user.signingkey must have been set
-# with your GPG key e.g. git config --global user.signingkey 5173AAD5)
+# 메시지와 함께 서명된 커밋 (user.signingkey는 GPG 키로 설정되어 있어야 함, 예: git config --global user.signingkey 5173AAD5)
 $ git commit -S -m "signed commit message"
 
-# automatically stage modified or deleted files, except new files, and then commit
+# 새 파일을 제외하고 수정되거나 삭제된 파일을 자동으로 스테이징한 다음 커밋
 $ git commit -a -m "Modified foo.php and removed bar.php"
 
-# change last commit (this deletes previous commit with a fresh commit)
+# 마지막 커밋 변경 (이전 커밋을 새 커밋으로 삭제)
 $ git commit --amend -m "Correct message"
 ```
 
 ### diff
 
-Shows differences between a file in the working directory, index and commits.
+작업 디렉토리, 인덱스 및 커밋의 파일 간의 차이점을 표시합니다.
 
 ```bash
-# Show difference between your working dir and the index
+# 작업 디렉토리와 인덱스 간의 차이점 표시
 $ git diff
 
-# Show differences between the index and the most recent commit.
+# 인덱스와 가장 최근 커밋 간의 차이점 표시.
 $ git diff --cached
 
-# Show differences between your working dir and the most recent commit
+# 작업 디렉토리와 가장 최근 커밋 간의 차이점 표시
 $ git diff HEAD
 ```
 
 ### grep
 
-Allows you to quickly search a repository.
+리포지토리를 빠르게 검색할 수 있습니다.
 
-Optional Configurations:
+선택적 구성:
 
 ```bash
-# Thanks to Travis Jeffery for these
-# Set line numbers to be shown in grep search results
+# Travis Jeffery에게 감사드립니다.
+# grep 검색 결과에 줄 번호 표시 설정
 $ git config --global grep.lineNumber true
 
-# Make search results more readable, including grouping
+# 그룹화를 포함하여 검색 결과를 더 읽기 쉽게 만듭니다.
 $ git config --global alias.g "grep --break --heading --line-number"
 ```
 
 ```bash
-# Search for "variableName" in all java files
+# 모든 java 파일에서 "variableName" 검색
 $ git grep 'variableName' -- '*.java'
 
-# Search for a line that contains "arrayListName" and, "add" or "remove"
-$ git grep -e 'arrayListName' --and \( -e add -e remove \)
+# "arrayListName"을 포함하고 "add" 또는 "remove"를 포함하는 줄 검색
+$ git grep -e 'arrayListName' --and \( -e add -e remove \
 ```
 
-Google is your friend; for more examples
+Google은 당신의 친구입니다. 더 많은 예제를 보려면
 [Git Grep Ninja](https://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja)
 
 ### log
 
-Display commits to the repository.
+리포지토리에 대한 커밋을 표시합니다.
 
 ```bash
-# Show all commits
+# 모든 커밋 표시
 $ git log
 
-# Show only commit message & ref
+# 커밋 메시지 및 참조만 표시
 $ git log --oneline
 
-# Show merge commits only
+# 병합 커밋만 표시
 $ git log --merges
 
-# Show all commits represented by an ASCII graph
+# ASCII 그래프로 표시된 모든 커밋 표시
 $ git log --graph
 ```
 
 ### merge
 
-"Merge" in changes from external commits into the current branch.
+외부 커밋의 변경 사항을 현재 브랜치로 "병합"합니다.
 
 ```bash
-# Merge the specified branch into the current.
+# 지정된 브랜치를 현재 브랜치로 병합합니다.
 $ git merge branchName
 
-# Always generate a merge commit when merging
+# 병합 시 항상 병합 커밋 생성
 $ git merge --no-ff branchName
 ```
 
 ### mv
 
-Rename or move a file
+파일 이름 바꾸기 또는 이동
 
 ```bash
-# Renaming a file
+# 파일 이름 바꾸기
 $ git mv HelloWorld.c HelloNewWorld.c
 
-# Moving a file
+# 파일 이동
 $ git mv HelloWorld.c ./new/path/HelloWorld.c
 
-# Force rename or move
-# "existingFile" already exists in the directory, will be overwritten
+# 강제 이름 바꾸기 또는 이동
+# "existingFile"이 디렉토리에 이미 존재하며 덮어쓰게 됩니다.
 $ git mv -f myFile existingFile
 ```
 
 ### pull
 
-Pulls from a repository and merges it with another branch.
+리포지토리에서 가져와 다른 브랜치와 병합합니다.
 
 ```bash
-# Update your local repo, by merging in new changes
-# from the remote "origin" and "master" branch.
+# 원격 "origin" 및 "master" 브랜치에서 새 변경 사항을 병합하여 로컬 리포지토리를 업데이트합니다.
 # git pull <remote> <branch>
 $ git pull origin master
 
-# By default, git pull will update your current branch
-# by merging in new changes from its remote-tracking branch
+# 기본적으로 git pull은 원격 추적 브랜치에서 새 변경 사항을 병합하여 현재 브랜치를 업데이트합니다.
 $ git pull
 
-# Merge in changes from remote branch and rebase
-# branch commits onto your local repo, like: "git fetch <remote> <branch>, git
-# rebase <remote>/<branch>"
+# 원격 브랜치에서 변경 사항을 병합하고 로컬 리포지토리에 브랜치 커밋을 리베이스합니다. 예: "git fetch <remote> <branch>, git rebase <remote>/<branch>"
 $ git pull origin master --rebase
 ```
 
 ### push
 
-Push and merge changes from a branch to a remote & branch.
+브랜치의 변경 사항을 원격 및 브랜치로 푸시하고 병합합니다.
 
 ```bash
-# Push and merge changes from a local repo to a
-# remote named "origin" and "master" branch.
+# 로컬 리포지토리의 변경 사항을 "origin" 및 "master" 브랜치라는 원격으로 푸시하고 병합합니다.
 # git push <remote> <branch>
 $ git push origin master
 
-# By default, git push will push and merge changes from
-# the current branch to its remote-tracking branch
+# 기본적으로 git push는 현재 브랜치의 변경 사항을 원격 추적 브랜치로 푸시하고 병합합니다.
 $ git push
 
-# To link up current local branch with a remote branch, add -u flag:
+# 현재 로컬 브랜치를 원격 브랜치와 연결하려면 -u 플래그를 추가하십시오:
 $ git push -u origin master
-# Now, anytime you want to push from that same local branch, use shortcut:
+# 이제 동일한 로컬 브랜치에서 푸시하고 싶을 때마다 바로 가기를 사용하십시오:
 $ git push
 ```
 
 ### stash
 
-Stashing takes the dirty state of your working directory and saves it on a
-stack of unfinished changes that you can reapply at any time.
+Stashing은 작업 디렉토리의 더러운 상태를 가져와 언제든지 다시 적용할 수 있는 미완성 변경 사항 스택에 저장합니다.
 
-Let's say you've been doing some work in your git repo, but you want to pull
-from the remote. Since you have dirty (uncommitted) changes to some files, you
-are not able to run `git pull`. Instead, you can run `git stash` to save your
-changes onto a stack!
+git 리포지토리에서 일부 작업을 수행했지만 원격에서 가져오고 싶다고 가정해 보겠습니다. 일부 파일에 더러운(커밋되지 않은) 변경 사항이 있으므로 `git pull`을 실행할 수 없습니다. 대신 `git stash`를 실행하여 변경 사항을 스택에 저장할 수 있습니다!
 
 ```bash
 $ git stash
@@ -448,15 +404,15 @@ Saved working directory and index state \
   (To restore them type "git stash apply")
 ```
 
-Now you can pull!
+이제 가져올 수 있습니다!
 
 ```bash
 git pull
 ```
 
-`...changes apply...`
+`...변경 사항 적용...`
 
-Now check that everything is OK
+이제 모든 것이 정상인지 확인하십시오.
 
 ```bash
 $ git status
@@ -464,9 +420,8 @@ $ git status
 nothing to commit, working directory clean
 ```
 
-You can see what "hunks" you've stashed so far using `git stash list`.
-Since the "hunks" are stored in a Last-In-First-Out stack, our most recent
-change will be at top.
+`git stash list`를 사용하여 지금까지 숨겨진 "덩어리"를 볼 수 있습니다. 
+"덩어리"는 후입선출 스택에 저장되므로 가장 최근 변경 사항이 맨 위에 있습니다.
 
 ```bash
 $ git stash list
@@ -475,7 +430,7 @@ stash@{1}: WIP on master: c264051 Revert "added file_size"
 stash@{2}: WIP on master: 21d80a5 added number to log
 ```
 
-Now let's apply our dirty changes back by popping them off the stack.
+이제 스택에서 팝하여 더러운 변경 사항을 다시 적용해 보겠습니다.
 
 ```bash
 $ git stash pop
@@ -488,60 +443,54 @@ $ git stash pop
 #
 ```
 
-`git stash apply` does the same thing
+`git stash apply`도 동일한 작업을 수행합니다.
 
-Now you're ready to get back to work on your stuff!
+이제 다시 작업할 준비가 되었습니다!
 
-[Additional Reading.](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning)
+[추가 자료.](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning)
 
-### rebase (caution)
+### rebase (주의)
 
-Take all changes that were committed on one branch, and replay them onto
-another branch.
-*Do not rebase commits that you have pushed to a public repo*.
+한 브랜치에 커밋된 모든 변경 사항을 가져와 다른 브랜치에 다시 적용합니다.
+*공개 리포지토리에 푸시한 커밋은 리베이스하지 마십시오*.
 
 ```bash
-# Rebase experimentBranch onto master
+# experimentBranch를 마스터에 리베이스
 # git rebase <basebranch> <topicbranch>
 $ git rebase master experimentBranch
 ```
 
-[Additional Reading.](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+[추가 자료.](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
 
-### reset (caution)
+### reset (주의)
 
-Reset the current HEAD to the specified state. This allows you to undo merges,
-pulls, commits, adds, and more. It's a great command but also dangerous if you
-don't know what you are doing.
+현재 HEAD를 지정된 상태로 재설정합니다. 이를 통해 병합, 가져오기, 커밋, 추가 등을 취소할 수 있습니다. 훌륭한 명령이지만 무엇을 하는지 모르면 위험하기도 합니다.
 
 ```bash
-# Reset the staging area, to match the latest commit (leaves dir unchanged)
+# 스테이징 영역을 재설정하여 최신 커밋과 일치하도록 합니다(디렉토리는 변경되지 않음).
 $ git reset
 
-# Reset the staging area, to match the latest commit, and overwrite working dir
+# 스테이징 영역을 재설정하여 최신 커밋과 일치하도록 하고 작업 디렉토리를 덮어씁니다.
 $ git reset --hard
 
-# Moves the current branch tip to the specified commit (leaves dir unchanged)
-# all changes still exist in the directory.
+# 현재 브랜치 팁을 지정된 커밋으로 이동합니다(디렉토리는 변경되지 않음).
+# 모든 변경 사항은 여전히 디렉토리에 존재합니다.
 $ git reset 31f2bb1
 
-# Moves the current branch tip backward to the specified commit
-# and makes the working dir match (deletes uncommitted changes and all commits
-# after the specified commit).
+# 현재 브랜치 팁을 지정된 커밋으로 뒤로 이동하고
+# 작업 디렉토리를 일치시킵니다(커밋되지 않은 변경 사항 및 지정된 커밋 이후의 모든 커밋 삭제).
 $ git reset --hard 31f2bb1
 ```
 
-### reflog (caution)
+### reflog (주의)
 
-Reflog will list most of the git commands you have done for a given time period,
-default 90 days.
+Reflog는 지정된 기간(기본값 90일) 동안 수행한 대부분의 git 명령을 나열합니다.
 
-This give you the chance to reverse any git commands that have gone wrong
-(for instance, if a rebase has broken your application).
+이를 통해 잘못된 git 명령을 되돌릴 수 있습니다(예: 리베이스로 인해 애플리케이션이 손상된 경우).
 
-You can do this:
+이렇게 할 수 있습니다:
 
-1. `git reflog` to list all of the git commands for the rebase
+1. `git reflog`를 사용하여 리베이스에 대한 모든 git 명령을 나열합니다.
 
 ```
 38b323f HEAD@{0}: rebase -i (finish): returning to refs/heads/feature/add_git_reflog
@@ -552,40 +501,39 @@ ed8ddf2 HEAD@{4}: rebase -i (pick): pythonstatcomp spanish translation (#1748)
 2e6c386 HEAD@{5}: rebase -i (start): checkout 02fb96d
 ```
 
-2. Select where to reset to, in our case its `2e6c386`, or `HEAD@{5}`
-3. 'git reset --hard HEAD@{5}' this will reset your repo to that head
-4. You can start the rebase again or leave it alone.
+2. 재설정할 위치를 선택합니다. 이 경우 `2e6c386` 또는 `HEAD@{5}`입니다.
+3. 'git reset --hard HEAD@{5}'는 리포지토리를 해당 헤드로 재설정합니다.
+4. 리베이스를 다시 시작하거나 그대로 둘 수 있습니다.
 
-[Additional Reading.](https://git-scm.com/docs/git-reflog)
+[추가 자료.](https://git-scm.com/docs/git-reflog)
 
 ### revert
 
-Revert can be used to undo a commit. It should not be confused with reset which
-restores the state of a project to a previous point. Revert will add a new
-commit which is the inverse of the specified commit, thus reverting it.
+Revert는 커밋을 취소하는 데 사용할 수 있습니다. 프로젝트의 상태를 이전 지점으로 복원하는 재설정과 혼동해서는 안 됩니다. Revert는 지정된 커밋의 역인 새 커밋을 추가하여 되돌립니다.
 
 ```bash
-# Revert a specified commit
+# 지정된 커밋 되돌리기
 $ git revert <commit>
 ```
 
 ### rm
 
-The opposite of git add, git rm removes files from the current working tree.
+git add의 반대인 git rm은 현재 작업 트리에서 파일을 제거합니다.
 
 ```bash
-# remove HelloWorld.c
+# HelloWorld.c 제거
 $ git rm HelloWorld.c
 
-# Remove a file from a nested dir
+# 중첩된 디렉토리에서 파일 제거
 $ git rm /pather/to/the/file/HelloWorld.c
 ```
 
 ### blame
-Examine specific parts of the code's history and find out who was the last author to modify that line.
+
+코드의 특정 부분을 검사하고 해당 줄을 마지막으로 수정한 작성자를 찾습니다.
 
 ```bash
-# find the authors on the latest modified lines
+# 최신 수정된 줄의 작성자 찾기
 $ git blame google_python_style.vim
 b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 12) " See the License for the specific language governing permissions and
 b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 13) " limitations under the License.
@@ -595,28 +543,28 @@ b88c6a1b (Google Python team  2019-12-30 13:45:23 -0800 14)
 222e6da8 (mshields@google.com 2010-11-29 20:32:06 +0000 17) setlocal indentexpr=GetGooglePythonIndent(v:lnum)
 ```
 
-## Further Information
+## 추가 정보
 
-* [Learn Git Branching - the most visual and interactive way to learn Git on the web](https://learngitbranching.js.org/)
+* [Git 브랜칭 배우기 - 웹에서 Git을 배우는 가장 시각적이고 대화형인 방법](https://learngitbranching.js.org/)
 
-* [Udemy Git Tutorial: A Comprehensive Guide](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
+* [Udemy Git 튜토리얼: 종합 가이드](https://blog.udemy.com/git-tutorial-a-comprehensive-guide/)
 
-* [Git Immersion - A Guided tour that walks through the fundamentals of git](https://gitimmersion.com/)
+* [Git 몰입 - git의 기본 사항을 안내하는 가이드 투어](https://gitimmersion.com/)
 
-* [git-scm - Video Tutorials](https://git-scm.com/videos)
+* [git-scm - 비디오 튜토리얼](https://git-scm.com/videos)
 
-* [git-scm - Documentation](https://git-scm.com/docs)
+* [git-scm - 문서](https://git-scm.com/docs)
 
-* [Atlassian Git - Tutorials & Workflows](https://www.atlassian.com/git/)
+* [Atlassian Git - 튜토리얼 및 워크플로](https://www.atlassian.com/git/)
 
-* [SalesForce Cheat Sheet](https://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
+* [SalesForce 치트 시트](https://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
 
-* [git - the simple guide](https://rogerdudler.github.io/git-guide/index.html)
+* [git - 간단한 가이드](https://rogerdudler.github.io/git-guide/index.html)
 
 * [Pro Git](https://git-scm.com/book/en/v2)
 
-* [An introduction to Git and GitHub for Beginners (Tutorial)](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+* [초보자를 위한 Git 및 GitHub 소개 (튜토리얼)](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
-* [The New Boston tutorial to Git covering basic commands and workflow](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx)
+* [기본 명령 및 워크플로를 다루는 Git에 대한 새로운 보스턴 튜토리얼](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx)
 
-* [Git For Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/)
+* [컴퓨터 과학자를 위한 Git](https://eagain.net/articles/git-for-computer-scientists/)
