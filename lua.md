@@ -184,7 +184,7 @@ for i = 1, #v do  -- #v is the size of v for lists.
 end
 
 -- Alternatively:
--- ipairs() guarantees the same order (unlike pairs)
+-- ipairs() guarantees the same order every time
 for i, val in ipairs(v):
   print("v[", i, "]=", val)
 
