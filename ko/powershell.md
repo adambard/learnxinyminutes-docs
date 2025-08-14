@@ -1,5 +1,3 @@
-# powershell.md (번역)
-
 ---
 name: PowerShell
 contributors:

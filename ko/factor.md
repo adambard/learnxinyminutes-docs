@@ -6,6 +6,7 @@ filename: learnfactor.factor
 translators:
     - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 Factor는 Slava Pestov가 만든 Forth를 기반으로 한 현대적인 스택 기반 언어입니다.
 
 이 파일의 코드는 Factor에 입력할 수 있지만, 어휘 및 가져오기 헤더가 시작을 완전히 혼란스럽게 만들기 때문에 직접 가져올 수는 없습니다.

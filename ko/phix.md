@@ -1,5 +1,3 @@
-# phix.md (번역)
-
 ---
 name: Phix
 contributors:

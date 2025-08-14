@@ -1,5 +1,3 @@
-# pyqt.md (번역)
-
 ---
 category: framework
 name: PyQt

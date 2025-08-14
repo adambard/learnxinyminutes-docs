@@ -9,7 +9,8 @@ filename: learnassemblyscript.ts
 translators:
     - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
-__AssemblyScript__는 __TypeScript__의 변형(기본적으로 타입이 있는 자바스크립트)을 __Binaryen__을 사용하여 __WebAssembly__로 컴파일합니다. `npm install`만으로 간결하고 효율적인 WebAssembly 모듈을 생성합니다.
+
+__AssemblyScript__ 는 __TypeScript__ 의 변형(기본적으로 타입이 있는 자바스크립트)을 __Binaryen__ 을 사용하여 __WebAssembly__  로 컴파일합니다. `npm install`만으로 간결하고 효율적인 WebAssembly 모듈을 생성합니다.
 
 이 문서는 [TypeScript](../typescript/) 및 [JavaScript](../javascript/)와 대조적으로 AssemblyScript의 추가 구문에만 초점을 맞춥니다.
 

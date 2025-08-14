@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 Dhall은 YAML에 대한 반복적이지 않은 대안을 제공하는 프로그래밍 가능한 구성 언어입니다.
 
 Dhall은 JSON + 함수 + 유형 + 가져오기라고 생각할 수 있습니다.

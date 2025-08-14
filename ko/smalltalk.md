@@ -1,5 +1,3 @@
-# smalltalk.md (번역)
-
 ---
 name: Smalltalk
 filename: smalltalk.st

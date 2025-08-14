@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 HQ9+는 Cliff Biffle이 만든 농담 프로그래밍 언어입니다. 4개의 명령만 있으며 튜링 완전하지 않습니다.
 
 ```

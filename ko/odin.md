@@ -1,5 +1,3 @@
-# odin.md (번역)
-
 ---
 name: Odin
 contributors:

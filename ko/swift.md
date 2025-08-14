@@ -1,5 +1,3 @@
-# swift.md (번역)
-
 ---
 name: Swift
 contributors:

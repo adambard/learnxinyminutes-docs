@@ -1,5 +1,3 @@
-# python.md (번역)
-
 ---
 name: Python
 contributors:

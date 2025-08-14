@@ -1,5 +1,3 @@
-# linker.md (번역)
-
 ---
 category: tool
 name: Linker script

@@ -1,5 +1,3 @@
-# less.md (번역)
-
 ---
 name: Less
 filename: learnless.less

@@ -1,5 +1,3 @@
-# self.md (번역)
-
 ---
 name: Self
 contributors:

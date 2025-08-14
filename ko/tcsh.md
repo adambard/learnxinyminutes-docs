@@ -1,5 +1,3 @@
-# tcsh.md (번역)
-
 ---
 name: tcsh
 filename: LearnTCSH.csh

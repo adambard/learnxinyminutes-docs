@@ -1,5 +1,3 @@
-# ldpl.md (번역)
-
 ---
 name: LDPL
 filename: learnLDPL.ldpl

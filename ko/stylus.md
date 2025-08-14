@@ -1,5 +1,3 @@
-# stylus.md (번역)
-
 ---
 name: Stylus
 filename: learnStylus.styl

@@ -1,5 +1,3 @@
-# objective-c.md (번역)
-
 ---
 name: Objective-C
 contributors:

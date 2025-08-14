@@ -1,5 +1,3 @@
-# paren.md (번역)
-
 ---
 
 name: Paren

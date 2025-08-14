@@ -1,5 +1,3 @@
-# mercurial.md (번역)
-
 ---
 category: tool
 name: Mercurial

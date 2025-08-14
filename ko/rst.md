@@ -1,5 +1,3 @@
-# rst.md (번역)
-
 ---
 name: reStructuredText (RST)
 contributors:

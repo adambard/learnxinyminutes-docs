@@ -1,5 +1,3 @@
-# tmux.md (번역)
-
 ---
 category: tool
 name: tmux
@@ -7,7 +5,6 @@ contributors:
     - ["mdln", "https://github.com/mdln"]
 filename: LearnTmux.txt
 ---
-
 
 [tmux](http://tmux.github.io)는 터미널 멀티플렉서입니다: 여러 터미널을
 하나의 화면에서 생성, 액세스 및 제어할 수 있습니다. tmux는

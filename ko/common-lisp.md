@@ -7,6 +7,7 @@ translators:
   - ["Eunpyoung Kim", "https://github.com/netpyoung"]
   - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 커먼 리스프(Common Lisp, CL)는 다양한 산업 어플리케이션에 적합한 범용적인 멀티페러다임 언어입니다.
  프로그래밍할 수 있는 프로그래밍 언어로서 자주 언급되곤 합니다.
 

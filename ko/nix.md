@@ -1,5 +1,3 @@
-# nix.md (번역)
-
 ---
 name: Nix
 filename: learn.nix

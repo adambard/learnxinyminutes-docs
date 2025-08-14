@@ -1,5 +1,3 @@
-# pythonstatcomp.md (번역)
-
 ---
 category: framework
 name: Statistical computing with Python

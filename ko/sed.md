@@ -1,17 +1,12 @@
-# sed.md (번역)
-
 ---
 category: tool
 name: sed
 filename: learnsed.sed
 contributors:
      - ["Diomidis Spinellis", "https://www.spinellis.gr"]
-
 ---
 
-__Sed__는 모든 POSIX 호환 유닉스 시스템의 표준 도구입니다.
-Vim, Visual Studio Code, Atom 또는 Sublime과 같은 편집기와 같습니다.
-그러나 대화식으로 명령을 입력하는 대신 명령줄이나 파일로 제공합니다.
+__Sed__는 모든 POSIX 호환 유닉스 시스템의 표준 도구입니다. Vim, Visual Studio Code, Atom 또는 Sublime과 같은 편집기와 같습니다. 그러나 대화식으로 명령을 입력하는 대신 명령줄이나 파일로 제공합니다.
 
 대화형 편집기에 대한 _Sed_의 장점은 텍스트 처리 작업을 자동화하는 데 쉽게 사용할 수 있고 거대한(테라바이트 크기) 파일을 효율적으로 처리할 수 있다는 것입니다.
 _grep_보다 더 복잡한 작업을 수행할 수 있으며 많은 텍스트 처리 작업에서 해당 명령은 _awk_, _Perl_ 또는 _Python_으로 작성하는 것보다 훨씬 짧습니다.

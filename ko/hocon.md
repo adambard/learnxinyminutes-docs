@@ -6,6 +6,7 @@ contributors:
 translators:
     - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 인간 최적화 구성 개체 표기법(HOCON)은 사람이 쉽게 편집할 수 있도록 설계된 구성 및 데이터 직렬화 형식입니다.
 
 JSON의 상위 집합이므로 모든 유효한 JSON은 유효한 HOCON이지만, 덜 독선적이라는 점에서 다릅니다. 유연하면서도 결정 가능한 구문 덕분에 결과 구성 파일은 다른 형식보다 덜 시끄럽습니다.

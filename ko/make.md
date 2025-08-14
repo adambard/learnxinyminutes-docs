@@ -1,5 +1,3 @@
-# make.md (번역)
-
 ---
 category: tool
 name: Make

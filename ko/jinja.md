@@ -7,7 +7,6 @@ translators:
     - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
-
 ## Jinja 시작하기
 
 Jinja는 Python 애플리케이션을 위한 빠르고 표현력이 풍부하며 확장 가능한 템플릿 엔진입니다.

@@ -1,5 +1,3 @@
-# scala.md (번역)
-
 ---
 name: Scala
 filename: learnscala.scala

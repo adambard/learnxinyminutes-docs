@@ -1,5 +1,3 @@
-# v.md (번역)
-
 ---
 name: V
 filename: vlang.v

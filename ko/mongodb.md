@@ -1,5 +1,3 @@
-# mongodb.md (번역)
-
 ---
 name: MongoDB
 filename: mongo.js

@@ -1,5 +1,3 @@
-# prolog.md (번역)
-
 ---
 name: Prolog
 filename: learnprolog.pl

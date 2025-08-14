@@ -1,5 +1,3 @@
-# tailspin.md (번역)
-
 ---
 name: Tailspin
 filename: learntailspin.tt

@@ -1,5 +1,3 @@
-# vimscript.md (번역)
-
 ---
 name: Vimscript
 filename: learnvimscript.vim

@@ -1,5 +1,3 @@
-# niva.md (번역)
-
 ---
 name: niva
 filename: main.niva

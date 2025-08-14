@@ -8,6 +8,7 @@ translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
     - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 HTML은 하이퍼텍스트 마크업 언어의 약자입니다.
 
 월드 와이드 웹을 위한 페이지를 작성할 수 있는 언어입니다.

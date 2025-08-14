@@ -1,5 +1,3 @@
-# rust.md (번역)
-
 ---
 name: Rust
 contributors:
@@ -7,26 +5,16 @@ contributors:
 filename: learnrust.rs
 ---
 
-Rust는 Mozilla Research에서 개발한 프로그래밍 언어입니다.
-Rust는 성능에 대한 저수준 제어와 고수준의 편의성 및
-안전 보장을 결합합니다.
+Rust는 Mozilla Research에서 개발한 프로그래밍 언어입니다. Rust는 성능에 대한 저수준 제어와 고수준의 편의성 및 메모리의 안전을 보장합니다.
 
-가비지 수집기나 런타임 없이 이러한 목표를 달성하므로
-Rust 라이브러리를 C의 "드롭인 대체품"으로 사용할 수 있습니다.
+가비지 수집기나 런타임 없이 이러한 목표를 달성하므로 Rust 라이브러리를 C의 "드롭인 대체품"으로 사용할 수 있습니다.
 
-Rust의 첫 번째 릴리스인 0.1은 2012년 1월에 있었고, 3년 동안 개발이
-너무 빠르게 진행되어 최근까지 안정적인 릴리스 사용이 권장되지 않았으며
-대신 야간 빌드를 사용하라는 일반적인 조언이 있었습니다.
+Rust의 첫 번째 릴리스인 0.1은 2012년 1월에 있었고, 3년 동안 개발이 너무 빠르게 진행되어 최근까지 안정적인 릴리스 사용이 권장되지 않았으며 대신 야간 빌드를 사용하라는 일반적인 조언이 있었습니다.
 
-2015년 5월 15일, Rust 1.0이 완전한 하위 호환성 보장과 함께
-릴리스되었습니다. 컴파일 시간 개선 및 컴파일러의 다른 측면에 대한
-개선 사항은 현재 야간 빌드에서 사용할 수 있습니다. Rust는 6주마다
-정기적으로 릴리스되는 기차 기반 릴리스 모델을 채택했습니다. Rust 1.1 베타는
-Rust 1.0 릴리스와 동시에 제공되었습니다.
+2015년 5월 15일, Rust 1.0이 완전한 하위 호환성 보장과 함께 릴리스되었습니다. 컴파일 시간 개선 및 컴파일러의 다른 측면에 대한
+개선 사항은 현재 야간 빌드에서 사용할 수 있습니다. Rust는 6주마다 정기적으로 릴리스되는 기차 기반 릴리스 모델을 채택했습니다. Rust 1.1 베타는 Rust 1.0 릴리스와 동시에 제공되었습니다.
 
-Rust는 비교적 저수준 언어이지만, 일반적으로 고수준 언어에서
-발견되는 일부 함수형 개념을 가지고 있습니다. 이로 인해
-Rust는 빠를 뿐만 아니라 코딩하기 쉽고 효율적입니다.
+Rust는 비교적 저수준 언어이지만, 일반적으로 고수준 언어에서 발견되는 일부 함수형 개념을 가지고 있습니다. 이로 인해 Rust는 빠를 뿐만 아니라 코딩하기 쉽고 효율적입니다.
 
 ```rust
 // 이것은 주석입니다. 한 줄 주석은 이렇게 생겼습니다...
@@ -351,16 +339,8 @@ fn main() {
 
 ## 더 읽을거리
 
-Rust와 그 기호/키워드에 대한 더 깊지만 여전히 빠른 설명을 보려면
-Fasterthanlime의 [Rust를 배우는 데 30분](https://fasterthanli.me/articles/a-half-hour-to-learn-rust)
-기사가 명확하고 간결한 방식으로 (거의) 모든 것을 설명합니다!
+Rust와 그 기호/키워드에 대한 더 깊지만 여전히 빠른 설명을 보려면 Fasterthanlime의 [Rust를 배우는 데 30분](https://fasterthanli.me/articles/a-half-hour-to-learn-rust) 기사가 명확하고 간결한 방식으로 (거의) 모든 것을 설명합니다!
 
-Rust에는 더 많은 것이 있습니다. 이것은 Rust의 기본 사항일 뿐이므로 가장
-중요한 것을 이해할 수 있습니다. Rust에 대해 더 자세히 알아보려면 [The Rust Programming
-Language](http://doc.rust-lang.org/book/index.html)를 읽고
-[/r/rust](http://reddit.com/r/rust) 서브레딧을 확인하십시오.
-irc.mozilla.org의 #rust 채널 사람들도 항상 신규 사용자를 돕고 싶어합니다.
+Rust에는 더 많은 것이 있습니다. 이것은 Rust의 기본 사항일 뿐이므로 가장 중요한 것을 이해할 수 있습니다. Rust에 대해 더 자세히 알아보려면 [The Rust Programming Language](http://doc.rust-lang.org/book/index.html)를 읽고 [/r/rust](http://reddit.com/r/rust) 서브레딧을 확인하십시오. irc.mozilla.org의 #rust 채널 사람들도 항상 신규 사용자를 돕고 싶어합니다.
 
-공식 [Rust Playground](https://play.rust-lang.org) 또는
-주요 [Rust 웹사이트](http://rust-lang.org)에서 온라인 컴파일러로 Rust의 기능을
-시험해 볼 수도 있습니다.
+공식 [Rust Playground](https://play.rust-lang.org) 또는 주요 [Rust 웹사이트](http://rust-lang.org)에서 온라인 컴파일러로 Rust의 기능을 시험해 볼 수도 있습니다.

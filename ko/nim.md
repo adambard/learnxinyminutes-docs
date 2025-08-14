@@ -1,5 +1,3 @@
-# nim.md (번역)
-
 ---
 name: Nim
 filename: learnNim.nim
