@@ -8,109 +8,109 @@ contributors:
 filename: restructuredtext.rst
 ---
 
-RST, Restructured Text, is a file format created by the Python community to write documentation. It is part of [Docutils](https://docutils.sourceforge.io/rst.html).
+RST, 재구조화된 텍스트는 파이썬 커뮤니티에서 문서를 작성하기 위해 만든 파일 형식입니다. [Docutils](https://docutils.sourceforge.io/rst.html)의 일부입니다.
 
-RST is a markup language like HTML but is much more lightweight and easier to read.
+RST는 HTML과 같은 마크업 언어이지만 훨씬 가볍고 읽기 쉽습니다.
 
 
-## Installation
+## 설치
 
-To use Restructured Text, you will have to install [Python](http://www.python.org) and the `docutils` package.
+재구조화된 텍스트를 사용하려면 [Python](http://www.python.org)과 `docutils` 패키지를 설치해야 합니다.
 
-`docutils` can be installed using the commandline:
+`docutils`는 명령줄을 사용하여 설치할 수 있습니다.
 
 ```bash
 $ easy_install docutils
 ```
 
-If your system has `pip`, you can use it too:
+시스템에 `pip`가 있는 경우에도 사용할 수 있습니다.
 
 ```bash
 $ pip install docutils
 ```
 
 
-## File syntax
+## 파일 구문
 
-A simple example of the file syntax:
+파일 구문의 간단한 예:
 
 ```rst
-.. Lines starting with two dots are special commands. But if no command can be found, the line is considered as a comment.
+.. 두 개의 점으로 시작하는 줄은 특수 명령어입니다. 하지만 명령어를 찾을 수 없으면 해당 줄은 주석으로 간주됩니다.
 
 =========================================================
-Main titles are written using equals signs over and under
+주요 제목은 위아래에 등호 기호를 사용하여 작성됩니다.
 =========================================================
 
-Note that each character, including spaces, needs an equals sign above and below.
+공백을 포함한 각 문자 위아래에 등호 기호가 필요하다는 점에 유의하십시오.
 
-Titles also use equals signs but are only underneath
+제목도 등호 기호를 사용하지만 아래에만 있습니다.
 ====================================================
 
-Subtitles with dashes
+대시가 있는 부제목
 ---------------------
 
-You can put text in *italic* or in **bold**, you can "mark" text as code with double backquote ``print()``.
+텍스트를 *기울임꼴* 또는 **굵게** 표시할 수 있으며, 이중 백쿼트 ``print()``로 텍스트를 코드로 "표시"할 수 있습니다.
 
-Special characters can be escaped using a backslash, e.g. \\ or \*.
+특수 문자는 백슬래시를 사용하여 이스케이프할 수 있습니다(예: \\ 또는 \*).
 
-Lists are similar to Markdown, but a little more involved.
+목록은 마크다운과 유사하지만 조금 더 복잡합니다.
 
-Remember to line up list symbols (like - or \*) with the left edge of the previous text block, and remember to use blank lines to separate new lists from parent lists:
+목록 기호(- 또는 \*)를 이전 텍스트 블록의 왼쪽 가장자리에 맞추고, 새 목록을 부모 목록과 분리하기 위해 빈 줄을 사용하는 것을 잊지 마십시오.
 
-- First item
-- Second item
+- 첫 번째 항목
+- 두 번째 항목
 
-  - Sub item
+  - 하위 항목
 
-- Third item
+- 세 번째 항목
 
-or
+또는
 
-* First item
-* Second item
+* 첫 번째 항목
+* 두 번째 항목
 
-  * Sub item
+  * 하위 항목
 
-* Third item
+* 세 번째 항목
 
-Tables are really easy to write:
+표는 정말 쉽게 작성할 수 있습니다.
 
 =========== ========
-Country     Capital
+국가        수도
 =========== ========
-France      Paris
-Japan       Tokyo
+프랑스      파리
+일본        도쿄
 =========== ========
 
-More complex tables can be done easily (merged columns and/or rows) but I suggest you to read the complete doc for this. :)
+더 복잡한 표(병합된 열 및/또는 행)도 쉽게 만들 수 있지만, 이를 위해서는 전체 문서를 읽는 것이 좋습니다. :)
 
-There are multiple ways to make links:
+링크를 만드는 방법에는 여러 가지가 있습니다.
 
-- By adding an underscore after a word : GitHub_ and by adding the target URL after the text (this way has the advantage of not inserting unnecessary URLs in the visible text).
-- By typing a full comprehensible URL : https://github.com/ (will be automatically converted to a link).
-- By making a more Markdown-like link: `GitHub <https://github.com/>`_ .
+- 단어 뒤에 밑줄을 추가하여: GitHub_ 그리고 텍스트 뒤에 대상 URL을 추가하여 (이 방법은 보이는 텍스트에 불필요한 URL을 삽입하지 않는 장점이 있습니다).
+- 전체 이해 가능한 URL을 입력하여: https://github.com/ (자동으로 링크로 변환됩니다).
+- 더 마크다운과 유사한 링크를 만들어: `GitHub <https://github.com/>`_ .
 
 .. _GitHub: https://github.com/
 ```
 
 
-## How to Use It
+## 사용 방법
 
-RST comes with docutils where you have `rst2html`, for example:
+RST는 docutils와 함께 제공되며, 예를 들어 `rst2html`이 있습니다.
 
 ```bash
 $ rst2html myfile.rst output.html
 ```
 
-*Note : On some systems the command could be rst2html.py*
+*참고: 일부 시스템에서는 명령어가 rst2html.py일 수 있습니다.*
 
-But there are more complex applications that use the RST format:
+하지만 RST 형식을 사용하는 더 복잡한 응용 프로그램이 있습니다.
 
-- [Pelican](http://blog.getpelican.com/), a static site generator
-- [Sphinx](http://sphinx-doc.org/), a documentation generator
-- and many others
+- [Pelican](http://blog.getpelican.com/), 정적 사이트 생성기
+- [Sphinx](http://sphinx-doc.org/), 문서 생성기
+- 그리고 다른 많은 것들
 
 
-## Readings
+## 읽을거리
 
-- [Official quick reference](http://docutils.sourceforge.net/docs/user/rst/quickref.html)
+- [공식 빠른 참조](http://docutils.sourceforge.net/docs/user/rst/quickref.html)

@@ -10,18 +10,18 @@ translators:
   - ["Divay Prakash", "https://github.com/divayprakash"]
 ---
 
-Stylus is a dynamic stylesheet preprocessor language that is compiled into CSS. It aims to add functionality to CSS without breaking compatibility across web browsers.
-It does this using variables, nesting, mixins, functions and more.
+Stylus는 CSS로 컴파일되는 동적 스타일시트 전처리기 언어입니다. 웹 브라우저 간의 호환성을 깨지 않으면서 CSS에 기능을 추가하는 것을 목표로 합니다.
+변수, 중첩, 믹스인, 함수 등을 사용하여 이를 수행합니다.
 
-Stylus syntax is very flexible. You can use standard CSS syntax and leave the semicolon (;), colon (:) and even the ({) and (}) optional, making your code even more readable.
+Stylus 구문은 매우 유연합니다. 표준 CSS 구문을 사용하고 세미콜론(;), 콜론(:) 및 ({)과 (})를 선택적으로 생략하여 코드를 더욱 읽기 쉽게 만들 수 있습니다.
 
-Stylus does not provide new style options, but gives functionality that lets you make your CSS much more dynamic.
+Stylus는 새로운 스타일 옵션을 제공하지 않지만 CSS를 훨씬 더 동적으로 만들 수 있는 기능을 제공합니다.
 
 ```scss
-/* Code style
+/* 코드 스타일
 ==============================*/
 
-/* Keys, semicolon, and colon are optional in Stylus. */
+/* Stylus에서는 키, 세미콜론 및 콜론이 선택 사항입니다. */
 
 body {
   background: #000;
@@ -44,15 +44,15 @@ body
 body
   background: #000
 
-// Single-line comments are removed when Stylus is compiled into CSS.
+// 한 줄 주석은 Stylus가 CSS로 컴파일될 때 제거됩니다.
 
-/* Multi-line comments are preserved. */
+/* 여러 줄 주석은 유지됩니다. */
 
 
-/* Selectors
+/* 선택자
 ==============================*/
 
-/* Selecting elements within another element */
+/* 다른 요소 내의 요소 선택 */
 body {
   background: #000000;
   h1 {
@@ -60,14 +60,14 @@ body {
   }
 }
 
-/* Or if you prefer... */
+/* 또는 원한다면... */
 body
   background #000000
   h1
     color #FF0000
 
 
-/* Getting parent element reference
+/* 부모 요소 참조 가져오기
 ==============================*/
 a {
   color: #0088dd;
@@ -77,29 +77,29 @@ a {
 }
 
 
-/* Variables
+/* 변수
 ==============================*/
 
 
 /*
-  You can store a CSS value (such as the color) of a variable.
-  Although it is optional, it is recommended to add $ before a variable name
-  so you can distinguish a variable from another CSS value.
+  변수의 CSS 값(예: 색상)을 저장할 수 있습니다.
+  선택 사항이지만 변수 이름 앞에 $를 추가하여
+  변수를 다른 CSS 값과 구별하는 것이 좋습니다.
 */
 
 $primary-color = #A3A4FF
 $secondary-color = #51527F
 $body-font = 'Roboto', sans-serif
 
-/* You can use variables throughout your style sheet.
-Now, if you want to change the color, you only have to make the change once. */
+/* 스타일시트 전체에서 변수를 사용할 수 있습니다.
+이제 색상을 변경하려면 한 번만 변경하면 됩니다. */
 
 body
   background-color $primary-color
   color $secondary-color
   font-family $body-font
 
-/* After compilation: */
+/* 컴파일 후: */
 body {
   background-color: #A3A4FF;
   color: #51527F;
@@ -107,16 +107,16 @@ body {
 }
 
 / *
-This is much easier to maintain than having to change color
-each time it appears throughout your style sheet.
+스타일시트 전체에서 색상이 나타날 때마다 색상을 변경하는 것보다
+유지 관리가 훨씬 쉽습니다.
 * /
 
 
-/* Mixins
+/* 믹스인
 ==============================*/
 
-/* If you find that you are writing the same code for more than one
-element, you may want to store that code in a mixin.
+/* 둘 이상의 요소에 대해 동일한 코드를 작성하고 있다는 것을
+알게 되면 해당 코드를 믹스인에 저장하고 싶을 수 있습니다.
 
 center()
   display block
@@ -125,13 +125,13 @@ center()
   left 0
   right 0
 
-/* Using the mixin */
+/* 믹스인 사용 */
 body {
   center()
   background-color: $primary-color
 }
 
-/* After compilation: */
+/* 컴파일 후: */
 div {
   display: block;
   margin-left: auto;
@@ -141,7 +141,7 @@ div {
   background-color: #A3A4FF;
 }
 
-/* You can use mixins to create a shorthand property. */
+/* 믹스인을 사용하여 약식 속성을 만들 수 있습니다. */
 
 size($width, $height)
   width $width
@@ -153,7 +153,7 @@ size($width, $height)
 .square
   size(40px, 40px)
 
-/* You can use a mixin as a CSS property. */
+/* 믹스인을 CSS 속성으로 사용할 수 있습니다. */
 circle($ratio)
   width $ratio * 2
   height $ratio * 2
@@ -163,7 +163,7 @@ circle($ratio)
   circle 25px
 
 
-/* Interpolation
+/* 보간
 ==============================*/
 
 vendor(prop, args)
@@ -181,16 +181,16 @@ button
   border-radius 1px 2px / 3px 4px
 
 
-/* Functions
+/* 함수
 ==============================*/
 
-/* Functions in Stylus allow you to perform a variety of tasks, such as recalling some data. */
+/* Stylus의 함수를 사용하면 일부 데이터를 다시 호출하는 등 다양한 작업을 수행할 수 있습니다. */
 
 body {
-  background darken(#0088DD, 50%) // Dim color #0088DD by 50%
+  background darken(#0088DD, 50%) // 색상 #0088DD를 50% 어둡게 합니다.
 }
 
-/* Creating your own function */
+/* 자신만의 함수 만들기 */
 add(a, b)
   a + b
 
@@ -198,7 +198,7 @@ body
   padding add(10px, 5)
 
 
-/* Conditions
+/* 조건
 ==============================*/
 compare(a, b)
   if a > b
@@ -213,17 +213,17 @@ compare(1, 5)   // => smaller
 compare(10, 10) // => equal
 
 
-/* Iterations
+/* 반복
 ==============================*/
 
 /*
-Repeat loop syntax for:
+반복 루프 구문:
 for <val-name> [, <key-name>] in <expression>
 */
 
-for $item in (1..2) /* Repeat block 12 times */
+for $item in (1..2) /* 블록 12번 반복 */
   .col-{$item}
-    width ($item / 12) * 100% /* Calculate row by column number */
+    width ($item / 12) * 100% /* 열 번호로 행 계산 */
 ```
 
-Now that you know a little about this powerful CSS preprocessor, you're ready to create more dynamic style sheets. To learn more, visit the official stylus documentation at [stylus-lang.com](https://stylus-lang.com).
+이제 이 강력한 CSS 전처리기에 대해 조금 알았으니 더 동적인 스타일 시트를 만들 준비가 되었습니다. 더 자세히 알아보려면 공식 스타일러스 문서 [stylus-lang.com](https://stylus-lang.com)을 방문하십시오.

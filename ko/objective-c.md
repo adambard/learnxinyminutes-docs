@@ -11,191 +11,192 @@ contributors:
 filename: LearnObjectiveC.m
 ---
 
-Objective-C is the main programming language used by Apple for the macOS and iOS operating systems and their respective frameworks, Cocoa and Cocoa Touch.
-It is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language.
+Objective-C는 macOS 및 iOS 운영 체제와 해당 프레임워크인 Cocoa 및 Cocoa Touch에서 Apple이 사용하는 주요 프로그래밍 언어입니다.
+C 프로그래밍 언어에 Smalltalk 스타일 메시징을 추가한 범용 객체 지향 프로그래밍 언어입니다.
 
 ```objective-c
-// Single-line comments start with //
+// 한 줄 주석은 //로 시작합니다.
 
 /*
-Multi-line comments look like this
+여러 줄 주석은
+이와 같습니다.
 */
 
-// XCode supports pragma mark directive that improve jump bar readability
-#pragma mark Navigation Functions // New tag on jump bar named 'Navigation Functions'
-#pragma mark - Navigation Functions // Same tag, now with a separator
+// XCode는 점프 바 가독성을 향상시키는 pragma mark 지시문을 지원합니다.
+#pragma mark Navigation Functions // 'Navigation Functions'라는 새 태그가 점프 바에 표시됩니다.
+#pragma mark - Navigation Functions // 동일한 태그, 이제 구분 기호가 있습니다.
 
-// Imports the Foundation headers with #import
-// Use <> to import global files (in general frameworks)
-// Use "" to import local files (from project)
+// #import로 Foundation 헤더를 가져옵니다.
+// 전역 파일을 가져오려면 <>를 사용합니다(일반적으로 프레임워크).
+// 로컬 파일을 가져오려면 ""를 사용합니다(프로젝트에서).
 #import <Foundation/Foundation.h>
 #import "MyClass.h"
 
-// If you enable modules for iOS >= 7.0 or OS X >= 10.9 projects in
-// Xcode 5 you can import frameworks like that:
+// Xcode 5에서 iOS >= 7.0 또는 OS X >= 10.9 프로젝트에 대해 모듈을 활성화하면
+// 다음과 같이 프레임워크를 가져올 수 있습니다.
 @import Foundation;
 
-// Your program's entry point is a function called
-// main with an integer return type
+// 프로그램의 진입점은 정수 반환 타입의
+// main이라는 함수입니다.
 int main (int argc, const char * argv[])
 {
-    // Create an autorelease pool to manage the memory into the program
+    // 프로그램의 메모리를 관리하기 위해 자동 해제 풀을 생성합니다.
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    // If using automatic reference counting (ARC), use @autoreleasepool instead:
+    // 자동 참조 계산(ARC)을 사용하는 경우 대신 @autoreleasepool을 사용합니다.
     @autoreleasepool {
 
-    // Use NSLog to print lines to the console
-    NSLog(@"Hello World!"); // Print the string "Hello World!"
+    // NSLog를 사용하여 콘솔에 줄을 출력합니다.
+    NSLog(@"Hello World!"); // "Hello World!" 문자열을 출력합니다.
 
     ///////////////////////////////////////
-    // Types & Variables
+    // 타입 및 변수
     ///////////////////////////////////////
 
-    // Primitive declarations
+    // 기본 타입 선언
     int myPrimitive1  = 1;
     long myPrimitive2 = 234554664565;
 
-    // Object declarations
-    // Put the * in front of the variable names for strongly-typed object declarations
-    MyClass *myObject1 = nil;  // Strong typing
-    id       myObject2 = nil;  // Weak typing
-    // %@ is an object
-    // 'description' is a convention to display the value of the Objects
-    NSLog(@"%@ and %@", myObject1, [myObject2 description]); // prints => "(null) and (null)"
+    // 객체 선언
+    // 강력한 타입의 객체 선언을 위해 변수 이름 앞에 *를 붙입니다.
+    MyClass *myObject1 = nil;  // 강력한 타이핑
+    id       myObject2 = nil;  // 약한 타이핑
+    // %@는 객체입니다.
+    // 'description'은 객체의 값을 표시하는 관례입니다.
+    NSLog(@"%@ and %@", myObject1, [myObject2 description]); // => "(null) and (null)" 출력
 
-    // String
+    // 문자열
     NSString *worldString = @"World";
-    NSLog(@"Hello %@!", worldString); // prints => "Hello World!"
-    // NSMutableString is a mutable version of the NSString object
+    NSLog(@"Hello %@!", worldString); // => "Hello World!" 출력
+    // NSMutableString은 NSString 객체의 가변 버전입니다.
     NSMutableString *mutableString = [NSMutableString stringWithString:@"Hello"];
     [mutableString appendString:@" World!"];
-    NSLog(@"%@", mutableString); // prints => "Hello World!"
+    NSLog(@"%@", mutableString); // => "Hello World!" 출력
 
-    // Character literals
+    // 문자 리터럴
     NSNumber *theLetterZNumber = @'Z';
-    char theLetterZ            = [theLetterZNumber charValue]; // or 'Z'
+    char theLetterZ            = [theLetterZNumber charValue]; // 또는 'Z'
     NSLog(@"%c", theLetterZ);
 
-    // Integral literals
+    // 정수 리터럴
     NSNumber *fortyTwoNumber = @42;
-    int fortyTwo             = [fortyTwoNumber intValue]; // or 42
+    int fortyTwo             = [fortyTwoNumber intValue]; // 또는 42
     NSLog(@"%i", fortyTwo);
 
     NSNumber *fortyTwoUnsignedNumber = @42U;
-    unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue]; // or 42
+    unsigned int fortyTwoUnsigned    = [fortyTwoUnsignedNumber unsignedIntValue]; // 또는 42
     NSLog(@"%u", fortyTwoUnsigned);
 
     NSNumber *fortyTwoShortNumber = [NSNumber numberWithShort:42];
-    short fortyTwoShort           = [fortyTwoShortNumber shortValue]; // or 42
+    short fortyTwoShort           = [fortyTwoShortNumber shortValue]; // 또는 42
     NSLog(@"%hi", fortyTwoShort);
 
     NSNumber *fortyOneShortNumber   = [NSNumber numberWithShort:41];
-    unsigned short fortyOneUnsigned = [fortyOneShortNumber unsignedShortValue]; // or 41
+    unsigned short fortyOneUnsigned = [fortyOneShortNumber unsignedShortValue]; // 또는 41
     NSLog(@"%u", fortyOneUnsigned);
 
     NSNumber *fortyTwoLongNumber = @42L;
-    long fortyTwoLong            = [fortyTwoLongNumber longValue]; // or 42
+    long fortyTwoLong            = [fortyTwoLongNumber longValue]; // 또는 42
     NSLog(@"%li", fortyTwoLong);
 
     NSNumber *fiftyThreeLongNumber   = @53L;
-    unsigned long fiftyThreeUnsigned = [fiftyThreeLongNumber unsignedLongValue]; // or 53
+    unsigned long fiftyThreeUnsigned = [fiftyThreeLongNumber unsignedLongValue]; // 또는 53
     NSLog(@"%lu", fiftyThreeUnsigned);
 
-    // Floating point literals
+    // 부동 소수점 리터럴
     NSNumber *piFloatNumber = @3.141592654F;
-    float piFloat           = [piFloatNumber floatValue]; // or 3.141592654f
-    NSLog(@"%f", piFloat); // prints => 3.141592654
-    NSLog(@"%5.2f", piFloat); // prints => " 3.14"
+    float piFloat           = [piFloatNumber floatValue]; // 또는 3.141592654f
+    NSLog(@"%f", piFloat); // => 3.141592654 출력
+    NSLog(@"%5.2f", piFloat); // => " 3.14" 출력
 
     NSNumber *piDoubleNumber = @3.1415926535;
-    double piDouble          = [piDoubleNumber doubleValue]; // or 3.1415926535
+    double piDouble          = [piDoubleNumber doubleValue]; // 또는 3.1415926535
     NSLog(@"%f", piDouble);
-    NSLog(@"%4.2f", piDouble); // prints => "3.14"
+    NSLog(@"%4.2f", piDouble); // => "3.14" 출력
 
-    // NSDecimalNumber is a fixed-point class that's more precise than float or double
+    // NSDecimalNumber는 float 또는 double보다 더 정밀한 고정 소수점 클래스입니다.
     NSDecimalNumber *oneDecNum = [NSDecimalNumber decimalNumberWithString:@"10.99"];
     NSDecimalNumber *twoDecNum = [NSDecimalNumber decimalNumberWithString:@"5.002"];
-    // NSDecimalNumber isn't able to use standard +, -, *, / operators so it provides its own:
+    // NSDecimalNumber는 표준 +, -, *, / 연산자를 사용할 수 없으므로 자체 연산자를 제공합니다.
     [oneDecNum decimalNumberByAdding:twoDecNum];
     [oneDecNum decimalNumberBySubtracting:twoDecNum];
     [oneDecNum decimalNumberByMultiplyingBy:twoDecNum];
     [oneDecNum decimalNumberByDividingBy:twoDecNum];
-    NSLog(@"%@", oneDecNum); // prints => 10.99 as NSDecimalNumber is immutable
+    NSLog(@"%@", oneDecNum); // => NSDecimalNumber는 불변이므로 10.99 출력
 
-    // BOOL literals
+    // BOOL 리터럴
     NSNumber *yesNumber = @YES;
     NSNumber *noNumber  = @NO;
-    // or
+    // 또는
     BOOL yesBool = YES;
     BOOL noBool  = NO;
-    NSLog(@"%i", yesBool); // prints => 1
+    NSLog(@"%i", yesBool); // => 1 출력
 
-    // Array object
-    // May contain different data types, but must be an Objective-C object
+    // 배열 객체
+    // 다른 데이터 타입을 포함할 수 있지만 Objective-C 객체여야 합니다.
     NSArray *anArray      = @[@1, @2, @3, @4];
     NSNumber *thirdNumber = anArray[2];
-    NSLog(@"Third number = %@", thirdNumber); // prints => "Third number = 3"
-    // Since Xcode 7, NSArray objects can be typed (Generics)
+    NSLog(@"Third number = %@", thirdNumber); // => "Third number = 3" 출력
+    // Xcode 7부터 NSArray 객체는 타입을 지정할 수 있습니다 (제네릭).
     NSArray<NSString *> *stringArray = @[@"hello", @"world"];
-    // NSMutableArray is a mutable version of NSArray, allowing you to change
-    // the items in the array and to extend or shrink the array object.
-    // Convenient, but not as efficient as NSArray.
+    // NSMutableArray는 NSArray의 가변 버전으로,
+    // 배열의 항목을 변경하거나 배열 객체를 확장하거나 축소할 수 있습니다.
+    // 편리하지만 NSArray만큼 효율적이지는 않습니다.
     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:2];
     [mutableArray addObject:@"Hello"];
     [mutableArray addObject:@"World"];
     [mutableArray removeObjectAtIndex:0];
-    NSLog(@"%@", [mutableArray objectAtIndex:0]); // prints => "World"
+    NSLog(@"%@", [mutableArray objectAtIndex:0]); // => "World" 출력
 
-    // Dictionary object
+    // 딕셔너리 객체
     NSDictionary *aDictionary = @{ @"key1" : @"value1", @"key2" : @"value2" };
     NSObject *valueObject     = aDictionary[@"A Key"];
-    NSLog(@"Object = %@", valueObject); // prints => "Object = (null)"
-    // Since Xcode 7, NSDictionary objects can be typed (Generics)
+    NSLog(@"Object = %@", valueObject); // => "Object = (null)" 출력
+    // Xcode 7부터 NSDictionary 객체는 타입을 지정할 수 있습니다 (제네릭).
     NSDictionary<NSString *, NSNumber *> *numberDictionary = @{@"a": @1, @"b": @2};
-    // NSMutableDictionary also available as a mutable dictionary object
+    // NSMutableDictionary도 가변 딕셔너리 객체로 사용할 수 있습니다.
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
     [mutableDictionary setObject:@"value1" forKey:@"key1"];
     [mutableDictionary setObject:@"value2" forKey:@"key2"];
     [mutableDictionary removeObjectForKey:@"key1"];
 
-    // Change types from Mutable To Immutable
-    //In general [object mutableCopy] will make the object mutable whereas [object copy] will make the object immutable
+    // 가변에서 불변으로 타입 변경
+    // 일반적으로 [object mutableCopy]는 객체를 가변으로 만들고 [object copy]는 객체를 불변으로 만듭니다.
     NSMutableDictionary *aMutableDictionary = [aDictionary mutableCopy];
     NSDictionary *mutableDictionaryChanged = [mutableDictionary copy];
 
 
-    // Set object
+    // 세트 객체
     NSSet *set = [NSSet setWithObjects:@"Hello", @"Hello", @"World", nil];
-    NSLog(@"%@", set); // prints => {(Hello, World)} (may be in different order)
-    // Since Xcode 7, NSSet objects can be typed (Generics)
+    NSLog(@"%@", set); // => {(Hello, World)} 출력 (순서가 다를 수 있음)
+    // Xcode 7부터 NSSet 객체는 타입을 지정할 수 있습니다 (제네릭).
     NSSet<NSString *> *stringSet = [NSSet setWithObjects:@"hello", @"world", nil];
-    // NSMutableSet also available as a mutable set object
+    // NSMutableSet도 가변 세트 객체로 사용할 수 있습니다.
     NSMutableSet *mutableSet = [NSMutableSet setWithCapacity:2];
     [mutableSet addObject:@"Hello"];
     [mutableSet addObject:@"Hello"];
-    NSLog(@"%@", mutableSet); // prints => {(Hello)}
+    NSLog(@"%@", mutableSet); // => {(Hello)} 출력
 
     ///////////////////////////////////////
-    // Operators
+    // 연산자
     ///////////////////////////////////////
 
-    // The operators works like in the C language
-    // For example:
+    // 연산자는 C 언어처럼 작동합니다.
+    // 예:
     2 + 5; // => 7
     4.2f + 5.1f; // => 9.3f
     3 == 2; // => 0 (NO)
     3 != 2; // => 1 (YES)
-    1 && 1; // => 1 (Logical and)
-    0 || 1; // => 1 (Logical or)
-    ~0x0F; // => 0xF0 (bitwise negation)
-    0x0F & 0xF0; // => 0x00 (bitwise AND)
-    0x01 << 1; // => 0x02 (bitwise left shift (by 1))
+    1 && 1; // => 1 (논리 AND)
+    0 || 1; // => 1 (논리 OR)
+    ~0x0F; // => 0xF0 (비트 부정)
+    0x0F & 0xF0; // => 0x00 (비트 AND)
+    0x01 << 1; // => 0x02 (비트 왼쪽 시프트 (1만큼))
 
     ///////////////////////////////////////
-    // Control Structures
+    // 제어 구조
     ///////////////////////////////////////
 
-    // If-Else statement
+    // If-Else 문
     if (NO)
     {
         NSLog(@"I am never run");
@@ -207,7 +208,7 @@ int main (int argc, const char * argv[])
         NSLog(@"I print");
     }
 
-    // Switch statement
+    // Switch 문
     switch (2)
     {
         case 0:
@@ -224,182 +225,182 @@ int main (int argc, const char * argv[])
         } break;
     }
 
-    // While loops statements
+    // While 루프 문
     int ii = 0;
     while (ii < 4)
     {
-        NSLog(@"%d,", ii++); // ii++ increments ii in-place, after using its value
-    } // prints => "0,"
+        NSLog(@"%d,", ii++); // ii++는 값을 사용한 후 ii를 제자리에서 증가시킵니다.
+    } // => "0,"
       //           "1,"
       //           "2,"
-      //           "3,"
+      //           "3," 출력
 
-    // For loops statements
+    // For 루프 문
     int jj;
     for (jj=0; jj < 4; jj++)
     {
         NSLog(@"%d,", jj);
-    } // prints => "0,"
+    } // => "0,"
       //           "1,"
       //           "2,"
-      //           "3,"
+      //           "3," 출력
 
-    // Foreach statements
+    // Foreach 문
     NSArray *values = @[@0, @1, @2, @3];
     for (NSNumber *value in values)
     {
         NSLog(@"%@,", value);
-    } // prints => "0,"
+    } // => "0,"
       //           "1,"
       //           "2,"
-      //           "3,"
+      //           "3," 출력
 
-    // Object for loop statement. Can be used with any Objective-C object type
+    // 객체 for 루프 문. 모든 Objective-C 객체 타입과 함께 사용할 수 있습니다.
     for (id item in values) {
         NSLog(@"%@,", item);
-    } // prints => "0,"
+    } // => "0,"
       //           "1,"
       //           "2,"
-      //           "3,"
+      //           "3," 출력
 
-    // Try-Catch-Finally statements
+    // Try-Catch-Finally 문
     @try
     {
-        // Your statements here
+        // 여기에 문장을 작성합니다.
         @throw [NSException exceptionWithName:@"FileNotFoundException"
                             reason:@"File Not Found on System" userInfo:nil];
-    } @catch (NSException * e) // use: @catch (id exceptionName) to catch all objects.
+    } @catch (NSException * e) // 모든 객체를 잡으려면 @catch (id exceptionName)를 사용합니다.
     {
         NSLog(@"Exception: %@", e);
     } @finally
     {
         NSLog(@"Finally. Time to clean up.");
-    } // prints => "Exception: File Not Found on System"
-      //           "Finally. Time to clean up."
+    } // => "Exception: File Not Found on System"
+      //           "Finally. Time to clean up." 출력
 
-    // NSError objects are useful for function arguments to populate on user mistakes.
+    // NSError 객체는 사용자 실수 시 채울 함수 인수에 유용합니다.
     NSError *error = [NSError errorWithDomain:@"Invalid email." code:4 userInfo:nil];
 
     ///////////////////////////////////////
-    // Objects
+    // 객체
     ///////////////////////////////////////
 
-    // Create an object instance by allocating memory and initializing it
-    // An object is not fully functional until both steps have been completed
+    // 메모리를 할당하고 초기화하여 객체 인스턴스를 생성합니다.
+    // 객체는 두 단계가 모두 완료될 때까지 완전히 작동하지 않습니다.
     MyClass *myObject = [[MyClass alloc] init];
 
-    // The Objective-C model of object-oriented programming is based on message
-    // passing to object instances
-    // In Objective-C one does not simply call a method; one sends a message
+    // Objective-C의 객체 지향 프로그래밍 모델은 객체 인스턴스에
+    // 메시지를 전달하는 것을 기반으로 합니다.
+    // Objective-C에서는 단순히 메서드를 호출하는 것이 아니라 메시지를 보냅니다.
     [myObject instanceMethodWithParameter:@"Steve Jobs"];
 
-    // Clean up the memory you used into your program
+    // 프로그램에서 사용한 메모리를 정리합니다.
     [pool drain];
 
-    // End of @autoreleasepool
+    // @autoreleasepool의 끝
     }
 
-    // End the program
+    // 프로그램 종료
     return 0;
 }
 
 ///////////////////////////////////////
-// Classes And Functions
+// 클래스 및 함수
 ///////////////////////////////////////
 
-// Declare your class in a header file (MyClass.h):
-// Class declaration syntax:
+// 헤더 파일(MyClass.h)에 클래스를 선언합니다.
+// 클래스 선언 구문:
 // @interface ClassName : ParentClassName <ImplementedProtocols>
 // {
-//    type name; <= variable declarations;
+//    type name; <= 변수 선언;
 // }
-// @property type name; <= property declarations
-// -/+ (type) Method declarations; <= Method declarations
+// @property type name; <= 프로퍼티 선언
+// -/+ (type) 메서드 선언; <= 메서드 선언
 // @end
-@interface MyClass : NSObject <MyProtocol> // NSObject is Objective-C's base object class.
+@interface MyClass : NSObject <MyProtocol> // NSObject는 Objective-C의 기본 객체 클래스입니다.
 {
-    // Instance variable declarations (can exist in either interface or implementation file)
-    int count; // Protected access by default.
-    @private id data; // Private access (More convenient to declare in implementation file)
+    // 인스턴스 변수 선언 (인터페이스 또는 구현 파일에 있을 수 있음)
+    int count; // 기본적으로 Protected 액세스.
+    @private id data; // Private 액세스 (구현 파일에 선언하는 것이 더 편리함)
     NSString *name;
 }
-// Convenient notation for public access variables to auto generate a setter method
-// By default, setter method name is 'set' followed by @property variable name
-@property int propInt; // Setter method name = 'setPropInt'
-@property (copy) id copyId; // (copy) => Copy the object during assignment
-// (readonly) => Cannot set value outside @interface
-@property (readonly) NSString *roString; // Use @synthesize in @implementation to create accessor
-// You can customize the getter and setter names instead of using default 'set' name:
+// setter 메서드를 자동으로 생성하기 위한 public 액세스 변수의 편리한 표기법
+// 기본적으로 setter 메서드 이름은 'set' 뒤에 @property 변수 이름이 옵니다.
+@property int propInt; // Setter 메서드 이름 = 'setPropInt'
+@property (copy) id copyId; // (copy) => 할당 중에 객체 복사
+// (readonly) => @interface 외부에서 값을 설정할 수 없음
+@property (readonly) NSString *roString; // 접근자를 생성하려면 @implementation에서 @synthesize 사용
+// 기본 'set' 이름 대신 getter 및 setter 이름을 사용자 정의할 수 있습니다.
 @property (getter=lengthGet, setter=lengthSet:) int length;
 
-// Methods
+// 메서드
 +/- (return type)methodSignature:(Parameter Type *)parameterName;
 
-// + for class methods:
+// + 클래스 메서드용:
 + (NSString *)classMethod;
 + (MyClass *)myClassFromHeight:(NSNumber *)defaultHeight;
 
-// - for instance methods:
+// - 인스턴스 메서드용:
 - (NSString *)instanceMethodWithParameter:(NSString *)string;
 - (NSNumber *)methodAParameterAsString:(NSString*)string andAParameterAsNumber:(NSNumber *)number;
 
-// Constructor methods with arguments:
+// 인수가 있는 생성자 메서드:
 - (id)initWithDistance:(int)defaultDistance;
-// Objective-C method names are very descriptive. Always name methods according to their arguments
+// Objective-C 메서드 이름은 매우 설명적입니다. 항상 인수에 따라 메서드 이름을 지정하십시오.
 
-@end // States the end of the interface
+@end // 인터페이스의 끝을 나타냅니다.
 
 
-// To access public variables from the implementation file, @property generates a setter method
-// automatically. Method name is 'set' followed by @property variable name:
-MyClass *myClass = [[MyClass alloc] init]; // create MyClass object instance
+// 구현 파일에서 public 변수에 액세스하려면 @property가 setter 메서드를
+// 자동으로 생성합니다. 메서드 이름은 'set' 뒤에 @property 변수 이름이 옵니다.
+MyClass *myClass = [[MyClass alloc] init]; // MyClass 객체 인스턴스 생성
 [myClass setCount:10];
-NSLog(@"%d", [myClass count]); // prints => 10
-// Or using the custom getter and setter method defined in @interface:
+NSLog(@"%d", [myClass count]); // => 10 출력
+// 또는 @interface에 정의된 사용자 정의 getter 및 setter 메서드 사용:
 [myClass lengthSet:32];
-NSLog(@"%i", [myClass lengthGet]); // prints => 32
-// For convenience, you may use dot notation to set and access object instance variables:
+NSLog(@"%i", [myClass lengthGet]); // => 32 출력
+// 편의를 위해 점 표기법을 사용하여 객체 인스턴스 변수를 설정하고 액세스할 수 있습니다.
 myClass.count = 45;
-NSLog(@"%i", myClass.count); // prints => 45
+NSLog(@"%i", myClass.count); // => 45 출력
 
-// Call class methods:
+// 클래스 메서드 호출:
 NSString *classMethodString = [MyClass classMethod];
 MyClass *classFromName = [MyClass myClassFromName:@"Hello"];
 
-// Call instance methods:
-MyClass *myClass = [[MyClass alloc] init]; // Create MyClass object instance
+// 인스턴스 메서드 호출:
+MyClass *myClass = [[MyClass alloc] init]; // MyClass 객체 인스턴스 생성
 NSString *stringFromInstanceMethod = [myClass instanceMethodWithParameter:@"Hello"];
 
-// Selectors
-// Way to dynamically represent methods. Used to call methods of a class, pass methods
-// through functions to tell other classes they should call it, and to save methods
-// as a variable
-// SEL is the data type. @selector() returns a selector from method name provided
-// methodAParameterAsString:andAParameterAsNumber: is method name for method in MyClass
+// 선택자
+// 메서드를 동적으로 표현하는 방법. 클래스의 메서드를 호출하고, 메서드를
+// 함수를 통해 전달하여 다른 클래스가 호출해야 함을 알리고, 메서드를
+// 변수로 저장하는 데 사용됩니다.
+// SEL은 데이터 타입입니다. @selector()는 제공된 메서드 이름에서 선택자를 반환합니다.
+// methodAParameterAsString:andAParameterAsNumber:는 MyClass의 메서드 이름입니다.
 SEL selectorVar = @selector(methodAParameterAsString:andAParameterAsNumber:);
-if ([myClass respondsToSelector:selectorVar]) { // Checks if class contains method
-    // Must put all method arguments into one object to send to performSelector function
+if ([myClass respondsToSelector:selectorVar]) { // 클래스에 메서드가 포함되어 있는지 확인
+    // performSelector 함수에 보내기 위해 모든 메서드 인수를 하나의 객체에 넣어야 합니다.
     NSArray *arguments = [NSArray arrayWithObjects:@"Hello", @4, nil];
-    [myClass performSelector:selectorVar withObject:arguments]; // Calls the method
+    [myClass performSelector:selectorVar withObject:arguments]; // 메서드 호출
 } else {
-    // NSStringFromSelector() returns a NSString of the method name of a given selector
+    // NSStringFromSelector()는 주어진 선택자의 메서드 이름을 NSString으로 반환합니다.
     NSLog(@"MyClass does not have method: %@", NSStringFromSelector(selectedVar));
 }
 
-// Implement the methods in an implementation (MyClass.m) file:
+// 구현(MyClass.m) 파일에서 메서드를 구현합니다.
 @implementation MyClass {
-    long distance; // Private access instance variable
+    long distance; // Private 액세스 인스턴스 변수
     NSNumber *height;
 }
 
-// To access a public variable from the interface file, use '_' followed by variable name:
-_count = 5; // References "int count" from MyClass interface
-// Access variables defined in implementation file:
-distance = 18; // References "long distance" from MyClass implementation
-// To use @property variable in implementation, use @synthesize to create accessor variable:
-@synthesize roString = _roString; // _roString available now in @implementation
+// 인터페이스 파일에서 public 변수에 액세스하려면 '_' 뒤에 변수 이름을 사용합니다.
+_count = 5; // MyClass 인터페이스의 "int count" 참조
+// 구현 파일에 정의된 변수에 액세스:
+distance = 18; // MyClass 구현의 "long distance" 참조
+// 구현에서 @property 변수를 사용하려면 @synthesize를 사용하여 접근자 변수를 만듭니다.
+@synthesize roString = _roString; // _roString은 이제 @implementation에서 사용할 수 있습니다.
 
-// Called before calling any class methods or instantiating any objects
+// 클래스 메서드를 호출하거나 객체를 인스턴스화하기 전에 호출됩니다.
 + (void)initialize
 {
     if (self == [MyClass class]) {
@@ -407,24 +408,24 @@ distance = 18; // References "long distance" from MyClass implementation
     }
 }
 
-// Counterpart to initialize method. Called when an object's reference count is zero
+// initialize 메서드의 반대. 객체의 참조 카운트가 0일 때 호출됩니다.
 - (void)dealloc
 {
-    [height release]; // If not using ARC, make sure to release class variable objects
-    [super dealloc];  // and call parent class dealloc
+    [height release]; // ARC를 사용하지 않는 경우 클래스 변수 객체를 해제해야 합니다.
+    [super dealloc];  // 그리고 부모 클래스 dealloc 호출
 }
 
-// Constructors are a way of creating instances of a class
-// This is a default constructor which is called when the object is initialized.
+// 생성자는 클래스의 인스턴스를 만드는 방법입니다.
+// 이것은 객체가 초기화될 때 호출되는 기본 생성자입니다.
 - (id)init
 {
-    if ((self = [super init])) // 'super' used to access methods from parent class
+    if ((self = [super init])) // 'super'는 부모 클래스에서 메서드를 액세스하는 데 사용됩니다.
     {
-        self.count = 1; // 'self' used for object to call itself
+        self.count = 1; // 'self'는 객체가 자신을 호출하는 데 사용됩니다.
     }
     return self;
 }
-// Can create constructors that contain arguments:
+// 인수가 포함된 생성자를 만들 수 있습니다.
 - (id)initWithDistance:(int)defaultDistance
 {
     distance = defaultDistance;
@@ -452,37 +453,37 @@ distance = 18; // References "long distance" from MyClass implementation
     return @42;
 }
 
-// Objective-C does not have private method declarations, but you can simulate them.
-// To simulate a private method, create the method in the @implementation but not in the @interface.
+// Objective-C에는 private 메서드 선언이 없지만 시뮬레이션할 수 있습니다.
+// private 메서드를 시뮬레이션하려면 @implementation에 메서드를 만들고 @interface에는 만들지 마십시오.
 - (NSNumber *)secretPrivateMethod {
     return @72;
 }
-[self secretPrivateMethod]; // Calls private method
+[self secretPrivateMethod]; // private 메서드 호출
 
-// Methods declared into MyProtocol
+// MyProtocol에 선언된 메서드
 - (void)myProtocolMethod
 {
-    // statements
+    // 문장
 }
 
-@end // States the end of the implementation
+@end // 구현의 끝을 나타냅니다.
 
 ///////////////////////////////////////
-// Categories
+// 카테고리
 ///////////////////////////////////////
-// A category is a group of methods designed to extend a class. They allow you to add new methods
-// to an existing class for organizational purposes. This is not to be mistaken with subclasses.
-// Subclasses are meant to CHANGE functionality of an object while categories instead ADD
-// functionality to an object.
-// Categories allow you to:
-// -- Add methods to an existing class for organizational purposes.
-// -- Allow you to extend Objective-C object classes (ex: NSString) to add your own methods.
-// -- Add ability to create protected and private methods to classes.
-// NOTE: Do not override methods of the base class in a category even though you have the ability
-// to. Overriding methods may cause compiler errors later between different categories and it
-// ruins the purpose of categories to only ADD functionality. Subclass instead to override methods.
+// 카테고리는 클래스를 확장하도록 설계된 메서드 그룹입니다. 조직적인 목적으로
+// 기존 클래스에 새 메서드를 추가할 수 있습니다. 이것은 하위 클래스와 혼동해서는 안 됩니다.
+// 하위 클래스는 객체의 기능을 변경하는 반면 카테고리는 객체에 기능을
+// 추가합니다.
+// 카테고리를 사용하면 다음을 수행할 수 있습니다.
+// -- 조직적인 목적으로 기존 클래스에 메서드를 추가합니다.
+// -- Objective-C 객체 클래스(예: NSString)를 확장하여 자신만의 메서드를 추가할 수 있습니다.
+// -- 클래스에 보호 및 비공개 메서드를 만드는 기능을 추가합니다.
+// 참고: 카테고리에서 기본 클래스의 메서드를 재정의하지 마십시오.
+// 재정의하면 나중에 다른 카테고리 간에 컴파일러 오류가 발생할 수 있으며
+// 기능을 추가만 하는 카테고리의 목적을 망칩니다. 메서드를 재정의하려면 대신 하위 클래스를 사용하십시오.
 
-// Here is a simple Car base class.
+// 다음은 간단한 Car 기본 클래스입니다.
 @interface Car : NSObject
 
 @property NSString *make;
@@ -493,7 +494,7 @@ distance = 18; // References "long distance" from MyClass implementation
 
 @end
 
-// And the simple Car base class implementation:
+// 그리고 간단한 Car 기본 클래스 구현:
 #import "Car.h"
 
 @implementation Car
@@ -510,22 +511,22 @@ distance = 18; // References "long distance" from MyClass implementation
 
 @end
 
-// Now, if we wanted to create a Truck object, we would instead create a subclass of Car as it would
-// be changing the functionality of the Car to behave like a truck. But lets say we want to just add
-// functionality to this existing Car. A good example would be to clean the car. So we would create
-// a category to add these cleaning methods:
+// 이제 Truck 객체를 만들고 싶다면 Car의 하위 클래스를 만들어
+// Car의 기능을 트럭처럼 동작하도록 변경합니다. 하지만 기존 Car에
+// 기능을 추가하고 싶다고 가정해 봅시다. 좋은 예는 차를 청소하는 것입니다. 따라서
+// 이러한 청소 메서드를 추가하기 위해 카테고리를 만듭니다.
 // @interface filename: Car+Clean.h (BaseClassName+CategoryName.h)
-#import "Car.h" // Make sure to import base class to extend.
+#import "Car.h" // 확장할 기본 클래스를 가져와야 합니다.
 
-@interface Car (Clean) // The category name is inside () following the name of the base class.
+@interface Car (Clean) // 카테고리 이름은 기본 클래스 이름 뒤에 () 안에 있습니다.
 
-- (void)washWindows; // Names of the new methods we are adding to our Car object.
+- (void)washWindows; // Car 객체에 추가하는 새 메서드의 이름.
 - (void)wax;
 
 @end
 
 // @implementation filename: Car+Clean.m (BaseClassName+CategoryName.m)
-#import "Car+Clean.h" // Import the Clean category's @interface file.
+#import "Car+Clean.h" // Clean 카테고리의 @interface 파일을 가져옵니다.
 
 @implementation Car (Clean)
 
@@ -538,9 +539,9 @@ distance = 18; // References "long distance" from MyClass implementation
 
 @end
 
-// Any Car object instance has the ability to use a category. All they need to do is import it:
-#import "Car+Clean.h" // Import as many different categories as you want to use.
-#import "Car.h" // Also need to import base class to use it's original functionality.
+// 모든 Car 객체 인스턴스는 카테고리를 사용할 수 있습니다. 가져오기만 하면 됩니다.
+#import "Car+Clean.h" // 사용하려는 만큼 다른 카테고리를 가져옵니다.
+#import "Car.h" // 원래 기능을 사용하려면 기본 클래스도 가져와야 합니다.
 
 int main (int argc, const char * argv[]) {
     @autoreleasepool {
@@ -548,60 +549,60 @@ int main (int argc, const char * argv[]) {
         mustang.color = @"Red";
         mustang.make = @"Ford";
 
-        [mustang turnOn]; // Use methods from base Car class.
-        [mustang washWindows]; // Use methods from Car's Clean category.
+        [mustang turnOn]; // 기본 Car 클래스의 메서드 사용.
+        [mustang washWindows]; // Car의 Clean 카테고리 메서드 사용.
     }
     return 0;
 }
 
-// Objective-C does not have protected method declarations but you can simulate them.
-// Create a category containing all of the protected methods, then import it ONLY into the
-// @implementation file of a class belonging to the Car class:
-@interface Car (Protected) // Naming category 'Protected' to remember methods are protected.
+// Objective-C에는 보호된 메서드 선언이 없지만 시뮬레이션할 수 있습니다.
+// 보호된 메서드를 시뮬레이션하려면 모든 보호된 메서드를 포함하는 카테고리를 만든 다음
+// Car 클래스에 속한 클래스의 @implementation 파일에만 가져옵니다.
+@interface Car (Protected) // 메서드가 보호됨을 기억하기 위해 카테고리 이름을 'Protected'로 지정합니다.
 
-- (void)lockCar; // Methods listed here may only be created by Car objects.
+- (void)lockCar; // 여기에 나열된 메서드는 Car 객체만 만들 수 있습니다.
 
 @end
-//To use protected methods, import the category, then implement the methods:
-#import "Car+Protected.h" // Remember, import in the @implementation file only.
+// 보호된 메서드를 사용하려면 카테고리를 가져온 다음 메서드를 구현합니다.
+#import "Car+Protected.h" // @implementation 파일에만 가져오는 것을 기억하십시오.
 
 @implementation Car
 
 - (void)lockCar {
-    NSLog(@"Car locked."); // Instances of Car can't use lockCar because it's not in the @interface.
+    NSLog(@"Car locked."); // Car 인스턴스는 @interface에 없기 때문에 lockCar를 사용할 수 없습니다.
 }
 
 @end
 
 ///////////////////////////////////////
-// Extensions
+// 확장
 ///////////////////////////////////////
-// Extensions allow you to override public access property attributes and methods of an @interface.
+// 확장을 사용하면 @interface의 public 액세스 프로퍼티 속성 및 메서드를 재정의할 수 있습니다.
 // @interface filename: Shape.h
-@interface Shape : NSObject // Base Shape class extension overrides below.
+@interface Shape : NSObject // 기본 Shape 클래스 확장은 아래에서 재정의됩니다.
 
 @property (readonly) NSNumber *numOfSides;
 
 - (int)getNumOfSides;
 
 @end
-// You can override numOfSides variable or getNumOfSides method to edit them with an extension:
+// numOfSides 변수 또는 getNumOfSides 메서드를 재정의하여 확장으로 편집할 수 있습니다.
 // @implementation filename: Shape.m
 #import "Shape.h"
-// Extensions live in the same file as the class @implementation.
-@interface Shape () // () after base class name declares an extension.
+// 확장은 클래스 @implementation과 동일한 파일에 있습니다.
+@interface Shape () // 기본 클래스 이름 뒤의 ()는 확장을 선언합니다.
 
-@property (copy) NSNumber *numOfSides; // Make numOfSides copy instead of readonly.
--(NSNumber)getNumOfSides; // Make getNumOfSides return a NSNumber instead of an int.
--(void)privateMethod; // You can also create new private methods inside of extensions.
+@property (copy) NSNumber *numOfSides; // numOfSides를 readonly 대신 copy로 만듭니다.
+-(NSNumber)getNumOfSides; // getNumOfSides가 int 대신 NSNumber를 반환하도록 합니다.
+-(void)privateMethod; // 확장 내에서 새 private 메서드를 만들 수도 있습니다.
 
 @end
-// The main @implementation:
+// 주 @implementation:
 @implementation Shape
 
 @synthesize numOfSides = _numOfSides;
 
--(NSNumber)getNumOfSides { // All statements inside of extension must be in the @implementation.
+-(NSNumber)getNumOfSides { // 확장 내의 모든 문장은 @implementation에 있어야 합니다.
     return _numOfSides;
 }
 -(void)privateMethod {
@@ -610,9 +611,9 @@ int main (int argc, const char * argv[]) {
 
 @end
 
-// Starting in Xcode 7.0, you can create Generic classes,
-// allowing you to provide greater type safety and clarity
-// without writing excessive boilerplate.
+// Xcode 7.0부터 제네릭 클래스를 만들 수 있어
+// 과도한 상용구 작성 없이 더 나은 타입 안전성과 명확성을
+// 제공할 수 있습니다.
 @interface Result<__covariant A> : NSObject
 
 - (void)handleSuccess:(void(^)(A))success
@@ -622,12 +623,12 @@ int main (int argc, const char * argv[]) {
 
 @end
 
-// we can now declare instances of this class like
+// 이제 이 클래스의 인스턴스를 다음과 같이 선언할 수 있습니다.
 Result<NSNumber *> *result;
 Result<NSArray *> *result;
 
-// Each of these cases would be equivalent to rewriting Result's interface
-// and substituting the appropriate type for A
+// 이러한 각 경우는 Result의 인터페이스를 다시 작성하고
+// A에 적절한 타입을 대체하는 것과 동일합니다.
 @interface Result : NSObject
 - (void)handleSuccess:(void(^)(NSArray *))success
               failure:(void(^)(NSError *))failure;
@@ -640,75 +641,75 @@ Result<NSArray *> *result;
 @property (nonatomic) NSNumber * object;
 @end
 
-// It should be obvious, however, that writing one
-//  Class to solve a problem is always preferable to writing two
+// 그러나 문제를 해결하기 위해 하나의 클래스를 작성하는 것이
+// 두 개를 작성하는 것보다 항상 선호된다는 것은 명백해야 합니다.
 
-// Note that Clang will not accept generic types in @implementations,
-// so your @implemnation of Result would have to look like this:
+// Clang은 @implementation에서 제네릭 타입을 허용하지 않으므로
+// Result의 @implemnation은 다음과 같아야 합니다.
 
 @implementation Result
 
 - (void)handleSuccess:(void (^)(id))success
               failure:(void (^)(NSError *))failure {
-  // Do something
+  // 무언가 수행
 }
 
 @end
 
 
 ///////////////////////////////////////
-// Protocols
+// 프로토콜
 ///////////////////////////////////////
-// A protocol declares methods that can be implemented by any class.
-// Protocols are not classes themselves. They simply define an interface
-// that other objects are responsible for implementing.
+// 프로토콜은 모든 클래스에서 구현할 수 있는 메서드를 선언합니다.
+// 프로토콜은 클래스 자체가 아닙니다. 다른 객체가 구현할 책임이 있는
+// 인터페이스를 정의할 뿐입니다.
 // @protocol filename: "CarUtilities.h"
-@protocol CarUtilities <NSObject> // <NSObject> => Name of another protocol this protocol includes.
-    @property BOOL engineOn; // Adopting class must @synthesize all defined @properties and
-    - (void)turnOnEngine; // all defined methods.
+@protocol CarUtilities <NSObject> // <NSObject> => 이 프로토콜이 포함하는 다른 프로토콜의 이름.
+    @property BOOL engineOn; // 채택하는 클래스는 모든 정의된 @properties를 @synthesize해야 하며
+    - (void)turnOnEngine; // 모든 정의된 메서드를 구현해야 합니다.
 @end
-// Below is an example class implementing the protocol.
-#import "CarUtilities.h" // Import the @protocol file.
+// 아래는 프로토콜을 구현하는 예제 클래스입니다.
+#import "CarUtilities.h" // @protocol 파일을 가져옵니다.
 
-@interface Car : NSObject <CarUtilities> // Name of protocol goes inside <>
-    // You don't need the @property or method names here for CarUtilities. Only @implementation does.
-- (void)turnOnEngineWithUtilities:(id <CarUtilities>)car; // You can use protocols as data too.
+@interface Car : NSObject <CarUtilities> // 프로토콜의 이름은 <> 안에 들어갑니다.
+    // CarUtilities에 대한 @property 또는 메서드 이름은 여기에 필요하지 않습니다. @implementation만 필요합니다.
+- (void)turnOnEngineWithUtilities:(id <CarUtilities>)car; // 프로토콜을 데이터로 사용할 수도 있습니다.
 @end
-// The @implementation needs to implement the @properties and methods for the protocol.
+// @implementation은 프로토콜에 대한 @properties 및 메서드를 구현해야 합니다.
 @implementation Car : NSObject <CarUtilities>
 
-@synthesize engineOn = _engineOn; // Create a @synthesize statement for the engineOn @property.
+@synthesize engineOn = _engineOn; // engineOn @property에 대한 @synthesize 문을 만듭니다.
 
-- (void)turnOnEngine { // Implement turnOnEngine however you would like. Protocols do not define
-    _engineOn = YES; // how you implement a method, it just requires that you do implement it.
+- (void)turnOnEngine { // 원하는 대로 turnOnEngine을 구현합니다. 프로토콜은
+    _engineOn = YES; // 메서드를 구현하는 방법을 정의하지 않고 구현해야 한다는 것만 요구합니다.
 }
-// You may use a protocol as data as you know what methods and variables it has implemented.
+// 프로토콜을 데이터로 사용할 수 있습니다. 어떤 메서드와 변수가 구현되었는지 알기 때문입니다.
 - (void)turnOnEngineWithCarUtilities:(id <CarUtilities>)objectOfSomeKind {
-    [objectOfSomeKind engineOn]; // You have access to object variables
-    [objectOfSomeKind turnOnEngine]; // and the methods inside.
-    [objectOfSomeKind engineOn]; // May or may not be YES. Class implements it however it wants.
+    [objectOfSomeKind engineOn]; // 객체 변수에 액세스할 수 있습니다.
+    [objectOfSomeKind turnOnEngine]; // 그리고 내부의 메서드.
+    [objectOfSomeKind engineOn]; // YES일 수도 있고 아닐 수도 있습니다. 클래스는 원하는 대로 구현합니다.
 }
 
 @end
-// Instances of Car now have access to the protocol.
+// Car 인스턴스는 이제 프로토콜에 액세스할 수 있습니다.
 Car *carInstance = [[Car alloc] init];
 [carInstance setEngineOn:NO];
 [carInstance turnOnEngine];
 if ([carInstance engineOn]) {
-    NSLog(@"Car engine is on."); // prints => "Car engine is on."
+    NSLog(@"Car engine is on."); // => "Car engine is on." 출력
 }
-// Make sure to check if an object of type 'id' implements a protocol before calling protocol methods:
+// 'id' 타입의 객체가 프로토콜 메서드를 호출하기 전에 프로토콜을 구현하는지 확인하십시오.
 if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
     NSLog(@"This does not run as the MyClass class does not implement the CarUtilities protocol.");
 } else if ([carInstance conformsToProtocol:@protocol(CarUtilities)]) {
     NSLog(@"This does run as the Car class implements the CarUtilities protocol.");
 }
-// Categories may implement protocols as well: @interface Car (CarCategory) <CarUtilities>
-// You may implement many protocols: @interface Car : NSObject <CarUtilities, CarCleaning>
-// NOTE: If two or more protocols rely on each other, make sure to forward-declare them:
+// 카테고리도 프로토콜을 구현할 수 있습니다: @interface Car (CarCategory) <CarUtilities>
+// 여러 프로토콜을 구현할 수 있습니다: @interface Car : NSObject <CarUtilities, CarCleaning>
+// 참고: 둘 이상의 프로토콜이 서로 의존하는 경우 전방 선언해야 합니다.
 #import "Brother.h"
 
-@protocol Brother; // Forward-declare statement. Without it, compiler will throw error.
+@protocol Brother; // 전방 선언 문. 이것이 없으면 컴파일러가 오류를 발생시킵니다.
 
 @protocol Sister <NSObject>
 
@@ -716,10 +717,10 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 
 @end
 
-// See the problem is that Sister relies on Brother, and Brother relies on Sister.
+// 문제는 Sister가 Brother에 의존하고 Brother가 Sister에 의존한다는 것입니다.
 #import "Sister.h"
 
-@protocol Sister; // These lines stop the recursion, resolving the issue.
+@protocol Sister; // 이 줄은 재귀를 중지하여 문제를 해결합니다.
 
 @protocol Brother <NSObject>
 
@@ -729,93 +730,93 @@ if ([myClass conformsToProtocol:@protocol(CarUtilities)]) {
 
 
 ///////////////////////////////////////
-// Blocks
+// 블록
 ///////////////////////////////////////
-// Blocks are statements of code, just like a function, that are able to be used as data.
-// Below is a simple block with an integer argument that returns the argument plus 4.
+// 블록은 데이터로 사용할 수 있는 함수와 같은 코드 문입니다.
+// 아래는 정수 인수를 받아 인수에 4를 더한 값을 반환하는 간단한 블록입니다.
 ^(int n) {
     return n + 4;
 }
-int (^addUp)(int n); // Declare a variable to store a block.
-void (^noParameterBlockVar)(void); // Example variable declaration of block with no arguments.
-// Blocks have access to variables in the same scope. But the variables are readonly and the
-// value passed to the block is the value of the variable when the block is created.
-int outsideVar = 17; // If we edit outsideVar after declaring addUp, outsideVar is STILL 17.
-__block long mutableVar = 3; // __block makes variables writable to blocks, unlike outsideVar.
-addUp = ^(int n) { // Remove (int n) to have a block that doesn't take in any parameters.
+int (^addUp)(int n); // 블록을 저장할 변수를 선언합니다.
+void (^noParameterBlockVar)(void); // 인수가 없는 블록의 예제 변수 선언.
+// 블록은 동일한 범위의 변수에 액세스할 수 있습니다. 그러나 변수는 읽기 전용이며
+// 블록에 전달되는 값은 블록이 생성될 때 변수의 값입니다.
+int outsideVar = 17; // addUp을 선언한 후 outsideVar를 편집해도 outsideVar는 여전히 17입니다.
+__block long mutableVar = 3; // __block은 outsideVar와 달리 변수를 블록에 쓸 수 있도록 합니다.
+addUp = ^(int n) { // 매개변수를 받지 않는 블록을 가지려면 (int n)을 제거합니다.
     NSLog(@"You may have as many lines in a block as you would like.");
-    NSSet *blockSet; // Also, you can declare local variables.
-    mutableVar = 32; // Assigning new value to __block variable.
-    return n + outsideVar; // Return statements are optional.
+    NSSet *blockSet; // 또한 지역 변수를 선언할 수 있습니다.
+    mutableVar = 32; // __block 변수에 새 값을 할당합니다.
+    return n + outsideVar; // 반환 문은 선택 사항입니다.
 }
-int addUp = addUp(10 + 16); // Calls block code with arguments.
-// Blocks are often used as arguments to functions to be called later, or for callbacks.
+int addUp = addUp(10 + 16); // 인수로 블록 코드를 호출합니다.
+// 블록은 나중에 호출되거나 콜백을 위해 함수의 인수로 자주 사용됩니다.
 @implementation BlockExample : NSObject
 
  - (void)runBlock:(void (^)(NSString))block {
     NSLog(@"Block argument returns nothing and takes in a NSString object.");
-    block(@"Argument given to block to execute."); // Calling block.
+    block(@"Argument given to block to execute."); // 블록 호출.
  }
 
  @end
 
 
 ///////////////////////////////////////
-// Memory Management
+// 메모리 관리
 ///////////////////////////////////////
 /*
-For each object used in an application, memory must be allocated for that object. When the application
-is done using that object, memory must be deallocated to ensure application efficiency.
-Objective-C does not use garbage collection and instead uses reference counting. As long as
-there is at least one reference to an object (also called "owning" an object), then the object
-will be available to use (known as "ownership").
+애플리케이션에서 사용되는 각 객체에 대해 해당 객체에 대한 메모리를 할당해야 합니다. 애플리케이션이
+해당 객체 사용을 마치면 애플리케이션 효율성을 보장하기 위해 메모리를 해제해야 합니다.
+Objective-C는 가비지 컬렉션을 사용하지 않고 대신 참조 계산을 사용합니다.
+객체에 대한 참조가 하나 이상 있는 한(객체를 "소유"한다고도 함), 객체는
+사용할 수 있습니다("소유권"이라고 함).
 
-When an instance owns an object, its reference counter is increments by one. When the
-object is released, the reference counter decrements by one. When reference count is zero,
-the object is removed from memory.
+인스턴스가 객체를 소유하면 참조 카운터가 1 증가합니다. 객체가
+해제되면 참조 카운터가 1 감소합니다. 참조 카운트가 0이 되면
+객체는 메모리에서 제거됩니다.
 
-With all object interactions, follow the pattern of:
-(1) create the object, (2) use the object, (3) then free the object from memory.
+모든 객체 상호 작용에서 다음 패턴을 따르십시오.
+(1) 객체 생성, (2) 객체 사용, (3) 메모리에서 객체 해제.
 */
 
-MyClass *classVar = [MyClass alloc]; // 'alloc' sets classVar's reference count to one. Returns pointer to object
-[classVar release]; // Decrements classVar's reference count
-// 'retain' claims ownership of existing object instance and increments reference count. Returns pointer to object
-MyClass *newVar = [classVar retain]; // If classVar is released, object is still in memory because newVar is owner
-[classVar autorelease]; // Removes ownership of object at end of @autoreleasepool block. Returns pointer to object
+MyClass *classVar = [MyClass alloc]; // 'alloc'은 classVar의 참조 카운트를 1로 설정합니다. 객체에 대한 포인터를 반환합니다.
+[classVar release]; // classVar의 참조 카운트를 감소시킵니다.
+// 'retain'은 기존 객체 인스턴스의 소유권을 주장하고 참조 카운트를 증가시킵니다. 객체에 대한 포인터를 반환합니다.
+MyClass *newVar = [classVar retain]; // classVar가 해제되어도 newVar가 소유자이므로 객체는 여전히 메모리에 있습니다.
+[classVar autorelease]; // @autoreleasepool 블록 끝에서 객체의 소유권을 제거합니다. 객체에 대한 포인터를 반환합니다.
 
-// @property can use 'retain' and 'assign' as well for small convenient definitions
-@property (retain) MyClass *instance; // Release old value and retain a new one (strong reference)
-@property (assign) NSSet *set; // Pointer to new value without retaining/releasing old (weak reference)
+// @property는 작은 편리한 정의를 위해 'retain' 및 'assign'을 사용할 수 있습니다.
+@property (retain) MyClass *instance; // 이전 값을 해제하고 새 값을 유지합니다(강한 참조).
+@property (assign) NSSet *set; // 이전 값을 유지/해제하지 않고 새 값에 대한 포인터(약한 참조).
 
-// Automatic Reference Counting (ARC)
-// Because memory management can be a pain, Xcode 4.2 and iOS 4 introduced Automatic Reference Counting (ARC).
-// ARC is a compiler feature that inserts retain, release, and autorelease automatically for you, so when using ARC,
-// you must not use retain, release, or autorelease
+// 자동 참조 계산(ARC)
+// 메모리 관리가 번거로울 수 있으므로 Xcode 4.2 및 iOS 4에서 자동 참조 계산(ARC)이 도입되었습니다.
+// ARC는 retain, release 및 autorelease를 자동으로 삽입하는 컴파일러 기능이므로 ARC를 사용하는 경우
+// retain, release 또는 autorelease를 사용해서는 안 됩니다.
 MyClass *arcMyClass = [[MyClass alloc] init];
-// ... code using arcMyClass
-// Without ARC, you will need to call: [arcMyClass release] after you're done using arcMyClass. But with ARC,
-// there is no need. It will insert this release statement for you
+// ... arcMyClass를 사용하는 코드
+// ARC가 없으면 arcMyClass 사용을 마친 후 [arcMyClass release]를 호출해야 합니다. 그러나 ARC를 사용하면
+// 그럴 필요가 없습니다. 이 해제 문을 자동으로 삽입합니다.
 
-// As for the 'assign' and 'retain' @property attributes, with ARC you use 'weak' and 'strong'
-@property (weak) MyClass *weakVar; // 'weak' does not take ownership of object. If original instance's reference count
-// is set to zero, weakVar will automatically receive value of nil to avoid application crashing
-@property (strong) MyClass *strongVar; // 'strong' takes ownership of object. Ensures object will stay in memory to use
+// 'assign' 및 'retain' @property 속성의 경우 ARC를 사용하여 'weak' 및 'strong'을 사용합니다.
+@property (weak) MyClass *weakVar; // 'weak'은 객체의 소유권을 갖지 않습니다. 원래 인스턴스의 참조 카운트가
+// 0으로 설정되면 weakVar는 애플리케이션 충돌을 피하기 위해 자동으로 nil 값을 받습니다.
+@property (strong) MyClass *strongVar; // 'strong'은 객체의 소유권을 갖습니다. 객체가 메모리에 남아 있도록 보장합니다.
 
-// For regular variables (not @property declared variables), use the following:
-__strong NSString *strongString; // Default. Variable is retained in memory until it leaves it's scope
-__weak NSSet *weakSet; // Weak reference to existing object. When existing object is released, weakSet is set to nil
-__unsafe_unretained NSArray *unsafeArray; // Like __weak, but unsafeArray not set to nil when existing object is released
+// 일반 변수(@property로 선언되지 않은 변수)의 경우 다음을 사용합니다.
+__strong NSString *strongString; // 기본값. 변수는 범위를 벗어날 때까지 메모리에 유지됩니다.
+__weak NSSet *weakSet; // 기존 객체에 대한 약한 참조. 기존 객체가 해제되면 weakSet은 nil로 설정됩니다.
+__unsafe_unretained NSArray *unsafeArray; // __weak와 같지만 기존 객체가 해제될 때 unsafeArray는 nil로 설정되지 않습니다.
 ```
 
-## Further Reading
+## 더 읽을거리
 
-[Wikipedia Objective-C](http://en.wikipedia.org/wiki/Objective-C)
+[위키백과 Objective-C](http://en.wikipedia.org/wiki/Objective-C)
 
-[Programming with Objective-C. Apple PDF book](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/ProgrammingWithObjectiveC.pdf)
+[Objective-C로 프로그래밍하기. Apple PDF 책](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/ProgrammingWithObjectiveC.pdf)
 
-[Programming with Objective-C for iOS](https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/ObjectiveC.html)
+[iOS용 Objective-C로 프로그래밍하기](https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/ObjectiveC.html)
 
-[Programming with Objective-C for Mac OSX](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
+[Mac OSX용 Objective-C로 프로그래밍하기](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
 
-[iOS For High School Students: Getting Started](http://www.raywenderlich.com/5600/ios-for-high-school-students-getting-started)
+[고등학생을 위한 iOS: 시작하기](http://www.raywenderlich.com/5600/ios-for-high-school-students-getting-started)

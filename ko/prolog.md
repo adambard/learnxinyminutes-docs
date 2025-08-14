@@ -7,274 +7,267 @@ contributors:
     - ["hyphz", "http://github.com/hyphz/"]
 ---
 
-Prolog is a logic programming language first specified in 1972, and refined into multiple modern implementations.
+Prolog는 1972년에 처음 명시되었고, 여러 현대적인 구현으로 개선된 논리 프로그래밍 언어입니다.
 
 ```
-% This is a comment.
+% 이것은 주석입니다.
 
-% Prolog treats code entered in interactive mode differently
-% to code entered in a file and loaded ("consulted").
-% This code must be loaded from a file to work as intended.
-% Lines that begin with ?- can be typed in interactive mode.
-% A bunch of errors and warnings will trigger when you load this file
-% due to the examples which are supposed to fail - they can be safely
-% ignored.
+% Prolog는 대화형 모드에서 입력된 코드와
+% 파일에 입력되어 로드("컨설팅")된 코드를 다르게 처리합니다.
+% 이 코드는 의도대로 작동하려면 파일에서 로드해야 합니다.
+% ?-로 시작하는 줄은 대화형 모드에서 입력할 수 있습니다.
+% 실패해야 하는 예제 때문에 이 파일을 로드할 때
+% 여러 오류와 경고가 발생하지만 안전하게 무시할 수 있습니다.
 
-% Output is based on SWI-prolog 7.2.3. Different Prologs may behave
-% differently.
+% 출력은 SWI-prolog 7.2.3을 기반으로 합니다. 다른 Prolog는 다르게
+% 동작할 수 있습니다.
 
-% Prolog is based on the ideal of logic programming.
-% A subprogram (called a predicate) represents a state of the world.
-% A command (called a goal) tells Prolog to make that state of the world
-%   come true, if possible.
+% Prolog는 논리 프로그래밍의 이상에 기반을 두고 있습니다.
+% 서브프로그램(술어라고 함)은 세계의 상태를 나타냅니다.
+% 명령어(목표라고 함)는 Prolog에게 가능한 경우 해당 세계의 상태를
+% 실현하도록 지시합니다.
 
-% As an example, here is a definition of the simplest kind of predicate:
-% a fact.
+% 예로서, 가장 간단한 종류의 술어인 사실의
+% 정의는 다음과 같습니다.
 
 magicNumber(7).
 magicNumber(9).
 magicNumber(42).
 
-% This introduces magicNumber as a predicate and says that it is true
-% with parameter 7, 9, or 42, but no other parameter. Note that
-% predicate names must start with lower case letters. We can now use
-% interactive mode to ask if it is true for different values:
+% 이것은 magicNumber를 술어로 도입하고 매개변수 7, 9 또는 42에 대해
+% 참이지만 다른 매개변수에는 해당하지 않음을 나타냅니다.
+% 술어 이름은 소문자로 시작해야 합니다. 이제 대화형 모드를 사용하여
+% 다른 값에 대해 참인지 물어볼 수 있습니다.
 
-?- magicNumber(7).                   % True
-?- magicNumber(8).                   % False
-?- magicNumber(9).                   % True
+?- magicNumber(7).                   % 참
+?- magicNumber(8).                   % 거짓
+?- magicNumber(9).                   % 참
 
-% Some older Prologs may display "Yes" and "No" instead of True and
-% False.
+% 일부 오래된 Prolog는 참과 거짓 대신 "예"와 "아니오"를
+% 표시할 수 있습니다.
 
-% What makes Prolog unusual is that we can also tell Prolog to _make_
-% magicNumber true, by passing it an undefined variable. Any name
-% starting with a capital letter is a variable in Prolog.
+% Prolog를 특이하게 만드는 것은 Prolog에게 정의되지 않은 변수를 전달하여
+% magicNumber를 참으로 만들도록 지시할 수도 있다는 것입니다.
+% 대문자로 시작하는 모든 이름은 Prolog에서 변수입니다.
 
 ?- magicNumber(Presto).              % Presto = 7 ;
                                      % Presto = 9 ;
                                      % Presto = 42.
 
-% Prolog makes magicNumber true by assigning one of the valid numbers to
-% the undefined variable Presto. By default it assigns the first one, 7.
-% By pressing ; in interactive mode you can reject that solution and
-% force it to assign the next one, 9. Pressing ; again forces it to try
-% the last one, 42, after which it no longer accepts input because this
-% is the last solution. You can accept an earlier solution by pressing .
-% instead of ;.
+% Prolog는 정의되지 않은 변수 Presto에 유효한 숫자 중 하나를
+% 할당하여 magicNumber를 참으로 만듭니다. 기본적으로 첫 번째인 7을
+% 할당합니다. 대화형 모드에서 ;를 눌러 해당 솔루션을 거부하고
+% 다음 솔루션인 9를 할당하도록 강제할 수 있습니다. ;를 다시 누르면
+% 마지막 솔루션인 42를 시도하도록 강제하며, 이것이 마지막 솔루션이므로
+% 더 이상 입력을 받지 않습니다. ; 대신 .을 눌러 이전 솔루션을
+% 수락할 수 있습니다.
 
-% This is Prolog's central operation: unification. Unification is
-% essentially a combination of assignment and equality! It works as
-% follows:
-%  If both sides are bound (ie, defined), check equality.
-%  If one side is free (ie, undefined), assign to match the other side.
-%  If both sides are free, the assignment is remembered. With some luck,
-%    one of the two sides will eventually be bound, but this isn't
-%    necessary.
+% 이것이 Prolog의 핵심 연산인 통일입니다. 통일은
+% 본질적으로 할당과 동등성의 조합입니다! 다음과 같이 작동합니다.
+%  양쪽이 모두 바인딩된 경우(즉, 정의된 경우) 동등성을 확인합니다.
+%  한쪽이 자유로운 경우(즉, 정의되지 않은 경우) 다른 쪽과 일치하도록 할당합니다.
+%  양쪽이 모두 자유로운 경우 할당이 기억됩니다. 운이 좋으면
+%    두 쪽 중 하나가 결국 바인딩되지만, 이것이
+%    필수적인 것은 아닙니다.
 %
-% The = sign in Prolog represents unification, so:
+% Prolog의 = 기호는 통일을 나타내므로 다음과 같습니다.
 
-?- 2 = 3.                            % False - equality test
-?- X = 3.                            % X = 3 - assignment
-?- X = 2, X = Y.                     % X = Y = 2 - two assignments
-                                     % Note Y is assigned too, even though it is
-                                     % on the right hand side, because it is free
-?- X = 3, X = 2.                     % False
-                                     % First acts as assignment and binds X=3
-                                     % Second acts as equality because X is bound
-                                     % Since 3 does not equal 2, gives False
-                                     % Thus in Prolog variables are immutable
-?- X = 3+2.                          % X = 3+2 - unification can't do arithmetic
-?- X is 3+2.                         % X = 5 - "is" does arithmetic.
-?- 5 = X+2.                          % This is why = can't do arithmetic -
-                                     % because Prolog can't solve equations
-?- 5 is X+2.                         % Error. Unlike =, the right hand side of IS
-                                     % must always be bound, thus guaranteeing
-                                     % no attempt to solve an equation.
+?- 2 = 3.                            % 거짓 - 동등성 테스트
+?- X = 3.                            % X = 3 - 할당
+?- X = 2, X = Y.                     % X = Y = 2 - 두 개의 할당
+                                     % 참고로 Y도 할당됩니다. 비록
+                                     % 오른쪽에 있지만 자유롭기 때문입니다.
+?- X = 3, X = 2.                     % 거짓
+                                     % 첫 번째는 할당으로 작동하여 X=3을 바인딩합니다.
+                                     % 두 번째는 X가 바인딩되었기 때문에 동등성으로 작동합니다.
+                                     % 3은 2와 같지 않으므로 거짓을 반환합니다.
+                                     % 따라서 Prolog에서 변수는 불변입니다.
+?- X = 3+2.                          % X = 3+2 - 통일은 산술을 할 수 없습니다.
+?- X is 3+2.                         % X = 5 - "is"는 산술을 수행합니다.
+?- 5 = X+2.                          % 이것이 =가 산술을 할 수 없는 이유입니다.
+                                     % Prolog는 방정식을 풀 수 없기 때문입니다.
+?- 5 is X+2.                         % 오류. =와 달리 IS의 오른쪽은
+                                     % 항상 바인딩되어야 하므로
+                                     % 방정식을 풀려는 시도가 없음을 보장합니다.
 ?- X = Y, X = 2, Z is Y + 3.         % X = Y, Y = 2, Z = 5.
-                                     % X = Y are both free, so Prolog remembers
-                                     % it. Therefore assigning X will also
-                                     % assign Y.
+                                     % X = Y는 모두 자유로우므로 Prolog는
+                                     % 이를 기억합니다. 따라서 X를 할당하면
+                                     % Y도 할당됩니다.
 
-% Any unification, and thus any predicate in Prolog, can either:
-% Succeed (return True) without changing anything,
-%   because an equality-style unification was true
-% Succeed (return True) and bind one or more variables in the process,
-%   because an assignment-style unification was made true
-% or Fail (return False)
-%   because an equality-style unification was false
-% (Failure can never bind variables)
+% 모든 통일, 따라서 Prolog의 모든 술어는 다음 중 하나를 수행할 수 있습니다.
+% 아무것도 변경하지 않고 성공(참 반환),
+%   동등성 스타일 통일이 참이었기 때문에
+% 하나 이상의 변수를 바인딩하면서 성공(참 반환),
+%   할당 스타일 통일이 참으로 만들어졌기 때문에
+% 또는 실패(거짓 반환)
+%   동등성 스타일 통일이 거짓이었기 때문에
+% (실패는 변수를 바인딩할 수 없음)
 
-% The ideal of being able to give any predicate as a goal and have it
-% made true is not always possible, but can be worked toward. For
-% example, Prolog has a built in predicate plus which represents
-% arithmetic addition but can reverse simple additions.
+% 어떤 술어든 목표로 주어지고 그것을 참으로 만들 수 있다는 이상은
+% 항상 가능한 것은 아니지만, 노력할 수 있습니다. 예를 들어,
+% Prolog에는 산술 덧셈을 나타내지만 간단한 덧셈을 되돌릴 수 있는
+% 내장 술어 plus가 있습니다.
 
-?- plus(1, 2, 3).                    % True
-?- plus(1, 2, X).                    % X = 3 because 1+2 = X.
-?- plus(1, X, 3).                    % X = 2 because 1+X = 3.
-?- plus(X, 2, 3).                    % X = 1 because X+2 = 3.
-?- plus(X, 5, Y).                    % Error - although this could be solved,
-                                     % the number of solutions is infinite,
-                                     % which most predicates try to avoid.
+?- plus(1, 2, 3).                    % 참
+?- plus(1, 2, X).                    % 1+2 = X이므로 X = 3.
+?- plus(1, X, 3).                    % 1+X = 3이므로 X = 2.
+?- plus(X, 2, 3).                    % X+2 = 3이므로 X = 1.
+?- plus(X, 5, Y).                    % 오류 - 이것은 해결될 수 있지만,
+                                     % 해의 수가 무한하므로
+                                     % 대부분의 술어는 이를 피하려고 합니다.
 
-% When a predicate such as magicNumber can give several solutions, the
-% overall compound goal including it may have several solutions too.
+% magicNumber와 같은 술어가 여러 해를 줄 수 있을 때,
+% 그것을 포함하는 전체 복합 목표도 여러 해를 가질 수 있습니다.
 
 ?- magicNumber(X), plus(X,Y,100).    % X = 7, Y = 93 ;
                                      % X = 9, Y = 91 ;
                                      % X = 42, Y = 58 .
-% Note: on this occasion it works to pass two variables to plus because
-% only Y is free (X is bound by magicNumber).
+% 참고: 이 경우 Y만 자유롭기 때문에(X는 magicNumber에 의해 바인딩됨)
+% plus에 두 변수를 전달하는 것이 작동합니다.
 
-% However, if one of the goals is fully bound and thus acts as a test,
-% then solutions which fail the test are rejected.
+% 그러나 목표 중 하나가 완전히 바인딩되어 테스트 역할을 하는 경우,
+% 테스트에 실패하는 해는 거부됩니다.
 ?- magicNumber(X), X > 40.           % X = 42
-?- magicNumber(X), X > 100.          % False
+?- magicNumber(X), X > 100.          % 거짓
 
-% To see how Prolog actually handles this, let's introduce the print
-% predicate. Print always succeeds, never binds any variables, and
-% prints out its parameter as a side effect.
+% Prolog가 실제로 이것을 어떻게 처리하는지 보려면, print
+% 술어를 소개합시다. Print는 항상 성공하고, 변수를 바인딩하지 않으며,
+% 부작용으로 매개변수를 출력합니다.
 
-?- print("Hello").                   % "Hello" true.
-?- X = 2, print(X).                  % 2 true.
-?- X = 2, print(X), X = 3.           % 2 false - print happens immediately when
-                                     % it is encountered, even though the overall
-                                     % compound goal fails (because 2 != 3,
-                                     % see the example above).
+?- print("Hello").                   % "Hello" 참.
+?- X = 2, print(X).                  % 2 참.
+?- X = 2, print(X), X = 3.           % 2 거짓 - 전체 복합 목표가
+                                     % 실패하더라도(2 != 3이므로,
+                                     % 위 예제 참조) print는
+                                     % 마주치면 즉시 발생합니다.
 
-% By using Print we can see what actually happens when we give a
-% compound goal including a test that sometimes fails.
+% Print를 사용하여 때때로 실패하는 테스트를 포함하는
+% 복합 목표를 줄 때 실제로 무슨 일이 일어나는지 볼 수 있습니다.
 ?- magicNumber(X), print(X), X > 40. % 7 9 42 X = 42 .
 
-% MagicNumber(X) unifies X with its first possibility, 7.
-% Print(X) prints out 7.
-% X > 40 tests if 7 > 40. It is not, so it fails.
-% However, Prolog remembers that magicNumber(X) offered multiple
-% solutions. So it _backtracks_ to that point in the code to try
-% the next solution, X = 9.
-% Having backtracked it must work through the compound goal
-% again from that point including the Print(X). So Print(X) prints out
-% 9.
-% X > 40 tests if 9 > 40 and fails again.
-% Prolog remembers that magicNumber(X) still has solutions and
-% backtracks. Now X = 42.
-% It works through the Print(X) again and prints 42.
-% X > 40 tests if 42 > 40 and succeeds so the result bound to X
-% The same backtracking process is used when you reject a result at
-% the interactive prompt by pressing ;, for example:
+% MagicNumber(X)는 X를 첫 번째 가능성인 7과 통일합니다.
+% Print(X)는 7을 출력합니다.
+% X > 40은 7 > 40인지 테스트합니다. 그렇지 않으므로 실패합니다.
+% 그러나 Prolog는 magicNumber(X)가 여러 해를 제공했다는 것을
+% 기억합니다. 그래서 다음 해인 X = 9를 시도하기 위해 코드의 해당 지점으로
+% _백트래킹_합니다.
+% 백트래킹한 후에는 Print(X)를 포함하여 해당 지점에서
+% 복합 목표를 다시 작업해야 합니다. 그래서 Print(X)는 9를 출력합니다.
+% X > 40은 9 > 40인지 테스트하고 다시 실패합니다.
+% Prolog는 magicNumber(X)가 여전히 해를 가지고 있음을 기억하고
+% 백트래킹합니다. 이제 X = 42입니다.
+% Print(X)를 다시 작업하고 42를 출력합니다.
+% X > 40은 42 > 40인지 테스트하고 성공하므로 X에 바인딩된 결과
+% 대화형 프롬프트에서 ;를 눌러 결과를 거부할 때도 동일한
+% 백트래킹 프로세스가 사용됩니다. 예를 들면 다음과 같습니다.
 
 ?- magicNumber(X), print(X), X > 8.  % 7 9 X = 9 ;
                                      % 42 X = 42.
 
-% As you saw above we can define our own simple predicates as facts.
-% More complex predicates are defined as rules, like this:
+% 위에서 보았듯이 우리는 사실로서 간단한 술어를 정의할 수 있습니다.
+% 더 복잡한 술어는 다음과 같이 규칙으로 정의됩니다.
 
 nearby(X,Y) :- X = Y.
 nearby(X,Y) :- Y is X+1.
 nearby(X,Y) :- Y is X-1.
 
-% nearby(X,Y) is true if Y is X plus or minus 1.
-% However this predicate could be improved. Here's why:
+% nearby(X,Y)는 Y가 X에 1을 더하거나 뺀 경우 참입니다.
+% 그러나 이 술어는 개선될 수 있습니다. 이유는 다음과 같습니다.
 
-?- nearby(2,3).                      % True ; False.
-% Because we have three possible definitions, Prolog sees this as 3
-% possibilities. X = Y fails, so Y is X+1 is then tried and succeeds,
-% giving the True answer. But Prolog still remembers there are more
-% possibilities for nearby() (in Prolog terminology, "it has a
-% choice point") even though "Y is X-1" is doomed to fail, and gives us
-% the option of rejecting the True answer, which doesn't make a whole
-% lot of sense.
+?- nearby(2,3).                      % 참 ; 거짓.
+% 세 가지 가능한 정의가 있으므로 Prolog는 이것을 3가지
+% 가능성으로 봅니다. X = Y는 실패하므로 Y is X+1이 시도되고 성공하여
+% 참 답변을 제공합니다. 그러나 Prolog는 "Y is X-1"이 실패할 운명임에도 불구하고
+% nearby()에 대한 더 많은 가능성이 있다는 것을 여전히 기억하고(Prolog 용어로는
+% "선택 지점이 있음"), 우리에게 참 답변을 거부할 수 있는 옵션을 제공하는데,
+% 이는 별로 의미가 없습니다.
 
 ?- nearby(4, X).                     % X = 4 ;
                                      % X = 5 ;
-                                     % X = 3. Great, this works
+                                     % X = 3. 좋습니다, 이것은 작동합니다.
 ?- nearby(X, 4).                     % X = 4 ;
-                                     % error
-% After rejecting X = 4 prolog backtracks and tries "Y is X+1" which is
-% "4 is X+1" after substitution of parameters. But as we know from above
-% "is" requires its argument to be fully instantiated and it is not, so
-% an error occurs.
+                                     % 오류
+% X = 4를 거부한 후 Prolog는 백트래킹하여 "Y is X+1"을 시도하는데,
+% 이는 매개변수 치환 후 "4 is X+1"입니다. 그러나 위에서 알 수 있듯이
+% "is"는 인수가 완전히 인스턴스화되어야 하지만 그렇지 않으므로
+% 오류가 발생합니다.
 
-% One way to solve the first problem is to use a construct called the
-% cut, !, which does nothing but which cannot be backtracked past.
+% 첫 번째 문제를 해결하는 한 가지 방법은 컷이라는 구문을 사용하는 것입니다.
+% !, 아무것도 하지 않지만 백트래킹할 수 없습니다.
 
 nearbychk(X,Y) :- X = Y, !.
 nearbychk(X,Y) :- Y is X+1, !.
 nearbychk(X,Y) :- Y is X-1.
 
-% This solves the first problem:
-?- nearbychk(2,3).                   % True.
+% 이것은 첫 번째 문제를 해결합니다.
+?- nearbychk(2,3).                   % 참.
 
-% But unfortunately it has consequences:
+% 하지만 불행히도 다음과 같은 결과가 있습니다.
 ?- nearbychk(2,X).                   % X = 2.
-% Because Prolog cannot backtrack past the cut after X = Y, it cannot
-% try the possibilities "Y is X+1" and "Y is X-1", so it only generates
-% one solution when there should be 3.
-% However if our only interest is in checking if numbers are nearby,
-% this may be all we need, thus the name nearbychk.
-% This structure is used in Prolog itself from time to time (for example
-% in list membership).
+% Prolog는 X = Y 이후의 컷을 백트래킹할 수 없으므로
+% "Y is X+1" 및 "Y is X-1" 가능성을 시도할 수 없으므로 3개의 해가 있어야 할 때
+% 하나의 해만 생성합니다.
+% 그러나 우리의 유일한 관심사가 숫자가 근처에 있는지 확인하는 것이라면
+% 이것만으로도 충분할 수 있으므로 이름이 nearbychk입니다.
+% 이 구조는 Prolog 자체에서도 때때로 사용됩니다(예: 목록 멤버십).
 
-% To solve the second problem we can use built-in predicates in Prolog
-% to verify if a parameter is bound or free and adjust our calculations
-% appropriately.
+% 두 번째 문제를 해결하기 위해 Prolog의 내장 술어를 사용하여
+% 매개변수가 바인딩되었는지 또는 자유로운지 확인하고 계산을
+% 적절하게 조정할 수 있습니다.
 nearby2(X,Y) :- nonvar(X), X = Y.
 nearby2(X,Y) :- nonvar(X), Y is X+1.
 nearby2(X,Y) :- nonvar(X), Y is X-1.
 nearby2(X,Y) :- var(X), nonvar(Y), nearby2(Y,X).
 
-% We can combine this with a cut in the case where both variables are
-% bound, to solve both problems.
+% 두 변수가 모두 바인딩된 경우 컷과 결합하여 두 문제를 모두 해결할 수 있습니다.
 nearby3(X,Y) :- nonvar(X), nonvar(Y), nearby2(X,Y), !.
 nearby3(X,Y) :- nearby2(X,Y).
 
-% However when writing a predicate it is not normally necessary to go to
-% these lengths to perfectly support every possible parameter
-% combination. It suffices to support parameter combinations we need to
-% use in the program. It is a good idea to document which combinations
-% are supported. In regular Prolog this is informally in structured
-% comments, but in some Prolog variants like Visual Prolog and Mercury
-% this is mandatory and checked by the compiler.
+% 그러나 술어를 작성할 때 모든 가능한 매개변수 조합을 완벽하게 지원하기 위해
+% 이러한 길이를 갈 필요는 없습니다. 프로그램에서 사용해야 하는
+% 매개변수 조합을 지원하는 것으로 충분합니다. 어떤 조합이 지원되는지
+% 문서화하는 것이 좋습니다. 일반 Prolog에서는 구조화된 주석에서 비공식적으로
+% 수행되지만 Visual Prolog 및 Mercury와 같은 일부 Prolog 변형에서는
+% 이것이 필수이며 컴파일러에서 확인됩니다.
 
-% Here is the structured comment declaration for nearby3:
+% 다음은 nearby3에 대한 구조화된 주석 선언입니다.
 
 %!    nearby3(+X:Int, +Y:Int) is semideterministic.
 %!    nearby3(+X:Int, -Y:Int) is multi.
 %!    nearby3(-X:Int, +Y:Int) is multi.
 
-% For each variable we list a type. The + or - before the variable name
-% indicates if the parameter is bound (+) or free (-). The word after
-% "is" describes the behaviour of the predicate:
-%   semideterministic - can succeed once or fail
-%     ( Two specific numbers are either nearby or not )
-%   multi - can succeed multiple times but cannot fail
-%     ( One number surely has at least 3 nearby numbers )
-%  Other possibilities are:
-%    det - always succeeds exactly once (eg, print)
-%    nondet - can succeed multiple times or fail.
-% In Prolog these are just structured comments and strictly informal but
-% extremely useful.
+% 각 변수에 대해 타입을 나열합니다. 변수 이름 앞의 + 또는 -는
+% 매개변수가 바인딩되었는지(+) 또는 자유로운지(-)를 나타냅니다.
+% "is" 뒤의 단어는 술어의 동작을 설명합니다.
+%   semideterministic - 한 번 성공하거나 실패할 수 있습니다.
+%     ( 두 특정 숫자는 근처에 있거나 그렇지 않습니다 )
+%   multi - 여러 번 성공할 수 있지만 실패할 수는 없습니다.
+%     ( 한 숫자는 확실히 적어도 3개의 근처 숫자를 가집니다 )
+%  다른 가능성은 다음과 같습니다.
+%    det - 항상 정확히 한 번 성공합니다 (예: print)
+%    nondet - 여러 번 성공하거나 실패할 수 있습니다.
+% Prolog에서는 이것들이 단지 구조화된 주석이며 엄격하게 비공식적이지만
+% 매우 유용합니다.
 
-% An unusual feature of Prolog is its support for atoms. Atoms are
-% essentially members of an enumerated type that are created on demand
-% whenever an unquoted non variable value is used. For example:
-character(batman).            % Creates atom value batman
-character(robin).             % Creates atom value robin
-character(joker).             % Creates atom value joker
-character(darthVader).        % Creates atom value darthVader
-?- batman = batman.           % True - Once created value is reused
-?- batman = batMan.           % False - atoms are case sensitive
-?- batman = darthVader.       % False - atoms are distinct
+% Prolog의 특이한 특징은 원자를 지원한다는 것입니다. 원자는
+% 본질적으로 따옴표 없는 비변수 값이 사용될 때마다
+% 필요에 따라 생성되는 열거형 타입의 멤버입니다. 예를 들면 다음과 같습니다.
+character(batman).            % 원자 값 batman 생성
+character(robin).             % 원자 값 robin 생성
+character(joker).             % 원자 값 joker 생성
+character(darthVader).        % 원자 값 darthVader 생성
+?- batman = batman.           % 참 - 생성되면 값이 재사용됩니다.
+?- batman = batMan.           % 거짓 - 원자는 대소문자를 구분합니다.
+?- batman = darthVader.       % 거짓 - 원자는 구별됩니다.
 
-% Atoms are popular in examples but were created on the assumption that
-% Prolog would be used interactively by end users - they are less
-% useful for modern applications and some Prolog variants abolish them
-% completely. However they can be very useful internally.
+% 원자는 예제에서 인기가 있지만 Prolog가 최종 사용자에 의해
+% 대화식으로 사용될 것이라는 가정 하에 만들어졌습니다. 현대적인 응용 프로그램에는
+% 덜 유용하며 일부 Prolog 변형에서는 완전히 폐지되었습니다.
+% 그러나 내부적으로는 매우 유용할 수 있습니다.
 
-% Loops in Prolog are classically written using recursion.
-% Note that below, writeln is used instead of print because print is
-% intended for debugging.
+% Prolog의 루프는 고전적으로 재귀를 사용하여 작성됩니다.
+% 아래에서는 print가 디버깅용이므로 print 대신 writeln이
+% 사용되었습니다.
 
 %!    countTo(+X:Int) is deterministic.
 %!    countUpTo(+Value:Int, +Limit:Int) is deterministic.
@@ -284,11 +277,11 @@ countUpTo(Value, Limit) :- Value \= Limit, writeln(Value),
     NextValue is Value+1,
     countUpTo(NextValue, Limit).
 
-?- countTo(10).                      % Outputs 1 to 10
+?- countTo(10).                      % 1에서 10까지 출력
 
-% Note the use of multiple declarations in countUpTo to create an
-% IF test. If Value = Limit fails the second declaration is run.
-% There is also a more elegant syntax.
+% countUpTo에서 IF 테스트를 만들기 위해 여러 선언을 사용하는 것에
+% 유의하십시오. Value = Limit가 실패하면 두 번째 선언이 실행됩니다.
+% 더 우아한 구문도 있습니다.
 
 %!    countUpTo2(+Value:Int, +Limit:Int) is deterministic.
 countUpTo2(Value, Limit) :- writeln(Value),
@@ -296,46 +289,43 @@ countUpTo2(Value, Limit) :- writeln(Value),
         NextValue is Value+1,
         countUpTo2(NextValue, Limit)).
 
-?- countUpTo2(1,10).                 % Outputs 1 to 10
+?- countUpTo2(1,10).                 % 1에서 10까지 출력
 
-% If a predicate returns multiple times it is often useful to loop
-% through all the values it returns. Older Prologs used a hideous syntax
-% called a "failure-driven loop" to do this, but newer ones use a higher
-% order function.
+% 술어가 여러 번 반환하는 경우 반환하는 모든 값을 반복하는 것이
+% 종종 유용합니다. 오래된 Prolog는 "실패 기반 루프"라는 끔찍한 구문을
+% 사용하여 이를 수행했지만, 최신 Prolog는 고차 함수를 사용합니다.
 
 %!    countTo2(+X:Int) is deterministic.
 countTo2(X) :- forall(between(1,X,Y),writeln(Y)).
 
-?- countTo2(10).                     % Outputs 1 to 10
+?- countTo2(10).                     % 1에서 10까지 출력
 
-% Lists are given in square brackets. Use memberchk to check membership.
-% A group is safe if it doesn't include Joker or does include Batman.
+% 리스트는 대괄호로 주어집니다. 멤버십을 확인하려면 memberchk를 사용하십시오.
+% 그룹은 Joker를 포함하지 않거나 Batman을 포함하는 경우 안전합니다.
 
 %!     safe(Group:list(atom)) is deterministic.
 safe(Group) :- memberchk(joker, Group) -> memberchk(batman, Group) ; true.
 
-?- safe([robin]).                    % True
-?- safe([joker]).                    % False
-?- safe([joker, batman]).            % True
+?- safe([robin]).                    % 참
+?- safe([joker]).                    % 거짓
+?- safe([joker, batman]).            % 참
 
-% The member predicate works like memberchk if both arguments are bound,
-% but can accept free variables and thus can be used to loop through
-% lists.
+% member 술어는 두 인수가 모두 바인딩된 경우 memberchk처럼 작동하지만,
+% 자유 변수를 받아들일 수 있으므로 리스트를 반복하는 데 사용할 수 있습니다.
 
 ?- member(X, [1,2,3]).               % X = 1 ; X = 2 ; X = 3 .
 ?- forall(member(X,[1,2,3]),
        (Y is X+1, writeln(Y))).      % 2 3 4
 
-% The maplist function can be used to generate lists based on other
-% lists. Note that the output list is a free variable, causing an
-% undefined value to be passed to plus, which is then bound by
-% unification. Also notice the use of currying on the plus predicate -
-% it's a 3 argument predicate, but we specify only the first, because
-% the second and third are filled in by maplist.
+% maplist 함수를 사용하여 다른 리스트를 기반으로 리스트를 생성할 수 있습니다.
+% 출력 리스트는 자유 변수이므로 정의되지 않은 값이 plus에 전달되고,
+% 그런 다음 통일에 의해 바인딩됩니다. 또한 plus 술어에 대한 커링 사용에
+% 유의하십시오. 3개의 인수를 가진 술어이지만, 두 번째와 세 번째는
+% maplist에 의해 채워지므로 첫 번째만 지정합니다.
 
 ?- maplist(plus(1), [2,3,4], Output).   % Output = [3, 4, 5].
 ```
 
-## Further reading
+## 더 읽을거리
 
 * [SWI-Prolog](http://www.swi-prolog.org/)

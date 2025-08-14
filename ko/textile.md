@@ -8,495 +8,487 @@ filename: learn-textile.textile
 ---
 
 
-Textile is a lightweight markup language that uses a text formatting syntax to
-convert plain text into structured HTML markup. The syntax is a shorthand
-version of HTML that is designed to be easy to read and write. Textile is used
-for writing articles, forum posts, readme documentation, and any other type of
-written content published online.
+Textile은 텍스트 서식 구문을 사용하여 일반 텍스트를 구조화된 HTML 마크업으로 변환하는 경량 마크업 언어입니다. 구문은 읽고 쓰기 쉽도록 설계된 HTML의 약식 버전입니다. Textile은 기사, 포럼 게시물, readme 문서 및 온라인에 게시되는 기타 모든 유형의 서면 콘텐츠를 작성하는 데 사용됩니다.
 
-- [Comments](#comments)
-- [Paragraphs](#paragraphs)
-- [Headings](#headings)
-- [Simple Text Styles](#simple-text-styles)
-- [Lists](#lists)
-- [Code blocks](#code-blocks)
-- [Horizontal rule](#horizontal-rule)
-- [Links](#links)
-- [Images](#images)
-- [Footnotes and Endnotes](#footnotes-and-endnotes)
-- [Tables](#tables)
-- [Character Conversions](#character-conversions)
+- [주석](#comments)
+- [단락](#paragraphs)
+- [제목](#headings)
+- [간단한 텍스트 스타일](#simple-text-styles)
+- [목록](#lists)
+- [코드 블록](#code-blocks)
+- [가로줄](#horizontal-rule)
+- [링크](#links)
+- [이미지](#images)
+- [각주 및 미주](#footnotes-and-endnotes)
+- [표](#tables)
+- [문자 변환](#character-conversions)
 - [CSS](#css)
-- [Spans and Divs](#spans-and-divs)
-- [Additional Info](#additional-info)
+- [스팬 및 Div](#spans-and-divs)
+- [추가 정보](#additional-info)
 
-## Comments
+## 주석
 
 ```
-###. Comments begin with three (3) '#' signs followed by a full-stop period '.'.
-Comments can span multiple lines until a blank line is reached.
+###. 주석은 세(3) 개의 '#' 기호와 마침표 '.'로 시작합니다.
+주석은 빈 줄이 나올 때까지 여러 줄에 걸쳐 있을 수 있습니다.
 
 ###..
-Multi-line comments (including blank lines) are indicated by three (3) '#'
-signs followed by two (2) full-stop periods '..'.
+여러 줄 주석(빈 줄 포함)은 세(3) 개의 '#'
+기호와 두(2) 개의 마침표 '..'로 표시됩니다.
 
-This line is also part of the above comment.
+이 줄도 위 주석의 일부입니다.
 
-The comment continues until the next block element is reached
+주석은 다음 블록 요소가 나올 때까지 계속됩니다
 
-p. This line is not commented
+p. 이 줄은 주석 처리되지 않았습니다
 
-<!-- HTML comments are also…
+<!-- HTML 주석도…
 
-respected -->
+존중됩니다 -->
 ```
 
-## Paragraphs
+## 단락
 
 ```
-###. Paragraphs are a one or multiple adjacent lines of text separated by one or
-multiple blank lines. They can also be indicated explicitly with a 'p. '
+###. 단락은 하나 이상의 빈 줄로 구분된 하나 또는 여러 개의 인접한 텍스트 줄입니다. 'p. '로 명시적으로 표시할 수도 있습니다.
 
-This is a paragraph. I'm typing in a paragraph isn't this fun?
+이것은 단락입니다. 단락에 입력하는 것이 재미있지 않나요?
 
-Now I'm in paragraph 2.
-I'm still in paragraph 2 too!
-Line breaks without blank spaces are equivalent to a <br /> in XHTML.
+이제 단락 2에 있습니다.
+저도 아직 단락 2에 있습니다!
+빈 공간이 없는 줄 바꿈은 XHTML의 <br />과 동일합니다.
 
-p. I'm an explicitly defined paragraph
+p. 저는 명시적으로 정의된 단락입니다
 
- Lines starting with a blank space are not wrapped in <p>..</p> tags.
+ 빈 공간으로 시작하는 줄은 <p>..</p> 태그로 래핑되지 않습니다.
 
-###. Paragraphs (and all block elements) can be aligned using shorthand:
+###. 단락(및 모든 블록 요소)은 약식으로 정렬할 수 있습니다:
 
-p<. Left aligned paragraph (default).
+p<. 왼쪽 정렬 단락(기본값).
 
-p>. Right aligned paragraph.
+p>. 오른쪽 정렬 단락.
 
-p=. Centered paragraph.
+p=. 가운데 정렬 단락.
 
-p<>. Justified paragraph.
+p<>. 양쪽 정렬 단락.
 
-h3>. Right aligned <h3>
-
-
-###. Paragraphs can be indented using a parentheses for each em
-Indentation utilizes padding-[left/right] css styles.
-
-p(. Left indent 1em.
-
-p((. Left indent 2em.
-
-p))). Right indent 3em.
-
-h2). This is equivalent to <h2 style="padding-right: 1em;">..</h2>
+h3>. 오른쪽 정렬 <h3>
 
 
-###. Block quotes use the tag 'bq.'
+###. 단락은 각 em에 대해 괄호를 사용하여 들여쓸 수 있습니다.
+들여쓰기는 padding-[left/right] css 스타일을 사용합니다.
 
-bq. This is a block quote.
+p(. 왼쪽 1em 들여쓰기.
 
-bq.:http://someurl.com You can include a citation URL immediately after the '.'
+p((. 왼쪽 2em 들여쓰기.
 
-bq.. Multi-line blockquotes containing
+p))). 오른쪽 3em 들여쓰기.
 
-blank lines are indicated using two periods
-
-p. Multi-line blockquotes continue until a new block element is reached.
-
-bq. You can add a footer to a blockquote using html:
-<footer>citation text</footer>
+h2). 이것은 <h2 style="padding-right: 1em;">..</h2>와 동일합니다.
 
 
-###. Preformatted text blocks:
+###. 블록 인용은 'bq.' 태그를 사용합니다.
 
-pre. This text is preformatted.  <= those two spaces will carry through.
+bq. 이것은 블록 인용입니다.
 
-pre.. This is a multi-line preformatted…
+bq.:http://someurl.com '.' 바로 뒤에 인용 URL을 포함할 수 있습니다.
 
-…text block that includes blank lines
+bq.. 빈 줄을 포함하는 여러 줄 블록 인용은
+두 개의 마침표를 사용하여 표시됩니다
 
-p. End a multi-line preformatted text block with a new block element.
+p. 여러 줄 블록 인용은 새 블록 요소가 나올 때까지 계속됩니다.
+
+bq. html을 사용하여 블록 인용에 바닥글을 추가할 수 있습니다:
+<footer>인용 텍스트</footer>
+
+
+###. 서식이 미리 지정된 텍스트 블록:
+
+pre. 이 텍스트는 서식이 미리 지정되었습니다.  <= 저 두 개의 공백은 그대로 유지됩니다.
+
+pre.. 이것은 여러 줄로 된 서식이 미리 지정된...
+
+…빈 줄을 포함하는 텍스트 블록입니다
+
+p. 여러 줄로 된 서식이 미리 지정된 텍스트 블록을 새 블록 요소로 끝냅니다.
 ```
 
-## Headings
+## 제목
 
-You can create HTML elements `<h1>` through `<h6>` easily by prepending the
-text you want to be in that element by 'h#.' where # is the level 1-6.
-A blank line is required after headings.
+<h1>부터 <h6>까지의 HTML 요소를 해당 요소에 넣고 싶은 텍스트 앞에 'h#.'을 붙여 쉽게 만들 수 있습니다. 여기서 #은 1-6 수준입니다.
+제목 뒤에는 빈 줄이 필요합니다.
 
 
 ```
-h1. This is an <h1>
+h1. 이것은 <h1>입니다
 
-h2. This is an <h2>
+h2. 이것은 <h2>입니다
 
-h3. This is an <h3>
+h3. 이것은 <h3>입니다
 
-h4. This is an <h4>
+h4. 이것은 <h4>입니다
 
-h5. This is an <h5>
+h5. 이것은 <h5>입니다
 
-h6. This is an <h6>
+h6. 이것은 <h6>입니다
 ```
 
 
-## Simple text styles
+## 간단한 텍스트 스타일
 
 ```
-###. Bold and strong text are indicated using asterisks:
+###. 굵은 텍스트와 강조 텍스트는 별표를 사용하여 표시됩니다:
 
-*This is strong text*
-**This is bold text**
-This is [*B*]old text within a word.
+*이것은 강조 텍스트입니다*
+**이것은 굵은 텍스트입니다**
+이것은 단어 안의 [*굵은*] 텍스트입니다.
 
-*Strong* and **Bold** usually display the same in browsers
-but they use different HTML markup, thus the distinction.
+*강조*와 **굵게**는 일반적으로 브라우저에서 동일하게 표시되지만
+다른 HTML 마크업을 사용하므로 구별됩니다.
 
-###. Italics and emphasized text are indicated using underscores.
+###. 이탤릭체 및 강조 텍스트는 밑줄을 사용하여 표시됩니다.
 
-_This is Emphasized text_
-__This is Italics text__
-This is It[_al_]ics within a word.
+_이것은 강조된 텍스트입니다_
+__이것은 이탤릭체 텍스트입니다__
+이것은 단어 안의 이탤[_릭_]체입니다.
 
-_Emphasized_ and __Italics__ text typically display the same in browsers,
-but again, they use different HTML markup and thus the distinction.
+_강조된_ 텍스트와 __이탤릭체__ 텍스트는 일반적으로 브라우저에서 동일하게 표시되지만,
+다시 말하지만, 다른 HTML 마크업을 사용하므로 구별됩니다.
 
-###. Superscripts and Subscripts use carats and tildes:
+###. 위 첨자와 아래 첨자는 캐럿과 물결표를 사용합니다:
 
-Superscripts are 2 ^and^ to none, but subscripts are CO ~2~ L too.
-Note the spaces around the superscripts and subscripts.
+위 첨자는 2^와^ 같고, 아래 첨자는 CO~2~L입니다.
+위 첨자와 아래 첨자 주위의 공백에 유의하십시오.
 
-To avoid the spaces, add square brackets around them:
-2[^and^] and CO[~2~]L
+공백을 피하려면 대괄호를 사용하십시오:
+2[^and^] 및 CO[~2~]L
 
-###. Insertions and deletions are indicated using -/+ symbols:
-This is -deleted- text and this is +inserted+ text.
+###. 삽입 및 삭제는 -/+ 기호로 표시됩니다:
+이것은 -삭제된- 텍스트이고 이것은 +삽입된+ 텍스트입니다.
 
-###. Citations are indicated using double '?':
+###. 인용은 이중 '?'로 표시됩니다:
 
-??This is a cool citation??
+??이것은 멋진 인용입니다??
 ```
 
-## Lists
+## 목록
 
 ```
-###. Unordered lists can be made using asterisks '*' to indicate levels:
+###. 순서 없는 목록은 별표 '*'를 사용하여 수준을 나타낼 수 있습니다:
 
-* Item
-** Sub-Item
-* Another item
-** Another sub-item
-** Yet another sub-item
-*** Three levels deep
+* 항목
+** 하위 항목
+* 다른 항목
+** 다른 하위 항목
+** 또 다른 하위 항목
+*** 3단계 깊이
 
-###. Ordered lists are done with a pound sign '#':
+###. 순서 있는 목록은 파운드 기호 '#'로 수행됩니다:
 
-# Item one
-# Item two
-## Item two-a
-## Item two-b
-# Item three
-** Mixed unordered list within ordered list
+# 항목 1
+# 항목 2
+## 항목 2-a
+## 항목 2-b
+# 항목 3
+** 순서 있는 목록 내의 혼합된 순서 없는 목록
 
-###. Ordered lists can start above 1 and can continue after another block:
+###. 순서 있는 목록은 1 이상에서 시작할 수 있으며 다른 블록 뒤에 계속될 수 있습니다:
 
-#5 Item 5
-# Item 6
+#5 항목 5
+# 항목 6
 
-additional paragraph
+추가 단락
 
-#_ Item 7 continued from above
-# Item 8
+#_ 위에서 계속되는 항목 7
+# 항목 8
 
-###. Definition lists are indicated with a dash and assignment:
+###. 정의 목록은 대시와 할당으로 표시됩니다:
 
-- First item := first item definition
-- Second := second def.
-- Multi-line :=
-Multi-line
-definition =:
+- 첫 번째 항목 := 첫 번째 항목 정의
+- 두 번째 := 두 번째 정의
+- 여러 줄 :=
+여러 줄
+정의 =:
 ```
 
-## Code blocks
+## 코드 블록
 
 ```
-Code blocks use the 'bc.' shorthand:
+코드 블록은 'bc.' 약식을 사용합니다:
 
-bc. This is code
-    So is this
+bc. 이것은 코드입니다
+    이것도 마찬가지입니다
 
-This is outside of the code block
+이것은 코드 블록 밖에 있습니다
 
-bc.. This is a multi-line code block
+bc.. 이것은 여러 줄 코드 블록입니다
 
-Blank lines are included in the multi-line code block
+빈 줄은 여러 줄 코드 블록에 포함됩니다
 
-p. End a multi-line code block with any block element
+p. 여러 줄 코드 블록을 모든 블록 요소로 끝냅니다
 
-p. Indicate @inline code@ using the '@' symbol.
+p. '@' 기호를 사용하여 @인라인 코드@를 표시합니다.
 ```
 
-## Horizontal rule
+## 가로줄
 
-Horizontal rules (`<hr/>`) are easily added with two hyphens
+가로줄(`<hr/>`)은 두 개의 하이픈으로 쉽게 추가할 수 있습니다.
 
 ```
 --
 ```
 
-## Links
+## 링크
 
 ```
-###. Link text is in quotes, followed by a colon and the URL:
+###. 링크 텍스트는 따옴표 안에 있고, 그 뒤에 콜론과 URL이 옵니다:
 
-"Link text":http://linkurl.com/ plain text.
+"링크 텍스트":http://linkurl.com/ 일반 텍스트.
 
-"Titles go in parentheses at the end of the link text"(mytitle):http://url.com
-###. produces <a href... title="mytitle">...</a>
+"제목은 링크 텍스트 끝에 괄호 안에 들어갑니다"(mytitle):http://url.com
+###. <a href... title="mytitle">...</a>를 생성합니다
 
-###. Use square brackets when the link text or URL might be ambiguous:
-["Textile on Wikipedia":http://en.wikipedia.org/wiki/Textile_(markup_language)]
+###. 링크 텍스트나 URL이 모호할 수 있을 때 대괄호를 사용하십시오:
+["위키백과의 Textile":http://en.wikipedia.org/wiki/Textile_(markup_language)]
 
-###. Named links are useful if the same URL is referenced multiple times.
-Multiple "references":txstyle to the "txstyle":txstyle website.
+###. 동일한 URL이 여러 번 참조될 경우 명명된 링크가 유용합니다.
+"txstyle":txstyle 웹사이트에 대한 여러 "참조":txstyle.
 
 [txstyle]https://txstyle.org/
 ```
 
-## Images
+## 이미지
 
 ```
-###. Images can be included by surrounding its URL with exclamation marks (!)
-Alt text is included in parenthesis after the URL, and they can be linked too:
+###. 이미지는 URL을 느낌표(!)로 둘러싸서 포함할 수 있습니다.
+대체 텍스트는 URL 뒤에 괄호 안에 포함되며 링크할 수도 있습니다:
 
 !http://imageurl.com!
 
-!http://imageurl.com(image alt-text)!
+!http://imageurl.com(이미지 대체 텍스트)!
 
-!http://imageurl.com(alt-text)!:http://image-link-url.com
+!http://imageurl.com(대체 텍스트)!:http://image-link-url.com
 ```
 
-## Footnotes and Endnotes
+## 각주 및 미주
 
 ```
-A footnote is indicated with the reference id in square brackets.[1]
+각주는 대괄호 안에 참조 ID로 표시됩니다.[1]
 
-fn1. Footnote text with a "link":http://link.com.
+fn1. "링크":http://link.com가 있는 각주 텍스트.
 
-A footnote without a link.[2!]
+링크가 없는 각주.[2!]
 
-fn2. The corresponding unlinked footnote.
+fn2. 해당 링크 없는 각주.
 
-A footnote with a backlink from the footnote back to the text.[3]
+각주에서 텍스트로 다시 연결되는 백링크가 있는 각주.[3]
 
-fn3^. This footnote links back to the in-text citation.
+fn3^. 이 각주는 텍스트 내 인용으로 다시 연결됩니다.
 
 
-Endnotes are automatically numbered[#first] and are indicated using square[#second]
-brackets and a key value[#first]. They can also be unlinked[#unlinkednote!]
+미주는 자동으로 번호가 매겨지고[#first] 대괄호와 키 값[#second]으로 표시됩니다[#first]. 링크되지 않을 수도 있습니다[#unlinkednote!]
 
-###. Give the endnotes text:
+###. 미주 텍스트 제공:
 
-note#first. This is the first endnote text.
+note#first. 이것은 첫 번째 미주 텍스트입니다.
 
-note#second. This is the second text.
+note#second. 이것은 두 번째 텍스트입니다.
 
-note#unlinkednote. This one isn't linked from the text.
+note#unlinkednote. 이것은 텍스트에서 링크되지 않았습니다.
 
-### Use the notelist block to place the list of notes in the text:
-This list will start with #1. Can also use alpha or Greeks.
-notelist:1. ###. start at 1 (then 2, 3, 4...)
-notelist:c. ###. start at c (then d, e, f...)
-notelist:α. ###. start at α (then β, γ, δ...)
+### notelist 블록을 사용하여 텍스트에 노트 목록을 배치합니다:
+이 목록은 #1부터 시작합니다. 알파벳이나 그리스 문자를 사용할 수도 있습니다.
+notelist:1. ###. 1에서 시작 (그런 다음 2, 3, 4...)
+notelist:c. ###. c에서 시작 (그런 다음 d, e, f...)
+notelist:α. ###. α에서 시작 (그런 다음 β, γ, δ...)
 
-###. The notelist syntax is as follows:
+###. notelist 구문은 다음과 같습니다:
 
-notelist.    Notes with backlinks to every citation made to them.
-notelist+.   Notes with backlinks to every citation made to them,
-               followed by the unreferenced notes.
-notelist^.   Notes with one backlink to the first citation made to each note.
-notelist^+.  Notes with one backlink to the first citation made to each note,
-               followed by unreferenced notes.
-notelist!.   Notes with no backlinks to the citations.
-notelist!+.  Notes with no backlinks to the citations, followed by
-               unreferenced notes.
+notelist.    모든 인용에 대한 백링크가 있는 노트.
+notelist+.   모든 인용에 대한 백링크가 있는 노트,
+               그 뒤에 참조되지 않은 노트가 옵니다.
+notelist^.   각 노트에 대한 첫 번째 인용에 대한 백링크가 하나 있는 노트.
+notelist^+.  각 노트에 대한 첫 번째 인용에 대한 백링크가 하나 있는 노트,
+               그 뒤에 참조되지 않은 노트가 옵니다.
+notelist!.   인용에 대한 백링크가 없는 노트.
+notelist!+.  인용에 대한 백링크가 없는 노트, 그 뒤에
+               참조되지 않은 노트가 옵니다.
 ```
 
-## Tables
+## 표
 
 
 ```
-###. Tables are simple to define using the pipe '|' symbol
+###. 표는 파이프 '|' 기호를 사용하여 간단하게 정의됩니다.
 
-| A | simple | table | row |
-| And | another | table | row |
-| With an | | empty | cell |
+| A | 간단한 | 표 | 행 |
+| 그리고 | 다른 | 표 | 행 |
+| 빈 | | 셀 | 이 있는 |
 
-###. Headers are preceded by '|_.'
-|_. First Header |_. Second Header |
-| Content Cell | Content Cell |
+###. 헤더는 '|_. '가 앞에 옵니다.
+|_. 첫 번째 헤더 |_. 두 번째 헤더 |
+| 내용 셀 | 내용 셀 |
 
-###. The <thead> tag is added when |^. above and |-. below the heading are used.
+###. <thead> 태그는 제목 위 |^.와 아래 |-.가 사용될 때 추가됩니다.
 
 |^.
-|_. First Header |_. Second Header |
+|_. 첫 번째 헤더 |_. 두 번째 헤더 |
 |-.
-| Content Cell | Content Cell |
-| Content Cell | Content Cell |
+| 내용 셀 | 내용 셀 |
+| 내용 셀 | 내용 셀 |
 
-###. The <tfoot> tag is added when |~. above and |-. below the footer are used.
+###. <tfoot> 태그는 바닥글 위 |~.와 아래 |-.가 사용될 때 추가됩니다.
 
 |~.
-|\2=. A footer, centered & across two columns |
+|\2=. 두 열에 걸쳐 가운데 정렬된 바닥글 |
 |-.
-| Content Cell | Content Cell |
-| Content Cell | Content Cell |
+| 내용 셀 | 내용 셀 |
+| 내용 셀 | 내용 셀 |
 
-###. Attributes are be applied either to individual cells, rows, or to
-the entire table. Cell attributes are placed within each cell:
+###. 속성은 개별 셀, 행 또는 전체 표에 적용할 수 있습니다.
+셀 속성은 각 셀 안에 배치됩니다:
 
-|a|{color:red}. styled|cell|
+|a|{color:red}. 스타일이 적용된|셀|
 
-###. Row attributes are placed at the beginning of a row,
-followed by a dot and a space:
+###. 행 속성은 행 시작 부분에 배치되고,
+그 뒤에 점과 공백이 옵니다:
 
 (rowclass). |a|classy|row|
 
-###. Table attributes are specified by placing the special 'table.' block
-modifier immediately before the table:
+###. 표 속성은 표 바로 앞에 특수 'table.' 블록
+수정자를 배치하여 지정됩니다:
 
 table(tableclass).
 |a|classy|table|
 |a|classy|table|
 
-###. Spanning rows and columns:
-A backslash \ is used for a column span:
+###. 행과 열 병합:
+백슬래시 \는 열 병합에 사용됩니다:
 
-|\2. spans two cols |
-| col 1 | col 2 |
+|\2. 두 열 병합 |
+| 열 1 | 열 2 |
 
-###. A forward slash / is used for a row span:
+###. 슬래시 /는 행 병합에 사용됩니다:
 
-|/3. spans 3 rows | row a |
-| row b |
-| row c |
+|/3. 3개 행 병합 | 행 a |
+| 행 b |
+| 행 c |
 
-###. Vertical alignments within a table cell:
+###. 표 셀 내의 수직 정렬:
 
-|^. top alignment|
-|-. middle alignment|
-|~. bottom alignment|
+|^. 위쪽 정렬|
+|-. 가운데 정렬|
+|~. 아래쪽 정렬|
 
-###. Horizontal alignments within a table cell
+###. 표 셀 내의 수평 정렬
 
 |:\1. |400|
-|=. center alignment |
-| no alignment |
-|>. right alignment |
+|=. 가운데 정렬 |
+| 정렬 없음 |
+|>. 오른쪽 정렬 |
 ```
 
-or, for the same results
+또는 동일한 결과에 대해
 
 ```
-Col 1 | Col2 | Col3
+열 1 | 열 2 | 열 3
 :-- | :-: | --:
-Ugh this is so ugly | make it | stop
+으악 너무 못생겼어 | 멈춰 | 줘
 ```
 
 
-## Character Conversions
+## 문자 변환
 
-### Registered, Trademark, Copyright Symbols
-
-```
-RegisteredTrademark(r), Trademark(tm), Copyright (c)
-```
-
-### Acronyms
+### 등록 상표, 상표, 저작권 기호
 
 ```
-###. Acronym definitions can be provided in parentheses:
-
-EPA(Environmental Protection Agency) and CDC(Center for Disease Control)
+등록 상표(r), 상표(tm), 저작권 (c)
 ```
 
-### Angle Brackets and Ampersand
+### 약어
 
 ```
-### Angled brackets < and > and ampersands & are automatically escaped:
+###. 약어 정의는 괄호 안에 제공될 수 있습니다:
+
+EPA(환경 보호국) 및 CDC(질병 통제 예방 센터)
+```
+
+### 꺾쇠괄호 및 앰퍼샌드
+
+```
+### 꺾쇠괄호 < 및 >와 앰퍼샌드 &는 자동으로 이스케이프됩니다:
 < => &lt;
 > => &gt;
 & => &amp;
 ```
 
-### Ellipses
+### 생략 부호
 
 ```
-p. Three consecutive periods are translated into ellipses...automatically
+p. 세 개의 연속된 마침표는 생략 부호로 자동 변환됩니다...
 ```
 
-### Em and En dashes
+### Em 및 En 대시
 
 ```
-###. En dashes (short) is a hyphen surrounded by spaces:
+###. En 대시(짧음)는 공백으로 둘러싸인 하이픈입니다:
 
-This line uses an en dash to separate Oct - Nov 2018.
+이 줄은 2018년 10월 - 11월을 구분하기 위해 en 대시를 사용합니다.
 
-###. Em dashes (long) are two hyphens with or without spaces:
+###. Em 대시(길음)는 공백이 있거나 없는 두 개의 하이픈입니다:
 
-This is an em dash--used to separate clauses.
-But we can also use it with spaces -- which is a less-used convention.
-That last hyphen between 'less' and 'used' is not converted between words.
+이것은 절을 구분하는 데 사용되는 em 대시입니다--.
+그러나 공백과 함께 사용할 수도 있습니다 -- 덜 사용되는 관례입니다.
+'less'와 'used' 사이의 마지막 하이픈은 단어 사이에서 변환되지 않습니다.
 ```
 
-## Fractions and other Math Symbols
+## 분수 및 기타 수학 기호
 
 ```
-One quarter: (1/4) => ¼
-One half: (1/2) => ½
-Three quarters: (3/4) => ¾
-Degree: (o) => °
-Plus/minus: (+/-) => ±
+4분의 1: (1/4) => ¼
+2분의 1: (1/2) => ½
+4분의 3: (3/4) => ¾
+도: (o) => °
+플러스/마이너스: (+/-) => ±
 ```
 
-### Multiplication/Dimension
+### 곱셈/치수
 
 ```
-p. Numbers separated by the letter 'x' translate to the multiplication
-or dimension symbol '×':
+p. 문자 'x'로 구분된 숫자는 곱셈
+또는 치수 기호 '×'로 변환됩니다:
 3 x 5 => 3 × 5
 ```
 
-### Quotes and Apostrophes
+### 따옴표 및 아포스트로피
 
 ```
-###. Straight quotes and apostrophes are automatically converted to
-their curly equivalents:
+###. 직선 따옴표와 아포스트로피는 자동으로
+해당하는 곱슬 형태로 변환됩니다:
 
-"these", 'these', and this'n are converted to their HTML entity equivalents.
-Leave them straight using '==' around the text: =="straight quotes"==.
+"이것들", '이것들', 그리고 this'n은 해당 HTML 엔티티로 변환됩니다.
+텍스트 주위에 '=='를 사용하여 직선으로 유지하십시오: =="직선 따옴표"==.
 ```
 
 ## CSS
 
 ```
-p{color:blue}. CSS Styles are enclosed in curly braces '{}'
-p(my-class). Classes are enclosed in parenthesis
-p(#my-id). IDs are enclosed in parentheses and prefaced with a pound '#'.
+p{color:blue}. CSS 스타일은 중괄호 '{}'로 묶습니다.
+p(my-class). 클래스는 괄호로 묶습니다.
+p(#my-id). ID는 괄호로 묶고 파운드 '#' 기호를 앞에 붙입니다.
 ```
 
-## Spans and Divs
+## 스팬 및 Div
 
 ```
-%spans% are enclosed in percent symbols
-div. Divs are indicated by the 'div.' shorthand
+%스팬%은 퍼센트 기호로 묶습니다.
+div. Div는 'div.' 약식으로 표시됩니다.
 ```
 
 ---
 
-## For More Info
+## 추가 정보
 
-* TxStyle Textile Documentation: [https://txstyle.org/](https://txstyle.org/)
-* promptworks Textile Reference Manual: [https://www.promptworks.com/textile](https://www.promptworks.com/textile)
-* Redmine Textile Formatting: [http://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingTextile](http://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingTextile)
+* TxStyle Textile 문서: [https://txstyle.org/](https://txstyle.org/)
+* promptworks Textile 참조 매뉴얼: [https://www.promptworks.com/textile](https://www.promptworks.com/textile)
+* Redmine Textile 서식: [http://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingTextile](http://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingTextile)

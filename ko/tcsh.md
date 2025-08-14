@@ -7,253 +7,246 @@ contributors:
        - ["Nicholas Christopoulos", "https://github.com/nereusx"]
 ---
 
-tcsh ("tee-see-shell") is a Unix shell based on and compatible with the C shell (csh).
-It is essentially the C shell with programmable command-line completion, command-line editing,
-and a few other features.
-It is the native root shell for BSD-based systems such as FreeBSD.
+tcsh("tee-see-shell")는 C 셸(csh)을 기반으로 하고 호환되는 유닉스 셸입니다.
+본질적으로 프로그래밍 가능한 명령줄 완성, 명령줄 편집 및 몇 가지 다른 기능이 있는 C 셸입니다.
+FreeBSD와 같은 BSD 기반 시스템의 기본 루트 셸입니다.
 
-Almost all Linux distros and BSD today use tcsh instead of the original csh. In
-most cases csh is a symbolic link that points to tcsh.
-This is because tcsh is backward compatible with csh, and the last
-is not maintained anymore.
+오늘날 거의 모든 Linux 배포판과 BSD는 원래 csh 대신 tcsh를 사용합니다. 대부분의 경우 csh는 tcsh를 가리키는 심볼릭 링크입니다.
+이는 tcsh가 csh와 하위 호환되고 후자는 더 이상 유지 관리되지 않기 때문입니다.
 
-- [TCSH Home](http://www.tcsh.org/)
-- [TCSH Wikipedia](https://en.wikipedia.org/wiki/Tcsh)
-- [TCSH manual page](http://www.tcsh.org/tcsh.html/top.html)
-- [“An Introduction to the C shell”, William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
-- [TCSH Bug reports and/or features requests](https://bugs.gw.com/)
+- [TCSH 홈페이지](http://www.tcsh.org/)
+- [TCSH 위키백과](https://en.wikipedia.org/wiki/Tcsh)
+- [TCSH 매뉴얼 페이지](http://www.tcsh.org/tcsh.html/top.html)
+- ["C 셸 소개", William Joy](https://docs.freebsd.org/44doc/usd/04.csh/paper.html)
+- [TCSH 버그 리포트 및/또는 기능 요청](https://bugs.gw.com/)
 
-Some more files:
-[tcsh help command (for 132x35 terminal size)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
-[my ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
+추가 파일:
+[tcsh 도움말 명령어 (132x35 터미널 크기용)](https://github.com/nereusx/dotfiles/blob/master/csh-help),
+[나의 ~/.tcshrc](https://github.com/nereusx/dotfiles/blob/master/.tcshrc)
 
 ```tcsh
 #!/bin/tcsh
-# The first line of the script is a shebang which tells the system how to execute
-# the script: http://en.wikipedia.org/wiki/Shebang_(Unix)
-# TCSH emulates the shebang on systems that don't understand it.
+# 스크립트의 첫 번째 줄은 시스템에 스크립트 실행 방법을 알려주는 shebang입니다.
+# http://en.wikipedia.org/wiki/Shebang_(Unix)
+# TCSH는 shebang을 이해하지 못하는 시스템에서 이를 에뮬레이트합니다.
 
-# In most cases you'll use `#!/bin/tcsh -f`, because `-f` option does not load
-# any resource or start-up files, or perform any command hashing, and thus
-# starts faster.
+# 대부분의 경우 `#!/bin/tcsh -f`를 사용합니다. `-f` 옵션은
+# 리소스나 시작 파일을 로드하지 않고, 명령어 해싱을 수행하지 않으므로
+# 더 빨리 시작됩니다.
 
-# --- the echo command --------------------------------------------------------
-# The `echo` writes each word to the shell's standard output, separated by
-# spaces and terminated with a newline. The echo_style shell variable may be
-# set to emulate (or not) the flags and escape sequences.
+# --- echo 명령어 --------------------------------------------------------
+# `echo`는 각 단어를 셸의 표준 출력에 공백으로 구분하고
+# 줄 바꿈으로 종료하여 씁니다. echo_style 셸 변수는
+# 플래그와 이스케이프 시퀀스를 에뮬레이트(또는 에뮬레이트하지 않도록)하도록 설정할 수 있습니다.
 
-# Display the value of echo_style
+# echo_style 값 표시
 echo $echo_style
 
-# Enable `echo` to support backslashed characters and `-n` option (no new line)
-# This is the default for tcsh, but your distro may change it. Slackware has
-# done so.
+# `echo`가 백슬래시 문자와 `-n` 옵션(줄 바꿈 없음)을 지원하도록 활성화
+# 이것은 tcsh의 기본값이지만, 배포판에서 변경할 수 있습니다. Slackware는
+# 그렇게 했습니다.
 set echo_style = both
 
-# Prints "Hello world"
+# "Hello world" 출력
 echo Hello world
 echo "Hello world"
 echo 'Hello world'
 echo `echo Hello world`
 
-# This prints "twonlines" in one line
+# "twonlines"를 한 줄에 출력
 echo two\nlines
 
-# Prints the two lines
+# 두 줄 출력
 echo "two\nlines"
 echo 'two\nlines'
 
-# --- Basic Syntax ------------------------------------------------------------
+# --- 기본 구문 ------------------------------------------------------------
 
-# A special character (including a blank or tab) may be prevented from having
-# its special meaning by preceding it with a backslash `\`.
-# This will display the last history commands
+# 특수 문자(공백이나 탭 포함)는 앞에 백슬래시 `\`를 붙여
+# 특수 의미를 갖지 않도록 할 수 있습니다.
+# 마지막 히스토리 명령어를 표시합니다
 echo !!
-# This will not
+# 이것은 그렇지 않습니다
 echo \!\!
 
-# Single quotes prevent expanding special characters too, but some
-# characters like `!` and backslash have higher priority
-# `$` (variable value) will not expand
+# 작은따옴표도 특수 문자 확장을 방지하지만, `!`나 백슬래시 같은
+# 일부 문자는 우선순위가 더 높습니다
+# `$` (변수 값)는 확장되지 않습니다
 echo '$1 tip'
-# `!` (history) will expand
+# `!` (히스토리)는 확장됩니다
 echo '!!'
 
-# Strings enclosed by back-quotes will be executed and replaced by the result.
+# 백쿼트로 묶인 문자열은 실행되고 그 결과로 대체됩니다.
 echo `ls`
 
-# Semi-colon separate commands
+# 세미콜론은 명령어를 구분합니다
 echo 'first line'; echo 'second line'
 
-# There is also conditional execution
+# 조건부 실행도 있습니다
 echo "Always executed" || echo "Only executed if the first command fails"
 echo "Always executed" && echo "Only executed if the first command does NOT fail"
 
-# Parenthesised commands are always executed in a subshell,
+# 괄호로 묶인 명령어는 항상 서브셸에서 실행됩니다,
 
-# example: creates a project and then informs you that it finished while
-# it does the installation.
+# 예: 프로젝트를 생성하고 설치하는 동안 완료되었음을 알립니다.
 make && ( espeak "BOSS, compilation finished"; make install )
 
-# prints the home directory but leaves you where you were
+# 홈 디렉토리를 출력하지만 원래 있던 위치에 그대로 둡니다
 (cd; pwd); pwd
 
-# Read tcsh man-page documentation
+# tcsh 맨페이지 문서 읽기
 man tcsh
 
-# --- Variables ---------------------------------------------------------------
-# The shell maintains a list of variables, each of which has as value a list of
-# zero or more words. The values of shell variables can be displayed and
-# changed with the `set` and `unset` commands.
-# The system maintains its own list of "environment" variables.
-# These can be displayed and changed with `printenv`, `setenv`, and `unsetenv`.
-# The syntax of `setenv` is similar to POSIX sh.
+# --- 변수 ---------------------------------------------------------------
+# 셸은 변수 목록을 유지하며, 각 변수는 0개 이상의 단어로 구성된 목록을 값으로 가집니다.
+# 셸 변수의 값은 `set` 및 `unset` 명령어로 표시하고 변경할 수 있습니다.
+# 시스템은 자체 "환경" 변수 목록을 유지합니다.
+# 이는 `printenv`, `setenv`, `unsetenv`로 표시하고 변경할 수 있습니다.
+# `setenv`의 구문은 POSIX sh와 유사합니다.
 
-# Assign a value or nothing will create a variable
-# Assign nothing
+# 값을 할당하거나 아무것도 할당하지 않으면 변수가 생성됩니다
+# 아무것도 할당하지 않음
 set var
-# Assign a numeric value
-# the '@' denotes the expression is arithmetic; it works similar to 'set' but
-# the right value can be a numeric expression.
+# 숫자 값 할당
+# '@'는 표현식이 산술임을 나타냅니다. 'set'과 유사하게 작동하지만
+# 오른쪽 값은 숫자 표현식이 될 수 있습니다.
 @ var = 1 + 2
-# Assign a string value
+# 문자열 값 할당
 set var = "Hello, I am the contents of 'var' variable"
-# Assign the output of a program
+# 프로그램 출력 할당
 set var = `ls`
 
-# Remove a variable
+# 변수 제거
 unset var
-# Prints 1 (true) if the variable `var` exists otherwise prints 0 (false)
+# 변수 `var`가 존재하면 1(참)을 출력하고, 그렇지 않으면 0(거짓)을 출력합니다
 echo $?var
-# Print all variables and their values
+# 모든 변수와 그 값을 출력합니다
 set
 
-# Prints the contents of 'var'
+# 'var'의 내용을 출력합니다
 echo $var;
 echo "$var";
-# Prints the string `$var`
+# 문자열 `$var`를 출력합니다
 echo \$var
 echo '$var'
-# Braces can be used to separate variables from the rest when it is needed
+# 필요할 때 변수를 나머지 부분과 분리하기 위해 중괄호를 사용할 수 있습니다
 set num = 12; echo "There ${num}th element"
 
-# Prints the number of characters of the value: 6
+# 값의 문자 수를 출력합니다: 6
 set var = '123456'; echo $%var
 
-### LISTs
-# Assign a list of values
+### 리스트
+# 값 목록 할당
 set var = ( one two three four five )
-# Print all the elements: one two three four five
+# 모든 요소 출력: one two three four five
 echo $var
 echo $var[*]
-# Print the count of elements: 5
+# 요소 개수 출력: 5
 echo $#var
-# Print the indexed element; This prints the second element: two
+# 인덱싱된 요소 출력; 두 번째 요소 출력: two
 echo $var[2]
-# Print range of elements; prints 2nd up to 3rd: two, three
+# 요소 범위 출력; 2번째부터 3번째까지 출력: two, three
 echo $var[2-3]
-# Prints all elements starting from the 3rd: three four five
+# 3번째부터 모든 요소 출력: three four five
 echo $var[3-]
-# Prints print all up to 3rd element: one two three
+# 3번째 요소까지 모두 출력: one two three
 echo $var[-3]
 
-### Special Variables
-# $argv         list of command-line arguments
-# $argv[0]      this file-name (the file of the script file)
-# $# $0, $n, $* are the same as $#argv, $argv[0], $argv[n], $argv[*]
-# $status, $?   the exit code of the last command that executed
-# $_            the previous command line
-# $!            the PID of the last background process started by this shell
-# $$            script's PID
+### 특수 변수
+# $argv         명령줄 인수 목록
+# $argv[0]      이 파일 이름 (스크립트 파일의 파일)
+# $# $0, $n, $*는 $#argv, $argv[0], $argv[n], $argv[*]와 동일합니다
+# $status, $?   마지막으로 실행된 명령어의 종료 코드
+# $_            이전 명령줄
+# $!            이 셸에서 시작된 마지막 백그라운드 프로세스의 PID
+# $$            스크립트의 PID
 
-# $path, $PATH  the list of directories that will search for an executable to run
-# $home, $HOME  user's home directory, also the `~` can be used instead
-# $uid          user's login ID
-# $user         user's login name
-# $gid          the user's group ID
-# $group        the user's group-name
-# $cwd, $PWD    the Current/Print Working Directory
-# $owd          the previous working directory
-# $tcsh         tcsh version
-# $tty          the current tty; ttyN for Linux console, pts/N for terminal
-#               emulators under X
-# $term         the terminal type
-# $verbose      if set, causes the words of each command to be printed.
-#               can be set by the `-v` command line option too.
-# $loginsh      if set, it is a login shell
+# $path, $PATH  실행 파일을 찾을 디렉토리 목록
+# $home, $HOME  사용자의 홈 디렉토리, `~`를 대신 사용할 수도 있습니다
+# $uid          사용자 로그인 ID
+# $user         사용자 로그인 이름
+# $gid          사용자 그룹 ID
+# $group        사용자 그룹 이름
+# $cwd, $PWD    현재/작업 디렉토리 출력
+# $owd          이전 작업 디렉토리
+# $tcsh         tcsh 버전
+# $tty          현재 tty; Linux 콘솔의 경우 ttyN, X의 터미널 에뮬레이터의 경우 pts/N
+# $term         터미널 유형
+# $verbose      설정되면 각 명령어의 단어를 출력합니다.
+#               `-v` 명령줄 옵션으로도 설정할 수 있습니다.
+# $loginsh      설정되면 로그인 셸입니다
 
-# TIP: $?0 is always false in interactive shells
-# TIP: $?prompt is always false in non-interactive shells
-# TIP: if `$?tcsh` is unset; you run the original `csh` or something else;
-#      try `echo $shell`
-# TIP: `$verbose` is useful for debugging scripts
-# NOTE: `$PWD` and `$PATH` are synchronised with `$cwd` and `$pwd` automatically.
+# 팁: $?0은 대화형 셸에서 항상 거짓입니다
+# 팁: $?prompt는 비대화형 셸에서 항상 거짓입니다
+# 팁: `$?tcsh`가 설정되지 않았다면, 원래 `csh`나 다른 것을 실행하고 있는 것입니다;
+#      `echo $shell`을 시도해보세요
+# 팁: `$verbose`는 스크립트 디버깅에 유용합니다
+# 참고: `$PWD`와 `$PATH`는 `$cwd`와 `$pwd`와 자동으로 동기화됩니다.
 
-# --- Variable modifiers ------------------------------------------------------
-# Syntax: ${var}:m[:mN]
-# Where <m> is:
-# h : the directory  t : the filename  r : remove extension   e : the extension
-# u : uppercase the first lowercase letter
-# l : lowercase the first uppercase letter
-# p : print but do not execute it (hist)
-# q : quote the substituted words, preventing further substitutions
-# x : like q, but break into words at white spaces
-# g : apply the following modifier once to each word
-# a  : apply the following modifier as many times as possible to single word
-# s/l/r/ : search for `l` and replace with `r`, not regex; the `&` in the `r` is
-# replaced by `l`
-# & : Repeat the previous substitution
+# --- 변수 수정자 ------------------------------------------------------
+# 구문: ${var}:m[:mN]
+# 여기서 <m>은 다음과 같습니다:
+# h : 디렉토리  t : 파일 이름  r : 확장자 제거   e : 확장자
+# u : 첫 소문자를 대문자로
+# l : 첫 대문자를 소문자로
+# p : 출력하지만 실행하지는 않음 (hist)
+# q : 대체된 단어를 인용하여 추가 대체를 방지
+# x : q와 같지만 공백에서 단어로 나눔
+# g : 다음 수정자를 각 단어에 한 번 적용
+# a  : 다음 수정자를 단일 단어에 가능한 한 많이 적용
+# s/l/r/ : `l`을 찾아 `r`로 바꿈, 정규식 아님; `r`의 `&`는 `l`로 대체됨
+# & : 이전 대체 반복
 
-# start with this file
+# 이 파일로 시작
 set f = ~/Documents/Alpha/beta.txt
-# prints ~/Documents/Alpha/beta
+# ~/Documents/Alpha/beta 출력
 echo $f:r
-# prints ~/Documents/Alpha
+# ~/Documents/Alpha 출력
 echo $f:h
-# prints beta.txt
+# beta.txt 출력
 echo $f:t
-# prints txt
+# txt 출력
 echo $f:e
-# prints beta
+# beta 출력
 echo $f:t:r
-# prints Beta
+# Beta 출력
 echo $f:t:r:u
-# prints Biota
+# Biota 출력
 echo $f:t:r:u:s/eta/iota/
 
-# --- Redirection -------------------------------------------------------------
+# --- 리다이렉션 -------------------------------------------------------------
 
-# Create file.txt and write the standard output to it
+# file.txt를 만들고 표준 출력을 씁니다
 echo 'this string' > file.txt
-# Create file.txt and write the standard output and standard error to it
+# file.txt를 만들고 표준 출력과 표준 에러를 씁니다
 echo 'this string' >& file.txt
-# Append the standard output to file.txt
+# 표준 출력을 file.txt에 추가합니다
 echo 'this string' >> file.txt
-# Append the standard output and standard error to file.txt
+# 표준 출력과 표준 에러를 file.txt에 추가합니다
 echo 'this string' >>& file.txt
-# Redirect the standard input from file.txt
+# file.txt에서 표준 입력을 리다이렉션합니다
 cat < file.txt
-# Input from keyboard; this stores the input line to variable `x`
+# 키보드 입력; 입력 줄을 변수 `x`에 저장합니다
 set x = $<
-# Document here;
+# 여기에 문서;
 cat << LABEL
 ...text here...
 LABEL
 
-# TIP: this is how to get standard error separated:
+# 팁: 표준 에러를 분리하는 방법은 다음과 같습니다:
 (grep 'AGP' /usr/src/linux/Documentation/* > output-file.txt) >& error-file.txt
 
-# example: read a name from standard input and display a greetings message
+# 예: 표준 입력에서 이름을 읽고 인사 메시지를 표시합니다
 echo -n "Enter your name: "
 set name = $<
 echo "Greetings $name"
 
-# --- Expressions ------------------------------------------------------------
+# --- 표현식 ------------------------------------------------------------
 
-# Operators:
-# ==  equal         !=  not equal    !  not
-#  >  greater than   <  less than   >=  greater or equal  <= less or equal
-# &&  logical AND   ||  logical OR
+# 연산자:
+# ==  같음         !=  같지 않음    !  부정
+#  >  보다 큼   <  보다 작음   >=  크거나 같음  <= 작거나 같음
+# &&  논리 AND   ||  논리 OR
 
 if ( $name != $user ) then
     echo "Your name isn't your username"
@@ -261,24 +254,24 @@ else
     echo "Your name is your username"
 endif
 
-# single-line form
+# 한 줄 형식
 if ( $name != $user ) echo "Your name isn't your username"
 
-# NOTE: if $name is empty, tcsh sees the above condition as:
+# 참고: $name이 비어 있으면 tcsh는 위 조건을 다음과 같이 봅니다:
 # if ( != $user ) ...
-# which is invalid syntax
-# The "safe" way to use potentially empty variables in tcsh is:
+# 이것은 잘못된 구문입니다
+# tcsh에서 잠재적으로 비어 있는 변수를 사용하는 "안전한" 방법은 다음과 같습니다:
 # if ( "$name" != $user ) ...
-# which, when $name is empty, is seen by tcsh as:
+# $name이 비어 있을 때 tcsh는 이것을 다음과 같이 봅니다:
 # if ( "" != $user ) ...
-# which works as expected
+# 이것은 예상대로 작동합니다
 
-# There is also conditional execution
+# 조건부 실행도 있습니다
 echo "Always executed" || echo "Only executed if the first command fails"
 echo "Always executed" && echo "Only executed if the first command does NOT fail"
 
-# To use && and || with if statements, you don't need multiple pairs of
-# square brackets:
+# if 문에서 &&와 ||를 사용하려면 여러 쌍의
+# 대괄호가 필요하지 않습니다:
 if ( "$name" == "Steve" && "$age" == 15 ) then
     echo "This will run if $name is Steve AND $age is 15."
 endif
@@ -287,180 +280,179 @@ if ( "$name" == "Daniya" || "$name" == "Zach" ) then
     echo "This will run if $name is Daniya OR Zach."
 endif
 
-# String matching operators ( `=~` and `!~` )
-# The ‘==’ ‘!=’ ‘=~’ and ‘!~’ operators compare their arguments as strings;
-# all others operate on numbers. The operators ‘=~’ and ‘!~’ are like ‘!=’
-# and ‘==’ except that the right hand side is a glob-pattern against which
-# the left-hand operand is matched.
+# 문자열 일치 연산자 ( `=~` 및 `!~` )
+# '==' '!=' '=~' 및 '!~' 연산자는 인수를 문자열로 비교합니다;
+# 다른 모든 연산자는 숫자에 대해 작동합니다. '=~' 및 '!~' 연산자는 '!='
+# 및 '=='와 같지만 오른쪽이 왼쪽 피연산자와 일치하는
+# glob-패턴이라는 점이 다릅니다.
 
 if ( $user =~ ni[ck]* ) echo "Greetings Mr. Nicholas."
 if ( $user !~ ni[ck]* ) echo "Hey, get out of Nicholas' PC."
 
-# Arithmetic expressions are denoted with the following format:
+# 산술 표현식은 다음 형식으로 표시됩니다:
 @ result = 10 + 5
 echo $result
 
-# Arithmetic Operators
+# 산술 연산자
 # +, -, *, /, %
 #
-# Arithmetic Operators which must be parenthesized
+# 괄호로 묶어야 하는 산술 연산자
 # !, ~, |, &, ^, ~, <<, >>,
-# Compare and logical operators
+# 비교 및 논리 연산자
 #
-# All operators are the same as in C.
+# 모든 연산자는 C와 동일합니다.
 
-# It is non so well documented that numeric expressions require spaces
-# in-between; Also, `@` has its own parser, it seems that it works well when
-# the expression is parenthesized, otherwise the primary parser seems to be
-# active. Parentheses require spaces around, this is documented.
+# 숫자 표현식에 공백이 필요하다는 것은 잘 문서화되어 있지 않습니다;
+# 또한, `@`에는 자체 파서가 있으며, 표현식이 괄호로 묶여 있을 때 잘 작동하는 것 같습니다.
+# 그렇지 않으면 기본 파서가 활성 상태인 것 같습니다.
+# 괄호는 주위에 공백이 필요하며, 이것은 문서화되어 있습니다.
 
-# wrong
+# 잘못됨
 @ x = $y+1
 @ x = 0644 & 022;      echo $x
 @ x = (0644 & 022) +1; echo $x
 @ x = (0644 & 022)+ 1; echo $x
 @ x = ( ~077 );        echo $x
 
-# correct
+# 올바름
 @ x = $y + 1
 @ x = ( 0644 & 022 ) + 1; echo $x
 @ x = ( ~ 077 );          echo $x
 @ x = ( ~ 077 | 022 );    echo $x
 @ x = ( ! 0 );            echo $x
 
-# C's operators ++ and -- are supported if there is not assignment
+# C의 연산자 ++ 및 --는 할당이 없는 경우 지원됩니다
 @ result ++
 
-# No shell was created to do mathematics;
-# Except for the basic operations, use an external command with backslashes.
+# 수학을 하기 위해 만들어진 셸은 없습니다;
+# 기본 연산을 제외하고 백슬래시와 함께 외부 명령어를 사용하십시오.
 #
-# I suggest the calc as the best option.
+# 저는 calc를 최상의 옵션으로 제안합니다.
 # (http://www.isthe.com/chongo/tech/comp/calc/)
 #
-# The standard Unix's bc as the second option
+# 두 번째 옵션으로 표준 Unix의 bc
 # (https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 #
-# The standard Unix's AWK as the third option
+# 세 번째 옵션으로 표준 Unix의 AWK
 # (https://www.gnu.org/software/gawk/manual/gawk.html)
 
-# You can also use `Perl`, `PHP`, `python`, or even several BASICs, but prefer
-# the above utilities for faster load-and-run results.
+# `Perl`, `PHP`, `python` 또는 여러 BASIC을 사용할 수도 있지만,
+# 더 빠른 로드 및 실행 결과를 위해 위 유틸리티를 선호하십시오.
 
-# real example: (that I answer in StackExchange)
-# REQ: x := 1001b OR 0110b
+# 실제 예: (StackExchange에서 답변한 내용)
+# 요구사항: x := 1001b OR 0110b
 
-# in `tcsh` expression (by using octal)
+# `tcsh` 표현식에서 (8진수 사용)
 @ x = ( 011 | 06 ); echo $x
 
-# the same by using `calc` (and using binary as the original req)
+# `calc`를 사용하여 동일하게 (원래 요구사항대로 이진수 사용)
 set x = `calc '0b1001 | 0b110'`; echo $x
 
-# --- File Inquiry Operators --------------------------------------------------
-# NOTE: The built-in `filetest` command does the same thing.
+# --- 파일 조회 연산자 --------------------------------------------------
+# 참고: 내장 `filetest` 명령어는 동일한 작업을 수행합니다.
 
-#### Boolean operators
-# -r  read access    -w  write access    -x  execute access    -e  existence
-# -f  plain file     -d  directory       -l  symbolic link     -p  named pipe
-# -S  socket file
-# -o  ownership      -z  zero size       -s  non-zero size
-# -u  SUID is set    -g  SGID is set     -k  sticky is set
-# -b  block device   -c  char device
-# -t  file (digit) is an open file descriptor for a terminal device
+#### 불리언 연산자
+# -r  읽기 접근    -w  쓰기 접근    -x  실행 접근    -e  존재
+# -f  일반 파일     -d  디렉토리       -l  심볼릭 링크     -p  명명된 파이프
+# -S  소켓 파일
+# -o  소유권      -z  크기 0       -s  크기 0 아님
+# -u  SUID 설정됨    -g  SGID 설정됨     -k  스티키 비트 설정됨
+# -b  블록 장치   -c  문자 장치
+# -t  파일(숫자)이 터미널 장치에 대한 열린 파일 디스크립터임
 
-# If the file `README` exists, display a message
+# `README` 파일이 존재하면 메시지를 표시합니다
 if ( -e README ) echo "I have already README file"
 
-# If the `less` program is installed, use it instead of `more`
+# `less` 프로그램이 설치되어 있으면 `more` 대신 사용합니다
 if ( -e `where less` ) then
     alias more 'less'
 endif
 
-#### Non-boolean operators
-# -Z  returns the file size in bytes
-# -M  returns the modification time (mtime)    -M: returns mtime string
-# -A  returns the last access time (atime)     -A: returns atime string
-# -U  returns the owner's user ID              -U: returns the owner's user name
-# -G  returns the owner's group ID             -G: returns the owner's group name
-# -P  returns the permissions as octal number  -Pmode returns perm. AND mode
+#### 비-불리언 연산자
+# -Z  파일 크기를 바이트 단위로 반환
+# -M  수정 시간(mtime) 반환    -M: mtime 문자열 반환
+# -A  마지막 접근 시간(atime) 반환     -A: atime 문자열 반환
+# -U  소유자 사용자 ID 반환              -U: 소유자 사용자 이름 반환
+# -G  소유자 그룹 ID 반환             -G: 소유자 그룹 이름 반환
+# -P  권한을 8진수로 반환  -Pmode는 권한과 모드의 AND 결과 반환
 
-# this will display the date as a Unix-time integer: 1498511486
+# 이것은 날짜를 유닉스 시간 정수로 표시합니다: 1498511486
 filetest -M README.md
 
-# This will display "Tue Jun 27 00:11:26 2017"
+# 이것은 "Tue Jun 27 00:11:26 2017"을 표시합니다
 filetest -M: README.md
 
-# --- Basic Commands ----------------------------------------------------------
+# --- 기본 명령어 ----------------------------------------------------------
 
-# Navigate through the filesystem with `chdir` (cd)
-cd path # change working directory
-cd      # change to the home directory
-cd -    # change to the previous directory
-cd ..   # go up one directory
+# `chdir` (cd)로 파일 시스템 탐색
+cd path # 작업 디렉토리 변경
+cd      # 홈 디렉토리로 변경
+cd -    # 이전 디렉토리로 변경
+cd ..   # 한 디렉토리 위로 이동
 
-# Examples:
-cd ~/Downloads # go to my `Downloads` directory
+# 예:
+cd ~/Downloads # 나의 `Downloads` 디렉토리로 이동
 
-# Use `mkdir` to create new directories.
+# `mkdir`를 사용하여 새 디렉토리 생성.
 mkdir newdir
-# The `-p` flag causes new intermediate directories to be created as necessary.
+# `-p` 플래그는 필요에 따라 새 중간 디렉토리를 생성합니다.
 mkdir -p ~/.backup/saves
 
 # which & where
-# find if csh points to tcsh
+# csh가 tcsh를 가리키는지 찾기
 ls -lha `which csh`
-# find if csh is installed on more than one directory
+# csh가 둘 이상의 디렉토리에 설치되어 있는지 찾기
 where csh
 
-# --- Pipe-lines --------------------------------------------------------------
-# A pipeline is a sequence of processes chained together by their standard
-# streams, so that the output of each process (stdout) feeds directly as input
-# (stdin) to the next one. These `pipes` are created with the `|` special
-# character and it is one of the most powerful characteristics of Unix.
+# --- 파이프라인 --------------------------------------------------------------
+# 파이프라인은 각 프로세스의 출력(stdout)이 다음 프로세스의 입력(stdin)으로
+# 직접 공급되도록 표준 스트림으로 함께 연결된 프로세스 시퀀스입니다.
+# 이러한 `파이프`는 `|` 특수 문자로 생성되며 유닉스의 가장 강력한
+# 특징 중 하나입니다.
 
-# example:
+# 예:
 ls -l | grep key | less
-# "ls -l" produces a process, the output (stdout) of which is piped to the
-# input (stdin) of the process for "grep key"; and likewise for the process
-# for "less".
+# "ls -l"은 프로세스를 생성하고, 그 출력(stdout)은 "grep key" 프로세스의
+# 입력(stdin)으로 파이프됩니다. "less" 프로세스도 마찬가지입니다.
 
-# the `ls`, the `grep`, and the `less` are Unix programs and they have their
-# own man-page. The `pipe` mechanism is part of the kernel but the syntax
-# and the control is the shell's job, the tcsh in our case.
+# `ls`, `grep`, `less`는 유닉스 프로그램이며 자체 맨페이지가 있습니다.
+# `파이프` 메커니즘은 커널의 일부이지만 구문과 제어는
+# 셸의 역할이며, 이 경우 tcsh입니다.
 
-# NOTE: Windows has the `pipe` mechanism too, but it is buggy and I signed it
-# for all versions until Windows XP SP3 API32 which was the last one that I
-# worked on. Microsoft denied it, but it is a well-known bug since it is a
-# common method for inter-process communication. For small I/O it will work well.
-# tcsh, along with grep, GCC, and Perl is one of the first Unix programs that
-# ported to DOS (with EMX DOS extender) and later to Windows (1998).
+# 참고: Windows에도 `파이프` 메커니즘이 있지만 버그가 있으며, 제가 마지막으로
+# 작업했던 Windows XP SP3 API32까지 모든 버전에 대해 서명했습니다.
+# Microsoft는 이를 부인했지만, 프로세스 간 통신에 일반적인 방법이기 때문에
+# 잘 알려진 버그입니다. 작은 I/O의 경우 잘 작동합니다.
+# tcsh는 grep, GCC, Perl과 함께 DOS(EMX DOS 확장기 사용) 및
+# 나중에 Windows(1998)로 포팅된 최초의 유닉스 프로그램 중 하나입니다.
 
-# example: this will convert tcsh to PostScript and will show it with Okular
+# 예: 이것은 tcsh를 PostScript로 변환하고 Okular로 보여줍니다
 zcat /usr/man/man1/tcsh.1.gz | groff -Tps -man | okular -
 
-# a better version
+# 더 나은 버전
 zcat `locate -b -n 1 '\tcsh.1.gz'` | groff -Tps -man | okular -
 
-# even better
+# 훨씬 더 나은 버전
 set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
  zcat `eval $loc` | groff -Tps -man | okular -
 
-# the same, modified to create man page pdf
+# 동일, 맨페이지 pdf를 생성하도록 수정
 set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
  zcat `eval $loc` | groff -Tps -man | ps2pdf - ${page}.pdf
 
-# the same, but now shows the ${page}.pdf too
+# 동일, 이제 ${page}.pdf도 표시
 set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
  zcat `eval $loc` | groff -Tps -man | ps2pdf - ${page}.pdf && okular tcsh.pdf
 
-# NOTE: `okular` is the default application of the KDE environment and it shows
-# postcript and pdf files. You can replace it with your lovely PDF viewer.
-# `zcat`, `locate`, `groff`, are common programs in all Unixes. The `ps2pdf`
-# program is part of the `ghostscript` package that is widely used.
+# 참고: `okular`는 KDE 환경의 기본 응용 프로그램이며 포스트스크립트 및
+# pdf 파일을 표시합니다. 좋아하는 PDF 뷰어로 교체할 수 있습니다.
+# `zcat`, `locate`, `groff`는 모든 유닉스에서 일반적인 프로그램입니다. `ps2pdf`
+# 프로그램은 널리 사용되는 `ghostscript` 패키지의 일부입니다.
 
-# --- Control Flow ------------------------------------------------------------
+# --- 제어 흐름 ------------------------------------------------------------
 
 #### IF-THEN-ELSE-ENDIF
-# Syntax:
+# 구문:
 # if ( expr ) then
 #    ...
 # [else if ( expr2 ) then
@@ -469,37 +461,35 @@ set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
 #    ...]
 # endif
 #
-# If the specified `expr` is true then the commands to the first else are
-# executed; otherwise if `expr2` is true then the commands to the second else
-# are executed, etc.
-# Any number of else-if pairs are possible; only one endif is needed.
+# 지정된 `expr`이 참이면 첫 번째 else까지의 명령어가 실행됩니다;
+# 그렇지 않고 `expr2`가 참이면 두 번째 else까지의 명령어가 실행되는 식입니다.
+# else-if 쌍은 얼마든지 가능하며, endif는 하나만 필요합니다.
 #
-# Single-line form:
+# 한 줄 형식:
 #
 # if ( expr ) command
 #
-# If `expr` evaluates to true, then the command is executed.
-# `command` must be a simple command, not an alias, a pipeline, a command list
-#, or a parenthesized command list. With a few words, avoid using it.
+# `expr`이 참으로 평가되면 명령어가 실행됩니다.
+# `command`는 단순 명령어여야 하며, 별칭, 파이프라인, 명령어 목록
+#, 또는 괄호로 묶인 명령어 목록이 아니어야 합니다. 간단히 말해 사용을 피하십시오.
 #
-# BUG: Input/output redirection occurs even if expr is false and the command
-# is thus not executed.
+# 버그: expr이 거짓이고 명령어가 실행되지 않더라도 입/출력 리다이렉션이 발생합니다.
 #
 
-# check if we are in a non-interactive shell and quit if true
+# 비대화형 셸인지 확인하고 참이면 종료
 if ( $?USER == 0 || $?prompt == 0 ) exit
 
-# check if we are a login shell
+# 로그인 셸인지 확인
 if ( $?loginsh ) then
-    # check if you are on linux console (not X's terminal)
+    # 리눅스 콘솔에 있는지 확인 (X의 터미널 아님)
     if ( $tty =~ tty* ) then
-        # enable keypad application keys (man console_codes)
+        # 키패드 응용 프로그램 키 활성화 (man console_codes)
         echo '\033='
     endif
 endif
 
 #### SWITCH-ENDSW
-# Syntax:
+# 구문:
 # switch ( expr )
 # case pattern:
 #     ...
@@ -508,13 +498,13 @@ endif
 #     ...]
 # endsw
 #
-# tcsh uses a case statement that works similarly to switch in C.
-# Each case label is successively matched, against the specified string which
-# is first command and filename expanded. The file metacharacters `*`, `?`
-# and `[...]` may be used in the case labels. If none of the labels match the
-# execution begins after the default label if it's defined.
-# The command `breaksw` causes execution to continue after the endsw. Otherwise,
-# control may fall through case labels and default labels as in C.
+# tcsh는 C의 switch와 유사하게 작동하는 case 문을 사용합니다.
+# 각 case 레이블은 먼저 명령어와 파일 이름이 확장된 지정된 문자열과
+# 순차적으로 일치합니다. 파일 메타문자 `*`, `?`, `[...]`를 case 레이블에
+# 사용할 수 있습니다. 레이블이 일치하지 않으면 정의된 경우 기본 레이블
+# 다음에 실행이 시작됩니다.
+# `breaksw` 명령어는 endsw 다음에 실행을 계속하도록 합니다. 그렇지 않으면
+# C에서처럼 제어가 case 레이블과 기본 레이블을 통과할 수 있습니다.
 
 switch ( $var )
 case *.[1-9]:
@@ -529,30 +519,30 @@ default:
 endsw
 
 #### FOREACH-END
-# Syntax:
+# 구문:
 # foreach name ( wordlist )
 #    ...
 #   [break | continue]
 # end
 #
-# Successively sets the variable `name` to each member of `wordlist` and
-# executes the sequence of commands between this command and the matching
-# `end` keyword. The `continue` keyword jumps to the next element back to
-# top, and the `break` keyword terminates the loop.
+# 변수 `name`을 `wordlist`의 각 멤버로 순차적으로 설정하고
+# 이 명령어와 일치하는 `end` 키워드 사이의 명령어 시퀀스를 실행합니다.
+# `continue` 키워드는 맨 위로 돌아가 다음 요소로 점프하고, `break` 키워드는
+# 루프를 종료합니다.
 #
-# BUG: `foreach` doesn't ignore here documents when looking for its end.
+# 버그: `foreach`는 끝을 찾을 때 here document를 무시하지 않습니다.
 
-# example: counting 1 to 10
+# 예: 1에서 10까지 세기
 foreach i ( `seq 1 10` )
     echo $i
 end
 
-# example: type all files in the list
+# 예: 목록의 모든 파일 유형
 foreach f ( a.txt b.txt c.txt )
     cat $f
 end
 
-# example: convert wma to ogg
+# 예: wma를 ogg로 변환
 foreach f ( *.wma )
     ffmpeg -i "$f" "$f:r".ogg
 end
@@ -563,25 +553,25 @@ end
 #     [break | continue]
 # end
 #
-# Executes the commands between the `while` and the matching `end` while `expr`
-# evaluates non-zero. `break` and `continue` may be used to terminate or
-# continue the loop prematurely.
+# `expr`이 0이 아닌 값으로 평가되는 동안 `while`과 일치하는 `end` 사이의
+# 명령어를 실행합니다. `break`와 `continue`를 사용하여 루프를 조기에
+# 종료하거나 계속할 수 있습니다.
 
-# count from 1 to 10
+# 1에서 10까지 세기
 set num = 1
 while ( $num <= 10 )
     echo $num
     @ num ++
 end
 
-# print all directories of CWD
+# CWD의 모든 디렉토리 출력
 set lst = ( * )
 while ( $#lst )
     if ( -d $lst[1] ) echo $lst[1] is directory
     shift lst
 end
 
-# separate command-line arguments to options or parameters
+# 명령줄 인수를 옵션 또는 매개변수로 분리
 set options
 set params
 set lst = ( $* )
@@ -597,44 +587,42 @@ echo 'options =' $options
 echo 'parameters =' $params
 
 #### REPEAT
-# Syntax: repeat count command
+# 구문: repeat count command
 #
-# The specified command, which is subject to the same restrictions as the
-# command in the one line `if` statement above, is executed count times.
-# I/O redirections occur exactly once, even if `count` is 0.
+# 위 한 줄 `if` 문의 명령어와 동일한 제한을 받는 지정된 명령어가
+# count 횟수만큼 실행됩니다.
+# `count`가 0이더라도 I/O 리다이렉션은 정확히 한 번 발생합니다.
 #
-# TIP: in most cases prefer `while`
+# 팁: 대부분의 경우 `while`을 선호하십시오
 
 repeat 3 echo "ding dong"
 
-# --- Functions ---------------------------------------------------------------
-# tcsh has no functions but its expression syntax is advanced enough to use
-# `alias` as functions. Another method is recursion
+# --- 함수 ---------------------------------------------------------------
+# tcsh에는 함수가 없지만 표현식 구문이 `alias`를 함수로 사용할 만큼
+# 충분히 발전했습니다. 다른 방법은 재귀입니다
 
-# Alias argument selectors; the ability to define an alias to take arguments
-# supplied to it and apply them to the commands that it refers to.
-# Tcsh is the only shell that provides this feature.
+# 별칭 인수 선택자; 별칭에 제공된 인수를 가져와 참조하는 명령어에
+# 적용하는 기능을 정의하는 기능입니다.
+# Tcsh는 이 기능을 제공하는 유일한 셸입니다.
 #
-# \!#   argument selector for all arguments, including the alias/command
-#       itself; arguments need not be supplied.
-# \!*   argument selector for all arguments, excluding the alias/command;
-#       arguments need not be supplied.
-# \!$   argument selector for the last argument; argument need not be supplied,
-#       but if none is supplied, the alias name is considered to be the
-#       last argument.
-# \!^   argument selector for first argument; argument MUST be supplied.
-# \!:n  argument selector for the nth argument; argument MUST be supplied;
-#       n=0 refers to the alias/command name.
-# \!:m-n   argument selector for the arguments from the mth to the nth;
-#       arguments MUST be supplied.
-# \!:n-$   argument selector for the arguments from the nth to the last;
-#       at least argument n MUST be supplied.
+# \!#   별칭/명령어 자체를 포함한 모든 인수에 대한 인수 선택자;
+#       인수를 제공할 필요는 없습니다.
+# \!*   별칭/명령어를 제외한 모든 인수에 대한 인수 선택자;
+#       인수를 제공할 필요는 없습니다.
+# \!$   마지막 인수에 대한 인수 선택자; 인수를 제공할 필요는 없지만,
+#       아무것도 제공되지 않으면 별칭 이름이 마지막 인수로 간주됩니다.
+# \!^   첫 번째 인수에 대한 인수 선택자; 인수를 반드시 제공해야 합니다.
+# \!:n  n번째 인수에 대한 인수 선택자; 인수를 반드시 제공해야 합니다;
+#       n=0은 별칭/명령어 이름을 나타냅니다.
+# \!:m-n   m번째부터 n번째까지의 인수에 대한 인수 선택자;
+#       인수를 반드시 제공해야 합니다.
+# \!:n-$   n번째부터 마지막까지의 인수에 대한 인수 선택자;
+#       적어도 n번째 인수는 반드시 제공해야 합니다.
 
-# Alias the cd command so that when you change directories, the contents
-# are immediately displayed.
+# 디렉토리를 변경할 때 내용이 즉시 표시되도록 cd 명령어에 별칭을 지정합니다.
 alias cd 'cd \!* && ls'
 
-# --- Recursion method --- begin ---
+# --- 재귀 방식 --- 시작 ---
 #!/bin/tcsh -f
 set todo = option1
 if ( $#argv > 0 ) then
@@ -658,36 +646,36 @@ default:
     echo "Unknown option: $todo"
 #    exit 0
 endsw
-# --- Recursion method --- end ---
+# --- 재귀 방식 --- 끝 ---
 
-# --- examples ----------------------------------------------------------------
+# --- 예제 ----------------------------------------------------------------
 
-# this script prints available power-states if no argument is set;
-# otherwise it sets the state of the $argv[1]
-# --- power-state script --- begin --------------------------------------------
+# 이 스크립트는 인수가 설정되지 않은 경우 사용 가능한 전원 상태를 출력합니다;
+# 그렇지 않으면 $argv[1]의 상태를 설정합니다
+# --- 전원 상태 스크립트 --- 시작 --------------------------------------------
 #!/bin/tcsh -f
-# get parameter ("help" for none)
+# 매개변수 가져오기 (없으면 "help")
 set todo = help
 if ( $#argv > 0 ) then
     set todo = $argv[1]
 endif
-# available options
+# 사용 가능한 옵션
 set opts = `cat /sys/power/state`
-# is known?
+# 알려져 있습니까?
 foreach o ( $opts )
     if ( $todo == $o ) then
-        # found; execute it
+        # 찾음; 실행
         echo -n $todo > /sys/power/state
         break
     endif
 end
-# print help and exit
+# 도움말 출력 및 종료
 echo "usage: $0 [option]"
 echo "available options on kernel: $opts"
-# --- power-state script --- end ----------------------------------------------
+# --- 전원 상태 스크립트 --- 끝 ----------------------------------------------
 
-# Guess the secret number game
-# --- secretnum.csh --- begin -------------------------------------------------
+# 비밀 숫자 맞추기 게임
+# --- secretnum.csh --- 시작 -------------------------------------------------
 #!/bin/tcsh -f
 set secret=`shuf -i1-100 -n1`
 echo "I have a secret number from 1 up to 100"
@@ -706,52 +694,51 @@ while ( 1 )
         endif
     endif
 end
-# --- secretnum.csh --- end ---------------------------------------------------
+# --- secretnum.csh --- 끝 ---------------------------------------------------
 
 # -----------------------------------------------------------------------------
-# Appendices
+# 부록
 
-#### About [T]CSH:
-# * CSH is notorious for its bugs;
-# * It is also famous for its advanced interactive mode.
-# * TCSH is famous for having the most advanced completion subsystem.
-# * TCSH is famous for having the most advanced aliases subsystem; aliases
-#   can take parameters and often be used as functions!
-# * TCSH is well known and preferred by people (me too) because of better
-#   syntax. All shells are using Thomson's syntax with the exception of
-#   [t]csh, fish, and plan9's shells (rc, ex).
-# * It is smaller and consumes far less memory than bash, zsh, and even mksh!
-#   (memusage reports)
-# * TCSH still has bugs; fewer, but it does; if you write readable clean code
-#   you'll find none; well almost none... This has to do with the implementation
-#   of csh; that doesn't mean the other shells have a good implementation.
-# * no well-known shell is capable of regular programming; if your script
-#   is getting big, use a programming language, like Python, PHP, or Perl (good
-#   scripting languages).
+#### [T]CSH에 대하여:
+# * CSH는 버그로 악명이 높습니다;
+# * 또한 고급 대화형 모드로도 유명합니다.
+# * TCSH는 가장 진보된 완성 하위 시스템을 갖춘 것으로 유명합니다.
+# * TCSH는 가장 진보된 별칭 하위 시스템을 갖춘 것으로 유명합니다; 별칭은
+#   매개변수를 사용할 수 있으며 종종 함수로 사용될 수 있습니다!
+# * TCSH는 더 나은 구문 때문에 사람들에게 잘 알려져 있고 선호됩니다 (저도 마찬가지).
+#   모든 셸은 [t]csh, fish, plan9의 셸(rc, ex)을 제외하고 Thomson의 구문을 사용합니다.
+# * bash, zsh, 심지어 mksh보다 작고 메모리를 훨씬 적게 소비합니다!
+#   (memusage 보고서)
+# * TCSH에는 여전히 버그가 있습니다. 더 적지만 있습니다. 읽기 쉬운 깨끗한 코드를 작성하면
+#   아무것도 찾을 수 없을 것입니다. 글쎄, 거의 없을 것입니다... 이것은 csh의 구현과
+#   관련이 있습니다. 다른 셸의 구현이 좋다는 의미는 아닙니다.
+# * 잘 알려진 셸 중 정규 프로그래밍이 가능한 셸은 없습니다. 스크립트가
+#   커지면 Python, PHP 또는 Perl과 같은 프로그래밍 언어를 사용하십시오 (좋은
+#   스크립팅 언어).
 #
-# Advice:
-# 1. Do not use redirection in single-line IFs (it is well documented bug)
-#    In most cases avoid using single-line IFs.
-# 2. Do not mess up with other shells' code, c-shell is not compatible with
-#    other shells and has different abilities and priorities.
-# 3. Use spaces as you'll use them to write readable code in any language.
-#    A bug of csh was `set x=1` and `set x = 1` worked, but `set x =1` did not!
-# 4. It is well documented that numeric expressions require spaces in between;
-#    also parenthesize all bit-wise and unary operators.
-# 5. Do not write a huge weird expression with several quotes, backslashes, etc
-#    It is bad practice for generic programming, it is dangerous in any shell.
-# 6. Help tcsh, report the bug here <https://bugs.gw.com/>
-# 7. Read the man page, `tcsh` has a huge number of options and variables.
+# 조언:
+# 1. 한 줄 IF에서 리다이렉션을 사용하지 마십시오 (잘 알려진 버그입니다)
+#    대부분의 경우 한 줄 IF 사용을 피하십시오.
+# 2. 다른 셸의 코드를 망치지 마십시오. c-shell은 다른 셸과 호환되지 않으며
+#    다른 기능과 우선순위를 가지고 있습니다.
+# 3. 어떤 언어로든 읽기 쉬운 코드를 작성하는 것처럼 공백을 사용하십시오.
+#    csh의 버그는 `set x=1`과 `set x = 1`은 작동했지만 `set x =1`은 작동하지 않았습니다!
+# 4. 숫자 표현식 사이에 공백이 필요하다는 것은 잘 문서화되어 있습니다;
+#    또한 모든 비트 및 단항 연산자를 괄호로 묶으십시오.
+# 5. 여러 따옴표, 백슬래시 등으로 거대하고 이상한 표현식을 작성하지 마십시오.
+#    일반 프로그래밍에 좋지 않은 습관이며 어떤 셸에서든 위험합니다.
+# 6. tcsh를 도와주세요, 여기에 버그를 보고하세요 <https://bugs.gw.com/>
+# 7. 맨페이지를 읽으십시오. `tcsh`에는 엄청난 수의 옵션과 변수가 있습니다.
 #
-#    I suggest the following options enabled by default
+#    기본적으로 다음 옵션을 활성화하는 것이 좋습니다
 #    --------------------------------------------------
-# Even in non-interactive shells
+# 비대화형 셸에서도
 #    set echo_style=both
 #    set backslash_quote
 #    set parseoctal
 #    unset noclobber
 #
-# Whatever...
+# 무엇이든...
 #    set inputmode=insert
 #    set autolist
 #    set listjobs
@@ -771,22 +758,22 @@ end
 #    unset time
 #    unset tperiod
 #
-# NOTE: If the `backslash_quote` is set, it may create compatibility issues
-# with other tcsh scripts that were written without it.
+# 참고: `backslash_quote`가 설정되면, 그것 없이 작성된 다른 tcsh 스크립트와
+# 호환성 문제가 발생할 수 있습니다.
 #
-# NOTE: The same for `parseoctal`, but it is better to fix the problematic
-# scripts.
+# 참고: `parseoctal`도 마찬가지이지만, 문제가 있는 스크립트를 수정하는 것이
+# 더 좋습니다.
 #
-# NOTE: **for beginners only**
-# This enables automatic rescanning of `path` directories if needed. (like bash)
+# 참고: **초보자 전용**
+# 필요한 경우 `path` 디렉토리를 자동으로 다시 스캔할 수 있습니다. (bash처럼)
 #    set autorehash
 
-#### common aliases
+#### 일반적인 별칭
 #    alias hist  'history 20'
 #    alias ll    'ls --color -lha'
 #    alias today "date '+%d%h%y'
 #    alias ff    'find . -name '
 
-#### a nice prompt
+#### 멋진 프롬프트
 #    set prompt = "%B%{\033[35m%}%t %{\033[32m%}%n@%m%b %C4 %# "
 ```

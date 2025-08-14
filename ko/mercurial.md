@@ -8,70 +8,47 @@ contributors:
 filename: LearnMercurial.txt
 ---
 
-Mercurial is a free, distributed source control management tool. It offers
-you the power to efficiently handle projects of any size while using an
-intuitive interface. It is easy to use and hard to break, making it ideal for
-anyone working with versioned files.
+Mercurial은 무료 분산 소스 제어 관리 도구입니다.
+직관적인 인터페이스를 사용하면서 모든 크기의 프로젝트를 효율적으로 처리할 수 있는 강력한 기능을 제공합니다. 사용하기 쉽고 깨지기 어려워 버전 관리된 파일로 작업하는 모든 사람에게 이상적입니다.
 
-## Versioning Concepts
+## 버전 관리 개념
 
-### What is version control?
+### 버전 관리란 무엇인가?
 
-Version control is a system that keeps track fo changes to a set of file(s)
-and/or directorie(s) over time.
+버전 관리는 시간 경과에 따른 파일 및/또는 디렉토리 집합의 변경 사항을 추적하는 시스템입니다.
 
-### Why use Mercurial?
+### 왜 Mercurial을 사용하는가?
 
-* Distributed Architecture - Traditionally version control systems such as CVS
-and Subversion are a client server architecture with a central server to
-store the revision history of a project. Mercurial however is a truly
-distributed architecture, giving each developer a full local copy of the
-entire development history. It works independently of a central server.
-* Fast - Traditionally version control systems such as CVS and Subversion are a
-client server architecture with a central server to store the revision history
-of a project. Mercurial however is a truly distributed architecture, giving
-each developer a full local copy of the entire development history. It works
-independently of a central server.
-* Platform Independent - Mercurial was written to be highly platform
-independent. Much of Mercurial is written in Python, with small performance
-critical parts written in portable C. Binary releases are available for all
-major platforms.
-* Extensible - The functionality of Mercurial can be increased with extensions,
-either by activating the official ones which are shipped with Mercurial or
-downloading some [from the wiki](https://www.mercurial-scm.org/wiki/UsingExtensions) or by [writing your own](https://www.mercurial-scm.org/wiki/WritingExtensions). Extensions are written in
-Python and can change the workings of the basic commands, add new commands and
-access all the core functions of Mercurial.
-* Easy to use - The Mercurial command set is consistent with what subversion
-users would expect, so they are likely to feel right at home. Most dangerous
-actions are part of extensions that need to be enabled to be used.
-* Open Source - Mercurial is free software licensed under the terms of the [GNU
-General Public License Version 2](http://www.gnu.org/licenses/gpl-2.0.txt) or
-any later version.
+* 분산 아키텍처 - 전통적으로 CVS 및 Subversion과 같은 버전 제어 시스템은 프로젝트의 개정 기록을 저장하는 중앙 서버가 있는 클라이언트 서버 아키텍처입니다. 그러나 Mercurial은 진정한 분산 아키텍처로, 각 개발자에게 전체 개발 기록의 전체 로컬 복사본을 제공합니다. 중앙 서버와 독립적으로 작동합니다.
+* 빠름 - 전통적으로 CVS 및 Subversion과 같은 버전 제어 시스템은 프로젝트의 개정 기록을 저장하는 중앙 서버가 있는 클라이언트 서버 아키텍처입니다. 그러나 Mercurial은 진정한 분산 아키텍처로, 각 개발자에게 전체 개발 기록의 전체 로컬 복사본을 제공합니다. 중앙 서버와 독립적으로 작동합니다.
+* 플랫폼 독립적 - Mercurial은 플랫폼 독립적으로 작성되었습니다. Mercurial의 대부분은 Python으로 작성되었으며, 작은 성능이 중요한 부분은 이식 가능한 C로 작성되었습니다. 바이너리 릴리스는 모든 주요 플랫폼에서 사용할 수 있습니다.
+* 확장 가능 - Mercurial의 기능은 Mercurial과 함께 제공되는 공식 확장을 활성화하거나 [위키에서 다운로드](https://www.mercurial-scm.org/wiki/UsingExtensions)하거나 [직접 작성](https://www.mercurial-scm.org/wiki/WritingExtensions)하여 확장할 수 있습니다. 확장은 Python으로 작성되었으며 기본 명령의 작동 방식을 변경하고, 새 명령을 추가하고, Mercurial의 모든 핵심 기능에 액세스할 수 있습니다.
+* 사용하기 쉬움 - Mercurial 명령 세트는 Subversion 사용자가 기대하는 것과 일치하므로 집처럼 편안하게 느낄 것입니다. 대부분의 위험한 작업은 사용하려면 활성화해야 하는 확장의 일부입니다.
+* 오픈 소스 - Mercurial은 [GNU 일반 공중 사용 허가서 버전 2](http://www.gnu.org/licenses/gpl-2.0.txt) 또는 이후 버전의 조건에 따라 라이선스가 부여된 무료 소프트웨어입니다.
 
-## Terminology
+## 용어
 
-| Term | Definition |
+| 용어 | 정의 |
 | ------------- | ---------------------------------- |
-| Repository | A repository is a collection of revisions |
-| hgrc | A configuration file which stores the defaults for a repository. |
-| revision | A committed changeset: has a REV number |
-| changeset | Set of changes saved as diffs |
-| diff | Changes between file(s) |
-| tag | A named named revision |
-| parent(s) | Immediate ancestor(s) of a revision |
-| branch | A child of a revision |
-| head | A head is a changeset with no child changesets |
-| merge | The process of merging two HEADS |
-| tip | The latest revision in any branch |
-| patch | All of the diffs between two revisions |
-| bundle | Patch with permis­sions and rename support |
+| 저장소 | 저장소는 개정판 모음입니다. |
+| hgrc | 저장소의 기본값을 저장하는 구성 파일입니다. |
+| 개정판 | 커밋된 변경 집합: REV 번호가 있습니다. |
+| 변경 집합 | 차이점으로 저장된 변경 사항 집합 |
+| 차이점 | 파일 간의 변경 사항 |
+| 태그 | 명명된 개정판 |
+| 부모 | 개정판의 직계 조상 |
+| 브랜치 | 개정판의 자식 |
+| 헤드 | 헤드는 자식 변경 집합이 없는 변경 집합입니다. |
+| 병합 | 두 개의 HEAD를 병합하는 프로세스 |
+| 팁 | 모든 브랜치의 최신 개정판 |
+| 패치 | 두 개정판 간의 모든 차이점 |
+| 번들 | 권한 및 이름 바꾸기 지원이 포함된 패치 |
 
-## Commands
+## 명령어
 
 ### init
 
-Create a new repository in the given directory, the settings and stored
-information are in a directory named `.hg`.
+지정된 디렉토리에 새 저장소를 생성하며, 설정 및 저장된 정보는 `.hg`라는 디렉토리에 있습니다.
 
 ```bash
 $ hg init
@@ -79,13 +56,13 @@ $ hg init
 
 ### help
 
-Will give you access to a very detailed description of each command.
+각 명령어에 대한 매우 자세한 설명에 액세스할 수 있습니다.
 
 ```bash
-# Quickly check what commands are available
+# 사용 가능한 명령어를 빠르게 확인
 $ hg help
 
-# Get help on a specific command
+# 특정 명령어에 대한 도움말 얻기
 # hg help <command>
 $ hg help add
 $ hg help commit
@@ -94,264 +71,245 @@ $ hg help init
 
 ### status
 
-Show the differences between what is on disk and what is committed to the current
-branch or tag.
+디스크에 있는 것과 현재 브랜치 또는 태그에 커밋된 것 사이의 차이점을 표시합니다.
 
 ```bash
-# Will display the status of files
+# 파일 상태 표시
 $ hg status
 
-# Get help on the status subcommand
+# 상태 하위 명령어에 대한 도움말 얻기
 $ hg help status
 ```
 
 ### add
 
-Will add the specified files to the repository on the next commit.
+다음 커밋 시 지정된 파일을 저장소에 추가합니다.
 
 ```bash
-# Add a file in the current directory
+# 현재 디렉토리에 파일 추가
 $ hg add filename.rb
 
-# Add a file in a sub directory
+# 하위 디렉토리에 파일 추가
 $ hg add foo/bar/filename.rb
 
-# Add files by pattern
+# 패턴별로 파일 추가
 $ hg add *.rb
 ```
 
 ### branch
 
-Set or show the current branch name.
+현재 브랜치 이름을 설정하거나 표시합니다.
 
-*Branch names are permanent and global. Use 'hg bookmark' to create a
-light-weight bookmark instead. See 'hg help glossary' for more information
-about named branches and bookmarks.*
+*브랜치 이름은 영구적이고 전역적입니다. 대신 가벼운 북마크를 만들려면 'hg bookmark'를 사용하십시오. 명명된 브랜치와 북마크에 대한 자세한 내용은 'hg help glossary'를 참조하십시오.*
 
 ```bash
-# With no argument it shows the current branch name
+# 인수가 없으면 현재 브랜치 이름을 표시합니다.
 $ hg branch
 
-# With a name argument it will change the current branch.
+# 이름 인수가 있으면 현재 브랜치를 변경합니다.
 $ hg branch new_branch
-marked working directory as branch new_branch
-(branches are permanent and global, did you want a bookmark?)
+작업 디렉토리를 브랜치 new_branch로 표시했습니다.
+(브랜치는 영구적이고 전역적입니다. 북마크를 원하셨습니까?)
 ```
 
 ### tag
 
-Add one or more tags for the current or given revision.
+현재 또는 지정된 개정판에 하나 이상의 태그를 추가합니다.
 
-Tags are used to name particular revisions of the repository and are very
-useful to compare different revisions, to go back to significant earlier
-versions or to mark branch points as releases, etc. Changing an existing tag
-is normally disallowed; use -f/--force to override.
+태그는 저장소의 특정 개정판에 이름을 지정하는 데 사용되며, 다른 개정판을 비교하거나, 중요한 이전 버전으로 돌아가거나, 브랜치 지점을 릴리스로 표시하는 데 매우 유용합니다. 기존 태그를 변경하는 것은 일반적으로 허용되지 않습니다. 재정의하려면 -f/--force를 사용하십시오.
 
 ```bash
-# List tags
+# 태그 목록
 $ hg tags
 tip                                2:efc8222cd1fb
 v1.0                               0:37e9b57123b3
 
-# Create a new tag on the current revision
+# 현재 개정판에 새 태그 생성
 $ hg tag v1.1
 
-# Create a tag on a specific revision
+# 특정 개정판에 태그 생성
 $ hg tag -r efc8222cd1fb v1.1.1
 ```
 
 ### clone
 
-Create a copy of an existing repository in a new directory.
+기존 저장소의 복사본을 새 디렉토리에 생성합니다.
 
-If no destination directory name is specified, it defaults to the basename of
-the source.
+대상 디렉토리 이름이 지정되지 않은 경우 소스의 기본 이름으로 기본 설정됩니다.
 
 ```bash
-# Clone a remote repo to a local directory
+# 원격 저장소를 로컬 디렉토리로 복제
 $ hg clone https://some-mercurial-server.example.com/reponame
 
-# Clone a local repo to a remote server
+# 로컬 저장소를 원격 서버로 복제
 $ hg clone . ssh://username@some-mercurial-server.example.com/newrepo
 
-# Clone a local repo to a local repo
+# 로컬 저장소를 로컬 저장소로 복제
 $ hg clone . /tmp/some_backup_dir
 ```
 
 ### commit / ci
 
-Commit changes to the given files into the repository.
+지정된 파일의 변경 사항을 저장소에 커밋합니다.
 
 ```bash
-# Commit with a message
+# 메시지와 함께 커밋
 $ hg commit -m 'This is a commit message'
 
-# Commit all added / removed files in the current tree
+# 현재 트리의 모든 추가/제거된 파일 커밋
 $ hg commit -A 'Adding and removing all existing files in the tree'
 
-# amend the parent of the working directory with a new commit that contains the
-# changes in the parent in addition to those currently reported by 'hg status',
+# 'hg status'가 현재 보고하는 변경 사항 외에 부모의 변경 사항을
+# 포함하는 새 커밋으로 작업 디렉토리의 부모를 수정합니다.
 $ hg commit --amend -m "Correct message"
 ```
 
 ### diff
 
-Show differences between revisions for the specified files using the unified
-diff format.
+통합 diff 형식을 사용하여 지정된 파일에 대한 개정판 간의 차이점을 표시합니다.
 
 ```bash
-# Show the diff between the current directory and a previous revision
+# 현재 디렉토리와 이전 개정판 간의 차이점 표시
 $ hg diff -r 10
 
-# Show the diff between two previous revisions
+# 두 이전 개정판 간의 차이점 표시
 $ hg diff -r 30 -r 20
 ```
 
 ### grep
 
-Search revision history for a pattern in specified files.
+지정된 파일에서 패턴에 대한 개정 기록을 검색합니다.
 
 ```bash
-# Search files for a specific phrase
+# 특정 구문에 대한 파일 검색
 $ hg grep "TODO:"
 ```
 
 ### log / history
 
-Show revision history of entire repository or files. If no revision range is
-specified, the default is "tip:0" unless --follow is set, in which case the
-working directory parent is used as the starting revision.
+전체 저장소 또는 파일의 개정 기록을 표시합니다. 개정 범위가 지정되지 않은 경우 --follow가 설정되지 않은 한 기본값은 "tip:0"이며, 이 경우 작업 디렉토리 부모가 시작 개정판으로 사용됩니다.
 
 ```bash
-# Show the history of the entire repository
+# 전체 저장소의 기록 표시
 $ hg log
 
-# Show the history of a single file
+# 단일 파일의 기록 표시
 $ hg log myfile.rb
 
-# Show the revision changes as an ASCII art DAG with the most recent changeset
-# at the top.
+# 가장 최근 변경 집합이 맨 위에 있는 ASCII 아트 DAG로
+# 개정 변경 사항을 표시합니다.
 $ hg log -G
 ```
 
 ### merge
 
-Merge another revision into working directory.
+다른 개정판을 작업 디렉토리로 병합합니다.
 
 ```bash
-# Merge changesets to local repository
+# 로컬 저장소에 변경 집합 병합
 $ hg merge
 
-# Merge from a named branch or revision into the current local branch
+# 명명된 브랜치 또는 개정판에서 현재 로컬 브랜치로 병합
 $ hg merge branchname_or_revision
 
-# After successful merge, commit the changes
+# 성공적인 병합 후 변경 사항 커밋
 hg commit
 ```
 
 ### move / mv / rename
 
-Rename files; equivalent of copy + remove. Mark dest as copies of sources;
-mark sources for deletion. If dest is a directory, copies are put in that
-directory. If dest is a file, there can only be one source.
+파일 이름 바꾸기; 복사 + 제거와 동일합니다. 대상을 소스의 복사본으로 표시하고, 소스를 삭제하도록 표시합니다. 대상이 디렉토리인 경우 복사본이 해당 디렉토리에 배치됩니다. 대상이 파일인 경우 소스는 하나만 있을 수 있습니다.
 
 ```bash
-# Rename a single file
+# 단일 파일 이름 바꾸기
 $ hg mv foo.txt bar.txt
 
-# Rename a directory
+# 디렉토리 이름 바꾸기
 $ hg mv some_directory new_directory
 ```
 
 ### pull
 
-Pull changes from a remote repository to a local one.
+원격 저장소에서 로컬 저장소로 변경 사항을 가져옵니다.
 
 ```bash
-# List remote paths
+# 원격 경로 목록
 $ hg paths
 remote1 = http://path/to/remote1
 remote2 = http://path/to/remote2
 
-# Pull from remote 1
+# 원격 1에서 가져오기
 $ hg pull remote1
 
-# Pull from remote 2
+# 원격 2에서 가져오기
 $ hg pull remote2
 ```
 
 ### push
 
-Push changesets from the local repository to the specified destination.
+로컬 저장소의 변경 집합을 지정된 대상으로 푸시합니다.
 
 ```bash
-# List remote paths
+# 원격 경로 목록
 $ hg paths
 remote1 = http://path/to/remote1
 remote2 = http://path/to/remote2
 
-# Pull from remote 1
+# 원격 1에서 푸시
 $ hg push remote1
 
-# Pull from remote 2
+# 원격 2에서 푸시
 $ hg push remote2
 ```
 
 ### rebase
 
-Move changeset (and descendants) to a different branch.
+변경 집합(및 하위 항목)을 다른 브랜치로 이동합니다.
 
-Rebase uses repeated merging to graft changesets from one part of history
-(the source) onto another (the destination). This can be useful for
-linearizing *local* changes relative to a master development tree.
+리베이스는 반복적인 병합을 사용하여 기록의 한 부분(소스)에서 다른 부분(대상)으로 변경 집합을 이식합니다. 이는 마스터 개발 트리에 대한 *로컬* 변경 사항을 선형화하는 데 유용할 수 있습니다.
 
-* Draft the commits back to the source revision.
-* -s is the source, ie. what you are rebasing.
-* -d is the destination, which is where you are sending it.
+* 커밋을 소스 개정판으로 다시 초안으로 작성합니다.
+* -s는 소스, 즉 리베이스하는 대상입니다.
+* -d는 대상, 즉 보내는 곳입니다.
 
 ```bash
-# Put the commits into draft status
-# This will draft all subsequent commits on the relevant branch
+# 커밋을 초안 상태로 만듭니다.
+# 이것은 관련 브랜치의 모든 후속 커밋을 초안으로 만듭니다.
 $ hg phase --draft --force -r 1206
 
-# Rebase from from revision 102 over revision 208
+# 개정 102에서 개정 208로 리베이스
 $ hg rebase -s 102 -d 208
 ```
 
 ### revert
 
-Restore files to their checkout state. With no revision specified, revert the
-specified files or directories to the contents they had in the parent of the
-working directory. This restores the contents of files to an unmodified state
-and unschedules adds, removes, copies, and renames. If the working directory
-has two parents, you must explicitly specify a revision.
+파일을 체크아웃 상태로 복원합니다. 개정판이 지정되지 않은 경우 지정된 파일 또는 디렉토리를 작업 디렉토리의 부모에 있던 내용으로 되돌립니다. 이렇게 하면 파일의 내용을 수정되지 않은 상태로 복원하고 추가, 제거, 복사 및 이름 바꾸기를 예약 취소합니다. 작업 디렉토리에 두 개의 부모가 있는 경우 개정판을 명시적으로 지정해야 합니다.
 
 ```bash
-# Reset a specific file to its checked out state
+# 특정 파일을 체크아웃 상태로 재설정
 $ hg revert oops_i_did_it_again.txt
 
-# Revert a specific file to its checked out state without leaving a .orig file
-# around
+# .orig 파일을 남기지 않고 특정 파일을 체크아웃 상태로 되돌리기
 $ hg revert -C oops_i_did_it_again.txt
 
-# Revert all changes
+# 모든 변경 사항 되돌리기
 $ hg revert -a
 ```
 
 ### rm / remove
 
-Remove the specified files on the next commit.
+다음 커밋 시 지정된 파일을 제거합니다.
 
 ```bash
-# Remove a specific file
+# 특정 파일 제거
 $ hg remove go_away.txt
 
-# Remove a group of files by pattern
+# 패턴별로 파일 그룹 제거
 $ hg remove *.txt
 ```
 
-## Further information
+## 추가 정보
 
-* [Learning Mercurial in Workflows](https://www.mercurial-scm.org/guide)
-* [Mercurial Quick Start](https://www.mercurial-scm.org/wiki/QuickStart)
-* [Mercurial: The Definitive Guide by Bryan O'Sullivan](http://hgbook.red-bean.com/)
+* [워크플로에서 Mercurial 배우기](https://www.mercurial-scm.org/guide)
+* [Mercurial 빠른 시작](https://www.mercurial-scm.org/wiki/QuickStart)
+* [Mercurial: Bryan O'Sullivan의 결정판 가이드](http://hgbook.red-bean.com/)
