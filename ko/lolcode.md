@@ -1,5 +1,3 @@
-# lolcode.md (번역)
-
 ---
 name: LOLCODE
 filename: learnLOLCODE.lol
@@ -7,55 +5,54 @@ contributors:
     - ["abactel", "https://github.com/abactel"]
 ---
 
-LOLCODE is an esoteric programming language designed to resemble the speech of [lolcats](https://upload.wikimedia.org/wikipedia/commons/a/ab/Lolcat_in_folder.jpg?1493656347257).
+LOLCODE는 [롤캣](https://upload.wikimedia.org/wikipedia/commons/a/ab/Lolcat_in_folder.jpg?1493656347257)의 말투를 닮도록 설계된 난해한 프로그래밍 언어입니다.
 
 ```
-BTW This is an inline comment
-BTW All code must begin with `HAI <language version>` and end with `KTHXBYE`
+BTW 이건 한 줄 주석임
+BTW 모든 코드는 `HAI <언어 버전>`으로 시작해서 `KTHXBYE`로 끝나야 함
 
 HAI 1.3
-CAN HAS STDIO? BTW Importing standard headers
+CAN HAS STDIO? BTW 표준 헤더 가져오는 중
 
 OBTW
      ==========================================================================
-     ================================= BASICS =================================
+     ================================= 기초 ===================================
      ==========================================================================
 TLDR
 
-BTW Displaying text:
+BTW 텍스트 표시하기:
 VISIBLE "HELLO WORLD"
 
-BTW Declaring variables:
+BTW 변수 선언하기:
 I HAS A MESSAGE ITZ "CATZ ARE GOOD"
 VISIBLE MESSAGE
 
 OBTW
-    (This is a codeblock.) Variables are dynamically typed so you don't need to
-    declare their type. A variable's type matches its content. These are the
-    types:
+    (이건 코드 블록임.) 변수는 동적 타입이라서 타입을 선언할 필요 없음.
+    변수 타입은 내용에 따라 정해짐. 타입 종류는 다음과 같음:
 TLDR
 
-I HAS A STRING  ITZ "DOGZ ARE GOOOD" BTW type is YARN
-I HAS A INTEGER ITZ 42               BTW type is NUMBR
-I HAS A FLOAT   ITZ 3.1415           BTW type is NUMBAR
-I HAS A BOOLEAN ITZ WIN              BTW type is TROOF
-I HAS A UNTYPED                      BTW type is NOOB
+I HAS A STRING  ITZ "DOGZ ARE GOOOD" BTW 타입은 YARN (실)
+I HAS A INTEGER ITZ 42               BTW 타입은 NUMBR (숫자)
+I HAS A FLOAT   ITZ 3.1415           BTW 타입은 NUMBAR (소수)
+I HAS A BOOLEAN ITZ WIN              BTW 타입은 TROOF (진실)
+I HAS A UNTYPED                      BTW 타입은 NOOB (뉴비)
 
-BTW Accepting user input:
+BTW 사용자 입력 받기:
 I HAS A AGE
 GIMMEH AGE
-BTW The variable is stored as a YARN. To convert it into NUMBR:
+BTW 변수는 YARN으로 저장됨. NUMBR로 바꾸려면:
 AGE IS NOW A NUMBR
 
 OBTW
      ==========================================================================
-     ================================== MATH ==================================
+     ================================== 수학 ==================================
      ==========================================================================
 TLDR
 
-BTW LOLCODE uses polish notation style math.
+BTW LOLCODE는 폴란드 표기법 스타일의 수학을 씀.
 
-BTW Basic mathematical notation:
+BTW 기본 수학 표기법:
 
 SUM OF 21 AN 33         BTW 21 + 33
 DIFF OF 90 AN 10        BTW 90 - 10
@@ -65,19 +62,19 @@ MOD OF 43 AN 64         BTW 43 modulo 64
 BIGGR OF 23 AN 53       BTW max(23, 53)
 SMALLR OF 53 AN 45      BTW min(53, 45)
 
-BTW Binary notation:
+BTW 2진 표기법:
 
-BOTH OF WIN AN WIN           BTW and: WIN if x=WIN, y=WIN
-EITHER OF FAIL AN WIN        BTW or: FAIL if x=FAIL, y=FAIL
-WON OF WIN AN FAIL           BTW xor: FAIL if x=y
-NOT FAIL                     BTW unary negation: WIN if x=FAIL
-ALL OF WIN AN WIN MKAY   BTW infinite arity AND
-ANY OF WIN AN FAIL MKAY  BTW infinite arity OR
+BOTH OF WIN AN WIN           BTW 그리고: x=WIN, y=WIN이면 WIN
+EITHER OF FAIL AN WIN        BTW 또는: x=FAIL, y=FAIL이면 FAIL
+WON OF WIN AN FAIL           BTW xor: x=y이면 FAIL
+NOT FAIL                     BTW 단항 부정: x=FAIL이면 WIN
+ALL OF WIN AN WIN MKAY   BTW 무한 인수 AND
+ANY OF WIN AN FAIL MKAY  BTW 무한 인수 OR
 
-BTW Comparison:
+BTW 비교:
 
-BOTH SAEM "CAT" AN "DOG"             BTW WIN if x == y
-DIFFRINT 732 AN 184                  BTW WIN if x != y
+BOTH SAEM "CAT" AN "DOG"             BTW x == y 이면 WIN
+DIFFRINT 732 AN 184                  BTW x != y 이면 WIN
 BOTH SAEM 12 AN BIGGR OF 12 AN 4     BTW x >= y
 BOTH SAEM 43 AN SMALLR OF 43 AN 56   BTW x <= y
 DIFFRINT 64 AN SMALLR OF 64 AN 2     BTW x > y
@@ -85,41 +82,41 @@ DIFFRINT 75 AN BIGGR OF 75 AN 643    BTW x < y
 
 OBTW
      ==========================================================================
-     ============================== FLOW CONTROL ==============================
+     ============================== 흐름 제어 ==============================
      ==========================================================================
 TLDR
 
-BTW If/then statement:
+BTW If/then 문:
 I HAS A ANIMAL
 GIMMEH ANIMAL
 BOTH SAEM ANIMAL AN "CAT", O RLY?
     YA RLY
-        VISIBLE "YOU HAV A CAT"
+        VISIBLE "고양이가 있군요"
     MEBBE BOTH SAEM ANIMAL AN "MAUS"
-        VISIBLE "NOM NOM NOM. I EATED IT."
+        VISIBLE "냠냠냠. 내가 먹었음."
     NO WAI
-        VISIBLE "AHHH IS A WOOF WOOF"
+        VISIBLE "으악 멍멍이다"
 OIC
 
-BTW Case statement:
+BTW Case 문:
 I HAS A COLOR
 GIMMEH COLOR
 COLOR, WTF?
     OMG "R"
-        VISIBLE "RED FISH"
+        VISIBLE "빨간 물고기"
         GTFO
     OMG "Y"
-        VISIBLE "YELLOW FISH"
-        BTW Since there is no `GTFO` the next statements will also be tested
+        VISIBLE "노란 물고기"
+        BTW `GTFO`가 없어서 다음 문장도 테스트될 거임
     OMG "G"
     OMG "B"
-        VISIBLE "FISH HAS A FLAVOR"
+        VISIBLE "물고기는 맛이 있음"
         GTFO
     OMGWTF
-        VISIBLE "FISH IS TRANSPARENT OHNO WAT"
+        VISIBLE "물고기가 투명해 오노 왓"
 OIC
 
-BTW For loop:
+BTW For 반복문:
 I HAS A TEMPERATURE
 GIMMEH TEMPERATURE
 TEMPERATURE IS NOW A NUMBR
@@ -127,61 +124,61 @@ IM IN YR LOOP UPPIN YR ITERATOR TIL BOTH SAEM ITERATOR AN TEMPERATURE
     VISIBLE ITERATOR
 IM OUTTA YR LOOP
 
-BTW While loop:
+BTW While 반복문:
 IM IN YR LOOP NERFIN YR ITERATOR WILE DIFFRINT ITERATOR AN -10
     VISIBLE ITERATOR
 IM OUTTA YR LOOP
 
 OBTW
      =========================================================================
-     ================================ Strings ================================
+     =============================== 문자열 ================================
      =========================================================================
 TLDR
 
-BTW Linebreaks:
-VISIBLE "FIRST LINE :) SECOND LINE"
+BTW 줄바꿈:
+VISIBLE "첫 번째 줄 :) 두 번째 줄"
 
-BTW Tabs:
-VISIBLE ":>SPACES ARE SUPERIOR"
+BTW 탭:
+VISIBLE ":>공백이 최고임"
 
-BTW Bell (goes beep):
-VISIBLE "NXT CUSTOMER PLS :o"
+BTW 벨 (삑 소리 남):
+VISIBLE "다음 손님 오세요 :o"
 
-BTW Literal double quote:
-VISIBLE "HE SAID :"I LIKE CAKE:""
+BTW 리터럴 큰따옴표:
+VISIBLE "그가 말했음 :"나는 케이크를 좋아해:""
 
-BTW Literal colon:
-VISIBLE "WHERE I LIVE:: CYBERSPACE"
+BTW 리터럴 콜론:
+VISIBLE "내가 사는 곳:: 사이버 공간"
 
 OBTW
      =========================================================================
-     =============================== FUNCTIONS ===============================
+     =============================== 함수 ===============================
      =========================================================================
 TLDR
 
-BTW Declaring a new function:
-HOW IZ I SELECTMOVE YR MOVE BTW `MOVE` is an argument
+BTW 새 함수 선언하기:
+HOW IZ I SELECTMOVE YR MOVE BTW `MOVE`는 인수임
     BOTH SAEM MOVE AN "ROCK", O RLY?
         YA RLY
-            VISIBLE "YOU HAV A ROCK"
+            VISIBLE "바위가 있군요"
         NO WAI
-            VISIBLE "OH NO IS A SNIP-SNIP"
+            VISIBLE "오노 가위-가위다"
     OIC
-    GTFO BTW This returns NOOB
+    GTFO BTW 이건 NOOB를 반환함
 IF U SAY SO
 
-BTW Declaring a function and returning a value:
+BTW 함수 선언하고 값 반환하기:
 HOW IZ I IZYELLOW
     FOUND YR "YELLOW"
 IF U SAY SO
 
-BTW Calling a function:
+BTW 함수 호출하기:
 I IZ IZYELLOW MKAY
 
 KTHXBYE
 ```
 
-## Further reading:
+## 더 읽을거리:
 
-- [LCI compiler](https://github.com/justinmeza/lci)
-- [Official spec](https://github.com/justinmeza/lolcode-spec/blob/master/v1.2/lolcode-spec-v1.2.md)
+- [LCI 컴파일러](https://github.com/justinmeza/lci)
+- [공식 사양](https://github.com/justinmeza/lolcode-spec/blob/master/v1.2/lolcode-spec-v1.2.md)

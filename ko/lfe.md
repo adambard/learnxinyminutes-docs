@@ -1,5 +1,3 @@
-# lfe.md (번역)
-
 ---
 name: "Lisp Flavoured Erlang (LFE)"
 filename: lispflavourederlang.lfe
@@ -7,114 +5,112 @@ contributors:
   - ["Pratik Karki", "https://github.com/prertik"]
 ---
 
-Lisp Flavoured Erlang (LFE) is a functional, concurrent, general-purpose programming
-language and Lisp dialect (Lisp-2) built on top of Core Erlang and the Erlang Virtual Machine (BEAM).
+Lisp Flavoured Erlang(LFE)는 함수형, 동시성, 범용 프로그래밍 언어이자 코어 얼랭(Core Erlang) 및 얼랭 가상 머신(BEAM) 위에 구축된 리스프 방언(Lisp-2)입니다.
 
-LFE can be obtained from [LFE](https://github.com/rvirding/lfe).
-The classic starting point is the [LFE docs](http://docs.lfe.io).
+LFE는 [LFE](https://github.com/rvirding/lfe)에서 얻을 수 있습니다.
+고전적인 시작점은 [LFE 문서](http://docs.lfe.io)입니다.
 
 ```lisp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 0. Syntax
+;;; 0. 구문
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; General form.
+;;; 일반적인 형식.
 
-;; Lisp is comprised of two syntaxes, the ATOM and the S-expression.
-;; `forms` are known as grouped S-expressions.
+;; 리스프는 ATOM과 S-표현식이라는 두 가지 구문으로 구성됩니다.
+;; `form`은 그룹화된 S-표현식으로 알려져 있습니다.
 
-8  ; an atom; it evaluates to itself
+8  ; 아톰; 자기 자신으로 평가됩니다.
 
-:ERLANG ;Atom; evaluates to the symbol :ERLANG.
+:ERLANG ; 아톰; 심볼 :ERLANG으로 평가됩니다.
 
-t  ; another atom which denotes true.
+t  ; true를 나타내는 또 다른 아톰입니다.
 
-(* 2 21) ; an S- expression
+(* 2 21) ; S-표현식입니다.
 
-'(8 :foo t)  ;another one
+'(8 :foo t)  ; 또 다른 예시입니다.
 
 
-;;; Comments
+;;; 주석
 
-;; Single line comments start with a semicolon; use two for normal
-;; comments, three for section comments, and four fo file-level
-;; comments.
+;; 한 줄 주석은 세미콜론으로 시작합니다. 일반 주석에는 두 개,
+;; 섹션 주석에는 세 개, 파일 수준 주석에는 네 개를 사용하십시오.
 
-;; Block Comment
+;; 블록 주석
 
-   #| comment text |#
+   #| 주석 텍스트 |#
 
-;;; Environment
+;;; 환경
 
-;; LFE is the de-facto standard.
+;; LFE는 사실상의 표준입니다.
 
-;; Libraries can be used directly from the Erlang ecosystem. Rebar3 is the build tool.
+;; 라이브러리는 얼랭 생태계에서 직접 사용할 수 있습니다. Rebar3가 빌드 도구입니다.
 
-;; LFE is usually developed with a text editor(preferably Emacs) and a REPL
-;; (Read Evaluate Print Loop) running at the same time. The REPL
-;; allows for interactive exploration of the program as it is "live"
-;; in the system.
+;; LFE는 보통 텍스트 편집기(가급적 이맥스)와 REPL(Read Evaluate Print Loop)을
+;; 동시에 실행하여 개발합니다. REPL을 사용하면 시스템에서 "실시간"으로
+;; 실행 중인 프로그램을 대화식으로 탐색할 수 있습니다.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 1. Literals and Special Syntactic Rules
+;;; 1. 리터럴 및 특수 구문 규칙
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Integers
+;;; 정수
 
-1234 -123           ; Regular decimal notation
-#b0 #b10101         ; Binary notation
-#0 #10101           ; Binary notation (alternative form)
-#o377 #o-111        ; Octal notation
-#d123456789 #d+123  ; Explicitly decimal notation
-#xc0ffe 0x-01       ; Hexadecimal notation
-#2r1010 #8r377      ;Notation with explicit base (up to 36)
-#\a #$ #\ä #\🐭     ;Character notation (the value is the Unicode code point of the character)
-#\x1f42d;           ;Character notation with the value in hexadecimal
+1234 -123           ; 일반 10진수 표기법
+#b0 #b10101         ; 2진수 표기법
+#0 #10101           ; 2진수 표기법 (대체 형식)
+#o377 #o-111        ; 8진수 표기법
+#d123456789 #d+123  ; 명시적 10진수 표기법
+#xc0ffe 0x-01       ; 16진수 표기법
+#2r1010 #8r377      ; 명시적 밑을 사용한 표기법 (최대 36)
+#\a #$ #\ä #\🐭     ; 문자 표기법 (값은 해당 문자의 유니코드 코드 포인트입니다)
+#\x1f42d;           ; 16진수 값을 사용한 문자 표기법
 
-;;; Floating point numbers
+;;; 부동 소수점 숫자
 1.0 +2.0 -1.5 1.0e10 1.111e-10
 
-;;; Strings
+;;; 문자열
 
-"any text between double quotes where \" and other special characters like \n can be escaped".
-; List String
-"Cat: \x1f639;" ; writing unicode in string for regular font ending with semicolon.
+"큰따옴표 사이의 모든 텍스트. \"나 다른 특수 문자(\n 등)는 이스케이프될 수 있습니다."
+; 리스트 문자열
+"Cat: \x1f639;" ; 일반 글꼴의 문자열에 유니코드를 작성하고 세미콜론으로 끝냅니다.
 
-#"This is a binary string \n with some \"escaped\" and quoted (\x1f639;) characters"
-; Binary strings are just strings but function different in the VM.
-; Other ways of writing it are:  #B("a"), #"a", and #B(97).
+#"이것은 일부 \"이스케이프된\" 및 인용된 (\x1f639;) 문자가 있는 바이너리 문자열입니다 \n"
+; 바이너리 문자열은 그냥 문자열이지만 VM에서 다르게 작동합니다.
+; 다른 작성 방법으로는 #B("a"), #"a", #B(97)이 있습니다.
 
 
-;;; Character escaping
+;;; 문자 이스케이프
 
-\b  ; => Backspace
-\t  ; => Tab
-\n  ; => Newline
-\v  ; => Vertical tab
-\f  ; => Form Feed
-\r  ; => Carriage Return
-\e  ; => Escape
-\s  ; => Space
-\d  ; => Delete
+\b  ; => 백스페이스
+\t  ; => 탭
+\n  ; => 개행
+\v  ; => 수직 탭
+\f  ; => 폼 피드
+\r  ; => 캐리지 리턴
+\e  ; => 이스케이프
+\s  ; => 공백
+\d  ; => 삭제
 
-;;; Binaries
-;; It is used to create binaries with any contents.
-#B((#"a" binary) (#"b" binary))                 ; #"ab" (Evaluated form)
+;;; 바이너리
+;; 어떤 내용이든 바이너리를 만드는 데 사용됩니다.
+#B((#"a" binary) (#"b" binary))                 ; #"ab" (평가된 형식)
 
-;;; Lists are: () or (foo bar baz)
+;;; 리스트: () 또는 (foo bar baz)
 
-;;; Tuples are written in: #(value1 value2 ...). Empty tuple #() is also valid.
+;;; 튜플은 #(value1 value2 ...) 형식으로 작성됩니다. 빈 튜플 #()도 유효합니다.
 
-;;; Maps are written as: #M(key1 value1 key2 value2 ...). Empty map #M() is also valid.
+;;; 맵은 #M(key1 value1 key2 value2 ...) 형식으로 작성됩니다. 빈 맵 #M()도 유효합니다.
 
-;;; Symbols: Things that cannot be parsed. Eg: foo, Foo, foo-bar, :foo
-| foo | ; explicit construction of symbol by wrapping vertical bars.
+;;; 심볼: 파싱할 수 없는 것들. 예: foo, Foo, foo-bar, :foo
+| foo | ; 수직 막대로 감싸서 심볼을 명시적으로 생성합니다.
 
-;;; Evaluation
+;;; 평가
 
-;; #.(... some expression ...). E.g. '#.(+ 1 1) will evaluate the (+ 1 1) while it            ;; reads the expression and then be effectively '2.
+;; #.(... 어떤 표현식 ...). 예: '#.(+ 1 1)은 표현식을 읽는 동안 (+ 1 1)을
+;; 평가하여 효과적으로 '2가 됩니다.
 
-;; List comprehension in LFE REPL
+;; LFE REPL에서의 리스트 컴프리헨션
 
 lfe> (list-comp
           ((<- x '(0 1 2 3)))
@@ -123,10 +119,10 @@ lfe> (list-comp
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 2. Core forms
+;; 2. 핵심 형식
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; These forms are the same as those found in Common Lisp and Scheme.
+;; 이 형식들은 커먼 리스프(Common Lisp)와 스킴(Scheme)에서 볼 수 있는 것들과 동일합니다.
 
 (quote e)
 (cons head tail)
@@ -139,19 +135,19 @@ lfe> (list-comp
 
 (lambda (arg ...) ...)
   (match-lambda
-    ((arg ... ) {{(when e ...)}} ...) ; Matches clauses
+    ((arg ... ) {{(when e ...)}} ...) ; 절 일치
     ... )
 (let ((pat {{(when e ...)}} e)
       ...)
   ... )
-(let-function ((name lambda|match-lambda) ; Only define local
-               ... )                      ; functions
+(let-function ((name lambda|match-lambda) ; 지역 함수만 정의
+               ... )
   ... )
-(letrec-function ((name lambda|match-lambda) ; Only define local
-                  ... )                      ; functions
+(letrec-function ((name lambda|match-lambda) ; 지역 함수만 정의
+                  ... )
   ... )
-(let-macro ((name lambda-match-lambda) ; Only define local
-            ...)                       ; macros
+(let-macro ((name lambda-match-lambda) ; 지역 매크로만 정의
+            ...)
   ...)
 (progn ... )
 (if test true-expr {{false-expr}})
@@ -168,56 +164,56 @@ lfe> (list-comp
   {{(case ((pat {{(when e ...)}} ... )
           ... ))}}
   {{(catch
-     ; Next must be tuple of length 3!
+     ; 다음은 반드시 길이가 3인 튜플이어야 합니다!
      (((tuple type value ignore) {{(when e ...)}}
       ... )
      ... )}}
   {{(after ... )}})
 
 (funcall func arg ... )
-(call mod func arg ... ) - Call to Erlang Mod:Func(Arg, ... )
+(call mod func arg ... ) - 얼랭 Mod:Func(Arg, ... ) 호출
 (define-module name declaration ... )
-(extend-module declaration ... ) - Define/extend module and declarations.
+(extend-module declaration ... ) - 모듈 및 선언 정의/확장
 (define-function name lambda|match-lambda)
-(define-macro name lambda|match-lambda) - Define functions/macros at top-level.
+(define-macro name lambda|match-lambda) - 최상위 수준에서 함수/매크로 정의
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 3. Macros
+;; 3. 매크로
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Macros are part of the language and allow you to create abstractions
-;; on top of the core language and standard library that move you closer
-;; toward being able to directly express the things you want to express.
+;; 매크로는 언어의 일부이며, 핵심 언어와 표준 라이브러리 위에
+;; 추상화를 생성하여 표현하고자 하는 것을 더 직접적으로
+;; 표현할 수 있도록 해줍니다.
 
-;; Top-level function
+;; 최상위 함수
 
 (defun name (arg ...) ...)
 
-;; Adding comments in functions
+;; 함수에 주석 추가하기
 
 (defun name
-  "Toplevel function with pattern-matching arguments"
+  "패턴 매칭 인수를 사용하는 최상위 함수"
   ((argpat ...) ...)
   ...)
 
-;; Top-level macro
+;; 최상위 매크로
 
 (defmacro name (arg ...) ...)
 (defmacro name arg ...)
 
-;; Top-level macro with pattern matching arguments
+;; 패턴 매칭 인수를 사용하는 최상위 매크로
 
 (defmacro name
   ((argpat ...) ...)
   ...)
 
-;; Top-level macro using Scheme inspired syntax-rules format
+;; 스킴에서 영감을 받은 syntax-rules 형식을 사용하는 최상위 매크로
 
 (defsyntax name
   (pat exp)
   ...)
 
-;;; Local macros in macro or syntax-rule format
+;;; 매크로 또는 syntax-rule 형식의 지역 매크로
 
 (macrolet ((name (arg ... ) ... )
             ... )
@@ -227,45 +223,45 @@ lfe> (list-comp
              ...)
  ...)
 
-;; Like CLISP
+;; CLISP와 유사
 
 (prog1 ...)
 (prog2 ...)
 
-;; Erlang LFE module
+;; 얼랭 LFE 모듈
 
 (defmodule name ...)
 
-;; Erlang LFE record
+;; 얼랭 LFE 레코드
 
 (defrecord name ...)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 4. Patterns and Guards
+;; 4. 패턴과 가드
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Using patterns in LFE compared to that of Erlang
+;; 얼랭과 비교한 LFE에서의 패턴 사용
 
-;; Erlang                     ;; LFE
+;; 얼랭                     ;; LFE
 ;; {ok, X}                       (tuple 'ok x)
 ;; error                         'error
 ;; {yes, [X|Xs]}                 (tuple 'yes (cons x xs))
 ;; <<34,F/float>>                (binary 34 (f float))
 ;; [P|Ps]=All                    (= (cons p ps) all)
 
-  _    ; => is don't care while pattern matching
+  _    ; => 패턴 매칭 시 신경 쓰지 않음
 
-  (= pattern1 pattern2)     ; => easier, better version of pattern matching
+  (= pattern1 pattern2)     ; => 더 쉽고 나은 버전의 패턴 매칭
 
-;; Guards
+;; 가드
 
-;; Whenever pattern occurs (let, case, receive, lc, etc) it can be followed by an optional
-;; guard which has the form (when test ...).
+;; 패턴이 나타날 때마다 (let, case, receive, lc 등) 선택적으로
+;; (when test ...) 형식의 가드를 뒤따를 수 있습니다.
 
-(progn gtest ...)             ;; => Sequence of guard tests
+(progn gtest ...)             ;; => 가드 테스트의 시퀀스
 (if gexpr gexpr gexpr)
 (type-test e)
-(guard-bif ...)               ;; => Guard BIFs, arithmetic, boolean and comparison operators
+(guard-bif ...)               ;; => 가드 BIF, 산술, 불리언 및 비교 연산자
 
 ;;; REPL
 
@@ -274,7 +270,7 @@ lfe>(set (tuple len status msg) #(8 ok "Trillian"))
 lfe>msg
     "Trillian"
 
-;;; Program illustrating use of Guards
+;;; 가드 사용을 보여주는 프로그램
 
 (defun right-number?
         ((x) (when (orelse (== x 42) (== x 276709)))
@@ -282,56 +278,56 @@ lfe>msg
         ((_) 'false))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 5. Functions
+;; 5. 함수
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; A simple function using if.
+;; if를 사용하는 간단한 함수.
 
 (defun max (x y)
-  "The max function."
+  "max 함수."
   (if (>= x y) x y))
 
-;; Same function using more clause
+;; 더 많은 절을 사용하는 동일한 함수
 
 (defun max
-  "The max function."
+  "max 함수."
   ((x y) (when (>= x y)) x)
   ((x y) y))
 
-;; Same function using similar style but using local functions defined by flet or fletrec
+;; 비슷한 스타일이지만 flet 또는 fletrec으로 정의된 지역 함수를 사용하는 동일한 함수
 
 (defun foo (x y)
-  "The max function."
-  (flet ((m (a b) "Local comment."
+  "max 함수."
+  (flet ((m (a b) "지역 주석."
             (if (>= a b) a b)))
     (m x y)))
 
-;; LFE being Lisp-2 has separate namespaces for variables and functions
-;; Both variables and function/macros are lexically scoped.
-;; Variables are bound by lambda, match-lambda and let.
-;; Functions are bound by top-level defun, flet and fletrec.
-;; Macros are bound by top-level defmacro/defsyntax and by macrolet/syntaxlet.
+;; LFE는 Lisp-2이므로 변수와 함수에 대해 별도의 네임스페이스를 가집니다.
+;; 변수와 함수/매크로는 모두 어휘적으로 범위가 지정됩니다.
+;; 변수는 lambda, match-lambda 및 let에 의해 바인딩됩니다.
+;; 함수는 최상위 defun, flet 및 fletrec에 의해 바인딩됩니다.
+;; 매크로는 최상위 defmacro/defsyntax 및 macrolet/syntaxlet에 의해 바인딩됩니다.
 
-;; (funcall func arg ...) like CL to call lambdas/match-lambdas
-;; (funs) bound to variables are used.
+;; (funcall func arg ...)은 CL처럼 람다/매치-람다를 호출하는 데 사용됩니다.
+;; 변수에 바인딩된 (funs)가 사용됩니다.
 
-;; separate bindings and special for apply.
+;; apply를 위한 별도의 바인딩 및 특수.
 apply _F (...),
 apply _F/3 ( a1, a2, a3 )
 
-;; Cons'ing in function heads
+;; 함수 헤드에서의 Cons'ing
 (defun sum (l) (sum l 0))
   (defun sum
     (('() total) total)
     (((cons h t) total) (sum t (+ h total))))
 
-;; ``cons`` literal instead of constructor form
+;; 생성자 형식 대신 cons 리터럴
       (defun sum (l) (sum l 0))
       (defun sum
         (('() total) total)
         ((`(,h . ,t) total) (sum t (+ h total))))
 
-;; Matching records in function heads
+;; 함수 헤드에서 레코드 매칭
 
 (defun handle_info
   (('ping (= (match-state remote-pid 'undefined) state))
@@ -340,20 +336,20 @@ apply _F/3 ( a1, a2, a3 )
   (('ping state)
    `#(noreply ,state)))
 
-;; Receiving Messages
+;; 메시지 수신
       (defun universal-server ()
         (receive
           ((tuple 'become func)
            (funcall func))))
 
-;; another way for receiving messages
+;; 메시지를 수신하는 또 다른 방법
 
  (defun universal-server ()
         (receive
           (`#(become ,func)
             (funcall func))))
 
-;; Composing a complete function for specific tasks
+;; 특정 작업을 위한 완전한 함수 작성
 
 (defun compose (f g)
   (lambda (x)
@@ -369,10 +365,10 @@ apply _F/3 ( a1, a2, a3 )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 6. Concurrency
+;; 6. 동시성
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Message passing as done by Erlang's light-weight "processes".
+;; 얼랭의 경량 "프로세스"에 의해 수행되는 메시지 전달.
 
 (defmodule messenger-back
  (export (print-result 0) (send-message 2)))
@@ -389,39 +385,39 @@ apply _F/3 ( a1, a2, a3 )
   (let ((spawned-pid (spawn 'messenger-back 'print-result ())))
     (! spawned-pid (tuple calling-pid msg))))
 
-;; Multiple simultaneous HTTP Requests:
+;; 다중 동시 HTTP 요청:
 
 (defun parse-args (flag)
-  "Given one or more command-line arguments, extract the passed values.
+  "하나 이상의 명령줄 인수가 주어지면 전달된 값을 추출합니다.
 
-  For example, if the following was passed via the command line:
+  예를 들어, 명령줄을 통해 다음이 전달된 경우:
 
     $ erl -my-flag my-value-1 -my-flag my-value-2
 
-  One could then extract it in an LFE program by calling this function:
+  그런 다음 LFE 프로그램에서 이 함수를 호출하여 추출할 수 있습니다:
 
     (let ((args (parse-args 'my-flag)))
       ...
       )
-  In this example, the value assigned to the arg variable would be a list
-  containing the values my-value-1 and my-value-2."
+  이 예에서 arg 변수에 할당된 값은 my-value-1 및 my-value-2 값을
+  포함하는 리스트가 됩니다."
   (let ((`#(ok ,data) (init:get_argument flag)))
     (lists:merge data)))
 
 (defun get-pages ()
-  "With no argument, assume 'url parameter was passed via command line."
+  "인수가 없으면 'url 매개변수가 명령줄을 통해 전달되었다고 가정합니다."
   (let ((urls (parse-args 'url)))
     (get-pages urls)))
 
 (defun get-pages (urls)
-  "Start inets and make (potentially many) HTTP requests."
+  "inets를 시작하고 (잠재적으로 많은) HTTP 요청을 만듭니다."
   (inets:start)
   (plists:map
     (lambda (x)
       (get-page x)) urls))
 
 (defun get-page (url)
-  "Make a single HTTP request."
+  "단일 HTTP 요청을 만듭니다."
   (let* ((method 'get)
          (headers '())
          (request-data `#(,url ,headers))
@@ -435,13 +431,13 @@ apply _F/3 ( a1, a2, a3 )
        (io:format "Result: ~p~n" `(,result))))))
 ```
 
-## Further Reading
+## 더 읽을거리
 
 * [LFE DOCS](http://docs.lfe.io)
 * [LFE GitBook](https://lfe.gitbooks.io/reference-guide/index.html)
 * [LFE Wiki](https://en.wikipedia.org/wiki/LFE_(programming_language))
 
-## Extra Info
+## 추가 정보
 
-* [LFE PDF](http://www.erlang-factory.com/upload/presentations/61/Robertvirding-LispFlavouredErlang.pdf)
+* [LFE PDF](http.www.erlang-factory.com/upload/presentations/61/Robertvirding-LispFlavouredErlang.pdf)
 * [LFE mail](https://groups.google.com/d/msg/lisp-flavoured-erlang/XA5HeLbQQDk/TUHabZCHXB0J)
