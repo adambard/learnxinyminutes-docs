@@ -9,27 +9,25 @@ contributors:
     - ["Javier Candeira", "https://candeira.com/"]
 ---
 
-Nix is a simple functional language developed for the
-[Nix package manager](https://nixos.org/nix/) and
-[NixOS](https://nixos.org/).
+Nix는 [Nix 패키지 관리자](https://nixos.org/nix/) 및
+[NixOS](https://nixos.org/)를 위해 개발된 간단한 함수형 언어입니다.
 
-You can evaluate Nix expressions using
 [nix-instantiate](https://nixos.org/nix/manual/#sec-nix-instantiate)
-or [`nix repl`](https://nixos.org/nix/manual/#ssec-relnotes-2.0).
+또는 [`nix repl`](https://nixos.org/nix/manual/#ssec-relnotes-2.0)를 사용하여 Nix 표현식을 평가할 수 있습니다.
 
 ```nix
 with builtins; [
 
-  #  Comments
+  #  주석
   #=========================================
 
-  # Inline comments look like this.
+  # 인라인 주석은 이렇습니다.
 
-  /* Multi-line comments
-     look like this. */
+  /* 여러 줄 주석은
+     이렇습니다. */
 
 
-  #  Booleans
+  #  불리언
   #=========================================
 
   (true && false)               # And
@@ -38,45 +36,45 @@ with builtins; [
   (true || false)               # Or
   #=> true
 
-  (if 3 < 4 then "a" else "b")  # Conditional
+  (if 3 < 4 then "a" else "b")  # 조건문
   #=> "a"
 
 
-  #  Integers and Floats
+  #  정수와 부동 소수점
   #=========================================
 
-  # There are two numeric types: integers and floats
+  # 두 가지 숫자 타입이 있습니다: 정수와 부동 소수점
 
-  1 0 42 (-3)       # Some integers
+  1 0 42 (-3)       # 일부 정수
 
-  123.43 .27e13     # A couple of floats
+  123.43 .27e13     # 두 개의 부동 소수점
 
-  # Operations will preserve numeric type
+  # 연산은 숫자 타입을 유지합니다
 
-  (4 + 6 + 12 - 2)  # Addition
+  (4 + 6 + 12 - 2)  # 덧셈
   #=> 20
   (4 - 2.5)
   #=> 1.5
 
-  (7 / 2)           # Division
+  (7 / 2)           # 나눗셈
   #=> 3
   (7 / 2.0)
   #=> 3.5
 
 
-  #  Strings
+  #  문자열
   #=========================================
 
-  "Strings literals are in double quotes."
+  "문자열 리터럴은 큰따옴표 안에 있습니다."
 
   "
-    String literals can span
-    multiple lines.
+    문자열 리터럴은 여러 줄에 걸쳐
+    있을 수 있습니다.
   "
 
   ''
-    This is called an "indented string" literal.
-    It intelligently strips leading whitespace.
+    이것은 "들여쓰기된 문자열" 리터럴이라고 합니다.
+    선행 공백을 지능적으로 제거합니다.
   ''
 
   ''
@@ -85,53 +83,52 @@ with builtins; [
   ''
   #=> "a\n  b"
 
-  ("ab" + "cd")   # String concatenation
+  ("ab" + "cd")   # 문자열 연결
   #=> "abcd"
 
-  # String interpolation (formerly known as "antiquotation") lets you embed values into strings.
+  # 문자열 보간(이전에는 "antiquotation"으로 알려짐)을 사용하면 문자열에 값을 포함할 수 있습니다.
   ("Your home directory is ${getEnv "HOME"}")
   #=> "Your home directory is /home/alice"
 
 
-  #  Paths
+  #  경로
   #=========================================
 
-  # Nix has a primitive data type for paths.
+  # Nix에는 경로에 대한 기본 데이터 타입이 있습니다.
   /tmp/tutorials/learn.nix
 
-  # A relative path is resolved to an absolute path at parse
-  # time, relative to the file in which it occurs.
+  # 상대 경로는 구문 분석 시 절대 경로로 확인되며,
+  # 해당 경로가 발생하는 파일을 기준으로 합니다.
   tutorials/learn.nix
   #=> /the-base-path/tutorials/learn.nix
 
-  # A path must contain at least one slash, so a relative
-  # path for a file in the same directory needs a ./ prefix,
+  # 같은 디렉토리의 파일에 대한 상대 경로는
+  # ./ 접두사가 필요합니다.
   ./learn.nix
   #=> /the-base-path/learn.nix
 
-  # The / operator must be surrounded by whitespace if
-  # you want it to signify division.
+  # 나눗셈을 의미하려면 / 연산자를
+  # 공백으로 둘러싸야 합니다.
 
-  7/2        # This is a path literal
-  (7 / 2)    # This is integer division
+  7/2        # 이것은 경로 리터럴입니다
+  (7 / 2)    # 이것은 정수 나눗셈입니다
 
 
-  #  Imports
+  #  가져오기
   #=========================================
 
-  # A nix file contains a single top-level expression with no free
-  # variables. An import expression evaluates to the value of the
-  # file that it imports.
+  # nix 파일에는 자유 변수가 없는 단일 최상위 표현식이 포함됩니다.
+  # 가져오기 표현식은 가져오는 파일의 값으로 평가됩니다.
   (import /tmp/foo.nix)
 
-  # Imports can also be specified by strings.
+  # 가져오기는 문자열로도 지정할 수 있습니다.
   (import "/tmp/foo.nix")
 
-  # Import paths must be absolute. Path literals
-  # are automatically resolved, so this is fine.
+  # 가져오기 경로는 절대 경로여야 합니다. 경로 리터럴은
+  # 자동으로 확인되므로 괜찮습니다.
   (import ./foo.nix)
 
-  # But this does not happen with strings.
+  # 그러나 이것은 문자열에서는 발생하지 않습니다.
   (import "./foo.nix")
   #=> error: string ‘foo.nix’ doesn't represent an absolute path
 
@@ -139,50 +136,49 @@ with builtins; [
   #  Let
   #=========================================
 
-  # `let` blocks allow us to bind values to variables.
+  # `let` 블록을 사용하면 값을 변수에 바인딩할 수 있습니다.
   (let x = "a"; in
     x + x + x)
   #=> "aaa"
 
-  # Bindings can refer to each other, and their order does not matter.
+  # 바인딩은 서로 참조할 수 있으며 순서는 중요하지 않습니다.
   (let y = x + "b";
        x = "a"; in
     y + "c")
   #=> "abc"
 
-  # Inner bindings shadow outer bindings.
+  # 내부 바인딩은 외부 바인딩을 가립니다.
   (let a = 1; in
     let a = 2; in
       a)
   #=> 2
 
 
-  #  Functions
+  #  함수
   #=========================================
 
-  (n: n + 1)      # Function that adds 1
+  (n: n + 1)      # 1을 더하는 함수
 
-  ((n: n + 1) 5)  # That same function, applied to 5
+  ((n: n + 1) 5)  # 5에 적용된 동일한 함수
   #=> 6
 
-  # There is no syntax for named functions, but they
-  # can be bound by `let` blocks like any other value.
+  # 명명된 함수에 대한 구문은 없지만,
+  # 다른 값과 마찬가지로 `let` 블록으로 바인딩할 수 있습니다.
   (let succ = (n: n + 1); in succ 5)
   #=> 6
 
-  # A function has exactly one argument.
-  # Multiple arguments can be achieved with currying.
+  # 함수에는 정확히 하나의 인수가 있습니다.
+  # 커링을 통해 여러 인수를 얻을 수 있습니다.
   ((x: y: x + "-" + y) "a" "b")
   #=> "a-b"
 
-  # We can also have named function arguments,
-  # which we'll get to later after we introduce sets.
+  # 나중에 집합을 소개한 후 명명된 함수 인수를 가질 수도 있습니다.
 
 
-  #  Lists
+  #  리스트
   #=========================================
 
-  # Lists are denoted by square brackets.
+  # 리스트는 대괄호로 표시됩니다.
 
   (length [1 2 3 "x"])
   #=> 4
@@ -210,38 +206,38 @@ with builtins; [
   #=> [ 1 2 ]
 
 
-  #  Sets
+  #  집합
   #=========================================
 
-  # A "set" is an unordered mapping with string keys.
+  # "집합"은 문자열 키를 사용하는 정렬되지 않은 매핑입니다.
   { foo = [1 2]; bar = "x"; }
 
-  # The . operator pulls a value out of a set.
+  # . 연산자는 집합에서 값을 꺼냅니다.
   { a = 1; b = 2; }.a
   #=> 1
 
-  # The ? operator tests whether a key is present in a set.
+  # ? 연산자는 집합에 키가 있는지 테스트합니다.
   ({ a = 1; b = 2; } ? a)
   #=> true
   ({ a = 1; b = 2; } ? c)
   #=> false
 
-  # The // operator merges two sets.
+  # // 연산자는 두 집합을 병합합니다.
   ({ a = 1; } // { b = 2; })
   #=> { a = 1; b = 2; }
 
-  # Values on the right override values on the left.
+  # 오른쪽 값이 왼쪽 값을 재정의합니다.
   ({ a = 1; b = 2; } // { a = 3; c = 4; })
   #=> { a = 3; b = 2; c = 4; }
 
-  # The rec keyword denotes a "recursive set",
-  # in which attributes can refer to each other.
+  # rec 키워드는 "재귀 집합"을 나타내며,
+  # 속성이 서로 참조할 수 있습니다.
   (let a = 1; in     { a = 2; b = a; }.b)
   #=> 1
   (let a = 1; in rec { a = 2; b = a; }.b)
   #=> 2
 
-  # Nested sets can be defined in a piecewise fashion.
+  # 중첩된 집합은 부분적으로 정의할 수 있습니다.
   {
     a.b   = 1;
     a.c.d = 2;
@@ -249,15 +245,15 @@ with builtins; [
   }.a.c
   #=> { d = 2; e = 3; }
 
-  # Sets are immutable, so you can't redefine an attribute:
+  # 집합은 불변이므로 속성을 재정의할 수 없습니다:
   {
     a = { b = 1; };
     a.b = 2;
   }
   #=> attribute 'a.b' at (string):3:5 already defined at (string):2:11
 
-  # However, an attribute's set members can also be defined piecewise
-  # way even if the attribute itself has been directly assigned.
+  # 그러나 속성 자체가 직접 할당되었더라도
+  # 속성의 집합 멤버는 부분적으로 정의할 수 있습니다.
   {
     a = { b = 1; };
     a.c = 2;
@@ -268,68 +264,66 @@ with builtins; [
   #  With
   #=========================================
 
-  # The body of a `with` block is evaluated with
-  # a set's mappings bound to variables.
+  # `with` 블록의 본문은 집합의 매핑이
+  # 변수에 바인딩된 상태로 평가됩니다.
   (with { a = 1; b = 2; };
     a + b)
   # => 3
 
-  # Inner bindings shadow outer bindings.
+  # 내부 바인딩은 외부 바인딩을 가립니다.
   (with { a = 1; b = 2; };
     (with { a = 5; };
       a + b))
   #=> 7
 
-  # This first line of tutorial starts with "with builtins;"
-  # because builtins is a set that contains all of the built-in
-  # functions (length, head, tail, filter, etc.). This saves
-  # us from having to write, for example, "builtins.length"
-  # instead of just "length".
+  # 이 튜토리얼의 첫 줄은 "with builtins;"으로 시작합니다.
+  # builtins는 모든 내장 함수(length, head, tail, filter 등)를
+  # 포함하는 집합이기 때문입니다. 이렇게 하면 예를 들어
+  # "builtins.length" 대신 "length"만 작성할 수 있습니다.
 
 
-  #  Set patterns
+  #  집합 패턴
   #=========================================
 
-  # Sets are useful when we need to pass multiple values
-  # to a function.
+  # 집합은 여러 값을 함수에 전달해야 할 때 유용합니다.
   (args: args.x + "-" + args.y) { x = "a"; y = "b"; }
   #=> "a-b"
 
-  # This can be written more clearly using set patterns.
+  # 이것은 집합 패턴을 사용하여 더 명확하게 작성할 수 있습니다.
   ({x, y}: x + "-" + y) { x = "a"; y = "b"; }
   #=> "a-b"
 
-  # By default, the pattern fails on sets containing extra keys.
+  # 기본적으로 패턴은 추가 키가 포함된 집합에서 실패합니다.
   ({x, y}: x + "-" + y) { x = "a"; y = "b"; z = "c"; }
   #=> error: anonymous function called with unexpected argument ‘z’
 
-  # Adding ", ..." allows ignoring extra keys.
+  # ", ..."를 추가하면 추가 키를 무시할 수 있습니다.
   ({x, y, ...}: x + "-" + y) { x = "a"; y = "b"; z = "c"; }
   #=> "a-b"
 
-  # The entire set can be bound to a variable using `@`
+  # 전체 집합은 `@`를 사용하여 변수에 바인딩할 수 있습니다.
   (args@{x, y}: args.x + "-" + args.y) { x = "a"; y = "b"; }
   #=> "a-b"
 
-  #  Errors
+  #  오류
   #=========================================
 
-  # `throw` causes evaluation to abort with an error message.
+  # `throw`는 오류 메시지와 함께 평가를 중단시킵니다.
   (2 + (throw "foo"))
   #=> error: foo
 
-  # `tryEval` catches thrown errors.
+  # `tryEval`은 throw된 오류를 잡습니다.
   (tryEval 42)
   #=> { success = true; value = 42; }
   (tryEval (2 + (throw "foo")))
   #=> { success = false; value = false; }
 
-  # `abort` is like throw, but it's fatal; it cannot be caught.
+  # `abort`는 throw와 같지만 치명적입니다. 잡을 수 없습니다.
   (tryEval (abort "foo"))
   #=> error: evaluation aborted with the following error message: ‘foo’
 
-  # `assert` evaluates to the given value if true;
-  # otherwise it throws a catchable exception.
+  # `assert`는 true이면 주어진 값으로 평가되고,
+  # 그렇지 않으면 잡을 수 있는 예외를 throw합니다.
   (assert 1 < 2; 42)
   #=> 42
   (assert 1 > 2; 42)
@@ -338,42 +332,42 @@ with builtins; [
   #=> { success = false; value = false; }
 
 
-  #  Impurity
+  #  불순물
   #=========================================
 
-  # Because repeatability of builds is critical to the Nix package
-  # manager, functional purity is emphasized in the Nix language
-  # used to describe Nix packages. But there are a few impurities.
+  # 빌드의 반복성은 Nix 패키지 관리자에게 중요하기 때문에,
+  # Nix 패키지를 설명하는 데 사용되는 Nix 언어에서는
+  # 함수형 순수성이 강조됩니다. 그러나 몇 가지 불순물이 있습니다.
 
-  # You can refer to environment variables.
+  # 환경 변수를 참조할 수 있습니다.
   (getEnv "HOME")
   #=> "/home/alice"
 
-  # The trace function is used for debugging. It prints the first
-  # argument to stderr and evaluates to the second argument.
+  # trace 함수는 디버깅에 사용됩니다. 첫 번째 인수를
+  # stderr에 출력하고 두 번째 인수로 평가됩니다.
   (trace 1 2)
   #=> trace: 1
   #=> 2
 
-  # You can write files into the Nix store. Although impure, this is
-  # fairly safe because the file name is derived from the hash of
-  # its contents. You can read files from anywhere. In this example,
-  # we write a file into the store, and then read it back out.
+  # Nix 저장소에 파일을 쓸 수 있습니다. 불순하지만,
+  # 파일 이름이 내용의 해시에서 파생되므로
+  # 상당히 안전합니다. 어디서든 파일을 읽을 수 있습니다. 이 예에서는
+  # 저장소에 파일을 쓰고 다시 읽습니다.
   (let filename = toFile "foo.txt" "hello!"; in
     [filename (readFile filename)])
   #=> [ "/nix/store/ayh05aay2anx135prqp0cy34h891247x-foo.txt" "hello!" ]
 
-  # We can also download files into the Nix store.
+  # Nix 저장소에 파일을 다운로드할 수도 있습니다.
   (fetchurl "https://example.com/package-1.2.3.tgz")
   #=> "/nix/store/2drvlh8r57f19s9il42zg89rdr33m2rm-package-1.2.3.tgz"
 
 ]
 ```
 
-### Further Reading
+### 더 읽을거리
 
-* [Nix Manual - Nix expression language](https://nixos.org/nix/manual/#ch-expression-language)
-* [James Fisher - Nix by example - Part 1: The Nix expression language](https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
-* [Susan Potter - Nix Cookbook - Nix By Example](https://ops.functionalalgebra.com/nix-by-example/)
-* [Zero to Nix - Nix Tutorial](https://zero-to-nix.com/)
-* [Rommel Martinez - A Gentle Introduction to the Nix Family](https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)
+* [Nix 매뉴얼 - Nix 표현 언어](https://nixos.org/nix/manual/#ch-expression-language)
+* [James Fisher - 예제로 배우는 Nix - 1부: Nix 표현 언어](https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55)
+* [Susan Potter - Nix 요리책 - 예제로 배우는 Nix](https://ops.functionalalgebra.com/nix-by-example/)
+* [Zero to Nix - Nix 튜토리얼](https://zero-to-nix.com/)
+* [Rommel Martinez - Nix 제품군에 대한 부드러운 소개](https://web.archive.org/web/20210121042658/https://ebzzry.io/en/nix/#nix)

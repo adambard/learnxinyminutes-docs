@@ -9,225 +9,188 @@ contributors:
 
 ---
 
-__Sed__ is a standard tool on every POSIX-compliant UNIX system.
-It's like an editor, such as Vim, Visual Studio Code, Atom, or Sublime.
-However, rather than typing the commands interactively, you
-provide them on the command line or in a file.
+__Sed__는 모든 POSIX 호환 유닉스 시스템의 표준 도구입니다.
+Vim, Visual Studio Code, Atom 또는 Sublime과 같은 편집기와 같습니다.
+그러나 대화식으로 명령을 입력하는 대신 명령줄이나 파일로 제공합니다.
 
-_Sed_'s advantages over an interactive editor is that it can be easily
-used to automate text processing tasks, and that it can process
-efficiently huge (terabyte-sized) files.
-It can perform more complex tasks than _grep_ and for many text
-processing tasks its commands are much shorter than what you would
-write in _awk_, _Perl_, or _Python_.
+대화형 편집기에 대한 _Sed_의 장점은 텍스트 처리 작업을 자동화하는 데 쉽게 사용할 수 있고 거대한(테라바이트 크기) 파일을 효율적으로 처리할 수 있다는 것입니다.
+_grep_보다 더 복잡한 작업을 수행할 수 있으며 많은 텍스트 처리 작업에서 해당 명령은 _awk_, _Perl_ 또는 _Python_으로 작성하는 것보다 훨씬 짧습니다.
 
-_Sed_ works by reading a line of text (by default from its standard
-input, unless some files are specified as arguments), processing
-it with the specified commands, and then outputting the result
-on its standard output.
-You can suppress the default output by specifying the `-n` command-line
-argument.
+_Sed_는 텍스트 한 줄을 읽고(기본적으로 인수로 일부 파일이 지정되지 않은 경우 표준 입력에서) 지정된 명령으로 처리한 다음 결과를 표준 출력으로 출력하여 작동합니다.
+-n 명령줄 인수를 지정하여 기본 출력을 표시하지 않을 수 있습니다.
 
 ```sed
 #!/usr/bin/sed -f
-# Files that begin with the above line and are given execute permission
-# can be run as regular scripts.
+# 위 줄로 시작하고 실행 권한이 부여된 파일은 일반 스크립트로 실행할 수 있습니다.
 
-# Comments are like this.
+# 주석은 이와 같습니다.
 
-# Commands consist of a single letter and many can be preceded
-# by a specification of the lines to which they apply.
+# 명령은 단일 문자로 구성되며 대부분의 경우 적용할 줄을 지정하여 앞에 올 수 있습니다.
 
-# Delete the input's third line.
+# 입력의 세 번째 줄을 삭제합니다.
 3d
 
-# The same command specified the command line as an argument to sed:
+# sed에 대한 인수로 명령줄에 지정된 동일한 명령:
 # sed 3d
 
-# For many commands the specification can consist of two addresses,
-# which select an inclusive range.
-# Addresses can be specified numerically ($ is the last line) or through
-# regular expressions delimited by /.
+# 많은 명령의 경우 사양은 포함 범위를 선택하는 두 개의 주소로 구성될 수 있습니다.
+# 주소는 숫자로 지정하거나(/로 구분된 정규식을 통해) 지정할 수 있습니다($는 마지막 줄).
 
-# Delete lines 1-10
+# 1-10행 삭제
 1,10d
 
-# Lines can also be specified as regular expressions, delimited by /.
+# 줄은 /로 구분된 정규식으로도 지정할 수 있습니다.
 
-# Delete empty lines.
+# 빈 줄 삭제.
 /^$/d
 
-# Delete blocks starting with SPOILER-BEGIN and ending with SPOILER-END.
+# SPOILER-BEGIN으로 시작하고 SPOILER-END로 끝나는 블록을 삭제합니다.
 /SPOILER-BEGIN/,/SPOILER-END/d
 
-# A command without an address is applied to all lines.
+# 주소가 없는 명령은 모든 줄에 적용됩니다.
 
-# List lines in in a visually unambiguous form (e.g. tab appears as \t).
+# 시각적으로 명확한 형식으로 줄을 나열합니다(예: 탭은 \t로 표시됨).
 l
 
-# A command prefixed by ! will apply to non-matching lines.
-# Keep only lines starting with a #.
+# !가 접두사로 붙은 명령은 일치하지 않는 줄에 적용됩니다.
+# #으로 시작하는 줄만 유지합니다.
 /^#/!d
 
-# Below are examples of the most often-used commands.
+# 다음은 가장 자주 사용되는 명령의 예입니다.
 
-# Substitute the first occurence in a line of John with Mary.
+# 한 줄에서 John의 첫 번째 항목을 Mary로 바꿉니다.
 s/John/Mary/
 
-# Remove all underscore characters (global substitution).
+# 모든 밑줄 문자를 제거합니다(전역 대체).
 s/_//g
 
-# Remove all HTML tags.
+# 모든 HTML 태그를 제거합니다.
 s/<[^>]*>//g
 
-# In the replacement string & is the regular expression matched.
+# 대체 문자열에서 &는 일치하는 정규식입니다.
 
-# Put each line inside double quotes.
+# 각 줄을 큰따옴표 안에 넣습니다.
 s/.*/"&"/
 
-# In the matched regular expression \(pattern\) is used to store
-# a pattern into a buffer.
-# In the replacement string \1 refers to the first pattern, \2 to the second
-# and so on. \u converts the following character to uppercase \l to lowercase.
+# 일치하는 정규식에서 \(패턴\)은 패턴을 버퍼에 저장하는 데 사용됩니다.
+# 대체 문자열에서 \1은 첫 번째 패턴을, \2는 두 번째 패턴을 나타냅니다. \u는 다음 문자를 대문자로, \l은 소문자로 변환합니다.
 
-# Convert snake_case_identifiers into camelCaseIdentifiers.
+# snake_case_identifiers를 camelCaseIdentifiers로 변환합니다.
 s/_\(.\)/\u\1/g
 
 
-# The p (print) command is typically used together with the -n
-# command-line option, which disables the print by default functionality.
-# Output all lines between ``` and ```.
+# p(인쇄) 명령은 일반적으로 기본적으로 인쇄 기능을 비활성화하는 -n 명령줄 옵션과 함께 사용됩니다.
+# ```와 ``` 사이의 모든 줄을 출력합니다.
 /```/,/```/p
 
 
-# The y command maps characters from one set to another.
-# Swap decimal and thousand separators (1,234,343.55 becomes 1.234.343,55).
+# y 명령은 한 세트의 문자를 다른 세트에 매핑합니다.
+# 소수점 및 천 단위 구분 기호를 바꿉니다(1,234,343.55는 1.234.343,55가 됨).
 y/.,/,./
 
-# Quit after printing the line starting with END.
+# END로 시작하는 줄을 인쇄한 후 종료합니다.
 /^END/q
 
-# You can stop reading here, and still get 80% of sed's benefits.
-# Below are examples of how you can specify multiple sed commands.
+# 여기서 읽기를 중단해도 sed의 이점 중 80%를 얻을 수 있습니다.
+# 다음은 여러 sed 명령을 지정하는 방법에 대한 예입니다.
 
-# You can apply multiple commands by separating them with a newline or
-# a semicolon.
+# 줄 바꿈이나 세미콜론으로 구분하여 여러 명령을 적용할 수 있습니다.
 
-# Delete the first and the last line.
+# 첫 번째 줄과 마지막 줄을 삭제합니다.
 1d
 $d
 
-# Delete the first and the last line.
+# 첫 번째 줄과 마지막 줄을 삭제합니다.
 1d;$d
 
 
-# You can group commands in { } blocks.
+# { } 블록으로 명령을 그룹화할 수 있습니다.
 
-# Convert first line to uppercase and print it.
+# 첫 번째 줄을 대문자로 변환하고 인쇄합니다.
 1 {
   s/./\u&/g
   p
 }
 
-# Convert first line to uppercase and print it (less readable one-liner).
+# 첫 번째 줄을 대문자로 변환하고 인쇄합니다(가독성이 낮은 한 줄짜리).
 1{s/./\u&/g;p;}
 
 
-# You can also stop reading here, if you're not interested in creating
-# sed script files.
+# sed 스크립트 파일을 만드는 데 관심이 없다면 여기서 읽기를 중단해도 됩니다.
 
-# Below are more advanced commands.  You typically put these in a file
-# rather than specify them on a command line.  If you have to use
-# many of these commands in a script, consider using a general purpose
-# scripting language, such as Python or Perl.
+# 다음은 더 고급 명령입니다. 일반적으로 명령줄에서 지정하는 대신 파일에 넣습니다. 스크립트에서 이러한 명령을 많이 사용해야 하는 경우 Python 또는 Perl과 같은 범용 스크립팅 언어를 사용하는 것을 고려하십시오.
 
-# Append a line containing "profile();" after each line ending with ";".
+# ";"로 끝나는 각 줄 뒤에 "profile();"이 포함된 줄을 추가합니다.
 /;$/a\
 profile();
 
-# Insert a line containing "profile();" before each line ending with ";".
+# ";"로 끝나는 각 줄 앞에 "profile();"이 포함된 줄을 삽입합니다.
 /;$/i\
 profile();
 
-# Change each line text inside REDACTED blocks into [REDACTED].
+# REDACTED 블록 안의 각 줄 텍스트를 [REDACTED]로 변경합니다.
 /REDACTED-BEGIN/,/REDACTED-END/c\
 [REDACTED]
 
-# Replace the tag "<ourstyle>" by reading and outputting the file style.css.
+# style.css 파일을 읽고 출력하여 "<ourstyle>" 태그를 바꿉니다.
 /<ourstyle>/ {
   r style.css
   d
 }
 
-# Change each line inside REDACTED blocks into [REDACTED].
-# Also write (append) a copy of the redacted text in the file redacted.txt.
+# REDACTED 블록 안의 각 줄을 [REDACTED]로 변경합니다.
+# 또한 수정된 텍스트의 복사본을 redacted.txt 파일에 씁니다(추가).
 /REDACTED-BEGIN/,/REDACTED-END/ {
   w redacted.txt
   c\
   [REDACTED]
 }
 
-# All operations described so far operate on a buffer called "pattern space".
-# In addition, sed offers another buffer called "hold space".
-# The following commands operate on the two, and can be used to keep
-# state or combine multiple lines.
+# 지금까지 설명한 모든 작업은 "패턴 공간"이라는 버퍼에서 작동합니다.
+# 또한 sed는 "홀드 공간"이라는 또 다른 버퍼를 제공합니다.
+# 다음 명령은 두 버퍼에서 작동하며 상태를 유지하거나 여러 줄을 결합하는 데 사용할 수 있습니다.
 
-# Replace the contents of the pattern space with the contents of
-# the hold space.
+# 패턴 공간의 내용을 홀드 공간의 내용으로 바꿉니다.
 g
 
-# Append a newline character followed by the contents of the hold
-# space to the pattern space.
+# 줄 바꿈 문자와 홀드 공간의 내용을 패턴 공간에 추가합니다.
 G
 
-# Replace the contents of the hold space with the contents of the
-# pattern space.
+# 홀드 공간의 내용을 패턴 공간의 내용으로 바꿉니다.
 h
 
-# Append a newline character followed by the contents of the
-# pattern space to the hold space.
+# 줄 바꿈 문자와 패턴 공간의 내용을 홀드 공간에 추가합니다.
 H
 
-# Delete the initial segment of the pattern space through the first
-# newline character and start the next cycle.
+# 첫 번째 줄 바꿈 문자까지 패턴 공간의 초기 세그먼트를 삭제하고 다음 주기를 시작합니다.
 D
 
-# Replace the contents of the pattern space with the contents of
-# the hold space.
+# 패턴 공간의 내용을 홀드 공간의 내용으로 바꿉니다.
 g
 
-# Append a newline character followed by the contents of the hold
-# space to the pattern space.
+# 줄 바꿈 문자와 홀드 공간의 내용을 패턴 공간에 추가합니다.
 G
 
-# Replace the contents of the hold space with the contents of the
-# pattern space.
+# 홀드 공간의 내용을 패턴 공간의 내용으로 바꿉니다.
 h
 
-# Append a newline character followed by the contents of the
-# pattern space to the hold space.
+# 줄 바꿈 문자와 패턴 공간의 내용을 홀드 공간에 추가합니다.
 H
 
-# Write the pattern space to the standard output if the default
-# output has not been suppressed, and replace the pattern space
-# with the next line of input.
+# 기본 출력이 표시되지 않은 경우 패턴 공간을 표준 출력에 쓰고 패턴 공간을 다음 입력 줄로 바꿉니다.
 n
 
-# Append the next line of input to the pattern space, using an
-# embedded newline character to separate the appended material from
-# the original contents.  Note that the current line number
-# changes.
+# 추가된 자료를 원래 내용과 구분하기 위해 포함된 줄 바꿈 문자를 사용하여 다음 입력 줄을 패턴 공간에 추가합니다. 현재 줄 번호가 변경됩니다.
 N
 
-# Write the pattern space, up to the first newline character to the
-# standard output.
+# 첫 번째 줄 바꿈 문자까지 패턴 공간을 표준 출력에 씁니다.
 P
 
-# Swap the contents of the pattern and hold spaces.
+# 패턴과 홀드 공간의 내용을 바꿉니다.
 x
 
-# Here is a complete example of some of the buffer commands.
-# Move the file's first line to its end.
+# 다음은 일부 버퍼 명령의 전체 예입니다.
+# 파일의 첫 번째 줄을 끝으로 이동합니다.
 1 {
   h
   d
@@ -239,49 +202,47 @@ $ {
 }
 
 
-# Three sed commands influence a script's control flow
+# 세 가지 sed 명령이 스크립트의 제어 흐름에 영향을 미칩니다.
 
-# Name this script position "my_label", to which the "b" and
-# "t" commands may branch.
+# 이 스크립트 위치를 "my_label"로 지정하면 "b" 및 "t" 명령이 분기할 수 있습니다.
 :my_label
 
-# Continue executing commands from the position of my_label.
+# my_label 위치에서 명령 실행을 계속합니다.
 b my_label
 
-# Branch to the end of the script.
+# 스크립트 끝으로 분기합니다.
 b
 
-# Branch to my_label if any substitutions have been made since the most
-# recent reading of an input line or execution of a "t" (test) function.
+# 가장 최근에 입력 줄을 읽거나 "t"(테스트) 함수를 실행한 이후에 대체가 이루어진 경우 my_label로 분기합니다.
 t my_label
 
-# Here is a complete example of branching:
-# Join lines that end with a backslash into a single space-separated one.
+# 다음은 분기의 전체 예입니다.
+# 백슬래시로 끝나는 줄을 공백으로 구분된 단일 줄로 결합합니다.
 
-# Name this position "loop"
+# 이 위치를 "loop"로 지정합니다.
 : loop
-# On lines ending with a backslash
+# 백슬래시로 끝나는 줄에서
 /\\$/ {
-  # Read the next line and append it to the pattern space
+  # 다음 줄을 읽고 패턴 공간에 추가합니다.
   N
-  # Substitute backslash newline with a space
+  # 백슬래시 줄 바꿈을 공백으로 바꿉니다.
   s/\\\n/ /
-  # Branch to the top for testing this line's ending
+  # 이 줄의 끝을 테스트하기 위해 맨 위로 분기합니다.
   b loop
 }
 ```
 
-Further Reading:
+더 읽을거리:
 
 * [The Open Group: sed - stream editor](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html)
-  The POSIX standard regarding sed.
-  Follow this for maximum portability.
+  sed에 대한 POSIX 표준입니다.
+  최대 이식성을 위해 이를 따르십시오.
 * [FreeBSD sed -- stream editor](https://www.freebsd.org/cgi/man.cgi?query=sed&sektion=&n=1)
-  The BSD manual page.
-  This version of sed runs on BSD systems and macOS.
+  BSD 매뉴얼 페이지입니다.
+  이 버전의 sed는 BSD 시스템과 macOS에서 실행됩니다.
 * [Project GNU: sed, a stream editor](https://www.gnu.org/software/sed/manual/sed.html)
-  The GNU manual page. GNU sed is found on most Linux systems.
+  GNU 매뉴얼 페이지입니다. GNU sed는 대부분의 Linux 시스템에서 찾을 수 있습니다.
 * [Lee E. McMahon: SED -- A Non-interactive Text Editor](https://wolfram.schneider.org/bsd/7thEdManVol2/sed/sed.pdf)
-  The original sed documentation
+  원본 sed 문서
 * [A collection of sed resources](http://sed.sourceforge.net/)
 * [The sed FAQ](http://sed.sourceforge.net/sedfaq.html)

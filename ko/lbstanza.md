@@ -5,15 +5,15 @@ contributors:
   - ["Mike Hilgendorf", "https://github.com/m-hilgendorf"]
 ---
 
-LB Stanza (or Stanza for short) is a new optionally-typed general purpose programming language from the University of California, Berkeley. Stanza was designed to help programmers tackle the complexity of architecting large programs and significantly increase the productivity of application programmers across the entire software development life cycle.
+LB Stanza(또는 줄여서 Stanza)는 캘리포니아 대학교 버클리에서 만든 새로운 선택적 타입 범용 프로그래밍 언어입니다. Stanza는 프로그래머가 대규모 프로그램 아키텍처의 복잡성을 해결하고 전체 소프트웨어 개발 수명 주기 동안 애플리케이션 프로그래머의 생산성을 크게 향상시키는 데 도움이 되도록 설계되었습니다.
 
 
 ```
-; this is a comment
+; 이것은 주석입니다.
 ;<A>
-This is a block comment
+이것은 블록 주석입니다.
     ;<B>
-        block comments can be nested with optional tags.
+        블록 주석은 선택적 태그로 중첩될 수 있습니다.
     ;<B>
 ;<A>
 defpackage learn-stanza-in-y:
@@ -21,16 +21,16 @@ defpackage learn-stanza-in-y:
   import collections
 
 ;==============================================================================
-; The basics, things you'd find in most programming languages
+; 대부분의 프로그래밍 언어에서 볼 수 있는 기본 사항
 ;==============================================================================
 
 
-; Variables can be mutable (var) or immutable (val)
+; 변수는 가변(var) 또는 불변(val)일 수 있습니다.
 val immutable = "this string can't be changed"
 var mutable = "this one can be"
 mutable = "like this"
 
-; The basic data types (annotations are optional)
+; 기본 데이터 타입 (주석은 선택 사항)
 val an-int: Int = 12345
 val a-long: Long = 12345L
 val a-float: Float = 1.2345f
@@ -40,22 +40,22 @@ val a-multiline-string = \<tag>
     this is a "raw" string literal
 \<tag>
 
-; Print a formatted string with println and "..." % [...]
+; println과 "..." % [...]를 사용하여 서식화된 문자열 출력
 println("this is a formatted string %_ %_" % [mutable, immutable])
 
-; Stanza is optionally typed, and has a ? (any) type.
+; Stanza는 선택적 타입이며, ? (any) 타입을 가집니다.
 var anything:? = 0
 anything = 3.14159
 anything = "a string"
 
-; Stanza has basic collections like Tuples, Arrays, Vectors and HashTables
+; Stanza에는 튜플, 배열, 벡터 및 해시 테이블과 같은 기본 컬렉션이 있습니다.
 val tuple: Tuple<?> = [mutable, immutable]
 
 val array = Array<?>(3)
 array[0] = "string"
 array[1] = 1
 array[2] = 1.23455
-; array[3] = "out-of-bounds" ; arrays are bounds-checked
+; array[3] = "out-of-bounds" ; 배열은 경계 검사를 합니다.
 
 val vector = Vector<?>()
 vector[0] = "string"
@@ -69,16 +69,16 @@ hash-table["2"] = 1
 
 
 ;==============================================================================
-; Functions
+; 함수
 ;==============================================================================
-; Functions are declared with the `defn` keyword
-defn my-function (arg:?) : ; note the space between identifier and arg list
+; 함수는 `defn` 키워드로 선언됩니다.
+defn my-function (arg:?) : ; 식별자와 인수 목록 사이에 공백이 있습니다.
   println("called my-function with %_" % [arg])
 
-my-function("arg")  ; note the lack of a space to call the function
+my-function("arg")  ; 함수를 호출할 때 공백이 없습니다.
 
-; Functions can be declared inside another function and capture variables from
-; the surrounding environment.
+; 함수는 다른 함수 내부에 선언될 수 있으며,
+; 주변 환경의 변수를 캡처할 수 있습니다.
 defn outer (arg):
   defn inner ():
     println("outer had arg: %_" % [arg])
@@ -86,42 +86,42 @@ defn outer (arg):
 
 outer("something")
 
-; functions are "first-class" in stanza, meaning you can assign variables
-; to functions and pass functions as arguments to other functions.
+; 함수는 stanza에서 "일급"입니다. 즉, 변수를
+; 함수에 할당하고 함수를 다른 함수에 인수로 전달할 수 있습니다.
 val a-function = outer
 defn do-n-times (arg, func, n:Int):
   for i in 0 to n do :
     func(arg)
 do-n-times("argument", a-function, 3)
 
-; sometimes you want to define a function inline, or use an anonymous function.
-; for this you can use the syntax:
+; 때로는 함수를 인라인으로 정의하거나 익명 함수를 사용하고 싶을 때가 있습니다.
+; 이를 위해 다음 구문을 사용할 수 있습니다.
 ;   fn (args):
 ;       ...
 do-n-times("hello", fn (arg): println(arg), 2)
 
-; there is a shorthand for writing anonymous functions
+; 익명 함수를 작성하는 약식 구문이 있습니다.
 do-n-times("hello", { println(_) }, 2)
 
-; the short hand works for multiple arguments as well.
+; 약식 구문은 여러 인수에도 작동합니다.
 val multi-lambda = { println(_ + 2 * _) }
 multi-lambda(1, 2)
 
 ;==============================================================================
-; User defined types
+; 사용자 정의 타입
 ;==============================================================================
-; Structs are declared with the `defstruct` keyword
+; 구조체는 `defstruct` 키워드로 선언됩니다.
 defstruct MyStruct:
   field
 
-; constructors are derived automatically
+; 생성자는 자동으로 파생됩니다.
 val my-struct = MyStruct("field:value")
 
-; fields are accessed using function-call syntax
+; 필드는 함수 호출 구문을 사용하여 액세스됩니다.
 println(field(my-struct))
 
-; Stanza supports subtyping with a "multimethod" system based on method
-; overloading.
+; Stanza는 메서드 오버로딩을 기반으로 한 "다중 메서드" 시스템으로
+; 서브타이핑을 지원합니다.
 deftype MyType
 defmulti a-method (m:MyType)
 
@@ -134,28 +134,28 @@ defmethod a-method (a-foo: Bar):
   println("called a-method on a Bar")
 
 ;==============================================================================
-; The Type System
+; 타입 시스템
 ;==============================================================================
-; True and Falseare types with a single value.
+; True와 False는 단일 값을 가진 타입입니다.
 val a-true: True = true
 val a-false: False = false
 
-; You can declare a union type, or a value that is one of a set of types
+; 유니온 타입을 선언할 수 있습니다. 즉, 여러 타입 중 하나의 값을 가질 수 있습니다.
 val a-boolean: True|False = true
 val another-boolean: True|False = false
 
-; You can pattern match on types
+; 타입에 대해 패턴 매칭을 할 수 있습니다.
 match(a-boolean):
   (t:True): println("is true")
   (f:False): println("is false")
 
-; You can match against a single possible type
+; 단일 가능한 타입에 대해 매칭할 수 있습니다.
 match(a-boolean:True):
   println("is still true")
 else:
   println("is not true")
 
-; You can compose program logic around the type of a variable
+; 변수의 타입을 중심으로 프로그램 로직을 구성할 수 있습니다.
 if anything is Float :
   println("anything is a float")
 else if anything is-not String :
@@ -164,37 +164,37 @@ else :
   println("I don't know what anything is")
 
 ;==============================================================================
-; Control Flow
+; 제어 흐름
 ;==============================================================================
-; stanza has the standard basic control flow
+; stanza에는 표준 기본 제어 흐름이 있습니다.
 val condition = [false, false]
 if condition[0] :
-  ; do something
+  ; 무언가 수행
   false
 else if condition[1] :
-  ; do another thing
+  ; 다른 작업 수행
   false
 else :
-  ; whatever else
+  ; 그 외 모든 것
   false
 
-; there is also a switch statement, which can be used to pattern match
-; on values (as opposed to types)
+; 값에 대해 패턴 매칭하는 데 사용할 수 있는 switch 문도 있습니다.
+; (타입과 반대)
 switch(anything):
   "this": false
   "that": false
   "the-other-thing": false
   else: false
 
-; for and while loops are supported
+; for 및 while 루프가 지원됩니다.
 while condition[0]:
   println("do stuff")
 
 for i in 0 to 10 do:
   vector[i] = i
 
-; stanza also supports named labels which can function as break or return
-; statements
+; stanza는 break 또는 return 문으로 작동할 수 있는
+; 명명된 레이블도 지원합니다.
 defn another-fn ():
   label<False> return:
     label<False> break:
@@ -203,13 +203,13 @@ defn another-fn ():
             break(false)
     return(false)
 
-; For a comprehensive guide on Stanza's advanced control flow, check out
-; this page: http://lbstanza.org/chapter9.html from Stanza-by-Example
+; Stanza의 고급 제어 흐름에 대한 포괄적인 가이드는
+; Stanza-by-Example의 이 페이지를 확인하십시오: http://lbstanza.org/chapter9.html
 
 ;==============================================================================
-; Sequences
+; 시퀀스
 ;==============================================================================
-; for "loops" are sugar for a more powerful syntax.
+; "for" 루프는 더 강력한 구문의 설탕입니다.
 val xs = [1, 2, 3]
 val ys = ['a', 'b', 'c']
 val zs = ["foo", "bar", "baz"]
@@ -218,25 +218,26 @@ for (x in xs, y in ys, z in zs) do :
   println("x:%_, y:%_, z:%_" % [x, y, z])
 
 
-;xs, ys, and zs are all "Seqable" meaning they are Seq types (sequences).
-; the `do` identifier is a special function that just applies the body of
-; the for loop to each element of the sequence.
+;xs, ys, zs는 모두 "Seqable"입니다. 즉, Seq 타입(시퀀스)입니다.
+; `do` 식별자는 for 루프의 본문을 시퀀스의 각 요소에
+; 적용하는 특수 함수입니다.
 ;
-; A common sequence task is concatenating sequences. This is accomplished
-; using the `seq-cat` function. This is analogous to "flattening" iterateors
+; 일반적인 시퀀스 작업은 시퀀스를 연결하는 것입니다. 이것은
+; `seq-cat` 함수를 사용하여 수행됩니다. 이것은 반복자를 "평탄화"하는 것과
+; 유사합니다.
 val concat = to-tuple $
   for sequence in [xs, ys, zs] seq-cat:
     sequence
 
-; we can also use a variation to interleave the elements of multiple sequences
+; 여러 시퀀스의 요소를 인터리브하는 변형을 사용할 수도 있습니다.
 val interleaved = to-tuple $
   for (x in xs, y in ys, z in zs) seq-cat :
     [x, y, z]
 
 println("[%,] [%,]" % [concat, interleaved])
 
-; Another common task is mapping a sequence to another, for example multiplying
-; all the elements of a list of numbers by a constant. To do this we use `seq`.
+; 또 다른 일반적인 작업은 시퀀스를 다른 시퀀스에 매핑하는 것입니다. 예를 들어
+; 숫자 목록의 모든 요소를 상수로 곱하는 것입니다. 이를 위해 `seq`를 사용합니다.
 var numbers = [1.0, 2.0, 3.0, 4.0]
 numbers = to-tuple $
   for n in numbers seq :
@@ -246,33 +247,33 @@ println("%," % [numbers])
 if find({_ == 2.0}, numbers) is-not False :
   println("found it!")
 
-; or maybe we just want to know if there's something in a sequence
+; 또는 시퀀스에 무언가 있는지 알고 싶을 수도 있습니다.
 var is-there =
   for n in numbers any? :
     n == 2.0
 
-; since this is "syntactic sugar" we can write it explicitly using an
-; anonymous function
+; 이것은 "구문 설탕"이므로
+; 익명 함수를 사용하여 명시적으로 작성할 수 있습니다.
 is-there = any?({_ == 2.0}, numbers)
 
-; a detailed reference of the sequence library and various adaptors can
-; be found here: http://lbstanza.org/reference.html#anchor439
+; 시퀀스 라이브러리 및 다양한 어댑터에 대한 자세한 참조는
+; 여기에서 찾을 수 있습니다: http://lbstanza.org/reference.html#anchor439
 
 
 =========================================================================
-; Documentation
+; 문서
 ;=========================================================================
 ;
-; Top level statements can be prefixed with the "doc" field which takes
-; a string value and is used to autogenerate documentation for the package.
+; 최상위 문에는 문자열 값을 사용하는 "doc" 필드가 접두사로 붙을 수 있으며,
+; 패키지에 대한 문서를 자동으로 생성하는 데 사용됩니다.
 doc: \<doc>
-    # Document Strings
+    # 문서 문자열
 
     ```
     val you-can = "include code snippets, too"
     ```
 
-    To render documentation as markdown (compatible with mdbook)
+    문서를 마크다운(mdbook과 호환)으로 렌더링하려면
 
     ```bash
     stanza doc source.stanza -o docs

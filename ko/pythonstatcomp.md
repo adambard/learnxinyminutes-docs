@@ -8,40 +8,41 @@ contributors:
 filename: pythonstatcomp.py
 ---
 
-This is a tutorial on how to do some typical statistical programming tasks using Python. It's intended for people basically familiar with Python and experienced at statistical programming in a language like R, Stata, SAS, SPSS, or MATLAB.
+이것은 파이썬을 사용하여 몇 가지 일반적인 통계 프로그래밍 작업을 수행하는 방법에 대한 튜토리얼입니다. 기본적으로 파이썬에 익숙하고 R, Stata, SAS, SPSS 또는 MATLAB과 같은 언어로 통계 프로그래밍 경험이 있는 사람들을 대상으로 합니다.
 
 ```python
-# 0. Getting set up ====
+# 0. 설정하기 ====
 
-""" To get started, pip install the following: jupyter, numpy, scipy, pandas,
+""" 시작하려면 다음을 pip 설치하십시오: jupyter, numpy, scipy, pandas,
     matplotlib, seaborn, requests.
-        Make sure to do this tutorial in a Jupyter notebook so that you get
-    the inline plots and easy documentation lookup. The shell command to open
-    one is simply `jupyter notebook`, then click New -> Python.
+        인라인 플롯과 쉬운 문서 조회를 위해 이 튜토리얼을
+    Jupyter 노트북에서 수행해야 합니다. 셸 명령어는
+    `jupyter notebook`이며, New -> Python을 클릭하십시오.
 """
 
-# 1. Data acquisition ====
+# 1. 데이터 수집 ====
 
-""" One reason people choose Python over R is that they intend to interact a lot
-    with the web, either by scraping pages directly or requesting data through
-    an API. You can do those things in R, but in the context of a project
-    already using Python, there's a benefit to sticking with one language.
+""" 사람들이 R보다 파이썬을 선택하는 한 가지 이유는 웹과
+    많이 상호 작용하려는 의도 때문입니다. 직접 페이지를 스크래핑하거나
+    API를 통해 데이터를 요청하는 등. R에서도 이러한 작업을 할 수 있지만,
+    이미 파이썬을 사용하는 프로젝트의 맥락에서는 한 가지 언어를
+    고수하는 것이 이점이 있습니다.
 """
 
-import requests  # for HTTP requests (web scraping, APIs)
+import requests  # HTTP 요청용 (웹 스크래핑, API)
 import os
 
-# web scraping
+# 웹 스크래핑
 r = requests.get("https://github.com/adambard/learnxinyminutes-docs")
-r.status_code  # if 200, request was successful
-r.text  # raw page source
-print(r.text)  # prettily formatted
-# save the page source in a file:
-os.getcwd()  # check what's the working directory
+r.status_code  # 200이면 요청이 성공한 것입니다.
+r.text  # 원시 페이지 소스
+print(r.text)  # 예쁘게 서식 지정됨
+# 페이지 소스를 파일에 저장:
+os.getcwd()  # 작업 디렉토리 확인
 with open("learnxinyminutes.html", "wb") as f:
     f.write(r.text.encode("UTF-8"))
 
-# downloading a csv
+# csv 다운로드
 fp = "https://raw.githubusercontent.com/adambard/learnxinyminutes-docs/master/"
 fn = "pets.csv"
 r = requests.get(fp + fn)
@@ -49,14 +50,14 @@ print(r.text)
 with open(fn, "wb") as f:
     f.write(r.text.encode("UTF-8"))
 
-""" for more on the requests module, including APIs, see
-    http://docs.python-requests.org/en/latest/user/quickstart/
+""" requests 모듈에 대한 자세한 내용, API 포함,
+    http://docs.python-requests.org/en/latest/user/quickstart/ 참조
 """
 
-# 2. Reading a CSV file ====
+# 2. CSV 파일 읽기 ====
 
-""" Wes McKinney's pandas package gives you 'DataFrame' objects in Python. If
-    you've used R, you will be familiar with the idea of the "data.frame" already.
+""" Wes McKinney의 pandas 패키지는 파이썬에서 'DataFrame' 객체를 제공합니다.
+    R을 사용해 본 적이 있다면 이미 "data.frame"의 개념에 익숙할 것입니다.
 """
 
 import pandas as pd
@@ -69,22 +70,23 @@ pets
 # 1  vesuvius    6      23    fish
 # 2       rex    5      34     dog
 
-""" R users: note that Python, like most C-influenced programming languages, starts
-    indexing from 0. R starts indexing at 1 due to Fortran influence.
+""" R 사용자는 C의 영향을 받은 대부분의 프로그래밍 언어와 마찬가지로 파이썬은
+    0부터 인덱싱을 시작한다는 점에 유의해야 합니다. R은 Fortran의 영향으로 1부터
+    인덱싱을 시작합니다.
 """
 
-# two different ways to print out a column
+# 열을 출력하는 두 가지 다른 방법
 pets.age
 pets["age"]
 
-pets.head(2)  # prints first 2 rows
-pets.tail(1)  # prints last row
+pets.head(2)  # 처음 2개 행 출력
+pets.tail(1)  # 마지막 행 출력
 
 pets.name[1]  # 'vesuvius'
 pets.species[0]  # 'cat'
 pets["weight"][2]  # 34
 
-# in R, you would expect to get 3 rows doing this, but here you get 2:
+# R에서는 이렇게 하면 3개의 행을 얻을 것으로 예상하지만, 여기서는 2개를 얻습니다.
 pets.age[0:2]
 # 0    3
 # 1    6
@@ -92,18 +94,18 @@ pets.age[0:2]
 sum(pets.age) * 2  # 28
 max(pets.weight) - min(pets.weight)  # 20
 
-""" If you are doing some serious linear algebra and number-crunching, you may
-    just want arrays, not DataFrames. DataFrames are ideal for combining columns
-    of different types.
+""" 심각한 선형 대수 및 숫자 계산을 수행하는 경우
+    DataFrame이 아닌 배열을 원할 수 있습니다. DataFrame은
+    다른 유형의 열을 결합하는 데 이상적입니다.
 """
 
-# 3. Charts ====
+# 3. 차트 ====
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 %matplotlib inline
 
-# To do data visualization in Python, use matplotlib
+# 파이썬에서 데이터 시각화를 하려면 matplotlib를 사용하십시오.
 
 plt.hist(pets.age);
 
@@ -113,7 +115,7 @@ plt.scatter(pets.age, pets.weight)
 plt.xlabel("age")
 plt.ylabel("weight");
 
-# seaborn sits atop matplotlib and makes plots prettier
+# seaborn은 matplotlib 위에 있으며 플롯을 더 예쁘게 만듭니다.
 
 import seaborn as sns
 
@@ -121,31 +123,30 @@ plt.scatter(pets.age, pets.weight)
 plt.xlabel("age")
 plt.ylabel("weight");
 
-# there are also some seaborn-specific plotting functions
-# notice how seaborn automatically labels the x-axis on this barplot
+# seaborn 전용 플로팅 함수도 있습니다.
+# 이 막대 그래프에서 seaborn이 x축에 자동으로 레이블을 지정하는 방법을 확인하십시오.
 sns.barplot(pets["age"])
 
-# R veterans can still use ggplot
+# R 베테랑은 여전히 ggplot을 사용할 수 있습니다.
 from ggplot import *
 ggplot(aes(x="age",y="weight"), data=pets) + geom_point() + labs(title="pets")
-# source: https://pypi.python.org/pypi/ggplot
+# 출처: https://pypi.python.org/pypi/ggplot
 
-# there's even a d3.js port: https://github.com/mikedewar/d3py
+# d3.js 포트도 있습니다: https://github.com/mikedewar/d3py
 
-# 4. Simple data cleaning and exploratory analysis ====
+# 4. 간단한 데이터 정리 및 탐색적 분석 ====
 
-""" Here's a more complicated example that demonstrates a basic data
-    cleaning workflow leading to the creation of some exploratory plots
-    and the running of a linear regression.
-        The data set was transcribed from Wikipedia by hand. It contains
-    all the Holy Roman Emperors and the important milestones in their lives
-    (birth, death, coronation, etc.).
-        The goal of the analysis will be to explore whether a relationship
-    exists between emperor birth year and emperor lifespan.
-    data source: https://en.wikipedia.org/wiki/Holy_Roman_Emperor
+""" 다음은 일부 탐색적 플롯 생성 및 선형 회귀 실행으로
+    이어지는 기본 데이터 정리 워크플로를 보여주는 더 복잡한 예입니다.
+        데이터 세트는 위키백과에서 직접 필사되었습니다. 여기에는
+    모든 신성 로마 황제와 그들의 삶의 중요한 이정표(출생, 사망,
+    대관식 등)가 포함되어 있습니다.
+        분석의 목표는 황제 출생 연도와 황제 수명 사이에
+    관계가 있는지 탐색하는 것입니다.
+    데이터 출처: https://en.wikipedia.org/wiki/Holy_Roman_Emperor
 """
 
-# load some data on Holy Roman Emperors
+# 신성 로마 황제에 대한 일부 데이터 로드
 url = "https://raw.githubusercontent.com/adambard/learnxinyminutes-docs/master/hre.csv"
 r = requests.get(url)
 fp = "hre.csv"
@@ -171,16 +172,16 @@ hre.head()
 4   29 December 875            NaN        6 October 877
 """
 
-# clean the Birth and Death columns
+# 출생 및 사망 열 정리
 
-import re  # module for regular expressions
+import re  # 정규식 모듈
 
-rx = re.compile(r'\d+$')  # match trailing digits
+rx = re.compile(r'\d+$')  # 후행 숫자 일치
 
-""" This function applies the regular expression to an input column (here Birth,
-    Death), flattens the resulting list, converts it to a Series object, and
-    finally converts the type of the Series object from string to integer. For
-    more information into what different parts of the code do, see:
+""" 이 함수는 정규식을 입력 열(여기서는 출생, 사망)에 적용하고,
+    결과 목록을 평탄화하고, Series 객체로 변환하고,
+    마지막으로 Series 객체의 유형을 문자열에서 정수로 변환합니다.
+    코드의 다른 부분이 무엇을 하는지에 대한 자세한 내용은 다음을 참조하십시오.
       - https://docs.python.org/2/howto/regex.html
       - http://stackoverflow.com/questions/11860476/how-to-unlist-a-python-list
       - http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html
@@ -194,45 +195,45 @@ def extractYear(v):
 hre["BirthY"] = extractYear(hre.Birth)
 hre["DeathY"] = extractYear(hre.Death)
 
-# make a column telling estimated age
+# 예상 수명을 알려주는 열 만들기
 hre["EstAge"] = hre.DeathY.astype(int) - hre.BirthY.astype(int)
 
-# simple scatterplot, no trend line, color represents dynasty
+# 간단한 산점도, 추세선 없음, 색상은 왕조를 나타냄
 sns.lmplot("BirthY", "EstAge", data=hre, hue="Dynasty", fit_reg=False)
 
-# use scipy to run a linear regression
+# scipy를 사용하여 선형 회귀 실행
 from scipy import stats
 (slope, intercept, rval, pval, stderr) = stats.linregress(hre.BirthY, hre.EstAge)
-# code source: http://wiki.scipy.org/Cookbook/LinearRegression
+# 코드 출처: http://wiki.scipy.org/Cookbook/LinearRegression
 
-# check the slope
+# 기울기 확인
 slope  # 0.0057672618839073328
 
-# check the R^2 value:
+# R^2 값 확인:
 rval**2  # 0.020363950027333586
 
-# check the p-value
+# p-값 확인
 pval  # 0.34971812581498452
 
-# use seaborn to make a scatterplot and plot the linear regression trend line
+# seaborn을 사용하여 산점도를 만들고 선형 회귀 추세선 플롯
 sns.lmplot("BirthY", "EstAge", data=hre)
 
-""" For more information on seaborn, see
+""" seaborn에 대한 자세한 내용은 다음을 참조하십시오.
       - http://web.stanford.edu/~mwaskom/software/seaborn/
       - https://github.com/mwaskom/seaborn
-    For more information on SciPy, see
+    SciPy에 대한 자세한 내용은 다음을 참조하십시오.
       - http://wiki.scipy.org/SciPy
       - http://wiki.scipy.org/Cookbook/
-    To see a version of the Holy Roman Emperors analysis using R, see
+    R을 사용한 신성 로마 황제 분석 버전을 보려면 다음을 참조하십시오.
       - http://github.com/e99n09/R-notes/blob/master/holy_roman_emperors_dates.R
 """
 ```
 
-If you want to learn more, get _Python for Data Analysis_ by Wes McKinney. It's a superb resource and I used it as a reference when writing this tutorial.
+더 배우고 싶다면 Wes McKinney의 _Python for Data Analysis_를 구하십시오. 이 튜토리얼을 작성할 때 참고 자료로 사용한 훌륭한 자료입니다.
 
-You can also find plenty of interactive IPython tutorials on subjects specific to your interests, like Cam Davidson-Pilon's [Probabilistic Programming and Bayesian Methods for Hackers](http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/).
+Cam Davidson-Pilon의 [해커를 위한 확률론적 프로그래밍 및 베이지안 방법](http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/)과 같이 관심 분야에 특정한 주제에 대한 대화형 IPython 튜토리얼도 많이 찾을 수 있습니다.
 
-Some more modules to research:
+연구할 추가 모듈:
 
-   - text analysis and natural language processing: [nltk](http://www.nltk.org)
-   - social network analysis: [igraph](http://igraph.org/python/)
+   - 텍스트 분석 및 자연어 처리: [nltk](http://www.nltk.org)
+   - 소셜 네트워크 분석: [igraph](http://igraph.org/python/)

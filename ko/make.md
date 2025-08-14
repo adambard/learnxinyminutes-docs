@@ -9,134 +9,132 @@ contributors:
 filename: Makefile
 ---
 
-A Makefile defines a graph of rules for creating a target (or targets).
-Its purpose is to do the minimum amount of work needed to update a
-target to the most recent version of the source. Famously written over a
-weekend by Stuart Feldman in 1976, it is still widely used (particularly
-on Unix and Linux) despite many competitors and criticisms.
+Makefile은 대상(또는 대상들)을 생성하기 위한 규칙 그래프를 정의합니다.
+그 목적은 대상을 소스의 최신 버전으로 업데이트하는 데 필요한 최소한의 작업을
+수행하는 것입니다. 1976년 Stuart Feldman이 주말 동안 작성한 것으로 유명하며,
+많은 경쟁자와 비판에도 불구하고 (특히 Unix 및 Linux에서) 여전히 널리 사용됩니다.
 
-There are many varieties of make in existence, however this article
-assumes that we are using GNU make which is the standard on Linux.
+존재하는 make에는 여러 종류가 있지만, 이 글에서는 Linux의 표준인
+GNU make를 사용한다고 가정합니다.
 
 ```make
-# Comments can be written like this.
+# 주석은 이렇게 작성할 수 있습니다.
 
-# File should be named Makefile and then can be run as `make <target>`.
-# Otherwise we use `make -f "filename" <target>`.
+# 파일 이름은 Makefile이어야 하며, `make <target>`으로 실행할 수 있습니다.
+# 그렇지 않으면 `make -f "filename" <target>`을 사용합니다.
 
-# Warning - only use TABS to indent in Makefiles, never spaces!
+# 경고 - Makefile에서는 들여쓰기에 탭만 사용하고 공백은 절대 사용하지 마십시오!
 
 #-----------------------------------------------------------------------
-# Basics
+# 기본
 #-----------------------------------------------------------------------
 
-# Rules are of the format
+# 규칙은 다음과 같은 형식입니다.
 # target: <prerequisite>
-# where prerequisites are optional.
+# 여기서 prerequisite는 선택 사항입니다.
 
-# A rule - this rule will only run if file0.txt doesn't exist.
+# 규칙 - 이 규칙은 file0.txt가 존재하지 않을 경우에만 실행됩니다.
 file0.txt:
 	echo "foo" > file0.txt
-	# Even comments in these 'recipe' sections get passed to the shell.
-	# Try `make file0.txt` or simply `make` - first rule is the default.
+	# 이 '레시피' 섹션의 주석도 셸로 전달됩니다.
+	# `make file0.txt` 또는 단순히 `make`를 시도해보십시오 - 첫 번째 규칙이 기본값입니다.
 
-# This rule will only run if file0.txt is newer than file1.txt.
+# 이 규칙은 file0.txt가 file1.txt보다 최신일 경우에만 실행됩니다.
 file1.txt: file0.txt
 	cat file0.txt > file1.txt
-	# use the same quoting rules as in the shell.
+	# 셸에서와 동일한 인용 규칙을 사용합니다.
 	@cat file0.txt >> file1.txt
-	# @ stops the command from being echoed to stdout.
+	# @는 명령이 stdout에 에코되는 것을 방지합니다.
 	-@echo 'hello'
-	# - means that make will keep going in the case of an error.
-	# Try `make file1.txt` on the commandline.
+	# -는 오류가 발생하더라도 make가 계속 진행됨을 의미합니다.
+	# 명령줄에서 `make file1.txt`를 시도해보십시오.
 
-# A rule can have multiple targets and multiple prerequisites
+# 규칙은 여러 대상과 여러 전제 조건을 가질 수 있습니다.
 file2.txt file3.txt: file0.txt file1.txt
 	touch file2.txt
 	touch file3.txt
 
-# Make will complain about multiple recipes for the same rule. Empty
-# recipes don't count though and can be used to add new dependencies.
+# make는 동일한 규칙에 대한 여러 레시피에 대해 불평합니다.
+# 하지만 빈 레시피는 계산되지 않으며 새 종속성을 추가하는 데 사용할 수 있습니다.
 
 #-----------------------------------------------------------------------
-# Phony Targets
+# 포니 타겟
 #-----------------------------------------------------------------------
 
-# A phony target. Any target that isn't a file.
-# It will never be up to date so make will always try to run it.
+# 포니 타겟. 파일이 아닌 모든 타겟.
+# 절대 최신 상태가 아니므로 make는 항상 실행하려고 시도합니다.
 all: maker process
 
-# We can declare things out of order.
+# 순서에 상관없이 선언할 수 있습니다.
 maker:
 	touch ex0.txt ex1.txt
 
-# Can avoid phony rules breaking when a real file has the same name by
+# 실제 파일과 이름이 같을 때 포니 규칙이 깨지는 것을 방지할 수 있습니다.
 .PHONY: all maker process
-# This is a special target. There are several others.
+# 이것은 특별한 타겟입니다. 다른 여러 가지가 있습니다.
 
-# A rule with a dependency on a phony target will always run
+# 포니 타겟에 대한 종속성이 있는 규칙은 항상 실행됩니다.
 ex0.txt ex1.txt: maker
 
-# Common phony targets are: all make clean install ...
+# 일반적인 포니 타겟은 all make clean install ... 입니다.
 
 #-----------------------------------------------------------------------
-# Automatic Variables & Wildcards
+# 자동 변수 및 와일드카드
 #-----------------------------------------------------------------------
 
-process: file*.txt	#using a wildcard to match filenames
-	@echo $^	# $^ is a variable containing the list of prerequisites
-	@echo $@	# prints the target name
-	#(for multiple target rules, $@ is whichever caused the rule to run)
-	@echo $<	# the first prerequisite listed
-	@echo $?	# only the dependencies that are out of date
-	@echo $+	# all dependencies including duplicates (unlike normal)
-	#@echo $|	# all of the 'order only' prerequisites
+process: file*.txt	#파일 이름과 일치하도록 와일드카드 사용
+	@echo $^	# $^는 전제 조건 목록을 포함하는 변수입니다.
+	@echo $@	# 타겟 이름을 출력합니다.
+	#(여러 타겟 규칙의 경우, $@는 규칙을 실행하게 한 것입니다.)
+	@echo $<	# 나열된 첫 번째 전제 조건
+	@echo $?	# 최신이 아닌 종속성만
+	@echo $+	# 중복을 포함한 모든 종속성 (일반과 다름)
+	#@echo $|	# 모든 '순서 전용' 전제 조건
 
-# Even if we split up the rule dependency definitions, $^ will find them
+# 규칙 종속성 정의를 분리하더라도 $^는 그것들을 찾습니다.
 process: ex1.txt file0.txt
-# ex1.txt will be found but file0.txt will be deduplicated.
+# ex1.txt는 발견되지만 file0.txt는 중복 제거됩니다.
 
 #-----------------------------------------------------------------------
-# Patterns
+# 패턴
 #-----------------------------------------------------------------------
 
-# Can teach make how to convert certain files into other files.
+# 특정 파일을 다른 파일로 변환하는 방법을 make에 가르칠 수 있습니다.
 
 %.png: %.svg
 	inkscape --export-png $^
 
-# Pattern rules will only do anything if make decides to create the
-# target.
+# 패턴 규칙은 make가 타겟을 생성하기로 결정한 경우에만 작동합니다.
 
-# Directory paths are normally ignored when matching pattern rules. But
-# make will try to use the most appropriate rule available.
+# 디렉토리 경로는 일반적으로 패턴 규칙을 일치시킬 때 무시됩니다. 하지만
+# make는 사용 가능한 가장 적절한 규칙을 사용하려고 시도합니다.
 small/%.png: %.svg
 	inkscape --export-png --export-dpi 30 $^
 
-# make will use the last version for a pattern rule that it finds.
+# make는 찾은 패턴 규칙의 마지막 버전을 사용합니다.
 %.png: %.svg
 	@echo this rule is chosen
 
-# However make will use the first pattern rule that can make the target
+# 그러나 make는 타겟을 만들 수 있는 첫 번째 패턴 규칙을 사용합니다.
 %.png: %.ps
 	@echo this rule is not chosen if *.svg and *.ps are both present
 
-# make already has some pattern rules built-in. For instance, it knows
-# how to turn *.c files into *.o files.
+# make에는 이미 일부 패턴 규칙이 내장되어 있습니다. 예를 들어,
+# *.c 파일을 *.o 파일로 변환하는 방법을 알고 있습니다.
 
-# Older makefiles might use suffix rules instead of pattern rules
+# 이전 Makefile은 패턴 규칙 대신 접미사 규칙을 사용할 수 있습니다.
 .png.ps:
 	@echo this rule is similar to a pattern rule.
 
-# Tell make about the suffix rule
+# make에 접미사 규칙에 대해 알립니다.
 .SUFFIXES: .png
 
 #-----------------------------------------------------------------------
-# Variables
+# 변수
 #-----------------------------------------------------------------------
-# aka. macros
+# aka. 매크로
 
-# Variables are basically all string types
+# 변수는 기본적으로 모두 문자열 타입입니다.
 
 name = Ted
 name2="Sarah"
@@ -144,31 +142,31 @@ name2="Sarah"
 echo:
 	@echo $(name)
 	@echo ${name2}
-	@echo $name    # This won't work, treated as $(n)ame.
-	@echo $(name3) # Unknown variables are treated as empty strings.
+	@echo $name    # 이것은 작동하지 않으며, $(n)ame으로 처리됩니다.
+	@echo $(name3) # 알 수 없는 변수는 빈 문자열로 처리됩니다.
 
-# There are 4 places to set variables.
-# In order of priority from highest to lowest:
-# 1: commandline arguments
+# 변수를 설정하는 4가지 방법이 있습니다.
+# 우선 순위가 높은 순서대로:
+# 1: 명령줄 인수
 # 2: Makefile
-# 3: shell environment variables - make imports these automatically.
-# 4: make has some predefined variables
+# 3: 셸 환경 변수 - make는 이것들을 자동으로 가져옵니다.
+# 4: make에는 일부 미리 정의된 변수가 있습니다.
 
 name4 ?= Jean
-# Only set the variable if environment variable is not already defined.
+# 환경 변수가 아직 정의되지 않은 경우에만 변수를 설정합니다.
 
 override name5 = David
-# Stops commandline arguments from changing this variable.
+# 명령줄 인수가 이 변수를 변경하는 것을 중지합니다.
 
 name4 +=grey
-# Append values to variable (includes a space).
+# 변수에 값 추가 (공백 포함).
 
-# Pattern-specific variable values (GNU extension).
-echo: name2 = Sara # True within the matching rule
-	# and also within its remade recursive dependencies
-	# (except it can break when your graph gets too complicated!)
+# 패턴별 변수 값 (GNU 확장).
+echo: name2 = Sara # 일치하는 규칙 내에서 참
+	# 그리고 재귀적으로 재구성된 종속성 내에서도
+	# (그래프가 너무 복잡해지면 깨질 수 있음!)
 
-# Some variables defined automatically by make.
+# make에 의해 자동으로 정의된 일부 변수.
 echo_inbuilt:
 	echo $(CC)
 	echo ${CXX}
@@ -180,50 +178,50 @@ echo_inbuilt:
 	echo ${LDLIBS}
 
 #-----------------------------------------------------------------------
-# Variables 2
+# 변수 2
 #-----------------------------------------------------------------------
 
-# The first type of variables are evaluated each time they are used.
-# This can be expensive, so a second type of variable exists which is
-# only evaluated once. (This is a GNU make extension)
+# 첫 번째 유형의 변수는 사용될 때마다 평가됩니다.
+# 이것은 비용이 많이 들 수 있으므로 한 번만 평가되는 두 번째 유형의
+# 변수가 존재합니다. (이것은 GNU make 확장입니다)
 
 var := hello
 var2 ::= $(var) hello
-#:= and ::= are equivalent.
+#:=와 ::=는 동일합니다.
 
-# These variables are evaluated procedurally (in the order that they
-# appear), thus breaking with the rest of the language !
+# 이러한 변수는 절차적으로 평가되므로 (나타나는 순서대로),
+# 언어의 나머지 부분과 충돌합니다!
 
-# This doesn't work
+# 이것은 작동하지 않습니다.
 var3 ::= $(var4) and good luck
 var4 ::= good night
 
 #-----------------------------------------------------------------------
-# Functions
+# 함수
 #-----------------------------------------------------------------------
 
-# make has lots of functions available.
+# make에는 많은 함수가 있습니다.
 
 sourcefiles = $(wildcard *.c */*.c)
 objectfiles = $(patsubst %.c,%.o,$(sourcefiles))
 
-# Format is $(func arg0,arg1,arg2...)
+# 형식은 $(func arg0,arg1,arg2...)입니다.
 
-# Some examples
+# 일부 예제
 ls:	* src/*
 	@echo $(filter %.txt, $^)
 	@echo $(notdir $^)
 	@echo $(join $(dir $^),$(notdir $^))
 
 #-----------------------------------------------------------------------
-# Directives
+# 지시문
 #-----------------------------------------------------------------------
 
-# Include other makefiles, useful for platform specific code
+# 다른 makefile 포함, 플랫폼별 코드에 유용합니다.
 include foo.mk
 
 sport = tennis
-# Conditional compilation
+# 조건부 컴파일
 report:
 ifeq ($(sport),tennis)
 	@echo 'game, set, match'
@@ -231,7 +229,7 @@ else
 	@echo "They think it's all over; it is now"
 endif
 
-# There are also ifneq, ifdef, ifndef
+# ifneq, ifdef, ifndef도 있습니다.
 
 foo = true
 
@@ -240,8 +238,8 @@ bar = 'hello'
 endif
 ```
 
-### More Resources
+### 더 많은 자료
 
-- [GNU Make documentation](https://www.gnu.org/software/make/manual/make.html)
-- [Software Carpentry tutorial](https://swcarpentry.github.io/make-novice/)
-- [Makefile Tutorial By Example](https://makefiletutorial.com/#makefile-cookbook)
+- [GNU Make 문서](https://www.gnu.org/software/make/manual/make.html)
+- [Software Carpentry 튜토리얼](https://swcarpentry.github.io/make-novice/)
+- [예제로 배우는 Makefile 튜토리얼](https://makefiletutorial.com/#makefile-cookbook)

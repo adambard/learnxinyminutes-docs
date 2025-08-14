@@ -7,40 +7,40 @@ contributors:
     - ["gavr", "https://github.com/gavr123456789"]
 ---
 
-## Intro
-Niva is a simple language that takes a lot of inspiration from Smalltalk.
-But leaning towards the functional side and static typed.
-Everything is still an object, but instead of classes, interfaces, inheritance, and abstract classes,
-we have tagged unions, which is the only way to achieve polymorphism.
+## 소개
+Niva는 Smalltalk에서 많은 영감을 받은 간단한 언어입니다.
+그러나 함수형 측면과 정적 타입에 더 가깝습니다.
+모든 것은 여전히 객체이지만 클래스, 인터페이스, 상속 및 추상 클래스 대신
+다형성을 달성하는 유일한 방법인 태그된 유니온이 있습니다.
 
 
-For example, everything except the declaration is sending messages to objects.
-`1 + 2` is not a + operator, but a `... + Int` message for `Int` object.
-(there are no extra costs for that)
+예를 들어, 선언을 제외한 모든 것은 객체에 메시지를 보내는 것입니다.
+`1 + 2`는 + 연산자가 아니라 `Int` 객체에 대한 `... + Int` 메시지입니다.
+(추가 비용은 없습니다)
 
-C-like: `1.inc()`
+C와 유사: `1.inc()`
 Niva: `1 inc`
 
-In essence, niva is highly minimalistic, like its ancestor Smalltalk.
-It introduces types, unions, and associated methods.
-There are no functions.
+본질적으로 niva는 조상인 Smalltalk처럼 매우 미니멀리즘적입니다.
+유형, 유니온 및 관련 메서드를 도입합니다.
+함수는 없습니다.
 
-Install:
+설치:
 ```bash
 git clone https://github.com/gavr123456789/Niva.git
 cd Niva
 ./gradlew buildJvmNiva
-# LSP here https://github.com/gavr123456789/niva-vscode-bundle
+# LSP 여기 https://github.com/gavr123456789/niva-vscode-bundle
 ```
 
-## The Basics
+## 기본
 
-#### Variable
-Variables are immutable by default.
-There is no special keyword for declaring a variable.
+#### 변수
+변수는 기본적으로 불변입니다.
+변수를 선언하는 특별한 키워드는 없습니다.
 
 ```Scala
-// this is a comment
+// 이것은 주석입니다
 int = 1
 str = "qwf"
 boolean = true
@@ -57,51 +57,51 @@ list = {1 2 3}
 set = #(1 2 3)
 map = #{1 'a' 2 'b'}
 
-// declare a mutable variable
+// 가변 변수 선언
 mut x = 5
-x <- 6 // mutate
+x <- 6 // 변경
 ```
 
-#### Messages
+#### 메시지
 ```Scala
-// hello world is a one liner
-"Hello world" echo // echo is a message for String obj
+// hello world는 한 줄입니다
+"Hello world" echo // echo는 String 객체에 대한 메시지입니다
 
 
-// There are 3 types of messages
-1 inc // 2         unary
-1 + 2 // 3         binary
-"abc" at: 0 // 'a' keyword
+// 3가지 유형의 메시지가 있습니다
+1 inc // 2         단항
+1 + 2 // 3         이항
+"abc" at: 0 // 'a' 키워드
 
 
-// they can be chained
+// 연결할 수 있습니다
 1 inc inc inc dec // 3
 1 + 1 + 2 - 3 // 1
 1 to: 3 do: [it echo] // 1 2 3
-// the last one here to:do: is a single message
-// to chain 2 keyword messages you need to wrap it in parentheses
+// 여기 마지막 to:do:는 단일 메시지입니다
+// 2개의 키워드 메시지를 연결하려면 괄호로 묶어야 합니다
 ("123456" drop: 1) dropLast: 2 // "234"
-the comma `,` is syntactic sugar for the same effect
+쉼표 ,는 동일한 효과를 위한 구문 설탕입니다
 "123456" drop: 1, dropLast: 2 // "234"
 
-// you can mix them
+// 혼합할 수 있습니다
 1 inc + 3 dec - "abc" count // 2 + 2 - 3 -> 1
 "123" + "456" drop: 1 + 1   // "123456" drop: 2 -> "3456"
 
-// everything except type and message declarations are message sends in niva
-// for example `if` is a message for Boolean object that takes a lambda
+// niva에서 타입 및 메시지 선언을 제외한 모든 것은 메시지 전송입니다
+// 예를 들어 `if`는 람다를 받는 Boolean 객체에 대한 메시지입니다
 1 > 2 ifTrue: ["wow" echo]
-// expression
+// 표현식
 base = 1 > 2 ifTrue: ["heh"] ifFalse: ["qwf"]
-// same for while
+// while도 마찬가지
 mut q = 0
 [q > 10] whileTrue: [q <- q inc]
-// all of this is zero cost because of inlining at compile time
+// 이 모든 것은 컴파일 타임에 인라이닝되기 때문에 비용이 없습니다
 ```
 
-#### Type
-New lines are not significant in niva
-Type declarations look like keyword messages consisting of fields and types
+#### 타입
+niva에서 새 줄은 중요하지 않습니다
+타입 선언은 필드와 타입으로 구성된 키워드 메시지처럼 보입니다
 ```Scala
 type Square side: Int
 
@@ -110,93 +110,93 @@ type Person
   age: Int
 ```
 
-#### Create instance
-Creating an object is the same keyword message as when declaring it, but with values in place of types.
+#### 인스턴스 생성
+객체를 생성하는 것은 선언할 때와 동일한 키워드 메시지이지만 타입 대신 값이 있습니다.
 ```Scala
 square = Square side: 42
 alice = Person name: "Alice" age: 24
 
-// destruct fields by names
+// 이름으로 필드 분해
 {age name} = alice
 ```
 
-#### Access fields
-Getting fields is the same as sending a unary message with its name to the object
+#### 필드 액세스
+필드를 가져오는 것은 객체에 이름으로 단항 메시지를 보내는 것과 같습니다
 ```Scala
-// get age, add 1 and print it
+// 나이를 가져와 1을 더하고 출력합니다
 alice age inc echo // 25
 ```
 
-#### Method for type:
-Everything is an object, just like in Smalltalk, so everything can have a method declared.
-Here, we add a `double` method to `Int` and then use it inside the `perimeter` method of `Square`.
+#### 타입에 대한 메서드:
+Smalltalk에서처럼 모든 것이 객체이므로 모든 것에 메서드를 선언할 수 있습니다.
+여기에서는 Int에 `double` 메서드를 추가한 다음 Square의 `perimeter` 메서드 내에서 사용합니다.
 
 ```Scala
 Int double = this + this
 Square perimeter = side double
 
 square = Square side: 42
-square perimeter // call
+square perimeter // 호출
 
 
-// explicit return type
+// 명시적 반환 타입
 Int double2 -> Int = this * 2
 
-// with body
+// 본문 포함
 Int double3 -> Int = [
     result = this * 2
-    ^ result // ^ is return
+    ^ result // ^는 반환입니다
 ]
 ```
 
 
-#### Keyword message declaration
+#### 키워드 메시지 선언
 ```Scala
 type Range from: Int to: Int
-// keyword message with one arg `to`
+// `to`라는 하나의 인수가 있는 키워드 메시지
 Int to::Int = Range from: this to: to
 
 1 to: 2 // Range
 ```
-#### Type constructor
-A type constructor functions as a message for the type itself rather than to a specific instance.
+#### 타입 생성자
+타입 생성자는 특정 인스턴스가 아닌 타입 자체에 대한 메시지로 작동합니다.
 ```Scala
 constructor Float pi = 3.14
 x = Float pi // 3.14
 ```
 
-It can be useful for initializing fields with default values.
+기본값으로 필드를 초기화하는 데 유용할 수 있습니다.
 ```Scala
 type Point x: Int y: Int
 constructor Point atStart = Point x: 0 y: 0
 
 p1 = Point x: 0 y: 0
 p2 = Point atStart
-// constructor is just a usual message, so it can have params
+// 생성자는 일반적인 메시지이므로 매개변수를 가질 수 있습니다
 constructor Point y::Int = Point x: 0 y: y
 p3 = Point y: 20 // x: 0 y: 20
 ```
 
 
-#### Conditions
-If, like everything else, is the usual sending of a message to a Boolean object.
-It takes one or two lambda arguments.
+#### 조건
+If는 다른 모든 것과 마찬가지로 Boolean 객체에 메시지를 보내는 일반적인 방법입니다.
+하나 또는 두 개의 람다 인수를 받습니다.
 ```Scala
 false ifTrue: ["yay" echo]
 1 < 2 ifTrue: ["yay" echo]
 1 > 2 ifTrue: ["yay" echo] ifFalse: ["oh no" echo]
 
-// `ifTrue:ifFalse:` message can be used as expression
+// `ifTrue:ifFalse:` 메시지는 표현식으로 사용할 수 있습니다
 str = 42 % 2 == 0
     ifTrue: ["even"]
     ifFalse: ["odd"]
 // str == "even"
 ```
 
-#### Cycles
-There is no special syntax for cycles.
-It's just keyword messages that take codeblocks as parameters.
-(it's zero cost thanks for inlining)
+#### 순환
+순환에 대한 특별한 구문은 없습니다.
+코드 블록을 매개변수로 받는 키워드 메시지일 뿐입니다.
+(인라이닝 덕분에 비용이 없습니다)
 ```Scala
 {1 2 3} forEach: [ it echo ] // 1 2 3
 1..10 forEach: [ it echo ]
@@ -204,27 +204,27 @@ It's just keyword messages that take codeblocks as parameters.
 mut c = 10
 [c > 0] whileTrue: [ c <- c dec ]
 
-c <- 3 // reset c
+c <- 3 // c 재설정
 [c > 0] whileTrue: [
     c <- c dec
     c echo // 3 2 1
 ]
 ```
-`whileTrue:` is a message for lambda object of the type:
+`whileTrue:`는 다음 타입의 람다 객체에 대한 메시지입니다:
 `[ -> Boolean] whileTrue::[ -> Unit]`
 
-#### Matching
-there is special syntax for matching, since niva heavily utilize tagged unions
+#### 매칭
+niva는 태그된 유니온을 많이 활용하므로 매칭에 대한 특별한 구문이 있습니다
 ```Scala
 x = "Alice"
-// matching on x
+// x에 대한 매칭
 | x
 | "Bob" => "Hi Bob!"
 | "Alice" => "Hi Alice!"
 |=> "Hi guest"
 
 
-// It can be used as expression as well
+// 표현식으로도 사용할 수 있습니다
 y = | "b"
     | "a" => 1
     | "b" => 2
@@ -232,12 +232,12 @@ y = | "b"
 y echo // 2
 ```
 
-#### Tagged unions
+#### 태그된 유니온
 
 ```Scala
 union Color = Red | Blue | Green
 
-// branches can have fields
+// 브랜치는 필드를 가질 수 있습니다
 union Shape =
     | Rectangle width: Int height: Int
     | Circle    radius: Double
@@ -245,87 +245,87 @@ union Shape =
 constructor Double pi = 3.14
 Double square = this * this
 
-// match on this(Shape)
+// this(Shape)에 대한 매칭
 Shape getArea -> Double =
     | this
     | Rectangle => width * height, toDouble
     | Circle => Double pi * radius square
 
-// There is exhaustiveness checking, so when you add a new branch
-// all the matches will become errors until all cases processed
+// 완전성 검사가 있으므로 새 브랜치를 추가하면
+// 모든 케이스가 처리될 때까지 모든 매치가 오류가 됩니다
 
 Shape getArea -> Double = | this
     | Rectangle => width * height, toDouble
-// ERROR: Not all possible variants have been checked (Circle)
+// 오류: 모든 가능한 변형이 확인되지 않았습니다 (Circle)
 ```
 
-#### Collections
+#### 컬렉션
 ```Scala
-// commas are optional
+// 쉼표는 선택 사항입니다
 list = {1 2 3}
 map = #{'a' 1 'b' 2}
 map2 = #{'a' 1, 'b' 2, 'c' 3}
 set = #(1 2 3)
 
-// common collection operations
+// 일반적인 컬렉션 작업
 {1 2 3 4 5}
   map: [it inc],
   filter: [it % 2 == 0],
   forEach: [it echo] // 2 4 6
 
-// iteration on map
+// 맵 반복
 map forEach: [key, value ->
   key echo
   value echo
 ]
 ```
 
-#### Nullability
-By default, variables cannot be assigned a null value.
-To allow this, nullable types are used, indicated by a question mark at the end of the type.
-You may already be familiar with this concept from TypeScript, Kotlin, or Swift.
+#### Null 가능성
+기본적으로 변수에는 null 값을 할당할 수 없습니다.
+이를 허용하려면 타입 끝에 물음표로 표시되는 nullable 타입을 사용합니다.
+TypeScript, Kotlin 또는 Swift에서 이 개념에 익숙할 수 있습니다.
 ```Scala
 x::Int? = null
 q = x unpackOrPANIC
 
-// do something if it's not null
+// null이 아닌 경우 무언가 수행
 x unpack: [it echo]
 
-// same but provide a backup value
+// 동일하지만 백업 값 제공
 w = x unpack: [it inc] or: -1
 
-// just unpack or backup value
+// 그냥 언패킹하거나 백업 값
 e = x unpackOrValue: -1
 ```
 
-#### Handling the error
+#### 오류 처리
 ```Scala
-// exit the program with stack trace
+// 스택 추적으로 프로그램 종료
 x = file read orPANIC
 x = file read orValue: "no file"
 ```
-Errors work like effects, look for more in [Error handling](https://gavr123456789.github.io/niva-site/error-handling.html)
+오류는 효과처럼 작동합니다. 자세한 내용은 [오류 처리](https://gavr123456789.github.io/niva-site/error-handling.html)를 참조하십시오.
 
-## Misc
+## 기타
 
-#### Local arg names
+#### 로컬 인수 이름
 ```Scala
 Int from: x::Int to: y::Int = this + x + y
 ```
 
-#### Syntax sugar for this
+#### this에 대한 구문 설탕
 ```Scala
 Person foo = [
     .bar
-    this bar // same thing
+    this bar // 같은 것
 ]
 ```
 
-#### Compile time reflection
-You can get string representation of any argument from a call site.
+#### 컴파일 타임 리플렉션
+호출 사이트에서 모든 인수의 문자열 표현을 가져올 수 있습니다.
 ```Scala
 Int bar::Int baz::String = [
-    // getting string representation from call side
+    // 호출 사이드에서 문자열 표현 가져오기
     a = Compiler getName: 0
     b = Compiler getName: 1
     c = Compiler getName: 2
@@ -335,14 +335,14 @@ Int bar::Int baz::String = [
 ]
 
 variable = 42
-// call side
+// 호출 사이드
 1 + 1
     bar: variable
     baz: "str"
 ```
 
-Links:
-- [Site](https://gavr123456789.github.io/niva-site/reference.html)
+링크:
+- [사이트](https://gavr123456789.github.io/niva-site/reference.html)
 - [GitHub](https://github.com/gavr123456789/Niva)
 - [LSP](https://github.com/gavr123456789/vaLSe)
-- [VSC plugin](https://github.com/gavr123456789/niva-vscode-bundle)
+- [VSC 플러그인](https://github.com/gavr123456789/niva-vscode-bundle)

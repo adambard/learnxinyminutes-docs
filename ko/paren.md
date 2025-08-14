@@ -9,33 +9,33 @@ contributors:
   - ["Claudson Martins", "https://github.com/claudsonm"]
 ---
 
-[Paren](https://bitbucket.org/ktg/paren) is a dialect of Lisp. It is designed to be an embedded language.
+[Paren](https://bitbucket.org/ktg/paren)은 Lisp의 방언입니다. 임베디드 언어로 설계되었습니다.
 
-Some examples are from [Racket](../racket/).
+일부 예제는 [Racket](../racket/)에서 가져왔습니다.
 
 ```scheme
-;;; Comments
-# comments
+;;; 주석
+# 주석
 
-;; Single line comments start with a semicolon or a sharp sign
+;; 한 줄 주석은 세미콜론 또는 샵 기호로 시작합니다.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 1. Primitive Datatypes and Operators
+;; 1. 기본 데이터 타입 및 연산자
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Numbers
+;;; 숫자
 123 ; int
 3.14 ; double
 6.02e+23 ; double
 (int 3.14) ; => 3 : int
 (double 123) ; => 123 : double
 
-;; Function application is written (f x y z ...)
-;; where f is a function and x, y, z, ... are operands
-;; If you want to create a literal list of data, use (quote) to stop it from
-;; being evaluated
+;; 함수 적용은 (f x y z ...)로 작성됩니다.
+;; 여기서 f는 함수이고 x, y, z, ...는 피연산자입니다.
+;; 리터럴 데이터 목록을 만들고 싶다면 (quote)를 사용하여
+;; 평가되지 않도록 합니다.
 (quote (+ 1 2)) ; => (+ 1 2)
-;; Now, some arithmetic operations
+;; 이제 몇 가지 산술 연산
 (+ 1 1)  ; => 2
 (- 8 1)  ; => 7
 (* 10 2) ; => 20
@@ -44,132 +44,132 @@ Some examples are from [Racket](../racket/).
 (% 5 2) ; => 1
 (/ 5.0 2) ; => 2.5
 
-;;; Booleans
-true ; for true
-false ; for false
+;;; 불리언
+true ; 참
+false ; 거짓
 (! true) ; => false
-(&& true false (prn "doesn't get here")) ; => false
-(|| false true (prn "doesn't get here")) ; => true
+(&& true false (prn "여기에는 도달하지 않음")) ; => false
+(|| false true (prn "여기에는 도달하지 않음")) ; => true
 
-;;; Characters are ints.
+;;; 문자는 정수입니다.
 (char-at "A" 0) ; => 65
 (chr 65) ; => "A"
 
-;;; Strings are fixed-length array of characters.
+;;; 문자열은 고정 길이 문자 배열입니다.
 "Hello, world!"
-"Benjamin \"Bugsy\" Siegel"   ; backslash is an escaping character
-"Foo\tbar\r\n" ; includes C escapes: \t \r \n
+"Benjamin \"Bugsy\" Siegel"   ; 백슬래시는 이스케이프 문자입니다.
+"Foo\tbar\r\n" ; C 이스케이프 포함: \t \r \n
 
-;; Strings can be added too!
+;; 문자열도 추가할 수 있습니다!
 (strcat "Hello " "world!") ; => "Hello world!"
 
-;; A string can be treated like a list of characters
+;; 문자열은 문자 목록처럼 처리할 수 있습니다.
 (char-at "Apple" 0) ; => 65
 
-;; Printing is pretty easy
+;; 출력은 매우 쉽습니다.
 (pr "I'm" "Paren. ") (prn "Nice to meet you!")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 2. Variables
+;; 2. 변수
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; You can create or set a variable using (set)
-;; a variable name can use any character except: ();#"
+;; (set)을 사용하여 변수를 생성하거나 설정할 수 있습니다.
+;; 변수 이름에는 다음을 제외한 모든 문자를 사용할 수 있습니다: ();#"
 (set some-var 5) ; => 5
 some-var ; => 5
 
-;; Accessing a previously unassigned variable is an exception
-; x ; => Unknown variable: x : nil
+;; 이전에 할당되지 않은 변수에 액세스하면 예외가 발생합니다.
+; x ; => 알 수 없는 변수: x : nil
 
-;; Local binding: Use lambda calculus! 'a' and 'b' are bound to '1' and '2' only within the (fn ...)
+;; 지역 바인딩: 람다 계산법을 사용하십시오! 'a'와 'b'는 (fn ...) 내에서만 '1'과 '2'에 바인딩됩니다.
 ((fn (a b) (+ a b)) 1 2) ; => 3
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 3. Collections
+;; 3. 컬렉션
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Lists
+;;; 리스트
 
-;; Lists are vector-like data structures. (Random access is O(1).)
+;; 리스트는 벡터와 유사한 데이터 구조입니다. (임의 접근은 O(1)입니다.)
 (cons 1 (cons 2 (cons 3 (list)))) ; => (1 2 3)
-;; 'list' is a convenience variadic constructor for lists
+;; 'list'는 리스트에 대한 편리한 가변 인자 생성자입니다.
 (list 1 2 3) ; => (1 2 3)
-;; and a quote can also be used for a literal list value
+;; 그리고 따옴표는 리터럴 리스트 값에도 사용할 수 있습니다.
 (quote (+ 1 2)) ; => (+ 1 2)
 
-;; Can still use 'cons' to add an item to the beginning of a list
+;; 리스트 시작 부분에 항목을 추가하기 위해 여전히 'cons'를 사용할 수 있습니다.
 (cons 0 (list 1 2 3)) ; => (0 1 2 3)
 
-;; Lists are a very basic type, so there is a *lot* of functionality for
-;; them, a few examples:
+;; 리스트는 매우 기본적인 타입이므로
+;; 많은 기능이 있습니다. 몇 가지 예:
 (map inc (list 1 2 3))          ; => (2 3 4)
 (filter (fn (x) (== 0 (% x 2))) (list 1 2 3 4))    ; => (2 4)
 (length (list 1 2 3 4))     ; => 4
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 3. Functions
+;; 3. 함수
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Use 'fn' to create functions.
-;; A function always returns the value of its last expression
+;; 'fn'을 사용하여 함수를 만듭니다.
+;; 함수는 항상 마지막 표현식의 값을 반환합니다.
 (fn () "Hello World") ; => (fn () Hello World) : fn
 
-;; Use parentheses to call all functions, including a lambda expression
+;; 람다 식을 포함한 모든 함수를 호출하려면 괄호를 사용하십시오.
 ((fn () "Hello World")) ; => "Hello World"
 
-;; Assign a function to a var
+;; 변수에 함수 할당
 (set hello-world (fn () "Hello World"))
 (hello-world) ; => "Hello World"
 
-;; You can shorten this using the function definition syntactic sugar:
+;; 함수 정의 구문 설탕을 사용하여 이것을 단축할 수 있습니다:
 (defn hello-world2 () "Hello World")
 
-;; The () in the above is the list of arguments for the function
+;; 위의 ()는 함수의 인수 목록입니다.
 (set hello
   (fn (name)
     (strcat "Hello " name)))
 (hello "Steve") ; => "Hello Steve"
 
-;; ... or equivalently, using a sugared definition:
+;; ... 또는 동등하게, 설탕을 입힌 정의를 사용하여:
 (defn hello2 (name)
   (strcat "Hello " name))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 4. Equality
+;; 4. 동등성
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; for numbers use '=='
+;; 숫자의 경우 '=='를 사용합니다.
 (== 3 3.0) ; => true
 (== 2 1) ; => false
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 5. Control Flow
+;; 5. 제어 흐름
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Conditionals
+;;; 조건문
 
-(if true               ; test expression
-    "this is true"   ; then expression
-    "this is false") ; else expression
+(if true               ; 테스트 표현식
+    "this is true"   ; then 표현식
+    "this is false") ; else 표현식
 ; => "this is true"
 
-;;; Loops
+;;; 루프
 
-;; for loop is for number
+;; for 루프는 숫자를 위한 것입니다.
 ;; (for SYMBOL START END STEP EXPR ..)
-(for i 0 10 2 (pr i "")) ; => prints 0 2 4 6 8 10
-(for i 0.0 10 2.5 (pr i "")) ; => prints 0 2.5 5 7.5 10
+(for i 0 10 2 (pr i "")) ; => 0 2 4 6 8 10 출력
+(for i 0.0 10 2.5 (pr i "")) ; => 0 2.5 5 7.5 10 출력
 
-;; while loop
+;; while 루프
 ((fn (i)
   (while (< i 10)
     (pr i)
-    (++ i))) 0) ; => prints 0123456789
+    (++ i))) 0) ; => 0123456789 출력
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 6. Mutation
+;; 6. 변경
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Use 'set' to assign a new value to a variable or a place
+;; 'set'을 사용하여 변수 또는 위치에 새 값을 할당합니다.
 (set n 5) ; => 5
 (set n (inc n)) ; => 6
 n ; => 6
@@ -178,19 +178,19 @@ n ; => 6
 a ; => (3 2)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 7. Macros
+;; 7. 매크로
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Macros let you extend the syntax of the language.
-;; Paren macros are easy.
-;; In fact, (defn) is a macro.
+;; 매크로를 사용하면 언어의 구문을 확장할 수 있습니다.
+;; Paren 매크로는 쉽습니다.
+;; 사실, (defn)은 매크로입니다.
 (defmacro setfn (name ...) (set name (fn ...)))
 (defmacro defn (name ...) (def name (fn ...)))
 
-;; Let's add an infix notation
+;; 중위 표기법을 추가해 봅시다.
 (defmacro infix (a op ...) (op a ...))
 (infix 1 + 2 (infix 3 * 4)) ; => 15
 
-;; Macros are not hygienic, you can clobber existing variables!
-;; They are code transformations.
+;; 매크로는 위생적이지 않으므로 기존 변수를 덮어쓸 수 있습니다!
+;; 이것들은 코드 변환입니다.
 ```

@@ -10,57 +10,57 @@ contributors:
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
 ---
 
-Scala - the scalable language
+Scala - 확장 가능한 언어
 
 ```scala
 /////////////////////////////////////////////////
-// 0. Basics
+// 0. 기본
 /////////////////////////////////////////////////
 /*
-  Setup Scala:
+  Scala 설정:
 
-  1) Download Scala - http://www.scala-lang.org/downloads
-  2) Unzip/untar to your favorite location and put the bin subdir in your `PATH` environment variable
+  1) Scala 다운로드 - http://www.scala-lang.org/downloads
+  2) 원하는 위치에 압축을 풀고 bin 하위 디렉토리를 `PATH` 환경 변수에 추가
 */
 
 /*
-  Try the REPL
+  REPL 사용해보기
 
-  Scala has a tool called the REPL (Read-Eval-Print Loop) that is analogous to
-  commandline interpreters in many other languages. You may type any Scala
-  expression, and the result will be evaluated and printed.
+  Scala에는 REPL(Read-Eval-Print Loop)이라는 도구가 있으며, 이는 다른 많은 언어의
+  명령줄 인터프리터와 유사합니다. 모든 Scala 표현식을 입력하면
+  결과가 평가되어 출력됩니다.
 
-  The REPL is a very handy tool to test and verify code.  Use it as you read
-  this tutorial to quickly explore concepts on your own.
+  REPL은 코드를 테스트하고 확인하는 데 매우 유용한 도구입니다. 이 튜토리얼을
+  읽으면서 사용하여 개념을 직접 빠르게 탐색하십시오.
 */
 
-// Start a Scala REPL by running `scala`. You should see the prompt:
+// `scala`를 실행하여 Scala REPL을 시작합니다. 다음과 같은 프롬프트를 볼 수 있습니다:
 $ scala
 scala>
 
-// By default each expression you type is saved as a new numbered value
+// 기본적으로 입력하는 각 표현식은 새로운 번호가 매겨진 값으로 저장됩니다
 scala> 2 + 2
 res0: Int = 4
 
-// Default values can be reused.  Note the value type displayed in the result..
+// 기본값을 재사용할 수 있습니다. 결과에 표시되는 값 유형에 유의하십시오..
 scala> res0 + 2
 res1: Int = 6
 
-// Scala is a strongly typed language. You can use the REPL to check the type
-// without evaluating an expression.
+// Scala는 강력한 타입 언어입니다. REPL을 사용하여 표현식을 평가하지 않고
+// 타입을 확인할 수 있습니다.
 scala> :type (true, 2.0)
 (Boolean, Double)
 
-// REPL sessions can be saved
+// REPL 세션을 저장할 수 있습니다
 scala> :save /sites/repl-test.scala
 
-// Files can be loaded into the REPL
+// 파일을 REPL로 로드할 수 있습니다
 scala> :load /sites/repl-test.scala
 Loading /sites/repl-test.scala...
 res2: Int = 4
 res3: Int = 6
 
-// You can search your recent history
+// 최근 기록을 검색할 수 있습니다
 scala> :h?
 1 2 + 2
 2 res0 + 2
@@ -68,61 +68,61 @@ scala> :h?
 4 :load /sites/repl-test.scala
 5 :h?
 
-// Now that you know how to play, let's learn a little scala...
+// 이제 어떻게 사용하는지 알았으니, 스칼라를 조금 배워봅시다...
 
 /////////////////////////////////////////////////
-// 1. Basics
+// 1. 기본
 /////////////////////////////////////////////////
 
-// Single-line comments start with two forward slashes
+// 한 줄 주석은 두 개의 슬래시로 시작합니다
 
 /*
-  Multi-line comments, as you can already see from above, look like this.
+  위에서 이미 볼 수 있듯이 여러 줄 주석은 이렇습니다.
 */
 
-// Printing, and forcing a new line on the next print
+// 출력하고, 다음 출력에서 새 줄을 강제합니다
 println("Hello world!")
 println(10)
 // Hello world!
 // 10
 
-// Printing, without forcing a new line on next print
+// 출력하고, 다음 출력에서 새 줄을 강제하지 않습니다
 print("Hello world")
 print(10)
 // Hello world10
 
-// Declaring values is done using either var or val.
-// val declarations are immutable, whereas vars are mutable. Immutability is
-// a good thing.
-val x = 10 // x is now 10
-x = 20     // error: reassignment to val
+// 값 선언은 var 또는 val을 사용하여 수행됩니다.
+// val 선언은 불변인 반면, var는 가변입니다. 불변성은
+// 좋은 것입니다.
+val x = 10 // x는 이제 10입니다
+x = 20     // 오류: val에 재할당
 var y = 10
-y = 20     // y is now 20
+y = 20     // y는 이제 20입니다
 
 /*
-  Scala is a statically typed language, yet note that in the above declarations,
-  we did not specify a type. This is due to a language feature called type
-  inference. In most cases, Scala compiler can guess what the type of a variable
-  is, so you don't have to type it every time. We can explicitly declare the
-  type of a variable like so:
+  Scala는 정적 타입 언어이지만, 위 선언에서
+  타입을 지정하지 않았다는 점에 유의하십시오. 이는 타입 추론이라는
+  언어 기능 때문입니다. 대부분의 경우 Scala 컴파일러는 변수의
+  타입을 추측할 수 있으므로 매번 입력할 필요가 없습니다.
+  다음과 같이 변수의 타입을 명시적으로 선언할 수 있습니다:
 */
 val z: Int = 10
 val a: Double = 1.0
 
-// Notice automatic conversion from Int to Double, result is 10.0, not 10
+// Int에서 Double로의 자동 변환에 유의하십시오. 결과는 10이 아닌 10.0입니다.
 val b: Double = 10
 
-// Boolean values
+// 불리언 값
 true
 false
 
-// Boolean operations
+// 불리언 연산
 !true         // false
 !false        // true
 true == false // false
 10 > 5        // true
 
-// Math is as per usual
+// 수학은 평소와 같습니다
 1 + 1   // 2
 2 - 1   // 1
 5 * 3   // 15
@@ -132,56 +132,55 @@ true == false // false
 6 / 4.0 // 1.5
 
 
-// Evaluating an expression in the REPL gives you the type and value of the result
+// REPL에서 표현식을 평가하면 결과의 타입과 값이 제공됩니다
 
 1 + 7
 
-/* The above line results in:
+/* 위 줄의 결과는 다음과 같습니다:
 
   scala> 1 + 7
   res29: Int = 8
 
-  This means the result of evaluating 1 + 7 is an object of type Int with a
-  value of 8
+  이는 1 + 7을 평가한 결과가 값이 8인 Int 타입의 객체임을 의미합니다.
 
-  Note that "res29" is a sequentially generated variable name to store the
-  results of the expressions you typed, your output may differ.
+  "res29"는 입력한 표현식의 결과를 저장하기 위해 순차적으로 생성된
+  변수 이름이며, 출력은 다를 수 있습니다.
 */
 
-"Scala strings are surrounded by double quotes"
-'a' // A Scala Char
-// 'Single quote strings don't exist' <= This causes an error
+"Scala 문자열은 큰따옴표로 묶입니다"
+'a' // Scala Char
+// '작은따옴표 문자열은 존재하지 않습니다' <= 이로 인해 오류가 발생합니다
 
-// Strings have the usual Java methods defined on them
+// 문자열에는 일반적인 Java 메서드가 정의되어 있습니다
 "hello world".length
 "hello world".substring(2, 6)
 "hello world".replace("C", "3")
 
-// They also have some extra Scala methods. See also: scala.collection.immutable.StringOps
+// 추가 Scala 메서드도 있습니다. scala.collection.immutable.StringOps도 참조하십시오.
 "hello world".take(5)
 "hello world".drop(5)
 
-// String interpolation: notice the prefix "s"
+// 문자열 보간: 접두사 "s"에 유의하십시오
 val n = 45
 s"We have $n apples" // => "We have 45 apples"
 
-// Expressions inside interpolated strings are also possible
+// 보간된 문자열 내의 표현식도 가능합니다
 val a = Array(11, 9, 6)
 s"My second daughter is ${a(0) - a(2)} years old."    // => "My second daughter is 5 years old."
 s"We have double the amount of ${n / 2.0} in apples." // => "We have double the amount of 22.5 in apples."
 s"Power of 2: ${math.pow(2, 2)}"                      // => "Power of 2: 4"
 
-// Formatting with interpolated strings with the prefix "f"
+// 접두사 "f"를 사용하여 보간된 문자열로 서식 지정
 f"Power of 5: ${math.pow(5, 2)}%1.0f"         // "Power of 5: 25"
 f"Square root of 122: ${math.sqrt(122)}%1.4f" // "Square root of 122: 11.0454"
 
-// Raw strings, ignoring special characters.
+// 원시 문자열, 특수 문자 무시.
 raw"New line feed: \n. Carriage return: \r." // => "New line feed: \n. Carriage return: \r."
 
-// Some characters need to be "escaped", e.g. a double quote inside a string:
+// 일부 문자는 "이스케이프"해야 합니다. 예를 들어 문자열 내의 큰따옴표:
 "They stood outside the \"Rose and Crown\"" // => "They stood outside the "Rose and Crown""
 
-// Triple double-quotes let strings span multiple rows and contain quotes
+// 세 개의 큰따옴표는 문자열이 여러 줄에 걸쳐 있고 따옴표를 포함할 수 있도록 합니다
 val html = """<form id="daform">
                 <p>Press belo', Joe</p>
                 <input type="submit">
@@ -189,60 +188,57 @@ val html = """<form id="daform">
 
 
 /////////////////////////////////////////////////
-// 2. Functions
+// 2. 함수
 /////////////////////////////////////////////////
 
-// Functions are defined like so:
+// 함수는 다음과 같이 정의됩니다:
 //
 //   def functionName(args...): ReturnType = { body... }
 //
-// If you come from more traditional languages, notice the omission of the
-// return keyword. In Scala, the last expression in the function block is the
-// return value.
+// 더 전통적인 언어에서 온 경우 return 키워드의 생략에 유의하십시오.
+// Scala에서는 함수 블록의 마지막 표현식이 반환 값입니다.
 def sumOfSquares(x: Int, y: Int): Int = {
   val x2 = x * x
   val y2 = y * y
   x2 + y2
 }
 
-// The { } can be omitted if the function body is a single expression:
+// 함수 본문이 단일 표현식인 경우 { }를 생략할 수 있습니다:
 def sumOfSquaresShort(x: Int, y: Int): Int = x * x + y * y
 
-// Syntax for calling functions is familiar:
+// 함수 호출 구문은 익숙합니다:
 sumOfSquares(3, 4)  // => 25
 
-// You can use parameters names to specify them in different order
+// 매개변수 이름을 사용하여 다른 순서로 지정할 수 있습니다
 def subtract(x: Int, y: Int): Int = x - y
 
 subtract(10, 3)     // => 7
 subtract(y=10, x=3) // => -7
 
-// In most cases (with recursive functions the most notable exception), function
-// return type can be omitted, and the same type inference we saw with variables
-// will work with function return values:
-def sq(x: Int) = x * x  // Compiler can guess return type is Int
+// 대부분의 경우(재귀 함수가 가장 주목할 만한 예외) 함수
+// 반환 타입을 생략할 수 있으며, 변수에서 보았던 것과 동일한 타입 추론이
+// 함수 반환 값에서도 작동합니다:
+def sq(x: Int) = x * x  // 컴파일러는 반환 타입이 Int라고 추측할 수 있습니다
 
-// Functions can have default parameters:
+// 함수에는 기본 매개변수가 있을 수 있습니다:
 def addWithDefault(x: Int, y: Int = 5) = x + y
 addWithDefault(1, 2) // => 3
 addWithDefault(1)    // => 6
 
 
-// Anonymous functions look like this:
+// 익명 함수는 다음과 같습니다:
 (x: Int) => x * x
 
-// Unlike defs, even the input type of anonymous functions can be omitted if the
-// context makes it clear. Notice the type "Int => Int" which means a function
-// that takes Int and returns Int.
+// def와 달리, 컨텍스트가 명확하면 익명 함수의 입력 타입도 생략할 수 있습니다.
+// "Int => Int" 타입은 Int를 받아 Int를 반환하는 함수를 의미합니다.
 val sq: Int => Int = x => x * x
 
-// Anonymous functions can be called as usual:
+// 익명 함수는 평소와 같이 호출할 수 있습니다:
 sq(10)   // => 100
 
-// If each argument in your anonymous function is
-// used only once, Scala gives you an even shorter way to define them. These
-// anonymous functions turn out to be extremely common, as will be obvious in
-// the data structure section.
+// 익명 함수의 각 인수가 한 번만 사용되는 경우,
+// Scala는 더 짧은 방법으로 정의할 수 있습니다. 이러한
+// 익명 함수는 데이터 구조 섹션에서 명백해지겠지만 매우 일반적입니다.
 val addOne: Int => Int = _ + 1
 val weirdSum: (Int, Int) => Int = (_ * 2 + _ * 3)
 
@@ -250,24 +246,24 @@ addOne(5)      // => 6
 weirdSum(2, 4) // => 16
 
 
-// The return keyword exists in Scala, but it only returns from the inner-most
-// def that surrounds it.
-// WARNING: Using return in Scala is error-prone and should be avoided.
-// It has no effect on anonymous functions. For example here you may expect foo(7) should return 17 but it returns 7:
+// return 키워드는 Scala에 존재하지만, 가장 안쪽의
+// def에서만 반환합니다.
+// 경고: Scala에서 return을 사용하는 것은 오류가 발생하기 쉬우므로 피해야 합니다.
+// 익명 함수에는 영향을 미치지 않습니다. 예를 들어 여기서 foo(7)이 17을 반환할 것으로 예상할 수 있지만 7을 반환합니다:
 def foo(x: Int): Int = {
   val anonFunc: Int => Int = { z =>
     if (z > 5)
-      return z // This line makes z the return value of foo!
+      return z // 이 줄은 z를 foo의 반환 값으로 만듭니다!
     else
-      z + 2    // This line is the return value of anonFunc
+      z + 2    // 이 줄은 anonFunc의 반환 값입니다
   }
-  anonFunc(x) + 10  // This line is the return value of foo
+  anonFunc(x) + 10  // 이 줄은 foo의 반환 값입니다
 }
 
 foo(7) // => 7
 
 /////////////////////////////////////////////////
-// 3. Flow Control
+// 3. 제어 흐름
 /////////////////////////////////////////////////
 
 1 to 5
@@ -275,35 +271,35 @@ val r = 1 to 5
 r.foreach(println)
 
 r foreach println
-// NB: Scala is quite lenient when it comes to dots and brackets - study the
-// rules separately. This helps write DSLs and APIs that read like English
+// 참고: Scala는 점과 괄호에 대해 상당히 관대합니다 -
+// 규칙을 별도로 연구하십시오. 이는 영어처럼 읽히는 DSL 및 API를 작성하는 데 도움이 됩니다.
 
-// Why doesn't `println` need any parameters here?
-// Stay tuned for first-class functions in the Functional Programming section below!
+// 왜 여기서 `println`에 매개변수가 필요하지 않을까요?
+// 아래 함수형 프로그래밍 섹션의 일급 함수를 기대하십시오!
 (5 to 1 by -1) foreach (println)
 
-// A while loop
+// while 루프
 var i = 0
 while (i < 10) { println("i " + i); i += 1 }
 
-while (i < 10) { println("i " + i); i += 1 }   // Yes, again. What happened? Why?
+while (i < 10) { println("i " + i); i += 1 }   // 네, 다시. 무슨 일이 있었나요? 왜요?
 
-i    // Show the value of i. Note that while is a loop in the classical sense -
-     // it executes sequentially while changing the loop variable. while is very
-     // fast, but using the combinators and comprehensions above is easier
-     // to understand and parallelize
+i    // i의 값을 표시합니다. while은 고전적인 의미의 루프입니다 -
+     // 루프 변수를 변경하면서 순차적으로 실행됩니다. while은 매우
+     // 빠르지만, 위의 조합기 및 내포를 사용하는 것이 이해하기 쉽고
+     // 병렬화하기 쉽습니다.
 
-// A do-while loop
+// do-while 루프
 i = 0
 do {
   println("i is still less than 10")
   i += 1
 } while (i < 10)
 
-// Recursion is the idiomatic way of repeating an action in Scala (as in most
-// other functional languages).
-// Recursive functions need an explicit return type, the compiler can't infer it.
-// Here it's Unit, which is analogous to a `void` return type in Java
+// 재귀는 Scala에서 (대부분의 다른 함수형 언어에서와 같이)
+// 작업을 반복하는 관용적인 방법입니다.
+// 재귀 함수는 명시적인 반환 타입이 필요하며, 컴파일러는 이를 추론할 수 없습니다.
+// 여기서 Unit은 Java의 `void` 반환 타입과 유사합니다.
 def showNumbersInRange(a: Int, b: Int): Unit = {
   print(a)
   if (a < b)
@@ -312,7 +308,7 @@ def showNumbersInRange(a: Int, b: Int): Unit = {
 showNumbersInRange(1, 14)
 
 
-// Conditionals
+// 조건문
 
 val x = 10
 
@@ -326,18 +322,18 @@ val text = if (x == 10) "yeah" else "nope"
 
 
 /////////////////////////////////////////////////
-// 4. Data Structures
+// 4. 데이터 구조
 /////////////////////////////////////////////////
 
 val a = Array(1, 2, 3, 5, 8, 13)
 a(0)     // Int = 1
 a(3)     // Int = 5
-a(21)    // Throws an exception
+a(21)    // 예외 발생
 
 val m = Map("fork" -> "tenedor", "spoon" -> "cuchara", "knife" -> "cuchillo")
 m("fork")         // java.lang.String = tenedor
 m("spoon")        // java.lang.String = cuchara
-m("bottle")       // Throws an exception
+m("bottle")       // 예외 발생
 
 val safeM = m.withDefaultValue("no lo se")
 safeM("bottle")   // java.lang.String = no lo se
@@ -346,13 +342,13 @@ val s = Set(1, 3, 7)
 s(0)      // Boolean = false
 s(1)      // Boolean = true
 
-/* Look up the documentation of map here -
+/* 여기서 맵 설명서를 찾아보십시오 -
  * https://www.scala-lang.org/api/current/scala/collection/immutable/Map.html
- * and make sure you can read it
+ * 그리고 읽을 수 있는지 확인하십시오.
  */
 
 
-// Tuples
+// 튜플
 
 (1, 2)
 
@@ -362,21 +358,20 @@ s(1)      // Boolean = true
 
 (a, 2, "three")
 
-// Why have this?
+// 왜 이것이 있을까요?
 val divideInts = (x: Int, y: Int) => (x / y, x % y)
 
-// The function divideInts gives you the result and the remainder
+// divideInts 함수는 결과와 나머지를 제공합니다
 divideInts(10, 3)    // (Int, Int) = (3,1)
 
-// To access the elements of a tuple, use _._n where n is the 1-based index of
-// the element
+// 튜플의 요소에 액세스하려면 _._n을 사용하십시오. 여기서 n은 요소의 1-기반 인덱스입니다.
 val d = divideInts(10, 3)    // (Int, Int) = (3,1)
 
 d._1    // Int = 3
 d._2    // Int = 1
 
-// Alternatively you can do multiple-variable assignment to tuple, which is more
-// convenient and readable in many cases
+// 또는 튜플에 다중 변수 할당을 할 수 있으며, 이는 많은 경우에 더 편리하고
+// 읽기 쉽습니다.
 val (div, mod) = divideInts(10, 3)
 
 div     // Int = 3
@@ -384,40 +379,40 @@ mod     // Int = 1
 
 
 /////////////////////////////////////////////////
-// 5. Object Oriented Programming
+// 5. 객체 지향 프로그래밍
 /////////////////////////////////////////////////
 
 /*
-  Aside: Everything we've done so far in this tutorial has been simple
-  expressions (values, functions, etc). These expressions are fine to type into
-  the command-line interpreter for quick tests, but they cannot exist by
-  themselves in a Scala file. For example, you cannot have just "val x = 5" in
-  a Scala file. Instead, the only top-level constructs allowed in Scala are:
+  참고: 이 튜토리얼에서 지금까지 수행한 모든 작업은 간단한
+  표현식(값, 함수 등)이었습니다. 이러한 표현식은 빠른 테스트를 위해
+  명령줄 인터프리터에 입력하기에 좋지만, Scala 파일에
+  단독으로 존재할 수는 없습니다. 예를 들어 Scala 파일에 "val x = 5"만 있을 수는 없습니다.
+  대신 Scala에서 허용되는 유일한 최상위 구문은 다음과 같습니다:
 
   - objects
   - classes
   - case classes
   - traits
 
-  And now we will explain what these are.
+  이제 이것들이 무엇인지 설명하겠습니다.
 */
 
-// classes are similar to classes in other languages. Constructor arguments are
-// declared after the class name, and initialization is done in the class body.
+// 클래스는 다른 언어의 클래스와 유사합니다. 생성자 인수는
+// 클래스 이름 뒤에 선언되고, 초기화는 클래스 본문에서 수행됩니다.
 class Dog(br: String) {
-  // Constructor code here
+  // 생성자 코드 여기
   var breed: String = br
 
-  // Define a method called bark, returning a String
+  // bark라는 메서드를 정의하고 String을 반환합니다
   def bark = "Woof, woof!"
 
-  // Values and methods are assumed public. "protected" and "private" keywords
-  // are also available.
+  // 값과 메서드는 public으로 간주됩니다. "protected" 및 "private" 키워드도
+  // 사용할 수 있습니다.
   private def sleep(hours: Int) =
     println(s"I'm sleeping for $hours hours")
 
-  // Abstract methods are simply methods with no body. If we uncomment the
-  // def line below, class Dog would need to be declared abstract like so:
+  // 추상 메서드는 단순히 본문이 없는 메서드입니다. 아래 def 줄의 주석을
+  // 해제하면 Dog 클래스를 다음과 같이 abstract로 선언해야 합니다:
   //   abstract class Dog(...) { ... }
   // def chaseAfter(what: String): String
 }
@@ -427,48 +422,48 @@ println(mydog.breed) // => "greyhound"
 println(mydog.bark)  // => "Woof, woof!"
 
 
-// The "object" keyword creates a type AND a singleton instance of it. It is
-// common for Scala classes to have a "companion object", where the per-instance
-// behavior is captured in the classes themselves, but behavior related to all
-// instance of that class go in objects. The difference is similar to class
-// methods vs static methods in other languages. Note that objects and classes
-// can have the same name.
+// "object" 키워드는 타입과 해당 타입의 싱글턴 인스턴스를 생성합니다.
+// Scala 클래스가 "컴패니언 객체"를 갖는 것이 일반적이며, 여기서 인스턴스별
+// 동작은 클래스 자체에 캡처되지만, 해당 클래스의 모든
+// 인스턴스와 관련된 동작은 객체로 이동합니다. 차이점은 다른 언어의
+// 클래스 메서드와 정적 메서드와 유사합니다. 객체와 클래스는
+// 동일한 이름을 가질 수 있습니다.
 object Dog {
   def allKnownBreeds = List("pitbull", "shepherd", "retriever")
   def createDog(breed: String) = new Dog(breed)
 }
 
 
-// Case classes are classes that have extra functionality built in. A common
-// question for Scala beginners is when to use classes and when to use case
-// classes. The line is quite fuzzy, but in general, classes tend to focus on
-// encapsulation, polymorphism, and behavior. The values in these classes tend
-// to be private, and only methods are exposed. The primary purpose of case
-// classes is to hold immutable data. They often have few methods, and the
-// methods rarely have side-effects.
+// 케이스 클래스는 추가 기능이 내장된 클래스입니다. Scala 초보자를 위한
+// 일반적인 질문은 언제 클래스를 사용하고 언제 케이스 클래스를 사용해야 하는지입니다.
+// 경계가 모호하지만, 일반적으로 클래스는 캡슐화, 다형성 및
+// 동작에 중점을 둡니다. 이러한 클래스의 값은 private인 경향이 있으며,
+// 메서드만 노출됩니다. 케이스 클래스의 주요 목적은
+// 불변 데이터를 보유하는 것입니다. 메서드가 거의 없으며,
+// 메서드에는 부작용이 거의 없습니다.
 case class Person(name: String, phoneNumber: String)
 
-// Create a new instance. Note cases classes don't need "new"
+// 새 인스턴스를 만듭니다. 케이스 클래스는 "new"가 필요하지 않습니다.
 val george = Person("George", "1234")
 val kate = Person("Kate", "4567")
 
-// With case classes, you get a few perks for free, like getters:
+// 케이스 클래스를 사용하면 다음과 같은 몇 가지 특전을 무료로 얻을 수 있습니다.
 george.phoneNumber  // => "1234"
 
-// Per field equality (no need to override .equals)
+// 필드별 동등성 (.equals를 재정의할 필요 없음)
 Person("George", "1234") == Person("Kate", "1236")  // => false
 
-// Easy way to copy
+// 쉬운 복사 방법
 // otherGeorge == Person("George", "9876")
 val otherGeorge = george.copy(phoneNumber = "9876")
 
-// And many others. Case classes also get pattern matching for free, see below.
+// 그리고 다른 많은 것들. 케이스 클래스는 패턴 매칭도 무료로 얻습니다. 아래 참조.
 
-// Traits
-// Similar to Java interfaces, traits define an object type and method
-// signatures. Scala allows partial implementation of those methods.
-// Constructor parameters are not allowed. Traits can inherit from other
-// traits or classes without parameters.
+// 트레이트
+// Java 인터페이스와 유사하게, 트레이트는 객체 타입과 메서드
+// 시그니처를 정의합니다. Scala는 이러한 메서드의 부분 구현을 허용합니다.
+// 생성자 매개변수는 허용되지 않습니다. 트레이트는 매개변수 없이 다른
+// 트레이트나 클래스에서 상속할 수 있습니다.
 
 trait Dog {
 	def breed: String
@@ -491,8 +486,8 @@ res2: Boolean = true
 scala> b.bite
 res3: Boolean = false
 
-// A trait can also be used as Mixin. The class "extends" the first trait,
-// but the keyword "with" can add additional traits.
+// 트레이트는 믹스인으로도 사용할 수 있습니다. 클래스는 첫 번째 트레이트를 "extends"하지만,
+// "with" 키워드는 추가 트레이트를 추가할 수 있습니다.
 
 trait Bark {
 	def bark: String = "Woof"
@@ -513,59 +508,57 @@ res0: String = Woof
 
 
 /////////////////////////////////////////////////
-// 6. Pattern Matching
+// 6. 패턴 매칭
 /////////////////////////////////////////////////
 
-// Pattern matching is a powerful and commonly used feature in Scala. Here's how
-// you pattern match a case class. NB: Unlike other languages, Scala cases do
-// not need breaks, fall-through does not happen.
+// 패턴 매칭은 Scala에서 강력하고 일반적으로 사용되는 기능입니다. 다음은
+// 케이스 클래스를 패턴 매칭하는 방법입니다. 참고: 다른 언어와 달리 Scala 케이스는
+// break가 필요 없으며, fall-through가 발생하지 않습니다.
 
 def matchPerson(person: Person): String = person match {
-  // Then you specify the patterns:
+  // 그런 다음 패턴을 지정합니다:
   case Person("George", number) => "We found George! His number is " + number
   case Person("Kate", number)   => "We found Kate! Her number is " + number
   case Person(name, number)     => "We matched someone : " + name + ", phone : " + number
 }
 
-// Regular expressions are also built in.
-// Create a regex with the `r` method on a string:
+// 정규식도 내장되어 있습니다.
+// 문자열에서 `r` 메서드를 사용하여 정규식을 만듭니다:
 val email = "(.*)@(.*)".r
 
-// Pattern matching might look familiar to the switch statements in the C family
-// of languages, but this is much more powerful. In Scala, you can match much
-// more:
+// 패턴 매칭은 C 계열 언어의 switch 문과 비슷해 보일 수 있지만,
+// 훨씬 더 강력합니다. Scala에서는 훨씬 더 많은 것을 매칭할 수 있습니다:
 def matchEverything(obj: Any): String = obj match {
-  // You can match values:
+  // 값을 매칭할 수 있습니다:
   case "Hello world" => "Got the string Hello world"
 
-  // You can match by type:
+  // 타입별로 매칭할 수 있습니다:
   case x: Double => "Got a Double: " + x
 
-  // You can specify conditions:
+  // 조건을 지정할 수 있습니다:
   case x: Int if x > 10000 => "Got a pretty big number!"
 
-  // You can match case classes as before:
+  // 이전과 같이 케이스 클래스를 매칭할 수 있습니다:
   case Person(name, number) => s"Got contact info for $name!"
 
-  // You can match regular expressions:
+  // 정규식을 매칭할 수 있습니다:
   case email(name, domain) => s"Got email address $name@$domain"
 
-  // You can match tuples:
+  // 튜플을 매칭할 수 있습니다:
   case (a: Int, b: Double, c: String) => s"Got a tuple: $a, $b, $c"
 
-  // You can match data structures:
+  // 데이터 구조를 매칭할 수 있습니다:
   case List(1, b, c) => s"Got a list with three elements and starts with 1: 1, $b, $c"
 
-  // You can nest patterns:
+  // 패턴을 중첩할 수 있습니다:
   case List(List((1, 2, "YAY"))) => "Got a list of list of tuple"
 
-  // Match any case (default) if all previous haven't matched
+  // 이전 모든 것이 일치하지 않으면 모든 경우를 매칭합니다 (기본값)
   case _ => "Got unknown object"
 }
 
-// In fact, you can pattern match any object with an "unapply" method. This
-// feature is so powerful that Scala lets you define whole functions as
-// patterns:
+// 사실, "unapply" 메서드가 있는 모든 객체를 패턴 매칭할 수 있습니다. 이
+// 기능은 너무 강력해서 Scala는 전체 함수를 패턴으로 정의할 수 있습니다:
 val patternFunc: Person => String = {
   case Person("George", number) => s"George's number: $number"
   case Person(name, number) => s"Random person's number: $number"
@@ -573,29 +566,29 @@ val patternFunc: Person => String = {
 
 
 /////////////////////////////////////////////////
-// 7. Functional Programming
+// 7. 함수형 프로그래밍
 /////////////////////////////////////////////////
 
-// Scala allows methods and functions to return, or take as parameters, other
-// functions or methods.
+// Scala는 메서드와 함수가 다른 함수나 메서드를 반환하거나
+// 매개변수로 받을 수 있도록 허용합니다.
 
-val add10: Int => Int = _ + 10 // A function taking an Int and returning an Int
-List(1, 2, 3) map add10 // List(11, 12, 13) - add10 is applied to each element
+val add10: Int => Int = _ + 10 // Int를 받아 Int를 반환하는 함수
+List(1, 2, 3) map add10 // List(11, 12, 13) - add10이 각 요소에 적용됩니다
 
-// Anonymous functions can be used instead of named functions:
+// 명명된 함수 대신 익명 함수를 사용할 수 있습니다:
 List(1, 2, 3) map (x => x + 10)
 
-// And the underscore symbol, can be used if there is just one argument to the
-// anonymous function. It gets bound as the variable
+// 그리고 익명 함수에 인수가 하나만 있는 경우 밑줄 기호를 사용할 수 있습니다.
+// 변수로 바인딩됩니다.
 List(1, 2, 3) map (_ + 10)
 
-// If the anonymous block AND the function you are applying both take one
-// argument, you can even omit the underscore
+// 익명 블록과 적용하는 함수가 모두 인수를 하나만 받는 경우
+// 밑줄을 생략할 수도 있습니다.
 List("Dom", "Bob", "Natalia") foreach println
 
 
-// Combinators
-// Using `s` from above:
+// 조합기
+// 위에서 `s` 사용:
 // val s = Set(1, 3, 7)
 
 s.map(sq)
@@ -606,8 +599,8 @@ sSquared.filter(_ < 10)
 
 sSquared.reduce (_+_)
 
-// The filter function takes a predicate (a function from A -> Boolean) and
-// selects all elements which satisfy the predicate
+// filter 함수는 술어(A -> Boolean 함수)를 받아
+// 술어를 만족하는 모든 요소를 선택합니다
 List(1, 2, 3) filter (_ > 2) // List(3)
 case class Person(name: String, age: Int)
 List(
@@ -616,13 +609,13 @@ List(
 ).filter(_.age > 25) // List(Person("Bob", 30))
 
 
-// Certain collections (such as List) in Scala have a `foreach` method,
-// which takes as an argument a type returning Unit - that is, a void method
+// Scala의 특정 컬렉션(예: List)에는 `foreach` 메서드가 있으며,
+// Unit을 반환하는 타입을 인수로 받습니다. 즉, void 메서드입니다.
 val aListOfNumbers = List(1, 2, 3, 4, 10, 20, 100)
 aListOfNumbers foreach (x => println(x))
 aListOfNumbers foreach println
 
-// For comprehensions
+// For 내포
 
 for { n <- s } yield sq(n)
 
@@ -632,123 +625,120 @@ for { n <- nSquared2 if n < 10 } yield n
 
 for { n <- s; nSquared = n * n if nSquared < 10} yield nSquared
 
-/* NB Those were not for loops. The semantics of a for loop is 'repeat', whereas
-   a for-comprehension defines a relationship between two sets of data. */
+/* 참고: 이것들은 for 루프가 아니었습니다. for 루프의 의미는 '반복'인 반면,
+   for-내포는 두 데이터 집합 간의 관계를 정의합니다. */
 
 
 /////////////////////////////////////////////////
-// 8. Implicits
+// 8. 암시
 /////////////////////////////////////////////////
 
-/* WARNING WARNING: Implicits are a set of powerful features of Scala, and
- * therefore it is easy to abuse them. Beginners to Scala should resist the
- * temptation to use them until they understand not only how they work, but also
- * best practices around them. We only include this section in the tutorial
- * because they are so commonplace in Scala libraries that it is impossible to
- * do anything meaningful without using a library that has implicits. This is
- * meant for you to understand and work with implicits, not declare your own.
+/* 경고 경고: 암시는 Scala의 강력한 기능 집합이므로
+ * 남용하기 쉽습니다. Scala 초보자는 어떻게 작동하는지뿐만 아니라
+ * 그 주변의 모범 사례를 이해할 때까지 사용하려는 유혹을 참아야 합니다.
+ * 이 튜토리얼에 이 섹션을 포함하는 이유는 Scala 라이브러리에서 너무 흔해서
+ * 암시가 있는 라이브러리를 사용하지 않고는 의미 있는 작업을 수행하는 것이
+ * 불가능하기 때문입니다. 이것은 여러분이 암시를 이해하고 작업하기 위한 것이며,
+ * 직접 선언하기 위한 것이 아닙니다.
  */
 
-// Any value (vals, functions, objects, etc) can be declared to be implicit by
-// using the, you guessed it, "implicit" keyword. Note we are using the Dog
-// class from section 5 in these examples.
+// 모든 값(val, 함수, 객체 등)은 "implicit" 키워드를 사용하여
+// 암시적으로 선언될 수 있습니다. 이 예제에서는 5절의 Dog 클래스를 사용합니다.
 implicit val myImplicitInt = 100
 implicit def myImplicitFunction(breed: String) = new Dog("Golden " + breed)
 
-// By itself, implicit keyword doesn't change the behavior of the value, so
-// above values can be used as usual.
+// 그 자체로 implicit 키워드는 값의 동작을 변경하지 않으므로
+// 위 값은 평소와 같이 사용할 수 있습니다.
 myImplicitInt + 2                   // => 102
 myImplicitFunction("Pitbull").breed // => "Golden Pitbull"
 
-// The difference is that these values are now eligible to be used when another
-// piece of code "needs" an implicit value. One such situation is implicit
-// function arguments:
+// 차이점은 이러한 값이 이제 다른 코드 조각이
+// "암시적 값"을 "필요"할 때 사용될 수 있다는 것입니다. 한 가지 그러한 상황은
+// 암시적 함수 인수입니다:
 def sendGreetings(toWhom: String)(implicit howMany: Int) =
   s"Hello $toWhom, $howMany blessings to you and yours!"
 
-// If we supply a value for "howMany", the function behaves as usual
+// "howMany"에 대한 값을 제공하면 함수는 평소와 같이 동작합니다
 sendGreetings("John")(1000)  // => "Hello John, 1000 blessings to you and yours!"
 
-// But if we omit the implicit parameter, an implicit value of the same type is
-// used, in this case, "myImplicitInt":
+// 그러나 암시적 매개변수를 생략하면 동일한 타입의 암시적 값이
+// 사용됩니다. 이 경우 "myImplicitInt"입니다:
 sendGreetings("Jane")  // => "Hello Jane, 100 blessings to you and yours!"
 
-// Implicit function parameters enable us to simulate type classes in other
-// functional languages. It is so often used that it gets its own shorthand. The
-// following two lines mean the same thing:
+// 암시적 함수 매개변수를 사용하면 다른
+// 함수형 언어의 타입 클래스를 시뮬레이션할 수 있습니다. 너무 자주 사용되어
+// 자체 약어가 있습니다. 다음 두 줄은 동일한 의미입니다:
 // def foo[T](implicit c: C[T]) = ...
 // def foo[T : C] = ...
 
 
-// Another situation in which the compiler looks for an implicit is if you have
+// 컴파일러가 암시를 찾는 또 다른 상황은
 //   obj.method(...)
-// but "obj" doesn't have "method" as a method. In this case, if there is an
-// implicit conversion of type A => B, where A is the type of obj, and B has a
-// method called "method", that conversion is applied. So having
-// myImplicitFunction above in scope, we can say:
+// 이지만 "obj"에 "method"라는 메서드가 없는 경우입니다. 이 경우
+// A => B 타입의 암시적 변환이 있고, 여기서 A는 obj의 타입이고 B에
+// "method"라는 메서드가 있으면 해당 변환이 적용됩니다. 따라서
+// 위의 myImplicitFunction이 범위에 있으면 다음과 같이 말할 수 있습니다:
 "Retriever".breed // => "Golden Retriever"
 "Sheperd".bark    // => "Woof, woof!"
 
-// Here the String is first converted to Dog using our function above, and then
-// the appropriate method is called. This is an extremely powerful feature, but
-// again, it is not to be used lightly. In fact, when you defined the implicit
-// function above, your compiler should have given you a warning, that you
-// shouldn't do this unless you really know what you're doing.
+// 여기서 String은 먼저 위 함수를 사용하여 Dog로 변환된 다음
+// 적절한 메서드가 호출됩니다. 이것은 매우 강력한 기능이지만,
+// 다시 말하지만, 가볍게 사용해서는 안 됩니다. 사실, 위의 암시적 함수를
+// 정의했을 때 컴파일러는 정말로 무엇을 하는지 모르는 한
+// 이렇게 해서는 안 된다는 경고를 했을 것입니다.
 
 
 /////////////////////////////////////////////////
-// 9. Misc
+// 9. 기타
 /////////////////////////////////////////////////
 
-// Importing things
+// 항목 가져오기
 import scala.collection.immutable.List
 
-// Import all "sub packages"
+// 모든 "하위 패키지" 가져오기
 import scala.collection.immutable._
 
-// Import multiple classes in one statement
+// 한 문장으로 여러 클래스 가져오기
 import scala.collection.immutable.{List, Map}
 
-// Rename an import using '=>'
+// '=>'를 사용하여 가져오기 이름 바꾸기
 import scala.collection.immutable.{List => ImmutableList}
 
-// Import all classes, except some. The following excludes Map and Set:
+// 일부를 제외하고 모든 클래스 가져오기. 다음은 Map과 Set을 제외합니다:
 import scala.collection.immutable.{Map => _, Set => _, _}
 
-// Java classes can also be imported. Scala syntax can be used
+// Java 클래스도 가져올 수 있습니다. Scala 구문을 사용할 수 있습니다
 import java.swing.{JFrame, JWindow}
 
-// Your program's entry point is defined in a scala file using an object, with a
-// single method, main:
+// 프로그램의 진입점은 Scala 파일에서 단일 메서드 main이 있는 객체를 사용하여
+// 정의됩니다:
 object Application {
   def main(args: Array[String]): Unit = {
-    // stuff goes here.
+    // 여기에 내용이 들어갑니다.
   }
 }
 
-// Files can contain multiple classes and objects. Compile with scalac
+// 파일에는 여러 클래스와 객체가 포함될 수 있습니다. scalac으로 컴파일
 
 
+// 입출력
 
-
-// Input and output
-
-// To read a file line by line
+// 파일을 한 줄씩 읽으려면
 import scala.io.Source
 for(line <- Source.fromFile("myfile.txt").getLines())
   println(line)
 
-// To write a file use Java's PrintWriter
+// 파일을 쓰려면 Java의 PrintWriter를 사용하십시오
 val writer = new PrintWriter("myfile.txt")
 writer.write("Writing line for line" + util.Properties.lineSeparator)
 writer.write("Another line here" + util.Properties.lineSeparator)
 writer.close()
 ```
 
-## Further resources
+## 추가 자료
 
-* [Scala for the impatient](http://horstmann.com/scala/)
-* [Twitter Scala school](http://twitter.github.io/scala_school/)
-* [The scala documentation](http://docs.scala-lang.org/)
-* [Try Scala in your browser](http://scalatutorials.com/tour/)
-* Join the [Scala user group](https://groups.google.com/forum/#!forum/scala-user)
+* [성급한 사람들을 위한 스칼라](http://horstmann.com/scala/)
+* [트위터 스칼라 스쿨](http://twitter.github.io/scala_school/)
+* [스칼라 문서](http://docs.scala-lang.org/)
+* [브라우저에서 스칼라 사용해보기](http://scalatutorials.com/tour/)
+* [스칼라 사용자 그룹 가입](https://groups.google.com/forum/#!forum/scala-user)

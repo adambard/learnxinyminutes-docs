@@ -9,44 +9,29 @@ contributors:
 
 ```vim
 " ##############
-"  Introduction
+"  소개
 " ##############
 "
-" Vim script (also called VimL) is the subset of Vim's ex-commands which
-" supplies a number of features one would expect from a scripting language,
-" such as values, variables, functions or loops. Always keep in the back of
-" your mind that a Vim script file is just a sequence of ex-commands. It is
-" very common for a script to mix programming-language features and raw
-" ex-commands.
+" Vim 스크립트(VimL이라고도 함)는 값, 변수, 함수 또는 루프와 같이 스크립팅 언어에서 기대할 수 있는 여러 기능을 제공하는 Vim의 ex-명령어 하위 집합입니다.
+" Vim 스크립트 파일은 단지 ex-명령어의 시퀀스라는 것을 항상 염두에 두십시오. 스크립트가 프로그래밍 언어 기능과 원시 ex-명령어를 혼합하는 것은 매우 일반적입니다.
 "
-" You can run Vim script directly by entering the commands in command-line mode
-" (press `:` to enter command-line mode), or you can write them to a file
-" (without the leading `:`) and source it in a running Vim instance (`:source
-" path/to/file`). Some files are sourced automatically as part of your
-" configuration (see |startup|). This guide assumes that you are familiar
-" with ex-commands and will only cover the scripting. Help topics to the
-" relevant manual sections are included.
+" 명령줄 모드에서 명령을 직접 입력하여 Vim 스크립트를 실행하거나(명령줄 모드로 들어가려면 `:` 누름) 파일에 작성(선행 `:` 없이)하고 실행 중인 Vim 인스턴스에서 소싱할 수 있습니다(`:source path/to/file`).
+" 일부 파일은 구성의 일부로 자동으로 소싱됩니다(|startup| 참조). 이 가이드는 ex-명령어에 익숙하고 스크립팅만 다룰 것이라고 가정합니다. 관련 매뉴얼 섹션에 대한 도움말 항목이 포함되어 있습니다.
 "
-" See |usr_41.txt| for the official introduction to Vim script. A comment is
-" anything following an unmatched `"` until the end of the line, and `|`
-" separates instructions (what `;` does in most other languages). References to
-" the manual as surrounded with `|`, such as |help.txt|.
+" Vim 스크립트에 대한 공식 소개는 |usr_41.txt|를 참조하십시오. 주석은 일치하지 않는 `"` 다음에 오는 모든 것이 줄 끝까지이며, `|`는 지침을 구분합니다(대부분의 다른 언어에서 `;`가 하는 역할). |help.txt|와 같이 `|`로 둘러싸인 매뉴얼에 대한 참조.
 
-" This is a comment
+" 이것은 주석입니다
 
-" The vertical line '|' (pipe) separates commands
+" 세로줄 '|' (파이프)는 명령을 구분합니다
 echo 'Hello' | echo 'world!'
 
-" Putting a comment after a command usually works
-pwd                   " Displays the current working directory
+" 명령어 뒤에 주석을 다는 것은 보통 작동합니다
+pwd                   " 현재 작업 디렉토리를 표시합니다
 
-" Except for some commands it does not; use the command delimiter before the
-" comment (echo assumes that the quotation mark begins a string)
-echo 'Hello world!'  | " Displays a message
+" 일부 명령어를 제외하고는 그렇지 않습니다. 주석 앞에 명령어 구분 기호를 사용하십시오(echo는 따옴표가 문자열을 시작한다고 가정합니다)
+echo 'Hello world!'  | " 메시지를 표시합니다
 
-" Line breaks can be escaped by placing a backslash as the first non-whitespace
-" character on the *following* line. Only works in script files, not on the
-" command line
+" 줄 바꿈은 다음 줄의 첫 번째 비공백 문자로 백슬래시를 배치하여 이스케이프할 수 있습니다. 스크립트 파일에서만 작동하며 명령줄에서는 작동하지 않습니다
 echo " Hello
     \ world "
 
@@ -60,275 +45,259 @@ echo {
 
 
 " #######
-"  Types
+"  타입
 " #######
 "
-" For an overview of types see |E712|. For an overview of operators see
-" |expression-syntax|
+" 타입에 대한 개요는 |E712|를 참조하십시오. 연산자에 대한 개요는 |expression-syntax|를 참조하십시오.
 
-" Numbers (|expr-number|)
+" 숫자 (|expr-number|)
 " #######
 
-echo  123         | " Decimal
-echo  0b1111011   | " Binary
-echo  0173        | " Octal
-echo  0x7B        | " Hexadecimal
-echo  123.0       | " Floating-point
-echo  1.23e2      | " Floating-point (scientific notation)
+echo  123         | " 십진수
+echo  0b1111011   | " 이진수
+echo  0173        | " 8진수
+echo  0x7B        | " 16진수
+echo  123.0       | " 부동 소수점
+echo  1.23e2      | " 부동 소수점 (과학적 표기법)
 
-" Note that an *integer* number with a leading `0` is in octal notation. The
-" usual arithmetic operations are supported.
+" 선행 `0`이 있는 *정수*는 8진수 표기법입니다.
+" 일반적인 산술 연산이 지원됩니다.
 
-echo  1 + 2       | " Addition
-echo  1 - 2       | " Subtraction
-echo  - 1         | " Negation (unary minus)
-echo  + 1         | " Unary plus (does nothing really, but still legal)
-echo  1 * 2       | " Multiplication
-echo  1 / 2       | " Division
-echo  1 % 2       | " Modulo (remainder)
+echo  1 + 2       | " 덧셈
+echo  1 - 2       | " 뺄셈
+echo  - 1         | " 부정 (단항 빼기)
+echo  + 1         | " 단항 더하기 (실제로는 아무것도 하지 않지만 여전히 합법적)
+echo  1 * 2       | " 곱셈
+echo  1 / 2       | " 나눗셈
+echo  1 % 2       | " 나머지 (나머지)
 
-" Booleans (|Boolean|)
+" 불리언 (|Boolean|)
 " ########
 "
-" The number 0 is false, every other number is true. Strings are implicitly
-" converted to numbers (see below). There are two pre-defined semantic
-" constants.
+" 숫자 0은 거짓이고 다른 모든 숫자는 참입니다. 문자열은 암시적으로 숫자로 변환됩니다(아래 참조).
+" 두 개의 미리 정의된 의미 상수.
 
-echo  v:true      | " Evaluates to 1 or the string 'v:true'
-echo  v:false     | " Evaluates to 0 or the string 'v:false'
+echo  v:true      | " 1 또는 문자열 'v:true'로 평가됩니다
+echo  v:false     | " 0 또는 문자열 'v:false'로 평가됩니다
 
-" Boolean values can result from comparison of two objects.
+" 불리언 값은 두 객체의 비교 결과일 수 있습니다.
 
-echo  x == y             | " Equality by value
-echo  x != y             | " Inequality
-echo  x >  y             | " Greater than
-echo  x >= y             | " Greater than or equal
-echo  x <  y             | " Smaller than
-echo  x <= y             | " Smaller than or equal
-echo  x is y             | " Instance identity (lists and dictionaries)
-echo  x isnot y          | " Instance non-identity (lists and dictionaries)
+echo  x == y             | " 값에 의한 동등성
+echo  x != y             | " 불일치
+echo  x >  y             | " 보다 큼
+echo  x >= y             | " 크거나 같음
+echo  x <  y             | " 보다 작음
+echo  x <= y             | " 작거나 같음
+echo  x is y             | " 인스턴스 ID (리스트 및 딕셔너리)
+echo  x isnot y          | " 인스턴스 비 ID (리스트 및 딕셔너리)
 
-" Strings are compared based on their alphanumerical ordering
-" echo 'a' < 'b'. Case sensitivity depends on the setting of 'ignorecase'
+" 문자열은 영숫자 순서에 따라 비교됩니다
+" echo 'a' < 'b'. 대소문자 구분은 'ignorecase' 설정에 따라 다릅니다.
 "
-" Explicit case-sensitivity is specified by appending '#' (match case) or '?'
-" (ignore case) to the operator. Prefer explicitly case sensitivity when writing
-" portable scripts.
+" 명시적인 대소문자 구분은 연산자에 '#' (대소문자 일치) 또는 '?' (대소문자 무시)를 추가하여 지정됩니다.
+" 이식 가능한 스크립트를 작성할 때 명시적으로 대소문자 구분을 선호하십시오.
 
-echo  'a' <  'B'         | " True or false depending on 'ignorecase'
-echo  'a' <? 'B'         | " True
-echo  'a' <# 'B'         | " False
+echo  'a' <  'B'         | " 'ignorecase'에 따라 참 또는 거짓
+echo  'a' <? 'B'         | " 참
+echo  'a' <# 'B'         | " 거짓
 
-" Regular expression matching
-echo  "hi" =~  "hello"    | " Regular expression match, uses 'ignorecase'
-echo  "hi" =~# "hello"    | " Regular expression match, case sensitive
-echo  "hi" =~? "hello"    | " Regular expression match, case insensitive
-echo  "hi" !~  "hello"    | " Regular expression unmatch, use 'ignorecase'
-echo  "hi" !~# "hello"    | " Regular expression unmatch, case sensitive
-echo  "hi" !~? "hello"    | " Regular expression unmatch, case insensitive
+" 정규식 일치
+echo  "hi" =~  "hello"    | " 정규식 일치, 'ignorecase' 사용
+echo  "hi" =~# "hello"    | " 정규식 일치, 대소문자 구분
+echo  "hi" =~? "hello"    | " 정규식 일치, 대소문자 무시
+echo  "hi" !~  "hello"    | " 정규식 불일치, 'ignorecase' 사용
+echo  "hi" !~# "hello"    | " 정규식 불일치, 대소문자 구분
+echo  "hi" !~? "hello"    | " 정규식 불일치, 대소문자 무시
 
-" Boolean operations are possible.
+" 불리언 연산이 가능합니다.
 
-echo  v:true && v:false       | " Logical AND
-echo  v:true || v:false       | " Logical OR
-echo  ! v:true                | " Logical NOT
-echo  v:true ? 'yes' : 'no'   | " Ternary operator
+echo  v:true && v:false       | " 논리 AND
+echo  v:true || v:false       | " 논리 OR
+echo  ! v:true                | " 논리 NOT
+echo  v:true ? 'yes' : 'no'   | " 삼항 연산자
 
 
-" Strings (|String|)
+" 문자열 (|String|)
 " #######
 "
-" An ordered zero-indexed sequence of bytes. The encoding of text into bytes
-" depends on the option |'encoding'|.
+" 정렬된 0-인덱스 바이트 시퀀스입니다. 텍스트를 바이트로 인코딩하는 것은 |'encoding'| 옵션에 따라 다릅니다.
 
-" Literal constructors
-echo  "Hello world\n"   | " The last two characters stand for newline
-echo  'Hello world\n'   | " The last two characters are literal
-echo  'Let''s go!'      | " Two single quotes become one quote character
+" 리터럴 생성자
+echo  "Hello world\n"   | " 마지막 두 문자는 줄 바꿈을 나타냅니다
+echo  'Hello world\n'   | " 마지막 두 문자는 리터럴입니다
+echo  'Let''s go!'      | " 두 개의 작은따옴표는 하나의 따옴표 문자가 됩니다
 
-" Single-quote strings take all characters are literal, except two single
-" quotes, which are taken to be a single quote in the string itself. See
-" |expr-quote| for all possible escape sequences.
+" 작은따옴표 문자열은 모든 문자를 리터럴로 사용하지만, 두 개의 작은따옴표는 문자열 자체에서 하나의 작은따옴표로 간주됩니다.
+" 가능한 모든 이스케이프 시퀀스는 |expr-quote|를 참조하십시오.
 
-" String concatenation
-" The .. operator is preferred, but only supported in since Vim 8.1.1114
-echo  'Hello ' .  'world'  | " String concatenation
-echo  'Hello ' .. 'world'  | " String concatenation (new variant)
+" 문자열 연결
+" .. 연산자가 선호되지만 Vim 8.1.1114 이후에만 지원됩니다
+echo  'Hello ' .  'world'  | " 문자열 연결
+echo  'Hello ' .. 'world'  | " 문자열 연결 (새 변형)
 
-" String indexing
-echo  'Hello'[0]           | " First byte
-echo  'Hello'[1]           | " Second byte
-echo  'Hellö'[4]           | " Returns a byte, not the character 'ö'
+" 문자열 인덱싱
+echo  'Hello'[0]           | " 첫 번째 바이트
+echo  'Hello'[1]           | " 두 번째 바이트
+echo  'Hellö'[4]           | " 문자 'ö'가 아닌 바이트를 반환합니다
 
-" Substrings (second index is inclusive)
-echo  'Hello'[:]           | " Copy of entire string
-echo  'Hello'[1:3]         | " Substring, second to fourth byte
-echo  'Hello'[1:-2]        | " Substring until second to last byte
-echo  'Hello'[1:]          | " Substring with starting index
-echo  'Hello'[:2]          | " Substring with ending index
-echo  'Hello'[-2:]         | " Substring relative to end of string
+" 부분 문자열 (두 번째 인덱스는 포함)
+echo  'Hello'[:]           | " 전체 문자열 복사
+echo  'Hello'[1:3]         | " 부분 문자열, 두 번째에서 네 번째 바이트
+echo  'Hello'[1:-2]        | " 부분 문자열, 끝에서 두 번째 바이트까지
+echo  'Hello'[1:]          | " 시작 인덱스가 있는 부분 문자열
+echo  'Hello'[:2]          | " 끝 인덱스가 있는 부분 문자열
+echo  'Hello'[-2:]         | " 문자열 끝을 기준으로 한 부분 문자열
 
-" A negative index is relative to the end of the string. See
-" |string-functions| for all string-related functions.
+" 음수 인덱스는 문자열 끝을 기준으로 합니다.
+" 모든 문자열 관련 함수는 |string-functions|를 참조하십시오.
 
-" Lists (|List|)
+" 리스트 (|List|)
 " #####
 "
-" An ordered zero-indexed heterogeneous sequence of arbitrary Vim script
-" objects.
+" 임의의 Vim 스크립트 객체의 정렬된 0-인덱스 이기종 시퀀스입니다.
 
-" Literal constructor
-echo  []                   | " Empty list
-echo  [1, 2, 'Hello']      | " List with elements
-echo  [1, 2, 'Hello', ]    | " Trailing comma permitted
-echo  [[1, 2], 'Hello']    | " Lists can be nested arbitrarily
+" 리터럴 생성자
+echo  []                   | " 빈 리스트
+echo  [1, 2, 'Hello']      | " 요소가 있는 리스트
+echo  [1, 2, 'Hello', ]    | " 후행 쉼표 허용
+echo  [[1, 2], 'Hello']    | " 리스트는 임의로 중첩될 수 있습니다
 
-" List concatenation
-echo  [1, 2] + [3, 4]      | " Creates a new list
+" 리스트 연결
+echo  [1, 2] + [3, 4]      | " 새 리스트 생성
 
-" List indexing, negative is relative to end of list (|list-index|)
-echo  [1, 2, 3, 4][2]      | " Third element
-echo  [1, 2, 3, 4][-1]     | " Last element
+" 리스트 인덱싱, 음수는 리스트 끝을 기준으로 합니다 (|list-index|)
+echo  [1, 2, 3, 4][2]      | " 세 번째 요소
+echo  [1, 2, 3, 4][-1]     | " 마지막 요소
 
-" List slicing (|sublist|)
-echo  [1, 2, 3, 4][:]      | " Shallow copy of entire list
-echo  [1, 2, 3, 4][:2]     | " Sublist until third item (inclusive)
-echo  [1, 2, 3, 4][2:]     | " Sublist from third item (inclusive)
-echo  [1, 2, 3, 4][:-2]    | " Sublist until second-to-last item (inclusive)
+" 리스트 슬라이싱 (|sublist|)
+echo  [1, 2, 3, 4][:]      | " 전체 리스트의 얕은 복사
+echo  [1, 2, 3, 4][:2]     | " 세 번째 항목까지의 하위 리스트 (포함)
+echo  [1, 2, 3, 4][2:]     | " 세 번째 항목부터의 하위 리스트 (포함)
+echo  [1, 2, 3, 4][:-2]    | " 끝에서 두 번째 항목까지의 하위 리스트 (포함)
 
-" All slicing operations create new lists. To modify a list in-place use list
-" functions (|list-functions|) or assign directly to an item (see below about
-" variables).
+" 모든 슬라이싱 작업은 새 리스트를 생성합니다. 리스트를 제자리에서 수정하려면 리스트 함수(|list-functions|)를 사용하거나 항목에 직접 할당하십시오(아래 변수 참조).
 
 
-" Dictionaries (|Dictionary|)
+" 딕셔너리 (|Dictionary|)
 " ############
 "
-" An unordered sequence of key-value pairs, keys are always strings (numbers
-" are implicitly converted to strings).
+" 키-값 쌍의 정렬되지 않은 시퀀스이며, 키는 항상 문자열입니다(숫자는 암시적으로 문자열로 변환됨).
 
-" Dictionary literal
-echo  {}                       | " Empty dictionary
-echo  {'a': 1, 'b': 2}         | " Dictionary literal
-echo  {'a': 1, 'b': 2, }       | " Trailing comma permitted
-echo  {'x': {'a': 1, 'b': 2}}  | " Nested dictionary
+" 딕셔너리 리터럴
+echo  {}                       | " 빈 딕셔너리
+echo  {'a': 1, 'b': 2}         | " 딕셔너리 리터럴
+echo  {'a': 1, 'b': 2, }       | " 후행 쉼표 허용
+echo  {'x': {'a': 1, 'b': 2}}  | " 중첩된 딕셔너리
 
-" Indexing a dictionary
-echo  {'a': 1, 'b': 2}['a']    | " Literal index
-echo  {'a': 1, 'b': 2}.a       | " Syntactic sugar for simple keys
+" 딕셔너리 인덱싱
+echo  {'a': 1, 'b': 2}['a']    | " 리터럴 인덱스
+echo  {'a': 1, 'b': 2}.a       | " 간단한 키에 대한 구문 설탕
 
-" See |dict-functions| for dictionary manipulation functions.
+" 딕셔너리 조작 함수는 |dict-functions|를 참조하십시오.
 
 
-" Funcref (|Funcref|)
+" 함수 참조 (|Funcref|)
 " #######
 "
-" Reference to a function, uses the function name as a string for construction.
-" When stored in a variable the name of the variable has the same restrictions
-" as a function name (see below).
+" 함수에 대한 참조이며, 생성에 함수 이름을 문자열로 사용합니다.
+" 변수에 저장될 때 변수 이름은 함수 이름과 동일한 제한을 가집니다(아래 참조).
 
-echo  function('type')                   | " Reference to function type()
-" Note that `funcref('type')` will throw an error because the argument must be
-" a user-defined function; see further below for defining your own functions.
-echo  funcref('type')                    | " Reference by identity, not name
-" A lambda (|lambda|) is an anonymous function; it can only contain one
-" expression in its body, which is also its implicit return value.
-echo  {x -> x * x}                       | " Anonymous function
-echo  function('substitute', ['hello'])  | " Partial function
+echo  function('type')                   | " 함수 type()에 대한 참조
+" `funcref('type')`는 인수가 사용자 정의 함수여야 하므로 오류를 발생시킵니다.
+" 사용자 정의 함수 정의에 대해서는 아래를 참조하십시오.
+echo  funcref('type')                    | " 이름이 아닌 ID별 참조
+" 람다(|lambda|)는 익명 함수입니다. 본문에 하나의 표현식만 포함할 수 있으며, 이것이 암시적인 반환값이기도 합니다.
+echo  {x -> x * x}                       | " 익명 함수
+echo  function('substitute', ['hello'])  | " 부분 함수
 
 
-" Regular expression (|regular-expression|)
+" 정규식 (|regular-expression|)
 " ##################
 "
-" A regular expression pattern is generally a string, but in some cases you can
-" also use a regular expression between a pair of delimiters (usually `/`, but
-" you can choose anything).
+" 정규식 패턴은 일반적으로 문자열이지만, 경우에 따라 구분 기호 쌍(보통 `/`이지만 원하는 것을 선택할 수 있음) 사이에 정규식을 사용할 수도 있습니다.
 
-" Substitute 'hello' for 'Hello'
+" 'hello'를 'Hello'로 대체
 substitute/hello/Hello/
 
 
 " ###########################
-"  Implicit type conversions
+"  암시적 타입 변환
 " ###########################
 "
-" Strings are converted to numbers, and numbers to strings when necessary. A
-" number becomes its decimal notation as a string. A string becomes its
-" numerical value if it can be parsed to a number, otherwise it becomes zero.
+" 문자열은 숫자로, 숫자는 필요할 때 문자열로 변환됩니다.
+" 숫자는 10진수 표기법으로 문자열이 됩니다. 문자열은 숫자로 구문 분석할 수 있으면 숫자 값이 되고, 그렇지 않으면 0이 됩니다.
 
-echo  "1" + 1         | " Number
-echo  "1" .. 1        | " String
-echo  "0xA" + 1       | " Number
+echo  "1" + 1         | " 숫자
+echo  "1" .. 1        | " 문자열
+echo  "0xA" + 1       | " 숫자
 
-" Strings are treated like numbers when used as booleans
-echo "true" ? 1 : 0   | " This string is parsed to 0, which is false
+" 문자열은 불리언으로 사용될 때 숫자처럼 취급됩니다
+echo "true" ? 1 : 0   | " 이 문자열은 0으로 구문 분석되어 거짓입니다
 
 " ###########
-"  Variables
+"  변수
 " ###########
 "
-" Variables are bound within a scope; if no scope is provided a default is
-" chosen by Vim. Use `:let` and `:const` to bind a value and `:unlet` to unbind
-" it.
+" 변수는 범위 내에 바인딩됩니다. 범위가 제공되지 않으면 Vim에서 기본값을 선택합니다.
+" 값을 바인딩하려면 `:let` 및 `:const`를 사용하고, 바인딩을 해제하려면 `:unlet`을 사용하십시오.
 
-let b:my_var = 1        | " Local to current buffer
-let w:my_var = 1        | " Local to current window
-let t:my_var = 1        | " Local to current tab page
-let g:my_var = 1        | " Global variable
-let l:my_var = 1        | " Local to current function (see functions below)
-let s:my_var = 1        | " Local to current script file
-let a:my_arg = 1        | " Function argument (see functions below)
+let b:my_var = 1        | " 현재 버퍼에 로컬
+let w:my_var = 1        | " 현재 창에 로컬
+let t:my_var = 1        | " 현재 탭 페이지에 로컬
+let g:my_var = 1        | " 전역 변수
+let l:my_var = 1        | " 현재 함수에 로컬 (아래 함수 참조)
+let s:my_var = 1        | " 현재 스크립트 파일에 로컬
+let a:my_arg = 1        | " 함수 인수 (아래 함수 참조)
 
-" The Vim scope is read-only
-echo  v:true            | " Special built-in Vim variables (|v:var|)
+" Vim 범위는 읽기 전용입니다
+echo  v:true            | " 특수 내장 Vim 변수 (|v:var|)
 
-" Access special Vim memory like variables
-let @a = 'Hello'        | " Register
-let $PATH=''            | " Environment variable
-let &textwidth = 79     | " Option
-let &l:textwidth = 79   | " Local option
-let &g:textwidth = 79   | " Global option
+" 변수와 같은 특수 Vim 메모리 액세스
+let @a = 'Hello'        | " 레지스터
+let $PATH=''            | " 환경 변수
+let &textwidth = 79     | " 옵션
+let &l:textwidth = 79   | " 로컬 옵션
+let &g:textwidth = 79   | " 전역 옵션
 
-" Access scopes as dictionaries (can be modified like all dictionaries)
-" See the |dict-functions|, especially |get()|, for access and manipulation
-echo  b:                | " All buffer variables
-echo  w:                | " All window variables
-echo  t:                | " All tab page variables
-echo  g:                | " All global variables
-echo  l:                | " All local variables
-echo  s:                | " All script variables
-echo  a:                | " All function arguments
-echo  v:                | " All Vim variables
+" 딕셔너리로 범위 액세스 (모든 딕셔너리처럼 수정 가능)
+" 액세스 및 조작에 대해서는 |dict-functions|, 특히 |get()|을 참조하십시오.
+echo  b:                | " 모든 버퍼 변수
+echo  w:                | " 모든 창 변수
+echo  t:                | " 모든 탭 페이지 변수
+echo  g:                | " 모든 전역 변수
+echo  l:                | " 모든 로컬 변수
+echo  s:                | " 모든 스크립트 변수
+echo  a:                | " 모든 함수 인수
+echo  v:                | " 모든 Vim 변수
 
-" Constant variables
-const x = 10            | " See |:const|, |:lockvar|
+" 상수 변수
+const x = 10            | " |:const|, |:lockvar| 참조
 
-" Function reference variables have the same restrictions as function names
-let IsString = {x -> type(x) == type('')}    | " Global: capital letter
-let s:isNumber = {x -> type(x) == type(0)}   | " Local: any name allowed
+" 함수 참조 변수는 함수 이름과 동일한 제한을 가집니다
+let IsString = {x -> type(x) == type('')}    | " 전역: 대문자
+let s:isNumber = {x -> type(x) == type(0)}   | " 로컬: 모든 이름 허용
 
-" When omitted the scope `g:` is implied, except in functions, there `l:` is
-" implied.
+" 생략하면 `g:` 범위가 암시되지만, 함수에서는 `l:`이 암시됩니다.
 
 
-" Multiple value binding (list unpacking)
+" 다중 값 바인딩 (리스트 언패킹)
 " #######################################
 "
-" Assign values of list to multiple variables (number of items must match)
+" 리스트 값을 여러 변수에 할당 (항목 수가 일치해야 함)
 let [x, y] = [1, 2]
 
-" Assign the remainder to a rest variable (note the semicolon)
+" 나머지를 나머지 변수에 할당 (세미콜론 참고)
 let [mother, father; children] = ['Alice', 'Bob', 'Carol', 'Dennis', 'Emily']
 
 
 " ##############
-"  Flow control
+"  제어 흐름
 " ##############
 
-" Conditional (|:if|, |:elseif|, |:else|, |:endif|)
+" 조건문 (|:if|, |:elseif|, |:else|, |:endif|)
 " ###########
 "
-" Conditions are set between `if` and `endif`. They can be nested.
+" 조건은 `if`와 `endif` 사이에 설정됩니다. 중첩될 수 있습니다.
 
 let condition = v:true
 
@@ -340,49 +309,47 @@ else
     echo 'Fail'
 endif
 
-" Loops (|:for|, |:endfor|, |:while|, |:endwhile|, |:break|, |:continue|)
+" 루프 (|:for|, |:endfor|, |:while|, |:endwhile|, |:break|, |:continue|)
 " #####
 "
-" Two types of loops: `:for` and `:while`. Use `:continue` to skip to the next
-" iteration, `:break` to break out of the loop.
+" 두 가지 유형의 루프: `:for` 및 `:while`. 다음 반복으로 건너뛰려면 `:continue`를 사용하고, 루프를 빠져나가려면 `:break`를 사용하십시오.
 
-" For-loop (|:for|, |:endfor|)
+" For-루프 (|:for|, |:endfor|)
 " ========
 "
-" For-loops iterate over lists and nothing else. If you want to iterate over
-" another sequence you need to use a function which will create a list.
+" For-루프는 리스트만 반복합니다. 다른 시퀀스를 반복하려면 리스트를 생성하는 함수를 사용해야 합니다.
 
-" Iterate over a list
+" 리스트 반복
 for person in ['Alice', 'Bob', 'Carol', 'Dennis', 'Emily']
     echo 'Hello ' .. person
 endfor
 
-" Iterate over a nested list by unpacking it
+" 중첩된 리스트를 언패킹하여 반복
 for [x, y] in [[1, 0], [0, 1], [-1, 0], [0, -1]]
     echo 'Position: x ='  .. x .. ', y = ' .. y
 endfor
 
-" Iterate over a range of numbers
-for i in range(10, 0, -1)  " Count down from 10
+" 숫자 범위 반복
+for i in range(10, 0, -1)  " 10부터 카운트다운
     echo 'T minus'  .. i
 endfor
 
-" Iterate over the keys of a dictionary
+" 딕셔너리 키 반복
 for symbol in keys({'π': 3.14, 'e': 2.71})
     echo 'The constant ' .. symbol .. ' is a transcendent number'
 endfor
 
-" Iterate over the values of a dictionary
+" 딕셔너리 값 반복
 for value in values({'π': 3.14, 'e': 2.71})
     echo 'The value ' .. value .. ' approximates a transcendent number'
 endfor
 
-" Iterate over the keys and values of a dictionary
+" 딕셔너리 키와 값 반복
 for [symbol, value] in items({'π': 3.14, 'e': 2.71})
     echo 'The number ' .. symbol .. ' is approximately ' .. value
 endfor
 
-" While-loops (|:while|, |:endwhile|)
+" While-루프 (|:while|, |:endwhile|)
 
 let there_yet = v:true
 while !there_yet
@@ -390,16 +357,15 @@ while !there_yet
 endwhile
 
 
-" Exception handling (|exception-handling|)
+" 예외 처리 (|exception-handling|)
 " ##################
 "
-" Throw new exceptions as strings, catch them by pattern-matching a regular
-" expression against the string
+" 새 예외를 문자열로 throw하고, 문자열에 대한 정규식 패턴 일치로 catch합니다.
 
-" Throw new exception
+" 새 예외 throw
 throw "Wrong arguments"
 
-" Guard against an exception (the second catch matches any exception)
+" 예외로부터 보호 (두 번째 catch는 모든 예외와 일치)
 try
     source path/to/file
 catch /Cannot open/
@@ -412,49 +378,45 @@ endtry
 
 
 " ##########
-"  Functions
+"  함수
 " ##########
 
-" Defining functions (|:function|, |:endfunction|)
+" 함수 정의 (|:function|, |:endfunction|)
 " ##################
 
-" Unscoped function names have to start with a capital letter
+" 범위가 없는 함수 이름은 대문자로 시작해야 합니다
 function! AddNumbersLoudly(x, y)
-    " Use a: scope to access arguments
-    echo 'Adding'  .. a:x ..  'and'  .. a:y   | " A side effect
-    return a:x + a:y                          | " A return value
+    " a: 범위를 사용하여 인수에 액세스
+    echo 'Adding'  .. a:x ..  'and'  .. a:y   | " 부작용
+    return a:x + a:y                          | " 반환 값
 endfunction
 
-" Scoped function names may start with a lower-case letter
+" 범위가 있는 함수 이름은 소문자로 시작할 수 있습니다
 function! s:addNumbersLoudly(x, y)
     echo 'Adding'  .. a:x ..  'and'  .. a:y
     return a:x + a:y
 endfunction
 
-" Without the exclamation mark it would be an error to re-define a function,
-" with the exclamation mark the new definition can replace the old one. Since
-" Vim script files can be reloaded several times over the course of a session
-" it is best to use the exclamation mark unless you really know what you are
-" doing.
+" 느낌표가 없으면 함수를 다시 정의하는 것이 오류가 되지만, 느낌표가 있으면 새 정의가 이전 정의를 대체할 수 있습니다.
+" Vim 스크립트 파일은 세션 동안 여러 번 다시 로드될 수 있으므로, 무엇을 하는지 정말로 알지 못하는 한 느낌표를 사용하는 것이 가장 좋습니다.
 
-" Function definitions can have special qualifiers following the argument list.
+" 함수 정의에는 인수 목록 뒤에 특수 한정자가 있을 수 있습니다.
 
-" Range functions define two implicit arguments, which will be set to the range
-" of the ex-command
+" 범위 함수는 두 개의 암시적 인수를 정의하며, ex-명령어의 범위로 설정됩니다
 function! FirstAndLastLine() range
     echo [a:firstline, a:lastline]
 endfunction
 
-" Prints the first and last line that match a pattern (|cmdline-ranges|)
+" 패턴과 일치하는 첫 번째 및 마지막 줄을 인쇄합니다 (|cmdline-ranges|)
 /^#!/,/!#$/call FirstAndLastLine()
 
-" Aborting functions, abort once error occurs (|:func-abort|)
+" 함수 중단, 오류 발생 시 중단 (|:func-abort|)
 function! SourceMyFile() abort
-    source my-file.vim        | " Try sourcing non-existing file
+    source my-file.vim        | " 존재하지 않는 파일 소싱 시도
     echo 'This will never be printed'
 endfunction
 
-" Closures, functions carrying values from outer scope (|:func-closure|)
+" 클로저, 외부 범위에서 값을 전달하는 함수 (|:func-closure|)
 function! MakeAdder(x)
     function! Adder(n) closure
         return a:n + a:x
@@ -462,42 +424,40 @@ function! MakeAdder(x)
     return funcref('Adder')
 endfunction
 let AddFive = MakeAdder(5)
-echo AddFive(3)               | " Prints 8
+echo AddFive(3)               | " 8 인쇄
 
-" Dictionary functions, poor man's OOP methods (|Dictionary-function|)
+" 딕셔너리 함수, 가난한 사람의 OOP 메서드 (|Dictionary-function|)
 function! Mylen() dict
-    return len(self.data)     | " Implicit variable self
+    return len(self.data)     | " 암시적 변수 self
 endfunction
 let mydict = {'data': [0, 1, 2, 3], 'len': function("Mylen")}
 echo mydict.len()
 
-" Alternatively, more concise
+" 또는 더 간결하게
 let mydict = {'data': [0, 1, 2, 3]}
 function! mydict.len()
     return len(self.data)
 endfunction
 
-" Calling functions (|:call|)
+" 함수 호출 (|:call|)
 " #################
 
-" Call a function for its return value, and possibly for its side effects
+" 반환 값 및 부작용을 위해 함수 호출
 let animals = keys({'cow': 'moo', 'dog': 'woof', 'cat': 'meow'})
 
-" Call a function for its side effects only, ignore potential return value
+" 부작용만을 위해 함수 호출, 잠재적인 반환 값 무시
 call sign_undefine()
 
-" The call() function calls a function reference and passes parameters as a
-" list, and returns the function's result.
-echo  call(function('get'), [{'a': 1, 'b': 2}, 'c', 3])   | " Prints 3
+" call() 함수는 함수 참조를 호출하고 매개변수를 리스트로 전달하며, 함수의 결과를 반환합니다.
+echo  call(function('get'), [{'a': 1, 'b': 2}, 'c', 3])   | " 3 인쇄
 
-" Recall that Vim script is embedded within the ex-commands, that is why we
-" cannot just call a function directly, we have to use the `:call` ex-command.
+" Vim 스크립트는 ex-명령어 내에 포함되어 있으므로 함수를 직접 호출할 수 없고 `:call` ex-명령어를 사용해야 합니다.
 
-" Function namespaces (|write-library-script|, |autoload|)
+" 함수 네임스페이스 (|write-library-script|, |autoload|)
 " ###################
 
-" Must be defined in autoload/foo/bar.vim
-" Namspaced function names do not have to start with a capital letter
+" autoload/foo/bar.vim에 정의해야 합니다
+" 네임스페이스 함수 이름은 대문자로 시작할 필요가 없습니다
 function! foo#bar#log(value)
     echomsg value
 endfunction
@@ -506,155 +466,144 @@ call foo#bar#log('Hello')
 
 
 " #############################
-"  Frequently used ex-commands
+"  자주 사용되는 ex-명령어
 " #############################
 
 
-" Sourcing runtime files (|'runtimepath'|)
+" 런타임 파일 소싱 (|'runtimepath'|)
 " ######################
 
-" Source first match among runtime paths
+" 런타임 경로 중에서 첫 번째 일치 항목 소싱
 runtime plugin/my-plugin.vim
 
 
-" Defining new ex-commands (|40.2|, |:command|)
+" 새 ex-명령어 정의 (|40.2|, |:command|)
 " ########################
 
-" First argument here is the name of the command, rest is the command body
+" 첫 번째 인수는 명령어 이름, 나머지는 명령어 본문
 command! SwapAdjacentLines normal! ddp
 
-" The exclamation mark works the same as with `:function`. User-defined
-" commands must start with a capital letter. The `:command` command can take a
-" number of attributes (some of which have their own parameters with `=`), such
-" as `-nargs`, all of them start with a dash to set them apart from the command
-" name.
+" 느낌표는 `:function`과 동일하게 작동합니다. 사용자 정의 명령어는 대문자로 시작해야 합니다.
+" `:command` 명령어는 `-nargs`와 같이 여러 속성을 가질 수 있으며, 모두 대시로 시작하여 명령어 이름과 구분합니다.
 
 command! -nargs=1 Error echoerr <args>
 
 
-" Defining auto-commands (|40.3|, |autocmd|, |autocommand-events|)
+" 자동 명령어 정의 (|40.3|, |autocmd|, |autocommand-events|)
 " ######################
 
-" The arguments are "events", "patterns", rest is "commands"
+" 인수는 "이벤트", "패턴", 나머지는 "명령어"입니다
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-" Events and patterns are separated by commas with no space between. See
-" |autocmd-events| for standard events, |User| for custom events. Everything
-" else are the ex-commands which will be executed.
+" 이벤트와 패턴은 공백 없는 쉼표로 구분됩니다.
+" 표준 이벤트는 |autocmd-events|를 참조하고, 사용자 정의 이벤트는 |User|를 참조하십시오.
+" 나머지는 실행될 ex-명령어입니다.
 
-" Auto groups
+" 자동 그룹
 " ===========
 "
-" When a file is sourced multiple times the auto-commands are defined anew,
-" without deleting the old ones, causing auto-commands to pile up over time.
-" Use auto-groups and the following ritual to guard against this.
+" 파일이 여러 번 소싱될 때 자동 명령어가 새로 정의되어 이전 명령어를 삭제하지 않고 시간이 지남에 따라 자동 명령어가 쌓이게 됩니다.
+" 이를 방지하기 위해 자동 그룹과 다음 의식을 사용하십시오.
 
-augroup auto-source   | " The name of the group is arbitrary
-    autocmd!          | " Deletes all auto-commands in the current group
+augroup auto-source   | " 그룹 이름은 임의적입니다
+    autocmd!          | " 현재 그룹의 모든 자동 명령어 삭제
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END           | " Switch back to default auto-group
+augroup END           | " 기본 자동 그룹으로 다시 전환
 
-" It is also possible to assign a group directly. This is useful if the
-" definition of the group is in one script and the definition of the
-" auto-command is in another script.
+" 그룹을 직접 할당할 수도 있습니다.
+" 그룹 정의가 한 스크립트에 있고 자동 명령어 정의가 다른 스크립트에 있는 경우 유용합니다.
 
-" In one file
+" 한 파일에서
 augroup auto-source
     autocmd!
 augroup END
 
-" In another file
+" 다른 파일에서
 autocmd auto-source BufWritePost $MYVIMRC source $MYVIMRC
 
-" Executing (run-time macros of sorts)
+" 실행 (일종의 런타임 매크로)
 " ####################################
 
-" Sometimes we need to construct an ex-command where part of the command is not
-" known until runtime.
+" 때로는 명령어의 일부가 런타임까지 알려지지 않은 ex-명령어를 구성해야 합니다.
 
-let line = 3                | " Line number determined at runtime
-execute line .. 'delete'    | " Delete a line
+let line = 3                | " 런타임에 결정되는 줄 번호
+execute line .. 'delete'    | " 한 줄 삭제
 
-" Executing normal-mode commands
+" 일반 모드 명령어 실행
 " ##############################
 "
-" Use `:normal` to play back a sequence of normal mode commands from the
-" command-line. Add an exclamation mark to ignore user mappings.
+" `:normal`을 사용하여 명령줄에서 일반 모드 명령어 시퀀스를 재생합니다.
+" 사용자 매핑을 무시하려면 느낌표를 추가하십시오.
 
-normal! ggddGp             | " Transplant first line to end of buffer
+normal! ggddGp             | " 첫 번째 줄을 버퍼 끝으로 이식
 
-" Window commands can be used with :normal, or with :wincmd if :normal would
-" not work
-wincmd L                   | " Move current window all the way to the right
+" 창 명령어는 :normal과 함께 사용하거나, :normal이 작동하지 않을 경우 :wincmd와 함께 사용할 수 있습니다
+wincmd L                   | " 현재 창을 맨 오른쪽으로 이동
 
 
 " ###########################
-"  Frequently used functions
+"  자주 사용되는 함수
 " ###########################
 
-" Feature check
-echo  has('nvim')                  | " Running Neovim
-echo  has('python3')               | " Support for Python 3 plugins
-echo  has('unix')                  | " Running on a Unix system
-echo  has('win32')                 | " Running on a Windows system
+" 기능 확인
+echo  has('nvim')                  | " Neovim 실행 중
+echo  has('python3')               | " Python 3 플러그인 지원
+echo  has('unix')                  | " 유닉스 시스템에서 실행 중
+echo  has('win32')                 | " Windows 시스템에서 실행 중
 
 
-" Test if something exists
-echo  exists('&mouse')             | " Option (exists only)
-echo  exists('+mouse')             | " Option (exists and works)
-echo  exists('$HOSTNAME')          | " Environment variable
-echo  exists('*strftime')          | " Built-in function
-echo  exists('**s:MyFunc')         | " User-defined function
-echo  exists('bufcount')           | " Variable (scope optional)
-echo  exists('my_dict["foo"]')     | " Variable (dictionary entry)
-echo  exists('my_dict["foo"]')     | " Variable (dictionary entry)
-echo  exists(':Make')              | " Command
-echo  exists("#CursorHold")        | " Auto-command defined for event
-echo  exists("#BufReadPre#*.gz")   | " Event and pattern
-echo  exists("#filetypeindent")    | " Auto-command group
-echo  exists("##ColorScheme")      | " Auto-command supported for event
+" 무언가 존재하는지 테스트
+echo  exists('&mouse')             | " 옵션 (존재만 함)
+echo  exists('+mouse')             | " 옵션 (존재하고 작동함)
+echo  exists('$HOSTNAME')          | " 환경 변수
+echo  exists('*strftime')          | " 내장 함수
+echo  exists('**s:MyFunc')         | " 사용자 정의 함수
+echo  exists('bufcount')           | " 변수 (범위는 선택 사항)
+echo  exists('my_dict["foo"]')     | " 변수 (딕셔셔너리 항목)
+echo  exists('my_dict["foo"]')     | " 변수 (딕셔셔너리 항목)
+echo  exists(':Make')              | " 명령어
+echo  exists("#CursorHold")        | " 이벤트에 대해 정의된 자동 명령어
+echo  exists("#BufReadPre#*.gz")   | " 이벤트 및 패턴
+echo  exists("#filetypeindent")    | " 자동 명령어 그룹
+echo  exists("##ColorScheme")      | " 이벤트에 대해 지원되는 자동 명령어
 
-" Various dynamic values (see |expand()|)
-echo  expand('%')                  | " Current file name
-echo  expand('<cword>')            | " Current word under cursor
-echo  expand('%:p')                | " Modifier are possible
+" 다양한 동적 값 (|expand()| 참조)
+echo  expand('%')                  | " 현재 파일 이름
+echo  expand('<cword>')            | " 커서 아래 현재 단어
+echo  expand('%:p')                | " 수정자 가능
 
-" Type tests
-" There are unique constants defined for the following types. Older versions
-" of Vim lack the type variables, see the reference " documentation for a
-" workaround
-echo  type(my_var) == v:t_number      | " Number
-echo  type(my_var) == v:t_string      | " String
-echo  type(my_var) == v:t_func        | " Funcref
-echo  type(my_var) == v:t_list        | " List
-echo  type(my_var) == v:t_dict        | " Dictionary
-echo  type(my_var) == v:t_float       | " Float
-echo  type(my_var) == v:t_bool        | " Explicit Boolean
-" For the null object should compare it against itself
+" 타입 테스트
+" 다음 타입에 대해 고유한 상수가 정의되어 있습니다. 이전 버전의 Vim에는 타입 변수가 없으므로 해결 방법은 참조 문서를 참조하십시오.
+echo  type(my_var) == v:t_number      | " 숫자
+echo  type(my_var) == v:t_string      | " 문자열
+echo  type(my_var) == v:t_func        | " 함수 참조
+echo  type(my_var) == v:t_list        | " 리스트
+echo  type(my_var) == v:t_dict        | " 딕셔너리
+echo  type(my_var) == v:t_float       | " 부동 소수점
+echo  type(my_var) == v:t_bool        | " 명시적 불리언
+" null 객체의 경우 자체와 비교해야 합니다
 echo  my_var is v:null
 
-" Format strings
+" 문자열 서식 지정
 echo  printf('%d in hexadecimal is %X', 123, 123)
 
 
 " #####################
-"  Tricks of the trade
+"  업계의 비결
 " #####################
 
-" Source guard
+" 소스 가드
 " ############
 
-" Prevent a file from being sourced multiple times; users can set the variable
-" in their configuration to prevent the plugin from loading at all.
+" 파일이 여러 번 소싱되는 것을 방지합니다. 사용자는 구성에서 변수를 설정하여 플러그인이 전혀 로드되지 않도록 할 수 있습니다.
 if exists('g:loaded_my_plugin')
     finish
 endif
 let g:loaded_my_plugin = v:true
 
-" Default values
+" 기본값
 " ##############
 
-" Get a default value: if the user defines a variable use it, otherwise use a
-" hard-coded default. Uses the fact that a scope is also a dictionary.
+" 기본값을 가져옵니다. 사용자가 변수를 정의하면 해당 변수를 사용하고, 그렇지 않으면 하드코딩된 기본값을 사용합니다. 범위도 딕셔너리라는 사실을 이용합니다.
 let s:greeting = get(g:, 'my_plugin_greeting', 'Hello')
 ```
