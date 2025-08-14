@@ -1,5 +1,3 @@
-# sing.md (번역)
-
 ---
 name: Sing
 filename: learnsing.sing
@@ -7,77 +5,75 @@ contributors:
     - ["Maurizio De Girolami", "https://github.com/mdegirolami"]
 ---
 
-The purpose of sing is to provide a simple, safe, fast language that
-can be a good replacement for c++ for high performance applications.
+sing의 목적은 고성능 애플리케이션을 위한 c++의 좋은 대체재가 될 수 있는 간단하고 안전하며 빠른 언어를 제공하는 것입니다.
 
-Sing is an easy choice because it compiles to human-quality readable c++.
+Sing은 사람이 읽을 수 있는 고품질의 c++로 컴파일되기 때문에 쉬운 선택입니다.
 
-Because of that, if you work for a while with Sing and, at any time, you discover you don't like Sing anymore, you lose nothing of your work
-because you are left with nice and clean c++ code.
+그 때문에 Sing으로 잠시 작업하다가 어느 시점에 Sing이 더 이상 마음에 들지 않는다는 것을 발견하더라도, 멋지고 깨끗한 c++ 코드가 남기 때문에 작업한 것을 잃지 않습니다.
 
-In some way you can also think Sing as a tool to write c++ in a way that enforces some best practices.
+어떤 면에서는 Sing을 몇 가지 모범 사례를 강제하는 방식으로 c++를 작성하는 도구로 생각할 수도 있습니다.
 
 ```go
-/* Multi- line comment.
-    /* It can be nested */
-    Use it to remark-out part of the code.
-    It leaves no trace in the intermediate c++ code.
-    (sing translates into nice human readable c++)
+/* 여러 줄 주석.
+    /* 중첩될 수 있습니다 */
+    코드의 일부를 주석 처리하는 데 사용하십시오.
+    중간 c++ 코드에 흔적을 남기지 않습니다.
+    (sing은 멋진 사람이 읽을 수 있는 c++로 번역됩니다)
 */
 
-// Single line comment, can be placed only before a statement or declaration...
-// ...or at the right of the first line of a statement or declaration.
-// single line comments are kept into c++.
+// 한 줄 주석은 문이나 선언 앞에만 올 수 있습니다...
+// ...또는 문이나 선언의 첫 줄 오른쪽에.
+// 한 줄 주석은 c++로 유지됩니다.
 //
-// here we declare if we need to use public declarations from other files.
-// (in this case from files 'sio', 'sys')
+// 여기서는 다른 파일의 공개 선언을 사용해야 하는지 선언합니다.
+// (이 경우 'sio', 'sys' 파일에서)
 requires "sio";
 requires "sys";
 
 //
-// A sing function declaration.
-// All the declarations can be made public with the 'public' keyword.
-// All the declarations start with a keyword specifying the type of declaration
-// (in this case fn for function) then follows the name, the arguments and the
-// return type.
+// sing 함수 선언.
+// 모든 선언은 'public' 키워드로 공개할 수 있습니다.
+// 모든 선언은 선언 유형을 지정하는 키워드로 시작합니다
+// (이 경우 함수는 fn) 그런 다음 이름, 인수 및
+// 반환 유형이 따릅니다.
 //
-// Each argument starts with a direction qualifyer (in, out, io) which tells if
-// the argument is an input, an output or both...
-// ...then follows the argument name and the type.
+// 각 인수는 방향 한정자(in, out, io)로 시작하여
+// 인수가 입력인지, 출력인지 또는 둘 다인지 알려줍니다...
+// ...그런 다음 인수 이름과 유형이 따릅니다.
 public fn singmain(in argv [*]string) i32
 {
-    // print is from the sio file and sends a string to the console
+    // print는 sio 파일에서 가져오고 콘솔에 문자열을 보냅니다.
     sio.print("Hello World\n");
 
-    // type conversions are allowed in the form of <newtype>(expression).
+    // 유형 변환은 <newtype>(expression) 형식으로 허용됩니다.
     sio.print(string(sum(5, 10)) + "\n");
 
-    // For clarity you can specify after an argument its name separated by ':'.
+    // 명확성을 위해 인수 뒤에 ':'로 구분된 이름을 지정할 수 있습니다.
     var result i32;
     recursive_power(10:base, 3:exponent, result);
 
-    // referred here to avoid a 'not used' error.
+    // '사용되지 않음' 오류를 피하기 위해 여기에서 참조됩니다.
     learnTypes();
 
-    // functions can only return a single value of some basic type.
+    // 함수는 일부 기본 유형의 단일 값만 반환할 수 있습니다.
     return(0);
 }
 
-// You can have as many arguments as you want, comma separated.
-// You can also omit the 'in' direction qualifyer (it is the default).
+// 쉼표로 구분하여 원하는 만큼 인수를 가질 수 있습니다.
+// 'in' 방향 한정자를 생략할 수도 있습니다(기본값임).
 fn sum(arg1 i32, arg2 i32) i32
 {
-    // as 'fn' declares a function, 'let' declares a constant.
-    // With constants, if you place an initializer, you can omit the type.
+    // 'fn'이 함수를 선언하는 것처럼 'let'은 상수를 선언합니다.
+    // 상수의 경우 이니셜라이저를 배치하면 유형을 생략할 수 있습니다.
     let the_sum = arg1 + arg2;
 
     return(the_sum);
 }
 
-// Arguments are passed by reference, which means that in the function body you
-// use the argument names to refer to the passed variables.
-// Example: all the functions in the recursion stack access the same 'result'
-// variable, supplied by the singmain function.
+// 인수는 참조로 전달됩니다. 즉, 함수 본문에서
+// 인수 이름을 사용하여 전달된 변수를 참조합니다.
+// 예: 재귀 스택의 모든 함수는 singmain 함수에서 제공하는
+// 동일한 'result' 변수에 액세스합니다.
 fn recursive_power(base i32, exponent i32, out result i32) void
 {
     if (exponent == 0) {
@@ -90,71 +86,71 @@ fn recursive_power(base i32, exponent i32, out result i32) void
 
 //**********************************************************
 //
-// TYPES
+// 유형
 //
 //**********************************************************
 fn learnTypes() void
 {
-    // the var keyword declares mutable variables
-    // in this case an UTF-8 encoded string
+    // var 키워드는 변경 가능한 변수를 선언합니다.
+    // 이 경우 UTF-8로 인코딩된 문자열
     var my_name string;
 
-    // ints of 8..64 bits size
+    // 8..64비트 크기의 정수
     var int0 i8;
     var int1 i16;
     var int2 i32;
     var int3 i64;
 
-    // uints
+    // 부호 없는 정수
     var uint0 u8;
     var uint1 u16;
     var uint2 u32;
     var uint3 u64;
 
-    // floats
+    // 부동 소수점
     var float0 f32;
     var float1 f64;
 
-    // complex
+    // 복소수
     var cmplx0 c64;
     var cmplx1 c128;
 
     cmplx0 = 0;
     cmplx1 = 0;
 
-    // and of course...
+    // 그리고 물론...
     var bool0 bool;
 
-    // type inference: by default constants are i32, f32, c64
+    // 유형 추론: 기본적으로 상수는 i32, f32, c64입니다.
     let an_int32 = 15;
     let a_float32 = 15.0;
     let a_complex = 15.0 + 3i;
     let a_string = "Hello !";
     let a_bool = false;
 
-    // To create constant of different types use a conversion-like syntax:
-    // NOTE: this is NOT a conversion. Just a type specification
+    // 다른 유형의 상수를 만들려면 변환과 유사한 구문을 사용하십시오:
+    // 참고: 이것은 변환이 아닙니다. 단지 유형 지정일 뿐입니다.
     let a_float64 = f64(5.6);
 
-    // in a type definition [] reads as "array of"
-    // in the example []i32 => array of i32.
+    // 유형 정의에서 []는 "의 배열"로 읽습니다.
+    // 예에서 []i32 => i32의 배열.
     var intarray []i32 = {1, 2, 3};
 
-    // You can specify a length, else the length is given by the initializer
-    // the last initializer is replicated on the extra items
+    // 길이를 지정할 수 있습니다. 그렇지 않으면 길이는 이니셜라이저에 의해 주어집니다.
+    // 마지막 이니셜라이저는 추가 항목에 복제됩니다.
     var sizedarray [10]i32 = {1, 2, 3};
 
-    // Specify * as the size to get a dynamic array (can change its length)
+    // 동적 배열을 얻으려면 크기로 *를 지정하십시오(길이를 변경할 수 있음).
     var dyna_array [*]i32;
 
-    // you can append items to a vector invoking a method-like function on it.
+    // 메서드와 유사한 함수를 호출하여 벡터에 항목을 추가할 수 있습니다.
     dyna_array.push_back(an_int32);
 
-    // getting the size of the array. sys.validate() is like assert in c
+    // 배열의 크기를 가져옵니다. sys.validate()는 c의 assert와 같습니다.
     sys.validate(dyna_array.size() == 1);
 
-    // a map that associates a number to a string.
-    // "map(x)..." reads "map with key of type x and value of type..."
+    // 숫자를 문자열에 연결하는 맵.
+    // "map(x)..."는 "키 유형이 x이고 값이 유형인 맵..."으로 읽습니다.
     var a_map map(string)i32;
 
     a_map.insert("one", 1);
@@ -162,44 +158,44 @@ fn learnTypes() void
     a_map.insert("three", 3);
     let key = "two";
 
-    // note: the second argument of get_safe is the value to be returned
-    // when the key is not found.
+    // 참고: get_safe의 두 번째 인수는
+    // 키를 찾을 수 없을 때 반환될 값입니다.
     sio.print("\nAnd the value is...: " + string(a_map.get_safe(key, -1)));
 
-    // string concatenation
+    // 문자열 연결
     my_name = "a" + "b";
 }
 
-// an enum type can only have a value from a discrete set.
-// can't be converted to/from int !
+// 열거형 유형은 불연속 집합의 값만 가질 수 있습니다.
+// int와 상호 변환할 수 없습니다!
 enum Stages {first, second, last}
 
-// you can refer to enum values (to assign/compare them)
-// specifying both the typename and tagname separated with the '.' operator
+// 열거형 값을 참조할 수 있습니다(할당/비교하기 위해).
+// 유형 이름과 태그 이름을 '.' 연산자로 구분하여 지정합니다.
 var current_stage = Stages.first;
 
 
 //**********************************************************
 //
-// POINTERS
+// 포인터
 //
 //**********************************************************
 
-// This is a factory for a dynamic vector.
-// In a type declaration '*' reads 'pointer to..'
-// so the return type is 'pointer to a vector of i32'
+// 이것은 동적 벡터의 팩토리입니다.
+// 유형 선언에서 '*'는 '에 대한 포인터..'로 읽습니다.
+// 따라서 반환 유형은 'i32 벡터에 대한 포인터'입니다.
 fn vectorFactory(first i32, last i32) *[*]i32
 {
     var buffer [*]i32;
 
-    // fill
+    // 채우기
     for (value in first : last) {
         buffer.push_back(value);
     }
 
-    // The & operator returns the address of the buffer.
-    // You can only use & on local variables
-    // As you use & on a variable, that variable is allocated on the HEAP.
+    // & 연산자는 버퍼의 주소를 반환합니다.
+    // 지역 변수에만 &를 사용할 수 있습니다.
+    // 변수에 &를 사용하면 해당 변수는 HEAP에 할당됩니다.
     return(&buffer);
 }
 
@@ -207,44 +203,44 @@ fn usePointers() void
 {
     var bufferptr = vectorFactory(0, 100);
 
-    // you don't need to use the factory pattern to use pointers.
+    // 포인터를 사용하기 위해 팩토리 패턴을 사용할 필요는 없습니다.
     var another_buffer [*]i32;
     var another_bufferptr = &another_buffer;
 
-    // you can dereference a pointer with the * operator
-    // sys.validate is an assertion (causes a signal if the argument is false)
+    // * 연산자로 포인터를 역참조할 수 있습니다.
+    // sys.validate는 어설션입니다(인수가 false이면 신호 발생).
     sys.validate((*bufferptr)[0] == 0);
 
     /*
-    // as all the pointers to a variable exit their scope the variable is
-    // no more accessible and is deleted (freed)
+    // 변수에 대한 모든 포인터가 범위를 벗어나면 변수는
+    // 더 이상 액세스할 수 없으며 삭제(해제)됩니다.
     */
 }
 
 //**********************************************************
 //
-// CLASSES
+// 클래스
 //
 //**********************************************************
 
-// This is a Class. The member variables can be directly initialized here
+// 이것은 클래스입니다. 멤버 변수는 여기에서 직접 초기화할 수 있습니다.
 class AClass {
 public:
-    var public_var = 100;       // same as any other variable declaration
-    fn is_ready() bool;         // same as any other function declaration
-    fn mut finalize() void;     // destructor (called on object deletion)
+    var public_var = 100;       // 다른 변수 선언과 동일
+    fn is_ready() bool;         // 다른 함수 선언과 동일
+    fn mut finalize() void;     // 소멸자(객체 삭제 시 호출)
 private:
     var private_var string;
 
-    // Changes the member variables and must be marked as 'mut' (mutable)
+    // 멤버 변수를 변경하고 'mut'(변경 가능)로 표시해야 합니다.
     fn mut private_fun(errmsg string) void;
 }
 
-// How to declare a member function
+// 멤버 함수를 선언하는 방법
 fn AClass.is_ready() bool
 {
-    // inside a member function, members can be accessed through the
-    // 'this' keyword and the field selector '.'
+    // 멤버 함수 내에서 멤버는
+    // 'this' 키워드와 필드 선택기 '.'를 통해 액세스할 수 있습니다.
     return(this.public_var > 10);
 }
 
@@ -253,13 +249,13 @@ fn AClass.private_fun(errmsg string) void
     this.private_var = errmsg;
 }
 
-// using a class
+// 클래스 사용
 fn useAClass() void
 {
-    // in this way you create a variable of type AClass.
+    // 이 방법으로 AClass 유형의 변수를 만듭니다.
     var instance AClass;
 
-    // then you can access its members through the '.' operator.
+    // 그런 다음 '.' 연산자를 통해 해당 멤버에 액세스할 수 있습니다.
     if (instance.is_ready()) {
         instance.public_var = 0;
     }
@@ -267,18 +263,18 @@ fn useAClass() void
 
 //**********************************************************
 //
-// INTERFACES
+// 인터페이스
 //
 //**********************************************************
 
-// You can use polymorphism in sing defining an interface...
+// sing에서 인터페이스를 정의하여 다형성을 사용할 수 있습니다...
 interface ExampleInterface {
     fn mut eraseAll() void;
     fn identify_myself() void;
 }
 
-// and then creating classes which implement the interface
-// NOTE: you don't need (and cannot) re-declare the interface functions
+// 그런 다음 인터페이스를 구현하는 클래스를 만듭니다.
+// 참고: 인터페이스 함수를 다시 선언할 필요가 없습니다(그리고 할 수 없습니다).
 class Implementer1 : ExampleInterface {
 private:
     var to_be_erased i32 = 3;
@@ -313,15 +309,15 @@ fn Implementer2.identify_myself() void
 
 fn interface_casting() i32
 {
-    // upcasting is automatic (es: *Implementer1 to *ExampleInterface)
+    // 업캐스팅은 자동입니다(예: *Implementer1에서 *ExampleInterface로).
     var concrete Implementer1;
     var if_ptr *ExampleInterface = &concrete;
 
-    // you can access interface members with (guess what ?) '.'
+    // (추측하셨겠지만) '.'으로 인터페이스 멤버에 액세스할 수 있습니다.
     if_ptr.identify_myself();
 
-    // downcasting requires a special construct
-    // (see also below the conditional structures)
+    // 다운캐스팅에는 특수 구문이 필요합니다.
+    // (아래 조건 구조도 참조하십시오).
     typeswitch(ref = if_ptr) {
         case *Implementer1: return(ref.only_on_impl1);
         case *Implementer2: {}
@@ -331,44 +327,44 @@ fn interface_casting() i32
     return(1);
 }
 
-// All the loop types
+// 모든 루프 유형
 fn loops() void
 {
-    // while: the condition must be strictly of boolean type
+    // while: 조건은 엄격하게 부울 유형이어야 합니다.
     var idx = 0;
     while (idx < 10) {
         ++idx;
     }
 
-    // for in an integer range. The last value is excluded
-    // 'it' is local to the loop and must not be previously declared
+    // 정수 범위의 for. 마지막 값은 제외됩니다.
+    // 'it'은 루프에 로컬이며 이전에 선언되어서는 안 됩니다.
     for (it in 0 : 10) {
     }
 
-    // reverse direction
+    // 역방향
     for (it in 10 : 0) {
     }
 
-    // configurable step. The loop stops when it's >= the final value
+    // 구성 가능한 단계. 최종 값보다 크거나 같으면 루프가 중지됩니다.
     for (it in 0 : 100 step 3) {
     }
 
-    // with an auxiliary counter.
-    // The counter start always at 0 and increments by one at each iteration
+    // 보조 카운터 사용.
+    // 카운터는 항상 0에서 시작하여 각 반복에서 1씩 증가합니다.
     for (counter, it in 3450 : 100 step -22) {
     }
 
-    // value assumes in turn all the values from array
+    // value는 차례로 배열의 모든 값을 가정합니다.
     var array [*]i32 = {0, 10, 100, 1000};
     for (value in array) {
     }
 
-    // as before with auxiliary counter
+    // 보조 카운터와 함께 이전과 동일
     for (counter, value in array) {
     }
 }
 
-// All the conditional structures
+// 모든 조건 구조
 interface intface {}
 class c0_test : intface {public: fn c0stuff() void;}
 class delegating : intface {}
@@ -380,19 +376,19 @@ fn conditionals(in object intface, in objptr *intface) void
     let condition3 = true;
     var value = 30;
 
-    // condition1 must be a boolean.
+    // condition1은 부울이어야 합니다.
     if (condition1) {
-        ++value;    // conditioned statement
+        ++value;    // 조건부 문
     }
 
-    // you can chain conditions with else if
+    // else if로 조건을 연결할 수 있습니다.
     if (condition1) {
         ++value;
     } else if (condition2) {
         --value;
     }
 
-    // a final else runs if any other condition is false
+    // 다른 조건이 false이면 최종 else가 실행됩니다.
     if (condition1) {
         ++value;
     } else if (condition2) {
@@ -401,32 +397,32 @@ fn conditionals(in object intface, in objptr *intface) void
         value = 0;
     }
 
-    // based on the switch value selects a case statement
+    // switch 값을 기준으로 case 문을 선택합니다.
     switch (value) {
-        case 0: sio.print("value is zero"); // a single statement !
-        case 1: {}                          // do nothing
-        case 2:                             // falls through
+        case 0: sio.print("value is zero"); // 단일 문!
+        case 1: {}                          // 아무것도 안 함
+        case 2:                             // 통과
         case 3: sio.print("value is more than one");
-        case 4: {                           // a block is a single statement !
+        case 4: {                           // 블록은 단일 문입니다!
             value = 0;
             sio.print("how big !!");
         }
-        default: return;                    // if no one else matches
+        default: return;                    // 다른 것이 일치하지 않으면
     }
 
-    // similar to a switch but selects a case based on argument type.
-    // - object must be a function argument of type interface.
-    // - the case types must be classes implementing the object interface.
-    // - in each case statement, ref assumes the class type of that case.
+    // switch와 유사하지만 인수 유형을 기준으로 case를 선택합니다.
+    // - object는 인터페이스 유형의 함수 인수여야 합니다.
+    // - case 유형은 object 인터페이스를 구현하는 클래스여야 합니다.
+    // - 각 case 문에서 ref는 해당 case의 클래스 유형을 가정합니다.
     typeswitch(ref = object) {
         case c0_test: ref.c0stuff();
         case delegating: {}
         default: return;
     }
 
-    // - object must be an interface pointer.
-    // - the case types must be pointers to classes implementing the objptr interface.
-    // - in each case statement, ref assumes the class pointer type of that case.
+    // - object는 인터페이스 포인터여야 합니다.
+    // - case 유형은 objptr 인터페이스를 구현하는 클래스에 대한 포인터여야 합니다.
+    // - 각 case 문에서 ref는 해당 case의 클래스 포인터 유형을 가정합니다.
     typeswitch(ref = objptr) {
         case *c0_test: {
             ref.c0stuff();
@@ -438,9 +434,9 @@ fn conditionals(in object intface, in objptr *intface) void
 }
 ```
 
-## Further Reading
+## 더 읽을거리
 
-[official Sing web site](https://mdegirolami.wixsite.com/singlang).
+[공식 Sing 웹사이트](https://mdegirolami.wixsite.com/singlang).
 
-If you want to play with sing you are recommended to download the vscode plugin. Please
-follow the instructions at [Getting Started](https://mdegirolami.wixsite.com/singlang/copy-of-interfacing-sing-and-c-2)
+sing을 가지고 놀고 싶다면 vscode 플러그인을 다운로드하는 것이 좋습니다.
+[시작하기](https://mdegirolami.wixsite.com/singlang/copy-of-interfacing-sing-and-c-2)의 지침을 따르십시오.

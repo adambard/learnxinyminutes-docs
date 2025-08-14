@@ -1,5 +1,3 @@
-# smallbasic.md (번역)
-
 ---
 name: SmallBASIC
 filename: learnsmallbasic.bas
@@ -7,29 +5,29 @@ contributors:
     - ["Chris Warren-Smith", "http://smallbasic.sourceforge.net"]
 ---
 
-## About
+## 정보
 
-SmallBASIC is a fast and easy to learn BASIC language interpreter ideal for everyday calculations, scripts and prototypes. SmallBASIC includes trigonometric, matrices and algebra functions, a built in IDE, a powerful string library, system, sound, and graphic commands along with structured programming syntax.
+SmallBASIC은 일상적인 계산, 스크립트 및 프로토타입에 이상적인 빠르고 배우기 쉬운 BASIC 언어 인터프리터입니다. SmallBASIC에는 삼각 함수, 행렬 및 대수 함수, 내장 IDE, 강력한 문자열 라이브러리, 시스템, 사운드 및 그래픽 명령과 구조화된 프로그래밍 구문이 포함되어 있습니다.
 
-## Development
+## 개발
 
-SmallBASIC was originally developed by Nicholas Christopoulos in late 1999 for the Palm Pilot. Project development has been continued by Chris Warren-Smith since around 2005.
+SmallBASIC은 1999년 말 니콜라스 크리스토풀로스가 팜 파일럿용으로 처음 개발했습니다. 프로젝트 개발은 2005년경부터 크리스 워렌-스미스가 계속해 왔습니다.
 
-Versions of SmallBASIC have been made for a number of early hand held devices including Franklin eBookman and the Nokia 770. Also various desktop versions have been released based on a variety of GUI tool-kits, some of which have become defunct. The current supported platforms are Linux and Windows based on SDL2 and Android based on NDK. A desktop command line version is also available, although not typically released in binary form.
+SmallBASIC 버전은 프랭클린 e북맨 및 노키아 770을 포함한 여러 초기 휴대용 장치용으로 만들어졌습니다. 또한 다양한 GUI 도구 키트를 기반으로 한 다양한 데스크톱 버전이 출시되었으며, 그중 일부는 더 이상 사용되지 않습니다. 현재 지원되는 플랫폼은 SDL2 기반의 Linux 및 Windows와 NDK 기반의 Android입니다. 데스크톱 명령줄 버전도 사용할 수 있지만 일반적으로 바이너리 형식으로 릴리스되지는 않습니다.
 
-In around 2008 a large corporation released a BASIC like programming environment with a similar sounding name. SmallBASIC is not related to this other project.
+2008년경에 한 대기업이 비슷한 이름의 BASIC과 유사한 프로그래밍 환경을 출시했습니다. SmallBASIC은 이 다른 프로젝트와 관련이 없습니다.
 
 ```
-REM This is a comment
-' and this is also a comment
+REM 이것은 주석입니다
+' 그리고 이것도 주석입니다
 
-REM print text
+REM 텍스트 인쇄
 print "hello"
-? "? is short for PRINT"
+? "?는 PRINT의 약자입니다"
 
-REM Control structures
+REM 제어 구조
 FOR index = 0 TO 10 STEP 2
-  ? "This is line number "; index
+  ? "이것은 줄 번호 "; index
 NEXT
 J=0
 REPEAT
@@ -39,7 +37,7 @@ WHILE J>0
  J--
 WEND
 
-REM Select case statement
+REM Select case 문
 Select Case "Cool"
  Case "null", 1,2,3,4,5,6,7,8,"Cool","blah"
  Case "Not cool"
@@ -48,7 +46,7 @@ Select Case "Cool"
    PRINT "Fail"
 End Select
 
-REM catching errors with TRY/CATCH
+REM TRY/CATCH로 오류 잡기
 Try
   fn = Freefile
   Open filename For Input As #fn
@@ -56,11 +54,11 @@ Catch err
   Print "failed to open"
 End Try
 
-REM User defined subs and functions
+REM 사용자 정의 서브 및 함수
 func add2(x,y)
-  ' variables may be declared as local within the scope of a SUB or FUNC
+  ' 변수는 SUB 또는 FUNC 범위 내에서 로컬로 선언될 수 있습니다.
   local K
-  k = "k will cease to exist when this FUNC returns"
+  k = "이 FUNC가 반환되면 k는 더 이상 존재하지 않습니다"
   add2=x+y
 end
 Print add2(5,5)
@@ -69,7 +67,7 @@ sub print_it(it)
 end
 print_it "IT...."
 
-REM Display lines and pixels
+REM 선과 픽셀 표시
 At 0,ymax/2+txth("Q")
 Color 1: ? "sin(x)":
 Color 8: ? "cos(x)":
@@ -82,7 +80,7 @@ For i=0 to xmax
 Next
 showpage
 
-REM SmallBASIC is great for experimenting with fractals and other interesting effects
+REM SmallBASIC은 프랙탈 및 기타 흥미로운 효과를 실험하는 데 좋습니다.
 Delay 3000
 Randomize
 ff = 440.03
@@ -103,14 +101,14 @@ For j = 0 to 20
   next
 Next j
 
-REM For computer historians, SmallBASIC can run programs
-REM found in early computer books and magazines, for example:
+REM 컴퓨터 역사가들을 위해 SmallBASIC은
+REM 초기 컴퓨터 서적 및 잡지에서 찾은 프로그램을 실행할 수 있습니다. 예를 들어:
 10 LET A=9
 20 LET B=7
 30 PRINT A*B
 40 PRINT A/B
 
-REM SmallBASIC also has support for a few modern concepts such as JSON
+REM SmallBASIC은 JSON과 같은 몇 가지 최신 개념도 지원합니다.
 aa = array("{\"cat\":{\"name\":\"harry\"},\"pet\":\"true\"}")
 If (ismap(aa) == false) Then
   throw "not an map"
@@ -120,12 +118,12 @@ Print aa
 PAUSE
 ```
 
-## Articles
+## 기사
 
-* [Getting started](http://smallbasic.sourceforge.net/?q=node/1573)
-* [Welcome to SmallBASIC](http://smallbasic.sourceforge.net/?q=node/838)
+* [시작하기](http://smallbasic.sourceforge.net/?q=node/1573)
+* [SmallBASIC에 오신 것을 환영합니다](http://smallbasic.sourceforge.net/?q=node/838)
 
 ## GitHub
 
-* [Source code](https://github.com/smallbasic/SmallBASIC)
-* [Reference snapshot](http://smallbasic.github.io/)
+* [소스 코드](https://github.com/smallbasic/SmallBASIC)
+* [참조 스냅샷](http://smallbasic.github.io/)

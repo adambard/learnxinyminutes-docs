@@ -1,5 +1,3 @@
-# nmap.md (번역)
-
 ---
 name: Nmap
 category: tool
@@ -7,198 +5,199 @@ contributors:
     - ["Sebastian Oberdorfer", "https://github.com/SOberdorfer"]
 ---
 
-### Learn Nmap in Y Minutes
+### Y분 안에 Nmap 배우기
 
-So, you’re connected to a network and want to know what else is connected to it.
-Maybe you’re trying to find that mystery device eating up bandwidth or check
-if there are services running you didn’t know about, or you just want to verify
-what ports are exposed on your machine?
+그래서, 당신은 네트워크에 연결되어 있고 다른 무엇이 연결되어 있는지 알고 싶습니다.
+대역폭을 잡아먹는 미스터리 장치를 찾으려고 하거나
+당신이 모르는 서비스가 실행 중인지 확인하거나, 아니면 단지
+당신의 머신에 어떤 포트가 노출되어 있는지 확인하고 싶을 수도 있습니다.
 
-Meet your swiss-army network knife named **Nmap**!
+**Nmap**이라는 이름의 스위스 군용 네트워크 칼을 만나보세요!
 
 ---
 
-### Introduction
+### 소개
 
 **Nmap 101**
-Nmap is an open-source network scanning tool built by Gordon Lyon. Designed to
-help you find devices, open ports and services across your network.
-It’s a swiss-army knife for network admins, security folks, dev's and anyone
-curious about what’s living on their network.
+Nmap은 Gordon Lyon이 만든 오픈소스 네트워크 스캐닝 도구입니다.
+네트워크 전체에서 장치, 열린 포트 및 서비스를 찾는 데 도움이 되도록 설계되었습니다.
+네트워크 관리자, 보안 담당자, 개발자 및 네트워크에 무엇이 있는지 궁금한 모든 사람을 위한
+스위스 군용 칼입니다.
 
-**When to Use It**
+**언제 사용해야 할까요?**
 
-- **Finding Devices**: What’s connected, and what’s running?
-- **Network Troubleshooting**: Resolve DNS or connection issues.
-- **Vulnerability Detection**: Spotting potentially risky services.
-- **Network Security**: Evaluate exposed ports.
+- **장치 찾기**: 무엇이 연결되어 있고, 무엇이 실행 중인가요?
+- **네트워크 문제 해결**: DNS 또는 연결 문제를 해결합니다.
+- **취약점 탐지**: 잠재적으로 위험한 서비스를 발견합니다.
+- **네트워크 보안**: 노출된 포트를 평가합니다.
 
-**When *Not* to Use It**
+**언제 사용하면 *안 될까요*?**
 
-- **Public Networks**: Scanning Starbucks WiFi might land you in hot tea.
-- **Corporate Networks**: Scanning your corporate network without permission, is
-  potentially not allowed.
-- **Global Web**: In some cases scanning across the web can be illegal.
+- **공용 네트워크**: 스타벅스 WiFi를 스캔하면 곤란한 상황에 처할 수 있습니다.
+- **기업 네트워크**: 허가 없이 회사 네트워크를 스캔하는 것은
+  허용되지 않을 수 있습니다.
+- **글로벌 웹**: 경우에 따라 웹 전체를 스캔하는 것은 불법일 수 있습니다.
 
-Certain scans are intrusive and can trigger security alarms, so stick to **only
+특정 스캔은 침입적이며 보안 경보를 유발할 수 있으므로, **
 **
-scanning networks or systems where you have permission. Unauthorized scanning
-can be considered illegal under cybersecurity laws in many regions, and
-companies
-might view it as a hacking attempt.
+허가된 네트워크나 시스템만 스캔하십시오. 무단 스캔은
+많은 지역의 사이버 보안 법에 따라 불법으로 간주될 수 있으며,
+회사는
+이를 해킹 시도로 간주할 수 있습니다.
 
-Use Nmap extensively and wisely.
-
----
-
-### Installation
-
-Installation is straightforward, thoroughly explained on [nmap.org - install](https://nmap.org/book/install.html)
+Nmap을 광범위하고 현명하게 사용하십시오.
 
 ---
 
-### The Basics
+### 설치
 
-These are low-key scans that safe to use since they don’t do deep probing.
+설치는 간단하며 [nmap.org - 설치](https://nmap.org/book/install.html)에 자세히 설명되어 있습니다.
 
-- **Ping Scan**:
-  A low-impact scan just to check if devices are online. Typically fine on
-  trusted networks.
-    - Scan a single device
+---
+
+### 기본
+
+이것들은 심층적인 조사를 하지 않으므로 안전하게 사용할 수 있는 낮은 수준의 스캔입니다.
+
+- **핑 스캔**:
+  장치가 온라인 상태인지 확인하기 위한 낮은 영향의 스캔입니다. 일반적으로 신뢰할 수 있는
+  네트워크에서는 괜찮습니다.
+    - 단일 장치 스캔
       ```bash
        nmap -sn 192.168.1.1
       ```
-    - Scan a range of devices
+    - 장치 범위 스캔
       ```bash
       nmap -sn 192.168.1.1-100
       ```
-    - Scan a CIDR range of devices
+    - 장치의 CIDR 범위 스캔
       ```bash
-      nmap -sn 192.168.1.0/24   # Range 192.168.1.0 to 192.168.1.255
-      nmap -sn 192.168.0.0/16   # Range 192.168.0.0 to 192.168.255.255
-      nmap -sn 192.0.0.0/8      # Range 192.0.0.0 to 192.255.255.255
+      nmap -sn 192.168.1.0/24   # 범위 192.168.1.0 ~ 192.168.1.255
+      nmap -sn 192.168.0.0/16   # 범위 192.168.0.0 ~ 192.168.255.255
+      nmap -sn 192.0.0.0/8      # 범위 192.0.0.0 ~ 192.255.255.255
       ```
 
-- **Fast Scan**:
-  Quickly checks the 100 most common ports. Great for a quick peek without
-  probing all 65,535 ports.
+- **빠른 스캔**:
+  가장 일반적인 100개 포트를 빠르게 확인합니다.
+  65,535개의 모든 포트를 조사하지 않고 빠른 확인에 좋습니다.
   ```bash
   nmap -F 192.168.1.1
   ```
 
-- **Operating System Detection**:
-  OS detection requires some extra probing, which might be detectable by
-  Intrusion Detection Systems (IDS).
+- **운영 체제 탐지**:
+  OS 탐지에는 추가 조사가 필요하며, 이는
+  침입 탐지 시스템(IDS)에 의해 탐지될 수 있습니다.
   ```bash
   nmap -O 192.168.1.1
   ```
 
-- **Output to File**
-  Specific scanning and saving the output to a file, enables you to scan more
-  thorough without overloading your network.
-    - Plain text
+- **파일로 출력**
+  특정 스캔을 수행하고 출력을 파일에 저장하면
+  네트워크에 과부하를 주지 않고 더 철저하게 스캔할 수 있습니다.
+    - 일반 텍스트
       ```bash
       nmap -oN output.txt 192.168.1.1
       ```
-    - XML, handy for using elsewhere
+    - XML, 다른 곳에서 사용하기 편리함
       ```bash
       nmap -oX output.xml 192.168.1.1
       ```
 
 ---
 
-### Moving Up: More Insightful Scans
+### 한 단계 더 나아가기: 더 통찰력 있는 스캔
 
-These scans dig a bit deeper, so they may trigger alarms on security systems.
-Use these only on networks where you have explicit permission to scan.
+이러한 스캔은 조금 더 깊이 파고들므로 보안 시스템에서 경보를 울릴 수 있습니다.
+스캔할 명시적인 권한이 있는 네트워크에서만 사용하십시오.
 
-- **Service Version Detection**:
-  Tries to identify versions of services on open ports. Useful but more
-  invasive.
+- **서비스 버전 탐지**:
+  열린 포트에서 서비스 버전을 식별하려고 시도합니다. 유용하지만 더
+  침입적입니다.
   ```bash
   nmap -sV 192.168.1.1
   ```
 
-- **Aggressive Scan**:
-  The aggressive scan mode (`-A`) combines multiple checks, like OS detection,
-  version detection and traceroute. This is likely to be flagged on
-  any network and can be considered illegal on networks you don’t own.
+- **공격적인 스캔**:
+  공격적인 스캔 모드(`-A`)는 OS 탐지,
+  버전 탐지 및 트레이스라우트와 같은 여러 검사를 결합합니다. 이것은
+  모든 네트워크에서 플래그가 지정될 가능성이 높으며 소유하지 않은 네트워크에서는
+  불법으로 간주될 수 있습니다.
   ```bash
   nmap -A 192.168.1.1
   ```
 
-- **Scanning Specific Ports**:
-  Narrowing scans to specific ports is generally fine.
-    - Scan a specific port
+- **특정 포트 스캔**:
+  스캔을 특정 포트로 좁히는 것은 일반적으로 괜찮습니다.
+    - 특정 포트 스캔
       ```bash
       nmap -p 80 192.168.1.1
       ```
-    - Scan a range of ports
+    - 포트 범위 스캔
       ```bash
       nmap -p 1-100 192.168.1.1
       ```
 
 ---
 
-### Advanced Scans: When You’re the Power User
+### 고급 스캔: 파워 유저일 때
 
-So, you’re getting into the advanced stuff—maybe testing your own firewall or
-finding rogue services.
-The following scans are loud and intrusive that definitely trigger security
-defenses.
+그래서, 당신은 고급 기능을 사용하고 있습니다. 아마도 자신의 방화벽을 테스트하거나
+불량 서비스를 찾고 있을 것입니다.
+다음 스캔은 시끄럽고 침입적이어서 보안
+방어를 확실히 트리거합니다.
 
-- **Scripted Scans (NSE)**
-  Nmap’s script engine is like a toolbox of plugins. Need to check for a
-  specific vulnerability? There’s likely an NSE script for it.
+- **스크립트 스캔 (NSE)**
+  Nmap의 스크립트 엔진은 플러그인 도구 상자와 같습니다.
+  특정 취약점을 확인해야 합니까? 아마도 NSE 스크립트가 있을 것입니다.
   ```bash
   nmap --script=http-vuln-cve2021-12345 192.168.1.1
   ```
 
-- **Aggressive and fastest Scans**:
-  `-T5` turns up to knob to 11. `-A` scans all ports.
-  Use it sparse and only if you really need full visibility.
+- **공격적이고 가장 빠른 스캔**:
+  `-T5`는 노브를 11까지 올립니다. `-A`는 모든 포트를 스캔합니다.
+  드물게 사용하고 전체 가시성이 정말로 필요한 경우에만 사용하십시오.
   ```bash
   nmap -T5 -A 192.168.1.1
   ```
 
-- **TCP and UDP Combined Scans**:
-  Combining TCP and UDP scans (`-sS` for SYN scans and `-sU` for UDP) gives
-  complete coverage but increases the scan’s footprint, making it detectable.
+- **TCP 및 UDP 결합 스캔**:
+  TCP 및 UDP 스캔(`-sS`는 SYN 스캔, `-sU`는 UDP)을 결합하면
+  완전한 범위를 제공하지만 스캔의 공간을 늘려 탐지 가능하게 만듭니다.
   ```bash
   nmap -sS -sU 192.168.1.1
   ```
 
-- **Spoofing and Decoy Scans**:
-  Using decoys (`-D`) or spoofed IP addresses to hide your real IP can be seen
-  as deceptive. These scans are easily flagged by IDS and could lead to legal
-  repercussions if you’re not authorized.
+- **스푸핑 및 디코이 스캔**:
+  디코이(`-D`) 또는 스푸핑된 IP 주소를 사용하여 실제 IP를 숨기는 것은
+  기만적인 것으로 간주될 수 있습니다. 이러한 스캔은 IDS에 의해 쉽게 플래그가 지정되며
+  권한이 없는 경우 법적 처벌을 받을 수 있습니다.
   ```bash
-  # 10 random IP decoys
+  # 10개의 임의 IP 디코이
   nmap -D RND:10 192.168.1.1
   ```
 
 ---
 
-### Practical Tips and Tricks
+### 실용적인 팁과 요령
 
-**Timing Templates**
-Nmap has timing options from `-T0` (paranoid) to `-T5` (insane). Stick with
-`-T2` or `-T3` for a good balance between speed and not making too much noise.
-More
-on [nmap - timing-templates](https://nmap.org/book/performance-timing-templates.html)
+**타이밍 템플릿**
+Nmap에는 `-T0`(편집증)에서 `-T5`(미친)까지의 타이밍 옵션이 있습니다.
+속도와 너무 많은 소음을 내지 않는 것 사이의 좋은 균형을 위해 `-T2` 또는 `-T3`을
+사용하십시오.
+자세한 내용은 [nmap - 타이밍 템플릿](https://nmap.org/book/performance-timing-templates.html)에서 확인하십시오.
 
-**Check Out Nmap’s Scripts**
-NSE scripts make Nmap super versatile. From DNS enumeration to vulnerability
-checks, there’s probably a script for whatever you need.
-More on [nmap - Nmap Scripting Engine](https://nmap.org/book/man-nse.html)
+**Nmap의 스크립트 확인**
+NSE 스크립트는 Nmap을 매우 다재다능하게 만듭니다. DNS 열거에서 취약점
+확인에 이르기까지 필요한 모든 것에 대한 스크립트가 있을 것입니다.
+자세한 내용은 [nmap - Nmap 스크립팅 엔진](https://nmap.org/book/man-nse.html)에서 확인하십시오.
 
-**Use aggressive scans and decoys only on networks you own** or with formal
-authorization, such as during a penetration test with client permission. If
-you’re running scans at work, talk to the network admins first.
+**소유하거나 공식적인** 허가(예: 클라이언트 허가가 있는 침투 테스트 중)가 있는
+네트워크에서만 공격적인 스캔과 디코이를 사용하십시오. 직장에서
+스캔을 실행하는 경우 먼저 네트워크 관리자와 상의하십시오.
 
-**Know When to Stop**
-Once you’ve got the info you need, wrap it up. It’s easy to get scan-happy.
+**언제 멈춰야 하는지 알기**
+필요한 정보를 얻었으면 마무리하십시오. 스캔에 중독되기 쉽습니다.
 
 ---
 
-Happy scanning!
+즐거운 스캔 되세요!

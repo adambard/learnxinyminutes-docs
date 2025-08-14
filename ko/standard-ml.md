@@ -1,5 +1,3 @@
-# standard-ml.md (번역)
-
 ---
 name: "Standard ML"
 filename: standardml.sml
@@ -11,134 +9,131 @@ contributors:
     - ["Chris Wilson", "http://sencjw.com/"]
 ---
 
-Standard ML is a functional programming language with type inference and some
-side-effects.  Some of the hard parts of learning Standard ML are: Recursion,
-pattern matching, type inference (guessing the right types but never allowing
-implicit type conversion). Standard ML is distinguished from Haskell by including
-references, allowing variables to be updated.
+Standard ML은 타입 추론과 일부 부수 효과가 있는 함수형 프로그래밍 언어입니다. Standard ML을 배우는 데 어려운 부분 중 일부는 재귀, 패턴 매칭, 타입 추론(올바른 타입을 추측하지만 암시적 타입 변환은 절대 허용하지 않음)입니다. Standard ML은 변수를 업데이트할 수 있는 참조를 포함하여 Haskell과 구별됩니다.
 
 ```ocaml
-(* Comments in Standard ML begin with (* and end with *).  Comments can be
-   nested which means that all (* tags must end with a *) tag.  This comment,
-   for example, contains two nested comments. *)
+(* Standard ML의 주석은 (*로 시작하고 *)로 끝납니다. 주석은
+   중첩될 수 있습니다. 즉, 모든 (* 태그는 *) 태그로 끝나야 합니다. 이 주석은
+   예를 들어 두 개의 중첩된 주석을 포함합니다. *)
 
-(* A Standard ML program consists of declarations, e.g. value declarations: *)
+(* Standard ML 프로그램은 선언으로 구성됩니다. 예: 값 선언: *)
 val rent = 1200
 val phone_no = 5551337
 val pi = 3.14159
-val negative_number = ~15  (* Yeah, unary minus uses the 'tilde' symbol *)
+val negative_number = ~15  (* 예, 단항 마이너스는 '물결표' 기호를 사용합니다 *)
 
-(* Optionally, you can explicitly declare types. This is not necessary as
-   ML will automatically figure out the types of your values. *)
+(* 선택적으로 타입을 명시적으로 선언할 수 있습니다. ML이
+   값의 타입을 자동으로 파악하므로 필수는 아닙니다. *)
 val diameter = 7926 : int
 val e = 2.718 : real
 val name = "Bobby" : string
 
-(* And just as importantly, functions: *)
+(* 그리고 마찬가지로 중요한 함수: *)
 fun is_large(x : int) = if x > 37 then true else false
 
-(* Floating-point numbers are called "reals". *)
-val tau = 2.0 * pi         (* You can multiply two reals *)
-val twice_rent = 2 * rent  (* You can multiply two ints *)
-(* val meh = 1.25 * 10 *)  (* But you can't multiply an int and a real *)
-val yeh = 1.25 * (Real.fromInt 10) (* ...unless you explicitly convert
-                                      one or the other *)
+(* 부동 소수점 숫자는 "실수"라고 합니다. *)
+val tau = 2.0 * pi         (* 두 실수를 곱할 수 있습니다 *)
+val twice_rent = 2 * rent  (* 두 정수를 곱할 수 있습니다 *)
+(* val meh = 1.25 * 10 *)  (* 하지만 정수와 실수를 곱할 수는 없습니다 *)
+val yeh = 1.25 * (Real.fromInt 10) (* ... 명시적으로 변환하지 않는 한
+                                      하나 또는 다른 것 *)
 
-(* +, - and * are overloaded so they work for both int and real. *)
-(* The same cannot be said for division which has separate operators: *)
-val real_division = 14.0 / 4.0  (* gives 3.5 *)
-val int_division  = 14 div 4    (* gives 3, rounding down *)
-val int_remainder = 14 mod 4    (* gives 2, since 3*4 = 12 *)
+(* +, - 및 *는 오버로드되어 int와 real 모두에 대해 작동합니다. *)
+(* 나눗셈은 별도의 연산자가 있으므로 동일하다고 말할 수 없습니다: *)
+val real_division = 14.0 / 4.0  (* 3.5를 제공 *)
+val int_division  = 14 div 4    (* 3을 제공, 버림 *)
+val int_remainder = 14 mod 4    (* 2를 제공, 3*4 = 12이므로 *)
 
-(* ~ is actually sometimes a function (e.g. when put in front of variables) *)
-val negative_rent = ~(rent)  (* Would also have worked if rent were a "real" *)
+(* ~는 실제로 때때로 함수입니다(예: 변수 앞에 놓을 때) *)
+val negative_rent = ~(rent)  (* rent가 "real"인 경우에도 작동했을 것입니다 *)
 
-(* There are also booleans and boolean operators *)
+(* 불리언 및 불리언 연산자도 있습니다 *)
 val got_milk = true
 val got_bread = false
-val has_breakfast = got_milk andalso got_bread  (* 'andalso' is the operator *)
-val has_something = got_milk orelse got_bread   (* 'orelse' is the operator *)
-val is_sad = not(has_something)                 (* not is a function *)
+val has_breakfast = got_milk andalso got_bread  (* 'andalso'는 연산자입니다 *)
+val has_something = got_milk orelse got_bread   (* 'orelse'는 연산자입니다 *)
+val is_sad = not(has_something)                 (* not은 함수입니다 *)
 
-(* Many values can be compared using equality operators: = and <> *)
+(* 많은 값은 등호 연산자 = 및 <>를 사용하여 비교할 수 있습니다 *)
 val pays_same_rent = (rent = 1300)  (* false *)
 val is_wrong_phone_no = (phone_no <> 5551337)  (* false *)
 
-(* The operator <> is what most other languages call !=. *)
-(* 'andalso' and 'orelse' are called && and || in many other languages. *)
+(* 연산자 <>는 대부분의 다른 언어에서 !=라고 부르는 것입니다. *)
+(* 'andalso'와 'orelse'는 많은 다른 언어에서 &&와 ||라고 합니다. *)
 
-(* Actually, most of the parentheses above are unnecessary.  Here are some
-   different ways to say some of the things mentioned above: *)
-fun is_large x = x > 37  (* The parens above were necessary because of ': int' *)
+(* 실제로 위의 괄호 대부분은 불필요합니다. 위에서 언급한
+   몇 가지를 다른 방식으로 말하는 몇 가지 방법이 있습니다: *)
+fun is_large x = x > 37  (* 위의 괄호는 ': int' 때문에 필요했습니다 *)
 val is_sad = not has_something
-val pays_same_rent = rent = 1300  (* Looks confusing, but works *)
+val pays_same_rent = rent = 1300  (* 혼란스러워 보이지만 작동합니다 *)
 val is_wrong_phone_no = phone_no <> 5551337
-val negative_rent = ~rent  (* ~ rent (notice the space) would also work *)
+val negative_rent = ~rent  (* ~ rent (공백 참고)도 작동합니다 *)
 
-(* Parentheses are mostly necessary when grouping things: *)
-val some_answer = is_large (5 + 5)      (* Without parens, this would break! *)
-(* val some_answer = is_large 5 + 5 *)  (* Read as: (is_large 5) + 5. Bad! *)
-
-
-(* Besides booleans, ints and reals, Standard ML also has chars and strings: *)
-val foo = "Hello, World!\n"  (* The \n is the escape sequence for linebreaks *)
-val one_letter = #"a"        (* That funky syntax is just one character, a *)
-
-val combined = "Hello " ^ "there, " ^ "fellow!\n"  (* Concatenate strings *)
-
-val _ = print foo       (* You can print things. We are not interested in the *)
-val _ = print combined  (* result of this computation, so we throw it away. *)
-(* val _ = print one_letter *)  (* Only strings can be printed this way *)
+(* 괄호는 주로 그룹화할 때 필요합니다: *)
+val some_answer = is_large (5 + 5)      (* 괄호가 없으면 이것은 깨집니다! *)
+(* val some_answer = is_large 5 + 5 *)  (* (is_large 5) + 5로 읽습니다. 나쁨! *)
 
 
-val bar = [ #"H", #"e", #"l", #"l", #"o" ]  (* SML also has lists! *)
-(* val _ = print bar *)  (* Lists are unfortunately not the same as strings *)
+(* 불리언, 정수 및 실수 외에도 Standard ML에는 문자 및 문자열도 있습니다: *)
+val foo = "Hello, World!\n"  (* \n은 줄 바꿈의 이스케이프 시퀀스입니다 *)
+val one_letter = #"a"        (* 그 펑키한 구문은 단지 한 문자, a입니다 *)
 
-(* Fortunately they can be converted.  String is a library and implode and size
-   are functions available in that library that take strings as argument. *)
-val bob = String.implode bar          (* gives "Hello" *)
-val bob_char_count = String.size bob  (* gives 5 *)
-val _ = print (bob ^ "\n")            (* For good measure, add a linebreak *)
+val combined = "Hello " ^ "there, " ^ "fellow!\n"  (* 문자열 연결 *)
 
-(* You can have lists of any kind *)
+val _ = print foo       (* 인쇄할 수 있습니다. 우리는 이 계산의 결과에
+                           관심이 없으므로 버립니다. *)
+val _ = print combined
+(* val _ = print one_letter *)  (* 이 방법으로는 문자열만 인쇄할 수 있습니다 *)
+
+
+val bar = [ #"H", #"e", #"l", #"l", #"o" ]  (* SML에는 리스트도 있습니다! *)
+(* val _ = print bar *)  (* 불행히도 리스트는 문자열과 같지 않습니다 *)
+
+(* 다행히 변환할 수 있습니다. String은 라이브러리이고 implode와 size는
+   해당 라이브러리에서 사용할 수 있는 함수이며 문자열을 인수로 사용합니다. *)
+val bob = String.implode bar          (* "Hello"를 제공 *)
+val bob_char_count = String.size bob  (* 5를 제공 *)
+val _ = print (bob ^ "\n")            (* 좋은 측정을 위해 줄 바꿈 추가 *)
+
+(* 모든 종류의 리스트를 가질 수 있습니다 *)
 val numbers = [1, 3, 3, 7, 229, 230, 248]  (* : int list *)
 val names = [ "Fred", "Jane", "Alice" ]    (* : string list *)
 
-(* Even lists of lists of things *)
+(* 리스트의 리스트도 가능 *)
 val groups = [ [ "Alice", "Bob" ],
                [ "Huey", "Dewey", "Louie" ],
                [ "Bonnie", "Clyde" ] ]     (* : string list list *)
 
-val number_count = List.length numbers     (* gives 7 *)
+val number_count = List.length numbers     (* 7을 제공 *)
 
-(* You can put single values in front of lists of the same kind using
-   the :: operator, called "the cons operator" (known from Lisp). *)
-val more_numbers = 13 :: numbers  (* gives [13, 1, 3, 3, 7, ...] *)
+(* :: 연산자("cons 연산자"라고 함, Lisp에서 알려짐)를 사용하여
+   동일한 종류의 리스트 앞에 단일 값을 넣을 수 있습니다. *)
+val more_numbers = 13 :: numbers  (* [13, 1, 3, 3, 7, ...]을 제공 *)
 val more_groups  = ["Batman","Superman"] :: groups
 
-(* Lists of the same kind can be appended using the @ ("append") operator *)
+(* 동일한 종류의 리스트는 @ ("append") 연산자를 사용하여 추가할 수 있습니다 *)
 val guest_list = [ "Mom", "Dad" ] @ [ "Aunt", "Uncle" ]
 
-(* This could have been done with the "cons" operator.  It is tricky because the
-   left-hand-side must be an element whereas the right-hand-side must be a list
-   of those elements. *)
+(* 이것은 "cons" 연산자로 수행할 수 있었습니다. 왼쪽 피연산자는
+   요소여야 하고 오른쪽 피연산자는 해당 요소의 리스트여야 하므로
+   까다롭습니다. *)
 val guest_list = "Mom" :: "Dad" :: [ "Aunt", "Uncle" ]
 val guest_list = "Mom" :: ("Dad" :: ("Aunt" :: ("Uncle" :: [])))
 
-(* If you have many lists of the same kind, you can concatenate them all *)
+(* 동일한 종류의 리스트가 많은 경우 모두 연결할 수 있습니다 *)
 val everyone = List.concat groups  (* [ "Alice", "Bob", "Huey", ... ] *)
 
-(* A list can contain any (finite) number of values *)
-val lots = [ 5, 5, 5, 6, 4, 5, 6, 5, 4, 5, 7, 3 ]  (* still just an int list *)
+(* 리스트는 (유한한) 수의 값을 포함할 수 있습니다 *)
+val lots = [ 5, 5, 5, 6, 4, 5, 6, 5, 4, 5, 7, 3 ]  (* 여전히 int list일 뿐입니다 *)
 
-(* Lists can only contain one kind of thing... *)
+(* 리스트는 한 종류의 것만 포함할 수 있습니다... *)
 (* val bad_list = [ 1, "Hello", 3.14159 ] : ??? list *)
 
 
-(* Tuples, on the other hand, can contain a fixed number of different things *)
+(* 반면에 튜플은 고정된 수의 다른 것을 포함할 수 있습니다 *)
 val person1 = ("Simon", 28, 3.14159)  (* : string * int * real *)
 
-(* You can even have tuples inside lists and lists inside tuples *)
+(* 리스트 안에 튜플을, 튜플 안에 리스트를 가질 수도 있습니다 *)
 val likes = [ ("Alice", "ice cream"),
               ("Bob",   "hot dogs"),
               ("Bob",   "Alice") ]     (* : (string * string) list *)
@@ -152,31 +147,31 @@ val good_bad_stuff =
    ["liver", "paying the rent" ])           (* : string list * string list *)
 
 
-(* Records are tuples with named slots *)
+(* 레코드는 이름 있는 슬롯이 있는 튜플입니다 *)
 
 val rgb = { r=0.23, g=0.56, b=0.91 } (* : {b:real, g:real, r:real} *)
 
-(* You don't need to declare their slots ahead of time. Records with
-   different slot names are considered different types, even if their
-   slot value types match up. For instance... *)
+(* 미리 슬롯을 선언할 필요가 없습니다. 슬롯 이름이 다른 레코드는
+   슬롯 값 유형이 일치하더라도 다른 유형으로 간주됩니다.
+   예를 들어... *)
 
 val Hsl = { H=310.3, s=0.51, l=0.23 } (* : {H:real, l:real, s:real} *)
 val Hsv = { H=310.3, s=0.51, v=0.23 } (* : {H:real, s:real, v:real} *)
 
-(* ...trying to evaluate `Hsv = Hsl` or `rgb = Hsl` would give a type
-   error. While they're all three-slot records composed only of `real`s,
-   they each have different names for at least some slots. *)
+(* ...`Hsv = Hsl` 또는 `rgb = Hsl`을 평가하려고 하면 유형 오류가
+   발생합니다. 모두 세 개의 슬롯으로 구성된 `real` 레코드이지만,
+   각각 적어도 일부 슬롯에 대해 다른 이름을 가지고 있습니다. *)
 
-(* You can use hash notation to get values out of tuples. *)
+(* 해시 표기법을 사용하여 튜플에서 값을 가져올 수 있습니다. *)
 
 val H = #H Hsv (* : real *)
 val s = #s Hsl (* : real *)
 
-(* Functions! *)
-fun add_them (a, b) = a + b    (* A simple function that adds two numbers *)
-val test_it = add_them (3, 4)  (* gives 7 *)
+(* 함수! *)
+fun add_them (a, b) = a + b    (* 두 숫자를 더하는 간단한 함수 *)
+val test_it = add_them (3, 4)  (* 7을 제공 *)
 
-(* Larger functions are usually broken into several lines for readability *)
+(* 더 큰 함수는 일반적으로 가독성을 위해 여러 줄로 나뉩니다 *)
 fun thermometer temp =
     if temp < 37
     then "Cold"
@@ -184,19 +179,19 @@ fun thermometer temp =
          then "Warm"
          else "Normal"
 
-val test_thermo = thermometer 40  (* gives "Warm" *)
+val test_thermo = thermometer 40  (* "Warm"을 제공 *)
 
-(* if-sentences are actually expressions and not statements/declarations.
-   A function body can only contain one expression.  There are some tricks
-   for making a function do more than just one thing, though. *)
+(* if-문장은 실제로는 문/선언이 아닌 표현식입니다.
+   함수 본문은 하나의 표현식만 포함할 수 있습니다. 하지만 함수가
+   한 가지 이상의 일을 하도록 하는 몇 가지 트릭이 있습니다. *)
 
-(* A function can call itself as part of its result (recursion!) *)
+(* 함수는 결과의 일부로 자신을 호출할 수 있습니다(재귀!) *)
 fun fibonacci n =
-    if n = 0 then 0 else                   (* Base case *)
-    if n = 1 then 1 else                   (* Base case *)
-    fibonacci (n - 1) + fibonacci (n - 2)  (* Recursive case *)
+    if n = 0 then 0 else                   (* 기본 사례 *)
+    if n = 1 then 1 else                   (* 기본 사례 *)
+    fibonacci (n - 1) + fibonacci (n - 2)  (* 재귀 사례 *)
 
-(* Sometimes recursion is best understood by evaluating a function by hand:
+(* 때로는 재귀를 직접 함수를 평가하여 가장 잘 이해할 수 있습니다:
 
  fibonacci 4
    ~> fibonacci (4 - 1) + fibonacci (4 - 2)
@@ -216,15 +211,16 @@ fun fibonacci n =
    ~> 2 + (1 + fibonacci 0)
    ~> 2 + (1 + 0)
    ~> 2 + 1
-   ~> 3  which is the 4th Fibonacci number, according to this definition
+   ~> 3  이 정의에 따르면 4번째 피보나치 수입니다
 
  *)
 
-(* A function cannot change the variables it can refer to.  It can only
-   temporarily shadow them with new variables that have the same names.  In this
-   sense, variables are really constants and only behave like variables when
-   dealing with recursion.  For this reason, variables are also called value
-   bindings. An example of this: *)
+(* 함수는 참조할 수 있는 변수를 변경할 수 없습니다.
+   동일한 이름을 가진 새 변수로 일시적으로 가릴 수만 있습니다.
+   이런 의미에서 변수는 실제로는 상수이며
+   재귀를 다룰 때만 변수처럼 동작합니다.
+   이러한 이유로 변수는 값 바인딩이라고도 합니다.
+   예: *)
 
 val x = 42
 fun answer(question) =
@@ -233,17 +229,18 @@ fun answer(question) =
     else raise Fail "I'm an exception. Also, I don't know what the answer is."
 val x = 43
 val hmm = answer "What is the meaning of life, the universe and everything?"
-(* Now, hmm has the value 42.  This is because the function answer refers to
-   the copy of x that was visible before its own function definition. *)
+(* 이제 hmm은 값 42를 가집니다. 이것은 함수 answer가
+   자체 함수 정의 전에 표시되었던 x의 복사본을 참조하기 때문입니다. *)
 
 
-(* Functions can take several arguments by taking one tuples as argument: *)
+(* 함수는 하나의 튜플을 인수로 사용하여 여러 인수를 받을 수 있습니다: *)
 fun solve2 (a : real, b : real, c : real) =
     ((~b + Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a),
      (~b - Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a))
 
-(* Sometimes, the same computation is carried out several times. It makes sense
-   to save and re-use the result the first time. We can use "let-bindings": *)
+(* 때로는 동일한 계산이 여러 번 수행됩니다.
+   결과를 저장하고 처음으로 재사용하는 것이 합리적입니다.
+   "let-bindings"를 사용할 수 있습니다: *)
 fun solve2 (a : real, b : real, c : real) =
     let val discr  = b * b - 4.0 * a * c
         val sqr = Math.sqrt discr
@@ -253,29 +250,29 @@ fun solve2 (a : real, b : real, c : real) =
     end
 
 
-(* Pattern matching is a funky part of functional programming.  It is an
-   alternative to if-sentences.  The fibonacci function can be rewritten: *)
-fun fibonacci 0 = 0  (* Base case *)
-  | fibonacci 1 = 1  (* Base case *)
-  | fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)  (* Recursive case *)
+(* 패턴 매칭은 함수형 프로그래밍의 펑키한 부분입니다.
+   if-문장의 대안입니다. 피보나치 함수는 다음과 같이 다시 작성할 수 있습니다: *)
+fun fibonacci 0 = 0  (* 기본 사례 *)
+  | fibonacci 1 = 1  (* 기본 사례 *)
+  | fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)  (* 재귀 사례 *)
 
-(* Pattern matching is also possible on composite types like tuples, lists and
-   records. Writing "fun solve2 (a, b, c) = ..." is in fact a pattern match on
-   the one three-tuple solve2 takes as argument. Similarly, but less intuitively,
-   you can match on a list consisting of elements in it (from the beginning of
-   the list only). *)
+(* 패턴 매칭은 튜플, 리스트 및 레코드와 같은 복합 유형에서도 가능합니다.
+   "fun solve2 (a, b, c) = ..."를 작성하는 것은 사실상
+   solve2가 인수로 받는 하나의 세 튜플에 대한 패턴 매치입니다.
+   마찬가지로, 덜 직관적이지만, 그 안에 있는 요소로 구성된 리스트에 대해
+   (리스트의 시작부터만) 매치할 수 있습니다. *)
 fun first_elem (x::xs) = x
 fun second_elem (x::y::xs) = y
 fun evenly_positioned_elems (odd::even::xs) = even::evenly_positioned_elems xs
-  | evenly_positioned_elems [odd] = []  (* Base case: throw away *)
-  | evenly_positioned_elems []    = []  (* Base case *)
+  | evenly_positioned_elems [odd] = []  (* 기본 사례: 버리기 *)
+  | evenly_positioned_elems []    = []  (* 기본 사례 *)
 
-(* The case expression can also be used to pattern match and return a value *)
+(* case 표현식은 패턴 매치하고 값을 반환하는 데에도 사용할 수 있습니다 *)
 datatype temp =
       C of real
     | F of real
 
-(*  Declaring a new C temp value...
+(*  새로운 C 온도 값 선언...
     val t: temp = C 45.0  *)
 
 fun temp_to_f t =
@@ -283,20 +280,20 @@ fun temp_to_f t =
       C x => x * (9.0 / 5.0) + 32.0
     | F x => x
 
-(* When matching on records, you must use their slot names, and you must bind
-   every slot in a record. The order of the slots doesn't matter though. *)
+(* 레코드에 대해 매칭할 때 슬롯 이름을 사용해야 하며,
+   레코드의 모든 슬롯을 바인딩해야 합니다. 슬롯의 순서는 중요하지 않습니다. *)
 
 fun rgbToTup {r, g, b} = (r, g, b)    (* fn : {b:'a, g:'b, r:'c} -> 'c * 'b * 'a *)
 fun mixRgbToTup {g, b, r} = (r, g, b) (* fn : {b:'a, g:'b, r:'c} -> 'c * 'b * 'a *)
 
-(* If called with {r=0.1, g=0.2, b=0.3}, either of the above functions
-   would return (0.1, 0.2, 0.3). But it would be a type error to call them
-   with {r=0.1, g=0.2, b=0.3, a=0.4} *)
+(* {r=0.1, g=0.2, b=0.3}으로 호출하면 위의 함수 중 하나가
+   (0.1, 0.2, 0.3)을 반환합니다. 그러나 {r=0.1, g=0.2, b=0.3, a=0.4}로
+   호출하면 유형 오류가 발생합니다. *)
 
-(* Higher order functions: Functions can take other functions as arguments.
-   Functions are just other kinds of values, and functions don't need names
-   to exist.  Functions without names are called "anonymous functions" or
-   lambda expressions or closures (since they also have a lexical scope). *)
+(* 고차 함수: 함수는 다른 함수를 인수로 받을 수 있습니다.
+   함수는 다른 종류의 값일 뿐이며, 함수는 존재하기 위해
+   이름이 필요하지 않습니다. 이름 없는 함수는 "익명 함수" 또는
+   람다 표현식 또는 클로저(어휘적 범위를 가지므로)라고 합니다. *)
 val is_large = (fn x => x > 37)
 val add_them = fn (a,b) => a + b
 val thermometer =
@@ -306,56 +303,57 @@ val thermometer =
                     then "Warm"
                     else "Normal"
 
-(* The following uses an anonymous function directly and gives "ColdWarm" *)
+(* 다음은 익명 함수를 직접 사용하여 "ColdWarm"을 제공합니다 *)
 val some_result = (fn x => thermometer (x - 5) ^ thermometer (x + 5)) 37
 
-(* Here is a higher-order function that works on lists (a list combinator) *)
+(* 다음은 리스트에서 작동하는 고차 함수입니다(리스트 조합기) *)
 (* map f l
-       applies f to each element of l from left to right,
-       returning the list of results. *)
-val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* first an int list *)
-val opinions = List.map thermometer readings (* gives [ "Cold", "Warm", ... ] *)
+       l의 각 요소에 왼쪽에서 오른쪽으로 f를 적용하고,
+       결과 목록을 반환합니다. *)
+val readings = [ 34, 39, 37, 38, 35, 36, 37, 37, 37 ]  (* 먼저 int list *)
+val opinions = List.map thermometer readings (* [ "Cold", "Warm", ... ]을 제공 *)
 
-(* And here is another one for filtering lists *)
-val warm_readings = List.filter is_large readings  (* gives [39, 38] *)
+(* 그리고 다음은 리스트 필터링을 위한 또 다른 것입니다 *)
+val warm_readings = List.filter is_large readings  (* [39, 38]을 제공 *)
 
-(* You can create your own higher-order functions, too.  Functions can also take
-   several arguments by "currying" them. Syntax-wise this means adding spaces
-   between function arguments instead of commas and surrounding parentheses. *)
+(* 자신만의 고차 함수를 만들 수도 있습니다. 함수는
+   "커링"하여 여러 인수를 받을 수도 있습니다. 구문적으로 이것은
+   쉼표와 주변 괄호 대신 함수 인수 사이에 공백을 추가하는 것을
+   의미합니다. *)
 fun map f [] = []
   | map f (x::xs) = f(x) :: map f xs
 
-(* map has type ('a -> 'b) -> 'a list -> 'b list and is called polymorphic. *)
-(* 'a is called a type variable. *)
+(* map은 유형 ('a -> 'b) -> 'a list -> 'b list를 가지며 다형성이라고 합니다. *)
+(* 'a는 유형 변수라고 합니다. *)
 
 
-(* We can declare functions as infix *)
-val plus = add_them   (* plus is now equal to the same function as add_them *)
-infix plus            (* plus is now an infix operator *)
-val seven = 2 plus 5  (* seven is now bound to 7 *)
+(* 함수를 중위로 선언할 수 있습니다 *)
+val plus = add_them   (* plus는 이제 add_them과 동일한 함수와 같습니다 *)
+infix plus            (* plus는 이제 중위 연산자입니다 *)
+val seven = 2 plus 5  (* seven은 이제 7에 바인딩됩니다 *)
 
-(* Functions can also be made infix before they are declared *)
+(* 함수는 선언되기 전에 중위로 만들 수도 있습니다 *)
 infix minus
-fun x minus y = x - y (* It becomes a little hard to see what's the argument *)
-val four = 8 minus 4  (* four is now bound to 4 *)
+fun x minus y = x - y (* 인수가 무엇인지 보기가 조금 어려워집니다 *)
+val four = 8 minus 4  (* four는 이제 4에 바인딩됩니다 *)
 
-(* An infix function/operator can be made prefix with 'op' *)
-val n = op + (5, 5)   (* n is now 10 *)
+(* 중위 함수/연산자는 'op'로 접두사로 만들 수 있습니다 *)
+val n = op + (5, 5)   (* n은 이제 10입니다 *)
 
-(* 'op' is useful when combined with high order functions because they expect
-   functions and not operators as arguments. Most operators are really just
-   infix functions. *)
+(* 'op'는 고차 함수와 결합할 때 유용합니다. 왜냐하면 그들은
+   연산자가 아닌 함수를 인수로 기대하기 때문입니다. 대부분의 연산자는
+   실제로 중위 함수일 뿐입니다. *)
 (* foldl f init [x1, x2, ..., xn]
-       returns
+       반환
        f(xn, ...f(x2, f(x1, init))...)
-       or init if the list is empty. *)
+       또는 리스트가 비어 있으면 init. *)
 val sum_of_numbers = foldl op+ 0 [1, 2, 3, 4, 5]
 
 
-(* Datatypes are useful for creating both simple and complex structures *)
+(* 데이터 유형은 간단하고 복잡한 구조를 만드는 데 유용합니다 *)
 datatype color = Red | Green | Blue
 
-(* Here is a function that takes one of these as argument *)
+(* 다음은 이들 중 하나를 인수로 받는 함수입니다 *)
 fun say(col) =
     if col = Red then "You are red!" else
     if col = Green then "You are green!" else
@@ -364,24 +362,24 @@ fun say(col) =
 
 val _ = print (say(Red) ^ "\n")
 
-(* Datatypes are very often used in combination with pattern matching *)
+(* 데이터 유형은 패턴 매칭과 함께 매우 자주 사용됩니다 *)
 fun say Red   = "You are red!"
   | say Green = "You are green!"
   | say Blue  = "You are blue!"
 
-(* We did not include the match arm `say _ = raise Fail "Unknown color"`
-because after specifying all three colors, the pattern is exhaustive
-and redundancy is not permitted in pattern matching *)
+(* 세 가지 색상을 모두 지정한 후 패턴이 완전하므로
+   `say _ = raise Fail "Unknown color"` 일치 암을 포함하지 않았습니다.
+   그리고 패턴 매칭에서는 중복이 허용되지 않습니다. *)
 
 
-(* Here is a binary tree datatype *)
+(* 다음은 이진 트리 데이터 유형입니다 *)
 datatype 'a btree = Leaf of 'a
-                  | Node of 'a btree * 'a * 'a btree (* three-arg constructor *)
+                  | Node of 'a btree * 'a * 'a btree (* 세 인수 생성자 *)
 
-(* Here is a binary tree *)
+(* 다음은 이진 트리입니다 *)
 val myTree = Node (Leaf 9, 8, Node (Leaf 3, 5, Leaf 7))
 
-(* Drawing it, it might look something like...
+(* 그리면 다음과 같이 보일 수 있습니다...
 
            8
           / \
@@ -390,47 +388,48 @@ val myTree = Node (Leaf 9, 8, Node (Leaf 3, 5, Leaf 7))
    leaf -> 3   7 <- leaf
  *)
 
-(* This function counts the sum of all the elements in a tree *)
+(* 이 함수는 트리의 모든 요소의 합을 계산합니다 *)
 fun count (Leaf n) = n
   | count (Node (leftTree, n, rightTree)) = count leftTree + n + count rightTree
 
-val myTreeCount = count myTree  (* myTreeCount is now bound to 32 *)
+val myTreeCount = count myTree  (* myTreeCount는 이제 32에 바인딩됩니다 *)
 
 
-(* Exceptions! *)
-(* Exceptions can be raised/thrown using the reserved word 'raise' *)
+(* 예외! *)
+(* 예외는 예약어 'raise'를 사용하여 발생/던질 수 있습니다 *)
 fun calculate_interest(n) = if n < 0.0
                             then raise Domain
                             else n * 1.04
 
-(* Exceptions can be caught using "handle" *)
+(* 예외는 "handle"을 사용하여 잡을 수 있습니다 *)
 val balance = calculate_interest ~180.0
-              handle Domain => ~180.0    (* balance now has the value ~180.0 *)
+              handle Domain => ~180.0    (* balance는 이제 ~180.0 값을 가집니다 *)
 
-(* Some exceptions carry extra information with them *)
-(* Here are some examples of built-in exceptions *)
-fun failing_function []    = raise Empty  (* used for empty lists *)
+(* 일부 예외는 추가 정보를 포함합니다 *)
+(* 다음은 내장 예외의 몇 가지 예입니다 *)
+fun failing_function []    = raise Empty  (* 빈 리스트에 사용됨 *)
   | failing_function [x]   = raise Fail "This list is too short!"
-  | failing_function [x,y] = raise Overflow  (* used for arithmetic *)
+  | failing_function [x,y] = raise Overflow  (* 산술에 사용됨 *)
   | failing_function xs    = raise Fail "This list is too long!"
 
-(* We can pattern match in 'handle' to make sure
-   a specific exception was raised, or grab the message *)
+(* 'handle'에서 패턴 매칭하여
+   특정 예외가 발생했는지 확인하거나 메시지를 가져올 수 있습니다 *)
 val err_msg = failing_function [1,2] handle Fail _ => "Fail was raised"
                                           | Domain => "Domain was raised"
                                           | Empty  => "Empty was raised"
                                           | _      => "Unknown exception"
 
-(* err_msg now has the value "Unknown exception" because Overflow isn't
-   listed as one of the patterns -- thus, the catch-all pattern _ is used. *)
+(* err_msg는 이제 "Unknown exception" 값을 가집니다. Overflow가
+   패턴 중 하나로 나열되지 않았기 때문입니다. 따라서 catch-all 패턴 _이
+   사용됩니다. *)
 
-(* We can define our own exceptions like this *)
+(* 다음과 같이 자신만의 예외를 정의할 수 있습니다 *)
 exception MyException
 exception MyExceptionWithMessage of string
 exception SyntaxError of string * (int * int)
 
-(* File I/O! *)
-(* Write a nice poem to a file *)
+(* 파일 I/O! *)
+(* 파일에 멋진 시 쓰기 *)
 fun writePoem(filename) =
     let val file = TextIO.openOut(filename)
         val _ = TextIO.output(file, "Roses are red,\nViolets are blue.\n")
@@ -438,7 +437,7 @@ fun writePoem(filename) =
     in TextIO.closeOut(file)
     end
 
-(* Read a nice poem from a file into a list of strings *)
+(* 파일에서 멋진 시를 문자열 목록으로 읽기 *)
 fun readPoem(filename) =
     let val file = TextIO.openIn filename
         val poem = TextIO.inputAll file
@@ -447,38 +446,38 @@ fun readPoem(filename) =
     end
 
 val _ = writePoem "roses.txt"
-val test_poem = readPoem "roses.txt"  (* gives [ "Roses are red,",
+val test_poem = readPoem "roses.txt"  (* [ "Roses are red,",
                                                  "Violets are blue.",
                                                  "I have a gun.",
-                                                 "Get in the van." ] *)
+                                                 "Get in the van." ]을 제공 *)
 
-(* We can create references to data which can be updated *)
-val counter = ref 0 (* Produce a reference with the ref function *)
+(* 업데이트할 수 있는 데이터에 대한 참조를 만들 수 있습니다 *)
+val counter = ref 0 (* ref 함수로 참조 생성 *)
 
-(* Assign to a reference with the assignment operator *)
+(* 할당 연산자로 참조에 할당 *)
 fun set_five reference = reference := 5
 
-(* Read a reference with the dereference operator *)
+(* 역참조 연산자로 참조 읽기 *)
 fun equals_five reference = !reference = 5
 
-(* We can use while loops for when recursion is messy *)
+(* 재귀가 복잡할 때 while 루프를 사용할 수 있습니다 *)
 fun decrement_to_zero r = if !r < 0
                           then r := 0
                           else while !r >= 0 do r := !r - 1
 
-(* This returns the unit value (in practical terms, nothing, a 0-tuple) *)
+(* 이것은 단위 값을 반환합니다 (실질적으로는 아무것도 아님, 0-튜플) *)
 
-(* To allow returning a value, we can use the semicolon to sequence evaluations *)
+(* 값을 반환하도록 허용하려면 세미콜론을 사용하여 평가를 시퀀싱할 수 있습니다 *)
 fun decrement_ret x y = (x := !x - 1; y)
 ```
 
-## Further learning
+## 추가 학습
 
-* Install an interactive compiler (REPL), for example
+* 대화형 컴파일러(REPL) 설치, 예를 들어
   [Poly/ML](http://www.polyml.org/),
   [Moscow ML](http://mosml.org),
   [SML/NJ](http://smlnj.org/).
-* Follow the Coursera course [Programming Languages](https://www.coursera.org/course/proglang).
-* Read *[ML for the Working Programmer](https://www.cl.cam.ac.uk/~lp15/MLbook/pub-details.html)* by Larry C. Paulson.
-* Use [StackOverflow's sml tag](http://stackoverflow.com/questions/tagged/sml).
-* Solve exercises on [Exercism.io's Standard ML track](https://exercism.io/tracks/sml).
+* Coursera 과정 [프로그래밍 언어](https://www.coursera.org/course/proglang) 수강.
+* Larry C. Paulson의 *[ML for the Working Programmer](https://www.cl.cam.ac.uk/~lp15/MLbook/pub-details.html)* 읽기.
+* [StackOverflow의 sml 태그](http://stackoverflow.com/questions/tagged/sml) 사용.
+* [Exercism.io의 Standard ML 트랙](https://exercism.io/tracks/sml)에서 연습 문제 풀기.

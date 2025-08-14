@@ -1,5 +1,3 @@
-# sass.md (번역)
-
 ---
 name: Sass
 filename: learnsass.scss
@@ -10,35 +8,35 @@ contributors:
   - ["Keith Miyake", "https://github.com/kaymmm"]
 ---
 
-Sass is a CSS extension language that adds features such as variables, nesting, mixins and more.
-Sass (and other preprocessors, such as [Less](http://lesscss.org/)) help developers write maintainable and DRY (Don't Repeat Yourself) code.
+Sass는 변수, 중첩, 믹스인 등과 같은 기능을 추가하는 CSS 확장 언어입니다.
+Sass(및 [Less](http://lesscss.org/)와 같은 다른 전처리기)는 개발자가 유지 관리 가능하고 DRY(반복하지 않기) 코드를 작성하는 데 도움이 됩니다.
 
-Sass has two different syntax options to choose from. SCSS, which has the same syntax as CSS but with the added features of Sass. Or Sass (the original syntax), which uses indentation rather than curly braces and semicolons.
-This tutorial is written using SCSS.
+Sass에는 선택할 수 있는 두 가지 다른 구문 옵션이 있습니다. SCSS는 CSS와 동일한 구문을 가지고 있지만 Sass의 추가 기능이 있습니다. 또는 Sass(원래 구문)는 중괄호와 세미콜론 대신 들여쓰기를 사용합니다.
+이 튜토리얼은 SCSS를 사용하여 작성되었습니다.
 
-If you're already familiar with CSS3, you'll be able to pick up Sass relatively quickly. It does not provide any new styling properties but rather the tools to write your CSS more efficiently and make maintenance much easier.
+이미 CSS3에 익숙하다면 Sass를 비교적 빨리 배울 수 있습니다. 새로운 스타일링 속성을 제공하는 것이 아니라 CSS를 보다 효율적으로 작성하고 유지 관리를 훨씬 쉽게 만드는 도구를 제공합니다.
 
 ```scss
-//Single line comments are removed when Sass is compiled to CSS.
+//한 줄 주석은 Sass가 CSS로 컴파일될 때 제거됩니다.
 
-/* Multi line comments are preserved. */
+/* 여러 줄 주석은 유지됩니다. */
 
 
 
-/* Variables
+/* 변수
 ============================== */
 
 
 
-/* You can store a CSS value (such as a color) in a variable.
-Use the '$' symbol to create a variable. */
+/* CSS 값(예: 색상)을 변수에 저장할 수 있습니다.
+'$' 기호를 사용하여 변수를 만듭니다. */
 
 $primary-color: #A3A4FF;
 $secondary-color: #51527F;
 $body-font: 'Roboto', sans-serif;
 
-/* You can use the variables throughout your stylesheet.
-Now if you want to change a color, you only have to make the change once. */
+/* 스타일시트 전체에서 변수를 사용할 수 있습니다.
+이제 색상을 변경하려면 한 번만 변경하면 됩니다. */
 
 body {
 	background-color: $primary-color;
@@ -46,31 +44,31 @@ body {
 	font-family: $body-font;
 }
 
-/* This would compile to: */
+/* 이것은 다음과 같이 컴파일됩니다: */
 body {
 	background-color: #A3A4FF;
 	color: #51527F;
 	font-family: 'Roboto', sans-serif;
 }
 
-/* This is much more maintainable than having to change the color
-each time it appears throughout your stylesheet. */
+/* 이것은 스타일시트 전체에서 색상이 나타날 때마다
+변경해야 하는 것보다 훨씬 유지 관리가 용이합니다. */
 
 
 
-/* Control Directives
+/* 제어 지시문
 ============================== */
 
-/* Sass lets you use @if, @else, @for, @while, and @each to control the
-   compilation of your code to CSS. */
+/* Sass는 @if, @else, @for, @while 및 @each를 사용하여
+   코드를 CSS로 컴파일하는 것을 제어할 수 있습니다. */
 
-/* @if/@else blocks behave exactly as you might expect */
+/* @if/@else 블록은 예상대로 정확하게 작동합니다. */
 
 $debug: true !default;
 
 @mixin debugmode {
 	@if $debug {
-		@debug "Debug mode enabled";
+		@debug "디버그 모드 활성화됨";
 
 		display: inline-block;
 	}
@@ -83,20 +81,20 @@ $debug: true !default;
 	@include debugmode;
 }
 
-/* If $debug is set to true, .info is displayed; if it's set to false then
-.info is not displayed.
+/* $debug가 true로 설정되면 .info가 표시되고, false로 설정되면
+.info가 표시되지 않습니다.
 
-Note: @debug will output debugging information to the command line.
-Useful for checking variables while debugging your SCSS. */
+참고: @debug는 명령줄에 디버깅 정보를 출력합니다.
+SCSS를 디버깅하는 동안 변수를 확인하는 데 유용합니다. */
 
 .info {
 	display: inline-block;
 }
 
-/* @for is a control loop that iterates through a range of values.
-Particularly useful for setting styles on a collection of items.
-There are two forms, "through" and "to". The former includes the last value,
-the latter stops at the last value. */
+/* @for는 값 범위를 반복하는 제어 루프입니다.
+항목 모음에 스타일을 설정하는 데 특히 유용합니다.
+"through"와 "to"의 두 가지 형식이 있습니다. 전자는 마지막 값을 포함하고,
+후자는 마지막 값에서 멈춥니다. */
 
 @for $c from 1 to 4 {
 	div:nth-of-type(#{$c}) {
@@ -110,7 +108,7 @@ the latter stops at the last value. */
 	}
 }
 
-/* Will compile to: */
+/* 다음과 같이 컴파일됩니다: */
 
 div:nth-of-type(1) {
 	left: 0;
@@ -134,10 +132,10 @@ div:nth-of-type(3) {
 
 .myclass-3 {
 	color: white;
-// SASS automatically converts #FFFFFF to white
+// SASS는 #FFFFFF를 자동으로 white로 변환합니다.
 }
 
-/* @while is very straightforward: */
+/* @while은 매우 간단합니다: */
 
 $columns: 4;
 $column-width: 80px;
@@ -151,7 +149,7 @@ $column-width: 80px;
 	$columns: $columns - 1;
 }
 
-/* Will output the following CSS: */
+/* 다음 CSS를 출력합니다: */
 
 .col-4 {
 	width: 80px;
@@ -173,9 +171,9 @@ $column-width: 80px;
 	left: 0px;
 }
 
-/* @each functions like @for, except using a list instead of ordinal values
-Note: you specify lists just like other variables, with spaces as
-delimiters. */
+/* @each는 서수 값 대신 목록을 사용하는 것을 제외하고 @for와 같이 작동합니다.
+참고: 다른 변수와 마찬가지로 목록을 지정하며 공백을
+구분 기호로 사용합니다. */
 
 $social-links: facebook twitter linkedin reddit;
 
@@ -187,7 +185,7 @@ $social-links: facebook twitter linkedin reddit;
 	}
 }
 
-/* Which will output: */
+/* 다음과 같이 출력됩니다: */
 
 .social-links .icon-facebook {
 	background-image: url("images/facebook.png");
@@ -206,13 +204,13 @@ $social-links: facebook twitter linkedin reddit;
 }
 
 
-/* Mixins
+/* 믹스인
 ==============================*/
 
-/* If you find you are writing the same code for more than one
-element, you might want to store that code in a mixin.
+/* 둘 이상의 요소에 대해 동일한 코드를 작성하는 경우
+해당 코드를 믹스인에 저장할 수 있습니다.
 
-Use the '@mixin' directive, plus a name for your mixin. */
+'@mixin' 지시문과 믹스인 이름을 사용하십시오. */
 
 @mixin center {
 	display: block;
@@ -222,14 +220,14 @@ Use the '@mixin' directive, plus a name for your mixin. */
 	right: 0;
 }
 
-/* You can use the mixin with '@include' and the mixin name. */
+/* '@include'와 믹스인 이름을 사용하여 믹스인을 사용할 수 있습니다. */
 
 div {
 	@include center;
 	background-color: $primary-color;
 }
 
-/* Which would compile to: */
+/* 다음과 같이 컴파일됩니다: */
 div {
 	display: block;
 	margin-left: auto;
@@ -239,14 +237,14 @@ div {
 	background-color: #A3A4FF;
 }
 
-/* You can use mixins to create a shorthand property. */
+/* 믹스인을 사용하여 약식 속성을 만들 수 있습니다. */
 
 @mixin size($width, $height) {
 	width: $width;
 	height: $height;
 }
 
-/* Which you can invoke by passing width and height arguments. */
+/* 너비와 높이 인수를 전달하여 호출할 수 있습니다. */
 
 .rectangle {
 	@include size(100px, 60px);
@@ -256,7 +254,7 @@ div {
 	@include size(40px, 40px);
 }
 
-/* Compiles to: */
+/* 다음과 같이 컴파일됩니다: */
 .rectangle {
   width: 100px;
   height: 60px;
@@ -269,16 +267,15 @@ div {
 
 
 
-/* Functions
+/* 함수
 ============================== */
 
 
 
-/* Sass provides functions that can be used to accomplish a variety of
-   tasks. Consider the following */
+/* Sass는 다양한 작업을 수행하는 데 사용할 수 있는 함수를 제공합니다.
+   다음을 고려하십시오. */
 
-/* Functions can be invoked by using their name and passing in the
-   required arguments */
+/* 함수는 이름을 사용하고 필요한 인수를 전달하여 호출할 수 있습니다. */
 body {
   width: round(10.25px);
 }
@@ -287,7 +284,7 @@ body {
   background-color: fade_out(#000000, 0.25);
 }
 
-/* Compiles to: */
+/* 다음과 같이 컴파일됩니다: */
 
 body {
   width: 10px;
@@ -297,15 +294,15 @@ body {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-/* You may also define your own functions. Functions are very similar to
-   mixins. When trying to choose between a function or a mixin, remember
-   that mixins are best for generating CSS while functions are better for
-   logic that might be used throughout your Sass code. The examples in
-   the 'Math Operators' section are ideal candidates for becoming a reusable
-   function. */
+/* 자신만의 함수를 정의할 수도 있습니다. 함수는 믹스인과 매우 유사합니다.
+   함수와 믹스인 중에서 선택할 때 믹스인은
+   CSS를 생성하는 데 가장 적합하고 함수는 Sass 코드 전체에서
+   사용될 수 있는 논리에 더 적합하다는 것을 기억하십시오.
+   '수학 연산자' 섹션의 예는 재사용 가능한
+   함수가 되기에 이상적인 후보입니다. */
 
-/* This function will take a target size and the parent size and calculate
-   and return the percentage */
+/* 이 함수는 대상 크기와 부모 크기를 가져와
+   백분율을 계산하고 반환합니다. */
 
 @function calculate-percentage($target-size, $parent-size) {
   @return $target-size / $parent-size * 100%;
@@ -321,7 +318,7 @@ $main-content: calculate-percentage(600px, 960px);
   width: calculate-percentage(300px, 960px);
 }
 
-/* Compiles to: */
+/* 다음과 같이 컴파일됩니다: */
 
 .main-content {
   width: 62.5%;
@@ -333,12 +330,12 @@ $main-content: calculate-percentage(600px, 960px);
 
 
 
-/* Extend (Inheritance)
+/* 확장 (상속)
 ============================== */
 
 
 
-/* Extend is a way to share the properties of one selector with another. */
+/* 확장은 한 선택자의 속성을 다른 선택자와 공유하는 방법입니다. */
 
 .display {
 	@include size(5em, 5em);
@@ -350,7 +347,7 @@ $main-content: calculate-percentage(600px, 960px);
 	border-color: #22df56;
 }
 
-/* Compiles to: */
+/* 다음과 같이 컴파일됩니다: */
 .display, .display-success {
   width: 5em;
   height: 5em;
@@ -361,21 +358,21 @@ $main-content: calculate-percentage(600px, 960px);
   border-color: #22df56;
 }
 
-/* Extending a CSS statement is preferable to creating a mixin
-   because of the way Sass groups together the classes that all share
-   the same base styling. If this was done with a mixin, the width,
-   height, and border would be duplicated for each statement that
-   called the mixin. While it won't affect your workflow, it will
-   add unnecessary bloat to the files created by the Sass compiler. */
+/* CSS 문을 확장하는 것이 믹스인을 만드는 것보다 바람직합니다.
+   Sass가 동일한 기본 스타일을 공유하는 모든 클래스를
+   그룹화하는 방식 때문입니다. 믹스인으로 수행했다면
+   너비, 높이 및 테두리가 믹스인을 호출한 각 문에 대해
+   복제됩니다. 작업 흐름에 영향을 미치지는 않지만
+   Sass 컴파일러가 만든 파일에 불필요한 팽창을 추가합니다. */
 
 
 
-/* Nesting
+/* 중첩
 ============================== */
 
 
 
-/* Sass allows you to nest selectors within selectors */
+/* Sass는 선택자 내에 선택자를 중첩할 수 있습니다. */
 
 ul {
 	list-style-type: none;
@@ -386,11 +383,11 @@ ul {
 	}
 }
 
-/* '&' will be replaced by the parent selector. */
-/* You can also nest pseudo-classes. */
-/* Keep in mind that over-nesting will make your code less maintainable.
-Best practices recommend going no more than 3 levels deep when nesting.
-For example: */
+/* '&'는 부모 선택자로 대체됩니다. */
+/* 의사 클래스를 중첩할 수도 있습니다. */
+/* 과도한 중첩은 코드를 덜 유지 관리하기 쉽게 만든다는 점을 명심하십시오.
+모범 사례는 중첩할 때 3단계 이상 깊이 들어가지 않는 것을 권장합니다.
+예를 들어: */
 
 ul {
 	list-style-type: none;
@@ -409,7 +406,7 @@ ul {
 	}
 }
 
-/* Compiles to: */
+/* 다음과 같이 컴파일됩니다: */
 
 ul {
   list-style-type: none;
@@ -430,16 +427,16 @@ ul li a {
 
 
 
-/* Partials and Imports
+/* 부분 파일 및 가져오기
 ============================== */
 
 
 
-/* Sass allows you to create partial files. This can help keep your Sass
-   code modularized. Partial files should begin with an '_', e.g. _reset.css.
-   Partials are not generated into CSS. */
+/* Sass는 부분 파일을 만들 수 있습니다. 이렇게 하면 Sass
+   코드를 모듈화하는 데 도움이 될 수 있습니다. 부분 파일은 '_'로 시작해야 합니다(예: _reset.css).
+   부분 파일은 CSS로 생성되지 않습니다. */
 
-/* Consider the following CSS which we'll put in a file called _reset.css */
+/* _reset.css라는 파일에 넣을 다음 CSS를 고려하십시오. */
 
 html,
 body,
@@ -449,10 +446,10 @@ ol {
   padding: 0;
 }
 
-/* Sass offers @import which can be used to import partials into a file.
-   This differs from the traditional CSS @import statement which makes
-   another HTTP request to fetch the imported file. Sass takes the
-   imported file and combines it with the compiled code. */
+/* Sass는 부분 파일을 파일로 가져오는 데 사용할 수 있는 @import를 제공합니다.
+   이것은 가져온 파일을 가져오기 위해 다른 HTTP 요청을 하는
+   전통적인 CSS @import 문과 다릅니다. Sass는 가져온
+   파일을 가져와 컴파일된 코드와 결합합니다. */
 
 @import 'reset';
 
@@ -461,7 +458,7 @@ body {
   font-family: Helvetica, Arial, Sans-serif;
 }
 
-/* Compiles to: */
+/* 다음과 같이 컴파일됩니다: */
 
 html, body, ul, ol {
   margin: 0;
@@ -475,15 +472,15 @@ body {
 
 
 
-/* Placeholder Selectors
+/* 자리 표시자 선택자
 ============================== */
 
 
 
-/* Placeholders are useful when creating a CSS statement to extend. If you
-   wanted to create a CSS statement that was exclusively used with @extend,
-   you can do so using a placeholder. Placeholders begin with a '%' instead
-   of '.' or '#'. Placeholders will not appear in the compiled CSS. */
+/* 자리 표시자는 확장할 CSS 문을 만들 때 유용합니다.
+   @extend와 함께 독점적으로 사용되는 CSS 문을 만들고 싶다면
+   자리 표시자를 사용하여 그렇게 할 수 있습니다. 자리 표시자는 '.' 또는 '#' 대신
+   '%'로 시작합니다. 자리 표시자는 컴파일된 CSS에 나타나지 않습니다. */
 
 %content-window {
   font-size: 14px;
@@ -497,7 +494,7 @@ body {
   background-color: #0000ff;
 }
 
-/* Compiles to: */
+/* 다음과 같이 컴파일됩니다: */
 
 .message-window {
   font-size: 14px;
@@ -512,15 +509,15 @@ body {
 
 
 
-/* Math Operations
+/* 수학 연산
 ============================== */
 
 
 
-/* Sass provides the following operators: +, -, *, /, and %. These can
-   be useful for calculating values directly in your Sass files instead
-   of using values that you've already calculated by hand. Below is an example
-   of a setting up a simple two column design. */
+/* Sass는 +, -, *, /, % 연산자를 제공합니다. 이것들은
+   직접 계산한 값을 사용하는 대신 Sass 파일에서 직접
+   값을 계산하는 데 유용할 수 있습니다. 아래는 간단한
+   2열 디자인을 설정하는 예입니다. */
 
 $content-area: 960px;
 $main-content: 600px;
@@ -546,7 +543,7 @@ body {
   width: $gutter;
 }
 
-/* Compiles to: */
+/* 다음과 같이 컴파일됩니다: */
 
 body {
   width: 100%;
@@ -565,22 +562,22 @@ body {
 }
 ```
 
-## SASS or Sass?
-Have you ever wondered whether Sass is an acronym or not? You probably haven't, but I'll tell you anyway. The name of the language is a word, "Sass", and not an acronym.
-Because people were constantly writing it as "SASS", the creator of the language jokingly called it "Syntactically Awesome StyleSheets".
+## SASS인가, Sass인가?
+Sass가 약어인지 궁금한 적이 있습니까? 아마 없을 것입니다. 하지만 어쨌든 알려 드리겠습니다. 언어의 이름은 "Sass"라는 단어이며 약어가 아닙니다.
+사람들이 계속 "SASS"라고 썼기 때문에 언어 제작자는 농담으로 "구문적으로 멋진 스타일시트(Syntactically Awesome StyleSheets)"라고 불렀습니다.
 
 
-## Practice Sass
-If you want to play with Sass in your browser, check out [SassMeister](http://sassmeister.com/).
-You can use either syntax, just go into the settings and select either Sass or SCSS.
+## Sass 연습
+브라우저에서 Sass를 가지고 놀고 싶다면 [SassMeister](http://sassmeister.com/)를 확인하십시오.
+두 구문 중 하나를 사용할 수 있으며, 설정으로 이동하여 Sass 또는 SCSS를 선택하기만 하면 됩니다.
 
 
-## Compatibility
-Sass can be used in any project as long as you have a program to compile it into CSS. You'll want to verify that the CSS you're using is compatible with your target browsers.
+## 호환성
+Sass는 CSS로 컴파일하는 프로그램이 있는 한 모든 프로젝트에서 사용할 수 있습니다. 사용 중인 CSS가 대상 브라우저와 호환되는지 확인해야 합니다.
 
-[QuirksMode CSS](http://www.quirksmode.org/css/) and [CanIUse](http://caniuse.com) are great resources for checking compatibility.
+[QuirksMode CSS](http://www.quirksmode.org/css/) 및 [CanIUse](http://caniuse.com)는 호환성을 확인하는 데 훌륭한 리소스입니다.
 
 
-## Further reading
-* [Official Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
-* [The Sass Way](http://thesassway.com/) provides tutorials (beginner-advanced) and articles.
+## 더 읽을거리
+* [공식 문서](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
+* [The Sass Way](http://thesassway.com/)는 튜토리얼(초급-고급)과 기사를 제공합니다.

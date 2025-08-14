@@ -1,5 +1,3 @@
-# qsharp.md (번역)
-
 ---
 name: Q#
 contributors:
@@ -10,116 +8,116 @@ contributors:
 filename: LearnQSharp.qs
 ---
 
-Q# is a high-level domain-specific language which enables developers to write quantum algorithms. Q# programs can be executed on a quantum simulator running on a classical computer and (in future) on quantum computers.
+Q#은 개발자가 양자 알고리즘을 작성할 수 있도록 하는 고급 도메인 특정 언어입니다. Q# 프로그램은 클래식 컴퓨터에서 실행되는 양자 시뮬레이터와 (향후) 양자 컴퓨터에서 실행할 수 있습니다.
 
 ```c#
-// Single-line comments start with //
+// 한 줄 주석은 //로 시작합니다
 
 
 /////////////////////////////////////
-// 1. Quantum data types and operators
+// 1. 양자 데이터 유형 및 연산자
 
-// The most important part of quantum programs is qubits.
-// In Q# type Qubit represents the qubits which can be used.
-// This will allocate an array of two new qubits as the variable qs.
+// 양자 프로그램의 가장 중요한 부분은 큐비트입니다.
+// Q#에서 Qubit 유형은 사용할 수 있는 큐비트를 나타냅니다.
+// 이것은 변수 qs로 두 개의 새 큐비트 배열을 할당합니다.
 operation QuantumDataTypes() : Unit {
     use qs = Qubit[2];
 
-    // The qubits have internal state that you cannot access to read or modify directly.
-    // You can inspect the current state of your quantum program
-    // if you're running it on a classical simulator.
-    // Note that this will not work on actual quantum hardware!
+    // 큐비트에는 직접 읽거나 수정할 수 없는 내부 상태가 있습니다.
+    // 클래식 시뮬레이터에서 실행하는 경우 양자 프로그램의
+    // 현재 상태를 검사할 수 있습니다.
+    // 실제 양자 하드웨어에서는 작동하지 않습니다!
     Std.Diagnostics.DumpMachine();
 
-    // If you want to change the state of a qubit
-    // you have to do this by applying quantum gates to the qubit.
-    H(qs[0]);   // This changes the state of the first qubit
-    // from |0⟩ (the initial state of allocated qubits)
-    // to (|0⟩ + |1⟩) / sqrt(2).
-    // qs[1] = |1⟩; - this does NOT work, you have to manipulate a qubit by using gates.
+    // 큐비트의 상태를 변경하려면
+    // 큐비트에 양자 게이트를 적용해야 합니다.
+    H(qs[0]);   // 이것은 첫 번째 큐비트의 상태를 변경합니다
+    // |0⟩ (할당된 큐비트의 초기 상태)에서
+    // (|0⟩ + |1⟩) / sqrt(2)로.
+    // qs[1] = |1⟩; - 이것은 작동하지 않으며, 게이트를 사용하여 큐비트를 조작해야 합니다.
 
-    // You can apply multi-qubit gates to several qubits.
+    // 여러 큐비트에 다중 큐비트 게이트를 적용할 수 있습니다.
     CNOT(qs[0], qs[1]);
 
-    // You can also apply a controlled version of a gate:
-    // a gate that is applied if all control qubits are in |1⟩ state.
-    // The first argument is an array of control qubits,
-    // the second argument is the target qubit.
+    // 게이트의 제어된 버전을 적용할 수도 있습니다:
+    // 모든 제어 큐비트가 |1⟩ 상태일 때 적용되는 게이트입니다.
+    // 첫 번째 인수는 제어 큐비트 배열이고,
+    // 두 번째 인수는 대상 큐비트입니다.
     Controlled Y([qs[0]], qs[1]);
 
-    // If you want to apply an anti-controlled gate
-    // (a gate that is applied if all control qubits are in |0⟩ state),
-    // you can use a library function.
+    // 역제어 게이트를 적용하려면
+    // (모든 제어 큐비트가 |0⟩ 상태일 때 적용되는 게이트),
+    // 라이브러리 함수를 사용할 수 있습니다.
     ApplyControlledOnInt(0, X, [qs[0]], qs[1]);
 
-    // To read the information from the quantum system, you use measurements.
-    // Measurements return a value of Result data type: Zero or One.
-    // You can print measurement results as a classical value.
+    // 양자 시스템에서 정보를 읽으려면 측정을 사용합니다.
+    // 측정은 Result 데이터 유형의 값(Zero 또는 One)을 반환합니다.
+    // 측정 결과를 클래식 값으로 인쇄할 수 있습니다.
     Message($"Measured {M(qs[0])}, {M(qs[1])}");
 }
 
 
 /////////////////////////////////////
-// 2. Classical data types and operators
+// 2. 클래식 데이터 유형 및 연산자
 
 function ClassicalDataTypes() : Unit {
-    // Numbers in Q# can be stored in Int, BigInt or Double.
-    let i = 1;            // This defines an Int variable i equal to 1
-    let bi = 1L;          // This defines a BigInt variable bi equal to 1
-    let d = 1.0;          // This defines a Double variable d equal to 1
+    // Q#의 숫자는 Int, BigInt 또는 Double에 저장할 수 있습니다.
+    let i = 1;            // 이것은 1과 같은 Int 변수 i를 정의합니다
+    let bi = 1L;          // 이것은 1과 같은 BigInt 변수 bi를 정의합니다
+    let d = 1.0;          // 이것은 1과 같은 Double 변수 d를 정의합니다
 
-    // Arithmetic is done as expected, as long as the types are the same
+    // 유형이 동일한 한 산술은 예상대로 수행됩니다
     let n = 2 * 10;                // = 20
-    // Q# does not have implicit type cast,
-    // so to perform arithmetic on values of different types,
-    // you need to cast type explicitly
+    // Q#에는 암시적 유형 캐스트가 없으므로
+    // 다른 유형의 값에 대해 산술을 수행하려면
+    // 명시적으로 유형을 캐스트해야 합니다
     let nd = Std.Convert.IntAsDouble(2) * 1.0; // = 20.0
 
-    // Boolean type is called Bool
+    // 부울 유형은 Bool이라고 합니다
     let trueBool = true;
     let falseBool = false;
 
-    // Logic operators work as expected
+    // 논리 연산자는 예상대로 작동합니다
     let andBool = true and false;
     let orBool = true or false;
     let notBool = not false;
 
-    // Strings
+    // 문자열
     let str = "Hello World!";
 
-    // Equality is ==
-    let x = 10 == 15; // is false
+    // 등호는 == 입니다
+    let x = 10 == 15; // 거짓입니다
 
-    // Range is a sequence of integers and can be defined like: start..step..stop
-    let xi = 1..2..7; // Gives the sequence 1,3,5,7
+    // 범위는 정수 시퀀스이며 다음과 같이 정의할 수 있습니다: start..step..stop
+    let xi = 1..2..7; // 시퀀스 1,3,5,7을 제공합니다
 
-    // Assigning new value to a variable:
-    // by default all Q# variables are immutable;
-    // if the variable was defined using let, you cannot reassign its value.
+    // 변수에 새 값 할당:
+    // 기본적으로 모든 Q# 변수는 불변입니다.
+    // 변수가 let을 사용하여 정의된 경우 값을 다시 할당할 수 없습니다.
 
-    // When you want to make a variable mutable, you have to declare it as such,
-    // and use the set word to update value
+    // 변수를 변경 가능하게 만들려면 다음과 같이 선언해야 합니다.
+    // 그리고 set 단어를 사용하여 값을 업데이트합니다
     mutable xii = true;
     set xii = false;
 
-    // You can create an array for any data type like this
+    // 다음과 같이 모든 데이터 유형에 대한 배열을 만들 수 있습니다
     let xiii = [0.0, size = 10];
 
-    // Getting an element from an array
+    // 배열에서 요소 가져오기
     let xiv = xiii[8];
 
-    // Assigning a new value to an array element
+    // 배열 요소에 새 값 할당
     mutable xv = [0.0, size = 10];
     set xv w/= 5 <- 1.0;
 }
 
 
 /////////////////////////////////////
-// 3. Control flow
+// 3. 제어 흐름
 
 operation ControlFlow() : Unit {
     let a = 1;
-    // If expressions support a true branch, elif, and else.
+    // If 표현식은 true 분기, elif 및 else를 지원합니다.
     if (a == 1) {
         // ...
     } elif (a == 2) {
@@ -129,83 +127,83 @@ operation ControlFlow() : Unit {
     }
     use qubits = Qubit[2];
 
-    // For loops can be used to iterate over an array
+    // For 루프를 사용하여 배열을 반복할 수 있습니다
     for qubit in qubits {
         X(qubit);
     }
 
-    // Regular for loops can be used to iterate over a range of numbers
+    // 일반 for 루프를 사용하여 숫자 범위를 반복할 수 있습니다
     for index in 0..Length(qubits) - 1 {
         X(qubits[index]);
     }
 
-    // While loops are restricted for use in classical context only
+    // While 루프는 클래식 컨텍스트에서만 사용하도록 제한됩니다
     mutable index = 0;
     while (index < 10) {
         set index += 1;
     }
 
     let success_criteria = true;
-    // Quantum equivalent of a while loop is a repeat-until-success loop.
-    // Because of the probabilistic nature of quantum computing sometimes
-    // you want to repeat a certain sequence of operations
-    // until a specific condition is achieved; you can use this loop to express this.
+    // while 루프의 양자 등가물은 repeat-until-success 루프입니다.
+    // 양자 컴퓨팅의 확률적 특성으로 인해 때로는
+    // 특정 작업 시퀀스를 반복하고 싶을 수 있습니다
+    // 특정 조건이 달성될 때까지; 이 루프를 사용하여 이를 표현할 수 있습니다.
     repeat {
-        // Your operation here
-    } until (success_criteria) // This could be a measurement to check if the state is reached
+        // 여기에 작업
+    } until (success_criteria) // 상태가 도달했는지 확인하기 위한 측정일 수 있습니다
     fixup {
-        // Resetting to the initial conditions, if required
+        // 필요한 경우 초기 조건으로 재설정
     }
 }
 
 /////////////////////////////////////
-// 4. Putting it all together
+// 4. 모두 합치기
 
-// Q# code is written in operations and functions
+// Q# 코드는 연산과 함수로 작성됩니다
 operation ApplyXGate(source : Qubit) : Unit {
     X(source);
 }
 
-// If the operation implements a unitary transformation, you can define
-// adjoint and controlled variants of it.
-// The easiest way to do that is to add "is Adj + Ctl" after Unit.
-// This will tell the compiler to generate the variants automatically.
+// 연산이 단일 변환을 구현하는 경우
+// 해당 연산의 인접 및 제어된 변형을 정의할 수 있습니다.
+// 가장 쉬운 방법은 Unit 뒤에 "is Adj + Ctl"을 추가하는 것입니다.
+// 이것은 컴파일러에 변형을 자동으로 생성하도록 지시합니다.
 operation ApplyXGateCA(source : Qubit) : Unit is Adj + Ctl {
     X(source);
 }
 
-// Now you can call Adjoint ApplyXGateCA and Controlled ApplyXGateCA.
+// 이제 Adjoint ApplyXGateCA 및 Controlled ApplyXGateCA를 호출할 수 있습니다.
 
 
-// To run Q# code, you can put @EntryPoint() before the operation you want to run first
+// Q# 코드를 실행하려면 먼저 실행하려는 연산 앞에 @EntryPoint()를 넣을 수 있습니다
 operation XGateDemo() : Unit {
     use q = Qubit();
     ApplyXGate(q);
 }
 
-// Here is a simple example: a quantum random number generator.
-// We will generate a classical array of random bits using quantum code.
-// Callables (functions or operations) named `Main` are used as entry points.
+// 간단한 예: 양자 난수 생성기입니다.
+// 양자 코드를 사용하여 클래식 난수 비트 배열을 생성합니다.
+// `Main`이라는 이름의 호출 가능 항목(함수 또는 연산)은 진입점으로 사용됩니다.
 operation Main() : Unit {
-    mutable bits = [0, size = 5];                // Array we'll use to store bits
+    mutable bits = [0, size = 5];                // 비트를 저장하는 데 사용할 배열
     use q  = Qubit();
     {
-        // Allocate a qubit
+        // 큐비트 할당
         for i in 0..4 {
-            // Generate each bit independently
-            H(q);                             // Hadamard gate sets equal superposition
-            let result = M(q);                // Measure qubit gets 0|1 with 50/50 prob
-            let bit = result == Zero ? 0 | 1; // Convert measurement result to integer
-            set bits w/= i <- bit;            // Write generated bit to an array
+            // 각 비트를 독립적으로 생성
+            H(q);                             // Hadamard 게이트는 동일한 중첩을 설정합니다
+            let result = M(q);                // 큐비트 측정은 50/50 확률로 0|1을 얻습니다
+            let bit = result == Zero ? 0 | 1; // 측정 결과를 정수로 변환
+            set bits w/= i <- bit;            // 생성된 비트를 배열에 씁니다
         }
     }
-    Message($"{bits}");                       // Print the result
+    Message($"{bits}");                       // 결과 인쇄
 }
 ```
 
 
-## Further Reading
+## 더 읽을거리
 
-The Quantum Katas ([repo](https://github.com/microsoft/qsharp/tree/main/katas) [hosted tutorials](https://quantum.microsoft.com/en-us/tools/quantum-katas) offer great self-paced tutorials and programming exercises to learn quantum computing and Q#.
+Quantum Katas ([저장소](https://github.com/microsoft/qsharp/tree/main/katas) [호스팅된 튜토리얼](https://quantum.microsoft.com/en-us/tools/quantum-katas))는 양자 컴퓨팅과 Q#을 배우기 위한 훌륭한 자습형 튜토리얼과 프로그래밍 연습을 제공합니다.
 
-[Q# Documentation](https://docs.microsoft.com/quantum/) is official Q# documentation, including language reference and user guides.
+[Q# 문서](https://docs.microsoft.com/quantum/)는 언어 참조 및 사용자 가이드를 포함한 공식 Q# 문서입니다.

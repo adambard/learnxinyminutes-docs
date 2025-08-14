@@ -1,126 +1,124 @@
-# set-theory.md (번역)
-
 ---
-category: Algorithms & Data Structures
-name: Set theory
+category: 알고리즘 및 자료 구조
+name: 집합론
 contributors:
     - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
 ---
 
-Set theory is a branch of mathematics that studies sets, their operations, and their properties.
+집합론은 집합, 그 연산 및 속성을 연구하는 수학의 한 분야입니다.
 
-* A set is a collection of disjoint items.
+* 집합은 서로소 항목의 모음입니다.
 
-## Basic symbols
+## 기본 기호
 
-### Operators
-* the union operator, `∪`, pronounced "cup", means "or";
-* the intersection operator, `∩`, pronounced "cap", means "and";
-* the exclusion operator, `\`, means "without";
-* the complement operator, `'`, means "the inverse of";
-* the cross operator, `×`, means "the Cartesian product of".
+### 연산자
+* 합집합 연산자, `∪`, "컵"이라고 발음하며 "또는"을 의미합니다.
+* 교집합 연산자, `∩`, "캡"이라고 발음하며 "그리고"를 의미합니다.
+* 차집합 연산자, `\`, "없이"를 의미합니다.
+* 여집합 연산자, `'`, "의 역"을 의미합니다.
+* 곱집합 연산자, `×`, "의 데카르트 곱"을 의미합니다.
 
-### Qualifiers
-* the colon, `:`, or the vertical bar `|` qualifiers are interchangeable and mean "such that";
-* the membership qualifier, `∈`, means "belongs to";
-* the subset qualifier, `⊆`, means "is a subset of";
-* the proper subset qualifier, `⊂`, means "is a subset of but is not equal to".
+### 한정자
+* 콜론, `:`, 또는 수직 막대 `|` 한정자는 서로 바꿔 쓸 수 있으며 "그런"을 의미합니다.
+* 소속 한정자, `∈`, "에 속한다"를 의미합니다.
+* 부분집합 한정자, `⊆`, "의 부분집합이다"를 의미합니다.
+* 진부분집합 한정자, `⊂`, "의 부분집합이지만 같지는 않다"를 의미합니다.
 
-### Canonical sets
-* `∅`, the empty set, i.e. the set containing no items;
-* `ℕ`, the set of all natural numbers;
-* `ℤ`, the set of all integers;
-* `ℚ`, the set of all rational numbers;
-* `ℝ`, the set of all real numbers.
+### 표준 집합
+* `∅`, 공집합, 즉 항목을 포함하지 않는 집합입니다.
+* `ℕ`, 모든 자연수의 집합입니다.
+* `ℤ`, 모든 정수의 집합입니다.
+* `ℚ`, 모든 유리수의 집합입니다.
+* `ℝ`, 모든 실수의 집합입니다.
 
-There are a few caveats to mention regarding the canonical sets:
-1. Even though the empty set contains no items, the empty set is a subset of itself (and indeed every other set);
-2. Mathematicians generally do not universally agree on whether zero is a natural number, and textbooks will typically explicitly state whether or not the author considers zero to be a natural number.
+표준 집합에 관해 언급할 몇 가지 주의 사항이 있습니다:
+1. 공집합은 항목을 포함하지 않지만, 공집합은 그 자체의 부분집합입니다 (그리고 실제로 다른 모든 집합의 부분집합입니다).
+2. 수학자들은 일반적으로 0이 자연수인지에 대해 보편적으로 동의하지 않으며, 교과서는 일반적으로 저자가 0을 자연수로 간주하는지 여부를 명시적으로 기술합니다.
 
 
-### Cardinality
+### 기수
 
-The cardinality, or size, of a set is determined by the number of items in the set. The cardinality operator is given by a double pipe, `|...|`.
+집합의 기수 또는 크기는 집합에 있는 항목의 수에 따라 결정됩니다. 기수 연산자는 이중 파이프 `|...|`로 표시됩니다.
 
-For example, if `S = { 1, 2, 4 }`, then `|S| = 3`.
+예를 들어, `S = { 1, 2, 4 }`이면 `|S| = 3`입니다.
 
-### The Empty Set
-* The empty set can be constructed in set builder notation using impossible conditions, e.g. `∅ = { x : x ≠ x }`, or `∅ = { x : x ∈ N, x < 0 }`;
-* the empty set is always unique (i.e. there is one and only one empty set);
-* the empty set is a subset of all sets;
-* the cardinality of the empty set is 0, i.e. `|∅| = 0`.
+### 공집합
+* 공집합은 불가능한 조건을 사용하여 집합 작성자 표기법으로 구성할 수 있습니다. 예: `∅ = { x : x ≠ x }` 또는 `∅ = { x : x ∈ N, x < 0 }`.
+* 공집합은 항상 고유합니다 (즉, 공집합은 하나뿐입니다).
+* 공집합은 모든 집합의 부분집합입니다.
+* 공집합의 기수는 0입니다. 즉, `|∅| = 0`.
 
-## Representing sets
+## 집합 표현
 
-### Literal Sets
+### 리터럴 집합
 
-A set can be constructed literally by supplying a complete list of objects contained in the set. For example, `S = { a, b, c, d }`.
+집합은 집합에 포함된 객체의 전체 목록을 제공하여 문자 그대로 구성할 수 있습니다. 예를 들어, `S = { a, b, c, d }`.
 
-Long lists may be shortened with ellipses as long as the context is clear. For example, `E = { 2, 4, 6, 8, ... }` is clearly the set of all even numbers, containing an infinite number of objects, even though we've only explicitly written four of them.
+긴 목록은 컨텍스트가 명확한 한 줄임표로 줄일 수 있습니다. 예를 들어, `E = { 2, 4, 6, 8, ... }`는 명시적으로 네 개만 썼지만 무한한 수의 객체를 포함하는 모든 짝수의 집합임이 분명합니다.
 
-### Set Builder
+### 집합 작성자
 
-Set builder notation is a more descriptive way of constructing a set. It relies on a _subject_ and a _predicate_ such that `S = { subject : predicate }`. For example,
+집합 작성자 표기법은 집합을 구성하는 더 설명적인 방법입니다. `S = { 주체 : 술어 }`와 같이 _주체_와 _술어_에 의존합니다. 예를 들어,
 
 ```
-A = { x : x is a vowel } = { a, e, i, o, u }
+A = { x : x는 모음 } = { a, e, i, o, u }
 B = { x : x ∈ N, x < 10 } = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
 C = { x : x = 2k, k ∈ N } = { 0, 2, 4, 6, 8, ... }
 ```
 
-Sometimes the predicate may "leak" into the subject, e.g.
+때로는 술어가 주체로 "누출"될 수 있습니다. 예:
 
 ```
 D = { 2x : x ∈ N } = { 0, 2, 4, 6, 8, ... }
 ```
 
-## Relations
+## 관계
 
-### Membership
+### 소속
 
-* If the value `a` is contained in the set `A`, then we say `a` belongs to `A` and represent this symbolically as `a ∈ A`.
-* If the value `a` is not contained in the set `A`, then we say `a` does not belong to `A` and represent this symbolically as `a ∉ A`.
+* 값 `a`가 집합 `A`에 포함되어 있으면 `a`는 `A`에 속한다고 말하며 이것을 기호로 `a ∈ A`로 나타냅니다.
+* 값 `a`가 집합 `A`에 포함되어 있지 않으면 `a`는 `A`에 속하지 않는다고 말하며 이것을 기호로 `a ∉ A`로 나타냅니다.
 
-### Equality
+### 동등성
 
-* If two sets contain the same items then we say the sets are equal, e.g. `A = B`.
-* Order does not matter when determining set equality, e.g. `{ 1, 2, 3, 4 } = { 2, 3, 1, 4 }`.
-* Sets are disjoint, meaning elements cannot be repeated, e.g. `{ 1, 2, 2, 3, 4, 3, 4, 2 } = { 1, 2, 3, 4 }`.
-* Two sets `A` and `B` are equal if and only if `A ⊆ B` and `B ⊆ A`.
+* 두 집합이 동일한 항목을 포함하면 두 집합은 같다고 말합니다. 예: `A = B`.
+* 집합 동등성을 결정할 때 순서는 중요하지 않습니다. 예: `{ 1, 2, 3, 4 } = { 2, 3, 1, 4 }`.
+* 집합은 서로소이므로 요소가 반복될 수 없습니다. 예: `{ 1, 2, 2, 3, 4, 3, 4, 2 } = { 1, 2, 3, 4 }`.
+* 두 집합 `A`와 `B`가 같다는 것은 `A ⊆ B`이고 `B ⊆ A`인 경우에만 해당됩니다.
 
-## Special Sets
+## 특수 집합
 
-### The Power Set
-* Let `A` be any set. The set that contains all possible subsets of `A` is called a "power set" and is written as `P(A)`. If the set `A` contains `n` elements, then `P(A)` contains `2^n` elements.
+### 멱집합
+* `A`를 임의의 집합이라고 합시다. `A`의 모든 가능한 부분집합을 포함하는 집합을 "멱집합"이라고 하며 `P(A)`로 씁니다. 집합 `A`에 `n`개의 요소가 있으면 `P(A)`에는 `2^n`개의 요소가 있습니다.
 
 ```
 P(A) = { x : x ⊆ A }
 ```
 
-## Set operations among two sets
-### Union
-Given two sets `A` and `B`, the union of the two sets are the items that appear in either `A` or `B`, written as `A ∪ B`.
+## 두 집합 간의 집합 연산
+### 합집합
+두 집합 `A`와 `B`가 주어졌을 때, 두 집합의 합집합은 `A` 또는 `B`에 나타나는 항목이며, `A ∪ B`로 씁니다.
 
 ```
 A ∪ B = { x : x ∈ A ∪ x ∈ B }
 ```
 
-### Intersection
-Given two sets `A` and `B`, the intersection of the two sets are the items that appear in both `A` and `B`, written as `A ∩ B`.
+### 교집합
+두 집합 `A`와 `B`가 주어졌을 때, 두 집합의 교집합은 `A`와 `B` 모두에 나타나는 항목이며, `A ∩ B`로 씁니다.
 
 ```
 A ∩ B = { x : x ∈ A, x ∈ B }
 ```
 
-### Difference
-Given two sets `A` and `B`, the set difference of `A` with `B` is every item in `A` that does not belong to `B`.
+### 차집합
+두 집합 `A`와 `B`가 주어졌을 때, `A`와 `B`의 집합 차이는 `B`에 속하지 않는 `A`의 모든 항목입니다.
 
 ```
 A \ B = { x : x ∈ A, x ∉ B }
 ```
 
-### Symmetrical difference
-Given two sets `A` and `B`, the symmetrical difference is all items among `A` and `B` that doesn't appear in their intersections.
+### 대칭차집합
+두 집합 `A`와 `B`가 주어졌을 때, 대칭차집합은 교집합에 나타나지 않는 `A`와 `B`의 모든 항목입니다.
 
 ```
 A △ B = { x : ((x ∈ A) ∩ (x ∉ B)) ∪ ((x ∈ B) ∩ (x ∉ A)) }
@@ -128,8 +126,8 @@ A △ B = { x : ((x ∈ A) ∩ (x ∉ B)) ∪ ((x ∈ B) ∩ (x ∉ A)) }
 A △ B = (A \ B) ∪ (B \ A)
 ```
 
-### Cartesian product
-Given two sets `A` and `B`, the cartesian product between `A` and `B` consists of a set containing all combinations of items of `A` and `B`.
+### 데카르트 곱
+두 집합 `A`와 `B`가 주어졌을 때, `A`와 `B` 사이의 데카르트 곱은 `A`와 `B`의 모든 항목 조합을 포함하는 집합으로 구성됩니다.
 
 ```
 A × B = { (x, y) | x ∈ A, y ∈ B }

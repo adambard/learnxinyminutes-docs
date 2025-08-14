@@ -1,5 +1,3 @@
-# perl.md (번역)
-
 ---
 name: Perl
 filename: learnperl.pl
@@ -8,127 +6,125 @@ contributors:
     - ["Dan Book", "http://github.com/Grinnz"]
 ---
 
-Perl is a highly capable, feature-rich programming language with over 25 years of development.
+Perl은 25년 이상 개발되어 온 매우 유능하고 기능이 풍부한 프로그래밍 언어입니다.
 
-Perl runs on over 100 platforms from portables to mainframes and is suitable for both rapid prototyping and large scale development projects.
+Perl은 휴대용 장치에서 메인프레임에 이르기까지 100개 이상의 플랫폼에서 실행되며 신속한 프로토타이핑과 대규모 개발 프로젝트 모두에 적합합니다.
 
 ```perl
-# Single line comments start with a number sign.
+# 한 줄 주석은 숫자 기호로 시작합니다.
 
-#### Strict and warnings
+#### Strict 및 warnings
 
 use strict;
 use warnings;
 
-# All perl scripts and modules should include these lines. Strict causes
-# compilation to fail in cases like misspelled variable names, and
-# warnings will print warning messages in case of common pitfalls like
-# concatenating to an undefined value.
+# 모든 perl 스크립트와 모듈은 이 줄들을 포함해야 합니다. Strict는
+# 변수 이름 철자가 틀린 경우와 같은 경우에 컴파일을 실패하게 하고,
+# warnings는 정의되지 않은 값에 연결하는 것과 같은 일반적인 함정의 경우에
+# 경고 메시지를 출력합니다.
 
-#### Perl variable types
+#### Perl 변수 유형
 
-#  Variables begin with a sigil, which is a symbol showing the type.
-#  A valid variable name starts with a letter or underscore,
-#  followed by any number of letters, numbers, or underscores.
+#  변수는 유형을 보여주는 기호인 시길로 시작합니다.
+#  유효한 변수 이름은 문자나 밑줄로 시작하고,
+#  그 뒤에 문자, 숫자, 밑줄이 여러 개 올 수 있습니다.
 
-### Perl has three main variable types: $scalar, @array, and %hash.
+### Perl에는 세 가지 주요 변수 유형이 있습니다: $scalar, @array, %hash.
 
-## Scalars
-#  A scalar represents a single value:
+## 스칼라
+#  스칼라는 단일 값을 나타냅니다:
 my $animal = "camel";
 my $answer = 42;
 my $display = "You have $answer ${animal}s.\n";
 
-# Scalar values can be strings, integers or floating point numbers, and
-# Perl will automatically convert between them as required.
+# 스칼라 값은 문자열, 정수 또는 부동 소수점 수일 수 있으며,
+# Perl은 필요에 따라 자동으로 변환합니다.
 
-# Strings in single quotes are literal strings. Strings in double quotes
-# will interpolate variables and escape codes like "\n" for newline.
+# 작은따옴표 안의 문자열은 리터럴 문자열입니다. 큰따옴표 안의 문자열은
+# 변수와 개행을 위한 "\n"과 같은 이스케이프 코드를 보간합니다.
 
-## Arrays
-#  An array represents a list of values:
+## 배열
+#  배열은 값의 목록을 나타냅니다:
 my @animals = ("camel", "llama", "owl");
 my @numbers = (23, 42, 69);
 my @mixed   = ("camel", 42, 1.23);
 
-# Array elements are accessed using square brackets, with a $ to
-# indicate one value will be returned.
+# 배열 요소는 대괄호를 사용하여 액세스하며, $를 사용하여
+# 하나의 값이 반환됨을 나타냅니다.
 my $second = $animals[1];
 
-# The size of an array is retrieved by accessing the array in a scalar
-# context, such as assigning it to a scalar variable or using the
-# "scalar" operator.
+# 배열의 크기는 배열을 스칼라 컨텍스트에서 액세스하여 검색합니다.
+# 예를 들어 스칼라 변수에 할당하거나 "scalar" 연산자를 사용합니다.
 
 my $num_animals = @animals;
 print "Number of numbers: ", scalar(@numbers), "\n";
 
-# Arrays can also be interpolated into double-quoted strings, and the
-# elements are separated by a space character by default.
+# 배열은 큰따옴표로 묶인 문자열에 보간될 수도 있으며,
+# 요소는 기본적으로 공백 문자로 구분됩니다.
 
 print "We have these numbers: @numbers\n";
 
-# Be careful when using double quotes for strings containing symbols
-# such as email addresses, as it will be interpreted as a variable.
+# 이메일 주소와 같은 기호가 포함된 문자열에 큰따옴표를 사용할 때는
+# 변수로 해석되므로 주의하십시오.
 
 my @example = ('secret', 'array');
 my $oops_email = "foo@example.com"; # 'foosecret array.com'
 my $ok_email = 'foo@example.com';
 
-## Hashes
-#   A hash represents a set of key/value pairs:
+## 해시
+#   해시는 키/값 쌍의 집합을 나타냅니다:
 
 my %fruit_color = ("apple", "red", "banana", "yellow");
 
-#  You can use whitespace and the "=>" operator to lay them out more
-#  nicely:
+#  공백과 "=>" 연산자를 사용하여 더 멋지게
+#  배치할 수 있습니다:
 
 my %fruit_color = (
   apple  => "red",
   banana => "yellow",
 );
 
-# Hash elements are accessed using curly braces, again with the $ sigil.
+# 해시 요소는 중괄호를 사용하여 액세스하며, 다시 $ 시길을 사용합니다.
 my $color = $fruit_color{apple};
 
-# All of the keys or values that exist in a hash can be accessed using
-# the "keys" and "values" functions.
+# 해시에 있는 모든 키 또는 값은 "keys" 및 "values" 함수를
+# 사용하여 액세스할 수 있습니다.
 my @fruits = keys %fruit_color;
 my @colors = values %fruit_color;
 
-# Scalars, arrays and hashes are documented more fully in perldata.
+# 스칼라, 배열 및 해시는 perldata에 더 자세히 문서화되어 있습니다.
 # (perldoc perldata).
 
-#### References
+#### 참조
 
-# More complex data types can be constructed using references, which
-# allow you to build arrays and hashes within arrays and hashes.
+# 참조를 사용하여 더 복잡한 데이터 유형을 구성할 수 있으며,
+# 이를 통해 배열 및 해시 내에 배열과 해시를 만들 수 있습니다.
 
 my $array_ref = \@array;
 my $hash_ref = \%hash;
 my @array_of_arrays = (\@array1, \@array2, \@array3);
 
-# You can also create anonymous arrays or hashes, returning a reference:
+# 익명 배열 또는 해시를 만들어 참조를 반환할 수도 있습니다:
 
 my $fruits = ["apple", "banana"];
 my $colors = {apple => "red", banana => "yellow"};
 
-# References can be dereferenced by prefixing the appropriate sigil.
+# 참조는 적절한 시길을 접두사로 붙여 역참조할 수 있습니다.
 
 my @fruits_array = @$fruits;
 my %colors_hash = %$colors;
 
-# As a shortcut, the arrow operator can be used to dereference and
-# access a single value.
+# 바로 가기로 화살표 연산자를 사용하여 단일 값을 역참조하고
+# 액세스할 수 있습니다.
 
 my $first = $array_ref->[0];
 my $value = $hash_ref->{banana};
 
-# See perlreftut and perlref for more in-depth documentation on
-# references.
+# 참조에 대한 자세한 내용은 perlreftut 및 perlref를 참조하십시오.
 
-#### Conditional and looping constructs
+#### 조건 및 반복 구문
 
-# Perl has most of the usual conditional and looping constructs.
+# Perl에는 대부분의 일반적인 조건 및 반복 구문이 있습니다.
 
 if ($var) {
   ...
@@ -141,9 +137,9 @@ if ($var) {
 unless (condition) {
   ...
 }
-# This is provided as a more readable version of "if (!condition)"
+# 이것은 "if (!condition)"의 더 읽기 쉬운 버전으로 제공됩니다.
 
-# the Perlish post-condition way
+# Perl 방식의 후위 조건
 print "Yow!" if $zippy;
 print "We have no bananas" unless $bananas;
 
@@ -153,7 +149,7 @@ while (condition) {
 }
 
 my $max = 5;
-# for loops and iteration
+# for 루프 및 반복
 for my $i (0 .. $max) {
   print "index is $i";
 }
@@ -164,74 +160,73 @@ for my $element (@elements) {
 
 map {print} @elements;
 
-# implicitly
+# 암시적으로
 
 for (@elements) {
   print;
 }
 
-# iterating through a hash (for and foreach are equivalent)
+# 해시 반복 (for와 foreach는 동일)
 
 foreach my $key (keys %hash) {
   print $key, ': ', $hash{$key}, "\n";
 }
 
-# the Perlish post-condition way again
+# 다시 Perl 방식의 후위 조건
 print for @elements;
 
-# iterating through the keys and values of a referenced hash
+# 참조된 해시의 키와 값을 반복
 print $hash_ref->{$_} for keys %$hash_ref;
 
-#### Regular expressions
+#### 정규 표현식
 
-# Perl's regular expression support is both broad and deep, and is the
-# subject of lengthy documentation in perlrequick, perlretut, and
-# elsewhere. However, in short:
+# Perl의 정규 표현식 지원은 광범위하고 심층적이며,
+# perlrequick, perlretut 등에서 자세히 설명합니다.
+# 그러나 간단히 말해서:
 
-# Simple matching
-if (/foo/)       { ... }  # true if $_ contains "foo"
-if ($x =~ /foo/) { ... }  # true if $x contains "foo"
+# 간단한 일치
+if (/foo/)       { ... }  # $_에 "foo"가 포함되어 있으면 참
+if ($x =~ /foo/) { ... }  # $x에 "foo"가 포함되어 있으면 참
 
-# Simple substitution
+# 간단한 대체
 
-$x =~ s/foo/bar/;         # replaces foo with bar in $x
-$x =~ s/foo/bar/g;        # replaces ALL INSTANCES of foo with bar in $x
+$x =~ s/foo/bar/;         # $x에서 foo를 bar로 대체
+$x =~ s/foo/bar/g;        # $x에서 모든 foo 인스턴스를 bar로 대체
 
 
-#### Files and I/O
+#### 파일 및 I/O
 
-# You can open a file for input or output using the "open()" function.
+# "open()" 함수를 사용하여 입력 또는 출력용 파일을 열 수 있습니다.
 
-# For reading:
+# 읽기용:
 open(my $in,  "<",  "input.txt")  or die "Can't open input.txt: $!";
-# For writing (clears file if it exists):
+# 쓰기용 (파일이 있으면 지움):
 open(my $out, ">",  "output.txt") or die "Can't open output.txt: $!";
-# For writing (appends to end of file):
+# 쓰기용 (파일 끝에 추가):
 open(my $log, ">>", "my.log")     or die "Can't open my.log: $!";
 
-# You can read from an open filehandle using the "<>" operator.  In
-# scalar context it reads a single line from the filehandle, and in list
-# context it reads the whole file in, assigning each line to an element
-# of the list:
+# "<>" 연산자를 사용하여 열린 파일 핸들에서 읽을 수 있습니다.
+# 스칼라 컨텍스트에서는 파일 핸들에서 한 줄을 읽고, 리스트
+# 컨텍스트에서는 전체 파일을 읽어 각 줄을 리스트의
+# 요소에 할당합니다:
 
 my $line  = <$in>;
 my @lines = <$in>;
 
-# You can iterate through the lines in a file one at a time with a while loop:
+# while 루프를 사용하여 파일의 줄을 한 번에 하나씩 반복할 수 있습니다:
 
 while (my $line = <$in>) {
   print "Found apples\n" if $line =~ m/apples/;
 }
 
-# You can write to an open filehandle using the standard "print"
-# function.
+# 표준 "print" 함수를 사용하여 열린 파일 핸들에 쓸 수 있습니다.
 
 print $out @lines;
 print $log $msg, "\n";
 
-#### Writing subroutines
+#### 서브루틴 작성
 
-# Writing subroutines is easy:
+# 서브루틴 작성은 쉽습니다:
 
 sub logger {
   my $logmessage = shift;
@@ -241,15 +236,15 @@ sub logger {
   print $logfile $logmessage;
 }
 
-# Now we can use the subroutine just as any other built-in function:
+# 이제 다른 내장 함수처럼 서브루틴을 사용할 수 있습니다:
 
 logger("We have a logger subroutine!");
 
-#### Modules
+#### 모듈
 
-# A module is a set of Perl code, usually subroutines, which can be used
-# in other Perl code. It is usually stored in a file with the extension
-# .pm so that Perl can find it.
+# 모듈은 다른 Perl 코드에서 사용할 수 있는 Perl 코드,
+# 보통 서브루틴의 집합입니다. Perl이 찾을 수 있도록
+# 보통 .pm 확장자를 가진 파일에 저장됩니다.
 
 package MyModule;
 use strict;
@@ -264,30 +259,28 @@ sub trim {
 
 1;
 
-# From elsewhere:
+# 다른 곳에서:
 
 use MyModule;
 MyModule::trim($string);
 
-# The Exporter module can help with making subroutines exportable, so
-# they can be used like this:
+# Exporter 모듈은 서브루틴을 내보낼 수 있도록 도와주므로
+# 다음과 같이 사용할 수 있습니다:
 
 use MyModule 'trim';
 trim($string);
 
-# Many Perl modules can be downloaded from CPAN (http://www.cpan.org/)
-# and provide a range of features to help you avoid reinventing the
-# wheel.  A number of popular modules like Exporter are included with
-# the Perl distribution itself. See perlmod for more details on modules
-# in Perl.
+# 많은 Perl 모듈은 CPAN(http://www.cpan.org/)에서 다운로드할 수 있으며
+# 바퀴를 다시 발명하지 않도록 도와주는 다양한 기능을 제공합니다.
+# Exporter와 같은 인기 있는 여러 모듈은 Perl 배포판 자체에
+# 포함되어 있습니다. Perl의 모듈에 대한 자세한 내용은 perlmod를 참조하십시오.
 
-#### Objects
+#### 객체
 
-# Objects in Perl are just references that know which class (package)
-# they belong to, so that methods (subroutines) called on it can be
-# found there. The bless function is used in constructors (usually new)
-# to set this up. However, you never need to call it yourself if you use
-# a module like Moose or Moo (see below).
+# Perl의 객체는 어떤 클래스(패키지)에 속하는지 아는 참조일 뿐이므로,
+# 호출된 메서드(서브루틴)를 거기에서 찾을 수 있습니다. bless 함수는
+# 생성자(보통 new)에서 이를 설정하는 데 사용됩니다. 그러나 Moose나
+# Moo와 같은 모듈을 사용하면 직접 호출할 필요가 없습니다.
 
 package MyCounter;
 use strict;
@@ -311,8 +304,8 @@ sub increment {
 
 1;
 
-# Methods can be called on a class or object instance with the arrow
-# operator.
+# 메서드는 화살표 연산자를 사용하여 클래스 또는 객체 인스턴스에서
+# 호출할 수 있습니다.
 
 use MyCounter;
 my $counter = MyCounter->new;
@@ -320,12 +313,12 @@ print $counter->count, "\n"; # 0
 $counter->increment;
 print $counter->count, "\n"; # 1
 
-# The modules Moose and Moo from CPAN can help you set up your object
-# classes. They provide a constructor and simple syntax for declaring
-# attributes. This class can be used equivalently to the one above.
+# CPAN의 Moose 및 Moo 모듈은 객체 클래스를 설정하는 데
+# 도움이 될 수 있습니다. 생성자와 속성을 선언하는 간단한 구문을
+# 제공합니다. 이 클래스는 위 클래스와 동일하게 사용할 수 있습니다.
 
 package MyCounter;
-use Moo; # imports strict and warnings
+use Moo; # strict 및 warnings 가져오기
 
 has 'count' => (is => 'rwp', default => 0, init_arg => undef);
 
@@ -336,17 +329,17 @@ sub increment {
 
 1;
 
-# Object-oriented programming is covered more thoroughly in perlootut,
-# and its low-level implementation in Perl is covered in perlobj.
+# 객체 지향 프로그래밍은 perlootut에서 더 자세히 다루고,
+# Perl에서의 저수준 구현은 perlobj에서 다룹니다.
 ```
 
 #### FAQ
 
-perlfaq contains questions and answers related to many common tasks, and often provides suggestions for good CPAN modules to use.
+perlfaq에는 많은 일반적인 작업과 관련된 질문과 답변이 포함되어 있으며, 종종 사용할 좋은 CPAN 모듈에 대한 제안을 제공합니다.
 
-#### Further Reading
+#### 더 읽을거리
 
  - [perl-tutorial](http://perl-tutorial.org/)
- - [Learn at www.perl.com](http://www.perl.org/learn.html)
+ - [www.perl.com에서 배우기](http://www.perl.org/learn.html)
  - [perldoc](http://perldoc.perl.org/)
- - and perl built-in : `perldoc perlintro`
+ - 및 perl 내장: `perldoc perlintro`

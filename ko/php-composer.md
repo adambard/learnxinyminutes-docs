@@ -1,5 +1,3 @@
-# php-composer.md (번역)
-
 ---
 category: tool
 name: Composer
@@ -8,106 +6,106 @@ contributors:
 filename: LearnComposer.sh
 ---
 
-[Composer](https://getcomposer.org/) is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
+[Composer](https://getcomposer.org/)는 PHP의 의존성 관리 도구입니다. 프로젝트가 의존하는 라이브러리를 선언할 수 있으며, Composer가 이를 관리(설치/업데이트)해 줍니다.
 
-# Installing
+# 설치
 
 ```sh
-# Installs the composer.phar binary into the current directory
+# 현재 디렉토리에 composer.phar 바이너리를 설치합니다
 curl -sS https://getcomposer.org/installer | php
-# If you use this approach, you will need to invoke composer like this:
+# 이 방법을 사용하는 경우 다음과 같이 composer를 호출해야 합니다:
 php composer.phar about
 
-# Installs the binary into ~/bin/composer
-# Note: make sure ~/bin is in your shell's PATH environment variable
+# 바이너리를 ~/bin/composer에 설치합니다
+# 참고: ~/bin이 셸의 PATH 환경 변수에 있는지 확인하십시오
 curl -sS https://getcomposer.org/installer | php -- --install-dir=~/bin --filename=composer
 ```
 
-Windows users should follow the [Windows installation instructions](https://getcomposer.org/doc/00-intro.md#installation-windows)
+Windows 사용자는 [Windows 설치 지침](https://getcomposer.org/doc/00-intro.md#installation-windows)을 따라야 합니다.
 
-## Confirming installation
+## 설치 확인
 
 ```sh
-# Check version and list options
+# 버전 확인 및 옵션 목록
 composer
 
-# Get more help for options
+# 옵션에 대한 추가 도움말 얻기
 composer help require
 
-# Check if Composer is able to do the things it needs, and if it's up to date
+# Composer가 필요한 작업을 수행할 수 있는지, 최신 버전인지 확인
 composer diagnose
-composer diag # shorthand
+composer diag # 약어
 
-# Updates the Composer binary to the latest version
+# Composer 바이너리를 최신 버전으로 업데이트
 composer self-update
-composer self # shorthand
+composer self # 약어
 ```
 
-# Usage
+# 사용법
 
-Composer stores your project dependencies in `composer.json`. You can edit this file, but it is best to let Composer manage it for you.
+Composer는 프로젝트 의존성을 `composer.json`에 저장합니다. 이 파일을 편집할 수 있지만, Composer가 관리하도록 하는 것이 가장 좋습니다.
 
 ```sh
-# Create a new project in the current folder
+# 현재 폴더에 새 프로젝트 생성
 composer init
-# runs an interactive questionnaire asking you for details about your project.  Leaving them blank is fine unless you are making other projects dependent on this one.
+# 프로젝트에 대한 세부 정보를 묻는 대화형 설문지를 실행합니다. 다른 프로젝트가 이 프로젝트에 의존하지 않는 한 비워 두어도 괜찮습니다.
 
-# If a composer.json file already exists, download the dependencies
+# composer.json 파일이 이미 있는 경우 의존성 다운로드
 composer install
 
-# To download the just the production dependencies, i.e. excluding development dependencies
+# 개발 의존성을 제외한 프로덕션 의존성만 다운로드하려면
 composer install --no-dev
 
-# Add a production dependency to this project
+# 이 프로젝트에 프로덕션 의존성 추가
 composer require guzzlehttp/guzzle
-# will figure out what the latest version of guzzlehttp/guzzle is, download it, and add the new dependency to composer.json's require field.
+# guzzlehttp/guzzle의 최신 버전을 파악하고, 다운로드한 다음, composer.json의 require 필드에 새 의존성을 추가합니다.
 
 composer require guzzlehttp/guzzle:6.0.*
-# will download the latest version matching the pattern (eg. 6.0.2) and add the dependency to composer.json's require field
+# 패턴과 일치하는 최신 버전(예: 6.0.2)을 다운로드하고 composer.json의 require 필드에 의존성을 추가합니다
 
 composer require --dev phpunit/phpunit:~4.5.0
-# will require as a development dependency. Will use the latest version >=4.5.0 and < 4.6.0
+# 개발 의존성으로 필요합니다. >=4.5.0 및 < 4.6.0의 최신 버전을 사용합니다
 
 composer require-dev phpunit/phpunit:^4.5.0
-# will require as a development dependency. Will use the latest version >=4.5.0 and < 5.0
+# 개발 의존성으로 필요합니다. >=4.5.0 및 < 5.0의 최신 버전을 사용합니다
 
-# For more information on Composer version matching, see [Composer's documentation on Versions](https://getcomposer.org/doc/articles/versions.md) for more details
+# Composer 버전 일치에 대한 자세한 내용은 [Composer 버전 설명서](https://getcomposer.org/doc/articles/versions.md)를 참조하십시오
 
-# To see what packages are available to install and currently installed
+# 설치 가능하거나 현재 설치된 패키지를 보려면
 composer show
 
-# To see what packages are currently installed
+# 현재 설치된 패키지를 보려면
 composer show --installed
 
-# To find a package with 'mailgun' in its name or description
+# 이름이나 설명에 'mailgun'이 포함된 패키지를 찾으려면
 composer search mailgun
 ```
 
-[Packagist.org](https://packagist.org/) is the main repository for Composer packages. Search there for existing third-party packages.
+[Packagist.org](https://packagist.org/)는 Composer 패키지의 기본 저장소입니다. 기존 타사 패키지를 검색하려면 여기를 검색하십시오.
 
-## `composer.json` vs `composer.lock`
+## `composer.json` 대 `composer.lock`
 
-The `composer.json` file stores your project's floating version preferences for each dependency, along with other information.
+`composer.json` 파일에는 각 의존성에 대한 프로젝트의 유동적인 버전 기본 설정과 기타 정보가 저장됩니다.
 
-The `composer.lock` file stores exactly which version it has downloaded for each dependency. Never edit this file.
+`composer.lock` 파일에는 각 의존성에 대해 다운로드한 정확한 버전이 저장됩니다. 이 파일은 절대 편집하지 마십시오.
 
-If you include the `composer.lock` file in your git repository, every developer will install the currently used version of the dependency. Even when a new version of a dependency is released, Composer will continue to download the version recorded in the lock file.
+git 저장소에 `composer.lock` 파일을 포함하면 모든 개발자가 현재 사용 중인 버전의 의존성을 설치하게 됩니다. 의존성의 새 버전이 출시되어도 Composer는 잠금 파일에 기록된 버전을 계속 다운로드합니다.
 
 ```sh
-# If you want to update all the dependencies to their newest version still matching your version preferences
+# 모든 의존성을 버전 기본 설정과 여전히 일치하는 최신 버전으로 업데이트하려면
 composer update
 
-# If you want the new version of a particular dependency:
+# 특정 의존성의 새 버전을 원하면:
 composer update phpunit/phpunit
 
-# If you wish to migrate a package to a newer version preference, you may need to remove the older package and its dependencies first.
+# 패키지를 최신 버전 기본 설정으로 마이그레이션하려면 이전 패키지와 해당 의존성을 먼저 제거해야 할 수 있습니다.
 composer remove --dev phpunit/phpunit
 composer require --dev phpunit/phpunit:^5.0
 ```
 
-## Autoloader
+## 오토로더
 
-Composer creates an autoloader class you can require from your application. You can make instances of classes via their namespace.
+Composer는 애플리케이션에서 require할 수 있는 오토로더 클래스를 만듭니다. 네임스페이스를 통해 클래스의 인스턴스를 만들 수 있습니다.
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
@@ -115,11 +113,11 @@ require __DIR__ . '/vendor/autoload.php';
 $mailgun = new Mailgun\Mailgun("key");
 ```
 
-### PSR-4 Autoloader
+### PSR-4 오토로더
 
-You can add your own namespaces to the autoloader.
+오토로더에 자신만의 네임스페이스를 추가할 수 있습니다.
 
-In `composer.json`, add a 'autoload' field:
+`composer.json`에 'autoload' 필드를 추가합니다:
 
 ```json
 {
@@ -129,28 +127,28 @@ In `composer.json`, add a 'autoload' field:
 }
 ```
 
-This will tell the autoloader to look for anything in the `\Acme\` namespace within the `src` folder.
+이렇게 하면 오토로더가 `src` 폴더 내에서 `\Acme\` 네임스페이스의 모든 것을 찾도록 지시합니다.
 
-You can also [use PSR-0, a Classmap or just a list of files to include](https://getcomposer.org/doc/04-schema.md#autoload). There is also the `autoload-dev` field for development-only namespaces.
+또한 [PSR-0, 클래스맵 또는 포함할 파일 목록을 사용할 수 있습니다](https://getcomposer.org/doc/04-schema.md#autoload). 개발 전용 네임스페이스를 위한 `autoload-dev` 필드도 있습니다.
 
-When adding or modifying the autoload key, you will need to rebuild the autoloader:
+autoload 키를 추가하거나 수정할 때 오토로더를 다시 빌드해야 합니다:
 
 ```sh
 composer dump-autoload
-composer dump # shorthand
+composer dump # 약어
 
-# Optimizes PSR0 and PSR4 packages to be loaded with classmaps too. Slow to run, but improves performance on production.
+# PSR0 및 PSR4 패키지를 클래스맵으로도 로드하도록 최적화합니다. 실행 속도는 느리지만 프로덕션 성능은 향상됩니다.
 composer dump-autoload --optimize --no-dev
 ```
 
-# Composer's Cache
+# Composer 캐시
 
 ```sh
-# Composer will retain downloaded packages to use in the future. Clear it with:
+# Composer는 나중에 사용할 다운로드한 패키지를 보관합니다. 다음으로 지웁니다:
 composer clear-cache
 ```
 
-# Troubleshooting
+# 문제 해결
 
 ```sh
 composer diagnose
@@ -158,12 +156,12 @@ composer self-update
 composer clear-cache
 ```
 
-## Topics not (yet) covered in this tutorial
+## 이 튜토리얼에서 (아직) 다루지 않은 주제
 
-* Creating and distributing your own packages on Packagist.org or elsewhere
-* Pre- and post- script hooks: run tasks when certain composer events take place
+* Packagist.org 또는 다른 곳에서 자신만의 패키지 생성 및 배포
+* 사전 및 사후 스크립트 후크: 특정 composer 이벤트가 발생할 때 작업 실행
 
-### References
+### 참조
 
-* [Composer - Dependency Manager for PHP](https://getcomposer.org/)
+* [Composer - PHP용 의존성 관리자](https://getcomposer.org/)
 * [Packagist.org](https://packagist.org/)

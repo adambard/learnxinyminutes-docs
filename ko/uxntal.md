@@ -1,5 +1,3 @@
-# uxntal.md (번역)
-
 ---
 name: Uxntal
 contributors:
@@ -7,45 +5,44 @@ contributors:
 filename: learnuxn.tal
 ---
 
-Uxntal is a stack-machine assembly language targeting the [Uxn virtual machine](https://wiki.xxiivv.com/site/uxn.html).
+Uxntal은 [Uxn 가상 머신](https://wiki.xxiivv.com/site/uxn.html)을 대상으로 하는 스택 머신 어셈블리 언어입니다.
 
-Stack machine programming might look at bit odd, as it uses a postfix notation,
-which means that operators are always found at the end of an operation. For
-instance, one would write 3 4 + instead of 3 + 4.
+스택 머신 프로그래밍은 후위 표기법을 사용하기 때문에 약간 이상하게 보일 수 있습니다. 즉, 연산자는 항상 연산의 끝에 있습니다.
 
-The expression written (5 + 10) * 3 in conventional notation would be
-written 10 5 + 3 * in reverse Polish notation.
+예를 들어, 3 + 4 대신 3 4 +를 씁니다.
+
+일반적인 표기법으로 (5 + 10) * 3으로 작성된 표현식은 역폴란드 표기법으로 10 5 + 3 *로 작성됩니다.
 
 ```forth
-( This is a comment )
+( 이것은 주석입니다 )
 
-( All programming in Unxtal is done by manipulating the stack )
+( Unxtal의 모든 프로그래밍은 스택을 조작하여 수행됩니다 )
 
-#12 ( push a byte )
-#3456 ( push a short )
+#12 ( 바이트 푸시 )
+#3456 ( 쇼트 푸시 )
 
-( Uxn has 32 opcodes, each opcode has 3 possible modes )
+( Uxn에는 32개의 옵코드가 있으며, 각 옵코드에는 3가지 가능한 모드가 있습니다 )
 
-POP ( pop a byte )
-POP2 ( pop a short )
+POP ( 바이트 팝 )
+POP2 ( 쇼트 팝 )
 
-( The modes are:
-	[2] The short mode consumes two bytes from the stack.
-	[k] The keep mode does not consume items from the stack.
-	[r] The return mode makes the operator operate on the return-stack. )
+( 모드는 다음과 같습니다:
+	[2] 쇼트 모드는 스택에서 2바이트를 소비합니다.
+	[k] 유지 모드는 스택에서 항목을 소비하지 않습니다.
+	[r] 반환 모드는 연산자가 반환 스택에서 작동하도록 합니다. )
 
 #12 #34 ADD ( 46 )
 #12 #34 ADDk ( 12  34  46 )
 
-( The modes can be combined )
+( 모드를 결합할 수 있습니다 )
 
 #1234 #5678 ADD2k ( 12  34  56  78  68  ac )
 
-( The arithmetic/bitwise opcodes are:
+( 산술/비트 연산 옵코드는 다음과 같습니다:
 	ADD SUB MUL DIV
 	AND ORA EOR SFT )
 
-( New opcodes can be created using macros )
+( 매크로를 사용하여 새 옵코드를 만들 수 있습니다 )
 
 %MOD2 { DIV2k MUL2 SUB2 }
 
@@ -53,94 +50,94 @@ POP2 ( pop a short )
 
 ( ---------------------------------------------------------------------------- )
 
-( A short is simply two bytes, each byte can be manipulated )
+( 쇼트는 단순히 2바이트이며, 각 바이트를 조작할 수 있습니다 )
 
 #1234 SWP ( 34  12 )
 #1234 #5678 SWP2 ( 56  78  12  34 )
 #1234 #5678 SWP ( 12  34  78  56 )
 
-( Individual bytes of a short can be removed from the stack )
+( 쇼트의 개별 바이트를 스택에서 제거할 수 있습니다 )
 
 #1234 POP ( 12 )
 #1234 NIP ( 34 )
 
-( The stack opcodes are:
+( 스택 옵코드는 다음과 같습니다:
 	POP DUP NIP SWP OVR ROT )
 
 ( ---------------------------------------------------------------------------- )
 
-( To compare values on the stack with each other )
+( 스택의 값을 서로 비교하려면 )
 
 #12 #34 EQU ( 00 )
 #12 #12 EQU ( 01 )
 
-( Logic opcodes will put a flag with a value of either 00 or 01 )
+( 논리 옵코드는 00 또는 01의 값을 가진 플래그를 넣습니다 )
 
 #12 #34 LTH
 #78 #56 GTH
 	#0101 EQU2 ( 01 )
 
-( The logic opcodes are:
+( 논리 옵코드는 다음과 같습니다:
 	EQU NEQ GTH LTH )
 
 ( ---------------------------------------------------------------------------- )
 
-( Uxn's accessible memory is as follows:
-	256 bytes of working stack
-	256 bytes of return stack
-	65536 bytes of memory
-	256 bytes of IO memory )
+( Uxn의 액세스 가능한 메모리는 다음과 같습니다:
+	256바이트의 작업 스택
+	256바이트의 반환 스택
+	65536바이트의 메모리
+	256바이트의 IO 메모리 )
 
-( The addressable memory is between 0000-ffff )
+( 주소 지정 가능한 메모리는 0000-ffff 사이입니다 )
 
-#12 #0200 STA ( stored 12 at 0200 in memory )
-#3456 #0201 STA2 ( stored 3456 at 0201 in memory )
+#12 #0200 STA ( 메모리의 0200에 12 저장 )
+#3456 #0201 STA2 ( 메모리의 0201에 3456 저장 )
 #0200 LDA2 ( 12  34 )
 
-( The zero-page can be addressed with a single byte )
+( 제로 페이지는 단일 바이트로 주소 지정할 수 있습니다 )
 
-#1234 #80 STZ2 ( stored 12 at 0080, and 34 at 0081 )
+#1234 #80 STZ2 ( 0080에 12, 0081에 34 저장 )
 #80 LDZ2 ( 12  34 )
 
-( Devices are ways for Uxn to communicate with the outside world
-	There is a maximum of 16 devices connected to Uxn at once
-	Device bytes are called ports, the Console device uses the 10-1f ports
-	The console's port 18 is called /write )
+( 장치는 Uxn이 외부 세계와 통신하는 방법입니다
+	Uxn에 한 번에 최대 16개의 장치가 연결됩니다
+	장치 바이트는 포트라고 하며, 콘솔 장치는 10-1f 포트를 사용합니다
+	콘솔의 포트 18은 /write라고 합니다 )
 
 %EMIT { #18 DEO }
 
-#31 EMIT ( print "1" to console )
+#31 EMIT ( 콘솔에 "1" 인쇄 )
 
-( A label is equal to a position in the program )
-@parent ( defines a label "parent" )
-	&child ( defines a sublabel "parent/child" )
+( 레이블은 프로그램의 위치와 같습니다 )
+@parent ( "parent"라는 레이블 정의 )
+	&child ( "parent/child"라는 하위 레이블 정의 )
 
-( Label positions can be pushed on stack )
-;parent ( push the absolute position, 2 bytes )
-,parent ( push the relative position, 1 byte )
-.parent ( push the zero-page position, 1 byte )
+( 레이블 위치를 스택에 푸시할 수 있습니다 )
+;parent ( 절대 위치 푸시, 2바이트 )
+,parent ( 상대 위치 푸시, 1바이트 )
+.parent ( 제로 페이지 위치 푸시, 1바이트 )
 
-( The memory opcodes are:
+( 메모리 옵코드는 다음과 같습니다:
 	LDZ STZ LDR STR
 	LDA STA DEI DEO )
 
 ( ---------------------------------------------------------------------------- )
 
-( Logic allows to create conditionals )
+( 논리를 사용하여 조건문을 만들 수 있습니다 )
 
 #12 #34 NEQ ,skip JCN
 	#31 EMIT
 	@skip
 
-( Logic also allows to create for-loops )
+( 논리를 사용하여 for 루프를 만들 수도 있습니다 )
 
 #3a #30
 @loop
-	DUP EMIT ( print "0123456789" to console )
+	DUP EMIT ( 콘솔에 "0123456789" 인쇄 )
 	INC GTHk ,loop JCN
 POP2
 
-( Logic also allows to create while-loops )
+( 논리를 사용하여 while 루프를 만들 수도 있습니다 )
 
 ;word
 @while
@@ -151,7 +148,7 @@ BRK
 
 @word "vermillion $1
 
-( Subroutines can be jumped to with JSR, and returned from with JMP2r )
+( 서브루틴은 JSR로 점프하고 JMP2r로 반환할 수 있습니다 )
 
 ;word ,print-word JSR
 BRK
@@ -165,12 +162,12 @@ JMP2r
 
 @word "cerulean
 
-( The jump opcodes are:
+( 점프 옵코드는 다음과 같습니다:
 	JMP JCN JSR )
 ```
 
-## Ready For More?
+## 더 배울 준비가 되셨나요?
 
-* [Uxntal Lessons](https://compudanzas.net/uxn_tutorial.html)
-* [Uxntal Assembly](https://wiki.xxiivv.com/site/uxntal.html)
-* [Uxntal Resources](https://github.com/hundredrabbits/awesome-uxn)
+* [Uxntal 수업](https://compudanzas.net/uxn_tutorial.html)
+* [Uxntal 어셈블리](https://wiki.xxiivv.com/site/uxntal.html)
+* [Uxntal 자료](https://github.com/hundredrabbits/awesome-uxn)
