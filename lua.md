@@ -186,7 +186,7 @@ end
 -- Alternatively:
 -- ipairs() guarantees the same order every time
 for i, val in ipairs(v):
-  print("v[", i, "]=", val)
+  print("v[" .. i .. "] = " .. val)
 
 -- A 'list' is not a real type. v is just a table
 -- with consecutive integer keys, treated as a list.
