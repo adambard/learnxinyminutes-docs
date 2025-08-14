@@ -1,5 +1,3 @@
-# sql.md (번역)
-
 ---
 name: SQL
 filename: learnsql.sql
@@ -9,152 +7,152 @@ contributors:
 
 ---
 
-Structured Query Language (SQL) is an [ISO/IEC 9075](https://www.iso.org/standard/63555.html) standard language for creating and working with databases stored in a set of tables. Implementations usually add their own extensions to the language; [Comparison of different SQL implementations](http://troels.arvin.dk/db/rdbms/) is a good reference on product differences.
+구조적 쿼리 언어(SQL)는 테이블 집합에 저장된 데이터베이스를 만들고 작업하기 위한 [ISO/IEC 9075](https://www.iso.org/standard/63555.html) 표준 언어입니다. 구현은 일반적으로 언어에 자체 확장을 추가합니다. [다양한 SQL 구현 비교](http://troels.arvin.dk/db/rdbms/)는 제품 차이점에 대한 좋은 참조 자료입니다.
 
-Implementations typically provide a command line prompt where you can enter the commands shown here interactively, and they also offer a way to execute a series of these commands stored in a script file.  (Showing that you’re done with the interactive prompt is a good example of something that isn’t standardized--most SQL implementations support the keywords QUIT, EXIT, or both.)
+구현은 일반적으로 여기에 표시된 명령을 대화식으로 입력할 수 있는 명령줄 프롬프트를 제공하며, 스크립트 파일에 저장된 일련의 명령을 실행하는 방법도 제공합니다. (대화형 프롬프트가 끝났음을 보여주는 것은 표준화되지 않은 좋은 예입니다. 대부분의 SQL 구현은 QUIT, EXIT 또는 둘 다 키워드를 지원합니다.)
 
-Several of these sample commands assume that the [MySQL employee sample database](https://dev.mysql.com/doc/employee/en/) available on [GitHub](https://github.com/datacharmer/test_db) has already been loaded. The GitHub files are scripts of commands, similar to the relevant commands below, that create and populate tables of data about a fictional company’s employees. The syntax for running these scripts will depend on the SQL implementation you are using. A utility that you run from the operating system prompt is typical.
+이러한 샘플 명령 중 일부는 [GitHub](https://github.com/datacharmer/test_db)에서 사용할 수 있는 [MySQL 직원 샘플 데이터베이스](https://dev.mysql.com/doc/employee/en/)가 이미 로드되었다고 가정합니다. GitHub 파일은 가상 회사의 직원에 대한 데이터 테이블을 만들고 채우는 아래 관련 명령과 유사한 명령 스크립트입니다. 이러한 스크립트를 실행하는 구문은 사용 중인 SQL 구현에 따라 다릅니다. 운영 체제 프롬프트에서 실행하는 유틸리티가 일반적입니다.
 
 
 ```sql
--- Comments start with two hyphens. End each command with a semicolon.
+-- 주석은 두 개의 하이픈으로 시작합니다. 각 명령은 세미콜론으로 끝납니다.
 
 /*
-Multi-line comments
+여러 줄 주석
 */
 
--- SQL is not case-sensitive about keywords. The sample commands here
--- follow the convention of spelling them in upper-case because it makes
--- it easier to distinguish them from database, table, and column names.
+-- SQL은 키워드에 대해 대소문자를 구분하지 않습니다. 여기 샘플 명령은
+-- 데이터베이스, 테이블 및 열 이름과 구별하기 쉽도록
+-- 대문자로 표기하는 관례를 따릅니다.
 
--- Create and delete a database. Database and table names are case-sensitive.
+-- 데이터베이스 생성 및 삭제. 데이터베이스 및 테이블 이름은 대소문자를 구분합니다.
 CREATE DATABASE someDatabase;
 DROP DATABASE someDatabase;
 
--- List available databases.
+-- 사용 가능한 데이터베이스 나열.
 SHOW DATABASES;
 
--- Use a particular existing database.
+-- 특정 기존 데이터베이스 사용.
 USE employees;
 
--- Select all rows and columns from the current database's departments table.
--- Default activity is for the interpreter to scroll the results on your screen.
+-- 현재 데이터베이스의 departments 테이블에서 모든 행과 열 선택.
+-- 기본 활동은 인터프리터가 화면에 결과를 스크롤하는 것입니다.
 SELECT * FROM departments;
 
--- Retrieve all rows from the departments table,
--- but only the dept_no and dept_name columns.
--- Splitting up commands across lines is OK.
+-- departments 테이블에서 모든 행을 검색하지만,
+-- dept_no 및 dept_name 열만 검색합니다.
+-- 명령을 여러 줄로 나누는 것은 괜찮습니다.
 SELECT dept_no,
        dept_name FROM departments;
 
--- Retrieve all departments columns, but just 5 rows.
+-- 모든 departments 열을 검색하지만 5개의 행만 검색합니다.
 SELECT * FROM departments LIMIT 5;
 
--- Retrieve dept_name column values from the departments
--- table where the dept_name value has the substring 'en'.
+-- departments 테이블에서 dept_name 값이 'en' 부분 문자열을
+-- 포함하는 dept_name 열 값 검색.
 SELECT dept_name FROM departments WHERE dept_name LIKE '%en%';
 
--- Retrieve all columns from the departments table where the dept_name
--- column starts with an 'S' and has exactly 4 characters after it.
+-- departments 테이블에서 dept_name 열이 'S'로 시작하고
+-- 그 뒤에 정확히 4개의 문자가 있는 모든 열 검색.
 SELECT * FROM departments WHERE dept_name LIKE 'S____';
 
--- Select title values from the titles table but don't show duplicates.
+-- titles 테이블에서 title 값을 선택하지만 중복은 표시하지 않습니다.
 SELECT DISTINCT title FROM titles;
 
--- Same as above, but sorted (case-sensitive) by the title values.
--- The order can be specified by adding ASC (ascending) or DESC (descending).
--- If omitted, it will sort in ascending order by default.
+-- 위와 동일하지만 title 값으로 정렬됩니다(대소문자 구분).
+-- 순서는 ASC(오름차순) 또는 DESC(내림차순)를 추가하여 지정할 수 있습니다.
+-- 생략하면 기본적으로 오름차순으로 정렬됩니다.
 SELECT DISTINCT title FROM titles ORDER BY title ASC;
 
--- Use the comparison operators (=, >, <, >=, <=, <>) and
--- the conditional keywords (AND, OR) to refine your queries.
+-- 비교 연산자(=, >, <, >=, <=, <>) 및
+-- 조건부 키워드(AND, OR)를 사용하여 쿼리를 구체화합니다.
 SELECT * FROM departments WHERE dept_no = 'd001' OR dept_no = 'd002';
 
--- Same as above.
+-- 위와 동일.
 SELECT * FROM departments WHERE dept_no IN ('d001', 'd002');
 
--- Opposite of the above.
+-- 위의 반대.
 SELECT * FROM departments WHERE dept_no NOT IN ('d001', 'd002');
 
--- Select in a given range.
+-- 주어진 범위에서 선택.
 SELECT * from departments WHERE dept_no BETWEEN 'd001' AND 'd002';
 
--- Show the number of rows in the departments table.
+-- departments 테이블의 행 수 표시.
 SELECT COUNT(*) FROM departments;
 
--- Show the number of rows in the departments table that
--- have 'en' as a substring of the dept_name value.
+-- dept_name 값의 부분 문자열로 'en'을 포함하는
+-- departments 테이블의 행 수 표시.
 SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 
--- Aggregate functions can be used, with GROUP BY, to compute a value
--- from a set of values. Most commonly used functions are:
+-- 집계 함수는 GROUP BY와 함께 사용하여 값 집합에서
+-- 값을 계산할 수 있습니다. 가장 일반적으로 사용되는 함수는 다음과 같습니다:
 -- MIN(), MAX(), COUNT(), SUM(), AVG().
--- Use HAVING to filter rows by aggregated values.
+-- HAVING을 사용하여 집계된 값으로 행을 필터링합니다.
 
--- Retrieve the total number of employees, by department number,
--- with the condition of having more than 100 employees.
+-- 부서 번호별로 총 직원 수를 검색하며,
+-- 직원 수가 100명 이상인 조건을 만족해야 합니다.
 SELECT dept_no, COUNT(dept_no) FROM dept_emp GROUP BY dept_no
 HAVING COUNT(dept_no) > 100;
 
--- Aliases, using the optional keyword AS, can be used for column/table names.
+-- 선택적 키워드 AS를 사용하는 별칭은 열/테이블 이름에 사용할 수 있습니다.
 SELECT COUNT(A.*) AS total_employees, COUNT(B.*) total_departments
 FROM employees AS A, departments B;
 
--- Common date format is "yyyy-mm-dd".
--- However, it can vary according to the implementation, the operating system, and the session's locale.
+-- 일반적인 날짜 형식은 "yyyy-mm-dd"입니다.
+-- 그러나 구현, 운영 체제 및 세션의 로캘에 따라 다를 수 있습니다.
 SELECT * FROM dept_manager WHERE from_date >= '1990-01-01';
 
--- A JOIN of information from multiple tables: the titles table shows
--- who had what job titles, by their employee numbers, from what
--- date to what date. Retrieve this information, but instead of the
--- employee number, use the employee number as a cross-reference to
--- the employees table to get each employee's first and last name
--- instead. (And only get 10 rows.)
+-- 여러 테이블의 정보 JOIN: titles 테이블은
+-- 누가 어떤 직책을 가졌는지, 직원 번호별로,
+-- 언제부터 언제까지인지 보여줍니다. 이 정보를 검색하지만,
+-- 직원 번호 대신 직원 번호를 상호 참조로 사용하여
+-- employees 테이블에서 각 직원의 이름과 성을
+-- 가져옵니다. (그리고 10개의 행만 가져옵니다.)
 
 SELECT employees.first_name, employees.last_name,
        titles.title, titles.from_date, titles.to_date
 FROM titles INNER JOIN employees ON
        employees.emp_no = titles.emp_no LIMIT 10;
 
--- Combine the result of multiple SELECT.
--- UNION selects distinct rows, UNION ALL selects all rows.
+-- 여러 SELECT의 결과 결합.
+-- UNION은 고유한 행을 선택하고, UNION ALL은 모든 행을 선택합니다.
 SELECT * FROM departments WHERE dept_no = 'd001'
 UNION
 SELECT * FROM departments WHERE dept_no = 'd002';
 
--- SQL syntax order is:
+-- SQL 구문 순서는 다음과 같습니다:
 -- SELECT _ FROM _ JOIN _ ON _ WHERE _ GROUP BY _ HAVING _ ORDER BY _ UNION
 
--- List all the tables in all the databases. Implementations typically provide
--- their own shortcut command to do this with the database currently in use.
+-- 모든 데이터베이스의 모든 테이블 나열. 구현은 일반적으로
+-- 현재 사용 중인 데이터베이스로 이 작업을 수행하는 자체 바로 가기 명령을 제공합니다.
 SELECT * FROM INFORMATION_SCHEMA.TABLES
 WHERE TABLE_TYPE='BASE TABLE';
 
--- Create a table called tablename1, with the two columns shown, for
--- the database currently in use. Lots of other options are available
--- for how you specify the columns, such as their datatypes.
+-- 현재 사용 중인 데이터베이스에 대해 표시된 두 개의 열이 있는
+-- tablename1이라는 테이블을 만듭니다. 데이터 유형과 같이
+-- 열을 지정하는 방법에 대한 다른 많은 옵션이 있습니다.
 CREATE TABLE tablename1 (fname VARCHAR(20), lname VARCHAR(20));
 
--- Insert a row of data into the table tablename1. This assumes that the
--- table has been defined to accept these values as appropriate for it.
+-- tablename1 테이블에 데이터 행 삽입. 이 테이블이
+-- 이러한 값을 적절한 것으로 받아들이도록 정의되었다고 가정합니다.
 INSERT INTO tablename1 VALUES('Richard','Mutt');
 
--- In tablename1, change the fname value to 'John'
--- for all rows that have an lname value of 'Mutt'.
+-- tablename1에서 lname 값이 'Mutt'인 모든 행에 대해
+-- fname 값을 'John'으로 변경합니다.
 UPDATE tablename1 SET fname='John' WHERE lname='Mutt';
 
--- Delete rows from the tablename1 table
--- where the lname value begins with 'M'.
+-- tablename1 테이블에서 lname 값이 'M'으로 시작하는
+-- 행 삭제.
 DELETE FROM tablename1 WHERE lname LIKE 'M%';
 
--- Delete all rows from the tablename1 table, leaving the empty table.
+-- tablename1 테이블에서 모든 행을 삭제하고 빈 테이블을 남깁니다.
 DELETE FROM tablename1;
 
--- Remove the entire tablename1 table.
+-- 전체 tablename1 테이블 제거.
 DROP TABLE tablename1;
 ```
 
-## Further Reading
+## 더 읽을거리
 
-* [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) A good introduction to SQL in a "learn by doing it" format.
-* [Database System Concepts](https://www.db-book.com) book's Chapter 3 - Introduction to SQL has an in depth explanation of SQL concepts.
+* [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) "하면서 배우기" 형식의 SQL에 대한 좋은 소개.
+* [Database System Concepts](https://www.db-book.com) 책의 3장 - SQL 소개에는 SQL 개념에 대한 심층적인 설명이 있습니다.

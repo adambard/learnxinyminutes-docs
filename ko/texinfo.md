@@ -1,5 +1,3 @@
-# texinfo.md (번역)
-
 ---
 name: Texinfo
 contributors:
@@ -7,66 +5,62 @@ contributors:
 filename: learntexinfo.texi
 ---
 
-Texinfo is a documentation format you can use to create various types of
-documents from the same source.  Its main usage is to create documentation
-manuals and info pages for GNU projects.
+Texinfo는 동일한 소스에서 다양한 유형의 문서를 만드는 데 사용할 수 있는 문서 형식입니다. 주요 용도는 GNU 프로젝트의 문서 매뉴얼 및 정보 페이지를 만드는 것입니다.
 
-Texinfo is a markup language that contains text and *@-commands* that specify
-what the generator should do.
+Texinfo는 텍스트와 생성기가 수행해야 할 작업을 지정하는 *@-명령*을 포함하는 마크업 언어입니다.
 
-## Initial File
+## 초기 파일
 
-A simple example of a simple manual:
+간단한 매뉴얼의 간단한 예:
 
 ```
 \input texinfo
 @setfilename simple-document.info
 @documentencoding UTF-8
 @settitle simple-document
-@c This is a comment
-@c Replace simple-document above (twice) with the actual document title
+@c 이것은 주석입니다
+@c 위의 simple-document를 (두 번) 실제 문서 제목으로 바꾸십시오.
 
-@c Automake will take care of version.texi
+@c Automake가 version.texi를 처리합니다.
 @include version.texi
 
 @copying
 Copyright @copyright{} YEAR MY NAME
 
-@c GFDL is common for GNU projects
+@c GFDL은 GNU 프로젝트에 일반적입니다.
 @quotation
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3 or
-any later version published by the Free Software Foundation; with no
-Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
-copy of the license is included in the section entitled ``GNU Free
-Documentation License''.
+이 문서를 복사, 배포 및/또는 수정하는 것은
+자유 소프트웨어 재단에서 발행한 GNU 자유 문서 사용 허가서 버전 1.3 또는
+그 이후 버전의 조건에 따라 허용됩니다. 불변 섹션, 앞표지 텍스트 및
+뒷표지 텍스트는 없습니다. 라이선스 사본은
+"GNU 자유 문서 사용 허가서"라는 제목의 섹션에 포함되어 있습니다.
 @end quotation
 @end copying
 
 @titlepage
 @end titlepage
 
-@c Now starts the actual content
+@c 이제 실제 내용이 시작됩니다.
 @contents
 
-@c The first node must always be Top
+@c 첫 번째 노드는 항상 Top이어야 합니다.
 @node Top
-@c And we give it a title
+@c 그리고 제목을 지정합니다.
 @top simple-document
 
-This document quickly describes Texinfo features.
+이 문서는 Texinfo 기능을 간략하게 설명합니다.
 
-@c This is the ToC:
+@c 이것은 목차입니다:
 @menu
-* Introduction::           A short summary of the chapter
+* Introduction::           이 장의 간략한 요약
 
 @detailmenu
---- The Detailed Node Listing ---
+--- 자세한 노드 목록 ---
 
 Introduction
 
-* Formatting::             How to format text nicely
-* Links::                  Linking to other resources, pages, or manuals
+* Formatting::             텍스트를 멋지게 서식 지정하는 방법
+* Links::                  다른 리소스, 페이지 또는 매뉴얼에 연결
 
 @end detailmenu
 @end menu
@@ -74,112 +68,110 @@ Introduction
 @node Introduction
 @chapter Introduction
 
-Each node must have the same name as the menu item that was defined in the ToC.
+각 노드는 목차에 정의된 메뉴 항목과 동일한 이름을 가져야 합니다.
 
 @node Formatting
 @section Formatting
-@c Add something to the content index, so people can get here when searching
-@c for something else
-@cindex bold text
-@cindex titles
+@c 내용 색인에 무언가를 추가하여 사람들이 검색할 때
+@c 여기에 올 수 있도록 합니다.
+@cindex 굵은 텍스트
+@cindex 제목
 
-Similar to chapters, sections must have the same name and appear in the same order.
+장과 마찬가지로 섹션은 동일한 이름을 가져야 하며 동일한 순서로 나타나야 합니다.
 
-@subsection This is a subsection title
-@subsubsection This is a sub-subsection title
+@subsection 이것은 하위 섹션 제목입니다
+@subsubsection 이것은 하위 하위 섹션 제목입니다
 
-Each block of text is a paragraph. You can use multiple lines for the paragraph
-like so, only empty lines separate paragraphs.
+각 텍스트 블록은 단락입니다. 단락에 여러 줄을 사용할 수 있으며,
+빈 줄만 단락을 구분합니다.
 
-Common formatting include @emph{emphasis}, @code{inline code}. Specific type of
-text can be marked as well: @file{file.txt}, @option{--learn-fast},
-@command{ls} or @var{variable}. You can escape the command character like
-so: @@, and a newline with a single @@ at the end of the line.
+일반적인 서식에는 @emph{강조}, @code{인라인 코드}가 포함됩니다. 특정 유형의
+텍스트도 표시할 수 있습니다: @file{file.txt}, @option{--learn-fast},
+@command{ls} 또는 @var{variable}. 다음과 같이 명령 문자를 이스케이프할 수 있습니다:
+@@, 그리고 줄 끝에 단일 @@를 사용하여 줄 바꿈.
 
-You can add different types of blocks:
+다양한 유형의 블록을 추가할 수 있습니다:
 
 @example
-Here is an example
+다음은 예입니다.
 @end example
 
 @lisp
-'(this is lisp code)
+'(이것은 lisp 코드입니다)
 @end lisp
 
 @itemize
-@item An element in an unordered list
-@item A second element in the same list
+@item 정렬되지 않은 목록의 요소
+@item 동일한 목록의 두 번째 요소
 @end itemize
 
 @enumerate
-@item This list is similar
-@item But ordered
+@item 이 목록은 유사합니다
+@item 하지만 정렬됨
 @end enumerate
 
 @quotation
-A quotation block, by someone famous maybe
+유명한 사람이 한 인용문 블록일 수 있습니다.
 @end quotation
 
 @table @asis
-@item element title
-element description
+@item 요소 제목
+요소 설명
 
-@item second element title
-second element description. Note that the description part can span multiple
-paragraphs, contain other blocks etc. This is usually used as a definition
-list.
+@item 두 번째 요소 제목
+두 번째 요소 설명. 설명 부분은 여러 단락에 걸쳐 있을 수 있으며,
+다른 블록 등을 포함할 수 있습니다. 이것은 일반적으로 정의 목록으로 사용됩니다.
 
-@code{@@asis} wraps the element title, and tells Texinfo to use them as-is.
+@code{@@asis}는 요소 제목을 감싸고 Texinfo에 그대로 사용하도록 지시합니다.
 @end table
 
 @table @code
 @item do-x
-This item title is now wrapped in a code block, as in @code{@@code{do-x}}
+이 항목 제목은 이제 @code{@@code{do-x}}와 같이 코드 블록으로 래핑됩니다.
 @end table
 
-@c content index can appear at any place in the document, not necessarily after
-@c titles.
-@cindex function definition
-@deffn {Kind of Function} function_name @var{arg1} @var{arg2} @
+@c 내용 색인은 문서의 어느 곳에나 나타날 수 있으며, 반드시
+@c 제목 뒤에 올 필요는 없습니다.
+@cindex 함수 정의
+@deffn {함수의 종류} function_name @var{arg1} @var{arg2} @
   @var{arg3} @var{arg4} [@var{optional5}]
-This text describes the function. Note how we could use multiple lines for the
-function synopsis by escaping the line with a single @@.
+이 텍스트는 함수를 설명합니다. 단일 @@로 줄을 이스케이프하여
+함수 개요에 여러 줄을 사용할 수 있는 방법을 확인하십시오.
 
-This again can contain multiple paragraphs or blocks.
+이것은 다시 여러 단락이나 블록을 포함할 수 있습니다.
 @end deffn
 
 @node Links
 @section Links
 
-There are various types of links you can use. A simple link to a URL with
-@uref{https://github.com} and optionally with it a title:
-@uref{https://github.com, GitHub}. An email address @email{me@@me.me}.
-A node in this document, @xref{Introduction}. Always use the exact node name
-for that one. @code{xref} will include the text ``see'' before the link. To
-insert something different, use @pxref{Introduction} (``See'') or
-@xref{Introduction} (nothing is inserted). With an additional argument, you
-can change the text of the link, @xref{Introduction, this introduction}.
+사용할 수 있는 다양한 유형의 링크가 있습니다. @uref{https://github.com}을 사용하여
+URL에 대한 간단한 링크를 만들고 선택적으로 제목을 추가할 수 있습니다:
+@uref{https://github.com, GitHub}. 이메일 주소 @email{me@@me.me}.
+이 문서의 노드, @xref{Introduction}. 항상 해당 노드의 정확한 이름을
+사용하십시오. @code{xref}는 링크 앞에 "see" 텍스트를 포함합니다.
+다른 것을 삽입하려면 @pxref{Introduction}("See") 또는
+@xref{Introduction}(아무것도 삽입되지 않음)을 사용하십시오. 추가 인수를 사용하여
+링크 텍스트를 변경할 수 있습니다. @xref{Introduction, this introduction}.
 
-It is possible to link to external manuals with these commands by adding
-more arguments, as in @code{@@xref{Node name,,, manual-name, link text}},
-@xref{Overview,,, texinfo, Texinfo's manual} for the complete reference
-on Texinfo!
+@code{@@xref{Node name,,, manual-name, link text}}와 같이
+더 많은 인수를 추가하여 이러한 명령으로 외부 매뉴얼에 연결할 수 있습니다.
+Texinfo에 대한 전체 참조는 @xref{Overview,,, texinfo, Texinfo's manual}를 참조하십시오!
 
 @bye
 ```
 
-## How to Use It
+## 사용 방법
 
-With `automake`, all you need to do is to give it the path to your manual
-in `Makefile.am`:
+`automake`를 사용하면 `Makefile.am`에 매뉴얼 경로를
+지정하기만 하면 됩니다:
 
 ```
 info_TEXINFOS= doc/simple-manual.texi
 ```
 
-Then, get your info manual with `make doc/simple-manual.info` or in other formats,
-e.g. HTML with `make doc/simple-manual.html`.
+그런 다음 `make doc/simple-manual.info`로 정보 매뉴얼을 얻거나 다른 형식으로,
+예를 들어 `make doc/simple-manual.html`로 HTML을 얻을 수 있습니다.
 
-## Readings
+## 읽을거리
 
-- [Official manual](https://www.gnu.org/software/texinfo/manual/texinfo/html_node/)
+- [공식 매뉴얼](https://www.gnu.org/software/texinfo/manual/texinfo/html_node/)

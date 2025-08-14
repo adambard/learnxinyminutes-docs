@@ -1,5 +1,3 @@
-# ruby.md (번역)
-
 ---
 name: Ruby
 filename: learnruby.rb
@@ -23,28 +21,28 @@ contributors:
 ---
 
 ```ruby
-# This is a comment
+# 이것은 주석입니다
 
 =begin
-This is a multi-line comment.
-The beginning line must start with "=begin"
-and the ending line must start with "=end".
+이것은 여러 줄 주석입니다.
+시작 줄은 "=begin"으로 시작해야 합니다
+그리고 끝 줄은 "=end"로 시작해야 합니다.
 
-You can do this, or start each line in
-a multi-line comment with the # character.
+이렇게 하거나, 여러 줄 주석의
+각 줄을 # 문자로 시작할 수 있습니다.
 =end
 
-# In Ruby, (almost) everything is an object.
-# This includes numbers...
+# Ruby에서는 (거의) 모든 것이 객체입니다.
+# 이것은 숫자도 포함합니다...
 3.class #=> Integer
 
-# ...and strings...
+# ...그리고 문자열도...
 "Hello".class #=> String
 
-# ...and even methods!
+# ...심지어 메서드도!
 "Hello".method(:class).class #=> Method
 
-# Some basic arithmetic
+# 몇 가지 기본 산술
 1 + 1 #=> 2
 8 - 1 #=> 7
 10 * 2 #=> 20
@@ -52,114 +50,113 @@ a multi-line comment with the # character.
 2 ** 5 #=> 32
 5 % 3 #=> 2
 
-# Bitwise operators
+# 비트 연산자
 3 & 5 #=> 1
 3 | 5 #=> 7
 3 ^ 5 #=> 6
 
-# Arithmetic is just syntactic sugar
-# for calling a method on an object
+# 산술은 단지 문법적 설탕일 뿐입니다
+# 객체에 대한 메서드 호출을 위한
 1.+(3) #=> 4
 10.* 5 #=> 50
 100.methods.include?(:/) #=> true
 
-# Special values are objects
-nil # equivalent to null in other languages
-true # truth
-false # falsehood
+# 특수 값은 객체입니다
+nil # 다른 언어의 null과 동일
+true # 참
+false # 거짓
 
 nil.class #=> NilClass
 true.class #=> TrueClass
 false.class #=> FalseClass
 
-# Equality
+# 동등성
 1 == 1 #=> true
 2 == 1 #=> false
 
-# Inequality
+# 부등성
 1 != 1 #=> false
 2 != 1 #=> true
 
-# Apart from false itself, nil is the only other 'falsey' value
+# false 자체를 제외하고, nil은 유일한 다른 '거짓' 값입니다
 
 !!nil   #=> false
 !!false #=> false
 !!0     #=> true
 !!""    #=> true
 
-# More comparisons
+# 더 많은 비교
 1 < 10 #=> true
 1 > 10 #=> false
 2 <= 2 #=> true
 2 >= 2 #=> true
 
-# Combined comparison operator (returns `1` when the first argument is greater,
-# `-1` when the second argument is greater, and `0` otherwise)
+# 결합 비교 연산자 (첫 번째 인수가 더 크면 `1`을,
+# 두 번째 인수가 더 크면 `-1`을, 그렇지 않으면 `0`을 반환)
 1 <=> 10 #=> -1 (1 < 10)
 10 <=> 1 #=> 1 (10 > 1)
 1 <=> 1 #=> 0 (1 == 1)
 
-# Logical operators
+# 논리 연산자
 true && false #=> false
 true || false #=> true
 
-# There are alternate versions of the logical operators with much lower
-# precedence. These are meant to be used as flow-control constructs to chain
-# statements together until one of them returns true or false.
+# 훨씬 낮은 우선순위를 가진 논리 연산자의 대체 버전이 있습니다.
+# 이것들은 그들 중 하나가 참 또는 거짓을 반환할 때까지 문장을
+# 함께 연결하는 흐름 제어 구문으로 사용하기 위한 것입니다.
 
-# `do_something_else` only called if `do_something` succeeds.
+# `do_something_else`는 `do_something`이 성공하는 경우에만 호출됩니다.
 do_something() and do_something_else()
-# `log_error` only called if `do_something` fails.
+# `log_error`는 `do_something`이 실패하는 경우에만 호출됩니다.
 do_something() or log_error()
 
-# String interpolation
+# 문자열 보간
 
-placeholder = 'use string interpolation'
-"I can #{placeholder} when using double quoted strings"
-#=> "I can use string interpolation when using double quoted strings"
+placeholder = '문자열 보간 사용'
+"큰따옴표 문자열을 사용할 때 #{placeholder}할 수 있습니다"
+#=> "큰따옴표 문자열을 사용할 때 문자열 보간 사용 할 수 있습니다"
 
-# You can combine strings using `+`, but not with other types
+# `+`를 사용하여 문자열을 결합할 수 있지만, 다른 유형과는 결합할 수 없습니다
 'hello ' + 'world'  #=> "hello world"
 'hello ' + 3 #=> TypeError: no implicit conversion of Integer into String
 'hello ' + 3.to_s #=> "hello 3"
 "hello #{3}" #=> "hello 3"
 
-# ...or combine strings and operators
+# ...또는 문자열과 연산자 결합
 'hello ' * 3 #=> "hello hello hello "
 
-# ...or append to string
+# ...또는 문자열에 추가
 'hello' << ' world' #=> "hello world"
 
-# You can print to the output with a newline at the end
-puts "I'm printing!"
-#=> I'm printing!
+# 끝에 개행 문자를 사용하여 출력에 인쇄할 수 있습니다
+puts "인쇄 중입니다!"
+#=> 인쇄 중입니다!
 #=> nil
 
-# ...or print to the output without a newline
-print "I'm printing!"
-#=> "I'm printing!" => nil
+# ...또는 개행 문자 없이 출력에 인쇄
+print "인쇄 중입니다!"
+#=> "인쇄 중입니다!" => nil
 
-# Variables
+# 변수
 x = 25 #=> 25
 x #=> 25
 
-# Note that assignment returns the value assigned.
-# This means you can do multiple assignment.
+# 할당은 할당된 값을 반환한다는 점에 유의하십시오.
+# 이것은 다중 할당을 할 수 있음을 의미합니다.
 
 x = y = 10 #=> 10
 x #=> 10
 y #=> 10
 
-# By convention, use snake_case for variable names.
+# 관례적으로, 변수 이름에는 snake_case를 사용합니다.
 snake_case = true
 
-# Use descriptive variable names
+# 설명적인 변수 이름 사용
 path_to_project_root = '/good/name/'
 m = '/bad/name/'
 
-# Symbols are immutable, reusable constants represented internally by an
-# integer value. They're often used instead of strings to efficiently convey
-# specific, meaningful values.
+# 심볼은 정수 값으로 내부적으로 표현되는 불변의 재사용 가능한 상수입니다.
+# 특정 의미 있는 값을 효율적으로 전달하기 위해 문자열 대신 자주 사용됩니다.
 
 :pending.class #=> Symbol
 
@@ -171,71 +168,71 @@ status == 'pending' #=> false
 
 status == :approved #=> false
 
-# Strings can be converted into symbols and vice versa.
+# 문자열은 심볼로, 심볼은 문자열로 변환할 수 있습니다.
 status.to_s #=> "pending"
 "argon".to_sym #=> :argon
 
-# Arrays
+# 배열
 
-# This is an array.
+# 이것은 배열입니다.
 array = [1, 2, 3, 4, 5] #=> [1, 2, 3, 4, 5]
 
-# Arrays can contain different types of items.
+# 배열은 다른 유형의 항목을 포함할 수 있습니다.
 [1, 'hello', false] #=> [1, "hello", false]
 
-# You might prefer %w instead of quotes
+# 따옴표 대신 %w를 선호할 수 있습니다
 %w[foo bar baz] #=> ["foo", "bar", "baz"]
 
-# Arrays can be indexed.
-# From the front...
+# 배열은 인덱싱할 수 있습니다.
+# 앞에서부터...
 array[0] #=> 1
 array.first #=> 1
 array[12] #=> nil
 
-# ...or from the back...
+# ...또는 뒤에서부터...
 array[-1] #=> 5
 array.last #=> 5
 
-# ...or with a start index and length...
+# ...또는 시작 인덱스와 길이로...
 array[2, 3] #=> [3, 4, 5]
 
-# ...or with a range...
+# ...또는 범위로...
 array[1..3] #=> [2, 3, 4]
 
-# You can reverse an Array.
-# Return a new array with reversed values
+# 배열을 뒤집을 수 있습니다.
+# 뒤집힌 값으로 새 배열 반환
 [1,2,3].reverse #=> [3,2,1]
-# Reverse an array in place to update variable with reversed values
+# 변수를 뒤집힌 값으로 업데이트하기 위해 배열을 제자리에서 뒤집기
 a = [1,2,3]
-a.reverse! #=> a==[3,2,1] because of the bang ('!') call to reverse
+a.reverse! #=> a==[3,2,1] bang ('!') 호출 때문에
 
-# Like arithmetic, [var] access is just syntactic sugar
-# for calling a method '[]' on an object.
+# 산술과 마찬가지로 [var] 액세스는 단지 문법적 설탕일 뿐입니다
+# 객체에서 '[]' 메서드를 호출하기 위한
 array.[] 0 #=> 1
 array.[] 12 #=> nil
 
-# You can add to an array...
+# 배열에 추가할 수 있습니다...
 array << 6 #=> [1, 2, 3, 4, 5, 6]
-# Or like this
+# 또는 이렇게
 array.push(6) #=> [1, 2, 3, 4, 5, 6]
 
-# ...and check if an item exists in an array
+# ...그리고 항목이 배열에 있는지 확인
 array.include?(1) #=> true
 
-# Hashes are Ruby's primary dictionary with key/value pairs.
-# Hashes are denoted with curly braces.
+# 해시는 키/값 쌍이 있는 Ruby의 기본 사전입니다.
+# 해시는 중괄호로 표시됩니다.
 hash = { 'color' => 'green', 'number' => 5 }
 
 hash.keys #=> ['color', 'number']
 
-# Hashes can be quickly looked up by key.
+# 해시는 키로 빠르게 조회할 수 있습니다.
 hash['color'] #=> "green"
 hash['number'] #=> 5
 
-# Asking a hash for a key that doesn't exist returns nil.
+# 존재하지 않는 키에 대해 해시를 요청하면 nil이 반환됩니다.
 hash['nothing here'] #=> nil
 
-# When using symbols for keys in a hash, you can use an alternate syntax.
+# 해시에서 키에 심볼을 사용할 때 대체 구문을 사용할 수 있습니다.
 
 hash = { :defcon => 3, :action => true }
 hash.keys #=> [:defcon, :action]
@@ -243,56 +240,55 @@ hash.keys #=> [:defcon, :action]
 hash = { defcon: 3, action: true }
 hash.keys #=> [:defcon, :action]
 
-# Check existence of keys and values in hash
+# 해시에서 키와 값의 존재 확인
 hash.key?(:defcon) #=> true
 hash.value?(3) #=> true
 
-# Tip: Both Arrays and Hashes are Enumerable!
-# They share a lot of useful methods such as each, map, count, and more.
+# 팁: 배열과 해시는 모두 Enumerable입니다!
+# each, map, count 등과 같은 많은 유용한 메서드를 공유합니다.
 
-# Control structures
+# 제어 구조
 
-# Conditionals
+# 조건문
 if true
-  'if statement'
+  'if 문'
 elsif false
-  'else if, optional'
+  'else if, 선택 사항'
 else
-  'else, also optional'
+  'else, 또한 선택 사항'
 end
 
-# If a condition controls invocation of a single statement rather than a block
-# of code you can use postfix-if notation
+# 조건이 코드 블록이 아닌 단일 문장의 호출을 제어하는 경우
+# 후위-if 표기법을 사용할 수 있습니다.
 warnings = ['Patronimic is missing', 'Address too short']
 puts("Some warnings occurred:\n" + warnings.join("\n"))  if !warnings.empty?
 
-# Rephrase condition if `unless` sounds better than `if`
+# `if`보다 `unless`가 더 잘 들리면 조건을 재구성하십시오.
 puts("Some warnings occurred:\n" + warnings.join("\n"))  unless warnings.empty?
 
-# Loops
-# In Ruby, traditional `for` loops aren't very common. Instead, these
-# basic loops are implemented using enumerable, which hinges on `each`.
+# 루프
+# Ruby에서는 전통적인 `for` 루프가 그다지 일반적이지 않습니다. 대신, 이러한
+# 기본 루프는 `each`에 의존하는 enumerable을 사용하여 구현됩니다.
 (1..5).each do |counter|
   puts "iteration #{counter}"
 end
 
-# Which is roughly equivalent to the following, which is unusual to see in Ruby.
+# 이것은 대략 다음과 같으며 Ruby에서는 보기 드문 경우입니다.
 for counter in 1..5
   puts "iteration #{counter}"
 end
 
-# The `do |variable| ... end` construct above is called a 'block'. Blocks are
-# similar to lambdas, anonymous functions or closures in other programming
-# languages. They can be passed around as objects, called, or attached as
-# methods.
+# 위의 `do |variable| ... end` 구문은 '블록'이라고 합니다. 블록은
+# 다른 프로그래밍 언어의 람다, 익명 함수 또는 클로저와 유사합니다.
+# 객체로 전달하거나, 호출하거나, 메서드로 첨부할 수 있습니다.
 #
-# The 'each' method of a range runs the block once for each element of the range.
-# The block is passed a counter as a parameter.
+# 범위의 'each' 메서드는 범위의 각 요소에 대해 블록을 한 번 실행합니다.
+# 블록은 매개변수로 카운터를 전달받습니다.
 
-# You can also surround blocks in curly brackets.
+# 중괄호로 블록을 둘러쌀 수도 있습니다.
 (1..5).each { |counter| puts "iteration #{counter}" }
 
-# The contents of data structures can also be iterated using each.
+# 데이터 구조의 내용은 each를 사용하여 반복할 수도 있습니다.
 array.each do |element|
   puts "#{element} is part of the array"
 end
@@ -300,8 +296,8 @@ hash.each do |key, value|
   puts "#{key} is #{value}"
 end
 
-# If you still need an index you can use 'each_with_index' and define an index
-# variable.
+# 여전히 인덱스가 필요한 경우 'each_with_index'를 사용하고 인덱스
+# 변수를 정의할 수 있습니다.
 array.each_with_index do |element, index|
   puts "#{element} is number #{index} in the array"
 end
@@ -317,10 +313,10 @@ end
 #=> iteration 4
 #=> iteration 5
 
-# There are a bunch of other helpful looping functions in Ruby.
-# For example: 'map', 'reduce', 'inject', the list goes on.
-# Map, for instance, takes the array it's looping over, does something
-# to it as defined in your block, and returns an entirely new array.
+# Ruby에는 다른 유용한 반복 함수가 많이 있습니다.
+# 예를 들어: 'map', 'reduce', 'inject' 등 목록이 계속됩니다.
+# Map은 예를 들어 반복하는 배열을 가져와
+# 블록에 정의된 대로 무언가를 수행하고 완전히 새로운 배열을 반환합니다.
 array = [1,2,3,4,5]
 doubled = array.map do |element|
   element * 2
@@ -330,12 +326,12 @@ puts doubled
 puts array
 #=> [1,2,3,4,5]
 
-# another useful syntax is .map(&:method)
+# 또 다른 유용한 구문은 .map(&:method)입니다.
 a = ["FOO", "BAR", "BAZ"]
 a.map { |s| s.downcase } #=> ["foo", "bar", "baz"]
 a.map(&:downcase) #=> ["foo", "bar", "baz"]
 
-# Case construct
+# Case 구문
 grade = 'B'
 
 case grade
@@ -354,7 +350,7 @@ else
 end
 #=> "Better luck next time"
 
-# Cases can also use ranges
+# Case는 범위를 사용할 수도 있습니다.
 grade = 82
 case grade
 when 90..100
@@ -366,9 +362,9 @@ else
 end
 #=> "OK job"
 
-# Exception handling
+# 예외 처리
 begin
-  # Code here that might raise an exception
+  # 예외를 발생시킬 수 있는 코드
   raise NoMemoryError, 'You ran out of memory.'
 rescue NoMemoryError => exception_variable
   puts 'NoMemoryError was raised', exception_variable
@@ -380,16 +376,16 @@ ensure
   puts 'This code always runs no matter what'
 end
 
-# Methods
+# 메서드
 
 def double(x)
   x * 2
 end
 
-# Methods (and blocks) implicitly return the value of the last statement.
+# 메서드(및 블록)는 마지막 문의 값을 암시적으로 반환합니다.
 double(2) #=> 4
 
-# Parentheses are optional where the interpretation is unambiguous.
+# 해석이 명확한 경우 괄호는 선택 사항입니다.
 double 3 #=> 6
 
 double double 3 #=> 12
@@ -398,14 +394,14 @@ def sum(x, y)
   x + y
 end
 
-# Method arguments are separated by a comma.
+# 메서드 인수는 쉼표로 구분됩니다.
 sum 3, 4 #=> 7
 
 sum sum(3, 4), 5 #=> 12
 
 # yield
-# All methods have an implicit, optional block parameter.
-# It can be called with the 'yield' keyword.
+# 모든 메서드에는 암시적이고 선택적인 블록 매개변수가 있습니다.
+# 'yield' 키워드로 호출할 수 있습니다.
 def surround
   puts '{'
   yield
@@ -418,32 +414,31 @@ surround { puts 'hello world' }
 #=> hello world
 #=> }
 
-# Blocks can be converted into a 'proc' object, which wraps the block and allows
-# it to be passed to another method, bound to a different scope, or manipulated
-# otherwise. This is most common in method parameter lists, where you frequently
-# see a trailing '&block' parameter that will accept the block, if one is given,
-# and convert it to a 'Proc'. The naming here is convention; it would work just
-# as well with '&pineapple'.
+# 블록은 'proc' 객체로 변환될 수 있으며, 이는 블록을 래핑하고
+# 다른 메서드에 전달하거나, 다른 범위에 바인딩하거나,
+# 다른 방식으로 조작할 수 있도록 합니다. 이것은 메서드 매개변수 목록에서
+# 가장 일반적이며, 블록이 주어지면 블록을 수락하고
+# 'Proc'으로 변환하는 후행 '&block' 매개변수를 자주 볼 수 있습니다.
+# 여기서 이름 지정은 관례이며, '&pineapple'과도 잘 작동합니다.
 def guests(&block)
   block.class #=> Proc
   block.call(4)
 end
 
-# The 'call' method on the Proc is similar to calling 'yield' when a block is
-# present. The arguments passed to 'call' will be forwarded to the block as
-# arguments.
+# Proc의 'call' 메서드는 블록이 있을 때 'yield'를 호출하는 것과 유사합니다.
+# 'call'에 전달된 인수는 블록에 인수로 전달됩니다.
 
 guests { |n| "You have #{n} guests." }
 # => "You have 4 guests."
 
-# You can pass a list of arguments, which will be converted into an array.
-# That's what splat operator ("*") is for.
+# 배열로 변환될 인수 목록을 전달할 수 있습니다.
+# 그것이 스플랫 연산자("*")의 용도입니다.
 def guests(*array)
   array.each { |guest| puts guest }
 end
 
-# There is also the shorthand block syntax. It's most useful when you need
-# to call a simple method on all array items.
+# 약식 블록 구문도 있습니다. 모든 배열 항목에 대해 간단한
+# 메서드를 호출해야 할 때 가장 유용합니다.
 upcased = ['Watch', 'these', 'words', 'get', 'upcased'].map(&:upcase)
 puts upcased
 #=> ["WATCH", "THESE", "WORDS", "GET", "UPCASED"]
@@ -452,16 +447,16 @@ sum = [1, 2, 3, 4, 5].reduce(&:+)
 puts sum
 #=> 15
 
-# Destructuring
+# 구조 분해
 
-# Ruby will automatically destructure arrays on assignment to multiple variables.
+# Ruby는 여러 변수에 할당할 때 배열을 자동으로 구조 분해합니다.
 a, b, c = [1, 2, 3]
 a #=> 1
 b #=> 2
 c #=> 3
 
-# In some cases, you will want to use the splat operator: `*` to prompt destructuring
-# of an array into a list.
+# 어떤 경우에는 스플랫 연산자: `*`를 사용하여 배열을
+# 목록으로 구조 분해하라는 메시지를 표시해야 합니다.
 ranked_competitors = ["John", "Sally", "Dingus", "Moe", "Marcy"]
 
 def best(first, second, third)
@@ -470,7 +465,7 @@ end
 
 best *ranked_competitors.first(3) #=> Winners are John, Sally, and Dingus.
 
-# The splat operator can also be used in parameters.
+# 스플랫 연산자는 매개변수에서도 사용할 수 있습니다.
 def best(first, second, third, *others)
   puts "Winners are #{first}, #{second}, and #{third}."
   puts "There were #{others.count} other participants."
@@ -480,56 +475,56 @@ best *ranked_competitors
 #=> Winners are John, Sally, and Dingus.
 #=> There were 2 other participants.
 
-# By convention, all methods that return booleans end with a question mark.
+# 관례적으로, 부울을 반환하는 모든 메서드는 물음표로 끝납니다.
 5.even? #=> false
 5.odd? #=> true
 
-# By convention, if a method name ends with an exclamation mark, it does
-# something destructive like mutate the receiver. Many methods have a ! version
-# to make a change, and a non-! version to just return a new changed version.
+# 관례적으로, 메서드 이름이 느낌표로 끝나면 수신자를
+# 변경하는 것과 같은 파괴적인 작업을 수행합니다. 많은 메서드에는
+# 변경을 위한 ! 버전과 변경된 새 버전을 반환하는
+# 비-! 버전이 있습니다.
 company_name = "Dunder Mifflin"
 company_name.upcase #=> "DUNDER MIFFLIN"
 company_name #=> "Dunder Mifflin"
-# We're mutating company_name this time.
+# 이번에는 company_name을 변경합니다.
 company_name.upcase! #=> "DUNDER MIFFLIN"
 company_name #=> "DUNDER MIFFLIN"
 
-# Classes
+# 클래스
 
-# You can define a class with the 'class' keyword.
+# 'class' 키워드로 클래스를 정의할 수 있습니다.
 class Human
 
-  # A class variable. It is shared by all instances of this class.
+  # 클래스 변수. 이 클래스의 모든 인스턴스에서 공유됩니다.
   @@species = 'H. sapiens'
 
-  # Basic initializer
+  # 기본 초기화자
   def initialize(name, age = 0)
-    # Assign the argument to the 'name' instance variable for the instance.
+    # 인수를 인스턴스의 'name' 인스턴스 변수에 할당합니다.
     @name = name
-    # If no age given, we will fall back to the default in the arguments list.
+    # 나이가 주어지지 않으면 인수 목록의 기본값으로 돌아갑니다.
     @age = age
   end
 
-  # Basic setter method
+  # 기본 설정자 메서드
   def name=(name)
     @name = name
   end
 
-  # Basic getter method
+  # 기본 접근자 메서드
   def name
     @name
   end
 
-  # The above functionality can be encapsulated using the attr_accessor method
-  # as follows.
+  # 위의 기능은 다음과 같이 attr_accessor 메서드를 사용하여 캡슐화할 수 있습니다.
   attr_accessor :name
 
-  # Getter/setter methods can also be created individually like this.
+  # 접근자/설정자 메서드는 다음과 같이 개별적으로 만들 수도 있습니다.
   attr_reader :name
   attr_writer :name
 
-  # A class method uses self to distinguish from instance methods.
-  # It can only be called on the class, not an instance.
+  # 클래스 메서드는 인스턴스 메서드와 구별하기 위해 self를 사용합니다.
+  # 클래스에서만 호출할 수 있으며 인스턴스에서는 호출할 수 없습니다.
   def self.say(msg)
     puts msg
   end
@@ -539,11 +534,11 @@ class Human
   end
 end
 
-# Instantiating of a class
+# 클래스 인스턴스화
 jim = Human.new('Jim Halpert')
 dwight = Human.new('Dwight K. Schrute')
 
-# You can call the methods of the generated object.
+# 생성된 객체의 메서드를 호출할 수 있습니다.
 jim.species #=> "H. sapiens"
 jim.name #=> "Jim Halpert"
 jim.name = "Jim Halpert II" #=> "Jim Halpert II"
@@ -551,30 +546,30 @@ jim.name #=> "Jim Halpert II"
 dwight.species #=> "H. sapiens"
 dwight.name #=> "Dwight K. Schrute"
 
-# Calling of a class method
+# 클래스 메서드 호출
 Human.say('Hi') #=> "Hi"
 
-# Variable's scopes are defined by the way we name them.
-# Variables that start with $ have global scope.
+# 변수의 범위는 이름을 지정하는 방식으로 정의됩니다.
+# $로 시작하는 변수는 전역 범위를 가집니다.
 $var = "I'm a global var"
 defined? $var #=> "global-variable"
 
-# Variables that start with @ have instance scope.
+# @로 시작하는 변수는 인스턴스 범위를 가집니다.
 @var = "I'm an instance var"
 defined? @var #=> "instance-variable"
 
-# Variables that start with @@ have class scope.
+# @@로 시작하는 변수는 클래스 범위를 가집니다.
 @@var = "I'm a class var"
 defined? @@var #=> "class variable"
 
-# Variables that start with a capital letter are constants.
+# 대문자로 시작하는 변수는 상수입니다.
 Var = "I'm a constant"
 defined? Var #=> "constant"
 
-# Class is also an object in ruby. So a class can have instance variables.
-# A class variable is shared among the class and all of its descendants.
+# 클래스는 ruby에서 객체이기도 합니다. 따라서 클래스는 인스턴스 변수를 가질 수 있습니다.
+# 클래스 변수는 클래스와 모든 하위 클래스에서 공유됩니다.
 
-# Base class
+# 기본 클래스
 class Human
   @@foo = 0
 
@@ -587,7 +582,7 @@ class Human
   end
 end
 
-# Derived class
+# 파생 클래스
 class Worker < Human
 end
 
@@ -597,7 +592,7 @@ Worker.foo #=> 0
 Human.foo = 2
 Worker.foo #=> 2
 
-# A class instance variable is not shared by the class's descendants.
+# 클래스 인스턴스 변수는 클래스의 하위 클래스에서 공유되지 않습니다.
 class Human
   @bar = 0
 
@@ -622,8 +617,8 @@ module ModuleExample
   end
 end
 
-# Including modules binds their methods to the class instances.
-# Extending modules binds their methods to the class itself.
+# 모듈을 포함하면 해당 메서드가 클래스 인스턴스에 바인딩됩니다.
+# 모듈을 확장하면 해당 메서드가 클래스 자체에 바인딩됩니다.
 class Person
   include ModuleExample
 end
@@ -637,7 +632,7 @@ Person.new.foo #=> "foo"
 Book.foo       #=> "foo"
 Book.new.foo   #=> NoMethodError: undefined method `foo'
 
-# Callbacks are executed when including and extending a module
+# 모듈을 포함하고 확장할 때 콜백이 실행됩니다.
 module ConcernExample
   def self.included(base)
     base.extend(ClassMethods)
@@ -667,11 +662,11 @@ Something.new.bar #=> NoMethodError: undefined method `bar'
 Something.new.qux #=> "qux"
 ```
 
-## Additional resources
+## 추가 자료
 
-- [An Interactive Tutorial for Ruby](https://rubymonk.com/) - Learn Ruby through a series of interactive tutorials.
-- [Official Documentation](http://ruby-doc.org/core)
-- [Ruby from other languages](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
-- [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - An older [free edition](http://ruby-doc.com/docs/ProgrammingRuby/) is available online.
-- [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) - A community-driven Ruby coding style guide.
-- [Try Ruby](https://try.ruby-lang.org/) - Learn the basic of Ruby programming language, interactive in the browser.
+- [Ruby 대화형 튜토리얼](https://rubymonk.com/) - 일련의 대화형 튜토리얼을 통해 Ruby를 배우십시오.
+- [공식 문서](http://ruby-doc.org/core)
+- [다른 언어에서 온 Ruby](https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/)
+- [Programming Ruby](http://www.amazon.com/Programming-Ruby-1-9-2-0-Programmers/dp/1937785491/) - 이전 [무료 버전](http://ruby-doc.com/docs/ProgrammingRuby/)은 온라인에서 사용할 수 있습니다.
+- [Ruby 스타일 가이드](https://github.com/bbatsov/ruby-style-guide) - 커뮤니티 기반 Ruby 코딩 스타일 가이드.
+- [Try Ruby](https://try.ruby-lang.org/) - 브라우저에서 대화형으로 Ruby 프로그래밍 언어의 기본을 배우십시오.

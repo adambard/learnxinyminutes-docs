@@ -1,5 +1,3 @@
-# wikitext.md (번역)
-
 ---
 name: Wikitext
 contributors:
@@ -7,89 +5,89 @@ contributors:
 filename: wikitext.md
 ---
 
-A wiki is an online collaboratively edited hypertext publication, the most famous of which is Wikipedia. Wikitext is the markup language used by wikis. Its syntax is similar to a mix of Markdown and HTML.
+위키는 온라인에서 공동으로 편집하는 하이퍼텍스트 출판물이며, 가장 유명한 것은 위키백과입니다. 위키텍스트는 위키에서 사용하는 마크업 언어입니다. 구문은 마크다운과 HTML의 혼합과 유사합니다.
 
-## Syntax
+## 구문
 
-`<!--- comments are hidden when reading, but visible when editing --->`
+`<!--- 주석은 읽을 때는 숨겨지지만 편집할 때는 보입니다 --->`
 
-| wikitext | equivalent Markdown | effect |
+| 위키텍스트 | 동등한 마크다운 | 효과 |
 | ---- | ---- | ---- |
-| `''italics''` | `*italics*` | *italics* |
-| `'''bold'''` | `**bold**` | **bold** |
-| `'''''both'''''` | `***both***` | ***both*** |
-| `<u>underlined</u>` | `<u>underlined</u>` | <u>underlined</u> |
-| `<nowiki>do not render</nowiki>` | N/A | `do not render` |
-| `<code>inline code snippet</code>` | \`inline code snippet\` | `inline code snippet` |
-| `----` | `----` | horizontal linebreak |
-| `<s>strikethrough</s>` | `~~strikethrough~~` | ~~strikethrough~~ |
+| `''기울임꼴''` | `*기울임꼴*` | *기울임꼴* |
+| `'''굵게'''` | `**굵게**` | **굵게** |
+| `'''''둘 다'''''` | `***둘 다***` | ***둘 다*** |
+| `<u>밑줄</u>` | `<u>밑줄</u>` | <u>밑줄</u> |
+| `<nowiki>렌더링하지 않음</nowiki>` | 해당 없음 | `렌더링하지 않음` |
+| `<code>인라인 코드 조각</code>` | \`인라인 코드 조각\` | `인라인 코드 조각` |
+| `----` | `----` | 수평선 |
+| `<s>취소선</s>` | `~~취소선~~` | ~~취소선~~ |
 
-Section headings are bracketed by `=`. They go from `= One equal sign =` to `====== Six equal signs ======`. They are equivalent to Markdown's hashtag headings, from `# One hashtag` to `###### Six hashtags`. Why six in both? I believe it's because HTML has six levels of headings, from `<h1>` to `<h6>`.
+섹션 제목은 `=`로 묶습니다. `= 한 개의 등호 =`에서 `====== 여섯 개의 등호 ======`까지 있습니다. 이것은 마크다운의 해시태그 제목, `# 한 개의 해시태그`에서 `###### 여섯 개의 해시태그`까지와 동일합니다. 왜 둘 다 여섯 개일까요? HTML에 `<h1>`에서 `<h6>`까지 여섯 단계의 제목이 있기 때문이라고 생각합니다.
 
-Note that the `= One equal sign =` heading actually corresponds to the title of the page, and so cannot actually be used within a page. Consequently, the least number of equal signs is `== Two equal signs ==`.
+`= 한 개의 등호 =` 제목은 실제로는 페이지의 제목에 해당하며, 따라서 페이지 내에서 실제로 사용할 수 없습니다. 결과적으로, 가장 적은 수의 등호는 `== 두 개의 등호 ==`입니다.
 
-Subscripts and superscripts can be written as `x<sub>1</sub>` and `x<sup>1</sup>`. Alternatively they can be written by the `<math>` tag (see below). `<small>Small</small>` and `<big>big</big>` texts are rarely used.
+아래 첨자와 위 첨자는 `x<sub>1</sub>` 및 `x<sup>1</sup>`으로 쓸 수 있습니다. 또는 `<math>` 태그로 쓸 수 있습니다(아래 참조). `<small>작게</small>` 및 `<big>크게</big>` 텍스트는 거의 사용되지 않습니다.
 
 ```wikitext
-Colons allow indentation
-   :Each colon creates an indentation three characters wide.
-      ::and they can be nested.
+콜론은 들여쓰기를 허용합니다.
+   :각 콜론은 세 문자 너비의 들여쓰기를 만듭니다.
+      ::그리고 중첩될 수 있습니다.
 ```
 
-`*` Unnumbered lists start with `*`, and numbered lists start with `#`. <br>
-&emsp; `**` Lists can be nested <br>
-&emsp; &emsp; `***` for arbitrarily many levels.
+`*` 번호 없는 목록은 `*`로 시작하고, 번호 있는 목록은 `#`로 시작합니다. <br>
+&emsp; `**` 목록은 중첩될 수 있습니다 <br>
+&emsp; &emsp; `***` 임의의 많은 수준에 대해.
 
-The syntax for tables is [very complicated](https://en.wikipedia.org/wiki/Help:Table). The simplest of the [simple tables](https://en.wikipedia.org/wiki/Help:Basic_table_markup) is as follows:
+표의 구문은 [매우 복잡합니다](https://en.wikipedia.org/wiki/Help:Table). [간단한 표](https://en.wikipedia.org/wiki/Help:Basic_table_markup) 중 가장 간단한 것은 다음과 같습니다:
 
 ```wikitext
 {| class="wikitable"
 |+
-! column title A
-! column title B
+! 열 제목 A
+! 열 제목 B
 |-
-| cell A1
-| cell B1
+| 셀 A1
+| 셀 B1
 |-
-| cell A2
-| cell B2
+| 셀 A2
+| 셀 B2
 |-
 | ...
 | ...
 |}
 ```
 
-which renders to
+다음과 같이 렌더링됩니다.
 
-| **column title A** | **column title B** |
+| **열 제목 A** | **열 제목 B** |
 |---|---|
-| cell A1 | cell B1 |
-| cell A2 | cell B2 |
+| 셀 A1 | 셀 B1 |
+| 셀 A2 | 셀 B2 |
 
-Be warned that the newlines in a wikitext table are meaningful. Deleting a single newline above would completely change the shape of the rendered table.
+위키텍스트 표의 개행은 의미가 있다는 점에 유의하십시오. 위의 단일 개행을 삭제하면 렌더링된 표의 모양이 완전히 바뀝니다.
 
-You can insert images, audios, videos, or other forms of media by `[[File:Image.png|thumb|right|Image caption]]`. All media files must be hosted on [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page).
+`[[File:Image.png|thumb|right|Image caption]]`으로 이미지, 오디오, 비디오 또는 기타 미디어 형식을 삽입할 수 있습니다. 모든 미디어 파일은 [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page)에 호스팅되어야 합니다.
 
-You can insert quotations either by HTML-like tag
+HTML과 유사한 태그로 인용문을 삽입할 수 있습니다.
 
 ```wikitext
 <blockquote>
-<p>Quotation text.</p>
-<p>Name, source, reference</p>
+<p>인용문 텍스트.</p>
+<p>이름, 출처, 참조</p>
 </blockquote>
 ```
 
-or [template](#templates)
+또는 [템플릿](#템플릿)
 
 ```wikitext
-{{Quote|text=Quotation text.|title=Title|author=Author|source=Location in the publication}}
+{{Quote|text=인용문 텍스트.|title=제목|author=저자|source=출판물 내 위치}}
 ```
 
-A "[non-breaking space](https://en.wikipedia.org/wiki/Non-breaking_space)" is a whitespace that should not be separated by linebreaks, such as the whitespace in "400 km/h". This is written as `400&amp;nbsp;km/h`.
+"[줄 바꿈 없는 공백](https://en.wikipedia.org/wiki/Non-breaking_space)"은 "400km/h"의 공백과 같이 줄 바꿈으로 분리되어서는 안 되는 공백입니다. 이것은 `400&amp;nbsp;km/h`로 작성됩니다.
 
-Extra whitespaces can be specified by `pad` tag. For example, `{{pad|4.0em}}` is a white space with length 4.0 [em-dashes](https://en.wikipedia.org/wiki/Dash#Em_dash).
+추가 공백은 `pad` 태그로 지정할 수 있습니다. 예를 들어, `{{pad|4.0em}}`은 길이 4.0 [em-대시](https://en.wikipedia.org/wiki/Dash#Em_dash)의 공백입니다.
 
-Longer code blocks can be done by
+더 긴 코드 블록은 다음과 같이 할 수 있습니다.
 
 ```wikitext
 <syntaxhighlight lang="cpp">
@@ -100,7 +98,7 @@ int m2 (int ax, char *p_ax) {
 }</syntaxhighlight>
 ```
 
-which renders to
+다음과 같이 렌더링됩니다.
 
 ```cpp
 #include <iostream>
@@ -110,37 +108,37 @@ int m2 (int ax, char *p_ax) {
 }
 ```
 
-## Linking
+## 링크
 
-Basic `[[linking]]` is done by double brackets.
+기본 `[[링크]]`는 이중 대괄호로 수행됩니다.
 
-The `|` symbol allows displaying a `[[Actual page title|different text]]`.
+`|` 기호는 `[[실제 페이지 제목|다른 텍스트]]`를 표시할 수 있습니다.
 
-The `#` symbol allows linking to sections within a text, like `[[Frog#Locomotion]]` or `[[Frog#Locomotion|locomotion in frogs]]`.
+`#` 기호는 `[[Frog#Locomotion]]` 또는 `[[Frog#Locomotion|개구리의 이동]]`과 같이 텍스트 내 섹션에 연결할 수 있습니다.
 
-If a word is interrupted by a link, it is "blended" into the link. For example, `[[copy edit]]ors` renders to [copy editors](https://en.wikipedia.org/wiki/copy_edit).
+단어가 링크로 중단되면 링크에 "혼합"됩니다. 예를 들어, `[[copy edit]]ors`는 [copy editors](https://en.wikipedia.org/wiki/copy_edit)로 렌더링됩니다.
 
-To suppress this behavior, use `<nowiki>`. For example, `[[micro-]]<nowiki />second` renders to [micro-](https://en.wikipedia.org/wiki/micro-)second.
+이 동작을 억제하려면 `<nowiki>`를 사용하십시오. 예를 들어, `[[micro-]]<nowiki />second`는 [micro-](https://en.wikipedia.org/wiki/micro-)second로 렌더링됩니다.
 
-There are three kinds of external linking. The third kind is preferred:
+외부 링크에는 세 가지 종류가 있습니다. 세 번째 종류가 선호됩니다:
 
-| wikitext | renders to |
+| 위키텍스트 | 렌더링 결과 |
 |----|----|
 | `https://www.wikipedia.org` | [https://www.wikipedia.org](https://www.wikipedia.org) |
 | `[https://www.wikipedia.org]` | [[1]](https://www.wikipedia.org) |
 | `[https://www.wikipedia.org Wikipedia]` | [Wikipedia](https://www.wikipedia.org) |
 
-## Templates
+## 템플릿
 
-Templates are macros for wikitext, and they look like `{{template name|attribute=value|...}}`. There are thousands of templates, but only a few are in common use.
+템플릿은 위키텍스트용 매크로이며, `{{템플릿 이름|속성=값|...}}`처럼 보입니다. 수천 개의 템플릿이 있지만 일반적으로 사용되는 것은 몇 가지뿐입니다.
 
-The most (in)famous one is the \[citation needed\]`{{cn}}` template. Note that `{{cn}}` is synonymous with `{{citation needed}}`, as one template can have many names.
+가장 (악)명 높은 것은 \[출처 필요\]`{{cn}}` 템플릿입니다. `{{cn}}`은 `{{citation needed}}`와 동의어이며, 한 템플릿이 여러 이름을 가질 수 있다는 점에 유의하십시오.
 
-`{{reflist}}` is usually put at the ends of pages, to generate a list of references used in the page.
+`{{reflist}}`는 일반적으로 페이지 끝에 배치되어 페이지에서 사용된 참조 목록을 생성합니다.
 
-An `infobox` template is, as it says, a template for a box containing information. Usually, each page contains at most two infoboxes, one on top and one on bottom. For particularly detailed pages, there can be more than two.
+`infobox` 템플릿은 이름에서 알 수 있듯이 정보를 포함하는 상자용 템플릿입니다. 일반적으로 각 페이지에는 위쪽에 하나, 아래쪽에 하나, 최대 두 개의 정보 상자가 포함됩니다. 특히 상세한 페이지의 경우 두 개 이상 있을 수 있습니다.
 
-The infobox on the top is usually used to compactly display tabular information. They are common for biographies, geographical locations, and such. For example, the top infobox for [Euler](https://en.wikipedia.org/wiki/Leonhard_Euler) is:
+위쪽 정보 상자는 일반적으로 표 형식 정보를 간결하게 표시하는 데 사용됩니다. 전기, 지리적 위치 등에 일반적입니다. 예를 들어, [오일러](https://en.wikipedia.org/wiki/Leonhard_Euler)의 위쪽 정보 상자는 다음과 같습니다:
 
 ```wikitext
 {{Infobox scientist
@@ -154,116 +152,116 @@ The infobox on the top is usually used to compactly display tabular information.
 }}
 ```
 
-The infobox at the bottom is usually used to display a curated table of related links. For example, the bottom infobox for [Euler–Lagrange equation](https://en.wikipedia.org/wiki/Euler%E2%80%93Lagrange_equation) is just `{{Leonhard Euler}}`, which displays a box containing links to many of the things named after Euler.
+아래쪽 정보 상자는 일반적으로 관련 링크의 선별된 표를 표시하는 데 사용됩니다. 예를 들어, [오일러-라그랑주 방정식](https://en.wikipedia.org/wiki/Euler%E2%80%93Lagrange_equation)의 아래쪽 정보 상자는 `{{Leonhard Euler}}`뿐이며, 오일러의 이름을 딴 많은 것들에 대한 링크가 포함된 상자를 표시합니다.
 
-`~~~~` is used to sign on talk pages, and expands to something like `Username (talk) 10:50, 12 June 2023 (UTC)`.
+`~~~~`는 토론 페이지에 서명하는 데 사용되며, `Username (talk) 10:50, 12 June 2023 (UTC)`와 같이 확장됩니다.
 
-### Mathematics
+### 수학
 
-`<math>` tag renders $\LaTeX$ inline like `$`, while `<math display=block>` renders it on a separate line like `$$`.
+`<math>` 태그는 `$`처럼 $\LaTeX$를 인라인으로 렌더링하고, `<math display=block>`은 `$$`처럼 별도의 줄에 렌더링합니다.
 
-`<math>E = mc^2</math>` renders to $E = mc^2$.
+`<math>E = mc^2</math>`는 $E = mc^2$로 렌더링됩니다.
 
-`<math display=block></math>` renders to $$E = mc^2$$.
+`<math display=block></math>`는 $$E = mc^2$$로 렌더링됩니다.
 
-One can also include math using [HTML renders](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Mathematics#Using_HTML) or even by [plain Unicode](https://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode). These are less flexible but more compatible with older browsers. Further, parts of Wikipedia syntax themselves are incompatible with `<math>`, such as in section titles or some templates, forcing the use of HTML or Unicode in such cases.
+[HTML 렌더링](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Mathematics#Using_HTML)을 사용하거나 [일반 유니코드](https://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode)를 사용하여 수학을 포함할 수도 있습니다. 이것들은 덜 유연하지만 이전 브라우저와 더 호환됩니다. 또한 위키백과 구문의 일부는 섹션 제목이나 일부 템플릿에서와 같이 `<math>`와 호환되지 않으므로 이러한 경우 HTML 또는 유니코드를 사용해야 합니다.
 
-Theorems and proofs can be boxed and named:
+정리와 증명은 상자로 묶고 이름을 지정할 수 있습니다:
 
 ```wikitext
 {{Math theorem
-|name=Pythagorean theorem
-|note=Pythagoras, 500s BC
-|math_statement=Let <math>a, b, c</math> be the three side lengths of a right triangle, then
+|name=피타고라스 정리
+|note=피타고라스, 기원전 500년대
+|math_statement=직각삼각형의 세 변의 길이를 <math>a, b, c</math>라고 하면
 <math display=block>a^2 + b^2 = c^2</math>
 }}
 
 {{Math proof
-|title=Proof by similar triangles
-|proof=Drop a perpendicular from point C to side AB. Now argue by proportionality. <math>\blacksquare</math>
+|title=닮은 삼각형에 의한 증명
+|proof=점 C에서 변 AB에 수선을 내립니다. 이제 비례 관계로 논증합니다. <math>\blacksquare</math>
 }}
 ```
 
-## References
+## 참조
 
-References are the backbone of Wikipedia `{{citation needed}}`. There are in general two ways to do citations.
+참조는 위키백과의 근간입니다 `{{출처 필요}}`. 일반적으로 인용에는 두 가지 방법이 있습니다.
 
-| type | inline citation | expanded citation |
+| 유형 | 인라인 인용 | 확장 인용 |
 | ---- | ---- | ---- |
-| purpose | Support specific claims. | Provide general reference work for the entire page. |
-| location | Immediately after the supported claim. | In the `== References ==` section. |
-| appearance | analytic continuation of of _f_.<sup>[\[6\]](#6)</sup> | Abramowitz, Milton; Stegun, Irene A., eds. (1972). ["Chapter 6"](http://www.math.sfu.ca/~cbm/aands/page_253.htm)... |
-| syntax | `<ref>{{cite book\|...}}</ref>` | `{{cite book\|...}}` |
+| 목적 | 특정 주장을 뒷받침합니다. | 전체 페이지에 대한 일반 참조 작업을 제공합니다. |
+| 위치 | 지원되는 주장 바로 뒤. | `== 참조 ==` 섹션. |
+| 모양 | _f_의 해석적 연속.<sup>[\[6\]](#6)</sup> | Abramowitz, Milton; Stegun, Irene A., eds. (1972). ["Chapter 6"](http://www.math.sfu.ca/~cbm/aands/page_253.htm)... |
+| 구문 | `<ref>{{cite book\|...}}</ref>` | `{{cite book\|...}}` |
 
-As expanded citations are just inline citations without the `<ref>` tag, we will describe just inline citations.
+확장 인용은 `<ref>` 태그가 없는 인라인 인용이므로 인라인 인용만 설명합니다.
 
-The most basic form is a plaintext citation, like `<ref>Author, Title, date, [url](https://example.com/), etc</ref>`.
+가장 기본적인 형태는 `<ref>저자, 제목, 날짜, [url](https://example.com/) 등</ref>`과 같은 일반 텍스트 인용입니다.
 
-One should generally use a templated citation, like `<ref>{{cite web|url=https://example.com/|title=Example|date=2001|access-date=2023}}</ref>`. There are three forms of citation templates: [`cite web`](https://en.wikipedia.org/wiki/Template:Cite_web), [`cite journal`](https://en.wikipedia.org/wiki/Template:Cite_journal), [`cite book`](https://en.wikipedia.org/wiki/Template:Cite_book).
+일반적으로 `<ref>{{cite web|url=https://example.com/|title=예제|date=2001|access-date=2023}}</ref>`와 같은 템플릿 인용을 사용해야 합니다. 인용 템플릿에는 [`cite web`](https://en.wikipedia.org/wiki/Template:Cite_web), [`cite journal`](https://en.wikipedia.org/wiki/Template:Cite_journal), [`cite book`](https://en.wikipedia.org/wiki/Template:Cite_book)의 세 가지 형태가 있습니다.
 
-A citation can be named as `<ref name="X">...</ref>`. It can then be invoked as `<ref name="X" />`. The instance `<ref name="X">...</ref>` can go before or after `<ref name="X" />`. Any ordering would render to the same page.
+인용은 `<ref name="X">...</ref>`로 이름을 지정할 수 있습니다. 그런 다음 `<ref name="X" />`로 호출할 수 있습니다. 인스턴스 `<ref name="X">...</ref>`는 `<ref name="X" />` 앞이나 뒤에 올 수 있습니다. 어떤 순서든 동일한 페이지로 렌더링됩니다.
 
-## Typical Wikipedia page
+## 일반적인 위키백과 페이지
 
 ```wikitext
-{{Short description|One sentence summary of page}}
+{{짧은 설명|페이지의 한 문장 요약}}
 
-{{Infox box at the top
+{{위쪽 정보 상자
 |infobox_data_1=...
 |...
 }}
 
-[[File:Image of X.png|thumb|right|Image caption]]
+[[File:X의 이미지.png|thumb|right|이미지 캡션]]
 
-The concept '''X''' is usually bolded. Now define the concept X. For non-specialist pages, this section should be written in plain language, with jargons defined in-line. Some [[link]]s would help.
+'''X''' 개념은 일반적으로 굵게 표시됩니다. 이제 X 개념을 정의합니다. 비전문가 페이지의 경우 이 섹션은 평이한 언어로 작성되어야 하며, 전문 용어는 인라인으로 정의됩니다. 일부 [[링크]]가 도움이 될 것입니다.
 
 
-== Introduction ==
+== 소개 ==
 
-Here one usually sets up the notation, overviews the history, and such. Details follow in the next sections.
+여기서는 일반적으로 표기법을 설정하고, 역사를 개괄하며, 기타 등등을 합니다. 자세한 내용은 다음 섹션에서 다룹니다.
 
-Footnotes are numbered separately from inline references.{{NoteTag|note=Footnote text.}}
+각주는 인라인 참조와 별도로 번호가 매겨집니다.{{NoteTag|note=각주 텍스트.}}
 
-== Relation to Y ==
+== Y와의 관계 ==
 {{Main|Y}}
-{{See also|Another page}}
+{{See also|다른 페이지}}
 
-Something about the relation between X and Y.
+X와 Y의 관계에 대한 무언가.
 
-== See also ==
-* [[Very relevant link]]
-* [[Less relevant link]]
+== 함께 보기 ==
+* [[매우 관련 있는 링크]]
+* [[덜 관련 있는 링크]]
 
-== External links ==
-* [https://example.com/ External link one]: Summary of what is in the external link.
+== 외부 링크 ==
+* [https://example.com/ 외부 링크 1]: 외부 링크에 있는 내용 요약.
 
-== Footnotes ==
+== 각주 ==
 
 <references group="note" />{{Notelist}}
 
-== References ==
-<!-- generates list of references from inline reference tags, with columns with a minimum width of 30 em-dashes. -->
+== 참조 ==
+<!-- 인라인 참조 태그에서 참조 목록 생성, 최소 너비 30em-대시의 열 포함. -->
 {{Reflist|30em}}
 
-<!-- extra, non-inlined references below -->
+<!-- 추가, 인라인되지 않은 참조 아래 -->
 {{Refbegin|30em}}
-* {{cite book|title=Book Title|date=2001|chapter=Chapter 1|...}}
+* {{cite book|title=책 제목|date=2001|chapter=1장|...}}
 * ...
 
-== Further reading ==
+== 더 읽을거리 ==
 * ...
 * ...
 
-{{Infox box at the bottom}}
+{{아래쪽 정보 상자}}
 
-[[Category:First category that the article belongs to]]
-[[Category:First category that the article belongs to]]
-[[Category:There is no limit to the number of categories allowed]]
+[[Category:기사가 속한 첫 번째 카테고리]]
+[[Category:기사가 속한 첫 번째 카테고리]]
+[[Category:허용되는 카테고리 수에는 제한이 없습니다]]
 ```
 
-## Further reading
+## 더 읽을거리
 
-* [Wikipedia's manual of style](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style)
-* [Wikitext cheatsheet](https://en.wikipedia.org/wiki/Help:Cheatsheet)
-* [Wikitext, full reference](https://en.wikipedia.org/wiki/Help:Wikitext).
-* [Tables, full reference](https://en.wikipedia.org/wiki/Help:Table#Simple_straightforward_tables)
+* [위키백과의 스타일 매뉴얼](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style)
+* [위키텍스트 치트 시트](https://en.wikipedia.org/wiki/Help:Cheatsheet)
+* [위키텍스트, 전체 참조](https://en.wikipedia.org/wiki/Help:Wikitext).
+* [표, 전체 참조](https://en.wikipedia.org/wiki/Help:Table#Simple_straightforward_tables)

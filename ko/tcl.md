@@ -1,5 +1,3 @@
-# tcl.md (번역)
-
 ---
 name: Tcl
 contributors:
@@ -7,51 +5,24 @@ contributors:
 filename: learntcl.tcl
 ---
 
-Tcl was created by [John Ousterhout](https://wiki.tcl-lang.org/page/John+Ousterhout) as a
-reusable scripting language for circuit design tools that he authored.  In 1997 he
-was awarded the [ACM Software System
-Award](https://en.wikipedia.org/wiki/ACM_Software_System_Award) for Tcl.   Tcl
-can be used both as an embeddable scripting language and as a general
-programming language.  It can also be used as a portable C library, even in
-cases where no scripting capability is needed, as it provides data structures
-such as dynamic strings, lists, and hash tables.  The C library also provides
-portable functionality for loading dynamic libraries, string formatting and
-code conversion, filesystem operations, network operations, and more.  Various
-features of Tcl stand out:
+Tcl은 [John Ousterhout](https://wiki.tcl-lang.org/page/John+Ousterhout)이 저술한 회로 설계 도구를 위한 재사용 가능한 스크립팅 언어로 만들어졌습니다. 1997년에 그는 Tcl로 [ACM 소프트웨어 시스템 상](https://en.wikipedia.org/wiki/ACM_Software_System_Award)을 수상했습니다. Tcl은 내장형 스크립팅 언어와 일반 프로그래밍 언어로 모두 사용할 수 있습니다. 동적 문자열, 목록 및 해시 테이블과 같은 데이터 구조를 제공하므로 스크립팅 기능이 필요하지 않은 경우에도 이식 가능한 C 라이브러리로 사용할 수 있습니다. C 라이브러리는 또한 동적 라이브러리 로드, 문자열 서식 지정 및 코드 변환, 파일 시스템 작업, 네트워크 작업 등을 위한 이식 가능한 기능을 제공합니다. Tcl의 다양한 기능은 다음과 같습니다.
 
-* Convenient cross-platform networking API
+* 편리한 크로스 플랫폼 네트워킹 API
 
-* Fully virtualized filesystem
+* 완전 가상화된 파일 시스템
 
-* Stackable I/O channels
+* 스택 가능한 I/O 채널
 
-* Asynchronous to the core
+* 핵심적으로 비동기
 
-* Full coroutines
+* 전체 코루틴
 
-* A threading model recognized as robust and easy to use
+* 견고하고 사용하기 쉬운 것으로 알려진 스레딩 모델
 
 
-Tcl has much in common with Lisp, but instead of lists, Tcl uses strings as the
-currency of the language.  All values are strings.  A list is a string with a
-defined format, and the body of a procedure (a script) is also a string rather
-than a block.  To achieve performance, Tcl internally caches structured
-representations of these values.  list routines, for example, operate on
-the internal cached representation, and Tcl takes care of updating the string
-representation if it is ever actually needed in the script.  The copy-on-write
-design of Tcl allows script authors to pass around large data values without
-actually incurring additional memory overhead.  Procedures are automatically
-byte-compiled unless they use the more dynamic routines such as "uplevel",
-"upvar", and "trace".
+Tcl은 Lisp와 많은 공통점을 가지고 있지만, 목록 대신 Tcl은 문자열을 언어의 통화로 사용합니다. 모든 값은 문자열입니다. 목록은 정의된 형식을 가진 문자열이며, 프로시저(스크립트)의 본문도 블록이 아닌 문자열입니다. 성능을 달성하기 위해 Tcl은 내부적으로 이러한 값의 구조화된 표현을 캐시합니다. 예를 들어, 목록 루틴은 내부 캐시된 표현에서 작동하며, Tcl은 스크립트에서 실제로 필요한 경우 문자열 표현을 업데이트합니다. Tcl의 쓰기 시 복사 디자인을 통해 스크립트 작성자는 실제로 추가 메모리 오버헤드 없이 큰 데이터 값을 전달할 수 있습니다. 프로시저는 "uplevel", "upvar" 및 "trace"와 같은 더 동적인 루틴을 사용하지 않는 한 자동으로 바이트 컴파일됩니다.
 
-Tcl is a pleasure to program in.  It will appeal to hacker types who find Lisp,
-Forth, or Smalltalk interesting, as well as to engineers and scientists who
-just want to get down to business with a tool that bends to their will.  Its
-discipline of exposing all programmatic functionality as routines, including
-things like looping and mathematical operations that are usually baked into the
-syntax of other languages, allows it to fade into the background of whatever
-domain-specific functionality a project needs. Its syntax, which is even
-lighter than that of Lisp, just gets out of the way.
+Tcl은 프로그래밍하기에 즐겁습니다. Lisp, Forth 또는 Smalltalk가 흥미롭다고 생각하는 해커 유형뿐만 아니라 자신의 의지에 따라 구부러지는 도구로 사업을 시작하려는 엔지니어와 과학자에게도 어필할 것입니다. 루핑 및 수학 연산과 같이 일반적으로 다른 언어의 구문에 내장된 것을 포함하여 모든 프로그래밍 기능을 루틴으로 노출하는 원칙은 프로젝트에 필요한 모든 도메인별 기능의 배경으로 사라지게 합니다. Lisp보다 훨씬 가벼운 구문은 그냥 방해가 되지 않습니다.
 
 
 
@@ -59,123 +30,100 @@ lighter than that of Lisp, just gets out of the way.
 #! /bin/env tclsh
 
 ###############################################################################
-## 1. Guidelines
+## 1. 지침
 ###############################################################################
 
-# Tcl is not Sh or C!  This needs to be said because standard shell quoting
-# habits almost work in Tcl and it is common for people to pick up Tcl and try
-# to get by with syntax they know from another language.  It works at first,
-# but soon leads to frustration when scripts become more complex.
+# Tcl은 Sh나 C가 아닙니다! 표준 셸 인용 습관이 Tcl에서 거의 작동하고 사람들이 Tcl을 익히고 다른 언어에서 아는 구문으로 버티려고 하기 때문에 이 말을 해야 합니다. 처음에는 작동하지만 스크립트가 더 복잡해지면 곧 좌절로 이어집니다.
 
-# Braces are a quoting mechanism, not syntax for the construction of code
-# blocks or lists. Tcl doesn't have either of those things.  Braces are used to
-# escape special characters, which makes them well-suited for quoting procedure
-# bodies and strings that should be interpreted as lists.
+# 중괄호는 인용 메커니즘이며 코드 블록이나 목록을 구성하는 구문이 아닙니다. Tcl에는 둘 다 없습니다. 중괄호는 특수 문자를 이스케이프하는 데 사용되므로 프로시저 본문과 목록으로 해석되어야 하는 문자열을 인용하는 데 적합합니다.
 
 
 ###############################################################################
-## 2. Syntax
+## 2. 구문
 ###############################################################################
 
-# A script is made up of commands delimited by newlines or semicolons.  Each
-# command is a call to a routine.  The first word is the name of a routine to
-# call, and subsequent words are arguments to the routine.  Words are delimited
-# by whitespace.  Since each argument is a word in the command it is already a
-# string, and may be unquoted:
+# 스크립트는 개행 문자나 세미콜론으로 구분된 명령으로 구성됩니다. 각 명령은 루틴에 대한 호출입니다. 첫 번째 단어는 호출할 루틴의 이름이고, 후속 단어는 루틴에 대한 인수입니다. 단어는 공백으로 구분됩니다. 각 인수는 명령의 단어이므로 이미 문자열이며 인용되지 않을 수 있습니다.
 set part1 Sal
 set part2 ut; set part3 ations
 
 
-# a dollar sign introduces variable substitution:
+# 달러 기호는 변수 대입을 도입합니다.
 set greeting $part1$part2$part3
 
 
-# When "set" is given only the name of a variable, it returns the
-# value of that variable:
-set part3 ;# Returns the value of the variable.
+# "set"에 변수 이름만 주어지면 해당 변수의 값을 반환합니다.
+set part3 ;# 변수의 값을 반환합니다.
 
 
-# Left and right brackets embed a script to be evaluated for a result to
-# substitute into the word:
+# 왼쪽 및 오른쪽 대괄호는 단어에 대입할 결과를 위해 평가할 스크립트를 포함합니다.
 set greeting $part1$part2[set part3]
 
 
-# An embedded script may be composed of multiple commands, the last of which provides
-# the result for the substitution:
+# 포함된 스크립트는 여러 명령으로 구성될 수 있으며, 마지막 명령은 대입 결과를 제공합니다.
 set greeting $greeting[
     incr i
     incr i
     incr i
 ]
-puts $greeting ;# The output is "Salutations3"
+puts $greeting ;# 출력은 "Salutations3"입니다.
 
-# Every word in a command is a string, including the name of the routine, so
-# substitutions can be used on it as well. Given this variable
-# assignment,
+# 명령의 모든 단어는 루틴 이름을 포함하여 문자열이므로 대입을 사용할 수 있습니다. 이 변수 할당을 감안할 때,
 set action pu
 
-# , the following three commands are equivalent:
+# 다음 세 가지 명령은 동일합니다.
 puts $greeting
 ${action}ts $greeting
 [set action]ts $greeting
 
 
-# backslash suppresses the special meaning of characters:
+# 백슬래시는 문자의 특수 의미를 억제합니다.
 set amount \$16.42
 
 
-# backslash adds special meaning to certain characters:
+# 백슬래시는 특정 문자에 특수 의미를 추가합니다.
 puts lots\nof\n\n\n\n\n\nnewlines
 
 
-# A word enclosed in braces is not subject to any special interpretation or
-# substitutions, except that a backslash before a brace is not counted when
-# looking for the closing brace:
+# 중괄호로 묶인 단어는 닫는 중괄호를 찾을 때 중괄호 앞의 백슬래시가 계산되지 않는다는 점을 제외하고는 특별한 해석이나 대입이 적용되지 않습니다.
 set somevar {
     This is a literal $ sign, and this \} escaped
     brace remains uninterpreted
 }
 
 
-# In a word enclosed in double quotes, whitespace characters lose their special
-# meaning:
+# 큰따옴표로 묶인 단어에서 공백 문자는 특수 의미를 잃습니다.
 set name Neo
 set greeting "Hello, $name"
 
 
-# A variable name can be any string:
+# 변수 이름은 모든 문자열이 될 수 있습니다.
 set {first name} New
 
 
-# The braced form of variable substitution handles more complex variable names:
+# 중괄호 형식의 변수 대입은 더 복잡한 변수 이름을 처리합니다.
 set greeting "Hello, ${first name}"
 
 
-# "set" can always be used instead of variable substitution, and can handle all
-# variable names:
+# "set"은 항상 변수 대입 대신 사용할 수 있으며 모든 변수 이름을 처리할 수 있습니다.
 set greeting "Hello, [set {first name}]"
 
 
-# To unpack a list into the command, use the expansion operator, "{*}".  These
-# two commands are equivalent:
+# 목록을 명령으로 풀려면 확장 연산자 "{*}"를 사용하십시오. 이 두 명령은 동일합니다.
 set name Neo
 set {*}{name Neo}
 
 
-# An array is a special variable that is a container for other variables.
+# 배열은 다른 변수의 컨테이너인 특수 변수입니다.
 set person(name) Neo
 set person(destiny) {The One}
 set greeting "Hello, $person(name)"
 
 
-# "variable" can be used to declare or set variables. In contrast with "set",
-# which uses both the global namespace and the current namespace to resolve a
-# variable name, "variable" uses only the current namespace:
+# "variable"은 변수를 선언하거나 설정하는 데 사용할 수 있습니다. 변수 이름을 확인하기 위해 전역 네임스페이스와 현재 네임스페이스를 모두 사용하는 "set"과 달리 "variable"은 현재 네임스페이스에서만 작동합니다.
 variable name New
 
 
-# "namespace eval" creates a new namespace if it doesn't exist.  A namespace
-# can contain both routines and variables:
+# "namespace eval"은 존재하지 않는 경우 새 네임스페이스를 만듭니다. 네임스페이스에는 루틴과 변수가 모두 포함될 수 있습니다.
 namespace eval people {
     namespace eval person1 {
         variable name Neo
@@ -183,61 +131,48 @@ namespace eval people {
 }
 
 
-# Use two or more colons to delimit namespace components in variable names:
+# 변수 이름의 네임스페이스 구성 요소를 구분하려면 두 개 이상의 콜론을 사용하십시오.
 namespace eval people {
     set greeting "Hello $person1::name"
 }
 
-# Two or more colons also delimit namespace components in routine names:
+# 루틴 이름의 네임스페이스 구성 요소를 구분하려면 두 개 이상의 콜론을 사용하십시오.
 proc people::person1::speak {} {
     puts {I am The One.}
 }
 
-# Fully-qualified names begin with two colons:
+# 정규화된 이름은 두 개의 콜론으로 시작합니다.
 set greeting "Hello $::people::person1::name"
 
 
 
 ###############################################################################
-## 3. No More Syntax
+## 3. 더 이상 구문 없음
 ###############################################################################
 
-# All other functionality is implemented via routines.  From this point on,
-# there is no new syntax.  Everything else there is to learn about
-# Tcl is about the behaviour of individual routines and what meaning they
-# assign to their arguments.
+# 다른 모든 기능은 루틴을 통해 구현됩니다. 이 시점부터 새로운 구문은 없습니다. Tcl에 대해 배울 다른 모든 것은 개별 루틴의 동작과 해당 루틴이 인수에 할당하는 의미에 관한 것입니다.
 
 
 
 ###############################################################################
-## 4. Variables and Namespaces
+## 4. 변수 및 네임스페이스
 ###############################################################################
 
-# Each variable and routine is associated with some namespace.
+# 각 변수와 루틴은 일부 네임스페이스와 연결됩니다.
 
-# To end up with an interpreter that can do nothing, delete the global
-# namespace.  It's not very useful to do such a thing, but it illustrates the
-# nature of Tcl.  The name of the global namespace is actually the empty
-# string, but the only way to represent it is as a fully-qualified name. To
-# try it out call this routine:
+# 아무것도 할 수 없는 인터프리터를 만들려면 전역 네임스페이스를 삭제하십시오. 그런 일을 하는 것은 별로 유용하지 않지만 Tcl의 본질을 보여줍니다. 전역 네임스페이스의 이름은 실제로 빈 문자열이지만 이를 나타내는 유일한 방법은 정규화된 이름으로 사용하는 것입니다. 시도해 보려면 이 루틴을 호출하십시오.
 proc delete_global_namespace {} {
     namespace delete ::
 }
 
-# Because "set" always keeps its eye on both the global namespace and the
-# current namespace, it's safer to use "variable" to declare a variable or
-# assign a value to a variable.  If a variable called "name" already exists in
-# the global namespace, using "set" here will assign a value to the global
-# variable instead of to a variable in the current namespace, whereas
-# "variable" operates only on the current namespace.
+# "set"은 항상 전역 네임스페이스와 현재 네임스페이스를 모두 주시하므로 변수를 선언하거나 변수에 값을 할당하려면 "variable"을 사용하는 것이 더 안전합니다. "name"이라는 변수가 전역 네임스페이스에 이미 있는 경우 여기에서 "set"을 사용하면 현재 네임스페이스의 변수 대신 전역 변수에 값을 할당하는 반면 "variable"은 현재 네임스페이스에서만 작동합니다.
 namespace eval people {
     namespace eval person1 {
         variable name Neo
     }
 }
 
-# Once a variable is declared in a namespace, [set] sees it instead of seeing
-# an identically-named variable in the global namespace:
+# 네임스페이스에 변수가 선언되면 [set]은 전역 네임스페이스에서 동일한 이름의 변수를 보는 대신 해당 변수를 봅니다.
 namespace eval people {
     namespace eval person1 {
         variable name
@@ -245,8 +180,7 @@ namespace eval people {
     }
 }
 
-# But if "set" has to create a new variable, it always does it relative to the
-# current namespace:
+# 그러나 "set"이 새 변수를 만들어야 하는 경우 항상 현재 네임스페이스를 기준으로 수행합니다.
 unset name
 namespace eval people {
     namespace eval person1 {
@@ -257,13 +191,11 @@ namespace eval people {
 set people::person1::name
 
 
-# An absolute name always begins with the name of the global namespace (the
-# empty string), followed by two colons:
+# 절대 이름은 항상 전역 네임스페이스의 이름(빈 문자열)으로 시작하고 그 뒤에 두 개의 콜론이 옵니다.
 set ::people::person1::name Neo
 
 
-# Within a procedure, the "variable" links a variable in the current namespace
-# into the local scope:
+# 프로시저 내에서 "variable"은 현재 네임스페이스의 변수를 로컬 범위에 연결합니다.
 namespace eval people::person1 {
     proc fly {} {
         variable name
@@ -275,67 +207,59 @@ namespace eval people::person1 {
 
 
 ###############################################################################
-## 5. Built-in Routines
+## 5. 내장 루틴
 ###############################################################################
 
-# Math can be done with the "expr":
+# 수학은 "expr"로 수행할 수 있습니다.
 set a 3
 set b 4
 set c [expr {$a + $b}]
 
-# Since "expr" performs variable substitution on its own, brace the expression
-# to prevent Tcl from performing variable substitution first.  See
-# "https://wiki.tcl-lang.org/page/Brace+your+expr-essions" for details.
+# "expr"은 자체적으로 변수 대입을 수행하므로 Tcl이 먼저 변수 대입을 수행하지 않도록 표현식을 중괄호로 묶습니다. 자세한 내용은 "https://wiki.tcl-lang.org/page/Brace+your+expr-essions"를 참조하십시오.
 
 
-# "expr" understands variable and script substitution:
+# "expr"은 변수 및 스크립트 대입을 이해합니다.
 set c [expr {$a + [set b]}]
 
 
-# "expr" provides a set of mathematical functions:
+# "expr"은 수학 함수 집합을 제공합니다.
 set c [expr {pow($a,$b)}]
 
 
-# Mathematical operators are available as routines in the ::tcl::mathop
-# namespace:
+# 수학 연산자는 ::tcl::mathop 네임스페이스에서 루틴으로 사용할 수 있습니다.
 ::tcl::mathop::+ 5 3
 
-# Routines can be imported from other namespaces:
+# 다른 네임스페이스에서 루틴을 가져올 수 있습니다.
 namespace import ::tcl::mathop::+
 set result [+ 5 3]
 
 
-# Non-numeric values must be quoted, and operators like "eq" can be used to
-# constrain the operation to string comparison:
+# 숫자가 아닌 값은 인용해야 하며 "eq"와 같은 연산자를 사용하여 연산을 문자열 비교로 제한할 수 있습니다.
 set name Neo
 expr {{Bob} eq $name}
 
-# The general operators fall back to string comparison if numeric
-# operation isn't feasible:
+# 일반 연산자는 숫자 연산이 불가능한 경우 문자열 비교로 대체됩니다.
 expr {{Bob} == $name}
 
 
-# "proc" creates new routines:
+# "proc"은 새 루틴을 만듭니다.
 proc greet name {
     return "Hello, $name!"
 }
 
-#multiple parameters can be specified:
+# 여러 매개변수를 지정할 수 있습니다.
 proc greet {greeting name} {
     return "$greeting, $name!"
 }
 
 
-# As noted earlier, braces do not construct a code block.  Every value, even
-# the third argument to "proc", is a string.  The previous command
-# can be rewritten using no braces:
+# 앞에서 언급했듯이 중괄호는 코드 블록을 구성하지 않습니다. "proc"에 대한 세 번째 인수를 포함하여 모든 값은 문자열입니다. 이전 명령은 중괄호 없이 다시 작성할 수 있습니다.
 proc greet greeting\ name return\ \"\$greeting,\ \$name!\"
 # "
 
 
 
-# When the last parameter is the literal value "args", all extra arguments
-# passed to the routine are collected into a list and assigned to "args":
+# 마지막 매개변수가 리터럴 값 "args"이면 루틴에 전달된 모든 추가 인수가 목록으로 수집되어 "args"에 할당됩니다.
 proc fold {cmd first args} {
     foreach arg $args {
         set first [$cmd $first $arg]
@@ -345,7 +269,7 @@ proc fold {cmd first args} {
 fold ::tcl::mathop::* 5 3 3 ;# ->  45
 
 
-# Conditional execution is implemented as a routine:
+# 조건부 실행은 루틴으로 구현됩니다.
 if {3 > 4} {
     puts {This will never happen}
 } elseif {4 > 4} {
@@ -355,9 +279,7 @@ if {3 > 4} {
 }
 
 
-# Loops are implemented as routines.  The first and third arguments to
-# "for" are treated as scripts, while the second argument is treated as
-# an expression:
+# 루프는 루틴으로 구현됩니다. "for"에 대한 첫 번째 및 세 번째 인수는 스크립트로 처리되는 반면 두 번째 인수는 표현식으로 처리됩니다.
 set res 0
 for {set i 0} {$i < 10} {incr i} {
     set res [expr {$res + $i}]
@@ -365,30 +287,26 @@ for {set i 0} {$i < 10} {incr i} {
 unset res
 
 
-# The first argument to "while" is also treated as an expression:
+# "while"에 대한 첫 번째 인수도 표현식으로 처리됩니다.
 set i 0
 while {$i < 10} {
     incr i 2
 }
 
 
-# A list is a string, and items in the list are delimited by whitespace:
+# 목록은 문자열이며 목록의 항목은 공백으로 구분됩니다.
 set amounts 10\ 33\ 18
 set amount [lindex $amounts 1]
 
-# Whitespace in a list item must be quoted:
+# 목록 항목의 공백은 인용해야 합니다.
 set inventory {"item 1" item\ 2 {item 3}}
 
 
-# It's generally a better idea to use list routines when modifying lists:
+# 목록을 수정할 때 목록 루틴을 사용하는 것이 일반적으로 더 좋습니다.
 lappend inventory {item 1} {item 2} {item 3}
 
 
-# Braces and backslash can be used to format more complex values in a list.  A
-# list looks exactly like a script, except that the newline character and the
-# semicolon character lose their special meanings, and there is no script or
-# variable substitution.  This feature makes Tcl homoiconic.  There are three
-# items in the following list:
+# 중괄호와 백슬래시를 사용하여 목록에서 더 복잡한 값을 서식 지정할 수 있습니다. 목록은 개행 문자와 세미콜론 문자가 특수 의미를 잃고 스크립트나 변수 대입이 없다는 점을 제외하고는 스크립트와 똑같이 보입니다. 다음 목록에는 세 개의 항목이 있습니다.
 set values {
 
     one\ two
@@ -400,85 +318,79 @@ set values {
 }
 
 
-# Since, like all values, a list is a string, string operations could be
-# performed on it, at the risk of corrupting the formatting of the list:
+# 모든 값과 마찬가지로 목록은 문자열이므로 목록의 서식을 손상시킬 위험이 있으므로 문자열 연산을 수행할 수 있습니다.
 set values {one two three four}
-set values [string map {two \{} $values] ;# $values is no-longer a \
-    properly-formatted list
+set values [string map {two \{} $values] ;# $values는 더 이상 제대로 서식이 지정된 목록이 아닙니다.
 
 
-# The sure-fire way to get a properly-formatted list is to use "list" routines:
+# 제대로 서식이 지정된 목록을 얻는 확실한 방법은 "list" 루틴을 사용하는 것입니다.
 set values [list one \{ three four]
-lappend values { } ;# add a single space as an item in the list
+lappend values { } ;# 목록에 단일 공백을 항목으로 추가
 
 
-# Use "eval" to evaluate a value as a script:
+# "eval"을 사용하여 값을 스크립트로 평가합니다.
 eval {
     set name Neo
     set greeting "Hello, $name"
 }
 
 
-# A list can always be passed to "eval" as a script composed of a single
-# command:
+# 목록은 항상 단일 명령으로 구성된 스크립트로 "eval"에 전달될 수 있습니다.
 eval {set name Neo}
 eval [list set greeting "Hello, $name"]
 
 
-# Therefore, when using "eval", use "list" to build up the desired command:
+# 따라서 "eval"을 사용할 때 "list"를 사용하여 원하는 명령을 구성하십시오.
 set command {set name}
 lappend command {Archibald Sorbisol}
 eval $command
 
 
-# A common mistake is not to use list functions when building up a command:
+# 일반적인 실수는 명령을 구성할 때 목록 함수를 사용하지 않는 것입니다.
 set command {set name}
 append command { Archibald Sorbisol}
 try {
-    eval $command ;# The error here is that there are too many arguments \
-        to "set" in {set name Archibald Sorbisol}
+    eval $command ;# 여기 오류는 {set name Archibald Sorbisol}에서 "set"에 대한 인수가 너무 많다는 것입니다.
 } on error {result eoptions} {
     puts [list {received an error} $result]
 }
 
-# This mistake can easily occur with "subst":
+# 이 실수는 "subst"에서도 쉽게 발생할 수 있습니다.
 
 set replacement {Archibald Sorbisol}
 set command {set name $replacement}
 set command [subst $command]
 try {
-    eval $command ;# The same error as before:  too many arguments to "set" in \
-        {set name Archibald Sorbisol}
+    eval $command ;# 이전과 동일한 오류: {set name Archibald Sorbisol}에서 "set"에 대한 인수가 너무 많습니다.
 } trap {TCL WRONGARGS} {result options} {
     puts [list {received another error} $result]
 }
 
 
-# "list" correctly formats a value for substitution:
+# "list"는 대입을 위해 값을 올바르게 서식 지정합니다.
 set replacement [list {Archibald Sorbisol}]
 set command {set name $replacement}
 set command [subst $command]
 eval $command
 
 
-# "list" is commonly used to format values for substitution into scripts: There
-# are several examples of this, below.
+# "list"는 스크립트로 대입하기 위해 값을 서식 지정하는 데 일반적으로 사용됩니다. 아래에 이에 대한 몇 가지 예가 있습니다.
 
 
-# "apply" evaluates a two-item list as a routine:
+# "apply"는 두 항목 목록을 루틴으로 평가합니다.
 set cmd {{greeting name} {
     return "$greeting, $name!"
 }}
 apply $cmd Whaddup Neo
 
-# A third item can be used to specify the namespace to apply the routine in:
+# 세 번째 항목을 사용하여 루틴을 적용할 네임스페이스를 지정할 수 있습니다.
 set cmd [list {greeting name} {
     return "$greeting, $name!"
 } [namespace current]]
 apply $cmd Whaddup Neo
 
 
-# "uplevel" evaluates a script at some higher level in the call stack:
+# "uplevel"은 호출 스택의 상위 수준에서 스크립트를 평가합니다.
 proc greet {} {
     uplevel {puts "$greeting, $name"}
 }
@@ -492,8 +404,7 @@ proc set_double {varname value} {
 }
 
 
-# "upvar" links a variable at the current level in the call stack to a variable
-# at some higher level:
+# "upvar"는 호출 스택의 현재 수준에 있는 변수를 상위 수준의 변수에 연결합니다.
 proc set_double {varname value} {
     if {[string is double $value]} {
         upvar 1 $varname var
@@ -504,9 +415,9 @@ proc set_double {varname value} {
 }
 
 
-# Get rid of the built-in "while" routine, and use "proc" to define a new one:
+# 내장 "while" 루틴을 제거하고 "proc"을 사용하여 새 루틴을 정의합니다.
 rename ::while {}
-# handling is left as an exercise:
+# 처리는 연습 문제로 남겨둡니다.
 proc while {condition script} {
     if {[uplevel 1 [list expr $condition]]} {
         uplevel 1 $script
@@ -515,12 +426,9 @@ proc while {condition script} {
 }
 
 
-# "coroutine" creates a new call stack, a new routine to enter that call stack,
-# and then calls that routine.  "yield" suspends evaluation in that stack and
-# returns control to the calling stack:
+# "coroutine"은 새 호출 스택, 해당 호출 스택에 들어갈 새 루틴을 만들고 해당 루틴을 호출합니다. "yield"는 해당 스택에서 평가를 일시 중단하고 호출 스택으로 제어를 반환합니다.
 proc countdown count {
-    # send something back to the creator of the coroutine, effectively pausing
-    # this call stack for the time being.
+    # 코루틴 생성자에게 무언가를 다시 보내고, 당분간 이 호출 스택을 일시 중지합니다.
     yield [info coroutine]
 
     while {$count > 1} {
@@ -541,7 +449,7 @@ puts $cres
 puts [countdown2] ;# -> 3
 
 
-# Coroutine stacks can yield control to each other:
+# 코루틴 스택은 서로 제어를 양보할 수 있습니다.
 
 proc pass {whom args} {
     return [yieldto $whom {*}$args]
@@ -575,14 +483,14 @@ coroutine c apply {{} {
     }
 }}
 
-# get things moving
+# 움직이기
 a
 ```
 
-## Reference
+## 참고 자료
 
-[Official Tcl Documentation](https://www.tcl-lang.org)
+[공식 Tcl 문서](https://www.tcl-lang.org)
 
-[Tcl Wiki](https://wiki.tcl-lang.org)
+[Tcl 위키](https://wiki.tcl-lang.org)
 
-[Tcl Subreddit](http://www.reddit.com/r/Tcl)
+[Tcl 서브레딧](http://www.reddit.com/r/Tcl)
