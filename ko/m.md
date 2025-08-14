@@ -3,6 +3,8 @@ name: M (MUMPS)
 contributors:
     - ["Fred Turkington", "http://z3ugma.github.io"]
 filename: LEARNM.m
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 M 또는 MUMPS(Massachusetts General Hospital Utility Multi-Programming System)는 내장 NoSQL 데이터베이스가 있는 절차적 언어입니다. 또는 데이터베이스에 접근하고 조작하는 데 최적화된 통합 언어가 있는 데이터베이스입니다. M의 주요 특징은 메모리의 지역 변수와 영구 저장소에 접근하는 데 동일한 기본 구문을 사용하므로 별도의 쿼리 언어를 기억할 필요가 없다는 것입니다. 이로 인해 특히 초보자에게 프로그래밍이 빠릅니다. M의 구문은 컴퓨터 메모리가 비싸고 제한적이었던 시대에 간결하게 설계되었습니다. 이 간결한 스타일은 스크롤 없이 한 화면에 더 많은 내용을 담을 수 있다는 것을 의미합니다.

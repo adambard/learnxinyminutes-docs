@@ -4,6 +4,8 @@ name: Protocol Buffers
 filename: protocol-buffers.proto
 contributors:
     - ["Shankar Shastri", "https://github.com/shankarshastri"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 프로토콜 버퍼는 구조화된 데이터를 직렬화하기 위한 구글의 언어 중립적, 플랫폼 중립적, 확장 가능한 메커니즘입니다. XML을 생각하되, 더 작고, 빠르고, 간단합니다.

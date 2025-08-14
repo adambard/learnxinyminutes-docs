@@ -3,6 +3,8 @@ name: Prolog
 filename: learnprolog.pl
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Prolog는 1972년에 처음 명시되었고, 여러 현대적인 구현으로 개선된 논리 프로그래밍 언어입니다.

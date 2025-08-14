@@ -5,6 +5,8 @@ contributors:
     - ["Chris Martin", "http://chris-martin.org/"]
     - ["Rommel Martinez", "https://ebzzry.io"]
     - ["Javier Candeira", "https://candeira.com/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Nix는 [Nix 패키지 관리자](https://nixos.org/nix/) 및

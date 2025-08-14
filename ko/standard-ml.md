@@ -7,6 +7,8 @@ contributors:
     - ["James Baker", "http://www.jbaker.io/"]
     - ["Leo Zovic", "http://langnostic.inaimathi.ca/"]
     - ["Chris Wilson", "http://sencjw.com/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Standard ML은 타입 추론과 일부 부수 효과가 있는 함수형 프로그래밍 언어입니다. Standard ML을 배우는 데 어려운 부분 중 일부는 재귀, 패턴 매칭, 타입 추론(올바른 타입을 추측하지만 암시적 타입 변환은 절대 허용하지 않음)입니다. Standard ML은 변수를 업데이트할 수 있는 참조를 포함하여 Haskell과 구별됩니다.

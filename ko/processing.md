@@ -4,6 +4,8 @@ filename: learnprocessing.pde
 contributors:
     - ["Phone Than Ko", "http://github.com/phonethantko"]
     - ["Divay Prakash", "https://github.com/divayprakash"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ## 소개

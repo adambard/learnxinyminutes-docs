@@ -12,6 +12,8 @@ contributors:
     - ["Stanislav Modrak", "https://stanislav.gq"]
     - ["John Paul Wohlscheid", "https://gitpi.us"]
 filename: learnpython.py
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Python은 90년대 초에 Guido van Rossum에 의해 만들어졌습니다. 지금은 가장 인기 있는 언어 중 하나입니다. 저는 Python의 구문적 명확성에 반했습니다. 기본적으로 실행 가능한 의사 코드입니다.

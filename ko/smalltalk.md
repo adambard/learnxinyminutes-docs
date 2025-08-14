@@ -4,6 +4,8 @@ filename: smalltalk.st
 contributors:
     - ["Jigyasa Grover", "https://jigyasa-grover.github.io"]
     - ["tim Rowledge", "tim@rowledge.org"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 - Smalltalk는 '비객체' 타입이 없는 완전한 객체 지향, 동적 타입, 반사적 프로그래밍 언어입니다.

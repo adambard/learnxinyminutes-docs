@@ -3,6 +3,8 @@ name: QML
 contributors:
     - ["Furkan Uzumcu", "https://zmc.space/"]
 filename: learnqml.qml
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ```qml

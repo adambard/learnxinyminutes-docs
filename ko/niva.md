@@ -3,6 +3,8 @@ name: niva
 filename: main.niva
 contributors:
     - ["gavr", "https://github.com/gavr123456789"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ## 소개

@@ -4,6 +4,8 @@ filename: learnperl.pl
 contributors:
     - ["Korjavin Ivan", "http://github.com/korjavin"]
     - ["Dan Book", "http://github.com/Grinnz"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Perl은 25년 이상 개발되어 온 매우 유능하고 기능이 풍부한 프로그래밍 언어입니다.

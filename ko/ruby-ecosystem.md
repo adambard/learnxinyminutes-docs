@@ -4,7 +4,8 @@ name: Ruby 생태계
 contributors:
     - ["Jon Smock", "http://github.com/jonsmock"]
     - ["Rafal Chmiel", "http://github.com/rafalchmiel"]
-
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Ruby를 사용하는 사람들은 일반적으로 다른 Ruby 버전을 설치하고,

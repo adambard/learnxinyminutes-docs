@@ -4,6 +4,8 @@ contributors:
     - ["DamienVGN", "https://github.com/martin-damien"]
     - ["Andre Polykanine", "https://github.com/Oire"]
 filename: restructuredtext.rst
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 RST, 재구조화된 텍스트는 파이썬 커뮤니티에서 문서를 작성하기 위해 만든 파일 형식입니다. [Docutils](https://docutils.sourceforge.io/rst.html)의 일부입니다.

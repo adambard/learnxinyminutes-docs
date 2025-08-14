@@ -3,6 +3,8 @@ name: TOML
 filename: learntoml.toml
 contributors:
   - ["Alois de Gouvello", "https://github.com/aloisdg"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 TOML은 Tom's Obvious, Minimal Language의 약자입니다. 명백한 의미 체계로 인해 읽기 쉬운 최소한의 구성 파일 형식을 목표로 설계된 데이터 직렬화 언어입니다.

@@ -3,6 +3,8 @@ name: Tcl
 contributors:
     - ["Poor Yorick", "https://pooryorick.com/"]
 filename: learntcl.tcl
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Tcl은 [John Ousterhout](https://wiki.tcl-lang.org/page/John+Ousterhout)이 저술한 회로 설계 도구를 위한 재사용 가능한 스크립팅 언어로 만들어졌습니다. 1997년에 그는 Tcl로 [ACM 소프트웨어 시스템 상](https://en.wikipedia.org/wiki/ACM_Software_System_Award)을 수상했습니다. Tcl은 내장형 스크립팅 언어와 일반 프로그래밍 언어로 모두 사용할 수 있습니다. 동적 문자열, 목록 및 해시 테이블과 같은 데이터 구조를 제공하므로 스크립팅 기능이 필요하지 않은 경우에도 이식 가능한 C 라이브러리로 사용할 수 있습니다. C 라이브러리는 또한 동적 라이브러리 로드, 문자열 서식 지정 및 코드 변환, 파일 시스템 작업, 네트워크 작업 등을 위한 이식 가능한 기능을 제공합니다. Tcl의 다양한 기능은 다음과 같습니다.

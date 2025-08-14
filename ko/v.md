@@ -3,6 +3,8 @@ name: V
 filename: vlang.v
 contributors:
     - ["Maou Shimazu", "https://github.com/Maou-Shimazu"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 V는 유지보수 가능한 소프트웨어를 구축하기 위해 설계된 정적 타입 컴파일 프로그래밍 언어입니다.

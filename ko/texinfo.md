@@ -3,6 +3,8 @@ name: Texinfo
 contributors:
     - ["Julien Lepiller", "https://github.com/roptat"]
 filename: learntexinfo.texi
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Texinfo는 동일한 소스에서 다양한 유형의 문서를 만드는 데 사용할 수 있는 문서 형식입니다. 주요 용도는 GNU 프로젝트의 문서 매뉴얼 및 정보 페이지를 만드는 것입니다.

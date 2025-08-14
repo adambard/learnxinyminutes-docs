@@ -3,6 +3,8 @@ name: Phel
 filename: learnphel.phel
 contributors:
     - ["Chemaclass", "https://github.com/Chemaclass"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 [Phel](https://phel-lang.org/)은 PHP로 컴파일되는 함수형 프로그래밍 언어입니다.

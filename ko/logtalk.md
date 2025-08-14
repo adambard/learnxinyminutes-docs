@@ -3,6 +3,8 @@ name: Logtalk
 filename: learnlogtalk.lgt
 contributors:
     - ["Paulo Moura", "http://github.com/pmoura"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Logtalk는 선언적 프로그래밍 기능을 손상시키지 않으면서 최신 코드 캡슐화 및 코드 재사용 메커니즘으로 Prolog를 확장하고 활용하는 객체 지향 논리 프로그래밍 언어입니다. Logtalk는 이식성이 뛰어난 코드로 구현되었으며 대부분의 최신 표준 준수 Prolog 구현을 백엔드 컴파일러로 사용할 수 있습니다.

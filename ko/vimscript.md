@@ -3,6 +3,8 @@ name: Vimscript
 filename: learnvimscript.vim
 contributors:
     - ["HiPhish", "http://hiphish.github.io/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ```vim

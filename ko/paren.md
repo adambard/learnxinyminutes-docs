@@ -1,10 +1,11 @@
 ---
-
 name: Paren
 filename: learnparen.paren
 contributors:
   - ["KIM Taegyoon", "https://github.com/kimtg"]
   - ["Claudson Martins", "https://github.com/claudsonm"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 [Paren](https://bitbucket.org/ktg/paren)은 Lisp의 방언입니다. 임베디드 언어로 설계되었습니다.

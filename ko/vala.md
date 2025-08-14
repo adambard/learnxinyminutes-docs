@@ -3,6 +3,8 @@ name: Vala
 contributors:
     - ["Milo Gilad", "https://github.com/Myl0g"]
 filename: LearnVala.vala
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 GNOME의 말에 따르면, "Vala는 C로 작성된 애플리케이션 및 라이브러리와 비교하여 추가 런타임 요구 사항을 부과하지 않고 다른 ABI를 사용하지 않고도 GNOME 개발자에게 최신 프로그래밍 언어 기능을 제공하는 것을 목표로 하는 프로그래밍 언어입니다."

@@ -10,6 +10,8 @@ contributors:
   - ["Alexey Nazaroff", "https://github.com/rogaven"]
   - ["@Samasaur1", "https://github.com/Samasaur1"]
 filename: learnswift.swift
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Swift는 모든 Apple 운영 체제에서 개발하기 위해 Apple이 만든 프로그래밍 언어입니다. 오류가 있는 코드에 대해 더 탄력적이면서 Objective-C와 공존하도록 설계된 Swift는 2014년 Apple의 개발자 컨퍼런스 WWDC에서 소개되었습니다. 자동 메모리 관리, 타입 안전성 및 코드를 더 읽기 쉽고 오류가 적게 만드는 현대적인 구문을 특징으로 합니다.

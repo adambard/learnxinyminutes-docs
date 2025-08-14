@@ -3,6 +3,8 @@ name: Sorbet
 filename: learnsorbet.rb
 contributors:
   - ["Jeremy Kaplan", "https://jdkaplan.dev"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Sorbet은 Ruby용 타입 체커입니다. 정적 및 런타임 타입 검사를 모두 활성화하는 메서드 서명 구문을 추가합니다.

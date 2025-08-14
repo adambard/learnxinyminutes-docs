@@ -4,6 +4,8 @@ name: Statistical computing with Python
 contributors:
     - ["e99n09", "https://github.com/e99n09"]
 filename: pythonstatcomp.py
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 이것은 파이썬을 사용하여 몇 가지 일반적인 통계 프로그래밍 작업을 수행하는 방법에 대한 튜토리얼입니다. 기본적으로 파이썬에 익숙하고 R, Stata, SAS, SPSS 또는 MATLAB과 같은 언어로 통계 프로그래밍 경험이 있는 사람들을 대상으로 합니다.

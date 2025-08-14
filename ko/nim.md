@@ -4,6 +4,8 @@ filename: learnNim.nim
 contributors:
     - ["Jason J. Ayala P.", "http://JasonAyala.com"]
     - ["Dennis Felsing", "https://dennis.felsing.org"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Nim (이전 Nimrod)은 정적으로 타입이 지정된 명령형 프로그래밍 언어로,

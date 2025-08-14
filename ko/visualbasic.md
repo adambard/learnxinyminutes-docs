@@ -3,6 +3,8 @@ name: Visual Basic
 contributors:
     - ["Brian Martin", "http://brianmartin.biz"]
 filename: learnvisualbasic.vb
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ```vbnet

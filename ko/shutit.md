@@ -4,6 +4,8 @@ name: ShutIt
 contributors:
     - ["Ian Miell", "http://ian.meirionconsulting.tk"]
 filename: learnshutit.py
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ShutIt은 사용하기 쉽게 설계된 셸 자동화 프레임워크입니다.

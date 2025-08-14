@@ -6,6 +6,8 @@ contributors:
     - ["jamesscottbrown", "http://jamesscottbrown.com"]
     - ["Colton Kohnke", "http://github.com/voltnor"]
     - ["Claudson Martins", "http://github.com/claudsonm"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 MATLAB은 MATrix LABoratory의 약자입니다. 공학 및 수학에서 일반적으로 사용되는 강력한 수치 계산 언어입니다.

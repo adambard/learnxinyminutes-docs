@@ -3,6 +3,8 @@ name: tcsh
 filename: LearnTCSH.csh
 contributors:
        - ["Nicholas Christopoulos", "https://github.com/nereusx"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 tcsh("tee-see-shell")는 C 셸(csh)을 기반으로 하고 호환되는 유닉스 셸입니다.

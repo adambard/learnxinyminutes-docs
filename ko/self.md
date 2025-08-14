@@ -3,6 +3,8 @@ name: Self
 contributors:
     - ["Russell Allen", "http://github.com/russellallen"]
 filename: learnself.self
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Self는 자체 JIT VM에서 실행되는 빠른 프로토타입 기반 객체 지향 언어입니다. 대부분의 개발은 통합된 브라우저와 디버거가 있는 *morphic*이라는 시각적 개발 환경을 통해 라이브 객체와 상호 작용하여 수행됩니다.

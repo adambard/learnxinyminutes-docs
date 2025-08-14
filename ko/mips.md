@@ -3,6 +3,8 @@ name: "MIPS Assembly"
 filename: MIPS.asm
 contributors:
   - ["Stanley Lim", "https://github.com/Spiderpig86"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 MIPS(Microprocessor without Interlocked Pipeline Stages) 어셈블리 언어는 1981년 J. L. Hennessy가 설계한 MIPS 마이크로프로세서 패러다임과 함께 작동하도록 설계되었습니다. 이러한 RISC 프로세서는 게이트웨이 및 라우터와 같은 임베디드 시스템에 사용됩니다.

@@ -6,6 +6,8 @@ contributors:
   - ["Sean Corrales", "https://github.com/droidenator"]
   - ["Kyle Mendes", "https://github.com/pink401k"]
   - ["Keith Miyake", "https://github.com/kaymmm"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Sass는 변수, 중첩, 믹스인 등과 같은 기능을 추가하는 CSS 확장 언어입니다.

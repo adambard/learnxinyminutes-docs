@@ -3,6 +3,8 @@ name: LiveScript
 filename: learnLivescript.ls
 contributors:
     - ["Christina Whyte", "http://github.com/kurisuwhyte/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 LiveScript는 함수형 자바스크립트 컴파일 언어로, 호스트 언어와 대부분의 기본 의미를 공유합니다. 커링, 함수 합성, 패턴 매칭 및 Haskell, F#, Scala와 같은 언어에서 많이 차용한 다른 좋은 기능들이 추가되었습니다.

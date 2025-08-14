@@ -4,6 +4,8 @@ contributors:
     - ["Wouter Van Schandevijl", "https://github.com/laoujin"]
     - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
 filename: LearnPowershell.ps1
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 PowerShell은 .NET Framework를 기반으로 구축된 Microsoft의 Windows 스크립팅 언어 및 구성 관리 프레임워크입니다. Windows 7 이상에는 PowerShell이 함께 제공됩니다.

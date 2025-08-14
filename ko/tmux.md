@@ -4,6 +4,8 @@ name: tmux
 contributors:
     - ["mdln", "https://github.com/mdln"]
 filename: LearnTmux.txt
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 [tmux](http://tmux.github.io)는 터미널 멀티플렉서입니다: 여러 터미널을

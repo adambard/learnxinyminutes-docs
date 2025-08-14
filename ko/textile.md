@@ -3,6 +3,8 @@ name: Textile
 contributors:
     - ["Keith Miyake", "https://github.com/kaymmm"]
 filename: learn-textile.textile
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Textile은 텍스트 서식 구문을 사용하여 일반 텍스트를 구조화된 HTML 마크업으로 변환하는 경량 마크업 언어입니다. 구문은 읽고 쓰기 쉽도록 설계된 HTML의 약식 버전입니다. Textile은 기사, 포럼 게시물, readme 문서 및 온라인에 게시되는 기타 모든 유형의 서면 콘텐츠를 작성하는 데 사용됩니다.

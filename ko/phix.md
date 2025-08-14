@@ -3,6 +3,8 @@ name: Phix
 contributors:
     - ["pxtom", "https://gitgub.com/pxtom"]
 filename: learnphix.exw
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ```

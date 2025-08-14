@@ -18,6 +18,8 @@ contributors:
   - ["Corey Ward", "https://github.com/coreyward"]
   - ["Jannik Siebert", "https://github.com/janniks"]
   - ["Keith Miyake", "https://github.com/kaymmm"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ```ruby

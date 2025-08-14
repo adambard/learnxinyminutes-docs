@@ -7,6 +7,8 @@ contributors:
     - ["Clayton Walker", "https://github.com/cwalk"]
     - ["Fernando Valverde", "http://visualcosita.xyz"]
 filename: LearnObjectiveC.m
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Objective-C는 macOS 및 iOS 운영 체제와 해당 프레임워크인 Cocoa 및 Cocoa Touch에서 Apple이 사용하는 주요 프로그래밍 언어입니다.

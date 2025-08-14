@@ -4,6 +4,8 @@ filename: learnLDPL.ldpl
 contributors:
     - ["Martín del Río", "https://github.com/lartu"]
     - ["John Paul Wohlscheid", "https://github.com/JohnBlood"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 **LDPL**은 C++로 트랜스파일되는 강력한 오픈 소스 프로그래밍 언어로,

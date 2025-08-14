@@ -3,6 +3,8 @@ name: MongoDB
 filename: mongo.js
 contributors:
   - ["Raj Piskala", "https://www.rajpiskala.ml/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 MongoDB는 대용량 데이터 저장을 위한 NoSQL 문서 데이터베이스입니다.

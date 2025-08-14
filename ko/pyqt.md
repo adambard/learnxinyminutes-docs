@@ -4,6 +4,8 @@ name: PyQt
 filename: learnpyqt.py
 contributors:
     - ["Nathan Hughes", "https://github.com/sirsharpest"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 **Qt**는 코드 변경이 거의 또는 전혀 없이 다양한 소프트웨어 및 하드웨어 플랫폼에서 실행할 수 있는 크로스 플랫폼 소프트웨어를 개발하기 위한 널리 알려진 프레임워크이며, 네이티브 애플리케이션의 성능과 속도를 가지고 있습니다. **Qt**는 원래 *C++*로 작성되었습니다.

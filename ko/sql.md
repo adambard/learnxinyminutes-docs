@@ -4,7 +4,8 @@ filename: learnsql.sql
 contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
   - ["Th3G33k", "https://github.com/Th3G33k"]
-
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 구조적 쿼리 언어(SQL)는 테이블 집합에 저장된 데이터베이스를 만들고 작업하기 위한 [ISO/IEC 9075](https://www.iso.org/standard/63555.html) 표준 언어입니다. 구현은 일반적으로 언어에 자체 확장을 추가합니다. [다양한 SQL 구현 비교](http://troels.arvin.dk/db/rdbms/)는 제품 차이점에 대한 좋은 참조 자료입니다.

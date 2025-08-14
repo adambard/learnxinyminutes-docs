@@ -4,6 +4,8 @@ name: MessagePack
 filename: learnmessagepack.mpac
 contributors:
   - ["Gabriel Chuan", "https://github.com/gczh"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 MessagePack은 효율적인 바이너리 직렬화 형식입니다. JSON처럼 여러 언어 간에 데이터를 교환할 수 있습니다. 다른 형식에 비해 더 빠르고 작다는 장점이 있습니다.

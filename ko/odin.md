@@ -3,6 +3,8 @@ name: Odin
 contributors:
     - ["Collin MacDonald", "https://github.com/CollinEMac"]
 filename: learnodin.odin
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Odin은 Bill "gingerBill" Hall에 의해 만들어졌습니다. 가비지 컬렉션 없이 단순성, 가독성 및 성능을 강조하는 범용 시스템 프로그래밍 언어입니다. Odin은 자신을 "프로그래밍의 즐거움을 위한 C 대안"이라고 소개합니다.

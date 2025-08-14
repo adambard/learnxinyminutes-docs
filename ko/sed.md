@@ -4,6 +4,8 @@ name: sed
 filename: learnsed.sed
 contributors:
      - ["Diomidis Spinellis", "https://www.spinellis.gr"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 __Sed__는 모든 POSIX 호환 유닉스 시스템의 표준 도구입니다. Vim, Visual Studio Code, Atom 또는 Sublime과 같은 편집기와 같습니다. 그러나 대화식으로 명령을 입력하는 대신 명령줄이나 파일로 제공합니다.

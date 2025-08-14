@@ -3,7 +3,8 @@ name: PCRE
 filename: pcre.txt
 contributors:
     - ["Sachin Divekar", "http://github.com/ssd532"]
-
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 정규 표현식(줄여서 regex 또는 regexp)은 검색 패턴을 설명하기 위한 특수 텍스트 문자열입니다. 예를 들어, URL 문자열에서 프로토콜을 추출하려면 `/^[a-z]+:/`라고 할 수 있으며, `http://github.com/`에서 `http:`와 일치합니다.

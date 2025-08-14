@@ -3,6 +3,8 @@ category: 알고리즘 및 자료 구조
 name: 집합론
 contributors:
     - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 집합론은 집합, 그 연산 및 속성을 연구하는 수학의 한 분야입니다.

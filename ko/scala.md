@@ -6,8 +6,9 @@ contributors:
     - ["Dominic Bou-Samra", "http://dbousamra.github.com"]
     - ["Geoff Liu", "http://geoffliu.me"]
     - ["Ha-Duong Nguyen", "http://reference-error.org"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
-
 Scala - 확장 가능한 언어
 
 ```scala

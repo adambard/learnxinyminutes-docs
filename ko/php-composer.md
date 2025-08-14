@@ -4,6 +4,8 @@ name: Composer
 contributors:
     - ["Brett Taylor", "https://github.com/glutnix"]
 filename: LearnComposer.sh
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 [Composer](https://getcomposer.org/)는 PHP의 의존성 관리 도구입니다. 프로젝트가 의존하는 라이브러리를 선언할 수 있으며, Composer가 이를 관리(설치/업데이트)해 줍니다.

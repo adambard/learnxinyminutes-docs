@@ -2,6 +2,8 @@
 name: Mercury
 contributors:
     - ["Julian Fondren", "https://mercury-in.space/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Mercury는 Prolog, ML, Haskell의 영향을 받은 엄격하고 순수한 함수형/논리형 프로그래밍 언어입니다.

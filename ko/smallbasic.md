@@ -3,6 +3,8 @@ name: SmallBASIC
 filename: learnsmallbasic.bas
 contributors:
     - ["Chris Warren-Smith", "http://smallbasic.sourceforge.net"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ## 정보

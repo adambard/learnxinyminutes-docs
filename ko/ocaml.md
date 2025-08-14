@@ -5,7 +5,10 @@ contributors:
     - ["Daniil Baturin", "http://baturin.org/"]
     - ["Stanislav Modrak", "https://stanislav.gq/"]
     - ["Luke Tong", "https://lukert.me/"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 OCaml은 일부 명령형 기능이 있는 엄격하게 평가되는 함수형 언어입니다.
 
 Standard ML 및 그 방언과 함께 ML 언어 계열에 속합니다.

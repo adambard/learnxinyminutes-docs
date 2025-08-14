@@ -3,8 +3,9 @@ name: Sing
 filename: learnsing.sing
 contributors:
     - ["Maurizio De Girolami", "https://github.com/mdegirolami"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
-
 sing의 목적은 고성능 애플리케이션을 위한 c++의 좋은 대체재가 될 수 있는 간단하고 안전하며 빠른 언어를 제공하는 것입니다.
 
 Sing은 사람이 읽을 수 있는 고품질의 c++로 컴파일되기 때문에 쉬운 선택입니다.

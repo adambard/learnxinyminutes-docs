@@ -4,6 +4,8 @@ filename: learnlean4.lean
 contributors:
     - ["Balagopal Komarath", "https://bkomarath.rbgo.in/"]
     - ["Ferinko", "https://github.com/Ferinko"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 [Lean 4](https://lean-lang.org/)는 종속 타입 함수형 프로그래밍 언어이자 대화형 정리 증명기입니다.

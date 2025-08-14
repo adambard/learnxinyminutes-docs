@@ -4,6 +4,8 @@ name: Mercurial
 contributors:
   - ["Will L. Fife", "http://github.com/sarlalian"]
 filename: LearnMercurial.txt
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Mercurial은 무료 분산 소스 제어 관리 도구입니다.

@@ -4,12 +4,12 @@ filename: learnpascal.pas
 contributors:
     - ["Ganesha Danu", "http://github.com/blinfoldking"]
     - ["Keith Miyake", "https://github.com/kaymmm"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
-
 
 >파스칼은 1968-69년에 니클라우스 비르트가 설계하고 1970년에 발표한 명령형 및 절차적 프로그래밍 언어로, 구조적 프로그래밍과 데이터 구조화를 사용하여 좋은 프로그래밍 습관을 장려하기 위한 작고 효율적인 언어입니다. 프랑스의 수학자, 철학자, 물리학자인 블레즈 파스칼을 기리기 위해 명명되었습니다.
 출처 : [위키백과](https://en.wikipedia.org/wiki/Pascal_(programming_language))
-
 
 
 파스칼 프로그램을 컴파일하고 실행하려면 무료 파스칼 컴파일러를 사용할 수 있습니다. [여기서 다운로드](https://www.freepascal.org/)

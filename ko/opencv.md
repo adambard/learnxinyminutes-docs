@@ -4,7 +4,10 @@ name: OpenCV
 filename: learnopencv.py
 contributors:
     - ["Yogesh Ojha", "http://github.com/yogeshojha"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
+
 ### OpenCV
 
 OpenCV(오픈 소스 컴퓨터 비전)는 주로 실시간 컴퓨터 비전을 목표로 하는 프로그래밍 함수 라이브러리입니다.

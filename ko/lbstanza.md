@@ -3,6 +3,8 @@ name: LB Stanza
 filename: learn-stanza.stanza
 contributors:
   - ["Mike Hilgendorf", "https://github.com/m-hilgendorf"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 LB Stanza(또는 줄여서 Stanza)는 캘리포니아 대학교 버클리에서 만든 새로운 선택적 타입 범용 프로그래밍 언어입니다. Stanza는 프로그래머가 대규모 프로그램 아키텍처의 복잡성을 해결하고 전체 소프트웨어 개발 수명 주기 동안 애플리케이션 프로그래머의 생산성을 크게 향상시키는 데 도움이 되도록 설계되었습니다.

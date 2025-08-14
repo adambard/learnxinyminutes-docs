@@ -3,6 +3,8 @@ name: "Lisp Flavoured Erlang (LFE)"
 filename: lispflavourederlang.lfe
 contributors:
   - ["Pratik Karki", "https://github.com/prertik"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Lisp Flavoured Erlang(LFE)는 함수형, 동시성, 범용 프로그래밍 언어이자 코어 얼랭(Core Erlang) 및 얼랭 가상 머신(BEAM) 위에 구축된 리스프 방언(Lisp-2)입니다.

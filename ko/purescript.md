@@ -4,6 +4,8 @@ filename: purescript.purs
 contributors:
     - ["Fredrik Dyrkell", "http://www.lexicallyscoped.com"]
     - ["Thimoteus", "https://github.com/Thimoteus"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 PureScript는 JavaScript로 컴파일되는 작고 강력하며 정적으로 유형이 지정된 언어입니다.

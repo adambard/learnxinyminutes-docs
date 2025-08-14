@@ -3,6 +3,8 @@ name: Wolfram
 contributors:
     - ["hyphz", "http://github.com/hyphz/"]
 filename: learnwolfram.nb
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Wolfram 언어는 원래 Mathematica에서 사용되던 기본 언어이지만, 지금은 여러 컨텍스트에서 사용할 수 있습니다.

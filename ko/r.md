@@ -6,6 +6,8 @@ contributors:
     - ["kalinn", "http://github.com/kalinn"]
     - ["mribeirodantas", "http://github.com/mribeirodantas"]
 filename: learnr.r
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 R은 통계 컴퓨팅 언어입니다. 데이터 세트를 업로드하고 정리하고, 통계 절차를 실행하고, 그래프를 만드는 데 많은 라이브러리가 있습니다. LaTeX 문서 내에서 `R` 명령을 실행할 수도 있습니다.

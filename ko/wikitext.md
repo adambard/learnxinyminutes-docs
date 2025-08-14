@@ -3,6 +3,8 @@ name: Wikitext
 contributors:
     - ["Yuxi Liu", "https://github.com/yuxiliu1995/"]
 filename: wikitext.md
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 위키는 온라인에서 공동으로 편집하는 하이퍼텍스트 출판물이며, 가장 유명한 것은 위키백과입니다. 위키텍스트는 위키에서 사용하는 마크업 언어입니다. 구문은 마크다운과 HTML의 혼합과 유사합니다.

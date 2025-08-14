@@ -6,6 +6,7 @@ contributors:
   - ["Isaac Henrique", "https://github.com/Isaachi1"]
 translators:
   - ["Divay Prakash", "https://github.com/divayprakash"]
+  - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Stylus는 CSS로 컴파일되는 동적 스타일시트 전처리기 언어입니다. 웹 브라우저 간의 호환성을 깨지 않으면서 CSS에 기능을 추가하는 것을 목표로 합니다.

@@ -3,7 +3,8 @@ name: Tailspin
 filename: learntailspin.tt
 contributors:
     - ["Torbjörn Gannholm", "https://github.com/tobega/"]
-
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 **Tailspin**은 파이프라인에서 값의 스트림으로 작동합니다. 종종

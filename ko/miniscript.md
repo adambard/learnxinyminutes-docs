@@ -3,6 +3,8 @@ name: MiniScript
 contributors:
     - ["Joe Strout", "https://github.com/JoeStrout"]
 filename: miniscript.ms
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 **MiniScript**는 게임 및 기타 소프트웨어에 쉽게 내장되도록 설계된 간단한 스크립팅 언어입니다. 명령줄에서 사용하거나 [Soda](https://github.com/JoeStrout/soda) 또는 [Mini Micro](https://miniscript.org/MiniMicro)를 통해 크로스 플랫폼 게임 개발 환경으로 사용할 수도 있습니다.

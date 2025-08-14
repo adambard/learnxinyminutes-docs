@@ -4,6 +4,8 @@ contributors:
   - ["RyanSquared", "https://ryansquared.github.io/"]
   - ["Job van der Zwan", "https://github.com/JobLeonard"]
 filename: moonscript.moon
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 MoonScript는 Lua로 컴파일되는 동적 스크립팅 언어입니다. 가장 빠른 스크립팅 언어 중 하나의 강력한 기능과 풍부한 기능 세트를 제공합니다.

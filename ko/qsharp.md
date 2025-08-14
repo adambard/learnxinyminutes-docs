@@ -6,6 +6,8 @@ contributors:
     - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
     - ["Alex Hansen", "https://github.com/sezna"]
 filename: LearnQSharp.qs
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Q#은 개발자가 양자 알고리즘을 작성할 수 있도록 하는 고급 도메인 특정 언어입니다. Q# 프로그램은 클래식 컴퓨터에서 실행되는 양자 시뮬레이터와 (향후) 양자 컴퓨터에서 실행할 수 있습니다.

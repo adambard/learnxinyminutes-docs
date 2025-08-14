@@ -3,6 +3,8 @@ name: Nmap
 category: tool
 contributors:
     - ["Sebastian Oberdorfer", "https://github.com/SOberdorfer"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 ### Y분 안에 Nmap 배우기

@@ -3,6 +3,8 @@ name: Uxntal
 contributors:
     - ["Devine Lu Linvega", "https://wiki.xxiivv.com"]
 filename: learnuxn.tal
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Uxntal은 [Uxn 가상 머신](https://wiki.xxiivv.com/site/uxn.html)을 대상으로 하는 스택 머신 어셈블리 언어입니다.

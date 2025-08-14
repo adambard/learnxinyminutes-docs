@@ -3,6 +3,8 @@ name: Rust
 contributors:
     - ["P1start", "http://p1start.github.io/"]
 filename: learnrust.rs
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Rust는 Mozilla Research에서 개발한 프로그래밍 언어입니다. Rust는 성능에 대한 저수준 제어와 고수준의 편의성 및 메모리의 안전을 보장합니다.

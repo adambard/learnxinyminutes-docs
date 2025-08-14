@@ -3,6 +3,8 @@ name: Less
 filename: learnless.less
 contributors:
   - ["Saravanan Ganesh", "http://srrvnn.me"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Less는 변수, 중첩, 믹스인 등과 같은 기능을 추가하는 CSS 전처리기입니다.

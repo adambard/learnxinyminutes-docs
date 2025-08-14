@@ -3,6 +3,8 @@ name: Pug
 contributors:
   - ["Michael Warner", "https://github.com/MichaelJGW"]
 filename: index.pug
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Pug는 HTML로 컴파일되는 언어입니다. if 문과 루프와 같은 추가 기능이 있는 더 깔끔한 구문을 가지고 있습니다. Node.js와 같은 서버 언어의 서버 측 템플릿 언어로도 사용할 수 있습니다.

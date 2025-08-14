@@ -4,6 +4,8 @@ contributors:
     - ["Philippe Vlérick", "https://github.com/pvlerick"]
     - ["Kiwimoe", "https://github.com/kiwimoe"]
 filename: learntypescript.ts
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 TypeScript는 JavaScript로 작성된 대규모 애플리케이션 개발을 용이하게 하는 것을 목표로 하는 언어입니다. TypeScript는 클래스, 모듈, 인터페이스, 제네릭 및 (선택적) 정적 타이핑과 같은 일반적인 개념을 JavaScript에 추가합니다. JavaScript의 상위 집합입니다. 모든 JavaScript 코드는 유효한 TypeScript 코드이므로 모든 프로젝트에 원활하게 추가할 수 있습니다. TypeScript 컴파일러는 JavaScript를 내보냅니다.

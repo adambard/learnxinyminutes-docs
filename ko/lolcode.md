@@ -3,6 +3,8 @@ name: LOLCODE
 filename: learnLOLCODE.lol
 contributors:
     - ["abactel", "https://github.com/abactel"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 LOLCODE는 [롤캣](https://upload.wikimedia.org/wikipedia/commons/a/ab/Lolcat_in_folder.jpg?1493656347257)의 말투를 닮도록 설계된 난해한 프로그래밍 언어입니다.

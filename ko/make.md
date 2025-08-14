@@ -5,6 +5,8 @@ contributors:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
 filename: Makefile
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Makefile은 대상(또는 대상들)을 생성하기 위한 규칙 그래프를 정의합니다.

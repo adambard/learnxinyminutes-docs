@@ -7,6 +7,8 @@ contributors:
   - ["Bhoomtawath Plinsut", "https://github.com/varshard"]
   - ["Shooter", "https://github.com/liushooter"]
   - ["Patrick Collins", "https://gist.github.com/PatrickAlphaC"]
+translators:
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 Solidity를 사용하면 중앙 집중식 또는 신뢰할 수 있는 당사자 없이 스마트 계약을 생성하고 실행할 수 있는 블록체인 기반 가상 머신인 [Ethereum](https://www.ethereum.org/)에서 프로그래밍할 수 있습니다.
