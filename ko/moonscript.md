@@ -1,5 +1,3 @@
-# moonscript.md (번역)
-
 ---
 name: MoonScript
 contributors:
@@ -8,26 +6,24 @@ contributors:
 filename: moonscript.moon
 ---
 
-MoonScript is a dynamic scripting language that compiles into Lua. It gives
-you the power of one of the fastest scripting languages combined with a
-rich set of features.
+MoonScript는 Lua로 컴파일되는 동적 스크립팅 언어입니다. 가장 빠른 스크립팅 언어 중 하나의 강력한 기능과 풍부한 기능 세트를 제공합니다.
 
-See [the MoonScript website](https://moonscript.org/) to see official guides on installation for all platforms.
+모든 플랫폼에 대한 공식 설치 가이드는 [MoonScript 웹사이트](https://moonscript.org/)를 참조하십시오.
 
 ```moon
--- Two dashes start a comment. Comments can go until the end of the line.
--- MoonScript transpiled to Lua does not keep comments.
+-- 두 개의 대시는 주석을 시작합니다. 주석은 줄 끝까지 이어질 수 있습니다.
+-- Lua로 트랜스파일된 MoonScript는 주석을 유지하지 않습니다.
 
--- As a note, MoonScript does not use 'do', 'then', or 'end' like Lua would and
--- instead uses an indented syntax, much like Python.
+-- 참고로, MoonScript는 Lua처럼 'do', 'then' 또는 'end'를 사용하지 않고
+-- 대신 Python과 매우 유사한 들여쓰기 구문을 사용합니다.
 
 --------------------------------------------------
--- 1. Assignment
+-- 1. 할당
 --------------------------------------------------
 
 hello = "world"
 a, b, c = 1, 2, 3
-hello = 123 -- Overwrites `hello` from above.
+hello = 123 -- 위의 `hello`를 덮어씁니다.
 
 x = 0
 x += 10 -- x = x + 10
@@ -39,115 +35,116 @@ b = false
 b and= true or false -- b = b and (true or false)
 
 --------------------------------------------------
--- 2. Literals and Operators
+-- 2. 리터럴 및 연산자
 --------------------------------------------------
 
--- Literals work almost exactly as they would in Lua. Strings can be broken in
--- the middle of a line without requiring a \.
+-- 리터럴은 Lua에서와 거의 똑같이 작동합니다. 문자열은
+-- \ 없이 줄 중간에서 끊을 수 있습니다.
 
 some_string = "exa
 mple" -- local some_string = "exa\nmple"
 
--- Strings can also have interpolated values, or values that are evaluated and
--- then placed inside of a string.
+-- 문자열에는 보간된 값, 즉 평가된 다음
+-- 문자열 내에 배치되는 값을 포함할 수도 있습니다.
 
-some_string = "This is an #{some_string}" -- Becomes 'This is an exa\nmple'
+some_string = "This is an #{some_string}" -- 'This is an exa\nmple'이 됩니다
 
 --------------------------------------------------
--- 2.1. Function Literals
+-- 2.1. 함수 리터럴
 --------------------------------------------------
 
--- Functions are written using arrows:
+-- 함수는 화살표를 사용하여 작성됩니다:
 
-my_function = -> -- compiles to `function() end`
-my_function() -- calls an empty function
+my_function = -> -- `function() end`로 컴파일됨
+my_function() -- 빈 함수 호출
 
--- Functions can be called without using parenthesis. Parentheses may still be
--- used to have priority over other functions.
+-- 함수는 괄호를 사용하지 않고 호출할 수 있습니다. 괄호는 여전히
+-- 다른 함수보다 우선순위를 갖기 위해 사용할 수 있습니다.
 
 func_a = -> print "Hello World!"
 func_b = ->
 	value = 100
 	print "The value: #{value}"
 
--- If a function needs no parameters, it can be called with either `()` or `!`.
+-- 함수에 매개변수가 필요 없는 경우 `()` 또는 `!`로 호출할 수 있습니다.
 
 func_a!
 func_b()
 
--- Functions can use arguments by preceding the arrow with a list of argument
--- names bound by parentheses.
+-- 함수는 화살표 앞에 괄호로 묶인 인수 이름 목록을
+-- 사용하여 인수를 사용할 수 있습니다.
 
-sum = (x, y)-> x + y -- The last expression is returned from the function.
+sum = (x, y)-> x + y -- 마지막 표현식이 함수에서 반환됩니다.
 print sum(5, 10)
 
--- Lua has an idiom of sending the first argument to a function as the object,
--- like a 'self' object. Using a fat arrow (=>) instead of a skinny arrow (->)
--- automatically creates a `self` variable. `@x` is a shorthand for `self.x`.
+-- Lua에는 첫 번째 인수를 'self' 객체처럼 객체로 함수에
+-- 보내는 관용구가 있습니다. 얇은 화살표(->) 대신 굵은 화살표(=>)를
+-- 사용하면 자동으로 `self` 변수가 생성됩니다. `@x`는 `self.x`의
+-- 약어입니다.
 
 func = (num)=> @value + num
 
--- Default arguments can also be used with function literals:
+-- 기본 인수는 함수 리터럴과 함께 사용할 수도 있습니다:
 
 a_function = (name = "something", height=100)->
 	print "Hello, I am #{name}.\nMy height is #{height}."
 
--- Because default arguments are calculated in the body of the function when
--- transpiled to Lua, you can reference previous arguments.
+-- 기본 인수는 Lua로 트랜스파일될 때 함수 본문에서
+-- 계산되므로 이전 인수를 참조할 수 있습니다.
 
 some_args = (x = 100, y = x + 1000)-> print(x + y)
 
 --------------------------------------------------
--- Considerations
+-- 고려 사항
 --------------------------------------------------
 
--- The minus sign plays two roles, a unary negation operator and a binary
--- subtraction operator. It is recommended to always use spaces between binary
--- operators to avoid the possible collision.
+-- 마이너스 기호는 단항 부정 연산자와 이항
+-- 뺄셈 연산자라는 두 가지 역할을 합니다. 가능한 충돌을 피하기 위해
+-- 이항 연산자 사이에는 항상 공백을 사용하는 것이 좋습니다.
 
 a = x - 10 --  a = x - 10
 b = x-10 -- b = x - 10
 c = x -y -- c = x(-y)
 d = x- z -- d = x - z
 
--- When there is no space between a variable and string literal, the function
--- call takes priority over following expressions:
+-- 변수와 문자열 리터럴 사이에 공백이 없으면 함수
+-- 호출이 다음 표현식보다 우선합니다:
 
 x = func"hello" + 100 -- func("hello") + 100
 y = func "hello" + 100 -- func("hello" + 100)
 
--- Arguments to a function can span across multiple lines as long as the
--- arguments are indented. The indentation can be nested as well.
+-- 함수에 대한 인수는 들여쓰기된 한 여러 줄에 걸쳐 있을 수 있습니다.
+-- 들여쓰기는 중첩될 수도 있습니다.
 
-my_func 5, -- called as my_func(5, 8, another_func(6, 7, 9, 1, 2), 5, 4)
-	8, another_func 6, 7, -- called as
-		9, 1, 2,		  -- another_func(6, 7, 9, 1, 2)
+my_func 5, -- my_func(5, 8, another_func(6, 7, 9, 1, 2), 5, 4)로 호출됨
+	8, another_func 6, 7, --
+		9, 1, 2,		  -- another_func(6, 7, 9, 1, 2)로 호출됨
 	5, 4
 
--- If a function is used at the start of a block, the indentation can be
--- different than the level of indentation used in a block:
+-- 함수가 블록 시작 부분에서 사용되면 들여쓰기는
+-- 블록에서 사용되는 들여쓰기 수준과 다를 수 있습니다:
 
-if func 1, 2, 3, -- called as func(1, 2, 3, "hello", "world")
+if func 1, 2, 3, -- func(1, 2, 3, "hello", "world")로 호출됨
 		"hello",
 		"world"
 	print "hello"
 
 --------------------------------------------------
--- 3. Tables
+-- 3. 테이블
 --------------------------------------------------
 
--- Tables are defined by curly braces, like Lua:
+-- 테이블은 Lua처럼 중괄호로 정의됩니다:
 
 some_values = {1, 2, 3, 4}
 
--- Tables can use newlines instead of commas.
+-- 테이블은 쉼표 대신 줄 바꿈을 사용할 수 있습니다.
 
 some_other_values = {
 	5, 6
 	7, 8
 }
 
--- Assignment is done with `:` instead of `=`:
+-- 할당은 `=` 대신 `:`으로 수행됩니다:
 
 profile = {
 	name: "Bill"
@@ -155,89 +152,90 @@ profile = {
 	"favorite food": "rice"
 }
 
--- Curly braces can be left off for `key: value` tables.
+-- `key: value` 테이블의 경우 중괄호를 생략할 수 있습니다.
 
 y = type: "dog", legs: 4, tails: 1
 
 profile =
 	height: "4 feet",
 	shoe_size: 13,
-	favorite_foods: -- nested table
+	favorite_foods: -- 중첩 테이블
 		foo: "ice cream",
 		bar: "donuts"
 
 my_function dance: "Tango", partner: "none" -- :( forever alone
 
--- Tables constructed from variables can use the same name as the variables
--- by using `:` as a prefix operator.
+-- 변수로 구성된 테이블은 변수와 동일한 이름을
+-- 접두사 연산자로 `:`를 사용하여 사용할 수 있습니다.
 
 hair = "golden"
 height = 200
 person = {:hair, :height}
 
--- Like in Lua, keys can be non-string or non-numeric values by using `[]`.
+-- Lua에서와 같이 키는 `[]`를 사용하여 문자열이 아니거나
+-- 숫자가 아닌 값일 수 있습니다.
 
 t =
 	[1 + 2]: "hello"
-	"hello world": true -- Can use string literals without `[]`.
+	"hello world": true -- `[]` 없이 문자열 리터럴을 사용할 수 있습니다.
 
 --------------------------------------------------
--- 3.1. Table Comprehensions
+-- 3.1. 테이블 컴프리헨션
 --------------------------------------------------
 
--- List Comprehensions
+-- 리스트 컴프리헨션
 
--- Creates a copy of a list but with all items doubled. Using a star before a
--- variable name or table can be used to iterate through the table's values.
+-- 모든 항목이 두 배인 리스트의 복사본을 만듭니다. 별표를 사용하여
+-- 변수 이름이나 테이블 앞에 붙이면 테이블의 값을 반복할 수 있습니다.
 
 items = {1, 2, 3, 4}
 doubled = [item * 2 for item in *items]
--- Uses `when` to determine if a value should be included.
+-- `when`을 사용하여 값을 포함할지 여부를 결정합니다.
 
 slice = [item for item in *items when item > 1 and item < 3]
 
--- `for` clauses inside of list comprehensions can be chained.
+-- 리스트 컴프리헨션 내부의 `for` 절은 연결될 수 있습니다.
 
 x_coords = {4, 5, 6, 7}
 y_coords = {9, 2, 3}
 
 points = [{x,y} for x in *x_coords for y in *y_coords]
 
--- Numeric for loops can also be used in comprehensions:
+-- 숫자 for 루프는 컴프리헨션에서도 사용할 수 있습니다:
 
 evens = [i for i=1, 100 when i % 2 == 0]
 
--- Table Comprehensions are very similar but use `{` and `}` and take two
--- values for each iteration.
+-- 테이블 컴프리헨션은 매우 유사하지만 `{`와 `}`를 사용하고
+-- 각 반복에 대해 두 개의 값을 사용합니다.
 
 thing = color: "red", name: "thing", width: 123
 thing_copy = {k, v for k, v in pairs thing}
 
--- Tables can be "flattened" from key-value pairs in an array by using `unpack`
--- to return both values, using the first as the key and the second as the
--- value.
+-- 테이블은 `unpack`을 사용하여 배열의 키-값 쌍에서 "평탄화"될 수 있습니다.
+-- 두 값을 모두 반환하여 첫 번째는 키로, 두 번째는
+-- 값으로 사용합니다.
 
 tuples = {{"hello", "world"}, {"foo", "bar"}}
 table = {unpack tuple for tuple in *tuples}
 
--- Slicing can be done to iterate over only a certain section of an array. It
--- uses the `*` notation for iterating but appends `[start, end, step]`.
+-- 슬라이싱은 배열의 특정 섹션만 반복하는 데 사용할 수 있습니다.
+-- 반복을 위해 `*` 표기법을 사용하지만 `[start, end, step]`을 추가합니다.
 
--- The next example also shows that this syntax can be used in a `for` loop as
--- well as any comprehensions.
+-- 다음 예는 이 구문이 `for` 루프뿐만 아니라
+-- 모든 컴프리헨션에서도 사용할 수 있음을 보여줍니다.
 
 for item in *points[1, 10, 2]
 	print unpack item
 
--- Any undesired values can be left off. The second comma is not required if
--- the step is not included.
+-- 원하지 않는 값은 생략할 수 있습니다.
+-- 단계가 포함되지 않은 경우 두 번째 쉼표는 필요하지 않습니다.
 
 words = {"these", "are", "some", "words"}
 for word in *words[,3]
 	print word
 
 --------------------------------------------------
--- 4. Control Structures
+-- 4. 제어 구조
 --------------------------------------------------
 
 have_coins = false
@@ -246,63 +244,63 @@ if have_coins
 else
 	print "No coins"
 
--- Use `then` for single-line `if`
+-- 한 줄 `if`에 `then` 사용
 if have_coins then "Got coins" else "No coins"
 
--- `unless` is the opposite of `if`
+-- `unless`는 `if`의 반대입니다.
 unless os.date("%A") == "Monday"
 	print "It is not Monday!"
 
--- `if` and `unless` can be used as expressions
+-- `if`와 `unless`는 표현식으로 사용할 수 있습니다.
 is_tall = (name)-> if name == "Rob" then true else false
 message = "I am #{if is_tall "Rob" then "very tall" else "not so tall"}"
 print message -- "I am very tall"
 
--- `if`, `elseif`, and `unless` can evaluate assignment as well as expressions.
-if x = possibly_nil! -- sets `x` to `possibly_nil()` and evaluates `x`
+-- `if`, `elseif`, `unless`는 할당과 표현식을 평가할 수 있습니다.
+if x = possibly_nil! -- `x`를 `possibly_nil()`로 설정하고 `x`를 평가
 	print x
 
--- Conditionals can be used after a statement as well as before. This is
--- called a "line decorator".
+-- 조건문은 문장 앞뿐만 아니라 뒤에도 사용할 수 있습니다. 이것은
+-- "라인 데코레이터"라고 합니다.
 
 is_monday = os.date("%A") == "Monday"
 print("It IS Monday!") if isMonday
 print("It is not Monday..") unless isMonday
---print("It IS Monday!" if isMonday) -- Not a statement, does not work
+--print("It IS Monday!" if isMonday) -- 문장이 아니므로 작동하지 않음
 
 --------------------------------------------------
--- 4.1 Loops
+-- 4.1 루프
 --------------------------------------------------
 
 for i = 1, 10
 	print i
 
-for i = 10, 1, -1 do print i -- Use `do` for single-line loops.
+for i = 10, 1, -1 do print i -- 한 줄 루프에 `do` 사용.
 
 i = 0
 while i < 10
-	continue if i % 2 == 0 -- Continue statement; skip the rest of the loop.
+	continue if i % 2 == 0 -- continue 문; 루프의 나머지 부분을 건너뜁니다.
 	print i
 
--- Loops can be used as a line decorator, just like conditionals
+-- 루프는 조건문처럼 라인 데코레이터로 사용할 수 있습니다.
 print "item: #{item}" for item in *items
 
--- Using loops as an expression generates an array table. The last statement
--- in the block is coerced into an expression and added to the table.
+-- 루프를 표현식으로 사용하면 배열 테이블이 생성됩니다. 블록의
+-- 마지막 문은 표현식으로 강제 변환되어 테이블에 추가됩니다.
 my_numbers = for i = 1, 6 do i -- {1, 2, 3, 4, 5, 6}
 
--- use `continue` to filter out values
+-- 값을 필터링하려면 `continue` 사용
 odds = for i in *my_numbers
-	continue if i % 2 == 0 -- acts opposite to `when` in comprehensions!
-	i -- Only added to return table if odd
+	continue if i % 2 == 0 -- 컴프리헨션의 `when`과 반대로 작동!
+	i -- 홀수일 때만 반환 테이블에 추가됨
 
--- A `for` loop returns `nil` when it is the last statement of a function
--- Use an explicit `return` to generate a table.
-print_squared = (t) -> for x in *t do x*x -- returns `nil`
-squared = (t) -> return for x in *t do x*x -- returns new table of squares
+-- `for` 루프는 함수 마지막 문일 때 `nil`을 반환합니다.
+-- 테이블을 생성하려면 명시적 `return`을 사용하십시오.
+print_squared = (t) -> for x in *t do x*x -- `nil` 반환
+squared = (t) -> return for x in *t do x*x -- 새 제곱 테이블 반환
 
--- The following does the same as `(t) -> [i for i in *t when i % 2 == 0]`
--- But list comprehension generates better code and is more readable!
+-- 다음은 `(t) -> [i for i in *t when i % 2 == 0]`와 동일하게 작동합니다.
+-- 하지만 리스트 컴프리헨션은 더 나은 코드를 생성하고 더 읽기 쉽습니다!
 
 filter_odds = (t) ->
 	return for x in *t
@@ -310,11 +308,11 @@ filter_odds = (t) ->
 evens = filter_odds(my_numbers) -- {2, 4, 6}
 
 --------------------------------------------------
--- 4.2 Switch Statements
+-- 4.2 Switch 문
 --------------------------------------------------
 
--- Switch statements are a shorthand way of writing multiple `if` statements
--- checking against the same value. The value is only evaluated once.
+-- Switch 문은 동일한 값에 대해 여러 `if` 문을 작성하는
+-- 약식 방법입니다. 값은 한 번만 평가됩니다.
 
 name = "Dan"
 
@@ -326,9 +324,9 @@ switch name
 	else
 		print "You are neither Dave nor Dan."
 
--- Switches can also be used as expressions, as well as compare multiple
--- values. The values can be on the same line as the `when` clause if they
--- are only one expression.
+-- Switch는 표현식으로 사용할 수 있을 뿐만 아니라 여러 값을
+-- 비교할 수도 있습니다. 값이 단일 표현식인 경우 `when` 절과
+-- 같은 줄에 있을 수 있습니다.
 
 b = 4
 next_even = switch b
@@ -338,32 +336,32 @@ next_even = switch b
 	else error "I can't count that high! D:"
 
 --------------------------------------------------
--- 5. Object Oriented Programming
+-- 5. 객체 지향 프로그래밍
 --------------------------------------------------
 
--- Classes are created using the `class` keyword followed by an identifier,
--- typically written using CamelCase. Values specific to a class can use @ as
--- the identifier instead of `self.value`.
+-- 클래스는 식별자 뒤에 `class` 키워드를 사용하여 생성되며,
+-- 일반적으로 CamelCase를 사용하여 작성됩니다. 클래스에 특정한 값은
+-- `self.value` 대신 식별자로 @를 사용할 수 있습니다.
 
 class Inventory
 	new: => @items = {}
-	add_item: (name)=> -- note the use of fat arrow for classes!
+	add_item: (name)=> -- 클래스에 굵은 화살표 사용에 유의!
 		@items[name] = 0 unless @items[name]
 		@items[name] += 1
 
--- The `new` function inside of a class is special because it is called when
--- an instance of the class is created.
+-- 클래스 내부의 `new` 함수는 클래스의 인스턴스가
+-- 생성될 때 호출되므로 특별합니다.
 
--- Creating an instance of the class is as simple as calling the class as a
--- function. Calling functions inside of the class uses \ to separate the
--- instance from the function it is calling.
+-- 클래스의 인스턴스를 만드는 것은 클래스를 함수로 호출하는 것만큼
+-- 간단합니다. 클래스 내부의 함수를 호출하려면 \를 사용하여
+-- 인스턴스와 호출하는 함수를 구분합니다.
 
 inv = Inventory!
 inv\add_item "t-shirt"
 inv\add_item "pants"
 
--- Values defined in the class - not the new() function - will be shared across
--- all instances of the class.
+-- new() 함수가 아닌 클래스에 정의된 값은 모든
+-- 인스턴스에서 공유됩니다.
 
 class Person
 	clothes: {}
@@ -376,17 +374,17 @@ b = Person!
 a\give_item "pants"
 b\give_item "shirt"
 
--- prints out both "pants" and "shirt"
+-- "pants"와 "shirt" 모두 출력
 
 print item for item in *a.clothes
 
--- Class instances have a value `.__class` that are equal to the class object
--- that created the instance.
+-- 클래스 인스턴스는 인스턴스를 생성한 클래스 객체와
+-- 동일한 값 `.__class`를 가집니다.
 
 assert(b.__class == Person)
 
--- Variables declared in class body the using the `=` operator are locals,
--- so these "private" variables are only accessible within the current scope.
+-- `=` 연산자를 사용하여 클래스 본문에 선언된 변수는 지역 변수이므로
+-- 이러한 "비공개" 변수는 현재 범위 내에서만 액세스할 수 있습니다.
 
 class SomeClass
 	x = 0
@@ -401,33 +399,33 @@ a.reveal! -- 1
 b.reveal! -- 2
 
 --------------------------------------------------
--- 5.1 Inheritance
+-- 5.1 상속
 --------------------------------------------------
 
--- The `extends` keyword can be used to inherit properties and methods from
--- another class.
+-- `extends` 키워드를 사용하여 다른 클래스에서 속성과 메서드를
+-- 상속받을 수 있습니다.
 
 class Backpack extends Inventory
 	size: 10
 	add_item: (name)=>
 		error "backpack is full" if #@items > @size
-		super name -- calls Inventory.add_item with `name`.
+		super name -- `name`으로 Inventory.add_item 호출.
 
--- Because a `new` method was not added, the `new` method from `Inventory` will
--- be used instead. If we did want to use a constructor while still using the
--- constructor from `Inventory`, we could use the magical `super` function
--- during `new()`.
+-- `new` 메서드가 추가되지 않았으므로 `Inventory`의 `new` 메서드가
+-- 대신 사용됩니다. `Inventory`의 생성자를 계속 사용하면서
+-- 생성자를 사용하려면 `new()` 중에 마법의 `super` 함수를
+-- 사용할 수 있습니다.
 
--- When a class extends another, it calls the method `__inherited` on the
--- parent class (if it exists). It is always called with the parent and the
--- child object.
+-- 클래스가 다른 클래스를 확장하면 부모 클래스(있는 경우)의
+-- `__inherited` 메서드를 호출합니다. 항상 부모와
+-- 자식 객체로 호출됩니다.
 
 class ParentClass
 	@__inherited: (child)=>
 		print "#{@__name} was inherited by #{child.__name}"
 	a_method: (a, b) => print a .. ' ' .. b
 
--- Will print 'ParentClass was inherited by MyClass'
+-- 'ParentClass was inherited by MyClass' 출력
 
 class MyClass extends ParentClass
 	a_method: =>
@@ -435,28 +433,28 @@ class MyClass extends ParentClass
 		assert super == ParentClass
 
 --------------------------------------------------
--- 6. Scope
+-- 6. 범위
 --------------------------------------------------
 
--- All values are local by default. The `export` keyword can be used to
--- declare the variable as a global value.
+-- 모든 값은 기본적으로 지역 변수입니다. `export` 키워드를 사용하여
+-- 변수를 전역 값으로 선언할 수 있습니다.
 
 export var_1, var_2
-var_1, var_3 = "hello", "world" -- var_3 is local, var_1 is not.
+var_1, var_3 = "hello", "world" -- var_3는 지역 변수, var_1은 아님.
 
 export this_is_global_assignment = "Hi!"
 
--- Classes can also be prefixed with `export` to make them global classes.
--- Alternatively, all CamelCase variables can be exported automatically using
--- `export ^`, and all values can be exported using `export *`.
+-- 클래스 앞에 `export`를 붙여 전역 클래스로 만들 수도 있습니다.
+-- 또는 `export ^`를 사용하여 모든 CamelCase 변수를 자동으로 내보내거나
+-- `export *`를 사용하여 모든 값을 내보낼 수 있습니다.
 
--- `do` lets you manually create a scope, for when you need local variables.
+-- `do`를 사용하면 지역 변수가 필요할 때 수동으로 범위를 만들 수 있습니다.
 
 do
 	x = 5
 print x -- nil
 
--- Here we use `do` as an expression to create a closure.
+-- 여기서는 `do`를 표현식으로 사용하여 클로저를 만듭니다.
 
 counter = do
 	i = 0
@@ -467,15 +465,15 @@ counter = do
 print counter!  -- 1
 print counter!  -- 2
 
--- The `local` keyword can be used to define variables
--- before they are assigned.
+-- `local` 키워드를 사용하여 할당되기 전에
+-- 변수를 정의할 수 있습니다.
 
 local var_4
 if something
 	var_4 = 1
-print var_4 -- works because `var_4` was set in this scope, not the `if` scope.
+print var_4 -- `var_4`가 `if` 범위가 아닌 이 범위에서 설정되었으므로 작동합니다.
 
--- The `local` keyword can also be used to shadow an existing variable.
+-- `local` 키워드를 사용하여 기존 변수를 가릴 수도 있습니다.
 
 x = 10
 if false
@@ -483,8 +481,8 @@ if false
 	x = 12
 print x -- 10
 
--- Use `local *` to forward-declare all variables.
--- Alternatively, use `local ^` to forward-declare all CamelCase values.
+-- `local *`를 사용하여 모든 변수를 미리 선언합니다.
+-- 또는 `local ^`를 사용하여 모든 CamelCase 값을 미리 선언합니다.
 
 local *
 
@@ -497,19 +495,19 @@ second = ->
 data = {}
 
 --------------------------------------------------
--- 6.1 Import
+-- 6.1 가져오기
 --------------------------------------------------
 
--- Values from a table can be brought to the current scope using the `import`
--- and `from` keyword. Names in the `import` list can be preceded by `\` if
--- they are a module function.
+-- 테이블의 값은 `import` 및 `from` 키워드를 사용하여
+-- 현재 범위로 가져올 수 있습니다. `import` 목록의 이름은
+-- 모듈 함수인 경우 `\`를 앞에 붙일 수 있습니다.
 
 import insert from table -- local insert = table.insert
 import \add from state: 100, add: (value)=> @state + value
 print add 22
 
--- Like tables, commas can be excluded from `import` lists to allow for longer
--- lists of imported items.
+-- 테이블과 마찬가지로 `import` 목록에서 쉼표를 제외하여
+-- 더 긴 가져오기 항목 목록을 허용할 수 있습니다.
 
 import
 	asdf, gh, jkl
@@ -520,10 +518,10 @@ import
 -- 6.2 With
 --------------------------------------------------
 
--- The `with` statement can be used to quickly call and assign values in an
--- instance of a class or object.
+-- `with` 문을 사용하여 클래스 또는 객체의 인스턴스에서
+-- 값을 빠르게 호출하고 할당할 수 있습니다.
 
-file = with File "lmsi15m.moon" -- `file` is the value of `set_encoding()`.
+file = with File "lmsi15m.moon" -- `file`은 `set_encoding()`의 값입니다.
 	\set_encoding "utf8"
 
 create_person = (name, relatives)->
@@ -532,16 +530,16 @@ create_person = (name, relatives)->
 		\add_relative relative for relative in *relatives
 me = create_person "Ryan", {"sister", "sister", "brother", "dad", "mother"}
 
-with str = "Hello" -- assignment as expression! :D
+with str = "Hello" -- 표현식으로 할당! :D
 	print "original: #{str}"
 	print "upper: #{\upper!}"
 
 --------------------------------------------------
--- 6.3 Destructuring
+-- 6.3 구조 분해
 --------------------------------------------------
 
--- Destructuring can take arrays, tables, and nested tables and convert them
--- into local variables.
+-- 구조 분해는 배열, 테이블 및 중첩된 테이블을 가져와
+-- 지역 변수로 변환할 수 있습니다.
 
 obj2 =
 	numbers: {1, 2, 3, 4}
@@ -553,20 +551,21 @@ obj2 =
 
 print first, second, color -- 1 2 green
 
--- `first` and `second` return [1] and [2] because they are as an array, but
--- `:color` is like `color: color` so it sets itself to the `color` value.
+-- `first`와 `second`는 배열이므로 [1]과 [2]를 반환하지만,
+-- `:color`는 `color: color`와 같으므로 `color` 값으로
+-- 설정됩니다.
 
--- Destructuring can be used in place of `import`.
+-- 구조 분해는 `import` 대신 사용할 수 있습니다.
 
-{:max, :min, random: rand} = math -- rename math.random to rand
+{:max, :min, random: rand} = math -- math.random을 rand로 이름 변경
 
--- Destructuring can be done anywhere assignment can be done.
+-- 구조 분해는 할당이 가능한 모든 곳에서 수행할 수 있습니다.
 
 for {left, right} in *{{"hello", "world"}, {"egg", "head"}}
 	print left, right
 ```
 
-## Additional Resources
+## 추가 자료
 
-- [Language Guide](https://moonscript.org/reference/)
-- [Online Compiler](https://moonscript.org/compiler/)
+- [언어 가이드](https://moonscript.org/reference/)
+- [온라인 컴파일러](https://moonscript.org/compiler/)

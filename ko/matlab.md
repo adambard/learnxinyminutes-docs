@@ -1,5 +1,3 @@
-# matlab.md (번역)
-
 ---
 name: MATLAB
 filename: learnmatlab.m
@@ -10,177 +8,176 @@ contributors:
     - ["Claudson Martins", "http://github.com/claudsonm"]
 ---
 
-MATLAB stands for MATrix LABoratory. It is a powerful numerical computing language commonly used in engineering and mathematics.
+MATLAB은 MATrix LABoratory의 약자입니다. 공학 및 수학에서 일반적으로 사용되는 강력한 수치 계산 언어입니다.
 
 ```matlab
-%% Code sections start with two percent signs. Section titles go on the same line.
-% Comments start with a percent sign.
+%% 코드 섹션은 두 개의 퍼센트 기호로 시작합니다. 섹션 제목은 같은 줄에 씁니다.
+% 주석은 퍼센트 기호로 시작합니다.
 
 %{
-Multi line comments look
-something
-like
-this
+여러 줄 주석은
+다음과
+같습니다
 %}
 
-% Two percent signs denote the start of a new code section
-% Individual code sections can be run by moving the cursor to the section followed by
-% either clicking the "Run Section" button
-% or     using Ctrl+Shift+Enter (Windows) or Cmd+Shift+Return (macOS)
+% 두 개의 퍼센트 기호는 새 코드 섹션의 시작을 나타냅니다
+% 개별 코드 섹션은 커서를 섹션으로 이동한 다음
+% "섹션 실행" 버튼을 클릭하거나
+% 또는 Ctrl+Shift+Enter(Windows) 또는 Cmd+Shift+Return(macOS)을 사용하여 실행할 수 있습니다.
 
-%% This is the start of a code section
-%  One way of using sections is to separate expensive but unchanging start-up code like loading data
+%% 이것은 코드 섹션의 시작입니다
+%  섹션을 사용하는 한 가지 방법은 데이터 로드와 같이 비용이 많이 들지만 변경되지 않는 시작 코드를 분리하는 것입니다.
 load myFile.mat y
 
-%% This is another code section
-%  This section can be edited and run repeatedly on its own, and is helpful for exploratory programming and demos
+%% 이것은 또 다른 코드 섹션입니다
+%  이 섹션은 자체적으로 반복적으로 편집하고 실행할 수 있으며, 탐색적 프로그래밍 및 데모에 유용합니다.
 A = A * 2;
 plot(A);
 
-%% Code sections are also known as code cells or cell mode (not to be confused with cell arrays)
+%% 코드 섹션은 코드 셀 또는 셀 모드라고도 합니다(셀 배열과 혼동하지 마십시오).
 
 
-% commands can span multiple lines, using '...':
+% 명령어는 '...'을 사용하여 여러 줄에 걸쳐 작성할 수 있습니다:
  a = 1 + 2 + ...
  + 4
 
-% commands can be passed to the operating system
+% 명령어를 운영 체제에 전달할 수 있습니다
 !ping google.com
 
-who          % Displays all variables in memory
-whos         % Displays all variables in memory, with their types
-clear        % Erases all your variables from memory
-clear('A')   % Erases a particular variable
-openvar('A') % Open variable in variable editor
+who          % 메모리의 모든 변수를 표시합니다
+whos         % 메모리의 모든 변수를 유형과 함께 표시합니다
+clear        % 메모리에서 모든 변수를 지웁니다
+clear('A')   % 특정 변수를 지웁니다
+openvar('A') % 변수 편집기에서 변수를 엽니다
 
-clc    % Erases the writing on your Command Window
-diary  % Toggle writing Command Window text to file
-ctrl-c % Abort current computation
+clc    % 명령 창의 내용을 지웁니다
+diary  % 명령 창 텍스트를 파일에 쓰는 것을 토글합니다
+ctrl-c % 현재 계산을 중단합니다
 
-edit('myfunction.m') % Open function/script in editor
-type('myfunction.m') % Print the source of function/script to Command Window
+edit('myfunction.m') % 편집기에서 함수/스크립트를 엽니다
+type('myfunction.m') % 함수/스크립트의 소스를 명령 창에 인쇄합니다
 
-profile on     % turns on the code profiler
-profile off    % turns off the code profiler
-profile viewer % Open profiler
+profile on     % 코드 프로파일러를 켭니다
+profile off    % 코드 프로파일러를 끕니다
+profile viewer % 프로파일러를 엽니다
 
-help command         % Displays documentation for command in Command Window
-doc command          % Displays documentation for command in Help Window
-lookfor command      % Searches for command in the first commented line of all functions
-lookfor command -all % searches for command in all functions
+help command         % 명령 창에 명령어에 대한 문서를 표시합니다
+doc command          % 도움말 창에 명령어에 대한 문서를 표시합니다
+lookfor command      % 모든 함수의 첫 번째 주석 줄에서 명령어를 검색합니다
+lookfor command -all % 모든 함수에서 명령어를 검색합니다
 
 
-% Output formatting
-format short    % 4 decimals in a floating number
-format long     % 15 decimals
-format bank     % only two digits after decimal point - for financial calculations
-fprintf('text') % print "text" to the screen
-disp('text')    % print "text" to the screen
+% 출력 서식
+format short    % 부동 소수점 수에서 소수점 4자리
+format long     % 소수점 15자리
+format bank     % 소수점 뒤 두 자리만 - 금융 계산용
+fprintf('text') % 화면에 "text"를 인쇄합니다
+disp('text')    % 화면에 "text"를 인쇄합니다
 
-% Variables & Expressions
-myVariable = 4  % Notice Workspace pane shows newly created variable
-myVariable = 4; % Semi colon suppresses output to the Command Window
+% 변수 및 표현식
+myVariable = 4  % 작업 공간 창에 새로 생성된 변수가 표시됩니다
+myVariable = 4; % 세미콜론은 명령 창에 출력을 억제합니다
 4 + 6           % ans = 10
 8 * myVariable  % ans = 32
 2 ^ 3           % ans = 8
 a = 2; b = 3;
 c = exp(a)*sin(pi/2) % c = 7.3891
 
-% Calling functions can be done in either of two ways:
-% Standard function syntax:
-load('myFile.mat', 'y') % arguments within parentheses, separated by commas
-% Command syntax:
-load myFile.mat y       % no parentheses, and spaces instead of commas
-% Note the lack of quote marks in command form: inputs are always passed as
-% literal text - cannot pass variable values. Also, can't receive output:
-[V,D] = eig(A);  % this has no equivalent in command form
-[~,D] = eig(A);  % if you only want D and not V
+% 함수 호출은 두 가지 방법 중 하나로 수행할 수 있습니다:
+% 표준 함수 구문:
+load('myFile.mat', 'y') % 괄호 안에 인수를 쉼표로 구분하여 전달합니다
+% 명령어 구문:
+load myFile.mat y       % 괄호 없음, 쉼표 대신 공백 사용
+% 명령어 형식에서는 따옴표가 없음에 유의하십시오: 입력은 항상
+% 리터럴 텍스트로 전달됩니다 - 변수 값을 전달할 수 없습니다. 또한 출력을 받을 수 없습니다:
+[V,D] = eig(A);  % 이것은 명령어 형식에 해당하는 것이 없습니다
+[~,D] = eig(A);  % V가 아닌 D만 원하는 경우
 
 
 
-% Logicals
+% 논리
 1 > 5 % ans = 0
 10 >= 10 % ans = 1
-3 ~= 4 % Not equal to -> ans = 1
-3 == 3 % equal to -> ans = 1
+3 ~= 4 % 같지 않음 -> ans = 1
+3 == 3 % 같음 -> ans = 1
 3 > 1 && 4 > 1 % AND -> ans = 1
 3 > 1 || 4 > 1 % OR -> ans = 1
 ~1 % NOT -> ans = 0
 
-% Logicals can be applied to matrices:
+% 논리는 행렬에 적용될 수 있습니다:
 A > 5
-% for each element, if condition is true, that element is 1 in returned matrix
+% 각 요소에 대해 조건이 참이면 반환된 행렬에서 해당 요소는 1입니다
 A( A > 5 )
-% returns a vector containing the elements in A for which condition is true
+% 조건이 참인 A의 요소를 포함하는 벡터를 반환합니다
 
-% Strings
+% 문자열
 a = 'MyString'
 length(a) % ans = 8
 a(2) % ans = y
 [a,a] % ans = MyStringMyString
 
 
-% Cells
+% 셀
 a = {'one', 'two', 'three'}
-a(1) % ans = 'one' - returns a cell
-char(a(1)) % ans = one - returns a string
+a(1) % ans = 'one' - 셀을 반환합니다
+char(a(1)) % ans = one - 문자열을 반환합니다
 
-% Structures
+% 구조체
 A.b = {'one','two'};
 A.c = [1 2];
 A.d.e = false;
 
-% Vectors
+% 벡터
 x = [4 32 53 7 1]
-x(2) % ans = 32, indices in MATLAB start 1, not 0
+x(2) % ans = 32, MATLAB의 인덱스는 0이 아닌 1부터 시작합니다
 x(2:3) % ans = 32 53
 x(2:end) % ans = 32 53 7 1
 
-x = [4; 32; 53; 7; 1] % Column vector
+x = [4; 32; 53; 7; 1] % 열 벡터
 
 x = [1:10] % x = 1 2 3 4 5 6 7 8 9 10
-x = [1:2:10] % Increment by 2, i.e. x = 1 3 5 7 9
+x = [1:2:10] % 2씩 증가, 즉 x = 1 3 5 7 9
 
-% Matrices
+% 행렬
 A = [1 2 3; 4 5 6; 7 8 9]
-% Rows are separated by a semicolon; elements are separated with space or comma
+% 행은 세미콜론으로 구분됩니다. 요소는 공백이나 쉼표로 구분됩니다.
 % A =
 
 %     1     2     3
 %     4     5     6
 %     7     8     9
 
-A(2,3) % ans = 6, A(row, column)
+A(2,3) % ans = 6, A(행, 열)
 A(6) % ans = 8
-% (implicitly concatenates columns into vector, then indexes into that)
+% (암시적으로 열을 벡터로 연결한 다음 해당 벡터를 인덱싱합니다)
 
 
-A(2,3) = 42 % Update row 2 col 3 with 42
+A(2,3) = 42 % 2행 3열을 42로 업데이트합니다
 % A =
 
 %     1     2     3
 %     4     5     42
 %     7     8     9
 
-A(2:3,2:3) % Creates a new matrix from the old one
+A(2:3,2:3) % 이전 행렬에서 새 행렬을 만듭니다
 %ans =
 
 %     5     42
 %     8     9
 
-A(:,1) % All rows in column 1
+A(:,1) % 1열의 모든 행
 %ans =
 
 %     1
 %     4
 %     7
 
-A(1,:) % All columns in row 1
+A(1,:) % 1행의 모든 열
 %ans =
 
 %     1     2     3
 
-[A ; A] % Concatenation of matrices (vertically)
+[A ; A] % 행렬 연결 (수직)
 %ans =
 
 %     1     2     3
@@ -190,11 +187,11 @@ A(1,:) % All columns in row 1
 %     4     5    42
 %     7     8     9
 
-% this is the same as
+% 이것은 다음과 같습니다
 vertcat(A,A);
 
 
-[A , A] % Concatenation of matrices (horizontally)
+[A , A] % 행렬 연결 (수평)
 
 %ans =
 
@@ -202,11 +199,11 @@ vertcat(A,A);
 %     4     5    42     4     5    42
 %     7     8     9     7     8     9
 
-% this is the same as
+% 이것은 다음과 같습니다
 horzcat(A,A);
 
 
-A(:, [3 1 2]) % Rearrange the columns of original matrix
+A(:, [3 1 2]) % 원본 행렬의 열을 재정렬합니다
 %ans =
 
 %     3     1     2
@@ -215,174 +212,175 @@ A(:, [3 1 2]) % Rearrange the columns of original matrix
 
 size(A) % ans = 3 3
 
-A(1, :) =[] % Delete the first row of the matrix
-A(:, 1) =[] % Delete the first column of the matrix
+A(1, :) =[] % 행렬의 첫 번째 행을 삭제합니다
+A(:, 1) =[] % 행렬의 첫 번째 열을 삭제합니다
 
-transpose(A) % Transpose the matrix, which is the same as:
-A.' % Concise version of transpose (without taking complex conjugate)
-ctranspose(A) % Hermitian transpose the matrix, which is the same as:
-A'  % Concise version of complex transpose
-    % (the transpose, followed by taking complex conjugate of each element)
-
-
+transpose(A) % 행렬을 전치합니다. 다음과 같습니다:
+A.' % 전치의 간결한 버전 (복소 공액을 취하지 않음)
+ctranspose(A) % 행렬을 에르미트 전치합니다. 다음과 같습니다:
+A'  % 복소 전치의 간결한 버전
+    % (전치 후 각 요소의 복소 공액을 취함)
 
 
 
-% Element by Element Arithmetic vs. Matrix Arithmetic
-% On their own, the arithmetic operators act on whole matrices. When preceded
-% by a period, they act on each element instead. For example:
-A * B % Matrix multiplication
-A .* B % Multiply each element in A by its corresponding element in B
-
-% There are several pairs of functions, where one acts on each element, and
-% the other (whose name ends in m) acts on the whole matrix.
-exp(A) % exponentiate each element
-expm(A) % calculate the matrix exponential
-sqrt(A) % take the square root of each element
-sqrtm(A) %  find the matrix whose square is A
 
 
-% Plotting
-x = 0:.10:2*pi; % Creates a vector that starts at 0 and ends at 2*pi with increments of .1
+% 요소별 산술 대 행렬 산술
+% 산술 연산자는 자체적으로 전체 행렬에 작용합니다. 앞에
+% 마침표가 있으면 대신 각 요소에 작용합니다. 예:
+A * B % 행렬 곱셈
+A .* B % A의 각 요소를 B의 해당 요소와 곱합니다
+
+% 여러 쌍의 함수가 있으며, 하나는 각 요소에 작용하고
+% 다른 하나(이름이 m으로 끝남)는 전체 행렬에 작용합니다.
+exp(A) % 각 요소를 지수화합니다
+expm(A) % 행렬 지수를 계산합니다
+sqrt(A) % 각 요소의 제곱근을 취합니다
+sqrtm(A) %  제곱이 A인 행렬을 찾습니다
+
+
+% 플로팅
+x = 0:.10:2*pi; % 0에서 시작하여 2*pi에서 끝나고 .1씩 증가하는 벡터를 만듭니다
 y = sin(x);
 plot(x,y)
-xlabel('x axis')
-ylabel('y axis')
-title('Plot of y = sin(x)')
-axis([0 2*pi -1 1]) % x range from 0 to 2*pi, y range from -1 to 1
+xlabel('x 축')
+ylabel('y 축')
+title('y = sin(x)의 플롯')
+axis([0 2*pi -1 1]) % x 범위는 0에서 2*pi, y 범위는 -1에서 1
 
-plot(x,y1,'-',x,y2,'--',x,y3,':') % For multiple functions on one plot
-legend('Line 1 label', 'Line 2 label') % Label curves with a legend
+plot(x,y1,'-',x,y2,'--',x,y3,':') % 한 플롯에 여러 함수를 표시합니다
+legend('선 1 레이블', '선 2 레이블') % 범례로 곡선에 레이블을 지정합니다
 
-% Alternative method to plot multiple functions in one plot.
-% while 'hold' is on, commands add to existing graph rather than replacing it
+% 한 플롯에 여러 함수를 표시하는 다른 방법.
+% 'hold'가 켜져 있는 동안 명령어는 기존 그래프를 대체하는 대신 추가됩니다.
 plot(x, y)
 hold on
 plot(x, z)
 hold off
 
-loglog(x, y) % A log-log plot
-semilogx(x, y) % A plot with logarithmic x-axis
-semilogy(x, y) % A plot with logarithmic y-axis
+loglog(x, y) % 로그-로그 플롯
+semilogx(x, y) % x축이 로그 스케일인 플롯
+semilogy(x, y) % y축이 로그 스케일인 플롯
 
-fplot (@(x) x^2, [2,5]) % plot the function x^2 from x=2 to x=5
+fplot (@(x) x^2, [2,5]) % x=2에서 x=5까지 함수 x^2를 플로팅합니다
 
-grid on % Show grid; turn off with 'grid off'
-axis square % Makes the current axes region square
-axis equal % Set aspect ratio so data units are the same in every direction
+grid on % 그리드 표시; 'grid off'로 끕니다
+axis square % 현재 축 영역을 정사각형으로 만듭니다
+axis equal % 데이터 단위가 모든 방향에서 동일하도록 가로세로 비율을 설정합니다
 
-scatter(x, y); % Scatter-plot
-hist(x); % Histogram
-stem(x); % Plot values as stems, useful for displaying discrete data
-bar(x); % Plot bar graph
+scatter(x, y); % 산점도
+hist(x); % 히스토그램
+stem(x); % 값을 줄기로 플로팅하여 이산 데이터를 표시하는 데 유용합니다
+bar(x); % 막대 그래프
 
 z = sin(x);
-plot3(x,y,z); % 3D line plot
+plot3(x,y,z); % 3D 선 플롯
 
-pcolor(A) % Heat-map of matrix: plot as grid of rectangles, coloured by value
-contour(A) % Contour plot of matrix
-mesh(A) % Plot as a mesh surface
+pcolor(A) % 행렬의 히트맵: 값에 따라 색상이 지정된 사각형 그리드로 플로팅합니다
+contour(A) % 행렬의 등고선 플롯
+mesh(A) % 메시 표면으로 플로팅합니다
 
-h = figure % Create new figure object, with handle h
-figure(h) % Makes the figure corresponding to handle h the current figure
-close(h) % close figure with handle h
-close all % close all open figure windows
-close % close current figure window
+h = figure % 핸들 h를 사용하여 새 그림 객체를 만듭니다
+figure(h) % 핸들 h에 해당하는 그림을 현재 그림으로 만듭니다
+close(h) % 핸들 h를 사용하여 그림을 닫습니다
+close all % 모든 열린 그림 창을 닫습니다
+close % 현재 그림 창을 닫습니다
 
-shg % bring an existing graphics window forward, or create new one if needed
-clf clear % clear current figure window, and reset most figure properties
+shg % 기존 그래픽 창을 앞으로 가져오거나 필요한 경우 새 창을 만듭니다
+clf clear % 현재 그림 창을 지우고 대부분의 그림 속성을 재설정합니다
 
-% Properties can be set and changed through a figure handle.
-% You can save a handle to a figure when you create it.
-% The function get returns a handle to the current figure
-h = plot(x, y); % you can save a handle to a figure when you create it
+% 속성은 그림 핸들을 통해 설정하고 변경할 수 있습니다.
+% 그림을 만들 때 핸들을 저장할 수 있습니다.
+% get 함수는 현재 그림에 대한 핸들을 반환합니다
+h = plot(x, y); % 그림을 만들 때 핸들을 저장할 수 있습니다
 set(h, 'Color', 'r')
-% 'y' yellow; 'm' magenta, 'c' cyan, 'r' red, 'g' green, 'b' blue, 'w' white, 'k' black
+% 'y' 노란색; 'm' 자홍색, 'c' 청록색, 'r' 빨간색, 'g' 녹색, 'b' 파란색, 'w' 흰색, 'k' 검은색
 set(h, 'LineStyle', '--')
- % '--' is solid line, '---' dashed, ':' dotted, '-.' dash-dot, 'none' is no line
+ % '--'는 실선, '---' 파선, ':' 점선, '-.' 파선-점선, 'none'은 선 없음
 get(h, 'LineStyle')
 
 
-% The function gca returns a handle to the axes for the current figure
-set(gca, 'XDir', 'reverse'); % reverse the direction of the x-axis
+% gca 함수는 현재 그림의 축에 대한 핸들을 반환합니다
+set(gca, 'XDir', 'reverse'); % x축의 방향을 반전시킵니다
 
-% To create a figure that contains several axes in tiled positions, use subplot
-subplot(2,3,1); % select the first position in a 2-by-3 grid of subplots
-plot(x1); title('First Plot') % plot something in this position
-subplot(2,3,2); % select second position in the grid
-plot(x2); title('Second Plot') % plot something there
-
-
-% To use functions or scripts, they must be on your path or current directory
-path % display current path
-addpath /path/to/dir % add to path
-rmpath /path/to/dir % remove from path
-cd /path/to/move/into % change directory
+% 타일 위치에 여러 축을 포함하는 그림을 만들려면 subplot을 사용하십시오
+subplot(2,3,1); % 2x3 서브플롯 그리드의 첫 번째 위치를 선택합니다
+plot(x1); title('첫 번째 플롯') % 이 위치에 무언가를 플로팅합니다
+subplot(2,3,2); % 그리드의 두 번째 위치를 선택합니다
+plot(x2); title('두 번째 플롯') % 거기에 무언가를 플로팅합니다
 
 
-% Variables can be saved to .mat files
-save('myFileName.mat') % Save the variables in your Workspace
-load('myFileName.mat') % Load saved variables into Workspace
+% 함수나 스크립트를 사용하려면 경로 또는 현재 디렉토리에 있어야 합니다
+path % 현재 경로 표시
+addpath /path/to/dir % 경로에 추가
+rmpath /path/to/dir % 경로에서 제거
+cd /path/to/move/into % 디렉토리 변경
 
-% M-file Scripts
-% A script file is an external file that contains a sequence of statements.
-% They let you avoid repeatedly typing the same code in the Command Window
-% Have .m extensions
 
-% M-file Functions
-% Like scripts, and have the same .m extension
-% But can accept input arguments and return an output
-% Also, they have their own workspace (ie. different variable scope).
-% Function name should match file name (so save this example as double_input.m).
-% 'help double_input.m' returns the comments under line beginning function
+% 변수는 .mat 파일에 저장할 수 있습니다
+save('myFileName.mat') % 작업 공간의 변수를 저장합니다
+load('myFileName.mat') % 저장된 변수를 작업 공간으로 로드합니다
+
+% M-파일 스크립트
+% 스크립트 파일은 일련의 문장을 포함하는 외부 파일입니다.
+% 명령 창에서 동일한 코드를 반복적으로 입력하는 것을 피할 수 있습니다
+% .m 확장자를 가집니다
+
+% M-파일 함수
+% 스크립트와 같고 동일한 .m 확장자를 가집니다
+% 그러나 입력 인수를 받고 출력을 반환할 수 있습니다
+% 또한 자체 작업 공간(즉, 다른 변수 범위)을 가집니다.
+% 함수 이름은 파일 이름과 일치해야 합니다(따라서 이 예제를 double_input.m으로 저장하십시오).
+% 'help double_input.m'은 함수 시작 줄 아래의 주석을 반환합니다
 function output = double_input(x)
-  %double_input(x) returns twice the value of x
+  %double_input(x)은 x 값의 두 배를 반환합니다
   output = 2*x;
 end
 double_input(6) % ans = 12
 
 
-% You can also have subfunctions and nested functions.
-% Subfunctions are in the same file as the primary function, and can only be
-% called by functions in the file. Nested functions are defined within another
-% functions, and have access to both its workspace and their own workspace.
+% 하위 함수 및 중첩 함수도 가질 수 있습니다.
+% 하위 함수는 기본 함수와 동일한 파일에 있으며 파일의 함수에서만
+% 호출할 수 있습니다. 중첩 함수는 다른 함수 내에 정의되며
+% 해당 작업 공간과 자체 작업 공간 모두에 액세스할 수 있습니다.
 
-% If you want to create a function without creating a new file you can use an
-% anonymous function. Useful when quickly defining a function to pass to
-% another function (eg. plot with fplot, evaluate an indefinite integral
-% with quad, find roots with fzero, or find minimum with fminsearch).
-% Example that returns the square of its input, assigned to the handle sqr:
+% 새 파일을 만들지 않고 함수를 만들고 싶다면
+% 익명 함수를 사용할 수 있습니다. 다른 함수에 전달할 함수를
+% 빠르게 정의할 때 유용합니다(예: fplot으로 플로팅, quad로 부정적분 평가,
+% fzero로 근 찾기 또는 fminsearch로 최소값 찾기).
+% 입력의 제곱을 반환하는 예제, 핸들 sqr에 할당됨:
 sqr = @(x) x.^2;
 sqr(10) % ans = 100
-doc function_handle % find out more
+doc function_handle % 자세히 알아보기
 
-% User input
-a = input('Enter the value: ')
+% 사용자 입력
+a = input('값을 입력하십시오: ')
 
-% Stops execution of file and gives control to the keyboard: user can examine
-% or change variables. Type 'return' to continue execution, or 'dbquit' to exit
+% 파일 실행을 중지하고 키보드에 제어권을 부여합니다: 사용자는
+% 변수를 검사하거나 변경할 수 있습니다. 실행을 계속하려면 'return'을 입력하고
+% 종료하려면 'dbquit'를 입력하십시오
 keyboard
 
-% Reading in data (also xlsread/importdata/imread for excel/CSV/image files)
+% 데이터 읽기 (excel/CSV/이미지 파일의 경우 xlsread/importdata/imread도 사용)
 fopen(filename)
 
-% Output
-disp(a) % Print out the value of variable a
-disp('Hello World') % Print out a string
-fprintf % Print to Command Window with more control
+% 출력
+disp(a) % 변수 a의 값을 인쇄합니다
+disp('Hello World') % 문자열을 인쇄합니다
+fprintf % 더 많은 제어로 명령 창에 인쇄합니다
 
-% Conditional statements (the parentheses are optional, but good style)
+% 조건문 (괄호는 선택 사항이지만 좋은 스타일입니다)
 if (a > 23)
-  disp('Greater than 23')
+  disp('23보다 큼')
 elseif (a == 23)
-  disp('a is 23')
+  disp('a는 23입니다')
 else
-  disp('neither condition met')
+  disp('두 조건 모두 충족되지 않음')
 end
 
-% Looping
-% NB. looping over elements of a vector/matrix is slow!
-% Where possible, use functions that act on whole vector/matrix at once
+% 반복
+% NB. 벡터/행렬의 요소를 반복하는 것은 느립니다!
+% 가능한 경우 한 번에 전체 벡터/행렬에 작용하는 함수를 사용하십시오
 for k = 1:5
   disp(k)
 end
@@ -392,25 +390,25 @@ while (k < 5)
   k = k + 1;
 end
 
-% Timing code execution: 'toc' prints the time since 'tic' was called
+% 코드 실행 시간 측정: 'toc'는 'tic'이 호출된 이후의 시간을 인쇄합니다
 tic
 A = rand(1000);
 A*A*A*A*A*A*A;
 toc
 
-% Connecting to a MySQL Database
+% MySQL 데이터베이스에 연결
 dbname = 'database_name';
 username = 'root';
 password = 'root';
 driver = 'com.mysql.jdbc.Driver';
 dburl = ['jdbc:mysql://localhost:8889/' dbname];
-javaclasspath('mysql-connector-java-5.1.xx-bin.jar'); %xx depends on version, download available at http://dev.mysql.com/downloads/connector/j/
+javaclasspath('mysql-connector-java-5.1.xx-bin.jar'); %xx는 버전에 따라 다름, http://dev.mysql.com/downloads/connector/j/에서 다운로드 가능
 conn = database(dbname, username, password, driver, dburl);
-sql = ['SELECT * from table_name where id = 22'] % Example sql statement
-a = fetch(conn, sql) %a will contain your data
+sql = ['SELECT * from table_name where id = 22'] % 예제 sql 문
+a = fetch(conn, sql) %a에 데이터가 포함됩니다
 
 
-% Common math functions
+% 일반적인 수학 함수
 sin(x)
 cos(x)
 tan(x)
@@ -421,140 +419,140 @@ exp(x)
 sqrt(x)
 log(x)
 log10(x)
-abs(x) %If x is complex, returns magnitude
+abs(x) %x가 복소수이면 크기를 반환합니다
 min(x)
 max(x)
 ceil(x)
 floor(x)
 round(x)
 rem(x)
-rand % Uniformly distributed pseudorandom numbers
-randi % Uniformly distributed pseudorandom integers
-randn % Normally distributed pseudorandom numbers
+rand % 균일하게 분포된 의사 난수
+randi % 균일하게 분포된 의사 난수 정수
+randn % 정규 분포된 의사 난수
 
-%Complex math operations
-abs(x)   % Magnitude of complex variable x
-phase(x) % Phase (or angle) of complex variable x
-real(x)  % Returns the real part of x (i.e returns a if x = a +jb)
-imag(x)  % Returns the imaginary part of x (i.e returns b if x = a+jb)
-conj(x)  % Returns the complex conjugate
+%복소수 수학 연산
+abs(x)   % 복소 변수 x의 크기
+phase(x) % 복소 변수 x의 위상(또는 각도)
+real(x)  % x의 실수부를 반환합니다 (즉, x = a +jb이면 a를 반환)
+imag(x)  % x의 허수부를 반환합니다 (즉, x = a+jb이면 b를 반환)
+conj(x)  % 복소 공액을 반환합니다
 
 
-% Common constants
+% 일반적인 상수
 pi
 NaN
 inf
 
-% Solving matrix equations (if no solution, returns a least squares solution)
-% The \ and / operators are equivalent to the functions mldivide and mrdivide
-x=A\b % Solves Ax=b. Faster and more numerically accurate than using inv(A)*b.
-x=b/A % Solves xA=b
+% 행렬 방정식 풀기 (해가 없으면 최소 제곱 해를 반환)
+% \ 및 / 연산자는 mldivide 및 mrdivide 함수와 동일합니다
+x=A\b % Ax=b를 풉니다. inv(A)*b를 사용하는 것보다 빠르고 수치적으로 더 정확합니다.
+x=b/A % xA=b를 풉니다
 
-inv(A) % calculate the inverse matrix
-pinv(A) % calculate the pseudo-inverse
+inv(A) % 역행렬 계산
+pinv(A) % 유사 역행렬 계산
 
-% Common matrix functions
-zeros(m,n) % m x n matrix of 0's
-ones(m,n) % m x n matrix of 1's
-diag(A) % Extracts the diagonal elements of a matrix A
-diag(x) % Construct a matrix with diagonal elements listed in x, and zeroes elsewhere
-eye(m,n) % Identity matrix
-linspace(x1, x2, n) % Return n equally spaced points, with min x1 and max x2
-inv(A) % Inverse of matrix A
-det(A) % Determinant of A
-eig(A) % Eigenvalues and eigenvectors of A
-trace(A) % Trace of matrix - equivalent to sum(diag(A))
-isempty(A) % Tests if array is empty
-all(A) % Tests if all elements are nonzero or true
-any(A) % Tests if any elements are nonzero or true
-isequal(A, B) % Tests equality of two arrays
-numel(A) % Number of elements in matrix
-triu(x) % Returns the upper triangular part of x
-tril(x) % Returns the lower triangular part of x
-cross(A,B) %  Returns the cross product of the vectors A and B
-dot(A,B) % Returns scalar product of two vectors (must have the same length)
-transpose(A) % Returns the transpose of A
-fliplr(A) % Flip matrix left to right
-flipud(A) % Flip matrix up to down
+% 일반적인 행렬 함수
+zeros(m,n) % 0으로 채워진 m x n 행렬
+ones(m,n) % 1로 채워진 m x n 행렬
+diag(A) % 행렬 A의 대각선 요소를 추출합니다
+diag(x) % 대각선 요소가 x에 나열되고 다른 곳은 0인 행렬을 구성합니다
+eye(m,n) % 단위 행렬
+linspace(x1, x2, n) % 최소 x1, 최대 x2로 n개의 등간격 점을 반환합니다
+inv(A) % 행렬 A의 역행렬
+det(A) % A의 행렬식
+eig(A) % A의 고유값 및 고유 벡터
+trace(A) % 행렬의 트레이스 - sum(diag(A))와 동일
+isempty(A) % 배열이 비어 있는지 테스트합니다
+all(A) % 모든 요소가 0이 아니거나 참인지 테스트합니다
+any(A) % 요소 중 0이 아니거나 참인 것이 있는지 테스트합니다
+isequal(A, B) % 두 배열의 동등성을 테스트합니다
+numel(A) % 행렬의 요소 수
+triu(x) % x의 상삼각 부분을 반환합니다
+tril(x) % x의 하삼각 부분을 반환합니다
+cross(A,B) %  벡터 A와 B의 외적을 반환합니다
+dot(A,B) % 두 벡터의 스칼라 곱을 반환합니다 (길이가 같아야 함)
+transpose(A) % A의 전치를 반환합니다
+fliplr(A) % 행렬을 왼쪽에서 오른쪽으로 뒤집습니다
+flipud(A) % 행렬을 위에서 아래로 뒤집습니다
 
-% Matrix Factorisations
-[L, U, P] = lu(A) % LU decomposition: PA = LU,L is lower triangular, U is upper triangular, P is permutation matrix
-[P, D] = eig(A) % eigen-decomposition: AP = PD, P's columns are eigenvectors and D's diagonals are eigenvalues
-[U,S,V] = svd(X) % SVD: XV = US, U and V are unitary matrices, S has non-negative diagonal elements in decreasing order
+% 행렬 분해
+[L, U, P] = lu(A) % LU 분해: PA = LU, L은 하삼각, U는 상삼각, P는 순열 행렬
+[P, D] = eig(A) % 고유값 분해: AP = PD, P의 열은 고유 벡터, D의 대각선은 고유값
+[U,S,V] = svd(X) % SVD: XV = US, U와 V는 유니터리 행렬, S는 감소 순서로 음이 아닌 대각선 요소를 가짐
 
-% Common vector functions
-max     % largest component
-min     % smallest component
-length  % length of a vector
-sort    % sort in ascending order
-sum     % sum of elements
-prod    % product of elements
-mode    % modal value
-median  % median value
-mean    % mean value
-std     % standard deviation
-perms(x) % list all permutations of elements of x
-find(x) % Finds all non-zero elements of x and returns their indexes, can use comparison operators,
-        % i.e. find( x == 3 ) returns indexes of elements that are equal to 3
-        % i.e. find( x >= 3 ) returns indexes of elements greater than or equal to 3
+% 일반적인 벡터 함수
+max     % 가장 큰 구성 요소
+min     % 가장 작은 구성 요소
+length  % 벡터의 길이
+sort    % 오름차순 정렬
+sum     % 요소의 합
+prod    % 요소의 곱
+mode    % 최빈값
+median  % 중앙값
+mean    % 평균값
+std     % 표준 편차
+perms(x) % x 요소의 모든 순열 나열
+find(x) % x의 모든 0이 아닌 요소를 찾아 인덱스를 반환하며, 비교 연산자를 사용할 수 있습니다.
+        % 즉, find( x == 3 )은 3과 같은 요소의 인덱스를 반환합니다
+        % 즉, find( x >= 3 )은 3보다 크거나 같은 요소의 인덱스를 반환합니다
 
 
-% Classes
-% MATLAB can support object-oriented programming.
-% Classes must be put in a file of the class name with a .m extension.
-% To begin, we create a simple class to store GPS waypoints.
-% Begin WaypointClass.m
-classdef WaypointClass % The class name.
-  properties % The properties of the class behave like Structures
+% 클래스
+% MATLAB은 객체 지향 프로그래밍을 지원할 수 있습니다.
+% 클래스는 .m 확장자를 가진 클래스 이름의 파일에 넣어야 합니다.
+% 시작하려면 GPS 웨이포인트를 저장하는 간단한 클래스를 만듭니다.
+% WaypointClass.m 시작
+classdef WaypointClass % 클래스 이름.
+  properties % 클래스의 속성은 구조체처럼 작동합니다
     latitude
     longitude
   end
   methods
-    % This method that has the same name of the class is the constructor.
+    % 클래스와 이름이 같은 이 메서드는 생성자입니다.
     function obj = WaypointClass(lat, lon)
       obj.latitude = lat;
       obj.longitude = lon;
     end
 
-    % Other functions that use the Waypoint object
+    % Waypoint 객체를 사용하는 다른 함수
     function r = multiplyLatBy(obj, n)
       r = n*[obj.latitude];
     end
 
-    % If we want to add two Waypoint objects together without calling
-    % a special function we can overload MATLAB's arithmetic like so:
+    % 특수 함수를 호출하지 않고 두 Waypoint 객체를 더하고 싶다면
+    % 다음과 같이 MATLAB의 산술을 오버로드할 수 있습니다:
     function r = plus(o1,o2)
       r = WaypointClass([o1.latitude] +[o2.latitude], ...
                         [o1.longitude]+[o2.longitude]);
     end
   end
 end
-% End WaypointClass.m
+% WaypointClass.m 끝
 
-% We can create an object of the class using the constructor
+% 생성자를 사용하여 클래스의 객체를 만들 수 있습니다
 a = WaypointClass(45.0, 45.0)
 
-% Class properties behave exactly like MATLAB Structures.
+% 클래스 속성은 MATLAB 구조체와 똑같이 작동합니다.
 a.latitude = 70.0
 a.longitude = 25.0
 
-% Methods can be called in the same way as functions
+% 메서드는 함수와 같은 방식으로 호출할 수 있습니다
 ans = multiplyLatBy(a,3)
 
-% The method can also be called using dot notation. In this case, the object
-% does not need to be passed to the method.
+% 메서드는 점 표기법을 사용하여 호출할 수도 있습니다. 이 경우 객체를
+% 메서드에 전달할 필요가 없습니다.
 ans = a.multiplyLatBy(1/3)
 
-% MATLAB functions can be overloaded to handle objects.
-% In the method above, we have overloaded how MATLAB handles
-% the addition of two Waypoint objects.
+% MATLAB 함수는 객체를 처리하도록 오버로드될 수 있습니다.
+% 위 메서드에서 MATLAB이 두 Waypoint 객체의
+% 덧셈을 처리하는 방법을 오버로드했습니다.
 b = WaypointClass(15.0, 32.0)
 c = a + b
 ```
 
-## More on MATLAB
+## MATLAB에 대해 더 알아보기
 
-* [The official website](http://www.mathworks.com/products/matlab/)
-* [The official MATLAB Answers forum](http://www.mathworks.com/matlabcentral/answers/)
+* [공식 웹사이트](http://www.mathworks.com/products/matlab/)
+* [공식 MATLAB 답변 포럼](http://www.mathworks.com/matlabcentral/answers/)
 * [Loren on the Art of MATLAB](http://blogs.mathworks.com/loren/)
 * [Cleve's Corner](http://blogs.mathworks.com/cleve/)
