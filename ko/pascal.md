@@ -1,5 +1,3 @@
-# pascal.md (번역)
-
 ---
 name: Pascal
 filename: learnpascal.pas
@@ -9,134 +7,133 @@ contributors:
 ---
 
 
->Pascal is an imperative and procedural programming language, which Niklaus Wirth designed in 1968–69 and published in 1970, as a small, efficient language intended to encourage good programming practices using structured programming and data structuring. It is named in honor of the French mathematician, philosopher and physicist Blaise Pascal.
-source : [wikipedia](https://en.wikipedia.org/wiki/Pascal_(programming_language))
+>파스칼은 1968-69년에 니클라우스 비르트가 설계하고 1970년에 발표한 명령형 및 절차적 프로그래밍 언어로, 구조적 프로그래밍과 데이터 구조화를 사용하여 좋은 프로그래밍 습관을 장려하기 위한 작고 효율적인 언어입니다. 프랑스의 수학자, 철학자, 물리학자인 블레즈 파스칼을 기리기 위해 명명되었습니다.
+출처 : [위키백과](https://en.wikipedia.org/wiki/Pascal_(programming_language))
 
 
 
-To compile and run a pascal program you could use a free pascal compiler. [Download Here](https://www.freepascal.org/)
+파스칼 프로그램을 컴파일하고 실행하려면 무료 파스칼 컴파일러를 사용할 수 있습니다. [여기서 다운로드](https://www.freepascal.org/)
 
 ```pascal
-//Anatomy of a Pascal Program
-//this is a comment
+//파스칼 프로그램의 구조
+//이것은 주석입니다
 {
-    this is a
-    multiline comment
+    이것은
+    여러 줄 주석입니다
 }
 
-//name of the program
-program learn_pascal; //<-- don't forget a semicolon
+//프로그램 이름
+program learn_pascal; //<-- 세미콜론을 잊지 마세요
 
 const
     {
-        this is where you should declare constant values
+        상수 값을 선언해야 하는 곳입니다
     }
 type
     {
-        this is where you should declare custom
-        data-types
+        사용자 정의 데이터 타입을 선언해야 하는 곳입니다
     }
 var
     {
-        this is where you should declare a variable
+        변수를 선언해야 하는 곳입니다
     }
 
-//main program area
+//주 프로그램 영역
 begin
     {
-        area to declare your instruction
+        명령을 선언하는 영역
     }
-end. // End of a main program area should require a "." symbol
+end. // 주 프로그램 영역의 끝에는 "." 기호가 필요합니다
 ```
 
 ```pascal
-//When declaring variables
-//you can do this
+//변수를 선언할 때
+//이렇게 할 수 있습니다
 var a:integer;
 var b:integer;
-//or this
+//또는 이렇게
 var
     a : integer;
     b : integer;
-//or this
+//또는 이렇게
 var a,b : integer;
 ```
 
 ```pascal
 program Learn_More;
-//Let's learn about data types and their operations
+//데이터 타입과 그 연산에 대해 알아봅시다
 
 const
     PI = 3.141592654;
     GNU = 'GNU''s Not Unix';
-        // constants are conventionally named using CAPS
-        // their values are fixed and cannot be changed during runtime
-        // holds any standard data type (integer, real, boolean, char, string)
+        // 상수는 관례적으로 대문자를 사용하여 명명합니다
+        // 그 값은 고정되어 있으며 런타임 중에 변경할 수 없습니다
+        // 모든 표준 데이터 타입(정수, 실수, 불리언, 문자, 문자열)을 가질 수 있습니다
 
 type
     ch_array : array [0..255] of char;
-        // arrays are new 'types' specifying the length and data type
-        // this defines a new data type that contains 255 characters
-        // (this is functionally equivalent to a string[256] variable)
+        // 배열은 길이와 데이터 타입을 지정하는 새로운 '타입'입니다
+        // 이것은 255개의 문자를 포함하는 새로운 데이터 타입을 정의합니다
+        // (이것은 기능적으로 string[256] 변수와 동일합니다)
     md_array : array of array of integer;
-        // nested arrays are equivalent to multidimensional arrays
-        // can define zero (0) length arrays that are dynamically sized
-        // this is a 2-dimensional array of integers
+        // 중첩 배열은 다차원 배열과 동일합니다
+        // 동적으로 크기가 조정되는 길이가 0인 배열을 정의할 수 있습니다
+        // 이것은 2차원 정수 배열입니다
 
-//Declaring variables
+//변수 선언
 var
     int, c, d  : integer;
-           // three variables that contain integer numbers
-           // integers are 16-bits and limited to the range [-32,768..32,767]
+           // 정수 숫자를 포함하는 세 개의 변수
+           // 정수는 16비트이며 [-32,768..32,767] 범위로 제한됩니다
     r    : real;
-           // a variable that contains a real number data types
-           // reals can range between [3.4E-38..3.4E38]
+           // 실수 데이터 타입을 포함하는 변수
+           // 실수는 [3.4E-38..3.4E38] 범위일 수 있습니다
     bool : boolean;
-           // a variable that contains a Boolean(True/False) value
+           // 불리언(True/False) 값을 포함하는 변수
     ch   : char;
-           // a variable that contains a character value
-           // char variables are stored as 8-bit data types so no UTF
+           // 문자 값을 포함하는 변수
+           // 문자 변수는 8비트 데이터 타입으로 저장되므로 UTF가 없습니다
     str  : string;
-           // a non-standard variable that contains a string value
-           // strings are an extension included in most Pascal compilers
-           // they are stored as an array of char with default length of 255.
+           // 문자열 값을 포함하는 비표준 변수
+           // 문자열은 대부분의 파스칼 컴파일러에 포함된 확장 기능입니다
+           // 기본 길이가 255인 문자 배열로 저장됩니다.
     s    : string[50];
-           // a string with maximum length of 50 chars.
-           // you can specify the length of the string to minimize memory usage
+           // 최대 길이가 50자인 문자열.
+           // 메모리 사용량을 최소화하기 위해 문자열 길이를 지정할 수 있습니다
     my_str: ch_array;
-           // you can declare variables of custom types
+           // 사용자 정의 타입의 변수를 선언할 수 있습니다
     my_2d : md_array;
-           // dynamically sized arrays need to be sized before they can be used.
+           // 동적으로 크기가 조정되는 배열은 사용하기 전에 크기를 지정해야 합니다.
 
-    // additional integer data types
-    b    : byte;     // range [0..255]
-    shi  : shortint; // range [-128..127]
-    smi  : smallint; // range [-32,768..32,767] (standard Integer)
-    w    : word;     // range [0..65,535]
-    li   : longint;  // range [-2,147,483,648..2,147,483,647]
-    lw   : longword; // range [0..4,294,967,295]
+    // 추가 정수 데이터 타입
+    b    : byte;     // 범위 [0..255]
+    shi  : shortint; // 범위 [-128..127]
+    smi  : smallint; // 범위 [-32,768..32,767] (표준 정수)
+    w    : word;     // 범위 [0..65,535]
+    li   : longint;  // 범위 [-2,147,483,648..2,147,483,647]
+    lw   : longword; // 범위 [0..4,294,967,295]
     c    : cardinal; // longword
-    i64  : int64;    // range [-9223372036854775808..9223372036854775807]
-    qw   : qword;    // range [0..18,446,744,073,709,551,615]
+    i64  : int64;    // 범위 [-9223372036854775808..9223372036854775807]
+    qw   : qword;    // 범위 [0..18,446,744,073,709,551,615]
 
-    // additional real types
-    rr   : real;     // range depends on platform (i.e., 8-bit, 16-bit, etc.)
-    rs   : single;   // range [1.5E-45..3.4E38]
-    rd   : double;   // range [5.0E-324 .. 1.7E308]
-    re   : extended; // range [1.9E-4932..1.1E4932]
-    rc   : comp;     // range [-2E64+1 .. 2E63-1]
+    // 추가 실수 타입
+    rr   : real;     // 범위는 플랫폼에 따라 다름 (예: 8비트, 16비트 등)
+    rs   : single;   // 범위 [1.5E-45..3.4E38]
+    rd   : double;   // 범위 [5.0E-324 .. 1.7E308]
+    re   : extended; // 범위 [1.9E-4932..1.1E4932]
+    rc   : comp;     // 범위 [-2E64+1 .. 2E63-1]
 
 Begin
-    int := 1;// how to assign a value to a variable
+    int := 1;// 변수에 값을 할당하는 방법
     r   := 3.14;
     ch  := 'a';
     str := 'apple';
     bool := true;
-    //pascal is not a case-sensitive language
-    //arithmetic operation
-    int := 1 + 1; // int = 2 overwriting the previous assignment
+    //파스칼은 대소문자를 구분하지 않는 언어입니다
+    //산술 연산
+    int := 1 + 1; // int = 2, 이전 할당을 덮어씁니다
     int := int + 1; // int = 2 + 1 = 3;
-    int := 4 div 2; //int = 2 division operation where result will be floored
+    int := 4 div 2; //int = 2, 결과가 버림되는 나눗셈 연산
     int := 3 div 2; //int = 1
     int := 1 div 2; //int = 0
 
@@ -144,19 +141,19 @@ Begin
     bool := false and true; // bool = false
     bool := true xor true; // bool = false
 
-    r := 3 / 2; // a division operator for real
-    r := int; // can assign an integer to a real variable but not the reverse
+    r := 3 / 2; // 실수를 위한 나눗셈 연산자
+    r := int; // 정수를 실수 변수에 할당할 수 있지만 그 반대는 안 됩니다
 
-    c := str[1]; // assign the first letter of str to c
-    str := 'hello' + 'world'; //combining strings
+    c := str[1]; // str의 첫 글자를 c에 할당
+    str := 'hello' + 'world'; //문자열 결합
 
-    my_str[0] := 'a'; // array assignment needs an index
+    my_str[0] := 'a'; // 배열 할당에는 인덱스가 필요합니다
 
-    setlength(my_2d,10,10); // initialize dynamically sized arrays: 10×10 array
-    for c := 0 to 9 do // arrays begin at 0 and end at length-1
-        for d := 0 to 9 do // for loop counters need to be declared variables
+    setlength(my_2d,10,10); // 동적으로 크기가 조정되는 배열 초기화: 10×10 배열
+    for c := 0 to 9 do // 배열은 0에서 시작하여 길이-1에서 끝납니다
+        for d := 0 to 9 do // for 루프 카운터는 선언된 변수여야 합니다
         my_2d[c,d] := c * d;
-          // address multidimensional arrays with a single set of brackets
+          // 단일 대괄호 세트로 다차원 배열 주소 지정
 
 End.
 ```
@@ -168,39 +165,39 @@ Var
     i, dummy : integer;
 
 function factorial_recursion(const a: integer) : integer;
-{ recursively calculates the factorial of integer parameter a }
+{ 정수 매개변수 a의 계승을 재귀적으로 계산합니다 }
 
-// Declare local variables within the function
-// e.g.:
+// 함수 내에서 지역 변수 선언
+// 예:
 // Var
 //    local_a : integer;
 
 Begin
     If a >= 1 Then
-    // return values from functions by assigning a value to the function name
+    // 함수 이름에 값을 할당하여 함수에서 값을 반환합니다
         factorial_recursion := a * factorial_recursion(a-1)
     Else
         factorial_recursion := 1;
-End; // terminate a function using a semicolon after the End statement.
+End; // End 문 뒤에 세미콜론을 사용하여 함수를 종료합니다.
 
 procedure get_integer(var i : integer; dummy : integer);
-{ get user input and store it in the integer parameter i.
-  parameters prefaced with 'var' are variable, meaning their value can change
-  outside of the parameter. Value parameters (without 'var') like 'dummy' are
-  static and changes made within the scope of the function/procedure do not
-  affect the variable passed as a parameter }
+{ 사용자 입력을 받아 정수 매개변수 i에 저장합니다.
+  'var'가 앞에 붙은 매개변수는 가변적이므로 매개변수 외부에서
+  값이 변경될 수 있습니다. 'dummy'와 같은 값 매개변수('var' 없음)는
+  정적이며 함수/프로시저 범위 내에서 변경해도
+  매개변수로 전달된 변수에 영향을 미치지 않습니다 }
 
 Begin
     write('Enter an integer: ');
     readln(i);
-    dummy := 4; // dummy will not change value outside of the procedure
+    dummy := 4; // dummy는 프로시저 외부에서 값이 변경되지 않습니다
 End;
 
-Begin // main program block
+Begin // 주 프로그램 블록
     dummy := 3;
     get_integer(i, dummy);
     writeln(i, '! = ', factorial_recursion(i));
-    // outputs i!
-    writeln('dummy = ', dummy); // always outputs '3' since dummy is unchanged.
+    // i! 출력
+    writeln('dummy = ', dummy); // dummy는 변경되지 않았으므로 항상 '3'을 출력합니다.
 End.
 ```

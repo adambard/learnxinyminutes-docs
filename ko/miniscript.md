@@ -1,5 +1,3 @@
-# miniscript.md (번역)
-
 ---
 name: MiniScript
 contributors:
@@ -7,64 +5,64 @@ contributors:
 filename: miniscript.ms
 ---
 
-**MiniScript** is a simple scripting language designed to be easily embedded in games and other software. It can also be used on the command line, or as a cross-platform game development environment via [Soda](https://github.com/JoeStrout/soda) or [Mini Micro](https://miniscript.org/MiniMicro).
+**MiniScript**는 게임 및 기타 소프트웨어에 쉽게 내장되도록 설계된 간단한 스크립팅 언어입니다. 명령줄에서 사용하거나 [Soda](https://github.com/JoeStrout/soda) 또는 [Mini Micro](https://miniscript.org/MiniMicro)를 통해 크로스 플랫폼 게임 개발 환경으로 사용할 수도 있습니다.
 
-An easy way to get started with MiniScript is on the [Try-It! page](https://miniscript.org/tryit/), which runs MiniScript code on the server. Note however that the code on this page is limited to 2000 characters. (The tutorial scripts below are broken up into blocks 2048 characters or less so they will run on the Try-It! page.)
+MiniScript를 시작하는 쉬운 방법은 서버에서 MiniScript 코드를 실행하는 [Try-It! 페이지](https://miniscript.org/tryit/)를 이용하는 것입니다. 그러나 이 페이지의 코드는 2000자로 제한됩니다. (아래 튜토리얼 스크립트는 Try-It! 페이지에서 실행되도록 2048자 이하의 블록으로 나뉘어 있습니다.)
 
-Once you are ready to go beyond the Try-It! page, your next stop should probably be to download [Mini Micro](https://miniscript.org/MiniMicro), a free virtual computer that uses MiniScript both on the command line and in programs. In that environment, enter **edit** at the prompt to edit code, then click the Run button in the editor to run it.
+Try-It! 페이지를 넘어설 준비가 되면, 다음 단계는 명령줄과 프로그램 모두에서 MiniScript를 사용하는 무료 가상 컴퓨터인 [Mini Micro](https://miniscript.org/MiniMicro)를 다운로드하는 것입니다. 해당 환경에서 프롬프트에 **edit**를 입력하여 코드를 편집한 다음, 편집기에서 실행 버튼을 클릭하여 실행하십시오.
 
 ```
 print "Hello world"
 
-// MiniScript is very syntax-light. Notice that no parentheses are
-// needed on the print statement above. Comments begin with //, and
-// extend to the end of the line. MiniScript is case-sensitive.
+// MiniScript는 매우 구문이 가볍습니다. 위 print 문에 괄호가
+// 필요하지 않다는 점에 유의하십시오. 주석은 //로 시작하여
+// 줄 끝까지 이어집니다. MiniScript는 대소문자를 구분합니다.
 
-// CONTROL FLOW
-// Use if blocks to do different things depending on some condition.
-// Include zero or more else if blocks, and one optional else block.
+// 흐름 제어
+// 어떤 조건에 따라 다른 작업을 수행하려면 if 블록을 사용하십시오.
+// 0개 이상의 else if 블록과 선택적인 else 블록 하나를 포함할 수 있습니다.
 if 2+2 == 4 then
-   print "math works!"
+   print "수학이 작동합니다!"
 else if pi > 3 then
-   print "pi is tasty"
+   print "파이는 맛있습니다"
 else if "a" < "b" then
-   print "I can sort"
+   print "정렬할 수 있습니다"
 else
-   print "last chance"
+   print "마지막 기회"
 end if
 
-// LOOPING
-// MiniScript has only two loop constructs: while loops and for loops.
-// Use a while block to loop as long as a condition is true.
+// 반복
+// MiniScript에는 while 루프와 for 루프 두 가지 반복 구문만 있습니다.
+// 조건이 참인 동안 반복하려면 while 블록을 사용하십시오.
 s = "Spam"
 while s.len < 50
     s = s + ", spam"
 end while
 print s + " and spam!"
 
-// A for loop can loop over any list, including ones easily created
-// with the range function.
+// for 루프는 range 함수로 쉽게 만들 수 있는 리스트를 포함하여
+// 모든 리스트를 반복할 수 있습니다.
 for i in range(10, 1)
     print i + "..."
 end for
-print "Liftoff!"
+print "발사!"
 
-// Two additional keywords are useful inside loops. The break statement
-// jumps out of the nearest while or for loop. The continue statement
-// jumps to the top of the loop, skipping the rest of the current iteration.
+// 루프 내에서 유용한 두 가지 추가 키워드가 있습니다. break 문은
+// 가장 가까운 while 또는 for 루프를 빠져나옵니다. continue 문은
+// 현재 반복의 나머지 부분을 건너뛰고 루프의 맨 위로 점프합니다.
 for i in range(1,100)
-    if i % 3 == 0 then continue  // skip multiples of 3
-    if i^2 > 200 then break  // stop when i^2 is over 200
-    print i + " squared is " + i^2
+    if i % 3 == 0 then continue  // 3의 배수 건너뛰기
+    if i^2 > 200 then break  // i^2이 200을 초과하면 중지
+    print i + "의 제곱은 " + i^2
 end for
 ```
 
-### Numbers
+### 숫자
 
 ```
-// All numbers are stored in full-precision format. Numbers also
-// represent true (1) and false (0), and there are built-in keywords
-// (true and false) for those.
+// 모든 숫자는 전체 정밀도 형식으로 저장됩니다. 숫자는 또한
+// 참(1)과 거짓(0)을 나타내며, 이에 대한 내장 키워드
+// (true 및 false)가 있습니다.
 a = 7
 b = 3
 ultimateAnswer = 42
@@ -73,79 +71,79 @@ n = true
 m = false
 print ultimateAnswer + ", " + pi + ", " + n + ", " + m
 
-// Numbers support the following operators:
-print "Basic math:"
-print a + b     // addition
-print a - b     // subtraction
-print a * b     // multiplication
-print a / b     // division
-print a % b     // modulo (remainder)
-print a ^ b     // power
+// 숫자는 다음 연산자를 지원합니다:
+print "기본 수학:"
+print a + b     // 덧셈
+print a - b     // 뺄셈
+print a * b     // 곱셈
+print a / b     // 나눗셈
+print a % b     // 모듈로 (나머지)
+print a ^ b     // 거듭제곱
 
-print "Logic:"
-print n and m   // logical "and"
-print n or m    // logical "or"
-print not n     // logical negation
+print "논리:"
+print n and m   // 논리 "and"
+print n or m    // 논리 "or"
+print not n     // 논리 부정
 
-print "Comparisons:"
-print a == b    // equality test (note == rather than = here!)
-print a != b    // inequality
-print a > b     // greater than
-print a >= b    // greater than or equal
-print a < b     // less than
-print a <= b    // less than or equal
+print "비교:"
+print a == b    // 동등성 테스트 (여기서는 =가 아닌 ==에 유의!)
+print a != b    // 부등
+print a > b     // 보다 큼
+print a >= b    // 보다 크거나 같음
+print a < b     // 보다 작음
+print a <= b    // 보다 작거나 같음
 ```
 
-### Strings
+### 문자열
 
 ```
-// Text is stored in strings of Unicode characters. Write strings
-// by surrounding them with quotes. If you need to include a
-// quotation mark in a string, type it twice.
+// 텍스트는 유니코드 문자의 문자열로 저장됩니다. 따옴표로
+// 둘러싸서 문자열을 작성합니다. 문자열에 인용 부호를 포함해야
+// 하는 경우 두 번 입력하십시오.
 print "Hello, ""Bob""."
 a = "Hello"
 b = "Spam"
 
-// Strings support the following operators:
-print "String ""math"":"
-print a + b     // string concatenation
-print b - "m"   // string subtraction (chop)
-print b * 4     // string replication
-print a / 2     // string division
+// 문자열은 다음 연산자를 지원합니다:
+print "문자열 ""수학"":"
+print a + b     // 문자열 연결
+print b - "m"   // 문자열 빼기 (자르기)
+print b * 4     // 문자열 복제
+print a / 2     // 문자열 나누기
 
-print "Comparisons:"
-print a == b    // equality test (note == rather than = here!)
-print a != b    // inequality
-print a > b     // greater than
-print a >= b    // greater than or equal
-print a < b     // less than
-print a <= b    // less than or equal
+print "비교:"
+print a == b    // 동등성 테스트 (여기서는 =가 아닌 ==에 유의!)
+print a != b    // 부등
+print a > b     // 보다 큼
+print a >= b    // 보다 크거나 같음
+print a < b     // 보다 작음
+print a <= b    // 보다 작거나 같음
 
-// Indexing and slicing in a string is done with an index (or two)
-// in square brackets. Use a 0-based index to count from the front,
-// or a negative index to count from the end. Get a slice (substring)
-// with two indices, separated by a colon. Either one may be omitted
-// to extend the slice to the beginning or end of the string.
-print "Indexing and slicing:"
-print a[0]      // get a character, starting with 0 ("H")
-print a[1]      // get second character ("e")
-print a[-1]     // negative numbers count from the end ("o")
-print a[1:4]    // get slice from 1 up to (but not including) 4 ("ell")
-print a[1:-1]   // same as above, but using a negative index
-print a[1:]     // get slice from 1 to the end ("ello")
-print a[:2]     // get slice from beginning up to 2 ("He")
+// 문자열의 인덱싱 및 슬라이싱은 대괄호 안에 인덱스(또는 두 개)를
+// 사용하여 수행됩니다. 앞에서부터 세려면 0부터 시작하는 인덱스를 사용하고,
+// 뒤에서부터 세려면 음수 인덱스를 사용합니다. 콜론으로 구분된
+// 두 개의 인덱스로 슬라이스(부분 문자열)를 가져옵니다. 둘 중 하나를 생략하여
+// 슬라이스를 문자열의 시작 또는 끝까지 확장할 수 있습니다.
+print "인덱싱 및 슬라이싱:"
+print a[0]      // 0부터 시작하는 문자 가져오기 ("H")
+print a[1]      // 두 번째 문자 가져오기 ("e")
+print a[-1]     // 음수는 뒤에서부터 셉니다 ("o")
+print a[1:4]    // 1부터 4 미만까지 슬라이스 가져오기 ("ell")
+print a[1:-1]   // 위와 같지만 음수 인덱스 사용
+print a[1:]     // 1부터 끝까지 슬라이스 가져오기 ("ello")
+print a[:2]     // 처음부터 2 미만까지 슬라이스 가져오기 ("He")
 
-// Note that strings in MiniScript are immutable. You can't reach
-// into a string and change what characters it contains (but you can
-// always create a new string with different characters).
+// MiniScript의 문자열은 불변입니다. 문자열에 접근하여
+// 포함된 문자를 변경할 수는 없지만(항상 다른 문자로
+// 새 문자열을 만들 수는 있습니다).
 ```
 
-### Lists
+### 리스트
 
 ```
-// A list is an ordered sequence of values of any type. You can
-// iterate over a list with a for loop, or iterate over the indexes
-// using .indexes.
+// 리스트는 모든 유형의 값으로 구성된 순서 있는 시퀀스입니다.
+// for 루프로 리스트를 반복하거나 .indexes를 사용하여
+// 인덱스를 반복할 수 있습니다.
 x = ["alpha", "beta", "gamma", "delta"]
 for item in x
     print item
@@ -154,85 +152,83 @@ for i in x.indexes
     print "x[" + i + "] is " + x[i]
 end for
 
-// Indexing and slicing in a list is exactly like a string: use a
-// 0-based index to count from the front, or a negative number to
-// count from the end. Get a slice (subset) of a list with two
-// indices, separated by a colon. Either one may be omitted
-// to extend the slice to the beginning or end of the list.
+// 리스트의 인덱싱 및 슬라이싱은 문자열과 정확히 같습니다.
+// 앞에서부터 세려면 0부터 시작하는 인덱스를 사용하고, 뒤에서부터
+// 세려면 음수를 사용합니다. 콜론으로 구분된 두 개의 인덱스로
+// 리스트의 슬라이스(부분 집합)를 가져옵니다. 둘 중 하나를 생략하여
+// 슬라이스를 리스트의 시작 또는 끝까지 확장할 수 있습니다.
 print x[0]      // alpha
 print x[-1]     // delta
 print x[1:3]    // [beta, gamma]
 print x[2:]     // [gamma, delta]
 print x[:-1]    // [alpha, beta, gamma]
 
-// Lists support the following operators:
+// 리스트는 다음 연산자를 지원합니다:
 y = ["a", "be", "ce", "de"]
-print "List ""math"":"
-print x + y     // list concatenation
-print y * 3     // list replication
-print x / 2     // list division
+print "리스트 ""수학"":"
+print x + y     // 리스트 연결
+print y * 3     // 리스트 복제
+print x / 2     // 리스트 나누기
 
-print "Comparisons:"
-print x == y    // equality test (note == rather than = here!)
-print x != y    // inequality
+print "비교:"
+print x == y    // 동등성 테스트 (여기서는 =가 아닌 ==에 유의!)
+print x != y    // 부등
 ```
 
-### Maps
+### 맵
 
 ```
-// A map is a set of values associated with unique keys. Maps
-// are an extremely powerful and versatile data type, used to
-// represent data records, objects, sparse arrays, and much more.
-// Create a map with curly braces; get or set a single value
-// with square brackets. Keys and values may be any type.
-// ("Key" and "index" mean the same thing in the context of a map.)
+// 맵은 고유한 키와 연관된 값의 집합입니다. 맵은
+// 데이터 레코드, 객체, 희소 배열 등을 나타내는 데 사용되는
+// 매우 강력하고 다재다능한 데이터 유형입니다.
+// 중괄호로 맵을 만들고 대괄호로 단일 값을 가져오거나
+// 설정합니다. 키와 값은 모든 유형이 될 수 있습니다.
+// (맵의 컨텍스트에서 "키"와 "인덱스"는 같은 의미입니다.)
 m = {1:"one", 2:"two"}
 print m[1]      // one
-m[2] = "dos"    // change the value associated with index 2
+m[2] = "dos"    // 인덱스 2와 연관된 값 변경
 print m[2]      // dos
 
-// In the special case where the key (index) is a string that
-// would be a valid variable name, there is an alternate to the
-// square-bracket syntax called dot syntax. Just put the key,
-// without quotes, after the map and a dot (period).
-m.pi = 3.14     // equivalent to: m["pi"] = 3.14
+// 키(인덱스)가 유효한 변수 이름이 되는 문자열인 특수한 경우,
+// 대괄호 구문 대신 점 구문이 있습니다. 맵과 점(마침표) 뒤에
+// 따옴표 없이 키를 넣으십시오.
+m.pi = 3.14     // m["pi"] = 3.14와 동일
 print m["pi"]   // 3.14
-m["e"] = 2.72   // equivalent to: m.e = 2.72
+m["e"] = 2.72   // m.e = 2.72와 동일
 print m.e       // 2.72
 
-// Maps support only the + operator, which combines all the key/value
-// pairs from two maps into one.
+// 맵은 + 연산자만 지원하며, 두 맵의 모든 키/값 쌍을
+// 하나로 결합합니다.
 m1 = {1:"one", 2:"two"}
 m2 = {2:"dos", 3:"tres"}
-print m1 + m2   // map concatenation
+print m1 + m2   // 맵 연결
 
-// You can iterate over the key/value pairs in a map with a for loop.
-// On each iteration, the variable will be itself a little map with
-// "key" and "value" indexes.
+// for 루프로 맵의 키/값 쌍을 반복할 수 있습니다.
+// 각 반복에서 변수는 "key"와 "value" 인덱스가 있는
+// 작은 맵이 됩니다.
 for kv in m1+m2
     print kv.key + " -> " + kv.value
 end for
 
-// Note that the order of key/value pairs in a map is undefined.
-// You should never rely on them appearing in a particular order
-// when you print or iterate over a map.
+// 맵의 키/값 쌍 순서는 정의되지 않습니다.
+// 맵을 인쇄하거나 반복할 때 특정 순서로 나타날 것이라고
+// 가정해서는 안 됩니다.
 ```
 
-### Functions
+### 함수
 
 ```
-// Create a function in miniscript with a function...end function
-// block. In most cases you will assign the result to a variable
-// so you can call it later. If a function needs to return a
-// a result, do that with the return keyword.
+// miniscript에서 함수는 function...end function 블록으로 만듭니다.
+// 대부분의 경우 나중에 호출할 수 있도록 결과를 변수에 할당합니다.
+// 함수가 결과를 반환해야 하는 경우 return 키워드로 수행합니다.
 rollDie = function
-    return ceil(rnd * 6)  // return a random number from 1-6
+    return ceil(rnd * 6)  // 1-6 사이의 난수 반환
 end function
 print rollDie
 print rollDie
 
-// If it needs parameters, put them after function keyword inside
-// parentheses. Parameters may have default values.
+// 매개변수가 필요한 경우 function 키워드 뒤에 괄호 안에 넣습니다.
+// 매개변수는 기본값을 가질 수 있습니다.
 roll = function(numberOfDice, sides=6)
     sum = 0
     for i in range(1, numberOfDice)
@@ -240,21 +236,18 @@ roll = function(numberOfDice, sides=6)
     end for
     return sum
 end function
-print roll(2)     // roll two 6-sided dice
-print roll(2,20)  // roll two 20-sided dice
+print roll(2)     // 6면체 주사위 2개 굴리기
+print roll(2,20)  // 20면체 주사위 2개 굴리기
 
-// Variables are always local by default in MiniScript. The
-// variables i and sum in the function above are not accessible
-// outside the function, and disappear as soon as the function
-// returns. (We'll talk more about variable scope later.)
+// 변수는 MiniScript에서 기본적으로 항상 지역 변수입니다.
+// 위 함수의 변수 i와 sum은 함수 외부에서 액세스할 수 없으며
+// 함수가 반환되는 즉시 사라집니다. (변수 범위에 대해서는 나중에 자세히 설명합니다.)
 
-// Parentheses are needed only if (1) you're passing arguments
-// (parameter values) to the function, and (2) you're using the
-// result as part of some larger statement. Notice how the first
-// example above, rollDie did not need any parentheses because we
-// weren't passing any arguments. Here's an example of a function
-// that, like the built-in print function, is used as a statement
-// by itself, and so does not need parentheses.
+// 괄호는 (1) 함수에 인수(매개변수 값)를 전달하고 있고
+// (2) 결과를 더 큰 문의 일부로 사용하는 경우에만 필요합니다.
+// 위의 첫 번째 예제에서 rollDie는 인수를 전달하지 않았기 때문에
+// 괄호가 필요하지 않았습니다. 다음은 내장 print 함수와 같이
+// 그 자체로 문으로 사용되어 괄호가 필요하지 않은 함수의 예입니다.
 doRoll = function(numberOfDice, sides=6)
     print "Rolling " + numberOfDice + "d" + sides + "..."
     sum = 0
@@ -265,92 +258,88 @@ doRoll = function(numberOfDice, sides=6)
     end for
     print "Your total is: " + sum
 end function
-doRoll 3         // roll 3d6 -- note no parentheses needed
-doRoll 3, 8      // same here, but rolling 3d6
+doRoll 3         // 3d6 굴리기 -- 괄호 필요 없음
+doRoll 3, 8      // 여기도 마찬가지지만 3d8 굴리기
 
-// If you ever need to refer to a function without invoking it,
-// you can do so with the @ operator.
-f = @doRoll      // makes f refer to the same function as doRoll
-f 2,4            // rolls 2d4
+// 함수를 호출하지 않고 참조해야 하는 경우 @ 연산자를 사용할 수 있습니다.
+f = @doRoll      // f가 doRoll과 동일한 함수를 참조하도록 함
+f 2,4            // 2d4 굴리기
 ```
 
-### Classes and Objects
+### 클래스와 객체
 
 ```
-// MiniScript uses prototype-based inheritance. A class or object
-// is just a map with a special __isa entry that points to the
-// parent class. This is set automatically when you use the new
-// operator.
-Shape = {}            // make a base class
-Shape.sides = 0       // give it 0 sides by default
+// MiniScript는 프로토타입 기반 상속을 사용합니다. 클래스나 객체는
+// 부모 클래스를 가리키는 특수 __isa 항목이 있는 맵일 뿐입니다.
+// 이것은 new 연산자를 사용할 때 자동으로 설정됩니다.
+Shape = {}            // 기본 클래스 만들기
+Shape.sides = 0       // 기본적으로 0개의 변을 가짐
 
-Square = new Shape    // make a subclass of Shape called Square
-Square.sides = 4      // override the number of sides
+Square = new Shape    // Shape의 서브클래스 Square 만들기
+Square.sides = 4      // 변의 수 재정의
 
-x = new Square        // create an instance of the Square class
-print x.sides         // 4, because x is a Square and Square.sides is 4
+x = new Square        // Square 클래스의 인스턴스 만들기
+print x.sides         // 4, x는 Square이고 Square.sides는 4이므로
 
-// A method is just a function stored in a class (map). These
-// are inherited through the __isa chain, just like other values.
-// Within a method, the keyword self refers to the object on which
-// the method was invoked (using dot syntax). This is how you
-// refer to data or methods on the object.
+// 메서드는 클래스(맵)에 저장된 함수일 뿐입니다. 이들은
+// 다른 값과 마찬가지로 __isa 체인을 통해 상속됩니다.
+// 메서드 내에서 self 키워드는 메서드가 호출된 객체(점 구문 사용)를
+// 참조합니다. 이것이 객체의 데이터나 메서드를 참조하는 방법입니다.
 Shape.describe = function
     print
     print "This is a " + self.sides + "-sided shape."
 end function
 x.describe            // This is a 4-sided shape.
 
-// Methods may be overridden (again just like values). In a
-// subclass/instance method, you may use super to invoke the next
-// version of the method up the inheritance chain, while still
-// keeping self bound to the object this method was called on.
+// 메서드는 (다시 값처럼) 재정의될 수 있습니다. 서브클래스/인스턴스
+// 메서드에서 super를 사용하여 상속 체인의 다음 버전 메서드를
+// 호출하면서도 self를 이 메서드가 호출된 객체에 바인딩된 상태로
+// 유지할 수 있습니다.
 Square.describe = function
-    super.describe    // first, do the standard description
-    print "It looks very squarish."  // then add this
+    super.describe    // 먼저 표준 설명 수행
+    print "It looks very squarish."  // 그런 다음 이것을 추가
 end function
 x.describe
 ```
 
-### More on Variable Scope
+### 변수 범위에 대한 추가 정보
 
 ```
-// Variables assignments in MiniScript always create or update
-// a local variable, i.e., one that exists only within the function
-// containing the assignment, unless dot syntax is used to specify
-// some other scope.
-x = 42      // here's a global variable called x
+// MiniScript의 변수 할당은 항상 지역 변수, 즉
+// 할당을 포함하는 함수 내에서만 존재하는 변수를 만들거나
+// 업데이트합니다. 단, 점 구문을 사용하여 다른 범위를 지정하는 경우는
+// 예외입니다.
+x = 42      // x라는 전역 변수
 f = function
-    x = 1234   // make a local variable, also called x
+    x = 1234   // x라는 지역 변수 만들기
     print "Inside the function, x is now " + x
 end function
 f
 print "Outside the function, x is " + x
 
-// In the example above, the assignment to x inside the function
-// has no effect on the global value of x, even though they happen
-// to have the same name. (This is a Good Thing because it helps
-// you avoid unintended side-effects in your code.)  Global variables
-// are generally discouraged, but if you must update one inside
-// a function, you can use a "globals." prefix to do so.
+// 위 예에서 함수 내의 x에 대한 할당은
+// 우연히 같은 이름을 가졌음에도 불구하고 전역 x 값에
+// 영향을 미치지 않습니다. (이것은 의도하지 않은 부작용을
+// 피하는 데 도움이 되므로 좋은 점입니다.) 전역 변수는
+// 일반적으로 권장되지 않지만, 함수 내에서 업데이트해야 하는 경우
+// "globals." 접두사를 사용하여 그렇게 할 수 있습니다.
 f = function
     print "Using the globals prefix..."
-    globals.x = 1234   // update the global variable x
+    globals.x = 1234   // 전역 변수 x 업데이트
     print "Inside the function, x is now " + x
 end function
 f
 print "Outside the function, x is " + x
 
-// This is very similar to the "self." prefix used with
-// class methods; in both cases, you are giving a more specific
-// scope to a variable (which is really just specifying a map
-// to index into with dot syntax).
+// 이것은 클래스 메서드와 함께 사용되는 "self." 접두사와 매우 유사합니다.
+// 두 경우 모두 변수에 더 구체적인 범위를 제공합니다(실제로는
+// 점 구문으로 인덱싱할 맵을 지정하는 것일 뿐입니다).
 
-// However there is an important difference: when READING (not
-// assigning to) a variable, if the variable name is not found
-// among the local variables, MiniScript will automatically look
-// for a global variable of that name. Thus no "globals." prefix
-// is needed when reading a variable, but only when assigning it.
+// 그러나 중요한 차이점이 있습니다. 변수를 할당하는 것이 아니라
+// 읽을 때, 변수 이름이 지역 변수 중에서 발견되지 않으면
+// MiniScript는 자동으로 해당 이름의 전역 변수를 찾습니다.
+// 따라서 변수를 읽을 때는 "globals." 접두사가 필요하지 않지만
+// 할당할 때는 필요합니다.
 count = 0
 addToCount = function(amount=1)
     globals.count = count + amount
@@ -359,66 +348,64 @@ addToCount
 addToCount
 print "count is now: " + count
 
-// In the addToCount function above, note how we need the globals
-// prefix on the left-hand side of the assignment, since otherwise
-// it would create a local variable. But we don't need it on the
-// right-hand side, where we are merely reading the global value.
+// 위 addToCount 함수에서 할당의 왼쪽에는 globals 접두사가
+// 필요한 반면, 오른쪽에는 전역 값을 읽기만 하므로
+// 필요하지 않다는 점에 유의하십시오.
 ```
 
-### Handy Intrinsic Methods
+### 유용한 내장 메서드
 
 ```
-// Intrinsic methods are ones that are built into MiniScript or its
-// environment. Particular MiniScript environments (e.g. Mini Micro,
-// Soda, command-line MiniScript, some game using MiniScript as an
-// embedded language, etc.) will probably add additional intrinsics.
-// But there is a core of about 50 intrinsics that should always be
-// available.
+// 내장 메서드는 MiniScript나 그 환경에 내장된 메서드입니다.
+// 특정 MiniScript 환경(예: Mini Micro, Soda, 명령줄 MiniScript,
+// MiniScript를 내장 언어로 사용하는 일부 게임 등)은 아마도
+// 추가 내장 함수를 추가할 것입니다. 그러나 항상 사용할 수 있어야 하는
+// 약 50개의 핵심 내장 함수가 있습니다.
 
-// Here's a quick demo of some of the most commonly used ones.
-print abs(-42)         // absolute value
-print pi               // get value of pi (yep, this is built in!)
-print cos(pi)          // cosine
-print sqrt(100)        // square root
-print round(pi, 2)     // round (to 2 decimal places)
-print char(65)         // get Unicode character 65
+// 가장 일반적으로 사용되는 몇 가지에 대한 빠른 데모입니다.
+print abs(-42)         // 절대값
+print pi               // 파이 값 가져오기 (예, 내장되어 있습니다!)
+print cos(pi)          // 코사인
+print sqrt(100)        // 제곱근
+print round(pi, 2)     // 반올림 (소수점 2자리까지)
+print char(65)         // 유니코드 문자 65 가져오기
 
 print
 s = "Hello world!"
-print s.upper          // convert to upper case
-print s.len            // get length (number of characters)
-print s.replace("Hello", "Heya")  // string substitution
-print s.split(" ")     // split on spaces to make a list
-print s.remove("l")    // remove first occurrence of "l"
+print s.upper          // 대문자로 변환
+print s.len            // 길이 가져오기 (문자 수)
+print s.replace("Hello", "Heya")  // 문자열 대체
+print s.split(" ")     // 공백으로 분할하여 리스트 만들기
+print s.remove("l")    // "l"의 첫 번째 항목 제거
 
 print
-a = range(2,15,3)      // make a list: 2 through 10, in steps of 3
+a = range(2,15,3)      // 리스트 만들기: 2부터 15까지, 3단계씩
 print "a: " + a
-print "a.len:" + a.len // get length (number of values)
-print "a.sum:" + a.sum // get sum of adding all values together
-print a.pop            // pop off the last value
-print a.pull           // pull off the first value
+print "a.len:" + a.len // 길이 가져오기 (값 수)
+print "a.sum:" + a.sum // 모든 값을 더한 합계 가져오기
+print a.pop            // 마지막 값 꺼내기
+print a.pull           // 첫 번째 값 꺼내기
 print "popped and pulled: " + a
-a.push 99              // push a new item onto the end
-a.insert 0, 101        // insert a new item at index 0
+a.push 99              // 끝에 새 항목 추가
+a.insert 0, 101        // 인덱스 0에 새 항목 삽입
 print "after push and insert: " + a
-a.remove 2             // remove index 2 from the list
+a.remove 2             // 리스트에서 인덱스 2 제거
 print "after remove 2: " + a
-s = a.join("#")        // make a string by joining values with #
+s = a.join("#")        // #으로 값을 결합하여 문자열 만들기
 print s
 
 print
 m = {"one": "uno", "two": "dos", "three": "tres"}
-print m.hasIndex("one") // check whether a key exists
-print m.indexes         // get all the indexes
-print m.values          // get all the values
-m.remove "two"          // remove an index (and its value)
+print m.hasIndex("one") // 키 존재 여부 확인
+print m.indexes         // 모든 인덱스 가져오기
+print m.values          // 모든 값 가져오기
+m.remove "two"          // 인덱스 (및 해당 값) 제거
 print m
 ```
 
-## Further Reading
+## 더 읽을거리
 
-* [MiniScript.org website](https://miniscript.org/) — center of the MiniScript universe
-* [MiniScript Quick Reference](https://miniscript.org/files/MiniScript-QuickRef.pdf) — this tutorial, in one page
-* [MiniScript User's Manual](https://miniscript.org/files/MiniScript-Manual.pdf) — more in-depth documentation
-* [MiniScript Wiki](https://miniscript.org/wiki/) — community-driven documentation
+* [MiniScript.org 웹사이트](https://miniscript.org/) — MiniScript 세계의 중심
+* [MiniScript 빠른 참조](https://miniscript.org/files/MiniScript-QuickRef.pdf) — 이 튜토리얼을 한 페이지로
+* [MiniScript 사용자 매뉴얼](https://miniscript.org/files/MiniScript-Manual.pdf) — 더 심층적인 문서
+* [MiniScript 위키](https://miniscript.org/wiki/) — 커뮤니티 기반 문서

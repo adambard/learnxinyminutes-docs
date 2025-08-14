@@ -1,5 +1,3 @@
-# lean4.md (번역)
-
 ---
 name: "Lean 4"
 filename: learnlean4.lean
@@ -8,12 +6,11 @@ contributors:
     - ["Ferinko", "https://github.com/Ferinko"]
 ---
 
-[Lean 4](https://lean-lang.org/) is a dependently typed functional programming
-language and an interactive theorem prover.
+[Lean 4](https://lean-lang.org/)는 종속 타입 함수형 프로그래밍 언어이자 대화형 정리 증명기입니다.
 
 ```lean4
 /-
-An enumerated data type.
+열거형 데이터 타입입니다.
 -/
 inductive Grade where
   | A : Grade
@@ -22,7 +19,7 @@ inductive Grade where
 deriving Repr
 
 /-
-Functions.
+함수입니다.
 -/
 def grade (m : Nat) : Grade :=
   if 80 <= m then Grade.A
@@ -35,18 +32,17 @@ def lowMarks  := 25 + 25
 #eval grade lowMarks
 
 #check (0 : Nat)
-/- #check (0 : Grade) -/ /- This is an error. -/
+/- #check (0 : Grade) -/ /- 이것은 오류입니다. -/
 
 /-
-Types themselves are values.
+타입 자체도 값입니다.
 -/
 #check (Nat : Type)
 
 /-
-Mathematical propositions are values in Lean. `Prop` is the type of
-propositions.
+수학적 명제는 Lean에서 값입니다. `Prop`은 명제의 타입입니다.
 
-Here are some simple propositions.
+다음은 몇 가지 간단한 명제입니다.
 -/
 
 #check 0 = 1
@@ -54,40 +50,37 @@ Here are some simple propositions.
 #check 2^9 - 2^8 = 2^8
 
 /-
-Notice Lean displays `0 = 1 : Prop` to say:
+Lean은 `0 = 1 : Prop`을 표시하여 다음을 말합니다:
 
-  The statement "0 = 1" is a proposition.
+  "0 = 1" 문장은 명제입니다.
 
-We want to distinguish true propositions and false propositions. We do this via
-proofs.
+우리는 참인 명제와 거짓인 명제를 구별하고 싶습니다. 우리는 증명을 통해 이를 수행합니다.
 
-Each proposition is a type. `0 = 1` is a type, `1 = 1` is another type.
+각 명제는 타입입니다. `0 = 1`은 타입이고, `1 = 1`은 다른 타입입니다.
 
-A proposition is true iff there is a value of that type.
+명제는 해당 타입의 값이 있는 경우에만 참입니다.
 
-How do we construct a value of type `1 = 1`? We use a constructor that is
-defined for that type.
+`1 = 1` 타입의 값을 어떻게 생성할까요? 해당 타입에 대해 정의된 생성자를 사용합니다.
 
-  `Eq.refl a` constructs a value of type `a = a`. (reflexivity)
+  `Eq.refl a`는 `a = a` 타입의 값을 생성합니다. (반사성)
 
-Using this we can prove `1 = 1` as follows.
+이를 사용하여 다음과 같이 `1 = 1`을 증명할 수 있습니다.
 -/
 
 theorem one_eq_one : 1 = 1 := Eq.refl 1
 
 /-
-But there is no way to prove (construct a value of type) `0 = 1`.
+하지만 `0 = 1`을 증명할 (타입의 값을 생성할) 방법은 없습니다.
 
-The following will fail. As will `Eq.refl 1`
+다음은 실패합니다. `Eq.refl 1`도 마찬가지입니다.
 -/
 
 /- theorem zero_eq_one : 0 = 1 := Eq.refl 0 -/
 
 /-
-Let us prove an inequality involving variables.
+변수를 포함하는 부등식을 증명해 봅시다.
 
-The `calc` primitive allows us to prove equalities using stepwise
-calculations. Each step has to be justified by a proof.
+`calc` 프리미티브를 사용하면 단계별 계산을 통해 등식을 증명할 수 있습니다. 각 단계는 증명으로 정당화되어야 합니다.
 -/
 theorem plus_squared (a b : Nat) : (a+b)^2 = a^2 + 2*a*b + b^2 :=
   calc
@@ -102,37 +95,34 @@ theorem plus_squared (a b : Nat) : (a+b)^2 = a^2 + 2*a*b + b^2 :=
     _       = a^2 + 2*(a*b) + b^2     := by rw [← Nat.two_mul _]
     _       = a^2 + 2*a*b + b^2       := by rw [Nat.mul_assoc _ _ _]
 /-
-Underscores can be used when there is no ambiguity in what is to be matched.
+일치시킬 대상에 모호함이 없을 때 밑줄을 사용할 수 있습니다.
 
-For example, in the first step, we want to apply `Nat.pow_two (a+b)`. But,
-`(a+b)` is the only pattern here to apply `Nat.pow_two`. So we can omit it.
+예를 들어, 첫 번째 단계에서 `Nat.pow_two (a+b)`를 적용하려고 합니다. 하지만,
+`(a+b)`는 여기서 `Nat.pow_two`를 적용할 유일한 패턴입니다. 그래서 생략할 수 있습니다.
 -/
 
 /-
-Let us now prove more "realistic" theorems. Those involving logical connectives.
+이제 더 "현실적인" 정리, 즉 논리적 연결사를 포함하는 정리를 증명해 봅시다.
 
-First, we define even and odd numbers.
+먼저, 짝수와 홀수를 정의합니다.
 -/
 def Even (n : Nat) := ∃ k, n = 2*k
 def Odd  (n : Nat) := ∃ k, n = 2*k + 1
 
 /-
-To prove an existential, we can provide specific values if we know them.
+존재 증명을 하려면, 우리가 안다면 특정 값을 제공할 수 있습니다.
 -/
 theorem zero_even : Even 0 :=
   have h : 0 = 2 * 0 := Eq.symm (Nat.mul_zero 2)
   Exists.intro 0 h
 /-
-`Exists.intro v h` proves `∃ x, p x` by substituting `x` by `v` and using the
-proof `h` for `p v`.
+`Exists.intro v h`는 `x`를 `v`로 치환하고 `p v`에 대한 증명 `h`를 사용하여 `∃ x, p x`를 증명합니다.
 -/
 
 /-
-Now, we will see how to use hypothesis that are existentials to prove
-conclusions that are existentials.
+이제, 존재 가설을 사용하여 존재 결론을 증명하는 방법을 살펴보겠습니다.
 
-The curly braces around parameters `n` and `m` indicate that they are
-implicit. Here, Lean will infer them from `hn` and `hm`.
+매개변수 `n`과 `m` 주위의 중괄호는 그것들이 암시적임을 나타냅니다. 여기서 Lean은 `hn`과 `hm`에서 그것들을 추론할 것입니다.
 -/
 theorem even_mul_even_is_even' {n m : Nat} (hn : Even n) (hm : Even m) : Even (n*m) :=
   Exists.elim hn (fun k1 hk1 =>
@@ -146,10 +136,9 @@ theorem even_mul_even_is_even' {n m : Nat} (hn : Even n) (hm : Even m) : Even (n
   )
 
 /-
-Most proofs are written using *tactics*. These are commands to Lean that guide
-it to construct proofs by itself.
+대부분의 증명은 *전술(tactics)*을 사용하여 작성됩니다. 이것들은 Lean이 스스로 증명을 구성하도록 안내하는 명령어입니다.
 
-The same theorem, proved using tactics.
+전술을 사용하여 증명된 동일한 정리입니다.
 -/
 theorem even_mul_even_is_even {n m : Nat} (hn : Even n) (hm : Even m) : Even (n*m) := by
   have ⟨k1, hk1⟩ := hn
@@ -160,7 +149,7 @@ theorem even_mul_even_is_even {n m : Nat} (hn : Even n) (hm : Even m) : Even (n*
     _   = 2 * (k1 * (2 * k2)) := by rw [Nat.mul_assoc]
 
 /-
-Let us work with implications.
+함의(implications)를 다루어 봅시다.
 -/
 theorem succ_of_even_is_odd' {n : Nat} : Even n → Odd (n+1) :=
   fun hn =>
@@ -170,19 +159,15 @@ theorem succ_of_even_is_odd' {n : Nat} : Even n → Odd (n+1) :=
         n + 1 = 2 * k + 1 := by rw [hk]
     )
 /-
-To prove an implication `p → q`, you have to write a function that takes a proof
-of `p` and construct a proof of `q`.
+함의 `p → q`를 증명하려면 `p`의 증명을 받아 `q`의 증명을 구성하는 함수를 작성해야 합니다.
 
-Here, `pn` is proof of `Even n := ∃ k, n = 2 *k`. Eliminating the existential
-gets us `k` and a proof `hk` of `n = 2 * k`.
+여기서 `pn`은 `Even n := ∃ k, n = 2 *k`의 증명입니다. 존재 한정자를 제거하면 `k`와 `n = 2 * k`의 증명 `hk`를 얻습니다.
 
-Now, we have to introduce the existential `∃ k, n + 1 = 2 * k + 1`. This `k` is
-the same as `k` for `n`. And, the equation is proved by a simple calculation
-that substitutes `2 * k` for `n`, which is allowed by `hk`.
+이제 존재 한정자 `∃ k, n + 1 = 2 * k + 1`을 도입해야 합니다. 이 `k`는 `n`에 대한 `k`와 동일합니다. 그리고 방정식은 `hk`에 의해 허용되는 `n`을 `2 * k`로 치환하는 간단한 계산으로 증명됩니다.
 -/
 
 /-
-Same theorem, now using tactics.
+전술을 사용하여 동일한 정리입니다.
 -/
 theorem succ_of_even_is_odd {n : Nat} : Even n → Odd (n+1) := by
   intro hn
@@ -191,54 +176,47 @@ theorem succ_of_even_is_odd {n : Nat} : Even n → Odd (n+1) := by
   rw [hk]
 
 /-
-The following theorem can be proved similarly.
+다음 정리는 비슷하게 증명될 수 있습니다.
 
-We will use this theorem later.
+이 정리는 나중에 사용할 것입니다.
 
-A `sorry` proves any theorem. It should not be used in real proofs.
+`sorry`는 어떤 정리든 증명합니다. 실제 증명에서는 사용해서는 안 됩니다.
 -/
 theorem succ_of_odd_is_even {n : Nat} : Odd n → Even (n+1) := sorry
 
 /-
-We can use theorems by applying them.
+정리를 적용하여 사용할 수 있습니다.
 -/
 example : Odd 1 := by
   apply succ_of_even_is_odd
   exact zero_even
 /-
-The two new tactics are:
+두 가지 새로운 전술은 다음과 같습니다:
 
-  - `apply p` where `p` is an implication `q → r` and `r` is the goal rewrites
-  the goal to `q`. More generally, `apply t` will unify the current goal with
-  the conclusion of `t` and generate goals for each hypothesis of `t`.
-  - `exact h` solves the goal by stating that the goal is the same as `h`.
+  - `apply p`는 `p`가 함의 `q → r`이고 `r`이 목표일 때 목표를 `q`로 다시 씁니다. 더 일반적으로 `apply t`는 현재 목표를 `t`의 결론과 통합하고 `t`의 각 가설에 대한 목표를 생성합니다.
+  - `exact h`는 목표가 `h`와 동일하다고 명시하여 목표를 해결합니다.
 -/
 
 /-
-Let us see examples of disjunctions.
+선언(disjunctions)의 예를 살펴봅시다.
 -/
 example : Even 0 ∨ Odd 0 := Or.inl zero_even
 example : Even 0 ∨ Odd 1 := Or.inl zero_even
 example : Odd 1 ∨ Even 0 := Or.inr zero_even
 /-
-Here, we always know from `p ∨ q` which of `p` and/or `q` is correct. So we can
-introduce a proof of the correct side.
+여기서, 우리는 항상 `p ∨ q`에서 `p`와/또는 `q` 중 어느 것이 올바른지 알 수 있습니다. 그래서 우리는 올바른 쪽의 증명을 도입할 수 있습니다.
 -/
 
 /-
-Let us see a more "standard" disjunction.
+더 "표준적인" 선언을 살펴봅시다.
 
-Here, from the hypothesis that `n : Nat`, we cannot determine whether `n` is
-even or odd. So we cannot construct `Or` directly.
+여기서, `n : Nat`라는 가설에서 `n`이 짝수인지 홀수인지 결정할 수 없습니다. 그래서 우리는 `Or`를 직접 구성할 수 없습니다.
 
-But, for any specific `n`, we will know which one to construct.
+하지만, 어떤 특정한 `n`에 대해서는 어떤 것을 구성해야 할지 알게 될 것입니다.
 
-This is exactly what induction allows us to do. We introduce the `induction`
-tactic.
+이것이 바로 귀납법이 우리에게 허용하는 것입니다. `induction` 전술을 도입합니다.
 
-The inductive hypothesis is a disjunction. When disjunctions appear at the
-hypothesis, we use *proof by exhaustive cases*. This is done using the `cases`
-tactic.
+귀납적 가설은 선언입니다. 가설에 선언이 나타나면 *철저한 사례별 증명*을 사용합니다. 이것은 `cases` 전술을 사용하여 수행됩니다.
 -/
 theorem even_or_odd {n : Nat} : Even n ∨ Odd n := by
   induction n
@@ -248,12 +226,11 @@ theorem even_or_odd {n : Nat} : Even n ∨ Odd n := by
     | inl h => right ; apply (succ_of_even_is_odd h)
     | inr h => left  ; apply (succ_of_odd_is_even h)
 /-
-`induction` is not just for natural numbers. It is for any type, since all types
-in Lean are inductive.
+`induction`은 자연수만을 위한 것이 아닙니다. Lean의 모든 타입은 귀납적이므로 모든 타입에 대해 사용할 수 있습니다.
 -/
 
 /-
-We now state Collatz conjecture. The proof is left as an exercise to the reader.
+이제 콜라츠 추측을 기술합니다. 증명은 독자를 위한 연습 문제로 남겨둡니다.
 -/
 def collatz_next (n : Nat) : Nat :=
   if n % 2 = 0 then n / 2 else 3 * n + 1
@@ -266,53 +243,48 @@ def iter (k : Nat) (f : Nat → Nat) :=
 theorem collatz : ∀ n, n > 0 → ∃ k, iter k collatz_next n = 1 := sorry
 
 /-
-Now, some "corner cases" in logic.
+이제 논리학의 몇 가지 "코너 케이스"입니다.
 -/
 
 /-
-The proposition `True` is something that can be trivially proved.
+명제 `True`는 자명하게 증명될 수 있는 것입니다.
 
-`True.intro` is a constructor for proving `True`. Notice that it needs no
-inputs.
+`True.intro`는 `True`를 증명하기 위한 생성자입니다. 입력이 필요 없다는 점에 유의하십시오.
 -/
 theorem obvious : True := True.intro
 
 /-
-On the other hand, there is no constructor for `False`.
+반면에 `False`에 대한 생성자는 없습니다.
 
-We have to use `sorry`.
+`sorry`를 사용해야 합니다.
 -/
 theorem impossible : False := sorry
 
 /-
-Any `False` in the hypothesis allows us to conclude anything.
+가설에 있는 어떤 `False`라도 우리에게 무엇이든 결론 내리게 할 수 있습니다.
 
-Written in term style, we use the eliminator `False.elim`. It takes a proof of
-`False`, here `h`, and concludes whatever is the goal.
+항(term) 스타일로 작성할 때, 우리는 제거자 `False.elim`을 사용합니다. 이것은 `False`의 증명(여기서는 `h`)을 받아 목표가 무엇이든 결론을 내립니다.
 -/
 theorem nonsense (h : False) : 0 = 1 := False.elim h
 
 /-
-The `contradiction` tactic uses any `False` in the hypothesis to conclude the
-goal.
+`contradiction` 전술은 가설에 있는 어떤 `False`라도 사용하여 목표를 결론 내립니다.
 -/
 theorem more_nonsense (h : False) : 1 = 2 := by contradiction
 
 /-
-To illustrate constructive vs classical logic, we now prove the contrapositive
-theorem.
+구성주의 논리와 고전주의 논리의 차이를 설명하기 위해, 이제 대우(contrapositive) 정리를 증명합니다.
 
-The forward direction does not require classical logic.
+순방향은 고전주의 논리를 요구하지 않습니다.
 -/
 theorem contrapositive_forward' (p q : Prop) : (p → q) → (¬q → ¬p) :=
   fun pq => fun hqf => fun hp => hqf (pq hp)
 /-
-Use the definition `¬q := q → False`. Notice that we have to construct `p →
-False` given `p → q` and `q → False`. This is just function composition.
+정의 `¬q := q → False`를 사용하십시오. `p → q`와 `q → False`가 주어졌을 때 `p → False`를 구성해야 한다는 점에 유의하십시오. 이것은 단지 함수 합성일 뿐입니다.
 -/
 
 /-
-The above proof, using tactics.
+위 증명을 전술을 사용하여 다시 작성한 것입니다.
 -/
 theorem contrapositive_forward (p q : Prop) : (p → q) → (¬q → ¬p) := by
   intro hpq
@@ -322,14 +294,14 @@ theorem contrapositive_forward (p q : Prop) : (p → q) → (¬q → ¬p) := by
   contradiction
 
 /-
-The reverse requires classical logic.
+역방향은 고전주의 논리를 요구합니다.
 
-Here, we are required to construct a `q` given values of following types:
+여기서, 우리는 다음 타입의 값들이 주어졌을 때 `q`를 구성해야 합니다:
 
   - `(q → False) → (p → False)`.
   - `p`.
 
-This is impossible without using the law of excluded middle.
+이것은 배중률을 사용하지 않고는 불가능합니다.
 -/
 theorem contrapositive_reverse' (p q : Prop) : (¬q → ¬p) → (p → q) :=
   fun hnqnp =>
@@ -337,15 +309,11 @@ theorem contrapositive_reverse' (p q : Prop) : (¬q → ¬p) → (p → q) :=
     (fun hq  => fun  _ => hq)
     (fun hnq => fun hp => absurd hp (hnqnp hnq))
 /-
-Law of excluded middle tells us that we will have a `q` or a `q → False`. In the
-first case, it is trivial to construct a `q`, we already have it. In the second
-case, we give the `q → False` to obtain a `p → False`.  Then, we use the fact
-(in constructive logic) that given `p` and `p → False`, we can construct
-`False`. Once, we have `False`, we can construct anything, and specifically `q`.
+배중률은 우리에게 `q` 또는 `q → False`가 있을 것이라고 말해줍니다. 첫 번째 경우, `q`를 구성하는 것은 자명합니다. 우리는 이미 그것을 가지고 있습니다. 두 번째 경우, `p → False`를 얻기 위해 `q → False`를 제공합니다. 그런 다음, `p`와 `p → False`가 주어지면 `False`를 구성할 수 있다는 사실(구성주의 논리에서)을 사용합니다. 일단 `False`를 가지게 되면, 우리는 무엇이든 구성할 수 있으며, 구체적으로 `q`를 구성할 수 있습니다.
 -/
 
 /-
-Same proof, using tactics.
+전술을 사용한 동일한 증명입니다.
 -/
 theorem contrapositive_reverse (p q : Prop) : (¬q → ¬p) → (p → q) := by
   intro hnqnp
@@ -356,17 +324,15 @@ theorem contrapositive_reverse (p q : Prop) : (¬q → ¬p) → (p → q) := by
   case inr h => specialize hnqnp h ; contradiction
 
 /-
-To illustrate how we can define an work with axiomatic systems. Here is a
-definition of Groups and some proofs directly translated from "Topics in
-Algebra" by Herstein, Second edition.
+공리 체계를 정의하고 작업하는 방법을 설명하기 위해, Herstein의 "대수학의 주제들(Topics in Algebra)" 제2판에서 직접 번역한 군(Group)의 정의와 몇 가지 증명을 소개합니다.
 -/
 
 /-
-A `section` introduces a namespace.
+`section`은 네임스페이스를 도입합니다.
 -/
 section GroupTheory
 /-
-To define abstract objects like groups, we may use `class`.
+군과 같은 추상적인 객체를 정의하기 위해 `class`를 사용할 수 있습니다.
 -/
 class Group (G : Type u) where
   op : G → G → G
@@ -376,21 +342,20 @@ class Group (G : Type u) where
   inverse: ∀ a : G, ∃ b : G, op a b = e ∧ op b a = e
 
 /-
-Let us introduce some notation to make this convenient.
+이것을 편리하게 만들기 위해 몇 가지 표기법을 도입합시다.
 -/
 open Group
 infixl:70 " * " => op
 
 /-
-`G` will always stand for a group and variables `a b c` will be elements of that
-group in this `section`.
+이 `section`에서 `G`는 항상 군을 나타내고 변수 `a b c`는 해당 군의 원소가 될 것입니다.
 -/
 variable [Group G] {a b c : G}
 
 def is_identity (e' : G) := ∀ a : G, (a * e' = a ∧ e' * a = a)
 
 /-
-We prove that the identity element is unique.
+항등원이 유일함을 증명합니다.
 -/
 theorem identity_element_unique : ∀ e' : G, is_identity e' → e' = e := by
   intro e'
@@ -401,12 +366,11 @@ theorem identity_element_unique : ∀ e' : G, is_identity e' → e' = e := by
   have ⟨_, h2⟩ := h'
   exact Eq.trans (Eq.symm h2) h1
 /-
-Note that we used the `identity` axiom.
+`identity` 공리를 사용했음에 유의하십시오.
 -/
 
 /-
-Left cancellation. We have to use both `identity` and `inverse` axioms from
-`Group`.
+왼쪽 소거. `Group`의 `identity`와 `inverse` 공리를 모두 사용해야 합니다.
 -/
 theorem left_cancellation : ∀ x y : G, a * x = a * y → x = y := by
   have h1 := inverse a
@@ -423,12 +387,12 @@ theorem left_cancellation : ∀ x y : G, a * x = a * y → x = y := by
     _ = (e : G) * y  := by rw [h2]
     _ = y            := (identity y).right
 
-end GroupTheory /- Variables `G`, `a`, `b`, `c` are now not in scope. -/
+end GroupTheory /- 변수 `G`, `a`, `b`, `c`는 이제 범위에 없습니다. -/
 
 /-
-Let us see a mutually recursive definition.
+상호 재귀적인 정의를 살펴봅시다.
 
-The game of Nim with two heaps.
+두 개의 힙이 있는 님(Nim) 게임입니다.
 -/
 abbrev between (lower what upper : Nat) : Prop := lower ≤ what ∧ what ≤ upper
 
@@ -457,9 +421,7 @@ example : Bob 0 0 := by
     intro a ; have := a.right ; contradiction
 
 /-
-We have to convince Lean of termination when a function is defined using just a
-`def`. Here's a simple primality checking algorithm that tests all candidate
-divisors.
+단지 `def`를 사용하여 함수가 정의될 때, 우리는 Lean에게 종료를 확신시켜야 합니다. 다음은 모든 후보 약수를 테스트하는 간단한 소수 판별 알고리즘입니다.
 -/
 def prime' (n : Nat) : Bool :=
   if h : n < 2 then
@@ -468,7 +430,7 @@ def prime' (n : Nat) : Bool :=
     @go 2 n (by omega)
 where
   go (d : Nat) (n : Nat) {_ : n ≥ d} : Bool :=
-    if h : n = d then /- `h` needed for `omega` below. -/
+    if h : n = d then /- `omega`가 아래에서 필요로 하는 `h`. -/
       true
     else if n % d = 0 then
       false
@@ -476,22 +438,16 @@ where
       @go (Nat.succ d) n (by omega)
   termination_by (n - d)
 /-
-We have to specify that the recursive function `go` terminates because `n-k`
-decreases in each recursive call. This needs the hypothesis `n > k` at the
-recursive call site. But the function itself can only assume that `n ≥ k`. We
-label the test `n ≤ k` by `h` so that the falsification of this proposition can
-be used by `omega` later to conclude that `n > k`.
+재귀 함수 `go`가 각 재귀 호출에서 `n-k`가 감소하기 때문에 종료된다는 것을 명시해야 합니다. 이를 위해서는 재귀 호출 위치에 `n > k`라는 가설이 필요합니다. 하지만 함수 자체는 `n ≥ k`라고만 가정할 수 있습니다. 우리는 `n ≤ k` 테스트를 `h`로 레이블을 지정하여, 나중에 `omega`가 `n > k`라고 결론 내리는 데 이 명제의 반증을 사용할 수 있도록 합니다.
 
-The tactic `omega` can solve simple equalities and inequalities.
+`omega` 전술은 간단한 등식과 부등식을 풀 수 있습니다.
 -/
 /-
-You can also instruct Lean to not check for totality by prefixing `partial` to
-`def`.
+또한 `def` 앞에 `partial`을 붙여 Lean이 전체성(totality)을 확인하지 않도록 지시할 수 있습니다.
 -/
 
 /-
-Or, we can rewrite the function to test the divisors from largest to
-smallest. In this case, Lean easily verifies that the function is total.
+또는, 약수를 가장 큰 것부터 가장 작은 것 순으로 테스트하도록 함수를 다시 작성할 수 있습니다. 이 경우 Lean은 함수가 전체(total)임을 쉽게 확인합니다.
 -/
 def prime (n : Nat) : Bool :=
   if n < 2 then
@@ -507,14 +463,13 @@ where
     else
       go (d-1) n
 /-
-Now, to Lean, it is obvious that `go` will terminate because `d` decreases in
-each recursive call.
+이제 Lean에게는 각 재귀 호출에서 `d`가 감소하기 때문에 `go`가 종료될 것이라는 점이 명백합니다.
 -/
 #eval prime 57
 #eval prime 97
 ```
 
-For further learning, see:
+더 자세한 학습을 원하시면 다음을 참조하십시오:
 
 * [Functional Programming in Lean](https://lean-lang.org/functional_programming_in_lean/)
 * [Theorem Proving in Lean 4](https://lean-lang.org/theorem_proving_in_lean4/)

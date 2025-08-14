@@ -1,5 +1,3 @@
-# m.md (번역)
-
 ---
 name: M (MUMPS)
 contributors:
@@ -7,111 +5,97 @@ contributors:
 filename: LEARNM.m
 ---
 
-M, or MUMPS (Massachusetts General Hospital Utility Multi-Programming System) is
-a procedural language with a built-in NoSQL database. Or, it’s a database with
-an integrated language optimized for accessing and manipulating that database.
-A key feature of M is that accessing local variables in memory and persistent
-storage use the same basic syntax, so there's no separate query
-language to remember. This makes it fast to program with, especially for
-beginners. M's syntax was designed to be concise in an era where
-computer memory was expensive and limited. This concise style means that a lot
-more fits on one screen without scrolling.
+M 또는 MUMPS(Massachusetts General Hospital Utility Multi-Programming System)는 내장 NoSQL 데이터베이스가 있는 절차적 언어입니다. 또는 데이터베이스에 접근하고 조작하는 데 최적화된 통합 언어가 있는 데이터베이스입니다. M의 주요 특징은 메모리의 지역 변수와 영구 저장소에 접근하는 데 동일한 기본 구문을 사용하므로 별도의 쿼리 언어를 기억할 필요가 없다는 것입니다. 이로 인해 특히 초보자에게 프로그래밍이 빠릅니다. M의 구문은 컴퓨터 메모리가 비싸고 제한적이었던 시대에 간결하게 설계되었습니다. 이 간결한 스타일은 스크롤 없이 한 화면에 더 많은 내용을 담을 수 있다는 것을 의미합니다.
 
-The M database is a hierarchical key-value store designed for high-throughput
-transaction processing. The database is organized into tree structures called
-"globals", (for global variables) which are sparse data structures with parallels
-to modern formats like JSON.
+M 데이터베이스는 높은 처리량의 트랜잭션 처리를 위해 설계된 계층적 키-값 저장소입니다. 데이터베이스는 "글로벌"(전역 변수용)이라는 트리 구조로 구성되며, 이는 JSON과 같은 최신 형식과 유사한 희소 데이터 구조입니다.
 
-Originally designed in 1966 for the healthcare applications, M continues to be
-used widely by healthcare systems and financial institutions for high-throughput
-real-time applications.
+원래 1966년 의료 애플리케이션을 위해 설계된 M은 의료 시스템 및 금융 기관에서 높은 처리량의 실시간 애플리케이션을 위해 계속 널리 사용되고 있습니다.
 
-### Example
+### 예제
 
-Here's an example M program using expanded syntax to calculate the Fibonacci series:
+다음은 확장된 구문을 사용하여 피보나치 수열을 계산하는 M 프로그램의 예입니다:
 
 ```
-fib ; compute the first few Fibonacci terms
+fib ; 첫 몇 개의 피보나치 항 계산
     new i,a,b,sum
-    set (a,b)=1 ; Initial conditions
+    set (a,b)=1 ; 초기 조건
     for i=1:1 do  quit:sum>1000
     . set sum=a+b
     . write !,sum
     . set a=b,b=sum
 ```
 
-### Comments
-Comments in M need at least one space before the comment marker of semicolon.
-Comments that start with at least two semicolons (;;) are guaranteed to be accessible
-within a running program.
+### 주석
+M의 주석은 세미콜론 주석 마커 앞에 최소 한 칸의 공백이 필요합니다.
+최소 두 개의 세미콜론(;;)으로 시작하는 주석은 실행 중인 프로그램 내에서 접근할 수 있음이 보장됩니다.
 
 ```
- ;   Comments start with a semicolon (;)
+ ;   주석은 세미콜론(;)으로 시작합니다.
 ```
 
-### Data Types
+### 데이터 타입
 
-M has one data type (String) and three interpretations of that string.:
+M에는 하나의 데이터 타입(문자열)과 해당 문자열에 대한 세 가지 해석이 있습니다.:
 
 ```
-;   Strings - Characters enclosed in double quotes.
-;       "" is the null string. Use "" within a string for "
-;       Examples: "hello", "Scrooge said, ""Bah, Humbug!"""
+;   문자열 - 큰따옴표로 묶인 문자.
+;       ""는 null 문자열입니다. 문자열 내에서 "를 사용하려면 ""를 사용하십시오.
+;       예: "hello", "Scrooge said, ""Bah, Humbug!"""
 ;
-;   Numbers - no commas, leading and trailing 0 removed.
-;       Scientific notation with 'E'.  (not 'e')
-;       Numbers with at least with IEEE 754 double-precision values (guaranteed 15 digits of precision)
-;       Examples: 20 (stored as 20) , 1e3 (stored as 1000), 0500.20 (stored as 500.2),
-;                 the US National Debt AT sometime on 12-OCT-2020 retrieved from http://www.usdebt.org is 27041423576201.15)
-;                     (required to be stored as at least 27041422576201.10 but most implementations store as 27041432576201.15)
+;   숫자 - 쉼표 없음, 앞뒤 0 제거.
+;       'E'를 사용한 과학적 표기법 ('e'가 아님).
+;       최소 IEEE 754 배정밀도 값을 가짐(15자리 정밀도 보장).
+;       예: 20 (20으로 저장됨), 1e3 (1000으로 저장됨), 0500.20 (500.2로 저장됨),
+;                 2020년 10월 12일 http://www.usdebt.org에서 검색한 미국 국가 부채는 27041423576201.15입니다)
+;                     (최소 27041422576201.10으로 저장되어야 하지만 대부분의 구현에서는 27041432576201.15로 저장합니다)
 ;
-;   Truthvalues - String interpreted as 0  is used for false and any string interpreted as non-zero (such as 1) for true.
+;   진리값 - 0으로 해석되는 문자열은 false로 사용되고, 0이 아닌 값(예: 1)으로 해석되는 모든 문자열은 true로 사용됩니다.
 ```
 
-### Commands
+### 명령어
 
-Commands are case insensitive, and have full form, and a shortened abbreviation, often the first letter. Commands have zero or more arguments,depending on the command. This page includes programs written in this terse syntax. M is whitespace-aware. Spaces are treated as a delimiter between commands and arguments. Each command is separated from its arguments by 1 space. Commands with zero arguments are followed by 2 spaces. (technically these are called argumentless commands)
+명령어는 대소문자를 구분하지 않으며, 전체 형식과 종종 첫 글자로 된 축약형이 있습니다. 명령어는 명령어에 따라 0개 이상의 인수를 가집니다. 이 페이지에는 이 간결한 구문으로 작성된 프로그램이 포함되어 있습니다. M은 공백을 인식합니다. 공백은 명령어와 인수 사이의 구분 기호로 처리됩니다. 각 명령어는 인수와 1개의 공백으로 구분됩니다. 인수가 없는 명령어 뒤에는 2개의 공백이 옵니다. (기술적으로 이것을 인수 없는 명령어라고 합니다)
 
-#### Common Commands from all National and International Standards of M
+#### 모든 국내 및 국제 M 표준의 공통 명령어
 
-#### Write (abbreviated as W)
+#### Write (W로 축약)
 
-Print data to the current device.
+현재 장치에 데이터 인쇄.
 
 ```
 WRITE !,"hello world"
 ```
 
-Output Formatting characters:
+출력 서식 문자:
 
- The ! character is syntax for a new line.
- The # character is syntax for a new page.
- The sequence of the ? character and then a numeric expression is syntax for output of spaces until the number'th colum is printed.
+ ! 문자는 새 줄에 대한 구문입니다.
+ # 문자는 새 페이지에 대한 구문입니다.
+ ? 문자와 숫자 표현식의 시퀀스는 해당 숫자 열이 인쇄될 때까지 공백을 출력하는 구문입니다.
 
-Multiple statements can be provided as additional arguments before the space separators to the next command:
+다음 명령어로 가기 전 공백 구분자 앞에 여러 문장을 추가 인수로 제공할 수 있습니다:
 
 ```
 w !,"foo bar"," ","baz"
 ```
 
-#### Read (abbreviated as R)
+#### Read (R로 축약)
 
-Retrieve input from the user
+사용자로부터 입력 검색
 
 ```
 READ var
-r !,"Wherefore art thou Romeo? ",why
+r !,"로미오, 왜 그대는 로미오인가요? ",why
 ```
 
-As with all M commands, multiple arguments can be passed to a read command. Constants like quoted strings, numbers, and formatting characters are output directly. Values for both global variables and local variables are retrieved from the user. The terminal waits for the user to enter the first variable before displaying the second prompt.
+모든 M 명령어와 마찬가지로 read 명령어에도 여러 인수를 전달할 수 있습니다. 따옴표로 묶인 문자열, 숫자, 서식 문자와 같은 상수는 직접 출력됩니다. 전역 변수와 지역 변수의 값은 모두 사용자로부터 검색됩니다. 터미널은 사용자가 첫 번째 변수를 입력할 때까지 기다렸다가 두 번째 프롬프트를 표시합니다.
 
 ```
-r !,"Better one, or two? ",lorem," Better two, or three? ",ipsum
+r !,"첫 번째가 낫나요, 두 번째가 낫나요? ",lorem," 두 번째가 낫나요, 세 번째가 낫나요? ",ipsum
 ```
 
-#### Set (abbreviated as S)
+#### Set (S로 축약)
 
-Assign a value to a variable
+변수에 값 할당
 
 ```
 SET name="Benjamin Franklin"
@@ -122,23 +106,23 @@ w !,centi,!,micro
 ;.00001
 ```
 
-#### Kill (abbreviated as K)
+#### Kill (K로 축약)
 
-Remove a variable from memory or remove a database entry from disk.
-A database node (global variable) is killed depending on the variable name being prefixed by the caret character (^).
-If it is not, then the local variable is removed from memory.
-If KILLed, automatic garbage collection occurs.
+메모리에서 변수를 제거하거나 디스크에서 데이터베이스 항목을 제거합니다.
+데이터베이스 노드(전역 변수)는 변수 이름 앞에 캐럿 문자(^)가 붙는지 여부에 따라 제거됩니다.
+그렇지 않으면 지역 변수가 메모리에서 제거됩니다.
+KILL되면 자동 가비지 수집이 발생합니다.
 
 ```
 KILL centi
 k micro
 ```
 
-### Globals and Arrays
+### 전역 변수와 배열
 
-In addition to local variables, M has persistent, shared variables that are the built-in database of M.  They are stored to disk and called _globals_. Global names must start with a __caret__ (__^__).
+지역 변수 외에도 M에는 M의 내장 데이터베이스인 영구 공유 변수가 있습니다. 이들은 디스크에 저장되며 _글로벌_이라고 합니다. 전역 이름은 반드시 __캐럿__(__^__)으로 시작해야 합니다.
 
-Any variable (local or global) can be an array with the assignment of a _subscript_. Arrays are sparse and do not have a predefined size. Only if data is stored will a value use memory. Arrays should be visualized like trees, where subscripts are branches and assigned values are leaves. Not all nodes in an array need to have a value.
+모든 변수(지역 또는 전역)는 _아래 첨자_를 할당하여 배열이 될 수 있습니다. 배열은 희소하며 미리 정의된 크기가 없습니다. 데이터가 저장된 경우에만 값이 메모리를 사용합니다. 배열은 아래 첨자가 분기이고 할당된 값이 잎인 트리처럼 시각화해야 합니다. 배열의 모든 노드에 값이 있어야 하는 것은 아닙니다.
 
 ```
 s ^cars=20
@@ -149,91 +133,91 @@ s ^cars("Tesla",2,"Doors")=5
 w !,^cars
 ; 20
 w !,^cars("Tesla")
-; null value - there's no value assigned to this node but it has children
+; null 값 - 이 노드에는 값이 할당되지 않았지만 자식이 있습니다.
 w !,^cars("Tesla",1,"Name")
 ; Model 3
 ```
 
-The index values of Arrays are automatically sorted in order. There is a catchphrase of "MUMPS means never having to say you are sorting". Take advantage of the built-in sorting by setting your value of interest as the last child subscript of an array rather than its value, and then storing an empty string for that node.
+배열의 인덱스 값은 자동으로 정렬됩니다. "MUMPS는 정렬한다고 말할 필요가 없다는 것을 의미한다"는 캐치프레이즈가 있습니다. 관심 있는 값을 값 대신 배열의 마지막 자식 아래 첨자로 설정한 다음 해당 노드에 빈 문자열을 저장하여 내장 정렬을 활용하십시오.
 
 ```
-; A log of temperatures by date and time
+; 날짜 및 시간별 온도 기록
 s ^TEMPS("11/12","0600",32)=""
 s ^TEMPS("11/12","1030",48)=""
 s ^TEMPS("11/12","1400",49)=""
 s ^TEMPS("11/12","1700",43)=""
 ```
 
-### Operators
+### 연산자
 
 ```
-; Assignment:       =
-; Unary:            +   Convert a string value into a numeric value.
-; Arthmetic:
-;                   +   addition
-;                   -   subtraction
-;                   *   multiplication
-;                   /   floating-point division
-;                   \   integer division
-;                   #   modulo
-;                   **  exponentiation
-; Logical:
+; 할당:       =
+; 단항:            +   문자열 값을 숫자 값으로 변환합니다.
+; 산술:
+;                   +   덧셈
+;                   -   뺄셈
+;                   *   곱셈
+;                   /   부동 소수점 나눗셈
+;                   \   정수 나눗셈
+;                   #   모듈로
+;                   **  거듭제곱
+; 논리:
 ;                   &   and
 ;                   !   or
 ;                   '   not
-; Comparison:
-;                   =   equal
-;                   '=  not equal
-;                   >   greater than
-;                   <   less than
-;                   '>  not greater / less than or equal to
-;                   '<  not less / greater than or equal to
-; String operators:
-;                   _   concatenate
-;                   [   contains ­          a contains b
-;                   ]]  sorts after  ­      a comes after b
-;                   '[  does not contain
-;                   ']] does not sort after
+; 비교:
+;                   =   같음
+;                   '=  같지 않음
+;                   >   보다 큼
+;                   <   보다 작음
+;                   '>  크지 않음 / 작거나 같음
+;                   '<  작지 않음 / 크거나 같음
+; 문자열 연산자:
+;                   _   연결
+;                   [   포함           a는 b를 포함
+;                   ]]  정렬 후         a는 b 뒤에 옴
+;                   '[  포함하지 않음
+;                   ']] 정렬 후가 아님
 ```
 
-#### Order of operations
+#### 연산 순서
 
-Operations in M are _strictly_ evaluated left to right. No operator has precedence over any other.
-For example, there is NO order of operations where multiply is evaluated before addition.
-To change this order, just use parentheses to group expressions to be evaluated first.
+M의 연산은 _엄격하게_ 왼쪽에서 오른쪽으로 평가됩니다. 다른 연산자보다 우선 순위가 높은 연산자는 없습니다.
+예를 들어, 덧셈보다 곱셈이 먼저 평가되는 연산 순서는 없습니다.
+이 순서를 변경하려면 괄호를 사용하여 먼저 평가할 표현식을 그룹화하면 됩니다.
 
 ```
 w 5+3*20
 ;160
-;You probably wanted 65
+;아마 65를 원했을 것입니다.
 write 5+(3*20)
 ```
 
-### Flow Control, Blocks, & Code Structure
+### 흐름 제어, 블록 및 코드 구조
 
-A single M file is called a _routine_. Within a given routine, you can break your code up into smaller chunks with _tags_. The tag starts in column 1 and the commands pertaining to that tag are indented.
+단일 M 파일을 _루틴_이라고 합니다. 주어진 루틴 내에서 코드를 _태그_를 사용하여 더 작은 덩어리로 나눌 수 있습니다. 태그는 1열에서 시작하고 해당 태그에 관련된 명령어는 들여쓰기됩니다.
 
-A tag can accept parameters and return a value, this is a function. A function is called with '$$':
+태그는 매개변수를 받고 값을 반환할 수 있으며, 이것이 함수입니다. 함수는 '$$'로 호출됩니다:
 
 ```
-; Execute the 'tag' function, which has two parameters, and write the result.
+; 'tag' 함수를 실행하고, 두 개의 매개변수를 가지며, 결과를 씁니다.
 w !,$$tag^routine(a,b)
 ```
 
-M has an execution stack. When all levels of the stack have returned, the program ends. Levels are added to the stack with _do_ commands and removed with _quit_ commands.
+M에는 실행 스택이 있습니다. 스택의 모든 수준이 반환되면 프로그램이 종료됩니다. 수준은 _do_ 명령어로 스택에 추가되고 _quit_ 명령어로 제거됩니다.
 
-#### Do (abbreviated as D)
+#### Do (D로 축약)
 
-With an argument: execute a block of code & add a level to the stack.
+인수 사용: 코드 블록을 실행하고 스택에 수준을 추가합니다.
 
 ```
-d ^routine    ;run a routine from the beginning.
-;             ;routines are identified by a caret.
-d tag         ;run a tag in the current routine
-d tag^routine ;run a tag in different routine
+d ^routine    ;루틴을 처음부터 실행합니다.
+;             ;루틴은 캐럿으로 식별됩니다.
+d tag         ;현재 루틴에서 태그를 실행합니다.
+d tag^routine ;다른 루틴에서 태그를 실행합니다.
 ```
 
-Argumentless do: used to create blocks of code. The block is indented with a period for each level of the block:
+인수 없는 do: 코드 블록을 만드는 데 사용됩니다. 블록은 블록의 각 수준에 대해 마침표로 들여쓰기됩니다:
 
 ```
 set a=1
@@ -245,61 +229,61 @@ if a=1 do
 w "hello"
 ```
 
-#### Quit (abbreviated as Q)
-Stop executing this block and return to the previous stack level.
-Quit can return a value, following the comamnd with a single space.
-Quit can stop a loop. remember to follow with two spaces.
-Quit outside a loop will return from the current subroutine followed by two spaces or a linefeed
+#### Quit (Q로 축약)
+이 블록 실행을 중지하고 이전 스택 수준으로 돌아갑니다.
+Quit는 명령어 뒤에 단일 공백을 붙여 값을 반환할 수 있습니다.
+Quit는 루프를 중지할 수 있습니다. 두 개의 공백을 붙이는 것을 잊지 마십시오.
+루프 외부의 Quit는 현재 서브루틴에서 반환되며 두 개의 공백이나 개행 문자가 뒤따릅니다.
 
-#### New (abbreviated as N)
-Hide with a cleared value a given variable's value _for just this stack level_. Useful for preventing side effects.
+#### New (N로 축약)
+주어진 변수의 값을 _이 스택 수준에서만_ 지워진 값으로 숨깁니다. 부작용을 방지하는 데 유용합니다.
 
-Putting all this together, we can create a full example of an M routine:
+이 모든 것을 종합하여 M 루틴의 전체 예를 만들 수 있습니다:
 
 ```
-; RECTANGLE - a routine to deal with rectangle math
-    q ; quit if a specific tag is not called
+; RECTANGLE - 사각형 수학을 다루는 루틴
+    q ; 특정 태그가 호출되지 않으면 종료
 
 main
-    n length,width ; New length and width so any previous value doesn't persist
-    w !,"Welcome to RECTANGLE. Enter the dimensions of your rectangle."
-    r !,"Length? ",length,!,"Width? ",width
-    d area(length,width)            ;Do/Call subroutine using a tag
-    s per=$$perimeter(length,width)      ;Get the value of a function
-    w !,"Perimeter: ",per
+    n length,width ; 이전 값이 유지되지 않도록 새 길이와 너비
+    w !,"RECTANGLE에 오신 것을 환영합니다. 사각형의 치수를 입력하십시오."
+    r !,"길이? ",length,!,"너비? ",width
+    d area(length,width)            ;태그를 사용하여 서브루틴 호출/실행
+    s per=$$perimeter(length,width)      ;함수 값 가져오기
+    w !,"둘레: ",per
     quit
 
-area(length,width)  ; This is a tag that accepts parameters.
-                    ; It's not a function since it quits with no value.
-    w !, "Area: ",length*width
-    q  ; Quit: return to the previous level of the stack.
+area(length,width)  ; 매개변수를 받는 태그입니다.
+                    ; 값이 없이 종료되므로 함수가 아닙니다.
+    w !, "면적: ",length*width
+    q  ; 종료: 스택의 이전 수준으로 돌아갑니다.
 
 perimeter(length,width)
-    q 2*(length+width) ; Returns a value using Quit ; this is a function
+    q 2*(length+width) ; Quit를 사용하여 값을 반환합니다. ; 이것은 함수입니다.
 ```
 
 
 
-### Conditionals, Looping and $Order()
+### 조건문, 반복문 및 $Order()
 
-F(or) loops can follow a few different patterns:
+F(or) 루프는 몇 가지 다른 패턴을 따를 수 있습니다:
 
 ```jinja
-;Finite loop with counter
+;카운터가 있는 유한 루프
 ;f var=start:increment:stop
 
 f i=0:5:25 w i," "
 ;0 5 10 15 20 25
 
-; Infinite loop with counter
-; The counter will keep incrementing forever. Use a conditional with Quit to get out of the loop.
+; 카운터가 있는 무한 루프
+; 카운터는 영원히 증가합니다. 루프를 빠져나가려면 조건부 Quit를 사용하십시오.
 ;f var=start:increment
 
 f j=1:1 w j," " i j>1E3 q
-; Print 1-1000 separated by a space
+; 공백으로 구분된 1-1000 인쇄
 
-;Argumentless for - infinite loop. Use a conditional with Quit.
-;   Also read as "forever" - f or for followed by two spaces.
+;인수 없는 for - 무한 루프. 조건부 Quit를 사용하십시오.
+;   "영원히"로도 읽습니다 - f 또는 for 뒤에 두 개의 공백.
 s var=""
 f  s var=var_"%" w !,var i var="%%%%%%%%%%" q
 ; %
@@ -314,94 +298,94 @@ f  s var=var_"%" w !,var i var="%%%%%%%%%%" q
 ; %%%%%%%%%%
 ```
 
-#### I(f), E(lse), Postconditionals
+#### I(f), E(lse), 후조건
 
-M has an if/else construct for conditional evaluation, but any command can be conditionally executed without an extra if statement using a _postconditional_. This is a condition that occurs immediately after the command, separated with a colon (:).
+M에는 조건부 평가를 위한 if/else 구조가 있지만, 모든 명령어는 _후조건_을 사용하여 추가 if 문 없이 조건부로 실행될 수 있습니다. 이것은 명령어 바로 뒤에 콜론(:)으로 구분되어 나타나는 조건입니다.
 
 ```jinja
-; Conditional using traditional if/else
-r "Enter a number: ",num
-i num>100 w !,"huge"
-e i num>10 w !,"big"
-e w !,"small"
+;전통적인 if/else를 사용한 조건문
+r "숫자 입력: ",num
+i num>100 w !,"엄청 큼"
+e i num>10 w !,"큼"
+e w !,"작음"
 
-; Postconditionals are especially useful in a for loop.
-; This is the dominant for loop construct:
-;   a 'for' statement
-;   that tests for a 'quit' condition with a postconditional
-;   then 'do'es an indented block for each iteration
+; 후조건은 for 루프에서 특히 유용합니다.
+; 이것이 지배적인 for 루프 구조입니다:
+;   'for' 문
+;   후조건으로 'quit' 조건을 테스트하는
+;   그런 다음 각 반복에 대해 들여쓰기된 블록을 'do'합니다.
 
 s var=""
-f  s var=var_"%" q:var="%%%%%%%%%%" d  ;Read as "Quit if var equals "%%%%%%%%%%"
+f  s var=var_"%" q:var="%%%%%%%%%%" d  ;"var가 "%%%%%%%%%%"이면 종료"로 읽습니다.
 . w !,var
 
-;Bonus points - the $L(ength) built-in function makes this even terser
+;보너스 포인트 - $L(ength) 내장 함수를 사용하면 훨씬 더 간결해집니다.
 
 s var=""
 f  s var=var_"%" q:$L(var)>10  d  ;
 . w !,var
 ```
 
-#### Array Looping - $Order
-As we saw in the previous example, M has built-in functions called with a single $, compared to user-defined functions called with $$. These functions have shortened abbreviations, like commands.
-One of the most useful is __$Order()__ / $O(). When given an array subscript, $O returns the next subscript in that array. When it reaches the last subscript, it returns "".
+#### 배열 반복 - $Order
+이전 예에서 보았듯이 M에는 $$로 호출되는 사용자 정의 함수와 비교하여 단일 $로 호출되는 내장 함수가 있습니다. 이 함수들은 명령어처럼 축약형이 있습니다.
+가장 유용한 것 중 하나는 __$Order()__ / $O()입니다. 배열 아래 첨자를 주면 $O는 해당 배열의 다음 아래 첨자를 반환합니다. 마지막 아래 첨자에 도달하면 ""를 반환합니다.
 
 ```jinja
-;Let's call back to our ^TEMPS global from earlier:
-; A log of temperatures by date and time
+;이전의 ^TEMPS 전역 변수를 다시 호출해 봅시다:
+; 날짜 및 시간별 온도 기록
 s ^TEMPS("11/12","0600",32)=""
 s ^TEMPS("11/12","0600",48)=""
 s ^TEMPS("11/12","1400",49)=""
 s ^TEMPS("11/12","1700",43)=""
-; Some more
+; 일부 추가
 s ^TEMPS("11/16","0300",27)=""
 s ^TEMPS("11/16","1130",32)=""
 s ^TEMPS("11/16","1300",47)=""
 
-;Here's a loop to print out all the dates we have temperatures for:
-n date,time ; Initialize these variables with ""
+;온도가 있는 모든 날짜를 인쇄하는 루프입니다:
+n date,time ; 이 변수들을 ""로 초기화합니다.
 
-; This line reads: forever; set date as the next date in ^TEMPS.
-; If date was set to "", it means we're at the end, so quit.
-; Do the block below
+; 이 줄은 다음과 같이 읽습니다: 영원히; date를 ^TEMPS의 다음 날짜로 설정합니다.
+; date가 ""로 설정되면 끝에 도달했음을 의미하므로 종료합니다.
+; 아래 블록을 실행합니다.
 f  s date=$ORDER(^TEMPS(date)) q:date="" d
 . w !,date
 
-; Add in times too:
+; 시간도 추가합니다:
 f  s date=$ORDER(^TEMPS(date)) q:date=""  d
-. w !,"Date: ",date
+. w !,"날짜: ",date
 . f  s time=$O(^TEMPS(date,time)) q:time=""  d
-. . w !,"Time: ",time
+. . w !,"시간: ",time
 
-; Build an index that sorts first by temperature -
-; what dates and times had a given temperature?
+; 온도를 기준으로 먼저 정렬하는 인덱스를 만듭니다 -
+; 특정 온도였던 날짜와 시간은?
 n date,time,temp
 f  s date=$ORDER(^TEMPS(date)) q:date=""  d
 . f  s time=$O(^TEMPS(date,time)) q:time=""  d
 . . f  s temp=$O(^TEMPS(date,time,temp)) q:temp=""  d
 . . . s ^TEMPINDEX(temp,date,time)=""
 
-;This will produce a global like
+;이것은 다음과 같은 전역 변수를 생성합니다.
 ^TEMPINDEX(27,"11/16","0300")
 ^TEMPINDEX(32,"11/12","0600")
 ^TEMPINDEX(32,"11/16","1130")
 ```
 
-## Further Reading
+## 더 읽을거리
 
-There's lots more to learn about M. A great short tutorial comes from the University of Northern Iowa and  Professor Kevin O'Kane's [Introduction to the MUMPS Language][1] presentation.  More about M using VistA is at
+M에 대해 배울 것이 훨씬 더 많습니다. 북부 아이오와 대학의 Kevin O'Kane 교수의 [MUMPS 언어 소개][1] 프레젠테이션에서 훌륭한 짧은 튜토리얼을 제공합니다. VistA를 사용한 M에 대한 자세한 내용은
 
-Intersystems has some products which are a super-set of the M programming language.
+Intersystems에는 M 프로그래밍 언어의 상위 집합인 일부 제품이 있습니다.
 
-* [Iris Description Page][5]
-* [Cache Description Page][6]
+* [Iris 설명 페이지][5]
+* [Cache 설명 페이지][6]
 
-To install an M interpreter / database on your computer, try a [YottaDB Docker image][2].
+컴퓨터에 M 인터프리터 / 데이터베이스를 설치하려면 [YottaDB Docker 이미지][2]를 사용해 보십시오.
 
-YottaDB and its precursor, GT.M, have thorough documentation on all the language features including database transactions, locking, and replication:
+YottaDB와 그 전신인 GT.M은 데이터베이스 트랜잭션, 잠금 및 복제를 포함한 모든 언어 기능에 대한 철저한 문서를 가지고 있습니다:
 
-* [YottaDB Programmer's Guide][3]
-* [GT.M Programmer's Guide][4]
+* [YottaDB 프로그래머 가이드][3]
+* [GT.M 프로그래머 가이드][4]
 
 [1]: https://www.cs.uni.edu/~okane/source/MUMPS-MDH/MumpsTutorial.pdf
 [2]: https://yottadb.com/product/get-started/

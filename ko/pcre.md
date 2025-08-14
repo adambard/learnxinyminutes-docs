@@ -1,5 +1,3 @@
-# pcre.md (번역)
-
 ---
 name: PCRE
 filename: pcre.txt
@@ -8,76 +6,76 @@ contributors:
 
 ---
 
-A regular expression (regex or regexp for short) is a special text string for describing a search pattern. e.g. to extract the protocol from a url string we can say `/^[a-z]+:/` and it will match `http:` from `http://github.com/`.
+정규 표현식(줄여서 regex 또는 regexp)은 검색 패턴을 설명하기 위한 특수 텍스트 문자열입니다. 예를 들어, URL 문자열에서 프로토콜을 추출하려면 `/^[a-z]+:/`라고 할 수 있으며, `http://github.com/`에서 `http:`와 일치합니다.
 
-PCRE (Perl Compatible Regular Expressions) is a C library implementing regex. It was written in 1997 when Perl was the de-facto choice for complex text processing tasks. The syntax for patterns used in PCRE closely resembles Perl. PCRE syntax is being used in many big projects including PHP, Apache, R to name a few.
+PCRE(Perl 호환 정규 표현식)는 정규식을 구현하는 C 라이브러리입니다. 1997년 Perl이 복잡한 텍스트 처리 작업의 사실상 표준이었을 때 작성되었습니다. PCRE에서 사용되는 패턴 구문은 Perl과 매우 유사합니다. PCRE 구문은 PHP, Apache, R을 비롯한 많은 대규모 프로젝트에서 사용되고 있습니다.
 
 
-There are two different sets of metacharacters:
+메타 문자에는 두 가지 다른 집합이 있습니다:
 
-* Those that are recognized anywhere in the pattern except within square brackets
-
-```
-  \      general escape character with several uses
-  ^      assert start of string (or line, in multiline mode)
-  $      assert end of string (or line, in multiline mode)
-  .      match any character except newline (by default)
-  [      start character class definition
-  |      start of alternative branch
-  (      start subpattern
-  )      end subpattern
-  ?      extends the meaning of (
-         also 0 or 1 quantifier
-         also quantifier minimizer
-  *      0 or more quantifier
-  +      1 or more quantifier
-         also "possessive quantifier"
-  {      start min/max quantifier
-```
-
-* Those that are recognized within square brackets. Outside square brackets. They are also called as character classes.
+* 대괄호 안을 제외하고 패턴의 모든 곳에서 인식되는 것들
 
 ```
-  \      general escape character
-  ^      negate the class, but only if the first character
-  -      indicates character range
-  [      POSIX character class (only if followed by POSIX syntax)
-  ]      terminates the character class
+  \      여러 용도로 사용되는 일반 이스케이프 문자
+  ^      문자열의 시작을 나타냄 (또는 여러 줄 모드에서는 줄의 시작)
+  $      문자열의 끝을 나타냄 (또는 여러 줄 모드에서는 줄의 끝)
+  .      개행 문자를 제외한 모든 문자와 일치 (기본값)
+  [      문자 클래스 정의 시작
+  |      대체 분기 시작
+  (      하위 패턴 시작
+  )      하위 패턴 끝
+  ?      (의 의미를 확장
+         또한 0 또는 1 수량자
+         또한 수량자 최소화
+  *      0개 이상 수량자
+  +      1개 이상 수량자
+         또한 "소유 수량자"
+  {      최소/최대 수량자 시작
 ```
 
-PCRE provides some generic character types, also called as character classes.
+* 대괄호 안에서 인식되는 것들. 대괄호 밖. 문자 클래스라고도 합니다.
 
 ```
-  \d     any decimal digit
-  \D     any character that is not a decimal digit
-  \h     any horizontal white space character
-  \H     any character that is not a horizontal white space character
-  \s     any white space character
-  \S     any character that is not a white space character
-  \v     any vertical white space character
-  \V     any character that is not a vertical white space character
-  \w     any "word" character
-  \W     any "non-word" character
+  \      일반 이스케이프 문자
+  ^      클래스를 부정하지만 첫 번째 문자인 경우에만 해당
+  -      문자 범위를 나타냄
+  [      POSIX 문자 클래스 (POSIX 구문이 뒤따르는 경우에만 해당)
+  ]      문자 클래스를 종료
 ```
 
-## Examples
+PCRE는 문자 클래스라고도 하는 몇 가지 일반적인 문자 유형을 제공합니다.
 
-We will test our examples on the following string:
+```
+  \d     모든 10진수
+  \D     10진수가 아닌 모든 문자
+  \h     모든 가로 공백 문자
+  \H     가로 공백 문자가 아닌 모든 문자
+  \s     모든 공백 문자
+  \S     공백 문자가 아닌 모든 문자
+  \v     모든 세로 공백 문자
+  \V     세로 공백 문자가 아닌 모든 문자
+  \w     모든 "단어" 문자
+  \W     모든 "비단어" 문자
+```
+
+## 예제
+
+다음 문자열에서 예제를 테스트합니다:
 
 ```
 66.249.64.13 - - [18/Sep/2004:11:07:48 +1000] "GET /robots.txt HTTP/1.0" 200 468 "-" "Googlebot/2.1"
 ```
 
- It is a standard Apache access log.
+ 이것은 표준 Apache 액세스 로그입니다.
 
-| Regex | Result          | Comment |
+| 정규식 | 결과          | 설명 |
 | :---- | :-------------- | :------ |
-| `GET`   | GET | GET matches the characters GET literally (case sensitive) |
-| `\d+.\d+.\d+.\d+` | 66.249.64.13 | `\d+` match a digit [0-9] one or more times defined by `+` quantifier, `\.` matches `.` literally |
-| `(\d+\.){3}\d+` | 66.249.64.13 | `(\d+\.){3}` is trying to match group (`\d+\.`) exactly three times. |
-| `\[.+\]` | [18/Sep/2004:11:07:48 +1000] | `.+` matches any character (except newline), `.` is any character |
-| `^\S+` | 66.249.64.13 | `^` means start of the line, `\S+` matches any number of non-space characters |
-| `\+[0-9]+` | +1000 | `\+` matches the character `+` literally. `[0-9]` character class means single number. Same can be achieved using `\+\d+` |
+| `GET`   | GET | GET은 GET 문자를 문자 그대로 일치시킵니다 (대소문자 구분) |
+| `\d+.\d+.\d+.\d+` | 66.249.64.13 | `\d+`는 숫자 [0-9]를 `+` 수량자로 정의된 한 번 이상 일치시키고, `\.`는 `.`을 문자 그대로 일치시킵니다 |
+| `(\d+\.){3}\d+` | 66.249.64.13 | `(\d+\.){3}`은 그룹 (`\d+\.`)을 정확히 세 번 일치시키려고 합니다. |
+| `\[.+\]` | [18/Sep/2004:11:07:48 +1000] | `.+`는 모든 문자(개행 문자 제외)와 일치하며, `.`은 모든 문자입니다 |
+| `^\S+` | 66.249.64.13 | `^`는 줄의 시작을 의미하고, `\S+`는 공백이 아닌 문자를 여러 개 일치시킵니다 |
+| `\+[0-9]+` | +1000 | `\+`는 `+` 문자를 문자 그대로 일치시킵니다. `[0-9]` 문자 클래스는 단일 숫자를 의미합니다. `\+\d+`를 사용하여 동일한 결과를 얻을 수 있습니다 |
 
-## Further Reading
-[Regex101](https://regex101.com/) - Regular Expression tester and debugger
+## 더 읽을거리
+[Regex101](https://regex101.com/) - 정규 표현식 테스터 및 디버거
