@@ -158,7 +158,7 @@ char chb = 'a'; // 同样合法 (隐式类型转换
 int multi_array[2][5] = {
         {1, 2, 3, 4, 5},
         {6, 7, 8, 9, 0}
-    }
+    };
 // 获取元素
 int array_int = multi_array[0][2]; // => 3
 
@@ -218,7 +218,7 @@ int z;
 z = (a > b) ? a : b; //  10 “若a > b返回a，否则返回b。”
 
 // 增、减
-char *s = "iLoveC"
+char *s = "iLoveC";
 int j = 0;
 s[j++]; // "i" 返回s的第j项，然后增加j的值。
 j = 0;
