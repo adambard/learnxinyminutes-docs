@@ -41,9 +41,7 @@ You can also define your own commands that call functions.
 
 Try [vim9-conversion-aid](https://github.com/ubaldot/vim9-conversion-aid) as a starting point to convert legacy Vimscript to Vim9Script.
 
-```vim
-vim9script
-
+```
 # The vim9script namespace, above, is required to distinguish a Vim9 script
 # *.vim file from a legacy vimscript file.  In Vim's command-line mode,
 # or in a legacy script, using the command `:vim9cmd` (or just `:vim9`) before
