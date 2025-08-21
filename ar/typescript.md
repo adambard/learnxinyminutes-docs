@@ -27,7 +27,7 @@ let isDone: boolean = false;   // نوع منطقي (صح/خطأ)
 let lines: number = 42;        // رقم
 let name: string = "Anders";   // نص (سلسلة حروف)
 
-// يمكن حذف تعريف النوع إذا كان واضحًا من القيمة مباشرة
+// يمكن الاستغناء عن تعريف النوع إذا كانت القيمة واضحة
 let isDone = false;
 let lines = 42;
 let name = "Anders";
@@ -46,7 +46,7 @@ let list: number[] = [1, 2, 3];
 // أو باستخدام النوع العام للمصفوفات (Generic Array)
 let list: Array<number> = [1, 2, 3];
 
-// بالنسبة للتعدادات (Enums):
+// بالنسبة لقوائم القيم المحددة مسبقًا (Enums):
 enum Color { Red, Green, Blue };
 let c: Color = Color.Green;
 console.log(Color[c]); // "Green"
@@ -56,11 +56,11 @@ function bigHorribleAlert(): void {
   alert("أنا صندوق إزعاج صغير!");
 }
 
-// في TypeScript تعتبر الدوال عناصر أساسية (first-class citizens)،
-// وتدعم صياغة لامبدا باستخدام "السهم الغليظ" (fat arrow),
-// كما تستفيد من الاستدلال التلقائي للأنواع (type inference).
+// الدوال تعتبر عناصر أساسية (first-class citizens)،
+// وتدعم صياغة "fat arrow"،
+// ويستفيد المترجم من إستنتاج النوع تلقائيًا (type inference).
 
-// الأمثلة التالية متكافئة؛ المترجم سيستنتج نفس التوقيع (signature)
+// الأمثلة التالية متكافئة؛ المترجم سيستنتج نفس شكل الدالة (signature)
 let f1 = function (i: number): number { return i * i; }
 // نوع القيمة المرجعة محدد صراحة
 
@@ -68,13 +68,13 @@ let f2 = function (i: number) { return i * i; }
 // نوع القيمة المرجعة يُستدل عليه تلقائيًا
 
 let f3 = (i: number): number => { return i * i; }
-// صياغة "السهم الغليظ" مع تحديد نوع القيمة المرجعة
+// صياغة "fat arrow" مع تحديد نوع القيمة المرجعة
 
 let f4 = (i: number) => { return i * i; }
-// صياغة "السهم الغليظ" مع استدلال تلقائي لنوع القيمة المرجعة
+// صياغة "fat arrow" مع استدلال تلقائي لنوع القيمة المرجعة
 
 let f5 = (i: number) => i * i;
-// صياغة "السهم الغليظ" بدون أقواس تعني عدم الحاجة لكلمة return
+// صياغة "fat arrow" بدون أقواس تعني عدم الحاجة لكلمة return
 
 // يمكن للدوال قبول أكثر من نوع للمعاملات
 function f6(i: string | number): void {
