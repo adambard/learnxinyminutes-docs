@@ -3,6 +3,7 @@ contributors:
     - ["Adam Bard", "http://adambard.com/"]
 translators:
     - ["Eunpyoung Kim", "https://github.com/netpyoung"]
+    - ["Taeyoon Kim", "https://github.com/partrita"]
 ---
 
 다른 모든 Lisp와 마찬가지로, Clojure가 가진 [동형성(homoiconicity)](https://en.wikipedia.org/wiki/Homoiconic)은
@@ -44,7 +45,7 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 ;; reverse는 더 이상 함수 객체가 아니라 심볼이라는 것에 주목하세요.
 
 ;; 매크로는 인자를 받을 수 있습니다.
-(defmacro inc2 [arg]
+(defmacro inc2 [arg])
   (list + 2 arg))
 
 (inc2 2) ; -> 4
@@ -53,13 +54,13 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 ;; 인자도 quote되기 때문입니다.
 ;; 이를 해결하기 위해, clojure는 매크로를 quote할 수 있는 방법을 제공합니다: `.
 ;; ` 안에서 ~를 사용하면 외부 스코프에 접근할 수 있습니다.
-(defmacro inc2-quoted [arg]
+(defmacro inc2-quoted [arg])
   `(+ 2 ~arg))
 
 (inc2-quoted 2)
 
 ;; destructuring args도 사용할 수 있습니다. ~@를 사용하여 리스트 변수를 확장할 수 있습니다.
-(defmacro unless [arg & body]
+(defmacro unless [arg & body])
   `(if (not ~arg)
      (do ~@body))) ; do를 빼먹지 마세요!
 
@@ -73,7 +74,7 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 (unless false "Hello") ; -> "Hello"
 
 ;; 주의하지 않으면, 매크로는 변수를 덮어쓰는 등 큰 문제를 일으킬 수 있습니다.
-(defmacro define-x []
+(defmacro define-x [])
   '(do
      (def x 2)
      (list x)))
@@ -85,7 +86,7 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 ;; 이를 피하기 위해, gensym을 이용하여 고유한 식별자를 얻을 수 있습니다.
 (gensym 'x) ; -> x1281 (혹은 다른 식별자)
 
-(defmacro define-x-safely []
+(defmacro define-x-safely [])
   (let [sym (gensym 'x)]
     `(do
        (def ~sym 2)
@@ -96,7 +97,7 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 (list x) ; -> (4)
 
 ;; ` 안에서 #를 사용하면 자동으로 각 심볼에 대한 gensym을 생성할 수 있습니다.
-(defmacro define-x-hygienically []
+(defmacro define-x-hygienically [])
   `(do
      (def x# 2)
      (list x#)))
@@ -108,18 +109,18 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 ;; 매크로를 만들 때는 보통 헬퍼 함수를 많이 이용합니다.
 ;; 인라인 산술 문법을 지원하는 몇 개의 헬퍼 함수를 만들어 봅시다.
 (declare inline-2-helper)
-(defn clean-arg [arg]
+(defn clean-arg [arg])
   (if (seq? arg)
     (inline-2-helper arg)
     arg))
 
 (defn apply-arg
   "Given args [x (+ y)], return (+ x y)"
-  [val [op arg]]
+  [val [op arg]])
   (list op val (clean-arg arg)))
 
 (defn inline-2-helper
-  [[arg1 & ops-and-args]]
+  [[arg1 & ops-and-args]])
   (let [ops (partition 2 ops-and-args)]
     (reduce apply-arg (clean-arg arg1) ops)))
 
@@ -127,7 +128,7 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 (inline-2-helper '(a + (b - 2) - (c * 5))) ; -> (- (+ a (- b 2)) (* c 5))
 
 ; 하지만, 이 함수를 컴파일 타임에 실행하려면 매크로로 만들어야 합니다.
-(defmacro inline-2 [form]
+(defmacro inline-2 [form])
   (inline-2-helper form))
 
 (macroexpand '(inline-2 (1 + (3 / 2) - (1 / 2) + 1)))
@@ -139,6 +140,8 @@ Clojure랑 친해지면 쉽게 따라갈 수 있습니다. [Clojure in Y Minutes
 
 ### 더 읽어볼거리
 
-- [Writing Macros](http://www.braveclojure.com/writing-macros/)
-- [Official docs](http://clojure.org/macros)
-- [When to use macros?](https://lispcast.com/when-to-use-a-macro/)
+- [매크로 작성하기](http://www.braveclojure.com/writing-macros/)
+- [공식 문서](http://clojure.org/macros)
+- [언제 매크로를 사용해야 할까요?](https://lispcast.com/when-to-use-a-macro/)
+
+```
