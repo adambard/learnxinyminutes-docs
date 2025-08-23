@@ -392,6 +392,6 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 安装 Haskell 很简单。你可以[从这里获得](http://www.haskell.org/platform/)。
 
 你可以从优秀的
-[Learn you a Haskell](http://learnyouahaskell.com/) 或者
+[Learn you a Haskell](https://learnyouahaskell.github.io/) 或者
 [Real World Haskell](http://book.realworldhaskell.org/)
 找到更平缓的入门介绍。

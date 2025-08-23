@@ -437,5 +437,5 @@ Haskell ist sehr einfach zu installieren.
 Hol es dir von [hier](http://www.haskell.org/platform/).
 
 Eine sehr viele langsamere Einführung findest du unter:
-[Learn you a Haskell](http://learnyouahaskell.com/) oder
+[Learn you a Haskell](https://learnyouahaskell.github.io/) oder
 [Real World Haskell](http://book.realworldhaskell.org/).

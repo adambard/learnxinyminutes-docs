@@ -441,5 +441,5 @@ Haskell może zostać zainstalowany na co najmniej dwa sposoby:
  - nowocześnie [z pomocą Stack](https://www.stackage.org/install).
 
 Godnymi poleceniami wprowadzeniami są wspaniałe
-[Learn you a Haskell](http://learnyouahaskell.com/) albo
+[Learn you a Haskell](https://learnyouahaskell.github.io/) albo
 [Real World Haskell](http://book.realworldhaskell.org/).

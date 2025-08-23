@@ -538,7 +538,7 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 Haskell прост в установке, забирайте [здесь](http://www.haskell.org/platform/) и пробуйте! Это же так интересно!.
 
 Более глубокое погрузиться в язык позволят прекрасные книги
-[Learn you a Haskell](http://learnyouahaskell.com/) и
+[Learn you a Haskell](https://learnyouahaskell.github.io/) и
 [Real World Haskell](http://book.realworldhaskell.org/).
 
 [author]: http://adit.io "имеется в виду автор оригинального текста Adit Bhargava *(примечание переводчика)*"

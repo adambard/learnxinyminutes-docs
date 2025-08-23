@@ -452,6 +452,6 @@ Det finns två populära sätt att installera Haskell på: Den traditionella [Ca
 
 Du kan finna vänligare och/eller djupare introduktioner till Haskell på engelska
 från:
-[Learn you a Haskell](http://learnyouahaskell.com/),
+[Learn you a Haskell](https://learnyouahaskell.github.io/),
 [Happy Learn Haskell Tutorial](http://www.happylearnhaskelltutorial.com/) eller
 [Real World Haskell](http://book.realworldhaskell.org/).

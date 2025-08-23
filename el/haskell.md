@@ -468,6 +468,6 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 - [Stack-based process](https://www.stackage.org/install).
 
 Στις παρακάτω πηγές μπορείτε να βρείτε αρκετά κομψές εισαγωγές στην Haskell
-- [Learn you a Haskell](http://learnyouahaskell.com/),
+- [Learn you a Haskell](https://learnyouahaskell.github.io/),
 - [Happy Learn Haskell Tutorial](http://www.happylearnhaskelltutorial.com/),
 - [Real World Haskell](http://book.realworldhaskell.org/)
