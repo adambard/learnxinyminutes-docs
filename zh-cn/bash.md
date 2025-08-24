@@ -17,8 +17,6 @@ translators:
 Bash 是一个为 GNU 计划编写的 Unix shell，是 Linux 和 macOS 下的默认 shell。
 以下大多数例子可以作为脚本的一部分运行，也可直接在 shell 下交互执行。
 
-[更多信息](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # 脚本的第一行叫 shebang，用来告知系统如何执行该脚本:
@@ -271,3 +269,5 @@ info bash 'Bash Features'
 info bash 6
 info --apropos bash
 ```
+
+[更多信息](https://www.gnu.org/software/bash/manual/bashref.html)

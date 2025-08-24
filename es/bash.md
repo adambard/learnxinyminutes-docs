@@ -17,8 +17,6 @@ el shell del sistema operativo GNU. También es el shell
 por defecto de Linux y macOS. Casi todos los ejemplos abajo pueden 
 ser parte de un script shell o ser ejecutados directamente en la terminal.
 
-[Leer más aquí.](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 
@@ -190,3 +188,5 @@ uniq -d file.txt
 # imprime sólo la primera columna antes de cada ',' en el archivo|
 cut -d ',' -f 1 file.txt
 ```
+
+[Leer más aquí.](https://www.gnu.org/software/bash/manual/bashref.html)

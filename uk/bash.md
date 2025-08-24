@@ -20,8 +20,6 @@ Bash - командна оболонка unix (unix shell), що також ро
 Майже всі приклади, що наведені нижче можуть бути частиною shell-скриптів або
 виконані в оболонці
 
-[Більш детально тут.](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # Перший рядок скрипта - це shebang, який вказує системі, як потрібно виконувати
@@ -289,3 +287,5 @@ info bash 'Bash Features'
 info bash 6
 info --apropos bash
 ```
+
+[Більш детально тут.](https://www.gnu.org/software/bash/manual/bashref.html)

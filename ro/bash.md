@@ -11,14 +11,12 @@ translators:
 Bash este numele shell-ului UNIX, care a fost de asemenea distribuit drept shell pentru sistemul de operare GNU și ca shell implicit pentru Linux si macOS.
 Aproape toate exemplele de mai jos pot fi parte dintr-un script sau pot fi executate direct in linia de comanda.
 
-[Citește mai multe:](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
-# Prima linie din script se numeste "shebang" 
+# Prima linie din script se numeste "shebang"
 # care spune sistemului cum să execute scriptul
 # http://en.wikipedia.org/wiki/Shebang_(Unix)
-# După cum te-ai prins deja, comentariile încep cu #. 
+# După cum te-ai prins deja, comentariile încep cu #.
 # Shebang este de asemenea un comentariu.
 
 # Exemplu simplu de hello world:
@@ -39,7 +37,7 @@ VARIABLE = "Niste text"
 echo $VARIABLE
 echo "$VARIABLE"
 echo '$VARIABLE'
-# Atunci când folosesti variabila, o atribui, o exporți sau altfel, 
+# Atunci când folosesti variabila, o atribui, o exporți sau altfel,
 # numele ei se scrie fără $.
 # Daca vrei sa folosesti valoarea variabilei, atunci trebuie să folosești $.
 # Atentie la faptul că ' (apostrof) nu va inlocui variabla cu valoarea ei.
@@ -70,7 +68,7 @@ read NAME # Observă faptul că nu a trebuit să declarăm o variabilă nouă
 echo Salut, $NAME!
 
 # Avem obisnuita instructiune "if"
-# Folosește "man test" pentru mai multe informații 
+# Folosește "man test" pentru mai multe informații
 # despre instrucținea conditionala
 if [ $NAME -ne $USER ]
 then
@@ -86,7 +84,7 @@ echo "Întotdeauna executat" && echo "Executat dacă prima instrucțiune NU esue
 # Expresiile apar în urmatorul format
 echo $(( 10 + 5 ))
 
-# Spre deosebire de alte limbaje de programare, bash este un shell - așa că 
+# Spre deosebire de alte limbaje de programare, bash este un shell - așa că
 # funcționează in contextul directorului curent. Poți vedea fișiere și directoare
 # din directorul curent folosind comanda "ls":
 ls
@@ -94,9 +92,9 @@ ls
 # Aceste comenzi au optiuni care le controlează execuțiă
 ls -l # Listează fiecare fișier și director pe o linie separată
 
-# Rezultatele comenzii anterioare pot fi 
+# Rezultatele comenzii anterioare pot fi
 # trimise următoarei comenzi drept argument
-# Comanda grep filtrează argumentele trimise cu sabloane. 
+# Comanda grep filtrează argumentele trimise cu sabloane.
 # Astfel putem vedea fiserele .txt din directorul curent.
 ls -l | grep "\.txt"
 
@@ -109,18 +107,18 @@ python2 hello.py 2> "erori.err"
 # Daca vrei să fie concatenate datele poți folosi ">>" în loc de ">"
 
 # Comenzile pot fi înlocuite în interiorul altor comenzi folosind $( ):
-# Urmatoarea comandă afișează numărul de fișiere 
+# Urmatoarea comandă afișează numărul de fișiere
 # și directoare din directorul curent
 echo "Sunt $(ls | wc -l) fișiere aici."
 
 # Același lucru se poate obține folosind apostroful inversat ``,
-# dar nu pot fi folosite limbricate, așa ca modalitatea 
+# dar nu pot fi folosite limbricate, așa ca modalitatea
 # preferată este de a folosi $( )
 echo "Sunt `ls | wc -l` fișiere aici."
 
-# Bash folosește o instrucțiune 'case' care funcționeaza 
+# Bash folosește o instrucțiune 'case' care funcționeaza
 # în mod similar cu instructiunea switch din Java si C++
-case "$VARIABLE" in 
+case "$VARIABLE" in
     0) echo "Este un zero.";;
     1) echo "Este un unu.";;
     *) echo "Nu este null";;
@@ -176,3 +174,5 @@ uniq -d file.txt
 cut -d ',' -f 1 file.txt
 # printează doar prima coloană inainte de caracterul ","
 ```
+
+[Citește mai multe:](https://www.gnu.org/software/bash/manual/bashref.html)

@@ -12,8 +12,6 @@ Bash はunixシェルの1つです。GNUオペレーションシステムのシ�
 LinuxやMac OS Xの、デフォルトシェルにもなっています。
 以下にある例は、ほぼ全部シェルスクリプトの一部として使えます。また、一部はそのままシェルから実行できます。
 
-[ちゃんとした説明は、こちらをどうぞ](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # 最初の行はShebang(シェバング、シバン)というもので、システムに対して何を使って実行するのかを教えるためのものです
@@ -165,3 +163,5 @@ uniq -d file.txt
 # 1行ごとに、','が最初に出てくる前の部分を表示します
 cut -d ',' -f 1 file.txt
 ```
+
+[ちゃんとした説明は、こちらをどうぞ](https://www.gnu.org/software/bash/manual/bashref.html)

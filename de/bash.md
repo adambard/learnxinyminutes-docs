@@ -9,8 +9,6 @@ translators:
 Bash ist der Name der Unix-Shell, die als Shell des GNU-Betriebssystems und auch als Standard-Shell von Linux und macOS ausgeliefert wurde.
 Beinahe alle der folgenden Beispiele können als Teile eines Shell-Skripts oder direkt in der Shell ausgeführt werden.
 
-[Weitere Informationen \(Englisch\)](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # Die erste Zeile des Scripts nennt sich Shebang, dies gibt dem System an, 
@@ -277,3 +275,5 @@ info bash 'Bash Features'
 info bash 6
 info --apropos bash
 ```
+
+[Weitere Informationen \(Englisch\)](https://www.gnu.org/software/bash/manual/bashref.html)

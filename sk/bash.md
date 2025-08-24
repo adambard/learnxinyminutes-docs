@@ -19,8 +19,6 @@ shell pre Linux a macOS.
 Takmer všetky príklady uvedené nižšie môžu byť súčasťou shell skriptu alebo
 vykonané priamo v shelli.
 
-[Viac informácií tu.](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # Prvý riadok skriptu je tzv. shebang, ktorý systému povie ako skript vykonať:
@@ -280,3 +278,5 @@ info bash 'Bash Features'
 info bash 6
 info --apropos bash
 ```
+
+[Viac informácií tu.](https://www.gnu.org/software/bash/manual/bashref.html)

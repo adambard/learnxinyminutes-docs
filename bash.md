@@ -28,8 +28,6 @@ for the GNU operating system and as the default shell on most Linux distros.
 Nearly all examples below can be a part of a shell script
 or executed directly in the shell.
 
-[Read more here.](https://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/usr/bin/env bash
 # First line of the script is the shebang which tells the system how to execute
@@ -526,3 +524,5 @@ info bash 'Bash Features'
 info bash 6
 info --apropos bash
 ```
+
+For more, see the [Bash documentation](https://www.gnu.org/software/bash/manual/bashref.html).

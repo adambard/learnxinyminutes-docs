@@ -15,8 +15,6 @@ translators:
 
 Bash adalah nama daripada unix shell, yang mana telah diagihkan sebagai shell untuk sistem operasi GNU dan sebagai shell lalai pada Linux dan macOS. Hampir semua contoh di bawah boleh menjadi sebahagian daripada skrip shell atau dijalankan terus dalam shell.
 
-[Baca lebih lanjut di sini.](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # Baris pertama daripada skrip ialah shebang yang mana memberitahu sistem bagaimana untuk melaksana
@@ -278,3 +276,5 @@ info bash 'Bash Features'
 info bash 6
 info --apropos bash
 ```
+
+[Baca lebih lanjut di sini.](https://www.gnu.org/software/bash/manual/bashref.html)

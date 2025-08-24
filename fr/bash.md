@@ -18,8 +18,6 @@ d’exploitation GNU et est le shell par défaut sur Linux et macOS.
 Presque tous les exemples ci-dessous peuvent être écrits dans un script shell
 ou exécutés directement dans le terminal.
 
-[Plus d’informations ici.](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # La première ligne du script s’appelle le « shebang », elle indique au système
@@ -314,3 +312,5 @@ grep -c "^foo.*bar$" fichier.txt
 # l’expression rationnelle, utilisez fgrep (ou grep -F)
 fgrep "^foo.*bar$" fichier.txt
 ```
+
+[Plus d’informations ici.](https://www.gnu.org/software/bash/manual/bashref.html)

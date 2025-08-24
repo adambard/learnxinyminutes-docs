@@ -16,8 +16,6 @@ translators:
 Bash is de naam van de unix shell, deze wordt gebruikt voor het GNU operating system en is de standaard shell op Linux en macOS.
 Bijna alle voorbeelden hieronder kunnen deel uitmaken van een shell script of kunnen uitgevoerd worden in de shell.
 
-[Lees er meer over hier.](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # De eerste lijn in het schript is shebang, deze laat het systeem weten hoe
@@ -229,3 +227,5 @@ info bash 'Bash Features'
 info bash 6
 info --apropos bash
 ```
+
+[Lees er meer over hier.](https://www.gnu.org/software/bash/manual/bashref.html)

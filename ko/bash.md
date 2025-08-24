@@ -20,8 +20,6 @@ translators:
 Bash는 유닉스 셸의 이름이며, 리눅스와 맥 OS X의 기본 셸로 그리고 GNU 운영체제를 위한 셸로서 배포되었습니다.
 이하의 거의 모든 예시들은 셸 스크립트의 일부이거나 셸에서 바로 실행할 수 있습니다.
 
-[(영어) 이곳에서 더 알아보세요.](http://www.gnu.org/software/bash/manual/bashref.html)
-
 ```bash
 #!/bin/bash
 # 스크립트의 첫 줄은 시스템에게 스크립트의 실행법을 알려주는 '셔뱅'입니다.
@@ -376,3 +374,5 @@ info bash 'Bash Features'
 info bash 6
 info --apropos bash
 ```
+
+[(영어) 이곳에서 더 알아보세요.](https://www.gnu.org/software/bash/manual/bashref.html)
