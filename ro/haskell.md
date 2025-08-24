@@ -449,5 +449,5 @@ qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
 Există două maniere populare de a instala Haskell: prin [instalarea bazată pe Cabal](http://www.haskell.org/platform/), și prin mai noul [proces bazat pe Stack](https://www.stackage.org/install).
 
 Se poate găsi o introducere în Haskell mult mai blândă la adresele
-[Learn you a Haskell](http://learnyouahaskell.com/) sau
+[Learn you a Haskell](https://learnyouahaskell.github.io/) sau
 [Real World Haskell](http://book.realworldhaskell.org/).
