@@ -30,9 +30,9 @@ F# 是一款通用的、函数式的面向对象语言。它既开源又免费�
 // "let" 关键字可定义一个（不可变的）变量
 let myInt = 5
 let myFloat = 3.14
-let myString = "hello" // 注意到并不需要指定类型
+let myString = "hello" // 注意，并不需要指定类型
 
-// 可变变量
+// 可变变量用 "mutable" 标注
 let mutable a=3
 a <- 4 // a现在的值是4
 
@@ -57,44 +57,46 @@ let zeroToFive = [0; 1] @ twoToFive   // @ 可合并两个列表
 
 // 重要提示：是使用分号来分隔语句，而不是逗号！！
 
-// ------ Functions ------
-// The "let" keyword also defines a named function.
-let square x = x * x          // Note that no parens are used.
-square 3                      // Now run the function. Again, no parens.
+// ------ 函数 ------
+// "let" 关键字也可以用来定义函数
+let square x = x * x          // 注意，没有使用圆括号
+square 3                      // 注意，运行函数时也不需要圆括号
 
-let add x y = x + y           // don't use add (x,y)! It means something
-                              // completely different.
-add 2 3                       // Now run the function.
+let add x y = x + y           // 切勿将参数写成 (x, y)！
+                              // 这是元组Tuple的写法（稍后介绍），
+                              // 和函数参数完全不同
+add 2 3                       // 调用该函数
 
-// to define a multiline function, just use indents. No semicolons needed.
+// 使用缩进来定义一个多行的复杂函数。不需要写分号
 let evens list =
-   let isEven x = x % 2 = 0   // Define "isEven" as a sub function. Note
-                              // that equality operator is single char "=".
-   List.filter isEven list    // List.filter is a library function
-                              // with two parameters: a boolean function
-                              // and a list to work on
+   let isEven x = x % 2 = 0   // 定义**子函数** "isEven"。
+                              // 注意“相等”是使用单等号'='而不是双等号"=="
+   List.filter isEven list    // List.filter 是个 F# 库函数，它有两个参数：
+                              // - 返回值为boolean的函数
+                              // - 待处理的列表
 
-evens oneToFive               // Now run the function
+evens oneToFive               // 调用该函数
 
-// You can use parens to clarify precedence. In this example,
-// do "map" first, with two args, then do "sum" on the result.
-// Without the parens, "List.map" would be passed as an arg to List.sum
+// 圆括号可用于显式地标注计算优先级。在下述示例代码中：
+// 1. 首先进行 List.map 计算，该函数具有两个参数
+// 2. 然后进行 List.sum 计算，将上一步的结果作为该步的参数
+// 若不写圆括号，"List.map" 就会被当作参数传递给 List.sum
+
 let sumOfSquaresTo100 =
    List.sum ( List.map square [1..100] )
 
-// You can pipe the output of one operation to the next using "|>"
-// Piping data around is very common in F#, similar to UNIX pipes.
+// 使用管道操作符 "|>" ，可以将上一步的输出（译者注：即返回值）输送给下一步作为输入
+// 管道操作在 F# 中很常见，其语义也与 UNIX 操作系统中的管道操作非常相似。
 
-// Here is the same sumOfSquares function written using pipes
+// 使用管道操作符，可将 sumOfSquares 函数重构为如下形式：
 let sumOfSquaresTo100piped =
-   [1..100] |> List.map square |> List.sum  // "square" was defined earlier
+   [1..100] |> List.map square |> List.sum  // "square" 函数就是之前定义的，求平方的函数
 
-// you can define lambdas (anonymous functions) using the "fun" keyword
+// 匿名函数（或作lambda函数）可用 "fun" 关键字定义
 let sumOfSquaresTo100withFun =
    [1..100] |> List.map (fun x -> x * x) |> List.sum
 
-// In F# there is no "return" keyword. A function always
-// returns the value of the last expression used.
+// F# 中没有"return" 关键字，因为函数总是返回最后一个表达式的值。
 
 // ------ Pattern Matching ------
 // Match..with.. is a supercharged case/switch statement.
@@ -626,7 +628,7 @@ module NetCompatibilityExamples =
     let s = "Alice"
     printfn "'%s' starts with an 'A' = %A" s s.StartsWithA
 
-    // ------- events  -------
+    // ------- 事件  -------
 
     type MyButton() =
         let clickEvent = new Event<_>()
@@ -637,7 +639,7 @@ module NetCompatibilityExamples =
         member this.TestEvent(arg) =
             clickEvent.Trigger(this, arg)
 
-    // test
+    // 测试效果
     let myButton = new MyButton()
     myButton.OnClick.Add(fun (sender, arg) ->
             printfn "Click event with arg=%O" arg)
@@ -645,8 +647,8 @@ module NetCompatibilityExamples =
     myButton.TestEvent("Hello World!")
 ```
 
-## More Information
+## 更多信息
 
-For more demonstrations of F#, go to my [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) series.
+欲参阅更多 F# 示例代码，请移步 [why use F#](http://fsharpforfunandprofit.com/why-use-fsharp/) 系列文章。
 
-Read more about F# at [fsharp.org](http://fsharp.org/) and [dotnet's F# page](https://dotnet.microsoft.com/languages/fsharp).
+欲更深入了解 F# ，请移步 [fsharp.org](http://fsharp.org/) 与 [dotnet's F# page](https://dotnet.microsoft.com/languages/fsharp)。
