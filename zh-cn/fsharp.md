@@ -2,59 +2,60 @@
 name: F#
 contributors:
     - ["Scott Wlaschin", "http://fsharpforfunandprofit.com/"]
+translators:
+    - ["Endericedragon", "http://github.com/endericedragon"]
 filename: learnfsharp.fs
 ---
 
-F# is a general purpose functional/OO programming language.  It's free and open source, and runs on Linux, Mac, Windows and more.
+F# 是一款通用的、函数式的面向对象语言。它既开源又免费，并且在Linux、Mac和Windows等多平台上均可运行。
 
-It has a powerful type system that traps many errors at compile time, but it uses type inference so that it reads more like a dynamic language.
+这款语言拥有强大的类型系统，许多错误在编译器即可被发现并随之被修复。不过，由于 F# 采用了类型推理技术（译者注：不需手动指定，而是通过上下文自动推断变量的类型），在读代码时往往给人一种动态类型语言的错觉。
 
-The syntax of F# is different from C-style languages:
+需要留意的是， F# 的语法和“类C语言”有较大不同：
+- 使用**缩进**来组织代码块（类似Python那样），而不是大括号。
+- 使用**空格**来分隔函数的各个参数，而不是逗号。
 
-* Curly braces are not used to delimit blocks of code. Instead, indentation is used (like Python).
-* Whitespace is used to separate parameters rather than commas.
-
-If you want to try out the code below, you can go to [https://try.fsharp.org](https://try.fsharp.org) and paste it into an interactive REPL.
+若您想尝试运行以下代码，看看效果如何的话，请移步[https://try.fsharp.org](https://try.fsharp.org)，将代码粘贴进交互式REPL界面运行吧。
 
 ```fsharp
-// single line comments use a double slash
-(* multi line comments use (* . . . *) pair
-
--end of multi line comment- *)
+// 单行注释以双斜杠开头
+(* 多行注释以包裹在 (* , *) 之间
+多行注释至此结束- *)
 
 // ================================================
-// Basic Syntax
+// 基础语法
 // ================================================
 
-// ------ "Variables" (but not really) ------
-// The "let" keyword defines an (immutable) value
+// ------ "变量" (实际上默认不可变) ------
+// "let" 关键字可定义一个（不可变的）变量
 let myInt = 5
 let myFloat = 3.14
-let myString = "hello"           // note that no types needed
+let myString = "hello" // 注意到并不需要指定类型
 
-// Mutable variables
+// 可变变量
 let mutable a=3
-a <- 4 // a is now 4.
+a <- 4 // a现在的值是4
 
-// Somewhat mutable variables
-// Reference cells are storage locations that enable you to create mutable values with reference semantics.
-// See https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/reference-cells
+// 稍有不同的可变变量
+// Reference cell是一种容器，允许您使用引用语义来创建可变变量（create mutable values with reference semantics）
+// 译者注：和Rust的RefCell类似，提供容器内部的可变性
+// 详见 https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/reference-cells
 let xRef = ref 10
 printfn "%d" xRef.Value // 10
 xRef.Value <- 11
 printfn "%d" xRef.Value // 11
 
-let a=[ref 0; ref 1] // somewhat mutable list
+let a = [ref 0; ref 1] // 装有可变元素的数组
 a[0].Value <- 2
 
-// ------ Lists ------
-let twoToFive = [2; 3; 4; 5]     // Square brackets create a list with
-                                 // semicolon delimiters.
-let oneToFive = 1 :: twoToFive   // :: creates list with new 1st element
+// ------ 列表Lists ------
+let twoToFive = [2; 3; 4; 5]     // 使用方括号创建列表
+                                 // 元素间使用**分号**分隔
+let oneToFive = 1 :: twoToFive   // :: 创建新列表，并将新元素添加到开头
 // The result is [1; 2; 3; 4; 5]
-let zeroToFive = [0; 1] @ twoToFive   // @ concats two lists
+let zeroToFive = [0; 1] @ twoToFive   // @ 可合并两个列表
 
-// IMPORTANT: commas are never used as delimiters, only semicolons!
+// 重要提示：是使用分号来分隔语句，而不是逗号！！
 
 // ------ Functions ------
 // The "let" keyword also defines a named function.
