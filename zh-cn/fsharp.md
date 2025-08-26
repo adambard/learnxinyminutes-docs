@@ -52,7 +52,7 @@ a[0].Value <- 2
 let twoToFive = [2; 3; 4; 5]     // 使用方括号创建列表
                                  // 元素间使用**分号**分隔
 let oneToFive = 1 :: twoToFive   // :: 创建新列表，并将新元素添加到开头
-// The result is [1; 2; 3; 4; 5]
+// 结果为 [1; 2; 3; 4; 5]
 let zeroToFive = [0; 1] @ twoToFive   // @ 可合并两个列表
 
 // 重要提示：是使用分号来分隔语句，而不是逗号！！
@@ -98,23 +98,22 @@ let sumOfSquaresTo100withFun =
 
 // F# 中没有"return" 关键字，因为函数总是返回最后一个表达式的值。
 
-// ------ Pattern Matching ------
-// Match..with.. is a supercharged case/switch statement.
+// ------ 模式匹配 ------
+// 模式匹配 match..with.. 是个加强版的 case/switch 
 let simplePatternMatch =
    let x = "a"
    match x with
     | "a" -> printfn "x is a"
     | "b" -> printfn "x is b"
-    | _ -> printfn "x is something else"   // underscore matches anything
+    | _ -> printfn "x is something else"   // 下划线可匹配任意值
 
-// F# doesn't allow nulls by default -- you must use an Option type
-// and then pattern match.
-// Some(..) and None are roughly analogous to Nullable wrappers
+// F# 默认不支持空值（null），您必须使用Option类型以便随后进行模式匹配
+// Some(..) 和 None 均为Option类型的一种，用于表示"可能为空值"的两种情况
 let validValue = Some(99)
 let invalidValue = None
 
-// In this example, match..with matches the "Some" and the "None",
-// and also unpacks the value in the "Some" at the same time.
+// 在下列示例中，match..with 不仅匹配了 "Some" 和 "None" 两种情况，
+// 还同时将 "Some" 中的内容给解包出来了
 let optionPatternMatch input =
    match input with
     | Some i -> printfn "input is an int=%d" i
@@ -123,22 +122,19 @@ let optionPatternMatch input =
 optionPatternMatch validValue
 optionPatternMatch invalidValue
 
-// ------ Printing ------
-// The printf/printfn functions are similar to the
-// Console.Write/WriteLine functions in C#.
+// ------ 打印内容 ------
+// printf/printfn 函数与 C# 中的 Console.Write/WriteLine 函数类似
 printfn "Printing an int %i, a float %f, a bool %b" 1 2.0 true
 printfn "A string %s, and something generic %A" "hello" [1; 2; 3; 4]
 
-// There are also sprintf/sprintfn functions for formatting data
-// into a string, similar to String.Format in C#.
+// 若要按一定格式生成字符串，可以使用 sprintf/sprintfn 函数，
+// 它们与 C# 中的 String.Format 函数类似
 
 // ================================================
-// More on functions
+// 函数漫谈
 // ================================================
 
-// F# is a true functional language -- functions are first
-// class entities and can be combined easily to make powerful
-// constructs
+// F# 是函数式编程语言：函数是其一等公民，通过组合不同函数可以实现强大的功能
 
 // Modules are used to group functions together
 // Indentation is needed for each nested module.
