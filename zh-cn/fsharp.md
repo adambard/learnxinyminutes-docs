@@ -136,72 +136,72 @@ printfn "A string %s, and something generic %A" "hello" [1; 2; 3; 4]
 
 // F# 是函数式编程语言：函数是其一等公民，通过组合不同函数可以实现强大的功能
 
-// Modules are used to group functions together
-// Indentation is needed for each nested module.
+// 模块（Modules）可以将一系列函数组织到一起
+// 每个模块使用标识符（Indentation）来唯一标记
 module FunctionExamples =
 
-    // define a simple adding function
+    // 定义一个简单的求和函数
     let add x y = x + y
 
-    // basic usage of a function
+    // 函数的基础使用
     let a = add 1 2
     printfn "1 + 2 = %i" a
 
-    // partial application to "bake in" parameters
+    // 函数的“部分应用”（partial application）可事先“固化”参数
     let add42 = add 42
     let b = add42 1
     printfn "42 + 1 = %i" b
 
-    // composition to combine functions
+    // 函数的组合（composition）可将多个函数“串接”起来
     let add1 = add 1
     let add2 = add 2
     let add3 = add1 >> add2
     let c = add3 7
     printfn "3 + 7 = %i" c
 
-    // higher order functions
+    // 高阶函数
     [1..10] |> List.map add3 |> printfn "new list is %A"
 
-    // lists of functions, and more
+    // 函数列表，以及 List.reduce 函数
     let add6 = [add1; add2; add3] |> List.reduce (>>)
     let d = add6 7
     printfn "1 + 2 + 3 + 7 = %i" d
 
 // ================================================
-// Lists and collection
+// 列表与集合（collection）
 // ================================================
 
-// There are three types of ordered collection:
-// * Lists are most basic immutable collection.
-// * Arrays are mutable and more efficient when needed.
-// * Sequences are lazy and infinite (e.g. an enumerator).
+// F# 内置了三种有序集合：
+// * 列表（List）是最基本的、不可变的集合类型
+// * 数组（Arrays）是可变的，按需使用可令程序更高效
+// * 序列（Sequences）是惰性的、无限的集合类型（例如枚举器enumerator）
 //
-// Other collections include immutable maps and sets
-// plus all the standard .NET collections
+// 除此以外，还有诸如不可变哈希表、不可变哈希集合、
+// 以及所有 .NET 中定义的标准集合类型等
 
 module ListExamples =
 
-    // lists use square brackets
+    // 列表使用方括号
     let list1 = ["a"; "b"]
-    let list2 = "c" :: list1    // :: is prepending
-    let list3 = list1 @ list2   // @ is concat
+    let list2 = "c" :: list1    // :: 将元素添加到开头
+    let list3 = list1 @ list2   // @ 将两个列表连接起来
 
-    // list comprehensions (aka generators)
+    // 列表推导式（list comprehensions），也被称为生成器（generators）
     let squares = [for i in 1..10 do yield i * i]
 
-    // A prime number generator
-    // - this is using a short notation for the pattern matching syntax
-    // - (p::xs) is 'first :: tail' of the list, could also be written as p :: xs
-    //   this means this matches 'p' (the first item in the list), and xs is the rest of the list
-    //   this is called the 'cons pattern'
-    // - uses 'rec' keyword, which is necessary when using recursion
+    // 素数生成器
+    // - 本例采用了模式匹配的简写语法
+    // - (p::xs) 匹配列表的 “第一个元素 :: 其余所有元素” ，写成 p :: xs也可以
+    //   此时，p匹配到列表的第一个元素，而其余元素被xs匹配到
+    //   这种写法被称为构造模式（cons pattern）
+    // - 在写递归函数时，必须使用 "rec" 关键字
     let rec sieve = function
         | (p::xs) -> p :: sieve [ for x in xs do if x % p > 0 then yield x ]
         | []      -> []
     let primes = sieve [2..50]
     printfn "%A" primes
 
-    // pattern matching for lists
+    // 对列表进行模式匹配
     let listMatcher aList =
         match aList with
         | [] -> printfn "the list is empty"
@@ -214,7 +214,7 @@ module ListExamples =
     listMatcher [1]
     listMatcher []
 
-    // recursion using lists
+    // 接受列表作参数的递归函数
     let rec sum aList =
         match aList with
         | [] -> 0
@@ -222,7 +222,7 @@ module ListExamples =
     sum [1..10]
 
     // -----------------------------------------
-    // Standard library functions
+    // 列表的标准库函数
     // -----------------------------------------
 
     // map
@@ -233,7 +233,7 @@ module ListExamples =
     let even x = x % 2 = 0
     [1..10] |> List.filter even
 
-    // many more -- see documentation
+    // 还有很多，详见文档
 
 module ArrayExamples =
 
