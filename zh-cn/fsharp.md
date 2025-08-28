@@ -237,11 +237,11 @@ module ListExamples =
 
 module ArrayExamples =
 
-    // arrays use square brackets with bar
+    // 数组（Array）用 [| 和 |] 包裹
     let array1 = [| "a"; "b" |]
-    let first = array1.[0]        // indexed access using dot
+    let first = array1.[0]        // 用 . 来索引元素
 
-    // pattern matching for arrays is same as for lists
+    // 数组和列表的模式匹配语法完全相同
     let arrayMatcher aList =
         match aList with
         | [| |] -> printfn "the array is empty"
@@ -251,7 +251,7 @@ module ArrayExamples =
 
     arrayMatcher [| 1; 2; 3; 4 |]
 
-    // Standard library functions just as for List
+    // Array的标准库函数和List也几乎一样
 
     [| 1..10 |]
     |> Array.map (fun i -> i + 3)
@@ -261,78 +261,78 @@ module ArrayExamples =
 
 module SequenceExamples =
 
-    // sequences use curly braces
+    // 序列（Sequence）用大括号包裹
     let seq1 = seq { yield "a"; yield "b" }
 
-    // sequences can use yield and
-    // can contain subsequences
+    // 序列可以使用 "yield" 关键字，也可以包含子序列
     let strange = seq {
-        // "yield" adds one element
+        // "yield" 向序列中增添1个元素
         yield 1; yield 2;
 
-        // "yield!" adds a whole subsequence
+        // "yield!" 则是增添一个子序列
         yield! [5..10]
         yield! seq {
             for i in 1..10 do
               if i % 2 = 0 then yield i }}
-    // test
+    // 试试看吧！
     strange |> Seq.toList
 
 
-    // Sequences can be created using "unfold"
-    // Here's the fibonacci series
+    // 序列可以通过 "Seq.unfold" 函数来创建
+    // 下例演示如何用这个函数创建斐波那契数列
     let fib = Seq.unfold (fun (fst,snd) ->
         Some(fst + snd, (snd, fst + snd))) (0,1)
 
-    // test
+    // 试试看吧！
     let fib10 = fib |> Seq.take 10 |> Seq.toList
     printf "first 10 fibs are %A" fib10
 
 
 // ================================================
-// Data Types
+// 数据类型
 // ================================================
 
 module DataTypeExamples =
 
-    // All data is immutable by default
+    // 默认情况下，所有的数据类型均是不可变的
 
-    // Tuples are quick 'n easy anonymous types
-    // -- Use a comma to create a tuple
+    // 元组（Tuple）是一种简单快捷的匿名类型
+    // -- 使用逗号即可创建元组
     let twoTuple = 1, 2
     let threeTuple = "a", 2, true
 
-    // Pattern match to unpack
-    let x, y = twoTuple  // sets x = 1, y = 2
+    // 同样，使用模式匹配来解包元组
+    let x, y = twoTuple  // x, y分别被赋值为1, 2
 
     // ------------------------------------
-    // Record types have named fields
+    // 记录（Record）类型由命名域构成（译者注：类似class的成员变量）
+    // 译者注：由于“记录”一词听起来像动词，下文将以英文原文Record来指代
     // ------------------------------------
 
-    // Use "type" with curly braces to define a record type
+    // 使用 "type" 关键字和大括号来定义Record类型
     type Person = {First:string; Last:string}
 
-    // Use "let" with curly braces to create a record
+    // 使用 "let" 关键字和大括号来创建Record实例
     let person1 = {First="John"; Last="Doe"}
 
-    // Pattern match to unpack
-    let {First = first} = person1    // sets first="John"
+    // 同样，使用模式匹配来解包Record实例
+    let {First = first} = person1    // first被赋值为"John"
 
     // ------------------------------------
-    // Union types (aka variants) have a set of choices
-    // Only one case can be valid at a time.
+    // 联合类型（Union或Variants，类似于Rust中的枚举类型）拥有一系列的取值选项。其实例仅能从中取其一。
+    // 译者注：由于联合类型与Rust中的枚举类型（enum）很相似，故后文将以“枚举类型”指代之
     // ------------------------------------
 
-    // Use "type" with bar/pipe to define a union type
+    // 使用 "type" 关键字和竖线/管道符来定义枚举类型
     type Temp =
         | DegreesC of float
         | DegreesF of float
 
-    // Use one of the cases to create one
+    // 使用一个选项来创建枚举实例
     let temp1 = DegreesF 98.6
     let temp2 = DegreesC 37.0
 
-    // Pattern match on all cases to unpack
+    // 模式匹配可以解包枚举实例
     let printTemp = function
        | DegreesC t -> printfn "%f degC" t
        | DegreesF t -> printfn "%f degF" t
@@ -341,36 +341,33 @@ module DataTypeExamples =
     printTemp temp2
 
     // ------------------------------------
-    // Recursive types
+    // 递归类型
     // ------------------------------------
 
-    // Types can be combined recursively in complex ways
-    // without having to create subclasses
+    // 类型可以通过递归组合成复杂的类型，无需创建子类
     type Employee =
       | Worker of Person
-      | Manager of Employee list
+      | Manager of Employee list // 译者注：这儿发生了递归定义
 
     let jdoe = {First="John"; Last="Doe"}
     let worker = Worker jdoe
 
     // ------------------------------------
-    // Modeling with types
+    // 使用枚举类型建模
     // ------------------------------------
 
-    // Union types are great for modeling state without using flags
+    // 枚举类型非常适合用于表述某种状态，再也不需要用数字等标志位（flag）来表征状态啦！
     type EmailAddress =
-        | ValidEmailAddress of string
-        | InvalidEmailAddress of string
+        | ValidEmailAddress of string   // 状态：合法邮件地址
+        | InvalidEmailAddress of string // 状态：不合法邮件地址
 
     let trySendEmail email =
-        match email with // use pattern matching
-        | ValidEmailAddress address -> ()   // send
-        | InvalidEmailAddress address -> () // don't send
+        match email with // 使用模式匹配
+        | ValidEmailAddress address -> ()   // 可以发送
+        | InvalidEmailAddress address -> () // 不能发送
 
-    // The combination of union types and record types together
-    // provide a great foundation for domain driven design.
-    // You can create hundreds of little types that accurately
-    // reflect the domain.
+    // 组合使用枚举类型和Record类型为“域驱动的软件设计”（Domain Driven Design）提供了良好基础。
+    // 您可以定义数以百计的类型，每一种都精准地反映着一个域（Domain）
 
     type CartItem = { ProductCode: string; Qty: int }
     type Payment = Payment of float
@@ -378,26 +375,25 @@ module DataTypeExamples =
     type PaidCartData = { PaidItems: CartItem list; Payment: Payment}
 
     type ShoppingCart =
-        | EmptyCart  // no data
+        | EmptyCart  // 空购物车，没有数据
         | ActiveCart of ActiveCartData
         | PaidCart of PaidCartData
 
     // ------------------------------------
-    // Built in behavior for types
+    // 数据类型的内置行为
     // ------------------------------------
 
-    // Core types have useful "out-of-the-box" behavior, no coding needed.
-    // * Immutability
-    // * Pretty printing when debugging
-    // * Equality and comparison
-    // * Serialization
+    // 核心数据类型提供了开箱即用的默认行为与性质，无需额外编码。
+    // * 不可变性
+    // * 漂亮的打印输出，在debug时尤其好用
+    // * 相等性与可比性
+    // * 可序列化性
 
-    // Pretty printing using %A
+    // 使用 %A 来输出复杂数据类型
     printfn "twoTuple=%A,\nPerson=%A,\nTemp=%A,\nEmployee=%A"
              twoTuple person1 temp1 worker
 
-    // Equality and comparison built in.
-    // Here's an example with cards.
+    // 下列扑克牌示例展示了 F# 中内置的相等性与可比较性
     type Suit = Club | Diamond | Spade | Heart
     type Rank = Two | Three | Four | Five | Six | Seven | Eight
                 | Nine | Ten | Jack | Queen | King | Ace
@@ -405,34 +401,33 @@ module DataTypeExamples =
     let hand = [ Club, Ace; Heart, Three; Heart, Ace;
                  Spade, Jack; Diamond, Two; Diamond, Ace ]
 
-    // sorting
+    // 排序
     List.sort hand |> printfn "sorted hand is (low to high) %A"
     List.max hand |> printfn "high card is %A"
     List.min hand |> printfn "low card is %A"
 
 
 // ================================================
-// Active patterns
+// 主动模式（Active patterns）
 // ================================================
 
 module ActivePatternExamples =
 
-    // F# has a special type of pattern matching called "active patterns"
-    // where the pattern can be parsed or detected dynamically.
+    // F# 中，有一种被称为“主动模式”的特殊模式匹配
+    // 它可以在模式匹配中动态解析或检测模式（pattern）。
 
-    // "banana clips" are the syntax for active patterns
+    // 主动匹配的语法形似 "banana clips" （译者注：确实不知道banana clips是啥意思）
 
-    // You can use "elif" instead of "else if" in conditional expressions.
-    // They are equivalent in F#
+    // 您可以用elif代替else if，它们在 F# 中完全等价
 
-    // for example, define an "active" pattern to match character types...
+    // 下列示例使用主动模式去匹配不同类型的字符...
     let (|Digit|Letter|Whitespace|Other|) ch =
        if System.Char.IsDigit(ch) then Digit
        elif System.Char.IsLetter(ch) then Letter
        elif System.Char.IsWhiteSpace(ch) then Whitespace
        else Other
 
-    // ... and then use it to make parsing logic much clearer
+    // ...然后使用它，可以看到解析逻辑十分清晰
     let printChar ch =
       match ch with
       | Digit -> printfn "%c is a Digit" ch
@@ -440,19 +435,19 @@ module ActivePatternExamples =
       | Whitespace -> printfn "%c is a Whitespace" ch
       | _ -> printfn "%c is something else" ch
 
-    // print a list
+    // 用主动模式处理并打印一个列表
     ['a'; 'b'; '1'; ' '; '-'; 'c'] |> List.iter printChar
 
     // -----------------------------------
-    // FizzBuzz using active patterns
+    // 用主动模式实现FizzBuzz
     // -----------------------------------
 
-    // You can create partial matching patterns as well
-    // Just use underscore in the definition, and return Some if matched.
+    // 您也可以在主动模式中实现“部分匹配”
+    // 只需在定义中使用下划线，并在匹配成功时返回 Some 即可
     let (|MultOf3|_|) i = if i % 3 = 0 then Some MultOf3 else None
     let (|MultOf5|_|) i = if i % 5 = 0 then Some MultOf5 else None
 
-    // the main function
+    // fizzbuzz的主函数
     let fizzBuzz i =
       match i with
       | MultOf3 & MultOf5 -> printf "FizzBuzz, "
@@ -460,95 +455,92 @@ module ActivePatternExamples =
       | MultOf5 -> printf "Buzz, "
       | _ -> printf "%i, " i
 
-    // test
+    // 试试看吧！
     [1..20] |> List.iter fizzBuzz
 
 // ================================================
-// Conciseness
+// 简明的 F#
 // ================================================
 
 module AlgorithmExamples =
 
-    // F# has a high signal/noise ratio, so code reads
-    // almost like the actual algorithm
+    // F# 代码的“信噪比”很高，阅读代码时很容易就能弄明白算法的意图
 
-    // ------ Example: define sumOfSquares function ------
+    // ------ 例子: 计算平方和 ------
     let sumOfSquares n =
-       [1..n]              // 1) take all the numbers from 1 to n
-       |> List.map square  // 2) square each one
-       |> List.sum         // 3) sum the results
+       [1..n]              // 1) 取从 1 到 n 的所有整数
+       |> List.map square  // 2) 给每个整数求平方
+       |> List.sum         // 3) 将上一步的结果求和
 
-    // test
+    // 试试看吧！
     sumOfSquares 100 |> printfn "Sum of squares = %A"
 
-    // ------ Example: define a sort function ------
+    // ------ 例子: 排序 ------
+    // 译者注：下列示例实现的是朴素的快速排序算法
     let rec sort list =
        match list with
-       // If the list is empty
+       // 若 list 是空表...
        | [] ->
-            []                            // return an empty list
-       // If the list is not empty
-       | firstElem::otherElements ->      // take the first element
-            let smallerElements =         // extract the smaller elements
-                otherElements             // from the remaining ones
+            []                            // ...则返回空表
+       // 否则...
+       | firstElem::otherElements ->      // 取其第一个元素
+            let smallerElements =         // 从剩余元素中提取比它小的
+                otherElements
                 |> List.filter (fun e -> e < firstElem)
-                |> sort                   // and sort them
-            let largerElements =          // extract the larger ones
-                otherElements             // from the remaining ones
+                |> sort                   // 并排序
+            let largerElements =          // 同理，从剩余元素中提取比它大的
+                otherElements
                 |> List.filter (fun e -> e >= firstElem)
-                |> sort                   // and sort them
-            // Combine the 3 parts into a new list and return it
+                |> sort                   // 并排序
+            // 最后，将这三部分组合起来，返回一个新的列表
             List.concat [smallerElements; [firstElem]; largerElements]
 
-    // test
+    // 试试看吧！
     sort [1; 5; 23; 18; 9; 1; 3] |> printfn "Sorted = %A"
 
 // ================================================
-// Asynchronous Code
+// 异步编程
 // ================================================
 
 module AsyncExample =
 
-    // F# has built-in features to help with async code
-    // without encountering the "pyramid of doom"
-    //
-    // The following example downloads a set of web pages in parallel.
+    // F# 内置了对异步编程的支持
+    // 从而规避了缩进地狱问题（"pyramid of doom"）
+    // 下列示例展示了如何使用异步编程，实现同时下载多个网页
 
     open System.Net
     open System
     open System.IO
     open Microsoft.FSharp.Control.CommonExtensions
 
-    // Fetch the contents of a URL asynchronously
+    // 异步地访问URL，并获取其内容
     let fetchUrlAsync url =
-        async {   // "async" keyword and curly braces
-                  // creates an "async" object
+        async {   // "async" 关键词和大括号将创建一个异步对象 （"async" object）
             let req = WebRequest.Create(Uri(url))
             use! resp = req.AsyncGetResponse()
-                // use! is async assignment
+                // use! 的意思是异步赋值，类似于JavaScript的await
             use stream = resp.GetResponseStream()
-                // "use" triggers automatic close()
-                // on resource at end of scope
+                // "use" 会让资源在当前作用域结束时自动 close()
             use reader = new IO.StreamReader(stream)
             let html = reader.ReadToEnd()
             printfn "finished downloading %s" url
-            }
+        }
 
-    // a list of sites to fetch
+    // 准备以下网页喂给爬虫
     let sites = ["http://www.bing.com";
                  "http://www.google.com";
                  "http://www.microsoft.com";
                  "http://www.amazon.com";
                  "http://www.yahoo.com"]
 
-    // do it
+    // 来试试看吧！
     sites
-    |> List.map fetchUrlAsync  // make a list of async tasks
-    |> Async.Parallel          // set up the tasks to run in parallel
-    |> Async.RunSynchronously  // start them off
+    |> List.map fetchUrlAsync  // 把每个URL都包装成一个异步任务
+    |> Async.Parallel          // 令所有任务并发地运行
+    |> Async.RunSynchronously  // 开始运行
 
 // ================================================
-// .NET compatibility
+// .NET 兼容性
 // ================================================
 
 module NetCompatibilityExamples =
