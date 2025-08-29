@@ -545,17 +545,17 @@ module AsyncExample =
 
 module NetCompatibilityExamples =
 
-    // F# can do almost everything C# can do, and it integrates
-    // seamlessly with .NET or Mono libraries.
+    // C#能干的活，F# 基本上都能做。同时，F# 还无缝集成了 .Net 或 Mono 的库
+    // 译者注：Mono库（Mono Libraries）的含义不太确定
 
-    // ------- work with existing library functions  -------
+    // ------- 使用已有的库函数  -------
 
     let (i1success, i1) = System.Int32.TryParse("123");
     if i1success then printfn "parsed as %i" i1 else printfn "parse failed"
 
-    // ------- Implement interfaces on the fly! -------
+    // ------- 简简单单实现接口（interface） -------
 
-    // create a new object that implements IDisposable
+    // 创建一个实现了 IDisposable 的对象
     let makeResource name =
        { new System.IDisposable
          with member this.Dispose() = printfn "%s disposed" name }
@@ -571,48 +571,47 @@ module NetCompatibilityExamples =
         printfn "using second resource"
         printfn "done."
 
-    // ------- Object oriented code -------
+    // ------- 面向对象编程 -------
 
-    // F# is also a fully fledged OO language.
-    // It supports classes, inheritance, virtual methods, etc.
+    // F# 对面向对象编程的支持也很成熟，支持类、接口、虚函数等
 
-    // interface with generic type
+    // 带有泛型的接口
     type IEnumerator<'a> =
         abstract member Current : 'a
         abstract MoveNext : unit -> bool
 
-    // abstract base class with virtual methods
+    // 带有虚函数的抽象基类
     [<AbstractClass>]
     type Shape() =
-        // readonly properties
+        // 只读的成员变量
         abstract member Width : int with get
         abstract member Height : int with get
-        // non-virtual method
+        // 非虚函数
         member this.BoundingArea = this.Height * this.Width
-        // virtual method with base implementation
+        // 虚函数，且带有默认实现
         abstract member Print : unit -> unit
         default this.Print () = printfn "I'm a shape"
 
-    // concrete class that inherits from base class and overrides
+    // 具象子类，继承上述抽象基类，并覆写（override）了其中的函数
     type Rectangle(x:int, y:int) =
         inherit Shape()
         override this.Width = x
         override this.Height = y
         override this.Print ()  = printfn "I'm a Rectangle"
 
-    // test
+    // 试试看吧！
     let r = Rectangle(2, 3)
     printfn "The width is %i" r.Width
     printfn "The area is %i" r.BoundingArea
     r.Print()
 
-    // ------- extension methods  -------
+    // ------- 扩展已有类的方法  -------
 
-    // Just as in C#, F# can extend existing classes with extension methods.
+    // 与 C# 一样，F# 也可以使用扩展语法来扩展已有类的方法
     type System.String with
        member this.StartsWithA = this.StartsWith "A"
 
-    // test
+    // 试试看吧！
     let s = "Alice"
     printfn "'%s' starts with an 'A' = %A" s s.StartsWithA
 
