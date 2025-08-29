@@ -5,217 +5,182 @@ contributors:
 filename: easylang.el
 ---
 
-**Easylang** is a simple programming language with built-in graphical functions and an easy-to-use and offline usable browser IDE. Its simple syntax and semantics make it well suited as a teaching and learning programming language. You can also use it to write graphical applications that you can embed in a web page. 
-
-*Easylang* is statically typed and has as data types only strings and numbers (floating point), resizeable arrays of strings and numbers and arrays of arrays.
+**Easylang** is a simple programming language with built-in graphical functions and an easy-to-use and browser IDE. Its simplified syntax and semantics make it well suited as a teaching and learning programming language. You can also use it to write graphical applications that you can embed in a web page.
 
 [The browser IDE](https://easylang.online/ide/) includes various tutorials, including one for beginners.
 
 ```
-print "Hello world"
+print "Hello Easylang"
 #
-# number variable (64 bit floating point)
+f = 2 * pi
+print "Numbers are floating point: " & f
+print "and are implicitly converted to strings"
 #
-h = 3.14
-print h
-#
-# string variable
-#
-str$ = "monkey"
-# strings can grow
-str$ &= " circus" 
+str$ = "Strings can"
+str$ &= " grow"
 print str$
 #
-# blocks end with 'end' or a dot, a newline has no
-# other meaning than a space
+# Blocks end with 'end' or a dot, newline is just a token seperator
 #
-for i = 1 to 5
-  sum += i * i
+for i = 1 to 3
+   print i * i
 .
-print sum
-#
-# functions have value and reference
-# parameters, no return values
-#
-func gcd a b . res .
-  # a and b are value parameters
-  # res is a reference parameter
-  while b <> 0
-    # h is a local variable, because 
-    # it is first used in the function
-    h = b
-    b = a mod b
-    a = h
-  .
-  res = a
+func gcd a b .
+   # a and b are value parameters
+   while b <> 0
+      # h is local, since it is first used in the function
+      h = b
+      b = a mod b
+      a = h
+   .
+   return a
 .
-call gcd 120 35 r
-print r
+print "The greatest common divisor of 182 and 28: " & gcd 182 28
 #
-# strings can be concatenated and numbers are
-# automatically converted to strings
+func gcdr a b .
+   if b = 0 : return a
+   return gcdr b (a mod b)
+.
+print "Recursively calculated: " & gcd 182 28
 #
-print "1 + 2 = " & 1 + 2
+# Arrays are 1-based and can grow
 #
-# array of numbers
-#
-a[] = [ 2.1 3.14 3 ]
-#
-# arrays can grow
+a[] = [ 13 3.14 3 ]
 a[] &= 4
-print a[]
+for i = 1 to len a[] : write a[i] & " "
+print ""
+#
+proc sort &data[] .
+   # data is a reference parameter
+   for i = 1 to len data[] - 1
+      for j = i + 1 to len data[]
+         if data[j] < data[i] : swap data[j] data[i]
+      .
+   .
+.
+sort a[]
+print "Sorted: " & a[]
 #
 # arrays, strings and numbers are copied by value
 #
 b[] = a[]
-a[] &= 4
-print a[] ; print b[]
+a[1] = 111
+a[4] = 777
+print "a[]:" & a[] & "  b[]:" & b[]
 #
 # array swapping ist fast
 #
 swap a[] b[]
-print a[] ; print b[]
-# 
-# array of strings
-#
-fruits$[] = [ "apple" "banana" "orange" ]
+print "a[]:" & a[] & "  b[]:" & b[]
 #
 # for-in iterates over the elements of an array
 #
-for fruit$ in fruits$[]
-  print fruit$
-.
+fruits$[] = [ "apple" "banana" "orange" ]
+for fruit$ in fruits$[] : print fruit$
 #
 # strings are also used for single characters
 #
-letters$[] = str_chars "ping"
+letters$[] = strchars "ping"
 print letters$[]
-letters$[1] = "o"
-print str_join letters$[]
+letters$[2] = "o"
+print strjoin letters$[] ""
 #
-# 2-dimensional arrays are arrays of arrays
-# this defines 3 arrays with length 4
+# a 2-dimensional array is an array of arrays
 #
 len a[][] 3
-for i range len a[][]
-  len a[i][] 4
+for i = 1 to len a[][]
+   len a[i][] 3
+   a[i][i] = 1
 .
-a[1][2] = 99
 print a[][]
 #
-# builtin functions
+# some builtin functions
+#
 if sin 90 = 1
-  print "angles are in degree"
+   print "Angles are in degree"
 .
-print pow 2 8
-# seconds since 1970
-print floor sys_time
-# random numbers
-print randomf
-print random 6 + 1
-# 
-# hour and minutes
-print substr time_str sys_time 11 5
-# 
-print str_ord "A"
-print str_chr 65
-# 
-# set number format
+print "A kibibyte: " & pow 2 10
+print "Seconds since 1970: " & floor systime
+print "Random between 0 and 1: " & randomf
+print "A dice roll: " & random 6
+print "Current time: " & substr timestr systime 12 5
+print strcode "A" & " is " & strchar 65
+#
+# set number output format
+#
 numfmt 0 4
-print sqrt 2
-print pi
-print logn 10
-# 
-a$[] = str_split "10,15,22" ","
+print "Square root of 2: " & sqrt 2
+print "Pi: " & pi
+print "10's logarithm of 999: " & log10 999
+#
+a$[] = strsplit "10,15,22" ","
 print a$[]
-print 2 * number a$[0]
+print 2 * number a$[1]
 print len a$[]
-print len "Hello"
+print len a$[1]
 #
-# With 'break n' you can leave nested loops and a function
+# "input" reads a string from the "input_data" section, if it exists,
+# otherwise via a prompt.
 #
-names$[] = [ ]
-func name2id name$ . id .
-  for id range len names$[]
-    if names$[id] = name$
-      # leave loop and function
-      break 2
-    .
-  .
-  names$[] &= name$
-.
-call name2id "alice" id ; print id
-call name2id "bob" id ; print id
-call name2id "alice" id ; print i
-#
-# with 'repeat' you can make loops, which you can leave
-# in the loop body using 'until'
-#
-sum = 0
 repeat
-  s$ = input
-  until s$ = ""
-  sum += number s$
+   s$ = input
+   until s$ = ""
+   sum += number s$
 .
-print "sum: " & sum
-#
-# "input" reads a string from the "input_data" section, 
-# if it exists, otherwise via a prompt.
+print "Sum of input data: " & sum
 #
 input_data
-10
--2
-6
+567
+1023
+69
 ```
 
 Built-in graphic primitives and event-driven programming
 
 ```
 # simple drawing with the mouse
-# 
-set_linewidth 4
-set_color 900
-# the colors are coded from 0 to 999, with 
-# the left digit specifying the red component,
-# the middle digit the green component and
-# the right digit the blue component. 
-# 
+#
+glinewidth 4
+gcolor 900
+# the colors are coded from 0 to 999, where the
+# decimal digits specify the RGB components
+#
 on mouse_down
-  down = 1
-  move_pen mouse_x mouse_y
-  # moves the drawing pen to the actual mouse position
-  draw_circle 2
+   down = 1
+   mx = mouse_x
+   my = mouse_y
+   gcircle mx my 2
 .
 on mouse_up
-  down = 0
+   down = 0
 .
 on mouse_move
-  if down = 1
-    draw_line mouse_x mouse_y
-  .
+   if down = 1
+      gline mx my mouse_x mouse_y
+      mx = mouse_x
+      my = mouse_y
+   .
 .
 ```
 
 ```
 # an animated pendulum
 #
+ang = 45
 on animate
-  # The animate event occurs after each screen refresh.
-  #
-  clear_screen
-  move_pen 50 50
-  draw_circle 1
-  x = 50 + 40 * sin ang
-  y = 50 - 40 * cos ang
-  draw_line x y
-  draw_circle 5
-  vel += sin ang / 5
-  ang += vel
+   # The animate event occurs after each screen refresh.
+   gclear
+   gcircle 50 50 1
+   x = 50 + 40 * sin ang
+   y = 50 + 40 * cos ang
+   gline 50 50 x y
+   gcircle x y 6
+   vel += sin ang / 5
+   ang += vel
 .
-ang = 10
 ```
 
-* [More about Easylang](https://easylang.online/)
+* [More about Easylang](https://easylang.online/apps/)
 
-* [Source code](https://github.com/chkas/easylang)
+* [Source code](https://github.com/chkas/easylang/)
 
