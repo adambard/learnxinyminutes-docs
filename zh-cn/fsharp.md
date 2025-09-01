@@ -45,7 +45,7 @@ printfn "%d" xRef.Value // 10
 xRef.Value <- 11
 printfn "%d" xRef.Value // 11
 
-let a = [ref 0; ref 1] // 装有可变元素的数组
+let a = [ref 0; ref 1] // 装有可变元素的列表
 a[0].Value <- 2
 
 // ------ 列表Lists ------
@@ -415,6 +415,7 @@ module ActivePatternExamples =
 
     // F# 中，有一种被称为“主动模式”的特殊模式匹配
     // 它可以在模式匹配中动态解析或检测模式（pattern）。
+    // 译者注：译者个人倾向于把此所谓“主动模式”理解为，自定义某个数据类型在接受模式匹配时，会返回哪些情况
 
     // 主动匹配的语法形似 "banana clips" （译者注：确实不知道banana clips是啥意思）
 
