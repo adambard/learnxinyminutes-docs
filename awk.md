@@ -17,7 +17,7 @@ it from a shell script, or you can use it as a stand-alone scripting language.
 
 Why use AWK instead of Perl? Readability. AWK is easier to read
 than Perl. For simple text-processing scripts, particularly ones that read
-files line by line and  on delimiters, AWK is probably the right tool for
+files line by line and split on delimiters, AWK is probably the right tool for
 the job.
 
 ```awk
