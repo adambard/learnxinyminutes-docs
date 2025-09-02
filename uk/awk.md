@@ -222,7 +222,7 @@ function string_functions(    localvar, arr) {
     match(localvar, "t"); # => 4, оскільки 't' є четвертим символом
 
     # Розбити рядок за роздільником
-    n = split("foo-bar-baz", arr, "-"); # a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
+    n = split("foo-bar-baz", arr, "-"); # arr[1] = "foo"; arr[2] = "bar"; arr[3] = "baz"; n = 3
 
     # Інші корисні речі
     sprintf("%s %d %d %d", "Testing", 1, 2, 3); # => "Testing 1 2 3"
