@@ -17,7 +17,7 @@ it from a shell script, or you can use it as a stand-alone scripting language.
 
 Why use AWK instead of Perl? Readability. AWK is easier to read
 than Perl. For simple text-processing scripts, particularly ones that read
-files line by line and split on delimiters, AWK is probably the right tool for
+files line by line and  on delimiters, AWK is probably the right tool for
 the job.
 
 ```awk
@@ -217,7 +217,7 @@ function string_functions(    localvar, arr) {
 
     # Split on a delimiter
     n = split("foo-bar-baz", arr, "-");
-    # result: a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
+    # result: arr[1] = "foo"; arr[2] = "bar"; arr[3] = "baz"; n = 3
 
     # Other useful stuff
     sprintf("%s %d %d %d", "Testing", 1, 2, 3); # => "Testing 1 2 3"
