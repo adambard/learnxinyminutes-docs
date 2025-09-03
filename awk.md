@@ -217,7 +217,7 @@ function string_functions(    localvar, arr) {
 
     # Split on a delimiter
     n = split("foo-bar-baz", arr, "-");
-    # result: a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
+    # result: arr[1] = "foo"; arr[2] = "bar"; arr[3] = "baz"; n = 3
 
     # Other useful stuff
     sprintf("%s %d %d %d", "Testing", 1, 2, 3); # => "Testing 1 2 3"
