@@ -1,4 +1,5 @@
 ---
+name: Dart
 contributors:
     - ["Joao Pedrosa", "https://github.com/jpedrosa/"]
     - ["Hélio Oliveira", "https://github.com/insign/"]
@@ -18,7 +19,7 @@ As variáveis em Dart tem tipos, mas não é obrigatório declarar devido à fun
 import "dart:collection";
 import "dart:math" as DM;
 
-// Bem vindo ao Aprenda Dart em 15 minutos. http://www.dartlang.org/
+// Bem vindo ao Aprenda Dart em 15 minutos. https://dart.dev/
 // Este é um tutorial executável. Você pode rodar esse tutorial com Dart ou no
 // site Try Dart!, é só copiar e colar este código lá. http://dartpad.dev/
 // É possível usar Flutter no DartPad, clique em `Create` > `Flutter snippet`.
@@ -482,89 +483,89 @@ exemplo24() {
   print("Exemplo24 puxando o super do construtor '${o2.value}'");
 }
 
-// Há um atalho para passar parâmetros para o construtor no caso de classes mais simples.
-// Simplesmente use o prefixo this.nomeDoParametro e isso irá passar o parâmetro para uma
-// instância de variável de mesmo nome.
-class Example25 {
-  var value, anotherValue;
-  Example25({this.value, this.anotherValue});
+/// Há um atalho para passar parâmetros para o construtor no caso de classes mais simples.
+/// Simplesmente use o prefixo this.nomeDoParametro e isso irá passar o
+/// parâmetro para uma instância de variável de mesmo nome.
+class Exemplo25 {
+  var valor, outroValor;
+  Exemplo25({this.valor, this.outroValor});
 }
-example25() {
-  var o = new Example25(value: "a", anotherValue: "b");
-  print("Example25 shortcut for constructor '${o.value}' and "
+exemplo25() {
+  var o = new Exemplo25(valor: "a", outroValor: "b");
+  print("Exemplo25 atalho para construtor '${o.value}' e "
     "'${o.anotherValue}'");
 }
 
-// Parâmetros com nome estão disponíveis quando declarados entre {}.
-// Quando os parâmetros têm nomes, eles podem ser passados em qualquer ordem.
-// Parâmetros declarados entre [] são opcionais.
-example26() {
-  var _name, _surname, _email;
-  setConfig1({name, surname}) {
-    _name = name;
-    _surname = surname;
+/// Parâmetros com nome estão disponíveis quando declarados entre {}.
+/// Quando os parâmetros têm nomes, eles podem ser passados em qualquer ordem.
+/// Parâmetros declarados entre [] são opcionais.
+exemplo26() {
+  var _nome, _sobrenome, _email;
+  setConfig1({nome, sobrenome}) {
+    _nome = nome;
+    _sobrenome = sobrenome;
   }
-  setConfig2(name, [surname, email]) {
-    _name = name;
-    _surname = surname;
+  setConfig2(nome, [sobrenome, email]) {
+    _nome = nome;
+    _sobrenome = sobrenome;
     _email = email;
   }
-  setConfig1(surname: "Doe", name: "John");
-  print("Example26 name '${_name}', surname '${_surname}', "
-    "email '${_email}'");
-  setConfig2("Mary", "Jane");
-  print("Example26 name '${_name}', surname '${_surname}', "
-  "email '${_email}'");
+  setConfig1(sobrenome: "Silva", name: "João");
+  print("Exemplo26 nome: '${_name}', sobrenome: '${_surname}', "
+    "email: '${_email}'");
+  setConfig2("José", "Maria");
+  print("Exemplo26 nome: '${_name}', sobrenome: '${_surname}', "
+  "email: '${_email}'");
 }
 
-// Variáveis declaradas com um final só podem receber valor uma vez.
-// No caso de classes, variáveis final podem ter valor atribuido através
-// de um parâmetro no construtor
-class Example27 {
-  final color1, color2;
-  // Um pouco de flexibilidade ao criar variáveis final com a sintaxe
-  // que é a seguinte:
-  Example27({this.color1, color2}) : color2 = color2;
+/// Variáveis declaradas com um final só podem receber valor uma vez.
+/// No caso de classes, variáveis final podem ter valor atribuido através
+/// de um parâmetro no construtor
+class Exemplo27 {
+  final cor1, cor2;
+  /// Essa sintaxe fornece um pouco de flexibilidade ao criar variáveis:
+  Exemplo27({this.cor1, cor2}) : cor2 = cor2;
 }
-example27() {
-  final color = "orange", o = new Example27(color1: "lilac", color2: "white");
-  print("Example27 color is '${color}'");
-  print("Example27 color is '${o.color1}' and '${o.color2}'");
+exemplo27() {
+  final cor = "laranja", o = new Exemplo27(cor1: "lilás", cor2: "branco");
+  print("No Exemplo27 a cor é '${cor}'");
+  print("No Exemplo27 a cor é '${o.cor1}' e '${o.cor2}'");
 }
 
-// para importar uma biblioteca, use import "libraryPath" ou se for uma biblioteca da linguagem,
-// import "dart:libraryName". Também tem o gerenciador de pacotes "pub"que tem 
-// sua própria convenção de import "package:packageName".
-// Veja o import "dart:collection"; no início do arquivo. Imports devem vir no início
-// do arquivo. IterableBase vem de dart:collection.
-class Example28 extends IterableBase {
-  var names;
-  Example28() {
-    names = ["a", "b"];
+/// Para importar uma biblioteca, use import "caminhoDaBiblioteca" ou se for uma
+/// biblioteca da linguagem: import "dart:nomeDaBiblioteca".
+/// Também tem o gerenciador de pacotes "pub" que tem sua própria convenção:
+/// import "package:packageName".
+/// Observe o import "dart:collection" no início do arquivo. Imports devem vir
+/// sempre no início. A classe IterableBase vem de "dart:collection".
+class Exemplo28 extends IterableBase {
+  var nomes;
+  Exemplo28() {
+    nomes = ["a", "b"];
   }
-  get iterator => names.iterator;
+  get iterator => nomes.iterator;
 }
-example28() {
-  var o = new Example28();
-  o.forEach((name) => print("Example28 '${name}'"));
+exemplo28() {
+  var o = new Exemplo28();
+  o.forEach((nome) => print("Exemplo28 '${nome}'"));
 }
 
-// Para controle de fluxo nós temos:
-// * switch com comandos break obrigatórios
-// * if-else if-else e se-ternário ..?..:.. 
-// * closures e funções anônimas
-// * comandos break, continue e return
-example29() {
+/// Para controle de fluxo nós temos:
+/// * switch com comandos break obrigatórios
+/// * if-else if-else e se-ternário ..?..:.. 
+/// * closures e funções anônimas
+/// * comandos break, continue e return
+exemplo29() {
   var v = true ? 30 : 60;
   switch (v) {
     case 30:
-      print("Example29 switch statement");
+      print("Exemplo29 comando switch");
       break;
   }
   if (v < 30) {
   } else if (v > 30) {
   } else {
-    print("Example29 if-else statement");
+    print("Exemplo29 comando if-else");
   }
   callItForMe(fn()) {
     return fn();
@@ -574,7 +575,7 @@ example29() {
     return v;
   }
   while (true) {
-    print("Example29 callItForMe(rand) '${callItForMe(rand)}'");
+    print("Exemplo29 callItForMe(rand) '${callItForMe(rand)}'");
     if (v != 30) {
       break;
     } else {
@@ -584,20 +585,21 @@ example29() {
   }
 }
 
-// Você pode converter string para int, double para int, ou só pegar a parte inteira da divisão
-// usando o comando ~/. Vamos jogar um jogo de adivinhação.
-example30() {
+/// Você pode converter string para int, double para int, ou só pegar a parte
+/// inteira da divisão usando o comando ~/.
+/// Vamos jogar um jogo de adivinhação.
+exemplo30() {
   var gn, tooHigh = false,
     n, n2 = (2.0).toInt(), top = int.parse("123") ~/ n2, bottom = 0;
   top = top ~/ 6;
   gn = new DM.Random().nextInt(top + 1); // +1 porque o máximo do nextInt conta o número passado - 1 
-  print("Example30 Diga um número entre 0 e ${top}");
+  print("Exemplo30 Diga um número entre 0 e ${top}");
   guessNumber(i) {
     if (n == gn) {
-      print("Example30 Você acertou! O número é ${gn}");
+      print("Exemplo30 Você acertou! O número é ${gn}");
     } else {
       tooHigh = n > gn;
-      print("Example30 O número ${n} é muito "
+      print("Exemplo30 O número ${n} é muito "
         "${tooHigh ? 'alto' : 'baixo'}. Tente de novo");
     }
     return n == gn;
@@ -613,11 +615,56 @@ example30() {
   }
 }
 
+/// Parâmetro Opcional:
+/// Parâmetros declarados entre colchetes são opcionais.  
+exemplo31() {
+  encontrarVolume31(int comprimento, int largura, {int? altura}) {
+  print('comprimento = $comprimento, largura = $largura, altura = $altura');
+  }
+
+    encontrarVolume31(10,20,30); //valido
+    encontrarVolume31(10,20); //valido
+}
+
+/// Parâmetro de Posição Opcional:  
+/// Parâmetros declarados entre chaves são opcionais.  
+/// É necessário usar o nome do parâmetro para atribuir um valor, separado por dois pontos `:`.  
+/// Nos parâmetros entre chaves, a ordem não importa. 
+/// Esse tipo de parâmetro nos ajuda a evitar confusões ao passar valores  
+/// para uma função que possui muitos parâmetros.
+
+exemplo32() {
+    encontrarVolume31(int comprimento, int largura, {int? altura}) {
+    print('comprimento = $comprimento, largura = $largura, altura = $altura');
+    }
+
+    encontrarVolume32(10,20,height:30);//valido, é possível ver o nome do parâmetro
+    encontrarVolume32(10,20);//valido
+}
+
+/// Parâmetro Opcional com Valor Padrão:  
+/// Funciona da mesma forma que um parâmetro de posição opcional, com a
+/// diferença de que podemos atribuir um valor padrão a ele.  
+/// Isso significa que, se nenhum valor for passado, esse valor padrão será utilizado.
+
+exemplo33() {
+    encontrarVolume33(int comprimento, int largura, {int? altura}) {
+    print('comprimento = $comprimento, largura = $largura, altura = $altura');
+    }
+
+    encontrarVolume33(10,20,height:30); //valido
+    encontrarVolume33(10,20); //valido
+}
+
+/// Também existem novos recursos, como os operadores de reconhecimento de nulo.
+var isBool = true;
+var hasString = isBool ?? "default String";
+
 // Programas em Dart só têm um ponto de entrada, que é a função main.
 // Nada será executado antes da funcão main de um programa.
 // Isso ajuda a carregar o programa mais rapidamente, até mesmo quando o
 // carregamento é "Lazy".
-// O programa deve começar com:
+// O programa deve começar com o seguinte formato:
 main() {
   print("Aprenda Dart em 15 minutos!");
   [example1, example2, example3, example4, example5, example6, example7,
@@ -633,9 +680,5 @@ main() {
 
 Dart tem um site bastante fácil de entender. Ele tem os docs da API, tutoriais, artigos e muito mais, incluindo uma
 opção muito útil de testar o Dart online.
-* [https://www.dartlang.org](https://www.dartlang.org)
-* [https://try.dartlang.org](https://try.dartlang.org)
-
-
-
-
+* [https://dart.dev/](https://dart.dev/)
+* [https://dartpad.dev/](https://dartpad.dev/)
