@@ -19,10 +19,10 @@ As variáveis em Dart tem tipos, mas não é obrigatório declarar devido à fun
 import "dart:collection";
 import "dart:math" as DM;
 
-// Bem vindo ao Aprenda Dart em 15 minutos. https://dart.dev/
-// Este é um tutorial executável. Você pode rodar esse tutorial com Dart ou no
-// site Try Dart!, é só copiar e colar este código lá. http://dartpad.dev/
-// É possível usar Flutter no DartPad, clique em `Create` > `Flutter snippet`.
+/// Bem vindo ao Aprenda Dart em 15 minutos. https://dart.dev/
+/// Este é um tutorial executável. Você pode rodar esse tutorial com Dart ou no
+/// site Try Dart!, é só copiar e colar este código lá. http://dartpad.dev/
+/// É possível usar Flutter no DartPad, clique em `Create` > `Flutter snippet`.
 
 /// Em Dart, tudo é um objeto.
 /// Toda declaração de um objeto é uma instância de Null.
@@ -39,7 +39,7 @@ import "dart:math" as DM;
 /// Usa a sintaxe Markdown para gerar a documentação ao criar uma API.
 /// É a opção recomendada para suas APIs, classes e métodos.
 
-/// 4 Tipos de Declaração de Variáveis
+/// 5 Tipos de Declaração de Variáveis
 /// Constantes são variáveis imutáveis, portanto não podem ser alteradas.
 /// `const` em dart é tradicionalmente declarado utilizando SCREAMING_SNAKE_CASE.
 /// Exemplo:
@@ -67,14 +67,19 @@ valorAlteravel = false; //Resulta em erro.
 dynamic valorDinamico = "Eu sou uma string";
 valorDinamico = false; // O comando é válido
 
-/// Funções podem ser declaradas em um espaço global.
+/// `late` permite que você declare variáveis sem inicializá-las imediatamente,
+/// mas garantindo que elas serão inicializadas antes de serem usadas. É útil
+/// para variáveis globais, parâmetros de classe ou qualquer valor que não seja
+/// conhecido no momento da declaração.
+late var valorAlteravel;
+
+/// Funções podem ser declaradas em um espaço global (fora do main).
 /// Declarações de funções e métodos são iguais.
 /// Declarações de funções podem ser aninhadas.
 /// A declaração é feita das seguintes formas nome() {} ou
-/// nome() => expressaoDeUmaLinhaSo;
-/// Utilizando a seta o return pode ser implícito ou explícito.
+/// nome() => expressaoDeUmaLinha;
+/// Utilizando a seta (fat arrow) o return pode ser implícito ou explícito.
 /// O Dart vai executar a função `main()` independente da localização dela.
-///
 exemplo1() {
   exemplo1aninhado1() {
     exemplo1aninhado2() => print("Exemplo1 aninhado 1 aninhado 2");
@@ -85,22 +90,22 @@ exemplo1() {
 
 /// Funções anônimas são criadas sem um nome.
 exemplo2() {
-  // Return explícito.
-  aninhado1(void function() fn) {
+  // Return implícito.
+  aninhado1(void Function() fn) {
     fn();
   }
   aninhado1(() => print("Exemplo2 aninhado 1"));
 }
 
-/// Quando a função possui parâmetros, a declaração pode incluir o número
-/// de parâmetros que a função recebe, isso é feito especificando o nome de cada um dos 
-/// parâmetros que serão recebidos pela função.
+/// Quando a função possui parâmetros, a declaração pode incluir os
+/// parâmetros que a função recebe, isso é feito especificando o nome de
+/// cada um dos parâmetros que serão recebidos pela função.
 exemplo3() {
   planoA(fn(String informarAlgo)) {
     fn("Exemplo3 plano A");
   }
+  // Ou não declare os parâmetros.
   planoB(fn) {
-    // Ou não declare o número de parâmetros.
     fn("Exemplo3 plano B");
   }
   planoA((s) => print(s));
@@ -108,10 +113,10 @@ exemplo3() {
 }
 
 /// Funções têm acesso à variáveis fora de seu escopo
-var exemplo4 = "Example4 aninhado 1";
-example4() {
+var exemplo4 = "Exemplo4 aninhado 1";
+exemplo4Funcao() {
   aninhado1(fn(informarAlgo)) {
-    fn(example4);
+    fn(exemplo4);
   }
   aninhado1((s) => print(s));
 }
@@ -124,16 +129,16 @@ class Exemplo5Class {
     print(exemplo5);
   }
 }
-exemplo5() {
+exemplo5Funcao() {
   // Criar uma instância anônima de Exemplo5Class e chamar o método sayIt.
   new Exemplo5Class().sayIt();
 }
 
-/// A declaração de uma classe é feita da seguinte maneira: class name { [classBody] }.
-/// onde classBody pode incluir métodos e variáveis de instância, assim como
+/// A declaração de uma classe é feita da seguinte maneira: NomeDaClasse {}.
+/// onde as {} podem incluir métodos e variáveis de instância, assim como
 /// métodos e variáveis de classe.
 class Exemplo6Class {
-  var variavelInstancia = "Exemplo6 variável instância";
+  var variavelInstancia = "Exemplo6 variável de instância";
   sayIt() {
     print(variavelInstancia);
   }
@@ -152,9 +157,9 @@ class Exemplo7Class {
     print(classVariable);
   }
 }
-example7() {
+exemplo7() {
   Exemplo7Class.sayItDoClass();
-  new Example7Class().sayItFromInstance();
+  new Exemplo7Class().sayItDaInstancia();
 }
 
 /// O Dart oferece suporte a Genéricos.  
@@ -189,7 +194,7 @@ class ExemploGenerico<T>{
 
 /// Listas são ótimas, mas há uma limitação para o que elas podem ser quando
 /// estão fora do corpo de uma função/método. Listas fora do escopo da classe
-/// ou fora da classe precisam que ser constantes. Strings e números são
+/// ou fora da classe precisam ser constantes. Strings e números são
 /// constantes por padrão. Mas arrays e mapas não são. Eles podem ser declarados
 /// como constantes usando o comando "const".
 const exemplo8List = ["Exemplo8 const array"];
@@ -207,16 +212,14 @@ exemplo8() {
   /// Isso acontece porque o Dart utiliza [pass-reference-by-value](https://stackoverflow.com/questions/25170094/what-is-the-true-meaning-of-pass-by-reference-in-modern-languages-like-dart).
   /// Então, quando você atribui uma lista existente a uma nova variável,  
   /// em vez de continuar sendo uma `List`, ela se torna um `Iterable`.  
-  var iterableExplicitList = explicitList;
+  var iterableExplicitList = listaExplicita;
   print(iterableExplicitList); // ("SomeArray"); "[]" becomes "()"
-  var newExplicitLists = explicitList.toList(); // Converts Iterable<E> to List<E>
+  var newExplicitLists = listaExplicita.toList(); // Converts Iterable<E> to List<E>
 }
 
-/// Loops em Dart são criados com for () {}, while () {} ou for (.. in ..) {}, ou
-/// funções de callbacks com muitas funcionalidades, começando com
-/// forEach, map e where.
+/// Loops em Dart são criados com for () {}, while () {} ou for (.. in ..) {}
 var exemplo9 = const ["a", "b"];
-exemplo9() {
+exemplo9Metodo() {
   for (int i = 0; i < exemplo9.length; i++) {
     print("Exemplo9 for loop '${exemplo9[i]}'");
   }
@@ -272,22 +275,21 @@ exemplo11() {
 
   print("Exemplo11 int ${i}");
   print("Exemplo11 double ${d}");
-
 }
 
 /// DateTime traz operações com data/hora.
-example12() {
-  var now = new DateTime.now();
-  print("Exemplo12 agora '${now}'");
-  now = now.add(new Duration(days: 1));
-  print("Exemplo12 amanhã '${now}'");
+exemplo12() {
+  var agora = new DateTime.now();
+  print("Exemplo12 agora '${agora}'");
+  agora = agora.add(new Duration(days: 1));
+  print("Exemplo12 amanhã '${agora}'");
 }
 
 /// Expressões regulares são suportadas.
 exemplo13() {
   var s1 = "uma string", s2 = "uma", re = new RegExp("^s.+?g\$");
   match(s) {
-    if (re.daMatch(s)) {
+    if (re.hasMatch(s)) {
       print("Exemplo13 regexp dá match '${s}'");
     } else {
       print("Exemplo13 regexp não dá match '${s}'");
