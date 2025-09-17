@@ -407,7 +407,7 @@ exemplo20() {
 /// mas também é mais lento devido às checagens extras e por isso
 /// é evitado em ambiente de produção.
 class Exemplo21 {
-  List<String> _nomes;
+  List<String> _nomes = [];
   Exemplo21() {
     _nomes = ["a", "b"];
   }
@@ -421,11 +421,11 @@ class Exemplo21 {
   }
 }
 void exemplo21() {
-  Exemplo21 o = new Example21();
+  Exemplo21 o = new Exemplo21();
   o.add("c");
-  print("Exemplo21 nomes '${o.names}' and tamanho '${o.tamanho}'");
-  o.names = ["d", "e"];
-  print("Exemplo21 nomes '${o.names}' and tamanho '${o.tamanho}'");
+  print("Exemplo21 nomes '${o.nomes}' and tamanho '${o.tamanho}'");
+  o.nomes = ["d", "e"];
+  print("Exemplo21 nomes '${o.nomes}' and tamanho '${o.tamanho}'");
 }
 
 // Herança em classes é feito assim: class name extends NomeDeOutraClasse {}.
@@ -447,8 +447,9 @@ exemplo22() {
 /// a herança comum não fica no caminho do reuso de código.
 /// As misturas aparecem após o comando "with" na declaração da classe.
 class Exemplo23A {}
-class Exemplo23Utils {
-  addTwo(n1, n2) {
+/// Desde o Dart 3, a palavra-chave 'mixin' é obrigatória em vez de 'class'.
+mixin Exemplo23Utils {
+  addDois(n1, n2) {
     return n1 + n2;
   }
 }
@@ -470,19 +471,19 @@ exemplo23() {
 /// construtor da classe pai.
 class Exemplo24A {
   var _valor;
-  Exemplo24A({valor: "umValor"}) {
+  Exemplo24A({valor = "umValor"}) {
     _valor = valor;
   }
   get valor => _valor;
 }
 class Exemplo24B extends Exemplo24A {
-  Exemplo24B({value: "umOutroValor"}) : super(value: valor);
+  Exemplo24B({valor = "umOutroValor"}) : super(valor: valor);
 }
 exemplo24() {
   var o1 = new Exemplo24B(),
-    o2 = new Exemplo24B(value: "aindaMais");
-  print("Exemplo24 puxando o super do construtor '${o1.value}'");
-  print("Exemplo24 puxando o super do construtor '${o2.value}'");
+    o2 = new Exemplo24B(valor: "aindaMais");
+  print("Exemplo24 puxando o super do construtor '${o1.valor}'");
+  print("Exemplo24 puxando o super do construtor '${o2.valor}'");
 }
 
 /// Há um atalho para passar parâmetros para o construtor no caso de classes mais simples.
@@ -494,8 +495,8 @@ class Exemplo25 {
 }
 exemplo25() {
   var o = new Exemplo25(valor: "a", outroValor: "b");
-  print("Exemplo25 atalho para construtor '${o.value}' e "
-    "'${o.anotherValue}'");
+  print("Exemplo25 atalho para construtor '${o.valor}' e "
+    "'${o.outroValor}'");
 }
 
 /// Parâmetros com nome estão disponíveis quando declarados entre {}.
@@ -512,11 +513,11 @@ exemplo26() {
     _sobrenome = sobrenome;
     _email = email;
   }
-  setConfig1(sobrenome: "Silva", name: "João");
-  print("Exemplo26 nome: '${_name}', sobrenome: '${_surname}', "
+  setConfig1(sobrenome: "Silva", nome: "João");
+  print("Exemplo26 nome: '${_nome}', sobrenome: '${_sobrenome}', "
     "email: '${_email}'");
   setConfig2("José", "Maria");
-  print("Exemplo26 nome: '${_name}', sobrenome: '${_surname}', "
+  print("Exemplo26 nome: '${_nome}', sobrenome: '${_sobrenome}', "
   "email: '${_email}'");
 }
 
@@ -617,10 +618,10 @@ exemplo30() {
   }
 }
 
-/// Parâmetro Opcional:
-/// Parâmetros declarados entre colchetes são opcionais.  
+/// Parâmetro Posicional Opcional:  
+/// o parâmetro declarado entre [] é opcional.    
 exemplo31() {
-  encontrarVolume31(int comprimento, int largura, {int? altura}) {
+  encontrarVolume31(int comprimento, int largura, [int? altura]) {
   print('comprimento = $comprimento, largura = $largura, altura = $altura');
   }
 
@@ -628,33 +629,33 @@ exemplo31() {
     encontrarVolume31(10,20); //valido
 }
 
-/// Parâmetro de Posição Opcional:  
-/// Parâmetros declarados entre chaves são opcionais.  
-/// É necessário usar o nome do parâmetro para atribuir um valor, separado por dois pontos `:`.  
-/// Nos parâmetros entre chaves, a ordem não importa. 
-/// Esse tipo de parâmetro nos ajuda a evitar confusões ao passar valores  
+/// Parâmetro Nomeado Opcional:  
+/// o parâmetro será declarado entre {}.  
+/// Os parâmetros entre chaves são opcionais.  
+/// É necessário usar o nome do parâmetro para atribuir um valor, separado por
+/// dois pontos `:`.  
+/// Nos parâmetros entre chaves, a ordem não importa.  
+/// Esse tipo de parâmetro ajuda a evitar confusão ao passar valores  
 /// para uma função que possui muitos parâmetros.
-
 exemplo32() {
-    encontrarVolume31(int comprimento, int largura, {int? altura}) {
+    encontrarVolume32(int comprimento, int largura, {int? altura}) {
     print('comprimento = $comprimento, largura = $largura, altura = $altura');
     }
 
-    encontrarVolume32(10,20,height:30);//valido, é possível ver o nome do parâmetro
+    encontrarVolume32(10,20,altura:30);//valido, é possível ver o nome do parâmetro
     encontrarVolume32(10,20);//valido
 }
 
 /// Parâmetro Opcional com Valor Padrão:  
-/// Funciona da mesma forma que um parâmetro de posição opcional, com a
-/// diferença de que podemos atribuir um valor padrão a ele.  
+/// Funciona da mesma forma que um parâmetro nomeado opcional, com a diferença
+/// de que podemos atribuir um valor padrão a ele.  
 /// Isso significa que, se nenhum valor for passado, esse valor padrão será utilizado.
-
 exemplo33() {
     encontrarVolume33(int comprimento, int largura, {int? altura}) {
     print('comprimento = $comprimento, largura = $largura, altura = $altura');
     }
 
-    encontrarVolume33(10,20,height:30); //valido
+    encontrarVolume33(10,20,altura:30); //valido
     encontrarVolume33(10,20); //valido
 }
 
