@@ -222,7 +222,7 @@ function string_functions(    localvar, arr) {
 
     # Séparer par un délimiteur
     n = split("foo-bar-baz", arr, "-");
-    # résultat : a[1] = "foo"; a[2] = "bar"; a[3] = "baz"; n = 3
+    # résultat : arr[1] = "foo"; arr[2] = "bar"; arr[3] = "baz"; n = 3
 
     # Autre astuces utiles
     sprintf("%s %d %d %d", "Testing", 1, 2, 3); # => "Testing 1 2 3"
