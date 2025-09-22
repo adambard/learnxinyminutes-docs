@@ -1,3 +1,14 @@
+# ...
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # for actions/checkout
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          lfs: true
 ---
 name: YAML
 filename: learnyaml.yaml
