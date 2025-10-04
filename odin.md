@@ -29,11 +29,11 @@ import "core:fmt"
 main :: proc() {
     fmt.println("Hellope!")
 }
+```
 
-////////////////////////////////////////////////////
 ## 1. Basic Data Types and Operators
-////////////////////////////////////////////////////
 
+```
 // Integers - Odin has explicit sized integer types
 x: i32 = 42          // 32-bit signed integer
 y: u64 = 100         // 64-bit unsigned integer
@@ -83,12 +83,13 @@ not_result := !true          // false
 bit_and := 0b1010 & 0b1100   // 0b1000
 bit_or := 0b1010 | 0b1100    // 0b1110
 bit_xor := 0b1010 ~ 0b1100   // 0b0110 (note: ~ is XOR in Odin)
-bit_not := ~0b1010           // bitwise NOT
+bit_not := ~u8(0b1010)       // bitwise NOT, Cast needed for untyped constants
 
-////////////////////////////////////////////////////
+```
+
 ## 2. Variables and Constants
-////////////////////////////////////////////////////
 
+```
 // Variable declaration with type inference
 some_number := 42            // Type inferred as int
 some_text := "Hello"         // Type inferred as string
@@ -112,17 +113,17 @@ TYPED_CONSTANT : f32 : 2.71828
 // Multiple assignment
 a, b := 10, 20
 a, b = b, a  // Swap values
+```
 
-////////////////////////////////////////////////////
 ## 3. Arrays and Slices
-////////////////////////////////////////////////////
 
+```
 // Fixed-size arrays
 numbers: [5]int = {1, 2, 3, 4, 5}
 chars: [3]rune = {'A', 'B', 'C'}
 
 // Array with inferred size
-inferred := [..]int{10, 20, 30, 40}
+inferred := [?]int{10, 20, 30, 40}
 
 // Zero-initialized array
 zeros: [10]int  // All elements are 0
@@ -134,8 +135,11 @@ array_length := len(numbers)  // 5
 
 // Slices - dynamic views into arrays
 slice: []int = {1, 2, 3, 4, 5}  // Slice literal
-array_slice := numbers[1:4]     // Slice of array from index 1 to 3
-full_slice := numbers[:]        // Slice of entire array
+// Slice indices are optional. The following slice is the entire numbers array
+full_slice := numbers[:]
+// Slice indices are formatted like a[lower_bound : upper_bound]
+// The lower bound is inclusive and the upper bound is exclusive
+array_slice := numbers[1:4]     // Slice of array elements 1 - 3
 
 // Dynamic arrays - can grow and shrink
 dynamic_array: [dynamic]int
@@ -144,11 +148,11 @@ append(&dynamic_array, 2, 3, 4)  // Append multiple elements
 
 // Remember to clean up dynamic arrays
 defer delete(dynamic_array)
+```
 
-////////////////////////////////////////////////////
 ## 4. Control Flow
-////////////////////////////////////////////////////
 
+```
 // If statements
 age := 25
 if age >= 18 {
@@ -164,18 +168,18 @@ if age >= 18 {
 for i := 0; i < 10; i += 1 {
     fmt.println(i)
 }
-
-// While-style loop
-counter := 0
-for counter < 5 {
-    fmt.println(counter)
-    counter += 1
+// Note that conditions are optional.
+for {
+    fmt.println("This will loop forever.")
 }
 
-// Infinite loop
-for {
-    // This runs forever (until break)
-    break  // Exit the loop
+// Range-based loops
+for i in 0..<5 {  // 0 to 4 (exclusive upper bound)
+    fmt.println(i)
+}
+
+for i in 0..=4 {  // 0 to 4 (inclusive upper bound)  
+    fmt.println(i)
 }
 
 // Iterating over arrays/slices with index
@@ -209,11 +213,11 @@ case age < 20:
 case:
     fmt.println("Adult")
 }
+```
 
-////////////////////////////////////////////////////
 ## 5. Procedures (Functions)
-////////////////////////////////////////////////////
 
+```
 // Basic procedure definition
 add :: proc(a: int, b: int) -> int {
     return a + b
@@ -232,13 +236,18 @@ sum := add(5, 3)                    // 8
 quotient, ok := divide(10, 2)       // 5, true
 quotient_bad, ok_bad := divide(10, 0) // 0, false
 
-// Procedure with default parameters (using overloading)
-greet :: proc(name: string) {
+// Something akin to overloading can be mimicked using procedure groups 
+greet_string :: proc(name: string) {
     fmt.printf("Hello, %s!\n", name)
 }
 
-greet :: proc() {
-    greet("World")
+greet_nothing :: proc() {
+    greet_string("World") // or greet("World") will work with the following procedure group
+}
+
+greet :: proc{
+    greet_string,
+    greet_nothing,
 }
 
 // Variadic procedures (variable number of arguments)
@@ -251,11 +260,11 @@ sum_all :: proc(numbers: ..int) -> int {
 }
 
 result_sum := sum_all(1, 2, 3, 4, 5)  // 15
+```
 
-////////////////////////////////////////////////////
 ## 6. Structs
-////////////////////////////////////////////////////
 
+```
 // Struct definition
 Person :: struct {
     name: string,
@@ -289,11 +298,11 @@ celebrate_birthday :: proc(person: ^Person) {  // ^ means pointer
 }
 
 celebrate_birthday(&person1)  // Pass address with &
+```
 
-////////////////////////////////////////////////////
 ## 7. Enums and Unions
-////////////////////////////////////////////////////
 
+```
 // Enums
 Color :: enum {
     RED,
@@ -311,30 +320,22 @@ Status :: enum u8 {
     WARNING = 2,
 }
 
-// Unions (tagged unions)
-Shape :: union {
-    Circle: struct { radius: f32 },
-    Rectangle: struct { width, height: f32 },
-    Triangle: struct { base, height: f32 },
-}
+// Unions
+Value :: union {int, bool}
 
-my_shape := Shape(Circle{{radius = 5.0}})
+v: Value// in Odin, unions have a default state of `nil`
 
 // Pattern matching with unions
-switch shape in my_shape {
-case Circle:
-    fmt.printf("Circle with radius %.2f\n", shape.radius)
-case Rectangle:
-    fmt.printf("Rectangle %.2f x %.2f\n", shape.width, shape.height)
-case Triangle:
-    fmt.printf("Triangle base %.2f, height %.2f\n", shape.base, 
-               shape.height)
+switch _ in v {
+case int:  fmt.println("int")
+case bool: fmt.println("bool")
+case:      fmt.println("This default case will execute in this example")
 }
+```
 
-////////////////////////////////////////////////////
 ## 8. Maps
-////////////////////////////////////////////////////
 
+```
 // Map declaration
 scores: map[string]int
 
@@ -360,19 +361,11 @@ if exists {
 for name, score in scores {
     fmt.printf("%s: %d\n", name, score)
 }
+```
 
-// Map literal
-ages := map[string]int{
-    "Alice" = 30,
-    "Bob" = 25,
-    "Charlie" = 35,
-}
-defer delete(ages)
-
-////////////////////////////////////////////////////
 ## 9. Pointers and Memory Management
-////////////////////////////////////////////////////
 
+```
 // Pointers
 number := 42
 number_ptr := &number        // Get address of number
@@ -389,11 +382,11 @@ defer free(int_ptr)  // Clean up memory
 // make() for complex types
 my_slice := make([]int, 5)    // Slice with length 5
 defer delete(my_slice)
+```
 
-////////////////////////////////////////////////////
 ## 10. Error Handling
-////////////////////////////////////////////////////
 
+```
 // Odin uses multiple return values for error handling
 read_file :: proc(filename: string) -> (string, bool) {
     // Simulate file reading
@@ -426,13 +419,13 @@ example_with_error_handling :: proc() -> bool {
     fmt.printf("Parsed number: %d\n", num)
     return true
 }
+```
 
-////////////////////////////////////////////////////
 ## 11. Packages and Imports
-////////////////////////////////////////////////////
 
+```
+package main
 // Every .odin file starts with a package declaration
-// package main  // (Already declared at the top)
 
 // Import from core library
 import "core:fmt"
@@ -442,18 +435,20 @@ import "core:os"
 // Import with alias
 import str "core:strings"
 
-// Using imported procedures
-text := "Hello, World!"
-upper_text := strings.to_upper(text)
-fmt.println(upper_text)
+main :: proc() {
+    // Using imported procedures
+    text := "Hello, World!"
+    upper_text := strings.to_upper(text)
+    fmt.println(upper_text)
+}
 
 // Import from vendor packages (external libraries)
 // import "vendor:raylib"
+```
 
-////////////////////////////////////////////////////
 ## 12. Compile-time Features
-////////////////////////////////////////////////////
 
+```
 // Compile-time conditionals
 when ODIN_OS == .Windows {
     // Windows-specific code
@@ -467,10 +462,10 @@ when ODIN_OS == .Windows {
 }
 
 // Compile-time constants
-ODIN_DEBUG :: #config(DEBUG, false)
+ENABLE_LOGGING :: #config(ENABLE_LOGGING, false)
 
-when ODIN_DEBUG {
-    fmt.println("Debug mode enabled")
+when ENABLE_LOGGING {
+    fmt.println("Logging enabled")
 }
 
 // Generics (Parametric polymorphism)
@@ -478,17 +473,18 @@ Generic_Array :: struct($T: typeid) {
     data: []T,
 }
 
-max :: proc(a: $T, b: T) -> T {
-    return a if a > b else b
+// Generics (Parametric polymorphism)
+add :: proc(a: $T, b: T) -> T {
+    return a + b
 }
 
-max_int := max(10, 20)      // T becomes int
-max_float := max(3.14, 2.71) // T becomes f64
+sum_int := add(10, 20)        // T becomes int
+sum_float := add(3.14, 2.71)  // T becomes f64
+```
 
-////////////////////////////////////////////////////
 ## 13. Built-in Data Structures
-////////////////////////////////////////////////////
 
+```
 // Bit sets for flags
 File_Mode :: enum {
     READ,
@@ -497,8 +493,8 @@ File_Mode :: enum {
 }
 
 permissions: bit_set[File_Mode]
-permissions |= {.READ, .WRITE}        // Set multiple flags
-permissions &~= {.WRITE}              // Remove flag
+permissions += {.READ, .WRITE}        // Set multiple flags
+permissions -= {.WRITE}              // Remove flag
 has_read := .READ in permissions      // Check flag
 is_readonly := permissions == {.READ} // Compare sets
 
@@ -519,42 +515,32 @@ point := [3]f32{10, 20, 1}
 transformed := transform * point      // Matrix multiplication
 
 // Quaternions for 3D rotations
-identity_rot := quaternion128{0, 0, 0, 1}  // No rotation
-rotation_90_z := quaternion128{0, 0, 0.707, 0.707}  // 90° around Z
+identity_rot := quaternion(w = 1, x = 0, y = 0, z = 0)  // No rotation
+rotation_90_z := quaternion(w = 0.707, x = 0, y = 0, z = 0.707)  // 90° around Z
+```
 
-////////////////////////////////////////////////////
 ## 14. Context System and Defer
-////////////////////////////////////////////////////
 
-// Odin has an implicit context system for threading allocators,
-// loggers, and other utilities through your program
+```
+// Odin has an implicit context system that makes it easy to use
+// temporary allocations in loops without manual cleanup
 
-example_with_context :: proc() {
-    // Save current context
-    old_allocator := context.allocator
+process_files :: proc(filenames: []string) {
+    // Use temp allocator for temporary data in this scope
+    defer free_all(context.temp_allocator)  // Clear the arena when done 
     
-    // Use a different allocator temporarily
-    temp_allocator := context.temp_allocator
-    context.allocator = temp_allocator
-    
-    // All allocations in this scope use temp_allocator
-    temp_data := make([]int, 100)
-    // No need to delete temp_data - it's automatically cleaned up
-    
-    // Restore original allocator
-    context.allocator = old_allocator
+    for filename in filenames {
+        // Each iteration allocates temporary data
+        data := make([]u8, 1024, context.temp_allocator)  // No defer is needed here
+        fmt.printf("Processing %s with %d bytes\n", filename, len(data))
+        // No individual cleanup needed
+    }
 }
 
-// defer ensures cleanup happens when scope exits
-resource_management_example :: proc() {
-    file_handle := os.open("example.txt", os.O_RDONLY, 0) or_return
-    defer os.close(file_handle)  // Always closed when function exits
-    
+// defer ensures cleanup on scope exit
+resource_example :: proc() {
     buffer := make([]u8, 1024)
-    defer delete(buffer)  // Always freed when function exits
-    
-    // Use file_handle and buffer...
-    // They're automatically cleaned up even if we return early
+    defer delete(buffer)  // Free the buffer 
 }
 ```
 
