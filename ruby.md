@@ -80,10 +80,10 @@ false.class #=> FalseClass
 
 # Apart from false itself, nil is the only other 'falsey' value
 
-!!nil   #=> false
-!!false #=> false
-!!0     #=> true
-!!""    #=> true
+!nil   #=> true
+!false #=> true
+!0     #=> false
+!""    #=> false
 
 # More comparisons
 1 < 10 #=> true
