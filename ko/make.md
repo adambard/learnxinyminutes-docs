@@ -5,8 +5,8 @@ contributors:
     - ["Robert Steed", "https://github.com/robochat"]
     - ["Stephan Fuhrmann", "https://github.com/sfuhrm"]
 filename: Makefile
-translaters:
-	- ["Wooseok Yang","https://github.com/Huansock" ]
+translators:
+    - ["Wooseok Yang","https://github.com/Huansock"]
 ---
 
 Makefile은 타겟을 생성하기 위한 규칙 그래프를 정의합니다. 그 목적은 최소한의 노력으로 타겟을 최신 버전으로 갱신하는 것입니다. 1976년 스튜어트 펠드먼(Stuart Feldman)이 주말에 이 프로그램을 작성한 것으로 유명하며, 많은 경쟁자와 비판에도 불구하고 특히 유닉스와 리눅스에서 여전히 널리 사용되고 있습니다.
