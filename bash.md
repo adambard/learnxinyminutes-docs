@@ -80,7 +80,7 @@ echo "${variable/Some/A}" # => A string
 
 # Substring from a variable:
 length=7
-echo "${variable:0:length}" # => Some st
+echo "${variable:0:$length}" # => Some st
 # This will return only the first 7 characters of the value
 echo "${variable: -5}" # => tring
 # This will return the last 5 characters (note the space before -5).
