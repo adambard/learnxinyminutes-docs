@@ -115,7 +115,7 @@ println("I'm Julia. Nice to meet you!")  # => I'm Julia. Nice to meet you!
 
 # Another way to format strings is the printf macro from the stdlib Printf.
 using Printf   # this is how you load (or import) a module
-@printf "%d is less than %f\n" 4.5 5.3   # => 5 is less than 5.300000
+@printf "%d is less than %f\n" 4.5 5.3   # => 4 is less than 5.300000
 
 
 ####################################################
