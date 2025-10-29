@@ -2,7 +2,7 @@
 name: YAML
 filename: learnyaml.yaml
 contributors:
-
+R.
 - [Leigh Brenecki, 'https://leigh.net.au']
 - [Suhas SG, 'https://github.com/jargnar']
 
@@ -132,7 +132,7 @@ a_nested_map:
 # Sequences (equivalent to lists or arrays) look like this
 # (note that the '-' counts as indentation):
 a_sequence:
-  - Item 1
+ - Mục 1 
   - Item 2
   - 0.5  # sequences can contain disparate types.
   - Item 4
