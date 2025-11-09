@@ -94,10 +94,60 @@ SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 SELECT dept_no, COUNT(dept_no) FROM dept_emp GROUP BY dept_no
 HAVING COUNT(dept_no) > 100;
 
+-- За допомогою ключового слова AS можна задавати псевдоніми для назв 
+-- стовпців або таблиць у межах запиту.
+SELECT COUNT(A.*) AS total_employees, COUNT(B.*) total_departments
+FROM employees AS A, departments B;
 
+-- Стандартний формат запису дат: "рррр-мм-дд".
+-- Однак він може відрізнятися в залежності від імплементації, 
+-- операційної системи, та налаштувань локальної сесії.
+SELECT * FROM dept_manager WHERE from_date >= '1990-01-01';
 
+-- Об'єднання даних з декількох таблиць за допомогою команди JOIN. 
+-- Таблиця titles містить назви посад працівників з прив'язкою до
+-- їх порядкових номерів та періодів роботи (між from_date та to_date).
+-- Наступна команда отримує перші 10 рядків такої інформації, але замінює 
+-- номери працівників на їх імена та прізвища шляхом порівняння з таблицею employees.
+SELECT employees.first_name, employees.last_name,
+       titles.title, titles.from_date, titles.to_date
+FROM titles INNER JOIN employees ON
+       employees.emp_no = titles.emp_no LIMIT 10;
 
+-- Отримати результати декількох запитів.
+-- UNION обирає унікальні рядки, UNION ALL повертає всі, навіть дублікатні, значення
+SELECT * FROM departments WHERE dept_no = 'd001'
+UNION
+SELECT * FROM departments WHERE dept_no = 'd002';
 
+-- Порядок SQL синтаксису:
+-- SELECT _ FROM _ JOIN _ ON _ WHERE _ GROUP BY _ HAVING _ ORDER BY _ UNION
+
+-- Перелічити всі таблиці з усіх БД. В реалізаціях зазвичай існує своя 
+-- комбінація клавіш для застосування команди з обраною БД в роботі.
+SELECT * FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE='BASE TABLE';
+
+-- Створити таблицю tablename1 в межах обраної БД з двома вказаними колонками.
+-- Для колонок можна вказувати їх типи даних, а також безліч інших можливих налаштувань.
+CREATE TABLE tablename1 (fname VARCHAR(20), lname VARCHAR(20));
+
+-- Додати до таблиці tablename1 рядок даних. Ми припускаємо, що таблиця була
+-- налаштована таким чином, аби сприймати ці значення за доречні.
+INSERT INTO tablename1 VALUES('Richard','Mutt');
+
+-- Замінити ім'я (fname) на 'John' в усіх рядках зі значенням прізвища (lname) 'Mutt'.
+UPDATE tablename1 SET fname='John' WHERE lname='Mutt';
+
+-- Видалити всі рядки з таблиці tablename1 
+-- в котрих значення lname починається на 'М'
+DELETE FROM tablename1 WHERE lname LIKE 'M%';
+
+-- Видалити всі рядки з tablename1, залишивши пусту таблицю.
+DELETE FROM tablename1;
+
+-- Видалити усю таблицю tablename1.
+DROP TABLE tablename1;
 ```
 
 ## Додаткова література
