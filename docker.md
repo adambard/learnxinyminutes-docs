@@ -133,9 +133,9 @@ $ docker run -i
 # or
 $ docker run -it
 # Docker runs our containers in a non-interactive mode i.e. they do not accept
-# inputs or work dynamically while running. The -i (or --interactive) flag keeps input open to the
-# container, and the -t (or --tty) flag creates a pseudo-terminal that the shell can attach
-# to (can be combined as -it)
+# inputs or work dynamically while running. The -i (or --interactive) flag
+# keeps input open to the container, and the -t (or --tty) flag creates a
+# pseudo-terminal that the shell can attach to (can be combined as -it)
 
 $ docker ps -a
 # The `docker ps` command only shows running containers by default. To see all
@@ -222,7 +222,8 @@ FROM <base-image>
 
 ENV USERNAME='admin'\
     PWD='****'
-# optionally define environmental variables, real credentials should be handled more securely (like using .env file)
+# optionally define environmental variables, real credentials
+# should be handled more securely (like using .env file)
 
 RUN apt-get update
 # run linux commands inside container env, does not affect host env
