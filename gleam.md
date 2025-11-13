@@ -91,57 +91,59 @@ pub fn main() {
   // When running on JavaScript runtimes ints are represented using JavaScript's
   // 64 bit floating point numbers.
 
+  // We can use `echo` to debug print a value.
+
   // Int arithmetic
-  io.debug(1 + 1)
-  io.debug(5 - 1)
-  io.debug(5 / 2)
-  io.debug(3 * 3)
-  io.debug(5 % 2)
+  echo 1 + 1
+  echo 5 - 1
+  echo 5 / 2
+  echo 3 * 3
+  echo 5 % 2
 
   // Int comparisons
-  io.debug(2 > 1)
-  io.debug(2 < 1)
-  io.debug(2 >= 1)
-  io.debug(2 <= 1)
+  echo 2 > 1
+  echo 2 < 1
+  echo 2 >= 1
+  echo 2 <= 1
 
   // Equality works for any type and is checked structurally, meaning that two
   // values are equal if they have the same structure rather than if they are at
   // the same memory location.
-  io.debug(1 == 1)
+  echo 1 == 1
   // True
-  io.debug(2 != 2)
+  echo 2 != 2
   // False
 
   // Standard library int functions
-  io.debug(int.min(142, 137))
+  echo int.min(142, 137)
   // 137
-  io.debug(int.clamp(-80, min: 0, max: 100))
+  echo int.clamp(-80, min: 0, max: 100)
   // 0
-  io.debug(int.base_parse("10", 2))
+  echo int.base_parse("10", 2)
   // Ok(2)
 
   // Binary, octal, and hex Int literals
-  io.debug(0b00001111)
-  io.debug(0o17)
-  io.debug(0xF)
+  echo 0b00001111
+  echo 0o17
+  echo 0xF
 
   // Use underscores to enhance integer readability
-  io.debug(1_000_000)
+  echo 1_000_000
 
   // Gleam's numerical operators are not overloaded, so there are dedicated
   // operators for working with floats.
 
   // Float arithmetic
-  io.debug(1.0 +. 1.5)
-  io.debug(5.0 -. 1.5)
-  io.debug(5.0 /. 2.5)
-  io.debug(3.0 *. 3.5)
+  echo 1.0 +. 1.5
+  echo 5.0 -. 1.5
+  echo 5.0 /. 2.5
+  echo 3.0 *. 3.5
 
   // Float comparisons
-  io.debug(2.2 >. 1.3)
-  io.debug(2.2 <. 1.3)
-  io.debug(2.2 >=. 1.3)
-  io.debug(2.2 <=. 1.3)
+  echo 2.2 >. 1.3
+  echo 2.2 <. 1.3
+  echo 2.2 >=. 1.3
+  echo 2.2 <=. 1.3
 
   // Floats are represented as 64-bit floating point numbers on both the Erlang
   // and JavaScript runtimes.
@@ -157,42 +159,41 @@ pub fn main() {
   // NaN or Infinity float value in the Erlang runtime.
 
   // Division by zero is not an error
-  io.debug(3.14 /. 0.0)
+  echo 3.14 /. 0.0
   // 0.0
 
   // Standard library float functions
-  io.debug(float.max(2.0, 9.5))
+  echo float.max(2.0, 9.5)
   // 9.5
-  io.debug(float.ceiling(5.4))
+  echo float.ceiling(5.4)
   // 6.0
 
   // Underscores for floats are also supported
-  io.debug(10_000.01)
+  echo 10_000.01
 
   // Division by zero will not overflow but is instead defined to be zero.
 
   // Working with strings
-  io.debug("⭐ Gleam ⭐ - 별")
-  io.debug(
-    "this
+  echo "⭐ Gleam ⭐ - 별"
+  echo "this
     is
     a
     multi
     line
-    string",
-  )
-  io.debug("\u{1F600}")
+    string"
+
+  echo "\u{1F600}"
   // Outputs a smiley 😀
 
   // Double quote can be escaped
   io.println("\"X\" marks the spot")
 
   // String concatenation
-  io.debug("One " <> "Two")
+  echo "One " <> "Two"
 
   // String functions
-  io.debug(text.reverse("1 2 3 4 5"))
-  io.debug(text.append("abc", "def"))
+  echo text.reverse("1 2 3 4 5")
+  echo text.append("abc", "def")
 
   io.println(text.reverse("!desrever tog gnirts sihT"))
   // Outputs "This string got reversed!"
@@ -209,43 +210,43 @@ pub fn main() {
   // Bool operators
   // The || and && operators work by short-circuiting
 
-  io.debug(True && False)
+  echo True && False
   // False
 
-  io.debug(True && True)
+  echo True && True
   // True
 
-  io.debug(False || False)
+  echo False || False
   // False
 
-  io.debug(False || True)
+  echo False || True
   // True
 
   // Bool functions
-  io.debug(bool.to_string(True))
+  echo bool.to_string(True)
   // "True"
 
-  io.debug(bool.to_int(False))
+  echo bool.to_int(False)
   // 0
 
   // Assignments
   let x = "Original value"
-  io.debug(x)
+  echo x
 
   // Assign `y` to the value of `x`
   let y = x
-  io.debug(y)
+  echo y
 
   // Assign `x` to a new value
   let x = "New value"
-  io.debug(x)
+  echo x
 
   // The `y` still refers to the original value
-  io.debug(y)
+  echo y
 
   // In Gleam variable and function names are written in snake_case.
   let answer_to_the_universe = 42
-  io.debug(answer_to_the_universe)
+  echo answer_to_the_universe
 
   let and_everything = answer_to_the_universe
   // Now using a variable produces a warning
