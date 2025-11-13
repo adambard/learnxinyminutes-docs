@@ -65,5 +65,5 @@ mean A                   ⍝ 37
 ## Further Reading
 
 - [APL Wiki](https://aplwiki.com/)
-- An older version of APL book by the creator: [Kenneth Iverson - A Programming Language](https://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE/view)
+- An older version of APL book by the creator: [Kenneth Iverson - A Programming Language](https://archive.org/details/aprogramminglanguage1962)
 - Additional Books: [APL Books](https://aplwiki.com/wiki/Books)
