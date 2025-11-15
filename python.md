@@ -1107,6 +1107,28 @@ my_function(1,2)  # => "Entering function my_function"
 
 print(my_function.__name__)  # => 'my_function'
 print(my_function.__doc__)  # => 'Adds two numbers together.'
+
+# Wrapper with argument
+
+def log_function_with_args(log_level): # wrap your log_function into a new one to set log_level as argument
+    def log_function(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            print(f"{log_level}: Entering function", func.__name__)
+            result = func(*args, **kwargs)
+            print(f"{log_level}: Exiting function", func.__name__)
+            return result
+        return wrapper
+    return log_function  # return the new function
+
+@log_function_with_args(log_level="INFO")  # Now you can set arguments
+def my_function(x,y):
+    """Adds two numbers together."""
+    return x+y
+
+my_function(1,2)  # => "INFO: Entering function my_function"
+                  # => "3"
+                  # => "INFO: Exiting function my_function"
 ```
 
 ### Free Online
