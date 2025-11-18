@@ -343,7 +343,233 @@ fn main() {
     // ref_var2 is of type &mut i32, so stores a reference to an i32, not the value.
     // var2 = 2; // this would not compile because `var2` is borrowed.
     ref_var2; // no-op, but counts as a use and keeps the borrow active until here
+
+    ///////////////////////////////////////////////////////
+    // 6. FFI (Foreign Function Interface) - Calling C //
+    ///////////////////////////////////////////////////////
+
+    // Rust has excellent support for calling C code through FFI
+    // This allows Rust to use existing C libraries and be used as a C library itself
 }
+
+// Declaring external C functions
+// The `extern` block tells Rust about C functions we want to call
+extern "C" {
+    // Standard C library functions
+    fn abs(input: i32) -> i32;
+    fn sqrt(input: f64) -> f64;
+    fn puts(s: *const i8) -> i32;
+
+    // Custom C library functions
+    // fn my_c_function(x: i32) -> i32;
+}
+
+// Calling C functions requires `unsafe` because Rust can't verify C code safety
+fn call_c_functions() {
+    unsafe {
+        println!("Absolute value of -3 = {}", abs(-3));
+        println!("Square root of 9.0 = {}", sqrt(9.0));
+    }
+}
+
+// C-compatible struct with #[repr(C)]
+// This ensures the memory layout matches C expectations
+#[repr(C)]
+struct Point {
+    x: f64,
+    y: f64,
+}
+
+#[repr(C)]
+struct Person {
+    name: *const i8,  // C string (char*)
+    age: u32,
+}
+
+// Enums with explicit discriminants for C compatibility
+#[repr(C)]
+enum Status {
+    Ok = 0,
+    Error = 1,
+    Pending = 2,
+}
+
+// Exposing Rust functions to C with #[no_mangle] and extern "C"
+// #[no_mangle] prevents Rust from changing the function name
+#[no_mangle]
+pub extern "C" fn rust_add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+#[no_mangle]
+pub extern "C" fn rust_process_point(point: *const Point) -> f64 {
+    unsafe {
+        if point.is_null() {
+            return 0.0;
+        }
+        let p = &*point;
+        (p.x * p.x + p.y * p.y).sqrt()
+    }
+}
+
+// Type aliases for C types (using libc crate)
+// In real code: use libc::{c_int, c_char, c_void, size_t};
+type c_int = i32;
+type c_char = i8;
+
+// Working with C strings
+use std::ffi::{CStr, CString};
+
+fn string_conversion_example() {
+    // Rust String to C string (CString)
+    let rust_string = String::from("Hello from Rust!");
+    let c_string = CString::new(rust_string).expect("CString creation failed");
+    let c_ptr = c_string.as_ptr();
+
+    // Now c_ptr can be passed to C functions expecting char*
+    unsafe {
+        // puts(c_ptr);  // Uncomment to call C function
+    }
+
+    // C string to Rust String
+    // Assuming we got a *const c_char from C code
+    unsafe {
+        let c_str = CStr::from_ptr(c_ptr);
+        let rust_str = c_str.to_str().expect("Invalid UTF-8");
+        let owned_string = rust_str.to_owned();
+        println!("Converted from C: {}", owned_string);
+    }
+}
+
+// Function pointers for C callbacks
+type CallbackFn = extern "C" fn(i32) -> i32;
+
+#[no_mangle]
+pub extern "C" fn apply_callback(value: i32, callback: CallbackFn) -> i32 {
+    callback(value)
+}
+
+// Example callback function
+extern "C" fn double_value(x: i32) -> i32 {
+    x * 2
+}
+
+// Opaque types - when you don't need to know the C struct's internals
+#[repr(C)]
+pub struct OpaqueHandle {
+    _private: [u8; 0],  // Zero-sized type, prevents direct instantiation
+}
+
+// Common FFI patterns
+extern "C" {
+    // Creating/destroying opaque handles
+    fn create_handle() -> *mut OpaqueHandle;
+    fn destroy_handle(handle: *mut OpaqueHandle);
+
+    // Passing arrays
+    fn process_array(data: *const i32, len: usize) -> i32;
+
+    // Output parameters (pointer to write results)
+    fn get_values(out_x: *mut i32, out_y: *mut i32) -> c_int;
+}
+
+fn ffi_patterns_example() {
+    unsafe {
+        // Working with opaque handles
+        let handle = create_handle();
+        // ... use handle ...
+        destroy_handle(handle);
+
+        // Passing Rust slice to C
+        let data = vec![1, 2, 3, 4, 5];
+        let result = process_array(data.as_ptr(), data.len());
+
+        // Output parameters
+        let mut x: i32 = 0;
+        let mut y: i32 = 0;
+        let status = get_values(&mut x as *mut i32, &mut y as *mut i32);
+        if status == 0 {
+            println!("Got values: x={}, y={}", x, y);
+        }
+    }
+}
+
+// Linking to C libraries
+// In Cargo.toml, you can specify:
+// [build-dependencies]
+// cc = "1.0"
+//
+// Then in build.rs:
+// fn main() {
+//     cc::Build::new()
+//         .file("src/mylib.c")
+//         .compile("mylib");
+// }
+
+// Or link to system libraries:
+// #[link(name = "m")]  // Links to libm (math library)
+// extern "C" {
+//     fn cos(x: f64) -> f64;
+// }
+
+// Using bindgen to auto-generate Rust bindings from C headers
+// In build.rs:
+// fn main() {
+//     println!("cargo:rerun-if-changed=wrapper.h");
+//
+//     let bindings = bindgen::Builder::default()
+//         .header("wrapper.h")
+//         .generate()
+//         .expect("Unable to generate bindings");
+//
+//     bindings
+//         .write_to_file("src/bindings.rs")
+//         .expect("Couldn't write bindings!");
+// }
+
+// Safety guidelines for FFI:
+// 1. Always use `unsafe` blocks for FFI calls
+// 2. Validate pointers before dereferencing (check for null)
+// 3. Be careful with lifetimes - C doesn't track ownership
+// 4. Use CString/CStr for string conversion
+// 5. Match C struct layout with #[repr(C)]
+// 6. Document safety invariants
+// 7. Create safe Rust wrappers around unsafe FFI code
+
+// Example: Safe wrapper around unsafe FFI
+pub struct SafeHandle {
+    inner: *mut OpaqueHandle,
+}
+
+impl SafeHandle {
+    pub fn new() -> Option<Self> {
+        unsafe {
+            let handle = create_handle();
+            if handle.is_null() {
+                None
+            } else {
+                Some(SafeHandle { inner: handle })
+            }
+        }
+    }
+}
+
+impl Drop for SafeHandle {
+    fn drop(&mut self) {
+        unsafe {
+            if !self.inner.is_null() {
+                destroy_handle(self.inner);
+            }
+        }
+    }
+}
+
+// Common FFI crates in the Rust ecosystem:
+// - libc: Raw bindings to platform C libraries
+// - bindgen: Automatically generate Rust FFI bindings
+// - cc: Compile C/C++ code and link it with Cargo
+// - cbindgen: Generate C headers from Rust code
+// - cxx: Safe interop between Rust and C++
 ```
 
 ## Further reading
@@ -361,3 +587,10 @@ irc.mozilla.org are also always keen to help newcomers.
 You can also try out features of Rust with an online compiler at the official
 [Rust Playground](https://play.rust-lang.org) or on the main
 [Rust website](http://rust-lang.org).
+
+For FFI specifically, check out:
+* [The Rustonomicon - FFI Chapter](https://doc.rust-lang.org/nomicon/ffi.html) - Advanced FFI topics
+* [The Rust FFI Omnibus](http://jakegoulding.com/rust-ffi-omnibus/) - Examples of using Rust code from other languages
+* [bindgen documentation](https://rust-lang.github.io/rust-bindgen/) - Auto-generate Rust FFI bindings
+* [cbindgen documentation](https://github.com/mozilla/cbindgen) - Generate C headers from Rust code
+* [libc crate](https://docs.rs/libc/) - Raw FFI bindings to platform C libraries
