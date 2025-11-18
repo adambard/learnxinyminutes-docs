@@ -1023,8 +1023,9 @@ main() {
     example11, example12, example13, example14, example15,
     example16, example17, example18, example19, example20,
     example21, example22, example23, example24, example25,
-    example26, example27, example28, example29,
-    example30 // Adding this comment stops the dart formatter from putting all items on a new line
+    example26, example27, example28, example29, example30, 
+    example31, example32, example33, example35, 
+    example36, example38 // Adding this comment stops the dart formatter from putting all items on a new line
   ].forEach((ef) => ef());
 }
 ```
