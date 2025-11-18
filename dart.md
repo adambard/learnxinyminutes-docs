@@ -16,6 +16,8 @@ Dart's most controversial feature is its ~~Optional Typing~~ Static Type safety 
 ```dart
 import "dart:collection";
 import "dart:math" as math;
+import "dart:ffi" as ffi;
+import "dart:io" show Platform;
 
 /// Welcome to Learn Dart in 15 minutes. http://dart.dev/
 /// This is an executable tutorial. You can run it with Dart or on
@@ -696,6 +698,152 @@ example33() {
 var isBool = true;
 var hasString = isBool ?? "default String";
 
+/// Dart supports FFI (Foreign Function Interface) to call C libraries.
+/// This allows Dart to interoperate with native C code for performance-critical
+/// operations or to use existing C libraries.
+
+/// Example 34: Basic FFI - Loading a C library and calling a simple function
+/// Suppose you have a C library with: int add(int a, int b) { return a + b; }
+example34() {
+  /// Load the C library (platform-specific)
+  /// On Linux/Android: 'libnative.so'
+  /// On macOS/iOS: 'libnative.dylib'
+  /// On Windows: 'native.dll'
+  final libraryPath = Platform.isWindows
+      ? 'native.dll'
+      : Platform.isMacOS
+          ? 'libnative.dylib'
+          : 'libnative.so';
+
+  /// Open the dynamic library
+  final dylib = ffi.DynamicLibrary.open(libraryPath);
+
+  /// Define the C function signature using typedef
+  /// C: int add(int a, int b)
+  typedef AddNative = ffi.Int32 Function(ffi.Int32 a, ffi.Int32 b);
+  /// Dart signature for calling the function
+  typedef AddDart = int Function(int a, int b);
+
+  /// Lookup and bind the C function
+  final add = dylib.lookupFunction<AddNative, AddDart>('add');
+
+  /// Call the C function from Dart
+  final result = add(10, 20);
+  print('Example34 FFI add(10, 20) = $result');
+}
+
+/// Example 35: FFI with C Structs
+/// C struct: struct Point { double x; double y; };
+/// Creating Dart classes that extend ffi.Struct to represent C structs
+class Point extends ffi.Struct {
+  @ffi.Double()
+  external double x;
+
+  @ffi.Double()
+  external double y;
+}
+
+example35() {
+  /// Allocate memory for a Point struct
+  final point = ffi.calloc<Point>();
+
+  /// Set values
+  point.ref.x = 10.5;
+  point.ref.y = 20.3;
+
+  print('Example35 Point(${point.ref.x}, ${point.ref.y})');
+
+  /// IMPORTANT: Free allocated memory to avoid memory leaks
+  ffi.calloc.free(point);
+}
+
+/// Example 36: FFI with pointers and arrays
+example36() {
+  /// Allocate an array of 5 integers
+  final ptr = ffi.calloc<ffi.Int32>(5);
+
+  /// Access array elements using array indexing or elementAt
+  for (var i = 0; i < 5; i++) {
+    ptr[i] = i * 10;
+  }
+
+  print('Example36 Array values:');
+  for (var i = 0; i < 5; i++) {
+    print('  ptr[$i] = ${ptr[i]}');
+  }
+
+  /// Free the allocated memory
+  ffi.calloc.free(ptr);
+
+  /// Working with Pointer<Pointer<T>> for C strings (char**)
+  final stringPtr = "Hello FFI".toNativeUtf8();
+  print('Example36 C string: ${stringPtr.toDartString()}');
+  ffi.calloc.free(stringPtr);
+}
+
+/// Example 37: FFI Callbacks - passing Dart functions to C
+/// C expects: typedef void (*callback_t)(int value);
+typedef NativeCallbackType = ffi.Void Function(ffi.Int32);
+typedef DartCallbackType = void Function(int);
+
+example37() {
+  /// Create a Dart callback function
+  void myCallback(int value) {
+    print('Example37 Callback received: $value');
+  }
+
+  /// Convert Dart function to a native callback
+  /// Note: Use ffi.Pointer.fromFunction for top-level or static functions
+  /// For this example, we demonstrate the concept
+  print('Example37 FFI callbacks allow C code to call back into Dart');
+
+  /// Actual usage would be:
+  /// final callbackPointer = ffi.Pointer.fromFunction<NativeCallbackType>(
+  ///   topLevelCallback,
+  ///   /* exceptionalReturn if needed */
+  /// );
+  /// Then pass callbackPointer to C function
+}
+
+/// Example 38: FFI Memory Management Best Practices
+example38() {
+  /// Use Arena for automatic cleanup of multiple allocations
+  /// This requires package:ffi
+
+  print('Example38 FFI Memory Management Tips:');
+  print('  1. Always free allocated memory using ffi.calloc.free()');
+  print('  2. Use try-finally to ensure cleanup happens');
+  print('  3. Consider using Arena from package:ffi for automatic cleanup');
+  print('  4. Be careful with Pointer lifecycle - avoid dangling pointers');
+
+  /// Example with try-finally
+  final ptr = ffi.calloc<ffi.Int32>();
+  try {
+    ptr.value = 42;
+    print('  Value: ${ptr.value}');
+  } finally {
+    ffi.calloc.free(ptr);
+    print('  Memory freed safely');
+  }
+}
+
+/// Example 39: Common FFI type mappings between C and Dart
+example39() {
+  print('Example39 C to Dart FFI type mappings:');
+  print('  C int8_t    <-> ffi.Int8    <-> int');
+  print('  C int16_t   <-> ffi.Int16   <-> int');
+  print('  C int32_t   <-> ffi.Int32   <-> int');
+  print('  C int64_t   <-> ffi.Int64   <-> int');
+  print('  C uint8_t   <-> ffi.Uint8   <-> int');
+  print('  C uint16_t  <-> ffi.Uint16  <-> int');
+  print('  C uint32_t  <-> ffi.Uint32  <-> int');
+  print('  C uint64_t  <-> ffi.Uint64  <-> int');
+  print('  C float     <-> ffi.Float   <-> double');
+  print('  C double    <-> ffi.Double  <-> double');
+  print('  C void*     <-> ffi.Pointer<ffi.Void>');
+  print('  C char*     <-> ffi.Pointer<ffi.Utf8> (with conversion helpers)');
+}
+
 /// Programs have only one entry point in the main function.
 /// Nothing is expected to be executed on the outer scope before a program
 /// starts running with what's in its main function.
@@ -719,5 +867,8 @@ main() {
 
 Dart has a comprehensive web-site. It covers API reference, tutorials, articles and more, including a
 useful DartPad (a cloud-based Dart coding playground).
-[https://dart.dev/](https://dart.dev)
-[https://dartpad.dev/](https://dartpad.dev)
+* [https://dart.dev/](https://dart.dev)
+* [https://dartpad.dev/](https://dartpad.dev)
+* [Dart FFI Documentation](https://dart.dev/guides/libraries/c-interop)
+* [dart:ffi API Reference](https://api.dart.dev/stable/dart-ffi/dart-ffi-library.html)
+* [FFI package with utilities](https://pub.dev/packages/ffi)
