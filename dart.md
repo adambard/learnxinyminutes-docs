@@ -844,6 +844,172 @@ example39() {
   print('  C char*     <-> ffi.Pointer<ffi.Utf8> (with conversion helpers)');
 }
 
+/// Example 40: Opaque pointers for hidden C struct implementations
+/// When C library internals should remain hidden, use Opaque types
+/// C code: typedef struct Database Database;
+class Database extends ffi.Opaque {}
+
+example40() {
+  /// Opaque types cannot be instantiated directly in Dart
+  /// Only pointers to them can exist: Pointer<Database>
+  /// This enforces encapsulation - Dart can't access internal fields
+  /// Memory management stays with the C library
+
+  print('Example40 Opaque pointers:');
+  print('  - Use ffi.Opaque for C structs you dont need to inspect');
+  print('  - Only work with Pointer<YourOpaque>');
+  print('  - C library handles all memory layout and management');
+  print('  - Common pattern for libraries hiding implementation details');
+}
+
+/// Example 41: Output parameters - getting data back from C via pointers
+/// C function: int get_coordinates(double* x, double* y);
+typedef GetCoordsNative = ffi.Int32 Function(
+    ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Double>);
+typedef GetCoordsDart = int Function(
+    ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Double>);
+
+example41() {
+  /// Allocate space for output parameters
+  final xPtr = ffi.calloc<ffi.Double>();
+  final yPtr = ffi.calloc<ffi.Double>();
+
+  try {
+    /// In real code, you would call the C function here:
+    /// final result = getCoords(xPtr, yPtr);
+    /// For demonstration, set values manually
+    xPtr.value = 10.5;
+    yPtr.value = 20.3;
+
+    print('Example41 Output parameters:');
+    print('  x = ${xPtr.value}, y = ${yPtr.value}');
+    print('  Pattern: allocate pointer, pass to C, read .value after call');
+  } finally {
+    /// Always free in finally block
+    ffi.calloc.free(xPtr);
+    ffi.calloc.free(yPtr);
+  }
+}
+
+/// Example 42: Error handling pattern with C return codes
+class FFIError implements Exception {
+  final int code;
+  final String message;
+  FFIError(this.code, this.message);
+
+  @override
+  String toString() => 'FFIError($code): $message';
+}
+
+example42() {
+  /// Common pattern: C function returns int status code
+  /// 0 = success, negative = error
+  int mockCFunction() => -1; /// Simulate error
+
+  void checkResult(int result) {
+    if (result < 0) {
+      final messages = {
+        -1: 'Not found',
+        -2: 'Permission denied',
+        -3: 'Out of memory',
+        -4: 'Invalid argument',
+      };
+      throw FFIError(result, messages[result] ?? 'Unknown error');
+    }
+  }
+
+  try {
+    final result = mockCFunction();
+    checkResult(result);
+  } catch (e) {
+    print('Example42 Error handling: $e');
+  }
+
+  print('Example42 Pattern: Keep error codes in FFI layer,');
+  print('  convert to exceptions in wrapper classes');
+}
+
+/// Example 43: Finalizers for automatic resource cleanup
+/// Finalizers call cleanup functions when Dart objects are garbage collected
+example43() {
+  print('Example43 Finalizers (advanced pattern):');
+  print('  - Attach finalizer to Dart object wrapping C resource');
+  print('  - Finalizer calls C cleanup when Dart object is GC\'d');
+  print('  - Still provide explicit dispose() for deterministic cleanup');
+  print('  - Example: finalizer = Finalizer((token) => _free(token));');
+  print('  - Usage: finalizer.attach(this, pointer, detach: this);');
+  print('  - Best practice: Use both finalizer AND dispose pattern');
+}
+
+/// Example 44: Platform-specific library loading
+example44() {
+  /// Different approaches to loading libraries
+  print('Example44 Library loading strategies:');
+
+  /// 1. DynamicLibrary.open() - load from file path
+  print('  1. DynamicLibrary.open("path/to/lib.so")');
+  print('     - Explicit path to library file');
+  print('     - Platform-specific extensions (.so, .dylib, .dll)');
+
+  /// 2. DynamicLibrary.process() - symbols from current process
+  print('  2. DynamicLibrary.process()');
+  print('     - Access symbols already loaded in process');
+  print('     - Useful for system libraries (libc, etc)');
+
+  /// 3. DynamicLibrary.executable() - symbols from executable
+  print('  3. DynamicLibrary.executable()');
+  print('     - Access symbols from the executable itself');
+  print('     - Less common for typical FFI use cases');
+
+  /// Platform detection example
+  final libPath = Platform.isWindows
+      ? 'mylib.dll'
+      : Platform.isMacOS
+          ? 'libmylib.dylib'
+          : 'libmylib.so';
+  print('  Current platform would use: $libPath');
+}
+
+/// Example 45: Practical FFI wrapper class pattern
+class NativeResource {
+  final ffi.Pointer<Database> _handle;
+  bool _disposed = false;
+
+  NativeResource(this._handle);
+
+  /// Check if resource is still valid before use
+  void _checkDisposed() {
+    if (_disposed) {
+      throw StateError('Cannot use disposed resource');
+    }
+  }
+
+  /// Example operation using the resource
+  void doSomething() {
+    _checkDisposed();
+    /// Use _handle to call C functions
+    print('Using native resource');
+  }
+
+  /// Explicit cleanup
+  void dispose() {
+    if (!_disposed) {
+      /// Call C cleanup function: native_free(_handle);
+      _disposed = true;
+      print('Resource disposed');
+    }
+  }
+}
+
+example45() {
+  print('Example45 FFI wrapper pattern:');
+  print('  - Wrap raw pointers in Dart classes');
+  print('  - Validate state before operations');
+  print('  - Provide explicit dispose() method');
+  print('  - Use bool flag to prevent double-free');
+  print('  - Makes FFI code safer and more idiomatic');
+}
+
 /// Programs have only one entry point in the main function.
 /// Nothing is expected to be executed on the outer scope before a program
 /// starts running with what's in its main function.
