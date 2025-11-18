@@ -564,6 +564,203 @@ impl Drop for SafeHandle {
     }
 }
 
+/////////////////////////////////////////////////////////
+// Advanced FFI Patterns (Production-Grade Techniques) //
+/////////////////////////////////////////////////////////
+
+// Pattern 1: Multi-Mode Callback System
+// Supports Rust closures, C function pointers, and platform-specific callbacks
+pub type RustCallback = fn(ctx: *mut std::ffi::c_void, s: CString);
+pub type CCallbackFn = extern "C" fn(*mut std::ffi::c_void, *const c_char);
+
+#[repr(C)]
+#[derive(Clone)]
+pub enum CallbackAPI {
+    Rust(RustCallback),                              // Native Rust
+    C(CCallbackFn, *mut std::ffi::c_void),          // C with context pointer
+    #[cfg(target_os = "android")]
+    Android(jni::objects::GlobalRef),                // Android JNI
+}
+
+// SAFETY: Caller guarantees callback pointers remain valid
+unsafe impl Send for CallbackAPI {}
+unsafe impl Sync for CallbackAPI {}
+
+// Pattern 2: Comparing Function Pointers Safely
+// Use fn_addr_eq instead of == for function pointer comparison
+#[cfg(target_os = "android")]
+impl PartialEq for CallbackAPI {
+    fn eq(&self, other: &Self) -> bool {
+        match (self, other) {
+            // Compare function addresses, not direct equality
+            (CallbackAPI::Rust(a), CallbackAPI::Rust(b)) =>
+                std::ptr::fn_addr_eq(*a, *b),
+            (CallbackAPI::C(a_fn, a_ctx), CallbackAPI::C(b_fn, b_ctx)) =>
+                std::ptr::fn_addr_eq(*a_fn, *b_fn) && a_ctx == b_ctx,
+            (CallbackAPI::Android(a), CallbackAPI::Android(b)) =>
+                std::ptr::eq(a as *const _, b as *const _),
+            _ => false,
+        }
+    }
+}
+
+// Pattern 3: Dependency Injection via Function Pointers
+// Allow platform-specific implementations (e.g., iOS NSURLSession, Android OkHttp)
+
+#[repr(C)]
+pub struct HttpRequest {
+    pub method: *const c_char,
+    pub url: *const c_char,
+    pub headers: *const *const c_char,  // Null-terminated array of C strings
+    pub body: *const c_char,
+    pub body_len: usize,
+}
+
+#[repr(C)]
+pub struct HttpResponse {
+    pub status: u16,
+    pub headers: *const *const c_char,  // C allocates with malloc
+    pub body: *const c_char,             // C allocates with malloc
+    pub body_len: usize,
+}
+
+#[repr(C)]
+pub struct HttpError {
+    pub code: i32,
+    pub message: *const c_char,  // C allocates with malloc
+}
+
+// Function pointer type for platform HTTP client
+pub type HttpClientFn = unsafe extern "C" fn(
+    request: *const HttpRequest,
+    response: *mut HttpResponse,
+    error: *mut HttpError,
+) -> i32; // 0 = success, non-zero = error
+
+static mut HTTP_CLIENT_FN: Option<HttpClientFn> = None;
+
+#[no_mangle]
+pub extern "C" fn set_http_client(client_fn: HttpClientFn) {
+    unsafe { HTTP_CLIENT_FN = Some(client_fn); }
+}
+
+// Pattern 4: Null-Terminated Array Handling
+// Common C pattern for string arrays
+#[no_mangle]
+pub extern "C" fn free_http_response(response: *mut HttpResponse) {
+    unsafe {
+        if response.is_null() { return; }
+
+        // Free null-terminated array of strings
+        if !(*response).headers.is_null() {
+            let mut i = 0;
+            // Iterate until we hit the NULL terminator
+            while !(*(*response).headers.add(i)).is_null() {
+                libc::free(*(*response).headers.add(i) as *mut libc::c_void);
+                i += 1;
+            }
+            libc::free((*response).headers as *mut libc::c_void);
+        }
+
+        if !(*response).body.is_null() {
+            libc::free((*response).body as *mut libc::c_void);
+        }
+    }
+}
+
+// Pattern 5: JSON-Wrapped Error Returns
+// Never fail silently - always return structured data
+use serde_json::json;
+
+#[no_mangle]
+pub extern "C" fn process_data(data: *const c_char) -> *mut c_char {
+    // Error codes for programmatic handling
+    const ERROR_NULL_POINTER: i32 = 1001;
+    const ERROR_INVALID_UTF8: i32 = 1002;
+    const ERROR_JSON_PARSE: i32 = 1003;
+
+    if data.is_null() {
+        let error = json!({
+            "error": {
+                "code": ERROR_NULL_POINTER,
+                "message": "Data pointer is null",
+                "shortDesc": "Null pointer"
+            }
+        });
+        return CString::new(error.to_string())
+            .expect("Failed to create CString")
+            .into_raw();
+    }
+
+    unsafe {
+        let c_str = CStr::from_ptr(data);
+        match c_str.to_str() {
+            Ok(valid_str) => {
+                // Success case - return result
+                let result = json!({"result": "success", "data": valid_str});
+                CString::new(result.to_string())
+                    .expect("Failed to create CString")
+                    .into_raw()
+            }
+            Err(_) => {
+                // Error case - return error
+                let error = json!({
+                    "error": {
+                        "code": ERROR_INVALID_UTF8,
+                        "message": "Invalid UTF-8 in input string",
+                        "shortDesc": "Invalid UTF-8"
+                    }
+                });
+                CString::new(error.to_string())
+                    .expect("Failed to create CString")
+                    .into_raw()
+            }
+        }
+    }
+}
+
+// Pattern 6: Singleton Management with OnceLock
+// Thread-safe, one-time initialization for FFI
+use std::sync::{OnceLock, Mutex};
+use std::sync::atomic::{AtomicBool, Ordering};
+
+static INSTANCE: OnceLock<Mutex<*mut DITDataHub>> = OnceLock::new();
+static DESTROYED: AtomicBool = AtomicBool::new(false);
+
+#[no_mangle]
+pub extern "C" fn get_singleton() -> *mut DITDataHub {
+    if DESTROYED.load(Ordering::Acquire) {
+        return std::ptr::null_mut(); // Cannot recreate after destroy
+    }
+
+    let mutex = INSTANCE.get_or_init(|| {
+        let instance = Box::into_raw(Box::new(DITDataHub::new()));
+        Mutex::new(instance)
+    });
+
+    *mutex.lock().expect("Mutex poisoned")
+}
+
+#[no_mangle]
+pub extern "C" fn destroy_singleton() -> i32 {
+    DESTROYED.store(true, Ordering::Release);
+
+    if let Some(mutex) = INSTANCE.get() {
+        let mut guard = mutex.lock().expect("Mutex poisoned");
+        let ptr = *guard;
+        *guard = std::ptr::null_mut();
+        drop(guard); // Release lock before freeing
+
+        unsafe {
+            if !ptr.is_null() {
+                let _ = Box::from_raw(ptr); // Reclaim ownership and drop
+            }
+        }
+    }
+
+    1 // Success
+}
+
 // Common FFI crates in the Rust ecosystem:
 // - libc: Raw bindings to platform C libraries
 // - bindgen: Automatically generate Rust FFI bindings
