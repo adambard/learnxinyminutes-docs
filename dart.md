@@ -17,7 +17,7 @@ Dart's most controversial feature is its ~~Optional Typing~~ Static Type safety 
 import "dart:collection";
 import "dart:math" as math;
 import "dart:ffi" as ffi;
-import "dart:io" show Platform;
+import "dart:io" show Platform; // import only part of the library, see https://dart.dev/language/libraries#importing-only-part-of-a-library
 
 /// Welcome to Learn Dart in 15 minutes. http://dart.dev/
 /// This is an executable tutorial. You can run it with Dart or on
