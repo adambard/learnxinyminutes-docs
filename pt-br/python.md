@@ -716,8 +716,15 @@ print(say(say_please=True)) # Você me paga uma cerveja? Por favor! Eu sou pobre
 
 ## Pronto para mais?
 
-### Free Online
+### Grátis Online
 
+#### Em português
+
+* [Pense em Python 2e](https://penseallen.github.io/PensePython2e/)
+* [Python Fluente](https://pythonfluente.com)
+
+#### Em inglês
+ 
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com)
 * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
 * [Dive Into Python](http://www.diveintopython.net/)
