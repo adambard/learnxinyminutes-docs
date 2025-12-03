@@ -668,7 +668,7 @@ example31() {
 /// Optional Named Parameter:
 /// parameter will be disclosed with curly bracket { }
 /// curly bracketed parameter are optional.
-/// have to use parameter name to assign a value which separated with colan :
+/// have to use parameter name to assign a value which separated with colon :
 /// in curly bracketed parameter order does not matter
 /// these type parameter help us to avoid confusion while passing value for a function which has many parameter.
 example32() {
