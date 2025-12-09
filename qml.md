@@ -207,7 +207,7 @@ Window {
         }
     }
 
-    // Each QML file that starts with an upper case name declares a re-usable
+    // Each QML file that starts with an upper case name declares a reusable
     // component, e.g "RedRectangle.qml".
     // In addition, reusable components can be declared in-line.
     component RedRectangle: Rectangle {

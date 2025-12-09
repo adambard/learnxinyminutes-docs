@@ -69,7 +69,7 @@ l
 
 # Below are examples of the most often-used commands.
 
-# Substitute the first occurence in a line of John with Mary.
+# Substitute the first occurrence in a line of John with Mary.
 s/John/Mary/
 
 # Remove all underscore characters (global substitution).

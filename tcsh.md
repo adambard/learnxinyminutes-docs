@@ -451,7 +451,7 @@ set page = tcsh; set loc = (locate -b -n 1 "\\\\"${page}".1.gz");
  zcat `eval $loc` | groff -Tps -man | ps2pdf - ${page}.pdf && okular tcsh.pdf
 
 # NOTE: `okular` is the default application of the KDE environment and it shows
-# postcript and pdf files. You can replace it with your lovely PDF viewer.
+# postscript and pdf files. You can replace it with your lovely PDF viewer.
 # `zcat`, `locate`, `groff`, are common programs in all Unixes. The `ps2pdf`
 # program is part of the `ghostscript` package that is widely used.
 

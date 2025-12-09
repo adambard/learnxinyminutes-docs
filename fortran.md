@@ -300,7 +300,7 @@ contains                    ! Start defining the program's internal procedures:
         integer :: f                    
         ! function return type declared inside the function.
         integer :: cnt = 0               ! GOTCHA -         
-        ! assigning a value at initalization 
+        ! assigning a value at initialization 
         ! implies that the variable is
         ! saved between function calls.
 
@@ -478,7 +478,7 @@ do concurrent (x = 1:size(array, 1), y = 1:size(array, 2))
     array(x, y) = real(x)
 end do
 
-! loop indices can also declared inside the contruct:
+! loop indices can also declared inside the construct:
 
 real :: array(8, 16)
 

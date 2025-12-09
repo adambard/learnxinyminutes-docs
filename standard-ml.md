@@ -241,7 +241,7 @@ fun solve2 (a : real, b : real, c : real) =
      (~b - Math.sqrt(b * b - 4.0 * a * c)) / (2.0 * a))
 
 (* Sometimes, the same computation is carried out several times. It makes sense
-   to save and re-use the result the first time. We can use "let-bindings": *)
+   to save and reuse the result the first time. We can use "let-bindings": *)
 fun solve2 (a : real, b : real, c : real) =
     let val discr  = b * b - 4.0 * a * c
         val sqr = Math.sqrt discr

@@ -216,8 +216,8 @@ It is simple to parallelise loops using OpenMP. Using a work-sharing directive w
 }
 ```
 
-A loop must be easily parallelisable for OpenMP to unroll and facilitate the assignment amoungst threads.
-If there are any data dependancies between one iteration to the next, OpenMP can't parallelise it.
+A loop must be easily parallelisable for OpenMP to unroll and facilitate the assignment amongst threads.
+If there are any data dependencies between one iteration to the next, OpenMP can't parallelise it.
 
 ## Speed Comparison
 

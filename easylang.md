@@ -71,7 +71,7 @@ b[] = a[]
 a[] &= 4
 print a[] ; print b[]
 #
-# array swapping ist fast
+# array swapping is fast
 #
 swap a[] b[]
 print a[] ; print b[]

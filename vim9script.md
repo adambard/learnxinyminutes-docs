@@ -139,7 +139,7 @@ echo 0.0 / 0.0 ->isnan()  # nan
 # The maximum number is either a 32 or 64 bit signed number, which may
 # be checked using:
 echo v:numbersize  # echos either 32 or 64
-# The implication is that any arithmatic where the number exceeds the
+# The implication is that any arithmetic where the number exceeds the
 # permitted value, for 64-bit 9,223,372,036,854,775,807, will fail:
 echo 9223372036854775807 + 1  # -9223372036854775808
 

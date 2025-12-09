@@ -1012,7 +1012,7 @@ module Generics
     end
   end
 
-  # To specialize through inheritance, re-declare the `type_member` with
+  # To specialize through inheritance, redeclare the `type_member` with
   # `fixed`.
   class Options < BidirectionalHash
     Left = type_member(fixed: Symbol)

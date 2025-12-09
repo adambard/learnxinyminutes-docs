@@ -207,7 +207,7 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	int i = 18;
 	printf("I am %d years old",i); // I am 18 years old
 
-	// String functions can alse be used
+	// String functions can also be used
 	int strlen (string s); // gives the length of the string
 	int len = strlen("Hello, World!"); // len = 13
 
@@ -225,7 +225,7 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	// HSV stands for (Hue, Saturation, Luminance)
 	// HSL stands for (Hue, Saturation, Lightness)
 	// YIQ, XYZ and xyY formats can also be used
-	// We can also access the indivudual values of (R,G,B)
+	// We can also access the individual values of (R,G,B)
 	float Red = p[0]; // 0 (access the red component)
 	float Green = p[1]; // 1 (access the green component)
 	float Blue = p[2]; // 2 (access the blue component)
@@ -303,7 +303,7 @@ volume multiply(float a = 0.0, float b = 0.0, output float c = 0.0){
 	   0.0, 0.0, 1.0, 0.0,
 	   0.0, 0.0, 0.0, 1.0 */
 		
-	matrix m = 7; // Maked a 4x4 scalar matrix with scaling factor of 7
+	matrix m = 7; // makes a 4x4 scalar matrix with scaling factor of 7
 	/* 7.0, 0.0, 0.0, 0.0,
 	   0.0, 7.0, 0.0, 0.0,
 	   0.0, 0.0, 7.0, 0.0,

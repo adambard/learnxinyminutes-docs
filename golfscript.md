@@ -178,12 +178,12 @@ can pipe in or enter in your input at runtime.
 [[1 2 3 0]]
 > $ # we can also restore order by sorting the array
 [[0 1 2 3]]
-> 1 >  # we can also use < > and = to get the indeces that match. Note this
+> 1 >  # we can also use < > and = to get the indices that match. Note this
 # is not a filter! This is an index match. Filtering items greater than one
 # is done with {1>},
 [[1 2 3]]
 > 2 < # remember it's zero-indexed, so everything in this array is at an index
-# less than 2, the indeces are 0 and 1.
+# less than 2, the indices are 0 and 1.
 [[1 2]]
 > 1= # < and > return an array, even if it's one item.  Equals always drops
 # it out of the array
@@ -308,7 +308,7 @@ I drive a stick, BTW.
 > 6),(;{*}* # but can we get shorter? We can save some space by incrementing
 # the 6, dropping the zero, and folding. 8 characters.
 > # we can also use fold to do the same thing with unfold
-1 6        # accumlator and multiplicand, we'll call A and M
+1 6        # accumulator and multiplicand, we'll call A and M
 {}{        # while M
   .        # copy M, so now the stack is A M M
     @      # bring A to the top, so now M M A
