@@ -275,7 +275,7 @@ briefly.
   - Manage tables in plain text (including spreadsheet-like
     capabilities)
   - Using the extension `org-babel`, write and execute code blocks in
-    your file. The results are captured and are re-usable within the
+    your file. The results are captured and are reusable within the
     file itself. Think Jupyter notebook for any language.
   - Display inline images and LaTeX formulas as images within your file
     (makes for a great note-taking system and/or personal wiki)

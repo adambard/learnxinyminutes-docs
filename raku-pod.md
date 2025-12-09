@@ -619,5 +619,5 @@ DESCRIPTION
 ## Additional Information
 
 * <https://docs.raku.org/language/pod> for the Pod documentation.
-* <https://docs.raku.org/language/tables> for advices about Pod tables.
+* <https://docs.raku.org/language/tables> for advice about Pod tables.
 * <https://design.raku.org/S26.html> for the Pod specification.

@@ -101,7 +101,7 @@ ascii("This is a string")[1]    # => 'T'
 # Beware, Julia indexes everything from 1 (like MATLAB), not 0 (like most languages).
 # Otherwise, iterating over strings is recommended (map, for loops, etc).
 
-# String can be compared lexicographically, in dictionnary order:
+# String can be compared lexicographically, in dictionary order:
 "good" > "bye"   # => true
 "good" == "good" # => true
 "1 + 2 = 3" == "1 + 2 = $(1 + 2)" # => true

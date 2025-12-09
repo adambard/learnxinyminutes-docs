@@ -118,7 +118,7 @@ $False - 5   # => -5
 # (-is vs. -eq) -is checks if two objects are the same type.
 # -eq checks if the objects have the same values, but sometimes doesn't work
 # as expected.
-# Note: we called '[Math]' from .NET previously without the preceeding
+# Note: we called '[Math]' from .NET previously without the preceding
 # namespaces. We can do the same with [Collections.ArrayList] if preferred.
 [System.Collections.ArrayList]$a = @()  # Point a at a new list
 $a = (1,2,3,4)

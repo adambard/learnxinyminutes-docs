@@ -147,7 +147,7 @@ POP2
 POP2
 BRK
 
-@word "vermillion $1
+@word "vermilion $1
 
 ( Subroutines can be jumped to with JSR, and returned from with JMP2r )
 
