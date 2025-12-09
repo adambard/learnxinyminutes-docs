@@ -87,7 +87,7 @@ cubes = (math.cube num for num in list)
 # })();
 
 foods = ['broccoli', 'spinach', 'chocolate']
-eat food for food in foods when food isn't 'chocolate'
+eat food for food in foods when food isnt 'chocolate'
 #=>foods = ['broccoli', 'spinach', 'chocolate'];
 #
 #for (_k = 0, _len2 = foods.length; _k < _len2; _k++) {
