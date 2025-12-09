@@ -332,7 +332,7 @@ distance :: Point -> Point -> Float
 distance (Point x y) (Point x' y') = sqrt $ dx + dy
     where dx = (x - x') ** 2
           dy = (y - y') ** 2
-          
+
 -- Types can have multiple data constructors with arguments, too
 
 data Name = Mononym String
@@ -341,7 +341,7 @@ data Name = Mononym String
 
 -- To make things clearer we can use record syntax
 
-data Point2D = CartesianPoint2D { x :: Float, y :: Float } 
+data Point2D = CartesianPoint2D { x :: Float, y :: Float }
              | PolarPoint2D { r :: Float, theta :: Float }
 
 myPoint = CartesianPoint2D { x = 7.0, y = 10.0 }
@@ -366,7 +366,7 @@ myPoint'2 = CartesianPoint2D 3.3 4.0
 
 -- It's also useful to pattern match data constructors in `case` expressions
 
-distanceFromOrigin x = 
+distanceFromOrigin x =
     case x of (CartesianPoint2D x y) -> sqrt $ x ** 2 + y ** 2
               (PolarPoint2D r _) -> r
 
@@ -383,8 +383,8 @@ Nothing         -- of type `Maybe a` for any `a`
 
 type String = [Char]
 
--- Unlike `data` types, type synonyms need no constructor, and can be used 
--- anywhere a synonymous data type could be used. Say we have the 
+-- Unlike `data` types, type synonyms need no constructor, and can be used
+-- anywhere a synonymous data type could be used. Say we have the
 -- following type synonyms and items with the following type signatures
 
 type Weight = Float
@@ -396,7 +396,7 @@ somePerson :: Person
 someCircle :: Circle
 distance :: Point -> Point -> Float
 
--- The following would compile and run without issue, 
+-- The following would compile and run without issue,
 -- even though it does not make sense semantically,
 -- because the type synonyms reduce to the same base types
 
@@ -408,18 +408,18 @@ distance (getMyHeightAndWeight somePerson) (findCenter someCircle)
 
 -- Typeclasses are one way Haskell does polymorphism
 -- They are similar to interfaces in other languages
--- A typeclass defines a set of functions that must 
+-- A typeclass defines a set of functions that must
 -- work on any type that is in that typeclass.
 
--- The Eq typeclass is for types whose instances can 
+-- The Eq typeclass is for types whose instances can
 -- be tested for equality with one another.
 
-class Eq a where  
-    (==) :: a -> a -> Bool  
-    (/=) :: a -> a -> Bool  
-    x == y = not (x /= y)  
+class Eq a where
+    (==) :: a -> a -> Bool
+    (/=) :: a -> a -> Bool
+    x == y = not (x /= y)
     x /= y = not (x == y)
-    
+
 -- This defines a typeclass that requires two functions, (==) and (/=)
 -- It also declares that one function can be declared in terms of another
 -- So it is enough that *either* the (==) function or the (/=) is defined
@@ -427,12 +427,12 @@ class Eq a where
 
 -- To make a type a member of a type class, the instance keyword is used
 
-instance Eq TrafficLight where  
-    Red == Red = True  
-    Green == Green = True  
-    Yellow == Yellow = True  
-    _ == _ = False 
-    
+instance Eq TrafficLight where
+    Red == Red = True
+    Green == Green = True
+    Yellow == Yellow = True
+    _ == _ = False
+
 -- Now we can use (==) and (/=) with TrafficLight objects
 
 canProceedThrough :: TrafficLight -> Bool
@@ -440,8 +440,8 @@ canProceedThrough t = t /= Red
 
 -- You can NOT create an instance definition for a type synonym
 
--- Functions can be written to take typeclasses with type parameters, 
--- rather than types, assuming that the function only relies on 
+-- Functions can be written to take typeclasses with type parameters,
+-- rather than types, assuming that the function only relies on
 -- features of the typeclass
 
 isEqual :: (Eq a) => a -> a -> Bool
@@ -449,9 +449,9 @@ isEqual x y = x == y
 
 -- Note that x and y MUST be the same type, as they are both defined
 -- as being of type parameter 'a'.
--- A typeclass does not state that different types in the typeclass can 
+-- A typeclass does not state that different types in the typeclass can
 -- be mixed together.
--- So `isEqual Red 2` is invalid, even though 2 is an Int which is an 
+-- So `isEqual Red 2` is invalid, even though 2 is an Int which is an
 -- instance of Eq, and Red is a TrafficLight which is also an instance of Eq
 
 -- Other common typeclasses are:
@@ -462,11 +462,11 @@ isEqual x y = x == y
 -- Enum for types that can be stepped through
 -- Bounded for types with a maximum and minimum
 
--- Haskell can automatically make types part of Eq, Ord, Read, Show, Enum, 
+-- Haskell can automatically make types part of Eq, Ord, Read, Show, Enum,
 -- and Bounded with the `deriving` keyword at the end of the type declaration
 
 data Point = Point Float Float deriving (Eq, Read, Show)
-    
+
 -- In this case it is NOT necessary to create an 'instance' definition
 
 ----------------------------------------------------
