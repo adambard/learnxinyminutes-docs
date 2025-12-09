@@ -139,10 +139,6 @@ snd ("snd", "can't touch this", "da na na na") -- error! see function below
 -- A simple function that takes two variables
 add a b = a + b
 
--- Note that if you are using ghci (the Haskell interpreter)
--- You'll need to use `let`, i.e.
--- let add a b = a + b
-
 -- Using the function
 add 1 2 -- 3
 
@@ -559,14 +555,17 @@ main'' = do
 ----------------------------------------------------
 
 -- Start the repl by typing `ghci`.
--- Now you can type in Haskell code. Any new values
--- need to be created with `let`:
+-- Now you can type in Haskell code.
 
-let foo = 5
+> foo = 5
+> foo
+5
 
 -- You can see the type of any value or expression with `:t`:
 
 > :t foo
+foo :: Num a => a
+> :t +d foo
 foo :: Integer
 
 -- Operators, such as `+`, `:` and `$`, are functions.
@@ -583,6 +582,8 @@ class Num a where
   ...
     -- Defined in ‘GHC.Num’
 infixl 6 +
+
+-- Type `:?` to get a list of all available commands.
 
 -- You can also run any action of type `IO ()`
 
