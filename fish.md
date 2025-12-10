@@ -20,7 +20,8 @@ It was released in February 2005.
 
 ## Guide
 
-Be sure you have the newest fish shell. This was made with version 3.3.0. To test, type:
+Be sure you have the newest fish shell. This guide is guaranteed to work with v4.2.0 (older/newer versions should probably work too).
+To test, type:
 
 ```
 > fish -v
@@ -52,7 +53,7 @@ If you want to execute a single command written in bash, without switching to th
 > bash -c 'echo "fish is better than bash"'
 ```
 
-In fish, you can use single or double quotes.
+In fish, you can use single or double quotes. Note that they have different semantics and cannot be used interchangeably in some cases (more on that later).
 The escape character is a `\`
 
 You can change your configuration of fish either by editing the config file
@@ -76,13 +77,17 @@ Adding something to your fish PATH Variable is easy:
 Can you do that with bash, huh? No, you always have to look it up... It's just that easy!
 
 But there's more. Most fish-specific commands start, you guessed it, with 'fish'. Just type in `fish` and press <kbd>TAB</kbd>. And there you have one of the many cool features of fish: The autocompletion that **just works.**
-Now you can navigate with <kbd>TAB</kbd>, <kbd>Shift + TAB</kbd> and your Arrow-Keys <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd>.
+Now you can navigate the list of completions with <kbd>TAB</kbd>, <kbd>Shift + TAB</kbd> and your Arrow-Keys <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd>. Pressing <kbd>Ctrl + s</kbd> will open up a fuzzy-search menu that you can use to filter the list.
+If you would rather drop into the search menu in one shot, press <kbd>Shift + TAB</kbd> instead of <kbd>TAB</kbd>.
 
 To get help, contact your local psychiatrist or type `man`. That will bring up the manual for that command, for example:
 
 ```
 > man set
 ```
+
+Note that there are many man pages with identical names that are specific to your current shell.
+For example, running `man set` from bash will give you the man page about bash's `set`.
 
 If you finally tried fish, you can see something other in fish that's really cool. Everything has cool colors, if you type in something wrong, it is red, without even executing, if you put something in quotes, you see where it ends and why that quote doesn't work, because there's another quotation mark in the quote at position 26. 
 
@@ -96,7 +101,7 @@ For example, type
 That will list all fish files in your current directory.
 
 You can have multiple wildcards per command or even a recursive wildcard, `**`, which basically means it includes files and directories, that fit.
-For example the following command would return (in your case):
+For example, the following command would return (in your case):
 
 ```
 > ls ~/images/**.jpg
@@ -110,17 +115,17 @@ For example the following command would return (in your case):
 Of course, you can also pipe the output of a command to another command
 
 ```
->echo sick egg, nadia. no u do really goofy shit.   | grep [udense]
+> echo sick egg, nadia. no u do really goofy shit.   | grep [udense]
 ```
 
 write to a file:
 
 ```
->echo This\ is\ text > file.txt
+> echo This\ is\ text > file.txt
 ```
 
 (noticed the escape character?)
-Add to a file:
+Append to a file:
 
 ```
 >echo This\ is\ a\ line >> file.txt
@@ -128,6 +133,16 @@ Add to a file:
 ```
 
 For Autocompletion, just always press <kbd>TAB</kbd>. You will be surprised how many things fish knows.
+
+Like many other shells, fish records your command history and stores it in a dedicated file (e.g. `~/.local/share/fish/fish_history`).
+Pressing <kbd>Ctrl + r</kbd> opens up fuzzy-search menu with your history.
+Use Up/Down arrow keys to select previous/next history entry. If you press the arrow key with some text
+entered on the command line, fish will suggest history entries containing that text. For example,
+typing `grep --` and pressing <kbd>↑</kbd> will match `ls ~/dir | grep --ignore-case` and will not
+show irrelevant entries.
+If you need to enter a sensitive command, prefix it with one or more spaces. This instructs fish not to record it.
+
+And, of course, about the magic autosuggestions: fish suggests commands as you type, based on command history, completions, and valid file paths. As you start typing commands, you will see a suggestion appear after the cursor, in a muted gray color. To accept it, press <kbd>→</kbd> or <kbd>Ctrl + f</kbd>.
 
 To use variables, just type `$VAR`, like in bash.
 
@@ -153,10 +168,24 @@ To execute two commands, separate them with `;`
 
 The status code of the last command is stored in `$status`
 
-You can use && for two commands that depend on each other.
+You can use `&&` for two commands that depend on each other.
 
 ```
 > set var lol && echo $var
+```
+
+`&&` can also be used to write multiple commands across multiple lines:
+
+```
+> set var lol &&    # press Enter here
+      echo $var
+```
+
+If you rather want to split a *single* command across multiple lines, use a backslash
+
+```
+whoami \    # press Enter here
+    --version
 ```
 
 You can also use `and`  which executes if the previous command was successful, 
@@ -260,6 +289,11 @@ set myvar "The file"(ls -a)" is in the directory $PWD"
 # And to separate these variables in separate arguments, just put a space between them:
 
 set myvar "The files" (ls -a) " are in the directory $PWD"
+
+# Passing the output of a command to another command that only accepts files can be achieved with process substitution. In bash you use <(command):
+diff <(ls dir1) <(ls dir2)
+# fish uses (command | psub) for that:
+diff (ls dir1 | psub) (ls dir2 | psub)
 
 # There's also if, else if, else
 if grep fish /etc/shells
