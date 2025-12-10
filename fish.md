@@ -6,7 +6,7 @@ contributors:
 filename: learn.fish
 ---
 
-Fish (**f**riendly **i**nteractive **sh**ell) is the name of an exotic shell. That is a shell with a syntax that is derived from neither the Bourne-Shell nor the C-Shell. 
+Fish (**f**riendly **i**nteractive **sh**ell) is the name of an exotic shell. That is a shell with a syntax that is derived from neither the Bourne-Shell nor the C-Shell.
 
 The advantage of fish is that many features that you want in a modern shell come out-of-the-box, so you don't have to install additional software like zsh and oh-my-zsh.
 
@@ -89,7 +89,7 @@ To get help, contact your local psychiatrist or type `man`. That will bring up t
 Note that there are many man pages with identical names that are specific to your current shell.
 For example, running `man set` from bash will give you the man page about bash's `set`.
 
-If you finally tried fish, you can see something other in fish that's really cool. Everything has cool colors, if you type in something wrong, it is red, without even executing, if you put something in quotes, you see where it ends and why that quote doesn't work, because there's another quotation mark in the quote at position 26. 
+If you finally tried fish, you can see something other in fish that's really cool. Everything has cool colors, if you type in something wrong, it is red, without even executing, if you put something in quotes, you see where it ends and why that quote doesn't work, because there's another quotation mark in the quote at position 26.
 
 fish has even more cool things, like wildcards.
 For example, type
@@ -188,15 +188,15 @@ whoami \    # press Enter here
     --version
 ```
 
-You can also use `and`  which executes if the previous command was successful, 
+You can also use `and`  which executes if the previous command was successful,
 `or` which executes if the previous command was not successful, and `not`
 which inverts the exit status of a command.
 
 For example:
 
 ```
-> if not echo It's very late I should not waste my time with this  
-      echo Nobody heard you  
+> if not echo It's very late I should not waste my time with this
+      echo Nobody heard you
   end
 ```
 
@@ -210,10 +210,10 @@ As with every shell, you can not only execute commands in the shell, but also as
 
 ```fish
 # This is a comment in fish.
-# 
-# If you execute a file without specifying an interpreter, 
-# meaning the software that runs your script, you need to tell the shell, 
-# where that interpreter is. 
+#
+# If you execute a file without specifying an interpreter,
+# meaning the software that runs your script, you need to tell the shell,
+# where that interpreter is.
 # For fish you just add the following comment as the first line in your script:
 
 #!/bin/fish
@@ -231,11 +231,11 @@ set -x name value
 set -e name
 # to Erase
 
-# a variable set with a space doesn't get sent as two arguments, but as one, as you would expect it. 
+# a variable set with a space doesn't get sent as two arguments, but as one, as you would expect it.
 set turtlefolder 'Turtle Folder'
 mkdir $turtlefolder
 
-# This will create one folder, as expected, not two, like in bash... 
+# This will create one folder, as expected, not two, like in bash...
 # Who would even want that? tHiS iS a fEaTurE, nOt a bUg...
 
 # you can even have lists as variables. This actually makes sense, because if you want to have a variable that would create two folders, you just give mkdir a list of your foldernames.
@@ -243,8 +243,8 @@ mkdir $turtlefolder
 # you can then count the entries in that list with:
 count $PATH
 
-# Not only is everything awesome, but in fish, everything is also a list. 
-# So $PWD for example is a list of length 1. 
+# Not only is everything awesome, but in fish, everything is also a list.
+# So $PWD for example is a list of length 1.
 # To make a list, just give the set command multiple arguments:
 set list entry1 entry2 entry3
 
@@ -252,13 +252,13 @@ set list entry1 entry2 entry3
 set PATH $PATH ~/cowsay/
 
 # But, as previously mentioned, we also have a simpler way to do that specifically in fish.
-# As with every Array/List, you can access it with 
+# As with every Array/List, you can access it with
 $listvar[2]
 
-# there's also ranges with 
+# there's also ranges with
 $listvar[1..5]
 
-# and you can use negative numbers like 
+# and you can use negative numbers like
 $listvar[-1]
 # e.g to access the last element.
 
@@ -271,9 +271,9 @@ echo $a$1
 # Of course, if you separate them, it will see them as two separate arguments and echo them one after the other. THAT is expected behavior @bash.
 
 # There are also other useful things, like command substitutions. For example, when you want to output the returns of two commands in one line. In bash you would do that with
-echo "`ls` is in $PWD" 
-# or 
-echo "$(ls) is in $PWD" 
+echo "`ls` is in $PWD"
+# or
+echo "$(ls) is in $PWD"
 
 # if you ask me, that's unnecessary. I always type in the wrong apostrophe. Why not just use two parenthesis, like in fish?
 echo (ls) is in $PWD
@@ -306,8 +306,8 @@ end
 
 # A little weird is that you compare stuff with one = sign, of course because we don't need it to set variables, but still... and the keyword "test":
 if test $var = "test"
-    echo yes 
-else 
+    echo yes
+else
     echo no
 end
 
@@ -342,7 +342,7 @@ end
 functions --handlers
 
 
-# You can use the functions command to learn more about, well, functions. 
+# You can use the functions command to learn more about, well, functions.
 # For example you can print the source code of every function:
 functions cd
 functions print
@@ -369,6 +369,6 @@ end
 # Cool!
 
 # The bashrc equivalent is not fishrc, but the previously mentioned config.fish file in ~/.config/fish/
-# To add a function to fish, though, you should create a simple .fish file in that directory. Don't just paste that function in the config.fish. That's ugly. 
+# To add a function to fish, though, you should create a simple .fish file in that directory. Don't just paste that function in the config.fish. That's ugly.
 # If you have more, just add it, but those are the most important basics.
 ```
