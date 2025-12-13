@@ -299,9 +299,9 @@ set myvar "The files" (ls -a) " are in the directory $PWD"
 diff (ls dir1 | psub) (ls dir2 | psub)
 
 # There's also if, else if, else
-if grep fish /etc/shells
+if grep -q fish /etc/shells
     echo Found fish
-else if grep bash /etc/shells
+else if grep -q bash /etc/shells
     echo Found bash
 else
     echo Got nothing
