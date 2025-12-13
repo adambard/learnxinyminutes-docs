@@ -565,6 +565,9 @@ main'' = do
 
 > :t foo
 foo :: Num a => a
+
+-- Option `+d` shows default types:
+
 > :t +d foo
 foo :: Integer
 
