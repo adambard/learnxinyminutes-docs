@@ -231,14 +231,17 @@ set -x name value
 set -e name
 # to Erase
 
-# a variable set with a space doesn't get sent as two arguments, but as one, as you would expect it.
+# A variable set with a space doesn't get sent as two arguments, but as one, as
+# you would expect it.
 set turtlefolder 'Turtle Folder'
 mkdir $turtlefolder
 
 # This will create one folder, as expected, not two, like in bash...
 # Who would even want that? tHiS iS a fEaTurE, nOt a bUg...
 
-# you can even have lists as variables. This actually makes sense, because if you want to have a variable that would create two folders, you just give mkdir a list of your foldernames.
+# You can even have lists as variables. This actually makes sense, because if
+# you want to have a variable that would create two folders, you just give mkdir a
+# list of your foldernames.
 
 # you can then count the entries in that list with:
 count $PATH
@@ -266,22 +269,27 @@ $listvar[-1]
 set a 1 2 3
 set 1 a b c
 echo $a$1
-# Will output : 1a 2a 3a 1b 2b 3b 1c 2c 3c
+# will output : 1a 2a 3a 1b 2b 3b 1c 2c 3c
 
-# Of course, if you separate them, it will see them as two separate arguments and echo them one after the other. THAT is expected behavior @bash.
+# Of course, if you separate them, it will see them as two separate arguments
+# and echo them one after the other. THAT is expected behavior @bash.
 
-# There are also other useful things, like command substitutions. For example, when you want to output the returns of two commands in one line.
-# In bash you would do that with
+# There are also other useful things, like command substitutions.
+# For example, when you want to output the returns of two commands in one line,
+# in bash you you would do that with
 # echo "`ls` is in $PWD"
 # or
 # echo "$(ls) is in $PWD"
 
-# if you ask me, that's unnecessary. I always type in the wrong apostrophe. Why not just use two parenthesis, like in fish?
+# If you ask me, that's unnecessary. I always type in the wrong apostrophe.
+# Why not just use two parenthesis, like in fish?
 echo (ls) is in $PWD
 
-# Yep, that easy. And thanks to fish's highlighting you can instantly see, if you typed it in correctly.
+# Yep, that easy. And thanks to fish's highlighting, you can instantly see
+# if you typed it in correctly.
 
-# And, as you would expect, if you ask me, your commands don't work in quotes. I mean why bash? Ok I'll stop now. But in fish, just do:
+# And, as you would expect, if you ask me, your commands don't work in quotes.
+# I mean why bash? Ok I'll stop now. But in fish, just do:
 echo (ls)" is in $PWD"
 # or
 set myvar "The file"(ls -a)" is in the directory $PWD"
@@ -291,8 +299,9 @@ set myvar "The file"(ls -a)" is in the directory $PWD"
 
 set myvar "The files" (ls -a) " are in the directory $PWD"
 
-# Passing the output of a command to another command that only accepts files can be achieved with process substitution.
-# In bash you use <(command):
+# Passing the output of a command to another command that only accepts files can
+# be done using process substitution.
+# In bash, you use <(command):
 # diff <(ls dir1) <(ls dir2)
 
 # fish uses (command | psub) for that:
@@ -307,7 +316,8 @@ else
     echo Got nothing
 end
 
-# A little weird is that you compare stuff with one = sign, of course because we don't need it to set variables, but still... and the keyword "test":
+# A little weird is that you compare stuff with one = sign, of course because
+# we don't need it to set variables, but still... and the keyword "test":
 if test $var = "test"
     echo yes
 else
@@ -327,7 +337,8 @@ case '*'
 end
 
 
-# functions in fish get their arguments through the $argv variable. The syntax is following:
+# Functions in fish get their arguments through the $argv variable.
+# The syntax is following:
 
 function print
     echo $argv
@@ -352,17 +363,18 @@ functions print
 # or get the names of all functions:
 functions
 
-# There's while Loops, of course
+# There are while loops, of course:
 while test $var = lol
     echo lol
 end
 
-# for Loops (with wildcards, they are even cooler):
+# for loops (with wildcards, they are even cooler):
 for image in *.jpg
     echo $image
 end
 
-# there's an equivalent to the range(0, 5) in Python, so you can also do the standard for loops with numbers:
+# There's an equivalent to the range(0, 5) in Python, so you can also do
+# the standard for loops with numbers:
 
 set files (ls)
 for number in (seq 10)
@@ -371,7 +383,11 @@ end
 
 # Cool!
 
-# The bashrc equivalent is not fishrc, but the previously mentioned config.fish file in ~/.config/fish/
-# To add a function to fish, though, you should create a simple .fish file in that directory. Don't just paste that function in the config.fish. That's ugly.
+# The bashrc equivalent is not fishrc, but the previously mentioned config.fish
+# file in ~/.config/fish/
+# To add a function to fish, though, you should create a simple .fish file in
+# that directory.
+# Don't just paste that function in the config.fish. That's ugly.
+
 # If you have more, just add it, but those are the most important basics.
 ```
