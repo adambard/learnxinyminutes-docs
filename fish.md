@@ -270,10 +270,11 @@ echo $a$1
 
 # Of course, if you separate them, it will see them as two separate arguments and echo them one after the other. THAT is expected behavior @bash.
 
-# There are also other useful things, like command substitutions. For example, when you want to output the returns of two commands in one line. In bash you would do that with
-echo "`ls` is in $PWD"
+# There are also other useful things, like command substitutions. For example, when you want to output the returns of two commands in one line.
+# In bash you would do that with
+# echo "`ls` is in $PWD"
 # or
-echo "$(ls) is in $PWD"
+# echo "$(ls) is in $PWD"
 
 # if you ask me, that's unnecessary. I always type in the wrong apostrophe. Why not just use two parenthesis, like in fish?
 echo (ls) is in $PWD
@@ -290,8 +291,10 @@ set myvar "The file"(ls -a)" is in the directory $PWD"
 
 set myvar "The files" (ls -a) " are in the directory $PWD"
 
-# Passing the output of a command to another command that only accepts files can be achieved with process substitution. In bash you use <(command):
-diff <(ls dir1) <(ls dir2)
+# Passing the output of a command to another command that only accepts files can be achieved with process substitution.
+# In bash you use <(command):
+# diff <(ls dir1) <(ls dir2)
+
 # fish uses (command | psub) for that:
 diff (ls dir1 | psub) (ls dir2 | psub)
 
