@@ -15,7 +15,7 @@ ReScript is a robustly typed language that compiles to efficient and human-reada
 /*----------------------------------------------
  * Variable and function declaration
  *----------------------------------------------
- * Variables and functions use the let keyword and end with a semi-colon
+ * Variables and functions use the let keyword
  * `let` bindings are immutable
  */
 
