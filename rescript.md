@@ -292,7 +292,7 @@ moveTo(~x=7.0, ~y=3.5)
 let getMessage = (~message as msg) => "==" ++ msg ++ "=="
 
 getMessage(~message="You have a message!")
-/* - The caller specifies ~message but internally the function can make use */
+/* - The caller specifies ~message but internally the function can make use of msg */
 
 /* The following function also has explicit types declared */
 let showDialog = (~message: string): unit => {
