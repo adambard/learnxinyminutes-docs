@@ -194,7 +194,7 @@ assert(c >= a);
 // But modern versions of Solidity automatically check for overflow/underflow of integer math
 
 
-// No random functions built in, you can get a pseduo-random number by hashing the current blockhash, or get a truly random number using something like Chainlink VRF. 
+// No random functions built in, you can get a pseudo-random number by hashing the current blockhash, or get a truly random number using something like Chainlink VRF.
 // https://docs.chain.link/docs/get-a-random-number
 
 // Type casting
@@ -615,7 +615,7 @@ reveal(100, "mySecret");
 // D. Oracles and External Data
 // Oracles are ways to interact with your smart contracts outside the blockchain. 
 // They are used to get data from the real world, send post requests, to the real world
-// or vise versa.
+// or vice versa.
 
 // Time-based implementations of contracts are also done through oracles, as 
 // contracts need to be directly called and can not "subscribe" to a time. 

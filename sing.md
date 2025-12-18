@@ -276,7 +276,7 @@ interface ExampleInterface {
 } 
 
 // and then creating classes which implement the interface
-// NOTE: you don't need (and cannot) re-declare the interface functions
+// NOTE: you don't need (and cannot) redeclare the interface functions
 class Implementer1 : ExampleInterface {
 private:
     var to_be_erased i32 = 3;

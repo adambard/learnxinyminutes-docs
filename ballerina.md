@@ -274,7 +274,7 @@ public function main() returns @tainted error? {
     // Compile-time taint checking for handling untrusted data
     string s1 = "abc";
     mySecureFunction(s1);
-    // Explicitely make "s2" a tainted value. External input to a Ballerina
+    // Explicitly make "s2" a tainted value. External input to a Ballerina
     // program such as command-line arguments and network input are by-default
     // marked as tainted data.
     string s2 = <@tainted> s1;
@@ -283,7 +283,7 @@ public function main() returns @tainted error? {
     string s2x = s2 + "abc";
     // The following line uncommented will result in a compilation error,
     // since we are passing a tainted value (s2x) to a function which 
-    // exepects an untainted value.
+    // expects an untainted value.
     // mySecureFunction(s2x);
 
     // Instantiating objects

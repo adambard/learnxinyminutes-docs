@@ -289,7 +289,7 @@ $game-map(3"y"; 1"x"..3"x"; level´1; altitude:) -> '$;
 // Flatten and do a grouping projection to get stats
 // Count and Max are built-in collector processors
 [$game-map... ... ...] -> $(collect {
-      occurences: Count,
+      occurrences: Count,
       highest-on-level: Max&{by: :(altitude:), select: :(level:)}
     } by $({terrain-id:}))
 -> !OUT::write

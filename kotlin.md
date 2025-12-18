@@ -121,7 +121,7 @@ fun helloWorld(val name : String) {
     println(even(7)) // => false
 
     /*
-    You can also use lambda functions, with the '->' operator seperating
+    You can also use lambda functions, with the '->' operator separating
     the parameters from the function body.
     */
     val fooLambda: (Int) -> Int = {n -> n + 1}

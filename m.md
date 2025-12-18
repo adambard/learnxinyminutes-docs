@@ -84,7 +84,7 @@ Output Formatting characters:
 
  The ! character is syntax for a new line.
  The # character is syntax for a new page.
- The sequence of the ? character and then a numeric expression is syntax for output of spaces until the number'th colum is printed.
+ The sequence of the ? character and then a numeric expression is syntax for output of spaces until the number'th column is printed.
 
 Multiple statements can be provided as additional arguments before the space separators to the next command:
 
@@ -245,7 +245,7 @@ w "hello"
 
 #### Quit (abbreviated as Q)
 Stop executing this block and return to the previous stack level.
-Quit can return a value, following the comamnd with a single space.
+Quit can return a value, following the command with a single space.
 Quit can stop a loop. remember to follow with two spaces.
 Quit outside a loop will return from the current subroutine followed by two spaces or a linefeed
 

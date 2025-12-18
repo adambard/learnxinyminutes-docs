@@ -289,7 +289,7 @@ bool SetupTransform() {
     result = _device->SetTransform(D3DTS_VIEW, &view); // apply the view matrix
     if (FAILED(result))
         return false;
-    // Create a projection matrix that defines the view frustrum.
+    // Create a projection matrix that defines the view frustum.
     // It transforms the view space to projection space.
     D3DXMATRIX projection{ };
     // Create a perspective projection using a left-handed coordinate system.
@@ -611,7 +611,7 @@ ComPtr<IDirect3DDevice9> _device{ };
 ComPtr<IDirect3DVertexBuffer9> _vertexBuffer{ };
 ComPtr<IDirect3DIndexBuffer9> _indexBuffer{ };
 ComPtr<IDirect3DVertexDeclaration9> _vertexDecl{ };
-// We have to add a ComPtr for the vertex- and pixel shader, aswell as one
+// We have to add a ComPtr for the vertex- and pixel shader, as well as one
 // for the constants (matrices) in our vertex shader.
 ComPtr<IDirect3DVertexShader9> _vertexShader{ };
 ComPtr<IDirect3DPixelShader9> _pixelShader{ };
@@ -666,7 +666,7 @@ bool SetupTransform() {
     return true;
 }
 // ...
-// Vertex and index buffer creation aswell as initialization stay unchanged.
+// Vertex and index buffer creation as well as initialization stay unchanged.
 // ...
 // After checking that shader model 3.0 is available we have to compile and
 // create the shaders.

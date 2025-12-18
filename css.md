@@ -217,7 +217,7 @@ body {
    background-color: var(--main-bg-color)
 }
 
-/* Perfom a calculation (CSS 3) */
+/* Perform a calculation (CSS 3) */
 body {
    width: calc(100vw - 100px)
 }
