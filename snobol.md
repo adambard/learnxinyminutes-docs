@@ -6,8 +6,8 @@ filename: learn.sbl
 ---
 ```SNOBOL
 * SNOBOL, also known for its compiled version: SPITBOL, is a unique programming 
-* language from the 1960s 
-* best known for its pattern matching and flow control systems.
+* language from the 1960s best known for its pattern matching and flow control 
+* systems.
 * 
 * Comments are prefixed by *, which also doubles as the multiplication sign, 
 * only being able to be declared in the label part of a line..
