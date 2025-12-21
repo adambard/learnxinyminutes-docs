@@ -17,13 +17,13 @@ filename: learn.sbl
 	OUTPUT = "HELLO, WORLD!"
 END
 
-* In the first line, the [label] is ommitted with a tab, this is MANDATORY. 
+* In the first line, the [label] is omitted with a tab, this is MANDATORY. 
 * Then in the [subject] the special variable OUTPUT is declared, which prints out its value whenever it is reassigned.
-* Theres also the PUNCH variable, which punches out its value to a tape punch whenever it is reassigned.
+* There's also the PUNCH variable, which punches out its value to a tape punch whenever it is reassigned.
 * OUTPUT is assigned in the [replacement], which always starts with '=' ([goto] starts with ':'), and assigns
 * "HELLO, WORLD!" to the OUTPUT variable.
 * 
-* It is also probably important to note that most modern SNOBOL implementations are case insesitive,
+* It is also probably important to note that most modern SNOBOL implementations are case insensitive,
 * But traditionally SNOBOL is written in ALL CAPS due to a lack of updates past the 1970s.
 * 
 * Finally END is a special keyword that ends the program. Everything after it is entirely ignored.
@@ -41,21 +41,21 @@ END
 
 * Variable names must start with a letter and can then contain letters, numbers, periods and underscores.
 * The example also shows us all the possible arithmetic operators, which are as follows in their order of operation:
-* [Unary Operators such as negation: -], (Anything in paretheses), Exponentiation: ** or !, Multiplication: *, Division: /, Addition: +, Subtraction: -.
+* [Unary Operators such as negation: -], (Anything in parentheses), Exponentiation: ** or !, Multiplication: *, Division: /, Addition: +, Subtraction: -.
 * Unary operators cannot have a space between them and their operand, while arithmetic ones must. As follows:
 	negative_number = -5
 	calculated_number = 5 * 5
 
-* Artihmetic variable definitions can also contain variables, real numbers (Floats in modern programmer parlance):
+* Arithmetic variable definitions can also contain variables, real numbers (Floats in modern programmer parlance):
 	PI = 3.14
 	RADIUS = 5.
 	RADIUS = 5.0
 	CIRC_AREA = PI * RADIUS ** 2
 	
-* If an integer is multilied by a real number, the result is an integer.
+* If an integer is multiplied by a real number, the result is an integer.
 * Strings can be assigned with single or double quotes, with the other type not counting if encloses:
 	Plea = 'He shouted, "Please"'
-	With_Apostrophe = "It's good to be able to put '' is a string."
+	With_Apostrophe = "It's good to be able to put '' in a string."
 
 * A blank variable is called a NULL String and can be assigned as:
 	NULL = 
@@ -66,7 +66,7 @@ END
 	REAL_STRING = '1.048'
 	SUM = INT_STRING + REAL_STRING + '55'
 
-* Strings can be concatenated simply by putting them together in a variable declaration or inside parentheses. I.E. the follwing would result in "Two Strings."
+* Strings can be concatenated simply by putting them together in a variable declaration or inside parentheses. I.E. the following would result in "Two Strings."
 	Two_Strings = "Two " 'Strings.'
 	("Two " 'Strings.')
 * This also works with floats and reals.
@@ -86,8 +86,8 @@ END
 	STATEMENT = "The animal goes barks woof"
 	STATEMENT ("barks" | "goes") " " ("woof" "yip")
 
-* This suceeds if the statement contains "barks woof", "goes woof", "barks yip" or "goes yip" but not, say, "woof woof".
-* You can also compose them with seperate variables.
+* This succeeds if the statement contains "barks woof", "goes woof", "barks yip" or "goes yip" but not, say, "woof woof".
+* You can also compose them with separate variables.
 
 * Additionally if one wants to match a matched pattern to a variable, one can do this with [pattern] . variable
 	"HEX" ('HEX' | 'DEC') . BASE
@@ -102,11 +102,11 @@ END
 IS_A_DOG OUTPUT = "Yes, the animal is a dog." :(END)
 NOT_A_DOG OUTPUT = "No, the animal is not a dog." :(END)
 
-* :(END) is required to for only one of the lines to be processed.
+* :(END) is required so that only one of the lines is processed.
 
 END
 
-* This isn't a full description of the language, but should be enough for a begineer to start.
+* This isn't a full description of the language, but should be enough for a beginner to start.
 ```
 
 ## Additional Resources:
