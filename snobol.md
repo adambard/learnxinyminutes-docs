@@ -134,17 +134,27 @@ PASS
 * :(PASS) is required so that only one of the lines is processed.
 
 * For function definitions:
-	DEFINE('DELETE(STRING,CHAR)','D1')
-D1 STRING CHAR =	:S(D2) F(FRETURN)
-	DELETE = STRING	:(RETURN)
+	DEFINE("PRINT(S)",'D1')		:S(ENDPRINT)
+D1 OUTPUT = S :(RETURN)
+ENDPRINT
 
-	OUTPUT = DELETE("ABACADA",'A')
-* DEFINE is a built-in function to define the functions, followed the input 
-* types, then a comma and the entry label for the function. By default it's the
-* name of the function.
-* Then FRETURN is a special statement to have the function return a failure, in
-* this case if no CHAR's are present in STRING, while RETURN exists the function
-* with a success. OUTPUT should equal BCD in the end.
+	PRINT("TEST!")
+* DEFINE is a built-in function to define the functions, followed the inputs, 
+* then a comma and the entry label for the function. By default it's the
+* name of the function. One must also define an endpoint for the function in the
+* success goto, which can be any free name. The RETURN goto retuns a success.
+* Then FRETURN is a special goto that returns a failure. In the end, "TEST!"
+* should be printed.
+
+* Function with return values:
+	DEFINE("RETURN_SQRT(X, Y)")		:S(ENDSQRT)
+RETURN_SQRT RETURN_SQRT = x ** (1.0 / Y) 	:S(RETURN) F(FRETURN)
+ENDSQRT
+
+	OUTPUT = RETURN_SQRT(25, 2)
+* To give a function a return value, one simply assigns a value to its name as if
+* it were a variable. Note that for non-integer numbers  to exist one must use 
+* REALS. Here the result should be 5.
 
 END
 
