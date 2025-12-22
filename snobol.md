@@ -127,18 +127,34 @@ END
 * in the [goto]. I.E.
 	STATEMENT = "The animal goes barks woof"
 	STATEMENT ("barks" | "goes") " " ("woof" "yip") :s(IS_A_DOG) f(NOT_A_DOG)
-IS_A_DOG OUTPUT = "Yes, the animal is a dog." :(END)
-NOT_A_DOG OUTPUT = "No, the animal is not a dog." :(END)
+IS_A_DOG OUTPUT = "Yes, the animal is a dog." :(PASS)
+NOT_A_DOG OUTPUT = "No, the animal is not a dog." :(PASS)
 
-* :(END) is required so that only one of the lines is processed.
+PASS
+* :(PASS) is required so that only one of the lines is processed.
+
+* For function definitions:
+	DEFINE('DELETE(STRING,CHAR)','D1')
+D1 STRING CHAR =	:S(D2) F(FRETURN)
+	DELETE = STRING	:(RETURN)
+
+	OUTPUT = DELETE("ABACADA",'A')
+* DEFINE is a built-in function to define the functions, followed the input 
+* types, then a comma and the entry label for the function. By default it's the
+* name of the function.
+* Then FRETURN is a special statement to have the function return a failure, in
+* this case if no CHAR's are present in STRING, while RETURN exists the function
+* with a success. OUTPUT should equal BCD in the end.
 
 END
 
-* This isn't a full description of the language, but should be enough for a 
-beginner to start out.
+* This isn't a full description of the language (For example there are more 
+* built-in elements than shown here), but should be enough for a beginner to it 
+* to start out.
 ```
 
 ## Additional Resources:
 - [THE SNOBOL 4 PROGRAMMING LANGUAGE 2ND EDITION](https://ftp.regressive.org/snobol/misc/ftp.cs.arizona.edu/gb.pdf)
 - [REGRESSIVE.ORG's SNOBOL RESOURCES](https://www.regressive.org/snobol4/)
 - [A x64 SPITBOL IMPLEMENTATION](https://github.com/spitbol/x64)
+- [RATFACTOR'S EXCELLENT BLOGPOST ON THE LANGUGAE](https://www.ratfactor.com/snobol/judgement)
