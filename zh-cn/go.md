@@ -331,7 +331,7 @@ func inc(i int, c chan int) {
 
 // 我们将用inc函数来并发地增加一些数字。
 func learnConcurrency() {
-    // 用make来声明一个slice，make会分配和初始化slice，map和channel。
+    // 像前面的例子中用make来初始化一个slice一样，make会分配和初始化slice，map和channel。
     c := make(chan int)
     // 用go关键字开始三个并发的goroutine，如果机器支持的话，还可能是并行执行。
     // 三个都被发送到同一个channel。
