@@ -286,7 +286,7 @@ func learnInterfaces() {
     fmt.Println(i.String())
 
     // fmt包中的Println函数向对象要它们的string输出，实现了String方法就可以这样使用了。
-    // （类似java中的序列化）
+    // （类似java中的 toString() ）
     fmt.Println(p) // 输出和上面一样，自动调用String函数。
     fmt.Println(i) // 输出和上面一样。
 
