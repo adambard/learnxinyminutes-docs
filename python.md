@@ -872,13 +872,16 @@ class Superhero(Human):
     # This constructor inherits the "name" argument from the "Human" class and
     # adds the "superpower" and "movie" arguments:
     def __init__(self, name, movie=False,
-                 superpowers=["super strength", "bulletproofing"]):
-
+                 superpowers=None):
         # add additional class attributes:
         self.fictional = True
         self.movie = movie
         # be aware of mutable default values, since defaults are shared
-        self.superpowers = superpowers
+        if superpowers is None:
+            # assigns default superpowers, but this way new list is created on each initialization.
+            self.superpowers = ["super strength", "bulletproofing"] 
+        else:
+            self.superpowers = superpowers
 
         # The "super" function lets you access the parent class's methods
         # that are overridden by the child, in this case, the __init__ method.
