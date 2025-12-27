@@ -281,7 +281,7 @@ func learnInterfaces() {
     p := pair{3, 4}
     fmt.Println(p.String()) // 调用pair类型p的String方法
     var i Stringer          // 声明i为Stringer接口类型
-    i = p                   // 有效！因为p实现了Stringer接口
+    i = p                   // 有效！因为p实现了Stringer接口（类似java中的类型转换）
     // 调用i的String方法，输出和上面一样
     fmt.Println(i.String())
 
