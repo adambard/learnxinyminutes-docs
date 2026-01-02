@@ -589,8 +589,8 @@ class Human:
     def say(self, msg):
         return "{name}: {message}".format(name=self.name, message=msg)
 
-    # Une méthode de classe est partagée avec entre les instances
-    # Ils sont appelés avec la classe comme premier argument
+    # Une méthode de classe est partagée entre les instances
+    # Elle est appelée avec la classe comme premier argument
     @classmethod
     def get_species(cls):
         return cls.species
