@@ -401,7 +401,7 @@ int main (int argc, char** argv)
   error: // this is a label that you can "jump" to with "goto error;"
   printf("Error occurred at i = %d & j = %d.\n", i, j);
   end:
-    return 0
+    return 0;
   /*
     https://ideone.com/z7nzKJ
     this will print out "Error occurred at i = 51 & j = 99."
