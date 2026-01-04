@@ -778,7 +778,7 @@ failure:
 // things are a little cleaner, but still sub-optimal.
 void doSomethingWithAFile(const char* filename)
 {
-    FILE* fh = fopen(filename, "r"); // Open the file in shared_ptrread mode
+    FILE* fh = fopen(filename, "r"); // Open the file in read mode
     if (fh == nullptr)
         throw std::runtime_error("Could not open the file.");
 
