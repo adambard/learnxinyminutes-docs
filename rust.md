@@ -321,17 +321,17 @@ fn main() {
     // Reference – an immutable pointer that refers to other data
     // When a reference is taken to a value, we say that the value has been ‘borrowed’.
     // While a value is borrowed immutably, it cannot be mutated or moved.
-    // A borrow is active until the last use of the borrowing variable.
+    // A borrow is active until the last use of the reference.
     let mut var = 4;
     var = 3;
     let ref_var: &i32 = &var;
 
     println!("{}", var); // Unlike `mine`, `var` can still be used
     println!("{}", *ref_var);
-    // var = 5; // this would not compile because `var` is borrowed
-    // *ref_var = 6; // this would not either, because `ref_var` is an immutable reference
-    ref_var; // no-op, but counts as a use and keeps the borrow active
-    var = 2; // ref_var is no longer used after the line above, so the borrow has ended
+    // *ref_var = 6; // this would not compile, because `ref_var` is an immutable reference
+    
+    // After the last use of `ref_var` above, the borrow ends (NLL), so this reassignment is allowed.
+    var = 2;
 
     // Mutable reference
     // While a value is mutably borrowed, it cannot be accessed at all.
@@ -339,10 +339,11 @@ fn main() {
     let ref_var2: &mut i32 = &mut var2;
     *ref_var2 += 2;         // '*' is used to point to the mutably borrowed var2
 
-    println!("{}", *ref_var2); // 6 , // var2 would not compile.
+    println!("{}", *ref_var2); // 6 
     // ref_var2 is of type &mut i32, so stores a reference to an i32, not the value.
-    // var2 = 2; // this would not compile because `var2` is borrowed.
-    ref_var2; // no-op, but counts as a use and keeps the borrow active until here
+    
+    // After the last use of `ref_var2` above, the borrow ends (NLL), so this reassignment is allowed.
+    var2 = 2;
 }
 ```
 
