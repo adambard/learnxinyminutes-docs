@@ -321,7 +321,7 @@ fn main() {
     // Reference – an immutable pointer that refers to other data
     // When a reference is taken to a value, we say that the value has been ‘borrowed’.
     // While a value is borrowed immutably, it cannot be mutated or moved.
-    // A borrow is active until the last use of the reference.
+    // A borrow lasts from where it's created until its last use (Non-Lexical Lifetimes).
     let mut var = 4;
     var = 3;
     let ref_var: &i32 = &var;
@@ -330,7 +330,7 @@ fn main() {
     println!("{}", *ref_var);
     // *ref_var = 6; // this would not compile, because `ref_var` is an immutable reference
     
-    // After the last use of `ref_var` above, the borrow ends (NLL), so this reassignment is allowed.
+    // After the last use of `ref_var` above, the borrow ends, so this reassignment is allowed.
     var = 2;
 
     // Mutable reference
@@ -342,7 +342,7 @@ fn main() {
     println!("{}", *ref_var2); // 6 
     // ref_var2 is of type &mut i32, so stores a reference to an i32, not the value.
     
-    // After the last use of `ref_var2` above, the borrow ends (NLL), so this reassignment is allowed.
+    // After the last use of `ref_var2` above, the borrow ends, so this reassignment is allowed.
     var2 = 2;
 }
 ```
