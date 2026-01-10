@@ -128,8 +128,8 @@ write to a file:
 Append to a file:
 
 ```
->echo This\ is\ a\ line >> file.txt
->echo This\ is\ a\ second\ line >> file.txt
+> echo This\ is\ a\ line >> file.txt
+> echo This\ is\ a\ second\ line >> file.txt
 ```
 
 For Autocompletion, just always press <kbd>TAB</kbd>. You will be surprised how many things fish knows.
@@ -184,7 +184,7 @@ You can use `&&` for two commands that depend on each other.
 If you rather want to split a *single* command across multiple lines, use a backslash
 
 ```
-whoami \    # press Enter here
+> whoami \    # press Enter here
     --version
 ```
 
