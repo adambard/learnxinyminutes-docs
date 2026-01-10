@@ -302,10 +302,10 @@ set myvar "The files" (ls -a) " are in the directory $PWD"
 # Passing the output of a command to another command that only accepts files can
 # be done using process substitution.
 # In bash, you use <(command):
-# diff <(ls dir1) <(ls dir2)
+# diff <(sort file1) <(sort file2)
 
 # fish uses (command | psub) for that:
-diff (ls dir1 | psub) (ls dir2 | psub)
+diff (sort file1 | psub) (sort file2 | psub)
 
 # There's also if, else if, else
 if grep -q fish /etc/shells
