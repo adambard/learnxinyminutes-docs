@@ -84,7 +84,7 @@ val y: int = id2 7 // works
 // can't have polymorphic t@ype parameters
 // fn id3 {a:t@ype} (x: a) = x // doesn't compile
 
-// explicity specifying type parameters:
+// explicitly specifying type parameters:
 fn id4 {a:type} (x: a) = id {a} x // {} for non-template parameters
 fn id5 {a:type} (x: a) = id2<a> x // <> for template parameters
 fn id6 {a:type} (x: a) = id {..} x // {..} to explicitly infer it

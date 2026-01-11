@@ -15,7 +15,7 @@ anyone working with versioned files.
 
 ### What is version control?
 
-Version control is a system that keeps track fo changes to a set of file(s)
+Version control is a system that keeps track of changes to a set of file(s)
 and/or directorie(s) over time.
 
 ### Why use Mercurial?

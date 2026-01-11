@@ -78,7 +78,7 @@ List<String> dst1 = msgpack.read(raw, Templates.tList(Templates.TString));
 System.out.println(dst1.get(0));
 System.out.println(dst1.get(1));
 
-// Or, Deserialze to Value then convert type.
+// Or, Deserialize to Value then convert type.
 Value dynamic = msgpack.read(raw);
 List<String> dst2 = new Converter(dynamic)
     .read(Templates.tList(Templates.TString));

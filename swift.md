@@ -50,7 +50,7 @@ let theAnswer = 42
 var theQuestion = "What is the Answer?"
 theQuestion = "How many roads must a man walk down?"
 theQuestion = "What is six by nine?"
-// Atttempting to reassign a constant throws a compile-time error
+// Attempting to reassign a constant throws a compile-time error
 //theAnswer = 54
 
 // Both variables and constants can be declared before they are given a value,

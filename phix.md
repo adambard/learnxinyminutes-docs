@@ -51,7 +51,7 @@ filename: learnphix.exw
     -- a named constant object
         constant myPI = 22/7
 
-//  Everything is an ''object'', just two fundemental kinds
+//  Everything is an ''object'', just two fundamental kinds
                                                                 /*
             ┌────────────────────▄
           ┌─┤   object           █─┐
@@ -91,7 +91,7 @@ filename: learnphix.exw
               class ════════════════╝
                                                                 */
 
-// Syntax is consistant: "keyword...end keyword"
+// Syntax is consistent: "keyword...end keyword"
 
     -- no invisible syntax or extra rules needed.
 
@@ -120,7 +120,7 @@ filename: learnphix.exw
         elsif p > 10 then
             ? "p is a large number"
         else
-            ? "p is inbetween"
+            ? "p is in between"
         end if
 
     // conditional
@@ -134,7 +134,7 @@ filename: learnphix.exw
             default:  ? "ch is something else"
         end switch
 
-// Operators are always consistant; never overloaded.
+// Operators are always consistent; never overloaded.
 
     -- the + operator ''always adds''
         ? 2+7      --> 9
@@ -170,7 +170,7 @@ filename: learnphix.exw
         end procedure
         sum_all( {1,3,9,11} )
 
-// Recursion and mutal recursion are permitted
+// Recursion and mutual recursion are permitted
 
         function factorial(number n)
             if n == 0 then

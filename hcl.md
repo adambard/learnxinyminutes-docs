@@ -8,7 +8,7 @@ filename: terraform.txt
 ## Introduction
 
 HCL (Hashicorp Configuration Language) is a high-level configuration language used in tools from
-Hashicorp (such as Terraform). HCL/Terraform is widely used in provisioning cloud infastructure and
+Hashicorp (such as Terraform). HCL/Terraform is widely used in provisioning cloud infrastructure and
 configuring platforms/services through APIs. This document focuses on HCL 0.13 syntax.
 
 HCL is a declarative language and Terraform will consume all `*.tf` files in the current folder, so code

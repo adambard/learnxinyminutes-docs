@@ -284,7 +284,7 @@ arc(x, y, width, height, start, stop, [mode]);
 
 // Curves
 // Processing provides two implementation of curves; using curve() and bezier().
-// Since I plan to keep this simple I wont be discussing any further details.
+// Since I plan to keep this simple I won't be discussing any further details.
 // However, if you want to implement it in your sketch, here are the references:
 // (https://processing.org/reference/curve_.html)
 // (https://processing.org/reference/bezier_.html)
@@ -309,7 +309,7 @@ sphere(radius); // Its size is defined using the radius parameter
 // More information here: (https://processing.org/reference/sphereDetail_.html)
 
 // Irregular Shapes
-// What if you wanted to draw something thats not made available by Processing
+// What if you wanted to draw something that's not made available by Processing
 // functions?
 // You can use beginShape(), endShape(), vertex(x,y) to define shapes by
 // specifying each point. More information here:

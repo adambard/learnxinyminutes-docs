@@ -10,8 +10,8 @@ contributors:
 (API) for rendering 2D computer graphics and 3D vector graphics.<sup>[1]</sup> In this tutorial we will be
 focusing on modern OpenGL from 3.3 and above, ignoring "immediate-mode", Displaylists and
 VBO's without use of Shaders.
-I will be using C++ with SFML for window, image and context creation aswell as GLEW
-for modern OpenGL extensions, though there are many other librarys available.
+I will be using C++ with SFML for window, image and context creation as well as GLEW
+for modern OpenGL extensions, though there are many other libraries available.
 
 ```cpp
 // Creating an SFML window and OpenGL basic setup.
@@ -257,7 +257,7 @@ glDrawArrays(GL_QUADS, 0, 4);
 glBindVertexArray(0);
 window.display();
 // ...
-// Ofcource we have to delete the allocated memory for the VAO and VBO at
+// Of course we have to delete the allocated memory for the VAO and VBO at
 // the end of our application.
 // ...
 glDeleteBuffers(1, &vbo);
@@ -472,7 +472,7 @@ You can find the current code here: [OpenGL - 2](https://pastebin.com/R3Z9ACDE).
 ## Textures
 
 To load out texture we first need a library that loads the data, for simplicity I will be
-using SFML, however there are a lot of librarys for loading image data.
+using SFML, however there are a lot of libraries for loading image data.
 
 ```cpp
 // Lets save we have a texture called "my_tex.tga", we can load it with:
@@ -592,7 +592,7 @@ You can find the current code here: [OpenGL - 3](https://pastebin.com/u3bcwM6q)
 layout(location = 0) in vec3 position;
 layout(location = 1) in vec3 color;
 layout(location = 2) in vec2 texCoords;
-// Create 2 4x4 matricies, 1 for the projection matrix
+// Create 2 4x4 matrices, 1 for the projection matrix
 // and 1 for the model matrix.
 // Because we draw in a static scene, we don't need a view matrix.
 uniform mat4 projection;
@@ -606,7 +606,7 @@ void main() {
     fTexCoords = texCoords;
     // Multiplay the position by the model matrix and then by the
     // projection matrix.
-    // Beware order of multiplication for matricies!
+    // Beware order of multiplication for matrices!
     gl_Position = projection * model * vec4(position, 1.0);
 }
 ```
@@ -621,10 +621,10 @@ std::vector<float> vertexData {
     1.0f, 0.0f, 0.0f,   // bottom right
     1.0f, 1.0f, 0.0f    // top right
 };
-// Request the location of our matricies.
+// Request the location of our matrices.
 GLint projectionLocation = glGetUniformLocation(program, "projection");
 GLint modelLocation = glGetUniformLocation(program, "model");
-// Declaring the matricies.
+// Declaring the matrices.
 // Orthogonal matrix for a 1024x768 window.
 std::vector<float> projection {  
     0.001953f,       0.0f,  0.0f, 0.0f,
@@ -640,7 +640,7 @@ std::vector<float> model {
       0.0f,   0.0f, 1.0f, 0.0f,
      50.0f,  50.0f, 0.0f, 1.0f
 };
-// Now we can send our calculated matricies to the program.
+// Now we can send our calculated matrices to the program.
 glUseProgram(program);
 glUniformMatrix4fv(projectionLocation,   // location
                    1,                    // count
@@ -655,8 +655,8 @@ The application should now display the texture at the defined position and size.
 You can find the current code here: [OpenGL - 4](https://pastebin.com/9ahpFLkY)
 
 ```cpp
-// There are many math librarys for OpenGL, which create
-// matricies and vectors, the most used in C++ is glm (OpenGL Mathematics).
+// There are many math libraries for OpenGL, which create
+// matrices and vectors, the most used in C++ is glm (OpenGL Mathematics).
 // Its a header only library.
 // The same code using glm would look like:
 glm::mat4 projection{ glm::ortho(0.0f, 1024.0f, 768.0f, 0.0f) };
@@ -676,7 +676,7 @@ glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 Geometry shaders were introduced in OpenGL 3.2, they can produce vertices
 that are send to the rasterizer. They can also change the primitive type e.g.
 they can take a point as an input and output other primitives.
-Geometry shaders are inbetween the vertex and the fragment shader.
+Geometry shaders are in between the vertex and the fragment shader.
 
 **Vertex Shader**
 
