@@ -422,11 +422,12 @@ public class BelajarJava {
             add("SINGAPURA");
         }}
 
-        // Kurung kurawal yang pertama membuat sebuah AnonymousInnerClas
-        // dan kurung kurawal yang kedua mendeklarasikan instance dari blok
-        // inisialisasi. Blok ini kemudian dipanggil ketika InnerClass dibentuk.
-        // Cara ini tidak hanya berfungsi pada koleksi data, juga dapat digunakan
-        // pada semua kelas bukan-"final".
+        // Kurung kurawal pertama membuat AnonymousInnerClass dan yang kedua
+        // mendeklarasikan instance initializer block. Blok ini dipanggil saat
+        // kelas anonim dibuat. Namun, ini dianggap sebagai "anti-pattern":
+        // setiap penggunaan membuat file kelas baru yang menambah beban memori
+        // (Metaspace) dan berisiko menyebabkan kebocoran memori (memory leak).
+        // Gunakan Set.of() untuk Java 9+.
 
     } // Akhir dari method utama
 } // Akhir dari kelas BelajarJava
