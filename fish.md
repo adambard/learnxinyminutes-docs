@@ -128,8 +128,8 @@ write to a file:
 Append to a file:
 
 ```
->echo This\ is\ a\ line >> file.txt
->echo This\ is\ a\ second\ line >> file.txt
+> echo This\ is\ a\ line >> file.txt
+> echo This\ is\ a\ second\ line >> file.txt
 ```
 
 For Autocompletion, just always press <kbd>TAB</kbd>. You will be surprised how many things fish knows.
@@ -184,7 +184,7 @@ You can use `&&` for two commands that depend on each other.
 If you rather want to split a *single* command across multiple lines, use a backslash
 
 ```
-whoami \    # press Enter here
+> whoami \    # press Enter here
     --version
 ```
 
@@ -302,10 +302,10 @@ set myvar "The files" (ls -a) " are in the directory $PWD"
 # Passing the output of a command to another command that only accepts files can
 # be done using process substitution.
 # In bash, you use <(command):
-# diff <(ls dir1) <(ls dir2)
+# diff <(sort file1) <(sort file2)
 
 # fish uses (command | psub) for that:
-diff (ls dir1 | psub) (ls dir2 | psub)
+diff (sort file1 | psub) (sort file2 | psub)
 
 # There's also if, else if, else
 if grep -q fish /etc/shells
