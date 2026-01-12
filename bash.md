@@ -18,6 +18,7 @@ contributors:
     - ["Martin Nicholson", "https://github.com/mn113"]
     - ["Mark Grimwood", "https://github.com/MarkGrimwood"]
     - ["Emily Grace Seville", "https://github.com/EmilySeville7cfg"]
+    - ["Denis Borchev", "https://github.com/askbow"]
 filename: LearnBash.sh
 translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
@@ -212,7 +213,14 @@ fg
 bg
 # Kill job number 2
 kill %2
-# %1, %2, etc. can be used for fg and bg as well
+# %1, %2, etc. can be used for fg, bg, and wait as well
+# Wait for job number 3 completion, returns job status code
+wait %3 ; echo $?
+# Wait for all background jobs to complete
+for i in {1..5} ; do sleep 30 &  done ; wait
+# [1] 1718
+# ...
+# [5]   Done                    sleep 30
 
 # Redefine command `ping` as alias to send only 5 packets
 alias ping='ping -c 5'
