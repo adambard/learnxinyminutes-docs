@@ -551,7 +551,7 @@ public class JavaFr {
         }}
 
         // La première accolade crée une classe anonyme et la deuxième est
-        // um bloc d'initialisation d'instance. Ce bloc est appelé lors de la
+        // un bloc d'initialisation d'instance. Ce bloc est appelé lors de la
         // création de la classe anonyme. Cependant, cette pratique est 
         // déconseillée (anti-pattern) : elle génère une classe supplémentaire,
         // augmente la consommation mémoire (Metaspace) et peut causer des
