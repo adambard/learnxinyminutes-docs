@@ -6,8 +6,6 @@ contributors:
     - ["kaymmm", "https://github.com/kaymmm"]
 translators:
     - ["valerioandreachiodi", "https://github.com/valerioandreachiodi"]
-filename: LearnVim-it.txt
-lang: it-it
 ---
 
 [Vim](http://www.vim.org) (Vi IMproved) è un clone del popolare editor vi per Unix...
