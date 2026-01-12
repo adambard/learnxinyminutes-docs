@@ -559,7 +559,7 @@ public class LearnJava {
         // one declares an instance initializer block. This block is called 
         // when the anonymous inner class is created. 
         // However, this is considered an anti-pattern: it creates a new class 
-        // file for every instance, increasing memory overhead (Metaspace) 
+        // for every instance, increasing memory overhead (Metaspace) 
         // and potentially causing memory leaks by holding an implicit 
         // reference to the enclosing class. Use Set.of() in Java 9+.
 
