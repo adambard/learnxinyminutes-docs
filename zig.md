@@ -355,7 +355,7 @@ for (items[0..1]) |value| { sum += value; }
 for (items) |value| { sum += value; }
 
 // Iterate and get pointers on values instead of copies.
-for (items) |*value| { value.* += 1; }
+for (&items) |*value| { value.* += 1; }
 
 // You can iterate multiple ranges.
 for (0..10, 10..20) |i, j| { sum += i * j; }
@@ -364,7 +364,7 @@ for (0..10, 10..20) |i, j| { sum += i * j; }
 for (items, 0..) |value, i| { print("val[{}] = {}\n", .{i, value}); }
 
 // Iterate with pointer and index.
-for (items, 0..) |*value, i| { print("val[{}] = {}\n", .{i, value}); value.* += 1; }
+for (&items, 0..) |*value, i| { print("val[{}] = {}\n", .{i, value}); value.* += 1; }
 
 
 // Break and continue are supported.
