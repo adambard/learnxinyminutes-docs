@@ -21,7 +21,7 @@ recommended.
   - The type system distinguishes between a pointer to a single value, or multiple values, etc.
   - Slices are preferred, which is a structure with a pointer and a runtime known size, which characterizes most uses of pointers in the first place.
 - Some arbitrary language limitations are removed. For example, enumerations, structures and unions can have functions.
-- Simple access to SIMD operations (basic maths on vectors).
+- Simple access to SIMD operations (basic math on vectors).
 - Zig provides both low-level features of C and the one provided through compiler extensions.
   For example: packed structures.
 - An extensive standard library, including data structures and algorithms.
@@ -85,7 +85,7 @@ var myvar: u10 = 5; // 10-bit unsigned integer
 const one_billion = 1_000_000_000;         // Decimal.
 const binary_mask = 0b1_1111_1111;         // Binary. Ex: network mask.
 const permissions = 0o7_5_5;               // Octal.  Ex: Unix permissions.
-const big_address = 0xFF80_0000_0000_0000; // Hexa.   Ex: IPv6 address.
+const big_address = 0xFF80_0000_0000_0000; // Hex.    Ex: IPv6 address.
 
 
 // Overflow operators: tell the compiler when it's okay to overflow.
