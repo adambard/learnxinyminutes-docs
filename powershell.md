@@ -82,12 +82,6 @@ $True * 8    # => '[System.Boolean] * [System.Int32]' is undefined
 [int]$True * 8 # => 8
 $False - 5   # => -5
 
-# Comparison operators look at the numerical value of True and False.
-0 -eq $False  # => True
-1 -eq $True   # => True
-2 -eq $True   # => False
--5 -ne $False # => True
-
 # Using boolean logical operators on ints casts to booleans for evaluation.
 # but their non-cast value is returned
 # Don't mix up with bool(ints) and bitwise -band/-bor
