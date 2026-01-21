@@ -3,6 +3,7 @@ name: MongoDB
 filename: mongo.js 
 contributors:
   - ["Raj Piskala", "https://www.rajpiskala.ml/"]
+  - ["Manprit Tiwari", "https://github.com/manprit-tiwari"]
 ---
 
 MongoDB is a NoSQL document database for high volume data storage.
@@ -272,33 +273,33 @@ db.engineers.find({ age: { $nin: [ 20, 23, 24, 25 ]}})
 
 // Join two query clauses together
 // NOTE: MongoDB does this implicitly for most queries
-db.engineers.find({ $and: [
-  gender: 'Female',
-  age: {
-    $gte: 18
-  }
-]})
+db.engineers.find({
+  $and: [
+    { gender: 'Female' },
+    { age: { $gte: 18 } }
+  ]
+})
 
 // Match either query condition
-db.engineers.find({ $or: [
-  gender: 'Female',
-  age: {
-    $gte: 18
-  }
-]})
+db.engineers.find({
+  $or: [
+    { gender: 'Female' },
+    { age: { $gte: 18 } }
+  ]
+})
 
 // Negates the query
-db.engineers.find({ $not: {
-  gender: 'Female'
-}})
+db.engineers.find({
+  gender: { $not: { $eq: 'Female' } }
+})
 
 // Must match none of the query conditions
-db.engineers.find({ $nor [
-  gender: 'Female',
-  age: {
-    $gte: 18
-  }
-]})
+db.engineers.find({
+  $nor: [
+    { gender: 'Female' },
+    { age: { $gte: 18 } }
+  ]
+})
 
 /////////////////////////////////////////////////////////
 //////////////// Database Operations: ///////////////////
