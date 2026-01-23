@@ -542,11 +542,11 @@ public class LearnJava {
             add("FINLANDIA");
         }}
 
-        // Pierwszy nawias tworzy nową klasę AnonymousInnerClass,
-        // drugi deklaruje instancję bloku inicjalizacji. Blok ten
-        // jest wywoływany gdy wewnętrzna, anonimowa klasa jest tworzona.
-        // Dany sposób działa nie tylko dla kolekcji, ale również dla
-        // wszystkich nie-finalnych klas.
+        // Pierwszy nawias tworzy anonimową klasę wewnętrzną, a drugi deklaruje
+        // instancyjny blok inicjalizacyjny wywoływany podczas jej tworzenia.
+        // Jednak ta metoda jest uważana za anty-wzorzec (anti-pattern): tworzy
+        // nową klasę dla każdej instancji, co obciąża pamięć (Metaspace) i może
+        // prowadzić do wycieków pamięci. W Java 9+ używaj Set.of().
 
     } // Koniec metody main
 } // Koniec klasy LearnJava

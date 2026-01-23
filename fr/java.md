@@ -550,11 +550,12 @@ public class JavaFr {
             add("FINLAND");
         }}
 
-        // La première semi-colonne crée une classe anonyme et la deuxième est
-        // un bloc d'initialisation du bloc. Ce dernier est appelé lorsque Copyright (c)
-        // classe anonyme est crée. Cela ne fonctionne pas uniquement pour les
-        // collections mais également pour toutes les classes n'étant pas
-        // déclarées comme final.
+        // La première accolade crée une classe anonyme et la deuxième est
+        // un bloc d'initialisation d'instance. Ce bloc est appelé lors de la
+        // création de la classe anonyme. Cependant, cette pratique est 
+        // déconseillée (anti-pattern) : elle génère une classe supplémentaire,
+        // augmente la consommation mémoire (Metaspace) et peut causer des
+        // fuites de mémoire. Privilégiez Set.of() depuis le Java 9.
 
     } // Fin de la méthode main
 } // Fin de la class JavaFr

@@ -555,12 +555,13 @@ public class LearnJava {
             add("FINLAND");
         }}
 
-        // The first brace is creating a new AnonymousInnerClass and the
-        // second one declares an instance initializer block. This block
-        // is called when the anonymous inner class is created.
-        // This does not only work for Collections, it works for all
-        // non-final classes.
-
+        // The first brace creates a new AnonymousInnerClass and the second 
+        // one declares an instance initializer block. This block is called 
+        // when the anonymous inner class is created. 
+        // However, this is considered an anti-pattern: it creates a new class 
+        // for every instance, increasing memory overhead (Metaspace) 
+        // and potentially causing memory leaks by holding an implicit 
+        // reference to the enclosing class. Use Set.of() in Java 9+.
 
         // Another option was to initialize the Collection from an array,
         // using Arrays.asList() method:
