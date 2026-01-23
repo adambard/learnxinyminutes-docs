@@ -77,6 +77,10 @@ echo "${variable}" # => Some string
 # String substitution in variables:
 echo "${variable/Some/A}" # => A string
 # This will substitute the first occurrence of "Some" with "A".
+# Prepend a / before the search string to substitute every instance of it.
+variable="Some string. Some character"
+echo "${variable//Some/A}" # => A string. A character
+# This will substitute every occurrence of "Some" with "A".
 
 # Substring from a variable:
 length=7
