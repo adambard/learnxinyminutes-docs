@@ -21,7 +21,7 @@ recommended.
   - The type system distinguishes between a pointer to a single value, or multiple values, etc.
   - Slices are preferred, which is a structure with a pointer and a runtime known size, which characterizes most uses of pointers in the first place.
 - Some arbitrary language limitations are removed. For example, enumerations, structures and unions can have functions.
-- Simple access to SIMD operations (basic maths on vectors).
+- Simple access to SIMD operations (basic math on vectors).
 - Zig provides both low-level features of C and the one provided through compiler extensions.
   For example: packed structures.
 - An extensive standard library, including data structures and algorithms.
@@ -85,7 +85,7 @@ var myvar: u10 = 5; // 10-bit unsigned integer
 const one_billion = 1_000_000_000;         // Decimal.
 const binary_mask = 0b1_1111_1111;         // Binary. Ex: network mask.
 const permissions = 0o7_5_5;               // Octal.  Ex: Unix permissions.
-const big_address = 0xFF80_0000_0000_0000; // Hexa.   Ex: IPv6 address.
+const big_address = 0xFF80_0000_0000_0000; // Hex.    Ex: IPv6 address.
 
 
 // Overflow operators: tell the compiler when it's okay to overflow.
@@ -163,8 +163,8 @@ const mat4x4 = [4][4]f32{
 try expect(mat4x4[1][1] == 1.0);
 
 // Here we iterate with for loops.
-for (mat4x4) |row, row_index| {
-    for (row) |cell, column_index| {
+for (mat4x4, 0..) |row, row_index| {
+    for (row, 0..) |cell, column_index| {
         // ...
     }
 }
@@ -331,6 +331,7 @@ if (a) |*value| { value.* += 1; }
 //
 //   for (iterable) statement
 //   for (iterable) |capture| statement
+//   for (iterable, iterable...) |capture, capture...| statement
 //   for (iterable) statement else statement
 
 // Note: loops work the same way over arrays or slices.
@@ -344,6 +345,9 @@ while (i < 10) : (i += 1) { ... }
 // Same, with a more complex continue expression (block of code).
 while (i * j < 2000) : ({ i *= 2; j *= 3; }) { ... }
 
+// Simple for loop over a range.
+for (0..10) |i| { sum += i; }
+
 // To iterate over a portion of a slice, reslice.
 for (items[0..1]) |value| { sum += value; }
 
@@ -351,13 +355,16 @@ for (items[0..1]) |value| { sum += value; }
 for (items) |value| { sum += value; }
 
 // Iterate and get pointers on values instead of copies.
-for (items) |*value| { value.* += 1; }
+for (&items) |*value| { value.* += 1; }
+
+// You can iterate multiple ranges.
+for (0..10, 10..20) |i, j| { sum += i * j; }
 
 // Iterate with an index.
-for (items) |value, i| { print("val[{}] = {}\n", .{i, value}); }
+for (items, 0..) |value, i| { print("val[{}] = {}\n", .{i, value}); }
 
 // Iterate with pointer and index.
-for (items) |*value, i| { print("val[{}] = {}\n", .{i, value}); value.* += 1; }
+for (&items, 0..) |*value, i| { print("val[{}] = {}\n", .{i, value}); value.* += 1; }
 
 
 // Break and continue are supported.
