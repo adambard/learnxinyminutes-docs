@@ -86,7 +86,8 @@ infixl 6 _+_
 
 -- Before introducing other concept, we need to introduce 'holes'.
 
--- Agda development is interactive. You write types, and the system helps fill terms.
+-- Agda development is interactive.
+-- You write types, and the system helps fill terms.
 -- A question mark ? or {! !} creates a "hole".
 
 -- example : 2 + 2 ≡ 4
@@ -357,7 +358,8 @@ data ⊥ : Set where                 -- FALSE
 1≢0 : ¬ (1 ≡ 0)
 1≢0 () 
 -- The pattern () automatically realizes that 1 ≡ 0 is an impossible match 
--- because the constructors 'suc' and 'zero' do not clash in the definition of ≡.
+-- because the constructors 'suc' and 'zero' do not clash
+-- in the definition of ≡.
 
 -- Decidable Propositions
 -- A property P is decidable if we can compute whether it holds or not.
