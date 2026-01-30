@@ -15,12 +15,13 @@ To install Agda, you typically use Haskell's cabal or stack. See the [wiki](http
 -- A module must have the same name as the file (excluding .agda)
 module learnagda where
 
--- We can import other modules. 
--- Agda's standard library is commonly used, but here we will define 
+-- We can import other modules.
+-- Agda's standard library is commonly used, but here we will define
 -- the basics from scratch for educational purposes.
 
 -- Agda is a dependently typed functional programming language.
--- It is strictly total: all programs must terminate, and all patterns must be matched.
+-- It is strictly total:
+--   all programs must terminate, and all patterns must be matched.
 -- Agda logic relies heavily on the Curry-Howard correspondence:
 --   Propositions are Types
 --   Proofs are Programs
@@ -28,7 +29,7 @@ module learnagda where
 -- Comments use double dashes for single lines.
 {- Multi-line comments are enclosed in braces and hyphens. -}
 
--- Agda uses Unicode extensively. 
+-- Agda uses Unicode extensively.
 -- In the Emacs mode (or VS Code), you type these using LaTeX-like shortcuts:
 -- \to      →
 -- \bN      ℕ
@@ -98,10 +99,6 @@ infixl 6 _+_
 -- C-c C-space : Given a hole, ask Agda to fill it (Auto).
 -- C-c C-r : Refine. If the hole is for a data type, splits constructors.
 -- C-c C-, : Goal type and context. Tells you what you need to prove.
--- C-c C-c : Case split on a variable.
--- C-c C-a : Auto-solve (proof search).
--- C-c C-n : Normalize (evaluate) expression.
--- C-c C-z : Search for definition.
 
 -- POP QUIZ: Define multiplication for natural numbers.
 -- Hint: split cases, and then do induction.
@@ -112,7 +109,7 @@ x * y = ?
 -- 2. Polymorphism and Variables
 --------------------------------------------------------------------------------
 
--- In modern Agda, we can declare generalizable variables to avoid 
+-- In modern Agda, we can declare generalizable variables to avoid
 -- repetitive `forall` syntax in type signatures.
 variable
   A B : Set
@@ -158,12 +155,12 @@ vec3 = 1 :: 2 :: 3 :: []
 -- Because the length is known, we can define 'safe' operations.
 -- This function cannot be called on an empty vector.
 head : Vec A (suc n) → A
-head (x ∷ xs) = x
+head (x :: xs) = x
 
 -- We can calculate the exact type of a concatenation.
 _++_ : Vec A n → Vec A m → Vec A (n + m)
 []       ++ ys = ys
-(x ∷ xs) ++ ys = x ∷ (xs ++ ys)
+(x :: xs) ++ ys = x :: (xs ++ ys)
 
 --------------------------------------------------------------------------------
 -- 4. Equality and Proofs
@@ -244,9 +241,9 @@ module Reasoning {A : Set} where
 open Reasoning
 
 -- Proof of associativity using reasoning syntax
-+-assoc : ∀ (x y z : ℕ) → (x + y) + z ≡ x + (y + z)
-+-assoc zero    y z = refl
-+-assoc (suc x) y z =
++-assoc' : ∀ (x y z : ℕ) → (x + y) + z ≡ x + (y + z)
++-assoc' zero    y z = refl
++-assoc' (suc x) y z =
   begin
     (suc x + y) + z
   ≡⟨⟩               -- Definition of +
@@ -356,8 +353,8 @@ data ⊥ : Set where                 -- FALSE
 -- Example: Proving 1 is not equal to 0.
 -- We assume 1 ≡ 0 is true (argument eq), and show it leads to a contradiction.
 1≢0 : ¬ (1 ≡ 0)
-1≢0 () 
--- The pattern () automatically realizes that 1 ≡ 0 is an impossible match 
+1≢0 ()
+-- The pattern () automatically realizes that 1 ≡ 0 is an impossible match
 -- because the constructors 'suc' and 'zero' do not clash
 -- in the definition of ≡.
 
