@@ -38,7 +38,7 @@ module learnagda where
 -- \::      ∷
 
 --------------------------------------------------------------------------------
--- 1. Datatypes and Pattern Matching
+-- Datatypes and Pattern Matching
 --------------------------------------------------------------------------------
 
 -- 'Set' is the type of types (similar to 'Type' in other languages).
@@ -82,7 +82,7 @@ infixl 6 _+_
 -- if true then x else y
 
 --------------------------------------------------------------------------------
--- 2. Interaction and Holes
+-- Interaction and Holes
 --------------------------------------------------------------------------------
 
 -- Before introducing other concept, we need to introduce 'holes'.
@@ -106,7 +106,7 @@ _*_ : ℕ → ℕ → ℕ
 x * y = ?
 
 --------------------------------------------------------------------------------
--- 2. Polymorphism and Variables
+-- Polymorphism and Variables
 --------------------------------------------------------------------------------
 
 -- In modern Agda, we can declare generalizable variables to avoid
@@ -138,7 +138,7 @@ plus1 : ℕ → ℕ
 plus1 = λ x → x + 1
 
 --------------------------------------------------------------------------------
--- 3. Dependent Types
+-- Dependent Types
 --------------------------------------------------------------------------------
 
 -- Dependent types allow types to depend on values.
@@ -163,7 +163,7 @@ _++_ : Vec A n → Vec A m → Vec A (n + m)
 (x :: xs) ++ ys = x :: (xs ++ ys)
 
 --------------------------------------------------------------------------------
--- 4. Equality and Proofs
+-- Equality and Proofs
 --------------------------------------------------------------------------------
 
 -- The identity type (equality) is the heart of proving in Agda.
@@ -215,7 +215,7 @@ trans refl refl = refl
 +-identity (suc n) rewrite +-identity n = refl
 
 --------------------------------------------------------------------------------
--- 5. Equational Reasoning
+-- Equational Reasoning
 --------------------------------------------------------------------------------
 
 -- Agda allows defining custom syntax to write proofs that look like calculations.
@@ -257,7 +257,7 @@ open Reasoning
   ∎
 
 --------------------------------------------------------------------------------
--- 6. Inductive Relations
+-- Inductive Relations
 --------------------------------------------------------------------------------
 
 -- Relations can also be defined as inductive types.
@@ -272,7 +272,7 @@ data _≤_ : ℕ → ℕ → Set where
 2≤4 = s≤s (s≤s z≤n)
 
 --------------------------------------------------------------------------------
--- 7. Mutual Recursion: Even and Odd
+-- Mutual Recursion: Even and Odd
 --------------------------------------------------------------------------------
 
 -- We can define types that depend on each other using `mutual`.
@@ -294,7 +294,7 @@ mutual
   o+e≡o (suc em) en = suc (e+e≡e em en)
 
 --------------------------------------------------------------------------------
--- 8. Records and Type Classes
+-- Records and Type Classes
 --------------------------------------------------------------------------------
 
 -- Records are similar to structs.
@@ -328,7 +328,7 @@ sumList : ℕ
 sumList = concat (1 :: 2 :: 3 :: []) -- Result: 6
 
 --------------------------------------------------------------------------------
--- 9. Logic (Propositions as Types)
+-- Propositions as Types
 --------------------------------------------------------------------------------
 
 data _×_ (A B : Set) : Set where   -- AND
