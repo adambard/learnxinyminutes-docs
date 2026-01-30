@@ -128,7 +128,7 @@ data List (A : Set) : Set where
 nums : List ℕ
 nums = 1 :: 2 :: 3 :: []
 
--- Map function showing explicit universe polymorphism (optional but good practice)
+-- Map function showing explicit universe polymorphism (optional)
 -- ∀ {A B} makes A and B implicit type variables.
 map : ∀ {A B : Set} → (A → B) → List A → List B
 map f []        = []
