@@ -281,12 +281,12 @@ func learnInterfaces() {
     p := pair{3, 4}
     fmt.Println(p.String()) // 调用pair类型p的String方法
     var i Stringer          // 声明i为Stringer接口类型
-    i = p                   // 有效！因为p实现了Stringer接口（类似java中的塑型）
+    i = p                   // 有效！因为p实现了Stringer接口（类似java中的类型转换）
     // 调用i的String方法，输出和上面一样
     fmt.Println(i.String())
 
     // fmt包中的Println函数向对象要它们的string输出，实现了String方法就可以这样使用了。
-    // （类似java中的序列化）
+    // （类似java中的 toString() ）
     fmt.Println(p) // 输出和上面一样，自动调用String函数。
     fmt.Println(i) // 输出和上面一样。
 
@@ -331,7 +331,7 @@ func inc(i int, c chan int) {
 
 // 我们将用inc函数来并发地增加一些数字。
 func learnConcurrency() {
-    // 用make来声明一个slice，make会分配和初始化slice，map和channel。
+    // 像前面的例子中用make来初始化一个slice一样，make会分配和初始化slice，map和channel。
     c := make(chan int)
     // 用go关键字开始三个并发的goroutine，如果机器支持的话，还可能是并行执行。
     // 三个都被发送到同一个channel。
