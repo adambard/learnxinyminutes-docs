@@ -5,9 +5,15 @@ contributors:
     - ["pe200012", "https://github.com/pe200012"]
 ---
 
-Agda is a dependently typed functional programming language. It is an extension of Martin-Löf's Type Theory. In Agda, programs and proofs are written in the same language. In Agda, there is no separation between types and values: types can depend on values, and values can act as types. This allows you to encode logical invariants (like the length of a vector) directly into the type system, making Agda a powerful tool for both programming and theorem proving.
+Agda is a dependently typed functional programming language. It is an
+extension of Martin-Löf's Type Theory. In Agda, programs and proofs are
+written in the same language. In Agda, there is no separation between types
+and values: types can depend on values, and values can act as types. This
+allows you to encode logical invariants (like the length of a vector)
+directly into the type system, making Agda a powerful tool for both
+programming and theorem proving.
 
-Agda is heavily reliant on Unicode characters. Most editors (like Emacs or VS Code) support entering these via LaTeX-like abbreviations (e.g., `\to` for `→`, `\all` for `∀`, `\bn` for `ℕ`).
+Agda is heavily reliant on Unicode characters. Most editors (like Emacs or VS Code) support entering these via LaTeX-like abbreviations (e.g., `\to` for `→`, `\all` for `∀`, `\bN` for `ℕ`).
 
 To install Agda, you typically use Haskell's cabal or stack. See the [wiki](https://wiki.portal.chalmers.se/agda/pmwiki.php) for details.
 
@@ -60,7 +66,8 @@ data ℕ : Set where
   zero : ℕ
   suc  : ℕ → ℕ
 
--- We can tell Agda to treat ℕ as normal numbers for literals using a pragma.
+-- We can tell Agda to treat ℕ as normal numbers for literals
+-- by using a pragma.
 {-# BUILTIN NATURAL ℕ #-}
 
 -- Addition defined recursively.
@@ -86,7 +93,7 @@ infixl 6 _+_
 -- Interaction and Holes
 --------------------------------------------------------------------------------
 
--- Before introducing other concept, we need to introduce 'holes'.
+-- Before introducing other concepts, we need to introduce 'holes'.
 
 -- Agda development is interactive.
 -- You write types, and the system helps fill terms.
@@ -98,7 +105,8 @@ infixl 6 _+_
 -- While in Emacs/VS Code:
 -- C-c C-l : Load file (type checks).
 -- C-c C-space : Given a hole, ask Agda to fill it (Auto).
--- C-c C-r : Refine. If the hole is for a data type, splits constructors.
+-- C-c C-r : Refine. If the hole is for a data type,
+-- splits constructors.
 -- C-c C-, : Goal type and context. Tells you what you need to prove.
 
 -- POP QUIZ: Define multiplication for natural numbers.
@@ -127,7 +135,8 @@ nums : List ℕ
 nums = 1 :: 2 :: 3 :: []
 
 -- Map function showing explicit universe polymorphism (optional)
--- Here we use implicit arguments (denoted by { }). Agda infers them from context.
+-- Here we use implicit arguments (denoted by { }).
+-- Agda infers them from context.
 -- ∀ {A B} makes A and B implicit type variables.
 map : ∀ {A B : Set} → (A → B) → List A → List B
 map f []        = []
@@ -143,7 +152,8 @@ plus1 = λ x → x + 1
 --------------------------------------------------------------------------------
 
 -- Dependent types allow types to depend on values.
--- A classic example is a Vector: a list with a fixed length encoded in its type.
+-- A classic example is a Vector: a list with a fixed length
+-- encoded in its type.
 
 data Vec (A : Set) : ℕ → Set where
   []   : Vec A zero
@@ -182,7 +192,8 @@ data _≡_ {A : Set} (x : A) : A → Set where
 1+1≡2 = refl
 
 -- Congruence: applying a function to equal values yields equal results.
-cong : ∀ {A B : Set} (f : A → B) {x y : A} → x ≡ y → f x ≡ f y
+cong : ∀ {A B : Set} (f : A → B) {x y : A}
+  → x ≡ y → f x ≡ f y
 cong f refl = refl
 
 -- Symmetry
@@ -196,7 +207,8 @@ trans refl refl = refl
 -- Proving associativity of addition.
 -- This requires induction on x.
 -- We split cases on x.
--- If x is zero: zero + (y + z) ≡ zero + y + z reduces to y + z ≡ y + z.
+-- If x is zero: zero + (y + z) ≡ zero + y + z
+-- reduces to y + z ≡ y + z.
 -- If x is suc x: we use the inductive hypothesis (recursion).
 +-assoc : ∀ (x y z : ℕ) → (x + y) + z ≡ x + (y + z)
 +-assoc zero    y z = refl
@@ -219,7 +231,8 @@ trans refl refl = refl
 -- Equational Reasoning
 --------------------------------------------------------------------------------
 
--- Agda allows defining custom syntax to write proofs that look like calculations.
+-- Agda allows defining custom syntax to write proofs
+-- that look like calculations.
 -- This is similar to Lean's `calc` mode but defined within the language.
 
 module Reasoning {A : Set} where
@@ -251,7 +264,7 @@ open Reasoning
     suc (x + y) + z
   ≡⟨⟩               -- Definition of +
     suc ((x + y) + z)
-  ≡⟨ cong suc (+-assoc x y z) ⟩
+  ≡⟨ cong suc (+-assoc' x y z) ⟩
     suc (x + (y + z))
   ≡⟨⟩
     suc x + (y + z)
@@ -352,7 +365,8 @@ data ⊥ : Set where                 -- FALSE
 ¬ A = A → ⊥
 
 -- Example: Proving 1 is not equal to 0.
--- We assume 1 ≡ 0 is true (argument eq), and show it leads to a contradiction.
+-- We assume 1 ≡ 0 is true (argument eq), and show it leads to
+-- a contradiction.
 1≢0 : ¬ (1 ≡ 0)
 1≢0 ()
 -- The pattern () automatically realizes that 1 ≡ 0 is an impossible match
@@ -360,7 +374,8 @@ data ⊥ : Set where                 -- FALSE
 -- in the definition of ≡.
 
 -- Decidable Propositions
--- A property P is decidable if we can compute whether it holds or not.
+-- A property P is decidable if we can compute whether it holds
+-- or not.
 data Dec (P : Set) : Set where
   yes : P → Dec P
   no  : (P → ⊥) → Dec P
