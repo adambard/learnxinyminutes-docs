@@ -116,7 +116,6 @@ variable
   n m : ℕ
 
 -- Lists are parameterized by a type A.
--- A is an implicit argument (denoted by { }). Agda usually infers it.
 infixr 5 _::_
 data List (A : Set) : Set where
   []   : List A                -- Empty list
@@ -127,6 +126,7 @@ nums : List ℕ
 nums = 1 :: 2 :: 3 :: []
 
 -- Map function showing explicit universe polymorphism (optional)
+-- Here we use implicit arguments (denoted by { }). Agda infers them from context.
 -- ∀ {A B} makes A and B implicit type variables.
 map : ∀ {A B : Set} → (A → B) → List A → List B
 map f []        = []
