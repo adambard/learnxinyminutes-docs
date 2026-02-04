@@ -54,7 +54,8 @@ not true  = false
 not false = true
 
 -- Natural numbers (Peano encoding).
--- This defines an infinite set of terms: zero, suc zero, suc (suc zero), ...
+-- This defines an infinite set of terms: zero, suc zero,
+-- suc (suc zero), ...
 data ℕ : Set where
   zero : ℕ
   suc  : ℕ → ℕ
