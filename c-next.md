@@ -171,25 +171,25 @@ while (!done) {
 // =============================================================================
 
 // Fixed-size arrays
-u8 buffer[256];
+u8[256] buffer;
 buffer[0] <- 0xFF;
 
-// .length property
-usize len <- buffer.length;     // 256
+// .element_count property (ADR-058)
+usize len <- buffer.element_count;  // 256
 
 // Array initialization uses [] not {}
-u8 data[] <- [1, 2, 3, 4, 5];   // Size inferred as 5
-u8 zeros[100] <- [0*];          // All 100 elements = 0
-u8 ones[50] <- [1*];            // All 50 elements = 1
+u8[5] data <- [1, 2, 3, 4, 5];   // Size 5
+u8[100] zeros <- [0*];          // All 100 elements = 0
+u8[50] ones <- [1*];            // All 50 elements = 1
 
 // Partial init forbidden (MISRA 9.3)
-// u8 bad[5] <- [1, 2, 3];      // ERROR: 3 elements for size-5
+// u8[5] bad <- [1, 2, 3];      // ERROR: 3 elements for size-5
 
 // Multi-dimensional arrays
-u8 matrix[4][8];
+u8[4][8] matrix;
 matrix[0][0] <- 1;
-u32 rows <- matrix.length;      // 4
-u32 cols <- matrix[0].length;   // 8
+u32 rows <- matrix.element_count;   // 4
+u32 cols <- matrix[0].element_count; // 8
 
 // =============================================================================
 // 6. STRINGS
@@ -200,7 +200,7 @@ string<64> name <- "Hello";     // 64 chars max, transpiles to char[65]
 string<128> buffer;             // Empty string
 
 // Properties
-u32 len <- name.length;         // Runtime: strlen(name) = 5
+u32 len <- name.char_count;     // Runtime: strlen(name) = 5
 u32 cap <- name.capacity;       // Compile-time: 64
 
 // Comparison uses =
@@ -264,9 +264,9 @@ bool isSet <- flags[0];         // Read bit 0
 flags[4, 3] <- 5;               // Set 3 bits starting at bit 4
 u8 field <- flags[4, 3];        // Read 3-bit field
 
-// .length on integers gives bit width
-u8 w8 <- flags.length;          // 8
-u32 w32 <- counter.length;      // 32
+// .bit_length on integers gives bit width
+u8 w8 <- flags.bit_length;          // 8
+u32 w32 <- counter.bit_length;      // 32
 
 // =============================================================================
 // 10. STRUCTS
@@ -340,6 +340,7 @@ u8 mode <- flags.Mode;
 // =============================================================================
 
 // Organize code with automatic name prefixing
+// scopes are purely optional in c-next
 scope LED {
     const u32 BIT <- 3;
 
@@ -387,7 +388,7 @@ void increment() {
 }
 
 // Critical sections for multi-variable operations
-u8 buffer[64];
+u8[64] buffer;
 u32 writeIdx <- 0;
 
 void enqueue(u8 data) {
