@@ -258,8 +258,8 @@ p { property: value !important; }
 * `A` は、他の何よりも「具体的」であるため、その次になります。
    これは3つの指定子を持っています： 要素名 `p`、クラス名 `class1`、
    属性名 `attr='value'` です。
-* `C` is next, even though it has the same specificity as `B`.
-    This is because it appears after `B`.
+* `C` は、`B` と同じ具体性を持っているにも関わらず優先され、次になり
+    ます。これは `B` よりも後ろに書かれている事に起因します。
 * `B`が次で、
 * `D` が最後になります。
 
