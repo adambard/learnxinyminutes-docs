@@ -1064,3 +1064,13 @@ The links provided here below are just to get an understanding of the topic, fee
 * [Thinking in Java](https://www.amazon.com/Thinking-Java-4th-Bruce-Eckel/dp/0131872486/)
 * [Objects First with Java](https://www.amazon.com/Objects-First-Java-Practical-Introduction/dp/0132492660)
 * [Java The Complete Reference](https://www.amazon.com/gp/product/0071606300)
+
+### Real-World Java Ecosystem & Projects
+
+To explore Java beyond language fundamentals, here are widely used real-world tools, frameworks, and open-source projects:
+
+* [Awesome Java](https://github.com/akullpp/awesome-java)
+* [Spring Boot Guides](https://spring.io/guides)
+* [Java Design Patterns](https://github.com/iluwatar/java-design-patterns)
+* [OpenJFX Official Documentation](https://openjfx.io/openjfx-docs/)
+
