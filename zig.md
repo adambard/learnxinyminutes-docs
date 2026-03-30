@@ -378,12 +378,25 @@ for (items) |value| {
 // Similar to while loops, when you break from a for loop,
 // the else branch is not evaluated.
 var sum: i32 = 0;
-// The "for" loop has to provide a value, which will be the "else" value.
+// The "for" loop has to provide a value,
+// which will be the "else" value in this case.
 const result = for (items) |value| {
-    if (value != null) {
-        sum += value.?; // "result" will be the last "sum" value.
+    // Add "value" to "sum" if it's not "null", otherwise add 0
+    sum += value orelse 0;
+} else 0; // result == 0
+
+
+// To set "result" to the value of "sum",
+// break it out of the loop at the last iteration.
+const result = for (items, 1..) |value, i| {
+    sum += value orelse 0;
+
+    // Check if we are at the last iteration
+    if (i == items.len) {
+        // Break value out of the loop
+        break sum; // result == sum
     }
-} else 0;                  // Last value.
+} else unreachable;
 ```
 
 ### Labels.
