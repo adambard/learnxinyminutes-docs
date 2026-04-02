@@ -5,13 +5,13 @@ contributors:
     - ["Damarion Abendanon", "https://damarion.me/"]
 ---
 
-WinDbg Script (WDS) is an integrated scripting language built into Windows' 
-native debugger. It is commonly used by low-level developers to inspect and 
-monitor machine state at the binary level. While the engine supports other 
-scripting methods, such as [NatVis](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/native-debugger-objects-in-natvis), 
-this cheatsheet primarily focuses on native WDS, which has the best 
-compatibility with older systems.
+WinDbg Script (WDS) is an integrated scripting language built into Windows'
+native debugger. It is commonly used by low-level developers to inspect and
+monitor machine state at the binary level. While the engine supports other
+scripting methods, such as [NatVis], this cheatsheet primarily focuses on
+native WDS, which has the best compatibility with older systems.
 
+[NatVis]: https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/native-debugger-objects-in-natvis
 ```wds
 $$$
 >>> FUNDAMENTALS
