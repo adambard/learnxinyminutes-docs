@@ -151,8 +151,8 @@ $$ standard
 
 $$ formatted
 .printf "eax = %p\n", @eax
-.printf "%ma\n", @$t1       $$ deref as ascii string
-.printf "%mu\n", @$t1       $$ deref as unicode string
+.printf "%ma\n", 0x12345678 $$ deref as ascii string
+.printf "%mu\n", 0x12345678 $$ deref as unicode string
 
 $$ redirect output to file
 .logopen C:\log.txt
