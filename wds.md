@@ -5,7 +5,12 @@ contributors:
     - ["Damarion Abendanon", "https://damarion.me/"]
 ---
 
-WinDbg Script (WDS) is an integrated scripting language built into Windows' native debugger. It is commonly used by low-level developers to inspect and monitor machine state at the binary level. While the engine supports other scripting methods, such as [NatVis](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/native-debugger-objects-in-natvis), this cheatsheet primarily focuses on native WDS, which has the best compatibility with older systems.
+WinDbg Script (WDS) is an integrated scripting language built into Windows' 
+native debugger. It is commonly used by low-level developers to inspect and 
+monitor machine state at the binary level. While the engine supports other 
+scripting methods, such as [NatVis](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/native-debugger-objects-in-natvis), 
+this cheatsheet primarily focuses on native WDS, which has the best 
+compatibility with older systems.
 
 ```wds
 $$$
@@ -302,6 +307,9 @@ $$ breakpoints
 
 ## Further Reading
 
-This cheatsheet covers WDS' most common usage patterns (typically in user-mode), emphasizing logical constructs over exhaustive function coverage. For a full reference of the engine's built-in functions, see [the official documentation](https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/meta-commands).
+This cheatsheet covers WDS' most common usage patterns (typically in user-mode), 
+emphasizing logical constructs over exhaustive function coverage. For a full 
+reference of the engine's built-in functions, see [the official documentation](https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/meta-commands).
 
-For a deeper understanding, the [Windows Internals](https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals) book remains the definitive resource on WinDbg scripting and OS-level interactions.
+For a deeper understanding, the [Windows Internals](https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals) 
+book remains the definitive resource on WinDbg scripting and OS-level interactions.
