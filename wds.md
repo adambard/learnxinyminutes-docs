@@ -11,7 +11,6 @@ monitor machine state at the binary level. While the engine supports other
 scripting methods, such as [NatVis], this cheatsheet primarily focuses on
 native WDS, which has the best compatibility with older systems.
 
-[NatVis]: https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/native-debugger-objects-in-natvis
 ```wds
 $$$
 >>> FUNDAMENTALS
@@ -316,5 +315,6 @@ For a deeper understanding, the [Windows Internals][windows-internals] book
 remains the definitive resource on WinDbg scripting and OS-level
 interactions.
 
+[NatVis]: https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/native-debugger-objects-in-natvis
 [wds-docs]: https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/meta-commands
 [windows-internals]: https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals
