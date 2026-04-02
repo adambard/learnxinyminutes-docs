@@ -304,4 +304,4 @@ $$ breakpoints
 
 This cheatsheet covers WDS' most common usage patterns (typically in user-mode), emphasizing logical constructs over exhaustive function coverage. For a full reference of the engine's built-in functions, see [the official documentation](https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/meta-commands).
 
-For a deeper understanding, the [Windows Internals](https://learn.microsoft.com/nl-nl/sysinternals/resources/windows-internals) book remains the definitive resource on WinDbg scripting and OS-level interactions.
+For a deeper understanding, the [Windows Internals](https://learn.microsoft.com/en-us/sysinternals/resources/windows-internals) book remains the definitive resource on WinDbg scripting and OS-level interactions.
