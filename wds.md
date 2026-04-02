@@ -302,7 +302,7 @@ $$ memory
 
 $$ breakpoints
 @$bpaddr      $$ last breakpoint address
-@$bp0-@$bp9   $$ breakpoint addresses 0-9
+@$bp0; @$bp1; ...; @$bp9   $$ breakpoint addresses 0-9
 ```
 
 ## Further Reading
