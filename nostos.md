@@ -378,19 +378,6 @@ result = try { safe_divide(10, 0) }
         other -> -2
     }
 
-# Pattern matching in catch
-classify_error(code) =
-    try {
-        if code == 1 then throw("not_found")
-        else if code == 2 then throw("forbidden")
-        else "ok"
-    }
-    catch {
-        "not_found" -> "Error: Not found"
-        "forbidden" -> "Error: Access denied"
-        _ -> "Error: Unknown"
-    }
-
 # Nested try/catch
 outer =
     try {
