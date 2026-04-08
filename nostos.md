@@ -448,9 +448,12 @@ pong() = receive {
     Stop -> ()
 }
 
-# Thread-safe global variables with mvar
-# mvar requestCount: Int = 0
-# requestCount = requestCount + 1    # atomic update
+# Thread-safe global variables with mvar (type annotation required)
+mvar requestCount: Int = 0
+
+# Reads and writes are atomic within a function — no other
+# process can modify the mvar between read and write here.
+increment() = { requestCount = requestCount + 1; requestCount }
 
 ## 13. Standard Library
 
