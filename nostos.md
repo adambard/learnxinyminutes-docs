@@ -184,7 +184,9 @@ result = [1, 2, 3, 4, 5]
 
 ## 6. Pattern Matching
 
-# Multi-clause functions match on arguments
+# Multi-clause functions match on arguments.
+# All clauses must be consecutive (no other code in between)
+# and in the same file. They are tried top-to-bottom.
 fib(0) = 0
 fib(1) = 1
 fib(n) = fib(n - 1) + fib(n - 2)
