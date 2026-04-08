@@ -509,14 +509,15 @@ valid = Crypto.bcryptVerify("password", bcrypt)
 (status, resp) = Http.get("https://api.example.com/data")
 (status, resp) = Http.post("https://api.example.com", body)
 
-# HTTP server
+# HTTP server (handler receives a single request argument)
 use stdlib.server.*
 
-handleRequest(server, req, main_pid) = {
+handler(req) =
     Server.respond(req.id, 200,
         [("Content-Type", "text/plain")],
         "Hello, World!")
-}
+
+main() = serve(8080, handler)    # each request is spawned as a process
 
 # TCP sockets
 server = Tcp.listen(9000)
