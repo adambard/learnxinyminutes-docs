@@ -620,7 +620,7 @@ main() = {
 
 ## Further Reading
 
-* [Nostos Tutorial](http://heynostos.tech) - Full tutorial and documentation
+* [Nostos Tutorial](https://heynostos.tech) - Full tutorial and documentation
 * [Nostos on GitHub](https://github.com/pegesund/nostos)
 * [Nostos on GitHub](https://github.com/pegesund/nostos/blob/master/README.md) - Source code and examples
 * [Nostos Releases](https://github.com/pegesund/nostos/releases/latest)
