@@ -62,6 +62,19 @@ var count = 0
 count = count + 1     # OK
 count += 1            # shorthand works too
 
+# Variables are block-scoped. Rebinding an immutable variable to
+# a different value is a runtime error (like Erlang's unification).
+x = 5
+x = 5             # OK — same value
+# x = 10          # ERROR — x is already bound to 5
+
+# Shadowing in inner scopes is allowed
+result = {
+    x = 10        # shadows outer x within this block
+    x + 1         # => 11
+}
+# x is still 5 here
+
 # Type annotations are optional (inference handles most cases)
 Int age = 30
 String greeting = "hi"
