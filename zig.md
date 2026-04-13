@@ -3,6 +3,7 @@ name: Zig
 filename: learnzig.zig
 contributors:
     - ["Philippe Pittoli", "https://karchnu.fr/"]
+    - ["Kenneth Brooks", "https://github.com/zendril"]
 ---
 
 [Zig][ziglang] aims to be a replacement for the C programming language.
@@ -204,7 +205,7 @@ const slice = array[0..array.len];  // "slice" represents the whole array.
 ```zig
 // Pointer on a value can be created with "&".
 const x: i32 = 1;
-const pointer: *i32 = &x;  // "pointer" is a pointer on the i32 var "x".
+const pointer: *const i32 = &x;  // "pointer" is a pointer on the const i32 var "x".
 print("1 = {}, {}\n", .{x, pointer});
 
 // Pointer values are accessed and modified with ".*".
