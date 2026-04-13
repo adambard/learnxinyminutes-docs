@@ -44,6 +44,17 @@ macro system.
 
 (local num 42) ;; Numbers can be integer or floating point.
 
+;; Arithmetic
+(+ 1 1) ; => 2
+(- 1 1) ; => 0
+(* 1 1) ; => 1
+(^ 2 2) ; => 4
+
+;; Division returns a float. Integer division is only available in Lua 5.3+.
+;; Before that, everything was a float.
+(/ 1 1) ; => 1.0
+(// 1 1) ; => 1
+
 ;; Equality is =
 (= 1 1) ; => true
 (= 2 1) ; => false
@@ -58,8 +69,15 @@ macro system.
 (<= 1 2) ; => true
 (not= 1 2) ; => true
 
-;; TODO: find some bitwise operator examples
-;; (lshift 1) ; => 2
+;; Bitwise operators
+;; Caveats: Only available in Lua 5.3+ unless you use the
+;; --use-bit-lib flag or the useBitLib flag in the options table
+(lshift 1) ; => 2
+(rshift 1) ; => 0
+(band 5 3) ; => 1
+(bor 5 3) ; => 7
+(bxor 5 3) ; => 6
+(bnot 5) ; => -6
 
 ;; -------- ;;
 ;; 2. Types ;;
@@ -177,10 +195,7 @@ false ; for false
 ;; length string or table length
 (+ (length [1 2 3 nil 8]) (length "abc")) ; => 8
 
-;; . table lookup looks up a given key in a table. Multiple arguments
-;; will perform nested lookup.
-(. t :key1)
-
+;; Multiple arguments to table lookup (.) will perform nested lookup.
 (let [t {:a [2 3 4]}] (. t :a 2)) ; => 3
 
 ;; If the field name is a string known at compile time, you don't need
@@ -407,9 +422,10 @@ false ; for false
   (.. "Hello " name))
 (hello "Steve") ; => "Hello Steve"
 
-;; Will accept any number of arguments. ones in excess of the declared
-;; ones are ignored, and if not enough arguments are supplied to cover
-;; the declared ones, the remaining ones are given values of nil.
+;; Functions will accept any number of arguments. ones in excess of
+;; the declared ones are ignored, and if not enough arguments are
+;; supplied to cover the declared ones, the remaining ones are given
+;; values of nil.
 
 ;; Providing a name that's a table field will cause it to be inserted
 ;; in a table instead of bound as a local
@@ -464,7 +480,7 @@ false ; for false
 ;; same as
 (fn [a b] (+a b))
 
-;; A lone $ in a hash function is treated as ana alias for $1.
+;; A lone $ in a hash function is treated as an alias for $1.
 #(+ $ 1)
 
 #$ ; same as (fn [x] x) (aka the identity function
@@ -525,7 +541,7 @@ false ; for false
 ;;,------------------------
 ;;| `case` pattern matching
 ;;`------------------------
-;; Evaluates its first argument, then searches thru the subsequent
+;; Evaluates its first argument, then searches through the subsequent
 ;; pattern/body clauses to find one where the pattern matches the
 ;; value, and evaluates the corresponding body. Pattern matching can
 ;; be thought of as a combination of destructuring and conditionals.
@@ -544,7 +560,8 @@ false ; for false
   [a b] (+ a b))
 
 ;; It's important to note that expressions are checked in order! In
-;; the above example, since [a a] is checked first
+;; the above example, since [a a] is checked first, it will match and
+;; not evaluate the second case.
 
 ;; You may allow a symbol to optionally be nil by prefixing it with ?.
 (case mytable
@@ -628,7 +645,7 @@ false ; for false
   (match [52 85 95]
     [b a a] :no         ; because a=85 and a=95
     [x y z] :no         ; because x=95 and x=52
-    [a b x] :yes)) ; a and b are fresh values while x=95 and x=95
+    [a b x] :yes)) ; a and b are fresh values while x=95
 
 ;;,-----------------------------------------------------
 ;;| `case-try` & `match-try` for matching multiple steps
@@ -709,7 +726,7 @@ false ; for false
 (t:enable)
 
 
-;; ->, ->>, -?> and -?>> threading macros The -> macro takes its first
+;; ->, ->>, -?> and -?>> threading macros. The -> macro takes its first
 ;; value and splices it into the second form as the first
 ;; argument. The result of evaluating the second form gets spliced
 ;; into the first argument of the third form, and so on.
@@ -767,8 +784,8 @@ false ; for false
     :skip (do (tail! (process-all data (+ i 2)))
 ;;             ^^^^^ Compile error: Must be in tail position
               (print "Skipped" (+ i 1)))))
-
 ```
+
 ### Further Reading
 
 The [fennel website] (https://fennel-lang.org/) is the best resource
