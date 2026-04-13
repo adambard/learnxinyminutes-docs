@@ -23,7 +23,10 @@ macro system.
 ;; 1. Primitives & Operators ;;
 ;; ------------------------- ;;
 
-;; (local ...) defines a var inside the whole file's scope.
+;; (local ...) defines a var inside the existing scope.
+;; Similar to let but without a body argument.
+;; It is recommended for use at the top-level of a file
+;; for locals used throughout the file.
 (local s "walternate") ; Immutable strings like Python.
 
 ;; local supports destructuring and multiple value binding.
@@ -32,7 +35,7 @@ macro system.
 ;; Strings are utf8 byte arrays
 "λx:(μα.α→α).xx" ; can include Unicode characters
 
-;; .. will create a string out of it's arguments.
+;; .. will create a string out of its arguments.
 ;; It will coerce numbers but nothing else.
 (.. "Hello" " " "World") ; => "Hello World"
 
