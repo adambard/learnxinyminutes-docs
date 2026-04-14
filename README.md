@@ -29,6 +29,10 @@ review them more effectively and/or individually.
 
 For a detailed style guide, please review the full [CONTRIBUTING][2] guidelines.
 
+## CLI cool
+
+If you want to be able to run the docs locally in your terminal, you can install [Lexy(https://github.com/antoniorodr/lexy), created by @antoniorodr.
+
 ## License
 
 Contributors retain copyright to their work, and can request removal at any
