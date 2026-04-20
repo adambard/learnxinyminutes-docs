@@ -227,9 +227,10 @@ li[::-1]  # Return list in reverse order => [3, 4, 2, 1]
 # li[start:end:step]
 
 # Make a one layer deep copy using slices
-li2 = li[:]  # => li2 = [1, 2, 4, 3] but (li2 is li) will result in false.
+li2 = li[:]  # => li2 = [1, 2, 4, 3]
+li2 is li # False — different objects
 
-# Remove arbitrary elements from a list with "del"
+# Remove arbitrary element (using index) from a list with "del"
 del li[2]  # li is now [1, 2, 3]
 
 # Remove first occurrence of a value
@@ -528,7 +529,6 @@ with open("myfile2.txt", "r") as file:
     contents = json.load(file)       # reads a json object from a file
 print(contents)
 # print: {"aa": 12, "bb": 21}
-
 
 # Python offers a fundamental abstraction called the Iterable.
 # An iterable is an object that can be treated as a sequence.
@@ -854,7 +854,6 @@ if __name__ == "__main__":
 
 from human import Human
 
-
 # Specify the parent class(es) as parameters to the class definition
 class Superhero(Human):
 
@@ -872,12 +871,21 @@ class Superhero(Human):
     # This constructor inherits the "name" argument from the "Human" class and
     # adds the "superpower" and "movie" arguments:
     def __init__(self, name, movie=False,
-                 superpowers=["super strength", "bulletproofing"]):
+                 superpowers=None):
+        if superpowers is None:
+            superpowers = ["super strength", "bulletproofing"]   
+
+        # mutable default values are shared across objects
+        # means `__init__(superpowers = ["strength", "bullet"]`
+        # can be changed by 
+        # Superhero("A").superpowers.append("vision")
+        # print(Superhero("B")) # ["strength", "bullet", "vision"]
+        # changing one hero’s powers silently changes another’s
+        # It's a python anti-pattern          
 
         # add additional class attributes:
         self.fictional = True
         self.movie = movie
-        # be aware of mutable default values, since defaults are shared
         self.superpowers = superpowers
 
         # The "super" function lets you access the parent class's methods
@@ -1028,7 +1036,11 @@ def double_numbers(iterable):
 # process the next value in the iterable. This allows them to perform
 # operations on otherwise prohibitively large value ranges.
 # NOTE: `range` replaces `xrange` in Python 3.
-for i in double_numbers(range(1, 900000000)):  # `range` is a generator.
+for i in double_numbers(range(1, 900000000)):  
+    """
+    `range` is a lazy, immutable, iterable sequence
+    `double_numbers` is a generator function because it uses yield
+    """
     print(i)
     if i >= 30:
         break
