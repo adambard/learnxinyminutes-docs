@@ -26,7 +26,7 @@ variable "ready" {
 }
 
 // Module block consults a specified folder for *.tf files, would
-// effectively prefix all resources IDs with "module.learn-basics."
+// effectively prefix all resource IDs with "module.learn-basics."
 module "learn-basics" {
   source = "./learn-basics"
   ready_to_learn = var.ready
@@ -128,7 +128,7 @@ for managing AWS cloud resources.
 When `terraform` is invoked (`terraform apply`) it will validate code, create all resources
 in memory, load their existing state from a file (state file), refresh against the current
 cloud APIs and then calculate the differences. Based on the differences, Terraform proposes
-a "plan" - series of create, modify or delete actions to bring your infrastructrue in
+a "plan" - series of create, modify or delete actions to bring your infrastructure in
 alignment with an HCL definition.
 
 Terraform will also automatically calculate dependencies between resources and will maintain
@@ -285,7 +285,7 @@ locals {
 
   prefixed_list = [for v in local.filtered_list : "pre-${v}" ] // "pre-ON", "pre-TH"
 
-  joined_list = join(local.upper_list,local. filtered_list) // "ONE", "TWO", "THREE", "pre-ON", "pre-TH"
+  joined_list = join(local.upper_list, local.prefixed_list) // "ONE", "TWO", "THREE", "pre-ON", "pre-TH"
 
   // Set is very similar to List, but element order is irrelevant
   joined_set = toset(local.joined_list) // "ONE", "TWO", "THREE", "pre-ON", "pre-TH"
