@@ -172,6 +172,7 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
     ct<               # Change to open bracket
                       # Change the text from where you are to the next open bracket
     d$                # Delete till end of line
+                      # synonym for "D".Similarly, there are "C" and "Y".
 ```
 
 ## Some shortcuts and tricks
