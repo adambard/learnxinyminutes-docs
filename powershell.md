@@ -131,7 +131,7 @@ $False - 5   # => -5
 $a = (1,2,3,4)
 $b = $a                                 # => Point b at what a is pointing to
 $b -is $a.GetType()                     # => True, a and b equal same type
-$b -eq $a                               # => $null (when comparing arrays, -eq filters matching elements)
+$b -eq $a                               # => None/$null (when comparing arrays, -eq filters matching elements)
 [System.Collections.Hashtable]$b = @{}  # => Point b at a new hash table
 $b = @{'one' = 1 
        'two' = 2}
