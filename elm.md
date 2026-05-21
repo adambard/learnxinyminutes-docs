@@ -2,6 +2,7 @@
 name: Elm
 contributors:
     - ["Max Goldstein", "http://maxgoldste.in/"]
+    - ["Wolfgang Schuster"]
 filename: learnelm.elm
 ---
 
