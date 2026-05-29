@@ -18,7 +18,7 @@ contributors:
     - ["Martin Nicholson", "https://github.com/mn113"]
     - ["Mark Grimwood", "https://github.com/MarkGrimwood"]
     - ["Emily Grace Seville", "https://github.com/EmilySeville7cfg"]
-	- ["Ilyas B.", "https://github.com/Ily83"]
+    - ["Ilyas B.", "https://github.com/Ily83"]
 filename: LearnBash.sh
 translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
