@@ -3,6 +3,7 @@ name: PowerShell
 contributors:
     - ["Wouter Van Schandevijl", "https://github.com/laoujin"]
     - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
+    - ["ilyas B.", "https://github.com/ily83"]
 filename: LearnPowershell.ps1
 ---
 
