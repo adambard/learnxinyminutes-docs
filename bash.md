@@ -18,6 +18,7 @@ contributors:
     - ["Martin Nicholson", "https://github.com/mn113"]
     - ["Mark Grimwood", "https://github.com/MarkGrimwood"]
     - ["Emily Grace Seville", "https://github.com/EmilySeville7cfg"]
+	- ["ilyas boualla", "https://github.com/Ily83"]
 filename: LearnBash.sh
 translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
@@ -25,7 +26,7 @@ translators:
 
 Bash is a name of the unix shell, which was also distributed as the shell
 for the GNU operating system and as the default shell on most Linux distros.
-The latest major release is Bash 5.3 (July 2025).
+This tutorial was tested on Bash v5.3.
 Nearly all examples below can be a part of a shell script
 or executed directly in the shell.
 
