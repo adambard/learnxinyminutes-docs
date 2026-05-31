@@ -625,7 +625,7 @@ fn fib_loop(x: Int, accumulator: Int) -> Int {
 // of a list with the [x, ..y] pattern inside a case expression.
 fn reverse_list(the_list: List(value)) -> List(value) {
   case the_list {
-    [head, ..tail] -> list.concat([reverse_list(tail), [head]])
+    [head, ..tail] -> list.flatten([reverse_list(tail), [head]])
     [] -> []
   }
 }
@@ -817,7 +817,7 @@ fn more_on_types() {
   |> checked_dice_value
   |> result.try(double_dice_value)
   |> result.unwrap(or: 6)
-  |> io.debug
+  |> echo
 }
 
 pub fn throw_dice_as_result() {
