@@ -312,7 +312,7 @@ pub fn main() {
   // documentation.
   // Under the hood they are still values of the same type so operations
   // still work
-  io.debug(one + two)
+  echo one + two
   // 3
 
   // Blocks: scoping and value
