@@ -24,6 +24,26 @@ code in browser or any other JS-enabled runtime. When using this feature,
 TypeScript definitions get created, so you can interact with your Gleam code
 confidently, even from the outside.
 
+To run this code, first create a Gleam project:
+
+```sh
+gleam new my_project
+cd my_project
+```
+
+Replace the generated code with this example and run:
+
+```sh
+gleam run
+```
+
+> **Note:** The `iterator` module was removed from the standard library in [v0.44.0](https://github.com/gleam-lang/stdlib/blob/main/CHANGELOG.md#:~:text=The%20gleam%2Fiterator%20module%20has%20been%20deprecated%20in%20favour%20of%20the%20gleam%5Fyielder%20package) and moved to `gleam_yielder`:
+>
+> ```sh
+> gleam add gleam_yielder
+> ```
+
+
 ```gleam
 //// This comment with four slashes is a module-level.
 //// This kind of comments are used to describe the whole module.
@@ -33,7 +53,7 @@ import gleam/io
 import gleam/int
 import gleam/float
 import gleam/list
-import gleam/iterator
+import gleam/yielder as iterator
 import gleam/option.{type Option, None, Some}
 import gleam/result
 import gleam/string
