@@ -24,6 +24,26 @@ code in browser or any other JS-enabled runtime. When using this feature,
 TypeScript definitions get created, so you can interact with your Gleam code
 confidently, even from the outside.
 
+To run this code, first create a Gleam project:
+
+```sh
+gleam new my_project
+cd my_project
+```
+
+Replace the generated code with this example and run:
+
+```sh
+gleam run
+```
+
+> **Note:** The `iterator` module was removed from the standard library in [v0.44.0](https://github.com/gleam-lang/stdlib/blob/main/CHANGELOG.md#:~:text=The%20gleam%2Fiterator%20module%20has%20been%20deprecated%20in%20favour%20of%20the%20gleam%5Fyielder%20package) and moved to `gleam_yielder`:
+>
+> ```sh
+> gleam add gleam_yielder
+> ```
+
+
 ```gleam
 //// This comment with four slashes is a module-level.
 //// This kind of comments are used to describe the whole module.
@@ -33,7 +53,7 @@ import gleam/io
 import gleam/int
 import gleam/float
 import gleam/list
-import gleam/iterator
+import gleam/yielder as iterator
 import gleam/option.{type Option, None, Some}
 import gleam/result
 import gleam/string
@@ -117,10 +137,10 @@ pub fn main() {
   // Standard library int functions
   echo int.min(142, 137)
   // 137
-  echo int.clamp(-80, min: 0, max: 100)
+  echo int.clamp(-80, min: 0, max: 100) // clamp(value, min, max) specifies value to fall in given range
   // 0
-  echo int.base_parse("10", 2)
-  // Ok(2)
+  echo int.base_parse("10", 2) // parses binary string as base-2 integer. 
+  // Ok(2) : 10 in binary equals to 2 in integer
 
   // Binary, octal, and hex Int literals
   echo 0b00001111
@@ -226,9 +246,6 @@ pub fn main() {
   echo bool.to_string(True)
   // "True"
 
-  echo bool.to_int(False)
-  // 0
-
   // Assignments
   let x = "Original value"
   echo x
@@ -295,7 +312,7 @@ pub fn main() {
   // documentation.
   // Under the hood they are still values of the same type so operations
   // still work
-  io.debug(one + two)
+  echo one + two
   // 3
 
   // Blocks: scoping and value
@@ -303,26 +320,26 @@ pub fn main() {
     let value = 100.0
     value
   }
-  // io.debug(value) // <- This will not compile because "value" is out of scope
+  // echo value // <- This will not compile because "value" is out of scope
 
   let area = 3.14159 *. radius *. radius
-  io.debug(area)
+  echo area
 
   // Use blocks to group operations instead of parenthesis
   let n1 = { 3 + 2 } * 5
   let n2 = 3 + { 2 * 5 }
-  io.debug(n1 != n2)
+  echo n1 != n2
   // True
 
   // Lists
 
   // Nephews of Scrooge McDuck
   let nephews = ["Huey", "Dewey", "Louie"]
-  io.debug(nephews)
+  echo nephews
   // ["Huey", "Dewey", "Louie"]
 
   // Immutably prepend so the original list is not changed
-  io.debug(["Donald", ..nephews])
+  echo ["Donald", ..nephews]
   // ["Donald", "Huey", "Dewey", "Louie"]
 
   // Some standard library functions for lists
@@ -332,7 +349,7 @@ pub fn main() {
   // Dewey
   // Louie
 
-  io.debug(list.drop(nephews, 2))
+  echo list.drop(nephews, 2)
   // ["Louie"]
 
   more_examples()
@@ -377,9 +394,9 @@ pub fn is_leap_year(year: Int) -> Bool {
 fn more_examples() {
   // Debug also returns a value so its output is the return value of
   // this function
-  io.debug(double(10))
+  echo double(10)
   // 20
-  io.debug(is_leap_year(2000))
+  echo is_leap_year(2000)
   // True
 }
 
@@ -391,15 +408,15 @@ fn call_func_on_int(func: fn(Int) -> Int, value: Int) -> Int {
 }
 
 fn more_function_examples() -> Int {
-  io.debug(call_func_on_int(double, 2))
+  echo call_func_on_int(double, 2)
   // 4
 
   let square = fn(x: Int) -> Int { x * x }
-  io.debug(square(3))
+  echo square(3)
   // 9
 
   // Calling an anonymous function immediately after defining it
-  io.debug(fn(x: Int) { x + 1 }(1))
+  echo fn(x: Int) { x + 1 }(1)
 
   // Closure example
   let make_adder = fn(n: Int) -> fn(Int) -> Int {
@@ -407,11 +424,11 @@ fn more_function_examples() -> Int {
   }
 
   let adder_of_fives = make_adder(5)
-  io.debug(adder_of_fives(10))
+  echo adder_of_fives(10)
   // 15
 
   // Anonymous functions can be used interchangeably with named functions.
-  io.debug(call_func_on_int(fn(x: Int) -> Int { x + 100 }, 900))
+  echo call_func_on_int(fn(x: Int) -> Int { x + 100 }, 900)
   // 1000
 
   // Let's create a function decorator
@@ -419,17 +436,17 @@ fn more_function_examples() -> Int {
     fn(argument: Int) -> Int { wrapped_func(wrapped_func(argument)) }
   }
   let quadruple = twice(double)
-  io.debug(quadruple(1))
+  echo quadruple(1)
 
   let quadruple_2 = fn(a: Int) -> Int { multiply(4, a) }
-  io.debug(quadruple_2(2))
+  echo quadruple_2(2)
   // 8
 
   // A function capture is a shorthand syntax for creating anonymous functions
   // that takes one argument and immediately calls another function with that
   // argument
   let quadruple_3 = multiply(4, _)
-  io.debug(quadruple_3(4))
+  echo quadruple_3(4)
   // 16
 }
 
@@ -450,14 +467,14 @@ fn generic_twice_decorator(
 fn generic_typing_examples() {
   let double_integers = fn(a: Int) -> Int { a * 2 }
   let double_floats = fn(a: Float) -> Float { a *. 2.0 }
-  io.debug(generic_twice(double_integers, 3))
-  io.debug(generic_twice(double_floats, 3.0))
+  echo generic_twice(double_integers, 3)
+  echo generic_twice(double_floats, 3.0)
 
   let quadruple_integers = generic_twice_decorator(double_integers)
   let quadruple_floats = generic_twice_decorator(double_floats)
-  io.debug(quadruple_integers(1))
+  echo quadruple_integers(1)
   // 4
-  io.debug(quadruple_floats(1.0))
+  echo quadruple_floats(1.0)
   // 4.0
 }
 
@@ -470,16 +487,15 @@ fn beloved_pipelines_demo() {
   |> list.append(["!"])
   |> string.concat
   |> string.capitalise
-  |> io.debug
+  |> echo
 
-  // Match cleaner than this right?
-  io.debug(
+  // Much cleaner than this right?
+  echo 
     string.capitalise(
       string.concat(
         list.append(list.intersperse(["hello", "world"], " "), ["!"]),
       ),
-    ),
-  )
+    )
 
   // Solution to the first problem of Project Euler:
   // URL: https://projecteuler.net/problem=1
@@ -492,7 +508,7 @@ fn beloved_pipelines_demo() {
   |> fn(sum_as_text: String) {
     "Solution to Project Euler's problem #1: " <> sum_as_text
   }
-  |> io.debug
+  |> echo
   // Solution to Project Euler's problem #1: 233168
 }
 
@@ -516,13 +532,13 @@ fn add_two_integers(first n: Int, second m: Int) -> Int {
 fn labels_in_function_calls() -> Int {
   // Since we are labelling the arguments we can switch the order
   // if we want to
-  io.debug(call_func_on_int_with_labels(value: 8, func: double))
-  io.debug(add_one(number: 1))
+  echo call_func_on_int_with_labels(value: 8, func: double)
+  echo add_one(number: 1)
   // 2
-  io.debug(string.contains(does: "theme", contain: "the"))
+  echo string.contains(does: "theme", contain: "the")
   // True
   // Unlabeled arguments must go first
-  io.debug(add_two_integers(2, second: 2))
+  echo add_two_integers(2, second: 2)
   // 4
 }
 
@@ -544,7 +560,7 @@ fn showcase_flow_control() {
       _ -> "puppies"
     }
   }
-  |> io.debug
+  |> echo
 
   // Gleam allows patterns in case expressions to also assign variables.
   {
@@ -555,7 +571,7 @@ fn showcase_flow_control() {
       other -> "As many as " <> int.to_string(other) <> " puppies."
     }
   }
-  |> io.debug
+  |> echo
 
   // Consider BEAM languages are functional in design and Gleam is no exception
   // so there are no if, for or while constructs available.
@@ -564,10 +580,10 @@ fn showcase_flow_control() {
   let answer = 42
   case answer == 42 {
     True -> {
-      io.debug("This is the answer to the universe.")
+      echo "This is the answer to the universe."
     }
     False -> {
-      io.debug("This is the answer to something else.")
+      echo "This is the answer to something else."
     }
   }
 
@@ -577,7 +593,7 @@ fn showcase_flow_control() {
 
 // Recursive function
 fn from_one_to_ten(n: Int) {
-  io.debug(n)
+  echo n
   case n {
     10 -> Nil
     _ -> from_one_to_ten(n + 1)
@@ -615,18 +631,18 @@ fn reverse_list(the_list: List(value)) -> List(value) {
 }
 
 fn more_on_recursion() {
-  io.debug(fib(10))
+  echo fib(10)
   // 55
-  io.debug(reverse_list([1, 2, 3]))
+  echo reverse_list([1, 2, 3])
 }
 
 fn more_on_pattern_matching() {
   // When pattern-matching on strings the <> operator match on strings
   // with a specific prefix and assigns the reminder to a variable
-  io.debug(case "Hello, Lucy" {
+  echo case "Hello, Lucy" {
     "Hello, " <> name -> "Greetings for " <> name
     _ -> "Potentially no greetings"
-  })
+  }
 
   // Alternative patterns are supported so the same clause is used
   // for multiple values
@@ -642,7 +658,7 @@ fn more_on_pattern_matching() {
     1 | 3 | 5 | 7 | 8 | 10 | 12 -> 31
     _ -> 0
   }
-  io.debug("Number of days: " <> int.to_string(number_of_days))
+  echo "Number of days: " <> int.to_string(number_of_days)
   // 29
 
   // Guards in pattern-matching:
@@ -654,7 +670,7 @@ fn more_on_pattern_matching() {
       _ -> False
     }
   }
-  io.debug(list_starts_with([10, 20, 30], 10))
+  echo list_starts_with([10, 20, 30], 10)
   // True
 }
 
@@ -684,45 +700,45 @@ fn showcase_types() {
   // - Their elements can be accessed by numeric indexes
   let tuple_01 = #(1, "Ferris", "rustacean", True)
   let tuple_02 = #(1, "Lucy", "starfish", True)
-  io.debug(tuple_01)
-  io.debug(tuple_01.0)
+  echo tuple_01
+  echo tuple_01.0
   // 1
-  io.debug(tuple_02.1)
+  echo tuple_02.1
   // Lucy
   let #(_, name, species, _) = tuple_01
-  io.debug(name <> " the " <> species)
+  echo name <> " the " <> species
 
   // Pattern-matching with tuples including variable assignment
   case tuple_02 {
-    #(_, name, _, True) -> io.debug(name <> " is a mascot.")
-    #(_, name, _, False) -> io.debug(name <> " is not a mascot.")
+    #(_, name, _, True) -> echo name <> " is a mascot."
+    #(_, name, _, False) -> echo name <> " is not a mascot."
   }
 
   // Using a custom type with pattern-matching
   let gender = Other
-  io.debug(case gender {
+  echo case gender {
     Male -> "Boy"
     Female -> "Girl"
     _ -> "Undetermined"
-  })
+  }
 
   // Using records
   let rectangle_1 = Rectangle(base: 10.0, height: 20.0)
-  io.debug(rectangle_1.height)
+  echo rectangle_1.height
   // 10.3
 
   let point_1 = Point(x: 3.2, y: 4.3)
-  io.debug(point_1)
+  echo point_1
 
   // Updating a record
   let point_2 = Point(..point_1, y: 5.7)
-  io.debug(point_2)
+  echo point_2
 
   // In Gleam, values are not nullable.
   // Nil is the only value of its type.
   let some_var = Nil
   let result = io.println("Hello!")
-  io.debug(some_var == result)
+  echo some_var == result
   // True
 }
 
@@ -770,28 +786,28 @@ fn double_dice_value(value: Int) -> Result(Int, DiceError) {
 fn more_on_types() {
   let mineral_sample_01: Purity(Mineral) = Pure(Gold)
   let mineral_sample_02 = Impure(Silver)
-  io.debug(mineral_sample_01)
-  io.debug(mineral_sample_02)
+  echo mineral_sample_01
+  echo mineral_sample_02
 
   // A glass can be empty or not
   let glass_01: Option(Beverage) = Some(Water)
   let glass_02 = None
-  io.debug(glass_01)
-  io.debug(glass_02)
+  echo glass_01
+  echo glass_02
 
   // A person can have a nickname or not
   let person_01 = Person(name: "John", nickname: Some("The Ripper"))
   let person_02 = Person(name: "Martin", nickname: None)
-  io.debug(person_01)
-  io.debug(person_02)
+  echo person_01
+  echo person_02
 
   // Working with functions that return values of type Result
   let dice_01 = 5
   case checked_dice_value(dice_01) {
     Ok(checked_value) ->
-      io.debug("The value of " <> int.to_string(checked_value) <> " is OK.")
+      echo "The value of " <> int.to_string(checked_value) <> " is OK."
     Error(DiceValueOutOfRange) ->
-      io.debug("The value of the dice is out of range")
+      echo "The value of the dice is out of range"
   }
 
   // Let's attempt to double the value if the resulting value is still
@@ -838,8 +854,8 @@ fn roll_two_dices_with_use() {
 }
 
 fn more_on_callbacks() {
-  io.debug(roll_two_dices_without_use())
-  io.debug(roll_two_dices_with_use())
+  echo roll_two_dices_without_use()
+  echo roll_two_dices_with_use()
 }
 
 pub type DateTime
@@ -849,7 +865,7 @@ pub type DateTime
 pub fn now() -> DateTime
 
 fn showcase_externals() {
-  io.debug(now())
+  echo now()
   // #(#(2024, 4, 6), #(14, 4, 16))
 }
 
