@@ -137,10 +137,10 @@ pub fn main() {
   // Standard library int functions
   echo int.min(142, 137)
   // 137
-  echo int.clamp(-80, min: 0, max: 100)
+  echo int.clamp(-80, min: 0, max: 100) // clamp(value, min, max) specifies value to fall in given range
   // 0
-  echo int.base_parse("10", 2)
-  // Ok(2)
+  echo int.base_parse("10", 2) // parses binary string as base-2 integer. 
+  // Ok(2) : 10 in binary equals to 2 in integer
 
   // Binary, octal, and hex Int literals
   echo 0b00001111
@@ -245,9 +245,6 @@ pub fn main() {
   // Bool functions
   echo bool.to_string(True)
   // "True"
-
-  echo bool.to_int(False)
-  // 0
 
   // Assignments
   let x = "Original value"
