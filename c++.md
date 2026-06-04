@@ -96,7 +96,7 @@ int main()
 // C++ supports function overloading
 // provided each function takes different parameters.
 
-void print(char const* myString)
+void print(const char* myString)
 {
     printf("String %s\n", myString);
 }
