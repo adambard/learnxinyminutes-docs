@@ -216,7 +216,7 @@ greet("Bob", day: "Tuesday")
 func greet2(_ requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
-greet2(requiredName:"John", externalParamName: "Sunday")    // 调用时，使用命名参数来指定参数的值
+greet2("John", externalParamName: "Sunday")    // 调用时，使用命名参数来指定参数的值
 
 // 函数可以通过元组 (tuple) 返回多个值
 func getGasPrices() -> (Double, Double, Double) {
