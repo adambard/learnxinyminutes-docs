@@ -866,8 +866,9 @@ void foo()
 // There will be always a reference, so it will be never destroyed!
 std::shared_ptr<Dog> doggo_one(new Dog());
 std::shared_ptr<Dog> doggo_two(new Dog());
-doggo_one = doggo_two; // p1 references p2
-doggo_two = doggo_one; // p2 references p1
+doggo_one->friend = doggo_two; // p1 references p2
+doggo_two->friend = doggo_one; // p2 references p1
+//Note that the 'friend' member of the 'Dog' type was a theoretical example and is not in prior 'Dog' class examples in this C++ guide.
 
 // There are several kinds of smart pointers.
 // The way you have to use them is always the same.
