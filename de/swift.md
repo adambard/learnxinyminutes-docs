@@ -87,10 +87,10 @@ if someOptionalString != nil {
 }
 someOptionalString = nil
 
-// Implizit entpackter Optionalwert
+// Implizit entpackter Optionalwert (Implicitly Unwrapped Optionals)
 var unwrappedString: String! = "Value is expected."
-// Genau wie oben, aber ! ist ein postfix operator (noch mehr syntaktische Vereinfachung)
-var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected."
+// Hinweis: ImplicitlyUnwrappedOptional<T> ist in modernem Swift veraltet. Verwende stattdessen T!.
+// var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected." // Veraltet
 
 if let someOptionalStringConstant = someOptionalString {
     // hat einen (`Some`) Wert, nicht nil
@@ -126,8 +126,8 @@ anyVar = "Changed value to a string, not good practice, but possible."
 var shoppingList = ["catfish", "water", "lemons"]
 shoppingList[1] = "bottle of water"
 let emptyArray = [String]() // let == unveränderlich
-let emptyArray2 = Array<String>[] // genau wie oben
-var emptyMutableArray = [String][] // var == änderbar
+let emptyArray2 = Array<String>() // genau wie oben
+var emptyMutableArray = [String]() // var == änderbar
 
 
 // Dictionary
@@ -222,13 +222,13 @@ default: // notwendig (um alle möglichen Eingaben zu verarbeiten)
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
-greet("Bob", "Tuesday")
+_ = greet(name: "Bob", day: "Tuesday")
 
 // Ähnlich wie oben, bloß anderes Funktions-Parameter-Verhalten
 func greet2(_ requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
-greet2("John", externalParamName: "Sunday")
+_ = greet2("John", externalParamName: "Sunday")
 
 
 // Funktion, welche mehrere Werte in einem Tupel zurückgibt
@@ -257,7 +257,7 @@ func makeIncrementer() -> ((Int) -> Int) {
     return addOne
 }
 var increment = makeIncrementer()
-increment(7)
+_ = increment(7)
 
 // Übergabe via Referenz ("Pass by reference")
 func swapTwoInts(a: inout Int, b: inout Int) {
@@ -267,7 +267,7 @@ func swapTwoInts(a: inout Int, b: inout Int) {
 }
 var someIntA = 7
 var someIntB = 3
-swapTwoInts(&someIntA, &someIntB)
+swapTwoInts(a: &someIntA, b: &someIntB)
 print(someIntB) // 7
 
 
@@ -316,7 +316,7 @@ print(numbers) // [3, 6, 18]
 
 // Structures und Klassen haben sehr ähnliche Fähigkeiten
 struct NamesTable {
-    let names = [String]()
+    let names: [String]
     
     // Eigenes Subscript
     subscript(index: Int) -> String {
@@ -337,8 +337,8 @@ print("Name is \(name)") // Name is Them
 // Klassen, Strukturen und deren Member haben drei Ebenen der Zugriffskontrolle
 // Es gibt: internal (default), public, private
 
-// Shape muss von NSObject erben, da MyShape später ein @objc-Protokoll verwendet.
-public class Shape: NSObject{
+// In modernem Swift muss Shape nicht mehr von NSObject erben, um @objc-Protokolle zu verwenden.
+public class Shape {
     public func getArea() -> Int {
         return 0;
     }
@@ -433,13 +433,13 @@ class Circle: Shape {
 }
 
 var myCircle = Circle(radius: 1)
-print(myCircle?.getArea())    // Optional(3)
+print(myCircle?.getArea() as Any)    // Optional(3)
 print(myCircle!.getArea())    // 3
 var myEmptyCircle = Circle(radius: -1)
-print(myEmptyCircle?.getArea())    // "nil"
+print(myEmptyCircle?.getArea() as Any)    // "nil"
 if let circle = myEmptyCircle {
     // wird nicht ausgeführt, da myEmptyCircle nil ist
-    print("circle is not nil")
+    print("circle \(circle) is not nil")
 }
 
 
@@ -514,8 +514,8 @@ protocol ShapeGenerator {
 // Protocols mit @objc deklariert ermöglichen optionale Funktionen,
 // welche es ermöglichen, abzufragen ob ein Typ einem Protokoll entspricht
 @objc protocol TransformShape {
-    optional func reshaped()
-    optional func canReshape() -> Bool
+    @objc optional func reshaped()
+    @objc optional func canReshape() -> Bool
 }
 
 class MyShape: Rect {
@@ -527,7 +527,7 @@ class MyShape: Rect {
         // Ein Fragezeichen nach einer optionalen Property, Methode oder Subscript
         // ignoriert elegant Nil-Werte und geben nil zurück, anstatt einen Laufzeitfehler zu werfen
         // Dies wird "optional Chaining" (optionale Verkettung) genannt
-        if let allow = self.delegate?.canReshape?() {
+        if let allow = self.delegate?.canReshape?(), allow {
             // frage erst nach delegate, dann nach Methode
             self.delegate?.reshaped?()
         }
@@ -541,7 +541,7 @@ class MyShape: Rect {
 
 // `extension`s: (Erweiterungen), erweitere Typen um zusätzliche Funktionalität
 
-// Square entspricht jetzt dem `Printable` Protokoll
+// Square entspricht jetzt dem `Printable` Protokoll (CustomStringConvertible)
 extension Square: CustomStringConvertible {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
@@ -556,7 +556,7 @@ extension Int {
         return "This is \(self)"
     }
     
-    func multiplyBy(num: Int) -> Int {
+    func multiplyBy(_ num: Int) -> Int {
         return num * self
     }
 }
@@ -568,7 +568,7 @@ print(14.multiplyBy(3)) // 42
 //Generics: Ähnlich zu Java und C#. Nutze das `where` keyword um die Bedingung
 // des Generics festzulegen
 
-func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
+func findIndex<T: Equatable>(_ array: [T], _ valueToFind: T) -> Int? {
     for (index, value) in array.enumerated() {
         if value == valueToFind {
             return index
@@ -597,6 +597,6 @@ prefix func !!! (shape: inout Square) -> Square {
 print(mySquare.sideLength) // 4
 
 // Wert nach Verwendung des eigenen Operators
-!!!mySquare
+_ = !!!mySquare
 print(mySquare.sideLength) // 12
 ```
