@@ -39,7 +39,7 @@ import UIKit
 
 // In Swift 2 wurden println und print zusammengefasst in eine print-Methode. Es wird automatisch ein Zeilenumbruch angehängt.
 print("Hello, world!") // println ist jetzt print
-print("Hello, world!", terminator : "") // printen ohne Zeilenumbruch am Ende
+print("Hello, world!", terminator: "") // printen ohne Zeilenumbruch am Ende
 
 // Variablen (var) können nach der Initialisierung verändert werden
 // Konstanten (let) können nach der Initialisierung NICHT verändert werden
