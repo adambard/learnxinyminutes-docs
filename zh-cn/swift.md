@@ -79,10 +79,11 @@ someOptionalString = nil
     使用 （！） 可以解决无法访问optional值的运行错误。若要使用 （！）来强制解析，一定要确保 Optional 里不是 nil参数。
 */
 
-// 显式解包 optional 变量
+// 隐式解包可选类型 (Implicitly Unwrapped Optionals)
 var unwrappedString: String! = "Value is expected."
-// 下面语句和上面完全等价，感叹号 (!) 是个后缀运算符，这也是个语法糖
-var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected."
+// 注：在 Swift 早期版本中，String! 与下面的 ImplicitlyUnwrappedOptional<String> 等价。
+// 但在现代 Swift 中，ImplicitlyUnwrappedOptional 作为独立类型已被废弃，必须使用 String? 或 String!。
+// var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected." // 该写法已过时废弃
 
 if let someOptionalStringConstant = someOptionalString {
     // 由于变量 someOptinalString 有值，不为空，所以 if 条件为真
@@ -91,11 +92,11 @@ if let someOptionalStringConstant = someOptionalString {
     }
 }
 
-// Swift 支持可保存任何数据类型的变量
-// AnyObject == id
-// 和 Objective-C `id` 不一样, AnyObject 可以保存任何类型的值 (Class, Int, struct, 等)
-var anyObjectVar: AnyObject = 7
-anyObjectVar = "Changed value to a string, not good practice, but possible."
+// Swift 支持可保存任何数据类型的变量：Any 和 AnyObject
+// AnyObject 可以保存任何类 (Class) 的实例 (类似于 Objective-C 的 id)
+// Any 可以保存任何类型的值 (包括 Class, struct, Int, Double, 闭包等)
+var anyVar: Any = 7
+anyVar = "Changed value to a string, not good practice, but possible."
 
 /*
     这里是注释
@@ -159,7 +160,7 @@ for (key, value) in dict {
 for i in -1...shoppingList.count {
     print(i)
 }
-shoppingList[1...2] = ["steak", "peacons"]
+shoppingList[1...2] = ["steak", "pecans"]
 // 可以使用 `..<` 来去掉最后一个元素
 
 // while 循环
@@ -209,14 +210,14 @@ default: // 在 Swift 里，switch 语句的 case 必须处理所有可能的情
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
-greet("Bob", day: "Tuesday")
+_ = greet(name: "Bob", day: "Tuesday")
 
 // 第一个参数`_`表示不使用外部参数名，忽略`_`表示外部参数名和内部参数名使用同一个名称。
 // 第二个参数表示外部参数名使用 `externalParamName` ，内部参数名使用 `localParamName`
 func greet2(_ requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
-greet2("John", externalParamName: "Sunday")    // 调用时，使用命名参数来指定参数的值
+_ = greet2("John", externalParamName: "Sunday")    // 调用时，使用命名参数来指定参数的值
 
 // 函数可以通过元组 (tuple) 返回多个值
 func getGasPrices() -> (Double, Double, Double) {
@@ -237,14 +238,14 @@ func setup(numbers: Int...) {
 }
 
 // 函数变量以及函数作为返回值返回
-func makeIncrementer() -> (Int -> Int) {
+func makeIncrementer() -> ((Int) -> Int) {
     func addOne(number: Int) -> Int {
         return 1 + number
     }
     return addOne
 }
 var increment = makeIncrementer()
-increment(7)
+_ = increment(7)
 
 // 强制进行指针传递 (引用传递)，使用 `inout` 关键字修饰函数参数
 func swapTwoInts(a: inout Int, b: inout Int) {
@@ -254,7 +255,7 @@ func swapTwoInts(a: inout Int, b: inout Int) {
 }
 var someIntA = 7
 var someIntB = 3
-swapTwoInts(&someIntA, b: &someIntB)
+swapTwoInts(a: &someIntA, b: &someIntB)
 print(someIntB) // 7
 
 
@@ -269,7 +270,7 @@ var numbers = [1, 2, 6]
 // `->` 分隔了闭包的参数和返回值
 // `in` 分隔了闭包头 (包括参数及返回值) 和闭包体
 // 下面例子中，`map` 的参数是一个函数类型，它的功能是把数组里的元素作为参数，逐个调用 `map` 参数传递进来的函数。
-numbers.map({
+_ = numbers.map({
     (number: Int) -> Int in
     let result = 3 * number
     return result
@@ -283,7 +284,8 @@ numbers = numbers.map({ number in 3 * number })
 print(numbers) // [3, 6, 18]
 
 // 简洁的闭包
-numbers = numbers.sort { $0 > $1 }
+// 注：在现代 Swift 中，sort() 是原地排序且返回 Void；若要返回排序后的新数组，应使用 sorted()
+numbers.sort { $0 > $1 }
 
 print(numbers) // [18, 6, 3]
 
@@ -425,13 +427,13 @@ class Circle: Shape {
 
 // 根据 Swift 类型推断，myCircle 是 Optional<Circle> 类型的变量
 var myCircle = Circle(radius: 1)
-print(myCircle?.getArea())    // Optional(3)
+print(myCircle?.getArea() as Any)    // Optional(3)
 print(myCircle!.getArea())    // 3
 var myEmptyCircle = Circle(radius: -1)
-print(myEmptyCircle?.getArea())    // "nil"
+print(myEmptyCircle?.getArea() as Any)    // "nil"
 if let circle = myEmptyCircle {
     // 此语句不会输出，因为 myEmptyCircle 变量值为 nil
-    print("circle is not nil")
+    print("circle \(circle) is not nil")
 }
 
 
@@ -506,8 +508,8 @@ protocol ShapeGenerator {
 // 一个类实现一个带 optional 方法的协议时，可以实现或不实现这个方法
 // optional 方法可以使用 optional 规则来调用
 @objc protocol TransformShape {
-    optional func reshape()
-    optional func canReshape() -> Bool
+    @objc optional func reshape()
+    @objc optional func canReshape() -> Bool
 }
 
 class MyShape: Rect {
@@ -518,7 +520,7 @@ class MyShape: Rect {
 
         // 在 optional 属性，方法或下标运算符后面加一个问号，可以优雅地忽略 nil 值，返回 nil。
         // 这样就不会引起运行时错误 (runtime error)
-        if let reshape = self.delegate?.canReshape?() {
+        if let canReshape = self.delegate?.canReshape?(), canReshape {
             // 注意语句中的问号
             self.delegate?.reshape?()
         }
@@ -547,7 +549,7 @@ extension Int {
         return "This is \(self)"
     }
 
-    func multiplyBy(num: Int) -> Int {
+    func multiplyBy(_ num: Int) -> Int {
         return num * self
     }
 }
@@ -557,8 +559,8 @@ print(14.multiplyBy(3)) // 42
 
 // 泛型: 和 Java 及 C# 的泛型类似，使用 `where` 关键字来限制类型。
 // 如果只有一个类型限制，可以省略 `where` 关键字
-func findIndex<T: Equatable>(array: [T], _ valueToFind: T) -> Int? {
-    for (index, value) in array.enumerate() {
+func findIndex<T: Equatable>(_ array: [T], _ valueToFind: T) -> Int? {
+    for (index, value) in array.enumerated() {
         if value == valueToFind {
             return index
         }
@@ -584,7 +586,7 @@ prefix func !!! (shape: inout Square) -> Square {
 print(mySquare.sideLength) // 4
 
 // 使用自定义的 !!! 运算符来把矩形边长放大三倍
-!!!mySquare
+_ = !!!mySquare
 print(mySquare.sideLength) // 12
 
 // 运算符也可以是泛型
