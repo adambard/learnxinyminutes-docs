@@ -125,7 +125,7 @@ echo 8 > 9 ?? 1 + 1        # 2
 
 # Bitwise operators (>> and <<)
 echo 1 << 2                # 4
-echo 9 >> 1                # 5
+echo 9 >> 1                # 4
 
 # ----------------------------------------------------------------------------
 ```
@@ -227,7 +227,7 @@ echo matchstr(email, '@\zs\a\+[.]com\ze[^\w]')              # example.com
 #   \@<= is positive lookbehind, \@= is positive lookahead
 echo matchstr(email, '@\@<=\a\+[.]com\@=[^\w]')             # example.com
 
-#   \@<! is negative lookbehind, \@= is negative lookahead
+#   \@<! is negative lookbehind, \@! is negative lookahead
 echo matchstr(email, '[^@]\@<!\a\+[.]com\([\w]\)\@!')       # example.com
 
 # Combined with very magic they are easier to read
