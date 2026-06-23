@@ -1,4 +1,5 @@
 ---
+name: C#
 contributors:
     - ["Irfan Charania", "https://github.com/irfancharania"]
     - ["Max Yankov", "https://github.com/golergka"]
@@ -8,17 +9,19 @@ contributors:
     - ["Jo Pearce", "http://github.com/jdpearce"]
     - ["Chris Zimmerman", "https://github.com/chriszimmerman"]
     - ["Shawn McGuire", "https://github.com/bigbash"]
+filename: LearnCSharp.cs   
 translators:
     - ["Jakukyo Friel", "http://weakish.github.io"]
     - ["CatfishWen", "http://catfishwen.github.io"]
 ---
 
-C#是一种优雅且类型安全的面向对象的语言，使开发人员能够构建运行在跨平台的.NET框架上，安全且健壮的应用程序。
+C# 是一种优雅且类型安全的面向对象的语言，使开发人员能够构建运行在跨平台的 .NET 框架上，安全且健壮的应用程序。
 
-[更多关于C#的介绍](https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/)
+[更多关于 C# 的介绍](https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/)
 
 ```c#
 // 单行注释以 // 开始
+
 /*
 多行注释是这样的
 */
@@ -55,7 +58,7 @@ using System.Data.Entity;
 
 namespace Learning
 {
-    // 每个 .cs 文件至少需要包含一个和文件名相同的类
+    // 每个 .cs 文件应该至少包含一个和文件名相同的类
     // 你可以不这么干，但是这样并不推荐。
     public class LearnCSharp
     {
@@ -101,7 +104,7 @@ namespace Learning
             long fooLong = 100000L; // (-9,223,372,036,854,775,808 <= long <= 9,223,372,036,854,775,807)
             ulong fooUlong = 100000L; // (0 <= ulong <= 18,446,744,073,709,551,615)
             // 数字默认为 int 或 uint （取决于尺寸）
-            // 使用 L 标明变量值类型为long 或 ulong
+            // 使用 L 标明变量值类型为 long 或 ulong
 
             // Double - 双精度 64-bit IEEE 754 浮点数
             double fooDouble = 123.4; // 精度: 15-16 位
@@ -120,19 +123,19 @@ namespace Learning
             // Char - 单个 16-bit Unicode 字符
             char fooChar = 'A';
 
-            // 字符串 -- 和前面的基本类型不同，字符串不是值，而是引用。
-            // 这意味着你可以将字符串设为null。
+            // 字符串 -- 和前面的基本类型不同，字符串不是值类型，而是引用类型。
+            // 这意味着你可以将字符串设为 null。
             string fooString = "\"escape\" quotes and add \n (new lines) and \t (tabs)";
             Console.WriteLine(fooString);
 
-            // 你可以通过索引访问字符串的每个字符：
+            // 你可以通过索引器访问字符串的每个字符：
             char charFromString = fooString[1]; // => 'e'
             // 字符串不可修改:  fooString[1] = 'X' 是行不通的;
 
-            // 根据当前的区域格式设置比较字符串，大小写不敏感
+            // 根据当前的区域格式设置比较字符串，并忽略大小写
             string.Compare(fooString, "x", StringComparison.CurrentCultureIgnoreCase);
 
-            // 基于sprintf的字符串格式化
+            // 基于 sprintf 的字符串格式化
             string fooFs = string.Format("Check Check, {0} {1}, {0} {1:0.0}", 1, 2);
 
             // 日期和格式
@@ -140,19 +143,24 @@ namespace Learning
             Console.WriteLine(fooDate.ToString("hh:mm, dd MMM yyyy"));
 
             // 逐字字符串
-            // 使用 @ 符号可以创建跨行的字符串。使用 "" 来表示 "
+            // 你可以在字符串字面值前使用 @ 符号来转义字符串中的所有字符。
+            string path = "C:\\Users\\User\\Desktop";
+            string verbatimPath = @"C:\Users\User\Desktop";
+            Console.WriteLine(path == verbatimPath);  // => true
+
+            // 使用 @ 符号后可以创建跨行的字符串。使用使用 "" 来转义 "
             string bazString = @"Here's some stuff
 on a new line! ""Wow!"", the masses cried";
 
             // 使用 const 或 read-only 定义常量
-            // 常量在编译阶段演算
+            // 常量在编译阶段被计算
             const int HOURS_I_WORK_PER_WEEK = 9001;
 
             ///////////////////////////////////////////////////
             // 数据结构
             ///////////////////////////////////////////////////
 
-            // 数组 - 从0开始计数
+            // 数组 - 从 0 开始计数
             // 声明数组时需要指定数组长度
             // 声明数组的格式如下：
             // <datatype>[] <var name> = new <datatype>[<array size>];
@@ -172,35 +180,35 @@ on a new line! ""Wow!"", the masses cried";
             // List<datatype> <var name> = new List<datatype>();
             List<int> intList = new List<int>();
             List<string> stringList = new List<string>();
-            List<int> z = new List<int> { 9000, 1000, 1337 }; // 初始化
-            // <> 用于泛型 - 参考下文
+            List<int> z = new List<int> { 9000, 1000, 1337 }; // 声明并初始化
+            // <> 是泛型 - 参考下文
 
             // 列表无默认值
             // 访问列表元素时必须首先添加元素
             intList.Add(1);
-            Console.WriteLine("intList @ 0: " + intList[0]);
+            Console.WriteLine("intList at 0: " + intList[0]);
 
             // 其他数据结构：
             // Stack 堆栈 / Queue 队列
-            // Dictionary 字典 (哈希表的实现)
+            // Dictionary 字典 (一个哈希表的实现)
             // HashSet 哈希集合
             // Read-only Collections 只读集合
             // Tuple 元组 (.Net 4+)
 
             ///////////////////////////////////////
-            // 操作符
+            // 运算符
             ///////////////////////////////////////
             Console.WriteLine("\n->Operators");
 
             int i1 = 1, i2 = 2; // 声明多个变量的简写形式
 
-            // 算术直截了当
+            // 四则运算很直接
             Console.WriteLine(i1 + i2 - i1 * 3 / 7); // => 3
 
             // 取余
             Console.WriteLine("11%3 = " + (11 % 3)); // => 2
 
-            // 比较操作符
+            // 比较运算符
             Console.WriteLine("3 == 2? " + (3 == 2)); // => false
             Console.WriteLine("3 != 2? " + (3 != 2)); // => true
             Console.WriteLine("3 > 2? " + (3 > 2)); // => true
@@ -208,7 +216,7 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine("2 <= 2? " + (2 <= 2)); // => true
             Console.WriteLine("2 >= 2? " + (2 >= 2)); // => true
 
-            // 位操作符
+            // 位运算符
             /*
             ~       取反
             <<      左移（有符号）
@@ -231,7 +239,7 @@ on a new line! ""Wow!"", the masses cried";
             ///////////////////////////////////////
             Console.WriteLine("\n->Control Structures");
 
-            // 类似 C 的 if 语句
+            // 类似 C 语言的 if 语句
             int j = 10;
             if (j == 10)
             {
@@ -246,7 +254,7 @@ on a new line! ""Wow!"", the masses cried";
                 Console.WriteLine("I also don't");
             }
 
-            // 三元表达式
+            // 三元运算符
             // 简单的 if/else 语句可以写成：
             // <条件> ? <真> : <假>
             int toCompare = 17;
@@ -285,18 +293,18 @@ on a new line! ""Wow!"", the masses cried";
             // foreach 循环结构 => foreach(<迭代器类型> <迭代器> in <可枚举结构>)
             // foreach 循环适用于任何实现了 IEnumerable 或 IEnumerable<T> 的对象。
             // .Net 框架下的集合类型(数组, 列表, 字典...)
-            // 都实现了这些接口
-            // (下面的代码中，ToCharArray()可以删除，因为字符串同样实现了IEnumerable)
+            // 都实现了一个或多个这些接口
+            // (下面的代码中，ToCharArray()可以删除，因为字符串同样实现了 IEnumerable 接口)
             foreach (char character in "Hello World".ToCharArray())
             {
                 //迭代字符串中的所有字符
             }
 
-            // Switch 语句
+            // Switch Case 语句
             // switch 适用于 byte、short、char 和 int 数据类型。
-            // 同样适用于可枚举的类型
-            // 包括字符串类, 以及一些封装了原始值的类：
-            // Character、Byte、Short和Integer。
+            // 同样适用于可枚举的类型 (详见“枚举类型”部分),
+            // 包括字符串类型, 以及一些封装了以下基本类型的特殊类：
+            // Character、Byte、Short 和 Integer。
             int month = 3;
             string monthString;
             switch (month)
@@ -310,9 +318,9 @@ on a new line! ""Wow!"", the masses cried";
                 case 3:
                     monthString = "March";
                     break;
-                // 你可以一次匹配多个case语句
-                // 但是你在添加case语句后需要使用break
-                // （否则你需要显式地使用goto case x语句）
+                // 你可以一次匹配多个 case 语句
+                // 但是你在添加 case 语句后需要使用 break
+                // （否则你需要显式地使用 goto case x 语句）
                 case 6:
                 case 7:
                 case 8:
@@ -324,16 +332,16 @@ on a new line! ""Wow!"", the masses cried";
             }
 
             ///////////////////////////////////////
-            // 转换、指定数据类型
+            // 转换数据类型及类型转换
             ///////////////////////////////////////
 
-            // 转换类型
+            // 转换数据
 
             // 转换字符串为整数
             // 转换失败会抛出异常
             int.Parse("123"); // 返回整数类型的"123"
 
-            // TryParse 会尝试转换类型，失败时会返回缺省类型
+            // TryParse 会尝试转换类型，失败时会返回类型的默认值
             // 例如 0
             int tryInt;
             if (int.TryParse("123", out tryInt)) // Funciton is boolean
@@ -345,7 +353,7 @@ on a new line! ""Wow!"", the masses cried";
             // 比如 字符串 与 int 之间
 
             // 最佳方法
-            bool result = int.TryParse(string, out var integer)
+            bool result = int.TryParse(string, out var integer);
             int.Parse(string);
 
             // 不推荐
@@ -354,7 +362,7 @@ on a new line! ""Wow!"", the masses cried";
             // Int 到字符串
             tryInt.ToString();
 
-            // 转换
+            // 类型转换
             // 显式转换 decimal 类型的 15 为 int 类型
             // 然后隐式转换为 long 类型
             long x = (int) 15M;
@@ -367,14 +375,14 @@ on a new line! ""Wow!"", the masses cried";
         {
             // 参看文件尾部的对象声明
 
-            // 使用 new 初始化对象
+            // 使用 new 实例化一个类对象
             Bicycle trek = new Bicycle();
 
             // 调用对象的方法
             trek.SpeedUp(3); // 你应该一直使用 setter 和 getter 方法
             trek.Cadence = 100;
 
-            // 查看对象的信息.
+            // ToString 是一种用于显示此对象值的约定
             Console.WriteLine("trek info: " + trek.Info());
 
             // 实例化一个新的 Penny Farthing 对象
@@ -382,7 +390,7 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine("funbike info: " + funbike.Info());
 
             Console.Read();
-        } // 结束main方法
+        } // 结束 main 方法
 
         // record 在 C# 9 及以后可用, 这基本上是类的语法糖. record 对象是不可变的 immutable*.
         public record ARecord(string Csharp);
@@ -413,18 +421,18 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // 方法可以重名，只要方法签名不一样
-        // 一个只有返回值类型不同的方法
+        // 仅返回类型不同的方法并非唯一方法
         public static void MethodSignatures(
             ref int maxCount, // 通过引用传递
             out int count)
         {
-            // 通过 'count' 参数传入的值将在该方法外保留值 15
+            // 传入的参数 “count” 在函数外部将保持值为 15
             count = 15; // 必须在离开方法之前为 out 参数赋值
         }
 
         // 泛型
         // TKey 和 TValue 由用户调用方法时指定
-        // 以下函数模拟了 Python 的 SetDefault
+        // 以下函数模拟了 Python 的 dict.setdefault()
         public static TValue SetDefault<TKey, TValue>(
             IDictionary<TKey, TValue> dictionary,
             TKey key,
@@ -436,7 +444,7 @@ on a new line! ""Wow!"", the masses cried";
             return result;
         }
 
-        // 你可以限定传入值的范围
+        // 你可以限定传入对象的范围
         public static void IterateAndPrint<T>(T toPrint) where T: IEnumerable<int>
         {
             // 我们可以进行迭代，因为 T 是可枚举的
@@ -495,22 +503,22 @@ on a new line! ""Wow!"", the masses cried";
             int i = 3;
             i.Print(); // 参见下面的定义
 
-            // 可为 null 的类型 对数据库交互、返回值很有用
-            // 任何值类型 (i.e. 不为类) 添加后缀 ? 后会变为可为null的值
+            // 可空类型 对数据库交互、返回值很有用
+            // 任何值类型 (即不是类 class 的类型) 添加后缀 ? 后会变为可空类型
             // <类型>? <变量名> = <值>
             int? nullable = null; // Nullable<int> 的简写形式
             Console.WriteLine("Nullable variable: " + nullable);
-            bool hasValue = nullable.HasValue; // 不为null时返回真
+            bool hasValue = nullable.HasValue; // 不为 null 时返回真
 
             // ?? 是用于指定默认值的语法糖
-            // 以防变量为null的情况
+            // 以防变量为 null 的情况
             int notNullable = nullable ?? 0; // 0
 
-            // ?. 是另一个可空类型的操作符 - 简写 null 检查
+            // ?. 是另一个可空类型的运算符 - 简写 null 检查
             nullable?.Print(); // 当可空类型值不为 null 的时候调用 Print() 拓展方法
 
             // 变量类型推断 - 你可以让编译器推断变量类型:
-            var magic = "编译器确定magic是一个字符串，所以仍然是类型安全的";
+            var magic = "编译器确定 magic 是一个字符串，所以仍然是类型安全的";
             // magic = 9; // 不工作，因为magic是字符串，而不是整数。
 
             // 泛型
@@ -554,7 +562,7 @@ on a new line! ""Wow!"", the masses cried";
                 // 在 try 或 catch 之后执行
             }
 
-            // 可抛弃的资源管理 - 让你很容易地处理未托管的资源
+            // 可被清理的资源管理 - 让你很容易地处理未托管的资源
             // 大多数访问未托管资源 (文件句柄、设备上下文, etc.) 的对象
             // 都实现了 IDisposable 接口。
             // using语句会为你清理 IDisposable 对象
@@ -586,7 +594,7 @@ on a new line! ""Wow!"", the masses cried";
 
             // 动态对象（配合其他语言使用很方便）
             dynamic student = new ExpandoObject();
-            student.FirstName = "First Name"; // 不需要先定义类！
+            student.FirstName = "First Name"; // 不需要预先定义类！
 
             // 你甚至可以添加方法（接受一个字符串，输出一个字符串）
             student.Introduce = new Func<string, string>(
@@ -738,8 +746,8 @@ on a new line! ""Wow!"", the masses cried";
                     // 你也可以使用 `private` 关键词显式指定
         public string Name { get; set; }
 
-        // 当您想要一个仅返回表达式结果的只读属性时，
-        // 属性还具有特殊的语法
+        // 属性还有特殊的语法，用于创建只读属性
+        // 这会简单地返回表达式的结果
         public string LongName => Name + " " + _speed + " speed";
 
         // enum 枚举是一种值类型，由一组命名常量组成
@@ -758,9 +766,9 @@ on a new line! ""Wow!"", the masses cried";
 
         public BikeBrand Brand; // 声明一个 enum 类型之后，我们可以声明这个类型的字段
 
-        // 使用 FlagsAttribute 定义枚举，表示有多个值可以被匹配
+        // 使用 FlagsAttribute 特性定义枚举，表示有多个值可以被匹配
         // 任何从 Attribute 派生的类都可以用来修饰类型、方法、参数等
-        // 位运算符 & 和 | 可用于 和/或 操作
+        // 位运算符 & 和 | 可用于 与/或 操作
 
         [Flags]
         public enum BikeAccessories
@@ -777,10 +785,10 @@ on a new line! ""Wow!"", the masses cried";
         // 在 .NET 4 之前: (aBike.Accessories & Bicycle.BikeAccessories.Bell) == Bicycle.BikeAccessories.Bell
         public BikeAccessories Accessories { get; set; }
 
-        // 静态方法属于类型自身，不属于特定的对象
+        // 静态成员属于类型自身，不属于特定的对象
         // 你无需通过对象就可以访问他们
         // Console.WriteLine("Bicycles created: " + Bicycle.bicyclesCreated);
-        static public int BicyclesCreated = 0;
+        public static int BicyclesCreated { get; set; }
         
         // 只读值在运行时确定
         // 它们只能在声明或构造器内被赋值
@@ -861,8 +869,8 @@ on a new line! ""Wow!"", the masses cried";
         }
 
         // 还可以在对象上定义自定义索引器
-        // 尽管这在本例中并不完全有用, you
-        // 你可以使用 bicycle[0] 返回 "chris" 来获得第一项
+        // 尽管这在本例中并不完全有用, 
+        // 你可以使用 bicycle[0] 来获得第一项，返回 "chris" 
         // 或者 bicycle[1] = "lisa" 来设定值
         private string[] passengers = { "chris", "phil", "darren", "regina" };
 
@@ -897,12 +905,12 @@ on a new line! ""Wow!"", the masses cried";
         } // 如果你的类只需要静态成员，考虑将整个类作为静态类。
 
 
-    } //  Bicycle类结束
+    } //  Bicycle 类结束
 
     // PennyFarthing 是 Bicycle 的一个子类
     class PennyFarthing : Bicycle
     {
-        // (Penny Farthings是一种前轮很大的自行车。没有齿轮。）
+        // (Penny Farthings 是一种前轮很大的自行车。没有变速器。）
 
         // 调用父构造器
         public PennyFarthing(int startCadence, int startSpeed) :
@@ -918,7 +926,7 @@ on a new line! ""Wow!"", the masses cried";
             }
             set
             {
-                throw new ArgumentException("你不可能在 PennyFarthing 上切换齿轮");
+                throw new ArgumentException("你不可能在 PennyFarthing 上切换变速器");
             }
         }
 
@@ -1055,7 +1063,7 @@ on a new line! ""Wow!"", the masses cried";
             if (meters < 0)
                 // 新的 nameof() 表达式; 编译器将检查标识符是否存在
                 // nameof(x) == "x"
-                // 预防 例如 参数名称已更改但错误消息中未更新
+                // 例如 预防参数名称已更改但错误消息中未更新
                 throw new ArgumentException("Cannot jump negative amount!", nameof(meters));
 
             Damage += meters;
@@ -1065,9 +1073,9 @@ on a new line! ""Wow!"", the masses cried";
         public bool Broken
             => Damage > 100;
 
-        // ... 刚发
+        // ... 和方法
         public override string ToString()
-            // 插值字符串
+            // 字符串插值
             => $"{Name}. Damage taken: {Damage}";
 
         public string SummonGenie()
@@ -1128,12 +1136,12 @@ on a new line! ""Wow!"", the masses cried";
         [Obsolete("Use NewMethod instead", false)]
         public static void ObsoleteMethod()
         {
-            // obsolete code
+            // 过时的代码
         }
 
         public static void NewMethod()
         {
-            // new code
+            // 新的代码
         }
 
         public static void Main()
@@ -1249,7 +1257,7 @@ namespace Csharp7
         }
     }
 
-    // Reference 变量 / ref 局部变量
+    // 引用局部变量 (Reference Locals)
     // 允许返回对象的引用而不仅仅是其值
     class RefLocalsTest
     {
@@ -1277,7 +1285,7 @@ namespace Csharp7
         }
     }
 
-    // 本地函数 LOCAL FUNCTIONS
+    // 本地函数 (LOCAL FUNCTIONS)
     class LocalFunctionTest
     {
         private static int _id = 0;
@@ -1300,14 +1308,14 @@ namespace Csharp7
             Console.WriteLine($"{lf1.id}, {lf2.id}");  // => 0, 1
 
             int id = generateId();
-            // error CS0103: 当前上下文中不存在名称“generateId”
+            // error CS0103: 当前上下文中不存在名称 “generateId”
         }
     }
 }
 ```
 
 ## 没有涉及到的主题
-✨ 新的, 👍 旧的, 🎈 长期支持的, 🔥 跨平台的, 🎁 只支持Windows的
+✨ 新的, 👍 旧的, 🎈 长期支持的, 🔥 跨平台的, 🎁 只支持 Windows 的
 
  * 特性 Attributes
 
@@ -1332,7 +1340,7 @@ namespace Csharp7
 
  * [C# language reference](https://docs.microsoft.com/dotnet/csharp/language-reference/)
  * [Learn .NET](https://dotnet.microsoft.com/learn)
- * [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+ * [C# Coding Conventions](https://learn.microsoft.com/zh-cn/dotnet/csharp/fundamentals/coding-style/coding-conventions)
  * [DotNetPerls](http://www.dotnetperls.com)
  * [C# in Depth](http://manning.com/skeet2)
  * [Programming C# 5.0](http://shop.oreilly.com/product/0636920024064.do)
