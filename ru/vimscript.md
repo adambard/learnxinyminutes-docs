@@ -1,6 +1,6 @@
 ---
 name: Vimscript
-filename: learnvimscript.vim
+filename: learnvimscript-ru.vim
 contributors:
     - ["HiPhish", "http://hiphish.github.io/"]
 translators:
