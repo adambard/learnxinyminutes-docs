@@ -24,7 +24,7 @@ translators:
     - ["Dimitri Kokkonis", "https://github.com/kokkonisd"]
 ---
 
-Bash is a name of the unix shell, which was also distributed as the shell
+Bash is a name of the Unix shell, which was also distributed as the shell
 for the GNU operating system and as the default shell on most Linux distros.
 This tutorial was tested on Bash v5.3.
 Nearly all examples below can be a part of a shell script
