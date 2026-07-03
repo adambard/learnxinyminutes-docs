@@ -115,20 +115,20 @@ pub fn main() {
 
   // Int comparisons using variables to prevent compiler static analysis warnings
   let due = 2
-  let one = 1
-  let same_one = 1
-  let same_two = 2
-  let _ = echo two > one
-  let _ = echo two < one
-  let _ = echo two >= one
-  let _ = echo two <= one
+    let uno = 1
+    let stesso_uno = 1
+    let stesso_due = 2
+  let _ = echo due > uno
+  let _ = echo due < uno
+  let _ = echo due >= uno
+  let _ = echo due <= uno
 
   // L'uguaglianza funziona per qualsiasi tipo e viene verificata strutturalmente, il che significa che due
   // i valori sono uguali se hanno la stessa struttura anziché se sono uguali
   // la stessa posizione di memoria.
-  let _ = echo one == same_one
+  let _ = echo uno == stesso_uno
   // True
-  let _ = echo two != same_two
+  let _ = echo due != stesso_due
   // False
 
   // Funzioni int della libreria standard

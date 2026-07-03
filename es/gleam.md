@@ -572,7 +572,7 @@ fn mostrar_control_de_flujo() {
     <> case list.length(cachorros) {
       0 -> "Ninguno."
       1 -> "Solo uno."
-      otra_conteo -> "Tantos como " <> int.to_string(otra_conteo) <> " cachorros."
+      otro_conteo -> "Tantos como " <> int.to_string(otro_conteo) <> " cachorros."
     }
   }
   |> echo
