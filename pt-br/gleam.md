@@ -58,11 +58,11 @@ import gleam/dict
 // Quando a palavra-chave pub é usada, o alias do tipo é público e pode ser consultado
 // por outros módulos.
 
-pub type UserId =
+pub type IdUsuario =
   Int
 
 pub fn main() {
-  io.println("Hello from learnxinmyminutes.com!")
+  io.println("Ola de learnxinyminutes.com!")
   // io.println("Esta declaração foi comentada por um comentário de duas barras.!")
 
   // Módulos são as unidades nas quais todo o código Gleam é organizado.
@@ -89,11 +89,11 @@ pub fn main() {
   // 21 │   io.println(10)
   //  │              ^^
   //
-  // Expected type:
+  // Tipo esperado:
   //
   //     String
   //
-  // Found type:
+  // Tipo encontrado:
   //
   //     Int
 
@@ -106,7 +106,7 @@ pub fn main() {
 
   // Podemos usar `echo` para depurar a impressão de um valor.
 
-  // Int arithmetic
+  // Aritmetica de inteiros
   echo 1 + 1
   echo 5 - 1
   echo 5 / 2
@@ -134,7 +134,7 @@ pub fn main() {
   //Funções int da biblioteca padrão
   echo int.min(142, 137)
   // 137
-  echo int.clamp(-80, min: 0, max: 100) // clamp(value, min, max) especifica o valor que deve cair em determinado intervalo
+  echo int.clamp(-80, min: 0, max: 100) // clamp(valor, min, max) especifica o valor que deve cair em determinado intervalo
   // 0
   let _ = echo int.base_parse("10", 2) // analisa a string binária como um número inteiro de base 2. 
   // Ok(2) : 10 in binary equals to 2 in integer
@@ -150,7 +150,7 @@ pub fn main() {
   // Os operadores numéricos do Gleam não estão sobrecarregados, portanto existem
   // operadores para trabalhar com carros alegóricos.
 
-  // Float arithmetic
+  // Aritmetica de floats
   echo 1.0 +. 1.5
   echo 5.0 -. 1.5
   echo 5.0 /. 2.5
@@ -205,10 +205,10 @@ pub fn main() {
   // Aspas duplas podem ser escapadas
   io.println("\"X\" marks the spot")
 
-  // String concatenation
+  // Concatenacao de strings
   echo "One " <> "Two"
 
-  // String functions
+  // Funcoes de string
   echo string.reverse("1 2 3 4 5")
   echo "abc" <> "def"
 
@@ -224,7 +224,7 @@ pub fn main() {
   // \r - retorno de carro
   // \t - aba
 
-  // Bool operators
+  // Operadores booleanos
   // O || e os operadores && funcionam por curto-circuito
 
   echo True && False
@@ -239,12 +239,12 @@ pub fn main() {
   echo False || True
   // True
 
-  // Bool functions
+  // Funcoes booleanas
   echo bool.to_string(True)
   // "True"
 
   // Atribuições
-  let x = "Original value"
+  let x = "Original valor"
   echo x
 
   // Atribuir `y` ao valor de `x`
@@ -252,31 +252,31 @@ pub fn main() {
   echo y
 
   // Atribuir `x` a um novo valor
-  let x = "New value"
+  let x = "New valor"
   echo x
 
   // O `y` ainda se refere ao valor original
   echo y
 
   // No Gleam, os nomes de variáveis e funções são escritos em snake_case.
-  let answer_to_the_universe = 42
-  echo answer_to_the_universe
+    let resposta_do_universo = 42
+  echo resposta_do_universo
 
-  let and_everything = answer_to_the_universe
+    let e_todo_o_resto = resposta_do_universo
   // Agora, usar uma variável produz um aviso
 
   // warning: Unused variable
   //     ┌─ /home/contributor/learnxinmyminutes/src/learnxinmyminutes.gleam:199:7
   //     │
-  // 199 │   let and_everything = answer_to_the_universe
-  //     │       ^^^^^^^^^^^^^^ This variable is never used
-  // Hint: You can ignore it with an underscore: `_and_everything`.
+  // 199 │     let e_todo_o_resto = resposta_do_universo
+  //     │       ^^^^^^^^^^^^^^ Esta variavel nunca e usada
+  // Dica: voce pode ignora-la com um sublinhado: `_e_todo_o_resto`.
 
   // Digite anotações
 
-  let _name: String = "Gleam"
+    let _nome: String = "Gleam"
 
-  let _is_cool: Bool = True
+    let _e_legal: Bool = True
 
   let _version: Int = 1
   // Úteis para fins de documentação, mas não alteram a forma como o compilador
@@ -291,33 +291,33 @@ pub fn main() {
   //  219 │   let _has_wrong_type_annotation: Int = True
   //      │                                         ^^^^
   //
-  //  Expected type:
+  //  Tipo esperado:
   //
   //      Int
   //
-  //  Found type:
+  //  Tipo encontrado:
   //
   //      Bool
 
   // Aliases de tipo
-  let one: UserId = 1
+    let um: IdUsuario = 1
   // Consulte o início do arquivo para a definição do tipo UserId
 
-  let two: Int = 2
+    let dois: Int = 2
 
   // Aliases servem apenas para criar código mais legível e mais preciso
   //documentação.
   // Nos bastidores, eles ainda são valores do mesmo tipo, então as operações
   // ainda trabalho
-  echo one + two
+  echo um + dois
   // 3
 
   // Blocos: escopo e valor
   let radius = {
-    let value = 100.0
-    value
+    let valor = 100.0
+    valor
   }
-  // echo value // <- Isto não será compilado porque "value" está fora do escopo
+  // echo valor // <- Isto não será compilado porque "valor" está fora do escopo
 
   let area = 3.14159 *. radius *. radius
   echo area
@@ -331,45 +331,45 @@ pub fn main() {
   // Listas
 
   // Sobrinhos do Tio Patinhas
-  let nephews = ["Huey", "Dewey", "Louie"]
-  echo nephews
-  // ["Huey", "Dewey", "Louie"]
+    let sobrinhos = ["Huguinho", "Zezinho", "Luizinho"]
+  echo sobrinhos
+  // ["Huguinho", "Zezinho", "Luizinho"]
 
   // Anexar imutavelmente para que a lista original não seja alterada
-  echo ["Donald", ..nephews]
-  // ["Donald", "Huey", "Dewey", "Louie"]
+  echo ["Donald", ..sobrinhos]
+  // ["Donald", "Huguinho", "Zezinho", "Luizinho"]
 
   // Algumas funções de biblioteca padrão para listas
 
-  list.each(nephews, io.println)
-  // Huey
-  // Dewey
-  // Louie
+  list.each(sobrinhos, io.println)
+  // Huguinho
+  // Zezinho
+  // Luizinho
 
-  echo list.drop(nephews, 2)
-  // ["Louie"]
+  echo list.drop(sobrinhos, 2)
+  // ["Luizinho"]
 
-  more_examples()
-  more_function_examples()
-  generic_typing_examples()
-  beloved_pipelines_demo()
-  labels_in_function_calls()
-  showcase_flow_control()
-  more_on_recursion()
-  more_on_pattern_matching()
-  showcase_types()
-  more_on_types()
-  more_on_callbacks()
-  showcase_externals()
-  showcase_constants()
-  showcase_dicts()
-  showcase_bit_arrays()
-  showcase_opaque_types()
-  showcase_panic()
+  mais_exemplos()
+  mais_exemplos_funcoes()
+  exemplos_tipos_genericos()
+  demo_pipelines()
+  rotulos_em_chamadas()
+  mostrar_controle_de_fluxo()
+  mais_sobre_recursao()
+  mais_sobre_correspondencia_de_padroes()
+  mostrar_tipos()
+  mais_sobre_tipos()
+  mais_sobre_callbacks()
+  mostrar_externos()
+  mostrar_constantes()
+  mostrar_dicts()
+  mostrar_arrays_de_bits()
+  mostrar_tipos_opacos()
+  mostrar_panic()
 }
 
 // A palavra-chave fn é usada para definir novas funções.
-fn multiply(a: Int, b: Int) -> Int {
+fn multiplicar(a: Int, b: Int) -> Int {
   // Sem retorno explícito
   // A última expressão é retornada
   a * b
@@ -378,8 +378,8 @@ fn multiply(a: Int, b: Int) -> Int {
 // As funções dupla e multiplicada são definidas sem a palavra-chave pub.
 // Isso as torna funções privadas, elas só podem ser usadas dentro deste módulo.
 // Se outro módulo tentasse usá-los, isso resultaria em um erro do compilador.
-fn double(a: Int) -> Int {
-  multiply(a, 2)
+fn dobrar(a: Int) -> Int {
+  multiplicar(a, 2)
 }
 
 // Somente funções públicas são exportadas e podem ser chamadas de fora do módulo.
@@ -388,28 +388,28 @@ fn double(a: Int) -> Int {
 // mas são consideradas boas práticas para maior clareza e para encorajar
 // design intencional e pensativo.
 
-pub fn is_leap_year(year: Int) -> Bool {
-  { year % 4 == 0 } && { { year % 100 != 0 } || { year % 400 == 0 } }
+pub fn e_bissexto(ano: Int) -> Bool {
+  { ano % 4 == 0 } && { { ano % 100 != 0 } || { ano % 400 == 0 } }
 }
 
-fn more_examples() {
+fn mais_exemplos() {
   //Debug também retorna um valor, então sua saída é o valor de retorno de
   // esta função
-  echo double(10)
+  echo dobrar(10)
   // 20
-  echo is_leap_year(2000)
+  echo e_bissexto(2000)
   // True
 }
 
 // Gleam oferece suporte a funções de ordem superior:
 // Eles podem ser atribuídos a variáveis, passados como argumentos para outras funções
 // ou até mesmo ser retornados como valores de blocos ou outras funções
-fn call_func_on_int(func: fn(Int) -> Int, value: Int) -> Int {
-  func(value)
+fn chamar_funcao_com_inteiro(func: fn(Int) -> Int, valor: Int) -> Int {
+  func(valor)
 }
 
-fn more_function_examples() -> Int {
-  echo call_func_on_int(double, 2)
+fn mais_exemplos_funcoes() -> Int {
+  echo chamar_funcao_com_inteiro(dobrar, 2)
   // 4
 
   let square = fn(x: Int) -> Int { x * x }
@@ -421,7 +421,7 @@ fn more_function_examples() -> Int {
 
   // Exemplo de fechamento
   let make_adder = fn(n: Int) -> fn(Int) -> Int {
-    fn(argument: Int) -> Int { argument + n }
+    fn(argumento: Int) -> Int { argumento + n }
   }
 
   let adder_of_fives = make_adder(5)
@@ -429,59 +429,59 @@ fn more_function_examples() -> Int {
   // 15
 
   // Funções anônimas podem ser usadas de forma intercambiável com funções nomeadas.
-  echo call_func_on_int(fn(x: Int) -> Int { x + 100 }, 900)
+  echo chamar_funcao_com_inteiro(fn(x: Int) -> Int { x + 100 }, 900)
   // 1000
 
   // Vamos criar um decorador de função
-  let twice = fn(wrapped_func: fn(Int) -> Int) -> fn(Int) -> Int {
-    fn(argument: Int) -> Int { wrapped_func(wrapped_func(argument)) }
+  let twice = fn(funcao_envolvida: fn(Int) -> Int) -> fn(Int) -> Int {
+    fn(argumento: Int) -> Int { funcao_envolvida(funcao_envolvida(argumento)) }
   }
-  let quadruple = twice(double)
-  echo quadruple(1)
+    let quadruplo = twice(dobrar)
+    echo quadruplo(1)
 
-  let quadruple_2 = fn(a: Int) -> Int { multiply(4, a) }
-  echo quadruple_2(2)
+    let quadruplo_2 = fn(a: Int) -> Int { multiplicar(4, a) }
+  echo quadruplo_2(2)
   // 8
 
   // Uma captura de função é uma sintaxe abreviada para criar funções anônimas
   // que recebe um argumento e imediatamente chama outra função com esse
   // argumento
-  let quadruple_3 = multiply(4, _)
-  echo quadruple_3(4)
+    let quadruplo_3 = multiplicar(4, _)
+  echo quadruplo_3(4)
   // 16
 }
 
 // Funções genéricas são suportadas usando variáveis de tipo.
-fn generic_twice(func: fn(value) -> value, argument: value) -> value {
-  func(func(argument))
+fn dobro_generico(func: fn(valor) -> valor, argumento: valor) -> valor {
+  func(func(argumento))
 }
 
-// Em generic_twice o valor era a variável de tipo.
-// Em generic_twice_decorator the_type é a variável de tipo.
+// Em dobro_generico o valor era a variável de tipo.
+// Em decorador_dobro_generico the_type é a variável de tipo.
 // Como em qualquer outra variável você escolhe o nome.
-fn generic_twice_decorator(
+fn decorador_dobro_generico(
   func: fn(the_type) -> the_type,
 ) -> fn(the_type) -> the_type {
-  fn(argument: the_type) -> the_type { func(func(argument)) }
+  fn(argumento: the_type) -> the_type { func(func(argumento)) }
 }
 
-fn generic_typing_examples() {
-  let double_integers = fn(a: Int) -> Int { a * 2 }
-  let double_floats = fn(a: Float) -> Float { a *. 2.0 }
-  echo generic_twice(double_integers, 3)
-  echo generic_twice(double_floats, 3.0)
+fn exemplos_tipos_genericos() {
+  let dobrar_inteiros = fn(a: Int) -> Int { a * 2 }
+  let dobrar_floats = fn(a: Float) -> Float { a *. 2.0 }
+  echo dobro_generico(dobrar_inteiros, 3)
+  echo dobro_generico(dobrar_floats, 3.0)
 
-  let quadruple_integers = generic_twice_decorator(double_integers)
-  let quadruple_floats = generic_twice_decorator(double_floats)
-  echo quadruple_integers(1)
+  let quadruplo_inteiros = decorador_dobro_generico(dobrar_inteiros)
+  let quadruplo_floats = decorador_dobro_generico(dobrar_floats)
+  echo quadruplo_inteiros(1)
   // 4
-  echo quadruple_floats(1.0)
+  echo quadruplo_floats(1.0)
   // 4.0
 }
 
 // O operador pipe do Gleam |> pega o resultado da expressão à sua esquerda
 // e passa-o como argumento para a função à sua direita.
-fn beloved_pipelines_demo() {
+fn demo_pipelines() {
   // Sejamos honestos: você quer usar o Gleam apenas para esse operador legal, certo?
   ["hello", "world"]
   |> list.intersperse(" ")
@@ -500,7 +500,7 @@ fn beloved_pipelines_demo() {
 
   // Solução para o primeiro problema do Projeto Euler:
   // URL: https://projecteuler.net/problem=1
-  // Description: Find the sum of all the multiples of 3 and 5 below 1000.
+  // Descricao: encontre a soma de todos os multiplos de 3 e 5 abaixo de 1000.
   // Usando int.range de gleam/int para iterar de forma recursiva.
   int.range(from: 1, to: 999, with: 0, run: fn(acc, n) {
     case n % 3 == 0 || n % 5 == 0 {
@@ -509,44 +509,44 @@ fn beloved_pipelines_demo() {
     }
   })
   |> int.to_string
-  |> fn(sum_as_text: String) {
-    "Solution to Project Euler's problem #1: " <> sum_as_text
+  |> fn(soma_como_texto: String) {
+    "Solucao para o problema #1 do Project Euler: " <> soma_como_texto
   }
   |> echo
-  // Solution to Project Euler's problem #1: 233168
+  // Solucao para o problema #1 do Project Euler: 233168
 }
 
 // Rótulos podem ser adicionados antes de cada argumento
-fn call_func_on_int_with_labels(
-  func passed_func: fn(Int) -> Int,
-  value n: Int,
+fn chamar_funcao_com_inteiro_com_rotulos(
+  func funcao_passada: fn(Int) -> Int,
+  valor n: Int,
 ) -> Int {
-  passed_func(n)
+  funcao_passada(n)
 }
 
 // O rótulo e o argumento podem ter o mesmo nome
-fn add_one(number number: Int) -> Int {
-  number + 1
+fn somar_um(numero numero: Int) -> Int {
+  numero + 1
 }
 
-fn add_two_integers(first n: Int, second m: Int) -> Int {
+fn somar_dois_inteiros(primeiro n: Int, segundo m: Int) -> Int {
   n + m
 }
 
-fn labels_in_function_calls() -> Int {
+fn rotulos_em_chamadas() -> Int {
   //Como estamos rotulando os argumentos, podemos mudar a ordem
   // se quisermos
-  echo call_func_on_int_with_labels(value: 8, func: double)
-  echo add_one(number: 1)
+  echo chamar_funcao_com_inteiro_com_rotulos(valor: 8, func: dobrar)
+  echo somar_um(numero: 1)
   // 2
   echo string.contains(does: "theme", contain: "the")
   // True
   // Argumentos não rotulados devem ir primeiro
-  echo add_two_integers(2, second: 2)
+  echo somar_dois_inteiros(2, segundo: 2)
   // 4
 }
 
-fn showcase_flow_control() {
+fn mostrar_controle_de_fluxo() {
   // Caso de uso se você quiser usar correspondência de padrões para
   // selecione qual código executar.
   // A Gleam garantirá que todos os valores possíveis sejam cobertos
@@ -555,24 +555,24 @@ fn showcase_flow_control() {
   let puppies = ["Bear", "Frisco", "Ranger"]
   let count = list.length(of: puppies)
   {
-    "We have "
+    "Temos "
     <> int.to_string(count)
     <> " "
     <> // O sublinhado corresponde a qualquer outro valor
     case count {
-      1 -> "puppy"
-      _ -> "puppies"
+      1 -> "filhote"
+      _ -> "filhotes"
     }
   }
   |> echo
 
   // O Gleam permite que padrões em expressões case também atribuam variáveis.
   {
-    "Puppy count: "
+    "Quantidade de filhotes: "
     <> case list.length(puppies) {
-      0 -> "None."
-      1 -> "Just one."
-      other -> "As many as " <> int.to_string(other) <> " puppies."
+      0 -> "Nenhum."
+      1 -> "Apenas um."
+      other -> "Tantos quantos " <> int.to_string(other) <> " filhotes."
     }
   }
   |> echo
@@ -584,23 +584,23 @@ fn showcase_flow_control() {
   let answer = 42
   case answer == 42 {
     True -> {
-      echo "This is the answer to the universe."
+      echo "Esta e a resposta do universo."
     }
     False -> {
-      echo "This is the answer to something else."
+      echo "Esta e a resposta de outra coisa."
     }
   }
 
   // Use recursão em vez de loop
-  from_one_to_ten(1)
+  de_um_a_dez(1)
 }
 
 // Função recursiva
-fn from_one_to_ten(n: Int) {
+fn de_um_a_dez(n: Int) {
   echo n
   case n {
     10 -> Nil
-    _ -> from_one_to_ten(n + 1)
+    _ -> de_um_a_dez(n + 1)
   }
 }
 
@@ -610,52 +610,52 @@ fn from_one_to_ten(n: Int) {
 // o quadro de pilha para a função atual se uma chamada de função for
 // a última coisa que a função faz.
 
-pub fn fib(x: Int) -> Int {
+pub fn fibonacci(x: Int) -> Int {
   // A função pública chama a função recursiva de cauda privada
-  fib_loop(x, 1)
+  laco_fibonacci(x, 1)
 }
 
-fn fib_loop(x: Int, accumulator: Int) -> Int {
+fn laco_fibonacci(x: Int, acumulador: Int) -> Int {
   case x {
-    1 -> accumulator
+    1 -> acumulador
 
     // A última coisa que esta função faz é chamar a si mesma
     // Na lição anterior, a última coisa que fizemos foi multiplicar dois inteiros
-    _ -> fib_loop(x - 1, accumulator + x)
+    _ -> laco_fibonacci(x - 1, acumulador + x)
   }
 }
 
 // Gleam suporta correspondência de padrões do primeiro elemento e do restante
 //de uma lista com o padrão [x, ..y] dentro de uma expressão case.
-fn reverse_list(the_list: List(value)) -> List(value) {
-  case the_list {
-    [head, ..tail] -> list.flatten([reverse_list(tail), [head]])
+fn inverter_lista(a_lista: List(valor)) -> List(valor) {
+  case a_lista {
+    [head, ..tail] -> list.flatten([inverter_lista(tail), [head]])
     [] -> []
   }
 }
 
-fn more_on_recursion() {
-  echo fib(10)
+fn mais_sobre_recursao() {
+  echo fibonacci(10)
   // 55
-  echo reverse_list([1, 2, 3])
+  echo inverter_lista([1, 2, 3])
 }
 
-fn more_on_pattern_matching() {
+fn mais_sobre_correspondencia_de_padroes() {
   // Ao combinar padrões em strings, o operador <> corresponde a strings
   // com um prefixo específico e atribui o lembrete a uma variável
-  let lucy = "Hello, Lucy"
-  let _ = echo case lucy {
-    "Hello, " <> name -> "Greetings for " <> name
-    _ -> "Potentially no greetings"
+    let lucia = "Ola, Lucia"
+  let _ = echo case lucia {
+    "Ola, " <> nome -> "Saudacoes para " <> nome
+    _ -> "Talvez nao haja saudacoes"
   }
 
   // Padrões alternativos são suportados para que a mesma cláusula seja usada
   // para vários valores
   let month = 2
-  let year = 2024
+  let ano = 2024
   let number_of_days = case month {
     2 ->
-      case is_leap_year(year) {
+      case e_bissexto(ano) {
         False -> 28
         True -> 29
       }
@@ -663,14 +663,14 @@ fn more_on_pattern_matching() {
     1 | 3 | 5 | 7 | 8 | 10 | 12 -> 31
     _ -> 0
   }
-  echo "Number of days: " <> int.to_string(number_of_days)
+  echo "Numero de dias: " <> int.to_string(number_of_days)
   // 29
 
   // Protetores na correspondência de padrões:
   // Ao usar a palavra-chave if, uma expressão deve ser avaliada como True
   // para que o padrão corresponda.
-  let list_starts_with = fn(the_list: List(value), the_value: value) -> Bool {
-    case the_list {
+  let list_starts_with = fn(a_lista: List(valor), the_value: valor) -> Bool {
+    case a_lista {
       [head, ..] if head == the_value -> True
       _ -> False
     }
@@ -679,26 +679,26 @@ fn more_on_pattern_matching() {
   // True
 }
 
-pub type Gender {
-  Male
-  Female
-  Other
+pub type Genero {
+  Masculino
+  Feminino
+  Outro
 }
 
 // Registros:
 // - Variantes de suporte
 // - Cada variante é semelhante a uma estrutura com campos
-pub type Shape {
-  Rectangle(base: Float, height: Float)
-  Triangle(base: Float, height: Float)
+pub type Forma {
+  Retangulo(base: Float, height: Float)
+  Triangulo(base: Float, height: Float)
 }
 
 // Registros com uma variante se assemelham a estruturas
-pub type Point {
-  Point(x: Float, y: Float)
+pub type Ponto {
+  Ponto(x: Float, y: Float)
 }
 
-fn showcase_types() {
+fn mostrar_tipos() {
   // Tuplas:
   // - Pode misturar elementos de diferentes tipos
   // - Seu tipo está implícito, por ex. #{1, "Olá"} é do tipo #{Int, String}
@@ -714,139 +714,139 @@ fn showcase_types() {
   echo name <> " the " <> species
 
   // Correspondência de padrões com tuplas, incluindo atribuição de variáveis
-  let _ = print_mascot_status(tuple_02)
+  let _ = imprimir_estado_mascote(tuple_02)
 
   // Usando um tipo personalizado com correspondência de padrões
-  let gender = Other
-  let _ = echo gender_to_string(gender)
+    let genero = Outro
+  let _ = echo genero_para_string(genero)
 
   // Usando registros
-  let rectangle_1 = Rectangle(base: 10.0, height: 20.0)
+  let rectangle_1 = Retangulo(base: 10.0, height: 20.0)
   echo rectangle_1.height
   // 10.3
 
-  let point_1 = Point(x: 3.2, y: 4.3)
+  let point_1 = Ponto(x: 3.2, y: 4.3)
   echo point_1
 
   // Atualizando um registro
-  let point_2 = Point(..point_1, y: 5.7)
+  let point_2 = Ponto(..point_1, y: 5.7)
   echo point_2
 
   // No Gleam, os valores não são anuláveis.
   // Nil é o único valor desse tipo.
   let some_var = Nil
-  let result = io.println("Hello!")
+  let result = io.println("Ola!")
   echo some_var == result
   // True
 }
 
-fn print_mascot_status(mascot: #(Int, String, String, Bool)) {
-  case mascot {
-    #(_, name, _, True) -> echo name <> " is a mascot."
-    #(_, name, _, False) -> echo name <> " is not a mascot."
+fn imprimir_estado_mascote(mascote: #(Int, String, String, Bool)) {
+  case mascote {
+    #(_, name, _, True) -> echo name <> " e um mascote."
+    #(_, name, _, False) -> echo name <> " nao e um mascote."
   }
 }
 
-fn gender_to_string(gender: Gender) -> String {
-  case gender {
-    Male -> "Boy"
-    Female -> "Girl"
-    Other -> "Undetermined"
+fn genero_para_string(genero: Genero) -> String {
+  case genero {
+    Masculino -> "Masculino"
+    Feminino -> "Feminino"
+    Outro -> "Indeterminado"
   }
 }
 
 pub type Mineral {
-  Gold
-  Silver
-  Copper
+  Ouro
+  Prata
+  Cobre
 }
 
 // Tipos personalizados genéricos com tipos contidos como parâmetros
-pub type Purity(inner_type) {
-  Pure(inner_type)
-  Impure(inner_type)
+pub type Pureza(tipo_interno) {
+  Puro(tipo_interno)
+  Impuro(tipo_interno)
 }
 
-pub type Beverage {
-  Water
-  Juice
+pub type Bebida {
+  Agua
+  Suco
 }
 
 // Tipos personalizados existentes dos módulos gleam/option e gleam/result
 // facilitar o trabalho com valores anuláveis e o tratamento de possíveis erros
-pub type Person {
-  Person(name: String, nickname: Option(String))
+pub type Pessoa {
+  Pessoa(nome: String, apelido: Option(String))
 }
 
-pub type DiceError {
-  DiceValueOutOfRange
+pub type ErroDado {
+  ValorDadoForaDoIntervalo
 }
 
-fn checked_dice_value(value: Int) -> Result(Int, DiceError) {
-  case value {
-    1 | 2 | 3 | 4 | 5 | 6 -> Ok(value)
-    _ -> Error(DiceValueOutOfRange)
+fn valor_dado_verificado(valor: Int) -> Result(Int, ErroDado) {
+  case valor {
+    1 | 2 | 3 | 4 | 5 | 6 -> Ok(valor)
+    _ -> Error(ValorDadoForaDoIntervalo)
   }
 }
 
-fn double_dice_value(value: Int) -> Result(Int, DiceError) {
-  case value {
-    1 | 2 | 3 -> Ok(value * 2)
-    _ -> Error(DiceValueOutOfRange)
+fn dobrar_valor_dado(valor: Int) -> Result(Int, ErroDado) {
+  case valor {
+    1 | 2 | 3 -> Ok(valor * 2)
+    _ -> Error(ValorDadoForaDoIntervalo)
   }
 }
 
-fn more_on_types() {
-  let mineral_sample_01: Purity(Mineral) = Pure(Gold)
-  let mineral_sample_02 = Impure(Silver)
-  echo mineral_sample_01
-  echo mineral_sample_02
+fn mais_sobre_tipos() {
+    let amostra_mineral_01: Pureza(Mineral) = Puro(Ouro)
+    let amostra_mineral_02 = Impuro(Prata)
+  echo amostra_mineral_01
+  echo amostra_mineral_02
 
   // Um copo pode estar vazio ou não
-  let glass_01: Option(Beverage) = Some(Water)
-  let glass_02 = None
-  echo glass_01
-  echo glass_02
+    let copo_01: Option(Bebida) = Some(Agua)
+    let copo_02 = None
+  echo copo_01
+  echo copo_02
 
   // Uma pessoa pode ter um apelido ou não
-  let person_01 = Person(name: "John", nickname: Some("The Ripper"))
-  let person_02 = Person(name: "Martin", nickname: None)
-  echo person_01
-  echo person_02
+    let pessoa_01 = Pessoa(nome: "Joao", apelido: Some("O Estripador"))
+    let pessoa_02 = Pessoa(nome: "Martim", apelido: None)
+  echo pessoa_01
+  echo pessoa_02
 
   // Trabalhando com funções que retornam valores do tipo Result
-  let dice_01 = 5
-  case checked_dice_value(dice_01) {
-    Ok(checked_value) ->
-      echo "The value of " <> int.to_string(checked_value) <> " is OK."
-    Error(DiceValueOutOfRange) ->
-      echo "The value of the dice is out of range"
+    let dado_01 = 5
+  case valor_dado_verificado(dado_01) {
+    Ok(valor_verificado) ->
+      echo "O valor de " <> int.to_string(valor_verificado) <> " esta correto."
+    Error(ValorDadoForaDoIntervalo) ->
+      echo "O valor do dado esta fora do intervalo"
   }
 
   // Vamos tentar dobrar o valor se o valor resultante ainda for
   // um número em qualquer um dos lados do dado.
   // Caso contrário, vamos colocar o valor máximo.
   2
-  |> checked_dice_value
-  |> result.try(double_dice_value)
+  |> valor_dado_verificado
+  |> result.try(dobrar_valor_dado)
   |> result.unwrap(or: 6)
   |> echo
 }
 
-pub fn throw_dice_as_result() {
+pub fn lancar_dado_como_result() {
   Ok(int.random(6) + 1)
 }
 
-pub fn sum_dice_values(a: Int, b: Int) {
+pub fn somar_valores_dados(a: Int, b: Int) {
   Ok(a + b)
 }
 
 // Apostando em funções de primeira classe e correspondência de padrões
 // pode facilmente levar a toneladas de recuo
-fn roll_two_dices_without_use() {
-  result.try(throw_dice_as_result(), fn(first_dice) {
-    result.try(throw_dice_as_result(), fn(second_dice) {
-      sum_dice_values(first_dice, second_dice)
+fn lancar_dois_dados_sem_use() {
+    result.try(lancar_dado_como_result(), fn(primeiro_dado) {
+        result.try(lancar_dado_como_result(), fn(segundo_dado) {
+            somar_valores_dados(primeiro_dado, segundo_dado)
     })
   })
 }
@@ -858,50 +858,50 @@ fn roll_two_dices_without_use() {
 //   o operador <-
 // - Todo o código restante no bloco {} envolvente se torna o corpo do
 //   função de retorno de chamada.
-fn roll_two_dices_with_use() {
-  use first_dice <- result.try(throw_dice_as_result())
-  use second_dice <- result.try(throw_dice_as_result())
-  sum_dice_values(first_dice, second_dice)
+fn lancar_dois_dados_com_use() {
+    use primeiro_dado <- result.try(lancar_dado_como_result())
+    use segundo_dado <- result.try(lancar_dado_como_result())
+        somar_valores_dados(primeiro_dado, segundo_dado)
 }
 
-fn more_on_callbacks() {
-  let _ = echo roll_two_dices_without_use()
-  let _ = echo roll_two_dices_with_use()
+fn mais_sobre_callbacks() {
+  let _ = echo lancar_dois_dados_sem_use()
+  let _ = echo lancar_dois_dados_com_use()
   Nil
 }
 
 // Desde a v1.14.0, a anotação @external também pode ser usada em tipos externos para
 // aponte-os para os tipos Erlang ou TypeScript.
-pub type DateTime
+pub type DataHora
 
 // Funções externas devem anotar um tipo de retorno.
 // Esta função é definida apenas no alvo Erlang; compilando para JavaScript
 // exigiria um corpo substituto ou uma anotação @external(javascript, ...).
 @external(erlang, "calendar", "local_time")
-pub fn now() -> DateTime {
+pub fn agora() -> DataHora {
   todo
 }
 
-fn showcase_externals() {
-  let _ = echo now()
+fn mostrar_externos() {
+  let _ = echo agora()
   // #(#(2024, 4, 6), #(14, 4, 16))
   Nil
 }
 
 // Constantes em nível de módulo (suportadas desde v1.0.0, com lista anexada desde v1.16.0)
-pub const prime_numbers = [2, 3, 5]
-pub const more_primes = [7, 11, ..prime_numbers]
+pub const numeros_primos = [2, 3, 5]
+pub const mais_primos = [7, 11, ..numeros_primos]
 
-fn showcase_constants() {
-  let _ = echo prime_numbers
-  let _ = echo more_primes
+fn mostrar_constantes() {
+  let _ = echo numeros_primos
+  let _ = echo mais_primos
 
   //Desde a v1.17.0, você também pode usar `todo` dentro de declarações constantes:
   // pub const next_constant = todo
   Nil
 }
 
-fn showcase_dicts() {
+fn mostrar_dicts() {
   // Dicionários são coleções de valores-chave (stdlib v0.33.0)
   let scores = dict.new()
     |> dict.insert("Alice", 10)
@@ -914,7 +914,7 @@ fn showcase_dicts() {
   Nil
 }
 
-fn showcase_bit_arrays() {
+fn mostrar_arrays_de_bits() {
   // Matrizes de bits representam sequências de dados binários (stdlib v0.32.0)
   let binary_data = <<0x41, 0x42, 0x43>> // "ABC" em ASCII
   let _ = echo binary_data
@@ -930,37 +930,37 @@ fn showcase_bit_arrays() {
 
 // Tipos opacos são tipos cujos construtores são privados do módulo de definição,
 // habilitando o encapsulamento e ocultando detalhes de implementação.
-pub opaque type EncryptedData {
-  EncryptedData(value: String)
+pub opaque type DadoCriptografado {
+  DadoCriptografado(valor: String)
 }
 
-pub fn encrypt(data: String) -> EncryptedData {
-  EncryptedData(data <> "_encrypted")
+pub fn criptografar(dado: String) -> DadoCriptografado {
+  DadoCriptografado(dado <> "_criptografado")
 }
 
-fn showcase_opaque_types() {
-  let secret = encrypt("my_password")
-  // Podemos passar o segredo, mas não podemos combinar padrões em EncryptedData
-  // ou acesse seu campo .value de fora deste módulo.
-  let _ = echo secret
+fn mostrar_tipos_opacos() {
+    let segredo = criptografar("minha_senha")
+  // Podemos passar o segredo, mas não podemos combinar padrões em DadoCriptografado
+  // ou acesse seu campo .valor de fora deste módulo.
+  let _ = echo segredo
   Nil
 }
 
-fn showcase_panic() {
+fn mostrar_panic() {
   // Podemos abortar deliberadamente a execução usando a palavra-chave panic
   // para fazer nosso programa travar imediatamente
   let three = 3
   let two = 2
   case three == two {
-    True -> panic as "The equality operator is broken!"
-    False -> "Equality operator works for integers"
+    True -> panic as "O operador de igualdade esta quebrado!"
+    False -> "O operador de igualdade funciona para inteiros"
   }
   // Chamar uma função que usa a palavra-chave todo também trava
   // lição de casa()
 }
 
-pub fn homework() {
-  todo as "This function is not implemented yet"
+pub fn tarefa() {
+  todo as "Esta funcao ainda nao foi implementada"
 }
 ```
 
