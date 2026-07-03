@@ -27,8 +27,8 @@ con fiducia, anche dall'esterno.
 Per eseguire questo codice, crea prima un progetto Gleam:
 
 ```sh
-gleam new my_project
-cd my_project
+gleam new mio_progetto
+cd mio_progetto
 ```
 
 Sostituisci il codice generato con questo esempio ed esegui:
