@@ -1,5 +1,5 @@
 ---
-name: Gleam
+nome: Gleam
 contributors:
     - ["Antonio Ognio", "https://github.com/aognio/"]
 filename: learngleam.gleam
@@ -114,7 +114,7 @@ pub fn main() {
   echo 5 % 2
 
   // Int comparisons using variables to prevent compiler static analysis warnings
-  let two = 2
+  let dois = 2
   let one = 1
   let same_one = 1
   let same_two = 2
@@ -157,12 +157,12 @@ pub fn main() {
   echo 3.0 *. 3.5
 
   // Float comparisons using variables to prevent compiler static analysis warnings
-  let two_point_two = 2.2
-  let one_point_three = 1.3
-  let _ = echo two_point_two >. one_point_three
-  let _ = echo two_point_two <. one_point_three
-  let _ = echo two_point_two >=. one_point_three
-  let _ = echo two_point_two <=. one_point_three
+  let dois_ponto_dois = 2.2
+  let um_ponto_tres = 1.3
+  let _ = echo dois_ponto_dois >. um_ponto_tres
+  let _ = echo dois_ponto_dois <. um_ponto_tres
+  let _ = echo dois_ponto_dois >=. um_ponto_tres
+  let _ = echo dois_ponto_dois <=. um_ponto_tres
 
   // Os floats são representados como números de ponto flutuante de 64 bits no Erlang
   // e tempos de execução JavaScript.
@@ -203,7 +203,7 @@ pub fn main() {
   // Produz um smiley 😀
 
   // Aspas duplas podem ser escapadas
-  io.println("\"X\" marks the spot")
+  io.println("\"X\" marca o local")
 
   // Concatenacao de strings
   echo "One " <> "Two"
@@ -259,16 +259,16 @@ pub fn main() {
   echo y
 
   // No Gleam, os nomes de variáveis e funções são escritos em snake_case.
-    let resposta_do_universo = 42
-  echo resposta_do_universo
+    let respuesta_do_universo = 42
+  echo respuesta_do_universo
 
-    let e_todo_o_resto = resposta_do_universo
+    let e_todo_o_resto = respuesta_do_universo
   // Agora, usar uma variável produz um aviso
 
   // warning: Unused variable
   //     ┌─ /home/contributor/learnxinmyminutes/src/learnxinmyminutes.gleam:199:7
   //     │
-  // 199 │     let e_todo_o_resto = resposta_do_universo
+  // 199 │     let e_todo_o_resto = respuesta_do_universo
   //     │       ^^^^^^^^^^^^^^ Esta variavel nunca e usada
   // Dica: voce pode ignora-la com um sublinhado: `_e_todo_o_resto`.
 
@@ -313,13 +313,13 @@ pub fn main() {
   // 3
 
   // Blocos: escopo e valor
-  let radius = {
+  let raio = {
     let valor = 100.0
     valor
   }
   // echo valor // <- Isto não será compilado porque "valor" está fora do escopo
 
-  let area = 3.14159 *. radius *. radius
+  let area = 3.14159 *. raio *. raio
   echo area
 
   // Use blocos para agrupar operações em vez de parênteses
@@ -412,20 +412,20 @@ fn mais_exemplos_funcoes() -> Int {
   echo chamar_funcao_com_inteiro(dobrar, 2)
   // 4
 
-  let square = fn(x: Int) -> Int { x * x }
-  echo square(3)
+  let quadrado = fn(x: Int) -> Int { x * x }
+  echo quadrado(3)
   // 9
 
   // Chamar uma função anônima imediatamente após defini-la
   echo fn(x: Int) { x + 1 }(1)
 
   // Exemplo de fechamento
-  let make_adder = fn(n: Int) -> fn(Int) -> Int {
+  let criar_somador = fn(n: Int) -> fn(Int) -> Int {
     fn(argumento: Int) -> Int { argumento + n }
   }
 
-  let adder_of_fives = make_adder(5)
-  echo adder_of_fives(10)
+  let sumadora_de_cincos = criar_somador(5)
+  echo sumadora_de_cincos(10)
   // 15
 
   // Funções anônimas podem ser usadas de forma intercambiável com funções nomeadas.
@@ -433,10 +433,10 @@ fn mais_exemplos_funcoes() -> Int {
   // 1000
 
   // Vamos criar um decorador de função
-  let twice = fn(funcao_envolvida: fn(Int) -> Int) -> fn(Int) -> Int {
+  let duas_vezes = fn(funcao_envolvida: fn(Int) -> Int) -> fn(Int) -> Int {
     fn(argumento: Int) -> Int { funcao_envolvida(funcao_envolvida(argumento)) }
   }
-    let quadruplo = twice(dobrar)
+    let quadruplo = duas_vezes(dobrar)
     echo quadruplo(1)
 
     let quadruplo_2 = fn(a: Int) -> Int { multiplicar(4, a) }
@@ -483,7 +483,7 @@ fn exemplos_tipos_genericos() {
 // e passa-o como argumento para a função à sua direita.
 fn demo_pipelines() {
   // Sejamos honestos: você quer usar o Gleam apenas para esse operador legal, certo?
-  ["hello", "world"]
+  ["ola", "mundo"]
   |> list.intersperse(" ")
   |> list.append(["!"])
   |> string.concat
@@ -494,7 +494,7 @@ fn demo_pipelines() {
   echo 
     string.capitalise(
       string.concat(
-        list.append(list.intersperse(["hello", "world"], " "), ["!"]),
+        list.append(list.intersperse(["ola", "mundo"], " "), ["!"]),
       ),
     )
 
@@ -502,10 +502,10 @@ fn demo_pipelines() {
   // URL: https://projecteuler.net/problem=1
   // Descricao: encontre a soma de todos os multiplos de 3 e 5 abaixo de 1000.
   // Usando int.range de gleam/int para iterar de forma recursiva.
-  int.range(from: 1, to: 999, with: 0, run: fn(acc, n) {
+  int.range(from: 1, to: 999, with: 0, run: fn(acum, n) {
     case n % 3 == 0 || n % 5 == 0 {
-      True -> acc + n
-      False -> acc
+      True -> acum + n
+      False -> acum
     }
   })
   |> int.to_string
@@ -539,7 +539,7 @@ fn rotulos_em_chamadas() -> Int {
   echo chamar_funcao_com_inteiro_com_rotulos(valor: 8, func: dobrar)
   echo somar_um(numero: 1)
   // 2
-  echo string.contains(does: "theme", contain: "the")
+  echo string.contains(does: "tema", contain: "te")
   // True
   // Argumentos não rotulados devem ir primeiro
   echo somar_dois_inteiros(2, segundo: 2)
@@ -552,14 +552,14 @@ fn mostrar_controle_de_fluxo() {
   // A Gleam garantirá que todos os valores possíveis sejam cobertos
   // realizando verificações de exaustividade.
   // Caso contrário, você receberá erros de compilação.
-  let puppies = ["Bear", "Frisco", "Ranger"]
-  let count = list.length(of: puppies)
+  let filhotes = ["Bear", "Frisco", "Ranger"]
+  let conteo = list.length(of: filhotes)
   {
     "Temos "
-    <> int.to_string(count)
+    <> int.to_string(conteo)
     <> " "
     <> // O sublinhado corresponde a qualquer outro valor
-    case count {
+    case conteo {
       1 -> "filhote"
       _ -> "filhotes"
     }
@@ -569,10 +569,10 @@ fn mostrar_controle_de_fluxo() {
   // O Gleam permite que padrões em expressões case também atribuam variáveis.
   {
     "Quantidade de filhotes: "
-    <> case list.length(puppies) {
+    <> case list.length(filhotes) {
       0 -> "Nenhum."
       1 -> "Apenas um."
-      other -> "Tantos quantos " <> int.to_string(other) <> " filhotes."
+      outra_conteo -> "Tantos quantos " <> int.to_string(outra_conteo) <> " filhotes."
     }
   }
   |> echo
@@ -581,13 +581,13 @@ fn mostrar_controle_de_fluxo() {
   // portanto, não há construções if, for ou while disponíveis.
 
   // Use correspondência de padrões para condicionais
-  let answer = 42
-  case answer == 42 {
+  let respuesta = 42
+  case respuesta == 42 {
     True -> {
-      echo "Esta e a resposta do universo."
+      echo "Esta e a respuesta do universo."
     }
     False -> {
-      echo "Esta e a resposta de outra coisa."
+      echo "Esta e a respuesta de outra coisa."
     }
   }
 
@@ -629,7 +629,7 @@ fn laco_fibonacci(x: Int, acumulador: Int) -> Int {
 //de uma lista com o padrão [x, ..y] dentro de uma expressão case.
 fn inverter_lista(a_lista: List(valor)) -> List(valor) {
   case a_lista {
-    [head, ..tail] -> list.flatten([inverter_lista(tail), [head]])
+    [cabecera, ..cola] -> list.flatten([inverter_lista(cola), [cabecera]])
     [] -> []
   }
 }
@@ -651,9 +651,9 @@ fn mais_sobre_correspondencia_de_padroes() {
 
   // Padrões alternativos são suportados para que a mesma cláusula seja usada
   // para vários valores
-  let month = 2
+  let mes = 2
   let ano = 2024
-  let number_of_days = case month {
+  let numero_de_dias = case mes {
     2 ->
       case e_bissexto(ano) {
         False -> 28
@@ -663,19 +663,19 @@ fn mais_sobre_correspondencia_de_padroes() {
     1 | 3 | 5 | 7 | 8 | 10 | 12 -> 31
     _ -> 0
   }
-  echo "Numero de dias: " <> int.to_string(number_of_days)
+  echo "Numero de dias: " <> int.to_string(numero_de_dias)
   // 29
 
   // Protetores na correspondência de padrões:
   // Ao usar a palavra-chave if, uma expressão deve ser avaliada como True
   // para que o padrão corresponda.
-  let list_starts_with = fn(a_lista: List(valor), the_value: valor) -> Bool {
+  let lista_empieza_con = fn(a_lista: List(valor), o_valor: valor) -> Bool {
     case a_lista {
-      [head, ..] if head == the_value -> True
+      [cabecera, ..] if cabecera == o_valor -> True
       _ -> False
     }
   }
-  echo list_starts_with([10, 20, 30], 10)
+  echo lista_empieza_con([10, 20, 30], 10)
   // True
 }
 
@@ -689,8 +689,8 @@ pub type Genero {
 // - Variantes de suporte
 // - Cada variante é semelhante a uma estrutura com campos
 pub type Forma {
-  Retangulo(base: Float, height: Float)
-  Triangulo(base: Float, height: Float)
+  Retangulo(base: Float, altura: Float)
+  Triangulo(base: Float, altura: Float)
 }
 
 // Registros com uma variante se assemelham a estruturas
@@ -703,47 +703,47 @@ fn mostrar_tipos() {
   // - Pode misturar elementos de diferentes tipos
   // - Seu tipo está implícito, por ex. #{1, "Olá"} é do tipo #{Int, String}
   // - Seus elementos podem ser acessados por índices numéricos
-  let tuple_01 = #(1, "Ferris", "rustacean", True)
-  let tuple_02 = #(1, "Lucy", "starfish", True)
-  echo tuple_01
-  echo tuple_01.0
+  let tupla_01 = #(1, "Ferris", "crustaceo", True)
+  let tupla_02 = #(1, "Lucia", "estrela_do_mar", True)
+  echo tupla_01
+  echo tupla_01.0
   // 1
-  echo tuple_02.1
+  echo tupla_02.1
   // Lúcia
-  let #(_, name, species, _) = tuple_01
-  echo name <> " the " <> species
+  let #(_, nome, especie, _) = tupla_01
+  echo nome <> " o " <> especie
 
   // Correspondência de padrões com tuplas, incluindo atribuição de variáveis
-  let _ = imprimir_estado_mascote(tuple_02)
+  let _ = imprimir_estado_mascote(tupla_02)
 
   // Usando um tipo personalizado com correspondência de padrões
     let genero = Outro
   let _ = echo genero_para_string(genero)
 
   // Usando registros
-  let rectangle_1 = Retangulo(base: 10.0, height: 20.0)
-  echo rectangle_1.height
+  let retangulo_1 = Retangulo(base: 10.0, altura: 20.0)
+  echo retangulo_1.altura
   // 10.3
 
-  let point_1 = Ponto(x: 3.2, y: 4.3)
-  echo point_1
+  let ponto_1 = Ponto(x: 3.2, y: 4.3)
+  echo ponto_1
 
   // Atualizando um registro
-  let point_2 = Ponto(..point_1, y: 5.7)
-  echo point_2
+  let ponto_2 = Ponto(..ponto_1, y: 5.7)
+  echo ponto_2
 
   // No Gleam, os valores não são anuláveis.
   // Nil é o único valor desse tipo.
-  let some_var = Nil
-  let result = io.println("Ola!")
-  echo some_var == result
+  let alguma_variavel = Nil
+    let resultado = io.println("Ola!")
+  echo alguma_variavel == resultado
   // True
 }
 
 fn imprimir_estado_mascote(mascote: #(Int, String, String, Bool)) {
   case mascote {
-    #(_, name, _, True) -> echo name <> " e um mascote."
-    #(_, name, _, False) -> echo name <> " nao e um mascote."
+    #(_, nome, _, True) -> echo nome <> " e um mascote."
+    #(_, nome, _, False) -> echo nome <> " nao e um mascote."
   }
 }
 
@@ -833,7 +833,7 @@ fn mais_sobre_tipos() {
   |> echo
 }
 
-pub fn lancar_dado_como_result() {
+pub fn lancar_dado_como_resultado() {
   Ok(int.random(6) + 1)
 }
 
@@ -844,8 +844,8 @@ pub fn somar_valores_dados(a: Int, b: Int) {
 // Apostando em funções de primeira classe e correspondência de padrões
 // pode facilmente levar a toneladas de recuo
 fn lancar_dois_dados_sem_use() {
-    result.try(lancar_dado_como_result(), fn(primeiro_dado) {
-        result.try(lancar_dado_como_result(), fn(segundo_dado) {
+    result.try(lancar_dado_como_resultado(), fn(primeiro_dado) {
+        result.try(lancar_dado_como_resultado(), fn(segundo_dado) {
             somar_valores_dados(primeiro_dado, segundo_dado)
     })
   })
@@ -859,8 +859,8 @@ fn lancar_dois_dados_sem_use() {
 // - Todo o código restante no bloco {} envolvente se torna o corpo do
 //   função de retorno de chamada.
 fn lancar_dois_dados_com_use() {
-    use primeiro_dado <- result.try(lancar_dado_como_result())
-    use segundo_dado <- result.try(lancar_dado_como_result())
+    use primeiro_dado <- result.try(lancar_dado_como_resultado())
+    use segundo_dado <- result.try(lancar_dado_como_resultado())
         somar_valores_dados(primeiro_dado, segundo_dado)
 }
 
@@ -903,28 +903,28 @@ fn mostrar_constantes() {
 
 fn mostrar_dicts() {
   // Dicionários são coleções de valores-chave (stdlib v0.33.0)
-  let scores = dict.new()
-    |> dict.insert("Alice", 10)
-    |> dict.insert("Bob", 15)
+  let puntajes = dict.new()
+    |> dict.insert("Aline", 10)
+    |> dict.insert("Beto", 15)
 
-  let _ = echo dict.get(scores, "Alice")
+    let _ = echo dict.get(puntajes, "Aline")
   // Ok(10)
-  let _ = echo dict.get(scores, "Charlie")
+    let _ = echo dict.get(puntajes, "Carlos")
   // Error(Nil)
   Nil
 }
 
 fn mostrar_arrays_de_bits() {
   // Matrizes de bits representam sequências de dados binários (stdlib v0.32.0)
-  let binary_data = <<0x41, 0x42, 0x43>> // "ABC" em ASCII
-  let _ = echo binary_data
+  let dados_em_binario = <<0x41, 0x42, 0x43>> // "ABC" em ASCII
+  let _ = echo dados_em_binario
 
   // No Gleam, a correspondência de padrões com `let` deve ser exaustiva (deve cobrir todos
   // valores possíveis). Se um padrão não corresponder em tempo de execução, devemos usar
   // `let assert` em vez de `let`. Se o match falhar, o programa entra em pânico:
-  let assert <<first_byte, rest:bytes>> = binary_data
-  let _ = echo first_byte // 65
-  let _ = echo rest // <<66, 67>>
+  let assert <<primeiro_byte, resto:bytes>> = dados_em_binario
+  let _ = echo primeiro_byte // 65
+  let _ = echo resto // <<66, 67>>
   Nil
 }
 
@@ -949,9 +949,9 @@ fn mostrar_tipos_opacos() {
 fn mostrar_panic() {
   // Podemos abortar deliberadamente a execução usando a palavra-chave panic
   // para fazer nosso programa travar imediatamente
-  let three = 3
-  let two = 2
-  case three == two {
+    let tres = 3
+  let dois = 2
+    case tres == dois {
     True -> panic as "O operador de igualdade esta quebrado!"
     False -> "O operador de igualdade funciona para inteiros"
   }

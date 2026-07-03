@@ -1,5 +1,5 @@
 ---
-name: Gleam
+nome: Gleam
 contributors:
     - ["Antonio Ognio", "https://github.com/aognio/"]
 filename: learngleam.gleam
@@ -114,7 +114,7 @@ pub fn main() {
   echo 5 % 2
 
   // Int comparisons using variables to prevent compiler static analysis warnings
-  let two = 2
+  let due = 2
   let one = 1
   let same_one = 1
   let same_two = 2
@@ -157,12 +157,12 @@ pub fn main() {
   echo 3.0 *. 3.5
 
   // Float comparisons using variables to prevent compiler static analysis warnings
-  let two_point_two = 2.2
-  let one_point_three = 1.3
-  let _ = echo two_point_two >. one_point_three
-  let _ = echo two_point_two <. one_point_three
-  let _ = echo two_point_two >=. one_point_three
-  let _ = echo two_point_two <=. one_point_three
+  let due_punto_due = 2.2
+  let uno_punto_tre = 1.3
+  let _ = echo due_punto_due >. uno_punto_tre
+  let _ = echo due_punto_due <. uno_punto_tre
+  let _ = echo due_punto_due >=. uno_punto_tre
+  let _ = echo due_punto_due <=. uno_punto_tre
 
   // I float sono rappresentati come numeri in virgola mobile a 64 bit su entrambi gli Erlang
   // e runtime JavaScript.
@@ -203,7 +203,7 @@ pub fn main() {
   // Emette una faccina 😀
 
   // È possibile evitare le doppie virgolette
-  io.println("\"X\" marks the spot")
+  io.println("\"X\" segna il punto")
 
   // Concatenazione di stringhe
   echo "One " <> "Two"
@@ -259,16 +259,16 @@ pub fn main() {
   echo y
 
   // In Gleam i nomi delle variabili e delle funzioni sono scritti in snake_case.
-    let risposta_dell_universo = 42
-  echo risposta_dell_universo
+    let respuesta_dell_universo = 42
+  echo respuesta_dell_universo
 
-    let e_tutto_il_resto = risposta_dell_universo
+    let e_tutto_il_resto = respuesta_dell_universo
   // Ora l'utilizzo di una variabile produce un avviso
 
   // warning: Unused variable
   //     ┌─ /home/contributor/learnxinmyminutes/src/learnxinmyminutes.gleam:199:7
   //     │
-  // 199 │     let e_tutto_il_resto = risposta_dell_universo
+  // 199 │     let e_tutto_il_resto = respuesta_dell_universo
   //     │       ^^^^^^^^^^^^^^ Questa variabile non viene mai usata
   // Suggerimento: puoi ignorarla con un trattino basso: `_e_tutto_il_resto`.
 
@@ -313,13 +313,13 @@ pub fn main() {
   // 3
 
   // Blocchi: ambito e valore
-  let radius = {
+  let raggio = {
     let valore = 100.0
     valore
   }
   //echo valore // <- Questo non verrà compilato perché "valore" non rientra nell'ambito
 
-  let area = 3.14159 *. radius *. radius
+  let area = 3.14159 *. raggio *. raggio
   echo area
 
   // Utilizza i blocchi per raggruppare le operazioni anziché le parentesi
@@ -412,20 +412,20 @@ fn altri_esempi_funzioni() -> Int {
   echo chiama_funzione_su_intero(raddoppia, 2)
   // 4
 
-  let square = fn(x: Int) -> Int { x * x }
-  echo square(3)
+  let quadrato = fn(x: Int) -> Int { x * x }
+  echo quadrato(3)
   // 9
 
   // Chiamare una funzione anonima immediatamente dopo averla definita
   echo fn(x: Int) { x + 1 }(1)
 
   // Esempio di chiusura
-  let make_adder = fn(n: Int) -> fn(Int) -> Int {
+  let crea_sommatore = fn(n: Int) -> fn(Int) -> Int {
     fn(argomento: Int) -> Int { argomento + n }
   }
 
-  let adder_of_fives = make_adder(5)
-  echo adder_of_fives(10)
+  let sumadora_de_cincos = crea_sommatore(5)
+  echo sumadora_de_cincos(10)
   // 15
 
   // Le funzioni anonime possono essere utilizzate in modo intercambiabile con le funzioni denominate.
@@ -433,10 +433,10 @@ fn altri_esempi_funzioni() -> Int {
   // 1000
 
   // Creiamo un decoratore di funzioni
-  let twice = fn(funzione_avvolta: fn(Int) -> Int) -> fn(Int) -> Int {
+  let due_volte = fn(funzione_avvolta: fn(Int) -> Int) -> fn(Int) -> Int {
     fn(argomento: Int) -> Int { funzione_avvolta(funzione_avvolta(argomento)) }
   }
-    let quadruplo = twice(raddoppia)
+    let quadruplo = due_volte(raddoppia)
     echo quadruplo(1)
 
     let quadruplo_2 = fn(a: Int) -> Int { moltiplica(4, a) }
@@ -483,7 +483,7 @@ fn esempi_tipi_generici() {
 // e lo passa come argomento alla funzione alla sua destra.
 fn demo_pipeline() {
   // Siamo onesti: vuoi usare Gleam solo per questo fantastico operatore, giusto?
-  ["hello", "world"]
+  ["ciao", "mondo"]
   |> list.intersperse(" ")
   |> list.append(["!"])
   |> string.concat
@@ -494,7 +494,7 @@ fn demo_pipeline() {
   echo 
     string.capitalise(
       string.concat(
-        list.append(list.intersperse(["hello", "world"], " "), ["!"]),
+        list.append(list.intersperse(["ciao", "mondo"], " "), ["!"]),
       ),
     )
 
@@ -502,10 +502,10 @@ fn demo_pipeline() {
   // URL: https://projecteuler.net/problem=1
   // Descrizione: trova la somma di tutti i multipli di 3 e 5 inferiori a 1000.
   // Utilizzando int.range da gleam/int per iterare in modo ricorsivo.
-  int.range(from: 1, to: 999, with: 0, run: fn(acc, n) {
+  int.range(from: 1, to: 999, with: 0, run: fn(accum, n) {
     case n % 3 == 0 || n % 5 == 0 {
-      True -> acc + n
-      False -> acc
+      True -> accum + n
+      False -> accum
     }
   })
   |> int.to_string
@@ -539,7 +539,7 @@ fn etichette_nelle_chiamate() -> Int {
   echo chiama_funzione_su_intero_con_etichette(valore: 8, func: raddoppia)
   echo aggiungi_uno(numero: 1)
   // 2
-  echo string.contains(does: "theme", contain: "the")
+  echo string.contains(does: "tema", contain: "te")
   // True
   // Gli argomenti senza etichetta devono essere preceduti
   echo somma_due_interi(2, secondo: 2)
@@ -552,14 +552,14 @@ fn mostra_controllo_di_flusso() {
   // Gleam si assicurerà che tutti i valori possibili siano coperti
   // effettuando controlli di esaustività.
   // Altrimenti ottieni errori di compilazione.
-  let puppies = ["Bear", "Frisco", "Ranger"]
-  let count = list.length(of: puppies)
+  let cuccioli = ["Bear", "Frisco", "Ranger"]
+  let conteo = list.length(of: cuccioli)
   {
     "Abbiamo "
-    <> int.to_string(count)
+    <> int.to_string(conteo)
     <> " "
     <> // Il carattere di sottolineatura corrisponde a qualsiasi altro valore
-    case count {
+    case conteo {
       1 -> "cucciolo"
       _ -> "cuccioli"
     }
@@ -569,10 +569,10 @@ fn mostra_controllo_di_flusso() {
   // Gleam consente ai modelli nelle espressioni maiuscole e minuscole di assegnare anche variabili.
   {
     "Numero di cuccioli: "
-    <> case list.length(puppies) {
+    <> case list.length(cuccioli) {
       0 -> "Nessuno."
       1 -> "Solo uno."
-      other -> "Ben " <> int.to_string(other) <> " cuccioli."
+      altro_conteo -> "Ben " <> int.to_string(altro_conteo) <> " cuccioli."
     }
   }
   |> echo
@@ -581,13 +581,13 @@ fn mostra_controllo_di_flusso() {
   // quindi non sono disponibili costrutti if, for o while.
 
   // Utilizza la corrispondenza dei modelli per i condizionali
-  let answer = 42
-  case answer == 42 {
+  let respuesta = 42
+  case respuesta == 42 {
     True -> {
-      echo "Questa e la risposta dell'universo."
+      echo "Questa e la respuesta dell'universo."
     }
     False -> {
-      echo "Questa e la risposta a qualcos'altro."
+      echo "Questa e la respuesta a qualcos'altro."
     }
   }
 
@@ -629,7 +629,7 @@ fn ciclo_fibonacci(x: Int, accumulatore: Int) -> Int {
 // di una lista con il pattern [x, ..y] all'interno di un'espressione case.
 fn inverti_lista(la_lista: List(valore)) -> List(valore) {
   case la_lista {
-    [head, ..tail] -> list.flatten([inverti_lista(tail), [head]])
+    [cabecera, ..cola] -> list.flatten([inverti_lista(cola), [cabecera]])
     [] -> []
   }
 }
@@ -651,9 +651,9 @@ fn altro_su_pattern_matching() {
 
   // Sono supportati modelli alternativi, quindi viene utilizzata la stessa clausola
   // per più valori
-  let month = 2
+  let mese = 2
   let anno = 2024
-  let number_of_days = case month {
+  let numero_di_giorni = case mese {
     2 ->
       case e_bisestile(anno) {
         False -> 28
@@ -663,19 +663,19 @@ fn altro_su_pattern_matching() {
     1 | 3 | 5 | 7 | 8 | 10 | 12 -> 31
     _ -> 0
   }
-  echo "Numero di giorni: " <> int.to_string(number_of_days)
+  echo "Numero di giorni: " <> int.to_string(numero_di_giorni)
   // 29
 
   // Guardie in abbinamento di modelli:
   // Quando si utilizza la parola chiave if, un'espressione deve restituire True
   // affinché il modello corrisponda.
-  let list_starts_with = fn(la_lista: List(valore), the_value: valore) -> Bool {
+  let lista_empieza_con = fn(la_lista: List(valore), il_valore: valore) -> Bool {
     case la_lista {
-      [head, ..] if head == the_value -> True
+      [cabecera, ..] if cabecera == il_valore -> True
       _ -> False
     }
   }
-  echo list_starts_with([10, 20, 30], 10)
+  echo lista_empieza_con([10, 20, 30], 10)
   // True
 }
 
@@ -689,8 +689,8 @@ pub type Genere {
 // - Supporta varianti
 // - Ogni variante è simile a una struttura con campi
 pub type Forma {
-  Rettangolo(base: Float, height: Float)
-  Triangolo(base: Float, height: Float)
+  Rettangolo(base: Float, altezza: Float)
+  Triangolo(base: Float, altezza: Float)
 }
 
 // I record con una variante assomigliano alle strutture
@@ -703,47 +703,47 @@ fn mostra_tipi() {
   // - Può mescolare insieme elementi di diverso tipo
   // - Il loro tipo è implicito, ad es. #{1, "Hello"} è di tipo #{Int, String}
   // - È possibile accedere ai loro elementi tramite indici numerici
-  let tuple_01 = #(1, "Ferris", "rustacean", True)
-  let tuple_02 = #(1, "Lucy", "starfish", True)
-  echo tuple_01
-  echo tuple_01.0
+  let tupla_01 = #(1, "Ferris", "crostaceo", True)
+  let tupla_02 = #(1, "Lucia", "stella_marina", True)
+  echo tupla_01
+  echo tupla_01.0
   // 1
-  echo tuple_02.1
+  echo tupla_02.1
   // Lucia
-  let #(_, name, species, _) = tuple_01
-  echo name <> " the " <> species
+  let #(_, nome, specie, _) = tupla_01
+  echo nome <> " il " <> specie
 
   // Corrispondenza di modelli con tuple inclusa l'assegnazione delle variabili
-  let _ = stampa_stato_mascotte(tuple_02)
+  let _ = stampa_stato_mascotte(tupla_02)
 
   // Utilizzo di un tipo personalizzato con corrispondenza di modelli
     let genere = Altro
   let _ = echo genere_in_stringa(genere)
 
   // Utilizzo dei record
-  let rectangle_1 = Rettangolo(base: 10.0, height: 20.0)
-  echo rectangle_1.height
+  let rettangolo_1 = Rettangolo(base: 10.0, altezza: 20.0)
+  echo rettangolo_1.altezza
   // 10.3
 
-  let point_1 = Punto(x: 3.2, y: 4.3)
-  echo point_1
+  let punto_1 = Punto(x: 3.2, y: 4.3)
+  echo punto_1
 
   // Aggiornamento di un record
-  let point_2 = Punto(..point_1, y: 5.7)
-  echo point_2
+  let punto_2 = Punto(..punto_1, y: 5.7)
+  echo punto_2
 
   // In Gleam, i valori non sono annullabili.
   // Nil è l'unico valore del suo tipo.
-  let some_var = Nil
-  let result = io.println("Ciao!")
-  echo some_var == result
+  let qualche_variabile = Nil
+    let risultato = io.println("Ciao!")
+  echo qualche_variabile == risultato
   // True
 }
 
 fn stampa_stato_mascotte(mascotte: #(Int, String, String, Bool)) {
   case mascotte {
-    #(_, name, _, True) -> echo name <> " e una mascotte."
-    #(_, name, _, False) -> echo name <> " non e una mascotte."
+    #(_, nome, _, True) -> echo nome <> " e una mascotte."
+    #(_, nome, _, False) -> echo nome <> " non e una mascotte."
   }
 }
 
@@ -833,7 +833,7 @@ fn altro_sui_tipi() {
   |> echo
 }
 
-pub fn lancia_dado_come_result() {
+pub fn lancia_dado_come_risultato() {
   Ok(int.random(6) + 1)
 }
 
@@ -844,8 +844,8 @@ pub fn somma_valori_dadi(a: Int, b: Int) {
 //Scommesse su funzioni di prima classe e pattern-matching
 // può facilmente portare a tonnellate di rientranze
 fn lancia_due_dadi_senza_use() {
-    result.try(lancia_dado_come_result(), fn(primo_dado) {
-        result.try(lancia_dado_come_result(), fn(secondo_dado) {
+    result.try(lancia_dado_come_risultato(), fn(primo_dado) {
+        result.try(lancia_dado_come_risultato(), fn(secondo_dado) {
             somma_valori_dadi(primo_dado, secondo_dado)
     })
   })
@@ -859,8 +859,8 @@ fn lancia_due_dadi_senza_use() {
 // - Tutto il codice rimanente nel blocco {} che lo racchiude diventa il corpo del file
 //   funzione di richiamata.
 fn lancia_due_dadi_con_use() {
-    use primo_dado <- result.try(lancia_dado_come_result())
-    use secondo_dado <- result.try(lancia_dado_come_result())
+    use primo_dado <- result.try(lancia_dado_come_risultato())
+    use secondo_dado <- result.try(lancia_dado_come_risultato())
         somma_valori_dadi(primo_dado, secondo_dado)
 }
 
@@ -903,28 +903,28 @@ fn mostra_costanti() {
 
 fn mostra_dict() {
   // I dizionari sono raccolte di valori-chiave (stdlib v0.33.0)
-  let scores = dict.new()
-    |> dict.insert("Alice", 10)
-    |> dict.insert("Bob", 15)
+  let puntajes = dict.new()
+    |> dict.insert("Alicia", 10)
+    |> dict.insert("Bruno", 15)
 
-  let _ = echo dict.get(scores, "Alice")
+      let _ = echo dict.get(puntajes, "Alicia")
   // Ok(10)
-  let _ = echo dict.get(scores, "Charlie")
+    let _ = echo dict.get(puntajes, "Carlo")
   // Error(Nil)
   Nil
 }
 
 fn mostra_array_di_bit() {
   // Gli array di bit rappresentano sequenze di dati binari (stdlib v0.32.0)
-  let binary_data = <<0x41, 0x42, 0x43>> //"ABC" in ASCII
-  let _ = echo binary_data
+  let dati_in_binario = <<0x41, 0x42, 0x43>> //"ABC" in ASCII
+  let _ = echo dati_in_binario
 
   // In Gleam, il pattern match con `let` deve essere esaustivo (deve coprire tutti
   // valori possibili). Se un modello potrebbe non riuscire a corrispondere in fase di esecuzione, dobbiamo utilizzare
   // `let assert` invece di `let`. Se il match fallisce, il programma va nel panico:
-  let assert <<first_byte, rest:bytes>> = binary_data
-  let _ = echo first_byte // 65
-  let _ = echo rest // <<66, 67>>
+  let assert <<primo_byte, resto:bytes>> = dati_in_binario
+  let _ = echo primo_byte // 65
+  let _ = echo resto // <<66, 67>>
   Nil
 }
 
@@ -949,9 +949,9 @@ fn mostra_tipi_opachi() {
 fn mostra_panic() {
   // Possiamo interrompere deliberatamente l'esecuzione utilizzando la parola chiave panico
   // per far sì che il nostro programma si blocchi immediatamente
-  let three = 3
-  let two = 2
-  case three == two {
+    let tre = 3
+  let due = 2
+    case tre == due {
     True -> panic as "L'operatore di uguaglianza e rotto!"
     False -> "L'operatore di uguaglianza funziona per gli interi"
   }
