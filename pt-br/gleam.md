@@ -89,11 +89,11 @@ pub fn main() {
   // 21 │   io.println(10)
   //  │              ^^
   //
-  // Tipo esperado:
+  // Expected type:
   //
   //     String
   //
-  // Tipo encontrado:
+  // Found type:
   //
   //     Int
 
@@ -259,18 +259,18 @@ pub fn main() {
   echo y
 
   // No Gleam, os nomes de variáveis e funções são escritos em snake_case.
-    let respuesta_do_universo = 42
-  echo respuesta_do_universo
+    let resposta_do_universo = 42
+  echo resposta_do_universo
 
-    let e_todo_o_resto = respuesta_do_universo
+    let e_todo_o_resto = resposta_do_universo
   // Agora, usar uma variável produz um aviso
 
   // warning: Unused variable
   //     ┌─ /home/contributor/learnxinmyminutes/src/learnxinmyminutes.gleam:199:7
   //     │
-  // 199 │     let e_todo_o_resto = respuesta_do_universo
-  //     │       ^^^^^^^^^^^^^^ Esta variavel nunca e usada
-  // Dica: voce pode ignora-la com um sublinhado: `_e_todo_o_resto`.
+  // 199 │     let e_todo_o_resto = resposta_do_universo
+  //     │       ^^^^^^^^^^^^^^ This variable is never used
+  // Hint: You can ignore it with an underscore: `_e_todo_o_resto`.
 
   // Digite anotações
 
@@ -291,11 +291,11 @@ pub fn main() {
   //  219 │   let _has_wrong_type_annotation: Int = True
   //      │                                         ^^^^
   //
-  //  Tipo esperado:
+  //  Expected type:
   //
   //      Int
   //
-  //  Tipo encontrado:
+  //  Found type:
   //
   //      Bool
 
@@ -420,12 +420,12 @@ fn mais_exemplos_funcoes() -> Int {
   echo fn(x: Int) { x + 1 }(1)
 
   // Exemplo de fechamento
-  let criar_somador = fn(n: Int) -> fn(Int) -> Int {
+  let criar_somadora = fn(n: Int) -> fn(Int) -> Int {
     fn(argumento: Int) -> Int { argumento + n }
   }
 
-  let sumadora_de_cincos = criar_somador(5)
-  echo sumadora_de_cincos(10)
+  let somadora_de_cinco = criar_somadora(5)
+  echo somadora_de_cinco(10)
   // 15
 
   // Funções anônimas podem ser usadas de forma intercambiável com funções nomeadas.
@@ -553,13 +553,13 @@ fn mostrar_controle_de_fluxo() {
   // realizando verificações de exaustividade.
   // Caso contrário, você receberá erros de compilação.
   let filhotes = ["Bear", "Frisco", "Ranger"]
-  let conteo = list.length(of: filhotes)
+  let contagem = list.length(of: filhotes)
   {
     "Temos "
-    <> int.to_string(conteo)
+    <> int.to_string(contagem)
     <> " "
     <> // O sublinhado corresponde a qualquer outro valor
-    case conteo {
+    case contagem {
       1 -> "filhote"
       _ -> "filhotes"
     }
@@ -572,7 +572,7 @@ fn mostrar_controle_de_fluxo() {
     <> case list.length(filhotes) {
       0 -> "Nenhum."
       1 -> "Apenas um."
-      outra_conteo -> "Tantos quantos " <> int.to_string(outra_conteo) <> " filhotes."
+      outra_contagem -> "Tantos quantos " <> int.to_string(outra_contagem) <> " filhotes."
     }
   }
   |> echo
@@ -581,13 +581,13 @@ fn mostrar_controle_de_fluxo() {
   // portanto, não há construções if, for ou while disponíveis.
 
   // Use correspondência de padrões para condicionais
-  let respuesta = 42
-  case respuesta == 42 {
+  let resposta = 42
+  case resposta == 42 {
     True -> {
-      echo "Esta e a respuesta do universo."
+      echo "Esta e a resposta do universo."
     }
     False -> {
-      echo "Esta e a respuesta de outra coisa."
+      echo "Esta e a resposta de outra coisa."
     }
   }
 
@@ -629,7 +629,7 @@ fn laco_fibonacci(x: Int, acumulador: Int) -> Int {
 //de uma lista com o padrão [x, ..y] dentro de uma expressão case.
 fn inverter_lista(a_lista: List(valor)) -> List(valor) {
   case a_lista {
-    [cabecera, ..cola] -> list.flatten([inverter_lista(cola), [cabecera]])
+    [cabeca, ..cauda] -> list.flatten([inverter_lista(cauda), [cabeca]])
     [] -> []
   }
 }
@@ -669,13 +669,13 @@ fn mais_sobre_correspondencia_de_padroes() {
   // Protetores na correspondência de padrões:
   // Ao usar a palavra-chave if, uma expressão deve ser avaliada como True
   // para que o padrão corresponda.
-  let lista_empieza_con = fn(a_lista: List(valor), o_valor: valor) -> Bool {
+  let lista_comeca_com = fn(a_lista: List(valor), o_valor: valor) -> Bool {
     case a_lista {
-      [cabecera, ..] if cabecera == o_valor -> True
+      [cabeca, ..] if cabeca == o_valor -> True
       _ -> False
     }
   }
-  echo lista_empieza_con([10, 20, 30], 10)
+  echo lista_comeca_com([10, 20, 30], 10)
   // True
 }
 
@@ -903,13 +903,13 @@ fn mostrar_constantes() {
 
 fn mostrar_dicts() {
   // Dicionários são coleções de valores-chave (stdlib v0.33.0)
-  let puntajes = dict.new()
+  let pontuacoes = dict.new()
     |> dict.insert("Aline", 10)
     |> dict.insert("Beto", 15)
 
-    let _ = echo dict.get(puntajes, "Aline")
+    let _ = echo dict.get(pontuacoes, "Aline")
   // Ok(10)
-    let _ = echo dict.get(puntajes, "Carlos")
+    let _ = echo dict.get(pontuacoes, "Carlos")
   // Error(Nil)
   Nil
 }

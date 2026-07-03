@@ -89,11 +89,11 @@ pub fn main() {
   // 21 │ io.println(10)
   //  │              ^^
   //
-  // Tipo esperado:
+  // Expected type:
   //
   //     String
   //
-  // Tipo encontrado:
+  // Found type:
   //
   //     Int
 
@@ -269,8 +269,8 @@ pub fn main() {
   //     ┌─ /home/contributor/learnxinmyminutes/src/learnxinmyminutes.gleam:199:7
   //     │
   // 199 │     let y_todo_lo_demas = respuesta_del_universo
-  //     │       ^^^^^^^^^^^^^^ Esta variable nunca se usa
-  // Sugerencia: Puedes ignorarla con un guion bajo: `_y_todo_lo_demas`.
+  //     │       ^^^^^^^^^^^^^^^ This variable is never used
+  // Hint: You can ignore it with an underscore: `_y_todo_lo_demas`.
 
   // Escriba anotaciones
 
@@ -291,11 +291,11 @@ pub fn main() {
   //  219 │ let _has_wrong_type_annotation: Int = True
   //      │                                         ^^^^
   //
-  //  Tipo esperado:
+  //  Expected type:
   //
   //      Int
   //
-  //  Tipo encontrado:
+  //  Found type:
   //
   //      Bool
 
@@ -420,11 +420,11 @@ fn mas_ejemplos_funciones() -> Int {
   echo fn(x: Int) { x + 1 }(1)
 
   // Ejemplo de cierre
-  let crear_sumador = fn(n: Int) -> fn(Int) -> Int {
+  let crear_sumadora = fn(n: Int) -> fn(Int) -> Int {
     fn(argumento: Int) -> Int { argumento + n }
   }
 
-  let sumadora_de_cincos = crear_sumador(5)
+  let sumadora_de_cincos = crear_sumadora(5)
   echo sumadora_de_cincos(10)
   // 15
 

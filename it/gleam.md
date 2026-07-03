@@ -89,11 +89,11 @@ pub fn main() {
   // 21 │ io.println(10)
   //  │              ^^
   //
-  // Tipo atteso:
+  // Expected type:
   //
   //     String
   //
-  // Tipo trovato:
+  // Found type:
   //
   //     Int
 
@@ -259,18 +259,18 @@ pub fn main() {
   echo y
 
   // In Gleam i nomi delle variabili e delle funzioni sono scritti in snake_case.
-    let respuesta_dell_universo = 42
-  echo respuesta_dell_universo
+    let risposta_dell_universo = 42
+  echo risposta_dell_universo
 
-    let e_tutto_il_resto = respuesta_dell_universo
+    let e_tutto_il_resto = risposta_dell_universo
   // Ora l'utilizzo di una variabile produce un avviso
 
   // warning: Unused variable
   //     ┌─ /home/contributor/learnxinmyminutes/src/learnxinmyminutes.gleam:199:7
   //     │
-  // 199 │     let e_tutto_il_resto = respuesta_dell_universo
-  //     │       ^^^^^^^^^^^^^^ Questa variabile non viene mai usata
-  // Suggerimento: puoi ignorarla con un trattino basso: `_e_tutto_il_resto`.
+  // 199 │     let e_tutto_il_resto = risposta_dell_universo
+  //     │       ^^^^^^^^^^^^^^^^ This variable is never used
+  // Hint: You can ignore it with an underscore: `_e_tutto_il_resto`.
 
   // Digita annotazioni
 
@@ -291,11 +291,11 @@ pub fn main() {
   //  219 │ let _has_wrong_type_annotation: Int = True
   //      │                                         ^^^^
   //
-  //  Tipo atteso:
+  //  Expected type:
   //
   //      Int
   //
-  //  Tipo trovato:
+  //  Found type:
   //
   //      Bool
 
@@ -420,12 +420,12 @@ fn altri_esempi_funzioni() -> Int {
   echo fn(x: Int) { x + 1 }(1)
 
   // Esempio di chiusura
-  let crea_sommatore = fn(n: Int) -> fn(Int) -> Int {
+  let crea_sommatrice = fn(n: Int) -> fn(Int) -> Int {
     fn(argomento: Int) -> Int { argomento + n }
   }
 
-  let sumadora_de_cincos = crea_sommatore(5)
-  echo sumadora_de_cincos(10)
+  let sommatrice_di_cinque = crea_sommatrice(5)
+  echo sommatrice_di_cinque(10)
   // 15
 
   // Le funzioni anonime possono essere utilizzate in modo intercambiabile con le funzioni denominate.
@@ -553,13 +553,13 @@ fn mostra_controllo_di_flusso() {
   // effettuando controlli di esaustività.
   // Altrimenti ottieni errori di compilazione.
   let cuccioli = ["Bear", "Frisco", "Ranger"]
-  let conteo = list.length(of: cuccioli)
+  let conteggio = list.length(of: cuccioli)
   {
     "Abbiamo "
-    <> int.to_string(conteo)
+    <> int.to_string(conteggio)
     <> " "
     <> // Il carattere di sottolineatura corrisponde a qualsiasi altro valore
-    case conteo {
+    case conteggio {
       1 -> "cucciolo"
       _ -> "cuccioli"
     }
@@ -572,7 +572,7 @@ fn mostra_controllo_di_flusso() {
     <> case list.length(cuccioli) {
       0 -> "Nessuno."
       1 -> "Solo uno."
-      altro_conteo -> "Ben " <> int.to_string(altro_conteo) <> " cuccioli."
+      altro_conteggio -> "Ben " <> int.to_string(altro_conteggio) <> " cuccioli."
     }
   }
   |> echo
@@ -581,13 +581,13 @@ fn mostra_controllo_di_flusso() {
   // quindi non sono disponibili costrutti if, for o while.
 
   // Utilizza la corrispondenza dei modelli per i condizionali
-  let respuesta = 42
-  case respuesta == 42 {
+  let risposta = 42
+  case risposta == 42 {
     True -> {
-      echo "Questa e la respuesta dell'universo."
+      echo "Questa e la risposta dell'universo."
     }
     False -> {
-      echo "Questa e la respuesta a qualcos'altro."
+      echo "Questa e la risposta a qualcos'altro."
     }
   }
 
@@ -629,7 +629,7 @@ fn ciclo_fibonacci(x: Int, accumulatore: Int) -> Int {
 // di una lista con il pattern [x, ..y] all'interno di un'espressione case.
 fn inverti_lista(la_lista: List(valore)) -> List(valore) {
   case la_lista {
-    [cabecera, ..cola] -> list.flatten([inverti_lista(cola), [cabecera]])
+    [testa, ..coda] -> list.flatten([inverti_lista(coda), [testa]])
     [] -> []
   }
 }
@@ -643,7 +643,7 @@ fn altro_su_ricorsione() {
 fn altro_su_pattern_matching() {
   // Quando si verifica la corrispondenza dei modelli sulle stringhe, l'operatore <> corrisponde alle stringhe
   // con un prefisso specifico e assegna il promemoria a una variabile
-    let lucia = "Ciao, Lucia"
+    let lucia = "Ciao, Lucy"
   let _ = echo case lucia {
     "Ciao, " <> nome -> "Saluti per " <> nome
     _ -> "Forse nessun saluto"
@@ -669,13 +669,13 @@ fn altro_su_pattern_matching() {
   // Guardie in abbinamento di modelli:
   // Quando si utilizza la parola chiave if, un'espressione deve restituire True
   // affinché il modello corrisponda.
-  let lista_empieza_con = fn(la_lista: List(valore), il_valore: valore) -> Bool {
+  let lista_inizia_con = fn(la_lista: List(valore), il_valore: valore) -> Bool {
     case la_lista {
-      [cabecera, ..] if cabecera == il_valore -> True
+      [testa, ..] if testa == il_valore -> True
       _ -> False
     }
   }
-  echo lista_empieza_con([10, 20, 30], 10)
+  echo lista_inizia_con([10, 20, 30], 10)
   // True
 }
 
@@ -704,12 +704,12 @@ fn mostra_tipi() {
   // - Il loro tipo è implicito, ad es. #{1, "Hello"} è di tipo #{Int, String}
   // - È possibile accedere ai loro elementi tramite indici numerici
   let tupla_01 = #(1, "Ferris", "crostaceo", True)
-  let tupla_02 = #(1, "Lucia", "stella_marina", True)
+  let tupla_02 = #(1, "Lucy", "stella_marina", True)
   echo tupla_01
   echo tupla_01.0
   // 1
   echo tupla_02.1
-  // Lucia
+  // Lucy
   let #(_, nome, specie, _) = tupla_01
   echo nome <> " il " <> specie
 
@@ -903,13 +903,13 @@ fn mostra_costanti() {
 
 fn mostra_dict() {
   // I dizionari sono raccolte di valori-chiave (stdlib v0.33.0)
-  let puntajes = dict.new()
-    |> dict.insert("Alicia", 10)
+  let punteggi = dict.new()
+    |> dict.insert("Alice", 10)
     |> dict.insert("Bruno", 15)
 
-      let _ = echo dict.get(puntajes, "Alicia")
+      let _ = echo dict.get(punteggi, "Alice")
   // Ok(10)
-    let _ = echo dict.get(puntajes, "Carlo")
+    let _ = echo dict.get(punteggi, "Carlo")
   // Error(Nil)
   Nil
 }
