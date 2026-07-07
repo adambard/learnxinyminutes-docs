@@ -2,7 +2,7 @@
 language: "Scheme" 
 filename: scheme.scm 
 contributors:
-- ["Bruno Ciccarino", "https://github.com/xenodesire"]
+- ["Bruno G. Ciccarino", "https://github.com/xenodesire"]
 ---
 
 Scheme is a minimalist dialect of Lisp that is widely used in education, research, and industry. It emphasizes simplicity, powerful abstractions, and functional programming paradigms.
