@@ -37,12 +37,6 @@ Replace the generated code with this example and run:
 gleam run
 ```
 
-> **Note:** The `iterator` module was removed from the standard library in [v0.44.0](https://github.com/gleam-lang/stdlib/blob/main/CHANGELOG.md#:~:text=The%20gleam%2Fiterator%20module%20has%20been%20deprecated%20in%20favour%20of%20the%20gleam%5Fyielder%20package) and moved to `gleam_yielder`:
->
-> ```sh
-> gleam add gleam_yielder
-> ```
-
 
 ```gleam
 //// This comment with four slashes is a module-level.
@@ -53,11 +47,10 @@ import gleam/io
 import gleam/int
 import gleam/float
 import gleam/list
-import gleam/yielder as iterator
 import gleam/option.{type Option, None, Some}
 import gleam/result
 import gleam/string
-import gleam/string as text
+import gleam/dict
 
 // A type's name always starts with a capital letter, contrasting to variables
 // and functions, which start with a lowercase letter.
@@ -120,18 +113,22 @@ pub fn main() {
   echo 3 * 3
   echo 5 % 2
 
-  // Int comparisons
-  echo 2 > 1
-  echo 2 < 1
-  echo 2 >= 1
-  echo 2 <= 1
+  // Int comparisons using variables to prevent compiler static analysis warnings
+  let two = 2
+  let one = 1
+  let same_one = 1
+  let same_two = 2
+  let _ = echo two > one
+  let _ = echo two < one
+  let _ = echo two >= one
+  let _ = echo two <= one
 
   // Equality works for any type and is checked structurally, meaning that two
   // values are equal if they have the same structure rather than if they are at
   // the same memory location.
-  echo 1 == 1
+  let _ = echo one == same_one
   // True
-  echo 2 != 2
+  let _ = echo two != same_two
   // False
 
   // Standard library int functions
@@ -139,7 +136,7 @@ pub fn main() {
   // 137
   echo int.clamp(-80, min: 0, max: 100) // clamp(value, min, max) specifies value to fall in given range
   // 0
-  echo int.base_parse("10", 2) // parses binary string as base-2 integer. 
+  let _ = echo int.base_parse("10", 2) // parses binary string as base-2 integer. 
   // Ok(2) : 10 in binary equals to 2 in integer
 
   // Binary, octal, and hex Int literals
@@ -159,11 +156,13 @@ pub fn main() {
   echo 5.0 /. 2.5
   echo 3.0 *. 3.5
 
-  // Float comparisons
-  echo 2.2 >. 1.3
-  echo 2.2 <. 1.3
-  echo 2.2 >=. 1.3
-  echo 2.2 <=. 1.3
+  // Float comparisons using variables to prevent compiler static analysis warnings
+  let two_point_two = 2.2
+  let one_point_three = 1.3
+  let _ = echo two_point_two >. one_point_three
+  let _ = echo two_point_two <. one_point_three
+  let _ = echo two_point_two >=. one_point_three
+  let _ = echo two_point_two <=. one_point_three
 
   // Floats are represented as 64-bit floating point numbers on both the Erlang
   // and JavaScript runtimes.
@@ -178,7 +177,7 @@ pub fn main() {
   // When running on the BEAM any overflow will raise an error. So there is no
   // NaN or Infinity float value in the Erlang runtime.
 
-  // Division by zero is not an error
+  // Division by zero is not an error and is defined to be zero
   echo 3.14 /. 0.0
   // 0.0
 
@@ -190,8 +189,6 @@ pub fn main() {
 
   // Underscores for floats are also supported
   echo 10_000.01
-
-  // Division by zero will not overflow but is instead defined to be zero.
 
   // Working with strings
   echo "⭐ Gleam ⭐ - 별"
@@ -212,10 +209,10 @@ pub fn main() {
   echo "One " <> "Two"
 
   // String functions
-  echo text.reverse("1 2 3 4 5")
-  echo text.append("abc", "def")
+  echo string.reverse("1 2 3 4 5")
+  echo "abc" <> "def"
 
-  io.println(text.reverse("!desrever tog gnirts sihT"))
+  io.println(string.reverse("!desrever tog gnirts sihT"))
   // Outputs "This string got reversed!"
 
   // Several escape sequences are supported:
@@ -364,6 +361,10 @@ pub fn main() {
   more_on_types()
   more_on_callbacks()
   showcase_externals()
+  showcase_constants()
+  showcase_dicts()
+  showcase_bit_arrays()
+  showcase_opaque_types()
   showcase_panic()
 }
 
@@ -500,10 +501,13 @@ fn beloved_pipelines_demo() {
   // Solution to the first problem of Project Euler:
   // URL: https://projecteuler.net/problem=1
   // Description: Find the sum of all the multiples of 3 and 5 below 1000.
-  iterator.iterate(1, fn(n) { n + 1 })
-  |> iterator.take(1000 - 1)
-  |> iterator.filter(fn(n) { { n % 3 == 0 } || { n % 5 == 0 } })
-  |> iterator.fold(from: 0, with: fn(acc, element) { element + acc })
+  // Using int.range from gleam/int to iterate tail-recursively.
+  int.range(from: 1, to: 999, with: 0, run: fn(acc, n) {
+    case n % 3 == 0 || n % 5 == 0 {
+      True -> acc + n
+      False -> acc
+    }
+  })
   |> int.to_string
   |> fn(sum_as_text: String) {
     "Solution to Project Euler's problem #1: " <> sum_as_text
@@ -639,7 +643,8 @@ fn more_on_recursion() {
 fn more_on_pattern_matching() {
   // When pattern-matching on strings the <> operator match on strings
   // with a specific prefix and assigns the reminder to a variable
-  echo case "Hello, Lucy" {
+  let lucy = "Hello, Lucy"
+  let _ = echo case lucy {
     "Hello, " <> name -> "Greetings for " <> name
     _ -> "Potentially no greetings"
   }
@@ -709,18 +714,11 @@ fn showcase_types() {
   echo name <> " the " <> species
 
   // Pattern-matching with tuples including variable assignment
-  case tuple_02 {
-    #(_, name, _, True) -> echo name <> " is a mascot."
-    #(_, name, _, False) -> echo name <> " is not a mascot."
-  }
+  let _ = print_mascot_status(tuple_02)
 
   // Using a custom type with pattern-matching
   let gender = Other
-  echo case gender {
-    Male -> "Boy"
-    Female -> "Girl"
-    _ -> "Undetermined"
-  }
+  let _ = echo gender_to_string(gender)
 
   // Using records
   let rectangle_1 = Rectangle(base: 10.0, height: 20.0)
@@ -740,6 +738,21 @@ fn showcase_types() {
   let result = io.println("Hello!")
   echo some_var == result
   // True
+}
+
+fn print_mascot_status(mascot: #(Int, String, String, Bool)) {
+  case mascot {
+    #(_, name, _, True) -> echo name <> " is a mascot."
+    #(_, name, _, False) -> echo name <> " is not a mascot."
+  }
+}
+
+fn gender_to_string(gender: Gender) -> String {
+  case gender {
+    Male -> "Boy"
+    Female -> "Girl"
+    Other -> "Undetermined"
+  }
 }
 
 pub type Mineral {
@@ -833,7 +846,7 @@ pub fn sum_dice_values(a: Int, b: Int) {
 fn roll_two_dices_without_use() {
   result.try(throw_dice_as_result(), fn(first_dice) {
     result.try(throw_dice_as_result(), fn(second_dice) {
-      result.map(sum_dice_values(first_dice, second_dice), fn(sum) { sum })
+      sum_dice_values(first_dice, second_dice)
     })
   })
 }
@@ -848,31 +861,97 @@ fn roll_two_dices_without_use() {
 fn roll_two_dices_with_use() {
   use first_dice <- result.try(throw_dice_as_result())
   use second_dice <- result.try(throw_dice_as_result())
-  use sum <- result.map(sum_dice_values(first_dice, second_dice))
-  // This is the remaining code in innermost callback function
-  sum
+  sum_dice_values(first_dice, second_dice)
 }
 
 fn more_on_callbacks() {
-  echo roll_two_dices_without_use()
-  echo roll_two_dices_with_use()
+  let _ = echo roll_two_dices_without_use()
+  let _ = echo roll_two_dices_with_use()
+  Nil
 }
 
+// Since v1.14.0, the @external annotation can also be used on external types to
+// point them to Erlang or TypeScript types.
 pub type DateTime
 
-// External functions must annotate a return type
+// External functions must annotate a return type.
+// This function is only defined on the Erlang target; compiling to JavaScript
+// would require a fallback body or a @external(javascript, ...) annotation.
 @external(erlang, "calendar", "local_time")
-pub fn now() -> DateTime
+pub fn now() -> DateTime {
+  todo
+}
 
 fn showcase_externals() {
-  echo now()
+  let _ = echo now()
   // #(#(2024, 4, 6), #(14, 4, 16))
+  Nil
+}
+
+// Module-level constants (supported since v1.0.0, with list prepending since v1.16.0)
+pub const prime_numbers = [2, 3, 5]
+pub const more_primes = [7, 11, ..prime_numbers]
+
+fn showcase_constants() {
+  let _ = echo prime_numbers
+  let _ = echo more_primes
+
+  // Since v1.17.0, you can also use `todo` inside constant declarations:
+  // pub const upcoming_constant = todo
+  Nil
+}
+
+fn showcase_dicts() {
+  // Dictionaries are key-value collections (stdlib v0.33.0)
+  let scores = dict.new()
+    |> dict.insert("Alice", 10)
+    |> dict.insert("Bob", 15)
+
+  let _ = echo dict.get(scores, "Alice")
+  // Ok(10)
+  let _ = echo dict.get(scores, "Charlie")
+  // Error(Nil)
+  Nil
+}
+
+fn showcase_bit_arrays() {
+  // Bit arrays represent sequences of binary data (stdlib v0.32.0)
+  let binary_data = <<0x41, 0x42, 0x43>> // "ABC" in ASCII
+  let _ = echo binary_data
+
+  // In Gleam, pattern matching with `let` must be exhaustive (it must cover all
+  // possible values). If a pattern might fail to match at runtime, we must use
+  // `let assert` instead of `let`. If the match fails, the program panics:
+  let assert <<first_byte, rest:bytes>> = binary_data
+  let _ = echo first_byte // 65
+  let _ = echo rest // <<66, 67>>
+  Nil
+}
+
+// Opaque types are types whose constructors are private to the defining module,
+// enabling encapsulation and hiding implementation details.
+pub opaque type EncryptedData {
+  EncryptedData(value: String)
+}
+
+pub fn encrypt(data: String) -> EncryptedData {
+  EncryptedData(data <> "_encrypted")
+}
+
+fn showcase_opaque_types() {
+  let secret = encrypt("my_password")
+  // We can pass the secret around, but we cannot pattern match on EncryptedData
+  // or access its .value field from outside this module.
+  let _ = echo secret
+  Nil
 }
 
 fn showcase_panic() {
   // We can deliberately abort execution by using the panic keyword
   // in order to make our program crash immediately
-  case 3 == 2 {
+  let three = 3
+  let two = 2
+  case three == two {
     True -> panic as "The equality operator is broken!"
     False -> "Equality operator works for integers"
   }
@@ -881,7 +960,7 @@ fn showcase_panic() {
 }
 
 pub fn homework() {
-  todo
+  todo as "This function is not implemented yet"
 }
 ```
 

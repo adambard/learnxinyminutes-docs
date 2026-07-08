@@ -226,7 +226,7 @@ li[::-1]  # Return list in reverse order => [3, 4, 2, 1]
 # Use any combination of these to make advanced slices
 # li[start:end:step]
 
-# Make a one layer deep copy using slices
+# Make a shallow copy using slices
 li2 = li[:]  # => li2 = [1, 2, 4, 3] but (li2 is li) will result in false.
 
 # Remove arbitrary elements from a list with "del"
@@ -872,12 +872,13 @@ class Superhero(Human):
     # This constructor inherits the "name" argument from the "Human" class and
     # adds the "superpower" and "movie" arguments:
     def __init__(self, name, movie=False,
+                 # defaults are instantiated once per program
                  superpowers=["super strength", "bulletproofing"]):
 
         # add additional class attributes:
         self.fictional = True
         self.movie = movie
-        # be aware of mutable default values, since defaults are shared
+        # as written above, this value is shared amongst all callers so beware mutating it
         self.superpowers = superpowers
 
         # The "super" function lets you access the parent class's methods
