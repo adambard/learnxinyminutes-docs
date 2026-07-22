@@ -12,6 +12,7 @@ contributors:
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
     - ["Sean Nam", "https://github.com/seannam"]
     - ["Shawn M. Hanes", "https://github.com/smhanes15"]
+    - ["E. F. Souza Lima", "https://github.com/cosmiclm"]
 filename: LearnJava.java
 ---
 
