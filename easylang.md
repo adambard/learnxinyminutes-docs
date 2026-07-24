@@ -16,6 +16,9 @@ f = 2 * pi
 print "Numbers are floating point: " & f
 print "and are implicitly converted to strings"
 #
+# Variables do not need to be declared. By default, they contain numbers.
+# String variables end with $.
+#
 str$ = "Strings can"
 str$ &= " grow"
 print str$
@@ -119,7 +122,7 @@ print 2 * number a$[1]
 print len a$[]
 print len a$[1]
 #
-# "input" reads a string from the "input_data" section, if it exists,
+# 'input' reads a string from the 'input_data' section, if it exists,
 # otherwise via a prompt.
 #
 repeat
@@ -181,6 +184,3 @@ on animate
 ```
 
 * [More about Easylang](https://easylang.online/)
-
-* [Source code](https://github.com/chkas/easylang/)
-
