@@ -3,19 +3,27 @@ name: PowerShell
 contributors:
     - ["Wouter Van Schandevijl", "https://github.com/laoujin"]
     - ["Andrew Ryan Davis", "https://github.com/AndrewDavis1191"]
+    - ["ilyas B.", "https://github.com/ily83"]
 filename: LearnPowershell.ps1
 ---
 
-PowerShell is the Windows scripting language and configuration management
-framework from Microsoft built on the .NET Framework. Windows 7 and up ship
-with PowerShell.  
+PowerShell is a cross-platform task automation solution made up of a command-line
+shell, a scripting language, and a configuration management framework.
+PowerShell runs on Windows, macOS, and Linux.
+
+Windows PowerShell (v5.1) ships with Windows and runs on the .NET Framework.
+PowerShell 7.x is the modern, open-source edition built on .NET (currently .NET 9
+for PowerShell 7.5 and .NET 10 for the upcoming PowerShell 7.6).
+The executable was renamed from `powershell.exe` to `pwsh.exe` starting with
+PowerShell 6+.
+
 Nearly all examples below can be a part of a shell script or executed directly
 in the shell.
 
 A key difference with Bash is that it is mostly objects that you manipulate
 rather than plain text. After years of evolving, it resembles Python a bit.
 
-[Read more here.](https://docs.microsoft.com/powershell/scripting/overview)
+[Read more here.](https://learn.microsoft.com/powershell/scripting/overview)
 
 Powershell as a Language:
 
@@ -124,7 +132,7 @@ $False - 5   # => -5
 $a = (1,2,3,4)
 $b = $a                                 # => Point b at what a is pointing to
 $b -is $a.GetType()                     # => True, a and b equal same type
-$b -eq $a                               # => None! See below
+$b -eq $a                               # => None/$null (when comparing arrays, -eq filters matching elements)
 [System.Collections.Hashtable]$b = @{}  # => Point b at a new hash table
 $b = @{'one' = 1 
        'two' = 2}
@@ -173,7 +181,7 @@ $age = 22
 `#Get-Process # => Fail: not a recognized cmdlet
 
 # $null is not an object
-$null  # => None
+$null  # => None ($null)
 
 # $null, 0, and empty strings and arrays all evaluate to False.
 # All other values are True
@@ -216,18 +224,66 @@ $someVariable  # => 5
 # Ternary Operators exist in Powershell 7 and up
 0 ? 'yes' : 'no'  # => no
 
+# Null-coalescing operator ?? (PowerShell 7+)
+# Returns left-hand operand if non-null, otherwise right-hand operand
+$x = $null
+$x ?? 100         # => 100
+"hello" ?? "world" # => "hello"
+
+# Null-coalescing assignment operator ??= (PowerShell 7+)
+# Assigns the right-hand value only if the variable is $null
+$x = $null
+$x ??= 100
+$x              # => 100
+$x ??= 200
+$x              # => 100 (unchanged, because $x is no longer $null)
+
+# Null-conditional operators ?. and ?[] (PowerShell 7.1+)
+# Access members/elements only if the operand is non-null
+$a = @{ PropName = 100 }
+${a}?.PropName     # => 100
+
+$a = $null
+${a}?.PropName     # => $null (no error)
+
+$arr = 1..10
+${arr}?[0]         # => 1
+
+$arr = $null
+${arr}?[0]         # => $null (no error)
+
+# Pipeline chain operators && and || (PowerShell 7+)
+# && executes the right-hand pipeline only if the left-hand succeeded
+# || executes the right-hand pipeline only if the left-hand failed
+Write-Output 'Success' && Write-Output 'Also runs'  # Both print
+Write-Output 'Success' || Write-Output 'Skipped'     # Only first prints
+
+# Background operator & (PowerShell 6+)
+# Run a pipeline as a background job
+Get-Process & # returns a Job object immediately
+
 
 # The default array object in Powershell is an fixed length array.
 $defaultArray = "thing","thing2","thing3"
 # you can add objects with '+=', but cannot remove objects.
 $defaultArray.Add("thing4") # => Exception "Collection was of a fixed size."
 # To have a more workable array, you'll want the .NET [ArrayList] class
+# or [System.Collections.Generic.List[T]] (preferred in modern PowerShell)
 # It is also worth noting that ArrayLists are significantly faster
+
+# Note: In PowerShell 7.5, the += operation for object arrays was heavily
+# optimized and is now much faster than in previous versions.
 
 # ArrayLists store sequences
 [System.Collections.ArrayList]$array = @()
 # You can start with a prefilled ArrayList
 [System.Collections.ArrayList]$otherArray = @(5, 6, 7, 8)
+
+# Modern alternative: use Generic List (preferred over ArrayList)
+[System.Collections.Generic.List[int]]$typedList = @()
+$typedList.Add(42)
+$typedList.Add(99)
+$typedList  # => 42, 99
 
 # Add to the end of a list with 'Add' (Note: produces output, append to $null)
 $array.Add(1) > $null    # $array is now [1]
@@ -285,8 +341,11 @@ $array -eq 1          # => 1,1,1
 # Tuples are like arrays but are immutable.
 # To use Tuples in powershell, you must use the .NET tuple class.
 $tuple = [System.Tuple]::Create(1, 2, 3)
-$tuple.Item(0)      # => 1
-$tuple.Item(0) = 3  # Raises a TypeError
+$tuple.Item(0) # => 1
+$tuple.Item(0) = 3    # Raises an error (property is read-only)
+# or 
+$tuple.Item1        # => 1
+$tuple.Item1 = 3    # Raises an error (property is read-only)
 
 # You can do some of the array methods on tuples, but they are limited.
 $tuple.Length       # => 3
@@ -408,7 +467,7 @@ try {
     throw "This is an error"
 }
 catch {
-    Write-Output $Error.ExceptionMessage
+    Write-Output $_.Exception.Message
 }
 finally {
     Write-Output "We can clean up resources here"
@@ -475,6 +534,21 @@ function New-Website() {
     END { Write-Output 'Website(s) created' }
 }
 
+# Advanced functions support a Clean block (PowerShell 7.3+)
+# The Clean block runs after all other blocks, useful for cleanup
+function Get-Data {
+    [CmdletBinding()]
+    param()
+    begin   { $resource = Open-Something }
+    process { $resource | Do-Something }
+    end     { }
+    clean   { 
+        # Always runs, even if an error occurred. 
+        # Great for releasing unmanaged resources.
+        if ($resource) { $resource.Dispose() }
+    }
+}
+
 
 ####################################################
 ## 5. Modules
@@ -482,7 +556,10 @@ function New-Website() {
 
 # You can import modules and install modules
 # The Install-Module is similar to pip or npm, pulls from Powershell Gallery
-Install-Module dbaTools
+# In PowerShell 7.4+, Microsoft.PowerShell.PSResourceGet is the modern
+# replacement for PowerShellGet.
+Install-Module dbaTools           # Legacy (PowerShellGet)
+Install-PSResource dbaTools       # Modern (PSResourceGet, PS 7.4+)
 Import-Module dbaTools
 
 $query = "SELECT * FROM dbo.sometable"
@@ -492,6 +569,8 @@ $queryParams = @{
     Query       = $query
 }
 Invoke-DbaQuery @queryParams
+# Note: Use '@' instead of '$' to "splat" (unpack) the hash table into parameters.
+# Why? Using '$queryParams' would incorrectly pass the whole table as a single object.
 
 # You can get specific functions from a module
 Import-Module -Function Invoke-DbaQuery
@@ -508,7 +587,7 @@ Get-Help dbaTools -Full
 
 
 ####################################################
-## 6. Classes
+## 6. Classes and Enums
 ####################################################
 
 # We use the "class" statement to create a class
@@ -561,6 +640,32 @@ True     False    Guitar                                   Instrument
 
 
 ####################################################
+## 6.2 Enums
+####################################################
+
+# Enums define a set of named constants
+# Note: they enforce type-safety and restrict inputs to a predefined list,
+enum Color {
+    Red
+    Green
+    Blue
+}
+
+[Color]::Red             # => Red
+[Color]::Red.value__     # => 0
+[Color]'Green'           # => Green
+
+# Flags enum - values can be combined
+[Flags()] enum FilePermission {
+    Read    = 1
+    Write   = 2
+    Execute = 4
+}
+
+[FilePermission]::Read -bor [FilePermission]::Write  # => Read, Write
+
+
+####################################################
 ## 7. Advanced
 ####################################################
 
@@ -580,6 +685,21 @@ Get-Process | Foreach-Object ProcessName | Group-Object
 # Useful pipeline examples are iteration and filtering.
 1..10 | ForEach-Object { "Loop number $PSITEM" }
 1..10 | Where-Object { $PSITEM -gt 5 } | ConvertTo-Json
+
+# ForEach-Object -Parallel (PowerShell 7+)
+# Runs script blocks in parallel across pipeline input items.
+$logNames = 'Security','Application','System','Windows PowerShell'
+$logEntries = $logNames | ForEach-Object -Parallel {
+    Get-WinEvent -LogName $_ -MaxEvents 1000
+} -ThrottleLimit 4     # Max 4 concurrent threads (default is 5)
+
+$logEntries.Count
+
+# Use the $using: scope modifier to pass variables into parallel blocks
+$maxEvents = 500
+1..5 | ForEach-Object -Parallel {
+    "Processing item $_ with max $using:maxEvents"
+}
 
 # A notable pitfall of the pipeline is its performance when
 # compared with other options.
@@ -667,6 +787,58 @@ function Format-Range ($start, $end) {
 }
 
 Format-Range 2 6 # => 'a','b','g','f','e','d','c','h','i','j','k','l','m'
+
+
+####################################################
+## 8. New Cmdlets & Features (PowerShell 6.x+)
+####################################################
+
+# Get-Error - detailed error view (PowerShell 7.0+)
+# $ErrorView defaults to 'ConciseView' for cleaner error messages
+$Error | Get-Error
+Get-Error -Newest 3
+
+# Get-Uptime - time since last boot (PowerShell 6+)
+Get-Uptime
+
+# Join-String - combine pipeline objects into a string (PowerShell 6.2+)
+$joinedString = "one","two","three" | Join-String -Separator ", "
+$joinedString # => "one, two, three"
+$splitString = $joinedString.Split(", ") 
+$splitString # => one
+# two
+# three
+
+# Test-Json - validate JSON strings (PowerShell 6.1+)
+'{"name": "test"}' | Test-Json  # => True
+
+# In PowerShell 7.5+, Test-Json supports -IgnoreComments and -AllowTrailingCommas
+'{"name": "test", /* comment */ }' | Test-Json -AllowTrailingCommas -IgnoreComments
+
+# ConvertTo-CliXml / ConvertFrom-CliXml (PowerShell 7.5+)
+# Serialize/deserialize objects to/from CliXml strings (without files)
+$obj = [pscustomobject]@{ Name = "test"; Value = 42 }
+$xml = $obj | ConvertTo-CliXml
+$xml | ConvertFrom-CliXml  # => recreated object
+
+# ConvertFrom-Json -DateKind (PowerShell 7.5+)
+# Control how date strings in JSON are parsed
+'{"dt": "2024-01-15T10:30:00Z"}' | ConvertFrom-Json -DateKind Utc
+
+# Where-Object -Not (PowerShell 6+)
+Get-Service | Where-Object -Not DependentServices
+
+# Remove-Alias (PowerShell 6+)
+Remove-Alias -Name myAlias
+
+# Markdown cmdlets (PowerShell 6.1+)
+"**bold** and *italic*" | ConvertFrom-Markdown | Show-Markdown
+
+# Remove-Service (PowerShell 6+)
+# Remove-Service -Name "MyTestService"
+
+# Get-Process no longer needs admin for -IncludeUserName (PowerShell 7.5+)
+Get-Process -IncludeUserName
 ```
 
 Powershell as a Tool:
@@ -685,7 +857,7 @@ ps | Get-Member # alias: gm
 
 Show-Command Get-WinEvent # Display GUI to fill in the parameters
 
-Update-Help # Run as admin
+Update-Help # No longer requires admin in PowerShell 7+
 ```
 
 If you are uncertain about your environment:
@@ -702,6 +874,9 @@ help about_Execution_Policies # for more info
 
 # Current PowerShell version:
 $PSVersionTable
+
+# Check which edition you're running:
+$PSVersionTable.PSEdition  # => "Core" for PowerShell 7+, "Desktop" for 5.1
 ```
 
 ```powershell
@@ -744,6 +919,9 @@ $x=1
 
 # Remoting into computers is easy.
 Enter-PSSession -ComputerName RemoteComputer
+
+# PowerShell supports remoting over SSH on all platforms (PS 6+)
+Enter-PSSession -HostName user@ssh.example.com:22
 
 # Once remoted in, you can run commands as if you're local.
 RemoteComputer\PS> Get-Process powershell
@@ -800,16 +978,17 @@ foreach ($server in $serverList) {
 #>
 ```
 
-Interesting Projects  
+Interesting Projects and Resources
 
-* [Channel9](https://channel9.msdn.com/Search?term=powershell%20pipeline#ch9Search&lang-en=en) PowerShell tutorials
+* [Microsoft Learn PowerShell Documentation](https://learn.microsoft.com/powershell/) Official and up-to-date PowerShell docs
+* [What's New in PowerShell 7.5](https://learn.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-75) Latest stable release notes
+* [Differences between Windows PowerShell 5.1 and PowerShell 7.x](https://learn.microsoft.com/powershell/scripting/whats-new/differences-from-windows-powershell) Comprehensive comparison
 * [KevinMarquette's Powershell Blog](https://powershellexplained.com/) Excellent blog that goes into great detail on Powershell
-* [PSGet](https://github.com/psget/psget) NuGet for PowerShell
-* [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (So good that it now ships with Windows10 by default!)
+* [PSReadLine](https://github.com/lzybkr/PSReadLine/) A bash inspired readline implementation for PowerShell (Ships with Windows 10+ and PowerShell 7)
 * [Posh-Git](https://github.com/dahlbyk/posh-git/) Fancy Git Prompt (Recommended!)
-* [Oh-My-Posh](https://github.com/JanDeDobbeleer/oh-my-posh) Shell customization similar to the popular Oh-My-Zsh on Mac
-* [PSake](https://github.com/psake/psake) Build automation tool
+* [Oh-My-Posh](https://github.com/JanDeDobbeleer/oh-my-posh) Shell customization similar to the popular Oh-My-Zsh on Mac/Linux
 * [Pester](https://github.com/pester/Pester) BDD Testing Framework
+* [PSake](https://github.com/psake/psake) Build automation tool
 * [ZLocation](https://github.com/vors/ZLocation) Powershell `cd` that reads your mind
 * [PowerShell Community Extensions](https://github.com/Pscx/Pscx)
 * [More on the Powershell Pipeline Issue](https://github.com/PowerShell/PowerShell/issues/1908)

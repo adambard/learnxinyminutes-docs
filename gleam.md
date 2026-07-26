@@ -24,6 +24,20 @@ code in browser or any other JS-enabled runtime. When using this feature,
 TypeScript definitions get created, so you can interact with your Gleam code
 confidently, even from the outside.
 
+To run this code, first create a Gleam project:
+
+```sh
+gleam new my_project
+cd my_project
+```
+
+Replace the generated code with this example and run:
+
+```sh
+gleam run
+```
+
+
 ```gleam
 //// This comment with four slashes is a module-level.
 //// This kind of comments are used to describe the whole module.
@@ -33,11 +47,10 @@ import gleam/io
 import gleam/int
 import gleam/float
 import gleam/list
-import gleam/iterator
 import gleam/option.{type Option, None, Some}
 import gleam/result
 import gleam/string
-import gleam/string as text
+import gleam/dict
 
 // A type's name always starts with a capital letter, contrasting to variables
 // and functions, which start with a lowercase letter.
@@ -100,27 +113,31 @@ pub fn main() {
   echo 3 * 3
   echo 5 % 2
 
-  // Int comparisons
-  echo 2 > 1
-  echo 2 < 1
-  echo 2 >= 1
-  echo 2 <= 1
+  // Int comparisons using variables to prevent compiler static analysis warnings
+  let two = 2
+  let one = 1
+  let same_one = 1
+  let same_two = 2
+  let _ = echo two > one
+  let _ = echo two < one
+  let _ = echo two >= one
+  let _ = echo two <= one
 
   // Equality works for any type and is checked structurally, meaning that two
   // values are equal if they have the same structure rather than if they are at
   // the same memory location.
-  echo 1 == 1
+  let _ = echo one == same_one
   // True
-  echo 2 != 2
+  let _ = echo two != same_two
   // False
 
   // Standard library int functions
   echo int.min(142, 137)
   // 137
-  echo int.clamp(-80, min: 0, max: 100)
+  echo int.clamp(-80, min: 0, max: 100) // clamp(value, min, max) specifies value to fall in given range
   // 0
-  echo int.base_parse("10", 2)
-  // Ok(2)
+  let _ = echo int.base_parse("10", 2) // parses binary string as base-2 integer. 
+  // Ok(2) : 10 in binary equals to 2 in integer
 
   // Binary, octal, and hex Int literals
   echo 0b00001111
@@ -139,11 +156,13 @@ pub fn main() {
   echo 5.0 /. 2.5
   echo 3.0 *. 3.5
 
-  // Float comparisons
-  echo 2.2 >. 1.3
-  echo 2.2 <. 1.3
-  echo 2.2 >=. 1.3
-  echo 2.2 <=. 1.3
+  // Float comparisons using variables to prevent compiler static analysis warnings
+  let two_point_two = 2.2
+  let one_point_three = 1.3
+  let _ = echo two_point_two >. one_point_three
+  let _ = echo two_point_two <. one_point_three
+  let _ = echo two_point_two >=. one_point_three
+  let _ = echo two_point_two <=. one_point_three
 
   // Floats are represented as 64-bit floating point numbers on both the Erlang
   // and JavaScript runtimes.
@@ -158,7 +177,7 @@ pub fn main() {
   // When running on the BEAM any overflow will raise an error. So there is no
   // NaN or Infinity float value in the Erlang runtime.
 
-  // Division by zero is not an error
+  // Division by zero is not an error and is defined to be zero
   echo 3.14 /. 0.0
   // 0.0
 
@@ -170,8 +189,6 @@ pub fn main() {
 
   // Underscores for floats are also supported
   echo 10_000.01
-
-  // Division by zero will not overflow but is instead defined to be zero.
 
   // Working with strings
   echo "⭐ Gleam ⭐ - 별"
@@ -192,10 +209,10 @@ pub fn main() {
   echo "One " <> "Two"
 
   // String functions
-  echo text.reverse("1 2 3 4 5")
-  echo text.append("abc", "def")
+  echo string.reverse("1 2 3 4 5")
+  echo "abc" <> "def"
 
-  io.println(text.reverse("!desrever tog gnirts sihT"))
+  io.println(string.reverse("!desrever tog gnirts sihT"))
   // Outputs "This string got reversed!"
 
   // Several escape sequences are supported:
@@ -225,9 +242,6 @@ pub fn main() {
   // Bool functions
   echo bool.to_string(True)
   // "True"
-
-  echo bool.to_int(False)
-  // 0
 
   // Assignments
   let x = "Original value"
@@ -295,7 +309,7 @@ pub fn main() {
   // documentation.
   // Under the hood they are still values of the same type so operations
   // still work
-  io.debug(one + two)
+  echo one + two
   // 3
 
   // Blocks: scoping and value
@@ -303,26 +317,26 @@ pub fn main() {
     let value = 100.0
     value
   }
-  // io.debug(value) // <- This will not compile because "value" is out of scope
+  // echo value // <- This will not compile because "value" is out of scope
 
   let area = 3.14159 *. radius *. radius
-  io.debug(area)
+  echo area
 
   // Use blocks to group operations instead of parenthesis
   let n1 = { 3 + 2 } * 5
   let n2 = 3 + { 2 * 5 }
-  io.debug(n1 != n2)
+  echo n1 != n2
   // True
 
   // Lists
 
   // Nephews of Scrooge McDuck
   let nephews = ["Huey", "Dewey", "Louie"]
-  io.debug(nephews)
+  echo nephews
   // ["Huey", "Dewey", "Louie"]
 
   // Immutably prepend so the original list is not changed
-  io.debug(["Donald", ..nephews])
+  echo ["Donald", ..nephews]
   // ["Donald", "Huey", "Dewey", "Louie"]
 
   // Some standard library functions for lists
@@ -332,7 +346,7 @@ pub fn main() {
   // Dewey
   // Louie
 
-  io.debug(list.drop(nephews, 2))
+  echo list.drop(nephews, 2)
   // ["Louie"]
 
   more_examples()
@@ -347,6 +361,10 @@ pub fn main() {
   more_on_types()
   more_on_callbacks()
   showcase_externals()
+  showcase_constants()
+  showcase_dicts()
+  showcase_bit_arrays()
+  showcase_opaque_types()
   showcase_panic()
 }
 
@@ -377,9 +395,9 @@ pub fn is_leap_year(year: Int) -> Bool {
 fn more_examples() {
   // Debug also returns a value so its output is the return value of
   // this function
-  io.debug(double(10))
+  echo double(10)
   // 20
-  io.debug(is_leap_year(2000))
+  echo is_leap_year(2000)
   // True
 }
 
@@ -391,15 +409,15 @@ fn call_func_on_int(func: fn(Int) -> Int, value: Int) -> Int {
 }
 
 fn more_function_examples() -> Int {
-  io.debug(call_func_on_int(double, 2))
+  echo call_func_on_int(double, 2)
   // 4
 
   let square = fn(x: Int) -> Int { x * x }
-  io.debug(square(3))
+  echo square(3)
   // 9
 
   // Calling an anonymous function immediately after defining it
-  io.debug(fn(x: Int) { x + 1 }(1))
+  echo fn(x: Int) { x + 1 }(1)
 
   // Closure example
   let make_adder = fn(n: Int) -> fn(Int) -> Int {
@@ -407,11 +425,11 @@ fn more_function_examples() -> Int {
   }
 
   let adder_of_fives = make_adder(5)
-  io.debug(adder_of_fives(10))
+  echo adder_of_fives(10)
   // 15
 
   // Anonymous functions can be used interchangeably with named functions.
-  io.debug(call_func_on_int(fn(x: Int) -> Int { x + 100 }, 900))
+  echo call_func_on_int(fn(x: Int) -> Int { x + 100 }, 900)
   // 1000
 
   // Let's create a function decorator
@@ -419,17 +437,17 @@ fn more_function_examples() -> Int {
     fn(argument: Int) -> Int { wrapped_func(wrapped_func(argument)) }
   }
   let quadruple = twice(double)
-  io.debug(quadruple(1))
+  echo quadruple(1)
 
   let quadruple_2 = fn(a: Int) -> Int { multiply(4, a) }
-  io.debug(quadruple_2(2))
+  echo quadruple_2(2)
   // 8
 
   // A function capture is a shorthand syntax for creating anonymous functions
   // that takes one argument and immediately calls another function with that
   // argument
   let quadruple_3 = multiply(4, _)
-  io.debug(quadruple_3(4))
+  echo quadruple_3(4)
   // 16
 }
 
@@ -450,14 +468,14 @@ fn generic_twice_decorator(
 fn generic_typing_examples() {
   let double_integers = fn(a: Int) -> Int { a * 2 }
   let double_floats = fn(a: Float) -> Float { a *. 2.0 }
-  io.debug(generic_twice(double_integers, 3))
-  io.debug(generic_twice(double_floats, 3.0))
+  echo generic_twice(double_integers, 3)
+  echo generic_twice(double_floats, 3.0)
 
   let quadruple_integers = generic_twice_decorator(double_integers)
   let quadruple_floats = generic_twice_decorator(double_floats)
-  io.debug(quadruple_integers(1))
+  echo quadruple_integers(1)
   // 4
-  io.debug(quadruple_floats(1.0))
+  echo quadruple_floats(1.0)
   // 4.0
 }
 
@@ -470,29 +488,31 @@ fn beloved_pipelines_demo() {
   |> list.append(["!"])
   |> string.concat
   |> string.capitalise
-  |> io.debug
+  |> echo
 
-  // Match cleaner than this right?
-  io.debug(
+  // Much cleaner than this right?
+  echo 
     string.capitalise(
       string.concat(
         list.append(list.intersperse(["hello", "world"], " "), ["!"]),
       ),
-    ),
-  )
+    )
 
   // Solution to the first problem of Project Euler:
   // URL: https://projecteuler.net/problem=1
   // Description: Find the sum of all the multiples of 3 and 5 below 1000.
-  iterator.iterate(1, fn(n) { n + 1 })
-  |> iterator.take(1000 - 1)
-  |> iterator.filter(fn(n) { { n % 3 == 0 } || { n % 5 == 0 } })
-  |> iterator.fold(from: 0, with: fn(acc, element) { element + acc })
+  // Using int.range from gleam/int to iterate tail-recursively.
+  int.range(from: 1, to: 999, with: 0, run: fn(acc, n) {
+    case n % 3 == 0 || n % 5 == 0 {
+      True -> acc + n
+      False -> acc
+    }
+  })
   |> int.to_string
   |> fn(sum_as_text: String) {
     "Solution to Project Euler's problem #1: " <> sum_as_text
   }
-  |> io.debug
+  |> echo
   // Solution to Project Euler's problem #1: 233168
 }
 
@@ -516,13 +536,13 @@ fn add_two_integers(first n: Int, second m: Int) -> Int {
 fn labels_in_function_calls() -> Int {
   // Since we are labelling the arguments we can switch the order
   // if we want to
-  io.debug(call_func_on_int_with_labels(value: 8, func: double))
-  io.debug(add_one(number: 1))
+  echo call_func_on_int_with_labels(value: 8, func: double)
+  echo add_one(number: 1)
   // 2
-  io.debug(string.contains(does: "theme", contain: "the"))
+  echo string.contains(does: "theme", contain: "the")
   // True
   // Unlabeled arguments must go first
-  io.debug(add_two_integers(2, second: 2))
+  echo add_two_integers(2, second: 2)
   // 4
 }
 
@@ -544,7 +564,7 @@ fn showcase_flow_control() {
       _ -> "puppies"
     }
   }
-  |> io.debug
+  |> echo
 
   // Gleam allows patterns in case expressions to also assign variables.
   {
@@ -555,7 +575,7 @@ fn showcase_flow_control() {
       other -> "As many as " <> int.to_string(other) <> " puppies."
     }
   }
-  |> io.debug
+  |> echo
 
   // Consider BEAM languages are functional in design and Gleam is no exception
   // so there are no if, for or while constructs available.
@@ -564,10 +584,10 @@ fn showcase_flow_control() {
   let answer = 42
   case answer == 42 {
     True -> {
-      io.debug("This is the answer to the universe.")
+      echo "This is the answer to the universe."
     }
     False -> {
-      io.debug("This is the answer to something else.")
+      echo "This is the answer to something else."
     }
   }
 
@@ -577,7 +597,7 @@ fn showcase_flow_control() {
 
 // Recursive function
 fn from_one_to_ten(n: Int) {
-  io.debug(n)
+  echo n
   case n {
     10 -> Nil
     _ -> from_one_to_ten(n + 1)
@@ -609,24 +629,25 @@ fn fib_loop(x: Int, accumulator: Int) -> Int {
 // of a list with the [x, ..y] pattern inside a case expression.
 fn reverse_list(the_list: List(value)) -> List(value) {
   case the_list {
-    [head, ..tail] -> list.concat([reverse_list(tail), [head]])
+    [head, ..tail] -> list.flatten([reverse_list(tail), [head]])
     [] -> []
   }
 }
 
 fn more_on_recursion() {
-  io.debug(fib(10))
+  echo fib(10)
   // 55
-  io.debug(reverse_list([1, 2, 3]))
+  echo reverse_list([1, 2, 3])
 }
 
 fn more_on_pattern_matching() {
   // When pattern-matching on strings the <> operator match on strings
   // with a specific prefix and assigns the reminder to a variable
-  io.debug(case "Hello, Lucy" {
+  let lucy = "Hello, Lucy"
+  let _ = echo case lucy {
     "Hello, " <> name -> "Greetings for " <> name
     _ -> "Potentially no greetings"
-  })
+  }
 
   // Alternative patterns are supported so the same clause is used
   // for multiple values
@@ -642,7 +663,7 @@ fn more_on_pattern_matching() {
     1 | 3 | 5 | 7 | 8 | 10 | 12 -> 31
     _ -> 0
   }
-  io.debug("Number of days: " <> int.to_string(number_of_days))
+  echo "Number of days: " <> int.to_string(number_of_days)
   // 29
 
   // Guards in pattern-matching:
@@ -654,7 +675,7 @@ fn more_on_pattern_matching() {
       _ -> False
     }
   }
-  io.debug(list_starts_with([10, 20, 30], 10))
+  echo list_starts_with([10, 20, 30], 10)
   // True
 }
 
@@ -684,46 +705,54 @@ fn showcase_types() {
   // - Their elements can be accessed by numeric indexes
   let tuple_01 = #(1, "Ferris", "rustacean", True)
   let tuple_02 = #(1, "Lucy", "starfish", True)
-  io.debug(tuple_01)
-  io.debug(tuple_01.0)
+  echo tuple_01
+  echo tuple_01.0
   // 1
-  io.debug(tuple_02.1)
+  echo tuple_02.1
   // Lucy
   let #(_, name, species, _) = tuple_01
-  io.debug(name <> " the " <> species)
+  echo name <> " the " <> species
 
   // Pattern-matching with tuples including variable assignment
-  case tuple_02 {
-    #(_, name, _, True) -> io.debug(name <> " is a mascot.")
-    #(_, name, _, False) -> io.debug(name <> " is not a mascot.")
-  }
+  let _ = print_mascot_status(tuple_02)
 
   // Using a custom type with pattern-matching
   let gender = Other
-  io.debug(case gender {
-    Male -> "Boy"
-    Female -> "Girl"
-    _ -> "Undetermined"
-  })
+  let _ = echo gender_to_string(gender)
 
   // Using records
   let rectangle_1 = Rectangle(base: 10.0, height: 20.0)
-  io.debug(rectangle_1.height)
+  echo rectangle_1.height
   // 10.3
 
   let point_1 = Point(x: 3.2, y: 4.3)
-  io.debug(point_1)
+  echo point_1
 
   // Updating a record
   let point_2 = Point(..point_1, y: 5.7)
-  io.debug(point_2)
+  echo point_2
 
   // In Gleam, values are not nullable.
   // Nil is the only value of its type.
   let some_var = Nil
   let result = io.println("Hello!")
-  io.debug(some_var == result)
+  echo some_var == result
   // True
+}
+
+fn print_mascot_status(mascot: #(Int, String, String, Bool)) {
+  case mascot {
+    #(_, name, _, True) -> echo name <> " is a mascot."
+    #(_, name, _, False) -> echo name <> " is not a mascot."
+  }
+}
+
+fn gender_to_string(gender: Gender) -> String {
+  case gender {
+    Male -> "Boy"
+    Female -> "Girl"
+    Other -> "Undetermined"
+  }
 }
 
 pub type Mineral {
@@ -770,28 +799,28 @@ fn double_dice_value(value: Int) -> Result(Int, DiceError) {
 fn more_on_types() {
   let mineral_sample_01: Purity(Mineral) = Pure(Gold)
   let mineral_sample_02 = Impure(Silver)
-  io.debug(mineral_sample_01)
-  io.debug(mineral_sample_02)
+  echo mineral_sample_01
+  echo mineral_sample_02
 
   // A glass can be empty or not
   let glass_01: Option(Beverage) = Some(Water)
   let glass_02 = None
-  io.debug(glass_01)
-  io.debug(glass_02)
+  echo glass_01
+  echo glass_02
 
   // A person can have a nickname or not
   let person_01 = Person(name: "John", nickname: Some("The Ripper"))
   let person_02 = Person(name: "Martin", nickname: None)
-  io.debug(person_01)
-  io.debug(person_02)
+  echo person_01
+  echo person_02
 
   // Working with functions that return values of type Result
   let dice_01 = 5
   case checked_dice_value(dice_01) {
     Ok(checked_value) ->
-      io.debug("The value of " <> int.to_string(checked_value) <> " is OK.")
+      echo "The value of " <> int.to_string(checked_value) <> " is OK."
     Error(DiceValueOutOfRange) ->
-      io.debug("The value of the dice is out of range")
+      echo "The value of the dice is out of range"
   }
 
   // Let's attempt to double the value if the resulting value is still
@@ -801,7 +830,7 @@ fn more_on_types() {
   |> checked_dice_value
   |> result.try(double_dice_value)
   |> result.unwrap(or: 6)
-  |> io.debug
+  |> echo
 }
 
 pub fn throw_dice_as_result() {
@@ -817,7 +846,7 @@ pub fn sum_dice_values(a: Int, b: Int) {
 fn roll_two_dices_without_use() {
   result.try(throw_dice_as_result(), fn(first_dice) {
     result.try(throw_dice_as_result(), fn(second_dice) {
-      result.map(sum_dice_values(first_dice, second_dice), fn(sum) { sum })
+      sum_dice_values(first_dice, second_dice)
     })
   })
 }
@@ -832,31 +861,97 @@ fn roll_two_dices_without_use() {
 fn roll_two_dices_with_use() {
   use first_dice <- result.try(throw_dice_as_result())
   use second_dice <- result.try(throw_dice_as_result())
-  use sum <- result.map(sum_dice_values(first_dice, second_dice))
-  // This is the remaining code in innermost callback function
-  sum
+  sum_dice_values(first_dice, second_dice)
 }
 
 fn more_on_callbacks() {
-  io.debug(roll_two_dices_without_use())
-  io.debug(roll_two_dices_with_use())
+  let _ = echo roll_two_dices_without_use()
+  let _ = echo roll_two_dices_with_use()
+  Nil
 }
 
+// Since v1.14.0, the @external annotation can also be used on external types to
+// point them to Erlang or TypeScript types.
 pub type DateTime
 
-// External functions must annotate a return type
+// External functions must annotate a return type.
+// This function is only defined on the Erlang target; compiling to JavaScript
+// would require a fallback body or a @external(javascript, ...) annotation.
 @external(erlang, "calendar", "local_time")
-pub fn now() -> DateTime
+pub fn now() -> DateTime {
+  todo
+}
 
 fn showcase_externals() {
-  io.debug(now())
+  let _ = echo now()
   // #(#(2024, 4, 6), #(14, 4, 16))
+  Nil
+}
+
+// Module-level constants (supported since v1.0.0, with list prepending since v1.16.0)
+pub const prime_numbers = [2, 3, 5]
+pub const more_primes = [7, 11, ..prime_numbers]
+
+fn showcase_constants() {
+  let _ = echo prime_numbers
+  let _ = echo more_primes
+
+  // Since v1.17.0, you can also use `todo` inside constant declarations:
+  // pub const upcoming_constant = todo
+  Nil
+}
+
+fn showcase_dicts() {
+  // Dictionaries are key-value collections (stdlib v0.33.0)
+  let scores = dict.new()
+    |> dict.insert("Alice", 10)
+    |> dict.insert("Bob", 15)
+
+  let _ = echo dict.get(scores, "Alice")
+  // Ok(10)
+  let _ = echo dict.get(scores, "Charlie")
+  // Error(Nil)
+  Nil
+}
+
+fn showcase_bit_arrays() {
+  // Bit arrays represent sequences of binary data (stdlib v0.32.0)
+  let binary_data = <<0x41, 0x42, 0x43>> // "ABC" in ASCII
+  let _ = echo binary_data
+
+  // In Gleam, pattern matching with `let` must be exhaustive (it must cover all
+  // possible values). If a pattern might fail to match at runtime, we must use
+  // `let assert` instead of `let`. If the match fails, the program panics:
+  let assert <<first_byte, rest:bytes>> = binary_data
+  let _ = echo first_byte // 65
+  let _ = echo rest // <<66, 67>>
+  Nil
+}
+
+// Opaque types are types whose constructors are private to the defining module,
+// enabling encapsulation and hiding implementation details.
+pub opaque type EncryptedData {
+  EncryptedData(value: String)
+}
+
+pub fn encrypt(data: String) -> EncryptedData {
+  EncryptedData(data <> "_encrypted")
+}
+
+fn showcase_opaque_types() {
+  let secret = encrypt("my_password")
+  // We can pass the secret around, but we cannot pattern match on EncryptedData
+  // or access its .value field from outside this module.
+  let _ = echo secret
+  Nil
 }
 
 fn showcase_panic() {
   // We can deliberately abort execution by using the panic keyword
   // in order to make our program crash immediately
-  case 3 == 2 {
+  let three = 3
+  let two = 2
+  case three == two {
     True -> panic as "The equality operator is broken!"
     False -> "Equality operator works for integers"
   }
@@ -865,7 +960,7 @@ fn showcase_panic() {
 }
 
 pub fn homework() {
-  todo
+  todo as "This function is not implemented yet"
 }
 ```
 

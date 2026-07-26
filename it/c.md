@@ -402,7 +402,7 @@ int main (int argc, char** argv)
   printf("Error occurred at i = %d & j = %d.\n", i, j);
   /*
     https://ideone.com/GuPhd6
-    Questo stamperà l'errore 'Error occured at i=51 & j=99.'
+    Questo stamperà l'errore 'Error occurred at i=51 & j=99.'
   */
   /*
     È generalmente considerato una cattiva pratica farlo, 

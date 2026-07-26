@@ -12,6 +12,7 @@ contributors:
     - ["Rob Rose", "https://github.com/RobRoseKnows"]
     - ["Sean Nam", "https://github.com/seannam"]
     - ["Shawn M. Hanes", "https://github.com/smhanes15"]
+    - ["E. F. Souza Lima", "https://github.com/cosmiclm"]
 filename: LearnJava.java
 ---
 
@@ -194,6 +195,7 @@ public class LearnJava {
         // bytes and are manipulated using functions built into BigInteger
         //
         // BigInteger can be initialized using an array of bytes or a string.
+        byte[] fooByteArray = {2, 5, 6};
         BigInteger fooBigInteger = new BigInteger(fooByteArray);
 
         // BigDecimal - Immutable, arbitrary-precision signed decimal number
@@ -207,7 +209,8 @@ public class LearnJava {
         //
         // BigDecimal can be initialized with an int, long, double or String
         // or by initializing the unscaled value (BigInteger) and scale (int).
-        BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, fooInt);
+        int scale = 2; // e.g. scale 2 means 2 digits after the decimal point
+        BigDecimal fooBigDecimal = new BigDecimal(fooBigInteger, scale);
 
         // Be wary of the constructor that takes a float or double as
         // the inaccuracy of the float/double will be copied in BigDecimal.
@@ -283,7 +286,7 @@ public class LearnJava {
         boolean boolArray[] = new boolean[100];
 
         // Another way to declare & initialize an array
-        int[] y = {9000, 1000, 1337};
+        int[] intArray2 = {9000, 1000, 1337};
         String names[] = {"Bob", "John", "Fred", "Juan Pedro"};
         boolean bools[] = {true, false, false};
 
@@ -409,17 +412,22 @@ public class LearnJava {
 
         // For Loop
         // for loop structure => for(<start_statement>; <conditional>; <step>)
-        for (int fooFor = 0; fooFor < 10; fooFor++) {
+        // Note: fooFor is declared here, before the loop, so it is still in
+        // scope afterwards. A variable declared in the loop's own
+        // <start_statement> only lives for the duration of the loop.
+        int fooFor;
+        for (fooFor = 0; fooFor < 10; fooFor++) {
             System.out.println(fooFor);
             // Iterated 10 times, fooFor 0->9
         }
         System.out.println("fooFor Value: " + fooFor);
 
         // Nested For Loop Exit with Label
+        // (m, n avoid clashing with the i, j already declared above)
         outer:
-        for (int i = 0; i < 10; i++) {
-          for (int j = 0; j < 10; j++) {
-            if (i == 5 && j ==5) {
+        for (int m = 0; m < 10; m++) {
+          for (int n = 0; n < 10; n++) {
+            if (m == 5 && n == 5) {
               break outer;
               // breaks out of outer loop instead of only the inner one
             }
@@ -471,10 +479,12 @@ public class LearnJava {
         // in the try statement. The class must implement java.lang.AutoCloseable.
         try (BufferedReader br = new BufferedReader(new FileReader("foo.txt"))) {
             // You can attempt to do something that could throw an exception.
-            System.out.println(br.readLine());
+            String firstLine = br.readLine(); // can throw IOException
+            int lineAsNumber = Integer.parseInt(firstLine); // or NumberFormatException
+            System.out.println(lineAsNumber);
             // In Java 7, the resource will always be closed, even if it throws
             // an Exception.
-        } catch (IOException | SQLException ex) {
+        } catch (IOException | NumberFormatException ex) {
             // Java 7+ Multi catch block handle both exceptions
         } catch (Exception ex) {
             //The resource will be closed before the catch statement executes.
@@ -553,7 +563,7 @@ public class LearnJava {
             add("DENMARK");
             add("SWEDEN");
             add("FINLAND");
-        }}
+        }};
 
         // The first brace creates a new AnonymousInnerClass and the second 
         // one declares an instance initializer block. This block is called 
@@ -571,10 +581,10 @@ public class LearnJava {
         // and since arrays can't change their size, the list backed by the array
         // is not resizeable, which means we can't add new elements to it: 
         public static void main(String[] args) {
-            COUNTRIES.add("FINLAND"); // throws UnsupportedOperationException!
-            // However, we can replace elements by index, just like in array: 
-            COUNTRIES.set(1, "FINLAND");
-            System.out.println(COUNTRIES); // prints [SWEDEN, FINLAND, NORWAY]
+            COUNTRIES_AS_LIST.add("FINLAND"); // throws UnsupportedOperationException!
+            // However, we can replace elements by index, just like in an array:
+            COUNTRIES_AS_LIST.set(1, "FINLAND");
+            System.out.println(COUNTRIES_AS_LIST); // prints [SWEDEN, FINLAND, NORWAY]
         }
         // The resizing problem can be circumvented 
         // by creating another Collection from the List:
@@ -857,7 +867,7 @@ public final class SaberToothedCat extends Animal
 }
 
 // Final Methods
-public abstract class Mammal()
+public abstract class Mammal
 {
     // Final Method Syntax:
     // <access modifier> final <return type> <function name>(<args>)
@@ -870,11 +880,43 @@ public abstract class Mammal()
     }
 }
 
-// Java Records are a concise way to define immutable data carrier classes, automatically
-// generating boilerplate code like constructors, equals(), hashCode()and toString().
-// This automatically creates an immutable class Person with fields name and age.
-public record Person(String name, int age) {}
-Person p = new Person("Alice", 30);
+// Records (Java 16+)
+//
+// A record is a concise way to declare an immutable data carrier class. The
+// compiler generates a canonical constructor, private final fields, public
+// accessor methods (name(), not getName()), equals(), hashCode() and
+// toString() automatically.
+public record Person(String name, int age) {
+    // A compact constructor lets you validate/normalize the fields that the
+    // canonical constructor will assign; you don't restate the assignments.
+    public Person {
+        if (age < 0) {
+            throw new IllegalArgumentException("age can't be negative");
+        }
+        name = name.trim();
+    }
+
+    // Records can have extra fields (must be static), constructors, methods,
+    // and can implement interfaces, but cannot extend another class (they
+    // implicitly extend java.lang.Record) and cannot declare extra instance
+    // fields beyond the ones in the header.
+    public String greeting() {
+        return "Hi, I'm " + name;
+    }
+
+    public static Person unknown() {
+        return new Person("Unknown", 0);
+    }
+}
+
+class RecordDemo {
+    public static void main(String[] args) {
+        Person p = new Person("Alice", 30);
+        System.out.println(p.name()); // => Alice (auto-generated accessor)
+        System.out.println(p); // => Person[name=Alice, age=30] (toString)
+        System.out.println(p.equals(new Person("Alice", 30))); // => true
+    }
+}
 
 // Enum Type
 //
@@ -1030,6 +1072,386 @@ public class Lambdas {
         // methods.
     }
 }
+
+///////////////////////////////////////
+// Generics
+///////////////////////////////////////
+
+// Generics let you write classes, interfaces and methods that are
+// parameterized over a type, giving compile-time type safety without
+// duplicating code for every concrete type you want to support.
+
+// T is a placeholder for a type supplied when Box is used.
+class Box<T> {
+    private T content;
+
+    public void set(T content) {
+        this.content = content;
+    }
+
+    public T get() {
+        return content;
+    }
+}
+
+// Multiple type parameters are allowed.
+class Pair<K, V> {
+    private final K key;
+    private final V value;
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() { return key; }
+    public V getValue() { return value; }
+}
+
+// Bounded type parameters restrict T to a type (or a subtype of it). Here T
+// must be a Number or one of its subclasses, so doubleValue() is callable.
+class NumericBox<T extends Number> {
+    private final T number;
+
+    public NumericBox(T number) {
+        this.number = number;
+    }
+
+    public double doubled() {
+        return number.doubleValue() * 2;
+    }
+}
+
+class GenericsDemo {
+    // A generic method: the <T> before the return type declares a type
+    // parameter scoped to this method only, inferred from the argument.
+    static <T> T firstOf(List<T> list) {
+        return list.get(0);
+    }
+
+    // Wildcards:
+    // ? extends T -> some subtype of T; read-only access ("producer").
+    // ? super T   -> some supertype of T; write-only access ("consumer").
+    static double sumOfList(List<? extends Number> list) {
+        double sum = 0;
+        for (Number n : list) {
+            sum += n.doubleValue();
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Box<String> stringBox = new Box<>();
+        stringBox.set("hello");
+        System.out.println(stringBox.get()); // => hello
+
+        Pair<String, Integer> pair = new Pair<>("age", 30);
+        System.out.println(pair.getKey() + " = " + pair.getValue());
+
+        NumericBox<Integer> numBox = new NumericBox<>(21);
+        System.out.println(numBox.doubled()); // => 42.0
+
+        System.out.println(firstOf(List.of(1, 2, 3))); // => 1
+        System.out.println(sumOfList(List.of(1, 2, 3))); // => 6.0
+    }
+}
+
+///////////////////////////////////////
+// Exceptions
+///////////////////////////////////////
+
+// Java distinguishes checked exceptions (subclasses of Exception but not
+// RuntimeException; must be declared with `throws` or caught) from
+// unchecked exceptions (subclasses of RuntimeException; no declaration
+// required) and Errors (serious problems like OutOfMemoryError, not meant
+// to be caught).
+
+// A custom checked exception.
+class InsufficientFundsException extends Exception {
+    public InsufficientFundsException(String message) {
+        super(message);
+    }
+}
+
+// A custom unchecked exception.
+class InvalidAmountException extends RuntimeException {
+    public InvalidAmountException(String message) {
+        super(message);
+    }
+}
+
+class BankAccount {
+    private double balance;
+
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    // Checked exceptions must be declared in the method signature; callers
+    // are then forced to catch them or re-declare them.
+    public void withdraw(double amount) throws InsufficientFundsException {
+        if (amount < 0) {
+            // Unchecked - no `throws` declaration required.
+            throw new InvalidAmountException("amount can't be negative");
+        }
+        if (amount > balance) {
+            throw new InsufficientFundsException("not enough funds");
+        }
+        balance -= amount;
+    }
+}
+
+class ExceptionsDemo {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount(100);
+        try {
+            account.withdraw(150);
+        } catch (InsufficientFundsException e) {
+            System.out.println("Caught: " + e.getMessage());
+        } finally {
+            // finally always runs, whether or not an exception was thrown -
+            // useful for cleanup that must happen regardless.
+            System.out.println("Transaction attempt finished.");
+        }
+    }
+}
+
+///////////////////////////////////////
+// Collections & Comparator
+///////////////////////////////////////
+
+// The Collections Framework (java.util) is organized around a few core
+// interfaces: List (ordered, allows duplicates), Set (no duplicates), Map
+// (key -> value), and Queue/Deque (FIFO/LIFO access).
+
+import java.util.Set;
+import java.util.HashSet;
+import java.util.TreeSet;
+import java.util.TreeMap;
+import java.util.Comparator;
+import java.util.Collections;
+
+class CollectionsDemo {
+    public static void main(String[] args) {
+        // List - ordered, index-accessible, allows duplicates. ArrayList is
+        // backed by a resizable array: fast random access, slower inserts.
+        List<String> fruits = new ArrayList<>();
+        fruits.add("banana");
+        fruits.add("apple");
+        fruits.add("cherry");
+
+        // Set - no duplicates.
+        Set<String> hashSet = new HashSet<>(fruits); // no order guarantee
+        Set<String> treeSet = new TreeSet<>(fruits); // sorted, natural order
+        System.out.println(treeSet); // => [apple, banana, cherry]
+
+        // Map - keys map to values, keys are unique. TreeMap keeps keys
+        // sorted; HashMap (seen earlier) makes no ordering guarantee.
+        Map<String, Integer> stock = new TreeMap<>();
+        stock.put("apple", 1);
+        stock.put("banana", 2);
+        System.out.println(stock); // => {apple=1, banana=2}
+
+        // Comparator defines a custom ordering without touching the
+        // element's own compareTo(), so the same data can be sorted
+        // multiple different ways.
+        List<String> byLength = new ArrayList<>(fruits);
+        byLength.sort(Comparator.comparingInt(String::length));
+        System.out.println(byLength);
+
+        // Comparators compose: sort by length, break ties alphabetically,
+        // then reverse the whole ordering.
+        byLength.sort(
+            Comparator.comparingInt(String::length)
+                .thenComparing(Comparator.naturalOrder())
+                .reversed());
+        System.out.println(byLength);
+
+        // The Collections utility class holds common algorithms that work
+        // over any List/Set/Map.
+        Collections.sort(fruits);
+        Collections.reverse(fruits);
+        System.out.println("max: " + Collections.max(fruits));
+    }
+}
+
+///////////////////////////////////////
+// Streams & Optional (Java 8+)
+///////////////////////////////////////
+
+import java.util.stream.Collectors;
+import java.util.Optional;
+
+class StreamsDemo {
+    public static void main(String[] args) {
+        List<String> names = List.of("Ann", "Bob", "Cleo", "Dan", "Eve");
+
+        // A Stream describes a pipeline over a source of data. Intermediate
+        // operations (filter, map, sorted...) are lazy and return a new
+        // Stream; a terminal operation (collect, forEach, reduce...)
+        // triggers the actual processing, exactly once.
+        List<String> shortNamesUpper = names.stream()
+            .filter(name -> name.length() <= 3)
+            .map(String::toUpperCase)
+            .sorted()
+            .collect(Collectors.toList());
+        System.out.println(shortNamesUpper); // => [ANN, BOB, DAN, EVE]
+
+        // mapToInt + sum is a common way to reduce a stream to one number.
+        int totalLength = names.stream().mapToInt(String::length).sum();
+        System.out.println(totalLength);
+
+        // Collectors.groupingBy partitions elements into a Map keyed by a
+        // classifier function.
+        Map<Integer, List<String>> byLength =
+            names.stream().collect(Collectors.groupingBy(String::length));
+        System.out.println(byLength); // => {3=[Ann, Bob, Dan, Eve], 4=[Cleo]}
+
+        // Streams are single-use: once a terminal operation runs, that
+        // stream is consumed and can't be reused.
+
+        // Optional<T> represents a value that may or may not be present -
+        // an explicit, type-checked alternative to returning null.
+        Optional<String> zName = names.stream()
+            .filter(name -> name.startsWith("Z"))
+            .findFirst();
+        System.out.println(zName.isPresent()); // => false
+        System.out.println(zName.orElse("none found")); // => none found
+
+        // ifPresent avoids an explicit isPresent()/get() pair.
+        names.stream().findFirst().ifPresent(System.out::println);
+    }
+}
+
+///////////////////////////////////////
+// Pattern Matching & Sealed Types (Java 16+ / 17+ / 21+)
+///////////////////////////////////////
+
+// Sealed interfaces/classes (Java 17+) restrict which classes may implement
+// or extend them, listed explicitly via `permits`. That lets the compiler
+// verify a switch over the whole hierarchy is exhaustive, with no `default`
+// branch needed.
+sealed interface Shape permits Circle, Square, Rectangle {}
+record Circle(double radius) implements Shape {}
+record Square(double side) implements Shape {}
+record Rectangle(double width, double height) implements Shape {}
+
+class PatternMatchingDemo {
+    // Pattern matching for instanceof (Java 16+): the cast and the new
+    // variable declaration happen in one step. `str` is only in scope where
+    // the compiler can prove the instanceof check was true.
+    static void printLengthIfString(Object obj) {
+        if (obj instanceof String str) {
+            System.out.println(str.length());
+        }
+    }
+
+    // Switch expressions (Java 14+) use `->` (no fall-through) and can
+    // return a value directly, instead of assigning inside every case.
+    static String dayType(int day) {
+        return switch (day) {
+            case 6, 7 -> "Weekend";
+            default -> "Weekday";
+        };
+    }
+
+    // Pattern matching for switch (Java 21+) combines type patterns, record
+    // deconstruction, and exhaustiveness checking over a sealed hierarchy.
+    // No default branch is needed: Circle/Square/Rectangle are the only
+    // types Shape permits, so the compiler can prove every case is covered.
+    static double area(Shape shape) {
+        return switch (shape) {
+            case Circle c -> Math.PI * c.radius() * c.radius();
+            case Square s -> s.side() * s.side();
+            // Record deconstruction: pull width/height straight out of the
+            // pattern instead of calling the accessors yourself.
+            case Rectangle(double w, double h) -> w * h;
+        };
+    }
+
+    public static void main(String[] args) {
+        printLengthIfString("hello"); // => 5
+        System.out.println(dayType(6)); // => Weekend
+        System.out.println(area(new Circle(2))); // => 12.566370614359172
+        System.out.println(area(new Rectangle(3, 4))); // => 12.0
+    }
+}
+
+///////////////////////////////////////
+// Nested, Inner, Local & Anonymous Classes
+///////////////////////////////////////
+
+class Outer {
+    private int outerField = 10;
+
+    // A static nested class holds no reference to an Outer instance; it's
+    // effectively a regular class scoped inside Outer for namespacing.
+    static class StaticNested {
+        void greet() {
+            System.out.println("I'm static, no Outer instance needed.");
+        }
+    }
+
+    // A (non-static) inner class holds an implicit reference to the Outer
+    // instance that created it, so it can read Outer's instance fields.
+    class Inner {
+        void printOuterField() {
+            System.out.println("outerField = " + outerField);
+        }
+    }
+
+    void demoLocalAndAnonymous() {
+        // A local class is declared inside a method body and is only
+        // usable there - handy for a one-off helper type.
+        class Local {
+            void hello() {
+                System.out.println("Hello from a local class");
+            }
+        }
+        new Local().hello();
+
+        // An anonymous class declares and instantiates an unnamed subclass
+        // (or interface implementation) in a single expression. Common
+        // before lambdas existed; still useful when more than a single
+        // abstract method needs implementing.
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Running from an anonymous class");
+            }
+        };
+        r.run();
+    }
+}
+
+class NestedClassesDemo {
+    public static void main(String[] args) {
+        new Outer.StaticNested().greet();
+
+        Outer outer = new Outer();
+        Outer.Inner inner = outer.new Inner(); // note the outer.new syntax
+        inner.printOuterField();
+
+        outer.demoLocalAndAnonymous();
+    }
+}
+
+///////////////////////////////////////
+// Virtual Threads (Java 21+)
+///////////////////////////////////////
+
+// Virtual threads are lightweight threads scheduled by the JVM rather than
+// mapped 1:1 to OS threads. They let you write ordinary thread-per-task
+// blocking code (one thread per request/connection) that scales to huge
+// numbers of concurrent tasks without the memory cost of platform threads.
+class VirtualThreadsDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Thread vThread = Thread.ofVirtual().start(() -> {
+            System.out.println("Running in a virtual thread");
+        });
+        vThread.join(); // wait for it to finish
+    }
+}
 ```
 
 ## Further Reading
@@ -1047,10 +1469,18 @@ The links provided here below are just to get an understanding of the topic, fee
 * [Exceptions](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 * [Interfaces](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
 * [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
+* [Collections Framework](https://docs.oracle.com/javase/tutorial/collections/index.html)
 * [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
 * New features in Java 8:
     * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+    * [Streams API](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)
+    * [Optional](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html)
     * [Date and time API (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
+* New features in Java 16-21:
+    * [Records](https://docs.oracle.com/en/java/javase/17/language/records.html)
+    * [Sealed Classes](https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-interfaces.html)
+    * [Pattern Matching for switch](https://docs.oracle.com/en/java/javase/21/language/pattern-matching-switch-statements-and-expressions.html)
+    * [Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)
 
 ### Online Practice and Tutorials
 

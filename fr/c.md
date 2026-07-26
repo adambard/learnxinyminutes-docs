@@ -125,16 +125,6 @@ int main (int argc, char** argv)
   printf("sizeof(a++) = %zu où a = %d\n", size, a);
   // affiche "sizeof(a++) = 4 où a = 1" (sur une architecture 32 bits)
 
-  // Si l'argument de l'opérateur `sizeof` est une expression, alors son argument
-  // n'est pas évalué (sauf les VLAs (voir ci-dessous)).
-  // La valeur qu'elle donne dans ce cas est une constante évaluée au moment de la compilation.
-  int a = 1;
-  // size_t est un nombre de type entier non signé dont au moins 2 octets sont utilisés pour représenter
-  // la taille d'un objet.
-  size_t size = sizeof(a++); // a++ n'est pas évalué
-  printf("sizeof(a++) = %zu where a = %d\n", size, a);
-  // affiche "sizeof(a++) = 4 where a = 1" (sur une architecture 32-bit)
-
   // Les tableaux doivent être initialisés avec une taille concrète.
   char my_char_array[20]; // Ce tableau occupe 1 * 20 = 20 octets
   int my_int_array[20]; // Ce tableau occupe 4 * 20 = 80 octets
