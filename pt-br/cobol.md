@@ -1,6 +1,6 @@
 ---
 name: COBOL
-filename: learn.cob
+filename: learn-pt-br.cob
 contributors:
     - ["Hyphz", "https://github.com/hyphz/"]
 translators:
