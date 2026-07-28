@@ -554,8 +554,10 @@ generated cell or channel: `{DataMemorySize(n)}`, `{CodeMemorySize(n)}`,
   fork, branch `dev-andrii`, with the complete history imported from SVN;
   `docs/` holds the Oberon Language Report, the quick start guide and the
   concurrency framework paper
-* [minia2](https://github.com/active-oberon/minia2) — a small A2 that lets
-  you write console programs the way Go does
+* [minia2](https://github.com/active-oberon/minia2) — a Go style SDK:
+  compiler, language server and package manager in one Docker image. It
+  builds standalone Linux and Windows console programs, so you can write
+  Active Oberon without installing A2 at all
 * [a2-registry](https://active-oberon.github.io/a2-registry/) — descriptions
   of the A2 modules
 * [oberon.org](https://oberon.org/en) — catalogue of Oberon resources

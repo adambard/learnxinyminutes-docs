@@ -556,8 +556,10 @@ Active Cells (опис апаратури, генерація для FPGA) — �
   розвивають, гілка `dev-andrii`, з повною історією, перенесеною з SVN;
   у каталозі `docs/` лежать Oberon Language Report, короткий посібник і
   стаття про фреймворк паралелізму
-* [minia2](https://github.com/active-oberon/minia2) — невелика A2, у якій
-  можна писати консольні програми в стилі Go
+* [minia2](https://github.com/active-oberon/minia2) — SDK у стилі Go:
+  компілятор, мовний сервер і менеджер пакетів в одному образі Docker.
+  Збирає самодостатні консольні програми для Linux і Windows, тож писати
+  мовою Active Oberon можна взагалі без встановлення A2
 * [a2-registry](https://active-oberon.github.io/a2-registry/) — опис
   модулів A2
 * [oberon.org](https://oberon.org/en) — каталог ресурсів про Oberon
