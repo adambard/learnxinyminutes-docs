@@ -114,12 +114,12 @@ var array2 = [_]u8{ 1, 2, 3, 4, 5 };
 // [_] means the compiler knows the length at compile-time.
 
 // 1000-byte array with defined content (0).
-var array3 = [_]u8{0} ** 1000;
+var array3: [1000]u8 = @splat(0);
 
 // Another 1000-byte array with defined content.
 // The content is provided by the "foo" function, called at compile-time and
 // allows complex initializations.
-var array4 = [_]u8{foo()} ** 1000;
+var array4: [1000]u8 = @splat(foo());
 
 // In any case, array.len gives the length of the array,
 // array1.len and array2.len produce 5, array3.len and array4.len produce 1000.
@@ -810,7 +810,7 @@ fn general_purpose_allocator_fn() !void {
 
 // FixedBufferAllocator
 fn fixed_buffer_allocator_fn() !void {
-    var buffer = [_]u8{0} ** 1000; // array of 1000 u8, all initialized at zero.
+    var buffer: [1000]u8 = @splat(0); // array of 1000 u8, all zeros.
     var fba  = std.heap.FixedBufferAllocator.init(buffer[0..]);
     // Side note: buffer[0..] is a way to create a slice from an array.
     //            Since the function takes a slice and not an array, this makes
