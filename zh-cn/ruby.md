@@ -7,7 +7,7 @@ contributors:
   - ["Nick LaMuro", "https://github.com/NickLaMuro"]
   - ["Marcos Brizeno", "http://www.about.me/marcosbrizeno"]
   - ["Ariel Krakowski", "http://www.learneroo.com"]
-  - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+  - ["Dennis Dashkevich", "https://github.com/dskecse"]
   - ["Levi Bostian", "https://github.com/levibostian"]
   - ["Rahil Momin", "https://github.com/iamrahil"]
   - ["Gabriel Halley", "https://github.com/ghalley"]

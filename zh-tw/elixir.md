@@ -1,7 +1,7 @@
 ---
 contributors:
     - ["Joao Marques", "http://github.com/mrshankly"]
-    - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+    - ["Dennis Dashkevich", "https://github.com/dskecse"]
 translators:
     - ["Tai An Su", "https://github.com/taiansu"]
 ---
