@@ -863,7 +863,7 @@ println()
 //  #error("This would be a compile-time error")
 
 //Availability Conditions
-if #available(iOSMac 10.15, *) {
+if #available(macOS 10.15, *) {
     // macOS 10.15 is available, you can use it here
 } else {
     // macOS 10.15 is not available, use alternate APIs
