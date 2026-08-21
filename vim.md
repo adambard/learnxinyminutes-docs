@@ -122,10 +122,17 @@ Vim is based on the concept on **modes**.
     d                 # Delete whatever is selected
     dd                # Delete the current line
 
+
+                      # Delete ~ yank text and delete from file and start insert
+    c                 # Delete whatever is selected and start insert
+    cc                # Delete the current line and start insert.Synonym for S
+
     p                 # Paste text in vim register after the current cursor position
     P                 # Paste text in vim register before the current cursor position
 
     x                 # Delete character under current cursor position
+
+    s                 # Delete character under current cursor position and start insert
 ```
 
 ## The 'Grammar' of vim
@@ -171,7 +178,7 @@ A few important examples of 'Verbs', 'Modifiers', and 'Nouns':
     yip               # Yank inside paragraph (copy the para you're in)
     ct<               # Change to open bracket
                       # Change the text from where you are to the next open bracket
-    d$                # Delete till end of line
+    d$                # Delete till end of line.Synonym for "D"
 ```
 
 ## Some shortcuts and tricks
