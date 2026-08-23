@@ -141,6 +141,11 @@ can include line breaks.` // Same string type.
 	s = append(s, []int{7, 8, 9}...) // Second argument is a slice literal.
 	fmt.Println(s)                   // Updated slice is now [1 2 3 4 5 6 7 8 9]
 
+	// An empty struct with no fields - it takes no space in memory
+	// and is often used as a placeholder
+	empty := struct{}{}
+	fmt.Println("Empty struct", empty)
+
 	p, q := learnMemory() // Declares p, q to be type pointer to int.
 	fmt.Println(*p, *q)   // * follows a pointer. This prints two ints.
 
@@ -150,11 +155,17 @@ can include line breaks.` // Same string type.
 	m["one"] = 1
 	// Looking up a missing key returns the zero value,
 	// which is 0 in this case, since it's a map[string]int
-	m["key not present"] // 0
+	fmt.Println("Missing key produces:", m["key not present"]) // 0
 	// Check if a key is present in the map like this:
 	if val, ok := m["one"]; ok {
-		// Do something
+		fmt.Println("m contains key 'one' with value", val)
 	}
+
+	// Go has no built-in set type, but a map of keys->empty structs
+	// simulates one very well
+	set := map[string]struct{}{}
+	set["golang"] = struct{}{} // Add a key to the set
+	fmt.Println("Set:", set)
 
 	// Unused variables are an error in Go.
 	// The underscore lets you "use" a variable but discard its value.
@@ -335,11 +346,39 @@ type pair struct {
 	x, y int
 }
 
-// Define a method on type pair. Pair now implements Stringer because Pair has defined all the methods in the interface.
+// Define a method on type pair. Pair now implements Stringer because
+// Pair has defined all the methods in the interface.
 func (p pair) String() string { // p is called the "receiver"
 	// Sprintf is another public function in package fmt.
 	// Dot syntax references fields of p.
 	return fmt.Sprintf("(%d, %d)", p.x, p.y)
+}
+
+// User is capitalized and can be used outside this package
+// at least, it could be if this weren't a `main` package
+type User struct {
+	// Name is capitalized, and is therefore exported and able to
+	// be used outside of this package
+	Name string
+
+	// age is lowercase, and therefore not exported for use outside
+	// this package. It's kind of like a private data member
+	age int
+
+	// "pair" is embedded, so the user struct now
+	// additionally contains the fields of "pair"
+	pair
+
+	// fields in structs are stored in memory in-order, just like
+	// in C. That means sometimes re-ordering struct fields can
+	// have memory related implications
+	tag string
+}
+
+// User now also implements the Stringer interface
+func (u User) String() string {
+	// You can concetenate strings with the addition operator
+	return "User: " + u.Name
 }
 
 func learnInterfaces() {
@@ -351,6 +390,12 @@ func learnInterfaces() {
 	i = p                   // Valid because pair implements Stringer
 	// Call String method of i, of type Stringer. Output same as above.
 	fmt.Println(i.String())
+
+	i = User{
+		Name: "Boots",
+	}
+	fmt.Println(i.String()) // This works because user implements Stringer
+	// User: Boots
 
 	// Functions in the fmt package call the String method to ask an object
 	// for a printable representation of itself.
@@ -480,7 +525,11 @@ demonstrates the best of readable and understandable Go, Go style, and Go
 idioms. Or you can click on a function name in [the
 documentation](https://pkg.go.dev/std) and the source code comes up!
 
-Another great resource to learn Go is [Go by example](https://gobyexample.com/).
+Other great free resources include:
+
+- [Go by example](https://gobyexample.com/)
+- [Boot.dev's Learn Go course](https://www.boot.dev/courses/learn-golang)
+- [The Tour of Go](https://go.dev/tour/welcome/1)
 
 There are many excellent conference talks and video tutorials on Go available on YouTube, and here are three playlists of the very best, tailored for beginners, intermediate, and advanced Gophers respectively:
 
