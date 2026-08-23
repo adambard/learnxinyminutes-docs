@@ -167,7 +167,8 @@ b = u[{}]     -- We might expect 1729, but it's nil:
 function h(x) print(x.key1) end
 h{key1 = 'Sonmi~451'}  -- Prints 'Sonmi~451'.
 
-for key, val in pairs(u) do  -- Table iteration.
+-- caution: the ordering here is undefined!
+for key, val in pairs(u) do  -- Table iteration
   print(key, val)
 end
 
@@ -181,6 +182,12 @@ v = {'value1', 'value2', 1.21, 'gigawatts'}
 for i = 1, #v do  -- #v is the size of v for lists.
   print(v[i])  -- Indices start at 1 !! SO CRAZY!
 end
+
+-- Alternatively:
+-- ipairs() guarantees the same order every time
+for i, val in ipairs(v):
+  print("v[" .. i .. "] = " .. val)
+
 -- A 'list' is not a real type. v is just a table
 -- with consecutive integer keys, treated as a list.
 
