@@ -641,8 +641,6 @@ on a new line! ""Wow!"", the masses cried";
             foreach (string bike in query)
                 Console.WriteLine(result);
 
-
-
         }
 
     } // End LearnCSharp class
@@ -657,7 +655,6 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine(obj.ToString());
         }
     }
-
 
     // DELEGATES AND EVENTS
     public class DelegateTest
@@ -694,7 +691,6 @@ on a new line! ""Wow!"", the masses cried";
             // composedInc will run Increment 3 times
             Console.WriteLine(composedInc());  // => 4
 
-
             // Subscribe to the event with the delegate
             MyEvent += new IncrementDelegate(Increment);
             MyEvent += new IncrementDelegate(Increment);
@@ -704,7 +700,6 @@ on a new line! ""Wow!"", the masses cried";
             Console.WriteLine(MyEvent());  // => 6
         }
     }
-
 
     // Class Declaration Syntax:
     // <public/private/protected/internal> class <class name>{
@@ -901,7 +896,6 @@ on a new line! ""Wow!"", the masses cried";
             // Within a static method, we only can reference static class members
             return BicyclesCreated > 9000;
         } // If your class only needs static members, consider marking the class itself as static.
-
 
     } // end class Bicycle
 
@@ -1347,3 +1341,4 @@ namespace Csharp7
 * [LINQ Pocket Reference](http://shop.oreilly.com/product/9780596519254.do)
 * [Windows Forms Programming in C#](http://www.amazon.com/Windows-Forms-Programming-Chris-Sells/dp/0321116208)
 * [freeCodeCamp - C# Tutorial for Beginners](https://www.youtube.com/watch?v=GhQdlIFylQ8)
+
