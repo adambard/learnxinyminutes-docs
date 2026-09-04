@@ -170,24 +170,6 @@ for (mat4x4, 0..) |row, row_index| {
 }
 ```
 
-### Strings.
-
-```zig
-// Simple string constant.
-const greetings = "hello";
-// ... which is equivalent to:
-const greetings: *const [5:0]u8 = "hello";
-// In words: "greetings" is a constant value, a pointer on a constant array of 5
-// elements (8-bit unsigned integers), with an extra '0' at the end.
-// The extra "0" is called a "sentinel value".
-
-print("string: {s}\n", .{greetings});
-
-// This represents rather faithfully C strings. Although, Zig strings are
-// structures, no need for "strlen" to compute their size.
-// greetings.len == 5
-```
-
 ### Slices.
 
 ```zig
@@ -214,6 +196,35 @@ if (pointer.* == 1) {
 
 // ".?" is a shortcut for "orelse unreachable".
 const foo = pointer.?; // Get the pointed value, otherwise crash.
+```
+
+### Strings.
+
+```zig
+// String literals are pointers to constant, null-terminated arrays of bytes.
+const greetings = "hello";
+// ... which is equivalent to:
+const greetings: *const [5:0]u8 = "hello";
+// In words: a pointer to a constant array of 5 u8 (bytes), with a "sentinel"
+// 0 after the last element (indicated by `:0`). This layout is directly 
+// compatible with C strings.
+
+// Zig has no dedicated string type: a string is just a sequence of bytes,
+// conventionally UTF-8. The length is part of the type, no "strlen" needed.
+print("{s} has {} bytes\n", .{ greetings, greetings.len }); // hello has 5 bytes
+
+// In practice, strings are passed around as slices. A string literal coerces
+// to a slice automatically.
+const s: []const u8 = greetings;
+
+// Compare with std.mem.eql, not "==" (which would compare pointers).
+const same = std.mem.eql(u8, s, "hello"); // true
+
+// Multi-line strings: each line starts with "\\", no escaping needed.
+const poem =
+    \\Roses are red,
+    \\Violets are blue.
+;
 ```
 
 ### Optional values (?\<type\>).
