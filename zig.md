@@ -142,11 +142,8 @@ var some_integers: [10]i32 = undefined;
 var z = some_integers[20]; // index > array size, compilation error.
 
 // At runtime, we loop over the elements of "some_integers" with an index.
-// Index i = 20, then we try:
-try some_integers[i]; // Runtime error 'index out of bounds'.
-                      // "try" keyword is necessary when accessing an array with
-                      // an index, since there is a potential runtime error.
-                      // More on that later.
+// When index i = 20, then we get:
+var w = some_integers[i]; // Runtime error 'index out of bounds'.
 ```
 
 ### Multidimensional arrays.
