@@ -19,6 +19,10 @@ Swift is open source and also runs on Linux and Windows. The language is built w
 The official reference is *The Swift Programming Language* guide, available at [docs.swift.org](https://docs.swift.org/swift-book/documentation/the-swift-programming-language). This comprehensive guide is regularly updated with the latest Swift features and is the recommended starting point for learning the language.
 
 ```swift
+// MARK: - Compatibility
+// Compatibility: Swift 5.3
+// Language Mode: Swift 5
+
 // import a module
 import Foundation
 
