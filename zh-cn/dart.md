@@ -327,8 +327,9 @@ example22() {
 // Mixin 主要是用来和辅助的类共享方法的，
 // 这样单一继承就不会影响代码复用。
 // Mixin 声明在类定义的 "with" 关键词后面。
+// 在 Dart 2.1 之前：把一个普通的、没有构造函数的 class 当作 mixin 使用。新项目推荐使用 mixin
 class Example23A {}
-class Example23Utils {
+mixin Example23Utils {
   addTwo(n1, n2) {
     return n1 + n2;
   }
