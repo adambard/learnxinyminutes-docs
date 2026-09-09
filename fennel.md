@@ -1,5 +1,5 @@
 ---
-language: fennel
+name: fennel
 filename: learnfennel.fnl
 contributors:
     - ["Jesse Wattenbarger", "https://github.com/jjwatt"]
