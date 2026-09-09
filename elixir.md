@@ -2,7 +2,7 @@
 name: Elixir
 contributors:
     - ["Joao Marques", "https://github.com/mrshankly"]
-    - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+    - ["Dennis Dashkevich", "https://github.com/dskecse"]
     - ["Ryan Plant", "https://github.com/ryanplant-au"]
     - ["Ev Bogdanov", "https://github.com/evbogdanov"]
 filename: learnelixir.ex
