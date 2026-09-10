@@ -431,6 +431,7 @@ package main
 import "core:fmt"
 import "core:strings"
 import "core:os"
+import "core:math/linalg"
 
 // Import with alias
 import str "core:strings"
