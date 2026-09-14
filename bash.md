@@ -991,7 +991,7 @@ sed '5,10s/foo/bar/g' file.txt
 sed '/pattern/i\New line before' file.txt
 sed '/pattern/a\New line after'  file.txt
 
-# MISC SEFUL PATTERNS
+# MISC USEFUL PATTERNS
 
 # Assign a default only if variable is unset or empty (and persist it)
 : "${NAME:=DefaultName}"

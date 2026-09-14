@@ -87,7 +87,7 @@ $sgl_quotes = '$String'; // => '$String'
 // Avoid using double quotes except to embed other variables
 $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 
-// Special characters are only escaped in double quotes
+// Special characters are only interpreted in double quotes
 $escaped   = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 

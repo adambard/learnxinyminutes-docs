@@ -114,12 +114,12 @@ var array2 = [_]u8{ 1, 2, 3, 4, 5 };
 // [_] means the compiler knows the length at compile-time.
 
 // 1000-byte array with defined content (0).
-var array3 = [_]u8{0} ** 1000;
+var array3: [1000]u8 = @splat(0);
 
 // Another 1000-byte array with defined content.
 // The content is provided by the "foo" function, called at compile-time and
 // allows complex initializations.
-var array4 = [_]u8{foo()} ** 1000;
+var array4: [1000]u8 = @splat(foo());
 
 // In any case, array.len gives the length of the array,
 // array1.len and array2.len produce 5, array3.len and array4.len produce 1000.
@@ -142,11 +142,8 @@ var some_integers: [10]i32 = undefined;
 var z = some_integers[20]; // index > array size, compilation error.
 
 // At runtime, we loop over the elements of "some_integers" with an index.
-// Index i = 20, then we try:
-try some_integers[i]; // Runtime error 'index out of bounds'.
-                      // "try" keyword is necessary when accessing an array with
-                      // an index, since there is a potential runtime error.
-                      // More on that later.
+// When index i = 20, then we get:
+var w = some_integers[i]; // Runtime error 'index out of bounds'.
 ```
 
 ### Multidimensional arrays.
@@ -168,24 +165,6 @@ for (mat4x4, 0..) |row, row_index| {
         // ...
     }
 }
-```
-
-### Strings.
-
-```zig
-// Simple string constant.
-const greetings = "hello";
-// ... which is equivalent to:
-const greetings: *const [5:0]u8 = "hello";
-// In words: "greetings" is a constant value, a pointer on a constant array of 5
-// elements (8-bit unsigned integers), with an extra '0' at the end.
-// The extra "0" is called a "sentinel value".
-
-print("string: {s}\n", .{greetings});
-
-// This represents rather faithfully C strings. Although, Zig strings are
-// structures, no need for "strlen" to compute their size.
-// greetings.len == 5
 ```
 
 ### Slices.
@@ -214,6 +193,35 @@ if (pointer.* == 1) {
 
 // ".?" is a shortcut for "orelse unreachable".
 const foo = pointer.?; // Get the pointed value, otherwise crash.
+```
+
+### Strings.
+
+```zig
+// String literals are pointers to constant, null-terminated arrays of bytes.
+const greetings = "hello";
+// ... which is equivalent to:
+const greetings: *const [5:0]u8 = "hello";
+// In words: a pointer to a constant array of 5 u8 (bytes), with a "sentinel"
+// 0 after the last element (indicated by `:0`). This layout is directly 
+// compatible with C strings.
+
+// Zig has no dedicated string type: a string is just a sequence of bytes,
+// conventionally UTF-8. The length is part of the type, no "strlen" needed.
+print("{s} has {} bytes\n", .{ greetings, greetings.len }); // hello has 5 bytes
+
+// In practice, strings are passed around as slices. A string literal coerces
+// to a slice automatically.
+const s: []const u8 = greetings;
+
+// Compare with std.mem.eql, not "==" (which would compare pointers).
+const same = std.mem.eql(u8, s, "hello"); // true
+
+// Multi-line strings: each line starts with "\\", no escaping needed.
+const poem =
+    \\Roses are red,
+    \\Violets are blue.
+;
 ```
 
 ### Optional values (?\<type\>).
@@ -810,7 +818,7 @@ fn general_purpose_allocator_fn() !void {
 
 // FixedBufferAllocator
 fn fixed_buffer_allocator_fn() !void {
-    var buffer = [_]u8{0} ** 1000; // array of 1000 u8, all initialized at zero.
+    var buffer: [1000]u8 = @splat(0); // array of 1000 u8, all zeros.
     var fba  = std.heap.FixedBufferAllocator.init(buffer[0..]);
     // Side note: buffer[0..] is a way to create a slice from an array.
     //            Since the function takes a slice and not an array, this makes

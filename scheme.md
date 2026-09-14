@@ -1,6 +1,6 @@
 ---
-language: "Scheme" 
-filename: scheme.scm 
+name: "Scheme"
+filename: scheme.scm
 contributors:
 - ["Bruno G. Ciccarino", "https://github.com/xenodesire"]
 ---
@@ -39,7 +39,7 @@ A classic resource to learn Scheme is [Structure and Interpretation of Computer 
 
 ;;; REPL and environment
 
-;;; Scheme is typically developed interactively in a Read-Eval-Print Loop (REPL). 
+;;; Scheme is typically developed interactively in a Read-Eval-Print Loop (REPL).
 ;;; Implementations such as Racket, Guile, or MIT Scheme provide REPLs for interactive exploration.
 ;;; Libraries and tools can be installed depending on the specific implementation.
 

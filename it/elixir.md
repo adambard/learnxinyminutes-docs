@@ -2,7 +2,7 @@
 contributors:
     - ["Luca 'Kino' Maroni", "https://github.com/kino90"]
     - ["Joao Marques", "http://github.com/mrshankly"]
-    - ["Dzianis Dashkevich", "https://github.com/dskecse"]
+    - ["Dennis Dashkevich", "https://github.com/dskecse"]
 translators:
     - ["Tommaso Pifferi","http://github.com/neslinesli93"]
 ---
