@@ -104,7 +104,7 @@ gateways and routers.
 ### Math ###
   _math:
     # Remember to load your values into a register
-    lw $t0, num                             # From the data section
+    lw $t0, num1                            # From the data section
     li $t0, 5                               # Or from an immediate (constant)
     li $t1, 6
     add $t2, $t0, $t1                       # $t2 = $t0 + $t1
@@ -121,9 +121,9 @@ gateways and routers.
                                             # immediate (constant value) of 2
     sllv $t0, $t1, $t2                      # Shift left by a variable amount
                                             # in register
-    srl $t0, $t0, 5                         # Bitwise shift to the right (does 
-                                            # not sign preserve, sign-extends 
-                                            # with 0)
+    srl $t0, $t0, 5                         # Logical shift right: vacated
+                                            # high-order bits are filled with 0
+                                            # (does NOT preserve the sign bit)
     srlv $t0, $t1, $t2                      # Shift right by a variable amount 
                                             # in a register
     sra $t0, $t0, 7                         # Bitwise arithmetic shift to  
@@ -154,13 +154,13 @@ gateways and routers.
     bne $t0, $t1, reg_neq                   # Branches when $t0 != $t1
     b branch_target                         # Unconditional branch, will 
                                             # always execute
-    beqz $t0, req_eq_zero                   # Branches when $t0 == 0
-    bnez $t0, req_neq_zero                  # Branches when $t0 != 0
+    beqz $t0, reg_eq_zero                   # Branches when $t0 == 0
+    bnez $t0, reg_neq_zero                  # Branches when $t0 != 0
     bgt $t0, $t1, t0_gt_t1                  # Branches when $t0 > $t1
     bge $t0, $t1, t0_gte_t1                 # Branches when $t0 >= $t1
     bgtz $t0, t0_gt0                        # Branches when $t0 > 0
-    blt $t0, $t1, t0_gt_t1                  # Branches when $t0 < $t1
-    ble $t0, $t1, t0_gte_t1                 # Branches when $t0 <= $t1
+    blt $t0, $t1, t0_lt_t1                  # Branches when $t0 < $t1
+    ble $t0, $t1, t0_lte_t1                 # Branches when $t0 <= $t1
     bltz $t0, t0_lt0                        # Branches when $t0 < 0
     slt $s0, $t0, $t1                       # "Set on Less Than"
                                             # when $t0 < $t1 with result in $s0 
@@ -226,19 +226,22 @@ gateways and routers.
     li $t0, 0                               # Counter for i
     li $t1, 0                               # Counter for j
     matrix_row:
-      bgt $t0, 3, matrix_row_end
+      bgt $t0, 2, matrix_row_end          # Rows 0, 1, 2 (3 rows total)
 
+      li $t1, 0                           # Reset column counter each row
       matrix_col:
-        bgt $t1, 3, matrix_col_end
+        bgt $t1, 2, matrix_col_end        # Cols 0, 1, 2 (3 cols total)
 
         # Do stuff
 
         addi $t1, $t1, 1                  # Increment the col counter
+        j matrix_col                      # Jump back for next column
       matrix_col_end:
 
       # Do stuff
 
       addi $t0, $t0, 1
+      j matrix_row                        # Jump back for next row
     matrix_row_end:
 
 ## FUNCTIONS ##
@@ -319,9 +322,9 @@ gateways and routers.
 
     # Parameters can be passed in through macros.
     # These are denoted by a '%' sign with any name you choose
-    .macro print_int(%num)
+    .macro print_int(%reg)
       li $v0, 1
-      lw $a0, %num
+      move $a0, %reg                       # Move register value into $a0
       syscall
     .end_macro
     
@@ -330,7 +333,8 @@ gateways and routers.
     
     # We can also pass in immediates for macros
     .macro immediates(%a, %b)
-      add $t0, %a, %b
+      li $t0, %a
+      addi $t0, $t0, %b
     .end_macro
 
     immediates(3, 5)
