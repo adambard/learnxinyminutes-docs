@@ -316,7 +316,7 @@ else {
 // Ternary.
 var value = if (condition) x else y;
 
-// Shortcut for "if (x) x else 0"
+// Shortcut for "if (x) |value| value else 0"
 var value = x orelse 0;
 
 // If "a" is an optional, which may contain a value.
