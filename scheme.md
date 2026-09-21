@@ -7,7 +7,24 @@ contributors:
 
 Scheme is a minimalist dialect of Lisp that is widely used in education, research, and industry. It emphasizes simplicity, powerful abstractions, and functional programming paradigms.
 
+It is important to clarify that there is no single implementation of Scheme; rather, each implementation has its own characteristics and use cases, as I demonstrate in this table:
+
+| Implementation  | Characteristic  |
+|---|---|
+| Racket  | large ecosystem, custom extensions  |
+| GNU/Guile  | strong C/GNU integration  |
+| Chez Scheme  | fast/compiled implementation  |
+| Chicken  | compiles Scheme to C MIT/GNU Scheme	traditional/educational  |
+| Gambit  | compilation and embedded systems  |
+
 A classic resource to learn Scheme is [Structure and Interpretation of Computer Programs (SICP)](https://web.mit.edu/6.001/6.037/sicp.pdf). For a modern introduction, consider [The Scheme Programming Language](https://www.scheme.org/).
+
+To follow this tutorial, I strongly recommend using Emacs as your text editor, although you can have a very pleasant experience using Neovim + Conjure. 
+
+> When entering a relatively new field and just starting out, it is very easy to confuse the essence of what you are doing with the tools you are using. - Harold Abelson
+
+I think this specific quote captures much of what I’m trying to convey here.
+
 
 ```scheme
 ;;;-----------------------------------------------------------------------------
@@ -42,7 +59,6 @@ A classic resource to learn Scheme is [Structure and Interpretation of Computer 
 ;;; Scheme is typically developed interactively in a Read-Eval-Print Loop (REPL).
 ;;; Implementations such as Racket, Guile, or MIT Scheme provide REPLs for interactive exploration.
 ;;; Libraries and tools can be installed depending on the specific implementation.
-
 
 
 ;;;-----------------------------------------------------------------------------
@@ -181,6 +197,20 @@ x                      ; => 10 (unchanged globally)
 
 (factorial 5) ; => 120
 
+;;; Tail Recursion and Accumulators
+
+;;; Scheme implementations are required to support proper tail calls,
+;;; allowing recursive procedures to be used for iteration without
+;;; growing the call stack when the recursive call is in tail position.
+
+;;; An accumulator carries the partial result through each recursive call.
+
+(define (factorial n)
+  (define (iter n acc) ; => `n` represents the part of the problem still to process
+    (if (= n 0) 
+        acc ; => acc contains the result accumulated so far
+        (iter (- n 1) (* n acc))))
+  (iter n 1))
 
 ;;;-----------------------------------------------------------------------------
 ;;; 7. Libraries and modules
@@ -294,19 +324,21 @@ x                      ; => 10 (unchanged globally)
 
 ;;; Lazy evaluation (streams)
 
-(define (make-stream start step)
-  (cons start
-        (lambda () (make-stream (+ start step) step))))
+;;; Lazy evaluation is a form of computation in which values are not calculated until they are needed. in Elisp, you can implement something similar using these garbage collector (GC) settings:
+;;;
+;;; (setq gc-cons-threshold (* 512 1024 1024)
+;;;      gc-cons-percentage 0.6)
+;;;
+;;; (add-hook 'emacs-startup-hook
+;;;          (lambda ()
+;;;            (setq gc-cons-threshold (* 100 100 8)
+;;;                  gc-cons-percentage 0.1)))
+;;;
 
-(define nums (make-stream 0 1)) ; Infinite stream starting at 0, incrementing by 1
-
-(define (stream-ref stream n)
-  (if (= n 0)
-      (car stream)
-      (stream-ref ((cdr stream)) (- n 1))))
-
-(stream-ref nums 5) ; => 5
-
+(define lazyeval (delay (+ 1 2))) ; Value: lazyeval 
+(promise? lazyeval) ; Value 11: #[promise 11] return #t 
+(force lazyeval) ; Value: 3
+(* 10 (force lazyeval)) ; Value: 30
 
 ;;;-----------------------------------------------------------------------------
 ;;; 13. Meta-programming
