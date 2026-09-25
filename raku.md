@@ -35,7 +35,7 @@ Meta-note:
   (), [], {}, 「」, etc, will work.
 )
 
-=for comment
+=comment
 Use the same syntax for multiline comments to embed comments.
 for #`(each element in) @array {
     put #`(or print element) $_ #`(with newline);
@@ -74,30 +74,29 @@ my $str = 'String';
 # Double quotes allow for interpolation (which we'll see later):
 my $str2 = "$str";
 
-# Variable names can contain but not end with simple quotes and dashes,
+# Variable names can contain (but not end with) simple quotes and dashes,
 # and can contain (and end with) underscores:
-my $person's-belongings = 'towel'; # this works!
+my $person's-belongings_ = 'towel'; # this works!
 
-my $bool = True;             # `True` and `False` are Raku's boolean values.
-my $inverse = !$bool;        # Invert a bool with the prefix `!` operator.
-my $forced-bool = so $str;   # And you can use the prefix `so` operator
-$forced-bool = ?$str;        # to turn its operand into a Bool. Or use `?`.
+my $bool         = True;          # `True` and `False` are Raku's boolean values.
+my $inverse      = !$bool;        # Invert a bool with the prefix `!` operator.
+my $coerced-bool = so $str;       # And you can use the prefix operator `so`
+$forced-bool     = ?$str;         # to turn its operand into a Bool. Or you can use `?`.
 
 #
 # 1.2 Arrays and Lists
 #
 
 # Arrays represent multiple values. An array variable starts with the `@`
-# sigil. Unlike lists, from which arrays inherit, arrays are mutable.
+# sigil. Unlike lists (from which class arrays inherit), arrays are mutable.
 
 my @array = 'a', 'b', 'c';
-# equivalent to:
+# which is equivalent to:
 my @letters = <a b c>;
-# In the previous statement, we use the quote-words (`<>`) term for array
-# of words, delimited by space. Similar to perl's qw, or Ruby's %w.
+# In the previous statement, we use the quote-words (`<>`) term for an array
+# of words, delimited by space. (Similar to Perl's qw, or Ruby's %w.)
 
 @array = 1, 2, 4;
-
 # Array indices start at 0. Here the third element is being accessed.
 say @array[2]; # OUTPUT: «4␤»
 
@@ -121,8 +120,8 @@ say @array;               # OUTPUT: «a 6 b␤»
 # context, and any duplicated keys are deduplicated.
 my %hash = 'a' => 1, 'b' => 2;
 
-# Keys get auto-quoted when the fat comma (`=>`) is used. Trailing commas are
-# okay.
+# Keys get auto-quoted when the fat arrow (`=>`) is used.
+# By the way, trailing commas are okay.
 %hash = a => 1, b => 2, ;
 
 # Even though hashes are internally stored differently than arrays,
@@ -156,8 +155,8 @@ say %hash<is-even>; # OUTPUT: «True␤», gets value associated to key 'is-even
 # created with the `sub` keyword.
 sub say-hello { say "Hello, world" }
 
-# You can provide (typed) arguments. If specified, the type will be checked
-# at compile-time if possible, otherwise at runtime.
+# Parameters can have static typing. The type will be checked at compile-time
+# if possible, otherwise at runtime.
 sub say-hello-to( Str $name ) {
     say "Hello, $name !";
 }
@@ -182,8 +181,8 @@ sub return-for {
 }
 say return-for;        # OUTPUT: «Nil␤»
 
-# Positional arguments are required by default. To make them optional, use
-# the `?` after the parameters' names.
+# Positional parameters are required by default. To make a parameter optional, use
+# the `?` after the parameter's name.
 
 # In the following example, the sub `with-optional` returns `(Any)` (Perl's
 # null-like value) if no argument is passed. Otherwise, it returns its argument.
@@ -194,15 +193,14 @@ with-optional;     # returns Any
 with-optional();   # returns Any
 with-optional(1);  # returns 1
 
-# You can also give provide a default value when they're not passed. Doing
-# this make said parameter optional. Required parameters must come before
-# optional ones.
+# You can also give a default value to the positional paramater when they're
+# not passed. Doing this makes said parameter optional. 
+# Required parameters must come before optional ones.
 
 # In the sub `greeting`, the parameter `$type` is optional.
 sub greeting( $name, $type = "Hello" ) {
   say "$type, $name!";
 }
-
 greeting("Althea");                 # OUTPUT: «Hello, Althea!␤»
 greeting("Arthur", "Good morning"); # OUTPUT: «Good morning, Arthur!␤»
 
@@ -228,7 +226,7 @@ sub named-def( :$def = 5 ) {
 named-def;            # OUTPUT: «5»
 named-def(def => 15); # OUTPUT: «15»
 
-# In order to make a named parameter mandatory, you can append `!` to the
+# In order to make a named parameter mandatory, you append `!` to the
 # parameter. This is the inverse of `?`, which makes a required parameter
 # optional.
 
@@ -247,7 +245,7 @@ sub takes-a-bool( $name, :$bool ) {
 takes-a-bool('config', :bool);  # OUTPUT: «config takes True␤»
 takes-a-bool('config', :!bool); # OUTPUT: «config takes False␤»
 
-# Since parenthesis can be omitted when calling a subroutine, you need to use
+# Since parentheses can be omitted when calling a subroutine, you need to use
 # `&` in order to distinguish between a call to a sub with no arguments and
 # the code object.
 
@@ -273,7 +271,7 @@ say as-many('Happy', ['Happy', 'Birthday'], 'Day'); # OUTPUT: «Happy / Birthday
 # two are `**@` and `+@` known as unflattened slurpy and "single argument rule"
 # slurpy respectively. The unflattened slurpy doesn't flatten its listy
 # arguments (or Iterable ones).
-sub b(**@arr) { @arr.perl.say };
+sub b(**@arr) { @arr.raku.say };
 b(['a', 'b', 'c']);             # OUTPUT: «[["a", "b", "c"],]»
 b(1, $('d', 'e', 'f'), [2, 3]); # OUTPUT: «[1, ("d", "e", "f"), [2, 3]]»
 b(1, [1, 2], ([3, 4], 5));      # OUTPUT: «[1, [1, 2], ([3, 4], 5)]␤»
@@ -283,7 +281,7 @@ b(1, [1, 2], ([3, 4], 5));      # OUTPUT: «[1, [1, 2], ([3, 4], 5)]␤»
 # roughly states that if only a single argument is passed and that argument is
 # Iterable, that argument is used to fill the slurpy parameter array. In any
 # other case, `+@` works like `**@`.
-sub c(+@arr) { @arr.perl.say };
+sub c(+@arr) { @arr.raku.say };
 c(['a', 'b', 'c']);             # OUTPUT: «["a", "b", "c"]␤»
 c(1, $('d', 'e', 'f'), [2, 3]); # OUTPUT: «[1, ("d", "e", "f"), [2, 3]]␤»
 c(1, [1, 2], ([3, 4], 5));      # OUTPUT: «[1, [1, 2], ([3, 4], 5)]␤»
@@ -324,7 +322,7 @@ say $m;    # OUTPUT: «43␤»
 # Similar error would be obtained, if a bound variable is passed to
 # to the subroutine. In Raku, you bind a value to a variable using the binding
 # operator `:=`.
-my $v := 50; # binding 50 to the variable $v
+my $v := 50;   # binding $v to 50
 # mutate $v;   # Parameter '$n' expected a writable container, but got Int value
 
 # If what you want is a copy instead, use the `is copy` trait which will
@@ -343,7 +341,6 @@ sub y-store       { return-rw $y }
 # `x-store` and `y-store` are identifiers.
 x-store() = 52;
 y-store() *= 2;
-
 say $x; # OUTPUT: «52␤»
 say $y; # OUTPUT: «90␤»
 
@@ -352,7 +349,7 @@ say $y; # OUTPUT: «90␤»
 ####################################################
 
 #
-# 4.1 if/if-else/if-elsif-else/unless
+# 4.1 'if' / 'elsif' / 'else' / 'unless'
 #
 
 # Before talking about `if`, we need to know which values are "truthy"
@@ -393,7 +390,7 @@ say $age > 18 ?? "You are an adult" !! "You are under 18";
 # OUTPUT: «You are an adult␤»
 
 #
-# 4.2 with/with-else/with-orwith-else/without
+# 4.2 'with' / 'orwith' / 'without'
 #
 
 # The `with` statement is like `if`, but it tests for definedness rather than
@@ -418,7 +415,7 @@ say $input02 with $input02;               # OUTPUT: «Hello␤»
 say "No input given." without $input02;
 
 #
-# 4.3 given/when, or Raku's switch construct
+# 4.3 'given' / 'when' (or Raku's switch construct)
 #
 
 =begin comment
@@ -443,7 +440,7 @@ given "foo bar" {
     # Don't worry about smart matching yet. Just know `when` uses it. This is
     # equivalent to `if $_ ~~ /foo/`.
     when /foo/ {
-        say "Yay !";
+        say "Found term 'when' was testing for !";
     }
 
     # smart matching anything with `True` is `True`, i.e. (`$a ~~ True`)
@@ -501,7 +498,7 @@ for @odd-array <-> $variable {
     say "I've got $variable !";
 }
 
-# As we saw with `given`, a `for` loop's default "current iteration" variable
+# As we saw with `given`, a `for` loop's default "current iteration" parameter
 # is `$_`. That means you can use `when` in a `for`loop just like you were
 # able to in a `given`.
 for @odd-array {
@@ -539,12 +536,11 @@ operators are actually just funny-looking subroutines, in syntactic
 categories, like infix:<+> (addition) or prefix:<!> (bool not).
 
 The categories are:
-    - "prefix": before (like `!` in `!True`).
-    - "postfix": after (like `++` in `$a++`).
-    - "infix": in between (like `*` in `4 * 3`).
-    - "circumfix": around (like `[`-`]` in `[1, 2]`).
-    - "post-circumfix": around, after another term (like `{`-`}` in
-                   `%hash{'key'}`)
+    - "prefix":         before                     (like `!` in `!True`).
+    - "postfix":        after                      (like `++` in `$a++`).
+    - "infix":          in between                 (like `*` in `4 * 3`).
+    - "circumfix":      around                     (like `[`-`]` in `[1, 2]`).
+    - "post-circumfix": around, after another term (like `{`-`}` in `%hash{'key'}`)
 
 The associativity and precedence list are explained below.
 
@@ -618,7 +614,7 @@ say 3 ..^ 7;         # OUTPUT: «3..^7␤»,  exclude right endpoint.
 say 3 ^.. 7;         # OUTPUT: «3^..7␤»,  exclude left endpoint.
 say 3 ^..^ 7;        # OUTPUT: «3^..^7␤», exclude both endpoints.
 
-# The range 3 ^.. 7 is similar like 4 .. 7 when we only consider integers.
+# The range 3 ^.. 7 is nominal when we consider only integers, like 4 .. 7.
 # But when we consider decimals:
 
 say 3.5 ~~ 4 .. 7;	 # OUTPUT: «False␤»
@@ -632,7 +628,7 @@ say 3.5 ~~ 3 ^.. 7;	 # OUTPUT: «True␤»,
 say 3 ^.. 7 ~~ 4 .. 7; # OUTPUT: «False␤»
 
 # This also works as a shortcut for `0..^N`:
-say ^10;             # OUTPUT: «^10␤», which means 0..^10
+say ^10;             # OUTPUT: «^10␤» (which means 0..^10)
 
 # This also allows us to demonstrate that Raku has lazy/infinite arrays,
 # using the Whatever Star:
@@ -686,7 +682,7 @@ say (0 or False); # OUTPUT: «False␤».
 # it returns the last operand.
 my ($a, $b, $c, $d, $e) = 1, 0, False, True, 'pi';
 say $a && $b && $c; # OUTPUT: «0␤», the first falsey value
-say $a && $b && $c; # OUTPUT: «False␤», the first falsey value
+say $a && $c && $d; # OUTPUT: «False␤», the first falsey value
 say $a && $d && $e; # OUTPUT: «pi␤», last operand since everything before is truthy
 
 # `||` returns the first argument that evaluates to `True`.
@@ -722,7 +718,6 @@ say $h;                  # OUTPUT: «3␤»
 
 my ($head, *@tail) = 1, 2, 3; # Yes, it's the same as with "slurpy subs"
 my (*@small) = 1;
-
 sub unpack_array( @array [$fst, $snd] ) {
   say "My first is $fst, my second is $snd! All in all, I'm @array[].";
   # (^ remember the `[]` to interpolate the array)
@@ -731,7 +726,7 @@ unpack_array(@tail);
 # OUTPUT: «My first is 2, my second is 3! All in all, I'm 2 3.␤»
 
 # If you're not using the array itself, you can also keep it anonymous,
-# much like a scalar:
+# much like $_ for scalar variables:
 sub first-of-array( @ [$fst] ) { $fst }
 first-of-array(@small); #=> 1
 
@@ -742,7 +737,7 @@ first-of-array(@small); #=> 1
 # You can also use a slurpy parameter. You could keep `*@rest` anonymous
 # Here, `@rest` is `(3,)`, since `$fst` holds the `2`. This results
 # since the length (.elems) of `@rest` is 1.
-sub slurp-in-array(@ [$fst, *@rest]) {
+sub slurp-in-array( @ [$fst, *@rest] ) {
     say $fst + @rest.elems;
 }
 slurp-in-array(@tail); # OUTPUT: «3␤»
@@ -866,7 +861,7 @@ say $anon-sum(2, 3, 5); # OUTPUT: «10␤»
 
 # You can also use the Whatever Star to create an anonymous subroutine.
 # (it'll stop at the furthest operator in the current expression).
-# The following is the same as `{$_ + 3 }`, `-> { $a + 3 }`,
+# The following is the same as `{ $_ + 3 }`, `-> $a { $a + 3 }`,
 # `sub ($a) { $a + 3 }`, or even `{$^a + 3}` (more on this later).
 my @arrayplus3v0 = map * + 3, @nums;
 
@@ -1230,7 +1225,7 @@ class Item does PrintableVal {
 # X::AdHoc.new(payload => 'Error!').throw; # OUTPUT: «Error!␤»
 
 # In Raku, `orelse` is similar to the `or` operator, except it only matches
-# undefined variables instead of anything evaluating as `False`.
+# undefined values instead of anything evaluating as `False`.
 # Undefined values include: `Nil`, `Mu` and `Failure` as well as `Int`, `Str`
 # and other types that have not been initialized to any value yet.
 # You can check if something is defined or not using the defined method:
