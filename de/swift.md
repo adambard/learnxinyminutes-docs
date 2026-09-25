@@ -1,18 +1,28 @@
 ---
+name: Swift
 contributors:
   - ["Grant Timmerman", "http://github.com/grant"]
   - ["Christopher Bess", "http://github.com/cbess"]
-  - ["Joey Huang", "http://github.com/kamidox"]  
+  - ["Joey Huang", "http://github.com/kamidox"]
   - ["Anthony Nguyen", "http://github.com/anthonyn60"]
 translators:
-    - ["Jonas Wippermann", "http://vfuc.co"]
+  - ["Jonas Wippermann", "http://vfuc.co"]
 ---
 
-Swift ist eine Programmiersprache von Apple für die Entwicklung von iOS und macOS Applikationen. Swift wurde 2014 zu Apples WWDC Entwicklerkonferenz vorgestellt und wurde mit dem Ziel entwickelt, fehlerträchtigen Code zu vermeiden sowie mit Objective-C zu koexistieren. Es wird mit dem LLVM Compiler gebaut und ist ab Xcode 6+ verfügbar.
+Swift ist eine Programmiersprache von Apple für die Entwicklung von iOS und
+macOS Applikationen. Swift wurde 2014 zu Apples WWDC Entwicklerkonferenz
+vorgestellt und wurde mit dem Ziel entwickelt, fehlerträchtigen Code zu
+vermeiden sowie mit Objective-C zu koexistieren. Es wird mit dem LLVM Compiler
+gebaut und ist ab Xcode 6+ verfügbar.
 
-Das offizielle [Swift Programming Language](https://itunes.apple.com/us/book/swift-programming-language/id881256329) Buch von Apple ist kostenlos via Apple Books verfügbar.
+Das offizielle [Swift Programming Language](
+https://itunes.apple.com/us/book/swift-programming-language/id881256329)
+Buch von Apple ist kostenlos via Apple Books verfügbar.
 
-Außerdem hilfreich ist Apples [Getting Started Guide](https://developer.apple.com/library/prerelease/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html), ein guter Einstiegspunkt mit komplettem Swift-Tutorial.
+Außerdem hilfreich ist Apples [Getting Started Guide](
+https://developer.apple.com/library/prerelease/ios/referencelibrary/
+GettingStarted/RoadMapiOS/index.html), ein guter Einstiegspunkt mit
+komplettem Swift-Tutorial.
 
 ```swift
 // importiere ein Modul
@@ -29,21 +39,21 @@ import UIKit
 
 // In Swift 2 wurden println und print zusammengefasst in eine print-Methode. Es wird automatisch ein Zeilenumbruch angehängt.
 print("Hello, world!") // println ist jetzt print
-print("Hello, world!", appendNewLine: false) // printen ohne Zeilenumbruch am Ende
+print("Hello, world!", terminator: "") // printen ohne Zeilenumbruch am Ende
 
-// Variablen (var) können nach der Initialisierung verändert werden 
-// Konstanten (let) können nach der Initialisierung NICHT verändert werden 
+// Variablen (var) können nach der Initialisierung verändert werden
+// Konstanten (let) können nach der Initialisierung NICHT verändert werden
 
 var myVariable = 42
 let øπΩ = "value" // Unicode-Variablennamen
 let π = 3.1415926
 let convenience = "keyword" // Kontext-abhängiger Variablenname
-let weak = "keyword"; let override = "another keyword" // Instruktionen können durch ein Semikolon aufgeteilt werden
+let weak = "keyword"; let override = "another keyword" // Anweisungen können durch ein Semikolon aufgeteilt werden
 let `class` = "keyword" // Nutze "Backticks" um Schlüsselwörter als Variablennamen zu verwenden
 let explicitDouble: Double = 70 // Typ explizit festgelegt
 let intValue = 0007 // 7
 let largeIntValue = 77_000 // 77000
-let label = "some text " + String(myVariable) // Casting
+let label = "some text " + String(myVariable) // Typkonvertierung
 let piText = "Pi = \(π), Pi 2 = \(π * 2)" // String Interpolation
 
 // Build-spezifische Werte
@@ -64,7 +74,7 @@ print("Build value: \(buildValue)") // Build value: 7
     Optional<T> ist ein Enum.
 */
 var someOptionalString: String? = "optional" // Kann nil sein
-// Genau wie oben, aber ? ist ein postfix operator (Syntax Candy)
+// Genau wie oben, aber ? ist ein postfix operator (Syntaktische Vereinfachung)
 var someOptionalString2: Optional<String> = "optional"
 
 if someOptionalString != nil {
@@ -77,10 +87,10 @@ if someOptionalString != nil {
 }
 someOptionalString = nil
 
-// Implizit entpackter Optionalwert
+// Implizit entpackter Optionalwert (Implicitly Unwrapped Optionals)
 var unwrappedString: String! = "Value is expected."
-// Genau wie oben, aber ! ist ein postfix operator (noch mehr Syntax Candy)
-var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected."
+// Hinweis: ImplicitlyUnwrappedOptional<T> ist in modernem Swift veraltet. Verwende stattdessen T!.
+// var unwrappedString2: ImplicitlyUnwrappedOptional<String> = "Value is expected." // Veraltet
 
 if let someOptionalStringConstant = someOptionalString {
     // hat einen (`Some`) Wert, nicht nil
@@ -92,8 +102,8 @@ if let someOptionalStringConstant = someOptionalString {
 // Swift unterstützt das festlegen von Werten eines beliebigen Typens
 // AnyObject == id
 // Im Gegensatz zum Objective-C `id`, funktioniert AnyObject mit jeglichen Werten (Class, Int, struct, etc)
-var anyObjectVar: AnyObject = 7
-anyObjectVar = "Changed value to a string, not good practice, but possible."
+var anyVar: Any = 7
+anyVar = "Changed value to a string, not good practice, but possible."
 
 /*
     Ein Kommentar
@@ -108,7 +118,7 @@ anyObjectVar = "Changed value to a string, not good practice, but possible."
 //
 
 /*
-    Array und Dictionary-Typen sind structs. 
+    Array und Dictionary-Typen sind structs.
     Deswegen implizieren `let` und `var` bei der Initialisierung auch ob sie änderbar (var) oder unveränderlich (let) sind.
 */
 
@@ -157,10 +167,10 @@ for (key, value) in dict {
 }
 
 // for-Schleife (range)
-for i in -1...shoppingList.count {
+for i in -1..<shoppingList.count {
     print(i)
 }
-shoppingList[1...2] = ["steak", "peacons"]
+shoppingList[1...2] = ["steak", "pecans"]
 // ..< schließt letzte Nummer aus
 
 // while-Schleife
@@ -169,13 +179,13 @@ while i < 1000 {
     i *= 2
 }
 
-// do-while-Schleife
-do {
+// repeat-while-Schleife
+repeat {
     print("hello")
 } while 1 == 2
 
 // Switch
-// Sehr mächtig, wie `if` statement mit Syntax Candy
+// Sehr mächtig, wie `if` statement mit Syntaktische Vereinfachung
 // Unterstützt Strings, Objekt-Instanzen und primitive Typen (Int, Double, etc)
 let vegetable = "red pepper"
 switch vegetable {
@@ -212,13 +222,13 @@ default: // notwendig (um alle möglichen Eingaben zu verarbeiten)
 func greet(name: String, day: String) -> String {
     return "Hello \(name), today is \(day)."
 }
-greet("Bob", "Tuesday")
+_ = greet(name: "Bob", day: "Tuesday")
 
 // Ähnlich wie oben, bloß anderes Funktions-Parameter-Verhalten
-func greet2(#requiredName: String, externalParamName localParamName: String) -> String {
+func greet2(_ requiredName: String, externalParamName localParamName: String) -> String {
     return "Hello \(requiredName), the day is \(localParamName)"
 }
-greet2(requiredName:"John", externalParamName: "Sunday")
+_ = greet2("John", externalParamName: "Sunday")
 
 
 // Funktion, welche mehrere Werte in einem Tupel zurückgibt
@@ -240,24 +250,24 @@ func setup(numbers: Int...) {
 }
 
 // Funktionen übergeben und zurückgeben
-func makeIncrementer() -> (Int -> Int) {
+func makeIncrementer() -> ((Int) -> Int) {
     func addOne(number: Int) -> Int {
         return 1 + number
     }
     return addOne
 }
 var increment = makeIncrementer()
-increment(7)
+_ = increment(7)
 
 // Übergabe via Referenz ("Pass by reference")
-func swapTwoInts(inout a: Int, inout b: Int) {
+func swapTwoInts(a: inout Int, b: inout Int) {
     let tempA = a
     a = b
     b = tempA
 }
 var someIntA = 7
 var someIntB = 3
-swapTwoInts(&someIntA, &someIntB)
+swapTwoInts(a: &someIntA, b: &someIntB)
 print(someIntB) // 7
 
 
@@ -268,33 +278,36 @@ var numbers = [1, 2, 6]
 
 // Funktionen sind besondere Closures ({})
 
-// Closure Beispiel
-// `->` teilt Parameter und Rückgabe-Typ
-// `in` teilt den Closure Header vom Body
-numbers.map({
-    (number: Int) -> Int in
-    let result = 3 * number
-    return result
+// Closure-Beispiel:
+// `->` trennt Parameter und Rückgabetyp
+// `in` trennt den Closure-Header vom Body
+numbers = numbers.map({
+(number: Int) -> Int in
+let result = 3 * number
+return result
 })
 
-
-// Wenn der Typ bekannt ist, wie oben, kann folgendes getan werden
-numbers = numbers.map({ number in 3 * number })
-// oder sogar dies
-//numbers = numbers.map({ $0 * 3 })
+// Wenn der Typ bekannt ist, kann die Schreibweise verkürzt werden:
+numbers = numbers.map { number in 3 * number }
 
 print(numbers) // [3, 6, 18]
 
-// "Schleppende Closure" (Trailing Closure)
-numbers = sorted(numbers) { $0 > $1 }
+
+// --- Drei Möglichkeiten zur Sortierung von Arrays ---
+
+// 1. Sortieren in standardmäßig aufsteigender Reihenfolge (liefert ein neues Array)
+numbers.sort()
+
+// 2. Sortieren mit einer expliziten Closure-Bedingung (absteigend)
+numbers = numbers.sorted(by: { $0 > $1 })
 
 print(numbers) // [18, 6, 3]
 
-// Sehr verkürzt, da sich der Typ durch den < Operator ableiten lässt
-
-numbers = sorted(numbers, < )
+// 3. Kürzeste Schreibweise durch direkte Übergabe des Operators (< für aufsteigend)
+numbers = numbers.sorted(by: <)
 
 print(numbers) // [3, 6, 18]
+
 
 //
 // MARK: Strukturen
@@ -303,16 +316,16 @@ print(numbers) // [3, 6, 18]
 
 // Structures und Klassen haben sehr ähnliche Fähigkeiten
 struct NamesTable {
-    let names = [String]()
+    let names: [String]
     
-    // Eigendefiniertes subscript
+    // Eigenes Subscript
     subscript(index: Int) -> String {
         return names[index]
     }
 }
 
 
-// Strukturen haben eine automatisch generierte, designierte Initialisierungsfunktion
+// Strukturen haben eine automatisch generierte, designierte Initializer
 let namesTable = NamesTable(names: ["Me", "Them"])
 let name = namesTable[1]
 print("Name is \(name)") // Name is Them
@@ -324,6 +337,7 @@ print("Name is \(name)") // Name is Them
 // Klassen, Strukturen und deren Member haben drei Ebenen der Zugriffskontrolle
 // Es gibt: internal (default), public, private
 
+// In modernem Swift muss Shape nicht mehr von NSObject erben, um @objc-Protokolle zu verwenden.
 public class Shape {
     public func getArea() -> Int {
         return 0;
@@ -348,7 +362,7 @@ internal class Rect: Shape {
         }
     }
     
-    // "Lazy" (faules) Laden einer Property, sie bleibt uninitialisiert (nil),
+    // "Lazy" verzögerte Initialisierung einer Property, sie bleibt uninitialisiert (nil),
     // bis sie aufgerufen wird
     lazy var subShape = Rect(sideLength: 4)
     
@@ -356,7 +370,7 @@ internal class Rect: Shape {
     // aber trotzdem Code vor und nach dem Setzen eines Variablenwertes laufen soll,
     // kann "willSet" und "didSet" benutzt werden
     var identifier: String = "defaultID" {
-        // der `willSet` Parameter wird der Variablenname für den neuen Wert sein 
+        // der `willSet` Parameter wird der Variablenname für den neuen Wert sein
         willSet(someIdentifier) {
             print(someIdentifier)
         }
@@ -394,7 +408,7 @@ print(mySquare.sideLength) // 4
 // Casten der Instanz
 let aShape = mySquare as Shape
 
-// Vergleiche Instanzen, nicht äquivalent zum == , welches Objekte vergleicht ("equal to") 
+// Vergleiche Instanzen, nicht äquivalent zum == , welches Objekte vergleicht ("equal to")
 if mySquare === mySquare {
     print("Yep, it's mySquare")
 }
@@ -419,13 +433,13 @@ class Circle: Shape {
 }
 
 var myCircle = Circle(radius: 1)
-print(myCircle?.getArea())    // Optional(3)
+print(myCircle?.getArea() as Any)    // Optional(3)
 print(myCircle!.getArea())    // 3
 var myEmptyCircle = Circle(radius: -1)
-print(myEmptyCircle?.getArea())    // "nil"
+print(myEmptyCircle?.getArea() as Any)    // "nil"
 if let circle = myEmptyCircle {
     // wird nicht ausgeführt, da myEmptyCircle nil ist
-    print("circle is not nil")
+    print("circle \(circle) is not nil")
 }
 
 
@@ -500,8 +514,8 @@ protocol ShapeGenerator {
 // Protocols mit @objc deklariert ermöglichen optionale Funktionen,
 // welche es ermöglichen, abzufragen ob ein Typ einem Protokoll entspricht
 @objc protocol TransformShape {
-    optional func reshaped()
-    optional func canReshape() -> Bool
+    @objc optional func reshaped()
+    @objc optional func canReshape() -> Bool
 }
 
 class MyShape: Rect {
@@ -513,7 +527,7 @@ class MyShape: Rect {
         // Ein Fragezeichen nach einer optionalen Property, Methode oder Subscript
         // ignoriert elegant Nil-Werte und geben nil zurück, anstatt einen Laufzeitfehler zu werfen
         // Dies wird "optional Chaining" (optionale Verkettung) genannt
-        if let allow = self.delegate?.canReshape?() {
+        if let allow = self.delegate?.canReshape?(), allow {
             // frage erst nach delegate, dann nach Methode
             self.delegate?.reshaped?()
         }
@@ -527,8 +541,8 @@ class MyShape: Rect {
 
 // `extension`s: (Erweiterungen), erweitere Typen um zusätzliche Funktionalität
 
-// Square entspricht jetzt dem `Printable` Protokoll
-extension Square: Printable {
+// Square entspricht jetzt dem `Printable` Protokoll (CustomStringConvertible)
+extension Square: CustomStringConvertible {
     var description: String {
         return "Area: \(self.getArea()) - ID: \(self.identifier)"
     }
@@ -542,7 +556,7 @@ extension Int {
         return "This is \(self)"
     }
     
-    func multiplyBy(num: Int) -> Int {
+    func multiplyBy(_ num: Int) -> Int {
         return num * self
     }
 }
@@ -554,8 +568,8 @@ print(14.multiplyBy(3)) // 42
 //Generics: Ähnlich zu Java und C#. Nutze das `where` keyword um die Bedingung
 // des Generics festzulegen
 
-func findIndex<T: Equatable>(array: [T], valueToFind: T) -> Int? {
-    for (index, value) in enumerate(array) {
+func findIndex<T: Equatable>(_ array: [T], _ valueToFind: T) -> Int? {
+    for (index, value) in array.enumerated() {
         if value == valueToFind {
             return index
         }
@@ -570,11 +584,11 @@ print(foundAtIndex == 2) // true
 //      / = - + * % < > ! & | ^ . ~
 // oder
 // Unicode Mathematik, Symbole, Pfeile, Dingbat, und Linien/Box - Zeichen
-prefix operator !!! {}
+prefix operator !!!
 
 
 // Ein Prefix-Operator, welcher die Seitenlänge verdreifacht
-prefix func !!! (inout shape: Square) -> Square {
+prefix func !!! (shape: inout Square) -> Square {
     shape.sideLength *= 3
     return shape
 }
@@ -583,6 +597,6 @@ prefix func !!! (inout shape: Square) -> Square {
 print(mySquare.sideLength) // 4
 
 // Wert nach Verwendung des eigenen Operators
-!!!mySquare
+_ = !!!mySquare
 print(mySquare.sideLength) // 12
 ```
