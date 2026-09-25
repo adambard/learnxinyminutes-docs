@@ -3,9 +3,10 @@ contributors:
   - ["Bob DuCharme", "http://bobdc.com/"]
 translators:
   - ["jovinoguerrero", "https://github.com/jovinoguerrero"]
+  - ["joaoprbrasil", "https://github.com/joaoprbrasil"]
 ---
 
-A linguagem de consulta estruturada (SQL em inglês) é uma linguagem padrão ISO para criar e trabalhar com bancos de dados armazenados num conjunto de tabelas. As implementações geralmente adicionam suas próprias extensões à linguagem; [Comparação entre diferentes implementações de SQL](http://troels.arvin.dk/db/rdbms/) é uma boa referência sobre as diferenças entre os diferentes produtos.
+O SQL (Linguagem de Consulta Estruturada, em português) é uma linguagem padrão ISO para criar e trabalhar com bancos de dados armazenados num conjunto de tabelas. As implementações geralmente adicionam suas próprias extensões à linguagem; [Comparação entre diferentes implementações de SQL](http://troels.arvin.dk/db/rdbms/) é uma boa referência sobre as diferenças entre os diferentes produtos.
 
 As implementações normalmente fornecem uma linha de comando onde se pode digitar os comandos mostrados aqui de forma interativa, e também oferecem uma maneira de executar uma série desses comandos armazenados em um arquivo de script (mostrar que é feito com o prompt interativo é um bom exemplo de algo que não é padronizado - a maioria das implementações SQL suporta as palavras-chave QUIT, EXIT ou ambas).
 
@@ -32,18 +33,18 @@ SHOW DATABASES;
 -- Usa um determinado banco de dados existente.
 USE employees;
 
--- Seleciona todas as filas e colunas da tabela de departamentos no banco
+-- Seleciona todas as linhas e colunas da tabela de departamentos no banco
 -- de dados atual. A atividade padrão é o intérprete rolar os resultados
 -- na tela.
 SELECT * FROM departments;
 
--- Recupera todas as filas da tabela de departamentos, mas apenas as colunas
+-- Recupera todas as linhas da tabela de departamentos, mas apenas as colunas
 -- dept_no e dept_name.
 -- A separação de comandos em várias linhas é permitida.
 SELECT dept_no,
        dept_name FROM departments;
 
--- Obtém todas as colunas de departments, mas é limitado a 5 filas.
+-- Obtém todas as colunas de departments, mas é limitado a 5 linhas.
 SELECT * FROM departments LIMIT 5;
 
 -- Obtém os valores da coluna dept_name da tabela de departments quando
@@ -62,10 +63,10 @@ SELECT DISTINCT title FROM titles;
 -- maiúsculas de minúsculas).
 SELECT DISTINCT title FROM titles ORDER BY title;
 
--- Mostra o número de filas da tabela departments.
+-- Mostra o número de linhas da tabela departments.
 SELECT COUNT(*) FROM departments;
 
--- Mostra o número de filas da tabela departments que contém 'en' como
+-- Mostra o número de linhas da tabela departments que contém 'en' como
 -- substring na coluna dept_name.
 SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 
@@ -74,7 +75,7 @@ SELECT COUNT(*) FROM departments WHERE dept_name LIKE '%en%';
 -- e desde que data até que data. Esta informação é obtida, mas em vez do
 -- número do funcionário é usada como referência cruzada a tabela employee
 -- para obter o nome e sobrenome de cada funcionário (e limita os resultados
---  a 10 filas).
+--  a 10 linhas).
 SELECT employees.first_name, employees.last_name,
        titles.title, titles.from_date, titles.to_date
 FROM titles INNER JOIN employees ON
@@ -95,15 +96,15 @@ CREATE TABLE tablename1 (fname VARCHAR(20), lname VARCHAR(20));
 -- definida para aceitar esses valores como adequados.
 INSERT INTO tablename1 VALUES('Richard','Mutt');
 
--- Em tablename1, se altera o valor de fname para 'John' em todas as filas que
+-- Em tablename1, se altera o valor de fname para 'John' em todas as linhas que
 -- contenham um valor em lname igual a 'Mutt'.
 UPDATE tablename1 SET fname='John' WHERE lname='Mutt';
 
--- Se excluem as filas da tabela tablename1 em que o valor de lname começa
+-- Se excluem as linhas da tabela tablename1 em que o valor de lname começa
 -- com 'M'.
 DELETE FROM tablename1 WHERE lname like 'M%';
 
--- Se excluem as filas da tabela tablename1, deixando a tabla vazia.
+-- Se excluem as linhas da tabela tablename1, deixando a tabla vazia.
 DELETE FROM tablename1;
 
 -- A tabela tablename1, é excluída completamente.
