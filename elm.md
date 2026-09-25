@@ -2,6 +2,7 @@
 name: Elm
 contributors:
     - ["Max Goldstein", "http://maxgoldste.in/"]
+    - ["Wolfgang Schuster"]
 filename: learnelm.elm
 ---
 
@@ -11,7 +12,7 @@ errors immediately and provides a clear and understandable error message. Elm is
 great for designing user interfaces and games for the web.
 
 
-```haskell
+```elm
 -- Single line comments start with two dashes.
 {- Multiline comments can be enclosed in a block like this.
 {- They can be nested. -}
@@ -283,14 +284,19 @@ leftmostElement tree =
 -- The core libraries are organized into modules, as are any third-party
 -- libraries you may use. For large projects, you can define your own modules.
 
--- Put this at the top of the file. If omitted, you're in Main.
-module Name where
+-- Put this at the top of the file. (..) means exposing all.
+module Name exposing (..)
 
--- By default, everything is exported. You can specify exports explicitly.
-module Name (MyType, myValue) where
+-- You can specify exports explicitly.
+module Name exposing (MyType, myValue)
 
 -- One common pattern is to export a custom type but not its type variants. This is known
 -- as an "opaque type", and is frequently used in libraries.
+
+module Name exposing (Secret)
+
+type Secret = One | Two
+
 
 -- Import code from other modules to use it in this one.
 -- Places Dict in scope, so you can call Dict.insert.
@@ -306,25 +312,48 @@ import Graphics.Collage as C
 {-- Ports --}
 
 -- A port indicates that you will be communicating with the outside world.
--- Ports are only allowed in the Main module.
+-- A module with ports must have the word `port` before module.
 
--- An incoming port is just a type signature.
-port clientID : Int
+port module Name exposing (..)
 
--- An outgoing port has a definition.
-port clientOrders : List String
-port clientOrders = ["Books", "Groceries", "Furniture"]
+-- An port is just a type signature.
+-- This is an incoming port that you would subscribe to.
+port clientID : (Int -> msg) -> Sub msg
 
--- We won't go into the details, but you set up callbacks in JavaScript to send
+-- An outgoing port.
+port clientOrders : List String -> Cmd msg
+
+-- You set up callbacks in JavaScript to send
 -- on incoming ports and receive on outgoing ports.
+port module Name exposing (toJs, fromJs)
+
+port toJs : String -> Cmd msg
+
+port fromJs : (String -> msg) -> Sub msg
+
+{-
+    var app = Elm.Name.init();
+
+    app.ports.toJs.subscribe(function(someStr) {
+      console.log(someStr);
+    });
+
+    app.ports.fromJs.send("ping");
+-}
 
 {-- Command Line Tools --}
+
+-- Initialize a project.
+$ elm init
+
+-- The first time you do this, Elm will create elm.json,
+-- where information about your project is kept.
 
 -- Compile a file.
 $ elm make MyFile.elm
 
--- The first time you do this, Elm will install the core libraries and create
--- elm-package.json, where information about your project is kept.
+-- The first time you do this, Elm will download the your dependencies and create
+-- elm-stuff/.
 
 -- The reactor is a server that compiles and runs your files.
 -- Click the wrench next to file names to enter the time-travelling debugger!
@@ -334,11 +363,11 @@ $ elm reactor
 $ elm repl
 
 -- Packages are identified by GitHub username and repo name.
--- Install a new package, and record it in elm-package.json.
-$ elm package install elm-lang/html
+-- Install a new package, and record it in elm.json.
+$ elm install elm/json
 
 -- See what changed between versions of a package.
-$ elm package diff elm-lang/html 1.1.0 2.0.0
+$ elm diff elm/html 1.1.0 2.0.0
 -- Elm's package manager enforces semantic versioning, so minor version bumps
 -- will never break your build!
 ```
@@ -354,11 +383,11 @@ Here are some useful resources.
   * [Documentation guides](http://elm-lang.org/docs), including the [syntax reference](http://elm-lang.org/docs/syntax)
   * Lots of helpful [examples](http://elm-lang.org/examples)
 
-* Documentation for [Elm's core libraries](http://package.elm-lang.org/packages/elm-lang/core/latest/). Take note of:
-  * [Basics](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics), which is imported by default
-  * [Maybe](http://package.elm-lang.org/packages/elm-lang/core/latest/Maybe) and its cousin [Result](http://package.elm-lang.org/packages/elm-lang/core/latest/Result), commonly used for missing values or error handling
-  * Data structures like [List](http://package.elm-lang.org/packages/elm-lang/core/latest/List), [Array](http://package.elm-lang.org/packages/elm-lang/core/latest/Array), [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict), and [Set](http://package.elm-lang.org/packages/elm-lang/core/latest/Set)
-  * JSON [encoding](http://package.elm-lang.org/packages/elm-lang/core/latest/Json-Encode) and [decoding](http://package.elm-lang.org/packages/elm-lang/core/latest/Json-Decode)
+* Documentation for [Elm's core libraries](http://package.elm-lang.org/packages/elm/core/latest/). Take note of:
+  * [Basics](http://package.elm-lang.org/packages/elm/core/latest/Basics), which is imported by default
+  * [Maybe](http://package.elm-lang.org/packages/elm/core/latest/Maybe) and its cousin [Result](http://package.elm-lang.org/packages/elm/core/latest/Result), commonly used for missing values or error handling
+  * Data structures like [List](http://package.elm-lang.org/packages/elm/core/latest/List), [Array](http://package.elm-lang.org/packages/elm/core/latest/Array), [Dict](http://package.elm-lang.org/packages/elm/core/latest/Dict), and [Set](http://package.elm-lang.org/packages/elm/core/latest/Set)
+  * JSON [encoding](http://package.elm-lang.org/packages/elm/json/latest/Json-Encode) and [decoding](http://package.elm-lang.org/packages/elm/json/latest/Json-Decode)
 
 * [The Elm Architecture](https://github.com/evancz/elm-architecture-tutorial#the-elm-architecture). An essay by Elm's creator with examples on how to organize code into components.
 
