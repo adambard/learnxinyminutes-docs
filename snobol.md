@@ -10,7 +10,7 @@ filename: learn.sbl
 * systems.
 * 
 * Comments are prefixed by *, which also doubles as the multiplication sign, 
-* only being able to be declared in the label part of a line..
+* only being able to be declared in the label part of a line.
 * 
 * Every line in SNOBOL consists of 5 optional parts:
 *     [label] [subject] [pattern] [replacement] [goto]
@@ -96,7 +96,7 @@ END
 *
 * 
 * Now for the really special part: Pattern Matching. The simplest form of 
-* attern matching is just a [subject] with a [pattern]. Only the [subject] 
+* pattern matching is just a [subject] with a [pattern]. Only the [subject]
 * requires parentheses.
 	"Hello" "EL"
 * The other form of pattern matching is the Replacement Statement, taking the 
@@ -104,9 +104,9 @@ END
 	WORD = "This is BAD"
 	WORD 'BAD' = "GOOD"
 * This replaces BAD with GOOD.
-* There are also two operations for more complex patterns, alteration with |, 
+* There are also two operations for more complex patterns, alternation with |,
 * the pipe, and concatenation, as explained before. Concatenation has precedence 
-* over alteration. For example:
+* over alternation. For example:
 	STATEMENT = "The animal goes barks woof"
 	STATEMENT ("barks" | "goes") " " ("woof" "yip")
 
@@ -139,26 +139,26 @@ D1 OUTPUT = S :(RETURN)
 ENDPRINT
 
 	PRINT("TEST!")
-* DEFINE is a built-in function to define the functions, followed the inputs, 
+* DEFINE is a built-in function to define the functions, followed by the inputs,
 * then a comma and the entry label for the function. By default it's the
 * name of the function. One must also define an endpoint for the function in the
-* success goto, which can be any free name. The RETURN goto retuns a success.
+* success goto, which can be any free name. The RETURN goto returns a success.
 * Then FRETURN is a special goto that returns a failure. In the end, "TEST!"
 * should be printed.
 
 * Function with return values:
-	DEFINE("RETURN_SQRT(X, Y)")		:S(ENDSQRT)
+	DEFINE("RETURN_SQRT(X,Y)")		:S(ENDSQRT)
 RETURN_SQRT RETURN_SQRT = x ** (1.0 / Y) 	:S(RETURN) F(FRETURN)
 ENDSQRT
 
 	OUTPUT = RETURN_SQRT(25, 2)
 * To give a function a return value, one simply assigns a value to its name as if
-* it were a variable. Note that for non-integer numbers  to exist one must use 
+* it were a variable. Note that for non-integer numbers to exist one must use
 * REALS. Here the result should be 5.
 
 END
 
-* This isn't a full description of the language (For example there are more 
+* This isn't a full description of the language (for example there are more
 * built-in elements than shown here), but should be enough for a beginner to it 
 * to start out.
 ```
