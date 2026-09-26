@@ -147,7 +147,7 @@ ENDPRINT
 * should be printed.
 
 * Function with return values:
-	DEFINE("RETURN_SQRT(X, Y)")		:S(ENDSQRT)
+	DEFINE("RETURN_SQRT(X,Y)")		:S(ENDSQRT)
 RETURN_SQRT RETURN_SQRT = x ** (1.0 / Y) 	:S(RETURN) F(FRETURN)
 ENDSQRT
 
