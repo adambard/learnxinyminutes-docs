@@ -96,7 +96,7 @@ END
 *
 * 
 * Now for the really special part: Pattern Matching. The simplest form of 
-* attern matching is just a [subject] with a [pattern]. Only the [subject] 
+* pattern matching is just a [subject] with a [pattern]. Only the [subject]
 * requires parentheses.
 	"Hello" "EL"
 * The other form of pattern matching is the Replacement Statement, taking the 
