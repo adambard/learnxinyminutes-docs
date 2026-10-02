@@ -93,8 +93,9 @@ $$ conditionals
     $$ eax is zero
 }
 
-.elsif (@eax > 0 and (@eax < 2)) {
-    $$ eax is one
+$$ use parenthesis to control order of operations
+.elsif (@eax > 0 and (@eax < 2 or @eax == 6)) {
+    $$ eax is positive and either below two or exactly six
 }
 
 .else {
