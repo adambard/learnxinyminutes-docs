@@ -216,6 +216,8 @@ array.[] 12 #=> nil
 array << 6 #=> [1, 2, 3, 4, 5, 6]
 # Or like this
 array.push(6) #=> [1, 2, 3, 4, 5, 6]
+# Or even like this
+array.append(6) #=> [1, 2, 3, 4, 5, 6]
 
 # ...and check if an item exists in an array
 array.include?(1) #=> true
