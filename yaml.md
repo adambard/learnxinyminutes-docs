@@ -177,7 +177,8 @@ bar:
   <<: *base # base anchor will be merged
   age: 20
 
-# foo name won't be changed and it will be: John. On the other hand, bar's name will be changed to the base one: Everyone has same name
+# foo name won't be changed and it will be: John. On the other hand,
+# bar's name will be changed to the base one: Everyone has same name
 
 # YAML also has tags, which you can use to explicitly declare types.
 # Syntax: !![typeName] [value]
