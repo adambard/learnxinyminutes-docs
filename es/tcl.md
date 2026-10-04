@@ -5,7 +5,7 @@ translators:
     - ["Héctor Romojaro", "https://github.com/hromojaro"]
 ---
 
-Tcl fue creado por [John Ousterhout](https://wiki.tcl.tk/John%20Ousterout) como
+Tcl fue creado por [John Ousterhout](https://wiki.tcl-lang.org/page/John+Ousterhout) como
 un lenguaje reutilizable de scripting para herramientas de diseño de circuitos
 de las que él era autor.  En 1997 recibió el 
 [ACM Software System Award](https://en.wikipedia.org/wiki/ACM_Software_System_Award) 
