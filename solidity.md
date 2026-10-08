@@ -478,7 +478,7 @@ onlyIfState(State.A)
 modifier checkValue(uint amount) {
     _;
     if (msg.value > amount) {
-        uint amountToRefund = amount - msg.value;
+        uint amountToRefund = msg.value - amount;
         msg.sender.transfer(amountToRefund);
     }
 }
