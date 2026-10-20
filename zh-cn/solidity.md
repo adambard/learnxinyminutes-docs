@@ -785,7 +785,7 @@ someContractAddress.callcode('function_name');
 ## 更多资源
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
 - [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
-- [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
+- [Coddy - Solidity 在线编辑器](https://coddy.tech/playground/solidity)
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
 - [Modular design strategies for Ethereum Contracts](https://docs.erisindustries.com/tutorials/solidity/)

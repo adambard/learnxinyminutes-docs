@@ -1021,7 +1021,7 @@ someContractAddress.callcode('function_name');
 - [Tutorial Chainlink per Principianti](https://docs.chain.link/docs/beginners-tutorial)
 - [Best Practice  per Smart Contract](https://github.com/ConsenSys/smart-contract-best-practices)
 - [Superblocks Lab - Ambiente di sviluppo su browser per Solidity](https://lab.superblocks.com/)
-- [EthFiddle - Il JsFiddle di Solidity](https://ethfiddle.com/)
+- [Coddy - Playground Solidity online](https://coddy.tech/playground/it/solidity)
 - [Solidity Editor su Browser](https://remix.ethereum.org/)
 - [Chat Room Gitter su Solidity](https://gitter.im/ethereum/solidity)
 - [Stategie di Progettazione Modulare per Contratti Ethereum](https://docs.erisindustries.com/tutorials/solidity/)
