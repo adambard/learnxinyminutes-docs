@@ -155,4 +155,5 @@ DROP TABLE tablename1;
 ## Further Reading
 
 * [Codecademy - SQL](https://www.codecademy.com/learn/learn-sql) A good introduction to SQL in a "learn by doing it" format.
+* [Coddy - SQL](https://coddy.tech/landing/sql) An interactive course that runs real queries against live tables in the browser, from joins to window functions.
 * [Database System Concepts](https://www.db-book.com) book's Chapter 3 - Introduction to SQL has an in depth explanation of SQL concepts.
