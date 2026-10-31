@@ -490,7 +490,6 @@ finally:                 #  Εκτελείται ό,τι και να γίνει
 
 # Αντί για try/finally για να καθαρίσουμε τους πόρους, μπορούμε να χρησιμοποιούμε το
 # with expression as target:
-    pass to cleanup resources you can use a with statement
 with open("myfile.txt") as f:
     for line in f:
         print(line)
@@ -644,8 +643,8 @@ print(math.sqrt(16))  # => 4.0
 
 # Μπορείς να πάρεις συγκεκριμένες συναρτήσεις από ένα module
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))   # => 4
+print(floor(3.7))  # => 3
 
 # Μπορείς να κάνεις import όλες τις συναρτήσεις από ένα module.
 # Προσοχή:  δεν προτείνεται

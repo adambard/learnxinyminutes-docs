@@ -614,8 +614,8 @@ print(math.sqrt(16))  # => 4.0
 
 # Bạn có thể lấy một hàm cụ thể từ một mô đun
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))   # => 4
+print(floor(3.7))  # => 3
 
 # Hoặc import tất cả hàm từ một mô đun
 # Cảnh báo: đây không phải là một cách hay

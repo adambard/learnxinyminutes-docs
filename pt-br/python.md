@@ -561,12 +561,11 @@ add_10(3)   # => 13
 (lambda x: x > 2)(3)                  # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1)  # => 5
 
-# TODO - Fix for iterables
 # Existem funções internas de alta ordem
-map(add_10, [1, 2, 3])          # => [11, 12, 13]
-map(max, [1, 2, 3], [4, 2, 1])  # => [4, 2, 3]
+list(map(add_10, [1, 2, 3]))          # => [11, 12, 13]
+list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])  # => [6, 7]
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # Nós podemos usar compreensão de lista para interessantes mapas e filtros
 # Compreensão de lista armazena a saída como uma lista que pode ser uma lista
@@ -594,7 +593,7 @@ class Human:
     # algumas vezes chamados métodos dunder - "double underscore")
     # Você não deve usar nomes assim por sua vontade.
     def __init__(self, name):
-        @ Atribui o argumento ao atributo da  instância
+        # Atribui o argumento ao atributo da  instância
         self.name = name
 
     # Um método de instância. Todos os métodos tem "self" como primeiro
@@ -643,8 +642,8 @@ print(math.sqrt(16))  # => 4.0
 
 # Você pode importar apenas funções específicas de um módulo
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))   # => 4
+print(floor(3.7))  # => 3
 
 # Você pode importar todas as funções de um módulo para o namespace atual
 # Atenção: isso não é recomendado

@@ -236,7 +236,7 @@ li.remove(2)  # Emette un ValueError, poichè 2 non è contenuto nella lista
 # Inserisce un elemento all'indice specificato
 li.insert(1, 2)  # li è di nuovo [1, 2, 3, 4, 5, 6]
 
- Ritorna l'indice della prima occorrenza dell'elemento fornito
+# Ritorna l'indice della prima occorrenza dell'elemento fornito
 li.index(2)  # => 1
 li.index(7)  # Emette un ValueError, poichè 7 non è contenuto nella lista
 
@@ -512,7 +512,7 @@ list(filled_dict.keys())  # => Returns ["one", "two", "three"]
 
 # Usa "def" per creare nuove funzioni
 def aggiungi(x, y):
-    print("x è {} e y è {}".format(x, y)) // Scrive i valori formattati in una stringa
+    print("x è {} e y è {}".format(x, y))  # Scrive i valori formattati in una stringa
     return x + y  # Restituisce la somma dei valori con il metodo return
 
 # Chiamare funzioni con parametri
@@ -624,8 +624,8 @@ print(math.sqrt(16))  # => 4.0
 
 # Puoi ottenere specifiche funzione da un modulo
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))   # => 4
+print(floor(3.7))  # => 3
 
 # Puoi importare tutte le funzioni da un modulo
 # Attenzione: questo non è raccomandato
