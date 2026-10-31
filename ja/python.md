@@ -641,8 +641,8 @@ print(math.sqrt(16))            # => 4.0
 
 # モジュールの中から特定の関数をインポートすることもできます。
 from math import ceil, floor
-print(ceil(3.7))                # => 4.0
-print(floor(3.7))               # => 3.0
+print(ceil(3.7))                # => 4
+print(floor(3.7))               # => 3
 
 # 全部の関数をモジュールからインポートすることができます。
 # 注意: この方法は推奨されません。

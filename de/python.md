@@ -142,7 +142,7 @@ b == a            # => True, die Objekte von a und b sind gleich
 "Hallo Welt!"[0]  # => 'H'
 
 # Die Länge eines Strings lässt sich finden
-len("Das ist ein String")  # => 19
+len("Das ist ein String")  # => 18
 
 # Seit Python 3.6 können f-Strings oder formatierte String-Literale verwendet werden.
 name = "Reiko"
@@ -653,8 +653,8 @@ print(math.sqrt(16))  # => 4.0
 
 # Du kannst spezifische Funktionen aus einem Modul importieren
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))   # => 4
+print(floor(3.7))  # => 3
 
 # Du kannst alle Funktionen aus einem Modul importieren.
 # Warnung: Dies wird nicht empfohlen

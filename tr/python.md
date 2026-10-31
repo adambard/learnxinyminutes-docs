@@ -465,10 +465,9 @@ ekle_10(3)   # => 13
 # Bilinmeyen fonksiyon
 (lambda x: x > 2)(3)   # => True
 
-# TODO - Fix for iterables
 # Belirli sayıdan yükseğini alma fonksiyonu
-map(ekle_10, [1, 2, 3])   # => [11, 12, 13]
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
+list(map(ekle_10, [1, 2, 3]))  # => [11, 12, 13]
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # Filtreleme işlemi için liste comprehensions da kullanabiliriz
 [ekle_10(i) for i in [1, 2, 3]]  # => [11, 12, 13]
@@ -538,8 +537,8 @@ print(math.sqrt(16))  # => 4.0
 
 # Modülden belirli bir fonksiyonları alabilirsiniz
 from math import ceil, floor
-print(ceil(3.7))  # => 4.0
-print(floor(3.7))   # => 3.0
+print(ceil(3.7))  # => 4
+print(floor(3.7))   # => 3
 
 # Modüldeki tüm fonksiyonları içe aktarabilirsiniz
 # Dikkat: bunu yapmanızı önermem.

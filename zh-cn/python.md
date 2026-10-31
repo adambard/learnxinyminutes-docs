@@ -670,8 +670,8 @@ print(math.sqrt(16))  # => 4.0
 
 # 你可以导入模块中具体的函数
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))   # => 4
+print(floor(3.7))  # => 3
 
 # 你可以导入模块中的所有的函数
 # 警告: 此操作不推荐

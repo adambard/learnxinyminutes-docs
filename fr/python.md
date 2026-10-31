@@ -552,12 +552,11 @@ add_10(3)   # => 13
 (lambda x: x > 2)(3)   # => True
 (lambda x, y: x ** 2 + y ** 2)(2, 1) # => 5
 
-# TODO - Fix for iterables
 # Il y a aussi des fonctions de base
-map(add_10, [1, 2, 3])   # => [11, 12, 13]
-map(max, [1, 2, 3], [4, 2, 1])   # => [4, 2, 3]
+list(map(add_10, [1, 2, 3]))  # => [11, 12, 13]
+list(map(max, [1, 2, 3], [4, 2, 1]))  # => [4, 2, 3]
 
-filter(lambda x: x > 5, [3, 4, 5, 6, 7])   # => [6, 7]
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  # => [6, 7]
 
 # On peut utiliser les compréhensions de listes pour de jolies maps et filtres.
 # Une compréhension de liste stocke la sortie comme une liste qui peut elle même être une liste imbriquée.
@@ -630,8 +629,8 @@ print(math.sqrt(16))  # => 4.0
 
 # On peut importer des fonctions spécifiques d'un module
 from math import ceil, floor
-print(ceil(3.7))  # => 4.0
-print(floor(3.7))   # => 3.0
+print(ceil(3.7))  # => 4
+print(floor(3.7))   # => 3
 
 # On peut importer toutes les fonctions d'un module
 # Attention: ce n'est pas recommandé.

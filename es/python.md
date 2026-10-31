@@ -34,7 +34,7 @@ Es básicamente pseudocódigo ejecutable.
 # Sin embargo también tienes disponible división entera
 34 // 5 # => 6
 
-% El operador módulo
+# El operador módulo
 34 % 5  # => 4  # es el residuo de la división: 34 - (5 * 6) = 4 
 
 # Cuando usas un float, los resultados son floats
@@ -415,8 +415,8 @@ sumar_10(3) #=> 13
 (lambda x: x > 2)(3) #=> True
 
 # Hay funciones integradas de orden superior
-map(sumar_10, [1,2,3]) #=> [11, 12, 13]
-filter(lambda x: x > 5, [3, 4, 5, 6, 7]) #=> [6, 7]
+list(map(sumar_10, [1,2,3])) #=> [11, 12, 13]
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7])) #=> [6, 7]
 
 # Podemos usar listas por comprensión para mapeos y filtros agradables
 [sumar_10(i) for i in [1, 2, 3]]  #=> [11, 12, 13]
@@ -487,8 +487,8 @@ print(math.sqrt(16)) #=> 4.0
 
 # Puedes obtener funciones específicas desde un módulo
 from math import ceil, floor
-print(ceil(3.7)) #=> 4.0
-print(floor(3.7))#=> 3.0
+print(ceil(3.7)) #=> 4
+print(floor(3.7))#=> 3
 
 # Puedes importar todas las funciones de un módulo
 # Precaución: Esto no es recomendable

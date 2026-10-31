@@ -572,8 +572,8 @@ print(math.sqrt(16.0))  # => 4.0
 
 # Lze také importovat pouze vybrané funkce z modulu
 from math import ceil, floor
-print(ceil(3.7))   # => 4.0
-print(floor(3.7))  # => 3.0
+print(ceil(3.7))   # => 4
+print(floor(3.7))  # => 3
 
 # Můžete také importovat všechny funkce z modulu, ale radši to nedělejte
 from math import *
