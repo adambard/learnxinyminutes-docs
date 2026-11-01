@@ -13,7 +13,7 @@ NumPy's primitive is an eager mutation of a host buffer. JAX's primitive is a
 pure function over immutable device arrays: operations execute eagerly by
 default, or trace into a closed intermediate representation (`jaxpr`) that can
 be compiled (`jit`), differentiated (`grad`), vectorized (`vmap`), and sharded
-across device meshes (`sharding`)—in any combination.
+across device meshes (`sharding`) in any combination.
 
 ```python
 import dataclasses
@@ -206,7 +206,7 @@ dq_pred, dq_next = jax.grad(td_loss, argnums=(0, 2))(2.0, 1.0, 5.0)
 # 4. Auto-Vectorization (jax.vmap)
 ####################################################
 
-# Write the physics of a single datum; let vmap supply the batch dimension.
+# Write the function for a single datum; let vmap supply the batch dimension.
 def matvec(W, v):
     return jnp.dot(W, v)  # (D_out, D_in) @ (D_in,) -> (D_out,)
 
@@ -287,7 +287,7 @@ halved = lax.while_loop(lambda v: v > 1.0, lambda v: v * 0.5, 16.0)  # => 1.0
 # 7. PyTrees: Functional State Containers (jax.tree)
 ####################################################
 
-# Models and optimizers are nested dicts, tuples, and lists—not flat argument
+# Models and optimizers are nested dicts, tuples, and lists, not flat argument
 # lists. JAX generalizes arrays to PyTrees: any nested container of leaf arrays.
 params = {
     "encoder": {"w": jnp.ones((4, 3)), "b": jnp.zeros((4,))},
@@ -353,7 +353,7 @@ normalized = normalize_across_mesh(global_batch)
 # 9. Synthesis: A Complete MLP in 25 Lines
 ####################################################
 
-# Unifying the mental model: pure functions + explicit PRNGs + PyTrees +
+# End-to-end training loop: pure functions + explicit PRNGs + PyTrees +
 # vmap + value_and_grad + jit with in-place buffer donation.
 def init_mlp(key, sizes):
     keys = jax.random.split(key, len(sizes) - 1)
