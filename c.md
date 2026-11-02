@@ -349,7 +349,7 @@ int main (int argc, char** argv)
 
   // For loops too
   int jj;
-  for (jj=0; jj < 10; jj++) {
+  for (jj = 0; jj < 10; jj++) {
     printf("%d, ", jj);
   } // => prints "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "
 
@@ -388,8 +388,8 @@ int main (int argc, char** argv)
     Using "goto" in C
   */
   int i, j;
-  for(i=0; i<100; ++i)
-  for(j=0; j<100; ++j)
+  for(i = 0; i < 100; ++i)
+  for(j = 0; j < 100; ++j)
   {
     if((i + j) >= 150) {
         goto error;  // exit both for loops immediately
@@ -628,7 +628,7 @@ printf("first: %d\nsecond: %d\n", first, second);
 // you would like to return multiple values, then the caller must pass in the
 // variables where they would like the returned values to go. These variables must
 // be passed in as pointers such that the function can modify them.
-int return_multiple( int *array_of_3, int *ret1, int *ret2, int *ret3)
+int return_multiple(int *array_of_3, int *ret1, int *ret2, int *ret3)
 {
     if(array_of_3 == NULL)
         return 0; // return error code (false)
