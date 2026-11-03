@@ -13,7 +13,7 @@ feeds a reference interpreter (`faber run`) and code generators for C, Rust,
 Go, TypeScript, WebAssembly and more.
 
 Faber is experimental through version 1.x, and minor releases can break
-code. Everything below checks and runs with Faber 1.15.
+code. Everything below checks and runs with Faber 1.18.
 
 ```
 # Comments start with `#` and must stand alone on their line.
