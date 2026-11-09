@@ -13,11 +13,12 @@ feeds a reference interpreter (`faber run`) and code generators for C, Rust,
 Go, TypeScript, WebAssembly and more.
 
 Faber is experimental through version 1.x, and minor releases can break
-code. Everything below checks and runs with Faber 1.18.
+code. Everything below checks and runs with Faber 1.19.
 
 ```
-# Comments start with `#` and must stand alone on their line.
-# A `#` after code on the same line is a lexer error (LEX007).
+# Comments start with `#`. Since 1.19 a comment may also end a line that
+# completes a statement; a `#` inside an unfinished expression is still a
+# lexer error (LEX007).
 
 # Faber is type-first: the type always comes before the name.
 # Every operator is one glyph with one meaning:
