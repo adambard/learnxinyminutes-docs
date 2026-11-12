@@ -3,6 +3,7 @@ name: kdb+
 contributors:
     - ["Matt Doherty", "https://github.com/picodoc"]
     - ["Jonny Press", "https://github.com/jonnypress"]
+    - ["Ferenc Bodon", "https://bodonferenc.github.io"]
 filename: learnkdb.q
 ---
 
@@ -23,7 +24,7 @@ The terms *q* and *kdb+* are usually used interchangeably, as the two are not
 separable so this distinction is not really useful.
 
 To learn more about kdb+ you can join the
-[KX Community forums](https://learninghub.kx.com/forums/) or
+[KX Developer Center](https://developer.kx.com/) or
 the [TorQ kdb+](https://groups.google.com/forum/#!forum/kdbtorq) group.
 
 ```q
@@ -148,21 +149,21 @@ str:"This is a string"
 str:"This is a string with \"quotes\""
 
 / Char data can also be stored as symbols using backtick (`)
-symbol:`sym
+symbol:`mike
 / Symbols are NOT LISTS, they are an enumeration
 / the q process stores internally a vector of strings
 / symbols are enumerated against this vector
 / this can be more space and speed efficient as these are constant width
 
 / The string function converts to strings
-string `symbol / => "symbol"
+string `mike / => "mike"
 string 1.2345 / => "1.2345"
 
 / q has a time type...
 t:01:00:00.000
 / date type...
 d:2015.12.25
-/ and a datetime type (among other time types)
+/ and a datetime type (among other time types) called timestamp
 dt:2015.12.25D12:00:00.000000000
 
 / These support some arithmetic for easy manipulation
@@ -246,15 +247,16 @@ singleton:(),1
 / Indexing uses square brackets []
 l:1 2 3 4
 l[0] / => 1
-l[1] / => 2
+/ Square brackets can be omitted
+l 1 / => 2
 / indexing out of bounds returns a null value rather than an error
-l[5] / => 0N
+l 5 / => 0N
 / and indexed assignment
 l[0]:5
 l / => 5 2 3 4
 
 / Lists can also be used for indexing and indexed assignment
-l[1 3] / => 2 4
+l 1 3  / => 2 4
 l[1 3]: 1 3
 l / => 5 1 3 3
 
@@ -300,15 +302,15 @@ l:1+til 9 / til is a useful shortcut for generating ranges
 / drop the last 5
 -5_l / => 1 2 3 4
 / find the first occurrence of 4
-l?4 / => 3
-l[3] / => 4
+l?4  / => 3
+l 3 / => 4
 
 / Dictionaries in q are a generalization of lists
 / they map a list to another list (of equal length)
 / the bang (!) symbol is used for defining a dictionary
 d:(`a;`b;`c)!(1;2;3)
-/ or more simply with concise list syntax
-d:`a`b`c!1 2 3
+/ use dictionary literal syntax, if keys are symbols
+d:([a:1;b:2;c:3])
 / the keyword key returns the first list
 key d / => `a`b`c
 / and value the second
@@ -317,7 +319,8 @@ value d / => 1 2 3
 / Indexing is identical to lists
 / with the first list as a key instead of the position
 d[`a] / => 1
-d[`b] / => 2
+/ Omit square brackets
+d `b  / => 2
 
 / As is assignment
 d[`c]:4
@@ -327,7 +330,7 @@ d
 / => c| 4
 
 / Arithmetic and comparison work natively, just like lists
-e:(`a;`b;`c)!(2;3;4)
+e:`a`b`c!2 3 4
 d+e
 / => a| 3
 / => b| 5
@@ -371,10 +374,10 @@ t
 / => 3  6  9
 
 / Tables can be indexed and manipulated in a similar way to dicts and lists
-t[`c1]
+t `c1
 / => 1 2 3
 / table rows are returned as dictionaries
-t[1]
+t 1
 / => c1| 2
 / => c2| 5
 / => c3| 8
@@ -405,11 +408,11 @@ k!t
 kt:([id:1 2 3]c1:1 2 3;c2:4 5 6;c3:7 8 9)
 
 / Records can then be retrieved based on this key
-kt[1]
+kt 1
 / => c1| 1
 / => c2| 4
 / => c3| 7
-kt[`id!1]
+kt `id!1
 / => c1| 1
 / => c2| 4
 / => c3| 7
@@ -427,7 +430,7 @@ f:{x+x}
 f[2] / => 4
 
 / Functions can be anonymous and called at point of definition
-{x+x}[2] / => 4
+{x+x} 2 / => 4
 
 / By default the last expression is returned
 / colon (:) can be used to specify return
@@ -440,6 +443,8 @@ f[2] / => 4
 {[arg1;arg2] arg1+arg2}[1;2] / => 3
 / or if omitted will default to x, y and z
 {x+y+z}[1;2;3] / => 6
+/ you can add type specification to arguments
+{[name:`C;age:`j] show name, " is ", string[age], " years old";}
 
 / Built in functions are no different, and can be called the same way (with [])
 +[1;2] / => 3
@@ -451,12 +456,6 @@ f[2] / => 4
 / => 1
 / => "hi"
 / => {x+y}
-
-/ There is no overloading and no keyword arguments for custom q functions
-/ however using a dictionary as a single argument can overcome this
-/ allows for optional arguments or differing functionality
-d:`arg1`arg2`arg3!(1.0;2;"my function argument")
-{x[`arg1]+x[`arg2]}[d] / => 3f
 
 / Functions in q see the global scope
 a:1
@@ -476,6 +475,28 @@ f[4] / => 8
 f[5] / => 9
 f[6] / => 10
 
+////////////////////////////////////
+////////  Pattern matching  ////////
+////////////////////////////////////
+
+/ left-hand side of the colon (:) can now be a pattern
+
+(b;c):(2;3)
+b / => 2
+c / => 3
+
+([four;d]):`one`two`three!1 2 3
+four / => `one`two`three
+d    / => 1 2 3
+
+/ Pattern matching can also be used in the parameter list of a function
+f:{[(a;b);c]a+b+c}
+f[1 2;3] / => 6
+
+/ There is no overloading and no keyword arguments for q functions
+/ however using a dictionary and pattern matching overcome this
+f:{[([name;age])] show name, " is ", string[age], " years old";}
+f ([name: "mike"; age: 32]) / => "mike is 32 years old"
 
 ////////////////////////////////////
 //////////     q-sql      //////////
@@ -767,7 +788,7 @@ select from splayed / (the columns are read from disk on request)
 
 ## Want to know more?
 
+* [KDB-X brief intro](https://code.kx.com/kdb-x/learn/brief-introduction.html)
 * [*q for mortals* q language tutorial](http://code.kx.com/q4m3/)
-* [*Introduction to Kdb+* on disk data tutorial](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/)
-* [q language reference](https://code.kx.com/q/ref/)
+* [q language reference](https://code.kx.com/kdb-x/ref/index.html)
 * [TorQ production framework](https://github.com/DataIntellectTech/TorQ)
