@@ -415,5 +415,5 @@ usar Google y encontrar ejemplos más específicos
 * [Generics](http://docs.oracle.com/javase/tutorial/java/generics/index.html)
 * [Java Code Conventions](http://www.oracle.com/technetwork/java/codeconv-138413.html)
 * Nuevas características en Java 8:
-  * [Lambda expressions (functional programming)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+  * [Expresiones Lambda (programación funcional )](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
   * [API  de fecha y hora (java.time package)](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html)
