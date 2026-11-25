@@ -2,12 +2,14 @@
 name: Frankie
 filename: learnfrankie.fk
 contributors:
-    - ["Alvaro Tejada Galindo", "https://github.com/atejada"]
+    - ["Blag aka. Alvaro Tejada Galindo", "https://github.com/atejada"]
 ---
 
 Frankie is a small language that compiles to Python, with Ruby-like syntax,
 R-style vectors and statistics, and FORTRAN-style `//` and `**`. It is pure
 Python 3.10+ with no dependencies. This article targets Frankie v1.22.x.
+
+[Frankie's Website](https://atejada.github.io/frankielanguage/)
 
 Install with `brew install atejada/frankie/frankie`, then run any file with
 `frankiec run file.fk`. The source is at <https://github.com/atejada/Frankie>.
