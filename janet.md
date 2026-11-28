@@ -317,6 +317,11 @@ n  # => 3
 
 (reduce + 0 (range 5))     # => 10
 
+# There are even macros for ML- and Clojure-style threading:
+(->> (range 10)
+     (map (fn [x] (* x x)))
+     (filter even?))          # => @[0 4 16 36 64]
+
 # ...and lots more (see the API docs).
 
 # Errata ######################################################################
